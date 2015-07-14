@@ -16,6 +16,24 @@
       "revId": "dbd0acb78486184e7f6bb466f1cf537eb750330a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "589a3a79_78481901",
+        "filename": "common/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-07-14T20:15:40Z",
+      "side": 1,
+      "message": "I\u0027m not sure it is too concerning if we miss a few of the early ones even, if we\u0027re still debugging that early in boot we have bigger problems...",
+      "parentUuid": "78b0de09_618cf2ba",
+      "revId": "dbd0acb78486184e7f6bb466f1cf537eb750330a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
