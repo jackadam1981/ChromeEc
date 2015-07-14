@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58987a8f_51d2de46",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-14T21:33:35Z",
+      "side": 1,
+      "message": "Can we remove CONFIG_WP_ENABLE from config.h now? I don\u0027t think it\u0027s used anywhere.",
+      "revId": "4f7a1debeb3b6b480fe08f20ddd8d95b40a6626f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78b0de09_cf288dc0",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-14T21:33:35Z",
+      "side": 1,
+      "message": "just \"return spi_flash_check_protect(addr, CONFIG_FLASH_BANK_SIZE);\", no need for ret variable. Maybe no need for addr either.. up to you though.",
+      "revId": "4f7a1debeb3b6b480fe08f20ddd8d95b40a6626f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98975254_e9f432ff",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-14T21:33:35Z",
+      "side": 1,
+      "message": "Is this delay standard across most / all parts? Does flashrom have a similar delay?",
+      "revId": "4f7a1debeb3b6b480fe08f20ddd8d95b40a6626f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
