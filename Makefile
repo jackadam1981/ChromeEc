@@ -119,6 +119,7 @@ include power/build.mk
 -include private/build.mk
 -include private-cr51/build.mk
 include test/build.mk
+include usb_pd/build.mk
 include util/build.mk
 include util/lock/build.mk
 
@@ -137,7 +138,8 @@ all-y+=$(call objs_from_dir,common,common)
 all-y+=$(call objs_from_dir,driver,driver)
 all-y+=$(call objs_from_dir,power,power)
 all-y+=$(call objs_from_dir,test,$(PROJECT))
-dirs=core/$(CORE) chip/$(CHIP) board/$(BOARD) common power test util
+all-y+=$(call objs_from_dir,usb_pd,usb_pd)
+dirs=core/$(CORE) chip/$(CHIP) board/$(BOARD) common power test usb_pd util
 dirs+=private private-cr51
 dirs+=$(shell find driver -type d)
 
