@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "589a3a79_d85665a1",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-07-14T20:23:03Z",
+      "side": 1,
+      "message": "I think this should get set by wireless_set_state() below if we define the wireless signals in board.h (I sent a patch for that, but it may conflict with what you are working on so feel free to rework as needed)",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 41
+      },
+      "revId": "328d06ffdeb5b9dd6d7ced029877e4d5226a43ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
