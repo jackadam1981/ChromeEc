@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98975254_3bada3f7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2177,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-14T00:57:11Z",
+      "side": 1,
+      "message": "in my opinion this comment doesn\u0027t really add much, it\u0027s pretty obvious. but, if so, i\u0027d prefer a shorter comment like \u0027Don\u0027t send GET_SINK_CAP on swap\u0027",
+      "range": {
+        "startLine": 2174,
+        "startChar": 3,
+        "endLine": 2177,
+        "endChar": 6
+      },
+      "revId": "31fb6e2f3ec5b6c5d5a4e3574bbb82f02ce781a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
