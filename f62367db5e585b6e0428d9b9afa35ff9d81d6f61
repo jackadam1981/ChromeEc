@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "187d22ed_fc1951a7",
+        "filename": "core/host/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-14T22:18:41Z",
+      "side": 1,
+      "message": "Flagged by checkpatch.pl:\n\nIt\u0027s only meant for the emulator. I guess it\u0027s possible to create a header file for just the emulator specific stuff...",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "f62367db5e585b6e0428d9b9afa35ff9d81d6f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98975254_0ce26cc2",
+        "filename": "core/host/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-14T22:18:41Z",
+      "side": 1,
+      "message": "Flagged by checkpatch.pl:\n\nI\u0027m not sure how to get around this. Ideally, it wants me to include \u003cunistd.h\u003e, but that has conflicts with \"usleep\" and \"sleep\".",
+      "revId": "f62367db5e585b6e0428d9b9afa35ff9d81d6f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
