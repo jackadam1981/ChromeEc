@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "187d22ed_9c95b549",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-14T22:28:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "589a3a79_12c44c08",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "5a7592e9facce3d0bcdf79add59860f9bcd36c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98975254_b62285db",
         "filename": "common/motion_sense.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-14T18:57:06Z",
       "side": 1,
       "message": "this function sets runtime sampling rate for a given sensor, but if we aren\u0027t in S0, we won\u0027t be using the runtime rate. so, i\u0027m not sure we want to skip this sensor, i think we want to check SENSOR_EC_RATE for all sensors still to find the highest rate.\n\ni guess the way this function is called, it doesn\u0027t really matter because we only call this function with a specific driving_sensor through a host command which means the AP must be on. but, then seems like that assumption should be written somewhere.",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 12
+      },
+      "revId": "5a7592e9facce3d0bcdf79add59860f9bcd36c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78b0de09_e400100e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-14T22:28:18Z",
+      "side": 1,
+      "message": "I see, line 116 implies we are on S0 for driving_sensor to be !NULL.\nLet me document that.",
+      "parentUuid": "98975254_b62285db",
       "range": {
         "startLine": 120,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "58987a8f_d6ab8491",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-14T22:28:18Z",
+      "side": 1,
+      "message": "To deal with rounding, if we are within 90% of the polling frequency, we read. Let me document it.",
+      "parentUuid": "58987a8f_16068c59",
+      "range": {
+        "startLine": 306,
+        "startChar": 28,
+        "endLine": 306,
+        "endChar": 36
+      },
+      "revId": "5a7592e9facce3d0bcdf79add59860f9bcd36c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "389d8670_f129883d",
         "filename": "include/motion_sense.h",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "58987a8f_16de8c86",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-14T22:28:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "389d8670_f129883d",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 31
+      },
+      "revId": "5a7592e9facce3d0bcdf79add59860f9bcd36c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98c2f255_172fd6c9",
         "filename": "include/motion_sense.h",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2015-07-14T18:57:06Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 100,
+        "startChar": 16,
+        "endLine": 100,
+        "endChar": 25
+      },
+      "revId": "5a7592e9facce3d0bcdf79add59860f9bcd36c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58987a8f_f6e20850",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-14T22:28:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98c2f255_172fd6c9",
       "range": {
         "startLine": 100,
         "startChar": 16,

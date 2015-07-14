@@ -22,6 +22,30 @@
       "revId": "c6c35797add0a2191e8145b395a4fae0d96edfef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58987a8f_b6b000fd",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-14T22:28:18Z",
+      "side": 0,
+      "message": "Got it, replace the HOOK_STARTUP with a HOOK_INIT.",
+      "parentUuid": "187d22ed_91f03edc",
+      "range": {
+        "startLine": 338,
+        "startChar": 1,
+        "endLine": 359,
+        "endChar": 2
+      },
+      "revId": "c6c35797add0a2191e8145b395a4fae0d96edfef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
