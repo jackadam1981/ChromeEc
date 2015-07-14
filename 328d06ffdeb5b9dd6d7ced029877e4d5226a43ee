@@ -46,6 +46,30 @@
       "revId": "328d06ffdeb5b9dd6d7ced029877e4d5226a43ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "589a3a79_58bc3558",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-07-14T20:24:31Z",
+      "side": 1,
+      "message": "Oops, looks like this has been removed in the updated commit, let me know if you want me to abandon my patch if you are working on this already.",
+      "parentUuid": "589a3a79_d85665a1",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 41
+      },
+      "revId": "328d06ffdeb5b9dd6d7ced029877e4d5226a43ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
