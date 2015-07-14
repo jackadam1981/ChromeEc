@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9870321a_3e8679f1",
+        "filename": "include/queue.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-14T23:30:41Z",
+      "side": 1,
+      "message": "Should it be \u0027const struct queue\u0027 instead of \u0027struct queue const\u0027?\nyou want the structure to be constant, not the pointer q.",
+      "revId": "1c0c219732969ae46263c4c3f9682a9272c25127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98975254_e7ed3904",
+        "filename": "include/queue.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-14T23:30:41Z",
+      "side": 1,
+      "message": "Usually, struct should be arguments:\nint write_chunk(struct queue const *q,\n                struct queue_chunk *chunk);\nWe avoid the memory copy or the implicit pointer setup.",
+      "revId": "1c0c219732969ae46263c4c3f9682a9272c25127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "187d22ed_fc8b11ef",
+        "filename": "include/queue.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-14T23:30:41Z",
+      "side": 1,
+      "message": "same as above.",
+      "revId": "1c0c219732969ae46263c4c3f9682a9272c25127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
