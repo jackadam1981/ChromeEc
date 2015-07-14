@@ -39,11 +39,6 @@ static int time_set;
 
 void usleep(unsigned us)
 {
-	if (!task_start_called()) {
-		udelay(us);
-		return;
-	}
-
 	ASSERT(!in_interrupt_context() &&
 	       task_get_current() != TASK_ID_INT_GEN);
 

@@ -350,11 +350,6 @@ static int fast_forward(void)
 	}
 }
 
-int task_start_called(void)
-{
-	return task_started;
-}
-
 void task_scheduler(void)
 {
 	int i;

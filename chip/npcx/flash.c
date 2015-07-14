@@ -89,8 +89,7 @@ void flash_wait_ready(void)
 			break;
 
 		/* check task scheduling has started to prevent infinite loop */
-		if (task_start_called())
-			msleep(1);
+		msleep(1);
 	}; /* Wait for Busy clear */
 	/* Chip Select high. */
 	flash_cs_level(1);

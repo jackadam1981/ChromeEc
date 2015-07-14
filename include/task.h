@@ -168,12 +168,6 @@ void task_pre_init(void);
  */
 int task_start(void);
 
-/**
- * Return non-zero if task_start() has been called and task scheduling has
- * started.
- */
-int task_start_called(void);
-
 #ifdef CONFIG_FPU
 /**
  * Clear floating-point used flag for currently executing task. This means the

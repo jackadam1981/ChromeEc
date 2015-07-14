@@ -179,11 +179,6 @@ uint32_t *task_get_event_bitmap(task_id_t tskid)
 	return &tsk->events;
 }
 
-int task_start_called(void)
-{
-	return start_called;
-}
-
 /**
  * Scheduling system call
  */
