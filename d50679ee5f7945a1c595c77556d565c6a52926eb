@@ -16,6 +16,24 @@
       "revId": "d50679ee5f7945a1c595c77556d565c6a52926eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98c2f255_c81f7f8c",
+        "filename": "board/cyan/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-15T04:30:42Z",
+      "side": 1,
+      "message": "without it, compile error due to UART_RX interrupt, \"uart_deepsleep_interrupt\" in gpio.inc.",
+      "parentUuid": "58987a8f_3c17314e",
+      "revId": "d50679ee5f7945a1c595c77556d565c6a52926eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
