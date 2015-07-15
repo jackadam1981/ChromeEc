@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "389d8670_fa195da7",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-15T02:08:11Z",
+      "side": 1,
+      "message": "ok, well the comment should be updated at least, it\u0027s not using a low speed clock.",
+      "parentUuid": "589a3a79_5816f5d6",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8246aa6_335fdf41",
         "filename": "chip/mec1322/clock.c",
         "patchSetId": 2
@@ -414,6 +438,30 @@
       "side": 1,
       "message": "During the heavy sleep, CPU is down(clock is gated) and no usage for this counter and disable it to save power.",
       "parentUuid": "3801063e_511b54fb",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 32
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98c2f255_9d5dc7f8",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-15T02:08:11Z",
+      "side": 1,
+      "message": "Is this timer enabled by default? is it actually being used? if so, maybe just add a comment what it\u0027s used for and that we\u0027re disabling it to save power.",
+      "parentUuid": "18a442b9_30f22867",
       "range": {
         "startLine": 171,
         "startChar": 1,
@@ -867,6 +915,30 @@
     },
     {
       "key": {
+        "uuid": "b8c33659_d8faf137",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-15T02:08:11Z",
+      "side": 1,
+      "message": "I think it\u0027s best not to commit code to our common code that is dependent on a gpio on a specific pin. a custom board function would work in a pinch, or even an assert that checks that the UART RX pin (g.port and g.mask) is the right gpio. that way if someone enables it on another board it will obviously fail for a reason that is easy to look up.",
+      "parentUuid": "389d8670_f7ced8a0",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 22
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8970a01_933ecee8",
         "filename": "chip/mec1322/uart.c",
         "patchSetId": 2
@@ -902,6 +974,30 @@
       "side": 1,
       "message": "It might be redundant but this code controls UART interrupt directly at earlier stage of interrupt path while CPU_NVIC_EN(task_disable_irq()) controls the group where UART interrupt belongs to. (Fig 15-2)\nI think it has no harm to have. What do you think ?",
       "parentUuid": "d8970a01_933ecee8",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 67
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "389d8670_7a380dfb",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-15T02:08:11Z",
+      "side": 1,
+      "message": "i\u0027m not a fan of adding redundant code \u0027just in case\u0027. we should be doing the minimum needed.",
+      "parentUuid": "389d8670_54e8822d",
       "range": {
         "startLine": 178,
         "startChar": 1,
