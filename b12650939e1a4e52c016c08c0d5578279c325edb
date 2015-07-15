@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "389d8670_da03b941",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-15T01:55:22Z",
+      "side": 1,
+      "message": "i don\u0027t think this is needed, we do this on line 411.\n\nactually, it looks like ToT is wrong. in CL:282052, you moved this here, but now, for a source only device with vconn, we won\u0027t turn it off on disconnect. the original location was the only place it was needed.",
+      "range": {
+        "startLine": 393,
+        "startChar": 2,
+        "endLine": 393,
+        "endChar": 43
+      },
+      "revId": "b12650939e1a4e52c016c08c0d5578279c325edb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
