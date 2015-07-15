@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9870321a_9ea4cd0a",
+        "filename": "board/strago/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-15T00:39:25Z",
+      "side": 1,
+      "message": "Probably don\u0027t need this ifdef, unless you think people will want to remove CONFIG_BUTTON_COUNT from strago, for some reason (testing?).",
+      "revId": "626b3909661b348e2a3980f9e80bb279f59af022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58987a8f_9c4d1d92",
+        "filename": "board/strago/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-15T00:39:25Z",
+      "side": 1,
+      "message": "Note that adc_init is also HOOK_PRIO_DEFAULT. Do you need this routine to be run before adc_init? If so, add a new PRIO define for ADC and set the priority here to that PRIO - 1 (like the above routine).",
+      "revId": "626b3909661b348e2a3980f9e80bb279f59af022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
