@@ -266,9 +266,6 @@ static inline void set_state(int port, enum pd_states next_state)
 		typec_set_input_current_limit(port, 0, 0);
 		charge_manager_set_ceil(port, CHARGE_CEIL_NONE);
 #endif
-#ifdef CONFIG_USBC_VCONN
-		tcpm_set_vconn(port, 0);
-#endif
 #else /* CONFIG_USB_PD_DUAL_ROLE */
 	if (next_state == PD_STATE_SRC_DISCONNECTED) {
 #endif
@@ -286,6 +283,9 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif
 		/* Disable TCPC RX */
 		tcpm_set_rx_enable(port, 0);
+#ifdef CONFIG_USBC_VCONN
+		tcpm_set_vconn(port, 0);
+#endif
 	}
 
 #ifdef CONFIG_LOW_POWER_IDLE
