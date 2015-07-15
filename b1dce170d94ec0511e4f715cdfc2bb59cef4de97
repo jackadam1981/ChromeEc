@@ -1011,6 +1011,30 @@
     },
     {
       "key": {
+        "uuid": "3837466d_c19962fc",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-15T16:57:18Z",
+      "side": 1,
+      "message": "Ok, yes, gpio 162 is the only pin that can be used for UART-RX, so that\u0027s fine. just add comment to that affect.",
+      "parentUuid": "d8d9ca70_ae841717",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 22
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8970a01_933ecee8",
         "filename": "chip/mec1322/uart.c",
         "patchSetId": 2
