@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "589a3a79_fb16c34f",
+        "filename": "board/strago/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-07-15T01:34:09Z",
+      "side": 1,
+      "message": "Sure Shawn, I will remove it. yes It was used for testing.",
+      "parentUuid": "9870321a_9ea4cd0a",
+      "revId": "626b3909661b348e2a3980f9e80bb279f59af022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58987a8f_9c4d1d92",
         "filename": "board/strago/board.c",
         "patchSetId": 1
@@ -30,6 +48,47 @@
       "writtenOn": "2015-07-15T00:39:25Z",
       "side": 1,
       "message": "Note that adc_init is also HOOK_PRIO_DEFAULT. Do you need this routine to be run before adc_init? If so, add a new PRIO define for ADC and set the priority here to that PRIO - 1 (like the above routine).",
+      "revId": "626b3909661b348e2a3980f9e80bb279f59af022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8c33659_d8403109",
+        "filename": "board/strago/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-07-15T01:34:09Z",
+      "side": 1,
+      "message": "we need to before adc_init making changes as suggested by Shawn",
+      "parentUuid": "58987a8f_9c4d1d92",
+      "revId": "626b3909661b348e2a3980f9e80bb279f59af022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "589a3a79_1b2547b9",
+        "filename": "board/strago/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-07-15T01:34:09Z",
+      "side": 1,
+      "message": "I will change it to CONFIG_PMIC",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 32
+      },
       "revId": "626b3909661b348e2a3980f9e80bb279f59af022",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
