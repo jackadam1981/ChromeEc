@@ -286,7 +286,11 @@ fail:
 	return ret;
 }
 
+#ifdef CONFIG_COMMON_RUNTIME
 static void adc_init(void)
+#else
+void adc_init(void)
+#endif
 {
 	/*
 	 * If clock is already enabled, and ADC module is enabled

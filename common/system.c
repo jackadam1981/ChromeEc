@@ -447,9 +447,11 @@ static void jump_to_image(uintptr_t init_addr)
 	/* Prepare I2C module for sysjump */
 	i2c_prepare_sysjump();
 #endif
+#ifdef CONFIG_COMMON_RUNTIME
 	/* Flush UART output unless the UART hasn't been initialized yet */
 	if (uart_init_done())
 		uart_flush_output();
+#endif
 
 	/* Disable interrupts before jump */
 	interrupt_disable();
@@ -467,8 +469,10 @@ static void jump_to_image(uintptr_t init_addr)
 	jdata->jump_tag_total = 0;  /* Reset tags */
 	jdata->struct_size = sizeof(struct jump_data);
 
+#ifdef CONFIG_COMMON_RUNTIME
 	/* Call other hooks; these may add tags */
 	hook_notify(HOOK_SYSJUMP);
+#endif
 
 	/* Jump to the reset vector */
 	resetvec();
@@ -619,7 +623,9 @@ const char *system_get_build_info(void)
 
 void system_common_pre_init(void)
 {
+#ifdef CONFIG_COMMON_PANIC_OUTPUT
 	uintptr_t addr;
+#endif
 
 #ifdef CONFIG_SOFTWARE_PANIC
 	/*
@@ -631,6 +637,7 @@ void system_common_pre_init(void)
 		panic_set_reason(PANIC_SW_WATCHDOG, 0, 0);
 #endif
 
+#ifdef CONFIG_COMMON_PANIC_OUTPUT
 	/*
 	 * Put the jump data before the panic data, or at the end of RAM if
 	 * panic data is not present.
@@ -697,6 +704,7 @@ void system_common_pre_init(void)
 		/* Clear the whole jump_data struct */
 		memset(jdata, 0, sizeof(struct jump_data));
 	}
+#endif
 }
 
 /**

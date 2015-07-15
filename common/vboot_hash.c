@@ -134,8 +134,13 @@ static void vboot_hash_next_chunk(void)
 		return;
 	}
 
+#ifdef CONFIG_COMMON_RUNTIME
 	/* If we're still here, more work to do; come back later */
 	hook_call_deferred(vboot_hash_next_chunk, WORK_INTERVAL_US);
+#else
+	/* Compiler uses tail recursion here */
+	vboot_hash_next_chunk();
+#endif
 }
 DECLARE_DEFERRED(vboot_hash_next_chunk);
 
@@ -175,7 +180,11 @@ static int vboot_hash_start(uint32_t offset, uint32_t size,
 	if (nonce_size)
 		SHA256_update(&ctx, nonce, nonce_size);
 
+#ifdef CONFIG_COMMON_RUNTIME
 	hook_call_deferred(vboot_hash_next_chunk, 0);
+#else
+	vboot_hash_next_chunk();
+#endif
 
 	return EC_SUCCESS;
 }

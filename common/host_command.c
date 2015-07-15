@@ -385,6 +385,9 @@ static void host_command_init(void)
 #endif
 }
 
+#ifndef CONFIG_COMMON_RUNTIME
+#include "debug_printf.h"
+#endif
 void host_command_task(void)
 {
 	timestamp_t t0, t1, t_recess;
@@ -397,6 +400,10 @@ void host_command_task(void)
 		/* Wait for the next command event */
 		int evt = task_wait_event(-1);
 		t0 = get_time();
+
+#ifndef CONFIG_COMMON_RUNTIME
+		debug_printf(".");
+#endif
 
 		/* Process it */
 		if ((evt & TASK_EVENT_CMD_PENDING) && pending_args) {

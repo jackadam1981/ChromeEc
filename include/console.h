@@ -84,7 +84,14 @@ enum console_channel {
  *
  * @return non-zero if output was truncated.
  */
+#ifdef CONFIG_COMMON_RUNTIME
 int cputs(enum console_channel channel, const char *outstr);
+#else
+static inline int cputs(enum console_channel channel, const char *outstr)
+{
+	return 0;
+}
+#endif
 
 /**
  * Print formatted output to the console channel.
@@ -94,7 +101,14 @@ int cputs(enum console_channel channel, const char *outstr);
  *
  * @return non-zero if output was truncated.
  */
+#ifdef CONFIG_COMMON_RUNTIME
 int cprintf(enum console_channel channel, const char *format, ...);
+#else
+static inline int cprintf(enum console_channel channel, const char *format, ...)
+{
+	return 0;
+}
+#endif
 
 /**
  * Print formatted output with timestamp. This is like:
@@ -105,12 +119,25 @@ int cprintf(enum console_channel channel, const char *format, ...);
  *
  * @return non-zero if output was truncated.
  */
+#ifdef CONFIG_COMMON_RUNTIME
 int cprints(enum console_channel channel, const char *format, ...);
+#else
+static inline int cprints(enum console_channel channel, const char *format, ...)
+{
+	return 0;
+}
+#endif
 
 /**
  * Flush the console output for all channels.
  */
+#ifdef CONFIG_COMMON_RUNTIME
 void cflush(void);
+#else
+static inline void cflush(void)
+{
+}
+#endif
 
 /* Convenience macros for printing to the command channel.
  *

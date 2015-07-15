@@ -31,6 +31,8 @@
 #undef CONFIG_COMMON_GPIO
 #undef CONFIG_COMMON_PANIC_OUTPUT
 #undef CONFIG_COMMON_RUNTIME
+#define CONFIG_COMMON_RUNTIME_MINI
+#undef CONFIG_COMMON_SYSTEM
 #undef CONFIG_COMMON_TIMER
 #define CONFIG_LOW_POWER_IDLE
 #undef CONFIG_CONSOLE_CMDHELP
@@ -123,13 +125,6 @@ int flash_physical_is_permanently_protected(void);
 uint8_t *flash_hash_rw(void);
 int is_ro_mode(void);
 
-/* RTC functions */
-void rtc_init(void);
-void set_rtc_alarm(uint32_t delay_s, uint32_t delay_us,
-		   uint32_t *rtc, uint32_t *rtcss);
-void reset_rtc_alarm(uint32_t *rtc, uint32_t *rtcss);
-int32_t get_rtc_diff(uint32_t rtc0, uint32_t rtc0ss,
-		     uint32_t rtc1, uint32_t rtc1ss);
 void __enter_hibernate(uint32_t seconds, uint32_t microseconds);
 
 #endif /* !__ASSEMBLER__ */

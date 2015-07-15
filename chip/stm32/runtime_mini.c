@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -7,7 +7,7 @@
 #include "clock.h"
 #include "common.h"
 #include "cpu.h"
-#include "debug.h"
+#include "debug_printf.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -15,7 +15,14 @@
 #include "util.h"
 
 volatile uint32_t last_event;
-uint32_t sleep_mask;
+
+/* RTC functions */
+extern void rtc_init(void);
+extern void set_rtc_alarm(uint32_t delay_s, uint32_t delay_us,
+		   uint32_t *rtc, uint32_t *rtcss);
+extern void reset_rtc_alarm(uint32_t *rtc, uint32_t *rtcss);
+extern int32_t get_rtc_diff(uint32_t rtc0, uint32_t rtc0ss,
+		     uint32_t rtc1, uint32_t rtc1ss);
 
 /* High word of the 64-bit timestamp counter  */
 static volatile uint32_t clksrc_high;
@@ -246,10 +253,6 @@ void __keep cpu_reset(void)
 		;
 }
 
-void system_reset(int flags)
-{
-	cpu_reset();
-}
 /**
  * Default exception handler, which reports a panic.
  *
@@ -276,6 +279,14 @@ void panic_reboot(void)
 	cpu_reset();
 }
 
+#ifndef CONFIG_COMMON_SYSTEM
+uint32_t sleep_mask;
+
+void system_reset(int flags)
+{
+	cpu_reset();
+}
+
 enum system_image_copy_t system_get_image_copy(void)
 {
 	if (is_ro_mode())
@@ -283,6 +294,7 @@ enum system_image_copy_t system_get_image_copy(void)
 	else
 		return SYSTEM_IMAGE_RW;
 }
+#endif
 
 /* --- stubs --- */
 void __hw_timer_enable_clock(int n, int enable)
@@ -290,3 +302,4 @@ void __hw_timer_enable_clock(int n, int enable)
 
 void usleep(unsigned us)
 { /* Used only as a workaround */ }
+

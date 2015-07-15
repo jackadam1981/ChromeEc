@@ -53,9 +53,11 @@ extern const struct hook_data __hooks_tick_end[];
 extern const struct hook_data __hooks_second[];
 extern const struct hook_data __hooks_second_end[];
 
+#ifdef CONFIG_COMMON_RUNTIME
 /* Deferrable functions */
 extern const struct deferred_data __deferred_funcs[];
 extern const struct deferred_data __deferred_funcs_end[];
+#endif
 
 /* I2C fake devices for unit testing */
 extern const struct test_i2c_xfer __test_i2c_xfer[];
