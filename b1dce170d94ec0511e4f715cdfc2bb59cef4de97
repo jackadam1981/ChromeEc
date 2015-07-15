@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "b8c33659_d8291117",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-15T15:16:46Z",
+      "side": 1,
+      "message": "Yes, I will update/change this comment and other places.",
+      "parentUuid": "389d8670_fa195da7",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8246aa6_335fdf41",
         "filename": "chip/mec1322/clock.c",
         "patchSetId": 2
@@ -939,6 +963,30 @@
     },
     {
       "key": {
+        "uuid": "d8d9ca70_ae841717",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-15T15:16:46Z",
+      "side": 1,
+      "message": "Unlike GPIO control registers, interrupt registers of MEC1322(group \u0026 its bit location) can not be identified with GPIO number(g.port \u0026 g.mask) by generic rules/formula and there are many interrupt sources other than GPIO pins, too.  Even if generic function,m gpio_clear_interrupt(port, mask) is defined, it can not support non-GPIO interrupts. \n\nUART-RX and its alternative GPIO pin number(162) is fixed in MEC1322 and this uart.c file is MEC1322 specific file.\nI think this specific line is better being remained as hardcode or defining group and bit position as macros in register.h for better readability.",
+      "parentUuid": "b8c33659_d8faf137",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 22
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8970a01_933ecee8",
         "filename": "chip/mec1322/uart.c",
         "patchSetId": 2
@@ -998,6 +1046,30 @@
       "side": 1,
       "message": "i\u0027m not a fan of adding redundant code \u0027just in case\u0027. we should be doing the minimum needed.",
       "parentUuid": "389d8670_54e8822d",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 67
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18a442b9_364ea010",
+        "filename": "chip/mec1322/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-15T15:16:46Z",
+      "side": 1,
+      "message": "I will remove it.",
+      "parentUuid": "389d8670_7a380dfb",
       "range": {
         "startLine": 178,
         "startChar": 1,
