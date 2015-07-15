@@ -78,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "183e024a_003ae655",
+        "filename": "include/queue.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-15T18:01:32Z",
+      "side": 1,
+      "message": "Sorry, I misread. I am more used to see const in the front (after static but before the type), as the C++ style guide suggest.\nhttps://engdoc.corp.google.com/eng/doc/devguide/cpp/styleguide.shtml?cl\u003dhead#Use_of_const",
+      "parentUuid": "3837466d_412a3233",
+      "revId": "1c0c219732969ae46263c4c3f9682a9272c25127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8404ed5_5fd8cbe5",
         "filename": "include/queue.h",
         "patchSetId": 1
@@ -154,6 +172,24 @@
       "side": 1,
       "message": "There is no memory copy, in fact these two prototypes generate EXACTLY the same code (well if you had put the chunk parameter before the queue they would be exactly the same, as it is written here the arguments to the function are swapped\".  This is because the ARM ABI specifies (Section 5.4 and Section 5.5, Rule A.4) that if a return value is larger than 4 bytes then the address for the result is placed in R0 (the first parameter slot), which is just what manually passing the pointer is doing.  I verified that this is the case by disassembling both versions of queue_get_write_chunk.",
       "parentUuid": "98975254_e7ed3904",
+      "revId": "1c0c219732969ae46263c4c3f9682a9272c25127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78f7fee1_37ebe0f0",
+        "filename": "include/queue.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-15T18:01:32Z",
+      "side": 1,
+      "message": "We both agree we have an implicit pointer setup in the list of arguments. I would have made it explicit.",
+      "parentUuid": "78f7fee1_4644741b",
       "revId": "1c0c219732969ae46263c4c3f9682a9272c25127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
