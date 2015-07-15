@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "98fcb2c6_44a34e39",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-07-15T22:01:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58987a8f_51d2de46",
+      "revId": "4f7a1debeb3b6b480fe08f20ddd8d95b40a6626f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78b0de09_cf288dc0",
         "filename": "chip/mec1322/flash.c",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d8d9ca70_4e5a53c7",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-07-15T22:01:12Z",
+      "side": 1,
+      "message": "I think you are right, compact is good",
+      "parentUuid": "78b0de09_cf288dc0",
+      "revId": "4f7a1debeb3b6b480fe08f20ddd8d95b40a6626f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98975254_e9f432ff",
         "filename": "common/spi_flash.c",
         "patchSetId": 9
@@ -47,6 +83,24 @@
       "writtenOn": "2015-07-14T21:33:35Z",
       "side": 1,
       "message": "Is this delay standard across most / all parts? Does flashrom have a similar delay?",
+      "revId": "4f7a1debeb3b6b480fe08f20ddd8d95b40a6626f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8f20ee5_2fb6e9c5",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-07-15T22:01:12Z",
+      "side": 1,
+      "message": "so the two datasheets I have seen: W25X10/W25X20/W25X40/W25X80 and W25Q64 list 10-15ms and 10-25ms respectively. I think spi_flash_wait() is generally a good idea here, because it polls completion flag in 100ns periods for up to max known command time which is 800ms currently (technically also not completely correct and should be part-dependent)\n\nIf we do not wait for command completion and spam next command we get errors. I am surprised this issue was not encountered earlier.\n\nI do not know if flashrom waits for command completion",
+      "parentUuid": "98975254_e9f432ff",
       "revId": "4f7a1debeb3b6b480fe08f20ddd8d95b40a6626f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
