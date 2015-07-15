@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "183e024a_4086ae9b",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-15T23:19:14Z",
+      "side": 1,
+      "message": "Ideally, includes are alphabetized.  So this would be after common.h.",
+      "revId": "94c4644d400e18b9186064c5c75da557a14dc4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8404ed5_1f7ec324",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-15T23:19:14Z",
+      "side": 1,
+      "message": "initialize",
+      "range": {
+        "startLine": 715,
+        "startChar": 4,
+        "endLine": 715,
+        "endChar": 18
+      },
+      "revId": "94c4644d400e18b9186064c5c75da557a14dc4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "183e024a_c605f682",
+        "filename": "util/ecst.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-15T23:19:14Z",
+      "side": 1,
+      "message": "(same as ecst.h)",
+      "range": {
+        "startLine": 2,
+        "startChar": 4,
+        "endLine": 5,
+        "endChar": 23
+      },
+      "revId": "94c4644d400e18b9186064c5c75da557a14dc4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78f7fee1_e91f9f16",
+        "filename": "util/ecst.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-15T23:19:14Z",
+      "side": 1,
+      "message": "Is this file intended to remain confidential or to be released under Chromium license?",
+      "range": {
+        "startLine": 2,
+        "startChar": 4,
+        "endLine": 5,
+        "endChar": 23
+      },
+      "revId": "94c4644d400e18b9186064c5c75da557a14dc4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
