@@ -29,6 +29,7 @@ enum console_channel {
 	CC_COMMAND = 0,  /* Console command (interactive I/O).  Use this only
 			  * inside a console command routine. */
 	CC_ACCEL,
+	CC_ALS,
 	CC_CHARGER,
 	CC_CHIPSET,
 	CC_CLOCK,
