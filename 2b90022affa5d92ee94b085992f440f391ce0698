@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5834fa65_82711a58",
+        "filename": "board/strago/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-15T17:11:29Z",
+      "side": 1,
+      "message": "I suggest to add \"#define HOOK_PRIO_INIT_ADC HOOK_PRIO_DEFAULT\" (maybe in adc.h) and then use the new define here (HOOK_PRIO_INIT_ADC - 1) and for adc_init (HOOK_PRIO_INIT_ADC). The reason is, if someone decides to change the adc_init priority later, they likely won\u0027t find and modify this board-level code.",
+      "revId": "2b90022affa5d92ee94b085992f440f391ce0698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
