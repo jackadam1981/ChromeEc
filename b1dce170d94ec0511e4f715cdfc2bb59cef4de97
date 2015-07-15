@@ -1338,6 +1338,30 @@
       "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8f20ee5_cfa63dcc",
+        "filename": "core/cortex-m/cpu.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-15T16:09:26Z",
+      "side": 1,
+      "message": "It should be 16.",
+      "parentUuid": "1808c262_f02c0050",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 39
+      },
+      "revId": "b1dce170d94ec0511e4f715cdfc2bb59cef4de97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
