@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "78f7fee1_297949a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-15T17:05:11Z",
+      "side": 1,
+      "message": "queried? (he queried...)",
+      "range": {
+        "startLine": 18,
+        "startChar": 40,
+        "endLine": 18,
+        "endChar": 48
+      },
+      "revId": "1c0c219732969ae46263c4c3f9682a9272c25127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9870321a_3e8679f1",
         "filename": "include/queue.h",
         "patchSetId": 1
@@ -31,6 +54,47 @@
       "side": 1,
       "message": "This isn\u0027t specifying a constant pointer, a constant pointer would be \"struct queue * const q\", as with the prototypes above, this is a constant queue.  The \"const struct queue *q\" form is the same as \"struct queue const *q\".  I find that putting the const on the right is more intuitive because that is where it has to go for pointers, say you want a constant pointer to a constant queue, that would have to be \"const struct queue * const q\" or \"struct queue const * const q\".  I prefer the second because it allows it to be read from right to left as \"q is a constant pointer to a constant queue\".",
       "parentUuid": "9870321a_3e8679f1",
+      "revId": "1c0c219732969ae46263c4c3f9682a9272c25127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3837466d_e10b46af",
+        "filename": "include/queue.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-15T17:05:11Z",
+      "side": 1,
+      "message": "The linux coding style guide is silent on this.\n\nThe rest of our code uses \"const struct foo *\".\n\nIt seems easier to mix up \"struct foo const *\" and \"struct foo * const\" than \"const struct foo *\".\n\nBut I also hate style arguments.",
+      "parentUuid": "3837466d_412a3233",
+      "revId": "1c0c219732969ae46263c4c3f9682a9272c25127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8404ed5_5fd8cbe5",
+        "filename": "include/queue.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-15T17:05:11Z",
+      "side": 1,
+      "message": "some (lowercase)",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 124,
+        "endChar": 4
+      },
       "revId": "1c0c219732969ae46263c4c3f9682a9272c25127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
