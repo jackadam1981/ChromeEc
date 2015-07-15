@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3837466d_412a3233",
+        "filename": "include/queue.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-07-15T16:26:02Z",
+      "side": 1,
+      "message": "This isn\u0027t specifying a constant pointer, a constant pointer would be \"struct queue * const q\", as with the prototypes above, this is a constant queue.  The \"const struct queue *q\" form is the same as \"struct queue const *q\".  I find that putting the const on the right is more intuitive because that is where it has to go for pointers, say you want a constant pointer to a constant queue, that would have to be \"const struct queue * const q\" or \"struct queue const * const q\".  I prefer the second because it allows it to be read from right to left as \"q is a constant pointer to a constant queue\".",
+      "parentUuid": "9870321a_3e8679f1",
+      "revId": "1c0c219732969ae46263c4c3f9682a9272c25127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98975254_e7ed3904",
         "filename": "include/queue.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "78f7fee1_4644741b",
+        "filename": "include/queue.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-07-15T16:26:02Z",
+      "side": 1,
+      "message": "There is no memory copy, in fact these two prototypes generate EXACTLY the same code (well if you had put the chunk parameter before the queue they would be exactly the same, as it is written here the arguments to the function are swapped\".  This is because the ARM ABI specifies (Section 5.4 and Section 5.5, Rule A.4) that if a return value is larger than 4 bytes then the address for the result is placed in R0 (the first parameter slot), which is just what manually passing the pointer is doing.  I verified that this is the case by disassembling both versions of queue_get_write_chunk.",
+      "parentUuid": "98975254_e7ed3904",
+      "revId": "1c0c219732969ae46263c4c3f9682a9272c25127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "187d22ed_fc8b11ef",
         "filename": "include/queue.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2015-07-14T23:30:41Z",
       "side": 1,
       "message": "same as above.",
+      "revId": "1c0c219732969ae46263c4c3f9682a9272c25127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5834fa65_026f4aa8",
+        "filename": "include/queue.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-07-15T16:26:02Z",
+      "side": 1,
+      "message": "see above.",
+      "parentUuid": "187d22ed_fc8b11ef",
       "revId": "1c0c219732969ae46263c4c3f9682a9272c25127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
