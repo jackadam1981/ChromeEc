@@ -27,7 +27,8 @@ endif
 TIMER_TYPE=$(if $(CONFIG_STM_HWTIMER32),32,)
 
 chip-y=dma.o
-chip-$(CONFIG_COMMON_RUNTIME)+=system.o
+chip-$(CONFIG_COMMON_RUNTIME_MINI)+=runtime_mini.o
+chip-$(CONFIG_COMMON_SYSTEM)+=system.o
 chip-y+=jtag-$(CHIP_FAMILY).o clock-$(CHIP_FAMILY).o
 chip-$(CONFIG_SPI)+=spi.o
 chip-$(CONFIG_SPI_MASTER)+=spi_master.o
@@ -50,6 +51,7 @@ chip-$(CHIP_FAMILY_STM32F0)+=flash-f.o
 chip-$(CHIP_FAMILY_STM32F3)+=flash-f.o
 endif
 chip-$(CONFIG_ADC)+=adc-$(CHIP_FAMILY).o
+chip-$(CONFIG_DEBUG_PRINTF)+=debug_printf.o
 chip-$(CONFIG_PWM)+=pwm.o
 chip-$(CONFIG_USB)+=usb.o usb-$(CHIP_FAMILY).o usb_endpoints.o
 chip-$(CONFIG_USB_CONSOLE)+=usb_console.o

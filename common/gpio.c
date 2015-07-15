@@ -196,6 +196,7 @@ DECLARE_CONSOLE_COMMAND(gpioset, command_gpio_set,
 /*****************************************************************************/
 /* Host commands */
 
+#ifdef CONFIG_COMMON_RUNTIME
 static int gpio_command_get(struct host_cmd_handler_args *args)
 {
 	const struct gpio_info *g = gpio_list;
@@ -274,3 +275,4 @@ static int gpio_command_set(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_GPIO_SET, gpio_command_set, EC_VER_MASK(0));
+#endif /* CONFIG_COMMON_RUNTIME */

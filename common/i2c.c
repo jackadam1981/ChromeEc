@@ -471,6 +471,7 @@ unwedge_done:
  * as ectool supports EC_CMD_I2C_PASSTHRU.
  */
 
+#ifdef CONFIG_COMMON_RUNTIME
 static int port_is_valid(int port)
 {
 	int i;
@@ -690,6 +691,7 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_I2C_PASSTHRU, i2c_command_passthru, EC_VER_MASK(0));
+#endif /* CONFIG_COMMON_RUNTIME */
 
 /*****************************************************************************/
 /* Console commands */

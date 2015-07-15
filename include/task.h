@@ -239,12 +239,24 @@ struct mutex {
  *
  * Must not be used in interrupt context!
  */
+#ifdef CONFIG_COMMON_RUNTIME
 void mutex_lock(struct mutex *mtx);
+#else
+static inline void mutex_lock(struct mutex *mtx)
+{
+}
+#endif
 
 /**
  * Release a mutex previously locked by the same task.
  */
+#ifdef CONFIG_COMMON_RUNTIME
 void mutex_unlock(struct mutex *mtx);
+#else
+static inline void mutex_unlock(struct mutex *mtx)
+{
+}
+#endif
 
 struct irq_priority {
 	uint8_t irq;

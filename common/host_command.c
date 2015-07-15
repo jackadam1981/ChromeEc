@@ -385,6 +385,19 @@ static void host_command_init(void)
 #endif
 }
 
+#ifdef CONFIG_COMMON_RUNTIME
+static void host_command_check_and_process(int evt)
+#else
+void host_command_check_and_process(int evt)
+#endif
+{
+	if ((evt & TASK_EVENT_CMD_PENDING) && pending_args) {
+		pending_args->result =
+				host_command_process(pending_args);
+		host_send_response(pending_args);
+	}
+}
+
 void host_command_task(void)
 {
 	timestamp_t t0, t1, t_recess;
@@ -399,11 +412,7 @@ void host_command_task(void)
 		t0 = get_time();
 
 		/* Process it */
-		if ((evt & TASK_EVENT_CMD_PENDING) && pending_args) {
-			pending_args->result =
-					host_command_process(pending_args);
-			host_send_response(pending_args);
-		}
+		host_command_check_and_process(evt);
 
 		/* reset rate limiting if we have slept enough */
 		if (t0.val - t1.val > CONFIG_HOSTCMD_RATE_LIMITING_MIN_REST)

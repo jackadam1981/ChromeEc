@@ -555,6 +555,12 @@
  */
 #define CONFIG_COMMON_RUNTIME
 
+/* Provide simplified runtime for tiny firmware */
+#undef CONFIG_COMMON_RUNTIME_MINI
+
+/* Provide common core code for system. */
+#define CONFIG_COMMON_SYSTEM
+
 /* Provide common core code to handle the operating system timers. */
 #define CONFIG_COMMON_TIMER
 

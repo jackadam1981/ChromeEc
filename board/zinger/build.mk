@@ -10,5 +10,4 @@ CHIP:=stm32
 CHIP_FAMILY:=stm32f0
 CHIP_VARIANT:=stm32f03x
 
-board-y=board.o hardware.o runtime.o usb_pd_policy.o
-board-$(CONFIG_DEBUG_PRINTF)+=debug.o
+board-y=board.o hardware.o usb_pd_policy.o
