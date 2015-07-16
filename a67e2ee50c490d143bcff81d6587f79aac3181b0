@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "183e024a_94bf14a9",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-16T14:34:49Z",
+      "side": 1,
+      "message": "please alphabetize",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "a67e2ee50c490d143bcff81d6587f79aac3181b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5834fa65_0b1be52e",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-16T14:34:49Z",
+      "side": 1,
+      "message": "should be on next line",
+      "range": {
+        "startLine": 291,
+        "startChar": 6,
+        "endLine": 291,
+        "endChar": 8
+      },
+      "revId": "a67e2ee50c490d143bcff81d6587f79aac3181b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
