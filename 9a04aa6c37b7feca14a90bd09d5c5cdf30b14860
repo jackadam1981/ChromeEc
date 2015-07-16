@@ -16,6 +16,24 @@
       "revId": "9a04aa6c37b7feca14a90bd09d5c5cdf30b14860",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98fcb2c6_47923028",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-16T03:57:34Z",
+      "side": 1,
+      "message": "but isn\u0027t the file list coming from the env variable PRESUBMIT_FILES ? I\u0027ll add the check for .inc here though, I missed this.\n\nAlso, aren\u0027t there Makefile\u0027s (without extension), should we account for that?",
+      "parentUuid": "b8d41638_500792d0",
+      "revId": "9a04aa6c37b7feca14a90bd09d5c5cdf30b14860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
