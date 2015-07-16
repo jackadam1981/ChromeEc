@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5834fa65_91c5e681",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-16T18:26:14Z",
+      "side": 1,
+      "message": "this should be BRANCH\u003dNone\n\nThis field is used when you want to signify that this should cherry-picked to another branch.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "94dc3da5aea1f112b55e8018556ee8c0fe9c7e94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
