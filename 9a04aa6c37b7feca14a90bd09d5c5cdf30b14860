@@ -34,6 +34,24 @@
       "revId": "9a04aa6c37b7feca14a90bd09d5c5cdf30b14860",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b82b3616_f543f8f6",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-16T15:26:00Z",
+      "side": 1,
+      "message": "Oh sorry, yes, the file list is coming from PRESUBMIT_FILES, so no checking is being done. Maybe also add \".tasklist\". Although, your point about the Makefiles makes me wonder if there are any files in which we would *not* want to check?\n\nAnother way would be to simply not check the files in private/ or any scripts (like this one.)",
+      "parentUuid": "98fcb2c6_47923028",
+      "revId": "9a04aa6c37b7feca14a90bd09d5c5cdf30b14860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
