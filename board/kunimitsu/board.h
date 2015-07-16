@@ -96,6 +96,7 @@
 
 /* Modules we want to exclude */
 #undef CONFIG_CONSOLE_CMDHELP
+#undef CONFIG_CONSOLE_HISTORY
 #undef CONFIG_PECI
 
 #ifndef __ASSEMBLER__
