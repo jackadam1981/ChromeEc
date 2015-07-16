@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8d41638_500792d0",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-16T03:10:59Z",
+      "side": 1,
+      "message": "\".inc\" is missing from here. But, why are we checking again here? The extension checking happened at the generation of the file_list.",
+      "revId": "9a04aa6c37b7feca14a90bd09d5c5cdf30b14860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
