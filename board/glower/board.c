@@ -45,6 +45,12 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+const enum gpio_signal hibernate_wake_pins[] = {
+	GPIO_POWER_BUTTON_L,
+};
+
+const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
+
 /**
  * Discharge battery when on AC power for factory test.
  */
