@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b8d41638_d0c8221d",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-07-16T02:06:52Z",
+      "side": 1,
+      "message": "Yes, I will remove it.",
+      "parentUuid": "b8d41638_d06ee2aa",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 34
+      },
+      "revId": "2a2054dd8630b789c24655125a85880738bdbd7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f80beea6_4a36b3ef",
         "filename": "chip/mec1322/clock.c",
         "patchSetId": 3
