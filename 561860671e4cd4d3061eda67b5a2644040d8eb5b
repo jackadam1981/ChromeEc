@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "188c4286_79e85ba3",
+        "filename": "chip/g/sps_tpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-17T05:05:09Z",
+      "side": 1,
+      "message": "this is what I saw when probing the real one, did not look at the spec. I\u0027ll change this back.",
+      "parentUuid": "f805aec3_17d5b4ad",
+      "range": {
+        "startLine": 24,
+        "startChar": 40,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "561860671e4cd4d3061eda67b5a2644040d8eb5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8eed634_7d3337fe",
         "filename": "chip/g/sps_tpm.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-17T04:52:01Z",
       "side": 1,
       "message": "I think that sps.c sends data_size\u003d\u003d0 when CS is deasserted. If so, we\u0027ll never go past this point.",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 9
+      },
+      "revId": "561860671e4cd4d3061eda67b5a2644040d8eb5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f88e8e7f_3865edc1",
+        "filename": "chip/g/sps_tpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-17T05:05:09Z",
+      "side": 1,
+      "message": "This is a good point, this patch still needs some work on top of this too.",
+      "parentUuid": "b8eed634_7d3337fe",
       "range": {
         "startLine": 149,
         "startChar": 2,
