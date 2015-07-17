@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "386e667b_8f4cd946",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-17T15:16:25Z",
+      "side": 1,
+      "message": "this seems like an unnecessary use of goto. why not just:\n\nif (!(flags \u0026 RESET_FLAG_POWER_ON)) {\n\t/* Restore saved reset flags. */\n\tflags |\u003d REG8(IT83XX_BRAM_BASE+BRAM_INDEX_SAVED_RESET_FLAGS) \u003c\u003c 24;\n\tflags |\u003d REG8(IT83XX_BRAM_BASE+BRAM_INDEX_SAVED_RESET_FLAGS+1) \u003c\u003c 16;\n\tflags |\u003d REG8(IT83XX_BRAM_BASE+BRAM_INDEX_SAVED_RESET_FLAGS+2) \u003c\u003c 8;\n\tflags |\u003d REG8(IT83XX_BRAM_BASE+BRAM_INDEX_SAVED_RESET_FLAGS+3);\n}\n\n/* Clear reset flags */\nREG8(IT83XX_BRAM_BASE+BRAM_INDEX_SAVED_RESET_FLAGS) \u003d 0;\nREG8(IT83XX_BRAM_BASE+BRAM_INDEX_SAVED_RESET_FLAGS+1) \u003d 0;\nREG8(IT83XX_BRAM_BASE+BRAM_INDEX_SAVED_RESET_FLAGS+2) \u003d 0;\nREG8(IT83XX_BRAM_BASE+BRAM_INDEX_SAVED_RESET_FLAGS+3) \u003d 0;",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 64
+      },
+      "revId": "0eeb037165e49dc665e0fbf4e712013f4b9fc78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
