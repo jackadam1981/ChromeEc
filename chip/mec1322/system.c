@@ -182,6 +182,11 @@ uint32_t system_get_scratchpad(void)
 	return MEC1322_VBAT_RAM(HIBDATA_INDEX_SCRATCHPAD);
 }
 
+/* Convert a GPIO to a port + mask, used in the skip table below. */
+#define PORT_MASK_PAIR(gpio) \
+	{ gpio_list[(gpio)].port, \
+	  GPIO_MASK_TO_NUM(gpio_list[(gpio)].mask) }
+
 static void system_set_gpio_power(int enabled, uint32_t *backup_gpio_ctl)
 {
 	int i, j, k;
@@ -192,17 +197,41 @@ static void system_set_gpio_power(int enabled, uint32_t *backup_gpio_ctl)
 				{0, 7}, {1, 7}, {2, 7}, {3, 6}, {4, 7}, {5, 7},
 				{6, 7}, {10, 7}, {11, 7}, {12, 7}, {13, 6},
 				{14, 7}, {15, 7}, {16, 5}, {20, 6}, {21, 1}
+
 	};
 
 	const int skip[][2] = {
-#if defined(BOARD_GLADOS) || defined(BOARD_KUNIMITSU)
-				/*
-				 * TODO(crosbug.com/p/42774): Remove this
-				 * once we have a pull-down on PCH_RTCRST.
-				 */
-				{16, 3}, /* Leave PCH_RTCRST deasserted */
+#ifdef BOARD_GLADOS
+		/*
+		 * Leave PCH RTCRST deasserted.
+		 * TODO(crosbug.com/p/42774): Remove this once we have a
+		 * pull-down on PCH_RTCRST.
+		 */
+		PORT_MASK_PAIR(GPIO_PCH_RTCRST),
 #endif
-				{20, 5}, /* GPIO 205 doesn't exist */
+
+		/*
+		 * Leave USB-C charging enabled in hibernate, in order to
+		 * allow wake-on-plug. 5V enable must be pulled low.
+		 */
+#ifdef CONFIG_USB_PD_PORT_COUNT
+#if CONFIG_USB_PD_PORT_COUNT > 0
+		PORT_MASK_PAIR(GPIO_USB_C0_CHARGE_EN_L),
+		PORT_MASK_PAIR(GPIO_USB_C0_5V_EN),
+#endif
+#if CONFIG_USB_PD_PORT_COUNT > 1
+		PORT_MASK_PAIR(GPIO_USB_C1_CHARGE_EN_L),
+		PORT_MASK_PAIR(GPIO_USB_C1_5V_EN),
+#endif
+#endif /* CONFIG_USB_PD_PORT_COUNT */
+
+		/*
+		 * MEC1322 datasheet, sec. 20.6: VCC1_RST# cannot be used
+		 * as a GPIO pin.
+		 */
+		{13, 1},
+		/* GPIO 205 doesn't exist. */
+		{20, 5},
 	};
 
 	for (i = 0; i < ARRAY_SIZE(pins); ++i) {
@@ -231,6 +260,23 @@ static void system_set_gpio_power(int enabled, uint32_t *backup_gpio_ctl)
 			}
 		}
 	}
+
+#ifdef CONFIG_USB_PD_PORT_COUNT
+	if (!enabled) {
+		/*
+		 * Leave USB-C charging enabled in hibernate, in order to
+		 * allow wake-on-plug. 5V enable must be pulled low.
+		 */
+#if CONFIG_USB_PD_PORT_COUNT > 0
+		gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, 0);
+		gpio_set_flags(GPIO_USB_C0_5V_EN, GPIO_PULL_DOWN | GPIO_INPUT);
+#endif
+#if CONFIG_USB_PD_PORT_COUNT > 1
+		gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, 0);
+		gpio_set_flags(GPIO_USB_C1_5V_EN, GPIO_PULL_DOWN | GPIO_INPUT);
+#endif
+	}
+#endif /* CONFIG_USB_PD_PORT_COUNT */
 }
 
 void system_hibernate(uint32_t seconds, uint32_t microseconds)
@@ -297,7 +343,10 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	MEC1322_PCR_SYS_SLP_CTL = (MEC1322_PCR_SYS_SLP_CTL & ~0x7) | 0x2;
 	CPU_SCB_SYSCTRL |= 0x4;
 
+	/* Attempt to backup GPIO states if we need to restore them on wake. */
+#ifndef CONFIG_HIBERNATE_RESET_ON_WAKE
 	if (shared_mem_acquire(512, &backup_gpio_ctl) != EC_SUCCESS)
+#endif
 		backup_gpio_ctl = NULL;
 	system_set_gpio_power(0, (uint32_t *)backup_gpio_ctl);
 
