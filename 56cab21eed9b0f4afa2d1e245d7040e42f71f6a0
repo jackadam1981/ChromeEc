@@ -22,6 +22,30 @@
       "revId": "56cab21eed9b0f4afa2d1e245d7040e42f71f6a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8709650_33f2f011",
+        "filename": "chip/g/sps.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-17T05:00:17Z",
+      "side": 1,
+      "message": "If we ever need to set the mode - it is unlikely to change between the receive function registrations, it makes more sense to keep it in the driver initialization function.\n\nBut in either case it would be easy to add when needed.",
+      "parentUuid": "d81c6a21_165bfc02",
+      "range": {
+        "startLine": 42,
+        "startChar": 28,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "56cab21eed9b0f4afa2d1e245d7040e42f71f6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
