@@ -834,7 +834,7 @@
 /*
  * Accept EC host commands over the SPI (slave) interface.
  */
-#undef CONFIG_HOSTCMD_SPI
+#undef CONFIG_HOSTCMD_SPS
 
 /*
  * Host command rate limiting assures EC will have time to process lower
@@ -1319,8 +1319,11 @@
 /* Support smbus interface */
 #undef CONFIG_SMBUS
 
-/* Support SPI (slave) interfaces */
+/* Support SPI master interfaces */
 #undef CONFIG_SPI
+
+/* Support SPI slave interfaces */
+#undef CONFIG_SPS
 
 /* Define SPI chip select GPIO pin. */
 #undef CONFIG_SPI_CS_GPIO
