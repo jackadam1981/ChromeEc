@@ -16,6 +16,24 @@
       "revId": "91d84e4f5681b7bede79c960da3ec8745bb6c3c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "188c4286_a5bd3405",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-17T23:11:38Z",
+      "side": 1,
+      "message": "but why is CONFIG_SPI not enabled for this device already if it uses it? Will adding this config it change the device image by any chance?",
+      "parentUuid": "787a9e34_fa6e75aa",
+      "revId": "91d84e4f5681b7bede79c960da3ec8745bb6c3c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
