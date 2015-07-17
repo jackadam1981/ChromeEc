@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "787a9e34_fa6e75aa",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-17T23:01:16Z",
+      "side": 1,
+      "message": "I think CONFIG_SPI is more appropriate. Probably CONFIG_SPI should be defined in the chip-level config for this chip, since it uses SPI flash storage.",
+      "revId": "91d84e4f5681b7bede79c960da3ec8745bb6c3c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
