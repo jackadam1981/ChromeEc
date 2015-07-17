@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d81c6a21_165bfc02",
+        "filename": "chip/g/sps.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-07-17T03:49:25Z",
+      "side": 1,
+      "message": "It would be nice to specify the spi_clock_mode too. It\u0027s possible that not all systems will use MODE 0.",
+      "range": {
+        "startLine": 42,
+        "startChar": 28,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "56cab21eed9b0f4afa2d1e245d7040e42f71f6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
