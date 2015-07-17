@@ -1428,6 +1428,12 @@
 #undef CONFIG_TEMP_SENSOR_POWER_GPIO
 
 /*****************************************************************************/
+/* TPM-like configuration */
+
+/* Speak the TPM SPI Hardware Protocol on the SPI slave interface */
+#undef CONFIG_TPM_SPS
+
+/*****************************************************************************/
 /* USART stream config */
 #undef CONFIG_STREAM_USART
 
