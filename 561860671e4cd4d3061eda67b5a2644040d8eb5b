@@ -93,6 +93,30 @@
       "revId": "561860671e4cd4d3061eda67b5a2644040d8eb5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98fd92eb_7cccd959",
+        "filename": "chip/g/sps_tpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-07-17T05:10:59Z",
+      "side": 1,
+      "message": "Okay. I\u0027ll remove my -1, in case I don\u0027t get to look at it tomorrow.",
+      "parentUuid": "f88e8e7f_3865edc1",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 9
+      },
+      "revId": "561860671e4cd4d3061eda67b5a2644040d8eb5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
