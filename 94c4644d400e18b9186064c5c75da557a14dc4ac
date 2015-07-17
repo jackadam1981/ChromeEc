@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d8caaadd_264d3690",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-07-17T05:43:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "183e024a_4086ae9b",
+      "revId": "94c4644d400e18b9186064c5c75da557a14dc4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8404ed5_1f7ec324",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2015-07-15T23:19:14Z",
       "side": 1,
       "message": "initialize",
+      "range": {
+        "startLine": 715,
+        "startChar": 4,
+        "endLine": 715,
+        "endChar": 18
+      },
+      "revId": "94c4644d400e18b9186064c5c75da557a14dc4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7811be08_f359305d",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-07-17T05:43:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8404ed5_1f7ec324",
       "range": {
         "startLine": 715,
         "startChar": 4,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "7811be08_d35eb442",
+        "filename": "util/ecst.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-07-17T05:43:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "183e024a_c605f682",
+      "range": {
+        "startLine": 2,
+        "startChar": 4,
+        "endLine": 5,
+        "endChar": 23
+      },
+      "revId": "94c4644d400e18b9186064c5c75da557a14dc4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78f7fee1_e91f9f16",
         "filename": "util/ecst.h",
         "patchSetId": 2
@@ -76,6 +142,30 @@
       "writtenOn": "2015-07-15T23:19:14Z",
       "side": 1,
       "message": "Is this file intended to remain confidential or to be released under Chromium license?",
+      "range": {
+        "startLine": 2,
+        "startChar": 4,
+        "endLine": 5,
+        "endChar": 23
+      },
+      "revId": "94c4644d400e18b9186064c5c75da557a14dc4ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7811be08_33644818",
+        "filename": "util/ecst.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-07-17T05:43:56Z",
+      "side": 1,
+      "message": "It should be under chromium license.\nWe will change it back to chromium license.",
+      "parentUuid": "78f7fee1_e91f9f16",
       "range": {
         "startLine": 2,
         "startChar": 4,
