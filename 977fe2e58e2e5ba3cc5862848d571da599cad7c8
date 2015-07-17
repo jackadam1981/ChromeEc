@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d8754a3f_b4db285b",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-17T00:14:11Z",
+      "side": 1,
+      "message": "what is uderrun anyways? :)\n\ndone",
+      "parentUuid": "d8754a3f_51a53603",
+      "range": {
+        "startLine": 84,
+        "startChar": 48,
+        "endLine": 84,
+        "endChar": 55
+      },
+      "revId": "977fe2e58e2e5ba3cc5862848d571da599cad7c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "787a9e34_2e2a8732",
         "filename": "chip/g/sps.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f88e8e7f_d5f6ec8a",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-17T00:14:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "787a9e34_2e2a8732",
+      "range": {
+        "startLine": 106,
+        "startChar": 19,
+        "endLine": 106,
+        "endChar": 21
+      },
+      "revId": "977fe2e58e2e5ba3cc5862848d571da599cad7c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38858659_b4dc8e0b",
         "filename": "chip/g/sps.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2015-07-16T23:53:43Z",
       "side": 1,
       "message": "deasserted",
+      "range": {
+        "startLine": 283,
+        "startChar": 22,
+        "endLine": 283,
+        "endChar": 31
+      },
+      "revId": "977fe2e58e2e5ba3cc5862848d571da599cad7c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58823a52_153316ff",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-17T00:14:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38858659_b4dc8e0b",
       "range": {
         "startLine": 283,
         "startChar": 22,
