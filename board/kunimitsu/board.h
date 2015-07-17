@@ -84,21 +84,27 @@
 #define DEFERRABLE_MAX_COUNT 11
 
 #define CONFIG_ALS
-#define CONFIG_ALS_ISL29035
+#define CONFIG_ALS_OPT3001
+#define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
 
 /* Accelerometer */
 #define CONFIG_ACCEL_KXCJ9
-#define CONFIG_CMD_ACCELS
-#define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_SENSOR_BASE 0
 #define CONFIG_LID_ANGLE_SENSOR_LID 1
 
 /* Modules we want to exclude */
+#undef CONFIG_CMD_ACCEL_INFO
+#undef CONFIG_CMD_ACCELS
+#undef CONFIG_CMD_HASH
 #undef CONFIG_CMD_SHMEM
 #undef CONFIG_CMD_TIMERINFO
 #undef CONFIG_CONSOLE_CMDHELP
+#undef CONFIG_CONSOLE_HISTORY
 #undef CONFIG_PECI
+
+/* Enable sleep mode in G3 */
+#define CONFIG_G3_SLEEP
 
 #ifndef __ASSEMBLER__
 
@@ -139,7 +145,7 @@ enum temp_sensor_id {
 
 /* Light sensors */
 enum als_id {
-	ALS_ISL29035 = 0,
+	ALS_OPT3001 = 0,
 
 	ALS_COUNT,
 };
