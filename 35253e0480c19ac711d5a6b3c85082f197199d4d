@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "188c4286_795a9bc7",
+        "filename": "board/cyan/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-17T15:08:31Z",
+      "side": 1,
+      "message": "nit: don\u0027t really need this ifdef, nothing wrong with defining this GPIO even if we don\u0027t use it if LOW_POWER_IDLE is turned off.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "35253e0480c19ac711d5a6b3c85082f197199d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
