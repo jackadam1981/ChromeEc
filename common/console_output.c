@@ -46,15 +46,23 @@ static const char * const channel_names[] = {
 	"keyboard",
 	"keyscan",
 	"lidangle",
+#ifdef HAS_TASK_LIGHTBAR
 	"lightbar",
+#endif
 	"lpc",
 	"motionlid",
 	"motionsense",
+#ifdef HAS_TASK_PDCMD
 	"pdhostcmd",
+#endif
 	"port80",
 	"pwm",
+#ifdef CONFIG_SPI
 	"spi",
+#endif
+#ifdef CONFIG_SPS
 	"sps",
+#endif
 	"switch",
 	"system",
 	"task",
