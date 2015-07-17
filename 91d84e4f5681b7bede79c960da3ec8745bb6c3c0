@@ -34,6 +34,24 @@
       "revId": "91d84e4f5681b7bede79c960da3ec8745bb6c3c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f88e8e7f_84a274fb",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-17T23:30:03Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t see that npcx_arm board. TBH, I don\u0027t understand the board / chip architecture very well, but CC_CHIPSET looks inappropriate, because it mostly deals with power sequencing / controlling the AP. Maybe we should put CC_SPI behind \"#if defined(...SPI) or defined (...SHI)\" if we stick with this approach.",
+      "parentUuid": "188c4286_a5bd3405",
+      "revId": "91d84e4f5681b7bede79c960da3ec8745bb6c3c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
