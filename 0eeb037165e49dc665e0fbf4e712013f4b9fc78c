@@ -22,6 +22,30 @@
       "revId": "0eeb037165e49dc665e0fbf4e712013f4b9fc78c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8a1ca0d_eea13f84",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2015-07-17T15:30:53Z",
+      "side": 1,
+      "message": "\u003e 80-character...",
+      "parentUuid": "386e667b_8f4cd946",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 64
+      },
+      "revId": "0eeb037165e49dc665e0fbf4e712013f4b9fc78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
