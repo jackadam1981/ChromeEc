@@ -50,12 +50,16 @@ static void check_reset_cause(void)
 	if (raw_reset_cause2 & 0x04)
 		flags |= RESET_FLAG_POWER_ON;
 
+	if (flags & RESET_FLAG_POWER_ON)
+		goto clear_bram_reset_cause;
+
 	/* Restore then clear saved reset flags. */
 	flags |= REG8(IT83XX_BRAM_BASE+BRAM_INDEX_SAVED_RESET_FLAGS) << 24;
 	flags |= REG8(IT83XX_BRAM_BASE+BRAM_INDEX_SAVED_RESET_FLAGS+1) << 16;
 	flags |= REG8(IT83XX_BRAM_BASE+BRAM_INDEX_SAVED_RESET_FLAGS+2) << 8;
 	flags |= REG8(IT83XX_BRAM_BASE+BRAM_INDEX_SAVED_RESET_FLAGS+3);
 
+clear_bram_reset_cause:
 	REG8(IT83XX_BRAM_BASE+BRAM_INDEX_SAVED_RESET_FLAGS) = 0;
 	REG8(IT83XX_BRAM_BASE+BRAM_INDEX_SAVED_RESET_FLAGS+1) = 0;
 	REG8(IT83XX_BRAM_BASE+BRAM_INDEX_SAVED_RESET_FLAGS+2) = 0;
