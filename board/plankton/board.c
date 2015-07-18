@@ -29,6 +29,18 @@ static volatile uint64_t hpd_prev_ts;
 static volatile int hpd_prev_level;
 static volatile int hpd_possible_irq;
 
+/* Detect the type of cable used (either single CC or double) */
+enum typec_cable {
+	TYPEC_CABLE_NONE,
+	TYPEC_CABLE_CHECK,
+	TYPEC_CABLE_SINGLE_CC,
+	TYPEC_CABLE_DOUBLE_CC
+};
+static enum typec_cable cable;
+
+static int active_cc;
+static int host_mode;
+
 static int sn75dp130_dpcd_init(void);
 
 /**
@@ -354,31 +366,6 @@ static int sn75dp130_redriver_init(void)
 	return rv;
 }
 
-static void board_init(void)
-{
-	timestamp_t now = get_time();
-	hpd_prev_level = gpio_get_level(GPIO_DPSRC_HPD);
-	hpd_prev_ts = now.val;
-	gpio_enable_interrupt(GPIO_DPSRC_HPD);
-
-	/* Enable interrupts on VBUS transitions. */
-	gpio_enable_interrupt(GPIO_VBUS_WAKE);
-
-	/* Enable button interrupts. */
-	gpio_enable_interrupt(GPIO_DBG_5V_TO_DUT_L);
-	gpio_enable_interrupt(GPIO_DBG_12V_TO_DUT_L);
-	gpio_enable_interrupt(GPIO_DBG_CHG_TO_DEV_L);
-	gpio_enable_interrupt(GPIO_DBG_USB_TOGGLE_L);
-	gpio_enable_interrupt(GPIO_DBG_MUX_FLIP_L);
-
-	/* TODO(crosbug.com/33761): poll DBG_20V_TO_DUT_L */
-	enable_dbg20v_poll();
-
-	ina2xx_init(0, 0x399f, INA2XX_CALIB_1MA(10 /* mOhm */));
-	sn75dp130_redriver_init();
-}
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-
 static int cmd_usbc_action(int argc, char *argv[])
 {
 	enum usbc_action act;
@@ -463,62 +450,24 @@ static void board_usb_hub_reset_no_return(void)
 }
 DECLARE_DEFERRED(board_usb_hub_reset_no_return);
 
-static void board_init_usb_hub(void)
-{
-	if (system_get_reset_flags() & RESET_FLAG_POWER_ON)
-		hook_call_deferred(board_usb_hub_reset_no_return, 500 * MSEC);
-}
-DECLARE_HOOK(HOOK_INIT, board_init_usb_hub, HOOK_PRIO_DEFAULT);
-
-void board_pd_set_host_mode(int enable)
-{
-	cprintf(CC_USBPD, "Host mode: %d\n", enable);
-
-	if (board_pd_fake_disconnected()) {
-		board_update_fake_adc_value(enable);
-		return;
-	}
-
-	if (enable) {
-		/* Source mode, disable charging */
-		gpio_set_level(GPIO_USBC_CHARGE_EN, 0);
-		/* High Z for no pull-down resistor on CC1 */
-		gpio_set_flags_by_mask(GPIO_A, (1 << 9), GPIO_INPUT);
-		/* Set pull-up resistor on CC1 */
-		gpio_set_flags_by_mask(GPIO_A, (1 << 2), GPIO_OUT_HIGH);
-		/* High Z for no pull-down resistor on CC2 */
-		gpio_set_flags_by_mask(GPIO_B, (1 << 7), GPIO_INPUT);
-		/* Set pull-up resistor on CC2 */
-		gpio_set_flags_by_mask(GPIO_B, (1 << 6), GPIO_OUT_HIGH);
-	} else {
-		/* Device mode, disable VBUS */
-		gpio_set_level(GPIO_VBUS_CHARGER_EN, 0);
-		gpio_set_level(GPIO_USBC_VSEL_0, 0);
-		gpio_set_level(GPIO_USBC_VSEL_1, 0);
-		/* High Z for no pull-up resistor on CC1 */
-		gpio_set_flags_by_mask(GPIO_A, (1 << 2), GPIO_INPUT);
-		/* Set pull-down resistor on CC1 */
-		gpio_set_flags_by_mask(GPIO_A, (1 << 9), GPIO_OUT_LOW);
-		/* High Z for no pull-up resistor on CC2 */
-		gpio_set_flags_by_mask(GPIO_B, (1 << 6), GPIO_INPUT);
-		/* Set pull-down resistor on CC2 */
-		gpio_set_flags_by_mask(GPIO_B, (1 << 7), GPIO_OUT_LOW);
-		/* Set charge enable */
-		gpio_set_level(GPIO_USBC_CHARGE_EN, 1);
-	}
-}
-
-int board_pd_fake_disconnected(void)
+static int board_pd_fake_disconnected(void)
 {
 	return fake_pd_disconnected;
 }
 
-int board_fake_pd_adc_read(void)
+int board_fake_pd_adc_read(int cc)
 {
-	if (fake_pd_host_mode)
-		return 3000; /* mV */
-	else
-		return 0; /* mV */
+	if (fake_pd_disconnected) {
+		/* Always disconnected */
+		return fake_pd_host_mode ? 3000 : 0;
+	} else {
+		/* Only read the active CC line, fake disconnected on other */
+		if (active_cc == cc)
+			return adc_read_channel(cc ? ADC_CH_CC2_PD :
+						     ADC_CH_CC1_PD);
+		else
+			return host_mode ? 3000 : 0;
+	}
 }
 
 void board_update_fake_adc_value(int host_mode)
@@ -556,6 +505,142 @@ static void fake_disconnect_start(void)
 			   fake_pd_disconnect_duration_ms * MSEC);
 }
 DECLARE_DEFERRED(fake_disconnect_start);
+
+/**
+ * Set the active CC line. The non-active CC line will be left in
+ * High-Z, and we will fake the ADC reading for it.
+ */
+static void set_active_cc(int cc)
+{
+	active_cc = cc;
+
+	if (cc) {
+		/* High-Z on CC1 */
+		gpio_set_flags_by_mask(GPIO_A, (1 << 9), GPIO_INPUT);
+		gpio_set_flags_by_mask(GPIO_A, (1 << 2), GPIO_INPUT);
+
+		if (host_mode) {
+			/* Pull-up on CC2 */
+			gpio_set_flags_by_mask(GPIO_B, (1 << 7), GPIO_INPUT);
+			gpio_set_flags_by_mask(GPIO_B, (1 << 6), GPIO_OUT_HIGH);
+		} else {
+			/* Pull-down on CC2 */
+			gpio_set_flags_by_mask(GPIO_B, (1 << 6), GPIO_INPUT);
+			gpio_set_flags_by_mask(GPIO_B, (1 << 7), GPIO_OUT_LOW);
+		}
+	} else {
+		/* High-Z on CC2 */
+		gpio_set_flags_by_mask(GPIO_B, (1 << 7), GPIO_INPUT);
+		gpio_set_flags_by_mask(GPIO_B, (1 << 6), GPIO_INPUT);
+
+		if (host_mode) {
+			/* Pull-up on CC1 */
+			gpio_set_flags_by_mask(GPIO_A, (1 << 9), GPIO_INPUT);
+			gpio_set_flags_by_mask(GPIO_A, (1 << 2), GPIO_OUT_HIGH);
+		} else {
+			/* Pull-down on CC1 */
+			gpio_set_flags_by_mask(GPIO_A, (1 << 2), GPIO_INPUT);
+			gpio_set_flags_by_mask(GPIO_A, (1 << 9), GPIO_OUT_LOW);
+		}
+	}
+}
+
+static void detect_cc(void)
+{
+	hook_call_deferred(detect_cc, 2*PD_T_CC_DEBOUNCE);
+
+	if (board_pd_fake_disconnected())
+		return;
+
+	switch (cable) {
+	case TYPEC_CABLE_NONE:
+		if (pd_is_connected(0))
+			cable = TYPEC_CABLE_CHECK;
+		set_active_cc(!active_cc);
+		break;
+	case TYPEC_CABLE_CHECK:
+		set_active_cc(!active_cc);
+		pd_comm_enable(1);
+		cable = pd_is_connected(0) ? TYPEC_CABLE_DOUBLE_CC :
+					     TYPEC_CABLE_SINGLE_CC;
+		break;
+	case TYPEC_CABLE_SINGLE_CC:
+	case TYPEC_CABLE_DOUBLE_CC:
+		if (!pd_is_connected(0))
+			cable = TYPEC_CABLE_NONE;
+		pd_comm_enable(0);
+		break;
+	}
+
+	ccprintf("det_cc %d, %d\n", cable, active_cc);
+}
+DECLARE_DEFERRED(detect_cc);
+
+void board_pd_set_host_mode(int enable)
+{
+	cprintf(CC_USBPD, "Host mode: %d\n", enable);
+
+	if (board_pd_fake_disconnected()) {
+		board_update_fake_adc_value(enable);
+		return;
+	}
+
+	/* if host mode is already set correctly, do nothing */
+	if (host_mode == enable)
+		return;
+
+	host_mode = enable;
+	cable = TYPEC_CABLE_NONE;
+	if (enable) {
+		/* Source mode, disable charging */
+		gpio_set_level(GPIO_USBC_CHARGE_EN, 0);
+
+		/* Set CC lines */
+		set_active_cc(active_cc);
+	} else {
+		/* Device mode, disable VBUS */
+		gpio_set_level(GPIO_VBUS_CHARGER_EN, 0);
+		gpio_set_level(GPIO_USBC_VSEL_0, 0);
+		gpio_set_level(GPIO_USBC_VSEL_1, 0);
+
+		/* Set CC lines */
+		set_active_cc(active_cc);
+
+		/* Enable charging */
+		gpio_set_level(GPIO_USBC_CHARGE_EN, 1);
+	}
+}
+
+static void board_init(void)
+{
+	timestamp_t now = get_time();
+	hpd_prev_level = gpio_get_level(GPIO_DPSRC_HPD);
+	hpd_prev_ts = now.val;
+	gpio_enable_interrupt(GPIO_DPSRC_HPD);
+
+	/* Enable interrupts on VBUS transitions. */
+	gpio_enable_interrupt(GPIO_VBUS_WAKE);
+
+	/* Enable button interrupts. */
+	gpio_enable_interrupt(GPIO_DBG_5V_TO_DUT_L);
+	gpio_enable_interrupt(GPIO_DBG_12V_TO_DUT_L);
+	gpio_enable_interrupt(GPIO_DBG_CHG_TO_DEV_L);
+	gpio_enable_interrupt(GPIO_DBG_USB_TOGGLE_L);
+	gpio_enable_interrupt(GPIO_DBG_MUX_FLIP_L);
+
+	/* TODO(crosbug.com/33761): poll DBG_20V_TO_DUT_L */
+	enable_dbg20v_poll();
+
+	ina2xx_init(0, 0x399f, INA2XX_CALIB_1MA(10 /* mOhm */));
+	sn75dp130_redriver_init();
+
+	/* Initialize USB hub */
+	if (system_get_reset_flags() & RESET_FLAG_POWER_ON)
+		hook_call_deferred(board_usb_hub_reset_no_return, 500 * MSEC);
+
+	hook_call_deferred(detect_cc, 1000*MSEC);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 static int cmd_fake_disconnect(int argc, char *argv[])
 {
