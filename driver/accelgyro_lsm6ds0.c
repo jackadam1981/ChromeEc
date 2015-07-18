@@ -338,12 +338,14 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 	return EC_SUCCESS;
 }
 
-static int read(const struct motion_sensor_t *s, vector_3_t v)
+static int read(const struct motion_sensor_t *s, vector_3_t xyz)
 {
 	uint8_t raw[6];
 	uint8_t xyz_reg;
 	int ret, range, i, tmp = 0;
 	struct lsm6ds0_data *data = s->drv_data;
+	vector_3_t temp_v;
+	int *v = (*s->rot_standard_ref == NULL ? xyz : temp_v);
 
 	ret = is_data_ready(s, &tmp);
 	if (ret != EC_SUCCESS)
@@ -355,9 +357,8 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	 * to get the latest updated sensor data quickly.
 	 */
 	if (!tmp) {
-		v[0] = s->raw_xyz[0];
-		v[1] = s->raw_xyz[1];
-		v[2] = s->raw_xyz[2];
+		if (v != s->raw_xyz)
+			memcpy(v, s->raw_xyz, sizeof(s->raw_xyz));
 		return EC_SUCCESS;
 	}
 
@@ -380,6 +381,8 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 		v[i] = ((int16_t)((raw[i * 2 + 1] << 8) | raw[i * 2]));
 		v[i] += (data->offset[i] << 5) / range;
 	}
+	if (*s->rot_standard_ref != NULL)
+		rotate(v, *s->rot_standard_ref, xyz);
 
 	return EC_SUCCESS;
 }

@@ -385,12 +385,14 @@ error_enable_sensor:
 }
 #endif
 
-static int read(const struct motion_sensor_t *s, vector_3_t v)
+static int read(const struct motion_sensor_t *s, vector_3_t xyz)
 {
 	uint8_t acc[6];
 	uint8_t reg = KXCJ9_XOUT_L;
 	int ret, i, range, resolution;
 	struct kxcj9_data *data = s->drv_data;
+	vector_3_t temp_v;
+	int *v = (*s->rot_standard_ref == NULL ? xyz : temp_v);
 
 	/* Read 6 bytes starting at KXCJ9_XOUT_L. */
 	mutex_lock(s->mutex);
@@ -424,6 +426,8 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 		v[i] <<= (16 - resolution);
 		v[i] += (data->offset[i] << 5) / range;
 	}
+	if (*s->rot_standard_ref != NULL)
+		rotate(v, *s->rot_standard_ref, xyz);
 	return EC_SUCCESS;
 }
 

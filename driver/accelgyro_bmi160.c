@@ -502,8 +502,11 @@ end_perform_calib:
 	return ret;
 }
 
-void normalize(const struct motion_sensor_t *s, vector_3_t v, uint8_t *data)
+void normalize(const struct motion_sensor_t *s, vector_3_t xyz, uint8_t *data)
 {
+	vector_3_t temp_v;
+	int *v = (*s->rot_standard_ref == NULL ? xyz : temp_v);
+
 #ifdef CONFIG_MAG_BMI160_BMM150
 	if (s->type == MOTIONSENSE_TYPE_MAG)
 		bmm150_normalize(s, v, data);
@@ -514,6 +517,8 @@ void normalize(const struct motion_sensor_t *s, vector_3_t v, uint8_t *data)
 		v[1] = ((int16_t)((data[3] << 8) | data[2]));
 		v[2] = ((int16_t)((data[5] << 8) | data[4]));
 	}
+	if (*s->rot_standard_ref != NULL)
+		rotate(v, *s->rot_standard_ref, xyz);
 }
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
@@ -782,9 +787,8 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	 * to get the latest updated sensor data quickly.
 	 */
 	if (status & BMI160_DRDY_MASK(s->type)) {
-		v[0] = s->raw_xyz[0];
-		v[1] = s->raw_xyz[1];
-		v[2] = s->raw_xyz[2];
+		if (v != s->raw_xyz)
+			memcpy(v, s->raw_xyz, sizeof(s->raw_xyz));
 		return EC_SUCCESS;
 	}
 
