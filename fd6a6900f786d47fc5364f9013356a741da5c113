@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f88e8e7f_780130c4",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-18T00:53:55Z",
+      "side": 1,
+      "message": "ft_p throughout...",
+      "revId": "fd6a6900f786d47fc5364f9013356a741da5c113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "586b1a6a_44c3229b",
+        "filename": "include/lid_angle.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-18T00:53:55Z",
+      "side": 1,
+      "message": "fp_t instead of int to be consistent with math_util.h",
+      "revId": "fd6a6900f786d47fc5364f9013356a741da5c113",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
