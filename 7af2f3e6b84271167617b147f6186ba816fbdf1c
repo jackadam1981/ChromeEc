@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "586b1a6a_5febefa0",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-18T14:35:04Z",
+      "side": 1,
+      "message": "Switched them here too, even though the order isn\u0027t meaningful, just for elegance.",
+      "revId": "7af2f3e6b84271167617b147f6186ba816fbdf1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "586b1a6a_7f935363",
         "filename": "chip/mec1322/system.c",
         "patchSetId": 2
@@ -13,6 +30,30 @@
       "writtenOn": "2015-07-18T03:43:51Z",
       "side": 1,
       "message": "i think these should be switched. seems better to disable 5V before we enable charging to avoid creating a window where 5V is fed directly back in.",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 65
+      },
+      "revId": "7af2f3e6b84271167617b147f6186ba816fbdf1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8709650_16d31d00",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-18T14:35:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "586b1a6a_7f935363",
       "range": {
         "startLine": 270,
         "startChar": 2,
