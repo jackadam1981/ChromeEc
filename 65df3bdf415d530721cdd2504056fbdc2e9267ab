@@ -22,6 +22,30 @@
       "revId": "65df3bdf415d530721cdd2504056fbdc2e9267ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8884ea6_5fc64bac",
+        "filename": "core/host/stack_trace.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-20T17:10:39Z",
+      "side": 0,
+      "message": "Initially because I was removing the task_start_called() function.\n\nIf we crash before starting tasks, are we not in the main thread? Or I suppose we could be in the hooks task... But either way, wouldn\u0027t that be handled by the 1st and last clause?\n\nI can leave it in as I\u0027m not removing the function anymore. But I\u0027m wondering if I\u0027m correct in my above assumption.",
+      "parentUuid": "58e07a3c_a8957f93",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 20
+      },
+      "revId": "65df3bdf415d530721cdd2504056fbdc2e9267ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
