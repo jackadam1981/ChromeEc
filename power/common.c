@@ -15,6 +15,7 @@
 #include "system.h"
 #include "task.h"
 #include "timer.h"
+#include "g781.h"
 #include "util.h"
 
 /* Console output macros */
@@ -272,6 +273,10 @@ void chipset_task(void)
 		CPRINTS("power state %d = %s, in 0x%04x",
 			state, state_names[state], in_signals);
 
+		/* Alert status need to be clear first */
+#ifdef CONFIG_TEMP_SENSOR_HW_INIT
+		temp_sensor_g781_register_init();
+#endif
 		/* Always let the specific chipset handle the state first */
 		new_state = power_handle_state(state);
 
