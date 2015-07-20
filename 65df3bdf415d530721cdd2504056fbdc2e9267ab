@@ -46,6 +46,23 @@
       "revId": "65df3bdf415d530721cdd2504056fbdc2e9267ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d143a33_dc0b212d",
+        "filename": "core/host/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-20T23:24:35Z",
+      "side": 0,
+      "message": "I\u0027m almost certain we\u0027re calling this function pre-task_start in some cases.",
+      "revId": "65df3bdf415d530721cdd2504056fbdc2e9267ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
