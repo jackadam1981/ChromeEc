@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "185442e3_50c64cac",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-20T20:20:06Z",
+      "side": 1,
+      "message": "This GPIO is active high? You\u0027re disabling sleep here? If so, doesn\u0027t the GPIO set belong in the G3S5 state?",
+      "revId": "c4624b3c2499d178323dac50513fd52f7edeca54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
