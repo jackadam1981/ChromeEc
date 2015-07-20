@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d83d4aa0_ce4c6348",
+        "filename": "common/console_output.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-20T20:16:41Z",
+      "side": 1,
+      "message": "This would be fine, but we\u0027re running out of channel_names because we\u0027re limited to 32 under the current design. Some discussion is ongoing about how best to refactor this.\n\nLet\u0027s just use CC_I2C for now, since those error prints are (mostly) related to i2c.",
+      "revId": "d2017e447362e3255e87561ce11c6dbf62ed50ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
