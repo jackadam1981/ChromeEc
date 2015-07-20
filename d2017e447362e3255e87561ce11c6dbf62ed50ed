@@ -16,6 +16,24 @@
       "revId": "d2017e447362e3255e87561ce11c6dbf62ed50ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "584a3a43_9290bca4",
+        "filename": "common/console_output.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-07-20T21:00:03Z",
+      "side": 1,
+      "message": "Okay, I will remove it and add CC_I2C in als driver",
+      "parentUuid": "d83d4aa0_ce4c6348",
+      "revId": "d2017e447362e3255e87561ce11c6dbf62ed50ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
