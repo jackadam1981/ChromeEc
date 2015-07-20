@@ -16,6 +16,24 @@
       "revId": "c4624b3c2499d178323dac50513fd52f7edeca54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78429e31_4bf5c5f7",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-07-20T20:59:19Z",
+      "side": 1,
+      "message": "BY default this GPIO is low. I added this line to forcefully make the GPIO low if it is set to default high. I cross checked again, device doesn\u0027t boot if the GPIO is set to high by default. I will remove these lines from the code.",
+      "parentUuid": "185442e3_50c64cac",
+      "revId": "c4624b3c2499d178323dac50513fd52f7edeca54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
