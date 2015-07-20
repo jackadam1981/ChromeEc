@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9872f28f_541aac75",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-20T18:48:23Z",
+      "side": 1,
+      "message": "You want to use cprintf, with a proper CC_* constant, so that console output can be silenced, if desired.",
+      "revId": "a824467485bb10a404cf8051977124c4f54a3ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "384d865a_d1bde404",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-20T18:48:23Z",
+      "side": 1,
+      "message": "May want to check ret before assigning data_ptr since bitwise shift on a negative signed integer is implementation-defined, and data_ptr may be uninitialized if i2c_read16 fails.",
+      "revId": "a824467485bb10a404cf8051977124c4f54a3ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "384d865a_11fa0cb3",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-20T18:48:23Z",
+      "side": 1,
+      "message": "I think if (ret ...) (rather than if (ret \u003d\u003d EC_SUCCESS)) is  sufficient for all of these return value checks and is cleaner.",
+      "revId": "a824467485bb10a404cf8051977124c4f54a3ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d81c6a21_5fad871f",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-20T18:48:23Z",
+      "side": 1,
+      "message": "How about (1 \u003c\u003c exponent)? Then you can get rid of the if / else check.",
+      "revId": "a824467485bb10a404cf8051977124c4f54a3ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8f38a19_52c8e497",
+        "filename": "driver/als_opt3001.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-20T18:48:23Z",
+      "side": 1,
+      "message": "Add comment here with standard function + param + return value description.",
+      "revId": "a824467485bb10a404cf8051977124c4f54a3ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
