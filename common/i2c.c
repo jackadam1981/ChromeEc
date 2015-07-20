@@ -105,6 +105,24 @@ int i2c_read8(int port, int slave_addr, int offset, int *data)
 	return rv;
 }
 
+#ifdef CONFIG_TEMP_SENSOR_HW_INIT
+int i2c_addr_read8(int port, int slave_addr, int *data)
+{
+	int rv;
+	/* We use buf[1] here so it's aligned for DMA on STM32 */
+	uint8_t buf[1];
+
+	i2c_lock(port, 1);
+	rv = i2c_xfer(port, slave_addr, 0, 0, buf, 1, I2C_XFER_SINGLE);
+	i2c_lock(port, 0);
+
+	if (!rv)
+		*data = buf[0];
+
+	return rv;
+}
+#endif
+
 int i2c_write8(int port, int slave_addr, int offset, int data)
 {
 	int rv;
