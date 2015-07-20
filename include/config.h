@@ -905,6 +905,7 @@
 #undef CONFIG_TEMP_SENSOR_G781		/* G781 sensor, on I2C bus */
 #undef CONFIG_TEMP_SENSOR_TMP006	/* TI TMP006 sensor, on I2C bus */
 #undef CONFIG_TEMP_SENSOR_TMP432	/* TI TMP432 sensor, on I2C bus */
+#undef CONFIG_TEMP_SENSOR_HW_INIT
 
 /*
  * If defined, active-high GPIO which indicates temperature sensor chips are

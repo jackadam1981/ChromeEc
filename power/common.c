@@ -15,6 +15,7 @@
 #include "system.h"
 #include "task.h"
 #include "timer.h"
+#include "g781.h"
 #include "util.h"
 
 /* Console output macros */
