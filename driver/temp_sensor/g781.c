@@ -11,11 +11,15 @@
 #include "gpio.h"
 #include "i2c.h"
 #include "hooks.h"
+#include "system.h"
 #include "util.h"
 
 static int temp_val_local;
 static int temp_val_remote;
-
+#ifdef CONFIG_TEMP_SENSOR_HW_INIT
+static int temp_val_local_high_limit = 0xFF;
+static int g781_reg_init = 1;
+#endif
 /**
  * Determine whether the sensor is powered.
  *
@@ -39,6 +43,25 @@ static int raw_write8(const int offset, int data)
 {
 	return i2c_write8(I2C_PORT_THERMAL, G781_I2C_ADDR, offset, data);
 }
+
+#ifdef CONFIG_TEMP_SENSOR_HW_INIT
+static int status_read8(int *data)
+{
+	int rv;
+	/* We use buf[1] here so it's aligned for DMA on STM32 */
+	uint8_t buf[1];
+
+	i2c_lock(I2C_PORT_THERMAL, 1);
+	rv = i2c_xfer(I2C_PORT_THERMAL, G781_I2C_ALERT_ADDR,
+				0, 0, buf, 1, I2C_XFER_SINGLE);
+	i2c_lock(I2C_PORT_THERMAL, 0);
+
+	if (!rv)
+		*data = buf[0];
+
+	return rv;
+}
+#endif
 
 static int get_temp(const int offset, int *temp_ptr)
 {
@@ -78,6 +101,71 @@ int g781_get_val(int idx, int *temp_ptr)
 	}
 
 	return EC_SUCCESS;
+}
+
+static void temp_sensor_g781_init_deferred(void)
+{
+#ifdef CONFIG_TEMP_SENSOR_HW_INIT
+	int alert_status, rv;
+	if (!g781_reg_init)
+		return;
+
+	/* Make sure this init all alert status is clear */
+	ccprintf("[%T Start G781 register init]\n");
+	rv = status_read8(&alert_status);
+	if (rv < 0) {
+		hook_call_deferred(temp_sensor_g781_init_deferred, 0);
+		return;
+	}
+
+	if (temp_val_local_high_limit == 0xFF) {
+		rv = get_temp(G781_LOCAL_TEMP_HIGH_LIMIT_R,
+			&temp_val_local_high_limit);
+		if (rv < 0) {
+			hook_call_deferred(temp_sensor_g781_init_deferred, 0);
+			return;
+		}
+	}
+
+	if (temp_val_local_high_limit != G781_LOCAL_TEMP_HIGH_LIMIT_VALUE) {
+		rv = set_temp(G781_LOCAL_TEMP_HIGH_LIMIT_W,
+			G781_LOCAL_TEMP_HIGH_LIMIT_VALUE);
+		if (rv < 0) {
+			hook_call_deferred(temp_sensor_g781_init_deferred, 0);
+			return;
+		}
+	}
+	g781_reg_init = EC_SUCCESS;
+#endif
+	ccprintf("[%T Enable G781 ALERT# interrupt\n");
+#ifdef CONFIG_TEMP_SENSOR_HW_INIT
+	gpio_enable_interrupt(GPIO_FAN_ALERT_L);
+#endif
+}
+DECLARE_DEFERRED(temp_sensor_g781_init_deferred);
+
+static void temp_sensor_g781_init(void)
+{
+	hook_call_deferred(temp_sensor_g781_init_deferred, 0);
+}
+DECLARE_HOOK(HOOK_INIT, temp_sensor_g781_init, HOOK_PRIO_TEMP_SENSOR);
+
+static void fan_alert_deferred(void)
+{
+#ifdef CONFIG_TEMP_SENSOR_HW_INIT
+	ccprintf("[%T Check G781 ALERT# status to enter hibertnate]\n");
+	if (!(gpio_get_level(GPIO_FAN_ALERT_L))) {
+		ccprintf("[%T Fan alert force EC enter hibernate]\n");
+		system_hibernate(0, 0);
+	}
+#endif
+}
+DECLARE_DEFERRED(fan_alert_deferred);
+
+void fan_alert_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(fan_alert_deferred, 0);
+	gpio_disable_interrupt(GPIO_FAN_ALERT_L);
 }
 
 static void temp_sensor_poll(void)
