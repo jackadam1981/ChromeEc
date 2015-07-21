@@ -41,8 +41,6 @@
  * - unregister receive callback.
  */
 
-#define SPS_FIFO_SIZE		(1 << 10)
-#define SPS_FIFO_MASK		(SPS_FIFO_SIZE - 1)
 /*
  * Hardware pointers use one extra bit, which means that indexing FIFO and
  * values written into the pointers have to have dfferent sizes. Tracked under
