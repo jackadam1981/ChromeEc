@@ -554,6 +554,16 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 	static uint64_t hc_prev_time;
 
 	/*
+	 * Skip motion sense commands in normal mode.
+	 * They are spamming the console.
+	 */
+	if ((hcdebug == HCDEBUG_NORMAL) &&
+	    ((args->command == EC_CMD_MOTION_SENSE_CMD) ||
+	     ((args->command == EC_CMD_GET_NEXT_EVENT) &&
+	      (((uint8_t*)args->params)[0] == EC_MKBP_EVENT_SENSOR_FIFO))))
+		return;
+
+	/*
 	 * In normal output mode, skip printing repeats of the same command
 	 * that occur in rapid succession - such as flash commands during
 	 * software sync.
