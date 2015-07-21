@@ -1137,6 +1137,9 @@
 /* Use Link-Time Optimizations to try to reduce the firmware code size */
 #undef CONFIG_LTO
 
+/* Need for a math library */
+#undef CONFIG_MATH_UTIL
+
 /* Presence of a Bosh Sensortec BMM150 magnetometer behind a BMI160. */
 #undef CONFIG_MAG_BMI160_BMM150
 
@@ -1823,6 +1826,15 @@
  */
 #include "test_config.h"
 
+
+/*****************************************************************************/
+/*
+ * Add code required by sensors
+ */
+#if defined(CONFIG_ACCELGYRO_BMI160) || defined(CONFIG_ACCELGYRO_LSM6DS0) || \
+	defined(CONFIG_ACCEL_KXCJ9) || defined(CONFIG_MAG_BMI160_BMM150)
+#define CONFIG_MATH_UTIL
+#endif
 
 /*****************************************************************************/
 /*
