@@ -864,6 +864,9 @@
 /* Support LPC interface */
 #undef CONFIG_LPC
 
+/* Need for a math library */
+#undef CONFIG_MATH_UTIL
+
 /* Presence of a Bosh Sensortec BMM150 magnetometer behind a BMI160. */
 #undef CONFIG_MAG_BMI160_BMM150
 
@@ -1396,8 +1399,6 @@
  */
 #include "test_config.h"
 
-
-/*****************************************************************************/
 /*
  * Sanity checks to make sure some of the configs above make sense.
  */
