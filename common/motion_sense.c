@@ -166,11 +166,6 @@ static void motion_sense_shutdown(void)
 		sensor->active = SENSOR_ACTIVE_S5;
 		memcpy(&sensor->runtime_config, &sensor->default_config,
 		       sizeof(sensor->runtime_config));
-		if ((sensor->state == SENSOR_INITIALIZED) &&
-		   !(sensor->active_mask & sensor->active)) {
-			sensor->drv->set_data_rate(sensor, 0, 0);
-			sensor->state = SENSOR_NOT_INITIALIZED;
-		}
 	}
 	motion_sense_set_accel_interval(NULL, MAX_MOTION_SENSE_WAIT_TIME);
 }
@@ -190,13 +185,6 @@ static void motion_sense_suspend(void)
 			return;
 
 		sensor->active = SENSOR_ACTIVE_S3;
-
-		/* Saving power if the sensor is not active in S3 */
-		if ((sensor->state == SENSOR_INITIALIZED) &&
-		    !(sensor->active_mask & sensor->active)) {
-			sensor->drv->set_data_rate(sensor, 0, 0);
-			sensor->state = SENSOR_NOT_INITIALIZED;
-		}
 	}
 	motion_sense_set_accel_interval(NULL, MAX_MOTION_SENSE_WAIT_TIME);
 }
@@ -211,11 +199,6 @@ static void motion_sense_resume(void)
 	for (i = 0; i < motion_sensor_count; i++) {
 		sensor = &motion_sensors[i];
 		sensor->active = SENSOR_ACTIVE_S0;
-		if (sensor->state == SENSOR_INITIALIZED) {
-			/* Put back the odr previously set. */
-			sensor->drv->set_data_rate(sensor,
-					sensor->runtime_config.odr, 1);
-		}
 	}
 	motion_sense_set_accel_interval(NULL, MAX_MOTION_SENSE_WAIT_TIME);
 }
@@ -410,7 +393,17 @@ void motion_sense_task(void)
 					memcpy(sensor->xyz, sensor->raw_xyz,
 						sizeof(vector_3_t));
 				mutex_unlock(&g_sensor_mutex);
+			} else {
+				/* Saving power if the sensor is not active */
+				if ((sensor->state == SENSOR_INITIALIZED) &&
+					!(sensor->active_mask &
+						sensor->active)) {
+					sensor->drv->set_data_rate(
+						sensor, 0, 0);
+					sensor->state = SENSOR_NOT_INITIALIZED;
+				}
 			}
+
 		}
 
 #ifdef CONFIG_GESTURE_DETECTION
