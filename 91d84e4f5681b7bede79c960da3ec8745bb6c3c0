@@ -52,6 +52,24 @@
       "revId": "91d84e4f5681b7bede79c960da3ec8745bb6c3c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d9c722b_fbfa8f37",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-21T20:24:06Z",
+      "side": 1,
+      "message": "Agree this should be CC_SPI (or CC_SHI, if we want to conditionally compile in a different list of names).",
+      "parentUuid": "f88e8e7f_84a274fb",
+      "revId": "91d84e4f5681b7bede79c960da3ec8745bb6c3c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
