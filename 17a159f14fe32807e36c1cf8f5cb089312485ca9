@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dd2dee8_1205ec1b",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-21T23:05:18Z",
+      "side": 1,
+      "message": "maybe we should just do\ngpio_set_flags_by_mask(GPIO_A, (1 \u003c\u003c 9) | (1 \u003c\u003c 2), GPIO_INPUT);\ngpio_set_flags_by_mask(GPIO_B, (1 \u003c\u003c 7) | (1 \u003c\u003c 6), GPIO_INPUT);\nbefore the condition\nand just set the pull-up / down.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 57
+      },
+      "revId": "17a159f14fe32807e36c1cf8f5cb089312485ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed808ec6_b6b988b3",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-21T23:05:18Z",
+      "side": 1,
+      "message": "you could use the mask and save half of the instructions",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 54
+      },
+      "revId": "17a159f14fe32807e36c1cf8f5cb089312485ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
