@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ddfa2f3_eff161d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-21T22:41:04Z",
+      "side": 1,
+      "message": "strago",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "db1a0df41c64627ed1c00030113c3a4ac3d1217c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ddfa2f3_0f22a5d8",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-21T22:41:04Z",
+      "side": 1,
+      "message": "why are setting the math_util dependency for LID_ANGLE here\nwhile dependencies for CONFIG_ACCELGYRO_BMI160, CONFIG_ACCELGYRO_LSM6DS0, CONFIG_ACCEL_KXCJ9 and CONFIG_MAG_BMI160_BMM150 are set in config.h ?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 52
+      },
+      "revId": "db1a0df41c64627ed1c00030113c3a4ac3d1217c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
