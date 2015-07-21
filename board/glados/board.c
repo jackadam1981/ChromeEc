@@ -117,12 +117,13 @@ const struct adc_t adc_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
+/*** CHG_P2(25) - Reorder i2c lines ***/
 const struct i2c_port_t i2c_ports[]  = {
-	{"batt",     MEC1322_I2C0_0, 100,  GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
-	{"muxes",    MEC1322_I2C0_1, 100,  GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
+	{"pmic",     MEC1322_I2C0_0, 400,  GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
+	{"muxes",    MEC1322_I2C0_1, 400,  GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
 	{"pd_mcu",   MEC1322_I2C1,  1000,  GPIO_I2C1_SCL,   GPIO_I2C1_SDA},
 	{"sensors",  MEC1322_I2C2,   400,  GPIO_I2C2_SCL,   GPIO_I2C2_SDA  },
-	{"pmic",     MEC1322_I2C3,   400,  GPIO_I2C3_SCL,   GPIO_I2C3_SDA  },
+	{"batt",     MEC1322_I2C3,   100,  GPIO_I2C3_SCL,   GPIO_I2C3_SDA  },
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
