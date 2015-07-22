@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed808ec6_d9ed5700",
+        "filename": "board/ryu/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-22T00:20:33Z",
+      "side": 1,
+      "message": "Im not fully sure this is enough :\n the regular code path (SRC_ACCESSORY) is doing  :\n/* Set the USB muxes and the default USB role */\npd_set_data_role(port, CONFIG_USB_PD_DEBUG_DR);\n\nccd_set_mode(CCD_MODE_ENABLED);\ntypec_set_input_current_limit(port, 3000, TYPE_C_VOLTAGE);\ncharge_manager_update_dualrole(port, CAP_DEDICATED);\nset_state(port, PD_STATE_SRC_ACCESSORY);\n\nSo from that, I would say that USB device will be half-broken (not switching the kernel driver) or are you going to issue a DR_SWAP from Plankton ?\nthe charging limit won\u0027t be set, but we already always have a PD contract ?",
+      "range": {
+        "startLine": 258,
+        "startChar": 2,
+        "endLine": 258,
+        "endChar": 33
+      },
+      "revId": "caf6e49b1379abeff1dc4f729247edf67792c329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
