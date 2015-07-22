@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "6dd2dee8_dbed3f00",
+        "filename": "util/openocd/servo.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2015-07-22T20:00:27Z",
+      "side": 1,
+      "message": "agreed.",
+      "parentUuid": "ed808ec6_36b498ec",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "c240ab8d09fcdf49f562595948d311f5c55823a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d6a42d9_9779e4a4",
         "filename": "util/openocd/servo.cfg",
         "patchSetId": 1
@@ -99,6 +123,30 @@
       "writtenOn": "2015-07-21T22:33:27Z",
       "side": 1,
       "message": "have you probed the SRST ?\nin my notes, at some point, I have updated this line to :\nftdi_layout_signal nSRST -data 0x0020 -oe 0x0020",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "c240ab8d09fcdf49f562595948d311f5c55823a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd7bcaab_6fa54db9",
+        "filename": "util/openocd/servo.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2015-07-22T20:00:27Z",
+      "side": 1,
+      "message": "That looks like the right pin for DUT_warm_reset_l, but I don\u0027t think you need the -oe, since it\u0027s the same pin.",
+      "parentUuid": "0d6a42d9_9779e4a4",
       "range": {
         "startLine": 11,
         "startChar": 0,
