@@ -22,6 +22,30 @@
       "revId": "63bce4dc6a5a11258716102aa7a25f1337a9ac7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ddfa2f3_12bdea02",
+        "filename": "board/gandof/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2015-07-22T01:12:26Z",
+      "side": 1,
+      "message": "Fan will stop spin when enter S3/S4/S5 after  fan_set_rpm_target() set 0 RPM, but will have noise when resume immediately(fan RPM require 4500RPM or higher) and it cause by fan duty always set to 75% when set RPM from 0 to 4500(or higher).\n\nFor this portion, EC will set a start up RPM if fan_get_rpm_target() is 0 RPM.\n\nNormally fan_get_rpm_target() return 0 when fan_set_rpm_target() set to 0 RPM.",
+      "parentUuid": "78429e31_5a57499d",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 42
+      },
+      "revId": "63bce4dc6a5a11258716102aa7a25f1337a9ac7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
