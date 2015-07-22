@@ -22,6 +22,30 @@
       "revId": "17824612f71e5b7cb0f08d924a2dcd6c032499e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed808ec6_9f5b3fcf",
+        "filename": "power/skylake.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-22T19:26:32Z",
+      "side": 1,
+      "message": "It only adds a \"Forcing G3\" print -- the function does nothing else. I thought it would be cleaner to leave the board check out and just always call it.",
+      "parentUuid": "ed808ec6_1f488f03",
+      "range": {
+        "startLine": 276,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 21
+      },
+      "revId": "17824612f71e5b7cb0f08d924a2dcd6c032499e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
