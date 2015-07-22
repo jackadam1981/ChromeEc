@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "ad7a16a8_2e775b7c",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T22:26:01Z",
+      "side": 1,
+      "message": "ah, you are right, it is not anchored, I looked at config_option_re in line 53 :)\n\nthen, of course findall() and iterating over its return list  make perfect sense",
+      "parentUuid": "cd7bcaab_eab2abcf",
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dd51ace_c451d35e",
         "filename": "util/config_option_check.py",
         "patchSetId": 1
@@ -230,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "8d7552bb_6da559b9",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T22:26:01Z",
+      "side": 1,
+      "message": "yes, actually, this was one of my issues with this script - it seemed to me that it was invoked once per repo-upload, reporting problems in multiple patches in one run.\n\nI was curious if this was exactly the case, but never got to look at it again. If it is - then you are right, no need to diff to upstream.",
+      "parentUuid": "4dd51ace_3fb9ca36",
+      "range": {
+        "startLine": 141,
+        "startChar": 64,
+        "endLine": 141,
+        "endChar": 71
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd7bcaab_2f48b503",
         "filename": "util/config_option_check.py",
         "patchSetId": 1
@@ -259,6 +301,24 @@
       "side": 1,
       "message": "Because of the split(\u0027\\n\u0027). It returns a list with one element which is the empty string.",
       "parentUuid": "cd7bcaab_2f48b503",
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed808ec6_aa93572d",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T22:26:01Z",
+      "side": 1,
+      "message": "so what if you iterate over this list  - still no harm done. Not a biggy in any case, just a thought.",
+      "parentUuid": "8d7552bb_8237646b",
       "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -300,6 +360,30 @@
       "side": 1,
       "message": "Because we could either be adding or removing a file. If I check for only one, I may just find /dev/null.",
       "parentUuid": "4dd51ace_ffa82210",
+      "range": {
+        "startLine": 151,
+        "startChar": 30,
+        "endLine": 151,
+        "endChar": 33
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d7552bb_ad2ff18c",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T22:26:01Z",
+      "side": 1,
+      "message": "this I still don\u0027t get. If we are removing the file - why do we care about it, let\u0027s just move on to the next file.\n\nYour idea of tracking removed CONFIG_xxxx does not seem a 100% fit here: it would require scanning the entire repository, not just the modified files (leave alone the just modified strings case)",
+      "parentUuid": "0ddfa2f3_a374d2c2",
       "range": {
         "startLine": 151,
         "startChar": 30,
@@ -359,6 +443,30 @@
     },
     {
       "key": {
+        "uuid": "edc5ee24_68647f3e",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T22:26:01Z",
+      "side": 1,
+      "message": "as I said, it seems to me that tracking removals is going to require a different method, accounting for removed lines here does not seem to be useful.",
+      "parentUuid": "4dd51ace_bf7a9add",
+      "range": {
+        "startLine": 153,
+        "startChar": 29,
+        "endLine": 153,
+        "endChar": 31
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ddfa2f3_b8a07deb",
         "filename": "util/config_option_check.py",
         "patchSetId": 1
@@ -406,6 +514,30 @@
     },
     {
       "key": {
+        "uuid": "ad669634_94f144d5",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T22:26:01Z",
+      "side": 1,
+      "message": "ok, but the comparison\n\ni \u003c range(x)\n\nmakes no sense to me: it compares integer versus list - am I missing something?",
+      "parentUuid": "edc5ee24_e82b8f31",
+      "range": {
+        "startLine": 157,
+        "startChar": 12,
+        "endLine": 157,
+        "endChar": 27
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed808ec6_8a5c5b55",
         "filename": "util/config_option_check.py",
         "patchSetId": 1
@@ -435,6 +567,24 @@
       "side": 1,
       "message": "This checks if the mode of the file is deleted because of the order in which the diff output is processed. \nFor example,\n\n diff --git a/board/ryu_p4p5/board.c b/board/ryu_p4p5/board.c\n deleted file mode 100644\n index 34f6b3b..0000000\n --- a/board/ryu_p4p5/board.c\n +++ /dev/null\n\n\n It would probably be clearer to follow with a state machine-like flow.",
       "parentUuid": "ed808ec6_8a5c5b55",
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dd51ace_9f11d515",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T22:26:01Z",
+      "side": 1,
+      "message": "ah, I see. I just did not realize that you are guaranteed to be here when processing the beginning section of the file\u0027s diff.",
+      "parentUuid": "6dd2dee8_1b4e6742",
       "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
