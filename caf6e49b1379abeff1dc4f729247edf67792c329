@@ -22,6 +22,30 @@
       "revId": "caf6e49b1379abeff1dc4f729247edf67792c329",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed808ec6_9c258d5e",
+        "filename": "board/ryu/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-22T14:41:45Z",
+      "side": 1,
+      "message": "Yes, omitting that stuff is on purpose. The point of this is to have CCD enabled independent of PD protocol state. This can help us debug PD protocol through CCD with plankton. So, the charging limit is purposely not set so that ryu can be either a source or a sink to plankton and we can debug either. Similarly, the data role is left to the protocol state machine so that ryu can be DFP or UFP and we can test both through plankton.\n\nThe only part that is a bit questionable is that this means when the PD protocol goes into disconnected state, the muxes won\u0027t be set, so CCD will stop. Since we are getting CCD data through plankton, it\u0027s already the case that if you disconnect the two, you lose CCD capabilities. But, we also go through the disconnected state when plankton swaps between being a source and a sink (plankton doesn\u0027t issue power swaps, it\u0027s actually a fixed role that changes based on the buttons). So, when you switch between source and sink, the consoles actually disconnect briefly and then come back, so you might miss some stuff. I don\u0027t think this is a big concern, and in my opinion not worth writing code to keep the muxes set even when disconnected just in the case that we\u0027ve received this VDM.",
+      "parentUuid": "ed808ec6_d9ed5700",
+      "range": {
+        "startLine": 258,
+        "startChar": 2,
+        "endLine": 258,
+        "endChar": 33
+      },
+      "revId": "caf6e49b1379abeff1dc4f729247edf67792c329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
