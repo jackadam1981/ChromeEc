@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd7bcaab_1848a903",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-22T00:06:04Z",
+      "side": 0,
+      "message": "So, you\u0027re changing the functionality to disable the KB (even if the chipset is on) depending on the lid angle. IMO either case could be a reasonable spec, and we want to support both. How about we move key_scan_enable / track_pad_enable over to a board-level callback (much like your track_pad_enable function, with a more generic name, like lid_angle_enable or lid_angle_peripheral_enable)?",
+      "revId": "ff9934264163dd0d7e795f32144c6c1082fdf040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
