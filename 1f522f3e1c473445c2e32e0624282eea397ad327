@@ -22,6 +22,30 @@
       "revId": "1f522f3e1c473445c2e32e0624282eea397ad327",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ddc66fc_93febea2",
+        "filename": "board/gandof/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2015-07-22T01:04:54Z",
+      "side": 1,
+      "message": "fan_get_rpm_target() only can get 0 when fan_set_rpm_target() set 0 rpm, and if fan_set_rpm_target() set to 4500 RPM(or higher) from 0 RPM, fan duty always will use 75% to push and cause noise.",
+      "parentUuid": "78429e31_a5b3b23a",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 42
+      },
+      "revId": "1f522f3e1c473445c2e32e0624282eea397ad327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
