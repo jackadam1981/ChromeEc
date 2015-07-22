@@ -109,6 +109,24 @@
       "revId": "2f3f8c476686cd32879afe16d322823829545bdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dd2dee8_dbbc5fb7",
+        "filename": "board/glados/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-22T21:06:48Z",
+      "side": 1,
+      "message": "I added a pull-up here in CL:283558 at willis\u0027 request. i forget the exact reasoning, but we should double check with him.",
+      "parentUuid": "cd7bcaab_af25a55d",
+      "revId": "2f3f8c476686cd32879afe16d322823829545bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
