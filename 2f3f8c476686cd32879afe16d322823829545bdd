@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cdc02a18_81050a87",
+        "filename": "board/glados/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-22T17:41:35Z",
+      "side": 1,
+      "message": "We\u0027re using it incorrectly in glados board.c (and other boards). See board_set_charge_limit. Probably we should remove it there, and then define CONFIG_CHARGER_MAX_INPUT_CURRENT to 2240.",
+      "parentUuid": "6dd2dee8_18a98d64",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "2f3f8c476686cd32879afe16d322823829545bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ddfa2f3_b586489a",
         "filename": "board/glados/board.h",
         "patchSetId": 4
