@@ -87,6 +87,29 @@ void gpio_config_module(enum module_id id, int enable)
 	}
 }
 
+void gpio_config_pins(enum module_id id,
+			uint32_t port, uint32_t pin_mask, int enable)
+{
+	const struct gpio_alt_func *af = gpio_alt_funcs;
+	int count = gpio_alt_funcs_count;
+	int i;
+
+	/* Find pins and set to alternate functions */
+	for (i = 0; i < count; i++, af++) {
+		if (af->module_id != id)
+			continue;  /* Pins for some other module */
+
+		if (af->port == port && (af->mask & pin_mask) == pin_mask) {
+			if (enable)
+				gpio_set_alternate_function(
+					af->port, pin_mask, af->func);
+			else
+				gpio_set_alternate_function(
+					af->port, pin_mask, -1);
+		}
+	}
+}
+
 void gpio_set_flags(enum gpio_signal signal, int flags)
 {
 	const struct gpio_info *g = gpio_list + signal;
