@@ -127,6 +127,24 @@
       "revId": "2f3f8c476686cd32879afe16d322823829545bdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dd51ace_5f312e73",
+        "filename": "board/glados/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-22T21:18:46Z",
+      "side": 1,
+      "message": "The pin is NC by default (so we want to pull it up internally), but can be connected to the PMIC by stuffing a resistor (in which case, we\u0027d want to remove the internal PU).",
+      "parentUuid": "6dd2dee8_dbbc5fb7",
+      "revId": "2f3f8c476686cd32879afe16d322823829545bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
