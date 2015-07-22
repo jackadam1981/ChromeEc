@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6dd2dee8_dbfd3f32",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-22T21:53:10Z",
+      "side": 1,
+      "message": "Okay, will fix.",
+      "parentUuid": "ed808ec6_aad03742",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdc02a18_62ea5c6d",
         "filename": "util/config_option_check.py",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-22T21:26:48Z",
       "side": 1,
       "message": "A list of Line objects .... \n\n\nis more accurate",
+      "range": {
+        "startLine": 35,
+        "startChar": 21,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ddc66fc_7fb8bb13",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-22T21:53:10Z",
+      "side": 1,
+      "message": "Okay, will fix.",
+      "parentUuid": "cdc02a18_62ea5c6d",
       "range": {
         "startLine": 35,
         "startChar": 21,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "ad7a16a8_2ed3db03",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-22T21:53:10Z",
+      "side": 1,
+      "message": "Okay, will fix.",
+      "parentUuid": "6dd2dee8_9bbc97a4",
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdc02a18_e2608caf",
         "filename": "util/config_option_check.py",
         "patchSetId": 1
@@ -76,6 +142,24 @@
       "writtenOn": "2015-07-22T21:26:48Z",
       "side": 1,
       "message": "match \u003d config_option_re.findall(l.string)\n\nwould do the same but is slightly more concise.\n\nAlso, I am not sure it makes sense using findall() here, isn\u0027t the pattern anchored at the beginning of the line? You would never have more than one result here in that case.\n\nmatch \u003d config_option_re.match(l.string)\nif not match:\n  continue\nopt \u003d match.groups(1)\n\nand then you\u0027d not need the loop in line 91",
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd7bcaab_eab2abcf",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-22T21:53:10Z",
+      "side": 1,
+      "message": "Thanks for the concise method.\n\nThe pattern is not anchored to any part of the line. I changed it from match() to findall() because I realized that there might be a case where multiple CONFIG_* could be found on a line.\n\nFor example,\n\n board-$(CONFIG_FOO)+\u003dfoo.o # Don\u0027t forget to enable CONFIG_BAR as well.\n\nor,\n\n #if defined(CONFIG_FOO) || defined(CONFIG_BAR)",
+      "parentUuid": "cdc02a18_e2608caf",
       "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -122,6 +206,30 @@
     },
     {
       "key": {
+        "uuid": "4dd51ace_3fb9ca36",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-22T21:53:10Z",
+      "side": 1,
+      "message": "It was my understanding that the presubmit hooks are run per commit, incrementally from newest to oldest.",
+      "parentUuid": "8d7552bb_62c32803",
+      "range": {
+        "startLine": 141,
+        "startChar": 64,
+        "endLine": 141,
+        "endChar": 71
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd7bcaab_2f48b503",
         "filename": "util/config_option_check.py",
         "patchSetId": 1
@@ -139,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "8d7552bb_8237646b",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-22T21:53:10Z",
+      "side": 1,
+      "message": "Because of the split(\u0027\\n\u0027). It returns a list with one element which is the empty string.",
+      "parentUuid": "cd7bcaab_2f48b503",
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dd51ace_ffa82210",
         "filename": "util/config_option_check.py",
         "patchSetId": 1
@@ -150,6 +276,30 @@
       "writtenOn": "2015-07-22T21:26:48Z",
       "side": 1,
       "message": "why do you need to check for both ^--- and  ^+++ ?",
+      "range": {
+        "startLine": 151,
+        "startChar": 30,
+        "endLine": 151,
+        "endChar": 33
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ddfa2f3_a374d2c2",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-22T21:53:10Z",
+      "side": 1,
+      "message": "Because we could either be adding or removing a file. If I check for only one, I may just find /dev/null.",
+      "parentUuid": "4dd51ace_ffa82210",
       "range": {
         "startLine": 151,
         "startChar": 30,
@@ -185,6 +335,30 @@
     },
     {
       "key": {
+        "uuid": "4dd51ace_bf7a9add",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-22T21:53:10Z",
+      "side": 1,
+      "message": "In the future, I\u0027d like to expand upon this to keep track of deletions. If a removed line removes the last use of a particular CONFIG_* option in the entire repo.\n\nI explicitly check for \u0027+\u0027 later on, but I could remove the deletions from here and the check later for now.",
+      "parentUuid": "edc5ee24_e8e38fc0",
+      "range": {
+        "startLine": 153,
+        "startChar": 29,
+        "endLine": 153,
+        "endChar": 31
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ddfa2f3_b8a07deb",
         "filename": "util/config_option_check.py",
         "patchSetId": 1
@@ -196,6 +370,30 @@
       "writtenOn": "2015-07-22T21:26:48Z",
       "side": 1,
       "message": "range(x) returns a list, is this the intended use?\n\ncan you say\n\nfor i in range(len(diff)):\n\nand then not ever increment i inside the loop?",
+      "range": {
+        "startLine": 157,
+        "startChar": 12,
+        "endLine": 157,
+        "endChar": 27
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edc5ee24_e82b8f31",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-22T21:53:10Z",
+      "side": 1,
+      "message": "The for loop was my initial approach. But then I found that I couldn\u0027t modify the iterator to skip lines.",
+      "parentUuid": "0ddfa2f3_b8a07deb",
       "range": {
         "startLine": 157,
         "startChar": 12,
@@ -225,6 +423,24 @@
     },
     {
       "key": {
+        "uuid": "6dd2dee8_1b4e6742",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-22T21:53:10Z",
+      "side": 1,
+      "message": "This checks if the mode of the file is deleted because of the order in which the diff output is processed. \nFor example,\n\n diff --git a/board/ryu_p4p5/board.c b/board/ryu_p4p5/board.c\n deleted file mode 100644\n index 34f6b3b..0000000\n --- a/board/ryu_p4p5/board.c\n +++ /dev/null\n\n\n It would probably be clearer to follow with a state machine-like flow.",
+      "parentUuid": "ed808ec6_8a5c5b55",
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dd51ace_5f1a8eff",
         "filename": "util/config_option_check.py",
         "patchSetId": 1
@@ -248,6 +464,30 @@
     },
     {
       "key": {
+        "uuid": "8d7552bb_62afa8ec",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-22T21:53:10Z",
+      "side": 1,
+      "message": "Hence the check for \u0027deleted\u0027 earlier.",
+      "parentUuid": "4dd51ace_5f1a8eff",
+      "range": {
+        "startLine": 170,
+        "startChar": 27,
+        "endLine": 170,
+        "endChar": 36
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ddfa2f3_43c2c67c",
         "filename": "util/config_option_check.py",
         "patchSetId": 1
@@ -259,6 +499,24 @@
       "writtenOn": "2015-07-22T21:26:48Z",
       "side": 1,
       "message": "this is kinda complicated. why can you not use some state variable to decide what to do with the next line, processing lines one at a time?",
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ddc66fc_e4c2e299",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-22T21:53:10Z",
+      "side": 1,
+      "message": "I agree. I think it would be clearer with a state machine-like flow.",
+      "parentUuid": "0ddfa2f3_43c2c67c",
       "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
