@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dd51ace_26bf8c4d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-22T00:15:09Z",
+      "side": 0,
+      "message": "Something doesn\u0027t seem right here. You changed three functions, all of which are called as hooks, and not called anywhere else (I think). Hooks are called automatically from the HOOKS task. But your commit message mentions freeing stack space for the CHIPSET task? Am I missing something?",
+      "revId": "ff9934264163dd0d7e795f32144c6c1082fdf040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
