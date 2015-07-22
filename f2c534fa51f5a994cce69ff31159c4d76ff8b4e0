@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2ddc66fc_f042a0c0",
+        "filename": "chip/g/sps.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T00:18:11Z",
+      "side": 1,
+      "message": "sure, will do.",
+      "parentUuid": "edc5ee24_0e32abaa",
+      "range": {
+        "startLine": 31,
+        "startChar": 62,
+        "endLine": 31,
+        "endChar": 75
+      },
+      "revId": "f2c534fa51f5a994cce69ff31159c4d76ff8b4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edc5ee24_4e9c33f5",
         "filename": "chip/g/sps_tpm.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-21T23:34:57Z",
       "side": 1,
       "message": "If we call process_rx_data() when the chip select is disabled, it will load up the TX FIFO with bytes that will be clocked out at the beginning of the *next* transaction. \n\nDoes the TCG SPI Protocol spec say to abort the transaction if the CS disables early, or to just pause it?",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 59
+      },
+      "revId": "f2c534fa51f5a994cce69ff31159c4d76ff8b4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dd51ace_86a19826",
+        "filename": "chip/g/sps_tpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T00:18:11Z",
+      "side": 1,
+      "message": "This is a good question. Of course the master should not deassert CS until transaction is completed, but it could be broken in weird ways.\n\nShould init_new_cycle() reset tx fifo as well?",
+      "parentUuid": "edc5ee24_4e9c33f5",
       "range": {
         "startLine": 243,
         "startChar": 0,
