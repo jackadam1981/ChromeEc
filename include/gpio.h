@@ -122,6 +122,14 @@ void gpio_pre_init(void);
 void gpio_config_module(enum module_id id, int enable);
 
 /**
+ * Enable alternate function for single I2C pin
+ *
+ * @param port		Port of I2C pin
+ * @param mask		Bit mask of this I2C pin
+ */
+void gpio_enable_i2c_pin(uint32_t port, uint32_t pin_mask);
+
+/**
  * Get the current value of a signal.
  *
  * @param signal	Signal to get

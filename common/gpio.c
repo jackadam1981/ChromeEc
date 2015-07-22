@@ -87,6 +87,23 @@ void gpio_config_module(enum module_id id, int enable)
 	}
 }
 
+void gpio_enable_i2c_pin(uint32_t port, uint32_t pin_mask)
+{
+	const struct gpio_alt_func *af = gpio_alt_funcs;
+	int count = gpio_alt_funcs_count;
+	int i;
+
+	/* Find I2C pins and set to alternate functions */
+	for (i = 0; i < count; i++, af++) {
+		if (af->module_id != MODULE_I2C)
+			continue;  /* Pins for some other module */
+
+		if ((af->port) == port && (af->mask & pin_mask))
+			gpio_set_alternate_function(af->port, af->mask,
+				af->func);
+	}
+}
+
 void gpio_set_flags(enum gpio_signal signal, int flags)
 {
 	const struct gpio_info *g = gpio_list + signal;

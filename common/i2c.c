@@ -330,13 +330,12 @@ int i2c_raw_mode(int port, int enable)
 		gpio_set_flags(sda, GPIO_ODR_HIGH);
 	} else {
 		/*
-		 * Note that this will return *all* I2C ports to normal mode.
-		 * If two I2C ports are both in raw mode, whichever one
-		 * finishes first will yank raw mode away from the other one.
+		 * Return this I2C port to normal mode.
 		 */
 
 		/* To disable raw mode, configure the I2C pins. */
-		gpio_config_module(MODULE_I2C, 1);
+		gpio_enable_i2c_pin(gpio_list[sda].port, gpio_list[sda].mask);
+		gpio_enable_i2c_pin(gpio_list[scl].port, gpio_list[scl].mask);
 
 		/* Unlock mutex, allow other I2C busses to use raw mode. */
 		mutex_unlock(&raw_mode_mutex);
