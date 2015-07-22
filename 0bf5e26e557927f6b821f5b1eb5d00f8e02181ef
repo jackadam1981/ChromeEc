@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ddc66fc_16487c03",
+        "filename": "board/glados/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-07-22T16:42:13Z",
+      "side": 1,
+      "message": "We should be able to bump this up again for this build.",
+      "revId": "0bf5e26e557927f6b821f5b1eb5d00f8e02181ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd7bcaab_49e97172",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-07-22T16:42:13Z",
+      "side": 1,
+      "message": "Just call chipset_force_shutdown() ?",
+      "revId": "0bf5e26e557927f6b821f5b1eb5d00f8e02181ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
