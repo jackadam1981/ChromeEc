@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "cd7bcaab_be4b987c",
+        "filename": "util/openocd/nrf51_chip.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2015-07-22T22:52:32Z",
+      "side": 1,
+      "message": "Here\u0027s the warning message from OpenOCD:\n\n  LOG_WARNING(\"using fast async flash loader. This is currently supported\");\n  LOG_WARNING(\"only with ST-Link and CMSIS-DAP. If you have issues, add\");\n  LOG_WARNING(\"\\\"set WORKAREASIZE 0\\\" before sourcing nrf51.cfg to disable it\");\n\nMaybe I should try it again with some other setting?",
+      "parentUuid": "cd7bcaab_d5519c30",
+      "range": {
+        "startLine": 3,
+        "startChar": 1,
+        "endLine": 3,
+        "endChar": 64
+      },
+      "revId": "c240ab8d09fcdf49f562595948d311f5c55823a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed808ec6_96156c74",
         "filename": "util/openocd/nrf51_cmds.tcl",
         "patchSetId": 1
