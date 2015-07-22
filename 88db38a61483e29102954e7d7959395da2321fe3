@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ddc66fc_598637f4",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1002375
+      },
+      "writtenOn": "2015-07-22T17:49:05Z",
+      "side": 1,
+      "message": "Should this be the first check? I see there is check to see if the given chip matches the one from lookup, is that just a safeguard?\n\nideally, after the servod code is updated, we will remove all these BOARD_ list, right?",
+      "range": {
+        "startLine": 486,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 21
+      },
+      "revId": "88db38a61483e29102954e7d7959395da2321fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
