@@ -325,6 +325,24 @@
     },
     {
       "key": {
+        "uuid": "0ddfa2f3_c3223653",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-22T22:39:43Z",
+      "side": 1,
+      "message": "Ah, yes you\u0027re right. I\u0027ll fix it.",
+      "parentUuid": "ed808ec6_aa93572d",
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dd51ace_ffa82210",
         "filename": "util/config_option_check.py",
         "patchSetId": 1
@@ -384,6 +402,30 @@
       "side": 1,
       "message": "this I still don\u0027t get. If we are removing the file - why do we care about it, let\u0027s just move on to the next file.\n\nYour idea of tracking removed CONFIG_xxxx does not seem a 100% fit here: it would require scanning the entire repository, not just the modified files (leave alone the just modified strings case)",
       "parentUuid": "0ddfa2f3_a374d2c2",
+      "range": {
+        "startLine": 151,
+        "startChar": 30,
+        "endLine": 151,
+        "endChar": 33
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd7bcaab_2a5e6374",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-22T22:39:43Z",
+      "side": 1,
+      "message": "Yep, I think this is a case of anticipating complexity. I\u0027ll leave it out for this CL.",
+      "parentUuid": "8d7552bb_ad2ff18c",
       "range": {
         "startLine": 151,
         "startChar": 30,
@@ -526,6 +568,30 @@
       "side": 1,
       "message": "ok, but the comparison\n\ni \u003c range(x)\n\nmakes no sense to me: it compares integer versus list - am I missing something?",
       "parentUuid": "edc5ee24_e82b8f31",
+      "range": {
+        "startLine": 157,
+        "startChar": 12,
+        "endLine": 157,
+        "endChar": 27
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edc5ee24_2361b803",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-22T22:39:43Z",
+      "side": 1,
+      "message": "No, it is I who is missing something. :) It really should just be len(diff). I\u0027ll fix this.",
+      "parentUuid": "ad669634_94f144d5",
       "range": {
         "startLine": 157,
         "startChar": 12,
