@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdc02a18_7c69a514",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-22T19:29:35Z",
+      "side": 1,
+      "message": "nit: if you change the polarity here to charger_is_uninitialized you save two not operations.",
+      "range": {
+        "startLine": 917,
+        "startChar": 5,
+        "endLine": 918,
+        "endChar": 44
+      },
+      "revId": "688735104316341bdfc515ee9a5337f4a5dbbd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
