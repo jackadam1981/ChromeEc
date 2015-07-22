@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dd2dee8_18a98d64",
+        "filename": "board/glados/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-22T17:38:08Z",
+      "side": 1,
+      "message": "no, this is the default input current limit, it needs to be 512 for any type-C board, otherwise you will over-current lower power chargers. the input current is set higher once we know what kind of charger we have",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "2f3f8c476686cd32879afe16d322823829545bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ddfa2f3_b586489a",
+        "filename": "board/glados/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-22T17:38:08Z",
+      "side": 1,
+      "message": "seems like all the changes for waiting to boot until a min battery percentage has been reached should be a different CL.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 49
+      },
+      "revId": "2f3f8c476686cd32879afe16d322823829545bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edc5ee24_a241260d",
+        "filename": "board/glados/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-22T17:38:08Z",
+      "side": 1,
+      "message": "we can\u0027t commit this until we get new boards. seems like it might be worth it to make a macro for GLADOS_P2, and conditionally make the appropriate changes. Then we can commit this now and people can build for either board in ToT.",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 35
+      },
+      "revId": "2f3f8c476686cd32879afe16d322823829545bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
