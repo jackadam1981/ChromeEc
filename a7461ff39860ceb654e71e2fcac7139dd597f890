@@ -2,6 +2,86 @@
   "comments": [
     {
       "key": {
+        "uuid": "ed808ec6_aad03742",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T21:26:48Z",
+      "side": 1,
+      "message": "iirc each parameter description is supposed to include its type.",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdc02a18_62ea5c6d",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T21:26:48Z",
+      "side": 1,
+      "message": "A list of Line objects .... \n\n\nis more accurate",
+      "range": {
+        "startLine": 35,
+        "startChar": 21,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dd2dee8_9bbc97a4",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T21:26:48Z",
+      "side": 1,
+      "message": "function docstring should include return type and meaning",
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdc02a18_e2608caf",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T21:26:48Z",
+      "side": 1,
+      "message": "match \u003d config_option_re.findall(l.string)\n\nwould do the same but is slightly more concise.\n\nAlso, I am not sure it makes sense using findall() here, isn\u0027t the pattern anchored at the beginning of the line? You would never have more than one result here in that case.\n\nmatch \u003d config_option_re.match(l.string)\nif not match:\n  continue\nopt \u003d match.groups(1)\n\nand then you\u0027d not need the loop in line 91",
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dd51ace_c451d35e",
         "filename": "util/config_option_check.py",
         "patchSetId": 1
@@ -13,6 +93,172 @@
       "writtenOn": "2015-07-22T19:21:28Z",
       "side": 1,
       "message": "Not sure how I feel about this.  It seems a bit lengthy especially with the try()..except() clauses throughout. But, it\u0027s functional... :T",
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d7552bb_62c32803",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T21:26:48Z",
+      "side": 1,
+      "message": "this is not quite right for the case where there is more than one patch in the branch. should be diffed versus the tracked branch.\n\n\u0027git branch -av\u0027 would tell you how many patches this branch is ahead of the upscteam.",
+      "range": {
+        "startLine": 141,
+        "startChar": 64,
+        "endLine": 141,
+        "endChar": 71
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd7bcaab_2f48b503",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T21:26:48Z",
+      "side": 1,
+      "message": "do you need to check this separately - the loop in line 157 will take care of the empty list, no?",
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dd51ace_ffa82210",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T21:26:48Z",
+      "side": 1,
+      "message": "why do you need to check for both ^--- and  ^+++ ?",
+      "range": {
+        "startLine": 151,
+        "startChar": 30,
+        "endLine": 151,
+        "endChar": 33
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edc5ee24_e8e38fc0",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T21:26:48Z",
+      "side": 1,
+      "message": "why do you care about lines starting with \u0027-\u0027?",
+      "range": {
+        "startLine": 153,
+        "startChar": 29,
+        "endLine": 153,
+        "endChar": 31
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ddfa2f3_b8a07deb",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T21:26:48Z",
+      "side": 1,
+      "message": "range(x) returns a list, is this the intended use?\n\ncan you say\n\nfor i in range(len(diff)):\n\nand then not ever increment i inside the loop?",
+      "range": {
+        "startLine": 157,
+        "startChar": 12,
+        "endLine": 157,
+        "endChar": 27
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed808ec6_8a5c5b55",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T21:26:48Z",
+      "side": 1,
+      "message": "what does this check?\n\nwhat if the word \u0027deleted\u0027 is part of the code?",
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dd51ace_5f1a8eff",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T21:26:48Z",
+      "side": 1,
+      "message": "couldn\u0027t this be the case we\u0027re removing a file (if the pattern looks for both ^--- and ^+++)?",
+      "range": {
+        "startLine": 170,
+        "startChar": 27,
+        "endLine": 170,
+        "endChar": 36
+      },
+      "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ddfa2f3_43c2c67c",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-22T21:26:48Z",
+      "side": 1,
+      "message": "this is kinda complicated. why can you not use some state variable to decide what to do with the next line, processing lines one at a time?",
       "revId": "a7461ff39860ceb654e71e2fcac7139dd597f890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
