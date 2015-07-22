@@ -16,6 +16,24 @@
       "revId": "ff9934264163dd0d7e795f32144c6c1082fdf040",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dd51ace_daea1414",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2015-07-22T01:54:02Z",
+      "side": 0,
+      "message": "If the behavior is board dependent, then it\u0027s better to move to board level. More generic name is good, I like the lid_angle_peripheral_enable. :)",
+      "parentUuid": "cd7bcaab_1848a903",
+      "revId": "ff9934264163dd0d7e795f32144c6c1082fdf040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
