@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ddc66fc_bf6703c3",
+        "filename": "board/strago/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-22T22:49:15Z",
+      "side": 1,
+      "message": "There\u0027s only one PD port for this board, and if that\u0027s not expected to change, we can make code like this slightly simpler.",
+      "revId": "82380a96ce94bded86602af9dafac9d95a55552d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
