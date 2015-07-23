@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dd51ace_0b16fe7e",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-07-23T21:03:54Z",
+      "side": 1,
+      "message": "I am not sure what would be the best way to handle this, and this is not a big deal in ether case, but this will result in accepting xCONFIG_yyy as CONFIG_yyy, and wull be confused if the same option is mentioned twice in the line, once in comments.\n\nAgain, I don\u0027t think this needs to be addressed, just an idea of some \"bad\" input.",
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dd51ace_0b4cbe93",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-07-23T21:03:54Z",
+      "side": 1,
+      "message": "Just FYI: you could use set() here, and then just check if the option is still in the set.",
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ddc66fc_cde49e19",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-07-23T21:03:54Z",
+      "side": 1,
+      "message": "maybe this should be set to line length in case it is not found, to catch multiline comments where CONFIG_xxx is found in the very first line.",
+      "range": {
+        "startLine": 115,
+        "startChar": 8,
+        "endLine": 115,
+        "endChar": 23
+      },
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d7552bb_b52f338d",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-07-23T21:03:54Z",
+      "side": 1,
+      "message": "this should be anchored at the beginning of the line",
+      "range": {
+        "startLine": 180,
+        "startChar": 28,
+        "endLine": 180,
+        "endChar": 33
+      },
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d08e662_f34b6a7b",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-07-23T21:03:54Z",
+      "side": 1,
+      "message": "space is the default split separator, so this could be \n\nsubprocess.check_output(cmd.split())",
+      "range": {
+        "startLine": 185,
+        "startChar": 19,
+        "endLine": 185,
+        "endChar": 20
+      },
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d08e662_13aa6e8a",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-07-23T21:03:54Z",
+      "side": 1,
+      "message": "diff[0]\n\nwould be cleaner here. or maybe put i \u003d 0 in the previous line.",
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ddc66fc_6d3ed2eb",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-07-23T21:03:54Z",
+      "side": 1,
+      "message": "up to you:\n\nit looks like you are not incrementing i in the cycle more than once any more. Could this be just a\n\nfor line in diff:\n\nand then you could use \u0027continue\u0027 inside the cycle?",
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ddfa2f3_7b28caba",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-07-23T21:03:54Z",
+      "side": 1,
+      "message": "this line seems to be inside the while block.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 6
+      },
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
