@@ -324,9 +324,9 @@ struct motion_sensor_t motion_sensors[] = {
 	 .i2c_addr = BMI160_ADDR0,
 	 .rot_standard_ref = &accelgyro_standard_ref,
 	 .default_config = {
-		 .odr = 100000,
+		 .odr = 0,
 		 .range = 8,  /* g */
-		 .ec_rate = SUSPEND_SAMPLING_INTERVAL,
+		 .ec_rate = MAX_MOTION_SENSE_WAIT_TIME,
 	 }
 	},
 
