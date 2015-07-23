@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ddc66fc_f757ef52",
+        "filename": "board/strago/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-23T18:33:09Z",
+      "side": 1,
+      "message": "generally, we try to keep these alphabetized, this seems pretty unorganized",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "9ef22cb87228810eb8b81997e22f934049f0a637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edc5ee24_491c2273",
+        "filename": "board/strago/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-23T18:33:09Z",
+      "side": 1,
+      "message": "based on gpio.inc, you don\u0027t have a battery_present gpio, so why declare this?\n\nif you don\u0027t declare this, it will correctly use i2c communications to determine if battery is present.",
+      "range": {
+        "startLine": 62,
+        "startChar": 36,
+        "endLine": 62,
+        "endChar": 54
+      },
+      "revId": "9ef22cb87228810eb8b81997e22f934049f0a637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d7552bb_d29f6569",
+        "filename": "board/strago/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-23T18:33:09Z",
+      "side": 1,
+      "message": "this prototype doesn\u0027t need to be declared here anymore",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 25
+      },
+      "revId": "9ef22cb87228810eb8b81997e22f934049f0a637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d61d221_9cbfa918",
+        "filename": "board/strago/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-23T18:33:09Z",
+      "side": 1,
+      "message": "this really only applied to glados (maybe kunimitsu, i don\u0027t know if it had the same hardware limitation).\n\nfor strago, this should be deleted, charge manager will decide when it is ok to enable charging (it will call board_set_active_charge_port()).",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 45
+      },
+      "revId": "9ef22cb87228810eb8b81997e22f934049f0a637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
