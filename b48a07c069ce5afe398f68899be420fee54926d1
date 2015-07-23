@@ -16,6 +16,24 @@
       "revId": "b48a07c069ce5afe398f68899be420fee54926d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad14d688_0737d86c",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-07-23T23:55:13Z",
+      "side": 1,
+      "message": "well, I am not sure this will match in the very beginning and very end of the line. I might be wrong but you might want to check.\n\n\\b in the end in not necessary in any case.",
+      "parentUuid": "8d0f1278_06f51c7b",
+      "revId": "b48a07c069ce5afe398f68899be420fee54926d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
