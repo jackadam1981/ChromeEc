@@ -22,6 +22,30 @@
       "revId": "a15ecf90ddc27469f71f82dbbe8ca5c8061f0ce3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dd51ace_34a7a807",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-07-23T19:35:44Z",
+      "side": 1,
+      "message": "note that the diffs header gives you information which allows to skip deleted lines entirely. For instance:\n\n@@ -70,6 +70,7 @@ void TrunksFtdiSpi::StartTransaction(bool read_write,\n\nthis means that after the patch is applied the text included in the diffs starts at line 70 and is 7 lines long, counting only lines without prefix and prefixed with \u0027+\u0027\n\nso, lines prefixed with \u0027-\u0027 could be just ignored.",
+      "parentUuid": "2ddc66fc_f77fef87",
+      "range": {
+        "startLine": 182,
+        "startChar": 30,
+        "endLine": 182,
+        "endChar": 31
+      },
+      "revId": "a15ecf90ddc27469f71f82dbbe8ca5c8061f0ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
