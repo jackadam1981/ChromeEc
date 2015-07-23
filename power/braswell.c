@@ -279,6 +279,22 @@ enum power_state power_handle_state(enum power_state state)
 		return power_get_pause_in_s5() ? POWER_S5 : POWER_S5G3;
 
 	case POWER_S5G3:
+		/*
+		 * in case shutdown is already done by apshutdown
+		 * (or chipset_force_shutdown()), SOC already lost
+		 * power and can't assert PMC_SUSPWRDNACK any more.
+		 */
+		if (gpio_get_level(GPIO_PCH_RSMRST_L) == 0) {
+			/* Config pins for SOC G3 */
+			gpio_config_module(MODULE_GPIO, 1);
+#ifndef CONFIG_PMIC
+			gpio_set_level(GPIO_SUSPWRDNACK_SOC_EC, 1);
+#endif
+			CPRINTS("Enter SOC G3");
+
+			return POWER_G3;
+		}
+
 		if (gpio_get_level(GPIO_PCH_SUSPWRDNACK) == 1) {
 			/* Assert RSMRST# */
 			gpio_set_level(GPIO_PCH_RSMRST_L, 0);
