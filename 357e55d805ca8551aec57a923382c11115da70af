@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cd158a84_08efe77b",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-23T22:38:29Z",
+      "side": 1,
+      "message": "Maybe I could exclude any alphanumeric before it?",
+      "parentUuid": "4dd51ace_0b16fe7e",
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dd51ace_0b4cbe93",
         "filename": "util/config_option_check.py",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "adfbf684_6c715b55",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-23T22:38:29Z",
+      "side": 1,
+      "message": "Ah okay, I\u0027ll do that.",
+      "parentUuid": "4dd51ace_0b4cbe93",
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ddc66fc_cde49e19",
         "filename": "util/config_option_check.py",
         "patchSetId": 3
@@ -47,6 +83,30 @@
       "writtenOn": "2015-07-23T21:03:54Z",
       "side": 1,
       "message": "maybe this should be set to line length in case it is not found, to catch multiline comments where CONFIG_xxx is found in the very first line.",
+      "range": {
+        "startLine": 115,
+        "startChar": 8,
+        "endLine": 115,
+        "endChar": 23
+      },
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd158a84_285463d3",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-23T22:38:29Z",
+      "side": 1,
+      "message": "Good idea. I had thought that our coding style prohibited multi line comments with text on the first line. Better to be safe.",
+      "parentUuid": "2ddc66fc_cde49e19",
       "range": {
         "startLine": 115,
         "startChar": 8,
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "2d21c6e2_a87fbb88",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-23T22:38:29Z",
+      "side": 1,
+      "message": "Apparently re.match() only searches at the beginning of the line. But, it would probably be better to have anchor the pattern at the beginning of the line and use search() instead of match().",
+      "parentUuid": "8d7552bb_b52f338d",
+      "range": {
+        "startLine": 180,
+        "startChar": 28,
+        "endLine": 180,
+        "endChar": 33
+      },
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d08e662_f34b6a7b",
         "filename": "util/config_option_check.py",
         "patchSetId": 3
@@ -93,6 +177,30 @@
       "writtenOn": "2015-07-23T21:03:54Z",
       "side": 1,
       "message": "space is the default split separator, so this could be \n\nsubprocess.check_output(cmd.split())",
+      "range": {
+        "startLine": 185,
+        "startChar": 19,
+        "endLine": 185,
+        "endChar": 20
+      },
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed1a4eb3_e6dd5e04",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-23T22:38:29Z",
+      "side": 1,
+      "message": "Okay, I\u0027ll fix this.",
+      "parentUuid": "2d08e662_f34b6a7b",
       "range": {
         "startLine": 185,
         "startChar": 19,
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "ad14d688_a461a27b",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-23T22:38:29Z",
+      "side": 1,
+      "message": "I\u0027ll replace with diff[0].",
+      "parentUuid": "2d08e662_13aa6e8a",
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ddc66fc_6d3ed2eb",
         "filename": "util/config_option_check.py",
         "patchSetId": 3
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "ad14d688_04ba365c",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-23T22:38:29Z",
+      "side": 1,
+      "message": "It could, but currently it allows me to process some lines twice with \u0027continue\u0027 like encountering a new hunk.",
+      "parentUuid": "2ddc66fc_6d3ed2eb",
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ddfa2f3_7b28caba",
         "filename": "util/config_option_check.py",
         "patchSetId": 3
@@ -150,6 +294,30 @@
       "writtenOn": "2015-07-23T21:03:54Z",
       "side": 1,
       "message": "this line seems to be inside the while block.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 6
+      },
+      "revId": "357e55d805ca8551aec57a923382c11115da70af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d0f1278_23f00a8b",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-23T22:38:29Z",
+      "side": 1,
+      "message": "I intended it to be the only way to leave the loop (and function).",
+      "parentUuid": "0ddfa2f3_7b28caba",
       "range": {
         "startLine": 253,
         "startChar": 0,
