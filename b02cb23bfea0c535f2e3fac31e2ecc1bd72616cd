@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad7a16a8_bec6363b",
+        "filename": "board/gandof/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-07-23T17:47:44Z",
+      "side": 1,
+      "message": "Kindly add a comment explaining this code.\n\n/* When starting fan from 0 rpm always start at the first step to minimize fan noise */",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 62
+      },
+      "revId": "b02cb23bfea0c535f2e3fac31e2ecc1bd72616cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
