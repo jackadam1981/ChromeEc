@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8d7552bb_28bf4f4d",
+        "filename": "common/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2015-07-23T00:43:16Z",
+      "side": 1,
+      "message": "Yes, will change this.",
+      "parentUuid": "ad669634_d490dc22",
+      "revId": "f4dd51adb81f6ed411bf24450d1d1e95034e38f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edc5ee24_c3da340a",
         "filename": "common/gpio.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-07-22T23:02:10Z",
       "side": 1,
       "message": "If multiple pins share the same GPIO port then we\u0027ll still reconfigure them together, right? Do we want to pass pin_mask here, rather than af-\u003emask?",
+      "revId": "f4dd51adb81f6ed411bf24450d1d1e95034e38f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ddc66fc_4a7c175e",
+        "filename": "common/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2015-07-23T00:43:16Z",
+      "side": 1,
+      "message": "You are right, it should be pin_mask here. pin_mask is same or a subset of af-\u003emask.\nMy idea was to enable single I2C pin. But we can make it generic with module name as one parameter. And also can configure multiple pins in same port together. But the function just set alternate function, not sure in which case others use this function except the I2C pins.",
+      "parentUuid": "edc5ee24_c3da340a",
       "revId": "f4dd51adb81f6ed411bf24450d1d1e95034e38f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
