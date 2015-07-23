@@ -93,6 +93,30 @@
       "revId": "f2c534fa51f5a994cce69ff31159c4d76ff8b4e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8df6329c_0ef52b7b",
+        "filename": "chip/g/sps_tpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-07-23T23:49:19Z",
+      "side": 1,
+      "message": "*I* think so. I had it here:\n\ngit show 11863e9",
+      "parentUuid": "4dd51ace_86a19826",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 59
+      },
+      "revId": "f2c534fa51f5a994cce69ff31159c4d76ff8b4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
