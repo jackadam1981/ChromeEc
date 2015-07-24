@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d9ade79_1b01c741",
+        "filename": "board/gnawty/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-07-24T16:37:58Z",
+      "side": 1,
+      "message": "Are we certain that this safely covers all combinations of systems that exist and are intended to be made?\n\nSpecifically has there ever shipped a Gnawty board that had ec_brd_id2 pulled high? I am not certain what resistor combinations have been used so far, but I am a bit surprised we never had a board revision 0x2 or 0x3, we need to be absolutely certain of this if we are to move forward with this setup.\n\nIf that is not the case we may need to find an unused GPIO.",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "ffd0cb873a041c5de813a18513c00fe4329bf013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d9d1a6f_94510a32",
+        "filename": "board/gnawty/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-07-24T16:37:58Z",
+      "side": 1,
+      "message": "I am assuming no other Gnawty systems use BQ24715 so it is ok to change this?",
+      "range": {
+        "startLine": 20,
+        "startChar": 29,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "ffd0cb873a041c5de813a18513c00fe4329bf013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
