@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd882a39_8d982186",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-24T02:06:29Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "176e5633a3faf4620b366ee6f5f3baaafc709fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0da7a2c0_af3239f5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-24T02:06:29Z",
+      "side": 1,
+      "message": "we check this in a few places, is it worth a macro to be more readable?\n\n#define SENSOR_IS_ACTIVE(_sensor) (sensor_active \u0026 (_sensor)-\u003eactive_mask)",
+      "range": {
+        "startLine": 195,
+        "startChar": 8,
+        "endLine": 195,
+        "endChar": 43
+      },
+      "revId": "176e5633a3faf4620b366ee6f5f3baaafc709fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d9ade79_92fd9c33",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-24T02:06:29Z",
+      "side": 1,
+      "message": "don\u0027t we still need to call motion_sense_set_accel_interval() here since the data rate may have changed from the memcpy?",
+      "revId": "176e5633a3faf4620b366ee6f5f3baaafc709fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0da7a2c0_4f1c6d73",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-24T02:06:29Z",
+      "side": 1,
+      "message": "nit, don\u0027t need {} for one line if else",
+      "range": {
+        "startLine": 244,
+        "startChar": 42,
+        "endLine": 244,
+        "endChar": 44
+      },
+      "revId": "176e5633a3faf4620b366ee6f5f3baaafc709fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d86fa2e_092269aa",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-24T02:06:29Z",
+      "side": 1,
+      "message": "doesn\u0027t do anything? motion_sense_suspend() just returns if sensor_active \u003d\u003d SENSOR_ACTIVE_S5, which it does from line 262.",
+      "range": {
+        "startLine": 276,
+        "startChar": 1,
+        "endLine": 277,
+        "endChar": 25
+      },
+      "revId": "176e5633a3faf4620b366ee6f5f3baaafc709fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8dee45_ae8cf7be",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-24T02:06:29Z",
+      "side": 1,
+      "message": "looks like we should call motion_sense_set_accel_interval() here",
+      "revId": "176e5633a3faf4620b366ee6f5f3baaafc709fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
