@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0da7a2c0_55cddc2b",
+        "filename": "board/strago/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-24T20:51:36Z",
+      "side": 1,
+      "message": "Put this function call beind \"#ifdef HAS_TASK_PDCMD\" (see oak for example). host_command_pd is linked as a condition of having a PDCMD task, and we\u0027re excluding PDCMD from test binaries, hence the linker error.",
+      "revId": "80fbe3f888094fcd10066e262907cf249946134e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
