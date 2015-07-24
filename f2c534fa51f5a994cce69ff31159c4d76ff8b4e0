@@ -117,6 +117,30 @@
       "revId": "f2c534fa51f5a994cce69ff31159c4d76ff8b4e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d83be1d_8420fa57",
+        "filename": "chip/g/sps_tpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-07-24T21:49:49Z",
+      "side": 1,
+      "message": "done, modified cs_deassert interrupt processing in sps.c",
+      "parentUuid": "8df6329c_0ef52b7b",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 59
+      },
+      "revId": "f2c534fa51f5a994cce69ff31159c4d76ff8b4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
