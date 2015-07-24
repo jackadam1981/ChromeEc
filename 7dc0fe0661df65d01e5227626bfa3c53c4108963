@@ -22,6 +22,30 @@
       "revId": "7dc0fe0661df65d01e5227626bfa3c53c4108963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d9d1a6f_d7bc74a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2015-07-24T18:55:29Z",
+      "side": 1,
+      "message": "While debugging 40519, we noticed this unwedge issue. It could be root cause. I will update the BUG section. And warm-reboot test will be used to verify this patch.",
+      "parentUuid": "8dbd52cc_19a54bba",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 8
+      },
+      "revId": "7dc0fe0661df65d01e5227626bfa3c53c4108963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
