@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8dbd52cc_b65d46fe",
+        "filename": "board/gnawty/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-07-24T16:42:58Z",
+      "side": 1,
+      "message": "Or rather, instead of finding an unused GPIO, we could leverage a combination, something like\n\nif (system_get_board_version() \u003e\u003d 5)\n     return \u0026info_AC14B3K;\n\nWe just have to be careful to ensure these resistor stuffings always match the battery. It seems a bit fragile to me, I wish there was a way to probe the battery directly.",
+      "parentUuid": "6d9ade79_1b01c741",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "ffd0cb873a041c5de813a18513c00fe4329bf013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d9d1a6f_94510a32",
         "filename": "board/gnawty/board.h",
         "patchSetId": 2
