@@ -68,6 +68,7 @@ static int fake_state_of_charge = -1;
 /* Track problems in communicating with the battery or charger */
 enum problem_type {
 	PR_STATIC_UPDATE,
+	PR_DYNAMIC_UPDATE,
 	PR_SET_VOLTAGE,
 	PR_SET_CURRENT,
 	PR_SET_MODE,
@@ -81,6 +82,7 @@ enum problem_type {
 };
 static const char * const prob_text[] = {
 	"static update",
+	"dynamic update",
 	"set voltage",
 	"set current",
 	"set mode",
@@ -128,6 +130,11 @@ static int update_static_battery_info(void)
 	 * We're updating multi-byte memmap vars, don't allow ACPI to do
 	 * reads while we're updating.
 	 */
+	if (host_memmap_is_locked()) {
+		problem(PR_STATIC_UPDATE, rv);
+		return EC_ERROR_BUSY;
+	}
+
 	host_lock_memmap();
 
 	/* Smart battery serial number is 16 bits */
@@ -224,6 +231,11 @@ static void update_dynamic_battery_info(void)
 	 * We're updating multi-byte memmap vars, don't allow ACPI to do
 	 * reads while we're updating.
 	 */
+	if (host_memmap_is_locked()) {
+		problem(PR_DYNAMIC_UPDATE, EC_ERROR_BUSY);
+		return;
+	}
+
 	host_lock_memmap();
 
 	if (!(curr.batt.flags & BATT_FLAG_BAD_VOLTAGE))
