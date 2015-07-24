@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d9d1a6f_d128040f",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-24T21:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd882a39_8d982186",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "176e5633a3faf4620b366ee6f5f3baaafc709fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0da7a2c0_af3239f5",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-24T02:06:29Z",
       "side": 1,
       "message": "we check this in a few places, is it worth a macro to be more readable?\n\n#define SENSOR_IS_ACTIVE(_sensor) (sensor_active \u0026 (_sensor)-\u003eactive_mask)",
+      "range": {
+        "startLine": 195,
+        "startChar": 8,
+        "endLine": 195,
+        "endChar": 43
+      },
+      "revId": "176e5633a3faf4620b366ee6f5f3baaafc709fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2da466b9_10afe4ec",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-24T21:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da7a2c0_af3239f5",
       "range": {
         "startLine": 195,
         "startChar": 8,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "6d83be1d_0dc99552",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-24T21:26:41Z",
+      "side": 1,
+      "message": "the data copied will be applied the next time we execute motion_sensor_resume hook, not now.",
+      "parentUuid": "6d9ade79_92fd9c33",
+      "revId": "176e5633a3faf4620b366ee6f5f3baaafc709fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0da7a2c0_4f1c6d73",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2015-07-24T02:06:29Z",
       "side": 1,
       "message": "nit, don\u0027t need {} for one line if else",
+      "range": {
+        "startLine": 244,
+        "startChar": 42,
+        "endLine": 244,
+        "endChar": 44
+      },
+      "revId": "176e5633a3faf4620b366ee6f5f3baaafc709fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2da466b9_50b96c35",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-24T21:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da7a2c0_4f1c6d73",
       "range": {
         "startLine": 244,
         "startChar": 42,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "4d86fa2e_4c4e2f43",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-24T21:26:41Z",
+      "side": 1,
+      "message": "Agree. but I wanted to be logical, in case it does something more in the future.",
+      "parentUuid": "4d86fa2e_092269aa",
+      "range": {
+        "startLine": 276,
+        "startChar": 1,
+        "endLine": 277,
+        "endChar": 25
+      },
+      "revId": "176e5633a3faf4620b366ee6f5f3baaafc709fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed8dee45_ae8cf7be",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -122,6 +236,24 @@
       "writtenOn": "2015-07-24T02:06:29Z",
       "side": 1,
       "message": "looks like we should call motion_sense_set_accel_interval() here",
+      "revId": "176e5633a3faf4620b366ee6f5f3baaafc709fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d9ade79_b8f1a1d4",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-24T21:26:41Z",
+      "side": 1,
+      "message": "Done in host command as well.",
+      "parentUuid": "ed8dee45_ae8cf7be",
       "revId": "176e5633a3faf4620b366ee6f5f3baaafc709fed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
