@@ -34,6 +34,24 @@
       "revId": "b48a07c069ce5afe398f68899be420fee54926d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd158a84_cb7149d2",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-07-24T00:01:17Z",
+      "side": 1,
+      "message": "I tried it, and it matched on the beginning of a line and at the end of the line.\n\nAh, I guess the trailing \\b isn\u0027t necessary.",
+      "parentUuid": "ad14d688_0737d86c",
+      "revId": "b48a07c069ce5afe398f68899be420fee54926d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
