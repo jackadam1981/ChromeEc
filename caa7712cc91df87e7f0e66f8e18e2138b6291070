@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d21c6e2_488c3f88",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-24T00:05:21Z",
+      "side": 1,
+      "message": "Should we add a return value to indicate if the pin was reconfigured (ex. if it was found in the table?)?",
+      "revId": "caa7712cc91df87e7f0e66f8e18e2138b6291070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d2402f2_2d011942",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-24T00:05:21Z",
+      "side": 1,
+      "message": "Try to line up the variable type, in this case align enum above with uint32_t below (so delete the last tab and add a few spaces instead).",
+      "revId": "caa7712cc91df87e7f0e66f8e18e2138b6291070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad14d688_87c908d0",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-24T00:05:21Z",
+      "side": 1,
+      "message": "Code is cleaner is you use gpio_alt_funcs_count directly.",
+      "revId": "caa7712cc91df87e7f0e66f8e18e2138b6291070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdecaad0_10270abb",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-24T00:05:21Z",
+      "side": 1,
+      "message": "Code is cleaner without \u0027i\u0027 variable I think. How about \"for (af \u003d gpio_alt_funcs; af \u003c gpio_alt_funcs +  gpio_alt_funcs_count; af++) {\" ?",
+      "revId": "caa7712cc91df87e7f0e66f8e18e2138b6291070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adfbf684_6fbf8d4c",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-24T00:05:21Z",
+      "side": 1,
+      "message": "Maybe we should return after a match is found. No need to continue through the table.",
+      "revId": "caa7712cc91df87e7f0e66f8e18e2138b6291070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad14d688_279654a5",
+        "filename": "common/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-24T00:05:21Z",
+      "side": 1,
+      "message": "We can combine this comment with the one directly below.",
+      "revId": "caa7712cc91df87e7f0e66f8e18e2138b6291070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
