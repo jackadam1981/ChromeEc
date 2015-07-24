@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "ed8dee45_bd28ab36",
+        "filename": "board/gnawty/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2015-07-24T17:35:13Z",
+      "side": 1,
+      "message": "use the system_get_board_function() instead",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 40
+      },
+      "revId": "ffd0cb873a041c5de813a18513c00fe4329bf013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d9d1a6f_94510a32",
         "filename": "board/gnawty/board.h",
         "patchSetId": 2
