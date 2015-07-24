@@ -46,6 +46,57 @@
       "revId": "7dc0fe0661df65d01e5227626bfa3c53c4108963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d83be1d_5e87b564",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-24T19:12:21Z",
+      "side": 1,
+      "message": "Mention the actual testing / verification you did, briefly.",
+      "revId": "7dc0fe0661df65d01e5227626bfa3c53c4108963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d86fa2e_f286de9a",
+        "filename": "common/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-24T19:12:21Z",
+      "side": 1,
+      "message": "Align this with variable af above, not with loop body.",
+      "revId": "7dc0fe0661df65d01e5227626bfa3c53c4108963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d86fa2e_b28c66bf",
+        "filename": "common/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-24T19:12:21Z",
+      "side": 1,
+      "message": "This is confusing, and gpio_config_pins can returned a negative error value, according to our definition (though it doesn\u0027t now), which breaks things.\n\nHow about \"return ret_sda \u003d\u003d EC_SUCCESS ? ret_scl : ret_sda\"?",
+      "revId": "7dc0fe0661df65d01e5227626bfa3c53c4108963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
