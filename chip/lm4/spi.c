@@ -19,7 +19,7 @@
 #define CPRINTS(format, args...) cprints(CC_SPI, format, ## args)
 
 
-int spi_enable(int enable)
+int spi_enable(int port, enum gpio_signal gpio, int div, int enable)
 {
 	if (enable) {
 		gpio_config_module(MODULE_SPI, 1);
@@ -45,7 +45,8 @@ int spi_enable(int enable)
 }
 
 
-int spi_transaction(const uint8_t *txdata, int txlen,
+int spi_transaction(int port, enum gpio_signal gpio,
+		    const uint8_t *txdata, int txlen,
 		    uint8_t *rxdata, int rxlen)
 {
 	int totallen = txlen + rxlen;
@@ -120,7 +121,7 @@ static int spi_init(void)
 	/* Ensure the SPI port is disabled.  This keeps us from interfering
 	 * with the main chipset when we're not explicitly using the SPI
 	 * bus. */
-	spi_enable(0);
+	spi_enable(CONFIG_SPI_FLASH_PORT, CONFIG_SPI_FLASH_GPIO, 0, 0);
 
 	return EC_SUCCESS;
 }
@@ -156,7 +157,7 @@ static int command_spirom(int argc, char **argv)
 	uint8_t txsr1[] = {0x05};
 	uint8_t txsr2[] = {0x35};
 
-	spi_enable(1);
+	spi_enable(CONFIG_SPI_FLASH_PORT, CONFIG_SPI_FLASH_GPIO, 0, 1);
 
 	printrx("Man/Dev ID", txmandev, sizeof(txmandev), 2);
 	printrx("JEDEC ID", txjedec, sizeof(txjedec), 3);
@@ -164,7 +165,7 @@ static int command_spirom(int argc, char **argv)
 	printrx("Status reg 1", txsr1, sizeof(txsr1), 1);
 	printrx("Status reg 2", txsr2, sizeof(txsr2), 1);
 
-	spi_enable(0);
+	spi_enable(CONFIG_SPI_FLASH_PORT, CONFIG_SPI_FLASH_GPIO, 0, 0);
 
 	return EC_SUCCESS;
 }

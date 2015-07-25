@@ -98,7 +98,9 @@ void usb_spi_deferred(struct usb_spi_config const *config)
 			config->buffer[0] = USB_SPI_READ_COUNT_INVALID;
 		} else {
 			config->buffer[0] = usb_spi_map_error(
-				spi_transaction((uint8_t *)(config->buffer + 1),
+				spi_transaction(CONFIG_SPI_FLASH_PORT,
+						CONFIG_SPI_FLASH_GPIO,
+						(uint8_t *)(config->buffer + 1),
 						write_count,
 						(uint8_t *)(config->buffer + 1),
 						read_count));
