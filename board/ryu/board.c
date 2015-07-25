@@ -234,6 +234,23 @@ static void board_init(void)
 
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACC_IRQ1);
+
+	/* Enable SPI for BMI160 */
+	gpio_config_module(MODULE_SPI_MASTER, 1);
+
+	/* Set all four SPI pins to high speed */
+	STM32_GPIO_OSPEEDR(GPIO_C) |= 0x03f00000;
+	STM32_GPIO_OSPEEDR(GPIO_A) |= 0x00000300;
+
+	/* Enable clocks to SPI3 module */
+	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI3;
+
+	/* Reset SPI3 */
+	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI3;
+	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI3;
+
+	spi_enable(CONFIG_SPI_ACCEL_PORT, GPIO_SPI3_NSS, 0, 1);
+	board_get_version();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -321,7 +338,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .drv = &bmi160_drv,
 	 .mutex = &g_mutex,
 	 .drv_data = &g_bmi160_data,
-	 .addr = BMI160_ADDR0,
+	 .addr = GPIO_SPI3_NSS,
 	 .rot_standard_ref = &accelgyro_standard_ref,
 	 .default_config = {
 		 .odr = 100000,
@@ -338,7 +355,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .drv = &bmi160_drv,
 	 .mutex = &g_mutex,
 	 .drv_data = &g_bmi160_data,
-	 .addr = BMI160_ADDR0,
+	 .addr = GPIO_SPI3_NSS,
 	 .rot_standard_ref = &accelgyro_standard_ref,
 	 .default_config = {
 		 .odr = 0,
@@ -355,7 +372,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .drv = &bmi160_drv,
 	 .mutex = &g_mutex,
 	 .drv_data = &g_bmi160_data,
-	 .addr = BMI160_ADDR0,
+	 .addr = GPIO_SPI3_NSS,
 	 .rot_standard_ref = &mag_standard_ref,
 	 .default_config = {
 		 .odr = 0,
@@ -513,7 +530,9 @@ void usb_spi_board_disable(struct usb_spi_config const *config)
 	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
 
 	/* Release SPI GPIOs */
-	gpio_config_module(MODULE_SPI_MASTER, 0);
+	gpio_set_flags(GPIO_SPI_FLASH_SCK, GPIO_INPUT);
+	gpio_set_flags(GPIO_SPI_FLASH_MISO, GPIO_INPUT);
+	gpio_set_flags(GPIO_SPI_FLASH_MOSI, GPIO_INPUT);
 	gpio_set_flags(GPIO_SPI_FLASH_NSS, GPIO_INPUT);
 
 	/* Release AP from reset */
@@ -543,7 +562,7 @@ int board_get_version(void)
 		gpio_set_flags(GPIO_BOARD_ID0, GPIO_INPUT);
 		gpio_set_flags(GPIO_BOARD_ID1, GPIO_INPUT);
 		ver = id1 * 3 + id0;
-		CPRINTS("Board ID = %d\n", ver);
+		CPRINTS("Board ID = %d", ver);
 	}
 
 	return ver;
