@@ -234,6 +234,9 @@ enum usb_strings {
 /* Set the charge current limit. */
 void board_set_charge_limit(int charge_ma);
 
+/* Enable/disable external power path. */
+int board_vbus_power_path(int enable);
+
 /* PP1800 transition GPIO interrupt handler */
 void pp1800_on_off_evt(enum gpio_signal signal);
 
