@@ -128,8 +128,6 @@ static inline void pd_tx_init(void)
 static inline void pd_set_host_mode(int port, int enable)
 {
 	if (enable) {
-		/* We never charging in power source mode */
-		gpio_set_level(GPIO_USBC_CHARGE_EN_L, 1);
 		/* High-Z is used for host mode. */
 		gpio_set_level(GPIO_USBC_CC1_DEVICE_ODL, 1);
 		gpio_set_level(GPIO_USBC_CC2_DEVICE_ODL, 1);
