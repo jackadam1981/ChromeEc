@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d83be1d_f128970e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-25T01:40:56Z",
+      "side": 1,
+      "message": "should be sensor-\u003estate !\u003d SENSOR_INITIALIZED, so that we also skip the error state.",
+      "range": {
+        "startLine": 434,
+        "startChar": 8,
+        "endLine": 434,
+        "endChar": 47
+      },
+      "revId": "800de5cae7f07397d686da11228b125f56a007e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
