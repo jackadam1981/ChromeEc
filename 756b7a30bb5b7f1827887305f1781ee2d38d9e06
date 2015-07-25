@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed8dee45_7c10fbde",
+        "filename": "include/spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-07-25T23:33:19Z",
+      "side": 1,
+      "message": "How about simplify the common spi interface?\nremove enum gpio_signal_gpio from this file.\n\nA user may not need know which gpio pin is used.",
+      "range": {
+        "startLine": 39,
+        "startChar": 67,
+        "endLine": 39,
+        "endChar": 69
+      },
+      "revId": "756b7a30bb5b7f1827887305f1781ee2d38d9e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
