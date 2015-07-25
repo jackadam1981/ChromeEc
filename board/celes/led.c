@@ -31,8 +31,8 @@ const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 enum led_color {
 	LED_OFF = 0,
 	LED_RED,
-	LED_AMBER,
 	LED_GREEN,
+	LED_BLUE,
 
 	/* Number of colors, not a color itself */
 	LED_COLOR_COUNT
@@ -43,8 +43,8 @@ static const uint8_t color_brightness[LED_COLOR_COUNT][3] = {
 	/* {Red, Blue, Green}, */
 	[LED_OFF]   = {  0,   0,   0},
 	[LED_RED]   = {100,   0,   0},
-	[LED_AMBER] = { 75,   0,  10},
 	[LED_GREEN] = {  0,   0, 100},
+	[LED_BLUE]  = {  0, 100,   0},
 };
 
 /**
@@ -74,55 +74,38 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 	return EC_SUCCESS;
 }
 
-static void celes_led_set_power(void)
+static void celes_led_set_power_battery(void)
 {
 	static int power_ticks;
-	static int previous_state_suspend;
 
-	power_ticks++;
-
-	if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
-		/* Reset ticks if entering suspend so LED turns amber
-		 * as soon as possible. */
-		if (!previous_state_suspend)
-			power_ticks = 0;
-
-		/* Blink once every four seconds. */
-		set_color(
-			(power_ticks % LED_TOTAL_TICKS) < LED_ON_TICKS ?
-			LED_AMBER : LED_OFF);
-
-		previous_state_suspend = 1;
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		set_color(LED_BLUE);
 		return;
 	}
 
-	previous_state_suspend = 0;
-
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
-		set_color(LED_OFF);
-	else if (chipset_in_state(CHIPSET_STATE_ON))
-		set_color(LED_GREEN);
-}
-
-static void celes_led_set_battery(void)
-{
-	static int battery_ticks;
-
-	battery_ticks++;
-
+	/* CHIPSET_STATE_OFF */
 	switch (charge_get_state()) {
+	case PWR_STATE_DISCHARGE:
+		power_ticks = 0;
+		set_color(LED_OFF);
+		break;
 	case PWR_STATE_CHARGE:
-		set_color(LED_AMBER);
+		power_ticks = 0;
+		set_color(LED_RED);
 		break;
 	case PWR_STATE_ERROR:
-		set_color(LED_RED);
+		power_ticks++;
+		set_color((power_ticks % LED_TOTAL_TICKS) <
+		(LED_ON_TICKS * 2) ? LED_RED : LED_GREEN);
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
 	case PWR_STATE_IDLE: /* External power connected in IDLE. */
+		power_ticks = 0;
 		set_color(LED_GREEN);
 		break;
 	default:
-		/* Other states don't alter LED behavior */
+		power_ticks = 0;
+		set_color(LED_RED);
 		break;
 	}
 }
@@ -152,15 +135,10 @@ static void led_tick(void)
 	if (led_debug)
 		return;
 
-	if (extpower_is_present()) {
-		if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED)) {
-			celes_led_set_battery();
+	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED) &&
+		led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
+			celes_led_set_power_battery();
 			return;
-		}
-	} else if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED)) {
-		celes_led_set_power();
-		return;
-	}
 
 	set_color(LED_OFF);
 }
@@ -191,8 +169,8 @@ static int command_led_color(int argc, char **argv)
 			set_color(LED_RED);
 		} else if (!strcasecmp(argv[1], "green")) {
 			set_color(LED_GREEN);
-		} else if (!strcasecmp(argv[1], "amber")) {
-			set_color(LED_AMBER);
+		} else if (!strcasecmp(argv[1], "blue")) {
+			set_color(LED_BLUE);
 		} else {
 			/* maybe handle charger_discharge_on_ac() too? */
 			return EC_ERROR_PARAM1;
@@ -204,7 +182,7 @@ static int command_led_color(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(ledcolor, command_led_color,
-			"[debug|red|green|amber|off]",
+			"[debug|red|green|blue|off]",
 			"Change LED color",
 			NULL);
 
