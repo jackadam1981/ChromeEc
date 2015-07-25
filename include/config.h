@@ -1346,11 +1346,14 @@
 /* Support SPI (slave) interfaces */
 #undef CONFIG_SPI
 
-/* Define SPI chip select GPIO pin. */
-#undef CONFIG_SPI_CS_GPIO
-
 /* Support SPI flash */
 #undef CONFIG_SPI_FLASH
+
+/* Define which GPIO is used to select the flash */
+#undef CONFIG_SPI_FLASH_GPIO
+
+/* Define the SPI port to use to access the flash */
+#undef CONFIG_SPI_FLASH_PORT
 
 /* Support W25Q64 SPI flash */
 #undef CONFIG_SPI_FLASH_W25Q64
@@ -1364,11 +1367,8 @@
 /* Size (bytes) of SPI flash memory */
 #undef CONFIG_SPI_FLASH_SIZE
 
-/* SPI module port used for master interface */
-#undef CONFIG_SPI_MASTER_PORT
-
-/* SPI module port. */
-#undef CONFIG_SPI_PORT
+/* SPI master feature */
+#undef CONFIG_SPI_MASTER
 
 /* Support testing SPI slave controller driver. */
 #undef CONFIG_SPS_TEST
