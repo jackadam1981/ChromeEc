@@ -127,8 +127,8 @@ static inline void pd_tx_init(void)
 static inline void pd_set_host_mode(int port, int enable)
 {
 	if (enable) {
-		/* We never charging in power source mode */
-		gpio_set_level(GPIO_USBC_CHARGE_EN_L, 1);
+		/* we should be able to provide VBUS to USB device */
+		board_vbus_power_path(1);
 		/* High-Z is used for host mode. */
 		gpio_set_level(GPIO_USBC_CC1_DEVICE_ODL, 1);
 		gpio_set_level(GPIO_USBC_CC2_DEVICE_ODL, 1);
@@ -136,6 +136,11 @@ static inline void pd_set_host_mode(int port, int enable)
 		gpio_set_flags(GPIO_USBC_CC_PUEN1, GPIO_OUT_HIGH);
 		gpio_set_flags(GPIO_USBC_CC_PUEN2, GPIO_OUT_HIGH);
 	} else {
+		/*
+		 * do not connect the power path until we have decided
+		 * if we sink power from the other side.
+		 */
+		board_vbus_power_path(0);
 		/* Kill VBUS power supply */
 		charger_enable_otg_power(0);
 		gpio_set_level(GPIO_CHGR_OTG, 0);
