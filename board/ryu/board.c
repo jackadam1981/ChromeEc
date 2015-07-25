@@ -377,11 +377,6 @@ void board_set_usb_switches(int port, enum usb_switch setting)
 	pi3usb9281_set_switches(port, usb_switch_state);
 }
 
-int extpower_is_present(void)
-{
-	return gpio_get_level(GPIO_CHGR_ACOK);
-}
-
 void usb_board_connect(void)
 {
 	gpio_set_level(GPIO_USB_PU_EN_L, 0);
@@ -390,6 +385,17 @@ void usb_board_connect(void)
 void usb_board_disconnect(void)
 {
 	gpio_set_level(GPIO_USB_PU_EN_L, 1);
+}
+
+/*
+ * A power source is connected to the USB type-C port *and* we are using it
+ * At startup, for the dead battery case, the charger power path is enabled.
+ */
+static int sink_typec_power = 1;
+
+int extpower_is_present(void)
+{
+	return sink_typec_power;
 }
 
 /**
@@ -404,14 +410,21 @@ int board_set_active_charge_port(int charge_port)
 {
 	/* check if we are source vbus on that port */
 	int src = gpio_get_level(GPIO_CHGR_OTG);
+	/* can we sink power from the type-C port */
+	int sink = !src && charge_port != CHARGE_PORT_NONE;
 
-	if (charge_port >= 0 && charge_port < CONFIG_USB_PD_PORT_COUNT && src) {
-		CPRINTS("Port %d is not a sink, skipping enable", charge_port);
-		return EC_ERROR_INVAL;
+	if (sink_typec_power != sink) {
+		/* Enable/disable external power path(system + charging) */
+		charger_discharge_on_ac(!sink);
+
+		/* The status of our external power source changed */
+		sink_typec_power = sink;
+		hook_notify(HOOK_AC_CHANGE);
 	}
 
-	/* Enable/disable charging */
-	gpio_set_level(GPIO_USBC_CHARGE_EN_L, charge_port == CHARGE_PORT_NONE);
+	/* Tell the charge manager that the type-C port is no longer a sink */
+	if (charge_port == 0 && src)
+		return EC_ERROR_INVAL;
 
 	return EC_SUCCESS;
 }
