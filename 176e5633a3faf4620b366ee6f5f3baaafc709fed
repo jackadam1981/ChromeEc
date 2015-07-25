@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "0da7a2c0_c37cb696",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-25T19:57:06Z",
+      "side": 1,
+      "message": "It currently works because accel sensor is never offlined, so the EC rate is not affected by the sensor data rate.",
+      "parentUuid": "8dbd52cc_c75daefd",
+      "revId": "176e5633a3faf4620b366ee6f5f3baaafc709fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0da7a2c0_4f1c6d73",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
