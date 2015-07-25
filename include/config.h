@@ -1346,6 +1346,9 @@
 /* Support SPI (slave) interfaces */
 #undef CONFIG_SPI
 
+/* Define the SPI port to use to access SPI accelerometer */
+#undef CONFIG_SPI_ACCEL_PORT
+
 /* Support SPI flash */
 #undef CONFIG_SPI_FLASH
 
