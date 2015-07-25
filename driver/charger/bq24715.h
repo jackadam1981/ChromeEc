@@ -82,7 +82,7 @@
 #define CHARGE_I_4096MA                 (1 << 12)
 #define CHARGE_I_OFF                    (0)
 #define CHARGE_I_MIN                    (128)
-#define CHARGE_I_MAX                    (8128)
+#define CHARGE_I_MAX                    (4096)/*HW limited*/
 #define CHARGE_I_STEP                   (64)
 
 /* MaxChargeVoltage Register - 0x15
