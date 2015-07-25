@@ -72,7 +72,8 @@ static void sspi_transmission_end(void)
 	IT83XX_SSPI_SPISTS = 0x02;
 }
 
-int spi_enable(int enable)
+/* We assume only one SPI port in the chip, one SPI device */
+int spi_enable(int port, enum gpio_signal gpio, int div, int enable)
 {
 	if (enable) {
 		/*
@@ -96,7 +97,8 @@ int spi_enable(int enable)
 	return EC_SUCCESS;
 }
 
-int spi_transaction(const uint8_t *txdata, int txlen,
+int spi_transaction(int port, enum gpio_signal gpio,
+		const uint8_t *txdata, int txlen,
 		uint8_t *rxdata, int rxlen)
 {
 	int idx;
