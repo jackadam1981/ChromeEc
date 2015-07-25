@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "8dbd52cc_c75daefd",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-25T01:40:56Z",
+      "side": 1,
+      "message": "this brings up another question for me, does this CL work with tap for battery? IIRC, gesture.c changes the sensor ODR on power state transitions, but I don\u0027t think it calls motion_sense_set_accel_interval() to make sure we are running the task at the right rate.",
+      "parentUuid": "6d83be1d_0dc99552",
+      "revId": "176e5633a3faf4620b366ee6f5f3baaafc709fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0da7a2c0_4f1c6d73",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
