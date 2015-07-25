@@ -234,6 +234,33 @@ static void board_init(void)
 
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACC_IRQ1);
+
+	if (board_has_spi_sensors()) {
+		/* SPI sensors: put back the GPIO in its expected state */
+		gpio_set_level(GPIO_SPI3_NSS, 1);
+
+		/* Enable SPI for BMI160 */
+		gpio_config_module(MODULE_SPI_MASTER, 1);
+
+		/* Set all four SPI3 pins to high speed */
+		/* pins C10/C11/C12 */
+		STM32_GPIO_OSPEEDR(GPIO_C) |= 0x03f00000;
+
+		/* pin A4 */
+		STM32_GPIO_OSPEEDR(GPIO_A) |= 0x00000300;
+
+		/* Enable clocks to SPI3 module */
+		STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI3;
+
+		/* Reset SPI3 */
+		STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI3;
+		STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI3;
+
+		spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
+		CPRINTS("Board using SPI sensors");
+	} else { /* I2C sensors on rev v6/7/8 */
+		CPRINTS("Board using I2C sensors");
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -292,6 +319,7 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
 	{ CONFIG_SPI_FLASH_PORT, 0, GPIO_SPI_FLASH_NSS},
+	{ CONFIG_SPI_ACCEL_PORT, 1, GPIO_SPI3_NSS }
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
@@ -493,6 +521,7 @@ void usb_spi_board_enable(struct usb_spi_config const *config)
 	gpio_set_flags(SPI_FLASH_DEVICE->gpio_cs, GPIO_OUT_HIGH);
 
 	/* Set all four SPI pins to high speed */
+	/* pins B10/B14/B15 and B9 */
 	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xf03c0000;
 
 	/* Enable clocks to SPI2 module */
@@ -549,10 +578,20 @@ int board_get_version(void)
 		gpio_set_flags(GPIO_BOARD_ID0, GPIO_INPUT);
 		gpio_set_flags(GPIO_BOARD_ID1, GPIO_INPUT);
 		ver = id1 * 3 + id0;
-		CPRINTS("Board ID = %d\n", ver);
+		CPRINTS("Board ID = %d", ver);
 	}
 
 	return ver;
+}
+
+int board_has_spi_sensors(void)
+{
+	/*
+	 * boards version 6 / 7 / 8 have an I2C bus to sensors.
+	 * board version 0+ has a SPI bus to sensors
+	 */
+	int ver = board_get_version();
+	return (ver < 6);
 }
 
 /****************************************************************************/

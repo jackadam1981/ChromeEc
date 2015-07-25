@@ -143,6 +143,10 @@
 /* Enable Case Closed Debugging */
 #define CONFIG_CASE_CLOSED_DEBUG
 
+/* Enable Accel over SPI */
+#define CONFIG_SPI_ACCEL_PORT    1  /* Second SPI master port */
+#define SPI_ACCEL_PORT_ID        1  /* stored at spi_ports[1] */
+
 /* Sensor support */
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_MAG_BMI160_BMM150
@@ -167,6 +171,13 @@
 #ifndef __ASSEMBLER__
 
 int board_get_version(void);
+int board_has_spi_sensors(void);
+
+/* GPIOs depending on board version */
+#define GPIO_VDDSPI_EN (board_has_spi_sensors() ? GPIO_VDDSPI_EN_0 \
+						: GPIO_VDDSPI_EN_OLD)
+#define GPIO_USBC_CC_EN (board_has_spi_sensors() ?  GPIO_USBC_CC_EN_0 \
+						 : GPIO_SPI3_NSS)
 
 /* Timer selection */
 #define TIM_CLOCK32 5
