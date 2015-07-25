@@ -142,6 +142,10 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_G3S5:
 		/* Exit SOC G3 */
+
+		/* Check lid is open */
+		if (!lid_is_open())
+			return POWER_G3;
 #ifdef CONFIG_PMIC
 		gpio_set_level(GPIO_PCH_SYS_PWROK, 1);
 #else
