@@ -88,7 +88,7 @@ void system_pre_init(void)
 	/* Deassert nSIO_RESET */
 	MEC1322_PCR_PWR_RST_CTL &= ~(1 << 0);
 
-	spi_enable(1);
+	spi_enable(&spi_ports[SPI_FLASH_INDEX], 1);
 }
 
 void _system_reset(int flags, int wake_from_hibernate)

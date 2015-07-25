@@ -27,26 +27,59 @@ enum spi_clock_mode {
 	SPI_CLOCK_MODE3 = 3
 };
 
-/* Enable / disable the SPI port.  When the port is disabled, all its I/O lines
- * are high-Z so the EC won't interfere with other devices on the SPI bus. */
-int spi_enable(int enable);
+struct spi_port_t {
+	/*
+	 * SPI port to enable.
+	 * On some architecture, this is SPI master port index,
+	 * on other the SPI port index directly.
+	 */
+	uint8_t port;
+
+	/* Clock divisor to talk to SPI devices. */
+	uint8_t div;
+
+	/* Number of slaves connected to this master port. */
+	uint8_t gpio_cs_len;
+
+	/* Array of gpio use for chip selection. */
+	const enum gpio_signal gpio_cs[CONFIG_SPI_MASTER_MAX_SLAVE];
+};
+
+extern const struct spi_port_t spi_ports[];
+
+/*
+ * The first port in spi_ports define the port to access the SPI flash,
+ * if used.
+ */
+#define SPI_FLASH_INDEX 0
+
+/*
+ * Enable / disable the SPI port.  When the port is disabled, all its I/O lines
+ * are high-Z so the EC won't interfere with other devices on the SPI bus.
+ *
+ * port: spi_port_t SPI master port to work on.
+ * enable: 1 to enable the port, 0 to disable it.
+ */
+int spi_enable(const struct spi_port_t *spi_port, int enable);
 
 /* Issue a SPI transaction.  Assumes SPI port has already been enabled.
  * Transmits <txlen> bytes from <txdata>, throwing away the corresponding
  * received data, then transmits <rxlen> dummy bytes, saving the received data
  * in <rxdata>. */
-int spi_transaction(const uint8_t *txdata, int txlen,
+int spi_transaction(int port, enum gpio_signal gpio,
+		    const uint8_t *txdata, int txlen,
 		    uint8_t *rxdata, int rxlen);
 
 /* Similar to spi_transaction(), but hands over to DMA for reading response.
  * Must call spi_transaction_flush() after this to make sure the response is
  * received.
  */
-int spi_transaction_async(const uint8_t *txdata, int txlen,
+int spi_transaction_async(int port, enum gpio_signal gpio,
+			  const uint8_t *txdata, int txlen,
 			  uint8_t *rxdata, int rxlen);
 
 /* Wait for async response received */
-int spi_transaction_flush(void);
+int spi_transaction_flush(int port, enum gpio_signal gpio);
 
 #ifdef CONFIG_SPI
 /**

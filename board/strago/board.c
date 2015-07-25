@@ -30,6 +30,7 @@
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "registers.h"
+#include "spi.h"
 #include "temp_sensor.h"
 #include "temp_sensor_chip.h"
 #include "thermal.h"
@@ -124,6 +125,11 @@ const struct i2c_port_t i2c_ports[]  = {
 		GPIO_I2C_PORT3_SCL, GPIO_I2C_PORT3_SDA}
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/* SPI master ports */
+const struct spi_port_t spi_ports[] = {
+	{ CONFIG_SPI_FLASH_PORT, 0, 1, { CONFIG_SPI_FLASH_GPIO} },
+};
 
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_AC_PRESENT,

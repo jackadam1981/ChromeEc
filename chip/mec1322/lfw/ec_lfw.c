@@ -36,6 +36,12 @@ const struct int_vector_t hdr_int_vect = {
 			&fault_handler    /* Bus fault handler */
 };
 
+/* SPI master ports */
+const struct spi_port_t spi_ports[] = {
+	{ CONFIG_SPI_FLASH_PORT, 0, 1, { CONFIG_SPI_FLASH_GPIO} },
+};
+
+
 void timer_init()
 {
 	uint32_t val = 0;
@@ -79,7 +85,8 @@ static int spi_flash_readloc(uint8_t *buf_usr,
 	if (offset + bytes > CONFIG_SPI_FLASH_SIZE)
 		return EC_ERROR_INVAL;
 
-	return spi_transaction(cmd, 4, buf_usr, bytes);
+	return spi_transaction(CONFIG_SPI_FLASH_PORT, CONFIG_SPI_FLASH_GPIO,
+			       cmd, 4, buf_usr, bytes);
 }
 
 int spi_image_load(uint32_t offset)
@@ -239,7 +246,7 @@ void lfw_main()
 	dma_init();
 	uart_init();
 	system_init();
-	spi_enable(1);
+	spi_enable(&spi_ports[SPI_FLASH_INDEX], 1);
 
 	uart_puts("littlefw");
 	uart_puts(version_data.version);

@@ -144,6 +144,12 @@ BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
  * Support SPI bridging over USB, this requires usb_spi_board_enable and
  * usb_spi_board_disable to be defined to enable and disable the SPI bridge.
  */
+
+/* SPI master ports */
+const struct spi_port_t spi_ports[] = {
+	{ CONFIG_SPI_FLASH_PORT, 0, 1, { CONFIG_SPI_FLASH_GPIO} },
+};
+
 void usb_spi_board_enable(struct usb_spi_config const *config)
 {
 	/* Remap SPI2 to DMA channels 6 and 7 */
@@ -162,12 +168,12 @@ void usb_spi_board_enable(struct usb_spi_config const *config)
 	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI2;
 	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
 
-	spi_enable(1);
+	spi_enable(&spi_ports[SPI_FLASH_INDEX], 1);
 }
 
 void usb_spi_board_disable(struct usb_spi_config const *config)
 {
-	spi_enable(0);
+	spi_enable(&spi_ports[SPI_FLASH_INDEX], 0);
 
 	/* Disable clocks to SPI2 module */
 	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
