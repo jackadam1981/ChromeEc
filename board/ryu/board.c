@@ -183,6 +183,115 @@ struct pi3usb9281_config pi3usb9281_chips[] = {
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
 	     CONFIG_USB_SWITCH_PI3USB9281_CHIP_COUNT);
 
+/* power signal list.  Must match order of enum power_signal. */
+const struct power_signal_info power_signal_list[] = {
+	{GPIO_AP_HOLD, 1, "AP_HOLD"},
+	{GPIO_AP_IN_SUSPEND,  1, "SUSPEND_ASSERTED"},
+};
+BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
+
+/* ADC channels */
+const struct adc_t adc_channels[] = {
+	/* Vbus sensing. Converted to mV, /10 voltage divider. */
+	[ADC_VBUS] = {"VBUS",  30000, 4096, 0, STM32_AIN(0)},
+	/* USB PD CC lines sensing. Converted to mV (3000mV/4096). */
+	[ADC_CC1_PD] = {"CC1_PD", 3000, 4096, 0, STM32_AIN(1)},
+	[ADC_CC2_PD] = {"CC2_PD", 3000, 4096, 0, STM32_AIN(3)},
+};
+BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+/* I2C ports */
+const struct i2c_port_t i2c_ports[] = {
+	{"master", I2C_PORT_MASTER, 100,
+		GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
+	{"slave",  I2C_PORT_SLAVE, 1000,
+		GPIO_SLAVE_I2C_SCL, GPIO_SLAVE_I2C_SDA},
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/* SPI master ports */
+const struct spi_port_t spi_ports[] = {
+	{ CONFIG_SPI_FLASH_PORT, 0, 1, { CONFIG_SPI_FLASH_GPIO} },
+	{ CONFIG_SPI_ACCEL_PORT, 1, 1, { GPIO_SPI3_NSS} }
+};
+
+/* Sensor mutex */
+static struct mutex g_mutex;
+
+/* Matrix to rotate sensor vector into standard reference frame */
+const matrix_3x3_t accelgyro_standard_ref = {
+	{FLOAT_TO_FP(-1),  0,  0},
+	{ 0, FLOAT_TO_FP(-1),  0},
+	{ 0,  0, FLOAT_TO_FP(1)}
+};
+
+const matrix_3x3_t mag_standard_ref = {
+	{ 0,  FLOAT_TO_FP(-1),  0},
+	{FLOAT_TO_FP(-1),  0,  0},
+	{ 0,  0, FLOAT_TO_FP(1)}
+};
+
+struct motion_sensor_t motion_sensors[] = {
+
+	/*
+	 * Note: bmi160: supports accelerometer and gyro sensor
+	 * Requirement: accelerometer sensor must init before gyro sensor
+	 * DO NOT change the order of the following table.
+	 */
+	{.name = "Accel",
+	 .active_mask = SENSOR_ACTIVE_S0_S3_S5,
+	 .chip = MOTIONSENSE_CHIP_BMI160,
+	 .type = MOTIONSENSE_TYPE_ACCEL,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &bmi160_drv,
+	 .mutex = &g_mutex,
+	 .drv_data = &g_bmi160_data,
+	 .addr = GPIO_SPI3_NSS,
+	 .rot_standard_ref = &accelgyro_standard_ref,
+	 .default_config = {
+		 .odr = 100000,
+		 .range = 8,  /* g */
+		 .ec_rate = SUSPEND_SAMPLING_INTERVAL,
+	 }
+	},
+
+	{.name = "Gyro",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_BMI160,
+	 .type = MOTIONSENSE_TYPE_GYRO,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &bmi160_drv,
+	 .mutex = &g_mutex,
+	 .drv_data = &g_bmi160_data,
+	 .addr = GPIO_SPI3_NSS,
+	 .rot_standard_ref = &accelgyro_standard_ref,
+	 .default_config = {
+		 .odr = 0,
+		 .range = 1000, /* dps */
+		 .ec_rate = MAX_MOTION_SENSE_WAIT_TIME,
+	 }
+	},
+
+	{.name = "Mag",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_BMI160,
+	 .type = MOTIONSENSE_TYPE_MAG,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &bmi160_drv,
+	 .mutex = &g_mutex,
+	 .drv_data = &g_bmi160_data,
+	 .addr = GPIO_SPI3_NSS,
+	 .rot_standard_ref = &mag_standard_ref,
+	 .default_config = {
+		 .odr = 0,
+		 .range = 1 << 11, /* 16LSB / uT */
+		 .ec_rate = MAX_MOTION_SENSE_WAIT_TIME,
+	 }
+	},
+};
+const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -234,6 +343,22 @@ static void board_init(void)
 
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACC_IRQ1);
+
+	/* Enable SPI for BMI160 */
+	gpio_config_module(MODULE_SPI_MASTER, 1);
+
+	/* Set all four SPI pins to high speed */
+	STM32_GPIO_OSPEEDR(GPIO_C) |= 0x03f00000;
+	STM32_GPIO_OSPEEDR(GPIO_A) |= 0x00000300;
+
+	/* Enable clocks to SPI3 module */
+	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI3;
+
+	/* Reset SPI3 */
+	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI3;
+	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI3;
+
+	spi_enable(&spi_ports[1], 1);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -262,115 +387,6 @@ static void board_startup_key_combo(void)
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_startup_key_combo, HOOK_PRIO_DEFAULT);
-
-/* power signal list.  Must match order of enum power_signal. */
-const struct power_signal_info power_signal_list[] = {
-	{GPIO_AP_HOLD, 1, "AP_HOLD"},
-	{GPIO_AP_IN_SUSPEND,  1, "SUSPEND_ASSERTED"},
-};
-BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
-
-/* ADC channels */
-const struct adc_t adc_channels[] = {
-	/* Vbus sensing. Converted to mV, /10 voltage divider. */
-	[ADC_VBUS] = {"VBUS",  30000, 4096, 0, STM32_AIN(0)},
-	/* USB PD CC lines sensing. Converted to mV (3000mV/4096). */
-	[ADC_CC1_PD] = {"CC1_PD", 3000, 4096, 0, STM32_AIN(1)},
-	[ADC_CC2_PD] = {"CC2_PD", 3000, 4096, 0, STM32_AIN(3)},
-};
-BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
-
-/* I2C ports */
-const struct i2c_port_t i2c_ports[] = {
-	{"master", I2C_PORT_MASTER, 100,
-		GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
-	{"slave",  I2C_PORT_SLAVE, 1000,
-		GPIO_SLAVE_I2C_SCL, GPIO_SLAVE_I2C_SDA},
-};
-const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
-
-/* SPI master ports */
-const struct spi_port_t spi_ports[] = {
-	{ CONFIG_SPI_FLASH_PORT, 0, 1, { CONFIG_SPI_FLASH_GPIO} },
-};
-
-/* Sensor mutex */
-static struct mutex g_mutex;
-
-/* Matrix to rotate sensor vector into standard reference frame */
-const matrix_3x3_t accelgyro_standard_ref = {
-	{FLOAT_TO_FP(-1),  0,  0},
-	{ 0, FLOAT_TO_FP(-1),  0},
-	{ 0,  0, FLOAT_TO_FP(1)}
-};
-
-const matrix_3x3_t mag_standard_ref = {
-	{ 0,  FLOAT_TO_FP(-1),  0},
-	{FLOAT_TO_FP(-1),  0,  0},
-	{ 0,  0, FLOAT_TO_FP(1)}
-};
-
-
-struct motion_sensor_t motion_sensors[] = {
-
-	/*
-	 * Note: bmi160: supports accelerometer and gyro sensor
-	 * Requirement: accelerometer sensor must init before gyro sensor
-	 * DO NOT change the order of the following table.
-	 */
-	{.name = "Accel",
-	 .active_mask = SENSOR_ACTIVE_S0_S3_S5,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &bmi160_drv,
-	 .mutex = &g_mutex,
-	 .drv_data = &g_bmi160_data,
-	 .addr = BMI160_ADDR0,
-	 .rot_standard_ref = &accelgyro_standard_ref,
-	 .default_config = {
-		 .odr = 100000,
-		 .range = 8,  /* g */
-		 .ec_rate = SUSPEND_SAMPLING_INTERVAL,
-	 }
-	},
-
-	{.name = "Gyro",
-	 .active_mask = SENSOR_ACTIVE_S0_S3,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
-	 .type = MOTIONSENSE_TYPE_GYRO,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &bmi160_drv,
-	 .mutex = &g_mutex,
-	 .drv_data = &g_bmi160_data,
-	 .addr = BMI160_ADDR0,
-	 .rot_standard_ref = &accelgyro_standard_ref,
-	 .default_config = {
-		 .odr = 0,
-		 .range = 1000, /* dps */
-		 .ec_rate = MAX_MOTION_SENSE_WAIT_TIME,
-	 }
-	},
-
-	{.name = "Mag",
-	 .active_mask = SENSOR_ACTIVE_S0_S3,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
-	 .type = MOTIONSENSE_TYPE_MAG,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &bmi160_drv,
-	 .mutex = &g_mutex,
-	 .drv_data = &g_bmi160_data,
-	 .addr = BMI160_ADDR0,
-	 .rot_standard_ref = &mag_standard_ref,
-	 .default_config = {
-		 .odr = 0,
-		 .range = 1 << 11, /* 16LSB / uT */
-		 .ec_rate = MAX_MOTION_SENSE_WAIT_TIME,
-	 }
-	},
-};
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
-
 void board_set_usb_switches(int port, enum usb_switch setting)
 {
 	/* If switch is not changing, then return */
