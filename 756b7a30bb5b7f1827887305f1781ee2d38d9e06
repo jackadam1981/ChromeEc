@@ -22,6 +22,30 @@
       "revId": "756b7a30bb5b7f1827887305f1781ee2d38d9e06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8dee45_9c15a7d0",
+        "filename": "include/spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-07-25T23:44:04Z",
+      "side": 1,
+      "message": "If you plan to support more than one spi slaves on a SPI master port, you may rename \"enum gpio_signal gpio\" to logic spi slave address.",
+      "parentUuid": "ed8dee45_7c10fbde",
+      "range": {
+        "startLine": 39,
+        "startChar": 67,
+        "endLine": 39,
+        "endChar": 69
+      },
+      "revId": "756b7a30bb5b7f1827887305f1781ee2d38d9e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
