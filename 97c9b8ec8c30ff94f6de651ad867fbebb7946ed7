@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d9d1a6f_602cdc1d",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-26T17:05:53Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "8dbd52cc_a2c6e08c",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 74
+      },
+      "revId": "97c9b8ec8c30ff94f6de651ad867fbebb7946ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d86fa2e_fe2ce599",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ad977653_a635fae1",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-26T17:05:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d86fa2e_fe2ce599",
+      "range": {
+        "startLine": 1136,
+        "startChar": 0,
+        "endLine": 1136,
+        "endChar": 26
+      },
+      "revId": "97c9b8ec8c30ff94f6de651ad867fbebb7946ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad977653_66af929a",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2015-07-26T01:14:01Z",
       "side": 1,
       "message": "STM32_DMA_REGS is both a macro and an array, seems confusing to me",
+      "range": {
+        "startLine": 1211,
+        "startChar": 0,
+        "endLine": 1213,
+        "endChar": 22
+      },
+      "revId": "97c9b8ec8c30ff94f6de651ad867fbebb7946ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d9ade79_cf8cd2c0",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-26T17:05:53Z",
+      "side": 1,
+      "message": "Removed the array, macro is checking the channels.",
+      "parentUuid": "ad977653_66af929a",
       "range": {
         "startLine": 1211,
         "startChar": 0,
