@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed8dee45_bc318376",
+        "filename": "chip/npcx/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-26T04:54:57Z",
+      "side": 1,
+      "message": "See previous command. For accessing SPI flash, which was the use case until yesterday, The arguments are CONFIG_SPI_FLASH_PORT and CONFIG_SPI_FLASH_GPIO.",
+      "parentUuid": "cd882a39_9c985186",
+      "range": {
+        "startLine": 74,
+        "startChar": 15,
+        "endLine": 74,
+        "endChar": 56
+      },
+      "revId": "756b7a30bb5b7f1827887305f1781ee2d38d9e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed8dee45_7c10fbde",
         "filename": "include/spi.h",
         "patchSetId": 1
@@ -60,6 +84,54 @@
       "side": 1,
       "message": "If you plan to support more than one spi slaves on a SPI master port, you may rename \"enum gpio_signal gpio\" to logic spi slave address.",
       "parentUuid": "ed8dee45_7c10fbde",
+      "range": {
+        "startLine": 39,
+        "startChar": 67,
+        "endLine": 39,
+        "endChar": 69
+      },
+      "revId": "756b7a30bb5b7f1827887305f1781ee2d38d9e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d9d1a6f_801aa0fc",
+        "filename": "include/spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-26T04:54:57Z",
+      "side": 1,
+      "message": "Given SPI master is currently mostly used for SPI flash, the arguments are usually (CONFIG_SPI_FLASH_PORT, CONFIG_SPI_FLASH_GPIO).",
+      "parentUuid": "ed8dee45_7c10fbde",
+      "range": {
+        "startLine": 39,
+        "startChar": 67,
+        "endLine": 39,
+        "endChar": 69
+      },
+      "revId": "756b7a30bb5b7f1827887305f1781ee2d38d9e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d9ade79_8f200a58",
+        "filename": "include/spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-26T04:54:57Z",
+      "side": 1,
+      "message": "Agree, but I will make the change when needed...",
+      "parentUuid": "ed8dee45_9c15a7d0",
       "range": {
         "startLine": 39,
         "startChar": 67,
