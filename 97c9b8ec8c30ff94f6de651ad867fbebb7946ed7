@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dbd52cc_a2c6e08c",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-26T01:14:01Z",
+      "side": 1,
+      "message": "this array seems just one more indirection,\nthe macro can directly  return DMA1_REGS or DMA2_REGS depending on this index ?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 74
+      },
+      "revId": "97c9b8ec8c30ff94f6de651ad867fbebb7946ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d86fa2e_fe2ce599",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-26T01:14:01Z",
+      "side": 1,
+      "message": "this #ifdef is not terribly useful",
+      "range": {
+        "startLine": 1136,
+        "startChar": 0,
+        "endLine": 1136,
+        "endChar": 26
+      },
+      "revId": "97c9b8ec8c30ff94f6de651ad867fbebb7946ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad977653_66af929a",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-26T01:14:01Z",
+      "side": 1,
+      "message": "STM32_DMA_REGS is both a macro and an array, seems confusing to me",
+      "range": {
+        "startLine": 1211,
+        "startChar": 0,
+        "endLine": 1213,
+        "endChar": 22
+      },
+      "revId": "97c9b8ec8c30ff94f6de651ad867fbebb7946ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
