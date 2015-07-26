@@ -22,6 +22,30 @@
       "revId": "b2340f1e3be2399fbe8e2b2d43447619a9d27e78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d86fa2e_3ece7d5b",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-26T05:14:49Z",
+      "side": 0,
+      "message": "Agree but both port are SPI_MASTER. In other part SPI flash code assumed there was only one SPI_MASTER, and was using disabling of gpio_config_module to change the GPIO back to inputs.\nMaybe it should be a more specific function to SPI, this is a particular use case?",
+      "parentUuid": "6d83be1d_1487d998",
+      "range": {
+        "startLine": 516,
+        "startChar": 1,
+        "endLine": 516,
+        "endChar": 42
+      },
+      "revId": "b2340f1e3be2399fbe8e2b2d43447619a9d27e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
