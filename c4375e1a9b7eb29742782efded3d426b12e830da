@@ -33,6 +33,24 @@
       "revId": "c4375e1a9b7eb29742782efded3d426b12e830da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed47aeea_93f16e0d",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-27T23:47:34Z",
+      "side": 1,
+      "message": "On second look, you\u0027re calling this function on every pass through the state machine loop (ex. on any power signal change). Is this really what you want?",
+      "parentUuid": "cdee6a36_dd840be9",
+      "revId": "c4375e1a9b7eb29742782efded3d426b12e830da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
