@@ -76,6 +76,7 @@ int ina2xx_get_power(uint8_t idx)
 	return INA2XX_POW_MW((int)pow);
 }
 
+#ifdef CONFIG_CMD_INA
 static void ina2xx_dump(uint8_t idx)
 {
 	uint16_t cfg = ina2xx_read(idx, INA2XX_REG_CONFIG);
@@ -102,7 +103,6 @@ static void ina2xx_dump(uint8_t idx)
 
 /*****************************************************************************/
 /* Console commands */
-
 static int command_ina(int argc, char **argv)
 {
 	char *e;
@@ -145,3 +145,4 @@ DECLARE_CONSOLE_COMMAND(ina, command_ina,
 			"<index> [config|calib|mask|alert <val>]",
 			"INA2XX power/current sensing",
 			NULL);
+#endif

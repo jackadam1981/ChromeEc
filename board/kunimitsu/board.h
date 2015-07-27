@@ -107,6 +107,7 @@
 #undef CONFIG_CONSOLE_HISTORY
 #undef CONFIG_PECI
 
+#undef CONFIG_CMD_TMP432
 /* Enable sleep mode in G3 */
 #define CONFIG_G3_SLEEP
 
