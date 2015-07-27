@@ -22,6 +22,30 @@
       "revId": "ff9934264163dd0d7e795f32144c6c1082fdf040",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adfcd6c5_a45d6278",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2015-07-27T21:44:07Z",
+      "side": 0,
+      "message": "Removed.  I should have put it in a different clean-up patch.",
+      "parentUuid": "4dd51ace_51b37438",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 20
+      },
+      "revId": "ff9934264163dd0d7e795f32144c6c1082fdf040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

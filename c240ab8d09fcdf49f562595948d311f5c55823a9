@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "adfcd6c5_64588a85",
+        "filename": "util/openocd/nrf51_chip.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2015-07-27T21:44:07Z",
+      "side": 1,
+      "message": "I didn\u0027t write these.  I just copied them from somewhere else with no copyright notice.",
+      "parentUuid": "cd7bcaab_553eecea",
+      "revId": "c240ab8d09fcdf49f562595948d311f5c55823a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd7bcaab_d5519c30",
         "filename": "util/openocd/nrf51_chip.cfg",
         "patchSetId": 1
