@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "6d1d7ef6_7afb593d",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-27T20:05:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d9d1a6f_4baa998b",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 42
+      },
+      "revId": "3a2f12b62ec059bb2d41e50b15d5110e62c3f06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dbd52cc_e2dd3804",
         "filename": "board/ryu/board.c",
         "patchSetId": 3
@@ -59,6 +83,30 @@
       "writtenOn": "2015-07-27T15:28:12Z",
       "side": 1,
       "message": "ditto : /* pin A4 */",
+      "range": {
+        "startLine": 243,
+        "startChar": 19,
+        "endLine": 243,
+        "endChar": 41
+      },
+      "revId": "3a2f12b62ec059bb2d41e50b15d5110e62c3f06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d4c7215_db66339e",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-27T20:05:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dbd52cc_e2dd3804",
       "range": {
         "startLine": 243,
         "startChar": 19,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "cd42eadd_9d1ae32e",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-27T20:05:02Z",
+      "side": 1,
+      "message": "And the worse we did not need the pin to change at all, we are driving SPI CS from the software, any pin will do.",
+      "parentUuid": "4d9d1a6f_cb4e898e",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "3a2f12b62ec059bb2d41e50b15d5110e62c3f06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dbd52cc_42f50c7a",
         "filename": "board/ryu/gpio.inc",
         "patchSetId": 3
@@ -105,6 +177,30 @@
       "writtenOn": "2015-07-27T15:28:12Z",
       "side": 1,
       "message": "you have 2 x C15 ...\nOne of them is C12 : likely FLASH_MOSI",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 52
+      },
+      "revId": "3a2f12b62ec059bb2d41e50b15d5110e62c3f06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd42eadd_fd1527ff",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-27T20:05:02Z",
+      "side": 1,
+      "message": "Good catch, I made a mistake with the pin name. I meant B instead of C, but anyway I don\u0027t need to define these pins since I introduce MODULE_SPI_FLASH_MASTER.",
+      "parentUuid": "8dbd52cc_42f50c7a",
       "range": {
         "startLine": 114,
         "startChar": 0,
