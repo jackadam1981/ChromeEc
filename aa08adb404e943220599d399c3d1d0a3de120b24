@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d83be1d_6796a5d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-27T15:39:00Z",
+      "side": 1,
+      "message": "at the same time, the sleep is now 4ms ... which is way more than the delay the i2c access was adding.\nSomething does not add up",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "aa08adb404e943220599d399c3d1d0a3de120b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0da7a2c0_83c46ed8",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-27T15:39:00Z",
+      "side": 1,
+      "message": "they don\u0027t seem to be used",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "aa08adb404e943220599d399c3d1d0a3de120b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
