@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d4162d7_7f1caff7",
+        "filename": "util/openocd/lm4_chip.cfg",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-27T21:36:33Z",
+      "side": 1,
+      "message": "why are you defining a SRST to not use it afterwards ?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "7fb84be3ef16ac4688dccd103cd926f8b64a74c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
