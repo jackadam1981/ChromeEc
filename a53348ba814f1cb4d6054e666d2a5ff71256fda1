@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdee6a36_5d775bad",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-27T23:30:45Z",
+      "side": 1,
+      "message": "will calling this here interfere with factory tests that call this?\n\nhaven\u0027t thought through it fully, but I think we may be ok since the factory tests are already designed to clear this when AC is unplugged.",
+      "range": {
+        "startLine": 410,
+        "startChar": 6,
+        "endLine": 410,
+        "endChar": 29
+      },
+      "revId": "a53348ba814f1cb4d6054e666d2a5ff71256fda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adfcd6c5_47fb503d",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-27T23:30:45Z",
+      "side": 1,
+      "message": "this logic doesn\u0027t seem exactly right. if we are in SRC_DISCONNECTED, typec_power_path is 1 since it is turned on in set_host_mode(), and vbus is low. in this case this function will return true even though there is no power.\n\nmaybe you need to add\n\u0026\u0026 gpio_get_level(GPIO_CHGR_ACOK)",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 33
+      },
+      "revId": "a53348ba814f1cb4d6054e666d2a5ff71256fda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8df8f2fb_bb00273f",
+        "filename": "board/ryu/usb_pd_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-27T23:30:45Z",
+      "side": 1,
+      "message": "looks like we should disable the power path here, but we have to be careful not to do it in the dead battery case.\n\nperhaps we need a static variable to keep track of if we have ever toggled enable to on (and thus enabled the power path).\n\nstatic inline void pd_set_host_mode(int port, int enable)\n{\n\tstatic int has_been_enabled;\n\n\tif (enable) {\n\t\thas_been_enabled \u003d 1;\n\t\t/* we should be able to provide VBUS to USB device */\n\t\tboard_vbus_power_path(1);\n\t\t...\n\t} else {\n\t\t/*\n\t\t * disable power path if we have enabled host mode\n\t\t * to avoid dead battery case\n\t\t */\n\t\tif (has_been_enabled)\n\t\t\tboard_vbus_power_path(0);\n\t\t/* Kill VBUS power supply */\n\t\tcharger_enable_otg_power(0);\n\t\t...\n\t}\n}\n\ni think this behavior matches what we have done on other boards.",
+      "revId": "a53348ba814f1cb4d6054e666d2a5ff71256fda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
