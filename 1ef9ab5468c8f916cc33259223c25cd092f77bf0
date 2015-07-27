@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d1d7ef6_5ad775bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-07-27T20:03:59Z",
+      "side": 1,
+      "message": "Currently, depthcharge does not store this value anywhere. Do we really need to store this value? Can we instead just issue a host command EC_CMD_GSV_BOOT_ON_AC in fastboot mode as soon as the device gets \"fastboot oem off-mode-charge-\u003c0|1\u003e\"?",
+      "range": {
+        "startLine": 16,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "1ef9ab5468c8f916cc33259223c25cd092f77bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
