@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad5136aa_ffa99b96",
+        "filename": "include/spi.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-07-27T22:10:32Z",
+      "side": 1,
+      "message": "It seems a little odd to have the GPIOs listed here as well as passed into the various functions that need to use them.  Would it make more sense to add a spi_device_t struct that points to a spi_port_t as well as contains the devices CS GPIO?  That way the various transaction functions could just take a spi_device_t.  Or perhaps the transaction functions should take a spi_port_t and a device index instead of a gpio_signal?  Then use that index to look into this table, ensuring consistent use of GPIOs.",
+      "range": {
+        "startLine": 45,
+        "startChar": 31,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "daf96620d44a19b9e42d7698a171358c50f5f309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
