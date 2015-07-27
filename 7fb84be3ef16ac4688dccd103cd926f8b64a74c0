@@ -22,6 +22,30 @@
       "revId": "7fb84be3ef16ac4688dccd103cd926f8b64a74c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1d7ef6_1d4c9793",
+        "filename": "util/openocd/lm4_chip.cfg",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2015-07-27T21:44:07Z",
+      "side": 1,
+      "message": "Because the waveform looks right when I set reset_config trst_and_srst, except that there seem to be multiple drivers.  If we end up needing srst later, it seems like a better starting point.",
+      "parentUuid": "0d4162d7_7f1caff7",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "7fb84be3ef16ac4688dccd103cd926f8b64a74c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
