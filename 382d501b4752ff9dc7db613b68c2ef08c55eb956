@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd882a39_27dae661",
+        "filename": "power/braswell.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-27T17:03:25Z",
+      "side": 1,
+      "message": "You\u0027re using the state of GPIO_PCH_RSMRST_L to indicate that a shutdown was forced. I\u0027d rather explicitly set a flag to indicate that a forced shutdown is in progress. The flag can then be cleared once we actually reach the G3 state. See forcing_shutdown in the skylake power driver for an example.",
+      "revId": "382d501b4752ff9dc7db613b68c2ef08c55eb956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
