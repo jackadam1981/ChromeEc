@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ad977653_669072a6",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-27T16:44:19Z",
+      "side": 1,
+      "message": "I have checked i2c_read8, it actually seems to do it properly :\n- no reading the output buffer when there is an error code and the content might be undefined.\n- having an intermediate variable of the right storage size.\nSo right now I would vote against touching the prototype and changing hundreds of lines for no benefit.",
+      "parentUuid": "6d83be1d_67b94536",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 17
+      },
+      "revId": "8634a476ed39911a2439b9f60547f2a908ab0826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d86fa2e_928bdd27",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 3
