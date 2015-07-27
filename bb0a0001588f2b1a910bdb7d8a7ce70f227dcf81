@@ -22,6 +22,30 @@
       "revId": "bb0a0001588f2b1a910bdb7d8a7ce70f227dcf81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad5136aa_dcfaad85",
+        "filename": "common/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-27T19:02:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed8dee45_25e812ec",
+      "range": {
+        "startLine": 291,
+        "startChar": 26,
+        "endLine": 291,
+        "endChar": 34
+      },
+      "revId": "bb0a0001588f2b1a910bdb7d8a7ce70f227dcf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
