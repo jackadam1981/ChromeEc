@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d4162d7_82a6fc3f",
+        "filename": "common/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-27T23:43:44Z",
+      "side": 1,
+      "message": "This doesn\u0027t belong in common code. If needed, you can write your own routine in your driver that calls i2c_xfer.",
+      "revId": "c4375e1a9b7eb29742782efded3d426b12e830da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdee6a36_dd840be9",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-27T23:43:44Z",
+      "side": 1,
+      "message": "Can you do this from hook_init instead?",
+      "revId": "c4375e1a9b7eb29742782efded3d426b12e830da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
