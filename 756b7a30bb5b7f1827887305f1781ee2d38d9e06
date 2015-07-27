@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6d83be1d_87ff19da",
+        "filename": "chip/npcx/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-27T16:23:46Z",
+      "side": 1,
+      "message": "compare spi_transaction and i2c_xfer - where speed matters: they have the same argument list.\n\nI work on something like i2c_port_t - spi_port_t that we can give to spi_enable instead.",
+      "parentUuid": "cd882a39_bcf0ad07",
+      "range": {
+        "startLine": 74,
+        "startChar": 15,
+        "endLine": 74,
+        "endChar": 56
+      },
+      "revId": "756b7a30bb5b7f1827887305f1781ee2d38d9e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed8dee45_7c10fbde",
         "filename": "include/spi.h",
         "patchSetId": 1
