@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d9d1a6f_4baa998b",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-27T15:28:12Z",
+      "side": 1,
+      "message": "please put a short comment about which pins that\u0027s actually touching :\n/* pins C10/C11/C12 */",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 42
+      },
+      "revId": "3a2f12b62ec059bb2d41e50b15d5110e62c3f06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dbd52cc_e2dd3804",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-27T15:28:12Z",
+      "side": 1,
+      "message": "ditto : /* pin A4 */",
+      "range": {
+        "startLine": 243,
+        "startChar": 19,
+        "endLine": 243,
+        "endChar": 41
+      },
+      "revId": "3a2f12b62ec059bb2d41e50b15d5110e62c3f06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d9d1a6f_cb4e898e",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-27T15:28:12Z",
+      "side": 1,
+      "message": "I missed that.\nThat\u0027s making me seriously sad...\nas it\u0027s totally breaking firmware compatibility with all previous board :(",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "3a2f12b62ec059bb2d41e50b15d5110e62c3f06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dbd52cc_42f50c7a",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-27T15:28:12Z",
+      "side": 1,
+      "message": "you have 2 x C15 ...\nOne of them is C12 : likely FLASH_MOSI",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 52
+      },
+      "revId": "3a2f12b62ec059bb2d41e50b15d5110e62c3f06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
