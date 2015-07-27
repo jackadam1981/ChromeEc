@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "cd882a39_bcf0ad07",
+        "filename": "chip/npcx/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-27T16:04:00Z",
+      "side": 1,
+      "message": "With more details, my point is :\npublic functions with a large number of parameters in order to pass mostly constant values are wasting a lot of code space (and are unnecessarily slow) compared to the same function with all of the configuration parameters passed as a pointer to a const struct.",
+      "parentUuid": "ed8dee45_bc318376",
+      "range": {
+        "startLine": 74,
+        "startChar": 15,
+        "endLine": 74,
+        "endChar": 56
+      },
+      "revId": "756b7a30bb5b7f1827887305f1781ee2d38d9e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed8dee45_7c10fbde",
         "filename": "include/spi.h",
         "patchSetId": 1
