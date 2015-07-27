@@ -22,6 +22,30 @@
       "revId": "1ef9ab5468c8f916cc33259223c25cd092f77bf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d37da6b_e4003440",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-27T20:15:58Z",
+      "side": 1,
+      "message": "When Sameer asked about the lab requirements, I somewhat understood that the lab devices are running on fake battery and it is cut sometimes.\nWe might ask for more precision about whether we need to survive battery drained/disconnected.",
+      "parentUuid": "6d1d7ef6_5ad775bc",
+      "range": {
+        "startLine": 16,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 15
+      },
+      "revId": "1ef9ab5468c8f916cc33259223c25cd092f77bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
