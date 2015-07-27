@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d9d1a6f_2b3e35ea",
+        "filename": "include/module_id.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-27T15:19:55Z",
+      "side": 1,
+      "message": "name bikeshedding of the day: I prefer the MODULE_GREEN vs MODULE_BLUE\nor actually IMO MODULE_SPI_FLASH was enough, the _MASTER is just 7 redundant characters",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 24
+      },
+      "revId": "7de6f0dee925d8f8545c305dd101390a06ac3e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
