@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d06c2cf_3aa9bd13",
+        "filename": "board/ryu/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-07-28T20:09:30Z",
+      "side": 1,
+      "message": "Isn\u0027t this hard coded now to port 0?  Why have the config anymore.",
+      "revId": "821c9d277d285919cba750fc9891e024d2003842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d06c2cf_bab4ad70",
+        "filename": "include/spi.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-07-28T20:09:30Z",
+      "side": 1,
+      "message": "Why not pass in a spi_device_t * here instead of the port index?  It would be more consistent with the other functions below.",
+      "range": {
+        "startLine": 65,
+        "startChar": 19,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "821c9d277d285919cba750fc9891e024d2003842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
