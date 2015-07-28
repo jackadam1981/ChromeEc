@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2db8e63c_76d7e86a",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-28T22:38:21Z",
+      "side": 1,
+      "message": "thinking about it more, this function is called by a hooks task in charge_manager, so technically it shouldn\u0027t do i2c transactions. danger is it pends on mutex, and especially with battery on the same bus as bq25892, this could cause watchdog, or even more subtle missed deadlines in hooks task.\n\ndue to similar issues on samus with the charge circuit getting wedged requiring i2c transactions, i had to make an extra task to handle this...",
+      "range": {
+        "startLine": 443,
+        "startChar": 4,
+        "endLine": 443,
+        "endChar": 32
+      },
+      "revId": "8a17412fe8ee5d0dce032998bf6344ba7e78ad5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
