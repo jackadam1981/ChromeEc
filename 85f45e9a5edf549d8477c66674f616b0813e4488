@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2db8e63c_f3048a21",
+        "filename": "driver/accel_kx022.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-28T18:01:38Z",
+      "side": 1,
+      "message": "need to move this check up above line 496, so we don\u0027t loop forever if i2c keeps failing.",
+      "range": {
+        "startLine": 503,
+        "startChar": 2,
+        "endLine": 506,
+        "endChar": 5
+      },
+      "revId": "85f45e9a5edf549d8477c66674f616b0813e4488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
