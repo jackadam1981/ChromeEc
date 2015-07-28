@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d06c2cf_7d5ccfc6",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2015-07-28T23:00:15Z",
+      "side": 1,
+      "message": "sudo?  openocd and flashrom are run as root.",
+      "range": {
+        "startLine": 500,
+        "startChar": 1,
+        "endLine": 500,
+        "endChar": 5
+      },
+      "revId": "9ccfd96433b3adb83b4b532dd571fb24ef996034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
