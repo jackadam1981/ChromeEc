@@ -1482,6 +1482,7 @@
 /*****************************************************************************/
 /* USART stream config */
 #undef CONFIG_STREAM_USART
+#undef CONFIG_USART_INFO_COMMAND
 
 /*
  * Each USART stream can be individually enabled and accessible using the
