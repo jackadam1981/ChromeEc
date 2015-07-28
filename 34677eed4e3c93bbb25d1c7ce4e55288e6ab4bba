@@ -39,6 +39,30 @@
       "revId": "34677eed4e3c93bbb25d1c7ce4e55288e6ab4bba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd174afa_7be1778f",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2015-07-28T21:15:20Z",
+      "side": 0,
+      "message": "For cyan, it will enable/disable peripheral devices  upon mode change,  clamshell or tablet mode. So I removed this here. For device need to enable/disable peripheral in S0/S3, could those be put in board level?",
+      "parentUuid": "0dbb223c_18eb29ec",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 70
+      },
+      "revId": "34677eed4e3c93bbb25d1c7ce4e55288e6ab4bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
