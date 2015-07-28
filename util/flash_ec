@@ -491,6 +491,16 @@ if [ -n "${FLAGS_chip}" -a "${CHIP}" != "${FLAGS_chip}" ]; then
 	die "board ${BOARD} doesn't use chip ${FLAGS_chip}"
 fi
 
+TIMEOUT_SEC=600
+MAIN_PID=$BASHPID
+set_timeout() {
+	info "Set timeout to kill itself in ${TIMEOUT_SEC} seconds"
+	sleep ${TIMEOUT_SEC}
+	warn "Flashing timed out!"
+	kill -TERM -${MAIN_PID}
+}
+
+set_timeout &
 info "Flashing chip ${CHIP}."
 flash_${CHIP}
 info "Flashing done."
