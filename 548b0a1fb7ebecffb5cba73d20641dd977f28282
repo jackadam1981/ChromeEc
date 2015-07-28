@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad1696fe_9d2c47cf",
+        "filename": "board/glados/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-28T21:57:48Z",
+      "side": 1,
+      "message": "why ryu and samus are in driver/battery/{ryu|samus}.c\nand this one in the board directory ?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 48
+      },
+      "revId": "548b0a1fb7ebecffb5cba73d20641dd977f28282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
