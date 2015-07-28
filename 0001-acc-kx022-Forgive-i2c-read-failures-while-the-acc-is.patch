@@ -1,0 +1,51 @@
+From e1ca11d5fde65d4ec07af906839dd6c7999530ae Mon Sep 17 00:00:00 2001
+From: Alexandru M Stan <amstan@chromium.org>
+Date: Mon, 27 Jul 2015 17:53:27 -0700
+Subject: [PATCH] acc: kxcj9: Forgive i2c read failures while the acc is
+ resetting
+
+After we write SRST in CTRL2, there seems to be a period of time where the
+accelerometer doesn't respond to i2c commmands. Instead of failing the init
+just consider it as part of the timeout period.
+
+BUG=chrome-os-partner:39269
+TEST=Make that delay smaller, note how the accelerometer still initializes
+BRANCH=veyron
+
+Change-Id: I94d6d4130ec2ca9cd8fa1d1b353a68ff77e23e9f
+Signed-off-by: Alexandru M Stan <amstan@chromium.org>
+---
+ driver/accel_kxcj9.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/driver/accel_kxcj9.c b/driver/accel_kxcj9.c
+index 444d422..fed7d8a 100644
+--- a/driver/accel_kxcj9.c
++++ b/driver/accel_kxcj9.c
+@@ -486,19 +486,21 @@ static int init(const struct motion_sensor_t *s)
+ 
+ 	/* Wait until software reset is complete or timeout. */
+ 	do {
++		cnt++;
++
+ 		/* Added 1m delay after software reset */
+ 		msleep(1);
+
+ 		ret = raw_read8(s->i2c_addr, KX022_CTRL2, &tmp);
+ 		if (ret != EC_SUCCESS)
+-			return ret;
++			continue;
+
+ 		/* Reset complete. */
+ 		if (ret == EC_SUCCESS && !(tmp & KX022_CTRL2_SRST))
+ 			break;
+
+ 		/* Check for timeout. */
+-		if (cnt++ > 5) {
++		if (cnt > 6) {
+ 			ret = EC_ERROR_TIMEOUT;
+ 			CPRINTF("%s: SRST Error.\n", s->name);
+ 			return ret;
+-- 
+2.5.0.rc2.392.g76e840b
+
