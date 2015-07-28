@@ -486,19 +486,21 @@ static int init(const struct motion_sensor_t *s)
 
 	/* Wait until software reset is complete or timeout. */
 	do {
+		cnt++;
+
 		/* Added 1m delay after software reset */
 		msleep(1);
 
 		ret = raw_read8(s->i2c_addr, KX022_CTRL2, &tmp);
 		if (ret != EC_SUCCESS)
-			return ret;
+			continue;
 
 		/* Reset complete. */
 		if (ret == EC_SUCCESS && !(tmp & KX022_CTRL2_SRST))
 			break;
 
 		/* Check for timeout. */
-		if (cnt++ > 5) {
+		if (cnt > 6) {
 			ret = EC_ERROR_TIMEOUT;
 			CPRINTF("%s: SRST Error.\n", s->name);
 			return ret;
