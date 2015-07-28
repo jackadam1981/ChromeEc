@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eda16e0d_42b302d5",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-28T21:51:52Z",
+      "side": 1,
+      "message": "if pd_status \u003d\u003d NULL, aren\u0027t you supposed to unconditionally call tcpc_alert(i) ?\nthen the condition would be :\nif (!pd_status || (pd_status-\u003estatus \u0026 (PD_STATUS_TCPC_ALERT_0 \u003c\u003c i)))\n\n[given the partial boolean eval is saving you the null pointer case]",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 17
+      },
+      "revId": "dfd3ef62aa04c208f98428ef82eabaa47d87230b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
