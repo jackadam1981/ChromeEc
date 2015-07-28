@@ -77,6 +77,7 @@
 #define HOOKS_TASK_STACK_SIZE		640
 #define CONSOLE_TASK_STACK_SIZE		640
 #define HOST_CMD_TASK_STACK_SIZE	640
+#define CHIPSET_TASK_STACK_SIZE		640
 
 /* Default task stack size */
 #define TASK_STACK_SIZE			512
