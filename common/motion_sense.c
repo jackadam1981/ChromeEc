@@ -78,10 +78,13 @@ static void motion_sense_shutdown(void)
 		sensor->active = SENSOR_ACTIVE_S5;
 		sensor->odr    = sensor->default_odr;
 		sensor->range  = sensor->default_range;
+		CPRINTF("motion_sense_shutdown, skipping sensor? (initialized=%d, mask=0x%x, active=0x%x)\n", sensor->state == SENSOR_INITIALIZED, sensor->active_mask, sensor->active);
 		if ((sensor->state == SENSOR_INITIALIZED) &&
 		   !(sensor->active_mask & sensor->active)) {
 			sensor->drv->set_data_rate(sensor, 0, 0);
 			sensor->state = SENSOR_NOT_INITIALIZED;
+		} else {
+			CPRINTF("motion_sense_shutdown, skipping sensor (mask=0x%x, active=0x%x)\n", sensor->active_mask, sensor->active);
 		}
 	}
 }
@@ -197,6 +200,7 @@ static inline void motion_sense_init(struct motion_sensor_t *sensor)
 		sensor->state = SENSOR_INIT_ERROR;
 	else
 		sensor->state = SENSOR_INITIALIZED;
+	CPRINTF("motion_sense_init succcess=%d\n", sensor->state == SENSOR_INITIALIZED);
 }
 
 static int motion_sense_read(struct motion_sensor_t *sensor)
