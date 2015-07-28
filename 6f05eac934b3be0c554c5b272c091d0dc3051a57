@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "eda16e0d_7729a210",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-28T20:40:08Z",
+      "side": 1,
+      "message": "agreed, we should clean up this whole file to remove references to keys.",
+      "parentUuid": "6dae5efb_7516c27f",
+      "revId": "6f05eac934b3be0c554c5b272c091d0dc3051a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dbb223c_b5b2e832",
         "filename": "include/lid_angle.h",
         "patchSetId": 3
@@ -47,6 +65,24 @@
       "writtenOn": "2015-07-28T20:36:18Z",
       "side": 1,
       "message": "After talking to Alec, he prefers adding a new hook that will be called when the lid state changes, rather than adding a callback function.",
+      "revId": "6f05eac934b3be0c554c5b272c091d0dc3051a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad1696fe_dad1a5ca",
+        "filename": "include/lid_angle.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-28T20:40:08Z",
+      "side": 1,
+      "message": "I don\u0027t think it has to be in this CL, it can be a follow on CL, but I think as more devices are convertibles, we will want to do more stuff on mode changes, so it would read better if this were a hook, ie HOOK_LID_MODE_CHANGE.",
+      "parentUuid": "6dae5efb_95b9a66a",
       "revId": "6f05eac934b3be0c554c5b272c091d0dc3051a57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
