@@ -357,6 +357,8 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 #endif
 #ifdef CONFIG_ACCEL_FIFO
 	if (sensor->drv->load_fifo != NULL) {
+		if (event & TASK_EVENT_MOTION_INTERRUPT)
+			CPRINTS("Fifo full");
 		/* Load fifo is filling raw_xyz sensor vector */
 		sensor->drv->load_fifo(sensor);
 	} else if (ts->val - sensor->last_collection >=
@@ -948,8 +950,8 @@ static int command_accel_data_rate(int argc, char **argv)
 		 * Write new data rate, if it returns invalid arg, then
 		 * return a parameter error.
 		 */
-		if (sensor->drv->set_data_rate(sensor, data, round)
-			== EC_ERROR_INVAL)
+		if (sensor->drv->set_data_rate(sensor, data, round) ==
+		    EC_ERROR_INVAL)
 			return EC_ERROR_PARAM2;
 		sensor->runtime_config.odr = data;
 		motion_sense_set_accel_interval(

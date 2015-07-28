@@ -131,8 +131,11 @@ static int get_engineering_val(const int reg_val,
  */
 static inline int raw_write8(const int addr, const uint8_t reg, int data)
 {
+	int ret;
 	uint8_t cmd[2] = { reg, data };
-	return spi_transaction(&spi_devices[addr], cmd, 2, NULL, 0);
+	ret = spi_transaction(&spi_devices[addr], cmd, 2, NULL, 0);
+	msleep(3);
+	return ret;
 }
 
 static inline int spi_raw_read(const int addr, const uint8_t reg, uint8_t *data,
@@ -414,6 +417,9 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	ret = raw_read8(s->addr, BMI160_FIFO_CONFIG_1, &val);
 	val |= BMI160_FIFO_SENSOR_EN(s->type);
 	ret = raw_write8(s->addr, BMI160_FIFO_CONFIG_1, val);
+
+	ret = raw_read8(s->addr, BMI160_FIFO_CONFIG_1, &val);
+	CPRINTF("FIFO1: %x\n", val & 0xff);
 #endif
 
 accel_cleanup:
@@ -638,6 +644,7 @@ static int config_interrupt(const struct motion_sensor_t *s)
 	/* configure fifo watermark at 50% */
 	ret = raw_write8(s->addr, BMI160_FIFO_CONFIG_0,
 			512 / sizeof(uint32_t));
+	msleep(3);
 	ret = raw_write8(s->addr, BMI160_FIFO_CONFIG_1,
 			BMI160_FIFO_TAG_INT1_EN |
 			BMI160_FIFO_TAG_INT2_EN |
@@ -654,6 +661,17 @@ static int config_interrupt(const struct motion_sensor_t *s)
 	tmp |= BMI160_INT_FWM_EN;
 	ret = raw_write8(s->addr, BMI160_INT_EN_1, tmp);
 #endif
+	raw_read8(s->addr, BMI160_INT_MAP_0, &tmp);
+	CPRINTF("INT_MAP_0: %x\n", tmp & 0xff);
+	raw_read8(s->addr, BMI160_INT_MAP_1, &tmp);
+	CPRINTF("INT_MAP_1: %x\n", tmp & 0xff);
+	raw_read8(s->addr, BMI160_INT_MAP_2, &tmp);
+	CPRINTF("INT_MAP_2: %x\n", tmp & 0xff);
+
+	raw_read8(s->addr, BMI160_INT_EN_0, &tmp);
+	CPRINTF("INT0: %x\n", tmp & 0xff);
+	raw_read8(s->addr, BMI160_INT_EN_1, &tmp);
+	CPRINTF("INT1: %x\n", tmp & 0xff);
 
 	mutex_unlock(s->mutex);
 	return ret;
@@ -805,11 +823,11 @@ static int load_fifo(struct motion_sensor_t *s)
 				break;
 			}
 			case FIFO_DATA_SKIP:
-				CPRINTF("skipped %d frames\n", *bp++);
+				CPRINTS("skipped %d frames", *bp++);
 				state = FIFO_HEADER;
 				break;
 			case FIFO_DATA_CONFIG:
-				CPRINTF("config change: 0x%02x\n", *bp++);
+				CPRINTS("config change: 0x%02x", *bp++);
 				state = FIFO_HEADER;
 				break;
 			case FIFO_DATA_TIME:
@@ -818,13 +836,13 @@ static int load_fifo(struct motion_sensor_t *s)
 					continue;
 				}
 				/* We are not requesting timestamp */
-				CPRINTF("timestamp %d\n", (bp[2] << 16) |
+				CPRINTS("timestamp %d", (bp[2] << 16) |
 					(bp[1] << 8) | bp[0]);
 				state = FIFO_HEADER;
 				bp += 3;
 				break;
 			default:
-				CPRINTS("Unknown data: 0x%02x\n", *bp++);
+				CPRINTS("Unknown data: 0x%02x", *bp++);
 				state = FIFO_HEADER;
 			}
 		}
