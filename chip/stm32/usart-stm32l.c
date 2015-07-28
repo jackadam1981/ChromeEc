@@ -12,11 +12,11 @@
 #include "util.h"
 
 /*
- * This configs array stores the currently active usart_config structure for
- * each USART, an entry will be NULL if no USART driver is initialized for the
- * corresponding hardware instance.
+ * This usart_configs array stores the currently active usart_config structure
+ * for each USART, an entry will be NULL if no USART driver is initialized for
+ * the corresponding hardware instance.
  */
-static struct usart_config const *configs[STM32_USARTS_MAX];
+struct usart_config const *usart_configs[STM32_USARTS_MAX];
 
 static void usart_variant_enable(struct usart_config const *config)
 {
@@ -26,10 +26,11 @@ static void usart_variant_enable(struct usart_config const *config)
 	/*
 	 * Make sure we register this config before enabling the HW.
 	 * If we did it the other way around the FREQ_CHANGE hook could be
-	 * called before we update the configs array and we would miss the
-	 * clock frequency change event, leaving our baud rate divisor wrong.
+	 * called before we update the usart_configs array and we would miss
+	 * the clock frequency change event, leaving our baud rate divisor
+	 * wrong.
 	 */
-	configs[config->hw->index] = config;
+	usart_configs[config->hw->index] = config;
 
 	usart_set_baud_f0_l(config, clock_get_freq());
 
@@ -40,7 +41,7 @@ static void usart_variant_disable(struct usart_config const *config)
 {
 	task_disable_irq(config->hw->irq);
 
-	configs[config->hw->index] = NULL;
+	usart_configs[config->hw->index] = NULL;
 }
 
 static struct usart_hw_ops const usart_variant_hw_ops = {
@@ -52,9 +53,10 @@ static void freq_change(void)
 {
 	size_t	i;
 
-	for (i = 0; i < ARRAY_SIZE(configs); ++i)
-		if (configs[i])
-			usart_set_baud_f0_l(configs[i], clock_get_freq());
+	for (i = 0; i < ARRAY_SIZE(usart_configs); ++i)
+		if (usart_configs[i])
+			usart_set_baud_f0_l(usart_configs[i],
+					    clock_get_freq());
 }
 
 DECLARE_HOOK(HOOK_FREQ_CHANGE, freq_change, HOOK_PRIO_DEFAULT);
@@ -80,7 +82,7 @@ struct usart_hw_config const usart1_hw = {
 
 void usart1_interrupt(void)
 {
-	usart_interrupt(configs[0]);
+	usart_interrupt(usart_configs[0]);
 }
 
 DECLARE_IRQ(STM32_IRQ_USART1, usart1_interrupt, 2);
@@ -98,7 +100,7 @@ struct usart_hw_config const usart2_hw = {
 
 void usart2_interrupt(void)
 {
-	usart_interrupt(configs[1]);
+	usart_interrupt(usart_configs[1]);
 }
 
 DECLARE_IRQ(STM32_IRQ_USART2, usart2_interrupt, 2);
@@ -116,7 +118,7 @@ struct usart_hw_config const usart3_hw = {
 
 void usart3_interrupt(void)
 {
-	usart_interrupt(configs[2]);
+	usart_interrupt(usart_configs[2]);
 }
 
 DECLARE_IRQ(STM32_IRQ_USART3, usart3_interrupt, 2);

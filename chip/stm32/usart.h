@@ -118,6 +118,11 @@ struct usart_config {
 };
 
 /*
+ *
+ */
+extern struct usart_config const *usart_configs[];
+
+/*
  * Convenience macro for defining USARTs and their associated state and buffers.
  * NAME is used to construct the names of the usart_state struct, and
  * usart_config struct, the latter is just called NAME.
