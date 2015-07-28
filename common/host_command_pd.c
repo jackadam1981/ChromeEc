@@ -158,13 +158,16 @@ static void pd_exchange_status(void)
 		 */
 #ifdef CONFIG_HOSTCMD_PD
 		if (pd_status.status & PD_STATUS_TCPC_ALERT_0)
-			tcpc_alert(0);
-		if (pd_status.status & PD_STATUS_TCPC_ALERT_1)
-			tcpc_alert(1);
-#else
-		tcpc_alert(0);
-		tcpc_alert(1);
 #endif
+			tcpc_alert(0);
+
+#if CONFIG_USB_PD_PORT_COUNT > 1
+#ifdef CONFIG_HOSTCMD_PD
+		if (pd_status.status & PD_STATUS_TCPC_ALERT_1)
+#endif
+			tcpc_alert(1);
+#endif
+
 		if (loop_count++) {
 			usleep(50*MSEC);
 #ifdef CONFIG_HOSTCMD_PD
