@@ -478,27 +478,36 @@ static int init(const struct motion_sensor_t *s)
 	 * the sensor is unknown here. Initiate software reset to restore
 	 * sensor to default.
 	 */
+
+	CPRINTF("%s: trying to init\n", s->name);
 	mutex_lock(s->mutex);
 	ret = raw_write8(s->i2c_addr, KX022_CTRL2, KX022_CTRL2_SRST);
 	mutex_unlock(s->mutex);
-	if (ret != EC_SUCCESS)
+	if (ret != EC_SUCCESS) {
+		CPRINTF("%s: failed to send reset command\n", s->name);
 		return ret;
+	}
 
 	/* Wait until software reset is complete or timeout. */
 	do {
 		cnt++;
 
 		/* Added 1m delay after software reset */
-		msleep(1);
+		usleep(100); //moving this delay from 1ms to 100us causes us to fail
 
 		ret = raw_read8(s->i2c_addr, KX022_CTRL2, &tmp);
+		if (ret != EC_SUCCESS) {
+			CPRINTF("%s: read reset failed\n", s->name);
+		}
 
 		/* Reset complete. */
-		if (ret == EC_SUCCESS && !(tmp & KX022_CTRL2_SRST))
+		if (ret == EC_SUCCESS && !(tmp & KX022_CTRL2_SRST)) {
+			CPRINTF("%s: took %d counts to finish.\n", s->name, cnt);
 			break;
+		}
 
 		/* Check for timeout. */
-		if (cnt > 20) {
+		if (cnt++ > 201) {
 			ret = EC_ERROR_TIMEOUT;
 			CPRINTF("%s: SRST Error.\n", s->name);
 			return ret;
