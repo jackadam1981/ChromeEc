@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dbb223c_d20fc26a",
+        "filename": "driver/charger/bq24715.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-07-28T16:17:45Z",
+      "side": 1,
+      "message": "this is common for multiple platforms on this branch and is from the charger spec. this value should not be modified.",
+      "range": {
+        "startLine": 85,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 20
+      },
+      "revId": "c886f6e4f3833452bbabdb9f4f218f1080ec0d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
