@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed1c0e21_39054bca",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-28T17:06:30Z",
+      "side": 1,
+      "message": "In progress.",
+      "parentUuid": "6dae5efb_928a5cf5",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 59
+      },
+      "revId": "daf96620d44a19b9e42d7698a171358c50f5f309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad5136aa_ffa99b96",
         "filename": "include/spi.h",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-27T22:10:32Z",
       "side": 1,
       "message": "It seems a little odd to have the GPIOs listed here as well as passed into the various functions that need to use them.  Would it make more sense to add a spi_device_t struct that points to a spi_port_t as well as contains the devices CS GPIO?  That way the various transaction functions could just take a spi_device_t.  Or perhaps the transaction functions should take a spi_port_t and a device index instead of a gpio_signal?  Then use that index to look into this table, ensuring consistent use of GPIOs.",
+      "range": {
+        "startLine": 45,
+        "startChar": 31,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "daf96620d44a19b9e42d7698a171358c50f5f309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d3e264a_a3f9c4f8",
+        "filename": "include/spi.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-28T17:06:30Z",
+      "side": 1,
+      "message": "Instead of spi_port_t, I am defining spi_device_t and spi_enable will loop through the array to find which gpios to set up.",
+      "parentUuid": "ad5136aa_ffa99b96",
       "range": {
         "startLine": 45,
         "startChar": 31,
