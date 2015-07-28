@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cd42eadd_e34d8617",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-28T00:21:05Z",
+      "side": 1,
+      "message": "Sure it can re-enable charging if we fiddle with the type-C port when the factory discharge-on-AC mode is enabled.\nI was under the impression that the factory sequence was charging the board to a high level, don\u0027t touch anything, trigger discharge-on-AC until we loose 2% of battery.\nThat should work but I don\u0027t have the exact sequence to verify it right now.",
+      "parentUuid": "cdee6a36_5d775bad",
+      "range": {
+        "startLine": 410,
+        "startChar": 6,
+        "endLine": 410,
+        "endChar": 29
+      },
+      "revId": "a53348ba814f1cb4d6054e666d2a5ff71256fda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adfcd6c5_47fb503d",
         "filename": "board/ryu/board.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cd42eadd_83fb623c",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-28T00:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adfcd6c5_47fb503d",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 33
+      },
+      "revId": "a53348ba814f1cb4d6054e666d2a5ff71256fda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8df8f2fb_bb00273f",
         "filename": "board/ryu/usb_pd_config.h",
         "patchSetId": 4
@@ -59,6 +107,24 @@
       "writtenOn": "2015-07-27T23:30:45Z",
       "side": 1,
       "message": "looks like we should disable the power path here, but we have to be careful not to do it in the dead battery case.\n\nperhaps we need a static variable to keep track of if we have ever toggled enable to on (and thus enabled the power path).\n\nstatic inline void pd_set_host_mode(int port, int enable)\n{\n\tstatic int has_been_enabled;\n\n\tif (enable) {\n\t\thas_been_enabled \u003d 1;\n\t\t/* we should be able to provide VBUS to USB device */\n\t\tboard_vbus_power_path(1);\n\t\t...\n\t} else {\n\t\t/*\n\t\t * disable power path if we have enabled host mode\n\t\t * to avoid dead battery case\n\t\t */\n\t\tif (has_been_enabled)\n\t\t\tboard_vbus_power_path(0);\n\t\t/* Kill VBUS power supply */\n\t\tcharger_enable_otg_power(0);\n\t\t...\n\t}\n}\n\ni think this behavior matches what we have done on other boards.",
+      "revId": "a53348ba814f1cb4d6054e666d2a5ff71256fda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1d7ef6_a04d3e46",
+        "filename": "board/ryu/usb_pd_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-28T00:21:05Z",
+      "side": 1,
+      "message": "agree with the idea,\nthough I think C99 forbids static variables inside inline functions.",
+      "parentUuid": "8df8f2fb_bb00273f",
       "revId": "a53348ba814f1cb4d6054e666d2a5ff71256fda1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
