@@ -51,6 +51,24 @@
       "revId": "c4375e1a9b7eb29742782efded3d426b12e830da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edf32e19_1e1cadf6",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2015-07-28T02:57:36Z",
+      "side": 1,
+      "message": "I just want to make sure this register can be clear to avoid EC enter hibernate again.\n\nThis register init need to be done because G781 ALERT# status will be cleared after read this register init.\n\nIf doing timing is too late, EC might not be able to do this init and enter hibernate.\n\nI tried to do this init in hook_init. But the timing is too early that will cause EC always trigger watchdog reset in the beginning.\n\nI try to clear ALERT# status before enter hibernate(Please refer to issue 41633 #61). Looks OK, do you have any concern about this?",
+      "parentUuid": "ed47aeea_93f16e0d",
+      "revId": "c4375e1a9b7eb29742782efded3d426b12e830da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
