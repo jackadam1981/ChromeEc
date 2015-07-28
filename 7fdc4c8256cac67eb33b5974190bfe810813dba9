@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad1696fe_b437a09b",
+        "filename": "common/als.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-28T15:41:34Z",
+      "side": 1,
+      "message": "to be honest, you have no architectural guarantee that a 16-bit write will be atomic (but with our toolchain on Cortex-M, I agree it will very likely be unless there are alignment issues)",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 24
+      },
+      "revId": "7fdc4c8256cac67eb33b5974190bfe810813dba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
