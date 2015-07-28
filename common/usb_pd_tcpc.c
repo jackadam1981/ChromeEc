@@ -610,12 +610,23 @@ int pd_analyze_rx(int port, uint32_t *payload)
 	crc32_hash16(header);
 	cnt = PD_HEADER_CNT(header);
 
-	/* read payload data */
-	for (p = 0; p < cnt && bit > 0; p++) {
-		bit = decode_word(port, bit, payload+p);
-		crc32_hash32(payload[p]);
+	if (payload != NULL) {
+		/* read payload data */
+		for (p = 0; p < cnt && bit > 0; p++) {
+			bit = decode_word(port, bit, payload+p);
+			crc32_hash32(payload[p]);
+		}
+		ccrc = crc32_result();
+	} else {
+		uint32_t dummy;
+
+		/* read payload data */
+		for (p = 0; p < cnt && bit > 0; p++) {
+			bit = decode_word(port, bit, &dummy);
+			crc32_hash32(dummy);
+		}
+		ccrc = crc32_result();
 	}
-	ccrc = crc32_result();
 
 #ifdef CONFIG_COMMON_RUNTIME
 	mutex_unlock(&pd_crc_lock);
@@ -657,8 +668,7 @@ packet_err:
 	return bit;
 }
 
-static void handle_request(int port, uint16_t head,
-		uint32_t *payload)
+static void handle_request(int port, uint16_t head)
 {
 	int cnt = PD_HEADER_CNT(head);
 
@@ -736,16 +746,29 @@ int tcpc_run(int port, int evt)
 
 	/* incoming packet ? */
 	if (pd_rx_started(port) && pd[port].rx_enabled) {
-		pd[port].rx_head = pd_analyze_rx(port,
-						 pd[port].rx_payload);
-		pd_rx_complete(port);
-		if (pd[port].rx_head > 0) {
-			handle_request(port,
-				       pd[port].rx_head,
-				       pd[port].rx_payload);
-			alert(port, TCPC_REG_ALERT_RX_STATUS);
-		} else if (pd[port].rx_head == PD_RX_ERR_HARD_RESET) {
-			alert(port, TCPC_REG_ALERT_RX_HARD_RST);
+		if (!(pd[port].alert & TCPC_REG_ALERT_RX_STATUS)) {
+			/* if RX message buffer is empty, then get message */
+			pd[port].rx_head = pd_analyze_rx(port,
+							 pd[port].rx_payload);
+			pd_rx_complete(port);
+
+			if (pd[port].rx_head > 0) {
+				handle_request(port, pd[port].rx_head);
+				alert(port, TCPC_REG_ALERT_RX_STATUS);
+			} else if (pd[port].rx_head == PD_RX_ERR_HARD_RESET) {
+				alert(port, TCPC_REG_ALERT_RX_HARD_RST);
+			}
+		} else {
+			/* message is pending, drop this message */
+			res = pd_analyze_rx(port, NULL);
+			pd_rx_complete(port);
+
+			/* don't drop message if it is hard reset! */
+			if (res == PD_RX_ERR_HARD_RESET)
+				alert(port, TCPC_REG_ALERT_RX_HARD_RST);
+
+			/* keep RX monitoring on to avoid collisions */
+			pd_rx_enable_monitoring(port);
 		}
 	}
 
