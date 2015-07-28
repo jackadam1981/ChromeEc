@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dbb223c_f2f926f8",
+        "filename": "board/cyan/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-28T18:05:06Z",
+      "side": 1,
+      "message": "Can you just change it to LARGER_TASK_STACK_SIZE instead? We already have multiple chipsets that use this part, and each may have different stack usage.",
+      "revId": "0c6ea09b0d763d2cef2e10ae9666cfcb663679b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
