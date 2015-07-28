@@ -166,7 +166,7 @@ int motion_sense_set_accel_interval(
 
 static inline void motion_sense_init(struct motion_sensor_t *sensor)
 {
-	int ret, cnt = 3;
+	int ret, cnt = 5;
 
 	/* Initialize accelerometers. */
 	do {
