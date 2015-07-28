@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "0dbb223c_5813f18d",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-28T20:36:18Z",
+      "side": 0,
+      "message": "Note that the AP manages lid angle keyboard control in S0.",
+      "revId": "34677eed4e3c93bbb25d1c7ce4e55288e6ab4bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dbb223c_18eb29ec",
         "filename": "common/lid_angle.c",
         "patchSetId": 3
