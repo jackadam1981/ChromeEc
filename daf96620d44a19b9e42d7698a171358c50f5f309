@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6dae5efb_928a5cf5",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-28T15:13:50Z",
+      "side": 1,
+      "message": "it seems what we would want is one entry per device rather than one entry per controller and passing a single index to the SPI functions",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 59
+      },
+      "revId": "daf96620d44a19b9e42d7698a171358c50f5f309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad5136aa_ffa99b96",
         "filename": "include/spi.h",
         "patchSetId": 4
