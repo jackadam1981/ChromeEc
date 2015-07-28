@@ -160,6 +160,10 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_S5:
 		/* Check for SLP S4 */
+
+		gpio_set_level(GPIO_TOUCHPANEL_PWREN, 0);
+		gpio_set_level(GPIO_TRACKPAD_PWREN, 0);
+		gpio_set_level(GPIO_TP_INT_DISABLE, 0);
 		if (gpio_get_level(GPIO_PCH_SLP_S4_L) == 1)
 			return POWER_S5S3; /* Power up to next state */
 		break;
