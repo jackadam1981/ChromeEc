@@ -22,6 +22,30 @@
       "revId": "fd23eca608ed24c6cee31e17036565face2d85ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed1c0e21_652d5093",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-07-28T22:44:50Z",
+      "side": 1,
+      "message": "Modified to kill the process group. openocd doesn\u0027t change its pgid that would make it killed.",
+      "parentUuid": "ad1696fe_7de84bed",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 17
+      },
+      "revId": "fd23eca608ed24c6cee31e17036565face2d85ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
