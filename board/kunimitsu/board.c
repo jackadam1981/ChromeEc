@@ -314,6 +314,8 @@ BUILD_ASSERT(ARRAY_SIZE(buttons) == CONFIG_BUTTON_COUNT);
 /* Initialize PMIC */
 static void board_pmic_init(void)
 {
+	int data;
+
 	if (tps650830_init())
 		return;
 
@@ -323,6 +325,104 @@ static void board_pmic_init(void)
 	 * [0] : 1b V13 Power Fault Masked
 	 */
 	if (tps650830_i2c_write(TPS650830_REG_PWFAULT_MASK1, 0x5))
+		return;
+
+	/*
+	 * Power button configuration
+	 * [7]  :    0b Power button debounce time, 30ms
+	 * [6]  :    0b Reset of power button timer logic, no action
+	 * [5:0]: 1000b Time that the button must be held to force an
+	 *              emergency reset, 8s
+	 */
+	if (tps650830_i2c_write(TPS650830_REG_PBCONFIG, 0x08))
+		return;
+
+#ifndef KUNIMITSU_BOARD_V3
+	/*
+	 * V1.2U control register configuration
+	 * [7]: 1b V1.2U low power mode output voltage set point - set at
+	 *         assertion of SLP_S0#, 3%.
+	 */
+	if (!tps650830_i2c_read(TPS650830_REG_V1P2UCNT, &data)) {
+		if (tps650830_i2c_write(TPS650830_REG_V1P2UCNT,
+					data | (1 << 7)))
+			return;
+	} else
+		return;
+#endif
+
+	/*
+	 * V18A control register configuration
+	 * [7:6]: 10b V18A low power mode output voltage set point - set at
+	 *            assertion of SLP_S0#, 3%.
+	 */
+	if (!tps650830_i2c_read(TPS650830_REG_V18ACNT, &data)) {
+		if (tps650830_i2c_write(TPS650830_REG_V18ACNT,
+					(data & 0x3F) | (0x2 << 6)))
+			return;
+	} else
+		return;
+
+	/*
+	 * V33ADSW control register configuration
+	 * [7:6]: 10b V33A_DSW low power mode output voltage set point - set at
+	 *            assertion of SLP_S0#, 3%.
+	 */
+	if (!tps650830_i2c_read(TPS650830_REG_V33ADSWCNT, &data)) {
+		if (tps650830_i2c_write(TPS650830_REG_V33ADSWCNT,
+					(data & 0x3F) | (0x2 << 6)))
+			return;
+	} else
+		return;
+
+	/*
+	 * V5ADS3CNT control register configuration
+	 * [7:6]: 10b V5ADS3 low power mode output voltage set point - set at
+	 *            assertion of SLP_S0#, 3%.
+	 */
+	if (!tps650830_i2c_read(TPS650830_REG_V5ADS3CNT, &data)) {
+		if (tps650830_i2c_write(TPS650830_REG_V5ADS3CNT,
+					(data & 0x3F) | (0x2 << 0x6)))
+			return;
+	} else
+		return;
+
+	/*
+	 * Discharge control 4 register configuration
+	 * [7:6] : 00b Reserved
+	 * [5:4] : 01b V3.3S discharge resistance (V6S), 100 Ohm
+	 * [3:2] : 01b V18S discharge resistance (V8S), 100 Ohm
+	 * [1:0] : 01b V100S discharge resistance (V11S), 100 Ohm
+	 */
+	if (tps650830_i2c_write(TPS650830_REG_DISCHCNT4, 0x15))
+		return;
+
+	/*
+	 * Discharge control 3 register configuration
+	 * [7:6] : 01b V1.8U_2.5U discharge resistance (V9), 100 Ohm
+	 * [5:4] : 00b V1.2U discharge resistance (V10), No discharge
+	 * [3:2] : 00b V100A discharge resistance (V11), No discharge
+	 * [1:0] : 00b V085A discharge resistance (V12), No discharge
+	 */
+	if (tps650830_i2c_write(TPS650830_REG_DISCHCNT3, 0x40))
+		return;
+
+	/*
+	 * Discharge control 2 register configuration
+	 * [7:6] : 00b V5ADS3 discharge resistance (V5), No discharge
+	 * [5:4] : 00b V33A_DSW discharge resistance (V6), No discharge
+	 * [3:2] : 00b V33PCH discharge resistance (V7), No discharge
+	 * [1:0] : 01b V18A discharge resistance (V8), 100 Ohm
+	 */
+	if (tps650830_i2c_write(TPS650830_REG_DISCHCNT2, 0x01))
+		return;
+
+	/*
+	 * Discharge control 1 register configuration
+	 * [7:2] : 00b Reserved
+	 * [1:0] : 01b VCCIO discharge resistance (V4), 100 Ohm
+	 */
+	if (tps650830_i2c_write(TPS650830_REG_DISCHCNT1, 0x01))
 		return;
 
 	CPRINTS("PMIC init done");
