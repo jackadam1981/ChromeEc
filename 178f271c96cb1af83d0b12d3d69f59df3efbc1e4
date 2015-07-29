@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2db8e63c_9f8a5ff5",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-29T16:23:33Z",
+      "side": 1,
+      "message": "I don\u0027t think you want to duplicate all this code, just switch the pointer between dummy and payload+p",
+      "range": {
+        "startLine": 621,
+        "startChar": 0,
+        "endLine": 628,
+        "endChar": 24
+      },
+      "revId": "178f271c96cb1af83d0b12d3d69f59df3efbc1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eda16e0d_7587d797",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-29T16:23:33Z",
+      "side": 1,
+      "message": "at that point, it seems nearly as simple to have a double buffer for the payload (even if you don\u0027t implement the 2nd buffer retrieval until later)\nand don\u0027t duplicate the analyze_rx/rx_complete/hard_reset calls code",
+      "range": {
+        "startLine": 763,
+        "startChar": 29,
+        "endLine": 763,
+        "endChar": 33
+      },
+      "revId": "178f271c96cb1af83d0b12d3d69f59df3efbc1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
