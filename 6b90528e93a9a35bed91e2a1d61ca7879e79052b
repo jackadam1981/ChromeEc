@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eafb1432_5eddd58d",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-29T18:21:31Z",
+      "side": 1,
+      "message": "save just the midpoint, which will make queue element smaller. then you can calculate midpoint in deferred function instead of sniffer task.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "6b90528e93a9a35bed91e2a1d61ca7879e79052b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a142033_99d25b79",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-29T18:21:31Z",
+      "side": 1,
+      "message": "suggest not using a queue as it increases overhead. how about just an array?",
+      "range": {
+        "startLine": 72,
+        "startChar": 14,
+        "endLine": 72,
+        "endChar": 19
+      },
+      "revId": "6b90528e93a9a35bed91e2a1d61ca7879e79052b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a00d8f0_9efa39ac",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-29T18:21:31Z",
+      "side": 1,
+      "message": "divide is too expensive for irq handler",
+      "range": {
+        "startLine": 224,
+        "startChar": 46,
+        "endLine": 224,
+        "endChar": 53
+      },
+      "revId": "6b90528e93a9a35bed91e2a1d61ca7879e79052b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
