@@ -401,6 +401,48 @@ static void board_pmic_init(void)
 	if (ret)
 		goto pmic_error;
 
+	/*
+	 * Discharge control 4 register configuration
+	 * [7:6] : 00b Reserved
+	 * [5:4] : 01b V3.3S discharge resistance (V6S), 100 Ohm
+	 * [3:2] : 01b V18S discharge resistance (V8S), 100 Ohm
+	 * [1:0] : 01b V100S discharge resistance (V11S), 100 Ohm
+	 */
+	ret = I2C_PMIC_WRITE(TPS650830_REG_DISCHCNT4, 0x15);
+	if (ret)
+		goto pmic_error;
+
+	/*
+	 * Discharge control 3 register configuration
+	 * [7:6] : 01b V1.8U_2.5U discharge resistance (V9), 100 Ohm
+	 * [5:4] : 00b V1.2U discharge resistance (V10), No discharge
+	 * [3:2] : 00b V100A discharge resistance (V11), No discharge
+	 * [1:0] : 00b V085A discharge resistance (V12), No discharge
+	 */
+	ret = I2C_PMIC_WRITE(TPS650830_REG_DISCHCNT3, 0x40);
+	if (ret)
+		goto pmic_error;
+
+	/*
+	 * Discharge control 2 register configuration
+	 * [7:6] : 00b V5ADS3 discharge resistance (V5), No discharge
+	 * [5:4] : 00b V33A_DSW discharge resistance (V6), No discharge
+	 * [3:2] : 00b V33PCH discharge resistance (V7), No discharge
+	 * [1:0] : 01b V18A discharge resistance (V8), 100 Ohm
+	 */
+	ret = I2C_PMIC_WRITE(TPS650830_REG_DISCHCNT2, 0x01);
+	if (ret)
+		goto pmic_error;
+
+	/*
+	 * Discharge control 1 register configuration
+	 * [7:2] : 00b Reserved
+	 * [1:0] : 01b VCCIO discharge resistance (V4), 100 Ohm
+	 */
+	ret = I2C_PMIC_WRITE(TPS650830_REG_DISCHCNT1, 0x01);
+	if (ret)
+		goto pmic_error;
+
 	CPRINTS("PMIC initialization done");
 	return;
 
