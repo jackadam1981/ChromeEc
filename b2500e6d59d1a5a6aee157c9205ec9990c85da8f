@@ -22,6 +22,23 @@
       "revId": "b2500e6d59d1a5a6aee157c9205ec9990c85da8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d5f06fb_f88ad123",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-07-29T04:16:33Z",
+      "side": 1,
+      "message": "would probably be easiest to update each of the call points to run timeout instead.  so add a global --timeout flag, default it to 10m, and then here do:\n\n sudo timeout ${FLAGS_timeout} openocd ....",
+      "revId": "b2500e6d59d1a5a6aee157c9205ec9990c85da8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
