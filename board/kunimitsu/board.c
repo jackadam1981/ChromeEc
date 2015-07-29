@@ -345,6 +345,62 @@ static void board_pmic_init(void)
 	if (ret)
 		goto pmic_error;
 
+#ifndef KUNIMITSU_BOARD_V3
+	/*
+	 * V1.2U control register configuration
+	 * [7]: 1b V1.2U low power mode output voltage set point - set at
+	 *         assertion of SLP_S0#, 3%.
+	 */
+	ret = I2C_PMIC_READ(TPS650830_REG_V1P2UCNT, &data);
+	if (ret)
+		goto pmic_error;
+
+	ret = I2C_PMIC_WRITE(TPS650830_REG_V1P2UCNT, data | (1 << 7));
+	if (ret)
+		goto pmic_error;
+#endif
+
+	/*
+	 * V18A control register configuration
+	 * [7:6]: 10b V18A low power mode output voltage set point - set at
+	 *            assertion of SLP_S0#, 3%.
+	 */
+	ret = I2C_PMIC_READ(TPS650830_REG_V18ACNT, &data);
+	if (ret)
+		goto pmic_error;
+
+	ret = I2C_PMIC_WRITE(TPS650830_REG_V18ACNT, (data & 0x3F) | (0x2 << 6));
+	if (ret)
+		goto pmic_error;
+
+	/*
+	 * V33ADSW control register configuration
+	 * [7:6]: 10b V33A_DSW low power mode output voltage set point - set at
+	 *            assertion of SLP_S0#, 3%.
+	 */
+	ret = I2C_PMIC_READ(TPS650830_REG_V33ADSWCNT, &data);
+	if (ret)
+		goto pmic_error;
+
+	ret = I2C_PMIC_WRITE(TPS650830_REG_V33ADSWCNT,
+				(data & 0x3F) | (0x2 << 6));
+	if (ret)
+		goto pmic_error;
+
+	/*
+	 * V5ADS3CNT control register configuration
+	 * [7:6]: 10b V5ADS3 low power mode output voltage set point - set at
+	 *            assertion of SLP_S0#, 3%.
+	 */
+	ret = I2C_PMIC_READ(TPS650830_REG_V5ADS3CNT, &data);
+	if (ret)
+		goto pmic_error;
+
+	ret = I2C_PMIC_WRITE(TPS650830_REG_V5ADS3CNT,
+				(data & 0x3F) | (0x2 << 0x6));
+	if (ret)
+		goto pmic_error;
+
 	CPRINTS("PMIC initialization done");
 	return;
 
