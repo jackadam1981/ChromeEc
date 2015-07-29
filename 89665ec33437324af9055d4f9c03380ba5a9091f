@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd174afa_e9bdbd22",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2015-07-29T06:33:40Z",
+      "side": 1,
+      "message": "Change init ALERT# status from chipset_task to here.\nBefore check ALERT# status, clear status first.\nIf temperature is still high, ALERT# will keep low and enter hibernate.\nIf temperature is low, ALERT# release to high and reset ALERT# interrupt status.",
+      "revId": "89665ec33437324af9055d4f9c03380ba5a9091f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
