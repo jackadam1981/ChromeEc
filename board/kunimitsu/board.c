@@ -13,6 +13,7 @@
 #include "console.h"
 #include "driver/accel_kxcj9.h"
 #include "driver/als_opt3001.h"
+#include "driver/pmic_tps650830.h"
 #include "driver/temp_sensor/tmp432.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -46,7 +47,7 @@
 #define GPIO_KB_OUTPUT (GPIO_ODR_HIGH)
 #define GPIO_KB_OUTPUT_COL2 (GPIO_OUT_LOW)
 
-#define TPS650830_I2C_ADDR 0x60
+#define TPS650830_I2C_ADDR TPS650830_I2C_ADDR1
 
 /* Exchange status with PD MCU. */
 static void pd_mcu_interrupt(enum gpio_signal signal)
@@ -313,15 +314,35 @@ const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
 BUILD_ASSERT(ARRAY_SIZE(buttons) == CONFIG_BUTTON_COUNT);
 
 /* Initialize PMIC */
+#define I2C_PMIC_READ(reg, data) \
+		i2c_read8(I2C_PORT_PMIC, TPS650830_I2C_ADDR, (reg), (data))
+
+#define I2C_PMIC_WRITE(reg, data) \
+		i2c_write8(I2C_PORT_PMIC, TPS650830_I2C_ADDR, (reg), (data))
+
 static void board_pmic_init(void)
 {
+	int ret;
+	int data;
+
+	ret = I2C_PMIC_READ(TPS650830_REG_VENDORID, &data);
+	if (ret || data != TPS650830_VENDOR_ID)
+		goto pmic_error;
+
 	/*
 	 * PWFAULT_MASK1 Register settings
 	 * [2] : 1b V9 Power Fault Masked
 	 * [0] : 1b V13 Power Fault Masked
 	 */
-	if (i2c_write8(I2C_PORT_PMIC, TPS650830_I2C_ADDR, 0xE5, 0x5))
-		CPRINTS("PMIC write failed");
+	ret = I2C_PMIC_WRITE(TPS650830_REG_PWFAULT_MASK1, 0x5);
+	if (ret)
+		goto pmic_error;
+
+	CPRINTS("PMIC initialisation done");
+	return;
+
+pmic_error:
+	CPRINTS("PMIC initialisation failed");
 }
 DECLARE_HOOK(HOOK_INIT, board_pmic_init, HOOK_PRIO_INIT_I2C + 1);
 
