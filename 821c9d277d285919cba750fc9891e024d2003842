@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2af28c55_86db0e64",
+        "filename": "board/ryu/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-29T20:43:58Z",
+      "side": 1,
+      "message": "No, Flash SPI - as a device - is hardcoded to be at spi_devices[0]. But the SPI port it is connected to can be anything.",
+      "parentUuid": "0d06c2cf_3aa9bd13",
+      "revId": "821c9d277d285919cba750fc9891e024d2003842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d06c2cf_bab4ad70",
         "filename": "include/spi.h",
         "patchSetId": 5
@@ -30,6 +48,30 @@
       "writtenOn": "2015-07-28T20:09:30Z",
       "side": 1,
       "message": "Why not pass in a spi_device_t * here instead of the port index?  It would be more consistent with the other functions below.",
+      "range": {
+        "startLine": 65,
+        "startChar": 19,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "821c9d277d285919cba750fc9891e024d2003842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea24f4a5_39e22b4a",
+        "filename": "include/spi.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-29T20:43:58Z",
+      "side": 1,
+      "message": "No, there can be several device per port: this function just enable the port and all the CS gpios of the devices connected to that port.",
+      "parentUuid": "0d06c2cf_bab4ad70",
       "range": {
         "startLine": 65,
         "startChar": 19,
