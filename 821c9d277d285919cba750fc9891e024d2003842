@@ -55,6 +55,75 @@
     },
     {
       "key": {
+        "uuid": "2af28c55_49e51998",
+        "filename": "chip/lm4/spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-29T23:48:46Z",
+      "side": 1,
+      "message": "the order is strange to avoid glitching,\nand actually _set_flags can also set the level AFAIK\nbut I agree this was the same code before.",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 45
+      },
+      "revId": "821c9d277d285919cba750fc9891e024d2003842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a0b6c19_e1551c4d",
+        "filename": "include/spi.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-29T23:48:46Z",
+      "side": 1,
+      "message": "-ETOOMANY to",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "revId": "821c9d277d285919cba750fc9891e024d2003842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eafb1432_8729ccbf",
+        "filename": "include/spi.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-29T23:48:46Z",
+      "side": 1,
+      "message": "I don\u0027t think the comments format is right :\n@param port  port id to work on.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 49
+      },
+      "revId": "821c9d277d285919cba750fc9891e024d2003842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d06c2cf_bab4ad70",
         "filename": "include/spi.h",
         "patchSetId": 5
@@ -119,6 +188,52 @@
         "startChar": 19,
         "endLine": 65,
         "endChar": 23
+      },
+      "revId": "821c9d277d285919cba750fc9891e024d2003842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caf6504b_26d1dcc9",
+        "filename": "include/spi.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-29T23:48:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "821c9d277d285919cba750fc9891e024d2003842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a142033_2222f4a8",
+        "filename": "include/spi.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-29T23:48:46Z",
+      "side": 1,
+      "message": "rxlen",
+      "range": {
+        "startLine": 77,
+        "startChar": 3,
+        "endLine": 77,
+        "endChar": 8
       },
       "revId": "821c9d277d285919cba750fc9891e024d2003842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
