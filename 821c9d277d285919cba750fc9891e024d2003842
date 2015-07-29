@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2af28c55_462d0617",
+        "filename": "board/ryu/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-07-29T22:16:20Z",
+      "side": 1,
+      "message": "Understood, thanks.",
+      "parentUuid": "2af28c55_86db0e64",
+      "revId": "821c9d277d285919cba750fc9891e024d2003842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d06c2cf_bab4ad70",
         "filename": "include/spi.h",
         "patchSetId": 5
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "No, there can be several device per port: this function just enable the port and all the CS gpios of the devices connected to that port.",
       "parentUuid": "0d06c2cf_bab4ad70",
+      "range": {
+        "startLine": 65,
+        "startChar": 19,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "821c9d277d285919cba750fc9891e024d2003842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a142033_1f1f4b1f",
+        "filename": "include/spi.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2015-07-29T22:16:20Z",
+      "side": 1,
+      "message": "Ahh, understood, that makes sense now.  Thanks.",
+      "parentUuid": "ea24f4a5_39e22b4a",
       "range": {
         "startLine": 65,
         "startChar": 19,
