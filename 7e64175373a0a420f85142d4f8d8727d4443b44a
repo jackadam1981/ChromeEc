@@ -22,6 +22,30 @@
       "revId": "7e64175373a0a420f85142d4f8d8727d4443b44a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed788e71_16483c32",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2015-07-29T16:20:31Z",
+      "side": 1,
+      "message": "you shouldn\u0027t",
+      "parentUuid": "6dae5efb_66de16d8",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 15
+      },
+      "revId": "7e64175373a0a420f85142d4f8d8727d4443b44a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
