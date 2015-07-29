@@ -374,16 +374,29 @@ static void tpm_init(void)
 		(64 << burst_count_shift);
 }
 
+extern void ExecuteCommand(
+    uint32_t      requestSize,       //   IN: command buffer size
+    unsigned    char    *request,           //   IN: command buffer
+    uint32_t    *responseSize,      //   OUT: response buffer size
+    uint8_t    **response          //   OUT: response buffer
+);
 void tpm_task(void)
 {
 	tpm_init();
 	sps_tpm_enable();
 	while (1) {
+		uint8_t    *response;
+		uint32_t response_size;
+
 		/* Wait for the next command event */
 		task_wait_event(-1);
 		CPRINTF("%s: received fifo command 0x%04x\n",
 			__func__, be32_to_cpu(tpm_.regs.data_fifo + 6));
 
+		ExecuteCommand(tpm_.fifo_write_index,
+			       tpm_.regs.data_fifo,
+			       &response_size,
+			       &response);
 	}
 }
 
