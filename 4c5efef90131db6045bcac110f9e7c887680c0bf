@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4db19a56_6b0c1df4",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-29T16:16:54Z",
+      "side": 1,
+      "message": "So, you are retrying forever until your reads succeed. I think it could lead to task starvation in the case you have \"permanent\" failure. May want to rethink this? Does it routinely fail? Why?",
+      "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd174afa_e4e84472",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-29T16:16:54Z",
+      "side": 1,
+      "message": "May want to add \"else gpio_enable_interrupt(...)\", see comment below.",
+      "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d11d20b_6057e430",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-29T16:16:54Z",
+      "side": 1,
+      "message": "Where is the interrupt getting re-enabled? With your check above (!(gpio_get_level(GPIO_FAN_ALERT_L)), if the alert pin goes low to trigger the interrupt, but is high by the time the deferred function is called, your interrupt will be disabled forever. Is that really what you want?",
+      "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d06c2cf_4b582585",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-29T16:16:54Z",
+      "side": 1,
+      "message": "If this is a config option only for G781 then it should probably have G781 in its name. And it should probably have a more descriptive name than \"HW_INIT\".",
+      "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
