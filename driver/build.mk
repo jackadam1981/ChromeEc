@@ -49,6 +49,9 @@ driver-$(CONFIG_INA219)$(CONFIG_INA231)+=ina2xx.o
 driver-$(CONFIG_LED_DRIVER_DS2413)+=led/ds2413.o
 driver-$(CONFIG_LED_DRIVER_LP5562)+=led/lp5562.o
 
+# PMIC
+driver-$(CONFIG_PMIC_TPS650830)+=pmic_tps650830.o
+
 # Voltage regulators
 driver-$(CONFIG_REGULATOR_IR357X)+=regulator_ir357x.o
 
