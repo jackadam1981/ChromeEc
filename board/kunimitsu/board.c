@@ -415,3 +415,85 @@ void board_set_charge_limit(int charge_ma)
 					   CONFIG_CHARGER_INPUT_CURRENT));
 }
 
+void pmic_init(void)
+{
+	int data;
+	int ret;
+
+	ret = i2c_write8(I2C_PORT_PMIC, 0x60, 0x14, 0x08);
+	if (ret) {
+		CPRINTS("Low power init failed");
+		return;
+	}
+#if 0
+	ret = i2c_read8(I2C_PORT_PMIC, 0x60, 0x36, &data);
+	if (ret) {
+		CPRINTS("Low power init failed");
+		return;
+	}
+	ret = i2c_write8(I2C_PORT_PMIC, 0x60, 0x36, data | (1 << 7));
+	if (ret) {
+		CPRINTS("Low power init failed");
+		return;
+	}
+#endif
+	ret = i2c_read8(I2C_PORT_PMIC, 0x60, 0x34, &data);
+	if (ret) {
+		CPRINTS("Low power init failed");
+		return;
+	}
+	ret = i2c_write8(I2C_PORT_PMIC, 0x60, 0x34, (data & 0x3F) | (1 << 7));
+	if (ret) {
+		CPRINTS("Low power init failed");
+		return;
+	}
+
+	ret = i2c_read8(I2C_PORT_PMIC, 0x60, 0x32, &data);
+	if (ret) {
+		CPRINTS("Low power init failed");
+		return;
+	}
+	ret = i2c_write8(I2C_PORT_PMIC, 0x60, 0x32, (data & 0x3F) | (1 << 7));
+	if (ret) {
+		CPRINTS("Low power init failed");
+		return;
+	}
+
+	ret = i2c_read8(I2C_PORT_PMIC, 0x60, 0x31, &data);
+	if (ret) {
+		CPRINTS("Low power init failed");
+		return;
+	}
+	ret = i2c_write8(I2C_PORT_PMIC, 0x60, 0x31, (data & 0x3F) | (1 << 7));
+	if (ret) {
+		CPRINTS("Low power init failed");
+		return;
+	}
+
+	ret = i2c_write8(I2C_PORT_PMIC, 0x60, 0x3F, 0x15);
+	if (ret) {
+		CPRINTS("Low power init failed");
+		return;
+	}
+
+	ret = i2c_write8(I2C_PORT_PMIC, 0x60, 0x3E, 0x40);
+	if (ret) {
+		CPRINTS("Low power init failed");
+		return;
+	}
+
+	ret = i2c_write8(I2C_PORT_PMIC, 0x60, 0x3D, 0x1);
+	if (ret) {
+		CPRINTS("Low power init failed");
+		return;
+	}
+
+	ret = i2c_write8(I2C_PORT_PMIC, 0x60, 0x3C, 0x01);
+	if (ret) {
+		CPRINTS("Low power init failed");
+		return;
+	}
+
+	CPRINTS("PMIC init done");
+}
+DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, pmic_init, HOOK_PRIO_DEFAULT);
