@@ -141,6 +141,7 @@ dirs=core/$(CORE) chip/$(CHIP) board/$(BOARD) common power test
 dirs+= private private-cr51
 dirs+=$(shell find driver -type d)
 common_dirs=util
+LDFLAGS_EXTRA += -L/build/storm/usr/lib -ltpm2
 
 ro-objs := $(all-ro-y)
 # Don't include the shared objects in the RO/RW image if we're enabling
@@ -180,6 +181,7 @@ libsharedobjs-$(CONFIG_SHAREDLIB) := $(out)/$(SHOBJLIB)/$(SHOBJLIB).flat
 libsharedobjs_elf-$(CONFIG_SHAREDLIB) := \
 	$(libsharedobjs-$(CONFIG_SHAREDLIB):%.flat=%.elf)
 libsharedobjs: $(libsharedobjs-y)
+CFLAGS += -mfloat-abi=hard
 
 include Makefile.rules
 
