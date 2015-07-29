@@ -372,6 +372,7 @@ static void tpm_init(void)
 	tpm_.regs.access = tpm_reg_valid_sts;
 	tpm_.regs.sts = (tpm_family_tpm2 << tpm_family_shift) |
 		(64 << burst_count_shift);
+	tpm_hw_init();
 }
 
 void tpm_task(void)
@@ -379,11 +380,18 @@ void tpm_task(void)
 	tpm_init();
 	sps_tpm_enable();
 	while (1) {
+		uint8_t    *response;
+		uint32_t response_size;
+
 		/* Wait for the next command event */
 		task_wait_event(-1);
 		CPRINTF("%s: received fifo command 0x%04x\n",
 			__func__, be32_to_cpu(tpm_.regs.data_fifo + 6));
 
+		ExecuteCommand(tpm_.fifo_write_index,
+			       tpm_.regs.data_fifo,
+			       &response_size,
+			       &response);
 	}
 }
 

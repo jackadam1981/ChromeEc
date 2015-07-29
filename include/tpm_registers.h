@@ -24,4 +24,11 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size);
 /* Enable SPS TPM driver. */
 void sps_tpm_enable(void);
 
+/* The below functions come from the TPM2 library. */
+void ExecuteCommand(uint32_t      request_size,
+		    unsigned char *request,
+		    uint32_t      *response_size,
+		    uint8_t       **response);
+void tpm_hw_init(void);
+
 #endif	/* __CROS_EC_TPM_REGISTERS_H */
