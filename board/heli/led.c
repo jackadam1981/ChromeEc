@@ -69,8 +69,8 @@ static void led_init(void)
 	 * Enable PWMs and set to 0% duty cycle.  If they're disabled, the LM4
 	 * seems to ground the pins instead of letting them float.
 	 */
-	pwm_enable(PWM_CH_LED_RED, 1);
 	pwm_enable(PWM_CH_LED_GREEN, 1);
+	pwm_enable(PWM_CH_LED_RED, 1);
 	set_color(LED_OFF);
 }
 DECLARE_HOOK(HOOK_INIT, led_init, HOOK_PRIO_DEFAULT);
@@ -98,7 +98,7 @@ static void led_tick(void)
 	/* If charge-force-idle, blink green, 50% duty cycle, 2 sec period */
 	if (chstate == PWR_STATE_IDLE &&
 	    (charge_get_flags() & CHARGE_FLAG_FORCE_IDLE)) {
-		set_color((ticks & 0x4) ? LED_GREEN : LED_OFF);
+		set_color((ticks & 0x4) ? LED_RED : LED_OFF);
 		return;
 	}
 
@@ -111,7 +111,7 @@ static void led_tick(void)
 	/* If AC connected and fully charged (or close to it), solid green */
 	if (chstate == PWR_STATE_CHARGE_NEAR_FULL ||
 	    chstate == PWR_STATE_IDLE) {
-		set_color(LED_GREEN);
+		set_color(LED_RED);
 		return;
 	}
 
