@@ -1142,6 +1142,8 @@
 /* Support G3 sleep mode */
 #undef CONFIG_G3_SLEEP
 
+#undef ENABLE_EC_SLP_SUS
+
 /* Support LPC interface */
 #undef CONFIG_LPC
 

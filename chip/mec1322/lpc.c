@@ -554,6 +554,9 @@ void lpc_clear_acpi_status_mask(uint8_t mask)
 
 int lpc_get_pltrst_asserted(void)
 {
+	volatile int i;
+	for (i = 0; i < 100; i++)
+		;
 	return (MEC1322_LPC_BUS_MONITOR & (1<<1)) ? 1 : 0;
 }
 

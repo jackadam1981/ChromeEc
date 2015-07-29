@@ -5,6 +5,8 @@
 
 /* Skylake IMVP8 / ROP PMIC chipset power control module for Chrome EC */
 
+#include "adc.h"
+#include "battery.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -128,6 +130,9 @@ enum power_state power_handle_state(enum power_state state)
 	 */
 	int rsmrst_in = gpio_get_level(GPIO_RSMRST_L_PGOOD);
 	int rsmrst_out = gpio_get_level(GPIO_PCH_RSMRST_L);
+#ifdef ENABLE_EC_SLP_SUS
+	int bat_serial_num;
+#endif
 
 	if (rsmrst_in != rsmrst_out) {
 		/*
@@ -149,6 +154,23 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S5:
+#ifdef ENABLE_EC_SLP_SUS
+		/*
+		 * If dead battery or no battery and AC is present, wait till
+		 * the USB-C negotiation is done to enable the EC_ROP_SLP_SUS.
+		 * Else enable EC_ROP_SLP_SUS right away.
+		 */
+		if (battery_serial_number(&bat_serial_num) &&
+			gpio_get_level(GPIO_AC_PRESENT)) {
+			while (adc_read_channel(ADC_VBUS) < PD_MAX_VOLTAGE_MV) {
+				CPRINTS("Waiting for the USB-C negotiation");
+				msleep(10);
+			}
+		}
+
+		gpio_set_level(GPIO_EC_ROP_SLP_SUS, 1);
+#endif
+
 		if (gpio_get_level(GPIO_PCH_SLP_S4_L) == 1)
 			return POWER_S5S3; /* Power up to next state */
 		break;
