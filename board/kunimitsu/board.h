@@ -69,6 +69,9 @@
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_TEMP_SENSOR_TMP432
 
+#define CONFIG_PMIC_TPS650830
+#define TPS650830_I2C_ADDR TPS650830_I2C_ADDR1
+
 /*
  * Allow dangerous commands.
  * TODO(shawnn): Remove this config before production.

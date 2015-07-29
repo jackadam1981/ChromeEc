@@ -428,6 +428,9 @@
 /* Support PMIC power control */
 #undef CONFIG_PMIC
 
+/* TI TPS650830 PMIC driver */
+#undef CONFIG_PMIC_TPS650830
+
 /*****************************************************************************/
 /*
  * Optional console commands
