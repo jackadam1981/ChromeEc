@@ -121,6 +121,9 @@ int flash_physical_protect_now(int all)
 	}
 
 	ret = spi_flash_set_protect(offset, size);
+	if (ret == EC_SUCCESS)
+		ret = spi_flash_set_wp(SPI_WP_HARDWARE);
+
 	return ret;
 }
 
