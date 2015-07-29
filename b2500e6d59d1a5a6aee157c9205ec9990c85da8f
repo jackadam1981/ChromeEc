@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd174afa_c9c8c151",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2015-07-29T01:54:11Z",
+      "side": 1,
+      "message": "It didn\u0027t work for me.  I made openocd hang, then saw it time out.  It didn\u0027t kill the openocd process.  I think the sudo call puts the call into a new group.\n\nps -j\n  PID  PGID   SID TTY          TIME CMD\n  373   373   373 pts/56   00:00:00 bash\n27509 27509   373 pts/56   00:00:09 bash\n31981 31981   373 pts/56   00:00:00 flash_ec\n32079 31981   373 pts/56   00:00:00 flash_ec\n32087 31981   373 pts/56   00:00:00 sleep\n32293 32293   373 pts/56   00:00:00 ps\n\nps -j 32091\n  PID  PGID   SID TTY      STAT   TIME COMMAND\n32091 31981   373 pts/56   Sl     0:00 openocd -s /mnt/host/source/src/platform/ec/util/openocd -f servo.cfg -f nrf51_chip.cfg -c\n\nI tried making it \"sudo kill -9 0\" as well.",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 12
+      },
+      "revId": "b2500e6d59d1a5a6aee157c9205ec9990c85da8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
