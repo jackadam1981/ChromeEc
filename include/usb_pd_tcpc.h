@@ -35,4 +35,14 @@
 void tcpc_i2c_process(int read, int port, int len, uint8_t *payload,
 		      void (*send_response)(int));
 
+#ifdef CONFIG_USB_PD_TCPM_VBUS
+/**
+ * Handle VBUS wake interrupts
+ *
+ * @param signal The VBUS wake interrupt signal
+ */
+void pd_vbus_evt_p0(enum gpio_signal signal);
+void pd_vbus_evt_p1(enum gpio_signal signal);
+#endif /* CONFIG_USB_PD_TCPM_VBUS */
+
 #endif /* __CROS_EC_USB_PD_TCPC_H */
