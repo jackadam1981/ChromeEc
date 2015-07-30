@@ -31,8 +31,10 @@ static struct mutex spi_mutex;
 #endif
 
 static const struct dma_option spi_rx_option[] = {
+	{},
 	{
-		SPI_DMA_CHANNEL(0), (void *)&MEC1322_SPI_RD(0),
+		SPI_DMA_CHANNEL(1),
+		(void *)&MEC1322_SPI_RD(1),
 		MEC1322_DMA_XFER_SIZE(1)
 	},
 };
