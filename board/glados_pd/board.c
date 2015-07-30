@@ -30,15 +30,19 @@ void pd_send_ec_int(void)
 
 }
 
-void vbus0_evt(enum gpio_signal signal)
+#ifndef CONFIG_USB_PD_TCPM_VBUS
+void pd_vbus_evt_p0(enum gpio_signal signal)
 {
 	task_wake(TASK_ID_PD_C0);
 }
 
-void vbus1_evt(enum gpio_signal signal)
+void pd_vbus_evt_p1(enum gpio_signal signal)
 {
 	task_wake(TASK_ID_PD_C1);
 }
+
+#include "gpio_list.h"
+#endif
 
 void board_config_pre_init(void)
 {
@@ -52,8 +56,6 @@ void board_config_pre_init(void)
 	 *  Chan 5 : SPI2_TX   (C1 TX)
 	 */
 }
-
-#include "gpio_list.h"
 
 /* Initialize board. */
 static void board_init(void)

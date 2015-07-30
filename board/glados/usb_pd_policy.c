@@ -125,11 +125,13 @@ void typec_set_input_current_limit(int port, uint32_t max_ma,
 	/* notify host of power info change */
 }
 
+#ifndef CONFIG_USB_PD_TCPM_VBUS
 int pd_snk_is_vbus_provided(int port)
 {
 	return !gpio_get_level(port ? GPIO_USB_C1_VBUS_WAKE_L :
 				      GPIO_USB_C0_VBUS_WAKE_L);
 }
+#endif
 
 int pd_board_checks(void)
 {

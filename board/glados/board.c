@@ -45,6 +45,7 @@ static void pd_mcu_interrupt(enum gpio_signal signal)
 	host_command_pd_send_status(0);
 }
 
+#ifndef CONFIG_USB_PD_TCPM_VBUS
 static void update_vbus_supplier(int port, int vbus_level)
 {
 	struct charge_port_info charge;
@@ -81,6 +82,7 @@ void vbus1_evt(enum gpio_signal signal)
 	update_vbus_supplier(0, vbus_level);
 	task_wake(TASK_ID_PD_C1);
 }
+#endif
 
 void usb0_evt(enum gpio_signal signal)
 {
@@ -222,9 +224,11 @@ static void board_init(void)
 
 	/* Enable PD MCU interrupt */
 	gpio_enable_interrupt(GPIO_PD_MCU_INT);
+#ifndef CONFIG_USB_PD_TCPM_VBUS
 	/* Enable VBUS interrupt */
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
 	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE_L);
+#endif
 
 	/* Initialize all pericom charge suppliers to 0 */
 	charge_none.voltage = USB_CHARGER_VOLTAGE_MV;
@@ -247,9 +251,11 @@ static void board_init(void)
 					     &charge_none);
 	}
 
+#ifndef CONFIG_USB_PD_TCPM_VBUS
 	/* Initialize VBUS supplier based on whether or not VBUS is present */
 	update_vbus_supplier(0, !gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L));
 	update_vbus_supplier(1, !gpio_get_level(GPIO_USB_C1_VBUS_WAKE_L));
+#endif
 
 	/* Enable pericom BC1.2 interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
