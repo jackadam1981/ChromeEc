@@ -2,6 +2,108 @@
   "comments": [
     {
       "key": {
+        "uuid": "2d862697_e6379a08",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-30T17:08:00Z",
+      "side": 1,
+      "message": "This variable is no longer needed.",
+      "revId": "587b6171c3629d6fc05ab0774bd0124a9994ec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d9472c2_3e55054b",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-30T17:08:00Z",
+      "side": 1,
+      "message": "Don\u0027t use EC_SUCCESS here. Just use 0 / non-zero to indicate status (and it\u0027s better to use zero to indicate non-initialized, see below).",
+      "revId": "587b6171c3629d6fc05ab0774bd0124a9994ec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d9472c2_3e6ee522",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-30T17:08:00Z",
+      "side": 1,
+      "message": "If hibernate can be called from interrupt context, you don\u0027t need a deferred function. There was some talk over email about changing it, but I\u0027m not sure if it was tested.",
+      "revId": "587b6171c3629d6fc05ab0774bd0124a9994ec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d8962a8_029b8cfb",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-30T17:08:00Z",
+      "side": 1,
+      "message": "You don\u0027t need to disable this interrupt.",
+      "revId": "587b6171c3629d6fc05ab0774bd0124a9994ec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd8aea9e_23f5eebf",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-30T17:08:00Z",
+      "side": 1,
+      "message": "I think this should be given a more descriptive name to indicate what it really controls (fan alert / shutdown).",
+      "revId": "587b6171c3629d6fc05ab0774bd0124a9994ec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d9472c2_1e712904",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-30T17:08:00Z",
+      "side": 1,
+      "message": "You should initialize this to zero and set it to one when initialized. Otherwise you should name the variable \"...not_init\", since it\u0027s non-zero when you\u0027re not initialzied.",
+      "revId": "587b6171c3629d6fc05ab0774bd0124a9994ec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d4ade43_3b68cbe5",
         "filename": "driver/temp_sensor/g781.c",
         "patchSetId": 5
