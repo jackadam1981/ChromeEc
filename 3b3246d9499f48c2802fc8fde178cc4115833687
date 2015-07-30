@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed788e71_19994f89",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-30T23:54:15Z",
+      "side": 1,
+      "message": "do we need a large buffer for on-chip TCPC ?",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 24
+      },
+      "revId": "3b3246d9499f48c2802fc8fde178cc4115833687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea295486_d40ad428",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-30T23:54:15Z",
+      "side": 1,
+      "message": "we are discarding the newest message, is that the replacement policy we want ?",
+      "range": {
+        "startLine": 772,
+        "startChar": 4,
+        "endLine": 772,
+        "endChar": 33
+      },
+      "revId": "3b3246d9499f48c2802fc8fde178cc4115833687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea523422_ecb17fcd",
+        "filename": "driver/tcpm/stub.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-30T23:54:15Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 117,
+        "startChar": 43,
+        "endLine": 117,
+        "endChar": 51
+      },
+      "revId": "3b3246d9499f48c2802fc8fde178cc4115833687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
