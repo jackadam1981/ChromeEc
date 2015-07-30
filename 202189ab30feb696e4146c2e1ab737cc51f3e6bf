@@ -22,6 +22,30 @@
       "revId": "202189ab30feb696e4146c2e1ab737cc51f3e6bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a5ce834_6a2337b0",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-30T23:44:31Z",
+      "side": 1,
+      "message": "But writes only happen at init or when we change the frequencies.\nReduce to 1 per Bosh example code (aka C_BMI160_ONE_U8X)",
+      "parentUuid": "6a5f2428_8aae6b16",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 9
+      },
+      "revId": "202189ab30feb696e4146c2e1ab737cc51f3e6bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
