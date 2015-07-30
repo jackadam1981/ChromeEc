@@ -19,6 +19,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "usb_charge.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
@@ -208,6 +209,17 @@ int pd_is_connected(int port)
 		pd[port].task_state != PD_STATE_SRC_DISCONNECTED &&
 		pd[port].task_state != PD_STATE_SRC_DISCONNECTED_DEBOUNCE);
 }
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+static int pd_is_vbus_present(int port)
+{
+#ifdef CONFIG_USB_PD_TCPM_VBUS
+	return tcpm_get_vbus_level(port);
+#else
+	return pd_snk_is_vbus_provided(port);
+#endif
+}
+#endif
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 static int pd_snk_debug_acc_toggle(int port)
@@ -1309,6 +1321,25 @@ void pd_set_new_power_request(int port)
 }
 #endif /* CONFIG_CHARGE_MANAGER */
 
+#ifdef CONFIG_USB_PD_TCPM_VBUS
+void pd_update_vbus_supplier(int port, int vbus_level)
+{
+	struct charge_port_info charge;
+
+	/*
+	 * If VBUS is low, or VBUS is high and we are not outputting VBUS
+	 * ourselves, then update the VBUS supplier.
+	 */
+	if (!vbus_level || !usb_charger_port_is_sourcing_vbus(port)) {
+		charge.voltage = USB_CHARGER_VOLTAGE_MV;
+		charge.current = vbus_level ? USB_CHARGER_MIN_CURR_MA : 0;
+		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS,
+					     port,
+					     &charge);
+	}
+}
+#endif
+
 #if defined(CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP) && defined(CONFIG_USBC_SS_MUX)
 /*
  * Backwards compatible DFP does not support USB SS because it applies VBUS
@@ -1937,7 +1968,7 @@ void pd_task(void)
 
 			/* Wait for CC debounce and VBUS present */
 			if (get_time().val < pd[port].cc_debounce ||
-			    !pd_snk_is_vbus_provided(port))
+			    !pd_is_vbus_present(port))
 				break;
 
 			if (pd_try_src_enable &&
@@ -2015,7 +2046,7 @@ void pd_task(void)
 						     PD_STATE_SNK_DISCOVERY);
 			}
 
-			if (!pd_snk_is_vbus_provided(port) &&
+			if (!pd_is_vbus_present(port) &&
 			    !snk_hard_reset_vbus_off) {
 				/* VBUS has gone low, reset timeout */
 				snk_hard_reset_vbus_off = 1;
@@ -2025,7 +2056,7 @@ void pd_task(void)
 						  PD_T_SRC_TURN_ON,
 						  PD_STATE_SNK_DISCONNECTED);
 			}
-			if (pd_snk_is_vbus_provided(port) &&
+			if (pd_is_vbus_present(port) &&
 			    snk_hard_reset_vbus_off) {
 				/* VBUS went high again */
 				set_state(port, PD_STATE_SNK_DISCOVERY);
@@ -2472,7 +2503,7 @@ void pd_task(void)
 		 * a hard reset.
 		 */
 		if (pd[port].power_role == PD_ROLE_SINK &&
-		    !pd_snk_is_vbus_provided(port) &&
+		    !pd_is_vbus_present(port) &&
 		    pd[port].task_state != PD_STATE_SNK_HARD_RESET_RECOVER &&
 		    pd[port].task_state != PD_STATE_HARD_RESET_EXECUTE) {
 			/* Sink: detect disconnect by monitoring VBUS */

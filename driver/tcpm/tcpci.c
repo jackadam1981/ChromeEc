@@ -17,7 +17,7 @@
 /* Convert port number to tcpc i2c address */
 #define I2C_ADDR_TCPC(p) (CONFIG_TCPC_I2C_BASE_ADDR + 2*(p))
 
-static int tcpc_polarity, tcpc_vconn;
+static int tcpc_polarity, tcpc_vconn, tcpc_vbus[CONFIG_USB_PD_PORT_COUNT];
 
 static int init_alert_mask(int port)
 {
@@ -30,9 +30,21 @@ static int init_alert_mask(int port)
 	 */
 	mask = TCPC_REG_ALERT_TX_SUCCESS | TCPC_REG_ALERT_TX_FAILED |
 		TCPC_REG_ALERT_TX_DISCARDED | TCPC_REG_ALERT_RX_STATUS |
-		TCPC_REG_ALERT_RX_HARD_RST | TCPC_REG_ALERT_CC_STATUS;
+		TCPC_REG_ALERT_RX_HARD_RST | TCPC_REG_ALERT_CC_STATUS |
+		TCPC_REG_ALERT_POWER_STATUS;
 	/* Set the alert mask in TCPC */
 	rv = tcpm_alert_mask_set(port, mask);
+
+	return rv;
+}
+
+static int init_power_status_mask(int port)
+{
+	uint8_t mask;
+	int rv;
+
+	mask = TCPC_REG_POWER_VBUS_PRES;
+	rv = tcpm_set_power_status_mask(port, mask);
 
 	return rv;
 }
@@ -52,6 +64,8 @@ int tcpm_init(int port)
 		if (rv == EC_SUCCESS && !(err & TCPC_REG_ERROR_STATUS_UNINIT)) {
 			i2c_write16(I2C_PORT_TCPC, I2C_ADDR_TCPC(port),
 					 TCPC_REG_ALERT, 0xff);
+			/* Initialize power_status_mask */
+			init_power_status_mask(port);
 			return init_alert_mask(port);
 		}
 		msleep(10);
@@ -81,6 +95,20 @@ int tcpm_get_cc(int port, int *cc1, int *cc2)
 		*cc1 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
 	if (*cc2 != TYPEC_CC_VOLT_OPEN)
 		*cc2 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
+
+	return rv;
+}
+
+int tcpm_get_power_status(int port, int *status)
+{
+	int rv;
+
+	rv = i2c_read8(I2C_PORT_TCPC, I2C_ADDR_TCPC(port),
+		       TCPC_REG_POWER_STATUS, status);
+
+	/* If i2c read fails, return error */
+	if (rv)
+		return rv;
 
 	return rv;
 }
@@ -146,6 +174,19 @@ int tcpm_set_rx_enable(int port, int enable)
 			  enable ? TCPC_REG_RX_DETECT_SOP_HRST_MASK : 0);
 }
 
+int tcpm_set_power_status_mask(int port, uint8_t mask)
+{
+	int rv;
+	/* write to the Alert Mask register */
+	rv = i2c_write8(I2C_PORT_TCPC, I2C_ADDR_TCPC(port),
+			TCPC_REG_POWER_STATUS_MASK , mask);
+
+	if (rv)
+		return rv;
+
+	return rv;
+}
+
 int tcpm_alert_mask_set(int port, uint16_t mask)
 {
 	int rv;
@@ -157,6 +198,11 @@ int tcpm_alert_mask_set(int port, uint16_t mask)
 		return rv;
 
 	return rv;
+}
+
+int tcpm_get_vbus_level(int port)
+{
+	return tcpc_vbus[port];
 }
 
 int tcpm_get_message(int port, uint32_t *payload, int *head)
@@ -224,6 +270,7 @@ int tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
 void tcpc_alert(int port)
 {
 	int status;
+	int power_status;
 
 	/* Read the Alert register from the TCPC */
 	tcpm_alert_status(port, &status);
@@ -231,6 +278,18 @@ void tcpc_alert(int port)
 	if (status & TCPC_REG_ALERT_CC_STATUS) {
 		/* CC status changed, wake task */
 		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
+	}
+	if (status & TCPC_REG_ALERT_POWER_STATUS) {
+		/* Read Power Status register */
+		tcpm_get_power_status(port, &power_status);
+		/* Update VBUS status */
+		tcpc_vbus[port] = power_status &
+			TCPC_REG_POWER_VBUS_PRES ? 1 : 0;
+#ifdef CONFIG_USB_PD_TCPM_VBUS
+		/* Update charge manager with new VBUS state */
+		pd_update_vbus_supplier(port, tcpc_vbus[port]);
+#endif
+		task_wake(PD_PORT_TO_TASK_ID(port));
 	}
 	if (status & TCPC_REG_ALERT_RX_STATUS) {
 		/* message received */
