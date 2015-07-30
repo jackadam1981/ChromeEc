@@ -1503,6 +1503,14 @@ void pd_prepare_sysjump(void);
  */
 void pd_set_new_power_request(int port);
 
+/**
+ * Update the VBUS status for the charge manager
+ *
+ * @param port USB-C port number
+ * @param vbus_level indicates if vbus is present or absent
+ */
+void pd_update_vbus_supplier(int port, int vbus_level);
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**
