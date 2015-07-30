@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a6260ef_6c10f310",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-30T20:58:05Z",
+      "side": 1,
+      "message": "should be in the previous CL else it won\u0027t compile",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 22
+      },
+      "revId": "8ee56b01551d9ad3b2dabc5577b56c20190dc41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea523422_a9cff99f",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-30T20:58:05Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 22
+      },
+      "revId": "8ee56b01551d9ad3b2dabc5577b56c20190dc41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
