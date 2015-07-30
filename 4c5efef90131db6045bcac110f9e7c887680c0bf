@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "4d4d1a59_b1b9406a",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1130634
+      },
+      "writtenOn": "2015-07-30T06:18:01Z",
+      "side": 1,
+      "message": "Shawn, I understand your point. But I think that any failures in enabling the ALERT interrupt might be caused by missing to catch this condition what we must need to handle. So, as David is requesting, please check patchset5 which has changed way to retry.",
+      "parentUuid": "eafb1432_720fa0be",
+      "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd174afa_e4e84472",
         "filename": "driver/temp_sensor/g781.c",
         "patchSetId": 4
