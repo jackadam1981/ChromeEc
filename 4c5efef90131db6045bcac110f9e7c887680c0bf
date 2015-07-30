@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "2d862697_e6aeba9c",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-30T17:08:00Z",
+      "side": 1,
+      "message": "I still don\u0027t think we need such a retry mechanism. If field testing shows that the i2c communication is prone to failure, we should investigate it and solve the root cause. We have no data that shows failure, right? So we have no idea about possible failure modes. In fact, retrying every second may make the EC perform worse in some cases.",
+      "parentUuid": "4d4d1a59_b1b9406a",
+      "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd174afa_e4e84472",
         "filename": "driver/temp_sensor/g781.c",
         "patchSetId": 4
