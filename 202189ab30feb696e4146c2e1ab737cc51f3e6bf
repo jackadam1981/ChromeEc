@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a5f2428_8aae6b16",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-30T21:04:09Z",
+      "side": 1,
+      "message": "3 milliseconds here is huge\non top of that, this will generate tons of interrupt for this 3ms timer",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 9
+      },
+      "revId": "202189ab30feb696e4146c2e1ab737cc51f3e6bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
