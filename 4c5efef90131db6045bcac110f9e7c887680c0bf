@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2d5f06fb_986c75b0",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2015-07-30T01:27:53Z",
+      "side": 1,
+      "message": "If EC not retrying this, system might not be able to re-enable interrupt to enter hibernate.\nThis might cause this protect function fail.\nstatus_read8 have to be done for alert pin status reset.\nBut I will try add delay for avoid task starvation.",
+      "parentUuid": "4db19a56_6b0c1df4",
+      "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd174afa_e4e84472",
         "filename": "driver/temp_sensor/g781.c",
         "patchSetId": 4
@@ -47,6 +65,24 @@
       "writtenOn": "2015-07-29T16:16:54Z",
       "side": 1,
       "message": "Where is the interrupt getting re-enabled? With your check above (!(gpio_get_level(GPIO_FAN_ALERT_L)), if the alert pin goes low to trigger the interrupt, but is high by the time the deferred function is called, your interrupt will be disabled forever. Is that really what you want?",
+      "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d5f06fb_58949d15",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2015-07-30T01:27:53Z",
+      "side": 1,
+      "message": "Alert pin only can goes high when EC do status_read8(\u0026alert_status) to clear alert status in cool down status.\nInterrupt will be enable after EC clear status.\nEC will enter hibernate every time when interrupt happen, and interrupt will be re-enable after EC wake up init.",
+      "parentUuid": "8d11d20b_6057e430",
       "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
