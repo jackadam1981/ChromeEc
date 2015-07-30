@@ -1040,3 +1040,55 @@ const struct accelgyro_drv bmi160_drv = {
 struct bmi160_drv_data_t g_bmi160_data = {
 	.flags = 0,
 };
+
+#ifdef CONFIG_SPI_ACCEL_PORT
+static int command_spixfer(int argc, char **argv)
+{
+	int dev_id;
+	uint8_t offset;
+	int v = 0;
+	uint8_t data[32];
+	char *e;
+	int rv = 0;
+
+	if (argc != 5)
+		return EC_ERROR_PARAM_COUNT;
+
+	dev_id = strtoi(argv[2], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM2;
+
+	offset = strtoi(argv[3], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM4;
+
+	v = strtoi(argv[4], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM5;
+
+	if (strcasecmp(argv[1], "rlen") == 0) {
+		offset |= 0x80;
+		/* Arbitrary length read; param5 = len */
+		if (v < 0 || v > sizeof(data))
+			return EC_ERROR_PARAM5;
+
+		rv = spi_raw_read(dev_id, offset, data, v);
+
+		if (!rv)
+			ccprintf("Data: %.*h\n", v, data);
+
+	} else if (strcasecmp(argv[1], "w") == 0) {
+		/* 8-bit write */
+		rv = raw_write8(dev_id, offset, v);
+
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	return rv;
+}
+DECLARE_CONSOLE_COMMAND(spixfer, command_spixfer,
+			"rlen/w dev_id offset [value | len]",
+			"Read write spi",
+			NULL);
+#endif
