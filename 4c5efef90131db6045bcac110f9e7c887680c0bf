@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "2d5f06fb_186145b2",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2015-07-30T02:34:20Z",
+      "side": 1,
+      "message": "https://drive.google.com/file/d/0B7EaZ0YWjujacGhTXzM3aG9VM0E/view?usp\u003dsharing\nThis is G781 spec, please check page 9 \"ALERT Interrupts\"\n\nI just assume if this status_read8 fail, EC need to do it again to prevent over temperature happen and EC can\u0027t enter hibernate.",
+      "parentUuid": "eafb1432_1253bc3a",
+      "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd174afa_e4e84472",
         "filename": "driver/temp_sensor/g781.c",
         "patchSetId": 4
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "In that case, why are you checking the level of GPIO_FAN_ALERT_L in fan_alert_deferred before deciding whether to hibernate?",
       "parentUuid": "2d5f06fb_58949d15",
+      "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed788e71_16fe7c2d",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2015-07-30T02:34:20Z",
+      "side": 1,
+      "message": "I understand, I will remove it in next patch.",
+      "parentUuid": "2a0b6c19_a7e5f415",
       "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
