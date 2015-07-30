@@ -69,6 +69,7 @@
 #define CONFIG_SPI_FLASH_W25Q64
 
 #define CONFIG_TEMP_SENSOR
+
 /*
  * Allow dangerous commands.
  * TODO(shawnn): Remove this config before production.
@@ -111,6 +112,10 @@
 #define I2C_PORT_BATTERY MEC1322_I2C3
 #define I2C_PORT_CHARGER MEC1322_I2C3
 #endif
+
+/* Modules we want to exclude */
+#undef CONFIG_CMD_TIMERINFO
+#undef CONFIG_CONSOLE_CMDHELP
 
 #undef DEFERRABLE_MAX_COUNT
 #define DEFERRABLE_MAX_COUNT 12
