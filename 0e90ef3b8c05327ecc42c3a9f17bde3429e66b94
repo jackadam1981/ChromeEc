@@ -16,6 +16,24 @@
       "revId": "0e90ef3b8c05327ecc42c3a9f17bde3429e66b94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d862697_c6b7f621",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-07-30T15:26:54Z",
+      "side": 1,
+      "message": "I like that idea.  Otherwise, a clock-stretching battery could block the entire system for a long time.",
+      "parentUuid": "ea24f4a5_7f5523d0",
+      "revId": "0e90ef3b8c05327ecc42c3a9f17bde3429e66b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
