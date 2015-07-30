@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "eafb1432_1253bc3a",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-30T01:43:40Z",
+      "side": 1,
+      "message": "I don\u0027t understand. Why would this fail to begin with?\n\nCan you send me the spec document for this part / feature?",
+      "parentUuid": "2d5f06fb_986c75b0",
+      "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd174afa_e4e84472",
         "filename": "driver/temp_sensor/g781.c",
         "patchSetId": 4
@@ -83,6 +101,24 @@
       "side": 1,
       "message": "Alert pin only can goes high when EC do status_read8(\u0026alert_status) to clear alert status in cool down status.\nInterrupt will be enable after EC clear status.\nEC will enter hibernate every time when interrupt happen, and interrupt will be re-enable after EC wake up init.",
       "parentUuid": "8d11d20b_6057e430",
+      "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a0b6c19_a7e5f415",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-30T01:43:40Z",
+      "side": 1,
+      "message": "In that case, why are you checking the level of GPIO_FAN_ALERT_L in fan_alert_deferred before deciding whether to hibernate?",
+      "parentUuid": "2d5f06fb_58949d15",
       "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
