@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea24f4a5_7f5523d0",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-30T00:09:41Z",
+      "side": 1,
+      "message": "Our timeout is 1sec, which is probably too long to busy wait. Maybe busy wait for 50us, and sleep out the remaining duration as we did before to allow context switches?",
+      "revId": "0e90ef3b8c05327ecc42c3a9f17bde3429e66b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
