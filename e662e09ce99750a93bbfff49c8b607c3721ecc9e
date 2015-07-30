@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d4ade43_81ba24a5",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-07-30T18:31:08Z",
+      "side": 1,
+      "message": "I still think this R/M/W of possibly undefined memory content is not so great",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 17
+      },
+      "revId": "e662e09ce99750a93bbfff49c8b607c3721ecc9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
