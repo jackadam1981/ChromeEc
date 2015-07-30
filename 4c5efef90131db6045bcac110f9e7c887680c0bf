@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "eafb1432_720fa0be",
+        "filename": "driver/temp_sensor/g781.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-30T04:47:17Z",
+      "side": 1,
+      "message": "In that case, I suggest you leave out the retry logic entirely. Retrying indefinitely can have unintended consequences.",
+      "parentUuid": "2d5f06fb_186145b2",
+      "revId": "4c5efef90131db6045bcac110f9e7c887680c0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd174afa_e4e84472",
         "filename": "driver/temp_sensor/g781.c",
         "patchSetId": 4
