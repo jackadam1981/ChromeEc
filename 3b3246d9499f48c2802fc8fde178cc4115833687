@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ea295486_973fae8d",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-31T14:48:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea523422_cc1a43fb",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 24
+      },
+      "revId": "3b3246d9499f48c2802fc8fde178cc4115833687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea295486_d40ad428",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 3
@@ -107,6 +131,30 @@
       "writtenOn": "2015-07-30T23:54:15Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 117,
+        "startChar": 43,
+        "endLine": 117,
+        "endChar": 51
+      },
+      "revId": "3b3246d9499f48c2802fc8fde178cc4115833687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa33dcf3_75555ad0",
+        "filename": "driver/tcpm/stub.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-31T14:48:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea523422_ecb17fcd",
       "range": {
         "startLine": 117,
         "startChar": 43,
