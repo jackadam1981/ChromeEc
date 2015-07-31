@@ -735,7 +735,8 @@ int tcpc_run(int port, int evt)
 	int cc, i, res;
 
 	/* incoming packet ? */
-	if (pd_rx_started(port) && pd[port].rx_enabled) {
+	if (pd_rx_started(port) && pd[port].rx_enabled &&
+	    !(pd[port].alert & TCPC_REG_ALERT_RX_STATUS)) {
 		pd[port].rx_head = pd_analyze_rx(port,
 						 pd[port].rx_payload);
 		pd_rx_complete(port);
