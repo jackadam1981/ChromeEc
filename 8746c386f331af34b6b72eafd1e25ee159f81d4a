@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d4d1a59_f4757641",
+        "filename": "power/mediatek.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-07-31T07:37:47Z",
+      "side": 1,
+      "message": "Correct me if I am wrong. We need to pull EC_INT low to discharge AP, right?",
+      "range": {
+        "startLine": 476,
+        "startChar": 4,
+        "endLine": 476,
+        "endChar": 24
+      },
+      "revId": "8746c386f331af34b6b72eafd1e25ee159f81d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
