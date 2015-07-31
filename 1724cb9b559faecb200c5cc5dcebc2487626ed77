@@ -22,6 +22,30 @@
       "revId": "1724cb9b559faecb200c5cc5dcebc2487626ed77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2e188f_91c8dcb7",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-31T01:48:30Z",
+      "side": 1,
+      "message": "It is the index inside spi_device_t. I can keep this CL for myself.",
+      "parentUuid": "0a5ce834_edee21fa",
+      "range": {
+        "startLine": 1091,
+        "startChar": 11,
+        "endLine": 1091,
+        "endChar": 17
+      },
+      "revId": "1724cb9b559faecb200c5cc5dcebc2487626ed77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
