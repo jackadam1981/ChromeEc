@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a59ac45_421a962f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-31T21:54:19Z",
+      "side": 1,
+      "message": "would be really nice to get rid of this. seems like we could just name the GPIO the same way on every board, might have to add a config option for whether the GPIO is active high or low, and then just directly read it in this function. maybe in a different CL though.",
+      "range": {
+        "startLine": 219,
+        "startChar": 8,
+        "endLine": 219,
+        "endChar": 38
+      },
+      "revId": "8d231532277e97c856cee812430d34abb4ba57e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca2490af_ac493684",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1340,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-31T21:54:19Z",
+      "side": 1,
+      "message": "maybe this function is better off directly in charge_manager.c. it doesn\u0027t really belong in this file. or maybe in usb_charger.c with the bc1.2 suppliers.",
+      "range": {
+        "startLine": 1325,
+        "startChar": 0,
+        "endLine": 1340,
+        "endChar": 1
+      },
+      "revId": "8d231532277e97c856cee812430d34abb4ba57e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a6260ef_950a07ad",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-31T21:54:19Z",
+      "side": 1,
+      "message": "i think we also need to wake the PD task here.",
+      "revId": "8d231532277e97c856cee812430d34abb4ba57e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a59ac45_e2d2aacb",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-31T21:54:19Z",
+      "side": 1,
+      "message": "why this?",
+      "range": {
+        "startLine": 995,
+        "startChar": 0,
+        "endLine": 995,
+        "endChar": 22
+      },
+      "revId": "8d231532277e97c856cee812430d34abb4ba57e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a59ac45_02fffe29",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-31T21:54:19Z",
+      "side": 1,
+      "message": "this should be calling tcpc_set_power_status_mask(), in case later we want to take more actions when the mask is changed or something like that.",
+      "range": {
+        "startLine": 1032,
+        "startChar": 2,
+        "endLine": 1032,
+        "endChar": 42
+      },
+      "revId": "8d231532277e97c856cee812430d34abb4ba57e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca2490af_cce802ee",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-07-31T21:54:19Z",
+      "side": 1,
+      "message": "should probably not set this if CONFIG_USB_PD_TCPM_VBUS is not defined. we don\u0027t need more useless interrupts. also, don\u0027t need init_power_status_mask() or tcpm_get_vbus_level().",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "8d231532277e97c856cee812430d34abb4ba57e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
