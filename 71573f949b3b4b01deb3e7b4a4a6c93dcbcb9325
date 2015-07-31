@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a59ac45_91233e58",
+        "filename": "chip/mec1322/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-07-31T05:36:39Z",
+      "side": 1,
+      "message": "Actually, that\u0027s not enough\nIn the previous CL 288512, \nCONFIG_SPI_PORT 1 became CONFIG_SPI_FLASH_PORT 0 (see board/kunimitsu/board.h for instance). But that\u0027s a mistake. I did not use the same logic as in stm32/spi_master.c, so I still need to set CONFIG_SPI_FLASH_PORT to 1.",
+      "revId": "71573f949b3b4b01deb3e7b4a4a6c93dcbcb9325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
