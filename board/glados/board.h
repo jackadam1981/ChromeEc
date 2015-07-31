@@ -60,6 +60,8 @@
 #define CONFIG_SPI_FLASH_W25Q64
 
 #define CONFIG_TEMP_SENSOR
+#define CONFIG_TEMP_SENSOR_BD99992GW
+
 /*
  * Allow dangerous commands.
  * TODO(shawnn): Remove this config before production.
@@ -86,6 +88,9 @@
 #define I2C_PORT_ACCEL MEC1322_I2C2
 #define I2C_PORT_PMIC MEC1322_I2C3
 #define I2C_PORT_USB_CHARGER_2 MEC1322_I2C3
+
+/* Thermal sensors read through PMIC ADC interface */
+#define I2C_PORT_THERMAL I2C_PORT_PMIC
 
 #undef DEFERRABLE_MAX_COUNT
 #define DEFERRABLE_MAX_COUNT 12
@@ -118,8 +123,13 @@ enum power_signal {
 };
 
 enum temp_sensor_id {
-	/* Battery temperature sensor */
 	TEMP_SENSOR_BATTERY,
+
+	/* These temp sensors are only readable in S0 */
+	TEMP_SENSOR_AMBIENT,
+	TEMP_SENSOR_CHARGER,
+	TEMP_SENSOR_DRAM,
+	TEMP_SENSOR_WIFI,
 
 	TEMP_SENSOR_COUNT
 };
