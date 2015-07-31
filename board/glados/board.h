@@ -69,6 +69,8 @@
 #define CONFIG_SPI_FLASH_W25Q64
 
 #define CONFIG_TEMP_SENSOR
+#define CONFIG_TEMP_SENSOR_BD99992GW
+
 /*
  * Allow dangerous commands.
  * TODO(shawnn): Remove this config before production.
@@ -143,8 +145,13 @@ enum power_signal {
 };
 
 enum temp_sensor_id {
-	/* Battery temperature sensor */
 	TEMP_SENSOR_BATTERY,
+
+	/* These temp sensors are only readable in S0 */
+	TEMP_SENSOR_AMBIANT,
+	TEMP_SENSOR_CHARGER,
+	TEMP_SENSOR_DRAM,
+	TEMP_SENSOR_WIFI,
 
 	TEMP_SENSOR_COUNT
 };
