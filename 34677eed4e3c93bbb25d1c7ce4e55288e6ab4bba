@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ca2490af_59d29600",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-07-31T20:17:29Z",
+      "side": 0,
+      "message": "Old response from Alec --\u003e The idea is that when the AP is on, the AP will know when to ignore keys. The AP is calculating the lid angle on its own using the raw data from the EC plus calibration data stored in VPD. Without calibration, the EC estimate can be off by as much as 10 degrees. So, the AP actually has much more accurate knowledge of the lid angle, and the EC estimate of lid angle is only used when there is no other option (AP is off).\n\nIf this functionality is moved out to a function in board, we\u0027ll need to make sure to have a similar check before disabling the KB.",
+      "parentUuid": "ca2490af_b914da4e",
+      "revId": "34677eed4e3c93bbb25d1c7ce4e55288e6ab4bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dbb223c_18eb29ec",
         "filename": "common/lid_angle.c",
         "patchSetId": 3
