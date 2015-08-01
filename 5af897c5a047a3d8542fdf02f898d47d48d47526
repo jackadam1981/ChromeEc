@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "aa33dcf3_73a32f87",
+        "filename": "board/ryu/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-01T18:01:09Z",
+      "side": 1,
+      "message": "ok, yeah, that\u0027s true, we really should make sure this command completes before changing the GPIOs below, so best to leave it as is.",
+      "parentUuid": "6a5f2428_b98aab9e",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "5af897c5a047a3d8542fdf02f898d47d48d47526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea523422_4dd52a2e",
         "filename": "board/ryu/usb_pd_config.h",
         "patchSetId": 2
