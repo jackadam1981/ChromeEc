@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a0ff877_e3bb92a8",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-03T22:10:30Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be (tstamp_af - tstamp_bf)/2 ?",
+      "range": {
+        "startLine": 102,
+        "startChar": 42,
+        "endLine": 102,
+        "endChar": 51
+      },
+      "revId": "ee7ed2f7a3c52d11f8e775a890f8dd90c037d5f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6acc847d_8238fa89",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-03T22:10:30Z",
+      "side": 1,
+      "message": "this is expensive, i think it\u0027s better to do an if check:\nvbus_vol_head \u003d (vbus_vol_head \u003d\u003d VBUS_ARRAY_SIZE-1) ? 0 : vbus_vol_head + 1;",
+      "range": {
+        "startLine": 408,
+        "startChar": 41,
+        "endLine": 408,
+        "endChar": 42
+      },
+      "revId": "ee7ed2f7a3c52d11f8e775a890f8dd90c037d5f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
