@@ -27,6 +27,9 @@
  */
 #define DEFAULT_TIMEOUT SECOND
 
+/* Give CPU 1 sec to start up after sending power button to PCH */
+#define DELAY_ENTERING_G3_TIMEOUT SECOND
+
 /* Timeout for dropping back from S5 to G3 */
 #define S5_INACTIVITY_TIMEOUT (10 * SECOND)
 
@@ -49,6 +52,7 @@ static uint32_t in_debug;     /* Signal values which print debug output */
 
 static enum power_state state = POWER_G3;  /* Current state */
 static int want_g3_exit;      /* Should we exit the G3 state? */
+static int delay_entering_g3;   /* Should we delay entering G3 state? */
 static uint64_t last_shutdown_time; /* When did we enter G3? */
 
 /* Delay before hibernating, in seconds */
@@ -173,9 +177,32 @@ static enum power_state power_common_state(enum power_state state)
 		power_wait_signals(0);
 		if (task_wait_event(S5_INACTIVITY_TIMEOUT) ==
 		    TASK_EVENT_TIMER) {
-			/* Drop to G3; wake not requested yet */
-			want_g3_exit = 0;
-			return POWER_S5G3;
+			if (delay_entering_g3) {
+				/*
+				 * Timer of entering G3 expired. However,
+				 * delay_entering_g3 flag is on. That means
+				 * we've sent power button to PCH, but CPU
+				 * hasn't start up yet. Just wait for more
+				 * 1 sec.
+				 */
+				delay_entering_g3 = 0;
+				if (task_wait_event(DELAY_ENTERING_G3_TIMEOUT)
+				    == TASK_EVENT_TIMER) {
+					/* Drop to G3; wake not requested yet */
+					want_g3_exit = 0;
+					return POWER_S5G3;
+				}
+			} else {
+				/* Drop to G3; wake not requested yet */
+				want_g3_exit = 0;
+				return POWER_S5G3;
+			}
+		} else {
+			/*
+			 * Set delay_entering_g3 flag back to 0 while getting
+			 * events in this state.
+			 */
+			delay_entering_g3 = 0;
 		}
 		break;
 
@@ -248,6 +275,17 @@ int chipset_in_state(int state_mask)
 
 void chipset_exit_hard_off(void)
 {
+	/*
+	 * If the power button is pressed while S5 inactivity timer is
+	 * about to expire, we need to give CPU a little time to start
+	 * up before changing the state from S5 to G3 (hard off state).
+	 * Otherwise the system will not start up.
+	 */
+	if (state == POWER_S5) {
+		delay_entering_g3 = 1;
+		return;
+	}
+
 	/* If not in the hard-off state nor headed there, nothing to do */
 	if (state != POWER_G3 && state != POWER_S5G3)
 		return;
