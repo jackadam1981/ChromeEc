@@ -39,6 +39,30 @@
       "revId": "772d1a07e3bb0026de243bcf743c39111893e60c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a0b0862_75be4050",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-08-03T22:32:39Z",
+      "side": 1,
+      "message": "this has been considered. However we need this flag specifically to NOT persist on reboot/reset. Since jdata is cleared on reset, we receive this clearing functionality at no additional cost. Otherwise with VBAT we would need to add logic to handle reset so I think we should pick jdata",
+      "parentUuid": "4acfc072_81b39a05",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 1
+      },
+      "revId": "772d1a07e3bb0026de243bcf743c39111893e60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
