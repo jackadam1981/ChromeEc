@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eadf9421_81c39ccf",
+        "filename": "board/oak/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-08-03T23:17:23Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s true for this board\n(even if the USB UFP config might not be ready on the kernel side)",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "7d7af2b92e20ebb0993f46410cda53927eeae797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
