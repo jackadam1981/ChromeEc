@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ad60c0d_c0c2fe79",
+        "filename": "core/nds32/atomic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-03T20:51:35Z",
+      "side": 1,
+      "message": "This is different behavior.\n\nBefore, interrupts were only re-enabled if they were disabled by the atomic operation.\n\nNow they\u0027re enabled regardless.\n\nSo things like task_set_event() and timer routines now have the side effect of enabling interrupts.",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "45bc011b6c218481772066a14edc14aad9ddaa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
