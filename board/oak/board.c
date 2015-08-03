@@ -251,8 +251,8 @@ int board_set_active_charge_port(int charge_port)
 	int is_real_port = (charge_port >= 0 &&
 			    charge_port < CONFIG_USB_PD_PORT_COUNT);
 	/* check if we are source VBUS on the port */
-	int source = gpio_get_level(charge_port == 0 ? GPIO_USB_C0_5V_OUT :
-						       GPIO_USB_C1_5V_OUT);
+	int source = gpio_get_level(charge_port == 0 ? GPIO_USB_C0_5V_EN :
+						       GPIO_USB_C1_5V_EN);
 
 	if (is_real_port && source) {
 		CPRINTF("Skip enable p%d", charge_port);
