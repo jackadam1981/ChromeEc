@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ad60c0d_43443872",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-03T23:56:45Z",
+      "side": 1,
+      "message": "I don\u0027t think we should be blindly clearing entire_flash_locked here. It\u0027s a possible way around our RW protection. Probably we want to clear it only after spi_flash_set_protect / spi_flash_set_wp succeed.",
+      "revId": "924e460a4109c262fd8763f340732115101415a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
