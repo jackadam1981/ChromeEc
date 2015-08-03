@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eadf9421_c197641b",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-03T22:54:50Z",
+      "side": 1,
+      "message": "Seems like you could just break here, rather than nesting a second delay.\n\nThat means you\u0027d wait up to 10 seconds for the PCH, not 1 second, but that\u0027s ok.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 30
+      },
+      "revId": "3de5211e06175aaa94b39fd175b39aea163e40a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
