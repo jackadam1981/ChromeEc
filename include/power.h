@@ -73,6 +73,13 @@ int power_has_signals(uint32_t want);
 int power_wait_signals(uint32_t want);
 
 /**
+ * Get the value of want_g3_exit flag.
+ *
+ * @return The value of want_g3_exit flag (1 or 0)
+ */
+int power_get_want_g3_exit_flag(void);
+
+/**
  * Chipset-specific initialization
  *
  * @return The state the chipset should start in.  Usually POWER_G3, but may

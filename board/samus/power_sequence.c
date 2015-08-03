@@ -364,6 +364,13 @@ enum power_state power_handle_state(enum power_state state)
 		return pause_in_s5 ? POWER_S5 : POWER_S5G3;
 
 	case POWER_S5G3:
+		if (power_get_want_g3_exit_flag() == 1)
+			/* want_g3_exit is set; that means the power button was
+			 * pressed while CPU is in soft off state. So go back
+			 * S5 to wait for CPU startup.
+			 */
+			return POWER_S5;
+
 		/* Deassert DPWROK */
 		gpio_set_level(GPIO_PCH_DPWROK, 0);
 
