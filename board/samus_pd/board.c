@@ -102,67 +102,24 @@ DECLARE_DEFERRED(pericom_port1_reenable_interrupts);
 
 void vbus0_evt(enum gpio_signal signal)
 {
-	struct charge_port_info charge;
-	int vbus_level = gpio_get_level(signal);
-
-	/*
-	 * If VBUS is low, or VBUS is high and we are not outputting VBUS
-	 * ourselves, then update the VBUS supplier.
-	 */
-	if (!vbus_level || !gpio_get_level(GPIO_USB_C0_5V_EN)) {
-		charge.voltage = USB_CHARGER_VOLTAGE_MV;
-		charge.current = vbus_level ? USB_CHARGER_MIN_CURR_MA : 0;
-		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 0, &charge);
-	}
-
-	/*
-	 * Re-enable interrupts on pericom charger detector since the
-	 * chip may periodically reset itself, and come back up with
-	 * registers in default state. TODO(crosbug.com/p/33823): Fix
-	 * these unwanted resets.
-	 */
-	hook_call_deferred(pericom_port0_reenable_interrupts, 0);
+	usb_charger_vbus_change(0, gpio_get_level(signal));
 	task_wake(TASK_ID_PD_C0);
 }
 
 void vbus1_evt(enum gpio_signal signal)
 {
-	struct charge_port_info charge;
-	int vbus_level = gpio_get_level(signal);
-
-	/*
-	 * If VBUS is low, or VBUS is high and we are not outputting VBUS
-	 * ourselves, then update the VBUS supplier.
-	 */
-	if (!vbus_level || !gpio_get_level(GPIO_USB_C1_5V_EN)) {
-		charge.voltage = USB_CHARGER_VOLTAGE_MV;
-		charge.current = vbus_level ? USB_CHARGER_MIN_CURR_MA : 0;
-		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 1, &charge);
-	}
-
-	/*
-	 * Re-enable interrupts on pericom charger detector since the
-	 * chip may periodically reset itself, and come back up with
-	 * registers in default state. TODO(crosbug.com/p/33823): Fix
-	 * these unwanted resets.
-	 */
-	hook_call_deferred(pericom_port1_reenable_interrupts, 0);
+	usb_charger_vbus_change(1, gpio_get_level(signal));
 	task_wake(TASK_ID_PD_C1);
-}
-
-static void wake_usb_charger_task(int port)
-{
-	task_wake(port ? TASK_ID_USB_CHG_P1 : TASK_ID_USB_CHG_P0);
 }
 
 void usb0_evt(enum gpio_signal signal)
 {
-	wake_usb_charger_task(0);
+	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
 }
 
 void usb1_evt(enum gpio_signal signal)
 {
-	wake_usb_charger_task(1);
+	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);
 }
 
 static void chipset_s5_to_s3(void)

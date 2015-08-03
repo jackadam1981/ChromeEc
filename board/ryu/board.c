@@ -58,34 +58,15 @@ static int charge_current_limit;
  */
 static struct ec_response_host_event_status host_event_status __aligned(4);
 
-static void vbus_log(void)
-{
-	CPRINTS("VBUS %d", gpio_get_level(GPIO_CHGR_ACOK));
-}
-DECLARE_DEFERRED(vbus_log);
-
 void vbus_evt(enum gpio_signal signal)
 {
-	struct charge_port_info charge;
-	int vbus_level = gpio_get_level(signal);
-
-	/*
-	 * If VBUS is low, or VBUS is high and we are not outputting VBUS
-	 * ourselves, then update the VBUS supplier.
-	 */
-	if (!vbus_level || !gpio_get_level(GPIO_CHGR_OTG)) {
-		charge.voltage = USB_CHARGER_VOLTAGE_MV;
-		charge.current = vbus_level ? USB_CHARGER_MIN_CURR_MA : 0;
-		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 0, &charge);
-	}
-
-	hook_call_deferred(vbus_log, 0);
+	usb_charger_vbus_change(0, gpio_get_level(signal));
 	task_wake(TASK_ID_PD);
 }
 
 void usb_evt(enum gpio_signal signal)
 {
-	task_wake(TASK_ID_USB_CHG_P0);
+	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
 }
 
 #include "gpio_list.h"
