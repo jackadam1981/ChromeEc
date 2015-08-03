@@ -299,7 +299,9 @@ enum power_state power_handle_state(enum power_state state)
 
 			return POWER_G3;
 		}
-
+			return POWER_S5;
+			CPRINTS("Not entering G3. Disabled G3 as a WA");
+#if 0
 		if (gpio_get_level(GPIO_PCH_SUSPWRDNACK) == 1) {
 			/* Assert RSMRST# */
 			gpio_set_level(GPIO_PCH_RSMRST_L, 0);
@@ -322,6 +324,7 @@ enum power_state power_handle_state(enum power_state state)
 			CPRINTS("waiting for PMC_SUSPWRDNACK to assert!");
 			return POWER_S5;
 		}
+#endif
 	}
 	return state;
 }
