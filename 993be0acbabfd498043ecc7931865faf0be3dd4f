@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a5c2064_bcd54db7",
+        "filename": "driver/temp_sensor/bd99992gw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-03T17:38:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa667c34_d7145e50",
+      "range": {
+        "startLine": 74,
+        "startChar": 17,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "993be0acbabfd498043ecc7931865faf0be3dd4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa667c34_17cd365d",
         "filename": "driver/temp_sensor/bd99992gw.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-03T15:59:47Z",
       "side": 1,
       "message": "this doesn\u0027t get called on a sysjump, so on a sysjump where we are in S0, active_channels won\u0027t gen initialized. probably ok to just add a call on HOOK_INIT also.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 69
+      },
+      "revId": "993be0acbabfd498043ecc7931865faf0be3dd4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a01803c_14925a60",
+        "filename": "driver/temp_sensor/bd99992gw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-03T17:38:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa667c34_17cd365d",
       "range": {
         "startLine": 135,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ca673030_5865210f",
+        "filename": "driver/temp_sensor/bd99992gw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-03T17:38:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a0b0862_92ebfae8",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 5
+      },
+      "revId": "993be0acbabfd498043ecc7931865faf0be3dd4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa667c34_97ae6668",
         "filename": "driver/temp_sensor/bd99992gw.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "2a536c56_1b71df87",
+        "filename": "driver/temp_sensor/bd99992gw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-03T17:38:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa667c34_97ae6668",
+      "range": {
+        "startLine": 243,
+        "startChar": 43,
+        "endLine": 243,
+        "endChar": 70
+      },
+      "revId": "993be0acbabfd498043ecc7931865faf0be3dd4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a0b0862_d2e58215",
         "filename": "driver/temp_sensor/bd99992gw.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2015-08-03T15:59:47Z",
       "side": 1,
       "message": "if all we do in the fail case is return, then we don\u0027t need the goto, just return.",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 12
+      },
+      "revId": "993be0acbabfd498043ecc7931865faf0be3dd4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa667c34_3755d2d1",
+        "filename": "driver/temp_sensor/bd99992gw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-03T17:38:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a0b0862_d2e58215",
       "range": {
         "startLine": 249,
         "startChar": 0,
