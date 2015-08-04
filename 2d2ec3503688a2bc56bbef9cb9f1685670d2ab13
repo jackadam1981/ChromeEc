@@ -114,6 +114,30 @@
       "revId": "2d2ec3503688a2bc56bbef9cb9f1685670d2ab13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d4d1a59_d7ccf432",
+        "filename": "board/glados/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1119699
+      },
+      "writtenOn": "2015-08-04T08:40:01Z",
+      "side": 1,
+      "message": "Do those pins have to follow glaDOS\u0027 schematics naming?",
+      "parentUuid": "caa9f05f_459deaee",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "2d2ec3503688a2bc56bbef9cb9f1685670d2ab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
