@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eadf9421_5bf09c5b",
+        "filename": "board/gnawty/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-08-04T22:50:55Z",
+      "side": 1,
+      "message": "The way these are #defined this may not quite do what you want, I think the structure you described is more like:\n\n#define CONFIG_ALTERNATE_BATTERY 0x04\n\nif (board_version \u0026 CONFIG_BATTERY_4CELL) {\n    if (board_version \u0026 CONFIG_ALTERNATE_BATTERY)\n        /* None defined drop to default */\n    else\n        return \u0026info_AC14B3K\n    }\nelse {\n    if (board_version \u0026 CONFIG_ALTERNATE_BATTERY)\n        return \u0026info_AC15;\n    else\n        return \u0026info_AC14;\n    }\n/* Maybe we should warn here, this is not an expected battery */\nreturn \u0026info_AC14;\n\nOTOH, this is looking ugly, and we only have 8 states, it may be better to just do a simple look up table:\n\nswitch (board_version) {\n    case 0:\n    case 1:\n        return \u0026info_AC14;\n    case 2:\n    case 3:\n        return \u0026info_AC14B3K;\n    case 4:\n    case 5: \n    case 6:\n    case 7:\n        return \u0026info_AC15;\n    default:\n        /* Maybe we should warn here, this is not an expected battery */\n        return \u0026info_AC14;\n}\n\nI am becoming partial to the switch case, but I defer that to the EC style experts.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 43
+      },
+      "revId": "97b1291d25c40b30e4fbabecf2a629c8ca0153e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eadf9421_1b4a9477",
+        "filename": "board/gnawty/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-08-04T22:50:55Z",
+      "side": 1,
+      "message": "I am not sure this is right, if the second bit is supposed to mean the difference between 3 cell and 4 cell, then 0x03 (0b0011) should be 4 cell?",
+      "range": {
+        "startLine": 14,
+        "startChar": 32,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "97b1291d25c40b30e4fbabecf2a629c8ca0153e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
