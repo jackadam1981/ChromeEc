@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad72168f_2ebddbb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002086
+      },
+      "writtenOn": "2015-08-04T08:07:22Z",
+      "side": 1,
+      "message": "It seems other commit uses glados, so let\u0027s follow that.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "2d2ec3503688a2bc56bbef9cb9f1685670d2ab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed788e71_fce80172",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002086
+      },
+      "writtenOn": "2015-08-04T08:07:22Z",
+      "side": 1,
+      "message": "s/glaDOS/glados",
+      "range": {
+        "startLine": 9,
+        "startChar": 26,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "2d2ec3503688a2bc56bbef9cb9f1685670d2ab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caa9f05f_259c6ef0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002086
+      },
+      "writtenOn": "2015-08-04T08:07:22Z",
+      "side": 1,
+      "message": "let\u0027s not use tab:\n\nTEST\u003dManually on glados with the following commands:\n     ectool led battery red \n     ectool led battery green \n     ectool led battery off",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "2d2ec3503688a2bc56bbef9cb9f1685670d2ab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d5466e3_96c8ac50",
+        "filename": "board/glados/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002086
+      },
+      "writtenOn": "2015-08-04T08:07:22Z",
+      "side": 1,
+      "message": "I guess you should sort this alphabetically.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "2d2ec3503688a2bc56bbef9cb9f1685670d2ab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caa9f05f_459deaee",
+        "filename": "board/glados/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002086
+      },
+      "writtenOn": "2015-08-04T08:07:22Z",
+      "side": 1,
+      "message": "Looks like this function is almost as that in common/led_policy_std.c.\n\nShould we just rename:\n GPIO_CHARGE_LED_1 -\u003e GPIO_BAT_LED_RED,\n GPIO_CHARGE_LED_2 -\u003e GPIO_BAT_LED_GREEN,\n\n\nAnd see if we wanted to enable the following config flags in board/glados/board.h \n\n#define CONFIG_LED_COMMON                                                       \n#define CONFIG_LED_POLICY_STD                                                   \n#define CONFIG_LED_BAT_ACTIVE_LOW                                               \n#define CONFIG_LED_POWER_ACTIVE_LOW",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "2d2ec3503688a2bc56bbef9cb9f1685670d2ab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
