@@ -10,6 +10,7 @@
 
 #define BD99955_ADDR		0x12 /* 7bit address 0001_001 */
 #define I2C_ADDR_CHARGER	BD99955_ADDR
+#define BD99955_CHIP_ID_VAL	0x0331
 
 /* BD99955 commands to change the command code map */
 enum bd99955_command {
@@ -350,5 +351,9 @@ int bd99955_bc12_enable_charging(enum bd99955_charge_port port, int enable);
 void bd99955_vbus_interrupt(enum gpio_signal signal);
 /* Read temperature measurement value (in Celsius) */
 int bd99955_get_battery_temp(int *temp_ptr);
+
+#ifdef CONFIG_CMD_I2C_STRESS_TEST_CHARGER
+extern struct i2c_stress_test_dev bd99955_i2c_stress_test_dev;
+#endif
 
 #endif /* __CROS_EC_BD99955_H */

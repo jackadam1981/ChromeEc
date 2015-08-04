@@ -60,3 +60,27 @@ void ps8751_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
 		dp_set_irq(port, hpd_irq);
 	}
 }
+
+#ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
+static int ps8751_i2c_read(const int port, const int addr, const int reg,
+			    int *data)
+{
+	return tcpc_read(port, reg, data);
+}
+
+static int ps8751_i2c_write(const int port, const int addr, const int reg,
+			     int data)
+{
+	return tcpc_write(port, reg, data);
+}
+
+struct i2c_stress_test_dev ps8751_i2c_stress_test_dev = {
+	.reg_info = {
+		.read_reg = PS8751_REG_VENDOR_ID_L,
+		.read_val = PS8751_VENDOR_ID & 0xFF,
+		.write_reg = PS8751_REG_CTRL_1,
+	},
+	.i2c_read = &ps8751_i2c_read,
+	.i2c_write = &ps8751_i2c_write,
+};
+#endif /* CONFIG_CMD_I2C_STRESS_TEST_TCPC */
