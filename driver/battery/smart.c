@@ -475,3 +475,15 @@ DECLARE_HOST_COMMAND(EC_CMD_SB_WRITE_BLOCK,
 		     host_command_sb_write_block,
 		     EC_VER_MASK(0));
 #endif
+
+#ifdef CONFIG_CMD_I2C_STRESS_TEST_BATTERY
+struct i2c_stress_test_dev battery_i2c_stress_test_dev = {
+	.reg_info = {
+		.read_reg = SB_SERIAL_NUMBER,
+		.read_val = CONFIG_BATTERY_SERIAL_NUMBER,
+		.write_reg = SB_BATTERY_MODE,
+	},
+	.i2c_read_dev = &sb_read,
+	.i2c_write_dev = &sb_write,
+};
+#endif /* CONFIG_CMD_I2C_STRESS_TEST_BATTERY */
