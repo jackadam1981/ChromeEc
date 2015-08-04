@@ -1206,3 +1206,54 @@ DECLARE_CONSOLE_COMMAND(amonbmon, console_command_amon_bmon,
 			"amonbmon [a|b]",
 			"Get charger AMON/BMON voltage diff, current");
 #endif /* CONFIG_CMD_CHARGER_ADC_AMON_BMON */
+
+#ifdef CONFIG_CMD_I2C_STRESS_TEST
+static void bd99955_i2c_test_read(const struct i2c_test_reg_info *reg,
+				   struct i2c_test_results *results)
+{
+	int read_reg;
+	int rv;
+
+	rv = ch_raw_read16(reg->read_reg, &read_reg, BD99955_EXTENDED_COMMAND);
+	if (rv || read_reg != reg->read_val)
+		results->read_fail++;
+	else
+		results->read_success++;
+}
+
+static void bd99955_i2c_test_write(const struct i2c_test_reg_info *reg,
+				   struct i2c_test_results *results)
+{
+	int write_reg;
+	int read_reg;
+	int rv;
+
+	rv = ch_raw_read16(reg->write_reg, &write_reg, BD99955_EXTENDED_COMMAND);
+	if (rv)
+		results->read_fail++;
+	else
+		results->read_success++;
+
+	rv = ch_raw_write16(reg->write_reg, write_reg, BD99955_EXTENDED_COMMAND);
+	if (rv)
+		results->write_fail++;
+	else
+		results->write_success++;
+
+	rv = ch_raw_read16(reg->write_reg, &read_reg, BD99955_EXTENDED_COMMAND);
+	if (rv || write_reg != read_reg)
+		results->read_fail++;
+	else
+		results->read_success++;
+}
+
+struct i2c_stress_test_dev bd99955_i2c_stress_test_dev = {
+	.reg_info = {
+		.read_reg = BD99955_CMD_CHIP_ID,
+		.read_val = 0x331,
+		.write_reg = BD99955_CMD_ITRICH_SET,
+	},
+	.i2c_read_test_func = &bd99955_i2c_test_read,
+	.i2c_write_test_func = &bd99955_i2c_test_write,
+};
+#endif /* CONFIG_CMD_I2C_STRESS_TEST */

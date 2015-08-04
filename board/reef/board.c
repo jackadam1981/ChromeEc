@@ -143,6 +143,14 @@ const struct i2c_port_t i2c_ports[]  = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+#ifdef CONFIG_CMD_I2C_STRESS_TEST
+struct i2c_stress_test i2c_stress_tests[] = {
+	{&bd99955_i2c_stress_test_dev},
+	{&opt3001_i2c_stress_test_dev},
+};
+const int i2c_test_dev_used = ARRAY_SIZE(i2c_stress_tests);
+#endif
+
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 #if IS_PROTO == 1
 	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_HIGH},

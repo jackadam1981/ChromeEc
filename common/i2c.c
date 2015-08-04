@@ -856,3 +856,108 @@ DECLARE_CONSOLE_COMMAND(i2cxfer, command_i2cxfer,
 			"r/r16/rlen/w/w16 port addr offset [value | len]",
 			"Read write I2C");
 #endif
+
+#ifdef CONFIG_CMD_I2C_STRESS_TEST
+static void i2c_test_status(struct i2c_test_results *i2c_test, int test_dev)
+{
+	ccprintf("test_dev=%d, ", test_dev);
+	ccprintf("r=%d, rs=%d, rf=%d, ",
+		i2c_test->read_success + i2c_test->read_fail,
+		i2c_test->read_success,
+		i2c_test->read_fail);
+
+	ccprintf("w=%d, ws=%d, wf=%d\n",
+		i2c_test->write_success + i2c_test->write_fail,
+		i2c_test->write_success,
+		i2c_test->write_fail);
+
+	i2c_test->read_success = 0;
+	i2c_test->read_fail = 0;
+	i2c_test->write_success = 0,
+	i2c_test->write_fail = 0;
+}
+
+static int command_i2ctest(int argc, char **argv)
+{
+	char *e;
+	int i;
+	int rand;
+	int count = 100;
+	int udelay = 100;
+	int test_dev = i2c_test_dev_used;
+	struct i2c_stress_test_dev *i2c_s_test;
+	struct i2c_test_reg_info *reg_s_info;
+	struct i2c_test_results *test_s_results;
+	static struct mutex i2c_test_mutex;
+
+	if (argc > 1) {
+		count = strtoi(argv[1], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM2;
+	}
+
+	if (argc > 2) {
+		udelay = strtoi(argv[2], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM3;
+	}
+
+	if (argc > 3) {
+		test_dev = strtoi(argv[3], &e, 0);
+		if (*e || test_dev < 1 || test_dev > i2c_test_dev_used)
+			return EC_ERROR_PARAM4;
+		test_dev--;
+	}
+
+	for (i = 0; i < count; i++) {
+		if (!(i % 1000))
+			ccprintf("running test %d\n", i);
+
+		rand = get_time().val;
+
+		if (argc < 4)
+			test_dev= rand % i2c_test_dev_used;
+
+		i2c_s_test = i2c_stress_tests[test_dev].i2c_test;
+		reg_s_info = &i2c_stress_tests[test_dev].i2c_test[test_dev].reg_info;
+		test_s_results = &i2c_stress_tests[test_dev].i2c_test[test_dev].test_results;
+
+		rand = get_time().val;
+		if (rand & 0x1) {
+			/* read */
+			i2c_s_test->i2c_read_test_func(reg_s_info, test_s_results);
+		} else {
+			/*
+			 * Reads are more than writes in the system.
+			 * Read and then write same value to ensure we are
+			 * not changing any settings
+			 */
+			mutex_lock(&i2c_test_mutex);
+			i2c_s_test->i2c_write_test_func(reg_s_info, test_s_results);
+			mutex_unlock(&i2c_test_mutex);
+			i += 2;
+		}
+
+		usleep(udelay);
+	}
+
+	ccprintf("running test %d\n", i);
+	ccprintf("\n**********final result **********\n");
+	if (argc > 3) {
+		test_s_results = &i2c_stress_tests[test_dev].i2c_test[test_dev].test_results;
+		i2c_test_status(test_s_results, test_dev + 1);
+	} else {
+		for (i = 0; i < i2c_test_dev_used; i++) {
+			test_s_results = &i2c_stress_tests[i].i2c_test[i].test_results;
+			i2c_test_status(test_s_results, i + 1);
+			msleep(100);
+		}
+	}
+	cflush();
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(i2ctest, command_i2ctest,
+			"i2ctest count udelay [dev]",
+			NULL);
+#endif /* CONFIG_CMD_I2C_STRESS_TEST */

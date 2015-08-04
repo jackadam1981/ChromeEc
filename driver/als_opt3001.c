@@ -87,3 +87,54 @@ int opt3001_read_lux(int *lux, int af)
 
 	return EC_SUCCESS;
 }
+
+#ifdef CONFIG_CMD_I2C_STRESS_TEST
+static void opt3001_i2c_test_read(const struct i2c_test_reg_info *reg,
+				   struct i2c_test_results *results)
+{
+	int read_reg;
+	int rv;
+
+	rv = opt3001_i2c_read(reg->read_reg, &read_reg);
+	if (rv || read_reg != reg->read_val)
+		results->read_fail++;
+	else
+		results->read_success++;
+}
+
+static void opt3001_i2c_test_write(const struct i2c_test_reg_info *reg,
+				   struct i2c_test_results *results)
+{
+	int write_reg;
+	int read_reg;
+	int rv;
+
+	rv = opt3001_i2c_read(reg->write_reg, &write_reg);
+	if (rv)
+		results->read_fail++;
+	else
+		results->read_success++;
+
+	rv = opt3001_i2c_write(reg->write_reg, write_reg);
+	if (rv)
+		results->write_fail++;
+	else
+		results->write_success++;
+
+	rv = opt3001_i2c_read(reg->write_reg, &read_reg);
+	if (rv || write_reg != read_reg)
+		results->read_fail++;
+	else
+		results->read_success++;
+}
+
+struct i2c_stress_test_dev opt3001_i2c_stress_test_dev = {
+	.reg_info = {
+		.read_reg = OPT3001_REG_DEV_ID,
+		.read_val = OPT3001_DEVICE_ID,
+		.write_reg = OPT3001_REG_INT_LIMIT_LSB,
+	},
+	.i2c_read_test_func = &opt3001_i2c_test_read,
+	.i2c_write_test_func = &opt3001_i2c_test_write,
+};
+#endif /* CONFIG_CMD_I2C_STRESS_TEST */
