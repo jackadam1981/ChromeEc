@@ -143,6 +143,52 @@ const struct i2c_port_t i2c_ports[]  = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+#ifdef CONFIG_CMD_I2C_STRESS_TEST
+struct i2c_stress_test i2c_stress_tests[] = {
+/* NPCX_I2C_PORT0_0 */
+
+/* NPCX_I2C_PORT0_1 */
+
+/* NPCX_I2C_PORT1 */
+#ifdef CONFIG_CMD_I2C_STRESS_TEST_BMI160
+	{
+		.port = I2C_PORT_GYRO,
+		.addr = BMI160_ADDR0,
+		.i2c_test = &bmi160_i2c_stress_test_dev,
+	},
+#endif
+
+/* NPCX_I2C_PORT2 */
+#ifdef CONFIG_CMD_I2C_STRESS_TEST_BMP280
+	{
+		.port = I2C_PORT_BARO,
+		.addr = BMP280_I2C_ADDRESS1,
+		.i2c_test = &bmp280_i2c_stress_test_dev,
+	},
+#endif
+#ifdef CONFIG_CMD_I2C_STRESS_TEST_OPT3001
+	{
+		.i2c_test = &opt3001_i2c_stress_test_dev,
+	},
+#endif
+#ifdef CONFIG_CMD_I2C_STRESS_TEST_KIONIX
+	{
+		.port = I2C_PORT_LID_ACCEL,
+		.addr = KX022_ADDR1,
+		.i2c_test = &kionix_i2c_stress_test_dev,
+	},
+#endif
+
+/* NPCX_I2C_PORT3 */
+#ifdef CONFIG_CMD_I2C_STRESS_TEST_BD99955
+	{
+		.i2c_test = &bd99955_i2c_stress_test_dev,
+	},
+#endif
+};
+const int i2c_test_dev_used = ARRAY_SIZE(i2c_stress_tests);
+#endif /* CONFIG_CMD_I2C_STRESS_TEST */
+
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 #if IS_PROTO == 1
 	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_HIGH},
