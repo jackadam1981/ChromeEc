@@ -16,6 +16,24 @@
       "revId": "924e460a4109c262fd8763f340732115101415a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eadf9421_441522ff",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-08-04T00:05:22Z",
+      "side": 1,
+      "message": "that makes sense. \n\nDo you think perhaps it makes sense not to clear the flag at all? in stm32f3 I do not see explicit clear of the flag. Also technically _at_boot should not affect \"now\", right?",
+      "parentUuid": "2ad60c0d_43443872",
+      "revId": "924e460a4109c262fd8763f340732115101415a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
