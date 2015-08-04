@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4acfc072_96383a8a",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-04T21:52:26Z",
+      "side": 1,
+      "message": "line length is too long (this and other lines in this file), please stay under 80 characters. pre-submit checks should have warned you about this.",
+      "range": {
+        "startLine": 102,
+        "startChar": 41,
+        "endLine": 102,
+        "endChar": 88
+      },
+      "revId": "979e3024cafcba3a99f5b4df8ee9f344a587bce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aae91cd1_76ebb09c",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-04T21:52:26Z",
+      "side": 1,
+      "message": "i think you confused these. this should go in the if statement, the else case was fine as it was.",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 91
+      },
+      "revId": "979e3024cafcba3a99f5b4df8ee9f344a587bce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
