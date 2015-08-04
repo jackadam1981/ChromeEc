@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ad60c0d_1477c4f7",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-04T20:48:29Z",
+      "side": 1,
+      "message": "I think we need to move this check to the board function. We may want to take non-KB control actions from the EC, even in S0.",
+      "revId": "df365257056b933af5ffc21132284090142cd4fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
