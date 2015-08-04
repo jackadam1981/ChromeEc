@@ -22,6 +22,30 @@
       "revId": "7d7af2b92e20ebb0993f46410cda53927eeae797",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca157084_ce3dd746",
+        "filename": "board/oak/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-04T14:29:33Z",
+      "side": 1,
+      "message": "Doing a little bit of debugging, it looks like we oak can only be a DFP because the two USB type-C ports are behind a USB hub:\nhttps://chromium-review.googlesource.com/#/c/271829/1/board/oak/usb_pd_policy.c@142",
+      "parentUuid": "eadf9421_81c39ccf",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "7d7af2b92e20ebb0993f46410cda53927eeae797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
