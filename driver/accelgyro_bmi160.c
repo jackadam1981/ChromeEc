@@ -1248,3 +1248,25 @@ const struct accelgyro_drv bmi160_drv = {
 struct bmi160_drv_data_t g_bmi160_data = {
 	.flags = 0,
 };
+
+#ifdef CONFIG_CMD_I2C_STRESS_TEST_BMI160
+static int bmi160_i2c_test_read(uint8_t port, uint8_t addr, int reg, int *data)
+{
+	return raw_read8(port, addr, reg, data);
+}
+
+static int bmi160_i2c_test_write(uint8_t port, uint8_t addr, int reg, int data)
+{
+	return raw_write8(port, addr, reg, data);
+}
+
+struct i2c_stress_test_dev bmi160_i2c_stress_test_dev = {
+	.reg_info = {
+		.read_reg = BMI160_CHIP_ID,
+		.read_val = BMI160_CHIP_ID_MAJOR,
+		.write_reg = BMI160_CMD_REG,
+	},
+	.i2c_read_test_func = &bmi160_i2c_test_read,
+	.i2c_write_test_func = &bmi160_i2c_test_write,
+};
+#endif /* CONFIG_CMD_I2C_STRESS_TEST_OPT3001 */
