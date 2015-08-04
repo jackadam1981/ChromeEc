@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "4acfc072_b0bb86bb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1340,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-04T17:35:35Z",
+      "side": 1,
+      "message": "see CL:290453 which cleans this up a little bit",
+      "parentUuid": "ca2490af_ac493684",
+      "range": {
+        "startLine": 1325,
+        "startChar": 0,
+        "endLine": 1340,
+        "endChar": 1
+      },
+      "revId": "8d231532277e97c856cee812430d34abb4ba57e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a6260ef_950a07ad",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 1
