@@ -25,6 +25,25 @@ struct i2c_port_t {
 extern const struct i2c_port_t i2c_ports[];
 extern const unsigned int i2c_ports_used;
 
+#ifdef CONFIG_CMD_I2C_TEST
+/* Data structure to define I2C test configuration. */
+struct i2c_test_t {
+	int reg_size;         /* Size of the register */
+	int port;             /* port */
+	int slave_addr;       /* Slave address */
+	int read_reg;         /* Read register (WHO_AM_I, DEV_ID, MAN_ID) */
+	int read_val;         /* Expected val (WHO_AM_I, DEV_ID, MAN_ID) */
+	int write_reg;        /* Write reg which doesn't impact the system */
+	int read_success;     /* Successful read count */
+	int read_fail;        /* Read fail count */
+	int write_success;    /* Successful write count */
+	int write_fail;       /* Write fail count */
+};
+
+extern struct i2c_test_t i2c_test_dev[];
+extern const unsigned int i2c_test_dev_used;
+#endif
+
 /* Flags for i2c_xfer() */
 #define I2C_XFER_START (1 << 0)  /* Start smbus session from idle state */
 #define I2C_XFER_STOP (1 << 1)  /* Terminate smbus session with stop bit */

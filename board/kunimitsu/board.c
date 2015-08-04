@@ -422,3 +422,138 @@ void board_set_charge_limit(int charge_ma)
 					   CONFIG_CHARGER_INPUT_CURRENT));
 }
 
+#ifdef CONFIG_CMD_I2C_TEST
+struct i2c_test_t i2c_test_dev[]  = {
+	/* ISL charger */
+	{
+		.reg_size = 16,
+		.port = I2C_PORT_CHARGER,
+		.slave_addr = 0x12,
+		.read_reg = 0xFF,
+		.read_val = 0x0A,
+		.write_reg = 0x3E,
+	},
+
+	/*
+	 * {16, I2C_PORT_BATTERY, 0x16, 1, 1, 1},
+	 */
+
+	/* Temp Sensor */
+	{
+		.reg_size = 8,
+		.port = I2C_PORT_THERMAL,
+		.slave_addr = 0x98,
+		.read_reg = 0xFE,
+		.read_val = 0x55,
+		.write_reg = 0x0A,
+	},
+
+	/* Temp Sensor */
+	{
+		.reg_size = 8,
+		.port = I2C_PORT_THERMAL,
+		.slave_addr = 0x9A,
+		.read_reg = 0xFE,
+		.read_val = 0x55,
+		.write_reg = 0x0A,
+	},
+
+	/* USB Charger 1 */
+	{
+		.reg_size = 8,
+		.port = I2C_PORT_USB_CHARGER_1,
+		.slave_addr = 0x4A,
+		.read_reg = 0x01,
+		.read_val = 0x18,
+		.write_reg = 0x05,
+	},
+
+	/* USB MUX 1 */
+	{
+		.reg_size = 8,
+		.port = I2C_PORT_USB_MUX,
+		.slave_addr = 0xA8,
+		.read_reg = 0x01,
+		.read_val = 0x00,
+		.write_reg = 0x02,
+	},
+
+	/* USB MUX 2 */
+	{
+		.reg_size = 8,
+		.port = I2C_PORT_USB_MUX,
+		.slave_addr = 0xAA,
+		.read_reg = 0x01,
+		.read_val = 0x00,
+		.write_reg = 0x02,
+	},
+
+	/*
+	 * { 8, I2C_PORT_TCPC, 0x3C},
+	 * { 8, I2C_PORT_TCPC, 0x9C},
+	 * { 8, I2C_PORT_TCPC, 0x9E},
+	 */
+
+	/* ALS */
+	{
+		.reg_size = 16,
+		.port = I2C_PORT_ALS,
+		.slave_addr = 0x88,
+		.read_reg = 0x7F,
+		.read_val = 0x0130, /* 0x3001 original value MSB<<8 | LSB>>8 */
+		.write_reg = 0x02,  /* 0xC000 default value, ignore it */
+	},
+
+	/* Base accel */
+	{
+		.reg_size = 8,
+		.port = I2C_PORT_ACCEL,
+		.slave_addr = 0x1C,
+		.read_reg = 0x0F,
+		.read_val = 0x0A,
+		.write_reg = 0x6A,
+	},
+
+	/* Lid accel */
+	{
+		.reg_size = 8,
+		.port = I2C_PORT_ACCEL,
+		.slave_addr = 0x1e,
+		.read_reg = 0x0F,
+		.read_val = 0x0A,
+		.write_reg = 0x6A,
+	},
+
+	/* Lid gyro */
+	{
+		.reg_size = 8,
+		.port = I2C_PORT_ACCEL,
+		.slave_addr = 0xD6,
+		.read_reg = 0x0F,
+		.read_val = 0xD7,
+		.write_reg = 0x33,
+	},
+
+	/* USB Charger 2 */
+	{
+		.reg_size = 8,
+		.port = I2C_PORT_USB_CHARGER_2,
+		.slave_addr = 0x4A,
+		.read_reg = 0x01,
+		.read_val = 0x18,
+		.write_reg = 0x05,
+	},
+
+	/* PMIC */
+	{
+		.reg_size = 8,
+		.port = I2C_PORT_PMIC,
+		.slave_addr = 0x60,
+		.read_reg = 0x00,
+		.read_val = 0x22,
+		.write_reg = 0x14,
+	},
+};
+
+const unsigned int i2c_test_dev_used = ARRAY_SIZE(i2c_test_dev);
+#endif

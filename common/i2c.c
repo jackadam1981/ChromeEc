@@ -817,3 +817,152 @@ DECLARE_CONSOLE_COMMAND(i2cxfer, command_i2cxfer,
 			"Read write I2C",
 			NULL);
 #endif
+
+#ifdef CONFIG_CMD_I2C_TEST
+static void i2c_read_test(struct i2c_test_t *i2c_test, int *read)
+{
+	int rv;
+
+	if (i2c_test->reg_size == 8) {
+		rv = i2c_read8(i2c_test->port,
+			i2c_test->slave_addr,
+			i2c_test->read_reg,
+			read);
+	} else if (i2c_test->reg_size == 16) {
+		rv = i2c_read16(i2c_test->port,
+			i2c_test->slave_addr,
+			i2c_test->read_reg,
+			read);
+	} else {
+		ccprintf("invalid register size\n");
+	}
+
+	if (!rv && (*read == i2c_test->read_val))
+		i2c_test->read_success++;
+	else
+		i2c_test->read_fail++;
+}
+
+static void i2c_write_test(struct i2c_test_t *i2c_test, int write)
+{
+	int rv;
+
+	if (i2c_test->reg_size == 8) {
+		rv = i2c_write8(i2c_test->port,
+			i2c_test->slave_addr,
+			i2c_test->write_reg,
+			write);
+	} else if (i2c_test->reg_size == 16) {
+		rv = i2c_write16(i2c_test->port,
+			i2c_test->slave_addr,
+			i2c_test->write_reg,
+			write);
+	} else {
+		ccprintf("invalid register size\n");
+	}
+
+	if (!rv)
+		i2c_test->write_success++;
+	else
+		i2c_test->write_fail++;
+}
+
+static void i2c_test_status(struct i2c_test_t *i2c_test)
+{
+	ccprintf("port=%d, slave_addr=0x%x, ",
+		i2c_test->port,
+		i2c_test->slave_addr);
+	ccprintf("reads=%d, read_succes=%d, read_fail=%d, ",
+		i2c_test->read_success + i2c_test->read_fail,
+		i2c_test->read_success,
+		i2c_test->read_fail);
+
+	ccprintf("writes=%d, write_success=%d, write_fail=%d\n",
+		i2c_test->write_success + i2c_test->write_fail,
+		i2c_test->write_success,
+		i2c_test->write_fail);
+
+	i2c_test->read_success = 0;
+	i2c_test->read_fail = 0;
+	i2c_test->write_success = 0,
+	i2c_test->write_fail = 0;
+}
+
+static int command_i2ctest(int argc, char **argv)
+{
+	char *e;
+	int count;
+	int i;
+	int mdelay;
+	int rand;
+	int value;
+	int test_dev;
+	struct i2c_test_t *i2c_test;
+
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	count = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM2;
+
+	mdelay = strtoi(argv[2], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM2;
+
+	if (argc > 3) {
+		test_dev = strtoi(argv[3], &e, 0);
+		if (*e || test_dev >= i2c_test_dev_used)
+			return EC_ERROR_PARAM2;
+	}
+
+	for (i = 1; i <= count; i++) {
+		rand = get_time().val;
+
+		if (argc > 3)
+			i2c_test = &i2c_test_dev[test_dev];
+		else
+			i2c_test = &i2c_test_dev[rand % i2c_test_dev_used];
+
+		rand = get_time().val;
+		if (rand & 0x1) {
+			/* read */
+			i2c_read_test(i2c_test, &value);
+		} else {
+			/*
+			 * Reads are more than writes in the system.
+			 * Read and then write same value to ensure we are
+			 * not changing any settings
+			 */
+			i2c_read_test(i2c_test, &value);
+
+			i++;
+
+			i2c_write_test(i2c_test, value);
+		}
+
+		msleep(mdelay);
+		if (((i % 10) + 1) == 10)
+			ccprintf("running test %d\n", i);
+
+	}
+
+	ccprintf("\n**********final result **********\n");
+	if (argc > 3) {
+		i2c_test = &i2c_test_dev[test_dev];
+		i2c_test_status(i2c_test);
+	} else {
+		for (i = 0; i < i2c_test_dev_used; i++) {
+			msleep(100);
+			i2c_test = &i2c_test_dev[i];
+			i2c_test_status(i2c_test);
+		}
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(i2ctest, command_i2ctest,
+			"i2ctest count delay [dev]",
+			NULL,
+			NULL);
+#endif /* CONFIG_CMD_I2CTEST */
