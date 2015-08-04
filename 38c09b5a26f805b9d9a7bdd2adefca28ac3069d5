@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "eadf9421_d343b6c4",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-04T19:48:03Z",
+      "side": 1,
+      "message": "Sorry, ignore this comment. I started writing something, then realized I was wrong, but forgot to erase it.",
+      "parentUuid": "0ad9483e_cec86bcb",
+      "revId": "38c09b5a26f805b9d9a7bdd2adefca28ac3069d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a0ff877_6c1dcf6d",
         "filename": "include/usb_charge.h",
         "patchSetId": 2
