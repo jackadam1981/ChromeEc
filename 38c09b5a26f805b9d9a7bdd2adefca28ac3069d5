@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ad9483e_cec86bcb",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-04T19:47:19Z",
+      "side": 1,
+      "message": "Should this be higher priority than board_init, since we enable the pericom interrupts in board_init? In that case, an interrupt may fire",
+      "revId": "38c09b5a26f805b9d9a7bdd2adefca28ac3069d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a0ff877_6c1dcf6d",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-04T19:47:19Z",
+      "side": 1,
+      "message": "Extra newlines here.",
+      "revId": "38c09b5a26f805b9d9a7bdd2adefca28ac3069d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
