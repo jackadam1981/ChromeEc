@@ -7,11 +7,12 @@
 
 #include "driver/als_opt3001.h"
 #include "i2c.h"
+#include "console.h"
 
 /**
  *  Read register from OPT3001 light sensor.
  */
-static int opt3001_i2c_read(const int reg, int *data_ptr)
+static inline int opt3001_i2c_read(const int reg, int *data_ptr)
 {
 	int ret;
 
@@ -26,7 +27,7 @@ static int opt3001_i2c_read(const int reg, int *data_ptr)
 /**
  *  Write register to OPT3001 light sensor.
  */
-static int opt3001_i2c_write(const int reg, int data)
+static inline int opt3001_i2c_write(const int reg, int data)
 {
 	int ret;
 
@@ -45,12 +46,16 @@ int opt3001_init(void)
 	int ret;
 
 	ret = opt3001_i2c_read(OPT3001_REG_MAN_ID, &data);
-	if (ret || data != OPT3001_MANUFACTURER_ID)
+	if (ret)
 		return ret;
+	if (data != OPT3001_MANUFACTURER_ID)
+		return EC_ERROR_UNKNOWN;
 
 	ret = opt3001_i2c_read(OPT3001_REG_DEV_ID, &data);
-	if (ret || data != OPT3001_DEVICE_ID)
+	if (ret)
 		return ret;
+	if (data != OPT3001_DEVICE_ID)
+		return EC_ERROR_UNKNOWN;
 
 	/*
 	 * [15:12]: 0101b Automatic full scale (1310.40lux, 0.32lux/lsb)
@@ -87,3 +92,54 @@ int opt3001_read_lux(int *lux, int af)
 
 	return EC_SUCCESS;
 }
+
+#ifdef CONFIG_CMD_I2C_STRESS_TEST_OPT3001
+static void opt3001_i2c_test_read(const struct i2c_test_reg_info *reg,
+				   struct i2c_test_results *results)
+{
+	int read_reg;
+	int rv;
+
+	rv = opt3001_i2c_read(reg->read_reg, &read_reg);
+	if (rv || read_reg != reg->read_val)
+		results->read_fail++;
+	else
+		results->read_success++;
+}
+
+static void opt3001_i2c_test_write(const struct i2c_test_reg_info *reg,
+				   struct i2c_test_results *results)
+{
+	int write_reg;
+	int read_reg;
+	int rv;
+
+	rv = opt3001_i2c_read(reg->write_reg, &write_reg);
+	if (rv)
+		results->read_fail++;
+	else
+		results->read_success++;
+
+	rv = opt3001_i2c_write(reg->write_reg, write_reg);
+	if (rv)
+		results->write_fail++;
+	else
+		results->write_success++;
+
+	rv = opt3001_i2c_read(reg->write_reg, &read_reg);
+	if (rv || write_reg != read_reg)
+		results->read_fail++;
+	else
+		results->read_success++;
+}
+
+struct i2c_stress_test_dev opt3001_i2c_stress_test_dev = {
+	.reg_info = {
+		.read_reg = OPT3001_REG_DEV_ID,
+		.read_val = OPT3001_DEVICE_ID,
+		.write_reg = OPT3001_REG_INT_LIMIT_LSB,
+	},
+	.i2c_read_test_func = &opt3001_i2c_test_read,
+	.i2c_write_test_func = &opt3001_i2c_test_write,
+};
+#endif /* CONFIG_CMD_I2C_STRESS_TEST_OPT3001 */

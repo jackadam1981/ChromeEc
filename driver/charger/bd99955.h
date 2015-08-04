@@ -338,4 +338,8 @@ void bd99955_vbus_interrupt(enum gpio_signal signal);
 /* Read temperature measurement value (in Celsius) */
 int bd99955_get_battery_temp(int *temp_ptr);
 
+#ifdef CONFIG_CMD_I2C_STRESS_TEST
+extern struct i2c_stress_test_dev bd99955_i2c_stress_test_dev;
+#endif
+
 #endif /* __CROS_EC_BD99955_H */
