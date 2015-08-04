@@ -138,6 +138,30 @@
       "revId": "2d2ec3503688a2bc56bbef9cb9f1685670d2ab13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cadad034_b1970855",
+        "filename": "board/glados/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-04T17:03:38Z",
+      "side": 1,
+      "message": "You can add #defines to alias the glados pins, or just rename them.",
+      "parentUuid": "4d4d1a59_d7ccf432",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "2d2ec3503688a2bc56bbef9cb9f1685670d2ab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
