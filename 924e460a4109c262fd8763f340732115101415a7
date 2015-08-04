@@ -34,6 +34,24 @@
       "revId": "924e460a4109c262fd8763f340732115101415a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4acfc072_0715da49",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-04T00:09:27Z",
+      "side": 1,
+      "message": "I think either way should be fine (disallowing clear of ALL_NOW when protected, or just disallowing clear altogether). But I wouldn\u0027t use stm32f3 as a reference -- lm4 is a better reference.",
+      "parentUuid": "eadf9421_441522ff",
+      "revId": "924e460a4109c262fd8763f340732115101415a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
