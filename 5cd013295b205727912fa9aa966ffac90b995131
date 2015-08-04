@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eadf9421_c8eea0fa",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-04T21:31:12Z",
+      "side": 1,
+      "message": "I don\u0027t think this comment makes it clear to the reader that the RO_NOW functionality is missing.",
+      "revId": "5cd013295b205727912fa9aa966ffac90b995131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eadf9421_68058c4d",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-04T21:31:12Z",
+      "side": 1,
+      "message": "I don\u0027t agree with this addition. Even if the entire flash is locked, we should still be able to protect RO_AT_BOOT through the SPI ROM registers.",
+      "revId": "5cd013295b205727912fa9aa966ffac90b995131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6acc847d_fc5c09c8",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-04T21:31:12Z",
+      "side": 1,
+      "message": "The flag should be writable only iff !entire_flash_locked. Otherwise, it\u0027s not writable (clearable).",
+      "revId": "5cd013295b205727912fa9aa966ffac90b995131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
