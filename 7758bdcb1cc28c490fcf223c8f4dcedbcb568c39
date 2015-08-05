@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "eac87477_b67d4891",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1130869
+      },
+      "writtenOn": "2015-08-05T07:29:47Z",
+      "side": 1,
+      "message": "CPU didn\u0027t pulled high SLP_S4#,because the RSMRST# had been pulled low in POWER_S5G3,please check it in src/platform/ec/power/baytrail.c ,but RSMRST# should be high before SLP_S4# in the boot sequence,that\u0027s the reason cpu no effect.\nSo we just need to avoid it enter this situation..",
+      "parentUuid": "ed3dee9f_540f24e9",
+      "revId": "7758bdcb1cc28c490fcf223c8f4dcedbcb568c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4acfc072_75b81032",
         "filename": "power/common.c",
         "patchSetId": 4
