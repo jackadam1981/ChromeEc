@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed3dee9f_94ffccdc",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1119450
+      },
+      "writtenOn": "2015-08-05T11:40:18Z",
+      "side": 0,
+      "message": "Remove this initial value, and put it in the function power_set_state(){\n  ...\n  else if (new_state \u003d\u003d POWER_S5)\n     want_g3_exit \u003d 0;\n  state \u003d new_state;\n}",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 20
+      },
+      "revId": "d89f2a0eb1ca168ce69d4791af7f5457db76bf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ab228f6_b776284b",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1119450
+      },
+      "writtenOn": "2015-08-05T11:40:18Z",
+      "side": 0,
+      "message": "if (state \u003d\u003d POWER_S5) {\n  want_g3_exit \u003d 1;\n  return;\n}",
+      "revId": "d89f2a0eb1ca168ce69d4791af7f5457db76bf63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
