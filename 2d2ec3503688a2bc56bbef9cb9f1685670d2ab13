@@ -162,6 +162,30 @@
       "revId": "2d2ec3503688a2bc56bbef9cb9f1685670d2ab13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d57a2ea_63162a80",
+        "filename": "board/glados/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1119699
+      },
+      "writtenOn": "2015-08-05T04:42:13Z",
+      "side": 1,
+      "message": "GLaDOS does not have a GPIO dedicated to power led control, what can we do to alias GPIO_POWER_LED?  or should we just go for board specific led control?",
+      "parentUuid": "cadad034_b1970855",
+      "range": {
+        "startLine": 41,
+        "startChar": 11,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "2d2ec3503688a2bc56bbef9cb9f1685670d2ab13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
