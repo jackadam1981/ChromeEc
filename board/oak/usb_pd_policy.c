@@ -17,6 +17,7 @@
 #include "util.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_tcpm.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -128,7 +129,7 @@ void typec_set_input_current_limit(int port, uint32_t max_ma,
 
 int pd_snk_is_vbus_provided(int port)
 {
-	return !gpio_get_level(GPIO_VBUS_WAKE_L);
+	return tcpm_get_vbus_level(port);
 }
 
 int pd_board_checks(void)
