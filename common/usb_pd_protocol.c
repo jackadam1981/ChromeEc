@@ -212,7 +212,7 @@ int pd_is_connected(int port)
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-static int pd_is_vbus_present(int port)
+int pd_is_vbus_present(int port)
 {
 #ifdef CONFIG_USB_PD_TCPM_VBUS
 	return tcpm_get_vbus_level(port);
