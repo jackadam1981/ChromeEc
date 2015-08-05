@@ -54,6 +54,23 @@
     },
     {
       "key": {
+        "uuid": "caa9f05f_e8d2abcb",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-05T09:40:58Z",
+      "side": 1,
+      "message": "Hi Randall,\n\nI would like to move this setting to power_handle_state(), because there we can make sure that the event is SLP_S4 being pulled high or not. If we put this setting here, we might still have chance to meet PB press failure if the event we get here is not SLP_S4 being pulled high.  \n\nThe price is that we need to change it for 4 chipsets and need to implement an external function to access this static flag (delay_entering_g3).\n\nThere are only 2 ways to exit S5, one is receiving the event of SLP_S4 being pulled high, the other is S5 inactivity timer expired. We just need to reset the delay_entering_g3 flag on these two occasions.\n\nThanks,\nKaiyen",
+      "revId": "7758bdcb1cc28c490fcf223c8f4dcedbcb568c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa14bc88_c1c5a584",
         "filename": "power/common.c",
         "patchSetId": 4
