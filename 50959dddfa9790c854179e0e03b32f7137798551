@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ac9b89e_b3a7f890",
+        "filename": "board/glados/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-05T20:23:11Z",
+      "side": 1,
+      "message": "I didn\u0027t know the meaning of \"PERMILLAGE\" before looking it up, and I don\u0027t think we need this much precision anyway. Let\u0027s just use percent precision, so we can use charge_get_percent() below?",
+      "range": {
+        "startLine": 21,
+        "startChar": 37,
+        "endLine": 21,
+        "endChar": 38
+      },
+      "revId": "50959dddfa9790c854179e0e03b32f7137798551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ac4207d_f9655793",
+        "filename": "board/glados/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-05T20:23:11Z",
+      "side": 1,
+      "message": "Let\u0027s make this \"static unsigned int\" type.",
+      "revId": "50959dddfa9790c854179e0e03b32f7137798551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ac9b89e_93ef5ca7",
+        "filename": "board/glados/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-05T20:23:11Z",
+      "side": 1,
+      "message": "Let\u0027s call charge_get_percent instead?",
+      "revId": "50959dddfa9790c854179e0e03b32f7137798551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
