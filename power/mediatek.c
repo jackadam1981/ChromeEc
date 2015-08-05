@@ -284,7 +284,7 @@ static void set_warm_reset(int asserted)
 	} else {
 		/* Signal is active-low */
 		CPRINTS("ap warm reset(%d)", asserted);
-		gpio_set_level(GPIO_AP_RESET_L, !asserted);
+		board_set_ap_reset(asserted);
 	}
 }
 

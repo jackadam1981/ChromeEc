@@ -385,3 +385,8 @@ static void check_ap_reset_second(void)
 }
 DECLARE_HOOK(HOOK_SECOND, check_ap_reset_second, HOOK_PRIO_DEFAULT);
 #endif
+
+void board_set_ap_reset(int asserted)
+{
+	gpio_set_level(GPIO_AP_RESET_L, !asserted);
+}
