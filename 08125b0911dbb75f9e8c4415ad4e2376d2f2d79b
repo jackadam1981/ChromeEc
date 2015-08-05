@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca157084_6e281eb7",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-05T00:35:37Z",
+      "side": 1,
+      "message": "I don\u0027t think this comment is true. We could protect RO if we wanted to, it would just require an additional locked flag. We\u0027re choosing not to, because there is no need for it currently. We want to point that out, so if there is a need for it, the code reader can understand our decision making.",
+      "revId": "08125b0911dbb75f9e8c4415ad4e2376d2f2d79b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
