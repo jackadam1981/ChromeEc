@@ -239,6 +239,24 @@
       "revId": "7758bdcb1cc28c490fcf223c8f4dcedbcb568c39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caa9f05f_68f0fb5b",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-05T10:06:39Z",
+      "side": 1,
+      "message": "To set want_g3_exit to 1 and then wake the chipset task is indeed a request for change state from G3 to G3S5. It is handled in the power state machine. Then state will change to S5, S5S3, S3, S3S0 in order, finally to S0 if it goes well.",
+      "parentUuid": "4acfc072_755f306f",
+      "revId": "7758bdcb1cc28c490fcf223c8f4dcedbcb568c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
