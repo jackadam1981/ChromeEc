@@ -70,6 +70,30 @@
       "revId": "3de5211e06175aaa94b39fd175b39aea163e40a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed788e71_df85f714",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-05T08:03:42Z",
+      "side": 1,
+      "message": "I do not prefer to use pwrbtn_state directly. Actually this flag doesn\u0027t directly reflect the real state of the power button. You can try that in a later CL and do more test for it. But at this moment, I suggest to fix this issue more safely, simply and clearly.",
+      "parentUuid": "6d4ade43_0dfae2eb",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 30
+      },
+      "revId": "3de5211e06175aaa94b39fd175b39aea163e40a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
