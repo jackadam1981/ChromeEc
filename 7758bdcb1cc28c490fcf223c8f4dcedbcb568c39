@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "caa9f05f_08a8675e",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-05T07:46:37Z",
+      "side": 1,
+      "message": "I know, so what I do is just to avoid to enter POWER_S5G3 directly, and wait more time (to stay in S5) to give CPU a chance to pull high SLP_S4. And it still need to be a timer here to handle the situation that CPU doesn\u0027t pull high SLP_S4. If the second timer expires and SLP_S4 has not been pulled high, it still needs to go to G3 state.",
+      "parentUuid": "eac87477_b67d4891",
+      "revId": "7758bdcb1cc28c490fcf223c8f4dcedbcb568c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4acfc072_75b81032",
         "filename": "power/common.c",
         "patchSetId": 4
