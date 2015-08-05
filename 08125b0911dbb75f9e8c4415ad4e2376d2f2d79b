@@ -16,6 +16,24 @@
       "revId": "08125b0911dbb75f9e8c4415ad4e2376d2f2d79b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cadad034_327cd6df",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-08-05T00:47:40Z",
+      "side": 1,
+      "message": "I was thinking that \"now\" protection could use CPU features to force RAM region in question non-writable. But we choose not to do that, due to external flash. My understanding is that \"now\" is something that is temporary and  only works until reset. let me try to reword this comment again",
+      "parentUuid": "ca157084_6e281eb7",
+      "revId": "08125b0911dbb75f9e8c4415ad4e2376d2f2d79b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
