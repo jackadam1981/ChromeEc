@@ -1511,6 +1511,14 @@ void pd_set_new_power_request(int port);
  */
 void pd_update_vbus_supplier(int port, int vbus_level);
 
+/**
+ * Check if VBUS is present
+ *
+ * @param port USB-C port number
+ * @return true when VBUS is present
+ */
+int pd_is_vbus_present(int port);
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**

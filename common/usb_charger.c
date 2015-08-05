@@ -228,7 +228,7 @@ void usb_charger_task(void)
 		if (evt & USB_CHG_EVENT_VBUS) {
 			pi3usb9281_enable_interrupts(port);
 			CPRINTS("VBUS p%d %d", port,
-				pd_snk_is_vbus_provided(port));
+				pd_is_vbus_present(port));
 		}
 	}
 }
@@ -259,7 +259,7 @@ static void usb_charger_init(void)
 					     &charge_none);
 
 		/* Initialize VBUS supplier based on whether VBUS is present */
-		update_vbus_supplier(i, pd_snk_is_vbus_provided(i));
+		update_vbus_supplier(i, pd_is_vbus_present(i));
 	}
 }
 DECLARE_HOOK(HOOK_INIT, usb_charger_init, HOOK_PRIO_DEFAULT);
