@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "6d4ade43_3271c504",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-05T05:26:56Z",
+      "side": 1,
+      "message": "There is not a state named POWER_S5S0. Maybe you meant POWER_S5S3? However, I don\u0027t think it is correct to change the state to POWER_S5S3 before we get GPIO_PCH_SLP_S4_L pulled high.",
+      "parentUuid": "aa14bc88_c1c5a584",
+      "revId": "7758bdcb1cc28c490fcf223c8f4dcedbcb568c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4acfc072_75b81032",
         "filename": "power/common.c",
         "patchSetId": 4
