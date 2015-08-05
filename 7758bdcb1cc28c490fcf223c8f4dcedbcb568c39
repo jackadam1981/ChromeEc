@@ -77,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "ed3dee9f_94950c9a",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-05T15:27:41Z",
+      "side": 1,
+      "message": "Ya, access the same flags in multiple thread may cause race condition. The power state and delay_entering_g3 flag should be put in the same critical section and be protected by mutexes to prevent race condition, however, it\u0027s hard to do such an implementation in the current framework. I don\u0027t have a good idea right now.",
+      "parentUuid": "ed788e71_bfcd9b5f",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 25
+      },
+      "revId": "7758bdcb1cc28c490fcf223c8f4dcedbcb568c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caa9f05f_e8d2abcb",
         "filename": "power/common.c",
         "patchSetId": 4
