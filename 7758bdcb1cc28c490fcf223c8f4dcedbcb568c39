@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0d57a2ea_634c6a95",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-05T05:47:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure want_g3_exit can be used for this, because we are in S5, not in G3 state.",
+      "parentUuid": "aa14bc88_8eb8fc32",
+      "revId": "7758bdcb1cc28c490fcf223c8f4dcedbcb568c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa14bc88_6ebdc020",
         "filename": "power/common.c",
         "patchSetId": 4
@@ -71,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ed3dee9f_540f24e9",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-05T05:47:18Z",
+      "side": 1,
+      "message": "Cont.: Because what if GPIO_PCH_SLP_S4_L is not pulled high? And we could not wait for it in S5S3 because it is a transition state. I think to wait events in a transition state is not appropriate.",
+      "parentUuid": "6d4ade43_3271c504",
+      "revId": "7758bdcb1cc28c490fcf223c8f4dcedbcb568c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4acfc072_75b81032",
         "filename": "power/common.c",
         "patchSetId": 4
@@ -82,6 +118,30 @@
       "writtenOn": "2015-08-04T16:54:40Z",
       "side": 1,
       "message": "Move flag above state check. If a button was pressed. We don\u0027t want to enter G3.",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 13
+      },
+      "revId": "7758bdcb1cc28c490fcf223c8f4dcedbcb568c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ab228f6_d730fcf0",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-05T05:47:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure want_g3_exit can be moved above the state check, because we are in S5, not in G3 state. I think change want_g3_exit to 1 in other state except G3 will be a little confusing and not sure if it will have other impacts.",
+      "parentUuid": "4acfc072_75b81032",
       "range": {
         "startLine": 286,
         "startChar": 1,
