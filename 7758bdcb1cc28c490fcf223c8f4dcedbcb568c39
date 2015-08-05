@@ -54,6 +54,29 @@
     },
     {
       "key": {
+        "uuid": "ed788e71_bfcd9b5f",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1119450
+      },
+      "writtenOn": "2015-08-05T10:27:20Z",
+      "side": 1,
+      "message": "Consider a case: If a race condition happen in between this point and the function chipset_exit_hard_off(), it is possible that the delay_entering_g3\u003d0. In this case, this function will return POWER_S5G3, the same issue will be triggered.",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 25
+      },
+      "revId": "7758bdcb1cc28c490fcf223c8f4dcedbcb568c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caa9f05f_e8d2abcb",
         "filename": "power/common.c",
         "patchSetId": 4
