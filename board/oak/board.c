@@ -48,23 +48,6 @@
 /* Dispaly port hardware can connect to port 0, 1 or neither. */
 #define PD_PORT_NONE -1
 
-void vbus_wake_interrupt(enum gpio_signal signal)
-{
-	CPRINTF("VBUS %d\n", !gpio_get_level(signal));
-	gpio_set_level(GPIO_USB_PD_VBUS_WAKE,
-		       !gpio_get_level(GPIO_VBUS_WAKE_L));
-	/*
-	 * TODO(crosbug.com/p/41226):
-	 *   rev1/rev2 boards don't have vbus input on ec. vbus_wake is a
-	 *   logical OR of two vbus status. to workaround the power status
-	 *   issue, wake up both pd tasks on vbus_wake interrupt. a proper
-	 *   hardware fix will be in rev3.
-	 *   enable TCPC POWER_STATUS ALERT1 can solve this issue too.
-	 */
-	task_wake(TASK_ID_PD_C0);
-	task_wake(TASK_ID_PD_C1);
-}
-
 void pd_mcu_interrupt(enum gpio_signal signal)
 {
 #ifdef HAS_TASK_PDCMD
@@ -187,54 +170,10 @@ void i2c_set_timeout(int port, uint32_t timeout)
 /* Initialize board. */
 static void board_init(void)
 {
-	int i, bc12_status;
-	struct charge_port_info charge_none, charge_vbus;
-	struct charge_port_info *charge_sel;
-
 	/* Enable rev1 testing GPIOs */
 	gpio_set_level(GPIO_SYSTEM_POWER_H, 1);
 	/* Enable PD MCU interrupt */
 	gpio_enable_interrupt(GPIO_PD_MCU_INT);
-	/* Enable VBUS interrupt */
-	gpio_enable_interrupt(GPIO_VBUS_WAKE_L);
-
-	charge_none.voltage = USB_CHARGER_VOLTAGE_MV;
-	charge_none.current = 0;
-	charge_vbus.voltage = USB_CHARGER_VOLTAGE_MV;
-	charge_vbus.current = USB_CHARGER_MIN_CURR_MA;
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
-		/* Initialize all pericom charge suppliers to 0 */
-		charge_manager_update_charge(
-				CHARGE_SUPPLIER_PROPRIETARY,
-				i,
-				&charge_none);
-		charge_manager_update_charge(
-				CHARGE_SUPPLIER_BC12_CDP,
-				i,
-				&charge_none);
-		charge_manager_update_charge(
-				CHARGE_SUPPLIER_BC12_DCP,
-				i,
-				&charge_none);
-		charge_manager_update_charge(
-				CHARGE_SUPPLIER_BC12_SDP,
-				i,
-				&charge_none);
-		charge_manager_update_charge(
-				CHARGE_SUPPLIER_OTHER,
-				i,
-				&charge_none);
-
-		/* Initialize VBUS supplier based on VBUS */
-		/* TODO(crbug.com/498974): Don't do i2c from hook_init. */
-		bc12_status = pi3usb9281_get_charger_status(i);
-		charge_sel = PI3USB9281_CHG_STATUS_ANY(bc12_status) ?
-				&charge_vbus : &charge_none;
-		charge_manager_update_charge(
-				CHARGE_SUPPLIER_VBUS,
-				i,
-				charge_sel);
-	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
