@@ -33,6 +33,24 @@
       "revId": "67856a26641e6f8905936b97712e7b06d65bbb83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aac2fc54_b4f1c00d",
+        "filename": "board/gnawty/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-05T18:34:04Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t understand the battery selection logic. The way I read this code is that you have three valid strappings, and all other strappings are invalid. If that\u0027s not what you want to implement then you need to change it. See bhthompson\u0027s comment.",
+      "parentUuid": "aac2fc54_d4271c3c",
+      "revId": "67856a26641e6f8905936b97712e7b06d65bbb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
