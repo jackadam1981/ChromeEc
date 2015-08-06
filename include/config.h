@@ -71,6 +71,13 @@
 #undef CONFIG_ALS
 #undef CONFIG_ALS_ISL29035
 #undef CONFIG_ALS_OPT3001
+/* Exact model ID presents: SI1141 = 41, SI1142 = 42, ... */
+#undef CONFIG_ALS_SI114X
+/*
+ * Define the event to raise when BMI160 interrupt.
+ * Must be within TASK_EVENT_MOTION_INTERRUPT_MASK.
+ */
+#undef CONFIG_ALS_SI114X_INT_EVENT
 
 /* Support AP hang detection host command and state machine */
 #undef CONFIG_AP_HANG_DETECT
