@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8a0ff877_e683a0a3",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1130314
+      },
+      "writtenOn": "2015-08-06T21:29:41Z",
+      "side": 1,
+      "message": "Thanks for the comment! The middle point can be before the peak 65535 or after the peak. （tstamp_af - tstamp_bf)／2 seems not to be always work. How about this: ((tstamp_bf + tstamp_af + 65535)\u003e\u003e1) \u0026\u0026 0xFFFF ?",
+      "parentUuid": "8a0ff877_e3bb92a8",
+      "range": {
+        "startLine": 102,
+        "startChar": 42,
+        "endLine": 102,
+        "endChar": 51
+      },
+      "revId": "ee7ed2f7a3c52d11f8e775a890f8dd90c037d5f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6acc847d_8238fa89",
         "filename": "board/twinkie/sniffer.c",
         "patchSetId": 9
