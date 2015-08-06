@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2abb6cf3_61c3cc7f",
+        "filename": "power/mediatek.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-06T01:55:54Z",
+      "side": 1,
+      "message": "Is this true across all mediatek boards?  Seems like this should be board-specific (and maybe should get moved into board_set_ap_reset().",
+      "range": {
+        "startLine": 280,
+        "startChar": 5,
+        "endLine": 280,
+        "endChar": 35
+      },
+      "revId": "b146c0f781f1fd0ba0f18662758dfd121d93ca62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ac9b89e_f932ef7c",
+        "filename": "power/mediatek.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-06T01:55:54Z",
+      "side": 1,
+      "message": "Comment is now incorrect.\n\nYou could also implement this the way we do CONFIG_WP_ACTIVE_HIGH or CONFIG_CHARGER_EN_ACTIVE_LOW (but hey, we can\u0027t even agree on a polarity for the config option...)  But the board version check seems to imply maybe there\u0027s more complicated per-board logic needed.",
+      "range": {
+        "startLine": 285,
+        "startChar": 2,
+        "endLine": 285,
+        "endChar": 28
+      },
+      "revId": "b146c0f781f1fd0ba0f18662758dfd121d93ca62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
