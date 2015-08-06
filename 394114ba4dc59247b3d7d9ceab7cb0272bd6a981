@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2abb6cf3_d21ca473",
+        "filename": "board/oak/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2015-08-06T18:39:06Z",
+      "side": 1,
+      "message": "The tcpm_get_vbus_level function shouldn\u0027t be called here. The idea is to remove (eventually) the calls to pd_snk_is_vbus_provided. That change is done in the usb_pd_prototcol file. See CL289932 for changes that were done to test Glados.",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 34
+      },
+      "revId": "394114ba4dc59247b3d7d9ceab7cb0272bd6a981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
