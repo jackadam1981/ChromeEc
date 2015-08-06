@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8abff831_a33e3ae6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-06T07:53:56Z",
+      "side": 1,
+      "message": "Ok, let\u0027s move this pd_is_vbus_present() in another CL.",
+      "parentUuid": "2a59ac45_421a962f",
+      "range": {
+        "startLine": 219,
+        "startChar": 8,
+        "endLine": 219,
+        "endChar": 38
+      },
+      "revId": "8d231532277e97c856cee812430d34abb4ba57e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca2490af_ac493684",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "8abff831_83433e6a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1340,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-06T07:53:56Z",
+      "side": 1,
+      "message": "Done. I rebased this change over CL:290453.",
+      "parentUuid": "4acfc072_b0bb86bb",
+      "range": {
+        "startLine": 1325,
+        "startChar": 0,
+        "endLine": 1340,
+        "endChar": 1
+      },
+      "revId": "8d231532277e97c856cee812430d34abb4ba57e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a6260ef_950a07ad",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 1
@@ -89,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "ed3dee9f_14cd9cda",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-06T07:53:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a6260ef_950a07ad",
+      "revId": "8d231532277e97c856cee812430d34abb4ba57e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a59ac45_e2d2aacb",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 1
@@ -100,6 +166,30 @@
       "writtenOn": "2015-07-31T21:54:19Z",
       "side": 1,
       "message": "why this?",
+      "range": {
+        "startLine": 995,
+        "startChar": 0,
+        "endLine": 995,
+        "endChar": 22
+      },
+      "revId": "8d231532277e97c856cee812430d34abb4ba57e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d4ade43_c8c288fe",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-06T07:53:56Z",
+      "side": 1,
+      "message": "Done. Moved back to board.c",
+      "parentUuid": "2a59ac45_e2d2aacb",
       "range": {
         "startLine": 995,
         "startChar": 0,
@@ -135,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "ed788e71_ffd713eb",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-06T07:53:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a59ac45_02fffe29",
+      "range": {
+        "startLine": 1032,
+        "startChar": 2,
+        "endLine": 1032,
+        "endChar": 42
+      },
+      "revId": "8d231532277e97c856cee812430d34abb4ba57e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca2490af_cce802ee",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -146,6 +260,30 @@
       "writtenOn": "2015-07-31T21:54:19Z",
       "side": 1,
       "message": "should probably not set this if CONFIG_USB_PD_TCPM_VBUS is not defined. we don\u0027t need more useless interrupts. also, don\u0027t need init_power_status_mask() or tcpm_get_vbus_level().",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "8d231532277e97c856cee812430d34abb4ba57e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cac570ce_4514aa75",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-06T07:53:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca2490af_cce802ee",
       "range": {
         "startLine": 34,
         "startChar": 2,
