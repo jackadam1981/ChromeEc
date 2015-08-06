@@ -281,11 +281,14 @@ static void set_warm_reset(int asserted)
 		/* Signal is active-high */
 		CPRINTS("pmic warm reset(%d)", asserted);
 		gpio_set_level(GPIO_PMIC_WARM_RESET_H, asserted);
-	} else {
+	}
+#ifdef BOARD_OAK
+	else {
 		/* Signal is active-low */
 		CPRINTS("ap warm reset(%d)", asserted);
 		gpio_set_level(GPIO_AP_RESET_L, !asserted);
 	}
+#endif
 }
 
 /**
