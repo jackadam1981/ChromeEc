@@ -16,6 +16,7 @@
 #include "common.h"
 #include "console.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/als_si114x.h"
 #include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -198,6 +199,9 @@ static void board_init(void)
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACC_IRQ1);
 
+	/* Enable interrupts from SI1141 sensor. */
+	gpio_enable_interrupt(GPIO_ALS_PROXY_INT_L);
+
 	if (board_has_spi_sensors()) {
 		for (i = MOTIONSENSE_TYPE_ACCEL;
 		     i <= MOTIONSENSE_TYPE_MAG; i++) {
@@ -362,6 +366,38 @@ struct motion_sensor_t motion_sensors[] = {
 		 .odr = 0,
 		 .range = 1 << 11, /* 16LSB / uT */
 		 .ec_rate = MAX_MOTION_SENSE_WAIT_TIME,
+	 }
+	},
+	{.name = "Light",
+	 .active_mask = SENSOR_ACTIVE_S0_S3_S5,
+	 .chip = MOTIONSENSE_CHIP_SI1141,
+	 .type = MOTIONSENSE_TYPE_LIGHT,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &si114x_drv,
+	 .mutex = &g_mutex,
+	 .drv_data = &g_si114x_data,
+	 .addr = SI114X_ADDR,
+	 .rot_standard_ref = NULL,
+	 .default_config = {
+		 .odr = 1,  /* Just !0, in forced mode */
+		 .range = 9000, /* 90%: int = 0 - frac = 9000/10000 */
+		 .ec_rate = 1000 * MSEC,
+	 }
+	},
+	{.name = "Proxi",
+	 .active_mask = SENSOR_ACTIVE_S0_S3_S5,
+	 .chip = MOTIONSENSE_CHIP_SI1141,
+	 .type = MOTIONSENSE_TYPE_PROXY,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &si114x_drv,
+	 .mutex = &g_mutex,
+	 .drv_data = &g_si114x_data,
+	 .addr = SI114X_ADDR,
+	 .rot_standard_ref = NULL,
+	 .default_config = {
+		 .odr = 1,
+		 .range = 1 << 16, /* 100% fuzzy unit */
+		 .ec_rate = 1000 * MSEC,
 	 }
 	},
 };
