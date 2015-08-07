@@ -22,6 +22,30 @@
       "revId": "5f72f3bb76a04e82533d880f2b9f8cd30807187e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67303f13_42653293",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-08-07T23:22:29Z",
+      "side": 1,
+      "message": "Alexandru was saying that it would be better to keep them all together. Otherwise, it makes bisecting difficult.",
+      "parentUuid": "c7a9eb5f_a8c59332",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 16
+      },
+      "revId": "5f72f3bb76a04e82533d880f2b9f8cd30807187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
