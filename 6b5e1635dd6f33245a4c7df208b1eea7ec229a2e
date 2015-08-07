@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47141b33_59072390",
+        "filename": "board/cyan/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-07T01:18:00Z",
+      "side": 1,
+      "message": "Can you verify that the following case is handled correctly?\n\n- System is in S0\n- Set lid angle so KB would normally be disabled (AP should handle disable though)\n- Now put system in S3\n- Does this function get called upon entering S3 (or soon after)?",
+      "revId": "6b5e1635dd6f33245a4c7df208b1eea7ec229a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7fb4f32_e175203e",
+        "filename": "include/lid_angle.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-07T01:18:00Z",
+      "side": 1,
+      "message": "It\u0027s really awkward that this function is named lidangle, but the others are lid_angle_*. Can we rename this lid_angle?",
+      "revId": "6b5e1635dd6f33245a4c7df208b1eea7ec229a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
