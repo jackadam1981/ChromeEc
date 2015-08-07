@@ -22,6 +22,30 @@
       "revId": "3208ebe85e85a7ae2616fe8fb3e3a9e99e521e87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0abea8e2_972184a6",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2015-08-07T19:20:50Z",
+      "side": 1,
+      "message": "Perhaps, but they\u0027re essentially equivalent.\nRetrying more times in the same time interval shouldn\u0027t be a problem, in fact it\u0027ll make a successful attempt end the init quicker.\n\nI also want to have this exactly the same as the branch.",
+      "parentUuid": "0d06c2cf_5dde2bd7",
+      "range": {
+        "startLine": 513,
+        "startChar": 14,
+        "endLine": 513,
+        "endChar": 16
+      },
+      "revId": "3208ebe85e85a7ae2616fe8fb3e3a9e99e521e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
