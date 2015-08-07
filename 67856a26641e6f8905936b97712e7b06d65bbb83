@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "270ba719_381349ea",
+        "filename": "board/gnawty/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-08-07T00:57:10Z",
+      "side": 1,
+      "message": "I see, the cases are not in order, so maybe this would work for at least these three. It is a bit confusing to have the cases out of order I think.\n\nShawn is has a good point about the assert, if we are going to go this route it seems better to hang the EC with an assert/error instead of using a potentially unexpected battery configuration.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 11
+      },
+      "revId": "67856a26641e6f8905936b97712e7b06d65bbb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aac2fc54_d4271c3c",
         "filename": "board/gnawty/battery.c",
         "patchSetId": 4
