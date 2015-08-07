@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c7f64b4b_a69e0cb3",
+        "filename": "board/cyan/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2015-08-07T18:39:26Z",
+      "side": 1,
+      "message": "Yes. This case is handled correctly. Keyboard and Trackpad get disabled and do not act as wake sources for the system.",
+      "parentUuid": "47141b33_59072390",
+      "revId": "6b5e1635dd6f33245a4c7df208b1eea7ec229a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7fb4f32_e175203e",
         "filename": "include/lid_angle.h",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2015-08-07T01:18:00Z",
       "side": 1,
       "message": "It\u0027s really awkward that this function is named lidangle, but the others are lid_angle_*. Can we rename this lid_angle?",
+      "revId": "6b5e1635dd6f33245a4c7df208b1eea7ec229a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea26b49b_dabb350d",
+        "filename": "include/lid_angle.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2015-08-07T18:39:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7fb4f32_e175203e",
       "revId": "6b5e1635dd6f33245a4c7df208b1eea7ec229a2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
