@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "273ac7f6_a046ba25",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-07T23:22:48Z",
+      "side": 1,
+      "message": "Minor nit: turn on bits in order.  memset() ensures all the bits are 0, so\n\n#ifdef V2\nr-\u003ev |\u003d (1 \u003c\u003c 2)\n#endif\nr-\u003ev |\u003d (1 \u003c\u003c 3)",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 681,
+        "endChar": 6
+      },
+      "revId": "842b751d334cddad15fc2a6c9b4bf438a19cfb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
