@@ -182,7 +182,7 @@ static inline void motion_sense_init(struct motion_sensor_t *sensor)
 	} else {
 		timestamp_t ts = get_time();
 		sensor->state = SENSOR_INITIALIZED;
-		sensor->last_collection = ts.val;
+		sensor->last_collection = ts.le.lo;
 	}
 }
 
@@ -369,10 +369,10 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 	if (sensor->drv->load_fifo != NULL) {
 		/* Load fifo is filling raw_xyz sensor vector */
 		sensor->drv->load_fifo(sensor);
-	} else if (ts->val - sensor->last_collection >=
-		   SENSOR_EC_RATE_THRES(sensor)) {
+	} else if (time_after(ts->le.lo, sensor->last_collection +
+				SENSOR_EC_RATE_THRES(sensor))) {
 		struct ec_response_motion_sensor_data vector;
-		sensor->last_collection = ts->val;
+		sensor->last_collection = ts->le.lo;
 		ret = motion_sense_read(sensor);
 		if (ret == EC_SUCCESS) {
 			vector.flags = 0;
@@ -393,9 +393,9 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 		}
 	}
 #else
-	if (ts->val - sensor->last_collection >=
-	    SENSOR_EC_RATE_THRES(sensor)) {
-		sensor->last_collection = ts->val;
+	if (time_after(ts->le.lo, sensor->last_collection +
+				SENSOR_EC_RATE_THRES(sensor))) {
+		sensor->last_collection = ts->le.lo;
 		/* Get latest data for local calculation */
 		ret = motion_sense_read(sensor);
 	} else {
