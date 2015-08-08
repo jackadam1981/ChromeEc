@@ -22,6 +22,30 @@
       "revId": "99f4259a86bc37a1ba6955789b6bac8fdf6cc96f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47333b20_f5508058",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-08-08T01:12:09Z",
+      "side": 1,
+      "message": "Actually, maybe it would be possible to temporarily define a CONFIG_CHIP_G_FPGA_B1 (or A1 and use #ifndef) so that the default is the A1 rev until B1 is ready.",
+      "parentUuid": "27b567ac_8b277166",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "99f4259a86bc37a1ba6955789b6bac8fdf6cc96f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
