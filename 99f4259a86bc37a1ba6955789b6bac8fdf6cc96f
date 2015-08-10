@@ -70,6 +70,30 @@
       "revId": "99f4259a86bc37a1ba6955789b6bac8fdf6cc96f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07bea3e2_cbe1958f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-08-10T22:30:03Z",
+      "side": 1,
+      "message": "I can make this conditional, if you still strongly feel that it is worth it, but in fact the new image is now on par with the old image, so we might as well all switch to the new image and move on.",
+      "parentUuid": "47333b20_90d2e242",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "99f4259a86bc37a1ba6955789b6bac8fdf6cc96f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
