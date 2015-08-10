@@ -156,6 +156,7 @@ enum power_state power_handle_state(enum power_state state)
 			return POWER_G3;
 		}
 
+		gpio_set_level(GPIO_TRACKPAD_PWREN,1);
 		/* Deassert RSMRST# */
 		gpio_set_level(GPIO_PCH_RSMRST_L, 1);
 		return POWER_S5;
@@ -292,6 +293,7 @@ enum power_state power_handle_state(enum power_state state)
 #ifndef CONFIG_PMIC
 			gpio_set_level(GPIO_SUSPWRDNACK_SOC_EC, 1);
 #endif
+			gpio_set_level(GPIO_TRACKPAD_PWREN,0);
 
 			forcing_shutdown = 0;
 
@@ -315,6 +317,7 @@ enum power_state power_handle_state(enum power_state state)
 #else
 			gpio_set_level(GPIO_SUSPWRDNACK_SOC_EC, 1);
 #endif
+			gpio_set_level(GPIO_TRACKPAD_PWREN,0);
 			CPRINTS("Enter SOC G3");
 
 			return POWER_G3;
