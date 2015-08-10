@@ -158,6 +158,8 @@ enum power_state power_handle_state(enum power_state state)
 			return POWER_G3;
 		}
 
+		/* Enable Trackpad power while transition from G3 to S5 */
+		gpio_set_level(GPIO_TRACKPAD_PWREN,1);
 		/* Deassert RSMRST# */
 		gpio_set_level(GPIO_PCH_RSMRST_L, 1);
 		return POWER_S5;
@@ -296,6 +298,8 @@ enum power_state power_handle_state(enum power_state state)
 #else
 			gpio_set_level(GPIO_PCH_SYS_PWROK, 0);
 #endif
+			/* Disable Trackpad power while transition from S5 to G3 */
+			gpio_set_level(GPIO_TRACKPAD_PWREN,0);
 
 			forcing_shutdown = 0;
 
@@ -319,6 +323,8 @@ enum power_state power_handle_state(enum power_state state)
 #else
 			gpio_set_level(GPIO_SUSPWRDNACK_SOC_EC, 1);
 #endif
+			/* Disable Trackpad power while transition from S5 to G3 */
+			gpio_set_level(GPIO_TRACKPAD_PWREN,0);
 			CPRINTS("Enter SOC G3");
 
 			return POWER_G3;
