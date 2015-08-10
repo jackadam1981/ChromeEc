@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07bea3e2_ba190d83",
+        "filename": "power/common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-10T17:14:49Z",
+      "side": 1,
+      "message": "Just remove the comment.  It\u0027s like  i++; // Increment i",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 31
+      },
+      "revId": "4e8c22a8433d79bb150638c7bec1e16e97855c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67e67f2a_f5a672c7",
+        "filename": "power/common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-10T17:14:49Z",
+      "side": 1,
+      "message": "if (!chipset_in_state(CHIPSET_ANY_OFF))",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 67
+      },
+      "revId": "4e8c22a8433d79bb150638c7bec1e16e97855c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
