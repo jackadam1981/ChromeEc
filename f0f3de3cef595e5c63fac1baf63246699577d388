@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47c41b7d_5c66711c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-10T17:24:36Z",
+      "side": 1,
+      "message": "Should be \"strago:\". BCRD2 isn\u0027t an EC board. Also, software sync is a FW feature, so you aren\u0027t really enabling it here. You\u0027re enabling computing image hashes to facilitate software sync (as you said below).",
+      "revId": "f0f3de3cef595e5c63fac1baf63246699577d388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47e97bf9_94828adc",
+        "filename": "board/strago/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-10T17:24:36Z",
+      "side": 1,
+      "message": "Why is this here?",
+      "revId": "f0f3de3cef595e5c63fac1baf63246699577d388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
