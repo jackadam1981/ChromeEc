@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "87c9b39e_16f33a61",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-08-10T16:49:54Z",
+      "side": 1,
+      "message": "No longer exists in patch from which this was cherry-picked.",
+      "parentUuid": "47e97bf9_14e33a13",
+      "revId": "58c876f2516b727fb7007cfa3b84dc15d02d6a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87c9b39e_36df56d3",
         "filename": "power/common.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "47c41b7d_f99317b1",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-08-10T16:49:54Z",
+      "side": 1,
+      "message": "Code no longer exists in patch from which this was cherry-picked.",
+      "parentUuid": "87c9b39e_36df56d3",
+      "revId": "58c876f2516b727fb7007cfa3b84dc15d02d6a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87c9b39e_b6e12690",
         "filename": "power/common.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2015-08-10T16:44:49Z",
       "side": 1,
       "message": "Can\u0027t you add POWER_S5 to condition below? if (state !\u003d POWER_G3....... \u0026\u0026 state !\u003d POWER_S5) { ...",
+      "revId": "58c876f2516b727fb7007cfa3b84dc15d02d6a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47c41b7d_9992dbaa",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-08-10T16:49:54Z",
+      "side": 1,
+      "message": "This has effectively been done in the updated patch from which this change is cherry-picked.",
+      "parentUuid": "87c9b39e_b6e12690",
       "revId": "58c876f2516b727fb7007cfa3b84dc15d02d6a23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
