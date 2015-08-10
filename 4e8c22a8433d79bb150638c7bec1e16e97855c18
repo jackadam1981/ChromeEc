@@ -45,6 +45,23 @@
       "revId": "4e8c22a8433d79bb150638c7bec1e16e97855c18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7d42f30_594d6792",
+        "filename": "power/common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-10T17:16:14Z",
+      "side": 1,
+      "message": "I think it\u0027s now possible that you\u0027ll be setting this flag when powering up (ex. when in S5, eventually going to S3). So, you need to make sure that want_g3_exit is zero\u0027d when powering back down. We need to verify that all power state machines go through POWER_S5 on their way back down.",
+      "revId": "4e8c22a8433d79bb150638c7bec1e16e97855c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
