@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "27f007dc_73f61a04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2015-08-10T17:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47c41b7d_5c66711c",
+      "revId": "f0f3de3cef595e5c63fac1baf63246699577d388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47e97bf9_94828adc",
         "filename": "board/strago/ec.tasklist",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-08-10T17:24:36Z",
       "side": 1,
       "message": "Why is this here?",
+      "revId": "f0f3de3cef595e5c63fac1baf63246699577d388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "078f837d_6fe3b1c4",
+        "filename": "board/strago/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2015-08-10T17:47:08Z",
+      "side": 1,
+      "message": "Hooks task was overflowing and causing crash after enabling hash computation.\nModified the commit message.",
+      "parentUuid": "47e97bf9_94828adc",
       "revId": "f0f3de3cef595e5c63fac1baf63246699577d388",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
