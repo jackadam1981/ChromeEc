@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0d57a2ea_15ee74fb",
+        "filename": "board/gnawty/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1110544
+      },
+      "writtenOn": "2015-08-11T02:27:15Z",
+      "side": 1,
+      "message": "Hi Bernie,\n\nGnawty board has not pulled high ec_brd_id2 before.\nAnd Gnawty board will pull high ec_brd_id2 and ec_brd_id3\nto supoort new 4 cell battery(AC14B3K) and 3 cell battery(SANY AC15) in the near future.\nSo ,EC adds code to support those new batteries as following BOARD_ID configurations, \n1.Use Board_ID_2 to identify 3-Cell or 4-Cell battery at first\n2.Use Board_ID_3 to identify what LG AC14 or SANYO AC15 battery is.\n\nThat you are supprised at there is no board version 0x02 and 0x03 on your hands is relied battery whether on you own. Would you let me know whether you have those three different kind of bateries on you hand? If yes, would you mind reworking BOARD_ID_2 and BOARD_ID_3 for supported battery and evalutions?\n\nFinally, BOARD_ID pins has defined by HW guys, we need not use extra unused GPIOs for this requirements.",
+      "parentUuid": "6d9ade79_1b01c741",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "ffd0cb873a041c5de813a18513c00fe4329bf013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d9d1a6f_94510a32",
         "filename": "board/gnawty/board.h",
         "patchSetId": 2
