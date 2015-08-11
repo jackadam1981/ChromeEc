@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87c9b39e_fccf7856",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-11T14:51:40Z",
+      "side": 1,
+      "message": "compiler should already do this, but just to be sure, i would mark this function inline.",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 39
+      },
+      "revId": "ab91b404ad81930fc6217e9723f764431dcea101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7d42f30_cb299510",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-11T14:51:40Z",
+      "side": 1,
+      "message": "nit: comment should go inside the #ifdef",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 37
+      },
+      "revId": "ab91b404ad81930fc6217e9723f764431dcea101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47e97bf9_86ec9805",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-11T14:51:40Z",
+      "side": 1,
+      "message": "a lot of extra stuff, just do:\n\nreturn i2c_read8(I2C_PORT_TCPC, I2C_ADDR_TCPC(port),\n\t\t TCPC_REG_POWER_STATUS, status);",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 12
+      },
+      "revId": "ab91b404ad81930fc6217e9723f764431dcea101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67e67f2a_4ce6d323",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-11T14:51:40Z",
+      "side": 1,
+      "message": "same comment as above",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 11
+      },
+      "revId": "ab91b404ad81930fc6217e9723f764431dcea101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47c41b7d_b34a58fd",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-11T14:51:40Z",
+      "side": 1,
+      "message": "i don\u0027t see this function. is it leftover from previous patch?",
+      "range": {
+        "startLine": 1512,
+        "startChar": 0,
+        "endLine": 1512,
+        "endChar": 55
+      },
+      "revId": "ab91b404ad81930fc6217e9723f764431dcea101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
