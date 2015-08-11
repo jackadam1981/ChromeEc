@@ -97,6 +97,16 @@ int tcpm_set_cc(int port, int pull)
 			  TCPC_REG_ROLE_CTRL_SET(0, 0, pull, pull));
 }
 
+int tcpm_set_sleep(int port, int enable)
+{
+	/*
+	 * enable/disable the deep sleep mode of PD PHY.
+	 */
+	return i2c_write8(I2C_PORT_TCPC, I2C_ADDR_TCPC(port),
+			  TCPC_REG_LOW_POWER,
+			  enable);
+}
+
 int tcpm_set_polarity(int port, int polarity)
 {
 	/* Write new polarity, leave vconn enable flag untouched */

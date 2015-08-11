@@ -85,4 +85,6 @@
 #define TCPC_REG_TX_HDR            0x52
 #define TCPC_REG_TX_DATA           0x54 /* through 0x6f */
 
+#define TCPC_REG_LOW_POWER         0x60
+
 #endif /* __CROS_EC_USB_PD_TCPM_TCPCI_H */
