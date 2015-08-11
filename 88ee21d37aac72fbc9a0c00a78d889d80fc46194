@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67e03f3d_82017a40",
+        "filename": "board/oak/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-11T15:08:15Z",
+      "side": 1,
+      "message": "this stuff needs to go since usb_charge.c is now doing it.",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 237,
+        "endChar": 2
+      },
+      "revId": "88ee21d37aac72fbc9a0c00a78d889d80fc46194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
