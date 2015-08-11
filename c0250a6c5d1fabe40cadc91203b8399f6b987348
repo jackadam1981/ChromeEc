@@ -22,6 +22,30 @@
       "revId": "c0250a6c5d1fabe40cadc91203b8399f6b987348",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4785fb57_31f3d061",
+        "filename": "board/strago/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1130290
+      },
+      "writtenOn": "2015-08-11T06:30:07Z",
+      "side": 1,
+      "message": "Power savings are almost identical with/without pullup. This may be because as per the schematics we have an external pull down resistor connected.\nAlso, You mentioned that this NOR gate is not open drain so internal pullup may not be necessary.\nWhat do you suggest?",
+      "parentUuid": "e7d42f30_b6e48856",
+      "range": {
+        "startLine": 103,
+        "startChar": 34,
+        "endLine": 103,
+        "endChar": 44
+      },
+      "revId": "c0250a6c5d1fabe40cadc91203b8399f6b987348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
