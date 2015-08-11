@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6ad7247f_ea75a773",
+        "filename": "board/gnawty/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1110544
+      },
+      "writtenOn": "2015-08-11T02:27:15Z",
+      "side": 1,
+      "message": "The other two battery will not use this config.\nBecause the Board_id_2 should pull high for ec judge that is 4-cell battery.",
+      "parentUuid": "ea76b411_26711688",
+      "revId": "67856a26641e6f8905936b97712e7b06d65bbb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "270ba719_381349ea",
         "filename": "board/gnawty/battery.c",
         "patchSetId": 4
@@ -71,6 +89,24 @@
       "side": 1,
       "message": "Sorry, I didn\u0027t understand the battery selection logic. The way I read this code is that you have three valid strappings, and all other strappings are invalid. If that\u0027s not what you want to implement then you need to change it. See bhthompson\u0027s comment.",
       "parentUuid": "aac2fc54_d4271c3c",
+      "revId": "67856a26641e6f8905936b97712e7b06d65bbb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8abff831_a3a3dab6",
+        "filename": "board/gnawty/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1110544
+      },
+      "writtenOn": "2015-08-11T02:27:15Z",
+      "side": 1,
+      "message": "Hi Shawn,\n\nGnawty board will pull high ec_brd_id2 and ec_brd_id3\nto supoort new 4 cell battery(AC14B3K) and 3 cell battery(SANY AC15) in the near future.\nSo ,EC adds code to support those new batteries as following BOARD_ID configurations, \n1.Use Board_ID_2 to identify 3-Cell or 4-Cell battery at first\n2.Use Board_ID_3 to identify what LG AC14 or SANYO AC15 battery is.",
+      "parentUuid": "aac2fc54_b4f1c00d",
       "revId": "67856a26641e6f8905936b97712e7b06d65bbb83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
