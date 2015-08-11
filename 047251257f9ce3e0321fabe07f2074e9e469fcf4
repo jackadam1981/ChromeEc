@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a75877e6_c4d71e35",
+        "filename": "board/glados/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-11T14:44:36Z",
+      "side": 1,
+      "message": "If mec had an encoding scheme for addressing GPIOs then you could just pass around uint32_t\u0027s. i.e. typedef uint32_t gpio_t. Each gpio has their port in bits 31:16 while it\u0027s relative pin within a port can be kept as a mask in 15:0. Then one just needs to test for equality, etc.\n\nThat\u0027s not specific to this CL, but it seems we\u0027re going to a lot of trouble to support split port/pin pairs.",
+      "revId": "047251257f9ce3e0321fabe07f2074e9e469fcf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
