@@ -188,4 +188,13 @@ int tcpm_get_message(int port, uint32_t *payload, int *head);
 int tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
 		   const uint32_t *data);
 
+/**
+ * Enable/Disable PD PHY deep sleep mode
+ *
+ * @param port Type-C port number
+ * @param enable true for enable, false for disable
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpm_set_sleep(int port, int enable);
 #endif /* __CROS_EC_USB_PD_TCPM_H */

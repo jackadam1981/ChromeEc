@@ -295,10 +295,17 @@ static inline void set_state(int port, enum pd_states next_state)
 		if (pd_is_connected(i))
 			break;
 	}
-	if (i == CONFIG_USB_PD_PORT_COUNT)
+	if (i == CONFIG_USB_PD_PORT_COUNT) {
 		enable_sleep(SLEEP_MASK_USB_PD);
-	else
+#ifdef CONFIG_USB_PD_TCPM_TCPCI
+		tcpm_set_sleep(0, 1);
+#endif
+	} else {
 		disable_sleep(SLEEP_MASK_USB_PD);
+#ifdef CONFIG_USB_PD_TCPM_TCPCI
+		tcpm_set_sleep(0, 0);
+#endif
+	}
 #endif
 
 	CPRINTF("C%d st%d\n", port, next_state);
