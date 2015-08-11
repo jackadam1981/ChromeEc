@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87c9b39e_4d547d4b",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-08-11T00:36:24Z",
+      "side": 1,
+      "message": "I don\u0027t think $(wildcard dirname) returns a trailing backslash, this patsubst seems unnecessary.",
+      "revId": "96b95f715f005d567625763c7a557cd78323be6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7cf2b9d_0930b970",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-08-11T00:36:24Z",
+      "side": 1,
+      "message": "here and below: isn\u0027t $(BOARD) part of $(BDIR) now?",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "96b95f715f005d567625763c7a557cd78323be6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
