@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "670f5fb2_aa5f6f6c",
+        "filename": "power/common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-11T09:42:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07bea3e2_ba190d83",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 31
+      },
+      "revId": "4e8c22a8433d79bb150638c7bec1e16e97855c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67e67f2a_f5a672c7",
         "filename": "power/common.c",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-10T17:14:49Z",
       "side": 1,
       "message": "if (!chipset_in_state(CHIPSET_ANY_OFF))",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 67
+      },
+      "revId": "4e8c22a8433d79bb150638c7bec1e16e97855c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27f007dc_a4bf9af7",
+        "filename": "power/common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-11T09:42:03Z",
+      "side": 1,
+      "message": "This will include POWER_G3S5. It will set want_g3_exit to 1 again, but want_g3_exit was set to 0 while leaving G3 state in the original code. After this line applied, if power_wait_signals() return EC_ERROR_TIMEOUT in power_handle_state(), it would go to G3 and then leave G3 again immediately.",
+      "parentUuid": "67e67f2a_f5a672c7",
       "range": {
         "startLine": 258,
         "startChar": 1,
