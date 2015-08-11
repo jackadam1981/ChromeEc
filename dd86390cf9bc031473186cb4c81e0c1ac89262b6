@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67091fdd_fa358900",
+        "filename": "power/braswell.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-11T16:16:19Z",
+      "side": 1,
+      "message": "Why not enable when transitioning from S5-\u003eS3 (if TP wake is supported) or S3-\u003eS0 (if TP wake isn\u0027t supported)?",
+      "revId": "dd86390cf9bc031473186cb4c81e0c1ac89262b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
