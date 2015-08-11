@@ -46,6 +46,30 @@
       "revId": "c0250a6c5d1fabe40cadc91203b8399f6b987348",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a716b7fe_f423d8dc",
+        "filename": "board/strago/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-08-11T17:32:12Z",
+      "side": 1,
+      "message": "In the comment, \u0027NC\u0027 seems to mis-lead. \u0027NC\u0027 means no connection to external circuit. I wonder if GPIO-201 is disconnected(hw change by cutting trace)? \nIf EC does not control this signal any more and want to keep external HW as it is, then GPIO_INPUT is right configuration.  Please change comment, \u0027NC\u0027 to \u0027Not used\u0027.",
+      "parentUuid": "4785fb57_31f3d061",
+      "range": {
+        "startLine": 103,
+        "startChar": 34,
+        "endLine": 103,
+        "endChar": 44
+      },
+      "revId": "c0250a6c5d1fabe40cadc91203b8399f6b987348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
