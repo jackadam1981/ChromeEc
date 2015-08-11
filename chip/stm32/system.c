@@ -16,6 +16,8 @@
 #include "util.h"
 #include "version.h"
 #include "watchdog.h"
+#include "usb_pd.h"
+#include "usb_pd_tcpm.h"
 
 #define CONSOLE_BIT_MASK 0x8000
 
@@ -104,6 +106,9 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 
 void system_hibernate(uint32_t seconds, uint32_t microseconds)
 {
+#ifdef CONFIG_USB_PD_TCPM_TCPCI
+	tcpm_set_hibernate(0, 1);
+#endif
 	/* Flush console before hibernating */
 	cflush();
 	/* chip specific standby mode */

@@ -387,6 +387,13 @@ enum power_state power_chipset_init(void)
 	int init_power_state;
 	uint32_t reset_flags = system_get_reset_flags();
 
+	if(reset_flags & RESET_FLAG_HIBERNATE) {
+		CPRINTS("RESET_FLAG_HIBERNATE");
+		gpio_set_level(GPIO_USB_PD_VBUS_WAKE, 1);
+		msleep(5);
+		gpio_set_level(GPIO_USB_PD_VBUS_WAKE, 0);
+	}
+
 	/*
 	 * Force the AP shutdown unless we are doing SYSJUMP. Otherwise,
 	 * the AP could stay in strange state.
