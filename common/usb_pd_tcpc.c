@@ -12,6 +12,7 @@
 #include "gpio.h"
 #include "host_command.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "tcpci.h"
 #include "timer.h"
@@ -1058,6 +1059,7 @@ void pd_vbus_evt_p1(enum gpio_signal signal)
 static void tcpc_i2c_write(int port, int reg, int len, uint8_t *payload)
 {
 	uint16_t alert;
+	uint8_t sleep_enable;
 	switch (reg) {
 	case TCPC_REG_ROLE_CTRL:
 		tcpc_set_cc(port, TCPC_REG_ROLE_CTRL_CC1(payload[1]));
@@ -1099,6 +1101,13 @@ static void tcpc_i2c_write(int port, int reg, int len, uint8_t *payload)
 	case TCPC_REG_TRANSMIT:
 		tcpc_transmit(port, TCPC_REG_TRANSMIT_TYPE(payload[1]),
 			      pd[port].tx_head, pd[port].tx_payload);
+		break;
+	case TCPC_REG_LOW_POWER:
+		sleep_enable = payload[1];
+		if(sleep_enable)
+			enable_sleep(SLEEP_MASK_USB_PD);
+		else
+			disable_sleep(SLEEP_MASK_USB_PD);
 		break;
 	}
 }
