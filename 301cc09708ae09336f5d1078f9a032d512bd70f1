@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7d42f30_b09248aa",
+        "filename": "board/gnawty/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-08-11T01:07:42Z",
+      "side": 1,
+      "message": "Please triple confirm that these statements are accurate!\n\nIf we land code with an assert like this, and the wrong board id is probed by the EC, that system will break, this includes any systems in the field with board IDs that do not fit these descriptions. Any systems that have invalid board IDs in the field will require an RMA to recover.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 70
+      },
+      "revId": "301cc09708ae09336f5d1078f9a032d512bd70f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47c41b7d_c87d1762",
+        "filename": "board/gnawty/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-08-11T01:07:42Z",
+      "side": 1,
+      "message": "I think this is the kind of assert that Shawn was looking for.",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 12
+      },
+      "revId": "301cc09708ae09336f5d1078f9a032d512bd70f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
