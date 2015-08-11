@@ -21,6 +21,11 @@ test-list-$(BOARD_SAMUS)=
 test-list-$(BOARD_GLADOS)=
 test-list-$(BOARD_GLADOS_PD)=
 
+# Kunimitsu board-specific chipset code, and the tests don't
+# compile with it. Disable them for now.
+test-list-$(BOARD_KUNIMITSU)=
+test-list-$(BOARD_KUNIMITSU_PD)=
+
 # Ryu has issues when building tests
 test-list-$(BOARD_RYU)=
 
