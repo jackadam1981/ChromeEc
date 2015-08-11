@@ -45,6 +45,30 @@
       "revId": "97b1291d25c40b30e4fbabecf2a629c8ca0153e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed3dee9f_f4e73055",
+        "filename": "board/gnawty/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1110544
+      },
+      "writtenOn": "2015-08-11T02:27:15Z",
+      "side": 1,
+      "message": "Hi Bernie,\nThat is my mistake.\nIt should be 0x04.",
+      "parentUuid": "eadf9421_1b4a9477",
+      "range": {
+        "startLine": 14,
+        "startChar": 32,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "97b1291d25c40b30e4fbabecf2a629c8ca0153e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
