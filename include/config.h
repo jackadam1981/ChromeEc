@@ -1142,6 +1142,12 @@
 /* Support LPC interface */
 #undef CONFIG_LPC
 
+/*
+ * TODO: Applicable for Kunimitsu FAB3. Remove it once the FAB4 is available.
+ * Support Kepler leackage fix.
+ */
+#undef CONFIG_KEPLER_LEAKAGE_FIX
+
 /* Base address of low power RAM. */
 #undef CONFIG_LPRAM_BASE
 
