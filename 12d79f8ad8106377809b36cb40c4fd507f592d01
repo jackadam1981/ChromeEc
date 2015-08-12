@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e4298d86_82952a99",
+        "filename": "common/als.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-12T20:43:06Z",
+      "side": 1,
+      "message": "Yes purpose of this code is to clear the interrupt status so that interrupt can fire again.\nI will add a name appropriately as in motion_sense task.\nOkay I will add a function pointer.",
+      "parentUuid": "6a9ac479_12f1ac90",
+      "revId": "12d79f8ad8106377809b36cb40c4fd507f592d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aac2fc54_34285088",
         "filename": "common/als.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-08-05T18:01:00Z",
       "side": 1,
       "message": "So you aren\u0027t waiting for an interrupt, unless you set als_int manually from the console?",
+      "revId": "12d79f8ad8106377809b36cb40c4fd507f592d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42489af_011c9af4",
+        "filename": "common/als.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-12T20:43:06Z",
+      "side": 1,
+      "message": "yes, this code is intended for EC console command to test ALS interrupt operation",
+      "parentUuid": "aac2fc54_34285088",
       "revId": "12d79f8ad8106377809b36cb40c4fd507f592d01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "645f5d28_dfac1f75",
+        "filename": "common/als.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-12T20:43:06Z",
+      "side": 1,
+      "message": "in the interrupt context, I will move it to driver code as in accelgyro_bmi160.c",
+      "parentUuid": "0aa788c0_0f2345b0",
+      "revId": "12d79f8ad8106377809b36cb40c4fd507f592d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa975c53_ac5c0300",
         "filename": "driver/als_isl29035.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2015-08-05T18:01:00Z",
       "side": 1,
       "message": "Where do you intend to call this function? It would help to see the board-level changes you have made (in a separate CL).",
+      "revId": "12d79f8ad8106377809b36cb40c4fd507f592d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "046a21d9_9a8ca9bf",
+        "filename": "driver/als_isl29035.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-12T20:43:06Z",
+      "side": 1,
+      "message": "I added this code for EC console command test. Ideally this has to be called from host commands as in host_cmd_motion_sense() of the motion_sense task.",
+      "parentUuid": "aa975c53_ac5c0300",
       "revId": "12d79f8ad8106377809b36cb40c4fd507f592d01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
