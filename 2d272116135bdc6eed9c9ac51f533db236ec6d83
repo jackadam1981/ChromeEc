@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a43315f4_ccc00f76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1117540
+      },
+      "writtenOn": "2015-08-12T01:06:36Z",
+      "side": 1,
+      "message": "I do the motion \"make BOARD\u003dultima\",but it show :\nMakefile.rules:170: recipe for target \u0027build/ultima/RO/ec.RO.lds\u0027 failed\nmake: *** [build/ultima/RO/ec.RO.lds] Error 127 .\n\nI setup the environment for ultima again,but get the same result.",
+      "parentUuid": "2703a7c0_d811ad90",
+      "revId": "2d272116135bdc6eed9c9ac51f533db236ec6d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87c9b39e_5c5aecca",
         "filename": "board/ultima/board.h",
         "patchSetId": 1
