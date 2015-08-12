@@ -393,11 +393,13 @@ void acpi_0_interrupt(void)
 	/* Clear the busy bit */
 	MEC1322_ACPI_EC_STATUS(0) &= ~EC_LPC_STATUS_PROCESSING;
 
+#ifdef CONFIG_ACPI_SCI
 	/*
 	 * ACPI 5.0-12.6.1: Generate SCI for Input Buffer Empty / Output Buffer
 	 * Full condition on the kernel channel.
 	 */
 	lpc_generate_sci();
+#endif
 }
 DECLARE_IRQ(MEC1322_IRQ_ACPIEC0_IBF, acpi_0_interrupt, 1);
 

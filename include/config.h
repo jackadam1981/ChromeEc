@@ -1320,6 +1320,9 @@
 /* Allow the board to use a GPIO for the SCI# signal. */
 #undef CONFIG_SCI_GPIO
 
+/* Enable SCI gneration for ACPI buffer conditions as per ACPI 5.0-12.6.1*/
+#define CONFIG_ACPI_SCI 1
+
 /* Support computing SHA-1 hash */
 #undef CONFIG_SHA1
 
