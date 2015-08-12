@@ -8,6 +8,11 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+/*
+ * TODO (crosbug.com/p/43996): Remove support for V3 when V4 is available.
+ */
+#define KUNIMITSU_BOARD_V3
+
 /* Optional features */
 #define CONFIG_ADC
 #define CONFIG_BATTERY_CUT_OFF

@@ -328,6 +328,25 @@ void girq19_interrupt(void)
 {
 	/* Check interrupt result for LRESET# trigger */
 	if (MEC1322_INT_RESULT(19) & (1 << 1)) {
+#ifdef KUNIMITSU_BOARD_V3
+		{
+			#define LPC_INIT_LOOP 50
+			int i;
+
+			/* Initialize LPC module when LRESET# is deasserted */
+			for (i = 0; i < LPC_INIT_LOOP; i++) {
+				if (!lpc_get_pltrst_asserted()) {
+					setup_lpc();
+					break;
+				}
+			}
+
+			if (i == LPC_INIT_LOOP) {
+				/* Store port 80 reset event */
+				port_80_write(PORT_80_EVENT_RESET);
+			}
+		}
+#else
 		/* Initialize LPC module when LRESET# is deasserted */
 		if (!lpc_get_pltrst_asserted()) {
 			setup_lpc();
@@ -335,6 +354,7 @@ void girq19_interrupt(void)
 			/* Store port 80 reset event */
 			port_80_write(PORT_80_EVENT_RESET);
 		}
+#endif
 
 		CPRINTS("LPC RESET# %sasserted",
 			lpc_get_pltrst_asserted() ? "" : "de");
