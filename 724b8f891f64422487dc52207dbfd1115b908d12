@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24672510_584dbd16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-12T20:55:52Z",
+      "side": 1,
+      "message": "Fix DPTF?",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 58
+      },
+      "revId": "724b8f891f64422487dc52207dbfd1115b908d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24672510_b87e591e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-12T20:55:52Z",
+      "side": 1,
+      "message": "Is this behavior a bug?",
+      "revId": "724b8f891f64422487dc52207dbfd1115b908d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c492c913_9d15834b",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1324,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-12T20:55:52Z",
+      "side": 1,
+      "message": "This file only contains #undef",
+      "revId": "724b8f891f64422487dc52207dbfd1115b908d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
