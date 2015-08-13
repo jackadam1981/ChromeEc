@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4a8755c_64082a9f",
+        "filename": "board/cr50/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-08-13T20:45:52Z",
+      "side": 1,
+      "message": "I think that handling HOSTCMD and CONSOLE events should have higher priority.",
+      "range": {
+        "startLine": 24,
+        "startChar": 25,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "0a71481c147a0f596615a94bb37ff3f62e5dc40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
