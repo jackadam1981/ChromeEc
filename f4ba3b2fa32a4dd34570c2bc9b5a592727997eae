@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "645f5d28_477f4159",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-13T03:24:45Z",
+      "side": 1,
+      "message": "i don\u0027t think this is in the right place. first off, it should only happen if prev_ac gets set to curr.ac (ie it should not get set in the code path taken on line 602) or else it will be called multiple times.\n\nbut, more importantly, this won\u0027t work right for systems with multiple ports. if you use the charge override functionality to switch active charging ports, the lightbar tap sequence should play again so that it can come from a different direction. but, with this line here, it won\u0027t play again since AC remains present the whole time.\n\nmaybe it should be called from charge_manager.c, where board_set_active_charge_port() is called and returns success.",
+      "range": {
+        "startLine": 613,
+        "startChar": 3,
+        "endLine": 613,
+        "endChar": 35
+      },
+      "revId": "f4ba3b2fa32a4dd34570c2bc9b5a592727997eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
