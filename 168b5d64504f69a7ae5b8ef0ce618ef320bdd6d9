@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "645f5d28_6ab56c19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-13T15:11:01Z",
+      "side": 1,
+      "message": "How does kepler drawing current cause LPC delay? Maybe I don\u0027t understand the meaning of \u0027leakage\u0027 here.",
+      "revId": "168b5d64504f69a7ae5b8ef0ce618ef320bdd6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a41eb557_91a6abc8",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-13T15:11:01Z",
+      "side": 1,
+      "message": "Why not add the delay where needed in the girq19_interrupt function?",
+      "revId": "168b5d64504f69a7ae5b8ef0ce618ef320bdd6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42489af_9657add7",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-13T15:11:01Z",
+      "side": 1,
+      "message": "We don\u0027t need a new config for this. It\u0027s confusing for someone reading the code who has no idea what kepler is. Just add a check for your BOARD (and board version #, if you have such a config) and add a TODO to remove it once you\u0027ve switched to the new boards.",
+      "revId": "168b5d64504f69a7ae5b8ef0ce618ef320bdd6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
