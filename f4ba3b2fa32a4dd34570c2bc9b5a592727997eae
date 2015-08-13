@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "645f5d28_6783655d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-08-13T14:27:00Z",
+      "side": 1,
+      "message": "As there is no bug number below, I\u0027m not sure what you mean : a type-C port and a not-USB-PD charger ?\nThen the lightbar sequence is triggered in board_set_active_charge_port():\nhttps://chromium-review.googlesource.com/#/c/289994/4/board/ryu/board.c\nwas working on my Smaug, is it not on yours ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "f4ba3b2fa32a4dd34570c2bc9b5a592727997eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "645f5d28_477f4159",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 2
