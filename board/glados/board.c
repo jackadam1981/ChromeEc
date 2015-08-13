@@ -206,12 +206,25 @@ static void board_pmic_init(void)
 	if (system_jumped_to_this_image())
 		return;
 
+	/* Set CSDECAYEN / VCCIO decays to 0V at assertion of SLP_S0# */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x30, 0x4a);
+
+	/*
+	 * Set V100ACNT / V1.00A Control Register:
+	 * Lower power mode = 0.85V.
+	 * Nominal output = 1.0V.
+	 */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x37, 0x5a);
+
 	/*
 	 * Set V085ACNT / V0.85A Control Register:
 	 * Lower power mode = 0.7V.
 	 * Nominal output = 1.0V.
 	 */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x38, 0x7a);
+
+	/* VRMODECTRL - enable low-power mode for V0.85A and V1.00A */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3b, 0x15);
 }
 DECLARE_HOOK(HOOK_INIT, board_pmic_init, HOOK_PRIO_DEFAULT);
 
