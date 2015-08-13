@@ -146,6 +146,24 @@
       "revId": "4e8c22a8433d79bb150638c7bec1e16e97855c18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04df81f3_8f81b5a0",
+        "filename": "power/common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-13T10:39:07Z",
+      "side": 1,
+      "message": "Actually, in most of the cases, S5 inactivity timer will re-run after power button pressed, that means want_g3_exit will be reset, except for the case that the state is in S5, but S5 inactivity timer has not started yet.",
+      "parentUuid": "24dc85fc_73423a6a",
+      "revId": "4e8c22a8433d79bb150638c7bec1e16e97855c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
