@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "243ac5f6_60e83271",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-08-13T20:57:50Z",
+      "side": 1,
+      "message": "Use $(MAKE) instead of \u0027make\u0027 to pass options such as -n or -q automatically. -j is already passed through $(MAKEFLAGS), so it shouldn\u0027t be in this line.",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "8d130d5e5cfb00eeb3d2fe34ab77596b6153d8ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
