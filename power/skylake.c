@@ -294,8 +294,13 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S5G3;
 
 	case POWER_S5G3:
-#ifdef CONFIG_G3_SLEEP
-		gpio_set_level(GPIO_G3_SLEEP_EN, 1);
+#ifdef CONFIG_LOW_POWER_PSEUDO_G3
+		if ((gpio_get_level(GPIO_PCH_SLP_SUS_L) == 1) ||
+			(gpio_get_level(GPIO_PCH_SLP_S3_L) == 1) ||
+			(gpio_get_level(GPIO_PCH_SLP_S4_L) == 1)) {
+			CPRINTS("PCH_SLP_# is high");
+			return POWER_S5;
+		}
 #endif
 		chipset_force_g3();
 		return POWER_G3;
@@ -306,3 +311,19 @@ enum power_state power_handle_state(enum power_state state)
 
 	return state;
 }
+
+#ifdef CONFIG_LOW_POWER_PSEUDO_G3
+void enter_pseudo_g3(void)
+{
+	CPRINTS("Enter Psuedo G3");
+	cflush();
+
+#ifdef CONFIG_G3_SLEEP
+	gpio_set_level(GPIO_G3_SLEEP_EN, 1);
+#endif
+
+	/* Power to EC should shut down now */
+	while (1)
+		;
+}
+#endif
