@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64591d73_20074e5a",
+        "filename": "board/kunimitsu/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-08-14T00:29:26Z",
+      "side": 1,
+      "message": "Can this be read from the BOARD_VERSION gpios and applied automatically to just fab3 boards?",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 26
+      },
+      "revId": "e8e0b2b1f04a5174b273318fe8dbaf0cf50ca53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4434d7f_04ca1ab2",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-08-14T00:29:26Z",
+      "side": 1,
+      "message": "Isn\u0027t bit 1 VCC_PWRGD and bit 0 is LRESET?",
+      "range": {
+        "startLine": 330,
+        "startChar": 30,
+        "endLine": 330,
+        "endChar": 38
+      },
+      "revId": "e8e0b2b1f04a5174b273318fe8dbaf0cf50ca53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "243ac5f6_63179cd5",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-08-14T00:29:26Z",
+      "side": 1,
+      "message": "This does not seem like a great thing to do inside the interrupt handler.",
+      "range": {
+        "startLine": 337,
+        "startChar": 19,
+        "endLine": 337,
+        "endChar": 32
+      },
+      "revId": "e8e0b2b1f04a5174b273318fe8dbaf0cf50ca53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
