@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64591d73_ee89c7ad",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1000116
+      },
+      "writtenOn": "2015-08-14T19:10:17Z",
+      "side": 1,
+      "message": "You could use\n\n#if defined(__ROMSTAGE__) || defined(__RAMSTAGE__) || defined(_SMM__) or sth like that. Or maybe we should add a define? This could come in handy in other places too where we share code with utilities (e.g. cbfs / cbmem / ...)",
+      "range": {
+        "startLine": 339,
+        "startChar": 2,
+        "endLine": 339,
+        "endChar": 65
+      },
+      "revId": "ecdc94f80e36f082037ca630017f2e7c3c4106a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
