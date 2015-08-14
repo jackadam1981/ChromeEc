@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8448d1a1_eaf3775e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2847,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-14T22:15:25Z",
+      "side": 0,
+      "message": "We should retain a comment for which boards used this command for ext power current limit.\n\nOtherwise, future software run on those boards might issue command 0xa2 to those boards thinking can only mean the new functionality, but instead set the current limit.",
+      "range": {
+        "startLine": 2847,
+        "startChar": 0,
+        "endLine": 2847,
+        "endChar": 43
+      },
+      "revId": "26984c7de4ac14347e8395e6e111677a707807f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
