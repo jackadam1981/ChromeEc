@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c43e49ec_4cc0c7f8",
+        "filename": "board/kunimitsu/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-14T22:46:14Z",
+      "side": 1,
+      "message": "Yes we can, but the same board ID might be shared by other platforms also. systen_get_version(SYSTEM_IMAGE_RO) commands gives the board name (first few strings). Need to do string compare in the ISR or have to keep a global variable after reading it in init time.",
+      "parentUuid": "64591d73_20074e5a",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 26
+      },
+      "revId": "e8e0b2b1f04a5174b273318fe8dbaf0cf50ca53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4434d7f_04ca1ab2",
         "filename": "chip/mec1322/lpc.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c43e49ec_0c723fd5",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-14T22:46:14Z",
+      "side": 1,
+      "message": "From this patch https://chromium-review.googlesource.com/#/c/254771/\nAccording to MEC1322 errata, LRESET# interrupt is indeed GIRQ 19 bit 1.",
+      "parentUuid": "e4434d7f_04ca1ab2",
+      "range": {
+        "startLine": 330,
+        "startChar": 30,
+        "endLine": 330,
+        "endChar": 38
+      },
+      "revId": "e8e0b2b1f04a5174b273318fe8dbaf0cf50ca53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "243ac5f6_63179cd5",
         "filename": "chip/mec1322/lpc.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2015-08-14T00:29:26Z",
       "side": 1,
       "message": "This does not seem like a great thing to do inside the interrupt handler.",
+      "range": {
+        "startLine": 337,
+        "startChar": 19,
+        "endLine": 337,
+        "endChar": 32
+      },
+      "revId": "e8e0b2b1f04a5174b273318fe8dbaf0cf50ca53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4aeed64_f595a212",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-14T22:46:14Z",
+      "side": 1,
+      "message": "for now this is the only work around we have in the software.",
+      "parentUuid": "243ac5f6_63179cd5",
       "range": {
         "startLine": 337,
         "startChar": 19,
