@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c4a9e95f_3fe8f76f",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-08-14T22:50:47Z",
+      "side": 1,
+      "message": "Ugh it seems that the datasheet I found that is more recent than the errata sheet is still not updated.",
+      "parentUuid": "c43e49ec_0c723fd5",
+      "range": {
+        "startLine": 330,
+        "startChar": 30,
+        "endLine": 330,
+        "endChar": 38
+      },
+      "revId": "e8e0b2b1f04a5174b273318fe8dbaf0cf50ca53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "243ac5f6_63179cd5",
         "filename": "chip/mec1322/lpc.c",
         "patchSetId": 2
