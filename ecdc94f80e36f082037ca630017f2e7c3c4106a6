@@ -22,6 +22,30 @@
       "revId": "ecdc94f80e36f082037ca630017f2e7c3c4106a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4a9e95f_f4084634",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-08-14T19:11:46Z",
+      "side": 1,
+      "message": "Yeah, I was thinking that maybe coreboot could have a similar define.",
+      "parentUuid": "64591d73_ee89c7ad",
+      "range": {
+        "startLine": 339,
+        "startChar": 2,
+        "endLine": 339,
+        "endChar": 65
+      },
+      "revId": "ecdc94f80e36f082037ca630017f2e7c3c4106a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
