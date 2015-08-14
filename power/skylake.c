@@ -96,6 +96,21 @@ void chipset_reset(int cold_reset)
 	}
 }
 
+static void chipset_generate_wake(void)
+{
+	/* Generate wake pulse if not already asserted */
+	if (gpio_get_level(GPIO_PCH_WAKE_L) == 1) {
+		gpio_set_level(GPIO_PCH_WAKE_L, 0);
+		/*
+		 * FIXME: this should be lower, needs testing to see what is
+		 * required to wake from Deep Sleep states.  In theory it
+		 * could be udelay(65) but that didn't seem to always work.
+		 */
+		msleep(100);
+		gpio_set_level(GPIO_PCH_WAKE_L, 1);
+	}
+}
+
 void chipset_thottle_cpu(int throttle)
 {
 	if (chipset_in_state(CHIPSET_STATE_ON))
@@ -188,11 +203,6 @@ enum power_state power_handle_state(enum power_state state)
 		/* Call hooks to initialize PMIC */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
 
-		if (power_wait_signals(IN_PCH_SLP_SUS_DEASSERTED)) {
-			chipset_force_shutdown();
-			return POWER_G3;
-		}
-
 #ifdef GLADOS_BOARD_V2
 		/*
 		 * Allow up to 1s for charger to be initialized, in case
@@ -212,10 +222,20 @@ enum power_state power_handle_state(enum power_state state)
 		}
 
 		/* Allow AP to power on */
-		gpio_set_level(GPIO_PMIC_SLP_SUS_L, 1);
 		gpio_set_level(GPIO_PCH_BATLOW_L, 1);
+
+		/* Assert wake pin to PCH to wake from Deep S5 */
+		chipset_generate_wake();
 #endif
 
+		if (power_wait_signals(IN_PCH_SLP_SUS_DEASSERTED)) {
+			chipset_force_shutdown();
+			return POWER_G3;
+		}
+
+#ifdef GLADOS_BOARD_V2
+		gpio_set_level(GPIO_PMIC_SLP_SUS_L, 1);
+#endif
 		return POWER_S5;
 
 	case POWER_S5S3:
