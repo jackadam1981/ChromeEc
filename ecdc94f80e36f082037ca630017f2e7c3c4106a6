@@ -70,6 +70,30 @@
       "revId": "ecdc94f80e36f082037ca630017f2e7c3c4106a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8448d1a1_afd061c2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-08-14T20:04:32Z",
+      "side": 1,
+      "message": "I think I\u0027ll just submit this patch as is since it works for now and I left a note.  If someone else comes along and needs to change it, that\u0027s fine.",
+      "parentUuid": "24080563_706e5078",
+      "range": {
+        "startLine": 339,
+        "startChar": 2,
+        "endLine": 339,
+        "endChar": 65
+      },
+      "revId": "ecdc94f80e36f082037ca630017f2e7c3c4106a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
