@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "043dc1ed_45ac1ef8",
+        "filename": "driver/gyro_l3gd20h.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-08-14T00:05:54Z",
+      "side": 1,
+      "message": "It is a gyro, no g here.",
+      "revId": "98a39bc78574d9456b8708532c5f2e3ecb963965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "243ac5f6_a3740443",
+        "filename": "driver/gyro_l3gd20h.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-08-14T00:05:54Z",
+      "side": 1,
+      "message": "Try to use 16 bit of resolution.",
+      "revId": "98a39bc78574d9456b8708532c5f2e3ecb963965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4434d7f_048dfab9",
+        "filename": "driver/gyro_l3gd20h.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-08-14T00:05:54Z",
+      "side": 1,
+      "message": "You also need to add support for offset from factory calibration (see c/283165)",
+      "revId": "98a39bc78574d9456b8708532c5f2e3ecb963965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
