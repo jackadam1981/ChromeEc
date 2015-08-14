@@ -476,7 +476,6 @@ static struct lookup cmd_table[] = {
 	{0x9f, "EC_CMD_HANG_DETECT"},
 	{0xa0, "EC_CMD_CHARGE_STATE"},
 	{0xa1, "EC_CMD_CHARGE_CURRENT_LIMIT"},
-	{0xa2, "EC_CMD_EXT_POWER_CURRENT_LIMIT"},
 	{0xb0, "EC_CMD_SB_READ_WORD"},
 	{0xb1, "EC_CMD_SB_WRITE_WORD"},
 	{0xb2, "EC_CMD_SB_READ_BLOCK"},

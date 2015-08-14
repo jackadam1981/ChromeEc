@@ -2841,15 +2841,6 @@ struct ec_params_current_limit {
 	uint32_t limit; /* in mA */
 } __packed;
 
-/*
- * Set maximum external power current.
- */
-#define EC_CMD_EXT_POWER_CURRENT_LIMIT 0xa2
-
-struct ec_params_ext_power_current_limit {
-	uint32_t limit; /* in mA */
-} __packed;
-
 /*****************************************************************************/
 /* Smart battery pass-through */
 
