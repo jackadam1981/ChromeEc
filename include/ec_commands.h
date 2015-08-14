@@ -324,6 +324,27 @@
 #ifndef __ACPI__
 
 /*
+ * This header file is used in coreboot as well as the Linux Kernel.  Therefore,
+ * the types are defined in different places depending on the project.
+ */
+#ifdef CROS_EC
+#include "common.h"
+#endif
+
+#ifdef __KERNEL__
+#include <linux/types.h>
+#endif
+
+/*
+* coreboot currently doesn't have a define used during build time, so the
+* assumption is that if we're not building in the Chromium EC project or the
+* Kernel, then we're building coreboot.
+*/
+#if !defined(CROS_EC) && !defined(__KERNEL__)
+#include "stdint.h"
+#endif
+
+/*
  * Define __packed if someone hasn't beat us to it.  Linux kernel style
  * checking prefers __packed over __attribute__((packed)).
  */
