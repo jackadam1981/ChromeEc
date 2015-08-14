@@ -46,6 +46,30 @@
       "revId": "0a71481c147a0f596615a94bb37ff3f62e5dc40a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4434d7f_84610a31",
+        "filename": "board/cr50/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-08-14T00:42:13Z",
+      "side": 1,
+      "message": "moved around, note that TPM task in fact needs a larger stack, which is addressed in the next patch update.",
+      "parentUuid": "043dc1ed_c2994487",
+      "range": {
+        "startLine": 24,
+        "startChar": 25,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "0a71481c147a0f596615a94bb37ff3f62e5dc40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
