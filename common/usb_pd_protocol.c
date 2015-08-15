@@ -602,7 +602,7 @@ static void pd_send_request_msg(int port, int always_send_request)
 	 * If this port is not actively charging or we are not allowed to
 	 * request the max voltage, then select vSafe5V
 	 */
-	res = pd_build_request(pd_src_cap_cnt[port], pd_src_caps[port],
+	res = pd_build_request(port, pd_src_cap_cnt[port], pd_src_caps[port],
 			       &rdo, &curr_limit, &supply_voltage,
 			       charging && max_request_allowed ?
 					PD_REQUEST_MAX : PD_REQUEST_VSAFE5V);
@@ -2701,7 +2701,7 @@ int pd_fetch_acc_log_entry(int port)
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 void pd_request_source_voltage(int port, int mv)
 {
-	pd_set_max_voltage(mv);
+	pd_set_max_voltage(port, mv);
 
 	if (pd[port].task_state == PD_STATE_SNK_READY ||
 	    pd[port].task_state == PD_STATE_SNK_TRANSITION) {
@@ -2844,7 +2844,7 @@ static int command_pd(int argc, char **argv)
 		if (argc >= 4)
 			max_volt = strtoi(argv[3], &e, 10) * 1000;
 		else
-			max_volt = pd_get_max_voltage();
+			max_volt = pd_get_max_voltage(port);
 
 		pd_request_source_voltage(port, max_volt);
 		ccprintf("max req: %dmV\n", max_volt);

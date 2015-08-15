@@ -34,7 +34,10 @@ static int rw_flash_changed = 1;
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 /* Cap on the max voltage requested as a sink (in millivolts) */
-static unsigned max_request_mv = -1; /* no cap */
+static unsigned max_request_mv[CONFIG_USB_PD_PORT_COUNT]; /* no initial cap */
+
+/* Zero in max_request_mv table indicates no maximum */
+#define MAX_REQUEST_NONE 0
 
 /**
  * Find PDO index that offers the most amount of power and stays within
@@ -42,7 +45,7 @@ static unsigned max_request_mv = -1; /* no cap */
  *
  * @param cnt  the number of Power Data Objects.
  * @param src_caps Power Data Objects representing the source capabilities.
- * @param max_mv maximum voltage (or -1 if no limit)
+ * @param max_mv maximum voltage (or MAX_REQUEST_NONE if no limit)
  * @return index of PDO within source cap packet
  */
 static int pd_find_pdo_index(int cnt, uint32_t *src_caps, int max_mv)
@@ -53,8 +56,7 @@ static int pd_find_pdo_index(int cnt, uint32_t *src_caps, int max_mv)
 	int cur_mv;
 #endif
 
-	/* max_mv of -1 represents max limit */
-	if (max_mv == -1)
+	if (max_mv == MAX_REQUEST_NONE)
 		max_mv = PD_MAX_VOLTAGE_MV;
 
 	/* max voltage is always limited by this boards max request */
@@ -116,7 +118,7 @@ static void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv)
 	*ma = MIN(max_ma, PD_MAX_CURRENT_MA);
 }
 
-int pd_build_request(int cnt, uint32_t *src_caps, uint32_t *rdo,
+int pd_build_request(int port, int cnt, uint32_t *src_caps, uint32_t *rdo,
 		     uint32_t *ma, uint32_t *mv, enum pd_request_type req_type)
 {
 	int pdo_index, flags = 0;
@@ -127,7 +129,9 @@ int pd_build_request(int cnt, uint32_t *src_caps, uint32_t *rdo,
 		pdo_index = 0;
 	else
 		/* find pdo index for max voltage we can request */
-		pdo_index = pd_find_pdo_index(cnt, src_caps, max_request_mv);
+		pdo_index = pd_find_pdo_index(cnt,
+					      src_caps,
+					      max_request_mv[port]);
 
 	/* If could not find desired pdo_index, then return error */
 	if (pdo_index == -1)
@@ -155,7 +159,7 @@ void pd_process_source_cap(int port, int cnt, uint32_t *src_caps)
 	int pdo_index;
 
 	/* Get max power info that we could request */
-	pdo_index = pd_find_pdo_index(cnt, src_caps, -1);
+	pdo_index = pd_find_pdo_index(cnt, src_caps, MAX_REQUEST_NONE);
 	if (pdo_index < 0)
 		pdo_index = 0;
 	pd_extract_pdo_power(src_caps[pdo_index], &ma, &mv);
@@ -166,14 +170,14 @@ void pd_process_source_cap(int port, int cnt, uint32_t *src_caps)
 #endif
 }
 
-void pd_set_max_voltage(unsigned mv)
+void pd_set_max_voltage(int port, unsigned mv)
 {
-	max_request_mv = mv;
+	max_request_mv[port] = mv;
 }
 
-unsigned pd_get_max_voltage(void)
+unsigned pd_get_max_voltage(int port)
 {
-	return max_request_mv;
+	return max_request_mv[port];
 }
 
 int pd_charge_from_device(uint16_t vid, uint16_t pid)
