@@ -46,6 +46,30 @@
       "revId": "88ee21d37aac72fbc9a0c00a78d889d80fc46194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04d9413e_df4adb79",
+        "filename": "board/oak/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-17T08:49:59Z",
+      "side": 1,
+      "message": "On a second thought. it should be removed in this change. Done.",
+      "parentUuid": "84929164_ab64e914",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 237,
+        "endChar": 2
+      },
+      "revId": "88ee21d37aac72fbc9a0c00a78d889d80fc46194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
