@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "649afd79_12544c2a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-17T08:47:13Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "87c9b39e_fccf7856",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 39
+      },
+      "revId": "ab91b404ad81930fc6217e9723f764431dcea101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7d42f30_cb299510",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-11T14:51:40Z",
       "side": 1,
       "message": "nit: comment should go inside the #ifdef",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 37
+      },
+      "revId": "ab91b404ad81930fc6217e9723f764431dcea101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24af2591_b8961955",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-17T08:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7d42f30_cb299510",
       "range": {
         "startLine": 73,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c4880939_8d674119",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-17T08:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47e97bf9_86ec9805",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 12
+      },
+      "revId": "ab91b404ad81930fc6217e9723f764431dcea101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67e67f2a_4ce6d323",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e48d0d46_94bd8cb0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-17T08:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67e67f2a_4ce6d323",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 11
+      },
+      "revId": "ab91b404ad81930fc6217e9723f764431dcea101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47c41b7d_b34a58fd",
         "filename": "include/usb_pd.h",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2015-08-11T14:51:40Z",
       "side": 1,
       "message": "i don\u0027t see this function. is it leftover from previous patch?",
+      "range": {
+        "startLine": 1512,
+        "startChar": 0,
+        "endLine": 1512,
+        "endChar": 55
+      },
+      "revId": "ab91b404ad81930fc6217e9723f764431dcea101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e48d0d46_34f85870",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-17T08:47:13Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "47c41b7d_b34a58fd",
       "range": {
         "startLine": 1512,
         "startChar": 0,
