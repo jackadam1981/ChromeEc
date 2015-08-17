@@ -2715,6 +2715,19 @@ void pd_request_source_voltage(int port, int mv)
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
+
+void pd_set_external_voltage_limit(int port, int mv)
+{
+	pd_set_max_voltage(mv);
+
+	if (pd[port].task_state == PD_STATE_SNK_READY ||
+	    pd[port].task_state == PD_STATE_SNK_TRANSITION) {
+			/* Set flag to send new power request in pd_task */
+			pd[port].new_power_request = 1;
+			task_wake(PD_PORT_TO_TASK_ID(port));
+	}
+}
+
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 static int command_pd(int argc, char **argv)
@@ -2841,6 +2854,7 @@ static int command_pd(int argc, char **argv)
 		task_wake(PD_PORT_TO_TASK_ID(port));
 	} else if (!strncasecmp(argv[2], "dev", 3)) {
 		int max_volt;
+
 		if (argc >= 4)
 			max_volt = strtoi(argv[3], &e, 10) * 1000;
 		else
@@ -2848,6 +2862,24 @@ static int command_pd(int argc, char **argv)
 
 		pd_request_source_voltage(port, max_volt);
 		ccprintf("max req: %dmV\n", max_volt);
+#ifdef CONFIG_CHARGE_MANAGER
+	} else if (!strncasecmp(argv[2], "pwrlim", 6)) {
+		int max_current;
+		int max_volt;
+
+		if (argc >= 4)
+			max_current = strtoi(argv[3], &e, 10) * 1000;
+		else
+			max_current = EC_POWER_LIMIT_NONE;
+
+		if (argc >= 5)
+			max_volt = strtoi(argv[4], &e, 10) * 1000;
+		else
+			max_volt = EC_POWER_LIMIT_NONE;
+
+		charge_manager_set_external_power_limit(max_current, max_volt);
+		ccprintf("max req: %dmA %dmV\n", max_current, max_volt);
+#endif
 	} else if (!strncasecmp(argv[2], "hard", 4)) {
 		set_state(port, PD_STATE_HARD_RESET_SEND);
 		task_wake(PD_PORT_TO_TASK_ID(port));

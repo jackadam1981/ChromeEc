@@ -79,6 +79,10 @@ int charge_manager_get_active_charge_port(void);
 void charge_manager_save_log(int port);
 #endif
 
+/* Set current (mA) / voltage (mV) limit for a given port */
+void charge_manager_set_external_power_limit(int current_lim,
+					     int voltage_lim);
+
 /* Board-level callback functions */
 
 /*
