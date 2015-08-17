@@ -267,15 +267,25 @@ int chipset_in_state(int state_mask)
 
 void chipset_exit_hard_off(void)
 {
-	/* If not in the hard-off state nor headed there, nothing to do */
-	if (state != POWER_G3 && state != POWER_S5G3)
+	/*
+	 * If not in the hard-off state nor headed there, set a flag to leave
+	 * G3. If in soft-off state (S5), than we need to stop the transition
+	 * to hard-off. This can be done by waking up the chipset task. This
+	 * cancels the existing S5 in-activity timer and starts a new one, which
+	 * gives enough time for the chipset to resume and power up to S3. All
+	 * other states, nothing to do
+	 */
+	switch (state) {
+	case POWER_G3:
+	case POWER_S5G3:
+		want_g3_exit = 1;
+	case POWER_S5:
+		if (task_start_called())
+			task_wake(TASK_ID_CHIPSET);
+		break;
+	default:
 		return;
-
-	/* Set a flag to leave G3, then wake the task */
-	want_g3_exit = 1;
-
-	if (task_start_called())
-		task_wake(TASK_ID_CHIPSET);
+	}
 }
 
 /*****************************************************************************/
