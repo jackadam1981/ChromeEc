@@ -265,17 +265,39 @@ int chipset_in_state(int state_mask)
 	return (state_mask & need_mask) == need_mask;
 }
 
+/**
+ * Function for exiting hard-off and soft-off state. This function should be
+ * only invoked by the tasks whose priorities are higher than the chipset task
+ * or the chipset task itself, and the trigger of this invoking should be only
+ * done by the tasks whose priorities are lower than the chipset task or the
+ * chipset task itself; otherwise there may be some concerns of race condition.
+ * For example, if we want system to exit soft-off state for startup, but this
+ * function is invoked after S5 inactivity timer expires and before the state
+ * changes to POWER_S5G3, the system will not start up and just go to hard-off
+ * state instead.
+ */
 void chipset_exit_hard_off(void)
 {
-	/* If not in the hard-off state nor headed there, nothing to do */
-	if (state != POWER_G3 && state != POWER_S5G3)
+	/*
+	 * If in the hard-off state or headed there, set a flag to leave G3. If
+	 * in soft-off state (S5), then we need to stop the transition to
+	 * hard-off. This can be done by waking up the chipset task. This
+	 * cancels the existing S5 in-activity timer and starts a new one, which
+	 * gives enough time for the chipset to resume and power up to S3. All
+	 * other states, nothing to do
+	 */
+	switch (state) {
+	case POWER_G3:
+	case POWER_S5G3:
+		want_g3_exit = 1;
+		/* fallthrough */
+	case POWER_S5:
+		if (task_start_called())
+			task_wake(TASK_ID_CHIPSET);
+		break;
+	default:
 		return;
-
-	/* Set a flag to leave G3, then wake the task */
-	want_g3_exit = 1;
-
-	if (task_start_called())
-		task_wake(TASK_ID_CHIPSET);
+	}
 }
 
 /*****************************************************************************/
