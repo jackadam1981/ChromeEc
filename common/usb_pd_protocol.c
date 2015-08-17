@@ -2715,6 +2715,41 @@ void pd_request_source_voltage(int port, int mv)
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
+
+static void pd_set_external_power_limit(int current_lim, int voltage_lim)
+{
+	int i;
+
+	if (current_lim == EC_POWER_LIMIT_NONE)
+		current_lim = CHARGE_CEIL_NONE;
+	if (voltage_lim == EC_POWER_LIMIT_NONE)
+		voltage_lim = PD_MAX_VOLTAGE_MV;
+
+	pd_set_max_voltage(voltage_lim);
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; ++i) {
+#ifdef CONFIG_CHARGE_MANAGER
+		charge_manager_set_ceil(i, CEIL_REQUESTOR_HOST, current_lim);
+#endif
+		if (pd[i].task_state == PD_STATE_SNK_READY ||
+		    pd[i].task_state == PD_STATE_SNK_TRANSITION)
+			/* Set flag to send new power request in pd_task */
+			pd[i].new_power_request = 1;
+
+		task_wake(PD_PORT_TO_TASK_ID(i));
+	}
+}
+
+/*
+ * On transition out of S0, disable all external power limits, in case AP
+ * failed to clear them.
+ */
+static void pd_external_power_limit_off(void)
+{
+	pd_set_external_power_limit(EC_POWER_LIMIT_NONE, EC_POWER_LIMIT_NONE);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pd_external_power_limit_off,
+	     HOOK_PRIO_DEFAULT);
+
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 static int command_pd(int argc, char **argv)
@@ -2841,13 +2876,20 @@ static int command_pd(int argc, char **argv)
 		task_wake(PD_PORT_TO_TASK_ID(port));
 	} else if (!strncasecmp(argv[2], "dev", 3)) {
 		int max_volt;
-		if (argc >= 4)
-			max_volt = strtoi(argv[3], &e, 10) * 1000;
-		else
-			max_volt = pd_get_max_voltage();
+		int max_current;
 
-		pd_request_source_voltage(port, max_volt);
-		ccprintf("max req: %dmV\n", max_volt);
+		if (argc >= 4)
+			max_current = strtoi(argv[3], &e, 10) * 1000;
+		else
+			max_current = EC_POWER_LIMIT_NONE;
+
+		if (argc >= 5)
+			max_volt = strtoi(argv[4], &e, 10) * 1000;
+		else
+			max_volt = EC_POWER_LIMIT_NONE;
+
+		pd_set_external_power_limit(max_current, max_volt);
+		ccprintf("max req: %dmA %dmV\n", max_current, max_volt);
 	} else if (!strncasecmp(argv[2], "hard", 4)) {
 		set_state(port, PD_STATE_HARD_RESET_SEND);
 		task_wake(PD_PORT_TO_TASK_ID(port));
@@ -3207,6 +3249,18 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_SET_AMODE,
 		     hc_remote_pd_set_amode,
 		     EC_VER_MASK(0));
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
+
+static int hc_external_power_limit(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_external_power_limit_v1 *p = args->params;
+
+	pd_set_external_power_limit(p->current_lim, p->voltage_lim);
+
+	return EC_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_EXTERNAL_POWER_LIMIT,
+		     hc_external_power_limit,
+		     EC_VER_MASK(1));
 
 #endif /* HAS_TASK_HOSTCMD */
 
