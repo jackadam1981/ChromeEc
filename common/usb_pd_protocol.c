@@ -2725,6 +2725,19 @@ void pd_request_source_voltage(int port, int mv)
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
+
+void pd_set_external_voltage_limit(int port, int mv)
+{
+	pd_set_max_voltage(mv);
+
+	if (pd[port].task_state == PD_STATE_SNK_READY ||
+	    pd[port].task_state == PD_STATE_SNK_TRANSITION) {
+		/* Set flag to send new power request in pd_task */
+		pd[port].new_power_request = 1;
+		task_wake(PD_PORT_TO_TASK_ID(port));
+	}
+}
+
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 static int command_pd(int argc, char **argv)
@@ -2851,6 +2864,7 @@ static int command_pd(int argc, char **argv)
 		task_wake(PD_PORT_TO_TASK_ID(port));
 	} else if (!strncasecmp(argv[2], "dev", 3)) {
 		int max_volt;
+
 		if (argc >= 4)
 			max_volt = strtoi(argv[3], &e, 10) * 1000;
 		else
