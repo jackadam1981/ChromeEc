@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "04b861a5_351b337a",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-18T18:25:17Z",
+      "side": 1,
+      "message": "Ok, I will add it.",
+      "parentUuid": "64591d73_46a1af7e",
+      "range": {
+        "startLine": 165,
+        "startChar": 5,
+        "endLine": 165,
+        "endChar": 23
+      },
+      "revId": "bc98a369db209ac42bf4e9b1810dc747fbf83a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4a9e95f_b88158a0",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a4fb1585_a7999101",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2891,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-18T18:25:17Z",
+      "side": 1,
+      "message": "My idea was to make the \"pd dev \u003ccurrent\u003e \u003cvoltage\u003e\" command behave in exactly the same way as the host command with those parameters. I\u0027ll leave \"pd dev\" alone and add a new sub-command here instead, since we don\u0027t want \"pd dev\" to be changed.",
+      "parentUuid": "c4a9e95f_b88158a0",
+      "range": {
+        "startLine": 2891,
+        "startChar": 2,
+        "endLine": 2891,
+        "endChar": 29
+      },
+      "revId": "bc98a369db209ac42bf4e9b1810dc747fbf83a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64591d73_46f88f70",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2015-08-18T18:12:07Z",
       "side": 1,
       "message": "would make more sense to me if this was in charge_manager.c, set the ceiling and then called pd_request_source_voltage().",
+      "range": {
+        "startLine": 3261,
+        "startChar": 21,
+        "endLine": 3261,
+        "endChar": 48
+      },
+      "revId": "bc98a369db209ac42bf4e9b1810dc747fbf83a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4a9e95f_98081ca0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3261,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-18T18:25:17Z",
+      "side": 1,
+      "message": "As you noted, pd_request_source_voltage() switches us to a sink if we\u0027re currently a source. I don\u0027t think we want to do that for all of our ports whenever we get this command. For example, we could be charging on one port and providing power on another when we get the request to limit power.\n\nHow about if I move this to charge_manager.c and call pd_set_external_power_limit (new function, which I think you were implying is not useful) instead?",
+      "parentUuid": "64591d73_46f88f70",
       "range": {
         "startLine": 3261,
         "startChar": 21,
