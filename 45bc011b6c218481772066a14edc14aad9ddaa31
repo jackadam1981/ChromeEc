@@ -22,6 +22,30 @@
       "revId": "45bc011b6c218481772066a14edc14aad9ddaa31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "243ac5f6_fd79809f",
+        "filename": "core/nds32/atomic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2015-08-18T16:59:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ad60c0d_c0c2fe79",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "45bc011b6c218481772066a14edc14aad9ddaa31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
