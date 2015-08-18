@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4a9e95f_382b2808",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-18T18:19:48Z",
+      "side": 1,
+      "message": "make static",
+      "range": {
+        "startLine": 964,
+        "startChar": 4,
+        "endLine": 964,
+        "endChar": 25
+      },
+      "revId": "a8fa09f13d36b41b5f422ae2d273c872ef4538a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64591d73_867d8759",
+        "filename": "include/usb_pd_tcpc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-18T18:19:48Z",
+      "side": 1,
+      "message": "typically we don\u0027t add this kind of check, it\u0027s just a header, we can always include these function prototypes.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "a8fa09f13d36b41b5f422ae2d273c872ef4538a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
