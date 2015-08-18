@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "44b899d4_199f0be8",
+        "filename": "power/common.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-18T09:27:55Z",
+      "side": 1,
+      "message": "I moved this to the bottom of this function in patch set 13 to prevent the race condition, because if the state is POWER_S5, there is still a chance to set the flag after it is reset.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 19
+      },
+      "revId": "c0cd4edce093cef553199732035e147bffb3f14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4a8755c_1afae235",
         "filename": "power/common.c",
         "patchSetId": 12
@@ -13,6 +36,24 @@
       "writtenOn": "2015-08-17T22:21:58Z",
       "side": 1,
       "message": "Please put a comment here so the reader can understand why you\u0027re clearing the flag here and in the state transition above.",
+      "revId": "c0cd4edce093cef553199732035e147bffb3f14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84929164_4b8f0587",
+        "filename": "power/common.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-18T09:27:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4a8755c_1afae235",
       "revId": "c0cd4edce093cef553199732035e147bffb3f14a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
