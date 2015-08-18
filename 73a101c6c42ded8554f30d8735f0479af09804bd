@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04b861a5_5937010a",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-18T20:26:57Z",
+      "side": 1,
+      "message": "Move these up below in_interrupt_context() and add comments.\n\n/**\n * Return current interrupt mask.  Meaning is chip-specific and\n * should not be examined; just pass it to set_int_mask() to\n * restore a previous interrupt state after interrupt_disable().\n */\nuint32_t get_int_mask(void);\n\n/**\n * Set interrupt mask.  As with interrupt_disable(), use with care.\n */\nvoid set_int_mask(uint32_t val);",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 32
+      },
+      "revId": "73a101c6c42ded8554f30d8735f0479af09804bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
