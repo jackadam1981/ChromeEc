@@ -49,6 +49,52 @@
     },
     {
       "key": {
+        "uuid": "040b0162_d2daa2de",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2738,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-08-18T18:50:40Z",
+      "side": 1,
+      "message": "nit, this can go inside the \u0027if\u0027 conditional I\u0027d think as if there\u0027s no new_power_request ... no sense in waking the tasks ... right?\n\nDo you want to add a \n\n  else\n    CPRINTF(\"Ignore ext pwr limt, not sink\")",
+      "range": {
+        "startLine": 2738,
+        "startChar": 0,
+        "endLine": 2738,
+        "endChar": 35
+      },
+      "revId": "bc98a369db209ac42bf4e9b1810dc747fbf83a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "846b7130_2642f868",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2750,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2015-08-18T18:50:40Z",
+      "side": 1,
+      "message": "Should we also disable for SHUTDOWN or will we go through SUSPEND on our way?",
+      "range": {
+        "startLine": 2750,
+        "startChar": 13,
+        "endLine": 2750,
+        "endChar": 33
+      },
+      "revId": "bc98a369db209ac42bf4e9b1810dc747fbf83a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4a9e95f_b88158a0",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
