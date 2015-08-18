@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "649afd79_f222682d",
+        "filename": "power/common.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-18T09:42:34Z",
+      "side": 1,
+      "message": "Actually this situation is hard to occur because CPU need 16 ms to start up, so it is hard to see that PCH pulls up SLP_S4 or S5 right after S5 inactivity timer cancelled. In normal case, the state machine will run to POWER_S5 again and want_g3_exit flag will be reset there. But somehow if EC spends more than 16 ms to run to power_handle_state(), this situation can happen. So still put a flag reset here for safety.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 19
+      },
+      "revId": "0e47c6b5ec2749c6276c7674c4a1f95db90eb9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
