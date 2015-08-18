@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4aeed64_dc2bea7f",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-08-18T17:25:39Z",
+      "side": 1,
+      "message": "can you explicitly state what panel id this is for and return error in case the panel id is not what is expected.\n\ncan you provide table of panel id and settings",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "c90d222e0f0fcfd79f35bd1a6e08e770ef40fe1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
