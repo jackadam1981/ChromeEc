@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64591d73_46a1af7e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-18T18:12:07Z",
+      "side": 1,
+      "message": "part of the API of this function was that mv \u003d\u003d -1 would set max voltage, which is why we checked for max_mv \u003d\u003d -1 in pd_find_pdo_index(). since that code was removed, it would probably be safest to add that check here before setting max_request_mv:\n\n/* mv of -1 represents max limit */\nif (mv \u003d\u003d -1)\n\tmv \u003d PD_MAX_VOLTAGE_MV;",
+      "range": {
+        "startLine": 165,
+        "startChar": 5,
+        "endLine": 165,
+        "endChar": 23
+      },
+      "revId": "bc98a369db209ac42bf4e9b1810dc747fbf83a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4a9e95f_b88158a0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2891,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-18T18:12:07Z",
+      "side": 1,
+      "message": "this is missing some key functionality that we used to rely on for the \u0027dev\u0027 subcommand. the pd_request_source_voltage() function switches us to a sink if we are currently a source. this function does not. is there any reason we can\u0027t just call pd_request_source_voltage() here, and add setting the ceiling to pd_request_source_voltage()?\n\nalso, this function used to read the voltage limit and print it out if it wasn\u0027t being set. now it doesn\u0027t do a read, it just prints out EC_POWER_LIMIT_NONE if you don\u0027t give it a value to set.",
+      "range": {
+        "startLine": 2891,
+        "startChar": 2,
+        "endLine": 2891,
+        "endChar": 29
+      },
+      "revId": "bc98a369db209ac42bf4e9b1810dc747fbf83a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64591d73_46f88f70",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3261,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-18T18:12:07Z",
+      "side": 1,
+      "message": "would make more sense to me if this was in charge_manager.c, set the ceiling and then called pd_request_source_voltage().",
+      "range": {
+        "startLine": 3261,
+        "startChar": 21,
+        "endLine": 3261,
+        "endChar": 48
+      },
+      "revId": "bc98a369db209ac42bf4e9b1810dc747fbf83a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
