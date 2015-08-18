@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "243ac5f6_dde63cd5",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-18T18:12:22Z",
+      "side": 1,
+      "message": "can you add to this comment that this is a current value (in mA). it confused me for a little while, would be nice to explicitly state it.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 3
+      },
+      "revId": "031520fd4d025aaf64a33e9778935a2e69b25d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
