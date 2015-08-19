@@ -34,6 +34,23 @@
       "revId": "c6f847c13b72f073d16d34dda6c393b3a9403e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a414f588_676e8c78",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-19T00:09:47Z",
+      "side": 1,
+      "message": "Why would we be in S5G3 state with SLP_S3_L deasserted?",
+      "revId": "c6f847c13b72f073d16d34dda6c393b3a9403e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
