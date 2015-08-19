@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "04b861a5_733c5eeb",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-19T21:04:28Z",
+      "side": 1,
+      "message": "Looking closer, I don\u0027t think this \u0027-1 \u003d\u003d max\u0027 feature is helpful at all. I changed the only call that passed -1 to instead pass PD_MAX_VOLTAGE_MV. Furthermore, I don\u0027t think the \u0027dev\u0027 console command ever worked with parameter -1, due to the multiplication we do (* 1000). If we parse -1 from the console, we\u0027ll end up passing -1000 to the function, not -1.",
+      "parentUuid": "04b861a5_351b337a",
+      "range": {
+        "startLine": 165,
+        "startChar": 5,
+        "endLine": 165,
+        "endChar": 23
+      },
+      "revId": "bc98a369db209ac42bf4e9b1810dc747fbf83a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "040b0162_d2daa2de",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "e4aeed64_1a62dfb9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2738,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-19T21:04:28Z",
+      "side": 1,
+      "message": "Done. I declined to add a print because I\u0027m worried that the information isn\u0027t useful and may get spammy. For example, on Samus, unless we had chargers connected to both ports, we\u0027d see that print whenever we received the limit host command.",
+      "parentUuid": "040b0162_d2daa2de",
+      "range": {
+        "startLine": 2738,
+        "startChar": 0,
+        "endLine": 2738,
+        "endChar": 35
+      },
+      "revId": "bc98a369db209ac42bf4e9b1810dc747fbf83a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "846b7130_2642f868",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -83,6 +131,30 @@
       "writtenOn": "2015-08-18T18:50:40Z",
       "side": 1,
       "message": "Should we also disable for SHUTDOWN or will we go through SUSPEND on our way?",
+      "range": {
+        "startLine": 2750,
+        "startChar": 13,
+        "endLine": 2750,
+        "endChar": 33
+      },
+      "revId": "bc98a369db209ac42bf4e9b1810dc747fbf83a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4fb1585_cde957f4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2750,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-19T21:04:28Z",
+      "side": 1,
+      "message": "We should go through S0S3 state on our way back down, which should set HOOK_CHIPSET_SUSPEND. It\u0027s possible to write a power state driver that skips S0S3 (and other intermediate states) and immediately dumps into G3, for example. I think such a driver would be broken though. Taking a quick look at power/*, I didn\u0027t see a recent driver that does this.",
+      "parentUuid": "846b7130_2642f868",
       "range": {
         "startLine": 2750,
         "startChar": 13,
@@ -142,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "243ac5f6_6c85c0e8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2891,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-19T21:04:28Z",
+      "side": 1,
+      "message": "I left the \u0027pd dev\u0027 command alone, it works exactly as before.",
+      "parentUuid": "a4fb1585_a7999101",
+      "range": {
+        "startLine": 2891,
+        "startChar": 2,
+        "endLine": 2891,
+        "endChar": 29
+      },
+      "revId": "bc98a369db209ac42bf4e9b1810dc747fbf83a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64591d73_46f88f70",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -177,6 +273,30 @@
       "side": 1,
       "message": "As you noted, pd_request_source_voltage() switches us to a sink if we\u0027re currently a source. I don\u0027t think we want to do that for all of our ports whenever we get this command. For example, we could be charging on one port and providing power on another when we get the request to limit power.\n\nHow about if I move this to charge_manager.c and call pd_set_external_power_limit (new function, which I think you were implying is not useful) instead?",
       "parentUuid": "64591d73_46f88f70",
+      "range": {
+        "startLine": 3261,
+        "startChar": 21,
+        "endLine": 3261,
+        "endChar": 48
+      },
+      "revId": "bc98a369db209ac42bf4e9b1810dc747fbf83a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "243ac5f6_4c8a7cf8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3261,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-19T21:04:28Z",
+      "side": 1,
+      "message": "Implemented what I proposed above.",
+      "parentUuid": "c4a9e95f_98081ca0",
       "range": {
         "startLine": 3261,
         "startChar": 21,
