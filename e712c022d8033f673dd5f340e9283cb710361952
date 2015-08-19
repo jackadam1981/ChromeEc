@@ -46,6 +46,30 @@
       "revId": "e712c022d8033f673dd5f340e9283cb710361952",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04b861a5_2efafd35",
+        "filename": "board/buddy/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-08-19T23:20:43Z",
+      "side": 0,
+      "message": "This is an AIO right? Just checking if there are any volume buttons?",
+      "parentUuid": "449df96e_d1a2c4f6",
+      "range": {
+        "startLine": 23,
+        "startChar": 13,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "e712c022d8033f673dd5f340e9283cb710361952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
