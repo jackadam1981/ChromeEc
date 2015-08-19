@@ -16,6 +16,24 @@
       "revId": "dd86390cf9bc031473186cb4c81e0c1ac89262b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "649afd79_15f35698",
+        "filename": "power/braswell.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1128534
+      },
+      "writtenOn": "2015-08-19T11:32:08Z",
+      "side": 1,
+      "message": "DONE\nTRACKPAD will be disabled during S3 -\u003e S5 and enabled during S5 -\u003e S3. \nTRACKPAD is a wakesource from S3 and hence cannot be done in S3-\u003eS0 case.",
+      "parentUuid": "67091fdd_fa358900",
+      "revId": "dd86390cf9bc031473186cb4c81e0c1ac89262b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
