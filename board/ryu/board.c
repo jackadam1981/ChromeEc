@@ -1040,6 +1040,13 @@ int board_has_spi_sensors(void)
 	return (ver < 6);
 }
 
+int board_can_hibernate(void)
+{
+	int ver = board_get_version();
+	/* the board hardware supports hibernation (using STM32 Standby mode) */
+	return (ver == 2);
+}
+
 /****************************************************************************/
 /* Host commands */
 

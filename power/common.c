@@ -150,7 +150,7 @@ static enum power_state power_common_state(enum power_state state)
 
 		in_want = 0;
 #ifdef CONFIG_HIBERNATE
-		if (extpower_is_present())
+		if (!board_can_hibernate() || extpower_is_present())
 			task_wait_event(-1);
 		else {
 			uint64_t target_time;

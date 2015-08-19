@@ -516,8 +516,10 @@ static void shutdown_on_critical_battery(void)
 			/* Timeout waiting for charger to provide more power */
 			CPRINTS(
 			  "charge force EC hibernate due to critical battery");
-			system_hibernate(0, 0);
-#elif defined(CONFIG_BATTERY_CRITICAL_SHUTDOWN_CUT_OFF)
+			if (board_can_hibernate())
+				system_hibernate(0, 0);
+#endif
+#ifdef CONFIG_BATTERY_CRITICAL_SHUTDOWN_CUT_OFF
 			CPRINTS(
 			  "charge force battery cut-off due to critical level");
 			board_cut_off_battery();
