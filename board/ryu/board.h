@@ -63,7 +63,11 @@
 #define CONFIG_WATCHDOG_HELP
 #define CONFIG_TASK_PROFILING
 #define CONFIG_INDUCTIVE_CHARGING
-#undef CONFIG_HIBERNATE
+#undef  CONFIG_HIBERNATE_DELAY_SEC
+#define CONFIG_HIBERNATE_DELAY_SEC (3600 * 24 * 60)
+#define CONFIG_HIBERNATE_BATT_PCT 10
+#define CONFIG_HIBERNATE_BATT_SEC (3600 * 24)
+#define CONFIG_HIBERNATE_WAKEUP_PINS (STM32_PWR_CSR_EWUP2 | STM32_PWR_CSR_EWUP3)
 #undef CONFIG_UART_TX_DMA /* DMAC_CH7 is used by USB PD */
 #define CONFIG_UART_RX_DMA
 #define CONFIG_UART_RX_DMA_CH STM32_DMAC_USART2_RX
@@ -204,6 +208,7 @@
 
 int board_get_version(void);
 int board_has_spi_sensors(void);
+int board_can_hibernate(void);
 
 /* GPIOs depending on board version */
 #define GPIO_VDDSPI_EN (board_has_spi_sensors() ? GPIO_VDDSPI_EN_0 \
