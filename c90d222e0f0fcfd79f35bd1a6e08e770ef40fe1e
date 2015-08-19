@@ -22,6 +22,30 @@
       "revId": "c90d222e0f0fcfd79f35bd1a6e08e770ef40fe1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4dac934_e67c7492",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1114730
+      },
+      "writtenOn": "2015-08-19T09:07:17Z",
+      "side": 1,
+      "message": "There are 2 panel applied on buddy, LGC and OBE, they require different working voltage provided by converter. EC monitor GPI_PANEL_ID0 to know which panel is attached and then configure corresponding setting to converter. GPI_PANEL_ID1 and GPIPANEL_ID2 are reserved for further usage.\n\nFor now, only 2 panel applied, so EC is bound to apply either one setting for converter. If there are more panel applied, we prefer not to configure any setting for unrecognized panel ID.\n\nPlease refer to \nhttps://code.google.com/p/chrome-os-partner/issues/detail?id\u003d44124\nfor related documents.",
+      "parentUuid": "e4aeed64_dc2bea7f",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "c90d222e0f0fcfd79f35bd1a6e08e770ef40fe1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
