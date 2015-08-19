@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "649afd79_d56b8e90",
+        "filename": "board/oak/board_revs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-19T15:48:59Z",
+      "side": 1,
+      "message": "It needs to be defined in EXTRA_CFLAGS\u003d-DBOARD_REV\u003dn .",
+      "parentUuid": "c4a9e95f_1c997b4d",
+      "revId": "a3cb50fd17aaf37e6225eaa24cbc18dd50cf6124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4fb1585_e16ee222",
         "filename": "board/oak/board_revs.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-08-19T15:02:38Z",
       "side": 1,
       "message": "\u003c REV0?",
+      "revId": "a3cb50fd17aaf37e6225eaa24cbc18dd50cf6124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e48d0d46_d5954b13",
+        "filename": "board/oak/board_revs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-19T15:48:59Z",
+      "side": 1,
+      "message": "The valid range is [1,2,3,4] for now. Since there\u0027s no PD in rev0, we use llama target to build EC image.",
+      "parentUuid": "a4fb1585_e16ee222",
       "revId": "a3cb50fd17aaf37e6225eaa24cbc18dd50cf6124",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
