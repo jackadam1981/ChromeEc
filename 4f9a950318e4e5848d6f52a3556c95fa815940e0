@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04806112_09698098",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-19T16:30:26Z",
+      "side": 1,
+      "message": "would still like printf for debugging sake. suggest adding:\n\n#ifdef CONFIG_USB_PD_TCPM_VBUS\n\ttcpm_get_vbus_level(port);\n#else\n\tpd_snk_is_vbus_provided(port);\n#endif",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 6
+      },
+      "revId": "4f9a950318e4e5848d6f52a3556c95fa815940e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4aeed64_74668a48",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-19T16:30:26Z",
+      "side": 1,
+      "message": "for oak (CONFIG_USB_PD_TCPM_VBUS defined), we need to somehow set the initial state of vbus supplier. we probably need to query tcpc to find if vbus is present in the tcpci.c init function.",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 31
+      },
+      "revId": "4f9a950318e4e5848d6f52a3556c95fa815940e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
