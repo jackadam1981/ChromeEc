@@ -96,6 +96,24 @@
     },
     {
       "key": {
+        "uuid": "64c11d6c_ba0b5162",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-19T16:05:17Z",
+      "side": 1,
+      "message": "What is the point? Once kunimitsu fixes the control of SLP_SUS_L to the pmic we can drop the primary rails in G3 just like glados.",
+      "parentUuid": "c4a9e95f_5c1cd327",
+      "revId": "c6f847c13b72f073d16d34dda6c393b3a9403e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a414f588_676e8c78",
         "filename": "power/skylake.c",
         "patchSetId": 1
@@ -125,6 +143,24 @@
       "side": 1,
       "message": "Okay Aaron, I will use only if (gpio_get_level(GPIO_PCH_SLP_SUS_L) \u003d\u003d 1).\nI added SLP_S3 \u0026 SLP_S4 to check if it is not in a wrong state.",
       "parentUuid": "a414f588_676e8c78",
+      "revId": "c6f847c13b72f073d16d34dda6c393b3a9403e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84c9b19e_f3afb0ca",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-19T16:05:17Z",
+      "side": 1,
+      "message": "The thing is it doesn\u0027t matter if SLP_SUS_L is 1 or not. We can still drop into G3. It\u0027s a not a true G3 but for the sake of the state machine it doesn\u0027t matter. We can still wake from the power button and lid.",
+      "parentUuid": "04806112_691bdc78",
       "revId": "c6f847c13b72f073d16d34dda6c393b3a9403e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
