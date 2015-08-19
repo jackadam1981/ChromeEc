@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "243ac5f6_72f8f670",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-19T23:15:41Z",
+      "side": 1,
+      "message": "if (gpio_get_level(GPIO_PCH_SLP_SUS_L) \u003d\u003d 1) {\n    CPRINTS(\"PCH_SLP_SUS is high\");\n    return POWER_S5;\n}\n\nWe still need it here for FAB3 else PMIC will be forced to emergency shutdown if SLP_SUS is high. On FAB4 it is still good to have it though we have PMIC_SLP_SUS.",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 1
+      },
+      "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "640f5db2_2a937f2f",
         "filename": "power/skylake.c",
         "patchSetId": 3
@@ -13,6 +36,24 @@
       "writtenOn": "2015-08-19T21:24:48Z",
       "side": 1,
       "message": "Why the clflush?",
+      "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4a8755c_d32669c0",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-19T23:15:41Z",
+      "side": 1,
+      "message": "cflush() is used clean up the UART buffer and prevents any unwanted garbage characters before power off. \nAnd to complete the above debug message.",
+      "parentUuid": "640f5db2_2a937f2f",
       "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -47,6 +88,42 @@
       "writtenOn": "2015-08-19T21:58:55Z",
       "side": 1,
       "message": "CONFIG_LOW_POWER_PSEUDO_G3 and CONFIG_G3_SLEEP seem completely unnecessary.",
+      "parentUuid": "04f301eb_af2419e7",
+      "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64591d73_25fd872e",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-19T23:15:41Z",
+      "side": 1,
+      "message": "Okay I will remove the CONFIG_G3_SLEEP",
+      "parentUuid": "441259d9_69f625cd",
+      "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4a8755c_73d455e9",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-19T23:15:41Z",
+      "side": 1,
+      "message": "Yes, kunimitsu fab4 getting slp_sus_l_pmic control. Kunimitsu uses GPIO_G3_SLEEP_EN to kill the power \u0026 hibernate function is not used.",
       "parentUuid": "04f301eb_af2419e7",
       "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
