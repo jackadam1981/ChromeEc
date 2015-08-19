@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "64591d73_4e4b857e",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-08-19T00:18:48Z",
+      "side": 1,
+      "message": "But until we return POWER_G3 here we have allowed the PCH to come out of DS while in the above delay loop, though I have no idea if that is a problem by itself since it is not forwarded to the PMIC yet.",
+      "parentUuid": "c4156984_6eedc3b1",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 3
+      },
+      "revId": "ee32f009aa51423de425a42a62d1268bd60914bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24d6450d_40dfce85",
         "filename": "power/skylake.c",
         "patchSetId": 1
