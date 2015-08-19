@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "44cfb972_67e30698",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-19T01:05:11Z",
+      "side": 1,
+      "message": "I reread your comment. Skylake is not out of deep sleep until RSMRST_L deasserts. The fact that we\u0027re holding the primary rails off means RSMRST_L will not deassert so skylake hasn\u0027t left deep sleep yet -- only has requested it.",
+      "parentUuid": "c4156984_ceb677c0",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 3
+      },
+      "revId": "ee32f009aa51423de425a42a62d1268bd60914bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24d6450d_40dfce85",
         "filename": "power/skylake.c",
         "patchSetId": 1
