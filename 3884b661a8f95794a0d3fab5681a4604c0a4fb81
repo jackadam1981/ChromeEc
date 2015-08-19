@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "640f5db2_2a937f2f",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-19T21:24:48Z",
+      "side": 1,
+      "message": "Why the clflush?",
+      "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04f301eb_af2419e7",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-19T21:24:48Z",
+      "side": 1,
+      "message": "Why do we have another config for this? If kunimitsu selects CONFIG_LOW_POWER_PSEUDO_G3 why doesn\u0027t it implement it there? Moreover, all of this logic could have done in the chipset_force_g3(). Isn\u0027t kunimitsu fab4 getting slp_sus_l_pmic control?",
+      "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
