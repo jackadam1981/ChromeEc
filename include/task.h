@@ -183,6 +183,9 @@ int task_start_called(void);
 void task_clear_fp_used(void);
 #endif
 
+uint32_t get_int_mask(void);
+void set_int_mask(uint32_t val);
+
 /**
  * Mark all tasks as ready to run and reschedule the highest priority task.
  */
