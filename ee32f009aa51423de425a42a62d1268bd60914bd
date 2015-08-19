@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c4156984_ceb677c0",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-19T00:53:40Z",
+      "side": 1,
+      "message": "We haven\u0027t passed the SLP_SUS_L to the pmic yet. Upon entering G3 we assert PMIC_SLP_SUS_L to 0 which drives the primary rails off.\n\nAre you concerned with skylake sequencing up the PMIC w/o our ability to control it? PMIC_SLP_SUS_L is our method of control. Coming out of deep sleep or regular boot after g3 waits for RSMRST_L to deassert. We\u0027re controlling that by keeping PMIC_SLP_SUS_L at 0.",
+      "parentUuid": "64591d73_4e4b857e",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 3
+      },
+      "revId": "ee32f009aa51423de425a42a62d1268bd60914bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24d6450d_40dfce85",
         "filename": "power/skylake.c",
         "patchSetId": 1
