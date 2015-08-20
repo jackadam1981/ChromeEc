@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "243e454a_20728ad6",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-20T01:23:53Z",
+      "side": 1,
+      "message": "What does \u0027PMIC will be forced to emergency shutdown\u0027 mean? If we\u0027re in S5 (not deep) it doesn\u0027t matter. We bring the x86 side down as best we can on all our chromebooks. We don\u0027t actually sit in S5 but for like 10 seconds.",
+      "parentUuid": "243ac5f6_72f8f670",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 1
+      },
+      "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "640f5db2_2a937f2f",
         "filename": "power/skylake.c",
         "patchSetId": 3
@@ -54,6 +78,24 @@
       "side": 1,
       "message": "cflush() is used clean up the UART buffer and prevents any unwanted garbage characters before power off. \nAnd to complete the above debug message.",
       "parentUuid": "640f5db2_2a937f2f",
+      "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "044141d7_3f6f07ef",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-20T01:23:53Z",
+      "side": 1,
+      "message": "I see. I thought this was doing cache operartions. Not flushing the console buffer. Can you please add a comment indicating that, please?",
+      "parentUuid": "a4a8755c_d32669c0",
       "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -125,6 +167,24 @@
       "side": 1,
       "message": "Yes, kunimitsu fab4 getting slp_sus_l_pmic control. Kunimitsu uses GPIO_G3_SLEEP_EN to kill the power \u0026 hibernate function is not used.",
       "parentUuid": "04f301eb_af2419e7",
+      "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "441259d9_0916897c",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-20T01:23:53Z",
+      "side": 1,
+      "message": "That\u0027s fine. My point is that CONFIG_G3_SLEEP is superfluous. CONFIG_LOW_POWER_PSEUDO_G3 should be enough.",
+      "parentUuid": "a4a8755c_73d455e9",
       "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
