@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4750d3f_0ea30bfd",
+        "filename": "board/cyan/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-08-20T17:20:08Z",
+      "side": 1,
+      "message": "I don\u0027t agree with the coordinate changes.\nAccording to Alec\u0027s doc (https://docs.google.com/document/d/1rjGqkP0-VADgHFVMuVUPNyBlq_9VFWHRMikG3pgn_ng/edit#heading\u003dh.uinm51ox4s56), Z should point downward, while it is now point upward, confusing chrome.",
+      "revId": "157543b287b0391502f82b943722f8770dabc356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
