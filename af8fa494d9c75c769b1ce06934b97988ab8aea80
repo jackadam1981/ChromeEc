@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "84253145_761cce9c",
+        "filename": "board/twinkie/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-08-20T16:00:51Z",
+      "side": 1,
+      "message": "Please add another define.\n/* \nUSB TypeC Sniffer Version 2 will include vbus/current info. */\n\n#ifdef CONFIG_USB_TYPEC_SNIFFER_V2\n#define CONFIG_USB_PID ...\n#endif",
+      "parentUuid": "c42ba915_1510f407",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "af8fa494d9c75c769b1ce06934b97988ab8aea80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "248c8586_30b18878",
         "filename": "board/twinkie/board.h",
         "patchSetId": 15
