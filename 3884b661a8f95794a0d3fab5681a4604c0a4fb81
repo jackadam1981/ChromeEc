@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "248c8586_76bb88ba",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-20T18:15:11Z",
+      "side": 1,
+      "message": "Emergency shut down \u003d PMIC will be out of sequence if we forcefully shut down the PMIC even though SLP_SUS is high.\nReason I added return POWER_S5 is to check SLP_SUS whent low every 10s.",
+      "parentUuid": "243e454a_20728ad6",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 1
+      },
+      "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "640f5db2_2a937f2f",
         "filename": "power/skylake.c",
         "patchSetId": 3
@@ -96,6 +120,24 @@
       "side": 1,
       "message": "I see. I thought this was doing cache operartions. Not flushing the console buffer. Can you please add a comment indicating that, please?",
       "parentUuid": "a4a8755c_d32669c0",
+      "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42ba915_58b0e1c6",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-20T18:15:11Z",
+      "side": 1,
+      "message": "Sure Aaron I will add the comments",
+      "parentUuid": "044141d7_3f6f07ef",
       "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -185,6 +227,24 @@
       "side": 1,
       "message": "That\u0027s fine. My point is that CONFIG_G3_SLEEP is superfluous. CONFIG_LOW_POWER_PSEUDO_G3 should be enough.",
       "parentUuid": "a4a8755c_73d455e9",
+      "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42ba915_78ad9d6d",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-20T18:15:11Z",
+      "side": 1,
+      "message": "Okay",
+      "parentUuid": "441259d9_0916897c",
       "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
