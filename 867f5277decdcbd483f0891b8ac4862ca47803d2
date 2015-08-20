@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4485f957_ba623509",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-20T23:22:11Z",
+      "side": 1,
+      "message": "elif?",
+      "range": {
+        "startLine": 236,
+        "startChar": 6,
+        "endLine": 238,
+        "endChar": 11
+      },
+      "revId": "867f5277decdcbd483f0891b8ac4862ca47803d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "248c8586_5fa9b7da",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-20T23:22:11Z",
+      "side": 1,
+      "message": "Seems like this is always false, given line 231.",
+      "range": {
+        "startLine": 238,
+        "startChar": 59,
+        "endLine": 239,
+        "endChar": 33
+      },
+      "revId": "867f5277decdcbd483f0891b8ac4862ca47803d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
