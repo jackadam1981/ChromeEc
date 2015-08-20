@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "04f301eb_cf93dd61",
+        "filename": "board/cyan/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1124849
+      },
+      "writtenOn": "2015-08-20T18:25:23Z",
+      "side": 1,
+      "message": "Swapping of the x/z axes here are also differing from other devices",
+      "range": {
+        "startLine": 102,
+        "startChar": 24,
+        "endLine": 102,
+        "endChar": 26
+      },
+      "revId": "157543b287b0391502f82b943722f8770dabc356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4750d3f_0ea30bfd",
         "filename": "board/cyan/board.c",
         "patchSetId": 2
