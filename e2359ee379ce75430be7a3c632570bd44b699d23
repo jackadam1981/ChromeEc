@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4750d3f_94506cde",
+        "filename": "board/kunimitsu/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-20T20:04:05Z",
+      "side": 1,
+      "message": "please disable console commands from driver. We need i2cscan for debugging. https://chromium-review.googlesource.com/#/c/288950/",
+      "range": {
+        "startLine": 109,
+        "startChar": 7,
+        "endLine": 109,
+        "endChar": 26
+      },
+      "revId": "e2359ee379ce75430be7a3c632570bd44b699d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
