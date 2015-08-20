@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c42ba915_f8ba0d59",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-08-20T19:04:16Z",
+      "side": 1,
+      "message": "delete space",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "70091a052e3e549fd9e026a24b46ae6a3616aa3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a42a3512_1aa49db9",
+        "filename": "include/config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 1653,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-08-20T19:04:16Z",
+      "side": 1,
+      "message": "delete ending space",
+      "range": {
+        "startLine": 1653,
+        "startChar": 48,
+        "endLine": 1653,
+        "endChar": 49
+      },
+      "revId": "70091a052e3e549fd9e026a24b46ae6a3616aa3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
