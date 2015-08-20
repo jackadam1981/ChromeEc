@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c42ba915_e9d8fd67",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2725,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-20T23:50:20Z",
+      "side": 1,
+      "message": "too many tabs",
+      "revId": "8e918eb8b4a19ff3fa1a66bb235666c8ba2616f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_95b5c63a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2882,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-20T23:50:20Z",
+      "side": 1,
+      "message": "i would put this console command in charge_manager.c (maybe \u0027chglim\u0027), it really has little to do with PD comm.",
+      "range": {
+        "startLine": 2865,
+        "startChar": 0,
+        "endLine": 2882,
+        "endChar": 6
+      },
+      "revId": "8e918eb8b4a19ff3fa1a66bb235666c8ba2616f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
