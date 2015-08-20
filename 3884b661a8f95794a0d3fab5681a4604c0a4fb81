@@ -272,6 +272,23 @@
       "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "441259d9_8906f928",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-20T18:35:25Z",
+      "side": 1,
+      "message": "My main concern on relying on this functionality at all is that the pmic\u0027s data sheet says this:\n\nTie to LDO3 or to GND \n\nVERY IMPORTANT: This pin is ignored. The ENVR3 is driven internally for Volume\n\nIs that no longer true?",
+      "revId": "3884b661a8f95794a0d3fab5681a4604c0a4fb81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
