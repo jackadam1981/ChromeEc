@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4dfcd21_81947c99",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-08-20T03:26:39Z",
+      "side": 1,
+      "message": "I suggest to set want_g3_exit here, too, and remove the reset of want_g3_exit at line 196. Consider a race condition: if the power button is pressed after S5 inactivity timer expires and before the state changing to POWER_S5G3, the system will not start up. You can refer to the CL:290280 for detail. To set want_g3_exit here, the system will go to G3 and then exit G3, just like what it would do in POWER_S5G3.",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 15
+      },
+      "revId": "f7a0072b48d1545d1567fba3415e4ef08f9951bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
