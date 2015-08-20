@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04d9413e_a26180b6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-20T08:48:26Z",
+      "side": 1,
+      "message": "You need to do it in a loop. Some port controllers are single port, per controller. Do it in a loop to set sleep them all.",
+      "range": {
+        "startLine": 304,
+        "startChar": 17,
+        "endLine": 304,
+        "endChar": 18
+      },
+      "revId": "c57b9d572cfb29d96c12c742391298a4bf74c152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e48d0d46_38b68678",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-20T08:48:26Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 310,
+        "startChar": 17,
+        "endLine": 310,
+        "endChar": 18
+      },
+      "revId": "c57b9d572cfb29d96c12c742391298a4bf74c152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "649afd79_759e62e9",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1061,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-20T08:48:26Z",
+      "side": 1,
+      "message": "This port controller has 2 ports. If both ports are enabled, then enable_sleep();",
+      "range": {
+        "startLine": 1061,
+        "startChar": 5,
+        "endLine": 1061,
+        "endChar": 17
+      },
+      "revId": "c57b9d572cfb29d96c12c742391298a4bf74c152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4dac934_91204ca3",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-20T08:48:26Z",
+      "side": 1,
+      "message": "Wrap this with same #ifdef condition?",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 18
+      },
+      "revId": "c57b9d572cfb29d96c12c742391298a4bf74c152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
