@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c42ba915_1510f407",
+        "filename": "board/twinkie/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1130314
+      },
+      "writtenOn": "2015-08-20T15:27:50Z",
+      "side": 1,
+      "message": "I\u0027m trying to only change the PID for twinkie when it is in normal mode. When it is in sink mode, the original PID is kept, in case other use cases depend on the original PID.",
+      "parentUuid": "248c8586_d09efce9",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "af8fa494d9c75c769b1ce06934b97988ab8aea80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "248c8586_30b18878",
         "filename": "board/twinkie/board.h",
         "patchSetId": 15
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-20T13:52:39Z",
       "side": 1,
       "message": "this PID is already assigned to another product.",
+      "range": {
+        "startLine": 50,
+        "startChar": 23,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "af8fa494d9c75c769b1ce06934b97988ab8aea80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_33a0a8ed",
+        "filename": "board/twinkie/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1130314
+      },
+      "writtenOn": "2015-08-20T15:27:50Z",
+      "side": 1,
+      "message": "Thanks for the comments. Can you suggest one that has not been used？ By the way, it will not be an issue as long as the real 0x500B product is not used at the same time when twinkie is used.",
+      "parentUuid": "248c8586_30b18878",
       "range": {
         "startLine": 50,
         "startChar": 23,
