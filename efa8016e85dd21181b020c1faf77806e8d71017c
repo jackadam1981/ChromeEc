@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "a47f9520_8696fe1c",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1130314
+      },
+      "writtenOn": "2015-08-21T20:40:28Z",
+      "side": 1,
+      "message": "The seq number is not used. But it is 16 bits. The old firmware can send any number from 0x0000 to 0xFFFF.",
+      "parentUuid": "84253145_ed024981",
+      "range": {
+        "startLine": 25,
+        "startChar": 13,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "efa8016e85dd21181b020c1faf77806e8d71017c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4485f957_e02a4cb4",
         "filename": "board/twinkie/sniffer.c",
         "patchSetId": 22
