@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a47f9520_9bec17b7",
+        "filename": "board/twinkie/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-08-21T15:29:24Z",
+      "side": 1,
+      "message": "Avoid changing USB_PID.\n\nAnother option is to keep the same USB_PID.\n\nBy default, twinkie firmware is compiled with sniffer v1 header.\n\nIf a user need the vbus feature, then the user will re-compile both twinkie firmware and sigrok tools.  Please document these info.",
+      "range": {
+        "startLine": 57,
+        "startChar": 23,
+        "endLine": 57,
+        "endChar": 29
+      },
+      "revId": "1db0f882afed7989902802ef8666557545992d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_9de3af4f",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-08-21T15:29:24Z",
+      "side": 1,
+      "message": "merge above 3 #ifdef together",
+      "range": {
+        "startLine": 442,
+        "startChar": 7,
+        "endLine": 442,
+        "endChar": 36
+      },
+      "revId": "1db0f882afed7989902802ef8666557545992d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
