@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "048f817d_de112914",
+        "filename": "board/twinkie/board.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-08-21T18:00:30Z",
+      "side": 1,
+      "message": "add back the empty line.",
+      "range": {
+        "startLine": 56,
+        "startChar": 23,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "efa8016e85dd21181b020c1faf77806e8d71017c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_ed024981",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-08-21T18:00:30Z",
+      "side": 1,
+      "message": "Do we need all 16-bits for the seq number?\nIf not, we can reduce seq to 12-bits; then we have 4-bit for sniffer packet type.",
+      "range": {
+        "startLine": 25,
+        "startChar": 13,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "efa8016e85dd21181b020c1faf77806e8d71017c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_e02a4cb4",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1110619
+      },
+      "writtenOn": "2015-08-21T18:00:30Z",
+      "side": 1,
+      "message": "move flag_started \u003d1 ;  here.\nless #ifdef",
+      "range": {
+        "startLine": 438,
+        "startChar": 7,
+        "endLine": 438,
+        "endChar": 36
+      },
+      "revId": "efa8016e85dd21181b020c1faf77806e8d71017c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
