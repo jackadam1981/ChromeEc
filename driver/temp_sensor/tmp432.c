@@ -5,8 +5,10 @@
 
 /* TMP432 temperature sensor module for Chrome EC */
 
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "extpower.h"
 #include "tmp432.h"
 #include "gpio.h"
 #include "i2c.h"
@@ -16,6 +18,9 @@
 static int temp_val_local;
 static int temp_val_remote1;
 static int temp_val_remote2;
+#ifdef CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING
+static uint8_t is_sensor_shutdown;
+#endif
 
 /**
  * Determine whether the sensor is powered.
@@ -26,6 +31,8 @@ static int has_power(void)
 {
 #ifdef CONFIG_TEMP_SENSOR_POWER_GPIO
 	return gpio_get_level(CONFIG_TEMP_SENSOR_POWER_GPIO);
+#elif defined(CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING)
+	return !is_sensor_shutdown;
 #else
 	return 1;
 #endif
@@ -88,6 +95,38 @@ int tmp432_get_val(int idx, int *temp_ptr)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING
+static int tmp432_shutdown(uint8_t want_shutdown)
+{
+	int ret, value;
+
+	if (want_shutdown == is_sensor_shutdown)
+		return EC_SUCCESS;
+
+	ret = raw_read8(TMP432_CONFIGURATION1_R, &value);
+	if (ret < 0) {
+		ccprintf("ERROR: Temp sensor I2C read8 error.\n");
+		return ret;
+	}
+
+	if (want_shutdown && !(value & TMP432_CONFIG1_RUN_L)) {
+		/* tmp432 is running, and want it to shutdown */
+		/* CONFIG REG1 BIT6: 0=Run, 1=Shutdown */
+		/* shut it down */
+		value |= TMP432_CONFIG1_RUN_L;
+		ret = raw_write8(TMP432_CONFIGURATION1_R, value);
+	} else if (!want_shutdown && (value & TMP432_CONFIG1_RUN_L)) {
+		/* tmp432 is shutdown, and want turn it on */
+		value &= ~TMP432_CONFIG1_RUN_L;
+		ret = raw_write8(TMP432_CONFIGURATION1_R, value);
+	}
+	/* else, the current setting is exactly what you want */
+
+	is_sensor_shutdown = want_shutdown;
+	return ret;
+}
+#endif
+
 static void temp_sensor_poll(void)
 {
 	int temp_c;
@@ -115,6 +154,13 @@ static void print_temps(
 		const int tmp432_low_limit_reg)
 {
 	int value;
+
+#ifdef CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING
+	if (!has_power()) {
+		ccprintf("  TMP432 is shutdown\n");
+		return;
+	}
+#endif
 
 	ccprintf("%s:\n", name);
 
@@ -221,3 +267,14 @@ DECLARE_CONSOLE_COMMAND(tmp432, command_tmp432,
 	"Temps in Celsius.",
 	"Print tmp432 temp sensor status or set parameters.", NULL);
 #endif
+
+void tmp432_set_power(enum tmp432_power_state power_on)
+{
+#ifdef CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING
+	uint8_t shutdown = (power_on == TMP432_POWER_OFF) ? 1 : 0;
+	tmp432_shutdown(shutdown);
+#elif defined(CONFIG_TEMP_SENSOR_POWER_GPIO)
+	gpio_set_level(CONFIG_TEMP_SENSOR_POWER_GPIO, power_on);
+#endif
+}
+
