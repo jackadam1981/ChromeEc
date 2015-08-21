@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e430ad80_0bc52d07",
+        "filename": "board/oak/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-21T17:40:53Z",
+      "side": 1,
+      "message": "I\u0027m worried about this shared interrupt pin design. Can you point me to the schematic? https://drive.google.com/a/google.com/file/d/0B6AhXjXKHQ8KZWFlbGtWZ1MzODQ/view?usp\u003dsharing doesn\u0027t seen to match.",
+      "revId": "59ba37739300ebdcba2dc55bd64ad0326ef5c18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
