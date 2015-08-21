@@ -1,0 +1,8 @@
+This directory contains various tools that use a FTDI usb2spi cable,
+http://www.ftdichip.com/Support/Documents/DataSheets/Cables/DS_C232HM_MPSSE_CABLE.PDF
+to have your goobuntu machine play SPI master to a slave device.
+
+Tools are built by statically compiling and linking against ../third_party/libftdi and libmpsse, per ./Makefile
+
+BUILD DEPENDENCIES:
+sudo apt-get install libusb-1.0
