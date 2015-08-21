@@ -1474,6 +1474,14 @@
  */
 #undef CONFIG_TEMP_SENSOR_POWER_GPIO
 
+/*
+ * If CONFIG_TEMP_SENSOR_POWER_GPIO is not defined. In order to reduce the
+ * power consumption of system, define this option, tmp432 will be shutdown by
+ * SW, if external power is not present in non-S0 state.
+ */
+#undef CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING
+
+
 /*****************************************************************************/
 /* TPM-like configuration */
 

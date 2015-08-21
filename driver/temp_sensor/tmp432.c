@@ -5,8 +5,10 @@
 
 /* TMP432 temperature sensor module for Chrome EC */
 
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "extpower.h"
 #include "tmp432.h"
 #include "gpio.h"
 #include "i2c.h"
@@ -16,6 +18,9 @@
 static int temp_val_local;
 static int temp_val_remote1;
 static int temp_val_remote2;
+#ifdef CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING
+static uint8_t is_sensor_shutdown;
+#endif
 
 /**
  * Determine whether the sensor is powered.
@@ -30,6 +35,18 @@ static int has_power(void)
 	return 1;
 #endif
 }
+
+#ifdef CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING
+/**
+ * Determine whether the sensor is shutdown.
+ *
+ * @return non-zero the tmp432 sensor is shutdown.
+ */
+static uint8_t is_shutdown(void)
+{
+	return is_sensor_shutdown;
+}
+#endif
 
 static int raw_read8(const int offset, int *data_ptr)
 {
@@ -71,6 +88,11 @@ int tmp432_get_val(int idx, int *temp_ptr)
 	if (!has_power())
 		return EC_ERROR_NOT_POWERED;
 
+#ifdef CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING
+	if (is_shutdown())
+		return EC_ERROR_NOT_POWERED;
+#endif
+
 	switch (idx) {
 	case TMP432_IDX_LOCAL:
 		*temp_ptr = temp_val_local;
@@ -88,6 +110,38 @@ int tmp432_get_val(int idx, int *temp_ptr)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING
+static int tmp432_shutdown(uint8_t want_shutdown)
+{
+	int ret, value;
+
+	if (want_shutdown == is_sensor_shutdown)
+		return EC_SUCCESS;
+
+	ret = raw_read8(TMP432_CONFIGURATION1_R, &value);
+	if (ret < 0) {
+		ccprintf("ERROR: Temp sensor I2C read8 error.\n");
+		return ret;
+	}
+
+	if (want_shutdown && !(value & TMP432_CONFIG1_RUN_L)) {
+		/* tmp432 is running, and want it to shutdown */
+		/* CONFIG REG1 BIT6: 0=Run, 1=Shutdown */
+		/* shut it down */
+		value |= TMP432_CONFIG1_RUN_L;
+		ret = raw_write8(TMP432_CONFIGURATION1_R, value);
+	} else if (!want_shutdown && (value & TMP432_CONFIG1_RUN_L)) {
+		/* tmp432 is shutdown, and want turn it on */
+		value &= ~TMP432_CONFIG1_RUN_L;
+		ret = raw_write8(TMP432_CONFIGURATION1_R, value);
+	}
+	/* else, the current setting is exactly what you want */
+
+	is_sensor_shutdown = want_shutdown;
+	return ret;
+}
+#endif
+
 static void temp_sensor_poll(void)
 {
 	int temp_c;
@@ -95,6 +149,19 @@ static void temp_sensor_poll(void)
 	if (!has_power())
 		return;
 
+#ifdef CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING
+	/*
+	 *  Shut tmp432 down if not in S0 && no external power,
+	 *  else, turn it on.
+	 */
+	if (!extpower_is_present() && !chipset_in_state(CHIPSET_STATE_ON)) {
+		tmp432_shutdown(1);
+		return;
+	}
+
+	if (is_shutdown())
+		tmp432_shutdown(0);
+#endif
 	if (get_temp(TMP432_LOCAL, &temp_c) == EC_SUCCESS)
 		temp_val_local = C_TO_K(temp_c);
 
@@ -115,6 +182,13 @@ static void print_temps(
 		const int tmp432_low_limit_reg)
 {
 	int value;
+
+#ifdef CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING
+	if (is_shutdown()) {
+		ccprintf("  TMP432 is shutdown\n");
+		return;
+	}
+#endif
 
 	ccprintf("%s:\n", name);
 
