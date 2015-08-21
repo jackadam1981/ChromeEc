@@ -1497,6 +1497,14 @@
  */
 #undef CONFIG_TEMP_SENSOR_POWER_GPIO
 
+/*
+ * If CONFIG_TEMP_SENSOR_POWER_GPIO is not defined. In order to reduce the
+ * power consumption of system, define this option, upper layer can use the
+ * API: tmp432_set_power() to control the power of tmp432 by SW approach.
+ */
+#undef CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING
+
+
 /*****************************************************************************/
 /* TPM-like configuration */
 
