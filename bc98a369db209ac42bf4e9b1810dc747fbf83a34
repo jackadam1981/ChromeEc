@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "a47f9520_d566ee48",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-21T00:00:09Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "04b861a5_733c5eeb",
+      "range": {
+        "startLine": 165,
+        "startChar": 5,
+        "endLine": 165,
+        "endChar": 23
+      },
+      "revId": "bc98a369db209ac42bf4e9b1810dc747fbf83a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "040b0162_d2daa2de",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "We should go through S0S3 state on our way back down, which should set HOOK_CHIPSET_SUSPEND. It\u0027s possible to write a power state driver that skips S0S3 (and other intermediate states) and immediately dumps into G3, for example. I think such a driver would be broken though. Taking a quick look at power/*, I didn\u0027t see a recent driver that does this.",
       "parentUuid": "846b7130_2642f868",
+      "range": {
+        "startLine": 2750,
+        "startChar": 13,
+        "endLine": 2750,
+        "endChar": 33
+      },
+      "revId": "bc98a369db209ac42bf4e9b1810dc747fbf83a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_e26d6eac",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2750,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-08-21T00:00:09Z",
+      "side": 1,
+      "message": "i agree, a driver that doesn\u0027t go through suspend would be broken.",
+      "parentUuid": "a4fb1585_cde957f4",
       "range": {
         "startLine": 2750,
         "startChar": 13,
