@@ -38,6 +38,9 @@
 #include "system.h"
 #include "task.h"
 #include "test_util.h"
+#ifdef CONFIG_TEMP_SENSOR_TMP432
+#include "tmp432.h"
+#endif
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
@@ -715,6 +718,10 @@ enum power_state power_handle_state(enum power_state state)
 #ifdef HAS_TASK_POWERLED
 		powerled_set_state(POWERLED_STATE_ON);
 #endif
+#ifdef CONFIG_TEMP_SENSOR_TMP432
+		if (EC_SUCCESS != tmp432_set_power(TMP432_POWER_ON))
+			CPRINTS("ERROR: turn off TMP432 fail.");
+#endif
 		hook_notify(HOOK_CHIPSET_RESUME);
 		return POWER_S0;
 
@@ -734,6 +741,10 @@ enum power_state power_handle_state(enum power_state state)
 			powerled_set_state(POWERLED_STATE_SUSPEND);
 		else
 			powerled_set_state(POWERLED_STATE_OFF);
+#endif
+#ifdef CONFIG_TEMP_SENSOR_TMP432
+		if (EC_SUCCESS != tmp432_set_power(TMP432_POWER_OFF))
+			CPRINTS("ERROR: turn on TMP432 fail.");
 #endif
 		/* Call hooks here since we don't know it prior to AP suspend */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
