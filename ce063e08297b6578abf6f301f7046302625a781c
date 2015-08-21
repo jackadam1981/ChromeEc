@@ -22,6 +22,30 @@
       "revId": "ce063e08297b6578abf6f301f7046302625a781c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42ba915_242ffc8f",
+        "filename": "include/config_std_internal_flash.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-21T15:03:49Z",
+      "side": 1,
+      "message": "It\u0027s the offset from the beginning of program memory, where the RW image will reside. These mem / storage constants are greatly simplified in the case of memmapped internal flash (but not so for other architectures, see mec1322 for example).\n\nRegarding ec.lds.S, there is one use of CONFIG_RW_MEM_OFF, but it\u0027s only used for external, non-memory mapped flash. I agree ec.lds.S is a mess with the ifdefs, it will be cleaned up.",
+      "parentUuid": "e430ad80_5048b480",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 25
+      },
+      "revId": "ce063e08297b6578abf6f301f7046302625a781c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
