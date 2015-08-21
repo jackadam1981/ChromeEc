@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4485f957_2055b448",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-21T21:03:12Z",
+      "side": 1,
+      "message": "Minor nit: [0|1], since this is an option arg.",
+      "range": {
+        "startLine": 905,
+        "startChar": 20,
+        "endLine": 905,
+        "endChar": 25
+      },
+      "revId": "274ba8e4b4b19e727fc33ccd2d6906dcf17641bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
