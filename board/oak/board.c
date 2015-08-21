@@ -346,3 +346,51 @@ void board_set_ap_reset(int asserted)
 		gpio_set_level(GPIO_AP_RESET_L, !asserted);
 	}
 }
+
+#ifdef CONFIG_TEMP_SENSOR_TMP432
+static void tmp432_set_power_deferred(void)
+{
+       /* Shut tmp432 down if not in S0 && no external power */
+       if (!extpower_is_present() && !chipset_in_state(CHIPSET_STATE_ON)) {
+               if (EC_SUCCESS != tmp432_set_power(TMP432_POWER_OFF))
+			CPRINTS("ERROR: Can't shutdown TMP432.");
+               return;
+       }
+
+       /*  else, turn it on. */
+       if (EC_SUCCESS != tmp432_set_power(TMP432_POWER_ON))
+		CPRINTS("ERROR: Can't turn on TMP432.");
+}
+DECLARE_DEFERRED(tmp432_set_power_deferred);
+#endif
+
+/**
+ * Hook of AC change. turn on/off tmp432 depends on AP & AC status.
+ */
+static void board_extpower(void)
+{
+#ifdef CONFIG_TEMP_SENSOR_TMP432
+	hook_call_deferred(tmp432_set_power_deferred, 0);
+#endif
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S3 -> S0 transition */
+static void board_chipset_resume(void)
+{
+#ifdef CONFIG_TEMP_SENSOR_TMP432
+	if (EC_SUCCESS != tmp432_set_power(TMP432_POWER_ON))
+		CPRINTS("ERROR: turn off TMP432 fail.");
+#endif
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S0 -> S3 transition */
+static void board_chipset_suspend(void)
+{
+#ifdef CONFIG_TEMP_SENSOR_TMP432
+	if (EC_SUCCESS != tmp432_set_power(TMP432_POWER_OFF))
+		CPRINTS("ERROR: turn on TMP432 fail.");
+#endif
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
