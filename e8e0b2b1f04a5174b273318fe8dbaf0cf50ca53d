@@ -130,6 +130,24 @@
     },
     {
       "key": {
+        "uuid": "a47f9520_206cd2a8",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-21T01:25:26Z",
+      "side": 1,
+      "message": "We are seeing a spike on PCH_PLT_RST (GPIO116) when interrupt fires. \nThis is a temporary work around for FAB3 and will be reverted for FAB4.",
+      "parentUuid": "a414f588_a461a2b6",
+      "revId": "e8e0b2b1f04a5174b273318fe8dbaf0cf50ca53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4434d7f_04ca1ab2",
         "filename": "chip/mec1322/lpc.c",
         "patchSetId": 2
@@ -218,6 +236,24 @@
     },
     {
       "key": {
+        "uuid": "e4750d3f_c2e8722b",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-21T01:25:26Z",
+      "side": 1,
+      "message": "I did it by trial and error method, 25 is good and multiple boards so made it twice",
+      "parentUuid": "2421e5e2_c8682f97",
+      "revId": "e8e0b2b1f04a5174b273318fe8dbaf0cf50ca53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "243ac5f6_63179cd5",
         "filename": "chip/mec1322/lpc.c",
         "patchSetId": 2
@@ -276,6 +312,24 @@
       "writtenOn": "2015-08-14T23:07:20Z",
       "side": 1,
       "message": "This is the \"interrupt was from assertion\" path?",
+      "revId": "e8e0b2b1f04a5174b273318fe8dbaf0cf50ca53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_7a428dc6",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-08-21T01:25:26Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "64ccbd7d_a2989e4a",
       "revId": "e8e0b2b1f04a5174b273318fe8dbaf0cf50ca53d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
