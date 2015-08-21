@@ -28,13 +28,13 @@ GPIO_INT(PCH_SLP_S3_L,      PIN(206), GPIO_INT_BOTH,                      power_
 UNIMPLEMENTED(BAT_PRESENT_L)
 UNIMPLEMENTED(USB_PD_WAKE)
 
-GPIO(NC_GPIO0,          PIN(0),  GPIO_INPUT | GPIO_PULL_UP)     /* NC */
+GPIO(BOARD_VERSION2,    PIN(0),  GPIO_INPUT)                    /* BOARD_ID1 */
 GPIO(KBD_KSO2,          PIN(1),  GPIO_KB_OUTPUT_COL2)           /* Negative edge triggered irq. */
 
 GPIO(USB_ILIM_SEL,      PIN(13), GPIO_OUT_HIGH)                 /* USB current control */
-GPIO(I2C_PORT0_SCL,     PIN(15), GPIO_ODR_HIGH)
-GPIO(I2C_PORT0_SDA,     PIN(16), GPIO_ODR_HIGH)
-GPIO(BOARD_VERSION3,    PIN(17), GPIO_INPUT)                    /* BOARD_ID2 */
+GPIO(I2C_PORT0_0_SCL,   PIN(15), GPIO_ODR_HIGH)
+GPIO(I2C_PORT0_0_SDA,   PIN(16), GPIO_ODR_HIGH)
+GPIO(I2C_PORT0_1_SDA,   PIN(17), GPIO_ODR_HIGH)
 
 GPIO(I2C_PORT2_SCL,     PIN(20), GPIO_ODR_HIGH)
 GPIO(I2C_PORT2_SDA,     PIN(21), GPIO_ODR_HIGH)
@@ -73,7 +73,7 @@ GPIO(USB1_ENABLE,       PIN(67), GPIO_OUT_LOW)                  /* Enable power 
 
 GPIO(NC_GPIO100,        PIN(100), GPIO_INPUT | GPIO_PULL_UP)    /* NC */
 GPIO(NC_GPIO101,        PIN(101), GPIO_INPUT | GPIO_PULL_UP)    /* NC */
-GPIO(NC_GPIO102,        PIN(102), GPIO_INPUT | GPIO_PULL_UP)    /* NC */
+GPIO(BOARD_VERSION3,    PIN(102), GPIO_INPUT)                   /* BOARD_ID2 */
 GPIO(USB_CTL1,          PIN(105), GPIO_OUT_HIGH)                /* USB charging mode control */
 
 GPIO(PCH_RCIN_L,        PIN(110), GPIO_ODR_HIGH)                /* Reset line to PCH (for 8042 emulation) */
@@ -84,7 +84,7 @@ GPIO(EC_VNN_ALERT_L,    PIN(124), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(GYRO_INT2,         PIN(127), GPIO_INPUT | GPIO_PULL_DOWN)   /* Gyro sensor interrupt 2 to EC */
 
 GPIO(EC_PLUG_DETECT,    PIN(132), GPIO_INT_BOTH | GPIO_PULL_UP | GPIO_PULL_DOWN)
-GPIO(BOARD_VERSION2,    PIN(134), GPIO_INPUT)                    /* BOARD_ID1 */
+GPIO(I2C_PORT0_1_SCL,   PIN(134), GPIO_ODR_HIGH)
 GPIO(PD_RST_L,          PIN(135), GPIO_ODR_HIGH)                 /* USB PD MCU reset */
 
 GPIO(THERMAL_PROBE_EN_L,PIN(140), GPIO_OUT_HIGH)
@@ -115,8 +115,9 @@ GPIO(GPIO_3_EC,         PIN(211), GPIO_OUT_LOW)                  /* Sleep SOIX s
 /* Alternate functions GPIO definition */
 ALTERNATE(PIN_MASK(16, 0x24),   1,    MODULE_UART,            0)                    /* UART0 */
 
-ALTERNATE(PIN_MASK(1,  0x60),   2,    MODULE_I2C,             GPIO_OPEN_DRAIN)      /* I2C0: Battery Charger */
-ALTERNATE(PIN_MASK(2,  0x3f),   2,    MODULE_I2C,             GPIO_OPEN_DRAIN)      /* I2C1: Temp Sensor / I2C2: SOC / I2C3: VNN */
+ALTERNATE(PIN_MASK(1,  0xE0),   2,    MODULE_I2C,             GPIO_OPEN_DRAIN)      /* I2C0_0: Battery, Charger */
+ALTERNATE(PIN_MASK(2,  0x3f),   2,    MODULE_I2C,             GPIO_OPEN_DRAIN)      /* I2C1, I2C2, I2C3: {PD_MCU, TCPC}, {Sensors}, {Thermal} */
+ALTERNATE(PIN_MASK(13, 0x10),   2,    MODULE_I2C,             GPIO_OPEN_DRAIN)      /* I2C0_1: MUX, USB charger */
 
 ALTERNATE(PIN_MASK(0,  0xfc),   3,    MODULE_KEYBOARD_SCAN,   GPIO_KB_OUTPUT)
 ALTERNATE(PIN_MASK(1,  0x03),   3,    MODULE_KEYBOARD_SCAN,   GPIO_KB_OUTPUT)
