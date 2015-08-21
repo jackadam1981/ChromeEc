@@ -147,6 +147,15 @@ static void battery_led(void)
 	/* If Battery critical Low, blink orange, 50% duty cycle,
 	 * 2 sec period.
 	 */
+	if (chstate == PWR_STATE_ERROR) {
+		set_color_battery_led((battery_ticks & 0x4) ?
+				      LED_ORANGE : LED_OFF);
+		return;
+	}
+
+	/* If Battery critical Low, blink orange, 50% duty cycle,
+	 * 2 sec period.
+	 */
 	if (!extpower_is_present() && chipset_in_state(CHIPSET_STATE_ON) &&
 	    (batt.state_of_charge <= CONFIG_BATTERY_LEVEL_CRITICAL)) {
 		set_color_battery_led((battery_ticks & 0x4) ?
