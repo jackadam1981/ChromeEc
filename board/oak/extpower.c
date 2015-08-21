@@ -13,12 +13,30 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "system.h"
+#ifdef CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING
+#include "tmp432.h"
+#endif
 #include "util.h"
 
 int extpower_is_present(void)
 {
 	return gpio_get_level(GPIO_AC_PRESENT);
 }
+
+#ifdef CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING
+static void tmp432_set_power_deferred(void)
+{
+	/* Shut tmp432 down if not in S0 && no external power */
+	if (!extpower_is_present() && !chipset_in_state(CHIPSET_STATE_ON)) {
+		tmp432_set_power(TMP432_POWER_OFF);
+		return;
+	}
+
+	/*  else, turn it on. */
+	tmp432_set_power(TMP432_POWER_ON);
+}
+DECLARE_DEFERRED(tmp432_set_power_deferred);
+#endif
 
 static void extpower_buffer_to_soc(void)
 {
@@ -39,6 +57,9 @@ void extpower_interrupt(enum gpio_signal signal)
 {
 	/* Trigger notification of external power change */
 	extpower_buffer_to_soc();
+#ifdef CONFIG_TEMP_SENSOR_TMP432_SW_PWR_SAVING
+	hook_call_deferred(tmp432_set_power_deferred, 0);
+#endif
 }
 
 static void extpower_init(void)
