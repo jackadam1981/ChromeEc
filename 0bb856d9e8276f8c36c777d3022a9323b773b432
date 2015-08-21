@@ -22,6 +22,30 @@
       "revId": "0bb856d9e8276f8c36c777d3022a9323b773b432",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048f817d_a9e2f191",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-08-21T20:57:00Z",
+      "side": 0,
+      "message": "does it have to be a part of this patch? I am always nervous with drive by changes like this.",
+      "parentUuid": "84253145_c8e89b2b",
+      "range": {
+        "startLine": 138,
+        "startChar": 24,
+        "endLine": 138,
+        "endChar": 66
+      },
+      "revId": "0bb856d9e8276f8c36c777d3022a9323b773b432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

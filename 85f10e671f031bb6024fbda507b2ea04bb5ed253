@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e430ad80_9d5e64bc",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-08-21T20:57:00Z",
+      "side": 1,
+      "message": "a nit: \"BOARD_MK_INCLUDED_ONCE is nonempty\" is more accurate",
+      "range": {
+        "startLine": 39,
+        "startChar": 10,
+        "endLine": 39,
+        "endChar": 37
+      },
+      "revId": "85f10e671f031bb6024fbda507b2ea04bb5ed253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
