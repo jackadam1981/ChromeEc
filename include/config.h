@@ -1888,4 +1888,10 @@
 #error "CONFIG_AUX_TIMER_PERIOD_MS must be at least 2x HOOK_TICK_INTERVAL_MS"
 #endif
 
+/*
+ * If needed to allocate some free space in the base of the RO section of the
+ * image, define this to be equal the required size of the free space.
+ */
+#undef CONFIG_RO_HEAD_ROOM
+
 #endif  /* __CROS_EC_CONFIG_H */
