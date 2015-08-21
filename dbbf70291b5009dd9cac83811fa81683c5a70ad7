@@ -22,6 +22,30 @@
       "revId": "dbbf70291b5009dd9cac83811fa81683c5a70ad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e430ad80_60e4fb19",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-08-21T21:52:32Z",
+      "side": 1,
+      "message": "I still need lstrip() to remove leading whitespace.\n\nHowever, I can change the \u0027find() \u003d\u003d 0\u0027 to startswith().",
+      "parentUuid": "c42ba915_6a9a9b7c",
+      "range": {
+        "startLine": 233,
+        "startChar": 9,
+        "endLine": 233,
+        "endChar": 38
+      },
+      "revId": "dbbf70291b5009dd9cac83811fa81683c5a70ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
