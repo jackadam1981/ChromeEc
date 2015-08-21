@@ -42,7 +42,7 @@ GPIO(I2C3_SCL,              PIN(24),  GPIO_INPUT)
 GPIO(I2C3_SDA,              PIN(25),  GPIO_INPUT)
 GPIO(PCH_SCI_L,             PIN(26),  GPIO_ODR_HIGH)
 
-GPIO(NC_034,                PIN(34),  GPIO_INPUT | GPIO_PULL_UP)
+GPIO(PMIC_SLP_SUS_L,        PIN(34),  GPIO_OUT_LOW)
 GPIO(USB1_ENABLE,           PIN(36),  GPIO_OUT_HIGH)
 GPIO(USB2_ENABLE,           PIN(67),  GPIO_OUT_HIGH)
 GPIO(ENTERING_RW,           PIN(41),  GPIO_OUT_LOW)
@@ -60,7 +60,7 @@ GPIO(PCH_WAKE_L,            PIN(66),  GPIO_ODR_HIGH)
 GPIO(EC_FAN1_TTACH,         PIN(105), GPIO_INPUT)
 /* Fan PWM output - NC / testing only */
 GPIO(EC_FAN1_PWM,           PIN(136), GPIO_OUT_LOW)
-GPIO(PCH_ACOK,              PIN(110), GPIO_ODR_HIGH)
+GPIO(PCH_ACOK,              PIN(110), GPIO_OUT_LOW)
 /* Interrupts from accelerometer / gyro -- not yet implemented */
 GPIO(LID_ACCEL_INT,         PIN(161), GPIO_INPUT | GPIO_PULL_DOWN)  /* Lid ACCEL sensor interrupt to EC */
 GPIO(GYRO_INT,              PIN(127), GPIO_INPUT | GPIO_PULL_DOWN)  /* Lid Gyro sensor interrupt to EC */
@@ -71,7 +71,7 @@ GPIO(WLAN_OFF_L,            PIN(132), GPIO_OUT_HIGH)
 GPIO(PCH_RCIN_L,            PIN(135), GPIO_ODR_HIGH)
 GPIO(USB2_OTG_VBUSSENSE,    PIN(140), GPIO_ODR_HIGH)
 /* Sensor input for KB PROX - UNUSED */
-GPIO(KB_PROX_INT_L,         PIN(141), GPIO_INPUT)
+GPIO(PCH_BATLOW_L,          PIN(141), GPIO_ODR_HIGH)
 GPIO(PCH_RSMRST_L,          PIN(143), GPIO_OUT_LOW)
 /* prochot input from devices */
 GPIO(PLATFORM_EC_PROCHOT,   PIN(151), GPIO_INPUT)

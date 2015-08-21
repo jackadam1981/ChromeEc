@@ -17,6 +17,10 @@
 #include "util.h"
 #include "wireless.h"
 
+#ifdef BOARD_KUNIMITSU
+#undef BOARD_KUNIMITSU
+#endif
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
