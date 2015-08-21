@@ -39,6 +39,7 @@ void extpower_interrupt(enum gpio_signal signal)
 {
 	/* Trigger notification of external power change */
 	extpower_buffer_to_soc();
+	hook_notify(HOOK_AC_CHANGE);
 }
 
 static void extpower_init(void)
