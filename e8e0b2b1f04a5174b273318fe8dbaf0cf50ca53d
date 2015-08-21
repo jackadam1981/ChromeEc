@@ -148,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "84de1159_2bc81949",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-21T01:39:19Z",
+      "side": 1,
+      "message": "Is it a short high impulse that by the time you read status it\u0027s asserted again? Couldn\u0027t you just return and wait for the next deassertion?\n\nSorry, it\u0027s not clear to me what is actually being observed. When I look at https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d43996#c3 I see assertion and deassertion time.  100ms at least for each. So I don\u0027t understand why any of this is needed. The one super small impulse would presumably just do this:\n\nport_80_write(PORT_80_EVENT_RESET);\n\"LPC RESET# asserted\"\n\nBut then on the next transition (deassertion) we\u0027d setup_lpc()",
+      "parentUuid": "a47f9520_206cd2a8",
+      "revId": "e8e0b2b1f04a5174b273318fe8dbaf0cf50ca53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4434d7f_04ca1ab2",
         "filename": "chip/mec1322/lpc.c",
         "patchSetId": 2
