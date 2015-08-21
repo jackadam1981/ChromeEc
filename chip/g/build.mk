@@ -14,6 +14,7 @@ ver_params := $(shell echo "$(ver_defs) $(bld_defs)" | $(CPP) $(CPPFLAGS) -P \
                 -imacros chip/g/${CHIP_VARIANT}_regdefs.h | sed -e "s/__REV\([A-Z]\)__/\1/")
 ver_str := $(shell printf "%s%s %d_%d" $(ver_params))
 CPPFLAGS+= -DGC_REVISION="$(ver_str)"
+CPPFLAGS += -DCONFIG_RO_HEAD_ROOM=1024
 
 # Required chip modules
 chip-y=clock.o gpio.o hwtimer.o jtag.o system.o

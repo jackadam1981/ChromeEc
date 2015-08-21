@@ -5,11 +5,11 @@
 #include "config.h"
 #include "rsa.h"
 
-#define FW_MEM_OFF_(section) CONFIG_##section##_MEM_OFF
+#define FW_MEM_OFF_(section) CONFIG_##section##_HEAD_ROOM
 #define FW_MEM_OFF(section) (FW_MEM_OFF_(section))
 #define FW_OFF(section) (CONFIG_FLASH_BASE + FW_MEM_OFF(section))
 
-#define FW_SIZE_(section) CONFIG_##section##_SIZE
+#define FW_SIZE_(section) (CONFIG_##section##_SIZE - FW_MEM_OFF(section))
 #define FW_SIZE(section) FW_SIZE_(section)
 
 
