@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84253145_2dd84197",
+        "filename": "board/gnawty/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-08-21T17:57:48Z",
+      "side": 1,
+      "message": "this seems to have the same behavior as the next case. How do you differentiate between the two if the LED behavior is the same.",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 32
+      },
+      "revId": "b5d820f839fb4478a390cec1141f8f71111041b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
