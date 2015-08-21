@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4485f957_85f4b2fa",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-21T17:14:19Z",
+      "side": 1,
+      "message": "It\u0027s not a big deal, but I think it\u0027s better to use your inline functions raw_read16 / raw_write16 in this function.",
+      "revId": "03a7adf0ac7d827be1807949c2ce60143b45b666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
