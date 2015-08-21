@@ -82,6 +82,12 @@
 #define TMP432_STATUS_TEMP_HIGH_ALARM	(1 << 4)
 #define TMP432_STATUS_BUSY		(1 << 7)
 
+enum tmp432_power_state {
+	TMP432_POWER_OFF = 0,
+	TMP432_POWER_ON,
+	TMP432_POWER_COUNT
+};
+
 /**
  * Get the last polled value of a sensor.
  *
@@ -93,4 +99,5 @@
  */
 int tmp432_get_val(int idx, int *temp_ptr);
 
+void tmp432_set_power(enum tmp432_power_state power_on);
 #endif /* __CROS_EC_TMP432_H */
