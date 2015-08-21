@@ -68,6 +68,30 @@
       "revId": "867f5277decdcbd483f0891b8ac4862ca47803d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4700952_1629e239",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-08-21T01:08:35Z",
+      "side": 1,
+      "message": "Done. Yeah, looking back it seemed that the indentation got messed up when moving it to its own function.",
+      "parentUuid": "4485f957_da3a9982",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 30
+      },
+      "revId": "867f5277decdcbd483f0891b8ac4862ca47803d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
