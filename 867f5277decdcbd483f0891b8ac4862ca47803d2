@@ -45,6 +45,29 @@
       "revId": "867f5277decdcbd483f0891b8ac4862ca47803d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_da3a9982",
+        "filename": "util/config_option_check.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-08-21T00:37:40Z",
+      "side": 1,
+      "message": "I think that the else clause needs to be indented to the left one and drop the \"and ..\" part.\n\nIf we didn\u0027t find the leading \u0027/*\u0027 and no \u0027* \u0027, then I believe it is neither a single line comment nor a multi-line comment according to our coding style.",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 30
+      },
+      "revId": "867f5277decdcbd483f0891b8ac4862ca47803d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
