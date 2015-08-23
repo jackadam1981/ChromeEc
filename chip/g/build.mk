@@ -33,3 +33,7 @@ chip-$(CONFIG_USB_CONSOLE)+=usb_console.o
 chip-$(CONFIG_USB_HID)+=usb_hid.o
 # TODO(wfrichar): Document this (and all other CONFIG_USB_*) in config.h
 chip-$(CONFIG_USB_BLOB)+=usb_blob.o
+
+$(out)/RO/ec.RO.flat: $(out)/util/signer
+
+$(out)/RO/ec.RO.hex: $(out)/RO/ec.RO.flat.signed
