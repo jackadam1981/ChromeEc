@@ -61,6 +61,9 @@ cmd_c_to_build = $(BUILDCC) $(BUILD_CFLAGS) \
 	         -MMD -MF $@.d -o $@
 cmd_c_to_host = $(HOSTCC) $(HOST_CFLAGS) -MMD -MF $@.d  -o $@ \
 	         $(sort $(foreach c,$($(*F)-objs),util/$(c:%.o=%.c)) $*.c)
+cmd_cxx_to_host = $(HOSTCXX) -std=c++0x $(COMMON_WARN) \
+	-I ./$($(notdir $@)_ROOT) -o $@ $(filter %.cc,$^) \
+	$($(notdir $@)_LIBS)
 cmd_host_test = ./util/run_host_test $* $(silent)
 cmd_date = $(if $(USE_GIT_DATE),cat /dev/null,./util/getdate.sh) > $@
 cmd_version = ./util/getversion.sh > $@
