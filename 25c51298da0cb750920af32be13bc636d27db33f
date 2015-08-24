@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "048f817d_b1c9f323",
+        "filename": "util/signer/codesigner.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-08-24T20:35:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a42a3512_aa5f50f0",
+      "revId": "25c51298da0cb750920af32be13bc636d27db33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4485f957_1d8a56f8",
         "filename": "util/signer/codesigner.cc",
         "patchSetId": 5
@@ -30,6 +48,30 @@
       "writtenOn": "2015-08-24T20:27:03Z",
       "side": 1,
       "message": "This is only used to get the constant to embed into the boot rom. Not needed here.",
+      "range": {
+        "startLine": 114,
+        "startChar": 6,
+        "endLine": 114,
+        "endChar": 13
+      },
+      "revId": "25c51298da0cb750920af32be13bc636d27db33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4700952_d99dc6eb",
+        "filename": "util/signer/codesigner.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-08-24T20:35:54Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "4485f957_1d8a56f8",
       "range": {
         "startLine": 114,
         "startChar": 6,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "4485f957_dd55aecc",
+        "filename": "util/signer/codesigner.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-08-24T20:35:54Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "048f817d_91962f1d",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 16
+      },
+      "revId": "25c51298da0cb750920af32be13bc636d27db33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4485f957_3d939a2f",
         "filename": "util/signer/rom-testkey.pem",
         "patchSetId": 5
@@ -76,6 +142,30 @@
       "writtenOn": "2015-08-24T20:30:11Z",
       "side": 1,
       "message": "There are lots of keys in here; notice all the commented out ----BEGIN lines\n\nUltimately, only one gets used, -3 3071",
+      "range": {
+        "startLine": 2,
+        "startChar": 6,
+        "endLine": 2,
+        "endChar": 11
+      },
+      "revId": "25c51298da0cb750920af32be13bc636d27db33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048f817d_71d4ebb6",
+        "filename": "util/signer/rom-testkey.pem",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-08-24T20:35:54Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "4485f957_3d939a2f",
       "range": {
         "startLine": 2,
         "startChar": 6,
