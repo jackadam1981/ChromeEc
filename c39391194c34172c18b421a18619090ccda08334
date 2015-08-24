@@ -22,6 +22,30 @@
       "revId": "c39391194c34172c18b421a18619090ccda08334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2403a5c0_fbec6bb7",
+        "filename": "board/oak/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-08-24T08:08:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0406a1cf_77107009",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "c39391194c34172c18b421a18619090ccda08334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
