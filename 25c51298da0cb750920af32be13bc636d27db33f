@@ -62,6 +62,29 @@
       "revId": "25c51298da0cb750920af32be13bc636d27db33f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_3d939a2f",
+        "filename": "util/signer/rom-testkey.pem",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-08-24T20:30:11Z",
+      "side": 1,
+      "message": "There are lots of keys in here; notice all the commented out ----BEGIN lines\n\nUltimately, only one gets used, -3 3071",
+      "range": {
+        "startLine": 2,
+        "startChar": 6,
+        "endLine": 2,
+        "endChar": 11
+      },
+      "revId": "25c51298da0cb750920af32be13bc636d27db33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
