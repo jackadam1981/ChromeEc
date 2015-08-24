@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0406a1cf_77107009",
+        "filename": "board/oak/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-24T08:04:52Z",
+      "side": 1,
+      "message": "crosbug.com/p/44428",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "c39391194c34172c18b421a18619090ccda08334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
