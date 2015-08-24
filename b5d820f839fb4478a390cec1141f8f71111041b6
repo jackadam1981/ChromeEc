@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e430ad80_51a3d3fb",
+        "filename": "board/gnawty/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-08-24T18:34:59Z",
+      "side": 1,
+      "message": "This comment seems to be for the code below the next comment?",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 4
+      },
+      "revId": "b5d820f839fb4478a390cec1141f8f71111041b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84253145_2dd84197",
         "filename": "board/gnawty/led.c",
         "patchSetId": 2
@@ -18,6 +41,53 @@
         "startChar": 2,
         "endLine": 152,
         "endChar": 32
+      },
+      "revId": "b5d820f839fb4478a390cec1141f8f71111041b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_e729f9bd",
+        "filename": "board/gnawty/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-08-24T18:34:59Z",
+      "side": 1,
+      "message": "If these are desired to have the same LED behavior, then perhaps we can put this state into the one below (e.g. add || (chstate \u003d\u003d PWR_STATE_ERROR)). \n\nIf this is a real error condition though, we might want a more obnoxious blinking as a warning.",
+      "parentUuid": "84253145_2dd84197",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 32
+      },
+      "revId": "b5d820f839fb4478a390cec1141f8f71111041b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_105795d8",
+        "filename": "board/gnawty/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-08-24T18:34:59Z",
+      "side": 1,
+      "message": "This comment seems to be for the code above?",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 4
       },
       "revId": "b5d820f839fb4478a390cec1141f8f71111041b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
