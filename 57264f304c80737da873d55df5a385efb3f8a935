@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "248c8586_0202ec7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-24T19:51:47Z",
+      "side": 1,
+      "message": "I don\u0027t understand what you wrote here.",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "57264f304c80737da873d55df5a385efb3f8a935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_bf0bf861",
+        "filename": "board/celes/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-24T19:51:47Z",
+      "side": 1,
+      "message": "No need to define then undef this. Just remove both the define and the undef.",
+      "revId": "57264f304c80737da873d55df5a385efb3f8a935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4700952_d9e706a1",
+        "filename": "chip/mec1322/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-24T19:51:47Z",
+      "side": 1,
+      "message": "There should be no need for this case, KS02 should already be driven correctly by the write to the KSO Select Register.",
+      "revId": "57264f304c80737da873d55df5a385efb3f8a935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4700952_79fdb22c",
+        "filename": "chip/mec1322/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-24T19:51:47Z",
+      "side": 1,
+      "message": "There should be no need for this case, KS02 should already be driven correctly by the write to the KSO Select Register.",
+      "revId": "57264f304c80737da873d55df5a385efb3f8a935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_e720195c",
+        "filename": "chip/mec1322/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-24T19:51:47Z",
+      "side": 1,
+      "message": "Why does KS02 need special handling if it\u0027s not inverted?",
+      "revId": "57264f304c80737da873d55df5a385efb3f8a935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
