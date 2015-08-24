@@ -191,5 +191,5 @@ libsharedobjs_elf-$(CONFIG_SHAREDLIB) := \
 libsharedobjs: $(libsharedobjs-y)
 
 include Makefile.rules
-export CROSS_COMPILE CFLAGS
+export CROSS_COMPILE CFLAGS CC CPP LD  NM AR OBJCOPY OBJDUMP
 endif # SYMLINK
