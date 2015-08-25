@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2403a5c0_1b979f53",
+        "filename": "board/gnawty/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1110544
+      },
+      "writtenOn": "2015-08-25T02:38:42Z",
+      "side": 1,
+      "message": "Hi Moch,\n\nThe next case is used for Battery CRITICAL LOW.\nWe separate them in differenr case.",
+      "parentUuid": "84253145_2dd84197",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 32
+      },
+      "revId": "b5d820f839fb4478a390cec1141f8f71111041b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84253145_105795d8",
         "filename": "board/gnawty/led.c",
         "patchSetId": 2
