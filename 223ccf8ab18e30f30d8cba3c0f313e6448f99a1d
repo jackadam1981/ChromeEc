@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "440c19ee_dc1fe161",
+        "filename": "board/celes/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-08-25T07:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e430ad80_ac5f6cf0",
+      "revId": "223ccf8ab18e30f30d8cba3c0f313e6448f99a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4700952_1917ce07",
         "filename": "board/celes/led.c",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2015-08-24T19:59:43Z",
       "side": 1,
       "message": "Rather than zeroing power_ticks in every state, you can zero it here. if (charge_get_state()) !\u003d PWR_STATE_ERROR) power_ticks \u003d 0;",
+      "revId": "223ccf8ab18e30f30d8cba3c0f313e6448f99a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4f34d19_c120a4a7",
+        "filename": "board/celes/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-08-25T07:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4700952_1917ce07",
       "revId": "223ccf8ab18e30f30d8cba3c0f313e6448f99a1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
