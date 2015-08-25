@@ -7,7 +7,7 @@
 #
 
 common-y=util.o
-common-y+=version.o printf.o queue.o queue_policies.o
+common-y+=version.o printf.o queue.o queue_policies.o consumer_printing.o
 
 common-$(CONFIG_ACCELGYRO_BMI160)+=math_util.o
 common-$(CONFIG_ACCELGYRO_LSM6DS0)+=math_util.o
