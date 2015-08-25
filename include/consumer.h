@@ -44,4 +44,9 @@ struct consumer {
 	struct consumer_ops const *ops;
 };
 
+static inline void consumer_flush(struct consumer const *consumer)
+{
+	consumer->ops->flush(consumer);
+}
+
 #endif /* __CROS_EC_CONSUMER_H */
