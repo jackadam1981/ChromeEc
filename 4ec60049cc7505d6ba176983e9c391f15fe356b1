@@ -22,6 +22,30 @@
       "revId": "4ec60049cc7505d6ba176983e9c391f15fe356b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "248c8586_b6031ec8",
+        "filename": "Makefile.rules",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-08-25T02:26:53Z",
+      "side": 0,
+      "message": "ah, I was curious why they were there, since everything available now builds just fine. I will duplicate them, but this is a hell of a debugging problem: having two rules which handle the same patterns...",
+      "parentUuid": "e430ad80_04075427",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 37
+      },
+      "revId": "4ec60049cc7505d6ba176983e9c391f15fe356b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
