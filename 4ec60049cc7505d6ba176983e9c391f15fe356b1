@@ -46,6 +46,30 @@
       "revId": "4ec60049cc7505d6ba176983e9c391f15fe356b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_45ab0c90",
+        "filename": "Makefile.rules",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-08-25T15:54:22Z",
+      "side": 0,
+      "message": "On second thought, don\u0027t duplicate them. I thought I had a good reason for doing this, but taking a look this morning, I can\u0027t see why. I think it\u0027s safe to add the \"--set-section-flags\" option to the \"elf_to_flat\" command and just remove the \"ec_elf_to_flat\" command.\n\nIt appears that objcopy doesn\u0027t complain if you set flags on a nonexistent section.",
+      "parentUuid": "248c8586_b6031ec8",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 37
+      },
+      "revId": "4ec60049cc7505d6ba176983e9c391f15fe356b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
