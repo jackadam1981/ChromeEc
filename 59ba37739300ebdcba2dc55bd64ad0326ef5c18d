@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2403a5c0_bb667347",
+        "filename": "board/oak/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-08-25T11:23:35Z",
+      "side": 1,
+      "message": "refer to the board.c of glados and usb_charger_task(), it seems that should send USB_CHG_EVENT_BC12 event to usb charger task. \ntask_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);\ntask_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 31
+      },
+      "revId": "59ba37739300ebdcba2dc55bd64ad0326ef5c18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e430ad80_0bc52d07",
         "filename": "board/oak/gpio.inc",
         "patchSetId": 1
