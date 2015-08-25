@@ -13,9 +13,11 @@
 
 /* Task event bitmasks */
 /* Tasks may use the bits in TASK_EVENT_CUSTOM for their own events */
-#define TASK_EVENT_CUSTOM(x)	(x & 0x03ffffff)
+#define TASK_EVENT_CUSTOM(x)	(x & 0x01ffffff)
 /* DMA transmit complete event */
-#define TASK_EVENT_DMA_TC       (1 << 26)
+#define TASK_EVENT_QUEUE	(1 << 25)
+/* DMA transmit complete event */
+#define TASK_EVENT_DMA_TC	(1 << 26)
 /* ADC interrupt handler event */
 #define TASK_EVENT_ADC_DONE	(1 << 27)
 /* I2C interrupt handler event */
