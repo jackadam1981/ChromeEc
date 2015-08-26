@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4700952_5e7c53d7",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-26T21:38:34Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to just call this system_save_reset_flags and comment (as you already have) that it\u0027s implemented at the chip-level? It seems confusing that we have to call system_get_reset_flags vs chip_save_reset_flags.. the board-level code calling the function shouldn\u0027t need to care whether it\u0027s implemented by-chip or not.",
+      "revId": "fdd946dbe7ba407b73f404d7a826e5ebbcef59eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
