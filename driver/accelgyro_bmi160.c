@@ -15,6 +15,7 @@
 #include "driver/mag_bmm150.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "lightbar.h"
 #include "math_util.h"
 #include "spi.h"
 #include "task.h"
@@ -59,6 +60,8 @@ static int wakeup_time[] = {
 	[MOTIONSENSE_TYPE_GYRO] = 80,
 	[MOTIONSENSE_TYPE_MAG] = 1
 };
+
+static int enable_tap_for_battery;
 
 static inline const struct accel_param_pair *get_range_table(
 		enum motionsensor_type type, int *psize)
@@ -714,8 +717,13 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t event)
 
 	if (interrupt & BMI160_S_TAP_INT)
 		CPRINTS("single tap: %08x", interrupt);
-	if (interrupt & BMI160_D_TAP_INT)
+	if (interrupt & BMI160_D_TAP_INT) {
 		CPRINTS("double tap: %08x", interrupt);
+#ifdef HAS_TASK_LIGHTBAR
+		if (enable_tap_for_battery)
+			lightbar_sequence(LIGHTBAR_TAP);
+#endif
+	}
 	if (interrupt & BMI160_FLAT_INT)
 		CPRINTS("flat: %08x", interrupt);
 	/*
@@ -1029,6 +1037,18 @@ static int init(const struct motion_sensor_t *s)
 			s->runtime_config.odr);
 	return ret;
 }
+
+static void bmi160_resume(void)
+{
+	enable_tap_for_battery = 0;
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, bmi160_resume, HOOK_PRIO_DEFAULT);
+
+static void bmi160_suspend(void)
+{
+	enable_tap_for_battery = 1;
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, bmi160_suspend, HOOK_PRIO_DEFAULT);
 
 const struct accelgyro_drv bmi160_drv = {
 	.init = init,
