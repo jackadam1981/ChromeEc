@@ -16,6 +16,24 @@
       "revId": "fdd946dbe7ba407b73f404d7a826e5ebbcef59eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64659dc3_1a35bdde",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-08-26T22:38:35Z",
+      "side": 1,
+      "message": "The system ones are a different flag namespace. Those are passed into system_reset() but then changed into RESET_FLAG. We already have system_set_reset_flags() which is just setting the global data -- not the nv. I didn\u0027t want to complicate things.\n\nAny better ideas?",
+      "parentUuid": "c4700952_5e7c53d7",
+      "revId": "fdd946dbe7ba407b73f404d7a826e5ebbcef59eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
