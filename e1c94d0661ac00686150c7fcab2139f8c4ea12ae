@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "048f817d_95b052c8",
+        "filename": "driver/accel_kxcj9.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2015-08-26T20:00:41Z",
+      "side": 1,
+      "message": "This format string is invalid now.",
+      "range": {
+        "startLine": 532,
+        "startChar": 1,
+        "endLine": 533,
+        "endChar": 34
+      },
+      "revId": "e1c94d0661ac00686150c7fcab2139f8c4ea12ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "248c8586_937941e9",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2015-08-26T20:00:41Z",
+      "side": 1,
+      "message": "Ditto here.",
+      "range": {
+        "startLine": 1021,
+        "startChar": 0,
+        "endLine": 1022,
+        "endChar": 35
+      },
+      "revId": "e1c94d0661ac00686150c7fcab2139f8c4ea12ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_33941849",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2015-08-26T20:00:41Z",
+      "side": 1,
+      "message": "Is this bit-packing really necessary? Seems like we should be able to use 16-bit numbers for the flag and data rate. Will we ever sample below 16 Hz?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "e1c94d0661ac00686150c7fcab2139f8c4ea12ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
