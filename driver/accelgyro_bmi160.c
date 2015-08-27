@@ -254,9 +254,12 @@ static int bmm150_mag_access_ctrl(const int addr, const int enable)
  */
 int raw_mag_read8(const int addr, const uint8_t reg, int *data_ptr)
 {
+	int ret;
 	/* Only read 1 bytes */
 	raw_write8(addr, BMI160_MAG_I2C_READ_ADDR, reg);
-	return raw_read8(addr, BMI160_MAG_I2C_READ_DATA, data_ptr);
+	ret = raw_read8(addr, BMI160_MAG_I2C_READ_DATA, data_ptr);
+	CPRINTS("magread: %02X: %02x = %d", reg, *data_ptr, ret);
+	return ret;
 }
 
 /**
@@ -265,8 +268,11 @@ int raw_mag_read8(const int addr, const uint8_t reg, int *data_ptr)
  */
 int raw_mag_write8(const int addr, const uint8_t reg, int data)
 {
+	int ret;
 	raw_write8(addr, BMI160_MAG_I2C_WRITE_DATA, data);
-	return raw_write8(addr, BMI160_MAG_I2C_WRITE_ADDR, reg);
+	ret = raw_write8(addr, BMI160_MAG_I2C_WRITE_ADDR, reg);
+	CPRINTS("magwrtie: %02X: %02x = %d", reg, data, ret);
+	return ret;
 }
 #endif
 
