@@ -70,7 +70,7 @@ void flash_cs_level(int level)
 	UPDATE_BIT(NPCX_UMA_ECTS, NPCX_UMA_ECTS_SW_CS1, level);
 }
 
-void flash_wait_ready(void)
+int flash_wait_ready(void)
 {
 	uint8_t mask = SPI_FLASH_SR1_BUSY;
 	uint16_t timeout = FLASH_ABORT_TIMEOUT;
@@ -90,22 +90,36 @@ void flash_wait_ready(void)
 
 		msleep(1);
 	}; /* Wait for Busy clear */
+
+	if (timeout == 0)
+		return EC_ERROR_TIMEOUT;
 	/* Chip Select high. */
 	flash_cs_level(1);
+
+	return EC_SUCCESS;
 }
 
 int flash_write_enable(void)
 {
 	uint8_t mask = SPI_FLASH_SR1_WEL;
+	int rv;
+	/* Wait for previous operation to complete */
+	rv = flash_wait_ready();
+	if (rv)
+		return rv;
+
 	/* Write enable command */
 	flash_execute_cmd(CMD_WRITE_EN, MASK_CMD_ONLY);
+
 	/* Wait for flash is not busy */
-	flash_wait_ready();
+	rv = flash_wait_ready();
+	if (rv)
+		return rv;
 
 	if (NPCX_UMA_DB0 & mask)
-		return 1;
+		return EC_SUCCESS;
 	else
-		return 0;
+		return EC_ERROR_BUSY;
 }
 
 void flash_set_address(uint32_t dest_addr)
@@ -375,11 +389,11 @@ void flash_burst_write(unsigned int dest_addr, unsigned int bytes,
 		const char *data)
 {
 	unsigned int i;
-	/* Chip Select down. */
+	/* Chip Select down */
 	flash_cs_level(0);
-	/* Set erase address */
+	/* Set write address */
 	flash_set_address(dest_addr);
-	/* Start write */
+	/* Start programming */
 	flash_execute_cmd(CMD_FLASH_PROGRAM, MASK_CMD_WR_ADR);
 	for (i = 0; i < bytes; i++) {
 		flash_execute_cmd(*data, MASK_CMD_WR_ONLY);
@@ -387,6 +401,38 @@ void flash_burst_write(unsigned int dest_addr, unsigned int bytes,
 	}
 	/* Chip Select up */
 	flash_cs_level(1);
+}
+
+int flash_program_bytes(uint32_t offset, uint32_t bytes,
+	const uint8_t const *data)
+{
+	int write_size;
+	int rv;
+
+	while (bytes > 0) {
+		/* Write length can not go beyond the end of the flash page */
+		write_size = MIN(bytes, CONFIG_FLASH_WRITE_IDEAL_SIZE -
+		(offset & (CONFIG_FLASH_WRITE_IDEAL_SIZE - 1)));
+
+		/* Enable write */
+		rv = flash_write_enable();
+		if (rv)
+			return rv;
+
+		/* Burst UMA transaction */
+		flash_burst_write(offset, write_size, data);
+
+		/* Wait write completed */
+		rv = flash_wait_ready();
+		if (rv)
+			return rv;
+
+		data   += write_size;
+		offset += write_size;
+		bytes  -= write_size;
+	}
+
+	return rv;
 }
 
 int flash_uma_lock(int enable)
@@ -517,7 +563,8 @@ int flash_physical_is_erased(uint32_t offset, int size)
 int flash_physical_write(int offset, int size, const char *data)
 {
 	int dest_addr = offset;
-	const int sz_page = CONFIG_FLASH_WRITE_IDEAL_SIZE;
+	int write_len;
+	int rv;
 
 	/* Fail if offset, size, and data aren't at least word-aligned */
 	if ((offset | size
@@ -531,45 +578,32 @@ int flash_physical_write(int offset, int size, const char *data)
 	/* Disable tri-state */
 	TRISTATE_FLASH(0);
 
-	/* Write the data per CONFIG_FLASH_WRITE_IDEAL_SIZE bytes */
-	for (; size >= sz_page; size -= sz_page) {
+	while (size > 0) {
+		/* First write multiples of 256, then (size % 256) last */
+		write_len = ((size % CONFIG_FLASH_WRITE_IDEAL_SIZE) == size) ?
+					size : CONFIG_FLASH_WRITE_IDEAL_SIZE;
 
 		/* check protection */
-		if (flash_check_prot_range(dest_addr, sz_page))
+		if (flash_check_prot_range(dest_addr, write_len))
 			return EC_ERROR_ACCESS_DENIED;
 
-		/* Enable write */
-		flash_write_enable();
-		/* Burst UMA transaction */
-		flash_burst_write(dest_addr, sz_page, data);
-		/* Wait write completed */
-		flash_wait_ready();
+		rv = flash_program_bytes(dest_addr, write_len, data);
+		if (rv)
+			return rv;
 
-		data += sz_page;
-		dest_addr += sz_page;
-	}
-
-	/* Handle final partial page, if any */
-	if (size != 0) {
-		/* check protection */
-		if (flash_check_prot_range(dest_addr, size))
-			return EC_ERROR_ACCESS_DENIED;
-
-		/* Enable write */
-		flash_write_enable();
-		/* Burst UMA transaction */
-		flash_burst_write(dest_addr, size, data);
-		/* Wait write completed */
-		flash_wait_ready();
+		data      += write_len;
+		dest_addr += write_len;
+		size      -= write_len;
 	}
 
 	/* Enable tri-state */
 	TRISTATE_FLASH(1);
-	return EC_SUCCESS;
+	return rv;
 }
 
 int flash_physical_erase(int offset, int size)
 {
+	int rv;
 	/* check protection */
 	if (all_protected)
 		return EC_ERROR_ACCESS_DENIED;
@@ -597,19 +631,24 @@ int flash_physical_erase(int offset, int size)
 		watchdog_reload();
 
 		/* Enable write */
-		flash_write_enable();
+		rv = flash_write_enable();
+		if (rv)
+			return rv;
+
 		/* Set erase address */
 		flash_set_address(offset);
 		/* Start erase */
 		flash_execute_cmd(CMD_SECTOR_ERASE, MASK_CMD_ADR);
 
 		/* Wait erase completed */
-		flash_wait_ready();
+		rv = flash_wait_ready();
+		if (rv)
+			return rv;
 	}
 
 	/* Enable tri-state */
 	TRISTATE_FLASH(1);
-	return EC_SUCCESS;
+	return rv;
 }
 
 int flash_physical_get_protect(int bank)
