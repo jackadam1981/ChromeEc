@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "64091ddd_4fa94ddb",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-08-28T17:29:28Z",
+      "side": 1,
+      "message": "It should pull up CS before exiting the function.",
+      "parentUuid": "0406a1cf_dd8d1b3e",
+      "revId": "ddcc131a12a3884b7ea9e81e20fa657398e519bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84253145_1356add8",
         "filename": "chip/npcx/i2c.c",
         "patchSetId": 3
