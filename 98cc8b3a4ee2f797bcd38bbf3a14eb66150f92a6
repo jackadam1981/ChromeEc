@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "046221c0_eb011914",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-08-28T16:39:55Z",
+      "side": 1,
+      "message": "You may need to make it more complicated:\nwe want to be sure gesture is enabled.\nYou can also add a CONFIG to set the sensitivity as well.\n(something like between 0 and 255 to be pseudo-generic.)",
+      "revId": "98cc8b3a4ee2f797bcd38bbf3a14eb66150f92a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
