@@ -1620,6 +1620,7 @@
  */
 #undef CONFIG_USB_PD_TCPM_STUB
 #undef CONFIG_USB_PD_TCPM_TCPCI
+#undef CONFIG_USB_PD_TCPM_FUSB302
 
 /* Define the type-c port controller I2C base address. */
 #undef CONFIG_TCPC_I2C_BASE_ADDR
