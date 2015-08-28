@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84253145_1356add8",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-28T16:45:39Z",
+      "side": 1,
+      "message": "I think we want this print to be behind CC_I2C, as you had before. The general rule is that all non-console command prints should be behind a CC_ mask so that output can be squelched.",
+      "revId": "ddcc131a12a3884b7ea9e81e20fa657398e519bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_33edeeb1",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-28T16:45:39Z",
+      "side": 1,
+      "message": "We also want this behind CC_I2C.",
+      "revId": "ddcc131a12a3884b7ea9e81e20fa657398e519bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
