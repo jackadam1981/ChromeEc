@@ -16,6 +16,24 @@
       "revId": "98cc8b3a4ee2f797bcd38bbf3a14eb66150f92a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "248c8586_c2d5a760",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2015-08-28T16:57:26Z",
+      "side": 1,
+      "message": "If we enable gesture detection, will we turn on the old MOTIONSENSE task-based double tap detection, though?\n\nBy sensitivity do you mean range, or rate?",
+      "parentUuid": "046221c0_eb011914",
+      "revId": "98cc8b3a4ee2f797bcd38bbf3a14eb66150f92a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
