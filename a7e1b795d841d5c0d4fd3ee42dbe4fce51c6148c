@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "440c19ee_df16b3d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-08-28T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4750d3f_523af880",
+      "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4700952_b5c1d279",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-08-27T23:26:33Z",
       "side": 1,
       "message": "I might split this into two changes, since you\u0027re fixing two distinct problems.",
+      "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4fdd5ea_02a60e97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-08-28T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4700952_b5c1d279",
       "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "c4ee4936_e32966be",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-08-28T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "849451c2_e406ab5b",
+      "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4700952_6a52a562",
         "filename": "chip/npcx/flash.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2015-08-27T23:26:33Z",
       "side": 1,
       "message": "Can this function be static?",
+      "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4ee4936_431f7a92",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-08-28T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4700952_6a52a562",
       "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "2403a5c0_8145001d",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-08-28T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4750d3f_92ee207e",
+      "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4700952_aa6f2d1e",
         "filename": "chip/npcx/i2c.c",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2015-08-27T23:26:33Z",
       "side": 1,
       "message": "I don\u0027t think this variable is necessary, and it limits the duration of timeout (ok, we\u0027ll probably never have a timeout \u003e 2^16 ms...)",
+      "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2403a5c0_21487432",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-08-28T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4700952_aa6f2d1e",
       "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "440c19ee_9f0c3bcc",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-08-28T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "248c8586_69b1464d",
+      "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "046221c0_1d721308",
         "filename": "chip/npcx/i2c.c",
         "patchSetId": 1
@@ -132,6 +258,24 @@
       "writtenOn": "2015-08-27T23:26:33Z",
       "side": 1,
       "message": "Minor annoyance, but in the case of timeout, you\u0027ll needlessly wait 1ms on the last pass through the loop, despite being destined for failure.",
+      "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4f34d19_4461427c",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-08-28T02:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "046221c0_1d721308",
       "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "440c19ee_ff11f7e1",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-08-28T02:37:23Z",
+      "side": 1,
+      "message": "This is abnormal case for i2c.\nI use ccprintf instead of original one even if DEBUG_I2C is not set.",
+      "parentUuid": "c42ba915_cfedee00",
+      "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84253145_9ddbace3",
         "filename": "chip/npcx/i2c.c",
         "patchSetId": 1
@@ -166,6 +328,24 @@
       "writtenOn": "2015-08-27T23:26:33Z",
       "side": 1,
       "message": "can you use CPRINTS for this print?",
+      "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0406a1cf_dae8812b",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-08-28T02:37:23Z",
+      "side": 1,
+      "message": "This is abnormal case for i2c.\nI use ccprintf instead of original one even if DEBUG_I2C is not set.",
+      "parentUuid": "84253145_9ddbace3",
       "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
