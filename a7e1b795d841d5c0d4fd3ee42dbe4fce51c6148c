@@ -317,6 +317,24 @@
     },
     {
       "key": {
+        "uuid": "048f817d_ef01c213",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-08-28T16:45:39Z",
+      "side": 1,
+      "message": "You\u0027re right, I didn\u0027t realize CPRINTS was behind a debug flag.",
+      "parentUuid": "440c19ee_ff11f7e1",
+      "revId": "a7e1b795d841d5c0d4fd3ee42dbe4fce51c6148c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84253145_9ddbace3",
         "filename": "chip/npcx/i2c.c",
         "patchSetId": 1
