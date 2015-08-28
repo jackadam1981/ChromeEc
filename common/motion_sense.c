@@ -446,6 +446,7 @@ void motion_sense_task(void)
 	int sample_id = 0;
 	uint8_t *lpc_status;
 	uint16_t *lpc_data;
+	uint8_t error_print_rate_limit = 100;
 
 	lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
 	lpc_data = (uint16_t *)host_get_memmap(EC_MEMMAP_ACC_DATA);
@@ -465,8 +466,11 @@ void motion_sense_task(void)
 			/* if the sensor is active in the current power state */
 			if (SENSOR_ACTIVE(sensor)) {
 				if (sensor->state != SENSOR_INITIALIZED) {
-					CPRINTS("S%d active, not initalized",
-						sensor);
+					if (error_print_rate_limit > 0 ) {
+						error_print_rate_limit --;
+						CPRINTS("S%d active, not initialized",
+							sensor);
+					}
 					continue;
 				}
 
