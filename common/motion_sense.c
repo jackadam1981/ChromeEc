@@ -465,8 +465,10 @@ void motion_sense_task(void)
 			/* if the sensor is active in the current power state */
 			if (SENSOR_ACTIVE(sensor)) {
 				if (sensor->state != SENSOR_INITIALIZED) {
+#if 0 /* DEBUG */
 					CPRINTS("S%d active, not initalized",
 						sensor);
+#endif
 					continue;
 				}
 
