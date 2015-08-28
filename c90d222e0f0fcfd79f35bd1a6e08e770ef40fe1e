@@ -46,6 +46,30 @@
       "revId": "c90d222e0f0fcfd79f35bd1a6e08e770ef40fe1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42ba915_629ab1c7",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-08-28T18:30:12Z",
+      "side": 1,
+      "message": "I agree with moch, I think what you want to do here is have a function like system_get_board_version() from system.c for determining the panel type, then we put a switch case statement here for the converter settings, and have an assert if a panel config is not recognized.\n\nIf we ever expect to have more than two then it will be more scaleable in the future to have some infrastructure like the board_version has, and we want to assert if we get an invalid panel config since presumably it is very bad to give the wrong voltage, so it would be better to fail to boot then to potentially damage itself.\n\nIt would also be nice to put these i2c values into a structure and pass that to a function to do the i2c writes so this does not have an ever growing list of i2c writes, but that may be more of a nice to have.",
+      "parentUuid": "c4dac934_e67c7492",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "c90d222e0f0fcfd79f35bd1a6e08e770ef40fe1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
