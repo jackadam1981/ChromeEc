@@ -1751,6 +1751,7 @@
  */
 #undef CONFIG_USB_PD_TCPM_STUB
 #undef CONFIG_USB_PD_TCPM_TCPCI
+#undef CONFIG_USB_PD_TCPM_FUSB302
 
 /*
  * Use this option if the TCPC port controller is on a seperate chip from
