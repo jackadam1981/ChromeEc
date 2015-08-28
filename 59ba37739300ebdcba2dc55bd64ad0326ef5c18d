@@ -81,6 +81,24 @@
       "revId": "59ba37739300ebdcba2dc55bd64ad0326ef5c18d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "644afd43_b2b4e01e",
+        "filename": "board/oak/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-28T10:01:27Z",
+      "side": 1,
+      "message": "It seems we might want to wake usb charger task without interrupt. So I placed the interrupt flag checking in board.c.",
+      "parentUuid": "64091ddd_3da9bbdc",
+      "revId": "59ba37739300ebdcba2dc55bd64ad0326ef5c18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
