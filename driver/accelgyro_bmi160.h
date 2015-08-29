@@ -296,11 +296,25 @@ enum fifo_header {
 
 #define BMI160_INT_MOTION_0    0x5f
 #define BMI160_INT_MOTION_1    0x60
+#define BMI160_MOTION_TH(s, _mg) \
+	 (MIN(((_mg) * 1000) / (s->drv->get_range(s) * 1953), 0xff))
 #define BMI160_INT_MOTION_2    0x61
 #define BMI160_INT_MOTION_3    0x62
+#define BMI160_MOTION_NO_MOT_SEL   (1 << 0)
+#define BMI160_MOTION_SIG_MOT_SEL  (1 << 1)
+#define BMI160_MOTION_SKIP_OFF 2
+#define BMI160_MOTION_SKIP_MASK 0x3
+#define BMI160_MOTION_SKIP_TIME(_ms) \
+	(MIN(31 - __builtin_clz((_ms) / 1500), BMI160_MOTION_SKIP_MASK))
+#define BMI160_MOTION_PROOF_OFF 4
+#define BMI160_MOTION_PROOF_MASK 0x3
+#define BMI160_MOTION_PROOF_TIME(_ms) \
+	(MIN(31 - __builtin_clz((_ms) / 250), BMI160_MOTION_PROOF_MASK))
 
 #define BMI160_INT_TAP_0       0x63
 #define BMI160_INT_TAP_1       0x64
+#define BMI160_TAP_TH(s, _mg) \
+	 (MIN(((_mg) * 1000) / (s->drv->get_range(s) * 31250), 0x1f))
 
 #define BMI160_INT_ORIENT_0    0x65
 #define BMI160_INT_ORIENT_1    0x66

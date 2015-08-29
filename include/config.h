@@ -43,6 +43,8 @@
 #undef CONFIG_ACCEL_FIFO
 /* The amount of free entries that trigger an interrupt to the AP. */
 #undef CONFIG_ACCEL_FIFO_THRES
+/* Enable significant motion activity */
+#undef CONFIG_ACCEL_SIGNIFICANT_MOTION
 
 /* Specify type of accelerometers attached. */
 #undef CONFIG_ACCEL_KXCJ9
