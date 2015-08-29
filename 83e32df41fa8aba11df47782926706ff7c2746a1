@@ -140,6 +140,29 @@
     },
     {
       "key": {
+        "uuid": "c42ba915_1b02487f",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-08-29T13:52:59Z",
+      "side": 1,
+      "message": "what is \"reg\" intermediate variable useful for ?",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 29
+      },
+      "revId": "83e32df41fa8aba11df47782926706ff7c2746a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "046221c0_ab3ac180",
         "filename": "driver/tcpm/fusb302.c",
         "patchSetId": 1
@@ -186,6 +209,29 @@
     },
     {
       "key": {
+        "uuid": "849451c2_7375fb3c",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-08-29T13:52:59Z",
+      "side": 1,
+      "message": "isn\u0027t this just an open-coded memcpy ?",
+      "range": {
+        "startLine": 706,
+        "startChar": 0,
+        "endLine": 720,
+        "endChar": 2
+      },
+      "revId": "83e32df41fa8aba11df47782926706ff7c2746a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84253145_f3a5318b",
         "filename": "driver/tcpm/fusb302.c",
         "patchSetId": 1
@@ -225,6 +271,29 @@
         "startChar": 7,
         "endLine": 772,
         "endChar": 8
+      },
+      "revId": "83e32df41fa8aba11df47782926706ff7c2746a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_eba77a3e",
+        "filename": "driver/tcpm/fusb302.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-08-29T13:52:59Z",
+      "side": 1,
+      "message": "you need to fix the header guard:\n#ifndef __CROS_EC_DRIVER_TCPM_FUSB302_H",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 23
       },
       "revId": "83e32df41fa8aba11df47782926706ff7c2746a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
