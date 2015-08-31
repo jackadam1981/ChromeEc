@@ -36,6 +36,9 @@
  */
 unsigned accel_interval;
 
+/* Need to wake up the AP */
+int wake_up_needed;
+
 #ifdef CONFIG_CMD_ACCEL_INFO
 static int accel_disp;
 #endif
@@ -74,13 +77,16 @@ void motion_sense_fifo_add_unit(struct ec_response_motion_sensor_data *data,
 		queue_remove_unit(&motion_sense_fifo, &vector);
 		motion_sense_fifo_lost++;
 		motion_sensors[vector.sensor_num].lost++;
-		if (vector.flags & MOTIONSENSE_SENSOR_FLAG_FLUSH)
-			CPRINTS("Lost flush for sensor %d", vector.sensor_num);
+		if (vector.flags)
+			CPRINTS("Lost important event (0x%02x) for sensor %d",
+				vector.flags,
+				vector.sensor_num);
 	}
 	for (i = 0; i < valid_data; i++)
 		sensor->xyz[i] = data->data[i];
 	mutex_unlock(&g_sensor_mutex);
 
+	/* For valid sensors, check if AP really needs this data */
 	if (valid_data) {
 		int ap_odr = sensor->config[SENSOR_CONFIG_AP].odr &
 			~ROUND_UP_FLAG;
@@ -98,7 +104,8 @@ void motion_sense_fifo_add_unit(struct ec_response_motion_sensor_data *data,
 		sensor->oversampling += fp_div(INT_TO_FP(1000), rate) -
 			fp_div(INT_TO_FP(1000), INT_TO_FP(ap_odr));
 	}
-
+	if (data->flags & MOTIONSENSE_SENSOR_FLAG_WAKEUP)
+		wake_up_needed = 1;
 	queue_add_unit(&motion_sense_fifo, data);
 }
 
@@ -595,7 +602,7 @@ void motion_sense_task(void)
 		 * - the queue is almost full,
 		 * - we haven't done it for a while.
 		 */
-		if (fifo_flush_needed ||
+		if (fifo_flush_needed || wake_up_needed ||
 		    event & TASK_EVENT_MOTION_ODR_CHANGE ||
 		    queue_space(&motion_sense_fifo) < CONFIG_ACCEL_FIFO_THRES ||
 		    (accel_interval > 0 &&
@@ -610,8 +617,11 @@ void motion_sense_task(void)
 			 * When we do, add per sensor test to know
 			 * when sending the event.
 			 */
-			if (sensor_active == SENSOR_ACTIVE_S0)
+			if (sensor_active == SENSOR_ACTIVE_S0 ||
+			    wake_up_needed) {
 				mkbp_send_event(EC_MKBP_EVENT_SENSOR_FIFO);
+				wake_up_needed = 0;
+			}
 #endif
 		}
 #endif
