@@ -792,6 +792,8 @@
 #undef CONFIG_GESTURE_SW_DETECTION
 /* some gesture recognition done in hardware */
 #undef CONFIG_GESTURE_HW_DETECTION
+/* enable gesture host interface */
+#undef CONFIG_GESTURE_HOST_DETECTION
 /* Sensor sampling interval for gesture recognition */
 #undef CONFIG_GESTURE_SAMPLING_INTERVAL_MS
 
@@ -819,6 +821,22 @@
 
 /* Event generated when battery tap is detected */
 #undef CONFIG_GESTURE_TAP_EVENT
+
+/* Which sensor to look for significant motion activity */
+#undef CONFIG_GESTURE_SIGMO
+
+/*
+ * Significant motion parameters
+ * Significant motion states machine look for movement, waits skip mill-seconds,
+ * and check for movement again with proof milli-seconds.
+ */
+#undef CONFIG_GESTURE_SIGMO_PROOF_MS
+#undef CONFIG_GESTURE_SIGMO_SKIP_MS
+#undef CONFIG_GESTURE_SIGMO_THRES_MG
+/* Event generated when significant motion is detected. */
+
+#undef CONFIG_GESTURE_SIGMO_EVENT
+
 
 /* Do we want to detect the lid angle? */
 #undef CONFIG_LID_ANGLE
