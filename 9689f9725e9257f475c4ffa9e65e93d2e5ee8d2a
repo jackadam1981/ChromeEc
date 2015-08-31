@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "64091ddd_0130c96e",
+        "filename": "board/oak/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-31T05:26:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "447fb94c_e40b1461",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 30
+      },
+      "revId": "9689f9725e9257f475c4ffa9e65e93d2e5ee8d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2403a5c0_a1a3e42f",
         "filename": "board/oak/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-28T11:07:09Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 30
+      },
+      "revId": "9689f9725e9257f475c4ffa9e65e93d2e5ee8d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "447fb94c_0420f8a0",
+        "filename": "board/oak/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-31T05:26:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2403a5c0_a1a3e42f",
       "range": {
         "startLine": 66,
         "startChar": 5,
