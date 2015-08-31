@@ -80,6 +80,21 @@ void usb_charger_set_switches(int port, enum usb_switch setting)
 	mutex_unlock(&usb_switch_lock[port]);
 }
 
+#if CONFIG_USB_PD_PORT_COUNT == 2
+static void usb_vbus_p1_charge_check(void)
+{
+	if (!pd_is_connected(1))
+		charge_manager_update_dualrole(1, CAP_DEDICATED);
+}
+DECLARE_DEFERRED(usb_vbus_p1_charge_check);
+#endif
+static void usb_vbus_p0_charge_check(void)
+{
+	if (!pd_is_connected(0))
+		charge_manager_update_dualrole(0, CAP_DEDICATED);
+}
+DECLARE_DEFERRED(usb_vbus_p0_charge_check);
+
 void usb_charger_vbus_change(int port, int vbus_level)
 {
 	/* Update VBUS supplier and signal VBUS change to USB_CHG task */
@@ -87,8 +102,17 @@ void usb_charger_vbus_change(int port, int vbus_level)
 #if CONFIG_USB_PD_PORT_COUNT == 2
 	task_set_event(port ? TASK_ID_USB_CHG_P1 : TASK_ID_USB_CHG_P0,
 		       USB_CHG_EVENT_VBUS, 0);
+	hook_call_deferred(port ? usb_vbus_p1_charge_check :
+				  usb_vbus_p0_charge_check,
+			   vbus_level ? 500*MSEC : -1);
+	if (!vbus_level)
+		charge_manager_update_dualrole(port ? 1 : 0, CAP_UNKNOWN);
 #else
 	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_VBUS, 0);
+	hook_call_deferred(usb_vbus_p0_charge_check,
+			   vbus_level ? 500*MSEC : -1);
+	if (!vbus_level)
+		charge_manager_update_dualrole(0, CAP_UNKNOWN);
 #endif
 }
 

@@ -87,6 +87,9 @@ void pd_transition_voltage(int idx)
 
 int pd_set_power_supply_ready(int port)
 {
+	/* make sure we are not charging */
+	gpio_set_level(port ? GPIO_USB_C1_CHARGE_EN_L :
+			      GPIO_USB_C0_CHARGE_EN_L, 1);
 	/* provide VBUS */
 	gpio_set_level(port ? GPIO_USB_C1_5V_EN : GPIO_USB_C0_5V_EN, 1);
 

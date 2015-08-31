@@ -107,6 +107,8 @@ void pd_transition_voltage(int idx)
 
 int pd_set_power_supply_ready(int port)
 {
+	/* Make sure charging is disabled */
+	gpio_set_level(GPIO_USBC_CHARGE_EN, 0);
 	/* Output the correct voltage */
 	gpio_set_level(GPIO_VBUS_CHARGER_EN, 1);
 

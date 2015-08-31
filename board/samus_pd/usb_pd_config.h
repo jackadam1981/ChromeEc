@@ -189,8 +189,6 @@ static inline void pd_set_host_mode(int port, int enable)
 {
 	if (port == 0) {
 		if (enable) {
-			/* We never charging in power source mode */
-			gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, 1);
 			/* High-Z is used for host mode. */
 			gpio_set_level(GPIO_USB_C0_CC1_ODL, 1);
 			gpio_set_level(GPIO_USB_C0_CC2_ODL, 1);
@@ -204,8 +202,6 @@ static inline void pd_set_host_mode(int port, int enable)
 		}
 	} else {
 		if (enable) {
-			/* We never charging in power source mode */
-			gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, 1);
 			/* High-Z is used for host mode. */
 			gpio_set_level(GPIO_USB_C1_CC1_ODL, 1);
 			gpio_set_level(GPIO_USB_C1_CC2_ODL, 1);

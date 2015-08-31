@@ -621,9 +621,6 @@ void board_pd_set_host_mode(int enable)
 	}
 
 	if (enable) {
-		/* Source mode, disable charging */
-		gpio_set_level(GPIO_USBC_CHARGE_EN, 0);
-
 		/* Set CC lines */
 		set_active_cc(active_cc);
 	} else {
