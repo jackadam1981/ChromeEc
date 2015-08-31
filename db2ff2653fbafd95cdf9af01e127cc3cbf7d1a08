@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2419e672_335c88de",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-08-31T17:50:57Z",
+      "side": 1,
+      "message": "From a pedantic point of view, the change is incorrect,\nthe GPIO is either an input or an output, you need to declare it as such, e.g. :\nGPIO_INPUT | GPIO_PULL_UP",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 52
+      },
+      "revId": "db2ff2653fbafd95cdf9af01e127cc3cbf7d1a08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
