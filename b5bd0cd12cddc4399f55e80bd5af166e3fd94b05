@@ -22,6 +22,30 @@
       "revId": "b5bd0cd12cddc4399f55e80bd5af166e3fd94b05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_a73f0eeb",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-08-31T22:53:23Z",
+      "side": 1,
+      "message": "It\u0027s \"#ifndef EMU_BUILD\". So if we change the base, we\u0027ll allow the reset vector to point outside the image by CONFIG_RO_HEAD_ROOM.",
+      "parentUuid": "e4618eea_cfe6b11d",
+      "range": {
+        "startLine": 526,
+        "startChar": 5,
+        "endLine": 526,
+        "endChar": 29
+      },
+      "revId": "b5bd0cd12cddc4399f55e80bd5af166e3fd94b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
