@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4134e4a_599e035a",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-31T15:50:37Z",
+      "side": 1,
+      "message": "On the last time through the loop, this will check while(0) and then post-decrement timeout to -1, so the check on line 99 won\u0027t fire.\n\nAnd it also generates a false timeout error if on the last time through the loop (where timeout\u003d\u003d0), the busy bit is clear in line 90.\n\nI think you need something like:\n\n  while(timeout \u003e 0) {\n\n    /* Read status*/\n    /* Break if busy bit */\n\n    if (--timeout \u003e 0)\n      msleep(1);\n  }",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 18
+      },
+      "revId": "299f74e931fbcac646f5a726b00ea96e18a3988e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c40aca13_b8fab9a9",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-31T15:50:37Z",
+      "side": 1,
+      "message": "Same problem here as flash.c",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 18
+      },
+      "revId": "299f74e931fbcac646f5a726b00ea96e18a3988e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e438aece_71fd78a8",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-31T15:50:37Z",
+      "side": 1,
+      "message": "(It works here because it pre-decrements.)",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 20
+      },
+      "revId": "299f74e931fbcac646f5a726b00ea96e18a3988e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
