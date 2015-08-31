@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "045f8228_6a4b37a0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1706,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-08-31T18:11:32Z",
+      "side": 1,
+      "message": "Enable/disable via SET_ACTIVITY below?  Would be weird if getting the list had that side effect.\n\nOr do you mean this lists the available activities and indicates which ones are enabled?",
+      "range": {
+        "startLine": 1706,
+        "startChar": 4,
+        "endLine": 1706,
+        "endChar": 40
+      },
+      "revId": "753d356650975472fbb2983276fb5cf90ff0cac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
