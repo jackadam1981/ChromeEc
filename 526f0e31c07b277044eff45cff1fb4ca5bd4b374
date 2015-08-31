@@ -22,6 +22,30 @@
       "revId": "526f0e31c07b277044eff45cff1fb4ca5bd4b374",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "447fb94c_24e7bcd2",
+        "filename": "board/big/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-08-31T07:25:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "447fb94c_e4ecf4b7",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "526f0e31c07b277044eff45cff1fb4ca5bd4b374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
