@@ -294,15 +294,15 @@ struct motion_sensor_t motion_sensors[] = {
 			 .odr = 0,
 			 .ec_rate = 0,
 		 },
-		 /* EC does not need accel in S0 */
+		 /* EC needs accel for activity recognition. */
 		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 0,
+			 .odr = 12500,
+			 /* Interrupt driven, no polling */
 			 .ec_rate = 0,
 		 },
 		 /* Used for double tap */
 		 [SENSOR_CONFIG_EC_S3] = {
 			 .odr = 100000,
-			 /* Interrupt driven, no polling */
 			 .ec_rate = 0,
 		 },
 		 [SENSOR_CONFIG_EC_S5] = {
@@ -311,7 +311,6 @@ struct motion_sensor_t motion_sensors[] = {
 		 },
 	 },
 	},
-
 	{.name = "Gyro",
 	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_BMI160,
@@ -329,7 +328,7 @@ struct motion_sensor_t motion_sensors[] = {
 			 .odr = 0,
 			 .ec_rate = 0,
 		 },
-		 /* EC does not need accel in S0 */
+		 /* EC does not need gyro in S0 */
 		 [SENSOR_CONFIG_EC_S0] = {
 			 .odr = 0,
 			 .ec_rate = 0,
@@ -345,7 +344,6 @@ struct motion_sensor_t motion_sensors[] = {
 		 },
 	 },
 	},
-
 	{.name = "Mag",
 	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_BMI160,
@@ -363,7 +361,7 @@ struct motion_sensor_t motion_sensors[] = {
 			 .odr = 0,
 			 .ec_rate = 0,
 		 },
-		 /* EC does not need accel in S0 */
+		 /* EC does not need compass in S0 */
 		 [SENSOR_CONFIG_EC_S0] = {
 			 .odr = 0,
 			 .ec_rate = 0,
@@ -396,7 +394,7 @@ struct motion_sensor_t motion_sensors[] = {
 			 .odr = 0,
 			 .ec_rate = 0,
 		 },
-		 /* EC to use to set led brightness */
+		 /* EC needs sensor for light adaptive brightness */
 		 [SENSOR_CONFIG_EC_S0] = {
 			 .odr = 1000,
 			 .ec_rate = 1000,
@@ -429,7 +427,7 @@ struct motion_sensor_t motion_sensors[] = {
 			 .odr = 0,
 			 .ec_rate = 0,
 		 },
-		 /* EC does not need accel in S0 */
+		 /* EC does not need proximity in S0 */
 		 [SENSOR_CONFIG_EC_S0] = {
 			 .odr = 0,
 			 .ec_rate = 0,
