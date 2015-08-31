@@ -22,6 +22,30 @@
       "revId": "d228e520d162a5246261fd79fa6864b7266f9bf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4fdd5ea_226fca20",
+        "filename": "board/oak/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-08-31T08:54:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4436d9c8_29032dca",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 12
+      },
+      "revId": "d228e520d162a5246261fd79fa6864b7266f9bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
