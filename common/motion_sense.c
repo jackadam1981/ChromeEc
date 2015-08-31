@@ -1036,10 +1036,13 @@ static int command_accel_data_rate(int argc, char **argv)
 		}
 
 		/*
+		 * Take ownership of the sensor and
 		 * Write new data rate, if it returns invalid arg, then
 		 * return a parameter error.
 		 */
 		config_id = motion_sense_get_ec_config();
+		if (config_id == SENSOR_CONFIG_AP)
+			sensor->config[SENSOR_CONFIG_AP].odr = 0;
 		sensor->config[config_id].odr =
 			data | (round ? ROUND_UP_FLAG : 0);
 		ret = motion_sense_set_data_rate(sensor);
