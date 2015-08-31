@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4436d9c8_09fd892d",
+        "filename": "board/oak/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-08-31T07:38:30Z",
+      "side": 1,
+      "message": "Is it P1 rather than P0?",
+      "range": {
+        "startLine": 64,
+        "startChar": 32,
+        "endLine": 64,
+        "endChar": 34
+      },
+      "revId": "7b5e30153dc35524ee5fb2e47d0dd358be39c457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
