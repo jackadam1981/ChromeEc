@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4fdd5ea_6279d2e6",
+        "filename": "board/oak/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-08-31T09:17:45Z",
+      "side": 1,
+      "message": "I am thinking, maybe:\ntypec_mux_setting \u003d (usb_mux_get(port, \u0026dp_str, \u0026usb_str) \u0026\u0026 usb_str) ? TYPEC_MUX_USB : TYPEC_MUX_NONE;\n\nusb_mux_set(port, typec_mux_setting, USB_SWITCH_CONNECT, pd_get_polarity(port));",
+      "range": {
+        "startLine": 252,
+        "startChar": 7,
+        "endLine": 252,
+        "endChar": 18
+      },
+      "revId": "f668f887b39e3cfc36b9ca4fc0d6f4d0df9e8b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
