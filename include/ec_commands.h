@@ -1701,6 +1701,18 @@ enum motionsense_command {
 	 */
 	MOTIONSENSE_CMD_SENSOR_OFFSET = 11,
 
+	/*
+	 * List available activities for a MOTION sensor.
+	 * Enable/Disable activity recognition.
+	 */
+	MOTIONSENSE_CMD_LIST_ACTIVITIES = 12,
+
+	/*
+	 * Activity management
+	 * Enable/Disable activity recognition.
+	 */
+	MOTIONSENSE_CMD_SET_ACTIVITY = 13,
+
 	/* Number of motionsense sub-commands. */
 	MOTIONSENSE_NUM_CMDS
 };
@@ -1712,6 +1724,7 @@ enum motionsensor_type {
 	MOTIONSENSE_TYPE_MAG = 2,
 	MOTIONSENSE_TYPE_PROX = 3,
 	MOTIONSENSE_TYPE_LIGHT = 4,
+	MOTIONSENSE_TYPE_MOTION = 5,
 	MOTIONSENSE_TYPE_MAX,
 };
 
@@ -1764,6 +1777,20 @@ struct ec_response_motion_sense_fifo_data {
 	uint32_t number_data;
 	struct ec_response_motion_sensor_data data[0];
 } __packed;
+
+/* List supported activity recognition */
+enum motionsensor_activity {
+	MOTIONSENSE_ACTIVITY_SIGNIFICANT_MOTION = 0,
+};
+
+struct ec_motion_sense_activity {
+	uint8_t sensor_num;
+	uint8_t activity; /* one of enum motionsensor_activity */
+	uint8_t enable;   /* 1: enable, 0: disable */
+	uint8_t reserved;
+	uint16_t parameters[3]; /* activity dependant parameters */
+};
+
 /* Module flag masks used for the dump sub-command. */
 #define MOTIONSENSE_MODULE_FLAG_ACTIVE (1<<0)
 
@@ -1818,7 +1845,7 @@ struct ec_params_motion_sense {
 		 * and MOTIONSENSE_CMD_PERFORM_CALIB. */
 		struct {
 			uint8_t sensor_num;
-		} info, data, fifo_flush, perform_calib;
+		} info, data, fifo_flush, perform_calib, list_activities;
 
 		/*
 		 * Used for MOTIONSENSE_CMD_EC_RATE, MOTIONSENSE_CMD_SENSOR_ODR
@@ -1877,6 +1904,8 @@ struct ec_params_motion_sense {
 			 */
 			uint32_t max_data_vector;
 		} fifo_read;
+
+		struct ec_motion_sense_activity set_activity;
 	};
 } __packed;
 
@@ -1931,6 +1960,14 @@ struct ec_response_motion_sense {
 		struct ec_response_motion_sense_fifo_info fifo_info, fifo_flush;
 
 		struct ec_response_motion_sense_fifo_data fifo_read;
+
+		struct {
+			uint32_t enabled;
+			uint32_t disabled;
+		} list_activities;
+
+		struct {
+		} set_activity;
 	};
 } __packed;
 

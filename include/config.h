@@ -792,6 +792,8 @@
 #undef CONFIG_GESTURE_SW_DETECTION
 /* some gesture recognition done in hardware */
 #undef CONFIG_GESTURE_HW_DETECTION
+/* enable gesture host interface */
+#undef CONFIG_GESTURE_HOST_DETECTION
 /* Sensor sampling interval for gesture recognition */
 #undef CONFIG_GESTURE_SAMPLING_INTERVAL_MS
 
@@ -816,6 +818,18 @@
 #undef CONFIG_GESTURE_TAP_MIN_INTERSTICE_T
 #undef CONFIG_GESTURE_TAP_MAX_INTERSTICE_T
 #undef CONFIG_GESTURE_TAP_THRES_MG
+
+/* Enable significant motion activity */
+#undef CONFIG_GESTURE_SIGNIFICANT_MOTION
+
+/*
+ * Significant motion parameters
+ * Significant motion states machine look for movement, waits skip mill-seconds,
+ * and check for movement again with proof milli-seconds.
+ */
+#undef CONFIG_GESTURE_SIGMO_PROOF_MS
+#undef CONFIG_GESTURE_SIGMO_SKIP_MS
+#undef CONFIG_GESTURE_SIGMO_THRES_MG
 
 
 /* Do we want to detect the lid angle? */

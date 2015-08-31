@@ -653,7 +653,7 @@ DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_SENSOR_FIFO, motion_sense_get_next_event);
 
 /* Function to map host sensor IDs to motion sensor. */
 static struct motion_sensor_t
-	*host_sensor_id_to_motion_sensor(int host_id)
+	*host_sensor_id_to_real_sensor(int host_id)
 {
 	struct motion_sensor_t *sensor;
 
@@ -667,6 +667,22 @@ static struct motion_sensor_t
 
 	/* If no match then the EC currently doesn't support ID received. */
 	return NULL;
+}
+
+static struct motion_sensor_t
+	*host_sensor_id_to_motion_sensor(int host_id)
+{
+#ifdef CONFIG_GESTURE_HOST_DETECTION
+	if (host_id == MOTION_SENSE_ACTIVITY_SENSOR_ID)
+		/* Revisit when more motions are supported. */
+#ifdef CONFIG_GESTURE_SIGNIFICANT_MOTION
+		return host_sensor_id_to_real_sensor(
+			CONFIG_GESTURE_SIGNIFICANT_MOTION);
+#else
+		return NULL;
+#endif
+#endif
+	return host_sensor_id_to_real_sensor(host_id);
 }
 
 static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
@@ -684,16 +700,18 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			MOTIONSENSE_MODULE_FLAG_ACTIVE : 0;
 		out->dump.sensor_count = motion_sensor_count;
 		args->response_size = sizeof(out->dump);
-		reported = MIN(motion_sensor_count, in->dump.max_sensor_count);
+		reported = MIN(ALL_MOTION_SENSORS, in->dump.max_sensor_count);
 		mutex_lock(&g_sensor_mutex);
 		for (i = 0; i < reported; i++) {
 			sensor = &motion_sensors[i];
 			out->dump.sensor[i].flags =
 				MOTIONSENSE_SENSOR_FLAG_PRESENT;
-			/* casting from int to s16 */
-			out->dump.sensor[i].data[X] = sensor->xyz[X];
-			out->dump.sensor[i].data[Y] = sensor->xyz[Y];
-			out->dump.sensor[i].data[Z] = sensor->xyz[Z];
+			if (i < motion_sensor_count) {
+				/* casting from int to s16 */
+				out->dump.sensor[i].data[X] = sensor->xyz[X];
+				out->dump.sensor[i].data[Y] = sensor->xyz[Y];
+				out->dump.sensor[i].data[Z] = sensor->xyz[Z];
+			}
 		}
 		mutex_unlock(&g_sensor_mutex);
 		args->response_size += reported *
@@ -701,7 +719,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		break;
 
 	case MOTIONSENSE_CMD_DATA:
-		sensor = host_sensor_id_to_motion_sensor(
+		sensor = host_sensor_id_to_real_sensor(
 				in->sensor_odr.sensor_num);
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
@@ -722,7 +740,13 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
 
-		out->info.type = sensor->type;
+#ifdef CONFIG_GESTURE_HOST_DETECTION
+		if (in->sensor_odr.sensor_num ==
+		    MOTION_SENSE_ACTIVITY_SENSOR_ID)
+			out->info.type = MOTIONSENSE_TYPE_MOTION;
+		else
+#endif
+			out->info.type = sensor->type;
 		out->info.location = sensor->location;
 		out->info.chip = sensor->chip;
 
@@ -730,7 +754,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		break;
 
 	case MOTIONSENSE_CMD_EC_RATE:
-		sensor = host_sensor_id_to_motion_sensor(
+		sensor = host_sensor_id_to_real_sensor(
 				in->sensor_odr.sensor_num);
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
@@ -758,7 +782,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 
 	case MOTIONSENSE_CMD_SENSOR_ODR:
 		/* Verify sensor number is valid. */
-		sensor = host_sensor_id_to_motion_sensor(
+		sensor = host_sensor_id_to_real_sensor(
 				in->sensor_odr.sensor_num);
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
@@ -796,7 +820,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 
 	case MOTIONSENSE_CMD_SENSOR_RANGE:
 		/* Verify sensor number is valid. */
-		sensor = host_sensor_id_to_motion_sensor(
+		sensor = host_sensor_id_to_real_sensor(
 				in->sensor_range.sensor_num);
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
@@ -817,7 +841,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 
 	case MOTIONSENSE_CMD_SENSOR_OFFSET:
 		/* Verify sensor number is valid. */
-		sensor = host_sensor_id_to_motion_sensor(
+		sensor = host_sensor_id_to_real_sensor(
 				in->sensor_offset.sensor_num);
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
@@ -840,7 +864,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 
 	case MOTIONSENSE_CMD_PERFORM_CALIB:
 		/* Verify sensor number is valid. */
-		sensor = host_sensor_id_to_motion_sensor(
+		sensor = host_sensor_id_to_real_sensor(
 				in->sensor_offset.sensor_num);
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
@@ -859,7 +883,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 
 #ifdef CONFIG_ACCEL_FIFO
 	case MOTIONSENSE_CMD_FIFO_FLUSH:
-		sensor = host_sensor_id_to_motion_sensor(
+		sensor = host_sensor_id_to_real_sensor(
 				in->sensor_odr.sensor_num);
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
@@ -898,6 +922,46 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		/* Only support the INFO command, to tell there is no FIFO. */
 		memset(&out->fifo_info, 0, sizeof(out->fifo_info));
 		args->response_size = sizeof(out->fifo_info);
+		break;
+#endif
+#ifdef CONFIG_GESTURE_HOST_DETECTION
+	case MOTIONSENSE_CMD_LIST_ACTIVITIES:
+		if (in->sensor_offset.sensor_num !=
+		   MOTION_SENSE_ACTIVITY_SENSOR_ID)
+			return EC_RES_INVALID_PARAM;
+#ifdef CONFIG_GESTURE_SIGNIFICANT_MOTION
+#ifdef CONFIG_GESTURE_HW_DETECTION
+		sensor = &motion_sensors[CONFIG_GESTURE_SIGNIFICANT_MOTION];
+		/* need to use masks if more than one sensor. */
+		ret = sensor->drv->list_activities(sensor,
+				&out->list_activities.enabled,
+				&out->list_activities.disabled);
+#else
+		return EC_RES_INVALID_PARAM;
+#endif
+		if (ret != EC_SUCCESS)
+			return ret;
+#endif
+		args->response_size = sizeof(out->list_activities);
+		break;
+	case MOTIONSENSE_CMD_SET_ACTIVITY:
+		if (in->sensor_offset.sensor_num !=
+		   MOTION_SENSE_ACTIVITY_SENSOR_ID)
+			return EC_RES_INVALID_PARAM;
+#ifdef CONFIG_GESTURE_SIGNIFICANT_MOTION
+#ifdef CONFIG_GESTURE_HW_DETECTION
+		sensor = &motion_sensors[CONFIG_GESTURE_SIGNIFICANT_MOTION];
+		ret = sensor->drv->manage_activity(sensor,
+				in->set_activity.activity,
+				in->set_activity.enable,
+				NULL);
+		if (ret != EC_SUCCESS)
+			return ret;
+#else
+		return EC_RES_INVALID_PARAM;
+#endif
+#endif
+		args->response_size = sizeof(out->set_activity);
 		break;
 #endif
 	default:
