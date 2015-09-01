@@ -4,6 +4,7 @@
  */
 /* Celes board-specific configuration */
 
+#include "adc_chip.h"
 #include "adc.h"
 #include "als.h"
 #include "button.h"
@@ -48,6 +49,16 @@ const struct pwm_t pwm_channels[] = {
 };
 
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+/* ADC channels */
+const struct adc_t adc_channels[] = {
+       /* NAME, MUL, DIV, SHIFT, CHANNEL */
+       [ADC_THERMISTOR_1] = {"THERMISTOR_1", 1, 1, 0, 0},
+       [ADC_THERMISTOR_2] = {"THERMISTOR_2", 1, 1, 0, 1},
+       [ADC_THERMISTOR_3] = {"THERMISTOR_3", 1, 1, 0, 4},
+};
+
+BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
