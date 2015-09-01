@@ -79,6 +79,7 @@ int board_discharge_on_ac(int enabled);
 #define CONFIG_FANS 1
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_TEMP_SENSOR_BD99992GW
+#define CONFIG_TEMP_SENSOR_NCP15WB
 #define I2C_PORT_THERMAL 1
 int bd99992gw_get_temp(uint16_t adc);
 #endif
