@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6492fe15_83dbe257",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-09-01T00:56:46Z",
+      "side": 1,
+      "message": "#include \"util.h\"",
+      "revId": "1188fbba94f0ae4043d38ccccf0087acb8569da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8429b287_d4fc14e2",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-09-01T00:56:46Z",
+      "side": 1,
+      "message": "/* Unidentified panel id must not be configured. /*\nASSERT(panel_id !\u003d PANEL_UNKNOWN);",
+      "revId": "1188fbba94f0ae4043d38ccccf0087acb8569da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8497f201_e4750e55",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-09-01T00:56:46Z",
+      "side": 1,
+      "message": "Lets remove this if statement, and turn it into an assert.",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 34
+      },
+      "revId": "1188fbba94f0ae4043d38ccccf0087acb8569da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
