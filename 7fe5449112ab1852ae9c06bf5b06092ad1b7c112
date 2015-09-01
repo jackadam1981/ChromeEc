@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e486eed4_7080dee9",
+        "filename": "board/oak/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-01T18:05:15Z",
+      "side": 1,
+      "message": "If this condition is met and then the hooks task immediately gets preempted by the chipset task due to resume, you\u0027ll power-on from your resume hook and then later power-off here. So, you\u0027ll end up in S0 with the tmp power off, which isn\u0027t what you want. You can avoid this problem by calling tmp432_set_power_deferred as a deferred function from  board_chipset_resume / board_chipset_suspend.",
+      "revId": "7fe5449112ab1852ae9c06bf5b06092ad1b7c112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
