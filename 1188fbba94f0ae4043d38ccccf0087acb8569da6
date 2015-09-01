@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e486eed4_b56f3881",
+        "filename": "board/buddy/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-09-01T16:56:24Z",
+      "side": 1,
+      "message": "The schematic seems to call these PWR_ID, maybe add that to the comment?",
+      "range": {
+        "startLine": 32,
+        "startChar": 69,
+        "endLine": 32,
+        "endChar": 70
+      },
+      "revId": "1188fbba94f0ae4043d38ccccf0087acb8569da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6492fe15_83dbe257",
         "filename": "board/buddy/panel.c",
         "patchSetId": 4
@@ -19,6 +42,46 @@
     },
     {
       "key": {
+        "uuid": "6492fe15_e3c666a2",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-09-01T16:56:24Z",
+      "side": 1,
+      "message": "PANEL_NONE,",
+      "revId": "1188fbba94f0ae4043d38ccccf0087acb8569da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "644d9e85_eec2936d",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-09-01T16:56:24Z",
+      "side": 1,
+      "message": "case 0x07:\n    return PANEL_NONE;",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 1
+      },
+      "revId": "1188fbba94f0ae4043d38ccccf0087acb8569da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8429b287_d4fc14e2",
         "filename": "board/buddy/panel.c",
         "patchSetId": 4
@@ -30,6 +93,24 @@
       "writtenOn": "2015-09-01T00:56:46Z",
       "side": 1,
       "message": "/* Unidentified panel id must not be configured. /*\nASSERT(panel_id !\u003d PANEL_UNKNOWN);",
+      "revId": "1188fbba94f0ae4043d38ccccf0087acb8569da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4618eea_dd42eb74",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-09-01T16:56:24Z",
+      "side": 1,
+      "message": "/* Unidentified panel id must not be configured. /*\nASSERT(panel_id !\u003d PANEL_UNKNOWN);\n\nif (panel_id \u003d\u003d PANEL_NONE)\n    return;",
+      "parentUuid": "8429b287_d4fc14e2",
       "revId": "1188fbba94f0ae4043d38ccccf0087acb8569da6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
