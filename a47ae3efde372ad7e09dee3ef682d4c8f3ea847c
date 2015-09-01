@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4f1ea51_40384e66",
+        "filename": "driver/temp_sensor/tmp432.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-09-01T09:01:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4ee4936_06b0e0f7",
+      "range": {
+        "startLine": 263,
+        "startChar": 32,
+        "endLine": 263,
+        "endChar": 46
+      },
+      "revId": "a47ae3efde372ad7e09dee3ef682d4c8f3ea847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4f1ea51_20d8aab0",
         "filename": "include/config.h",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-01T06:49:07Z",
       "side": 1,
       "message": "Remove this config. The tmp432_set_power() is generally useful, we don\u0027t need a configuration flag to disable it.",
+      "range": {
+        "startLine": 1505,
+        "startChar": 7,
+        "endLine": 1505,
+        "endChar": 46
+      },
+      "revId": "a47ae3efde372ad7e09dee3ef682d4c8f3ea847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c421e986_88f25792",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-09-01T09:01:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4f1ea51_20d8aab0",
       "range": {
         "startLine": 1505,
         "startChar": 7,
