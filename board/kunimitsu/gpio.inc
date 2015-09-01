@@ -42,7 +42,11 @@ GPIO(I2C3_SCL,              PIN(24),  GPIO_INPUT)
 GPIO(I2C3_SDA,              PIN(25),  GPIO_INPUT)
 GPIO(PCH_SCI_L,             PIN(26),  GPIO_ODR_HIGH)
 
+#ifndef BOARD_KUNIMITSU_V3
+GPIO(PMIC_SLP_SUS_L,        PIN(34),  GPIO_OUT_LOW)
+#else
 GPIO(NC_034,                PIN(34),  GPIO_INPUT | GPIO_PULL_UP)
+#endif
 GPIO(USB1_ENABLE,           PIN(36),  GPIO_OUT_HIGH)
 GPIO(USB2_ENABLE,           PIN(67),  GPIO_OUT_HIGH)
 GPIO(ENTERING_RW,           PIN(41),  GPIO_OUT_LOW)
@@ -51,7 +55,7 @@ GPIO(PCH_PWRBTN_L,          PIN(45),  GPIO_OUT_HIGH)
 GPIO(USB_C0_DP_HPD,         PIN(46),  GPIO_OUT_LOW)
 GPIO(USB_C1_DP_HPD,         PIN(51),  GPIO_OUT_LOW)
 GPIO(CPU_PROCHOT,           PIN(52),  GPIO_OUT_LOW)
-GPIO(ENABLE_TOUCHPAD,       PIN(53),  GPIO_OUT_HIGH)
+GPIO(ENABLE_TOUCHPAD,       PIN(53),  GPIO_OUT_LOW)
 GPIO(BAT_PRESENT_L,         PIN(56),  GPIO_INPUT)
 GPIO(USB_PD_WAKE,           PIN(60),  GPIO_OUT_LOW)
 /* When asserted, ME does not lock security descriptor */
@@ -70,8 +74,12 @@ GPIO(WLAN_OFF_L,            PIN(132), GPIO_OUT_HIGH)
 /* RCIN# line to PCH for 8042 emulation */
 GPIO(PCH_RCIN_L,            PIN(135), GPIO_ODR_HIGH)
 GPIO(USB2_OTG_VBUSSENSE,    PIN(140), GPIO_ODR_HIGH)
+#ifndef BOARD_KUNIMITSU_V3
+GPIO(PCH_BATLOW_L,          PIN(141), GPIO_OUT_HIGH)
+#else
 /* Sensor input for KB PROX - UNUSED */
 GPIO(KB_PROX_INT_L,         PIN(141), GPIO_INPUT)
+#endif
 GPIO(PCH_RSMRST_L,          PIN(143), GPIO_OUT_LOW)
 /* prochot input from devices */
 GPIO(PLATFORM_EC_PROCHOT,   PIN(151), GPIO_INPUT)
