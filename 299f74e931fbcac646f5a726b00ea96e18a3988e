@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "447fb94c_e46dd47a",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-09-01T02:02:27Z",
+      "side": 1,
+      "message": "Indeed, pre-decrement is a better choice in while loop. I will change it.",
+      "parentUuid": "e4134e4a_599e035a",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 18
+      },
+      "revId": "299f74e931fbcac646f5a726b00ea96e18a3988e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c40aca13_b8fab9a9",
         "filename": "chip/npcx/i2c.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-31T15:50:37Z",
       "side": 1,
       "message": "Same problem here as flash.c",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 18
+      },
+      "revId": "299f74e931fbcac646f5a726b00ea96e18a3988e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "644afd43_5500fe3a",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-09-01T02:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c40aca13_b8fab9a9",
       "range": {
         "startLine": 130,
         "startChar": 1,
