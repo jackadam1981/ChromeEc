@@ -755,6 +755,13 @@
 #undef CONFIG_RO_STORAGE_OFF
 #undef CONFIG_RO_SIZE
 
+/*
+ * NPCX-specific bootheader geometry.
+ * TODO(crosbug.com/p/23796): Factor these CONFIGs out.
+ */
+#undef CONFIG_RO_HDR_MEM_OFF
+#undef CONFIG_RO_HDR_SIZE
+
 #undef CONFIG_RW_MEM_OFF
 #undef CONFIG_RW_STORAGE_OFF
 #undef CONFIG_RW_SIZE
