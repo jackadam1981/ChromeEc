@@ -46,6 +46,30 @@
       "revId": "5d8fd562fab62f4ed21a10f699461ce84c17abac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c421e986_a8b4731e",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2015-09-01T00:56:01Z",
+      "side": 1,
+      "message": "OK, got it.",
+      "parentUuid": "e4618eea_52294ac8",
+      "range": {
+        "startLine": 313,
+        "startChar": 1,
+        "endLine": 313,
+        "endChar": 25
+      },
+      "revId": "5d8fd562fab62f4ed21a10f699461ce84c17abac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
