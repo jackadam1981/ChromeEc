@@ -46,6 +46,30 @@
       "revId": "c5e49f615f80b0ad8d47f5f86652aa15ea3f4edf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6492fe15_11cddc45",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-09-01T21:51:55Z",
+      "side": 1,
+      "message": "should this be defined in the new .c file instead, or at least removed from the make invocation in line 40? seems to be excessive in two places. \n\nwould be also good to comment why this is needed or mention this in the cl description.\n\nalso did the -I flags have to be split apart or is this just an accident?",
+      "parentUuid": "6492fe15_31bfb899",
+      "range": {
+        "startLine": 32,
+        "startChar": 11,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "c5e49f615f80b0ad8d47f5f86652aa15ea3f4edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
