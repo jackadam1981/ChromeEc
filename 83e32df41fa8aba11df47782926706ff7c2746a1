@@ -209,6 +209,98 @@
     },
     {
       "key": {
+        "uuid": "0484e2ca_d622047f",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-01T14:52:40Z",
+      "side": 1,
+      "message": "we could have a bad read, which would lead to a bad write, need to check rv in between the read and write (and this needs to fixed in multiple places in the file).",
+      "range": {
+        "startLine": 401,
+        "startChar": 3,
+        "endLine": 409,
+        "endChar": 29
+      },
+      "revId": "83e32df41fa8aba11df47782926706ff7c2746a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_f5faa07c",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-01T14:52:40Z",
+      "side": 1,
+      "message": "EC_ERROR_UNIMPLEMENTED",
+      "range": {
+        "startLine": 484,
+        "startChar": 9,
+        "endLine": 484,
+        "endChar": 10
+      },
+      "revId": "83e32df41fa8aba11df47782926706ff7c2746a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_15f86482",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-01T14:52:40Z",
+      "side": 1,
+      "message": "EC_ERROR_UNKNOWN",
+      "range": {
+        "startLine": 634,
+        "startChar": 10,
+        "endLine": 634,
+        "endChar": 11
+      },
+      "revId": "83e32df41fa8aba11df47782926706ff7c2746a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "045f8228_937b46fe",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-01T14:52:40Z",
+      "side": 1,
+      "message": "not sure why you need this, can\u0027t you the message directly into payload?",
+      "range": {
+        "startLine": 671,
+        "startChar": 9,
+        "endLine": 671,
+        "endChar": 12
+      },
+      "revId": "83e32df41fa8aba11df47782926706ff7c2746a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "849451c2_7375fb3c",
         "filename": "driver/tcpm/fusb302.c",
         "patchSetId": 1
@@ -271,6 +363,29 @@
         "startChar": 7,
         "endLine": 772,
         "endChar": 8
+      },
+      "revId": "83e32df41fa8aba11df47782926706ff7c2746a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8429b287_b4a748f0",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-01T14:52:40Z",
+      "side": 1,
+      "message": "nit: remove empty line",
+      "range": {
+        "startLine": 810,
+        "startChar": 0,
+        "endLine": 810,
+        "endChar": 3
       },
       "revId": "83e32df41fa8aba11df47782926706ff7c2746a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
