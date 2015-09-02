@@ -43,6 +43,7 @@
 
 #define CONFIG_ADC
 #define CONFIG_TEMP_SENSOR
+#define CONFIG_TEMP_SENSOR_MEC1322_OWN
 #define CONFIG_TEMP_SENSOR_TMP432
 
 #define CONFIG_PMIC
@@ -123,6 +124,11 @@ enum pwm_channel {
 };
 
 enum temp_sensor_id {
+	/* NCP15WB thermistors */
+	TEMP_SENSOR_ADC_NCP15_1,
+	TEMP_SENSOR_ADC_NCP15_2,
+	TEMP_SENSOR_ADC_NCP15_3,
+
 	/* TMP432 local and remote sensors */
 	TEMP_SENSOR_I2C_TMP432_LOCAL,
 	TEMP_SENSOR_I2C_TMP432_REMOTE1,

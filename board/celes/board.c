@@ -12,6 +12,7 @@
 #include "charge_state.h"
 #include "driver/accel_kxcj9.h"
 #include "driver/als_isl29035.h"
+#include "driver/temp_sensor/ncp15wb.h"
 #include "driver/temp_sensor/tmp432.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -98,6 +99,12 @@ const struct temp_sensor_t temp_sensors[] = {
 		TMP432_IDX_REMOTE1, 4},
 	{"TMP432_Sensor_2", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
 		TMP432_IDX_REMOTE2, 4},
+	{"NCP15WB_1", TEMP_SENSOR_TYPE_BOARD, ncp15wb_get_val,
+		MEC1322_ADC_CHANNEL_0, 4},
+	{"NCP15WB_2", TEMP_SENSOR_TYPE_BOARD, ncp15wb_get_val,
+		MEC1322_ADC_CHANNEL_1, 4},
+	{"NCP15WB_3", TEMP_SENSOR_TYPE_BOARD, ncp15wb_get_val,
+		MEC1322_ADC_CHANNEL_2, 4},
 	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_temp_sensor_get_val,
 		0, 4},
 };
@@ -116,6 +123,9 @@ struct ec_thermal_config thermal_params[] = {
 	{{0, 0, 0}, 0, 0}, /* TMP432_Internal */
 	{{0, 0, 0}, 0, 0}, /* TMP432_Sensor_1 */
 	{{0, 0, 0}, 0, 0}, /* TMP432_Sensor_2 */
+	{{0, 0, 0}, 0, 0}, /* NCP15WB_1 */
+	{{0, 0, 0}, 0, 0}, /* NCP15WB_2 */
+	{{0, 0, 0}, 0, 0}, /* NCP15WB_3 */
 	{{0, 0, 0}, 0, 0}, /* Battery Sensor */
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
