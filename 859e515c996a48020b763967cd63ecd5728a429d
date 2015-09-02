@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8497f201_8f9a1aac",
+        "filename": "board/kunimitsu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-02T23:10:48Z",
+      "side": 1,
+      "message": "You can do I2C ops from HOOK_INIT now. That seems like a better place for it, unless you need to set this register on every power-up for some reason? Also, if you initially don\u0027t make it to S0 for some reason, your write won\u0027t happen.",
+      "revId": "859e515c996a48020b763967cd63ecd5728a429d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0484e2ca_d3b20bca",
+        "filename": "board/kunimitsu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-02T23:10:48Z",
+      "side": 1,
+      "message": "Why HOOK_PRIO_DEFAULT + 1? Is there something at HOOK_PRIO_DEFAULT that you need to happen first?",
+      "range": {
+        "startLine": 332,
+        "startChar": 51,
+        "endLine": 332,
+        "endChar": 72
+      },
+      "revId": "859e515c996a48020b763967cd63ecd5728a429d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
