@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6492fe15_f2c2ae6d",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-02T20:43:51Z",
+      "side": 1,
+      "message": "Move this paragraph below the CONFIG_RW_ lines, so it\u0027s obvious that the NPCS stuff doesn\u0027t include the CONFIG_RW stuff.",
+      "range": {
+        "startLine": 762,
+        "startChar": 0,
+        "endLine": 763,
+        "endChar": 25
+      },
+      "revId": "30fede8fa8e1a9ec5278255c4fc41e8451db6316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
