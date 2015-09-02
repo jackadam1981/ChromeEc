@@ -33,6 +33,23 @@
       "revId": "b30cac2ac13991e7168fdb00712b6f46f5c5d9c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84f1b2a4_31afaab9",
+        "filename": "driver/temp_sensor/ncp15wb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-02T19:50:39Z",
+      "side": 1,
+      "message": "I\u0027m skeptical that these maths will still apply after you switch from the bd99992 ADC to the MEC1322 ADC, due to range / resolution differences. But, I assume you tested?",
+      "revId": "b30cac2ac13991e7168fdb00712b6f46f5c5d9c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
