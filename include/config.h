@@ -1485,6 +1485,7 @@
 #undef CONFIG_TEMP_SENSOR
 
 /* Support particular temperature sensor chips */
+#undef CONFIG_TEMP_SENSOR_MEC1322_OWN	/* NCP15WB, on mec1322's own ADC */
 #undef CONFIG_TEMP_SENSOR_BD99992GW	/* BD99992GW PMIC, on I2C bus */
 #undef CONFIG_TEMP_SENSOR_G781		/* G781 sensor, on I2C bus */
 #undef CONFIG_TEMP_SENSOR_TMP006	/* TI TMP006 sensor, on I2C bus */
