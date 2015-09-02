@@ -39,6 +39,48 @@
       "revId": "859e515c996a48020b763967cd63ecd5728a429d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84529221_5a3717c6",
+        "filename": "board/kunimitsu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-02T23:43:12Z",
+      "side": 1,
+      "message": "I2C transaction fails for HOOK_PRIO_DEFAULT. I created a crosbug and added the findings here. Sorry missed to add it in the code.\nhttps://code.google.com/p/chrome-os-partner/issues/detail?id\u003d44821",
+      "parentUuid": "0484e2ca_d3b20bca",
+      "range": {
+        "startLine": 332,
+        "startChar": 51,
+        "endLine": 332,
+        "endChar": 72
+      },
+      "revId": "859e515c996a48020b763967cd63ecd5728a429d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84529221_1af07f59",
+        "filename": "board/kunimitsu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-02T23:43:12Z",
+      "side": 1,
+      "message": "Okay, I will add a TODO for crosbug:44821 and do the PMIC init for: DECLARE_HOOK(HOOK_INIT, board_pmic_init, HOOK_PRIO_INIT_I2C + 1);",
+      "parentUuid": "8497f201_8f9a1aac",
+      "revId": "859e515c996a48020b763967cd63ecd5728a429d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
