@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "84529221_1ac4ff97",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-03T00:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "644d9e85_51ef072e",
+      "revId": "4eb7827dd2f7b99c6dd7ffefe6b184b8d7395a3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "644d9e85_b1f63bfc",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2015-09-03T00:05:04Z",
       "side": 1,
       "message": "ccd is also enabled by a custom VDM in usb_pd_policy.c, so it seems we need to add this check there also. or just put the check in ccd_set_mode() itself to cover all cases.",
+      "range": {
+        "startLine": 1593,
+        "startChar": 18,
+        "endLine": 1593,
+        "endChar": 36
+      },
+      "revId": "4eb7827dd2f7b99c6dd7ffefe6b184b8d7395a3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6492fe15_a9ecb8ca",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1593,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-03T00:19:42Z",
+      "side": 1,
+      "message": "good catch, my grep skills (actually my vision) are lacking today",
+      "parentUuid": "644d9e85_b1f63bfc",
       "range": {
         "startLine": 1593,
         "startChar": 18,
