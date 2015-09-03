@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64a91e5e_b995e7be",
+        "filename": "board/kunimitsu/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-09-03T01:44:23Z",
+      "side": 1,
+      "message": "Why the negated logic.",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 4
+      },
+      "revId": "9a1aad3c621776ca05a428d9a44a779fba0dacf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "841a92b2_262496f1",
+        "filename": "board/kunimitsu/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-09-03T01:44:23Z",
+      "side": 1,
+      "message": "same comment as above. Also, BATLOW_L is going away in FAB4.",
+      "revId": "9a1aad3c621776ca05a428d9a44a779fba0dacf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
