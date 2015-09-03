@@ -52,6 +52,24 @@
       "revId": "037c113b698b93d20287019d58fa90244db60c0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6492fe15_e9a400ed",
+        "filename": "board/kunimitsu/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-09-03T05:15:44Z",
+      "side": 1,
+      "message": "In FAB3 The PMIC fault/shutdown is caused due to 1.8A(de-asserted by SLP_S4) and 1.8U(deasserted by SLP_SUS) are not meeting the timing requirement as per the volume PMIC. This masking of emergency shutdown is needed in FAB3 as SLP_SUS directly goes to PMIC. Hence making the fault helping reboot and shutdown in FAB3.\n\nThe crosbug TODO comment mentioned here is confusing. \n\nIn FAB4 SLP_SUS is routed to PMIC Via EC. So to fix the fault \n1.we can either have EC make sure the timing needed between the 1.8A and 1.8U which is 32msec can be met by EC. OR \n2.We can keep this mask as is. \nOne of the above options help Shutdown / G3 to work. But for reboot since the HW requirements are going thr some changes this masking is not applicable for reboot.\n\nThis patch will unblock reboot and shutdown issues in FAB3 and only shutdown in FAB4(if we go with option2). It will be good if we can get this merged in.",
+      "parentUuid": "042782f5_8a7aab82",
+      "revId": "037c113b698b93d20287019d58fa90244db60c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
