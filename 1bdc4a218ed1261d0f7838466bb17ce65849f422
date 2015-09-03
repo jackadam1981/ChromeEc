@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e486eed4_999a66ac",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-03T01:10:03Z",
+      "side": 1,
+      "message": "should be static",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "1bdc4a218ed1261d0f7838466bb17ce65849f422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
