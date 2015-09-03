@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64159e82_45eeea81",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-03T01:05:34Z",
+      "side": 1,
+      "message": "i don\u0027t understand something. motion_sense_get_ec_config() never appears to return SENSOR_CONFIG_AP, so this doesn\u0027t seem to do anything.",
+      "range": {
+        "startLine": 1043,
+        "startChar": 2,
+        "endLine": 1044,
+        "endChar": 36
+      },
+      "revId": "7ea49071339280226ae51b8b8142977e34ee6ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
