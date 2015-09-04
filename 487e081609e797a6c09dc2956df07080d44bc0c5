@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "846c5216_1988cfe8",
+        "filename": "driver/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T05:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0484e2ca_b368a42f",
+      "range": {
+        "startLine": 56,
+        "startChar": 60,
+        "endLine": 56,
+        "endChar": 81
+      },
+      "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6492fe15_1fbabe44",
         "filename": "driver/temp_sensor/ec_adc.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-03T21:05:08Z",
       "side": 1,
       "message": "\"EC ADC driver for Chrome EC\". You may want to explain that it\u0027s used for thermistors connected directly to an EC ADC port.",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "846c5216_99f7bf93",
+        "filename": "driver/temp_sensor/ec_adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T05:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6492fe15_1fbabe44",
       "range": {
         "startLine": 6,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "04594273_fd6fc37f",
+        "filename": "driver/temp_sensor/ec_adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T05:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44141a88_6d4e6d37",
+      "range": {
+        "startLine": 18,
+        "startChar": 28,
+        "endLine": 18,
+        "endChar": 55
+      },
+      "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e486eed4_8f8a139f",
         "filename": "driver/temp_sensor/ec_adc.c",
         "patchSetId": 3
@@ -82,6 +154,24 @@
       "writtenOn": "2015-09-03T21:05:08Z",
       "side": 1,
       "message": "This won\u0027t be needed if we get rid of thermistor_poll().",
+      "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04594273_1dcef7ee",
+        "filename": "driver/temp_sensor/ec_adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T05:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e486eed4_8f8a139f",
       "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "24cac639_2ed52721",
+        "filename": "driver/temp_sensor/ec_adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T05:53:18Z",
+      "side": 1,
+      "message": "Thanks. adc_channel will automatically be a filter by itself.",
+      "parentUuid": "e486eed4_4f73ab6f",
+      "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "240f267a_89a59d83",
         "filename": "driver/temp_sensor/ec_adc.c",
         "patchSetId": 3
@@ -116,6 +224,24 @@
       "writtenOn": "2015-09-03T21:05:08Z",
       "side": 1,
       "message": "ec_adc_get_val()",
+      "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44a89a5b_240b129e",
+        "filename": "driver/temp_sensor/ec_adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T05:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "240f267a_89a59d83",
       "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "e4bd0e95_ccf01fce",
+        "filename": "driver/temp_sensor/ec_adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T05:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6492fe15_ff2a7212",
+      "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64159e82_ce183780",
         "filename": "driver/temp_sensor/ec_adc.c",
         "patchSetId": 3
@@ -150,6 +294,24 @@
       "writtenOn": "2015-09-03T21:05:08Z",
       "side": 1,
       "message": "This should be behind a new ncp15wb CONFIG, and you should assert if it\u0027s not defined (since you can\u0027t convert to temperature if you don\u0027t know what thermistor you have).",
+      "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44a89a5b_a4f622fc",
+        "filename": "driver/temp_sensor/ec_adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T05:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64159e82_ce183780",
       "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -173,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "244806a0_5e0511d6",
+        "filename": "driver/temp_sensor/ec_adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T05:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0484e2ca_d6b4360d",
+      "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0484e2ca_76076a59",
         "filename": "driver/temp_sensor/ec_adc.c",
         "patchSetId": 3
@@ -184,6 +364,24 @@
       "writtenOn": "2015-09-03T21:05:08Z",
       "side": 1,
       "message": "I don\u0027t think these functions are useful. Console command \u0027temps\u0027 should be good enough.",
+      "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "244806a0_7e00cdc7",
+        "filename": "driver/temp_sensor/ec_adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T05:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0484e2ca_76076a59",
       "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -207,6 +405,24 @@
     },
     {
       "key": {
+        "uuid": "44a89a5b_04061695",
+        "filename": "driver/temp_sensor/ec_adc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T05:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8497f201_e025e888",
+      "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84529221_0959579b",
         "filename": "driver/temp_sensor/ec_adc.h",
         "patchSetId": 3
@@ -218,6 +434,24 @@
       "writtenOn": "2015-09-03T21:05:08Z",
       "side": 1,
       "message": "You\u0027re limiting yourself to 5 channels, but some ECs may have more. You shouldn\u0027t define this here, but rather use enum adc_channel / ADC_CH_COUNT (defined at board level) as your parameter.",
+      "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "444dfaad_7f1e0ba1",
+        "filename": "driver/temp_sensor/ec_adc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T05:53:18Z",
+      "side": 1,
+      "message": "oh sorry, some test codes left. board level config will be used.",
+      "parentUuid": "84529221_0959579b",
       "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -241,6 +475,24 @@
     },
     {
       "key": {
+        "uuid": "84ae1264_cf8c952d",
+        "filename": "driver/temp_sensor/ec_adc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T05:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44141a88_6d378daf",
+      "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6492fe15_7f62e29f",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -252,6 +504,24 @@
       "writtenOn": "2015-09-03T21:05:08Z",
       "side": 1,
       "message": "Just call this CONFIG_TEMP_SENSOR_ADC, and leave your comment \"/* Thermistor on EC\u0027s own ADC */\".",
+      "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84ae1264_6fe481a1",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1488,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T05:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6492fe15_7f62e29f",
       "revId": "487e081609e797a6c09dc2956df07080d44bc0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
