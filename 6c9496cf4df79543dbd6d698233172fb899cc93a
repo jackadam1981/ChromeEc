@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44141a88_5e6075ca",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-04T15:52:44Z",
+      "side": 1,
+      "message": "not sure how you came up with these constants, maybe a comment or macros with comments would help",
+      "range": {
+        "startLine": 826,
+        "startChar": 2,
+        "endLine": 827,
+        "endChar": 44
+      },
+      "revId": "6c9496cf4df79543dbd6d698233172fb899cc93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
