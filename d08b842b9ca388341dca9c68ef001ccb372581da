@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "64159e82_94aad2b8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-04T22:43:16Z",
+      "side": 1,
+      "message": "Fixed. But there is a strong assumption throughout the code that EC_RES_SUCCESS \u003d\u003d EC_SUCCESS \u003d\u003d 0.",
+      "parentUuid": "64159e82_eecc13a3",
+      "range": {
+        "startLine": 996,
+        "startChar": 10,
+        "endLine": 996,
+        "endChar": 13
+      },
+      "revId": "d08b842b9ca388341dca9c68ef001ccb372581da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6492fe15_ff191245",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-03T20:32:35Z",
       "side": 1,
       "message": "same as previous comment",
+      "range": {
+        "startLine": 1011,
+        "startChar": 10,
+        "endLine": 1011,
+        "endChar": 13
+      },
+      "revId": "d08b842b9ca388341dca9c68ef001ccb372581da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8497f201_132b8d46",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-04T22:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6492fe15_ff191245",
       "range": {
         "startLine": 1011,
         "startChar": 10,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "240f267a_77f118a1",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-04T22:43:16Z",
+      "side": 1,
+      "message": "You\u0027re right, that\u0027s better:\nThat means that we could implement a software version for other sensor that does not support gesture detection.\n\nFrom that, CONFIG_GESTURE_HW_DETECTION is not used anymore, I removed it.",
+      "parentUuid": "8497f201_ccb4ad0d",
+      "range": {
+        "startLine": 121,
+        "startChar": 7,
+        "endLine": 121,
+        "endChar": 34
+      },
+      "revId": "d08b842b9ca388341dca9c68ef001ccb372581da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64159e82_654e8637",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "644d9e85_98811c38",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-04T22:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64159e82_654e8637",
+      "range": {
+        "startLine": 830,
+        "startChar": 67,
+        "endLine": 830,
+        "endChar": 71
+      },
+      "revId": "d08b842b9ca388341dca9c68ef001ccb372581da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04cce27b_850c847d",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2015-09-03T20:32:35Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 1797,
+        "startChar": 37,
+        "endLine": 1797,
+        "endChar": 46
+      },
+      "revId": "d08b842b9ca388341dca9c68ef001ccb372581da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6492fe15_d5251789",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1797,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-04T22:43:16Z",
+      "side": 1,
+      "message": "Took me a while :-)\nDependant is a rare alternative spelling with no definitions of its own. According to every British reference resource we checked, British English treats dependant as the noun and dependent as the adjective.",
+      "parentUuid": "04cce27b_850c847d",
       "range": {
         "startLine": 1797,
         "startChar": 37,
