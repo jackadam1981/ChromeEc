@@ -752,10 +752,28 @@ int charge_manager_set_override(int port)
 			charge_override_timeout, -1);
 	}
 
-	/* Set the override port if it's a sink. */
-	if (port < 0 || pd_get_role(port) == PD_ROLE_SINK) {
+	if (port == OVERRIDE_OFF) {
 		if (override_port != port) {
 			charge_manager_cleanup_override_port(override_port);
+			override_port = port;
+		}
+	}
+	/*
+	 * On OVERRIDE_DONT_CHARGE, clear override on ALL ports to make sure
+	 * we are sourcing power on all ports that can.
+	 */
+	else if (port == OVERRIDE_DONT_CHARGE) {
+		int i;
+		if (override_port != port) {
+			for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
+				charge_manager_cleanup_override_port(i);
+
+			override_port = port;
+		}
+	}
+	/* Set the override port if it's a sink. */
+	else if (pd_get_role(port) == PD_ROLE_SINK) {
+		if (override_port != port) {
 			override_port = port;
 			if (charge_manager_is_seeded())
 				hook_call_deferred(charge_manager_refresh, 0);
