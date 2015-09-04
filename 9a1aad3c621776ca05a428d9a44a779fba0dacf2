@@ -81,6 +81,24 @@
       "revId": "9a1aad3c621776ca05a428d9a44a779fba0dacf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64159e82_149ee258",
+        "filename": "board/kunimitsu/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-04T01:22:26Z",
+      "side": 1,
+      "message": "Removed the rework and device boots without battery, submitting the next version of the code",
+      "parentUuid": "0484e2ca_ce134021",
+      "revId": "9a1aad3c621776ca05a428d9a44a779fba0dacf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
