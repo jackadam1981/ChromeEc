@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e486eed4_75076259",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-04T00:17:26Z",
+      "side": 1,
+      "message": "Why do you use FW_SIZE_ instead of FW_SIZE ?",
+      "range": {
+        "startLine": 31,
+        "startChar": 59,
+        "endLine": 31,
+        "endChar": 78
+      },
+      "revId": "ce063e08297b6578abf6f301f7046302625a781c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e430ad80_5048b480",
         "filename": "include/config_std_internal_flash.h",
         "patchSetId": 13
