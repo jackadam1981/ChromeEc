@@ -39,6 +39,24 @@
       "revId": "0fadb764f384d9ca5d493bfa09391a521b5d22ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04594273_00cdea9c",
+        "filename": "board/oak/extpower.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-09-04T13:05:40Z",
+      "side": 1,
+      "message": "I reuse the extpower_gpio.c \u0026 move remaining code to oak/board.c",
+      "parentUuid": "44141a88_4dee1182",
+      "revId": "0fadb764f384d9ca5d493bfa09391a521b5d22ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
