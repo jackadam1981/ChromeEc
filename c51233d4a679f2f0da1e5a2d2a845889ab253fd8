@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84ae1264_4f1745dd",
+        "filename": "driver/temp_sensor/ncp15wb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T07:50:35Z",
+      "side": 1,
+      "message": "We need additional comments here. \"configuration specified in datasheet\" no longer applies (actually, that comment should stay on the bd99992 side). Instead, you need to document the configuration that we\u0027re supporting here. by Shawnn",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "c51233d4a679f2f0da1e5a2d2a845889ab253fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24cac639_ae0ef766",
+        "filename": "driver/temp_sensor/ncp15wb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-09-04T07:50:35Z",
+      "side": 1,
+      "message": "I\u0027m skeptical that these maths will still apply after you switch from the bd99992 ADC to the MEC1322 ADC, due to range / resolution differences. But, I assume you tested?  by shawnn",
+      "revId": "c51233d4a679f2f0da1e5a2d2a845889ab253fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
