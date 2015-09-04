@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "64159e82_1911fbce",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-04T00:39:34Z",
+      "side": 1,
+      "message": "No, this kind of stuff is used to resolve macros specified in terms of other macros. They\u0027re functionally equivalent here, because SHAREDLIB has no value. But below, where we use FW_SIZE(SECTION), SECTION is defined to either RW or RO.\n\nIn that case, there is a difference. Assuming\n\n#define CONFIG_RO_SIZE 0x200\n\nthen \n\nFW_SIZE_(SECTION) is CONFIG_RO_SIZE\n\nwhich doesn\u0027t compile, while\n\nFW_SIZE(SECTION) is 0x200",
+      "parentUuid": "04cce27b_dca58582",
+      "range": {
+        "startLine": 31,
+        "startChar": 59,
+        "endLine": 31,
+        "endChar": 78
+      },
+      "revId": "ce063e08297b6578abf6f301f7046302625a781c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e430ad80_5048b480",
         "filename": "include/config_std_internal_flash.h",
         "patchSetId": 13
