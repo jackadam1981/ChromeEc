@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0484e2ca_df1be979",
+        "filename": "driver/temp_sensor/ec_adc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-04T19:31:29Z",
+      "side": 1,
+      "message": "Let\u0027s keep the headers alpha-sorted.",
+      "revId": "ef54f7f5d97c267681b9f03b96affcc755d3e159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_be50674b",
+        "filename": "driver/temp_sensor/ec_adc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-04T19:31:29Z",
+      "side": 1,
+      "message": "I think we should just do a compile-time check for a valid thermistor driver. See my code from the parent post.",
+      "revId": "ef54f7f5d97c267681b9f03b96affcc755d3e159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8497f201_a92348e6",
+        "filename": "driver/temp_sensor/ec_adc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-04T19:31:29Z",
+      "side": 1,
+      "message": "We should check for index \u003c0 here as well.",
+      "revId": "ef54f7f5d97c267681b9f03b96affcc755d3e159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
