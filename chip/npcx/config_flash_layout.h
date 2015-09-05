@@ -14,8 +14,12 @@
  */
 
 /* Memmapped, external SPI */
-#define CONFIG_FLASH_MAPPED
+#define CONFIG_EXTERNAL_STORAGE
+#define CONFIG_MAPPED_STORAGE
+/* Storage is memory-mapped, but program runs from SRAM */
+#define CONFIG_MAPPED_STORAGE_BASE 0x64000000
 #undef  CONFIG_FLASH_PSTATE
+
 
 /* Size of one firmware image in flash */
 #ifndef CONFIG_FW_IMAGE_SIZE
