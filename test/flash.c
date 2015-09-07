@@ -229,7 +229,7 @@ int host_command_region_info(enum ec_flash_region reg, uint32_t *offset,
 
 	params.region = reg;
 
-	res = test_send_host_command(EC_CMD_FLASH_REGION_INFO, 1, &params,
+	res = test_send_host_command(EC_CMD_FLASH_REGION_INFO, 2, &params,
 				     sizeof(params), &resp, sizeof(resp));
 
 	*offset = resp.offset;
@@ -361,11 +361,13 @@ static int test_flash_info(void)
 static int test_region_info(void)
 {
 	VERIFY_REGION_INFO(EC_FLASH_REGION_RO,
+			   CONFIG_EC_PROTECTED_STORAGE_OFF +
 			   CONFIG_RO_STORAGE_OFF, CONFIG_RO_SIZE);
 	VERIFY_REGION_INFO(EC_FLASH_REGION_RW,
+			   CONFIG_EC_WRITABLE_STORAGE_OFF +
 			   CONFIG_RW_STORAGE_OFF, CONFIG_RW_SIZE);
 	VERIFY_REGION_INFO(EC_FLASH_REGION_WP_RO,
-			   CONFIG_WP_OFF, CONFIG_WP_SIZE);
+			   CONFIG_WP_STORAGE_OFF, CONFIG_WP_STORAGE_SIZE);
 
 	return EC_SUCCESS;
 }

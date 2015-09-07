@@ -883,6 +883,8 @@ DECLARE_HOST_COMMAND(EC_CMD_FLASH_PROTECT,
 		     flash_command_protect,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
+/* TODO: cmd version changed due to absolute offsets, deal with this in user
+ * space */
 static int flash_command_region_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_region_info *p = args->params;
@@ -890,16 +892,18 @@ static int flash_command_region_info(struct host_cmd_handler_args *args)
 
 	switch (p->region) {
 	case EC_FLASH_REGION_RO:
-		r->offset = CONFIG_RO_STORAGE_OFF;
+		r->offset = CONFIG_EC_PROTECTED_STORAGE_OFF +
+			    CONFIG_RO_STORAGE_OFF;
 		r->size = CONFIG_RO_SIZE;
 		break;
 	case EC_FLASH_REGION_RW:
-		r->offset = CONFIG_RW_STORAGE_OFF;
+		r->offset = CONFIG_EC_WRITABLE_STORAGE_OFF +
+			    CONFIG_RW_STORAGE_OFF;
 		r->size = CONFIG_RW_SIZE;
 		break;
 	case EC_FLASH_REGION_WP_RO:
-		r->offset = CONFIG_WP_OFF;
-		r->size = CONFIG_WP_SIZE;
+		r->offset = CONFIG_WP_STORAGE_OFF;
+		r->size = CONFIG_WP_STORAGE_SIZE;
 		break;
 	default:
 		return EC_RES_INVALID_PARAM;
@@ -910,4 +914,4 @@ static int flash_command_region_info(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FLASH_REGION_INFO,
 		     flash_command_region_info,
-		     EC_VER_MASK(EC_VER_FLASH_REGION_INFO));
+		     EC_VER_MASK(2));
