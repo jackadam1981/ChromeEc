@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04cce27b_1d99a4fa",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-07T18:52:59Z",
+      "side": 1,
+      "message": "Does \"#ifndef TEST_BUILD\" work instead?",
+      "revId": "a39b0fd851b705c0f35f49d1be2f7f57b9150380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
