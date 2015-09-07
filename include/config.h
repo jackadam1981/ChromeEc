@@ -724,8 +724,13 @@
 #undef CONFIG_FLASH_WRITE_IDEAL_SIZE
 #undef CONFIG_FLASH_WRITE_SIZE
 
-/* Base address of SPI Flash. */
-#undef CONFIG_FLASH_BASE_SPI
+/* Protected region of storage belonging to EC */
+#undef CONFIG_EC_PROTECTED_STORAGE_OFF
+#undef CONFIG_EC_PROTECTED_STORAGE_SIZE
+
+/* Writable region of storage belonging to EC */
+#undef CONFIG_EC_WRITABLE_STORAGE_OFF
+#undef CONFIG_EC_WRITABLE_STORAGE_SIZE
 
 /*****************************************************************************/
 
