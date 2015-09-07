@@ -890,16 +890,18 @@ static int flash_command_region_info(struct host_cmd_handler_args *args)
 
 	switch (p->region) {
 	case EC_FLASH_REGION_RO:
-		r->offset = CONFIG_RO_STORAGE_OFF;
+		r->offset = CONFIG_EC_PROTECTED_STORAGE_OFF +
+			    CONFIG_RO_STORAGE_OFF;
 		r->size = CONFIG_RO_SIZE;
 		break;
 	case EC_FLASH_REGION_RW:
-		r->offset = CONFIG_RW_STORAGE_OFF;
+		r->offset = CONFIG_EC_WRITABLE_STORAGE_OFF +
+			    CONFIG_RW_STORAGE_OFF;
 		r->size = CONFIG_RW_SIZE;
 		break;
 	case EC_FLASH_REGION_WP_RO:
-		r->offset = CONFIG_WP_OFF;
-		r->size = CONFIG_WP_SIZE;
+		r->offset = CONFIG_WP_STORAGE_OFF;
+		r->size = CONFIG_WP_STORAGE_SIZE;
 		break;
 	default:
 		return EC_RES_INVALID_PARAM;
