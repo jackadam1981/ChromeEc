@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84529221_333fd67c",
+        "filename": "board/ultima/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-07T22:59:41Z",
+      "side": 1,
+      "message": "No need to undef these unless they are defined by default in config.h (they aren\u0027t) or you want to emphasize it for some reason.",
+      "revId": "35a89a4ad816fd6d35cd90aebca960adeb2412fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
