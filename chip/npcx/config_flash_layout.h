@@ -23,7 +23,7 @@
 
 /* Size of one firmware image in flash */
 #ifndef CONFIG_FW_IMAGE_SIZE
-#define CONFIG_FW_IMAGE_SIZE	(CONFIG_FLASH_PHYSICAL_SIZE / 2)
+#define CONFIG_FW_IMAGE_SIZE	(CONFIG_FLASH_SIZE / 2)
 #endif
 
 /* Header support which is used by booter to copy FW from flash to code ram */
@@ -37,7 +37,7 @@
 /* RO firmware offset in flash */
 #define CONFIG_RO_MEM_OFF	CONFIG_RO_HDR_SIZE
 #define CONFIG_RO_SIZE		96 * 1024   /* 96KB for RO FW */
-#define CONFIG_FLASH_SIZE	CONFIG_FLASH_PHYSICAL_SIZE
+#define CONFIG_FLASH_SIZE	CONFIG_FLASH_SIZE
 
 /* RW firmware offset in flash */
 #define CONFIG_RW_MEM_OFF	CONFIG_RW_STORAGE_OFF
