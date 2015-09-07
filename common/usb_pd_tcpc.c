@@ -981,6 +981,10 @@ static int tcpc_set_power_status(int port, int vbus_present)
 int tcpc_set_power_status_mask(int port, uint8_t mask)
 {
 	pd[port].power_status_mask = mask;
+#ifdef CONFIG_USB_PD_TCPM_VBUS
+	if (pd[port].power_status_mask & TCPC_REG_POWER_VBUS_PRES)
+		alert(port, TCPC_REG_ALERT_POWER_STATUS);
+#endif /* CONFIG_USB_PD_TCPM_VBUS */
 	return EC_SUCCESS;
 }
 

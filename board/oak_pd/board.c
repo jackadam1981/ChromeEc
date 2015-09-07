@@ -52,7 +52,11 @@ static void board_init(void)
 	/* Enable interrupts on VBUS transitions. */
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
 	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE_L);
-
+	/* Update VBUS event */
+	if (!gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L))
+		pd_vbus_evt_p0(GPIO_USB_C0_VBUS_WAKE_L);
+	if (!gpio_get_level(GPIO_USB_C1_VBUS_WAKE_L))
+		pd_vbus_evt_p1(GPIO_USB_C1_VBUS_WAKE_L);
 	/* OAK_PD: TODO: Power management of ARM based system */
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
