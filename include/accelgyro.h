@@ -105,6 +105,9 @@ struct accelgyro_drv {
 	 * process the events that triggered an interrupt.
 	 * @s Pointer to sensor data.
 	 * @event Event to process. May add add other events for the next processor.
+	 *
+	 * Return EC_SUCCESS when one event is handled, EC_ERROR_NOT_HANDLED
+	 * when no events have been proccessed.
 	 */
 	int (*irq_handler)(struct motion_sensor_t *s, uint32_t *event);
 #endif
