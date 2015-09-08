@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8497f201_38f1c0cf",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-08T18:12:33Z",
+      "side": 1,
+      "message": "I think we want to set delayed_override_port \u003d OVERRIDE_OFF here. Previously the value of delayed_override_port didn\u0027t matter if we were passed our timeout deadline, but that\u0027s no longer the case since you added the check at the beginning of charge_manager_set_override().",
+      "revId": "a146eb9ba25b843a78ea062439ddd65a9a832612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
