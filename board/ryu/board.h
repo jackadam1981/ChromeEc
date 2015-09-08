@@ -160,6 +160,9 @@
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
 
+/* ALS sensor is in forced mode */
+#define CONFIG_ACCEL_FORCE_MODE_MASK ((1 << 3) | (1 << 4))
+
 /* Size of FIFO queue is determined by Android Hifi sensor requirements:
  * Wake up sensors: Accel @50Hz + Barometer @5Hz + uncal mag @ 10Hz
  * 60s minimum, 3min recommened.
