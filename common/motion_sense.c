@@ -355,6 +355,8 @@ static void motion_sense_shutdown(void)
 		sensor = &motion_sensors[i];
 		sensor->drv->list_activities(sensor,
 				&enabled, &disabled);
+		/* exclude double tap, it is used internally. */
+		enabled &= 1 << MOTIONSENSE_ACTIVITY_DOUBLE_TAP;
 		while (enabled) {
 			int activity = 31 - __builtin_clz(enabled);
 			enabled &= ~(1 << activity);
@@ -598,6 +600,20 @@ void motion_sense_task(void)
 #endif
 #ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
 		if (event & CONFIG_GESTURE_TAP_EVENT) {
+#ifdef CONFIG_ACCEL_FIFO
+			struct ec_response_motion_sensor_data vector;
+
+			/*
+			 * Send events to the FIFO
+			 * AP is ignoring double tap event, do no wake up and no
+			 * automatic disable.
+			 */
+			vector.flags = 0;
+			vector.activity = MOTIONSENSE_ACTIVITY_DOUBLE_TAP;
+			vector.state = 1; /* triggered */
+			vector.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID;
+			motion_sense_fifo_add_unit(&vector, NULL, 0);
+#endif
 			CPRINTS("double tap!");
 			lightbar_sequence(LIGHTBAR_TAP);
 		}
@@ -608,7 +624,6 @@ void motion_sense_task(void)
 #ifdef CONFIG_ACCEL_FIFO
 			struct ec_response_motion_sensor_data vector;
 
-			CPRINTS("significant motion");
 			/* Send events to the FIFO */
 			vector.flags = MOTIONSENSE_SENSOR_FLAG_WAKEUP;
 			vector.activity = MOTIONSENSE_ACTIVITY_SIG_MOTION;
@@ -616,6 +631,7 @@ void motion_sense_task(void)
 			vector.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID;
 			motion_sense_fifo_add_unit(&vector, NULL, 0);
 #endif
+			CPRINTS("significant motion");
 			/* Disable further detection */
 			activity_sensor = &motion_sensors[CONFIG_GESTURE_SIGMO];
 			activity_sensor->drv->manage_activity(
