@@ -9,36 +9,17 @@
 #include "common.h"
 #include "hooks.h"
 #include "hwtimer.h"
+#include "hwtimer_chip.h"
+#include "irq_chip.h"
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
 #include "watchdog.h"
-#include "hwtimer_chip.h"
 
-/* 128us (2^7 us) between 2 ticks */
-#define TICK_INTERVAL_LOG2  7
-
-#define TICK_INTERVAL      (1 << TICK_INTERVAL_LOG2)
-#define TICK_INTERVAL_MASK (TICK_INTERVAL - 1)
+#define TIMER_COUNT_1US_SHIFT      3
 
 #define MS_TO_COUNT(hz, ms) ((hz) * (ms) / 1000)
-
-/*
- * Tick interval must fit in one byte, and must be greater than two
- * so that the duty cycle does not equal the cycle time (IT83XX_TMR_DCR_B0 must
- * be less than IT83XX_TMR_CTR_B0).
- */
-BUILD_ASSERT(TICK_INTERVAL < 256 && TICK_INTERVAL > 2);
-
-static volatile uint32_t time_us;
-
-/*
- * Next event time of 0 represents "no event set". But, when we actually want
- * to trigger when the event time is 0, it is handled implicitly by calling
- * process_timers(1) when the timer value rolls over.
- */
-static uint32_t next_event_time;
 
 const struct ext_timer_ctrl_t et_ctrl_regs[] = {
 	{&IT83XX_INTC_IELMR19, &IT83XX_INTC_IPOLR19, 0x08,
@@ -56,44 +37,138 @@ const struct ext_timer_ctrl_t et_ctrl_regs[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(et_ctrl_regs) == EXT_TIMER_COUNT);
 
-void __hw_clock_event_set(uint32_t deadline)
+static void free_run_timer_reload_count(uint32_t us)
 {
-	next_event_time = deadline;
+	/* microseconds to timer count, timer 3 and 4 combine mode */
+	IT83XX_ETWD_ETXCNTLR(FREE_EXT_TIMER_H) =
+		us >> (24 - TIMER_COUNT_1US_SHIFT);
+	IT83XX_ETWD_ETXCNTLR(FREE_EXT_TIMER_L) =
+		us << TIMER_COUNT_1US_SHIFT;
+	/* bit1, timer re-start */
+	IT83XX_ETWD_ETXCTRL(FREE_EXT_TIMER_L) |= (1 << 1);
 }
 
-uint32_t __hw_clock_event_get(void)
+static void free_run_timer_clear_pending_isr(void)
 {
-	return next_event_time;
+	/* w/c interrupt status */
+	task_clear_pending_irq(et_ctrl_regs[FREE_EXT_TIMER_L].irq);
+	task_clear_pending_irq(et_ctrl_regs[FREE_EXT_TIMER_H].irq);
 }
 
-void __hw_clock_event_clear(void)
+static void free_run_timer_overflow(void)
 {
-	next_event_time = 0;
+	/* reload timer count */
+	free_run_timer_reload_count(0xffffffff);
+	/* w/c interrupt status */
+	free_run_timer_clear_pending_isr();
+	/* timer overflow */
+	process_timers(1);
+}
+
+static void event_timer_clear_pending_isr(void)
+{
+	/* w/c interrupt status */
+	task_clear_pending_irq(et_ctrl_regs[EVENT_EXT_TIMER].irq);
 }
 
 uint32_t __hw_clock_source_read(void)
 {
-	return time_us;
+	uint32_t l_us, h_us;
+
+	/* get timer count, timer 3 and 4 combine mode */
+	h_us = IT83XX_ETWD_ETXCNTOR(FREE_EXT_TIMER_H);
+	l_us = IT83XX_ETWD_ETXCNTOR(FREE_EXT_TIMER_L);
+	/* timer 3 overflow, update timer count again */
+	if (h_us != IT83XX_ETWD_ETXCNTOR(FREE_EXT_TIMER_H)) {
+		h_us = IT83XX_ETWD_ETXCNTOR(FREE_EXT_TIMER_H);
+		l_us = IT83XX_ETWD_ETXCNTOR(FREE_EXT_TIMER_L);
+	}
+
+	/* counting down timer, timer count to microseconds */
+	return 0xffffffff - ((l_us >> TIMER_COUNT_1US_SHIFT) |
+				(~h_us << (24 - TIMER_COUNT_1US_SHIFT)));
 }
 
 void __hw_clock_source_set(uint32_t ts)
 {
-	time_us = ts & TICK_INTERVAL_MASK;
+	uint32_t start_us;
+
+	/* counting down timer */
+	start_us = 0xffffffff - ts;
+
+	/* timer 3 and timer 4 are not enabled */
+	if ((IT83XX_ETWD_ETXCTRL(FREE_EXT_TIMER_L) & 0x09) != 0x09) {
+		/* bit3, timer 3 and timer 4 combine mode */
+		IT83XX_ETWD_ETXCTRL(FREE_EXT_TIMER_L) |= (1 << 3);
+		/* microseconds to timer count, clock source is 8mhz */
+		ext_timer_ms(FREE_EXT_TIMER_H, EXT_PSR_8M_HZ, 0, 1,
+			(start_us >> (24 - TIMER_COUNT_1US_SHIFT)), 1, 1);
+		ext_timer_ms(FREE_EXT_TIMER_L, EXT_PSR_8M_HZ, 1, 1,
+			(start_us << TIMER_COUNT_1US_SHIFT), 1, 1);
+	} else {
+		free_run_timer_clear_pending_isr();
+		/* reload timer count only */
+		free_run_timer_reload_count(start_us);
+		task_enable_irq(et_ctrl_regs[FREE_EXT_TIMER_H].irq);
+		task_enable_irq(et_ctrl_regs[FREE_EXT_TIMER_L].irq);
+	}
 }
 
+void __hw_clock_event_set(uint32_t deadline)
+{
+	/* bit0, disable event timer */
+	IT83XX_ETWD_ETXCTRL(EVENT_EXT_TIMER) &= ~(1 << 0);
+	/* w/c interrupt status */
+	event_timer_clear_pending_isr();
+	/* microseconds to timer count */
+	IT83XX_ETWD_ETXCNTLR(EVENT_EXT_TIMER) =
+		(deadline - __hw_clock_source_read()) << TIMER_COUNT_1US_SHIFT;
+	/* enable and re-start timer */
+	IT83XX_ETWD_ETXCTRL(EVENT_EXT_TIMER) |= 0x03;
+	task_enable_irq(et_ctrl_regs[EVENT_EXT_TIMER].irq);
+}
+
+uint32_t __hw_clock_event_get(void)
+{
+	uint32_t next_event_us = __hw_clock_source_read();
+
+	/* bit0, event timer is enabled */
+	if (IT83XX_ETWD_ETXCTRL(EVENT_EXT_TIMER) & (1 << 0)) {
+		/* timer count to microseconds */
+		next_event_us += (IT83XX_ETWD_ETXCNTOR(EVENT_EXT_TIMER) >>
+			TIMER_COUNT_1US_SHIFT);
+	}
+	return next_event_us;
+}
+
+void __hw_clock_event_clear(void)
+{
+	/* stop event timer */
+	ext_timer_stop(EVENT_EXT_TIMER, 1);
+	event_timer_clear_pending_isr();
+}
+
+int __hw_clock_source_init(uint32_t start_t)
+{
+	/* enable free running timer */
+	__hw_clock_source_set(start_t);
+	/* init event timer */
+	ext_timer_ms(EVENT_EXT_TIMER, EXT_PSR_8M_HZ, 0, 0, 0xffffffff, 1, 1);
+	/* returns the IRQ number of event timer */
+	return et_ctrl_regs[EVENT_EXT_TIMER].irq;
+}
 
 static void __hw_clock_source_irq(void)
 {
-#if defined(CONFIG_WATCHDOG) || defined(CONFIG_FANS)
 	/* Determine interrupt number. */
 	int irq = IT83XX_INTC_IVCT3 - 16;
-#endif
 
-	/*
-	 * If this is a SW interrupt, then process the timers, but don't
-	 * increment the time_us.
-	 */
-	if (get_itype() & 8) {
+	/* SW/HW interrupt of event timer. */
+	if ((get_sw_int() == et_ctrl_regs[EVENT_EXT_TIMER].irq) ||
+		(irq == et_ctrl_regs[EVENT_EXT_TIMER].irq)) {
+		IT83XX_ETWD_ETXCNTLR(EVENT_EXT_TIMER) = 0xffffffff;
+		IT83XX_ETWD_ETXCTRL(EVENT_EXT_TIMER) |= (1 << 1);
+		event_timer_clear_pending_isr();
 		process_timers(0);
 		return;
 	}
@@ -104,7 +179,7 @@ static void __hw_clock_source_irq(void)
 	 * go through this irq. So, if this interrupt was caused by watchdog
 	 * warning timer, then call that function.
 	 */
-	if (irq == IT83XX_IRQ_EXT_TIMER3) {
+	if (irq == et_ctrl_regs[WDT_EXT_TIMER].irq) {
 		watchdog_warning_irq();
 		return;
 	}
@@ -117,109 +192,34 @@ static void __hw_clock_source_irq(void)
 	}
 #endif
 
-	/*
-	 * If we're still here, this is actually a hardware interrupt for the
-	 * clock source. Clear its interrupt status and update time_us.
-	 */
-	task_clear_pending_irq(IT83XX_IRQ_TMR_B0);
+	if (irq == et_ctrl_regs[FREE_EXT_TIMER_L].irq) {
+		/* w/c interrupt status */
+		task_clear_pending_irq(et_ctrl_regs[FREE_EXT_TIMER_L].irq);
+		/* disable timer 3 interrupt */
+		task_disable_irq(et_ctrl_regs[FREE_EXT_TIMER_L].irq);
+		/* reload timer count */
+		if (IT83XX_ETWD_ETXCNTLR(FREE_EXT_TIMER_H)) {
+			IT83XX_ETWD_ETXCNTLR(FREE_EXT_TIMER_L) =
+				0xffffffff << TIMER_COUNT_1US_SHIFT;
+			IT83XX_ETWD_ETXCNTLR(FREE_EXT_TIMER_H) -= 1;
+			IT83XX_ETWD_ETXCTRL(FREE_EXT_TIMER_L) |= (1 << 1);
+		} else {
+			free_run_timer_overflow();
+		}
+		return;
+	}
 
-	time_us += TICK_INTERVAL;
-
-	/*
-	 * Find expired timers and set the new timer deadline; check the IRQ
-	 * status to determine if the free-running counter overflowed. Note
-	 * since each tick is greater than 1us and events can be set in
-	 * increments of 1us, in order to find expired timers we have to
-	 * check two conditions: the current time is exactly the next event
-	 * time, or this tick just caused us to pass the next event time.
-	 */
-	if (time_us == 0)
-		process_timers(1);
-	else if (time_us == next_event_time ||
-			(time_us-TICK_INTERVAL) ==
-					(next_event_time & ~TICK_INTERVAL_MASK))
-		process_timers(0);
+	if (irq == et_ctrl_regs[FREE_EXT_TIMER_H].irq) {
+		free_run_timer_overflow();
+		return;
+	}
 }
-DECLARE_IRQ(IT83XX_IRQ_TMR_B0, __hw_clock_source_irq, 1);
-
-static void setup_gpio(void)
-{
-	/* TMB0 enabled */
-	IT83XX_GPIO_GRC2 |= 0x04;
-
-	/* Pin muxing (TMB0) */
-	IT83XX_GPIO_GPCRF0 = 0x00;
-}
-
-static void hw_timer_enable_int(void)
-{
-	/* clear interrupt status */
-	task_clear_pending_irq(IT83XX_IRQ_TMR_B0);
-
-	/* enable interrupt B0 */
-	task_enable_irq(IT83XX_IRQ_TMR_B0);
-}
-
-int __hw_clock_source_init(uint32_t start_t)
-{
-	__hw_clock_source_set(start_t);
-
-	/* GPIO module should do this. */
-	setup_gpio();
-
-#if PLL_CLOCK == 48000000
-	/* Set prescaler divider value (PRSC0 = /8). */
-	IT83XX_TMR_PRSC = 0x04;
-
-	/* Tim B: 8  bit pulse mode, 8MHz clock. */
-	IT83XX_TMR_GCSMS = 0x01;
-#else
-#error "Support only for PLL clock speed of 48MHz."
-#endif
-
-	/* Set timer B to use PRSC0. */
-	IT83XX_TMR_CCGSR = 0x00;
-
-	/*
-	 * Set the 8-bit cycle time, duty time for timer B. Note 0 < DCR < CTR
-	 * in order for timer interrupt to properly fire when cycle time is
-	 * reached.
-	 */
-	IT83XX_TMR_CTR_B0 = TICK_INTERVAL - 1;
-	IT83XX_TMR_DCR_B0 = 0x01;
-
-	/* Enable the cycle time interrupt for timer B0. */
-	IT83XX_TMR_TMRIE |= 0x10;
-
-	hw_timer_enable_int();
-
-	/* Enable TMR clock counter. */
-	IT83XX_TMR_TMRCE |= 0x02;
-
-	return IT83XX_IRQ_TMR_B0;
-}
-
-void udelay(unsigned us)
-{
-	/*
-	 * When WNCKR register is set, the CPU pauses until a low to
-	 * high transition on an internal 65kHz clock (~15.25us). We need to
-	 * make sure though that we don't ever delay less than the requested
-	 * amount, so we always have to add an extra wait.
-	 *
-	 * TODO: This code has a few limitations, the math isn't exact so
-	 * the larger the delay the farther off it will be, it uses a divide,
-	 * and the resolution is only about 15us.
-	 */
-	int waits = us*4/61 + 1;
-	while (waits-- >= 0)
-		IT83XX_GCTRL_WNCKR = 0;
-}
+DECLARE_IRQ(CPU_INT_GROUP_3, __hw_clock_source_irq, 1);
 
 void ext_timer_start(enum ext_timer_sel ext_timer, int en_irq)
 {
 	/* enable external timer n */
-	IT83XX_ETWD_ETXCTRL(ext_timer) |= 0x01;
+	IT83XX_ETWD_ETXCTRL(ext_timer) |= 0x03;
 
 	if (en_irq) {
 		task_clear_pending_irq(et_ctrl_regs[ext_timer].irq);
@@ -256,9 +256,7 @@ static void ext_timer_ctrl(enum ext_timer_sel ext_timer,
 	IT83XX_ETWD_ETXPSR(ext_timer) = ext_timer_clock;
 
 	/* The count number of external timer n. */
-	IT83XX_ETWD_ETXCNTLH2R(ext_timer) = (count >> 16) & 0xFF;
-	IT83XX_ETWD_ETXCNTLHR(ext_timer) = (count >> 8) & 0xFF;
-	IT83XX_ETWD_ETXCNTLLR(ext_timer) = count & 0xFF;
+	IT83XX_ETWD_ETXCNTLR(ext_timer) = count;
 
 	ext_timer_stop(ext_timer, 0);
 	if (start)
@@ -275,28 +273,25 @@ int ext_timer_ms(enum ext_timer_sel ext_timer,
 		int start,
 		int with_int,
 		int32_t ms,
-		int first_time_enable)
+		int first_time_enable,
+		int raw)
 {
 	uint32_t count;
 
-	if (ext_timer_clock == EXT_PSR_32P768K_HZ)
-		count = MS_TO_COUNT(32768, ms);
-	else if (ext_timer_clock == EXT_PSR_1P024K_HZ)
-		count = MS_TO_COUNT(1024, ms);
-	else if (ext_timer_clock == EXT_PSR_32_HZ)
-		count = MS_TO_COUNT(32, ms);
-	else if (ext_timer_clock == EXT_PSR_8M_HZ)
-		count = 8000 * ms;
-	else
-		return -1;
-
-	/*
-	 * IT838X support 24-bits external timer only,
-	 * IT839X support three(4, 6, and 8) 32-bit external timers,
-	 * implemented later.
-	 */
-	if (count >> 24)
-		return -2;
+	if (raw) {
+		count = ms;
+	} else {
+		if (ext_timer_clock == EXT_PSR_32P768K_HZ)
+			count = MS_TO_COUNT(32768, ms);
+		else if (ext_timer_clock == EXT_PSR_1P024K_HZ)
+			count = MS_TO_COUNT(1024, ms);
+		else if (ext_timer_clock == EXT_PSR_32_HZ)
+			count = MS_TO_COUNT(32, ms);
+		else if (ext_timer_clock == EXT_PSR_8M_HZ)
+			count = 8000 * ms;
+		else
+			return -1;
+	}
 
 	if (count == 0)
 		return -3;

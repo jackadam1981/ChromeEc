@@ -147,6 +147,9 @@ static uint32_t tasks_ready = (1 << TASK_ID_HOOKS);
 
 static int start_called;  /* Has task swapping started */
 
+/* interrupt number of sw interrupt */
+static int sw_int_num;
+
 static inline task_ *__task_id_to_ptr(task_id_t id)
 {
 	return tasks + id;
@@ -216,6 +219,14 @@ int task_start_called(void)
 	return start_called;
 }
 
+int get_sw_int(void)
+{
+	/* If this is a SW interrupt */
+	if (get_itype() & 8)
+		return sw_int_num;
+	return 0;
+}
+
 /**
  * Scheduling system call
  *
@@ -230,6 +241,7 @@ void syscall_handler(int desched, task_id_t resched, int swirq)
 		set_ipc(get_ipc() + 4);
 		/* call the regular IRQ handler */
 		handler();
+		sw_int_num = 0;
 		return;
 	}
 
@@ -359,8 +371,10 @@ void task_clear_pending_irq(int irq)
 void task_trigger_irq(int irq)
 {
 	int cpu_int = chip_trigger_irq(irq);
-	if (cpu_int > 0)
+	if (cpu_int > 0) {
+		sw_int_num = irq;
 		__schedule(0, 0, cpu_int);
+	}
 }
 
 /*

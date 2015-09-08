@@ -80,8 +80,6 @@
 /****************************************************************************/
 /* Customize the build */
 
-/* Use hardware specific udelay() for this chip */
-#define CONFIG_HW_SPECIFIC_UDELAY
 #define CONFIG_FW_RESET_VECTOR
 
 /* Optional features present on this chip */
@@ -92,7 +90,6 @@
 #define CONFIG_PECI
 #define CONFIG_PWM
 #define CONFIG_SPI
-#undef CONFIG_WATCHDOG
 
 #define GPIO_PIN(port, index) GPIO_##port, (1 << index)
 #define GPIO_PIN_MASK(port, mask) GPIO_##port, (mask)
