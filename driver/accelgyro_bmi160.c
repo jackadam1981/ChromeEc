@@ -623,7 +623,7 @@ void normalize(const struct motion_sensor_t *s, vector_3_t v, uint8_t *data)
 }
 
 #ifdef CONFIG_GESTURE_HOST_DETECTION
-int manage_activity(struct motion_sensor_t *s,
+int manage_activity(const struct motion_sensor_t *s,
 		  enum motionsensor_activity activity,
 		  int enable,
 		  struct ec_motion_sense_activity *param)
@@ -681,7 +681,7 @@ int manage_activity(struct motion_sensor_t *s,
 	return ret;
 }
 
-int list_activities(struct motion_sensor_t *s,
+int list_activities(const struct motion_sensor_t *s,
 		uint32_t *enabled,
 		uint32_t *disabled)
 {
