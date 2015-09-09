@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04c1426c_43144c09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-09T14:40:17Z",
+      "side": 1,
+      "message": "Just to be clear, you\u0027re saying that 5ms isn\u0027t enough of a delay because the soft reset isn\u0027t being sent?\n\nIf that is the case, I think we probably should just change this to a callback to be more robust. We can delay until we either get ACCEPT/REJECT in response to the soft reset, or until we timeout and try to send a hard reset. If needed, you can put a TODO and open a bug for this.",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "3d055fab6ed690de2d1bba35eaa90bee464098eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
