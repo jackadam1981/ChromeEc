@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4c34e74_e2423cd9",
+        "filename": "driver/pmic_tps650830.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-09T16:34:58Z",
+      "side": 1,
+      "message": "If you\u0027re going to implement these functions (even inlined) then I think it\u0027s better to have them in the .c file (as you had previously). But, I still don\u0027t think these functions are useful. I don\u0027t see the benefit of calling tps650830_i2c_read() in board-level code rather than just calling i2c_read8().",
+      "revId": "11e2721928f8d3c41d5426b7cc00822a35facf3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
