@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e4c34e74_628aac10",
+        "filename": "driver/pmic_tps650830.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-09T02:41:45Z",
+      "side": 1,
+      "message": "yes, it is not useful. We can add it in the board.c with static function definition.\nBut, it will be a common code if some other platform uses the same PMIC in future.",
+      "parentUuid": "04c1426c_83ea64e2",
+      "revId": "4ff8b034c50d135fcd911632bba82668fe4363e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44cedaa4_5a155575",
         "filename": "driver/pmic_tps650830.h",
         "patchSetId": 2
