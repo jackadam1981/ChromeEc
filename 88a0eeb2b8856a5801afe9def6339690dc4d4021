@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4ecf63c_45a93e5e",
+        "filename": "board/kunimitsu/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-09T22:37:00Z",
+      "side": 1,
+      "message": "why is the ALS task so high priority? i would think it should be next to last priority, just above hooks task.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 52
+      },
+      "revId": "88a0eeb2b8856a5801afe9def6339690dc4d4021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64cf5e9f_1e0eac3f",
+        "filename": "board/strago/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-09T22:37:00Z",
+      "side": 1,
+      "message": "same comment",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 52
+      },
+      "revId": "88a0eeb2b8856a5801afe9def6339690dc4d4021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
