@@ -8,7 +8,7 @@
 /* Inputs with interrupt handlers are first for efficiency */
 GPIO_INT(AC_PRESENT,     PIN(C, 6),  GPIO_INT_BOTH,                     extpower_interrupt)
 GPIO_INT(POWER_BUTTON_L, PIN(B, 5),  GPIO_INT_BOTH | GPIO_PULL_UP,      power_button_interrupt)
-GPIO_INT(SOC_POWER_GOOD, PIN(A, 3),  GPIO_INT_BOTH | GPIO_PULL_DOWN,    power_signal_interrupt)
+GPIO_INT(SOC_POWER_GOOD, PIN(A, 3),  GPIO_INT_BOTH,                     power_signal_interrupt)
 GPIO_INT(LID_OPEN,       PIN(C, 13), GPIO_INT_BOTH,                     lid_interrupt)          /* LID switch detection */
 GPIO_INT(SUSPEND_L,      PIN(C, 7),  GPIO_INT_BOTH | GPIO_PULL_DOWN,    power_signal_interrupt) /* AP suspend/resume state */
 GPIO_INT(PD_MCU_INT,     PIN(E, 0),  GPIO_INT_FALLING,                  pd_mcu_interrupt)       /* Signal from PD MCU, external pull-up */
@@ -54,7 +54,7 @@ GPIO(BAT_LED1,          PIN(A, 11), GPIO_OUT_LOW)   /* LED_ORANGE or LED_RED(>re
 GPIO(PWR_LED0,          PIN(F, 10), GPIO_OUT_LOW)   /* LED_GREEN */
 GPIO(PWR_LED1,          PIN(F,  9), GPIO_OUT_LOW)   /* LED_ORANGE */
 GPIO(EC_BL_OVERRIDE,    PIN(F, 1),  GPIO_OUT_LOW)
-GPIO(EC_INT_L,          PIN(B, 9),  GPIO_OUT_HIGH)
+GPIO(EC_INT_L,          PIN(B, 9),  GPIO_ODR_HIGH)
 GPIO(ENTERING_RW,       PIN(F, 0),  GPIO_OUT_LOW)
 
 
