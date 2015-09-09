@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64cf5e9f_e931fdbb",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-09T15:54:55Z",
+      "side": 1,
+      "message": "we don\u0027t always have 2 ports. we\u0027ve been doing something like:\n\n#if CONFIG_USB_PD_PORT_COUNT \u003e\u003d 2\ntcpc_set_power_status(port, !gpio_get_level(port ?\n\t\t\t      GPIO_USB_C1_VBUS_WAKE_L :\n\t\t\t      GPIO_USB_C0_VBUS_WAKE_L));\n#else\ntcpc_set_power_status(port, !gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L));\n#endif",
+      "range": {
+        "startLine": 1040,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 35
+      },
+      "revId": "40d1ddc2c6dde93eb93ab44fb90302defbe3f7cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
