@@ -16,6 +16,24 @@
       "revId": "11e2721928f8d3c41d5426b7cc00822a35facf3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4c34e74_2d6b85e6",
+        "filename": "driver/pmic_tps650830.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-09T17:58:19Z",
+      "side": 1,
+      "message": "Okay, we have many read/write to PMIC in coming patches (https://chromium-review.googlesource.com/#/c/295402/). Either we have to have these functions in board files or need to keep them separate.",
+      "parentUuid": "e4c34e74_e2423cd9",
+      "revId": "11e2721928f8d3c41d5426b7cc00822a35facf3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
