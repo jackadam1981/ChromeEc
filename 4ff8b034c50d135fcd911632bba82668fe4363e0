@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04c1426c_83ea64e2",
+        "filename": "driver/pmic_tps650830.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-09T01:53:20Z",
+      "side": 1,
+      "message": "I question whether this driver is useful. The i2c wrapper functions don\u0027t seem any better than calling i2c_read, and the only other functionality the driver provides is to check a vendor ID register.",
+      "revId": "4ff8b034c50d135fcd911632bba82668fe4363e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44cedaa4_5a155575",
+        "filename": "driver/pmic_tps650830.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-09T01:53:20Z",
+      "side": 1,
+      "message": "These register definitions can stay.",
+      "revId": "4ff8b034c50d135fcd911632bba82668fe4363e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
