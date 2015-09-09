@@ -430,8 +430,7 @@ static int set_data_rate(const struct motion_sensor_t *s,
 
 #ifdef CONFIG_ACCEL_FIFO
 	/* FIFO start collecting events if AP wants them */
-	if (BASE_ODR(s->config[SENSOR_CONFIG_AP].odr) != 0)
-		enable_fifo(s, 1);
+	enable_fifo(s, !!BASE_ODR(s->config[SENSOR_CONFIG_AP].odr));
 #endif
 
 accel_cleanup:
@@ -624,9 +623,9 @@ void normalize(const struct motion_sensor_t *s, vector_3_t v, uint8_t *data)
 
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 int manage_activity(const struct motion_sensor_t *s,
-		  enum motionsensor_activity activity,
-		  int enable,
-		  struct ec_motion_sense_activity *param)
+		    enum motionsensor_activity activity,
+		    int enable,
+		    struct ec_motion_sense_activity *param)
 {
 	int ret;
 	struct bmi160_drv_data_t *data = BMI160_GET_DATA(s);
@@ -710,7 +709,7 @@ int list_activities(const struct motion_sensor_t *s,
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
 /**
- * bmi160_interrupt - called when the sensor activate the interrupt line.
+ * bmi160_interrupt - called when the sensor activates the interrupt line.
  *
  * This is a "top half" interrupt handler, it just asks motion sense ask
  * to schedule the "bottom half", ->irq_handler().
@@ -738,9 +737,13 @@ static int config_interrupt(const struct motion_sensor_t *s)
 	ret = raw_write8(s->addr, BMI160_INT_TAP_1,
 		BMI160_TAP_TH(s, CONFIG_GESTURE_TAP_THRES_MG));
 #endif
-	/* configure int2 as an external input */
+	/*
+	 * configure int2 as an external input.
+	 * Set a 5ms latch to be sure the EC can read the interrupt register
+	 * properly, even when it is running more slowly.
+	 */
 	ret = raw_write8(s->addr, BMI160_INT_LATCH,
-		BMI160_INT2_INPUT_EN);
+		BMI160_INT2_INPUT_EN | BMI160_LATCH_5MS);
 
 	/* configure int1 as an interupt */
 	ret = raw_write8(s->addr, BMI160_INT_OUT_CTRL,
@@ -759,7 +762,8 @@ static int config_interrupt(const struct motion_sensor_t *s)
 #ifdef CONFIG_ACCEL_FIFO
 	/* map fifo water mark to int 1 */
 	ret = raw_write8(s->addr, BMI160_INT_FIFO_MAP,
-			BMI160_INT_MAP(1, FWM));
+			BMI160_INT_MAP(1, FWM) |
+			BMI160_INT_MAP(1, FFULL));
 
 	/* configure fifo watermark at 50% */
 	ret = raw_write8(s->addr, BMI160_FIFO_CONFIG_0,
@@ -768,10 +772,8 @@ static int config_interrupt(const struct motion_sensor_t *s)
 			BMI160_FIFO_TAG_INT1_EN |
 			BMI160_FIFO_TAG_INT2_EN |
 			BMI160_FIFO_HEADER_EN);
-#endif
 
 	/* Set fifo*/
-#ifdef CONFIG_ACCEL_FIFO
 	ret = raw_read8(s->addr, BMI160_INT_EN_1, &tmp);
 	tmp |= BMI160_INT_FWM_EN | BMI160_INT_FFUL_EN;
 	ret = raw_write8(s->addr, BMI160_INT_EN_1, tmp);
