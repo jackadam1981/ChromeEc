@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64cf5e9f_2932558a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-09T16:37:12Z",
+      "side": 1,
+      "message": "Can you open a crbug about this problem + describe the fix there? It will be helpful for reference.",
+      "revId": "8a3f40442881de7c87093cfc65e1542afedb1d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4bdd6e7_2032708a",
+        "filename": "power/braswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-09T16:37:12Z",
+      "side": 1,
+      "message": "Minor change, comment style should be \"... ; /* disable VNN VR */\"",
+      "revId": "8a3f40442881de7c87093cfc65e1542afedb1d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
