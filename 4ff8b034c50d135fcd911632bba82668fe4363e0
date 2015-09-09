@@ -51,6 +51,41 @@
       "revId": "4ff8b034c50d135fcd911632bba82668fe4363e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4ef2afe_26816736",
+        "filename": "driver/pmic_tps650830.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-09T04:24:01Z",
+      "side": 1,
+      "message": "Okay",
+      "parentUuid": "44cedaa4_5a155575",
+      "revId": "4ff8b034c50d135fcd911632bba82668fe4363e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84d4522f_fffc13ae",
+        "filename": "driver/pmic_tps650830.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-09T04:24:01Z",
+      "side": 1,
+      "message": "Another option is to make these static inline functions and remove the C file",
+      "revId": "4ff8b034c50d135fcd911632bba82668fe4363e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
