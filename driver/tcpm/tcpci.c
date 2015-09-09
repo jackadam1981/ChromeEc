@@ -143,6 +143,14 @@ int tcpm_set_power_status_mask(int port, uint8_t mask)
 			  TCPC_REG_POWER_STATUS_MASK , mask);
 }
 
+int tcpm_set_sleep(int port, int enable)
+{
+	return i2c_write8(I2C_PORT_TCPC, I2C_ADDR_TCPC(port),
+			  TCPC_REG_COMMAND,
+			  enable ? TCPC_REG_COMMAND_SLEEP
+				 : TCPC_REG_COMMAND_WAKE);
+}
+
 int tcpm_alert_mask_set(int port, uint16_t mask)
 {
 	/* write to the Alert Mask register */

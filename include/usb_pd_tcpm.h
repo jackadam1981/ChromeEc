@@ -183,6 +183,16 @@ int tcpm_set_msg_header(int port, int power_role, int data_role);
 int tcpm_set_rx_enable(int port, int enable);
 
 /**
+ * Enable/disable Type-C port sleep mode
+ *
+ * @param port Type-C port number
+ * @enable true for enable, false for disable
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpm_set_sleep(int port, int enable);
+
+/**
  * Read last received PD message.
  *
  * @param port Type-C port number

@@ -65,6 +65,9 @@
 #define TCPC_REG_FAULT_STATUS      0x1f
 
 #define TCPC_REG_COMMAND           0x23
+#define TCPC_REG_COMMAND_WAKE       0x11
+#define TCPC_REG_COMMAND_SLEEP      0xff
+
 #define TCPC_REG_DEV_CAP_1         0x24
 #define TCPC_REG_DEV_CAP_2         0x26
 #define TCPC_REG_STD_INPUT_CAP     0x28

@@ -963,6 +963,25 @@ int tcpc_set_power_status_mask(int port, uint8_t mask)
 	return EC_SUCCESS;
 }
 
+int tcpc_set_sleep(int port, int enable)
+{
+#ifdef CONFIG_LOW_POWER_IDLE
+	static uint8_t sleep_ports;
+
+	if (enable)
+		sleep_ports |= 1 << port;
+	else
+		sleep_ports &= ~(1 << port);
+
+	if (sleep_ports == ((1 << CONFIG_USB_PD_PORT_COUNT) - 1))
+		enable_sleep(SLEEP_MASK_USB_PD);
+	else
+		disable_sleep(SLEEP_MASK_USB_PD);
+#endif /* CONFIG_LOW_POWER_IDLE */
+
+	return EC_SUCCESS;
+}
+
 int tcpc_set_vconn(int port, int enable)
 {
 #ifdef CONFIG_USBC_VCONN
@@ -1108,6 +1127,11 @@ static void tcpc_i2c_write(int port, int reg, int len, uint8_t *payload)
 	case TCPC_REG_TCPC_CTRL:
 		tcpc_set_polarity(port,
 				  TCPC_REG_TCPC_CTRL_POLARITY(payload[1]));
+	case TCPC_REG_COMMAND:
+		if (payload[1] == TCPC_REG_COMMAND_SLEEP)
+			tcpc_set_sleep(port, 1);
+		else if (payload[1] == TCPC_REG_COMMAND_WAKE)
+			tcpc_set_sleep(port, 0);
 		break;
 	case TCPC_REG_MSG_HDR_INFO:
 		tcpc_set_msg_header(port,

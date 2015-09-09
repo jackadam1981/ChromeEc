@@ -251,7 +251,7 @@ static inline void set_state(int port, enum pd_states next_state)
 {
 	enum pd_states last_state = pd[port].task_state;
 #ifdef CONFIG_LOW_POWER_IDLE
-	int i;
+	int i, connected;
 #endif
 
 	set_state_timeout(port, 0, 0);
@@ -303,15 +303,20 @@ static inline void set_state(int port, enum pd_states next_state)
 
 #ifdef CONFIG_LOW_POWER_IDLE
 	/* If any PD port is connected, then disable deep sleep */
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
-		if (pd_is_connected(i))
-			break;
+	for (i = 0, connected = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+		if (pd_is_connected(i)) {
+			tcpm_set_sleep(port, 0);
+			connected++;
+		} else {
+			tcpm_set_sleep(port, 1);
+		}
 	}
-	if (i == CONFIG_USB_PD_PORT_COUNT)
-		enable_sleep(SLEEP_MASK_USB_PD);
-	else
+
+	if (connected)
 		disable_sleep(SLEEP_MASK_USB_PD);
-#endif
+	else
+		enable_sleep(SLEEP_MASK_USB_PD);
+#endif /* CONFIG_LOW_POWER_IDLE */
 
 	CPRINTF("C%d st%d\n", port, next_state);
 }
