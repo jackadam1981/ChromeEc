@@ -325,6 +325,16 @@ static void board_pmic_init(void)
 	if (tps650830_i2c_write(TPS650830_REG_PWFAULT_MASK1, 0x5))
 		return;
 
+	/*
+	 * Power button configuration
+	 * [7]  :    0b Power button debounce time, 30ms
+	 * [6]  :    0b Reset of power button timer logic, no action
+	 * [5:0]: 1000b Time that the button must be held to force an
+	 *              emergency reset, 8s
+	 */
+	if (tps650830_i2c_write(TPS650830_REG_PBCONFIG, 0x08))
+		return;
+
 	CPRINTS("PMIC init done");
 }
 /*
