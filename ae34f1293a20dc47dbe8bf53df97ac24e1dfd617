@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4ef2afe_eb32d5d5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2943,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-10T22:39:20Z",
+      "side": 1,
+      "message": "this is just for debugging. the charge override host command is a better way to manage which port to charge from as it automatically asks for power swaps on all involved ports.",
+      "range": {
+        "startLine": 2943,
+        "startChar": 2,
+        "endLine": 2943,
+        "endChar": 23
+      },
+      "revId": "ae34f1293a20dc47dbe8bf53df97ac24e1dfd617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "244c8613_506d1a86",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2946,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-10T22:39:20Z",
+      "side": 1,
+      "message": "this is just for debugging. host should never have to worry about this level of control.",
+      "range": {
+        "startLine": 2946,
+        "startChar": 2,
+        "endLine": 2946,
+        "endChar": 23
+      },
+      "revId": "ae34f1293a20dc47dbe8bf53df97ac24e1dfd617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
