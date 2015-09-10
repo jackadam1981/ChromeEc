@@ -23,11 +23,11 @@
  * Interval between HOOK_TICK notifications
  * Notice instant wake-up from deep-idle cannot exceed 200 ms
  */
-#define HOOK_TICK_INTERVAL_MS 200
-#define HOOK_TICK_INTERVAL    (HOOK_TICK_INTERVAL_MS * MSEC)
+#define HOOK_TICK_INTERVAL_MS   200
+#define HOOK_TICK_INTERVAL      (HOOK_TICK_INTERVAL_MS * MSEC)
 
 /* Maximum number of deferrable functions */
-#define DEFERRABLE_MAX_COUNT 8
+#define DEFERRABLE_MAX_COUNT    8
 
 /*
  * Number of I2C controllers. Controller 0 has 2 ports, so the chip has one
@@ -35,9 +35,9 @@
  */
 #define CONFIG_I2C_MULTI_PORT_CONTROLLER
 /* Number of I2C controllers */
-#define I2C_CONTROLLER_COUNT	4
+#define I2C_CONTROLLER_COUNT    4
 /* Number of I2C ports */
-#define I2C_PORT_COUNT		5
+#define I2C_PORT_COUNT          5
 
 
 /* Number of PWM ports */
@@ -45,27 +45,35 @@
 
 /*****************************************************************************/
 /* Memory mapping */
-#define CONFIG_RAM_BASE         0x200C0000 /* memory map address of data ram */
-#define CONFIG_RAM_SIZE         (0x00008000 - 0x800) /* 30KB data ram */
-#define CONFIG_CDRAM_BASE       0x100A8000 /* memory map address of code ram */
-#define CONFIG_CDRAM_SIZE       0x00018000 /* 96KB code ram */
-#define CONFIG_FLASH_BASE	0x64000000 /* memory address of spi-flash */
-#define CONFIG_LPRAM_BASE       0x40001600 /* memory address of low power ram */
-#define CONFIG_LPRAM_SIZE	0x00000620 /* 1568B low power ram */
+#if defined(BOARD_WHEATLEY)
+#define CONFIG_RAM_SHIFT                0x800
+#else
+#define CONFIG_RAM_SHIFT                0
+#endif
+/* memory map address and size of data ram */
+#define CONFIG_RAM_BASE                 (0x200C0000 + CONFIG_RAM_SHIFT)
+#define CONFIG_RAM_SIZE                 (0x00008000 - 0x800 - CONFIG_RAM_SHIFT)
+/* memory map address and size of code ram */
+#define CONFIG_CDRAM_BASE               0x100A8000
+#define CONFIG_CDRAM_SIZE               (0x00018000 + CONFIG_RAM_SHIFT)
+/* memory address and size of spi-flash and low power ram */
+#define CONFIG_FLASH_BASE               0x64000000
+#define CONFIG_LPRAM_BASE               0x40001600
+#define CONFIG_LPRAM_SIZE               0x00000620
 
 /* System stack size */
-#define CONFIG_STACK_SIZE       4096
+#define CONFIG_STACK_SIZE               4096
 
 /* non-standard task stack sizes */
-#define IDLE_TASK_STACK_SIZE		512
-#define LARGER_TASK_STACK_SIZE		640
+#define IDLE_TASK_STACK_SIZE            512
+#define LARGER_TASK_STACK_SIZE          640
 
-#define CHARGER_TASK_STACK_SIZE		640
-#define HOOKS_TASK_STACK_SIZE		640
-#define CONSOLE_TASK_STACK_SIZE		640
+#define CHARGER_TASK_STACK_SIZE         640
+#define HOOKS_TASK_STACK_SIZE           640
+#define CONSOLE_TASK_STACK_SIZE         640
 
 /* Default task stack size */
-#define TASK_STACK_SIZE			512
+#define TASK_STACK_SIZE                 512
 
 /* Address of RAM log used by Booter */
 #define ADDR_BOOT_RAMLOG        0x100C7FC0
