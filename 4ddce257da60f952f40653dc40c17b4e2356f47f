@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64cf5e9f_37750b91",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-10T14:55:57Z",
+      "side": 1,
+      "message": "Generally, we put the TODO in the code like:\n/* TODO (crosbug.com/p/xxxxx): wait for soft reset to finish instead of blind delay */",
+      "revId": "4ddce257da60f952f40653dc40c17b4e2356f47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
