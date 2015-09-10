@@ -21,13 +21,13 @@
 #define CONFIG_SPI_FLASH
 
 /* Size of SPI memory used by EC (lfw + RSA Keys + RO + RW + boot header) */
-#define CONFIG_FLASH_BASE_SPI		(CONFIG_SPI_FLASH_SIZE - (0x40000))
+#define CONFIG_EC_PROTECTED_STORAGE_OFF  (CONFIG_FLASH_SIZE - 0x20000)
+#define CONFIG_EC_WRITABLE_STORAGE_OFF   (CONFIG_FLASH_SIZE - 0x40000)
 
 /* Size of one firmware image in flash */
 #ifndef CONFIG_FW_IMAGE_SIZE
 #define CONFIG_FW_IMAGE_SIZE		(96 * 1024)
 #endif
-#define CONFIG_FLASH_SIZE		CONFIG_FLASH_PHYSICAL_SIZE
 
 /* Loader resides at the beginning of program memory */
 #define CONFIG_LOADER_MEM_OFF		0

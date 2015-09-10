@@ -18,7 +18,7 @@
 
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands for testing */
-#define CONFIG_SPI_FLASH_SIZE          0x00800000 /* 8MB spi flash */
+#define CONFIG_FLASH_SIZE 0x40000 /* 256 KB Flash used for EC */
 #define CONFIG_SPI_FLASH_W25Q64
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP /* Instead of 8042 protocol of keyboard */
@@ -40,13 +40,12 @@
 #define CONFIG_FANS                     1
 
 /* Optional feature - used by nuvoton */
-#define NPCX_PWM_INPUT_LFCLK   /* PWM use LFCLK for input clock */
-#define NPCX_MFT_INPUT_LFCLK   /* MFT use LFCLK for input clock */
 #define NPCX_UART_MODULE2    0 /* 0:GPIO10/11 1:GPIO64/65 as UART */
 #define NPCX_JTAG_MODULE2    0 /* 0:GPIO21/17/16/20 1:GPIOD5/E2/D4/E5 as JTAG*/
 #define NPCX_TACH_SEL2       0 /* 0:GPIO40/A4 1:GPIO93/D3 as TACH */
 
 /* Optional for testing */
+#undef  CONFIG_PECI
 #undef  CONFIG_PSTORE
 #undef  CONFIG_LOW_POWER_IDLE           /* Deep Sleep Support */
 

@@ -694,7 +694,6 @@
  */
 #define CONFIG_FLASH_MAPPED
 
-#undef CONFIG_FLASH_PHYSICAL_SIZE
 #undef CONFIG_FLASH_PROTECT_NEXT_BOOT
 
 /*
@@ -1414,9 +1413,6 @@
 
 /* SPI flash part supports SR2 register */
 #undef CONFIG_SPI_FLASH_HAS_SR2
-
-/* Size (bytes) of SPI flash memory */
-#undef CONFIG_SPI_FLASH_SIZE
 
 /* SPI master feature */
 #undef CONFIG_SPI_MASTER

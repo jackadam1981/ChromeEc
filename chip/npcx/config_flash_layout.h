@@ -17,9 +17,11 @@
 #define CONFIG_FLASH_MAPPED
 #undef  CONFIG_FLASH_PSTATE
 
+#define CONFIG_EC_PROTECTED_STORAGE_OFF  (CONFIG_FLASH_SIZE - 0x40000)
+#define CONFIG_EC_WRITABLE_STORAGE_OFF   (CONFIG_FLASH_SIZE - 0x20000)
 /* Size of one firmware image in flash */
 #ifndef CONFIG_FW_IMAGE_SIZE
-#define CONFIG_FW_IMAGE_SIZE	(CONFIG_FLASH_PHYSICAL_SIZE / 2)
+#define CONFIG_FW_IMAGE_SIZE	(CONFIG_FLASH_SIZE / 2)
 #endif
 
 /* Header support which is used by booter to copy FW from flash to code ram */
@@ -33,7 +35,6 @@
 /* RO firmware offset in flash */
 #define CONFIG_RO_MEM_OFF	CONFIG_RO_HDR_SIZE
 #define CONFIG_RO_SIZE		CONFIG_CDRAM_SIZE    /* 96KB for RO FW */
-#define CONFIG_FLASH_SIZE	CONFIG_FLASH_PHYSICAL_SIZE
 
 /* RW firmware offset in flash */
 #define CONFIG_RW_MEM_OFF	CONFIG_RW_STORAGE_OFF

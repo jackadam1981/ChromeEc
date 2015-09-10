@@ -3,15 +3,13 @@
  * found in the LICENSE file.
  */
 
-/* Skylake Chrome Reference Design board configuration */
+/* Glados board configuration */
 
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
-/*
- * TODO (crosbug.com/p/44704): Remove support for V3 when V4 is available.
- */
-#define BOARD_KUNIMITSU_V3
+/* Support Code RAM architecture (Run code in RAM) */
+#define CONFIG_CODERAM_ARCH
 
 /* Optional features */
 #define CONFIG_ADC
@@ -25,25 +23,23 @@
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_V2
 
+#define CONFIG_CHARGER_ADC_AMON_BMON
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_CHARGER_ISL9237
 #define CONFIG_CHARGER_ILIM_PIN_DISABLED
 #define CONFIG_CHARGER_INPUT_CURRENT 512
-#ifndef KUNIMITSU_BOARD_V3
 #define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 1
-#endif
+#define CONFIG_CHARGER_PROFILE_OVERRIDE
 #define CONFIG_CHARGER_SENSE_RESISTOR 10
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 20
 
 #define CONFIG_CHIPSET_SKYLAKE
 #define CONFIG_CLOCK_CRYSTAL
-#undef  CONFIG_DEBUG_ASSERT
 #define CONFIG_EXTPOWER_GPIO
 #define CONFIG_HOSTCMD_PD
 #define CONFIG_I2C
-#define CONFIG_KEYBOARD_COL2_INVERTED
-#undef  CONFIG_KEYBOARD_KSO_BASE
-#define CONFIG_KEYBOARD_KSO_BASE 0 /* KSO starts from KSO04 */
+#define CONFIG_LPC
+#define CONFIG_UART_HOST                0
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_LED_COMMON
 #define CONFIG_LID_SWITCH
@@ -51,10 +47,10 @@
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_X86
 #define CONFIG_POWER_COMMON
-#define CONFIG_POWER_SHUTDOWN_PAUSE_IN_S5
 #define CONFIG_SCI_GPIO GPIO_PCH_SCI_L
 #define CONFIG_USB_CHARGER
 #define CONFIG_USB_MUX_PI3USB30532
+#define CONFIG_USB_MUX_PS8740
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
@@ -70,13 +66,17 @@
 #define CONFIG_USBC_VCONN
 #define CONFIG_VBOOT_HASH
 
-#define CONFIG_SPI_FLASH_PORT 1
-#define CONFIG_SPI_FLASH
-#define CONFIG_FLASH_SIZE 524288
+#define CONFIG_FLASH_SIZE 0x40000 /* 256 KB Flash used for EC */
 #define CONFIG_SPI_FLASH_W25Q64
 
 #define CONFIG_TEMP_SENSOR
-#define CONFIG_TEMP_SENSOR_TMP432
+#define CONFIG_TEMP_SENSOR_BD99992GW
+
+/* Optional feature - used by nuvoton */
+#define NPCX_I2C0_BUS2       0 /* 0:GPIOB4/B5 1:GPIOB2/B3 as I2C0 */
+#define NPCX_UART_MODULE2    1 /* 0:GPIO10/11 1:GPIO64/65 as UART */
+#define NPCX_JTAG_MODULE2    0 /* 0:GPIO21/17/16/20 1:GPIOD5/E2/D4/E5 as JTAG*/
+#define NPCX_TACH_SEL2       0 /* 0:GPIO40/A4 1:GPIO93/D3 as TACH */
 
 /*
  * Allow dangerous commands.
@@ -85,50 +85,44 @@
 #define CONFIG_SYSTEM_UNLOCKED
 #define CONFIG_WATCHDOG_HELP
 
+#define CONFIG_WIRELESS
+#define CONFIG_WIRELESS_SUSPEND \
+	(EC_WIRELESS_SWITCH_WLAN | EC_WIRELESS_SWITCH_WLAN_POWER)
+
+/* Wireless signals */
+#define WIRELESS_GPIO_WLAN GPIO_WLAN_OFF_L
+#define WIRELESS_GPIO_WLAN_POWER GPIO_PP3300_WLAN_EN
+
 /* LED signals */
-#define GPIO_BAT_LED_BLUE GPIO_CHARGE_LED1
-#define GPIO_BAT_LED_AMBER GPIO_CHARGE_LED2
+#define GPIO_BAT_LED_RED GPIO_CHARGE_LED_1
+#define GPIO_BAT_LED_GREEN GPIO_CHARGE_LED_2
 
 /* I2C ports */
-#define I2C_PORT_BATTERY MEC1322_I2C0_0
-#define I2C_PORT_CHARGER MEC1322_I2C0_0
-#define I2C_PORT_THERMAL MEC1322_I2C0_0
-#define I2C_PORT_USB_CHARGER_1 MEC1322_I2C0_1
-#define I2C_PORT_USB_MUX MEC1322_I2C0_1
-#define I2C_PORT_PD_MCU MEC1322_I2C1
-#define I2C_PORT_TCPC MEC1322_I2C1
-#define I2C_PORT_ALS MEC1322_I2C2
-#define I2C_PORT_ACCEL MEC1322_I2C2
-#define I2C_PORT_PMIC MEC1322_I2C3
-#define I2C_PORT_USB_CHARGER_2 MEC1322_I2C3
+#define I2C_PORT_PMIC                   NPCX_I2C_PORT0_0
+/* TODO(shawnn): Verify that the charge detectors aren't swapped */
+#define I2C_PORT_USB_CHARGER_1          NPCX_I2C_PORT0_0
+#define I2C_PORT_USB_MUX                NPCX_I2C_PORT0_1
+#define I2C_PORT_USB_CHARGER_2          NPCX_I2C_PORT0_1
+#define I2C_PORT_PD_MCU                 NPCX_I2C_PORT1
+#define I2C_PORT_TCPC                   NPCX_I2C_PORT1
+#define I2C_PORT_ALS                    NPCX_I2C_PORT2
+#define I2C_PORT_ACCEL                  NPCX_I2C_PORT2
+#define I2C_PORT_BATTERY                NPCX_I2C_PORT3
+#define I2C_PORT_CHARGER                NPCX_I2C_PORT3
 
-#undef DEFERRABLE_MAX_COUNT
-#define DEFERRABLE_MAX_COUNT 13
-
-#define CONFIG_ALS
-#define CONFIG_ALS_OPT3001
-#define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
-
-/* Accelerometer */
-#define CONFIG_ACCEL_KXCJ9
-#define CONFIG_LID_ANGLE
-#define CONFIG_LID_ANGLE_SENSOR_BASE 0
-#define CONFIG_LID_ANGLE_SENSOR_LID 1
+/* Thermal sensors read through PMIC ADC interface */
+#define I2C_PORT_THERMAL I2C_PORT_PMIC
 
 /* Modules we want to exclude */
-#undef CONFIG_CMD_ACCEL_INFO
-#undef CONFIG_CMD_ACCELS
+#undef CONFIG_PECI
 #undef CONFIG_CMD_HASH
-#undef CONFIG_CMD_KEYBOARD
-#undef CONFIG_CMD_SHMEM
-#undef CONFIG_CMD_TEMP_SENSOR
+#undef CONFIG_CMD_I2C_SCAN
 #undef CONFIG_CMD_TIMERINFO
 #undef CONFIG_CONSOLE_CMDHELP
 #undef CONFIG_CONSOLE_HISTORY
-#undef CONFIG_PECI
 
-/* Enable Pseudo G3 */
-#define CONFIG_LOW_POWER_PSEUDO_G3
+#undef DEFERRABLE_MAX_COUNT
+#define DEFERRABLE_MAX_COUNT 14
 
 #ifndef __ASSEMBLER__
 
@@ -151,27 +145,22 @@ enum power_signal {
 	X86_SLP_S3_DEASSERTED,
 	X86_SLP_S4_DEASSERTED,
 	X86_SLP_SUS_DEASSERTED,
+	X86_PMIC_DPWROK,
+
 	/* Number of X86 signals */
 	POWER_SIGNAL_COUNT
 };
 
 enum temp_sensor_id {
-	/* TMP432 local and remote sensors */
-	TEMP_SENSOR_I2C_TMP432_LOCAL,
-	TEMP_SENSOR_I2C_TMP432_REMOTE1,
-	TEMP_SENSOR_I2C_TMP432_REMOTE2,
-
-	/* Battery temperature sensor */
 	TEMP_SENSOR_BATTERY,
 
+	/* These temp sensors are only readable in S0 */
+	TEMP_SENSOR_AMBIENT,
+	TEMP_SENSOR_CHARGER,
+	TEMP_SENSOR_DRAM,
+	TEMP_SENSOR_WIFI,
+
 	TEMP_SENSOR_COUNT
-};
-
-/* Light sensors */
-enum als_id {
-	ALS_OPT3001 = 0,
-
-	ALS_COUNT,
 };
 
 /* start as a sink in case we have no other power supply/battery */
@@ -189,6 +178,8 @@ enum als_id {
 #define PD_OPERATING_POWER_MW 15000
 #define PD_MAX_POWER_MW       60000
 #define PD_MAX_CURRENT_MA     3000
+
+/* Try to negotiate to 20V since i2c noise problems should be fixed. */
 #define PD_MAX_VOLTAGE_MV     20000
 
 /* Reset PD MCU */
