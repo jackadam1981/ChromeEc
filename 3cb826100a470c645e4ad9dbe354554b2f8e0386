@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4bdd6e7_f406715b",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-11T01:15:57Z",
+      "side": 1,
+      "message": "this is only looking at the latest raw_write8. i believe you want to make lines 644, 652, and 663 an |\u003d so that if any fails then ret is true.",
+      "range": {
+        "startLine": 664,
+        "startChar": 2,
+        "endLine": 664,
+        "endChar": 10
+      },
+      "revId": "3cb826100a470c645e4ad9dbe354554b2f8e0386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
