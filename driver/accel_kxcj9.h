@@ -101,6 +101,7 @@
 #define KXCJ9_OSA_400_0HZ	5
 #define KXCJ9_OSA_800_0HZ	6
 #define KXCJ9_OSA_1600_HZ	7
+#define KXCJ9_OSA_FIELD		0xf
 
 struct kxcj9_data {
 	/* Current range of accelerometer. */
