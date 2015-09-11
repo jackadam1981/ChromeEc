@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c402caba_f8ff5125",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-11T16:49:32Z",
+      "side": 1,
+      "message": "The code that is currently there is just for general motion detection. The directional tap is different. I just tried to provide the same functionality as for the KXCJ9 for now.\n\n\nThe directional tap stuff can come later.",
+      "parentUuid": "24a64628_8b0a2de9",
+      "revId": "3505a74438d157da3144fd1dc49451147c5fb7fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4b72a4b_307448c7",
         "filename": "driver/accel_kx022.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-09-11T16:35:57Z",
       "side": 1,
       "message": "This function should be make generic, it is a duplicate of the one in kxcj9.c",
+      "revId": "3505a74438d157da3144fd1dc49451147c5fb7fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64175efc_f5d598d2",
+        "filename": "driver/accel_kx022.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-11T16:49:32Z",
+      "side": 1,
+      "message": "I\u0027ll fix this.",
+      "parentUuid": "c4b72a4b_307448c7",
       "revId": "3505a74438d157da3144fd1dc49451147c5fb7fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
