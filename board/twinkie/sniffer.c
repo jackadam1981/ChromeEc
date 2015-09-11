@@ -42,9 +42,6 @@ struct sniffer_sample_header {
 /* Buffer enough to avoid overflowing due to USB latencies on both sides */
 #define RX_COUNT (16 * EP_PAYLOAD_SIZE)
 
-/* Task event for the USB transfer interrupt */
-#define USB_EVENTS TASK_EVENT_CUSTOM(3)
-
 /* Bitmap of enabled capture channels : CC1+CC2 by default */
 static uint8_t channel_mask = 0x3;
 
