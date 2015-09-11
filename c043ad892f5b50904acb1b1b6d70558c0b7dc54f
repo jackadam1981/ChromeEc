@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "44ab3af0_af67355d",
+        "filename": "common/gesture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-11T19:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64cf5e9f_c38f34ae",
+      "range": {
+        "startLine": 301,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 2
+      },
+      "revId": "c043ad892f5b50904acb1b1b6d70558c0b7dc54f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4c34e74_98764c5f",
         "filename": "common/motion_sense.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "44ab3af0_2f5ce58b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-11T19:14:36Z",
+      "side": 1,
+      "message": "I remember. Maybe extra taps, or just power saving?\n\nLet me try again. I can not wait 500ms, esp. when I am running in S0.",
+      "parentUuid": "e4c34e74_98764c5f",
+      "range": {
+        "startLine": 572,
+        "startChar": 2,
+        "endLine": 575,
+        "endChar": 3
+      },
+      "revId": "c043ad892f5b50904acb1b1b6d70558c0b7dc54f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04c1426c_7a292e65",
         "filename": "include/accelgyro.h",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2015-09-11T00:48:57Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 107,
+        "startChar": 37,
+        "endLine": 107,
+        "endChar": 44
+      },
+      "revId": "c043ad892f5b50904acb1b1b6d70558c0b7dc54f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "841c5220_195ccf62",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-11T19:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04c1426c_7a292e65",
       "range": {
         "startLine": 107,
         "startChar": 37,
