@@ -350,6 +350,7 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	int ret, val, normalized_rate;
 	uint8_t ctrl_reg, reg_val;
 	struct accelgyro_saved_data_t *data = BMI160_GET_SAVED_DATA(s);
+	struct mag_cal_t              *moc = BMM150_CAL(s);
 
 	if (rate == 0) {
 #ifdef CONFIG_ACCEL_FIFO
@@ -361,6 +362,9 @@ static int set_data_rate(const struct motion_sensor_t *s,
 				 BMI160_CMD_MODE_SUSPEND(s->type));
 		msleep(3);
 		data->odr = 0;
+		if (s->type == MOTIONSENSE_TYPE_MAG) {
+			moc->batch_size = 0;
+		}
 		return ret;
 	} else if (data->odr == 0) {
 		/* back from suspend mode. */
@@ -427,6 +431,22 @@ static int set_data_rate(const struct motion_sensor_t *s,
 
 	/* Now that we have set the odr, update the driver's value. */
 	data->odr = normalized_rate;
+
+	if (s->type == MOTIONSENSE_TYPE_MAG) {
+		/* Reset the calibration */
+		init_mag_cal(moc);
+		/*
+		 * We need at least MIN_BATCH_SIZE amd we must have collected
+		 * for at least MIN_BATCH_WINDOW_US.
+		 * Given odr is in mHz, multiply by 1000x
+		 */
+		moc->batch_size = MAX(
+			MAG_CAL_MIN_BATCH_SIZE,
+			(data->odr * 1000) / (MAG_CAL_MIN_BATCH_WINDOW_US));
+		CPRINTS("Batch size: %d", moc->batch_size);
+	}
+
+
 
 #ifdef CONFIG_ACCEL_FIFO
 	/* FIFO start collecting events if AP wants them */

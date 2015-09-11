@@ -61,6 +61,13 @@
 /* Larger task stack size, for hook task */
 #define LARGER_TASK_STACK_SIZE 640
 
+#ifdef CONFIG_MAG_CAL
+#define LARGEST_TASK_STACK_SIZE CONFIG_STACK_SIZE
+#else
+#define LARGEST_TASK_STACK_SIZE LARGER_TASK_STACK_SIZE
+#endif
+
+
 /* Smaller task stack size */
 #define SMALLER_TASK_STACK_SIZE 384
 
