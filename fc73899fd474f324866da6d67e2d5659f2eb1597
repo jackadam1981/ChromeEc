@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4c34e74_58e31445",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-11T01:33:23Z",
+      "side": 1,
+      "message": "should this also return an error?",
+      "range": {
+        "startLine": 162,
+        "startChar": 9,
+        "endLine": 162,
+        "endChar": 19
+      },
+      "revId": "fc73899fd474f324866da6d67e2d5659f2eb1597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
