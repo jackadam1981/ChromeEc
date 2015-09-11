@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a405d6c4_57ca8c85",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-11T14:41:35Z",
+      "side": 1,
+      "message": "why have a temporary time based latch? it looks like we can latch permanently, until we specifically clear it. that seems a safer option. 5ms is a long time for the EC and this will probably work nearly all the time, but the motion_sense task is not the highest priority, and other things like the PD task can hold off the task for this long.",
+      "range": {
+        "startLine": 746,
+        "startChar": 25,
+        "endLine": 746,
+        "endChar": 41
+      },
+      "revId": "9c0f7910ff7e2bccf0a2171daa0b53084553a758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
