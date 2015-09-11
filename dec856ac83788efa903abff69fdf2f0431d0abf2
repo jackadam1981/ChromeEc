@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "249486c0_beb4b553",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2015-09-11T23:31:44Z",
+      "side": 1,
+      "message": "does it make sense to have array of arrays and defined as is:\nif both accel present: KXCJ9 index is 0, KX022 index is 1, otherwise both indexes are 0.\nThis way you remove the switch case in a l",
+      "revId": "dec856ac83788efa903abff69fdf2f0431d0abf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c45e4afd_beb921b6",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2015-09-11T23:31:44Z",
+      "side": 1,
+      "message": "you can compute the reg from the variant: KX022_XOUT_L + (data-\u003evariant) * (KXCJ9_XOUT_L - KX022_XOUT_L)\n[Put that code in a macro nobody sees :-)]",
+      "revId": "dec856ac83788efa903abff69fdf2f0431d0abf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c45e4afd_debed59a",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2015-09-11T23:31:44Z",
+      "side": 1,
+      "message": "Unless it is fully tested, put this in another CL.",
+      "revId": "dec856ac83788efa903abff69fdf2f0431d0abf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
