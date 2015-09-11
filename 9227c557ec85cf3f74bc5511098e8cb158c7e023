@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6473de94_7596c8ca",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-11T22:23:55Z",
+      "side": 1,
+      "message": "fix",
+      "revId": "9227c557ec85cf3f74bc5511098e8cb158c7e023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8478d270_d9b8b701",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-11T22:23:55Z",
+      "side": 1,
+      "message": "fix",
+      "revId": "9227c557ec85cf3f74bc5511098e8cb158c7e023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6473de94_15767460",
+        "filename": "common/fmap.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-11T22:23:55Z",
+      "side": 1,
+      "message": "comment",
+      "revId": "9227c557ec85cf3f74bc5511098e8cb158c7e023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "648afea0_407bd088",
+        "filename": "common/fmap.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-11T22:23:55Z",
+      "side": 1,
+      "message": "fix",
+      "revId": "9227c557ec85cf3f74bc5511098e8cb158c7e023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44725a92_3459b09c",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-11T22:23:55Z",
+      "side": 1,
+      "message": "comment about relative offsets",
+      "revId": "9227c557ec85cf3f74bc5511098e8cb158c7e023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6473de94_b5b4e053",
+        "filename": "include/config_std_internal_flash.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-11T22:23:55Z",
+      "side": 1,
+      "message": "\u003d\u003d CONFIG_SHAREDLIB_SIZE",
+      "revId": "9227c557ec85cf3f74bc5511098e8cb158c7e023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6473de94_759b28db",
+        "filename": "test/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-11T22:23:55Z",
+      "side": 1,
+      "message": "change",
+      "revId": "9227c557ec85cf3f74bc5511098e8cb158c7e023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
