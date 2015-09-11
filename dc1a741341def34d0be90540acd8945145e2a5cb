@@ -16,6 +16,24 @@
       "revId": "dc1a741341def34d0be90540acd8945145e2a5cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a405d6c4_77fd1032",
+        "filename": "power/braswell.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-09-11T17:57:31Z",
+      "side": 1,
+      "message": "Yes, we are fully aware of additional boot time. \nWe are still investigating solutions and will add ASAP. \nThis patch is needed to accommodate other coreboot patch which is already merged recently.",
+      "parentUuid": "841c5220_7605101b",
+      "revId": "dc1a741341def34d0be90540acd8945145e2a5cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
