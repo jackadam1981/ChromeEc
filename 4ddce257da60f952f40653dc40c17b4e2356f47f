@@ -16,6 +16,24 @@
       "revId": "4ddce257da60f952f40653dc40c17b4e2356f47f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "046b026b_2a327f8a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-09-11T11:40:33Z",
+      "side": 1,
+      "message": "Okay, I submitted the comment to CL:299102.\nhttps://chromium-review.googlesource.com/#/c/299102/",
+      "parentUuid": "64cf5e9f_37750b91",
+      "revId": "4ddce257da60f952f40653dc40c17b4e2356f47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
