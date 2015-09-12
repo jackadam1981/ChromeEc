@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4350ebc_89aed9b9",
+        "filename": "board/npcx_evb/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-09-12T06:19:48Z",
+      "side": 1,
+      "message": "npcx only used 256 KB flash for FW.\nIt should replace with\n#define CONFIG_FLASH_SIZE 0x40000 /* 256 KB Flash used for EC */",
+      "revId": "b47b51c875c3558eb487244f5f1611c9b8f719cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64591ee8_2875a390",
+        "filename": "board/npcx_evb_arm/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-09-12T06:19:48Z",
+      "side": 1,
+      "message": "The same as npcx_evb",
+      "revId": "b47b51c875c3558eb487244f5f1611c9b8f719cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
