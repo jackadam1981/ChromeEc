@@ -153,6 +153,8 @@ enum power_state power_handle_state(enum power_state state)
 		udelay(200 * MSEC);  /* 200 msec */
 		gpio_set_level(GPIO_SUSPWRDNACK_SOC_EC, 0);
 #endif
+		wireless_set_state(WIRELESS_ON);
+
 		CPRINTS("Exit SOC G3");
 
 		if (power_wait_signals(IN_PGOOD_S5)) {
@@ -304,6 +306,8 @@ enum power_state power_handle_state(enum power_state state)
 #else
 			gpio_set_level(GPIO_PCH_SYS_PWROK, 0);
 #endif
+			wireless_set_state(WIRELESS_OFF);
+
 			forcing_shutdown = 0;
 
 			CPRINTS("Enter SOC G3");
@@ -326,6 +330,8 @@ enum power_state power_handle_state(enum power_state state)
 #else
 			gpio_set_level(GPIO_SUSPWRDNACK_SOC_EC, 1);
 #endif
+			wireless_set_state(WIRELESS_OFF);
+
 			CPRINTS("Enter SOC G3");
 
 			return POWER_G3;
