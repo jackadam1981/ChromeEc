@@ -34,6 +34,24 @@
       "revId": "dc1a741341def34d0be90540acd8945145e2a5cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4080aae_b1bc8213",
+        "filename": "power/braswell.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-09-12T00:19:39Z",
+      "side": 1,
+      "message": "This would affect *all* braswell boards. Also, if the issue is on EC reset. \n\nWhy wouldn\u0027t you set this default value to 1 in gpio.inc for the affected board? And in the startup path for *EC resets* ensure this timing is hit.\n\nOr turn on the discharge paths for the affected VRs such that we aren\u0027t waiting the slow decay time of a rail.",
+      "parentUuid": "a405d6c4_77fd1032",
+      "revId": "dc1a741341def34d0be90540acd8945145e2a5cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
