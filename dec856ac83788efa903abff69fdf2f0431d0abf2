@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "648afea0_a361fe9b",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-12T01:28:30Z",
+      "side": 1,
+      "message": "Yes, that\u0027s very clever and removes all of the switch cases coupled with the idea below.\n\nIt may not hold if we add another kionix accelerometer in the future, but I guess we\u0027ll take care of that when and if it happens.",
+      "parentUuid": "249486c0_beb4b553",
+      "revId": "dec856ac83788efa903abff69fdf2f0431d0abf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c45e4afd_beb921b6",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a46156bd_5d12cb8f",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-12T01:28:30Z",
+      "side": 1,
+      "message": "Okay, will do. :)",
+      "parentUuid": "c45e4afd_beb921b6",
+      "revId": "dec856ac83788efa903abff69fdf2f0431d0abf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c45e4afd_debed59a",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2015-09-11T23:31:44Z",
       "side": 1,
       "message": "Unless it is fully tested, put this in another CL.",
+      "revId": "dec856ac83788efa903abff69fdf2f0431d0abf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "249486c0_44a6848e",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-12T01:28:30Z",
+      "side": 1,
+      "message": "I\u0027ll remove this.",
+      "parentUuid": "c45e4afd_debed59a",
       "revId": "dec856ac83788efa903abff69fdf2f0431d0abf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
