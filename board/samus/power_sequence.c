@@ -11,6 +11,8 @@
 #include "common.h"
 #include "console.h"
 #include "extpower.h"
+#include "i2c.h"
+#include "lb_common.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "lid_switch.h"
@@ -535,6 +537,8 @@ int lb_power(int enabled)
 	if (gpio_get_level(GPIO_PP5000_EN) != pp5000_en)
 		ret = 1;
 
+
+	i2c_lock(I2C_PORT_LIGHTBAR, 1);
 	/*
 	 * When turning on, we have to wait for the rails to come up
 	 * fully before we the lightbar ICs will respond. There's not
@@ -553,6 +557,11 @@ int lb_power(int enabled)
 		gpio_set_level(GPIO_LIGHTBAR_RESET_L, enabled);
 		msleep(1);
 	}
+	if (enabled) {
+		lb_init(0);
+		msleep(100);
+	}
+	i2c_lock(I2C_PORT_LIGHTBAR, 0);
 
 	return ret;
 }
