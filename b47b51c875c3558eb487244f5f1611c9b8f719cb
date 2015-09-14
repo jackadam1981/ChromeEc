@@ -56,6 +56,30 @@
       "revId": "b47b51c875c3558eb487244f5f1611c9b8f719cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46156bd_408ca4b9",
+        "filename": "chip/stm32/config-stm32ts60.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-14T17:55:55Z",
+      "side": 1,
+      "message": "The flash size is actually 32KB so I changed the define. The comment has been here since this file was committed (by Vic, adding him in case he remembers). My guess is that we were testing with an otherwise identical chip that has larger flash. It\u0027s also possible that setting the correct FLASH_SIZE breaks something. In any case, none of our boards actually use this chip.",
+      "parentUuid": "848ff2ac_e75a301b",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "b47b51c875c3558eb487244f5f1611c9b8f719cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
