@@ -269,7 +269,7 @@ int motion_sense_set_accel_interval(void)
 	return accel_interval;
 }
 
-static inline void motion_sense_init(struct motion_sensor_t *sensor)
+static inline int motion_sense_init(struct motion_sensor_t *sensor)
 {
 	int ret, cnt = 3;
 
@@ -287,6 +287,7 @@ static inline void motion_sense_init(struct motion_sensor_t *sensor)
 		sensor->oversampling = 0;
 		motion_sense_set_data_rate(sensor);
 	}
+	return ret;
 }
 
 /*
@@ -1122,7 +1123,7 @@ DECLARE_CONSOLE_COMMAND(accelread, command_accel_read_xyz,
 static int command_accel_init(int argc, char **argv)
 {
 	char *e;
-	int id;
+	int id, ret;
 	struct motion_sensor_t *sensor;
 
 	if (argc < 2)
@@ -1135,9 +1136,9 @@ static int command_accel_init(int argc, char **argv)
 		return EC_ERROR_PARAM1;
 
 	sensor = &motion_sensors[id];
-	motion_sense_init(sensor);
+	ret = motion_sense_init(sensor);
 
-	ccprintf("%s: %d\n", sensor->name, sensor->state);
+	ccprintf("%s: state %d - %d\n", sensor->name, sensor->state, ret);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(accelinit, command_accel_init,
