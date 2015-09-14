@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c45e4afd_07900080",
+        "filename": "board/glados/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-14T16:39:27Z",
+      "side": 1,
+      "message": "not sure why you need this one",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 20
+      },
+      "revId": "6c17a2a0e409f02dd69d62e834b739ba7a3efb13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "848ff2ac_67fd4032",
+        "filename": "board/glados/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-14T16:39:27Z",
+      "side": 1,
+      "message": "According to board_chipset_resume() and board_chipset_suspend(), this sensor is only powered in S0, so should just be SENSOR_ACTIVE_S0",
+      "range": {
+        "startLine": 436,
+        "startChar": 17,
+        "endLine": 436,
+        "endChar": 36
+      },
+      "revId": "6c17a2a0e409f02dd69d62e834b739ba7a3efb13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8478d270_2a8dc726",
+        "filename": "board/glados/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-14T16:39:27Z",
+      "side": 1,
+      "message": "this is only needed if EC is being used to calculate lid angle, but we\u0027re not calculating it yet. have you tested these? probably best to leave these out until we define the base sensor and start calculating lid angle.",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 2
+      },
+      "revId": "6c17a2a0e409f02dd69d62e834b739ba7a3efb13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
