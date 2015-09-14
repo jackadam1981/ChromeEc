@@ -25,6 +25,47 @@
     },
     {
       "key": {
+        "uuid": "44725a92_31c7f79f",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-14T23:48:24Z",
+      "side": 1,
+      "message": "How may variant do we expect? seems fine to me.",
+      "parentUuid": "6473de94_de5a591b",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "cb9ac238901f34679afb87597b1ff0964993f654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e467cecb_4dd69964",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-14T23:48:24Z",
+      "side": 1,
+      "message": "remove parenthesis.",
+      "revId": "cb9ac238901f34679afb87597b1ff0964993f654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6473de94_bee3dd98",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 5
@@ -36,6 +77,30 @@
       "writtenOn": "2015-09-14T18:03:22Z",
       "side": 1,
       "message": "This gives me values that I would expect. 16-bit resolution gives a count range from -32768,32767. With a range setting of 2g, on my desk I see a value of -16508.\n\nWith 8-bit resolution (-128,127), I get -65 for the counts.",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 38
+      },
+      "revId": "cb9ac238901f34679afb87597b1ff0964993f654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8478d270_6b14210a",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-14T23:48:24Z",
+      "side": 1,
+      "message": "The EC always send data using 16bit resolution, even if the sensor has 8 bit resolution. So no matter the resolution, the range should be in -32768,32767.\nI can help you check the kernel is outputting the right data in iio.\n\nFor KX022, we should have:\nv[i] \u003d (((int8_t)acc[i * 2 + 1]) \u003c\u003c 8) | acc[i * 2];\n/* that when resolution is 8, check that acc[i * 2] is always 0. */",
+      "parentUuid": "6473de94_bee3dd98",
       "range": {
         "startLine": 409,
         "startChar": 0,
