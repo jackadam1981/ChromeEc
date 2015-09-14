@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6473de94_de5a591b",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-14T18:03:22Z",
+      "side": 1,
+      "message": "Is there a better way to do this?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "cb9ac238901f34679afb87597b1ff0964993f654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6473de94_bee3dd98",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-14T18:03:22Z",
+      "side": 1,
+      "message": "This gives me values that I would expect. 16-bit resolution gives a count range from -32768,32767. With a range setting of 2g, on my desk I see a value of -16508.\n\nWith 8-bit resolution (-128,127), I get -65 for the counts.",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 38
+      },
+      "revId": "cb9ac238901f34679afb87597b1ff0964993f654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
