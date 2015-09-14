@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a46156bd_0031cc20",
+        "filename": "common/lb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000245
+      },
+      "writtenOn": "2015-09-14T16:24:59Z",
+      "side": 1,
+      "message": "You only need to lock around i2c_xfer() here, and in controller_read(). All the other changes in all the other files are unnecessary.",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 9
+      },
+      "revId": "a348d4a2d86e4b12e852e024c6cf9b93bb6e4434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
