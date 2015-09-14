@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6473de94_6497f436",
+        "filename": "board/samus/power_sequence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-14T22:45:24Z",
+      "side": 1,
+      "message": "only need to lock when lightbar is being enabled. so, add it to if(enabled) block on line 552, and move the unlock into the if(enabled) block on line 560. also should add a comment explaining why, like \u0027the lightbar does not expect any i2c traffic when it is being powered up, and is not ready until 100ms after power up.\u0027",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 32
+      },
+      "revId": "a348d4a2d86e4b12e852e024c6cf9b93bb6e4434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a46156bd_0031cc20",
         "filename": "common/lb_common.c",
         "patchSetId": 1
@@ -18,6 +41,75 @@
         "startChar": 1,
         "endLine": 123,
         "endChar": 9
+      },
+      "revId": "a348d4a2d86e4b12e852e024c6cf9b93bb6e4434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "848ff2ac_0daf3dfd",
+        "filename": "common/lb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-14T22:45:24Z",
+      "side": 1,
+      "message": "return rv ? 0 : buf[0];",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 11
+      },
+      "revId": "a348d4a2d86e4b12e852e024c6cf9b93bb6e4434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e467cecb_cd1b8907",
+        "filename": "common/lb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-14T22:45:24Z",
+      "side": 1,
+      "message": "can put lock in setrgb() to minimize time lock is held",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 32
+      },
+      "revId": "a348d4a2d86e4b12e852e024c6cf9b93bb6e4434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "848ff2ac_4da1450c",
+        "filename": "common/lb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-14T22:45:24Z",
+      "side": 1,
+      "message": "i would prefer to get the lock just around controller_write(), lines 308 and 309, to minimize time we have the lock. same goes for the other locations in this file like in lb_hc_cmd_dump",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 33
       },
       "revId": "a348d4a2d86e4b12e852e024c6cf9b93bb6e4434",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
