@@ -33,6 +33,29 @@
       "revId": "b47b51c875c3558eb487244f5f1611c9b8f719cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "848ff2ac_e75a301b",
+        "filename": "chip/stm32/config-stm32ts60.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-09-14T15:48:06Z",
+      "side": 1,
+      "message": "This comment was here before.  I wonder what it means...",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "b47b51c875c3558eb487244f5f1611c9b8f719cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
