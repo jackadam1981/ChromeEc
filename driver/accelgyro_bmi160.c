@@ -182,6 +182,7 @@ static int raw_write8(const int addr, const uint8_t reg, int data)
 	return rv;
 }
 
+#ifdef CONFIG_ACCEL_INTERRUPTS
 /**
  * Read 32bit register from accelerometer.
  */
@@ -201,6 +202,7 @@ static int raw_read32(const int addr, const uint8_t reg, int *data_ptr)
 	}
 	return rv;
 }
+#endif /* defined(CONFIG_ACCEL_INTERRUPTS) */
 
 /**
  * Read n bytes from accelerometer.
