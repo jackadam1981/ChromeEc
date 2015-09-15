@@ -16,6 +16,24 @@
       "revId": "24b1d9ee7479249e135bc5f0b24c1022f32633aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9420f4a_e97179d8",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-15T17:01:29Z",
+      "side": 1,
+      "message": "CONFIG_CDRAM_SIZE is no longer a valid config. The case you described can be supported by defining CONFIG_FW_IMAGE_SIZE in board.h.\n\n- 96K is the \"default\" image size for npcx\n- Board code can change it, if desired\n\nIf this latest patch is working on npcx then I\u0027d like to merge it.",
+      "parentUuid": "89246ba5_964a2c42",
+      "revId": "24b1d9ee7479249e135bc5f0b24c1022f32633aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
