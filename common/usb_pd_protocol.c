@@ -560,6 +560,7 @@ void pd_soft_reset(void)
 
 void pd_prepare_reset(void)
 {
+#ifndef CONFIG_USB_PD_TCPM_TCPCI
 	int i;
 
 	/*
@@ -578,6 +579,7 @@ void pd_prepare_reset(void)
 
 	/* Give time for soft reset to be sent */
 	usleep(8*MSEC);
+#endif /* !CONFIG_USB_PD_TCPM_TCPCI */
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -1394,6 +1396,13 @@ void pd_task(void)
 	int caps_count = 0, hard_reset_sent = 0;
 	int snk_cap_count;
 	int evt;
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	uint8_t snk_soft_reset;
+#ifdef CONFIG_USB_PD_TCPM_TCPCI
+	/* Send soft reset if we're sysjumped to here. */
+	snk_soft_reset = system_jumped_to_this_image();
+#endif /* CONFIG_USB_PD_TCPM_TCPCI */
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 	/* Ensure the power supply is in the default state */
 	pd_power_supply_reset(port);
@@ -2102,23 +2111,28 @@ void pd_task(void)
 			/* Wait for source cap expired only if we are enabled */
 			if ((pd[port].last_state != pd[port].task_state)
 			    && pd_comm_enabled) {
-				/*
-				 * If we haven't passed hard reset counter,
-				 * start SinkWaitCapTimer, otherwise start
-				 * NoResponseTimer.
-				 */
-				if (hard_reset_count < PD_HARD_RESET_COUNT)
+				if (snk_soft_reset) {
+					snk_soft_reset = 0;
+					set_state(port, PD_STATE_SOFT_RESET);
+				} else if (hard_reset_count <
+					   PD_HARD_RESET_COUNT) {
+					/*
+					 * If we haven't passed hard reset
+					 * counter, start SinkWaitCapTimer,
+					 * otherwise start NoResponseTimer.
+					 */
 					set_state_timeout(port,
 						  get_time().val +
 						  PD_T_SINK_WAIT_CAP,
 						  PD_STATE_HARD_RESET_SEND);
-				else if (pd[port].flags &
-					 PD_FLAGS_PREVIOUS_PD_CONN)
+				} else if (pd[port].flags &
+					   PD_FLAGS_PREVIOUS_PD_CONN) {
 					/* ErrorRecovery */
 					set_state_timeout(port,
 						  get_time().val +
 						  PD_T_NO_RESPONSE,
 						  PD_STATE_SNK_DISCONNECTED);
+				}
 #ifdef CONFIG_CHARGE_MANAGER
 				/*
 				 * If we didn't come from disconnected, must
