@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "0465c2c3_b73dbf5a",
+        "filename": "common/lb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-15T19:34:36Z",
+      "side": 1,
+      "message": "put the locks inside setrgb().",
+      "parentUuid": "8478d270_005b8720",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 32
+      },
+      "revId": "a348d4a2d86e4b12e852e024c6cf9b93bb6e4434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "848ff2ac_4da1450c",
         "filename": "common/lb_common.c",
         "patchSetId": 1
@@ -296,6 +320,30 @@
       "side": 1,
       "message": "i disagree, use_lock is set to true in all places except when we are in S5 and need to turn on lightbar for tap for battery, so this affects the other places we turn on the lightbar, which granted is not very often. but, CPRINTF takes a while, and the for loop writes a bunch of initial values. it just seems like good practice to minimize the amount of time we hold the lock because other higher priority tasks might be waiting, and they have been designated higher priority for a reason, because we want them to take precedence. we don\u0027t want to stall higher priority tasks for no reason.",
       "parentUuid": "0465c2c3_efee8130",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 33
+      },
+      "revId": "a348d4a2d86e4b12e852e024c6cf9b93bb6e4434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46156bd_607b6389",
+        "filename": "common/lb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-15T19:34:36Z",
+      "side": 1,
+      "message": "Put the lock around controller_write(), remove printf.",
+      "parentUuid": "848ff2ac_138afea0",
       "range": {
         "startLine": 303,
         "startChar": 0,
