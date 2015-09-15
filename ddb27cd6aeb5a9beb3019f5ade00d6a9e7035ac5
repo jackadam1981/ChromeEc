@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "848ff2ac_08080830",
+        "filename": "common/lb_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-15T21:26:19Z",
+      "side": 1,
+      "message": "one more place to move locking i2c into the loop",
+      "range": {
+        "startLine": 345,
+        "startChar": 1,
+        "endLine": 352,
+        "endChar": 32
+      },
+      "revId": "ddb27cd6aeb5a9beb3019f5ade00d6a9e7035ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
