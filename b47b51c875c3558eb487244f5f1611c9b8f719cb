@@ -80,6 +80,30 @@
       "revId": "b47b51c875c3558eb487244f5f1611c9b8f719cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e467cecb_f363d0de",
+        "filename": "chip/stm32/config-stm32ts60.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001139
+      },
+      "writtenOn": "2015-09-15T17:11:15Z",
+      "side": 1,
+      "message": "IIRC, I was focusing on other functionality of this chip and never needed to fix this. For this chip, I was always loading the RO firmware through SWD and didn\u0027t use the RO+RW binary, so linking was not a concern, either.\n\nI\u0027d suggest removing support for this chip to reduce the maintenance burden. It\u0027s a pretty specialized chip and I doubt it\u0027ll be used again soon (or ever).",
+      "parentUuid": "a46156bd_408ca4b9",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "b47b51c875c3558eb487244f5f1611c9b8f719cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
