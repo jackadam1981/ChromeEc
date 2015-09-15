@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6473de94_0ac48729",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-15T19:21:27Z",
+      "side": 1,
+      "message": "Yeah. The SoC docs say macros, because that\u0027s how they\u0027re implemented in verilog. I\u0027ll change it.",
+      "parentUuid": "648afea0_297f88a7",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "7f811b1a6cdf5b28bc5d6867b5857c1eff2fdae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e467cecb_73cd009c",
         "filename": "chip/g/flash.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2015-09-15T15:09:50Z",
       "side": 1,
       "message": "Maybe make the second argument of this function should be the word count instead of byte count. Otherwise without looking at the calling function one can\u0027t help it but worry that unaligned bytes will be silently lost.",
+      "revId": "7f811b1a6cdf5b28bc5d6867b5857c1eff2fdae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46156bd_6c1c3f73",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-15T19:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e467cecb_73cd009c",
       "revId": "7f811b1a6cdf5b28bc5d6867b5857c1eff2fdae8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "848ff2ac_737fc2eb",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-15T19:21:27Z",
+      "side": 1,
+      "message": "Probably not. I had debugging messages here to see what was happening, which is why it\u0027s like this. I\u0027ll fix it.",
+      "parentUuid": "a9420f4a_7ee41d53",
+      "revId": "7f811b1a6cdf5b28bc5d6867b5857c1eff2fdae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c45e4afd_53c7139e",
         "filename": "chip/g/flash.c",
         "patchSetId": 1
@@ -70,6 +130,30 @@
       "writtenOn": "2015-09-15T15:09:50Z",
       "side": 1,
       "message": "this is probably not introduced with this patch but the name is confusing - should be something about alignment, not size.",
+      "range": {
+        "startLine": 116,
+        "startChar": 12,
+        "endLine": 116,
+        "endChar": 35
+      },
+      "revId": "7f811b1a6cdf5b28bc5d6867b5857c1eff2fdae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46156bd_6cb35fcf",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-15T19:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c45e4afd_53c7139e",
       "range": {
         "startLine": 116,
         "startChar": 12,
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "6473de94_6ab33bcf",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-15T19:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44725a92_aaf8f0b2",
+      "range": {
+        "startLine": 133,
+        "startChar": 39,
+        "endLine": 133,
+        "endChar": 43
+      },
+      "revId": "7f811b1a6cdf5b28bc5d6867b5857c1eff2fdae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8478d270_80695707",
         "filename": "chip/g/flash.c",
         "patchSetId": 1
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "848ff2ac_054e3135",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-15T19:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8478d270_80695707",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 26
+      },
+      "revId": "7f811b1a6cdf5b28bc5d6867b5857c1eff2fdae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9420f4a_defd49dc",
         "filename": "chip/g/flash.c",
         "patchSetId": 1
@@ -139,6 +271,30 @@
       "writtenOn": "2015-09-15T15:09:50Z",
       "side": 1,
       "message": "shouldn\u0027t this be enforced by checking the function arguments?",
+      "range": {
+        "startLine": 180,
+        "startChar": 3,
+        "endLine": 180,
+        "endChar": 64
+      },
+      "revId": "7f811b1a6cdf5b28bc5d6867b5857c1eff2fdae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8478d270_0094677c",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-15T19:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9420f4a_defd49dc",
       "range": {
         "startLine": 180,
         "startChar": 3,
