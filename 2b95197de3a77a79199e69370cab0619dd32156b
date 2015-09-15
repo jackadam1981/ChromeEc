@@ -22,6 +22,30 @@
       "revId": "2b95197de3a77a79199e69370cab0619dd32156b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46156bd_b60dc144",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-15T23:32:29Z",
+      "side": 1,
+      "message": "Not according to git log on this file:\ngit log --oneline chip/npcx/hwtimer.c\n2b77e48 nuc: use fix point math for timer calculation\n14bd917 nuc: Add ECST tool to modify the header used by npcx booter.\n957638c nuc: Add SHI driver for arm-based platform in chip folder.\n4ee5083 nuc: Add all IC specific drivers of NPCX5M5G",
+      "parentUuid": "6473de94_1ea84c7b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "2b95197de3a77a79199e69370cab0619dd32156b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
