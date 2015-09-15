@@ -430,6 +430,9 @@ static int init(const struct motion_sensor_t *s)
 	reg = KIONIX_CTRL2_REG(data->variant);
 	reset_field = KIONIX_RESET_FIELD(data->variant);
 
+	/* Typical Power-on time is 10ms. */
+	msleep(10);
+
 	/* Issue a software reset. */
 	mutex_lock(s->mutex);
 
