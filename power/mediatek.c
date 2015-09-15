@@ -93,7 +93,7 @@
 /*
  * The hold time for pulling down the SYSTEM_POWER_H pin.
  */
-#define PMIC_COLD_RESET_L_HOLD_TIME (50 * MSEC)
+#define PMIC_COLD_RESET_L_HOLD_TIME (120 * MSEC)
 
 /*
  * The first time the PMIC sees power (AC or battery) it needs 200ms (+/-12%
@@ -640,8 +640,8 @@ void chipset_reset(int is_cold)
 		usleep(PMIC_COLD_RESET_L_HOLD_TIME);
 		/* Press the PMIC power button */
 		set_pmic_pwron(1);
-		usleep(PMIC_PWRON_PRESS_TIME);
-		set_pmic_pwron(0);
+		hook_call_deferred(release_pmic_pwron_deferred,
+				   PMIC_PWRON_PRESS_TIME);
 	} else {
 		CPRINTS("EC triggered warm reboot");
 		set_warm_reset(1);
