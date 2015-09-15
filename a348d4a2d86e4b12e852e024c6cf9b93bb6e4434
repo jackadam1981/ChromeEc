@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a9420f4a_63e24ac0",
+        "filename": "board/samus/power_sequence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-15T00:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6473de94_6497f436",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 32
+      },
+      "revId": "a348d4a2d86e4b12e852e024c6cf9b93bb6e4434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a46156bd_0031cc20",
         "filename": "common/lb_common.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-14T16:24:59Z",
       "side": 1,
       "message": "You only need to lock around i2c_xfer() here, and in controller_read(). All the other changes in all the other files are unnecessary.",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 9
+      },
+      "revId": "a348d4a2d86e4b12e852e024c6cf9b93bb6e4434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6473de94_44baf845",
+        "filename": "common/lb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-15T00:02:16Z",
+      "side": 1,
+      "message": "Need for power sequence.",
+      "parentUuid": "a46156bd_0031cc20",
       "range": {
         "startLine": 123,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0465c2c3_6f9ef1cc",
+        "filename": "common/lb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-15T00:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "848ff2ac_0daf3dfd",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 11
+      },
+      "revId": "a348d4a2d86e4b12e852e024c6cf9b93bb6e4434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e467cecb_cd1b8907",
         "filename": "common/lb_common.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "648afea0_c6d53325",
+        "filename": "common/lb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-15T00:02:16Z",
+      "side": 1,
+      "message": "we are talking about 3 i2c accesses here. Beside, you want them to be as close as possible, otherwise the sequence will \"bleed\" with the previous one if interrupted.",
+      "parentUuid": "e467cecb_cd1b8907",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 32
+      },
+      "revId": "a348d4a2d86e4b12e852e024c6cf9b93bb6e4434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "848ff2ac_4da1450c",
         "filename": "common/lb_common.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2015-09-14T22:45:24Z",
       "side": 1,
       "message": "i would prefer to get the lock just around controller_write(), lines 308 and 309, to minimize time we have the lock. same goes for the other locations in this file like in lb_hc_cmd_dump",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 33
+      },
+      "revId": "a348d4a2d86e4b12e852e024c6cf9b93bb6e4434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0465c2c3_efee8130",
+        "filename": "common/lb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-15T00:02:16Z",
+      "side": 1,
+      "message": "When it matters (power while in S5, we take the lock for a even longer time).",
+      "parentUuid": "848ff2ac_4da1450c",
       "range": {
         "startLine": 303,
         "startChar": 0,
