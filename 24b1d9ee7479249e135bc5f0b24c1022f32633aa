@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89246ba5_964a2c42",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-09-15T01:55:53Z",
+      "side": 1,
+      "message": "I prefer #define \"CONFIG_FW_IMAGE_SIZE CONFIG_CDRAM_SIZE\".\nPlease notice the npcx could change size between CDRAM and DATARAM  flexibly. \nFor example, we assigned (96+8) KB for CDRAM since 96KB is not enough on wheatley platform. \nIt should not be a fixed number.\nPlease see line 49 in https://chromium-review.googlesource.com/#/c/298743/3/chip/npcx/config_chip.h",
+      "revId": "24b1d9ee7479249e135bc5f0b24c1022f32633aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
