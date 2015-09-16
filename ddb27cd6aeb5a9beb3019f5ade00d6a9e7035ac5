@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "648afea0_5522a7b3",
+        "filename": "board/samus/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-16T00:50:33Z",
+      "side": 1,
+      "message": "looks like you need to grab i2c lock and delay 100ms here too to fix the problem you are having:\n\ni2c_lock(I2C_PORT_LIGHTBAR, 1);\ngpio_set_level(GPIO_LIGHTBAR_RESET_L, 1);\nmsleep(1);\n\nlb_init(0);\nmsleep(100);\ni2c_lock(I2C_PORT_LIGHTBAR, 0);",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 43
+      },
+      "revId": "ddb27cd6aeb5a9beb3019f5ade00d6a9e7035ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "848ff2ac_08080830",
         "filename": "common/lb_common.c",
         "patchSetId": 2
