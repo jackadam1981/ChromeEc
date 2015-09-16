@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "6473de94_97c43fc8",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-09-16T17:32:27Z",
+      "side": 1,
+      "message": "ah, I see. So the purpose of the loop in lines 156..161 is to clear the register, not to make the operation successful.\n\nWe sure should get a better directions from the hw folks.",
+      "parentUuid": "e467cecb_b8d5b025",
+      "revId": "cab8234f0acdb0a9df771cb171f82dc95cbcba23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a46156bd_941c3574",
         "filename": "chip/g/flash.c",
         "patchSetId": 3
