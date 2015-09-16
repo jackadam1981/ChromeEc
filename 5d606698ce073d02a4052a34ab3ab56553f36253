@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "848ff2ac_3ef33e6a",
+        "filename": "board/glados/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-16T16:34:00Z",
+      "side": 1,
+      "message": "The comment I put in cyan was wrong then:\nOn android, the sensors are actively managed by the AP, and the AP starts by setting all them off and then activate them on need to use basis.\nOn chromeos, chrome gathers whatever info available from the EC, does not change the frequency.",
+      "parentUuid": "a9420f4a_c967d530",
+      "revId": "5d606698ce073d02a4052a34ab3ab56553f36253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44725a92_ea7f483e",
         "filename": "board/glados/board.c",
         "patchSetId": 4
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "BMI160 sensor will be coming in a later CL.",
       "parentUuid": "44725a92_ea7f483e",
+      "revId": "5d606698ce073d02a4052a34ab3ab56553f36253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "648afea0_b03f7979",
+        "filename": "board/glados/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-16T16:34:00Z",
+      "side": 1,
+      "message": "If double tap is not used, we can use a slower frequency: 10Hz is enough.",
+      "parentUuid": "c45e4afd_ce2c5c65",
       "revId": "5d606698ce073d02a4052a34ab3ab56553f36253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
