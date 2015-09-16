@@ -22,6 +22,30 @@
       "revId": "af103ae49df9967093ab1261fbac17c232ef9e61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "848ff2ac_5e8c8ab9",
+        "filename": "board/samus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-16T17:09:05Z",
+      "side": 1,
+      "message": "board,h is not exactly alphabetized. Done.\nWe will have to remember to remove _FPU once tmp6 uses fp_t instead of float.",
+      "parentUuid": "c45e4afd_e7d22c92",
+      "range": {
+        "startLine": 73,
+        "startChar": 8,
+        "endLine": 73,
+        "endChar": 18
+      },
+      "revId": "af103ae49df9967093ab1261fbac17c232ef9e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
