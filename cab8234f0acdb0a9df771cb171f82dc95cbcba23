@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6473de94_37f36b6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-16T16:55:48Z",
+      "side": 1,
+      "message": "flashwrite is a debug command that fills a buffer with incrementing bytes (0,1,2,3,4,...), then writes it to flash. I would have preferred something that lets me write specific values, but there are number of other boards that have CONFIG_CMD_FLASH defined, and I didn\u0027t want to change it.",
+      "parentUuid": "648afea0_30ee0981",
+      "revId": "cab8234f0acdb0a9df771cb171f82dc95cbcba23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "648afea0_90fd1d35",
         "filename": "chip/g/flash.c",
         "patchSetId": 3
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "e467cecb_b8d5b025",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-16T16:55:48Z",
+      "side": 1,
+      "message": "Waiting for fsh_pe_control to clear just means the flash controller has stopped doing things to the flash. That should almost always happen.\n\nBut after it stops, we still have to read the error status to see if the requested operation was successful. \n\nThere are eight possible error bits:\n\n  prog_not_row_aligned     0x1\n  out_of_main_range        0x2\n  out_of_info_range        0x4\n  prog_failed              0x8\n  erase_not_page_aligned   0x10\n  erase_failed             0x20\n  bulkerase_not_aligned    0x40\n  bulkerase_failed         0x80\n\nIf any of those bits are set in line 153, the flash operation failed and we should say so. I can confirm that if I take out the parameter checks and use a misaligned address, the fsh_pe_control goes to zero but the error bits are set at the first read afterwards.\n\nI do wonder about the documentation, though. The last step  says \"Read FSH_ERROR to verify operation was successful. Repeat as needed, up to 50 times, until FSH_ERROR is all zeros.\" \n\nSince we read the error status to clear it before starting all this, why do we need to read it again to clear it afterwards? Unless \"Repeat as needed\" should be on a separate line, and really does mean we might need to repeat the whole process.",
+      "parentUuid": "648afea0_10374daf",
+      "revId": "cab8234f0acdb0a9df771cb171f82dc95cbcba23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a46156bd_941c3574",
         "filename": "chip/g/flash.c",
         "patchSetId": 3
@@ -64,6 +100,24 @@
       "writtenOn": "2015-09-16T16:27:14Z",
       "side": 1,
       "message": "I don\u0027t think ec can run on a big endian platform - it is an inherent assumption all over the codebase that the platform is little endian.\n\nAt least I don\u0027t see this check anywhere else.",
+      "revId": "cab8234f0acdb0a9df771cb171f82dc95cbcba23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46156bd_f4e011b7",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-16T16:55:48Z",
+      "side": 1,
+      "message": "Okay. I\u0027ll take it out.",
+      "parentUuid": "a46156bd_941c3574",
       "revId": "cab8234f0acdb0a9df771cb171f82dc95cbcba23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
