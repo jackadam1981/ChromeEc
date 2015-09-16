@@ -16,6 +16,24 @@
       "revId": "1b8fbc7217d7dc814de6ad65fc758ba541831d77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46156bd_d4deadd0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-16T17:00:25Z",
+      "side": 1,
+      "message": "By doc, I meant Alec\u0027s doc titled \"Sysfs interface to EC Accelerometers\". However, the orientations in Alec\u0027s doc seem to differ from the links provided here.\n\nHowever, when the device is in portrait tablet mode the orientations *do* match the links provided here.",
+      "parentUuid": "a46156bd_741fa168",
+      "revId": "1b8fbc7217d7dc814de6ad65fc758ba541831d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
