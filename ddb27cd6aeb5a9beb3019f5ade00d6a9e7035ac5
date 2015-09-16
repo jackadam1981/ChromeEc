@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4447ba3e_af9e359e",
+        "filename": "board/samus/power_sequence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-16T20:14:38Z",
+      "side": 1,
+      "message": "nevermind, I missed the lb_init in your comment.",
+      "parentUuid": "e93887ce_375da0da",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 43
+      },
+      "revId": "ddb27cd6aeb5a9beb3019f5ade00d6a9e7035ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "848ff2ac_08080830",
         "filename": "common/lb_common.c",
         "patchSetId": 2
