@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4447ba3e_b2da1853",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-09-16T20:56:15Z",
+      "side": 1,
+      "message": "I\u0027m having a bit of trouble understanding how this works.\n\nHere\u0027s what I think is happening:\n\nSource clock is 8 MHz.  Shift by 3 to get 1 MHz.\n\nTIMER_L is a 24-bit timer counting down at 8 MHz.\n\nWhen the timers are loaded,\nTIMER_L set to ((0xffffffff \u003c\u003c 3) \u0026 0x00ffffff) \u003d 0x00fffff8\nTIMER_H set to (0xffffffff \u003e\u003e 21) \u003d 0x000007ff\n\nWhen reading the timers, go the other direction.  Bottom 21 bits of the 32-bit MHz count come from (TIMER_L\u003e\u003e3) and the top 11 bits come from (TIMER_H\u003c\u003c21).\n\nTIMER_H is a 32-bit timer which counts down when timer_L underflows.\n\nAn interrupt fires when TIMER_H underflows, which reloads the timers.\n\nEvents are handled by a separate 32-bit timer counting down at 8 MHz.\n\n(If that\u0027s correct, a comment saying something like that up at the top of the file would be useful.)",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 46
+      },
+      "revId": "a33d037e46f6dd44eba223f20018be26ceb18789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c453aafb_d3840696",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-09-16T20:56:15Z",
+      "side": 1,
+      "message": "If I\u0027m understanding, you\u0027re using a separate 32-bit timer (at 8 MHz) to interrupt on an event timeout.\n\nWhat happens if deadline is more than (1\u003c\u003c29) usec in the future?  That is, if \n\n(deadline - __hw_clock_source_read()) \u003e (0xffffffff \u003e\u003e 3)\n\nThen we can\u0027t actually set the deadline as far ahead as we need.  In that case, it seems like we should set the timer to 0xffffffff, so that we wait as long as possible.\n\nIn practice, this is a minor issue, because HOOK_TICK fires at 4 Hz \u003d 250000 usec.\n\nBut maybe safer to \n\nuint32_t wait \u003d deadline - __hw_clock_source_read()\n\nEXTCNTLR \u003d wait \u003c (0xffffffff \u003e\u003e SHIFT) ? wait : 0xffffffff",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 32
+      },
+      "revId": "a33d037e46f6dd44eba223f20018be26ceb18789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
