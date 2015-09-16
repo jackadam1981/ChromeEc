@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "648afea0_30ee0981",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-09-16T16:27:14Z",
+      "side": 1,
+      "message": "just curious, where does this data come from?",
+      "revId": "cab8234f0acdb0a9df771cb171f82dc95cbcba23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "648afea0_90fd1d35",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-09-16T16:27:14Z",
+      "side": 1,
+      "message": "ah, I did not realize that it was stalled, not corrupted. I think a 100ms delay (even if this long, that is) should be not a big deal for our typical use case.",
+      "revId": "cab8234f0acdb0a9df771cb171f82dc95cbcba23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "648afea0_10374daf",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-09-16T16:27:14Z",
+      "side": 1,
+      "message": "I still don\u0027t see why do we care about the value read in line 153. We waited, the error register finally cleared, shouldn\u0027t we return a success here even if read in line 153 returned a non zero value?",
+      "revId": "cab8234f0acdb0a9df771cb171f82dc95cbcba23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46156bd_941c3574",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-09-16T16:27:14Z",
+      "side": 1,
+      "message": "I don\u0027t think ec can run on a big endian platform - it is an inherent assumption all over the codebase that the platform is little endian.\n\nAt least I don\u0027t see this check anywhere else.",
+      "revId": "cab8234f0acdb0a9df771cb171f82dc95cbcba23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
