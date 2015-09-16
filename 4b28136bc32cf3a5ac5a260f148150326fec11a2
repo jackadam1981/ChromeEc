@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a9420f4a_7b854a41",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-16T05:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "848ff2ac_3b48b026",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6473de94_b45059fd",
         "filename": "chip/g/flash.c",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2015-09-16T01:37:15Z",
       "side": 1,
       "message": "it has two types of erases, block and bulk, do we need both?\n\nAlso, the spec talks about pages,not blocks, could be clearer to call units blocks?",
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c45e4afd_103d8aa7",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-16T05:55:33Z",
+      "side": 1,
+      "message": "I haven\u0027t implemented the bulk erase yet, but yes it would go here if we end up needing it.\n\nThe spec uses a bunch of terms in ways that aren\u0027t common, but none of the SoCs are particularly consistent in their names for things. I\u0027ll update the comments.",
+      "parentUuid": "6473de94_b45059fd",
       "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "44725a92_2fef8b2e",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-16T05:55:33Z",
+      "side": 1,
+      "message": "It does. I just initialize it here because this macro resolves to a compile-time constant. I change it below, if we\u0027re in the upper bank.\n\nIt\u0027s probably nicer looking if I do it all below, though.",
+      "parentUuid": "0465c2c3_d02319e9",
+      "range": {
+        "startLine": 56,
+        "startChar": 56,
+        "endLine": 56,
+        "endChar": 71
+      },
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44725a92_ef7f53a7",
         "filename": "chip/g/flash.c",
         "patchSetId": 2
@@ -76,6 +142,24 @@
       "writtenOn": "2015-09-16T01:37:15Z",
       "side": 1,
       "message": "the spec calls for clearing FSH_ERROR before writing or erasing",
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "848ff2ac_5eee4aef",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-16T05:55:33Z",
+      "side": 1,
+      "message": "Yes, thanks.",
+      "parentUuid": "44725a92_ef7f53a7",
       "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "0465c2c3_904fe154",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-16T05:55:33Z",
+      "side": 1,
+      "message": "OFFSET, MAINB, and SIZE are all fields in the same control register, so they\u0027re gonna get *something*. MAINB is required, though.\n\nIt seems that the sequence between that register and the buffer filling doesn\u0027t matter. AFAICT, the controller just needs all the parameter registers set up before we enable it and tell it to go.",
+      "parentUuid": "8478d270_6c17d40f",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 45
+      },
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0465c2c3_101e719f",
         "filename": "chip/g/flash.c",
         "patchSetId": 2
@@ -116,6 +224,24 @@
       "writtenOn": "2015-09-16T01:37:15Z",
       "side": 1,
       "message": "this should be a check for zero, not equality to opcode I think.",
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "848ff2ac_9ef8d2b3",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-16T05:55:33Z",
+      "side": 1,
+      "message": "Done, thanks.",
+      "parentUuid": "0465c2c3_101e719f",
       "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "a9420f4a_9b690e34",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-16T05:55:33Z",
+      "side": 1,
+      "message": "Ugh, I hope we don\u0027t have to try 50 times before a write or erase actually happens.\n\nSince the errors are important, but reading the register clears it, we have to save the original value. Then we can return pass or fail after it\u0027s cleared (or failed to clear).\n\nAdded a comment.",
+      "parentUuid": "6473de94_b47a1950",
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9420f4a_5bbe069c",
         "filename": "chip/g/flash.c",
         "patchSetId": 2
@@ -150,6 +294,30 @@
       "writtenOn": "2015-09-16T01:37:15Z",
       "side": 1,
       "message": "is this an assumption or in the spec? Isn\u0027t little endian natural for this platform?",
+      "range": {
+        "startLine": 126,
+        "startChar": 27,
+        "endLine": 126,
+        "endChar": 67
+      },
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8478d270_c72361e9",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-16T05:55:33Z",
+      "side": 1,
+      "message": "Darn it, you\u0027re right. I wrote this comment, and then didn\u0027t do it (this is why we have code reviews).\n\nI uploaded a separate CL to enhance the \"md\" command so I can double-check this.",
+      "parentUuid": "a9420f4a_5bbe069c",
       "range": {
         "startLine": 126,
         "startChar": 27,
