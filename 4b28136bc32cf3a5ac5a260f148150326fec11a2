@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "848ff2ac_3b48b026",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-09-16T01:37:15Z",
+      "side": 1,
+      "message": "add a comment why this size is ideal (the internal buffer size)",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6473de94_b45059fd",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-09-16T01:37:15Z",
+      "side": 1,
+      "message": "it has two types of erases, block and bulk, do we need both?\n\nAlso, the spec talks about pages,not blocks, could be clearer to call units blocks?",
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0465c2c3_d02319e9",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-09-16T01:37:15Z",
+      "side": 1,
+      "message": "shouldn\u0027t this (using control0 or control1) depend on the global flash address?",
+      "range": {
+        "startLine": 56,
+        "startChar": 56,
+        "endLine": 56,
+        "endChar": 71
+      },
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44725a92_ef7f53a7",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-09-16T01:37:15Z",
+      "side": 1,
+      "message": "the spec calls for clearing FSH_ERROR before writing or erasing",
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8478d270_6c17d40f",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-09-16T01:37:15Z",
+      "side": 1,
+      "message": "the spec calls for a very specific sequence of accesses for the two operations. The MAINB access should not be in the flow, data buffer fill up is supposed to happen after the offset register is written, offset is not supposed to be written for erase operations. Maybe this makes no difference for this design, I am not sure.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 45
+      },
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0465c2c3_101e719f",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-09-16T01:37:15Z",
+      "side": 1,
+      "message": "this should be a check for zero, not equality to opcode I think.",
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6473de94_b47a1950",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-09-16T01:37:15Z",
+      "side": 1,
+      "message": "Why is this \u0027error\u0027 value used in line 113?\n\nAlso, the spec says \"Repeat as needed, up to 50 times, until FSH_ERROR is all zeros.\" I read this as \"repeat the entire cycle as needed, but maybe you are right, it refers to reading the reset register.",
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9420f4a_5bbe069c",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-09-16T01:37:15Z",
+      "side": 1,
+      "message": "is this an assumption or in the spec? Isn\u0027t little endian natural for this platform?",
+      "range": {
+        "startLine": 126,
+        "startChar": 27,
+        "endLine": 126,
+        "endChar": 67
+      },
+      "revId": "4b28136bc32cf3a5ac5a260f148150326fec11a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
