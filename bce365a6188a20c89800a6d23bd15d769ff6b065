@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6473de94_f43651b1",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-16T01:05:07Z",
+      "side": 1,
+      "message": "sure, i will add them",
+      "parentUuid": "6473de94_f431f1d2",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "bce365a6188a20c89800a6d23bd15d769ff6b065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e467cecb_e5da2154",
         "filename": "driver/tcpm/tcpci.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-16T00:57:06Z",
       "side": 1,
       "message": "bit 3 [Vbus present detection enabled] is \"required\"\nand should be all the time for us ?\n\nalso missing bit 4 and 5",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 46
+      },
+      "revId": "bce365a6188a20c89800a6d23bd15d769ff6b065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c45e4afd_0db8171f",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-16T01:05:07Z",
+      "side": 1,
+      "message": "yes, i will add setting bit 3 when CONFIG_USB_PD_TCPM_VBUS is used.\n\nfor the other bits, i haven\u0027t bothered defining bits that we aren\u0027t using yet, as they tend to change a lot. will fill in unused bits when spec is released.",
+      "parentUuid": "e467cecb_e5da2154",
       "range": {
         "startLine": 62,
         "startChar": 0,
