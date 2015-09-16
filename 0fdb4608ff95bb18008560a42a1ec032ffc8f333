@@ -16,6 +16,24 @@
       "revId": "0fdb4608ff95bb18008560a42a1ec032ffc8f333",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "848ff2ac_9b754493",
+        "filename": "power/braswell.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-09-16T00:10:55Z",
+      "side": 1,
+      "message": "1. WiFi is wakeup source and cannot be turned off at S3.\n2. We don\u0027t see leakage at both S3 and S5 since SDIO interface is still active and Wifi is low power mode by kernel. \n3. We see high leakage only at G3 since interface(PCH/SDIO) is down while wifi module is still powered. And Wifi resume time from S3 to S0 will be faster, too.",
+      "parentUuid": "8478d270_20eec380",
+      "revId": "0fdb4608ff95bb18008560a42a1ec032ffc8f333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
