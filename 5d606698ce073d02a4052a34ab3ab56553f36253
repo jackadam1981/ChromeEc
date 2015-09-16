@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "6473de94_d73157bc",
+        "filename": "board/glados/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-16T17:11:11Z",
+      "side": 1,
+      "message": "Ah okay, good to know. I\u0027ll use the EC settings here then.",
+      "parentUuid": "848ff2ac_3ef33e6a",
+      "revId": "5d606698ce073d02a4052a34ab3ab56553f36253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44725a92_ea7f483e",
         "filename": "board/glados/board.c",
         "patchSetId": 4
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "If double tap is not used, we can use a slower frequency: 10Hz is enough.",
       "parentUuid": "c45e4afd_ce2c5c65",
+      "revId": "5d606698ce073d02a4052a34ab3ab56553f36253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44725a92_43f1fba0",
+        "filename": "board/glados/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-16T17:11:11Z",
+      "side": 1,
+      "message": "Okay, I\u0027ll change this.",
+      "parentUuid": "648afea0_b03f7979",
       "revId": "5d606698ce073d02a4052a34ab3ab56553f36253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
