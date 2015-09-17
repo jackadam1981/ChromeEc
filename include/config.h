@@ -1293,6 +1293,20 @@
 /* Support MKBP event */
 #undef CONFIG_MKBP_EVENT
 
+/*
+ * With this option, we can redefine the MKBP wakeup events with the mask:
+ * CONFIG_MKBP_WAKEUP_MASK
+ */
+#undef CONFIG_MKBP_WAKEUP_EVENTS
+
+/*
+ * White list of the wakeup events, allow to interrupt AP during S3 if
+ * CONFIG_MKBP_WAKEUP_EVENTS option is enabled.
+ * All events are interruptible in default, we can redefine it in board level
+ * individually.
+ */
+#define CONFIG_MKBP_WAKEUP_MASK 0xFFFFFFFF
+
 /* Support memory protection unit (MPU) */
 #undef CONFIG_MPU
 
