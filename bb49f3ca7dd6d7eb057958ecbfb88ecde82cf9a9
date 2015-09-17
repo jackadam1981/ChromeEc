@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29bd3fca_d6a802c2",
+        "filename": "board/glados/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-17T23:52:09Z",
+      "side": 1,
+      "message": "Right now, everything is set to off. What\u0027s the gyro used for? And along those lines, it seems that the Bosch sensor also has a magnetometer. Should that also be added and what is it used for?",
+      "range": {
+        "startLine": 494,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 3
+      },
+      "revId": "bb49f3ca7dd6d7eb057958ecbfb88ecde82cf9a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
