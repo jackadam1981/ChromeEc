@@ -21,7 +21,11 @@
 #define HOOK_TICK_INTERVAL	(HOOK_TICK_INTERVAL_MS * MSEC)
 
 /* Maximum number of deferrable functions */
+#ifdef BOARD_ULTIMA
+#define DEFERRABLE_MAX_COUNT	10
+#else
 #define DEFERRABLE_MAX_COUNT	9
+#endif
 
 /*
  * Number of I2C controllers. Controller 0 has 2 ports, so the chip has one
