@@ -16,6 +16,24 @@
       "revId": "d5b5e0d4052ef62149eefe8f9a219bb139f2efde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69dad736_7d0c77b3",
+        "filename": "test/test_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-17T21:54:53Z",
+      "side": 1,
+      "message": "Had to make a few changes, but yes, it now passes the test",
+      "parentUuid": "09279bf5_ea40876e",
+      "revId": "d5b5e0d4052ef62149eefe8f9a219bb139f2efde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
