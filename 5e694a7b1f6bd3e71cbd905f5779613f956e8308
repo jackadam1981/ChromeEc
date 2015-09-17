@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "29753fb9_964d6a5e",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-17T18:03:38Z",
+      "side": 1,
+      "message": "Does the RO (and/or RW) image get copied to 0x100A8000 or (0x100A8000 + 0x40)? I think it\u0027s the first case. If so, we should change these to 0, and I think it will make many of the special NPCX cases you added unnecessary.",
+      "revId": "5e694a7b1f6bd3e71cbd905f5779613f956e8308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "697bb7ad_d848f127",
         "filename": "chip/npcx/config_flash_layout.h",
         "patchSetId": 1
