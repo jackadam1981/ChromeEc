@@ -8,6 +8,14 @@
 #ifndef __CROS_EC_MKBP_EVENT_H
 #define __CROS_EC_MKBP_EVENT_H
 
+/* Events should be blocked in S3, to prevent wake-up application proecssor */
+#define NON_WAKEUP_EVENT_MASK \
+			(EC_HOST_EVENT_MASK(EC_HOST_EVENT_AC_CONNECTED) |\
+			 EC_HOST_EVENT_MASK(EC_HOST_EVENT_AC_DISCONNECTED) |\
+			 EC_HOST_EVENT_MASK(EC_HOST_EVENT_BATTERY) |\
+			 EC_HOST_EVENT_MASK(EC_HOST_EVENT_BATTERY_STATUS) |\
+			 EC_HOST_EVENT_MASK(EC_HOST_EVENT_PD_MCU))
+
 /*
  * Sends an event to the AP.
  *
