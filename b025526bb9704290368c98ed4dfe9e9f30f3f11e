@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "e9b7a7e1_199b8bb1",
+        "filename": "board/glados/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-17T22:37:02Z",
+      "side": 1,
+      "message": "Okay, I\u0027ll change it back.\n\nJust curious. Why does the AP manage the base sensors and not the lid?",
+      "parentUuid": "69c3b75a_78063de6",
+      "revId": "b025526bb9704290368c98ed4dfe9e9f30f3f11e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49c27358_b4b8e04b",
         "filename": "board/glados/board.c",
         "patchSetId": 3
@@ -59,6 +77,24 @@
     },
     {
       "key": {
+        "uuid": "49c27358_341210d5",
+        "filename": "board/glados/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-17T22:37:02Z",
+      "side": 1,
+      "message": "I\u0027ll change this.",
+      "parentUuid": "49c27358_b4b8e04b",
+      "revId": "b025526bb9704290368c98ed4dfe9e9f30f3f11e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69dad736_c05a0067",
         "filename": "board/glados/board.c",
         "patchSetId": 3
@@ -70,6 +106,24 @@
       "writtenOn": "2015-09-17T22:15:53Z",
       "side": 1,
       "message": "I assume we detect lid open another way.",
+      "revId": "b025526bb9704290368c98ed4dfe9e9f30f3f11e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69c3b75a_f8decd78",
+        "filename": "board/glados/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-17T22:37:02Z",
+      "side": 1,
+      "message": "Yep, a lid switch I believe.",
+      "parentUuid": "69dad736_c05a0067",
       "revId": "b025526bb9704290368c98ed4dfe9e9f30f3f11e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
