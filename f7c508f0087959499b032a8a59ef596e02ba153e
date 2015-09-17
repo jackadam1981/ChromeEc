@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69157782_8515827a",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-17T19:48:22Z",
+      "side": 1,
+      "message": "You should define this at the board level. We don\u0027t want to waste resources for boards that don\u0027t need extra deferrable functions.",
+      "revId": "f7c508f0087959499b032a8a59ef596e02ba153e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
