@@ -165,27 +165,34 @@ struct motion_sensor_t motion_sensors[] = {
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
-/* Define the accelerometer orientation matrices. */
-const struct accel_orientation acc_orient = {
-	/* Hinge aligns with x axis. */
-	.rot_hinge_90 = {
-		{ FLOAT_TO_FP(1),  0,  0},
-		{ 0,  0,  FLOAT_TO_FP(1)},
-		{ 0, FLOAT_TO_FP(-1),  0}
-	},
-	.rot_hinge_180 = {
-		{ FLOAT_TO_FP(1),  0,  0},
-		{ 0, FLOAT_TO_FP(-1),  0},
-		{ 0,  0, FLOAT_TO_FP(-1)}
-	},
-	.hinge_axis = {1, 0, 0},
-};
+/* init ADC ports to avoid floating state due to thermistors */
+static void adc_pre_init(void)
+{
+       /* Configure GPIOs */
+	gpio_config_module(MODULE_ADC, 1);
+}
+DECLARE_HOOK(HOOK_INIT, adc_pre_init, HOOK_PRIO_INIT_ADC - 1);
 
-/*
- * In S3, power rail for sensors (+V3p3S) goes down asynchronous to EC. We need
- * to execute this routine first and set the sensor state to "Not Initialized".
- * This prevents the motion_sense_suspend hook routine from communicating with
- * the sensor.
+/* Initialize board. */
+static void board_init(void)
+{
+	/* Enable PD MCU interrupt */
+	gpio_enable_interrupt(GPIO_PD_MCU_INT);
+	/* Enable VBUS interrupt */
+	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
+
+	/* Enable pericom BC1.2 interrupts */
+	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+/**
+ * Set active charge port -- Enable or Disable charging
+ *
+ * @param charge_port   Charge port to enable.
+ *
+ * Returns EC_SUCCESS if charge port is accepted and made active,
+ * EC_ERROR_* otherwise.
  */
 static void motion_sensors_pre_init(void)
 {
