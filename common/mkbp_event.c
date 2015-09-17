@@ -6,6 +6,7 @@
  */
 
 #include "atomic.h"
+#include "chipset.h"
 #include "gpio.h"
 #include "host_command.h"
 #include "link_defs.h"
@@ -40,7 +41,19 @@ static void set_host_interrupt(int active)
 
 void mkbp_send_event(uint8_t event_type)
 {
+	uint32_t events;
 	set_event(event_type);
+
+	events = *(uint32_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS);
+	/* blocking specific events to avoid interrupt AP in non-S0 state */
+	if (event_type == EC_MKBP_EVENT_HOST_EVENT &&
+	    !chipset_in_state(CHIPSET_STATE_ON) &&
+	    (events & NON_WAKEUP_EVENT_MASK)) {
+		ccprints("filter the events: 0x%08X", events);
+		return;
+	}
+
+	ccprints("Interrupt events: 0x%08X", events);
 	set_host_interrupt(1);
 }
 
