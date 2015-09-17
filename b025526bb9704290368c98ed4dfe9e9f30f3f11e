@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9692fe6_f7886016",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-17T00:52:23Z",
+      "side": 1,
+      "message": "this commit also adds lid angle calculation. did you verify that we calculate the correct lid angle? also, we still need to add the base gyro, which probably makes sense to add to this CL since it\u0027s part of the bmi sensor.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "b025526bb9704290368c98ed4dfe9e9f30f3f11e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
