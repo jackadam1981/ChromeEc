@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9b7a7e1_fc4a4542",
+        "filename": "board/glados/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2015-09-17T23:45:20Z",
+      "side": 1,
+      "message": "If matrix is identiy, you can set it to NULL. rotate will by a noop then.",
+      "revId": "207a76d8612d5068da026bca651b9290b5b6f55f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
