@@ -16,6 +16,24 @@
       "revId": "a11e95969ca839790180e3c2d7d9d1d4a44d3be9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "891aabb2_060cfa03",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-17T20:35:34Z",
+      "side": 1,
+      "message": "Done. But I am always afraid on adding printf as it increases code size.",
+      "parentUuid": "848ff2ac_3e1a5e3a",
+      "revId": "a11e95969ca839790180e3c2d7d9d1d4a44d3be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
