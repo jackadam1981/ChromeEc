@@ -6,11 +6,20 @@
  */
 
 #include "atomic.h"
+#include "chipset.h"
 #include "gpio.h"
 #include "host_command.h"
 #include "link_defs.h"
 #include "mkbp_event.h"
 #include "util.h"
+
+/* Events should be blocked in S3, to prevent wake-up application proecssor */
+#define NON_WAKEUP_EVENT_MASK \
+			(EC_HOST_EVENT_MASK(EC_HOST_EVENT_AC_CONNECTED) |\
+			 EC_HOST_EVENT_MASK(EC_HOST_EVENT_AC_DISCONNECTED) |\
+			 EC_HOST_EVENT_MASK(EC_HOST_EVENT_BATTERY) |\
+			 EC_HOST_EVENT_MASK(EC_HOST_EVENT_BATTERY_STATUS) |\
+			 EC_HOST_EVENT_MASK(EC_HOST_EVENT_PD_MCU))
 
 static uint32_t events;
 
@@ -40,7 +49,16 @@ static void set_host_interrupt(int active)
 
 void mkbp_send_event(uint8_t event_type)
 {
+	uint32_t events;
 	set_event(event_type);
+
+	events = *(uint32_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS);
+	/* blocking specific events to interrupt AP in non-S0 state */
+	if (event_type == EC_MKBP_EVENT_HOST_EVENT &&
+	    !chipset_in_state(CHIPSET_STATE_ON) &&
+	    (events & NON_WAKEUP_EVENT_MASK))
+		return;
+
 	set_host_interrupt(1);
 }
 
