@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69ec97ce_ed14250d",
+        "filename": "board/kunimitsu/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-17T20:04:14Z",
+      "side": 1,
+      "message": "Can you skip this init on sysjump? See board_pmic_init() on glados for example.",
+      "revId": "ab6442a31e3896c77582846184f0bbb7529905d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
