@@ -46,14 +46,14 @@
 
 /* RO firmware offset in flash */
 #define CONFIG_RO_MEM_OFF	CONFIG_RO_HDR_SIZE
-#define CONFIG_RO_SIZE		CONFIG_FW_IMAGE_SIZE
+#define CONFIG_RO_SIZE		CONFIG_FW_IMAGE_SIZE    /* 96KB for RW FW */
 
 /* RW firmware offset in flash */
 #define CONFIG_RW_MEM_OFF	CONFIG_RW_STORAGE_OFF
-#define CONFIG_RW_SIZE		CONFIG_FW_IMAGE_SIZE
+#define CONFIG_RW_SIZE		CONFIG_FW_IMAGE_SIZE    /* 96KB for RW FW */
 
-/* The storage offset of ec.R*.flat which is used for CONFIG_CDRAM_ARCH */
-#define CONFIG_RO_STORAGE_OFF	CONFIG_RO_HDR_SIZE
+/* The storage offset of ec.R*.flat which is used for firmware_image.lds */
+#define CONFIG_RO_STORAGE_OFF	0
 #define CONFIG_RW_STORAGE_OFF	0
 
 #endif /* __CROS_EC_CONFIG_FLASH_LAYOUT_H */

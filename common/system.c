@@ -100,11 +100,35 @@ uint32_t sleep_mask;
  */
 static uintptr_t get_program_memory_addr(enum system_image_copy_t copy)
 {
+#if defined(CHIP_NPCX)
+	/* Booter will copy fw binary to the beginning of CDRAM */
+	return CONFIG_PROGRAM_MEMORY_BASE;
+#else
 	switch (copy) {
 	case SYSTEM_IMAGE_RO:
 		return CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RO_MEM_OFF;
 	case SYSTEM_IMAGE_RW:
 		return CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RW_MEM_OFF;
+	default:
+		return 0xffffffff;
+	}
+#endif
+}
+
+/**
+ * Return the storage memory mapping address where the image `copy` begins or
+ * should begin.
+ */
+static uintptr_t get_storage_memory_addr(enum system_image_copy_t copy)
+{
+	switch (copy) {
+	case SYSTEM_IMAGE_RO:
+		return CONFIG_MAPPED_STORAGE_BASE + CONFIG_RO_STORAGE_OFF +
+				CONFIG_EC_PROTECTED_STORAGE_OFF +
+				CONFIG_RO_HDR_SIZE;
+	case SYSTEM_IMAGE_RW:
+		return CONFIG_MAPPED_STORAGE_BASE + CONFIG_RW_STORAGE_OFF +
+				CONFIG_EC_WRITABLE_STORAGE_OFF;
 	default:
 		return 0xffffffff;
 	}
@@ -368,7 +392,11 @@ int system_get_image_used(enum system_image_copy_t copy)
 
 	} while (*image != 0xea);
 #else
+#ifdef CONFIG_MAPPED_STORAGE
+	image = (const uint8_t *)get_storage_memory_addr(copy);
+#else
 	image = (const uint8_t *)get_program_memory_addr(copy);
+#endif
 	for (size--; size > 0 && image[size] != 0xea; size--)
 		;
 #endif
