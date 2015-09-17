@@ -34,6 +34,24 @@
       "revId": "a11e95969ca839790180e3c2d7d9d1d4a44d3be9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29bd3fca_f3f6f0c5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-17T21:02:25Z",
+      "side": 1,
+      "message": "I understand. It\u0027s up to you. I just ask because I ran into the S3-\u003eS0 issue where running the accelinit command wouldn\u0027t have uncovered it.\n\nMaybe wrap the print with a CONFIG_DEBUG_BRINGUP?",
+      "parentUuid": "891aabb2_060cfa03",
+      "revId": "a11e95969ca839790180e3c2d7d9d1d4a44d3be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
