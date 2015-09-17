@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69c01716_6d4fb5aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-09-17T08:04:01Z",
+      "side": 1,
+      "message": "Can\u0027t find this macro.",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "95da200d523350843a5bdd1cbcf83dcb20fa35d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9d407d5_51ddb4fa",
+        "filename": "power/mediatek.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-09-17T08:04:01Z",
+      "side": 1,
+      "message": "If you want this hold time longer than suspend debounce time + power debounce time, you might want to define this macro as (20 * msec + suspend_debounce_time + power_debounce_time).",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "95da200d523350843a5bdd1cbcf83dcb20fa35d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
