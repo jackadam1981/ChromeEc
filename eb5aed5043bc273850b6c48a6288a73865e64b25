@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "69cf379f_15e21409",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-09-18T02:51:10Z",
+      "side": 1,
+      "message": "Correct. It\u0027s (CONFIG_PROGRAM_MEMORY_BASE + 0).\nI need to consider CONFIG_EC_PROTECTED_STORAGE_OFF and (CONFIG_RO_STORAGE_OFF - CONFIG_RO_HDR_SIZE) will be the beginning  address of image.RO.",
+      "parentUuid": "69dad736_0693204b",
+      "revId": "eb5aed5043bc273850b6c48a6288a73865e64b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69dad736_c6885817",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-09-18T02:34:02Z",
       "side": 1,
       "message": "This is equivalent to the line below, right? CONFIG_R*_MEM_OFF \u003d 0 for npcx. There\u0027s no need for this change?",
+      "revId": "eb5aed5043bc273850b6c48a6288a73865e64b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9404fd4_bf0a375e",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-09-18T02:51:10Z",
+      "side": 1,
+      "message": "Indeed, it my testing code.\nSorry for that.",
+      "parentUuid": "69dad736_c6885817",
       "revId": "eb5aed5043bc273850b6c48a6288a73865e64b25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
