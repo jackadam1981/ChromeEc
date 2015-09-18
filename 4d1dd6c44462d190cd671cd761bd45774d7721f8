@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29bd3fca_5c4fb130",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-18T17:20:06Z",
+      "side": 1,
+      "message": "This is the wrong approach. There shouldn\u0027t be \"#ifdef BOARD*\" in chip-level code. You can undef / redefine DEFERRABLE_MAX_COUNT in board.h. See board/samus/board.h for an example.",
+      "revId": "4d1dd6c44462d190cd671cd761bd45774d7721f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
