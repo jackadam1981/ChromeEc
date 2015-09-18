@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69dad736_0693204b",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-18T02:34:02Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this expression is necessary. I believe the result is equivalent to the line below (CONFIG_PROGRAM_MEMORY_BASE + 0).",
+      "revId": "eb5aed5043bc273850b6c48a6288a73865e64b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69dad736_c6885817",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-18T02:34:02Z",
+      "side": 1,
+      "message": "This is equivalent to the line below, right? CONFIG_R*_MEM_OFF \u003d 0 for npcx. There\u0027s no need for this change?",
+      "revId": "eb5aed5043bc273850b6c48a6288a73865e64b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
