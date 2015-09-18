@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9ae6393_cca14f0f",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-18T20:16:13Z",
+      "side": 1,
+      "message": "Again, I think you can delete the entire \"#if defined(NPCX_RO_HEADER)\" block here and just use the non-npcx case below. Both expressions will give you the same value, and even if the HDR region grows (or shrinks), CONFIG_RO_STORAGE_OFF will change accordingly, so it should still work.",
+      "revId": "fab38b1ccae43c0dc60d965acd9007d9bb8b91f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "099a3b78_c6a1220f",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-18T20:16:13Z",
+      "side": 1,
+      "message": "Now that I look closer, I think we should be using STORAGE_OFF exclusively here. I will fix it after your changes land.",
+      "revId": "fab38b1ccae43c0dc60d965acd9007d9bb8b91f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69dad736_8cb02f5f",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-18T20:16:13Z",
+      "side": 1,
+      "message": "I went ahead and landed these in a separate CL, since they theoretically apply to all platforms with external, mapped storage.",
+      "revId": "fab38b1ccae43c0dc60d965acd9007d9bb8b91f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9a3c3b1_b9fd23dd",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-18T20:16:13Z",
+      "side": 1,
+      "message": "I went ahead and landed this in a separate CL, since it theoretically apply to all platforms with external, mapped storage.",
+      "revId": "fab38b1ccae43c0dc60d965acd9007d9bb8b91f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e99c0776_6b075d92",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-18T20:16:13Z",
+      "side": 1,
+      "message": "This line is needlessly changed somehow, check spacing / tabs.",
+      "revId": "fab38b1ccae43c0dc60d965acd9007d9bb8b91f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
