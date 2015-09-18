@@ -22,6 +22,30 @@
       "revId": "84b76c59d8ae39e0eb07d456b4437db052ac4705",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6942d7df_fd7e8742",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2015-09-18T13:37:48Z",
+      "side": 1,
+      "message": "Thanks for you suggestion.\nI add a black list which defines the events we want to block (the events related to external power insertion)",
+      "parentUuid": "a90befa7_87d6e684",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "84b76c59d8ae39e0eb07d456b4437db052ac4705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
