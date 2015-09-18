@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "69dad736_11243c8b",
+        "filename": "board/ultima/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-18T17:24:18Z",
+      "side": 1,
+      "message": "Are these hooks really necessary? led_tick is being called every 250ms. You should be able to check the power state and set LEDs accordingly from led_tick() and/or ultima_led_set_battery().",
+      "revId": "4d1dd6c44462d190cd671cd761bd45774d7721f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "099a3b78_db781f8c",
+        "filename": "board/ultima/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-18T17:24:18Z",
+      "side": 1,
+      "message": "What is \u0027ac\u0027? What is the significance of 7?",
+      "range": {
+        "startLine": 137,
+        "startChar": 9,
+        "endLine": 138,
+        "endChar": 8
+      },
+      "revId": "4d1dd6c44462d190cd671cd761bd45774d7721f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29bd3fca_5c4fb130",
         "filename": "chip/mec1322/config_chip.h",
         "patchSetId": 3
