@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29bd3fca_fc26bd7b",
+        "filename": "common/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2015-09-18T17:19:07Z",
+      "side": 1,
+      "message": "while were at it, should this be:\ngpio_config_pins(id, af-\u003eport, af-\u003emask, enable);",
+      "revId": "55c942f030e464d2b4f61ec10b13ed08698bae70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
