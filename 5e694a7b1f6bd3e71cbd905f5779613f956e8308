@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a90befa7_073e76ed",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-09-18T01:21:46Z",
+      "side": 1,
+      "message": "I will fix it.",
+      "parentUuid": "29753fb9_964d6a5e",
+      "revId": "5e694a7b1f6bd3e71cbd905f5779613f956e8308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "697bb7ad_d848f127",
         "filename": "chip/npcx/config_flash_layout.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-09-17T17:59:03Z",
       "side": 1,
       "message": "Based on this, the RO image resides at CONFIG_PROTECTED_STORAGE_OFF + 0, which is actually where the header resides. So this doesn\u0027t seem correct - in fact we even have this spelled out for npcx on https://www.chromium.org/chromium-os/ec-development/ec-image-geometry-spec",
+      "revId": "5e694a7b1f6bd3e71cbd905f5779613f956e8308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29f7ffe2_03c9ce8e",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-09-18T01:21:46Z",
+      "side": 1,
+      "message": "OK, It also needs to modified in firmware_image.lds",
+      "parentUuid": "697bb7ad_d848f127",
       "revId": "5e694a7b1f6bd3e71cbd905f5779613f956e8308",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "89d9cb71_6e8cef29",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-09-18T01:21:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6992d715_63aed6bc",
+      "revId": "5e694a7b1f6bd3e71cbd905f5779613f956e8308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49a1935d_e248a227",
         "filename": "common/system.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2015-09-17T17:59:03Z",
       "side": 1,
       "message": "There is a bug here and I will fix it today. The bug is that we\u0027re assuming that our image is present in code memory if CONFIG_MAPPED_STORAGE is defined, which isn\u0027t always the case.",
+      "revId": "5e694a7b1f6bd3e71cbd905f5779613f956e8308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69cf379f_35ccf09e",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-09-18T01:21:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49a1935d_e248a227",
       "revId": "5e694a7b1f6bd3e71cbd905f5779613f956e8308",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "09e6bb28_32cc109f",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-09-18T01:21:46Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "49a1935d_22e8ca72",
+      "revId": "5e694a7b1f6bd3e71cbd905f5779613f956e8308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8980ebc5_99783f8b",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2015-09-17T17:59:03Z",
       "side": 1,
       "message": "We shouldn\u0027t need this, if CONFIG_*_MEM_OFF are defined correctly (ex. zero, if RW / RO images will reside at CONFIG_PROGRAM_MEMORY_BASE + 0).",
+      "revId": "5e694a7b1f6bd3e71cbd905f5779613f956e8308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09e6bb28_12c90c8f",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-09-18T01:21:46Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "8980ebc5_99783f8b",
       "revId": "5e694a7b1f6bd3e71cbd905f5779613f956e8308",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
