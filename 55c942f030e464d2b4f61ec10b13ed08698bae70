@@ -16,6 +16,24 @@
       "revId": "55c942f030e464d2b4f61ec10b13ed08698bae70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49c27358_fd0f9b61",
+        "filename": "common/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-18T17:28:33Z",
+      "side": 1,
+      "message": "We could do it that way, but it\u0027s super inefficient. Basically we\u0027ll search the alt funcs table every time (again!) just to find the pin(s). I agree these functions are very similar though, and can be combined into one, with an extra function parameter. I\u0027ll open a crbug for it, because we\u0027ll have to modify every call of either function (a lot of files) and it\u0027s outside the scope of this fix.",
+      "parentUuid": "29bd3fca_fc26bd7b",
+      "revId": "55c942f030e464d2b4f61ec10b13ed08698bae70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
