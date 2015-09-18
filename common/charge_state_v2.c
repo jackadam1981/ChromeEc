@@ -40,6 +40,7 @@
 static const struct battery_info *batt_info;
 static struct charge_state_data curr;
 static int prev_ac, prev_charge, prev_full;
+static int prev_chg_mode = -1;
 static int is_full; /* battery not accepting current */
 static int state_machine_force_idle;
 static int manual_mode;  /* volt/curr are no longer maintained by charger */
@@ -368,6 +369,7 @@ static int charge_request(int voltage, int current)
 {
 	int r1 = EC_SUCCESS, r2 = EC_SUCCESS, r3 = EC_SUCCESS;
 	static int prev_volt, prev_curr;
+	int mode;
 
 	if (!voltage || !current)
 		voltage = current = 0;
@@ -399,11 +401,16 @@ static int charge_request(int voltage, int current)
 	 * power in some cases (e.g. Nyan with BQ24735).
 	 */
 	if (voltage > 0 || current > 0)
-		r3 = charger_set_mode(0);
+		mode = 0;
 	else
-		r3 = charger_set_mode(CHARGE_FLAG_INHIBIT_CHARGE);
-	if (r3 != EC_SUCCESS)
-		problem(PR_SET_MODE, r3);
+		mode = CHARGE_FLAG_INHIBIT_CHARGE;
+	if (mode != prev_chg_mode) {
+		r3 = charger_set_mode(mode);
+		if (r3 != EC_SUCCESS)
+			problem(PR_SET_MODE, r3);
+		else
+			prev_chg_mode = mode;
+	}
 
 	/*
 	 * Only update if the request worked, so we'll keep trying on failures.
@@ -1132,6 +1139,9 @@ static int charge_command_charge_state(struct host_cmd_handler_args *args)
 			case CS_PARAM_CHG_OPTION:
 				if (charger_set_option(val))
 					rv = EC_RES_ERROR;
+				else
+					prev_chg_mode = val &
+						CHARGE_FLAG_INHIBIT_CHARGE;
 				break;
 			default:
 				rv = EC_RES_INVALID_PARAM;
