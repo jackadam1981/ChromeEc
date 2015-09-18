@@ -52,6 +52,24 @@
       "revId": "a11e95969ca839790180e3c2d7d9d1d4a44d3be9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e99c0776_60e85c74",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-18T17:12:04Z",
+      "side": 1,
+      "message": "This one can be useful even after bringup.\nI upload another patch with a proper if() around the printf.",
+      "parentUuid": "29bd3fca_f3f6f0c5",
+      "revId": "a11e95969ca839790180e3c2d7d9d1d4a44d3be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
