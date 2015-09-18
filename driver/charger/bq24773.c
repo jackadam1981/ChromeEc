@@ -133,11 +133,17 @@ int charger_get_status(int *status)
 int charger_set_mode(int mode)
 {
 	int rv;
-	int option;
+	int option, i;
 
-	rv = charger_get_option(&option);
-	if (rv)
-		return rv;
+	for (i = 0; i < 2; i++) {
+		rv = charger_get_option(&option);
+		if (rv)
+			return rv;
+		else {
+			if (!(option & OPTION0_LEARN_ENABLE))
+				break;
+		}
+	}
 
 	if (mode & CHARGE_FLAG_INHIBIT_CHARGE)
 		option |= OPTION0_CHARGE_INHIBIT;
