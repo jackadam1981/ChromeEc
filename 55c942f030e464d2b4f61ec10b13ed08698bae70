@@ -52,6 +52,24 @@
       "revId": "55c942f030e464d2b4f61ec10b13ed08698bae70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9a3c3b1_ff6dcb87",
+        "filename": "common/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-19T01:04:14Z",
+      "side": 1,
+      "message": "We do call gpio_config_module() in some module initialization and various other places. It will probably not break anything, but I think it\u0027s terrible to search for the pin once again after we have found it. Note that the bug I opened is to replace gpio_config_module / gpio_config_pins with a single function (IMHO the function naming here is confusing anyway) so rest assured that the duplicate code will not remain for long.",
+      "parentUuid": "69c3b75a_943bdd98",
+      "revId": "55c942f030e464d2b4f61ec10b13ed08698bae70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
