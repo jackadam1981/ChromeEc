@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "49c27358_2e81dbee",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-19T17:53:37Z",
+      "side": 1,
+      "message": "mg is set by the EC (hard coded)\n\nadd a comment.",
+      "parentUuid": "099a3b78_e7262095",
+      "range": {
+        "startLine": 300,
+        "startChar": 13,
+        "endLine": 300,
+        "endChar": 56
+      },
+      "revId": "a1c7aa032d598c6c1caa79340e260adb4b5f573b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c91663dc_e1b1fc3d",
         "filename": "driver/accelgyro_bmi160.h",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c9ae6393_cd7b0986",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-19T17:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c91663dc_e1b1fc3d",
+      "range": {
+        "startLine": 308,
+        "startChar": 6,
+        "endLine": 308,
+        "endChar": 38
+      },
+      "revId": "a1c7aa032d598c6c1caa79340e260adb4b5f573b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8930eb7f_f6b22020",
         "filename": "driver/accelgyro_bmi160.h",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2015-09-19T14:11:13Z",
       "side": 1,
       "message": "why having both fields ?\nto compensate the lack of a read-only \"existing activities\" ?",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 41
+      },
+      "revId": "a1c7aa032d598c6c1caa79340e260adb4b5f573b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9ae6393_ad7ed576",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-19T17:53:37Z",
+      "side": 1,
+      "message": "existing activities \u003d\u003d enabled | disabled.\n\nEsp for significant motion, which is one shot, the activities get disabled all the time.",
+      "parentUuid": "8930eb7f_f6b22020",
       "range": {
         "startLine": 424,
         "startChar": 0,
