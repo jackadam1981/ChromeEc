@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e99c0776_5d87beda",
+        "filename": "common/timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-19T21:58:12Z",
+      "side": 1,
+      "message": "NO! check_timer is a bitmap, this has nothing to do with log2",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 34
+      },
+      "revId": "dbf8abf8a855d498a89a610ec8ff8789f58f2c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69dad736_094ecc58",
+        "filename": "common/util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-19T21:58:12Z",
+      "side": 1,
+      "message": "we want ffs() here (first bit set)\nthat\u0027s not a log2",
+      "range": {
+        "startLine": 368,
+        "startChar": 11,
+        "endLine": 368,
+        "endChar": 16
+      },
+      "revId": "dbf8abf8a855d498a89a610ec8ff8789f58f2c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "692bb717_55750cc3",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-19T21:58:12Z",
+      "side": 1,
+      "message": "same thing here, all those bitmap manipulations have nothing  with mathematical \"log2\", we are just searching the first bit set",
+      "range": {
+        "startLine": 269,
+        "startChar": 25,
+        "endLine": 269,
+        "endChar": 30
+      },
+      "revId": "dbf8abf8a855d498a89a610ec8ff8789f58f2c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "099a3b78_a71a5836",
+        "filename": "core/cortex-m0/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-19T21:58:12Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 234,
+        "startChar": 8,
+        "endLine": 234,
+        "endChar": 42
+      },
+      "revId": "dbf8abf8a855d498a89a610ec8ff8789f58f2c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "099a3b78_c7175c0f",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-19T21:58:12Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 50,
+        "startChar": 32,
+        "endLine": 50,
+        "endChar": 42
+      },
+      "revId": "dbf8abf8a855d498a89a610ec8ff8789f58f2c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49c27358_4e145750",
+        "filename": "include/util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-19T21:58:12Z",
+      "side": 1,
+      "message": "might be interesting to comment about passing 0",
+      "range": {
+        "startLine": 80,
+        "startChar": 8,
+        "endLine": 80,
+        "endChar": 54
+      },
+      "revId": "dbf8abf8a855d498a89a610ec8ff8789f58f2c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
