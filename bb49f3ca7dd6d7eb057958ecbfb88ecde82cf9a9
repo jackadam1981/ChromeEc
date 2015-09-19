@@ -46,6 +46,30 @@
       "revId": "bb49f3ca7dd6d7eb057958ecbfb88ecde82cf9a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9b7a7e1_9325b446",
+        "filename": "board/glados/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-19T03:06:15Z",
+      "side": 1,
+      "message": "Ah, okay. Thanks for clearing that up. Then I think there are no more changes to be made here.\n\n\u0026\u0026 I should have checked the schematic more closely and realized that there was no compass. :)",
+      "parentUuid": "29bd3fca_68090733",
+      "range": {
+        "startLine": 494,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 3
+      },
+      "revId": "bb49f3ca7dd6d7eb057958ecbfb88ecde82cf9a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
