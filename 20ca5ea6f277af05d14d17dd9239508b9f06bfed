@@ -22,6 +22,30 @@
       "revId": "20ca5ea6f277af05d14d17dd9239508b9f06bfed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e99c0776_9dc3e623",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-19T17:56:49Z",
+      "side": 1,
+      "message": "that works too: INT_TO_FP(0) \u003d\u003d 0 \u003c\u003c 16 \u003d\u003d 0.",
+      "parentUuid": "c9ae6393_4d70d9a7",
+      "range": {
+        "startLine": 120,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 30
+      },
+      "revId": "20ca5ea6f277af05d14d17dd9239508b9f06bfed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
