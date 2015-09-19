@@ -22,6 +22,30 @@
       "revId": "bb49f3ca7dd6d7eb057958ecbfb88ecde82cf9a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29bd3fca_68090733",
+        "filename": "board/glados/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-19T00:14:46Z",
+      "side": 1,
+      "message": "The EC is not using it. If the AP wants it, it will set frequency and sampling_frequency sysfs paramter to use it.\nBMI160 does not have a compass. You need to add one (BMM150 or AKM8975 for instance).",
+      "parentUuid": "29bd3fca_d6a802c2",
+      "range": {
+        "startLine": 494,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 3
+      },
+      "revId": "bb49f3ca7dd6d7eb057958ecbfb88ecde82cf9a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
