@@ -34,6 +34,24 @@
       "revId": "55c942f030e464d2b4f61ec10b13ed08698bae70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69c3b75a_943bdd98",
+        "filename": "common/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-19T00:57:25Z",
+      "side": 1,
+      "message": "I agree this is not efficient.\nHowever, do run gpio_config_module() on the data path?\nIf not, that should be fine: less code and less cut\u0026paste.",
+      "parentUuid": "49c27358_fd0f9b61",
+      "revId": "55c942f030e464d2b4f61ec10b13ed08698bae70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
