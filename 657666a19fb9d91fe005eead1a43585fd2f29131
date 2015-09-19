@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c9ae6393_92620c9b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-19T00:12:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9b7a7e1_220d74b2",
+      "range": {
+        "startLine": 707,
+        "startChar": 0,
+        "endLine": 709,
+        "endChar": 41
+      },
+      "revId": "657666a19fb9d91fe005eead1a43585fd2f29131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9b7a7e1_02f870e7",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-18T18:26:49Z",
       "side": 1,
       "message": "\"USB PD partner\" ?\nor just remove it, assume if Partner caps shows below, we are good. (can rename it :PD partner caps ...\")",
+      "range": {
+        "startLine": 3954,
+        "startChar": 5,
+        "endLine": 3955,
+        "endChar": 31
+      },
+      "revId": "657666a19fb9d91fe005eead1a43585fd2f29131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69dad736_a62427f1",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3955,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-19T00:12:06Z",
+      "side": 1,
+      "message": "removed as suggested",
+      "parentUuid": "e9b7a7e1_02f870e7",
       "range": {
         "startLine": 3954,
         "startChar": 5,
