@@ -272,7 +272,7 @@ void syscall_handler(int desched, task_id_t resched, int swirq)
 
 task_ *next_sched_task(void)
 {
-	return __task_id_to_ptr(31 - __builtin_clz(tasks_ready));
+	return __task_id_to_ptr(LOG2(tasks_ready));
 }
 
 static inline void __schedule(int desched, int resched, int swirq)
@@ -453,7 +453,7 @@ void mutex_unlock(struct mutex *mtx)
 	mtx->lock = 0;
 
 	while (waiters) {
-		task_id_t id = 31 - __builtin_clz(waiters);
+		task_id_t id = LOG2(waiters);
 
 		/* Somebody is waiting on the mutex */
 		task_set_event(id, TASK_EVENT_MUTEX, 0);

@@ -77,7 +77,10 @@
 /* True of x is a power of two */
 #define POWER_OF_TWO(x) (x && !(x & (x - 1)))
 
-/**
+/* find the most significant bit, equivalent to a log2 */
+#define LOG2(n) (31 - __builtin_clz(n))
+
+/*
  * macros for integer division with various rounding variants
  * default integer division rounds down.
  */
