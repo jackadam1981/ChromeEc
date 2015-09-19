@@ -65,8 +65,8 @@ void process_timers(int overflow)
 			/* read atomically the current state of timer running */
 			check_timer = running_t0 = timer_running;
 			while (check_timer) {
-				int tskid = 31 - __builtin_clz(check_timer);
 
+				int tskid = get_next_bit(&check_timer);
 				/* timer has expired ? */
 				if (timer_deadline[tskid].val <= now.val)
 					expire_timer(tskid);
@@ -75,8 +75,6 @@ void process_timers(int overflow)
 					 (timer_deadline[tskid].le.lo <
 					  next.le.lo))
 					next.val = timer_deadline[tskid].val;
-
-				check_timer &= ~(1 << tskid);
 			}
 		/* if there is a new timer, let's retry */
 		} while (timer_running & ~running_t0);
