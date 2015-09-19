@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9ae6393_4d70d9a7",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-19T15:23:38Z",
+      "side": 1,
+      "message": "comparing a fp_t to 0 seems questionable if the code is using fixed point",
+      "range": {
+        "startLine": 120,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 30
+      },
+      "revId": "20ca5ea6f277af05d14d17dd9239508b9f06bfed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
