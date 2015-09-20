@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e99c0776_fd29524c",
+        "filename": "common/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-20T13:47:24Z",
+      "side": 1,
+      "message": "I\u0027m mildly enthusiastic about adding a (useless) function call in one of the hottest path of the system.\nOn cortex M3/M4, the original sequence was about 3 instructions, adding the 2 jump/link is a significant overhead.",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 28
+      },
+      "revId": "05ae73e0c72a938e721473bdc942bf805519761f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c91663dc_cc23cfe7",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-20T13:47:24Z",
+      "side": 1,
+      "message": "ditto for performance",
+      "range": {
+        "startLine": 539,
+        "startChar": 2,
+        "endLine": 539,
+        "endChar": 39
+      },
+      "revId": "05ae73e0c72a938e721473bdc942bf805519761f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
