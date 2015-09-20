@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c91663dc_6c1963b3",
+        "filename": "common/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-20T17:15:35Z",
+      "side": 1,
+      "message": "I first try inline, but it increase the code size.\nHowever, setting check_timer here save an instruction, but I get a compilation error on some arch:\n\n  CC      RO/common/timer.o\n/tmp/ccSmZfcU.s: Assembler messages:\n/tmp/ccSmZfcU.s:625: Error: lo register required -- `bic r3,r3,ip\u0027\nMakefile.rules:244: recipe for target \u0027build/oak/RO/common/timer.o\u0027 failed\n\nreverted.",
+      "parentUuid": "e99c0776_fd29524c",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 28
+      },
+      "revId": "05ae73e0c72a938e721473bdc942bf805519761f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c91663dc_cc23cfe7",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-20T13:47:24Z",
       "side": 1,
       "message": "ditto for performance",
+      "range": {
+        "startLine": 539,
+        "startChar": 2,
+        "endLine": 539,
+        "endChar": 39
+      },
+      "revId": "05ae73e0c72a938e721473bdc942bf805519761f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "692bb717_f543f8dc",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-20T17:15:35Z",
+      "side": 1,
+      "message": "move waiters next to this code: we save a mov to r0 in the main loop:\n\n 8000be2:       2701            movs    r7, #1\n 8000be4:       b17e            cbz     r6, 8000c06 \u003cmutex_unlock+0x32\u003e\n 8000be6:       fab6 f486       clz     r4, r6\n 8000bea:       f1c4 041f       rsb     r4, r4, #31\n 8000bee:       b2e4            uxtb    r4, r4\n 8000bf0:       4620            mov     r0, r4\n 8000bf2:       f04f 4180       mov.w   r1, #1073741824 ; 0x40000000\n 8000bf6:       2200            movs    r2, #0\n 8000bf8:       f7ff feda       bl      80009b0 \u003ctask_set_event\u003e\n 8000bfc:       fa07 f304       lsl.w   r3, r7, r4\n 8000c00:       ea26 0603       bic.w   r6, r6, r3\n\n\nbecomes:\n 8000be2:       2601            movs    r6, #1\n 8000be4:       b175            cbz     r5, 8000c04 \u003cmutex_unlock+0x30\u003e\n 8000be6:       fab5 f085       clz     r0, r5\n 8000bea:       f1c0 001f       rsb     r0, r0, #31\n 8000bee:       b2c0            uxtb    r0, r0\n 8000bf0:       fa06 f300       lsl.w   r3, r6, r0\n 8000bf4:       f04f 4180       mov.w   r1, #1073741824 ; 0x40000000\n 8000bf8:       2200            movs    r2, #0\n 8000bfa:       ea25 0503       bic.w   r5, r5, r3\n 8000bfe:       f7ff fed7       bl      80009b0 \u003ctask_set_event\u003e",
+      "parentUuid": "c91663dc_cc23cfe7",
       "range": {
         "startLine": 539,
         "startChar": 2,
