@@ -214,19 +214,11 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	case SI114X_ALS_IN_PROGRESS:
 		if (s->type == MOTIONSENSE_TYPE_PROX)
 			data->state = SI114X_ALS_IN_PROGRESS_PS_PENDING;
-#if 0
-		else
-			CPRINTS("Invalid state");
-#endif
 		ret = EC_ERROR_BUSY;
 		break;
 	case SI114X_PS_IN_PROGRESS:
 		if (s->type == MOTIONSENSE_TYPE_LIGHT)
 			data->state = SI114X_PS_IN_PROGRESS_ALS_PENDING;
-#if 0
-		else
-			CPRINTS("Invalid state");
-#endif
 		ret = EC_ERROR_BUSY;
 		break;
 	case SI114X_IDLE:

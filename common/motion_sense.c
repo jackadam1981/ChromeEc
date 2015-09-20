@@ -612,6 +612,19 @@ void motion_sense_task(void)
 #endif
 #ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
 		if (event & CONFIG_GESTURE_TAP_EVENT) {
+#ifdef CONFIG_ALS_LIGHTBAR_DIMMING
+			struct motion_sensor_t *light =
+				&motion_sensors[CONFIG_ALS_LIGHTBAR_DIMMING];
+			/* measure light first */
+			motion_sense_read(light);
+
+			/* In S0/S3, the light is periodically scan, so we have
+			 * value data in the light sensor strucure.
+			 * On S5, on interrupt based sensor, read has trigger a
+			 * read. By the time the light bar is ready sending the
+			 * sequeence we will have valid results.
+			 */
+#endif
 			CPRINTS("double tap!");
 			lightbar_sequence(LIGHTBAR_TAP);
 		}

@@ -24,6 +24,7 @@
 #include "i2c.h"
 #include "inductive_charging.h"
 #include "lid_switch.h"
+#include "lightbar.h"
 #include "motion_sense.h"
 #include "power.h"
 #include "power_button.h"
@@ -451,6 +452,18 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+struct lb_brighness_def lb_brighness_levels[] = {
+	{
+		.lux = 20,
+		.brightness = 25,
+	},
+	{
+		.lux = 40,
+		.brightness = 50,
+	},
+};
+const unsigned int lb_brighness_levels_count = ARRAY_SIZE(lb_brighness_levels);
 
 int extpower_is_present(void)
 {

@@ -34,6 +34,22 @@ enum lb_control {
 	LB_CONT_MAX
 };
 
+#ifdef CONFIG_ALS_LIGHTBAR_DIMMING
+/*
+ * For dimming the lightbar in the dark, we define an array to
+ * describe the expected brightness:
+ * if luminosity is less then 'lux', the brightness coefficient will be
+ * 'brightness'. If luminosity is higher than all elements, brightness is 0xff.
+ */
+struct lb_brighness_def {
+	uint16_t lux;
+	uint16_t brightness;
+};
+
+extern struct lb_brighness_def lb_brighness_levels[];
+extern const unsigned lb_brighness_levels_count;
+#endif
+
 /* Request a preset sequence from the lightbar task. */
 void lightbar_sequence_f(enum lightbar_sequence num, const char *f);
 #define lightbar_sequence(A) lightbar_sequence_f(A, __func__)

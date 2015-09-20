@@ -166,6 +166,7 @@
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
+#define CONFIG_ALS_LIGHTBAR_DIMMING 3
 
 /* Size of FIFO queue is determined by Android Hifi sensor requirements:
  * Wake up sensors: Accel @50Hz + Barometer @5Hz + uncal mag @ 10Hz
