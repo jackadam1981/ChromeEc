@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "099a3b78_0727a479",
+        "filename": "common/timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-20T03:20:10Z",
+      "side": 1,
+      "message": "use get_next_bit, removing online of case.",
+      "parentUuid": "e99c0776_5d87beda",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 34
+      },
+      "revId": "dbf8abf8a855d498a89a610ec8ff8789f58f2c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69dad736_094ecc58",
         "filename": "common/util.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-19T21:58:12Z",
       "side": 1,
       "message": "we want ffs() here (first bit set)\nthat\u0027s not a log2",
+      "range": {
+        "startLine": 368,
+        "startChar": 11,
+        "endLine": 368,
+        "endChar": 16
+      },
+      "revId": "dbf8abf8a855d498a89a610ec8ff8789f58f2c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9ae6393_ad8df5b7",
+        "filename": "common/util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-20T03:20:10Z",
+      "side": 1,
+      "message": "added __fls.",
+      "parentUuid": "69dad736_094ecc58",
       "range": {
         "startLine": 368,
         "startChar": 11,
