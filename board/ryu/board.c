@@ -25,6 +25,7 @@
 #include "i2c.h"
 #include "inductive_charging.h"
 #include "lid_switch.h"
+#include "lightbar.h"
 #include "motion_sense.h"
 #include "power.h"
 #include "power_button.h"
@@ -454,6 +455,40 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+struct lb_brighness_def lb_brighness_levels[] = {
+	{
+		/* regular brightness */
+		.lux = 40,
+		.color = {
+			{0x74, 0x58, 0xb4},	/* Segment0: Google blue */
+			{0xd6, 0x40, 0x20},	/* Segment1: Google red */
+			{0xfa, 0xe6, 0x20},	/* Segment2: Google yellow */
+			{0x66, 0xb0, 0x50},	/* Segment3: Google green */
+		},
+	},
+	{
+		/* 25 - 50% brightness */
+		.lux = 20,
+		.color = {
+			{0x51, 0x38, 0x7D},
+			{0x99, 0x28, 0x15},
+			{0xB8, 0x9E, 0x1A},
+			{0x44, 0x80, 0x35},
+		},
+	},
+	{
+		/* 0 .. 25% brightness */
+		.lux = 0,
+		.color = {
+			{0x3D, 0x28, 0x5C},
+			{0x71, 0x28, 0x10},
+			{0x8A, 0x6F, 0x10},
+			{0x2F, 0x60, 0x25},
+		},
+	},
+};
+const unsigned int lb_brighness_levels_count = ARRAY_SIZE(lb_brighness_levels);
 
 int extpower_is_present(void)
 {
