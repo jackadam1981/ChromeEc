@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "29f7ffe2_2604d81f",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2015-09-21T09:40:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4447ba3e_b2da1853",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 46
+      },
+      "revId": "a33d037e46f6dd44eba223f20018be26ceb18789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c453aafb_d3840696",
         "filename": "chip/it83xx/hwtimer.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-16T20:56:15Z",
       "side": 1,
       "message": "If I\u0027m understanding, you\u0027re using a separate 32-bit timer (at 8 MHz) to interrupt on an event timeout.\n\nWhat happens if deadline is more than (1\u003c\u003c29) usec in the future?  That is, if \n\n(deadline - __hw_clock_source_read()) \u003e (0xffffffff \u003e\u003e 3)\n\nThen we can\u0027t actually set the deadline as far ahead as we need.  In that case, it seems like we should set the timer to 0xffffffff, so that we wait as long as possible.\n\nIn practice, this is a minor issue, because HOOK_TICK fires at 4 Hz \u003d 250000 usec.\n\nBut maybe safer to \n\nuint32_t wait \u003d deadline - __hw_clock_source_read()\n\nEXTCNTLR \u003d wait \u003c (0xffffffff \u003e\u003e SHIFT) ? wait : 0xffffffff",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 32
+      },
+      "revId": "a33d037e46f6dd44eba223f20018be26ceb18789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69cf379f_55276c4a",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2015-09-21T09:40:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c453aafb_d3840696",
       "range": {
         "startLine": 124,
         "startChar": 0,
