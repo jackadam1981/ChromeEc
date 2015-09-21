@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9e887f8_1127cc79",
+        "filename": "board/ryu/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-21T21:52:11Z",
+      "side": 1,
+      "message": "looking into this more, in theory, vbus could go high before pd_set_vconn() is called, in which case we will never turn on vconn. i don\u0027t know if this is really realistic, but may want to consider immediately turning on vconn here if vbus is already high.",
+      "range": {
+        "startLine": 205,
+        "startChar": 2,
+        "endLine": 205,
+        "endChar": 27
+      },
+      "revId": "dce82564988814b0ebaeb391600056abc1b293d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
