@@ -191,11 +191,19 @@ static inline int pd_adc_read(int port, int cc)
 		return adc_read_channel(ADC_CC2_PD);
 }
 
+/* record we need to switch on VCONN */
+extern int delayed_vconn;
+
 static inline void pd_set_vconn(int port, int polarity, int enable)
 {
-	/* Set VCONN on the opposite CC line from the polarity */
-	gpio_set_level(polarity ? GPIO_USBC_VCONN1_EN_L :
-				  GPIO_USBC_VCONN2_EN_L, !enable);
+	if (!enable) { /* shutdown VCONN immediatly */
+		delayed_vconn = -1;
+		/* Set VCONN on the opposite CC line from the polarity */
+		gpio_set_level(polarity ? GPIO_USBC_VCONN1_EN_L :
+					  GPIO_USBC_VCONN2_EN_L, 1);
+	} else { /* record to turn it on later when VBUS appears */
+		delayed_vconn = polarity;
+	}
 }
 
 #endif /* __USB_PD_CONFIG_H */
