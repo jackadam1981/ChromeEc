@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29de1f5b_8b670d5c",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-21T21:24:32Z",
+      "side": 1,
+      "message": "in the case of connection established, vbus is high, and then we turn off vconn and turn it back on, then when vbus transitions low, this code will turn on vconn.\n\ni think this is safer:\n/* if delayed_vconn set and vbus transitions high, then enabled vconn */\nif (delayed_vconn \u003e\u003d 0 \u0026\u0026 vbus_level)\n\tgpio_set_level(delayed_vconn ? GPIO_USBC_VCONN1_EN_L : GPIO_USBC_VCONN2_EN_L, 0);\n\n/* Always clear delayed_vconn whenever vbus transitions */\ndelayed_vconn \u003d -1;",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "96c5e5e1a8752e57e7fc0d374da274373c5a1702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
