@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89470bec_04867a06",
+        "filename": "board/ryu/usb_pd_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-21T22:26:31Z",
+      "side": 1,
+      "message": "shouldn\u0027t need this :), either enable is 0, in which case delayed_vconn is already -1, or VBUS is high, in which case, the next time vbus_evt can fire will be on a high to low transition, and the interrupt function already clears delayed_vconn on a high to low transition.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 21
+      },
+      "revId": "c5d7c9ab7c11d92d3f349c905ea6dfab6a843a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
