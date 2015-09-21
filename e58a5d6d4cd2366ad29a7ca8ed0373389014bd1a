@@ -22,6 +22,30 @@
       "revId": "e58a5d6d4cd2366ad29a7ca8ed0373389014bd1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9e887f8_f10c48b7",
+        "filename": "board/ryu/usb_pd_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-21T22:17:08Z",
+      "side": 1,
+      "message": "you are such a perfectionist ...\nI thought about race but concluded it doesn\u0027t worth effort.\nFine your solution is better, let\u0027s do it.",
+      "parentUuid": "c90823ae_d79fe699",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 2
+      },
+      "revId": "e58a5d6d4cd2366ad29a7ca8ed0373389014bd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
