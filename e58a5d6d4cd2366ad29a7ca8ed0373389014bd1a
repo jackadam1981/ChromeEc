@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c90823ae_d79fe699",
+        "filename": "board/ryu/usb_pd_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-21T22:12:22Z",
+      "side": 1,
+      "message": "there is actually a tiny hole here, if we enable vconn and vbus is low, we drop down to the else case. but, if the vbus interrupt occurs before we set delayed_vconn, then we will miss our chance to set vconn. so, i think we actually want:\n\n/* record to turn it on later when VBUS appears */\ndelayed_vconn \u003d enable ? polarity : -1;\n\n/* Never turn on VCONN before seeing VBUS */\nif (!enable || gpio_get_level(CHGR_ACOK))\n\t/* Set VCONN on the opposite CC line from the polarity */\n\tgpio_set_level(polarity ? GPIO_USBC_VCONN1_EN_L :\n\t\t\t\t  GPIO_USBC_VCONN2_EN_L, !enable);",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 2
+      },
+      "revId": "e58a5d6d4cd2366ad29a7ca8ed0373389014bd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
