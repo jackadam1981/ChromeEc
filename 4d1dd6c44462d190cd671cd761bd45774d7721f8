@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a9404fd4_1fe24342",
+        "filename": "board/ultima/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1117540
+      },
+      "writtenOn": "2015-09-21T03:02:40Z",
+      "side": 1,
+      "message": "I refer firmware-glimmer-5216.198.B/board/glimmer/led.c",
+      "parentUuid": "69dad736_11243c8b",
+      "revId": "4d1dd6c44462d190cd671cd761bd45774d7721f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "099a3b78_db781f8c",
         "filename": "board/ultima/led.c",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "e936c76e_8146fa18",
+        "filename": "board/ultima/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1117540
+      },
+      "writtenOn": "2015-09-21T03:02:40Z",
+      "side": 1,
+      "message": "I rename ac to blink_ticks,the power led should blink three times if AC is present.",
+      "parentUuid": "099a3b78_db781f8c",
+      "range": {
+        "startLine": 137,
+        "startChar": 9,
+        "endLine": 138,
+        "endChar": 8
+      },
+      "revId": "4d1dd6c44462d190cd671cd761bd45774d7721f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29bd3fca_5c4fb130",
         "filename": "chip/mec1322/config_chip.h",
         "patchSetId": 3
@@ -53,6 +95,24 @@
       "writtenOn": "2015-09-18T17:20:06Z",
       "side": 1,
       "message": "This is the wrong approach. There shouldn\u0027t be \"#ifdef BOARD*\" in chip-level code. You can undef / redefine DEFERRABLE_MAX_COUNT in board.h. See board/samus/board.h for an example.",
+      "revId": "4d1dd6c44462d190cd671cd761bd45774d7721f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a90befa7_ad2c29c8",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1117540
+      },
+      "writtenOn": "2015-09-21T03:02:40Z",
+      "side": 1,
+      "message": "It\u0027s done by following board/samus/board.h",
+      "parentUuid": "29bd3fca_5c4fb130",
       "revId": "4d1dd6c44462d190cd671cd761bd45774d7721f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
