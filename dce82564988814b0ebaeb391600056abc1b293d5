@@ -22,6 +22,30 @@
       "revId": "dce82564988814b0ebaeb391600056abc1b293d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89470bec_c1d64486",
+        "filename": "board/ryu/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-21T21:56:27Z",
+      "side": 1,
+      "message": "the case where VBUS would go high fast enough to be up before calling pd_set_vconn should never happen on Ryu (where VBUS boost is taking 20ms to 30ms to turn on).\n\nWe still have the manual sequence where we turn VCONN using host command which would be broken here.",
+      "parentUuid": "e9e887f8_1127cc79",
+      "range": {
+        "startLine": 205,
+        "startChar": 2,
+        "endLine": 205,
+        "endChar": 27
+      },
+      "revId": "dce82564988814b0ebaeb391600056abc1b293d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
