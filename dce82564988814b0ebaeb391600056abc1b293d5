@@ -46,6 +46,30 @@
       "revId": "dce82564988814b0ebaeb391600056abc1b293d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "495193a7_82a59e83",
+        "filename": "board/ryu/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-21T22:12:22Z",
+      "side": 1,
+      "message": "there is no host command right now to manually toggle vconn. there is a host command to do a vconn swap, but dingdong should reject that. in any case, still seems more correct to immediately turn on vconn if vbus is already high.",
+      "parentUuid": "89470bec_c1d64486",
+      "range": {
+        "startLine": 205,
+        "startChar": 2,
+        "endLine": 205,
+        "endChar": 27
+      },
+      "revId": "dce82564988814b0ebaeb391600056abc1b293d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
