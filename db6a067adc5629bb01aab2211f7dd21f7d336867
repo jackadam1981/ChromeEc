@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c98bc36e_1ae25abf",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-22T22:19:17Z",
+      "side": 1,
+      "message": "on most (laptop) boards, we are already saving/restoring spi1_vref which is an alias for ec_boot_mode.\nmaybe we need to remove it above.",
+      "range": {
+        "startLine": 287,
+        "startChar": 15,
+        "endLine": 287,
+        "endChar": 31
+      },
+      "revId": "db6a067adc5629bb01aab2211f7dd21f7d336867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
