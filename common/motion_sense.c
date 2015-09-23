@@ -1052,6 +1052,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		   MOTION_SENSE_ACTIVITY_SENSOR_ID)
 			return EC_RES_INVALID_PARAM;
 		mask = CONFIG_GESTURE_DETECTION_MASK;
+		ret = EC_RES_SUCCESS;
 		while (mask && ret == EC_RES_SUCCESS) {
 			i = get_next_bit(&mask);
 			sensor = &motion_sensors[i];
