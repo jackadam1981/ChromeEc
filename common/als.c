@@ -48,7 +48,10 @@ void als_task(void)
 
 static void als_task_enable(void)
 {
-	task_timeout = ALS_POLL_PERIOD;
+	if (als_state == ALS_SENSOR_INIT_ERROR)
+		task_timeout = -1;
+	else
+		task_timeout = ALS_POLL_PERIOD;
 	task_wake(TASK_ID_ALS);
 }
 
@@ -57,7 +60,7 @@ static void als_task_disable(void)
 	task_timeout = -1;
 }
 
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, als_task_enable, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, als_task_enable, HOOK_PRIO_ALS_INIT + 1);
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, als_task_disable, HOOK_PRIO_DEFAULT);
 
 /*****************************************************************************/

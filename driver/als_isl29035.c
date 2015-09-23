@@ -5,8 +5,10 @@
  * Intersil ILS29035 light sensor driver
  */
 
+#include "als.h"
 #include "driver/als_isl29035.h"
 #include "common.h"
+#include "console.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "timer.h"
@@ -23,15 +25,28 @@
 #define ILS29035_REG_INT_HT_MSB 7
 #define ILS29035_REG_ID         15
 
+#define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
+
+enum als_sensor_state als_state = ALS_SENSOR_INIT_ERROR;
+
 static void isl29035_init(void)
 {
+	int rv;
+
 	/*
 	 * Tell it to read continually. This uses 70uA, as opposed to nearly
 	 * zero, but it makes the hook/update code cleaner (we don't want to
 	 * wait 90ms to read on demand while processing hook callbacks).
 	 */
-	(void)i2c_write8(I2C_PORT_ALS, ILS29035_I2C_ADDR,
+	rv = i2c_write8(I2C_PORT_ALS, ILS29035_I2C_ADDR,
 			 ILS29035_REG_COMMAND_I, 0xa0);
+
+	if (rv) {
+		CPRINTF("ALS configure failed: rv=%d\n", rv);
+		return;
+	}
+
+	als_state = ALS_SENSOR_INITIALIZED;
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, isl29035_init, HOOK_PRIO_DEFAULT);
 

@@ -8,8 +8,17 @@
 
 #include "common.h"
 
+/* Priority for ALS HOOK int */
+#define HOOK_PRIO_ALS_INIT (HOOK_PRIO_DEFAULT + 1)
+
 /* Defined in board.h */
 enum als_id;
+
+/* ALS sensor states */
+enum als_sensor_state {
+	ALS_SENSOR_INITIALIZED,
+	ALS_SENSOR_INIT_ERROR
+};
 
 /* Initialized in board.c */
 struct als_t {
@@ -18,6 +27,7 @@ struct als_t {
 	int attenuation_factor;
 };
 
+extern enum als_sensor_state als_state;
 extern struct als_t als[];
 
 /**

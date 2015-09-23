@@ -5,6 +5,7 @@
  * TI OPT3001 light sensor driver
  */
 
+#include "als.h"
 #include "driver/als_opt3001.h"
 #include "common.h"
 #include "console.h"
@@ -13,6 +14,8 @@
 #include "timer.h"
 
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
+
+enum als_sensor_state als_state = ALS_SENSOR_INIT_ERROR;
 
 /**
  *  Read register from OPT3001 light sensor.
@@ -69,10 +72,14 @@ static void opt3001_init(void)
 	 * [4]    : 1b    Latched window-style comparison operation
 	 */
 	ret = opt3001_i2c_write(OPT3001_REG_CONFIGURE, 0x5C10);
-	if (ret)
+	if (ret) {
 		CPRINTF("ALS configure failed: ret=%d\n", ret);
+		return;
+	}
+
+	als_state = ALS_SENSOR_INITIALIZED;
 }
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, opt3001_init, HOOK_PRIO_DEFAULT + 1);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, opt3001_init, HOOK_PRIO_ALS_INIT);
 
 /**
  * Read OPT3001 light sensor data.
