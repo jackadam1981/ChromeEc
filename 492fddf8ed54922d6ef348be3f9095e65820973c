@@ -22,6 +22,30 @@
       "revId": "492fddf8ed54922d6ef348be3f9095e65820973c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e1f3d55_b5752092",
+        "filename": "include/config_std_internal_flash.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-23T22:29:58Z",
+      "side": 1,
+      "message": "I moved it up, but I don\u0027t think I can \"#undef IMAGE_SIZE\". meta-macro expansion will occur only when the macro is found in text. So, for example:\n\n#define TEST \"test\"\n#define TEST2 TEST\n...\nprintf(TEST2);\n\nTEST2 will first expand to TEST, which will then expand to \"test\". If TEST is undef\u0027d right before the printf, TEST2 will expand to TEST, which isn\u0027t a valid symbol.\n\nIs there a trick / hack to make this work?",
+      "parentUuid": "691737fc_bbc78fd2",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "492fddf8ed54922d6ef348be3f9095e65820973c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
