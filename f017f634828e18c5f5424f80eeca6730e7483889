@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "691737fc_984e19ac",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-23T01:03:40Z",
+      "side": 1,
+      "message": "For SuzyQ, we hard-code the type-C supplier to 3A:\nif (new_cc_state \u003d\u003d PD_CC_DEBUG_ACC) {\n  ...\n  typec_set_input_current_limit(port, 3000, TYPE_C_VOLTAGE);\n  ...\n}\n\nSo I believe with this change, it will only work with a 3A charger, otherwise it will over-current the charger.",
+      "parentUuid": "4916f301_d77fbea3",
+      "range": {
+        "startLine": 866,
+        "startChar": 6,
+        "endLine": 866,
+        "endChar": 39
+      },
+      "revId": "f017f634828e18c5f5424f80eeca6730e7483889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "891c6b20_b90e7b3c",
         "filename": "include/charge_manager.h",
         "patchSetId": 1
