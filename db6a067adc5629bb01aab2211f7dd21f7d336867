@@ -22,6 +22,30 @@
       "revId": "db6a067adc5629bb01aab2211f7dd21f7d336867",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4916f301_97370618",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-23T00:46:03Z",
+      "side": 1,
+      "message": "yes, looking into it, i think spi1_vref can be removed now. it looks like that signal is also sometimes aliased into a uart_vref, but since we don\u0027t change any uart_vref signals in this file, we shouldn\u0027t have to restore it.\n\ni\u0027ll make the change and re-test on a few boards",
+      "parentUuid": "c98bc36e_1ae25abf",
+      "range": {
+        "startLine": 287,
+        "startChar": 15,
+        "endLine": 287,
+        "endChar": 31
+      },
+      "revId": "db6a067adc5629bb01aab2211f7dd21f7d336867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
