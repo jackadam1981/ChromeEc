@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a905afc4_77a990c3",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-23T00:55:47Z",
+      "side": 1,
+      "message": "maybe for the sake of speed, I should skip this read as most of the bits are not changing \n(the only writable/variable one is CONV_START which is only used in the debug command)",
+      "range": {
+        "startLine": 847,
+        "startChar": 1,
+        "endLine": 847,
+        "endChar": 72
+      },
+      "revId": "f017f634828e18c5f5424f80eeca6730e7483889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4916f301_d77fbea3",
+        "filename": "board/ryu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-23T00:55:47Z",
+      "side": 1,
+      "message": "That\u0027s not so great for SuzyQ where the ICO was useful and now disabled",
+      "range": {
+        "startLine": 866,
+        "startChar": 6,
+        "endLine": 866,
+        "endChar": 39
+      },
+      "revId": "f017f634828e18c5f5424f80eeca6730e7483889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "891c6b20_b90e7b3c",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-23T00:55:47Z",
+      "side": 1,
+      "message": "I haven\u0027t updated other boards and tests using this API",
+      "range": {
+        "startLine": 78,
+        "startChar": 42,
+        "endLine": 78,
+        "endChar": 55
+      },
+      "revId": "f017f634828e18c5f5424f80eeca6730e7483889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
