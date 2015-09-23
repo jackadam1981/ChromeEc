@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "691737fc_bbc78fd2",
+        "filename": "include/config_std_internal_flash.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-23T17:44:06Z",
+      "side": 1,
+      "message": "Move this up one paragraph? I like to see things defined before they\u0027re used.\n\nAnd then #undef it at the bottom of the file.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "492fddf8ed54922d6ef348be3f9095e65820973c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
