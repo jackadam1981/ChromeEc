@@ -83,10 +83,8 @@ int opt3001_read_lux(int *lux, int af)
 	int data;
 
 	ret = opt3001_i2c_read(OPT3001_REG_RESULT, &data);
-	if (ret) {
-		CPRINTF("ALS read failed: ret=%d\n", ret);
+	if (ret)
 		return ret;
-	}
 
 	/*
 	 * The default power-on values will give 12 bits of precision:
