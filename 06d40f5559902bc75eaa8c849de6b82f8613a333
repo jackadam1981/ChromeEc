@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09aebbf9_f84e2933",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-23T19:21:33Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 12,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "06d40f5559902bc75eaa8c849de6b82f8613a333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4916f301_9d59e701",
+        "filename": "common/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-23T19:21:33Z",
+      "side": 1,
+      "message": "other source files dedicated to command have the _commands suffix",
+      "range": {
+        "startLine": 74,
+        "startChar": 31,
+        "endLine": 74,
+        "endChar": 40
+      },
+      "revId": "06d40f5559902bc75eaa8c849de6b82f8613a333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4916f301_3d49b32a",
+        "filename": "common/spi_xfer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-23T19:21:33Z",
+      "side": 1,
+      "message": "argv[2] --\u003e EC_ERROR_PARAM2\nargv[3] --\u003e EC_ERROR_PARAM4\none of them is probably incorrect",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "06d40f5559902bc75eaa8c849de6b82f8613a333",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
