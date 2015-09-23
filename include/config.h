@@ -773,7 +773,6 @@
 /*****************************************************************************/
 /* Firmware region configuration */
 
-#undef CONFIG_FW_IMAGE_SIZE
 #undef CONFIG_FW_PSTATE_OFF
 #undef CONFIG_FW_PSTATE_SIZE
 
