@@ -1058,6 +1058,9 @@ static uint32_t sequence_TAP(void)
 	/* Which direction should the power meter go? */
 	dir = get_tap_direction();
 
+	/* First clear all segments */
+	lb_set_rgb(NUM_LEDS, 0, 0, 0);
+
 #ifdef CONFIG_LIGHTBAR_POWER_RAILS
 	/* Request that the lightbar power rails be turned on. */
 	if (lb_power(1)) {
