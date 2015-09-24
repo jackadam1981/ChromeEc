@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e2e2591_4eec133c",
+        "filename": "board/ryu/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-24T14:31:48Z",
+      "side": 1,
+      "message": "I think this might cause problems for kernel. charge_manager converts this to USB_CHG_TYPE_OTHER, which isn\u0027t handled in the switch statement in get_ec_usb_pd_power_info(). I\u0027m not sure the end result. Did you verify that healthd is ok and the charge icon comes on?\n\nIf it is causing a problem, CHARGE_SUPPLIER_VBUS might be better.",
+      "range": {
+        "startLine": 45,
+        "startChar": 30,
+        "endLine": 45,
+        "endChar": 51
+      },
+      "revId": "08db13a7d2c8f669a0725b8c28bb1b78f92c8416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
