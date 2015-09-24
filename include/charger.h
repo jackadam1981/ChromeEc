@@ -115,5 +115,9 @@ int charger_set_option(int option);
 /* Print all charger info for debugging purposes */
 void print_charger_debug(void);
 
+#ifdef CONFIG_CHARGER_PSYS
+int charger_get_system_power(void);
+#endif
+
 #endif /* __CROS_EC_CHARGER_H */
 
