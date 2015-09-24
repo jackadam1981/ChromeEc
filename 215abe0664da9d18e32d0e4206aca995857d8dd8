@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae5bf53d_ea7ba785",
+        "filename": "driver/battery/ryu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000182
+      },
+      "writtenOn": "2015-09-24T00:57:34Z",
+      "side": 1,
+      "message": "Just a nit for future -can we give these ranges slightly better better names like TEMP_RANGE_LT_MIN, TEMP_RANGE_GT_MAX, TEMP_RANGE_HOT, TEMP_RANGE_NORMAL, TEMP_RANGE_COLD.",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 14
+      },
+      "revId": "215abe0664da9d18e32d0e4206aca995857d8dd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
