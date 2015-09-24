@@ -22,6 +22,30 @@
       "revId": "08db13a7d2c8f669a0725b8c28bb1b78f92c8416",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee616dea_cfa7d18a",
+        "filename": "board/ryu/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-24T15:46:34Z",
+      "side": 1,
+      "message": "I have just re-tested, the charging icon is fine,\nand healthd seems happy :\nhealthd: battery l\u003d100 v\u003d4316 t\u003d25.1 h\u003d2 st\u003d5 c\u003d0 chg\u003da 2015-09-24 15:43:57.059687902 UTC\n\n# fwtool ec usbpdpower                                           \nPort 0: SNK Charger CDP 4929mV / 1700mA, max 5000mV / 2400mA / 12000mW\n\n# cat /sys/class/power_supply/CROS_USB_PD_CHARGER0/type          \nMains",
+      "parentUuid": "2e2e2591_4eec133c",
+      "range": {
+        "startLine": 45,
+        "startChar": 30,
+        "endLine": 45,
+        "endChar": 51
+      },
+      "revId": "08db13a7d2c8f669a0725b8c28bb1b78f92c8416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
