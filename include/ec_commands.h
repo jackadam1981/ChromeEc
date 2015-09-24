@@ -2909,6 +2909,26 @@ struct ec_params_external_power_limit_v1 {
 #define EC_POWER_LIMIT_NONE 0xffff
 
 /*****************************************************************************/
+/* Hibernate/Deep Sleep Commands */
+
+/*
+ * Set the delay before going into hibernation.  Note: Hibernation is specific
+ * to the LM4 EC.
+ */
+#define EC_CMD_HIBERNATION_DELAY 0xa3
+
+struct ec_params_hibernation_delay {
+	uint32_t seconds; /* No-op if 0 */
+};
+
+struct ec_response_hibernation_delay {
+	uint32_t time_g3;
+	uint32_t time_remaining;
+	uint32_t hibernate_delay;
+};
+
+
+/*****************************************************************************/
 /* Smart battery pass-through */
 
 /* Get / Set 16-bit smart battery registers */
