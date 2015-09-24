@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e52b121_8c4d6b60",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-24T19:39:30Z",
+      "side": 1,
+      "message": "If it belongs anywhere, the only-update-if-changed logic belongs in charger_set_mode. You\u0027re making the assumption that inhibit mode on the charger is controlled entirely by the EC, and won\u0027t be enabled or disabled by other means than the EC controlling it. I don\u0027t think you can make this assumption for every charger IC. I\u0027m not even sure you can make the assumption for _any_ charger IC -- what if the IC resets for some reason and the registers go back to power-on default?",
+      "revId": "73b61225ccb3e7822c4da1eeeb39f0e747901949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee86cdd4_8758ca22",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-24T19:39:30Z",
+      "side": 1,
+      "message": "The changes in this file have nothing to do with your CL description.",
+      "revId": "73b61225ccb3e7822c4da1eeeb39f0e747901949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
