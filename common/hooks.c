@@ -51,6 +51,7 @@ static const struct hook_ptrs hook_list[] = {
 /* Times for deferrable functions */
 static uint64_t defer_until[DEFERRABLE_MAX_COUNT];
 static int defer_new_call;
+static int hook_task_started;
 
 void hook_notify(enum hook_type type)
 {
@@ -116,7 +117,8 @@ int hook_call_deferred(void (*routine)(void), int us)
 		 */
 		defer_new_call = 1;
 		/* Wake task so it can re-sleep for the proper time */
-		task_wake(TASK_ID_HOOKS);
+		if (hook_task_started)
+			task_wake(TASK_ID_HOOKS);
 	}
 
 	return EC_SUCCESS;
@@ -127,6 +129,8 @@ void hook_task(void)
 	/* Periodic hooks will be called first time through the loop */
 	static uint64_t last_second = -SECOND;
 	static uint64_t last_tick = -HOOK_TICK_INTERVAL;
+
+	hook_task_started = 1;
 
 	while (1) {
 		uint64_t t = get_time().val;
