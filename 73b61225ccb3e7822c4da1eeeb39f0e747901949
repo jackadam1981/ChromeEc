@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "2e470569_f7f0285b",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-24T20:02:01Z",
+      "side": 1,
+      "message": "How about this instead?\n\n- Store the last inhibit param sent to charger_set_mode (and possibly don\u0027t call charger_set_option() if it hasn\u0027t changed).\n- Compare the expected inhibit setting with the actual setting right here, and change it if different.",
+      "revId": "73b61225ccb3e7822c4da1eeeb39f0e747901949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee86cdd4_8758ca22",
         "filename": "driver/charger/bq24773.c",
         "patchSetId": 1
