@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "2e2e2591_d4253244",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2015-09-24T21:49:55Z",
+      "side": 1,
+      "message": "Initially I was thinking the same way, in charge_set_mode() to check inhibit bit. But this is not the only place to write to register option 0. Host command charge_command_charge_state() also write to option 0, and it calls charger_set_option() directly. This means inhibit bit can be changed without going through charge_set_mode(). Because of this, I moved the prev_chg_mode outside charger_set_mode().",
+      "parentUuid": "2e470569_f7f0285b",
+      "revId": "73b61225ccb3e7822c4da1eeeb39f0e747901949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee86cdd4_8758ca22",
         "filename": "driver/charger/bq24773.c",
         "patchSetId": 1
