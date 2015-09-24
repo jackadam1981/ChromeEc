@@ -33,6 +33,7 @@
 #define CONFIG_PWM_FAN
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_TEMP_SENSOR_G781
+#define CONFIG_TEMP_SENSOR_G781_INIT
 #define CONFIG_UART_HOST 2
 #define CONFIG_USB_PORT_POWER_DUMB
 #define CONFIG_WIRELESS
@@ -192,6 +193,10 @@ enum temp_sensor_id {
 
 	TEMP_SENSOR_COUNT
 };
+
+/* G781 sensor HW setting */
+#define G781_LOCAL_TEMP_HIGH_LIMIT_VALUE 63
+
 /**
  * LCD VCC enable interrupt.
  */

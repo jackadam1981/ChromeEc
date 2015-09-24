@@ -73,7 +73,8 @@ const struct gpio_info gpio_list[] = {
 	 uart_deepsleep_interrupt},
 
 	/* Other inputs */
-	{"FAN_ALERT_L",          LM4_GPIO_B, (1<<0), GPIO_INPUT, NULL},
+	{"FAN_ALERT_L",          LM4_GPIO_B, (1<<0), GPIO_INT_LOW,
+	 fan_alert_interrupt},
 	{"PCH_SUSWARN_L",        LM4_GPIO_G, (1<<2), GPIO_INT_BOTH, NULL},
 	{"USB1_OC_L",            LM4_GPIO_E, (1<<7), GPIO_INPUT, NULL},
 	{"USB2_OC_L",            LM4_GPIO_E, (1<<0), GPIO_INPUT, NULL},
