@@ -22,6 +22,30 @@
       "revId": "0b64a4a6855cf354beaac267c5ddcb9d04248837",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e5fa128_c4e1f206",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-24T23:40:34Z",
+      "side": 1,
+      "message": "Yes. The lightbar works better with power applied to it. ;-)",
+      "parentUuid": "2e2e2591_7f0417e0",
+      "range": {
+        "startLine": 1062,
+        "startChar": 0,
+        "endLine": 1062,
+        "endChar": 31
+      },
+      "revId": "0b64a4a6855cf354beaac267c5ddcb9d04248837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
