@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e2e2591_cb70f562",
+        "filename": "board/ryu/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-24T00:38:00Z",
+      "side": 1,
+      "message": "this is fragile and unreadable, maybe we need an enum for the indices of motion_sensors[] that we can use here?",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 58
+      },
+      "revId": "54f4a123ea1d5be506d91c74a5293fced1401c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce582944_e873b36c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-24T00:38:00Z",
+      "side": 1,
+      "message": "we typically explicitly add the type, \u0027int\u0027 here",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 36
+      },
+      "revId": "54f4a123ea1d5be506d91c74a5293fced1401c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e470569_030dceb1",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-24T00:38:00Z",
+      "side": 1,
+      "message": "can be simplified:\n\nif (sensor_ec_rate \u003d\u003d 0)\n  continue;\n\nif (ec_rate \u003d\u003d 0 || sensor_ec_rate \u003c ec_rate)\n  ec_rate \u003d sensor_ec_rate;\n\nif (ec_int_rate \u003d\u003d 0 || sensor_ec_rate \u003c ec_int_rate)\n  ec_int_rate \u003d sensor_ec_rate;",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 32
+      },
+      "revId": "54f4a123ea1d5be506d91c74a5293fced1401c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce582944_c8258f44",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-24T00:38:00Z",
+      "side": 1,
+      "message": "are you sure using time_after() is better? ts_end_task.val is a uint64_t and time_after() takes uint32\u0027s",
+      "range": {
+        "startLine": 643,
+        "startChar": 7,
+        "endLine": 644,
+        "endChar": 43
+      },
+      "revId": "54f4a123ea1d5be506d91c74a5293fced1401c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee86cdd4_6181f6c6",
+        "filename": "test/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-24T00:38:00Z",
+      "side": 1,
+      "message": "is this test reliably passing now or did you accidentally upload this file?",
+      "range": {
+        "startLine": 38,
+        "startChar": 26,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "54f4a123ea1d5be506d91c74a5293fced1401c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
