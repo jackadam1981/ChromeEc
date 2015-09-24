@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e2e2591_7f0417e0",
+        "filename": "common/lightbar.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-09-24T23:38:45Z",
+      "side": 1,
+      "message": "it seems this should be after the #ifdef below",
+      "range": {
+        "startLine": 1062,
+        "startChar": 0,
+        "endLine": 1062,
+        "endChar": 31
+      },
+      "revId": "0b64a4a6855cf354beaac267c5ddcb9d04248837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
