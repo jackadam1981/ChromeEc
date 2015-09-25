@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce582944_0f472642",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-25T18:38:30Z",
+      "side": 1,
+      "message": "You\u0027re actually storing the CHARGE_INHIBITED state, so I suggest to change prev_mode to something like prev_charge_inhibited.",
+      "revId": "4b0bf281463b37ed998bb90eef566d7f763c895a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee86cdd4_3b39d7a0",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-25T18:38:30Z",
+      "side": 1,
+      "message": "In theory this function takes a mask as a parameter (though we seem to only pass CHARGE_FLAG_INHIBIT_CHARGE to it). So let\u0027s check / compare the CHARGE_FLAG_INHIBIT_CHARGE bit.",
+      "revId": "4b0bf281463b37ed998bb90eef566d7f763c895a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e4d7d85_9168dfc1",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-25T18:38:30Z",
+      "side": 1,
+      "message": "Comment style here.",
+      "revId": "4b0bf281463b37ed998bb90eef566d7f763c895a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
