@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e4d7d85_e472afd8",
+        "filename": "include/gpio.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-25T20:26:31Z",
+      "side": 1,
+      "message": "Is this fair to do? Just needs to be some value that\u0027s not a port.",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "a58b709eecb853758587944644ba485cce2d0036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
