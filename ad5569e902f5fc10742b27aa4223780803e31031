@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae5bf53d_105d055f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2918,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-25T00:22:54Z",
+      "side": 1,
+      "message": "Are there any hard and fast rules about selecting a host command number? I pretty much said \"Oh hey look, some unused region with a small amount of room to grow!\".",
+      "range": {
+        "startLine": 2918,
+        "startChar": 33,
+        "endLine": 2918,
+        "endChar": 37
+      },
+      "revId": "ad5569e902f5fc10742b27aa4223780803e31031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
