@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee86cdd4_fb5daf87",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2916,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-25T20:10:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this is true. Maybe we only implemented hibernation delay for LM4?",
+      "range": {
+        "startLine": 2916,
+        "startChar": 10,
+        "endLine": 2916,
+        "endChar": 16
+      },
+      "revId": "fcf311ad69d82735a5e94ce074320658ebd80bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e52b121_2090b60d",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-25T20:10:22Z",
+      "side": 1,
+      "message": "I think you only have ~4000 seconds before time_g3 wraps due to the cast / divide. If the performance of 64 bit divide is bad, you can approximate with ((uint32_t)((get_time().val - last_shutdown_time) \u003e\u003e 20))",
+      "revId": "fcf311ad69d82735a5e94ce074320658ebd80bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e4d7d85_24bc47ef",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-25T20:10:22Z",
+      "side": 1,
+      "message": "I see it\u0027s from the code above, but time_remaining will awkwardly roll over if time_g3 \u003e hibernate_delay (such as if you just decreased hibernate_delay in this same host command). Maybe check for this case, and assign zero instead?",
+      "revId": "fcf311ad69d82735a5e94ce074320658ebd80bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
