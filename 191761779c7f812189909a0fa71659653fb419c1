@@ -16,6 +16,24 @@
       "revId": "191761779c7f812189909a0fa71659653fb419c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee616dea_9568c7c1",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2015-09-25T18:18:33Z",
+      "side": 1,
+      "message": "Even we avoid most i2c write, we only decrease almost half of the option 0 register i2c operations. Still a lot more than patch 2 does. Also, if i2c read return garbage value, it can give wrong inhibit bit value. This will cause us write back with garbage value.\nsince charger_set_option() is the only place to write to option 0, it\u0027s sure prev_mode stores the genuine value of inhibit bit. This can minimize read/write operation. It\u0027s safer. We did test with this also. If possible, I will suggest we go with patch 2.",
+      "parentUuid": "ee616dea_c39faac4",
+      "revId": "191761779c7f812189909a0fa71659653fb419c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
