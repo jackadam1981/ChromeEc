@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee616dea_c39faac4",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-25T00:11:59Z",
+      "side": 1,
+      "message": "Instead of storing prev_mode, how about we only call charger_set_option if we\u0027re changing the inhibit bit (skip charger_set_option if option is unchanged). Then, a normal call to charger_set_mode will consist of one read, instead of one read + one write.. which isn\u0027t as good as skipping everything, but it\u0027s much less hacky. We can leave in the read-twice code, but please add a comment in the code about it.",
+      "revId": "191761779c7f812189909a0fa71659653fb419c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
