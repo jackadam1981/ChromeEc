@@ -381,6 +381,33 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	hibernate(seconds, microseconds, HIBDATA_WAKE_PIN);
 }
 
+static void alert_hibernate(void)
+{
+	uint32_t hibctl;
+
+	/* Set up wake reasons and hibernate flags */
+	hibctl = LM4_HIBERNATE_HIBCTL;
+
+	hibctl &= ~ LM4_HIBCTL_PINWEN;
+
+	hibctl |=LM4_HIBCTL_RTCWEN;
+
+	wait_for_hibctl_wc();
+	LM4_HIBERNATE_HIBCTL = hibctl;
+
+	/* Store hibernate flags */
+	hibdata_write(HIBDATA_INDEX_WAKE, 0);
+
+	__enter_hibernate(hibctl | LM4_HIBCTL_HIBREQ);
+}
+
+void alert_system_hibernate(void)
+{
+	/* Flush console before hibernating */
+	cflush();
+	alert_hibernate();
+}
+
 void system_pre_init(void)
 {
 	uint32_t hibctl;
