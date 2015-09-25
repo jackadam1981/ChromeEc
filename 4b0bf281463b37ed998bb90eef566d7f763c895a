@@ -68,6 +68,24 @@
       "revId": "4b0bf281463b37ed998bb90eef566d7f763c895a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e2e2591_c5fb3ee4",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-25T19:16:16Z",
+      "side": 1,
+      "message": "\"/*\" Alone on the first line for multi-line comments.",
+      "parentUuid": "ee616dea_551feff1",
+      "revId": "4b0bf281463b37ed998bb90eef566d7f763c895a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
