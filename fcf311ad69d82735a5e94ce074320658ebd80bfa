@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2e470569_d6276591",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2916,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-25T22:50:23Z",
+      "side": 1,
+      "message": "Ah, I think you\u0027re right. It looks like some of the stm32 boards do too. Hmm, I\u0027m not sure where I got that from. I\u0027ll remove the note.",
+      "parentUuid": "ee86cdd4_fb5daf87",
+      "range": {
+        "startLine": 2916,
+        "startChar": 10,
+        "endLine": 2916,
+        "endChar": 16
+      },
+      "revId": "fcf311ad69d82735a5e94ce074320658ebd80bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e52b121_2090b60d",
         "filename": "power/common.c",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "2e2e2591_74d9d95c",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-25T22:50:23Z",
+      "side": 1,
+      "message": "Ah, this is a good point. I guess I could change time_g3 and time_remaining to be 64-bit.",
+      "parentUuid": "8e52b121_2090b60d",
+      "revId": "fcf311ad69d82735a5e94ce074320658ebd80bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e4d7d85_24bc47ef",
         "filename": "power/common.c",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2015-09-25T20:10:22Z",
       "side": 1,
       "message": "I see it\u0027s from the code above, but time_remaining will awkwardly roll over if time_g3 \u003e hibernate_delay (such as if you just decreased hibernate_delay in this same host command). Maybe check for this case, and assign zero instead?",
+      "revId": "fcf311ad69d82735a5e94ce074320658ebd80bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e52b121_dbbd57eb",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-09-25T22:50:23Z",
+      "side": 1,
+      "message": "Okay, I\u0027ll have it return 0 instead.",
+      "parentUuid": "6e4d7d85_24bc47ef",
       "revId": "fcf311ad69d82735a5e94ce074320658ebd80bfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
