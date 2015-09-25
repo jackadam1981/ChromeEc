@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e470569_60e7cba7",
+        "filename": "common/temp_sensor_g781.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-25T16:36:51Z",
+      "side": 1,
+      "message": "Just call temp_sensor_g781_init_deferred() right here once, on the first call (also, I think there\u0027s no need for temp_sensor_g781_init_deferred() to be a deferred function if you call it right here).",
+      "revId": "941291e74e9ded85d000a596ef81d71734dc191c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
