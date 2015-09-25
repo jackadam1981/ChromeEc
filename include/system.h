@@ -260,6 +260,15 @@ int system_set_vbnvcontext(const uint8_t *block);
  */
 void system_hibernate(uint32_t seconds, uint32_t microseconds);
 
+/**
+ * Put the EC in hibernate and not support wake up only for G781 temp sensor
+ * alarm.
+ *
+ * Note although the name is similar, EC hibernate is NOT the same as chipset
+ * S4/hibernate.
+ */
+void alert_system_hibernate(void);
+
 /* Minimum duration to get proper hibernation */
 #define SYSTEM_HIB_MINIMUM_DURATION 0, 150000
 
