@@ -22,6 +22,76 @@
       "revId": "ad5569e902f5fc10742b27aa4223780803e31031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce582944_1df4ff8d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2918,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-09-25T15:55:53Z",
+      "side": 1,
+      "message": "Sadly, no, there aren\u0027t any real rules.  Usually, look for some related commands and hope there\u0027s room next to them.\n\nMaybe make this 0xa8, so there\u0027s a bit of space to add more power commands (0xa0-0xa3 are all related).\n\nIf we\u0027re adding a bunch of commands for something, we can use the full 16-bit address space and add a new group up there, like we did for PD.",
+      "parentUuid": "ae5bf53d_105d055f",
+      "range": {
+        "startLine": 2918,
+        "startChar": 33,
+        "endLine": 2918,
+        "endChar": 37
+      },
+      "revId": "ad5569e902f5fc10742b27aa4223780803e31031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee616dea_32ddb1f8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2921,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-09-25T15:55:53Z",
+      "side": 1,
+      "message": "Verbose is good:\n\n/* Seconds to wait in G3 before hibernate.  Pass 0 to read the current settings without changing them. */",
+      "range": {
+        "startLine": 2921,
+        "startChar": 1,
+        "endLine": 2921,
+        "endChar": 35
+      },
+      "revId": "ad5569e902f5fc10742b27aa4223780803e31031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e4c398b_99f7e74f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2927,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-09-25T15:55:53Z",
+      "side": 1,
+      "message": "Should comment what these are.  This is effectively the interface document.",
+      "range": {
+        "startLine": 2925,
+        "startChar": 1,
+        "endLine": 2927,
+        "endChar": 26
+      },
+      "revId": "ad5569e902f5fc10742b27aa4223780803e31031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
