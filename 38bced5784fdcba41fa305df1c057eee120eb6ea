@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e4c398b_2467a7ef",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2930,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-25T23:21:56Z",
+      "side": 1,
+      "message": "I think it\u0027s best to use uint32_t for these, as you had before. 4 billion seconds ought to be enough for anybody.",
+      "revId": "38bced5784fdcba41fa305df1c057eee120eb6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee616dea_462503ec",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-25T23:21:56Z",
+      "side": 1,
+      "message": "If you go back to uint32_t types, this can be uint32_t also.",
+      "revId": "38bced5784fdcba41fa305df1c057eee120eb6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
