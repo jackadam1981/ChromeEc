@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee86cdd4_8d30e41e",
+        "filename": "board/wheatley/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-26T21:53:48Z",
+      "side": 1,
+      "message": "Does not compile. Only NPCX_ADC_INPUT_CHx define and x is between 0 and 2 only.",
+      "revId": "c121a3287c2917cf2abed497bd22371fabea6474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
