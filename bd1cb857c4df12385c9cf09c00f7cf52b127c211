@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce582944_a8ded03e",
+        "filename": "driver/charger/isl9237.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-26T00:44:10Z",
+      "side": 0,
+      "message": "Behzad is contacting ISL to confirm this change.\nIf PSYS gain is 0 in CONTROL2 REGISTER 0x3DH, current Gain is 1.44uA/W, we are changing it to 1uA/W.",
+      "revId": "bd1cb857c4df12385c9cf09c00f7cf52b127c211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
