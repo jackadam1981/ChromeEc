@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e4d7d85_c2c8c337",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-09-26T00:32:38Z",
+      "side": 1,
+      "message": "Might as well divide by 1000000.  This isn\u0027t going to get called frequently enough to matter.",
+      "range": {
+        "startLine": 571,
+        "startChar": 4,
+        "endLine": 571,
+        "endChar": 43
+      },
+      "revId": "5cb455ddae9f2ed817471fe1fa1f34196f439a25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
