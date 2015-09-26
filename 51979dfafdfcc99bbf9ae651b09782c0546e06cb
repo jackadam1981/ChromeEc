@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e2e2591_3758f36e",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-09-26T00:50:30Z",
+      "side": 1,
+      "message": "Macro args should be encapsulated in () to protect against order-of-operations - for example, GET_FIELD(x, y+1, z) expands this portion as reg\u003e\u003ey + 1, not reg\u003e\u003e(y+1)\n\n#define _GET_FIELD_(reg, f_pos, f_size) (((reg)\u003e\u003e(f_pos)) \u0026 ((1\u003c\u003c(f_size))-1))\n\nSame for SET_FIELD below.",
+      "range": {
+        "startLine": 32,
+        "startChar": 42,
+        "endLine": 32,
+        "endChar": 52
+      },
+      "revId": "51979dfafdfcc99bbf9ae651b09782c0546e06cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
