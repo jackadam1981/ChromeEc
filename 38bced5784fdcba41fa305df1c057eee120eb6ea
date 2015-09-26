@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4e4c398b_ffe47818",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2930,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-09-26T00:27:03Z",
+      "side": 1,
+      "message": "But that\u0027s only 128 years...\n\n(Yes, let\u0027s keep same units for all 3 of these.  Since delay is in seconds, that implies the others should be too.)",
+      "parentUuid": "4e4c398b_2467a7ef",
+      "revId": "38bced5784fdcba41fa305df1c057eee120eb6ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee616dea_462503ec",
         "filename": "power/common.c",
         "patchSetId": 3
