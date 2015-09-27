@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "ce582944_e873a823",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-27T00:01:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce582944_e873b36c",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 36
+      },
+      "revId": "54f4a123ea1d5be506d91c74a5293fced1401c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e470569_030dceb1",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2015-09-24T00:38:00Z",
       "side": 1,
       "message": "can be simplified:\n\nif (sensor_ec_rate \u003d\u003d 0)\n  continue;\n\nif (ec_rate \u003d\u003d 0 || sensor_ec_rate \u003c ec_rate)\n  ec_rate \u003d sensor_ec_rate;\n\nif (ec_int_rate \u003d\u003d 0 || sensor_ec_rate \u003c ec_int_rate)\n  ec_int_rate \u003d sensor_ec_rate;",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 32
+      },
+      "revId": "54f4a123ea1d5be506d91c74a5293fced1401c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e5fa128_856d31d2",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-27T00:01:26Z",
+      "side": 1,
+      "message": "Done\nAlso added _ms to ec_int_rate to avoid unit confusion.",
+      "parentUuid": "2e470569_030dceb1",
       "range": {
         "startLine": 279,
         "startChar": 0,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "0e5fa128_65623de0",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-27T00:01:26Z",
+      "side": 1,
+      "message": "use .lo instead of .val. Using int32t is fine, we still have \u003e1h before overlapping.",
+      "parentUuid": "ce582944_c8258f44",
+      "range": {
+        "startLine": 643,
+        "startChar": 7,
+        "endLine": 644,
+        "endChar": 43
+      },
+      "revId": "54f4a123ea1d5be506d91c74a5293fced1401c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee86cdd4_6181f6c6",
         "filename": "test/build.mk",
         "patchSetId": 1
@@ -105,6 +177,30 @@
       "writtenOn": "2015-09-24T00:38:00Z",
       "side": 1,
       "message": "is this test reliably passing now or did you accidentally upload this file?",
+      "range": {
+        "startLine": 38,
+        "startChar": 26,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "54f4a123ea1d5be506d91c74a5293fced1401c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e4c398b_7f13e8d5",
+        "filename": "test/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-09-27T00:01:26Z",
+      "side": 1,
+      "message": "With your fixes, I can not reproduce the issue.",
+      "parentUuid": "ee86cdd4_6181f6c6",
       "range": {
         "startLine": 38,
         "startChar": 26,
