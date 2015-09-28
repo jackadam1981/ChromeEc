@@ -22,7 +22,7 @@ static uint8_t exti_events[16];
 void gpio_pre_init(void)
 {
 	const struct gpio_info *g = gpio_list;
-	int is_warm = gpio_is_reboot_warm();
+	int is_warm = system_is_reboot_warm();
 	int i;
 
 	/* Required to configure external IRQ lines (SYSCFG_EXTICRn) */
