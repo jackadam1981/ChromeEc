@@ -210,6 +210,30 @@
       "revId": "54f4a123ea1d5be506d91c74a5293fced1401c54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee86cdd4_e3c501c6",
+        "filename": "test/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-09-28T21:24:59Z",
+      "side": 1,
+      "message": "ok, great. i would still make enabling this test a separate CL. not really related and might need to be reverted.",
+      "parentUuid": "4e4c398b_7f13e8d5",
+      "range": {
+        "startLine": 38,
+        "startChar": 26,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "54f4a123ea1d5be506d91c74a5293fced1401c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
