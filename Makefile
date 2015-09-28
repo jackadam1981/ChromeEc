@@ -40,7 +40,7 @@ PROJECT?=ec
 out?=build/$(BOARD)
 
 # File containing configuration information
-config=$(out)/.config
+config=$(out)/make.config $(out)/c.config
 
 # If no key file is provided, use the default dev key
 PEM ?= $(BDIR)/dev_key.pem
@@ -165,19 +165,18 @@ ro-deps := $(ro-objs:%.o=%.o.d)
 rw-deps := $(rw-objs:%.o=%.o.d)
 deps := $(ro-deps) $(rw-deps)
 
-.PHONY: ro rw
-$(config): $(out)/$(PROJECT).bin
-	@printf '%s=y\n' $(_tsk_cfg) $(_flag_cfg) > $@
+%/make.config:
+	@printf '%s=y\n' $(_tsk_cfg) $(_flag_cfg) | sort > $@
 
-def_all_deps:=utils ro rw $(config) $(PROJECT_EXTRA)
+def_all_deps:=utils $(out)/$(PROJECT).bin $(PROJECT_EXTRA) $(config)
 all_deps?=$(def_all_deps)
 all: $(all_deps)
 
 ro: override BLD:=RO
-ro: $(libsharedobjs_elf-y) $(out)/RO/$(PROJECT).RO.flat
+ro: $(libsharedobjs_elf-y) $(out)/RO/$(PROJECT).RO.flat $(out)/RO/c.config
 
 rw: override BLD:=RW
-rw: $(libsharedobjs_elf-y) $(out)/RW/$(PROJECT).RW.flat
+rw: $(libsharedobjs_elf-y) $(out)/RW/$(PROJECT).RW.flat $(out)/RW/c.config
 
 # Shared objects library
 SHOBJLIB := libsharedobjs
