@@ -1094,6 +1094,16 @@
 /* Presence of a Bosh Sensortec BMM150 magnetometer behind a BMI160. */
 #undef CONFIG_MAG_BMI160_BMM150
 
+/*
+ * Smooth magnetometer input:
+ * If defined the number of samples a given sample have effect on.
+ *
+ * It is defined in the axis of the compass, before device rotation.
+ */
+#undef CONFIG_MAG_X_SMOOTH_SAMPLES
+#undef CONFIG_MAG_Y_SMOOTH_SAMPLES
+#undef CONFIG_MAG_Z_SMOOTH_SAMPLES
+
 /* Support MKBP event */
 #undef CONFIG_MKBP_EVENT
 
