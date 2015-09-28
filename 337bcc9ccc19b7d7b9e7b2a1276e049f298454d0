@@ -16,6 +16,24 @@
       "revId": "337bcc9ccc19b7d7b9e7b2a1276e049f298454d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e2e2591_4dce5099",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2015-09-28T17:50:38Z",
+      "side": 1,
+      "message": "It is only needed in one place which is the while loop in spi_flash_write(). So, I will move the wait back there and remove it from here.",
+      "parentUuid": "ee86cdd4_edcbb0a8",
+      "revId": "337bcc9ccc19b7d7b9e7b2a1276e049f298454d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
