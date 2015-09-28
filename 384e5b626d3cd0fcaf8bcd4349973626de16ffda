@@ -33,6 +33,24 @@
       "revId": "384e5b626d3cd0fcaf8bcd4349973626de16ffda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae5bf53d_1fd8698c",
+        "filename": "board/kunimitsu/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-09-28T20:32:29Z",
+      "side": 1,
+      "message": "For FAB3, it is NC but for FAB4, it is alternate function defined at the end of this file. it is still conditional.",
+      "parentUuid": "8e52b121_0395c1fd",
+      "revId": "384e5b626d3cd0fcaf8bcd4349973626de16ffda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
