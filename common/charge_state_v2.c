@@ -62,6 +62,7 @@ static int battery_was_removed;
 
 static int problems_exist;
 static int debugging;
+static int state_of_charge;
 static int fake_state_of_charge = -1;
 
 
@@ -239,7 +240,7 @@ static void update_dynamic_battery_info(void)
 
 	if (curr.batt.is_present == BP_YES &&
 	    !(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
-	    curr.batt.state_of_charge <= BATTERY_LEVEL_CRITICAL)
+	    state_of_charge <= BATTERY_LEVEL_CRITICAL)
 		tmp |= EC_BATT_FLAG_LEVEL_CRITICAL;
 
 	tmp |= curr.batt_is_charging ? EC_BATT_FLAG_CHARGING :
@@ -284,7 +285,7 @@ static void dump_charge_state(void)
 	ccprintf("batt.*:\n");
 	ccprintf("\ttemperature = %dC\n",
 		 DECI_KELVIN_TO_CELSIUS(curr.batt.temperature));
-	DUMP_BATT(state_of_charge, "%d%%");
+	ccprintf("\tstate_of_charge = %d%%\n", state_of_charge);
 	DUMP_BATT(voltage, "%dmV");
 	DUMP_BATT(current, "%dmA");
 	DUMP_BATT(desired_voltage, "%dmV");
@@ -320,12 +321,12 @@ static void show_charging_progress(void)
 
 	if (rv)
 		CPRINTS("Battery %d%% / ??h:?? %s%s",
-			curr.batt.state_of_charge,
+			state_of_charge,
 			to_full ? "to full" : "to empty",
 			is_full ? ", not accepting current" : "");
 	else
 		CPRINTS("Battery %d%% / %dh:%d %s%s",
-			curr.batt.state_of_charge,
+			state_of_charge,
 			minutes / 60, minutes % 60,
 			to_full ? "to full" : "to empty",
 			is_full ? ", not accepting current" : "");
@@ -347,7 +348,7 @@ static int calc_is_full(void)
 
 	/* If bad state of charge reading, return last value */
 	if (curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE ||
-	    curr.batt.state_of_charge > 100)
+	    state_of_charge > 100)
 		return ret;
 	/*
 	 * Battery is full when SoC is above 90% and battery desired current
@@ -355,7 +356,7 @@ static int calc_is_full(void)
 	 * the SoC still reports <100%, so we need to check desired current
 	 * to know if it is actually full.
 	 */
-	ret = (curr.batt.state_of_charge >= 90 &&
+	ret = (state_of_charge >= 90 &&
 	       curr.batt.desired_current == 0);
 	return ret;
 }
@@ -449,7 +450,7 @@ static inline int battery_too_hot(int batt_temp_c)
 static inline int battery_too_low(void)
 {
 	return ((!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
-		 curr.batt.state_of_charge < BATTERY_LEVEL_SHUTDOWN) ||
+		 state_of_charge < BATTERY_LEVEL_SHUTDOWN) ||
 		(!(curr.batt.flags & BATT_FLAG_BAD_VOLTAGE) &&
 		 curr.batt.voltage <= batt_info->voltage_min));
 }
@@ -476,7 +477,7 @@ static void shutdown_on_critical_battery(void)
 
 	if (battery_too_low() && !curr.batt_is_charging) {
 		CPRINTS("Low battery: %d%%, %dmV",
-			curr.batt.state_of_charge, curr.batt.voltage);
+			state_of_charge, curr.batt.voltage);
 		battery_critical = 1;
 	}
 
@@ -521,11 +522,11 @@ static void notify_host_of_low_battery(void)
 	if (curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE)
 		return;
 
-	if (curr.batt.state_of_charge <= BATTERY_LEVEL_LOW &&
+	if (state_of_charge <= BATTERY_LEVEL_LOW &&
 	    prev_charge > BATTERY_LEVEL_LOW)
 		host_set_single_event(EC_HOST_EVENT_BATTERY_LOW);
 
-	if (curr.batt.state_of_charge <= BATTERY_LEVEL_CRITICAL &&
+	if (state_of_charge <= BATTERY_LEVEL_CRITICAL &&
 	    prev_charge > BATTERY_LEVEL_CRITICAL)
 		host_set_single_event(EC_HOST_EVENT_BATTERY_CRITICAL);
 }
@@ -616,7 +617,7 @@ void charger_task(void)
 
 		/* Fake state of charge if necessary */
 		if (fake_state_of_charge >= 0) {
-			curr.batt.state_of_charge = fake_state_of_charge;
+			state_of_charge = fake_state_of_charge;
 			curr.batt.flags &= ~BATT_FLAG_BAD_STATE_OF_CHARGE;
 		}
 
@@ -634,9 +635,9 @@ void charger_task(void)
 		}
 
 		/* If the battery thinks it's above 100%, don't believe it */
-		if (curr.batt.state_of_charge > 100) {
+		if (state_of_charge > 100) {
 			CPRINTS("ignoring ridiculous batt.soc of %d%%",
-				curr.batt.state_of_charge);
+				state_of_charge);
 			curr.batt.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
 		}
 
@@ -730,7 +731,7 @@ void charger_task(void)
 			 */
 			if (curr.requested_voltage == 0 &&
 			    curr.requested_current == 0 &&
-			    curr.batt.state_of_charge == 0) {
+			    state_of_charge == 0) {
 				/* Battery is dead, give precharge current */
 				curr.requested_voltage =
 					batt_info->voltage_max;
@@ -794,10 +795,10 @@ wait_for_it:
 		/* And the EC console */
 		is_full = calc_is_full();
 		if ((!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
-		    curr.batt.state_of_charge != prev_charge) ||
+		    state_of_charge != prev_charge) ||
 		    (is_full != prev_full)) {
 			show_charging_progress();
-			prev_charge = curr.batt.state_of_charge;
+			prev_charge = state_of_charge;
 			hook_notify(HOOK_BATTERY_SOC_CHANGE);
 		}
 		prev_full = is_full;
@@ -887,7 +888,7 @@ int charge_want_shutdown(void)
 {
 	return (curr.state == ST_DISCHARGE) &&
 		!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
-		(curr.batt.state_of_charge < BATTERY_LEVEL_SHUTDOWN);
+		(state_of_charge < BATTERY_LEVEL_SHUTDOWN);
 }
 
 int charge_prevent_power_on(void)
@@ -903,11 +904,16 @@ int charge_prevent_power_on(void)
 	if (current_batt_params->is_present == BP_NOT_SURE) {
 		battery_get_params(&params);
 		current_batt_params = &params;
+
+		/* Fake state of charge if necessary */
+		if (fake_state_of_charge >= 0) {
+			state_of_charge = fake_state_of_charge;
+			curr.batt.flags &= ~BATT_FLAG_BAD_STATE_OF_CHARGE;
+		}
 	}
 	/* Require a minimum battery level to power on */
 	if (current_batt_params->is_present != BP_YES ||
-	    current_batt_params->state_of_charge <
-	    CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
+	    state_of_charge < CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
 		prevent_power_on = 1;
 
 	/*
@@ -931,7 +937,7 @@ enum charge_state charge_get_state(void)
 		return PWR_STATE_DISCHARGE;
 	case ST_CHARGE:
 		/* The only difference here is what the LEDs display. */
-		if (curr.batt.state_of_charge >= BATTERY_LEVEL_NEAR_FULL)
+		if (state_of_charge >= BATTERY_LEVEL_NEAR_FULL)
 			return PWR_STATE_CHARGE_NEAR_FULL;
 		else
 			return PWR_STATE_CHARGE;
@@ -963,7 +969,7 @@ int charge_get_percent(void)
 	 * to the battery, that'll be zero, which is probably as good as
 	 * anything.
 	 */
-	return is_full ? 100 : curr.batt.state_of_charge;
+	return is_full ? 100 : state_of_charge;
 }
 
 int charge_temp_sensor_get_val(int idx, int *temp_ptr)
@@ -1068,7 +1074,7 @@ static int charge_command_charge_state(struct host_cmd_handler_args *args)
 		out->get_state.chg_voltage = curr.chg.voltage;
 		out->get_state.chg_current = curr.chg.current;
 		out->get_state.chg_input_current = curr.chg.input_current;
-		out->get_state.batt_state_of_charge = curr.batt.state_of_charge;
+		out->get_state.batt_state_of_charge = state_of_charge;
 		args->response_size = sizeof(out->get_state);
 		break;
 
