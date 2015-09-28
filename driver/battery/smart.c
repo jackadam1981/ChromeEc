@@ -386,6 +386,7 @@ int battery_wait_for_stable(void)
 	return EC_ERROR_TIMEOUT;
 }
 
+#ifndef CONFIG_CHARGER_V1
 static int command_battfake(int argc, char **argv)
 {
 	char *e;
@@ -409,6 +410,7 @@ DECLARE_CONSOLE_COMMAND(battfake, command_battfake,
 			"percent (-1 = use real level)",
 			"Set fake battery level",
 			NULL);
+#endif
 
 /*****************************************************************************/
 /* Smart battery pass-through
