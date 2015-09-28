@@ -585,61 +585,50 @@ static int ec_status_host_cmd(struct host_cmd_handler_args *args)
 	/* update battery soc */
 	board_update_battery_soc(p->batt_soc);
 
-	if (args->version == 1) {
-		if (p->charge_state != charge_state) {
-			switch (p->charge_state) {
-			case PD_CHARGE_NONE:
-				/*
-				 * No current allowed in, set new power request
-				 * so that PD negotiates down to vSafe5V.
-				 */
+	if (p->charge_state != charge_state) {
+		switch (p->charge_state) {
+		case PD_CHARGE_NONE:
+			/*
+			 * No current allowed in, set new power request
+			 * so that PD negotiates down to vSafe5V.
+			 */
+			charge_state = p->charge_state;
+			gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, 1);
+			gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, 1);
+			pd_set_new_power_request(
+				pd_status.active_charge_port);
+			/*
+			 * Wake charge ramp task so that it will check
+			 * board_is_vbus_too_low() and stop ramping up.
+			 */
+			task_wake(TASK_ID_CHG_RAMP);
+			CPRINTS("Chg: None");
+			break;
+		case PD_CHARGE_5V:
+			/* Allow current on the active charge port */
+			charge_state = p->charge_state;
+			gpio_set_level(GPIO_USB_C0_CHARGE_EN_L,
+				!(pd_status.active_charge_port == 0));
+			gpio_set_level(GPIO_USB_C1_CHARGE_EN_L,
+				!(pd_status.active_charge_port == 1));
+			CPRINTS("Chg: 5V");
+			break;
+		case PD_CHARGE_MAX:
+			/*
+			 * Allow negotiation above vSafe5V. Should only
+			 * ever get this command when 5V charging is
+			 * already allowed.
+			 */
+			if (charge_state == PD_CHARGE_5V) {
 				charge_state = p->charge_state;
-				gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, 1);
-				gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, 1);
 				pd_set_new_power_request(
 					pd_status.active_charge_port);
-				/*
-				 * Wake charge ramp task so that it will check
-				 * board_is_vbus_too_low() and stop ramping up.
-				 */
-				task_wake(TASK_ID_CHG_RAMP);
-				CPRINTS("Chg: None");
-				break;
-			case PD_CHARGE_5V:
-				/* Allow current on the active charge port */
-				charge_state = p->charge_state;
-				gpio_set_level(GPIO_USB_C0_CHARGE_EN_L,
-					!(pd_status.active_charge_port == 0));
-				gpio_set_level(GPIO_USB_C1_CHARGE_EN_L,
-					!(pd_status.active_charge_port == 1));
-				CPRINTS("Chg: 5V");
-				break;
-			case PD_CHARGE_MAX:
-				/*
-				 * Allow negotiation above vSafe5V. Should only
-				 * ever get this command when 5V charging is
-				 * already allowed.
-				 */
-				if (charge_state == PD_CHARGE_5V) {
-					charge_state = p->charge_state;
-					pd_set_new_power_request(
-						pd_status.active_charge_port);
-					CPRINTS("Chg: Max");
-				}
-				break;
-			default:
-				break;
+				CPRINTS("Chg: Max");
 			}
+			break;
+		default:
+			break;
 		}
-	} else {
-		/*
-		 * If the EC is using this command version, then it won't ever
-		 * set charging allowed, so we should just assume charging at
-		 * the max is allowed.
-		 */
-		charge_state = PD_CHARGE_MAX;
-		pd_set_new_power_request(pd_status.active_charge_port);
-		CPRINTS("Chg: Max");
 	}
 
 	*r = pd_status;
@@ -652,7 +641,7 @@ static int ec_status_host_cmd(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_PD_EXCHANGE_STATUS, ec_status_host_cmd,
-			EC_VER_MASK(0) | EC_VER_MASK(1));
+		     EC_VER_MASK(EC_VER_PD_EXCHANGE_STATUS));
 
 static int host_event_status_host_cmd(struct host_cmd_handler_args *args)
 {
