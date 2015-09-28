@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae5bf53d_bc0e0bb0",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-28T18:18:32Z",
+      "side": 1,
+      "message": "Shawn \u0026 Divya - This functions prints the one time error if the ALS init fails hence I think the debug print in opt3001_read_lux() can be removed.\nAlso we can even disable the ALS task if the ALS init fails.",
+      "revId": "92b00ee6b5b23da613dfd49847c759496256f417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
