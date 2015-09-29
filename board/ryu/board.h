@@ -151,6 +151,8 @@
 #define CONFIG_SPI_ACCEL_PORT    1  /* Second SPI master port */
 #define SPI_ACCEL_PORT_ID        1  /* stored at spi_ports[1] */
 
+#define CONFIG_SPI_ACCEL_PORT_DEBUG
+
 /* Sensor support */
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_GESTURE_DETECTION

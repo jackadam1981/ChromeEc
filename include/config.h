@@ -1478,6 +1478,9 @@
 /* Define the SPI port to use to access SPI accelerometer */
 #undef CONFIG_SPI_ACCEL_PORT
 
+/* To debug BMI160 SPI problem */
+#undef CONFIG_SPI_ACCEL_PORT_DEBUG
+
 /* Support SPI flash */
 #undef CONFIG_SPI_FLASH
 

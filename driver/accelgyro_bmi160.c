@@ -60,6 +60,17 @@ static int wakeup_time[] = {
 	[MOTIONSENSE_TYPE_MAG] = 1
 };
 
+#ifdef CONFIG_SPI_ACCEL_PORT_DEBUG
+struct spi_command {
+	uint8_t reg;
+	union {
+		uint8_t data;
+		uint8_t len;
+	};
+};
+struct queue last_cmds = QUEUE_NULL(128, struct spi_command);
+#endif
+
 static inline const struct accel_param_pair *get_range_table(
 		enum motionsensor_type type, int *psize)
 {
@@ -132,6 +143,17 @@ static inline int spi_raw_read(const int addr, const uint8_t reg, uint8_t *data,
 			       const int len)
 {
 	uint8_t cmd = 0x80 | reg;
+#ifdef CONFIG_SPI_ACCEL_PORT_DEBUG
+	struct spi_command cmd_collector;
+	struct spi_command saved_cmd = {
+		.reg = cmd,
+		.len = len
+	};
+
+	if (queue_is_full(&last_cmds))
+		queue_remove_unit(&last_cmds, &cmd_collector);
+	queue_add_unit(&last_cmds, &saved_cmd);
+#endif
 
 	return spi_transaction(&spi_devices[addr], &cmd, 1, data, len);
 }
@@ -169,6 +191,17 @@ static int raw_write8(const int addr, const uint8_t reg, int data)
 	if (BMI160_IS_SPI(addr)) {
 #ifdef CONFIG_SPI_ACCEL_PORT
 		uint8_t cmd[2] = { reg, data };
+#ifdef CONFIG_SPI_ACCEL_PORT_DEBUG
+		struct spi_command cmd_collector;
+		struct spi_command saved_cmd = {
+			.reg = reg,
+			.data = data
+		};
+
+		if (queue_is_full(&last_cmds))
+			queue_remove_unit(&last_cmds, &cmd_collector);
+		queue_add_unit(&last_cmds, &saved_cmd);
+#endif
 		rv = spi_transaction(&spi_devices[BMI160_SPI_ADDRESS(addr)],
 				     cmd, 2, NULL, 0);
 #endif
@@ -1079,6 +1112,9 @@ static int init(const struct motion_sensor_t *s)
 #endif
 		/* To avoid gyro wakeup */
 		raw_write8(s->addr, BMI160_PMU_TRIGGER, 0);
+#ifdef CONFIG_SPI_ACCEL_PORT_DEBUG
+		queue_init(&last_cmds);
+#endif
 	}
 
 	raw_write8(s->addr, BMI160_CMD_REG,
@@ -1201,3 +1237,25 @@ const struct accelgyro_drv bmi160_drv = {
 struct bmi160_drv_data_t g_bmi160_data = {
 	.flags = 0,
 };
+
+#ifdef CONFIG_SPI_ACCEL_PORT_DEBUG
+static int bmi160_last_cmds(int argc, char **argv)
+{
+	struct spi_command cmd;
+	while (!queue_is_empty(&last_cmds)) {
+		queue_remove_unit(&last_cmds, &cmd);
+		if (cmd.reg & 0x80)
+			ccprintf("Read: reg %02x - length %02x\n",
+				 cmd.reg & 0x7f, cmd.len);
+		else
+			ccprintf("Write: reg %02x - value %02x\n",
+				 cmd.reg & 0x7f, cmd.data);
+		cflush();
+	}
+	return 0;
+}
+
+DECLARE_CONSOLE_COMMAND(spilastcmd, bmi160_last_cmds,
+	"", "Read last commands sent to the sensor", NULL);
+
+#endif
