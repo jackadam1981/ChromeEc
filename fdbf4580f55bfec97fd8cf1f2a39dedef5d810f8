@@ -16,6 +16,24 @@
       "revId": "fdbf4580f55bfec97fd8cf1f2a39dedef5d810f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e52b121_77878f04",
+        "filename": "include/gpio.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-29T17:50:43Z",
+      "side": 1,
+      "message": "Sure I will move it and remove the comment",
+      "parentUuid": "ce582944_c00c344b",
+      "revId": "fdbf4580f55bfec97fd8cf1f2a39dedef5d810f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
