@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e52b121_97044be1",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-29T18:54:54Z",
+      "side": 1,
+      "message": "moving it to system.c",
+      "revId": "0c506c6736feadc354c1a9eb46238d3ea61a1e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f86a1765_4ded8ded",
+        "filename": "chip/stm32/gpio-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-29T18:54:54Z",
+      "side": 1,
+      "message": "moving it to system.c",
+      "revId": "0c506c6736feadc354c1a9eb46238d3ea61a1e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae5bf53d_c5879f02",
+        "filename": "chip/stm32/gpio-stm32f3.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-29T18:54:54Z",
+      "side": 1,
+      "message": "moving it to system.c",
+      "revId": "0c506c6736feadc354c1a9eb46238d3ea61a1e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e4c398b_05737ede",
+        "filename": "chip/stm32/gpio-stm32l.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-29T18:54:54Z",
+      "side": 1,
+      "message": "moving it to system.c",
+      "revId": "0c506c6736feadc354c1a9eb46238d3ea61a1e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
