@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce582944_c00c344b",
+        "filename": "include/gpio.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-29T16:30:38Z",
+      "side": 1,
+      "message": "Can you move this to system.h and change the comment? (I\u0027m not even sure what \"used by the GPIO implementation and should not be called outside of that context\" really means).",
+      "revId": "fdbf4580f55bfec97fd8cf1f2a39dedef5d810f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
