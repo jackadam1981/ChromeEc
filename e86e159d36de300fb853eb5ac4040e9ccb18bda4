@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce582944_09c2778f",
+        "filename": "common/als.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-30T00:37:47Z",
+      "side": 1,
+      "message": "Rather than having two resume hooks, how about we call the als init() function right here? And, we can modify the init() function to return success / fail, and proceed accordingly.",
+      "revId": "e86e159d36de300fb853eb5ac4040e9ccb18bda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15197672_96458ae2",
+        "filename": "driver/als_isl29035.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-30T00:37:47Z",
+      "side": 1,
+      "message": "Should this be HOOK_PRIO_ALS_INIT?",
+      "range": {
+        "startLine": 51,
+        "startChar": 49,
+        "endLine": 51,
+        "endChar": 66
+      },
+      "revId": "e86e159d36de300fb853eb5ac4040e9ccb18bda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
