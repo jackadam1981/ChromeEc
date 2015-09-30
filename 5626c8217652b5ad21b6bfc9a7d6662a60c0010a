@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1548969f_3baad7a2",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-30T02:02:10Z",
+      "side": 1,
+      "message": "A few questions:\n\n1. Why are we disabling psys at all? Why not leave it enabled?\n2. Why enable in S3-\u003eS0 (resume) but disable in S3-\u003eS5 (shutdown)? We should be consistent here.",
+      "revId": "5626c8217652b5ad21b6bfc9a7d6662a60c0010a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "953c86f3_1fd8a35d",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-30T02:02:10Z",
+      "side": 1,
+      "message": "No need for this param string, but you should write a help string.",
+      "revId": "5626c8217652b5ad21b6bfc9a7d6662a60c0010a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "953c86f3_9fe3130a",
+        "filename": "driver/charger/isl9237.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-09-30T02:02:10Z",
+      "side": 1,
+      "message": "I haven\u0027t read the datasheet and have no idea about these register settings, but the naming here is super confusing. Can you just define ISL9237_C2_PSYS_GAIN, ISL9237_C2_PSYS_GAIN_1_44 and ISL9237_C2_PSYS_GAIN_0_36 in board.h?",
+      "revId": "5626c8217652b5ad21b6bfc9a7d6662a60c0010a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
