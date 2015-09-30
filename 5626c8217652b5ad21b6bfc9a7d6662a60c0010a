@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "75439281_a45ec65d",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-30T20:08:41Z",
+      "side": 1,
+      "message": "I will change it to HOOK_CHIPSET_STARTUP",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 12
+      },
+      "revId": "5626c8217652b5ad21b6bfc9a7d6662a60c0010a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1548969f_3baad7a2",
         "filename": "driver/charger/isl9237.c",
         "patchSetId": 5
@@ -13,6 +36,24 @@
       "writtenOn": "2015-09-30T02:02:10Z",
       "side": 1,
       "message": "A few questions:\n\n1. Why are we disabling psys at all? Why not leave it enabled?\n2. Why enable in S3-\u003eS0 (resume) but disable in S3-\u003eS5 (shutdown)? We should be consistent here.",
+      "revId": "5626c8217652b5ad21b6bfc9a7d6662a60c0010a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5526a4f_1b56ffd4",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-30T20:08:41Z",
+      "side": 1,
+      "message": "Comments from Behzad:\n1. In battery only mode, turn off PSYS will turn on a lot macros inside of the IC to save power, for example, with PSYS disabled, the current consumption of the IC is around 20uA, while with PSYS enabled, the current consumption of the IC is around 1.3mA. \n2. We need to disable the PSYS when we are not providing power through all USB ports and IMVP is off (VGG, VCORE and VSA). This is in S5 and lower states.",
+      "parentUuid": "1548969f_3baad7a2",
       "revId": "5626c8217652b5ad21b6bfc9a7d6662a60c0010a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -47,6 +88,24 @@
       "writtenOn": "2015-09-30T02:02:10Z",
       "side": 1,
       "message": "I haven\u0027t read the datasheet and have no idea about these register settings, but the naming here is super confusing. Can you just define ISL9237_C2_PSYS_GAIN, ISL9237_C2_PSYS_GAIN_1_44 and ISL9237_C2_PSYS_GAIN_0_36 in board.h?",
+      "revId": "5626c8217652b5ad21b6bfc9a7d6662a60c0010a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75439281_4421c2dd",
+        "filename": "driver/charger/isl9237.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-30T20:08:41Z",
+      "side": 1,
+      "message": "Okay, I will change it",
+      "parentUuid": "953c86f3_9fe3130a",
       "revId": "5626c8217652b5ad21b6bfc9a7d6662a60c0010a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
