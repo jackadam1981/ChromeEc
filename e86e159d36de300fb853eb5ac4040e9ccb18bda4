@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0e5fa128_92044e58",
+        "filename": "common/als.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-30T00:45:54Z",
+      "side": 1,
+      "message": "sounds good. I will make the change",
+      "parentUuid": "ce582944_09c2778f",
+      "revId": "e86e159d36de300fb853eb5ac4040e9ccb18bda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15197672_96458ae2",
         "filename": "driver/als_isl29035.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2015-09-30T00:37:47Z",
       "side": 1,
       "message": "Should this be HOOK_PRIO_ALS_INIT?",
+      "range": {
+        "startLine": 51,
+        "startChar": 49,
+        "endLine": 51,
+        "endChar": 66
+      },
+      "revId": "e86e159d36de300fb853eb5ac4040e9ccb18bda4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e4c398b_5df14a5c",
+        "filename": "driver/als_isl29035.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-09-30T00:45:54Z",
+      "side": 1,
+      "message": "Nice catch",
+      "parentUuid": "15197672_96458ae2",
       "range": {
         "startLine": 51,
         "startChar": 49,
