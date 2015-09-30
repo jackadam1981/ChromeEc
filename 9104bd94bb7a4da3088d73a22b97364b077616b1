@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d55b5e6b_3f9f6fa2",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-09-30T20:11:15Z",
+      "side": 0,
+      "message": "THIS dependency right here is the *only* reason that the test binaries are built. The $(test-targets):recipe that creates those binaries is made of equal parts recursion and fail.\n\n:-(",
+      "range": {
+        "startLine": 169,
+        "startChar": 11,
+        "endLine": 169,
+        "endChar": 32
+      },
+      "revId": "9104bd94bb7a4da3088d73a22b97364b077616b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
