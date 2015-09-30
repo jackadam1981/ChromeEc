@@ -69,6 +69,7 @@ struct spi_command {
 	};
 };
 struct queue last_cmds = QUEUE_NULL(128, struct spi_command);
+int device_stuck;
 #endif
 
 static inline const struct accel_param_pair *get_range_table(
@@ -142,20 +143,33 @@ static int get_engineering_val(const int reg_val,
 static inline int spi_raw_read(const int addr, const uint8_t reg, uint8_t *data,
 			       const int len)
 {
-	uint8_t cmd = 0x80 | reg;
+	uint8_t cmd[1] = { 0x80 | reg };
 #ifdef CONFIG_SPI_ACCEL_PORT_DEBUG
+	uint8_t val[1];
+	uint8_t read_id[1] = { 0x80 | BMI160_CHIP_ID };
+	int rv;
 	struct spi_command cmd_collector;
 	struct spi_command saved_cmd = {
-		.reg = cmd,
+		.reg = cmd[0],
 		.len = len
 	};
+
+	if (device_stuck)
+		return EC_ERROR_ACCESS_DENIED;
+
+	rv = spi_transaction(&spi_devices[addr], read_id, 1, val, 1);
+	if (rv || val[0] != BMI160_CHIP_ID_MAJOR) {
+		CPRINTF("[%T Read Error %d, val %02x]", rv, val[0]);
+		device_stuck = 1;
+		return EC_ERROR_UNKNOWN;
+	}
 
 	if (queue_is_full(&last_cmds))
 		queue_remove_unit(&last_cmds, &cmd_collector);
 	queue_add_unit(&last_cmds, &saved_cmd);
 #endif
 
-	return spi_transaction(&spi_devices[addr], &cmd, 1, data, len);
+	return spi_transaction(&spi_devices[addr], cmd, 1, data, len);
 }
 #endif
 /**
@@ -192,11 +206,24 @@ static int raw_write8(const int addr, const uint8_t reg, int data)
 #ifdef CONFIG_SPI_ACCEL_PORT
 		uint8_t cmd[2] = { reg, data };
 #ifdef CONFIG_SPI_ACCEL_PORT_DEBUG
+		uint8_t val[1];
+		uint8_t read_id[1] = { 0x80 | BMI160_CHIP_ID };
 		struct spi_command cmd_collector;
 		struct spi_command saved_cmd = {
 			.reg = reg,
 			.data = data
 		};
+
+		if (device_stuck)
+			return EC_ERROR_ACCESS_DENIED;
+
+		rv = spi_transaction(&spi_devices[BMI160_SPI_ADDRESS(addr)],
+				     read_id, 1, val, 1);
+		if (rv || val[0] != BMI160_CHIP_ID_MAJOR) {
+			CPRINTF("[%T Write Error %d, val %02x]", rv, val[0]);
+			device_stuck = 1;
+			return EC_ERROR_UNKNOWN;
+		}
 
 		if (queue_is_full(&last_cmds))
 			queue_remove_unit(&last_cmds, &cmd_collector);
@@ -1079,6 +1106,13 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 static int init(const struct motion_sensor_t *s)
 {
 	int ret = 0, tmp;
+
+	/*
+	 * To debug BMI160 problem, don't do anything if the sensor is already
+	 * in error state
+	 */
+	if (device_stuck)
+		return EC_ERROR_ACCESS_DENIED;
 
 	ret = raw_read8(s->addr, BMI160_CHIP_ID, &tmp);
 	if (ret)
