@@ -250,7 +250,8 @@ static int pd_debug_acc_plugged(int port)
 static inline void set_state(int port, enum pd_states next_state)
 {
 	enum pd_states last_state = pd[port].task_state;
-#ifdef CONFIG_LOW_POWER_IDLE
+#if defined(CONFIG_LOW_POWER_IDLE) &&                        \
+    !defined(CONFIG_USB_PD_LOW_POWER_IDLE_WHEN_CONNECTED)
 	int i;
 #endif
 
@@ -301,7 +302,8 @@ static inline void set_state(int port, enum pd_states next_state)
 		tcpm_set_rx_enable(port, 0);
 	}
 
-#ifdef CONFIG_LOW_POWER_IDLE
+#if defined(CONFIG_LOW_POWER_IDLE) &&                        \
+    !defined(CONFIG_USB_PD_LOW_POWER_IDLE_WHEN_CONNECTED)
 	/* If any PD port is connected, then disable deep sleep */
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
 		if (pd_is_connected(i))
