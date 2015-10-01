@@ -460,6 +460,10 @@ static void prevent_deep_discharge(void)
 			/* Timeout waiting for charger to provide more power */
 			CPRINTS("charge force EC hibernate due to low battery");
 			system_hibernate(0, 0);
+#elif defined(CONFIG_BATTERY_CRITICAL_SHUTDOWN_CUT_OFF)
+			CPRINTS(
+			  "charge force battery cut-off due to critical level");
+			board_cut_off_battery();
 #endif
 		} else {
 			/* Timeout waiting for AP to shut down, so kill it */
