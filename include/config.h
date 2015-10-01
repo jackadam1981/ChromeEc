@@ -124,6 +124,9 @@
  */
 #undef CONFIG_BATTERY_SMART
 
+/* Perform a battery cut-off when we reach the battery critical level */
+#undef CONFIG_BATTERY_CRITICAL_SHUTDOWN_CUT_OFF
+
 /*
  * Support battery cut-off as host command and console command.
  *
