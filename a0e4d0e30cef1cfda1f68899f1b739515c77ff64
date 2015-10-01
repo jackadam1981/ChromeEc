@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "953c86f3_ae4b47f4",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-01T15:56:25Z",
+      "side": 1,
+      "message": "Ok, if there isn\u0027t any common function for hibernate already, then no need to add one. This feature will only exist on a few products, once we move to a dedicated TCPC, it won\u0027t be needed, so it\u0027s fine to leave here in chip specific code.",
+      "parentUuid": "b5398a03_e99f0dc8",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 6
+      },
+      "revId": "a0e4d0e30cef1cfda1f68899f1b739515c77ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "354d9aaf_854bc827",
         "filename": "common/host_command_pd.c",
         "patchSetId": 2
