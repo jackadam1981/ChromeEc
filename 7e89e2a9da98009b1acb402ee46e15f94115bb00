@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9555663b_ec3b8f87",
+        "filename": "board/glados_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-01T20:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5398a03_e9c6edd3",
+      "revId": "7e89e2a9da98009b1acb402ee46e15f94115bb00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "354d9aaf_e53bac87",
         "filename": "board/glados_pd/board.h",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2015-10-01T00:54:30Z",
       "side": 1,
       "message": "also need to do this on oak",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 56
+      },
+      "revId": "7e89e2a9da98009b1acb402ee46e15f94115bb00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d55b5e6b_22c8ef8e",
+        "filename": "board/glados_pd/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-01T20:24:14Z",
+      "side": 1,
+      "message": "Can I put up another change for it? I will also ask some oak folks to test it, considering I\u0027m not familiar with that platform.",
+      "parentUuid": "354d9aaf_e53bac87",
       "range": {
         "startLine": 38,
         "startChar": 0,
