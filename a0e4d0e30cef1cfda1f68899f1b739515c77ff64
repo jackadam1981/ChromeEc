@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b5398a03_e99f0dc8",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-01T00:59:56Z",
+      "side": 1,
+      "message": "The problem is that system_hibernate() is called all across the code base and implemented separately in each chip folder. After this change lands, I\u0027ll put up a new CL to make system_hibernate() a function in common that calls host_command_pd_request_hibernate() and then calls chip_hibernate(). I\u0027ll then rename all existing system_hibernate() functions to chip_hibernate(). Does that sound ok?",
+      "parentUuid": "d55b5e6b_282613f7",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 6
+      },
+      "revId": "a0e4d0e30cef1cfda1f68899f1b739515c77ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "354d9aaf_854bc827",
         "filename": "common/host_command_pd.c",
         "patchSetId": 2
