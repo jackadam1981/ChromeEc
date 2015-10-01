@@ -305,6 +305,9 @@
 #define CPU_INT_GROUP_12         253
 #define IT83XX_CPU_INT_IRQ_253    12
 
+#define CPU_INT_GROUP_6          251
+#define IT83XX_CPU_INT_IRQ_251     6
+
 #define CPU_INT(irq) CONCAT2(IT83XX_CPU_INT_IRQ_, irq)
 
 /* --- INTC --- */
