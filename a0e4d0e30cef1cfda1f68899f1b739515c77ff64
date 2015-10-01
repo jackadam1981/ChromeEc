@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "953c86f3_79ef4728",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-01T20:15:11Z",
+      "side": 1,
+      "message": "Understood. Removed TODO.",
+      "parentUuid": "953c86f3_ae4b47f4",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 6
+      },
+      "revId": "a0e4d0e30cef1cfda1f68899f1b739515c77ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "354d9aaf_854bc827",
         "filename": "common/host_command_pd.c",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "writtenOn": "2015-10-01T00:50:17Z",
       "side": 1,
       "message": "suggesting adding rv to the print so it will be easy to identify if EC_RES_INVALID_VERSION error occurred which will happen now if EC or PD is updated without the other being updated.",
+      "range": {
+        "startLine": 167,
+        "startChar": 12,
+        "endLine": 167,
+        "endChar": 41
+      },
+      "revId": "a0e4d0e30cef1cfda1f68899f1b739515c77ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5586271_4f370d16",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-01T20:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "354d9aaf_854bc827",
       "range": {
         "startLine": 167,
         "startChar": 12,
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "1548969f_10825239",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3182,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-01T20:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "953c86f3_7363e8d4",
+      "range": {
+        "startLine": 3182,
+        "startChar": 0,
+        "endLine": 3182,
+        "endChar": 38
+      },
+      "revId": "a0e4d0e30cef1cfda1f68899f1b739515c77ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d55b5e6b_8d613197",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -130,6 +202,30 @@
       "writtenOn": "2015-10-01T00:50:17Z",
       "side": 1,
       "message": "likewise, since we are incrementing the version, we should probably shrink status to uint16_t and active_charge_port to int8_t",
+      "range": {
+        "startLine": 3199,
+        "startChar": 0,
+        "endLine": 3201,
+        "endChar": 55
+      },
+      "revId": "a0e4d0e30cef1cfda1f68899f1b739515c77ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5398a03_2f1735e2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3201,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-01T20:15:11Z",
+      "side": 1,
+      "message": "Done, it required some changes in samus_pd due to the use of atomic_* functions that take 32-bit pointers.",
+      "parentUuid": "d55b5e6b_8d613197",
       "range": {
         "startLine": 3199,
         "startChar": 0,
