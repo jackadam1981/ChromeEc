@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d55b5e6b_282613f7",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-01T00:50:17Z",
+      "side": 1,
+      "message": "any reason to put this in chip specific code? we could create a new CONFIG option CONFIG_PD_HIBERNATE and put this in common code?",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 6
+      },
+      "revId": "a0e4d0e30cef1cfda1f68899f1b739515c77ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "354d9aaf_854bc827",
+        "filename": "common/host_command_pd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-01T00:50:17Z",
+      "side": 1,
+      "message": "suggesting adding rv to the print so it will be easy to identify if EC_RES_INVALID_VERSION error occurred which will happen now if EC or PD is updated without the other being updated.",
+      "range": {
+        "startLine": 167,
+        "startChar": 12,
+        "endLine": 167,
+        "endChar": 41
+      },
+      "revId": "a0e4d0e30cef1cfda1f68899f1b739515c77ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "953c86f3_7363e8d4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3182,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-01T00:50:17Z",
+      "side": 1,
+      "message": "EC_CMD_PD_EXCHANGE_STATUS is sent a lot, it would be advantageous to minimize the size of this to speed things up, so I would go with uint8_t",
+      "range": {
+        "startLine": 3182,
+        "startChar": 0,
+        "endLine": 3182,
+        "endChar": 38
+      },
+      "revId": "a0e4d0e30cef1cfda1f68899f1b739515c77ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d55b5e6b_8d613197",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3201,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-01T00:50:17Z",
+      "side": 1,
+      "message": "likewise, since we are incrementing the version, we should probably shrink status to uint16_t and active_charge_port to int8_t",
+      "range": {
+        "startLine": 3199,
+        "startChar": 0,
+        "endLine": 3201,
+        "endChar": 55
+      },
+      "revId": "a0e4d0e30cef1cfda1f68899f1b739515c77ff64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
