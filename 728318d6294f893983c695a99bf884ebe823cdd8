@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5586271_1a19d285",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-02T17:07:25Z",
+      "side": 1,
+      "message": "no ccprint in non-interactive code\nthe print should be on a console channel we can mask",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 10
+      },
+      "revId": "728318d6294f893983c695a99bf884ebe823cdd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15a33681_0ca15671",
+        "filename": "include/mkbp_event.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-02T17:07:25Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 11,
+        "startChar": 66,
+        "endLine": 11,
+        "endChar": 75
+      },
+      "revId": "728318d6294f893983c695a99bf884ebe823cdd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75439281_3baf70b3",
+        "filename": "include/mkbp_event.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-02T17:07:25Z",
+      "side": 1,
+      "message": "as mentioned in comment #6 of the bug, we don\u0027t want to unconditionally disable the USB wake events on all platforms.\nYou need at least a CONFIG_ variable to select the mask,\nor a user/AP mechanism as proposed by Benson.",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "revId": "728318d6294f893983c695a99bf884ebe823cdd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
