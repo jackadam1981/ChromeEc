@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15a33681_38932d94",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-02T00:59:45Z",
+      "side": 0,
+      "message": "By removing this, I believe the ro and rw targets won\u0027t get built (which means the shared lib won\u0027t get built, even though nobody\u0027s using it yet). The flat files happen to get built thru the ec.bin dependency however.\n\nAlso, those {RO,RW}/c.config\u0027s don\u0027t look like they\u0027ll be built either.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 13
+      },
+      "revId": "fa7baa6ad917ccbcbfe0d355adee030fc2416af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
