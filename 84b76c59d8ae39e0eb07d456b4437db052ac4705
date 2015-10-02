@@ -46,6 +46,30 @@
       "revId": "84b76c59d8ae39e0eb07d456b4437db052ac4705",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5994284_86d8fa0d",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-10-02T12:28:08Z",
+      "side": 1,
+      "message": "Dropping events that contains black-listed ones is not what you want. You actually should white list the events which can wake the AP. If no event match, drop the whole events at once.",
+      "parentUuid": "6942d7df_fd7e8742",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "84b76c59d8ae39e0eb07d456b4437db052ac4705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
