@@ -15,6 +15,7 @@
 #include "timer.h"
 #include "util.h"
 #include "usb.h"
+#include "watchdog.h"
 
 /* Rev A1 has a RTL bug in the FIFO */
 #if CONCAT2(GC_, GC___MAJOR_REV__) == GC___REVA__
@@ -39,6 +40,62 @@
 /* Console output macro */
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
+
+
+/*
+ * We want to print a bunch of things from within the interrupt handlers, but
+ * if we try it'll 1) stop working, and 2) mess up the timing that we're trying
+ * to measure. Use this instead to print when we have a chance.
+ */
+#define MAX_ENTRIES 256
+static struct {
+	timestamp_t t;
+	const char *fmt;
+	int a0, a1, a2, a3, a4;
+} stuff_to_print[MAX_ENTRIES];
+static int stuff_in, stuff_out;
+
+/* Call this only from within interrupt handler! */
+void print_later(const char *fmt, int a0, int a1, int a2, int a3, int a4)
+{
+	stuff_to_print[stuff_in].t = get_time();
+	stuff_to_print[stuff_in].fmt = fmt;
+	stuff_to_print[stuff_in].a0 = a0;
+	stuff_to_print[stuff_in].a1 = a1;
+	stuff_to_print[stuff_in].a2 = a2;
+	stuff_to_print[stuff_in].a3 = a3;
+	stuff_to_print[stuff_in].a3 = a4;
+	stuff_in++;
+	if (stuff_in >= MAX_ENTRIES)
+		stuff_in = 0;
+}
+
+static void do_print_later(void)
+{
+	int lines_per_loop = 32;
+	int copy_of_stuff_in;
+
+	interrupt_disable();
+	copy_of_stuff_in = stuff_in;
+	interrupt_enable();
+
+	while (lines_per_loop && stuff_out != copy_of_stuff_in) {
+		ccprintf("at %.6ld: ", stuff_to_print[stuff_out].t);
+		ccprintf(stuff_to_print[stuff_out].fmt,
+			 stuff_to_print[stuff_out].a0,
+			 stuff_to_print[stuff_out].a1,
+			 stuff_to_print[stuff_out].a2,
+			 stuff_to_print[stuff_out].a3,
+			 stuff_to_print[stuff_out].a4);
+		ccprintf("\n");
+		stuff_out++;
+		if (stuff_out >= MAX_ENTRIES)
+			stuff_out = 0;
+		lines_per_loop--;
+	}
+}
+DECLARE_HOOK(HOOK_TICK, do_print_later, HOOK_PRIO_DEFAULT);
+
 
 #ifdef CONFIG_USB_BOS
 /* v2.01 (vs 2.00) BOS Descriptor provided */
@@ -118,6 +175,10 @@ static void ep0_rx(void)
 
 	GR_USB_DOEPINT(0) = epint; /* clear IT */
 
+	print_later("R: %02x %02x %04x %04x %04x",
+		    req->bmRequestType, req->bRequest, req->wValue,
+		    req->wIndex, req->wLength);
+
 	/* reset any incomplete descriptor transfer */
 	desc_ptr = NULL;
 
@@ -185,6 +246,7 @@ static void ep0_rx(void)
 		}
 		ep0_in_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_RDY |
 				    DIEPDMA_IOC | DIEPDMA_TXBYTES(len);
+
 		GR_USB_DIEPCTL(0) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
 		ep0_out_desc.flags = DOEPDMA_RXBYTES(64) | DOEPDMA_LAST
 				   | DOEPDMA_BS_HOST_RDY | DOEPDMA_IOC;
@@ -195,11 +257,11 @@ static void ep0_rx(void)
 		uint16_t zero = 0;
 		/* Get status */
 		memcpy(ep0_buf_tx, &zero, 2);
-		ep0_in_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_RDY | DIEPDMA_IOC |
-				    DIEPDMA_TXBYTES(2);
+		ep0_in_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_RDY
+			| DIEPDMA_IOC | DIEPDMA_TXBYTES(2);
 		GR_USB_DIEPCTL(0) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
 		ep0_out_desc.flags = DOEPDMA_RXBYTES(64) | DOEPDMA_LAST
-				   | DOEPDMA_BS_HOST_RDY | DOEPDMA_IOC;
+			| DOEPDMA_BS_HOST_RDY | DOEPDMA_IOC;
 		GR_USB_DOEPCTL(0) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
 	} else if (req->bmRequestType == USB_DIR_OUT) {
 		switch (req->bRequest) {
@@ -207,18 +269,18 @@ static void ep0_rx(void)
 			/* set the address after we got IN packet handshake */
 			set_addr = req->wValue & 0xff;
 			/* need null IN transaction -> TX Valid */
-			ep0_in_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_RDY | DIEPDMA_IOC |
-					    DIEPDMA_TXBYTES(0) | DIEPDMA_SP;
+			ep0_in_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_RDY
+				| DIEPDMA_IOC | DIEPDMA_TXBYTES(0) | DIEPDMA_SP;
 			GR_USB_DIEPCTL(0) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
 			ep0_out_desc.flags = DOEPDMA_RXBYTES(64) | DOEPDMA_LAST
-					   | DOEPDMA_BS_HOST_RDY | DOEPDMA_IOC;
+				| DOEPDMA_BS_HOST_RDY | DOEPDMA_IOC;
 			GR_USB_DOEPCTL(0) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
 			break;
 		case USB_REQ_SET_CONFIGURATION:
-			/* uint8_t cfg = req->wValue & 0xff; */
+			print_later("SETCFG 0x%x", req->wValue, 0, 0, 0, 0);
 			/* null IN for handshake */
-			ep0_in_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_RDY | DIEPDMA_IOC |
-					    DIEPDMA_TXBYTES(0) | DIEPDMA_SP;
+			ep0_in_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_RDY
+				| DIEPDMA_IOC | DIEPDMA_TXBYTES(0) | DIEPDMA_SP;
 			GR_USB_DIEPCTL(0) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
 			ep0_out_desc.flags = DOEPDMA_RXBYTES(64) | DOEPDMA_LAST
 					   | DOEPDMA_BS_HOST_RDY | DOEPDMA_IOC;
@@ -234,6 +296,7 @@ static void ep0_rx(void)
 
 	return;
 unknown_req:
+	print_later("unknown req", 0, 0, 0, 0, 0);
 	ep0_out_desc.flags = DOEPDMA_RXBYTES(64) | DOEPDMA_LAST |
 			     DOEPDMA_BS_HOST_RDY | DOEPDMA_IOC;
 	GR_USB_DOEPCTL(0) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
@@ -245,14 +308,21 @@ static void ep0_tx(void)
 {
 	uint32_t epint = GR_USB_DIEPINT(0);
 
-	GR_USB_DIEPINT(0) = epint; /* clear IT */
+	print_later("T: set_addr=%d desc_ptr=%p", set_addr, (int)desc_ptr, 0, 0, 0);
+	print_later("Out: %08x %08x", ep0_out_desc.flags, (int)ep0_out_desc.addr,
+		    0, 0, 0);
+	print_later("In: %08x %08x", ep0_in_desc.flags, (int)ep0_in_desc.addr,
+		    0, 0, 0);
 
 	if (set_addr) {
 		GR_USB_DCFG = (GR_USB_DCFG & ~DCFG_DEVADDR(0x7f))
 			    | DCFG_DEVADDR(set_addr);
-		CPRINTS("SETAD 0x%02x (%d)", set_addr, set_addr);
+		print_later("SETAD 0x%02x (%d)", set_addr, set_addr, 0, 0, 0);
 		set_addr = 0;
 	}
+
+	GR_USB_DIEPINT(0) = epint; /* clear IT */
+
 	if (desc_ptr) {
 		/* we have an on-going descriptor transfer */
 		int len = MIN(desc_left, USB_MAX_PACKET_SIZE);
@@ -270,6 +340,8 @@ static void ep0_tx(void)
 
 static void ep0_reset(void)
 {
+	print_later("X", 0, 0, 0, 0, 0);
+
 	ep0_out_desc.flags = DOEPDMA_RXBYTES(64) | DOEPDMA_LAST |
 			     DOEPDMA_BS_HOST_RDY | DOEPDMA_IOC;
 	ep0_out_desc.addr = ep0_buf_rx;
@@ -334,6 +406,7 @@ static void usb_softreset(void)
 {
 	int timeout;
 
+	GR_USB_GGPIO = 0x80400000;
 	GR_USB_GRSTCTL = GRSTCTL_CSFTRST;
 	timeout = 10000;
 	while ((GR_USB_GRSTCTL & GRSTCTL_CSFTRST) && timeout-- > 0)
@@ -354,6 +427,7 @@ static void usb_softreset(void)
 
 void usb_connect(void)
 {
+	GR_USB_GGPIO = 0x80400000;
 	GR_USB_DCTL &= ~DCTL_SFTDISCON;
 }
 
@@ -365,6 +439,18 @@ void usb_disconnect(void)
 void usb_init(void)
 {
 	int i;
+
+	/* TODO(wfrichar): Clean this up. Do only what's needed, and use
+	 * meaningful constants of magic numbers. */
+	GREG32(GLOBALSEC, DDMA0_REGION0_CTRL) = 0xffffffff;
+	GREG32(GLOBALSEC, DDMA0_REGION1_CTRL) = 0xffffffff;
+	GREG32(GLOBALSEC, DDMA0_REGION2_CTRL) = 0xffffffff;
+	GREG32(GLOBALSEC, DDMA0_REGION3_CTRL) = 0xffffffff;
+	GREG32(GLOBALSEC, DUSB0_REGION0_CTRL) = 0xffffffff;
+	GREG32(GLOBALSEC, DUSB0_REGION1_CTRL) = 0xffffffff;
+	GREG32(GLOBALSEC, DUSB0_REGION2_CTRL) = 0xffffffff;
+	GREG32(GLOBALSEC, DUSB0_REGION3_CTRL) = 0xffffffff;
+
 	/* Enable clocks */
 	clock_enable_module(MODULE_USB, 1);
 
@@ -375,15 +461,19 @@ void usb_init(void)
 	GR_USB_GDFIFOCFG = ((FIFO_SIZE - 0x80) << 16) | FIFO_SIZE;
 
 	/* PHY configuration */
-	/* Full-Speed Serial PHY */
-	GR_USB_GUSBCFG = GUSBCFG_PHYSEL_FS | GUSBCFG_FSINTF_6PIN
-			| GUSBCFG_TOUTCAL(7) | (9 << 10);
-	usb_softreset();
+	GR_USB_GGPIO = 0x80400000;
 
 	/* PHY configuration */
 	/* Full-Speed Serial PHY */
 	GR_USB_GUSBCFG = GUSBCFG_PHYSEL_FS | GUSBCFG_FSINTF_6PIN
-			| GUSBCFG_TOUTCAL(7) | (9 << 10);
+		/* FIXME: Magic number! 14 is for 15MHz! Use 9 for 30MHz */
+			| GUSBCFG_TOUTCAL(7) | (14 << 10);
+	usb_softreset();
+
+	/* Full-Speed Serial PHY */
+	GR_USB_GUSBCFG = GUSBCFG_PHYSEL_FS | GUSBCFG_FSINTF_6PIN
+		/* FIXME: Magic number! 14 is for 15MHz! Use 9 for 30MHz */
+			| GUSBCFG_TOUTCAL(7) | (14 << 10);
 	/* Global + DMA configuration */
 	GR_USB_GAHBCFG = GAHBCFG_DMA_EN | GAHBCFG_GLB_INTR_EN |
 			 GAHBCFG_NP_TXF_EMP_LVL;
@@ -446,7 +536,7 @@ void usb_init(void)
 	usb_connect();
 #endif
 
-	CPRINTS("USB init done");
+	print_later("USB init done", 0, 0, 0, 0, 0);
 }
 #ifndef CONFIG_USB_INHIBIT_INIT
 DECLARE_HOOK(HOOK_INIT, usb_init, HOOK_PRIO_DEFAULT);
