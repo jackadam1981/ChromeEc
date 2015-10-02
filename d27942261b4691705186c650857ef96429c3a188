@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "953c86f3_08234669",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-02T00:16:14Z",
+      "side": 1,
+      "message": "these are supposed to be alphabetical",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "d27942261b4691705186c650857ef96429c3a188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d55b5e6b_e58f2121",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-02T00:16:14Z",
+      "side": 1,
+      "message": "this kind of infinite loop scares me. it could cause a watchdog reset if tcpc is unresponsive. i would add a max try counter. but, honestly, you can likely just get away with one attempt. the hard part, all the caller functions will need to check the return arg.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 64
+      },
+      "revId": "d27942261b4691705186c650857ef96429c3a188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75439281_c5d0296e",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-02T00:16:14Z",
+      "side": 1,
+      "message": "don\u0027t need this, all our static vars are initialized to 0 at startup already",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 23
+      },
+      "revId": "d27942261b4691705186c650857ef96429c3a188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5398a03_3ae5b14a",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-02T00:16:14Z",
+      "side": 1,
+      "message": "why not just read directly into bc_lvl_cc1?",
+      "range": {
+        "startLine": 310,
+        "startChar": 1,
+        "endLine": 316,
+        "endChar": 18
+      },
+      "revId": "d27942261b4691705186c650857ef96429c3a188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5586271_c4d01f6e",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-02T00:16:14Z",
+      "side": 1,
+      "message": "same, no need for intermediate var reg in this sequence.",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 339,
+        "endChar": 18
+      },
+      "revId": "d27942261b4691705186c650857ef96429c3a188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1548969f_7af1f09c",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-02T00:16:14Z",
+      "side": 1,
+      "message": "nit: remove empty line",
+      "revId": "d27942261b4691705186c650857ef96429c3a188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5398a03_ba5d418d",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-02T00:16:14Z",
+      "side": 1,
+      "message": "why do you need a local buffer for this data, just use payload arg and write directly to there, then you don\u0027t need the memcpy at the end",
+      "range": {
+        "startLine": 616,
+        "startChar": 1,
+        "endLine": 616,
+        "endChar": 17
+      },
+      "revId": "d27942261b4691705186c650857ef96429c3a188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15a33681_78ba053d",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-02T00:16:14Z",
+      "side": 1,
+      "message": "nit: don\u0027t need break after return statement",
+      "range": {
+        "startLine": 701,
+        "startChar": 0,
+        "endLine": 702,
+        "endChar": 8
+      },
+      "revId": "d27942261b4691705186c650857ef96429c3a188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9555663b_83362115",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-02T00:16:14Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 720,
+        "startChar": 2,
+        "endLine": 720,
+        "endChar": 7
+      },
+      "revId": "d27942261b4691705186c650857ef96429c3a188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "953c86f3_8b363015",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-02T00:16:14Z",
+      "side": 1,
+      "message": "does soft reset also come in as a normal received message? if so, we don\u0027t need to do anything here. if not, then we should just call the normal message received code:\n\nif (rx_enable)\n\ttask_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_RX, 0);",
+      "range": {
+        "startLine": 837,
+        "startChar": 1,
+        "endLine": 840,
+        "endChar": 2
+      },
+      "revId": "d27942261b4691705186c650857ef96429c3a188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
