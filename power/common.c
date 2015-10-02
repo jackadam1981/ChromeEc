@@ -38,12 +38,19 @@ static const char * const state_names[] = {
 	"S5",
 	"S3",
 	"S0",
+#ifdef CONFIG_POWER_S0IX
+	"S0ix",
+#endif
 	"G3->S5",
 	"S5->S3",
 	"S3->S0",
 	"S0->S3",
 	"S3->S5",
 	"S5->G3",
+#ifdef CONFIG_POWER_S0IX
+	"S0ix->S0",
+	"S0->S0ix",
+#endif
 };
 
 static uint32_t in_signals;   /* Current input signal states (IN_PGOOD_*) */
@@ -229,7 +236,13 @@ static enum power_state power_common_state(enum power_state state)
 		power_wait_signals(0);
 		task_wait_event(-1);
 		break;
-
+#ifdef CONFIG_POWER_S0IX
+	case POWER_S0ix:
+		/* Wait for a message */
+		power_wait_signals(0);
+		task_wait_event(-1);
+		break;
+#endif
 	default:
 		/* No common functionality for transition states */
 		break;
@@ -279,6 +292,15 @@ int chipset_in_state(int state_mask)
 	case POWER_S0:
 		need_mask = CHIPSET_STATE_ON;
 		break;
+#ifdef CONFIG_POWER_S0IX
+	case POWER_S0ixS0:
+	case POWER_S0S0ix:
+		need_mask = CHIPSET_STATE_ON | CHIPSET_STATE_STANDBY;
+		break;
+	case POWER_S0ix:
+		need_mask = CHIPSET_STATE_STANDBY;
+		break;
+#endif
 	}
 
 	/* Return non-zero if all needed bits are present */
