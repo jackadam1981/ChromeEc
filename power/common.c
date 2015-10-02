@@ -38,12 +38,19 @@ static const char * const state_names[] = {
 	"S5",
 	"S3",
 	"S0",
+#ifdef CONFIG_SUPPORT_S0IX
+	"S0ix",
+#endif
 	"G3->S5",
 	"S5->S3",
 	"S3->S0",
 	"S0->S3",
 	"S3->S5",
 	"S5->G3",
+#ifdef CONFIG_SUPPORT_S0IX
+	"S0ix->S0",
+	"S0->S0ix",
+#endif
 };
 
 static uint32_t in_signals;   /* Current input signal states (IN_PGOOD_*) */
@@ -229,7 +236,13 @@ static enum power_state power_common_state(enum power_state state)
 		power_wait_signals(0);
 		task_wait_event(-1);
 		break;
-
+#ifdef CONFIG_SUPPORT_S0IX
+	case POWER_S0ix:
+		/* Wait for a message */
+		power_wait_signals(0);
+		task_wait_event(-1);
+		break;
+#endif
 	default:
 		/* No common functionality for transition states */
 		break;
@@ -279,6 +292,15 @@ int chipset_in_state(int state_mask)
 	case POWER_S0:
 		need_mask = CHIPSET_STATE_ON;
 		break;
+#ifdef CONFIG_SUPPORT_S0IX
+	case POWER_S0ixS0:
+	case POWER_S0S0ix:
+		need_mask = CHIPSET_STATE_ON | CHIPSET_STATE_STANDBY;
+		break;
+	case POWER_S0ix:
+		need_mask = CHIPSET_STATE_STANDBY;
+		break;
+#endif
 	}
 
 	/* Return non-zero if all needed bits are present */
@@ -466,6 +488,40 @@ void power_signal_interrupt(enum gpio_signal signal)
 	/* Wake up the task */
 	task_wake(TASK_ID_CHIPSET);
 }
+
+#ifdef CONFIG_SUPPORT_S0IX
+static void slp_s0_assertion_defered(void)
+{
+	/* Shadow signals and compare with our desired signal state. */
+	power_update_signals();
+
+	/* re-enable GPIO interrupt */
+	gpio_enable_interrupt(GPIO_PCH_SLP_S0_L);
+
+	/*
+	 * check SLP_S0 and current state(chipset_in_state())
+	 * Only falling edge interrupt wakes up chipset_task
+	 */
+	if ((chipset_in_state(CHIPSET_STATE_STANDBY) &&
+		(gpio_get_level(GPIO_PCH_SLP_S0_L) == 1)) ||
+	    (!chipset_in_state(CHIPSET_STATE_STANDBY) &&
+		(gpio_get_level(GPIO_PCH_SLP_S0_L) == 0))) {
+		/* Wake up the task */
+		task_wake(TASK_ID_CHIPSET);
+	}
+}
+DECLARE_DEFERRED(slp_s0_assertion_defered);
+
+void power_signal_interrupt_S0(enum gpio_signal signal)
+{
+	/* disable GPIO interrupt temporarily */
+	gpio_disable_interrupt(GPIO_PCH_SLP_S0_L);
+
+	SIGLOG(signal);
+
+	hook_call_deferred(slp_s0_assertion_defered, 3 * MSEC);
+}
+#endif
 
 #ifdef CONFIG_POWER_SHUTDOWN_PAUSE_IN_S5
 inline int power_get_pause_in_s5(void)
