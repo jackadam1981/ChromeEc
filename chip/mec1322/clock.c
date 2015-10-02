@@ -27,6 +27,11 @@
 #define HEAVY_SLEEP_RECOVER_TIME_USEC   75
 
 #define SET_HTIMER_DELAY_USEC           200
+#ifdef CONFIG_SUPPORT_S0IX
+#define CONSOLE_USE_TIMEOUT		1
+#else
+#define CONSOLE_USE_TIMEOUT		60
+#endif
 
 static int idle_sleep_cnt;
 static int idle_dsleep_cnt;
@@ -37,7 +42,7 @@ static uint64_t total_idle_dsleep_time_us;
  * order to give a permanent window in which the heavy sleep mode is not used.
  */
 #define CONSOLE_IN_USE_ON_BOOT_TIME (15*SECOND)
-static int console_in_use_timeout_sec = 60;
+static int console_in_use_timeout_sec = CONSOLE_USE_TIMEOUT;
 static timestamp_t console_expire_time;
 #endif /*CONFIG_LOW_POWER_IDLE */
 
