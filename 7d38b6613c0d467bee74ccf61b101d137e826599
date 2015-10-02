@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d55b5e6b_18527c03",
+        "filename": "board/reks/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-02T16:47:50Z",
+      "side": 1,
+      "message": "This doesn\u0027t have the be a deferred function anymore -- see https://chromium-review.googlesource.com/#/c/283657/. Try calling the function directly from HOOK_INIT (and rename the function also, since it won\u0027t be deferred anymore).",
+      "revId": "7d38b6613c0d467bee74ccf61b101d137e826599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
