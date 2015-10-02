@@ -14,6 +14,7 @@
 #include "power.h"
 #include "power_button.h"
 #include "system.h"
+#include "task.h"
 #include "util.h"
 #include "wireless.h"
 
@@ -27,9 +28,16 @@
 #define IN_PCH_SLP_S4_DEASSERTED  POWER_SIGNAL_MASK(X86_SLP_S4_DEASSERTED)
 #define IN_PCH_SLP_SUS_DEASSERTED POWER_SIGNAL_MASK(X86_SLP_SUS_DEASSERTED)
 
+#ifdef CONFIG_SUPPORT_S0IX
+#define IN_ALL_PM_SLP_DEASSERTED (IN_PCH_SLP_S0_DEASSERTED | \
+				  IN_PCH_SLP_S3_DEASSERTED | \
+				  IN_PCH_SLP_S4_DEASSERTED | \
+				  IN_PCH_SLP_SUS_DEASSERTED)
+#else
 #define IN_ALL_PM_SLP_DEASSERTED (IN_PCH_SLP_S3_DEASSERTED | \
 				  IN_PCH_SLP_S4_DEASSERTED | \
 				  IN_PCH_SLP_SUS_DEASSERTED)
+#endif
 
 /*
  * DPWROK is NC / stuffing option on initial boards.
@@ -164,11 +172,30 @@ static enum power_state _power_handle_state(enum power_state state)
 		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			chipset_force_shutdown();
 			return POWER_S0S3;
+#ifdef CONFIG_SUPPORT_S0IX
+		} else if ((gpio_get_level(GPIO_PCH_SLP_S0_L) == 0) &&
+			   (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1)) {
+			return POWER_S0S0ix;
+#endif
 		} else if (gpio_get_level(GPIO_PCH_SLP_S3_L) == 0) {
 			/* Power down to next state */
 			return POWER_S0S3;
 		}
+
 		break;
+
+#ifdef CONFIG_SUPPORT_S0IX
+	case POWER_S0ix:
+		/*
+		 * TODO: add code for unexpected power loss
+		 */
+		if ((gpio_get_level(GPIO_PCH_SLP_S0_L) == 1) &&
+		   (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1)) {
+			return POWER_S0ixS0;
+		}
+
+		break;
+#endif
 
 	case POWER_G3S5:
 		/* Call hooks to initialize PMIC */
@@ -256,6 +283,27 @@ static enum power_state _power_handle_state(enum power_state state)
 		enable_sleep(SLEEP_MASK_AP_RUN);
 
 		return POWER_S3;
+
+#ifdef CONFIG_SUPPORT_S0IX
+	case POWER_S0S0ix:
+		/*
+		 * Enable idle task deep sleep. Allow the low power idle task
+		 * to go into deep sleep in S0ix.
+		 */
+		enable_sleep(SLEEP_MASK_AP_RUN);
+
+		return POWER_S0ix;
+
+
+	case POWER_S0ixS0:
+		/*
+		 * Disable idle task deep sleep. This means that the low
+		 * power idle task will not go into deep sleep while in S0.
+		 */
+		disable_sleep(SLEEP_MASK_AP_RUN);
+
+		return POWER_S0;
+#endif
 
 	case POWER_S3S5:
 		/* Call hooks before we remove power rails */
@@ -345,5 +393,39 @@ void enter_pseudo_g3(void)
 	/* Power to EC should shut down now */
 	while (1)
 		;
+}
+#endif
+
+#ifdef CONFIG_SUPPORT_S0IX
+static void slp_s0_assertion_deferred(void)
+{
+	uint32_t prev_s0_pin_status;
+	uint32_t curr_s0_pin_status;
+
+	prev_s0_pin_status = power_get_signals() & IN_PCH_SLP_S0_DEASSERTED;
+	/* Shadow signals and compare with our desired signal state. */
+	update_power_signals();
+
+	curr_s0_pin_status = power_get_signals() & IN_PCH_SLP_S0_DEASSERTED;
+
+	/* re-enable GPIO interrupt */
+	gpio_enable_interrupt(GPIO_PCH_SLP_S0_L);
+
+	/*
+	 * check previous and current SLP_S0.
+	 * wakeup chipset task only when interrupt is valid.
+	 */
+	if (prev_s0_pin_status != curr_s0_pin_status) {
+		task_wake(TASK_ID_CHIPSET);
+	}
+}
+DECLARE_DEFERRED(slp_s0_assertion_deferred);
+
+void power_signal_interrupt_S0(enum gpio_signal signal)
+{
+	/* disable GPIO interrupt temporarily */
+	gpio_disable_interrupt(GPIO_PCH_SLP_S0_L);
+
+	hook_call_deferred(slp_s0_assertion_deferred, 3 * MSEC);
 }
 #endif
