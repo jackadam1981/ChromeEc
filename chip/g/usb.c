@@ -334,6 +334,7 @@ static void usb_softreset(void)
 {
 	int timeout;
 
+	GR_USB_GGPIO = 0x80400000;
 	GR_USB_GRSTCTL = GRSTCTL_CSFTRST;
 	timeout = 10000;
 	while ((GR_USB_GRSTCTL & GRSTCTL_CSFTRST) && timeout-- > 0)
@@ -354,6 +355,7 @@ static void usb_softreset(void)
 
 void usb_connect(void)
 {
+	GR_USB_GGPIO = 0x80400000;
 	GR_USB_DCTL &= ~DCTL_SFTDISCON;
 }
 
@@ -365,6 +367,16 @@ void usb_disconnect(void)
 void usb_init(void)
 {
 	int i;
+
+	GREG32(GLOBALSEC, DDMA0_REGION0_CTRL) = 0xffffffff;
+	GREG32(GLOBALSEC, DDMA0_REGION1_CTRL) = 0xffffffff;
+	GREG32(GLOBALSEC, DDMA0_REGION2_CTRL) = 0xffffffff;
+	GREG32(GLOBALSEC, DDMA0_REGION3_CTRL) = 0xffffffff;
+	GREG32(GLOBALSEC, DUSB0_REGION0_CTRL) = 0xffffffff;
+	GREG32(GLOBALSEC, DUSB0_REGION1_CTRL) = 0xffffffff;
+	GREG32(GLOBALSEC, DUSB0_REGION2_CTRL) = 0xffffffff;
+	GREG32(GLOBALSEC, DUSB0_REGION3_CTRL) = 0xffffffff;
+
 	/* Enable clocks */
 	clock_enable_module(MODULE_USB, 1);
 
@@ -375,12 +387,14 @@ void usb_init(void)
 	GR_USB_GDFIFOCFG = ((FIFO_SIZE - 0x80) << 16) | FIFO_SIZE;
 
 	/* PHY configuration */
+	GR_USB_GGPIO = 0x80400000;
+
+	/* PHY configuration */
 	/* Full-Speed Serial PHY */
 	GR_USB_GUSBCFG = GUSBCFG_PHYSEL_FS | GUSBCFG_FSINTF_6PIN
 			| GUSBCFG_TOUTCAL(7) | (9 << 10);
 	usb_softreset();
 
-	/* PHY configuration */
 	/* Full-Speed Serial PHY */
 	GR_USB_GUSBCFG = GUSBCFG_PHYSEL_FS | GUSBCFG_FSINTF_6PIN
 			| GUSBCFG_TOUTCAL(7) | (9 << 10);

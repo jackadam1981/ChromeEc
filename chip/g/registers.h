@@ -361,6 +361,7 @@ static inline int x_timehs_addr(unsigned int module, unsigned int timer,
 #define GR_USB_GRXSTSP                GR_USB_REG(GC_USB_GRXSTSP_OFFSET)
 #define GR_USB_GRXFSIZ                GR_USB_REG(GC_USB_GRXFSIZ_OFFSET)
 #define GR_USB_GNPTXFSIZ              GR_USB_REG(GC_USB_GNPTXFSIZ_OFFSET)
+#define GR_USB_GGPIO                  GR_USB_REG(GC_USB_GGPIO_OFFSET)
 #define GR_USB_GSNPSID                GR_USB_REG(GC_USB_GSNPSID_OFFSET)
 #define GR_USB_GHWCFG1                GR_USB_REG(GC_USB_GHWCFG1_OFFSET)
 #define GR_USB_GHWCFG2                GR_USB_REG(GC_USB_GHWCFG2_OFFSET)
