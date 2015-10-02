@@ -15,9 +15,9 @@ GPIO_INT(RSMRST_L_PGOOD,    PIN(63),  GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(PCH_SLP_S4_L,      PIN(200), GPIO_INT_BOTH | GPIO_PULL_UP, power_signal_interrupt)
 GPIO_INT(PCH_SLP_S3_L,      PIN(206), GPIO_INT_BOTH | GPIO_PULL_UP, power_signal_interrupt)
 #ifdef BOARD_KUNIMITSU_V3
-GPIO_INT(PCH_SLP_S0_L,      PIN(211), GPIO_INT_BOTH | GPIO_PULL_UP, power_signal_interrupt)
+GPIO_INT(PCH_SLP_S0_L,      PIN(211), GPIO_INT_BOTH | GPIO_PULL_UP, power_signal_interrupt_S0)
 #else
-GPIO_INT(PCH_SLP_S0_L,      PIN(141), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(PCH_SLP_S0_L,      PIN(141), GPIO_INT_BOTH, power_signal_interrupt_S0)
 #endif
 GPIO_INT(PCH_SLP_SUS_L,     PIN(12),  GPIO_INT_BOTH | GPIO_PULL_UP, power_signal_interrupt)
 GPIO_INT(VOLUME_UP_L,       PIN(31),  GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
