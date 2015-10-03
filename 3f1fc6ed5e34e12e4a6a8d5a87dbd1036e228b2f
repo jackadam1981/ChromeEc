@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9555663b_ef91bcd9",
+        "filename": "power/tegra.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2015-10-03T17:41:39Z",
+      "side": 1,
+      "message": "1.25 should be 5.12",
+      "range": {
+        "startLine": 466,
+        "startChar": 31,
+        "endLine": 466,
+        "endChar": 32
+      },
+      "revId": "3f1fc6ed5e34e12e4a6a8d5a87dbd1036e228b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
