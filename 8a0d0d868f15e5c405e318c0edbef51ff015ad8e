@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5586271_26de3b7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-10-03T15:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15a33681_65849d4b",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "8a0d0d868f15e5c405e318c0edbef51ff015ad8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5398a03_9dc0348e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9555663b_0f235069",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-10-03T15:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5398a03_9dc0348e",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "8a0d0d868f15e5c405e318c0edbef51ff015ad8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1548969f_69676cac",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2015-10-03T13:27:30Z",
       "side": 1,
       "message": "given we are post FSI, that\u0027s a bit too light.",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "8a0d0d868f15e5c405e318c0edbef51ff015ad8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d55b5e6b_cc1b227e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-10-03T15:07:53Z",
+      "side": 1,
+      "message": "Will update on thread.",
+      "parentUuid": "1548969f_69676cac",
       "range": {
         "startLine": 11,
         "startChar": 5,
