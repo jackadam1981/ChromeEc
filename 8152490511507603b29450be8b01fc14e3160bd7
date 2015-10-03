@@ -22,6 +22,30 @@
       "revId": "8152490511507603b29450be8b01fc14e3160bd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15a33681_2599c5b9",
+        "filename": "power/tegra.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2015-10-03T07:36:14Z",
+      "side": 1,
+      "message": "I thought we want to do this every time we switch off the AP rails. Okay I will move the delay to power_off routine.",
+      "parentUuid": "15a33681_85a439ef",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 1
+      },
+      "revId": "8152490511507603b29450be8b01fc14e3160bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
