@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15a33681_85a439ef",
+        "filename": "power/tegra.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000393
+      },
+      "writtenOn": "2015-10-03T07:31:46Z",
+      "side": 1,
+      "message": "The 50 ms delay that I added during the debugging was inside the power_off() routine, before calling this (chipset_turn_off_power_rails) routine.\n\nAnd, 50 ms is too long. (That was used just to see if the PMIC_SHDN issued by EC theory was correct or not.) Now we set 3.3v at slot 2, and SOC and RTC at slot 7, so the max. delay is (5.12 ms * 5) ~\u003d 26 ms.",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 1
+      },
+      "revId": "8152490511507603b29450be8b01fc14e3160bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
