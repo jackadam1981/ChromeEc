@@ -299,6 +299,9 @@ enum power_state power_chipset_init(void)
 
 static void chipset_turn_off_power_rails(void)
 {
+	/* Delay to ensure proper power-down sequence. */
+	msleep(50);
+
 	/* Release the power button, if it was asserted */
 	set_pmic_pwron(0);
 
