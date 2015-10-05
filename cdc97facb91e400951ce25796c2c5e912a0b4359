@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab804cc5_df29b79f",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4228,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-05T23:27:47Z",
+      "side": 1,
+      "message": "I think this check should go below too; it applies to the entire pdata, not just the cortex-m arch.",
+      "range": {
+        "startLine": 4224,
+        "startChar": 0,
+        "endLine": 4228,
+        "endChar": 26
+      },
+      "revId": "cdc97facb91e400951ce25796c2c5e912a0b4359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ba1f45d_62c1f2b4",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4233,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-05T23:27:47Z",
+      "side": 1,
+      "message": "This check should go below",
+      "range": {
+        "startLine": 4230,
+        "startChar": 0,
+        "endLine": 4233,
+        "endChar": 16
+      },
+      "revId": "cdc97facb91e400951ce25796c2c5e912a0b4359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ba1f45d_026b4e6f",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4322,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-05T23:27:47Z",
+      "side": 1,
+      "message": "Please use switch(); error for unknown arch type should be the default.",
+      "range": {
+        "startLine": 4319,
+        "startChar": 0,
+        "endLine": 4322,
+        "endChar": 39
+      },
+      "revId": "cdc97facb91e400951ce25796c2c5e912a0b4359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
