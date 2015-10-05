@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb6900e6_b7a50879",
+        "filename": "board/reks/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-05T17:21:35Z",
+      "side": 1,
+      "message": "I suggest to name this function \"battery_init\".",
+      "revId": "e5773adaa637308fda8469dafbc68606b4e29668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab976c01_3e59c9e5",
+        "filename": "board/reks/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-05T17:21:35Z",
+      "side": 1,
+      "message": "You should probably check to make sure these calls to sb_read succeed before continuing on.",
+      "revId": "e5773adaa637308fda8469dafbc68606b4e29668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb6900e6_3771f8a0",
+        "filename": "board/reks/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-05T17:21:35Z",
+      "side": 1,
+      "message": "There should be no need to change this if you aren\u0027t adding a deferred function.",
+      "revId": "e5773adaa637308fda8469dafbc68606b4e29668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
