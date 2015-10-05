@@ -22,6 +22,30 @@
       "revId": "41bbbaacf01b21be09f47afa506ce4feb5f5b0bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35975a56_15d35646",
+        "filename": "board/celes/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-10-05T11:29:31Z",
+      "side": 1,
+      "message": "I just found it is not alpha-order. changed order.",
+      "parentUuid": "d5851e22_6cf1339d",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 17
+      },
+      "revId": "41bbbaacf01b21be09f47afa506ce4feb5f5b0bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
