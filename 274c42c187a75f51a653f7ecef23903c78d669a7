@@ -22,6 +22,30 @@
       "revId": "274c42c187a75f51a653f7ecef23903c78d669a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "704d65ae_5fa22fed",
+        "filename": "driver/battery/bq27541.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-06T23:25:00Z",
+      "side": 1,
+      "message": "i wanted to still do the i2c transaction to read battery soc because i didn\u0027t want a fake battery percentage to change i2c timing. i can save to a temporary variable though.",
+      "parentUuid": "105c2963_5ccb5133",
+      "range": {
+        "startLine": 240,
+        "startChar": 5,
+        "endLine": 240,
+        "endChar": 62
+      },
+      "revId": "274c42c187a75f51a653f7ecef23903c78d669a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
