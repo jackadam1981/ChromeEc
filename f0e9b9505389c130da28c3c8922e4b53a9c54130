@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab804cc5_45fe346c",
+        "filename": "board/reks/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-06T17:22:25Z",
+      "side": 1,
+      "message": "It\u0027s not a big deal, but you\u0027re not doing any writes unless ext_power_is_present() is true. So unless there\u0027s some reason you need to read this register on init, you can check ext_power_is_present() first.",
+      "revId": "f0e9b9505389c130da28c3c8922e4b53a9c54130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
