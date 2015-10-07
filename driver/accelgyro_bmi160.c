@@ -1042,12 +1042,15 @@ static int init(const struct motion_sensor_t *s)
 	int ret = 0, tmp;
 
 	ret = raw_read8(s->addr, BMI160_CHIP_ID, &tmp);
-	if (ret)
-		return EC_ERROR_UNKNOWN;
+	if (ret) {
+		ret = EC_ERROR_UNKNOWN;
+		goto failed_init;
+	}
 
-	if (tmp != BMI160_CHIP_ID_MAJOR)
-		return EC_ERROR_ACCESS_DENIED;
-
+	if (tmp != BMI160_CHIP_ID_MAJOR) {
+		ret = EC_ERROR_ACCESS_DENIED;
+		goto failed_init;
+	}
 
 	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
 		struct bmi160_drv_data_t *data = BMI160_GET_DATA(s);
@@ -1138,7 +1141,7 @@ static int init(const struct motion_sensor_t *s)
 		ret = bmm150_init(s);
 		if (ret)
 			/* Leave the compass open for tinkering. */
-			return ret;
+			goto failed_init;
 
 		/* Leave the address for reading the data */
 		raw_write8(s->addr, BMI160_MAG_I2C_READ_ADDR,
@@ -1164,6 +1167,15 @@ static int init(const struct motion_sensor_t *s)
 	}
 	CPRINTF("[%T %s: MS Done Init type:0x%X range:%d]\n",
 			s->name, s->type, get_range(s));
+	return ret;
+
+failed_init:
+	CPRINTS("FAIL: Power-cycle sensors\n");
+	/* Pulse the sensors power switch to try to recover */
+	gpio_set_level(GPIO_BOSCH_3VPWREN, 0);
+	msleep(10); /* Proper reset delay TBD */
+	gpio_set_level(GPIO_BOSCH_3VPWREN, 1);
+	msleep(10); /* Proper startup delay TBD */
 	return ret;
 }
 
