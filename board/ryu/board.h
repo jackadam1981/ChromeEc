@@ -210,6 +210,8 @@ int board_has_spi_sensors(void);
 						: GPIO_VDDSPI_EN_OLD)
 #define GPIO_USBC_CC_EN (board_has_spi_sensors() ?  GPIO_USBC_CC_EN_0 \
 						 : GPIO_SPI3_NSS)
+#define GPIO_CHARGE_DONE (board_get_version() == 2 ? GPIO_CHARGE_DONE_2 \
+						   : GPIO_CHARGE_DONE_0)
 
 /* Timer selection */
 #define TIM_CLOCK32 5

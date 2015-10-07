@@ -133,7 +133,6 @@ static inline void pd_set_host_mode(int port, int enable)
 		gpio_set_level(GPIO_USBC_CC1_DEVICE_ODL, 1);
 		gpio_set_level(GPIO_USBC_CC2_DEVICE_ODL, 1);
 		/* Set 3.3V for Rp pull-up */
-		gpio_set_flags(GPIO_USBC_CC_PUEN1, GPIO_OUT_HIGH);
 		gpio_set_flags(GPIO_USBC_CC_PUEN2, GPIO_OUT_HIGH);
 	} else {
 		/* Kill VBUS power supply */
@@ -145,7 +144,6 @@ static inline void pd_set_host_mode(int port, int enable)
 		 */
 		board_vbus_power_path(0);
 		/* Remove Rp pull-up by putting the high side in Hi-Z */
-		gpio_set_flags(GPIO_USBC_CC_PUEN1, GPIO_INPUT);
 		gpio_set_flags(GPIO_USBC_CC_PUEN2, GPIO_INPUT);
 		/* Pull low for device mode. */
 		gpio_set_level(GPIO_USBC_CC1_DEVICE_ODL, 0);
