@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30984d8f_82025a1e",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1175,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-07T15:50:55Z",
+      "side": 1,
+      "message": "you make the assumption outside of /board that this GPIO exists.\nOn Ryu branch there is still the issue of older board.",
+      "revId": "c4eb896d4f541cd3007e5a8c8df711fc5f11c085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
