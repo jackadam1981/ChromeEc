@@ -10,7 +10,8 @@ GPIO_INT(CHGR_ACOK,            PIN(D, 4),  GPIO_INT_BOTH,    vbus_evt)
 GPIO_INT(POWER_BUTTON_L,       PIN(C, 13), GPIO_INT_BOTH,                   power_button_interrupt) /* active high, the name is for compatibility with existing code */
 GPIO_INT(USBC_BC12_INT_L,      PIN(D, 11), GPIO_INT_FALLING | GPIO_PULL_UP, usb_evt)
 GPIO_INT(LID_OPEN,             PIN(E, 1),  GPIO_INT_BOTH | GPIO_PULL_UP,    lid_interrupt)
-GPIO_INT(CHARGE_DONE,          PIN(E, 6),  GPIO_INT_BOTH,                   inductive_charging_interrupt)
+GPIO_INT(CHARGE_DONE_0,        PIN(E, 6),  GPIO_INT_BOTH,                   inductive_charging_interrupt)
+GPIO_INT(CHARGE_DONE_2,        PIN(D, 0),  GPIO_INT_BOTH,                   inductive_charging_interrupt)
 GPIO_INT(AP_IN_SUSPEND,        PIN(F, 9),  GPIO_INT_BOTH,                   power_signal_interrupt)
 GPIO_INT(AP_HOLD,              PIN(E, 3),  GPIO_INT_BOTH,                   power_signal_interrupt)
 GPIO_INT(ACC_IRQ1,             PIN(D, 12), GPIO_INT_FALLING,                bmi160_interrupt)
@@ -18,7 +19,6 @@ GPIO_INT(CHGR_INT_L,           PIN(B, 2),  GPIO_INT_FALLING | GPIO_PULL_UP, char
 GPIO_INT(ALS_PROXY_INT_L,      PIN(E, 15), GPIO_INT_FALLING | GPIO_PULL_UP, si114x_interrupt)
 
 /* Interrupt lines not used yet */
-GPIO(BC_TEMP_ALERT_L,      PIN(C, 5),  GPIO_INT_FALLING)
 GPIO(LB_INT_L,             PIN(C, 14), GPIO_INT_FALLING | GPIO_PULL_UP)
 GPIO(LIGHTBAR_EN_L,        PIN(E, 8),  GPIO_INT_FALLING | GPIO_PULL_UP)
 GPIO(BASE_PRES_L,          PIN(E, 10), GPIO_INT_BOTH | GPIO_PULL_UP)
@@ -62,6 +62,9 @@ GPIO(CHGR_OTG,             PIN(C, 3),  GPIO_OUT_LOW)
 GPIO(CHARGE_EN,            PIN(D, 13), GPIO_OUT_LOW)
 GPIO(BASE_CHG_VDD_EN,      PIN(E, 5),  GPIO_OUT_LOW)
 
+/* Sensors power switch */
+GPIO(BOSCH_3VPWREN,        PIN(C, 5),  GPIO_OUT_HIGH) /* on rev v2 */
+
 /* USB-C Power and muxes control */
 GPIO(USBC_CHARGE_EN_L,     PIN(A, 7),  GPIO_OUT_LOW)
 GPIO(USBC_VCONN1_EN_L,     PIN(F, 10), GPIO_OUT_HIGH)
@@ -69,7 +72,6 @@ GPIO(USBC_VCONN2_EN_L,     PIN(D, 10), GPIO_OUT_HIGH)
 
 GPIO(USBC_CC1_DEVICE_ODL,  PIN(A, 5),  GPIO_ODR_LOW)
 GPIO(USBC_CC2_DEVICE_ODL,  PIN(E, 14), GPIO_ODR_LOW)
-GPIO(USBC_CC_PUEN1,        PIN(D, 0),  GPIO_INPUT)
 GPIO(USBC_CC_PUEN2,        PIN(C, 8),  GPIO_INPUT)
 
 /* Pericom PI3USB30592 mux controls on Proto 5+ */
