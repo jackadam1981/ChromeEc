@@ -42,6 +42,9 @@
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_X86
 #define CONFIG_POWER_COMMON
+/* We're space constrained on Chell, so reduce the UART TX buffer size. */
+#undef CONFIG_UART_TX_BUF_SIZE
+#define CONFIG_UART_TX_BUF_SIZE 512
 #define CONFIG_SCI_GPIO GPIO_PCH_SCI_L
 #define CONFIG_USB_CHARGER
 #define CONFIG_USB_MUX_PS8740
