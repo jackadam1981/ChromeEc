@@ -22,6 +22,30 @@
       "revId": "80774018fd17f298824e315fcf69c1fae2279b87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0435d80_05385197",
+        "filename": "board/chell/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-10-08T16:40:18Z",
+      "side": 1,
+      "message": "Yeah it is definitely different, but I can\u0027t find any specs beyond a mechanical sizing datasheet yet.  I suppose this could at least set some potentially more reasonable 3S values.\n\nMaybe something like:\n\nvoltage_max \u003d 12600\nvoltage_normal \u003d 11000\nvoltage_min \u003d 9000",
+      "parentUuid": "d0b1b1f2_77973083",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 25
+      },
+      "revId": "80774018fd17f298824e315fcf69c1fae2279b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
