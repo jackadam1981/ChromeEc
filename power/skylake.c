@@ -209,7 +209,9 @@ static enum power_state _power_handle_state(enum power_state state)
 
 		/* Enable USB so that it can wake the system */
 		gpio_set_level(GPIO_USB1_ENABLE, 1);
+#ifdef GPIO_USB2_ENABLE
 		gpio_set_level(GPIO_USB2_ENABLE, 1);
+#endif
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
@@ -269,7 +271,9 @@ static enum power_state _power_handle_state(enum power_state state)
 		wireless_set_state(WIRELESS_OFF);
 
 		gpio_set_level(GPIO_USB1_ENABLE, 0);
+#ifdef GPIO_USB2_ENABLE
 		gpio_set_level(GPIO_USB2_ENABLE, 0);
+#endif
 
 		/* Always enter into S5 state. The S5 state is required to
 		 * correctly handle global resets which have a bit of delay
