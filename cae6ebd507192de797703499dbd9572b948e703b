@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0435d80_e8553c32",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-08T17:39:24Z",
+      "side": 1,
+      "message": "GPIO constants are defined in an enum\n(see include/gpio_signal.h)\nso that\u0027s not working",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 23
+      },
+      "revId": "cae6ebd507192de797703499dbd9572b948e703b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
