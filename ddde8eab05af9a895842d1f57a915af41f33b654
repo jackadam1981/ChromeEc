@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d03c51f4_1467e212",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-08T16:19:04Z",
+      "side": 1,
+      "message": "we could also fix this issue by enabling the irq earlier, before we read and check status register. then if we got an interrupt before task_wait_event_mask(), then it would immediately return and we wouldn\u0027t have to wait the timeout period. this is more complicated to code, but it saves us from waiting the full timeout period when this occurs. i think something like this:\n\nwhile (1) {\n  wait \u003d get_time().val \u003e block_timeout;\n  if (wait)\n    task_enable_irq(MEC1322_IRQ_I2C_0 + controller);\n  sts \u003d MEC1322_I2C_STATUS(controller);\n  if (sts \u0026 STS_NBB) {\n    task_disable_irq(MEC1322_IRQ_I2C_0 + controller);\n    break;\n  }\n  if (wait) {\n    rv \u003d wait_for_interrupt(controller);\n    if (rv)\n      task_disable_irq(MEC1322_IRQ_I2C_0 + controller);\n      return rv;\n  }\n}\n\nactually, while writing this code, i think i found another issue with the current code. if we timeout, we never disable the irq.",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 2
+      },
+      "revId": "ddde8eab05af9a895842d1f57a915af41f33b654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
