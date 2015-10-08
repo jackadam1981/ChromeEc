@@ -22,6 +22,30 @@
       "revId": "cae6ebd507192de797703499dbd9572b948e703b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5061411e_1586c751",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-10-08T17:53:24Z",
+      "side": 1,
+      "message": "Ah hm, ok then, guess it needs an even uglier hack.",
+      "parentUuid": "b0435d80_e8553c32",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 23
+      },
+      "revId": "cae6ebd507192de797703499dbd9572b948e703b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
