@@ -130,7 +130,11 @@ static int wait_for_interrupt(int controller)
 	cdata[controller].task_waiting = task_get_current();
 	task_enable_irq(MEC1322_IRQ_I2C_0 + controller);
 
-	/* Wait until I2C interrupt or timeout. */
+	/*
+	 * Wait until I2C interrupt or timeout. Note that if an i2c interrupt
+	 * fires before task_wait_event_mask begins blocking, it may be
+	 * missed, and we may incorrectly timeout.
+	 */
 	event = task_wait_event_mask(TASK_EVENT_I2C_IDLE,
 				     cdata[controller].timeout_us);
 	cdata[controller].task_waiting = TASK_ID_INVALID;
@@ -142,14 +146,13 @@ static int wait_idle(int controller)
 {
 	uint8_t sts = MEC1322_I2C_STATUS(controller);
 	uint64_t block_timeout = get_time().val + I2C_WAIT_BLOCKING_TIMEOUT_US;
-	int rv;
+	int rv = 0;
 
 	while (!(sts & STS_NBB)) {
-		if (get_time().val > block_timeout) {
+		if (rv)
+			return rv;
+		if (get_time().val > block_timeout)
 			rv = wait_for_interrupt(controller);
-			if (rv)
-				return rv;
-		}
 		sts = MEC1322_I2C_STATUS(controller);
 	}
 
@@ -162,14 +165,13 @@ static int wait_byte_done(int controller)
 {
 	uint8_t sts = MEC1322_I2C_STATUS(controller);
 	uint64_t block_timeout = get_time().val + I2C_WAIT_BLOCKING_TIMEOUT_US;
-	int rv;
+	int rv = 0;
 
 	while (sts & STS_PIN) {
-		if (get_time().val > block_timeout) {
+		if (rv)
+			return rv;
+		if (get_time().val > block_timeout)
 			rv = wait_for_interrupt(controller);
-			if (rv)
-				return rv;
-		}
 		sts = MEC1322_I2C_STATUS(controller);
 	}
 
