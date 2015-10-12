@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eadb2204_f04aa03e",
+        "filename": "board/oak/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-12T15:38:45Z",
+      "side": 1,
+      "message": "can you add to the comment describing why this cannot be done in board_pre_init() due to watchdog wake",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 42
+      },
+      "revId": "79589cd69e906f307c8b0e2dcc0073abf9bc1d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
