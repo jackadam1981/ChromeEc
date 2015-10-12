@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fa9b65d_08cf07e7",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-12T19:39:24Z",
+      "side": 1,
+      "message": "We should put this change behind CONFIG_PWM_DSLEEP.",
+      "revId": "de9e33510b123155c4276ad7357873189c46a6a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
