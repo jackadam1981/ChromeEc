@@ -22,6 +22,30 @@
       "revId": "91df19a112866dfa8a8b0f9ed2d32c6b752b733e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa3be81_aceb67cf",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-12T22:05:06Z",
+      "side": 1,
+      "message": "The intent is that it would get memset in main.\n\nThe location and size comes from the CONFIG_LOADER_(MEM_OFF/SIZE).\n\nAlso, I wonder if I should combine this change with the parent change.",
+      "parentUuid": "5fa8725b_2ab2fb21",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 12
+      },
+      "revId": "91df19a112866dfa8a8b0f9ed2d32c6b752b733e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
