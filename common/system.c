@@ -26,6 +26,7 @@
 #include "usb_pd.h"
 #include "util.h"
 #include "version.h"
+#include "watchdog.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
@@ -478,6 +479,13 @@ int system_run_image_copy(enum system_image_copy_t copy)
 {
 	uintptr_t base;
 	uintptr_t init_addr;
+#ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
+	uint8_t *buf;
+	uint32_t offset;
+	uint32_t bytes_to_load;
+	uint32_t read_len;
+	int rv;
+#endif /* defined(CONFIG_REPLACE_LOADER_WITH_BSS_SLOW) */
 
 	/* If system is already running the requested image, done */
 	if (system_get_image_copy() == copy)
@@ -506,6 +514,38 @@ int system_run_image_copy(enum system_image_copy_t copy)
 		return EC_ERROR_INVAL;
 
 #ifdef CONFIG_EXTERNAL_STORAGE
+#ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
+	/*
+	 * We've used the region in which the loader resided as data space for
+	 * the .bss.slow section.  Therefore, we need to reload the loader from
+	 * the external storage back into program memory so that we can load a
+	 * different image.
+	 */
+	buf = (uint8_t *)(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_LOADER_MEM_OFF);
+	bytes_to_load = CONFIG_LOADER_SIZE;
+	offset = CONFIG_EC_PROTECTED_STORAGE_OFF + CONFIG_LOADER_STORAGE_OFF;
+
+	while (bytes_to_load > 0) {
+		watchdog_reload();
+		/*
+		 * First read (bytes % SPI_FLASH_MAX_READ_SIZE), then in
+		 * multiples of SPI_FLASH_MAX_READ_SIZE.
+		 */
+		read_len = (bytes_to_load % SPI_FLASH_MAX_READ_SIZE) ?
+			(bytes_to_load % SPI_FLASH_MAX_READ_SIZE) :
+			SPI_FLASH_MAX_READ_SIZE;
+
+		rv = spi_flash_read(buf, offset, read_len);
+		if (rv)
+			return rv;
+
+		/* Update our position. */
+		bytes_to_load -= read_len;
+		offset += read_len;
+		buf += read_len;
+	};
+#endif /* defined(CONFIG_REPLACE_LOADER_WITH_BSS_SLOW) */
+
 	/* Jump to loader */
 	init_addr = system_get_lfw_address();
 
