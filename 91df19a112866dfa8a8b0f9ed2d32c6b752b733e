@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fa8725b_2ab2fb21",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-12T22:01:55Z",
+      "side": 1,
+      "message": "This needs to be before __bss_end, or it won\u0027t get memset().\n\nOr is the intent that it will always get memset() in main()?  But then we\u0027d need __bss_slow_start and __bss_slow_end so we know where it is and how big it is.",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 12
+      },
+      "revId": "91df19a112866dfa8a8b0f9ed2d32c6b752b733e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
