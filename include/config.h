@@ -46,81 +46,81 @@
 
 /*
  * Sensors in this mask are in forced mode: they needed to be polled
- * at their data rate frequency.
- */
-#undef CONFIG_ACCEL_FORCE_MODE_MASK
+  * at their data rate frequency.
+  */
+ #undef CONFIG_ACCEL_FORCE_MODE_MASK
 
-/* Specify type of accelerometers attached. */
-#undef CONFIG_ACCEL_KXCJ9
-#undef CONFIG_ACCEL_KX022
-#undef CONFIG_ACCELGYRO_LSM6DS0
-#undef CONFIG_ACCELGYRO_BMI160
+ /* Specify type of accelerometers attached. */
+ #undef CONFIG_ACCEL_KXCJ9
+ #undef CONFIG_ACCEL_KX022
+ #undef CONFIG_ACCELGYRO_LSM6DS0
+ #undef CONFIG_ACCELGYRO_BMI160
 
-/*
- * Use the old standard reference frame for accelerometers. The old
- * reference frame is:
- * Z-axis: perpendicular to keyboard, pointing up, such that if the device
- *  is sitting flat on a table, the accel reads +G.
- * X-axis: in the plane of the keyboard, pointing from the front lip to the
- *  hinge, such that if the device is oriented with the front lip touching
- *  the table and the hinge directly above, the accel reads +G.
- * Y-axis: in the plane of the keyboard, pointing to the right, such that
- *  if the device is on it's left side, the accel reads +G.
- *
- * Also, in the old reference frame, the lid accel matches the base accel
- * readings when lid is closed.
- */
-#undef CONFIG_ACCEL_STD_REF_FRAME_OLD
+ /*
+  * Use the old standard reference frame for accelerometers. The old
+  * reference frame is:
+  * Z-axis: perpendicular to keyboard, pointing up, such that if the device
+  *  is sitting flat on a table, the accel reads +G.
+  * X-axis: in the plane of the keyboard, pointing from the front lip to the
+  *  hinge, such that if the device is oriented with the front lip touching
+  *  the table and the hinge directly above, the accel reads +G.
+  * Y-axis: in the plane of the keyboard, pointing to the right, such that
+  *  if the device is on it's left side, the accel reads +G.
+  *
+  * Also, in the old reference frame, the lid accel matches the base accel
+  * readings when lid is closed.
+  */
+ #undef CONFIG_ACCEL_STD_REF_FRAME_OLD
 
-/*
- * Define the event to raise when BMI160 interrupt.
- * Must be within TASK_EVENT_MOTION_INTERRUPT_MASK.
- */
-#undef CONFIG_ACCELGYRO_BMI160_INT_EVENT
+ /*
+  * Define the event to raise when BMI160 interrupt.
+  * Must be within TASK_EVENT_MOTION_INTERRUPT_MASK.
+  */
+ #undef CONFIG_ACCELGYRO_BMI160_INT_EVENT
 
-/* Compile chip support for analog-to-digital convertor */
-#undef CONFIG_ADC
+ /* Compile chip support for analog-to-digital convertor */
+ #undef CONFIG_ADC
 
-/* ADC sample time selection. The value is chip-dependent. */
-#undef CONFIG_ADC_SAMPLE_TIME
+ /* ADC sample time selection. The value is chip-dependent. */
+ #undef CONFIG_ADC_SAMPLE_TIME
 
-/* Include the ADC analog watchdog feature in the ADC code */
-#define CONFIG_ADC_WATCHDOG
+ /* Include the ADC analog watchdog feature in the ADC code */
+ #define CONFIG_ADC_WATCHDOG
 
-/*
- * Some ALS modules may be connected to the EC. We need the command, and
- * specific drivers for each module.
- */
-#undef CONFIG_ALS
-#undef CONFIG_ALS_ISL29035
-#undef CONFIG_ALS_OPT3001
-/* Define the exact model ID present on the board: SI1141 = 41, SI1142 = 42, */
-#undef CONFIG_ALS_SI114X
-/* Check if the device revision is supported */
-#undef CONFIG_ALS_SI114X_CHECK_REVISION
-/*
- * Define the event to raise when BMI160 interrupt.
- * Must be within TASK_EVENT_MOTION_INTERRUPT_MASK.
- */
-#undef CONFIG_ALS_SI114X_INT_EVENT
+ /*
+  * Some ALS modules may be connected to the EC. We need the command, and
+  * specific drivers for each module.
+  */
+ #undef CONFIG_ALS
+ #undef CONFIG_ALS_ISL29035
+ #undef CONFIG_ALS_OPT3001
+ /* Define the exact model ID present on the board: SI1141 = 41, SI1142 = 42, */
+ #undef CONFIG_ALS_SI114X
+ /* Check if the device revision is supported */
+ #undef CONFIG_ALS_SI114X_CHECK_REVISION
+ /*
+  * Define the event to raise when BMI160 interrupt.
+  * Must be within TASK_EVENT_MOTION_INTERRUPT_MASK.
+  */
+ #undef CONFIG_ALS_SI114X_INT_EVENT
 
-/* Support AP hang detection host command and state machine */
-#undef CONFIG_AP_HANG_DETECT
+ /* Support AP hang detection host command and state machine */
+ #undef CONFIG_AP_HANG_DETECT
 
-/* Support AP Warm reset Interrupt. */
-#undef CONFIG_AP_WARM_RESET_INTERRUPT
+ /* Support AP Warm reset Interrupt. */
+ #undef CONFIG_AP_WARM_RESET_INTERRUPT
 
-/*
- * Support controlling the display backlight based on the state of the lid
- * switch.  The EC will disable the backlight when the lid is closed.
- */
-#undef CONFIG_BACKLIGHT_LID
+ /*
+  * Support controlling the display backlight based on the state of the lid
+  * switch.  The EC will disable the backlight when the lid is closed.
+  */
+ #undef CONFIG_BACKLIGHT_LID
 
-/*
- * If defined, EC will enable the backlight signal only if this GPIO is
- * asserted AND the lid is open.  This supports passing the backlight-enable
- * signal from the AP through EC.
- */
+ /*
+  * If defined, EC will enable the backlight signal only if this GPIO is
+  * asserted AND the lid is open.  This supports passing the backlight-enable
+  * signal from the AP through EC.
+   */
 #undef CONFIG_BACKLIGHT_REQ_GPIO
 
 /*****************************************************************************/
@@ -791,6 +791,12 @@
 
 #undef CONFIG_FW_PSTATE_OFF
 #undef CONFIG_FW_PSTATE_SIZE
+
+/*
+ * Reuse the space that was occupied in RAM by the little firmware (LFW) loader
+ * with the section ".bss.slow" instead.
+ */
+#undef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
 
 /*
  * Read-only / read-write image configuration.
