@@ -94,6 +94,30 @@
       "revId": "7cf88f756a84226c9fb5db9c9782ffb418a920dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f30ba11_a93e9ea5",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-13T21:50:49Z",
+      "side": 1,
+      "message": "Ah, I didn\u0027t see flash_physical_read() (or rather flash_read()) when writing this CL. I see that it has a 1ms per read though.\n\nI\u0027ll change this to flash_read(). Thanks.",
+      "parentUuid": "5fa8725b_b8388106",
+      "range": {
+        "startLine": 530,
+        "startChar": 2,
+        "endLine": 533,
+        "endChar": 5
+      },
+      "revId": "7cf88f756a84226c9fb5db9c9782ffb418a920dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
