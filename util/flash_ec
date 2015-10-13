@@ -55,6 +55,7 @@ BOARDS_STM32=(
 	blaze
 	discovery
 	glados_pd
+	lars_pd
 	honeybuns
 	jerry
 	kitty
@@ -95,6 +96,7 @@ BOARDS_NRF51=(
 )
 
 BOARDS_MEC1322=(
+	lars
 	cyan
 	glados
 	glower
