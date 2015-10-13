@@ -5,11 +5,13 @@
  * TI bq24773 battery charger driver.
  */
 
+#include "battery.h"
 #include "battery_smart.h"
 #include "bq24773.h"
 #include "charger.h"
 #include "console.h"
 #include "common.h"
+#include "hooks.h"
 #include "util.h"
 
 /*
@@ -248,3 +250,40 @@ int charger_discharge_on_ac(int enable)
 
 	return rv;
 }
+
+/*****************************************************************************/
+/* Hooks */
+
+/* 
+ * Disable IDPM, Auto Awake when battery is not there. See crosbug.com/p/46431
+ * Activate it only external battery detection method is. We cannot believe BP info yet.
+ */
+#if defined(CONFIG_BATTERY_PRESENT_CUSTOM) ||	\
+		defined(CONFIG_BATTERY_PRESENT_GPIO)
+static void bq24773_set_bp_mode(void)
+{
+	int rv;
+	int option0, option1;
+	rv = charger_get_option(&option0);
+	rv |= raw_read16(REG_CHARGE_OPTION1, &option1);
+
+	if (rv)
+		return;
+
+	if (battery_is_present()) {
+		option0 &= ~OPTION0_CHARGE_INHIBIT;
+		option0 |= OPTION0_CHARGE_IDPM_ENABLE;
+		option1 |= OPTION1_AUTO_WAKEUP_ENABLE;
+	}
+	else {
+		option0 |= OPTION0_CHARGE_INHIBIT;
+		option0 &= ~OPTION0_CHARGE_IDPM_ENABLE;
+		option1 &= ~OPTION1_AUTO_WAKEUP_ENABLE;
+	}
+
+	charger_set_option(option0);
+	raw_write16(REG_CHARGE_OPTION1, option1);
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, bq24773_set_bp_mode, \
+						HOOK_PRIO_DEFAULT);
+#endif

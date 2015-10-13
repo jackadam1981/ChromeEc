@@ -40,6 +40,7 @@
 static const struct battery_info *batt_info;
 static struct charge_state_data curr;
 static int prev_ac, prev_charge, prev_full;
+static enum battery_present prev_bp;
 static int is_full; /* battery not accepting current */
 static int state_machine_force_idle;
 static int manual_mode;  /* volt/curr are no longer maintained by charger */
@@ -568,6 +569,7 @@ void charger_task(void)
 		curr.desired_input_current = CONFIG_CHARGER_INPUT_CURRENT;
 	else
 		curr.desired_input_current = info->input_current_max;
+	prev_bp = curr.batt.is_present;
 
 	while (1) {
 
@@ -611,6 +613,12 @@ void charger_task(void)
 		}
 		charger_get_params(&curr.chg);
 		battery_get_params(&curr.batt);
+
+		/* Disable IDPM, Auto Awake when battery is gone. crosbug.com/p/46431 */
+		if (prev_bp != curr.batt.is_present) {
+			hook_notify(HOOK_BATTERY_SOC_CHANGE);
+			prev_bp = curr.batt.is_present;
+		}
 
 		/* Fake state of charge if necessary */
 		if (fake_state_of_charge >= 0) {
