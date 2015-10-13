@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa3be81_bdd94f7f",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-13T18:33:35Z",
+      "side": 1,
+      "message": "the default defined in config.h is 512. is there any reason to go larger than that? might be able to save more space.",
+      "range": {
+        "startLine": 17,
+        "startChar": 32,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "7e6a9df1ac91a8362d0207801b08e9e843090639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
