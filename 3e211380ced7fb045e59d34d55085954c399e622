@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa3be81_f76e087a",
+        "filename": "driver/charger/bq2589x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-13T00:31:54Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be moved down below disabling the watchdog timer? just for the extreme corner case that the chip watchdog resets immediately after setting these. then, these bits would remain at the default value.",
+      "range": {
+        "startLine": 310,
+        "startChar": 1,
+        "endLine": 315,
+        "endChar": 9
+      },
+      "revId": "3e211380ced7fb045e59d34d55085954c399e622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
