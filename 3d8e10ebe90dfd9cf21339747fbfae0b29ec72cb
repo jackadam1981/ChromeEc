@@ -22,6 +22,30 @@
       "revId": "3d8e10ebe90dfd9cf21339747fbfae0b29ec72cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fae6a64_facfd1b0",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-10-13T18:01:48Z",
+      "side": 1,
+      "message": "No, this means that if the *EC* holds the PCH_PWRBTTN_L active (and it is an active low signal, so holds it at 0) for 4 seconds we will surely shutdown.\n\nOn a traditional PC the PCH_PWRBTN_L is connected to the power button, and if you assert this signal for 4 seconds then the SoC itself switches to S5. This is your \"emergency shutdown\" and happens regardless of how hung your software is.\n\nOn this chrome system when the power button is pressed the EC notices, and pulses the PCH_PWRBTN_L for \"T0\" which is about 30ms. Then the EC waits for \"T1\" which is 4 seconds minus 30ms. Then the EC again asserts PCH_PWRBTN_L. So after 8 seconds (T0 + T1 plus this 4) then (a) the SoC will be down (S5) as the hardware is supposed to enforce this and (b) the EC state machine will agree that it is down and move it to G3.\n\nThis also handles cases like the DUT is off, and someone holds the power button for 10 seconds. It will start to boot, then after 8 seconds it will be off again.\n\nThis is all to do with shutdowns when powerd is not running. In the normal case powerd will do the shutdown. This handles cases like the FAFT test where powerd is killed.",
+      "parentUuid": "3fa3be81_7de517b8",
+      "range": {
+        "startLine": 141,
+        "startChar": 43,
+        "endLine": 141,
+        "endChar": 53
+      },
+      "revId": "3d8e10ebe90dfd9cf21339747fbfae0b29ec72cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
