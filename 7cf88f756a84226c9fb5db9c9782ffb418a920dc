@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f2b7617_95416402",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-10-13T07:12:20Z",
+      "side": 1,
+      "message": "could you please explain rationale for this?\n\n(if this is really helpful, why can\u0027t we have this improvement in spi_flash_read() instead, rather than having one more wrapper around it?)",
+      "range": {
+        "startLine": 530,
+        "startChar": 2,
+        "endLine": 533,
+        "endChar": 5
+      },
+      "revId": "7cf88f756a84226c9fb5db9c9782ffb418a920dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
