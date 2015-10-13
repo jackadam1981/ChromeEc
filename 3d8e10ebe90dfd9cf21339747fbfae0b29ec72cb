@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa3be81_7de517b8",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2015-10-13T17:36:51Z",
+      "side": 1,
+      "message": "Does this mean that if the user ever presses the power button for more than 4 seconds we will surely shut down?\n\nThe EC spec suggests this should be an 8s hold to force shut down, though perhaps that would interact badly with other code in this area?",
+      "range": {
+        "startLine": 141,
+        "startChar": 43,
+        "endLine": 141,
+        "endChar": 53
+      },
+      "revId": "3d8e10ebe90dfd9cf21339747fbfae0b29ec72cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
