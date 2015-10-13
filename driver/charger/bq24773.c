@@ -5,12 +5,20 @@
  * TI bq24773 battery charger driver.
  */
 
+#include "battery.h"
 #include "battery_smart.h"
 #include "bq24773.h"
 #include "charger.h"
 #include "console.h"
 #include "common.h"
+#include "gpio.h"
+#include "hooks.h"
+#include "timer.h"
 #include "util.h"
+
+/* Console output macros */
+#define CPUTS(outstr) cputs(CC_CHARGER, outstr)
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
 /*
  * on the I2C version of the charger,
@@ -177,12 +185,29 @@ int charger_set_voltage(int voltage)
 	return raw_write16(REG_MAX_CHARGE_VOLTAGE, voltage);
 }
 
+#ifdef CONFIG_CHARGER_MONITOR_BP
+enum battery_present battery_is_present(void)
+{
+	int mode;
+
+	if (battery_get_mode(&mode) == EC_SUCCESS)
+		return BP_YES;
+	return BP_NOT_SURE;
+}
+#endif
+
 /* Charging power state initialization */
 int charger_post_init(void)
 {
 	int rv, option;
 #ifdef CONFIG_CHARGER_ILIM_PIN_DISABLED
 	int option2;
+#endif
+
+#ifdef CONFIG_CHARGER_MONITOR_BP
+	charger_set_bp_mode(battery_is_present());
+	/* TODO : monitoring method needed when BP is not HW(GPIO here) detection */
+	gpio_enable_interrupt(GPIO_BAT_PRESENT_L);
 #endif
 
 	rv = charger_get_option(&option);
@@ -248,3 +273,71 @@ int charger_discharge_on_ac(int enable)
 
 	return rv;
 }
+
+/*****************************************************************************/
+/* Interrupt Handler */
+
+#ifdef CONFIG_CHARGER_MONITOR_BP
+#define BP_DEBOUNCE_US (30 * MSEC)  /* Debounce time for bp pin */
+
+static int debounced_bp_changed;	/* Debounced bp pin state */
+static volatile int battery_present_is_stable = 1;
+
+/* Disable IDPM, Auto Awake when battery is not there. See crosbug.com/p/46431 */
+int charger_set_bp_mode(enum battery_present bp)
+{
+	int rv;
+	int option0, option1;
+
+	rv = charger_get_option(&option0);
+	rv |= raw_read16(REG_CHARGE_OPTION1, &option1);
+
+	if (rv)
+		return rv;
+
+	if (bp == BP_YES) {
+		option0 &= ~OPTION0_CHARGE_INHIBIT;
+		option0 |= OPTION0_CHARGE_IDPM_ENABLE;
+		option1 |= OPTION1_AUTO_WAKEUP_ENABLE;
+	}
+	else if (bp == BP_NO)  {
+		option0 |= OPTION0_CHARGE_INHIBIT;
+		option0 &= ~OPTION0_CHARGE_IDPM_ENABLE;
+		option1 &= ~OPTION1_AUTO_WAKEUP_ENABLE;
+	}
+	/* Do nothing when bp is BP_NOT_SURE */
+
+	rv = charger_set_option(option0);
+	rv |= raw_write16(REG_CHARGE_OPTION1, option1);
+
+	return rv;
+}
+
+/**
+ * Handle debounced bp pin changing state.
+ */
+static void charger_battery_present_deferred(void)
+{
+	const int new_status = battery_is_present();
+
+	/* If bp pin hasn't changed state, nothing to do */
+	if (new_status == debounced_bp_changed) {
+		battery_present_is_stable = 1;
+		return;
+	}
+
+	debounced_bp_changed = new_status;
+	battery_present_is_stable = 1;
+
+	CPRINTS("battery detection pin %s", new_status ? "attached" : "released");
+	charger_set_bp_mode(new_status);
+}
+DECLARE_DEFERRED(charger_battery_present_deferred);
+
+void charger_battery_present_interrupt(enum gpio_signal signal)
+{
+	/* Reset bp pin debounce time */
+	battery_present_is_stable = 0;
+	hook_call_deferred(charger_battery_present_deferred, BP_DEBOUNCE_US);
+}
+#endif
