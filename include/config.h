@@ -267,6 +267,9 @@
 #undef CONFIG_CHARGER_V1
 #undef CONFIG_CHARGER_V2
 
+/* Change configuration if board has no battery */
+#undef CONFIG_CHARGER_BATT_NOT_PRESENT
+
 /* Compile charger-specific code for these chargers (pick at most one) */
 #undef CONFIG_CHARGER_BQ24707A
 #undef CONFIG_CHARGER_BQ24715

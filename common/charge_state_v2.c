@@ -394,14 +394,22 @@ static int charge_request(int voltage, int current)
 	if (r1 != EC_SUCCESS)
 		problem(PR_SET_VOLTAGE, r1);
 
-	/*
-	 * Set the charge inhibit bit when possible as it appears to save
-	 * power in some cases (e.g. Nyan with BQ24735).
-	 */
-	if (voltage > 0 || current > 0)
-		r3 = charger_set_mode(0);
-	else
-		r3 = charger_set_mode(CHARGE_FLAG_INHIBIT_CHARGE);
+#ifdef CONFIG_CHARGER_BATT_NOT_PRESENT
+	if (!curr.batt.is_present)
+		r3 = charger_set_mode(CHARGE_FLAG_DISABLE_IDPM_AW);
+	else {
+#endif
+		/*
+		 * Set the charge inhibit bit when possible as it appears to save
+		 * power in some cases (e.g. Nyan with BQ24735).
+		 */
+		if (voltage > 0 || current > 0)
+			r3 = charger_set_mode(0);
+		else
+			r3 = charger_set_mode(CHARGE_FLAG_INHIBIT_CHARGE);
+#ifdef CONFIG_CHARGER_BATT_NOT_PRESENT
+	}
+#endif
 	if (r3 != EC_SUCCESS)
 		problem(PR_SET_MODE, r3);
 
@@ -564,6 +572,7 @@ void charger_task(void)
 	 * as needed.
 	 */
 	battery_get_params(&curr.batt);
+
 	if (curr.batt.is_present == BP_YES || system_is_locked())
 		curr.desired_input_current = CONFIG_CHARGER_INPUT_CURRENT;
 	else

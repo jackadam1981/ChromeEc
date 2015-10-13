@@ -143,7 +143,30 @@ int charger_set_mode(int mode)
 		option |= OPTION0_CHARGE_INHIBIT;
 	else
 		option &= ~OPTION0_CHARGE_INHIBIT;
-	return charger_set_option(option);
+
+#ifdef CONFIG_CHARGER_BATT_NOT_PRESENT
+	{
+		int option1;
+
+		rv = raw_read16(REG_CHARGE_OPTION1, &option1);
+
+		if (rv)
+			return rv;
+
+		if (mode & CHARGE_FLAG_DISABLE_IDPM_AW) {
+			option &= ~OPTION0_CHARGE_IDPM_ENABLE;
+			option1 &= ~OPTION1_AUTO_WAKEUP_ENABLE;
+		}
+		else {
+			option |= OPTION0_CHARGE_IDPM_ENABLE;
+			option1 |= OPTION1_AUTO_WAKEUP_ENABLE;
+		}
+		rv = raw_write16(REG_CHARGE_OPTION1, option1);
+	}
+#endif
+	rv |= charger_set_option(option);
+
+	return rv;
 }
 
 int charger_get_current(int *current)

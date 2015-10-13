@@ -108,6 +108,7 @@
 #define CHARGE_FLAG_ENABLE_POLLING      (1 << 1)
 #define CHARGE_FLAG_POR_RESET           (1 << 2)
 #define CHARGE_FLAG_RESET_TO_ZERO       (1 << 3)
+#define CHARGE_FLAG_DISABLE_IDPM_AW       (1 << 4)
 /* Charger status */
 #define CHARGER_CHARGE_INHIBITED        (1 << 0)
 #define CHARGER_POLLING_ENABLED         (1 << 1)

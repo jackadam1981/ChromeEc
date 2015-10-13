@@ -42,8 +42,9 @@
 
 /* Option bits */
 #define OPTION0_CHARGE_INHIBIT          (1 << 0)
+#define OPTION0_CHARGE_IDPM_ENABLE      (1 << 1)
 #define OPTION0_LEARN_ENABLE            (1 << 5)
-
+#define OPTION1_AUTO_WAKEUP_ENABLE      (1 << 0)
 #define OPTION2_EN_EXTILIM              (1 << 7)
 
 /* Prochot Option bits */
