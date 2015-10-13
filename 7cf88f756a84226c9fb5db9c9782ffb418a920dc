@@ -46,6 +46,30 @@
       "revId": "7cf88f756a84226c9fb5db9c9782ffb418a920dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fae6a64_9afd7dd1",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-13T18:00:38Z",
+      "side": 1,
+      "message": "Seems like we should fix that by looping inside spi_flash_read() rather than doing so here (and everywhere else that uses spi_flash_read()).\n\nSuggest opening a bug for that fix and implementing in a separate CL.",
+      "parentUuid": "7fa9b65d_1f2bbb4e",
+      "range": {
+        "startLine": 530,
+        "startChar": 2,
+        "endLine": 533,
+        "endChar": 5
+      },
+      "revId": "7cf88f756a84226c9fb5db9c9782ffb418a920dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
