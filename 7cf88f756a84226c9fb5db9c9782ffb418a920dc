@@ -70,6 +70,30 @@
       "revId": "7cf88f756a84226c9fb5db9c9782ffb418a920dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fa8725b_b8388106",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1121520
+      },
+      "writtenOn": "2015-10-13T20:04:12Z",
+      "side": 1,
+      "message": "ok, but flash_physical_read() tries to do the same. Wouldn\u0027t be better to use flash_physical_read() instead, so we keep functionality in one place?",
+      "parentUuid": "7fa9b65d_1f2bbb4e",
+      "range": {
+        "startLine": 530,
+        "startChar": 2,
+        "endLine": 533,
+        "endChar": 5
+      },
+      "revId": "7cf88f756a84226c9fb5db9c9782ffb418a920dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
