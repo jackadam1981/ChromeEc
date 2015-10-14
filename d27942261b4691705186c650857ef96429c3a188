@@ -157,6 +157,29 @@
     },
     {
       "key": {
+        "uuid": "7fa9b65d_ddb3e6cf",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-14T15:02:00Z",
+      "side": 1,
+      "message": "In response to the local buffer question, I figure I would just write out the code that I think would work here:\n\nrv |\u003d i2c_xfer(I2C_PORT_TCPC, I2C_ADDR_TCPC(port),\n\t\t0, 0, payload, len, 0);\n\nrv |\u003d i2c_xfer(I2C_PORT_TCPC, I2C_ADDR_TCPC(port),\n\t\t0, 0, buf, 4, I2C_XFER_STOP);\n\nThen you don\u0027t need the memcpy a few lines down and buf can be 4 bytes.",
+      "range": {
+        "startLine": 652,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 35
+      },
+      "revId": "d27942261b4691705186c650857ef96429c3a188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15a33681_78ba053d",
         "filename": "driver/tcpm/fusb302.c",
         "patchSetId": 2
