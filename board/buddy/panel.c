@@ -16,8 +16,8 @@
 
 
 enum panel_id_list {
-	PANEL_LGC = 0,
-	PANEL_BOE,
+	PANEL_LGC_SLE = 0,
+	PANEL_LGC_SLK,
 	PANEL_COUNT,
 	PANEL_UNKNOWN,
 	PANEL_NONE,
@@ -38,12 +38,12 @@ static const struct converter_cfg converter_cfg_vals[PANEL_COUNT][CMD_NUM] = {
 		{0x05, 0xC7},
 	},
 	{
-		{0x00, 0xB1},
+		{0x00, 0x71},
 		{0x01, 0x43},
-		{0x02, 0x7B},
+		{0x02, 0x8A},
 		{0x03, 0x00},
 		{0x04, 0x00},
-		{0x05, 0xB7},
+		{0x05, 0xC7},
 	},
 };
 
@@ -60,9 +60,9 @@ static int get_panel_id(void)
 
 	switch (pin_status) {
 	case 0x00:
-		return PANEL_LGC;
-	case 0x01:
-		return PANEL_BOE;
+		return PANEL_LGC_SLE;
+	case 0x04:
+		return PANEL_LGC_SLK;
 	case 0x07:
 		return PANEL_NONE;
 	default:
