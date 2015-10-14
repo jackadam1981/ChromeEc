@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fae6a64_5047e113",
+        "filename": "board/lars/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-14T19:46:31Z",
+      "side": 1,
+      "message": "You might want to change these function names, and other functions / variables / comments.",
+      "revId": "c7a5329cd219486f1a981459828ba0288d95e7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df39c202_9d3cb460",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-14T19:46:31Z",
+      "side": 1,
+      "message": "Please keep these alpha-sorted.",
+      "revId": "c7a5329cd219486f1a981459828ba0288d95e7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa3be81_dbb3eecf",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-14T19:46:31Z",
+      "side": 1,
+      "message": "Here too.",
+      "revId": "c7a5329cd219486f1a981459828ba0288d95e7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
