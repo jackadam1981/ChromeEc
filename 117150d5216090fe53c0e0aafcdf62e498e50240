@@ -22,6 +22,30 @@
       "revId": "117150d5216090fe53c0e0aafcdf62e498e50240",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfb7aeb4_09862016",
+        "filename": "board/ryu/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-14T15:33:52Z",
+      "side": 1,
+      "message": "I will fix it,\nthe schematics confirm it\u0027s PC4,\nthe PC5 in the bug description was probably a typo.",
+      "parentUuid": "4aca6e3a_8e8d3bc0",
+      "range": {
+        "startLine": 66,
+        "startChar": 34,
+        "endLine": 66,
+        "endChar": 35
+      },
+      "revId": "117150d5216090fe53c0e0aafcdf62e498e50240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
