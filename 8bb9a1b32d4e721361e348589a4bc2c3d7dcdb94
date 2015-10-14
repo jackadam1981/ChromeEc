@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfb7aeb4_a9c03460",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-10-14T07:57:11Z",
+      "side": 1,
+      "message": "There is an auto restart feature (bit3 of the control register), will you be able to make use of that instead of having code to do the restart?",
+      "revId": "8bb9a1b32d4e721361e348589a4bc2c3d7dcdb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff32061b_1e037c4c",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-10-14T07:57:11Z",
+      "side": 1,
+      "message": "GIRQx Source Register is R/WC, so you will be clearing other bits that could be used elsewhere.\n\nLine 76~78 can be replaced with:\nMEC1322_INT_SOURCE(23) \u003d (1 \u003c\u003c 1);",
+      "revId": "8bb9a1b32d4e721361e348589a4bc2c3d7dcdb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff32061b_3e06405d",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-10-14T07:57:11Z",
+      "side": 1,
+      "message": "Why are line 79~81 repeated again?",
+      "revId": "8bb9a1b32d4e721361e348589a4bc2c3d7dcdb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
