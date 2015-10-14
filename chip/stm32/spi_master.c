@@ -222,6 +222,7 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 	if (rv != EC_SUCCESS)
 		goto err_free;
 
+	memset(buf, 0, rxlen);
 	if (rxlen) {
 		rv = spi_dma_start(port, buf, rxdata, rxlen);
 		if (rv != EC_SUCCESS)
