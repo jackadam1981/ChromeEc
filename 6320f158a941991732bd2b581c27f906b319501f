@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfb462b2_a3c4d199",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2015-10-14T16:24:14Z",
+      "side": 1,
+      "message": "since you are using GPIO to differentiate, why not just add this panel instead of substituting. That way the firmware will be backward compatible? Or do you specifically want to ensure that BOE panel will not be used?",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "6320f158a941991732bd2b581c27f906b319501f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
