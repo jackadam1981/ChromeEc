@@ -50,6 +50,29 @@
       "revId": "8bb9a1b32d4e721361e348589a4bc2c3d7dcdb94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfb462b2_5edfeaee",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-10-14T17:27:26Z",
+      "side": 1,
+      "message": "Even if TMR16(1) interrupt is disabled here, TMR16(1) is still running and consuming power and will prevent MEC1322 into heavysleep in _idle task at S3 or lower state. \nwhy don\u0027t you add disabling TMR16(1) here:\n    MEC1322_TMR16_CTL(1)\u0026\u003d ~1; \nand add re-enabling code in restart_timer() ?\nMEC1322_TMR16_CTL(1)|\u003d 1;\n\nOR/AND this can be added to _idle task just to make sure.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 1
+      },
+      "revId": "8bb9a1b32d4e721361e348589a4bc2c3d7dcdb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
