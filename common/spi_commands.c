@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "spi.h"
+#include "timer.h"
 #include "util.h"
 
 static int command_spixfer(int argc, char **argv)
@@ -52,6 +53,7 @@ static int command_spixfer(int argc, char **argv)
 		uint8_t cmd[2] = { offset, v };
 
 		rv = spi_transaction(&spi_devices[dev_id], cmd, 2, NULL, 0);
+		msleep(1);
 	} else {
 		return EC_ERROR_PARAM1;
 	}
