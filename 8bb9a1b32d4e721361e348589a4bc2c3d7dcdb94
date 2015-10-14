@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "df39c202_fdd4e01e",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-14T17:41:17Z",
+      "side": 1,
+      "message": "I think I can use that feature. I\u0027ll make the changes.",
+      "parentUuid": "bfb7aeb4_a9c03460",
+      "revId": "8bb9a1b32d4e721361e348589a4bc2c3d7dcdb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff32061b_1e037c4c",
         "filename": "chip/mec1322/port80.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-10-14T07:57:11Z",
       "side": 1,
       "message": "GIRQx Source Register is R/WC, so you will be clearing other bits that could be used elsewhere.\n\nLine 76~78 can be replaced with:\nMEC1322_INT_SOURCE(23) \u003d (1 \u003c\u003c 1);",
+      "revId": "8bb9a1b32d4e721361e348589a4bc2c3d7dcdb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfb462b2_be05c651",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-14T17:41:17Z",
+      "side": 1,
+      "message": "Ah, thought it was just R/W. My mistake; I\u0027ll fix this.",
+      "parentUuid": "ff32061b_1e037c4c",
       "revId": "8bb9a1b32d4e721361e348589a4bc2c3d7dcdb94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "df39c202_0ab17c30",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-14T17:41:17Z",
+      "side": 1,
+      "message": "79-81 is INT_ENABLE, not INT_SOURCE. But, I guess I just need to clear the source once before enabling?",
+      "parentUuid": "ff32061b_3e06405d",
+      "revId": "8bb9a1b32d4e721361e348589a4bc2c3d7dcdb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfb462b2_5edfeaee",
         "filename": "chip/mec1322/port80.c",
         "patchSetId": 1
@@ -64,6 +118,30 @@
       "writtenOn": "2015-10-14T17:27:26Z",
       "side": 1,
       "message": "Even if TMR16(1) interrupt is disabled here, TMR16(1) is still running and consuming power and will prevent MEC1322 into heavysleep in _idle task at S3 or lower state. \nwhy don\u0027t you add disabling TMR16(1) here:\n    MEC1322_TMR16_CTL(1)\u0026\u003d ~1; \nand add re-enabling code in restart_timer() ?\nMEC1322_TMR16_CTL(1)|\u003d 1;\n\nOR/AND this can be added to _idle task just to make sure.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 1
+      },
+      "revId": "8bb9a1b32d4e721361e348589a4bc2c3d7dcdb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fae6a64_2dc9aeb0",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-14T17:41:17Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll disable the block in port_80_interrupt_disable.",
+      "parentUuid": "dfb462b2_5edfeaee",
       "range": {
         "startLine": 104,
         "startChar": 0,
