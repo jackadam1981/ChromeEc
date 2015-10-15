@@ -243,3 +243,8 @@ static void adc_pre_init(void)
 	gpio_config_module(MODULE_ADC, 1);
 }
 DECLARE_HOOK(HOOK_INIT, adc_pre_init, HOOK_PRIO_INIT_ADC - 1);
+
+int port_is_smbus(int controller)
+{
+	return (controller == MEC1322_I2C0_0) ? 1 : 0;
+}
