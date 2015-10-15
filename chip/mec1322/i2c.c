@@ -35,6 +35,19 @@
 #define CTRL_ESO (1 << 6) /* Enable serial output */
 #define CTRL_PIN (1 << 7) /* Pending interrupt not */
 
+/* Config */
+#define CFG_TCEN (1 << 4)  /* Timing check enable */
+#define CFG_ENAB (1 << 10) /* SMB core normal/low power */
+
+/* Completion */
+#define CMP_DTEN   (1 << 2)  /* Device time-out enable */
+#define CMP_MCEN   (1 << 3)  /* Master cumulative time-out enable */
+#define CMP_SCEN   (1 << 4)  /* Slave cumulative time-out enable */
+#define CMP_TIMERR (1 << 6)  /* Time-out status bit */
+#define CMP_DTO    (1 << 8)  /* Device time-out status bit*/
+#define CMP_MCTO   (1 << 9)  /* Master cumulative time-out status bit*/
+#define CMP_SCTO   (1 << 10) /* Slave cumulative time-out status bit*/
+
 /* Maximum transfer of a SMBUS block transfer */
 #define SMBUS_MAX_BLOCK_SIZE 32
 
@@ -92,7 +105,21 @@ static void configure_controller(int controller, int kbps)
 	configure_controller_speed(controller, kbps);
 	MEC1322_I2C_CTRL(controller) = CTRL_PIN | CTRL_ESO |
 				       CTRL_ACK | CTRL_ENI;
-	MEC1322_I2C_CONFIG(controller) |= 1 << 10; /* ENAB */
+
+	/*
+	* To enable Master Cumulative time-out, Slave
+	* Cumulative time-out and Device time-out
+	* checking, need to set TCEN, MCEN, SCEN and DTEN.
+	* MEC1322_I2C_TOUT_SCALE default value is for 100KHz
+	* bus speed, so no need to reconfig.
+	*/
+	if (controller == 0) {
+		MEC1322_I2C_COMPLETE(controller) |=
+			(CMP_DTEN | CMP_MCEN | CMP_SCEN);
+		/* ENAB, TCEN */
+		MEC1322_I2C_CONFIG(controller) |= (CFG_ENAB | CFG_TCEN);
+	} else
+		MEC1322_I2C_CONFIG(controller) |= CFG_ENAB; /* ENAB */
 
 	/* Enable interrupt */
 	MEC1322_I2C_CONFIG(controller) |= 1 << 29; /* ENIDI */
@@ -167,13 +194,25 @@ static int wait_byte_done(int controller)
 	uint8_t sts = MEC1322_I2C_STATUS(controller);
 	int rv;
 	int event = 0;
+	uint32_t timeout_err;
 
 	while (sts & STS_PIN) {
 		rv = wait_for_interrupt(controller, &event);
 		if (rv)
 			return rv;
 		sts = MEC1322_I2C_STATUS(controller);
+
+		if (sts & STS_BER) {
+			timeout_err = MEC1322_I2C_COMPLETE(controller);
+			if (timeout_err & CMP_TIMERR) {
+				CPRINTS("i2c timeout, 0x%x", timeout_err);
+				MEC1322_I2C_COMPLETE(controller) |=
+					(CMP_DTO | CMP_MCTO | CMP_SCTO);
+				return EC_ERROR_TIMEOUT;
+			}
+		}
 	}
+
 	/*
 	 * Restore any events that we saw while waiting. TASK_EVENT_TIMER isn't
 	 * one, because we've handled it above.
