@@ -41,11 +41,11 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
+#ifdef CONFIG_BUTTON_COUNT
 test_mockable void button_interrupt(enum gpio_signal signal)
 {
 };
 
-#ifdef CONFIG_BUTTON_COUNT
 const struct button_config buttons[] = {
 	{"Volume Down", KEYBOARD_BUTTON_VOLUME_DOWN, GPIO_BUTTON_VOLUME_DOWN_L,
 	 30 * MSEC, 0},
