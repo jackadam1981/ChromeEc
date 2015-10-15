@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "996cca16_d6cc6448",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-15T17:28:21Z",
+      "side": 1,
+      "message": "Why are you undoing these settings on startup? I believe the system will auto-power on as soon as the EC is powered via battery or charger. In that case, your bq24773_init will only be active for a very short time, between HOOK_INIT and HOOK_CHIPSET_STARTUP. Is this really what you want?",
+      "revId": "910bb5792474fe2cd2a9b22306623c8e042ccbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
