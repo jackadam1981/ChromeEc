@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9550e3b_d7c1fcb5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-15T17:49:13Z",
+      "side": 1,
+      "message": "this seems to be an unrelated change to the rest of this CL. is locking a mutex required around any of the other queue operations?",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 31
+      },
+      "revId": "f3224c7d557109504c34c55615743a00c1af7c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
