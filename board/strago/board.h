@@ -101,7 +101,8 @@
 #define I2C_PORT_GYRO		MEC1322_I2C2
 #define I2C_PORT_ALS		MEC1322_I2C2
 #define I2C_PORT_THERMAL	MEC1322_I2C3
-
+#undef  SMBUS_PORT
+#define SMBUS_PORT              MEC1322_I2C0_0
 /* ADC signal */
 enum adc_channel {
 	/* Number of ADC channels */
