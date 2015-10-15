@@ -100,7 +100,7 @@ void motion_sense_fifo_add_unit(struct ec_response_motion_sensor_data *data,
 
 	/* For valid sensors, check if AP really needs this data */
 	if (valid_data) {
-		/* Use Hz, conversion to FP will overflow with mHz */
+		/* Use Hz, conversion to FP will overflow with kHz */
 		fp_t ap_odr =
 			fp_div(BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr),
 			       1000);
@@ -190,7 +190,7 @@ static inline int motion_sensor_time_to_read(const timestamp_t *ts,
 	if (rate == 0)
 		return 0;
 	/*
-	 * converting from mHz to us, need 1e9,
+	 * converting from kHz to us, need 1e9,
 	 * If within 95% of the time, check sensor.
 	 */
 	return time_after(ts->le.lo,
@@ -242,18 +242,19 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 	return sensor->drv->set_data_rate(sensor, odr, roundup);
 }
 
-static inline int motion_sense_select_ec_rate(
+static int motion_sense_select_ec_rate(
 		const struct motion_sensor_t *sensor,
 		enum sensor_config config_id)
 {
 #ifdef CONFIG_ACCEL_FORCE_MODE_MASK
-	if (CONFIG_ACCEL_FORCE_MODE_MASK & (1 << (sensor - motion_sensors)))
+	if (CONFIG_ACCEL_FORCE_MODE_MASK & (1 << (sensor - motion_sensors))) {
+		int rate = BASE_ODR(sensor->config[config_id].odr);
 		/* we have to run ec at the sensor frequency rate.*/
-		if (sensor->config[config_id].odr > 0)
-			return 1000000 / sensor->config[config_id].odr;
+		if (rate > 0)
+			return 1000000 / rate;
 		else
 			return 0;
-	else
+	} else
 #endif
 		return sensor->config[config_id].ec_rate;
 }
@@ -276,9 +277,9 @@ static int motion_sense_ec_rate(struct motion_sensor_t *sensor)
 	ec_rate_from_cfg = motion_sense_select_ec_rate(
 			sensor, motion_sense_get_ec_config());
 
-	if ((ec_rate == 0 && ec_rate_from_cfg != 0) ||
-	    (ec_rate_from_cfg != 0 && ec_rate_from_cfg < ec_rate))
-		ec_rate = ec_rate_from_cfg;
+	if (ec_rate_from_cfg != 0)
+		if (ec_rate == 0 || ec_rate_from_cfg < ec_rate)
+			ec_rate = ec_rate_from_cfg;
 	return ec_rate * MSEC;
 }
 
@@ -309,7 +310,8 @@ int motion_sense_set_motion_intervals(void)
 		if (ec_rate == 0 || sensor_ec_rate < ec_rate)
 			ec_rate = sensor_ec_rate;
 
-		sensor_ec_rate = sensor->config[SENSOR_CONFIG_AP].ec_rate;
+		sensor_ec_rate = motion_sense_select_ec_rate(
+				sensor, SENSOR_CONFIG_AP);
 		if (ec_int_rate_ms == 0 ||
 		    (sensor_ec_rate && sensor_ec_rate < ec_int_rate_ms))
 			ec_int_rate_ms = sensor_ec_rate;
