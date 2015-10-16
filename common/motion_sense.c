@@ -22,6 +22,7 @@
 #include "motion_lid.h"
 #include "power.h"
 #include "queue.h"
+#include "system.h"
 #include "timer.h"
 #include "task.h"
 #include "util.h"
@@ -414,6 +415,19 @@ static void motion_sense_shutdown(void)
 			int activity = get_next_bit(&enabled);
 			sensor->drv->manage_activity(sensor, activity, 0, NULL);
 		}
+		/*
+		 * For RYU, we do not want double tap to be enabled while
+		 * shipping.
+		 * We disable double tap in factory while EC is in RO.
+		 * If we are in RW and shutting down, it means we have booted
+		 * once, So we should reenabled double tap.
+		 * See chrome-os-partner:46572
+		 */
+		if (system_get_image_copy() == SYSTEM_IMAGE_RW)
+			/* Be sure double tap is enabled */
+			sensor->drv->manage_activity(sensor,
+					MOTIONSENSE_ACTIVITY_DOUBLE_TAP,
+					1, NULL);
 	}
 #endif
 }
