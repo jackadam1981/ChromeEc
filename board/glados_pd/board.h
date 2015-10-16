@@ -9,6 +9,13 @@
 #define __CROS_EC_BOARD_H
 
 /*
+ * Use this to build one image only with a full EC console. Note, to
+ * get the console you have to also add the console task to ec.tasklist
+ */
+#undef BUILD_RW_ONLY_WITH_CONSOLE
+
+#ifdef BUILD_RW_ONLY_WITH_CONSOLE
+/*
  * The flash size is only 32kB.
  * No space for 2 partitions,
  * put only RW at the beginning of the flash
@@ -21,6 +28,7 @@
 /* Fake full size if we had a RO partition */
 #undef CONFIG_RW_SIZE
 #define CONFIG_RW_SIZE CONFIG_FLASH_SIZE
+#endif /* BUILD_RW_ONLY_WITH_CONSOLE */
 
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
@@ -31,9 +39,9 @@
 
 /* Optional features */
 #define CONFIG_ADC
+#undef  CONFIG_ADC_WATCHDOG
 #define CONFIG_BOARD_PRE_INIT
-#undef  CONFIG_CONSOLE_HISTORY
-#define CONFIG_CONSOLE_HISTORY 2
+#undef  CONFIG_DEBUG_ASSERT
 #define CONFIG_FORCE_CONSOLE_RESUME
 #define CONFIG_HIBERNATE
 #define CONFIG_HIBERNATE_WAKEUP_PINS STM32_PWR_CSR_EWUP2
@@ -43,6 +51,8 @@
 #define CONFIG_I2C_SLAVE_ONLY
 #undef  CONFIG_LID_SWITCH
 #define CONFIG_LOW_POWER_IDLE
+#define CONFIG_LTO
+#define CONFIG_COMMON_GPIO_SHORTNAMES
 #define CONFIG_STM_HWTIMER32
 #undef  CONFIG_TASK_PROFILING
 #undef  CONFIG_UART_TX_BUF_SIZE
@@ -57,6 +67,16 @@
 #define CONFIG_VBOOT_HASH
 #define CONFIG_WATCHDOG
 #undef  CONFIG_WATCHDOG_HELP
+
+#ifdef BUILD_RW_ONLY_WITH_CONSOLE
+#undef  CONFIG_CONSOLE_HISTORY
+#define CONFIG_CONSOLE_HISTORY 2
+#else
+#undef  CONFIG_CONSOLE_CMDHELP
+#define CONFIG_DEBUG_PRINTF
+#define UARTN CONFIG_UART_CONSOLE
+#define UARTN_BASE STM32_USART_BASE(CONFIG_UART_CONSOLE)
+#endif /* BUILD_RW_ONLY_WITH_CONSOLE */
 
 /* Use PSTATE embedded in the RO image, not in its own erase block */
 #undef  CONFIG_FLASH_PSTATE_BANK
