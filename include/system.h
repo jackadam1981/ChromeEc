@@ -420,4 +420,20 @@ uintptr_t system_get_fw_reset_vector(uintptr_t base);
  */
 int system_is_reboot_warm(void);
 
+#ifndef CHIP_HOST
+/**
+ * Initialize the true random number generator.
+ *
+ * Not supported by all platforms.
+ **/
+void init_trng(void);
+
+/**
+ * Retrieve a 32 bit random value.
+ *
+ * Not supported on all platforms.
+ **/
+uint32_t rand(void);
+#endif
+
 #endif  /* __CROS_EC_SYSTEM_H */
