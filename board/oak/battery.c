@@ -15,11 +15,7 @@
 #define PARAM_CUT_OFF_HIGH 0x00
 
 static const struct battery_info info = {
-#if (BOARD_REV > OAK_REV3)
-	.voltage_max = 13050,
-	.voltage_normal = 11400,
-	.voltage_min = 9000,
-#elif (BOARD_REV == OAK_REV3)
+#if (BOARD_REV >= OAK_REV3)
 	.voltage_max = 13050,
 	.voltage_normal = 11400,
 	/*
