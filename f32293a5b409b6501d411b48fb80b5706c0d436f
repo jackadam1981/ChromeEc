@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d90802ae_a809bb44",
+        "filename": "chip/npcx/jtag.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-16T17:11:02Z",
+      "side": 1,
+      "message": "It\u0027s better style to use #ifdef for this.",
+      "revId": "f32293a5b409b6501d411b48fb80b5706c0d436f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
