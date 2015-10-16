@@ -252,6 +252,11 @@ int task_start_called(void)
 	return start_called;
 }
 
+void disable_task_switching(void)
+{
+	task_started = 0;
+}
+
 int get_sw_int(void)
 {
 	/* If this is a SW interrupt */

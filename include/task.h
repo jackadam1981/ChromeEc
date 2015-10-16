@@ -186,6 +186,13 @@ int task_start(void);
  */
 int task_start_called(void);
 
+/**
+ * Disable task switching.
+ *
+ * All this does is pretend that we haven't started task switching.
+ */
+void disable_task_switching(void);
+
 #ifdef CONFIG_FPU
 /**
  * Clear floating-point used flag for currently executing task. This means the
