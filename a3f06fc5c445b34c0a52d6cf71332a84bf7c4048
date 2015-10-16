@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "f9bdc694_e8694625",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-16T15:18:47Z",
+      "side": 1,
+      "message": "I think I figured why I was hitting a forced hard fault. The flash_read below ends up making a supervisor call in __wait_evt() as a result of sleeping instead of delaying. If I disable interrupts after the flash_read, I don\u0027t see a forced hard fault. But now, I\u0027m seeing an exception the loader...",
+      "parentUuid": "d952c250_4719b819",
+      "range": {
+        "startLine": 491,
+        "startChar": 1,
+        "endLine": 492,
+        "endChar": 26
+      },
+      "revId": "a3f06fc5c445b34c0a52d6cf71332a84bf7c4048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99ae8a64_4de18aab",
         "filename": "common/system.c",
         "patchSetId": 2
