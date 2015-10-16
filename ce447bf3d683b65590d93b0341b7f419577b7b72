@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79fd56bf_6bbbb54c",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-10-16T23:01:43Z",
+      "side": 1,
+      "message": "can numbers in lines 49 and 50 be derived from some configuration settings?\n\nWhat is the significance of 7 in line 51?",
+      "revId": "ce447bf3d683b65590d93b0341b7f419577b7b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
