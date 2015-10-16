@@ -45,6 +45,11 @@
 
 int flash_pre_init(void)
 {
+	/* Enable flash access to bank 1 */
+	GREG32(GLOBALSEC, FLASH_REGION2_BASE_ADDR) = 0x80000;
+	GREG32(GLOBALSEC, FLASH_REGION2_SIZE) = 0x3ffff;
+	GREG32(GLOBALSEC, FLASH_REGION2_CTRL) = 7;
+
 	return EC_SUCCESS;
 }
 
