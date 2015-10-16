@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "79d47637_ed18e518",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-16T18:11:02Z",
+      "side": 1,
+      "message": "Is it better to do this from charger_post_init()?",
+      "revId": "910bb5792474fe2cd2a9b22306623c8e042ccbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79d47637_0d99f1eb",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-16T18:11:02Z",
+      "side": 1,
+      "message": "Need to fix comment style here.\n\n/*\n * Comment...\n * Comment.......\n */",
+      "revId": "910bb5792474fe2cd2a9b22306623c8e042ccbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "996cca16_d6cc6448",
         "filename": "driver/charger/bq24773.c",
         "patchSetId": 2
