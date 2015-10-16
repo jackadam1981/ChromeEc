@@ -183,6 +183,11 @@ int task_start_called(void)
 	return start_called;
 }
 
+void dsiable_task_switching(void)
+{
+	start_called = 0;
+}
+
 /**
  * Scheduling system call
  */

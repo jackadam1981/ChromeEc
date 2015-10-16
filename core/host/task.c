@@ -354,6 +354,11 @@ int task_start_called(void)
 	return task_started;
 }
 
+void disable_task_switching(void)
+{
+	task_started = 0;
+}
+
 void task_scheduler(void)
 {
 	int i;

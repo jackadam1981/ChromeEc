@@ -223,8 +223,10 @@ SECTIONS
         *(.bss.system_stack)
 	/* Rest of .bss takes care of its own alignment */
         *(.bss)
+#ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
         . = ALIGN(4);
         __bss_end = .;
+#endif /* defined(CONFIG_REPLACE_LOADER_WITH_BSS_SLOW) */
     } > IRAM
 
     .bss.slow : {
@@ -233,6 +235,8 @@ SECTIONS
 #ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
     } > LDR_REGION
 #else
+        . = ALIGN(4);
+        __bss_end = .;
     } > IRAM
 #endif /* defined(CONFIG_REPLACE_LOADER_WITH_BSS_SLOW) */
 
