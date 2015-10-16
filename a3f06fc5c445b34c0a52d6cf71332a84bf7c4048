@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "b9550e3b_86c2b464",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-16T13:51:16Z",
+      "side": 1,
+      "message": "those variables are just constants, please just pass constants to the function call",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 431,
+        "endChar": 24
+      },
+      "revId": "a3f06fc5c445b34c0a52d6cf71332a84bf7c4048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d952c250_4719b819",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-16T13:51:16Z",
+      "side": 1,
+      "message": "there is already interrupt_disable() at line 462, so scheduling will happen after that point.",
+      "range": {
+        "startLine": 491,
+        "startChar": 1,
+        "endLine": 492,
+        "endChar": 26
+      },
+      "revId": "a3f06fc5c445b34c0a52d6cf71332a84bf7c4048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99ae8a64_4de18aab",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-16T13:51:16Z",
+      "side": 1,
+      "message": "no ccprintf in non-interactive code.\nby the way, a regular print without flush is unlikely to produce anything useful at that point (ie just before reset)",
+      "range": {
+        "startLine": 501,
+        "startChar": 2,
+        "endLine": 501,
+        "endChar": 10
+      },
+      "revId": "a3f06fc5c445b34c0a52d6cf71332a84bf7c4048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1959ba73_6375d0f6",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
@@ -13,6 +82,24 @@
       "writtenOn": "2015-10-16T01:41:54Z",
       "side": 1,
       "message": "I don\u0027t see this being used anywhere else for now. Is there a better way to inhibit task switching?",
+      "revId": "a3f06fc5c445b34c0a52d6cf71332a84bf7c4048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9943ea80_b8d8a952",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-16T13:51:16Z",
+      "side": 1,
+      "message": "Yes disabling interrupts\nthis stuff is totally ineffective...",
+      "parentUuid": "1959ba73_6375d0f6",
       "revId": "a3f06fc5c445b34c0a52d6cf71332a84bf7c4048",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
