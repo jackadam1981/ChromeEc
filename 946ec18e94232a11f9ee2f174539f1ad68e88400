@@ -22,6 +22,30 @@
       "revId": "946ec18e94232a11f9ee2f174539f1ad68e88400",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79fd56bf_c8fcef27",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-16T20:31:39Z",
+      "side": 1,
+      "message": "Before packing, we boot in bootloader mode: the boot loader revert the EC to RO before accepting commands. We issue:\nfastboot oem Double-tap-disable\n--\u003e that command disable double tap (it was set when we init the sensor).\n\n--\u003e fastboot oem Powerdown\nend up calling motion_sense_shutdown() while in RO, for older RO (and this change), we do not re-enable double tap, so ryu will ship with double tap disabled.\n\nWhen we are in RW we are re-enabling double tap: that will be the state when the user is shutting down the tablet.\n\nI agree this is not clean, but given I can not touch RO anymore, this is a working solution.",
+      "parentUuid": "59e3321f_efea1d15",
+      "range": {
+        "startLine": 421,
+        "startChar": 5,
+        "endLine": 421,
+        "endChar": 55
+      },
+      "revId": "946ec18e94232a11f9ee2f174539f1ad68e88400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
