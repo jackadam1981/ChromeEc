@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1959ba73_6375d0f6",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-16T01:41:54Z",
+      "side": 1,
+      "message": "I don\u0027t see this being used anywhere else for now. Is there a better way to inhibit task switching?",
+      "revId": "a3f06fc5c445b34c0a52d6cf71332a84bf7c4048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
