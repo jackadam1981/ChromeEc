@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59e3321f_efea1d15",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-16T20:01:44Z",
+      "side": 1,
+      "message": "while EC would be in RO at factory ?\nI don\u0027t fully understand the logic here",
+      "range": {
+        "startLine": 421,
+        "startChar": 5,
+        "endLine": 421,
+        "endChar": 55
+      },
+      "revId": "946ec18e94232a11f9ee2f174539f1ad68e88400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
