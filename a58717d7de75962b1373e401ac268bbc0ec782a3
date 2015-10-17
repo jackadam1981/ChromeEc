@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79d47637_61507ef1",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-10-17T01:01:19Z",
+      "side": 1,
+      "message": "It would be nice since you are having to add 1\u003c\u003c4 to add it as #define and since you are doing that do the same with 1\u003c\u003c10.",
+      "revId": "a58717d7de75962b1373e401ac268bbc0ec782a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99d92a72_820c8a11",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2015-10-17T01:01:19Z",
+      "side": 1,
+      "message": "Should this \"if\" block be before the \"rv \u003d wait...\" line?\n\nIt seems wrong to read the status in line 190, and only use 1 bit of it. However I haven\u0027t read the datasheets.",
+      "revId": "a58717d7de75962b1373e401ac268bbc0ec782a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
