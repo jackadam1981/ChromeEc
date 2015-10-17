@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99020a8c_ef7331a5",
+        "filename": "common/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-17T15:11:18Z",
+      "side": 1,
+      "message": "this seems risky : as soon as you define CONFIG_DEBUG_PRINTF, divmod returns wrong results ?\n\nunless you are counting on the compiler type checking to warn you, would this always work in this case ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 62
+      },
+      "revId": "eb458de785f106c04e2990ef988f8c403d31dd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
