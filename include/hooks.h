@@ -94,6 +94,13 @@ enum hook_type {
 	HOOK_CHIPSET_RESUME,
 
 	/*
+	 * System is entering standby with network connected.(Lucid Sleep)
+	 *
+	 * Hook routines are called from the chipset task.
+	 */
+	HOOK_CHIPSET_STANDBY,
+
+	/*
 	 * System is suspending, or shutting down; all voltage rails are still
 	 * on.
 	 *
