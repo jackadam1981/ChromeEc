@@ -46,6 +46,30 @@
       "revId": "eb458de785f106c04e2990ef988f8c403d31dd60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f3ea1a_4172d4cf",
+        "filename": "common/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-19T17:33:35Z",
+      "side": 1,
+      "message": "I overlooked that this function was actually static and not messing up the uint64divmod API,\nfine then",
+      "parentUuid": "b90b4ea8_d6148a5a",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 62
+      },
+      "revId": "eb458de785f106c04e2990ef988f8c403d31dd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
