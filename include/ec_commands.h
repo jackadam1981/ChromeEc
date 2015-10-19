@@ -150,7 +150,7 @@
 #define EC_BATT_FLAG_BATT_PRESENT 0x02
 #define EC_BATT_FLAG_DISCHARGING  0x04
 #define EC_BATT_FLAG_CHARGING     0x08
-#define EC_BATT_FLAG_LEVEL_CRITICAL 0x10
+#define EC_BATT_FLAG_LEVEL_CRITICAL  0x10
 
 /* Switch flags at EC_MEMMAP_SWITCHES */
 #define EC_SWITCH_LID_OPEN               0x01
@@ -433,6 +433,8 @@ enum host_event_code {
 
 	/* Keyboard fastboot combo has been pressed */
 	EC_HOST_EVENT_KEYBOARD_FASTBOOT = 25,
+
+	EC_HOST_EVENT_ENERGY_LOW = 26,
 
 	/*
 	 * The high bit of the event mask is not used as a host event code.  If
