@@ -248,9 +248,13 @@ void lfw_main()
 	clock_init();
 	cpu_init();
 	dma_init();
-	uart_init();
+	/* Don't initialise if we've done so already. */
+	if ((MEC1322_UART_ACT & 0x1) != 1)
+		uart_init();
 	system_init();
-	spi_enable(CONFIG_SPI_FLASH_PORT, 1);
+	/* Don't initialise if we've done so already. */
+	if ((MEC1322_SPI_AR(CONFIG_SPI_FLASH_PORT) & 0x1) != 1)
+		spi_enable(CONFIG_SPI_FLASH_PORT, 1);
 
 	uart_puts("littlefw ");
 	uart_puts(version_data.version);
