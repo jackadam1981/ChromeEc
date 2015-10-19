@@ -74,6 +74,9 @@ int charge_manager_get_override(void);
 /* Returns the current active charge port, as determined by charge manager */
 int charge_manager_get_active_charge_port(void);
 
+/* Get current limit / voltage for the active charge port */
+void charge_manager_get_active_charge_port_info(struct charge_port_info *info);
+
 #ifdef CONFIG_USB_PD_LOGGING
 /* Save power state log entry for the given port */
 void charge_manager_save_log(int port);

@@ -7,6 +7,7 @@
 
 #include "battery.h"
 #include "battery_smart.h"
+#include "charge_manager.h"
 #include "charge_state.h"
 #include "charger.h"
 #include "chipset.h"
@@ -187,6 +188,9 @@ static void update_dynamic_battery_info(void)
 	int send_batt_status_event = 0;
 	int send_batt_info_event = 0;
 	static int batt_present;
+#ifdef CONFIG_CHARGER_LOW_ENERGY_THRESH_BAT_PCT
+	struct charge_port_info external_charger_info;
+#endif
 
 	tmp = 0;
 	if (curr.ac)
@@ -243,6 +247,18 @@ static void update_dynamic_battery_info(void)
 
 	tmp |= curr.batt_is_charging ? EC_BATT_FLAG_CHARGING :
 				       EC_BATT_FLAG_DISCHARGING;
+
+#ifdef CONFIG_CHARGER_LOW_ENERGY_THRESH_BAT_PCT
+	charge_manager_get_active_charge_port_info(&external_charger_info);
+	if (curr.batt.state_of_charge <
+	    CONFIG_CHARGER_LOW_ENERGY_THRESH_BAT_PCT &&
+	    (external_charger_info.current < 0 ||
+	     external_charger_info.voltage < 0 ||
+	     external_charger_info.current * external_charger_info.voltage <
+	     CONFIG_CHARGER_LOW_ENERGY_THRESH_CHG_MW * 1000) &&
+	     system_is_locked())
+		tmp |= EC_BATT_FLAG_ENERGY_CRITICAL;
+#endif
 
 	/* Tell the AP to re-read battery status if charge state changes */
 	if (*memmap_flags != tmp)
@@ -895,6 +911,9 @@ int charge_prevent_power_on(void)
 	struct batt_params *current_batt_params = &curr.batt;
 	int charger_is_uninitialized =
 		!(curr.chg.flags & CHG_FLAG_INITIALIZED);
+#ifdef CONFIG_CHARGER_LOW_ENERGY_THRESH_BAT_PCT
+	struct charge_port_info external_charger_info;
+#endif
 
 	/* If battery params seem uninitialized then retrieve them */
 	if (current_batt_params->is_present == BP_NOT_SURE) {
@@ -906,6 +925,20 @@ int charge_prevent_power_on(void)
 	    current_batt_params->state_of_charge <
 	    CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
 		prevent_power_on = 1;
+
+#ifdef CONFIG_CHARGER_LOW_ENERGY_THRESH_BAT_PCT
+	/*
+	 * Allow power-on if a 15W charger is detected, since it's likely
+	 * to speak PD and provide sufficient power once we jump to RW.
+	 */
+	if (prevent_power_on) {
+		charge_manager_get_active_charge_port_info(
+			&external_charger_info);
+		if (external_charger_info.current *
+		    external_charger_info.voltage >= 15000 * 1000)
+			prevent_power_on = 0;
+	}
+#endif
 
 	/*
 	 * Factory override: Always allow power on if WP is disabled,

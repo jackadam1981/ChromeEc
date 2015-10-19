@@ -804,6 +804,15 @@ int charge_manager_get_active_charge_port(void)
 	return charge_port;
 }
 
+/**
+ * Get active charge port current limit / voltage.
+ */
+void charge_manager_get_active_charge_port_info(struct charge_port_info *info)
+{
+	info->current = charge_current;
+	info->voltage = charge_voltage;
+}
+
 #ifndef TEST_BUILD
 static int hc_pd_power_info(struct host_cmd_handler_args *args)
 {
