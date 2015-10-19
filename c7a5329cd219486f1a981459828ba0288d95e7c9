@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d90802ae_576d367e",
+        "filename": "board/lars/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-19T16:48:18Z",
+      "side": 1,
+      "message": "Nevermind, accidental comment. You only have one version of your board. You don\u0027t need to keep support for old versions, because there are no versions.",
+      "parentUuid": "1f30ba11_bd2b784c",
+      "revId": "c7a5329cd219486f1a981459828ba0288d95e7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fae6a64_5047e113",
         "filename": "board/lars/led.c",
         "patchSetId": 6
