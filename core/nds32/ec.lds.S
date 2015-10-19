@@ -93,6 +93,10 @@ SECTIONS
         KEEP(*(.rodata.HOOK_CHIPSET_RESUME))
         __hooks_chipset_resume_end = .;
 
+        __hooks_chipset_standby = .;
+        KEEP(*(.rodata.HOOK_CHIPSET_STANDBY))
+        __hooks_chipset_standby_end = .;
+
         __hooks_chipset_suspend = .;
         KEEP(*(.rodata.HOOK_CHIPSET_SUSPEND))
         __hooks_chipset_suspend_end = .;
