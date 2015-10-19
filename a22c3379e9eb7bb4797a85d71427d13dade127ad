@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79d47637_b653494f",
+        "filename": "chip/mec1322/lfw/ec_lfw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-19T22:26:17Z",
+      "side": 1,
+      "message": "Skipping these initializations for sysjump may be a good idea, but how about soft reset? Probably we still want to put these units into a known state through init().",
+      "revId": "a22c3379e9eb7bb4797a85d71427d13dade127ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
