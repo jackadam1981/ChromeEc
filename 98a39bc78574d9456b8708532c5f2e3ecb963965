@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b9f26ee4_09bb1db1",
+        "filename": "driver/gyro_l3gd20h.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-10-19T21:46:35Z",
+      "side": 1,
+      "message": "Okay, I will remove it",
+      "parentUuid": "043dc1ed_45ac1ef8",
+      "revId": "98a39bc78574d9456b8708532c5f2e3ecb963965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "243ac5f6_a3740443",
         "filename": "driver/gyro_l3gd20h.c",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "99f3ea1a_0470da06",
+        "filename": "driver/gyro_l3gd20h.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-10-19T21:46:35Z",
+      "side": 1,
+      "message": "Okay",
+      "parentUuid": "243ac5f6_a3740443",
+      "revId": "98a39bc78574d9456b8708532c5f2e3ecb963965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4434d7f_048dfab9",
         "filename": "driver/gyro_l3gd20h.c",
         "patchSetId": 6
@@ -47,6 +83,24 @@
       "writtenOn": "2015-08-14T00:05:54Z",
       "side": 1,
       "message": "You also need to add support for offset from factory calibration (see c/283165)",
+      "revId": "98a39bc78574d9456b8708532c5f2e3ecb963965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f91146d4_08e9dab0",
+        "filename": "driver/gyro_l3gd20h.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-10-19T21:46:35Z",
+      "side": 1,
+      "message": "Okay. I will add the changes",
+      "parentUuid": "e4434d7f_048dfab9",
       "revId": "98a39bc78574d9456b8708532c5f2e3ecb963965",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
