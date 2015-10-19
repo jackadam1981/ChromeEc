@@ -200,7 +200,7 @@ static uint32_t system_get_gpio_hibernate_state(uint32_t port, uint32_t pin)
 		GPIO_TO_PORT_MASK_PAIR(GPIO_USB_C0_5V_EN),
 		GPIO_TO_PORT_MASK_PAIR(GPIO_USB_C0_CHARGE_EN_L),
 #endif
-#if CONFIG_USB_PD_PORT_COUNT > 1
+#if CONFIG_USB_PD_PORT_COUNT >= 2
 		GPIO_TO_PORT_MASK_PAIR(GPIO_USB_C1_5V_EN),
 		GPIO_TO_PORT_MASK_PAIR(GPIO_USB_C1_CHARGE_EN_L),
 #endif
@@ -266,7 +266,7 @@ static void system_set_gpio_power(int enabled, uint32_t *backup_gpio_ctl)
 		gpio_set_flags(GPIO_USB_C0_5V_EN, GPIO_PULL_DOWN | GPIO_INPUT);
 		gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, 0);
 #endif
-#if CONFIG_USB_PD_PORT_COUNT > 1
+#if CONFIG_USB_PD_PORT_COUNT >= 2
 		gpio_set_flags(GPIO_USB_C1_5V_EN, GPIO_PULL_DOWN | GPIO_INPUT);
 		gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, 0);
 #endif
