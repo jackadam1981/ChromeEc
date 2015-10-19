@@ -16,6 +16,24 @@
       "revId": "a22c3379e9eb7bb4797a85d71427d13dade127ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f26ee4_8954ad8e",
+        "filename": "chip/mec1322/lfw/ec_lfw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-19T22:41:26Z",
+      "side": 1,
+      "message": "Ah, I hadn\u0027t considered soft reset. I could add a check for the reboot flags?",
+      "parentUuid": "79d47637_b653494f",
+      "revId": "a22c3379e9eb7bb4797a85d71427d13dade127ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
