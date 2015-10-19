@@ -536,3 +536,18 @@ static void pwm_fan_S3_S5(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pwm_fan_S3_S5, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pwm_fan_S3_S5, HOOK_PRIO_DEFAULT);
+
+/* Cut off FAN power while S3 */
+static void pwm_fan_power_rail_down(void)
+{
+	int fan;
+
+	for (fan = 0; fan < CONFIG_FANS; fan++) {
+		if (fans[fan].enable_gpio >= 0)
+			gpio_set_level(fans[fan].enable_gpio, 0);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pwm_fan_power_rail_down,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_STANDBY, pwm_fan_power_rail_down,
+	     HOOK_PRIO_DEFAULT);
