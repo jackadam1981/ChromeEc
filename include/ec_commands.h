@@ -434,6 +434,9 @@ enum host_event_code {
 	/* Keyboard fastboot combo has been pressed */
 	EC_HOST_EVENT_KEYBOARD_FASTBOOT = 25,
 
+	/* Battery is low and AC is low power, so ask host to limit power */
+	EC_HOST_EVENT_LIMIT_POWER = 26,
+
 	/*
 	 * The high bit of the event mask is not used as a host event code.  If
 	 * it reads back as set, then the entire event mask should be
