@@ -276,6 +276,7 @@ static void charge_manager_fill_power_info(int port,
 #endif /* TEST_BUILD */
 
 #ifdef CONFIG_USB_PD_LOGGING
+
 /**
  * Saves a power state log entry with the current info about the passed port.
  */
@@ -802,6 +803,15 @@ int charge_manager_get_override(void)
 int charge_manager_get_active_charge_port(void)
 {
 	return charge_port;
+}
+
+/**
+ * Get active charge port current limit / voltage.
+ */
+void charge_manager_get_active_charge_port_info(struct charge_port_info *info)
+{
+	info->current = charge_current;
+	info->voltage = charge_voltage;
 }
 
 #ifndef TEST_BUILD
