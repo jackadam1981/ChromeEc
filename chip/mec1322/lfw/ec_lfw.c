@@ -22,6 +22,7 @@
 #include "version.h"
 #include "hwtimer.h"
 #include "gpio_list.h"
+#include "panic.h"
 
 #include "ec_lfw.h"
 
@@ -42,6 +43,33 @@ const struct spi_device_t spi_devices[] = {
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
+/*
+ * Jump data (at end of RAM, or preceding panic data).  Using this to check for
+ * sysjump.
+ */
+struct panic_data * const pdata_ptr = PANIC_DATA_PTR;
+struct jump_data {
+	/*
+	 * Add new fields to the _start_ of the struct, since we copy it to the
+	 * _end_ of RAM between images.  This way, the magic number will always
+	 * be the last word in RAM regardless of how many fields are added.
+	 */
+
+	/* Fields from version 3 */
+	uint8_t reserved0;    /* (used in proto1 to signal recovery mode) */
+	int struct_size;      /* Size of struct jump_data */
+
+	/* Fields from version 2 */
+	int jump_tag_total;   /* Total size of all jump tags */
+
+	/* Fields from version 1 */
+	uint32_t reset_flags; /* Reset flags from the previous boot */
+	int version;          /* Version (JUMP_DATA_VERSION) */
+	int magic;            /* Magic number (JUMP_DATA_MAGIC).  If this
+			       * doesn't match at pre-init time, assume no valid
+			       * data from the previous image. */
+};
+#define JUMP_DATA_MAGIC 0x706d754a  /* "Jump" */
 
 void timer_init()
 {
@@ -227,10 +255,16 @@ enum system_image_copy_t system_get_image_copy(void)
 	return MEC1322_VBAT_RAM(MEC1322_IMAGETYPE_IDX);
 }
 
+struct panic_data *panic_get_data(void)
+{
+	return pdata_ptr->magic == PANIC_DATA_MAGIC ? pdata_ptr : NULL;
+}
+
 void lfw_main()
 {
 
 	uintptr_t init_addr;
+	char sysjumped = 0;
 
 	/* install vector table */
 	*((uintptr_t *) 0xe000ed08) = (uintptr_t) &hdr_int_vect;
@@ -243,14 +277,27 @@ void lfw_main()
 	MEC1322_TMR16_CTL(0) &= ~1;
 #endif
 #endif
+	/* Check to see if we sysjumped. */
+	init_addr = (uintptr_t)panic_get_data();
+	if (!init_addr)
+		init_addr = CONFIG_RAM_BASE + CONFIG_RAM_SIZE;
+	init_addr = (init_addr - sizeof(struct jump_data));
+	/* Check if there's valid jump data. */
+	if (((struct jump_data *)init_addr)->magic == JUMP_DATA_MAGIC &&
+	    ((struct jump_data *)init_addr)->version >= 1)
+		sysjumped = 1;
 
 	timer_init();
 	clock_init();
 	cpu_init();
 	dma_init();
-	uart_init();
+	/* Don't initialise if we've done so already. */
+	if (!sysjumped)
+		uart_init();
 	system_init();
-	spi_enable(CONFIG_SPI_FLASH_PORT, 1);
+	/* Don't initialise if we've done so already. */
+	if (!sysjumped)
+		spi_enable(CONFIG_SPI_FLASH_PORT, 1);
 
 	uart_puts("littlefw ");
 	uart_puts(version_data.version);
