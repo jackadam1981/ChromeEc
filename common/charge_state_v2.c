@@ -7,6 +7,7 @@
 
 #include "battery.h"
 #include "battery_smart.h"
+#include "charge_manager.h"
 #include "charge_state.h"
 #include "charger.h"
 #include "chipset.h"
@@ -637,6 +638,20 @@ void charger_task(void)
 			curr.batt.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
 		}
 
+#ifdef CONFIG_CHARGER_ENERGY_LOW_THRESH_BAT_PCT
+		/* Set ENERGY_LOW host event based on battery / AC status */
+		if ((curr.batt.is_present != BP_YES ||
+		    curr.batt.state_of_charge <
+		    CONFIG_CHARGER_ENERGY_LOW_THRESH_BAT_PCT) &&
+		    charge_manager_get_power() <
+		    CONFIG_CHARGER_ENERGY_LOW_THRESH_CHG_MW &&
+		    system_is_locked())
+			host_set_single_event(EC_HOST_EVENT_ENERGY_LOW);
+		else
+			host_clear_single_event(EC_HOST_EVENT_ENERGY_LOW);
+#endif
+
+
 		/*
 		 * Now decide what we want to do about it. We'll normally just
 		 * pass along whatever the battery wants to the charger. Note
@@ -906,6 +921,16 @@ int charge_prevent_power_on(void)
 	    current_batt_params->state_of_charge <
 	    CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
 		prevent_power_on = 1;
+
+#ifdef CONFIG_CHARGER_ENERGY_LOW_THRESH_BAT_PCT
+	/*
+	 * Allow power-on if a 15W charger is detected, since it may speak
+	 * PD and provide sufficient power once we jump to RW.
+	 */
+	if (prevent_power_on)
+		if (charge_manager_get_power() >= 15000 * 1000)
+			prevent_power_on = 0;
+#endif
 
 	/*
 	 * Factory override: Always allow power on if WP is disabled,

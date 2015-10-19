@@ -394,6 +394,14 @@
 #undef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
 
 /*
+ * Low energy thresholds - when battery level is below BAT_PCT and an external
+ * charger provides less than CHG_MW of power, inform the AP of the situation
+ * through the ENERGY_LOW host event.
+ */
+#undef CONFIG_CHARGER_ENERGY_LOW_THRESH_BAT_PCT
+#undef CONFIG_CHARGER_ENERGY_LOW_THRESH_CHG_MW
+
+/*
  * Equivalent of CONFIG_BATTERY_OVERRIDE_PARAMS for use with
  * CONFIG_CHARGER_V2
  */
