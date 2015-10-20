@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79fd56bf_44e9031a",
+        "filename": "board/lars/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-20T16:53:06Z",
+      "side": 1,
+      "message": "Once again, your board is not kunimitsu and you don\u0027t have back-versions you need to support.\n\n- You should not define or depend on BOARD_KUNIMUTSU_V* defines anywhere in your code.\n- You should not define BOARD_LARS_V* or similar, because you only have one version of your board (you don\u0027t do this right now, that\u0027s fine. I only mention this in case you\u0027re thinking of renaming BOARD_KUNIMITSU_V* to BOARD_LARS_V*).",
+      "revId": "1f9741da5ab563a0bc4f20ff2708fd8b5345ae46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
