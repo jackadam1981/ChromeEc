@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99020a8c_4d000a82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-20T23:13:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59fdf2e7_1f6dc77f",
+      "range": {
+        "startLine": 14,
+        "startChar": 27,
+        "endLine": 14,
+        "endChar": 36
+      },
+      "revId": "85610b9cc00b867fdcaae86c73f4a8e2b68120d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f91146d4_064aeb98",
         "filename": "board/ryu/board.c",
         "patchSetId": 2
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "79d47637_8a881a25",
+        "filename": "common/lightbar.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-20T23:13:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9ec2e3d_d95ed30a",
+      "range": {
+        "startLine": 228,
+        "startChar": 25,
+        "endLine": 228,
+        "endChar": 32
+      },
+      "revId": "85610b9cc00b867fdcaae86c73f4a8e2b68120d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9e22645_416ad21a",
         "filename": "common/lightbar.c",
         "patchSetId": 2
@@ -118,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b9f26ee4_7b2a6a1a",
+        "filename": "common/lightbar.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-20T23:13:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9e22645_416ad21a",
+      "range": {
+        "startLine": 296,
+        "startChar": 3,
+        "endLine": 296,
+        "endChar": 57
+      },
+      "revId": "85610b9cc00b867fdcaae86c73f4a8e2b68120d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9050ec5_f76800ad",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -129,6 +201,30 @@
       "writtenOn": "2015-10-20T18:33:44Z",
       "side": 1,
       "message": "nit, feels like there should really be two configs IMO.  One to enable dimming the other to identify sensor",
+      "range": {
+        "startLine": 108,
+        "startChar": 7,
+        "endLine": 108,
+        "endChar": 34
+      },
+      "revId": "85610b9cc00b867fdcaae86c73f4a8e2b68120d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f3ea1a_78e6a14a",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-20T23:13:26Z",
+      "side": 1,
+      "message": "I prefer one: they are both required together: one can not go with the other. It would make sense if we have multiple light sensors though. Can we revisit if we plan to support multiple light sensors?",
+      "parentUuid": "b9050ec5_f76800ad",
       "range": {
         "startLine": 108,
         "startChar": 7,
