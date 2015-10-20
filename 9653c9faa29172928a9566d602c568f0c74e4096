@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99020a8c_3b63cb1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-20T01:06:33Z",
+      "side": 1,
+      "message": "this is not true at all, there will be a lot of 15W, non-PD chargers since that is the highest power one can provide without doing PD (donette and guppy are two examples already).",
+      "range": {
+        "startLine": 17,
+        "startChar": 10,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "9653c9faa29172928a9566d602c568f0c74e4096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79fd56bf_31a88b4d",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-20T01:06:33Z",
+      "side": 1,
+      "message": "seems like we only really care about power, so why not change charge_manager_get_active_charge_port_info() to charge_manager_get_active_charge_port_power() and just return the power",
+      "range": {
+        "startLine": 255,
+        "startChar": 6,
+        "endLine": 257,
+        "endChar": 67
+      },
+      "revId": "9653c9faa29172928a9566d602c568f0c74e4096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f91146d4_c6a5f3a9",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-20T01:06:33Z",
+      "side": 1,
+      "message": "suggest \u0027since it may speak PD and provide\u0027",
+      "range": {
+        "startLine": 931,
+        "startChar": 49,
+        "endLine": 932,
+        "endChar": 27
+      },
+      "revId": "9653c9faa29172928a9566d602c568f0c74e4096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
