@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99f3ea1a_93ab8e4b",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-20T21:07:08Z",
+      "side": 1,
+      "message": "can move this logic to i2c_set_timeout() since wait_isr() is called much more often than i2c_set_timeout():\n\nvoid i2c_set_timeout(int port, uint32_t timeout)\n{\n\tpdata[port].timeout_us \u003d timeout ? timeout : I2C_TX_TIMEOUT_MASTER;\n}\n\nstatic int wait_isr(int port, int mask)\n{\n\tuint64_t timeout \u003d get_time().val + pd[port].timeout_us;\n...\n}\n\n\nand initialize timeout_us to I2C_TX_TIMEOUT_MASTER in i2c_init().",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "c85d15bbc957969d78ea7b8d99671c3022c08faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
