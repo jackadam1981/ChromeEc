@@ -364,6 +364,7 @@ void board_typec_dp_set(int port, int level)
 	mutex_unlock(&dp_hw_lock);
 }
 
+#if BOARD_REV < OAK_REV3
 #ifndef CONFIG_AP_WARM_RESET_INTERRUPT
 /* Using this hook if system doesn't have enough external line. */
 static void check_ap_reset_second(void)
@@ -382,6 +383,7 @@ static void check_ap_reset_second(void)
 	last = warm_reset;
 }
 DECLARE_HOOK(HOOK_SECOND, check_ap_reset_second, HOOK_PRIO_DEFAULT);
+#endif
 #endif
 
 /**
