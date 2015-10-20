@@ -349,13 +349,11 @@ static int check_for_power_off_event(void)
 	}
 
 	power_button_was_pressed = pressed;
-
 	/* POWER_GOOD released by AP : shutdown immediate */
 	if (is_power_good_deasserted()) {
 		CPRINTS("POWER_GOOD is lost");
 		return POWER_OFF_BY_POWER_GOOD_LOST;
 	}
-
 	return POWER_OFF_CANCEL;
 }
 
@@ -416,6 +414,17 @@ enum power_state power_chipset_init(void)
 		/* In the SYSJUMP case, we check if the AP is on */
 		if (is_power_good_asserted()) {
 			CPRINTS("SOC ON");
+			/*
+			 * Ensure PMIC power button is release.
+			 * SYSJUMP may breaks the PMIC power button control in
+			 * power_on() function, since
+			 * release_pmic_pwron_deferred() will not be excuted in
+			 * time, if SYSJUMP is happened within
+			 * PMIC_PWRON_PRESS_TIME.
+			 */
+			if (gpio_get_level(GPIO_PMIC_PWRON_H))
+				set_pmic_pwron(0);
+
 			init_power_state = POWER_S0;
 			if (is_suspend_asserted())
 				enable_sleep(SLEEP_MASK_AP_RUN);
