@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b9ec2e3d_214fc5a8",
+        "filename": "board/kunimitsu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-10-20T23:24:22Z",
+      "side": 1,
+      "message": "Easy for us to enable/disable the code using just a macro until we have enough code space.",
+      "parentUuid": "99020a8c_4db24a36",
+      "revId": "a2cd4044f94153006525f8616280b43c53c4b486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79d47637_0aee6ab8",
         "filename": "board/kunimitsu/board.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-10-20T19:05:54Z",
       "side": 1,
       "message": "Why commented out? This CL is a noop if defined out.",
+      "revId": "a2cd4044f94153006525f8616280b43c53c4b486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79d47637_e0133f9f",
+        "filename": "board/kunimitsu/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2015-10-20T23:24:22Z",
+      "side": 1,
+      "message": "okay, I will remove it",
+      "parentUuid": "79d47637_0aee6ab8",
       "revId": "a2cd4044f94153006525f8616280b43c53c4b486",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
