@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99f3ea1a_184f9da8",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-20T17:59:06Z",
+      "side": 1,
+      "message": "Put this behind CONFIG_CHARGER_MONITOR_BP. Actually, group it with the other functions below, so you minimize the number of times you need #ifdef CONFIG_CHARGER_MONITOR_BP.",
+      "revId": "960e2efb7510ca68bf4590c72f2c84adfe2ab7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39de7e5b_349071d6",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-20T17:59:06Z",
+      "side": 1,
+      "message": "Just put this behind CONFIG_CHARGER_MONITOR_BP.",
+      "revId": "960e2efb7510ca68bf4590c72f2c84adfe2ab7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f3ea1a_9808cd6c",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-20T17:59:06Z",
+      "side": 1,
+      "message": "Let\u0027s put this all behind CONFIG_CHARGER_MONITOR_BP.",
+      "revId": "960e2efb7510ca68bf4590c72f2c84adfe2ab7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9ec2e3d_6859b26e",
+        "filename": "driver/charger/bq24773.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-20T17:59:06Z",
+      "side": 1,
+      "message": "No need for this ifdef, you can leave the prototype here unconditionally.",
+      "revId": "960e2efb7510ca68bf4590c72f2c84adfe2ab7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
