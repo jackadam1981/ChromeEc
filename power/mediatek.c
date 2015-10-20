@@ -350,8 +350,23 @@ static int check_for_power_off_event(void)
 
 	power_button_was_pressed = pressed;
 
-	/* POWER_GOOD released by AP : shutdown immediate */
+	/* POWER_GOOD released by AP */
 	if (is_power_good_deasserted()) {
+		/*
+		 * Warm reset key from servo board lets the POWER_GOOD signal
+		 * deasserted temporarily (about 1~2 seconds).
+		 * In order to detect this case, polling POWER_GOOD signal with
+		 * 2 seconds timeout.
+		 */
+		timestamp_t poll_deadline;
+		poll_deadline = get_time();
+		poll_deadline.val += 2*SECOND;
+		while (get_time().val < poll_deadline.val) {
+			usleep(POWER_DEBOUNCE_TIME);
+			if (is_power_good_asserted())
+				return POWER_OFF_CANCEL;
+		}
+
 		CPRINTS("POWER_GOOD is lost");
 		return POWER_OFF_BY_POWER_GOOD_LOST;
 	}
