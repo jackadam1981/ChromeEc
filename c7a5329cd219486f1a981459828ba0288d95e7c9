@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "394cbe13_db5e330b",
+        "filename": "board/lars/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2015-10-20T10:29:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fae6a64_5047e113",
+      "revId": "c7a5329cd219486f1a981459828ba0288d95e7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df39c202_9d3cb460",
         "filename": "util/flash_ec",
         "patchSetId": 6
@@ -71,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "394cbe13_fb63efcd",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2015-10-20T10:29:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df39c202_9d3cb460",
+      "revId": "c7a5329cd219486f1a981459828ba0288d95e7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fa3be81_dbb3eecf",
         "filename": "util/flash_ec",
         "patchSetId": 6
@@ -82,6 +118,24 @@
       "writtenOn": "2015-10-14T19:46:31Z",
       "side": 1,
       "message": "Here too.",
+      "revId": "c7a5329cd219486f1a981459828ba0288d95e7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d964829c_c845ef30",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2015-10-20T10:29:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fa3be81_dbb3eecf",
       "revId": "c7a5329cd219486f1a981459828ba0288d95e7c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
