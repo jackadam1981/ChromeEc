@@ -16,6 +16,24 @@
       "revId": "94b9e210fb9bff78750def9cd663a476adef862f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f935c6bb_6ce6134b",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2015-10-21T19:21:10Z",
+      "side": 1,
+      "message": "When the battery is full, the requested voltage and current from battery is 0. We will see charge(0,0) is called, the original code ignore 0 and set to minimum voltage, but this will cause discharge. After talked to Intersil engineer, they said we have to keep the battery voltage, that means, the voltage we set before.",
+      "parentUuid": "f935c6bb_4c4eaf00",
+      "revId": "94b9e210fb9bff78750def9cd663a476adef862f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
