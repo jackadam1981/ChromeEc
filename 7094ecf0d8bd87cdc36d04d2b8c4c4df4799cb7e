@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99784a71_79a8834e",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-21T18:11:12Z",
+      "side": 1,
+      "message": "No need for this check I think, we can just define MONITOR_BP as needed.",
+      "revId": "7094ecf0d8bd87cdc36d04d2b8c4c4df4799cb7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
