@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f935c6bb_4c4eaf00",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-21T19:15:36Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a good change, but I\u0027ll let Rong comment. If you really want to keep the voltage higher, you should not call charger_set_voltage(0). Ignoring the call seems like a hack.",
+      "revId": "94b9e210fb9bff78750def9cd663a476adef862f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
