@@ -16,6 +16,41 @@
       "revId": "1f9741da5ab563a0bc4f20ff2708fd8b5345ae46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39f83efa_1b379bc6",
+        "filename": "board/lars/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2015-10-21T10:15:07Z",
+      "side": 1,
+      "message": "I can\u0027t sure which version is to remove, \nIt seems that the new board is following V3 which is going to be V4, however, for the GPIO settings looks like not-V3 version. I already remove all BOARD_KUNIMITSU_V3 macros in GPIO settings.",
+      "revId": "1f9741da5ab563a0bc4f20ff2708fd8b5345ae46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96fbb933_7e5d31d5",
+        "filename": "board/lars/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2015-10-21T10:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79fd56bf_44e9031a",
+      "revId": "1f9741da5ab563a0bc4f20ff2708fd8b5345ae46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
