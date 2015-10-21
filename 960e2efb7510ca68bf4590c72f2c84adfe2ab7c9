@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d964829c_2bd36535",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-10-21T01:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f3ea1a_184f9da8",
+      "revId": "960e2efb7510ca68bf4590c72f2c84adfe2ab7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39de7e5b_349071d6",
         "filename": "driver/charger/bq24773.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2015-10-20T17:59:06Z",
       "side": 1,
       "message": "Just put this behind CONFIG_CHARGER_MONITOR_BP.",
+      "revId": "960e2efb7510ca68bf4590c72f2c84adfe2ab7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39f83efa_5b1e432d",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-10-21T01:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39de7e5b_349071d6",
       "revId": "960e2efb7510ca68bf4590c72f2c84adfe2ab7c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1909badd_fa68e9ac",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-10-21T01:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f3ea1a_9808cd6c",
+      "revId": "960e2efb7510ca68bf4590c72f2c84adfe2ab7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9ec2e3d_6859b26e",
         "filename": "driver/charger/bq24773.h",
         "patchSetId": 5
@@ -64,6 +118,24 @@
       "writtenOn": "2015-10-20T17:59:06Z",
       "side": 1,
       "message": "No need for this ifdef, you can leave the prototype here unconditionally.",
+      "revId": "960e2efb7510ca68bf4590c72f2c84adfe2ab7c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f96dc67e_acc68b77",
+        "filename": "driver/charger/bq24773.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-10-21T01:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9ec2e3d_6859b26e",
       "revId": "960e2efb7510ca68bf4590c72f2c84adfe2ab7c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
