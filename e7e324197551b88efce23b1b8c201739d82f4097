@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "194a9a42_a7c73877",
+        "filename": "driver/charger/bq24773.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-22T17:30:48Z",
+      "side": 1,
+      "message": "Do you actually intend to call these functions outside your driver? Or did you just add these because the compiler complained? The second function should definitely be made static, and I question the first.",
+      "revId": "e7e324197551b88efce23b1b8c201739d82f4097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
