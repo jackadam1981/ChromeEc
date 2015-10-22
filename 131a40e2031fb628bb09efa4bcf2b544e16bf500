@@ -22,6 +22,30 @@
       "revId": "131a40e2031fb628bb09efa4bcf2b544e16bf500",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6699de6_17a07499",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-10-22T19:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "993daaa1_83694ce4",
+      "range": {
+        "startLine": 511,
+        "startChar": 5,
+        "endLine": 511,
+        "endChar": 58
+      },
+      "revId": "131a40e2031fb628bb09efa4bcf2b544e16bf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
