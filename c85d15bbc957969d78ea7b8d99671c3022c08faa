@@ -22,6 +22,30 @@
       "revId": "c85d15bbc957969d78ea7b8d99671c3022c08faa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5605c1fc_1ca515aa",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-10-22T04:08:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f3ea1a_93ab8e4b",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "c85d15bbc957969d78ea7b8d99671c3022c08faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
