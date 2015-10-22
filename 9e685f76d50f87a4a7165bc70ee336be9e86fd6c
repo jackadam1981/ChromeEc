@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "166d09ed_bd1bab82",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-22T21:13:02Z",
+      "side": 1,
+      "message": "this should now be:\n\ncharge_manager_get_power() \u003c CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW * 1000",
+      "range": {
+        "startLine": 646,
+        "startChar": 6,
+        "endLine": 647,
+        "endChar": 46
+      },
+      "revId": "9e685f76d50f87a4a7165bc70ee336be9e86fd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
