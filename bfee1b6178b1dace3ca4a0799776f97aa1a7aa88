@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "d953a2fb_39ce13b9",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-22T15:58:19Z",
+      "side": 1,
+      "message": "actually not all battery gas gauge are smart battery compliant (eg look at our 1S products : Kirby and Ryu)\nSo you cannot really assume here in common charging code that\u0027s a smart battery (or you need to #ifdef to CONFIG_BATTERY_SMART)",
+      "range": {
+        "startLine": 927,
+        "startChar": 1,
+        "endLine": 928,
+        "endChar": 23
+      },
+      "revId": "bfee1b6178b1dace3ca4a0799776f97aa1a7aa88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3942fe30_94f26ac9",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
@@ -82,6 +105,53 @@
       "writtenOn": "2015-10-21T23:39:31Z",
       "side": 1,
       "message": "what\u0027s the purpose of sb_param? can\u0027t you just pass out directly into get_param_value()?",
+      "range": {
+        "startLine": 667,
+        "startChar": 0,
+        "endLine": 668,
+        "endChar": 19
+      },
+      "revId": "bfee1b6178b1dace3ca4a0799776f97aa1a7aa88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f935c6bb_980f0149",
+        "filename": "common/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-22T15:58:19Z",
+      "side": 1,
+      "message": "that\u0027s a bit fragile (eg vs auto-incrementing ...)",
+      "range": {
+        "startLine": 668,
+        "startChar": 3,
+        "endLine": 668,
+        "endChar": 18
+      },
+      "revId": "bfee1b6178b1dace3ca4a0799776f97aa1a7aa88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19337ad8_24e7ce09",
+        "filename": "common/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-22T15:58:19Z",
+      "side": 1,
+      "message": "nope, in the current kernel messages the output to write the register index is not in the same  ec_params_i2c_passthru_msg as the read of the value",
+      "parentUuid": "993daaa1_82fdcacd",
       "range": {
         "startLine": 667,
         "startChar": 0,
