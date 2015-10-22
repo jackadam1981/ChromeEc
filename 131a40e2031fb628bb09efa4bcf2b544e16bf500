@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "993daaa1_83694ce4",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1131539
+      },
+      "writtenOn": "2015-10-22T17:21:59Z",
+      "side": 1,
+      "message": "Can you base this on the register definition from the FPGA?",
+      "range": {
+        "startLine": 511,
+        "startChar": 5,
+        "endLine": 511,
+        "endChar": 58
+      },
+      "revId": "131a40e2031fb628bb09efa4bcf2b544e16bf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
