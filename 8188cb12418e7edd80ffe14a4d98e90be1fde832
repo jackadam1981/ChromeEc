@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59725292_08cc97c0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-22T17:43:41Z",
+      "side": 1,
+      "message": "Should we check the return value of i2_read8, or at least initialize reg above?",
+      "revId": "8188cb12418e7edd80ffe14a4d98e90be1fde832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
