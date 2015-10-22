@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b956eeeb_1e8bf122",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-22T15:22:36Z",
+      "side": 1,
+      "message": "Divide is relatively expensive, why not just return uW?",
+      "range": {
+        "startLine": 819,
+        "startChar": 9,
+        "endLine": 819,
+        "endChar": 39
+      },
+      "revId": "7136b5f6cf3a6cdf69e79df625bca63098ee7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9618ebd_31dc6046",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-22T15:22:36Z",
+      "side": 1,
+      "message": "get_power() returns mW currently, so shouldn\u0027t multiply right side by 1000.\n\nbut, as commented in charge_manager(), seems like it would be more efficient to return uW and then the *1000 should stay.",
+      "range": {
+        "startLine": 930,
+        "startChar": 6,
+        "endLine": 930,
+        "endChar": 48
+      },
+      "revId": "7136b5f6cf3a6cdf69e79df625bca63098ee7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
