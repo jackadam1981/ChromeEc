@@ -22,6 +22,30 @@
       "revId": "73891bc659bdd4f8551de847cc45c42029570262",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16b509da_1d75378b",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-23T21:10:39Z",
+      "side": 1,
+      "message": "Okay, I\u0027ll add this.",
+      "parentUuid": "16b509da_bdaa8b55",
+      "range": {
+        "startLine": 238,
+        "startChar": 8,
+        "endLine": 238,
+        "endChar": 21
+      },
+      "revId": "73891bc659bdd4f8551de847cc45c42029570262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
