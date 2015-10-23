@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76dac536_e0061cef",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-23T20:19:05Z",
+      "side": 1,
+      "message": "Can you put these arrays in a separate header file? Maybe name it panel.h, or panel_data.h.",
+      "revId": "a43c2c05f2b2c5e22dbdee0eedb1a8780e297fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6b795e1_59d0a384",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-23T20:19:05Z",
+      "side": 1,
+      "message": "Why is it necessary to make retries? I expect this to work reliably.",
+      "revId": "a43c2c05f2b2c5e22dbdee0eedb1a8780e297fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
