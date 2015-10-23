@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16b509da_bdaa8b55",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-23T21:02:49Z",
+      "side": 1,
+      "message": "Maybe add comment:\n\n/* Not replacing loader, so .bss.slow is part of .bss.  It needs to be followed by __bss_end so that .bss.slow will be zero\u0027d by init. */",
+      "range": {
+        "startLine": 238,
+        "startChar": 8,
+        "endLine": 238,
+        "endChar": 21
+      },
+      "revId": "73891bc659bdd4f8551de847cc45c42029570262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
