@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "166d09ed_3de23bb3",
+        "filename": "board/jerry/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-23T20:50:04Z",
+      "side": 1,
+      "message": "probably should be a separate CL",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "revId": "991a9905acafc1ba6c38d5cb15b6a97b3f9bc4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56a1415d_7f32eb2b",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-23T20:50:04Z",
+      "side": 1,
+      "message": "/** for function headers\n/* for multiline comments",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "991a9905acafc1ba6c38d5cb15b6a97b3f9bc4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96df3923_4184340c",
         "filename": "include/charge_state_v2.h",
         "patchSetId": 2
