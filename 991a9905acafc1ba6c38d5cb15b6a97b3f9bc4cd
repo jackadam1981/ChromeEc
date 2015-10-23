@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f6ceb575_47a522db",
+        "filename": "board/jerry/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-10-23T21:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "166d09ed_3de23bb3",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "revId": "991a9905acafc1ba6c38d5cb15b6a97b3f9bc4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56a1415d_7f32eb2b",
         "filename": "include/charge_state_v2.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-23T20:50:04Z",
       "side": 1,
       "message": "/** for function headers\n/* for multiline comments",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "991a9905acafc1ba6c38d5cb15b6a97b3f9bc4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6ceb575_0462383e",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-10-23T21:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56a1415d_7f32eb2b",
       "range": {
         "startLine": 72,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "76dac536_632cd666",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-10-23T21:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96df3923_4184340c",
+      "range": {
+        "startLine": 82,
+        "startChar": 20,
+        "endLine": 82,
+        "endChar": 50
+      },
+      "revId": "991a9905acafc1ba6c38d5cb15b6a97b3f9bc4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6d8bd3b_e2d0e8da",
         "filename": "include/charge_state_v2.h",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2015-10-23T20:39:14Z",
       "side": 1,
       "message": "Is this an in/out value?  That is, does it indicate both dest length (on input) and bytes copied (on output)?  If not, it doesn\u0027t need to be a pointer, right?",
+      "range": {
+        "startLine": 83,
+        "startChar": 6,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "991a9905acafc1ba6c38d5cb15b6a97b3f9bc4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56e941ce_bf9c3336",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-10-23T21:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6d8bd3b_e2d0e8da",
       "range": {
         "startLine": 83,
         "startChar": 6,
