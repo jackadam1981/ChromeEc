@@ -16,6 +16,24 @@
       "revId": "e7e324197551b88efce23b1b8c201739d82f4097",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f600753b_51a514a9",
+        "filename": "driver/charger/bq24773.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2015-10-23T15:14:20Z",
+      "side": 1,
+      "message": "I had same worry for this function. I think it could be called from the system does not have GPIO interrupt. so some polling mechanism just need this function. Actually it was in charger.h so that same functionality. but charger.h just have charger_set_mode() which has wide action with flag. so I changed bq24773 function only. anyway it is only function somebody want to do same things.",
+      "parentUuid": "194a9a42_a7c73877",
+      "revId": "e7e324197551b88efce23b1b8c201739d82f4097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
