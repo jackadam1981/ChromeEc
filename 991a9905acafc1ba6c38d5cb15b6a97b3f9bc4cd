@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96df3923_4184340c",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-23T20:39:14Z",
+      "side": 1,
+      "message": "Why are these pointers to ints, instead of just ints?",
+      "range": {
+        "startLine": 82,
+        "startChar": 20,
+        "endLine": 82,
+        "endChar": 50
+      },
+      "revId": "991a9905acafc1ba6c38d5cb15b6a97b3f9bc4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6d8bd3b_e2d0e8da",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-23T20:39:14Z",
+      "side": 1,
+      "message": "Is this an in/out value?  That is, does it indicate both dest length (on input) and bytes copied (on output)?  If not, it doesn\u0027t need to be a pointer, right?",
+      "range": {
+        "startLine": 83,
+        "startChar": 6,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "991a9905acafc1ba6c38d5cb15b6a97b3f9bc4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
