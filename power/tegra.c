@@ -456,7 +456,7 @@ static int wait_for_power_button_release(unsigned int timeout_us)
 /**
  * Power off the AP
  */
-static void power_off(void)
+static void power_off(int force_off)
 {
 	/* Call hooks before we drop power rails */
 	hook_notify(HOOK_CHIPSET_SHUTDOWN);
@@ -468,7 +468,8 @@ static void power_off(void)
 	msleep(26);
 
 	/* switch off all rails */
-	chipset_turn_off_power_rails();
+	if (force_off)
+		chipset_turn_off_power_rails();
 
 	/* Change SUSPEND_L pin to high-Z to reduce power draw. */
 	gpio_set_flags(power_signal_list[TEGRA_SUSPEND_ASSERTED].gpio,
@@ -483,7 +484,7 @@ void chipset_reset(int is_cold)
 {
 	if (is_cold) {
 		CPRINTS("EC triggered cold reboot");
-		power_off();
+		power_off(1);
 		/* After XPSHOLD is dropped off, the system will be on again */
 		power_request = POWER_REQ_ON;
 	} else {
@@ -536,7 +537,7 @@ enum power_state power_handle_state(enum power_state state)
 				return POWER_S3;
 			} else {
 				CPRINTS("long-press button, shutdown");
-				power_off();
+				power_off(1);
 				/*
 				 * Since the AP may be up already, return S0S3
 				 * state to go through the suspend hook.
@@ -566,7 +567,7 @@ enum power_state power_handle_state(enum power_state state)
 		value = check_for_power_off_event();
 		if (value) {
 			CPRINTS("power off %d", value);
-			power_off();
+			power_off(value != 3);
 			return POWER_S0S3;
 		} else if (power_get_signals() & IN_SUSPEND)
 			return POWER_S0S3;
