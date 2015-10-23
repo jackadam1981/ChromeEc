@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d6ae1193_3b32032b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-23T21:09:17Z",
+      "side": 1,
+      "message": "Haha, nice catch.",
+      "parentUuid": "b6d8bd3b_626858aa",
+      "range": {
+        "startLine": 11,
+        "startChar": 41,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "764ff25521760db2e32e0de0597e015d2a2f8138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16b509da_bdf8cb75",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b6d8bd3b_42fef41e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-23T21:09:17Z",
+      "side": 1,
+      "message": "I ought to look at my commit messages more closely.",
+      "parentUuid": "16b509da_bdf8cb75",
+      "range": {
+        "startLine": 12,
+        "startChar": 19,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "764ff25521760db2e32e0de0597e015d2a2f8138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16b509da_fd024321",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2015-10-23T20:58:00Z",
       "side": 1,
       "message": "Please file one.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "764ff25521760db2e32e0de0597e015d2a2f8138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6b795e1_d9b2f334",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-23T21:09:17Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "16b509da_fd024321",
       "range": {
         "startLine": 15,
         "startChar": 0,
