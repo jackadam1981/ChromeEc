@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6ceb575_e7b2b634",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-23T23:05:12Z",
+      "side": 1,
+      "message": "simplify to\n\nreturn i2c_write8(I2C_PORT_TCPC, I2C_ADDR_TCPC(port), reg, val);",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 1
+      },
+      "revId": "7abbd3e6541b5d719420658f2119ab6be3e60686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76dac536_6696a41b",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-23T23:05:12Z",
+      "side": 1,
+      "message": "return i2c_read8(I2C_PORT_TCPC, I2C_ADDR_TCPC(port), reg, val);",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "7abbd3e6541b5d719420658f2119ab6be3e60686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76dac536_4627e884",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-23T23:05:12Z",
+      "side": 1,
+      "message": "why not put value directly into i2c_write() for all these i2c_write()\u0027s in this function:\n\n/* Set MDAC Value to High. MDAC Reg is 7:2 */\nfusb302_i2c_write8(port, TCPC_REG_MEASURE, 0x26 \u003c\u003c 2);",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 50
+      },
+      "revId": "7abbd3e6541b5d719420658f2119ab6be3e60686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6d8bd3b_e50632ef",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-23T23:05:12Z",
+      "side": 1,
+      "message": "useless comment, we can see it\u0027s Ra from the next line. also, for style, this if/else should not have {}",
+      "range": {
+        "startLine": 170,
+        "startChar": 4,
+        "endLine": 170,
+        "endChar": 13
+      },
+      "revId": "7abbd3e6541b5d719420658f2119ab6be3e60686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76dac536_66ddc4f3",
+        "filename": "driver/tcpm/fusb302.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-23T23:05:12Z",
+      "side": 1,
+      "message": "__CROS_EC_DRIVER_TCPM_FUSB302_H",
+      "range": {
+        "startLine": 197,
+        "startChar": 10,
+        "endLine": 197,
+        "endChar": 25
+      },
+      "revId": "7abbd3e6541b5d719420658f2119ab6be3e60686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
