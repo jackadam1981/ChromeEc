@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "76dac536_c0da0081",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-23T20:50:04Z",
+      "side": 1,
+      "message": "yes, but the problem remains that this is a global function in the charge state machine but it is specific only to smart batteries. seems like the ifdef belongs in this file or else somebody else might decide to call this function without checking CONFIG_BATTERY_SMART by mistake.",
+      "parentUuid": "3675adb9_b3c0b8b2",
+      "range": {
+        "startLine": 927,
+        "startChar": 1,
+        "endLine": 928,
+        "endChar": 23
+      },
+      "revId": "bfee1b6178b1dace3ca4a0799776f97aa1a7aa88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3942fe30_94f26ac9",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
