@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "16b509da_bd9febd0",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-10-23T21:53:20Z",
+      "side": 1,
+      "message": "Oh. ok. yes.",
+      "parentUuid": "76dac536_c0da0081",
+      "range": {
+        "startLine": 927,
+        "startChar": 1,
+        "endLine": 928,
+        "endChar": 23
+      },
+      "revId": "bfee1b6178b1dace3ca4a0799776f97aa1a7aa88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3942fe30_94f26ac9",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
