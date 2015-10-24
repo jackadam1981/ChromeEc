@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56e941ce_82f71e88",
+        "filename": "board/glados_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-24T00:05:34Z",
+      "side": 1,
+      "message": "that\u0027s crazy ;-)\nuint32_t are always 4-byte aligned .... that\u0027s the ARM ABI\n(and all other ABIs do the same)",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "837d75f34e49e9cb9d681067deb8c44d1c300dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6d8bd3b_28f2afcb",
+        "filename": "board/oak_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-24T00:05:34Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "837d75f34e49e9cb9d681067deb8c44d1c300dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
