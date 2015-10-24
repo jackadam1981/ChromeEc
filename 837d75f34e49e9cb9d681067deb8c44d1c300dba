@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "96df3923_2711f86a",
+        "filename": "board/glados_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-24T00:15:46Z",
+      "side": 1,
+      "message": "ok, yes, you are right, i copied this over from samus_pd/board.c without thinking.\n\nlooking at the history behind this, we used to have a problem because this variable was defined as a struct ec_response_pd_status, which is packed. now that it is just an int32, we obviously don\u0027t need to do this anymore.",
+      "parentUuid": "56e941ce_82f71e88",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "837d75f34e49e9cb9d681067deb8c44d1c300dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6d8bd3b_28f2afcb",
         "filename": "board/oak_pd/board.c",
         "patchSetId": 1
