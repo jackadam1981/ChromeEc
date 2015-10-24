@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6d8bd3b_28baafaa",
+        "filename": "board/glados_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-24T00:31:34Z",
+      "side": 1,
+      "message": "given this will go a uint32_t status at the end of the day.\nisn\u0027t it safer to use a u32 here too ?\nI\u0027m not fully sure why ec_int_status is uint32_t and this one uint16_t",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "5dd7056c1152f15a0d48176d690012b1c2a1f39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
