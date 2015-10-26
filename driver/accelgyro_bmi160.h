@@ -428,7 +428,6 @@ enum bmi160_running_mode {
 	APPLICATION_INDOOR_NAVIGATION  = 8,
 };
 
-#define BMI160_FLAG_SEC_I2C_ENABLED    (1 << 0)
 #define BMI160_FIFO_FLAG_OFFSET        4
 #define BMI160_FIFO_ALL_MASK           7
 

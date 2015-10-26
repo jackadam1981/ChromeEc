@@ -1075,6 +1075,7 @@ static int init(const struct motion_sensor_t *s)
 		return EC_ERROR_UNKNOWN;
 
 	if (tmp != BMI160_CHIP_ID_MAJOR) {
+		mutex_lock(s->mutex);
 		/* The device may be lock on paging mode. Try to unlock it. */
 		raw_write8(s->addr, BMI160_CMD_REG,
 				BMI160_CMD_EXT_MODE_EN_B0);
@@ -1085,6 +1086,7 @@ static int init(const struct motion_sensor_t *s)
 		raw_write8(s->addr, BMI160_CMD_EXT_MODE_ADDR,
 				BMI160_CMD_PAGING_EN);
 		raw_write8(s->addr, BMI160_CMD_EXT_MODE_ADDR, 0);
+		mutex_unlock(s->mutex);
 		return EC_ERROR_ACCESS_DENIED;
 	}
 
@@ -1096,9 +1098,8 @@ static int init(const struct motion_sensor_t *s)
 		raw_write8(s->addr, BMI160_CMD_REG,
 				BMI160_CMD_SOFT_RESET);
 		msleep(30);
-		data->flags &= ~(BMI160_FLAG_SEC_I2C_ENABLED |
-				(BMI160_FIFO_ALL_MASK <<
-				 BMI160_FIFO_FLAG_OFFSET));
+		data->flags &= ~(BMI160_FIFO_ALL_MASK <<
+				 BMI160_FIFO_FLAG_OFFSET);
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 		data->enabled_activities = 0;
 		data->disabled_activities = 0;
@@ -1120,59 +1121,58 @@ static int init(const struct motion_sensor_t *s)
 	msleep(wakeup_time[s->type]);
 
 #ifdef CONFIG_MAG_BMI160_BMM150
-	if (s->type == MOTIONSENSE_TYPE_MAG) {
-		struct bmi160_drv_data_t *data = BMI160_GET_DATA(s);
-		if ((data->flags & BMI160_FLAG_SEC_I2C_ENABLED) == 0) {
-			int ext_page_reg, pullup_reg;
-			/* Enable secondary interface */
-			/*
-			 * This is not part of the normal configuration but from
-			 * code on Bosh github repo:
-			 * https://github.com/BoschSensortec/BMI160_driver
-			 *
-			 * Magic command sequences
-			 */
-			raw_write8(s->addr, BMI160_CMD_REG,
-					BMI160_CMD_EXT_MODE_EN_B0);
-			raw_write8(s->addr, BMI160_CMD_REG,
-					BMI160_CMD_EXT_MODE_EN_B1);
-			raw_write8(s->addr, BMI160_CMD_REG,
-					BMI160_CMD_EXT_MODE_EN_B2);
+	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
+		int ext_page_reg, pullup_reg;
+		/* Enable secondary interface */
+		/*
+		 * This is not part of the normal configuration but from
+		 * code on Bosh github repo:
+		 * https://github.com/BoschSensortec/BMI160_driver
+		 *
+		 * Magic command sequences
+		 */
+		mutex_lock(s->mutex);
+		raw_write8(s->addr, BMI160_CMD_REG,
+				BMI160_CMD_EXT_MODE_EN_B0);
+		raw_write8(s->addr, BMI160_CMD_REG,
+				BMI160_CMD_EXT_MODE_EN_B1);
+		raw_write8(s->addr, BMI160_CMD_REG,
+				BMI160_CMD_EXT_MODE_EN_B2);
 
-			/*
-			 * Change the register page to target mode, to change
-			 * the internal pull ups of the secondary interface.
-			 */
-			raw_read8(s->addr, BMI160_CMD_EXT_MODE_ADDR,
-					&ext_page_reg);
-			raw_write8(s->addr, BMI160_CMD_EXT_MODE_ADDR,
-					ext_page_reg | BMI160_CMD_TARGET_PAGE);
-			raw_read8(s->addr, BMI160_CMD_EXT_MODE_ADDR,
-					&ext_page_reg);
-			raw_write8(s->addr, BMI160_CMD_EXT_MODE_ADDR,
-					ext_page_reg | BMI160_CMD_PAGING_EN);
-			raw_read8(s->addr, BMI160_COM_C_TRIM_ADDR,
-					&pullup_reg);
-			raw_write8(s->addr, BMI160_COM_C_TRIM_ADDR,
-					pullup_reg | BMI160_COM_C_TRIM);
-			raw_read8(s->addr, BMI160_CMD_EXT_MODE_ADDR,
-					&ext_page_reg);
-			raw_write8(s->addr, BMI160_CMD_EXT_MODE_ADDR,
-					ext_page_reg & ~BMI160_CMD_TARGET_PAGE);
-			raw_read8(s->addr, BMI160_CMD_EXT_MODE_ADDR,
-					&ext_page_reg);
+		/*
+		 * Change the register page to target mode, to change
+		 * the internal pull ups of the secondary interface.
+		 */
+		raw_read8(s->addr, BMI160_CMD_EXT_MODE_ADDR,
+				&ext_page_reg);
+		raw_write8(s->addr, BMI160_CMD_EXT_MODE_ADDR,
+				ext_page_reg | BMI160_CMD_TARGET_PAGE);
+		raw_read8(s->addr, BMI160_CMD_EXT_MODE_ADDR,
+				&ext_page_reg);
+		raw_write8(s->addr, BMI160_CMD_EXT_MODE_ADDR,
+				ext_page_reg | BMI160_CMD_PAGING_EN);
+		raw_read8(s->addr, BMI160_COM_C_TRIM_ADDR,
+				&pullup_reg);
+		raw_write8(s->addr, BMI160_COM_C_TRIM_ADDR,
+				pullup_reg | BMI160_COM_C_TRIM);
+		raw_read8(s->addr, BMI160_CMD_EXT_MODE_ADDR,
+				&ext_page_reg);
+		raw_write8(s->addr, BMI160_CMD_EXT_MODE_ADDR,
+				ext_page_reg & ~BMI160_CMD_TARGET_PAGE);
+		raw_read8(s->addr, BMI160_CMD_EXT_MODE_ADDR,
+				&ext_page_reg);
 
-			/* Set the i2c address of the compass */
-			ret = raw_write8(s->addr, BMI160_MAG_IF_0,
-					BMM150_I2C_ADDRESS);
+		/* Set the i2c address of the compass */
+		ret = raw_write8(s->addr, BMI160_MAG_IF_0,
+				BMM150_I2C_ADDRESS);
 
-			/* Enable the secondary interface as I2C */
-			ret = raw_write8(s->addr, BMI160_IF_CONF,
+		/* Enable the secondary interface as I2C */
+		ret = raw_write8(s->addr, BMI160_IF_CONF,
 				BMI160_IF_MODE_AUTO_I2C << BMI160_IF_MODE_OFF);
-			data->flags |= BMI160_FLAG_SEC_I2C_ENABLED;
-		}
+		mutex_unlock(s->mutex);
+	}
 
-
+	if (s->type == MOTIONSENSE_TYPE_MAG) {
 		bmm150_mag_access_ctrl(s->addr, 1);
 
 		ret = bmm150_init(s);
