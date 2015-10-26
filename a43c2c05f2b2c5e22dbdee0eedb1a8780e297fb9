@@ -33,6 +33,24 @@
       "revId": "a43c2c05f2b2c5e22dbdee0eedb1a8780e297fb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96df3923_f29190dd",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1114730
+      },
+      "writtenOn": "2015-10-26T03:40:09Z",
+      "side": 1,
+      "message": "Hi Shawn,\nThe \"retry\" mechanism is suggested by RTD2136_Application_Note(page 8), please refer to below link:\nhttps://code.google.com/p/chrome-os-partner/issues/detail?id\u003d44631#c35",
+      "parentUuid": "f6b795e1_59d0a384",
+      "revId": "a43c2c05f2b2c5e22dbdee0eedb1a8780e297fb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
