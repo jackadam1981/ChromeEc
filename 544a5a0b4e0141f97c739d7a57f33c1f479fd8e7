@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "56e941ce_f6934053",
+        "filename": "common/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-10-26T22:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56e941ce_1f744756",
+      "range": {
+        "startLine": 666,
+        "startChar": 0,
+        "endLine": 672,
+        "endChar": 6
+      },
+      "revId": "544a5a0b4e0141f97c739d7a57f33c1f479fd8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76dac536_066a40d5",
         "filename": "include/charge_state_v2.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-23T22:40:01Z",
       "side": 1,
       "message": "Name nitpick: virtual_battery_read()?\n\nget_param_value() could refer to anything",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 19
+      },
+      "revId": "544a5a0b4e0141f97c739d7a57f33c1f479fd8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56e941ce_622772ec",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-10-26T22:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76dac536_066a40d5",
       "range": {
         "startLine": 82,
         "startChar": 4,
