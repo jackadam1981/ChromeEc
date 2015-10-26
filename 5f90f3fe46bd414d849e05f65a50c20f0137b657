@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f6ceb575_0db894aa",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-26T21:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6ae1193_61276cec",
+      "range": {
+        "startLine": 485,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 34
+      },
+      "revId": "5f90f3fe46bd414d849e05f65a50c20f0137b657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6d53101_667eaa36",
         "filename": "util/ec3po/console.py",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-24T00:55:50Z",
       "side": 1,
       "message": "Not a log level. I\u0027ll remove this.",
+      "range": {
+        "startLine": 696,
+        "startChar": 28,
+        "endLine": 696,
+        "endChar": 42
+      },
+      "revId": "5f90f3fe46bd414d849e05f65a50c20f0137b657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56e941ce_2b8e2575",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-26T21:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6d53101_667eaa36",
       "range": {
         "startLine": 696,
         "startChar": 28,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "56e941ce_6b982db4",
+        "filename": "util/ec3po/console_unittest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-26T21:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36e4cdf6_c49f74d0",
+      "range": {
+        "startLine": 192,
+        "startChar": 37,
+        "endLine": 192,
+        "endChar": 44
+      },
+      "revId": "5f90f3fe46bd414d849e05f65a50c20f0137b657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6ae1193_4120a8e3",
         "filename": "util/ec3po/console_unittest.py",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-10-24T00:55:50Z",
       "side": 1,
       "message": "Should call CheckInputBuffer/Position.",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 50
+      },
+      "revId": "5f90f3fe46bd414d849e05f65a50c20f0137b657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6d8bd3b_b90c4f11",
+        "filename": "util/ec3po/console_unittest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-26T21:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6ae1193_4120a8e3",
       "range": {
         "startLine": 304,
         "startChar": 0,
