@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "16b509da_0f8095c0",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-26T20:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6ceb575_64c4e42b",
+      "range": {
+        "startLine": 917,
+        "startChar": 36,
+        "endLine": 917,
+        "endChar": 48
+      },
+      "revId": "921f5e67fca6e3affdab2b1a99de205cd8cebe3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6d53101_83c80086",
         "filename": "include/charge_manager.h",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-23T20:32:51Z",
       "side": 1,
       "message": "get_power_limit_uw()?\n\n(limit, not current power, and uw to specify units to reduce confusion)",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 28
+      },
+      "revId": "921f5e67fca6e3affdab2b1a99de205cd8cebe3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36e4cdf6_e49c6b37",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-26T20:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6d53101_83c80086",
       "range": {
         "startLine": 78,
         "startChar": 4,
