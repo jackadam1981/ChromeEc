@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "36e4cdf6_bd5192f8",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1114730
+      },
+      "writtenOn": "2015-10-27T03:24:23Z",
+      "side": 1,
+      "message": "The delay time is for transmitter power stable, please refer to RTD2136_Application_Note(page 6).\nhttps://code.google.com/p/chrome-os-partner/issues/detail?id\u003d44631#c35\n\nIn the doucment, the delay sould be more than 20ms between transmitter power on and I2C communication, and we extend delay time to 50ms for tolerance.",
+      "parentUuid": "d6d53101_54622c95",
+      "revId": "e35d06a5c390cb10f8db33a647553ca3c5bd1611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76d48537_30652647",
         "filename": "board/buddy/panel.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-10-26T18:13:17Z",
       "side": 1,
       "message": "You will call your function every time the AP powers on. Is that necessary? Can you get away with programming once, on EC power-on?",
+      "revId": "e35d06a5c390cb10f8db33a647553ca3c5bd1611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6b795e1_b39f182a",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1114730
+      },
+      "writtenOn": "2015-10-27T03:24:23Z",
+      "side": 1,
+      "message": "Transmitter power plane is from system \"S3\" power, which is enabled by PM_SLP_S4 and PM_SLP_S5. Transmitter SRAM power would drop if system power off to \"S5\" state, it makes FW and EDID data loss. So EC need to flash FW and EDID on CHIPSET_STARTUP.",
+      "parentUuid": "76d48537_30652647",
       "revId": "e35d06a5c390cb10f8db33a647553ca3c5bd1611",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
