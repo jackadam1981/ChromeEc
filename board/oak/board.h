@@ -138,6 +138,11 @@
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY) |\
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_FASTBOOT))
 
+/* Filter out battery and battery status events */
+#define CONFIG_MKBP_EVENT_FILTER \
+		(EC_HOST_EVENT_MASK(EC_HOST_EVENT_BATTERY) |\
+		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_BATTERY_STATUS))
+
 #include "gpio_signal.h"
 
 enum power_signal {

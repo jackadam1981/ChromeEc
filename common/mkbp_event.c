@@ -59,6 +59,13 @@ void mkbp_send_event(uint8_t event_type)
 	}
 #endif
 
+#ifdef CONFIG_MKBP_EVENT_FILTER
+	/* don't interrupt host on specific events */
+	if (!(*(uint32_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS) &
+	      ~CONFIG_MKBP_EVENT_FILTER))
+		return;
+#endif
+
 	set_host_interrupt(1);
 }
 
