@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "16b509da_24d73b4a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-27T00:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36e4cdf6_04e87714",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 61
+      },
+      "revId": "5d7f85ce1ba0389d7ab3a9df9f88f58232960f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76d48537_563c2a88",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-26T21:28:17Z",
       "side": 1,
       "message": "probably more proper to say \u0027once we enable PD communication\u0027",
+      "range": {
+        "startLine": 919,
+        "startChar": 29,
+        "endLine": 919,
+        "endChar": 39
+      },
+      "revId": "5d7f85ce1ba0389d7ab3a9df9f88f58232960f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56e941ce_b1fb8271",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-27T00:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76d48537_563c2a88",
       "range": {
         "startLine": 919,
         "startChar": 29,
