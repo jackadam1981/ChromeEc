@@ -44,7 +44,7 @@ GPIO(USBC_TX_CLKIN,        PIN(B, 3),  GPIO_OUT_LOW)
 #endif
 
 /* System power */
-GPIO(PMIC_PWRON_L,         PIN(D, 14), GPIO_ODR_HIGH)
+GPIO(PMIC_PWRON_L,         PIN(D, 14), GPIO_OUT_HIGH)
 GPIO(PMIC_WARM_RESET_L,    PIN(E, 4),  GPIO_ODR_HIGH)
 /*
  * We are missing an external pull-up for EN_PP3300.
