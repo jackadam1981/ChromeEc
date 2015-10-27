@@ -339,7 +339,9 @@ static inline int x_timehs_addr(unsigned int module, unsigned int timer,
 #define GR_USB_GUSBCFG                GR_USB_REG(GC_USB_GUSBCFG_OFFSET)
 #define GR_USB_GRSTCTL                GR_USB_REG(GC_USB_GRSTCTL_OFFSET)
 #define GR_USB_GINTSTS                GR_USB_REG(GC_USB_GINTSTS_OFFSET)
+#define   GINTSTS(bit)                (1 << GC_USB_GINTSTS_ ## bit ## _LSB)
 #define GR_USB_GINTMSK                GR_USB_REG(GC_USB_GINTMSK_OFFSET)
+#define   GINTMSK(bit)                (1 << GC_USB_GINTMSK_ ## bit ## MSK_LSB)
 #define GR_USB_GRXSTSR                GR_USB_REG(GC_USB_GRXSTSR_OFFSET)
 #define GR_USB_GRXSTSP                GR_USB_REG(GC_USB_GRXSTSP_OFFSET)
 #define GR_USB_GRXFSIZ                GR_USB_REG(GC_USB_GRXFSIZ_OFFSET)
@@ -359,6 +361,8 @@ static inline int x_timehs_addr(unsigned int module, unsigned int timer,
 #define GR_USB_DOEPMSK                GR_USB_REG(GC_USB_DOEPMSK_OFFSET)
 #define GR_USB_DAINT                  GR_USB_REG(GC_USB_DAINT_OFFSET)
 #define GR_USB_DAINTMSK               GR_USB_REG(GC_USB_DAINTMSK_OFFSET)
+#define  DAINT_INEP(ep)               (1 << (ep + GC_USB_DAINTMSK_INEPMSK0_LSB))
+#define  DAINT_OUTEP(ep)              (1 << (ep + GC_USB_DAINTMSK_OUTEPMSK0_LSB))
 #define GR_USB_DTHRCTL                GR_USB_REG(GC_USB_DTHRCTL_OFFSET)
 #define GR_USB_DIEPEMPMSK             GR_USB_REG(GC_USB_DIEPEMPMSK_OFFSET)
 
@@ -375,6 +379,44 @@ static inline int x_timehs_addr(unsigned int module, unsigned int timer,
 #define GR_USB_DOEPTSIZ(n)            GR_USB_EPOREG(0x10, n)
 #define GR_USB_DOEPDMA(n)             GR_USB_EPOREG(0x14, n)
 #define GR_USB_DOEPDMAB(n)            GR_USB_EPOREG(0x1c, n)
+
+/*
+ * GR_USB_GGPIO is a portal to a set of custom 8-bit registers. Logically it is
+ * split into a GP_OUT part and a GP_IN part. Writing to a custom register can
+ * be done in a single operation, with all data transferred in GP_OUT. Reading
+ * requires a GP_OUT write to select the register to read, then a read or GP_IN
+ * to see what the register holds.
+ *   GP_OUT:
+ *    bit  15     direction: 1=write, 0=read
+ *    bits 11:4   value to write to register when bit 15 is set
+ *    bits 3:0    custom register to access
+ *   GP_IN:
+ *    bits 7:0    value read back from register when GP_OUT[15] is clear
+ *
+ * The GP_OUT bit fields aren't defined elsewhere, so we'll define them here
+ */
+#define GP_OUT(v) ((v << GC_USB_GGPIO_GPO_LSB) & GC_USB_GGPIO_GPO_MASK)
+#define GP_IN(v) ((v << GC_USB_GGPIO_GPI_LSB) & GC_USB_GGPIO_GPI_MASK)
+#define GGPIO_WRITE(reg, val) GP_OUT(((1 << 15) |	      /* write bit */ \
+				      ((val & 0xFF) << 4) |   /* value */ \
+				      (reg & 0x0F)))	      /* register */
+#define GGPIO_READ(reg) (v & 0x0F)
+
+/* Further, the custom config registers for the USB module are: */
+#define USB_CUSTOM_CFG_REG    0			/* register number */
+#define  USB_PHY_ACTIVE  0x04			/* bit 2 */
+#define  USB_TESTMODE    0x02			/* bit 1 */
+#define  USB_SEL_PHY0    0x00			/* bit 0 */
+#define  USB_SEL_PHY1    0x01			/* bit 0 */
+#define USB_IDLE_PHY_CTRL_REG 1			/* register number */
+#define  USB_FS_SUSPENDB    (1 << 7)
+#define  USB_FS_EDGE_SEL    (1 << 6)
+#define  USB_DM_PULLUP_EN   (1 << 5)
+#define  USB_DP_RPU2_ENB    (1 << 4)
+#define  USB_DP_RPU1_ENB    (1 << 3)
+#define  USB_TX_OEB         (1 << 2)
+#define  USB_TX_DPO         (1 << 1)
+#define  USB_TX_DMO         (1 << 0)
 
 #define GAHBCFG_DMA_EN                (1 << GC_USB_GAHBCFG_DMAEN_LSB)
 #define GAHBCFG_GLB_INTR_EN           (1 << GC_USB_GAHBCFG_GLBLINTRMSK_LSB)
@@ -400,15 +442,6 @@ static inline int x_timehs_addr(unsigned int module, unsigned int timer,
 #define GRSTCTL_RXFFLSH               (1 << GC_USB_GRSTCTL_RXFFLSH_LSB)
 #define GRSTCTL_TXFNUM(n)             (((n) << GC_USB_GRSTCTL_TXFNUM_LSB) & GC_USB_GRSTCTL_TXFNUM_MASK)
 
-#define GINTSTS_RXFLVL                (1 << GC_USB_GINTSTS_RXFLVL_LSB)
-#define GINTSTS_SOF                   (1 << GC_USB_GINTSTS_SOF_LSB)
-#define GINTSTS_GOUTNAKEFF            (1 << GC_USB_GINTMSK_GOUTNAKEFFMSK_LSB)
-#define GINTSTS_GINNAKEFF             (1 << GC_USB_GINTMSK_GINNAKEFFMSK_LSB)
-#define GINTSTS_USBRST                (1 << GC_USB_GINTMSK_USBRSTMSK_LSB)
-#define GINTSTS_ENUMDONE              (1 << GC_USB_GINTMSK_ENUMDONEMSK_LSB)
-#define GINTSTS_IEPINT                (1 << GC_USB_GINTSTS_IEPINT_LSB)
-#define GINTSTS_OEPINT                (1 << GC_USB_GINTSTS_OEPINT_LSB)
-
 #define DCFG_DEVSPD_FS                (1 << GC_USB_DCFG_DEVSPD_LSB)
 #define DCFG_DEVSPD_FS48              (3 << GC_USB_DCFG_DEVSPD_LSB)
 #define DCFG_DEVADDR(a)               (((a) << GC_USB_DCFG_DEVADDR_LSB) & GC_USB_DCFG_DEVADDR_MASK)
@@ -429,6 +462,36 @@ static inline int x_timehs_addr(unsigned int module, unsigned int timer,
 #define DOEPMSK_AHBERRMSK             (1 << GC_USB_DOEPMSK_AHBERRMSK_LSB)
 #define DOEPMSK_EPDISBLDMSK           (1 << GC_USB_DOEPMSK_EPDISBLDMSK_LSB)
 #define DOEPMSK_XFERCOMPLMSK          (1 << GC_USB_DOEPMSK_XFERCOMPLMSK_LSB)
+
+#define DOEPINT_XFERCOMPL          (1 << GC_USB_DOEPINT0_XFERCOMPL_LSB)
+#define DOEPINT_EPDISBLD           (1 << GC_USB_DOEPINT0_EPDISBLD_LSB)
+#define DOEPINT_AHBERR             (1 << GC_USB_DOEPINT0_AHBERR_LSB)
+#define DOEPINT_SETUP              (1 << GC_USB_DOEPINT0_SETUP_LSB)
+#define DOEPINT_OUTTKNEPDIS        (1 << GC_USB_DOEPINT0_OUTTKNEPDIS_LSB)
+#define DOEPINT_STSPHSERCVD        (1 << GC_USB_DOEPINT0_STSPHSERCVD_LSB)
+#define DOEPINT_BACK2BACKSETUP     (1 << GC_USB_DOEPINT0_BACK2BACKSETUP_LSB)
+#define DOEPINT_OUTPKTERR          (1 << GC_USB_DOEPINT0_OUTPKTERR_LSB)
+#define DOEPINT_BNAINTR            (1 << GC_USB_DOEPINT0_BNAINTR_LSB)
+#define DOEPINT_PKTDRPSTS          (1 << GC_USB_DOEPINT0_PKTDRPSTS_LSB)
+#define DOEPINT_BBLEERR            (1 << GC_USB_DOEPINT0_BBLEERR_LSB)
+#define DOEPINT_NAKINTRPT          (1 << GC_USB_DOEPINT0_NAKINTRPT_LSB)
+#define DOEPINT_NYETINTRPT         (1 << GC_USB_DOEPINT0_NYETINTRPT_LSB)
+#define DOEPINT_STUPPKTRCVD        (1 << GC_USB_DOEPINT0_STUPPKTRCVD_LSB)
+
+#define DIEPINT_XFERCOMPL          (1 << GC_USB_DIEPINT0_XFERCOMPL_LSB)
+#define DIEPINT_EPDISBLD           (1 << GC_USB_DIEPINT0_EPDISBLD_LSB)
+#define DIEPINT_AHBERR             (1 << GC_USB_DIEPINT0_AHBERR_LSB)
+#define DIEPINT_TIMEOUT            (1 << GC_USB_DIEPINT0_TIMEOUT_LSB)
+#define DIEPINT_INTKNTXFEMP        (1 << GC_USB_DIEPINT0_INTKNTXFEMP_LSB)
+#define DIEPINT_INTKNEPMIS         (1 << GC_USB_DIEPINT0_INTKNEPMIS_LSB)
+#define DIEPINT_INEPNAKEFF         (1 << GC_USB_DIEPINT0_INEPNAKEFF_LSB)
+#define DIEPINT_TXFEMP             (1 << GC_USB_DIEPINT0_TXFEMP_LSB)
+#define DIEPINT_TXFIFOUNDRN        (1 << GC_USB_DIEPINT0_TXFIFOUNDRN_LSB)
+#define DIEPINT_BNAINTR            (1 << GC_USB_DIEPINT0_BNAINTR_LSB)
+#define DIEPINT_PKTDRPSTS          (1 << GC_USB_DIEPINT0_PKTDRPSTS_LSB)
+#define DIEPINT_BBLEERR            (1 << GC_USB_DIEPINT0_BBLEERR_LSB)
+#define DIEPINT_NAKINTRPT          (1 << GC_USB_DIEPINT0_NAKINTRPT_LSB)
+#define DIEPINT_NYETINTRPT         (1 << GC_USB_DIEPINT0_NYETINTRPT_LSB)
 
 #define DXEPCTL_EPTYPE_CTRL           (0 << GC_USB_DIEPCTL0_EPTYPE_LSB)
 #define DXEPCTL_EPTYPE_ISO            (1 << GC_USB_DIEPCTL0_EPTYPE_LSB)

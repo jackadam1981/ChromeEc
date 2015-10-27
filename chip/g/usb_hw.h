@@ -20,17 +20,30 @@
 	void _EP_RESET_HANDLER(num)(void)                         \
 		__attribute__ ((alias(STRINGIFY(rst_handler))));
 
-/* arrays with all endpoint callbacks */
+/* Arrays with all the endpoint callbacks */
 extern void (*usb_ep_tx[]) (void);
 extern void (*usb_ep_rx[]) (void);
 extern void (*usb_ep_reset[]) (void);
-/* array with interface-specific control request callbacks */
-extern int (*usb_iface_request[]) (uint8_t *ep0_buf_rx, uint8_t *ep0_buf_tx);
 
+/*
+ * Declare any interface-specific control request handlers. These Setup packets
+ * arrive on the control endpoint (EP0), but are handled by the interface code.
+ * The callback must prepare the IN or OUT FIFOs, and return 0 if all went well
+ * or non-zero to STALL the next stage (and thus indicate error to the host).
+ */
+struct usb_setup_packet;
 #define _IFACE_HANDLER(num) CONCAT3(iface_, num, _request)
-#define USB_DECLARE_IFACE(num, handler)					\
-	int _IFACE_HANDLER(num)(uint8_t *ep0_buf_rx,			\
-				uint8_t *epo_buf_tx)			\
-	__attribute__ ((alias(STRINGIFY(handler))));
+#define USB_DECLARE_IFACE(num, handler)				\
+	int _IFACE_HANDLER(num)(struct usb_setup_packet *req)	\
+		__attribute__ ((alias(STRINGIFY(handler))));
+
+/* Array of interface handler callbacks */
+static int (*usb_iface_request[]) (struct usb_setup_packet *req);
+
+/*
+ * The interface handler can call this to put data in the EP0 TX FIFO.
+ * It returns 0 on success.
+ */
+int load_in_fifo(const void *source, uint32_t len);
 
 #endif	/* __CROS_EC_USB_HW_H */
