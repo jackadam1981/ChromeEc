@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76d48537_47391297",
+        "filename": "power/mediatek.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-10-27T06:28:30Z",
+      "side": 1,
+      "message": "Rephrase:\nCheck and release PMIC power button signal, if it\u0027s deferred callback function is not triggered in RO before SYSJUMP.",
+      "range": {
+        "startLine": 419,
+        "startChar": 3,
+        "endLine": 427,
+        "endChar": 6
+      },
+      "revId": "56e6267dd7c8fb4dbc55c8b82b66b17d1a8f0d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
