@@ -1313,6 +1313,9 @@
 /* Support MKBP event */
 #undef CONFIG_MKBP_EVENT
 
+/* Filtering out specific MKBP events */
+#undef CONFIG_MKBP_EVENT_FILTER
+
 /*
  * With this option, we can define the MKBP wakeup events in this mask (as a
  * white list) in board level, those events allow to interrupt AP during S3.
