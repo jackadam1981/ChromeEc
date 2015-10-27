@@ -229,6 +229,11 @@ static struct pd_port_controller {
 	uint8_t power_status;
 	uint8_t power_status_mask;
 
+#ifdef CONFIG_USB_PD_LOW_POWER
+	/* Timestamp beyond which we allow low power task sampling */
+	timestamp_t low_power_ts;
+#endif
+
 	/* Last received */
 	int rx_head[RX_BUFFER_SIZE+1];
 	uint32_t rx_payload[RX_BUFFER_SIZE+1][7];
@@ -821,8 +826,19 @@ int tcpc_run(int port, int evt)
 	if (pd[port].rx_enabled)
 		pd_rx_enable_monitoring(port);
 
-	/* TODO: adjust timeout based on how often to sample CC */
-	return 10*MSEC;
+#ifdef CONFIG_USB_PD_LOW_POWER
+	/*
+	 * If we are presenting Rd with no connection, and timestamp is
+	 * past the low power timestamp, then we don't need to sample
+	 * CC lines as often. In this case, our connection delay should not
+	 * actually increased because we will get an interrupt on VBUS detect.
+	 */
+	return (get_time().val >= pd[port].low_power_ts.val &&
+		pd[port].cc_pull == TYPEC_CC_RD &&
+		pd[port].cc_status[0] == TYPEC_CC_VOLT_OPEN &&
+		pd[port].cc_status[1] == TYPEC_CC_VOLT_OPEN) ? 200 * MSEC :
+							       10 * MSEC;
+#endif
 }
 
 #ifndef CONFIG_USB_POWER_DELIVERY
@@ -904,6 +920,16 @@ int tcpc_set_cc(int port, int pull)
 	pd[port].cc_pull = pull;
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	pd_set_host_mode(port, pull == TYPEC_CC_RP);
+#endif
+
+#ifdef CONFIG_USB_PD_LOW_POWER
+	/*
+	 * Reset the low power timestamp every time CC termination toggles,
+	 * because we only want to go into low power mode when we are not
+	 * dual-role toggling.
+	 */
+	pd[port].low_power_ts.val = get_time().val +
+					2*(PD_T_DRP_SRC + PD_T_DRP_SNK);
 #endif
 
 	/*
@@ -1050,6 +1076,10 @@ void tcpc_init(int port)
 	pd_hw_init(port, PD_ROLE_DEFAULT);
 	pd[port].cc_pull = PD_ROLE_DEFAULT == PD_ROLE_SOURCE ? TYPEC_CC_RP :
 							       TYPEC_CC_RD;
+#ifdef CONFIG_USB_PD_LOW_POWER
+	/* Don't use low power immediately after boot */
+	pd[port].low_power_ts.val = get_time().val + SECOND;
+#endif
 
 	/* make sure PD monitoring is disabled initially */
 	pd[port].rx_enabled = 0;
