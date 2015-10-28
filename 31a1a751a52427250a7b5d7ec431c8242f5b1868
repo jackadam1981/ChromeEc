@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36a68d28_4b5fa54f",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-28T16:00:09Z",
+      "side": 1,
+      "message": "Note that usleep() is not useful for delays this short; context switches between tasks take ~1 us.  By the time the context switch to another task completes, the system timer fires and wakes this task back up.\n\nBetter to use usleep(10) and change timeout to 10 (so still 10*10\u003d100 us).",
+      "range": {
+        "startLine": 244,
+        "startChar": 4,
+        "endLine": 244,
+        "endChar": 14
+      },
+      "revId": "31a1a751a52427250a7b5d7ec431c8242f5b1868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
