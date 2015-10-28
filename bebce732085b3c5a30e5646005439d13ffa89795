@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "565141a7_e54a6c20",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-10-28T10:19:27Z",
+      "side": 1,
+      "message": "The charging voltage will not be 0 with narrow vdc configuration.",
+      "range": {
+        "startLine": 204,
+        "startChar": 3,
+        "endLine": 204,
+        "endChar": 4
+      },
+      "revId": "bebce732085b3c5a30e5646005439d13ffa89795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
