@@ -380,6 +380,24 @@ static int charge_request(int voltage, int current)
 			CPRINTS("%s(%dmV, %dmA)", __func__, voltage, current);
 	}
 
+#ifdef CONFIG_CHARGER_NARROW_VDC
+	/*
+	 * With narrow VDC power path, set charging voltage before current.
+	 * When turning off charging, keep charger's latest VSYS voltage and
+	 * turn off battery current
+	 */
+	if (voltage > 0) {
+		r1 = charger_set_voltage(voltage);
+		if (r1 != EC_SUCCESS)
+			problem(PR_SET_VOLTAGE, r1);
+	} else
+		r1 = EC_SUCCESS;
+
+	if (current >= 0)
+		r2 = charger_set_current(current);
+	if (r2 != EC_SUCCESS)
+		problem(PR_SET_CURRENT, r2);
+#else
 	/*
 	 * Set current before voltage so that if we are just starting
 	 * to charge, we allow some time (i2c delay) for charging circuit to
@@ -396,6 +414,7 @@ static int charge_request(int voltage, int current)
 		r1 = charger_set_voltage(voltage);
 	if (r1 != EC_SUCCESS)
 		problem(PR_SET_VOLTAGE, r1);
+#endif
 
 	/*
 	 * Set the charge inhibit bit when possible as it appears to save
