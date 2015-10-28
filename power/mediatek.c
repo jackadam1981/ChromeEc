@@ -182,7 +182,7 @@ static void chipset_turn_off_power_rails(void);
 static int is_suspend_asserted(void)
 {
 	if (power_get_signals() & IN_SUSPEND)
-		usleep(SUSPEND_DEBOUNCE_TIME);
+		udelay(SUSPEND_DEBOUNCE_TIME);
 
 	return power_get_signals() & IN_SUSPEND;
 }
@@ -196,7 +196,7 @@ static int is_suspend_asserted(void)
 static int is_suspend_deasserted(void)
 {
 	if (!(power_get_signals() & IN_SUSPEND))
-		usleep(SUSPEND_DEBOUNCE_TIME);
+		udelay(SUSPEND_DEBOUNCE_TIME);
 
 	return !(power_get_signals() & IN_SUSPEND);
 }
@@ -212,7 +212,7 @@ static int is_power_good_asserted(void)
 	if (!gpio_get_level(GPIO_SYSTEM_POWER_H))
 		return 0;
 	else if (power_get_signals() & IN_POWER_GOOD)
-		usleep(POWER_DEBOUNCE_TIME);
+		udelay(POWER_DEBOUNCE_TIME);
 
 	return power_get_signals() & IN_POWER_GOOD;
 }
@@ -226,7 +226,7 @@ static int is_power_good_asserted(void)
 static int is_power_good_deasserted(void)
 {
 	if (!(power_get_signals() & IN_POWER_GOOD))
-		usleep(POWER_DEBOUNCE_TIME);
+		udelay(POWER_DEBOUNCE_TIME);
 
 	return !(power_get_signals() & IN_POWER_GOOD);
 }
@@ -692,6 +692,7 @@ enum power_state power_handle_state(enum power_state state)
 			CPRINTS("power on %d", value);
 			return POWER_S5S3;
 		}
+		timer_cancel(TASK_ID_CHIPSET);
 		return state;
 
 	case POWER_S5S3:
