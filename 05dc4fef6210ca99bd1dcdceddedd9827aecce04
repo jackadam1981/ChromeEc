@@ -16,6 +16,24 @@
       "revId": "05dc4fef6210ca99bd1dcdceddedd9827aecce04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6d35d95_8aeeab25",
+        "filename": "board/reks/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2015-10-28T20:37:49Z",
+      "side": 0,
+      "message": "Isn\u0027t that already configured on line 113/4?",
+      "parentUuid": "96cad9dc_66072eec",
+      "revId": "05dc4fef6210ca99bd1dcdceddedd9827aecce04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
