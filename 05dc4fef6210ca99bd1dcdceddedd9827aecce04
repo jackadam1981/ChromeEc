@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96cad9dc_66072eec",
+        "filename": "board/reks/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-28T17:00:28Z",
+      "side": 0,
+      "message": "You still need to configure the i2c pins that you\u0027re actually using (looks like i2c0_0 and i2c3) as alternate. Even if the alternate function is the pin default, I think you will run into troubles with unwedge and possibly after hibernate.",
+      "revId": "05dc4fef6210ca99bd1dcdceddedd9827aecce04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
