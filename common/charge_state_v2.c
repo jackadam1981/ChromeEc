@@ -805,7 +805,13 @@ wait_for_it:
 
 		/* Turn charger off if it's not needed */
 		if (curr.state == ST_IDLE || curr.state == ST_DISCHARGE) {
+#ifndef CONFIG_CHARGER_NARROW_VDC
+			/*
+			 * If this is not a NVDC charger, turn off charging
+			 * voltage.
+			 */
 			curr.requested_voltage = 0;
+#endif
 			curr.requested_current = 0;
 		}
 

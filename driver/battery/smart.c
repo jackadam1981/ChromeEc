@@ -347,8 +347,16 @@ void battery_get_params(struct batt_params *batt)
 #endif
 		batt_new.flags |= BATT_FLAG_WANT_CHARGE;
 	else
+#ifdef CONFIG_CHARGER_NARROW_VDC
+		/*
+		 * With NVDC charger, turn off charging by limit current to
+		 * zero. And keep the VSYS at battery's desired voltage.
+		 */
+		batt_new.desired_current = 0;
+#else
 		/* Force both to zero */
 		batt_new.desired_voltage = batt_new.desired_current = 0;
+#endif
 
 	/* Update visible battery parameters */
 	memcpy(batt, &batt_new, sizeof(*batt));
