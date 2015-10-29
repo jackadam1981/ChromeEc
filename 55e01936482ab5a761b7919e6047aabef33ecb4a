@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "161fca56_d432dc32",
+        "filename": "board/buddy/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-29T20:24:09Z",
+      "side": 1,
+      "message": "This is sorted by priority (highest priority is last). It probably makes sense to move the PANEL task above HOOKS (which is generally the lowest priority task, and the task that tickles the watchdog timer).",
+      "revId": "55e01936482ab5a761b7919e6047aabef33ecb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36204e91_35459098",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-29T20:24:09Z",
+      "side": 1,
+      "message": "I suggest to make this msleep(). udelay() will busy wait.",
+      "revId": "55e01936482ab5a761b7919e6047aabef33ecb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
