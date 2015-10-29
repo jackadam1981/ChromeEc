@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "96cad9dc_db6cf7be",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-29T19:46:13Z",
+      "side": 1,
+      "message": "I moved it to a new file chip_i2c.h (which we\u0027ll need anyway for the clk src enum). If we\u0027re going to put the enum in include/i2c.h then we should probably change i2c_port_t to take an enum type as a parameter rather than the frequency in KHz. It involves touching many board.c files and the chip implementations. It should probably be a new CL. I\u0027ll open a crbug for it?",
+      "parentUuid": "769c85d8_e27dcc9f",
+      "revId": "5bd71126b490ec8c0f0d9c91df1f1f690baf2ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56ab01f0_1b8687e0",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-10-29T18:39:56Z",
       "side": 1,
       "message": "make it a 2D array.",
+      "revId": "5bd71126b490ec8c0f0d9c91df1f1f690baf2ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6eb5e62_21e66ed8",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-29T19:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56ab01f0_1b8687e0",
       "revId": "5bd71126b490ec8c0f0d9c91df1f1f690baf2ccb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "f60076f1_5bdcc307",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-29T19:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6d0d18a_d73fa64d",
+      "revId": "5bd71126b490ec8c0f0d9c91df1f1f690baf2ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36a68d28_d42ccdd1",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2015-10-29T18:39:56Z",
       "side": 1,
       "message": "int kbps and enum stm32_i2c_freq are now duplicate.\nLet\u0027s call i2c_set_freq_port() with the clock (index) as extra argument.",
+      "revId": "5bd71126b490ec8c0f0d9c91df1f1f690baf2ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "960bba17_d8044d5b",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-29T19:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36a68d28_d42ccdd1",
       "revId": "5bd71126b490ec8c0f0d9c91df1f1f690baf2ccb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
