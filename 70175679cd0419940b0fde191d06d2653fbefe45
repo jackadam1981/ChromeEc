@@ -22,6 +22,30 @@
       "revId": "70175679cd0419940b0fde191d06d2653fbefe45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56ab01f0_20ab525d",
+        "filename": "board/oak/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-10-29T10:17:09Z",
+      "side": 1,
+      "message": "I will check what cause the battery state changing during suspend resume.",
+      "parentUuid": "36f76de3_c9263588",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 52
+      },
+      "revId": "70175679cd0419940b0fde191d06d2653fbefe45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
