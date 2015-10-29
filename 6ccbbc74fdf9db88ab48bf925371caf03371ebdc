@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6399ed2_f14e08bb",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6d35d95_7b36a782",
+      "range": {
+        "startLine": 419,
+        "startChar": 22,
+        "endLine": 419,
+        "endChar": 41
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76c565cc_3f5257fc",
         "filename": "util/ec3po/console.py",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-29T18:03:04Z",
       "side": 1,
       "message": "Is the entire command buffer case-insensitive, or just the command?",
+      "range": {
+        "startLine": 427,
+        "startChar": 29,
+        "endLine": 427,
+        "endChar": 36
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7643a650_afa25966",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "I intended the entire command buffer to be case-insensitive; I couldn\u0027t think of a case where \u0027case\u0027(heh) would matter.\n\nIt\u0027s probably safer to just have the command be case-insensitive.",
+      "parentUuid": "76c565cc_3f5257fc",
       "range": {
         "startLine": 427,
         "startChar": 29,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "562a227b_ce4b63a9",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "769c85d8_e7adde09",
+      "range": {
+        "startLine": 436,
+        "startChar": 19,
+        "endLine": 436,
+        "endChar": 20
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56ab01f0_a07bc2ec",
         "filename": "util/ec3po/console.py",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2015-10-29T18:03:04Z",
       "side": 1,
       "message": "...and eventually, handle partial matching based on unique prefixes.",
+      "range": {
+        "startLine": 440,
+        "startChar": 6,
+        "endLine": 440,
+        "endChar": 55
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d63612de_f211686c",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56ab01f0_a07bc2ec",
       "range": {
         "startLine": 440,
         "startChar": 6,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "161fca56_b46760f8",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96cad9dc_a092a694",
+      "range": {
+        "startLine": 456,
+        "startChar": 52,
+        "endLine": 456,
+        "endChar": 53
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76c565cc_df45032f",
         "filename": "util/ec3po/console.py",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2015-10-29T18:03:04Z",
       "side": 1,
       "message": "buffer_full \u003d len(self.input_buffer) \u003e\u003d self.line_limit",
+      "range": {
+        "startLine": 463,
+        "startChar": 4,
+        "endLine": 466,
+        "endChar": 25
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_37e118c0",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76c565cc_df45032f",
       "range": {
         "startLine": 463,
         "startChar": 4,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "5625c29e_b62f68c9",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36a68d28_a0fd8022",
+      "range": {
+        "startLine": 485,
+        "startChar": 26,
+        "endLine": 485,
+        "endChar": 28
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56c4e1d1_99ee0726",
         "filename": "util/ec3po/console.py",
         "patchSetId": 2
@@ -174,6 +342,30 @@
       "writtenOn": "2015-10-29T18:03:04Z",
       "side": 1,
       "message": "1 + extra_bytes_written",
+      "range": {
+        "startLine": 568,
+        "startChar": 6,
+        "endLine": 569,
+        "endChar": 50
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161fca56_d431bce7",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56c4e1d1_99ee0726",
       "range": {
         "startLine": 568,
         "startChar": 6,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "760e462a_b7f4087f",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7621e584_995d4b10",
+      "range": {
+        "startLine": 572,
+        "startChar": 6,
+        "endLine": 572,
+        "endChar": 33
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56ab01f0_7bbeabe9",
         "filename": "util/ec3po/console.py",
         "patchSetId": 2
@@ -220,6 +436,30 @@
       "writtenOn": "2015-10-29T18:03:04Z",
       "side": 1,
       "message": "if not count:",
+      "range": {
+        "startLine": 590,
+        "startChar": 4,
+        "endLine": 590,
+        "endChar": 17
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d63612de_32c6d01d",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56ab01f0_7bbeabe9",
       "range": {
         "startLine": 590,
         "startChar": 4,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "760e462a_37f8f86d",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6d0d18a_77aa3a48",
+      "range": {
+        "startLine": 602,
+        "startChar": 19,
+        "endLine": 602,
+        "endChar": 21
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56ab01f0_9bf6f7bc",
         "filename": "util/ec3po/console.py",
         "patchSetId": 2
@@ -266,6 +530,30 @@
       "writtenOn": "2015-10-29T18:03:04Z",
       "side": 1,
       "message": "Why need abs?\n\nPos should always be inside the length of the input buffer.  If not, then diff \u003c 0, which seems like an error state (maybe just move the cursor to the end of the current line)",
+      "range": {
+        "startLine": 622,
+        "startChar": 11,
+        "endLine": 622,
+        "endChar": 14
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96401a44_905a145d",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "I think it was an artifact of some earlier hack. I agree, it shouldn\u0027t be outside the length of the input buffer. I\u0027ve removed  the abs().",
+      "parentUuid": "56ab01f0_9bf6f7bc",
       "range": {
         "startLine": 622,
         "startChar": 11,
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "7643a650_8f8d55e6",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96cad9dc_bb9f7b8d",
+      "range": {
+        "startLine": 634,
+        "startChar": 4,
+        "endLine": 636,
+        "endChar": 27
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56ab01f0_3be6e30d",
         "filename": "util/ec3po/console.py",
         "patchSetId": 2
@@ -312,6 +624,30 @@
       "writtenOn": "2015-10-29T18:03:04Z",
       "side": 1,
       "message": "Where does 100 come from?  Should this be a defined as a constant like like length is?",
+      "range": {
+        "startLine": 661,
+        "startChar": 55,
+        "endLine": 661,
+        "endChar": 58
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5625c29e_194acfa8",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56ab01f0_3be6e30d",
       "range": {
         "startLine": 661,
         "startChar": 55,
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "161fca56_3ac0d94e",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6d0d18a_97624ecb",
+      "range": {
+        "startLine": 668,
+        "startChar": 37,
+        "endLine": 668,
+        "endChar": 41
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36a68d28_c0aecc07",
         "filename": "util/ec3po/console_unittest.py",
         "patchSetId": 2
@@ -358,6 +718,30 @@
       "writtenOn": "2015-10-29T18:03:04Z",
       "side": 1,
       "message": "Isn\u0027t this just chr(0x1b)?  Or at the least, chr(console.ControlKey.ESC)\n\nMaybe worth defining\n\nESC_STR \u003d chr(0x1b)\n\nsince you do this repeatedly.",
+      "range": {
+        "startLine": 39,
+        "startChar": 13,
+        "endLine": 39,
+        "endChar": 62
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "366dadb4_934a9c1f",
+        "filename": "util/ec3po/console_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right.",
+      "parentUuid": "36a68d28_c0aecc07",
       "range": {
         "startLine": 39,
         "startChar": 13,
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "d65371fb_93e27eb4",
+        "filename": "util/ec3po/console_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7621e584_b9d4c7aa",
+      "range": {
+        "startLine": 89,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6d955b5_3ed09d52",
         "filename": "util/ec3po/console_unittest.py",
         "patchSetId": 2
@@ -416,6 +824,30 @@
     },
     {
       "key": {
+        "uuid": "d63612de_32937040",
+        "filename": "util/ec3po/console_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6d955b5_3ed09d52",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 39
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56ab01f0_9b31d728",
         "filename": "util/ec3po/console_unittest.py",
         "patchSetId": 2
@@ -427,6 +859,30 @@
       "writtenOn": "2015-10-29T18:03:04Z",
       "side": 1,
       "message": "Reverse order of conditions\n\nif D\nelif C\nelse",
+      "range": {
+        "startLine": 142,
+        "startChar": 3,
+        "endLine": 149,
+        "endChar": 25
+      },
+      "revId": "6ccbbc74fdf9db88ab48bf925371caf03371ebdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7643a650_2fc0a94e",
+        "filename": "util/ec3po/console_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56ab01f0_9b31d728",
       "range": {
         "startLine": 142,
         "startChar": 3,
