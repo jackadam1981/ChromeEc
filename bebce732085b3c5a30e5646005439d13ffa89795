@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f6195673_567812a7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-29T23:23:07Z",
+      "side": 1,
+      "message": "Normally, when we aren\u0027t charging we do keep VSYS just above battery voltage (see lines 864-866). But, you are right, when you plug in a battery there might be a current spike if you write current before voltage. However, I think this should be fixed differently, perhaps by detecting that a new battery has been connected, and setting voltage appropriately before the first call to charge_request(). I put a suggestion later in the code that might work.\n\nThe problem with just swapping the order here is that I think you will run into the problem I was describing earlier. The problem is every time you plug in a charger, the first desired voltage can be significantly higher than the battery voltage, and if you write the voltage first, and then the current, there will be a current spike on the input  side. See https://chromium-review.googlesource.com/#/c/237245/.",
+      "parentUuid": "56ab01f0_e0c78a74",
+      "range": {
+        "startLine": 385,
+        "startChar": 4,
+        "endLine": 385,
+        "endChar": 68
+      },
+      "revId": "bebce732085b3c5a30e5646005439d13ffa89795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96cad9dc_6601ee86",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
@@ -160,6 +184,23 @@
         "endLine": 411,
         "endChar": 30
       },
+      "revId": "bebce732085b3c5a30e5646005439d13ffa89795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96401a44_7078d010",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-29T23:23:07Z",
+      "side": 1,
+      "message": "does this work instead of swapping the order of the writes in charge_request()?\n\n/* If battery was just connected, start the charger voltage at just above battery voltage */\nif (battery_seems_to_be_dead || battery_was_removed)\n  charge_request(charger_closest_voltage(curr.batt.voltage + info-\u003evoltage_step), -1);",
       "revId": "bebce732085b3c5a30e5646005439d13ffa89795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
