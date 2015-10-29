@@ -16,6 +16,24 @@
       "revId": "db77cafb3e254e95139949d5931554dd4a4d9f0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36a68d28_25db6287",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-29T16:02:24Z",
+      "side": 1,
+      "message": "Ok, you\u0027re right. I should apply the new timings only on port 0 (STM32_I2C1_PORT) to be consistent with the code in i2c_init_port(). I\u0027ll put up a patch.",
+      "parentUuid": "96cad9dc_b5f14ac9",
+      "revId": "db77cafb3e254e95139949d5931554dd4a4d9f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
