@@ -602,6 +602,15 @@
 /* Include CRC-8 utility function */
 #undef CONFIG_CRC8
 
+/*
+ * Enable the experimental console.
+ *
+ * NOTE: If you enable this experimental console, you will need to run the
+ * EC-3PO interactive console in the util directory!  Otherwise, you won't be
+ * able to enter any commands.
+ */
+#undef CONFIG_EXPERIMENTAL_CONSOLE
+
 /*****************************************************************************/
 /*
  * Debugging config
@@ -1992,6 +2001,17 @@
 
 #include "config_chip.h"
 #include "board.h"
+
+/******************************************************************************/
+/*
+ * Disable the built-in console history if using the experimental console.
+ *
+ * The experimental console keeps its own session-persistent history which
+ * survives EC reboot.
+ */
+#ifdef CONFIG_EXPERIMENTAL_CONSOLE
+#undef CONFIG_CONSOLE_HISTORY
+#endif /* defined(CONFIG_EXPERIMENTAL_CONSOLE) */
 
 /*****************************************************************************/
 /*
