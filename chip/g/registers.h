@@ -20,12 +20,12 @@
  */
 #define GC_MODULE_OFFSET         0x10000
 
-#define GC_AES_BASE_ADDR         GC_AES0_BASE_ADDR
 #define GC_CAMO_BASE_ADDR        GC_CAMO0_BASE_ADDR
 #define GC_FLASH_BASE_ADDR       GC_FLASH0_BASE_ADDR
 #define GC_GPIO_BASE_ADDR        GC_GPIO0_BASE_ADDR
 #define GC_I2C_BASE_ADDR         GC_I2C0_BASE_ADDR
 #define GC_I2CS_BASE_ADDR        GC_I2CS0_BASE_ADDR
+#define GC_KEYMGR_BASE_ADDR      GC_KEYMGR0_BASE_ADDR
 #define GC_RBOX_BASE_ADDR        GC_RBOX0_BASE_ADDR
 #define GC_RTC_BASE_ADDR         GC_RTC0_BASE_ADDR
 #define GC_SHA_BASE_ADDR         GC_SHA0_BASE_ADDR
@@ -349,6 +349,10 @@ static inline int x_timehs_addr(unsigned int module, unsigned int timer,
 #define GR_XO_OSC_XTL_FSM_CFG         REG32(GC_XO0_BASE_ADDR + GC_XO_OSC_XTL_FSM_CFG_OFFSET)
 #define GR_XO_OSC_SETHOLD             REG32(GC_XO0_BASE_ADDR + GC_XO_OSC_SETHOLD_OFFSET)
 #define GR_XO_OSC_CLRHOLD             REG32(GC_XO0_BASE_ADDR + GC_XO_OSC_CLRHOLD_OFFSET)
+
+/* Key manager */
+#define GR_KEYMGR_AES_KEY(n)          REG32(GREG32_ADDR(KEYMGR, AES_KEY0) + (n))
+#define GR_KEYMGR_AES_CTR(n)          REG32(GREG32_ADDR(KEYMGR, AES_CTR0) + (n))
 
 /* USB device controller */
 #define GR_USB_REG(off)               REG32(GC_USB0_BASE_ADDR + (off))
