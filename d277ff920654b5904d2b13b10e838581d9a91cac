@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "769c85d8_81e84a17",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-10-29T02:21:50Z",
+      "side": 1,
+      "message": "At the beginning I tried to read the first byte was just in case the following length of package is only 1 byte and i2c freq is 1M Hz. \nIt has the chance that task_set_event is called first before task_wait_event_mask func. \nBut I think it\u0027s OK after looking more carefully.\ntask_wait_event_mask will be return immediately if task_set_event is called first.\n\nAny comment?",
+      "revId": "d277ff920654b5904d2b13b10e838581d9a91cac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
