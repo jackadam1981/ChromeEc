@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "769c85d8_e27dcc9f",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-29T18:39:56Z",
+      "side": 1,
+      "message": "this can go in include/i2c.h",
+      "revId": "5bd71126b490ec8c0f0d9c91df1f1f690baf2ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56ab01f0_1b8687e0",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-29T18:39:56Z",
+      "side": 1,
+      "message": "make it a 2D array.",
+      "revId": "5bd71126b490ec8c0f0d9c91df1f1f690baf2ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6d0d18a_d73fa64d",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-29T18:39:56Z",
+      "side": 1,
+      "message": "we are duplicating the code from i2c_init_port.",
+      "revId": "5bd71126b490ec8c0f0d9c91df1f1f690baf2ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36a68d28_d42ccdd1",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-29T18:39:56Z",
+      "side": 1,
+      "message": "int kbps and enum stm32_i2c_freq are now duplicate.\nLet\u0027s call i2c_set_freq_port() with the clock (index) as extra argument.",
+      "revId": "5bd71126b490ec8c0f0d9c91df1f1f690baf2ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
