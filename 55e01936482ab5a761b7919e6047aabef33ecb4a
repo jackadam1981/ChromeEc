@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "161fca56_d4609c12",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-29T20:27:03Z",
+      "side": 1,
+      "message": "Are there any other slave devices on this i2c bus? I\u0027m worried that locking the bus for so long could problems.",
+      "revId": "55e01936482ab5a761b7919e6047aabef33ecb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36204e91_35459098",
         "filename": "board/buddy/panel.c",
         "patchSetId": 3
