@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6399ed2_b1eac0c7",
+        "filename": "chip/stm32/i2c_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-29T20:31:24Z",
+      "side": 1,
+      "message": "I would not create a new file, use include/i2c.h.",
+      "revId": "abb0a3500581d3c6d34903f8fa70e1cefc3d88fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161fca56_54dc8c07",
+        "filename": "chip/stm32/i2c_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-29T20:31:24Z",
+      "side": 1,
+      "message": "Can actual speed be misleading? s/8MHZ/SLOW, s/48MHZ/FAST",
+      "revId": "abb0a3500581d3c6d34903f8fa70e1cefc3d88fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
