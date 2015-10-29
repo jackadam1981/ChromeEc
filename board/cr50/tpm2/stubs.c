@@ -5,118 +5,257 @@
 
 #include "Global.h"
 #include "_TPM_Init_fp.h"
-#include   "CryptoEngine.h"
+#include "CryptoEngine.h"
+#include "dcrypto.h"
+
+#include <string.h>
+
+static CRYPT_RESULT _cpri__AESBlock(
+	BYTE *dOut, UINT32 dInSize, BYTE *dIn);
 
 
 CRYPT_RESULT _cpri__AESDecryptCBC(
-  BYTE * dOut,                  // OUT: the decrypted data
-  UINT32 keySizeInBits,         // IN: key size in bit
-  BYTE * key,                   // IN: key buffer. The size of this buffer in
-  //     bytes is (keySizeInBits + 7) / 8
-  BYTE * iv,                    // IN/OUT: IV for decryption. The size of this
-  //     buffer is 16 byte
-  UINT32 dInSize,               // IN: data size
-  BYTE * dIn)                   // IN: data buffer
+	BYTE *dOut, UINT32 keySizeInBits, BYTE *key, BYTE *iv,
+	UINT32 dInSize, BYTE *dIn)
 {
-  ecprintf("%s called\n", __func__);
-  return CRYPT_FAIL;
+	CRYPT_RESULT result;
+
+	if (dInSize == 0) {
+		return CRYPT_SUCCESS;
+	}
+	pAssert(key != NULL && iv != NULL && dIn != NULL && dOut != NULL);
+	pAssert(dInSize <= INT32_MAX);
+	if (!DCRYPTO_aes_init(key, keySizeInBits, iv,
+				CIPHER_MODE_CBC, DECRYPT)) {
+		return CRYPT_PARAMETER;
+	}
+	result = _cpri__AESBlock(dOut, dInSize, dIn);
+	if (result != CRYPT_SUCCESS) {
+		return result;
+	}
+	DCRYPTO_aes_read_iv(iv);
+	return CRYPT_SUCCESS;
 }
 
-CRYPT_RESULT _cpri__AESDecryptCFB(
-  BYTE * dOut,                  // OUT: the decrypted data
-  UINT32 keySizeInBits,         // IN: key size in bit
-  BYTE * key,                   // IN: key buffer. The size of this buffer in
-  // bytes is (keySizeInBits + 7) / 8
-  BYTE * iv,                    // IN/OUT: IV for decryption.
-  UINT32 dInSize,               // IN: data size
-  BYTE * dIn)                   // IN: data buffer
+CRYPT_RESULT _cpri__AESDecryptCFB(BYTE *dOut, UINT32 keySizeInBits,
+				BYTE *key, BYTE *iv, UINT32 dInSize,
+				BYTE *dIn)
 {
-  ecprintf("%s called\n", __func__);
-  return CRYPT_FAIL;
+	BYTE *pIv = NULL;
+	int i;
+	INT32 dSize;
+
+	if (dInSize == 0) {
+		return CRYPT_SUCCESS;
+	}
+	pAssert(key != NULL && iv != NULL && dOut != NULL && dIn != NULL);
+	pAssert(dInSize <= INT32_MAX);
+	dSize = (INT32)dInSize;
+	/* Initialize AES hardware. */
+	if (!DCRYPTO_aes_init(key, keySizeInBits, iv,
+				CIPHER_MODE_CTR, ENCRYPT)) {
+		return CRYPT_PARAMETER;
+	}
+	for (; dSize > 0; dSize -= 16) {
+		BYTE tmpIn[16];
+		BYTE tmpOut[16];
+		const BYTE *pIn;
+		BYTE *pOut;
+
+		if (dSize < 16) {
+			memcpy(tmpIn, dIn, dSize);
+			pIn = tmpIn;
+			pOut = tmpOut;
+		} else {
+			pIn = dIn;
+			pOut = dOut;
+		}
+		DCRYPTO_aes_block(pIn, pOut);
+		if (pOut != dOut) {
+			memcpy(dOut, pOut, dSize);
+		}
+		pIv = iv;
+		for (i = (dSize < 16) ? dSize : 16; i > 0; i--) {
+			*pIv++ = *dIn++;
+			dOut++;
+		}
+		DCRYPTO_aes_write_iv(iv);
+	}
+	/* If the inner loop (i loop) was smaller than 16, then dSize
+	 * would have been smaller than 16 and it is now negative
+	 * If it is negative, then it indicates how may fill bytes
+	 * are needed to pad out the IV for the next round. */
+	for (; dSize < 0; dSize++) {
+		*pIv++ = 0;
+	}
+	return CRYPT_SUCCESS;
 }
 
 CRYPT_RESULT _cpri__AESDecryptECB(
-  BYTE * dOut,                  // OUT: the clear text data
-  UINT32 keySizeInBits,         // IN: key size in bit
-  BYTE * key,                   // IN: key buffer. The size of this buffer in
-  // bytes is (keySizeInBits + 7) / 8
-  UINT32 dInSize,               // IN: data size
-  BYTE * dIn                    // IN: cipher text buffer
-  )
+	BYTE *dOut, UINT32 keySizeInBits, BYTE *key, UINT32 dInSize,
+	BYTE *dIn)
 {
-  ecprintf("%s called\n", __func__);
-  return CRYPT_FAIL;
+	pAssert(key != NULL);
+	/* Initialize AES hardware. */
+	if (!DCRYPTO_aes_init(key, keySizeInBits, NULL,
+				CIPHER_MODE_ECB, DECRYPT)) {
+		return CRYPT_PARAMETER;
+	}
+	return _cpri__AESBlock(dOut, dInSize, dIn);
+}
+
+static CRYPT_RESULT _cpri__AESBlock(
+	BYTE *dOut, UINT32 dInSize, BYTE *dIn)
+{
+	INT32 dSize;
+	pAssert(dOut != NULL && dIn != NULL && dInSize > 0 && dInSize <= INT32_MAX);
+	dSize = (INT32)dInSize;
+	if ((dSize % 16) != 0) {
+		return CRYPT_PARAMETER;
+	}
+	for (; dSize > 0; dSize -= 16) {
+		DCRYPTO_aes_block(dIn, dOut);
+		dIn = &dIn[16];
+		dOut = &dOut[16];
+	}
+	return CRYPT_SUCCESS;
 }
 
 CRYPT_RESULT _cpri__AESEncryptCBC(
-  BYTE * dOut,                  // OUT:
-  UINT32 keySizeInBits,         // IN: key size in bit
-  BYTE * key,                   // IN: key buffer. The size of this buffer in
-  // bytes is (keySizeInBits + 7) / 8
-  BYTE * iv,                    // IN/OUT: IV for decryption.
-  UINT32 dInSize,               // IN: data size (is required to be a multiple
-  // of 16 bytes)
-  BYTE * dIn                    // IN: data buffer
-  )
+	BYTE *dOut, UINT32 keySizeInBits, BYTE *key, BYTE *iv,
+	UINT32 dInSize, BYTE *dIn)
 {
-  ecprintf("%s called\n", __func__);
-  return CRYPT_FAIL;
+	CRYPT_RESULT result;
+
+	pAssert(key != NULL && iv != NULL);
+	if (!DCRYPTO_aes_init(key, keySizeInBits, iv,
+				CIPHER_MODE_CBC, ENCRYPT)) {
+		return CRYPT_PARAMETER;
+	}
+	result = _cpri__AESBlock(dOut, dInSize, dIn);
+	if (result != CRYPT_SUCCESS) {
+		return result;
+	}
+	DCRYPTO_aes_read_iv(iv);
+	return CRYPT_SUCCESS;
 }
 
 CRYPT_RESULT _cpri__AESEncryptCFB(
-  BYTE * dOut,                  // OUT: the encrypted
-  UINT32 keySizeInBits,         // IN: key size in bit
-  BYTE * key,                   // IN: key buffer. The size of this buffer in
-  // bytes is (keySizeInBits + 7) / 8
-  BYTE * iv,                    // IN/OUT: IV for decryption.
-  UINT32 dInSize,               // IN: data size
-  BYTE * dIn                    // IN: data buffer
-  )
+	BYTE *dOut, UINT32 keySizeInBits, BYTE *key, BYTE *iv,
+	UINT32 dInSize, BYTE *dIn)
 {
-  ecprintf("%s called\n", __func__);
-  return CRYPT_FAIL;
+	BYTE *pIv = NULL;
+	INT32 dSize;
+	int i;
+
+	if (dInSize == 0) {
+		return CRYPT_SUCCESS;
+	}
+	pAssert(dOut != NULL && key != NULL && iv != NULL && dIn != NULL);
+	pAssert(dInSize <= INT32_MAX);
+	dSize = (INT32)dInSize;
+	if (!DCRYPTO_aes_init(key, keySizeInBits, iv, CIPHER_MODE_CTR, ENCRYPT)) {
+		return CRYPT_PARAMETER;
+	}
+	for (; dSize > 0; dSize -= 16) {
+		DCRYPTO_aes_block(dIn, dOut);
+		pIv = iv;
+		for (i = (int)(dSize < 16) ? dSize : 16; i > 0; i--) {
+			*pIv++ = *dOut++;
+			dIn++;
+		}
+		DCRYPTO_aes_write_iv(iv);
+	}
+	/* If the inner loop (i loop) was smaller than 16, then dSize would have been
+	 * smaller than 16 and it is now negative. If it is negative, then it indicates
+	 * how many bytes are needed to pad out the IV for the next round. */
+	for (; dSize < 0; dSize++) {
+		*pIv++ = 0;
+	}
+	return CRYPT_SUCCESS;
 }
 
 CRYPT_RESULT _cpri__AESEncryptCTR(
-  BYTE * dOut,                  // OUT: the encrypted data
-  UINT32 keySizeInBits,         // IN: key size in bit
-  BYTE * key,                   // IN: key buffer. The size of this buffer in
-  // bytes is (keySizeInBits + 7) / 8
-  BYTE * iv,                    // IN/OUT: IV for decryption.
-  UINT32 dInSize,               // IN: data size
-  BYTE * dIn                    // IN: data buffer
-  )
+	BYTE *dOut, UINT32 keySizeInBits, BYTE *key, BYTE *iv,
+	UINT32 dInSize, BYTE *dIn)
 {
-  ecprintf("%s called\n", __func__);
-  return CRYPT_FAIL;
+	INT32 dSize;
+
+	if (dInSize == 0) {
+		return CRYPT_SUCCESS;
+	}
+	pAssert(dOut != NULL && key != NULL && iv != NULL && dIn != NULL);
+	pAssert(dInSize <= INT32_MAX);
+	dSize = (INT32)dInSize;
+	/* Initialize AES hardware. */
+	if (!DCRYPTO_aes_init(key, keySizeInBits, iv,
+				CIPHER_MODE_CTR, ENCRYPT)) {
+		return CRYPT_PARAMETER;
+	}
+	for (; dSize > 0; dSize -= 16) {
+		BYTE tmpIn[16];
+		BYTE tmpOut[16];
+		BYTE *pIn;
+		BYTE *pOut;
+
+		if (dSize < 16) {
+			memcpy(tmpIn, dIn, dSize);
+			pIn = tmpIn;
+			pOut = tmpOut;
+		} else {
+			pIn = dIn;
+			pOut = dOut;
+		}
+		DCRYPTO_aes_block(pIn, pOut);
+		if (pOut != dOut) {
+			memcpy(dOut, pOut, (dSize < 16) ? dSize : 16);
+		}
+		dIn += 16;
+		dOut += 16;
+	}
+	return CRYPT_SUCCESS;
 }
 
 CRYPT_RESULT _cpri__AESEncryptECB(
-  BYTE * dOut,                  // OUT: encrypted data
-  UINT32 keySizeInBits,         // IN: key size in bit
-  BYTE * key,                   // IN: key buffer. The size of this buffer in
-  // bytes is (keySizeInBits + 7) / 8
-  UINT32 dInSize,               // IN: data size
-  BYTE * dIn                    // IN: clear text buffer
-  )
+	BYTE *dOut, UINT32 keySizeInBits, BYTE *key, UINT32 dInSize,
+	BYTE *dIn)
 {
-  ecprintf("%s called\n", __func__);
-  return CRYPT_FAIL;
+	pAssert(key != NULL);
+	/* Initialize AES hardware. */
+	if (!DCRYPTO_aes_init(key, keySizeInBits, NULL,
+				CIPHER_MODE_ECB, ENCRYPT)) {
+		return CRYPT_PARAMETER;
+	}
+	return _cpri__AESBlock(dOut, dInSize, dIn);
 }
 
 CRYPT_RESULT _cpri__AESEncryptOFB(
-  BYTE * dOut,                  // OUT: the encrypted/decrypted data
-  UINT32 keySizeInBits,         // IN: key size in bit
-  BYTE * key,                   // IN: key buffer. The size of this buffer in
-  // bytes is (keySizeInBits + 7) / 8
-  BYTE * iv,                    // IN/OUT: IV for decryption. The size of this
-  // buffer is 16 byte
-  UINT32 dInSize,               // IN: data size
-  BYTE * dIn                    // IN: data buffer
-  )
+	BYTE *dOut, UINT32 keySizeInBits, BYTE *key, BYTE *iv,
+	UINT32 dInSize, BYTE *dIn)
 {
-  ecprintf("%s called\n", __func__);
-  return CRYPT_FAIL;
+	BYTE *pIv;
+	INT32 dSize;
+	int i;
+
+	if (dInSize == 0) {
+		return CRYPT_SUCCESS;
+	}
+	pAssert(dOut != NULL && key != NULL && iv != NULL && dIn != NULL);
+	pAssert(dInSize <= INT32_MAX);
+	dSize = (INT32)dInSize;
+	/* Initialize AES hardware. */
+	if (!DCRYPTO_aes_init(key, keySizeInBits, NULL,
+				CIPHER_MODE_ECB, ENCRYPT)) {
+		return CRYPT_PARAMETER;
+	}
+	for (; dSize > 0; dSize -= 16) {
+		DCRYPTO_aes_block(iv, iv);
+		pIv = iv;
+		for (i = (dSize < 16) ? dSize : 16; i > 0; i--) {
+			*dOut++ = (*pIv++ ^ *dIn++);
+		}
+	}
+	return CRYPT_SUCCESS;
 }
 
 CRYPT_RESULT _cpri__C_2_2_KeyExchange(

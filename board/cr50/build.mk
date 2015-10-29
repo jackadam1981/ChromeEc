@@ -22,18 +22,21 @@ else
 all: hex
 
 # The simulator components have their own subdirectory
+CFLAGS += -I$(realpath $(BDIR)/dcrypto)
 CFLAGS += -I$(realpath $(BDIR)/tpm2)
-dirs-y += $(BDIR)/tpm2
+CFLAGS += -I$(realpath $(BDIR))
+dirs-y += $(BDIR)/dcrypto $(BDIR)/tpm2
 
 # Objects that we need to build
 board-y =  board.o
+board-y += dcrypto/aes.o
 board-y += tpm2/NVMem.o
 board-y += tpm2/platform.o
 board-y += tpm2/stubs.o
 
 # Build and link with an external library
 EXTLIB := $(realpath ../../third_party/tpm2)
-CFLAGS += -I$(EXTLIB)
+CFLAGS += -I$(EXTLIB) -I$(realpath $(BDIR)/dcrypto)
 LDFLAGS_EXTRA += -L$(out)/tpm2 -ltpm2
 
 # Add dependencies on that library
