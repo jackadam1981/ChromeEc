@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96cad9dc_b5f14ac9",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-29T05:40:37Z",
+      "side": 1,
+      "message": "this is wrong: what if I2C1 is at 8Mhz and I2C2 is at 48MHz?\nWe need to know (via CONFIG_ ?) the speed of the clock used by each i2c.",
+      "revId": "db77cafb3e254e95139949d5931554dd4a4d9f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
