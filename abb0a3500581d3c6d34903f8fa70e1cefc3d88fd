@@ -69,6 +69,24 @@
       "revId": "abb0a3500581d3c6d34903f8fa70e1cefc3d88fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "562a227b_51cb9676",
+        "filename": "chip/stm32/i2c_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-29T22:25:20Z",
+      "side": 1,
+      "message": "The number of clock source is limited: 24MHz 38.4MHz will replace or at most be \"MEDIUM\" clock speed.",
+      "parentUuid": "760e462a_b758887f",
+      "revId": "abb0a3500581d3c6d34903f8fa70e1cefc3d88fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
