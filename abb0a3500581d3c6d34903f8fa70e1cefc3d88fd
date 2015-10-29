@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f6195673_13986c58",
+        "filename": "chip/stm32/i2c_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-29T20:36:09Z",
+      "side": 1,
+      "message": "Ok, I will move \"enum stm32_i2c_clk_src\" to the c file and move \"enum stm32_i2c_freq\" (renamed to \"enum i2c_freq\") to include/i2c.h, with a TODO.",
+      "parentUuid": "b6399ed2_b1eac0c7",
+      "revId": "abb0a3500581d3c6d34903f8fa70e1cefc3d88fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "161fca56_54dc8c07",
         "filename": "chip/stm32/i2c_chip.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-10-29T20:31:24Z",
       "side": 1,
       "message": "Can actual speed be misleading? s/8MHZ/SLOW, s/48MHZ/FAST",
+      "revId": "abb0a3500581d3c6d34903f8fa70e1cefc3d88fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_b758887f",
+        "filename": "chip/stm32/i2c_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-29T20:36:09Z",
+      "side": 1,
+      "message": "We might need to support 38.4 MHz (and 24 MHz and...) PCLK I2C someday. I think it\u0027s best to use the actual frequency?",
+      "parentUuid": "161fca56_54dc8c07",
       "revId": "abb0a3500581d3c6d34903f8fa70e1cefc3d88fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
