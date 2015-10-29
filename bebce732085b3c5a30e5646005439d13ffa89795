@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "56ab01f0_e0c78a74",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-10-29T07:23:23Z",
+      "side": 1,
+      "message": "Since we want to keep voltage setting when turning off charging, our VSYS voltage will be kept at \u003e\u003d battery voltage. In cases like connecting a new battery, if we didn\u0027t configure VSYS to just above VBAT, we will see large current spikes.",
+      "parentUuid": "769c85d8_4dedf9e3",
+      "range": {
+        "startLine": 385,
+        "startChar": 4,
+        "endLine": 385,
+        "endChar": 68
+      },
+      "revId": "bebce732085b3c5a30e5646005439d13ffa89795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96cad9dc_6601ee86",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
@@ -118,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "f6d955b5_e382ee95",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-10-29T07:23:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7621e584_e50f7643",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 30
+      },
+      "revId": "bebce732085b3c5a30e5646005439d13ffa89795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "565141a7_e54a6c20",
         "filename": "driver/charger/isl9237.c",
         "patchSetId": 1
@@ -153,6 +201,30 @@
       "side": 1,
       "message": "If voltage will not be 0 with this option defined, then you shouldn\u0027t need to check the option at all. In fact, this breaks the abstraction layers a little bit because this driver function should be written to handle any voltage correctly, you shouldn\u0027t assume at this level that a certain value of the argument won\u0027t happen.",
       "parentUuid": "565141a7_e54a6c20",
+      "range": {
+        "startLine": 204,
+        "startChar": 3,
+        "endLine": 204,
+        "endChar": 4
+      },
+      "revId": "bebce732085b3c5a30e5646005439d13ffa89795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56c4e1d1_5e91154b",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-10-29T07:23:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6d0d18a_481ddf2d",
       "range": {
         "startLine": 204,
         "startChar": 3,
