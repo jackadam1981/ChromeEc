@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6195673_b63e46b6",
+        "filename": "util/ec3po/console_unittest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:37:29Z",
+      "side": 1,
+      "message": "Missing name.",
+      "range": {
+        "startLine": 167,
+        "startChar": 7,
+        "endLine": 167,
+        "endChar": 11
+      },
+      "revId": "54a42eea6a33e835dde51dd6b009a94de671afdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96401a44_908b3440",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:37:29Z",
+      "side": 1,
+      "message": "Should say unidirectional.",
+      "range": {
+        "startLine": 39,
+        "startChar": 56,
+        "endLine": 39,
+        "endChar": 70
+      },
+      "revId": "54a42eea6a33e835dde51dd6b009a94de671afdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5625c29e_7922e3e7",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:37:29Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 55,
+        "startChar": 59,
+        "endLine": 55,
+        "endChar": 72
+      },
+      "revId": "54a42eea6a33e835dde51dd6b009a94de671afdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96401a44_3072482f",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:37:29Z",
+      "side": 1,
+      "message": "I guess technically it\u0027s logging.INFO which is 20.",
+      "range": {
+        "startLine": 60,
+        "startChar": 50,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "54a42eea6a33e835dde51dd6b009a94de671afdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161fca56_fae021eb",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-10-29T23:37:29Z",
+      "side": 1,
+      "message": "Should remove this TODO.",
+      "revId": "54a42eea6a33e835dde51dd6b009a94de671afdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
