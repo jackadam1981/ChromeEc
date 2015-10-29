@@ -16,6 +16,24 @@
       "revId": "d277ff920654b5904d2b13b10e838581d9a91cac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56ab01f0_a0b3c26d",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-10-29T16:47:48Z",
+      "side": 1,
+      "message": "Yes, task_wait_event_mask() should return immediately if the event is already set.  That is, it does\n\nwhile (!event);\n\nnot\n\nevent\u003d0; while (!event);\n\nso there isn\u0027t a race condition between setting the event and waiting for it.",
+      "parentUuid": "769c85d8_81e84a17",
+      "revId": "d277ff920654b5904d2b13b10e838581d9a91cac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
