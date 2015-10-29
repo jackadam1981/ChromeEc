@@ -81,23 +81,38 @@ static int wait_isr(int port, int mask)
 	return EC_ERROR_TIMEOUT;
 }
 
-#if defined(CONFIG_HOSTCMD_I2C_SLAVE_ADDR) && \
-defined(CONFIG_LOW_POWER_IDLE) && \
-(I2C_PORT_EC == STM32_I2C1_PORT)
-/* 8MHz i2cclk register settings */
-#define STM32_I2C_TIMINGR_1000MHZ 0x00100306
-#define STM32_I2C_TIMINGR_400MHZ  0x00310309
-#define STM32_I2C_TIMINGR_100MHZ  0x10420f13
-#else
-/* 48MHz i2cclk register settings */
-#define STM32_I2C_TIMINGR_1000MHZ 0x50100103
-#define STM32_I2C_TIMINGR_400MHZ  0x50330309
-#define STM32_I2C_TIMINGR_100MHZ  0xB0421214
-#endif
+/* Supported I2C CLK frequencies */
+enum stm32_i2c_freq {
+	I2C_FREQ_1000KHZ = 0,
+	I2C_FREQ_400KHZ = 1,
+	I2C_FREQ_100KHZ = 2,
+	I2C_FREQ_COUNT,
+};
+
+/* timingr register values for 8MHz i2c input clock (Usually HSI clock)*/
+static const uint32_t timingr_8mhz_regs[I2C_FREQ_COUNT] = {
+	[I2C_FREQ_1000KHZ] = 0x00100306,
+	[I2C_FREQ_400KHZ] = 0x00310309,
+	[I2C_FREQ_100KHZ] = 0x10420f13,
+};
+/* timingr register values for 48MHz i2c input clock (Usually SCLK or PCLK) */
+static const uint32_t timingr_48mhz_regs[I2C_FREQ_COUNT] = {
+	[I2C_FREQ_1000KHZ] = 0x50100103,
+	[I2C_FREQ_400KHZ] = 0x50330309,
+	[I2C_FREQ_100KHZ] = 0xB0421214,
+};
 
 static void i2c_set_freq_port(const struct i2c_port_t *p)
 {
 	int port = p->port;
+	const uint32_t *regs = timingr_48mhz_regs;
+
+#if defined(CONFIG_HOSTCMD_I2C_SLAVE_ADDR) && \
+defined(CONFIG_LOW_POWER_IDLE) && \
+(I2C_PORT_EC == STM32_I2C1_PORT)
+	if (port == STM32_I2C1_PORT)
+		regs = timingr_8mhz_regs;
+#endif
 
 	/* Disable port */
 	STM32_I2C_CR1(port) = 0;
@@ -105,17 +120,17 @@ static void i2c_set_freq_port(const struct i2c_port_t *p)
 	/* Set clock frequency */
 	switch (p->kbps) {
 	case 1000:
-		STM32_I2C_TIMINGR(port) = STM32_I2C_TIMINGR_1000MHZ;
+		STM32_I2C_TIMINGR(port) = regs[I2C_FREQ_1000KHZ];
 		break;
 	case 400:
-		STM32_I2C_TIMINGR(port) = STM32_I2C_TIMINGR_400MHZ;
+		STM32_I2C_TIMINGR(port) = regs[I2C_FREQ_400KHZ];
 		break;
 	case 100:
-		STM32_I2C_TIMINGR(port) = STM32_I2C_TIMINGR_100MHZ;
+		STM32_I2C_TIMINGR(port) = regs[I2C_FREQ_100KHZ];
 		break;
 	default: /* unknown speed, defaults to 100kBps */
 		CPRINTS("I2C bad speed %d kBps", p->kbps);
-		STM32_I2C_TIMINGR(port) = STM32_I2C_TIMINGR_100MHZ;
+		STM32_I2C_TIMINGR(port) = regs[I2C_FREQ_100KHZ];
 	}
 	/* Enable port */
 	STM32_I2C_CR1(port) = STM32_I2C_CR1_PE;
@@ -134,7 +149,7 @@ static void i2c_init_port(const struct i2c_port_t *p)
 	if (!(STM32_RCC_APB1ENR & (1 << (21 + port))))
 		STM32_RCC_APB1ENR |= 1 << (21 + port);
 
-	if (port == 0) {
+	if (port == STM32_I2C1_PORT) {
 #if defined(CONFIG_HOSTCMD_I2C_SLAVE_ADDR) && \
 defined(CONFIG_LOW_POWER_IDLE) && \
 (I2C_PORT_EC == STM32_I2C1_PORT)
