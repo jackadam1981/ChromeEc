@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "562a227b_71ed72e6",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-29T23:01:52Z",
+      "side": 1,
+      "message": "indent.",
+      "revId": "a249e50cb801d7b11a2050af4e6e3114dee4b5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36204e91_5803a125",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-29T23:01:52Z",
+      "side": 1,
+      "message": "!F0 or F3 only: I think it is the latter, because STM32_RCC_CFGR3_I2C2 exists only for F3.\n\nTalking to Vincent and Alec, there is a catch on Ryu: we need CONFIG_LOW_POWER, but we also want 48Mhz for the slave port, and we can because we disable idle mode when the AP is in S0.\nSo we should leave the ifdef as is. [ugly]",
+      "revId": "a249e50cb801d7b11a2050af4e6e3114dee4b5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_57afecbe",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-29T23:01:52Z",
+      "side": 1,
+      "message": "STM32_RCC_CFGR3_I2C2 is not defined for F0, so this code should not be executed.",
+      "revId": "a249e50cb801d7b11a2050af4e6e3114dee4b5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
