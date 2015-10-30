@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5625c29e_b93abba1",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-30T00:20:48Z",
+      "side": 1,
+      "message": "Did you mean to un-indent the line below?",
+      "parentUuid": "562a227b_71ed72e6",
+      "revId": "a249e50cb801d7b11a2050af4e6e3114dee4b5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36204e91_5803a125",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b6399ed2_947c4a4f",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-30T00:20:48Z",
+      "side": 1,
+      "message": "So basically, for Ryu, we define CONFIG_HOSTCMD_I2C_SLAVE_ADDR + CONFIG_LOW_POWER_IDLE and I2C_PORT_EC \u003d\u003d STM32_I2C2_PORT, yet we want to use SCLK for STM32_I2C2_PORT. If that\u0027s the case, I should probably redo this entire change (and move clock configuration to the board-level somehow through a configuration option) because it breaks our assumptions.",
+      "parentUuid": "36204e91_5803a125",
+      "revId": "a249e50cb801d7b11a2050af4e6e3114dee4b5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "760e462a_57afecbe",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2015-10-29T23:01:52Z",
       "side": 1,
       "message": "STM32_RCC_CFGR3_I2C2 is not defined for F0, so this code should not be executed.",
+      "revId": "a249e50cb801d7b11a2050af4e6e3114dee4b5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96401a44_b3f4027f",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-10-30T00:20:48Z",
+      "side": 1,
+      "message": "Yes, that\u0027s a bug. I\u0027ll fix it.",
+      "parentUuid": "760e462a_57afecbe",
       "revId": "a249e50cb801d7b11a2050af4e6e3114dee4b5fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
