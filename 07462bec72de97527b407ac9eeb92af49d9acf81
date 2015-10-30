@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6195673_39e3475a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-10-30T03:33:16Z",
+      "side": 1,
+      "message": "this requres much more substance. \n\nWhat does this code do? \n\nWhere does it come from (in case you did not write it from scratch). \n\nShortcomings and potential improvements (if any).\n\nA BUG\u003d clause is required, use chrome-os-partner:43025 for these patches for now\n\nA TEST\u003d clause is required describing how this was tested.",
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161fca56_dd955f00",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-10-30T03:33:16Z",
+      "side": 1,
+      "message": "this is kinda annoying, but they changed the template again some time ago, \u0027(c)\u0027 should not be there :P",
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6399ed2_b7b99098",
+        "filename": "board/cr50/dcrypto/dcrypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-10-30T03:33:16Z",
+      "side": 1,
+      "message": "these guards are supposed to include the full path starting with the git root directory name, i.e. in this case it should be\n\nEC_BOARD_CR50_DCRYPTO_DCRYPTO_H_",
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96401a44_f3b3aa56",
+        "filename": "board/cr50/tpm2/stubs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-10-30T03:33:16Z",
+      "side": 1,
+      "message": "should all these functions be moved into the new file (or maybe a separate file if you prefer). The idea is that stubs.c goes away once all stubs are in fact implemented.",
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
