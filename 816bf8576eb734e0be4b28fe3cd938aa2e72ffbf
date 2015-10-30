@@ -45,6 +45,29 @@
       "revId": "816bf8576eb734e0be4b28fe3cd938aa2e72ffbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_bdb74712",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-10-30T18:41:45Z",
+      "side": 1,
+      "message": "return (reg \u0026 TCPC_REG_STATUS0_VBUSOK) ? 1 : 0;",
+      "range": {
+        "startLine": 819,
+        "startChar": 0,
+        "endLine": 822,
+        "endChar": 10
+      },
+      "revId": "816bf8576eb734e0be4b28fe3cd938aa2e72ffbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
