@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f6195673_bc5d0559",
+        "filename": "board/buddy/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1114730
+      },
+      "writtenOn": "2015-10-30T08:59:39Z",
+      "side": 1,
+      "message": "Move PANEL task above HOOKS, done.",
+      "parentUuid": "161fca56_d432dc32",
+      "revId": "55e01936482ab5a761b7919e6047aabef33ecb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "161fca56_d4609c12",
         "filename": "board/buddy/panel.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "36204e91_be861df7",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1114730
+      },
+      "writtenOn": "2015-10-30T08:59:39Z",
+      "side": 1,
+      "message": "Thermal sensor on the same I2C bus, but thermal protections and fan speed refer to CPU temperature only, so we think the effect is acceptable.",
+      "parentUuid": "161fca56_d4609c12",
+      "revId": "55e01936482ab5a761b7919e6047aabef33ecb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36204e91_35459098",
         "filename": "board/buddy/panel.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2015-10-29T20:24:09Z",
       "side": 1,
       "message": "I suggest to make this msleep(). udelay() will busy wait.",
+      "revId": "55e01936482ab5a761b7919e6047aabef33ecb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_7d9f6f76",
+        "filename": "board/buddy/panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1114730
+      },
+      "writtenOn": "2015-10-30T08:59:39Z",
+      "side": 1,
+      "message": "Done, thank you.",
+      "parentUuid": "36204e91_35459098",
       "revId": "55e01936482ab5a761b7919e6047aabef33ecb4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
