@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96401a44_76d9e8a7",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-30T18:35:17Z",
+      "side": 1,
+      "message": "given everything else seems now per port,\njust replacing this by :\nstatic struct fusb302_chip_state {\n  int cc_polarity;\n  int vconn_enabled;\n  /* pulling_up indicates UFP vs DFP... */\n  /* 1 \u003d pulling up (DFP) 0 \u003d pulling down (UFP) */\n  int pulling_up;\n  int rx_enable;\n  int dfp_toggling_on;\n  int previous_pull;\n  int togdone_pullup_cc1;\n  int togdone_pullup_cc2;\n  int tx_hard_reset_req;\n} state[CONFIG_USB_PD_PORT_COUNT];\nseems fairly easy",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "816bf8576eb734e0be4b28fe3cd938aa2e72ffbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d63612de_0135b4d3",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-10-30T18:35:17Z",
+      "side": 1,
+      "message": "you need either to do the per-port state modification above (preferred way) or assert here CONFIG_USB_PD_PORT_COUNT \u003d\u003d 1\nelse that\u0027s a bad trap",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 15
+      },
+      "revId": "816bf8576eb734e0be4b28fe3cd938aa2e72ffbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
