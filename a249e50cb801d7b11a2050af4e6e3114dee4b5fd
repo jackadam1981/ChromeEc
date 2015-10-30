@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "562a227b_94832ce7",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-10-30T05:34:53Z",
+      "side": 1,
+      "message": "Yes, I don\u0027t see how to compute via other CONFIG_ than setting the clock speed explicitly. That\u0027s another big change, we may do a quick fix on the Ryu branch.",
+      "parentUuid": "b6399ed2_947c4a4f",
+      "revId": "a249e50cb801d7b11a2050af4e6e3114dee4b5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "760e462a_57afecbe",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 1
