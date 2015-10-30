@@ -37,7 +37,9 @@ test_mockable void keyboard_raw_drive_column(int out)
 		gpio_set_level(GPIO_KBD_KSO2, 1);
 #endif
 	} else if (out == KEYBOARD_COLUMN_NONE) {
+#ifndef CONFIG_KEYBOARD_HAS_NO_PULLUP
 		MEC1322_KS_KSO_SEL = 1 << 6; /* KSEN=1 */
+#endif
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
 		gpio_set_level(GPIO_KBD_KSO2, 0);
 #endif
