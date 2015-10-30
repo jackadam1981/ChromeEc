@@ -122,6 +122,75 @@
     },
     {
       "key": {
+        "uuid": "b6399ed2_978d6ce6",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-10-30T03:51:00Z",
+      "side": 1,
+      "message": "GR_KEYMGR_AES_CTR(i) \u003d p[i];",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "562a227b_541944c6",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-10-30T03:51:00Z",
+      "side": 1,
+      "message": "GR_KEYMGR_AES_WFIFO_DATA \u003d inw[i];",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 12
+      },
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161fca56_9d8da7e6",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-10-30T03:51:00Z",
+      "side": 1,
+      "message": "outw[i] \u003d GR_KEYMGR_AES_RFIFO_DATA;",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 37
+      },
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6399ed2_777328cd",
         "filename": "board/cr50/dcrypto/aes.c",
         "patchSetId": 2
@@ -265,6 +334,46 @@
       "writtenOn": "2015-10-30T03:33:16Z",
       "side": 1,
       "message": "should all these functions be moved into the new file (or maybe a separate file if you prefer). The idea is that stubs.c goes away once all stubs are in fact implemented.",
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161fca56_1d82b7b7",
+        "filename": "chip/g/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-10-30T03:51:00Z",
+      "side": 1,
+      "message": "Oh, this is old and no longer relevant. You could remove it, if you don\u0027t mind.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 50
+      },
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_fa614586",
+        "filename": "chip/g/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-10-30T03:51:00Z",
+      "side": 1,
+      "message": "You could add some new stuff for the KEYMGR, like so:\n\n#define GR_KEYMGR_AES_REG(off)      REG32(GC_KEYMGR0_BASE_ADDR + (off))\n#define GR_KEYMGR_AES_KEY_START     GR_KEYMGR_AES_REG(GC_KEYMGR_AES_KEY_START_OFFSET)\n#define GR_KEYMGR_AES_WFIFO_DATA    GR_KEYMGR_AES_REG(GC_KEYMGR_AES_WFIFO_DATA_OFFSET)\n#define GR_KEYMGR_AES_RFIFO_DATA    GR_KEYMGR_AES_REG(GC_KEYMGR_AES_RFIFO_DATA_OFFSET)\n#define GR_KEYMGR_AES_KEY(n)  \\\n\tGR_KEYMGR_AES_REG(GC_KEYMGR_AES_KEY0_OFFSET + (n * 4))\n#define GR_KEYMGR_AES_CTR(n)  \\\n\tGR_KEYMGR_AES_REG(GC_KEYMGR_AES_CTR0_OFFSET + (n * 4))",
       "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
