@@ -77,11 +77,37 @@ static void init_interrutps(void)
 		gpio_enable_interrupt(gpio_signals[i]);
 }
 
+/* Drop run level to at least medium. */
+static void init_runlevel(void)
+{
+	int i;
+	const uint32_t reg_addrs[] = {
+		GC_GLOBALSEC_BASE_ADDR +
+			GC_GLOBALSEC_CPU0_S_PERMISSION_OFFSET,
+		GC_GLOBALSEC_BASE_ADDR +
+			GC_GLOBALSEC_CPU0_S_DAP_PERMISSION_OFFSET,
+		GC_GLOBALSEC_BASE_ADDR +
+			GC_GLOBALSEC_DDMA0_PERMISSION_OFFSET
+	};
+	const uint8_t desired_level = 0x33;  /* MEDIUM, i.e. APP LEVEL */
+
+	for (i = 0; i < 3; i++) {
+		uint8_t current_level = desired_level + 1;
+
+		while (current_level > desired_level) {
+			current_level = REG8(reg_addrs[i]);
+			if (current_level > desired_level)
+				REG8(reg_addrs[i]) = desired_level;
+		}
+	}
+}
+
 /* Initialize board. */
 static void board_init(void)
 {
 	init_interrutps();
 	init_trng();
+	init_runlevel();
 }
 
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
