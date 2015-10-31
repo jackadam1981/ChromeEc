@@ -46,6 +46,10 @@
 #define GOFFSET(mname, rname)  \
 	GC_ ## mname ## _ ## rname ## _OFFSET
 
+#define GREG8(mname, rname) \
+	REG8(GBASE(mname) + GOFFSET(mname, rname))
+#define GREG8_ADDR(mname, rname) \
+	REG8_ADDR(GBASE(mname) + GOFFSET(mname, rname))
 #define GREG32(mname, rname) \
 	REG32(GBASE(mname) + GOFFSET(mname, rname))
 #define GREG32_ADDR(mname, rname) \
