@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d63612de_19be4cf2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-10-31T03:11:26Z",
+      "side": 1,
+      "message": "Is it a REG8? I\u0027d think just REG, full 32-bit read/write\nBut likely does not matter.",
+      "range": {
+        "startLine": 98,
+        "startChar": 19,
+        "endLine": 98,
+        "endChar": 23
+      },
+      "revId": "566fb0a66c1a2204a9206a77548298ccccd36926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
