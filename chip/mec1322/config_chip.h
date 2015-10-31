@@ -55,12 +55,12 @@
 					CONFIG_MEC_SRAM_BASE_START)
 
 /* 24k RAM for RO / RW / loader */
-#define CONFIG_RAM_SIZE			0x00006000
+#define CONFIG_RAM_SIZE			0x00005400
 #define CONFIG_RAM_BASE			(CONFIG_MEC_SRAM_BASE_END - \
 					CONFIG_RAM_SIZE)
 
 /* System stack size */
-#define CONFIG_STACK_SIZE		4096
+#define CONFIG_STACK_SIZE		1024
 
 /* non-standard task stack sizes */
 #define IDLE_TASK_STACK_SIZE		512
