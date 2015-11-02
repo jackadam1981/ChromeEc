@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "562a227b_55101b29",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-11-02T23:38:07Z",
+      "side": 1,
+      "message": "does not seem to be done to me: there is no comments/patch description helping to understand what\u0027s going on.\n\nA few more detailed questions:\n\n- why is the while loop required, is it not enough to write to the register once?\n\n- why the check has to be that the value exceeds  desired_level + 1 ?\n\n- would this code be equivalent (modulo potentially unnecessary write):\n\ndo {\n   *reg_addrs[i] \u003d desired_level;\n} while (*reg_addrs[i]  \u003e desired_level);\n\n\n\nplease explain what is happening either in the comments in the code or in the patch description.\n\nplease make the desired level the argument of the function, we might want to lower the level more than once, before and after the startup.",
+      "parentUuid": "765c8636_5c427922",
+      "range": {
+        "startLine": 92,
+        "startChar": 31,
+        "endLine": 92,
+        "endChar": 35
+      },
+      "revId": "566fb0a66c1a2204a9206a77548298ccccd36926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "562a227b_a88b673f",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
