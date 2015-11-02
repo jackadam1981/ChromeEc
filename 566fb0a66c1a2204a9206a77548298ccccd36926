@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "765c8636_61afdabf",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-11-02T19:42:41Z",
+      "side": 1,
+      "message": "Chip has 4 levels: highest, high, medium and locked\nValues are: 55, 3c, 33, and 00\n\nHighest is boot_rom and maybe early boot_loader,\nhigh is boot_loader and maybe early app,\nmedium is app envisioned normal operating level\n\nIn normal deployment, app would never deal with this and instead get handed medium access.",
+      "parentUuid": "f6195673_3f4c4253",
+      "range": {
+        "startLine": 92,
+        "startChar": 31,
+        "endLine": 92,
+        "endChar": 35
+      },
+      "revId": "566fb0a66c1a2204a9206a77548298ccccd36926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "562a227b_a88b673f",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
