@@ -976,7 +976,6 @@ int tcpc_set_polarity(int port, int polarity)
 	return EC_SUCCESS;
 }
 
-#ifdef CONFIG_USB_PD_TCPM_VBUS
 static int tcpc_set_power_status(int port, int vbus_present)
 {
 	/* Update VBUS present bit */
@@ -991,7 +990,6 @@ static int tcpc_set_power_status(int port, int vbus_present)
 
 	return EC_SUCCESS;
 }
-#endif /* CONFIG_USB_PD_TCPM_VBUS */
 
 int tcpc_set_power_status_mask(int port, uint8_t mask)
 {
@@ -1100,7 +1098,6 @@ void tcpc_init(int port)
 						pd_adc_read(port, i));
 	}
 
-#ifdef CONFIG_USB_PD_TCPM_VBUS
 #if CONFIG_USB_PD_PORT_COUNT >= 2
 	tcpc_set_power_status(port, !gpio_get_level(port ?
 			      GPIO_USB_C1_VBUS_WAKE_L :
@@ -1108,7 +1105,6 @@ void tcpc_init(int port)
 #else
 	tcpc_set_power_status(port, !gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L));
 #endif /* CONFIG_USB_PD_PORT_COUNT >= 2 */
-#endif /* CONFIG_USB_PD_TCPM_VBUS */
 
 	/* set default alert and power mask register values */
 	pd[port].alert_mask = TCPC_REG_ALERT_MASK_ALL;
@@ -1118,7 +1114,6 @@ void tcpc_init(int port)
 	alert(port, TCPC_REG_ALERT_POWER_STATUS);
 }
 
-#ifdef CONFIG_USB_PD_TCPM_VBUS
 void pd_vbus_evt_p0(enum gpio_signal signal)
 {
 	tcpc_set_power_status(TASK_ID_TO_PD_PORT(TASK_ID_PD_C0),
@@ -1134,7 +1129,6 @@ void pd_vbus_evt_p1(enum gpio_signal signal)
 	task_wake(TASK_ID_PD_C1);
 }
 #endif /* PD_PORT_COUNT >= 2 */
-#endif /* CONFIG_USB_PD_TCPM_VBUS */
 
 #ifndef CONFIG_USB_POWER_DELIVERY
 static void tcpc_i2c_write(int port, int reg, int len, uint8_t *payload)
