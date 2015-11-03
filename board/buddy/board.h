@@ -36,6 +36,9 @@
 /* This board has RTCRST connection from EC GPIO to the PCH */
 #define BOARD_HAS_RTCRST
 
+/* Reset touch screen on S3 to S0*/
+#define BOARD_TOUCHSCREEN_RESET
+
 #ifndef __ASSEMBLER__
 
 /* I2C ports */
