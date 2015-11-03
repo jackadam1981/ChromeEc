@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6a3167e_63402289",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-03T20:11:35Z",
+      "side": 1,
+      "message": "the next project will do :\ncommon-very_custom-obj-$(CONFIG_EVEN_MORE_CUSTOMIZED_RO) +\u003d util.o ?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 17
+      },
+      "revId": "605da7f7435155ec2962f002dd95fb7f61cdb8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b65c3e65_d9d0131f",
+        "filename": "include/printf.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-03T20:11:35Z",
+      "side": 1,
+      "message": "the bare-bone synchronous printf is called debug_printf on other platforms.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 11
+      },
+      "revId": "605da7f7435155ec2962f002dd95fb7f61cdb8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
