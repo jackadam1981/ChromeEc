@@ -50,6 +50,7 @@ void board_reset_pd_mcu(void)
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"tcpc", I2C_PORT_TCPC, 100 /* kHz */, GPIO_I2C0_SCL, GPIO_I2C0_SDA}
+	{"tcpc", I2C_PORT_TCPC, I2C_CONFIG_MASTER, 100,
+		GPIO_I2C0_SCL, GPIO_I2C0_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);

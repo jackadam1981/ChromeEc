@@ -100,7 +100,6 @@
 /* I2C ports configuration */
 #define I2C_PORT_MASTER 0
 #define I2C_PORT_SLAVE  1
-#define I2C_PORT_EC I2C_PORT_SLAVE
 #define I2C_PORT_CHARGER I2C_PORT_MASTER
 #define I2C_PORT_BATTERY I2C_PORT_MASTER
 #define I2C_PORT_LIGHTBAR I2C_PORT_MASTER
@@ -108,11 +107,6 @@
 #define I2C_PORT_ALS   I2C_PORT_MASTER
 #define I2C_PORT_PERICOM I2C_PORT_MASTER
 #define BMM150_I2C_ADDRESS BMM150_ADDR0
-
-/* slave address for host commands */
-#ifdef HAS_TASK_HOSTCMD
-#define CONFIG_HOSTCMD_I2C_SLAVE_ADDR 0x3c
-#endif
 
 /* USART and USB stream drivers */
 #define CONFIG_STREAM_USART

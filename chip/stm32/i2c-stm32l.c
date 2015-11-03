@@ -414,7 +414,8 @@ DECLARE_HOOK(HOOK_INIT, i2c_init, HOOK_PRIO_INIT_I2C);
 
 static int command_i2cdump(int argc, char **argv)
 {
-	dump_i2c_reg(I2C_PORT_MASTER, "dump");
+	dump_i2c_reg(STM32_I2C1_PORT, "dump");
+	dump_i2c_reg(STM32_I2C2_PORT, "dump");
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(i2cdump, command_i2cdump,

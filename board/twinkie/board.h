@@ -52,6 +52,7 @@
 
 /* I2C ports configuration */
 #define I2C_PORT_MASTER 0
+#define I2C_PORT_INA 0
 
 /* USB configuration */
 #define CONFIG_USB_PID 0x500A

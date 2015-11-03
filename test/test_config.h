@@ -59,7 +59,6 @@
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 int board_discharge_on_ac(int enabled);
-#define I2C_PORT_MASTER 0
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
 #endif
@@ -76,7 +75,6 @@ int board_discharge_on_ac(int enabled);
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 int board_discharge_on_ac(int enabled);
-#define I2C_PORT_MASTER 0
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
 #endif
@@ -107,7 +105,6 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_CHARGER_INPUT_CURRENT 4032
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
-#define I2C_PORT_MASTER 0
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
 #endif

@@ -84,6 +84,9 @@
 /* Number of I2C ports */
 #define I2C_PORT_COUNT 2
 
+/* Custom I2C config selected at board-level to use HSI I2C clock */
+#define STM32_I2C_CONFIG_USE_HSI_CLK I2C_CONFIG_CHIP_CUSTOM
+
 /*
  * Use a timer to print a watchdog warning event before the actual watchdog
  * timer fires.  This is needed on STM32, where the independent watchdog has no

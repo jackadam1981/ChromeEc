@@ -220,9 +220,9 @@ struct keyboard_scan_config keyscan_config = {
  */
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"battery", 2, 100, GPIO_I2C_C_SCL, GPIO_I2C_C_SDA},
-	{"evb-1",   0, 100, GPIO_I2C_A_SCL, GPIO_I2C_A_SDA},
-	{"evb-2",   1, 100, GPIO_I2C_B_SCL, GPIO_I2C_B_SDA},
+	{"evb-1",   0, I2C_CONFIG_MASTER, 100, GPIO_I2C_A_SCL, GPIO_I2C_A_SDA},
+	{"evb-2",   1, I2C_CONFIG_MASTER, 100, GPIO_I2C_B_SCL, GPIO_I2C_B_SDA},
+	{"battery", 2, I2C_CONFIG_MASTER, 100, GPIO_I2C_C_SCL, GPIO_I2C_C_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 

@@ -63,12 +63,8 @@
 /* I2C ports configuration */
 #define I2C_PORT_MASTER 1
 #define I2C_PORT_SLAVE  0
-#define I2C_PORT_EC I2C_PORT_SLAVE
 #define I2C_PORT_CHARGER I2C_PORT_MASTER
 #define I2C_PORT_BATTERY I2C_PORT_MASTER
-
-/* slave address for host commands */
-#define CONFIG_HOSTCMD_I2C_SLAVE_ADDR 0x3c
 
 /* Allow dangerous commands */
 #define CONFIG_SYSTEM_UNLOCKED

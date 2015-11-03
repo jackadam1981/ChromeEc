@@ -13,7 +13,7 @@
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"master", 0 /*Port*/, 100 /*Kbps*/, GPIO_MCU_SCL, GPIO_MCU_SDA},
+	{"master", 0, I2C_CONFIG_MASTER, 100, GPIO_MCU_SCL, GPIO_MCU_SDA},
 };
 
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
