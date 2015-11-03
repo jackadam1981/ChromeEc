@@ -16,6 +16,29 @@
       "revId": "fa4f1c279cc719ebca9fb01e6e1f0935a089d1c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36204e91_3286b983",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-11-03T00:42:18Z",
+      "side": 1,
+      "message": "The spec doesn\u0027t say they\u0027re 8-bit, it says that there are only 8 bits that matter. For example, GLOBALSEC_CPU0_I_STAGING_REGION7_CTRL is not a 3-bit register. \nThe address of each GLOBALSEC register is aligned on a 4-byte boundary.",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 12
+      },
+      "revId": "fa4f1c279cc719ebca9fb01e6e1f0935a089d1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
