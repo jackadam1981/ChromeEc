@@ -46,6 +46,30 @@
       "revId": "70175679cd0419940b0fde191d06d2653fbefe45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "562a227b_8b4e6216",
+        "filename": "board/oak/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-11-03T09:44:02Z",
+      "side": 1,
+      "message": "Yes, you are right. I saw few events on charging and discharging. But since that still breaks suspend resume stress test. During the test, battery charge change increases the wake count. So Oak still need this filter to remove this wake source. I\u0027ve modified commit message and BUG\u003d.",
+      "parentUuid": "56ab01f0_20ab525d",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 52
+      },
+      "revId": "70175679cd0419940b0fde191d06d2653fbefe45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
