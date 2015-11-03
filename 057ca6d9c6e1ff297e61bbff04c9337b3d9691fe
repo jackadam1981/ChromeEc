@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "562a227b_d5ad2bf2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-11-03T00:14:41Z",
+      "side": 1,
+      "message": "the desired level should be the function argument",
+      "revId": "057ca6d9c6e1ff297e61bbff04c9337b3d9691fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_8cd9f3aa",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-11-03T00:14:41Z",
+      "side": 1,
+      "message": "no need in this empty line.",
+      "revId": "057ca6d9c6e1ff297e61bbff04c9337b3d9691fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36204e91_f215e126",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-11-03T00:14:41Z",
+      "side": 1,
+      "message": "this \u0027+ 1\u0027 assignment still seems odd to me. Isn\u0027t this cleaner:\n\nwhile(true) {\n  uint8_t current_level \u003d *reg_addrs[i];\n\n  if (current_level \u003e\u003d desired_level)\n    break;\n\n  *reg_addrs[i] \u003d desired_level;\n}",
+      "revId": "057ca6d9c6e1ff297e61bbff04c9337b3d9691fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161fca56_8a40b489",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2015-11-03T00:14:41Z",
+      "side": 1,
+      "message": "please pass the desired level here as the function parameter.",
+      "revId": "057ca6d9c6e1ff297e61bbff04c9337b3d9691fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
