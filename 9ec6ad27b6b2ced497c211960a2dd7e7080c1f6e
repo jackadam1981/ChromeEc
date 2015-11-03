@@ -46,6 +46,30 @@
       "revId": "9ec6ad27b6b2ced497c211960a2dd7e7080c1f6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6bb729e_2afe7f23",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-11-03T21:21:16Z",
+      "side": 1,
+      "message": "Ah okay no worries. One thing you can do is in board/samus/board.h:\n\n    #undef CONFIG_SHAREDLIB_SIZE\n    #define CONFIG_SHAREDLIB_SIZE 0x400\n    #define CONFIG_SHAREDLIB\n\n\nThen,\n\n    make -j BOARD\u003dsamus libsharedobjs\n\n\nIt should build successfully and you should see: \n\n    CC      libsharedobjs/common/keyboard_8042_sharedlib.o",
+      "parentUuid": "36aa0e54_455aca36",
+      "range": {
+        "startLine": 185,
+        "startChar": 48,
+        "endLine": 185,
+        "endChar": 51
+      },
+      "revId": "9ec6ad27b6b2ced497c211960a2dd7e7080c1f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
