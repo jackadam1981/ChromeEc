@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "16a98a5f_0795b8b1",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-03T23:10:15Z",
+      "side": 1,
+      "message": "Why is this initialization even needed? We are calling tcpm_init() at the start of pd_task.",
+      "parentUuid": "d63612de_0135b4d3",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 15
+      },
+      "revId": "816bf8576eb734e0be4b28fe3cd938aa2e72ffbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "760e462a_bdb74712",
         "filename": "driver/tcpm/fusb302.c",
         "patchSetId": 5
