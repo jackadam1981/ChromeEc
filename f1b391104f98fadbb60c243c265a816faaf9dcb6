@@ -1,0 +1,458 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36204e91_34d22952",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Please sort them.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36204e91_d4e09519",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Comments should be at least 2 spaces away from the code.",
+      "range": {
+        "startLine": 24,
+        "startChar": 28,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7643a650_eceaa2c8",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Add \"pass\" here.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_acf1578e",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Append them one by one to a list and join them at the end.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 55
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7643a650_4ccbee24",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Why not put console.cmd_pipe and console.dbg_pipe to the first argument list of select? It is more efficient than of busy polling.",
+      "range": {
+        "startLine": 593,
+        "startChar": 0,
+        "endLine": 596,
+        "endChar": 69
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6195673_b512b33b",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Why treat them byte instead of character?",
+      "range": {
+        "startLine": 601,
+        "startChar": 13,
+        "endLine": 601,
+        "endChar": 22
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d63612de_887d4002",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Double newlines between top-level functions and classes.",
+      "range": {
+        "startLine": 620,
+        "startChar": 0,
+        "endLine": 620,
+        "endChar": 0
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36204e91_12329deb",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Better to use sys.exit().",
+      "range": {
+        "startLine": 644,
+        "startChar": 4,
+        "endLine": 644,
+        "endChar": 10
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "562a227b_b5aa9fd6",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Better to use sys.exit().",
+      "range": {
+        "startLine": 661,
+        "startChar": 4,
+        "endLine": 661,
+        "endChar": 10
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5625c29e_e03aaba2",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "More readable to pass Pipe(duplex\u003dFalse)",
+      "range": {
+        "startLine": 672,
+        "startChar": 68,
+        "endLine": 672,
+        "endChar": 73
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161fca56_d46771f7",
+        "filename": "util/ec3po/console_unittest.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Please sort them.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_b1209077",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Comments should be at least 2 spaces away from the code.",
+      "range": {
+        "startLine": 20,
+        "startChar": 19,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5625c29e_bd3740b9",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Rename to packed_cmd to note it is different from a raw command.",
+      "range": {
+        "startLine": 67,
+        "startChar": 24,
+        "endLine": 67,
+        "endChar": 27
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96401a44_6aafbbbf",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "The previous sentence says at least one \u0027\u0026\u0027 and \u0027E\u0027. What does this \"full string\" mean? May describe the response format here.",
+      "range": {
+        "startLine": 72,
+        "startChar": 56,
+        "endLine": 73,
+        "endChar": 10
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d63612de_8d21d232",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "This short EC_POLL_TIMEOUT value makes it more like a polling approach. Could you make it an efficient way to wait for I/O?\n\nFor example, unifies the StartLoop() and these selects into a single select for all I/O, i.e. readable, writable, _ \u003d select.select(self.inputs, self.outputs, ...). The SendCmdToEC just puts the packed_cmd to a queue and put ec_uart_pty to the self.outputs list. The main loop iterates the readable and writable to do a proper action, like if ec_uart_pty is in writable, dequeue and write to ec_uart_pty (if empty queue, remove ec_uart_pty from self.outputs).",
+      "range": {
+        "startLine": 82,
+        "startChar": 52,
+        "endLine": 82,
+        "endChar": 67
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36204e91_17be0ff2",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Does EC reply the command immediately and no other debug message in between? If it does not, how we handle it?",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5625c29e_80d1b7d8",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "The response is always 4-byte?",
+      "range": {
+        "startLine": 86,
+        "startChar": 42,
+        "endLine": 86,
+        "endChar": 43
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_f1b0484c",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Do you need one more \u0027\\n\u0027? The cmd has two \u0027\\n\u0027.",
+      "range": {
+        "startLine": 104,
+        "startChar": 25,
+        "endLine": 104,
+        "endChar": 29
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_119f3cd3",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Append them one by one to a list and join them at the end.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 30
+      },
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_ece74fd0",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-03T00:14:21Z",
+      "side": 1,
+      "message": "Double newlines between top-level functions and classes.",
+      "revId": "f1b391104f98fadbb60c243c265a816faaf9dcb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
