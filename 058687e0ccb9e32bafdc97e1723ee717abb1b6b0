@@ -16,6 +16,24 @@
       "revId": "058687e0ccb9e32bafdc97e1723ee717abb1b6b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6335e1f_c498303b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-03T23:40:45Z",
+      "side": 0,
+      "message": "ok, thank you for the off line explanation of why this is needed. \n\nTo make sure this does not slip though the cracks please open a tacker item to remember to re-enable this at some point, and mention that item in the patch description.\n\n(multiple comma separated tracker items could be included in the BUG\u003d clause)",
+      "parentUuid": "d6bb729e_ed7961d8",
+      "revId": "058687e0ccb9e32bafdc97e1723ee717abb1b6b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
