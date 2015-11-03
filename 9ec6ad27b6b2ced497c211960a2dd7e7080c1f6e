@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b65c3e65_d9fe5386",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-11-03T20:22:03Z",
+      "side": 1,
+      "message": "Why is this all-obj-y instead of ro-objs? The $(out)/RO/ prefix is lost here.",
+      "range": {
+        "startLine": 185,
+        "startChar": 48,
+        "endLine": 185,
+        "endChar": 51
+      },
+      "revId": "9ec6ad27b6b2ced497c211960a2dd7e7080c1f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
