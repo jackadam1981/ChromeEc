@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f6195673_6bbafc30",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-03T17:48:13Z",
+      "side": 1,
+      "message": "I\u0027ll consider removing I2C_CONFIG_MASTER altogether, but I don\u0027t think defining I2C_CONFIG_MASTER to be 0 is a good idea. We should be able to check all I2C_CONFIG_* flags with \u0027\u0026\u0027, and I don\u0027t think it\u0027s a good idea to make I2C_CONFIG_MASTER special as it\u0027s likely to confuse programmers.",
+      "parentUuid": "765c8636_26d21352",
+      "revId": "ae98412d19524639dac96243d4f26f8175c95f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "562a227b_eebcd489",
         "filename": "include/i2c.h",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "36204e91_e8a28e67",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-03T17:48:13Z",
+      "side": 1,
+      "message": "Can you explain what you mean by \"clean enums\"?",
+      "parentUuid": "562a227b_eebcd489",
+      "revId": "ae98412d19524639dac96243d4f26f8175c95f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7643a650_3d59f23d",
         "filename": "include/i2c.h",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2015-11-03T17:35:11Z",
       "side": 1,
       "message": "If you define 1 \u003d\u003d 10kpps for the speed, then we can fit all speeds in a uint8.",
+      "revId": "ae98412d19524639dac96243d4f26f8175c95f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5625c29e_f6c955d2",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-03T17:48:13Z",
+      "side": 1,
+      "message": "I think it\u0027s going to confuse people, and I don\u0027t know how to name the field to make it non-confusing. \"myria\" is apparently the metric prefix for 10^4. I\u0027ll change it if you can think of a non-confusing name.",
+      "parentUuid": "7643a650_3d59f23d",
       "revId": "ae98412d19524639dac96243d4f26f8175c95f66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
