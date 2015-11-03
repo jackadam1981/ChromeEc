@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "96401a44_3777d71f",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-11-03T10:29:49Z",
+      "side": 1,
+      "message": "Agree that I should not change the order. The issue was in driver/battery/smart.c:battery_get_params(). When battery full, it assigns desired_voltage \u003d 0. And since curr.ac is on, so it won\u0027t go into line:864~866, but go into charge_request(v,a) instead (line:860). So, maybe I should modify battery/smart.c instead?",
+      "parentUuid": "f6195673_567812a7",
+      "range": {
+        "startLine": 385,
+        "startChar": 4,
+        "endLine": 385,
+        "endChar": 68
+      },
+      "revId": "bebce732085b3c5a30e5646005439d13ffa89795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96cad9dc_6601ee86",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
@@ -201,6 +225,24 @@
       "writtenOn": "2015-10-29T23:23:07Z",
       "side": 1,
       "message": "does this work instead of swapping the order of the writes in charge_request()?\n\n/* If battery was just connected, start the charger voltage at just above battery voltage */\nif (battery_seems_to_be_dead || battery_was_removed)\n  charge_request(charger_closest_voltage(curr.batt.voltage + info-\u003evoltage_step), -1);",
+      "revId": "bebce732085b3c5a30e5646005439d13ffa89795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161fca56_a09f0f75",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-11-03T10:29:49Z",
+      "side": 1,
+      "message": "I will send next patchset that keeps current order.",
+      "parentUuid": "96401a44_7078d010",
       "revId": "bebce732085b3c5a30e5646005439d13ffa89795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
