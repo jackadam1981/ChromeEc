@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "765c8636_0908406d",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-03T18:01:21Z",
+      "side": 1,
+      "message": "#define I2C_PORT_IS_SLAVE(port) \\\n((port)-\u003e... \u0026 I2C_CONFIG_SLAVE)\n\n#define I2C_PORT_IS_MASTER(port) (!I2C_PORT_IS_SLAVE(port))",
+      "parentUuid": "f6195673_6bbafc30",
+      "revId": "ae98412d19524639dac96243d4f26f8175c95f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "562a227b_eebcd489",
         "filename": "include/i2c.h",
         "patchSetId": 2
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "d63612de_6036b093",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-03T18:01:21Z",
+      "side": 1,
+      "message": "If we set flag \u003d I2C_CONFIG_CHIP_CUSTOM | I2C_CONFIG_SLAVE; we would get a compilation warning, because that\u0027s not one of the enum listed in i2c_config_flags.",
+      "parentUuid": "36204e91_e8a28e67",
+      "revId": "ae98412d19524639dac96243d4f26f8175c95f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7643a650_3d59f23d",
         "filename": "include/i2c.h",
         "patchSetId": 2
@@ -101,6 +137,24 @@
       "side": 1,
       "message": "I think it\u0027s going to confuse people, and I don\u0027t know how to name the field to make it non-confusing. \"myria\" is apparently the metric prefix for 10^4. I\u0027ll change it if you can think of a non-confusing name.",
       "parentUuid": "7643a650_3d59f23d",
+      "revId": "ae98412d19524639dac96243d4f26f8175c95f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96401a44_5a4ba25d",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-03T18:01:21Z",
+      "side": 1,
+      "message": "According to Wikipedia \"(metric prefix): Not adopted by the International System of Units, therefore no longer used since 1960.\"\n\nuint8_t speed;                /* Speed in 10^4 bps */\nAnd then define \n#define I2C_SPEED_1000KHZ 100\n#define I2C_SPEED_400KHZ   40\n...\n#define I2C_SPEED_KPBS(speed) ((speed) * 10)\n\n\nOk, not great, but it still somewhat readable while preserving space.",
+      "parentUuid": "5625c29e_f6c955d2",
       "revId": "ae98412d19524639dac96243d4f26f8175c95f66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
