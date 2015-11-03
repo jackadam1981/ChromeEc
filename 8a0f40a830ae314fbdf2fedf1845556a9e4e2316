@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "562a227b_ce7fd842",
+        "filename": "include/power.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-03T18:36:11Z",
+      "side": 1,
+      "message": "Are S0ix and S3 support usually mutually exclusive? Will we normally want to support either one or the other?",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36204e91_546c85a0",
         "filename": "power/common.c",
         "patchSetId": 5
@@ -37,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7643a650_5d72762f",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-03T18:36:11Z",
+      "side": 1,
+      "message": "Well, it\u0027s not just a power signal toggle that can lead to misidentification of power state. Anything that wakes TASK_ID_CHIPSET can also cause it, right?\n\nMy suggestion is to create a variable that represents the debounced signal. The chipset task will deal with that variable only. Your ISR / deferred routine will deal with the actual signal and toggle the variable and wake the CHIPSET task when necessary.\n\nWe may need to introduce the concept of a power signal that\u0027s not actually a GPIO.",
+      "parentUuid": "765c8636_103505d4",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "765c8636_5c039925",
         "filename": "power/common.c",
         "patchSetId": 5
@@ -66,6 +101,24 @@
       "side": 1,
       "message": "The purpose of debounce is not to wakeup chipset task when interrupt is not valid since chipset task produces messages(\"power state S0ix \u003d 0x1d...\") and this message prevents idles task from entering heavy sleep.( need at least 1 min quiet/no UART activity).\n\"_power_handle_state\" is called only when chipset tast wakes up. \n\nTo move S0 interrupt and its deferred call to skylake.c, \"power_update_signal()\" should be NOT \u0027static\u0027 inside common.c and defined in header file. Do you think if this change is OK to move S0 interrupt to skyale?",
       "parentUuid": "765c8636_5c039925",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "765c8636_a98db4e5",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-03T18:36:11Z",
+      "side": 1,
+      "message": "Is this S0ix code going to apply to future chipsets, or is the implementation here mostly skylake-specific (especially the 1ms pulse every 8s)? If it\u0027s the second case then definitely we don\u0027t want the code in power/common.c. If it\u0027s the first case, maybe it makes sense to put the code here (or a new file power/s0ix.c maybe).\n\nI don\u0027t think we want to make power_update_signals non-static.",
+      "parentUuid": "5625c29e_fd68183b",
       "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -154,6 +207,24 @@
       "side": 1,
       "message": "I think case for unexpected power loss can be implemented as seperate patch. How do you think ?",
       "parentUuid": "760e462a_20b30b12",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6195673_e6bc03e1",
+        "filename": "power/skylake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-03T18:36:11Z",
+      "side": 1,
+      "message": "We do need some way out of the state in the power loss case. I guess it can be in a later patch, but it\u0027s really important, so let\u0027s add a TODO.",
+      "parentUuid": "d63612de_439a99e3",
       "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
