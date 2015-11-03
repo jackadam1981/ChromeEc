@@ -38,7 +38,7 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"master", I2C_PORT_MASTER, 100},
+	{"master", I2C_PORT_MASTER, I2C_CONFIG_MASTER, 100},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 

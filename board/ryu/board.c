@@ -246,10 +246,11 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"master", I2C_PORT_MASTER, 100,
+	{"master", I2C_PORT_MASTER, I2C_CONFIG_MASTER, 100,
 		GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
-	{"slave",  I2C_PORT_SLAVE, 1000,
-		GPIO_SLAVE_I2C_SCL, GPIO_SLAVE_I2C_SDA},
+	{"slave",  I2C_PORT_SLAVE, I2C_CONFIG_SLAVE, 1000,
+		GPIO_SLAVE_I2C_SCL, GPIO_SLAVE_I2C_SDA,
+		CONFIG_USB_PD_I2C_SLAVE_ADDR},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 

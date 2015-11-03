@@ -32,20 +32,15 @@
  */
 #define I2C_MAX_HOST_PACKET_SIZE 128
 
-#ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
-#if (I2C_PORT_EC == STM32_I2C1_PORT)
-#define IRQ_SLAVE STM32_IRQ_I2C1
-#else
-#define IRQ_SLAVE STM32_IRQ_I2C2
-#endif
-#endif
-
-
 /* I2C port state data */
 struct i2c_port_data {
 	uint32_t timeout_us;    /* Transaction timeout, or 0 to use default */
 };
 static struct i2c_port_data pdata[I2C_PORT_COUNT];
+
+#ifdef CONFIG_I2C_SLAVE
+static int i2c_slave_port;
+#endif
 
 void i2c_set_timeout(int port, uint32_t timeout)
 {
@@ -130,25 +125,28 @@ static void i2c_init_port(const struct i2c_port_t *p)
 	enum i2c_freq freq;
 
 	/* Enable clocks to I2C modules if necessary */
-	if (!(STM32_RCC_APB1ENR & (1 << (21 + port))))
-		STM32_RCC_APB1ENR |= 1 << (21 + port);
+	if (!(STM32_RCC_APB1ENR & (STM32_RCC_PB1_I2C1 << port)))
+		STM32_RCC_APB1ENR |= (STM32_RCC_PB1_I2C1 << port);
 
+	/* I2C2 clock source can't be configured on CHIP_FAMILY_STM32F0 */
+#ifndef CHIP_FAMILY_STM32F3
 	if (port == STM32_I2C1_PORT) {
-#if defined(CONFIG_HOSTCMD_I2C_SLAVE_ADDR) && \
-defined(CONFIG_LOW_POWER_IDLE) && \
-(I2C_PORT_EC == STM32_I2C1_PORT)
-		/*
-		 * Use HSI (8MHz) for i2c clock. This allows smooth wakeup
-		 * from STOP mode since HSI is only clock running immediately
-		 * upon exit from STOP mode.
-		 */
-		STM32_RCC_CFGR3 &= ~0x10;
-		src = I2C_CLK_SRC_8MHZ;
-#else
-		/* Use SYSCLK for i2c clock. */
-		STM32_RCC_CFGR3 |= 0x10;
 #endif
+		if (p->flags & STM32_I2C_CONFIG_USE_HSI_CLK) {
+			/*
+			 * Use HSI (8MHz) for i2c clock. This allows smooth
+			 * wakeup from STOP mode since HSI is only clock
+			 * running immediately upon exit from STOP mode.
+		 */
+			STM32_RCC_CFGR3 &= ~(STM32_RCC_CFGR3_I2C1 << port);
+			src = I2C_CLK_SRC_8MHZ;
+		} else {
+			/* Use SYSCLK for i2c clock. */
+			STM32_RCC_CFGR3 |= (STM32_RCC_CFGR3_I2C1 << port);
+		}
+#ifndef CHIP_FAMILY_STM32F3
 	}
+#endif
 
 	/* Configure GPIOs */
 	gpio_config_module(MODULE_I2C, 1);
@@ -177,7 +175,7 @@ defined(CONFIG_LOW_POWER_IDLE) && \
 }
 
 /*****************************************************************************/
-#ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
+#ifdef CONFIG_I2C_SLAVE
 /* Host command slave */
 /*
  * Buffer for received host command packets (including prefix byte on request,
@@ -185,7 +183,6 @@ defined(CONFIG_LOW_POWER_IDLE) && \
  */
 static uint8_t host_buffer[I2C_MAX_HOST_PACKET_SIZE + 2];
 static uint8_t params_copy[I2C_MAX_HOST_PACKET_SIZE] __aligned(4);
-static int host_i2c_resp_port;
 static int tx_pending;
 static int tx_index, tx_end;
 static struct host_packet i2c_packet;
@@ -212,7 +209,7 @@ static void i2c_send_response_packet(struct host_packet *pkt)
 	 * '0xec' in the event loop. Because of this, the master i2c
 	 * doesn't need to snoop the response stream to abort transaction.
 	 */
-	STM32_I2C_CR1(host_i2c_resp_port) |= STM32_I2C_CR1_TXIE;
+	STM32_I2C_CR1(i2c_slave_port) |= STM32_I2C_CR1_TXIE;
 }
 
 /* Process the command in the i2c host buffer */
@@ -259,7 +256,7 @@ static void i2c_send_tcpc_response(int len)
 	tx_end = len;
 
 	/* enable transmit interrupt and use irq to send data back */
-	STM32_I2C_CR1(host_i2c_resp_port) |= STM32_I2C_CR1_TXIE;
+	STM32_I2C_CR1(i2c_slave_port) |= STM32_I2C_CR1_TXIE;
 }
 
 static void i2c_process_tcpc_command(int read, int addr, int len)
@@ -269,7 +266,7 @@ static void i2c_process_tcpc_command(int read, int addr, int len)
 }
 #endif
 
-static void i2c_event_handler(int port)
+static void i2c_event_handler(void)
 {
 	int i2c_isr;
 	static int rx_pending, buf_idx;
@@ -277,7 +274,7 @@ static void i2c_event_handler(int port)
 	int addr;
 #endif
 
-	i2c_isr = STM32_I2C_ISR(port);
+	i2c_isr = STM32_I2C_ISR(i2c_slave_port);
 
 	/*
 	 * Check for error conditions. Note, arbitration loss and bus error
@@ -289,10 +286,10 @@ static void i2c_event_handler(int port)
 		tx_pending = 0;
 
 		/* Make sure TXIS interrupt is disabled */
-		STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_TXIE;
+		STM32_I2C_CR1(i2c_slave_port) &= ~STM32_I2C_CR1_TXIE;
 
 		/* Clear error status bits */
-		STM32_I2C_ICR(port) |= STM32_I2C_ICR_BERRCF |
+		STM32_I2C_ICR(i2c_slave_port) |= STM32_I2C_ICR_BERRCF |
 				STM32_I2C_ICR_ARLOCF;
 	}
 
@@ -301,10 +298,10 @@ static void i2c_event_handler(int port)
 		if (i2c_isr & STM32_I2C_ISR_DIR) {
 			/* Transmitter slave */
 			/* Clear transmit buffer */
-			STM32_I2C_ISR(port) |= STM32_I2C_ISR_TXE;
+			STM32_I2C_ISR(i2c_slave_port) |= STM32_I2C_ISR_TXE;
 
 			/* Enable txis interrupt to start response */
-			STM32_I2C_CR1(port) |= STM32_I2C_CR1_TXIE;
+			STM32_I2C_CR1(i2c_slave_port) |= STM32_I2C_CR1_TXIE;
 		} else {
 			/* Receiver slave */
 			buf_idx = 0;
@@ -312,7 +309,7 @@ static void i2c_event_handler(int port)
 		}
 
 		/* Clear ADDR bit by writing to ADDRCF bit */
-		STM32_I2C_ICR(port) |= STM32_I2C_ICR_ADDRCF;
+		STM32_I2C_ICR(i2c_slave_port) |= STM32_I2C_ICR_ADDRCF;
 		/* Inhibit stop mode when addressed until STOPF flag is set */
 		disable_sleep(SLEEP_MASK_I2C_SLAVE);
 	}
@@ -325,7 +322,7 @@ static void i2c_event_handler(int port)
 		 * while rx is pending, then this is a write only to
 		 * the tcpc.
 		 */
-		addr = STM32_I2C_ISR_ADDCODE(STM32_I2C_ISR(port));
+		addr = STM32_I2C_ISR_ADDCODE(STM32_I2C_ISR(i2c_slave_port));
 		if (rx_pending && ADDR_IS_TCPC(addr))
 			i2c_process_tcpc_command(0, addr, buf_idx);
 #endif
@@ -333,10 +330,10 @@ static void i2c_event_handler(int port)
 		tx_pending = 0;
 
 		/* Make sure TXIS interrupt is disabled */
-		STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_TXIE;
+		STM32_I2C_CR1(i2c_slave_port) &= ~STM32_I2C_CR1_TXIE;
 
 		/* Clear STOPF bit by writing to STOPCF bit */
-		STM32_I2C_ICR(port) |= STM32_I2C_ICR_STOPCF;
+		STM32_I2C_ICR(i2c_slave_port) |= STM32_I2C_ICR_STOPCF;
 
 		/* No longer inhibit deep sleep after stop condition */
 		enable_sleep(SLEEP_MASK_I2C_SLAVE);
@@ -344,66 +341,62 @@ static void i2c_event_handler(int port)
 
 	/* Receiver full event */
 	if (i2c_isr & STM32_I2C_ISR_RXNE)
-		host_buffer[buf_idx++] = STM32_I2C_RXDR(port);
+		host_buffer[buf_idx++] = STM32_I2C_RXDR(i2c_slave_port);
 
 	/* Master requested STOP or RESTART */
 	if (i2c_isr & STM32_I2C_ISR_NACK) {
 		/* Make sure TXIS interrupt is disabled */
-		STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_TXIE;
+		STM32_I2C_CR1(i2c_slave_port) &= ~STM32_I2C_CR1_TXIE;
 		/* Clear NACK */
-		STM32_I2C_ICR(port) |= STM32_I2C_ICR_NACKCF;
+		STM32_I2C_ICR(i2c_slave_port) |= STM32_I2C_ICR_NACKCF;
 		/* Resend last byte on RESTART */
-		if (port == I2C_PORT_EC && tx_index)
+		if (tx_index)
 			tx_index--;
 	}
 
 	/* Transmitter empty event */
 	if (i2c_isr & STM32_I2C_ISR_TXIS) {
-		if (port == I2C_PORT_EC) { /* host is waiting for PD response */
-			if (tx_pending) {
-				if (tx_index < tx_end) {
-					STM32_I2C_TXDR(port) =
-						host_buffer[tx_index++];
-				} else {
-					STM32_I2C_TXDR(port) = 0xec;
-					/*
-					 * Set tx_index = 0 to prevent NACK
-					 * handler resending last buffer byte.
-					 */
-					tx_index = 0;
-					tx_end = 0;
-					/* No pending data */
-					tx_pending = 0;
-				}
-			} else if (rx_pending) {
-				host_i2c_resp_port = port;
-				/*
-				 * Disable TXIS interrupt, transmission will
-				 * be prepared by host command task.
-				 */
-				STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_TXIE;
-
-#ifdef TCPCI_I2C_SLAVE
-				addr = STM32_I2C_ISR_ADDCODE(
-					STM32_I2C_ISR(port));
-				if (ADDR_IS_TCPC(addr))
-					i2c_process_tcpc_command(1, addr,
-								 buf_idx);
-				else
-#endif
-					i2c_process_command();
-
-				/* Reset host buffer after end of transfer */
-				rx_pending = 0;
-				tx_pending = 1;
+		if (tx_pending) {
+			if (tx_index < tx_end) {
+				STM32_I2C_TXDR(i2c_slave_port) =
+					host_buffer[tx_index++];
 			} else {
-				STM32_I2C_TXDR(port) = 0xec;
+				STM32_I2C_TXDR(i2c_slave_port) = 0xec;
+				/*
+				 * Set tx_index = 0 to prevent NACK
+				 * handler resending last buffer byte.
+				 */
+				tx_index = 0;
+				tx_end = 0;
+				/* No pending data */
+				tx_pending = 0;
 			}
+		} else if (rx_pending) {
+			/*
+			 * Disable TXIS interrupt, transmission will
+			 * be prepared by host command task.
+			 */
+			STM32_I2C_CR1(i2c_slave_port) &= ~STM32_I2C_CR1_TXIE;
+#ifdef TCPCI_I2C_SLAVE
+			addr = STM32_I2C_ISR_ADDCODE(
+				STM32_I2C_ISR(i2c_slave_port));
+			if (ADDR_IS_TCPC(addr))
+				i2c_process_tcpc_command(1, addr,
+							 buf_idx);
+			else
+#endif
+				i2c_process_command();
+
+			/* Reset host buffer after end of transfer */
+			rx_pending = 0;
+			tx_pending = 1;
+		} else {
+			STM32_I2C_TXDR(i2c_slave_port) = 0xec;
 		}
 	}
 }
-void i2c2_event_interrupt(void) { i2c_event_handler(I2C_PORT_EC); }
-DECLARE_IRQ(IRQ_SLAVE, i2c2_event_interrupt, 2);
+DECLARE_IRQ(STM32_IRQ_I2C1, i2c_event_handler, 2);
+DECLARE_IRQ(STM32_IRQ_I2C2, i2c_event_handler, 2);
 #endif
 
 /*****************************************************************************/
@@ -561,40 +554,53 @@ int i2c_get_line_levels(int port)
 		(i2c_raw_get_scl(port) ? I2C_LINE_SCL_HIGH : 0);
 }
 
-static void i2c_init(void)
+#ifdef CONFIG_I2C_SLAVE
+static void i2c_slave_init(const struct i2c_port_t *p)
 {
-	const struct i2c_port_t *p = i2c_ports;
-	int i;
+	int port = p->port;
 
-	for (i = 0; i < i2c_ports_used; i++, p++)
-		i2c_init_port(p);
+	STM32_I2C_CR1(port) |= STM32_I2C_CR1_RXIE | STM32_I2C_CR1_ERRIE
+			    | STM32_I2C_CR1_ADDRIE | STM32_I2C_CR1_STOPIE
+			    | STM32_I2C_CR1_NACKIE;
 
-#ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
-	STM32_I2C_CR1(I2C_PORT_EC) |= STM32_I2C_CR1_RXIE | STM32_I2C_CR1_ERRIE
-			| STM32_I2C_CR1_ADDRIE | STM32_I2C_CR1_STOPIE
-			| STM32_I2C_CR1_NACKIE;
-#if defined(CONFIG_LOW_POWER_IDLE) && (I2C_PORT_EC == STM32_I2C1_PORT)
 	/*
 	 * If using low power idle and EC port is I2C1, then set I2C1 to wake
 	 * from STOP mode on address match. Note, this only works on I2C1 and
 	 * only if the clock to I2C1 is HSI 8MHz.
 	 */
-	STM32_I2C_CR1(I2C_PORT_EC) |= STM32_I2C_CR1_WUPEN;
-#endif
-	STM32_I2C_OAR1(I2C_PORT_EC) = 0x8000 | CONFIG_HOSTCMD_I2C_SLAVE_ADDR;
+	if (p->flags & STM32_I2C_CONFIG_USE_HSI_CLK)
+		STM32_I2C_CR1(port) |= STM32_I2C_CR1_WUPEN;
+	STM32_I2C_OAR1(port) = 0x8000 | p->addr;
+
 #ifdef TCPCI_I2C_SLAVE
 	/*
 	 * Configure TCPC address with OA2[1] masked so that we respond
 	 * to CONFIG_TCPC_I2C_BASE_ADDR and CONFIG_TCPC_I2C_BASE_ADDR + 2.
 	 */
-	STM32_I2C_OAR2(I2C_PORT_EC) = 0x8100 | CONFIG_TCPC_I2C_BASE_ADDR;
+	STM32_I2C_OAR2(port) = 0x8100 | CONFIG_TCPC_I2C_BASE_ADDR;
 #endif
-	task_enable_irq(IRQ_SLAVE);
+	i2c_slave_port = port;
+	task_enable_irq(port == STM32_I2C1_PORT ? STM32_IRQ_I2C1 :
+						  STM32_IRQ_I2C2);
+}
+#endif /* CONFIG_I2C_SLAVE */
+
+static void i2c_init(void)
+{
+	const struct i2c_port_t *p = i2c_ports;
+	int i;
+
+	for (i = 0; i < i2c_ports_used; i++, p++) {
+		i2c_init_port(p);
+#ifdef CONFIG_I2C_SLAVE
+		if (p->flags & I2C_CONFIG_SLAVE)
+			i2c_slave_init(p);
 #endif
+	}
 }
 DECLARE_HOOK(HOOK_INIT, i2c_init, HOOK_PRIO_INIT_I2C);
 
-#ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
+#ifdef CONFIG_I2C_SLAVE
 /**
  * Get protocol information
  */

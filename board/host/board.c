@@ -59,9 +59,9 @@ BUILD_ASSERT(ARRAY_SIZE(buttons) == CONFIG_BUTTON_COUNT);
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 #ifdef I2C_PORT_BATTERY
-	{"battery", I2C_PORT_BATTERY, 100,  0, 0},
+	{"battery", I2C_PORT_BATTERY, I2C_CONFIG_MASTER, 100,  0, 0},
 #elif defined I2C_PORT_LIGHTBAR
-	{"lightbar", I2C_PORT_LIGHTBAR, 100,  0, 0},
+	{"lightbar", I2C_PORT_LIGHTBAR, I2C_CONFIG_MASTER, 100,  0, 0},
 #endif
 };
 

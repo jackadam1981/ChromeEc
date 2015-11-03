@@ -115,11 +115,16 @@ const struct adc_t adc_channels[] = {
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 const struct i2c_port_t i2c_ports[]  = {
-	{"pmic",    NPCX_I2C_PORT0_0, 400, GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
-	{"muxes",   NPCX_I2C_PORT0_1, 400, GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
-	{"pd_mcu",  NPCX_I2C_PORT1,  1000, GPIO_I2C1_SCL,   GPIO_I2C1_SDA},
-	{"sensors", NPCX_I2C_PORT2,   400, GPIO_I2C2_SCL,   GPIO_I2C2_SDA},
-	{"batt",    NPCX_I2C_PORT3,   100, GPIO_I2C3_SCL,   GPIO_I2C3_SDA},
+	{"pmic",    NPCX_I2C_PORT0_0, I2C_CONFIG_MASTER, 400,
+		GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
+	{"muxes",   NPCX_I2C_PORT0_1, I2C_CONFIG_MASTER, 400,
+		GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
+	{"pd_mcu",  NPCX_I2C_PORT1,   I2C_CONFIG_MASTER, 1000,
+		GPIO_I2C1_SCL,   GPIO_I2C1_SDA},
+	{"sensors", NPCX_I2C_PORT2,   I2C_CONFIG_MASTER, 400,
+		GPIO_I2C2_SCL,   GPIO_I2C2_SDA},
+	{"batt",    NPCX_I2C_PORT3,   I2C_CONFIG_MASTER, 100,
+		GPIO_I2C3_SCL,   GPIO_I2C3_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 

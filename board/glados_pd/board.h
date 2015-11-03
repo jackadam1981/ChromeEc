@@ -86,12 +86,6 @@
 
 /* I2C ports configuration */
 #define I2C_PORT_SLAVE  0
-#define I2C_PORT_EC I2C_PORT_SLAVE
-
-/* slave address for host commands */
-#ifdef HAS_TASK_HOSTCMD
-#define CONFIG_HOSTCMD_I2C_SLAVE_ADDR CONFIG_USB_PD_I2C_SLAVE_ADDR
-#endif
 
 #ifndef __ASSEMBLER__
 

@@ -79,13 +79,7 @@
 /* I2C ports configuration */
 #define I2C_PORT_MASTER 1
 #define I2C_PORT_SLAVE  0
-#define I2C_PORT_EC I2C_PORT_SLAVE
 #define I2C_PORT_PERICOM I2C_PORT_MASTER
-
-/* slave address for host commands */
-#ifdef HAS_TASK_HOSTCMD
-#define CONFIG_HOSTCMD_I2C_SLAVE_ADDR CONFIG_USB_PD_I2C_SLAVE_ADDR
-#endif
 
 /* Maximum number of deferrable functions */
 #undef  DEFERRABLE_MAX_COUNT

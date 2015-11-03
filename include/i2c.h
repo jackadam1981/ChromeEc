@@ -24,13 +24,22 @@ enum i2c_freq {
 	I2C_FREQ_COUNT,
 };
 
+enum i2c_config_flags {
+	I2C_CONFIG_SLAVE  = 1 << 0,
+	I2C_CONFIG_MASTER = 1 << 1,
+	/* Chip-specific custom configuration option */
+	I2C_CONFIG_CHIP_CUSTOM = 1 << 7,
+};
+
 /* Data structure to define I2C port configuration. */
 struct i2c_port_t {
-	const char *name;     /* Port name */
-	int port;             /* Port */
-	int kbps;             /* Speed in kbps */
-	enum gpio_signal scl; /* Port SCL GPIO line */
-	enum gpio_signal sda; /* Port SDA GPIO line */
+	const char *name;             /* Port name */
+	uint8_t port;                 /* Port */
+	enum i2c_config_flags flags;  /* Configuration flags */
+	uint16_t kbps;                /* Speed in kbps */
+	enum gpio_signal scl;         /* Port SCL GPIO line */
+	enum gpio_signal sda;         /* Port SDA GPIO line */
+	uint8_t addr;                 /* I2C addr (if slave) */
 };
 
 extern const struct i2c_port_t i2c_ports[];
