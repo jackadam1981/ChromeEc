@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "760e462a_a372857e",
+        "filename": "include/power.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-11-03T18:43:12Z",
+      "side": 1,
+      "message": "We will need to support both at the same time as there may be situations where we go to S3 instead of S0ix.\n\nBut S0ix is likely here to stay, so we may not need to guard the basics with a CONFIG option.  We can always control the behavior by not configuring the GPIO for it on a board.",
+      "parentUuid": "562a227b_ce7fd842",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36204e91_546c85a0",
         "filename": "power/common.c",
         "patchSetId": 5
