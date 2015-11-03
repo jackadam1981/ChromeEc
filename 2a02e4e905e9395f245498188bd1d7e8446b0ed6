@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7643a650_87465154",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-03T02:19:35Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "2a02e4e905e9395f245498188bd1d7e8446b0ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6195673_706ae9f6",
+        "filename": "board/ryu/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-03T02:19:35Z",
+      "side": 1,
+      "message": "don\u0027t really like the name because it implies it\u0027s a number of samples to smooth over. instead this is the smoothing weight, alpha, inverted. maybe CONFIG_MAG_Y_SMOOTH_WEIGHT_INV?",
+      "range": {
+        "startLine": 180,
+        "startChar": 8,
+        "endLine": 180,
+        "endChar": 35
+      },
+      "revId": "2a02e4e905e9395f245498188bd1d7e8446b0ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
