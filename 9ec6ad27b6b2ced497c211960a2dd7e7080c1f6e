@@ -22,6 +22,30 @@
       "revId": "9ec6ad27b6b2ced497c211960a2dd7e7080c1f6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36aa0e54_455aca36",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-03T20:50:06Z",
+      "side": 1,
+      "message": "ah, I missed this in carpet editing, let me fix this. How do I verify that sharedlib-objs is what it should be?",
+      "parentUuid": "b65c3e65_d9fe5386",
+      "range": {
+        "startLine": 185,
+        "startChar": 48,
+        "endLine": 185,
+        "endChar": 51
+      },
+      "revId": "9ec6ad27b6b2ced497c211960a2dd7e7080c1f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
