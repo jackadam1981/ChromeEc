@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "765c8636_26d21352",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-03T17:35:11Z",
+      "side": 1,
+      "message": "I really think one bit is enough.\nAdd macros : I2_CONFIG_MASTER defined a 0 to be consistent in the definition.",
+      "revId": "ae98412d19524639dac96243d4f26f8175c95f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "562a227b_eebcd489",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-03T17:35:11Z",
+      "side": 1,
+      "message": "The would be a bitset of enum:\nI2C_CONFIG_SLAVE | ..USE_48MHZ_CLOCK_.... \n\nIf we put the bit for slave/master in the addr(we don\u0027t use it often), then we are back to clean enums.",
+      "revId": "ae98412d19524639dac96243d4f26f8175c95f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7643a650_3d59f23d",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-03T17:35:11Z",
+      "side": 1,
+      "message": "If you define 1 \u003d\u003d 10kpps for the speed, then we can fit all speeds in a uint8.",
+      "revId": "ae98412d19524639dac96243d4f26f8175c95f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
