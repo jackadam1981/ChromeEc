@@ -39,6 +39,11 @@ chip-$(CONFIG_USB_BLOB)+=usb_blob.o
 
 chip-$(CONFIG_FLASH)+=flash.o
 
+
+dirs-$(CONFIG_CUSTOMIZED_RO) += chip/g/loader
+chip-custom_obj-$(CONFIG_CUSTOMIZED_RO) += loader/main.o
+chip-custom_obj-$(CONFIG_CUSTOMIZED_RO) += system.o
+
 $(out)/RO/ec.RO.flat: $(out)/util/signer
 
 $(out)/RO/ec.RO.hex: $(out)/RO/ec.RO.flat

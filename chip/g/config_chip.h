@@ -63,4 +63,6 @@
 /* Number of IRQ vectors on the NVIC */
 #define CONFIG_IRQ_COUNT (GC_INTERRUPTS_COUNT - 16)
 
+#define CONFIG_CUSTOMIZED_RO
+
 #endif /* __CROS_EC_CONFIG_CHIP_H */
