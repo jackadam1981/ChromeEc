@@ -98,3 +98,6 @@ common-$(HAS_TASK_KEYSCAN)+=keyboard_scan.o
 common-$(HAS_TASK_LIGHTBAR)+=lb_common.o lightbar.o
 common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o
 common-$(TEST_BUILD)+=test_util.o
+
+common-custom_obj-$(CONFIG_CUSTOMIZED_RO) += printf.o
+common-custom_obj-$(CONFIG_CUSTOMIZED_RO) += util.o

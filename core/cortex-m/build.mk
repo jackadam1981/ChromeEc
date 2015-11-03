@@ -27,3 +27,6 @@ core-$(CONFIG_COMMON_PANIC_OUTPUT)+=panic.o
 core-$(CONFIG_COMMON_RUNTIME)+=switch.o task.o
 core-$(CONFIG_WATCHDOG)+=watchdog.o
 core-$(CONFIG_MPU)+=mpu.o
+
+core-custom_obj-y = init.o
+core-custom_obj-$(CONFIG_COMMON_PANIC_OUTPUT) += panic.o
