@@ -12,6 +12,10 @@
 #include "uart.h"
 #include "util.h"
 
+#if defined(CONFIG_CUSTOMIZED_RO) && defined(SECTION_IS_RO)
+#define POLLING_MODE
+#endif
+
 static int done_uart_init_yet;
 
 int uart_init_done(void)
@@ -92,6 +96,7 @@ int uart_read_char(void)
 	return GR_UART_RDATA(0);
 }
 
+#ifndef POLLING_MODE
 void uart_disable_interrupt(void)
 {
 	task_disable_irq(GC_IRQNUM_UART0_TXINT);
@@ -126,6 +131,7 @@ void uart_ec_rx_interrupt(void)
 	uart_process_input();
 }
 DECLARE_IRQ(GC_IRQNUM_UART0_RXINT, uart_ec_rx_interrupt, 1);
+#endif  /* POLLING_MODE ^^^^^^ NOT defined. */
 
 void uart_init(void)
 {
@@ -149,8 +155,10 @@ void uart_init(void)
 	/* Note: doesn't do anything unless turned on in NVIC */
 	GR_UART_ICTRL(0) = 0x02;
 
+#ifndef POLLING_MODE
 	/* Enable interrupts for UART0 only */
 	uart_enable_interrupt();
+#endif
 
 	done_uart_init_yet = 1;
 }

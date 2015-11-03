@@ -79,4 +79,13 @@ int vfnprintf(int (*addchar)(void *context, int c), void *context,
  */
 int snprintf(char *str, int size, const char *format, ...);
 
+/***
+ *
+ * A printf like function, is meant to be available only customized RO images,
+ * which do not run under the EC executive control.
+ *
+ * @param format	Format string (see above for acceptable formats)
+ */
+int eprintf(const char *format, ...);
+
 #endif  /* __CROS_EC_PRINTF_H */
