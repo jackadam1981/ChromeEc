@@ -24,6 +24,7 @@ void uart_tx_start(void)
 	if (!uart_init_done())
 		return;
 
+#ifndef CONFIG_POLLING_UART
 	/* If interrupt is already enabled, nothing to do */
 	if (GR_UART_ICTRL(0) & GC_UART_ICTRL_TX_MASK)
 		return;
@@ -41,6 +42,7 @@ void uart_tx_start(void)
 	REG_WRITE_MLV(GR_UART_ICTRL(0), GC_UART_ICTRL_TX_MASK,
 		      GC_UART_ICTRL_TX_LSB, 1);
 	task_trigger_irq(GC_IRQNUM_UART0_TXINT);
+#endif
 }
 
 void uart_tx_stop(void)
@@ -104,6 +106,7 @@ void uart_enable_interrupt(void)
 	task_enable_irq(GC_IRQNUM_UART0_RXINT);
 }
 
+#ifndef CONFIG_POLLING_UART
 /**
  * Interrupt handlers for UART0
  */
@@ -126,6 +129,7 @@ void uart_ec_rx_interrupt(void)
 	uart_process_input();
 }
 DECLARE_IRQ(GC_IRQNUM_UART0_RXINT, uart_ec_rx_interrupt, 1);
+#endif
 
 void uart_init(void)
 {

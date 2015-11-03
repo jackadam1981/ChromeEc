@@ -98,3 +98,9 @@ common-$(HAS_TASK_KEYSCAN)+=keyboard_scan.o
 common-$(HAS_TASK_LIGHTBAR)+=lb_common.o lightbar.o
 common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o
 common-$(TEST_BUILD)+=test_util.o
+
+common-custom_obj-$(CONFIG_COMMON_PANIC_OUTPUT) += panic_output.o
+common-custom_obj-y += uart_buffering.o
+common-custom_obj-y += util.o
+common-custom_obj-y += console_output.o
+common-custom_obj-y += printf.o

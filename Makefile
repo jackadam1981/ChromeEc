@@ -154,7 +154,20 @@ dirs+= private private-cr51
 dirs+=$(shell find driver -type d)
 common_dirs=util
 
-ro-objs := $(sort $(foreach obj, $(all-obj-y), $(out)/RO/$(obj)))
+ifneq ($(CONFIG_CUSTOMIZED_RO),y)
+ro-objs := $(sort (foreach obj, $(all-obj-y), $(out)/RO/$(obj)))
+else
+# Private subdirectories may call this from their build.mk
+custom_objs_from_dir=$(foreach obj, $($(2)-custom_obj-y), $(1)/$(obj))
+
+custom-objs = $(call custom_objs_from_dir,core/$(CORE),core)
+custom-objs += $(call custom_objs_from_dir,chip/$(CHIP),chip)
+custom-objs += $(call custom_objs_from_dir,$(BDIR),board)
+custom-objs += $(call custom_objs_from_dir,common,common)
+
+ro-objs := $(sort $(foreach obj, $(custom-objs), $(out)/RO/$(obj)))
+$(warning ro-objs is $(ro-objs))
+endif
 rw-objs := $(sort $(foreach obj, $(all-obj-y), $(out)/RW/$(obj)))
 
 # Don't include the shared objects in the RO/RW image if we're enabling
