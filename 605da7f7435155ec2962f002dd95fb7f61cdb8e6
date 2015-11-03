@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f6a3167e_e35e52c4",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-03T22:14:48Z",
+      "side": 1,
+      "message": "yes, this is a good point. \n\nDo you have any suggestions how to address this?\n\nhow about overriding the ro set of objects in the appropriate build.mk?",
+      "parentUuid": "f6a3167e_63402289",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 17
+      },
+      "revId": "605da7f7435155ec2962f002dd95fb7f61cdb8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b65c3e65_d9d0131f",
         "filename": "include/printf.h",
         "patchSetId": 2
