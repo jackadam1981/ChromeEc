@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_switch.h"
+#include "lpc.h"
 #include "power.h"
 #include "system.h"
 #include "task.h"
@@ -335,6 +336,24 @@ enum power_state power_handle_state(enum power_state state)
 		/* Set PCH_PWROK */
 		gpio_set_level(GPIO_PCH_PWROK, 1);
 		gpio_set_level(GPIO_SYS_PWROK, 1);
+
+#ifdef BOARD_TOUCHSCREEN_RESET
+		/* Wait for PLTRST# deassert and then reset touch screen */
+		{
+			int timer = 0;
+
+			while (lpc_get_pltrst_asserted() && (timer < 150)) {
+				timer++;
+				msleep(1);
+			}
+
+			if (!lpc_get_pltrst_asserted()) {
+				gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 0);
+				msleep(10);
+				gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 1);
+			}
+		}
+#endif
 		return POWER_S0;
 
 	case POWER_S0S3:
