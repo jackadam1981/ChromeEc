@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "765c8636_103505d4",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-11-03T00:49:49Z",
+      "side": 1,
+      "message": "This periodic SLP_S0 pulse occurs only when S0ix state where SLP_S0 is asserted, unlike SLP_S3 which stays low when asserted.(this is due to unused PECI bus pin is grounded.).\nWhen SLP_S0 is de-asserted, there will be no more pulses.\n\nWhen other signals(SLP_S3 or S4) to be asserted, SLP_S0 is already de-asserted and it is unlikely for simultaneous signal changes.    \nAll these signal behaviour are controlled by PCH in SOC.",
+      "parentUuid": "36204e91_546c85a0",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "765c8636_5c039925",
         "filename": "power/common.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2015-11-02T20:47:22Z",
       "side": 1,
       "message": "The purpose of these two functions is to debounce the 1ms pulse every 8s, right? Do you really need a separate ISR to do this? For example, why not call your deferred routine from _power_handle_state? In any case, it\u0027s probably best to put this code in skylake.c, not here.",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5625c29e_fd68183b",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-11-03T00:49:49Z",
+      "side": 1,
+      "message": "The purpose of debounce is not to wakeup chipset task when interrupt is not valid since chipset task produces messages(\"power state S0ix \u003d 0x1d...\") and this message prevents idles task from entering heavy sleep.( need at least 1 min quiet/no UART activity).\n\"_power_handle_state\" is called only when chipset tast wakes up. \n\nTo move S0 interrupt and its deferred call to skylake.c, \"power_update_signal()\" should be NOT \u0027static\u0027 inside common.c and defined in header file. Do you think if this change is OK to move S0 interrupt to skyale?",
+      "parentUuid": "765c8636_5c039925",
       "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "765c8636_f0ddd130",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-11-03T00:49:49Z",
+      "side": 1,
+      "message": "Since pulse width is 1 msec, checking SLP_S0 level should be after 1 msec to make sure if this rising edge is from invlaid 1 msec pulse or from valid power state change.",
+      "parentUuid": "562a227b_835acc33",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7643a650_2ea0a2c1",
         "filename": "power/skylake.c",
         "patchSetId": 5
@@ -64,6 +118,24 @@
       "writtenOn": "2015-11-02T20:47:22Z",
       "side": 1,
       "message": "So, S0ix only transitions back to S0? Are things handled correctly if we unexpectedly power-down from S0ix? (Ex. SOC unexpectedly loses power, do we transition from S0ix --\u003e S0 --\u003e S3 --\u003e S5 correctly?).",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_20b30b12",
+        "filename": "power/skylake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-11-03T00:49:49Z",
+      "side": 1,
+      "message": "For unexpected power loss, this implementation might not work.  \n\u0027chipset_force_shutdown() might be used in S0ix:\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nif (!power_has_signals(IN_PGOOD_ALL_CORE)) {\n\tchipset_force_shutdown();\n        return POWER_S0ixS0;\n}\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nCurrently, \"IN_PGOOD_ALL_CORE\" is not identified yet.",
+      "parentUuid": "7643a650_2ea0a2c1",
       "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
