@@ -154,7 +154,12 @@ dirs+= private private-cr51
 dirs+=$(shell find driver -type d)
 common_dirs=util
 
+ifeq ($(custom-ro_objs),)
 ro-objs := $(sort $(foreach obj, $(all-obj-y), $(out)/RO/$(obj)))
+else
+ro-objs := $(sort $(foreach obj, $(custom-ro_objs), $(out)/RO/$(obj)))
+endif
+
 rw-objs := $(sort $(foreach obj, $(all-obj-y), $(out)/RW/$(obj)))
 
 # Don't include the shared objects in the RO/RW image if we're enabling

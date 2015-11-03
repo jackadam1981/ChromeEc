@@ -34,10 +34,18 @@ chip-$(CONFIG_WATCHDOG)+=watchdog.o
 chip-$(CONFIG_USB)+=usb.o usb_endpoints.o
 chip-$(CONFIG_USB_CONSOLE)+=usb_console.o
 chip-$(CONFIG_USB_HID)+=usb_hid.o
-# TODO(wfrichar): Document this (and all other CONFIG_USB_*) in config.h
 chip-$(CONFIG_USB_BLOB)+=usb_blob.o
 
 chip-$(CONFIG_FLASH)+=flash.o
+
+custom-ro_objs  = chip/g/loader/main.o
+custom-ro_objs += chip/g/system.o chip/g/uart.o
+custom-ro_objs += common/printf.o
+custom-ro_objs += common/util.o
+custom-ro_objs += core/cortex-m/init.o
+custom-ro_objs += core/cortex-m/panic.o
+
+dirs-y += chip/g/loader
 
 $(out)/RO/ec.RO.flat: $(out)/util/signer
 
