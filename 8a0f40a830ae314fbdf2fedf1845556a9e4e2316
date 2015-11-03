@@ -139,6 +139,24 @@
       "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d63612de_439a99e3",
+        "filename": "power/skylake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-11-03T01:19:12Z",
+      "side": 1,
+      "message": "I think case for unexpected power loss can be implemented as seperate patch. How do you think ?",
+      "parentUuid": "760e462a_20b30b12",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
