@@ -69,6 +69,47 @@
       "revId": "cf23d118aa7426fbac5a9ff97270fd51bf767937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96a49abb_337872a7",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-04T23:08:26Z",
+      "side": 1,
+      "message": "not that I care much, but  I don\u0027t think this is such a a big deal, and interrupt still could happen between lines 90 and 91.\n\nAlso, it is better to print the \"some messages were lost\" right were they indeed were lost.",
+      "parentUuid": "36892e3b_6d9a15e4",
+      "revId": "cf23d118aa7426fbac5a9ff97270fd51bf767937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d69a9277_55e15ebe",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-04T23:08:26Z",
+      "side": 1,
+      "message": "I know I looked at this before, but I missed this: why does this stop at the saved value - why not to keep printing? Or are you worried that the messages arrive faster than they can be printed?",
+      "range": {
+        "startLine": 97,
+        "startChar": 39,
+        "endLine": 97,
+        "endChar": 55
+      },
+      "revId": "cf23d118aa7426fbac5a9ff97270fd51bf767937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
