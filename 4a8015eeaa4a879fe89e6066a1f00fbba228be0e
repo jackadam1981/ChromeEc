@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96a49abb_f608983d",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-04T23:08:26Z",
+      "side": 1,
+      "message": "it still does not seem necessary to copy this - who cares if an excessive indication of print underrun is lost.",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "4a8015eeaa4a879fe89e6066a1f00fbba228be0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b686fe2b_0c78b70f",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-04T23:08:26Z",
+      "side": 1,
+      "message": "same with this - you limit the number of lines printed already, why not to keep going til the very of the buffer.",
+      "range": {
+        "startLine": 101,
+        "startChar": 39,
+        "endLine": 101,
+        "endChar": 55
+      },
+      "revId": "4a8015eeaa4a879fe89e6066a1f00fbba228be0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96a49abb_16cc3c3e",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-04T23:08:26Z",
+      "side": 1,
+      "message": "also, I just noticed this - stuff_out should never be written equal to MAX_ENTRIES, because the check in line 78 could kick in exactly between lines 110 and 111.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 31
+      },
+      "revId": "4a8015eeaa4a879fe89e6066a1f00fbba228be0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
