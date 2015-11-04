@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b69d1e72_911bdc5c",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-04T19:14:04Z",
+      "side": 1,
+      "message": "wouldn\u0027t you want to prevent the indices from becoming equal - doesn\u0027t this condition mean that the buffer is empty?",
+      "revId": "cf23d118aa7426fbac5a9ff97270fd51bf767937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d683721b_6acbd724",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-04T19:14:04Z",
+      "side": 1,
+      "message": "why is the local copy needed?",
+      "revId": "cf23d118aa7426fbac5a9ff97270fd51bf767937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
