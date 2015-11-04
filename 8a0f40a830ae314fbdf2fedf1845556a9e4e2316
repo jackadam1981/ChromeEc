@@ -37,6 +37,42 @@
     },
     {
       "key": {
+        "uuid": "56c6a231_8e5d3b59",
+        "filename": "include/power.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-11-04T21:08:20Z",
+      "side": 1,
+      "message": "Yes, they are exclusive. \nS0ix will be final for real user cases. \nS3 is still working for development purpose.",
+      "parentUuid": "562a227b_ce7fd842",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6335e1f_01020a4c",
+        "filename": "include/power.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-11-04T21:08:20Z",
+      "side": 1,
+      "message": "Not sure about S3 user cases when S0ix is supported.\nS3 will be still working.",
+      "parentUuid": "760e462a_a372857e",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36204e91_546c85a0",
         "filename": "power/common.c",
         "patchSetId": 5
@@ -90,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "b69d1e72_54c0824f",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-11-04T21:08:20Z",
+      "side": 1,
+      "message": "Just waking CHIPSET_TASK won\u0027t change power state unless \u0027power_update_signals()\u0027 is called.  Instead of power state, indirectly reading gpio(SLP_S) from power_update_signals() can give condition for waking CHIPSET_TASK.( please see next patch). \nRegarding your suggestion for variable, do you mean the variable indicate interrupt is valid(not pulse)? \nWhat do you expect to do in chipset task with this variable ?",
+      "parentUuid": "7643a650_5d72762f",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "765c8636_5c039925",
         "filename": "power/common.c",
         "patchSetId": 5
@@ -137,6 +191,24 @@
       "side": 1,
       "message": "Is this S0ix code going to apply to future chipsets, or is the implementation here mostly skylake-specific (especially the 1ms pulse every 8s)? If it\u0027s the second case then definitely we don\u0027t want the code in power/common.c. If it\u0027s the first case, maybe it makes sense to put the code here (or a new file power/s0ix.c maybe).\n\nI don\u0027t think we want to make power_update_signals non-static.",
       "parentUuid": "5625c29e_fd68183b",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16a98a5f_c41b1e5c",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-11-04T21:08:20Z",
+      "side": 1,
+      "message": "S0ix(SLP_S0) is Intel device only and I agree to move these code to either skylake.c or to new file, s0ix.c.",
+      "parentUuid": "765c8636_a98db4e5",
       "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -243,6 +315,24 @@
       "side": 1,
       "message": "We do need some way out of the state in the power loss case. I guess it can be in a later patch, but it\u0027s really important, so let\u0027s add a TODO.",
       "parentUuid": "d63612de_439a99e3",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6bb729e_ca4ec3bb",
+        "filename": "power/skylake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-11-04T21:08:20Z",
+      "side": 1,
+      "message": "I will add \"TODO\" in the code.",
+      "parentUuid": "f6195673_e6bc03e1",
       "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
