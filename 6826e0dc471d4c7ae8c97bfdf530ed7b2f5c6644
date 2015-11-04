@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "56c6a231_71fa32e2",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-11-04T00:14:41Z",
+      "side": 1,
+      "message": "Sure, that makes sense. I\u0027m fine with it either way. I\u0027d be curious to know other people\u0027s thoughts.",
+      "parentUuid": "56c6a231_91447ef9",
+      "range": {
+        "startLine": 158,
+        "startChar": 8,
+        "endLine": 158,
+        "endChar": 10
+      },
+      "revId": "6826e0dc471d4c7ae8c97bfdf530ed7b2f5c6644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6a3167e_29c5295f",
         "filename": "chip/g/build.mk",
         "patchSetId": 3
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "sure, but is it better to repeat this in every build.mk where this custom list is created?",
       "parentUuid": "f6a3167e_29c5295f",
+      "revId": "6826e0dc471d4c7ae8c97bfdf530ed7b2f5c6644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6a3167e_4922e5e7",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-11-04T00:14:41Z",
+      "side": 1,
+      "message": "My assumption is that doing this kind of thing is uncommon, therefore it should be up to the uncommon ones to do this. However, this is just my opinion.",
+      "parentUuid": "36aa0e54_28bf6320",
       "revId": "6826e0dc471d4c7ae8c97bfdf530ed7b2f5c6644",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
