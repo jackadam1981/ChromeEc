@@ -73,6 +73,29 @@
     },
     {
       "key": {
+        "uuid": "f6a3167e_2ccbf725",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-11-04T02:19:12Z",
+      "side": 1,
+      "message": "I\u0027m confused why this isn\u0027t +\u003d\n\nAre custom RO objs only defined by chip/*/build.mk?  What happens if we need to add some from board/*/build.mk?  Or are we guaranteed those .mk files are included later?\n\nI think it\u0027s likely that chip/stm32/build.mk would have multiple custom-ro_objs for different boards, given the large diversity of use of that chip, which seems to imply maybe this list should be in board/*/build.mk.\n\n(Also, why is it mixing - and _?  custom_ro_objs or custom-ro-objs would be less typo-prone.)",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "6826e0dc471d4c7ae8c97bfdf530ed7b2f5c6644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6a3167e_29c5295f",
         "filename": "chip/g/build.mk",
         "patchSetId": 3
