@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "16d0aae3_603d7aa0",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-04T02:28:36Z",
+      "side": 1,
+      "message": "I think in this particular case the exceptional file list belongs in the chip build.mk, because requiring this customized RO image is the chip property, and this image is very likely to be the same for all boards using this chip.\n\nShould we ever need to add board specific objects to this set - than it would be a good time to replace this with ?\u003d I think.\n\nFor other chips/boards this could be defined in board specific files, or come from a combination of the two sources.\n\nLet me know if this ok or you strongly feel otherwise.\n\n\"(Also, why is it mixing - and _?  custom_ro_objs or custom-ro-objs would be less typo-prone.)\"\n\nI don\u0027t understand what you mean, can you please elaborate.",
+      "parentUuid": "f6a3167e_2ccbf725",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "6826e0dc471d4c7ae8c97bfdf530ed7b2f5c6644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6a3167e_29c5295f",
         "filename": "chip/g/build.mk",
         "patchSetId": 3
