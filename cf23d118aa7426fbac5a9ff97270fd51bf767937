@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d683721b_ca7f6342",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-11-04T20:12:00Z",
+      "side": 1,
+      "message": "They start out equal, yes. But if we call print_later() they become unequal. If adding something rolls all the way around until they\u0027re equal again, it\u0027s full.",
+      "parentUuid": "b69d1e72_911bdc5c",
+      "revId": "cf23d118aa7426fbac5a9ff97270fd51bf767937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d683721b_6acbd724",
         "filename": "chip/g/usb.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-11-04T19:14:04Z",
       "side": 1,
       "message": "why is the local copy needed?",
+      "revId": "cf23d118aa7426fbac5a9ff97270fd51bf767937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36892e3b_6d9a15e4",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-11-04T20:12:00Z",
+      "side": 1,
+      "message": "Because we add lines inside an interrupt context, but we\u0027re pulling them out from outside. We could get an interrupt in the middle, throwing our count off.",
+      "parentUuid": "d683721b_6acbd724",
       "revId": "cf23d118aa7426fbac5a9ff97270fd51bf767937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
