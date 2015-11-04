@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6335e1f_27775e71",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-11-04T09:54:28Z",
+      "side": 1,
+      "message": "Done. No it didn\u0027t. After a close look, I think charge_request() might be the place to fix it. Reverted all other changes, and keep VSYS one step higher than Vbatt. And set VSYS to batt.voltage_min on dead battery.",
+      "parentUuid": "16d0aae3_72fa30e2",
+      "range": {
+        "startLine": 813,
+        "startChar": 3,
+        "endLine": 813,
+        "endChar": 30
+      },
+      "revId": "02e78c8aa378ea0ae798049d8b267a5e345d69ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6335e1f_040cd84f",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-04T00:07:08Z",
       "side": 1,
       "message": "what about the other places in this file we call charge_request(0, 0)?",
+      "range": {
+        "startLine": 808,
+        "startChar": 0,
+        "endLine": 814,
+        "endChar": 6
+      },
+      "revId": "02e78c8aa378ea0ae798049d8b267a5e345d69ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6a3167e_0c72bb2e",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-11-04T09:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6335e1f_040cd84f",
       "range": {
         "startLine": 808,
         "startChar": 0,
