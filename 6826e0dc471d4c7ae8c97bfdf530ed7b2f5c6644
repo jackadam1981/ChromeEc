@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b6335e1f_8af74fb6",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-04T16:25:55Z",
+      "side": 1,
+      "message": "yes, but I prefer the verbose version, it is easier to read IMO.",
+      "parentUuid": "16d0aae3_bb4e333f",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "6826e0dc471d4c7ae8c97bfdf530ed7b2f5c6644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6a3167e_2ccbf725",
         "filename": "chip/g/build.mk",
         "patchSetId": 3
@@ -154,6 +178,30 @@
       "writtenOn": "2015-11-04T16:18:13Z",
       "side": 1,
       "message": "why not custom-ro_objs-y as other variables,\nso you can use the following construct :\ncustom-ro_objs-$(CONFIG_CUSTOM_OPTION) +\u003d chip/g/custom_option.o",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "6826e0dc471d4c7ae8c97bfdf530ed7b2f5c6644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16a98a5f_d830ddc5",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-04T16:25:55Z",
+      "side": 1,
+      "message": "good point, let me modify this.",
+      "parentUuid": "b6335e1f_ead09b1e",
       "range": {
         "startLine": 46,
         "startChar": 0,
@@ -230,6 +278,30 @@
       "writtenOn": "2015-11-04T16:18:13Z",
       "side": 1,
       "message": "we can probably move chip/stm32/debug_printf.h to include/",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "6826e0dc471d4c7ae8c97bfdf530ed7b2f5c6644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16a98a5f_983a65a2",
+        "filename": "chip/g/loader/debug_printf.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-04T16:25:55Z",
+      "side": 1,
+      "message": "I thought about this, but I am not sure if I want it to be a configuration option, so I decided against copying that file.\n\nBut let me know is you think I should do it, not a big deal either way.",
+      "parentUuid": "b65c3e65_6d277da4",
       "range": {
         "startLine": 5,
         "startChar": 0,
