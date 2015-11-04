@@ -73,6 +73,29 @@
     },
     {
       "key": {
+        "uuid": "16d0aae3_bb4e333f",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-04T16:18:13Z",
+      "side": 1,
+      "message": "that\u0027s the verbose version of:\nro-objs :\u003d $(sort $(foreach obj, $(if $(custom-ro_objs),$(custom-ro_objs),$(all-obj-y)), $(out)/RO/$(obj)))\n?",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "6826e0dc471d4c7ae8c97bfdf530ed7b2f5c6644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6a3167e_2ccbf725",
         "filename": "chip/g/build.mk",
         "patchSetId": 3
@@ -113,6 +136,29 @@
         "startChar": 15,
         "endLine": 41,
         "endChar": 17
+      },
+      "revId": "6826e0dc471d4c7ae8c97bfdf530ed7b2f5c6644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6335e1f_ead09b1e",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-04T16:18:13Z",
+      "side": 1,
+      "message": "why not custom-ro_objs-y as other variables,\nso you can use the following construct :\ncustom-ro_objs-$(CONFIG_CUSTOM_OPTION) +\u003d chip/g/custom_option.o",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 14
       },
       "revId": "6826e0dc471d4c7ae8c97bfdf530ed7b2f5c6644",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -167,6 +213,29 @@
       "side": 1,
       "message": "My assumption is that doing this kind of thing is uncommon, therefore it should be up to the uncommon ones to do this. However, this is just my opinion.",
       "parentUuid": "36aa0e54_28bf6320",
+      "revId": "6826e0dc471d4c7ae8c97bfdf530ed7b2f5c6644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b65c3e65_6d277da4",
+        "filename": "chip/g/loader/debug_printf.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-04T16:18:13Z",
+      "side": 1,
+      "message": "we can probably move chip/stm32/debug_printf.h to include/",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 46
+      },
       "revId": "6826e0dc471d4c7ae8c97bfdf530ed7b2f5c6644",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
