@@ -180,6 +180,24 @@
     },
     {
       "key": {
+        "uuid": "f6923665_5f9b3b97",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-05T18:31:05Z",
+      "side": 1,
+      "message": "chipset_get_ps_debounced_level(gpio) will return the debounced state of the GPIO. For example, if you want to ignore 1ms pulses on a certain GPIO, you can record the last observed state of the GPIO and a timestamp in your ISR. chipset_get_ps_debounced_level() will return asserted / non-asserted based on the current GPIO state / current time and the previous observed GPIO state / previous time. For example, if the GPIO was last asserted 500us ago and  chipset_get_ps_debounced_level() is called, it should return non-asserted. On the other hand, if the GPIO was last asserted 1500us ago (and is still asserted), it should return asserted. This way, in_signals will reflect the debounced state of the GPIO (not the actual pin state) so you don\u0027t have to worry about the edge case we discussed above.",
+      "parentUuid": "36892e3b_36277ef7",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "765c8636_5c039925",
         "filename": "power/common.c",
         "patchSetId": 5
