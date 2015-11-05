@@ -92,7 +92,7 @@ int uart_read_char(void)
 	return GR_UART_RDATA(0);
 }
 
-#ifndef SECTION_IS_RO
+#if !(defined(CONFIG_CUSTOMIZED_RO) && defined(SECTION_IS_RO))
 void uart_disable_interrupt(void)
 {
 	task_disable_irq(GC_IRQNUM_UART0_TXINT);
@@ -127,7 +127,7 @@ void uart_ec_rx_interrupt(void)
 	uart_process_input();
 }
 DECLARE_IRQ(GC_IRQNUM_UART0_RXINT, uart_ec_rx_interrupt, 1);
-#endif  /* SECTION_IS_RO ^^^^^^ NOT defined. */
+#endif  /* (!CONFIG_CUSTOMIZED_RO && !SECTION_IS_RO) ^^^^^^ FALSE. */
 
 void uart_init(void)
 {
@@ -151,7 +151,7 @@ void uart_init(void)
 	/* Note: doesn't do anything unless turned on in NVIC */
 	GR_UART_ICTRL(0) = 0x02;
 
-#ifndef SECTION_IS_RO
+#if !defined(VADIM) || !defined(SECTION_IS_RO)
 	/* Enable interrupts for UART0 only */
 	uart_enable_interrupt();
 #endif
