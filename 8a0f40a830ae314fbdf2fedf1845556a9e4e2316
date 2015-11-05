@@ -162,6 +162,24 @@
     },
     {
       "key": {
+        "uuid": "36892e3b_36277ef7",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-11-05T03:34:45Z",
+      "side": 1,
+      "message": "1. I think you want to use \u0027power_signal_interrupt\u0027 instead of \u0027power_signal_interrupt_s0(), do you ? \n\n2. For implementing \"chipset_get_ps_debounced_level()\", can you explain more detail ?  we have \u0027in_signals\u0027 inside power_update_signals() to keep track of signal. Why don\u0027t we use this value before/after interrupt ?",
+      "parentUuid": "b69d1e72_f706d89e",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "765c8636_5c039925",
         "filename": "power/common.c",
         "patchSetId": 5
