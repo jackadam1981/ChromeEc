@@ -82,6 +82,30 @@
     },
     {
       "key": {
+        "uuid": "161fca56_4993d13e",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-05T23:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6195673_79641fca",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36204e91_1b364392",
         "filename": "board/cr50/build.mk",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "writtenOn": "2015-10-30T03:45:36Z",
       "side": 1,
       "message": "Don\u0027t need this extra -I either",
+      "range": {
+        "startLine": 39,
+        "startChar": 21,
+        "endLine": 39,
+        "endChar": 51
+      },
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "765c8636_10150a19",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-05T23:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36204e91_1b364392",
       "range": {
         "startLine": 39,
         "startChar": 21,
@@ -122,6 +170,24 @@
     },
     {
       "key": {
+        "uuid": "7643a650_c4d33c29",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-05T23:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "161fca56_dd955f00",
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6399ed2_978d6ce6",
         "filename": "board/cr50/dcrypto/aes.c",
         "patchSetId": 2
@@ -133,6 +199,30 @@
       "writtenOn": "2015-10-30T03:51:00Z",
       "side": 1,
       "message": "GR_KEYMGR_AES_CTR(i) \u003d p[i];",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d69a9277_59cb5476",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-05T23:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6399ed2_978d6ce6",
       "range": {
         "startLine": 49,
         "startChar": 3,
@@ -168,6 +258,30 @@
     },
     {
       "key": {
+        "uuid": "1698aa84_49de2692",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-05T23:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "562a227b_541944c6",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 12
+      },
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "161fca56_9d8da7e6",
         "filename": "board/cr50/dcrypto/aes.c",
         "patchSetId": 2
@@ -179,6 +293,30 @@
       "writtenOn": "2015-10-30T03:51:00Z",
       "side": 1,
       "message": "outw[i] \u003d GR_KEYMGR_AES_RFIFO_DATA;",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 37
+      },
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d683721b_b9dd2b32",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-05T23:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "161fca56_9d8da7e6",
       "range": {
         "startLine": 78,
         "startChar": 1,
@@ -214,6 +352,30 @@
     },
     {
       "key": {
+        "uuid": "76a726c0_8415541b",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-05T23:54:31Z",
+      "side": 1,
+      "message": "Oops!  Fixed.",
+      "parentUuid": "b6399ed2_777328cd",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 37
+      },
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "562a227b_d4dd3431",
         "filename": "board/cr50/dcrypto/aes.c",
         "patchSetId": 2
@@ -225,6 +387,30 @@
       "writtenOn": "2015-10-30T03:45:36Z",
       "side": 1,
       "message": "Did you intend to always read from CTR0 ?",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 32
+      },
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d69a9277_5940b488",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-05T23:54:31Z",
+      "side": 1,
+      "message": "As above!",
+      "parentUuid": "562a227b_d4dd3431",
       "range": {
         "startLine": 101,
         "startChar": 2,
@@ -254,6 +440,24 @@
     },
     {
       "key": {
+        "uuid": "d683721b_3e968170",
+        "filename": "board/cr50/dcrypto/dcrypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-05T23:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6399ed2_b7b99098",
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d63612de_5b772f70",
         "filename": "board/cr50/dcrypto/internal.h",
         "patchSetId": 2
@@ -265,6 +469,30 @@
       "writtenOn": "2015-10-30T03:45:36Z",
       "side": 1,
       "message": "Don\u0027t do this. Just use GC_KEYMGR_BASE_ADDR.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b69d1e72_8098e05a",
+        "filename": "board/cr50/dcrypto/internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-05T23:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d63612de_5b772f70",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -300,6 +528,30 @@
     },
     {
       "key": {
+        "uuid": "96a49abb_2afe335e",
+        "filename": "board/cr50/dcrypto/internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-05T23:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d63612de_bba85bf9",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7643a650_954e843f",
         "filename": "board/cr50/dcrypto/internal.h",
         "patchSetId": 2
@@ -311,6 +563,30 @@
       "writtenOn": "2015-10-30T03:45:36Z",
       "side": 1,
       "message": "These functions are pretty large to be inlined. Let\u0027s try to avoid code bloat, and just put these in aes.c",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b69d1e72_80b460aa",
+        "filename": "board/cr50/dcrypto/internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-05T23:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7643a650_954e843f",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -363,6 +639,30 @@
     },
     {
       "key": {
+        "uuid": "b69d1e72_a0988439",
+        "filename": "chip/g/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-05T23:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "161fca56_1d82b7b7",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 50
+      },
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "760e462a_fa614586",
         "filename": "chip/g/registers.h",
         "patchSetId": 2
@@ -374,6 +674,24 @@
       "writtenOn": "2015-10-30T03:51:00Z",
       "side": 1,
       "message": "You could add some new stuff for the KEYMGR, like so:\n\n#define GR_KEYMGR_AES_REG(off)      REG32(GC_KEYMGR0_BASE_ADDR + (off))\n#define GR_KEYMGR_AES_KEY_START     GR_KEYMGR_AES_REG(GC_KEYMGR_AES_KEY_START_OFFSET)\n#define GR_KEYMGR_AES_WFIFO_DATA    GR_KEYMGR_AES_REG(GC_KEYMGR_AES_WFIFO_DATA_OFFSET)\n#define GR_KEYMGR_AES_RFIFO_DATA    GR_KEYMGR_AES_REG(GC_KEYMGR_AES_RFIFO_DATA_OFFSET)\n#define GR_KEYMGR_AES_KEY(n)  \\\n\tGR_KEYMGR_AES_REG(GC_KEYMGR_AES_KEY0_OFFSET + (n * 4))\n#define GR_KEYMGR_AES_CTR(n)  \\\n\tGR_KEYMGR_AES_REG(GC_KEYMGR_AES_CTR0_OFFSET + (n * 4))",
+      "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d69a9277_b907e05d",
+        "filename": "chip/g/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-05T23:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "760e462a_fa614586",
       "revId": "07462bec72de97527b407ac9eeb92af49d9acf81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
