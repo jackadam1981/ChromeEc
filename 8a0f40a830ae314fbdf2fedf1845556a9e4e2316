@@ -198,6 +198,24 @@
     },
     {
       "key": {
+        "uuid": "96a49abb_1f4e0f18",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-11-05T20:43:12Z",
+      "side": 1,
+      "message": "SLP_S0      1msec pulse\n___          ____\n   |________|    |_______\n     1      2 3  5    4\n\nWe want to ignore this 1 msec pulse.\n\na. in position 1(before interrupt), we know status from \u0027in_signals\u0027 via get_power_signals() in previous interrupt.\nb. in poistion 2, interrupt happens.\nc. in position 3, do you want to record pin status at \u00271\u0027 ?\nor at \u00273\u0027? \nd. \u0027chipset_get_ps_debounce_level() is called at \u00273\u0027 but can return result at \u00274\u0027. to judge if de-bounced or not can be done only by reading GPIO pin status.  \nHow chipset_get_ps_debounce_level() returns result ?\nDo you want delay inside interrupt to get result at 4 ? or deferred by hook ?\ne. Do you think interrupt at 5 should be serviced ?  \n\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nHere is my implementation in patch 7:\nSLP_S0      _\n___________| |_______\n   1       2 4      3\n\na. in position 1(before interrupt), we know status from \u0027in_signals\u0027 via get_power_signals();.\nb. in poistion 2, interrupt happens. disable interrupt teporarily and interrupt at 4 will be ignored.\nc. in position 3, deferred task gets SLP_S0 status from power_update_signals(). re-enable interrupt. \nif (@1 \u003d\u003d @3), interrrupt at 2 is invalid and ignored.\nif (@1 !\u003d @3), interrupt at 2 is valid and wakeup chipset task.\nPlease see patch 7.",
+      "parentUuid": "f6923665_5f9b3b97",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "765c8636_5c039925",
         "filename": "power/common.c",
         "patchSetId": 5
