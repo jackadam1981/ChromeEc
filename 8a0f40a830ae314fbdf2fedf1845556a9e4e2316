@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "b69d1e72_f706d89e",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-05T01:54:23Z",
+      "side": 1,
+      "message": "Yes, you are right. I still think we shouldn\u0027t be sampling the actual GPIO during the debounce period. I checked the code closer. Here is my proposal:\n\n-\u003e In gpio.h add a new flag GPIO_PS_DEBOUNCE to denote a power signal that must be debounced. It will be set for the SLP_S0 signal in gpio.inc.\n\n-\u003e In power_update_signals(), before calling gpio_get_level(), it will check for the GPIO_PS_DEBOUNCE flag. If set, instead of calling gpio_get_level() directly, it will call chipset_get_ps_debounced_level(s-\u003egpio). \n\n-\u003e chipset_get_ps_debounced_level() will be implemented in skylake.c - it should be easy to keep track of the debounced level of our GPIO with our deferred routine.\n\nWhat do you think?",
+      "parentUuid": "b69d1e72_54c0824f",
+      "revId": "8a0f40a830ae314fbdf2fedf1845556a9e4e2316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "765c8636_5c039925",
         "filename": "power/common.c",
         "patchSetId": 5
