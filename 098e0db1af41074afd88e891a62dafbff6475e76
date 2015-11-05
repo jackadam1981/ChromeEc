@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "96a49abb_84d2b64f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-05T18:21:11Z",
+      "side": 1,
+      "message": "add \"glados_pd:\" tag",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 61
+      },
+      "revId": "098e0db1af41074afd88e891a62dafbff6475e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96a49abb_191c6ff8",
         "filename": "board/glados_pd/dualtcpc.md",
         "patchSetId": 1
@@ -179,6 +202,29 @@
         "startChar": 21,
         "endLine": 49,
         "endChar": 29
+      },
+      "revId": "098e0db1af41074afd88e891a62dafbff6475e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36892e3b_21cc963e",
+        "filename": "board/glados_pd/dualtcpc.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-05T18:21:11Z",
+      "side": 1,
+      "message": "make this a link to board/glados_pd dir",
+      "range": {
+        "startLine": 57,
+        "startChar": 10,
+        "endLine": 57,
+        "endChar": 19
       },
       "revId": "098e0db1af41074afd88e891a62dafbff6475e76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
