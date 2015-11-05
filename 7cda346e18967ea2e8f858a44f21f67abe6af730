@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "568ea242_143b5c1e",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1411,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-05T01:54:23Z",
+      "side": 1,
+      "message": "I think \"CONFIG_POWER_S0IX\" or \"CONFIG_S0IX\" are probably best, \u0027SUPPORT\u0027 is probably best left unsaid (you could add \u0027SUPPORT\u0027 to almost any config in this file and it would still make sense).",
+      "revId": "7cda346e18967ea2e8f858a44f21f67abe6af730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
