@@ -757,7 +757,8 @@ static void alert(int port, int mask)
 
 int tcpc_run(int port, int evt)
 {
-	int cc, i, res;
+	int res = 0;
+	int cc, i;
 
 	/* incoming packet ? */
 	if (pd_rx_started(port) && pd[port].rx_enabled) {

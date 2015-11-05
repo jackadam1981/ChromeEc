@@ -28,6 +28,8 @@ static int pi3usb30532_read(int i2c_addr, uint8_t reg, uint8_t *val)
 		*val = read & 0xff;
 	else if (reg == PI3USB30532_REG_CONTROL)
 		*val = (read >> 8) & 0xff;
+	else
+		return EC_ERROR_INVAL;
 
 	return EC_SUCCESS;
 }
@@ -85,7 +87,8 @@ static int pi3usb30532_set_mux(int i2c_addr, mux_state_t mux_state)
 /* Reads control register and updates mux_state accordingly */
 static int pi3usb30532_get_mux(int i2c_addr, mux_state_t *mux_state)
 {
-	uint8_t reg, res;
+	uint8_t reg = 0;
+	uint8_t res;
 
 	*mux_state = 0;
 	res = pi3usb30532_read(i2c_addr, PI3USB30532_REG_CONTROL, &reg);
