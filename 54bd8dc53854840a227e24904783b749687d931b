@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36892e3b_53a41ce0",
+        "filename": "common/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-05T02:11:27Z",
+      "side": 1,
+      "message": "As I mentioned in the other review, this is an example of a task that needs to be performed identically whether going to S3 or S0ix. I expect most suspend hooks will be similar, so maybe we should reconsider whether to add a distinct HOOK_CHIPSET_STANDBY.",
+      "revId": "54bd8dc53854840a227e24904783b749687d931b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
