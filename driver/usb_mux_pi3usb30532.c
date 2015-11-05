@@ -26,7 +26,7 @@ static int pi3usb30532_read(int i2c_addr, uint8_t reg, uint8_t *val)
 
 	if (reg == PI3USB30532_REG_VENDOR)
 		*val = read & 0xff;
-	else if (reg == PI3USB30532_REG_CONTROL)
+	else /* reg == PI3USB30532_REG_CONTROL */
 		*val = (read >> 8) & 0xff;
 
 	return EC_SUCCESS;
