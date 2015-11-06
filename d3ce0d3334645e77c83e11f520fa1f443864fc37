@@ -22,6 +22,30 @@
       "revId": "d3ce0d3334645e77c83e11f520fa1f443864fc37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b69d1e72_2b41d53d",
+        "filename": "driver/usb_mux_pi3usb30532.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-06T01:52:16Z",
+      "side": 1,
+      "message": "It\u0027s related to the calling functions -- we can theoretically return EC_SUCCESS and not write anything to *val, so in pi3usb30532_init, for example, we can theoretically be comparing an uninitialized val variable.",
+      "parentUuid": "568ea242_2efe3c5e",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "d3ce0d3334645e77c83e11f520fa1f443864fc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
