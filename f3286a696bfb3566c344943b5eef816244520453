@@ -22,6 +22,30 @@
       "revId": "f3286a696bfb3566c344943b5eef816244520453",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1698aa84_7eaf0fbf",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-11-06T23:21:53Z",
+      "side": 1,
+      "message": "Nothing in writing yet. Since things are only delayed by 1 clock cycle, it\u0027s not *that* bad. I believe the SYSCLOCK of the MEC1322 is 48MHz. Although, I\u0027m not sure if we divide that down at all.\n\nWe could have something general like no consecutive accesses within ???us?\n\nOr for timing-critical uses. But again, we should define the timing criteria.",
+      "parentUuid": "b686fe2b_4bf44c43",
+      "range": {
+        "startLine": 25,
+        "startChar": 40,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "f3286a696bfb3566c344943b5eef816244520453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
