@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "d69a9277_7cbac630",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-06T02:15:47Z",
+      "side": 1,
+      "message": "we can\u0027t use the EC_ERROR enum, it doesn\u0027t match what we are expecting to get back (pd_tx_errors), maybe PD_TX_ERR_DISABLED?",
+      "parentUuid": "b686fe2b_de5ba1d1",
+      "range": {
+        "startLine": 802,
+        "startChar": 0,
+        "endLine": 803,
+        "endChar": 9
+      },
+      "revId": "d3ce0d3334645e77c83e11f520fa1f443864fc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6923665_97fca79b",
         "filename": "core/cortex-m/panic.c",
         "patchSetId": 1
