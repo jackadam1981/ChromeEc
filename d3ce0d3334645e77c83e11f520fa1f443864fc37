@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "568ea242_6ef9243a",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-06T02:31:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d69a9277_7cbac630",
+      "range": {
+        "startLine": 802,
+        "startChar": 0,
+        "endLine": 803,
+        "endChar": 9
+      },
+      "revId": "d3ce0d3334645e77c83e11f520fa1f443864fc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6923665_97fca79b",
         "filename": "core/cortex-m/panic.c",
         "patchSetId": 1
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "ah, ok. looking at the header file, there are no other registers besides vendor and control. so, this would be slightly less code space:\n\nif (reg \u003d\u003d PI3USB30532_REG_VENDOR)\n\t*val \u003d read \u0026 0xff;\nelse /* reg \u003d\u003d PI3USB30532_REG_CONTROL */\n\t*val \u003d (read \u003e\u003e 8) \u0026 0xff;",
       "parentUuid": "b69d1e72_2b41d53d",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "d3ce0d3334645e77c83e11f520fa1f443864fc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1698aa84_6746a957",
+        "filename": "driver/usb_mux_pi3usb30532.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-06T02:31:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b686fe2b_9e612988",
       "range": {
         "startLine": 31,
         "startChar": 1,
