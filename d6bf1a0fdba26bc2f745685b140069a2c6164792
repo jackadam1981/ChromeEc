@@ -46,6 +46,30 @@
       "revId": "d6bf1a0fdba26bc2f745685b140069a2c6164792",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96a49abb_10d43968",
+        "filename": "common/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-11-06T23:02:37Z",
+      "side": 1,
+      "message": "Hmm, probably ok.  Perhaps we should define more clearly what \"slow\" means.  If I\u0027m remembering correctly, on MEC1322 it\u0027s an extra clock cycle to access, which isn\u0027t that horrible (the equivalent of a \"nop\" instruction).",
+      "parentUuid": "d69a9277_a836a48f",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 56
+      },
+      "revId": "d6bf1a0fdba26bc2f745685b140069a2c6164792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
