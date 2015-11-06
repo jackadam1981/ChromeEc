@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "f6923665_9713c7a4",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-06T02:11:34Z",
+      "side": 1,
+      "message": "On cortex m0, the jump range for \"b\" is +/- 2k, and we have no guarantee that report_panic will reside in that range. It shouldn\u0027t make a difference I think (except for the extra return address when we dump the stack), since report_panic will halt / reboot, and we\u0027ll never return from the call to exception_panic anyway.",
+      "parentUuid": "f6923665_97fca79b",
+      "range": {
+        "startLine": 365,
+        "startChar": 3,
+        "endLine": 365,
+        "endChar": 18
+      },
+      "revId": "d3ce0d3334645e77c83e11f520fa1f443864fc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "568ea242_2efe3c5e",
         "filename": "driver/usb_mux_pi3usb30532.c",
         "patchSetId": 1
