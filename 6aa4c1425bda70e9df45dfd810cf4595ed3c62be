@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b686fe2b_8859ea3f",
+        "filename": "board/wheatley/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-06T19:40:15Z",
+      "side": 1,
+      "message": "actually, on npcx the adc ref is 3.3. will update these.",
+      "range": {
+        "startLine": 111,
+        "startChar": 47,
+        "endLine": 111,
+        "endChar": 58
+      },
+      "revId": "6aa4c1425bda70e9df45dfd810cf4595ed3c62be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
