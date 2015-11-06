@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b69d1e72_7ac00850",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-06T19:15:24Z",
+      "side": 1,
+      "message": "Do we need to potentially disable ramp on the port we\u0027re switching away from as well?",
+      "revId": "e287a2a745958edc58d4d97dd0db3d034e7e694d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1698aa84_bdcc20e4",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-06T19:15:24Z",
+      "side": 1,
+      "message": "Should these changed be behind \"#ifdef CONFIG_CHARGE_RAMP_HW\"?",
+      "revId": "e287a2a745958edc58d4d97dd0db3d034e7e694d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
