@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b620be2e_3c095d40",
+        "filename": "board/lars/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-06T15:40:56Z",
+      "side": 1,
+      "message": "I don\u0027t understand, we should know in board.c how many ports we have. looks like from board.h it only has one port. or is this here because they actually have two ports but haven\u0027t enabled the second one yet or something like that?",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 6
+      },
+      "revId": "61f69209aee227ba04e3bdd61c22d474903f545c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "568ea242_a94dc619",
+        "filename": "board/pdeval-stm32f072/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-06T15:40:56Z",
+      "side": 1,
+      "message": "This board actually does make sense to conditionally add the second port:\n#if CONFIG_USB_PD_PORT_COUNT \u003e\u003d 2\n\t{I2C_PORT_TCPC, TCPC2_I2C_ADDR},\n#endif\n\nI would think that most people are using this with only one port.",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 33
+      },
+      "revId": "61f69209aee227ba04e3bdd61c22d474903f545c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
