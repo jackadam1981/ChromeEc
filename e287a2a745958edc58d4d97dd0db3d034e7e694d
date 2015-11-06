@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b686fe2b_083c1abd",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-06T19:44:47Z",
+      "side": 1,
+      "message": "no, we don\u0027t. there is only one charger chip. only one port can be connected to the chip at any time.",
+      "parentUuid": "b69d1e72_7ac00850",
+      "revId": "e287a2a745958edc58d4d97dd0db3d034e7e694d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1698aa84_bdcc20e4",
         "filename": "driver/charger/isl9237.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-11-06T19:15:24Z",
       "side": 1,
       "message": "Should these changed be behind \"#ifdef CONFIG_CHARGE_RAMP_HW\"?",
+      "revId": "e287a2a745958edc58d4d97dd0db3d034e7e694d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36892e3b_7672e12f",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-06T19:44:47Z",
+      "side": 1,
+      "message": "doesn\u0027t actually matter because this is just setting the voltage reference, but the comment does point out something I missed. voltage regulation loop is enabled by default. so, we need to turn that off if in this function if CONFIG option is not defined.",
+      "parentUuid": "1698aa84_bdcc20e4",
       "revId": "e287a2a745958edc58d4d97dd0db3d034e7e694d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
