@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b686fe2b_4bf44c43",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-11-06T22:59:07Z",
+      "side": 1,
+      "message": "Accessed in button interrupt handler.  But the interrupt shouldn\u0027t happen all that frequently - only when the user\u0027s pressing a button.  So maybe ok.\n\nDo we have a general policy stated for what things are acceptable to make slower to access?",
+      "range": {
+        "startLine": 25,
+        "startChar": 40,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "f3286a696bfb3566c344943b5eef816244520453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
