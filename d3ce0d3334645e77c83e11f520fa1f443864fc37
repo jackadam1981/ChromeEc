@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "76a726c0_38c048a1",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-06T02:06:51Z",
+      "side": 1,
+      "message": "I\u0027m not convinced that\u0027s the right fix",
+      "range": {
+        "startLine": 760,
+        "startChar": 1,
+        "endLine": 760,
+        "endChar": 13
+      },
+      "revId": "d3ce0d3334645e77c83e11f520fa1f443864fc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b686fe2b_de5ba1d1",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-06T02:06:51Z",
+      "side": 1,
+      "message": "the issue is here actually.\ndon\u0027t you want to set res to some negative value (ie you are discarded, TX_SUCCESS doesn\u0027t seem appropriate.\n\ne.g res \u003d -EC_ERROR_UNIMPLEMENTED;",
+      "range": {
+        "startLine": 802,
+        "startChar": 0,
+        "endLine": 803,
+        "endChar": 9
+      },
+      "revId": "d3ce0d3334645e77c83e11f520fa1f443864fc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6923665_97fca79b",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-06T02:06:51Z",
+      "side": 1,
+      "message": "the original b was on purpose\nwhat are you fixing here ?",
+      "range": {
+        "startLine": 365,
+        "startChar": 3,
+        "endLine": 365,
+        "endChar": 18
+      },
+      "revId": "d3ce0d3334645e77c83e11f520fa1f443864fc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "568ea242_2efe3c5e",
         "filename": "driver/usb_mux_pi3usb30532.c",
         "patchSetId": 1
