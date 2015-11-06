@@ -347,3 +347,35 @@ void enter_pseudo_g3(void)
 		;
 }
 #endif
+
+#ifdef CONFIG_POWER_SIGNAL_DEBOUNCE
+static int slp_s0_debounced;
+
+int chipset_get_ps_debounced_level(enum gpio_signal signal)
+{
+	int level = gpio_get_level(signal);
+	return signal == GPIO_SLP_S0_L ? level & slp_s0_debounced : level;
+}
+
+#ifdef CONFIG_SUPPORT_S0IX
+static void slp_s0_assertion_deferred(void)
+{
+	if (gpio_get_level(GPIO_SLP_S0_L)) {
+		/* Signal has been high for > 1ms, it's debounced! */
+		slp_s0_debounced = 1;
+		power_signal_interrupt(signal);
+	}
+}
+DECLARE_DEFERRED(slp_s0_assertion_deferred);
+
+void power_signal_interrupt_S0(enum gpio_signal signal)
+{
+	if (gpio_get_level(GPIO_SLP_S0_L))
+		hook_call_deferred(slp_s0_assertion_deferred, 3 * MSEC);
+	else {
+		slp_s0_debounced = 0;
+		power_signal_interrupt(signal);
+	}
+}
+#endif
+#endif
