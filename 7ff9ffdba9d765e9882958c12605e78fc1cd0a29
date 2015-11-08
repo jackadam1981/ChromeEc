@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "d683721b_275aed35",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-08T16:49:09Z",
+      "side": 1,
+      "message": "They are used just one-time-things. Fine to use less verbose names.",
+      "parentUuid": "b6335e1f_44a54075",
+      "revId": "7ff9ffdba9d765e9882958c12605e78fc1cd0a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16a98a5f_4aaad7b0",
         "filename": "util/ec3po/interpreter.py",
         "patchSetId": 6
