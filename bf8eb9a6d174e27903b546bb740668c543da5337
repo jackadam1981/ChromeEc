@@ -46,6 +46,30 @@
       "revId": "bf8eb9a6d174e27903b546bb740668c543da5337",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760646d1_1705b454",
+        "filename": "include/link_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-09T19:24:28Z",
+      "side": 1,
+      "message": "ah, this is a good point, I forgot about initialized data.\n\n__data_end though is an address in SRAM, the right thing to do I think is to calculate\n\n\u0026__ro_end + (\u0026__data_end - \u0026__data_start)\n\nwhich is what init.S does, what do you think?",
+      "parentUuid": "d66b7268_4deb4da0",
+      "range": {
+        "startLine": 81,
+        "startChar": 19,
+        "endLine": 81,
+        "endChar": 27
+      },
+      "revId": "bf8eb9a6d174e27903b546bb740668c543da5337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
