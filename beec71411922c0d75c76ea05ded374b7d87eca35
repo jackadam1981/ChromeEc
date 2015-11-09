@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1617cafd_b7268260",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1411,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-11-09T22:10:37Z",
+      "side": 1,
+      "message": "I will change in next patch.",
+      "parentUuid": "b6b19e59_71d41812",
+      "revId": "beec71411922c0d75c76ea05ded374b7d87eca35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b66efe78_4c6caf4e",
         "filename": "power/common.c",
         "patchSetId": 8
