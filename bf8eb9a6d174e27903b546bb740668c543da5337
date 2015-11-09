@@ -22,6 +22,30 @@
       "revId": "bf8eb9a6d174e27903b546bb740668c543da5337",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "365a0ede_48857f2c",
+        "filename": "include/link_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-11-09T19:00:00Z",
+      "side": 1,
+      "message": "Sorry, not the RO data, the RW .data section that\u0027s used to initialize all nonzero static variables.",
+      "parentUuid": "d66b7268_4deb4da0",
+      "range": {
+        "startLine": 81,
+        "startChar": 19,
+        "endLine": 81,
+        "endChar": 27
+      },
+      "revId": "bf8eb9a6d174e27903b546bb740668c543da5337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
