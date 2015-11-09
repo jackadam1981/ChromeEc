@@ -16,6 +16,24 @@
       "revId": "24316025756c6ccdccb06a35e0f343780ccfe0f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "365a0ede_a8caf31e",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-09T17:53:03Z",
+      "side": 1,
+      "message": "config.h represents the default config. Certain options that are really common are #defined by default here. I was debating whether to define CONFIG_I2C_MASTER by default, but I decided against it. So, both CONFIG_I2C and CONFIG_I2C_MASTER (if used) must be defined at the board level.",
+      "parentUuid": "162b4a19_b4c4a063",
+      "revId": "24316025756c6ccdccb06a35e0f343780ccfe0f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
