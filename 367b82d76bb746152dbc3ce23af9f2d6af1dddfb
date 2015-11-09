@@ -22,6 +22,30 @@
       "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f611560a_130f8c47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-09T19:54:51Z",
+      "side": 1,
+      "message": "I\u0027d either have to build an EC image that includes test code, or write separate signed tests that run on hardware (there isn\u0027t enough in this change to verify with the tpm2 test suite).\n\nAlternatively I could add tests to the tpm2 test suite that exercise just the aes code exclusively.  Do you prefer I do this?",
+      "parentUuid": "36892e3b_4c5f1225",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
