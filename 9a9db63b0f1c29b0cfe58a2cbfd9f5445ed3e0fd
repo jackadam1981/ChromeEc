@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56314281_96b96c3d",
+        "filename": "board/lars/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2015-11-09T09:11:25Z",
+      "side": 1,
+      "message": "I forgot to Modify \u0027Change-ID\u0027,\n\nThis is to reduce system stack size (only one line),\nfollowing kunimitsu setting of\nhttps://chromium-review.googlesource.com/#/c/310581/",
+      "revId": "9a9db63b0f1c29b0cfe58a2cbfd9f5445ed3e0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
