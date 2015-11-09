@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9603babe_d899adef",
+        "filename": "chip/g/loader/hw_sha256.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-09T20:11:34Z",
+      "side": 1,
+      "message": "I\u0027m hoping to have all the crypto related files in one place, so that they can be used as a library, potentially outside the EC environment.\n\nIn another change I have aes code in board/cr50/dcrypto.  Could we instead instead create a directory such as chip/g/dcrypto where all crypto will live?",
+      "revId": "9e9c56d1f8daaeafcc26e20963968b89db32b752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
