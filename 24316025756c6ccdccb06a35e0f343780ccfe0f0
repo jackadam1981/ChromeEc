@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "162b4a19_b4c4a063",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2015-11-09T09:15:57Z",
+      "side": 1,
+      "message": "I have a question, why do we undef this MACRO ?\nIs it only because we don\u0027t need this anymore, so we clear the MACRO explicitly ?\nI don\u0027t understand \u0027force boards that don\u0027t use it to #undef\u0027",
+      "revId": "24316025756c6ccdccb06a35e0f343780ccfe0f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
