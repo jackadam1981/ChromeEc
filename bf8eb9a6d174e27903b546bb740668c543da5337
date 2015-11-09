@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d66b7268_4deb4da0",
+        "filename": "include/link_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-11-09T18:55:43Z",
+      "side": 1,
+      "message": "If you\u0027re looking for the very very end of the image, this isn\u0027t it. The RO data comes afterwards, so you probably want __data_end instead. And even that\u0027s not the true end of the image in flash - there is a four-byte tag \"END\\xea\" that can be used to mark the very end of what\u0027s in the flash.\n\nSee core/cortex-m/ec.lds.S",
+      "range": {
+        "startLine": 81,
+        "startChar": 19,
+        "endLine": 81,
+        "endChar": 27
+      },
+      "revId": "bf8eb9a6d174e27903b546bb740668c543da5337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
