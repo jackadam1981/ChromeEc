@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f6a6b626_ff71e72a",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-11-10T23:00:38Z",
+      "side": 1,
+      "message": "In your ~/.profile:\n\n  export LC_COLLATE\u003dC\n  export LC_CTYPE\u003dC",
+      "parentUuid": "7689e6a7_08272ba4",
+      "revId": "ffdc0ff782afbf16fa436a5820d0081f7dc93492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16c50ace_383b917b",
         "filename": "board/cr50/dcrypto/aes.c",
         "patchSetId": 5
