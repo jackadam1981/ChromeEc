@@ -46,6 +46,211 @@
       "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6da7ea7_0c38177b",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-10T01:39:07Z",
+      "side": 1,
+      "message": "please add each directory in a separate line, sort the lines alphanumerically.",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "369daed4_90025a20",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-10T01:39:07Z",
+      "side": 1,
+      "message": "sort this block alphanumerically",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16c50ace_e7f83c39",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-10T01:39:07Z",
+      "side": 1,
+      "message": "there are macros for accessing fields in registers.\nThis code would be much better readable if you used those macros, like:\nGWRITE_FIELD(KEYMGR, AES_CTRL, RESET, 1)\nGWRITE_FIELD(KEYMGR, AES_CTRL, KEYSIZE, keysize)\n.\n.\n\nAlso, is writing the reset bit self clearing? Should the reset to be done first? Please verify and add comment to this respect.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "369daed4_90a9ba54",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-10T01:39:07Z",
+      "side": 1,
+      "message": "here and below and in the rest of the .c files:\n\nsingle statement blocks should not have curly brackets - did repo not complain about this? If it did not, we need to fix it, otherwise please do not ignore pre-upload warnings.",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6da7ea7_6c0a73a7",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-10T01:39:07Z",
+      "side": 1,
+      "message": "this looks weird, I added a comment in registers.h",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56cb02e2_e971312b",
+        "filename": "board/cr50/dcrypto/dcrypto.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-10T01:39:07Z",
+      "side": 1,
+      "message": "what is the significance of the exclamation point here and other added .h files?",
+      "range": {
+        "startLine": 33,
+        "startChar": 10,
+        "endLine": 33,
+        "endChar": 11
+      },
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6a6b626_ced1e34e",
+        "filename": "board/cr50/dcrypto/dcrypto.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-10T01:39:07Z",
+      "side": 1,
+      "message": "extra empty line in the end of the file.",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6da7ea7_ac774b1f",
+        "filename": "board/cr50/dcrypto/internal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-10T01:39:07Z",
+      "side": 1,
+      "message": "this should come from the compiler, something like\n\n#define CTRL_CTR_BIG_ENDIAN  (__BYTE_ORDER__  \u003d\u003d __ORDER_BIG_ENDIAN__)\n\nnote that we do not support big endian anywhere.",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16c50ace_4721507a",
+        "filename": "board/cr50/dcrypto/internal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-10T01:39:07Z",
+      "side": 1,
+      "message": "this will not work if included in more than one file (at the very lease needs to be static). Why is it in the .h file in the first place though?",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96d1fa8e_ebf80d39",
+        "filename": "board/cr50/dcrypto/internal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-10T01:39:07Z",
+      "side": 1,
+      "message": "what data is being read here, were does 20 come from, is 20 enough?\n\nthe name of the variable (rfifo) implies using with AES_RFIFO_EMPTY, but you are extending this to two cases now.\n\nPlease put this into the appropriate .c file. \n\nIf fact there seems to be no need for this .h file at all, as it does not export anything useful it looks like, this all can be incorporated into aes.c",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16ac2a06_92a37cc1",
+        "filename": "chip/g/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-10T01:39:07Z",
+      "side": 1,
+      "message": "assigning GREG32() to a plain name is confusing - please use GREG32() directly as the rest of the code does.",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
