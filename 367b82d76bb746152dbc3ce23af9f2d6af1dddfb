@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "56cb02e2_fae0d1bd",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-10T20:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6da7ea7_0c38177b",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "369daed4_90025a20",
         "filename": "board/cr50/build.mk",
         "patchSetId": 4
@@ -77,6 +95,30 @@
       "writtenOn": "2015-11-10T01:39:07Z",
       "side": 1,
       "message": "sort this block alphanumerically",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56cb02e2_3aeb89a1",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-10T20:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "369daed4_90025a20",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -112,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "369daed4_b3904075",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-10T20:19:51Z",
+      "side": 1,
+      "message": "Done.\n\nThe reset bit, is for \"emergency\" use.",
+      "parentUuid": "16c50ace_e7f83c39",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "369daed4_90a9ba54",
         "filename": "board/cr50/dcrypto/aes.c",
         "patchSetId": 4
@@ -129,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "d6d7f27c_132e7666",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-10T20:19:51Z",
+      "side": 1,
+      "message": "I ignored the warnings!",
+      "parentUuid": "369daed4_90a9ba54",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6da7ea7_6c0a73a7",
         "filename": "board/cr50/dcrypto/aes.c",
         "patchSetId": 4
@@ -140,6 +224,24 @@
       "writtenOn": "2015-11-10T01:39:07Z",
       "side": 1,
       "message": "this looks weird, I added a comment in registers.h",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6a6b626_54a6222c",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-10T20:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6da7ea7_6c0a73a7",
       "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -169,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "56cb02e2_da4b553b",
+        "filename": "board/cr50/dcrypto/dcrypto.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-10T20:19:51Z",
+      "side": 1,
+      "message": "It indicates the closing of ifndef (negation).",
+      "parentUuid": "56cb02e2_e971312b",
+      "range": {
+        "startLine": 33,
+        "startChar": 10,
+        "endLine": 33,
+        "endChar": 11
+      },
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6a6b626_ced1e34e",
         "filename": "board/cr50/dcrypto/dcrypto.h",
         "patchSetId": 4
@@ -180,6 +306,24 @@
       "writtenOn": "2015-11-10T01:39:07Z",
       "side": 1,
       "message": "extra empty line in the end of the file.",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "369daed4_7366d86d",
+        "filename": "board/cr50/dcrypto/dcrypto.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-10T20:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6a6b626_ced1e34e",
       "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -203,6 +347,24 @@
     },
     {
       "key": {
+        "uuid": "d6d7f27c_53abcedc",
+        "filename": "board/cr50/dcrypto/internal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-10T20:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6da7ea7_ac774b1f",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16c50ace_4721507a",
         "filename": "board/cr50/dcrypto/internal.h",
         "patchSetId": 4
@@ -214,6 +376,24 @@
       "writtenOn": "2015-11-10T01:39:07Z",
       "side": 1,
       "message": "this will not work if included in more than one file (at the very lease needs to be static). Why is it in the .h file in the first place though?",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76d4867d_bb713f7e",
+        "filename": "board/cr50/dcrypto/internal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-10T20:19:51Z",
+      "side": 1,
+      "message": "Moved to aes.c.",
+      "parentUuid": "16c50ace_4721507a",
       "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -237,6 +417,24 @@
     },
     {
       "key": {
+        "uuid": "b6da7ea7_dd586b3c",
+        "filename": "board/cr50/dcrypto/internal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-10T20:19:51Z",
+      "side": 1,
+      "message": "Renamed to empty.  For aes key expansion and one aes op, this is enough.",
+      "parentUuid": "96d1fa8e_ebf80d39",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16ac2a06_92a37cc1",
         "filename": "chip/g/registers.h",
         "patchSetId": 4
@@ -248,6 +446,24 @@
       "writtenOn": "2015-11-10T01:39:07Z",
       "side": 1,
       "message": "assigning GREG32() to a plain name is confusing - please use GREG32() directly as the rest of the code does.",
+      "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6d7f27c_f39482b7",
+        "filename": "chip/g/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-10T20:19:51Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "16ac2a06_92a37cc1",
       "revId": "367b82d76bb746152dbc3ce23af9f2d6af1dddfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
