@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7689e6a7_650aa2a7",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-10T21:18:35Z",
+      "side": 1,
+      "message": "Is CONFIG_I2C_SLAVE needed?\ncode for supporting lowe level I2C slave is enabled with CONFIG_I2C.\nCode to handle commands over i2c from AP is enabled with CONFIG_HOSTCMD_I2C_SLAVE_ADDR.",
+      "revId": "b7d48325c13fabdbeed26f0e99b96fac59366353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
