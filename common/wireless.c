@@ -53,6 +53,10 @@ static void wireless_enable(int flags)
 		       flags & EC_WIRELESS_SWITCH_WLAN_POWER);
 #endif
 
+#ifdef WIRELESS_GPIO_WLAN_LED
+	gpio_set_level(WIRELESS_GPIO_WLAN_LED,
+		       flags & EC_WIRELESS_SWITCH_WLAN);
+#endif
 }
 
 static int wireless_get(void)
