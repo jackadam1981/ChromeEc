@@ -67,6 +67,7 @@
 
 /* Wireless signals */
 #define WIRELESS_GPIO_WLAN	GPIO_WLAN_OFF_L
+#define WIRELESS_GPIO_WLAN_LED	GPIO_RF_LED
 
 /* Modules we want to exclude */
 #undef CONFIG_EEPROM
