@@ -11,7 +11,7 @@
 /*
  * TODO (crosbug.com/p/44704): Remove support for V3 when V4 is available.
  */
-#define BOARD_KUNIMITSU_V3
+/*#define BOARD_KUNIMITSU_V3*/
 
 /* Optional features */
 #define CONFIG_ADC
