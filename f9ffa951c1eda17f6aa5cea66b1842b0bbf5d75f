@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6da7ea7_1d3203ec",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2015-11-10T19:54:47Z",
+      "side": 1,
+      "message": "Hi Rong, \n\nHere {} is missing which put #if#else#endif in one block. \nOtherwise when the CONFIG_CHARGER_NARROW_VDC is enabled, it applies to all non-zero charge request. And causes discharging.\n\ncurrently our all testing Systems are down which are flashed WW46BKC due to battery drained out. Could you fix this ASAP?\n\nThanks.\n\nLi",
+      "range": {
+        "startLine": 375,
+        "startChar": 25,
+        "endLine": 375,
+        "endChar": 26
+      },
+      "revId": "f9ffa951c1eda17f6aa5cea66b1842b0bbf5d75f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
