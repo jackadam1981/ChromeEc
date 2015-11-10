@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16ac2a06_c63a6619",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-10T23:51:11Z",
+      "side": 1,
+      "message": "this seems like it would make more sense in one of the PD files, pd_protocol?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 37
+      },
+      "revId": "8a4b7839ddf0df6d1d3887622b37716896d63d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
