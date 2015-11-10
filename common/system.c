@@ -95,6 +95,27 @@ static enum ec_reboot_cmd reboot_at_shutdown;
 /* On-going actions preventing going into deep-sleep mode */
 uint32_t sleep_mask;
 
+/* USB PD tasks running on system - IDs must be continuous with lowest first */
+#ifdef CONFIG_USB_PD_PORT_COUNT
+const task_id_t pd_tasks[] = {
+#ifdef HAS_TASK_PD
+	TASK_ID_PD,
+#elif defined(HAS_TASK_PD_C0)
+	TASK_ID_PD_C0,
+#endif
+
+#ifdef HAS_TASK_PD_C1
+	TASK_ID_PD_C1,
+#endif
+
+#ifdef HAS_TASK_PD_C2
+	TASK_ID_PD_C2,
+#endif
+};
+
+BUILD_ASSERT(ARRAY_SIZE(pd_tasks) == CONFIG_USB_PD_PORT_COUNT);
+#endif /* CONFIG_USB_PD_PORT_COUNT */
+
 /**
  * Return the program memory address where the image `copy` begins or should
  * begin. In the case of external storage, the image may or may not currently
