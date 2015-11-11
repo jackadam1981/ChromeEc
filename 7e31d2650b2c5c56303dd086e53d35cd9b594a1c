@@ -16,6 +16,24 @@
       "revId": "7e31d2650b2c5c56303dd086e53d35cd9b594a1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6a6b626_e5267aa6",
+        "filename": "board/kunimitsu/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-11T02:22:19Z",
+      "side": 1,
+      "message": "We have 128KB SRAM to work with. We\u0027ll enforce the following at link time:\n\n- RO (and RW..) image size \u003c CONFIG_RO_SIZE\n- Image size + RAM usage \u003c 128KB\n\nSince we reduced RAM usage by reducing the stack size, we now have extra space that images can use without going over the 128KB boundary.",
+      "parentUuid": "f61b1659_03100ed7",
+      "revId": "7e31d2650b2c5c56303dd086e53d35cd9b594a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
