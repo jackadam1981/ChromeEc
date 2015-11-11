@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "7b0e2f2a_1dc6336d",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-11T02:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7689e6a7_08272ba4",
+      "revId": "ffdc0ff782afbf16fa436a5820d0081f7dc93492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16c50ace_383b917b",
         "filename": "board/cr50/dcrypto/aes.c",
         "patchSetId": 5
@@ -60,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "56cb02e2_b02675f7",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-11T02:48:43Z",
+      "side": 1,
+      "message": "I asked the guys, there\u0027s no need to.  Soft reset is for \"emergency\" use.",
+      "parentUuid": "16c50ace_383b917b",
+      "range": {
+        "startLine": 14,
+        "startChar": 39,
+        "endLine": 14,
+        "endChar": 57
+      },
+      "revId": "ffdc0ff782afbf16fa436a5820d0081f7dc93492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b0e2f2a_f7cba0c8",
         "filename": "board/cr50/dcrypto/aes.c",
         "patchSetId": 5
@@ -71,6 +113,24 @@
       "writtenOn": "2015-11-10T22:43:32Z",
       "side": 1,
       "message": "does repo upload complain about this block being included in brackets by any chance?",
+      "revId": "ffdc0ff782afbf16fa436a5820d0081f7dc93492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6a6b626_a51ab24a",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-11T02:48:43Z",
+      "side": 1,
+      "message": "This was a clean upload.  The comment is considered to make this a multiline block.",
+      "parentUuid": "7b0e2f2a_f7cba0c8",
       "revId": "ffdc0ff782afbf16fa436a5820d0081f7dc93492",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
