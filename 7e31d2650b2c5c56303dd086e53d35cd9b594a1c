@@ -34,6 +34,24 @@
       "revId": "7e31d2650b2c5c56303dd086e53d35cd9b594a1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb005ff1_db78d3d4",
+        "filename": "board/kunimitsu/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2015-11-11T03:00:17Z",
+      "side": 1,
+      "message": "I see, but how do we calculate other ram usage ?\nBTW, 128K SRAM come from MEC1322\u0027s datasheet right ?\nif yes, it said 96K optimized for code, and 32K for data. \nwill 104K image against this ?",
+      "parentUuid": "f6a6b626_e5267aa6",
+      "revId": "7e31d2650b2c5c56303dd086e53d35cd9b594a1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
