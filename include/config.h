@@ -623,6 +623,11 @@
  */
 #undef CONFIG_CUSTOMIZED_RO
 
+/*
+ * When enabled, build in support for hardware crypto; only supported on CR50.
+ */
+#undef CONFIG_DCRYPTO
+
 /*****************************************************************************/
 /*
  * Debugging config
@@ -1504,9 +1509,6 @@
 
 /* Allow the board to use a GPIO for the SCI# signal. */
 #undef CONFIG_SCI_GPIO
-
-/* Support computing SHA-1 hash */
-#undef CONFIG_SHA1
 
 /* Support computing SHA-256 hash (without the VBOOT code) */
 #undef CONFIG_SHA256
