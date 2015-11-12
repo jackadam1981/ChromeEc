@@ -45,6 +45,54 @@
       "revId": "317b9603453ab02aefe5559dc28128479f9efc0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b25eb9e_3f5fabf4",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-12T17:33:39Z",
+      "side": 1,
+      "message": "yes. oversampling is expected given sensors have limited choice of frequency. The old code would also do oversampling (260Hz AP rate would be 400Hz sensor rate).",
+      "parentUuid": "76d4867d_fa4c481d",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 25
+      },
+      "revId": "317b9603453ab02aefe5559dc28128479f9efc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76d4867d_ba7c9004",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-12T17:33:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6da7ea7_a1ae29eb",
+      "range": {
+        "startLine": 125,
+        "startChar": 26,
+        "endLine": 125,
+        "endChar": 39
+      },
+      "revId": "317b9603453ab02aefe5559dc28128479f9efc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
