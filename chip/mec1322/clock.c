@@ -164,6 +164,9 @@ static void prepare_for_deep_sleep(void)
 	CPU_NVIC_ST_CTRL &= ~ST_ENABLE;
 	CPU_NVIC_ST_CTRL &= ~ST_COUNTFLAG;
 
+	/* Disable 32KHz clock */
+	MEC1322_VBAT_CE &= ~0x2;
+
 	/* Disable JTAG */
 	MEC1322_EC_JTAG_EN &= ~1;
 	/* Power down ADC VREF, ADC_VREF overrides ADC_CTRL. */
@@ -208,6 +211,9 @@ static void resume_from_deep_sleep(void)
 
 	/* Enable watchdog */
 	MEC1322_WDG_CTL |= 1;
+
+	/* Enable 32KHz clock */
+	MEC1322_VBAT_CE |= 0x2;
 
 	MEC1322_PCR_SLOW_CLK_CTL |= 0x1e0;
 	MEC1322_PCR_CHIP_SLP_EN &= ~0x3;
