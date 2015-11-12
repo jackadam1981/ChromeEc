@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6da7ea7_17e3f759",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-12T20:59:33Z",
+      "side": 1,
+      "message": "I\u0027m not sure about all the cases where we call charger_set_input_current(), but I\u0027m concerned that this changes the behavior significantly (even in the non-hotplug case). Previously we call charger_set_input_current from this task only if we\u0027re on AC?",
+      "revId": "89d7e4e0b72d4b24424a4d5df0927514fc27e7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
