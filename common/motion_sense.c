@@ -96,11 +96,9 @@ void motion_sense_fifo_add_unit(struct ec_response_motion_sensor_data *data,
 
 	/* For valid sensors, check if AP really needs this data */
 	if (valid_data) {
-		/* Use Hz, conversion to FP will overflow with kHz */
-		fp_t ap_odr =
-			fp_div(BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr),
-			       1000);
-		fp_t rate = fp_div(sensor->drv->get_data_rate(sensor), 1000);
+		int ap_odr = BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr);
+		int rate = sensor->drv->get_data_rate(sensor);
+		int removed;
 
 		/*
 		 * If the AP does not want sensor info, skip.
@@ -123,17 +121,10 @@ void motion_sense_fifo_add_unit(struct ec_response_motion_sensor_data *data,
 				data->data[0]);
 			return;
 		}
-
-		if (fp_mul(ap_odr, INT_TO_FP(2)) < rate) {
-			/* Skip if sensor is significantly oversampling */
-			if (sensor->oversampling < 0) {
-				sensor->oversampling +=
-					fp_div(INT_TO_FP(1), rate);
-				return;
-			}
-			sensor->oversampling += fp_div(INT_TO_FP(1), rate) -
-				fp_div(INT_TO_FP(1), ap_odr);
-		}
+		removed = sensor->oversampling++;
+		sensor->oversampling %= sensor->oversampling_ratio;
+		if (removed != 0)
+			return;
 	}
 	if (data->flags & MOTIONSENSE_SENSOR_FLAG_WAKEUP) {
 		/*
@@ -217,7 +208,7 @@ static enum sensor_config motion_sense_get_ec_config(void)
  */
 int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 {
-	int roundup = 0, ec_odr = 0, odr = 0;
+	int roundup, ap_odr = 0, ec_odr, odr, ret;
 	enum sensor_config config_id;
 	timestamp_t ts = get_time();
 
@@ -225,26 +216,35 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 
 	/* Check the AP setting first. */
 	if (sensor_active != SENSOR_ACTIVE_S5)
-		odr = BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr);
+		ap_odr = BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr);
 
 	/* check if the EC set the sensor ODR at a higher frequency */
 	config_id = motion_sense_get_ec_config();
 	ec_odr = BASE_ODR(sensor->config[config_id].odr);
-	if (ec_odr > odr)
+	if (ec_odr > ap_odr) {
 		odr = ec_odr;
-	else
+	} else {
+		odr = ap_odr;
 		config_id = SENSOR_CONFIG_AP;
+	}
 	roundup = !!(sensor->config[config_id].odr & ROUND_UP_FLAG);
+	ret = sensor->drv->set_data_rate(sensor, odr, roundup);
+	if (ret)
+		return ret;
+
 	CPRINTS("%s ODR: %d - roundup %d from config %d [AP %d]",
 		sensor->name, odr, roundup, config_id,
 		BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr));
-	sensor->oversampling = 0;
+	if (ap_odr)
+		sensor->oversampling_ratio =
+			sensor->drv->get_data_rate(sensor) / ap_odr;
 	/*
 	 * Reset last collection: the last collection may be so much in the past
 	 * it may appear to be in the future.
 	 */
 	sensor->last_collection = ts.le.lo;
-	return sensor->drv->set_data_rate(sensor, odr, roundup);
+	sensor->oversampling = 0;
+	return 0;
 }
 
 static int motion_sense_select_ec_rate(
