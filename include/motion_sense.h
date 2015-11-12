@@ -113,7 +113,7 @@ struct motion_sensor_t {
 	/*
 	 * Allow EC to request an higher frequency for the sensors than the AP.
 	 */
-	fp_t oversampling;
+	uint16_t oversampling;
 
 	/*
 	 * How many vector events are lost in the FIFO since last time

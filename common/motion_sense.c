@@ -96,11 +96,9 @@ void motion_sense_fifo_add_unit(struct ec_response_motion_sensor_data *data,
 
 	/* For valid sensors, check if AP really needs this data */
 	if (valid_data) {
-		/* Use Hz, conversion to FP will overflow with kHz */
-		fp_t ap_odr =
-			fp_div(BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr),
-			       1000);
-		fp_t rate = fp_div(sensor->drv->get_data_rate(sensor), 1000);
+		int ap_odr = BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr);
+		int rate = sensor->drv->get_data_rate(sensor);
+		int removed;
 
 		/*
 		 * If the AP does not want sensor info, skip.
@@ -123,17 +121,10 @@ void motion_sense_fifo_add_unit(struct ec_response_motion_sensor_data *data,
 				data->data[0]);
 			return;
 		}
-
-		if (fp_mul(ap_odr, INT_TO_FP(2)) < rate) {
-			/* Skip if sensor is significantly oversampling */
-			if (sensor->oversampling < 0) {
-				sensor->oversampling +=
-					fp_div(INT_TO_FP(1), rate);
-				return;
-			}
-			sensor->oversampling += fp_div(INT_TO_FP(1), rate) -
-				fp_div(INT_TO_FP(1), ap_odr);
-		}
+		removed = sensor->oversampling++;
+		sensor->oversampling %= rate / ap_odr;
+		if (removed != 0)
+			return;
 	}
 	if (data->flags & MOTIONSENSE_SENSOR_FLAG_WAKEUP) {
 		/*
