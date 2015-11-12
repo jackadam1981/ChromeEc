@@ -149,6 +149,7 @@ kb_fifo_push_done:
 
 	if (ret == EC_SUCCESS) {
 #ifdef CONFIG_MKBP_EVENT
+		host_set_single_event(EC_HOST_EVENT_KEY_PRESSED);
 		mkbp_send_event(EC_MKBP_EVENT_KEY_MATRIX);
 #else
 		set_host_interrupt(1);
