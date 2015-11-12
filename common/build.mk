@@ -6,8 +6,12 @@
 # Common files build
 #
 
-common-y=util.o
-common-y+=version.o printf.o queue.o queue_policies.o
+common-y=byteorder.o
+common-y+=printf.o
+common-y+=queue.o
+common-y+=queue_policies.o
+common-y+=util.o
+common-y+=version.o
 
 common-$(CONFIG_ACCELGYRO_BMI160)+=math_util.o
 common-$(CONFIG_ACCELGYRO_LSM6DS0)+=math_util.o
