@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6da7ea7_a1ae29eb",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-12T17:01:25Z",
+      "side": 1,
+      "message": "it seems we should pre-compute this rather than doing it for each sample,\nbut we survived with 5 FP division per sample, so we can survive with this.",
+      "range": {
+        "startLine": 125,
+        "startChar": 26,
+        "endLine": 125,
+        "endChar": 39
+      },
+      "revId": "317b9603453ab02aefe5559dc28128479f9efc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76d4867d_fa4c481d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-12T17:01:25Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s working in all cases.\nYou might get a large error in the effective AP rate :\n\nlet\u0027s take a corner case:\nrate is \u0027300\u0027 Hz\nap_odr is \u0027200\u0027 Hz\nthe effective AP rate will be 300 Hz ?",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 25
+      },
+      "revId": "317b9603453ab02aefe5559dc28128479f9efc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
