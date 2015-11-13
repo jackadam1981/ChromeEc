@@ -16,6 +16,24 @@
       "revId": "0ab26b954620e3b592cb6424d004af14ab8aa063",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b25eb9e_9040ec3b",
+        "filename": "chip/mec1322/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-11-13T01:13:40Z",
+      "side": 1,
+      "message": "Yes it does.  I thought about adding some sort of config for the pre-divider too as I would like the keyboard backlight to run a bit faster, but it does work as it is now so I left it alone for now.",
+      "parentUuid": "76d4867d_3ccd3bb1",
+      "revId": "0ab26b954620e3b592cb6424d004af14ab8aa063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
