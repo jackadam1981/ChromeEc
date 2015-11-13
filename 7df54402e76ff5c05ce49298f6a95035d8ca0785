@@ -22,6 +22,30 @@
       "revId": "7df54402e76ff5c05ce49298f6a95035d8ca0785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96d1fa8e_599f64d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-13T02:59:14Z",
+      "side": 1,
+      "message": "bootrom verifies the bootloader  integrity, and the bootloader verifies the rw integrity",
+      "parentUuid": "fb2e9f8f_d4365290",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "7df54402e76ff5c05ce49298f6a95035d8ca0785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
