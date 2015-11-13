@@ -46,6 +46,30 @@
       "revId": "337eaf1baf9b25e355819f476ed0d0a64cf4c880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6da7ea7_865972dc",
+        "filename": "board/cr50/dcrypto/dcrypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-11-13T21:32:48Z",
+      "side": 1,
+      "message": "You got lucky.\n\n#include \u003cstdint.h\u003e\n#include \u003cstdio.h\u003e\n\nuint8_t a;\nstruct {\n\tuint32_t foo  __attribute__((packed));\n} b;\n\nint main(void)\n{\n\tprintf(\"a at %p  b at %p b.foo at %p\\n\", \u0026a, \u0026b, \u0026b.foo);\n\treturn 0;\n}\n\n\n$ gcc c.c \u0026\u0026 ./a.out\na at 0x601045  b at 0x601041 b.foo at 0x601041\n$",
+      "parentUuid": "bb3987d2_ce5b5260",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "337eaf1baf9b25e355819f476ed0d0a64cf4c880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
