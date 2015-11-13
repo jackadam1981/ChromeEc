@@ -35,6 +35,7 @@ struct tpm_cmd_header {
 	uint16_t tag;
 	uint32_t size;
 	uint32_t command_code;
+	uint16_t subcommand_code;  /* Not a standard field. */
 } __packed;
 
 #endif	/* __CROS_EC_TPM_REGISTERS_H */
