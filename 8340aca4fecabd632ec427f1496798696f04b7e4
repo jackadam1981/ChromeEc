@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb3987d2_2e09be71",
+        "filename": "include/tpm_registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-11-13T20:47:08Z",
+      "side": 1,
+      "message": "Is there a standard TPM command that would have only the first three members? Can we be sure that we won\u0027t overrun the struct in that case?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "8340aca4fecabd632ec427f1496798696f04b7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
