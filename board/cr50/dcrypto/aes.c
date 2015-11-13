@@ -117,3 +117,109 @@ void DCRYPTO_aes_read_iv(uint8_t *iv)
 	for (i = 0; i < 4; i++)
 		p[i] = GR_KEYMGR_AES_CTR(i);
 }
+
+#ifdef CRYPTO_TEST_SETUP
+
+#include "backdoor.h"
+#include "hooks.h"
+#include "uart.h"
+
+static void aes_command_handler(const void *cmd_body,
+				size_t cmd_size,
+				void *cmd_response,
+				size_t *response_size)
+{
+	const uint8_t *key;
+	uint16_t key_len;
+	uint8_t iv_len;
+	const uint8_t *iv;
+	enum cipher_mode c_mode;
+	enum encrypt_mode e_mode;
+	uint8_t *cmd = (uint8_t *)cmd_body;
+	uint8_t *response = (uint8_t *)cmd_response;
+	int16_t data_len;
+	unsigned max_data_len = *response_size;
+	unsigned actual_cmd_size;
+
+	*response_size = 0;
+
+	/*
+	 * Command structure, shared out of band with the test driver running
+	 * on the host:
+	 *
+	 * field       |    size  |              note
+	 * ================================================================
+	 * mode        |    1     |  0 - decrypt, 1 - encrypt
+	 * cipher_mode |    1     |  ECB = 0, CTR = 1, CBC = 2, GCM = 3
+	 * key_len     |    1     | key size in bytes (16, 24 or 32)
+	 * key         | key len  | key to use
+	 * iv_len      |   1      | either 0 or 16
+	 * iv          | 0 or 16  | as defined by iv_len
+	 * text_len    |    2     | size of the text to process, big endian
+	 * text        | text_len | text to encrypt/decrypt
+	 */
+	e_mode = *cmd++;
+	c_mode = *cmd++;
+	key_len = *cmd++;
+
+	if ((key_len != 16) && (key_len != 24) && (key_len != 32)) {
+		uart_printf("Invalid key len %d\n", key_len * 8);
+		return;
+	}
+	key = cmd;
+	cmd += key_len;
+	key_len *= 8;
+	iv_len = *cmd++;
+	if (iv_len && (iv_len != 16)) {
+		uart_printf("Invalid vector len %d\n", iv_len);
+		return;
+	}
+	iv = cmd;
+	cmd += iv_len;
+	data_len = *cmd++;
+	data_len = data_len * 256 + *cmd++;
+
+	/*
+	 * We know that the receive buffer is at least this big, i.e. all the
+	 * preceding fields are guaranteed to fit.
+	 *
+	 * Now is a good time to verify overall sanity of the received
+	 * payload: does the actual size match the added up sizes of the
+	 * pieces.
+	 */
+	actual_cmd_size = cmd - (const uint8_t *)cmd_body + data_len;
+	if (actual_cmd_size != cmd_size) {
+		uart_printf("Command size mismatch: %d != %d (data len %d)\n",
+			    actual_cmd_size, cmd_size, data_len);
+		return;
+	}
+
+	if (((data_len + 15) & ~15) > max_data_len) {
+		uart_printf("Response buffer too small\n");
+		return;
+	}
+
+	if (!DCRYPTO_aes_init(key, key_len, iv, c_mode, e_mode)) {
+		uart_printf("Initialization failed\n");
+		return;
+	}
+
+	/*
+	 * The only thing we return is the result of the operation, its size
+	 * accumulated in *response_size.
+	 */
+	while (data_len > 0) {
+		DCRYPTO_aes_block(cmd, response);
+		cmd += 16;
+		response += 16;
+		data_len -= 16;
+		*response_size += 16;
+	}
+}
+
+static void hook_install(void)
+{
+	backdoor_register_handler(0, aes_command_handler);
+}
+DECLARE_HOOK(HOOK_INIT, hook_install, HOOK_PRIO_LAST);
+#endif   /* CRYPTO_TEST_SETUP */
