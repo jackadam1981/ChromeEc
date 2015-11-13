@@ -65,6 +65,11 @@ SECTIONS
         __cmds_end = .;
 
         . = ALIGN(4);
+        __backdoor_cmds = .;
+        KEEP(*(.rodata.backdoorcmds))
+	__backdoor_cmds_end = .;
+
+        . = ALIGN(4);
         __hcmds = .;
         KEEP(*(.rodata.hcmds))
         __hcmds_end = .;
