@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b3453db_013018c3",
+        "filename": "board/cr50/dcrypto/dcrypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-11-13T20:53:58Z",
+      "side": 1,
+      "message": "You need _attribute__ ((aligned (4))), not __packed.\n\nPacked just means the bytes are adjacent, so that this\n\nstruct {\n  uint8_t foo;\n  struct access_helper bar;\n};\n\ntakes up 5 bytes. Member .bar is probably misaligned.",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "337eaf1baf9b25e355819f476ed0d0a64cf4c880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
