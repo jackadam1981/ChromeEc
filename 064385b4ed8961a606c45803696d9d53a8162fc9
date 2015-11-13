@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96d1fa8e_da45034a",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-11-13T21:00:50Z",
+      "side": 1,
+      "message": "Um, actually we don\u0027t know that. The comments in sps_tpm.c seem to say that we just hope it does. That might be something to look at in another CL.",
+      "range": {
+        "startLine": 183,
+        "startChar": 4,
+        "endLine": 183,
+        "endChar": 56
+      },
+      "revId": "064385b4ed8961a606c45803696d9d53a8162fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
