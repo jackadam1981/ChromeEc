@@ -34,6 +34,9 @@ static uint32_t channel_mask_saved = CC_DEFAULT;
 static const char * const channel_names[] = {
 	"command",
 	"accel",
+#ifdef CONFIG_BACKDOOR_COMMAND
+	"backdoor",
+#endif
 	"charger",
 	"chipset",
 	"clock",
