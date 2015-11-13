@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb2e9f8f_e59abade",
+        "filename": "common/backdoor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-13T23:37:04Z",
+      "side": 1,
+      "message": "all other command sets (HOST_COMMAND / CONSOLE_COMMAND) are using linker sections to avoid this kind of stuff.\n\nIn addition to avoid hardcoding the size,\nthis is saving space by avoiding the HOOK_INIT, the call to register and the register code itself.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "b2dfc2a0bfa5bd703a1583333c7915152051f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b2a4b7b_7528b7c4",
+        "filename": "common/backdoor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-13T23:37:04Z",
+      "side": 1,
+      "message": "will somebody ever unregister a handler ?",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 1
+      },
+      "revId": "b2dfc2a0bfa5bd703a1583333c7915152051f709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
