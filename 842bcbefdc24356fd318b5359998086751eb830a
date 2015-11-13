@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b3453db_db279f91",
+        "filename": "common/spi_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-13T03:17:19Z",
+      "side": 1,
+      "message": "kind of crappy, but it\u0027s only a console command. at least add a comment why this is needed.",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 12
+      },
+      "revId": "842bcbefdc24356fd318b5359998086751eb830a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
