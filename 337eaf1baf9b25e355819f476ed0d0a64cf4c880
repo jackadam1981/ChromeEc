@@ -22,6 +22,30 @@
       "revId": "337eaf1baf9b25e355819f476ed0d0a64cf4c880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb3987d2_ce5b5260",
+        "filename": "board/cr50/dcrypto/dcrypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-13T21:13:08Z",
+      "side": 1,
+      "message": "not really, I think __aligned would try to make sure that statically defined data is aligned as requested.\n\n__packed packs the fields together, as you mention *and* tells the compiler that this data might be misaligned, so the proper access assembler code is generated.\n\nAdding this patch fixed the unaligned exceptions the code was throwing before.",
+      "parentUuid": "1b3453db_013018c3",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "337eaf1baf9b25e355819f476ed0d0a64cf4c880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
