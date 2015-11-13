@@ -9,10 +9,9 @@
  * 24-bit address. There is no provision for error reporting at this level.
  */
 
+#include "backdoor.h"
 #include "byteorder.h"
-#include "common.h"
 #include "console.h"
-#include "hooks.h"
 #include "task.h"
 #include "tpm_registers.h"
 #include "util.h"
@@ -412,6 +411,35 @@ static void tpm_init(void)
 	_plat__SetNvAvail();
 }
 
+#ifdef CONFIG_BACKDOOR_COMMAND
+
+static void call_backdoor_command(struct tpm_cmd_header *tpmh,
+				  size_t *total_size)
+{
+	size_t command_size = be32toh(tpmh->size);
+
+	/* verify there is room for at least the backdoor command header */
+	if (command_size >= sizeof(struct tpm_cmd_header)) {
+		uint16_t subcommand_code;
+
+		/* The header takes room in the buffer. */
+		*total_size -= sizeof(struct tpm_cmd_header);
+
+		subcommand_code = be16toh(tpmh->subcommand_code);
+		backdoor_route_command(subcommand_code,
+				       tpmh + 1,
+				       command_size -
+				       sizeof(struct tpm_cmd_header),
+				       total_size);
+		/* Add the header size back. */
+		*total_size += sizeof(struct tpm_cmd_header);
+		tpmh->size = htobe32(*total_size);
+	} else {
+		*total_size = command_size;
+	}
+}
+#endif
+
 void tpm_task(void)
 {
 	tpm_init();
@@ -429,14 +457,26 @@ void tpm_task(void)
 		CPRINTF("%s: received fifo command 0x%04x\n",
 			__func__, command_code);
 
-		ExecuteCommand(tpm_.fifo_write_index,
-			       tpm_.regs.data_fifo,
-			       &response_size,
-			       &response);
+#ifdef CONFIG_BACKDOOR_COMMAND
+		if (command_code == CONFIG_BACKDOOR_COMMAND) {
+			response_size = sizeof(tpm_.regs.data_fifo);
+			call_backdoor_command(tpmh, &response_size);
+		} else
+#endif
+		{
+			ExecuteCommand(tpm_.fifo_write_index,
+				       tpm_.regs.data_fifo,
+				       &response_size,
+				       &response);
+		}
 		CPRINTF("got %d bytes in response\n", response_size);
 		if (response_size &&
 		    (response_size <= sizeof(tpm_.regs.data_fifo))) {
-			memcpy(tpm_.regs.data_fifo, response, response_size);
+			if (command_code != CONFIG_BACKDOOR_COMMAND) {
+				/* Backdoor commands reuse FIFO buffer. */
+				memcpy(tpm_.regs.data_fifo,
+				       response, response_size);
+			}
 			tpm_.fifo_read_index = 0;
 			tpm_.fifo_write_index = response_size;
 			tpm_.regs.sts |= data_avail;

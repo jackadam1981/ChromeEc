@@ -21,6 +21,7 @@ common-$(CONFIG_BACKLIGHT_LID)+=backlight_lid.o
 # the other batteries don't?  Perhaps should use CONFIG_CMD_BATTERY
 # instead, since all that's in battery.c is the battery console
 # command?
+common-$(CONFIG_BACKDOOR_COMMAND)+=backdoor.o
 common-$(CONFIG_BATTERY_BQ27541)+=battery.o
 common-$(CONFIG_BATTERY_BQ27621)+=battery.o
 common-$(CONFIG_BATTERY_SMART)+=battery.o
