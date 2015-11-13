@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6da7ea7_064c6252",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-13T21:10:39Z",
+      "side": 1,
+      "message": "Done. Use sensor-\u003eoversampling_ratio as a gate.",
+      "parentUuid": "b6da7ea7_8665f2f0",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 48
+      },
+      "revId": "911d9f19973f47bbe68422304f50aebb6cf8668d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76d4867d_68e1aded",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-13T20:33:51Z",
       "side": 1,
       "message": "I\u0027m not convinced that oversampling_ratio cannot be 0 (panic I\u0027m looking at you) or a random value at this point.\nI don\u0027t fully understand the workflow but cannot this be called before the first motion_sense_set_data_rate or actually before motion_sense_set_data_rate has fully completed ?",
+      "range": {
+        "startLine": 125,
+        "startChar": 26,
+        "endLine": 125,
+        "endChar": 52
+      },
+      "revId": "911d9f19973f47bbe68422304f50aebb6cf8668d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b2a4b7b_48fe43d4",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-13T21:10:39Z",
+      "side": 1,
+      "message": "motion_sensors array sensor is pointing to is a global, so overstampling_ration will be set to 0 at first.\n\nIt is possible to lose samples if when the AP changes the ODR to 0 while set in batching mode, but from what I see, AP does a flush to get the samples before changing ODR.",
+      "parentUuid": "76d4867d_68e1aded",
       "range": {
         "startLine": 125,
         "startChar": 26,
