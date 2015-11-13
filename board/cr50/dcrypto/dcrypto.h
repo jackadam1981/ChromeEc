@@ -11,6 +11,8 @@
 
 #include <inttypes.h>
 
+#include "common.h"
+
 enum cipher_mode {
 	CIPHER_MODE_ECB = 0,
 	CIPHER_MODE_CTR = 1,
@@ -22,6 +24,14 @@ enum encrypt_mode {
 	DECRYPT_MODE = 0,
 	ENCRYPT_MODE = 1
 };
+
+/*
+ * Use this structure to avoid alignment problems with input and output
+ * pointers.
+ */
+struct access_helper {
+	uint32_t udata;
+} __packed;
 
 int DCRYPTO_aes_init(const uint8_t *key, uint32_t key_len, const uint8_t *iv,
 		enum cipher_mode c_mode, enum encrypt_mode e_mode);
