@@ -69,6 +69,30 @@
       "revId": "7df54402e76ff5c05ce49298f6a95035d8ca0785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb2e9f8f_bf16ff31",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-13T16:48:15Z",
+      "side": 1,
+      "message": "right, I looked at these and this was my thought. But I decided to keep them for now to see how this would integrate with hardware supported crypto on cr50.\n\nMaybe we end up keeping these and adding some \u0027hw_encryption\u0027 config option, we\u0027ll see.",
+      "parentUuid": "3b2597a9_5c54c9a7",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "7df54402e76ff5c05ce49298f6a95035d8ca0785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
