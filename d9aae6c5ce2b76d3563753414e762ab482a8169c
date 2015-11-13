@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76d4867d_e8ec7dec",
+        "filename": "board/cr50/tpm2/endian.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-11-13T20:30:52Z",
+      "side": 1,
+      "message": "If the CFLAGS are set correctly, we shouldn\u0027t need to specify the path.",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "d9aae6c5ce2b76d3563753414e762ab482a8169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b532b27_acd5c768",
+        "filename": "include/tpm_registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-11-13T20:30:52Z",
+      "side": 1,
+      "message": "From the code, it seems that will will always be in network or big-endian order? Might be nice to mention that if so.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "d9aae6c5ce2b76d3563753414e762ab482a8169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
