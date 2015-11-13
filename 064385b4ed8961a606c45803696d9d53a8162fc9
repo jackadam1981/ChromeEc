@@ -22,6 +22,30 @@
       "revId": "064385b4ed8961a606c45803696d9d53a8162fc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb2e9f8f_fa62558a",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-13T21:17:45Z",
+      "side": 1,
+      "message": "This refers to \n\ncommon/tpm_registers.c:struct tpm_register_file:data_fifo where the received data is accumulated and which was set to 2048 in a preceding patch.\n\nAlso, at this point we look at max of 54 bytes (in case the key is 32 bytes long and the IV is present), so the comment applies I think.",
+      "parentUuid": "96d1fa8e_da45034a",
+      "range": {
+        "startLine": 183,
+        "startChar": 4,
+        "endLine": 183,
+        "endChar": 56
+      },
+      "revId": "064385b4ed8961a606c45803696d9d53a8162fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
