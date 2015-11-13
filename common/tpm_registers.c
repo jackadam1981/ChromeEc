@@ -9,13 +9,11 @@
  * 24-bit address. There is no provision for error reporting at this level.
  */
 
+#include "backdoor.h"
 #include "byteorder.h"
-#include "common.h"
 #include "console.h"
-#include "hooks.h"
 #include "task.h"
 #include "tpm_registers.h"
-#include "util.h"
 
 /* TPM2 library includes. */
 #include "ExecCommand_fp.h"
@@ -429,10 +427,17 @@ void tpm_task(void)
 		CPRINTF("%s: received fifo command 0x%04x\n",
 			__func__, command_code);
 
-		ExecuteCommand(tpm_.fifo_write_index,
-			       tpm_.regs.data_fifo,
-			       &response_size,
-			       &response);
+#ifdef CONFIG_BACKDOOR_COMMAND
+		if (command_code == CONFIG_BACKDOOR_COMMAND)
+			backdoor_route_command(tpmh,
+					       &response_size,
+					       &response);
+		else
+#endif
+			ExecuteCommand(tpm_.fifo_write_index,
+				       tpm_.regs.data_fifo,
+				       &response_size,
+				       &response);
 		CPRINTF("got %d bytes in response\n", response_size);
 		if (response_size &&
 		    (response_size <= sizeof(tpm_.regs.data_fifo))) {
