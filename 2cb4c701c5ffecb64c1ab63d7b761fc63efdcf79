@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96d1fa8e_c0eb54cc",
+        "filename": "board/edgar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-14T01:27:31Z",
+      "side": 1,
+      "message": "The PCH drives this signal, right? So the EC shouldn\u0027t be driving it?",
+      "revId": "2cb4c701c5ffecb64c1ab63d7b761fc63efdcf79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
