@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb3987d2_7ff3f25c",
+        "filename": "board/edgar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-14T01:43:18Z",
+      "side": 1,
+      "message": "We\u0027re setting other NC GPIOs to input / pull-up here. I believe input / PU is the recommended lowest-power state.",
+      "revId": "bc1f4395793bd4d0766e1abb9d11136ed1a6a580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
