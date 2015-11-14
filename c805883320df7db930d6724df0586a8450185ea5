@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b25eb9e_60bb3b33",
+        "filename": "include/byteorder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-14T00:05:17Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "c805883320df7db930d6724df0586a8450185ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb2e9f8f_05bf06ee",
+        "filename": "include/byteorder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-14T00:05:17Z",
+      "side": 1,
+      "message": "__ORDER_LITTLE_ENDIAN ?",
+      "range": {
+        "startLine": 35,
+        "startChar": 30,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "c805883320df7db930d6724df0586a8450185ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
