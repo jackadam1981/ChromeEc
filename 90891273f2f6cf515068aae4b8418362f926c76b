@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b25eb9e_60e21b57",
+        "filename": "board/cr50/dcrypto/dcrypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-14T00:02:26Z",
+      "side": 1,
+      "message": "Declaration should go in internal.h as it is not part of the api.",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "90891273f2f6cf515068aae4b8418362f926c76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
