@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76d4867d_93a6d229",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-14T00:12:09Z",
+      "side": 1,
+      "message": "This test should call into the tpm2 aes abstraction (tpm2/aes.c), since that is the interface used by the tpm2 library.  Or leave it as is for now, and I\u0027ll take care of it later.",
+      "range": {
+        "startLine": 202,
+        "startChar": 4,
+        "endLine": 202,
+        "endChar": 6
+      },
+      "revId": "ab7861c8ad466e1344a033a2addaeebfc62f7932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
