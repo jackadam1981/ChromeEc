@@ -22,6 +22,30 @@
       "revId": "842bcbefdc24356fd318b5359998086751eb830a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb3987d2_bfff1a81",
+        "filename": "common/spi_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-14T01:01:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b3453db_db279f91",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 12
+      },
+      "revId": "842bcbefdc24356fd318b5359998086751eb830a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
