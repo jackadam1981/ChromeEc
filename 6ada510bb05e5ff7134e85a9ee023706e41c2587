@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b532b27_3ae22956",
+        "filename": "board/snoball/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-14T02:08:46Z",
+      "side": 1,
+      "message": "should this go in fusb302.h?",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "6ada510bb05e5ff7134e85a9ee023706e41c2587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6da7ea7_8c63515b",
+        "filename": "board/snoball/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-14T02:08:46Z",
+      "side": 1,
+      "message": "we\u0027re also going to want CONFIG_PD_LOGGING enabled",
+      "revId": "6ada510bb05e5ff7134e85a9ee023706e41c2587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b532b27_9ad23d7d",
+        "filename": "board/snoball/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-14T02:08:46Z",
+      "side": 1,
+      "message": "not sure why you\u0027re leaving this to do, should be pretty easy to build the table of ADC pins in board.c",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "6ada510bb05e5ff7134e85a9ee023706e41c2587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2597a9_f95f02be",
+        "filename": "board/snoball/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-14T02:08:46Z",
+      "side": 1,
+      "message": "this is already allocated for honeybuns, next available one is 0x5019, but I\u0027ll point you to the official spreadsheet.",
+      "range": {
+        "startLine": 35,
+        "startChar": 23,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "6ada510bb05e5ff7134e85a9ee023706e41c2587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb2e9f8f_a04020e4",
+        "filename": "board/snoball/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-14T02:08:46Z",
+      "side": 1,
+      "message": "add TODO to tune these appropriately",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 53
+      },
+      "revId": "6ada510bb05e5ff7134e85a9ee023706e41c2587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b3453db_96ffa958",
+        "filename": "board/snoball/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-14T02:08:46Z",
+      "side": 1,
+      "message": "these are intended for a device that can sink power. shouldn\u0027t be needed. if they are, we should clean up where they are used so we can remove for power sources.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 35
+      },
+      "revId": "6ada510bb05e5ff7134e85a9ee023706e41c2587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b532b27_5a78455e",
+        "filename": "board/snoball/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-14T02:08:46Z",
+      "side": 1,
+      "message": "should also support data swap so we can do GFU mode:\n#define PDO_FIXED_FLAGS (PDO_FIXED_EXTERNAL | PDO_FIXED_DATA_SWAP)",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "6ada510bb05e5ff7134e85a9ee023706e41c2587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb3987d2_bf215a7d",
+        "filename": "board/snoball/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-14T02:08:46Z",
+      "side": 1,
+      "message": "should add identity and GFU mode same as zinger. or add TODO to do it later.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "6ada510bb05e5ff7134e85a9ee023706e41c2587",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
