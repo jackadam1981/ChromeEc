@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6da7ea7_c0dead59",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-15T15:55:11Z",
+      "side": 1,
+      "message": "I would put the \". \u003d ALIGN(4);\" before this line as the other ones to ensure you will never \u0027mysteriously\u0027 get an unaligned variable.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 8
+      },
+      "revId": "e3b0fee31aa2f86cdef14f8976b7cf69f5dcc44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
