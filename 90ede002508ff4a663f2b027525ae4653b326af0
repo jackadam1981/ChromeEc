@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96d1fa8e_ce8d451b",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-11-16T18:49:23Z",
+      "side": 1,
+      "message": "This needs #ifdefing too.",
+      "range": {
+        "startLine": 475,
+        "startChar": 23,
+        "endLine": 475,
+        "endChar": 46
+      },
+      "revId": "90ede002508ff4a663f2b027525ae4653b326af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
