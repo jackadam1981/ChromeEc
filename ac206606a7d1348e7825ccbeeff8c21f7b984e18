@@ -52,6 +52,24 @@
       "revId": "ac206606a7d1348e7825ccbeeff8c21f7b984e18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2597a9_aa2356ea",
+        "filename": "board/cr50/dcrypto/internal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-16T20:05:47Z",
+      "side": 1,
+      "message": "ok, will drop inttypes.h",
+      "parentUuid": "76d4867d_65ba7331",
+      "revId": "ac206606a7d1348e7825ccbeeff8c21f7b984e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
