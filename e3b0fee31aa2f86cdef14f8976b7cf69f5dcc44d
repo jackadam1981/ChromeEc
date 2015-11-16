@@ -94,6 +94,30 @@
       "revId": "e3b0fee31aa2f86cdef14f8976b7cf69f5dcc44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b2a4b7b_0e372027",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-16T17:07:03Z",
+      "side": 1,
+      "message": "ah, I just tried it, you are right, let me add alignment then.",
+      "parentUuid": "5b2a4b7b_cbb8ea03",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 8
+      },
+      "revId": "e3b0fee31aa2f86cdef14f8976b7cf69f5dcc44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
