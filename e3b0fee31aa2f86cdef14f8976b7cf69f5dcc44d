@@ -46,6 +46,30 @@
       "revId": "e3b0fee31aa2f86cdef14f8976b7cf69f5dcc44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2597a9_2f22d8e4",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-11-16T15:22:29Z",
+      "side": 1,
+      "message": "Maybe\n\n/* Backdoor command structs are packed; no need to ALIGN */\n\nso it\u0027s obvious it\u0027s intentional?",
+      "parentUuid": "5b532b27_35235a9b",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 8
+      },
+      "revId": "e3b0fee31aa2f86cdef14f8976b7cf69f5dcc44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
