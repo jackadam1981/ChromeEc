@@ -70,6 +70,30 @@
       "revId": "e3b0fee31aa2f86cdef14f8976b7cf69f5dcc44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b2a4b7b_cbb8ea03",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-16T16:10:37Z",
+      "side": 1,
+      "message": "excepted the generated code is expecting \"ALIGN(2)\",\nThe unaligned data abort is just waiting for the next guy inserting a structure with same trick but a uint8_t field before this (or simply a string).",
+      "parentUuid": "5b532b27_35235a9b",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 8
+      },
+      "revId": "e3b0fee31aa2f86cdef14f8976b7cf69f5dcc44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
