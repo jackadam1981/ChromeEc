@@ -164,11 +164,11 @@ static inline int motion_sensor_time_to_read(const timestamp_t *ts,
 	if (rate == 0)
 		return 0;
 	/*
-	 * converting from kHz to us, need 1e9,
+	 * converting from kHz to us.
 	 * If within 95% of the time, check sensor.
 	 */
 	return time_after(ts->le.lo,
-			  sensor->last_collection + 950000000 / rate);
+			  sensor->last_collection + SECOND * 950 / rate);
 }
 
 static enum sensor_config motion_sense_get_ec_config(void)
@@ -236,6 +236,33 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 	mutex_unlock(&g_sensor_mutex);
 	return 0;
 }
+
+static int motion_sense_set_ec_rate_from_ap(
+		const struct motion_sensor_t *sensor,
+		unsigned int new_rate)
+{
+	int ap_odr = BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr);
+
+	if (new_rate == 0)
+		return 0;
+#ifdef CONFIG_ACCEL_FORCE_MODE_MASK
+	if (CONFIG_ACCEL_FORCE_MODE_MASK & (1 << (sensor - motion_sensors)))
+		goto end_set_ec_rate_from_ap;
+#endif
+	if (ap_odr == 0)
+		goto end_set_ec_rate_from_ap;
+	/*
+	 * If ec_rate is close to frequency, slow it
+	 * down a little to avoid missing events.
+	 */
+	if (SECOND * 1100 / ap_odr > new_rate)
+		new_rate = new_rate / MSEC *  1050;
+
+end_set_ec_rate_from_ap:
+	return MAX(new_rate, motion_min_interval);
+}
+
+
 
 static int motion_sense_select_ec_rate(
 		const struct motion_sensor_t *sensor,
@@ -899,13 +926,9 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		 * has a value.
 		 */
 		if (in->ec_rate.data != EC_MOTION_SENSE_NO_VALUE) {
-			if (in->ec_rate.data == 0)
-				sensor->config[SENSOR_CONFIG_AP].ec_rate = 0;
-			else
-				sensor->config[SENSOR_CONFIG_AP].ec_rate =
-					MAX(in->ec_rate.data * MSEC,
-					    motion_min_interval);
-
+			sensor->config[SENSOR_CONFIG_AP].ec_rate =
+				motion_sense_set_ec_rate_from_ap(
+					sensor, in->ec_rate.data * MSEC);
 			/* Bound the new sampling rate. */
 			motion_sense_set_motion_intervals();
 		}
