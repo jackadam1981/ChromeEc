@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b2a4b7b_1c83d7bb",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-17T17:37:30Z",
+      "side": 1,
+      "message": "i would move this down to line 634 because battery_get_params() takes a long time to complete (it does a ton of i2c transactions to battery), and this will delay calling charger_post_init() every time AC is plugged in. also, then we wouldn\u0027t be changing the order of reading charger params (in charger_get_params()) relative to reading battery params. i\u0027m not sure, but there could be some subtle dependency on the order if some other task interrupts us and asks for charger/battery params.",
+      "range": {
+        "startLine": 587,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 3
+      },
+      "revId": "0f9968d29006749b2d6b4d778710d45d261e4626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
