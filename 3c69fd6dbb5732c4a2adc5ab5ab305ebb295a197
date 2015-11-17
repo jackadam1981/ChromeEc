@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b2a4b7b_e57d0a4a",
+        "filename": "core/cortex-m/llsr.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-17T23:51:53Z",
+      "side": 1,
+      "message": "you don\u0027t really want to assemble code for Cortex-M0 (ie ARMv6-M) in cortex-m directory (which is targeted at cortex-M3/M4 ie ARMv7-M)",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 15
+      },
+      "revId": "3c69fd6dbb5732c4a2adc5ab5ab305ebb295a197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
