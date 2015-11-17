@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b816bc7_39b32bc4",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-17T18:57:37Z",
+      "side": 1,
+      "message": "this is mostly the same as above the while(1) loop. can probably make a helper function to clean up a little.",
+      "range": {
+        "startLine": 633,
+        "startChar": 2,
+        "endLine": 643,
+        "endChar": 3
+      },
+      "revId": "a5013d9c3430f179d396f4f8ba2660d96e98f418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
