@@ -22,6 +22,30 @@
       "revId": "a5013d9c3430f179d396f4f8ba2660d96e98f418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b6aafda_6017a826",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-17T19:11:47Z",
+      "side": 1,
+      "message": "Here\u0027s my stab at it. Needs more commenting.\n\n/* Return 0 if no change, 1 if input current limit changes */\nstatic int update_input_current_limit(int batt_present)\n{\n  static int prev_bp \u003d -1;\n  if (batt_present \u003d\u003d prev_bp)\n    return 0\n\n  if (batt_present \u003d\u003d BP_YES || system_is_locked())\n    curr.desired_input_current \u003d CONFIG_CHARGER_INPUT_CURRENT;\n  else\n    curr.desired_input_current \u003d info-\u003einput_current_max;\n\n  prev_bp \u003d batt_present;\n\n  return 1;\n}\n\nThen before while(1) loop, just call update_input_current_limit(), and here in the loop run:\n\nif (update_input_current_limit())\n  charger_set_input_current(curr.desired_input_current);",
+      "parentUuid": "5b816bc7_39b32bc4",
+      "range": {
+        "startLine": 633,
+        "startChar": 2,
+        "endLine": 643,
+        "endChar": 3
+      },
+      "revId": "a5013d9c3430f179d396f4f8ba2660d96e98f418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
