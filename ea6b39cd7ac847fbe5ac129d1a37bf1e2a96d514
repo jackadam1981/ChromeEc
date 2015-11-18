@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b25eb9e_f816db32",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-18T16:35:16Z",
+      "side": 1,
+      "message": "that\u0027s adding more to the mess the CL 312156 is about :\nhost event types and mbkp event types are different,\nfiltering mkbp event using host event is probably broken (and it is above as shown in CL 312156)\nIt\u0027s probably acceptable here but not great.",
+      "range": {
+        "startLine": 64,
+        "startChar": 20,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "ea6b39cd7ac847fbe5ac129d1a37bf1e2a96d514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
