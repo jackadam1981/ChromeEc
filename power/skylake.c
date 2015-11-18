@@ -299,6 +299,13 @@ static void handle_rsmrst(enum power_state state)
 	if (rsmrst_in)
 		msleep(10);
 	gpio_set_level(GPIO_PCH_RSMRST_L, rsmrst_in);
+
+	/*
+	 * SLP_S0 may be at an intermediate voltage when RSMRST is low, so
+	 * disable the SLP_S0 interrupt during this time.
+	 */
+	rsmrst_in ? gpio_enable_interrupt(GPIO_PCH_SLP_S0_L) :
+		    gpio_disable_interrupt(GPIO_PCH_SLP_S0_L);
 	CPRINTS("RSMRST: %d", rsmrst_in);
 }
 
