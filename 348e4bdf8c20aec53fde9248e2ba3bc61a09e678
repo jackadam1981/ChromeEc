@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "96d1fa8e_7ab16c4e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-18T17:27:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b6aafda_0c95c3ff",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 2
+      },
+      "revId": "348e4bdf8c20aec53fde9248e2ba3bc61a09e678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b816bc7_8ac77b92",
         "filename": "include/motion_sense.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-18T02:04:26Z",
       "side": 1,
       "message": "us",
+      "range": {
+        "startLine": 54,
+        "startChar": 39,
+        "endLine": 54,
+        "endChar": 41
+      },
+      "revId": "348e4bdf8c20aec53fde9248e2ba3bc61a09e678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b816bc7_50fb54a1",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-18T17:27:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b816bc7_8ac77b92",
       "range": {
         "startLine": 54,
         "startChar": 39,
