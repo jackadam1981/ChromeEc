@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b3453db_12629a1a",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-18T02:23:05Z",
+      "side": 1,
+      "message": "use of MSEC here seems just confusing to me, why not:\n\n#define EC_RATE_SLOW_FACTOR (105/100)\nnew_rate *\u003d EC_RATE_SLOW_FACTOR;\n\nnot sure that\u0027s the best name, but whatever name you use, needs to be commented what the slow down is for.\n\nthen i think line 258 could also use that macro.",
+      "range": {
+        "startLine": 259,
+        "startChar": 22,
+        "endLine": 259,
+        "endChar": 36
+      },
+      "revId": "bccb325a091506e3048f0cc0e1637267b81ef3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
