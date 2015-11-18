@@ -450,10 +450,12 @@ int _math__uComp(
 void __assert_func(
   const char *file,
   int line,
-  const char *func)
+  const char *func,
+  const char *condition
+)
 {
-  ecprintf("Failure in %s, line %d, code %d\n",
-           s_failFunction, s_failLine, s_failCode);
+  ecprintf("Failure in %s, func %s, line %d:\n%s\n",
+           file, func, line, condition);
   while (1)
     ;                           /* Let the watchdog doo the rest. */
 }
