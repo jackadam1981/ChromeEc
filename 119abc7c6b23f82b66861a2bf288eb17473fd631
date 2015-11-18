@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5b816bc7_c5080405",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-18T04:41:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db847bce_182bb25f",
+      "range": {
+        "startLine": 421,
+        "startChar": 42,
+        "endLine": 421,
+        "endChar": 50
+      },
+      "revId": "119abc7c6b23f82b66861a2bf288eb17473fd631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b3453db_2d09bb71",
         "filename": "common/tpm_registers.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-18T04:31:30Z",
       "side": 1,
       "message": "Extension",
+      "range": {
+        "startLine": 480,
+        "startChar": 7,
+        "endLine": 480,
+        "endChar": 15
+      },
+      "revId": "119abc7c6b23f82b66861a2bf288eb17473fd631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b816bc7_6517b026",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-18T04:41:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b3453db_2d09bb71",
       "range": {
         "startLine": 480,
         "startChar": 7,
