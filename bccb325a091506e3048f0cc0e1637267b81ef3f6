@@ -22,6 +22,30 @@
       "revId": "bccb325a091506e3048f0cc0e1637267b81ef3f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b6aafda_404a9f59",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-18T17:26:43Z",
+      "side": 1,
+      "message": "I would need to define EC_RATE_SLOW_FACTOR as 105 / 100 instead of (105 / 100), because it will always be 1. I added\na comment and use / 100 * 105 instead.",
+      "parentUuid": "1b3453db_12629a1a",
+      "range": {
+        "startLine": 259,
+        "startChar": 22,
+        "endLine": 259,
+        "endChar": 36
+      },
+      "revId": "bccb325a091506e3048f0cc0e1637267b81ef3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
