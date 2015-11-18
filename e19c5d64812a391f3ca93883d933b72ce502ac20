@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb75bfb9_c2f0fc8b",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-18T01:02:46Z",
+      "side": 1,
+      "message": "that seems wrong,\nnow you are sending 2 events every time.\n\nit seems the filtering added in a previous CL using CONFIG_MKBP_WAKEUP_MASK is not fully correct,\nyou should fix it.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 44
+      },
+      "revId": "e19c5d64812a391f3ca93883d933b72ce502ac20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
