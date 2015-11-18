@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96d1fa8e_17cc893d",
+        "filename": "util/ec3po/console_unittest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-11-18T01:28:24Z",
+      "side": 1,
+      "message": "The following methods became functions so that I could reuse them in other test suites.\n\n  BadConsoleOutput\n  CheckConsoleOutput\n  CheckInputBuffer\n  CheckInputBufferPosition\n  CheckHistoryBuffer",
+      "revId": "18073f21c1a1051bc41b68135157e46763de81e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb75bfb9_c2131c41",
+        "filename": "util/ec3po/console_unittest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-11-18T01:28:24Z",
+      "side": 1,
+      "message": "Added the test case as an argument to those functions so that we can print the console attributes.",
+      "revId": "18073f21c1a1051bc41b68135157e46763de81e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
