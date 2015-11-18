@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "765726ea_107c7d02",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2015-11-18T23:26:24Z",
+      "side": 1,
+      "message": "I feel like we should reset these to 0 every so often instead of firing every 300 occurrences.",
+      "revId": "e9efee90c67c3600faec6598b6b259126e369ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
