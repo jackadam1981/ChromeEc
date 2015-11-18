@@ -16,6 +16,24 @@
       "revId": "57311fba7ae5a2f884b89e57265e7f4af7d47203",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b2a4b7b_d154104c",
+        "filename": "power/skylake.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-11-18T21:05:32Z",
+      "side": 1,
+      "message": "Since this is part of S0ix feature, it will be moved to S0ix patch.",
+      "parentUuid": "1b3453db_bd5ba060",
+      "revId": "57311fba7ae5a2f884b89e57265e7f4af7d47203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
