@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b816bc7_733a171a",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-19T06:09:09Z",
+      "side": 1,
+      "message": "Minor fix - please add space before + after comment text, between separators, ex /* Comment */",
+      "revId": "1ec4a1a00b540a0fbfec37d9a941b34525733f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b6aafda_2fdd142f",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-19T06:09:09Z",
+      "side": 1,
+      "message": "Will this possibly need to change based on port attributes?",
+      "revId": "1ec4a1a00b540a0fbfec37d9a941b34525733f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76d4867d_4cfe6a23",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-19T06:09:09Z",
+      "side": 1,
+      "message": "Isn\u0027t it possible to have more than one smbus port on the EC?",
+      "revId": "1ec4a1a00b540a0fbfec37d9a941b34525733f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b3453db_482d1268",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-19T06:09:09Z",
+      "side": 1,
+      "message": "This really doesn\u0027t belong here.",
+      "revId": "1ec4a1a00b540a0fbfec37d9a941b34525733f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
