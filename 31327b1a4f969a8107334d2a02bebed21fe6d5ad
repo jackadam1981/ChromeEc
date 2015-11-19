@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3b2597a9_1d44e8f7",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2015-11-19T16:48:06Z",
+      "side": 1,
+      "message": "I contained it into a function for readability.  I can just drop it in the flash_flashrom function if you prefer though.",
+      "parentUuid": "3b2597a9_470e1fbb",
+      "range": {
+        "startLine": 235,
+        "startChar": 6,
+        "endLine": 235,
+        "endChar": 7
+      },
+      "revId": "31327b1a4f969a8107334d2a02bebed21fe6d5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b816bc7_3dcc70b3",
         "filename": "util/flash_ec",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Err, I meant to ask \"should we return true / false rather than using a global?\"",
       "parentUuid": "5b816bc7_3dcc70b3",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 243,
+        "endChar": 5
+      },
+      "revId": "31327b1a4f969a8107334d2a02bebed21fe6d5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b816bc7_f31ce755",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2015-11-19T16:48:06Z",
+      "side": 1,
+      "message": "You\u0027re right.  I accidentally dropped the return in the if statement during debugging!  Good catch.  New patch coming ....\n\nRE: return.  I discovered that there\u0027s a trap that automatically calls cleanup() when a functions returns non-zero.  That\u0027s why I had to store the return value in a global variable instead.",
+      "parentUuid": "db847bce_4462ac1b",
       "range": {
         "startLine": 243,
         "startChar": 1,
