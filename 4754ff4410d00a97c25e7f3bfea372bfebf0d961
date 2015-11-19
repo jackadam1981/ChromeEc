@@ -34,6 +34,24 @@
       "revId": "4754ff4410d00a97c25e7f3bfea372bfebf0d961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b2a4b7b_57b24d0e",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3376,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-19T20:48:44Z",
+      "side": 1,
+      "message": "Checking the code, I\u0027m not sure we have any non-memmap way of reading the lid angle (we don\u0027t seem to store it for non-UPDATE_HOST_MEM_MAP config).\n\nI think this code would be acceptable if we can skip this check entirely for ECs that don\u0027t define UPDATE_HOST_MEM_MAP (otherwise that\u0027s the result? error, or unpredictable data returned?). Is there some way ectool can determine if memory map is configured on the EC side?\n\nIf not, I think we should just move this to an entirely new ectool command.",
+      "parentUuid": "5b2a4b7b_19e07e17",
+      "revId": "4754ff4410d00a97c25e7f3bfea372bfebf0d961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
