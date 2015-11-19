@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b2597a9_470e1fbb",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1112834
+      },
+      "writtenOn": "2015-11-19T01:03:57Z",
+      "side": 1,
+      "message": "command no longer apply.\n\nshould this not be a function but determine globally ?",
+      "range": {
+        "startLine": 235,
+        "startChar": 6,
+        "endLine": 235,
+        "endChar": 7
+      },
+      "revId": "31327b1a4f969a8107334d2a02bebed21fe6d5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
