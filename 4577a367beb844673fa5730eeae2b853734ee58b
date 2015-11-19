@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b6aafda_6aad3aaa",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-19T17:53:45Z",
+      "side": 1,
+      "message": "i still think there is a cleaner way to write this. it\u0027s very hard to parse, especially given that you have to dig to find the units of everything.",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 34
+      },
+      "revId": "4577a367beb844673fa5730eeae2b853734ee58b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
