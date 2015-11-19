@@ -21,7 +21,9 @@
 #include "ectool.h"
 #include "lightbar.h"
 #include "lock/gec_lock.h"
+#include "math_util.h"
 #include "misc_util.h"
+#include "motion_lid.h"
 #include "panic.h"
 #include "usb_pd.h"
 
@@ -3369,6 +3371,15 @@ static int cmd_motionsense(int argc, char **argv)
 				else
 					printf("None\n");
 			}
+
+			/* Lid Angle - Get from EC_MEMMAP_ACC_DATA[0] */
+			i = read_mapped_mem16(EC_MEMMAP_ACC_DATA);
+			printf("Lid angle: ");
+			if (i == LID_ANGLE_UNRELIABLE)
+				printf("unreliable\n");
+			else
+				printf("%d\n", i);
+
 			return 0;
 		} else {
 			return rv;
