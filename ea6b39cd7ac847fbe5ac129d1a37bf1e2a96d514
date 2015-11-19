@@ -22,6 +22,30 @@
       "revId": "ea6b39cd7ac847fbe5ac129d1a37bf1e2a96d514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bf20354_c95249e7",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2015-11-19T07:09:38Z",
+      "side": 1,
+      "message": "Agree, I also think this change is not good. Do you have time helping these mkbp wake issues? So we can abandon these oak related changes.",
+      "parentUuid": "5b25eb9e_f816db32",
+      "range": {
+        "startLine": 64,
+        "startChar": 20,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "ea6b39cd7ac847fbe5ac129d1a37bf1e2a96d514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
