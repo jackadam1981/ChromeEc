@@ -16,6 +16,24 @@
       "revId": "4754ff4410d00a97c25e7f3bfea372bfebf0d961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b2a4b7b_19e07e17",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3376,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-11-19T17:44:48Z",
+      "side": 1,
+      "message": "agree, but this is the case for other ectool command like \"temps\" or \"battery\" which already has a dependency on memory map.",
+      "parentUuid": "7b6aafda_cff1f8ff",
+      "revId": "4754ff4410d00a97c25e7f3bfea372bfebf0d961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
