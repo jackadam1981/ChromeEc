@@ -22,6 +22,30 @@
       "revId": "4577a367beb844673fa5730eeae2b853734ee58b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db847bce_8a4bdd3a",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-19T18:44:57Z",
+      "side": 1,
+      "message": "Address unit issue with c/313221",
+      "parentUuid": "7b6aafda_6aad3aaa",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 34
+      },
+      "revId": "4577a367beb844673fa5730eeae2b853734ee58b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
