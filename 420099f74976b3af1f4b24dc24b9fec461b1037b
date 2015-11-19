@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b6aafda_6549edb1",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-19T19:12:02Z",
+      "side": 0,
+      "message": "STM32_IRQ_TIM1_UP_TIM16 doesn\u0027t exist in the codebase, it was taken out when we removed support for the STM32F family.",
+      "revId": "420099f74976b3af1f4b24dc24b9fec461b1037b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
