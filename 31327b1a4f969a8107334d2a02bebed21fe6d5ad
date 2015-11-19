@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "fb75bfb9_70e76965",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-19T17:50:35Z",
+      "side": 1,
+      "message": "\"grep -qs\" as only care about the return status and don\u0027t print any error message. You don\u0027t need the previous line to check the file exists as \"grep -qs\" can cover it.",
+      "range": {
+        "startLine": 238,
+        "startChar": 2,
+        "endLine": 238,
+        "endChar": 6
+      },
+      "revId": "31327b1a4f969a8107334d2a02bebed21fe6d5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b816bc7_3dcc70b3",
         "filename": "util/flash_ec",
         "patchSetId": 1
@@ -108,6 +131,30 @@
       "side": 1,
       "message": "You\u0027re right.  I accidentally dropped the return in the if statement during debugging!  Good catch.  New patch coming ....\n\nRE: return.  I discovered that there\u0027s a trap that automatically calls cleanup() when a functions returns non-zero.  That\u0027s why I had to store the return value in a global variable instead.",
       "parentUuid": "db847bce_4462ac1b",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 243,
+        "endChar": 5
+      },
+      "revId": "31327b1a4f969a8107334d2a02bebed21fe6d5ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b25eb9e_cb958465",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-11-19T17:50:35Z",
+      "side": 1,
+      "message": "The \"set -e\" makes the script exits immediately when a command exits with a non-zero status. But putting it as a condition of an \"if\" clause doesn\u0027t take it into account.\n\nShould return zero/non-zero status instead of save the result in a global variable.\n\nThis function can be simplified in a line, i.e.\n\n  grep -qs \u0027^CHROMEOS_RELEASE_BOARD\u003dbeaglebone_servo\u0027 /etc/lsb-release",
+      "parentUuid": "5b816bc7_f31ce755",
       "range": {
         "startLine": 243,
         "startChar": 1,
