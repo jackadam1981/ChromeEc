@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb75bfb9_b022e134",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-11-19T17:59:10Z",
+      "side": 1,
+      "message": "i would make 10us a macro and put a comment around the macro explaining adjustment to sampling interval to account for timing inaccuracies.",
+      "range": {
+        "startLine": 348,
+        "startChar": 1,
+        "endLine": 348,
+        "endChar": 48
+      },
+      "revId": "7b186f51bd02cca412eeb628dd953b2608d96dd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
