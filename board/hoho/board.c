@@ -140,6 +140,8 @@ static void factory_validation_deferred(void)
 
 	mcdp_enable();
 
+	mcdp_set_branch_oui(&info);
+
 	/* test mcdp via serial to validate function */
 	if (!mcdp_get_info(&info) && (MCDP_FAMILY(info.family) == 0x0010) &&
 	(MCDP_CHIPID(info.chipid) == 0x2850)) {
