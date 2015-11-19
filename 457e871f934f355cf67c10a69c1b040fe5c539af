@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "16218a86_6a0a73fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1114730
+      },
+      "writtenOn": "2015-11-19T01:59:16Z",
+      "side": 1,
+      "message": "Thank you, done.",
+      "parentUuid": "5b2a4b7b_bcecc3ea",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "457e871f934f355cf67c10a69c1b040fe5c539af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96d1fa8e_8fb7c7a0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-17T16:14:40Z",
       "side": 1,
       "message": "this commit doesn\u0027t seem to exist ?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 68
+      },
+      "revId": "457e871f934f355cf67c10a69c1b040fe5c539af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b06130b_a2b71aa2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1114730
+      },
+      "writtenOn": "2015-11-19T01:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96d1fa8e_8fb7c7a0",
       "range": {
         "startLine": 17,
         "startChar": 0,
