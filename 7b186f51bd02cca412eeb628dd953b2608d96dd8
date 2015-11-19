@@ -22,6 +22,30 @@
       "revId": "7b186f51bd02cca412eeb628dd953b2608d96dd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb75bfb9_0b7cc8c6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-19T18:48:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb75bfb9_b022e134",
+      "range": {
+        "startLine": 348,
+        "startChar": 1,
+        "endLine": 348,
+        "endChar": 48
+      },
+      "revId": "7b186f51bd02cca412eeb628dd953b2608d96dd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
