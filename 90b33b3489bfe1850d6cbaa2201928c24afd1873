@@ -16,6 +16,24 @@
       "revId": "90b33b3489bfe1850d6cbaa2201928c24afd1873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76d4867d_4fb49ca8",
+        "filename": "power/skylake.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-11-19T17:52:42Z",
+      "side": 1,
+      "message": "Yes, you are right. I forgot to copy this line from my test branch.  Thank you",
+      "parentUuid": "5b2a4b7b_d9cd563b",
+      "revId": "90b33b3489bfe1850d6cbaa2201928c24afd1873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
