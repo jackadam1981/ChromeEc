@@ -13,6 +13,7 @@
 #include "timer.h"
 #include "usart-stm32f0.h"
 #include "util.h"
+#include "watchdog.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 
@@ -170,6 +171,71 @@ int mcdp_get_info(struct mcdp_info  *info)
 	return EC_SUCCESS;
 }
 
+static int mcdp_appstestparam(uint32_t param, uint8_t count)
+{
+	uint8_t msg[6];
+
+	msg[0] = MCDP_CMD_APPSTESTPARAM;
+	msg[1] = count;
+	msg[2] = (param >> 24) & 0xff;
+	msg[3] = (param >> 16) & 0xff;
+	msg[4] = (param >>  8) & 0xff;
+	msg[5] = (param >>  0) & 0xff;
+	if (tx_serial(msg, sizeof(msg)))
+		return EC_ERROR_UNKNOWN;
+
+	if (rx_serial_ack())
+		return EC_ERROR_UNKNOWN;
+
+	return EC_SUCCESS;
+}
+
+static int mcdp_appstest(uint8_t cmd)
+{
+	uint8_t msg[2];
+	msg[0] = MCDP_CMD_APPSTEST;
+	msg[1] = cmd;
+	if (tx_serial(msg, sizeof(msg)))
+		return EC_ERROR_UNKNOWN;
+
+	if (rx_serial_ack())
+		return EC_ERROR_UNKNOWN;
+
+	/* magic */
+	rx_serial(mcdp_inbuf, sizeof(mcdp_inbuf));
+	rx_serial(mcdp_inbuf, sizeof(mcdp_inbuf));
+
+	return EC_SUCCESS;
+}
+
+int mcdp_set_branch_oui(struct mcdp_info  *info)
+{
+	int rv = EC_SUCCESS;
+
+	rv |= mcdp_appstestparam(0x1b500, 1);
+	rv |= mcdp_appstestparam(1, 2);
+	rv |= mcdp_appstestparam(0x00, 3);
+	rv |= mcdp_appstest(11);
+	watchdog_reload();
+
+	rv |= mcdp_appstestparam(0x1b501, 1);
+	rv |= mcdp_appstestparam(1, 2);
+	rv |= mcdp_appstestparam(0x60, 3);
+	rv |= mcdp_appstest(11);
+	watchdog_reload();
+
+	rv |= mcdp_appstestparam(0x1b502, 1);
+	rv |= mcdp_appstestparam(1, 2);
+	rv |= mcdp_appstestparam(0xad, 3);
+	rv |= mcdp_appstest(11);
+	watchdog_reload();
+
+	if (rv)
+		return EC_ERROR_UNKNOWN;
+
+	return EC_SUCCESS;
+}
+
 #ifdef CONFIG_CMD_MCDP
 static int mcdp_get_dev_id(char *dev, uint8_t dev_id, int dev_cnt)
 {
@@ -188,41 +254,23 @@ static int mcdp_get_dev_id(char *dev, uint8_t dev_id, int dev_cnt)
 	return EC_SUCCESS;
 }
 
-static int mcdp_appstest(uint8_t cmd, int paramc, char **paramv)
+static int command_mcdp_appstest(uint8_t cmd, int paramc, char **paramv)
 {
-	uint8_t msg[6];
 	char *e;
 	int i;
 
 	/* setup any appstest params */
-	msg[0] = MCDP_CMD_APPSTESTPARAM;
 	for (i = 0; i < paramc; i++) {
 		uint32_t param = strtoi(paramv[i], &e, 10);
 		if (*e)
 			return EC_ERROR_PARAM1;
-		msg[1] = i + 1;
-		msg[2] = (param >> 24) & 0xff;
-		msg[3] = (param >> 16) & 0xff;
-		msg[4] = (param >>  8) & 0xff;
-		msg[5] = (param >>  0) & 0xff;
-		if (tx_serial(msg, sizeof(msg)))
-			return EC_ERROR_UNKNOWN;
-
-		if (rx_serial_ack())
+		if (mcdp_appstestparam(param, i + 1))
 			return EC_ERROR_UNKNOWN;
 	}
 
-	msg[0] = MCDP_CMD_APPSTEST;
-	msg[1] = cmd;
-	if (tx_serial(msg, 2))
+	/* issue appstest command to execute */
+	if (mcdp_appstest(cmd))
 		return EC_ERROR_UNKNOWN;
-
-	if (rx_serial_ack())
-		return EC_ERROR_UNKNOWN;
-
-	/* magic */
-	rx_serial(mcdp_inbuf, sizeof(mcdp_inbuf));
-	rx_serial(mcdp_inbuf, sizeof(mcdp_inbuf));
 
 	return EC_SUCCESS;
 }
@@ -261,7 +309,7 @@ int command_mcdp(int argc, char **argv)
 		if (*e)
 			rv = EC_ERROR_PARAM2;
 		else
-			rv = mcdp_appstest(cmd, argc - 3, &argv[3]);
+			rv = command_mcdp_appstest(cmd, argc - 3, &argv[3]);
 		if (!rv)
 			ccprintf("appstest[%d] completed\n", cmd);
 	} else {

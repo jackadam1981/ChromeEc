@@ -33,11 +33,19 @@ void mcdp_enable(void);
 void mcdp_disable(void);
 
 /**
- * get get information command from mcdp.
+ * get information command from mcdp.
  *
  * @info pointer to mcdp_info structure
  * @return zero if success, error code otherwise.
  */
 int mcdp_get_info(struct mcdp_info  *info);
+
+/**
+ * set branch OUI properly at DPCD registers 0x500-0x502.
+ *
+ * @info pointer to mcdp_info structure
+ * @return zero if success, error code otherwise.
+ */
+int mcdp_set_branch_oui(struct mcdp_info  *info);
 
 #endif
