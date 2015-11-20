@@ -757,6 +757,24 @@ DECLARE_CONSOLE_COMMAND(i2cscan, command_scan,
 			NULL);
 #endif
 
+#ifdef I2C_SCANIO_CMD
+static int command_i2cio(int argc, char **argv)
+{
+	int i;
+
+	for (i = 0; i < i2c_ports_used; i++) {
+		ccprintf(" port %d: SDA:%d SCL:%d\n", i2c_ports[i].port,
+			i2c_raw_get_sda(i2c_ports[i].port),
+			i2c_raw_get_scl(i2c_ports[i].port));
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(i2cio, command_i2cio,
+			NULL,
+			"Scan all used I2C IOs for debugging",
+			NULL);
+#endif
+
 #ifdef CONFIG_CMD_I2C_XFER
 static int command_i2cxfer(int argc, char **argv)
 {
