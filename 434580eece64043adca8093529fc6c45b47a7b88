@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b25eb9e_baf170c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-20T16:35:31Z",
+      "side": 1,
+      "message": "AFAIK, i2cscan isn\u0027t needed for FAFT. It is useful for debugging though.",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "434580eece64043adca8093529fc6c45b47a7b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db30fb14_82a8da9c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-20T16:35:31Z",
+      "side": 1,
+      "message": "It\u0027s not a huge problem since we don\u0027t have many npcx project up and running yet, but it would be nice to split up changes like this in the future. In this case, we could have had two changes - one for wheatley board.h and one for the chip-level i2c driver changes.",
+      "revId": "434580eece64043adca8093529fc6c45b47a7b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ba9b35f_04a8569a",
+        "filename": "board/wheatley/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-20T16:35:31Z",
+      "side": 1,
+      "message": "What is this?",
+      "revId": "434580eece64043adca8093529fc6c45b47a7b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b3a03f5_409ece79",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-20T16:35:31Z",
+      "side": 1,
+      "message": "Can\u0027t you just use CPRINTS here?",
+      "revId": "434580eece64043adca8093529fc6c45b47a7b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
