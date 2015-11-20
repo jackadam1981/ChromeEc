@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b167790_65732634",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-20T21:35:51Z",
+      "side": 1,
+      "message": "turns out I missed this place. It was building successfully despite this statement throwing errors.",
+      "range": {
+        "startLine": 16,
+        "startChar": 32,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "0c69911787509595395aea62f80e116dffbb72df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
