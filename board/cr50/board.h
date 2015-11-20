@@ -49,6 +49,9 @@
 
 #define CONFIG_SPS_TEST
 
+/* Include crypto */
+#define CONFIG_DCRYPTO
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
