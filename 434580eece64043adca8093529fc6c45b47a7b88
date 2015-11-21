@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "bb9b478c_019e4a78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-11-21T00:19:13Z",
+      "side": 1,
+      "message": "Got it.",
+      "parentUuid": "db30fb14_82a8da9c",
+      "revId": "434580eece64043adca8093529fc6c45b47a7b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ba9b35f_04a8569a",
         "filename": "board/wheatley/board.h",
         "patchSetId": 1
@@ -59,6 +77,24 @@
     },
     {
       "key": {
+        "uuid": "fb6bff2e_23a3cac3",
+        "filename": "board/wheatley/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-11-21T00:19:13Z",
+      "side": 1,
+      "message": "I add this console command only for npcx since we cannot get level of SDA/SCL through gpioget if pinmux is changed to i2c.(Reading gpio input of i2c pin is always zero.) It\u0027s useful during debugging.",
+      "parentUuid": "1ba9b35f_04a8569a",
+      "revId": "434580eece64043adca8093529fc6c45b47a7b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b3a03f5_409ece79",
         "filename": "chip/npcx/i2c.c",
         "patchSetId": 1
@@ -70,6 +106,24 @@
       "writtenOn": "2015-11-20T16:35:31Z",
       "side": 1,
       "message": "Can\u0027t you just use CPRINTS here?",
+      "revId": "434580eece64043adca8093529fc6c45b47a7b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b72f720_25a3cec3",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-11-21T00:19:13Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "9b3a03f5_409ece79",
       "revId": "434580eece64043adca8093529fc6c45b47a7b88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
