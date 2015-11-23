@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ba203be_e08c821e",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-11-23T02:13:28Z",
+      "side": 1,
+      "message": "We should restore bus state back to idle if bus encountered timeout.",
+      "revId": "80a5fb1da864af60c161a2e3a3cd1b352e10cc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
