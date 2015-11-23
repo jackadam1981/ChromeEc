@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bed97ca_61e5decb",
+        "filename": "board/edgar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-23T18:24:35Z",
+      "side": 1,
+      "message": "Change to NC_... | ... GPIO_PULL_UP? For all 4 of the removed i2c gpios.",
+      "revId": "ef6256391f570f6d536fa9a337bd5eec6f0eb850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbb05f0b_fbaaefad",
+        "filename": "board/edgar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-23T18:24:35Z",
+      "side": 1,
+      "message": "Oh, these are duplicate configs. Just delete these two lines above.",
+      "revId": "ef6256391f570f6d536fa9a337bd5eec6f0eb850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
