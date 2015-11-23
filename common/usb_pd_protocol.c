@@ -1388,6 +1388,11 @@ void pd_task(void)
 	/* Ensure the power supply is in the default state */
 	pd_power_supply_reset(port);
 
+#if 1
+	while (1)
+		msleep(60*SECOND);
+#endif
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	/*
 	 * If VBUS is high, then initialize flag for VBUS has always been

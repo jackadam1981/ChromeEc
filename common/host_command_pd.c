@@ -138,8 +138,12 @@ static void pd_service_tcpc_ports(uint16_t port_status)
 	int i;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
-		if (port_status & (PD_STATUS_TCPC_ALERT_0 << i))
-			tcpc_alert(i);
+		if (port_status & (PD_STATUS_TCPC_ALERT_0 << i)) {
+			if (i == 0)
+				host_set_single_event(EC_HOST_EVENT_PD_MCU);
+			else
+				tcpc_alert(i);
+		}
 	}
 }
 
@@ -194,7 +198,7 @@ static void pd_exchange_status(uint32_t ec_state)
 #endif
 
 		if (!first_exchange)
-			usleep(50*MSEC);
+			usleep(20*MSEC);
 		first_exchange = 0;
 	} while (pd_get_alert());
 #endif /* USB_TCPM_WITH_OFF_CHIP_TCPC */
