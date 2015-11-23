@@ -16,6 +16,23 @@
       "revId": "80a5fb1da864af60c161a2e3a3cd1b352e10cc59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db839b1b_ca85a3ee",
+        "filename": "common/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-23T17:18:19Z",
+      "side": 1,
+      "message": "What I meant was -- we should remove I2C_SCANIO_CMD define and instead include the console command based on CONFIG_CMD_I2C_SCAN.\n\nNow that I look closer, I think \u0027gpioget\u0027 does everything your function does (and more). Maybe we don\u0027t need this command at all?",
+      "revId": "80a5fb1da864af60c161a2e3a3cd1b352e10cc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
