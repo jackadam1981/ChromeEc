@@ -207,6 +207,9 @@
 /* Proximity sensor finds an object within 5 cm, disable light sensor */
 #define SI114X_COVERED_THRESHOLD        5
 
+/* Time to wait before re-initializing the device if access is denied */
+#define SI114X_DENIED_THRESHOLD		(10 * SECOND)
+
 extern const struct accelgyro_drv si114x_drv;
 
 enum si114x_state {
