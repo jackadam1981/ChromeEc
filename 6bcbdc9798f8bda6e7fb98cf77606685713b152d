@@ -16,6 +16,24 @@
       "revId": "6bcbdc9798f8bda6e7fb98cf77606685713b152d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bbc4277e_02c1b0a6",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-24T20:32:14Z",
+      "side": 1,
+      "message": "the hash state export is not required, the tpm2 library never accesses it.\n\nI think it is still good to be able to force SW path, this is why I left the DCRYPTO api unchanged.",
+      "parentUuid": "9bbbe3f1_7834a1d8",
+      "revId": "6bcbdc9798f8bda6e7fb98cf77606685713b152d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
