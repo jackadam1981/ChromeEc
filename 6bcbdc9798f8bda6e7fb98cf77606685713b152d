@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bbbe3f1_7834a1d8",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-24T19:48:37Z",
+      "side": 1,
+      "message": "Why this change?  Is hash state export support not required?\n\nIf this is the case, then just omit the sw_required parameter from DCRYPTO_SHA1_init().",
+      "revId": "6bcbdc9798f8bda6e7fb98cf77606685713b152d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
