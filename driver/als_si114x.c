@@ -177,6 +177,11 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	if (!(val & type_data->irq_flags))
 		return EC_ERROR_INVAL;
 
+
+	/* DO NOT SUBMIT */
+	if (data->test_irq_counter++ > 100)
+		return EC_ERROR_INVAL;
+
 	/* clearing IRQ */
 	ret = raw_write8(s->addr, SI114X_REG_IRQ_STATUS,
 			 val & type_data->irq_flags);
@@ -531,6 +536,7 @@ static int init(const struct motion_sensor_t *s)
 			return ret;
 
 		data->state = SI114X_IDLE;
+		data->test_irq_counter = 0;
 		resol = 7;
 	} else {
 		if (data->state == SI114X_NOT_READY)
