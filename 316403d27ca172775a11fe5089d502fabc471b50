@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bb2a67bd_a3051658",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-11-24T00:36:25Z",
+      "side": 1,
+      "message": "this is for matrix_3x3_t and vector_3_t needed in struct accel_orientation from motion_lid.h. not needed for ectool, but still needed because of LID_ANGLE_UNRELIABLE which defined in motion_lid.h",
+      "parentUuid": "fbf69f9c_65c68a6e",
+      "revId": "316403d27ca172775a11fe5089d502fabc471b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bfc537c_c683062a",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-11-23T22:08:19Z",
       "side": 1,
       "message": "needed?",
+      "revId": "316403d27ca172775a11fe5089d502fabc471b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bed97ca_a7051658",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-11-24T00:36:25Z",
+      "side": 1,
+      "message": "need this for: #define LID_ANGLE_UNRELIABLE 500",
+      "parentUuid": "1bfc537c_c683062a",
       "revId": "316403d27ca172775a11fe5089d502fabc471b50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
