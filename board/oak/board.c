@@ -507,6 +507,8 @@ static void board_extpower(void)
 #ifdef CONFIG_TEMP_SENSOR_TMP432
 	hook_call_deferred(tmp432_set_power_deferred, 0);
 #endif
+	/* notify host of power info change */
+	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
 
