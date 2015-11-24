@@ -52,6 +52,24 @@
       "revId": "6bcbdc9798f8bda6e7fb98cf77606685713b152d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b167790_31cccb8c",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-24T22:50:38Z",
+      "side": 1,
+      "message": "it of course works, but uses the sw path, for which I don\u0027t see a reason.\n\nLet me look again at the tpm2 code and try adding a comment.",
+      "parentUuid": "bb2a67bd_b269e13e",
+      "revId": "6bcbdc9798f8bda6e7fb98cf77606685713b152d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
