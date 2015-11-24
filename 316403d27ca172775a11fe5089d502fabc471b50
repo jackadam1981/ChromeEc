@@ -69,6 +69,24 @@
       "revId": "316403d27ca172775a11fe5089d502fabc471b50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b2123e5_f2f0758b",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-11-24T01:18:03Z",
+      "side": 1,
+      "message": "If LID_ANGLE_UNRELIABLE is part of the API, let\u0027s move its definition in ec_commands.h. Other subsystem, like the kernel, do not have the luxury to include motion_lid.h.",
+      "parentUuid": "3bed97ca_a7051658",
+      "revId": "316403d27ca172775a11fe5089d502fabc471b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
