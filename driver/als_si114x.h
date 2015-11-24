@@ -239,6 +239,7 @@ struct si114x_typed_data_t {
 struct si114x_drv_data_t {
 	enum si114x_state state;
 	uint8_t covered;
+	uint8_t test_irq_counter;
 	struct si114x_typed_data_t type_data[2];
 };
 
