@@ -51,6 +51,24 @@
       "revId": "80a5fb1da864af60c161a2e3a3cd1b352e10cc59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb2a67bd_92c13d57",
+        "filename": "common/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-11-24T19:18:40Z",
+      "side": 1,
+      "message": "scan_bus() above already calls i2c_get_line_levels() and reports SCL/SDA for non-idle ports.  i2cio doesn\u0027t seem to add anything on top of that.",
+      "parentUuid": "3b72f720_e5ab76d9",
+      "revId": "80a5fb1da864af60c161a2e3a3cd1b352e10cc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
