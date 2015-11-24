@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "5b1b2bb8_2ddbce10",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-11-24T00:55:03Z",
+      "side": 1,
+      "message": "Ideally as per the smbus spec master cumulative timeout is 10msec and slave cumulative timeout is 25msec. We have confirmation from the TI charger buys that if the master hold the clk low for ~20msec then their controller gets reset. which is what our test results show. Hence we conservatively programmed the slave cumilative timeout timeout to 15msec\n\nSo to answer your question. depending on the peripheral tolerance we can choose to change. programming it to 15msec we are assuming if a transaction does not complete within 15msec we most likely will end up with an erroneous transaction.",
+      "parentUuid": "7b6aafda_2fdd142f",
+      "revId": "1ec4a1a00b540a0fbfec37d9a941b34525733f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76d4867d_4cfe6a23",
         "filename": "chip/mec1322/i2c.c",
         "patchSetId": 3
