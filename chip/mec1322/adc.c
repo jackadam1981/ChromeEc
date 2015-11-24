@@ -21,7 +21,7 @@
 
 struct mutex adc_lock;
 
-static task_id_t task_waiting;
+static volatile task_id_t task_waiting;
 
 static int start_single_and_wait(int timeout)
 {
