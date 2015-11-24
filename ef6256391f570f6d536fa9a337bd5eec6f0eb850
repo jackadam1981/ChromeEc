@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bb9b478c_4117b22f",
+        "filename": "board/edgar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1114169
+      },
+      "writtenOn": "2015-11-24T01:14:07Z",
+      "side": 1,
+      "message": "Sorry I don\u0027t get it. I2C0_1(GPIO[134,17]) and I2C2(GPIO[20,21]) have been changed to NC pins. We only use I2C0_0, I2C1 and I2C3.",
+      "parentUuid": "3bed97ca_61e5decb",
+      "revId": "ef6256391f570f6d536fa9a337bd5eec6f0eb850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbb05f0b_fbaaefad",
         "filename": "board/edgar/gpio.inc",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-11-23T18:24:35Z",
       "side": 1,
       "message": "Oh, these are duplicate configs. Just delete these two lines above.",
+      "revId": "ef6256391f570f6d536fa9a337bd5eec6f0eb850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb6bff2e_c38f56db",
+        "filename": "board/edgar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1114169
+      },
+      "writtenOn": "2015-11-24T01:14:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbb05f0b_fbaaefad",
       "revId": "ef6256391f570f6d536fa9a337bd5eec6f0eb850",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
