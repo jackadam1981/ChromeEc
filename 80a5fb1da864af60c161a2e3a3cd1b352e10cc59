@@ -33,6 +33,24 @@
       "revId": "80a5fb1da864af60c161a2e3a3cd1b352e10cc59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b72f720_e5ab76d9",
+        "filename": "common/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-11-24T01:31:23Z",
+      "side": 1,
+      "message": "No, gpioget doesn\u0027t help. Just like I mentioned before, GPIO input registers won\u0027t indicate i2c level if pinmux is changed to I2C. You always got zero from gpioget command. It\u0027s our own chip\u0027s feature. I suggest moving this command back to our own i2c.c and use I2C_SCANIO_CMD to enable it during debugging.",
+      "parentUuid": "db839b1b_ca85a3ee",
+      "revId": "80a5fb1da864af60c161a2e3a3cd1b352e10cc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
