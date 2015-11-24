@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbb05f0b_5569acca",
+        "filename": "board/strago/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-24T21:39:53Z",
+      "side": 1,
+      "message": "It really should be port_is_smbus, and here is more evidence: MEC1322_I2C0_0 is a port, not a controller. This is going to confuse everyone.",
+      "revId": "1cc6783446163c1b5ab1f114fd9057a48bb2c806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b2123e5_e358a909",
+        "filename": "include/i2c.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-24T21:39:53Z",
+      "side": 1,
+      "message": "It really should be port_is_smbus, even the implementation for mec1322 is slightly less clean. There is no concept of controllers (just ports) on many chips.",
+      "revId": "1cc6783446163c1b5ab1f114fd9057a48bb2c806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
