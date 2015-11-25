@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b167790_4479c312",
+        "filename": "board/strago/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-25T18:46:59Z",
+      "side": 1,
+      "message": "Sorry, I should have been more clear. Our function should be named i2c_port_is_smbus(int port). The parameter is a port #. It returns whether the port (not controller) is configured as smbus.",
+      "revId": "69ef4caa116fd2981ce5725d5592b758b136eedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bbc4277e_5381bc67",
+        "filename": "board/strago/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-25T18:46:59Z",
+      "side": 1,
+      "message": "MEC1322_I2C0_0 is not a controller, it\u0027s a port.",
+      "range": {
+        "startLine": 249,
+        "startChar": 23,
+        "endLine": 249,
+        "endChar": 37
+      },
+      "revId": "69ef4caa116fd2981ce5725d5592b758b136eedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bed97ca_8cfe3ad1",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-25T18:46:59Z",
+      "side": 1,
+      "message": "We\u0027ll probably need to pass an is_smbus parameter to this function.",
+      "revId": "69ef4caa116fd2981ce5725d5592b758b136eedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5bd5eb28_192ecfcb",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-25T18:46:59Z",
+      "side": 1,
+      "message": "We should check for consistency of is_smbus on ports with a common controller here, just like we do for the baud rate.",
+      "revId": "69ef4caa116fd2981ce5725d5592b758b136eedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
