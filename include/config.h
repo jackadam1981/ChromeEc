@@ -745,6 +745,10 @@
  */
 #undef CONFIG_FAN_UPDATE_PERIOD
 
+/*
+ * Define if fan is controlled by DPTF daemon in host, not by EC's thermal thread.
+ */
+#undef CONFIG_DPTF_BY_HOST
 /*****************************************************************************/
 /* Flash configuration */
 
