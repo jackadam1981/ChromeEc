@@ -69,6 +69,24 @@
       "revId": "80a5fb1da864af60c161a2e3a3cd1b352e10cc59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b71b31c_6435ca85",
+        "filename": "common/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2015-11-25T01:30:53Z",
+      "side": 1,
+      "message": "Yes, it did. Thanks. I will remove this command and push these changes again soon.",
+      "parentUuid": "bb2a67bd_92c13d57",
+      "revId": "80a5fb1da864af60c161a2e3a3cd1b352e10cc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
