@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9bbbe3f1_61ff4c1c",
+        "filename": "board/strago/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-11-25T05:01:20Z",
+      "side": 1,
+      "message": "I was confused too Shawn. But the parameter getting passed is actually the controller, not the port hence used controller. Yes, will use Port.",
+      "parentUuid": "fbb05f0b_5569acca",
+      "revId": "1cc6783446163c1b5ab1f114fd9057a48bb2c806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b2123e5_e358a909",
         "filename": "include/i2c.h",
         "patchSetId": 6
