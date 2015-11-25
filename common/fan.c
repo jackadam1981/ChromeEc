@@ -459,8 +459,9 @@ static void pwm_fan_init(void)
 	}
 
 	for (fan = 0; fan < CONFIG_FANS; fan++)
+#ifndef CONFIG_DPTF_BY_HOST
 		set_thermal_control_enabled(fan, 1);
-
+#endif
 	/* Initialize memory-mapped data */
 	mapped = (uint16_t *)host_get_memmap(EC_MEMMAP_FAN);
 	for (i = 0; i < EC_FAN_SPEED_ENTRIES; i++)
