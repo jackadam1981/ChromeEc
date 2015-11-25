@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb2a67bd_ebeec01a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-25T20:11:28Z",
+      "side": 1,
+      "message": "my first answer would be : it should not ...\n(and is not in other part of this codebase)\n\nCan you enlighten us about why you need it ?\n\nAlso for 64b by 32b division, please use the (maybe slower) uint64divmod generic function instead.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "5b6323be63337661f06d57ce59360c63437b6ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5bd5eb28_99153f1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-25T20:11:28Z",
+      "side": 1,
+      "message": "that\u0027s one of the issue of this code, testing it actually requires a large effort",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "5b6323be63337661f06d57ce59360c63437b6ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
