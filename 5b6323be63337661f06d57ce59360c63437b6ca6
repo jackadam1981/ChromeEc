@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1bb61305_9f59973f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2015-11-26T07:25:53Z",
+      "side": 1,
+      "message": "The __udivdi3 is missing In function `host_command_hibernation_delay\u0027 if link /power/common.o.\nor should we do the following changes?\n\nuint32_t time_g3 \u003d (uint32_t)((get_time().val - last_shutdown_time)\n\t\t\t/ SECOND);\nuint32_t time_g3 \u003d ((uint32_t)(get_time().val - last_shutdown_time))\n\t\t\t/ SECOND;",
+      "parentUuid": "bb2a67bd_ebeec01a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "5b6323be63337661f06d57ce59360c63437b6ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5bd5eb28_99153f1c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-25T20:11:28Z",
       "side": 1,
       "message": "that\u0027s one of the issue of this code, testing it actually requires a large effort",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "5b6323be63337661f06d57ce59360c63437b6ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bb61305_bf545307",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2015-11-26T07:25:53Z",
+      "side": 1,
+      "message": "Sorry, I should describe the details of the tests I have done.\nI didn\u0027t test all scenarios, and it does require a lot of efforts.",
+      "parentUuid": "5bd5eb28_99153f1c",
       "range": {
         "startLine": 15,
         "startChar": 5,
