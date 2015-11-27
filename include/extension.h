@@ -30,8 +30,9 @@ typedef void (*extension_handler)(void *buffer,
  * @param buffer       Data to be processd by the handler, the same space
  *                     is used for data returned by the handler.
  * @command_size       Size of the input data.
- * @param size         On input - max size of the buffer, on output - actual
- *                     number of data returned by the handler.
+ * @param size On input - max size of the buffer, on output - actual number of
+ *                     data returned by the handler. A single byte return
+ *                     usually indicates an error and contains the error code.
  */
 void extension_route_command(uint16_t command_code,
 			    void *buffer,
@@ -46,6 +47,7 @@ struct extension_command {
 /* Values for different extension commands. */
 enum {
 	EXTENSION_AES = 0,
+	EXTENSION_HASH = 1,
 };
 
 #define DECLARE_EXTENSION_COMMAND(code, handler) \
