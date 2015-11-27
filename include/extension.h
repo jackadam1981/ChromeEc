@@ -46,6 +46,7 @@ struct extension_command {
 /* Values for different extension commands. */
 enum {
 	EXTENSION_AES = 0,
+	EXTENSION_HASH = 1,
 };
 
 #define DECLARE_EXTENSION_COMMAND(code, handler) \
