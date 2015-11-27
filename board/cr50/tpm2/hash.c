@@ -56,19 +56,18 @@ void _cpri__ImportExportHashState(CPRI_HASH_STATE *osslFmt,
 uint16_t _cpri__HashBlock(TPM_ALG_ID alg, uint32_t in_len, uint8_t *in,
 			uint32_t out_len, uint8_t *out)
 {
-	uint8_t digest[SHA_DIGEST_MAX_BYTES];
 	const uint16_t digest_len = _cpri__GetDigestSize(alg);
 
-	if (digest_len == 0)
+	if (!digest_len || (out_len < digest_len))
 		return 0;
 
 	switch (alg) {
 	case TPM_ALG_SHA1:
-		DCRYPTO_SHA1_hash(in, in_len, digest);
+		DCRYPTO_SHA1_hash(in, in_len, out);
 		break;
 
 	case TPM_ALG_SHA256:
-		DCRYPTO_SHA256_hash(in, in_len, digest);
+		DCRYPTO_SHA256_hash(in, in_len, out);
 		break;
 /* TODO: add support for SHA384 and SHA512
  *
@@ -83,9 +82,7 @@ uint16_t _cpri__HashBlock(TPM_ALG_ID alg, uint32_t in_len, uint8_t *in,
 		break;
 	}
 
-	out_len = MIN(out_len, digest_len);
-	memcpy(out, digest, out_len);
-	return out_len;
+	return digest_len;
 }
 
 uint16_t _cpri__StartHash(TPM_ALG_ID alg, BOOL sequence,
@@ -132,7 +129,12 @@ uint16_t _cpri__CompleteHash(CPRI_HASH_STATE *state,
 {
 	struct HASH_CTX *ctx = (struct HASH_CTX *) state->state;
 
-	out_len = MIN(DCRYPTO_HASH_size(ctx), out_len);
+	if (out_len != DCRYPTO_HASH_size(ctx)) {
+		if (out_len < DCRYPTO_HASH_size(ctx))
+			return 0;
+		out_len = DCRYPTO_HASH_size(ctx);
+	}
+
 	memcpy(out, DCRYPTO_HASH_final(ctx), out_len);
 	return out_len;
 }
