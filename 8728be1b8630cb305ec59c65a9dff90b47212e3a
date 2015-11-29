@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bed97ca_25bc79dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-11-29T07:30:38Z",
+      "side": 1,
+      "message": "The current implementation follows the API as per documentation:\n\n//\n//\n//\n//       _cpri__HashBlock()\n//\n//      Start a hash, hash a single block, update digest and return the size of the results.\n//      The digestSize parameter can be smaller than the digest. If so, only the more significant bytes are\n//      returned.\n//\n//      Return Value                      Meaning\n//\n//      \u003e\u003d 0                              number of bytes in digest (may be zero)\n//",
+      "revId": "8728be1b8630cb305ec59c65a9dff90b47212e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
