@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db0f1bb0_d376debb",
+        "filename": "board/chell/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-11-30T23:35:01Z",
+      "side": 1,
+      "message": "I couldn\u0027t find a macro to help describe this, GPIO_PIN(34) will set \"3, 0x10\"...",
+      "range": {
+        "startLine": 369,
+        "startChar": 2,
+        "endLine": 369,
+        "endChar": 11
+      },
+      "revId": "f868681884f8e85e1e32f2efe5d924da631e8acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
