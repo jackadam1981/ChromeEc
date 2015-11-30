@@ -107,6 +107,9 @@ GPIO(USBPD_BST_OFF,     PIN(204), GPIO_OUT_LOW)
 GPIO(BAT_PRESENT_L,PIN(210), GPIO_INPUT)                  /* SUSPWRDNACK signal from MOIC device to EC */
 GPIO(GPIO_3_EC,         PIN(211), GPIO_OUT_LOW)                  /* Sleep SOIX signal from SOC to EC */
 
+GPIO(BAT_LED_GREEN,	PIN(133), GPIO_OUT_HIGH)		/*LED color green*/
+GPIO(BAT_LED_AMBER,	PIN(136), GPIO_OUT_HIGH)		/*LED color amber*/
+
 /* Alternate functions GPIO definition */
 ALTERNATE(PIN_MASK(16, 0x24),   1,    MODULE_UART,            0)                    /* UART0 */
 
