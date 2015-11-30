@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1be45325_12a58c1f",
+        "filename": "chip/g/loader/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-11-30T23:32:52Z",
+      "side": 1,
+      "message": "can you please take these (here and in line 71) into parens - I am never sure about operator precedence :).\n\nAlso, just a thought: maybe no need for the \"+\" - so it is either \"USB\" or \"no USB\"",
+      "range": {
+        "startLine": 69,
+        "startChar": 7,
+        "endLine": 70,
+        "endChar": 46
+      },
+      "revId": "5ec991496eb560f6d4f36eb7ae20cd47c40a0fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
