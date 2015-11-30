@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9b0923b2_280dcb4b",
+        "filename": "board/strago/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-11-30T18:20:39Z",
+      "side": 1,
+      "message": "Shawn, the problem is the caller does not have port info.. it has only controller.Will see how to get port info in the caller.",
+      "parentUuid": "3b167790_4479c312",
+      "revId": "69ef4caa116fd2981ce5725d5592b758b136eedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbc4277e_5381bc67",
         "filename": "board/strago/board.c",
         "patchSetId": 8
@@ -53,6 +71,24 @@
       "writtenOn": "2015-11-25T18:46:59Z",
       "side": 1,
       "message": "We\u0027ll probably need to pass an is_smbus parameter to this function.",
+      "revId": "69ef4caa116fd2981ce5725d5592b758b136eedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db0f1bb0_4a1a3359",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2015-11-30T18:20:39Z",
+      "side": 1,
+      "message": "wait_byte_done and config_controller call the port_is_smbus() function. Both have only controller info. Will see how to clean it up and send port info.",
+      "parentUuid": "3bed97ca_8cfe3ad1",
       "revId": "69ef4caa116fd2981ce5725d5592b758b136eedb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
