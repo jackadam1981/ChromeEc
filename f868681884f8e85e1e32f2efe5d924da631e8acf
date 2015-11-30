@@ -22,6 +22,30 @@
       "revId": "f868681884f8e85e1e32f2efe5d924da631e8acf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db0f1bb0_d31b7e4e",
+        "filename": "board/chell/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-11-30T23:48:12Z",
+      "side": 1,
+      "message": "Want to add a GPIO for it in gpio.inc instead? We can initialize it to whatever makes sense there (OUTPUT + LOW?). It won\u0027t be in that state for long.",
+      "parentUuid": "db0f1bb0_d376debb",
+      "range": {
+        "startLine": 369,
+        "startChar": 2,
+        "endLine": 369,
+        "endChar": 11
+      },
+      "revId": "f868681884f8e85e1e32f2efe5d924da631e8acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
