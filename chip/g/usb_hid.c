@@ -44,7 +44,7 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_HID, 81) =
 	.wMaxPacketSize = HID_REPORT_SIZE,
 	.bInterval = 32 /* ms polling interval */
 };
-const struct usb_hid_descriptor USB_CUSTOM_DESC(USB_IFACE_HID, hid) =
+const struct usb_hid_descriptor USB_HID_DESC(USB_IFACE_HID, hid) =
 {
 	.bLength = 9,
 	.bDescriptorType = USB_HID_DT_HID,
