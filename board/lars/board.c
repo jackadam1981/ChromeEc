@@ -429,11 +429,15 @@ DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
  */
 int board_set_active_charge_port(int charge_port)
 {
+	/* charge port is a realy physical port */
+	int is_real_port = (charge_port >= 0 &&
+			    charge_port < CONFIG_USB_PD_PORT_COUNT);
+
 	/* check if we are source vbus on that port */
 	int source = gpio_get_level(GPIO_USB_C0_5V_EN);
 
 	/* charge port is a realy physical port */
-	if ((charge_port == 0) && source) {
+	if (is_real_port && source) {
 		CPRINTS("Skip enable p%d", charge_port);
 		return EC_ERROR_INVAL;
 	}
