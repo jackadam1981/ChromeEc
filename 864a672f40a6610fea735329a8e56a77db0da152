@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b1763d8_5e844532",
+        "filename": "common/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-01T02:05:46Z",
+      "side": 1,
+      "message": "Have you considered instead disabling thermal control only when we get a DPTF ACPI command? Then we don\u0027t need a config, and we still have some thermal control if the OS doesn\u0027t work as expected (for example, if the kernel was mistakenly compiled without DPTF support).",
+      "revId": "864a672f40a6610fea735329a8e56a77db0da152",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
