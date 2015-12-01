@@ -16,6 +16,24 @@
       "revId": "8728be1b8630cb305ec59c65a9dff90b47212e3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b1763d8_7ec909d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-01T01:33:23Z",
+      "side": 1,
+      "message": "ah, that\u0027s a bummer, thank you for pointing this out.\n\nI guess we\u0027ll have to keep this stack buffer (to avoid changing the existing APIs). I reworked this to make the stack buffer size configuration dependent.",
+      "parentUuid": "3bed97ca_25bc79dd",
+      "revId": "8728be1b8630cb305ec59c65a9dff90b47212e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
