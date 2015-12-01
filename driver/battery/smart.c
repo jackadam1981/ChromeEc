@@ -357,35 +357,22 @@ void battery_get_params(struct batt_params *batt)
 /* Wait until battery is totally stable */
 int battery_wait_for_stable(void)
 {
-	int status, got_response;
+	int status;
 	uint64_t wait_timeout = get_time().val + BATTERY_WAIT_TIMEOUT;
-	uint64_t no_response_timeout = get_time().val +
-			 BATTERY_NO_RESPONSE_TIMEOUT;
-
-	got_response = 0;
 
 	CPRINTS("Wait for battery stabilized during %d",
 			 BATTERY_WAIT_TIMEOUT);
 	while (get_time().val < wait_timeout) {
 		/* Starting pinging battery */
 		if (battery_status(&status) == EC_SUCCESS) {
-			got_response = 1;
 			/* Battery is stable */
-			if (status & STATUS_INITIALIZED) {
-				CPRINTS("battery initialized");
-				return EC_SUCCESS;
-			}
-		}
-		/* Assume no battery connected if no response for a while */
-		else if (!got_response &&
-			 get_time().val > no_response_timeout) {
-			CPRINTS("battery not responding");
-			return EC_ERROR_NOT_POWERED;
+			CPRINTS("battery responded with status %x", status);
+			return EC_SUCCESS;
 		}
 		msleep(25); /* clock stretching could hold 25ms */
 	}
-	CPRINTS("battery wait stable timeout");
-	return EC_ERROR_TIMEOUT;
+	CPRINTS("battery not responding");
+	return EC_ERROR_NOT_POWERED;
 }
 
 #ifndef CONFIG_CHARGER_V1
