@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b1deb19_36db9846",
+        "filename": "chip/mec1322/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2015-12-01T19:04:09Z",
+      "side": 1,
+      "message": "When task_waiting is not marked volatile, this line gets deleted by the linker when optimization is turned on because the linker thinks that task_waiting is not used by nearby code. I verified the removal of this line in disassembly.",
+      "revId": "793777d9f191d008dab73d24c9cf016b2b2bf928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb1267d6_fdcc0f3f",
+        "filename": "chip/mec1322/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2015-12-01T19:04:09Z",
+      "side": 1,
+      "message": "This line does stays when task_waiting is not marked volatile.",
+      "revId": "793777d9f191d008dab73d24c9cf016b2b2bf928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1be45325_60e51a39",
+        "filename": "chip/mec1322/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2015-12-01T19:04:09Z",
+      "side": 1,
+      "message": "When task_waiting is not marked volatile, start_single_and_wait() returns 0 due to a timeout error and we go to exit_all_channels. The caller function command_adc() prints junk values for the ADCs.",
+      "revId": "793777d9f191d008dab73d24c9cf016b2b2bf928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
