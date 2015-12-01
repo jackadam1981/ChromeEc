@@ -764,6 +764,14 @@ static void lpc_init(void)
 	/* Clear Host Access Hold state */
 	NPCX_SMC_CTL = 0xC0;
 
+#ifndef CONFIG_SERIRQ_CONTINUOUS
+	/*
+	 * Set alternative pin from GPIO to CLKRUN if SERIRQ is under quiet mode
+	 * Once we need LCLK, CLKRUN will pull low automatically.
+	 */
+	SET_BIT(NPCX_DEVALT(1), NPCX_DEVALT1_CLKRN_SL);
+#endif
+
 	/* Initialize Hardware for UART Host */
 #if CONFIG_UART_HOST
 	/* Init COMx LPC UART */
