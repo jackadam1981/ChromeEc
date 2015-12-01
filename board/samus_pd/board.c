@@ -62,7 +62,7 @@ static int desired_charge_rate_ma = -1;
 
 /* PWM channels. Must be in the exact same order as in enum pwm_channel. */
 const struct pwm_t pwm_channels[] = {
-	{STM32_TIM(15), STM32_TIM_CH(2), 0, GPIO_ILIM_ADJ_PWM, GPIO_ALT_F1},
+	{STM32_TIM(15), STM32_TIM_CH(2), 0},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
