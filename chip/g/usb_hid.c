@@ -114,36 +114,29 @@ static void hid_reset(void)
 	GR_USB_DIEPCTL(USB_EP_HID) = DXEPCTL_MPS(HID_REPORT_SIZE) |
 				     DXEPCTL_USBACTEP | DXEPCTL_EPTYPE_INT |
 				     DXEPCTL_TXFNUM(USB_EP_HID);
-	GR_USB_DAINTMSK |= (1<<USB_EP_HID);
+	GR_USB_DAINTMSK |= DAINT_INEP(USB_EP_HID);
 }
 
 USB_DECLARE_EP(USB_EP_HID, hid_tx, hid_tx, hid_reset);
 
-extern struct g_usb_desc ep0_in_desc;
-extern struct g_usb_desc ep0_out_desc;
-
-static int hid_iface_request(uint8_t *ep0_buf_rx, uint8_t *ep0_buf_tx)
+static int hid_iface_request(struct usb_setup_packet *req,
+			     const void **data_ptr, uint32_t *len_ptr)
 {
-	/* This chip and buffer data are all little-endian, so this works */
-	struct usb_setup_packet *req = (struct usb_setup_packet *)ep0_buf_rx;
-	int len;
-
-	if (req->bmRequestType == (USB_DIR_IN | USB_RECIP_INTERFACE) &&
+	if ((req->bmRequestType & USB_DIR_IN) &&
 	    req->bRequest == USB_REQ_GET_DESCRIPTOR &&
 	    req->wValue == (USB_HID_DT_REPORT << 8)) {
 		/* Setup : HID specific : Get Report descriptor */
-		memcpy(ep0_buf_tx, report_desc, sizeof(report_desc));
-		len = MIN(req->wLength, sizeof(report_desc));
-		ep0_in_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_RDY |
-			DIEPDMA_IOC | DIEPDMA_TXBYTES(len);
-		GR_USB_DIEPCTL(0) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
-		ep0_out_desc.flags = DOEPDMA_RXBYTES(64) | DOEPDMA_LAST
-			| DOEPDMA_BS_HOST_RDY | DOEPDMA_IOC;
-		GR_USB_DOEPCTL(0) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
-		return 0;
+		return load_in_fifo(report_desc,
+				    MIN(req->wLength,
+					sizeof(report_desc)));
 	}
 
-	return 1;
+	/* Just quietly ignore anything without data */
+	if (!(req->bmRequestType & USB_DIR_IN) && !req->wLength)
+		return 0;
+
+	/* Anything else we'll stall */
+	return -1;
 }
 USB_DECLARE_IFACE(USB_IFACE_HID, hid_iface_request)
 
@@ -160,7 +153,7 @@ static int command_hid(int argc, char **argv)
 
 	/* press then release the key */
 	set_keyboard_report((uint32_t)keycode << 16);
-	udelay(50000);
+	udelay(50 * MSEC);
 	set_keyboard_report(0x000000);
 
 	return EC_SUCCESS;
