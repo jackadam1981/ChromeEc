@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b1763d8_61872c80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-12-01T07:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbde9f59_d1af04bc",
+      "range": {
+        "startLine": 14,
+        "startChar": 36,
+        "endLine": 14,
+        "endChar": 39
+      },
+      "revId": "3048fcfdd7e013b5b3cb98f2183dd270b92f1b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1be45325_729e10d6",
         "filename": "driver/als_si114x.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-30T23:31:13Z",
       "side": 1,
       "message": "THRESHOLD",
+      "range": {
+        "startLine": 211,
+        "startChar": 22,
+        "endLine": 211,
+        "endChar": 27
+      },
+      "revId": "3048fcfdd7e013b5b3cb98f2183dd270b92f1b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db0f1bb0_f9d543dd",
+        "filename": "driver/als_si114x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2015-12-01T07:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1be45325_729e10d6",
       "range": {
         "startLine": 211,
         "startChar": 22,
