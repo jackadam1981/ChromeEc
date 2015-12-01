@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b18372c_d5fdfc5d",
+        "filename": "include/usb_descriptor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-12-01T19:31:36Z",
+      "side": 1,
+      "message": "there is nothing HID specific here.\nThat\u0027s just an additional interface descriptor.\nMost interface descriptors are probably better closer to the interface.\nI would still prefer some more generic naming if you want to change the macro name.\nUSB_IFACE_CUSTOM_DESC or whatever.",
+      "range": {
+        "startLine": 232,
+        "startChar": 8,
+        "endLine": 232,
+        "endChar": 20
+      },
+      "revId": "f19c1fcfd126fbc914c52f9bdf7a6e704295786d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
