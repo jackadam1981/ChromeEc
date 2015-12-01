@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b0923b2_5caf9da1",
+        "filename": "board/lars/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-01T18:24:45Z",
+      "side": 1,
+      "message": "Please double check your schematic. I think you may have an external PU resistor on this pin (we implemented it on newer versions of our reference board) -- if so, we can remove the internal PU.",
+      "revId": "6949ae0d973fc47e8ef19ffc344c7767c3f53d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
