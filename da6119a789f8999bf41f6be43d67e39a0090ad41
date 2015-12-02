@@ -22,6 +22,30 @@
       "revId": "da6119a789f8999bf41f6be43d67e39a0090ad41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb113f0a_9c8c491e",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-02T00:25:01Z",
+      "side": 1,
+      "message": "sure, will do. This is the size of the sha256 software context.",
+      "parentUuid": "fb113f0a_fc1c5da7",
+      "range": {
+        "startLine": 47,
+        "startChar": 37,
+        "endLine": 47,
+        "endChar": 40
+      },
+      "revId": "da6119a789f8999bf41f6be43d67e39a0090ad41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
