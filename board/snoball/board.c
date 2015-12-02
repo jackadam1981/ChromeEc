@@ -40,7 +40,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{STM32_I2C1_PORT, FUSB302_I2C_SLAVE_ADDR},
 	{STM32_I2C2_PORT, FUSB302_I2C_SLAVE_ADDR},
 	/* TODO: Verify secondary slave addr, or use i2c mux */
-	{STM32_I2C2_PORT, FUSB302_I2C_SLAVE_ADDR + 2},
+	{STM32_I2C2_PORT, FUSB302_I2C_SLAVE_ADDR},
 };
 
 uint16_t tcpc_get_alert_status(void)
@@ -55,6 +55,24 @@ uint16_t tcpc_get_alert_status(void)
 		status |= PD_STATUS_TCPC_ALERT_2;
 
 	return status;
+}
+
+static struct mutex tcpc_i2c_lock;
+
+void board_tcpc_lock(int port)
+{
+	/* Only ports 1 + 2 are muxed */
+	if (port == 0)
+		return;
+	mutex_lock(&tcpc_i2c_lock);
+	gpio_set_level(GPIO_I2C_MUX_SEL, (port == 2));
+}
+
+void board_tcpc_unlock(int port)
+{
+	if (port == 0)
+		return;
+	mutex_unlock(&tcpc_i2c_lock);
 }
 
 /* ADC channels */
