@@ -22,6 +22,30 @@
       "revId": "c522e20aadc2b7c0716166926939b73ea1b2cb2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b1deb19_8a587b7f",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-02T20:12:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b1deb19_5fb62717",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 12
+      },
+      "revId": "c522e20aadc2b7c0716166926939b73ea1b2cb2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
