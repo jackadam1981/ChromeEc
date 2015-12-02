@@ -16,6 +16,24 @@
       "revId": "6949ae0d973fc47e8ef19ffc344c7767c3f53d2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b5f63f9_38e7e9d3",
+        "filename": "board/lars/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2015-12-02T11:49:09Z",
+      "side": 1,
+      "message": "I have checked the schematic, we don\u0027t have an external PU resistor, but I\u0027ll keep this in mind, once there is a new schematic, I\u0027ll check this!",
+      "parentUuid": "9b0923b2_5caf9da1",
+      "revId": "6949ae0d973fc47e8ef19ffc344c7767c3f53d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
