@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ba24b12_03ae1c58",
+        "filename": "common/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-02T19:27:31Z",
+      "side": 1,
+      "message": "Should this just be \"fan_configured\"? temp_fan_off / temp_fan_max refer to actual temperatures. Also, should this be an array of size TEMP_SENSOR_COUNT, in case temp. thresholds are defined for some fans and not others?",
+      "revId": "92976ded3acc3044374c0c750494ad27801160ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
