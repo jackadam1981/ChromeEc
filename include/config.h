@@ -1963,6 +1963,12 @@
 /* Support computing hash of code for verified boot */
 #undef CONFIG_VBOOT_HASH
 
+/* Support for secure temporary storage for verified boot */
+#undef CONFIG_VSTORE
+
+/* Number of supported slots for secure temporary storage */
+#undef CONFIG_VSTORE_SLOTS
+
 /*****************************************************************************/
 /* Watchdog config */
 
