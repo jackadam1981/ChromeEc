@@ -16,6 +16,24 @@
       "revId": "4b658bf3fb289728ba7ed3119f5acf4f57cb18b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b17f3fd_a36924a3",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-02T20:47:36Z",
+      "side": 1,
+      "message": "yes, this would be a good improvement. We just need to make sure that it is thoroughly tested on other platforms.\n\nLet me open a tracker issue for that and attach it to to this patch.",
+      "parentUuid": "1bac5306_60227a82",
+      "revId": "4b658bf3fb289728ba7ed3119f5acf4f57cb18b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
