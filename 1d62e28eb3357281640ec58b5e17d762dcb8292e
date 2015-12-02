@@ -22,6 +22,30 @@
       "revId": "1d62e28eb3357281640ec58b5e17d762dcb8292e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bbb18759_0bfe31d2",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-02T22:31:28Z",
+      "side": 1,
+      "message": "Sure, I know, but IMO it is better readable than a line starting with a \u0027\\n\u0027, so I\u0027d prefer to keep it this way.",
+      "parentUuid": "1b17f3fd_ced567de",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 22
+      },
+      "revId": "1d62e28eb3357281640ec58b5e17d762dcb8292e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
