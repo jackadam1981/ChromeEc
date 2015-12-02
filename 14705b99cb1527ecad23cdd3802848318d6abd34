@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fb113f0a_888ec34e",
+        "filename": "test/tpm_test/hash_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-02T23:34:20Z",
+      "side": 1,
+      "message": "well I had all those ideas, but then I wanted to keep the amount of text to the minimum and keep the first element of the tuple as the test name.\n\nmodified as suggested.",
+      "parentUuid": "1bac5306_c0cc0e40",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 1
+      },
+      "revId": "14705b99cb1527ecad23cdd3802848318d6abd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb113f0a_ad03d125",
         "filename": "test/tpm_test/hash_test.py",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3b18372c_0fc7591a",
+        "filename": "test/tpm_test/hash_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-02T23:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb113f0a_ad03d125",
+      "range": {
+        "startLine": 87,
+        "startChar": 41,
+        "endLine": 87,
+        "endChar": 46
+      },
+      "revId": "14705b99cb1527ecad23cdd3802848318d6abd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbb18759_a02aa423",
         "filename": "test/tpm_test/hash_test.py",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2015-12-02T19:59:35Z",
       "side": 1,
       "message": "Seems like hfunc could be part of mode_map.  If the lookup on line 82 succeeds, don\u0027t think we can ever get to the HashError here.\n\nmode_map \u003d {\n    MODE_SHA1 : (\u0027sha1\u0027, hashlib.sha1)\n}",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 61
+      },
+      "revId": "14705b99cb1527ecad23cdd3802848318d6abd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb113f0a_688b6740",
+        "filename": "test/tpm_test/hash_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-02T23:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbb18759_a02aa423",
       "range": {
         "startLine": 91,
         "startChar": 1,
