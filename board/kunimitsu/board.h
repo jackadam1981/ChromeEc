@@ -8,6 +8,12 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+/*
+ * Allow dangerous commands.
+ * TODO: Remove this config before production.
+ */
+#define CONFIG_SYSTEM_UNLOCKED
+
 /* Optional features */
 #define CONFIG_ADC
 #define CONFIG_BATTERY_CUT_OFF
@@ -96,10 +102,12 @@
 #define CONFIG_TEMP_SENSOR_TMP432
 
 /*
- * Allow dangerous commands.
- * TODO(shawnn): Remove this config before production.
+ * Enable 1 slot of secure temporary storage to support
+ * suspend/resume with read/write memory training.
  */
-#define CONFIG_SYSTEM_UNLOCKED
+#define CONFIG_VSTORE
+#define CONFIG_VSTORE_SLOTS 1
+
 #define CONFIG_WATCHDOG_HELP
 
 /* LED signals */
