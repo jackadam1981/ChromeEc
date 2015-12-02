@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbb18759_e0594c3e",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-12-02T19:21:49Z",
+      "side": 1,
+      "message": "Is the error type important, or just non-zero? If important, let\u0027s use some enums or macro names for readability.",
+      "range": {
+        "startLine": 176,
+        "startChar": 14,
+        "endLine": 176,
+        "endChar": 15
+      },
+      "revId": "bb9e6c4f6421bf5b21cbdc172cd1fd671f225ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bbb18759_e04e6c6a",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-12-02T19:21:49Z",
+      "side": 1,
+      "message": "It appears that this means \"no errors\". Add a comment saying so?",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 20
+      },
+      "revId": "bb9e6c4f6421bf5b21cbdc172cd1fd671f225ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b18372c_c9ed6177",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-12-02T19:21:49Z",
+      "side": 1,
+      "message": "single",
+      "range": {
+        "startLine": 321,
+        "startChar": 34,
+        "endLine": 321,
+        "endChar": 39
+      },
+      "revId": "bb9e6c4f6421bf5b21cbdc172cd1fd671f225ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fba69f26_5f375bba",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-12-02T19:21:49Z",
+      "side": 1,
+      "message": "How does the caller distinguish between an error and a hash? Just by the size of the result?",
+      "range": {
+        "startLine": 324,
+        "startChar": 3,
+        "endLine": 324,
+        "endChar": 17
+      },
+      "revId": "bb9e6c4f6421bf5b21cbdc172cd1fd671f225ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbae3bf9_c68702fa",
+        "filename": "include/extension.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-12-02T19:21:49Z",
+      "side": 1,
+      "message": "... which may indicate an error? or not?",
+      "range": {
+        "startLine": 33,
+        "startChar": 70,
+        "endLine": 34,
+        "endChar": 62
+      },
+      "revId": "bb9e6c4f6421bf5b21cbdc172cd1fd671f225ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
