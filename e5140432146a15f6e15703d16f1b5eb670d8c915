@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbae3bf9_26340e1f",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-02T19:16:36Z",
+      "side": 1,
+      "message": "let\u0027s add a local variable int is_smbus \u003d i2c_port_is_smbus(port) rather than repeating the function call throughout this function.",
+      "revId": "e5140432146a15f6e15703d16f1b5eb670d8c915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb113f0a_42848c32",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-02T19:16:36Z",
+      "side": 1,
+      "message": "We need to verify the consistency of port_is_smbus() for all ports which use controller 0, just as we do for kbps.",
+      "revId": "e5140432146a15f6e15703d16f1b5eb670d8c915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
