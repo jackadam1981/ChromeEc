@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fb113f0a_cded6d77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-12-02T20:11:20Z",
+      "side": 1,
+      "message": "I will correct it. Thanks",
+      "parentUuid": "dbae3bf9_865fba4d",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "92976ded3acc3044374c0c750494ad27801160ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ba24b12_03ae1c58",
         "filename": "common/thermal.c",
         "patchSetId": 6
@@ -54,6 +78,24 @@
       "side": 1,
       "message": "Sorry, I misunderstood the code, ignore my comment about the array. Rather than using temp_fan_configured, can\u0027t we just check if fmax is initialized?",
       "parentUuid": "5ba24b12_03ae1c58",
+      "revId": "92976ded3acc3044374c0c750494ad27801160ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbae3bf9_666616fe",
+        "filename": "common/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-12-02T20:11:20Z",
+      "side": 1,
+      "message": "fmax can be set as 0 in case of temperature reading is same as fmin.(thermal_fan_percent()) even if thermal_params[] is initialized.  This might be problem in system like Auron which uses thermal_control for the only fan control.\nThis is why temp_fan_configured flag was used.",
+      "parentUuid": "bbb18759_c03b68ab",
       "revId": "92976ded3acc3044374c0c750494ad27801160ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
