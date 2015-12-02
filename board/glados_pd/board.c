@@ -53,7 +53,6 @@ static void board_init(void)
 {
 	/* Enable interrupts on VBUS transitions. */
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
-	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE_L);
 
 	/* Set PD MCU system status bits */
 	if (system_jumped_to_this_image())
