@@ -16,6 +16,24 @@
       "revId": "b23a3e167b1f842880de601f65c20efb657c3a5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb68a79f_19e06bea",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2015-12-02T03:22:51Z",
+      "side": 1,
+      "message": "The alternative pin should be set as CLKRUN function when connect to LPC, no matter the SERIRQ is in continuous or quiet mode. The config is not necessary and will be removed.",
+      "parentUuid": "3bd59733_969852ea",
+      "revId": "b23a3e167b1f842880de601f65c20efb657c3a5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
