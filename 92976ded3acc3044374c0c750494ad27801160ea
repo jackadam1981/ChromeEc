@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "dbae3bf9_865fba4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-02T19:28:46Z",
+      "side": 1,
+      "message": "No need to use kunimitsu in the title since we\u0027re not touching kunimitsu code. \"fan: Allow fan at max...\" is fine.",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "92976ded3acc3044374c0c750494ad27801160ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ba24b12_03ae1c58",
         "filename": "common/thermal.c",
         "patchSetId": 6
