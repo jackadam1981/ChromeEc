@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b18372c_8958897f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-02T18:27:11Z",
+      "side": 1,
+      "message": "Why not remove all traces of the second port? Remove all GPIOs + code related to the second port. Let\u0027s get this done once and for all rather than stretching it over many CLs.",
+      "revId": "818bbbda7556a0c9f801533277c90f29afd23ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb113f0a_a2f2c056",
+        "filename": "board/lars_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-02T18:27:11Z",
+      "side": 1,
+      "message": "C1 CC sensing can be removed.",
+      "revId": "818bbbda7556a0c9f801533277c90f29afd23ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ba24b12_e8e64f67",
+        "filename": "board/lars_pd/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-02T18:27:11Z",
+      "side": 1,
+      "message": "You can assume port \u003d\u003d 0 here, and simplify the code.",
+      "revId": "818bbbda7556a0c9f801533277c90f29afd23ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b18372c_091d99a1",
+        "filename": "board/lars_pd/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-02T18:27:11Z",
+      "side": 1,
+      "message": "Many USB-C port 1 related GPIOs are still here.",
+      "revId": "818bbbda7556a0c9f801533277c90f29afd23ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
