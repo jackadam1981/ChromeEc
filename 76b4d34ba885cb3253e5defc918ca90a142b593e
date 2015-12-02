@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbae3bf9_1b104767",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-12-02T16:30:40Z",
+      "side": 1,
+      "message": "Please file a bug describing the symptoms.  This could come up on existing devices.\n\nThen after this commits, mark it fixed. :)",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "76b4d34ba885cb3253e5defc918ca90a142b593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bb8433f_a4d11ada",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-12-02T16:30:40Z",
+      "side": 1,
+      "message": "Are both of these still used?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 47
+      },
+      "revId": "76b4d34ba885cb3253e5defc918ca90a142b593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b18372c_5ea5891e",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-12-02T16:30:40Z",
+      "side": 1,
+      "message": "BATTERY_NO_RESPONSE_TIMEOUT?\n\nThat\u0027d match the existing behavior, which either got no response or a response containing STATUS_INITIALIZED.",
+      "range": {
+        "startLine": 361,
+        "startChar": 42,
+        "endLine": 361,
+        "endChar": 62
+      },
+      "revId": "76b4d34ba885cb3253e5defc918ca90a142b593e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
