@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40933818_bd007f45",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-12-03T19:04:43Z",
+      "side": 1,
+      "message": "Since these are passed back to the caller, let\u0027s put these in extension.h (and maybe prefix the names with EXT_?).",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "871631989c4eedc5f15c40ffd76b6925fe98595a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
