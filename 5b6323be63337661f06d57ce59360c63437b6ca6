@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bbb18759_9a3eecb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-12-03T16:05:30Z",
+      "side": 1,
+      "message": "The latter is not fully correct that was discussed in the CL adding it :\nhttps://chromium-review.googlesource.com/#/c/302197/\n\nbut adding a 64x64 software division just for this (not-so-useful) division by a constant seems a big waste of time and flash space.\nI will re-discuss this with Shawn/Aseda/Randall and see if we can solve it on the other side.",
+      "parentUuid": "1bb61305_9f59973f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "5b6323be63337661f06d57ce59360c63437b6ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5bd5eb28_99153f1c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
