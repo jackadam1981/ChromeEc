@@ -718,6 +718,9 @@
 #undef CONFIG_FW_PSTATE_OFF
 #undef CONFIG_FW_PSTATE_SIZE
 
+/* Detect g-sensor to do motion task or not */
+#undef CONFIG_GSENSOR_DETECT
+
 /*
  * Read-only / read-write image configuration.
  * Images may reside on storage (ex. external or internal SPI) at a different

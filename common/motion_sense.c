@@ -21,6 +21,7 @@
 #include "motion_lid.h"
 #include "power.h"
 #include "queue.h"
+#include "system.h"
 #include "timer.h"
 #include "task.h"
 #include "util.h"
@@ -424,6 +425,11 @@ void motion_sense_task(void)
 	lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
 	lpc_data = (uint16_t *)host_get_memmap(EC_MEMMAP_ACC_DATA);
 	set_present(lpc_status);
+#endif
+
+#ifdef CONFIG_GSENSOR_DETECT
+	if (!((system_get_board_version() & 0x1) == 0x1))
+		return;
 #endif
 
 #ifdef CONFIG_ACCEL_FIFO
