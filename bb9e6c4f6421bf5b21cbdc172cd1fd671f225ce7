@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fba69f26_e534ba8b",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-03T00:18:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbb18759_e0594c3e",
+      "range": {
+        "startLine": 176,
+        "startChar": 14,
+        "endLine": 176,
+        "endChar": 15
+      },
+      "revId": "bb9e6c4f6421bf5b21cbdc172cd1fd671f225ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbb18759_e04e6c6a",
         "filename": "board/cr50/tpm2/hash.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-12-02T19:21:49Z",
       "side": 1,
       "message": "It appears that this means \"no errors\". Add a comment saying so?",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 20
+      },
+      "revId": "bb9e6c4f6421bf5b21cbdc172cd1fd671f225ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fba69f26_85afb6e7",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-03T00:18:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbb18759_e04e6c6a",
       "range": {
         "startLine": 263,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fb113f0a_bc1940c9",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-03T00:18:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b18372c_c9ed6177",
+      "range": {
+        "startLine": 321,
+        "startChar": 34,
+        "endLine": 321,
+        "endChar": 39
+      },
+      "revId": "bb9e6c4f6421bf5b21cbdc172cd1fd671f225ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fba69f26_5f375bba",
         "filename": "board/cr50/tpm2/hash.c",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5b1deb19_e5cb2022",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-03T00:18:05Z",
+      "side": 1,
+      "message": "added a comment",
+      "parentUuid": "fba69f26_5f375bba",
+      "range": {
+        "startLine": 324,
+        "startChar": 3,
+        "endLine": 324,
+        "endChar": 17
+      },
+      "revId": "bb9e6c4f6421bf5b21cbdc172cd1fd671f225ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbae3bf9_c68702fa",
         "filename": "include/extension.h",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2015-12-02T19:21:49Z",
       "side": 1,
       "message": "... which may indicate an error? or not?",
+      "range": {
+        "startLine": 33,
+        "startChar": 70,
+        "endLine": 34,
+        "endChar": 62
+      },
+      "revId": "bb9e6c4f6421bf5b21cbdc172cd1fd671f225ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bb8433f_45bf88ec",
+        "filename": "include/extension.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-03T00:18:05Z",
+      "side": 1,
+      "message": "added a comment",
+      "parentUuid": "dbae3bf9_c68702fa",
       "range": {
         "startLine": 33,
         "startChar": 70,
