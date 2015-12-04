@@ -22,6 +22,30 @@
       "revId": "272b5800c9a6e7774b6bba79a90dc5f66cd90485",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "404ed883_998dab58",
+        "filename": "board/strago/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-12-04T21:12:11Z",
+      "side": 1,
+      "message": "According to the soc datasheet, this pin is default to have a 5K internal pull-up.\n\nhttp://www.intel.com/content/dam/www/public/us/en/documents/datasheets/pentium-celeron-n-series-datasheet-vol-3.pdf\n\nPage 1787 - LPC_CLKRUNB_PAD_CFG0 - Offset 5008h - Bit[23:20]",
+      "parentUuid": "8091b00f_d3145429",
+      "range": {
+        "startLine": 124,
+        "startChar": 62,
+        "endLine": 124,
+        "endChar": 75
+      },
+      "revId": "272b5800c9a6e7774b6bba79a90dc5f66cd90485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
