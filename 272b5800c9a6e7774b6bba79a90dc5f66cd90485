@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8091b00f_d3145429",
+        "filename": "board/strago/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2015-12-04T18:52:03Z",
+      "side": 1,
+      "message": "Does this mean corresponding pin in SOC/PCH side is configured as either PU or PD ?",
+      "range": {
+        "startLine": 124,
+        "startChar": 62,
+        "endLine": 124,
+        "endChar": 75
+      },
+      "revId": "272b5800c9a6e7774b6bba79a90dc5f66cd90485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
