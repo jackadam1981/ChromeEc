@@ -1253,7 +1253,8 @@ static int tcpc_i2c_read(int port, int reg, uint8_t *payload)
 		payload[0] = pd[port].power_status_mask;
 		return 1;
 	case TCPC_REG_TX_BYTE_CNT:
-		payload[0] = PD_HEADER_CNT(pd[port].tx_head);
+		/* TX_BYTE_CNT includes 2 bytes for message header */
+		payload[0] = PD_HEADER_CNT(pd[port].tx_head) + 2;
 		return 1;
 	case TCPC_REG_TX_HDR:
 		payload[0] = pd[port].tx_head & 0xff;
