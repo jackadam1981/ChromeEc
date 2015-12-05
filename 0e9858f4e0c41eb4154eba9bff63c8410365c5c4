@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8091b00f_995d8b2c",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1257,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-12-05T01:02:44Z",
+      "side": 1,
+      "message": "this doesn\u0027t seem right.\nPD_HEADER_CNT returns bits [14:12] the \u0027Number of Data Objects\u0027 (ie 32-bit data objects)\nso we are adding here bytes to 32-bit word count.\n\nMaybe the original code was wrong here, but the patch seems worse.",
+      "range": {
+        "startLine": 1257,
+        "startChar": 15,
+        "endLine": 1257,
+        "endChar": 50
+      },
+      "revId": "0e9858f4e0c41eb4154eba9bff63c8410365c5c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20a2c463_d92a34ba",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-12-05T01:02:44Z",
+      "side": 1,
+      "message": "the wording in the spec sounds strange to me.\nbut I imagine that\u0027s indeed the proper interpretation.",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 54
+      },
+      "revId": "0e9858f4e0c41eb4154eba9bff63c8410365c5c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
