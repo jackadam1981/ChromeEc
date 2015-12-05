@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "204d6487_39a7d3d0",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1257,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-12-05T01:05:18Z",
+      "side": 1,
+      "message": "yes, you\u0027re right, the original code was also broken. should be 4*PD_HEADER_COUNT() + 2. But, really do we need to support reading this at all? I\u0027d rather just delete this case.",
+      "parentUuid": "8091b00f_995d8b2c",
+      "range": {
+        "startLine": 1257,
+        "startChar": 15,
+        "endLine": 1257,
+        "endChar": 50
+      },
+      "revId": "0e9858f4e0c41eb4154eba9bff63c8410365c5c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20a2c463_d92a34ba",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
