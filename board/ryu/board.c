@@ -53,8 +53,6 @@
 /* Input current error margin */
 #define IADP_ERROR_MARGIN_MA 100
 
-static int charge_current_limit;
-
 /*
  * PD host event status for host command
  * Note: this variable must be aligned on 4-byte boundary because we pass the
@@ -546,11 +544,7 @@ int board_set_active_charge_port(int charge_port)
  */
 void board_set_charge_limit(int charge_ma)
 {
-	int rv;
-
-	charge_current_limit = MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT);
-	rv = charge_set_input_current_limit(charge_current_limit);
-	if (rv < 0)
+	if (charge_set_input_current_limit(charge_ma))
 		CPRINTS("Failed to set input current limit for PD");
 }
 

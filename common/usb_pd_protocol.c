@@ -937,6 +937,19 @@ static void handle_ctrl_request(int port, uint16_t head,
 			pd[port].flags &= ~PD_FLAGS_EXPLICIT_CONTRACT;
 			set_state(port, PD_STATE_SNK_SWAP_SNK_DISABLE);
 		} else if (pd[port].task_state == PD_STATE_SNK_REQUESTED) {
+#ifdef CONFIG_CHARGE_MANAGER
+			/*
+			 * If we have enough battery power, then stop drawing
+			 * current during source transition. After transition
+			 * is over, PS_RDY or hard reset, will remove the
+			 * charge ceiling and allow normal charge. See
+			 * crbug.com/p/44340 for more info.
+			 */
+			if (charge_get_percent() >= CONFIG_USB_PD_MIN_BATT_SOC)
+				charge_manager_set_ceil(port,
+							CEIL_REQUESTOR_PD, 0);
+#endif
+
 			/* explicit contract is now in place */
 			pd[port].flags |= PD_FLAGS_EXPLICIT_CONTRACT;
 			set_state(port, PD_STATE_SNK_TRANSITION);
@@ -1192,18 +1205,12 @@ static void pd_update_try_source(void)
 {
 	int i;
 
-#ifndef CONFIG_CHARGER
-	int batt_soc = board_get_battery_soc();
-#else
-	int batt_soc = charge_get_percent();
-#endif
-
 	/*
 	 * Enable try source when dual-role toggling AND battery is present
 	 * and at some minimum percentage.
 	 */
 	pd_try_src_enable = drp_state == PD_DRP_TOGGLE_ON &&
-			    batt_soc >= CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC;
+			    charge_get_percent() >= CONFIG_USB_PD_MIN_BATT_SOC;
 
 	/*
 	 * Clear this flag to cover case where a TrySrc

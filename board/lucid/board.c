@@ -129,11 +129,7 @@ int board_set_active_charge_port(int charge_port)
 
 void board_set_charge_limit(int charge_ma)
 {
-	int rv;
-
-	charge_ma = MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT);
-	rv = charge_set_input_current_limit(charge_ma);
-	if (rv < 0)
+	if (charge_set_input_current_limit(charge_ma))
 		CPRINTS("Failed to set input current limit for PD");
 }
 

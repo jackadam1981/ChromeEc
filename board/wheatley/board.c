@@ -310,8 +310,7 @@ int board_set_active_charge_port(int charge_port)
  */
 void board_set_charge_limit(int charge_ma)
 {
-	charge_set_input_current_limit(MAX(charge_ma,
-					   CONFIG_CHARGER_INPUT_CURRENT));
+	charge_set_input_current_limit(charge_ma);
 }
 
 /* Enable or disable input devices, based upon chipset state and tablet mode */
