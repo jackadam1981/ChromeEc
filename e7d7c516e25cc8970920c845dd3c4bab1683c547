@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "60dafc65_ee9c5f80",
+        "filename": "setup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-12-08T18:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80a530c9_9f4753a1",
+      "revId": "e7d7c516e25cc8970920c845dd3c4bab1683c547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0af948e_6ca763cf",
         "filename": "setup.py",
         "patchSetId": 2
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "40d5f831_ed9c6580",
+        "filename": "setup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-12-08T18:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0af948e_6ca763cf",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "e7d7c516e25cc8970920c845dd3c4bab1683c547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80a530c9_7f4dafbf",
         "filename": "setup.py",
         "patchSetId": 2
@@ -83,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "60dafc65_aea657d0",
+        "filename": "setup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-12-08T18:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80a530c9_7f4dafbf",
+      "revId": "e7d7c516e25cc8970920c845dd3c4bab1683c547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0c4887f_5907a35f",
         "filename": "util/ec3po/__init__.py",
         "patchSetId": 2
@@ -94,6 +154,24 @@
       "writtenOn": "2015-12-08T03:00:14Z",
       "side": 1,
       "message": "should add a module docstring here",
+      "revId": "e7d7c516e25cc8970920c845dd3c4bab1683c547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80b290f4_cb5cd5cc",
+        "filename": "util/ec3po/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2015-12-08T18:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0c4887f_5907a35f",
       "revId": "e7d7c516e25cc8970920c845dd3c4bab1683c547",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
