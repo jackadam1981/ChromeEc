@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8041b0d9_3ff2a700",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-12-08T20:21:29Z",
+      "side": 1,
+      "message": "When the transition to PS_RDY fails, we go to HARD_RESET_SEND, are we really updating the ceiling from there ?",
+      "range": {
+        "startLine": 944,
+        "startChar": 15,
+        "endLine": 944,
+        "endChar": 52
+      },
+      "revId": "ea5f1842f457c943388a6acde23a4ea6423d7bff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
