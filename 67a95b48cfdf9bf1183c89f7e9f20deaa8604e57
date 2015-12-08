@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "40d5f831_0dcfb17f",
+        "filename": "common/firmware_image.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-08T18:13:57Z",
+      "side": 1,
+      "message": "will do.",
+      "parentUuid": "e0b50cdb_4e2ff380",
+      "range": {
+        "startLine": 5,
+        "startChar": 24,
+        "endLine": 5,
+        "endChar": 43
+      },
+      "revId": "67a95b48cfdf9bf1183c89f7e9f20deaa8604e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0b50cdb_ce1a2356",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-12-08T17:58:10Z",
       "side": 1,
       "message": "typo: two?",
+      "range": {
+        "startLine": 853,
+        "startChar": 24,
+        "endLine": 853,
+        "endChar": 26
+      },
+      "revId": "67a95b48cfdf9bf1183c89f7e9f20deaa8604e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60dafc65_eec33f5f",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-08T18:13:57Z",
+      "side": 1,
+      "message": "will fix.",
+      "parentUuid": "e0b50cdb_ce1a2356",
       "range": {
         "startLine": 853,
         "startChar": 24,
