@@ -529,6 +529,11 @@ int lpc_query_host_event_state(void)
 	return evt_index;
 }
 
+void lpc_clear_host_events(void)
+{
+	while (lpc_query_host_event_state() != 0);
+}
+
 void lpc_set_host_event_mask(enum lpc_host_event_type type, uint32_t mask)
 {
 	event_mask[type] = mask;
@@ -593,3 +598,52 @@ static int lpc_get_protocol_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
 		lpc_get_protocol_info,
 		EC_VER_MASK(0));
+
+#ifdef CONFIG_POWER_S0IX
+/*
+ * In the AP S0 -> S3 transition,
+ * the chipset_suspend is called.
+ *
+ * For the S0 -> S0ix, this function will be additionally called.
+ * This is setting the wake masks for lid open.
+ *
+ * In the S3 flow, Coreboot will get an SMI and then
+ * invoke EC functions to set the wake masks.
+ *
+ * For the S0ix flow, the masks are set directly in EC
+ *
+ */
+void lpc_freeze(void)
+{
+	uint32_t mask = 0;
+
+	mask = ((lpc_get_host_event_mask(LPC_HOST_EVENT_WAKE)) | EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN));
+	lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, mask);
+}
+
+/*
+ * In the AP S3 -> S0 transition,
+ * the chipset_resume hook is called.
+ *
+ * For the S0ix -> S0, this function will be additionally called.
+ * This is clearing the wake masks for lid open.
+ *
+ * In the S0 flow, Coreboot will invoke EC functions to set the wake masks
+ * during init.
+ *
+ * For the S0ix flow, the masks are set directly in EC
+ *
+ */
+void lpc_thaw(void)
+{
+	lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0);
+
+	lpc_clear_host_events();
+}
+
+DECLARE_HOOK(HOOK_CHIPSET_FREEZE, lpc_freeze,
+	     HOOK_PRIO_DEFAULT);
+
+DECLARE_HOOK(HOOK_CHIPSET_THAW, lpc_thaw,
+	     HOOK_PRIO_DEFAULT);
+#endif

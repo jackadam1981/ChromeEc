@@ -158,6 +158,22 @@ enum hook_type {
 	 * Hook routines will be called from the TICK task.
 	 */
 	HOOK_SECOND,
+
+	/*
+	 * System is freezing to S0ix. This hook is called in addition
+	 * to the chipset_suspend hook for any specific S0ix actions.
+	 *
+	 * Hook routines are called from the chipset task.
+	 */
+	HOOK_CHIPSET_FREEZE,
+
+	/*
+	 * System is resuming from S0ix. This hook is called in addition
+	 * to the chipset_resume hook for any specific S0ix actions.
+	 *
+	 * Hook routines are called from the chipset task.
+	 */
+	HOOK_CHIPSET_THAW,
 };
 
 struct hook_data {
