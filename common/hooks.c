@@ -48,6 +48,8 @@ static const struct hook_ptrs hook_list[] = {
 	{__hooks_battery_soc_change, __hooks_battery_soc_change_end},
 	{__hooks_tick, __hooks_tick_end},
 	{__hooks_second, __hooks_second_end},
+	{__hooks_chipset_freeze, __hooks_chipset_freeze_end},
+	{__hooks_chipset_thaw, __hooks_chipset_thaw_end},
 };
 
 /* Times for deferrable functions */

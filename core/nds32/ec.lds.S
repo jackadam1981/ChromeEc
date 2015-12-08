@@ -129,6 +129,14 @@ SECTIONS
         KEEP(*(.rodata.HOOK_SECOND))
         __hooks_second_end = .;
 
+        __hooks_chipset_freeze = .;
+        KEEP(*(.rodata.HOOK_CHIPSET_FREEZE))
+        __hooks_chipset_freeze_end = .;
+
+        __hooks_chipset_thaw = .;
+        KEEP(*(.rodata.HOOK_CHIPSET_THAW))
+        __hooks_chipset_thaw_end = .;
+
         __deferred_funcs = .;
         KEEP(*(.rodata.deferred))
         __deferred_funcs_end = .;

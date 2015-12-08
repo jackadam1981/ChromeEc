@@ -277,6 +277,9 @@ static enum power_state _power_handle_state(enum power_state state)
 
 #ifdef CONFIG_POWER_S0IX
 	case POWER_S0S0ix:
+		/* call hook for S0ix specific operations*/
+		hook_notify(HOOK_CHIPSET_FREEZE);
+
 		/* call hooks before standby */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 
@@ -298,6 +301,9 @@ static enum power_state _power_handle_state(enum power_state state)
 		 * power idle task will not go into deep sleep while in S0.
 		 */
 		disable_sleep(SLEEP_MASK_AP_RUN);
+
+		/* call hook for S0ix specific operations*/
+		hook_notify(HOOK_CHIPSET_THAW);
 
 		return POWER_S0;
 #endif
