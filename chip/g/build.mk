@@ -26,6 +26,7 @@ chip-y += uart.o
 endif
 
 chip-$(CONFIG_DCRYPTO)+= dcrypto/aes.o
+chip-$(CONFIG_DCRYPTO)+= dcrypto/rsa.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/sha1.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/sha256.o
 
