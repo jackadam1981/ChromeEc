@@ -166,6 +166,30 @@
       "revId": "2572bc35075530098b7a83edbb4418472ed8a877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "253496db_af7ed542",
+        "filename": "common/als.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-09T20:51:53Z",
+      "side": 1,
+      "message": ".. but the code doesn\u0027t implement my suggestion. We should call als_task_enable() on HOOK_INIT only if we sysjumped to the image and we\u0027re in S0.",
+      "parentUuid": "855c6237_a7416aec",
+      "range": {
+        "startLine": 80,
+        "startChar": 59,
+        "endLine": 80,
+        "endChar": 61
+      },
+      "revId": "2572bc35075530098b7a83edbb4418472ed8a877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
