@@ -31,6 +31,11 @@ struct HASH_CTX;   /* Forward declaration. */
 typedef struct HASH_CTX SHA1_CTX;
 typedef struct HASH_CTX SHA256_CTX;
 
+enum hashing_mode {
+	HASH_SHA1 = 0,
+	HASH_SHA256 = 1
+};
+
 #define DCRYPTO_HASH_update(ctx, data, len) \
 	((ctx)->vtab->update((ctx), (data), (len)))
 #define DCRYPTO_HASH_final(ctx) \
@@ -71,5 +76,50 @@ const uint8_t *DCRYPTO_SHA1_hash(const uint8_t *data, uint32_t n,
 #define DCRYPTO_SHA256_final(ctx) DCRYPTO_HASH_final((ctx))
 const uint8_t *DCRYPTO_SHA256_hash(const uint8_t *data, uint32_t n,
 				uint8_t *digest);
+
+/*
+ *  RSA.
+ */
+
+#define RSA_MAX_BYTES   260       /* Largest supported key size, 2048-bits. */
+
+struct bignum_st {
+	uint32_t dmax;            /* Size of d, in 32-bit words. */
+	uint32_t *d;              /* Word array, little endien format.. */
+};
+typedef struct bignum_st BIGNUM;
+
+typedef struct {
+	uint32_t e;
+	BIGNUM N;
+	BIGNUM d;
+} RSA;
+
+enum padding_mode {
+	PADDING_MODE_PKCS1 = 0,
+	PADDING_MODE_OAEP  = 1
+};
+
+/* Calculate r = m ^ e mod N */
+int DCRYPTO_rsa_encrypt(RSA *rsa, uint8_t *out, uint32_t *out_len,
+			const uint8_t *in, const uint32_t in_len,
+			enum padding_mode padding, enum hashing_mode hashing,
+			const char *label);
+
+/* Calculate r = m ^ d mod N */
+int DCRYPTO_rsa_decrypt(RSA *rsa, uint8_t *out, uint32_t *out_len,
+			const uint8_t *in, const uint32_t in_len,
+			enum padding_mode padding, enum hashing_mode hashing,
+			const char *label);
+
+/* Calculate r = m ^ d mod N */
+int DCRYPTO_rsa_sign(RSA *rsa, uint8_t *out, uint32_t *out_len,
+		const uint8_t *in, const uint32_t in_len,
+		enum padding_mode padding, enum hashing_mode hashing);
+
+/* Calculate r = m ^ e mod N */
+int DCRYPTO_rsa_verify(RSA *rsa, const uint8_t *digest, uint32_t digest_len,
+		const uint8_t *sig, const uint32_t sig_len,
+		enum padding_mode padding, enum hashing_mode hashing);
 
 #endif  /* ! __EC_CHIP_G_DCRYPTO_DCRYPTO_H */

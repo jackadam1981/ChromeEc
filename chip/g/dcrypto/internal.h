@@ -8,10 +8,18 @@
 
 #include <inttypes.h>
 
+#ifndef LOCAL_BUILD
 #include "common.h"
 #include "sha1.h"
 #include "sha256.h"
+#else
+#include <stddef.h>
+#define SHA_DIGEST_MAX_BYTES  32
+#endif
 
+/*
+ * SHA.
+ */
 #define CTRL_CTR_BIG_ENDIAN (__BYTE_ORDER__  == __ORDER_BIG_ENDIAN__)
 #define CTRL_ENABLE         1
 #define CTRL_ENCRYPT        1
@@ -46,6 +54,17 @@ struct HASH_VTAB {
 #define SHA_DIGEST_MAX_BYTES SHA1_DIGEST_BYTES
 #endif
 
+#ifdef LOCAL_BUILD
+struct sha1_ctx {
+	void *dummy;
+};
+
+struct sha256_ctx {
+	void *dummy;
+};
+
+#endif
+
 struct HASH_CTX {
 	const struct HASH_VTAB *vtab;
 	union {
@@ -78,5 +97,19 @@ void dcrypto_sha_init(enum sha_mode mode);
 void dcrypto_sha_update(struct HASH_CTX *unused,
 			const uint8_t *data, uint32_t n);
 void dcrypto_sha_wait(enum sha_mode mode, uint32_t *digest);
+
+/*
+ * BIGNUM.
+ */
+#define BN_BITS2        32
+#define BN_BYTES        4
+
+typedef struct bignum_st BIGNUM;
+
+void bn_init(BIGNUM *bn, uint8_t *buf, size_t len);
+#define bn_size(b) ((b)->dmax * BN_BYTES)
+int bn_check_topbit(const BIGNUM *N);
+void bn_mont_modexp(BIGNUM *output, const BIGNUM *input,
+		const BIGNUM *exp, const BIGNUM *N);
 
 #endif  /* ! __EC_CHIP_G_DCRYPTO_INTERNAL_H */
