@@ -33,21 +33,6 @@ UINT16 _cpri__CompleteHMAC(
   return -1;
 }
 
-CRYPT_RESULT _cpri__DecryptRSA(
-  UINT32 * dOutSize,            //   OUT: the size of the decrypted data
-  BYTE * dOut,                  //   OUT: the decrypted data
-  RSA_KEY * key,                //   IN: the key to use for decryption
-  TPM_ALG_ID padType,           //   IN: the type of padding
-  UINT32 cInSize,               //   IN: the amount of data to decrypt
-  BYTE * cIn,                   //   IN: the data to decrypt
-  TPM_ALG_ID hashAlg,           //   IN: in case this is needed for the scheme
-  const char *label             //   IN: in case it is needed for the scheme
-  )
-{
-  ecprintf("%s called\n", __func__);
-  return CRYPT_FAIL;
-}
-
 CRYPT_RESULT _cpri__DrbgGetPutState(
   GET_PUT direction,
   int bufferSize,
@@ -103,21 +88,6 @@ CRYPT_RESULT _cpri__EccPointMultiply(
   // curve generator
   TPMS_ECC_POINT * Qin,         //   IN: point Q
   TPM2B_ECC_PARAMETER * uIn     //   IN: scalar value for the multiplier of Q
-  )
-{
-  ecprintf("%s called\n", __func__);
-  return CRYPT_FAIL;
-}
-
-CRYPT_RESULT _cpri__EncryptRSA(
-  UINT32 * cOutSize,            //   OUT: the size of the encrypted data
-  BYTE * cOut,                  //   OUT: the encrypted data
-  RSA_KEY * key,                //   IN: the key to use for encryption
-  TPM_ALG_ID padType,           //   IN: the type of padding
-  UINT32 dInSize,               //   IN: the amount of data to encrypt
-  BYTE * dIn,                   //   IN: the data to encrypt
-  TPM_ALG_ID hashAlg,           //   IN: in case this is needed
-  const char *label             //   IN: in case it is needed
   )
 {
   ecprintf("%s called\n", __func__);
