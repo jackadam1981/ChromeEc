@@ -1835,6 +1835,9 @@
 /* Use DAC as reference for comparator at 850mV. */
 #undef CONFIG_PD_USE_DAC_AS_REF
 
+/* Use this option if need to notify the PD accessory mode to SoC */
+#undef CONFIG_PD_ACC_MODE_NOTIFY
+
 /* USB Product ID. */
 #undef CONFIG_USB_PID
 
