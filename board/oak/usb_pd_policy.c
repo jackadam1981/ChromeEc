@@ -37,6 +37,12 @@ const uint32_t pd_snk_pdo[] = {
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
+static const int pd_acc_event[PD_ACC_MODE_COUNT] = {
+	[PD_ACC_MODE_NONE]  = PD_EVENT_ACC_MODE_NONE,
+	[PD_ACC_MODE_AUDIO] = PD_EVENT_ACC_MODE_AUDIO,
+	[PD_ACC_MODE_DEBUG] = PD_EVENT_ACC_MODE_DEBUG,
+};
+
 int pd_is_valid_input_voltage(int mv)
 {
 	return 1;
@@ -160,6 +166,15 @@ void pd_check_dr_role(int port, int dr_role, int flags)
 	if ((flags & PD_FLAGS_PARTNER_DR_DATA) && dr_role == PD_ROLE_UFP)
 		pd_request_data_swap(port);
 }
+
+void pd_set_accessory_mode(int port, int mode)
+{
+	int event;
+	event = pd_acc_event[mode];
+	/* notify host the accessory mode */
+	pd_send_host_event(event);
+}
+
 /* ----------------- Vendor Defined Messages ------------------ */
 const struct svdm_response svdm_rsp = {
 	.identity = NULL,

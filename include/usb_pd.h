@@ -728,6 +728,13 @@ enum pd_cc_states {
 	PD_CC_DFP_ATTACHED
 };
 
+enum pd_accessory_mode {
+	PD_ACC_MODE_NONE,
+	PD_ACC_MODE_AUDIO,
+	PD_ACC_MODE_DEBUG,
+	PD_ACC_MODE_COUNT
+};
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 enum pd_dual_role_states {
 	PD_DRP_TOGGLE_ON,
@@ -1522,6 +1529,14 @@ void pd_prepare_reset(void);
  * @param port USB-C port number
  */
 void pd_set_new_power_request(int port);
+
+/**
+ * Set the accessory mode and notify SoC the accessory is present.
+ *
+ * @param port USB-C port number
+ * @param mode accessory mode
+ */
+void pd_set_accessory_mode(int port, int mode);
 
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING

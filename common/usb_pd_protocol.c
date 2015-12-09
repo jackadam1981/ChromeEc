@@ -1625,8 +1625,15 @@ void pd_task(void)
 				/* Set the USB muxes and the default USB role */
 				pd_set_data_role(port, CONFIG_USB_PD_DEBUG_DR);
 
-#ifdef CONFIG_CASE_CLOSED_DEBUG
+				if (new_cc_state == PD_CC_AUDIO_ACC) {
+					pd_set_accessory_mode(port,
+							      PD_ACC_MODE_AUDIO);
+				}
+
 				if (new_cc_state == PD_CC_DEBUG_ACC) {
+					pd_set_accessory_mode(port,
+							      PD_ACC_MODE_DEBUG);
+#ifdef CONFIG_CASE_CLOSED_DEBUG
 					ccd_set_mode(system_is_locked() ?
 						     CCD_MODE_PARTIAL :
 						     CCD_MODE_ENABLED);
@@ -1634,8 +1641,8 @@ void pd_task(void)
 						port, 3000, TYPE_C_VOLTAGE);
 					charge_manager_update_dualrole(
 						port, CAP_DEDICATED);
-				}
 #endif
+				}
 				set_state(port, PD_STATE_SRC_ACCESSORY);
 			}
 			break;
@@ -1653,6 +1660,7 @@ void pd_task(void)
 			     (cc1 != TYPEC_CC_VOLT_RD ||
 			      cc2 != TYPEC_CC_VOLT_RD))) {
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
+				pd_set_accessory_mode(port, PD_ACC_MODE_NONE);
 #ifdef CONFIG_CASE_CLOSED_DEBUG
 				ccd_set_mode(CCD_MODE_DISABLED);
 #endif
