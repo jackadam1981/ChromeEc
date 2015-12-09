@@ -15,6 +15,8 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "system.h"
+#include "chipset.h"
 
 #define ALS_POLL_PERIOD SECOND
 
@@ -77,8 +79,16 @@ static void als_task_disable(void)
 	task_timeout = -1;
 }
 
+static void als_task_init(void)
+{
+	if (system_jumped_to_this_image() &&
+		chipset_in_state(CHIPSET_STATE_ON))
+		als_task_enable();
+}
+
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, als_task_enable, HOOK_PRIO_ALS_INIT);
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, als_task_disable, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, als_task_init, HOOK_PRIO_ALS_INIT);
 
 /*****************************************************************************/
 /* Console commands */
