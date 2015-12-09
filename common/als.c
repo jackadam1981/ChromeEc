@@ -77,6 +77,7 @@ static void als_task_disable(void)
 	task_timeout = -1;
 }
 
+DECLARE_HOOK(HOOK_INIT, als_task_enable, HOOK_PRIO_ALS_INIT);
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, als_task_enable, HOOK_PRIO_ALS_INIT);
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, als_task_disable, HOOK_PRIO_DEFAULT);
 
