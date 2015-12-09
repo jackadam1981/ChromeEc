@@ -94,6 +94,30 @@
       "revId": "2572bc35075530098b7a83edbb4418472ed8a877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0650cc5_7aa4f924",
+        "filename": "common/als.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-12-09T08:42:46Z",
+      "side": 1,
+      "message": "So instead, perhaps a new function with HOOK_INIT that first checks \"system_jumped_to_this_image()\" and then sets the task timeout and wake.  In order to respect the failed initialization path from als_task_enable then it probably needs to save the current task timeout with HOOK_SYSJUMP and re-use it in the HOOK_INIT function.",
+      "parentUuid": "e04a6c41_b21a20b9",
+      "range": {
+        "startLine": 80,
+        "startChar": 59,
+        "endLine": 80,
+        "endChar": 61
+      },
+      "revId": "2572bc35075530098b7a83edbb4418472ed8a877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
