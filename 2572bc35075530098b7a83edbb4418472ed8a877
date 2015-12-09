@@ -46,6 +46,30 @@
       "revId": "2572bc35075530098b7a83edbb4418472ed8a877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60791c73_f614a08c",
+        "filename": "common/als.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2015-12-09T07:07:29Z",
+      "side": 1,
+      "message": "It shouldn\u0027t need to call init() on the ALS chips though since the chip should still be set up.  Maybe a function that is called on HOOK_SYSJUMP that sets task_timeout\u003dALS_POLL_PERIOD and wakes the ALS task?",
+      "parentUuid": "40efb832_63655660",
+      "range": {
+        "startLine": 80,
+        "startChar": 59,
+        "endLine": 80,
+        "endChar": 61
+      },
+      "revId": "2572bc35075530098b7a83edbb4418472ed8a877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
