@@ -1624,6 +1624,14 @@ void pd_task(void)
 
 				/* Set the USB muxes and the default USB role */
 				pd_set_data_role(port, CONFIG_USB_PD_DEBUG_DR);
+#ifdef CONFIG_PD_ACC_MODE_NOTIFY
+				if (new_cc_state == PD_CC_AUDIO_ACC)
+					pd_set_accessory_mode(port,
+							      PD_ACC_MODE_AUDIO);
+				else if (new_cc_state == PD_CC_DEBUG_ACC)
+					pd_set_accessory_mode(port,
+							      PD_ACC_MODE_DEBUG);
+#endif
 
 #ifdef CONFIG_CASE_CLOSED_DEBUG
 				if (new_cc_state == PD_CC_DEBUG_ACC) {
@@ -1653,6 +1661,9 @@ void pd_task(void)
 			     (cc1 != TYPEC_CC_VOLT_RD ||
 			      cc2 != TYPEC_CC_VOLT_RD))) {
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
+#ifdef CONFIG_PD_ACC_MODE_NOTIFY
+				pd_set_accessory_mode(port, PD_ACC_MODE_NONE);
+#endif
 #ifdef CONFIG_CASE_CLOSED_DEBUG
 				ccd_set_mode(CCD_MODE_DISABLED);
 #endif
