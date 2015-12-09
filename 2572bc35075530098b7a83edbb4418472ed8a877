@@ -142,6 +142,30 @@
       "revId": "2572bc35075530098b7a83edbb4418472ed8a877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "855c6237_a7416aec",
+        "filename": "common/als.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115140
+      },
+      "writtenOn": "2015-12-09T19:02:47Z",
+      "side": 1,
+      "message": "Ok. Then I will keep the code as it is and submit a new patchset for the commit message change.",
+      "parentUuid": "c562daed_c9fc7127",
+      "range": {
+        "startLine": 80,
+        "startChar": 59,
+        "endLine": 80,
+        "endChar": 61
+      },
+      "revId": "2572bc35075530098b7a83edbb4418472ed8a877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
