@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "253496db_21cf94ab",
+        "filename": "common/als.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-10T22:34:26Z",
+      "side": 1,
+      "message": "Let\u0027s keep these includes alpha-sorted.",
+      "revId": "d4e9abdca63ade845927f97dae07af085d3859bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e55fde25_144cd9c2",
+        "filename": "common/als.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-10T22:34:26Z",
+      "side": 1,
+      "message": "Add a comment here stating something like the following -- we normally enable our ALS task in S0 only, and we may need to re-enable it if we sysjumped.",
+      "revId": "d4e9abdca63ade845927f97dae07af085d3859bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
