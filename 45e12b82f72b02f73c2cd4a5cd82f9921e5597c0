@@ -33,6 +33,24 @@
       "revId": "45e12b82f72b02f73c2cd4a5cd82f9921e5597c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65984e34_727b000b",
+        "filename": "chip/g/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-12-10T18:50:24Z",
+      "side": 1,
+      "message": "I indented it here as a hint that these are used to identify bits within the DAINTMSK register. Same as with GINTMSK above.",
+      "parentUuid": "05487277_b20abe34",
+      "revId": "45e12b82f72b02f73c2cd4a5cd82f9921e5597c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
