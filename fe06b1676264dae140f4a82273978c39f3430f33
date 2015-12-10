@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "253496db_9b52375b",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-10T18:08:23Z",
+      "side": 1,
+      "message": "maybe this should be something like \"DEBUG_USB\" to avoid possible collisions with other defines",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "fe06b1676264dae140f4a82273978c39f3430f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
