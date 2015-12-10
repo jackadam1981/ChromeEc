@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6553ee27_809c0a7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-10T17:40:14Z",
+      "side": 1,
+      "message": "seeing that USB still works would be a good extra proof that there has been no inadvertent changes.",
+      "revId": "45e12b82f72b02f73c2cd4a5cd82f9921e5597c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05487277_b20abe34",
+        "filename": "chip/g/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-10T17:40:14Z",
+      "side": 1,
+      "message": "is the extra space after #define required? \n\nShould these two definitions be placed near the rest of the changes to this file, and sorted alphanumerically?",
+      "revId": "45e12b82f72b02f73c2cd4a5cd82f9921e5597c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
