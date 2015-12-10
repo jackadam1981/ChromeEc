@@ -16,6 +16,24 @@
       "revId": "534efa1731f623171e16afa50736cd61156c87ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05487277_9db91395",
+        "filename": "chip/g/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-12-10T20:30:46Z",
+      "side": 1,
+      "message": "No reason. This is bit-order, which is just how I typed them in. I can sort alphabetically though.",
+      "parentUuid": "254d7687_be55e946",
+      "revId": "534efa1731f623171e16afa50736cd61156c87ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
