@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "254d7687_0b4cbec2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-12-11T01:34:11Z",
+      "side": 1,
+      "message": "Note, since this ends up doing an i2c transaction, we can\u0027t simply do this from a HOOK_INIT like board_init(), it needs to be part of a task. Yes, I know that behavior is fixed in ToT, but not here in the branch.",
+      "range": {
+        "startLine": 564,
+        "startChar": 1,
+        "endLine": 564,
+        "endChar": 23
+      },
+      "revId": "93c74fe7acde708ab7298d30c51187e813d20416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "855c6237_107e25bf",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-12-11T01:34:11Z",
+      "side": 1,
+      "message": "Note, can\u0027t simply change this to set the option to 0xe34e because this function gets called every time a charger is plugged in. So, if we want to change option0 from the host with an ectool or something, this would override that.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 33
+      },
+      "revId": "93c74fe7acde708ab7298d30c51187e813d20416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
