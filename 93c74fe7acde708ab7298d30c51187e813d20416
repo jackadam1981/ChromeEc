@@ -68,6 +68,30 @@
       "revId": "93c74fe7acde708ab7298d30c51187e813d20416",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05487277_cc8d9ee7",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-12-11T01:59:14Z",
+      "side": 1,
+      "message": "The charge inhibit bit is only set by a charger_set_mode(CHARGE_FLAG_INHIBIT_CHARGE), which is only set by charge state machine when we don\u0027t want to charge (desired voltage \u003d desired current \u003d 0). A sysjump should cause this bit to get reset and the charge state machine will re-determine what it wants to charge at when it first runs.\n\nIn terms of charging from a dual-role device, that is done by setting the charge_en GPIO. Since gpio\u0027s don\u0027t change on a sysjump, there will be no immediate change. After the sysjump, things should work as expected: PD state machine will detect charger and notify charge_manager which will set active charge port only once we confirm port partner is not a dual-role device.",
+      "parentUuid": "454eea83_9a52395b",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 27
+      },
+      "revId": "93c74fe7acde708ab7298d30c51187e813d20416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
