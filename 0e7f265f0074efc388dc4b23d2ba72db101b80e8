@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85b8e2a7_e77ae2c8",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-11T19:03:49Z",
+      "side": 1,
+      "message": "Checking this closer, instead of the change below, can we change this to \"... ++tries \u003c CHARGER_INITIALIZED_TRIES\"? I think it\u0027s slightly better, since we won\u0027t do an msleep when we\u0027re already destined for failure.",
+      "revId": "0e7f265f0074efc388dc4b23d2ba72db101b80e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
