@@ -70,6 +70,30 @@
       "revId": "272b5800c9a6e7774b6bba79a90dc5f66cd90485",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "254d7687_4153b51d",
+        "filename": "board/strago/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2015-12-11T20:12:26Z",
+      "side": 1,
+      "message": "We are checking this CL again along with coreboot change to enable SOC internal pullup. Will comment to add reference to the coreboot CL once it is verified and uploaded for review.",
+      "parentUuid": "40933818_86fc4b64",
+      "range": {
+        "startLine": 124,
+        "startChar": 62,
+        "endLine": 124,
+        "endChar": 75
+      },
+      "revId": "272b5800c9a6e7774b6bba79a90dc5f66cd90485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
