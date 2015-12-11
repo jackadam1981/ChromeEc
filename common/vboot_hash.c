@@ -326,12 +326,24 @@ DECLARE_CONSOLE_COMMAND(hash, command_hash,
 /****************************************************************************/
 /* Host commands */
 
+/**
+ * Get hash region based on offset.
+ * Returns 1 for RO, 0 for RW.
+ */
+static int get_region(int offset)
+{
+	return (offset == EC_VBOOT_HASH_OFFSET_RO || (offset ==
+		CONFIG_EC_PROTECTED_STORAGE_OFF + CONFIG_RO_STORAGE_OFF));
+}
+
 /* Fill in the response with the current hash status */
-static void fill_response(struct ec_response_vboot_hash *r)
+static void fill_response(struct ec_response_vboot_hash *r,
+			  int request_offset)
 {
 	if (in_progress)
 		r->status = EC_VBOOT_HASH_STATUS_BUSY;
-	else if (hash && !want_abort) {
+	else if (get_region(request_offset) == get_region(data_offset) &&
+		 hash && !want_abort) {
 		r->status = EC_VBOOT_HASH_STATUS_DONE;
 		r->hash_type = EC_VBOOT_HASH_TYPE_SHA256;
 		r->digest_size = SHA256_DIGEST_SIZE;
@@ -389,7 +401,7 @@ static int host_command_vboot_hash(struct host_cmd_handler_args *args)
 
 	switch (p->cmd) {
 	case EC_VBOOT_HASH_GET:
-		fill_response(r);
+		fill_response(r, p->offset);
 		args->response_size = sizeof(*r);
 		return EC_RES_SUCCESS;
 
@@ -408,7 +420,7 @@ static int host_command_vboot_hash(struct host_cmd_handler_args *args)
 			while (in_progress)
 				usleep(1000);
 
-		fill_response(r);
+		fill_response(r, p->offset);
 		args->response_size = sizeof(*r);
 		return EC_RES_SUCCESS;
 
