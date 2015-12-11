@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "454eea83_ee63ae1e",
+        "filename": "chip/g/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1141724
+      },
+      "writtenOn": "2015-12-11T17:47:19Z",
+      "side": 1,
+      "message": "Fair point, I\u0027ll add a lookup failure.",
+      "parentUuid": "855c6237_3cca259b",
+      "revId": "43f6cb901569f233e7fe723f5ff6155b375178a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6553ee27_237f9d8d",
         "filename": "chip/g/spi_master.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "253496db_69f10251",
+        "filename": "chip/g/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1141724
+      },
+      "writtenOn": "2015-12-11T17:47:19Z",
+      "side": 1,
+      "message": "Explicitly changed to default the first comparison to a clock divider of effectively 1 (value of 0). I flipped the conditional around to make this more obvious.",
+      "parentUuid": "6553ee27_237f9d8d",
+      "revId": "43f6cb901569f233e7fe723f5ff6155b375178a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "254d7687_d9e67f48",
         "filename": "chip/g/spi_master.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2015-12-11T00:35:15Z",
       "side": 1,
       "message": "a the two for loops needed? I.e. can you call spi_enable() on port 0 before port 1 clock is set?",
+      "revId": "43f6cb901569f233e7fe723f5ff6155b375178a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "253496db_09003edf",
+        "filename": "chip/g/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1141724
+      },
+      "writtenOn": "2015-12-11T17:47:19Z",
+      "side": 1,
+      "message": "Not anymore, refactored.",
+      "parentUuid": "254d7687_d9e67f48",
       "revId": "43f6cb901569f233e7fe723f5ff6155b375178a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
