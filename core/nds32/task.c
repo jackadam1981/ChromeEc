@@ -144,11 +144,7 @@ uint8_t task_stacks[0
 #undef TASK
 
 /* Reserve space to discard context on first context switch. */
-#ifdef CONFIG_FPU
-uint32_t scratchpad[17+18];
-#else
-uint32_t scratchpad[17];
-#endif
+uint32_t scratchpad[49];
 
 task_ *current_task = (task_ *)scratchpad;
 
@@ -297,6 +293,9 @@ void syscall_handler(int desched, task_id_t resched, int swirq)
 task_ *next_sched_task(void)
 {
 	task_ *new_task = __task_id_to_ptr(__fls(tasks_ready));
+
+	/* stack overflow (or almost) on the first context switch. */
+	ASSERT(((task_ *)scratchpad)->stack == (uint32_t *)scratchpad);
 
 #ifdef CONFIG_TASK_PROFILING
 	if (current_task != new_task) {
