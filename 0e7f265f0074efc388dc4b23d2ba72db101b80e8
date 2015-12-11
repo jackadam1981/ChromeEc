@@ -16,6 +16,24 @@
       "revId": "0e7f265f0074efc388dc4b23d2ba72db101b80e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e55fde25_2000b3df",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2015-12-11T19:56:14Z",
+      "side": 1,
+      "message": "CHARGER_INITIALIZED_TRIES\u003d10 means we want to delay at most 10 times, right? I put a log in msleep() block, it did only delay 10 times(when tries\u003d0~9, once it\u0027s 10, it will exit the while loop). So no extra delay observed.",
+      "parentUuid": "85b8e2a7_e77ae2c8",
+      "revId": "0e7f265f0074efc388dc4b23d2ba72db101b80e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
