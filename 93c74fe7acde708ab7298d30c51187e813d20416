@@ -45,6 +45,29 @@
       "revId": "93c74fe7acde708ab7298d30c51187e813d20416",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "454eea83_9a52395b",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-12-11T01:42:28Z",
+      "side": 1,
+      "message": "When we go through this after sysjumping,\nhow do we decide that \u0027charge inhibit\u0027 was not currently set ?\n(eg sysjump while connected to DRD ?)",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 27
+      },
+      "revId": "93c74fe7acde708ab7298d30c51187e813d20416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
