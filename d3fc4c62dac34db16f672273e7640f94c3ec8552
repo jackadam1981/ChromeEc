@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "25157684_e718bc5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-12-12T00:48:13Z",
+      "side": 1,
+      "message": "Be careful, Doug... you wouldn\u0027t want to start a snarky commit message war you will not win, now, would you? ;)",
+      "range": {
+        "startLine": 27,
+        "startChar": 23,
+        "endLine": 28,
+        "endChar": 9
+      },
+      "revId": "d3fc4c62dac34db16f672273e7640f94c3ec8552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05107294_29c58965",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2015-12-12T00:48:13Z",
+      "side": 1,
+      "message": "I was thinking this might have something to do with whether it\u0027s a disable or an enable that the power button is racing with, because the lid angle code only issues a disable when it\u0027s in tablet mode. But on second thought, I can\u0027t really come up with a scenario where that would make a difference (because the power button is also a disable, which has to come after the other one and finishes atomically because it\u0027s an interrupt).\n\nMaybe it\u0027s just because people generally don\u0027t resume with the power button (especially on devices that have the lid angle code, where it\u0027s weirdly on the side)... the only reason I need to do it is because of crbug.com/552049.",
+      "revId": "d3fc4c62dac34db16f672273e7640f94c3ec8552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45ed0ac9_8d7ac1c7",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 1
