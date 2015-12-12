@@ -46,6 +46,29 @@
       "revId": "d3fc4c62dac34db16f672273e7640f94c3ec8552",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5b81ad7_bce44dd1",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-12-12T00:43:57Z",
+      "side": 1,
+      "message": "I\u0027m confused how this works. If we are sitting here with key scanning disabled, and then scanning suddenly gets enabled, it seems the following will happen:\n- this task will wake\n- we will call keyboard_raw_drive_column(KEYBOARD_COLUMN_ALL)\n- we will check if a key is pressed\n\nBut if no key is pressed we will end up back here in task_wait_event(-1), only we\u0027ve never enabled the keyboard interrupt (keyboard_raw_enable_interrupt(1)). So, how does this wake up then when the user presses a key?\n\nI\u0027m not familiar enough with the key scanning task to know if it\u0027s indirectly enabled somewhere and it seems from comments like there are subtle race conditions enabling that interrupt.",
+      "range": {
+        "startLine": 619,
+        "startChar": 4,
+        "endLine": 619,
+        "endChar": 24
+      },
+      "revId": "d3fc4c62dac34db16f672273e7640f94c3ec8552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
