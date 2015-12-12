@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45ed0ac9_8d7ac1c7",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2015-12-12T00:29:50Z",
+      "side": 1,
+      "message": "Should this be volatile, so accesses to it aren\u0027t optimized out of loops?",
+      "range": {
+        "startLine": 92,
+        "startChar": 16,
+        "endLine": 92,
+        "endChar": 37
+      },
+      "revId": "d3fc4c62dac34db16f672273e7640f94c3ec8552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
