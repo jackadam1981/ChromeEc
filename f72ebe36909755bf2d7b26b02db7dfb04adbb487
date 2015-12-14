@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a57de6ee_4b6d390d",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-14T21:37:21Z",
+      "side": 1,
+      "message": "In fact, these alternate configs are duplicate (see line 102)! Let\u0027s remove one set.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 59
+      },
+      "revId": "f72ebe36909755bf2d7b26b02db7dfb04adbb487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
