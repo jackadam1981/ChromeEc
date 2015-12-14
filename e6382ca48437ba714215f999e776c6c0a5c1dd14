@@ -16,6 +16,24 @@
       "revId": "e6382ca48437ba714215f999e776c6c0a5c1dd14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05107294_377320f5",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2015-12-14T18:40:48Z",
+      "side": 1,
+      "message": "Hi Shawn,\n\nIs this right to replace this line with:\nint __attribute((weak)) i2c_port_is_smbus(int port) {\n        return 0;\n}\n\nThanks.\n\nLi",
+      "parentUuid": "e5cc3e7f_c8822328",
+      "revId": "e6382ca48437ba714215f999e776c6c0a5c1dd14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
