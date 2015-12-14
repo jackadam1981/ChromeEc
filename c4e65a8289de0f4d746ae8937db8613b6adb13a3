@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "0593126b_b17a98c7",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-14T21:37:49Z",
+      "side": 1,
+      "message": "Yes, it looks right.",
+      "parentUuid": "a5a406bb_50ca4c9b",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 131
+      },
+      "revId": "c4e65a8289de0f4d746ae8937db8613b6adb13a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c59bba8b_21538e62",
         "filename": "board/terra/gpio.inc",
         "patchSetId": 1
