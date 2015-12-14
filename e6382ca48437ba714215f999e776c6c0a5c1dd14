@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5cc3e7f_c8822328",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-14T04:33:15Z",
+      "side": 1,
+      "message": "You should should declare a __weak version of this function that returns 0 for any value of port.",
+      "revId": "e6382ca48437ba714215f999e776c6c0a5c1dd14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
