@@ -22,6 +22,30 @@
       "revId": "f72ebe36909755bf2d7b26b02db7dfb04adbb487",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c59bba8b_2185ceed",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2015-12-14T21:44:06Z",
+      "side": 1,
+      "message": "Done, I remove line 102 and 103",
+      "parentUuid": "a57de6ee_4b6d390d",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 59
+      },
+      "revId": "f72ebe36909755bf2d7b26b02db7dfb04adbb487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
