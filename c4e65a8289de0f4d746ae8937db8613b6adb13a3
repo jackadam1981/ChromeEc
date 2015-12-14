@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "852462f4_6a11379c",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-14T20:50:43Z",
+      "side": 1,
+      "message": "Microchip recommends input / PU state for NC pins for optimal power usage, but I\u0027m not sure about the difference in practice.",
+      "parentUuid": "c59bba8b_0121aae4",
+      "range": {
+        "startLine": 24,
+        "startChar": 56,
+        "endLine": 24,
+        "endChar": 58
+      },
+      "revId": "c4e65a8289de0f4d746ae8937db8613b6adb13a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65776e0f_e607fe2c",
         "filename": "board/terra/gpio.inc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-12-14T12:28:31Z",
       "side": 1,
       "message": "Should I replace the tab by space?",
+      "range": {
+        "startLine": 91,
+        "startChar": 45,
+        "endLine": 91,
+        "endChar": 48
+      },
+      "revId": "c4e65a8289de0f4d746ae8937db8613b6adb13a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0593126b_8ecd7be2",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-14T20:50:43Z",
+      "side": 1,
+      "message": "Yes, it\u0027s not a big deal, but try to be consistent -- either use tabs or spaces for spacing in this file.",
+      "parentUuid": "65776e0f_e607fe2c",
       "range": {
         "startLine": 91,
         "startChar": 45,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "651beeb8_2970e9bd",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-14T20:50:43Z",
+      "side": 1,
+      "message": "So, i2c2 and i2c3 are NC? If so, set the mask (0x3f) accordingly. 0x3f --\u003e pins 20, 21, 22, 23, 24, 25 are all set to function 2.",
+      "parentUuid": "a5a406bb_1067e4d2",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 131
+      },
+      "revId": "c4e65a8289de0f4d746ae8937db8613b6adb13a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c59bba8b_21538e62",
         "filename": "board/terra/gpio.inc",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-12-14T12:28:31Z",
       "side": 1,
       "message": "The GPIO062 is nc, should I modify this line?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 127
+      },
+      "revId": "c4e65a8289de0f4d746ae8937db8613b6adb13a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5865a2d_eca0c363",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-14T20:50:43Z",
+      "side": 1,
+      "message": "Yes, set the mask to 0x01 for GPIO060 only.",
+      "parentUuid": "c59bba8b_21538e62",
       "range": {
         "startLine": 123,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "852462f4_aa4b2fab",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-14T20:50:43Z",
+      "side": 1,
+      "message": "Yes, see above.",
+      "parentUuid": "a5a406bb_d03b9ca2",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 59
+      },
+      "revId": "c4e65a8289de0f4d746ae8937db8613b6adb13a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65c92e79_16a6fc85",
         "filename": "board/terra/gpio.inc",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "45a7cad1_c00e200e",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-14T20:50:43Z",
+      "side": 1,
+      "message": "Yes, remove entirely.",
+      "parentUuid": "65c92e79_16a6fc85",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 59
+      },
+      "revId": "c4e65a8289de0f4d746ae8937db8613b6adb13a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5a406bb_f038a0a8",
         "filename": "board/terra/gpio.inc",
         "patchSetId": 1
@@ -151,6 +295,30 @@
       "writtenOn": "2015-12-14T12:28:31Z",
       "side": 1,
       "message": "The GPIO022 and GPIO023 are nc, should I modify this line?",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 59
+      },
+      "revId": "c4e65a8289de0f4d746ae8937db8613b6adb13a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45a7cad1_a0131434",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-14T20:50:43Z",
+      "side": 1,
+      "message": "Yes, see above.",
+      "parentUuid": "a5a406bb_f038a0a8",
       "range": {
         "startLine": 137,
         "startChar": 0,
