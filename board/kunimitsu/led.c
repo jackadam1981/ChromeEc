@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Power and battery LED control for Glados.
+ * Power and battery LED control for Kunimitsu.
  */
 
 #include "battery.h"
@@ -18,8 +18,9 @@
 #define BAT_LED_ON 1
 #define BAT_LED_OFF 0
 
-#define CRITICAL_LOW_BATTERY_PERCENTAGE 3
-#define LOW_BATTERY_PERCENTAGE 10
+/* User is always reported -4% battery level */
+#define CRITICAL_LOW_BATTERY_PERCENTAGE 7
+#define LOW_BATTERY_PERCENTAGE 14
 
 #define LED_TOTAL_4SECS_TICKS 4
 #define LED_TOTAL_2SECS_TICKS 2
@@ -27,7 +28,7 @@
 #define LED_ON_2SECS_TICKS 2
 
 const enum ec_led_id supported_led_ids[] = {
-			EC_LED_ID_BATTERY_LED};
+			EC_LED_ID_BATTERY_LED, EC_LED_ID_POWER_LED};
 
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
@@ -113,18 +114,22 @@ static void kunimitsu_led_set_battery(void)
 		kunimitsu_led_set_color_battery(LED_AMBER);
 		break;
 	case PWR_STATE_DISCHARGE:
-		/* Less than 3%, blink one second every two second */
-		if (charge_get_percent() < CRITICAL_LOW_BATTERY_PERCENTAGE)
-			kunimitsu_led_set_color_battery(
-				(battery_ticks % LED_TOTAL_2SECS_TICKS <
-				 LED_ON_1SEC_TICKS) ? LED_AMBER : LED_OFF);
-		/* Less than 10%, blink one second every four seconds */
-		else if (charge_get_percent() < LOW_BATTERY_PERCENTAGE)
-			kunimitsu_led_set_color_battery(
-				(battery_ticks % LED_TOTAL_4SECS_TICKS <
-				 LED_ON_1SEC_TICKS) ? LED_AMBER : LED_OFF);
-		else
-			kunimitsu_led_set_color_battery(LED_OFF);
+		if (chipset_in_state(CHIPSET_STATE_ON)) {
+			/* Critial battery - blink one second every two second */
+			if (charge_get_percent() < CRITICAL_LOW_BATTERY_PERCENTAGE) {
+				kunimitsu_led_set_color_battery(
+					(battery_ticks % LED_TOTAL_2SECS_TICKS <
+					LED_ON_1SEC_TICKS) ? LED_AMBER : LED_OFF);
+				return;
+			}
+			/* Low battery - blink one second every four seconds */
+			else if (charge_get_percent() < LOW_BATTERY_PERCENTAGE) {
+				kunimitsu_led_set_color_battery(
+					(battery_ticks % LED_TOTAL_4SECS_TICKS <
+					LED_ON_1SEC_TICKS) ? LED_AMBER : LED_OFF);
+				return;
+			}
+		}
 		break;
 	case PWR_STATE_ERROR:
 		kunimitsu_led_set_color_battery(
@@ -132,15 +137,18 @@ static void kunimitsu_led_set_battery(void)
 			 LED_ON_1SEC_TICKS) ? LED_AMBER : LED_OFF);
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
-		kunimitsu_led_set_color_battery(LED_BLUE);
+		if (chipset_in_state(CHIPSET_STATE_ON))
+			kunimitsu_led_set_color_battery(LED_BLUE);
 		break;
 	case PWR_STATE_IDLE: /* External power connected in IDLE */
-		if (chflags & CHARGE_FLAG_FORCE_IDLE)
-			kunimitsu_led_set_color_battery(
-				(battery_ticks % LED_TOTAL_4SECS_TICKS <
-				 LED_ON_2SECS_TICKS) ? LED_AMBER : LED_BLUE);
-		else
-			kunimitsu_led_set_color_battery(LED_BLUE);
+		if (chipset_in_state(CHIPSET_STATE_ON)) {
+			if (chflags & CHARGE_FLAG_FORCE_IDLE)
+				kunimitsu_led_set_color_battery(
+					(battery_ticks % LED_TOTAL_4SECS_TICKS <
+					LED_ON_2SECS_TICKS) ? LED_AMBER : LED_BLUE);
+			else
+				kunimitsu_led_set_color_battery(LED_BLUE);
+		}
 		break;
 	default:
 		/* Other states don't alter LED behavior */
@@ -148,9 +156,38 @@ static void kunimitsu_led_set_battery(void)
 	}
 }
 
+static void kunimitsu_led_set_power(void)
+{
+	static int power_ticks;
+	static int previous_state_suspend;
+
+	power_ticks++;
+
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+		/* Reset ticks if entering suspend so LED turns amber
+		* as soon as possible. */
+		if (!previous_state_suspend)
+			power_ticks = 0;
+		/* Blink once every four seconds. */
+		kunimitsu_led_set_color_battery(
+				(power_ticks % LED_TOTAL_4SECS_TICKS <
+				LED_ON_2SECS_TICKS) ? LED_AMBER : LED_OFF);
+		previous_state_suspend = 1;
+		return;
+	}
+	previous_state_suspend = 0;
+
+	if (chipset_in_state(CHIPSET_STATE_ON))
+		kunimitsu_led_set_color_battery(LED_BLUE);
+	else if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		kunimitsu_led_set_color_battery(LED_OFF);
+}
+
 /** * Called by hook task every 1 sec  */
 static void led_second(void)
 {
+	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
+		kunimitsu_led_set_power();
 	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
 		kunimitsu_led_set_battery();
 }
