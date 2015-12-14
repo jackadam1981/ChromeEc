@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c59bba8b_0121aae4",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2015-12-14T12:28:31Z",
+      "side": 1,
+      "message": "I\u0027m not sure the difference with PULL_DOWN and PULL_UP for nc pin, which is better?",
+      "range": {
+        "startLine": 24,
+        "startChar": 56,
+        "endLine": 24,
+        "endChar": 58
+      },
+      "revId": "c4e65a8289de0f4d746ae8937db8613b6adb13a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65776e0f_e607fe2c",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2015-12-14T12:28:31Z",
+      "side": 1,
+      "message": "Should I replace the tab by space?",
+      "range": {
+        "startLine": 91,
+        "startChar": 45,
+        "endLine": 91,
+        "endChar": 48
+      },
+      "revId": "c4e65a8289de0f4d746ae8937db8613b6adb13a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5a406bb_1067e4d2",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2015-12-14T12:28:31Z",
+      "side": 1,
+      "message": "Terra has the temp sensor only, how do I modify this line?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 131
+      },
+      "revId": "c4e65a8289de0f4d746ae8937db8613b6adb13a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c59bba8b_21538e62",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2015-12-14T12:28:31Z",
+      "side": 1,
+      "message": "The GPIO062 is nc, should I modify this line?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 127
+      },
+      "revId": "c4e65a8289de0f4d746ae8937db8613b6adb13a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5a406bb_d03b9ca2",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2015-12-14T12:28:31Z",
+      "side": 1,
+      "message": "The GPIO017 is nc, should I modify this line?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 59
+      },
+      "revId": "c4e65a8289de0f4d746ae8937db8613b6adb13a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65c92e79_16a6fc85",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2015-12-14T12:28:31Z",
+      "side": 1,
+      "message": "The GPIO134 is nc, should I remove this line?",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 59
+      },
+      "revId": "c4e65a8289de0f4d746ae8937db8613b6adb13a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5a406bb_f038a0a8",
+        "filename": "board/terra/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2015-12-14T12:28:31Z",
+      "side": 1,
+      "message": "The GPIO022 and GPIO023 are nc, should I modify this line?",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 59
+      },
+      "revId": "c4e65a8289de0f4d746ae8937db8613b6adb13a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
