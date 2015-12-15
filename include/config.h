@@ -413,6 +413,18 @@
 #undef CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW
 
 /*
+ * Low battery power up retry and delay if battery level
+ * is below BAT_PCT.
+ */
+#define CHARGER_INITIALIZED_DELAY_MS 100
+#define CHARGER_INITIALIZED_TRIES 10
+
+/*
+ * No overwrite if battery is low and not allowed to power up.
+ */
+#undef CONFIG_CHARGER_NO_LOW_BAT_OVERWRITE
+
+/*
  * Equivalent of CONFIG_BATTERY_OVERRIDE_PARAMS for use with
  * CONFIG_CHARGER_V2
  */
