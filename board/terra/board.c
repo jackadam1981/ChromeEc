@@ -89,3 +89,4 @@ struct ec_thermal_config thermal_params[] = {
 	{{0, 0, 0}, 0, 0}, /* Battery Sensor */
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
+
