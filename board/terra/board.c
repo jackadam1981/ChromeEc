@@ -89,3 +89,12 @@ struct ec_thermal_config thermal_params[] = {
 	{{0, 0, 0}, 0, 0}, /* Battery Sensor */
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
+
+/* init ADC ports to avoid floating state due to thermistors */
+static void adc_pre_init(void)
+{
+       /* Configure GPIOs */
+	gpio_config_module(MODULE_ADC, 1);
+}
+DECLARE_HOOK(HOOK_INIT, adc_pre_init, HOOK_PRIO_INIT_ADC - 1);
+
