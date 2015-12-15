@@ -22,6 +22,30 @@
       "revId": "57e703ea24bcbaf6773288335110517e7da90da3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65e04ee1_98478da2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2015-12-15T21:39:33Z",
+      "side": 0,
+      "message": "Sure. I will put a separate patch just to fix the code error.",
+      "parentUuid": "05e5d2f2_357be00b",
+      "range": {
+        "startLine": 948,
+        "startChar": 52,
+        "endLine": 948,
+        "endChar": 53
+      },
+      "revId": "57e703ea24bcbaf6773288335110517e7da90da3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
