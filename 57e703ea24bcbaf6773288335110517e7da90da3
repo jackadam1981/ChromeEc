@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05e5d2f2_357be00b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-15T21:01:26Z",
+      "side": 0,
+      "message": "Thanks for fixing this. Can you put up a separate patch that just fixes this bug?",
+      "range": {
+        "startLine": 948,
+        "startChar": 52,
+        "endLine": 948,
+        "endChar": 53
+      },
+      "revId": "57e703ea24bcbaf6773288335110517e7da90da3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
