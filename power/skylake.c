@@ -47,9 +47,6 @@
 
 #define IN_ALL_S0 (IN_PGOOD_ALL_CORE | IN_ALL_PM_SLP_DEASSERTED)
 
-#define CHARGER_INITIALIZED_DELAY_MS 100
-#define CHARGER_INITIALIZED_TRIES 10
-
 static int throttle_cpu;      /* Throttle CPU? */
 static int forcing_shutdown;  /* Forced shutdown in progress? */
 
