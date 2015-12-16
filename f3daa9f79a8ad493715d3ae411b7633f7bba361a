@@ -1,0 +1,259 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "850622ce_d76fbc93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-16T21:59:01Z",
+      "side": 1,
+      "message": "this description could be greatly improved with design considerations and implementation details.",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5dadaa8_29e86da3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-16T21:59:01Z",
+      "side": 1,
+      "message": "what does this refer to?",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4518aa2c_75886806",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-16T21:59:01Z",
+      "side": 1,
+      "message": "is there a reason for this order of include files?\n\nusually local files are in one block, external files are in another.",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85bb823a_6f56f152",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-16T21:59:01Z",
+      "side": 1,
+      "message": "do you need to keep the keys here, can they not be transferred with the rest of the data?",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05a79224_2b0b396e",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-16T21:59:01Z",
+      "side": 1,
+      "message": "the explicit alignment specification is not necessary here.",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05a79224_0b08fd6d",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-16T21:59:01Z",
+      "side": 1,
+      "message": "is this really necessary?",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5d1668e_a8161b95",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-16T21:59:01Z",
+      "side": 1,
+      "message": "(here and in other places): ec codebase does not encourage creating of new typdefs",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85bb823a_0f7be5ce",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-16T21:59:01Z",
+      "side": 1,
+      "message": "we have a fully functional trng, why not use it.",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5dadaa8_290b4d6e",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-16T21:59:01Z",
+      "side": 1,
+      "message": "TODO is supposed to have a person\u0027s name associated with it. It will help when sweeping them in the end of the project.",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5b8863e_1032e432",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-16T21:59:01Z",
+      "side": 1,
+      "message": "explicit alignment is not necessary anywhere in this file.\n\nWhy did you think it was necessary? Does bn code treat these buffers as buffers of int at any point?",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5d1668e_48531f61",
+        "filename": "chip/g/watchdog.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-16T21:59:01Z",
+      "side": 1,
+      "message": "this is not going to help actual tpm operations. \n\nthe watchdog needs to be periodically kicked by the crypto code.",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5dadaa8_a920dde1",
+        "filename": "test/tpm_test/crypto_test.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-16T21:59:01Z",
+      "side": 1,
+      "message": "nice refactoring, but it (moving ext commands\u0027 definitions into a separate file) should be in its own patch.",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5b8863e_307e08bf",
+        "filename": "test/tpm_test/rsa_test.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-16T21:59:01Z",
+      "side": 1,
+      "message": "this file\u0027s indent level does not follow chromeos standards.",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5d1668e_087be7ce",
+        "filename": "test/tpm_test/rsa_test.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-16T21:59:01Z",
+      "side": 1,
+      "message": "success/failure message format should match earlier tests.",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4518aa2c_75bd087f",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-16T21:59:01Z",
+      "side": 1,
+      "message": "please sort imports alphabetically",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
