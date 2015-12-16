@@ -84,11 +84,18 @@
 /* Compile chip support for analog-to-digital convertor */
 #undef CONFIG_ADC
 
-/* ADC sample time selection. The value is chip-dependent. */
+/*
+ * ADC sample time selection. The value is chip-dependent.
+ * TODO: Replace this with CONFIG_ADC_PROFILE entries.
+ */
 #undef CONFIG_ADC_SAMPLE_TIME
 
 /* Include the ADC analog watchdog feature in the ADC code */
 #define CONFIG_ADC_WATCHDOG
+
+/* Chip-dependent ADC configuration - select one. */
+#define CONFIG_ADC_PROFILE_SINGLE
+#undef CONFIG_ADC_PROFILE_FAST_CONTINUOUS
 
 /*
  * Some ALS modules may be connected to the EC. We need the command, and
