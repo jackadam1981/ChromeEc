@@ -469,6 +469,15 @@ static void board_pmic_init(void)
 	if (ret)
 		goto pmic_error;
 
+	/*
+	* No Power button debounce
+	* [7] : 0b 30ms default Powerbtn debounce
+	* [7] : 1b 0ms no debounce
+	*/
+	ret = I2C_PMIC_WRITE(TPS650830_REG_PBCONFIG, 0x9F);
+	if (ret)
+		goto pmic_error;
+
 	CPRINTS("PMIC initialization done");
 	return;
 
