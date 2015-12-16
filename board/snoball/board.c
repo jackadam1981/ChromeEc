@@ -82,6 +82,8 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
+static volatile uint32_t dma_sample_buf[ADC_CH_COUNT * 2];
+
 static void board_init(void)
 {
 	gpio_enable_interrupt(GPIO_TCPC1_INT);
@@ -91,8 +93,52 @@ static void board_init(void)
 	pwm_enable(PWM_PD1, 1);
 	pwm_enable(PWM_PD2, 1);
 	pwm_enable(PWM_PD3, 1);
+
+	adc_read_all_channels((int *)dma_sample_buf);
 }
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_INIT_ADC + 1);
+
+static int min[ADC_CH_COUNT];
+static int max[ADC_CH_COUNT];
+static int count;
+void adc_isr(void)
+{
+	static int buf_ptr;
+	int i;
+	uint32_t *buf = (uint32_t *)dma_sample_buf + buf_ptr++ * ADC_CH_COUNT;
+
+	STM32_ADC_ISR = 0xe;
+
+	for (i = 0; i < ADC_CH_COUNT; ++i) {
+		if (min[i] == 0 || buf[i] < min[i])
+			min[i] = buf[i];
+		if (buf[i] > max[i])
+			max[i] = buf[i];
+	}
+	count++;
+	if (buf_ptr == 2)
+		buf_ptr = 0;
+}
+DECLARE_IRQ(STM32_IRQ_ADC_COMP, adc_isr, 1);
+
+static int command_adc_stats(int argc, char **argv)
+{
+	const struct adc_t *adc;
+	int min_val, max_val;
+	int i;
+
+	ccprintf("CNT %d\n", count);
+	for (i = 0; i < ADC_CH_COUNT; ++i) {
+		adc = adc_channels + i;
+		min_val = (min[i] & 0xffff) *
+			adc->factor_mul / adc->factor_div + adc->shift;
+		max_val = (max[i] & 0xffff) *
+			adc->factor_mul / adc->factor_div + adc->shift;
+		ccprintf("mm %d: %d %d\n", i, min_val, max_val);
+	}
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(adc_stats, command_adc_stats, "", "", NULL);
 
 void board_reset_pd_mcu(void)
 {
