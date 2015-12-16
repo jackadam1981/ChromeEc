@@ -32,6 +32,11 @@ static int command_adc(int argc, char **argv)
 	int i, v;
 	int data[ADC_CH_COUNT];
 
+	if (CONFIG_ADC_PROFILE == ADC_PROFILE_FAST_CONTINUOUS) {
+		ccprintf("Not supported for continuous ADC profile.\n");
+		return EC_SUCCESS;
+	}
+
 	/* If a channel is specified, read only that one */
 	if (argc == 2) {
 		i = find_adc_channel_by_name(argv[1]);

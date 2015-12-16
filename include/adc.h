@@ -15,6 +15,18 @@
 #define ADC_READ_ERROR -1  /* Value returned by adc_read_channel() on error */
 
 /*
+ * Supported ADC profiles for adc_read_all_channels() - selected by
+ * CONFIG_ADC_PROFILE.
+ */
+enum adc_profile {
+	/* Sample all channels once */
+	ADC_PROFILE_SINGLE,
+	/* Sample all channels continuously, with minimal sample time */
+	ADC_PROFILE_FAST_CONTINUOUS,
+	ADC_PROFILE_COUNT,
+};
+
+/*
  * Boards which use the ADC interface must provide enum adc_channel in the
  * board.h file.  See chip/$CHIP/adc_chip.h for additional chip-specific
  * requirements.
@@ -33,7 +45,9 @@ int adc_read_channel(enum adc_channel ch);
  * Read all ADC channels.
  *
  * @param data		Destination array for channel data; must be
- *			ADC_CH_COUNT elements long.
+ *			ADC_CH_COUNT elements long for single-read profile,
+ *			or sized according to dma_buffer_size in
+ *			continuous profiles.
  *
  * @return EC_SUCCESS, or non-zero on error.
  */
