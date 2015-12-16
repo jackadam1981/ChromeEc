@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "455a6ade_e58c96b0",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-16T17:38:50Z",
+      "side": 1,
+      "message": "This config has a different meaning and should not be changed. LIMIT_POWER is simply a flag that the AP can read and decide to power down. On the other hand, MIN_BAT_PCT_FOR_POWER_ON actually inhibits leaving S5.",
+      "range": {
+        "startLine": 1197,
+        "startChar": 9,
+        "endLine": 1197,
+        "endChar": 48
+      },
+      "revId": "68870213e325cb4305d3b4e56a8194878c9dc083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
