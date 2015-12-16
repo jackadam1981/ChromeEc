@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "655f6ecc_a6a0e6c6",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2015-12-16T18:57:05Z",
+      "side": 1,
+      "message": "This right here is the important bit. If you follow the documentation and stall the IN, the wheels fall off.",
+      "range": {
+        "startLine": 829,
+        "startChar": 0,
+        "endLine": 833,
+        "endChar": 3
+      },
+      "revId": "a5862e5dc62aa2fe87716d78b6a8f635fef5fa5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
