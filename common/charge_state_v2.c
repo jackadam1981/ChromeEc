@@ -945,7 +945,7 @@ int charge_prevent_power_on(void)
 	if (prevent_power_on)
 		if (charge_manager_get_power_limit_uw() >=
 		    MIN(LIKELY_PD_USBC_POWER_MW * 1000,
-			CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW * 1000));
+			CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW * 1000))
 			prevent_power_on = 0;
 #endif
 
@@ -1194,7 +1194,7 @@ static int charge_command_charge_state(struct host_cmd_handler_args *args)
 				 */
 				if ((curr.batt.is_present != BP_YES ||
 				     curr.batt.state_of_charge <
-				     CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT)
+				     CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
 				     && charge_manager_get_power_limit_uw() <
 				     CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW
 				     * 1000 && system_is_locked())
