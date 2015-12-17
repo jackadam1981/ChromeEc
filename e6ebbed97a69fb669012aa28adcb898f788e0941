@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a5c6f37_c787bec8",
+        "filename": "chip/g/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-17T22:25:40Z",
+      "side": 1,
+      "message": "I think a better API for this function would be to return current timeout setting at the time it was called. Then the caller can call it again with the previous setting to restore the status quo.",
+      "revId": "e6ebbed97a69fb669012aa28adcb898f788e0941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
