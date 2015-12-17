@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a5c6f37_077b9607",
+        "filename": "chip/g/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-17T23:32:29Z",
+      "side": 1,
+      "message": "the idea is that the caller can restore the value of the timeout not to the default value but to the value the timeout was when the caller called this function to change the timeout.\n\nSo, say one task changed it to 10 s and then another one wants to set it to 20 s while the first one is not yet done with the extended timeout.\n\nSo, the settings would be\n  default\n      10 s       # first task sets the new value\n           20 s  # second task sets its new value\n           10 s  # second task restores the earlier value\n      default   # first task restores the original value\n\nso. the caller setting the new value remembers the previous value, so that it can restore the timeout not to default, but to the previous value.\n\nCome to think of it, this also brings up an issue that the caller should not be changing the current setting to a smaller value than the current value is.\n\nThis of course is a can of warms, also because there is no guarantee that the callers will call in order. Brings back my earlier point that it is cleaner to just keep kicking the watchdog from the tightest loop.",
+      "revId": "9b1234dcedc9cfce5b26705e92831b26c88a12c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
