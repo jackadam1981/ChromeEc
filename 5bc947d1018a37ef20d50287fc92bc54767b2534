@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a3463db_4c4adf5f",
+        "filename": "chip/stm32/adc-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-17T23:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a53bb27_4644f2a0",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "5bc947d1018a37ef20d50287fc92bc54767b2534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a3463db_4c63ffed",
         "filename": "chip/stm32/adc-stm32f0.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-12-17T21:59:25Z",
       "side": 1,
       "message": "We know the value of CONFIG_ADC_PROFILE at compile time, why not directly compile in only what is needed instead of keeping this unused data for the other options?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 35
+      },
+      "revId": "5bc947d1018a37ef20d50287fc92bc54767b2534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea5fab25_8a30ab25",
+        "filename": "chip/stm32/adc-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-17T23:28:28Z",
+      "side": 1,
+      "message": "Since profile is const along with the profiles table, the compiler will optimize adc_profiles away through constant propagation. I actually considered implementing it in the way you described, but thought the code would be cleaner without ifdefs... until I realized we shouldn\u0027t have enums in config.h, so it would be best to have separate #defines per-option... which works better with the implementation you suggested.\n\nAnyway, done.",
+      "parentUuid": "2a3463db_4c63ffed",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "aa593347_c850efe4",
+        "filename": "chip/stm32/adc-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-17T23:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5d1668e_7ca4e176",
+      "range": {
+        "startLine": 372,
+        "startChar": 20,
+        "endLine": 372,
+        "endChar": 41
+      },
+      "revId": "5bc947d1018a37ef20d50287fc92bc54767b2534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a3463db_ec94eb09",
         "filename": "common/adc.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2015-12-17T21:59:25Z",
       "side": 1,
       "message": "why not just don\u0027t compile this console command in at all if ADC_PROFILE_FAST_CONTINUOUS is in use (with a comment that it\u0027s not supported).",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "5bc947d1018a37ef20d50287fc92bc54767b2534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a438f4f_8fb8b5fe",
+        "filename": "common/adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-17T23:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a3463db_ec94eb09",
       "range": {
         "startLine": 35,
         "startChar": 1,
