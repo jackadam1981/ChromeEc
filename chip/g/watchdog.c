@@ -17,7 +17,8 @@
 #define WATCHDOG_MAGIC_WORD  0x1ACCE551
 
 /* Watchdog expiration : assume 30 Mhz clock for now */
-#define WATCHDOG_PERIOD (CONFIG_WATCHDOG_PERIOD_MS * (30000000 / 1000))
+#define CYCLES_PER_MS (30000000 / 1000)
+#define DEFAULT_WATCHDOG_PERIOD (CONFIG_WATCHDOG_PERIOD_MS * CYCLES_PER_MS)
 
 void trace_and_reset(uint32_t excep_lr, uint32_t excep_sp)
 {
@@ -57,8 +58,9 @@ const struct irq_priority IRQ_PRIORITY(GC_IRQNUM_WATCHDOG0_WDOGINT)
 		= {GC_IRQNUM_WATCHDOG0_WDOGINT, 0};
 	/* put the watchdog at the highest priority */
 
-void watchdog_reload(void)
+uint32_t watchdog_reload_custom(uint32_t period_ms)
 {
+	const uint32_t current_period_ms = GR_WATCHDOG_LOAD / CYCLES_PER_MS;
 	uint32_t status = GR_WATCHDOG_RIS;
 
 	/* Unlock watchdog registers */
@@ -76,10 +78,17 @@ void watchdog_reload(void)
 	}
 
 	/* Reload the watchdog counter */
-	GR_WATCHDOG_LOAD = WATCHDOG_PERIOD;
+	GR_WATCHDOG_LOAD = period_ms * CYCLES_PER_MS;
 
 	/* Re-lock watchdog registers */
 	GR_WATCHDOG_LOCK = 0xdeaddead;
+
+	return current_period_ms;
+}
+
+void watchdog_reload(void)
+{
+	watchdog_reload_custom(CONFIG_WATCHDOG_PERIOD_MS);
 }
 DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 
@@ -92,7 +101,7 @@ int watchdog_init(void)
 	GR_WATCHDOG_LOCK = WATCHDOG_MAGIC_WORD;
 
 	/* Reload the watchdog counter */
-	GR_WATCHDOG_LOAD = WATCHDOG_PERIOD;
+	GR_WATCHDOG_LOAD = DEFAULT_WATCHDOG_PERIOD;
 
 	/* Reset after 2 time-out : activate both interrupt and reset. */
 	GR_WATCHDOG_CTL = 0x3;

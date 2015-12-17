@@ -37,8 +37,10 @@ void watchdog_warning_irq(void);
 /* Reload the watchdog counter */
 #ifdef CONFIG_WATCHDOG
 void watchdog_reload(void);
+uint32_t watchdog_reload_custom(uint32_t period_ms);
 #else
 static inline void watchdog_reload(void) { }
+static inline uint32_t watchdog_reload_custom(uint32_t period_ms) { }
 #endif
 
 #endif /* __CROS_EC_WATCHDOG_H */
