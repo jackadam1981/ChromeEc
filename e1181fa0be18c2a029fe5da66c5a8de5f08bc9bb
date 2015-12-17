@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5d1668e_1c64c526",
+        "filename": "include/host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-17T21:25:07Z",
+      "side": 1,
+      "message": "\u0027unused\u0027 attribute is needed to prevent compiler warnings, but doesn\u0027t prevent the function from being linked if it\u0027s actually called somewhere else. See https://gcc.gnu.org/onlinedocs/gcc-4.3.5/gcc/Function-Attributes.html, \"unused:\nThis attribute, attached to a function, means that the function is meant to be possibly unused. GCC will not produce a warning for this function. \".",
+      "range": {
+        "startLine": 205,
+        "startChar": 16,
+        "endLine": 205,
+        "endChar": 22
+      },
+      "revId": "e1181fa0be18c2a029fe5da66c5a8de5f08bc9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
