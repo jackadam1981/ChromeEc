@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c54d7a5b_11b04c02",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2015-12-17T01:01:47Z",
+      "side": 1,
+      "message": "This is different as well, should I use 13200 or 13050 ?",
+      "revId": "75fe5b40a11256182ab663db2b524e31d2940c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8568e271_47b7ae43",
         "filename": "board/lars/battery.c",
         "patchSetId": 1
