@@ -949,6 +949,11 @@ int charge_prevent_power_on(void)
 			prevent_power_on = 0;
 #endif
 
+#ifdef CONFIG_CHARGER_NO_POWER_ON_OVERWRITE
+	if (current_batt_params->is_present == BP_YES)
+		return prevent_power_on;
+#endif
+
 	/*
 	 * Factory override: Always allow power on if WP is disabled,
 	 * except when EC is starting up, due to brown out potential.

@@ -413,6 +413,13 @@
 #undef CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW
 
 /*
+ * If system is unlocked, factory overwrite will allow power on even battery
+ * percentage is low and power is under threshold. This flag will skip the
+ * factory overwrite.
+ */
+#undef CONFIG_CHARGER_NO_POWER_ON_OVERWRITE
+
+/*
  * Equivalent of CONFIG_BATTERY_OVERRIDE_PARAMS for use with
  * CONFIG_CHARGER_V2
  */
