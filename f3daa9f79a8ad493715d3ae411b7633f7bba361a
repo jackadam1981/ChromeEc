@@ -159,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "6a53bb27_2f978930",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-18T20:43:45Z",
+      "side": 1,
+      "message": "right, it just seems weird that data is described as uint8_t, but accessed as uint32_t. A cleaner solution would be to change the API to say pass void pointers to the arrays.\n\nbut I\u0027ll leave this to your discretion in the interest of saving time.",
+      "parentUuid": "05a79224_316d68dc",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05a79224_0b08fd6d",
         "filename": "chip/g/dcrypto/internal.h",
         "patchSetId": 8
