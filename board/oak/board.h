@@ -11,6 +11,7 @@
 /* board revision */
 #include "board_revs.h"
 
+#define CONFIG_ACCEL_KX022
 #define CONFIG_ADC
 #undef  CONFIG_ADC_WATCHDOG
 /* Add for AC adaptor, charger, battery */
@@ -126,14 +127,15 @@
 #define KB_OUT_PORT_LIST GPIO_A, GPIO_B, GPIO_C, GPIO_D
 
 /* 2 I2C master ports, connect to battery, charger, pd and USB switches */
-#define I2C_PORT_MASTER 0
+#define I2C_PORT_MASTER  0
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
 #define I2C_PORT_PERICOM 0
 #define I2C_PORT_THERMAL 0
-#define I2C_PORT_PD_MCU 1
+#define I2C_PORT_ACCEL   0
+#define I2C_PORT_PD_MCU  1
 #define I2C_PORT_USB_MUX 1
-#define I2C_PORT_TCPC 1
+#define I2C_PORT_TCPC    1
 
 /* Timer selection */
 #define TIM_CLOCK32 2
