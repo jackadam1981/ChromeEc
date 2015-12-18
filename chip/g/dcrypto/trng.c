@@ -20,3 +20,18 @@ uint32_t rand(void)
 		;
 	return GREAD(TRNG, READ_DATA);
 }
+
+void rand_bytes(uint8_t *buf, uint32_t len)
+{
+	while (len) {
+		int i;
+		uint32_t r = rand();
+
+		for (i = 0; i < 4 && len; i++) {
+			uint8_t b = ((uint8_t *) &r)[i];
+
+			*buf++ = b;
+			len--;
+		}
+	}
+}

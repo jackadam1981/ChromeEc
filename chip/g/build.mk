@@ -28,9 +28,9 @@ endif
 chip-$(CONFIG_DCRYPTO)+= dcrypto/aes.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/sha1.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/sha256.o
+chip-$(CONFIG_DCRYPTO)+= dcrypto/trng.o
 
 chip-y+= pmu.o
-chip-y+= trng.o
 chip-$(CONFIG_SPS)+= sps.o
 chip-$(CONFIG_HOSTCMD_SPS)+=sps_hc.o
 chip-$(CONFIG_TPM_SPS)+=sps_tpm.o
@@ -47,6 +47,7 @@ dirs-y += chip/g/dcrypto
 ifneq ($(CONFIG_CUSTOMIZED_RO),)
 custom-ro_objs-y  = chip/g/clock.o
 custom-ro_objs-y += chip/g/dcrypto/sha256.o
+custom-ro_objs-y += chip/g/dcrypto/trng.o
 custom-ro_objs-y += chip/g/loader/key_ladder.o
 custom-ro_objs-y += chip/g/loader/launch.o
 custom-ro_objs-y += chip/g/loader/main.o
@@ -55,7 +56,6 @@ custom-ro_objs-y += chip/g/loader/setup.o
 custom-ro_objs-y += chip/g/loader/verify.o
 custom-ro_objs-y += chip/g/pmu.o
 custom-ro_objs-y += chip/g/system.o
-custom-ro_objs-y += chip/g/trng.o
 custom-ro_objs-y += chip/g/uart.o
 custom-ro_objs-y += common/printf.o
 custom-ro_objs-y += common/util.o
