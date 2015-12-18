@@ -19,4 +19,12 @@ void init_trng(void);
  **/
 uint32_t rand(void);
 
+
+/**
+ * Output len random bytes to buffer buf.
+ *
+ * Not supported on all platforms.
+ **/
+void rand_bytes(uint8_t *buf, uint32_t len);
+
 #endif /* __EC_INCLUDE_TRNG_H */
