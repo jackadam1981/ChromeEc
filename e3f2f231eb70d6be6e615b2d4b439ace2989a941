@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa593347_4e7c0798",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-12-18T01:51:05Z",
+      "side": 1,
+      "message": "Probably you don\u0027t need it. By default it exits with 0 return status.",
+      "range": {
+        "startLine": 672,
+        "startChar": 0,
+        "endLine": 673,
+        "endChar": 15
+      },
+      "revId": "e3f2f231eb70d6be6e615b2d4b439ace2989a941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a2f9f8d_f13840ca",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2015-12-18T01:51:05Z",
+      "side": 1,
+      "message": "Probably you don\u0027t need it. By default it exits with 0 return status.",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 15
+      },
+      "revId": "e3f2f231eb70d6be6e615b2d4b439ace2989a941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
