@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a2517a8_c1057299",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T22:57:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a2517a8_e1006e4a",
+      "range": {
+        "startLine": 208,
+        "startChar": 4,
+        "endLine": 208,
+        "endChar": 15
+      },
+      "revId": "198a59801fc73a183a2745810f0675f5397c1eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a3463db_35beb220",
         "filename": "chip/g/dcrypto/internal.h",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2015-12-18T20:43:45Z",
       "side": 1,
       "message": "s/endien/endian/",
+      "range": {
+        "startLine": 93,
+        "startChar": 49,
+        "endLine": 93,
+        "endChar": 55
+      },
+      "revId": "198a59801fc73a183a2745810f0675f5397c1eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a2f9f8d_ba196d68",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T22:57:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a3463db_35beb220",
       "range": {
         "startLine": 93,
         "startChar": 49,
@@ -76,6 +124,24 @@
       "writtenOn": "2015-12-18T20:43:45Z",
       "side": 1,
       "message": "you need to add the rsa error exception here.\n\nIt would be good to test to see that that exception is properly reported.",
+      "revId": "198a59801fc73a183a2745810f0675f5397c1eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a3463db_607c7a98",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T22:57:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a2517a8_612b5ebf",
       "revId": "198a59801fc73a183a2745810f0675f5397c1eae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
