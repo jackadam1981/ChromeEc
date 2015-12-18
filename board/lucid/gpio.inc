@@ -29,6 +29,9 @@ GPIO(USB_C0_P,               PIN(A, 12), GPIO_INPUT)
 /* Other outputs */
 GPIO(AP_INT_L,               PIN(A, 13), GPIO_ODR_HIGH)
 GPIO(USB_C_CC_EN,            PIN(A, 15), GPIO_OUT_HIGH)
+GPIO(BAT_LED_GREEN,          PIN(C, 14), GPIO_OUT_LOW)
+GPIO(BAT_LED_RED,            PIN(C, 15), GPIO_OUT_LOW)
+GPIO(BAT_LED_BLUE,           PIN(F, 0), GPIO_OUT_LOW)
 
 UNIMPLEMENTED(ENTERING_RW)
 
