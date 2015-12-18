@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a2517a8_e1006e4a",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-18T20:43:45Z",
+      "side": 1,
+      "message": "please make sure all TODOs have an owner or a bug.",
+      "range": {
+        "startLine": 208,
+        "startChar": 4,
+        "endLine": 208,
+        "endChar": 15
+      },
+      "revId": "198a59801fc73a183a2745810f0675f5397c1eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a3463db_35beb220",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-18T20:43:45Z",
+      "side": 1,
+      "message": "s/endien/endian/",
+      "range": {
+        "startLine": 93,
+        "startChar": 49,
+        "endLine": 93,
+        "endChar": 55
+      },
+      "revId": "198a59801fc73a183a2745810f0675f5397c1eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a2adb7b_57c7066e",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-18T20:43:45Z",
+      "side": 1,
+      "message": "is has size ever not divisible by 4? if it always is, this loop could be made shorter.",
+      "revId": "198a59801fc73a183a2745810f0675f5397c1eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a2517a8_612b5ebf",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 12
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-18T20:43:45Z",
+      "side": 1,
+      "message": "you need to add the rsa error exception here.\n\nIt would be good to test to see that that exception is properly reported.",
+      "revId": "198a59801fc73a183a2745810f0675f5397c1eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
