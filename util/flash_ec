@@ -300,8 +300,15 @@ function dut_control() {
 # Find the EC UART on the servo v2
 function ec_uart() {
 	SERVOD_FAIL="Cannot communicate with servo. is servod running ?"
-	($DUT_CONTROL_CMD ${MCU}_uart_pty || \
+	($DUT_CONTROL_CMD raw_${MCU}_uart_pty || \
 	    die "${SERVOD_FAIL}") | cut -d: -f2
+}
+
+# Find the EC-3PO interpreter PID attached to the UART.
+function ec3po_interp_pid() {
+    ($DUT_CONTROL_CMD ${MCU}_ec3po_interp_pid || \
+	die "Couldn't get ${MCU} interpreter PID. Missing control?") | \
+	cut -d: -f2
 }
 
 # Servo variables management
@@ -341,13 +348,53 @@ function claim_pty() {
 		    "'cros_sdk --no-ns-pid' (see crbug.com/444931 for details)"
 	fi
 
+	# The EC-3PO interpreter needs to be sent the SIGSTOP/SIGCONT signals,
+	# however the interpreter is a process under servod.  And since servod
+	# must be run as root, the interpreter process won't be found unless
+	# this tool is run with root permissions as well.
+
+	if [[ $EUID -ne 0 ]]; then
+	    error "This tool must be run as root for this board."
+	    exit 77
+	fi
+
 	pids=$(lsof -FR 2>/dev/null -- $1 | tr -d 'pR')
 	FROZEN_PIDS=""
+
+	# Get interpreter PID.
+	interp_pid=$(ec3po_interp_pid)
+
+	# If servod was launched in a terminal where the cros_sdk was entered
+	# with a private namespace (the default), the PID number returned by
+	# dut-control will not match up.  However, we can obtain the true PID
+	# with this one weird trick!
+
+	if [ -z $(pgrep servod | grep $interp_pid) ]; then
+	    # Obtain just 1 servod process to get into the namespace.
+	    servod=$(pgrep servod | head -n 1)
+
+	    # Get the jiffies since start of the interpreter.
+	    jiffies=$(cut -f22 -d' ' /proc/$servod/root/proc/$interp_pid/stat \
+		|| die $err_msg)
+
+	    # Now find the PID in the parent namespace using that jiffies value.
+	    interp_pid=$(for f in `grep -l ${jiffies} /proc/*/stat \
+			    2>/dev/null`; do if cut -f22 -d' ' $f &>/dev/null; \
+			    then echo $f | cut -f3 -d/; break; fi; done)
+	fi
 
 	# reverse order to SIGSTOP parents before children
 	for pid in $(echo ${pids} | tac -s " "); do
 		if ps -o cmd= "${pid}" | grep -qE "(servod|/sbin/init)"; then
-			info "Skip stopping servod or init: process ${pid}."
+			if [ "${pid}" = "${interp_pid}" ]; then
+			    # Stop interpreter.
+			    info "Sending SIGSTOP to process ${pid}!"
+			    FROZEN_PIDS+=" ${pid}"
+			    sleep 0.02
+			    kill -STOP ${pid}
+			else
+			    info "Skip stopping servod or init: process ${pid}."
+			fi
 		else
 			info "Sending SIGSTOP to process ${pid}!"
 			FROZEN_PIDS+=" ${pid}"
