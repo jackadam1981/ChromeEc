@@ -52,6 +52,24 @@
       "revId": "9b1234dcedc9cfce5b26705e92831b26c88a12c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a3463db_15c7361d",
+        "filename": "chip/g/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T19:05:14Z",
+      "side": 1,
+      "message": "After some thought, I think the dcrypto code can avoid dealing with the watchdog entirely, so this is just a temporary measure.\n\nI\u0027ll abandon this change in favor of exposing the watchdog directly to dcrypto.",
+      "parentUuid": "0a2f9f8d_8e4afb2e",
+      "revId": "9b1234dcedc9cfce5b26705e92831b26c88a12c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
