@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0a487f77_e3dcf23a",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2015-12-18T05:41:30Z",
+      "side": 1,
+      "message": "The 12 MHz core clock is under some robust test such as FAFT, I2C....\nWe will push it in another commit after finishing the test.",
+      "parentUuid": "a5d1668e_0e5e4fc1",
+      "revId": "89fea57bb4d2d3aa9b39917df9821d68fc424e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "653e8e9d_2e3327f0",
         "filename": "chip/npcx/clock_chip.h",
         "patchSetId": 1
