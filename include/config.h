@@ -1727,6 +1727,9 @@
 #undef CONFIG_UART_TX_DMA_CH
 #undef CONFIG_UART_RX_DMA_CH
 
+/* Support interrupt to update charge state led. */
+#undef CONFIG_UPDATE_CHARGE_DISPLAY
+
 /*****************************************************************************/
 /* USB PD config */
 
