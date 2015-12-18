@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "a5b8863e_79b7db11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T19:06:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5dadaa8_29e86da3",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4518aa2c_75886806",
         "filename": "board/cr50/tpm2/rsa.c",
         "patchSetId": 8
@@ -47,6 +65,24 @@
       "writtenOn": "2015-12-16T21:59:01Z",
       "side": 1,
       "message": "is there a reason for this order of include files?\n\nusually local files are in one block, external files are in another.",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5b1fa58_7469a63d",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T19:06:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4518aa2c_75886806",
       "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "459d0ad3_b0915679",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T19:06:27Z",
+      "side": 1,
+      "message": "I\u0027ll leave them here for now, as they are useful for keygen.",
+      "parentUuid": "85bb823a_6f56f152",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05a79224_2b0b396e",
         "filename": "chip/g/dcrypto/bn.c",
         "patchSetId": 8
@@ -81,6 +135,24 @@
       "writtenOn": "2015-12-16T21:59:01Z",
       "side": 1,
       "message": "the explicit alignment specification is not necessary here.",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05a79224_316d68dc",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T19:06:27Z",
+      "side": 1,
+      "message": "As discussed, the bignum code expects word aligned arrays.",
+      "parentUuid": "05a79224_2b0b396e",
       "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "850622ce_1dc033ff",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T19:06:27Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "05a79224_0b08fd6d",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5d1668e_a8161b95",
         "filename": "chip/g/dcrypto/internal.h",
         "patchSetId": 8
@@ -115,6 +205,24 @@
       "writtenOn": "2015-12-16T21:59:01Z",
       "side": 1,
       "message": "(here and in other places): ec codebase does not encourage creating of new typdefs",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4518aa2c_9bc9f381",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T19:06:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5d1668e_a8161b95",
       "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -138,6 +246,24 @@
     },
     {
       "key": {
+        "uuid": "459d0ad3_d657ba06",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T19:06:27Z",
+      "side": 1,
+      "message": "I did not know that!  Done.",
+      "parentUuid": "85bb823a_0f7be5ce",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5dadaa8_290b4d6e",
         "filename": "chip/g/dcrypto/rsa.c",
         "patchSetId": 8
@@ -149,6 +275,24 @@
       "writtenOn": "2015-12-16T21:59:01Z",
       "side": 1,
       "message": "TODO is supposed to have a person\u0027s name associated with it. It will help when sweeping them in the end of the project.",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4518aa2c_3bd9bf4a",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T19:06:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5dadaa8_290b4d6e",
       "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -172,6 +316,24 @@
     },
     {
       "key": {
+        "uuid": "c5dadaa8_cc1d5ff0",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T19:06:27Z",
+      "side": 1,
+      "message": "Yes, they are int buffers.",
+      "parentUuid": "a5b8863e_1032e432",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5d1668e_48531f61",
         "filename": "chip/g/watchdog.c",
         "patchSetId": 8
@@ -183,6 +345,24 @@
       "writtenOn": "2015-12-16T21:59:01Z",
       "side": 1,
       "message": "this is not going to help actual tpm operations. \n\nthe watchdog needs to be periodically kicked by the crypto code.",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a3463db_f5bb8a8b",
+        "filename": "chip/g/watchdog.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T19:06:27Z",
+      "side": 1,
+      "message": "Change abandoned.",
+      "parentUuid": "a5d1668e_48531f61",
       "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -223,6 +403,24 @@
     },
     {
       "key": {
+        "uuid": "c5dadaa8_d2985a59",
+        "filename": "test/tpm_test/rsa_test.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T19:06:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5b8863e_307e08bf",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5d1668e_087be7ce",
         "filename": "test/tpm_test/rsa_test.py",
         "patchSetId": 8
@@ -240,6 +438,24 @@
     },
     {
       "key": {
+        "uuid": "ca14a735_39434f2a",
+        "filename": "test/tpm_test/rsa_test.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T19:06:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5d1668e_087be7ce",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4518aa2c_75bd087f",
         "filename": "test/tpm_test/tpmtest.py",
         "patchSetId": 8
@@ -251,6 +467,24 @@
       "writtenOn": "2015-12-16T21:59:01Z",
       "side": 1,
       "message": "please sort imports alphabetically",
+      "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "459d0ad3_e1e2eec5",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2015-12-18T19:06:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4518aa2c_75bd087f",
       "revId": "f3daa9f79a8ad493715d3ae411b7633f7bba361a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
