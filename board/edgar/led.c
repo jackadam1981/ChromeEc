@@ -11,6 +11,7 @@
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "led_common.h"
 #include "pwm.h"
 #include "registers.h"
@@ -21,6 +22,10 @@
 
 #define LED_TOTAL_SECS 4
 #define LED_ON_SECS 1
+
+#define CRITICAL_LOW_BATTERY_PERMILLAGE 71
+#define LOW_BATTERY_PERMILLAGE 135
+#define FULL_BATTERY_PERMILLAGE 937
 
 static int led_debug;
 
@@ -133,8 +138,16 @@ static void edgar_led_set_power(void)
 static void edgar_led_set_battery(void)
 {
 	static int battery_secs;
+	int remaining_capacity;
+	int full_charge_capacity;
+	int permillage;
 
 	battery_secs++;
+
+	remaining_capacity = *(int *)host_get_memmap(EC_MEMMAP_BATT_CAP);
+	full_charge_capacity = *(int *)host_get_memmap(EC_MEMMAP_BATT_LFCC);
+	permillage = !full_charge_capacity ? 0 :
+		(1000 * remaining_capacity) / full_charge_capacity;
 
 	/* BAT LED behavior:
 	 * Fully charged / idle: Blue
@@ -147,14 +160,20 @@ static void edgar_led_set_battery(void)
 	 */
 	switch (charge_get_state()) {
 	case PWR_STATE_CHARGE:
-		bat_led_set_color(LED_ORANGE);
+		/* Make the percentage approximate to UI shown */
+		bat_led_set_color(permillage <
+			FULL_BATTERY_PERMILLAGE ? LED_ORANGE : LED_BLUE);
 		break;
 	case PWR_STATE_DISCHARGE:
-		if (charge_get_percent() < 3)
+		/* Less than 3%, blink one second every two seconds */
+		if (!chipset_in_state(CHIPSET_STATE_ANY_OFF) &&
+			permillage <= CRITICAL_LOW_BATTERY_PERMILLAGE)
 			bat_led_set_color(
 				(battery_secs % 2) < LED_ON_SECS
 				? LED_ORANGE : LED_OFF);
-		else if (charge_get_percent() < 10)
+		/* Less than 10%, blink one second every four seconds */
+		else if (!chipset_in_state(CHIPSET_STATE_ANY_OFF) &&
+			permillage <= LOW_BATTERY_PERMILLAGE)
 			bat_led_set_color(
 				(battery_secs % LED_TOTAL_SECS) < LED_ON_SECS
 				? LED_ORANGE : LED_OFF);
