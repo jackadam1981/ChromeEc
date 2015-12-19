@@ -44,8 +44,10 @@ GPIO(SLAVE_I2C_SDA,          PIN(B, 7),  GPIO_INPUT)
 
 #ifdef BOARD_OAK_PD
 GPIO(EC_INT,                 PIN(B, 5),  GPIO_OUT_HIGH)
-#else
+#elif defined(BOARD_KUNIMITSU_PD)
 GPIO(EC_INT,                 PIN(A, 14), GPIO_OUT_HIGH)
+#else
+GPIO(EC_INT,                 PIN(A, 14), GPIO_ODR_HIGH)
 #endif
 
 UNIMPLEMENTED(WP_L)
