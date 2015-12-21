@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a3463db_41dd0006",
+        "filename": "board/glados_pd/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-12-21T19:05:08Z",
+      "side": 1,
+      "message": "what does kunimitsu do different with this pin? does it not have an external pull-up?",
+      "range": {
+        "startLine": 47,
+        "startChar": 14,
+        "endLine": 47,
+        "endChar": 32
+      },
+      "revId": "9f4eeb21af6259e5b57312adeb9c1b05d0dbfd08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
