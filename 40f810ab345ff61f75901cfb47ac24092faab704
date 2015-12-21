@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea5fab25_19541700",
+        "filename": "board/lucid/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-12-21T23:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a53bb27_a0e386ee",
+      "range": {
+        "startLine": 32,
+        "startChar": 41,
+        "endLine": 32,
+        "endChar": 53
+      },
+      "revId": "40f810ab345ff61f75901cfb47ac24092faab704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a2f9f8d_9439e5b2",
         "filename": "board/lucid/gpio.inc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-12-21T18:42:29Z",
       "side": 1,
       "message": "nit: add space here to align GPIO_",
+      "range": {
+        "startLine": 34,
+        "startChar": 39,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "40f810ab345ff61f75901cfb47ac24092faab704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a438f4f_783e709a",
+        "filename": "board/lucid/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-12-21T23:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a2f9f8d_9439e5b2",
       "range": {
         "startLine": 34,
         "startChar": 39,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "4aaa7754_a5ae1ee7",
+        "filename": "board/lucid/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-12-21T23:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a2f9f8d_f429495a",
+      "revId": "40f810ab345ff61f75901cfb47ac24092faab704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4aaa7754_657ca698",
         "filename": "board/lucid/led.c",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2015-12-21T18:42:29Z",
       "side": 1,
       "message": "should be the opposite, 0 is on, 1 if off",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "40f810ab345ff61f75901cfb47ac24092faab704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4aaa7754_4523aa4e",
+        "filename": "board/lucid/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-12-21T23:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aaa7754_657ca698",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "0a2f9f8d_5797ff2e",
+        "filename": "board/lucid/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-12-21T23:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a2517a8_47fbd2df",
+      "range": {
+        "startLine": 141,
+        "startChar": 42,
+        "endLine": 141,
+        "endChar": 45
+      },
+      "revId": "40f810ab345ff61f75901cfb47ac24092faab704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a2f9f8d_148a958b",
         "filename": "board/lucid/led.c",
         "patchSetId": 1
@@ -122,6 +236,30 @@
       "writtenOn": "2015-12-21T18:42:29Z",
       "side": 1,
       "message": "actually, when discharging, we aren\u0027t supposed to light up any LED (unless we are critical). the idea is the user can press the button to show the current percentage. so, i think we need an interrupt on PF1 which if discharging will either show red, yellow, or green for length of pulse.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 42
+      },
+      "revId": "40f810ab345ff61f75901cfb47ac24092faab704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a53bb27_40f5f238",
+        "filename": "board/lucid/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-12-21T23:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a2f9f8d_148a958b",
       "range": {
         "startLine": 146,
         "startChar": 0,
