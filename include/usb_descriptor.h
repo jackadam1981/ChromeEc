@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2016 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -163,6 +163,10 @@ struct usb_endpoint_descriptor {
 
 #define USB_SUBCLASS_GOOGLE_SPI    0x51
 #define USB_PROTOCOL_GOOGLE_SPI    0x01
+
+#define USB_SUBCLASS_GOOGLE_I2C    0x52
+#define USB_PROTOCOL_GOOGLE_I2C    0x01
+
 
 /* Control requests */
 
