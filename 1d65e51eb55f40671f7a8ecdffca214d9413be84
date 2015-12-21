@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a3463db_939b3b8d",
+        "filename": "board/lucid/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-12-21T22:08:49Z",
+      "side": 1,
+      "message": "still need to have the blinking red case in PWR_STATE_DISCHARGE for the extremely low battery case",
+      "revId": "1d65e51eb55f40671f7a8ecdffca214d9413be84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca62e7ed_b21c0147",
+        "filename": "board/lucid/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-12-21T22:08:49Z",
+      "side": 1,
+      "message": "the difference between amber and green here is based on charge_get_percent(), but up above in the charging case it\u0027s based on charge_get_state(). i think we need to pick on or the other.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 41
+      },
+      "revId": "1d65e51eb55f40671f7a8ecdffca214d9413be84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a3463db_0170181e",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1731,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-12-21T22:08:49Z",
+      "side": 1,
+      "message": "don\u0027t need config option, it\u0027s only supported on one platform anyway",
+      "range": {
+        "startLine": 1731,
+        "startChar": 7,
+        "endLine": 1731,
+        "endChar": 35
+      },
+      "revId": "1d65e51eb55f40671f7a8ecdffca214d9413be84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a2517a8_a23384c8",
+        "filename": "include/led_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-12-21T22:08:49Z",
+      "side": 1,
+      "message": "don\u0027t need to guard adding this prototype in a header file",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 35
+      },
+      "revId": "1d65e51eb55f40671f7a8ecdffca214d9413be84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
