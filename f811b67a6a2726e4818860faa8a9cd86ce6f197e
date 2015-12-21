@@ -22,6 +22,30 @@
       "revId": "f811b67a6a2726e4818860faa8a9cd86ce6f197e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a3463db_73632fee",
+        "filename": "board/lucid/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2015-12-21T23:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca62e7ed_d2053599",
+      "range": {
+        "startLine": 137,
+        "startChar": 10,
+        "endLine": 137,
+        "endChar": 12
+      },
+      "revId": "f811b67a6a2726e4818860faa8a9cd86ce6f197e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
