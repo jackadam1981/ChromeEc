@@ -920,6 +920,7 @@ int charge_prevent_power_on(void)
 {
 	int prevent_power_on = 0;
 #ifdef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
+	int power_check_fail = 0;
 	struct batt_params params;
 	struct batt_params *current_batt_params = &curr.batt;
 	int charger_is_uninitialized =
@@ -942,18 +943,22 @@ int charge_prevent_power_on(void)
 	 * LIKELY_PD_USBC_POWER_MW since it may speak PD and provide
 	 * sufficient power once we enable PD communication.
 	 */
-	if (prevent_power_on)
+	if (prevent_power_on) {
 		if (charge_manager_get_power_limit_uw() >=
 		    MIN(LIKELY_PD_USBC_POWER_MW * 1000,
 			CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW * 1000))
 			prevent_power_on = 0;
+		else
+			power_check_fail = 1;
+	}
 #endif
 
 	/*
 	 * Factory override: Always allow power on if WP is disabled,
 	 * except when EC is starting up, due to brown out potential.
 	 */
-	prevent_power_on &= (system_is_locked() || charger_is_uninitialized);
+	prevent_power_on &= (system_is_locked() || charger_is_uninitialized
+		|| power_check_fail);
 #endif
 
 	return prevent_power_on;
