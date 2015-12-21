@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea5fab25_3e43412a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2015-12-21T07:33:22Z",
+      "side": 1,
+      "message": "Hi Shawn, I don\u0027t get how \"no battery\" case can power up system. In line 943, prevent_power_on \u003d1; then line 962, it\u0027s still 1. In old code, it\u0027s overwritten to 0 because system is unlocked. Now it can\u0027t even system is unlocked. Or in \"no battery\" case we expect to plug in charger, then press power button?",
+      "revId": "8161f6a97f6018160e59be7d5a8c7d08eee99836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
