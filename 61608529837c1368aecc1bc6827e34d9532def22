@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a2f9f8d_74b31928",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-21T19:29:30Z",
+      "side": 1,
+      "message": "maybe\n/ sizeof(key-\u003epublicKey-\u003ebuffer[0])\nis clearer?\n\nOr\n/ sizeof(uint32_t)",
+      "range": {
+        "startLine": 74,
+        "startChar": 35,
+        "endLine": 74,
+        "endChar": 39
+      },
+      "revId": "61608529837c1368aecc1bc6827e34d9532def22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a2adb7b_fd3813ca",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-21T19:29:30Z",
+      "side": 1,
+      "message": "best make sure this fits first",
+      "revId": "61608529837c1368aecc1bc6827e34d9532def22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a2f9f8d_b43d0168",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-21T19:29:30Z",
+      "side": 1,
+      "message": "best make sure this fits first",
+      "range": {
+        "startLine": 354,
+        "startChar": 2,
+        "endLine": 354,
+        "endChar": 8
+      },
+      "revId": "61608529837c1368aecc1bc6827e34d9532def22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a3463db_41abc045",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-21T19:29:30Z",
+      "side": 1,
+      "message": "add comment that this is not timing or other side-channel safe by any measure",
+      "revId": "61608529837c1368aecc1bc6827e34d9532def22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a2517a8_679a4e9a",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-21T19:29:30Z",
+      "side": 1,
+      "message": "why are these not uint32_t?",
+      "revId": "61608529837c1368aecc1bc6827e34d9532def22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea5fab25_3997db30",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-21T19:29:30Z",
+      "side": 1,
+      "message": "note these can get optimized away by sane compiler",
+      "revId": "61608529837c1368aecc1bc6827e34d9532def22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea5fab25_f9670325",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-21T19:29:30Z",
+      "side": 1,
+      "message": "can this not be uint32_t?",
+      "range": {
+        "startLine": 96,
+        "startChar": 32,
+        "endLine": 96,
+        "endChar": 39
+      },
+      "revId": "61608529837c1368aecc1bc6827e34d9532def22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca62e7ed_feb7e53e",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-21T19:29:30Z",
+      "side": 1,
+      "message": "which rand() is this? Something cryptographic?",
+      "range": {
+        "startLine": 81,
+        "startChar": 15,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "61608529837c1368aecc1bc6827e34d9532def22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a2f9f8d_74cc39ba",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-21T19:29:30Z",
+      "side": 1,
+      "message": "Use r \u003e\u003e 0, r \u003e\u003e 8 etc? Why all this pointer addressing?",
+      "revId": "61608529837c1368aecc1bc6827e34d9532def22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4aaa7754_e55096e4",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-21T19:29:30Z",
+      "side": 1,
+      "message": "endian",
+      "range": {
+        "startLine": 393,
+        "startChar": 21,
+        "endLine": 393,
+        "endChar": 27
+      },
+      "revId": "61608529837c1368aecc1bc6827e34d9532def22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
