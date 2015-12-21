@@ -11,6 +11,7 @@
 #include "charge_state.h"
 #include "driver/accel_kxcj9.h"
 #include "driver/als_isl29035.h"
+#include "driver/charger/bq24773.h"
 #include "driver/gyro_l3gd20h.h"
 #include "driver/temp_sensor/tmp432.h"
 #include "extpower.h"
@@ -89,3 +90,27 @@ struct ec_thermal_config thermal_params[] = {
 	{{0, 0, 0}, 0, 0}, /* Battery Sensor */
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
+
+int board_charger_post_init(void)
+{
+	int ret;
+
+	ret = raw_write16(REG_CHARGE_OPTION0, 0x014f);
+	if (ret)
+		return ret;
+
+	ret = raw_write16(REG_CHARGE_OPTION1, 0x0211);
+	if (ret)
+		return ret;
+
+	ret = raw_write16(REG_CHARGE_OPTION2, 0x0000);
+	if (ret)
+		return ret;
+
+	ret = raw_write16(REG_PROCHOT_OPTION0, 0x4b4e);
+	if (ret)
+		return ret;
+
+	return raw_write16(REG_PROCHOT_OPTION1, 0x813C);
+}
+
