@@ -22,6 +22,40 @@
       "revId": "91a03b5f45e5d2be711ab8ebcf7862ef1c7956df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a2517a8_07e5ca35",
+        "filename": "driver/charger/bq24773.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-21T18:40:23Z",
+      "side": 1,
+      "message": "The prototype + weak inline definition can go in charger.h.",
+      "revId": "91a03b5f45e5d2be711ab8ebcf7862ef1c7956df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4aaa7754_e58736c8",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-21T18:40:23Z",
+      "side": 1,
+      "message": "We won\u0027t need this config if we define an empty weak version of board_charger_post_init().",
+      "revId": "91a03b5f45e5d2be711ab8ebcf7862ef1c7956df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
