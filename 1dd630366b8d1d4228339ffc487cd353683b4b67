@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a53bb27_3bab4b47",
+        "filename": "board/lucid/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2015-12-21T23:34:14Z",
+      "side": 1,
+      "message": "my understanding of what they want is that if the battery is critically low, then you blink the light regardless of whether or not the button is pressed. i think just swapping these two cases so critical battery is checked first will accomplish this.",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 146,
+        "endChar": 45
+      },
+      "revId": "1dd630366b8d1d4228339ffc487cd353683b4b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
