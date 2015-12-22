@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6ae01be1_1e9b6d8e",
+        "filename": "driver/charger/bq24773.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2015-12-22T00:42:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a438f4f_989b548d",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 8
+      },
+      "revId": "91a03b5f45e5d2be711ab8ebcf7862ef1c7956df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a2517a8_07e5ca35",
         "filename": "driver/charger/bq24773.h",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "2aeaa3c4_1c9b758e",
+        "filename": "driver/charger/bq24773.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2015-12-22T00:42:48Z",
+      "side": 1,
+      "message": "If I write the function definition in charger.h like this\nint __attribute((weak)) board_charger_post_init(void)\n{\n    return EC_SUCCESS;\n}\nand I define the board_charger_post_init in board.c again,\nthe compiler complains I had redefined the function.",
+      "parentUuid": "4a2517a8_07e5ca35",
+      "revId": "91a03b5f45e5d2be711ab8ebcf7862ef1c7956df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4aaa7754_e58736c8",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2015-12-21T18:40:23Z",
       "side": 1,
       "message": "We won\u0027t need this config if we define an empty weak version of board_charger_post_init().",
+      "revId": "91a03b5f45e5d2be711ab8ebcf7862ef1c7956df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a16f790_a5aebea1",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2015-12-22T00:42:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aaa7754_e58736c8",
       "revId": "91a03b5f45e5d2be711ab8ebcf7862ef1c7956df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
