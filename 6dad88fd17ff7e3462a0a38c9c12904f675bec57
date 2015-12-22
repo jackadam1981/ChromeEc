@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2afc637c_6ff30dc7",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-22T19:32:02Z",
+      "side": 1,
+      "message": "But we have alignment requirements that void* obscures.\nNot every void* can be used at uint32_t*. Make explicit to caller instead?",
+      "parentUuid": "ca2ae7be_2c12bb38",
+      "range": {
+        "startLine": 102,
+        "startChar": 11,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "6dad88fd17ff7e3462a0a38c9c12904f675bec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea27abf2_addce939",
         "filename": "board/cr50/tpm2/rsa.c",
         "patchSetId": 14
