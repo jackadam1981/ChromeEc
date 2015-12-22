@@ -1,0 +1,285 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa2133e4_2b10e59e",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-22T19:26:41Z",
+      "side": 1,
+      "message": "Why are all these casts necessary? They raise questions about alignment and what not. Can we get the code cast clean?",
+      "range": {
+        "startLine": 102,
+        "startChar": 11,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "6dad88fd17ff7e3462a0a38c9c12904f675bec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea27abf2_addce939",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-22T19:26:41Z",
+      "side": 1,
+      "message": "What\u0027s the significance of the repeated 0x00? That it is a single byte?\n\nPerhaps offsets are more illustrative?",
+      "range": {
+        "startLine": 330,
+        "startChar": 6,
+        "endLine": 330,
+        "endChar": 10
+      },
+      "revId": "6dad88fd17ff7e3462a0a38c9c12904f675bec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca2ae7be_4c860fd1",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-22T19:26:41Z",
+      "side": 1,
+      "message": "Casting away the const? Can we get const to propagate correctly throughout the code?",
+      "range": {
+        "startLine": 367,
+        "startChar": 8,
+        "endLine": 367,
+        "endChar": 19
+      },
+      "revId": "6dad88fd17ff7e3462a0a38c9c12904f675bec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea27abf2_ede6e1ff",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-22T19:26:41Z",
+      "side": 1,
+      "message": "Make cast clean? What if sizeof(size_t) !\u003d sizeof(uint32_t) here?",
+      "range": {
+        "startLine": 379,
+        "startChar": 18,
+        "endLine": 380,
+        "endChar": 16
+      },
+      "revId": "6dad88fd17ff7e3462a0a38c9c12904f675bec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa2133e4_ebfd2d88",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-22T19:26:41Z",
+      "side": 1,
+      "message": "What about alignment? At least assert() like for len, but seems better to make caller provide uint32_t* argument, no?",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "6dad88fd17ff7e3462a0a38c9c12904f675bec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca2ae7be_0c6377ee",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-22T19:26:41Z",
+      "side": 1,
+      "message": "Do you want this to return 0x8000000 vs 0 or just !0 vs 0?\nReturn N-\u003ed[N-\u003edmax - 1] \u003e\u003e 31 for the latter.",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 7
+      },
+      "revId": "6dad88fd17ff7e3462a0a38c9c12904f675bec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a1bbbb8_29e909d7",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-22T19:26:41Z",
+      "side": 1,
+      "message": "Add comment that this is not fixed timing?",
+      "revId": "6dad88fd17ff7e3462a0a38c9c12904f675bec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa2133e4_cb594987",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-22T19:26:41Z",
+      "side": 1,
+      "message": "This masking is not needed w/ uint32_t r-\u003ed[i]",
+      "range": {
+        "startLine": 95,
+        "startChar": 19,
+        "endLine": 95,
+        "endChar": 31
+      },
+      "revId": "6dad88fd17ff7e3462a0a38c9c12904f675bec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eafecb6e_95d9264a",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-22T19:26:41Z",
+      "side": 1,
+      "message": "Not fixed timing",
+      "revId": "6dad88fd17ff7e3462a0a38c9c12904f675bec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eafecb6e_f5e6b2ff",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-22T19:26:41Z",
+      "side": 1,
+      "message": "Not fixed timing",
+      "revId": "6dad88fd17ff7e3462a0a38c9c12904f675bec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a0b8f60_92d2da29",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-22T19:26:41Z",
+      "side": 1,
+      "message": "too much casting\nif (output-\u003ed \u003d\u003d acc_buf) should do, no?\n\nSo this buffer swapping is pretty confusing.\nMaybe if (acc-\u003ed !\u003d acc_buf) is more clear.",
+      "range": {
+        "startLine": 229,
+        "startChar": 18,
+        "endLine": 229,
+        "endChar": 42
+      },
+      "revId": "6dad88fd17ff7e3462a0a38c9c12904f675bec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4aed17c9_90b81a91",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-22T19:26:41Z",
+      "side": 1,
+      "message": "acc is never used after this. Drop this?",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 35
+      },
+      "revId": "6dad88fd17ff7e3462a0a38c9c12904f675bec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a0b8f60_d2e3c2ed",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2015-12-22T19:26:41Z",
+      "side": 1,
+      "message": "we need a SecureZeroMemory() equivalent",
+      "range": {
+        "startLine": 366,
+        "startChar": 1,
+        "endLine": 366,
+        "endChar": 7
+      },
+      "revId": "6dad88fd17ff7e3462a0a38c9c12904f675bec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
