@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eafecb6e_522514e6",
+        "filename": "board/kunimitsu/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2015-12-22T00:39:15Z",
+      "side": 1,
+      "message": "Once extpower_is_present() is added.This block will need to move to kunimitsu_led_set_power() as you did before.",
+      "range": {
+        "startLine": 116,
+        "startChar": 6,
+        "endLine": 116,
+        "endChar": 25
+      },
+      "revId": "f858d8a690e7374520f37533f365ff7d37538f26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca2ae7be_e9b895e8",
+        "filename": "board/kunimitsu/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2015-12-22T00:39:15Z",
+      "side": 1,
+      "message": "Sometimes keyboard press can interrupt this, and it\u0027s visibly LED show color for power behavior first, then change to another color for battery behavior. Please use extpower_is_present() to decide which function to call like you did.",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 3
+      },
+      "revId": "f858d8a690e7374520f37533f365ff7d37538f26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
