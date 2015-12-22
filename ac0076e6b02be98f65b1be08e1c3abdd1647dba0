@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a1bbbb8_268db61f",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-22T00:46:13Z",
+      "side": 1,
+      "message": "I guess this could have been (--random_togo * 8) just as well. Could be left for another day.",
+      "revId": "ac0076e6b02be98f65b1be08e1c3abdd1647dba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
