@@ -45,6 +45,30 @@
       "revId": "f858d8a690e7374520f37533f365ff7d37538f26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a107f94_a3d51a16",
+        "filename": "board/kunimitsu/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2015-12-22T01:52:53Z",
+      "side": 1,
+      "message": "Hi Li, If we introduce extpower_is_present() only one state machine can be active at any given time, S3 \u0026 S5 LED behavior cant be altered with DC adapter connected. \n\nCurrent implementation will address most of the case and during battery charging, battery state machine will be at highest precedence and S3/S5 LED behavior will not be effective till charging completes. \nyour thoughts on this?",
+      "parentUuid": "ca2ae7be_e9b895e8",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 3
+      },
+      "revId": "f858d8a690e7374520f37533f365ff7d37538f26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
