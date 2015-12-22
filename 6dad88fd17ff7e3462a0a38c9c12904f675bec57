@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ca2ae7be_2c12bb38",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2015-12-22T19:29:35Z",
+      "side": 1,
+      "message": "I actually asked a similar question, passing the pointers as void* and defining buffers as uint32_t* I think would look much better.",
+      "parentUuid": "aa2133e4_2b10e59e",
+      "range": {
+        "startLine": 102,
+        "startChar": 11,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "6dad88fd17ff7e3462a0a38c9c12904f675bec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea27abf2_addce939",
         "filename": "board/cr50/tpm2/rsa.c",
         "patchSetId": 14
