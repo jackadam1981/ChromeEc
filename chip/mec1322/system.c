@@ -209,6 +209,10 @@ static void system_set_gpio_power(int enabled, uint32_t *backup_gpio_ctl)
 		PORT_MASK_PAIR(GPIO_PCH_RTCRST),
 #endif
 
+#ifdef BOARD_TERRA
+		PORT_MASK_PAIR(GPIO_EC_HIB_L),
+#endif
+
 		/*
 		 * Leave USB-C charging enabled in hibernate, in order to
 		 * allow wake-on-plug. 5V enable must be pulled low.
