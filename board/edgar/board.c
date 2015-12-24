@@ -118,18 +118,18 @@ int adc_temp[] = {
 	  5631,   5450,   5276,   5108,   4947,   4791,   4641,   4496,
 	  4357,   4223,   4093,   3968,   3848,   3732,   3620,   3511,
 	  3407,   3306,   3209,   3115,   3024,   2936,   2851,   2769,
-}; 
+};
 
 int adc_get_val(int idx, int *temp_ptr)
 {
 	int i;
 	int voltage_value = adc_read_channel(idx);
 	int ohm_value = (24900 * voltage_value) / (1023 - voltage_value);
-	for (i = 0; i < 104; i++)
-	{
+	for (i = 0; i < 104; i++) {
 		if (ohm_value >= adc_temp[i])
-			break; 
+			break;
 	}
-	*temp_ptr = i + 273 + 3;	//Offset 3 dergee
+	//Offset 3 Degree
+	*temp_ptr = i + 273 + 3;
 	return EC_SUCCESS;
 }
