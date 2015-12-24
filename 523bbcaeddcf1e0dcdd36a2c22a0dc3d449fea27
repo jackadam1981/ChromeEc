@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa2133e4_0e81af20",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-24T17:29:23Z",
+      "side": 1,
+      "message": "On TOT we have a board-level function to set GPIOs like this for hibernate. You can try to port it over to this FW branch, or I can do it if you can wait a few days.",
+      "revId": "523bbcaeddcf1e0dcdd36a2c22a0dc3d449fea27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
