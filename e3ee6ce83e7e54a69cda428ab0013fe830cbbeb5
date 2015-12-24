@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca2ae7be_5d0fdb7c",
+        "filename": "board/edgar/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-24T17:11:07Z",
+      "side": 1,
+      "message": "static const",
+      "revId": "e3ee6ce83e7e54a69cda428ab0013fe830cbbeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a1bbbb8_ac0b47ae",
+        "filename": "board/edgar/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-24T17:11:07Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 3
+      },
+      "revId": "e3ee6ce83e7e54a69cda428ab0013fe830cbbeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca2ae7be_bd037755",
+        "filename": "board/edgar/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-24T17:11:07Z",
+      "side": 1,
+      "message": "This is really inefficient. How about doing binary search? You can copy the code I wrote in the thermistor ADC driver.",
+      "revId": "e3ee6ce83e7e54a69cda428ab0013fe830cbbeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eafecb6e_5817f5d5",
+        "filename": "board/edgar/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-24T17:11:07Z",
+      "side": 1,
+      "message": "Is this really necessary?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "e3ee6ce83e7e54a69cda428ab0013fe830cbbeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
