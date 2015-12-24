@@ -129,7 +129,7 @@ int adc_get_val(int idx, int *temp_ptr)
 		if (ohm_value >= adc_temp[i])
 			break;
 	}
-	//Offset 3 Degree
+	/* Offset 3 Degree */
 	*temp_ptr = i + 273 + 3;
 	return EC_SUCCESS;
 }
