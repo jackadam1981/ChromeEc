@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa2133e4_11c70e6f",
+        "filename": "board/edgar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-25T16:41:47Z",
+      "side": 1,
+      "message": "You will have div0 on voltage_value \u003d\u003d 1023. You might want to add a special handler for that case.",
+      "range": {
+        "startLine": 127,
+        "startChar": 51,
+        "endLine": 127,
+        "endChar": 64
+      },
+      "revId": "55e920ea445ae96b99e34a5e456a558300640154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea27abf2_704488f8",
+        "filename": "board/edgar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2015-12-25T16:41:47Z",
+      "side": 1,
+      "message": "Use \"ARRAY_SIZE(adc_temp) - 1\".",
+      "range": {
+        "startLine": 131,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 11
+      },
+      "revId": "55e920ea445ae96b99e34a5e456a558300640154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
