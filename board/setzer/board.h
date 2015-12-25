@@ -78,7 +78,7 @@
 #define WIRELESS_GPIO_WLAN	GPIO_WLAN_OFF_L
 
 /* Number of buttons */
-#define CONFIG_BUTTON_COUNT		2
+#define CONFIG_BUTTON_COUNT		0
 
 /* Modules we want to exclude */
 #undef CONFIG_EEPROM
