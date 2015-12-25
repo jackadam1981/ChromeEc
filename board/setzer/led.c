@@ -48,7 +48,7 @@ static const uint8_t color_brightness[LED_COLOR_COUNT][3] = {
 };
 
 /**
- * Set LED color
+ * Set LED color ffff
  *
  * @param color		Enumerated color value
  */
