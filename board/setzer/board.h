@@ -120,11 +120,11 @@ enum power_signal {
 };
 
 enum pwm_channel {
-	PWM_CH_LED_RED,
-	PWM_CH_LED_BLUE,
-	PWM_CH_LED_GREEN,
+	PWM_CH_BAT_LED0,
+	PWM_CH_BAT_LED1,
+	PWM_CH_PWR_LED = 3,
 	/* Number of PWM channels */
-	PWM_CH_COUNT
+	PWM_CH_COUNT = 3
 };
 
 enum temp_sensor_id {
