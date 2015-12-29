@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a8e5b43_0e234b4f",
+        "filename": "chip/npcx/header.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-12-29T07:04:11Z",
+      "side": 1,
+      "message": "this seems the wrong solution to your problem for a const variable.\nRather than \u0027volatile\u0027, you should use something like \u0027__keep\u0027",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 8
+      },
+      "revId": "45af107b4b12c9b980ee0cc7e5eebfbad4c3ad4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
