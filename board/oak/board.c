@@ -532,6 +532,14 @@ static void tmp432_set_power_deferred(void)
 DECLARE_DEFERRED(tmp432_set_power_deferred);
 #endif
 
+#ifdef CONFIG_USB_POWER_DELIVERY
+static void pd_power_change_notify_deferred(void)
+{
+	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+}
+DECLARE_DEFERRED(pd_power_change_notify_deferred);
+#endif
+
 /**
  * Hook of AC change. turn on/off tmp432 depends on AP & AC status.
  */
@@ -540,6 +548,9 @@ static void board_extpower(void)
 	board_extpower_buffer_to_soc();
 #ifdef CONFIG_TEMP_SENSOR_TMP432
 	hook_call_deferred(tmp432_set_power_deferred, 0);
+#endif
+#ifdef CONFIG_USB_POWER_DELIVERY
+	hook_call_deferred(pd_power_change_notify_deferred, 1);
 #endif
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
