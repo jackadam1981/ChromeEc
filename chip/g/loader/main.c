@@ -63,18 +63,21 @@ void panic_printf(const char *format, ...)
 /* Returns 1 if version a is newer, 0 otherwise. */
 int is_newer_than(const struct SignedHeader *a, const struct SignedHeader *b)
 {
-	if (a->epoch_ > b->epoch_)
-		return 1;
-	if (a->epoch_ < b->epoch_)
-		return 0;
-	if (a->major_ > b->major_)
-		return 1;
-	if (a->major_ < b->major_)
-		return 0;
-	if (a->minor_ > b->minor_)
-		return 1;
-	if (a->minor_ < b->minor_)
-		return 0;
+	if (a->epoch_ != b->epoch_)
+		return a->epoch_ > b->epoch_;
+	if (a->major_ != b->major_)
+		return a->major_ > b->major_;
+	if (a->minor_ != b->minor_)
+		return a->minor_ > b->minor_;
+	debug_printf("A %p %08x%08x, B %p %08x%08x\n",
+		     a,
+		     (uint32_t)((a->timestamp_ >> 32) & 0xffffff),
+		     (uint32_t)(a->timestamp_ & 0xffffff),
+		     b,
+		     (uint32_t)((b->timestamp_ >> 32) & 0xffffff),
+		     (uint32_t)(b->timestamp_ & 0xffffff));
+	if (a->timestamp_ != b->timestamp_)
+		return a->timestamp_ > b->timestamp_;
 	return 0;
 }
 
@@ -96,11 +99,11 @@ int main(void)
 	 * Run from bank a if the versions are equal.
 	 */
 	if (is_newer_than(a, b)) {
-		first = b;
-		second = a;
-	} else {
 		first = a;
 		second = b;
+	} else {
+		first = b;
+		second = a;
 	}
 	if (GREG32(PMU, PWRDN_SCRATCH30) == 0xcafebabe) {
 		/* Launch from the alternate bank first.
