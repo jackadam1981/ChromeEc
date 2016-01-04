@@ -40,21 +40,38 @@
 
 #include "common.h"
 #include "flash.h"
+#include "flash_config.h"
 #include "registers.h"
 #include "timer.h"
 #include "watchdog.h"
 
+#include "console.h"
+#define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
+
 int flash_pre_init(void)
 {
-	/* Enable access to the upper half of the flash */
-	uint32_t half = CONFIG_FLASH_SIZE / 2;
+	struct cr50_flash_region regions[4];
+	int i, num_regions;
 
-	GWRITE(GLOBALSEC, FLASH_REGION2_BASE_ADDR,
-	       CONFIG_MAPPED_STORAGE_BASE + half);
-	GWRITE(GLOBALSEC, FLASH_REGION2_SIZE, half - 1);
-	GWRITE_FIELD(GLOBALSEC, FLASH_REGION2_CTRL, WR_EN, 1);
-	GWRITE_FIELD(GLOBALSEC, FLASH_REGION2_CTRL, RD_EN, 1);
-	GWRITE_FIELD(GLOBALSEC, FLASH_REGION2_CTRL, EN, 1);
+	num_regions = flash_regions_to_enable(regions, ARRAY_SIZE(regions));
+
+	for (i = 0; i < num_regions; i++) {
+		int reg_base;
+
+		/* Region range */
+		reg_base = GBASE(GLOBALSEC) +
+			GOFFSET(GLOBALSEC, FLASH_REGION2_BASE_ADDR) +
+			i * 8;
+
+		REG32(reg_base) = regions[i].reg_base;
+		REG32(reg_base + 4) = regions[i].reg_size - 1;
+
+		/* Region permissions. */
+		reg_base = GBASE(GLOBALSEC) +
+			GOFFSET(GLOBALSEC, FLASH_REGION2_CTRL) +
+			i * 4;
+		REG32(reg_base) = regions[i].reg_perms;
+	}
 
 	return EC_SUCCESS;
 }
@@ -104,10 +121,12 @@ static int do_flash_op(enum flash_op op, int byte_offset, int words)
 	uint32_t opcode, tmp, errors;
 	int retry_count, max_attempts, extra_prog_pulse, i;
 	int timedelay_us = 100;
+	uint32_t prev_error = 0;
 
 	/* Make sure the smart program/erase algorithms are enabled. */
 	if (!GREAD(FLASH, FSH_TIMING_PROG_SMART_ALGO_ON) ||
 	    !GREAD(FLASH, FSH_TIMING_ERASE_SMART_ALGO_ON)) {
+		CPRINTF("%s:%d\n", __func__, __LINE__);
 		return EC_ERROR_UNIMPLEMENTED;
 	}
 
@@ -120,8 +139,10 @@ static int do_flash_op(enum flash_op op, int byte_offset, int words)
 	}
 	/* If we can't clear the error status register then something is wrong.
 	 */
-	if (tmp)
+	if (tmp) {
+		CPRINTF("%s:%d\n", __func__, __LINE__);
 		return EC_ERROR_UNKNOWN;
+	}
 
 	/* We have two flash banks. Adjust offset and registers accordingly. */
 	if (byte_offset >= CONFIG_FLASH_SIZE / 2) {
@@ -176,12 +197,18 @@ static int do_flash_op(enum flash_op op, int byte_offset, int words)
 		}
 
 		/* Timed out waiting for control register to clear */
-		if (tmp)
+		if (tmp) {
+			CPRINTF("%s:%d\n", __func__, __LINE__);
 			return EC_ERROR_UNKNOWN;
-
+		}
 		/* Check error status */
 		errors = GREAD(FLASH, FSH_ERROR);
 
+		if (errors && (errors != prev_error)) {
+			prev_error = errors;
+			CPRINTF("%s:%d errors %x fsh_pe_control %p\n",
+				__func__, __LINE__, errors, fsh_pe_control);
+		}
 		/* Error status is self-clearing. Read it until it does
 		 * (we hope).
 		 */
@@ -194,9 +221,10 @@ static int do_flash_op(enum flash_op op, int byte_offset, int words)
 		/* If we can't clear the error status register then something
 		 * is wrong.
 		 */
-		if (tmp)
+		if (tmp) {
+			CPRINTF("%s:%d\n", __func__, __LINE__);
 			return EC_ERROR_UNKNOWN;
-
+		}
 		/* The operation was successful. */
 		if (!errors) {
 			/* From the spec:
@@ -213,7 +241,7 @@ static int do_flash_op(enum flash_op op, int byte_offset, int words)
 		/* If there were errors after completion retry. */
 		watchdog_reload();
 	}
-
+	CPRINTF("%s:%d, retry count %d\n", __func__, __LINE__, retry_count);
 	return EC_ERROR_UNKNOWN;
 }
 
@@ -282,8 +310,10 @@ int flash_physical_erase(int byte_offset, int num_bytes)
 		ret = do_flash_op(OP_ERASE_BLOCK,
 				  byte_offset,
 				  num_bytes / 4); /* word count */
-		if (ret)
+		if (ret) {
+			CPRINTF("Failed to erase block at %x\n", byte_offset);
 			return ret;
+		}
 
 		num_bytes -= CONFIG_FLASH_ERASE_SIZE;
 		byte_offset += CONFIG_FLASH_ERASE_SIZE;
