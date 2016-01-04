@@ -21,6 +21,7 @@ sys.path.append(os.path.join(root_dir, '..', '..', 'build', 'tpm_test'))
 import crypto_test
 import hash_test
 import ftdi_spi_tpm
+import upgrade_test
 
 # Extension command for dcypto testing
 EXT_CMD = 0xbaccd00a
@@ -131,6 +132,7 @@ if __name__ == '__main__':
     debug_needed = len(sys.argv) == 2 and sys.argv[1] == '-d'
     t = TPM(debug_mode=debug_needed)
 
+    upgrade_test.upgrade(t)
     crypto_test.crypto_tests(t, os.path.join(root_dir, 'crypto_test.xml'))
     hash_test.hash_test(t)
   except (TpmError, crypto_test.CryptoError, hash_test.HashError) as e:

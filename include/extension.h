@@ -48,6 +48,7 @@ struct extension_command {
 enum {
 	EXTENSION_AES = 0,
 	EXTENSION_HASH = 1,
+	EXTENSION_FW_UPGRADE = 2,
 };
 
 
