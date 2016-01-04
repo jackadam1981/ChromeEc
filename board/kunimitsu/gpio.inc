@@ -16,12 +16,9 @@ GPIO_INT(PCH_SLP_S4_L,      PIN(200), GPIO_INT_BOTH | GPIO_PULL_UP, power_signal
 GPIO_INT(PCH_SLP_S3_L,      PIN(206), GPIO_INT_BOTH | GPIO_PULL_UP, power_signal_interrupt)
 GPIO_INT(PCH_SLP_S0_L,      PIN(141), GPIO_INT_BOTH, power_signal_interrupt_S0)
 GPIO_INT(PCH_SLP_SUS_L,     PIN(12),  GPIO_INT_BOTH | GPIO_PULL_UP, power_signal_interrupt)
-GPIO_INT(VOLUME_UP_L,       PIN(31),  GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
-GPIO_INT(VOLUME_DOWN_L,     PIN(47),  GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
 GPIO_INT(PMIC_INT_L,        PIN(50),  GPIO_INT_FALLING, power_signal_interrupt)
 GPIO_INT(PD_MCU_INT,        PIN(122), GPIO_INT_FALLING, pd_mcu_interrupt)
 GPIO_INT(USB_C0_VBUS_WAKE_L,PIN(152), GPIO_INT_BOTH, vbus0_evt)
-GPIO_INT(USB_C1_VBUS_WAKE_L,PIN(123), GPIO_INT_BOTH, vbus1_evt)
 GPIO_INT(USB_C0_BC12_INT_L, PIN(124), GPIO_INT_FALLING, usb0_evt)
 GPIO_INT(USB_C1_BC12_INT_L, PIN(145), GPIO_INT_FALLING, usb1_evt)
 #ifdef CONFIG_LOW_POWER_IDLE
@@ -39,8 +36,6 @@ GPIO(I2C0_1_SCL,            PIN(134), GPIO_INPUT)
 GPIO(I2C0_1_SDA,            PIN(17),  GPIO_INPUT)
 GPIO(I2C1_SCL,              PIN(22),  GPIO_INPUT)
 GPIO(I2C1_SDA,              PIN(23),  GPIO_INPUT)
-GPIO(I2C2_SCL,              PIN(20),  GPIO_INPUT)
-GPIO(I2C2_SDA,              PIN(21),  GPIO_INPUT)
 GPIO(I2C3_SCL,              PIN(24),  GPIO_INPUT)
 GPIO(I2C3_SDA,              PIN(25),  GPIO_INPUT)
 GPIO(PCH_SCI_L,             PIN(26),  GPIO_ODR_HIGH)
@@ -62,10 +57,6 @@ GPIO(PCH_WAKE_L,            PIN(66),  GPIO_ODR_HIGH)
 GPIO(USB2_OTG_VBUSSENSE,    PIN(105), GPIO_ODR_HIGH)
 GPIO(PCH_ACOK,              PIN(110), GPIO_OUT_LOW)
 /* Interrupts from accelerometer / gyro -- not yet implemented */
-GPIO(LID_ACCEL_INT,         PIN(161), GPIO_INPUT | GPIO_PULL_DOWN)  /* Lid ACCEL sensor interrupt to EC */
-GPIO(GYRO_INT,              PIN(127), GPIO_INPUT | GPIO_PULL_DOWN)  /* Lid Gyro sensor interrupt to EC */
-GPIO(BASE_ACCEL_INT,        PIN(147), GPIO_INPUT | GPIO_PULL_DOWN)  /* Base ACCEL sensor interrupt to EC */
-GPIO(GYRO_DRDY,             PIN(133), GPIO_INPUT | GPIO_PULL_DOWN)  /* Lid Gyro sensor DRDY interrupt to EC */
 GPIO(WLAN_OFF_L,            PIN(132), GPIO_OUT_HIGH)
 /* RCIN# line to PCH for 8042 emulation */
 GPIO(PCH_RCIN_L,            PIN(135), GPIO_ODR_HIGH)
@@ -78,9 +69,7 @@ GPIO(PCH_RSMRST_L,          PIN(143), GPIO_OUT_LOW)
 /* prochot input from devices */
 GPIO(PLATFORM_EC_PROCHOT,   PIN(151), GPIO_INPUT)
 GPIO(USB_C0_5V_EN,          PIN(154), GPIO_OUT_LOW)
-GPIO(USB_C1_5V_EN,          PIN(204), GPIO_OUT_LOW)
 GPIO(USB_C0_CHARGE_EN_L,    PIN(64),  GPIO_OUT_LOW)
-GPIO(USB_C1_CHARGE_EN_L,    PIN(210), GPIO_OUT_LOW)
 /* Reserved for USB-A ILIM */
 GPIO(USB_ILIM_SEL,          PIN(11),  GPIO_INPUT | GPIO_PULL_UP)
 GPIO(FAN_PWR_DIS_L,         PIN(160), GPIO_OUT_HIGH)
