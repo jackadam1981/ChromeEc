@@ -22,6 +22,30 @@
       "revId": "54ef73c778f6c08fe724fc119847b14d60108fad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a4ddf0f_21fe0a84",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-01-05T22:33:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca2ae7be_d7e43f3c",
+      "range": {
+        "startLine": 404,
+        "startChar": 2,
+        "endLine": 404,
+        "endChar": 29
+      },
+      "revId": "54ef73c778f6c08fe724fc119847b14d60108fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
