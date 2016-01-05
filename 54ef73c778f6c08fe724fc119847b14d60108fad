@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca2ae7be_d7e43f3c",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-05T01:45:38Z",
+      "side": 1,
+      "message": "Hmm.  I see what you\u0027re going for.  But HASH_GET doesn\u0027t currently pay attention to p-\u003eoffset, and ectool doesn\u0027t even initialize it in cmd_ec_hash().  So this change will break existing ectool.\n\nI think we can make it work reverse-compatibly if we define that *only* the two special values EC_VBOOT_HASH_OFFSET_RO and EC_VBOOT_HASH_OFFSET_RW are checked.  If one of those is passed as p-\u003eoffset, then a hash will only be returned if it matches.  If any other value is passed for p-\u003eoffset, then it will be ignored.\n\nEither that, or the host needs to be responsible for checking r-\u003eoffset vs. the expected one.  (If it has a way of doing so...)",
+      "range": {
+        "startLine": 404,
+        "startChar": 2,
+        "endLine": 404,
+        "endChar": 29
+      },
+      "revId": "54ef73c778f6c08fe724fc119847b14d60108fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
