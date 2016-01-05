@@ -22,6 +22,30 @@
       "revId": "2c0843e845536b32665c7894a6e544f6fdd4a467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a154384_2ac29b5e",
+        "filename": "board/chell/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1117540
+      },
+      "writtenOn": "2016-01-05T02:06:37Z",
+      "side": 0,
+      "message": "This case system get battery capacity has no 3% difference .So set the battery level 12%.",
+      "parentUuid": "4aed17c9_07db4aa0",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 45
+      },
+      "revId": "2c0843e845536b32665c7894a6e544f6fdd4a467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
