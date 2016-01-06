@@ -954,8 +954,12 @@ int pd_custom_flash_vdm(int port, int cnt, uint32_t *payload)
 	return rsize;
 }
 
-static void stub_pd_send_host_event(int mask)
-{
-}
+/* Define local option for if we are a TCPM with an off chip TCPC */
+#if defined(CONFIG_USB_POWER_DELIVERY) && !defined(CONFIG_USB_PD_TCPM_STUB)
 void pd_send_host_event(int mask)
-	__attribute__((weak, alias("stub_pd_send_host_event")));
+{
+	if (!mask)
+		return;
+	host_set_single_event(EC_HOST_EVENT_PD_MCU);
+}
+#endif
