@@ -22,6 +22,30 @@
       "revId": "5a5e064ae46441d63c85e29ac0430dd5ecce14d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa3e9347_064f5e17",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-01-06T00:43:35Z",
+      "side": 1,
+      "message": "If request_offset is 0 then get_offset returns the current data_offset so it will work.",
+      "parentUuid": "aa1773d7_c1c6381f",
+      "range": {
+        "startLine": 348,
+        "startChar": 10,
+        "endLine": 348,
+        "endChar": 62
+      },
+      "revId": "5a5e064ae46441d63c85e29ac0430dd5ecce14d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
