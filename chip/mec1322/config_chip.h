@@ -69,6 +69,7 @@
 #define HOOKS_TASK_STACK_SIZE		640
 #define CONSOLE_TASK_STACK_SIZE		640
 #define HOST_CMD_TASK_STACK_SIZE	640
+#define PD_TASK_STACK_SIZE		800
 
 /* Default task stack size */
 #define TASK_STACK_SIZE			512
