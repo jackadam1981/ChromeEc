@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0a7b1f38_6b5161e6",
+        "filename": "common/led_policy_std.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-01-06T17:59:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a52a3ad_2bb905eb",
+      "range": {
+        "startLine": 80,
+        "startChar": 14,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "a71a038a7223e9c64b599110149d82da58c834aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a1aaf01_e022584a",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-01-06T17:31:22Z",
       "side": 1,
       "message": "Same here CONFIG_POWER_LED_IS_EXTERNAL.",
+      "range": {
+        "startLine": 1084,
+        "startChar": 14,
+        "endLine": 1084,
+        "endChar": 23
+      },
+      "revId": "a71a038a7223e9c64b599110149d82da58c834aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a8f0f7c_129faa24",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-01-06T17:59:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a1aaf01_e022584a",
       "range": {
         "startLine": 1084,
         "startChar": 14,
