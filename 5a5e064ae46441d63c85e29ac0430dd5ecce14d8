@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa1773d7_c1c6381f",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-06T00:38:48Z",
+      "side": 1,
+      "message": "This will still break existing callers, since if request_offset\u003d0, it will only return the current status if data_offset is also 0.\n\nTo be legacy-compatible:\n\n} else if ((request_offset \u003d\u003d EC_VBOOT_HASH_OFFSET_RO ||\n          request_offset \u003d\u003d EC_VBOOT_HASH_OFFSET_RW) \u0026\u0026\n         get_offset(request_offset) !\u003d data_offset) {\n    /* Host asking for RO or RW hash, and we don\u0027t have it */\n    r-\u003estatus \u003d EC_VBOOT_HASH_STATUS_NONE;\n} else if (hash \u0026\u0026 !want_abort) {",
+      "range": {
+        "startLine": 348,
+        "startChar": 10,
+        "endLine": 348,
+        "endChar": 62
+      },
+      "revId": "5a5e064ae46441d63c85e29ac0430dd5ecce14d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
