@@ -67,6 +67,8 @@
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_COMMON
 #define CONFIG_USB_CHARGER
+/* TODO(crosbug.com/p/48797): remove this workaround when possible. */
+#define CONFIG_USB_CHARGER_FORCE_RESET
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USBC_SS_MUX_DFP_ONLY
 #define CONFIG_USBC_VCONN

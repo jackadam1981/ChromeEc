@@ -38,6 +38,27 @@
 static int usb_switch_state[CONFIG_USB_PD_PORT_COUNT];
 static struct mutex usb_switch_lock[CONFIG_USB_PD_PORT_COUNT];
 
+#ifdef CONFIG_USB_CHARGER_FORCE_RESET
+static void usb_charger_reset(int port)
+{
+	struct charge_port_info charge;
+
+	charge.voltage = USB_CHARGER_VOLTAGE_MV;
+	charge.current = 0;
+
+	charge_manager_update_charge(CHARGE_SUPPLIER_PROPRIETARY,
+				     port, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP,
+				     port, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_DCP,
+				     port, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_SDP,
+				     port, &charge);
+	charge_manager_update_charge(CHARGE_SUPPLIER_OTHER,
+				     port, &charge);
+}
+#endif
+
 static void update_vbus_supplier(int port, int vbus_level)
 {
 	struct charge_port_info charge;
@@ -53,6 +74,17 @@ static void update_vbus_supplier(int port, int vbus_level)
 					     port,
 					     &charge);
 	}
+
+#ifdef CONFIG_USB_CHARGER_FORCE_RESET
+	/*
+	 * TODO (crosbug.com/p/29467): remove this workaround when possible.
+	 * The detach interrupt of PI3USB9281A may be missing sometimes,
+	 * to guarantee the correct charge info, reset all available charge
+	 * to 0 here, when VBUS is changing to low.
+	 */
+	if (!vbus_level)
+		usb_charger_reset(port);
+#endif
 }
 
 int usb_charger_port_is_sourcing_vbus(int port)

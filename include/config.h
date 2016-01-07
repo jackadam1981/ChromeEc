@@ -1897,6 +1897,13 @@
 /* Common USB / BC1.2 charger task */
 #undef CONFIG_USB_CHARGER
 
+/*
+ * TODO(crosbug.com/p/48797): There is no detach interrupt from PI3USB9281A
+ * sometimes, during plug/unplug PD charger. Force reset all usb charge
+ * suppliers when VBUS is changing to low. Remove this workaround when possible.
+ */
+#undef CONFIG_USB_CHARGER_FORCE_RESET
+
 /* Enable USB serial console module. */
 #undef CONFIG_USB_CONSOLE
 
