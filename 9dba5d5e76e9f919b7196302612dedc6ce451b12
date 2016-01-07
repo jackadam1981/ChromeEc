@@ -22,6 +22,30 @@
       "revId": "9dba5d5e76e9f919b7196302612dedc6ce451b12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa3e9347_1a448d9f",
+        "filename": "board/strago/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-07T01:32:05Z",
+      "side": 1,
+      "message": "Yeah, unfortunately strago is nearly out of flash space, so I had to remove a few console commands to fit my changes.",
+      "parentUuid": "6a481bfe_f88c5124",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 28
+      },
+      "revId": "9dba5d5e76e9f919b7196302612dedc6ce451b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
