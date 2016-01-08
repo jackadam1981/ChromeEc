@@ -23,15 +23,21 @@
 
 #define PI3USB9281_CTRL_INT_DIS     (1 << 0)
 #define PI3USB9281_CTRL_AUTO        (1 << 2)
-#define PI3USB9281_CTRL_SWITCH_AUTO (1 << 4)
+/* Switch based on detection, or open all switches */
+#define PI3USB9281_CTRL_DETECT      (1 << 4)
 /* Bits 5 thru 7 are read X, write 0 */
 #define PI3USB9281_CTRL_MASK        0x1f
 /* Bits 1 and 3 are read 1, write 1 */
 #define PI3USB9281_CTRL_RSVD_1      0x0a
 
-#define PI3USB9281_PIN_MANUAL_VBUS  (3 << 0)
-#define PI3USB9281_PIN_MANUAL_DP    (1 << 2)
-#define PI3USB9281_PIN_MANUAL_DM    (1 << 5)
+/* Switch setting for pi3usb9281_set_pins */
+#define PI3USB9281_PIN_CLOSE_VBUS   (3 << 0)
+#define PI3USB9281_PIN_CLOSE_DP     (1 << 2)
+#define PI3USB9281_PIN_CLOSE_DM     (1 << 5)
+#define PI3USB9281_PIN_CLOSE_ALL    (PI3USB9281_PIN_CLOSE_VBUS | \
+				     PI3USB9281_PIN_CLOSE_DP | \
+				     PI3USB9281_PIN_CLOSE_DM)
+#define PI3USB9281_PIN_OPEN_ALL     0
 
 #define PI3USB9281_INT_ATTACH       (1 << 0)
 #define PI3USB9281_INT_DETACH       (1 << 1)
@@ -100,9 +106,6 @@ int pi3usb9281_set_switch_manual(int port, int val);
 
 /* Set bits to enable pins in manual switch register. */
 int pi3usb9281_set_pins(int port, uint8_t mask);
-
-/* Set D+/D-/Vbus switches to open or closed/auto-control. */
-int pi3usb9281_set_switches(int port, int open);
 
 /* Reset PI3USB9281. */
 int pi3usb9281_reset(int port);

@@ -246,7 +246,7 @@ static uint32_t dp_status;
 static void svdm_safe_dp_mode(int port)
 {
 	/* make DP interface safe until configure */
-	usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_CONNECT, 0);
+	usb_mux_set(port, TYPEC_MUX_NONE, 0, 0);
 	dp_flags = 0;
 	dp_status = 0;
 }
@@ -288,7 +288,7 @@ static int svdm_dp_config(int port, uint32_t *payload)
 		return 0;
 
 	usb_mux_set(port, mf_pref ? TYPEC_MUX_DOCK : TYPEC_MUX_DP,
-			  USB_SWITCH_CONNECT, pd_get_polarity(port));
+		    0, pd_get_polarity(port));
 
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
 			 CMD_DP_CONFIG | VDO_OPOS(opos));

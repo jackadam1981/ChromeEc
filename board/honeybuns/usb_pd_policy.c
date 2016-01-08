@@ -233,7 +233,7 @@ static int dp_config(int port, uint32_t *payload)
 	if (PD_DP_CFG_DPON(payload[1]))
 		gpio_set_level(GPIO_PD_SBU_ENABLE, 1);
 	/* Get the DP lanes (or DP+USB SS depending on the mode) */
-	usb_mux_set(port, mux, USB_SWITCH_CONNECT, pd_get_polarity(port));
+	usb_mux_set(port, mux, 0, pd_get_polarity(port));
 
 	return 1;
 }

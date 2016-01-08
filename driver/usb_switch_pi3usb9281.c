@@ -199,18 +199,3 @@ int pi3usb9281_set_pins(int port, uint8_t val)
 {
 	return pi3usb9281_write(port, PI3USB9281_REG_MANUAL, val);
 }
-
-int pi3usb9281_set_switches(int port, int open)
-{
-	uint8_t ctrl = pi3usb9281_read(port, PI3USB9281_REG_CONTROL);
-
-	if (ctrl == 0xee)
-		return EC_ERROR_UNKNOWN;
-
-	if (open)
-		ctrl &= ~PI3USB9281_CTRL_SWITCH_AUTO;
-	else
-		ctrl |= PI3USB9281_CTRL_SWITCH_AUTO;
-
-	return pi3usb9281_write_ctrl(port, ctrl);
-}
