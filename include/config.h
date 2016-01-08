@@ -1524,6 +1524,11 @@
 #undef CONFIG_UART_RX_DMA_CH
 
 /*****************************************************************************/
+
+/* IDENTIFY BOARD ULTIMA */
+#undef CONFIG_ULTIMA
+
+/*****************************************************************************/
 /* USB PD config */
 
 /* Include all USB Power Delivery modules */
