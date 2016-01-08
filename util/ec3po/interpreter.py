@@ -69,6 +69,8 @@ class Interpreter(object):
       and is changed depending on the result of an interrogation.
     interrogating: A boolean indicating if we are in the middle of interrogating
       the EC.
+    connected: A boolean indicating if the interpreter is actually connected to
+      the UART and listening.
   """
   def __init__(self, ec_uart_pty, cmd_pipe, dbg_pipe, log_level=logging.INFO):
     """Intializes an Interpreter object with the provided args.
@@ -99,6 +101,7 @@ class Interpreter(object):
     self.last_cmd = ''
     self.enhanced_ec = False
     self.interrogating = False
+    self.connected = True
 
   def __str__(self):
     """Show internal state of the Interpreter object.
@@ -129,8 +132,10 @@ class Interpreter(object):
     """
     self.ec_cmd_queue.put(command)
     self.logger.debug('Commands now in queue: %d', self.ec_cmd_queue.qsize())
+
     # Add the EC UART as an output to be serviced.
-    self.outputs.append(self.ec_uart_pty)
+    if self.connected and self.ec_uart_pty not in self.outputs:
+      self.outputs.append(self.ec_uart_pty)
 
   def PackCommand(self, raw_cmd):
     r"""Packs a command for use with error checking.
@@ -176,6 +181,47 @@ class Interpreter(object):
     Args:
       command: A string representing the command sent by the user.
     """
+    if command == "disconnect":
+      if self.connected:
+        self.logger.debug('UART disconnect request.')
+        # Get the UART that the interpreter is attacted to.
+        fd = self.ec_uart_pty
+        self.logger.debug('fd: %r', fd)
+        raw_uart = fd.name
+        self.logger.debug('raw_uart: %r', raw_uart)
+        # Remove the descriptor from the inputs and outputs.
+        self.inputs.remove(fd)
+        if fd in self.outputs:
+          self.outputs.remove(fd)
+        self.logger.debug('Removed fd. Remaining inputs: %r', self.inputs)
+        # Close the file.
+        fd.close()
+        # Mark the interpreter as disconnected now.
+        self.connected = False
+        self.logger.debug('Disconnected from %s.', raw_uart)
+        # Save the name so we can reconnect later.
+        self.ec_uart_pty = raw_uart
+      return
+
+    elif command == "reconnect":
+      if not self.connected:
+        self.logger.debug('UART reconnect request.')
+        # Reopen the PTY.
+        fd = open(self.ec_uart_pty, 'a+')
+        self.logger.debug('fd: %r', fd)
+        self.ec_uart_pty = fd
+        # Add the descriptor to the inputs.
+        self.inputs.append(fd)
+        self.logger.debug('fd added. curr inputs: %r', self.inputs)
+        # If there are commands pending to be sent, add back the EC UART to the
+        # outputs.
+        if not self.ec_cmd_queue.empty():
+          self.outputs.append(fd)
+        # Mark the interpreter as connected now.
+        self.connected = True
+        self.logger.debug('Connected to %s.', fd.name)
+      return
+
     # Remove leading and trailing spaces only if this is an enhanced EC image.
     # For non-enhanced EC images, commands will be single characters at a time
     # and can be spaces.
@@ -232,6 +278,10 @@ class Interpreter(object):
       # Get the command to send.
       cmd = self.ec_cmd_queue.get()
 
+    # # Flush the command queue.
+    # while not self.ec_cmd_queue.empty():
+    #   # Get the command to send.
+    #   cmd = self.ec_cmd_queue.get()
     # Send the command.
     self.ec_uart_pty.write(cmd)
     self.ec_uart_pty.flush()
@@ -245,8 +295,13 @@ class Interpreter(object):
         self.last_cmd = cmd
         # Reset the retry count.
         self.cmd_retries = COMMAND_RETRIES
-    # Remove the EC UART from the writers while we wait for a response.
-    self.outputs.remove(self.ec_uart_pty)
+
+    # If no command is pending to be sent, then we can remove the EC UART from
+    # writers.  Might need better checking for command retry logic in here.
+    if self.ec_cmd_queue.empty():
+      # Remove the EC UART from the writers while we wait for a response.
+      self.logger.debug('Removing EC UART from writers.')
+      self.outputs.remove(self.ec_uart_pty)
 
   def HandleECData(self):
     """Handle any debug prints from the EC."""
@@ -343,6 +398,7 @@ def StartLoop(interp):
     interp.cmd_pipe.close()
     interp.dbg_pipe.close()
     # Close file descriptor.
-    interp.ec_uart_pty.close()
+    if type(interp.ec_uart_pty) is file:
+      interp.ec_uart_pty.close()
     # Exit.
     sys.exit(0)
