@@ -35,7 +35,7 @@ void usb_mux_init(int port)
  * which can block. Consider implementing an asynchronous task.
  */
 void usb_mux_set(int port, enum typec_mux mux_mode,
-		 enum usb_switch usb_mode, int polarity)
+		 int switch_disconnect, int polarity)
 {
 	const struct usb_mux *mux = &usb_muxes[port];
 	int res;
@@ -43,7 +43,8 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
 
 #ifdef CONFIG_USB_CHARGER
 	/* Configure USB2.0 */
-	usb_charger_set_switches(port, usb_mode);
+	usb_charger_set_event(port, USB_CHARGER_EVENT_MUX_DISCONNECT,
+			      switch_disconnect);
 #endif
 
 	/* Configure superspeed lanes */
@@ -57,7 +58,7 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
 	if (enable_debug_prints)
 		CPRINTS(
 		     "usb/dp mux: port(%d) typec_mux(%d) usb2(%d) polarity(%d)",
-		     port, mux_mode, usb_mode, polarity);
+		     port, mux_mode, switch_disconnect, polarity);
 }
 
 int usb_mux_get(int port, const char **dp_str, const char **usb_str)
@@ -143,10 +144,7 @@ static int command_typec(int argc, char **argv)
 	for (i = 0; i < ARRAY_SIZE(mux_name); i++)
 		if (!strcasecmp(argv[2], mux_name[i]))
 			mux = i;
-	usb_mux_set(port, mux, mux == TYPEC_MUX_NONE ?
-				      USB_SWITCH_DISCONNECT :
-				      USB_SWITCH_CONNECT,
-			  pd_get_polarity(port));
+	usb_mux_set(port, mux, (mux == TYPEC_MUX_NONE), pd_get_polarity(port));
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(typec, command_typec,

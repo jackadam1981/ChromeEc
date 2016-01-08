@@ -303,8 +303,7 @@ static inline void set_state(int port, enum pd_states next_state)
 		pd_dfp_exit_mode(port, 0, 0);
 #endif
 #ifdef CONFIG_USBC_SS_MUX
-		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
-			    pd[port].polarity);
+		usb_mux_set(port, TYPEC_MUX_NONE, 1, pd[port].polarity);
 #endif
 		/* Disable TCPC RX */
 		tcpm_set_rx_enable(port, 0);
@@ -808,14 +807,11 @@ static void pd_set_data_role(int port, int role)
 	 * If new data role is UFP, then disconnect the SS mux.
 	 */
 	if (role == PD_ROLE_DFP)
-		usb_mux_set(port, TYPEC_MUX_USB, USB_SWITCH_CONNECT,
-			    pd[port].polarity);
+		usb_mux_set(port, TYPEC_MUX_USB, 0, pd[port].polarity);
 	else
-		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
-			    pd[port].polarity);
+		usb_mux_set(port, TYPEC_MUX_NONE, 1, pd[port].polarity);
 #else
-	usb_mux_set(port, TYPEC_MUX_USB, USB_SWITCH_CONNECT,
-		    pd[port].polarity);
+	usb_mux_set(port, TYPEC_MUX_USB, 0, pd[port].polarity);
 #endif
 #endif
 	pd_update_roles(port);
@@ -1592,8 +1588,7 @@ void pd_task(void)
 				/* Enable VBUS */
 				if (pd_set_power_supply_ready(port)) {
 #ifdef CONFIG_USBC_SS_MUX
-					usb_mux_set(port, TYPEC_MUX_NONE,
-						    USB_SWITCH_DISCONNECT,
+					usb_mux_set(port, TYPEC_MUX_NONE, 1,
 						    pd[port].polarity);
 #endif
 					break;
@@ -3080,9 +3075,7 @@ static int hc_usb_pd_control(struct host_cmd_handler_args *args)
 #ifdef CONFIG_USBC_SS_MUX
 	if (p->mux != USB_PD_CTRL_MUX_NO_CHANGE)
 		usb_mux_set(p->port, typec_mux_map[p->mux],
-			    typec_mux_map[p->mux] == TYPEC_MUX_NONE ?
-			    USB_SWITCH_DISCONNECT :
-			    USB_SWITCH_CONNECT,
+			    typec_mux_map[p->mux] == TYPEC_MUX_NONE,
 			    pd_get_polarity(p->port));
 #endif /* CONFIG_USBC_SS_MUX */
 
