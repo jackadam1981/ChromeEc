@@ -118,6 +118,7 @@ static int update_static_battery_info(void)
 {
 	char *batt_str;
 	int batt_serial;
+	char temp[32];
 	/*
 	 * The return values have type enum ec_error_list, but EC_SUCCESS is
 	 * zero. We'll just look for any failures so we can try them all again.
@@ -148,13 +149,15 @@ static int update_static_battery_info(void)
 
 	/* Battery Manufacturer string */
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_MFGR);
+	battery_manufacturer_name(temp, sizeof(temp));
 	memset(batt_str, 0, EC_MEMMAP_TEXT_MAX);
-	rv |= battery_manufacturer_name(batt_str, EC_MEMMAP_TEXT_MAX);
+	memcpy(batt_str, temp, EC_MEMMAP_TEXT_MAX-1);
 
 	/* Battery Model string */
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_MODEL);
+	battery_device_name(temp, sizeof(temp));
 	memset(batt_str, 0, EC_MEMMAP_TEXT_MAX);
-	rv |= battery_device_name(batt_str, EC_MEMMAP_TEXT_MAX);
+	memcpy(batt_str, temp, EC_MEMMAP_TEXT_MAX-1);
 
 	/* Battery Type string */
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_TYPE);
