@@ -78,6 +78,13 @@ void usb_charger_set_event(int port, enum usb_charger_event evt, int set)
 	if (charger_events[port] &
 	    (USB_CHARGER_EVENT_CHIP_RESET | USB_CHARGER_EVENT_MUX_DISCONNECT))
 		new_state = USB_SWITCH_STATE_OPEN;
+	/*
+	 * Close data switches during a power swap to prevent auto detection
+	 * from incorrectly opening them when VBUS falls. This will work on
+	 * PI3USB9281 rev. C only.
+	 */
+	else if (charger_events[port] & USB_CHARGER_EVENT_POWER_SWAP)
+		new_state = USB_SWITCH_STATE_CLOSED;
 
 	if (new_state != switch_state[port]) {
 		switch (new_state) {

@@ -212,6 +212,18 @@ int pd_is_connected(int port)
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
+/* Return true if passed state is a power swapping state */
+static int pd_is_power_swapping_state(enum pd_states state)
+{
+	return  state == PD_STATE_SNK_SWAP_SNK_DISABLE ||
+		state == PD_STATE_SNK_SWAP_SRC_DISABLE ||
+		state == PD_STATE_SNK_SWAP_STANDBY ||
+		state == PD_STATE_SNK_SWAP_COMPLETE ||
+		state == PD_STATE_SRC_SWAP_SNK_DISABLE ||
+		state == PD_STATE_SRC_SWAP_SRC_DISABLE ||
+		state == PD_STATE_SRC_SWAP_STANDBY;
+}
+
 void pd_vbus_low(int port)
 {
 	pd[port].flags &= ~PD_FLAGS_VBUS_NEVER_LOW;
@@ -319,6 +331,14 @@ static inline void set_state(int port, enum pd_states next_state)
 		enable_sleep(SLEEP_MASK_USB_PD);
 	else
 		disable_sleep(SLEEP_MASK_USB_PD);
+#endif
+
+#if defined(CONFIG_USB_PD_DUAL_ROLE) && defined(CONFIG_USB_CHARGER)
+	/* Notify USB charger if we start or end a power swap */
+	if (pd_is_power_swapping_state(last_state) !=
+	    pd_is_power_swapping_state(next_state))
+		usb_charger_set_event(port, USB_CHARGER_EVENT_POWER_SWAP,
+				      pd_is_power_swapping_state(next_state));
 #endif
 
 	CPRINTF("C%d st%d\n", port, next_state);
@@ -1258,19 +1278,6 @@ int pd_get_role(int port)
 {
 	return pd[port].power_role;
 }
-
-static int pd_is_power_swapping(int port)
-{
-	/* return true if in the act of swapping power roles */
-	return  pd[port].task_state == PD_STATE_SNK_SWAP_SNK_DISABLE ||
-		pd[port].task_state == PD_STATE_SNK_SWAP_SRC_DISABLE ||
-		pd[port].task_state == PD_STATE_SNK_SWAP_STANDBY ||
-		pd[port].task_state == PD_STATE_SNK_SWAP_COMPLETE ||
-		pd[port].task_state == PD_STATE_SRC_SWAP_SNK_DISABLE ||
-		pd[port].task_state == PD_STATE_SRC_SWAP_SRC_DISABLE ||
-		pd[port].task_state == PD_STATE_SRC_SWAP_STANDBY;
-}
-
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 int pd_get_polarity(int port)
@@ -2532,7 +2539,7 @@ void pd_task(void)
 		if (!pd_is_connected(port))
 			continue;
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-		if (pd_is_power_swapping(port))
+		if (pd_is_power_swapping_state(pd[port].task_state))
 			continue;
 #endif
 		if (pd[port].power_role == PD_ROLE_SOURCE) {
