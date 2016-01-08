@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "2a9aa3ee_65ad3c04",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-08T23:51:42Z",
+      "side": 1,
+      "message": "self.ec_uart_pty_name?  Seems a little weird to reuse the same member for both the uart (when connected) and its name (when disconnected).\n\nBesides, then you can always use self.ec_uart_pty_name in debug output.",
+      "range": {
+        "startLine": 203,
+        "startChar": 8,
+        "endLine": 203,
+        "endChar": 35
+      },
+      "revId": "eb27161443444974de9662f040208cb0a89a2437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a79fb72_3c88b9d9",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-08T23:51:42Z",
+      "side": 1,
+      "message": "Hmm.  This might cause commands to be sent out of order.  For example,\n\ncmdblah\ndisconnect\n(something else runs)\nreconnect\n(and now cmdblah runs)\n\nMaybe disconnect should stall until there are no pending commands?",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 18
+      },
+      "revId": "eb27161443444974de9662f040208cb0a89a2437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a79fb72_5ce735fc",
         "filename": "util/ec3po/interpreter.py",
         "patchSetId": 1
