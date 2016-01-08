@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a8b57a3_2095e403",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2016-01-08T20:02:57Z",
+      "side": 1,
+      "message": "I would like a comment along the lines of \"Needed for when the \u0027unwedge\u0027 routine is called from I2C, which then logs a message to the console\". If the user never sees this case then it appears that this increase in space is not needed.",
+      "revId": "d31656739c7cfc28f2c26a6bef99bd9d3e291bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
