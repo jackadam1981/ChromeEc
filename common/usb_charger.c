@@ -31,12 +31,10 @@
  */
 #define USB_CHG_RESET_DELAY_MS 100
 
-/*
- * Store the state of our USB data switches so that they can be restored
- * after pericom reset.
- */
-static int usb_switch_state[CONFIG_USB_PD_PORT_COUNT];
-static struct mutex usb_switch_lock[CONFIG_USB_PD_PORT_COUNT];
+/* Store the state of our USB data switches. */
+static uint32_t charger_events[CONFIG_USB_PD_PORT_COUNT];
+static enum usb_switch_state switch_state[CONFIG_USB_PD_PORT_COUNT];
+static struct mutex switch_lock[CONFIG_USB_PD_PORT_COUNT];
 
 static void update_vbus_supplier(int port, int vbus_level)
 {
@@ -67,17 +65,38 @@ int usb_charger_port_is_sourcing_vbus(int port)
 	return 0;
 }
 
-void usb_charger_set_switches(int port, enum usb_switch setting)
+void usb_charger_set_event(int port, enum usb_charger_event evt, int set)
 {
-	/* If switch is not changing then return */
-	if (setting == usb_switch_state[port])
-		return;
+	enum usb_switch_state new_state = USB_SWITCH_STATE_AUTO;
 
-	mutex_lock(&usb_switch_lock[port]);
-	if (setting != USB_SWITCH_RESTORE)
-		usb_switch_state[port] = setting;
-	pi3usb9281_set_switches(port, usb_switch_state[port]);
-	mutex_unlock(&usb_switch_lock[port]);
+	mutex_lock(&switch_lock[port]);
+	if (set)
+		charger_events[port] |= evt;
+	else
+		charger_events[port] &= ~evt;
+
+	if (charger_events[port] &
+	    (USB_CHARGER_EVENT_CHIP_RESET | USB_CHARGER_EVENT_MUX_DISCONNECT))
+		new_state = USB_SWITCH_STATE_OPEN;
+
+	if (new_state != switch_state[port]) {
+		switch (new_state) {
+		case USB_SWITCH_STATE_AUTO:
+			pi3usb9281_set_switch_manual(port, 0);
+			break;
+		case USB_SWITCH_STATE_CLOSED:
+			pi3usb9281_set_pins(port, 0x27);
+			pi3usb9281_set_switch_manual(port, 1);
+			break;
+		case USB_SWITCH_STATE_OPEN:
+			pi3usb9281_set_pins(port, 0);
+			pi3usb9281_set_switch_manual(port, 1);
+			break;
+		}
+
+		switch_state[port] = new_state;
+	}
+	mutex_unlock(&switch_lock[port]);
 }
 
 void usb_charger_vbus_change(int port, int vbus_level)
@@ -115,13 +134,8 @@ static void usb_charger_bc12_detect(int port)
 	if (device_type || PI3USB9281_CHG_STATUS_ANY(charger_status)) {
 		/* next operation might trigger a detach interrupt */
 		pi3usb9281_disable_interrupts(port);
-		/*
-		 * Ensure D+/D- are open before resetting
-		 * Note: we can't simply call pi3usb9281_set_switches() because
-		 * another task might override it and set the switches closed.
-		 */
-		pi3usb9281_set_switch_manual(port, 1);
-		pi3usb9281_set_pins(port, 0);
+		/* Ensure D+/D- are open before resetting */
+		usb_charger_set_event(port, USB_CHARGER_EVENT_CHIP_RESET, 1);
 
 		/* Delay to debounce pin attach order */
 		msleep(USB_CHG_DEBOUNCE_DELAY_MS);
@@ -134,11 +148,8 @@ static void usb_charger_bc12_detect(int port)
 		 * the connection.
 		 */
 		pi3usb9281_reset(port);
-		/*
-		 * Restore data switch settings - switches return to
-		 * closed on reset until restored.
-		 */
-		usb_charger_set_switches(port, USB_SWITCH_RESTORE);
+		/* Restore data switch settings. */
+		usb_charger_set_event(port, USB_CHARGER_EVENT_CHIP_RESET, 0);
 		/* Clear possible disconnect interrupt */
 		pi3usb9281_get_interrupts(port);
 		/* Mask attach interrupt */

@@ -60,19 +60,25 @@ int usb_charge_ports_enabled(void);
  */
 int usb_charger_port_is_sourcing_vbus(int port);
 
-enum usb_switch {
-	USB_SWITCH_CONNECT,
-	USB_SWITCH_DISCONNECT,
-	USB_SWITCH_RESTORE,
+enum usb_charger_event {
+	USB_CHARGER_EVENT_CHIP_RESET = (1 << 0),
+	USB_CHARGER_EVENT_MUX_DISCONNECT = (1 << 1),
+};
+
+enum usb_switch_state {
+	USB_SWITCH_STATE_AUTO,
+	USB_SWITCH_STATE_CLOSED,
+	USB_SWITCH_STATE_OPEN,
 };
 
 /**
- * Configure USB data switches on type-C port.
+ * Signal an event status that may influence the state of the USB switches.
  *
  * @param port port number.
- * @param setting new switch setting to configure.
+ * @param evt event to set or clear.
+ * @param set zero if clearing event, non-zero if setting.
  */
-void usb_charger_set_switches(int port, enum usb_switch setting);
+void usb_charger_set_event(int port, enum usb_charger_event evt, int set);
 
 /**
  * Notify USB_CHG task that VBUS level has changed.

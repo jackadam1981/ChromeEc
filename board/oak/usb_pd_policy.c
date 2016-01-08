@@ -240,8 +240,7 @@ static void svdm_safe_dp_mode(int port)
 	 */
 	typec_mux_setting = (usb_mux_get(port, &dp_str, &usb_str) && usb_str) ?
 			    TYPEC_MUX_USB : TYPEC_MUX_NONE;
-	usb_mux_set(port, typec_mux_setting,
-		    USB_SWITCH_CONNECT, pd_get_polarity(port));
+	usb_mux_set(port, typec_mux_setting, 0, pd_get_polarity(port));
 }
 
 static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
@@ -281,7 +280,7 @@ static int svdm_dp_config(int port, uint32_t *payload)
 		return 0;
 
 	usb_mux_set(port, mf_pref ? TYPEC_MUX_DOCK : TYPEC_MUX_DP,
-			  USB_SWITCH_CONNECT, pd_get_polarity(port));
+		    0, pd_get_polarity(port));
 
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
 			 CMD_DP_CONFIG | VDO_OPOS(opos));

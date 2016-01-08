@@ -96,11 +96,11 @@ void usb_mux_init(int port);
  *
  * @param port port number.
  * @param mux_mode mux selected function.
- * @param usb_config usb2.0 selected function.
+ * @param switch_disconnect usb2.0 disconnect option.
  * @param polarity plug polarity (0=CC1, 1=CC2).
  */
 void usb_mux_set(int port, enum typec_mux mux_mode,
-		 enum usb_switch usb_config, int polarity);
+		 int switch_disconnect, int polarity);
 
 /**
  * Query superspeed mux status on type-C port.
