@@ -63,11 +63,13 @@ int usb_charger_port_is_sourcing_vbus(int port);
 enum usb_charger_event {
 	USB_CHARGER_EVENT_CHIP_RESET = (1 << 0),
 	USB_CHARGER_EVENT_MUX_DISCONNECT = (1 << 1),
+	USB_CHARGER_EVENT_POWER_SWAP = (1 << 2),
 };
 
 enum usb_switch_state {
 	USB_SWITCH_STATE_AUTO,
 	USB_SWITCH_STATE_CLOSED,
+	USB_SWITCH_STATE_CLOSED_DATA,
 	USB_SWITCH_STATE_OPEN,
 };
 
