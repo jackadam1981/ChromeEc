@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "67af7662_c6ad62a7",
+        "filename": "board/ultima/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-01-11T23:02:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a95dfbc_152584e6",
+      "revId": "be7246e7f3a472470820d8b6c1c3f23561247cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07015af3_9bafebe3",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 2
@@ -71,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e7cc467f_429fd277",
+        "filename": "common/smbus.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-01-11T23:02:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a901bcb_d2c6d470",
+      "revId": "be7246e7f3a472470820d8b6c1c3f23561247cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea65ebc4_6393707f",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -82,6 +118,24 @@
       "writtenOn": "2016-01-11T17:35:54Z",
       "side": 1,
       "message": "No need for this. If you did need some board-specific hack, it should be done with \"#ifdef BOARD_ULTIMA\".",
+      "revId": "be7246e7f3a472470820d8b6c1c3f23561247cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87b8eaa7_27a9da9a",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-01-11T23:02:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea65ebc4_6393707f",
       "revId": "be7246e7f3a472470820d8b6c1c3f23561247cf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
