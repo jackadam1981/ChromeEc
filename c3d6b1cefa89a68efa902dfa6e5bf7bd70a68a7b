@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a95dfbc_aa7b8f08",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-11T16:46:21Z",
+      "side": 1,
+      "message": "you might want to use \u0027dut_control\u0027 here (with the underscore, to use the right port)",
+      "range": {
+        "startLine": 346,
+        "startChar": 1,
+        "endLine": 346,
+        "endChar": 12
+      },
+      "revId": "c3d6b1cefa89a68efa902dfa6e5bf7bd70a68a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
