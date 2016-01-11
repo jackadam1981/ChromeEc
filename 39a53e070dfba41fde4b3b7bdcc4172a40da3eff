@@ -22,6 +22,30 @@
       "revId": "39a53e070dfba41fde4b3b7bdcc4172a40da3eff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "277bbeaf_74ed28e0",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-01-11T18:16:21Z",
+      "side": 1,
+      "message": "As it stands currently, yes. I guess what I could do is attempt to find this control, and then fallback to ${MCU}_uart_pty.\n\nThis change is intended to follow the servod changes, but if developers don\u0027t upgrade hdctools immediately, at least that won\u0027t break flash_ec for the time being. I\u0027ll make the change.",
+      "parentUuid": "4a74377b_24ddfc34",
+      "range": {
+        "startLine": 303,
+        "startChar": 19,
+        "endLine": 303,
+        "endChar": 38
+      },
+      "revId": "39a53e070dfba41fde4b3b7bdcc4172a40da3eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
