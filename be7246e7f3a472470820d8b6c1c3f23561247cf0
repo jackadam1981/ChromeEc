@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "e7cc467f_229ace88",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-01-11T22:52:17Z",
+      "side": 1,
+      "message": "there was a fix on glimmer:\nhttps://chromium-review.googlesource.com/222403",
+      "parentUuid": "07015af3_9bafebe3",
+      "revId": "be7246e7f3a472470820d8b6c1c3f23561247cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a901bcb_d2c6d470",
         "filename": "common/smbus.c",
         "patchSetId": 2
