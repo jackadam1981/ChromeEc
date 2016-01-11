@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a74377b_24ddfc34",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-11T17:29:58Z",
+      "side": 1,
+      "message": "does this mean that the script will die on with any older servod running ?\nNot so great for developers (particularly a lot of vendors don\u0027t update very often/completely their environments)",
+      "range": {
+        "startLine": 303,
+        "startChar": 19,
+        "endLine": 303,
+        "endChar": 38
+      },
+      "revId": "39a53e070dfba41fde4b3b7bdcc4172a40da3eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
