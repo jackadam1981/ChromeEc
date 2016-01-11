@@ -22,6 +22,30 @@
       "revId": "7d0c28983d5fdabdcdd99f678e61c39df7417565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27673e34_d7cd7e88",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-01-11T21:54:49Z",
+      "side": 1,
+      "message": "Gah, yes. Thanks.",
+      "parentUuid": "07623a24_93fafc25",
+      "range": {
+        "startLine": 485,
+        "startChar": 1,
+        "endLine": 485,
+        "endChar": 12
+      },
+      "revId": "7d0c28983d5fdabdcdd99f678e61c39df7417565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
