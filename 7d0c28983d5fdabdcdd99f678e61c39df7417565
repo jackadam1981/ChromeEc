@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07623a24_93fafc25",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-11T21:53:13Z",
+      "side": 1,
+      "message": "Should use dut_control here too?\n\nThis seems to be an easy typo to make...",
+      "range": {
+        "startLine": 485,
+        "startChar": 1,
+        "endLine": 485,
+        "endChar": 12
+      },
+      "revId": "7d0c28983d5fdabdcdd99f678e61c39df7417565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
