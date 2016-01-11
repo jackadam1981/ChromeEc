@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a95dfbc_152584e6",
+        "filename": "board/ultima/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-11T17:35:54Z",
+      "side": 1,
+      "message": "No need for this.",
+      "revId": "be7246e7f3a472470820d8b6c1c3f23561247cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07015af3_9bafebe3",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-11T17:35:54Z",
+      "side": 1,
+      "message": "Why is this change necessary? I believe we don\u0027t require null termination of the memmap string. For example, if we have a string field length 8 bytes, it\u0027s ok to populate all 8 bytes with non-null chars.",
+      "revId": "be7246e7f3a472470820d8b6c1c3f23561247cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a901bcb_d2c6d470",
+        "filename": "common/smbus.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-11T17:35:54Z",
+      "side": 1,
+      "message": "Please remove the calls to i2c_is_busy(). We won\u0027t need CONFIG_ULTIMA either.",
+      "revId": "be7246e7f3a472470820d8b6c1c3f23561247cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea65ebc4_6393707f",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-11T17:35:54Z",
+      "side": 1,
+      "message": "No need for this. If you did need some board-specific hack, it should be done with \"#ifdef BOARD_ULTIMA\".",
+      "revId": "be7246e7f3a472470820d8b6c1c3f23561247cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
