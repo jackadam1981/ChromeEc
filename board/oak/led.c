@@ -148,82 +148,86 @@ static void oak_led_set_battery(int board_version)
 
 	battery_second++;
 
-	if (board_version < 3) {
-		/* BAT LED behavior:
-		 * Fully charged / idle: Off
-		 * Under charging: Orange
-		 * Battery low (10%): Orange in breeze mode(1 sec on, 3 sec off)
-		 * Battery critical low (less than 3%) or abnormal battery
-		 *     situation: Orange in blinking mode (1 sec on, 1 sec off)
-		 * Using battery or not connected to AC power: OFF
-		 */
-		switch (charge_get_state()) {
-		case PWR_STATE_CHARGE:
-			bat_led_set(BAT_LED_ORANGE, 1);
-			break;
-		case PWR_STATE_CHARGE_NEAR_FULL:
-			bat_led_set(BAT_LED_ORANGE, 1);
-			break;
-		case PWR_STATE_DISCHARGE:
-			if (charge_get_percent() < 3)
-				bat_led_set(BAT_LED_ORANGE,
-					    (battery_second & 1) ? 0 : 1);
-			else if (charge_get_percent() < 10)
-				bat_led_set(BAT_LED_ORANGE,
-					    (battery_second & 3) ? 0 : 1);
-			else
-				bat_led_set(BAT_LED_ORANGE, 0);
-			break;
-		case PWR_STATE_ERROR:
-			bat_led_set(BAT_LED_ORANGE,
-				    (battery_second & 1) ? 0 : 1);
-			break;
-		case PWR_STATE_IDLE:	/* External power connected in IDLE. */
-			bat_led_set(BAT_LED_ORANGE, 0);
-			break;
-		default:
-			/* Other states don't alter LED behavior */
-			break;
-		}
-	} else {
-		/*
-		 * For Rev3 or later version:
-		 * BAT LED behavior:
-		 * - Fully charged / idle: Green ON
-		 * - Charging: Amber ON (BAT_LED_RED && BAT_LED_GREEN)
-		 * - Battery discharging capacity<10%, red blink
-		 * - Battery error: Red ON
-		 */
-		switch (charge_get_state()) {
-		case PWR_STATE_CHARGE:
-			bat_led_set(BAT_LED_AMBER, 1);
-			break;
-		case PWR_STATE_CHARGE_NEAR_FULL:
-			bat_led_set(BAT_LED_GREEN, 1);
-			bat_led_set(BAT_LED_RED, 0);
-			break;
-		case PWR_STATE_DISCHARGE:
-			bat_led_set(BAT_LED_GREEN, 0);
-			if (charge_get_percent() < 3)
-				bat_led_set(BAT_LED_RED,
-					    (battery_second & 1) ? 0 : 1);
-			else if (charge_get_percent() < 10)
-				bat_led_set(BAT_LED_RED,
-					    (battery_second & 3) ? 0 : 1);
-			else
+	switch(board_version) {
+		case OAK_REV3:
+		case OAK_REV4:
+			/*
+			 * For Rev3 and Rev4 revision:
+			 * BAT LED behavior:
+			 * - Fully charged / idle: Green ON
+			 * - Charging: Amber ON (BAT_LED_RED && BAT_LED_GREEN)
+			 * - Battery discharging capacity<10%, red blink
+			 * - Battery error: Red ON
+			 */
+			switch (charge_get_state()) {
+			case PWR_STATE_CHARGE:
+				bat_led_set(BAT_LED_AMBER, 1);
+				break;
+			case PWR_STATE_CHARGE_NEAR_FULL:
+				bat_led_set(BAT_LED_GREEN, 1);
 				bat_led_set(BAT_LED_RED, 0);
-			break;
-		case PWR_STATE_ERROR:
-			bat_led_set(BAT_LED_RED, 1);
-			break;
-		case PWR_STATE_IDLE:	/* External power connected in IDLE. */
-			bat_led_set(BAT_LED_GREEN, 1);
-			bat_led_set(BAT_LED_RED, 0);
-			break;
+				break;
+			case PWR_STATE_DISCHARGE:
+				bat_led_set(BAT_LED_GREEN, 0);
+				if (charge_get_percent() < 3)
+					bat_led_set(BAT_LED_RED,
+						  (battery_second & 1) ? 0 : 1);
+				else if (charge_get_percent() < 10)
+					bat_led_set(BAT_LED_RED,
+						  (battery_second & 3) ? 0 : 1);
+				else
+					bat_led_set(BAT_LED_RED, 0);
+				break;
+			case PWR_STATE_ERROR:
+				bat_led_set(BAT_LED_RED, 1);
+				break;
+			case PWR_STATE_IDLE: /* Ext. power connected in IDLE. */
+				bat_led_set(BAT_LED_GREEN, 1);
+				bat_led_set(BAT_LED_RED, 0);
+				break;
+			default:
+				/* Other states don't alter LED behavior */
+				break;
+			}
+			break; /* End of case OAK_REV3 & OAK_REV4 */
 		default:
-			/* Other states don't alter LED behavior */
-			break;
-		}
+			/* BAT LED behavior:
+			 * Fully charged / idle: Off
+			 * Under charging: Orange
+			 * Bat. low (10%): Orange in breeze mode (1s on, 3s off)
+			 * Bat. critical low (less than 3%) or abnormal battery
+			 *   situation: Orange in blinking mode (1s on, 1s off)
+			 * Using battery or not connected to AC power: OFF
+			 */
+			switch (charge_get_state()) {
+			case PWR_STATE_CHARGE:
+				bat_led_set(BAT_LED_ORANGE, 1);
+				break;
+			case PWR_STATE_CHARGE_NEAR_FULL:
+				bat_led_set(BAT_LED_ORANGE, 1);
+				break;
+			case PWR_STATE_DISCHARGE:
+				if (charge_get_percent() < 3)
+					bat_led_set(BAT_LED_ORANGE,
+						  (battery_second & 1) ? 0 : 1);
+				else if (charge_get_percent() < 10)
+					bat_led_set(BAT_LED_ORANGE,
+						  (battery_second & 3) ? 0 : 1);
+				else
+					bat_led_set(BAT_LED_ORANGE, 0);
+				break;
+			case PWR_STATE_ERROR:
+				bat_led_set(BAT_LED_ORANGE,
+					    (battery_second & 1) ? 0 : 1);
+				break;
+			case PWR_STATE_IDLE: /* Ext. power connected in IDLE. */
+				bat_led_set(BAT_LED_ORANGE, 0);
+				break;
+			default:
+				/* Other states don't alter LED behavior */
+				break;
+			}
+			break; /* End of default */
 	}
 }
 
