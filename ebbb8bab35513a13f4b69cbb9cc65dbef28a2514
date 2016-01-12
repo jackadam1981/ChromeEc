@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "274e5eac_c23786d8",
+        "filename": "board/lars/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-01-12T00:30:58Z",
+      "side": 1,
+      "message": "It is not due to bad data value.\nWe observed failure(ERROR_BUSY) on the very first byte reading after EC reset from board_handle_reboot() on specific unit(only one unit, very rarely.) \nThis seems due to i2c bus/EC power loss while PMIC init and can be fixed with https://chromium-review.googlesource.com/#/c/321342/ as more fundamental fix. \nRegardless other fix, PMIC init should not stop at first try since these PMIC init is so vital for S0ix function.",
+      "parentUuid": "07623a24_f6febe81",
+      "revId": "ebbb8bab35513a13f4b69cbb9cc65dbef28a2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07623a24_d6fbc28f",
         "filename": "board/lars/board.c",
         "patchSetId": 6
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "4768b202_9be213bd",
+        "filename": "board/lars/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-01-12T00:30:58Z",
+      "side": 1,
+      "message": "Thanks. I will fix it.",
+      "parentUuid": "07623a24_d6fbc28f",
+      "range": {
+        "startLine": 330,
+        "startChar": 13,
+        "endLine": 330,
+        "endChar": 14
+      },
+      "revId": "ebbb8bab35513a13f4b69cbb9cc65dbef28a2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27673e34_171ed6f3",
         "filename": "board/lars/board.c",
         "patchSetId": 6
@@ -53,6 +95,30 @@
       "writtenOn": "2016-01-11T23:41:43Z",
       "side": 1,
       "message": "I\u0027m not sure if we should panic here. What do you think? We\u0027ll be running with default / untested voltage settings.",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 10
+      },
+      "revId": "ebbb8bab35513a13f4b69cbb9cc65dbef28a2514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e759a674_a0fa3e25",
+        "filename": "board/lars/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-01-12T00:30:58Z",
+      "side": 1,
+      "message": "Yes, PMIC\u0027s default value still allow to boot and system runs normally without notice. But once entering S0xi, some of power rails might not be turned off properly and that results high suspend power. This debug message gives early warning.",
+      "parentUuid": "27673e34_171ed6f3",
       "range": {
         "startLine": 416,
         "startChar": 0,
