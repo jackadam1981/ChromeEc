@@ -584,6 +584,9 @@ void charger_task(void)
 	state_machine_force_idle = 0;
 	shutdown_warning_time.val = 0UL;
 	battery_seems_to_be_dead = 0;
+#ifdef CONFIG_CHARGER_CURRENT_LIMIT
+	user_current_limit = CONFIG_CHARGER_CURRENT_LIMIT;
+#endif
 
 	/*
 	 * If system is not locked and we don't have a battery to live on,
@@ -1129,7 +1132,12 @@ DECLARE_HOST_COMMAND(EC_CMD_CHARGE_CONTROL, charge_command_charge_control,
 
 static void reset_current_limit(void)
 {
+#ifdef CONFIG_CHARGER_CURRENT_LIMIT
+	user_current_limit = CONFIG_CHARGER_CURRENT_LIMIT;
+#else
 	user_current_limit = -1U;
+#endif
+
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, reset_current_limit, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, reset_current_limit, HOOK_PRIO_DEFAULT);
