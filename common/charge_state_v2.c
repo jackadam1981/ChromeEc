@@ -46,6 +46,10 @@ static int manual_mode;  /* volt/curr are no longer maintained by charger */
 static unsigned int user_current_limit = -1U;
 test_export_static timestamp_t shutdown_warning_time;
 static timestamp_t precharge_start_time;
+#ifdef CONFIG_CHARGER_TIMEOUT_HOURS_SETZER
+static int prev_stats;
+static timestamp_t charge_start_time;
+#endif
 
 /* Is battery connected but unresponsive after precharge? */
 static int battery_seems_to_be_dead;
@@ -567,6 +571,22 @@ void charger_task(void)
 		}
 #endif
 
+#ifdef CONFIG_CHARGER_TIMEOUT_HOURS_SETZER
+		if (charge_get_state() != prev_stats) {
+			if (charge_get_state() == PWR_STATE_CHARGE)
+				charge_start_time = get_time();
+			prev_stats = charge_get_state();
+		}
+		if (charge_get_state() == PWR_STATE_CHARGE &&
+			charge_start_time.val +
+			CONFIG_CHARGER_TIMEOUT_HOURS_SETZER * HOUR <
+			curr.ts.val) {
+			CPRINTS("Charge timed out after %d hours",
+				CONFIG_CHARGER_TIMEOUT_HOURS_SETZER);
+			state_machine_force_idle = 1;
+		}
+#endif /* CONFIG_CHARGER_TIMEOUT_HOURS */
+
 		/*
 		 * If system is not locked and we don't have a battery to live on,
 		 * then use max input current limit so that we can pull as much power
@@ -587,6 +607,11 @@ void charger_task(void)
 		sleep_usec = 0;
 		problems_exist = 0;
 		curr.ac = extpower_is_present();
+#ifdef CONFIG_EXTPOWER_SETZER
+		curr.desired_input_current = get_ad_input_current();
+		watch_adapter_closely(curr.batt.current);
+		sleep_usec = EXTPOWER_SETZER_POLL_PERIOD;
+#endif
 		if (curr.ac != prev_ac) {
 			if (curr.ac) {
 				/*

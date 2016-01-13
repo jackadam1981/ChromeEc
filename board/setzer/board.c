@@ -5,10 +5,12 @@
 /* Setzer board-specific configuration */
 
 #include "adc.h"
+#include "adc_chip.h"
 #include "als.h"
 #include "button.h"
 #include "charger.h"
 #include "charge_state.h"
+#include "driver/charger/bq24773.h"
 #include "driver/accel_kxcj9.h"
 #include "driver/als_isl29035.h"
 #include "driver/gyro_l3gd20h.h"
@@ -98,7 +100,7 @@ struct ec_thermal_config thermal_params[] = {
 	{{0, 0, 0}, 0, 0}, /* TMP432_Internal */
 	{{0, 0, 0}, 0, 0}, /* TMP432_Sensor_1 */
 	{{0, 0, 0}, 0, 0}, /* TMP432_Sensor_2 */
-	{{0, 0, 0}, 0, 0}, /* Battery Sensor */
+	{{0, 326, 332}, 0, 0}, /* Battery Sensor */
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
@@ -227,7 +229,33 @@ static void adc_pre_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, adc_pre_init, HOOK_PRIO_INIT_ADC - 1);
 
+/* ADC channels */
+const struct adc_t adc_channels[] = {
+	/* We have 0.01-ohm resistors, and IOUT is 40X the differential
+	 * voltage, so 1000mA ==> 400mV.
+	 * ADC returns 0x000-0xFFF, which maps to 0.0-3.0V (as configured).
+	 * mA = 1000 * ADC_VALUE / ADC_READ_MAX * 3000 / 400
+	*/
+	[ADC_CH_CHARGER_CURRENT] = {"ChargerCurrent", 3000 * 10,
+	 ADC_READ_MAX * 4, 0, MEC1322_ADC_CH(2)},
+	[ADC_AC_ADAPTER_ID_VOLTAGE] = {"AdapterIDVoltage", 3000,
+	 ADC_READ_MAX, 0, MEC1322_ADC_CH(3)},
+};
+BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
 int i2c_port_is_smbus(int port)
 {
 	return (port == MEC1322_I2C0_0 || port == MEC1322_I2C0_1) ? 1 : 0;
+}
+
+int board_charger_post_init(void)
+{
+	int ret, option1;
+
+	ret = raw_read16(REG_CHARGE_OPTION1, &option1);
+	if (ret)
+		return ret;
+	option1 |= OPTION1_PMON_ENABLE;
+
+	return raw_write16(REG_CHARGE_OPTION1, option1);
 }
