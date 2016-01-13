@@ -48,6 +48,7 @@
 
 #define CONFIG_PMIC
 
+#define CONFIG_ADC
 #define CONFIG_ALS
 #define CONFIG_ALS_ISL29035
 #define CONFIG_BATTERY_CUT_OFF
@@ -61,6 +62,8 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 10
 #define CONFIG_CHARGER_INPUT_CURRENT 2240
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
+#define CONFIG_CHIPSET_CAN_THROTTLE
+#define CONFIG_PRECHARGE_TIMEOUT_SETZER
 
 #define CONFIG_LED_COMMON
 
@@ -77,13 +80,16 @@
 /* Wireless signals */
 #define WIRELESS_GPIO_WLAN	GPIO_WLAN_OFF_L
 
+/* Number of special states */
+#define NUM_AC_THRESHOLDS 2
+#define NUM_BATT_THRESHOLDS 2
+
 /* Modules we want to exclude */
 #undef CONFIG_EEPROM
 #undef CONFIG_EOPTION
 #undef CONFIG_PSTORE
 #undef CONFIG_PECI
 #undef CONFIG_FANS
-#undef CONFIG_ADC
 #undef CONFIG_PWM
 #ifndef __ASSEMBLER__
 
@@ -102,6 +108,12 @@
 
 /* ADC signal */
 enum adc_channel {
+	/* Charger current in mA. */
+	ADC_CH_CHARGER_CURRENT = 0,
+
+	/* AC Adapter ID voltage in mV */
+	ADC_AC_ADAPTER_ID_VOLTAGE,
+
 	/* Number of ADC channels */
 	ADC_CH_COUNT
 };
@@ -135,6 +147,8 @@ enum als_id {
 
 	ALS_COUNT,
 };
+
+extern int state_charger_timeout;
 
 #endif /* !__ASSEMBLER__ */
 
