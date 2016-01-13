@@ -606,14 +606,18 @@ int system_get_board_version(void)
 {
 	int v = 0;
 
+	if (board_get_board_version)
+		v = board_get_board_version();
+	else {
 #ifdef CONFIG_BOARD_VERSION
-	if (gpio_get_level(GPIO_BOARD_VERSION1))
-		v |= 0x01;
-	if (gpio_get_level(GPIO_BOARD_VERSION2))
-		v |= 0x02;
-	if (gpio_get_level(GPIO_BOARD_VERSION3))
-		v |= 0x04;
+		if (gpio_get_level(GPIO_BOARD_VERSION1))
+			v |= 0x01;
+		if (gpio_get_level(GPIO_BOARD_VERSION2))
+			v |= 0x02;
+		if (gpio_get_level(GPIO_BOARD_VERSION3))
+			v |= 0x04;
 #endif
+	}
 
 	return v;
 }

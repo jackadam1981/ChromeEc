@@ -184,6 +184,8 @@ const char *system_get_version(enum system_image_copy_t copy);
  */
 int system_get_board_version(void);
 
+int __attribute((weak)) board_get_board_version(void);
+
 /**
  * Return information about the build including the version, build date and
  * user/machine which performed the build.
