@@ -29,6 +29,7 @@
 #define CONFIG_LOW_POWER_PSEUDO_G3
 #define CONFIG_POWER_COMMON
 #define CONFIG_POWER_SHUTDOWN_PAUSE_IN_S5
+#define CONFIG_EXTPOWER_SETZER
 #define CONFIG_EXTPOWER_GPIO
 #define CONFIG_VBOOT_HASH
 #define CONFIG_PORT80_TASK_EN
@@ -48,6 +49,7 @@
 
 #define CONFIG_PMIC
 
+#define CONFIG_ADC
 #define CONFIG_ALS
 #define CONFIG_ALS_ISL29035
 #define CONFIG_BATTERY_CUT_OFF
@@ -61,7 +63,7 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 10
 #define CONFIG_CHARGER_INPUT_CURRENT 2240
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
-
+#define CONFIG_CHARGER_TIMEOUT_HOURS_SETZER 10
 #define CONFIG_LED_COMMON
 
 #define CONFIG_I2C
@@ -77,13 +79,19 @@
 /* Wireless signals */
 #define WIRELESS_GPIO_WLAN	GPIO_WLAN_OFF_L
 
+/* Number of special states */
+#define NUM_AC_THRESHOLDS 2
+#define NUM_BATT_THRESHOLDS 2
+
+/* Rate at which adapter samples are collected. */
+#define EXTPOWER_SETZER_POLL_PERIOD  (MSEC * 100)
+
 /* Modules we want to exclude */
 #undef CONFIG_EEPROM
 #undef CONFIG_EOPTION
 #undef CONFIG_PSTORE
 #undef CONFIG_PECI
 #undef CONFIG_FANS
-#undef CONFIG_ADC
 #undef CONFIG_PWM
 #ifndef __ASSEMBLER__
 
@@ -102,6 +110,12 @@
 
 /* ADC signal */
 enum adc_channel {
+	/* Charger current in mA. */
+	ADC_CH_CHARGER_CURRENT = 0,
+
+	/* AC Adapter ID voltage in mV */
+	ADC_AC_ADAPTER_ID_VOLTAGE,
+
 	/* Number of ADC channels */
 	ADC_CH_COUNT
 };
@@ -135,6 +149,29 @@ enum als_id {
 
 	ALS_COUNT,
 };
+
+/* Adapter identification values */
+struct adapter_id_vals {
+	int lo, hi;
+};
+
+enum adapter_type {
+	ADAPTER_UNKNOWN = 0,
+	ADAPTER_45W,
+	ADAPTER_65W,
+	NUM_ADAPTER_TYPES
+};
+
+/* Adapter-specific parameters. */
+struct adapter_limits {
+	int hi_val, lo_val;         /* current thresholds (mA) */
+	int hi_cnt, lo_cnt;         /* count needed to trigger */
+	int count;                  /* samples past the limit */
+	int triggered;              /* threshold reached */
+};
+
+int get_ad_input_current(void);
+void watch_adapter_closely(int);
 
 #endif /* !__ASSEMBLER__ */
 

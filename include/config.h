@@ -329,6 +329,9 @@
  */
 #undef CONFIG_CHARGER_INPUT_CURRENT
 
+/* Support providing power to the device on Setzer. */
+#undef CONFIG_EXTPOWER_SETZER
+
 /*
  * Board specific maximum input current limit, in mA.
  */
@@ -362,6 +365,7 @@
  * stop.
  */
 #undef CONFIG_CHARGER_TIMEOUT_HOURS
+#undef CONFIG_CHARGER_TIMEOUT_HOURS_SETZER
 
 /*
  * Board has an GPIO pin to enable or disable charging.
