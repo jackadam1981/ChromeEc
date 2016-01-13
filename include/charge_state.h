@@ -11,7 +11,11 @@
 /* Stuff that's common to all charger implementations can go here. */
 
 /* Seconds to spend trying to wake a non-responsive battery */
+#ifdef PRECHARGE_TIMEOUT_SETZER
+#define PRECHARGE_TIMEOUT 1800
+#else
 #define PRECHARGE_TIMEOUT 30
+#endif
 
 /* Power state task polling periods in usec */
 #define CHARGE_POLL_PERIOD_VERY_LONG   MINUTE
