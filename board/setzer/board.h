@@ -48,6 +48,7 @@
 
 #define CONFIG_PMIC
 
+#define CONFIG_ADC
 #define CONFIG_ALS
 #define CONFIG_ALS_ISL29035
 #define CONFIG_BATTERY_CUT_OFF
@@ -61,6 +62,7 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 10
 #define CONFIG_CHARGER_INPUT_CURRENT 2240
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
+#define CONFIG_CHIPSET_CAN_THROTTLE
 
 #define CONFIG_LED_COMMON
 
@@ -77,13 +79,18 @@
 /* Wireless signals */
 #define WIRELESS_GPIO_WLAN	GPIO_WLAN_OFF_L
 
+/* Number of special states */
+#define NUM_AC_THRESHOLDS 2
+#define NUM_BATT_THRESHOLDS 2
+
+#define PRECHARGE_TIMEOUT_SETZER
+
 /* Modules we want to exclude */
 #undef CONFIG_EEPROM
 #undef CONFIG_EOPTION
 #undef CONFIG_PSTORE
 #undef CONFIG_PECI
 #undef CONFIG_FANS
-#undef CONFIG_ADC
 #undef CONFIG_PWM
 #ifndef __ASSEMBLER__
 
@@ -102,6 +109,12 @@
 
 /* ADC signal */
 enum adc_channel {
+	/* Charger current in mA. */
+	ADC_CH_CHARGER_CURRENT = 0,
+
+	/* AC Adapter ID voltage in mV */
+	ADC_AC_ADAPTER_ID_VOLTAGE,
+
 	/* Number of ADC channels */
 	ADC_CH_COUNT
 };
@@ -135,6 +148,27 @@ enum als_id {
 
 	ALS_COUNT,
 };
+
+/* Adapter identification values */
+struct adapter_id_vals {
+	int lo, hi;
+};
+
+enum adapter_type {
+	ADAPTER_45W = 0,
+	ADAPTER_65W,
+	NUM_ADAPTER_TYPES
+};
+
+/* Adapter-specific parameters. */
+struct adapter_limits {
+	int hi_val, lo_val;         /* current thresholds (mA) */
+	int hi_cnt, lo_cnt;         /* count needed to trigger */
+	int count;                  /* samples past the limit */
+	int triggered;              /* threshold reached */
+};
+
+extern int state_charger_timeout;
 
 #endif /* !__ASSEMBLER__ */
 

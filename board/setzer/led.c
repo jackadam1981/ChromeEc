@@ -150,7 +150,11 @@ static void setzer_led_set_battery(void)
 
 	switch (charge_get_state()) {
 	case PWR_STATE_CHARGE:
-		bat_led_set_color(LED_AMBER);
+		if (state_charger_timeout)
+			bat_led_set_color((battery_ticks & 0x2) ? LED_WHITE :
+			LED_OFF);
+		else
+			bat_led_set_color(LED_AMBER);
 		break;
 	case PWR_STATE_DISCHARGE:
 		if (charge_get_percent() < 10)
