@@ -41,7 +41,7 @@ static const struct battery_info *batt_info;
 static struct charge_state_data curr;
 static int prev_ac, prev_charge, prev_full, prev_bp;
 static int is_full; /* battery not accepting current */
-static int state_machine_force_idle;
+int state_machine_force_idle;
 static int manual_mode;  /* volt/curr are no longer maintained by charger */
 static unsigned int user_current_limit = -1U;
 test_export_static timestamp_t shutdown_warning_time;
@@ -567,6 +567,7 @@ void charger_task(void)
 		}
 #endif
 
+
 		/*
 		 * If system is not locked and we don't have a battery to live on,
 		 * then use max input current limit so that we can pull as much power
@@ -587,6 +588,10 @@ void charger_task(void)
 		sleep_usec = 0;
 		problems_exist = 0;
 		curr.ac = extpower_is_present();
+#ifdef CONFIG_EXTPOWER_SETZER
+		watch_adapter_closely(curr.batt.current);
+		sleep_usec = EXTPOWER_SETZER_POLL_PERIOD;
+#endif
 		if (curr.ac != prev_ac) {
 			if (curr.ac) {
 				/*

@@ -145,7 +145,7 @@ static void setzer_led_set_power(void)
 static void setzer_led_set_battery(void)
 {
 	static int battery_ticks;
-
+	uint32_t chflags = charge_get_flags();
 	battery_ticks++;
 
 	switch (charge_get_state()) {
@@ -163,6 +163,12 @@ static void setzer_led_set_battery(void)
 		bat_led_set_color((battery_ticks & 0x2) ? LED_WHITE : LED_OFF);
 		break;
 	case PWR_STATE_IDLE:
+		if (chflags & CHARGE_FLAG_FORCE_IDLE)
+			bat_led_set_color((battery_ticks & 0x2) ? LED_WHITE :
+			LED_OFF);
+		else
+			bat_led_set_color(LED_WHITE);
+		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
 		bat_led_set_color(LED_WHITE);
 		break;
