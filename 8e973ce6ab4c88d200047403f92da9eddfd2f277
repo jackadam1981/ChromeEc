@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c75ca266_38ef806b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-01-13T23:03:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "678e9643_c884d338",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 28
+      },
+      "revId": "8e973ce6ab4c88d200047403f92da9eddfd2f277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87562a44_00a967f6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-01-13T21:50:26Z",
       "side": 1,
       "message": "Add a CQ-DEPEND\u003dCL:321375, to point to the other CL.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "8e973ce6ab4c88d200047403f92da9eddfd2f277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4768b202_32095944",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-01-13T23:03:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87562a44_00a967f6",
       "range": {
         "startLine": 11,
         "startChar": 0,
