@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07495aa4_e4d60b21",
+        "filename": "board/terra/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-13T19:02:48Z",
+      "side": 1,
+      "message": "It will become board_get_version() if you cherry-pick the patch I recommended on the parent review.",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 27
+      },
+      "revId": "4b1b858375dca90c32365b52797140a784be66e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
