@@ -270,6 +270,13 @@ static const char * const batt_pres[] = {
 	"NO", "YES", "NOT_SURE",
 };
 
+static int command_batt_info(int argc, char **argv)
+{
+	host_set_single_event(EC_HOST_EVENT_BATTERY);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(batt_info, command_batt_info, NULL, "Set batt info", NULL);
+
 static void dump_charge_state(void)
 {
 #define DUMP(FLD, FMT) ccprintf(#FLD " = " FMT "\n", curr.FLD)
