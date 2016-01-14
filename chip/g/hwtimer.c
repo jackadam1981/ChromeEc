@@ -58,7 +58,7 @@ static void update_prescaler(void)
 	 * just hard-coding it. We're also assuming the clock rate is an
 	 * integer multiple of MHz.
 	 */
-	clock_mul_factor = 30;			/* NOTE: prototype board */
+	clock_mul_factor = GC_CONST_FPGA_JITTER_FIXED_FREQ;
 	clock_div_factor = 0xffffffff / clock_mul_factor;
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, update_prescaler, HOOK_PRIO_DEFAULT);
