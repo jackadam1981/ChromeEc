@@ -12,11 +12,12 @@
 #define CPU_CLOCK 48000000
 
 /* Enable USART1,3,4 and USB streams */
+#define CONFIG_CMD_USART_INFO
 #define CONFIG_STREAM_USART
 #define CONFIG_STREAM_USART1
 #define CONFIG_STREAM_USART4
 #define CONFIG_STREAM_USB
-#define CONFIG_CMD_USART_INFO
+
 
 /* the UART console is on USART2 (PA14/PA15) */
 #undef CONFIG_UART_CONSOLE
@@ -25,6 +26,12 @@
 /* Optional features */
 #define CONFIG_STM_HWTIMER32
 #define CONFIG_HW_CRC
+#define CONFIG_I2C
+#define CONFIG_I2C_MASTER
+
+#define I2C_PORT_PERICOM 0
+#define CONFIG_USB_SWITCH_PI3USB9281
+#define CONFIG_USB_SWITCH_PI3USB9281_CHIP_COUNT 1
 
 /* USB Configuration */
 #define CONFIG_USB

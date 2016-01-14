@@ -8,10 +8,13 @@
 #include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "i2c.h"
+#include "pi3usb9281.h"
 #include "queue_policies.h"
 #include "registers.h"
 #include "spi.h"
 #include "task.h"
+#include "timer.h"
 #include "usart-stm32f0.h"
 #include "usart_tx_dma.h"
 #include "usart_rx_dma.h"
@@ -43,6 +46,21 @@ USB_GPIO_CONFIG(usb_gpio,
 		usb_gpio_list,
 		USB_IFACE_GPIO,
 		USB_EP_GPIO);
+
+/* I2C ports */
+const struct i2c_port_t i2c_ports[] = {
+        {"pericom", I2C_PORT_PERICOM, 100 /* kHz */, GPIO_I2C0_SCL, GPIO_I2C0_SDA}
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+struct pi3usb9281_config pi3usb9281_chips[] = {
+        {
+                .i2c_port = I2C_PORT_PERICOM,
+                .mux_lock = NULL,
+        },
+};
+BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
+             CONFIG_USB_SWITCH_PI3USB9281_CHIP_COUNT);
 
 /******************************************************************************
  * Setup USART1 as a loopback device, it just echo's back anything sent to it.
@@ -205,3 +223,14 @@ static void board_init(void)
 	usb_spi_enable(&usb_spi, 1);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static void toggle_vbus(void)
+{
+	int i = 0;
+	for (i = 0; i < 100; ++i) {
+		gpio_set_level(GPIO_PERICOM_VBUS_IN, 0);
+		msleep(1);
+		gpio_set_level(GPIO_PERICOM_VBUS_IN, 1);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, toggle_vbus, HOOK_PRIO_DEFAULT);
