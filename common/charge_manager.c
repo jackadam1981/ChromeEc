@@ -5,6 +5,7 @@
 
 #include "adc.h"
 #include "battery.h"
+#include "battery_smart.h"
 #include "charge_manager.h"
 #include "charge_ramp.h"
 #include "charger.h"
@@ -87,9 +88,26 @@ enum charge_manager_change_type {
  */
 static int charge_manager_spoof_dualrole_capability(void)
 {
+#ifdef CONFIG_BATTERY_SMART
+	int batt_status;
+
+	/*
+	 * Make sure battery status is implemented and the
+	 * I2C transactions are success to figure out if it
+	 * is a working battery.
+	 */
+	if (battery_status(&batt_status))
+		batt_status |= STATUS_INITIALIZED;
+
+	return (system_get_image_copy() == SYSTEM_IMAGE_RO &&
+		system_is_locked()) ||
+		((battery_is_present() != BP_YES) ||
+		!(batt_status & STATUS_INITIALIZED));
+#else
 	return (system_get_image_copy() == SYSTEM_IMAGE_RO &&
 		system_is_locked()) ||
 		(battery_is_present() != BP_YES);
+#endif
 }
 
 /**

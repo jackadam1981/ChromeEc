@@ -921,6 +921,10 @@ int charge_prevent_power_on(int power_button_pressed)
 	struct batt_params params;
 	struct batt_params *current_batt_params = &curr.batt;
 	static int automatic_power_on = 1;
+	int batt_status;
+#ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT
+	int cutoff_batt = 0;
+#endif
 
 	/*
 	 * Remember that a power button was pressed, and assume subsequent
@@ -940,17 +944,44 @@ int charge_prevent_power_on(int power_button_pressed)
 	    CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
 		prevent_power_on = 1;
 
+	/* Check if the battery was cut-off */
+	if (current_batt_params->is_present == BP_YES) {
+		/*
+		 * Make sure battery status is implemented and the
+		 * I2C transactions are success to figure out if it
+		 * is a working battery.
+		 */
+		if (!battery_status(&batt_status)) {
+			if (!(batt_status & STATUS_INITIALIZED)) {
+				prevent_power_on = 1;
+#ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT
+				cutoff_batt = 1;
+#endif
+			}
+		}
+	}
+
 #ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT
 	/*
 	 * Allow power-on if our charger advertises more than
 	 * LIKELY_PD_USBC_POWER_MW since it may speak PD and provide
 	 * sufficient power once we enable PD communication.
 	 */
-	if (prevent_power_on)
-		if (charge_manager_get_power_limit_uw() >=
-		    MIN(LIKELY_PD_USBC_POWER_MW * 1000,
-			CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW * 1000))
-			prevent_power_on = 0;
+	if (prevent_power_on) {
+		if (cutoff_batt) {
+			if (charge_manager_get_power_limit_uw() >
+			    MIN(LIKELY_PD_USBC_POWER_MW * 1000,
+				CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW *
+				1000))
+				prevent_power_on = 0;
+		} else {
+			if (charge_manager_get_power_limit_uw() >=
+			    MIN(LIKELY_PD_USBC_POWER_MW * 1000,
+				CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW *
+				1000))
+				prevent_power_on = 0;
+		}
+	}
 #endif
 
 	/*
