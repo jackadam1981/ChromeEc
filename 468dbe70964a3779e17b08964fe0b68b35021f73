@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "676db610_d8cc7fe7",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1141724
+      },
+      "writtenOn": "2016-01-15T21:37:52Z",
+      "side": 1,
+      "message": "Ignoring legibility, to catch duplicates? ;-)",
+      "parentUuid": "07623a24_05a21417",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "468dbe70964a3779e17b08964fe0b68b35021f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07495aa4_70f58ceb",
         "filename": "include/spi_nor.h",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "676db610_b8e6e363",
+        "filename": "include/spi_nor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1141724
+      },
+      "writtenOn": "2016-01-15T21:37:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07495aa4_70f58ceb",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "468dbe70964a3779e17b08964fe0b68b35021f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "676db610_78760bbb",
         "filename": "include/spi_nor.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2016-01-15T20:50:36Z",
       "side": 1,
       "message": "Would you mind aligning these comments? It\u0027s easier to read that way.",
+      "range": {
+        "startLine": 68,
+        "startChar": 38,
+        "endLine": 68,
+        "endChar": 56
+      },
+      "revId": "468dbe70964a3779e17b08964fe0b68b35021f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "676db610_18d71774",
+        "filename": "include/spi_nor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1141724
+      },
+      "writtenOn": "2016-01-15T21:37:52Z",
+      "side": 1,
+      "message": "Sure thing, done.",
+      "parentUuid": "676db610_78760bbb",
       "range": {
         "startLine": 68,
         "startChar": 38,
