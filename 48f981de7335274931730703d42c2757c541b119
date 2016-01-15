@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "676db610_a75ec227",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-01-15T00:22:05Z",
+      "side": 1,
+      "message": "There are existing #define in the .h file, can you please use those instead of hard code value and may be do something like this?\n\nreg \u0026\u003d ISL9237_PROCHOT_DEBOUNCE_MASK;\nreg |\u003d ISL9237_PROCHOT_DEBOUNCE_1000;\n\nThere is also a mistake in the .h file where ISL9237_REG_PROCHOT_TIME should be 0x3d instead of 0x39, can you please correct that as well?",
+      "revId": "48f981de7335274931730703d42c2757c541b119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
