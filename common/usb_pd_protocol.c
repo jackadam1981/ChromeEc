@@ -3074,8 +3074,14 @@ static int hc_usb_pd_control(struct host_cmd_handler_args *args)
 	    p->mux >= USB_PD_CTRL_MUX_COUNT)
 		return EC_RES_INVALID_PARAM;
 
-	if (p->role != USB_PD_CTRL_ROLE_NO_CHANGE)
+	if (p->role != USB_PD_CTRL_ROLE_NO_CHANGE) {
 		pd_set_dual_role(dual_role_map[p->role]);
+		if (p->role == USB_PD_CTRL_ROLE_FORCE_SINK &&
+		    gpio_get_level(GPIO_USB_DP_HPD) == 1) {
+			CPRINTS("Reset DP_HPD");
+			gpio_set_level(GPIO_USB_DP_HPD, 0);
+		}
+	}
 
 #ifdef CONFIG_USBC_SS_MUX
 	if (p->mux != USB_PD_CTRL_MUX_NO_CHANGE)
