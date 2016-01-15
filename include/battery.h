@@ -289,6 +289,18 @@ int battery_manufacturer_date(int *year, int *month, int *day);
  */
 int board_cut_off_battery(void);
 
+#ifdef CONFIG_BATTERY_WAS_CUT_OFF
+/**
+ * Call board-specific was cut-off function.
+ *
+ * @return 0 if the battery doesn't support or was not cutoff.
+ *         1 if the battery was cut-off.
+ */
+int board_was_battery_cut_off(void);
+#else
+static inline int board_was_battery_cut_off(void) { return 0; }
+#endif
+
 /**
  * Return if the battery has been cut off.
  */

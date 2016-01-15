@@ -89,7 +89,8 @@ static int charge_manager_spoof_dualrole_capability(void)
 {
 	return (system_get_image_copy() == SYSTEM_IMAGE_RO &&
 		system_is_locked()) ||
-		(battery_is_present() != BP_YES);
+		((battery_is_present() != BP_YES) ||
+		board_was_battery_cut_off());
 }
 
 /**

@@ -42,3 +42,24 @@ int board_cut_off_battery(void)
 
 	return sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
 }
+
+int board_was_battery_cut_off(void)
+{
+	int batt_status;
+	int bat_cut_off = 0;
+
+	/*
+	 * FETs are turned off after Power Shutdown time.
+	 * The device will wake up when a voltage is applied to PACK.
+	 * Battery status will be inactive until it is initialized.
+	 *
+	 * Make sure battery status is implemented and the I2C transactions
+	 * are success to figure out if it is a working battery.
+	 */
+	if ((battery_is_present() == BP_YES) &&
+		!battery_status(&batt_status))
+		if (!(batt_status & STATUS_INITIALIZED))
+			bat_cut_off = 1;
+
+	return bat_cut_off;
+}

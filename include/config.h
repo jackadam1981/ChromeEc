@@ -223,6 +223,14 @@
 #undef CONFIG_BATTERY_CUT_OFF
 
 /*
+ * Support to find if the battery was cut-off.
+ *
+ * Once defined, you have to implement a board_was_battery_cut_off() function
+ * in board/???/battery.c file.
+ */
+#undef CONFIG_BATTERY_WAS_CUT_OFF
+
+/*
  * The default delay is 1 second. Define this if a board prefers
  * different delay.
  */
