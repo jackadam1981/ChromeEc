@@ -16,6 +16,24 @@
       "revId": "48f981de7335274931730703d42c2757c541b119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c75ca266_47ffec7e",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-01-15T00:35:15Z",
+      "side": 1,
+      "message": "1. Okay, I will change it to \nrv \u003d raw_write16(ISL9237_REG_CONTROL2,\n                  reg | ISL9237_C2_PROCHOT_DEBOUNCE_1000);\n2. Okay, will remove ISL9237_REG_PROCHOT_TIME as it is not present in the datasheet. I think its a typo error.",
+      "parentUuid": "676db610_a75ec227",
+      "revId": "48f981de7335274931730703d42c2757c541b119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
