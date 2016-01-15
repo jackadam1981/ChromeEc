@@ -23,7 +23,9 @@ static uint16_t history[HISTORY_LEN];
 static int writes;    /* Number of port 80 writes so far */
 static int last_boot; /* Last code from previous boot */
 static int scroll;
+#ifndef CONFIG_PORT80_DISABLE_PRINT_IN_INT
 static int print_in_int = 1;
+#endif
 #ifdef HAS_TASK_PORT80
 static int task_en;   /* Port 80 task control */
 static int task_timeout = -1;
@@ -35,8 +37,10 @@ void port_80_write(int data)
 	 * Note that this currently prints from inside the LPC interrupt
 	 * itself.  If you're dropping events, turn print_in_int off.
 	 */
+#ifndef CONFIG_PORT80_DISABLE_PRINT_IN_INT
 	if (print_in_int)
 		CPRINTF("%c[%T Port 80: 0x%02x]", scroll ? '\n' : '\r', data);
+#endif
 
 	/* Save current port80 code if system is resetting */
 	if (data == PORT_80_EVENT_RESET && writes) {
@@ -109,11 +113,13 @@ static int command_port80(int argc, char **argv)
 			scroll = !scroll;
 			ccprintf("scroll %sabled\n", scroll ? "en" : "dis");
 			return EC_SUCCESS;
+#ifndef CONFIG_PORT80_DISABLE_PRINT_IN_INT
 		} else if (!strcasecmp(argv[1], "intprint")) {
 			print_in_int = !print_in_int;
 			ccprintf("printing in interrupt %sabled\n",
 				 print_in_int ? "en" : "dis");
 			return EC_SUCCESS;
+#endif
 		} else if (!strcasecmp(argv[1], "flush")) {
 			writes = 0;
 			return EC_SUCCESS;
@@ -150,7 +156,7 @@ static int command_port80(int argc, char **argv)
 	else
 		tail = 0;
 
-	ccputs("Port 80 writes:");
+	ccprintf("Port 80 (h=%d,t=%d) writes:", head, tail);
 	for (i = tail; i < head; i++) {
 		int e = history[i % ARRAY_SIZE(history)];
 		switch (e) {
