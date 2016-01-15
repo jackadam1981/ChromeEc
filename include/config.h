@@ -1234,6 +1234,9 @@
 
 /*****************************************************************************/
 
+/* Disable print port80 message in interrput */
+#undef CONFIG_PORT80_DISABLE_PRINT_IN_INT
+
 /*
  * Enable polling at boot by port 80 task.
  * Ignored if port 80 is handled by interrupt

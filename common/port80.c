@@ -23,7 +23,11 @@ static uint16_t history[HISTORY_LEN];
 static int writes;    /* Number of port 80 writes so far */
 static int last_boot; /* Last code from previous boot */
 static int scroll;
+#ifdef CONFIG_PORT80_DISABLE_PRINT_IN_INT
+static int print_in_int;
+#else
 static int print_in_int = 1;
+#endif
 #ifdef HAS_TASK_PORT80
 static int task_en;   /* Port 80 task control */
 static int task_timeout = -1;
@@ -150,7 +154,7 @@ static int command_port80(int argc, char **argv)
 	else
 		tail = 0;
 
-	ccputs("Port 80 writes:");
+	ccprintf("Port 80 (h=%d,t=%d) writes:", head, tail);
 	for (i = tail; i < head; i++) {
 		int e = history[i % ARRAY_SIZE(history)];
 		switch (e) {
