@@ -1,0 +1,138 @@
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+/* STM32F072-discovery board based USB PD evaluation configuration */
+
+#include "common.h"
+#include "ec_version.h"
+#include "gpio.h"
+#include "hooks.h"
+#include "host_command.h"
+#include "i2c.h"
+#include "registers.h"
+#include "task.h"
+#include "timer.h"
+#include "usb_descriptor.h"
+#include "usb_pd.h"
+#include "usb_pd_tcpm.h"
+#include "util.h"
+#include "console.h"
+
+void button_event(enum gpio_signal signal);
+
+void alert_event(enum gpio_signal signal)
+{
+	/* Exchange status with PD MCU. */
+	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
+}
+
+#include "gpio_list.h"
+
+const void *const usb_strings[] = {
+	[USB_STR_DESC]         = usb_string_desc,
+	[USB_STR_VENDOR]       = USB_STRING_DESC("Google Inc."),
+	[USB_STR_PRODUCT]      = USB_STRING_DESC("PDeval-stm32f072"),
+	[USB_STR_VERSION]      = USB_STRING_DESC(CROS_EC_VERSION32),
+	[USB_STR_CONSOLE_NAME] = USB_STRING_DESC("Shell"),
+};
+
+BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
+
+/* Initialize board. */
+static void board_init(void)
+{
+	gpio_enable_interrupt(GPIO_USER_BUTTON);
+	gpio_enable_interrupt(GPIO_PD_MCU_INT);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+void board_reset_pd_mcu(void)
+{
+}
+
+/* I2C ports */
+const struct i2c_port_t i2c_ports[] = {
+	{"tcpc", I2C_PORT_TCPC, 400 /* kHz */, GPIO_I2C0_SCL, GPIO_I2C0_SDA}
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
+	{I2C_PORT_TCPC, TCPC1_I2C_ADDR},
+#if CONFIG_USB_PD_PORT_COUNT >= 2
+	{I2C_PORT_TCPC, TCPC2_I2C_ADDR},
+#endif
+};
+
+uint16_t tcpc_get_alert_status(void)
+{
+	uint16_t status = 0;
+
+	if (!gpio_get_level(GPIO_PD_MCU_INT)) {
+		status = PD_STATUS_TCPC_ALERT_0;
+#if CONFIG_USB_PD_PORT_COUNT >= 2
+		status |= PD_STATUS_TCPC_ALERT_1;
+#endif
+	}
+
+	return status;
+}
+
+#ifdef CONFIG_USB_PD_TCPM_ANX74XX
+int pd_plug_is_inserted(int port)
+{
+#if CONFIG_USB_PD_PORT_COUNT >= 2
+	return 0;
+#else
+	return gpio_get_level(GPIO_USB_C0_CABLE_DET);
+#endif
+}
+
+void pd_set_power_supply_mode(int port, int normal_mode)
+{
+#if CONFIG_USB_PD_PORT_COUNT >= 2
+#else
+	if (normal_mode) {
+		gpio_set_level(GPIO_USB_C0_PWR_EN, 1);
+		msleep(1);
+		gpio_set_level(GPIO_USB_C0_RST_N, 1);
+		msleep(10);
+	} else {/* STAND BY MODE */
+		gpio_set_level(GPIO_USB_C0_AVDD33, 0);
+		gpio_set_level(GPIO_USB_C0_DVDDIO, 0);
+
+		gpio_set_level(GPIO_USB_C0_RST_N, 0);
+		msleep(1);
+		gpio_set_level(GPIO_USB_C0_PWR_EN, 0);
+
+		msleep(1000);
+		gpio_set_level(GPIO_USB_C0_AVDD33, 1);
+		gpio_set_level(GPIO_USB_C0_DVDDIO, 1);
+		msleep(1000);
+	}
+#endif
+}
+
+void board_typec_update_HPD_status(int port, int hpd_lvl, int hpd_irq)
+{
+	int reg;
+
+	i2c_read8(I2C_PORT_TCPC, TCPC1_I2C_ADDR, 0x36, &reg);
+
+	if (hpd_lvl)
+		reg |= 0x10;
+	else
+		reg &= 0xef;
+
+	i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR, 0x36, reg);
+
+	if (hpd_irq) {
+		i2c_read8(I2C_PORT_TCPC, TCPC1_I2C_ADDR, 0x36, &reg);
+		reg &= 0xEF;
+		i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR, 0x36, reg);
+		msleep(1);
+		reg |= 0x10;
+                i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR, 0x36, reg);
+	}
+}
+#endif
