@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "274e5eac_a3c86a2b",
+        "filename": "board/sentry/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-19T18:28:07Z",
+      "side": 1,
+      "message": "Duplicate.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "061a79c25f727e18e95da9a5bfb6d8274f8a0158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "274e5eac_63ce623b",
+        "filename": "board/sentry/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-19T18:28:07Z",
+      "side": 1,
+      "message": "We can do i2c from HOOK_INIT now due to some changes. There shouldn\u0027t be a need for a deferred task.",
+      "revId": "061a79c25f727e18e95da9a5bfb6d8274f8a0158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
