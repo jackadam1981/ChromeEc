@@ -22,6 +22,30 @@
       "revId": "ca30f28d0580d56042c572c8e3c5c4dc0521e536",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7e902fc_b4f34e57",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-01-19T09:47:02Z",
+      "side": 1,
+      "message": "Sorry for late reply. There is a ratio between i2c freq and source clock freq must be keep. It\u0027s related to our chip design. Our PM will describe the detail privately.",
+      "parentUuid": "676db610_8d5f6728",
+      "range": {
+        "startLine": 736,
+        "startChar": 4,
+        "endLine": 737,
+        "endChar": 52
+      },
+      "revId": "ca30f28d0580d56042c572c8e3c5c4dc0521e536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
