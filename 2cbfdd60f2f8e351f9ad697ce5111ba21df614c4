@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "87562a44_b8426323",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T19:03:46Z",
+      "side": 1,
+      "message": "Issue opened: chrome-os-partner:49510\n\nhttps://code.google.com/p/chrome-os-partner/issues/detail?id\u003d49510",
+      "parentUuid": "2752dead_e37b4104",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07623a24_39f01586",
         "filename": "board/pdeval-stm32f072RBT6/Makefile",
         "patchSetId": 1
