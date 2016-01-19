@@ -570,7 +570,6 @@ int command_read_pages(struct ftdi_context *ftdi, uint32_t address,
 		cnt = (remaining > PAGE_SIZE) ? PAGE_SIZE : remaining;
 		page = address / PAGE_SIZE;
 
-		draw_spinner(remaining, size);
 		/* Fast Read command */
 		if (spi_flash_command_short(ftdi, SPI_CMD_FAST_READ,
 			"fast read") < 0)
@@ -852,6 +851,64 @@ int write_flash(struct ftdi_context *ftdi, const char *filename,
 	return 0;
 }
 
+/* Return zero on success, a negative error value on failures. */
+int verify_flash(struct ftdi_context *ftdi, const char *filename,
+		uint32_t offset)
+{
+	int res;
+	FILE *hnd;
+	int size = flash_size;
+	uint32_t remaining = size;
+	int cnt;
+	uint8_t *buffer  = malloc(size);
+	uint8_t *buffer2 = malloc(PAGE_SIZE);
+	int i;
+
+	if (!buffer) {
+		fprintf(stderr, "Cannot allocate %d bytes\n", size);
+		return -ENOMEM;
+	}
+
+	hnd = fopen(filename, "r");
+	if (!hnd) {
+		fprintf(stderr, "Cannot open file %s for reading\n", filename);
+		free(buffer);
+		return -EIO;
+	}
+
+	res = fread(buffer, 1, size, hnd);
+	if (res <= 0) {
+		fprintf(stderr, "Cannot read %s\n", filename);
+		free(buffer);
+		goto exit;
+	}
+	fclose(hnd);
+
+	printf("Verify %d bytes at 0x%08x\n", res, offset);
+	while (remaining) {
+		cnt = (remaining > PAGE_SIZE) ? PAGE_SIZE : remaining;
+		res = command_read_pages(ftdi, offset, cnt, buffer2);
+		for (i = 0 ; i < cnt ; i++) {
+			if (buffer[offset+i] != buffer2[i]) {
+				fprintf(stderr, "Verify Error!! ");
+				fprintf(stderr, "ADDR[%x]=%x\n", i, buffer2[i]);
+				goto exit;
+			}
+		}
+		offset += cnt;
+		remaining -= cnt;
+		draw_spinner(remaining, size);
+	}
+
+	printf("\n\rVerify Done.\n");
+
+exit:
+
+	free(buffer);
+	free(buffer2);
+	return 0;
+}
+
 static struct ftdi_context *open_ftdi_device(int vid, int pid,
 					     int interface, char *serial)
 {
@@ -998,6 +1055,10 @@ int main(int argc, char **argv)
 
 	if (output_filename) {
 		ret = write_flash(hnd, output_filename, 0);
+		if (ret)
+			goto terminate;
+
+		ret = verify_flash(hnd, output_filename, 0);
 		if (ret)
 			goto terminate;
 	}
