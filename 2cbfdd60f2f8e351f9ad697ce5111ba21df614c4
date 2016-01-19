@@ -1,0 +1,556 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e759a674_e52c2f3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "you need a slightly more descriptive title, e.g. :\ntcpm: add driver for Analogix\u0027s anx74xx chips",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2752dead_e37b4104",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "a description and a few mandatory fields are missing to be able to submit this, e.g. :\n\"\"\"\n\nAdd support for the Analogix Type-C port manager ANX74xx chip family.\n\nBRANCH\u003dnone\nBUG\u003dchrome-os-partner:\u003cbug-number\u003e\nTEST\u003d\u003cdescribe the testing you have done here\u003e\n\"\"\"\n\nYou need a chrome OS partner tracker bug issue here, I will create one for you if you don\u0027t have one.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07623a24_39f01586",
+        "filename": "board/pdeval-stm32f072RBT6/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "2 things here for the eval board support :\n1. rather than duplicating the whole board/pdeval-stm32f072   in board/pdeval-stm32f072RBT6, then modify less than 100 hundred lines, might be better to just do a patch on top of the original board directory\n2. you will need to split the new driver addition (in drivers/tcpm) we are going to submit as soon as the code is reviewed, from the eval board code (we might not fully submit). Please do 2 patches stacked on each other.\n\nLet me know if you need help to do this.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "676db610_4b91b404",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "2016",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e759a674_2536278e",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "we usually sort the header names alphabetically\n(mainly to minimize conflicts when merging code, avoid duplicates and implicit header dependencies)",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07623a24_f90e9d4d",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "please remove \u0027extern\u0027 here",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 6
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27673e34_0f5fcfc5",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "if those callbacks are defined in board code,\nmaybe we want to prefix them with board_",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 64
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87562a44_5d27b95a",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "we might be writing junk here if the read failed previously.\neither we need to check rv value before writing,\nor decide it\u0027s not important and omit tcpc_read altogether\n\nSame thing for other places using this pattern.",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 53
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c75ca266_c1dc840c",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "everywhere else in the code, this variable is called \u0027polarity\u0027 (or \u0027pol\u0027 for short) and defined as CC1 \u003c\u003d\u003e polarity \u003d\u003d 0 and CC2 \u003c\u003d\u003e polarity \u003d\u003d \u00272\u0027\nmight be nice to use the same name",
+      "range": {
+        "startLine": 85,
+        "startChar": 37,
+        "endLine": 85,
+        "endChar": 50
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "676db610_8b490c6b",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "this line is useless",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 9
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27673e34_2f560baf",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "this will do an infinite loop (and watchdog reset the full system) on i2c write errors, we should do a bit better probably (bound the number of retries ?)",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 7
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07495aa4_dc65971f",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "no uppercase in the function name please",
+      "range": {
+        "startLine": 164,
+        "startChar": 11,
+        "endLine": 164,
+        "endChar": 29
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "274e5eac_08da1d6c",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "you can put directly \u0027TCPC_REG_PD_RX_DATA_OBJ + i\u0027",
+      "range": {
+        "startLine": 173,
+        "startChar": 23,
+        "endLine": 173,
+        "endChar": 31
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87562a44_7d4b9d0a",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "you are not doing anything with rv value",
+      "range": {
+        "startLine": 190,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 8
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e759a674_65593fdd",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "you probably want to define something such as\nTCPC_REG_STATUS_CC1_SHIFT 2",
+      "range": {
+        "startLine": 215,
+        "startChar": 13,
+        "endLine": 215,
+        "endChar": 17
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27673e34_4feee719",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "the naming is a bit confusing here,\nwhen looking at the register definition,\nyou might just want to write :\nreg \u0026\u003d ~TCPC_REG_SELECT_CC1;\nand remove TCPC_REG_SELECT_CC2 (which is actually more a mask than a \u0027SELECT\u0027)",
+      "range": {
+        "startLine": 287,
+        "startChar": 2,
+        "endLine": 287,
+        "endChar": 27
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2752dead_a6d9c748",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "it would be safer to use !!enable",
+      "range": {
+        "startLine": 363,
+        "startChar": 33,
+        "endLine": 363,
+        "endChar": 39
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27673e34_af185b05",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "I prefer: reg \u0026\u003d ~0x01",
+      "range": {
+        "startLine": 370,
+        "startChar": 2,
+        "endLine": 370,
+        "endChar": 14
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "676db610_6b1bd05e",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "are this buffer and the memcpy below really useful ?\ncan we use directly payload to store the data ?",
+      "range": {
+        "startLine": 389,
+        "startChar": 9,
+        "endLine": 389,
+        "endChar": 23
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "274e5eac_4892657c",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "typo: missing space",
+      "range": {
+        "startLine": 473,
+        "startChar": 13,
+        "endLine": 473,
+        "endChar": 20
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87562a44_3dee4519",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be TCPC_TX_COMPLETE_FAIL ?",
+      "range": {
+        "startLine": 475,
+        "startChar": 10,
+        "endLine": 475,
+        "endChar": 34
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c75ca266_0194bc07",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "why ?",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 490,
+        "endChar": 11
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07495aa4_3c091b44",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "no, you cannot do this.\nthis function is supposed to initialize the hardware and return.",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 501,
+        "endChar": 13
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87562a44_bde6d563",
+        "filename": "driver/tcpm/anx74xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-19T17:29:33Z",
+      "side": 1,
+      "message": "we are already in 2016, you can update it",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2cbfdd60f2f8e351f9ad697ce5111ba21df614c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
