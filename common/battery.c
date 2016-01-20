@@ -4,7 +4,7 @@
  *
  * Common battery command.
  */
-
+#include "adc.h"
 #include "battery.h"
 #include "charge_state.h"
 #include "common.h"
@@ -42,7 +42,7 @@ static enum battery_cutoff_states battery_cutoff_state =
 enum battery_present battery_is_present(void)
 {
 	/* The GPIO is low when the battery is present */
-	return gpio_get_level(CONFIG_BATTERY_PRESENT_GPIO) ? BP_NO : BP_YES;
+	return (adc_read_channel(ADC_BATT_PRESENT) > BATT_VALID_PRESET) ? BP_NO : BP_YES;
 }
 #endif
 
