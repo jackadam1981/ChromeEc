@@ -364,6 +364,10 @@ int system_get_image_used(enum system_image_copy_t copy)
 
 	do {
 		if (image == buf) {
+			/* No valid image found? */
+			if (size < 0)
+				return 0;
+
 			flash_read(image_offset + size -
 				SPI_FLASH_MAX_WRITE_SIZE,
 				SPI_FLASH_MAX_WRITE_SIZE, buf);
