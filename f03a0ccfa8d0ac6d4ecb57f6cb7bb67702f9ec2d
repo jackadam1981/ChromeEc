@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "671db61a_b9e79b02",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-20T19:59:04Z",
+      "side": 1,
+      "message": "When the image does not exist, cannot size be less than SPI_FLASH_MAX_WRITE_SIZE, then it starts reading the previous image in the flash (and might find a 0xea in the RO ?)",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 35
+      },
+      "revId": "f03a0ccfa8d0ac6d4ecb57f6cb7bb67702f9ec2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
