@@ -11,7 +11,7 @@
 /* Optional features */
 #define CONFIG_ADC
 #define CONFIG_BATTERY_CUT_OFF
-#define CONFIG_BATTERY_PRESENT_GPIO GPIO_BAT_PRESENT_L
+#define CONFIG_BATTERY_PRESENT_CUSTOM
 #define CONFIG_BATTERY_SMART
 #define CONFIG_BOARD_VERSION
 #define CONFIG_BUTTON_COUNT 2
@@ -158,12 +158,19 @@
 
 /* ADC signal */
 enum adc_channel {
+	ADC_BATT_PRESENT,
 	ADC_VBUS,
 	ADC_AMON_BMON,
 	ADC_PSYS,
 	/* Number of ADC channels */
 	ADC_CH_COUNT
 };
+
+/*
+ * Max valid voltage level(mV) when battery is attached to ADC port.
+ * This voltage is across the internal thermistor with external pullup resistor.
+ * */
+#define BATT_VALID_PRESET 1500
 
 /* power signal definitions */
 enum power_signal {
