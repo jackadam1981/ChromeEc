@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07f95afe_5b592384",
+        "filename": "board/sentry/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-20T17:47:38Z",
+      "side": 1,
+      "message": "Let\u0027s keep the includes alpha sorted.",
+      "revId": "09882d81a6f42bd4b577a7c9468c01ab030b0899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07123a0e_1302ec52",
+        "filename": "board/sentry/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-20T17:47:38Z",
+      "side": 1,
+      "message": "Let\u0027s name these functions \"battery_wakeup\" and \"battery_cutoff\".",
+      "revId": "09882d81a6f42bd4b577a7c9468c01ab030b0899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7b10259_3105705b",
+        "filename": "board/sentry/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-20T17:47:38Z",
+      "side": 1,
+      "message": "In case sb_read fails, we probably want to skip the write, since mode may be uninitialized / garbage.",
+      "revId": "09882d81a6f42bd4b577a7c9468c01ab030b0899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7b10259_1102ec52",
+        "filename": "board/sentry/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-20T17:47:38Z",
+      "side": 1,
+      "message": "No need to bump this now that we removed the deferred function, I think.",
+      "revId": "09882d81a6f42bd4b577a7c9468c01ab030b0899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
