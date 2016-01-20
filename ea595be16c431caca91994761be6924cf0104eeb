@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e759a674_969488f8",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-20T15:58:09Z",
+      "side": 1,
+      "message": "if the fread above returned less than \u0027flash_size\u0027, you are comparing undefined memory here.\nYou probably want to verify above that the file read on disk was the right size.",
+      "range": {
+        "startLine": 887,
+        "startChar": 7,
+        "endLine": 887,
+        "endChar": 43
+      },
+      "revId": "ea595be16c431caca91994761be6924cf0104eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4768b202_d15bb108",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-20T15:58:09Z",
+      "side": 1,
+      "message": "at this point, res is already equal to 0 since the memcmp succeeded.",
+      "range": {
+        "startLine": 895,
+        "startChar": 1,
+        "endLine": 895,
+        "endChar": 9
+      },
+      "revId": "ea595be16c431caca91994761be6924cf0104eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
