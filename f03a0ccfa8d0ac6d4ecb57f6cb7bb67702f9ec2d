@@ -22,6 +22,30 @@
       "revId": "f03a0ccfa8d0ac6d4ecb57f6cb7bb67702f9ec2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87062ace_9aca899c",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-20T20:36:06Z",
+      "side": 1,
+      "message": "Yes, you are right. I changed the comparison and added an alignment assert to make sure all of the region (and only the region) will be checked.",
+      "parentUuid": "671db61a_b9e79b02",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 35
+      },
+      "revId": "f03a0ccfa8d0ac6d4ecb57f6cb7bb67702f9ec2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
