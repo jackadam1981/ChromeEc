@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "27e49e25_b2959828",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2016-01-20T03:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87562a44_92181b58",
+      "range": {
+        "startLine": 860,
+        "startChar": 1,
+        "endLine": 860,
+        "endChar": 23
+      },
+      "revId": "7c32652dae3bce10c531374a8f75c52c59652631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07495aa4_16851b32",
         "filename": "util/iteflash.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-01-20T02:15:49Z",
       "side": 1,
       "message": "(!buffer || !buffer2)\nseems a better condition",
+      "range": {
+        "startLine": 867,
+        "startChar": 4,
+        "endLine": 867,
+        "endChar": 13
+      },
+      "revId": "7c32652dae3bce10c531374a8f75c52c59652631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c712e2d7_2cd15b27",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2016-01-20T03:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07495aa4_16851b32",
       "range": {
         "startLine": 867,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "27e49e25_929a9c54",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2016-01-20T03:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07495aa4_b67d47fe",
+      "range": {
+        "startLine": 875,
+        "startChar": 2,
+        "endLine": 876,
+        "endChar": 14
+      },
+      "revId": "7c32652dae3bce10c531374a8f75c52c59652631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4768b202_b6c8ab2b",
         "filename": "util/iteflash.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "87f38ae9_f8ef8518",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2016-01-20T03:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4768b202_b6c8ab2b",
+      "range": {
+        "startLine": 882,
+        "startChar": 2,
+        "endLine": 883,
+        "endChar": 12
+      },
+      "revId": "7c32652dae3bce10c531374a8f75c52c59652631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4768b202_d680c7b6",
         "filename": "util/iteflash.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2016-01-20T02:15:49Z",
       "side": 1,
       "message": "that\u0027s an opencoded version of memcmp ?\njust use it",
+      "range": {
+        "startLine": 891,
+        "startChar": 2,
+        "endLine": 892,
+        "endChar": 39
+      },
+      "revId": "7c32652dae3bce10c531374a8f75c52c59652631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47d51232_90adfac0",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2016-01-20T03:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4768b202_d680c7b6",
       "range": {
         "startLine": 891,
         "startChar": 2,
