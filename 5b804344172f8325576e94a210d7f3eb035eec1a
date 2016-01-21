@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "f4115643_038374f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-01-21T19:26:02Z",
+      "side": 1,
+      "message": "Yes, I will change/push to master first and then cherry pick to glados.",
+      "parentUuid": "d439b2d1_34991e61",
+      "revId": "5b804344172f8325576e94a210d7f3eb035eec1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4115643_1d7d17f8",
         "filename": "board/kunimitsu/board.c",
         "patchSetId": 2
