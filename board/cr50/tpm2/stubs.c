@@ -4,6 +4,7 @@
  */
 
 #define        TPM_FAIL_C
+#define        EMBEDDED_MODE
 #include "Global.h"
 #include "CryptoEngine.h"
 
