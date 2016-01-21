@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "940e5a27_5a6711cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1144259
+      },
+      "writtenOn": "2016-01-21T19:26:40Z",
+      "side": 1,
+      "message": "Got it, will change it later on",
+      "parentUuid": "e7ae06f9_d80fe579",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 70
+      },
+      "revId": "7eebc293778c539825483f84772e58ec08352444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c70ca2f0_9fe0bb4b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "54f78247_a08f14e2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1144259
+      },
+      "writtenOn": "2016-01-21T19:26:40Z",
+      "side": 1,
+      "message": "OK, we will do it.",
+      "parentUuid": "54206291_98b01944",
+      "range": {
+        "startLine": 444,
+        "startChar": 1,
+        "endLine": 444,
+        "endChar": 28
+      },
+      "revId": "7eebc293778c539825483f84772e58ec08352444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54206291_d8b69141",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 1
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "d487f2cf_6476e4e0",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1144259
+      },
+      "writtenOn": "2016-01-21T19:26:40Z",
+      "side": 1,
+      "message": "OK, we will try to do it.",
+      "parentUuid": "54206291_d8b69141",
+      "range": {
+        "startLine": 448,
+        "startChar": 3,
+        "endLine": 448,
+        "endChar": 39
+      },
+      "revId": "7eebc293778c539825483f84772e58ec08352444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4115643_5de4af5e",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 1
@@ -105,6 +177,30 @@
       "writtenOn": "2016-01-21T16:54:05Z",
       "side": 1,
       "message": "What is register 0xD1 ?\nHPD seems to be 0xD0 above",
+      "range": {
+        "startLine": 454,
+        "startChar": 17,
+        "endLine": 454,
+        "endChar": 22
+      },
+      "revId": "7eebc293778c539825483f84772e58ec08352444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54206291_9eeb619a",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1144259
+      },
+      "writtenOn": "2016-01-21T19:26:40Z",
+      "side": 1,
+      "message": "We moved this D1 control into 0x18 TCPC register now. But not sure where should we implement it. could you give us the example to add a \"mux driver\" in the tcpci.c code?",
+      "parentUuid": "f4115643_5de4af5e",
       "range": {
         "startLine": 454,
         "startChar": 17,
