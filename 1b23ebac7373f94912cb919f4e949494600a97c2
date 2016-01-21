@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54f78247_c3810a6f",
+        "filename": "board/chell/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-21T23:15:33Z",
+      "side": 1,
+      "message": "I also need to reconfig I2C1 and maybe some other GPIOs that are usually pulled up to PP3300_USB_PD. I\u0027ll put up another CL for it.",
+      "revId": "1b23ebac7373f94912cb919f4e949494600a97c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
