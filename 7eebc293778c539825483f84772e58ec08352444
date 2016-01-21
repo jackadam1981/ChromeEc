@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7ae06f9_d80fe579",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-21T16:54:05Z",
+      "side": 1,
+      "message": "the title needs to be something like:\n\"pd: add Parade PS8751 support\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 70
+      },
+      "revId": "7eebc293778c539825483f84772e58ec08352444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c70ca2f0_9fe0bb4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-21T16:54:05Z",
+      "side": 1,
+      "message": "the description needs to include :\nBRANCH\u003dnone\nBUG\u003dchrome-os-partner:\u003cbug numbe for this future\u003e\nTEST\u003d\u003ctesting you have done\u003e",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "7eebc293778c539825483f84772e58ec08352444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54206291_98b01944",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-21T16:54:05Z",
+      "side": 1,
+      "message": "we cannot put vendor defined registers in this file,\nyou need to create driver/tcpm/ps8751.c file\n(and put a symbolic define for this register)",
+      "range": {
+        "startLine": 444,
+        "startChar": 1,
+        "endLine": 444,
+        "endChar": 28
+      },
+      "revId": "7eebc293778c539825483f84772e58ec08352444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54206291_d8b69141",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-21T16:54:05Z",
+      "side": 1,
+      "message": "you might not be in DisplayPort alternate mode here,\nthe HPD steering should be done in the alternate mode attention() callback (as called by modep-\u003efx-\u003eattention() above)\nthis callback is currently implemented in board code, but you can implement a function to do it for your driver (and call this function from the board code).",
+      "range": {
+        "startLine": 448,
+        "startChar": 3,
+        "endLine": 448,
+        "endChar": 39
+      },
+      "revId": "7eebc293778c539825483f84772e58ec08352444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4115643_5de4af5e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-21T16:54:05Z",
+      "side": 1,
+      "message": "What is register 0xD1 ?\nHPD seems to be 0xD0 above",
+      "range": {
+        "startLine": 454,
+        "startChar": 17,
+        "endLine": 454,
+        "endChar": 22
+      },
+      "revId": "7eebc293778c539825483f84772e58ec08352444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
