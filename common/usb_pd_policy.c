@@ -21,6 +21,7 @@
 #include "usb_api.h"
 #include "usb_pd.h"
 #include "version.h"
+#include "tcpm.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -433,7 +434,7 @@ static void dfp_consume_attention(int port, uint32_t *payload)
 	uint16_t svid = PD_VDO_VID(payload[0]);
 	int opos = PD_VDO_OPOS(payload[0]);
 	struct svdm_amode_data *modep = get_modep(port, svid);
-	int reg;
+
 
 	if (!modep || !validate_mode_request(modep, svid, opos))
 		return;
@@ -441,17 +442,10 @@ static void dfp_consume_attention(int port, uint32_t *payload)
 	if (modep->fx->attention)
 		modep->fx->attention(port, payload);
 
-	tcpc_read(port, 0xd0, &reg);
-//	tcpc_read(port, TCPC_REG_CC_STATUS, &reg);
-//	if ( ( reg & 0x03 ) == 0x02 )//CC1
-		{
-			tcpc_write(port, 0xd0 , reg | 0x80);
-		}
-//	else if ( ( reg & 0x0C ) == 0x08 )//CC2
-		{
-//			tcpc_write(port, 0xd0 , 0xA0);
-		}		
-	tcpc_write(port, 0xd1 , 0x80);//HPD
+        //MODE SWITCH
+	tcpc_write(port, 0x18, 0x08);
+        //HPD
+	tcpc_write(port, 0xd0, 0x01);
 }
 
 /*
