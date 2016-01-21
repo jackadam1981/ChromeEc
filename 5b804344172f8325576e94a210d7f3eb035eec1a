@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4115643_fd714322",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-21T17:36:59Z",
+      "side": 1,
+      "message": "Can you open a crbug for this?",
+      "revId": "5b804344172f8325576e94a210d7f3eb035eec1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d439b2d1_34991e61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-21T17:36:59Z",
+      "side": 1,
+      "message": "BRANCH\u003dglados",
+      "revId": "5b804344172f8325576e94a210d7f3eb035eec1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4115643_1d7d17f8",
+        "filename": "board/kunimitsu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-21T17:36:59Z",
+      "side": 1,
+      "message": "Suggest to change this to BAT_PRESENT_MV (or just add _MV, so the units are clear).",
+      "revId": "5b804344172f8325576e94a210d7f3eb035eec1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4eb7261_24a8bc98",
+        "filename": "board/kunimitsu/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-21T17:36:59Z",
+      "side": 1,
+      "message": "I don\u0027t think you\u0027re using this anymore.",
+      "revId": "5b804344172f8325576e94a210d7f3eb035eec1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54206291_7b99b791",
+        "filename": "board/kunimitsu/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-21T17:36:59Z",
+      "side": 1,
+      "message": "You can combine this ALTERNATE declaration with the one below.",
+      "revId": "5b804344172f8325576e94a210d7f3eb035eec1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
