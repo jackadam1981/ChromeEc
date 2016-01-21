@@ -20,7 +20,7 @@
 
 #define CRITICAL_LOW_BATTERY_PERCENTAGE 5
 #define LOW_BATTERY_PERCENTAGE 20
-#define HIGH_BATTERY_PERCENTAGE 95
+#define HIGH_BATTERY_PERCENTAGE 97
 
 #define LED_TOTAL_2SECS_TICKS 2
 #define LED_ON_1SEC_TICKS 1
@@ -146,8 +146,10 @@ static void lucid_update_charge_display(void)
 			lucid_led_set_color_battery(LED_OFF);
 		else if (charge_get_percent() < LOW_BATTERY_PERCENTAGE)
 			lucid_led_set_color_battery(LED_RED);
-		else
+		else if (charge_get_percent() < HIGH_BATTERY_PERCENTAGE)
 			lucid_led_set_color_battery(LED_AMBER);
+		else
+			lucid_led_set_color_battery(LED_GREEN);
 		break;
 	case PWR_STATE_ERROR:
 		lucid_led_set_color_battery(
