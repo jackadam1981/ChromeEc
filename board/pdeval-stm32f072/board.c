@@ -13,6 +13,7 @@
 #include "registers.h"
 #include "task.h"
 #include "usb_descriptor.h"
+#include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
@@ -61,6 +62,15 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{I2C_PORT_TCPC, TCPC2_I2C_ADDR},
 #endif
 };
+
+#ifdef CONFIG_USBC_SS_MUX
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+	{ 0, &tcpm_usb_mux_driver},
+#if CONFIG_USB_PD_PORT_COUNT >= 2
+	{ 1, &tcpm_usb_mux_driver},
+#endif
+};
+#endif /* CONFIG_USBC_SS_MUX */
 
 uint16_t tcpc_get_alert_status(void)
 {
