@@ -32,7 +32,7 @@
 #define TICKS_STEP2_DIMMER 20
 #define TICKS_STEP3_OFF 40
 
-#define FULL_BATTERY_PERMILLAGE 795
+#define FULL_BATTERY_PERMILLAGE 875
 static int led_debug;
 static int ticks;
 
@@ -200,6 +200,8 @@ static void sentry_led_set_battery(void)
 		set_battery_color(permillage <
 			FULL_BATTERY_PERMILLAGE ? LED_AMBER : LED_GREEN);
 		break;
+	case PWR_STATE_CHARGE_NEAR_FULL:
+		set_battery_color(LED_GREEN);
 	default:
 		set_battery_color(LED_OFF);
 		break;
