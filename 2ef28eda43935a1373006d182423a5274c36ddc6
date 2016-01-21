@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7b10259_65d72e73",
+        "filename": "board/lucid/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-21T01:38:02Z",
+      "side": 1,
+      "message": "I think it\u0027s better to add a local variable so we can call charge_get_percent() once (instead of up to 3 times). charge_get_percent() implementation is simple now, but it could change someday to do something more complex like polling the charge level over i2c.",
+      "range": {
+        "startLine": 149,
+        "startChar": 11,
+        "endLine": 149,
+        "endChar": 29
+      },
+      "revId": "2ef28eda43935a1373006d182423a5274c36ddc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
