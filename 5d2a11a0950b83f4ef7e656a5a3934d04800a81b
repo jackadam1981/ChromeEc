@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74c64632_11288e71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-22T20:24:02Z",
+      "side": 1,
+      "message": "Just \"BRANCH\u003dstrago\" is sufficient.",
+      "revId": "5d2a11a0950b83f4ef7e656a5a3934d04800a81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74c64632_9169decc",
+        "filename": "board/setzer/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-22T20:24:02Z",
+      "side": 1,
+      "message": "You should be able to remove this enum.",
+      "revId": "5d2a11a0950b83f4ef7e656a5a3934d04800a81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74af2662_e9087145",
+        "filename": "board/setzer/gpio.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-22T20:24:02Z",
+      "side": 1,
+      "message": "Minor problem: Add space before + after comment text, ex. \"/* Led color white */\"",
+      "range": {
+        "startLine": 82,
+        "startChar": 65,
+        "endLine": 83,
+        "endChar": 84
+      },
+      "revId": "5d2a11a0950b83f4ef7e656a5a3934d04800a81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
