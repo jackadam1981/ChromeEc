@@ -8,6 +8,9 @@
 #ifndef __BOARD_H
 #define __BOARD_H
 
+/* Undef this macro if you want FW works as UFP device */
+#undef PTN5100_DFP_MODE
+
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
 
@@ -16,6 +19,7 @@
 #define CONFIG_UART_CONSOLE 2
 
 /* Optional features */
+#define CONFIG_BOARD_PRE_INIT
 #define CONFIG_HW_CRC
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
@@ -25,12 +29,22 @@
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_CUSTOM_VDM
+#ifdef PTN5100_DFP_MODE
+#undef CONFIG_USB_PD_DUAL_ROLE
+#else
 #define CONFIG_USB_PD_DUAL_ROLE
-#define CONFIG_USB_PD_PORT_COUNT 2
+#endif
+#define CONFIG_USB_PD_PORT_COUNT 1
 #define CONFIG_USB_PD_TCPM_TCPCI
+#define CONFIG_USB_PD_TCPM_VBUS
 
+#ifdef PTN5100_DFP_MODE
+/* start as a source */
+#define PD_DEFAULT_STATE PD_STATE_SRC_DISCONNECTED
+#else
 /* start as a sink */
 #define PD_DEFAULT_STATE PD_STATE_SNK_DISCONNECTED
+#endif
 
 /* fake board specific type-C power constants */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY  30000  /* us */
@@ -51,6 +65,9 @@
 #define TCPC2_I2C_ADDR 0x9e
 
 /* Timer selection */
+
+/* ADC */
+#define CONFIG_ADC
 
 /* USB Configuration */
 #define CONFIG_USB
@@ -77,8 +94,15 @@
 
 #ifndef __ASSEMBLER__
 
+enum adc_channel {
+	ADC_CH_V_SENSE = 4,
+	/* Number of ADC channels */
+	ADC_CH_COUNT
+};
+
 /* Timer selection */
 #define TIM_CLOCK32 2
+#define TIM_ADC 3
 
 #include "gpio_signal.h"
 

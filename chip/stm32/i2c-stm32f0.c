@@ -75,7 +75,7 @@ static int wait_isr(int port, int mask)
 			return EC_SUCCESS;
 
 		/* I2C is slow, so let other things run while we wait */
-		usleep(100);
+		udelay(10);
 	}
 
 	return EC_ERROR_TIMEOUT;
@@ -448,6 +448,13 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 			| (xfer_start ? STM32_I2C_CR2_START : 0);
 
 		for (i = 0; i < out_bytes; i++) {
+
+			/*
+			 * Delay a little bit so we needn't to
+			 * wait 100us to get the IRQ
+			 */
+			udelay(18);
+
 			rv = wait_isr(port, STM32_I2C_ISR_TXIS);
 			if (rv)
 				goto xfer_exit;
@@ -457,6 +464,13 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	}
 	if (in_bytes) {
 		if (out_bytes) { /* wait for completion of the write */
+
+			/*
+			 * Delay a little bit so we needn't to
+			 * wait 100us to get the IRQ
+			 */
+			udelay(18);
+
 			rv = wait_isr(port, STM32_I2C_ISR_TC);
 			if (rv)
 				goto xfer_exit;

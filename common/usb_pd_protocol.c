@@ -30,6 +30,9 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+int ptn_is_adc_on(void);
+void ptn_enable_adc(int enable);
+
 /*
  * Debug log level - higher number == more log
  *   Level 0: Log state transitions
@@ -1514,6 +1517,8 @@ void pd_task(void)
 					break;
 #endif
 				pd[port].cc_state = PD_CC_NONE;
+				/* Patch for cc2 connection issue */
+				pd[port].polarity = (cc2 == TYPEC_CC_VOLT_RD);
 				set_state(port,
 					PD_STATE_SRC_DISCONNECTED_DEBOUNCE);
 			}
@@ -2091,6 +2096,10 @@ void pd_task(void)
 #else
 			/* Wait for VBUS to go low and then high*/
 			if (pd[port].last_state != pd[port].task_state) {
+#ifndef CONFIG_USB_PD_TCPM_VBUS
+				/* Disable TCPC RX until hard reset finished */
+				tcpm_set_rx_enable(port, 0);
+#endif
 				snk_hard_reset_vbus_off = 0;
 				set_state_timeout(port,
 						  get_time().val +
@@ -2116,6 +2125,10 @@ void pd_task(void)
 				/* VBUS went high again */
 				set_state(port, PD_STATE_SNK_DISCOVERY);
 				timeout = 10*MSEC;
+#ifndef CONFIG_USB_PD_TCPM_VBUS
+				/* Enable TCPC RX */
+				tcpm_set_rx_enable(port, 1);
+#endif
 			}
 
 			/*
@@ -2861,6 +2874,20 @@ static int command_pd(int argc, char **argv)
 		}
 		return EC_SUCCESS;
 	}
+	else if (!strcasecmp(argv[1], "adc")) {
+		int enable;
+
+		if (argc < 3)
+			ccprintf("VBUS ADC monitor is: %s\n",
+				ptn_is_adc_on() ? "on" : "off");
+		else {
+			enable = strtoi(argv[2], &e, 10);
+			if (*e)
+				return EC_ERROR_PARAM2;
+			ptn_enable_adc(enable);
+		}
+		return EC_SUCCESS;
+	}
 #ifdef CONFIG_CMD_PD
 	else if (!strcasecmp(argv[1], "enable")) {
 		int enable;
@@ -3022,7 +3049,7 @@ static int command_pd(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(pd, command_pd,
-			"dualrole|dump|enable [0|1]|rwhashtable"
+			"adc|dualrole|dump|enable [0|1]|rwhashtable"
 			"trysrc [0|1]\n\t<port> "
 			"[tx|bist_rx|bist_tx|charger|clock|dev"
 			"|soft|hash|hard|ping|state|swap [power|data]|"

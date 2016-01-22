@@ -95,6 +95,9 @@ static enum ec_reboot_cmd reboot_at_shutdown;
 /* On-going actions preventing going into deep-sleep mode */
 uint32_t sleep_mask;
 
+/* TCPC driver version string. Find it in ptn5100.c */
+extern char * vic_drv_ver_str;
+
 /**
  * Return the program memory address where the image `copy` begins or should
  * begin. In the case of external storage, the image may or may not currently
@@ -621,6 +624,11 @@ const char *system_get_version(enum system_image_copy_t copy)
 	return "";
 }
 
+static const char *system_get_tcpc_drv_version(void)
+{
+	return vic_drv_ver_str;
+}
+
 int system_get_board_version(void)
 {
 	int v = 0;
@@ -858,6 +866,7 @@ static int command_version(int argc, char **argv)
 	ccprintf("Chip:    %s %s %s\n", system_get_chip_vendor(),
 		 system_get_chip_name(), system_get_chip_revision());
 	ccprintf("Board:   %d\n", system_get_board_version());
+	ccprintf("Drv:     %s\n", system_get_tcpc_drv_version());
 	ccprintf("RO:      %s\n", system_get_version(SYSTEM_IMAGE_RO));
 	ccprintf("RW:      %s\n", system_get_version(SYSTEM_IMAGE_RW));
 	ccprintf("Build: %s\n", system_get_build_info());

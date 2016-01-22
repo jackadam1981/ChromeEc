@@ -134,7 +134,7 @@ enum pd_rx_errors {
 
 /* Timers */
 #define PD_T_SEND_SOURCE_CAP  (100*MSEC) /* between 100ms and 200ms */
-#define PD_T_SINK_WAIT_CAP    (240*MSEC) /* between 210ms and 250ms */
+#define PD_T_SINK_WAIT_CAP    (400*MSEC) /* between 310ms and 620ms */
 #define PD_T_SINK_TRANSITION   (35*MSEC) /* between 20ms and 35ms */
 #define PD_T_SOURCE_ACTIVITY   (45*MSEC) /* between 40ms and 50ms */
 #define PD_T_SENDER_RESPONSE   (30*MSEC) /* between 24ms and 30ms */

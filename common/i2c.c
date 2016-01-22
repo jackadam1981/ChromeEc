@@ -197,6 +197,26 @@ int i2c_read8(int port, int slave_addr, int offset, int *data)
 	return rv;
 }
 
+int i2c_16read8(int port, int slave_addr, int offset, uint8_t *data)
+{
+	int rv;
+	/* We use buf[1] here so it's aligned for DMA on STM32 */
+	uint8_t buf[1];
+	uint16_t reg;
+
+	reg = (offset & 0x00ff) << 8;
+	reg |= (offset & 0xff00) >> 8;
+
+	i2c_lock(port, 1);
+	rv = i2c_xfer(port, slave_addr, (uint8_t *)&reg, 2, buf, 1, I2C_XFER_SINGLE);
+	i2c_lock(port, 0);
+
+	if (!rv)
+		*data = buf[0];
+
+	return rv;
+}
+
 int i2c_write8(int port, int slave_addr, int offset, int data)
 {
 	int rv;
@@ -207,6 +227,22 @@ int i2c_write8(int port, int slave_addr, int offset, int data)
 
 	i2c_lock(port, 1);
 	rv = i2c_xfer(port, slave_addr, buf, 2, 0, 0, I2C_XFER_SINGLE);
+	i2c_lock(port, 0);
+
+	return rv;
+}
+
+int i2c_16write8(int port, int slave_addr, int offset, uint8_t data)
+{
+	int rv;
+	uint8_t buf[3];
+
+	buf[0] = (offset & 0xff00) >> 8;
+	buf[1] = (offset & 0x00ff);
+	buf[2] = data;
+
+	i2c_lock(port, 1);
+	rv = i2c_xfer(port, slave_addr, buf, 3, 0, 0, I2C_XFER_SINGLE);
 	i2c_lock(port, 0);
 
 	return rv;
