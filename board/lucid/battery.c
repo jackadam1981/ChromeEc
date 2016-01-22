@@ -16,6 +16,7 @@
 /* Shutdown mode parameter to write to manufacturer access register */
 #define PARAM_CUT_OFF_LOW  0x10
 #define PARAM_CUT_OFF_HIGH 0x00
+#define LOW_INPUT_POWER 15000000 /* uW */
 
 /* Battery info for BQ40Z55 */
 static const struct battery_info info = {
@@ -149,14 +150,18 @@ int charger_profile_override(struct charge_state_data *curr)
 		break;
 	case TEMP_NORMAL:
 		curr->requested_voltage = 4350;
-		if (voltage_range == VOLTAGE_RANGE_LOW)
+		if (voltage_range == VOLTAGE_RANGE_LOW &&
+		    curr->chg.voltage * curr->chg.current > LOW_INPUT_POWER)
 			curr->requested_current = 6000;
 		else
 			curr->requested_current = 3000;
 		break;
 	case TEMP_HIGH:
 		curr->requested_current = 4200;
-		curr->requested_voltage = 4100;
+		if (curr->chg.voltage * curr->chg.current > LOW_INPUT_POWER)
+			curr->requested_voltage = 4100;
+		else
+			curr->requested_voltage = 3000;
 		break;
 	}
 
