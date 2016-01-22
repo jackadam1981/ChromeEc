@@ -16,6 +16,24 @@
       "revId": "3908474b327fbecc5e428ec98edb0b82f6041244",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74af2662_462e5283",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1839,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-22T18:25:10Z",
+      "side": 1,
+      "message": "there is a bit more functionalities than that in the register, but yes the main one is actually controlling the mux, so I will update it to CONFIG_USB_PD_TCPM_MUX as suggested.",
+      "parentUuid": "141a6a67_dc08c145",
+      "revId": "3908474b327fbecc5e428ec98edb0b82f6041244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
