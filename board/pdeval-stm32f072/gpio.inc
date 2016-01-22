@@ -15,6 +15,9 @@ GPIO(LED_D, PIN(C, 7), GPIO_OUT_LOW)
 GPIO(LED_L, PIN(C, 8), GPIO_OUT_LOW)
 GPIO(LED_R, PIN(C, 9), GPIO_OUT_LOW)
 
+/* Vbus voltage ADC */
+GPIO(VBUS_ADC, PIN(A, 4), GPIO_ANALOG)
+
 /*
  * I2C pins should be configured as inputs until I2C module is
  * initialized. This will avoid driving the lines unintentionally.

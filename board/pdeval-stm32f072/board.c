@@ -4,6 +4,8 @@
  */
 /* STM32F072-discovery board based USB PD evaluation configuration */
 
+#include "adc.h"
+#include "adc_chip.h"
 #include "common.h"
 #include "ec_version.h"
 #include "gpio.h"
@@ -27,6 +29,12 @@ void alert_event(enum gpio_signal signal)
 
 #include "gpio_list.h"
 
+/* ADC channels */
+const struct adc_t adc_channels[] = {
+	/* Vbus sensing. Converted to mV, full ADC is equivalent to 33V. */
+	[ADC_CH_V_SENSE] = {"VBUS", 33000, 1024, 0, 1},
+};
+
 const void *const usb_strings[] = {
 	[USB_STR_DESC]         = usb_string_desc,
 	[USB_STR_VENDOR]       = USB_STRING_DESC("Google Inc."),
@@ -38,10 +46,23 @@ const void *const usb_strings[] = {
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 
 /* Initialize board. */
+void board_config_pre_init(void)
+{
+	/* enable SYSCFG clock, ADC clock */
+	STM32_RCC_APB2ENR |= (1 << 9) | (1 << 0);
+}
+
+/* Initialize board. */
 static void board_init(void)
 {
 	gpio_enable_interrupt(GPIO_USER_BUTTON);
 	gpio_enable_interrupt(GPIO_PD_MCU_INT);
+
+	adc_set_watchdog_delay(0);
+	/* Disable interrupts */
+	STM32_ADC_IER = 0;
+	/* Analog watchdog IRQ */
+	task_enable_irq(STM32_IRQ_ADC_COMP);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -51,7 +72,7 @@ void board_reset_pd_mcu(void)
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"tcpc", I2C_PORT_TCPC, 100 /* kHz */, GPIO_I2C0_SCL, GPIO_I2C0_SDA}
+	{"tcpc", I2C_PORT_TCPC, 1000 /* kHz */, GPIO_I2C0_SCL, GPIO_I2C0_SDA}
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 

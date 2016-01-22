@@ -16,6 +16,7 @@
 #define CONFIG_UART_CONSOLE 2
 
 /* Optional features */
+#define CONFIG_BOARD_PRE_INIT
 #define CONFIG_HW_CRC
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
@@ -26,10 +27,11 @@
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_CUSTOM_VDM
 #define CONFIG_USB_PD_DUAL_ROLE
-#define CONFIG_USB_PD_PORT_COUNT 2
+#define CONFIG_USB_PD_PORT_COUNT 1
 #define CONFIG_USB_PD_TCPM_TCPCI
+#define CONFIG_USB_PD_TCPM_VBUS
 
-/* start as a sink */
+/* DRP, start as a sink */ 
 #define PD_DEFAULT_STATE PD_STATE_SNK_DISCONNECTED
 
 /* fake board specific type-C power constants */
@@ -51,6 +53,9 @@
 #define TCPC2_I2C_ADDR 0x9e
 
 /* Timer selection */
+
+/* ADC */
+#define CONFIG_ADC
 
 /* USB Configuration */
 #define CONFIG_USB
@@ -77,8 +82,15 @@
 
 #ifndef __ASSEMBLER__
 
+enum adc_channel {
+	ADC_CH_V_SENSE = 4,
+	/* Number of ADC channels */
+	ADC_CH_COUNT
+};
+
 /* Timer selection */
 #define TIM_CLOCK32 2
+#define TIM_ADC 3
 
 #include "gpio_signal.h"
 

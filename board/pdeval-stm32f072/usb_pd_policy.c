@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "adc.h"
+#include "adc_chip.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
@@ -17,20 +19,113 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
-#define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP)
+#define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | \
+			 PDO_FIXED_DATA_SWAP | \
+			 PDO_FIXED_EXTERNAL)
+
+/* ADC in 12-bit mode */
+#define ADC_SCALE (1 << 12)
+/* ADC power supply : VDDA = 3.3V */
+#define VDDA_MV   3300
+/* VBUS voltage is measured through 20k / 113k voltage divider = /6.65 */
+#define VOLT_DIV_H  (20+113)
+#define VOLT_DIV_L  (20)
+/* convert VBUS voltage in raw ADC value */
+#define VBUS_MV(mv) (((mv)*ADC_SCALE*VOLT_DIV_L)/VOLT_DIV_H/VDDA_MV)
+/* convert raw ADC value to mV */
+#define ADC_TO_VOLT_MV(vbus) ((vbus)*VOLT_DIV*VDDA_MV/ADC_SCALE)
+
+/* Under-voltage limit is 0.8x Vnom */
+#define UVP_MV(mv)  VBUS_MV((mv) * 8 / 10)
+/* Over-voltage limit is 1.2x Vnom */
+#define OVP_MV(mv)  VBUS_MV((mv) * 12 / 10)
+/* Over-voltage recovery threshold is 1.1x Vnom */
+#define OVP_REC_MV(mv)  VBUS_MV((mv) * 11 / 10)
+
+/* Maximum discharging delay */
+#define DISCHARGE_TIMEOUT (190*MSEC) /* MSEC */
+/* Voltage overshoot below the OVP threshold for discharging to avoid OVP */
+#define DISCHARGE_OVERSHOOT_MV VBUS_MV(200)
 
 /* Used to fake VBUS presence since no GPIO is available to read VBUS */
 static int vbus_present;
 
+/* Voltage indexes for the PDOs */
+enum volt_idx {
+	PDO_IDX_5V  = 0,
+	PDO_IDX_15V = 1,
+
+	PDO_IDX_COUNT
+};
+
 const uint32_t pd_src_pdo[] = {
-		PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
+		[PDO_IDX_5V]  = PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
+		/* Add 2nd src PDO for NXP Thames Lite demo board */
+		[PDO_IDX_15V] = PDO_FIXED(15000, 1200, PDO_FIXED_FLAGS),
 };
 const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
+
+/* PDO voltages (should match the table above) */
+static const struct {
+	int       uvp;    /* under-voltage limit in mV */
+	int       ovp;    /* over-voltage limit in mV */
+	int       ovp_rec;/* over-voltage recovery threshold in mV */
+} voltages[ARRAY_SIZE(pd_src_pdo)] = {
+	[PDO_IDX_5V]  = {UVP_MV(5000),  OVP_MV(5000),
+						OVP_REC_MV(5000)},
+	[PDO_IDX_15V] = {UVP_MV(15000), OVP_MV(15000),
+						OVP_REC_MV(15000)},
+};
 
 const uint32_t pd_snk_pdo[] = {
 		PDO_FIXED(5000, 500, PDO_FIXED_FLAGS),
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
+
+/* current and previous selected PDO entry */
+static int volt_idx;
+static int last_volt_idx;
+static int adc_enable = 0;
+/* expiration date of the discharge */
+static timestamp_t discharge_deadline;
+
+/* PTN5100 power management functions */
+int ptn_en_discharge(int port, int enable);
+int ptn_is_discharge_en(int port);
+int ptn_wait_vsafe0(int port);
+int ptn_wait_vsafe5(int port, int dir);
+int ptn_close_usbfet1(int port, int close);
+int ptn_close_usbsrc(int port, int close);
+int ptn_close_usbfet2(int port, int close);
+int ptn_is_vbus_on(int port);
+
+static inline void discharge_enable(int port)
+{
+	ptn_en_discharge(port, 1);
+	gpio_set_level(GPIO_LED_R, 1);
+}
+
+static inline void discharge_disable(int port)
+{
+	STM32_ADC_IER = 0;
+	ptn_en_discharge(port, 0);
+	adc_disable_watchdog();
+	gpio_set_level(GPIO_LED_R, 0);
+}
+
+static inline int discharge_is_enabled(int port)
+{
+	return ptn_is_discharge_en(port);
+}
+
+static void discharge_voltage(int port, int target_volt)
+{
+	discharge_enable(port);
+	discharge_deadline.val = get_time().val + DISCHARGE_TIMEOUT;
+	/* Monitor VBUS voltage */
+	target_volt -= DISCHARGE_OVERSHOOT_MV;
+	adc_enable_watchdog(ADC_CH_V_SENSE, 0xFFF, target_volt);
+}
 
 int pd_is_valid_input_voltage(int mv)
 {
@@ -40,22 +135,95 @@ int pd_is_valid_input_voltage(int mv)
 void pd_transition_voltage(int idx)
 {
 	/* No-operation: we are always 5V */
+	
+	/* Tie port = 0 because this function doesn't support multiport */
+	int port = 0;
+
+	/* For PTN5100 Thames-Lite app board only  */
+	CPRINTS("Transfer voltage to idx = %d", idx);
+
+	volt_idx = idx - 1;
+
+	/* Support port 0 only */
+	if (volt_idx == PDO_IDX_5V) {
+		if (last_volt_idx > volt_idx) {
+			/* Down transision */
+
+			/*
+			 * Do this as quick as possible so we can
+			 * avoid RCP as much as we can
+			 */
+			/* Enable 5V output */
+			ptn_close_usbsrc(port, 1);
+			msleep(1);
+			/* Disable 15V output */
+			ptn_close_usbfet2(port, 0);
+
+			if (!adc_enable) {
+				/* Enable discharge */
+				ptn_en_discharge(port, 1);
+				/* Wait for VSafe5v flag turned off */
+				ptn_wait_vsafe5(port, 0);
+				/* Disable discharge */
+				ptn_en_discharge(port, 0);
+			}
+			else {
+				/* Monitor VBUS voltage by on-chip ADC */
+				discharge_voltage(port, voltages[volt_idx].ovp);
+			}
+		}
+	}
+	else if (volt_idx == PDO_IDX_15V) {
+		/* Enable 15V output on thames-lite */
+		ptn_close_usbfet2(port, 1);
+		/* Disable 5V output */
+		ptn_close_usbsrc(port, 0);
+	}
+
+	last_volt_idx = volt_idx;
 }
 
 int pd_set_power_supply_ready(int port)
 {
+	last_volt_idx = volt_idx = PDO_IDX_5V;
+
+	/* Stop sinking power from VBUS */
+	ptn_close_usbfet1(port, 0);
+
 	/* Turn on the "up" LED when we output VBUS */
 	gpio_set_level(GPIO_LED_U, 1);
 	CPRINTS("Power supply ready/%d", port);
+
+	/* PTN5100, output VBUS 5V */
+	ptn_close_usbsrc(port, 1);
+
 	return EC_SUCCESS; /* we are ready */
 }
 
 void pd_power_supply_reset(int port)
 {
-	/* Turn off the "up" LED when we shutdown VBUS */
-	gpio_set_level(GPIO_LED_U, 0);
-	/* Disable VBUS */
-	CPRINTS("Disable VBUS", port);
+	if (ptn_is_vbus_on(port)) {
+		/* Turn off the "up" LED when we shutdown VBUS */
+		gpio_set_level(GPIO_LED_U, 0);
+
+		/* PTN5100, shutdown all VBUS sources immediately. */
+		ptn_close_usbfet2(port, 0);
+		ptn_close_usbsrc(port, 0);
+
+		/* Enable discharge */
+		ptn_en_discharge(port, 1);
+
+		ptn_wait_vsafe0(port);
+
+		/* Disable discharge */
+		ptn_en_discharge(port, 0);
+
+		/* Disable VBUS */
+		CPRINTS("Disable VBUS", port);
+
+		/* Enable sinking power from VBUS */
+		ptn_close_usbfet1(port, 1);
+	}
 }
 
 void pd_set_input_current_limit(int port, uint32_t max_ma,
@@ -103,14 +271,28 @@ DECLARE_CONSOLE_COMMAND(vbus, command_vbus_toggle,
 
 int pd_snk_is_vbus_provided(int port)
 {
-	return vbus_present;
+	/* Now VBUS status is coming from real hardware */
+	return ptn_is_vbus_on(port);
 }
 
 int pd_board_checks(void)
 {
+	/* Tie port = 0 because this function doesn't support multiport */
+	int port = 0;
+
+	/* the discharge did not work properly */
+	if (discharge_is_enabled(port) &&
+		(get_time().val > discharge_deadline.val)) {
+		/* stop it */
+		CPRINTS("Stop! The discharge did not work properly");
+		discharge_disable(port);
+		return EC_ERROR_INVAL;
+	}
+
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 int pd_check_power_swap(int port)
 {
 	/*
@@ -120,6 +302,7 @@ int pd_check_power_swap(int port)
 	 */
 	return pd_get_dual_role() == PD_DRP_TOGGLE_ON ? 1 : 0;
 }
+#endif
 
 int pd_check_data_swap(int port, int data_role)
 {
@@ -138,6 +321,21 @@ void pd_check_pr_role(int port, int pr_role, int flags)
 void pd_check_dr_role(int port, int dr_role, int flags)
 {
 }
+
+void pd_adc_interrupt(void)
+{
+	/* Clear flags */
+	STM32_ADC_ISR = 0x8e;
+
+	if (discharge_is_enabled(0)) {
+		discharge_disable(0);
+	}
+
+	/* clear ADC irq so we don't get a second interrupt */
+	task_clear_pending_irq(STM32_IRQ_ADC_COMP);
+}
+DECLARE_IRQ(STM32_IRQ_ADC_COMP, pd_adc_interrupt, 1);
+
 /* ----------------- Vendor Defined Messages ------------------ */
 const struct svdm_response svdm_rsp = {
 	.identity = NULL,
