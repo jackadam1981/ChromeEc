@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "141a6a67_22faf098",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-01-22T07:44:51Z",
+      "side": 1,
+      "message": "Setzer: update gpio table",
+      "parentUuid": "54f78247_fd870783",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "9a07b38ced7ad0342a9870078dd1868233660697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4eb7261_a13b9e6f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2016-01-21T16:02:45Z",
       "side": 1,
       "message": "you should have one for this work",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "9a07b38ced7ad0342a9870078dd1868233660697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b40b5e17_8cc57792",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-01-22T07:44:51Z",
+      "side": 1,
+      "message": "chrome-os-partner:49640",
+      "parentUuid": "d4eb7261_a13b9e6f",
       "range": {
         "startLine": 11,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b40b5e17_6c4d831f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-01-22T07:44:51Z",
+      "side": 1,
+      "message": "BRANCH\u003dfirmware-strago-7287.B",
+      "parentUuid": "f4115643_9d1a4747",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "9a07b38ced7ad0342a9870078dd1868233660697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b40b5e17_38fd89d1",
         "filename": "/COMMIT_MSG",
         "patchSetId": 9
@@ -82,6 +154,30 @@
       "writtenOn": "2016-01-21T16:02:45Z",
       "side": 1,
       "message": "doesn\u0027t seem to be an appropriate testing",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "9a07b38ced7ad0342a9870078dd1868233660697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54206291_7e79a05c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-01-22T07:44:51Z",
+      "side": 1,
+      "message": "TEST\u003dUpdate EC firmware for setzer and work normally.",
+      "parentUuid": "b40b5e17_38fd89d1",
       "range": {
         "startLine": 13,
         "startChar": 5,
