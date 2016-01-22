@@ -210,6 +210,30 @@
       "revId": "7eebc293778c539825483f84772e58ec08352444",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b40b5e17_ecdbd33c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-01-22T01:12:59Z",
+      "side": 1,
+      "message": "as noted in the email thread :\nthe example of a common implementation for this register :\nhttps://chromium-review.googlesource.com/322956 tcpc: add support for TCPC with integrated high-speed muxes\n\nAnother slightly better implementation of this CL :\nhttps://chromium-review.googlesource.com/322958 pd: add support for Parade PS8751 TCPC chip",
+      "parentUuid": "54206291_9eeb619a",
+      "range": {
+        "startLine": 454,
+        "startChar": 17,
+        "endLine": 454,
+        "endChar": 22
+      },
+      "revId": "7eebc293778c539825483f84772e58ec08352444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
