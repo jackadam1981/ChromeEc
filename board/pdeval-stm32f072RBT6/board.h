@@ -29,6 +29,7 @@
 #define CONFIG_USB_PD_PORT_COUNT 1
 #define CONFIG_USB_PD_TCPM_ANX74XX
 #define CONFIG_USBC_VCONN
+#define CONFIG_USB_PD_TCPM_VBUS
 
 /* start as a sink */
 #define PD_DEFAULT_STATE PD_STATE_SNK_DISCONNECTED
@@ -94,6 +95,8 @@ enum usb_strings {
 };
 
 void board_reset_pd_mcu(void);
+void board_set_vbus(int port, int enable);
 void board_typec_update_HPD_status(int port, int lvl, int irq);
+void board_set_usb_mux(int port, int pin_mode, int polarity);
 #endif /* !__ASSEMBLER__ */
 #endif /* __BOARD_H */

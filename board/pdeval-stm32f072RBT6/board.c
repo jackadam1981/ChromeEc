@@ -113,6 +113,75 @@ void pd_set_power_supply_mode(int port, int normal_mode)
 #endif
 }
 
+void board_set_vbus(int port, int enable)
+{
+	int reg;
+
+	i2c_read8(I2C_PORT_TCPC, TCPC1_I2C_ADDR, 0x3f, &reg);
+	if (enable) {
+		reg |= 0x20;
+	} else {
+		reg &= 0xdf;
+	}
+	i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR, 0x3f, reg);
+}
+
+void board_set_usb_mux(int port, int pin_mode, int polarity)
+{
+	int reg;
+
+	switch (pin_mode) {
+		case MODE_DP_PIN_A:
+		case MODE_DP_PIN_C:
+		case MODE_DP_PIN_E:
+			if (polarity) {
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x42, 0x86);
+				i2c_read8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					  0x46, &reg);
+				reg &= 0x0f;
+				reg |= 0x10;
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x46, reg);
+			} else {
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x42, 0x49);
+				i2c_read8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					  0x46, &reg);
+				reg &= 0x0f;
+				reg |= 0x20;
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x46, reg);
+			}
+			break;
+		case MODE_DP_PIN_B:
+		case MODE_DP_PIN_D:
+		case MODE_DP_PIN_F:
+			if (polarity) {
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x42, 0x92);
+				i2c_read8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					  0x46, &reg);
+				reg &= 0x0f;
+				reg |= 0x40;
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x46, reg);
+			} else {
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x42, 0x61);
+				i2c_read8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					  0x46, &reg);
+				reg &= 0x0f;
+				reg |= 0x80;
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x46, reg);
+			}
+			break;
+		default:
+			break;
+	}
+}
+
 void board_typec_update_HPD_status(int port, int hpd_lvl, int hpd_irq)
 {
 	int reg;
@@ -128,7 +197,7 @@ void board_typec_update_HPD_status(int port, int hpd_lvl, int hpd_irq)
 
 	if (hpd_irq) {
 		i2c_read8(I2C_PORT_TCPC, TCPC1_I2C_ADDR, 0x36, &reg);
-		reg &= 0xEF;
+		reg &= 0xef;
 		i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR, 0x36, reg);
 		msleep(1);
 		reg |= 0x10;

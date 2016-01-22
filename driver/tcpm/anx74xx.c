@@ -28,6 +28,7 @@ struct anx_state {
 	int	vconn_en;
 };
 static struct anx_state anx[CONFIG_USB_PD_PORT_COUNT];
+static int crc_en = 0;
 
 static void anx74xx_set_power_mode(int port, int mode)
 {
@@ -37,17 +38,8 @@ static void anx74xx_set_power_mode(int port, int mode)
 		case TCPC_NORMAL_MODE:
 			/* Set PWR_EN and RST_N GPIO pins high */
 			pd_set_power_supply_mode(port, 1);
-			/* set cable detection bit */
-			tcpc_read(port, TCPC_REG_ANALOG_CTRL_0, &reg);
-			reg = TCPC_REG_SET_CABLE_DET;
-			tcpc_write(port, TCPC_REG_ANALOG_CTRL_0, reg);
 			break;
 		case TCPC_STANDBY_MODE:
-			/* Clear cable detection bit before cutting power
-			 */
-			tcpc_read(port, TCPC_REG_ANALOG_CTRL_0, &reg);
-			reg &= TCPC_REG_RESET_CABLE_DET;
-			tcpc_write(port, TCPC_REG_ANALOG_CTRL_0, reg);
 			if (anx[port].pull) {
 				tcpc_read(port, TCPC_REG_GPIO_CTRL_4_5, &reg);
 				reg &= TCPC_REG_RESET_VBUS;
@@ -56,6 +48,7 @@ static void anx74xx_set_power_mode(int port, int mode)
 			/* Disable PWR_EN, keep Digital and analog block
 			 * ON for cable detection */
 			pd_set_power_supply_mode(port, 0);
+			crc_en = 0;
 			break;
 		default:
 			break;
@@ -86,29 +79,15 @@ static int anx74xx_set_mux(int port, int cc2_is_cc)
 {
 	int reg, rv = EC_SUCCESS;
 
+	rv |= tcpc_read(port, TCPC_REG_ANALOG_CTRL_2, &reg);
 	if (cc2_is_cc) {
-		rv |= tcpc_write(port, TCPC_REG_ANALOG_CTRL_1,
-				 TCPC_REG_MUX_VALUE_CC2);
-		rv |= tcpc_read(port, TCPC_REG_ANALOG_CTRL_5, &reg);
-		reg &= TCPC_REG_R_SWITCH_CC_CLR;
-		reg |= TCPC_REG_R_SWITCH_CC2_SET;
-		rv |= tcpc_write(port, TCPC_REG_ANALOG_CTRL_5, reg);
-		rv |= tcpc_read(port, TCPC_REG_ANALOG_CTRL_2, &reg);
 		reg |= TCPC_REG_AUX_SWAP_SET_CC2;
 		reg &= TCPC_REG_AUX_SWAP_CLR_CC1;
-		rv |= tcpc_write(port, TCPC_REG_ANALOG_CTRL_2, reg);
 	} else {
-		rv |= tcpc_write(port, TCPC_REG_ANALOG_CTRL_1,
-				 TCPC_REG_MUX_VALUE_CC1);
-		rv |= tcpc_read(port, TCPC_REG_ANALOG_CTRL_5, &reg);
-		reg &= TCPC_REG_R_SWITCH_CC_CLR;
-		reg |= TCPC_REG_R_SWITCH_CC1_SET;
-		rv |= tcpc_write(port, TCPC_REG_ANALOG_CTRL_5, reg);
-		rv |= tcpc_read(port, TCPC_REG_ANALOG_CTRL_2, &reg);
 		reg |= TCPC_REG_AUX_SWAP_SET_CC1;
 		reg &= TCPC_REG_AUX_SWAP_CLR_CC2;
-		rv |= tcpc_write(port, TCPC_REG_ANALOG_CTRL_2, reg);
 	}
+	rv |= tcpc_write(port, TCPC_REG_ANALOG_CTRL_2, reg);
 
 	return rv;
 }
@@ -170,11 +149,20 @@ static int anx74xx_read_PD_obj(int port,
 
 	/* Read PD data objects from ANX */
 	for (i = 0; i < plen ; i++) {
+		if (i == 26)
+			addr = TCPC_REG_PD_RX_DATA_OBJ_M;
 		rv = tcpc_read(port, addr + i, &reg);
 		if(rv)
 			break;
 		buf[i] = reg;
 	}
+	/* Clear soft irq bit */
+	rv |= tcpc_write(port, TCPC_REG_IRQ_EXT_SOURCE_2,
+			 TCPC_REG_CLEAR_SOFT_IRQ);
+	/* Clear receive message interrupt bit(bit-0) */
+	rv |= tcpc_write(port, TCPC_REG_IRQ_SOURCE_RECV_MSG,
+			 TCPC_REG_CLEAR_RESET_BITS & 0xfe);
+
 
 	return rv;
 }
@@ -335,13 +323,26 @@ int tcpm_set_msg_header(int port, int power_role, int data_role)
 
 int tcpm_alert_status(int port, int *alert)
 {
-	/* Read TCPC Alert register */
-	return tcpc_read(port, TCPC_REG_IRQ_EXT_SOURCE_0, alert);
+	int reg, rv = EC_SUCCESS;
+
+	/* Read TCPC Alert registers */
+	rv |= tcpc_read(port, TCPC_REG_IRQ_EXT_SOURCE_0, &reg);
+	*alert = reg;
+	rv |= tcpc_read(port, TCPC_REG_IRQ_SOURCE_RECV_MSG, &reg);
+	if (reg & 0x01)
+		*alert |= TCPC_REG_RECEIVED_MSG_INT;
+	else
+		*alert &= (~TCPC_REG_RECEIVED_MSG_INT);
+
+	return rv;
 }
 
 void tcpc_alert_clear(int port)
 {
-	/* Clear TCPC Alert register */
+	/* Clear TCPC Alert register
+	 * do not clear RX bit, it get cleared
+	 * after message read
+	 */
 	tcpc_write(port, TCPC_REG_IRQ_EXT_SOURCE_0,
 		   TCPC_REG_CLEAR_SET_BITS);
 	tcpc_write(port, TCPC_REG_IRQ_EXT_SOURCE_1,
@@ -358,17 +359,6 @@ int tcpm_set_rx_enable(int port, int enable)
 	else/* Disable RX message by masking interrupt */
 		reg |= (TCPC_REG_RECEIVED_MSG_INT);
 	rv |= tcpc_write(port, TCPC_REG_IRQ_EXT_MASK_0, reg);
-
-	/* Enable/Disable auto GoodCRC reply */
-	reg = TCPC_REG_ENABLE_GOODCRC * enable;
-	rv |= tcpc_write(port, TCPC_REG_TX_AUTO_GOODCRC_2, reg);
-	/* Set bit-0 if enable, reset bit-0 if disable */
-	rv |= tcpc_read(port, TCPC_REG_TX_AUTO_GOODCRC_1, &reg);
-	if (enable)
-		reg |= 0x01;
-	else
-		reg &= 0xfe;
-	rv |= tcpc_write(port, TCPC_REG_TX_AUTO_GOODCRC_1, reg);
 
 	return rv;
 }
@@ -389,17 +379,50 @@ int tcpm_get_message(int port, uint32_t *payload, int *head)
 	uint8_t buf[32] = {0};
 	int len = 0;
 
+	if (!crc_en) {
+		crc_en = 1;
+		/* Set default header for Good CRC auto reply */
+		rv |= tcpc_read(port, TCPC_REG_TX_MSG_HEADER, &reg);
+		reg |= (PD_REV20 << TCPC_REG_SPEC_REV_BIT_POS);
+		rv |= tcpc_write(port, TCPC_REG_TX_MSG_HEADER, reg);
+
+		rv |= tcpc_read(port, TCPC_REG_TX_MSG_HEADER, &reg);
+		reg |= TCPC_REG_AUTO_GOODCRC_EN;
+		rv |= tcpc_write(port, TCPC_REG_TX_MSG_HEADER, reg);
+		/* First message received, Enable auto GoodCRC reply */
+		reg = TCPC_REG_ENABLE_GOODCRC;
+		rv |= tcpc_write(port, TCPC_REG_TX_AUTO_GOODCRC_2, reg);
+		/* Set bit-0 if enable, reset bit-0 if disable */
+		rv |= tcpc_read(port, TCPC_REG_TX_AUTO_GOODCRC_1, &reg);
+		reg |= 0x01;
+		rv |= tcpc_write(port, TCPC_REG_TX_AUTO_GOODCRC_1, reg);
+	}
+
 	/* Fetch the header */
 	reg = 0;
 	rv |= tcpc_read16(port, TCPC_REG_PD_HEADER, &reg);
 	if (rv) {
 		*head = 0;
+		/* Clear soft irq bit */
+		rv |= tcpc_write(port, TCPC_REG_IRQ_EXT_SOURCE_2,
+				 TCPC_REG_CLEAR_SOFT_IRQ);
+		/* Clear receive message interrupt bit(bit-0) */
+		rv |= tcpc_write(port, TCPC_REG_IRQ_SOURCE_RECV_MSG,
+				 TCPC_REG_CLEAR_RESET_BITS & 0xfe);
+
 		return EC_ERROR_UNKNOWN;
 	}
 	*head = reg;
 	len = PD_HEADER_CNT(*head) * 4;
-	if (!len)
+	if (!len) {
+		/* Clear soft irq bit */
+		rv |= tcpc_write(port, TCPC_REG_IRQ_EXT_SOURCE_2,
+				 TCPC_REG_CLEAR_SOFT_IRQ);
+		/* Clear receive message interrupt bit(bit-0) */
+		rv |= tcpc_write(port, TCPC_REG_IRQ_SOURCE_RECV_MSG,
+                         TCPC_REG_CLEAR_RESET_BITS & 0xfe);
 		return EC_SUCCESS;
+	}
 
 	/* Receive message */
 	rv |= anx74xx_read_PD_obj(port, buf, len);
@@ -472,7 +495,7 @@ void tcpc_alert(int port)
 		if (status & TCPC_REG_TX_MSG_ERROR) {
 			/* let PD doesnot wait for this */
 			pd_transmit_complete(port,
-					     TCPC_TX_COMPLETE_SUCCESS);
+					     TCPC_TX_COMPLETE_FAILED);
 		}
 		if (status & TCPC_REG_TX_CABLE_RESETOK) {
 			/* ANX hardware clears the request bit */
@@ -502,7 +525,6 @@ int tcpm_init(int port)
 
 	/* Bring chip in normal mode to work */
 	anx74xx_set_power_mode(port, TCPC_NORMAL_MODE);
-	rv |= tcpc_write(port, TCPC_REG_RESET_CTRL_0, TCPC_REG_RESET_CTRL_OCM);
 
 	/* Initialize analog section of ANX */
 	rv |= anx74xx_init_analog(port);
@@ -526,17 +548,6 @@ int tcpm_init(int port)
 	/* Clear interrupt bits */
 	rv |= tcpc_write(port, TCPC_REG_IRQ_EXT_SOURCE_0,
 			 TCPC_REG_CLEAR_SET_BITS);
-
-	/* Set default header for Good CRC auto reply */
-	rv |= tcpm_set_msg_header(port, 0, 0);
-	rv |= tcpc_read(port, TCPC_REG_TX_MSG_HEADER, &reg);
-	reg |= (PD_REV20 << TCPC_REG_SPEC_REV_BIT_POS);
-	rv |= tcpc_write(port, TCPC_REG_TX_MSG_HEADER, reg);
-
-	rv |= tcpc_read(port, TCPC_REG_TX_MSG_HEADER, &reg);
-        reg |= TCPC_REG_AUTO_GOODCRC_EN;
-        rv = tcpc_write(port, TCPC_REG_TX_MSG_HEADER, reg);
-
 	if (rv)
 		return EC_ERROR_UNKNOWN;
 
