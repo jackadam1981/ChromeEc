@@ -8,6 +8,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "charge_state.h"
+#include "charge_manager.h"
 #include "console.h"
 #include "ec_commands.h"
 #include "i2c.h"
@@ -72,6 +73,7 @@ int charger_profile_override(struct charge_state_data *curr)
 {
 	/* temp in 0.1 deg C */
 	int temp_c = curr->batt.temperature - 2731;
+	int requested_current = 0;
 	/* keep track of last temperature range for hysteresis */
 	static enum {
 		TEMP_LOW,
@@ -144,21 +146,26 @@ int charger_profile_override(struct charge_state_data *curr)
 	 */
 	switch (temp_range) {
 	case TEMP_LOW:
-		curr->requested_current = 1800;
+		requested_current = 1800;
 		curr->requested_voltage = 4350;
 		break;
 	case TEMP_NORMAL:
 		curr->requested_voltage = 4350;
 		if (voltage_range == VOLTAGE_RANGE_LOW)
-			curr->requested_current = 6000;
+			requested_current = 6000;
 		else
-			curr->requested_current = 3000;
+			requested_current = 3000;
 		break;
 	case TEMP_HIGH:
-		curr->requested_current = 4200;
+		requested_current = 4200;
 		curr->requested_voltage = 4100;
 		break;
 	}
+	if (requested_current * curr->requested_voltage <
+	    charge_manager_get_power_limit_uw())
+		curr->requested_current = requested_current;
+	else
+		curr->requested_current = 0;
 
 	return 0;
 }
