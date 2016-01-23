@@ -442,8 +442,8 @@ static void dfp_consume_attention(int port, uint32_t *payload)
 	if (modep->fx->attention)
 		modep->fx->attention(port, payload);
 
-        //MODE SWITCH
-	tcpc_write(port, 0x18, 0x08);
+  
+
         //HPD
 	tcpc_write(port, 0xd0, 0x01);
 }
