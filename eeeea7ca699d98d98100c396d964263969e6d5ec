@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74c64632_57d126f0",
+        "filename": "common/vstore.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-23T01:15:35Z",
+      "side": 1,
+      "message": "If we add ec_response_vstore_read, we can use it here.",
+      "range": {
+        "startLine": 65,
+        "startChar": 10,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "eeeea7ca699d98d98100c396d964263969e6d5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54c14218_731f98ef",
+        "filename": "common/vstore.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-23T01:15:35Z",
+      "side": 1,
+      "message": "Can we just call vstore_clear_lock here, rather than zeroing a huge amount of data?",
+      "revId": "eeeea7ca699d98d98100c396d964263969e6d5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34d04ee4_e0bdea7f",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1977,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-23T01:15:35Z",
+      "side": 1,
+      "message": "Suggest to name this CONFIG_VSTORE_SLOT_COUNT, just so it\u0027s clear it refers to a COUNT.",
+      "revId": "eeeea7ca699d98d98100c396d964263969e6d5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94b81aa8_d0a0b211",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2143,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-23T01:15:35Z",
+      "side": 1,
+      "message": "This is misaligned, you should probably move slot_locked to be first.",
+      "revId": "eeeea7ca699d98d98100c396d964263969e6d5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4be1290_f24dbec4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2145,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-23T01:15:35Z",
+      "side": 1,
+      "message": "Do you want to add an ec_response_vstore_read struct (will just contain \"uint8_t data[EC_VSTORE_SLOT_SIZE])\", I think) just so the parameters are clear?",
+      "revId": "eeeea7ca699d98d98100c396d964263969e6d5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
