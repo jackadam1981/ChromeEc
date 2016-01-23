@@ -8,6 +8,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "charge_state.h"
+#include "charge_manager.h"
 #include "console.h"
 #include "ec_commands.h"
 #include "i2c.h"
@@ -16,6 +17,7 @@
 /* Shutdown mode parameter to write to manufacturer access register */
 #define PARAM_CUT_OFF_LOW  0x10
 #define PARAM_CUT_OFF_HIGH 0x00
+#define PARAM_LOW_VOLTAGE 7000
 
 /* Battery info for BQ40Z55 */
 static const struct battery_info info = {
@@ -72,6 +74,7 @@ int charger_profile_override(struct charge_state_data *curr)
 {
 	/* temp in 0.1 deg C */
 	int temp_c = curr->batt.temperature - 2731;
+	int requested_current = 0;
 	/* keep track of last temperature range for hysteresis */
 	static enum {
 		TEMP_LOW,
@@ -144,21 +147,25 @@ int charger_profile_override(struct charge_state_data *curr)
 	 */
 	switch (temp_range) {
 	case TEMP_LOW:
-		curr->requested_current = 1800;
+		requested_current = 1800;
 		curr->requested_voltage = 4350;
 		break;
 	case TEMP_NORMAL:
 		curr->requested_voltage = 4350;
 		if (voltage_range == VOLTAGE_RANGE_LOW)
-			curr->requested_current = 6000;
+			requested_current = 6000;
 		else
-			curr->requested_current = 3000;
+			requested_current = 3000;
 		break;
 	case TEMP_HIGH:
-		curr->requested_current = 4200;
+		requested_current = 4200;
 		curr->requested_voltage = 4100;
 		break;
 	}
+	if (charge_manager_get_voltage_mv() > PARAM_LOW_VOLTAGE)
+		curr->requested_current = requested_current;
+	else
+		curr->requested_current = 0;
 
 	return 0;
 }

@@ -824,6 +824,14 @@ int charge_manager_get_power_limit_uw(void)
 		return current_ma * voltage_mv;
 }
 
+/**
+ * Return the voltage of the adapter.
+ */
+int charge_manager_get_voltage_mv(void)
+{
+	return charge_voltage;
+}
+
 #ifndef TEST_BUILD
 static int hc_pd_power_info(struct host_cmd_handler_args *args)
 {
