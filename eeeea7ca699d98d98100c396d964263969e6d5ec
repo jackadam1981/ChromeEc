@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "34c3ee5c_176276bc",
+        "filename": "common/vstore.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-25T21:56:08Z",
+      "side": 1,
+      "message": "I believe EC_LPC_HOST_PACKET_SIZE is the proper constant, but the EC_CMD_GET_PROTOCOL_INFO host command defines the true bounds.",
+      "parentUuid": "b43a7ef4_e0df2257",
+      "revId": "eeeea7ca699d98d98100c396d964263969e6d5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74c64632_57d126f0",
         "filename": "common/vstore.c",
         "patchSetId": 2
