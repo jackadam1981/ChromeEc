@@ -1,0 +1,214 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f49a3677_12760cdf",
+        "filename": "board/pdeval-stm32f072/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-25T21:01:04Z",
+      "side": 1,
+      "message": "We can leave all board-level changes out of this CL. We won\u0027t need to commit them.",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94b2daf4_f78fc0e0",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-25T21:01:04Z",
+      "side": 1,
+      "message": "Why did you change this?",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14beeac6_b36c78dd",
+        "filename": "common/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-25T21:01:04Z",
+      "side": 1,
+      "message": "Make these static functions in your driver.",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14beeac6_1347ec59",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-25T21:01:04Z",
+      "side": 1,
+      "message": "This isn\u0027t relevant for most boards. If it must be here, it should be behind an existing CONFIG, like CONFIG_TCPC, or similar.",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4b5d6da_da1d8542",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-25T21:01:04Z",
+      "side": 1,
+      "message": "I don\u0027t think these prototypes are needed.",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54c4e260_b593801c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1521,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-25T21:01:04Z",
+      "side": 1,
+      "message": "Please justify any changes to common code.",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54c4e260_f59df828",
+        "filename": "driver/tcpm/ptn5100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-25T21:01:04Z",
+      "side": 1,
+      "message": "Let\u0027s keep these defines separate from the struct members.",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54c4e260_35cf703a",
+        "filename": "driver/tcpm/ptn5100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-25T21:01:04Z",
+      "side": 1,
+      "message": "Comment style is /* Comment */ or\n\n/*\n * Comment\n * Comment\n */",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4afde8e_b85299e7",
+        "filename": "driver/tcpm/ptn5100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-25T21:01:04Z",
+      "side": 1,
+      "message": "Please remove these trailing spaces.",
+      "range": {
+        "startLine": 369,
+        "startChar": 35,
+        "endLine": 369,
+        "endChar": 36
+      },
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74c9e678_36ee9871",
+        "filename": "driver/tcpm/ptn5100.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-25T21:01:04Z",
+      "side": 1,
+      "message": "Need to add the chromium OS authors header.",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4b5d6da_3a15a11d",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-25T21:01:04Z",
+      "side": 1,
+      "message": "Make these static functions in your driver.",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14beeac6_336148e7",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-25T21:01:04Z",
+      "side": 1,
+      "message": "Why does this need to change?",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
