@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "d433721e_619cb6e0",
+        "filename": "common/vstore.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-01-25T18:51:09Z",
+      "side": 1,
+      "message": "We should make this const.",
+      "revId": "eeeea7ca699d98d98100c396d964263969e6d5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b43a7ef4_e0df2257",
+        "filename": "common/vstore.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-01-25T18:51:09Z",
+      "side": 1,
+      "message": "Is there a common #define/constant for the response and parameter size for a host command? I see specific ones for LPC, e.g. but this code should be generic. We should be checking that the sizes are within the proper bounds, but I\u0027m not sure how to do that at compile time.",
+      "revId": "eeeea7ca699d98d98100c396d964263969e6d5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74c64632_57d126f0",
         "filename": "common/vstore.c",
         "patchSetId": 2
@@ -13,6 +47,30 @@
       "writtenOn": "2016-01-23T01:15:35Z",
       "side": 1,
       "message": "If we add ec_response_vstore_read, we can use it here.",
+      "range": {
+        "startLine": 65,
+        "startChar": 10,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "eeeea7ca699d98d98100c396d964263969e6d5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4307614_45c09c57",
+        "filename": "common/vstore.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-01-25T18:51:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74c64632_57d126f0",
       "range": {
         "startLine": 65,
         "startChar": 10,
@@ -42,6 +100,24 @@
     },
     {
       "key": {
+        "uuid": "f4307614_62a676df",
+        "filename": "common/vstore.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-01-25T18:51:09Z",
+      "side": 1,
+      "message": "This else is not technically needed. I assume we clear bss so we don\u0027t need to memset() here.",
+      "parentUuid": "54c14218_731f98ef",
+      "revId": "eeeea7ca699d98d98100c396d964263969e6d5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34d04ee4_e0bdea7f",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -53,6 +129,24 @@
       "writtenOn": "2016-01-23T01:15:35Z",
       "side": 1,
       "message": "Suggest to name this CONFIG_VSTORE_SLOT_COUNT, just so it\u0027s clear it refers to a COUNT.",
+      "revId": "eeeea7ca699d98d98100c396d964263969e6d5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14498aa4_bb870784",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1977,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-01-25T18:51:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34d04ee4_e0bdea7f",
       "revId": "eeeea7ca699d98d98100c396d964263969e6d5ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -76,6 +170,24 @@
     },
     {
       "key": {
+        "uuid": "943d7af0_a29d20dc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2143,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-01-25T18:51:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94b81aa8_d0a0b211",
+      "revId": "eeeea7ca699d98d98100c396d964263969e6d5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4be1290_f24dbec4",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -87,6 +199,24 @@
       "writtenOn": "2016-01-23T01:15:35Z",
       "side": 1,
       "message": "Do you want to add an ec_response_vstore_read struct (will just contain \"uint8_t data[EC_VSTORE_SLOT_SIZE])\", I think) just so the parameters are clear?",
+      "revId": "eeeea7ca699d98d98100c396d964263969e6d5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b43a7ef4_00e32623",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2145,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-01-25T18:51:09Z",
+      "side": 1,
+      "message": "OK.",
+      "parentUuid": "d4be1290_f24dbec4",
       "revId": "eeeea7ca699d98d98100c396d964263969e6d5ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
