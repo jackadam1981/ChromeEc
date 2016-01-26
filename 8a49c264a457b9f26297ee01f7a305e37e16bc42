@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54c4e260_44c51866",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-26T21:11:11Z",
+      "side": 1,
+      "message": "Doesn\u0027t this mean that only interrupt handlers which call intc_get_ec_int() will be counted?",
+      "range": {
+        "startLine": 353,
+        "startChar": 1,
+        "endLine": 354,
+        "endChar": 21
+      },
+      "revId": "8a49c264a457b9f26297ee01f7a305e37e16bc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
