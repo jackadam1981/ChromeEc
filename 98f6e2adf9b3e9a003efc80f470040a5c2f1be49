@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4a43ebb_3f79135e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-26T22:18:34Z",
+      "side": 1,
+      "message": "BRANCH\u003dglados (name of our SKL FW branch)",
+      "revId": "98f6e2adf9b3e9a003efc80f470040a5c2f1be49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74c9e678_4b4c457c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-26T22:18:34Z",
+      "side": 1,
+      "message": "Can you also verify that we begin charging again once the temperature comes back into the valid range?",
+      "revId": "98f6e2adf9b3e9a003efc80f470040a5c2f1be49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4afde8e_b2d2b080",
+        "filename": "board/chell/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-26T22:18:34Z",
+      "side": 1,
+      "message": "Can you add a comment here that batt.temperature units are .1 degree K?",
+      "revId": "98f6e2adf9b3e9a003efc80f470040a5c2f1be49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74c9e678_8b849dca",
+        "filename": "board/chell/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-26T22:18:34Z",
+      "side": 1,
+      "message": "Do you want to use your charging_max_c / charging_min_c params, since you added those earlier?",
+      "range": {
+        "startLine": 57,
+        "startChar": 19,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "98f6e2adf9b3e9a003efc80f470040a5c2f1be49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4b5d6da_49a8cd4b",
+        "filename": "board/chell/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-26T22:18:34Z",
+      "side": 1,
+      "message": "I think the proper action here is to clear BATT_FLAG_WANT_CHARGE.",
+      "range": {
+        "startLine": 61,
+        "startChar": 22,
+        "endLine": 61,
+        "endChar": 43
+      },
+      "revId": "98f6e2adf9b3e9a003efc80f470040a5c2f1be49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4b8d2d6_c8205779",
+        "filename": "board/chell/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-26T22:18:34Z",
+      "side": 1,
+      "message": "We don\u0027t have a fast charging profile (yet?). Shall we add one, or else remove this fast-charge related code?",
+      "revId": "98f6e2adf9b3e9a003efc80f470040a5c2f1be49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
