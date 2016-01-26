@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4b5d6da_00da2a98",
+        "filename": "board/lucid/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-26T01:47:58Z",
+      "side": 0,
+      "message": "This is often helpful for debugging (for example, running i2c commands from ectool). Any good reason to remove it at this stage?",
+      "revId": "466675fb1778c910b3d67a5c1c7d37365e30ec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
