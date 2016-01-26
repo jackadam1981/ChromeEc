@@ -46,3 +46,43 @@ int board_cut_off_battery(void)
 	rv = sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
 	return rv ? EC_RES_ERROR : EC_RES_SUCCESS;
 }
+
+static int fast_charging_allowed = 1;
+
+int charger_profile_override(struct charge_state_data *curr)
+{
+	int bat_temp_c = curr->batt.temperature - 2731;
+
+	/* Don't charge if outside of allowable temperature range */
+	if (bat_temp_c >= 450 ||
+	    bat_temp_c < 0) {
+		curr->requested_current = 0;
+		curr->requested_voltage = 0;
+		curr->batt.flags |= BATT_FLAG_BAD_VOLTAGE;
+		curr->state = ST_IDLE;
+	}
+	return 0;
+}
+
+/* Customs options controllable by host command. */
+#define PARAM_FASTCHARGE (CS_PARAM_CUSTOM_PROFILE_MIN + 0)
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	if (param == PARAM_FASTCHARGE) {
+		*value = fast_charging_allowed;
+		return EC_RES_SUCCESS;
+	}
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	if (param == PARAM_FASTCHARGE) {
+		fast_charging_allowed = value;
+		return EC_RES_SUCCESS;
+	}
+	return EC_RES_INVALID_PARAM;
+}
