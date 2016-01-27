@@ -12,6 +12,8 @@
 #include "trng.h"
 #include "uart.h"
 
+#include "util/signer/common/signed_header.h"
+
 /*
  * This file is a proof of concept stub which will be extended and split into
  * appropriate pieces sortly, when full blown support for cr50 bootrom is
@@ -59,8 +61,27 @@ void panic_printf(const char *format, ...)
 	va_end(args);
 }
 
+/* Returns 1 if version a is newer, 0 otherwise. */
+int is_newer_than(const SignedHeader *a, const SignedHeader *b)
+{
+	if (a->epoch_ > b->epoch_)
+		return 1;
+	if (a->epoch_ < b->epoch_)
+		return 0;
+	if (a->major_ > b->major_)
+		return 1;
+	if (a->major_ < b->major_)
+		return 0;
+	if (a->minor_ > b->minor_)
+		return 1;
+	if (a->minor_ < b->minor_)
+		return 0;
+	return 0;
+}
+
 int main(void)
 {
+	const SignedHeader *a, *b, *first, *second;
 	init_trng();
 	uart_init();
 	debug_printf("\n\n%s bootloader, %8u_%u@%u, %sUSB, %s crypto\n",
@@ -72,10 +93,38 @@ int main(void)
 		      GC_CONST_SWDP_FPGA_CONFIG_NOUSB_CRYPTO) ? "full" : "8x8");
 	unlockFlashForRW();
 
-	/* Trying RW A only for now */
-	tryLaunch(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RW_MEM_OFF,
-		  CONFIG_FLASH_SIZE/2 - CONFIG_RW_MEM_OFF);
+	a = (const SignedHeader *)(CONFIG_PROGRAM_MEMORY_BASE +
+				   CONFIG_RW_MEM_OFF);
+	b = (const SignedHeader *)(CONFIG_PROGRAM_MEMORY_BASE +
+				   CONFIG_RW_B_MEM_OFF);
+	/* Default to loading the older version first.
+	 * Run from bank a if the versions are equal.
+	 */
+	if (is_newer_than(a, b)) {
+		first = b;
+		second = a;
+	} else {
+		first = a;
+		second = b;
+	}
+	if (GREG32(PMU, PWRDN_SCRATCH30) == 0xcafebabe) {
+		/* Launch from the alternate bank first.
+		 * This knob will be used to attempt to load the newer version
+		 * after an update and to run from bank b in the face of flash
+		 * integrity issues.
+		 */
+		debug_printf("PWRDN_SCRATCH30 set to magic value\n");
+		GREG32(PMU, PWRDN_SCRATCH30) = 0x0;
+		a = first;
+		first = second;
+		second = a;
+	}
+	tryLaunch((uint32_t)first, CONFIG_FLASH_SIZE/2 - CONFIG_RW_MEM_OFF);
+	debug_printf("Failed to launch.\n");
+	debug_printf("Attempting to load the alternate image.\n");
+	tryLaunch((uint32_t)second, CONFIG_FLASH_SIZE/2 - CONFIG_RW_MEM_OFF);
 	debug_printf("No valid image found, not sure what to do...\n");
+	/* TODO: Some applications might want to reboot instead. */
 	halt();
 	return 1;
 }
