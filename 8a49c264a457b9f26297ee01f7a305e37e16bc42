@@ -22,6 +22,30 @@
       "revId": "8a49c264a457b9f26297ee01f7a305e37e16bc42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f434f667_6235f67c",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2016-01-27T08:09:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54c4e260_44c51866",
+      "range": {
+        "startLine": 353,
+        "startChar": 1,
+        "endLine": 354,
+        "endChar": 21
+      },
+      "revId": "8a49c264a457b9f26297ee01f7a305e37e16bc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
