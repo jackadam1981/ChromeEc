@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f49a3677_3cd11ef2",
+        "filename": "chip/g/loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-01-27T22:13:55Z",
+      "side": 1,
+      "message": "Since you never use the VERSIONS_EQUAL at all, how about just making compare_versions() a boolean and rename it to is_older_than() or is_newer_than()?",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 21
+      },
+      "revId": "1fa2ee000b1f97d80760c41aedcfaa96fcb72195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14beeac6_75a1dbc4",
+        "filename": "chip/g/loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-01-27T22:13:55Z",
+      "side": 1,
+      "message": "Just for clarity, please add a comment here saying that we\u0027re intentionally preferring the *older* version, unless told otherwise.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 6
+      },
+      "revId": "1fa2ee000b1f97d80760c41aedcfaa96fcb72195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
