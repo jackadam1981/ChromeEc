@@ -9,10 +9,9 @@
 #include "registers.h"
 #include "rom_flash.h"
 #include "setup.h"
+#include "signed_header.h"
 #include "uart.h"
 #include "verify.h"
-
-#include "util/signer/common/signed_header.h"
 
 static int unlockedForExecution(void)
 {
