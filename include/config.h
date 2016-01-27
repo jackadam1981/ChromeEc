@@ -1828,6 +1828,13 @@
 #undef CONFIG_USB_PD_TCPM_STUB
 #undef CONFIG_USB_PD_TCPM_TCPCI
 #undef CONFIG_USB_PD_TCPM_FUSB302
+#undef CONFIG_USB_PD_TCPM_PS8751
+
+/*
+ * Use this option if the TCPC port controller supports the optional register
+ * 18h CONFIG_STANDARD_OUTPUT to steer the high-speed muxes.
+ */
+#undef CONFIG_USB_PD_TCPM_MUX
 
 /*
  * Use this option if the TCPC port controller is on a seperate chip from
