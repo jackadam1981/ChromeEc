@@ -564,9 +564,14 @@ DECLARE_HOOK(HOOK_INIT, charger_init, HOOK_PRIO_DEFAULT);
 int get_desired_input_current(enum battery_present batt_present,
 			      const struct charger_info * const info)
 {
+	int current;
+
 	if (batt_present == BP_YES || system_is_locked())
 		return CONFIG_CHARGER_INPUT_CURRENT;
-	else
+	else if (batt_present == BP_CUT_OFF) {
+		current = charge_manager_get_charger_current();
+		return current ? current : info->input_current_max;
+	} else
 		return info->input_current_max;
 }
 
@@ -638,9 +643,16 @@ void charger_task(void)
 		battery_get_params(&curr.batt);
 
 		if (prev_bp != curr.batt.is_present) {
+			if (prev_bp == BP_CUT_OFF)
+				curr.desired_input_current =
+					get_desired_input_current(prev_bp,
+						info);
+			else
+				curr.desired_input_current =
+					get_desired_input_current(
+						curr.batt.is_present, info);
+
 			prev_bp = curr.batt.is_present;
-			curr.desired_input_current =
-				get_desired_input_current(prev_bp, info);
 			charger_set_input_current(curr.desired_input_current);
 		}
 
