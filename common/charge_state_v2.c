@@ -565,7 +565,8 @@ int get_desired_input_current(enum battery_present batt_present,
 			      const struct charger_info * const info)
 {
 	if (batt_present == BP_YES || system_is_locked())
-		return CONFIG_CHARGER_INPUT_CURRENT;
+		return MAX(CONFIG_CHARGER_INPUT_CURRENT,
+			charge_manager_get_charger_current());
 	else
 		return info->input_current_max;
 }
