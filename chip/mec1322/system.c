@@ -198,6 +198,9 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 
 	cflush();
 
+	if (board_hibernate)
+		board_hibernate();
+
 	/* Disable interrupts */
 	interrupt_disable();
 	for (i = 0; i <= 92; ++i) {
