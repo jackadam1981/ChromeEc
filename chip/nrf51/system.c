@@ -33,6 +33,9 @@ const char *system_get_chip_revision(void)
 
 void system_hibernate(uint32_t seconds, uint32_t microseconds)
 {
+	if (board_pre_hibernate)
+		board_pre_hibernate();
+
 	/* Flush console before hibernating */
 	cflush();
 
