@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "14beeac6_c1e67144",
+        "filename": "chip/g/loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1134159
+      },
+      "writtenOn": "2016-01-28T17:48:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f49a3677_3cd11ef2",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 21
+      },
+      "revId": "1fa2ee000b1f97d80760c41aedcfaa96fcb72195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14beeac6_75a1dbc4",
         "filename": "chip/g/loader/main.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d4b8d2d6_1132772c",
+        "filename": "chip/g/loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1134159
+      },
+      "writtenOn": "2016-01-28T17:48:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14beeac6_75a1dbc4",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 6
+      },
+      "revId": "1fa2ee000b1f97d80760c41aedcfaa96fcb72195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94b2daf4_b996120d",
         "filename": "chip/g/loader/main.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2016-01-27T22:48:24Z",
       "side": 1,
       "message": "Can you add a TODO here to follow up whether or not we want to halt here or reboot?",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 8
+      },
+      "revId": "1fa2ee000b1f97d80760c41aedcfaa96fcb72195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14beeac6_a102559b",
+        "filename": "chip/g/loader/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1134159
+      },
+      "writtenOn": "2016-01-28T17:48:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94b2daf4_b996120d",
       "range": {
         "startLine": 123,
         "startChar": 3,
