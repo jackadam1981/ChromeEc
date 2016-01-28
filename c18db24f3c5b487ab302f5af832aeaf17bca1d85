@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b4a43ebb_6b4d9a1f",
+        "filename": "board/pdeval-stm32f072/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1140018
+      },
+      "writtenOn": "2016-01-28T19:19:59Z",
+      "side": 1,
+      "message": "It was made for debug in supporting DFP mode rather than DRP.",
+      "parentUuid": "f49a3677_12760cdf",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94b2daf4_f78fc0e0",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-01-25T21:01:04Z",
       "side": 1,
       "message": "Why did you change this?",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4b8d2d6_d688f5de",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1140018
+      },
+      "writtenOn": "2016-01-28T19:19:59Z",
+      "side": 1,
+      "message": "100 us is too slow to lead to some I2C data loss between STM32F072 and PTN5100",
+      "parentUuid": "94b2daf4_f78fc0e0",
       "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "d4b8d2d6_16934d0d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1140018
+      },
+      "writtenOn": "2016-01-28T19:19:59Z",
+      "side": 1,
+      "message": "Agree. It is to support optional Vbus voltage.",
+      "parentUuid": "f4b5d6da_da1d8542",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54c4e260_b593801c",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -98,6 +152,24 @@
       "writtenOn": "2016-01-25T21:01:04Z",
       "side": 1,
       "message": "Please justify any changes to common code.",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4b8d2d6_565ce532",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1521,
+      "author": {
+        "id": 1140018
+      },
+      "writtenOn": "2016-01-28T19:19:59Z",
+      "side": 1,
+      "message": "fix a bug that not recognizing type C device when Rd detected on CC2",
+      "parentUuid": "54c4e260_b593801c",
       "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -206,6 +278,24 @@
       "writtenOn": "2016-01-25T21:01:04Z",
       "side": 1,
       "message": "Why does this need to change?",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "542ce22d_d8ab91b0",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1140018
+      },
+      "writtenOn": "2016-01-28T19:19:59Z",
+      "side": 1,
+      "message": "(310, 620 ms) is called out from PD r2.0 v1.1 dated on May 7, 2015",
+      "parentUuid": "14beeac6_336148e7",
       "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
