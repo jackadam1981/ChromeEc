@@ -22,6 +22,30 @@
       "revId": "42728614202b3dbe6530833649e98d552c8e84f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b486fe94_8069563c",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2016-01-28T23:44:15Z",
+      "side": 1,
+      "message": "Thanks for the hint. My naming is messed up. It\u0027s really the CPPFLAGS for all userspace utilities no matter where they run.",
+      "parentUuid": "54c4e260_41c6e5c5",
+      "range": {
+        "startLine": 66,
+        "startChar": 34,
+        "endLine": 66,
+        "endChar": 47
+      },
+      "revId": "42728614202b3dbe6530833649e98d552c8e84f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
