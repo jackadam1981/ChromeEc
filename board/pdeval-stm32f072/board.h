@@ -26,8 +26,14 @@
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_CUSTOM_VDM
 #define CONFIG_USB_PD_DUAL_ROLE
-#define CONFIG_USB_PD_PORT_COUNT 2
+#define CONFIG_USB_PD_PORT_COUNT 1
+#define CONFIG_USB_PD_TCPM_PS8751
+
+#ifdef CONFIG_USB_PD_TCPM_PS8751
 #define CONFIG_USB_PD_TCPM_TCPCI
+#define CONFIG_USB_PD_TCPM_MUX
+#define CONFIG_USBC_SS_MUX
+#endif
 
 /* start as a sink */
 #define PD_DEFAULT_STATE PD_STATE_SNK_DISCONNECTED
@@ -47,7 +53,7 @@
 #define I2C_PORT_PD_MCU 0
 
 /* TCPC I2C slave addresses */
-#define TCPC1_I2C_ADDR 0x9c
+#define TCPC1_I2C_ADDR 0x16
 #define TCPC2_I2C_ADDR 0x9e
 
 /* Timer selection */
