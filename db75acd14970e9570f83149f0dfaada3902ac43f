@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94b2daf4_0a1cfe53",
+        "filename": "chip/g/loader/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-01-28T17:55:26Z",
+      "side": 1,
+      "message": "No, no, no. \n\nYou should move signed_header.h into chip/g/  instead.  \n\nutil/ is not part of the EC firmware itself, it\u0027s for linux userspace utilities. Those utilities can include from the EC firmware if needed, but not the other way around.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 45
+      },
+      "revId": "db75acd14970e9570f83149f0dfaada3902ac43f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
