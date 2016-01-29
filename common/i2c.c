@@ -33,6 +33,7 @@
 #endif
 
 static struct mutex port_mutex[I2C_CONTROLLER_COUNT];
+static uint32_t i2c_busy_mask;
 
 int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	     uint8_t *in, int in_size, int flags)
@@ -57,18 +58,32 @@ void i2c_lock(int port, int lock)
 	ASSERT(port != -1);
 #endif
 	if (lock) {
+		mutex_lock(port_mutex + port);
+
+		interrupt_disable();
+		/*
+		 * Setting bit of i2c_busy_mask indicates one i2c port is busy.
+		 * Disabling interrupt to prevent preemption.
+		 */
+		i2c_busy_mask |= (1 << port);
 		/*
 		 * Don't allow deep sleep when I2C port is locked
 		 * TODO(crbug.com/537759): Fix sleep mask for multi-port lock.
 		 */
 		disable_sleep(SLEEP_MASK_I2C_MASTER);
-
-		mutex_lock(port_mutex + port);
+		interrupt_enable();
 	} else {
-		mutex_unlock(port_mutex + port);
+		interrupt_disable();
+		/*
+		 * Clearing bit of i2c_busy_mask to indicates one i2c port isn't
+		 * idle. No i2c ports are busy, enable sleep bit for i2c master.
+		 */
+		i2c_busy_mask &= ~(1 << port);
+		if (!i2c_busy_mask)
+			enable_sleep(SLEEP_MASK_I2C_MASTER);
+		interrupt_enable();
 
-		/* Allow deep sleep again after I2C port is unlocked */
-		enable_sleep(SLEEP_MASK_I2C_MASTER);
+		mutex_unlock(port_mutex + port);
 	}
 }
 
