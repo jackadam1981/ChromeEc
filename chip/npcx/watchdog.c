@@ -22,6 +22,8 @@
 #define WDCNT_VALUE   ((CONFIG_WATCHDOG_PERIOD_MS*INT_32K_CLOCK) / (1024*1000))
 /* Delay time for warning timer to print watchdog info through UART */
 #define WDCNT_DELAY   WDCNT_VALUE
+/* Periodical time to Check watchdog counter condition */
+#define CHECK_TIMER_PERIOD_MS 1450
 
 void watchdog_init_warning_timer(void)
 {
@@ -38,7 +40,7 @@ void watchdog_init_warning_timer(void)
 							 SECOND) - 1;
 
 	/* ITIM count down : event expired*/
-	NPCX_ITCNT16(ITIM_WDG_NO) = CONFIG_WATCHDOG_PERIOD_MS-1;
+	NPCX_ITCNT16(ITIM_WDG_NO) = CHECK_TIMER_PERIOD_MS - 1;
 	/* Event module enable */
 	SET_BIT(NPCX_ITCTS(ITIM_WDG_NO), NPCX_ITCTS_ITEN);
 	/* Enable interrupt of ITIM */
