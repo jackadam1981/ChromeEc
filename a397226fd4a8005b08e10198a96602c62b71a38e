@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "349a0eef_0b4c89c8",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-01-29T19:12:03Z",
+      "side": 1,
+      "message": "Use CONFIG_AUX_TIMER_PERIOD_MS for the warning timer.\n\nOr at least, something derived from CONFIG_WATCHDOG_PERIOD_MS.  Otherwise, a hard-coded value inside this file will break on a platform which changes the watchdog period.",
+      "range": {
+        "startLine": 43,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "a397226fd4a8005b08e10198a96602c62b71a38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
