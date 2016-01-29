@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "548b02a3_a323bee7",
+        "filename": "board/pdeval-stm32f072/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-29T00:41:37Z",
+      "side": 1,
+      "message": "According to your datasheet, your chip supports four different ranges of i2c slave addressed. I\u0027m confused, since each range is 6 addrs wide (3 addrs wide, for 7-bit address). Can you explain how this works? For example, if I strap both config pins low, your datasheet seems to claim that it will respond to slave addresses 0x10 thru 0x15. Is this correct? Can we use any of those addresses?\n\nAlso, why did you use 0x16 here since that\u0027s not in the range defined in your datasheet?",
+      "range": {
+        "startLine": 56,
+        "startChar": 23,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "32316c8f71c207ab5ad906c3fea990e6e14512d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
