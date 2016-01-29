@@ -22,6 +22,30 @@
       "revId": "32316c8f71c207ab5ad906c3fea990e6e14512d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d43612c7_698a8504",
+        "filename": "board/pdeval-stm32f072/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1144259
+      },
+      "writtenOn": "2016-01-29T00:56:18Z",
+      "side": 1,
+      "message": "Sorry for the confusion, I believe the data sheet you mentioned is for PS8750. For ps8751, our i2c address ranges have been changed into: \n    {Addr1,addr0}:     i2c address (w/r)\n       LL        :     0x16/0x17\n       LH        :     0x36/0x37\n       HL        :     0x56/0x57\n       HH        :     0x96/0x97\n\nWe should send out the latest PS8751 datasheet to you shortly to reflect this update.",
+      "parentUuid": "548b02a3_a323bee7",
+      "range": {
+        "startLine": 56,
+        "startChar": 23,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "32316c8f71c207ab5ad906c3fea990e6e14512d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
