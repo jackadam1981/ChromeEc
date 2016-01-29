@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "349a0eef_7045f848",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-29T18:05:34Z",
+      "side": 1,
+      "message": "This can go behind the ifdef below, and all of the functions you added can be static.",
+      "revId": "9e95165cf6bc35516f2d678fb1ecf1e443cce00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5422228b_ebbe65cb",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-29T18:05:34Z",
+      "side": 1,
+      "message": "80 chars.",
+      "revId": "9e95165cf6bc35516f2d678fb1ecf1e443cce00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "749006cb_e755d004",
+        "filename": "common/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-01-29T18:05:34Z",
+      "side": 1,
+      "message": "I\u0027d rather not add these hooks unless they are absolutely necessary. How about making your new LPC-related hooks trigger on HOOK_SUSPEND / HOOK_RESUME, and then take action only if (chipset_in_state() \u003d\u003d CHIPSET_STATE_STANDBY)?",
+      "range": {
+        "startLine": 51,
+        "startChar": 24,
+        "endLine": 51,
+        "endChar": 25
+      },
+      "revId": "9e95165cf6bc35516f2d678fb1ecf1e443cce00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
