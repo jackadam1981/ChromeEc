@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "548b02a3_49d3f486",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-01T17:22:48Z",
+      "side": 1,
+      "message": "First line needs to be under 70 chars or so, please.\n\nAnd since this is the first change that breaks things on the FPGA, let start the line with \"Cr50: B1:\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "9b467883845ca46e88f883f7a8470bb56fda32ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
