@@ -331,6 +331,7 @@ static void charger_enable_psys(void)
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, charger_enable_psys, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, charger_enable_psys, HOOK_PRIO_DEFAULT);
 
 static void charger_disable_psys(void)
 {
@@ -345,6 +346,7 @@ static void charger_disable_psys(void)
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, charger_disable_psys, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, charger_disable_psys, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_CMD_PSYS
 #define PSYS_ADC_READ_COUNT 100
