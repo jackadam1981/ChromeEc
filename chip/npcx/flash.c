@@ -9,7 +9,7 @@
 #include "registers.h"
 #include "switch.h"
 #include "system.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 #include "task.h"
 #include "watchdog.h"

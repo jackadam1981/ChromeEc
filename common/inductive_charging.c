@@ -10,7 +10,7 @@
 #include "hooks.h"
 #include "inductive_charging.h"
 #include "lid_switch.h"
-#include "timer.h"
+#include <time.h>
 
 /*
  * The inductive charger is controlled with two signals:

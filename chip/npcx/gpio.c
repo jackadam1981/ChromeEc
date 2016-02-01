@@ -13,7 +13,7 @@
 #include "registers.h"
 #include "switch.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 #include "system.h"
 #include "system_chip.h"

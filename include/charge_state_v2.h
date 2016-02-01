@@ -6,7 +6,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "charger.h"
-#include "timer.h"
+#include <time.h>
 
 #ifndef __CROS_EC_CHARGE_STATE_V2_H
 #define __CROS_EC_CHARGE_STATE_V2_H

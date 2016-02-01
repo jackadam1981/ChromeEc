@@ -6,7 +6,7 @@
 /* Printf-like functionality for Chrome EC */
 
 #include "printf.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 static const char error_str[] = "ERROR";

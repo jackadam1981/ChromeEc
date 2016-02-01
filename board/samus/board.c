@@ -42,7 +42,7 @@
 #include "task.h"
 #include "temp_sensor.h"
 #include "temp_sensor_chip.h"
-#include "timer.h"
+#include <time.h>
 #include "thermal.h"
 #include "uart.h"
 #include "util.h"

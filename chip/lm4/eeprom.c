@@ -9,7 +9,7 @@
 #include "console.h"
 #include "eeprom.h"
 #include "registers.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 #include "watchdog.h"
 

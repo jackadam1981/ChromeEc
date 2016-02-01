@@ -9,7 +9,7 @@
 #include "console.h"
 #include "hooks.h"
 #include "link_defs.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #ifdef CONFIG_HOOK_DEBUG

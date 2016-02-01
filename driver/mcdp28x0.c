@@ -12,7 +12,7 @@
 #include "mcdp28x0.h"
 #include "queue.h"
 #include "queue_policies.h"
-#include "timer.h"
+#include <time.h>
 #include "usart-stm32f0.h"
 #include "util.h"
 

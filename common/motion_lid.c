@@ -17,7 +17,7 @@
 #include "motion_lid.h"
 #include "motion_sense.h"
 #include "power.h"
-#include "timer.h"
+#include <time.h>
 #include "task.h"
 #include "util.h"
 

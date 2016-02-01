@@ -8,7 +8,7 @@
 #include "common.h"
 #include "panic.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "watchdog.h"
 
 void __keep watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)

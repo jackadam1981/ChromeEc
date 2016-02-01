@@ -12,7 +12,7 @@
 #include "host_command.h"
 #include "power_button.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 static int pb_hook_count;

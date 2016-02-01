@@ -26,7 +26,7 @@
 #include "temp_sensor.h"
 #include "temp_sensor_chip.h"
 #include "thermal.h"
-#include "timer.h"
+#include <time.h>
 #include "uart.h"
 #include "util.h"
 

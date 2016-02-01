@@ -21,7 +21,7 @@
 #include "task.h"
 #include "task_id.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 
 #define SIGNAL_INTERRUPT SIGUSR1
 

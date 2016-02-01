@@ -11,7 +11,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_switch.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* Console output macros */

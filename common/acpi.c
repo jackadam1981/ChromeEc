@@ -12,7 +12,7 @@
 #include "lpc.h"
 #include "ec_commands.h"
 #include "pwm.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* Console output macros */

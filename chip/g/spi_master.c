@@ -9,7 +9,7 @@
 #include "registers.h"
 #include "spi.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* Not defined in the hardware register spec, the RX and TX buffers are 128B. */

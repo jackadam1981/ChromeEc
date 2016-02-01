@@ -18,7 +18,7 @@
 #include "math_util.h"
 #include "spi.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)

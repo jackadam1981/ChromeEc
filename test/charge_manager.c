@@ -10,7 +10,7 @@
 #include "common.h"
 #include "ec_commands.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "usb_pd.h"
 #include "util.h"
 

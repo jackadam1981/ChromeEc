@@ -12,7 +12,7 @@
 #include "system.h"
 #include "util.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 
 #define TIMER_SYSJUMP_TAG 0x4d54  /* "TM" */
 

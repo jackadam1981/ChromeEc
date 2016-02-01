@@ -18,7 +18,7 @@
 #include "registers.h"
 #include "spi.h"
 #include "system.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* Console output macros */

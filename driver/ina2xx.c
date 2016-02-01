@@ -9,7 +9,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "system.h"
-#include "timer.h"
+#include <time.h>
 #include "ina2xx.h"
 #include "util.h"
 

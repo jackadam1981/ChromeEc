@@ -8,7 +8,7 @@
 #include "common.h"
 #include "console.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 static int cmd_1_call_cnt;

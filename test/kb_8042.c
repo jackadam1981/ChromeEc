@@ -17,7 +17,7 @@
 #include "power_button.h"
 #include "system.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 static const char *action[2] = {"release", "press"};

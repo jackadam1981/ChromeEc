@@ -11,7 +11,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "smbus.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* Console output macros */

@@ -15,7 +15,7 @@
 #include "registers.h"
 #include "temp_sensor.h"
 #include "util.h"
-#include "timer.h"
+#include <time.h>
 #include "task.h"
 
 #define TEMP_AVG_LENGTH 4  /* Should be power of 2 */

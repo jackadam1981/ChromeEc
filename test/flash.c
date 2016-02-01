@@ -14,7 +14,7 @@
 #include "system.h"
 #include "task.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 static int mock_wp = -1;

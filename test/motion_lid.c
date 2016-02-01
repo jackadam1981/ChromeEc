@@ -16,7 +16,7 @@
 #include "motion_sense.h"
 #include "task.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 extern enum chipset_state_mask sensor_active;

@@ -8,7 +8,7 @@
 #include "lightbar.h"
 #include "host_command.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 

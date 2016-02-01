@@ -11,7 +11,7 @@
 #include "hwtimer.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 
 void __hw_clock_event_set(uint32_t deadline)
 {

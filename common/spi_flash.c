@@ -12,7 +12,7 @@
 #include "spi.h"
 #include "spi_flash.h"
 #include "spi_flash_reg.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 #include "watchdog.h"
 #include "ec_commands.h"

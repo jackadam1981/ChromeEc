@@ -16,7 +16,7 @@
 #include "hooks.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* Maximum time we allow for an ADC conversion */

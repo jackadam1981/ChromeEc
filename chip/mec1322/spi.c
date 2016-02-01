@@ -11,7 +11,7 @@
 #include "gpio.h"
 #include "registers.h"
 #include "spi.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 #include "hooks.h"
 #include "task.h"

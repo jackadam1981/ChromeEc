@@ -10,7 +10,7 @@
 #include "shared_mem.h"
 #include "system.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 static int test_isalpha(void)

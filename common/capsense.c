@@ -9,7 +9,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "keyboard_protocol.h"
-#include "timer.h"
+#include <time.h>
 
 /* Console output macro */
 #define CPRINTF(format, args...) cprintf(CC_KEYBOARD, format, ## args)

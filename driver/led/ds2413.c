@@ -9,7 +9,7 @@
 #include "console.h"
 #include "hooks.h"
 #include "onewire.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #define ONEWIRE_RETRIES 10

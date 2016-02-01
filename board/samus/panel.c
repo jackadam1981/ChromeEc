@@ -11,7 +11,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "lid_switch.h"
-#include "timer.h"
+#include <time.h>
 
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
 

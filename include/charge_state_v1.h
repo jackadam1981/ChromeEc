@@ -4,7 +4,7 @@
  */
 
 #include "battery.h"
-#include "timer.h"
+#include <time.h>
 
 #ifndef __CROS_EC_CHARGE_STATE_V1_H
 #define __CROS_EC_CHARGE_STATE_V1_H

@@ -8,7 +8,7 @@
 #include "console.h"
 #include "i2c.h"
 #include "lp5562.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* 8-bit I2C address */

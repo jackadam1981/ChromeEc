@@ -8,7 +8,7 @@
 #include "link_defs.h"
 #include "printf.h"
 #include "registers.h"
-#include "timer.h"
+#include <time.h>
 #include "usb_descriptor.h"
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)

@@ -14,7 +14,7 @@
 #include "gpio.h"
 #include "math_util.h"
 #include "queue.h"
-#include "timer.h"
+#include <time.h>
 
 enum sensor_state {
 	SENSOR_NOT_INITIALIZED = 0,

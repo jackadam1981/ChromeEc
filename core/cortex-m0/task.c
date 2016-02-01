@@ -12,7 +12,7 @@
 #include "link_defs.h"
 #include "panic.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 typedef union {

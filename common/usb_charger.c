@@ -17,7 +17,7 @@
 #include "hooks.h"
 #include "pi3usb9281.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "usb_charge.h"
 #include "usb_pd.h"
 

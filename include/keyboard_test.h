@@ -9,7 +9,7 @@
 #ifndef __CROS_EC_KEYBOARD_TEST_H
 #define __CROS_EC_KEYBOARD_TEST_H
 
-#include <timer.h>
+#include <time.h>
 
 /*
  * Keyboard scan test item - contains a single scan to 'present' to key scan

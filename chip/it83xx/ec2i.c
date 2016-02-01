@@ -10,7 +10,7 @@
 #include "hooks.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 
 /* EC2I access index/data port */
 enum ec2i_access {

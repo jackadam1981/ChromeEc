@@ -22,7 +22,7 @@
 #include "panic.h"
 #include "system.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "uart.h"
 #include "usb_pd.h"
 #include "util.h"

@@ -9,7 +9,7 @@
 #include "common.h"
 #include "powerdemo.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "registers.h"
 
 static volatile enum {

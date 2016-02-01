@@ -14,7 +14,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "isl9237.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #define DEFAULT_R_AC 20

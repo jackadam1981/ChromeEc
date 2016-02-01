@@ -14,7 +14,7 @@
 #include "i2c.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #if !(DEBUG_I2C)

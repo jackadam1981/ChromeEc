@@ -11,7 +11,7 @@
 #include "hooks.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 #include "usb_pd.h"
 #include "version.h"

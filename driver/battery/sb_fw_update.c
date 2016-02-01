@@ -10,7 +10,7 @@
 #include "battery_smart.h"
 #include "host_command.h"
 #include "i2c.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 #include "ec_commands.h"
 #include "sb_fw_update.h"

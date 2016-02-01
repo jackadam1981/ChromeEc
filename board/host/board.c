@@ -15,7 +15,7 @@
 #include "motion_lid.h"
 #include "power_button.h"
 #include "temp_sensor.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /*

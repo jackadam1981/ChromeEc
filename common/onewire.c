@@ -8,7 +8,7 @@
 #include "common.h"
 #include "gpio.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 
 /*
  * Standard speed; all timings padded by 2 usec for safety.

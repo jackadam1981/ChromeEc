@@ -22,7 +22,7 @@
 #include "motion_lid.h"
 #include "power.h"
 #include "queue.h"
-#include "timer.h"
+#include <time.h>
 #include "task.h"
 #include "util.h"
 

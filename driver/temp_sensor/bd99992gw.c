@@ -18,7 +18,7 @@
 #include "i2c.h"
 #include "temp_sensor.h"
 #include "thermistor.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* Console output macros */

@@ -15,7 +15,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "keyboard_protocol.h"
 
 #define INDEX_VOL_DOWN 0

@@ -18,7 +18,7 @@
 #include "gpio.h"
 #include "i2c.h"
 #include "system.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /*

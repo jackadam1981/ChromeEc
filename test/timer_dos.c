@@ -9,7 +9,7 @@
 #include "console.h"
 #include "task.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* period between 500us and 128ms */

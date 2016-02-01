@@ -16,7 +16,7 @@
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "console.h"
-#include "timer.h"
+#include <time.h>
 #include "task.h"
 #include "hooks.h"
 #include "math_util.h"

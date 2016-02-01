@@ -12,7 +12,7 @@
 #include "inductive_charging.h"
 #include "lid_switch.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #define START_CHARGE_DELAY 5000 /* ms */

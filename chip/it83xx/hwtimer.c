@@ -14,7 +14,7 @@
 #include "irq_chip.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 #include "watchdog.h"
 

@@ -11,7 +11,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "system.h"
-#include "timer.h"
+#include <time.h>
 #include "tsu6721.h"
 #include "util.h"
 
