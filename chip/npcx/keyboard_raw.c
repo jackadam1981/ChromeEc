@@ -5,12 +5,98 @@
 
 /* Functions needed by keyboard scanner module for Chrome EC */
 
+#include "chip/npcx/keyboard_raw.h"
+
 #include "common.h"
+#include "compile_time_macros.h"
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "clock.h"
+#include "gpio.h"
 #include "registers.h"
 #include "task.h"
+#include "util.h"
+
+#define OFFSET_MASK(size, position) (((1 << (size)) - 1) << (position))
+
+#define KSI_MASK OFFSET_MASK(KEYBOARD_ROWS, 0)
+#define KSO_MASK OFFSET_MASK(KEYBOARD_COLS, CONFIG_KEYBOARD_KSO_BASE)
+
+/*
+ * Make sure that the row and column masks are actually subsets of the masks
+ * for the total available rows and columns.
+ */
+BUILD_ASSERT((KSI_MASK & KB_ROW_MASK) == KSI_MASK);
+BUILD_ASSERT((KSO_MASK & KB_COL_MASK) == KSO_MASK);
+
+#if defined(CONFIG_KEYBOARD_COL2_INVERTED)
+/*
+ * When column 2 is inverted, Nuvoton EC KBS outputs only support
+ * open-drain. So we should change this pin to GPIO
+ */
+#define KSO_VALUE (1 << 2)
+#else
+#define KSO_VALUE 0
+#endif
+
+/*
+ * Make sure that there are not bits set in KSO_VALUE outside of the valid
+ * positions defined by KSO_MASK.
+ */
+BUILD_ASSERT((KSO_MASK & KSO_VALUE) == KSO_VALUE);
+
+#define SET_MASKED(group, mask, value)			\
+	NPCX_DEVALT(group) = ((NPCX_DEVALT(group)	\
+			       & ((uint8_t)~(mask)))	\
+			      | ((uint8_t)(value)))
+
+static void config_pins(void)
+{
+	SET_MASKED(ALT_GROUP_7, KSI_MASK,       0);
+	SET_MASKED(ALT_GROUP_8, KSO_MASK >>  0, KSO_VALUE >>  0);
+	SET_MASKED(ALT_GROUP_9, KSO_MASK >>  8, KSO_VALUE >>  8);
+	SET_MASKED(ALT_GROUP_A, KSO_MASK >> 16, KSO_VALUE >> 16);
+}
+
+static void switch_to_gpio(uint8_t alt_group, uint8_t alt_mask)
+{
+	uint8_t mask = 1;
+	int     i;
+
+	NPCX_DEVALT(alt_group) |= alt_mask;
+
+	for (i = 0; i < 8; ++i) {
+		if (alt_mask & mask) {
+			uint8_t gpio_port;
+			uint8_t gpio_mask;
+
+			if (gpio_get_gpio_from_alt(alt_group,
+						   mask,
+						   &gpio_port,
+						   &gpio_mask) == EC_SUCCESS)
+				gpio_set_flags_by_mask(gpio_port,
+						       gpio_mask,
+						       GPIO_INPUT |
+						       GPIO_PULL_UP);
+			else
+				ASSERT(0);
+		}
+
+		mask = mask << 1;
+	}
+}
+
+void keyboard_hibernate(void)
+{
+	/*
+	 * Set all KBSOUTs to GPIOs and switch their mode to input and pull-up.
+	 * Otherwise pressing the keyboard matrix might cause some current
+	 * leakage during hibernating.
+	 */
+	switch_to_gpio(ALT_GROUP_8, (uint8_t)(KSO_MASK >>  0));
+	switch_to_gpio(ALT_GROUP_9, (uint8_t)(KSO_MASK >>  8));
+	switch_to_gpio(ALT_GROUP_A, (uint8_t)(KSO_MASK >> 16));
+}
 
 /**
  * Initialize the raw keyboard interface.
@@ -40,13 +126,7 @@ void keyboard_raw_init(void)
 	NPCX_KBSOUT0 = 0x00;
 	NPCX_KBSOUT1 = 0x00;
 
-#ifdef CONFIG_KEYBOARD_COL2_INVERTED
-	/*
-	 * When column 2 is inverted, Nuvoton EC KBS outputs only support
-	 * open-drain. So we should change this pin to GPIO
-	 */
-	SET_BIT(NPCX_DEVALT(ALT_GROUP_8), NPCX_DEVALT8_NO_KSO02_SL);
-#endif
+	config_pins();
 
 	/*
 	 * Enable interrupts for the inputs.  The top-level interrupt is still
