@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9489faaa_b48e961b",
+        "filename": "include/power.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2016-02-01T18:31:26Z",
+      "side": 0,
+      "message": "A quick grep seems to reveal that the only implementation of this function is in power/common.c and it is indeed declared inline.\nWhat\u0027s going wrong?",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 7
+      },
+      "revId": "e7a9ccbf0435cdc588f78dd9ae9747d4b38dc394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d468d2a0_bb112aa4",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2016-02-01T18:31:26Z",
+      "side": 0,
+      "message": "Can this be fixed by adding inline to core/host/task.c\u0027s implementation instead?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 6
+      },
+      "revId": "e7a9ccbf0435cdc588f78dd9ae9747d4b38dc394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
