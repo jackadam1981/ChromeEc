@@ -69,6 +69,30 @@
       "revId": "95fd9ab9b933b5b9ab0a2896d10a50f01af4f554",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5422228b_942d1287",
+        "filename": "builtin/time.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-02-01T17:11:37Z",
+      "side": 1,
+      "message": "But the change could be done in a CL that this one is changed to depend on, resulting in one less stub file being added, could be worth it.",
+      "parentUuid": "d170e4c5_5974e3ae",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "95fd9ab9b933b5b9ab0a2896d10a50f01af4f554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
