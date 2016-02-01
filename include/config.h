@@ -462,6 +462,9 @@
 /* Enable trickle charging */
 #undef CONFIG_TRICKLE_CHARGING
 
+/* Enable charger voltage regulation loop */
+#undef CONFIG_CHARGER_VOLTAGE_REGULATION_LOOP
+
 /*****************************************************************************/
 /* Chipset config */
 

@@ -243,7 +243,8 @@ int charger_post_init(void)
 	if (rv)
 		return rv;
 
-#ifdef CONFIG_CHARGE_RAMP_HW
+#if defined(CONFIG_CHARGE_RAMP_HW) || \
+	defined(CONFIG_CHARGER_VOLTAGE_REGULATION_LOOP)
 	/* Set input voltage regulation reference voltage for charge ramp */
 	reg &= ~ISL9237_C0_VREG_REF_MASK;
 	reg |= ISL9237_C0_VREG_REF_4200;
