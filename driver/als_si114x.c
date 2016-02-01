@@ -14,7 +14,7 @@
 #include "i2c.h"
 #include "math_util.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)

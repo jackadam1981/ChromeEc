@@ -13,7 +13,7 @@
 #include "spi.h"
 #include "spi_flash.h"
 #include "util.h"
-#include "timer.h"
+#include <time.h>
 #include "dma.h"
 #include "registers.h"
 #include "cpu.h"

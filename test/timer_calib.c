@@ -8,7 +8,7 @@
 #include "common.h"
 #include "console.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 uint32_t difftime(timestamp_t t0, timestamp_t t1)

@@ -10,7 +10,7 @@
 #include "host_command.h"
 #include "system.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #define TEST_STATE_STEP_2	(1 << 0)

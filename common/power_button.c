@@ -14,7 +14,7 @@
 #include "lid_switch.h"
 #include "power_button.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* Console output macros */

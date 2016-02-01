@@ -10,7 +10,7 @@
 
 #include "host_task.h"
 #include "host_test.h"
-#include "timer.h"
+#include <time.h>
 
 #define SIGNAL_TRACE_DUMP SIGTERM
 #define MAX_TRACE 30

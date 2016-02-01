@@ -14,7 +14,7 @@
 #include "math_util.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 
 /* Use ITIM32 as main hardware timer */
 #define TICK_ITIM32_MAX_CNT  0xFFFFFFFF

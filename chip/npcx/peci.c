@@ -15,7 +15,7 @@
 #include "peci.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "temp_sensor.h"
 #include "util.h"
 

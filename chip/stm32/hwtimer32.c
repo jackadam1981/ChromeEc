@@ -12,7 +12,7 @@
 #include "panic.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "watchdog.h"
 
 #define IRQ_TIM(n) CONCAT2(STM32_IRQ_TIM, n)

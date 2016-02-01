@@ -10,7 +10,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "pi3usb9281.h"
 #include "util.h"
 

@@ -9,7 +9,7 @@
 #include "console.h"
 #include "hooks.h"
 #include "i2c.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* Console output macros */

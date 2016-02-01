@@ -18,7 +18,7 @@
 #include "temp_sensor.h"
 #include "thermal.h"
 #include "throttle_ap.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* Console output macros */

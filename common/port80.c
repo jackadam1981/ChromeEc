@@ -11,7 +11,7 @@
 #include "host_command.h"
 #include "port80.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_PORT80, format, ## args)

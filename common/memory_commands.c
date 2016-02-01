@@ -6,7 +6,7 @@
 /* System module for Chrome EC */
 
 #include "console.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 #include "watchdog.h"
 

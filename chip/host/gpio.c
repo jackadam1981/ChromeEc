@@ -9,7 +9,7 @@
 
 #include "common.h"
 #include "gpio.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 static int gpio_values[GPIO_COUNT];

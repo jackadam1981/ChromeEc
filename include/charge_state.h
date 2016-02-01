@@ -6,7 +6,7 @@
 #define __CROS_EC_CHARGE_STATE_H
 
 #include "common.h"
-#include "timer.h"
+#include <time.h>
 
 /* Stuff that's common to all charger implementations can go here. */
 

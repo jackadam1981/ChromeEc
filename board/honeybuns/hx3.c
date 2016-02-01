@@ -11,7 +11,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "usb_descriptor.h"
 #include "util.h"
 

@@ -10,7 +10,7 @@
 #include "printf.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 #include "usb_descriptor.h"
 

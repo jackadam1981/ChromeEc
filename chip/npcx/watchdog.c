@@ -12,7 +12,7 @@
 #include "hwtimer_chip.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "timer.h"
+#include <time.h>
 #include "task.h"
 #include "util.h"
 #include "system_chip.h"

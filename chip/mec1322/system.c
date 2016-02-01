@@ -16,7 +16,7 @@
 #include "system.h"
 #include "hooks.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 #include "spi.h"
 

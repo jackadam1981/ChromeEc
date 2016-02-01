@@ -12,7 +12,7 @@
 #include "link_defs.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 #include "usb_descriptor.h"
 #include "usb_hid.h"

@@ -12,7 +12,7 @@
 #include "hooks.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #define ADC_SINGLE_READ_TIMEOUT 3000 /* 3 ms */

@@ -14,7 +14,7 @@
 #include "temp_sensor.h"
 #include "test_util.h"
 #include "thermal.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 

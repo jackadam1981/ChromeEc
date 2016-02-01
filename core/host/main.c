@@ -14,7 +14,7 @@
 #include "system.h"
 #include "task.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "uart.h"
 
 /* Console output macros */

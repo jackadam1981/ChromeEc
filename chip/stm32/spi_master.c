@@ -12,7 +12,7 @@
 #include "shared_mem.h"
 #include "spi.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* The second (and third if available) SPI port are used as master */

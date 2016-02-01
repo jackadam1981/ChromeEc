@@ -12,7 +12,7 @@
 #include "task.h"
 #include "temp_sensor.h"
 #include "thermal.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)

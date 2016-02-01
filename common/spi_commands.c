@@ -9,7 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "spi.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 static int command_spixfer(int argc, char **argv)

@@ -8,7 +8,7 @@
 #include "task.h"
 #include "tcpci.h"
 #include "tcpm.h"
-#include "timer.h"
+#include <time.h>
 #include "usb_charge.h"
 #include "usb_mux.h"
 #include "usb_pd.h"

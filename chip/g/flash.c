@@ -41,7 +41,7 @@
 #include "common.h"
 #include "flash.h"
 #include "registers.h"
-#include "timer.h"
+#include <time.h>
 
 int flash_pre_init(void)
 {

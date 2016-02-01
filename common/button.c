@@ -11,7 +11,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "keyboard_protocol.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* Console output macro */

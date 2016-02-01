@@ -14,7 +14,7 @@
 #include "i2c.h"
 #include "pmu_tpschrome.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)

@@ -13,7 +13,7 @@
 #include "i2c.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)

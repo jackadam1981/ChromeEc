@@ -13,7 +13,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "system.h"
-#include "timer.h"
+#include <time.h>
 #include "usb_pd.h"
 #include "util.h"
 

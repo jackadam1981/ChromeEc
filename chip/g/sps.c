@@ -10,7 +10,7 @@
 #include "registers.h"
 #include "sps.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "watchdog.h"
 
 /*

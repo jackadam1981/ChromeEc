@@ -9,7 +9,7 @@
 #include "console.h"
 #include "hooks.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 static int init_hook_count;

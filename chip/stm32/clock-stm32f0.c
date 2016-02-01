@@ -15,7 +15,7 @@
 #include "registers.h"
 #include "system.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* Console output macros */

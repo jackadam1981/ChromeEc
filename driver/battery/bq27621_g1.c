@@ -11,7 +11,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "util.h"
-#include "timer.h"
+#include <time.h>
 
 #define BQ27621_ADDR                        0xaa
 #define BQ27621_TYPE_ID                     0x0621

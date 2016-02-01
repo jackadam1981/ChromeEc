@@ -9,7 +9,7 @@
 #include "crc.h"
 #include "task.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "usb_pd.h"
 #include "usb_pd_test_util.h"
 #include "util.h"

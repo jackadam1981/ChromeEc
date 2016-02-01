@@ -11,7 +11,7 @@
 
 #include "task.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /*

@@ -17,7 +17,7 @@
 #include "pmu_tpschrome.h"
 #include "system.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)

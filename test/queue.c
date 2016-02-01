@@ -9,7 +9,7 @@
 #include "console.h"
 #include "queue.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 static struct queue const test_queue8 = QUEUE_NULL(8, char);

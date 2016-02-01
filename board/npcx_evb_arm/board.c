@@ -26,7 +26,7 @@
 #include "switch.h"
 #include "temp_sensor.h"
 #include "temp_sensor_chip.h"
-#include "timer.h"
+#include <time.h>
 #include "thermal.h"
 #include "util.h"
 #include "shi_chip.h"

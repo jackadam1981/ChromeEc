@@ -10,7 +10,7 @@
 
 #include "atomic.h"
 #include "common.h"
-#include "timer.h"
+#include <time.h>
 
 /* Reset causes */
 #define RESET_FLAG_OTHER       (1 << 0)   /* Other known reason */

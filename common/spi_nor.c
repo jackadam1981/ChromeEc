@@ -13,7 +13,7 @@
 #include "task.h"
 #include "spi.h"
 #include "sfdp.h"
-#include "timer.h"
+#include <time.h>
 #include "watchdog.h"
 
 #ifdef CONFIG_SPI_NOR_DEBUG

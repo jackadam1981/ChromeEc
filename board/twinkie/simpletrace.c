@@ -14,7 +14,7 @@
 #include "registers.h"
 #include "system.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "usb_pd.h"
 #include "usb_pd_config.h"
 #include "util.h"

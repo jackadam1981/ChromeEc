@@ -16,7 +16,7 @@
 #include "power.h"
 #include "power_button.h"
 #include "system.h"
-#include "timer.h"
+#include <time.h>
 #include "usb_charge.h"
 #include "util.h"
 #include "wireless.h"

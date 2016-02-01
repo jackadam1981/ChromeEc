@@ -15,7 +15,7 @@
 #include "link_defs.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "usb_descriptor.h"
 #include "util.h"
 #include "ina2xx.h"

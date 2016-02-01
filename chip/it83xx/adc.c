@@ -14,7 +14,7 @@
 #include "hooks.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 /* Data structure of ADC channel control registers. */

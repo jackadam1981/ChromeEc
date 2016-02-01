@@ -13,7 +13,7 @@
 #include "persistence.h"
 #include "reboot.h"
 #include "system.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #define SHARED_MEM_SIZE 512 /* bytes */

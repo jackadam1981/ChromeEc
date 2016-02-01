@@ -8,7 +8,7 @@
 #ifndef __CROS_EC_CHARGE_RAMP_H
 #define __CROS_EC_CHARGE_RAMP_H
 
-#include "timer.h"
+#include <time.h>
 
 /*
  * Time to delay for detecting the charger type (must be long enough for BC1.2

@@ -9,7 +9,7 @@
 #include "ec_commands.h"
 #include "i2c.h"
 #include "test_util.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #ifdef CONFIG_ADC

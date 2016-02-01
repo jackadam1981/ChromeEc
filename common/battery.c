@@ -13,7 +13,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 #include "watchdog.h"
 

@@ -15,7 +15,7 @@
 #include "host_command.h"
 #include "system.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #define ALS_POLL_PERIOD SECOND

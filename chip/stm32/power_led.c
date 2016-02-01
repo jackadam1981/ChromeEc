@@ -25,7 +25,7 @@
 #include "pwm_chip.h"
 #include "registers.h"
 #include "task.h"
-#include "timer.h"
+#include <time.h>
 #include "util.h"
 
 #define LED_STATE_TIMEOUT_MIN	(15 * MSEC)  /* Minimum of 15ms per step */
