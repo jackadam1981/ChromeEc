@@ -147,6 +147,8 @@ void system_reset(int flags)
 	BRAM_RESET_FLAGS2 = (save_flags >> 8) & 0xff;
 	BRAM_RESET_FLAGS3 = save_flags & 0xff;
 
+	while (1) /*msmart for PD test */
+		;
 	/*
 	 * bit4, disable debug mode through SMBus.
 	 * If we are in debug mode, we need disable it before triggering
@@ -164,6 +166,7 @@ void system_reset(int flags)
 	/* Spin and wait for reboot; should never return */
 	while (1)
 		;
+
 }
 
 int system_set_scratchpad(uint32_t value)
