@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f127a8f2_4a743364",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "the description is not the history of the modifications (which are stored in gerrit) but an explanation of what the driver in this change is implementing.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "711bb8b8_26965674",
+        "filename": "board/pdeval-stm32f072/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "could you implement this as a \u0027struct usb_mux\u0027 directly in driver/tcpm/anx74xx.c\n(similarly to what was done there : https://chromium.googlesource.com/chromiumos/platform/ec/+/master/driver/tcpm/tcpci.c#340 )",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 1
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31c3005d_3420502b",
+        "filename": "board/pdeval-stm32f072/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "no uppercase please",
+      "range": {
+        "startLine": 185,
+        "startChar": 5,
+        "endLine": 185,
+        "endChar": 34
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "711bb8b8_06d51ade",
+        "filename": "board/pdeval-stm32f072/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "we should move all the board/pdeval-stm32f072/* changes to another follow-up CL.\nSo we can submit immediately the chip driver,\nand keep the test code for later.\n\nIf you are not comfortable, let me know, I can do it for you",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5116b490_c8fdcf84",
+        "filename": "board/pdeval-stm32f072/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "polling the cable detection here is not great,\nbut this might need some refactoring, we can re-visit this later.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71c9f878_d643a445",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "the naming is a bit confusing since it refers to the ANX TCPC rather than the actual USB type-C power supply.\n\nWhat about board_set_tcpc_power_mode() ?",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 59
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f127a8f2_ea0527f4",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "isn\u0027t this a \u0027per-port\u0027 setting ?\nif yes, it should be in the struct above",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "711bb8b8_666fae93",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "I\u0027m not thrilled by this somewhat large buffer on the stack.\nit seems it is not so necessary,\nyou can probably enqueue data directly from header and payload in the loop below.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 29
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "711bb8b8_46743264",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "is this second read really necessary ?\nit doesn\u0027t seem so",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 26
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "711bb8b8_c6030225",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 150,
+        "startChar": 20,
+        "endLine": 150,
+        "endChar": 25
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b121b0e4_48df1ffc",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "if (num_retry \u003e\u003d 3)\nelse we might have transmitted successfully with one retry.\n(or if after having one retry, we are no longer sure that\u0027s an actual success, we might just no do any retry)(",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 15
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "711bb8b8_06d07ad4",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "that\u0027s not what I meant\nTCPC_REG_SHIFT_2(reg) is not really better than \u0027reg \u003e\u003e 2\u0027\n\na better naming would be something such as :\nTCPC_REG_STATUS_CC1(reg)\nand\nTCPC_REG_STATUS_CC2(reg) below",
+      "range": {
+        "startLine": 234,
+        "startChar": 9,
+        "endLine": 234,
+        "endChar": 30
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11f7dc9a_abfb2929",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "afaict turning on the VBUS FET is independant of setting Rp,\nit shouldn\u0027t be done here (unless I don\u0027t understand the register write purpose here)",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 55
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11f7dc9a_8bf8ed2d",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "ditto\n(we call pd_power_supply_reset() for this)",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 55
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5116b490_e59f161f",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "if the result rv indicates a failure, maybe we don\u0027t want to do this",
+      "range": {
+        "startLine": 361,
+        "startChar": 1,
+        "endLine": 361,
+        "endChar": 14
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9124acf4_a7952a05",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T18:35:44Z",
+      "side": 1,
+      "message": "I think my original remark is still valid here :\n\"\"\"\nno, you cannot do this.\nthis function is supposed to initialize the hardware and return.\n\"\"\"\n\nYou cannot spin here, you cannot record in a variable whether you are initialized or not and do it later.",
+      "range": {
+        "startLine": 557,
+        "startChar": 1,
+        "endLine": 562,
+        "endChar": 13
+      },
+      "revId": "291cad100d7e2b27e4036a21898911e3ff5d4725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
