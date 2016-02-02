@@ -46,6 +46,30 @@
       "revId": "ef113bdddba0f1763949650ca3202b0a97b03372",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71c9f878_561f949c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T15:57:11Z",
+      "side": 1,
+      "message": "No, bug#49080 is product and OEM specific.\nWhat I really want is why we would need to artificially lower the limit of this specific product.",
+      "parentUuid": "f1596874_da2f65c4",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "ef113bdddba0f1763949650ca3202b0a97b03372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
