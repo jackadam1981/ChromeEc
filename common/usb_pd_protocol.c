@@ -1480,6 +1480,9 @@ void pd_task(void)
 						    pd[port].data_role);
 				tcpm_set_rx_enable(port, 1);
 			} else {
+				/* Ensure state variables are at default */
+				pd[port].power_role = PD_ROLE_DEFAULT;
+				pd[port].vdm_state = VDM_STATE_DONE;
 				set_state(port, PD_DEFAULT_STATE);
 			}
 		}
