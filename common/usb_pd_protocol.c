@@ -1456,7 +1456,9 @@ void pd_task(void)
 			CPRINTF("[%T TCPC p%d reset!]\n", port);
 			tcpm_init(port);
 
-			/* Ensure CC termination is default */
+			/* Ensure state variables are at default */
+			pd[port].power_role = PD_ROLE_DEFAULT;
+			pd[port].vdm_state = VDM_STATE_DONE;
 			tcpm_set_cc(port, PD_ROLE_DEFAULT == PD_ROLE_SOURCE ?
 							      TYPEC_CC_RP :
 							      TYPEC_CC_RD);
