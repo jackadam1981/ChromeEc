@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71c9f878_76cad026",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-02T17:03:12Z",
+      "side": 1,
+      "message": "I think this condition will incorrectly evaluate to true if we\u0027re in POWER_S0 (eg. we transitioned from S3 to S0).",
+      "revId": "69fa8b606dd3e06c09827e337d2d52b1b464cb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
