@@ -265,7 +265,64 @@ const struct gpio_alt_map gpio_alt_table[] = {
 	{ NPCX_GPIO(4, 0),  NPCX_ALT(3, TA1_TACH1_SL1)},/* TA1_TACH1 */
 	{ NPCX_GPIO(A, 4),  NPCX_ALT(3, TB1_TACH2_SL1)},/* TB1_TACH2 */
 #endif
+	/* Keyboard Scan Module (Outputs) */
+	{ NPCX_GPIO(2, 1),  NPCX_ALT(8, NO_KSO00_SL)},/* KSO00 */
+	{ NPCX_GPIO(2, 0),  NPCX_ALT(8, NO_KSO01_SL)},/* KSO01 */
+	{ NPCX_GPIO(1, 7),  NPCX_ALT(8, NO_KSO02_SL)},/* KSO02 */
+	{ NPCX_GPIO(1, 6),  NPCX_ALT(8, NO_KSO03_SL)},/* KSO03 */
+	{ NPCX_GPIO(1, 5),  NPCX_ALT(8, NO_KSO04_SL)},/* KSO04 */
+	{ NPCX_GPIO(1, 4),  NPCX_ALT(8, NO_KSO05_SL)},/* KSO05 */
+	{ NPCX_GPIO(1, 3),  NPCX_ALT(8, NO_KSO06_SL)},/* KSO06 */
+	{ NPCX_GPIO(1, 2),  NPCX_ALT(8, NO_KSO07_SL)},/* KSO07 */
+	{ NPCX_GPIO(1, 1),  NPCX_ALT(9, NO_KSO08_SL)},/* KSO08 */
+	{ NPCX_GPIO(1, 0),  NPCX_ALT(9, NO_KSO09_SL)},/* KSO09 */
+	{ NPCX_GPIO(0, 7),  NPCX_ALT(9, NO_KSO10_SL)},/* KSO10 */
+	{ NPCX_GPIO(0, 6),  NPCX_ALT(9, NO_KSO11_SL)},/* KSO11 */
+	{ NPCX_GPIO(0, 5),  NPCX_ALT(9, NO_KSO12_SL)},/* KSO12 */
+	{ NPCX_GPIO(0, 4),  NPCX_ALT(9, NO_KSO13_SL)},/* KSO13 */
+	{ NPCX_GPIO(8, 2),  NPCX_ALT(9, NO_KSO14_SL)},/* KSO14 */
+	{ NPCX_GPIO(8, 3),  NPCX_ALT(9, NO_KSO15_SL)},/* KSO15 */
+	{ NPCX_GPIO(0, 3),  NPCX_ALT(A, NO_KSO16_SL)},/* KSO16 */
+	{ NPCX_GPIO(B, 1),  NPCX_ALT(A, NO_KSO17_SL)},/* KSO17 */
 };
+
+int gpio_get_alt_from_gpio(uint8_t gpio_port,
+			   uint8_t gpio_mask,
+			   uint8_t *alt_group,
+			   uint8_t *alt_mask)
+{
+	int i;
+
+	for (i = 0; i < ARRAY_SIZE(gpio_alt_table); i++) {
+		if ((gpio_alt_table[i].gpio_port == gpio_port) &&
+		    (gpio_alt_table[i].gpio_mask == gpio_mask)) {
+			*alt_group = gpio_alt_table[i].alt_group;
+			*alt_mask  = gpio_alt_table[i].alt_mask;
+			return EC_SUCCESS;
+		}
+	}
+
+	return EC_ERROR_INVAL;
+}
+
+int gpio_get_gpio_from_alt(uint8_t alt_group,
+			   uint8_t alt_mask,
+			   uint8_t *gpio_port,
+			   uint8_t *gpio_mask)
+{
+	int i;
+
+	for (i = 0; i < ARRAY_SIZE(gpio_alt_table); i++) {
+		if ((gpio_alt_table[i].alt_group == alt_group) &&
+		    (gpio_alt_table[i].alt_mask  == alt_mask)) {
+			*gpio_port = gpio_alt_table[i].gpio_port;
+			*gpio_mask = gpio_alt_table[i].gpio_mask;
+			return EC_SUCCESS;
+		}
+	}
+
+	return EC_ERROR_INVAL;
+}
 
 /*****************************************************************************/
 /* Internal functions */
@@ -314,25 +371,24 @@ void gpio_pwm_io_type_sel(uint8_t alt_mask, uint8_t func)
 
 int gpio_alt_sel(uint8_t port, uint8_t mask, int8_t func)
 {
-	int i;
-	const struct gpio_alt_map *map = gpio_alt_table;
-	for (i = 0; i < ARRAY_SIZE(gpio_alt_table); i++, map++) {
-		if (map->gpio_port == port &&
-			(map->gpio_mask == mask)) {
-			/* Enable alternative function if func >=0 */
-			if (func <= 0) /* GPIO functionality */
-				NPCX_DEVALT(map->alt_group) &= ~(map->alt_mask);
-			else {
-				NPCX_DEVALT(map->alt_group) |= (map->alt_mask);
-				/* PWM optional functionality */
-				if (func & PWM_IO_FUNC)
-					gpio_pwm_io_type_sel(map->alt_mask,
-							func);
-			}
-			return 1;
-		}
+	uint8_t alt_group;
+	uint8_t alt_mask;
+
+	if (gpio_get_alt_from_gpio(port, mask, &alt_group, &alt_mask))
+		return -1;
+
+	if (func <= 0) {
+		/* GPIO functionality */
+		NPCX_DEVALT(alt_group) &= ~alt_mask;
+	} else {
+		/* Alternate function */
+		NPCX_DEVALT(alt_group) |= alt_mask;
+		/* PWM optional functionality */
+		if (func & PWM_IO_FUNC)
+			gpio_pwm_io_type_sel(alt_mask, func);
 	}
-	return -1;
+
+	return 1;
 }
 
 void gpio_execute_isr(uint8_t port, uint8_t mask)
