@@ -93,17 +93,17 @@ BUILD_ASSERT(sizeof(struct HASH_CTX) <=
 uint16_t _cpri__StartHash(TPM_ALG_ID alg, BOOL sequence,
 			  CPRI_HASH_STATE *state)
 {
-	struct HASH_CTX *ctx = (struct HASH_CTX *) state->state;
+	struct HASH_CTX ctx;
 	uint16_t result;
 
 	switch (alg) {
 	case TPM_ALG_SHA1:
-		DCRYPTO_SHA1_init(ctx, sequence);
-		result = DCRYPTO_HASH_size(ctx);
+		DCRYPTO_SHA1_init(&ctx, sequence);
+		result = DCRYPTO_HASH_size(&ctx);
 		break;
 	case TPM_ALG_SHA256:
-		DCRYPTO_SHA256_init(ctx, sequence);
-		result = DCRYPTO_HASH_size(ctx);
+		DCRYPTO_SHA256_init(&ctx, sequence);
+		result = DCRYPTO_HASH_size(&ctx);
 		break;
 /* TODO: add support for SHA384 and SHA512
  *	case TPM_ALG_SHA384:
@@ -117,24 +117,32 @@ uint16_t _cpri__StartHash(TPM_ALG_ID alg, BOOL sequence,
 		break;
 	}
 
+	if (result > 0)
+		memcpy(state->state, &ctx, sizeof(struct HASH_CTX));
+
 	return result;
 }
 
 void _cpri__UpdateHash(CPRI_HASH_STATE *state, uint32_t in_len,
 		BYTE *in)
 {
-	struct HASH_CTX *ctx = (struct HASH_CTX *) state->state;
+	struct HASH_CTX ctx;
 
-	DCRYPTO_HASH_update(ctx, in, in_len);
+	/* state->state may be word-unaligned, so create and aligned copy. */
+	memcpy(&ctx, state->state, sizeof(struct HASH_CTX));
+	DCRYPTO_HASH_update(&ctx, in, in_len);
+	memcpy(state->state, &ctx, sizeof(struct HASH_CTX));
 }
 
 uint16_t _cpri__CompleteHash(CPRI_HASH_STATE *state,
 			uint32_t out_len, uint8_t *out)
 {
-	struct HASH_CTX *ctx = (struct HASH_CTX *) state->state;
+	struct HASH_CTX ctx;
 
-	out_len = MIN(DCRYPTO_HASH_size(ctx), out_len);
-	memcpy(out, DCRYPTO_HASH_final(ctx), out_len);
+	memcpy(&ctx, state->state, sizeof(struct HASH_CTX));
+	out_len = MIN(DCRYPTO_HASH_size(&ctx), out_len);
+	memcpy(out, DCRYPTO_HASH_final(&ctx), out_len);
+	memcpy(state->state, &ctx, sizeof(struct HASH_CTX));
 	return out_len;
 }
 
