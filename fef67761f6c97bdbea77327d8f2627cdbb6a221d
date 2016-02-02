@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "349a0eef_11402c1e",
+        "filename": "board/lars/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-02T02:07:07Z",
+      "side": 1,
+      "message": "If lars is capable of charging at 20V / 3A then this shouldn\u0027t be changed. The charge capacity of the OEM shipping adapter shouldn\u0027t be relevant since we\u0027ll simply negotiate a smaller current limit.",
+      "revId": "fef67761f6c97bdbea77327d8f2627cdbb6a221d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f465d6c4_30c9b532",
+        "filename": "board/lars/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-02T02:07:07Z",
+      "side": 1,
+      "message": "It doesn\u0027t make sense to change this for the purpose you\u0027re trying to achieve. What if someone inserts a 20V / 2025mA charger. You will then charge at 100% rated current? So why you limiting only chargers with 2025mA \u003c negotiated current?\n\nSee https://chromium-review.googlesource.com/#/c/322965/ for a better CL.",
+      "revId": "fef67761f6c97bdbea77327d8f2627cdbb6a221d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
