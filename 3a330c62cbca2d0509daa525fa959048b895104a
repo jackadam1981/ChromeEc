@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3115c084_cab2e703",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T22:23:40Z",
+      "side": 1,
+      "message": "can this be an (unlikely) issue in the previous if clause ?\nif vdm_state !\u003d VDM_STATE should we default to the else statement ?",
+      "range": {
+        "startLine": 1485,
+        "startChar": 4,
+        "endLine": 1485,
+        "endChar": 40
+      },
+      "revId": "3a330c62cbca2d0509daa525fa959048b895104a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
