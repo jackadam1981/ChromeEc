@@ -206,8 +206,8 @@ enum temp_sensor_id {
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW 15000
-#define PD_MAX_POWER_MW       60000
-#define PD_MAX_CURRENT_MA     3000
+#define PD_MAX_POWER_MW       45000
+#define PD_MAX_CURRENT_MA     2025
 #define PD_MAX_VOLTAGE_MV     20000
 
 /* Reset PD MCU */
