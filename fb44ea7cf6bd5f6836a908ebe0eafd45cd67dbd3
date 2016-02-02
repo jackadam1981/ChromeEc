@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b486fe94_3d38a80e",
+        "filename": "board/lars/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-02T02:02:43Z",
+      "side": 1,
+      "message": "this setting has nothing to do with te power supply max power, it is the maximum current the mainboard charger chip and discrete components can handle.\nThe power supply max power/current is exported in the power supply descriptors.\n\nSo this is not correct regarding the description of the CL.",
+      "range": {
+        "startLine": 210,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 34
+      },
+      "revId": "fb44ea7cf6bd5f6836a908ebe0eafd45cd67dbd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
