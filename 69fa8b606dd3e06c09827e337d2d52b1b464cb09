@@ -34,6 +34,24 @@
       "revId": "69fa8b606dd3e06c09827e337d2d52b1b464cb09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91566c44_5755ecfa",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1123350
+      },
+      "writtenOn": "2016-02-03T10:21:25Z",
+      "side": 1,
+      "message": "chipset_in_state(CHIPSET_STATE_STANDBY | CHIPSET_STATE_ON) checks for the S0ix state and was consistently getting hit during my test runs to enable/disable correctly. \nAn issue will only come if enable/disable calls are called after system transitions to S0 or S0ix.\nTo be safe, I have added the second set of conditions  \nif ((chipset_in_state(CHIPSET_STATE_STANDBY | CHIPSET_STATE_ON)) || chipset_in_state(CHIPSET_STATE_STANDBY)) and tested the flow again. \nEverything is working as expected.",
+      "parentUuid": "31c3005d_9dd14781",
+      "revId": "69fa8b606dd3e06c09827e337d2d52b1b464cb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
