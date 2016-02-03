@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91b82ca8_b602d6e8",
+        "filename": "common/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-02-03T17:53:42Z",
+      "side": 1,
+      "message": "If no i2c ports are busy?",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 32
+      },
+      "revId": "764ac96417cdf24ac678c419c827adbe113ccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1b530ae_2e2f7333",
+        "filename": "common/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-02-03T17:53:42Z",
+      "side": 1,
+      "message": "indicates one port is idle?",
+      "range": {
+        "startLine": 78,
+        "startChar": 35,
+        "endLine": 79,
+        "endChar": 9
+      },
+      "revId": "764ac96417cdf24ac678c419c827adbe113ccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
