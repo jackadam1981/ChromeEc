@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f127a8f2_1e16fd2a",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-02-03T17:00:58Z",
+      "side": 1,
+      "message": "To include state\u003dS0 due to delayed hook schedule, I think it should be \"if ..... || chipset_in_state(CHIPSET_STATE_ON))\"",
+      "range": {
+        "startLine": 653,
+        "startChar": 4,
+        "endLine": 653,
+        "endChar": 43
+      },
+      "revId": "8e7d244c14aacaba13beeab5bc96bb4170790001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
