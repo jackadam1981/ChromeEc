@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9124acf4_9692d218",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2016-02-03T00:04:03Z",
+      "side": 1,
+      "message": "this function\u0027s change does not look like a noop, as the values passed in in state-\u003estate are not visible by the called functions any more.\n\nWhy is this required in the first place, is state-\u003estate not always aligned properly?\n\nHow difficult is it to fix the underlying functions to avoid unaligned access issues?",
+      "revId": "1df8f2fed23581be3c8c4cdb972a62494674b1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31c3005d_fa05e19a",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2016-02-03T00:04:03Z",
+      "side": 1,
+      "message": "here and in other places: this should be sizeof(*state-\u003estate) or sizeof(ctx) - i.e. the destination size.",
+      "range": {
+        "startLine": 121,
+        "startChar": 29,
+        "endLine": 121,
+        "endChar": 51
+      },
+      "revId": "1df8f2fed23581be3c8c4cdb972a62494674b1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
