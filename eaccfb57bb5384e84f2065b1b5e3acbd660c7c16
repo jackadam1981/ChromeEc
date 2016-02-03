@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5116b490_7a445d33",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-02-03T18:54:57Z",
+      "side": 1,
+      "message": "s/line/cmd/",
+      "range": {
+        "startLine": 706,
+        "startChar": 13,
+        "endLine": 706,
+        "endChar": 17
+      },
+      "revId": "eaccfb57bb5384e84f2065b1b5e3acbd660c7c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11f7dc9a_b47ee1b7",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-02-03T18:54:57Z",
+      "side": 1,
+      "message": "Here too. \u003e\u003c",
+      "range": {
+        "startLine": 708,
+        "startChar": 32,
+        "endLine": 708,
+        "endChar": 36
+      },
+      "revId": "eaccfb57bb5384e84f2065b1b5e3acbd660c7c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
