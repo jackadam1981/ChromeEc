@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31fce07c_9b85d77e",
+        "filename": "board/cr50/tpm2/stubs.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-03T05:33:51Z",
+      "side": 1,
+      "message": "We should remove this, if https://chromium-review.googlesource.com/#/c/325471/ lands.",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "b3d306b99aab6116832ba17b504ea94c4459bf0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
