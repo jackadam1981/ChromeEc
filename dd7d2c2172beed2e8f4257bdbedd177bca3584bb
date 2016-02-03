@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31c3005d_a85c03cf",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2016-02-03T19:00:38Z",
+      "side": 1,
+      "message": "can\u0027t differentiate between failure to set this control versus it not being supported.\n\nI think you want,\n\n  dut_control -i\n\nnit could this be more specific like \u0027hdctools unable to disable ec3po interp\u0027 or something.  There will be cases where its ok not to have this control so a clearer warning will have some value IMO",
+      "range": {
+        "startLine": 348,
+        "startChar": 11,
+        "endLine": 348,
+        "endChar": 50
+      },
+      "revId": "dd7d2c2172beed2e8f4257bdbedd177bca3584bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
