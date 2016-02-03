@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f19a4877_123c4c0d",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-02-03T06:55:10Z",
+      "side": 1,
+      "message": "SET_MASK only set pinmux from GPIO to keyboard. But the default pinmux of these pins are all keyboard. For example, KSO17/GPIOB1 is not selected to GPIO in this marco function.",
+      "revId": "4b17a4710935d1bde1274bd66c95d9835b9ba50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51687402_f51cf855",
         "filename": "chip/npcx/keyboard_raw.c",
         "patchSetId": 1
@@ -13,6 +30,24 @@
       "writtenOn": "2016-02-03T05:10:43Z",
       "side": 1,
       "message": "If CONFIG_KEYBOARD_COL2_INVERTED is defined, we need to change KSO02 to GPIO. But I didn\u0027t see it in config_pins().",
+      "revId": "4b17a4710935d1bde1274bd66c95d9835b9ba50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91566c44_b7be0879",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-02-03T06:55:10Z",
+      "side": 1,
+      "message": "Sorry, I saw the definition in line 32.",
+      "parentUuid": "51687402_f51cf855",
       "revId": "4b17a4710935d1bde1274bd66c95d9835b9ba50c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

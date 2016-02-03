@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "716d7810_f6efe014",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-02-03T06:55:10Z",
+      "side": 0,
+      "message": "I suggest move config_pin() from keyboard_raw.c to here. (I think config_keyboard_pin() is better function name).\nIf there is no keyboard task, we cannot change pin-mux of keyboard\u0027s pins to GPIO.\nAnd please refer the comment in https://chromium-review.googlesource.com/#/c/325444/1/chip/npcx/gpio.c",
+      "revId": "78c815fe3fe48aa9137146a78417cb8942adea8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
