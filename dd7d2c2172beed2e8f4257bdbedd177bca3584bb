@@ -22,6 +22,30 @@
       "revId": "dd7d2c2172beed2e8f4257bdbedd177bca3584bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b121b0e4_17d09ed4",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-02-03T19:09:41Z",
+      "side": 1,
+      "message": "Thanks for the pointer about \"-i\". That seems fair; I can add the specific error message.",
+      "parentUuid": "31c3005d_a85c03cf",
+      "range": {
+        "startLine": 348,
+        "startChar": 11,
+        "endLine": 348,
+        "endChar": 50
+      },
+      "revId": "dd7d2c2172beed2e8f4257bdbedd177bca3584bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
