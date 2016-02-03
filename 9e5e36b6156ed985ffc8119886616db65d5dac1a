@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3115c084_53ed0e40",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-03T19:36:41Z",
+      "side": 1,
+      "message": "I don\u0027t understand the reason to change this. Please open a crbug for discussion.",
+      "revId": "9e5e36b6156ed985ffc8119886616db65d5dac1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5116b490_6ec01e56",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-03T19:36:41Z",
+      "side": 1,
+      "message": "This change is fine. You may want to modify this CL to include just this change, and we can discuss the other change on crbug / commit in a different CL.",
+      "revId": "9e5e36b6156ed985ffc8119886616db65d5dac1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
