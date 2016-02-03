@@ -46,6 +46,30 @@
       "revId": "dd7d2c2172beed2e8f4257bdbedd177bca3584bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31fce07c_a66fda3e",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-02-03T19:35:04Z",
+      "side": 1,
+      "message": "I actually find that there is a difference between failing to set vs not being supported.\n\n    INFO: ec UART pty : /dev/pts/30\n    INFO: Flashing chip stm32.\n    INFO: Using serial flasher : /mnt/host/source/src/platform/ec/build/jerry/util/stm32mon\n    Problem with [\u0027ec_ec3po_interp_connect:off\u0027] :: No control named \"ec_ec3po_interp_connect\"\n\n    WARNING: hdctools cannot disconnect the EC-3PO interpreter from the UART.\n\nvs. here where I purposely misspelled the value.\n\n***\n\n    INFO: Using ec image : /mnt/host/source/src/platform/ec/build/jerry/ec.bin\n    INFO: ec UART pty : /dev/pts/30\n    INFO: Flashing chip stm32.\n    INFO: Using serial flasher : /mnt/host/source/src/platform/ec/build/jerry/util/stm32mon\nProblem with [\u0027ec_ec3po_interp_connect:offf\u0027] :: Map onoff doesn\u0027t contain key offf\n    Try one of -\u003e \u0027on\u0027, \u0027off\u0027\n    WARNING: hdctools cannot disconnect the EC-3PO interpreter from the UART.",
+      "parentUuid": "b121b0e4_17d09ed4",
+      "range": {
+        "startLine": 348,
+        "startChar": 11,
+        "endLine": 348,
+        "endChar": 50
+      },
+      "revId": "dd7d2c2172beed2e8f4257bdbedd177bca3584bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
