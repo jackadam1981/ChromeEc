@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f127a8f2_9e9cadde",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-02-03T17:22:56Z",
+      "side": 1,
+      "message": "That was intentional on my part, I felt like it wasn\u0027t the keyboard scan codes responsibility to mess with any of the pin configurations that it hadn\u0027t been assigned via the KEYBOARD_ROWS/KEYBOARD_COLS/CONFIG_KEYBOARD_KSO_BASE defines.  But I see now why you had this code in the gpio.c file originally, mainly because the devalt registers are different for pins that are shared with the keyboard peripheral vs. pins that are shared with other peripherals.\n\nPerhaps a better solution would be to add information to the alt function table in gpio.c to indicate how to set the devalt register correctly (normally a zero for GPIO functionality, but a one is needed for the keyboard pins).  That way that table can be the sole point of knowledge for configuration, and the normal ALTERNATE mechanism in gpio.inc can be used to configure the keyboard pins, removing all of this special case code.",
+      "parentUuid": "f19a4877_123c4c0d",
+      "revId": "4b17a4710935d1bde1274bd66c95d9835b9ba50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51687402_f51cf855",
         "filename": "chip/npcx/keyboard_raw.c",
         "patchSetId": 1
