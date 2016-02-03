@@ -16,6 +16,24 @@
       "revId": "69fa8b606dd3e06c09827e337d2d52b1b464cb09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31c3005d_9dd14781",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-02-03T03:01:54Z",
+      "side": 1,
+      "message": "inside \u0027chipset_in_state(state_mask)\u0027 function, it returns\n\"(state_mask \u0026 need_mask) \u003d\u003d need_mask\". \n\nSo, \"chipset_in_state(CHIPSET_STATE_STANDBY | CHIPSET_STATE_ON)\" statement still can identify S0ixS0 or S0S0ix state from other states properly.\n\nBut if this hook is scheduled later after state is already changed to S0ix instead at S0ixS0(or S0S0ix), then \"chipset_in_state(CHIPSET_STATE_STANDBY | CHIPSET_STATE_ON)\" won\u0027t return true.",
+      "parentUuid": "71c9f878_76cad026",
+      "revId": "69fa8b606dd3e06c09827e337d2d52b1b464cb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
