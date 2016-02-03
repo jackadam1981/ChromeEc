@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71449888_5e499547",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-02-03T06:24:42Z",
+      "side": 1,
+      "message": "Please remove the alternative array of KSO. The bit definition of KSO and KSI are different from the others. For example, if func \u003c\u003d0 in gpio_alt_sel() means set pinmux to GPIO, but it will set the pins of KSO \u0026 KSI to keyboard. That\u0027s why I set all of pinmux of them in gpio_preinit. Add this array will change keyboard to GPIO in gpio_config_pins().",
+      "revId": "78c815fe3fe48aa9137146a78417cb8942adea8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
