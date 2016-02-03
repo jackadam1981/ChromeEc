@@ -1092,7 +1092,9 @@ int charge_set_input_current_limit(int ma)
 /* Wake up the task when something important happens */
 static void charge_wakeup(void)
 {
+#ifdef CONFIG_USB_CHARGER
 	task_wake(TASK_ID_CHARGER);
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, charge_wakeup, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_AC_CHANGE, charge_wakeup, HOOK_PRIO_DEFAULT);

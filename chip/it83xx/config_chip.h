@@ -22,6 +22,16 @@
 /* Default PLL frequency. */
 #define PLL_CLOCK 48000000
 
+/*     */
+#define PLL_8M			0
+#define PLL_16M			1
+#define PLL_24M			2
+#define PLL_32M			3
+#define PLL_48M			4
+#define PLL_64M			5
+#define PLL_72M			6
+#define PLL_96M			7
+
 /* Number of I2C ports */
 #define I2C_PORT_COUNT 3
 
