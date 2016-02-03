@@ -22,6 +22,30 @@
       "revId": "b3d306b99aab6116832ba17b504ea94c4459bf0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1d6100b_6057720e",
+        "filename": "board/cr50/tpm2/stubs.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2016-02-03T07:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31fce07c_9b85d77e",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "b3d306b99aab6116832ba17b504ea94c4459bf0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
