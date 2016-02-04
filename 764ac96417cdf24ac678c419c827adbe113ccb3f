@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "b1537054_d8a64d2a",
+        "filename": "common/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-02-04T01:57:45Z",
+      "side": 1,
+      "message": "This situation like resource management. I think semaphore is better choice. Once one task locks mutex, only itself can unlock mutex and the other tasks need to wait.  \n\nBut just like you say, counter is a simpler solution to fix this bug now.",
+      "parentUuid": "31c3005d_8862e7b8",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 19
+      },
+      "revId": "764ac96417cdf24ac678c419c827adbe113ccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11f7dc9a_e06708f5",
         "filename": "common/i2c.c",
         "patchSetId": 3
