@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d19b848b_078c1ab2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-04T17:59:14Z",
+      "side": 1,
+      "message": "BUG\u003dchrome-os-partner:45366\n\nThis is fixing it. Right?",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "84216faf4b0423f471d87a18454d22b52977c21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31fce07c_8c0bdc01",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-04T17:59:14Z",
+      "side": 1,
+      "message": "Add a\n\n  if (tmp)\n    return EC_ERROR_UNKNOWN;\n\nas below.",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 40
+      },
+      "revId": "84216faf4b0423f471d87a18454d22b52977c21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
