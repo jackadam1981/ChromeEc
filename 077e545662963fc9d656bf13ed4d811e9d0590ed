@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d186242d_29d56dde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-02-04T05:48:58Z",
+      "side": 1,
+      "message": "This is safe because __schedule() is a global and all callers think r2 and r3 can already be clobbered because of AAPCS conventions?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "077e545662963fc9d656bf13ed4d811e9d0590ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51723421_25410e94",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-02-04T05:48:58Z",
+      "side": 1,
+      "message": "This should be \u0027\u003c\u0027, right? We should never reschedule out of our array bounds.",
+      "revId": "077e545662963fc9d656bf13ed4d811e9d0590ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
