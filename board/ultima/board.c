@@ -5,6 +5,7 @@
 /* Strago board-specific configuration */
 
 #include "adc.h"
+#include "bq24773.h"
 #include "button.h"
 #include "charger.h"
 #include "charge_state.h"
@@ -209,3 +210,28 @@ void lid_angle_peripheral_enable(int enable)
 	}
 }
 #endif
+
+int charger_profile_override(struct charge_state_data *curr)
+{
+	if (((curr->chg.option & 0xff00) == 0xff00) ||
+	    ((curr->chg.option & 0x00ff) == 0x00ff)) {
+		raw_write16(0x12, 0xe14f);
+	}
+	return 0;
+}
+
+/* Customs options controllable by host command. */
+#define PARAM_FASTCHARGE (CS_PARAM_CUSTOM_PROFILE_MIN + 0)
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
+
+}
