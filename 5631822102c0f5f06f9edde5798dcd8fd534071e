@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5116b490_fd9cc22c",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-04T20:35:51Z",
+      "side": 1,
+      "message": "I think this should be behind CONFIG_USB_POWER_DELIVERY, rather than CONFIG_CHARGE_MANAGER. I believe CONFIG_USB_POWER_DELIVERY implies the existence of PD_MAX_CURRENT_MA.",
+      "range": {
+        "startLine": 575,
+        "startChar": 7,
+        "endLine": 575,
+        "endChar": 28
+      },
+      "revId": "5631822102c0f5f06f9edde5798dcd8fd534071e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
