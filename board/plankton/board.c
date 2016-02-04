@@ -40,6 +40,7 @@ static enum typec_cable cable;
 
 static int active_cc;
 static int host_mode;
+static int drp_enable;
 
 static int sn75dp130_dpcd_init(void);
 
@@ -127,6 +128,7 @@ enum usbc_action {
 	USBC_ACT_CABLE_POLARITY0,
 	USBC_ACT_CABLE_POLARITY1,
 	USBC_ACT_CCD_EN,
+	USBC_ACT_DRP_TOGGLE,
 
 	/* Number of USBC actions */
 	USBC_ACT_COUNT
@@ -146,19 +148,48 @@ enum board_src_cap src_cap_mapping[USBC_ACT_COUNT] =
 static void set_active_cc(int cc)
 {
 	active_cc = cc;
-
-	/* Pull-up on CC2 */
-	gpio_set_flags(GPIO_USBC_CC2_HOST,
-		       (cc && host_mode) ? GPIO_OUT_HIGH : GPIO_INPUT);
-	/* Pull-down on CC2 */
-	gpio_set_flags(GPIO_USBC_CC2_DEVICE_ODL,
-		       (cc && !host_mode) ? GPIO_OUT_LOW : GPIO_INPUT);
-	/* Pull-up on CC1 */
-	gpio_set_flags(GPIO_USBC_CC1_HOST,
-		       (!cc && host_mode) ? GPIO_OUT_HIGH : GPIO_INPUT);
-	/* Pull-down on CC1 */
-	gpio_set_flags(GPIO_USBC_CC1_DEVICE_ODL,
-		       (!cc && !host_mode) ? GPIO_OUT_LOW : GPIO_INPUT);
+	if (drp_enable) {
+		/*
+		 * If dualrole mode is active, then need to set both CC lines
+		 * high or low as specified by the parameter cc.
+		 *
+		 */
+		if (cc) {
+			/* Source mode */
+			/* Pull-up CC2 */
+			gpio_set_flags(GPIO_USBC_CC2_HOST, GPIO_OUT_HIGH);
+			/* Pull-up CC1 */
+			gpio_set_flags(GPIO_USBC_CC1_HOST, GPIO_OUT_HIGH);
+			gpio_set_flags(GPIO_USBC_CC2_DEVICE_ODL, GPIO_INPUT);
+			gpio_set_flags(GPIO_USBC_CC1_DEVICE_ODL, GPIO_INPUT);
+		} else {
+			/* Sink mode */
+			/* Pull-down on CC2 */
+			gpio_set_flags(GPIO_USBC_CC2_DEVICE_ODL, GPIO_OUT_LOW);
+			/* Pull-down on CC1 */
+			gpio_set_flags(GPIO_USBC_CC1_DEVICE_ODL, GPIO_OUT_LOW);
+			gpio_set_flags(GPIO_USBC_CC2_HOST, GPIO_INPUT);
+			gpio_set_flags(GPIO_USBC_CC1_HOST, GPIO_INPUT);
+		}
+	} else {
+		/*
+		 * If dualrole mode is not active, then only one CC line is
+		 * being used and its setting is determined by the value of
+		 * 'host_mode'.
+		 */
+		/* Pull-up on CC2 */
+		gpio_set_flags(GPIO_USBC_CC2_HOST,
+			       (cc && host_mode) ? GPIO_OUT_HIGH : GPIO_INPUT);
+		/* Pull-down on CC2 */
+		gpio_set_flags(GPIO_USBC_CC2_DEVICE_ODL,
+			       (cc && !host_mode) ? GPIO_OUT_LOW : GPIO_INPUT);
+		/* Pull-up on CC1 */
+		gpio_set_flags(GPIO_USBC_CC1_HOST,
+			       (!cc && host_mode) ? GPIO_OUT_HIGH : GPIO_INPUT);
+		/* Pull-down on CC1 */
+		gpio_set_flags(GPIO_USBC_CC1_DEVICE_ODL,
+			       (!cc && !host_mode) ? GPIO_OUT_LOW : GPIO_INPUT);
+	}
 }
 
 /**
@@ -235,6 +266,40 @@ static void fake_disconnect_start(void)
 }
 DECLARE_DEFERRED(fake_disconnect_start);
 
+/**
+ * Enable or disable dualrole mode operation. By default Plankton has
+ * dualrole mode disabled and attempts to connect in a sink role. Console
+ * commands/button presses can cause it to swtich to source_only/sink_only
+ * modes.
+ */
+static void update_usbc_dual_role(int dual_role)
+{
+	if (dual_role == PD_DRP_TOGGLE_ON) {
+		drp_enable = 1;
+		/*
+		 * Cable detect is not needed when operating in dualrole mode
+		 * since both CC lines are used and SRC/SNK changes are dictated
+		 * by the USB PD protocol state machine.
+		 */
+		hook_call_deferred(detect_cc_cable, -1);
+		/* Need to make sure both CC lines are set for SNK or SRC. */
+		set_active_cc(host_mode);
+		/* Ensure that PD communication is enabled. */
+		pd_comm_enable(1);
+	} else {
+		drp_enable = 0;
+		/*
+		 * Dualrole mode is not active, resume cable detect function
+		 * which controls which CC line is active.
+		 */
+		hook_call_deferred(detect_cc_cable,
+				   PD_T_CC_DEBOUNCE + PD_T_SAFE_0V);
+	}
+	/* Update dual role setting used in USB PD protocol state machine */
+	pd_set_dual_role(dual_role);
+	cprintf(CC_USBPD, "DRP = %d, host_mode = %d\n", drp_enable, host_mode);
+}
+
 static void set_usbc_action(enum usbc_action act)
 {
 	int need_soft_reset;
@@ -246,12 +311,12 @@ static void set_usbc_action(enum usbc_action act)
 	case USBC_ACT_20V_TO_DUT:
 		need_soft_reset = gpio_get_level(GPIO_VBUS_CHARGER_EN);
 		board_set_source_cap(src_cap_mapping[act]);
-		pd_set_dual_role(PD_DRP_FORCE_SOURCE);
+		update_usbc_dual_role(PD_DRP_FORCE_SOURCE);
 		if (need_soft_reset)
 			pd_soft_reset();
 		break;
 	case USBC_ACT_DEVICE:
-		pd_set_dual_role(PD_DRP_FORCE_SINK);
+		update_usbc_dual_role(PD_DRP_FORCE_SINK);
 		break;
 	case USBC_ACT_USBDP_TOGGLE:
 		was_usb_mode = gpio_get_level(GPIO_USBC_SS_USB_MODE);
@@ -313,6 +378,11 @@ static void set_usbc_action(enum usbc_action act)
 		gpio_set_level(GPIO_CASE_CLOSE_DFU_L, 0);
 		gpio_set_level(GPIO_CASE_CLOSE_EN, 1);
 		gpio_set_level(GPIO_CASE_CLOSE_DFU_L, 1);
+		break;
+	case  USBC_ACT_DRP_TOGGLE:
+		/* Toggle dualrole mode setting. */
+		update_usbc_dual_role(drp_enable ?
+				      PD_DRP_TOGGLE_OFF : PD_DRP_TOGGLE_ON);
 		break;
 	default:
 		break;
@@ -520,6 +590,8 @@ static int cmd_usbc_action(int argc, char *argv[])
 		act = USBC_ACT_CABLE_POLARITY0;
 	else if (!strcasecmp(argv[1], "pol1"))
 		act = USBC_ACT_CABLE_POLARITY1;
+	else if (!strcasecmp(argv[1], "drp"))
+		act = USBC_ACT_DRP_TOGGLE;
 	else
 		return EC_ERROR_PARAM1;
 
@@ -528,7 +600,7 @@ static int cmd_usbc_action(int argc, char *argv[])
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(usbc_action, cmd_usbc_action,
-			"<5v|12v|20v|ccd|dev|usb|dp|flip|pol0|pol1>",
+			"<5v|12v|20v|ccd|dev|usb|dp|flip|pol0|pol1|drp>",
 			"Set Plankton type-C port state",
 			NULL);
 
@@ -590,12 +662,20 @@ int board_fake_pd_adc_read(int cc)
 		/* Always disconnected */
 		return fake_pd_host_mode ? 3000 : 0;
 	} else {
-		/* Only read the active CC line, fake disconnected on other */
-		if (active_cc == cc)
+		if (drp_enable) {
+			/* Always read the req CC line when in drp mode */
 			return adc_read_channel(cc ? ADC_CH_CC2_PD :
 						     ADC_CH_CC1_PD);
-		else
-			return host_mode ? 3000 : 0;
+		} else {
+			/*
+			 * Only read the active CC line, fake disconnected
+			 * on other CC line. */
+			if (active_cc == cc)
+				return adc_read_channel(cc ? ADC_CH_CC2_PD :
+							ADC_CH_CC1_PD);
+			else
+				return host_mode ? 3000 : 0;
+		}
 	}
 }
 
@@ -607,7 +687,8 @@ static void board_update_fake_adc_value(int host_mode)
 
 void board_pd_set_host_mode(int enable)
 {
-	cprintf(CC_USBPD, "Host mode: %d\n", enable);
+	if (!drp_enable)
+		cprintf(CC_USBPD, "Host mode: %d\n", enable);
 
 	if (board_pd_fake_disconnected()) {
 		board_update_fake_adc_value(enable);
@@ -618,6 +699,15 @@ void board_pd_set_host_mode(int enable)
 	if (host_mode != enable) {
 		host_mode = enable;
 		cable = TYPEC_CABLE_NONE;
+	}
+
+	if (drp_enable) {
+		/*
+		 * When in dualrole mode is on, active_cc is used to select
+		 * whether to advertise as a SRC or SNK. This setting
+		 * should mimic the desired vale of 'host_mode'.
+		 */
+		active_cc = host_mode;
 	}
 
 	if (enable) {
@@ -670,6 +760,9 @@ static void board_init(void)
 
 	/* Start detecting CC cable type */
 	hook_call_deferred(detect_cc_cable, SECOND);
+
+	/* Start up with dualrole mode off */
+	drp_enable = 0;
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
