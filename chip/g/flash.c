@@ -101,15 +101,15 @@ static int do_flash_op(enum flash_op op, int byte_offset, int words)
 {
 	volatile uint32_t *fsh_pe_control;
 	uint32_t opcode, tmp, errors;
-	int i;
-	int timedelay = 100;	     /* TODO(crosbug.com/p/45366): how long? */
+	int retry_count, max_retries, i;
+	int timedelay_us = 100;
 
 	/* Error status is self-clearing. Read it until it does (we hope). */
 	for (i = 0; i < 50; i++) {
 		tmp = GREAD(FLASH, FSH_ERROR);
 		if (!tmp)
 			break;
-		usleep(timedelay);
+		usleep(timedelay_us);
 	}
 	/* TODO: Is it even possible that we can't clear the error status?
 	 * What should/can we do about that? */
@@ -127,10 +127,14 @@ static int do_flash_op(enum flash_op op, int byte_offset, int words)
 	case OP_ERASE_BLOCK:
 		opcode = 0x31415927;
 		words = 0;			/* don't care, really */
+		/* This number is based on the TSMC spec Nme=Terase/Tsme */
+		max_retries = 45;
 		break;
 	case OP_WRITE_BLOCK:
 		opcode = 0x27182818;
 		words--;		     /* count register is zero-based */
+		/* This number is based on the TSMC spec Nmp=Tprog/Tsmp */
+		max_retries = 10;
 		break;
 	}
 
@@ -143,41 +147,53 @@ static int do_flash_op(enum flash_op op, int byte_offset, int words)
 	GWRITE_FIELD(FLASH, FSH_TRANS, MAINB, 0); /* NOT the info bank */
 	GWRITE_FIELD(FLASH, FSH_TRANS, SIZE, words);
 
-	/* Kick it off */
-	GWRITE(FLASH, FSH_PE_EN, 0xb11924e1);
-	*fsh_pe_control = opcode;
+	/* TODO: Make sure this function isn't getting called "too often" in
+	 * between erases. Send an extra pulse for better data retention?
+	 */
+	for (retry_count = 0; i < max_retries; retry_count++) {
+		/* Kick it off */
+		GWRITE(FLASH, FSH_PE_EN, 0xb11924e1);
+		*fsh_pe_control = opcode;
 
-	/* Wait for completion */
-	for (i = 0; i < 50; i++) {
-		tmp = *fsh_pe_control;
-		if (!tmp)
-			break;
-		usleep(timedelay);
+		/* Wait for completion. 150ms should be enough
+		 * (crosbug.com/p/45366).
+		 */
+		for (i = 0; i < 1500; i++) {
+			tmp = *fsh_pe_control;
+			if (!tmp)
+				break;
+			usleep(timedelay_us);
+		}
+
+		/* Timed out waiting for control register to clear */
+		if (tmp)
+			return EC_ERROR_UNKNOWN;
+
+		/* Check error status */
+		errors = GREAD(FLASH, FSH_ERROR);
+
+		/* Error status is self-clearing. Read it until it does
+		 * (we hope).
+		 */
+		for (i = 0; i < 50; i++) {
+			tmp = GREAD(FLASH, FSH_ERROR);
+			if (!tmp)
+				break;
+			usleep(timedelay_us);
+		}
+		/* If we can't clear the error status register (is that likely?)
+		 * then something is wrong.
+		 */
+		if (tmp)
+			return EC_ERROR_UNKNOWN;
+
+		/* The operation was successful. */
+		if (!errors)
+			return EC_SUCCESS;
+		/* If there were errors after completion retry. */
 	}
 
-	/* Timed out waiting for control register to clear */
-	if (tmp)
-		return EC_ERROR_UNKNOWN;
-
-	/* Check error status */
-	errors = GREAD(FLASH, FSH_ERROR);
-
-	/* Error status is self-clearing. Read it until it does (we hope). */
-	for (i = 0; i < 50; i++) {
-		tmp = GREAD(FLASH, FSH_ERROR);
-		if (!tmp)
-			break;
-		usleep(timedelay);
-	}
-
-	/* If there were errors after completion, or if we can't clear the
-	 * error status register (is that likely?) then something is wrong. */
-	if (errors || tmp)
-		return EC_ERROR_UNKNOWN;
-
-	/* The operation was successful. */
-	/* TODO: Should we read it back to be sure? */
-	return EC_SUCCESS;
+	return EC_ERROR_UNKNOWN;
 }
 
 /* Write up to CONFIG_FLASH_WRITE_IDEAL_SIZE bytes at once */
