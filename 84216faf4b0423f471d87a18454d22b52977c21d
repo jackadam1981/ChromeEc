@@ -45,6 +45,30 @@
       "revId": "84216faf4b0423f471d87a18454d22b52977c21d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1c4647f_196a4b2e",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1134159
+      },
+      "writtenOn": "2016-02-04T20:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31fce07c_8c0bdc01",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 40
+      },
+      "revId": "84216faf4b0423f471d87a18454d22b52977c21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
