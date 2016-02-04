@@ -379,8 +379,11 @@ static int charge_request(int voltage, int current)
 		/* With NVDC charger, keep VSYS voltage higher than battery */
 		voltage = charger_closest_voltage(
 			curr.batt.voltage + charger_get_info()->voltage_step);
-		/* And handle dead battery case */
-		voltage = MAX(voltage, battery_get_info()->voltage_min);
+		/* And handle no battery & dead battery case */
+		if (curr.batt.is_present == BP_NO)
+			voltage = MAX(voltage, battery_get_info()->voltage_max);
+		else
+			voltage = MAX(voltage, battery_get_info()->voltage_min);
 #else
 		voltage = current = 0;
 #endif
