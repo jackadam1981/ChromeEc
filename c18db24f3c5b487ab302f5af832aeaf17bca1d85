@@ -211,6 +211,126 @@
     },
     {
       "key": {
+        "uuid": "d19b848b_a119de08",
+        "filename": "driver/tcpm/ptn5100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-04T01:58:27Z",
+      "side": 1,
+      "message": "Is this string used anywhere?",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f127a8f2_7f5d73fb",
+        "filename": "driver/tcpm/ptn5100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-04T01:58:27Z",
+      "side": 1,
+      "message": "style should be \"char *var\".",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 6
+      },
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11f7dc9a_8df2b84f",
+        "filename": "driver/tcpm/ptn5100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-04T01:58:27Z",
+      "side": 1,
+      "message": "Should we return failure immediately if this fails?",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f127a8f2_9f5307ee",
+        "filename": "driver/tcpm/ptn5100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-04T01:58:27Z",
+      "side": 1,
+      "message": "Style should be \"} else {\"",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 7
+      },
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f127a8f2_df4d7f4a",
+        "filename": "driver/tcpm/ptn5100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-04T01:58:27Z",
+      "side": 1,
+      "message": "Again, consider returning failure if this fails, since your read variable may be uninitialized.",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11f7dc9a_6df78c41",
+        "filename": "driver/tcpm/ptn5100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-04T01:58:27Z",
+      "side": 1,
+      "message": "Style should be \"CONSTANT | CONSTANT\".",
+      "range": {
+        "startLine": 157,
+        "startChar": 16,
+        "endLine": 157,
+        "endChar": 49
+      },
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54c4e260_35cf703a",
         "filename": "driver/tcpm/ptn5100.c",
         "patchSetId": 1
@@ -222,6 +342,52 @@
       "writtenOn": "2016-01-25T21:01:04Z",
       "side": 1,
       "message": "Comment style is /* Comment */ or\n\n/*\n * Comment\n * Comment\n */",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31fce07c_166d3946",
+        "filename": "driver/tcpm/ptn5100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-04T01:58:27Z",
+      "side": 1,
+      "message": "Extra space here at EOL.",
+      "range": {
+        "startLine": 260,
+        "startChar": 74,
+        "endLine": 260,
+        "endChar": 75
+      },
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3115c084_d9691f3a",
+        "filename": "driver/tcpm/ptn5100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-04T01:58:27Z",
+      "side": 1,
+      "message": "You will make 1 needless extra pass through the loop, even though you are destined for failure (i \u003d\u003d MAX_RETRY_CNT).",
+      "range": {
+        "startLine": 262,
+        "startChar": 2,
+        "endLine": 263,
+        "endChar": 27
+      },
       "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -245,6 +411,63 @@
         "endLine": 369,
         "endChar": 36
       },
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "711bb8b8_10942964",
+        "filename": "driver/tcpm/ptn5100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-04T01:58:27Z",
+      "side": 1,
+      "message": "Please remove this code.",
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71c9f878_ddbd7cee",
+        "filename": "driver/tcpm/ptn5100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-04T01:58:27Z",
+      "side": 1,
+      "message": "I think you can refactor this code, since you\u0027re setting these items unconditionally, based upon cc_st \u0026 SC_CC1_MASK (not dev_ext[port].port_st \u0026 PTN_PS_CURROLE_UF).",
+      "range": {
+        "startLine": 577,
+        "startChar": 3,
+        "endLine": 578,
+        "endChar": 36
+      },
+      "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31c3005d_298e351d",
+        "filename": "driver/tcpm/ptn5100.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1362,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-04T01:58:27Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to retry init. It will lead to massive console spam if something is broken or misconfigured.",
       "revId": "c18db24f3c5b487ab302f5af832aeaf17bca1d85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
