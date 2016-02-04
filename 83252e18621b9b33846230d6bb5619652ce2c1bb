@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b121b0e4_32b20d23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-04T19:23:42Z",
+      "side": 1,
+      "message": "CL title should indicate what you changed. \"Do suspend stress test, battery will auto discharge\" is more appropriate for a title on the bug tracker. How about \"Fix battery register corruption\".",
+      "revId": "83252e18621b9b33846230d6bb5619652ce2c1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31fce07c_e738b90f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-04T19:23:42Z",
+      "side": 1,
+      "message": "Do we know how or why this is happening?",
+      "revId": "83252e18621b9b33846230d6bb5619652ce2c1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "711bb8b8_86a0dfc3",
+        "filename": "board/ultima/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-04T19:23:42Z",
+      "side": 1,
+      "message": "What is this register, and what does 0xe14f represent? Please leave a comment.",
+      "revId": "83252e18621b9b33846230d6bb5619652ce2c1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
