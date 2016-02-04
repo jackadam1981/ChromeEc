@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "51723421_c5591a85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-02-04T14:53:52Z",
+      "side": 1,
+      "message": "Yes. I answered this to myself in the bug thread as well. Sorry for not replying to myself in here as well. Thinking while tired never works out for me.",
+      "parentUuid": "11f7dc9a_c84caec9",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "077e545662963fc9d656bf13ed4d811e9d0590ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51723421_25410e94",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "Yes. We should have caught that.\n\nHowever the ASSERT did its job, it enabled us to confirm that the value of resched was sometimes wrong (but not often). This is much more useful than the ASSERT(tasks_ready) a few lines down, which can be removed once you correct this assert (as we know that 1\u003c\u003cresched is non-zero as we know that TASK_ID_COUNT is \u003c32). We also had an assert in __schedule that the value of resched was in range and it never fired. This is what prompted us to look at the svc handler and find the application note.",
       "parentUuid": "51723421_25410e94",
+      "revId": "077e545662963fc9d656bf13ed4d811e9d0590ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11935c6b_4b50e50c",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-02-04T14:53:52Z",
+      "side": 1,
+      "message": "Can you please send over a CL to do the cleanups the you laid out?",
+      "parentUuid": "711bb8b8_e33a656a",
       "revId": "077e545662963fc9d656bf13ed4d811e9d0590ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
