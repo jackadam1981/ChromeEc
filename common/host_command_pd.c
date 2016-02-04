@@ -74,11 +74,13 @@ static void pd_exchange_update_ec_status(struct ec_params_pd_status *ec_status,
 #ifdef CONFIG_HOSTCMD_PD_CHG_CTRL
 	ec_status->charge_state = charge_state;
 #endif
+/* msmart
 	if (charge_get_flags() & CHARGE_FLAG_BATT_RESPONSIVE)
 		ec_status->batt_soc = charge_get_percent();
 	else
 		ec_status->batt_soc = -1;
 	ec_status->status = ec_state;
+*/
 }
 
 #ifdef CONFIG_HOSTCMD_PD_PANIC

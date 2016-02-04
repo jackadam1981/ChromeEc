@@ -4,10 +4,15 @@
  */
 
 #include "common.h"
+#include "console.h"
 #include "registers.h"
 #include "task.h"
 #include "kmsc_chip.h"
 #include "intc.h"
+
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
 
 void intc_cpu_int_group_5(void)
 {
@@ -79,6 +84,21 @@ void intc_cpu_int_group_12(void)
 		peci_interrupt();
 		break;
 #endif
+#ifdef CONFIG_USB_PD_8320
+	case IT83XX_IRQ_USBPD0:
+		task_clear_pending_irq(IT83XX_IRQ_USBPD0);
+		task_disable_irq(IT83XX_IRQ_USBPD0);
+		pd_irq(0);
+		task_enable_irq(IT83XX_IRQ_USBPD0);
+		break;
+
+	case IT83XX_IRQ_USBPD1:
+		task_clear_pending_irq(IT83XX_IRQ_USBPD1);
+		task_disable_irq(IT83XX_IRQ_USBPD1);
+		pd_irq(1);
+		task_enable_irq(IT83XX_IRQ_USBPD1);
+		break;
+#endif /* CONFIG_USB_PD_8320 */
 	default:
 		break;
 	}
