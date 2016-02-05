@@ -22,6 +22,30 @@
       "revId": "5631822102c0f5f06f9edde5798dcd8fd534071e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d137046a_019d0a7c",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-02-05T06:32:13Z",
+      "side": 1,
+      "message": "Okay, I will change it to CONFIG_USB_POWER_DELIVERY",
+      "parentUuid": "5116b490_fd9cc22c",
+      "range": {
+        "startLine": 575,
+        "startChar": 7,
+        "endLine": 575,
+        "endChar": 28
+      },
+      "revId": "5631822102c0f5f06f9edde5798dcd8fd534071e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
