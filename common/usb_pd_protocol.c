@@ -85,7 +85,11 @@ enum vdm_states {
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 /* Port dual-role state */
+#ifdef CONFIG_USB_PD_8320
+enum pd_dual_role_states drp_state = PD_DRP_TOGGLE_ON;
+#else
 enum pd_dual_role_states drp_state = PD_DRP_TOGGLE_OFF;
+#endif /*CONFIG_USB_PD_8320*/
 
 /* Last received source cap */
 static uint32_t pd_src_caps[CONFIG_USB_PD_PORT_COUNT][PDO_MAX_OBJECTS];
@@ -1203,8 +1207,7 @@ static void pd_update_try_source(void)
 	 * and at some minimum percentage.
 	 */
 	pd_try_src_enable = drp_state == PD_DRP_TOGGLE_ON &&
-			    batt_soc >= CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC;
-
+		batt_soc >= CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC;
 	/*
 	 * Clear this flag to cover case where a TrySrc
 	 * mode went from enabled to disabled and trying_source
