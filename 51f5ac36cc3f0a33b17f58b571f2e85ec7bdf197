@@ -22,6 +22,30 @@
       "revId": "51f5ac36cc3f0a33b17f58b571f2e85ec7bdf197",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11dfdc57_8bb02db1",
+        "filename": "board/kunimitsu/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2016-02-05T17:53:27Z",
+      "side": 0,
+      "message": "We tried removing few console commands and other options, will try this.\nmeanwhile can we merge this change to unblock other testing.",
+      "parentUuid": "b1653098_68a9639a",
+      "range": {
+        "startLine": 84,
+        "startChar": 31,
+        "endLine": 84,
+        "endChar": 34
+      },
+      "revId": "51f5ac36cc3f0a33b17f58b571f2e85ec7bdf197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
