@@ -46,6 +46,30 @@
       "revId": "51f5ac36cc3f0a33b17f58b571f2e85ec7bdf197",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11543cb0_83f35ec5",
+        "filename": "board/kunimitsu/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-05T18:00:51Z",
+      "side": 0,
+      "message": "do you mean it\u0027s actually code RAM size issue ?\nthe CL description let me think it was a data RAM space issue.",
+      "parentUuid": "11dfdc57_8bb02db1",
+      "range": {
+        "startLine": 84,
+        "startChar": 31,
+        "endLine": 84,
+        "endChar": 34
+      },
+      "revId": "51f5ac36cc3f0a33b17f58b571f2e85ec7bdf197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
