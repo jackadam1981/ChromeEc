@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "515a34de_684ddbc1",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-02-05T20:11:14Z",
+      "side": 1,
+      "message": "Using the method suggested below, this if/else is not required.",
+      "parentUuid": "b1653098_887db791",
+      "range": {
+        "startLine": 154,
+        "startChar": 19,
+        "endLine": 154,
+        "endChar": 50
+      },
+      "revId": "d036d4a3618880a0ccb0b863fa7a06f5cb99c711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91682c72_c7107e31",
         "filename": "board/plankton/board.c",
         "patchSetId": 1
@@ -94,6 +118,54 @@
     },
     {
       "key": {
+        "uuid": "d16e247a_c9c651c5",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-02-05T20:11:14Z",
+      "side": 1,
+      "message": "This does simplify it and removes the confusing reused of \u0027active_cc\u0027. I have updated the conditions.",
+      "parentUuid": "d16e247a_09b9c98f",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 2
+      },
+      "revId": "d036d4a3618880a0ccb0b863fa7a06f5cb99c711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f16b2868_eacb07ca",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-02-05T20:11:14Z",
+      "side": 1,
+      "message": "Updated",
+      "parentUuid": "91682c72_c7107e31",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 2
+      },
+      "revId": "d036d4a3618880a0ccb0b863fa7a06f5cb99c711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91682c72_a748ea45",
         "filename": "board/plankton/board.c",
         "patchSetId": 1
@@ -105,6 +177,30 @@
       "writtenOn": "2016-02-05T18:46:06Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 272,
+        "startChar": 43,
+        "endLine": 272,
+        "endChar": 49
+      },
+      "revId": "d036d4a3618880a0ccb0b863fa7a06f5cb99c711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1653098_c8c3af8c",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-02-05T20:11:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91682c72_a748ea45",
       "range": {
         "startLine": 272,
         "startChar": 43,
@@ -164,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "b1653098_889ff783",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-02-05T20:11:14Z",
+      "side": 1,
+      "message": "This is done to correct the case where pd_comm_enable(0) is called by the detect_cc_cable function. I was finding that pd_comm had been disabled and following a disconnect/reconnect sequence after drp had been enabled that the protocol state machine would get latched in SNK_DISCOVERY since no messages were being sent or received by plankton.",
+      "parentUuid": "715f38cc_6693ce1f",
+      "range": {
+        "startLine": 287,
+        "startChar": 2,
+        "endLine": 288,
+        "endChar": 20
+      },
+      "revId": "d036d4a3618880a0ccb0b863fa7a06f5cb99c711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1e38448_6168b6c5",
         "filename": "board/plankton/board.c",
         "patchSetId": 1
@@ -210,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "715f38cc_26d956a3",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-02-05T20:11:14Z",
+      "side": 1,
+      "message": "This section isn\u0027t needed and has been removed.",
+      "parentUuid": "315940ea_64bc2a81",
+      "range": {
+        "startLine": 708,
+        "startChar": 30,
+        "endLine": 708,
+        "endChar": 34
+      },
+      "revId": "d036d4a3618880a0ccb0b863fa7a06f5cb99c711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "715f38cc_a6b0e6b0",
         "filename": "board/plankton/board.c",
         "patchSetId": 1
@@ -233,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "d16e247a_e9cb15ca",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-02-05T20:11:14Z",
+      "side": 1,
+      "message": "This was only needed to make sure that active_cc was the correct setting for the calls below, but with the change to how the CC lines are set, it\u0027s not required.",
+      "parentUuid": "715f38cc_a6b0e6b0",
+      "range": {
+        "startLine": 710,
+        "startChar": 2,
+        "endLine": 710,
+        "endChar": 24
+      },
+      "revId": "d036d4a3618880a0ccb0b863fa7a06f5cb99c711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91682c72_a761cab7",
         "filename": "board/plankton/board.c",
         "patchSetId": 1
@@ -244,6 +412,30 @@
       "writtenOn": "2016-02-05T18:46:06Z",
       "side": 1,
       "message": "you should probably move this up in the function",
+      "range": {
+        "startLine": 765,
+        "startChar": 1,
+        "endLine": 765,
+        "endChar": 16
+      },
+      "revId": "d036d4a3618880a0ccb0b863fa7a06f5cb99c711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1e38448_01ce0ab2",
+        "filename": "board/plankton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-02-05T20:11:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91682c72_a761cab7",
       "range": {
         "startLine": 765,
         "startChar": 1,
