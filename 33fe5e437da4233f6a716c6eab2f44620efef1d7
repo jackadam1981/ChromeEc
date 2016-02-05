@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1bb70f1_f83b1115",
+        "filename": "board/kunimitsu/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-02-05T11:45:36Z",
+      "side": 1,
+      "message": "If a battery was ok and set to BP_YES, and then cut off the battery, it will lost I2c communication, but it wouldn\u0027t be set to BP_NO. At this time charger get precharge table as batt_info, and pre-charge a cutoff battery, will this cause battery wake up again ?",
+      "revId": "33fe5e437da4233f6a716c6eab2f44620efef1d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
