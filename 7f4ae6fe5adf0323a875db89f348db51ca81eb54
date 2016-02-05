@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "711bb8b8_576333c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2016-02-05T00:14:56Z",
+      "side": 1,
+      "message": "please keep TEST clause the last in the list and please test this change: does the TPM still start, do the first few TCG tests which were passing before still pass?",
+      "revId": "7f4ae6fe5adf0323a875db89f348db51ca81eb54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
