@@ -131,7 +131,7 @@ void usb1_evt(enum gpio_signal signal)
 
 int board_get_battery_soc(void)
 {
-	/*msmart return batt_soc;*/
+	/*msmart return batt_soc*/
 	return 50;
 }
 
