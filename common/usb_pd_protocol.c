@@ -85,7 +85,7 @@ enum vdm_states {
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 /* Port dual-role state */
-#ifndef CONFIG_USB_PD_8320
+#ifdef CONFIG_USB_PD_8320
 enum pd_dual_role_states drp_state = PD_DRP_TOGGLE_ON;
 #else
 enum pd_dual_role_states drp_state = PD_DRP_TOGGLE_OFF;
