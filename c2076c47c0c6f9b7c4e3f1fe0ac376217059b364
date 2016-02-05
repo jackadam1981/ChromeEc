@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11543cb0_a3c9ba32",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-05T18:36:04Z",
+      "side": 1,
+      "message": "Suggest to put this first, and make it \"INIT \u003d -1\", then add BATTERY_TYPE_COUNT at the end (you\u0027ll need it for your array size later, if you follow my suggestions).",
+      "revId": "c2076c47c0c6f9b7c4e3f1fe0ac376217059b364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f16b2868_aac98f32",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-05T18:36:04Z",
+      "side": 1,
+      "message": "This table can be const, I think.",
+      "revId": "c2076c47c0c6f9b7c4e3f1fe0ac376217059b364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1e38448_410db252",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-05T18:36:04Z",
+      "side": 1,
+      "message": "If you index the table by enum battery_type, then you won\u0027t need this extra type field. You can then change battery_device from a pointer to an \"enum battery_type\", and come back to the table to lookup params.",
+      "revId": "c2076c47c0c6f9b7c4e3f1fe0ac376217059b364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
