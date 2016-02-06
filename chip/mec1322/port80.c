@@ -56,30 +56,31 @@ static void port_80_interrupt_init(void)
 	MEC1322_INT_SOURCE(23) = (1 << 1);
 	/* Enable IRQ vector 23. */
 	MEC1322_INT_BLK_EN |= (1 << 23);
-	/* Enable the interrupt. */
-	MEC1322_TMR16_IEN(1) |= 1;
+	/* Setup the interrupt. */
 	MEC1322_INT_ENABLE(23) = (1 << 1);
 	task_enable_irq(MEC1322_IRQ_TIMER16_1);
 
 	/* Enable and start the timer. */
 	MEC1322_TMR16_CTL(1) |= 1 | (1 << 5);
+	/* Enable the interrupt. */
+	MEC1322_TMR16_IEN(1) |= 1;
 }
 DECLARE_HOOK(HOOK_INIT, port_80_interrupt_init, HOOK_PRIO_DEFAULT);
 
 static void port_80_interrupt_enable(void)
 {
-	/* Enable the interrupt. */
+	/* Enable the timer block and its interrupt. */
 	task_enable_irq(MEC1322_IRQ_TIMER16_1);
-	/* Enable the timer block. */
 	MEC1322_TMR16_CTL(1) |= 1;
+	MEC1322_TMR16_IEN(1) |= 1;
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, port_80_interrupt_enable, HOOK_PRIO_DEFAULT);
 
 static void port_80_interrupt_disable(void)
 {
-	/* Disable the timer block. */
+	/* Disable the timer block and its interrupt. */
+	MEC1322_TMR16_IEN(1) &= ~1;
 	MEC1322_TMR16_CTL(1) &= ~1;
-	/* Disable the interrupt. */
 	task_disable_irq(MEC1322_IRQ_TIMER16_1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, port_80_interrupt_disable,
