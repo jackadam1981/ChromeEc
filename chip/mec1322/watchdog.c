@@ -52,15 +52,18 @@ int watchdog_init(void)
 
 	MEC1322_TMR16_CTL(0) = val;
 
-	/* Enable interrupt from auxiliary timer */
+	/* Setup interrupt from auxiliary timer */
 	MEC1322_TMR16_IEN(0) |= 1;
-	task_enable_irq(MEC1322_IRQ_TIMER16_0);
 	MEC1322_INT_ENABLE(23) |= 1 << 0;
 	MEC1322_INT_BLK_EN |= 1 << 23;
 
 	/* Load and start the auxiliary timer */
 	MEC1322_TMR16_CNT(0) = CONFIG_AUX_TIMER_PERIOD_MS;
 	MEC1322_TMR16_CNT(0) |= 1 << 5;
+
+	/* Enable the interrupt */
+	task_clear_pending_irq(MEC1322_IRQ_TIMER16_0);
+	task_enable_irq(MEC1322_IRQ_TIMER16_0);
 #endif
 
 	/* Set timeout. It takes 1007us to decrement WDG_CNT by 1. */
