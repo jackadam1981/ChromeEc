@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11951cbd_7ea78d26",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-06T02:01:57Z",
+      "side": 1,
+      "message": "Your mask enable / disable scheme will only work if you have just one fan. How about adding a compile-time assert and fixing the code later, when necessary? \"BUILD_ASSERT(CONFIG_FANS \u003c\u003d 1)\".",
+      "revId": "cf21358f54a75247945fcee352b4e47fd48ed6c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
