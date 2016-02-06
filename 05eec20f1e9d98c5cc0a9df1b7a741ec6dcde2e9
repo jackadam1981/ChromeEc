@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11951cbd_21508a5a",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2016-02-06T19:12:19Z",
+      "side": 1,
+      "message": "I think this is attacking the wrong issue. It clears the NVIC pending interrupt, rather than the timer interrupt itself.\n\nWhilst I appreciate that we are trying to fix the problem, I think we should understand the problem first rather than throwing lots of black magic and hoping that something will fix it.\n\nOne thing that the MEC manual says (section 17.9.3 in my copy) about the TIMER STATUS REGISTER is that bit 0 is the EVENT_INTERRUPT. It says that this is either a level or a pulse depending on if the timer is set to automatically restart.\n\nIf we disable the timer just as the bit is set, then this would explain the continuous interrupts. It implies to me that we should always write to this register in the irq routine to clear the EVENT_INTERRUPT (it has write to clear semantics).\n\nIt probably would help to clear this bit every time we stop the counter just to be defensive.",
+      "revId": "05eec20f1e9d98c5cc0a9df1b7a741ec6dcde2e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
