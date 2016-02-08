@@ -16,6 +16,24 @@
       "revId": "71723b675c131fff3b0c9e252649cb7e54683ad9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d8e2cf1_8080b6b9",
+        "filename": "board/cr50/ec.tasklist",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-02-08T19:22:02Z",
+      "side": 1,
+      "message": "Just over 6k (from running tests under tpm_test).\n\n\u003e taskinfo\n   3   TPM              00000000   72.418554  6328/8192",
+      "parentUuid": "dd471866_e3ff527c",
+      "revId": "71723b675c131fff3b0c9e252649cb7e54683ad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
