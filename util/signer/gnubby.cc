@@ -6,10 +6,13 @@
 
 #include <fcntl.h>
 #include <stddef.h>
+#include <fstream>
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <pwd.h>
@@ -269,12 +272,50 @@ int getSW12(const uint8_t* buf, size_t buflen) {
   return buf[buflen - 2] * 256 + buf[buflen - 1];
 }
 
+// File to store user's gnubby pin
+static const char* pwd_file = "/tmp/.gnubbypin";
+
+// Must be accessible only by the user.
+#define ALL_MODE_BITS (S_IRWXU | S_IRWXG | S_IRWXO)
+#define WRONG_MODE_BITS (ALL_MODE_BITS & ~(S_IRUSR | S_IWUSR))
+
+static
+const char* getpin()
+{
+  static bool file_checked = false;
+
+  if (!file_checked) {
+    struct stat stat_buf;
+
+    file_checked = true;
+
+    if (!stat(pwd_file, &stat_buf)) {
+
+      if (S_ISREG(stat_buf.st_mode) &&
+          !(stat_buf.st_mode & WRONG_MODE_BITS)) {
+        std::ifstream inf(pwd_file);
+
+        if (inf) {
+          std::string strInput;
+	  static char pwd[20];
+
+          inf >> strInput;
+          strncpy(pwd, strInput.c_str(), sizeof(pwd));
+          return pwd;
+        }
+      }
+    }
+  }
+
+  return getpass("Gnubby PIN: ");
+}
+
 static
 void getPIN(uint8_t* out) {
   srand(time(NULL));  // yuk
   for (int i = 0; i < 16; ++i) out[i] = (uint32_t)rand() >> (i+1);
 
-  const char* pin = getpass("Gnubby PIN: ");
+  const char* pin = getpin();
   int len = strlen(pin);
 
   if (len == 6) {
