@@ -11,6 +11,7 @@
 #include "cpu.h"
 #include "host_command.h"
 #include "registers.h"
+#include "power.h"
 #include "system.h"
 #include "hooks.h"
 #include "task.h"
@@ -481,6 +482,12 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 
 	/* Flush console before hibernating */
 	cflush();
+
+#ifdef CONFIG_LOW_POWER_PSEUDO_G3
+	/* Enter Pseudo G3 if wake up by timer is not expected */
+	if (seconds == 0 && microseconds == 0)
+		enter_pseudo_g3();
+#endif
 
 #if SUPPORT_HIB
 	/* Add additional hibernate operations here */

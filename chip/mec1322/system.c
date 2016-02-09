@@ -11,6 +11,7 @@
 #include "cpu.h"
 #include "gpio.h"
 #include "host_command.h"
+#include "power.h"
 #include "registers.h"
 #include "shared_mem.h"
 #include "system.h"
@@ -201,6 +202,12 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 #endif
 
 	cflush();
+
+#ifdef CONFIG_LOW_POWER_PSEUDO_G3
+	/* Enter Pseudo G3 if wake up by timer is not expected */
+	if (seconds == 0 && microseconds == 0)
+		enter_pseudo_g3();
+#endif
 
 	/* Disable interrupts */
 	interrupt_disable();
