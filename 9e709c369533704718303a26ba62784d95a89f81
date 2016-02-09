@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bd9a6476_15ad1667",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-09T18:21:13Z",
+      "side": 1,
+      "message": "The only dependency is the standard cortex systick timer, which I believe we\u0027re not using at all.",
+      "parentUuid": "5da7a8bf_5207b2b0",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "9e709c369533704718303a26ba62784d95a89f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd83441c_eddfe11c",
         "filename": "chip/mec1322/clock.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-09T17:39:28Z",
       "side": 1,
       "message": "is this not compiling for some configurations without the #ifdef ?\nelse we can remove it, saving 8 bytes on a corner case config doesn\u0027t worth the #ifdef IMO.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 24
+      },
+      "revId": "9e709c369533704718303a26ba62784d95a89f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7da46cba_f310aa6e",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-09T18:21:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd83441c_eddfe11c",
       "range": {
         "startLine": 94,
         "startChar": 0,
