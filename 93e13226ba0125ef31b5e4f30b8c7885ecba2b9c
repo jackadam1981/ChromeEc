@@ -22,6 +22,30 @@
       "revId": "93e13226ba0125ef31b5e4f30b8c7885ecba2b9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddbd58cb_d3a57411",
+        "filename": "chip/mec1322/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-09T18:01:44Z",
+      "side": 1,
+      "message": "Done. Only 12 bytes saved! But still worth.",
+      "parentUuid": "1d89b03a_8d690169",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 25
+      },
+      "revId": "93e13226ba0125ef31b5e4f30b8c7885ecba2b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
