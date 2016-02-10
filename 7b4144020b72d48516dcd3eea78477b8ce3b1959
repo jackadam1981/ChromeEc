@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddc9d89d_dc33a1aa",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-02-10T17:13:43Z",
+      "side": 1,
+      "message": "Should you print this error condition first before printing the port80 so that one can when is the first skipped por80?\n\nMay be add a new special code (port80.h enum port_80_event) to indicate this overflow in the history buffer?",
+      "revId": "7b4144020b72d48516dcd3eea78477b8ce3b1959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
