@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7dbb8cf2_3e997133",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2016-02-10T16:08:46Z",
+      "side": 1,
+      "message": "Better to check len(cmd) instead of ignoring this exception.",
+      "range": {
+        "startLine": 731,
+        "startChar": 13,
+        "endLine": 731,
+        "endChar": 23
+      },
+      "revId": "5ce7d8c6150566cd1a40b0797f89133a9ae56a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
