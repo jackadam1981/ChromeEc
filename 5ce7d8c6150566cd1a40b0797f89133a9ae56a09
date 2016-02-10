@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fdce9ca2_3de973fd",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-02-10T17:33:00Z",
+      "side": 1,
+      "message": "Ah, good point. \u0027%\u0027 seems okay.",
+      "parentUuid": "9dc4c07e_9f187bbb",
+      "range": {
+        "startLine": 461,
+        "startChar": 20,
+        "endLine": 461,
+        "endChar": 21
+      },
+      "revId": "5ce7d8c6150566cd1a40b0797f89133a9ae56a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dbec8e3_9d89a3e6",
         "filename": "util/ec3po/console.py",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-10T16:24:22Z",
       "side": 1,
       "message": "if mode \u003d\u003d \u0027auto\u0027:\n  os.write(\u0027Auto not implemented yet; treating it as always.\\n\u0027)\n\nOh, and TODO is typo\u0027d.",
+      "range": {
+        "startLine": 498,
+        "startChar": 10,
+        "endLine": 498,
+        "endChar": 52
+      },
+      "revId": "5ce7d8c6150566cd1a40b0797f89133a9ae56a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fdce9ca2_3d973370",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-02-10T17:33:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dbec8e3_9d89a3e6",
       "range": {
         "startLine": 498,
         "startChar": 10,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ddc9d89d_3ca6151d",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-02-10T17:33:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dbb8cf2_3e997133",
+      "range": {
+        "startLine": 731,
+        "startChar": 13,
+        "endLine": 731,
+        "endChar": 23
+      },
+      "revId": "5ce7d8c6150566cd1a40b0797f89133a9ae56a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dbec8e3_5d8c2bf1",
         "filename": "util/ec3po/console_unittest.py",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2016-02-10T16:24:22Z",
       "side": 1,
       "message": "Seems like the first line is redundant.",
+      "range": {
+        "startLine": 1436,
+        "startChar": 4,
+        "endLine": 1437,
+        "endChar": 60
+      },
+      "revId": "5ce7d8c6150566cd1a40b0797f89133a9ae56a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddc9d89d_fccadd92",
+        "filename": "util/ec3po/console_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1437,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-02-10T17:33:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dbec8e3_5d8c2bf1",
       "range": {
         "startLine": 1436,
         "startChar": 4,
