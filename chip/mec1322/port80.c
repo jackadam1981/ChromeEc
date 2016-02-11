@@ -13,18 +13,16 @@
 #include "registers.h"
 #include "task.h"
 
-void port_80_interrupt(void)
-{
-	int data;
-	MEC1322_TMR16_STS(1) = 1; /* Ack the interrupt */
-	if ((1 << 1) & MEC1322_INT_RESULT(23)) {
-		data = port_80_read();
+/* Fire timer interrupt every 1000 usec to check for port80 data. */
+#define POLL_PERIOD_USEC 1000
+/* After 30 seconds of no port 80 data, disable the timer interrupt. */
+#define INTERRUPT_DISABLE_TIMEOUT_SEC 30
+#define INTERRUPT_DISABLE_IDLE_COUNT (INTERRUPT_DISABLE_TIMEOUT_SEC \
+				      * 1000000 \
+				      / POLL_PERIOD_USEC)
 
-		if (data != PORT_80_IGNORE)
-			port_80_write(data);
-	}
-}
-DECLARE_IRQ(MEC1322_IRQ_TIMER16_1, port_80_interrupt, 2);
+/* Count the number of consecutive interrupts with no port 80 data. */
+static int idle_count;
 
 /*
  * The port 80 interrupt will use TIMER16 instance 1 for a 1ms countdown
@@ -46,8 +44,8 @@ static void port_80_interrupt_init(void)
 	val &= ~(1 << 2);
 	MEC1322_TMR16_CTL(1) = val;
 
-	/* Set the reload value to 1000us. (1ms). */
-	MEC1322_TMR16_PRE(1) = 1000;
+	/* Set the reload value(us). */
+	MEC1322_TMR16_PRE(1) = POLL_PERIOD_USEC;
 
 	/* Clear the status if any. */
 	MEC1322_TMR16_STS(1) |= 1;
@@ -68,12 +66,15 @@ DECLARE_HOOK(HOOK_INIT, port_80_interrupt_init, HOOK_PRIO_DEFAULT);
 
 static void port_80_interrupt_enable(void)
 {
+	idle_count = 0;
+
 	/* Enable the interrupt. */
 	task_enable_irq(MEC1322_IRQ_TIMER16_1);
 	/* Enable the timer block. */
 	MEC1322_TMR16_CTL(1) |= 1;
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, port_80_interrupt_enable, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESET, port_80_interrupt_enable, HOOK_PRIO_DEFAULT);
 
 static void port_80_interrupt_disable(void)
 {
@@ -84,3 +85,22 @@ static void port_80_interrupt_disable(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, port_80_interrupt_disable,
 	     HOOK_PRIO_DEFAULT);
+
+void port_80_interrupt(void)
+{
+	int data;
+
+	MEC1322_TMR16_STS(1) = 1; /* Ack the interrupt */
+	if ((1 << 1) & MEC1322_INT_RESULT(23)) {
+		data = port_80_read();
+
+		if (data != PORT_80_IGNORE) {
+			idle_count = 0;
+			port_80_write(data);
+		}
+	}
+
+	if (++idle_count == INTERRUPT_DISABLE_IDLE_COUNT)
+		port_80_interrupt_disable();
+}
+DECLARE_IRQ(MEC1322_IRQ_TIMER16_1, port_80_interrupt, 2);
