@@ -10,6 +10,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "link_defs.h"
+#include "pmu.h"
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
@@ -1267,3 +1268,39 @@ void usb_release(void)
 	clock_enable_module(MODULE_USB, 0);
 	/* TODO: pin-mux */
 }
+
+
+/* Console output macro */
+#define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
+
+static int command_crystal(int argc, char **argv)
+{
+	CPRINTS("enabling crystal...");
+
+	GR_PMU_OSC_CTRL = 1;
+
+	GWRITE_FIELD(PMU, SW_PDB_SECURE, XTL, 1);
+
+	GR_XO_OSC_XTL_FSM_EN = 0;
+	GR_XO_OSC_XTL_FSM_RESETB = 1;
+	GR_XO_OSC_XTL_FSM_EN = 0x60221413;
+
+	/* wait for swing calibration fsm to complete */
+	while (0 == GREAD_FIELD(XO, OSC_XTL_FSM, DONE))
+		;
+
+	GR_PMU_OSC_CTRL = 0;
+
+	GWRITE_FIELD(XO, CLK_TIMER_CTRL, HS_SEL, 0);
+	GWRITE_FIELD(XO, CLK_TIMER_CTRL, SEL, 0);
+	GWRITE_FIELD(XO, CLK_JTR_CTRL, HS_SEL, 0);
+	GWRITE_FIELD(XO, CLK_JTR_CTRL, SEL, 0);
+
+	CPRINTS("done");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(crystal, command_crystal,
+			"",
+			"Enable crystal oscillator for USB",
+			NULL);
