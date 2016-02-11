@@ -6,6 +6,7 @@
 #include "common.h"
 #include "console.h"
 #include "ec_version.h"
+#include "flash_config.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
@@ -160,3 +161,33 @@ const void * const usb_strings[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 #endif
+
+int flash_regions_to_enable(struct g_flash_region *regions,
+			    int max_regions)
+{
+	uint32_t half = CONFIG_FLASH_SIZE / 2;
+
+	if (max_regions < 1)
+		return 0;
+
+	if ((uint32_t)flash_regions_to_enable <
+	    (CONFIG_MAPPED_STORAGE_BASE + half))
+		/*
+		 * Running from the bottom half. Allow writes into
+		 * the top half.
+		 */
+		regions->reg_base = CONFIG_MAPPED_STORAGE_BASE + half;
+	else
+		/*
+		 * we're running from the top half, need to enable access to
+		 * both program memory in the lower half and the NVRAM space
+		 * in the top half.
+		 */
+		regions[0].reg_base = CONFIG_MAPPED_STORAGE_BASE +
+			CONFIG_RO_SIZE;
+
+	regions->reg_size = half;
+	regions->reg_perms =  FLASH_REGION_EN_ALL;
+
+	return 1; /* One region is enough. */
+}
