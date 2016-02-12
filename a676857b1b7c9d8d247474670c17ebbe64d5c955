@@ -34,6 +34,24 @@
       "revId": "a676857b1b7c9d8d247474670c17ebbe64d5c955",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9dc4c07e_a21aff8f",
+        "filename": "test/tpm_test/upgrade_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-02-12T22:45:18Z",
+      "side": 1,
+      "message": "This line is obviously wrong, it is a leftover from some previous version which was a bit trickier.\n\nBut the interesting fact is that in case of string the first element is a string of one, and when that string of one is dereferenced, the result is still a string of one, the same string of one.\n\nCome to think of it - it makes sense, and this is why this code worked.",
+      "parentUuid": "9dc4c07e_0e2f9740",
+      "revId": "a676857b1b7c9d8d247474670c17ebbe64d5c955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
