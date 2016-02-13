@@ -36,6 +36,9 @@ static uint8_t host_cmd_flags;   /* Flags from host command */
 
 static uint8_t params_copy[EC_LPC_HOST_PACKET_SIZE] __aligned(4);
 static int init_done;
+static int wake_mask;
+static int sci_mask;
+static int smi_mask;
 
 static struct ec_lpc_host_args * const lpc_host_args =
 	(struct ec_lpc_host_args *)mem_mapped;
@@ -292,7 +295,7 @@ static void setup_lpc(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, setup_lpc, HOOK_PRIO_FIRST);
 
-static void lpc_resume(void)
+void lpc_resume(void)
 {
 	/* Mask all host events until the host unmasks them itself.  */
 	lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, 0);
@@ -302,8 +305,6 @@ static void lpc_resume(void)
 	/* Store port 80 event so we know where resume happened */
 	port_80_write(PORT_80_EVENT_RESUME);
 }
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, lpc_resume, HOOK_PRIO_DEFAULT);
-
 
 
 static void lpc_init(void)
@@ -654,6 +655,46 @@ void lpc_disable_wake_mask_for_lid_open(void)
 		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0);
 		lpc_clear_host_events();
 	}
+}
+
+/*
+ * In the AP S0 -> S3 transition,
+ * the chipset_suspend is called.
+ *
+ * For the S0 -> S0ix, this function will be additionally called.
+ * This is saving all masks.
+ *
+ * In the S3 flow, Coreboot will get an SMI and then
+ * invoke EC functions to set the wake masks.
+ *
+ * For the S0ix flow, the masks are set in kernel
+ *
+ */
+void lpc_save_masks(void)
+{
+	wake_mask = lpc_get_host_event_mask(LPC_HOST_EVENT_WAKE);
+	sci_mask = lpc_get_host_event_mask(LPC_HOST_EVENT_SCI);
+	smi_mask = lpc_get_host_event_mask(LPC_HOST_EVENT_SMI);
+}
+
+/*
+ * In the AP S3 -> S0 transition,
+ * the chipset_resume hook is called.
+ *
+ * For the S0ix -> S0, this function will be additionally called.
+ * This is restoring all masks.
+ *
+ * In the S0 flow, Coreboot will invoke EC functions to set the wake masks
+ * during init.
+ *
+ * For the S0ix flow, the masks are set in kernel
+ *
+ */
+void lpc_restore_masks(void)
+{
+	lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, wake_mask);
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, sci_mask);
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, smi_mask);
 }
 
 #endif
