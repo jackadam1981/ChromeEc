@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5d808813_9bc5bb78",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-02-15T13:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11543cb0_a3c9ba32",
+      "revId": "c2076c47c0c6f9b7c4e3f1fe0ac376217059b364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f16b2868_aac98f32",
         "filename": "board/lars/battery.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5d808813_7bb1e727",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-02-15T13:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f16b2868_aac98f32",
+      "revId": "c2076c47c0c6f9b7c4e3f1fe0ac376217059b364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1e38448_410db252",
         "filename": "board/lars/battery.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2016-02-05T18:36:04Z",
       "side": 1,
       "message": "If you index the table by enum battery_type, then you won\u0027t need this extra type field. You can then change battery_device from a pointer to an \"enum battery_type\", and come back to the table to lookup params.",
+      "revId": "c2076c47c0c6f9b7c4e3f1fe0ac376217059b364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d86802c_63005e20",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-02-15T13:35:11Z",
+      "side": 1,
+      "message": "Nice suggestion!",
+      "parentUuid": "d1e38448_410db252",
       "revId": "c2076c47c0c6f9b7c4e3f1fe0ac376217059b364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
