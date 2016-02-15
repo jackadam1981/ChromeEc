@@ -1,0 +1,613 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddde385a_347f56b5",
+        "filename": "board/it8320pd/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "undef this. Your phy is not running on raw data.",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd705c1a_78b1e927",
+        "filename": "board/it8320pd/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "undef this. You are not using stub driver. Write a dedicate ite8320 driver.",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 31
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd1d04f9_1a56dd32",
+        "filename": "board/it8320pd/power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "2016",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd1d04f9_5a5c5554",
+        "filename": "board/it8320pd/power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "if a board level level needs to be shared globally, try not to pollute global name space. change it to board_power_init instead.",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd98a490_2875af58",
+        "filename": "board/it8320pd/power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "remove this empty line",
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd98a490_4878f352",
+        "filename": "board/it8320pd/power.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "remove this empty line.",
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d170cd9_d8806dec",
+        "filename": "board/it8320pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "naming",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 12
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d775410_0f68adf5",
+        "filename": "board/it8320pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "A large potion of this file should move to registers.h.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd6b982f_898c9d64",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "If these interfaces are called from external, name them with ite8320_pd_ prefix and add doc strings like other authors did in include/config.h. If these interfaces are called locally in this file, make sure you decorate them with static to prevent pollution of global namespace.",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d170cd9_3825e9ee",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "if (!UFPVDR(port))",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd705c1a_18b2b530",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "#define macros for these magic numbers.",
+      "range": {
+        "startLine": 27,
+        "startChar": 22,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d9be08c_ea345bdc",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "#define macros for these magic numbers.",
+      "range": {
+        "startLine": 27,
+        "startChar": 22,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d775410_8f749dd9",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "#define macros for these magic number too.",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 36
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d86802c_e37e0eb7",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "#define macros for these magic number too.",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 36
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d808813_1b6aab7f",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 55
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd98a490_a8689f84",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "Please follow the naming convention.",
+      "range": {
+        "startLine": 66,
+        "startChar": 27,
+        "endLine": 66,
+        "endChar": 44
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d775410_af7159e8",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "This looks like a while loop here, use a while loop instead. And it looks like a busy polling loop, which is not preferred. Especially when there is no timeout/sleep in it.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 7
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d775410_cf7e95b7",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "check naming convention.",
+      "range": {
+        "startLine": 156,
+        "startChar": 27,
+        "endLine": 156,
+        "endChar": 40
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd6b982f_a9895953",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "busy polling is not preferred.",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 229,
+        "endChar": 4
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d9be08c_8a24afa6",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "This makes double busy polling loop.",
+      "range": {
+        "startLine": 241,
+        "startChar": 4,
+        "endLine": 241,
+        "endChar": 19
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd1d04f9_da670525",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "remove this tab.",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 1
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d775410_ef7b51c4",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 1
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddde385a_14257aee",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "You shouldn\u0027t modify protocol state.",
+      "range": {
+        "startLine": 88,
+        "startChar": 7,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d86802c_a37416d9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "Revert this too.",
+      "range": {
+        "startLine": 1210,
+        "startChar": 1,
+        "endLine": 1210,
+        "endChar": 2
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd98a490_086aeb7f",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "This file deals with raw data. If it doesn\u0027t fit 8320\u0027s hardware block, you should create your own driver. And you should #undef CONFIG_USB_PD_TCPC, since this macro enables usb_pd_tcpc.c . And you probably want to create your own TCPM driver, without modify current stub.",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d86802c_f86a3d27",
+        "filename": "driver/tcpm/stub.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "Your TCPC is compiled in. So you probably don\u0027t want to trigger EVENT RX here. You can move it to phy layer, as the comment mentioned above.",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 13
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd98a490_88503bd9",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1846,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-15T10:57:26Z",
+      "side": 1,
+      "message": "Please follow the macro naming above: CONFIG_USB_PD_TCPM_ITE8320",
+      "range": {
+        "startLine": 1846,
+        "startChar": 7,
+        "endLine": 1846,
+        "endChar": 25
+      },
+      "revId": "cba7bc7151eea15d0b366cdcac87f7c9b5dfd0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
