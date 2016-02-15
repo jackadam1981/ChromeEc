@@ -123,4 +123,6 @@ void lpc_enable_acpi_interrupts(void);
 void lpc_enable_wake_mask_for_lid_open(void);
 
 void lpc_disable_wake_mask_for_lid_open(void);
+
+void lpc_clear_masks(void);
 #endif  /* __CROS_EC_LPC_H */

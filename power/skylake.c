@@ -316,6 +316,9 @@ static enum power_state _power_handle_state(enum power_state state)
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_RESUME);
 
+		/* clear all masks */
+		lpc_clear_masks();
+
 		/*
 		 * Disable idle task deep sleep. This means that the low
 		 * power idle task will not go into deep sleep while in S0.
