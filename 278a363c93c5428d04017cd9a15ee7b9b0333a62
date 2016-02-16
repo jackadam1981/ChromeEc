@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d85a05b_d4bd92e1",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-16T17:49:19Z",
+      "side": 1,
+      "message": "Let\u0027s make this uint16_t to match the return type.",
+      "range": {
+        "startLine": 120,
+        "startChar": 10,
+        "endLine": 120,
+        "endChar": 17
+      },
+      "revId": "278a363c93c5428d04017cd9a15ee7b9b0333a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd7f7c1f_15ab164f",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-16T17:49:19Z",
+      "side": 1,
+      "message": "This macro evaluates to something like ((volatile uint16_t *)(addr)). Therefore I don\u0027t think we need the volatile keyword in the cnt declaration.",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 20
+      },
+      "revId": "278a363c93c5428d04017cd9a15ee7b9b0333a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d76744b_d1328648",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-16T17:49:19Z",
+      "side": 1,
+      "message": "static?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 7
+      },
+      "revId": "278a363c93c5428d04017cd9a15ee7b9b0333a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d8fa87c_f26ea691",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-16T17:49:19Z",
+      "side": 1,
+      "message": "Same comment from the other file -- I don\u0027t think volatile keyword is necessary.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 9
+      },
+      "revId": "278a363c93c5428d04017cd9a15ee7b9b0333a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
