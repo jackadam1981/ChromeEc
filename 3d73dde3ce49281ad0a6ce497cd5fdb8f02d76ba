@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd82644f_151236e7",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-16T22:46:13Z",
+      "side": 1,
+      "message": "This is a bit inconsistent. Please pick either [0]. or -\u003e",
+      "range": {
+        "startLine": 186,
+        "startChar": 9,
+        "endLine": 186,
+        "endChar": 13
+      },
+      "revId": "3d73dde3ce49281ad0a6ce497cd5fdb8f02d76ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d8c6c87_591a3793",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-16T22:46:13Z",
+      "side": 1,
+      "message": "You might add a comment that the lower half consists of RO+RW_A, while the upper half consists of NVRAM+RW_B, and that RO and NVRAM are the same size. This line is baffling otherwise.",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 17
+      },
+      "revId": "3d73dde3ce49281ad0a6ce497cd5fdb8f02d76ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd2a1c13_1d149760",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-16T22:46:13Z",
+      "side": 1,
+      "message": "This doesn\u0027t match the comment in flash_config.h. I\u0027d suggest changing that comment and adding one here instead.",
+      "range": {
+        "startLine": 67,
+        "startChar": 35,
+        "endLine": 67,
+        "endChar": 47
+      },
+      "revId": "3d73dde3ce49281ad0a6ce497cd5fdb8f02d76ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d71b053_f6e3f6bf",
+        "filename": "chip/g/flash_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-16T22:46:13Z",
+      "side": 1,
+      "message": "You account for this in chip/g/flash.c, so the value in the struct is the full size. I\u0027d delete this sentence.",
+      "range": {
+        "startLine": 15,
+        "startChar": 17,
+        "endLine": 15,
+        "endChar": 55
+      },
+      "revId": "3d73dde3ce49281ad0a6ce497cd5fdb8f02d76ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
