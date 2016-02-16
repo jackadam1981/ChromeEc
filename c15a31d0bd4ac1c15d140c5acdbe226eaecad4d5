@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d76744b_2ef847d9",
+        "filename": "board/wheatley/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-16T17:21:54Z",
+      "side": 1,
+      "message": "Does this comment need to be changed?",
+      "range": {
+        "startLine": 114,
+        "startChar": 61,
+        "endLine": 114,
+        "endChar": 64
+      },
+      "revId": "c15a31d0bd4ac1c15d140c5acdbe226eaecad4d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd82644f_92295c83",
+        "filename": "chip/npcx/adc_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-16T17:21:54Z",
+      "side": 1,
+      "message": "If we need full 0-3.3V ADC range, is there some way to mitigate the deviation? How bad is the deviation for input \u003e 2.816V?",
+      "range": {
+        "startLine": 14,
+        "startChar": 21,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "c15a31d0bd4ac1c15d140c5acdbe226eaecad4d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
