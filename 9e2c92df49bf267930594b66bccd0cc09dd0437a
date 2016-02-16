@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d85a05b_747386b8",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-16T19:02:01Z",
+      "side": 1,
+      "message": "How about this instead?\n\n- If CONFIG_S0IX is defined then clear the masks only if the current chipset state is POWER_S3S0.\n\nAnd please make a similar change for npcx.",
+      "revId": "9e2c92df49bf267930594b66bccd0cc09dd0437a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
