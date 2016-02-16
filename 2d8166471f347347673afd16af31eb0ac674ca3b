@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7d8c6c87_84cfd675",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-02-16T23:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd2a1c13_bd5a43f9",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "2d8166471f347347673afd16af31eb0ac674ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d8c6c87_d969478c",
         "filename": "board/cr50/tpm2/upgrade.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-16T23:15:54Z",
       "side": 1,
       "message": "This means that the RW_B image is compiled specifically for the upper half. They\u0027re not interchangeable. How do we (Google) determine which RW image needs updating?",
+      "range": {
+        "startLine": 64,
+        "startChar": 37,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "2d8166471f347347673afd16af31eb0ac674ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d76744b_bd8f8b17",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-02-16T23:38:55Z",
+      "side": 1,
+      "message": "Isn\u0027t RW_B mapped to the other half by definition?\n\n\u0027run_time_offs\u0027 is an offset into the SPI flash, it will fall into the lower half in case the code is running from RW_A and into the upper half in case the code is running from RW_B.\n\nThe upgrade script will find out which half the code is being executed from (read it from the reply to the first \u0027update\u0027 message), then will extract the required half from the generated/signed cr50 image and then will send the extracted half down as the update. \n\nDoes this answer your question?",
+      "parentUuid": "7d8c6c87_d969478c",
       "range": {
         "startLine": 64,
         "startChar": 37,
