@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd2a1c13_bd5a43f9",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-16T23:15:54Z",
+      "side": 1,
+      "message": "Uppercase these?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "2d8166471f347347673afd16af31eb0ac674ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d8c6c87_d969478c",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-16T23:15:54Z",
+      "side": 1,
+      "message": "This means that the RW_B image is compiled specifically for the upper half. They\u0027re not interchangeable. How do we (Google) determine which RW image needs updating?",
+      "range": {
+        "startLine": 64,
+        "startChar": 37,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "2d8166471f347347673afd16af31eb0ac674ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd82644f_187fcdb4",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-16T23:15:54Z",
+      "side": 1,
+      "message": "Why a truncated sha1 instead of CRC32 or CRC8?",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 18
+      },
+      "revId": "2d8166471f347347673afd16af31eb0ac674ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
