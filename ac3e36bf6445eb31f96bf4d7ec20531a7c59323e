@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d8c6c87_16fd5c5a",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-16T20:28:32Z",
+      "side": 1,
+      "message": "May want to declare this as \"... support_batteries[BATTERY_TYPE_COUNT]\" just to be clear.",
+      "revId": "ac3e36bf6445eb31f96bf4d7ec20531a7c59323e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd255844_76736eb8",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-16T20:28:32Z",
+      "side": 1,
+      "message": "Is this entry needed? Unless I\u0027m missing something, this table is defined on 0.. BATTERY_TYPE_COUNT-1.",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 3
+      },
+      "revId": "ac3e36bf6445eb31f96bf4d7ec20531a7c59323e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d76744b_37e09ade",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-16T20:28:32Z",
+      "side": 1,
+      "message": "Just initialize i to zero here -- zero represents the first \"real\" battery. There\u0027s nothing inherently first about SONY (for example, someone could later add to your enum another battery before sony and assign it value zero).",
+      "range": {
+        "startLine": 149,
+        "startChar": 10,
+        "endLine": 149,
+        "endChar": 14
+      },
+      "revId": "ac3e36bf6445eb31f96bf4d7ec20531a7c59323e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
