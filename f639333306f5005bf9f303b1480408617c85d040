@@ -22,6 +22,30 @@
       "revId": "f639333306f5005bf9f303b1480408617c85d040",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd7ab832_6a8dd25d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1245,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-17T21:01:38Z",
+      "side": 1,
+      "message": "These will all happen in the call to set_state() right above. Maybe we should be calling pd_power_supply_reset() under more conditions from set_state()?",
+      "parentUuid": "3d76744b_78a12e6d",
+      "range": {
+        "startLine": 1244,
+        "startChar": 0,
+        "endLine": 1245,
+        "endChar": 28
+      },
+      "revId": "f639333306f5005bf9f303b1480408617c85d040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
