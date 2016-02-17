@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd82644f_1bfd875a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1134159
+      },
+      "writtenOn": "2016-02-17T02:30:11Z",
+      "side": 1,
+      "message": "nit: s/, n/. N/ for consistency.",
+      "range": {
+        "startLine": 182,
+        "startChar": 22,
+        "endLine": 182,
+        "endChar": 25
+      },
+      "revId": "fcb789378c09a23b248f529bb8f6519b87bc7d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d85a05b_6500ae4e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1134159
+      },
+      "writtenOn": "2016-02-17T02:30:11Z",
+      "side": 1,
+      "message": "Note that you can\u0027t execute from a flash bank that is being erased/programmed so you\u0027ll have to either replicate the NVRAM region or make sure you always mirror the RW image and transfer control back to bank A before you start modifying NVRAM.",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 18
+      },
+      "revId": "fcb789378c09a23b248f529bb8f6519b87bc7d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd255844_9cee69d8",
+        "filename": "chip/g/flash_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1134159
+      },
+      "writtenOn": "2016-02-17T02:30:11Z",
+      "side": 1,
+      "message": "s/entties/entries/",
+      "range": {
+        "startLine": 31,
+        "startChar": 38,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "fcb789378c09a23b248f529bb8f6519b87bc7d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
