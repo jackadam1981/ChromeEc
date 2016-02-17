@@ -187,6 +187,30 @@
       "revId": "278a363c93c5428d04017cd9a15ee7b9b0333a62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d76744b_2b64ae8a",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-17T18:44:11Z",
+      "side": 1,
+      "message": "Here is the disassembly for the loop in the non-volatile case (\"make board\u003dwheatley dis\"):\n\n100ad55e:       7813            ldrb    r3, [r2, #0]\n100ad560:       7814            ldrb    r4, [r2, #0]\n100ad562:       b2db            uxtb    r3, r3\n100ad564:       42a3            cmp     r3, r4 \n100ad566:       d1fa            bne.n   100ad55e \u003cwatchdog_check+0x12\u003e\n\nAs you can see, we\u0027re doing two distinct loads, followed by a comparison.\n\nHere is the volatile case:\n\n100ad55e:       7813            ldrb    r3, [r2, #0]\n100ad560:       b2db            uxtb    r3, r3\n100ad562:       f88d 3007       strb.w  r3, [sp, #7]\n100ad566:       f89d 4007       ldrb.w  r4, [sp, #7]\n100ad56a:       7813            ldrb    r3, [r2, #0]\n100ad56c:       429c            cmp     r4, r3\n100ad56e:       d1f6            bne.n   100ad55e \u003cwatchdog_check+0x12\u003e\n\nI believe the only difference is that we\u0027re storing to a local variable on the stack rather than using just registers.\n\nAm I missing something?\n\nSorry for being a tyrant about \u0027volatile\u0027, I really need to know what\u0027s happening here for my own understanding.",
+      "parentUuid": "7d170cd9_988c35b6",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 9
+      },
+      "revId": "278a363c93c5428d04017cd9a15ee7b9b0333a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
