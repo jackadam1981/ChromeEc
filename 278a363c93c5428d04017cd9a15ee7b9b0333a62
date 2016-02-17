@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d86802c_5286c506",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-02-17T03:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d85a05b_d4bd92e1",
+      "range": {
+        "startLine": 120,
+        "startChar": 10,
+        "endLine": 120,
+        "endChar": 17
+      },
+      "revId": "278a363c93c5428d04017cd9a15ee7b9b0333a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd7f7c1f_15ab164f",
         "filename": "chip/npcx/hwtimer.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-16T17:49:19Z",
       "side": 1,
       "message": "This macro evaluates to something like ((volatile uint16_t *)(addr)). Therefore I don\u0027t think we need the volatile keyword in the cnt declaration.",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 20
+      },
+      "revId": "278a363c93c5428d04017cd9a15ee7b9b0333a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd6b4469_6aee3718",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-02-17T03:11:41Z",
+      "side": 1,
+      "message": "The \"volatile\" is necessary. If we remove it, I found the behavior  is strange after lto optimization. It seems __hw_clock_event_count doesn\u0027t read the register twice but return it directly.",
+      "parentUuid": "fd7f7c1f_15ab164f",
       "range": {
         "startLine": 123,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bd6b4469_ea5a27cc",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-02-17T03:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d76744b_d1328648",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 7
+      },
+      "revId": "278a363c93c5428d04017cd9a15ee7b9b0333a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d8fa87c_f26ea691",
         "filename": "chip/npcx/watchdog.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-02-16T17:49:19Z",
       "side": 1,
       "message": "Same comment from the other file -- I don\u0027t think volatile keyword is necessary.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 9
+      },
+      "revId": "278a363c93c5428d04017cd9a15ee7b9b0333a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d170cd9_988c35b6",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-02-17T03:11:41Z",
+      "side": 1,
+      "message": "Please see the comment in hwtimer,c",
+      "parentUuid": "5d8fa87c_f26ea691",
       "range": {
         "startLine": 50,
         "startChar": 1,
