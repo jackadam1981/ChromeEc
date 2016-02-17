@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9d9be08c_f53320aa",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-02-17T11:55:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d8c6c87_16fd5c5a",
+      "revId": "ac3e36bf6445eb31f96bf4d7ec20531a7c59323e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd255844_76736eb8",
         "filename": "board/lars/battery.c",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "9d86802c_15f7d7a2",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-02-17T11:55:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd255844_76736eb8",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 3
+      },
+      "revId": "ac3e36bf6445eb31f96bf4d7ec20531a7c59323e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d76744b_37e09ade",
         "filename": "board/lars/battery.c",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2016-02-16T20:28:32Z",
       "side": 1,
       "message": "Just initialize i to zero here -- zero represents the first \"real\" battery. There\u0027s nothing inherently first about SONY (for example, someone could later add to your enum another battery before sony and assign it value zero).",
+      "range": {
+        "startLine": 149,
+        "startChar": 10,
+        "endLine": 149,
+        "endChar": 14
+      },
+      "revId": "ac3e36bf6445eb31f96bf4d7ec20531a7c59323e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddde385a_3fcccf7f",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-02-17T11:55:25Z",
+      "side": 1,
+      "message": "I got it!",
+      "parentUuid": "3d76744b_37e09ade",
       "range": {
         "startLine": 149,
         "startChar": 10,
