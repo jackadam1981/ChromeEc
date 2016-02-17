@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "1d71b053_b6224e3a",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-17T00:18:26Z",
+      "side": 1,
+      "message": "Yes, after some cluebat applied to my head. From the host side, the first message is a zero-length body with block_base \u003d\u003d 0. This erases the appropriate bank, and returns the 4-byte address of the RW_A or RW_B starting offset. The host then sends the correct image chunks after that.",
+      "parentUuid": "3d76744b_bd8f8b17",
+      "range": {
+        "startLine": 64,
+        "startChar": 37,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "2d8166471f347347673afd16af31eb0ac674ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd82644f_187fcdb4",
         "filename": "board/cr50/tpm2/upgrade.c",
         "patchSetId": 3
@@ -107,6 +131,30 @@
       "writtenOn": "2016-02-16T23:15:54Z",
       "side": 1,
       "message": "Why a truncated sha1 instead of CRC32 or CRC8?",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 18
+      },
+      "revId": "2d8166471f347347673afd16af31eb0ac674ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d76744b_1dcfbfce",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-17T00:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd82644f_187fcdb4",
       "range": {
         "startLine": 150,
         "startChar": 1,
