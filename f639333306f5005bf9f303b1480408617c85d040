@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5d8fa87c_27862506",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-17T22:13:43Z",
+      "side": 1,
+      "message": "Why would we not also do the reset here as a sink, switching to SNK_DISCONNECTED? Are we assuming the reset will happen somewhere else?",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 47
+      },
+      "revId": "f639333306f5005bf9f303b1480408617c85d040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d76744b_78a12e6d",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
