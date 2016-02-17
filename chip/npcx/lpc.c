@@ -901,10 +901,12 @@ DECLARE_HOOK(HOOK_INIT, lpc_init, HOOK_PRIO_INIT_LPC);
 
 static void lpc_resume(void)
 {
-	/* Mask all host events until the host unmasks them itself.  */
-	lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, 0);
-	lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, 0);
-	lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0);
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND | CHIPSET_STATE_ON)) {
+		/* Mask all host events until the host unmasks them itself.  */
+		lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, 0);
+		lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, 0);
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0);
+	}
 
 	/* Store port 80 event so we know where resume happened */
 	port_80_write(PORT_80_EVENT_RESUME);
