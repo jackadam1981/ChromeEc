@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "fd7f7c1f_1e56cba8",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-17T19:02:09Z",
+      "side": 1,
+      "message": "Here is the disassembly when volatile is left out here (including it in addition to both asm dumps for the other file, just to confirm nothing is special about 16 bit reads):\n\n100a9682:       8839            ldrh    r1, [r7, #0]\n100a9684:       883a            ldrh    r2, [r7, #0]\n100a9686:       b289            uxth    r1, r1\n100a9688:       b292            uxth    r2, r2\n100a968a:       4291            cmp     r1, r2\n100a968c:       d1f9            bne.n   100a9682 \u003c__idle+0xc2\u003e",
+      "parentUuid": "bd6b4469_6aee3718",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 20
+      },
+      "revId": "278a363c93c5428d04017cd9a15ee7b9b0333a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d76744b_d1328648",
         "filename": "chip/npcx/watchdog.c",
         "patchSetId": 1
