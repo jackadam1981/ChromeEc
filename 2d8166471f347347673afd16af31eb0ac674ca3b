@@ -164,6 +164,30 @@
       "revId": "2d8166471f347347673afd16af31eb0ac674ca3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d76744b_88cfeb75",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-02-17T00:40:06Z",
+      "side": 1,
+      "message": "sorry I missed that one: yes, as discussed, I just used sha1 because it is already there in the code, we do not worry about performance in this case.",
+      "parentUuid": "3d76744b_1dcfbfce",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 18
+      },
+      "revId": "2d8166471f347347673afd16af31eb0ac674ca3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
