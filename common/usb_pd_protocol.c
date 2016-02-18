@@ -85,7 +85,7 @@ enum vdm_states {
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 /* Port dual-role state */
-enum pd_dual_role_states drp_state = PD_DRP_TOGGLE_OFF;
+enum pd_dual_role_states drp_state = PD_DRP_TOGGLE_ON;
 
 /* Last received source cap */
 static uint32_t pd_src_caps[CONFIG_USB_PD_PORT_COUNT][PDO_MAX_OBJECTS];
