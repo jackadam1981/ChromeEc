@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d6840a0_bc34cddb",
+        "filename": "chip/stm32/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-02-18T02:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd7f7c1f_552e7ed8",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "8b39b3e25247b0cc611d135e249fdb6cb3f1b2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d8fa87c_52fbf229",
         "filename": "include/usb_descriptor.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-16T17:21:41Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "8b39b3e25247b0cc611d135e249fdb6cb3f1b2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd7c2458_65cf00ce",
+        "filename": "include/usb_descriptor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-02-18T02:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d8fa87c_52fbf229",
       "range": {
         "startLine": 1,
         "startChar": 13,
