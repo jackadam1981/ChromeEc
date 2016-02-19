@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2c1f56d_1d491707",
+        "filename": "board/cr50/tpm2/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-02-19T23:17:45Z",
+      "side": 1,
+      "message": "these variables should be moved into the while(){} scope",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 18
+      },
+      "revId": "5b5ba43cb8e7af82011582dd4bb964324ddfbbcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02b6ad04_bfce932a",
+        "filename": "board/cr50/tpm2/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-02-19T23:17:45Z",
+      "side": 1,
+      "message": "why does DCRYPTO_aes_init() invocation change? This should be explained in the patch description.",
+      "revId": "5b5ba43cb8e7af82011582dd4bb964324ddfbbcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62a5a9c6_c2e744cc",
+        "filename": "board/cr50/tpm2/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-02-19T23:17:45Z",
+      "side": 1,
+      "message": "can you check if (chunk_len !\u003d 16) to avoid invoking memset() when it\u0027s not needed?",
+      "revId": "5b5ba43cb8e7af82011582dd4bb964324ddfbbcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
