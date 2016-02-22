@@ -45,6 +45,29 @@
       "revId": "59eeaee8e58760ae545279deb9c3f933a85d2ac4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22fe51bd_85d382d6",
+        "filename": "board/oak/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-02-22T12:30:02Z",
+      "side": 1,
+      "message": "Align with switch.",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 2
+      },
+      "revId": "59eeaee8e58760ae545279deb9c3f933a85d2ac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
