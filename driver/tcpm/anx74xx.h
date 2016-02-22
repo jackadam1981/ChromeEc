@@ -1,4 +1,4 @@
-/* Copyright 2016 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -67,6 +67,7 @@
 #define TCPC_REG_CC_SW_CTRL_DISABLE	0xfe
 
 #define TCPC_REG_SELECT_CC1		0x02
+#define TCPC_REG_SELECT_CC2		0xfd
 
 #define TCPC_REG_GPIO_CTRL_4_5		0x3f
 #define TCPC_REG_VBUS_OP_ENABLE		0x04
@@ -105,10 +106,10 @@
 #define TCPC_REG_RESET_VBUS		0xdf
 
 #define TCPC_REG_ANALOG_CTRL_7		0x48
+#define TCPC_REG_STATUS_CC1		0x0C
+#define TCPC_REG_STATUS_CC2		0x03
 #define TCPC_REG_STATUS_CC_RD		0x01
 #define TCPC_REG_STATUS_CC_RA		0x03
-#define TCPC_REG_STATUS_CC1(reg)	((reg & 0x0C) >> 2)
-#define TCPC_REG_STATUS_CC2(reg)	((reg & 0x03) >> 0)
 
 #define TCPC_REG_HPD_CONTROL		0xfd
 #define TCPC_REG_HPD_CTRL_0		0x36
