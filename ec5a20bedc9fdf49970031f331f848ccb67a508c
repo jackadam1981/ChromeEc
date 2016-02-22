@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2def959_d47ed28a",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2016-02-22T20:55:48Z",
+      "side": 1,
+      "message": "Can we enable the counter and then call port_80_interrupt_enable here? It would stop me worrying if we need to set idle_count to zero in here or not.\n\nAs a meta-comment, we should tidy up the comments so we know which interrupts we are enabling and disabling.",
+      "revId": "ec5a20bedc9fdf49970031f331f848ccb67a508c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2b0b90b_c4ce342c",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2016-02-22T20:55:48Z",
+      "side": 1,
+      "message": "I need to look up the difference between INIT and CHIPSET_RESET, but I hope that reusing port_80_interrupt_enable in port_80_interrupt_init would enable us to avoid this new hook.",
+      "revId": "ec5a20bedc9fdf49970031f331f848ccb67a508c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62a5a9c6_b9ba2f9c",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2016-02-22T20:55:48Z",
+      "side": 1,
+      "message": "On a purely defensive basis, I would use \u003e\u003d rather than \u003d\u003d. I can\u0027t see any circumstances where it would help, but it costs nothing. Feel totally free to ignore this comment :-)",
+      "revId": "ec5a20bedc9fdf49970031f331f848ccb67a508c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2c1f56d_7a2c8edc",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2016-02-22T20:55:48Z",
+      "side": 0,
+      "message": "Just to keep the churn down, I wouldn\u0027t have moved these lines down to around line 90 (obviously you have added the adjustment of idle_count as well).",
+      "revId": "2435c91b3a52071a048cc7261b966daf2e78f853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
