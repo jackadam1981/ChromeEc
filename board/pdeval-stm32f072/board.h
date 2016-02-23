@@ -26,8 +26,10 @@
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_CUSTOM_VDM
 #define CONFIG_USB_PD_DUAL_ROLE
-#define CONFIG_USB_PD_PORT_COUNT 2
-#define CONFIG_USB_PD_TCPM_TCPCI
+#define CONFIG_USB_PD_PORT_COUNT 1
+#define CONFIG_USB_PD_TCPM_ANX74XX
+#define CONFIG_USBC_VCONN
+#define CONFIG_USB_PD_TCPM_VBUS
 
 /* start as a sink */
 #define PD_DEFAULT_STATE PD_STATE_SNK_DISCONNECTED
@@ -47,8 +49,7 @@
 #define I2C_PORT_PD_MCU 0
 
 /* TCPC I2C slave addresses */
-#define TCPC1_I2C_ADDR 0x9c
-#define TCPC2_I2C_ADDR 0x9e
+#define TCPC1_I2C_ADDR 0x50
 
 /* Timer selection */
 
@@ -94,6 +95,8 @@ enum usb_strings {
 };
 
 void board_reset_pd_mcu(void);
-
+void board_set_tcpc_power_mode(int port, int normal_mode);
+void board_typec_update_hpd_status(int port, int lvl, int irq);
+void board_set_tcpc_dp_pin_config(int port, int pin_mode, int polarity);
 #endif /* !__ASSEMBLER__ */
 #endif /* __BOARD_H */
