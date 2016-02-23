@@ -16,6 +16,24 @@
       "revId": "8e2c8988d29eb246fd805092b5094585f98b1806",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "428ee542_b7c52a08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-02-23T03:46:28Z",
+      "side": 1,
+      "message": "I\u0027ve been testing using a multi-step test (CPCTPM_TC2_1_13_02_03) in which one new step passes, but the overall test still fails.",
+      "parentUuid": "e2b0b90b_ca62bb15",
+      "revId": "8e2c8988d29eb246fd805092b5094585f98b1806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
