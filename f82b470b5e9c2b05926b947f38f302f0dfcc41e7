@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62be89e4_2a7a4299",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1000106
+      },
+      "writtenOn": "2016-02-23T23:32:34Z",
+      "side": 1,
+      "message": "Is there a chance the data is much longer than LOOK_BUFFER_SIZE and the string is at the beginning so get cut?\n\nA safer way would be moving this line after the matching.",
+      "range": {
+        "startLine": 781,
+        "startChar": 4,
+        "endLine": 781,
+        "endChar": 59
+      },
+      "revId": "f82b470b5e9c2b05926b947f38f302f0dfcc41e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
