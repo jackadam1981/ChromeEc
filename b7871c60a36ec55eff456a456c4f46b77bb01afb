@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a29b218c_2fca4893",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-02-23T18:59:04Z",
+      "side": 1,
+      "message": "This could probably be made static, I realize it isn\u0027t in the discovery example code, I think that was just an oversight on my part.",
+      "range": {
+        "startLine": 69,
+        "startChar": 31,
+        "endLine": 69,
+        "endChar": 41
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a29b218c_efd3404e",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-02-23T18:59:04Z",
+      "side": 1,
+      "message": "Same here, this could be static",
+      "range": {
+        "startLine": 99,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 24
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a29b218c_afde5852",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-02-23T18:59:04Z",
+      "side": 1,
+      "message": "And here.",
+      "range": {
+        "startLine": 129,
+        "startChar": 7,
+        "endLine": 129,
+        "endChar": 24
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2c1f56d_3c828b84",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-02-23T18:59:04Z",
+      "side": 1,
+      "message": "Because on the STM32F072 SPI2 defaults to using DMA channels 4 and 5, but our hard coded mapping of DMA usage in registers.h assumes that it will use channels 6 and 7.  So we remap the SPI2 peripheral DMA channels.  A better solution in the long run would be to completely remove the hard coded mapping in registers.h and configure each device driver with its DMA channels the way the new UART driver does.  That way each board could fully select how its DMA channels were used.",
+      "range": {
+        "startLine": 188,
+        "startChar": 14,
+        "endLine": 188,
+        "endChar": 16
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2b0b90b_ca7abbfe",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-02-23T18:59:04Z",
+      "side": 1,
+      "message": "I would suggest deleting both this and the disable function since they aren\u0027t used by this, the only current user of the USB I2C bridge driver.  If they are needed they are easy to add later.",
+      "range": {
+        "startLine": 234,
+        "startChar": 5,
+        "endLine": 234,
+        "endChar": 25
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62a5a9c6_7e892850",
+        "filename": "board/servo_micro/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-02-23T18:59:04Z",
+      "side": 1,
+      "message": "Is this still the case?  It looks like UART3 is being initialized in board.c, should it not be?  Also, the changing by one of the UART name between the hardware names and the USB device names is a little confusing, I see why it was done, but it might make the code clearer if they matched.",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 21
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02e4ed24_f6366d3b",
+        "filename": "chip/stm32/usb_i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-02-23T18:59:04Z",
+      "side": 1,
+      "message": "I\u0027m tempted to suggest removing this and the USB_I2C_REQ_ defines along with the board enable/disable functions, enable management values in the state struct and enable management code in the deferred callback.  This existed in the USB SPI bridge driver because SPI can only have a single master, but the EC wasn\u0027t normally that master, it had to do board specific things to become the master (put the AP into reset among other things).  But in this driver there is only ever one master of the I2C bus.  And if we ever needed the functionality we could add it with a protocol bump from 0x01 to 0x02.",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 21
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a29b218c_6f128f78",
+        "filename": "chip/stm32/usb_i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-02-23T18:59:04Z",
+      "side": 1,
+      "message": "This should be 60, not 62.",
+      "range": {
+        "startLine": 28,
+        "startChar": 42,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2c1f56d_fcd9b39e",
+        "filename": "include/usb_descriptor.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-02-23T18:59:04Z",
+      "side": 1,
+      "message": "You\u0027ll need to allocate these on the second sheet of go/usb before this CL can land.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 39
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62be89e4_59c31602",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-02-23T18:59:04Z",
+      "side": 1,
+      "message": "Did you mean to move discovery down here?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
