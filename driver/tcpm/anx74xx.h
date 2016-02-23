@@ -1,0 +1,131 @@
+/* Copyright 2016 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ * Author : Analogix Semiconductor.
+ */
+
+/* USB Power delivery port management */
+
+#ifndef __CROS_EC_USB_PD_TCPM_ANX74XX_H
+#define __CROS_EC_USB_PD_TCPM_ANX74XX_H
+
+#define TCPC_REG_CHIP_ID		0x02
+#define TCPC_REG_RESET_CTRL_0		0x05
+#define TCPC_REG_RESET_CTRL_OCM		(1 << 4)
+
+#define TCPC_REG_IRQ_POL_LOW		0x00
+#define TCPC_REG_IRQ_STATUS		0x53
+
+#define TCPC_REG_INTP_VCONN_CTRL	0x33
+#define TCPC_REG_VCONN_DISABLE		0x0f
+#define TCPC_REG_VCONN_1_ENABLE		(1 << 4)
+#define TCPC_REG_VCONN_2_ENABLE		(1 << 5)
+
+#define TCPC_STANDBY_MODE		(0)
+#define TCPC_NORMAL_MODE		(1)
+
+#define TCPC_REG_TX_CTRL_1		0x81
+#define TCPC_REG_TX_CTRL_2		0x82
+#define TCPC_REG_TX_WR_FIFO		0x83
+#define TCPC_REG_TX_FIFO_CTRL		0x9a
+#define TCPC_REG_TX_SEND_DATA_REQ	(1 << 0)
+#define TCPC_REG_TX_HARD_RESET_REQ	(1 << 1)
+#define TCPC_REG_TX_CABLE_RESET_REQ	(1 << 2)
+
+#define TCPC_REG_PD_HEADER		0x69
+#define TCPC_REG_PD_RX_DATA_OBJ		0x11
+#define TCPC_REG_PD_RX_DATA_OBJ_M	0x4d
+
+#define TCPC_REG_ANALOG_STATUS		0x40
+#define TCPC_REG_VBUS_STATUS		(1 << 4)
+#define TCPC_REG_TYPE_UFP		(1 << 3)
+#define TCPC_REG_CC_PULL_RD		0xfd
+#define TCPC_REG_CC_PULL_RP		0x02
+
+#define TCPC_REG_ANALOG_CTRL_0		0x41
+#define TCPC_REG_TX_AUTO_GOODCRC_1	0x9c
+#define TCPC_REG_TX_AUTO_GOODCRC_2	0x94
+#define TCPC_REG_AUTO_GOODCRC_EN	0x01
+#define TCPC_REG_ENABLE_GOODCRC		0x38
+
+#define TCPC_REG_ANALOG_CTRL_1		0x42
+#define TCPC_REG_ANALOG_CTRL_5		0x46
+#define TCPC_REG_MUX_VALUE_CC2		0x86
+#define TCPC_REG_R_SWITCH_CC_CLR	0x0f
+#define TCPC_REG_R_SWITCH_CC2_SET	0x10
+#define TCPC_REG_MUX_VALUE_CC1		0x49
+#define TCPC_REG_R_SWITCH_CC1_SET	0x20
+#define TCPC_REG_AUX_SWAP_SET_CC1	0x30
+#define TCPC_REG_AUX_SWAP_SET_CC2	0xc0
+#define TCPC_REG_AUX_SWAP_CLR_CC1	0xcf
+#define TCPC_REG_AUX_SWAP_CLR_CC2	0x3f
+
+#define TCPC_REG_CC_SOFTWARE_CTRL	0x4a
+#define TCPC_REG_CC_SW_CTRL_ENABLE	0x01
+#define TCPC_REG_TX_MODE_ENABLE		0x04
+#define TCPC_REG_CC_SW_CTRL_DISABLE	0xfe
+
+#define TCPC_REG_SELECT_CC1		0x02
+
+#define TCPC_REG_GPIO_CTRL_4_5		0x3f
+#define TCPC_REG_VBUS_OP_ENABLE		0x04
+#define TCPC_REG_VBUS_GPIO_MODE		0xfe
+#define TCPC_REG_GPIO_VBUS_ENABLE	0x20
+#define TCPC_REG_GPIO_VBUS_DISABLE	0xdf
+
+#define TCPC_REG_IRQ_EXT_MASK_0		0x3b
+#define TCPC_REG_IRQ_EXT_SOURCE_0	0x54
+#define TCPC_REG_IRQ_EXT_SOURCE_1	0x3e
+#define TCPC_REG_IRQ_EXT_SOURCE_2	0x4f
+#define TCPC_REG_CLEAR_SOFT_IRQ		(1 << 2)
+
+#define TCPC_REG_IRQ_SOURCE_RECV_MSG	0x6b
+#define TCPC_REG_IRQ_CC_MSGINT	(1 << 0)
+#define TCPC_REG_IRQ_CC_STATUSINT	(1 << 1)
+#define TCPC_REG_IRQ_GOOD_CRCINT	(1 << 2)
+#define TCPC_REG_IRQ_SOURCE_RECV_MSG_MASK	0x6c
+
+
+#define TCPC_REG_CLEAR_SET_BITS		0xff
+#define TCPC_REG_CLEAR_RESET_BITS	0x00
+#define TCPC_REG_RECEIVED_MSG_INT	(1 << 5)
+#define TCPC_REG_TX_MSG_ERROR		(1 << 4)
+#define TCPC_REG_RECEIVED_TX_ACK	(1 << 3)
+#define TCPC_REG_TX_CABLE_RESETOK	(1 << 2)
+#define TCPC_REG_TX_HARD_RESETOK	(1 << 1)
+#define TCPC_REG_CC_CHGINT	(1 << 0)
+
+#define TCPC_REG_ANALOG_CTRL_2		0x43
+#define TCPC_REG_MODE_TRANS		0x01
+
+#define TCPC_REG_SET_CABLE_DET		0xa0
+#define TCPC_REG_RESET_CABLE_DET	0x7f
+#define TCPC_REG_SET_VBUS		0x20
+#define TCPC_REG_RESET_VBUS		0xdf
+
+#define TCPC_REG_ANALOG_CTRL_7		0x48
+#define TCPC_REG_STATUS_CC_RD		0x01
+#define TCPC_REG_STATUS_CC_RA		0x03
+#define TCPC_REG_STATUS_CC1(reg)	((reg & 0x0C) >> 2)
+#define TCPC_REG_STATUS_CC2(reg)	((reg & 0x03) >> 0)
+
+#define TCPC_REG_HPD_CONTROL		0xfd
+#define TCPC_REG_HPD_CTRL_0		0x36
+#define TCPC_REG_HPD_OP_MODE		0x08
+#define TCPC_REG_HPD_DEFAULT		0x00
+
+#define TCPC_REG_TX_MSG_HEADER		0x9c
+#define TCPC_REG_SPEC_REV_BIT_POS	(3)
+#define TCPC_REG_PWR_ROLE_BIT_POS	(2)
+#define TCPC_REG_DATA_ROLE_BIT_POS	(1)
+
+#define TCPC_REG_POWER_DOWN_CTRL	0x0d
+#define TCPC_REG_STATUS_CC1_VRD_USB	(1 << 7)
+#define TCPC_REG_STATUS_CC1_VRD_1P5	(1 << 6)
+#define TCPC_REG_STATUS_CC1_VRD_3P0	(1 << 5)
+#define TCPC_REG_STATUS_CC2_VRD_USB	(1 << 4)
+#define TCPC_REG_STATUS_CC2_VRD_1P5	(1 << 3)
+#define TCPC_REG_STATUS_CC2_VRD_3P0	(1 << 2)
+
+#endif /* __CROS_EC_USB_PD_TCPM_ANX74XX_H */
