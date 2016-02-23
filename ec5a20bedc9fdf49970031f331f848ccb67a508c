@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e2def959_e0e8e8ce",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-23T02:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2def959_d47ed28a",
+      "revId": "ec5a20bedc9fdf49970031f331f848ccb67a508c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2b0b90b_c4ce342c",
         "filename": "chip/mec1322/port80.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "82bb7df1_e49fdf78",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-23T02:24:14Z",
+      "side": 1,
+      "message": "It won\u0027t. HOOK_CHIPSET_RESET is called on LPC reset, and it\u0027s important for the warm reboot case where we never leave S0.",
+      "parentUuid": "e2b0b90b_c4ce342c",
+      "revId": "ec5a20bedc9fdf49970031f331f848ccb67a508c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62a5a9c6_b9ba2f9c",
         "filename": "chip/mec1322/port80.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2016-02-22T20:55:48Z",
       "side": 1,
       "message": "On a purely defensive basis, I would use \u003e\u003d rather than \u003d\u003d. I can\u0027t see any circumstances where it would help, but it costs nothing. Feel totally free to ignore this comment :-)",
+      "revId": "ec5a20bedc9fdf49970031f331f848ccb67a508c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02e4ed24_c1897015",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-23T02:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62a5a9c6_b9ba2f9c",
       "revId": "ec5a20bedc9fdf49970031f331f848ccb67a508c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

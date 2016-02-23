@@ -16,6 +16,24 @@
       "revId": "2435c91b3a52071a048cc7261b966daf2e78f853",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22d0113b_b48eb919",
+        "filename": "chip/mec1322/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-23T02:24:14Z",
+      "side": 0,
+      "message": "The function now calls port_80_interrupt_disable(), so I think churn is better than adding an unneeded function prototype.",
+      "parentUuid": "c2c1f56d_7a2c8edc",
+      "revId": "2435c91b3a52071a048cc7261b966daf2e78f853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
