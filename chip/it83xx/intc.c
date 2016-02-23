@@ -79,6 +79,17 @@ void intc_cpu_int_group_12(void)
 		peci_interrupt();
 		break;
 #endif
+#ifdef CONFIG_USB_PD_TCPM_ITE8320
+	case IT83XX_IRQ_USBPD0:
+		task_clear_pending_irq(IT83XX_IRQ_USBPD0);
+		ite8320_pd_irq(0);
+		break;
+
+	case IT83XX_IRQ_USBPD1:
+		task_clear_pending_irq(IT83XX_IRQ_USBPD1);
+		ite8320_pd_irq(1);
+		break;
+#endif /* CONFIG_USB_PD_TCPM_8320 */
 	default:
 		break;
 	}
