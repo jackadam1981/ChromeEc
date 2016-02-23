@@ -33,7 +33,7 @@ static void system_init(void)
 	}
 }
 
-static void power_init(void)
+static void ite8320_power_init(void)
 {
 	/* enable SYSCFG, COMP, ADC, SPI1, USART1 */
 	STM32_RCC_APB2ENR = 0x00005201;
@@ -169,7 +169,7 @@ void hardware_init(void)
 	uint32_t raw_cause = STM32_RCC_CSR;
 	uint32_t pwr_status = STM32_PWR_CSR;
 
-	power_init();
+	ite8320_power_init();
 
 	/* Clear the hardware reset cause by setting the RMVF bit */
 	STM32_RCC_CSR |= 1 << 24;
