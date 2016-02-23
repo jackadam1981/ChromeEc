@@ -382,6 +382,9 @@
  */
 #undef CONFIG_CHARGER_TERM_CURRENT_LIMIT
 
+/* Compile charger detect */
+#undef CONFIG_CHARGER_DETECT
+
 /*
  * Board supports discharge mode.  In this mode, the battery will discharge
  * even if AC is present.  Used for testing.
