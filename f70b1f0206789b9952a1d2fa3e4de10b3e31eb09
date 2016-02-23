@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "620cc9c0_872f0683",
+        "filename": "board/oak/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2016-02-23T05:14:20Z",
+      "side": 1,
+      "message": "According to Hoping\u0027s comment, we could remove pull down to saving the power for rev5.",
+      "range": {
+        "startLine": 58,
+        "startChar": 43,
+        "endLine": 58,
+        "endChar": 58
+      },
+      "revId": "f70b1f0206789b9952a1d2fa3e4de10b3e31eb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2e961fc_11a46c12",
+        "filename": "board/oak/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2016-02-23T05:14:20Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 59,
+        "startChar": 43,
+        "endLine": 59,
+        "endChar": 58
+      },
+      "revId": "f70b1f0206789b9952a1d2fa3e4de10b3e31eb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a21241d6_69f065f5",
+        "filename": "board/oak/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2016-02-23T05:14:20Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 60,
+        "startChar": 43,
+        "endLine": 60,
+        "endChar": 59
+      },
+      "revId": "f70b1f0206789b9952a1d2fa3e4de10b3e31eb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8209bdb1_c8d4ef69",
+        "filename": "board/oak/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2016-02-23T05:14:20Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 61,
+        "startChar": 43,
+        "endLine": 61,
+        "endChar": 58
+      },
+      "revId": "f70b1f0206789b9952a1d2fa3e4de10b3e31eb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
