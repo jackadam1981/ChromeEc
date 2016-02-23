@@ -5,6 +5,7 @@
 /* STM32F072-discovery board based USB PD evaluation configuration */
 
 #include "common.h"
+#include "console.h"
 #include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -12,6 +13,7 @@
 #include "i2c.h"
 #include "registers.h"
 #include "task.h"
+#include "timer.h"
 #include "usb_descriptor.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
@@ -51,7 +53,7 @@ void board_reset_pd_mcu(void)
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"tcpc", I2C_PORT_TCPC, 100 /* kHz */, GPIO_I2C0_SCL, GPIO_I2C0_SDA}
+	{"tcpc", I2C_PORT_TCPC, 400 /* kHz */, GPIO_I2C0_SCL, GPIO_I2C0_SDA}
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
@@ -75,3 +77,109 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
+
+#ifdef CONFIG_USB_PD_TCPM_ANX74XX
+void board_set_tcpc_power_mode(int port, int normal_mode)
+{
+#if CONFIG_USB_PD_PORT_COUNT >= 2
+#else
+	if (normal_mode) {
+		gpio_set_level(GPIO_USB_C0_PWR_EN, 1);
+		msleep(1);
+		gpio_set_level(GPIO_USB_C0_RST_N, 1);
+		msleep(10);
+	} else {/* STAND BY MODE */
+		gpio_set_level(GPIO_USB_C0_AVDD33, 0);
+		gpio_set_level(GPIO_USB_C0_DVDDIO, 0);
+
+		gpio_set_level(GPIO_USB_C0_RST_N, 0);
+		msleep(1);
+		gpio_set_level(GPIO_USB_C0_PWR_EN, 0);
+
+		msleep(1000);
+		gpio_set_level(GPIO_USB_C0_AVDD33, 1);
+		gpio_set_level(GPIO_USB_C0_DVDDIO, 1);
+		msleep(1000);
+	}
+#endif
+}
+
+void board_set_tcpc_dp_pin_config(int port, int pin_mode, int polarity)
+{
+	int reg;
+
+	switch (pin_mode) {
+		case MODE_DP_PIN_A:
+		case MODE_DP_PIN_C:
+		case MODE_DP_PIN_E:
+			if (polarity) {
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x42, 0x86);
+				i2c_read8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					  0x46, &reg);
+				reg &= 0x0f;
+				reg |= 0x10;
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x46, reg);
+			} else {
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x42, 0x49);
+				i2c_read8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					  0x46, &reg);
+				reg &= 0x0f;
+				reg |= 0x20;
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x46, reg);
+			}
+			break;
+		case MODE_DP_PIN_B:
+		case MODE_DP_PIN_D:
+		case MODE_DP_PIN_F:
+			if (polarity) {
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x42, 0x92);
+				i2c_read8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					  0x46, &reg);
+				reg &= 0x0f;
+				reg |= 0x40;
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x46, reg);
+			} else {
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x42, 0x61);
+				i2c_read8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					  0x46, &reg);
+				reg &= 0x0f;
+				reg |= 0x80;
+				i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR,
+					   0x46, reg);
+			}
+			break;
+		default:
+			break;
+	}
+}
+
+void board_typec_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
+{
+	int reg;
+
+	i2c_read8(I2C_PORT_TCPC, TCPC1_I2C_ADDR, 0x36, &reg);
+
+	if (hpd_lvl)
+		reg |= 0x10;
+	else
+		reg &= 0xef;
+
+	i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR, 0x36, reg);
+
+	if (hpd_irq) {
+		i2c_read8(I2C_PORT_TCPC, TCPC1_I2C_ADDR, 0x36, &reg);
+		reg &= 0xef;
+		i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR, 0x36, reg);
+		msleep(1);
+		reg |= 0x10;
+                i2c_write8(I2C_PORT_TCPC, TCPC1_I2C_ADDR, 0x36, reg);
+	}
+}
+#endif
