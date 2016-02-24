@@ -79,6 +79,17 @@ void intc_cpu_int_group_12(void)
 		peci_interrupt();
 		break;
 #endif
+#ifdef CONFIG_USB_PD_TCPM_ITE8320
+	case IT83XX_IRQ_USBPD0:
+		task_clear_pending_irq(IT83XX_IRQ_USBPD0);
+		ite8320_pd_irq(0);
+		break;
+
+	case IT83XX_IRQ_USBPD1:
+		task_clear_pending_irq(IT83XX_IRQ_USBPD1);
+		ite8320_pd_irq(1);
+		break;
+#endif /* CONFIG_USB_PD_TCPM_8320 */
 	default:
 		break;
 	}
@@ -91,7 +102,7 @@ void intc_cpu_int_group_6(void)
 	int intc_group_6 = intc_get_ec_int();
 
 	switch (intc_group_6) {
-
+#ifdef CONFIG_I2C
 	case IT83XX_IRQ_SMB_A:
 		i2c_interrupt(0);
 		break;
@@ -103,7 +114,7 @@ void intc_cpu_int_group_6(void)
 	case IT83XX_IRQ_SMB_C:
 		i2c_interrupt(2);
 		break;
-
+#endif
 	default:
 		break;
 	}

@@ -275,9 +275,11 @@ static int command_rw_ec_reg(int argc, char **argv)
 {
 	volatile uint8_t *addr;
 	uint8_t value = 0;
+#ifdef CONFIG_EC2I
 	enum ec2i_message em;
 	enum logical_device_number ldn;
 	enum host_pnpcfg_index idx;
+#endif
 	int i;
 	char *e;
 
@@ -296,6 +298,7 @@ static int command_rw_ec_reg(int argc, char **argv)
 
 	/* access PNPCFG registers */
 	if (((uint32_t)addr & 0xffff0000) == 0xec210000) {
+#ifdef CONFIG_EC2I
 		/* set LDN */
 		ldn = ((uint32_t)addr & 0xff00) >> 8;
 		idx = (uint32_t)addr & 0xff;
@@ -325,6 +328,9 @@ static int command_rw_ec_reg(int argc, char **argv)
 					ccprintf(" %02x", value);
 			}
 		}
+#else
+	return EC_ERROR_ACCESS_DENIED;
+#endif
 	/* access EC registers */
 	} else {
 		/* write register */
