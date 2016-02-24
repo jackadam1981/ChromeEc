@@ -22,6 +22,30 @@
       "revId": "f82b470b5e9c2b05926b947f38f302f0dfcc41e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2b0b90b_70895650",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-02-24T00:37:25Z",
+      "side": 1,
+      "message": "Yes, there technically is a chance. The interpreter will pull up to 1KB and send it to the console, although it\u0027s very rare in practice.\n\nThat\u0027s a good point though, I\u0027ll move the window after searching just to be safe.",
+      "parentUuid": "62be89e4_2a7a4299",
+      "range": {
+        "startLine": 781,
+        "startChar": 4,
+        "endLine": 781,
+        "endChar": 59
+      },
+      "revId": "f82b470b5e9c2b05926b947f38f302f0dfcc41e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
