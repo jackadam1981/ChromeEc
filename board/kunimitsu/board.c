@@ -50,7 +50,7 @@
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 #define GPIO_KB_INPUT (GPIO_INPUT | GPIO_PULL_UP)
-#define GPIO_KB_OUTPUT (GPIO_ODR_HIGH | GPIO_PULL_UP)
+#define GPIO_KB_OUTPUT (GPIO_ODR_HIGH)
 
 #define TPS650830_I2C_ADDR TPS650830_I2C_ADDR1
 
@@ -634,6 +634,27 @@ static void board_chipset_shutdown(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
+
+#ifdef CONFIG_LID_SWITCH
+static void board_lid_change(void)
+{
+	/*
+	 * KSO lines are floated with GPIO_ODR_HIGH configuration, adding
+	 * GPIO_PULL_UP to prevent current leakage in suspend state.
+	 *
+	 * Using hook prio first to ensure this gets called before keyboard
+	 * scanning is enabled.
+	*/
+	if (!lid_is_open()) {
+		gpio_set_flags_by_mask(0, 0x3F, GPIO_ODR_HIGH | GPIO_PULL_UP);
+		gpio_set_flags_by_mask(10, 0xDF, GPIO_ODR_HIGH | GPIO_PULL_UP);
+	} else {
+		gpio_set_flags_by_mask(0, 0x3F, GPIO_ODR_HIGH);
+		gpio_set_flags_by_mask(10, 0xDF, GPIO_ODR_HIGH);
+	}
+}
+DECLARE_HOOK(HOOK_LID_CHANGE, board_lid_change, HOOK_PRIO_FIRST);
+#endif
 
 /* Make the pmic re-sequence the power rails under these conditions. */
 #define PMIC_RESET_FLAGS \
