@@ -16,10 +16,15 @@ static inline void watchdog_reload(void) { }
 
 void bn_init(struct BIGNUM *b, void *buf, size_t len)
 {
+	DCRYPTO_bn_wrap(b, buf, len);
+	dcrypto_memset(buf, 0x00, len);
+}
+
+void DCRYPTO_bn_wrap(struct BIGNUM *b, void *buf, size_t len)
+{
 	/* Only word-multiple sized buffers accepted. */
 	assert((len & 0x3) == 0);
 	b->dmax = len / BN_BYTES;
-	dcrypto_memset(buf, 0x00, len);
 	b->d = (struct access_helper *) buf;
 }
 
@@ -49,6 +54,19 @@ static int bn_is_bit_set(const struct BIGNUM *a, int n)
 static int bn_gte(const struct BIGNUM *a, const struct BIGNUM *b)
 {
 	int i;
+	uint32_t atop = 0;
+	uint32_t btop = 0;
+
+	for (i = a->dmax - 1; i > b->dmax - 1; --i)
+		atop |= BN_DIGIT(a, i);
+
+	for (i = b->dmax - 1; i > a->dmax - 1; --i)
+		btop |= BN_DIGIT(b, i);
+
+	if (atop)
+		return 1;
+	if (btop)
+		return 0;
 
 	for (i = a->dmax - 1; BN_DIGIT(a, i) == BN_DIGIT(b, i) && i > 0; --i)
 		;
@@ -56,7 +74,7 @@ static int bn_gte(const struct BIGNUM *a, const struct BIGNUM *b)
 }
 
 /* c[] = c[] - a[], assumes c > a. */
-static uint32_t bn_sub(struct BIGNUM *c, const struct BIGNUM *a)
+uint32_t bn_sub(struct BIGNUM *c, const struct BIGNUM *a)
 {
 	int64_t A = 0;
 	int i;
@@ -66,11 +84,36 @@ static uint32_t bn_sub(struct BIGNUM *c, const struct BIGNUM *a)
 		BN_DIGIT(c, i) = (uint32_t) A;
 		A >>= 32;
 	}
+
+	for (; A && i < c->dmax; i++) {
+		A += (uint64_t) BN_DIGIT(c, i);
+		BN_DIGIT(c, i) = (uint32_t) A;
+		A >>= 32;
+	}
+
 	return (uint32_t) A;  /* 0 or -1. */
 }
 
+/* c[] = c[] - a[], negative numbers in 2's complement representation. */
+/* Returns borrow bit. */
+static uint32_t bn_signed_sub(struct BIGNUM *c, int *c_neg,
+		const struct BIGNUM *a, int a_neg)
+{
+	if (*c_neg && a_neg) {
+		*c_neg = bn_add(c, a) ? 0 : 1;
+		return 0;
+	} else if (*c_neg) {
+		return bn_add(c, a);
+	} else if (a_neg) {
+		return bn_add(c, a);
+	} else {
+		*c_neg = bn_sub(c, a) ? 1 : 0;
+		return *c_neg;
+	}
+}
+
 /* c[] = c[] + a[]. */
-static uint32_t bn_add(struct BIGNUM *c, const struct BIGNUM *a)
+uint32_t bn_add(struct BIGNUM *c, const struct BIGNUM *a)
 {
 	uint64_t A = 0;
 	int i;
@@ -81,7 +124,31 @@ static uint32_t bn_add(struct BIGNUM *c, const struct BIGNUM *a)
 		A >>= 32;
 	}
 
+	for (; A && i < c->dmax; ++i) {
+		A += (uint64_t) BN_DIGIT(c, i);
+		BN_DIGIT(c, i) = (uint32_t) A;
+		A >>= 32;
+	}
+
 	return (uint32_t) A;  /* 0 or 1. */
+}
+
+/* c[] = c[] + a[], negative numbers in 2's complement representation. */
+/* Returns carry bit. */
+static uint32_t bn_signed_add(struct BIGNUM *c, int *c_neg,
+			const struct BIGNUM *a, int a_neg)
+{
+	if (*c_neg && a_neg) {
+		return bn_add(c, a);
+	} else if (*c_neg) {
+		*c_neg = bn_add(c, a) ? 0 : 1;
+		return 0;
+	} else if (a_neg) {
+		*c_neg = bn_add(c, a) ? 0 : 1;
+		return 0;
+	} else {
+		return bn_add(c, a);
+	}
 }
 
 /* r[] <<= 1. */
@@ -97,6 +164,21 @@ static uint32_t bn_lshift(struct BIGNUM *r)
 		BN_DIGIT(r, i) = w;
 	}
 	return carry;
+}
+
+/* r[] >>= 1. */
+static void bn_rshift(struct BIGNUM *r, uint32_t highbit)
+{
+	int i;
+
+	for (i = 0; i < r->dmax - 1; ++i) {
+		uint32_t accu = (BN_DIGIT(r, i) >> 1);
+
+		accu |= (BN_DIGIT(r, i + 1) << (BN_BITS2 - 1));
+		BN_DIGIT(r, i) = accu;
+	}
+	BN_DIGIT(r, i) = (BN_DIGIT(r, i) >> 1) |
+		(highbit << (BN_BITS2 - 1));
 }
 
 /* Montgomery c[] += a * b[] / R % N. */
@@ -243,4 +325,125 @@ void bn_mont_modexp(struct BIGNUM *output, const struct BIGNUM *input,
 	dcrypto_memset(RR_buf, 0, sizeof(RR_buf));
 	dcrypto_memset(acc_buf, 0, sizeof(acc_buf));
 	dcrypto_memset(aR_buf, 0, sizeof(aR_buf));
+}
+
+/* c[] += a * b[] */
+static uint32_t bn_mul_add(struct BIGNUM *c, uint32_t a,
+			const struct BIGNUM *b, uint32_t offset)
+{
+	int i;
+	uint64_t carry = 0;
+
+	for (i = 0; i < b->dmax; i++) {
+		carry += BN_DIGIT(c, offset + i) +
+			(uint64_t) BN_DIGIT(b, i) * a;
+		BN_DIGIT(c, offset + i) = (uint32_t) carry;
+		carry >>= 32;
+	}
+
+	return carry;
+}
+
+/* c[] = a[] * b[] */
+void bn_mul(struct BIGNUM *c, const struct BIGNUM *a, const struct BIGNUM *b)
+{
+	int i;
+	uint32_t carry = 0;
+
+	memset(c->d, 0, bn_size(c));
+	for (i = 0; i < a->dmax; i++) {
+		BN_DIGIT(c, i + b->dmax - 1) = carry;
+		carry = bn_mul_add(c, BN_DIGIT(a, i), b, i);
+	}
+
+	BN_DIGIT(c, i + b->dmax - 1) = carry;
+}
+
+#define bn_is_even(b) !bn_is_bit_set((b), 0)
+#define bn_is_odd(b) bn_is_bit_set((b), 0)
+#define is_even(b) !((b) & 0x01)
+#define is_odd(b) ((b) & 0x01)
+
+static int bn_is_zero(const struct BIGNUM *a)
+{
+	int i, result = 0;
+
+	for (i = 0; i < a->dmax; ++i)
+		result |= BN_DIGIT(a, i);
+	return !result;
+}
+
+/* d = (e ^ -1) mod MOD  */
+int bn_modinv_vartime(struct BIGNUM *r, uint32_t e, const struct BIGNUM *MOD)
+{
+	uint32_t A_buf[RSA_MAX_BYTES];
+	int32_t B;
+	uint32_t C_buf[RSA_MAX_BYTES];
+	int32_t D;
+	/* TODO(ngm): word size buffer is sufficient for U_buf. */
+	uint32_t U_buf[RSA_MAX_BYTES];
+	uint32_t V_buf[RSA_MAX_BYTES];
+	int a_neg = 0;
+	int c_neg = 0;
+
+	struct BIGNUM A;
+	struct BIGNUM C;
+	struct BIGNUM U;
+	struct BIGNUM V;
+
+	bn_init(&A, A_buf, bn_size(MOD));
+	BN_DIGIT(&A, 0) = 1;
+	B = 0;
+	bn_init(&C, C_buf, bn_size(MOD));
+	D = 1;
+
+	bn_init(&U, U_buf, bn_size(MOD));
+	BN_DIGIT(&U, 0) = e;
+
+	bn_init(&V, V_buf, bn_size(MOD));
+	memcpy(V_buf, MOD->d, bn_size(MOD));
+
+	for (;;) {
+		if (bn_is_even(&U)) {
+			bn_rshift(&U, 0);
+			if (bn_is_odd(&A) || is_odd(B)) {
+				bn_rshift(&A,
+					bn_signed_add(&A, &a_neg, MOD, 0));
+				B -= e;
+			} else {
+				bn_rshift(&A, a_neg);
+			}
+			B >>= 1;
+		} else if (bn_is_even(&V)) {
+			bn_rshift(&V, 0);
+			if (bn_is_odd(&C) || is_odd(D)) {
+				bn_rshift(&C,
+					bn_signed_add(&C, &c_neg, MOD, 0));
+				D -= e;
+			} else {
+				bn_rshift(&C, c_neg);
+			}
+			D >>= 1;
+		} else {  /* U, V both odd. */
+			if (bn_gte(&U, &V)) {
+				bn_sub(&U, &V);
+				if (bn_is_zero(&U))
+					break;  /* done. */
+				bn_signed_sub(&A, &a_neg, &C, c_neg);
+				B -= D;
+			} else {
+				bn_sub(&V, &U);
+				bn_signed_sub(&C, &c_neg, &A, a_neg);
+				D -= B;
+			}
+		}
+	}
+
+	BN_DIGIT(&V, 0) ^= 0x01;
+	if (bn_is_zero(&V)) {
+		memcpy(r->d, C.d, bn_size(r));
+		return 1;
+	} else {
+		return 0;  /* Inverse not found. */
+	}
 }

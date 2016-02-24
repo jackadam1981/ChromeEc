@@ -504,3 +504,23 @@ int DCRYPTO_rsa_verify(struct RSA *rsa, const uint8_t *digest,
 	dcrypto_memset(signature_buf, 0, sizeof(signature_buf));
 	return ret;
 }
+
+int DCRYPTO_rsa_key_compute(struct BIGNUM *N, struct BIGNUM *d,
+			struct BIGNUM *p, struct BIGNUM *q, uint32_t e)
+{
+	uint32_t ONE_buf = 1;
+	uint32_t phi_buf[RSA_MAX_WORDS];
+
+	struct BIGNUM ONE;
+	struct BIGNUM phi;
+
+	bn_mul(N, p, q);
+	bn_init(&phi, phi_buf, bn_size(N));
+	memcpy(phi_buf, N->d, bn_size(N));
+	DCRYPTO_bn_wrap(&ONE, &ONE_buf, sizeof(ONE_buf));
+
+	bn_sub(&phi, p);
+	bn_sub(&phi, q);
+	bn_add(&phi, &ONE);
+	return bn_modinv_vartime(d, e, &phi);
+}
