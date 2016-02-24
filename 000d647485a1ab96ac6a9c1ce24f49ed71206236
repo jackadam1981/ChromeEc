@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02e4ed24_4c793455",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-02-24T00:48:51Z",
+      "side": 1,
+      "message": "If you found a match, should discard the entire look buffer.  Otherwise, you may print the result repeatedly.\n\nElse move the sliding window.",
+      "revId": "000d647485a1ab96ac6a9c1ce24f49ed71206236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
