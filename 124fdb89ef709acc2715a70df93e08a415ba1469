@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02e4ed24_389dfedc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-24T21:03:37Z",
+      "side": 1,
+      "message": "Should be \"isl9237: ...\". This change is not limited to kunimitsu/lars and affects all boards which use this charger.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "124fdb89ef709acc2715a70df93e08a415ba1469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62be89e4_cf5193de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-24T21:03:37Z",
+      "side": 1,
+      "message": "Why 12800mA? Your intent is to disable DCProchot#, right? You should state so in your description.",
+      "range": {
+        "startLine": 11,
+        "startChar": 42,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "124fdb89ef709acc2715a70df93e08a415ba1469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22d0113b_0c52f90b",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-24T21:03:37Z",
+      "side": 1,
+      "message": "You might want to comment here that you\u0027re setting DCProchot# to the maximum possible current in order to effectively disable it.",
+      "revId": "124fdb89ef709acc2715a70df93e08a415ba1469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
