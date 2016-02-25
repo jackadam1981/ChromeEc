@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22d0113b_bd7fb13b",
+        "filename": "board/pdeval-stm32f072/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-25T00:38:57Z",
+      "side": 1,
+      "message": "as commented earlier, this should be implement as a \u0027struct usb_mux\u0027 directly in driver/tcpm/anx74xx.c\n(similarly to what was done there : https://chromium.googlesource.com/chromiumos/platform/ec/+/master/driver/tcpm/tcpci.c#340 )",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 1
+      },
+      "revId": "d54fa5d281d4451b4d4f580d3f6af92c47765d79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
