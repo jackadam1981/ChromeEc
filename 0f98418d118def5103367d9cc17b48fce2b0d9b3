@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e2b0b90b_939d0731",
+        "filename": "board/lucid/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-02-25T20:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82bb7df1_76125378",
+      "range": {
+        "startLine": 89,
+        "startChar": 3,
+        "endLine": 89,
+        "endChar": 68
+      },
+      "revId": "0f98418d118def5103367d9cc17b48fce2b0d9b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2def959_6cb4e5fe",
         "filename": "board/lucid/board.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e2def959_d2f4903b",
+        "filename": "board/lucid/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-02-25T20:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2def959_6cb4e5fe",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 1
+      },
+      "revId": "0f98418d118def5103367d9cc17b48fce2b0d9b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62be89e4_3832934a",
         "filename": "board/lucid/board.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-02-25T01:15:28Z",
       "side": 1,
       "message": "If we move the code above to stm32 chip folder, we can move this to one of the init routines there as well (behind the same CONFIG).",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 40
+      },
+      "revId": "0f98418d118def5103367d9cc17b48fce2b0d9b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2def959_5201c0e6",
+        "filename": "board/lucid/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-02-25T20:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62be89e4_3832934a",
       "range": {
         "startLine": 174,
         "startChar": 1,
