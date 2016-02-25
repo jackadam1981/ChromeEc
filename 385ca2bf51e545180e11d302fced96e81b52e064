@@ -16,6 +16,24 @@
       "revId": "385ca2bf51e545180e11d302fced96e81b52e064",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62a5a9c6_06a2cad5",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-25T18:22:49Z",
+      "side": 1,
+      "message": "Actually, no. Since commit e988312, all GPIO_INTs have to come first or interrupts won\u0027t work at all. This comment should have been changed for all boards with that commit, but wasn\u0027t. I\u0027ll make a new CL to fix all the comments.",
+      "parentUuid": "c2981592_f07fa2eb",
+      "revId": "385ca2bf51e545180e11d302fced96e81b52e064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
