@@ -12,6 +12,7 @@
 #include "lpc.h"
 #include "mkbp_event.h"
 #include "util.h"
+#include "include/power.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_EVENTS, outstr)
@@ -274,4 +275,22 @@ static int host_event_clear_b(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_CLEAR_B,
 		     host_event_clear_b,
+		     EC_VER_MASK(0));
+
+static int host_event_sleep_event(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_host_sleep_event *p = args->params;
+
+	CPRINTS("sleep event 0x%08x", p->sleep_event);
+	CPRINTS("PCH_SLP_S0_L = %d", gpio_get_level(GPIO_PCH_SLP_S0_L));
+	/* S0ix entry */
+	if (!(p->sleep_event & 0x1))
+		power_signal_process_S0();
+	/* S0ix exit */
+	else if (p->sleep_event & 0x1)
+		power_signal_interrupt(GPIO_PCH_SLP_S0_L);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_HOST_SLEEP_EVENT,
+		     host_event_sleep_event,
 		     EC_VER_MASK(0));

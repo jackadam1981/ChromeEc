@@ -187,6 +187,8 @@ const char help_str[] =
 	"      Set entry in PD MCU's device rw_hash table.\n"
 	"  sertest\n"
 	"      Serial output test for COM2\n"
+	"  sleepevent \n"
+	"      Sleep event test\n"
 	"  switches\n"
 	"      Prints current EC switch positions\n"
 	"  temps <sensorid>\n"
@@ -6390,6 +6392,13 @@ int cmd_charge_port_override(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_sleep_event(int argc, char *argv[])
+{
+	/* struct ec_params_host_sleep_event p; */
+
+	return 0;
+}
+
 int cmd_pd_log(int argc, char *argv[])
 {
 	union {
@@ -6584,6 +6593,7 @@ const struct command commands[] = {
 	{"rtcset", cmd_rtc_set},
 	{"rwhashpd", cmd_rw_hash_pd},
 	{"sertest", cmd_serial_test},
+	{"sleepevent", cmd_sleep_event},
 	{"port80flood", cmd_port_80_flood},
 	{"switches", cmd_switches},
 	{"temps", cmd_temperature},

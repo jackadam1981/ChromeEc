@@ -2532,6 +2532,21 @@ struct ec_response_host_event_mask {
 #define EC_CMD_HOST_EVENT_SET_WAKE_MASK 0x8e
 #define EC_CMD_HOST_EVENT_CLEAR_B       0x8f
 
+/*
+ *  * Host event sleep params and response structures, shared by all of the host
+ *   * event commands below.
+ *    */
+struct ec_params_host_sleep_event {
+        uint32_t sleep_event;
+} __packed;
+
+struct ec_response_host_sleep_event {
+	uint32_t sleep_event;
+} __packed;
+
+/* This uses ec_params_host_sleep_event */
+#define EC_CMD_HOST_SLEEP_EVENT         0x9a
+
 /*****************************************************************************/
 /* Switch commands */
 
