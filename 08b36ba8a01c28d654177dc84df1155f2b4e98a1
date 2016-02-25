@@ -16,6 +16,24 @@
       "revId": "08b36ba8a01c28d654177dc84df1155f2b4e98a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22d0113b_0fdf8682",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-25T19:28:24Z",
+      "side": 1,
+      "message": "Yes, it\u0027s a new requirement. It was tested in the previous CL, so all boards either conform or break.\nhttps://chromium-review.googlesource.com/263973\n\nThey all conform, though.",
+      "parentUuid": "82bb7df1_9d32a348",
+      "revId": "08b36ba8a01c28d654177dc84df1155f2b4e98a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
