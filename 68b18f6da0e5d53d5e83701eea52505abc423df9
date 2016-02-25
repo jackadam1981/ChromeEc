@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02cf8da0_c3b500b0",
+        "filename": "board/lars/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2016-02-25T06:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62be89e4_128a1009",
+      "range": {
+        "startLine": 576,
+        "startChar": 29,
+        "endLine": 576,
+        "endChar": 33
+      },
+      "revId": "68b18f6da0e5d53d5e83701eea52505abc423df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2b0b90b_da05e4a9",
         "filename": "board/lars/board.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-25T06:19:06Z",
       "side": 1,
       "message": "DDh for Lars since KSO2 pin is GPIO mode.",
+      "range": {
+        "startLine": 579,
+        "startChar": 29,
+        "endLine": 579,
+        "endChar": 33
+      },
+      "revId": "68b18f6da0e5d53d5e83701eea52505abc423df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c20f35b0_0d2695fc",
+        "filename": "board/lars/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2016-02-25T06:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2b0b90b_da05e4a9",
       "range": {
         "startLine": 579,
         "startChar": 29,
