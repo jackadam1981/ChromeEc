@@ -71,15 +71,6 @@ static uint32_t hibernate_delay = CONFIG_HIBERNATE_DELAY_SEC;
 static int pause_in_s5;
 #endif
 
-static int power_signal_get_level(enum gpio_signal signal)
-{
-#ifdef CONFIG_POWER_S0IX
-	return chipset_get_ps_debounced_level(signal);
-#else
-	return gpio_get_level(signal);
-#endif
-}
-
 /**
  * Update input signals mask
  */
@@ -90,7 +81,7 @@ static void power_update_signals(void)
 	int i;
 
 	for (i = 0; i < POWER_SIGNAL_COUNT; i++, s++) {
-		if (power_signal_get_level(s->gpio) == s->level)
+		if (gpio_get_level(s->gpio) == s->level)
 			inew |= 1 << i;
 	}
 
@@ -686,3 +677,21 @@ DECLARE_CONSOLE_COMMAND(pause_in_s5, command_pause_in_s5,
 			"Should the AP pause in S5 during shutdown?",
 			NULL);
 #endif /* CONFIG_POWER_SHUTDOWN_PAUSE_IN_S5 */
+
+#ifdef CONFIG_POWER_S0IX
+static int host_event_sleep_event(struct host_cmd_handler_args *args)
+{
+        const struct ec_params_host_sleep_event *p = args->params;
+
+        CPRINTS("Host sleep event 0x%08x", p->sleep_event);
+
+        if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_SUSPEND)
+                power_signal_process_S0();
+        else if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_RESUME)
+                power_signal_interrupt(GPIO_PCH_SLP_S0_L);
+
+        return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_HOST_SLEEP_EVENT, host_event_sleep_event,
+                     EC_VER_MASK(0));
+#endif /* CONFIG_POWER_S0IX */
