@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4277c50e_2dfc8ed3",
+        "filename": "chip/stm32/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2016-02-25T23:59:29Z",
+      "side": 1,
+      "message": "nit, generate this mask via CONFIG_USB_RAM_SIZE or similar",
+      "range": {
+        "startLine": 29,
+        "startChar": 56,
+        "endLine": 29,
+        "endChar": 61
+      },
+      "revId": "614a330304dadaa8cc2d763c1d8123106b66ea72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02986d84_93f59b38",
+        "filename": "chip/stm32/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2016-02-25T23:59:29Z",
+      "side": 1,
+      "message": "bounds checking on count?",
+      "range": {
+        "startLine": 57,
+        "startChar": 18,
+        "endLine": 57,
+        "endChar": 23
+      },
+      "revId": "614a330304dadaa8cc2d763c1d8123106b66ea72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
