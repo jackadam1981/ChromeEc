@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "62a5a9c6_cbad0bfb",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-02-25T05:38:57Z",
+      "side": 1,
+      "message": "USB_STREAM_CONFIG macro isn\u0027t static, so declaration should match.",
+      "parentUuid": "a29b218c_2fca4893",
+      "range": {
+        "startLine": 69,
+        "startChar": 31,
+        "endLine": 69,
+        "endChar": 41
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a29b218c_efd3404e",
         "filename": "board/servo_micro/board.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-23T18:59:04Z",
       "side": 1,
       "message": "Same here, this could be static",
+      "range": {
+        "startLine": 99,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 24
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2981592_9057362f",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-02-25T05:38:57Z",
+      "side": 1,
+      "message": "as above",
+      "parentUuid": "a29b218c_efd3404e",
       "range": {
         "startLine": 99,
         "startChar": 7,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e2b0b90b_f808a809",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-02-25T05:38:57Z",
+      "side": 1,
+      "message": "as above",
+      "parentUuid": "a29b218c_afde5852",
+      "range": {
+        "startLine": 129,
+        "startChar": 7,
+        "endLine": 129,
+        "endChar": 24
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2c1f56d_3c828b84",
         "filename": "board/servo_micro/board.c",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2016-02-23T18:59:04Z",
       "side": 1,
       "message": "Because on the STM32F072 SPI2 defaults to using DMA channels 4 and 5, but our hard coded mapping of DMA usage in registers.h assumes that it will use channels 6 and 7.  So we remap the SPI2 peripheral DMA channels.  A better solution in the long run would be to completely remove the hard coded mapping in registers.h and configure each device driver with its DMA channels the way the new UART driver does.  That way each board could fully select how its DMA channels were used.",
+      "range": {
+        "startLine": 188,
+        "startChar": 14,
+        "endLine": 188,
+        "endChar": 16
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2def959_b7469699",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-02-25T05:38:57Z",
+      "side": 1,
+      "message": "I\u0027ve added an explanation.",
+      "parentUuid": "c2c1f56d_3c828b84",
       "range": {
         "startLine": 188,
         "startChar": 14,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "62be89e4_98899f53",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-02-25T05:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2b0b90b_ca7abbfe",
+      "range": {
+        "startLine": 234,
+        "startChar": 5,
+        "endLine": 234,
+        "endChar": 25
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62a5a9c6_7e892850",
         "filename": "board/servo_micro/gpio.inc",
         "patchSetId": 4
@@ -128,6 +248,30 @@
       "writtenOn": "2016-02-23T18:59:04Z",
       "side": 1,
       "message": "Is this still the case?  It looks like UART3 is being initialized in board.c, should it not be?  Also, the changing by one of the UART name between the hardware names and the USB device names is a little confusing, I see why it was done, but it might make the code clearer if they matched.",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 21
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82bb7df1_74d5ac62",
+        "filename": "board/servo_micro/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-02-25T05:38:57Z",
+      "side": 1,
+      "message": "Currently UART3 is accessible by USB but isn\u0027t pinmuxed out. Depending on the reworks present on the servo_micro one of UART3, SPI, or JTAG can work. \n\nThe naming unfortunately is servo header naming vs. stm32 naming. I\u0027ve tried to keep it clear by specifying USARTn (stm32 device) and UARTn (yoshi header spec)",
+      "parentUuid": "62a5a9c6_7e892850",
       "range": {
         "startLine": 52,
         "startChar": 19,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "a29b218c_ddc94823",
+        "filename": "chip/stm32/usb_i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-02-25T05:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02e4ed24_f6366d3b",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 21
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a29b218c_6f128f78",
         "filename": "chip/stm32/usb_i2c.h",
         "patchSetId": 4
@@ -174,6 +342,30 @@
       "writtenOn": "2016-02-23T18:59:04Z",
       "side": 1,
       "message": "This should be 60, not 62.",
+      "range": {
+        "startLine": 28,
+        "startChar": 42,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62be89e4_1886af3e",
+        "filename": "chip/stm32/usb_i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-02-25T05:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a29b218c_6f128f78",
       "range": {
         "startLine": 28,
         "startChar": 42,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "62a5a9c6_ab3f676a",
+        "filename": "include/usb_descriptor.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-02-25T05:38:57Z",
+      "side": 1,
+      "message": "Added as proposal, how do I request approval?",
+      "parentUuid": "c2c1f56d_fcd9b39e",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 39
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62be89e4_59c31602",
         "filename": "util/flash_ec",
         "patchSetId": 4
@@ -220,6 +436,30 @@
       "writtenOn": "2016-02-23T18:59:04Z",
       "side": 1,
       "message": "Did you mean to move discovery down here?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "b7871c60a36ec55eff456a456c4f46b77bb01afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22d0113b_183353ae",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-02-25T05:38:57Z",
+      "side": 1,
+      "message": "Discovery definitely works well with dfu-util. I can move it back if you like.",
+      "parentUuid": "62be89e4_59c31602",
       "range": {
         "startLine": 84,
         "startChar": 1,
