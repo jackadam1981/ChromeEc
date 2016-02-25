@@ -218,11 +218,11 @@ void usb_charger_task(void)
 	while (1) {
 		/* Wait for interrupt */
 		evt = task_wait_event(-1);
-		/* Read interrupt register to clear on chip */
-		interrupt = pi3usb9281_get_interrupts(port);
 
 		/* Interrupt from the Pericom chip, determine interrupt type */
 		if (evt & USB_CHG_EVENT_INTR) {
+			/* Read interrupt register to clear on chip */
+			interrupt = pi3usb9281_get_interrupts(port);
 			if (interrupt & attach_mask)
 				usb_charger_bc12_detect(port);
 		}
