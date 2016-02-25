@@ -301,6 +301,30 @@
     },
     {
       "key": {
+        "uuid": "e2def959_91edea1a",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-25T00:40:45Z",
+      "side": 1,
+      "message": "I guess this is working with the current code because there is no caller in the common stack for this function,\nso if you want to keep it this way, please rename the function and make it static to avoid future confusions.",
+      "parentUuid": "c2c1f56d_cbca9163",
+      "range": {
+        "startLine": 397,
+        "startChar": 1,
+        "endLine": 421,
+        "endChar": 2
+      },
+      "revId": "5b03c2e87543893e2704ca4938dd9b94fc39fe4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a29b218c_8c7b94c5",
         "filename": "driver/tcpm/anx74xx.h",
         "patchSetId": 8
