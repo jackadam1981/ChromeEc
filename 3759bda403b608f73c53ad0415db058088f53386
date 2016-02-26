@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2271f153_2732a6d4",
+        "filename": "util/lock/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-02-26T17:28:08Z",
+      "side": 1,
+      "message": "Do we really this lengthy non-standard license for 2 insignificantt lines of code ?\nCannot we just use the standard Chrome-BSD EC license ?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 3
+      },
+      "revId": "3759bda403b608f73c53ad0415db058088f53386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4276e54b_f19c6298",
         "filename": "util/lock/android.c",
         "patchSetId": 1
