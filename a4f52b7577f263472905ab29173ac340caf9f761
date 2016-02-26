@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4276e54b_224b762a",
+        "filename": "board/lucid/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-26T21:01:18Z",
+      "side": 1,
+      "message": "Sorry, you\u0027re right. I was thinking about the ramp limit, which we should define later in a board-level function. We should take the initial limits from pi3usb9281_get_ilim(), which you\u0027re already doing (BTW we should move that function out of the pericom driver to somewhere in common in a future CL, we could use it right here!).",
+      "parentUuid": "02e4ed24_fef4f43a",
+      "range": {
+        "startLine": 77,
+        "startChar": 14,
+        "endLine": 77,
+        "endChar": 38
+      },
+      "revId": "a4f52b7577f263472905ab29173ac340caf9f761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2981592_8a57fd2e",
         "filename": "chip/stm32/charger_detect.c",
         "patchSetId": 3
