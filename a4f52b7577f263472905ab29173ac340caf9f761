@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "62be89e4_5c81b225",
+        "filename": "board/lucid/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-02-26T22:33:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82bb7df1_110e7713",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 28
+      },
+      "revId": "a4f52b7577f263472905ab29173ac340caf9f761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2271f153_02b8b80d",
         "filename": "board/lucid/board.c",
         "patchSetId": 3
@@ -107,6 +131,30 @@
       "writtenOn": "2016-02-26T19:27:01Z",
       "side": 1,
       "message": "Let\u0027s keep these includes alpha-sorted.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "a4f52b7577f263472905ab29173ac340caf9f761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2c1f56d_70523b0d",
+        "filename": "chip/stm32/charger_detect.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-02-26T22:33:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2981592_8a57fd2e",
       "range": {
         "startLine": 10,
         "startChar": 0,
