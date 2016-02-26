@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c26bb568_aa698f88",
+        "filename": "chip/stm32/charger_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-02-26T19:19:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a29b218c_ac252f48",
+      "revId": "83223b7703e6738a08654bc8fbfdfc8670e1c7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a29b218c_4c56a3a7",
         "filename": "chip/stm32/charger_detect.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2016-02-25T22:05:46Z",
       "side": 1,
       "message": "Let\u0027s keep this function in the charger_detect namespace -- so charger_detect_get_device_type maybe?",
+      "revId": "83223b7703e6738a08654bc8fbfdfc8670e1c7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62be89e4_06808d1e",
+        "filename": "chip/stm32/charger_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-02-26T19:19:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a29b218c_4c56a3a7",
       "revId": "83223b7703e6738a08654bc8fbfdfc8670e1c7f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "c2c1f56d_7f1faef2",
+        "filename": "chip/stm32/charger_detect.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-02-26T19:19:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82bb7df1_48dfab81",
+      "revId": "83223b7703e6738a08654bc8fbfdfc8670e1c7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2b0b90b_ae51bade",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2016-02-25T22:05:46Z",
       "side": 1,
       "message": "Let\u0027s name this CONFIG_STM32_CHARGER_DETECT? Basically, we have several methods of detecting chargers (pi3usb9281, although that\u0027s in the USB switch namespace..) so we want to be able to distinguish between them. Maybe we\u0027ll have many similar CONFIGs someday, for on-chip detection and discreet chips (possibly all using your new API!).",
+      "revId": "83223b7703e6738a08654bc8fbfdfc8670e1c7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2271f153_22fcd45c",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-02-26T19:19:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2b0b90b_ae51bade",
       "revId": "83223b7703e6738a08654bc8fbfdfc8670e1c7f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
