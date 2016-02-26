@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82bb7df1_110e7713",
+        "filename": "board/lucid/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-26T19:27:01Z",
+      "side": 1,
+      "message": "This function can be static.",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 28
+      },
+      "revId": "a4f52b7577f263472905ab29173ac340caf9f761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2271f153_02b8b80d",
+        "filename": "board/lucid/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-26T19:27:01Z",
+      "side": 1,
+      "message": "How about DCP? We can decide later, but we should probably add a TODO here, because we\u0027ll need to change this.",
+      "range": {
+        "startLine": 77,
+        "startChar": 14,
+        "endLine": 77,
+        "endChar": 38
+      },
+      "revId": "a4f52b7577f263472905ab29173ac340caf9f761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2981592_8a57fd2e",
+        "filename": "chip/stm32/charger_detect.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-26T19:27:01Z",
+      "side": 1,
+      "message": "Let\u0027s keep these includes alpha-sorted.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "a4f52b7577f263472905ab29173ac340caf9f761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82bb7df1_f12543a3",
+        "filename": "chip/stm32/charger_detect.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-26T19:27:01Z",
+      "side": 1,
+      "message": "I was thinking to move this header to ec/include (or find a suitable existing header in ec/include for it), but I guess it\u0027s ok to leave it here, since we don\u0027t have any other detectors that use this API yet.",
+      "revId": "a4f52b7577f263472905ab29173ac340caf9f761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
