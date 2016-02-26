@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e27a7932_ce5663a9",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-26T18:42:02Z",
+      "side": 1,
+      "message": "No need to assign interrupt here -- just read and clear, the interrupt status is irrelevant.",
+      "range": {
+        "startLine": 233,
+        "startChar": 3,
+        "endLine": 233,
+        "endChar": 12
+      },
+      "revId": "02dd169fb7abc6fe2af2ee57dc78faf68e66dd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2981592_1fcfb1a2",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-26T18:42:02Z",
+      "side": 1,
+      "message": "You should probably rearrange these two flag checks (check USB_CHG_EVENT_BC12 first) and check of the second flag to \"else if (evt \u0026 USB_CHG_EVENT_INTR)\". In theory, both of these events could be set (though I see you added USB_CHG_EVENT_INTR just for oak, and I don\u0027t think you\u0027re ever setting USB_CHG_EVENT_BC12, so it\u0027s not a real problem yet).",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 233,
+        "endChar": 2
+      },
+      "revId": "02dd169fb7abc6fe2af2ee57dc78faf68e66dd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
