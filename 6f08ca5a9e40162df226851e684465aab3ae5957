@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a26ec178_121332ed",
+        "filename": "board/lars/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2016-02-27T03:28:28Z",
+      "side": 0,
+      "message": "S0 interrupt cannot be disabled as system boot for cold boot, shutdown/resume all of these need this interrupt for EC to enter S0 state.",
+      "range": {
+        "startLine": 23,
+        "startChar": 71,
+        "endLine": 23,
+        "endChar": 72
+      },
+      "revId": "6f08ca5a9e40162df226851e684465aab3ae5957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
