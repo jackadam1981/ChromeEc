@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4276e54b_bd554b9b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-02-27T00:10:34Z",
+      "side": 1,
+      "message": "should this be done sooner - just in case any of the above functions fail? Or maybe vallue written into the register could be some post progress indicator? Just a thought.",
+      "revId": "06c1ea0bd191b52f3a1881fa29fb5f151c7b649c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26bb568_5e01b551",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-02-27T00:10:34Z",
+      "side": 1,
+      "message": "so, we got just seven of them",
+      "revId": "06c1ea0bd191b52f3a1881fa29fb5f151c7b649c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26bb568_9e140d88",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-02-27T00:10:34Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment - how would the outputs be driven then?",
+      "revId": "06c1ea0bd191b52f3a1881fa29fb5f151c7b649c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82bb7df1_ca796857",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-02-27T00:10:34Z",
+      "side": 1,
+      "message": "interestingly enough I don\u0027t see a pull up on the schematics either. Hopefully there could be internal pull up on the SOC.",
+      "revId": "06c1ea0bd191b52f3a1881fa29fb5f151c7b649c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e27a7932_9a6411b2",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-02-27T00:10:34Z",
+      "side": 1,
+      "message": "I wish they were made mutually exclusive by HW.",
+      "revId": "06c1ea0bd191b52f3a1881fa29fb5f151c7b649c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a26ec178_6f7405a0",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-02-27T00:10:34Z",
+      "side": 1,
+      "message": "here and in line 51 - what does 0 mean in this context?",
+      "range": {
+        "startLine": 48,
+        "startChar": 34,
+        "endLine": 48,
+        "endChar": 36
+      },
+      "revId": "06c1ea0bd191b52f3a1881fa29fb5f151c7b649c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
