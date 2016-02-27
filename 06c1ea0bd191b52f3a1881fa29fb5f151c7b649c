@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "82bb7df1_65e96dd0",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-27T00:32:24Z",
+      "side": 1,
+      "message": "I don\u0027t have enough information to know. This is just a signal to the people preprogramming the parts. If they\u0027re using the same development boards we have, it\u0027ll either work or the part is bad.",
+      "parentUuid": "4276e54b_bd554b9b",
+      "revId": "06c1ea0bd191b52f3a1881fa29fb5f151c7b649c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c26bb568_5e01b551",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-02-27T00:10:34Z",
       "side": 1,
       "message": "so, we got just seven of them",
+      "revId": "06c1ea0bd191b52f3a1881fa29fb5f151c7b649c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02e4ed24_54b9a742",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-27T00:32:24Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "c26bb568_5e01b551",
       "revId": "06c1ea0bd191b52f3a1881fa29fb5f151c7b649c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "a26ec178_cf5651a9",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-27T00:32:24Z",
+      "side": 1,
+      "message": "The p_digital pad has a buffer that drives the output AND a buffer that samples the pad. You have to enable the input-sampling buffer if you want to read the value directly. Otherwise you can only see the value that you\u0027ve told the output side to have, not what value it actually has.",
+      "parentUuid": "c26bb568_9e140d88",
+      "revId": "06c1ea0bd191b52f3a1881fa29fb5f151c7b649c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82bb7df1_ca796857",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2016-02-27T00:10:34Z",
       "side": 1,
       "message": "interestingly enough I don\u0027t see a pull up on the schematics either. Hopefully there could be internal pull up on the SOC.",
+      "revId": "06c1ea0bd191b52f3a1881fa29fb5f151c7b649c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26bb568_7e8b59da",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-27T00:32:24Z",
+      "side": 1,
+      "message": "I\u0027ll ask.",
+      "parentUuid": "82bb7df1_ca796857",
       "revId": "06c1ea0bd191b52f3a1881fa29fb5f151c7b649c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -98,6 +170,30 @@
       "writtenOn": "2016-02-27T00:10:34Z",
       "side": 1,
       "message": "here and in line 51 - what does 0 mean in this context?",
+      "range": {
+        "startLine": 48,
+        "startChar": 34,
+        "endLine": 48,
+        "endChar": 36
+      },
+      "revId": "06c1ea0bd191b52f3a1881fa29fb5f151c7b649c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82bb7df1_e5efbd9f",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-02-27T00:32:24Z",
+      "side": 1,
+      "message": "Nothing really. These are GPIO_INPUTs, so they don\u0027t need extra PINMUX-specific flags to enable the input buffer because they already have a GPIO-specific flag to do that.",
+      "parentUuid": "a26ec178_6f7405a0",
       "range": {
         "startLine": 48,
         "startChar": 34,
