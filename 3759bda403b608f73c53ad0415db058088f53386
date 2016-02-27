@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e27a7932_a551b208",
+        "filename": "util/lock/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-02-27T00:51:08Z",
+      "side": 1,
+      "message": "Since this file also gets copied and linked into third-party GPLv2 code I\u0027m afraid so. Otherwise we could just use the BSD 3-clause license that\u0027s in the LICENSE file as you point out.",
+      "parentUuid": "2271f153_2732a6d4",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 3
+      },
+      "revId": "3759bda403b608f73c53ad0415db058088f53386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4276e54b_f19c6298",
         "filename": "util/lock/android.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "62be89e4_7385c4f8",
+        "filename": "util/lock/android.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-02-27T00:51:08Z",
+      "side": 1,
+      "message": "Usually yes, but since this is copy + pasted code minus the debug prints from the other codebases then I think it\u0027s probably best to maintain the same form, even if sub-optimal in this case.",
+      "parentUuid": "4276e54b_f19c6298",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "3759bda403b608f73c53ad0415db058088f53386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "628f697d_350178e8",
         "filename": "util/lock/android.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-02-26T02:30:21Z",
       "side": 1,
       "message": "Minor comment style change needed here.",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 30
+      },
+      "revId": "3759bda403b608f73c53ad0415db058088f53386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02e4ed24_8fb49cff",
+        "filename": "util/lock/android.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-02-27T00:51:08Z",
+      "side": 1,
+      "message": "Fixed up to try and match the javadoc style comments using ../misc_util.h as an example.",
+      "parentUuid": "628f697d_350178e8",
       "range": {
         "startLine": 46,
         "startChar": 2,
