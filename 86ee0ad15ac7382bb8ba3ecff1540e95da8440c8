@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e27a7932_3e46284a",
+        "filename": "board/kunimitsu/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-29T23:11:06Z",
+      "side": 1,
+      "message": "Why is this behind CONFIG_LID_SWITCH? Are you planning to build derivative boards without a lid switch? If not, you can just assume it\u0027s there.",
+      "range": {
+        "startLine": 638,
+        "startChar": 7,
+        "endLine": 638,
+        "endChar": 24
+      },
+      "revId": "86ee0ad15ac7382bb8ba3ecff1540e95da8440c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82ea9d1e_f45640fd",
+        "filename": "board/kunimitsu/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-02-29T23:11:06Z",
+      "side": 1,
+      "message": "You mentioned that an interrupt storm can occur if keyscanning is enabled at the same time as PUs are enabled. You will still have some small period of time where PUs are enabled and keyscan will be enabled. Do you need to have two hooks instead, one that will happen before scan enable, and one after? If so, consider adding a new HOOK_PRIO for keyboard_lid_change.",
+      "revId": "86ee0ad15ac7382bb8ba3ecff1540e95da8440c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
