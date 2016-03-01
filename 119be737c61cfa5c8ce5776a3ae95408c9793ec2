@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e27a7932_e6efb19f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-03-01T23:08:17Z",
+      "side": 1,
+      "message": "I assume you\u0027re referring to the tpm2 test suite?  Nothing new yet, not until rsa keygen is done.\n\nThe new tests under test/tpm2 pass.",
+      "parentUuid": "a26ec178_dc404482",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a26ec178_c1effd62",
         "filename": "board/cr50/tpm2/rsa.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2016-03-01T22:05:06Z",
       "side": 1,
       "message": "just out of curiosity - does this operation always succeed? What would happen if either of the passed in numbers is not a prime?\n\nWhat exactly is tested here, some comment would help.",
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2b0b90b_4ce914d0",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-03-01T23:08:17Z",
+      "side": 1,
+      "message": "The tpm2 api is not very clear here.  The purpose of this method to verify the \"consistency\" of key, i.e. that the various parts match, and that the tpm is computing correctly.\n\nYes, the method may fail.  I added checks.",
+      "parentUuid": "a26ec178_c1effd62",
       "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "e27a7932_c6d39524",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-03-01T23:08:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a26ec178_818ca562",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 27
+      },
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2b0b90b_79d01075",
         "filename": "chip/g/dcrypto/bn.c",
         "patchSetId": 1
@@ -76,6 +142,24 @@
       "writtenOn": "2016-03-01T22:05:06Z",
       "side": 1,
       "message": "please add a comment describing this function\u0027s inputs and return value",
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26bb568_bed54301",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-03-01T23:08:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2b0b90b_79d01075",
       "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "a2e32149_f47919a5",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-03-01T23:08:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2e32149_59ed9e17",
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2b0b90b_f9c420b4",
         "filename": "chip/g/dcrypto/bn.c",
         "patchSetId": 1
@@ -110,6 +212,24 @@
       "writtenOn": "2016-03-01T22:05:06Z",
       "side": 1,
       "message": "also, would be good to see the comments about inputs and outputs. \n\nAs a thought - would it be beneficial to store the sign in BIGNUM?",
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e27a7932_46824585",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-03-01T23:08:17Z",
+      "side": 1,
+      "message": "\u003e As a thought - would it be beneficial to store the sign in BIGNUM?\n\nI considered it, but don\u0027t think it\u0027s a good idea at the moment - most of this library is not prepared for dealing with signed numbers.  Also, we probably won\u0027t need signed numbers for much else than this change.",
+      "parentUuid": "e2b0b90b_f9c420b4",
       "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "e27a7932_e6d57100",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-03-01T23:08:17Z",
+      "side": 1,
+      "message": "Done.  Highbit is either 0 or 1.",
+      "parentUuid": "02feade5_86018bea",
+      "range": {
+        "startLine": 172,
+        "startChar": 44,
+        "endLine": 172,
+        "endChar": 51
+      },
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82ea9d1e_a0fc6f5e",
         "filename": "chip/g/dcrypto/bn.c",
         "patchSetId": 1
@@ -156,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "22ef3134_15f59f35",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-03-01T23:08:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82ea9d1e_a0fc6f5e",
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02feade5_862fcb66",
         "filename": "chip/g/dcrypto/bn.c",
         "patchSetId": 1
@@ -167,6 +329,30 @@
       "writtenOn": "2016-03-01T22:05:06Z",
       "side": 1,
       "message": "should this be (BN_BITS2/8) ?",
+      "range": {
+        "startLine": 355,
+        "startChar": 27,
+        "endLine": 355,
+        "endChar": 44
+      },
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e27a7932_4669e5f8",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-03-01T23:08:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02feade5_862fcb66",
       "range": {
         "startLine": 355,
         "startChar": 27,
