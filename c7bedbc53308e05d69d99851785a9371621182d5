@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02feade5_5128de61",
+        "filename": "board/lars/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-01T18:19:17Z",
+      "side": 1,
+      "message": "I think you can change your code slightly to not need temp_index at all.",
+      "revId": "c7bedbc53308e05d69d99851785a9371621182d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26bb568_1620f9e4",
+        "filename": "board/lars/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-01T18:19:17Z",
+      "side": 1,
+      "message": "It would be more efficient to start at previous_index and work your way down (or up). For example, if previous_index was 6, check 5, then 4, then 3.... your next index is almost always going to be adjacent to your current index, so don\u0027t start over at 1 / NUM_FAN_LEVELS-1 each time.",
+      "range": {
+        "startLine": 330,
+        "startChar": 2,
+        "endLine": 330,
+        "endChar": 30
+      },
+      "revId": "c7bedbc53308e05d69d99851785a9371621182d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
