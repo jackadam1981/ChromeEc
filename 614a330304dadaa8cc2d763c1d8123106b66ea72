@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e2b0b90b_670190e7",
+        "filename": "chip/stm32/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-03-01T00:05:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4277c50e_2dfc8ed3",
+      "range": {
+        "startLine": 29,
+        "startChar": 56,
+        "endLine": 29,
+        "endChar": 61
+      },
+      "revId": "614a330304dadaa8cc2d763c1d8123106b66ea72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02986d84_93f59b38",
         "filename": "chip/stm32/usb_i2c.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-25T23:59:29Z",
       "side": 1,
       "message": "bounds checking on count?",
+      "range": {
+        "startLine": 57,
+        "startChar": 18,
+        "endLine": 57,
+        "endChar": 23
+      },
+      "revId": "614a330304dadaa8cc2d763c1d8123106b66ea72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2e32149_f0564efd",
+        "filename": "chip/stm32/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-03-01T00:05:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02986d84_93f59b38",
       "range": {
         "startLine": 57,
         "startChar": 18,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c26bb568_0ab1b0c3",
+        "filename": "chip/stm32/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-03-01T00:05:56Z",
+      "side": 1,
+      "message": "Done, makes sense. I wasn\u0027t sure what this was doing.",
+      "parentUuid": "e27a7932_9e22bc99",
+      "range": {
+        "startLine": 146,
+        "startChar": 14,
+        "endLine": 146,
+        "endChar": 22
+      },
+      "revId": "614a330304dadaa8cc2d763c1d8123106b66ea72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62be89e4_871252ab",
         "filename": "chip/stm32/usb_i2c.h",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-02-29T23:12:40Z",
       "side": 1,
       "message": "I would get rid of the notion of enabled entirely now that you\u0027ve started.  That will let you remove the usb_i2c_state struct, as well as the USB_I2C_DISABLED error code above.",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 20
+      },
+      "revId": "614a330304dadaa8cc2d763c1d8123106b66ea72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2e32149_9b50c350",
+        "filename": "chip/stm32/usb_i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-03-01T00:05:56Z",
+      "side": 1,
+      "message": "Done, got rid of all this stuff.",
+      "parentUuid": "62be89e4_871252ab",
       "range": {
         "startLine": 73,
         "startChar": 5,
