@@ -129,9 +129,9 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 /* Physical fans. These are logically separate from pwm_channels. */
 const struct fan_t fans[] = {
 	{.flags = FAN_USE_RPM_MODE,
-	 .rpm_min = 1000,
-	 .rpm_start = 1000,
-	 .rpm_max = 5200,
+	 .rpm_min = 3000,
+	 .rpm_start = 3000,
+	 .rpm_max = 5900,
 	 .ch = 1,
 	 .pgood_gpio = -1,
 	 .enable_gpio = GPIO_FAN_PWR_DIS_L,
@@ -290,17 +290,84 @@ const struct temp_sensor_t temp_sensors[] = {
 		0, 4},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+#ifdef CONFIG_FAN_RPM_CUSTOM
+#define NUM_FAN_LEVELS 8
+struct fan_step {
+	int on;
+	int off;
+	int rpm;
+};
 
+/* Do not make the fan on/off point equal to 0 or 100 */
+const struct fan_step fan_table[NUM_FAN_LEVELS] = {
+	{.rpm = 0},
+	{.on = 14, .off =  2, .rpm = 3000},
+	{.on = 38, .off = 26, .rpm = 3300},
+	{.on = 44, .off = 41, .rpm = 3800},
+	{.on = 50, .off = 47, .rpm = 4300},
+	{.on = 64, .off = 52, .rpm = 4900},
+	{.on = 85, .off = 79, .rpm = 5500},
+	{.on = 97, .off = 91, .rpm = 5900},
+};
+
+int fan_percent_to_rpm(int fan, int pct)
+{
+	static int index;
+	static int previous_pct;
+	int i;
+	int temp_index;
+
+	/*
+	 * Compare the pct and previous pct, we have the three paths :
+	 *  1. decreasing path. (check the off point)
+	 *  2. increasing path. (check the on point)
+	 *  3. invariant path. (return the current RPM)
+	 */
+	if (pct == previous_pct) {
+		temp_index = index;
+	} else if (pct < previous_pct) {
+		temp_index = 0;
+		for (i = 1; i <= index; i++) {
+			if (pct > fan_table[i].off)
+				temp_index = i;
+			else
+				break;
+		}
+	} else {
+		temp_index = NUM_FAN_LEVELS - 1;
+		for (i = NUM_FAN_LEVELS - 1; i > index; i--) {
+			if (pct < fan_table[i].on)
+				temp_index = i - 1;
+			else
+				break;
+		}
+	}
+	index = temp_index;
+
+	previous_pct = pct;
+
+	if (fan_get_rpm_target(fans[fan].ch) == 0) {
+		index = 1;
+		cprintf(CC_THERMAL, "[%T Start fan RPM to %d from RPM 0]\n",
+			fan_table[index].rpm);
+	} else if (fan_table[index].rpm != fan_get_rpm_target(fans[fan].ch))
+		cprintf(CC_THERMAL, "[%T Setting fan RPM to %d]\n",
+			fan_table[index].rpm);
+
+	return fan_table[index].rpm;
+}
+#endif /* CONFIG_FAN_RPM_CUSTOM */
 /*
  * Thermal limits for each temp sensor.  All temps are in degrees K.  Must be in
  * same order as enum temp_sensor_id.  To always ignore any temp, use 0.
  */
 struct ec_thermal_config thermal_params[] = {
 	/* {Twarn, Thigh, Thalt}, fan_off, fan_max */
-	{{0, 0, 0}, 0, 0},	/* TMP432_Internal */
-	{{0, 0, 0}, 0, 0},	/* TMP432_Sensor_1 */
-	{{0, 0, 0}, 0, 0},	/* TMP432_Sensor_2 */
+	{{C_TO_K(67), C_TO_K(70), C_TO_K(71)},
+		C_TO_K(25), C_TO_K(57)},	/* TMP432_Internal */
 	{{0, 0, 0}, 0, 0},	/* Battery */
+	{{0, 0, 0}, 0, 0},	/* PCH */
+	{{0, 0, 0}, 0, 0},	/* Battery_Gauge */
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
