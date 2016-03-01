@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e2b0b90b_16bb1ba3",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-01T17:40:26Z",
+      "side": 1,
+      "message": "Yes, absolutely, thanks for catching that.  I meant to go back and make that something more sensible.  :)",
+      "parentUuid": "620cc9c0_6daab19c",
+      "revId": "03308eb8ec1fda5b831eb3ffbb1d26f1d5cfca2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2251944_9305fcaa",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-03-01T03:05:06Z",
       "side": 1,
       "message": "Add comment before it to remind users FW already change all pins\u0027  alternative func to gpio?",
+      "revId": "03308eb8ec1fda5b831eb3ffbb1d26f1d5cfca2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02594de9_9e9f2d7a",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-01T17:40:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2251944_9305fcaa",
       "revId": "03308eb8ec1fda5b831eb3ffbb1d26f1d5cfca2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e2b0b90b_f6a0af6c",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-01T17:40:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02cf8da0_bea456d0",
+      "revId": "03308eb8ec1fda5b831eb3ffbb1d26f1d5cfca2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2251944_d3fb74db",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "82ea9d1e_a70489f9",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-01T17:40:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2251944_d3fb74db",
+      "revId": "03308eb8ec1fda5b831eb3ffbb1d26f1d5cfca2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c20f35b0_30b410fe",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2016-03-01T03:05:06Z",
       "side": 1,
       "message": "The reason I left wui_table, wui_group and wui_mask in gpio_wui_table structure is reducing interrupt latency as much as possible. This version doesn\u0027t increase it and save the size of gpio driver. Thanks.",
+      "revId": "03308eb8ec1fda5b831eb3ffbb1d26f1d5cfca2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22ef3134_49f7943c",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-01T17:40:26Z",
+      "side": 1,
+      "message": "You\u0027re welcome, I\u0027m always happy to make things better and smaller.",
+      "parentUuid": "c20f35b0_30b410fe",
       "revId": "03308eb8ec1fda5b831eb3ffbb1d26f1d5cfca2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
