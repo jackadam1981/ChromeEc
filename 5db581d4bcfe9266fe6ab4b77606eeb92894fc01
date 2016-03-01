@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2b0b90b_f62f8fd0",
+        "filename": "chip/stm32/usb_i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-01T17:03:39Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t jump in earlier, the 0x3fff that was here before wasn\u0027t actually based on CONFIG_USB_RAM_SIZE, it is a mask on a hardware register that is always defined to have 10 bits.  So either 0x3fff, or a define for that register would make more sense.  The register is a little weird though, since it is actually part of a table stored in the USB packet ram, and not directly accessible via the peripheral bus...",
+      "range": {
+        "startLine": 30,
+        "startChar": 56,
+        "endLine": 30,
+        "endChar": 68
+      },
+      "revId": "5db581d4bcfe9266fe6ab4b77606eeb92894fc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2e32149_e0815780",
+        "filename": "chip/stm32/usb_i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-01T17:03:39Z",
+      "side": 1,
+      "message": "This isn\u0027t really needed, the only call to this function is from the deferred callback, which has just done the required argument validation and failed out if read_count \u003e USB_I2C_MAX_READ_COUNT.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "5db581d4bcfe9266fe6ab4b77606eeb92894fc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2e32149_60238790",
+        "filename": "chip/stm32/usb_i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-01T17:03:39Z",
+      "side": 1,
+      "message": "This error condition can be removed.",
+      "range": {
+        "startLine": 44,
+        "startChar": 27,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "revId": "5db581d4bcfe9266fe6ab4b77606eeb92894fc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2b0b90b_964debb4",
+        "filename": "chip/stm32/usb_i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-01T17:03:39Z",
+      "side": 1,
+      "message": "Optionally renumber this to 0x0005, here and in the enum below.",
+      "range": {
+        "startLine": 45,
+        "startChar": 28,
+        "endLine": 45,
+        "endChar": 37
+      },
+      "revId": "5db581d4bcfe9266fe6ab4b77606eeb92894fc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2b0b90b_761b7fb9",
+        "filename": "include/usb_descriptor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-01T17:03:39Z",
+      "side": 1,
+      "message": "As for getting this approved, you could probably just send email to one of the people that approved any of the other entries, I think that\u0027s what I did.",
+      "range": {
+        "startLine": 168,
+        "startChar": 35,
+        "endLine": 168,
+        "endChar": 39
+      },
+      "revId": "5db581d4bcfe9266fe6ab4b77606eeb92894fc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
