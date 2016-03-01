@@ -22,6 +22,30 @@
       "revId": "689a22b332558e79998c7f098cb5e971085a59d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2e961fc_d7ced4a4",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2016-03-01T14:56:47Z",
+      "side": 1,
+      "message": "We tried this approach today - it can address the EC toggle scenario, but to address periodic S0ix wake we need to enable/disable interrupt in multiple places, it does not look like a clean code.\n\nExisting solution looks good at this point.",
+      "parentUuid": "42034591_8c0deb18",
+      "range": {
+        "startLine": 689,
+        "startChar": 39,
+        "endLine": 689,
+        "endChar": 42
+      },
+      "revId": "689a22b332558e79998c7f098cb5e971085a59d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
