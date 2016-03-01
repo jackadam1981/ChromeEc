@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "62be89e4_2dc8058d",
+        "filename": "board/wheatley/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-01T17:27:32Z",
+      "side": 1,
+      "message": "Ahh, yes, sorry, I forgot there were more boards to change.  Thanks.",
+      "parentUuid": "620cc9c0_cd363d3c",
+      "revId": "e0f8f6dcc21cd2461cd6048a88b5c948eb764f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02cf8da0_deedd2dc",
         "filename": "board/wheatley/gpio.inc",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-03-01T03:48:14Z",
       "side": 1,
       "message": "In further version, we need to implement the changes here if CONFIG_KEYBOARD_KSO_BASE or CONFIG_KEYBOARD_COL2_INVERTED are defined. Am I right?",
+      "revId": "e0f8f6dcc21cd2461cd6048a88b5c948eb764f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26bb568_db55ac9a",
+        "filename": "board/wheatley/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-01T17:27:32Z",
+      "side": 1,
+      "message": "Yes, that\u0027s correct.  The nice thing is that config is per-board, and so is the gpio.inc, so there shouldn\u0027t need to be a #if involved.  :)  We just add a GPIO definition for the second column, and remove if from the ALTERNATE pin mask.",
+      "parentUuid": "02cf8da0_deedd2dc",
       "revId": "e0f8f6dcc21cd2461cd6048a88b5c948eb764f8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
