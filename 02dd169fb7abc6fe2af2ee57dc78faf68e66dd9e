@@ -45,6 +45,54 @@
       "revId": "02dd169fb7abc6fe2af2ee57dc78faf68e66dd9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "620cc9c0_2dfcb95c",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2016-03-01T12:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e27a7932_ce5663a9",
+      "range": {
+        "startLine": 233,
+        "startChar": 3,
+        "endLine": 233,
+        "endChar": 12
+      },
+      "revId": "02dd169fb7abc6fe2af2ee57dc78faf68e66dd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2251944_f6369e3b",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1124819
+      },
+      "writtenOn": "2016-03-01T12:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2981592_1fcfb1a2",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 233,
+        "endChar": 2
+      },
+      "revId": "02dd169fb7abc6fe2af2ee57dc78faf68e66dd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
