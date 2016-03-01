@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a26ec178_dc404482",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-03-01T22:05:06Z",
+      "side": 1,
+      "message": "are there any tests which did not pass before, but do pass now?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a26ec178_c1effd62",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-03-01T22:05:06Z",
+      "side": 1,
+      "message": "just out of curiosity - does this operation always succeed? What would happen if either of the passed in numbers is not a prime?\n\nWhat exactly is tested here, some comment would help.",
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a26ec178_818ca562",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-03-01T22:05:06Z",
+      "side": 1,
+      "message": "could this line be \n\nfor (; (i \u003c c-\u003edmax) \u0026\u0026 A; i++) {\n\nthen you\u0027d avoid entering this if not necessary and the need for check in line 92.",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 27
+      },
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2b0b90b_79d01075",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-03-01T22:05:06Z",
+      "side": 1,
+      "message": "please add a comment describing this function\u0027s inputs and return value",
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2e32149_59ed9e17",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-03-01T22:05:06Z",
+      "side": 1,
+      "message": "same comment as at line 88.",
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2b0b90b_f9c420b4",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-03-01T22:05:06Z",
+      "side": 1,
+      "message": "also, would be good to see the comments about inputs and outputs. \n\nAs a thought - would it be beneficial to store the sign in BIGNUM?",
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02feade5_86018bea",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-03-01T22:05:06Z",
+      "side": 1,
+      "message": "this argument would make more sense as uint32, or maybe it should be typecasted to uint32 in line 183?",
+      "range": {
+        "startLine": 172,
+        "startChar": 44,
+        "endLine": 172,
+        "endChar": 51
+      },
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82ea9d1e_a0fc6f5e",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-03-01T22:05:06Z",
+      "side": 1,
+      "message": "this function\u0027s header comment does not seem to match the implementation. Please describe what it does and what it returns.",
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02feade5_862fcb66",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-03-01T22:05:06Z",
+      "side": 1,
+      "message": "should this be (BN_BITS2/8) ?",
+      "range": {
+        "startLine": 355,
+        "startChar": 27,
+        "endLine": 355,
+        "endChar": 44
+      },
+      "revId": "119be737c61cfa5c8ce5776a3ae95408c9793ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
