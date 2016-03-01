@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82ea9d1e_e75cd1f9",
+        "filename": "board/kunimitsu/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-01T17:48:59Z",
+      "side": 1,
+      "message": "Make this param uint32_t type to match gpio_set_flags_by_mask(). And try to name this function more appropriately, like \"set_kso_pins()\".",
+      "range": {
+        "startLine": 643,
+        "startChar": 42,
+        "endLine": 643,
+        "endChar": 45
+      },
+      "revId": "88143bcd7d89c0b15392d049ef9cbb2a8ae63364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22ef3134_e9814080",
+        "filename": "board/kunimitsu/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-01T17:48:59Z",
+      "side": 1,
+      "message": "Try to name board_lid_change() and kbd_lid_change() more appropriately. Maybe disable_kso_pu() / enable_kso_pu().",
+      "revId": "88143bcd7d89c0b15392d049ef9cbb2a8ae63364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
