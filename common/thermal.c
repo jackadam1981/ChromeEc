@@ -43,6 +43,17 @@ static void dptf_init(void)
 			cond_init(&dptf_threshold[id][t].over, 0);
 		}
 
+#ifdef CONFIG_SUPPORT_DPTF
+#ifdef CONFIG_FANS
+	/* Disable all fan control by thermal_control() so that
+	 * OS can set duty without conflict with EC's policy.
+	 *
+	 * set duty to max until OS alive & take control
+	 */
+	for (id = 0; id < CONFIG_FANS; id++)
+		dptf_set_fan_duty_target(100);
+#endif /* CONFIG_FAN */
+#endif /* CONFIG_SUPPORT_DPTF */
 }
 DECLARE_HOOK(HOOK_INIT, dptf_init, HOOK_PRIO_DEFAULT);
 

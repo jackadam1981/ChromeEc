@@ -1598,6 +1598,11 @@
 /* Fake hibernate mode */
 #undef CONFIG_STM32L_FAKE_HIBERNATE
 
+/* Used to ignore all fan control by thermal policy so that OS can set
+ * fan duty and will not be conflicted with thermal policy
+ */
+#undef CONFIG_SUPPORT_DPTF
+
 /*
  * Compile common code to handle simple switch inputs such as the recovery
  * button input from the servo debug interface.
