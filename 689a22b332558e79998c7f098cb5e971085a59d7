@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42034591_8c0deb18",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2016-03-01T04:57:16Z",
+      "side": 1,
+      "message": "I think we can simplify the flow but just enabling/disabling the SLP_S0 based on host command\n1)By default keep SLP_S0 interrupt disabled\n2) On receiving host command HOST_SLEEP_EVENT_S0IX_SUSPEND  enable SLP_S0 interrupt\n3) Disable SLP_S0 interrupt when SLP_S0\u003d1 or on receiving host command HOST_SLEEP_EVENT_S0IX_RESUME",
+      "range": {
+        "startLine": 689,
+        "startChar": 39,
+        "endLine": 689,
+        "endChar": 42
+      },
+      "revId": "689a22b332558e79998c7f098cb5e971085a59d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
