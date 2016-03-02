@@ -5,10 +5,11 @@
 
 /* GPIO module for Chrome EC */
 
+#include "chip/stm32/gpio.h"
+
 #include "clock.h"
 #include "common.h"
 #include "console.h"
-#include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
 #include "system.h"

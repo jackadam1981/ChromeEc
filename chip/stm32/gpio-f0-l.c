@@ -9,8 +9,9 @@
  * These functions are shared by the STM32F0 and STM32L variants.
  */
 
+#include "chip/stm32/gpio.h"
+
 #include "common.h"
-#include "gpio.h"
 #include "registers.h"
 #include "util.h"
 
