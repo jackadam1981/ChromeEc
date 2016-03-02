@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "22ef3134_5f20dd81",
+        "filename": "chip/stm32/usb_i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-03-02T21:53:42Z",
+      "side": 1,
+      "message": "Count here is a byte anyway, should I just fail if it\u0027s \u003e\u003d256?",
+      "parentUuid": "e2b0b90b_f62f8fd0",
+      "range": {
+        "startLine": 30,
+        "startChar": 56,
+        "endLine": 30,
+        "endChar": 68
+      },
+      "revId": "5db581d4bcfe9266fe6ab4b77606eeb92894fc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2e32149_e0815780",
         "filename": "chip/stm32/usb_i2c.c",
         "patchSetId": 3
@@ -105,6 +129,30 @@
       "writtenOn": "2016-03-01T17:03:39Z",
       "side": 1,
       "message": "As for getting this approved, you could probably just send email to one of the people that approved any of the other entries, I think that\u0027s what I did.",
+      "range": {
+        "startLine": 168,
+        "startChar": 35,
+        "endLine": 168,
+        "endChar": 39
+      },
+      "revId": "5db581d4bcfe9266fe6ab4b77606eeb92894fc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02feade5_6851a8dc",
+        "filename": "include/usb_descriptor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-03-02T21:53:42Z",
+      "side": 1,
+      "message": "Thanks, will do.",
+      "parentUuid": "e2b0b90b_761b7fb9",
       "range": {
         "startLine": 168,
         "startChar": 35,
