@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c26bb568_32d50264",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-02T19:10:41Z",
+      "side": 1,
+      "message": "Here the max does seem to include the ec_host header",
+      "range": {
+        "startLine": 35,
+        "startChar": 40,
+        "endLine": 35,
+        "endChar": 64
+      },
+      "revId": "314ea22aec3ef21a41ea4364986c2b8c3dcf20af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a26ec178_8001fae9",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-02T19:10:41Z",
+      "side": 1,
+      "message": "Here max message size doesn\u0027t seem to include the ec_host header",
+      "range": {
+        "startLine": 69,
+        "startChar": 36,
+        "endLine": 70,
+        "endChar": 6
+      },
+      "revId": "314ea22aec3ef21a41ea4364986c2b8c3dcf20af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2e32149_c3fa54d2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-02T19:10:41Z",
+      "side": 1,
+      "message": "I can\u0027t see the bug for some reason, but I\u0027m guessing this is due to the limit of data_len being uint16_t?\n\nIn which case, isn\u0027t the max data len actually 0xFFFF?\n\nSuggest EC_PROTO3_MAX_DATA_LEN as the name in this case, to more clearly indicate which maximum, and that it doesn\u0027t include the host request/response header size.  See EC_PROTO2_MAX_PARAM_SIZE above.\n\nOr is this due to some other limit?  It\u0027s unclear from the implementation in the other files whether this max size includes the request/response header or not.",
+      "range": {
+        "startLine": 604,
+        "startChar": 8,
+        "endLine": 604,
+        "endChar": 31
+      },
+      "revId": "314ea22aec3ef21a41ea4364986c2b8c3dcf20af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
