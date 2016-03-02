@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c26bb568_5f62feb7",
+        "filename": "chip/stm32/usb_i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-02T22:05:47Z",
+      "side": 1,
+      "message": "Hmm, thinking about this now I think I should go fix the SPI driver.  :)  This should be changed so that count is declared as a uint16_t, and then the for loop below should be bounds checked to only write up to the size of the buffer (USB_MAX_PACKET_SIZE / 2).  The full uint16_t count should be returned from this function as a uint16_t and then the validity checks in the deferred function that calls read_packet will catch a bogus count.",
+      "parentUuid": "22ef3134_5f20dd81",
+      "range": {
+        "startLine": 30,
+        "startChar": 56,
+        "endLine": 30,
+        "endChar": 68
+      },
+      "revId": "5db581d4bcfe9266fe6ab4b77606eeb92894fc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2e32149_e0815780",
         "filename": "chip/stm32/usb_i2c.c",
         "patchSetId": 3
