@@ -68,6 +68,30 @@
       "revId": "314ea22aec3ef21a41ea4364986c2b8c3dcf20af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2e32149_e9e817cf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-03-02T20:13:09Z",
+      "side": 1,
+      "message": "The error is due to a kernel malloc and memcpy\n\nkmalloc(sizeof(*s_cmd) + max(u_cmd.outsize, u_cmd.insize),\n\nIf you set u_cmd to:\n   u_cmd.insize \u003d 0zFFFFFFFF-20 (size of the struct)\n   u_cmd.outsize \u003d amount of memory you want to scribble over\n\nThen you malloc little, but you will memcpy as much as you want.\n\nThe maximum length does not have to be very precise, because we will check outsize/insize again against max_request/repsonse_packet_size once we have EC_CMD_GET_PROTOCOL_INFO results.\n\nThe max size if for the payload.\nThe size applies to protocol 2 as well. But once again, it is an absolute maximum, we would check against precise value in the kernel again.\n\nThe BUILD_ASSERT here are just safe-guard to remember if we decide to support large packet.",
+      "parentUuid": "a2e32149_c3fa54d2",
+      "range": {
+        "startLine": 604,
+        "startChar": 8,
+        "endLine": 604,
+        "endChar": 31
+      },
+      "revId": "314ea22aec3ef21a41ea4364986c2b8c3dcf20af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
