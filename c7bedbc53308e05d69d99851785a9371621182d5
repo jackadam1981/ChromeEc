@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e2f7d9df_4fb480fe",
+        "filename": "board/lars/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-03-02T03:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02feade5_5128de61",
+      "revId": "c7bedbc53308e05d69d99851785a9371621182d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c26bb568_1620f9e4",
         "filename": "board/lars/board.c",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "02cf8da0_bed8d669",
+        "filename": "board/lars/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-03-02T03:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c26bb568_1620f9e4",
+      "range": {
+        "startLine": 330,
+        "startChar": 2,
+        "endLine": 330,
+        "endChar": 30
+      },
+      "revId": "c7bedbc53308e05d69d99851785a9371621182d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82ea9d1e_db86c495",
         "filename": "board/lars/board.c",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2016-03-01T23:59:24Z",
       "side": 1,
       "message": "once this table(off, max) are fillup, thermal thread(common/thermal.c) will start to control FAN and there will be conflict with host\u0027s DPTF based fan control.\nin common/thermal.c line 277 ~ 286 should be commented with proper flag.",
+      "range": {
+        "startLine": 367,
+        "startChar": 14,
+        "endLine": 367,
+        "endChar": 20
+      },
+      "revId": "c7bedbc53308e05d69d99851785a9371621182d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "620cc9c0_0da7b581",
+        "filename": "board/lars/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-03-02T03:03:32Z",
+      "side": 1,
+      "message": "dptf_set_fan_duty_target() in fan.c will disable all fan control in thermal thread, but I still add a CONFIG because OS might use dptf_get_fan_duty_target() before set() and will get -1 if thermal_control is on, I afraid -1 will make OS though fan is broken",
+      "parentUuid": "82ea9d1e_db86c495",
       "range": {
         "startLine": 367,
         "startChar": 14,
