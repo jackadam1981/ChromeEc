@@ -22,6 +22,30 @@
       "revId": "8ef9180209bc2384798b5e167fe311afe00969b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a26ec178_6612de78",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-02T21:13:53Z",
+      "side": 1,
+      "message": "Agreed, fixed.",
+      "parentUuid": "02feade5_4df79e3c",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 18
+      },
+      "revId": "8ef9180209bc2384798b5e167fe311afe00969b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
