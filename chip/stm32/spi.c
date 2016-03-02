@@ -66,6 +66,11 @@ static const struct dma_option dma_rx_option = {
 #define SPI_MAX_REQUEST_SIZE 0x220
 #define SPI_MAX_RESPONSE_SIZE 0x220
 
+BUILD_ASSERT(SPI_MAX_REQUEST_SIZE <=
+	     EC_MAX_HOST_MESSAGE_SIZE + sizeof(struct ec_host_request));
+BUILD_ASSERT(SPI_MAX_RESPONSE_SIZE <=
+	     EC_MAX_HOST_MESSAGE_SIZE + sizeof(struct ec_host_response));
+
 /*
  * The AP blindly clocks back bytes over the SPI interface looking for a
  * framing byte.  So this preamble must always precede the actual response

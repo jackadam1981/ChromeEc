@@ -61,6 +61,7 @@ static struct host_cmd_handler_args host_cmd_args;
 static uint8_t host_cmd_flags;   /* Flags from host command */
 
 /* Params must be 32-bit aligned */
+BUILD_ASSERT(EC_LPC_HOST_PACKET_SIZE < EC_MAX_HOST_MESSAGE_SIZE);
 static uint8_t params_copy[EC_LPC_HOST_PACKET_SIZE] __aligned(4);
 static int init_done;
 static int p80l_index;

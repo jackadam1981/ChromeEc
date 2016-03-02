@@ -600,6 +600,9 @@ struct ec_lpc_host_args {
 
 /*****************************************************************************/
 
+/* Maximal host message size */
+#define EC_MAX_HOST_MESSAGE_SIZE  (64 * 1024)
+
 /*
  * Value written to legacy command port / prefix byte to indicate protocol
  * 3+ structs are being used.  Usage is bus-dependent.
