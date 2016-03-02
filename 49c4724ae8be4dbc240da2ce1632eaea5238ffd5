@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c26bb568_015c2ef3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-02T01:19:45Z",
+      "side": 1,
+      "message": "it would be nice to split the title on one line with the \u0027fusb302:\u0027 prefix and the description of the changes after a blank line, e.g.:\n\nfusb302: update driver for FUSB302B\n\nManage BIST test bit\nand update pull-ups code.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 61
+      },
+      "revId": "49c4724ae8be4dbc240da2ce1632eaea5238ffd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02feade5_667f1f3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-02T01:19:45Z",
+      "side": 1,
+      "message": "please put \u0027none\u0027 here\nBRANCH\u003d tag is for product branches we need to report this change to.",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "49c4724ae8be4dbc240da2ce1632eaea5238ffd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
