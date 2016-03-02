@@ -92,6 +92,30 @@
       "revId": "314ea22aec3ef21a41ea4364986c2b8c3dcf20af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26bb568_ad68b361",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-02T20:53:03Z",
+      "side": 1,
+      "message": "I think we should fix the kmalloc() / memcpy(), not add an arbitrary constraint to the protocol.\n\nsize_t bufsiz \u003d sizeof(*s_cmd) + max(u_cmd.outsize, u_cmd.insize);\nif (bufsiz \u003c max(u_cmd.outsize, u_cmd.insize) {\n   // Input or output size wraps when adding header\n   return -SOME_ERROR;\n}\nkmalloc(bufsiz);\n\nWe make checks like that all over vboot_reference for just this reason.\n\nOr if you want to set a theoretical maximum size, that\u0027s an implementation-dependent detail of cros_ec_dev.  \n\nif(bufsiz \u003e 0xFFFF) {\n   // Sorry, cros_ec_dev doesn\u0027t support 64KB packets\n   return -SOME_OTHER_ERROR;\n}\n\nWe have similar-but-smaller limits where the EC sends messages to the PD chip, since the EC doesn\u0027t even have 64KB RAM.",
+      "parentUuid": "a2e32149_e9e817cf",
+      "range": {
+        "startLine": 604,
+        "startChar": 8,
+        "endLine": 604,
+        "endChar": 31
+      },
+      "revId": "314ea22aec3ef21a41ea4364986c2b8c3dcf20af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
