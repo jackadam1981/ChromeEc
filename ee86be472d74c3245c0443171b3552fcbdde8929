@@ -16,6 +16,24 @@
       "revId": "ee86be472d74c3245c0443171b3552fcbdde8929",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2e32149_7bee8cd9",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-02T23:14:24Z",
+      "side": 0,
+      "message": "Yes, this is a simpler method to achieve the same result. I replaced and it with this suggestion and tested.",
+      "parentUuid": "e2b0b90b_a51d4b47",
+      "revId": "ee86be472d74c3245c0443171b3552fcbdde8929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
