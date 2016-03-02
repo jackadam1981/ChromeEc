@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02feade5_4df79e3c",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-02T19:40:50Z",
+      "side": 1,
+      "message": "gpio_get_default_flags()?\n\nI\u0027m concerned that someone will assume this returns the *current* flags - that is, that gpio_set_flags() and gpio_get_flags() are accessors to the internal flag state.",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 18
+      },
+      "revId": "8ef9180209bc2384798b5e167fe311afe00969b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
