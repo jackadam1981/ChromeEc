@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2b0b90b_a51d4b47",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-03-02T22:23:34Z",
+      "side": 0,
+      "message": "maybe all you need to do is to add here\n\nnum \u003d MIN(num, CONFIG_FLASH_ERASE_SIZE - byte_offset % CONFIG_FLASH_ERASE_SIZE);\n\nthis way it will stay in the block no matter what.",
+      "revId": "ee86be472d74c3245c0443171b3552fcbdde8929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
