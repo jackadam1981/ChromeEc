@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "42034591_cf0bd544",
+        "filename": "board/oak/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1128036
+      },
+      "writtenOn": "2016-03-03T02:57:18Z",
+      "side": 1,
+      "message": "Only rev5 defines HAS_TASK_MOTIONSENSE.\nMaybe add following for other version boards.\n\n#else\nvoid lid_angle_peripheral_enable(int enable)\n{\n}",
+      "range": {
+        "startLine": 756,
+        "startChar": 0,
+        "endLine": 756,
+        "endChar": 1
+      },
+      "revId": "6877eee247250cb0e962ef8ddf1544aba4b75e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8209bdb1_b7d912a0",
         "filename": "board/oak/board.h",
         "patchSetId": 3
