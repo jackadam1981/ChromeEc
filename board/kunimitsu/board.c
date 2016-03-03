@@ -133,9 +133,9 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 /* Physical fans. These are logically separate from pwm_channels. */
 const struct fan_t fans[] = {
 	{.flags = FAN_USE_RPM_MODE,
-	 .rpm_min = 1000,
-	 .rpm_start = 1000,
-	 .rpm_max = 5200,
+	 .rpm_min = 3000,
+	 .rpm_start = 3000,
+	 .rpm_max = 5900,
 	 .ch = 1,
 	 .pgood_gpio = -1,
 	 .enable_gpio = GPIO_FAN_PWR_DIS_L,
@@ -350,12 +350,41 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
  */
 struct ec_thermal_config thermal_params[] = {
 	/* {Twarn, Thigh, Thalt}, fan_off, fan_max */
-	{{0, 0, 0}, 0, 0},	/* TMP432_Internal */
+	{{0, 0, 0}, C_TO_K(35), C_TO_K(65)},	/* TMP432_Internal */
 	{{0, 0, 0}, 0, 0},	/* TMP432_Sensor_1 */
 	{{0, 0, 0}, 0, 0},	/* TMP432_Sensor_2 */
 	{{0, 0, 0}, 0, 0},	/* Battery */
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
+
+#ifdef CONFIG_DPTF_FAIL_SAFE
+extern void dptf_set_fan_duty_target(int pct);
+
+int is_dptf_still_active(void)
+{
+	int i, t;
+	uint8_t *mptr = host_get_memmap(EC_MEMMAP_TEMP_SENSOR);
+
+	for (i = 0; i < TEMP_SENSOR_COUNT; i++, mptr++) {
+		/* current temp */
+		t = *mptr + EC_TEMP_SENSOR_OFFSET + OFFSET_DPTF_FAIL_SAFE;
+
+		if (thermal_params[i].temp_fan_max &&
+			(t > thermal_params[i].temp_fan_max))  {
+			/*
+			 * if temperature is higher than temp_fan_max,
+			 * assume dptf is not active and
+			 * set flag, thermal_control_enabled[]
+			 * to hand over fan control to EC at thermal_control().
+			 */
+			dptf_set_fan_duty_target(5000); /* set flag */
+			return 1;
+		}
+	}
+
+	return 0;
+}
+#endif
 
 /* ALS instances. Must be in same order as enum als_id. */
 struct als_t als[] = {
