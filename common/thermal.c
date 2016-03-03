@@ -148,7 +148,9 @@ static void thermal_control(void)
 	int fmax;
 	int dptf_tripped;
 	int temp_fan_configured;
-
+#ifdef CONFIG_DPTF_FAIL_SAFE
+	int exceed_fan_temp_max;
+#endif
 	/* Get ready to count things */
 	memset(count_over, 0, sizeof(count_over));
 	memset(count_under, 0, sizeof(count_under));
@@ -157,7 +159,9 @@ static void thermal_control(void)
 	fmax = 0;
 	dptf_tripped = 0;
 	temp_fan_configured = 0;
-
+#ifdef CONFIG_DPTF_FAIL_SAFE
+	exceed_fan_temp_max = 0;
+#endif
 	/* go through all the sensors */
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
 
@@ -180,6 +184,10 @@ static void thermal_control(void)
 			}
 		}
 
+ 	/*
+	 * this code should be removed when DPTF is used and FAN Max/Off are
+	 * non zero
+	*/
 		/* figure out the max fan needed, too */
 		if (thermal_params[i].temp_fan_off &&
 		    thermal_params[i].temp_fan_max) {
@@ -191,7 +199,14 @@ static void thermal_control(void)
 
 			temp_fan_configured = 1;
 		}
-
+#ifdef CONFIG_DPTF_FAIL_SAFE
+		if (thermal_params[i].temp_fan_max &&
+			((t > (thermal_params[i].temp_fan_max +
+				OFFSET_DPTF_FAIL_SAFE)))) {
+				exceed_fan_temp_max++;
+				temp_fan_configured = 1;
+		}
+#endif
 		/* and check the dptf thresholds */
 		dptf_tripped |= dpft_check_temp_threshold(i, t);
 	}
@@ -262,8 +277,20 @@ static void thermal_control(void)
 	 * profiles to each fan - in case one fan cools the CPU while another
 	 * cools the radios or battery.
 	 */
-		for (i = 0; i < CONFIG_FANS; i++)
-			fan_set_percent_needed(i, fmax);
+#ifdef CONFIG_DPTF_FAIL_SAFE
+		if (exceed_fan_temp_max == 0) {
+#endif
+			for (i = 0; i < CONFIG_FANS; i++)
+				fan_set_percent_needed(i, fmax);
+#ifdef CONFIG_DPTF_FAIL_SAFE
+		} else {
+			j = 0;
+			for (i = 0; i < CONFIG_FANS; i++)
+				j += (fan_get_duty(i)<100) ? 1 : 0;
+			if (j != 0)
+				dptf_set_fan_duty_target(100);
+		}
+#endif
 #endif
 	}
 
