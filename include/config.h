@@ -466,6 +466,7 @@
 /* Chipset config */
 
 /* AP chipset support; pick at most one */
+#undef CONFIG_CHIPSET_APOLLOLAKE/* Intel Apollolake (x86) */
 #undef CONFIG_CHIPSET_BAYTRAIL  /* Intel Bay Trail (x86) */
 #undef CONFIG_CHIPSET_BRASWELL  /* Intel Braswell (x86) */
 #undef CONFIG_CHIPSET_ECDRIVEN  /* Dummy power module */
@@ -2104,6 +2105,7 @@
  */
 
 #ifndef HAS_TASK_CHIPSET
+#undef CONFIG_CHIPSET_APOLLOLAKE
 #undef CONFIG_CHIPSET_BAYTRAIL
 #undef CONFIG_CHIPSET_BRASWELL
 #undef CONFIG_CHIPSET_GAIA
