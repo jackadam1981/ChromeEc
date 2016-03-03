@@ -147,8 +147,9 @@ static void thermal_control(void)
 	int num_sensors_read;
 	int fmax;
 	int dptf_tripped;
-	int temp_fan_configured;
-
+#ifdef CONFIG_DPTF_FAIL_SAFE
+	int exceed_fan_temp_max;
+#endif
 	/* Get ready to count things */
 	memset(count_over, 0, sizeof(count_over));
 	memset(count_under, 0, sizeof(count_under));
@@ -156,8 +157,9 @@ static void thermal_control(void)
 	num_sensors_read = 0;
 	fmax = 0;
 	dptf_tripped = 0;
-	temp_fan_configured = 0;
-
+#ifdef CONFIG_DPTF_FAIL_SAFE
+	exceed_fan_temp_max = 0;
+#endif
 	/* go through all the sensors */
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
 
@@ -180,6 +182,10 @@ static void thermal_control(void)
 			}
 		}
 
+ 	/*
+	 * this code should be removed when DPTF is used and FAN Max/Off are
+	 * non zero
+	*/
 		/* figure out the max fan needed, too */
 		if (thermal_params[i].temp_fan_off &&
 		    thermal_params[i].temp_fan_max) {
@@ -188,13 +194,25 @@ static void thermal_control(void)
 						t);
 			if (f > fmax)
 				fmax = f;
-
-			temp_fan_configured = 1;
 		}
-
+#ifdef CONFIG_DPTF_FAIL_SAFE
+		if (thermal_params[i].temp_fan_max &&
+		    ((t > (thermal_params[i].temp_fan_max +
+				OFFSET_DPTF_FAIL_SAFE)))) {
+				exceed_fan_temp_max++;
+		}
+#endif
 		/* and check the dptf thresholds */
 		dptf_tripped |= dpft_check_temp_threshold(i, t);
+	}  /* for loop */
+
+#ifdef CONFIG_DPTF_FAIL_SAFE
+	if (exceed_fan_temp_max != 0) {
+		/* FANs are now in EC control(RPM mode) with any value > 100 */
+		dptf_set_fan_duty_target(5000);
 	}
+#endif
+
 
 	if (!num_sensors_read) {
 		/*
@@ -255,17 +273,15 @@ static void thermal_control(void)
 		throttle_ap(THROTTLE_OFF, THROTTLE_SOFT, THROTTLE_SRC_THERMAL);
 	}
 
-	if (temp_fan_configured) {
 #ifdef CONFIG_FANS
 	/* TODO(crosbug.com/p/23797): For now, we just treat all fans the
 	 * same. It would be better if we could assign different thermal
 	 * profiles to each fan - in case one fan cools the CPU while another
 	 * cools the radios or battery.
 	 */
-		for (i = 0; i < CONFIG_FANS; i++)
-			fan_set_percent_needed(i, fmax);
+	for (i = 0; i < CONFIG_FANS; i++)
+		fan_set_percent_needed(i, fmax);
 #endif
-	}
 
 	/* Don't forget to signal any DPTF thresholds */
 	if (dptf_tripped)
