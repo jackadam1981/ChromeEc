@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8209bdb1_b7d912a0",
+        "filename": "board/oak/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2016-03-03T02:54:14Z",
+      "side": 1,
+      "message": "Maybe we should move all these into the #if BOARD_REV \u003e\u003d OAK_REV5 ... #endif above.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 31
+      },
+      "revId": "6877eee247250cb0e962ef8ddf1544aba4b75e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
