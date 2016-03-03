@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e27a7932_0ee8c29a",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-03T17:30:34Z",
+      "side": 1,
+      "message": "This function (and also functions that use gpio_alt_table) seems super inefficient. We should probably change this at some point to use a direct LUT or sort our table entries and use binary search.",
+      "revId": "387663303a3dd98d5d2a888a8aa52a28ec66f200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2b0b90b_9b4bcc28",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-03T17:30:34Z",
+      "side": 1,
+      "message": "Do you want to use sizeof here, or make the \u00278\u0027 here (and in the struct def) a #define?",
+      "range": {
+        "startLine": 538,
+        "startChar": 17,
+        "endLine": 538,
+        "endChar": 19
+      },
+      "revId": "387663303a3dd98d5d2a888a8aa52a28ec66f200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
