@@ -19,7 +19,9 @@
 #include "powerd_lock.h"
 
 #define SIMPLO_MAKER_ID 0x5
-#define SIMPLO_HWID 0x74
+#define SIMPLO_HWID 0x152
+#define LG_MAKER_ID 0x1
+#define LG_HWID 0x78
 
 /* Subcommands: [check|update] */
 enum {
@@ -429,8 +431,10 @@ static enum fw_update_state s1_read_battery_info(
 	}
 	print_info(&fw_update->info);
 
-	if ((fw_update->info.maker_id != SIMPLO_MAKER_ID) ||
-		(fw_update->info.hardware_id != SIMPLO_HWID)) {
+	if (((fw_update->info.maker_id != SIMPLO_MAKER_ID) ||
+		(fw_update->info.hardware_id != SIMPLO_HWID)) &&
+		((fw_update->info.maker_id != LG_MAKER_ID) ||
+		(fw_update->info.hardware_id != LG_HWID))) {
 		log_msg(fw_update, S1_READ_INFO, "No Updates.");
 		return S10_TERMINAL;
 	}
