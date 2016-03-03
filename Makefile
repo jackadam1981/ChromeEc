@@ -75,18 +75,18 @@ includes=include core/$(CORE)/include $(dirs) $(out) test
 ifeq "$(TEST_BUILD)" "y"
 	_tsk_lst_file:=ec.tasklist
 	_tsk_lst:=$(shell echo "CONFIG_TASK_LIST CONFIG_TEST_TASK_LIST" | \
-		    $(CPP) -P -I$(BDIR) -Itest \
+		    $(CPP) $(EXTRA_CFLAGS) -P -I$(BDIR) -Itest \
 		    -D"TASK_NOTEST(n, r, d, s)=" -D"TASK_ALWAYS(n, r, d, s)=n" \
 		    -D"TASK_TEST(n, r, d, s)=n" -imacros $(_tsk_lst_file) \
 		    -imacros $(PROJECT).tasklist)
 else
 	_tsk_lst_file:=$(PROJECT).tasklist
-	_tsk_lst:=$(shell echo "CONFIG_TASK_LIST" | $(CPP) -P \
+	_tsk_lst:=$(shell echo "CONFIG_TASK_LIST" | $(CPP) $(EXTRA_CFLAGS) -P \
 		    -I$(BDIR) -D"TASK_NOTEST(n, r, d, s)=n" \
 		    -D"TASK_ALWAYS(n, r, d, s)=n" -imacros $(_tsk_lst_file))
 endif
 _tsk_cfg:=$(foreach t,$(_tsk_lst) ,HAS_TASK_$(t))
-CPPFLAGS+=$(foreach t,$(_tsk_cfg),-D$(t))
+CPPFLAGS+=$(foreach t,$(_tsk_cfg),-D$(t)) $(EXTRA_CFLAGS)
 _flag_cfg:=$(shell $(CPP) $(CPPFLAGS) -P -dM -Ichip/$(CHIP) -I$(BDIR) \
 	include/config.h | grep -o "\#define CONFIG_[A-Z0-9_]*" | \
 	cut -c9- | sort)
