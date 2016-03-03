@@ -763,6 +763,12 @@
  */
 #undef CONFIG_FAN_UPDATE_PERIOD
 
+/*
+ * When DPTF daemon from host is not active for various reasons,
+ * EC will take EC control.
+ */
+#undef CONFIG_DPTF_FAIL_SAFE_OFFSET
+
 /*****************************************************************************/
 /* Flash configuration */
 
