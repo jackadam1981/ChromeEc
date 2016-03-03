@@ -458,6 +458,9 @@ DECLARE_DEFERRED(slp_s0_assertion_deferred);
 
 void power_signal_interrupt_S0(enum gpio_signal signal)
 {
+
+if (gpio_get_level(GPIO_ENTRY_S0) == 0) {
+
 	if (gpio_get_level(GPIO_PCH_SLP_S0_L)) {
 		slp_s0_debounce.required = 1;
 		hook_call_deferred(slp_s0_assertion_deferred, 3 * MSEC);
@@ -466,5 +469,22 @@ void power_signal_interrupt_S0(enum gpio_signal signal)
 		slp_s0_debounce.done = 0;
 		slp_s0_assertion_deferred();
 	}
+}
+
+}
+
+void process_entry_s0_interrupt(enum gpio_signal signal)
+{
+	// 1.enable SLP_S0 interrupt ???
+	// gpio_enable_interrupt(GPIO_ENTRY_S0);
+
+	/* assume that SLP_SO de-assert earlier than ENTRY_S0 signal's
+	 * de-assertion.
+	 */
+
+	if (gpio_get_level(GPIO_PCH_SLP_S0_L) ==
+	    gpio_get_level(GPIO_ENTRY_S0))
+		power_signal_interrupt(GPIO_PCH_SLP_S0_L);
+		//power_signal_interrupt_S0(GPIO_PCH_SLP_S0_L);
 }
 #endif
