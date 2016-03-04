@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2251944_79259f88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-03-04T12:36:03Z",
+      "side": 1,
+      "message": "Let\u0027s rephrase it:\n\noak: Fix rev5 battery LED\n\nOak rev5 battery LED control was misplaced in wrong function. Move it back to oak_led_set_battery().",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "b6f6747b1d15294bff7d08e63d0117268ecc9f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
