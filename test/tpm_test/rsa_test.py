@@ -23,6 +23,7 @@ _RSA_OPCODES = {
 
 # TPM2 ALG codes.
 _RSA_PADDING = {
+  'NONE': 0x00,
   'PKCS1-SSA': 0x14,
   'PKCS1-ES': 0x15,
   'OAEP': 0x17
@@ -100,6 +101,15 @@ def _verify_cmd(padding, hashing, key_len, sig, msg):
                                 ml=struct.pack('>H', sig_len), msg=sig,
                                 dl=struct.pack('>H', digest_len), dig=digest)
 
+def _keygen_cmd(key_len, e):
+  op = _RSA_OPCODES['KEYGEN']
+  padding = _RSA_PADDING['NONE']
+  hashing = _HASH['NONE']
+  return _RSA_CMD_FORMAT.format(o=op, p=padding, h=hashing,
+                                kl=struct.pack('>H', key_len),
+                                ml=struct.pack('>H', 0), msg='',
+                                dl=struct.pack('>H', 0), dig='')
+
 
 #
 # TEST VECTORS.
@@ -116,6 +126,11 @@ _SIGN_INPUTS = (
   # TODO(ngm): add support for PSS.
   ('PKCS1-SSA', 'SHA1', 768),
   ('PKCS1-SSA', 'SHA256', 768),
+)
+
+
+_KEYGEN_INPUTS = (
+  (2048, 65537),
 )
 
 
@@ -160,6 +175,22 @@ def _sign_tests(tpm):
     print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
 
 
+def _keygen_tests(tpm):
+  for data in _KEYGEN_INPUTS:
+    key_len, e = data
+    test_name = 'RSA-KEYGEN:%d:%d' % data
+    cmd = _keygen_cmd(key_len, e)
+
+    wrapped_response = tpm.command(tpm.wrap_ext_command(subcmd.RSA, cmd))
+    result = tpm.unwrap_ext_response(subcmd.RSA, wrapped_response)
+    expected = '\x01'
+    if result != expected:
+      raise RSAError('%s error:%s%s' % (
+          test_name, utils.hex_dump(result), utils.hex_dump(expected)))
+    print('%sSUCCESS: %s' % (utils.cursor_back(), test_name))
+
+
 def rsa_test(tpm):
   _encrypt_tests(tpm)
   _sign_tests(tpm)
+  _keygen_tests(tpm)
