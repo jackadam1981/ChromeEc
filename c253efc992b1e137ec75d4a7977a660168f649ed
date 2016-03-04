@@ -22,6 +22,30 @@
       "revId": "c253efc992b1e137ec75d4a7977a660168f649ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22fe51bd_6e2f43d3",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-03-04T01:02:22Z",
+      "side": 1,
+      "message": "It should be for ultima\u0027s battery.\n\nI think we should not put battery HWID info here.\notherwise, we need to change the code every time new battery added.\nThe battery firmware we put on project private overlay, would have filename that included MAKER_ID and HWID.\nThat should be enough to identify correct firmware to use.",
+      "parentUuid": "82d1bd8e_68aa634a",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 25
+      },
+      "revId": "c253efc992b1e137ec75d4a7977a660168f649ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
