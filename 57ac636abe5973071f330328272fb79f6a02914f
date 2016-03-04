@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02c5cdcd_247412d8",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-03-04T07:18:28Z",
+      "side": 1,
+      "message": "If your maximum length is 7, you will get into some problem here: if parameter length \u003d\u003d 8, you will set MTSR1 to 0, and memcpy overflows TDO_BASE.\n\nSo you might want to cap it in beginning of this function:\n  if (length \u003e 7)\n          length \u003d 7;\n\nand remove (length \u0026 7) here.",
+      "range": {
+        "startLine": 159,
+        "startChar": 31,
+        "endLine": 159,
+        "endChar": 43
+      },
+      "revId": "57ac636abe5973071f330328272fb79f6a02914f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
