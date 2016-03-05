@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "17f7d148_40b970a7",
+        "filename": "chip/stm32/usb_i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-03-05T02:13:26Z",
+      "side": 1,
+      "message": "I\u0027ve used the new SPI code here as well.",
+      "parentUuid": "c26bb568_5f62feb7",
+      "range": {
+        "startLine": 30,
+        "startChar": 56,
+        "endLine": 30,
+        "endChar": 68
+      },
+      "revId": "5db581d4bcfe9266fe6ab4b77606eeb92894fc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2e32149_e0815780",
         "filename": "chip/stm32/usb_i2c.c",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "writtenOn": "2016-03-01T17:03:39Z",
       "side": 1,
       "message": "This isn\u0027t really needed, the only call to this function is from the deferred callback, which has just done the required argument validation and failed out if read_count \u003e USB_I2C_MAX_READ_COUNT.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "5db581d4bcfe9266fe6ab4b77606eeb92894fc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57f5c93b_45e73ecf",
+        "filename": "chip/stm32/usb_i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-03-05T02:13:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2e32149_e0815780",
       "range": {
         "startLine": 53,
         "startChar": 0,
