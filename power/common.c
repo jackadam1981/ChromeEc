@@ -685,11 +685,14 @@ static int host_event_sleep_event(struct host_cmd_handler_args *args)
 
         CPRINTS("Host sleep event 0x%08x", p->sleep_event);
 
-        if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_SUSPEND)
+        if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_SUSPEND) {
+		gpio_set_level(GPIO_NC_161, 0);
                 power_signal_process_S0();
-        else if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_RESUME)
+	}
+        else if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_RESUME) {
+		gpio_set_level(GPIO_NC_161, 1);
                 power_signal_interrupt(GPIO_PCH_SLP_S0_L);
-
+	}
         return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_HOST_SLEEP_EVENT, host_event_sleep_event,
