@@ -71,6 +71,21 @@ static uint32_t hibernate_delay = CONFIG_HIBERNATE_DELAY_SEC;
 static int pause_in_s5;
 #endif
 
+#ifdef CONFIG_POWER_S0IX
+static int slp_s0_track = 1;
+
+int get_slp_s0_track(void)
+{
+	return slp_s0_track;
+}
+
+void set_slp_s0_track(int val)
+{
+	slp_s0_track = val ? 1 : 0;
+}
+#endif
+
+
 /**
  * Update input signals mask
  */
@@ -81,7 +96,14 @@ static void power_update_signals(void)
 	int i;
 
 	for (i = 0; i < POWER_SIGNAL_COUNT; i++, s++) {
+#ifdef CONFIG_POWER_S0IX
+		if (((s->gpio != GPIO_PCH_SLP_S0_L)
+					? gpio_get_level(s->gpio)
+					: get_slp_s0_track())
+				== s->level)
+#else
 		if (gpio_get_level(s->gpio) == s->level)
+#endif
 			inew |= 1 << i;
 	}
 
@@ -686,13 +708,16 @@ static int host_event_sleep_event(struct host_cmd_handler_args *args)
         CPRINTS("Host sleep event 0x%08x", p->sleep_event);
 
         if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_SUSPEND) {
-		gpio_set_level(GPIO_NC_161, 0);
-                power_signal_process_S0();
+		set_slp_s0_track(0);
+//		gpio_set_level(GPIO_NC_161, 0);
 	}
         else if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_RESUME) {
-		gpio_set_level(GPIO_NC_161, 1);
-                power_signal_interrupt(GPIO_PCH_SLP_S0_L);
+		set_slp_s0_track(1);
+//		gpio_set_level(GPIO_NC_161, 1);
 	}
+
+        power_signal_interrupt(GPIO_PCH_SLP_S0_L);
+
         return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_HOST_SLEEP_EVENT, host_event_sleep_event,

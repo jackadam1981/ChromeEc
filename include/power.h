@@ -115,6 +115,10 @@ static inline void power_signal_process_S0(void) { }
 #endif
 #endif /* !HAS_TASK_CHIPSET */
 
+#ifdef CONFIG_POWER_S0IX
+int get_slp_s0_track(void);
+void set_slp_s0_track(int val);
+#endif
 /**
  * pause_in_s5 getter method.
  *

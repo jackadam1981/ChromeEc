@@ -237,7 +237,7 @@ static enum power_state _power_handle_state(enum power_state state)
 			chipset_force_shutdown();
 			return POWER_S0S3;
 #ifdef CONFIG_POWER_S0IX
-		} else if ((gpio_get_level(GPIO_PCH_SLP_S0_L) == 0) &&
+		} else if ((get_slp_s0_track() == 0) &&
 			   (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1)) {
 			return POWER_S0S0ix;
 #endif
@@ -253,7 +253,7 @@ static enum power_state _power_handle_state(enum power_state state)
 		/*
 		 * TODO: add code for unexpected power loss
 		 */
-		if ((gpio_get_level(GPIO_PCH_SLP_S0_L) == 1) &&
+		if ((get_slp_s0_track() == 1) &&
 		   (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1)) {
 			return POWER_S0ixS0;
 		}
