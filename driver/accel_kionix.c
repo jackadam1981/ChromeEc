@@ -17,6 +17,7 @@
 #include "driver/accel_kxcj9.h"
 #include "i2c.h"
 #include "math_util.h"
+#include "spi.h"
 #include "task.h"
 #include "util.h"
 
@@ -127,7 +128,25 @@ static int find_param_index(const int eng_val, const int round_up,
  */
 static int raw_read8(const int addr, const int reg, int *data_ptr)
 {
-	return i2c_read8(I2C_PORT_ACCEL, addr, reg, data_ptr);
+	int rv;
+
+	if (KIONIX_IS_SPI(addr)) {
+#ifdef CONFIG_SPI_ACCEL_PORT
+		uint8_t val;
+		uint8_t cmd = 0x80 | reg;
+
+		rv = spi_transaction(&spi_devices[KIONIX_SPI_ADDRESS(addr)],
+				     &cmd, 1, &val, 1);
+		if (rv == EC_SUCCESS)
+			*data_ptr = val;
+
+#endif
+	} else {
+#ifdef I2C_PORT_ACCEL
+		rv = i2c_read8(I2C_PORT_ACCEL, addr, reg, data_ptr);
+#endif
+	}
+	return rv;
 }
 
 /**
@@ -135,7 +154,42 @@ static int raw_read8(const int addr, const int reg, int *data_ptr)
  */
 static int raw_write8(const int addr, const int reg, int data)
 {
-	return i2c_write8(I2C_PORT_ACCEL, addr, reg, data);
+	int rv;
+
+	if (KIONIX_IS_SPI(addr)) {
+#ifdef CONFIG_SPI_ACCEL_PORT
+		uint8_t cmd[2] = { reg, data };
+
+		rv = spi_transaction(&spi_devices[KIONIX_SPI_ADDRESS(addr)],
+				     cmd, 2, NULL, 0);
+#endif
+	} else {
+#ifdef I2C_PORT_ACCEL
+		rv = i2c_write8(I2C_PORT_ACCEL, addr, reg, data);
+#endif
+	}
+	return rv;
+}
+
+static int raw_read_multi(int addr, uint8_t reg, uint8_t *rxdata, int rxlen)
+{
+	int rv;
+
+	if (KIONIX_IS_SPI(addr)) {
+#ifdef CONFIG_SPI_ACCEL_PORT
+		reg |= 0x80;
+		rv = spi_transaction(&spi_devices[KIONIX_SPI_ADDRESS(addr)],
+				     &reg, 1, rxdata, rxlen);
+#endif
+	} else {
+#ifdef I2C_PORT_ACCEL
+		i2c_lock(I2C_PORT_ACCEL, 1);
+		rv = i2c_xfer(I2C_PORT_ACCEL, addr, &reg, 1, rxdata, rxlen,
+			      I2C_XFER_SINGLE);
+		i2c_lock(I2C_PORT_ACCEL, 0);
+#endif
+	}
+	return rv;
 }
 
 /**
@@ -377,10 +431,7 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	/* Read 6 bytes starting at XOUT_L. */
 	reg = KIONIX_XOUT_L(data->variant);
 	mutex_lock(s->mutex);
-	i2c_lock(I2C_PORT_ACCEL, 1);
-	ret = i2c_xfer(I2C_PORT_ACCEL, s->addr, &reg, 1, acc, 6,
-		       I2C_XFER_SINGLE);
-	i2c_lock(I2C_PORT_ACCEL, 0);
+	ret = raw_read_multi(s->addr, reg, acc, 6);
 	mutex_unlock(s->mutex);
 
 	if (ret != EC_SUCCESS)
