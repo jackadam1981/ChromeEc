@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "978741d1_212c4e92",
+        "filename": "board/lars/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-07T18:29:39Z",
+      "side": 1,
+      "message": "This is 16 mV shift, correct? I commend you on your precision.",
+      "range": {
+        "startLine": 98,
+        "startChar": 19,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "fba15b1aa1fa2c1acbb7e939c3ff2b74e1a0f841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b76d25ef_7ab439b1",
+        "filename": "board/lars/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-07T18:29:39Z",
+      "side": 1,
+      "message": "How did you come up with these values? Is it based on manual measurement / curve fitting? Is your curve consistent across all lars / kunimitsu devices, or just the device you happened to measure on?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "fba15b1aa1fa2c1acbb7e939c3ff2b74e1a0f841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
