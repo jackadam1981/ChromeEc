@@ -22,6 +22,30 @@
       "revId": "da191ee1acc13c2428ecedfaee2340e2dc68d756",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e21b5959_699521f5",
+        "filename": "util/iteflash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1117364
+      },
+      "writtenOn": "2016-03-07T17:16:32Z",
+      "side": 1,
+      "message": "The error code should be set at line 908, similar how it is done at 902.",
+      "parentUuid": "e21b5959_e98831e1",
+      "range": {
+        "startLine": 888,
+        "startChar": 0,
+        "endLine": 888,
+        "endChar": 1
+      },
+      "revId": "da191ee1acc13c2428ecedfaee2340e2dc68d756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
