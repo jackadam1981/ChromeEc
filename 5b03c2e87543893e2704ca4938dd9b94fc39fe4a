@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "575ce935_a7116a71",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1145169
+      },
+      "writtenOn": "2016-03-07T19:07:49Z",
+      "side": 1,
+      "message": "Resolved your comments in this file. PTAL.",
+      "parentUuid": "e2b0b90b_bd8e9219",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "5b03c2e87543893e2704ca4938dd9b94fc39fe4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2c1f56d_4580b01f",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 8
@@ -336,6 +360,30 @@
       "writtenOn": "2016-02-25T00:32:03Z",
       "side": 1,
       "message": "I miss this before but given the register set is not following TCPCI spec, the naming is a bit confusing here.\n\nShould probably be something more Analogix specific.\ne.g ANX74XX_REG_",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "5b03c2e87543893e2704ca4938dd9b94fc39fe4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d72e1990_2bef7969",
+        "filename": "driver/tcpm/anx74xx.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1145169
+      },
+      "writtenOn": "2016-03-07T19:07:49Z",
+      "side": 1,
+      "message": "Corrected macro names. PTAL.",
+      "parentUuid": "a29b218c_8c7b94c5",
       "range": {
         "startLine": 13,
         "startChar": 8,
