@@ -17,6 +17,7 @@
 #include "driver/accel_kxcj9.h"
 #include "i2c.h"
 #include "math_util.h"
+#include "spi.h"
 #include "task.h"
 #include "util.h"
 
@@ -127,7 +128,24 @@ static int find_param_index(const int eng_val, const int round_up,
  */
 static int raw_read8(const int addr, const int reg, int *data_ptr)
 {
-	return i2c_read8(I2C_PORT_ACCEL, addr, reg, data_ptr);
+	if (KIONIX_IS_SPI(addr)) {
+#ifdef CONFIG_SPI_ACCEL_PORT
+		uint8_t val;
+		uint8_t cmd = 0x80 | reg;
+		int rv;
+
+		rv = spi_transaction(&spi_devices[KIONIX_SPI_ADDRESS(addr)],
+				     &cmd, 1, &val, 1);
+		if (rv == EC_SUCCESS)
+			*data_ptr = val;
+
+		return rv;
+#endif
+	} else {
+#ifdef I2C_PORT_ACCEL
+		return i2c_read8(I2C_PORT_ACCEL, addr, reg, data_ptr);
+#endif
+	}
 }
 
 /**
@@ -135,7 +153,40 @@ static int raw_read8(const int addr, const int reg, int *data_ptr)
  */
 static int raw_write8(const int addr, const int reg, int data)
 {
-	return i2c_write8(I2C_PORT_ACCEL, addr, reg, data);
+	if (KIONIX_IS_SPI(addr)) {
+#ifdef CONFIG_SPI_ACCEL_PORT
+		uint8_t cmd[2] = { reg, data };
+		return spi_transaction(&spi_devices[KIONIX_SPI_ADDRESS(addr)],
+				       cmd, 2, NULL, 0);
+#endif
+	} else {
+#ifdef I2C_PORT_ACCEL
+		return i2c_write8(I2C_PORT_ACCEL, addr, reg, data);
+#endif
+	}
+}
+
+static int raw_xfer(int addr, const uint8_t *txdata, int txlen,
+		    uint8_t *rxdata, int rxlen)
+{
+	int rv;
+
+	if (KIONIX_IS_SPI(addr)) {
+#ifdef CONFIG_SPI_ACCEL_PORT
+		/* Enable SPI for BMI160 */
+		gpio_config_module(MODULE_SPI_MASTER, 1);
+		rv = spi_transaction(&spi_devices[KIONIX_SPI_ADDRESS(addr)],
+				     txdata, txlen, rxdata, rxlen);
+#endif
+	} else {
+#ifdef I2C_PORT_ACCEL
+		i2c_lock(I2C_PORT_ACCEL, 1);
+		rv = i2c_xfer(I2C_PORT_ACCEL, addr, txdata, txlen, rxdata, rxlen,
+			      I2C_XFER_SINGLE);
+		i2c_lock(I2C_PORT_ACCEL, 0);
+#endif
+	}
+	return rv;
 }
 
 /**
@@ -377,10 +428,7 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	/* Read 6 bytes starting at XOUT_L. */
 	reg = KIONIX_XOUT_L(data->variant);
 	mutex_lock(s->mutex);
-	i2c_lock(I2C_PORT_ACCEL, 1);
-	ret = i2c_xfer(I2C_PORT_ACCEL, s->addr, &reg, 1, acc, 6,
-		       I2C_XFER_SINGLE);
-	i2c_lock(I2C_PORT_ACCEL, 0);
+	ret = raw_xfer(s->addr, &reg, 1, acc, 6);
 	mutex_unlock(s->mutex);
 
 	if (ret != EC_SUCCESS)
