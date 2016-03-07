@@ -17,6 +17,7 @@
 #include "driver/accel_kxcj9.h"
 #include "i2c.h"
 #include "math_util.h"
+#include "spi.h"
 #include "task.h"
 #include "util.h"
 
@@ -127,7 +128,24 @@ static int find_param_index(const int eng_val, const int round_up,
  */
 static int raw_read8(const int addr, const int reg, int *data_ptr)
 {
-	return i2c_read8(I2C_PORT_ACCEL, addr, reg, data_ptr);
+	if (KIONIX_IS_SPI(addr)) {
+#ifdef CONFIG_SPI_ACCEL_PORT
+		uint8_t val;
+		uint8_t cmd = 0x80 | reg;
+		int rv;
+
+		rv = spi_transaction(&spi_devices[KIONIX_SPI_ADDRESS(addr)],
+				     &cmd, 1, &val, 1);
+		if (rv == EC_SUCCESS)
+			*data_ptr = val;
+
+		return rv;
+#endif
+	} else {
+#ifdef I2C_PORT_ACCEL
+		return i2c_read8(I2C_PORT_ACCEL, addr, reg, data_ptr);
+#endif
+	}
 }
 
 /**
@@ -135,7 +153,17 @@ static int raw_read8(const int addr, const int reg, int *data_ptr)
  */
 static int raw_write8(const int addr, const int reg, int data)
 {
-	return i2c_write8(I2C_PORT_ACCEL, addr, reg, data);
+	if (KIONIX_IS_SPI(addr)) {
+#ifdef CONFIG_SPI_ACCEL_PORT
+		uint8_t cmd[2] = { reg, data };
+		return spi_transaction(&spi_devices[KIONIX_SPI_ADDRESS(addr)],
+				       cmd, 2, NULL, 0);
+#endif
+	} else {
+#ifdef I2C_PORT_ACCEL
+		return i2c_write8(I2C_PORT_ACCEL, addr, reg, data);
+#endif
+	}
 }
 
 /**
