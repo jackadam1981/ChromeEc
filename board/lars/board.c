@@ -5,12 +5,10 @@
 /* Skylake Chrome Reference Design board-specific configuration */
 
 #include "adc_chip.h"
-#include "als.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "charger.h"
 #include "console.h"
-#include "driver/als_isl29035.h"
 #include "driver/pmic_tps650830.h"
 #include "driver/temp_sensor/tmp432.h"
 #include "extpower.h"
@@ -73,12 +71,6 @@ void usb0_evt(enum gpio_signal signal)
 }
 
 #include "gpio_list.h"
-
-/* ALS instances. Must be in same order as enum als_id. */
-struct als_t als[] = {
-	{"ISL", isl29035_init, isl29035_read_lux, 5},
-};
-BUILD_ASSERT(ARRAY_SIZE(als) == ALS_COUNT);
 
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
