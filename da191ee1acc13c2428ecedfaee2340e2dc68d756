@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e21b5959_e98831e1",
+        "filename": "util/iteflash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-07T17:12:36Z",
+      "side": 1,
+      "message": "this seems the wrong fix to the issue :\nthe only case I see where we can return before initializing \u0027res\u0027 is when the fread is failing at line 906,\nthen we should return -EIO or the errno",
+      "range": {
+        "startLine": 888,
+        "startChar": 0,
+        "endLine": 888,
+        "endChar": 1
+      },
+      "revId": "da191ee1acc13c2428ecedfaee2340e2dc68d756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
