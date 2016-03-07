@@ -12,12 +12,28 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "usb_mux.h"
 #include "usb_pd.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
-#define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP)
+#define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP | PDO_FIXED_EXTERNAL)
+
+#ifdef CONFIG_USB_PD_TCPM_ANX74XX
+void tcpc_set_vbus(int port, int enable);
+void tcpc_set_dp_pin_mode(int port, int pin_mode);
+void tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq);
+
+#ifdef CONFIG_USB_PD_TCPM_MUX
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+	{
+		.port_addr = 0,
+		.driver    = &tcpm_usb_mux_driver,
+	},
+};
+#endif
+#endif
 
 /* Used to fake VBUS presence since no GPIO is available to read VBUS */
 static int vbus_present;
@@ -47,6 +63,9 @@ int pd_set_power_supply_ready(int port)
 	/* Turn on the "up" LED when we output VBUS */
 	gpio_set_level(GPIO_LED_U, 1);
 	CPRINTS("Power supply ready/%d", port);
+#ifdef CONFIG_USB_PD_TCPM_ANX74XX
+	tcpc_set_vbus(port, 1);
+#endif
 	return EC_SUCCESS; /* we are ready */
 }
 
@@ -55,6 +74,9 @@ void pd_power_supply_reset(int port)
 	/* Turn off the "up" LED when we shutdown VBUS */
 	gpio_set_level(GPIO_LED_U, 0);
 	/* Disable VBUS */
+#ifdef CONFIG_USB_PD_TCPM_ANX74XX
+	tcpc_set_vbus(port, 0);
+#endif
 	CPRINTS("Disable VBUS", port);
 }
 
@@ -187,6 +209,7 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 static int dp_flags[CONFIG_USB_PD_PORT_COUNT];
+static uint32_t dp_status[CONFIG_USB_PD_PORT_COUNT];
 
 static void svdm_safe_dp_mode(int port)
 {
@@ -225,10 +248,19 @@ static int svdm_dp_status(int port, uint32_t *payload)
 static int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
-	/* board_set_usb_mux(port, TYPEC_MUX_DP, pd_get_polarity(port)); */
+	int pin_mode = pd_dfp_dp_get_pin_mode(port, dp_status[port]);
+
+	if(!pin_mode)
+		return 0;
+#ifdef CONFIG_USB_PD_TCPM_ANX74XX
+#ifdef CONFIG_USB_PD_TCPM_MUX
+	tcpc_set_dp_pin_mode(port, pin_mode);
+	usb_muxes[port].driver->set(port, TYPEC_MUX_DOCK);
+#endif
+#endif
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
 			 CMD_DP_CONFIG | VDO_OPOS(opos));
-	payload[1] = VDO_DP_CFG(MODE_DP_PIN_E, /* pin mode */
+	payload[1] = VDO_DP_CFG(pin_mode, /* pin mode */
 				1,             /* DPv1.3 signaling */
 				2);            /* UFP connected */
 	return 2;
@@ -243,6 +275,14 @@ static void svdm_dp_post_config(int port)
 
 static int svdm_dp_attention(int port, uint32_t *payload)
 {
+#ifdef CONFIG_USB_PD_TCPM_ANX74XX
+	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
+	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
+
+	tcpc_update_hpd_status(port, lvl, irq);
+#endif
+	dp_status[port] = payload[1];
+
 	/* ack */
 	return 1;
 }
