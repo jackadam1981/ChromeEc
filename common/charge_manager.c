@@ -271,7 +271,12 @@ static void charge_manager_fill_power_info(int port,
 		if (r->role == USB_PD_PORT_POWER_SINK_NOT_CHARGING)
 			r->meas.voltage_now = 5000;
 		else
+#ifdef ADC_VBUS
 			r->meas.voltage_now = adc_read_channel(ADC_VBUS);
+#else
+			/* Exact charger voltage is unknown */
+			r->meas.voltage_now = 0;
+#endif
 	}
 }
 #endif /* TEST_BUILD */
