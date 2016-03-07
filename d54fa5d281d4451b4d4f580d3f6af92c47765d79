@@ -22,6 +22,30 @@
       "revId": "d54fa5d281d4451b4d4f580d3f6af92c47765d79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "575ce935_870e6651",
+        "filename": "board/pdeval-stm32f072/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1145169
+      },
+      "writtenOn": "2016-03-07T19:04:06Z",
+      "side": 1,
+      "message": "Implemented as struct usb_mux and moved related changes to driver file. PTAL.",
+      "parentUuid": "22d0113b_bd7fb13b",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 1
+      },
+      "revId": "d54fa5d281d4451b4d4f580d3f6af92c47765d79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
