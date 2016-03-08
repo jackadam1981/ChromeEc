@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7bd39cb_f345103e",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-08T19:42:05Z",
+      "side": 1,
+      "message": "These will be the initial values of our signals at initialization.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "32657f1eeb04521aac156e705fe5f0a495cc1cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7bd39cb_13328cee",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-08T19:42:05Z",
+      "side": 1,
+      "message": "This sequence comes straight from the datasheet.",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 12
+      },
+      "revId": "32657f1eeb04521aac156e705fe5f0a495cc1cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7bd39cb_333788df",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-08T19:42:05Z",
+      "side": 1,
+      "message": "Remainder of the sequence from the datasheet.",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "32657f1eeb04521aac156e705fe5f0a495cc1cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7bd39cb_532c0493",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-08T19:42:05Z",
+      "side": 1,
+      "message": "Note that I didn\u0027t bother to implement the power-down states. I\u0027m sure we\u0027ll need to change the sequence a bunch, so I don\u0027t think it\u0027s worth the effort yet.",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 192,
+        "endChar": 34
+      },
+      "revId": "32657f1eeb04521aac156e705fe5f0a495cc1cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
