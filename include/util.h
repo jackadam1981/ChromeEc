@@ -97,6 +97,7 @@ int memcmp(const void *s1, const void *s2, size_t len);
 void *memcpy(void *dest, const void *src, size_t len);
 __visible void *memset(void *dest, int c, size_t len);
 void *memmove(void *dest, const void *src, size_t len);
+void reverse(void *dest, size_t len);
 int strcasecmp(const char *s1, const char *s2);
 int strncasecmp(const char *s1, const char *s2, size_t size);
 int strlen(const char *s);
