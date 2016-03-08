@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "173fd1e9_c05140db",
+        "filename": "common/util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-03-08T02:11:31Z",
+      "side": 1,
+      "message": "I would write this as tpm \u003d *start++; to avoid post increment in line 317. Just a thought.",
+      "revId": "34730c7c13eec3ace1f8991df07ea5b21a182b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
