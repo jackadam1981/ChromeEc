@@ -72,6 +72,54 @@
     },
     {
       "key": {
+        "uuid": "d7bd39cb_f310b0dc",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-08T20:21:09Z",
+      "side": 1,
+      "message": "\u003e PP1800_MIC_EN_L is missing and SYS_RST is now SYS_RST_ODL\n\nPP1800_MIC_EN_L doesn\u0027t seem to be present in the reference board. I\u0027ll add a follow-up CL for changes between the reference board + kevin.",
+      "parentUuid": "d7bd39cb_1368cc87",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 18
+      },
+      "revId": "32657f1eeb04521aac156e705fe5f0a495cc1cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7bd39cb_13c9aca0",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-08T20:21:09Z",
+      "side": 1,
+      "message": "\u003e You mean the polarity, right?\n\nYes, you are correct.",
+      "parentUuid": "d7bd39cb_f348b02f",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "32657f1eeb04521aac156e705fe5f0a495cc1cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7bd39cb_93adbcff",
         "filename": "power/rk3399.c",
         "patchSetId": 1
@@ -83,6 +131,24 @@
       "writtenOn": "2016-03-08T20:07:55Z",
       "side": 1,
       "message": "Any intent to use the various PG interrupts to trigger the next stage in sequencing?  Or are we generally OK with time-based sequencing?",
+      "revId": "32657f1eeb04521aac156e705fe5f0a495cc1cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7bd39cb_93f21cf9",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-08T20:21:09Z",
+      "side": 1,
+      "message": "We will definitely want to use the PG interrupts to trigger our next stages, but I\u0027m not clear on which signals are asserted at which time, so I\u0027m using time-based sequencing for now.",
+      "parentUuid": "d7bd39cb_93adbcff",
       "revId": "32657f1eeb04521aac156e705fe5f0a495cc1cf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -135,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "d7bd39cb_d3fc94cf",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-08T20:21:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7bd39cb_d34ad4fe",
+      "range": {
+        "startLine": 142,
+        "startChar": 38,
+        "endLine": 142,
+        "endChar": 39
+      },
+      "revId": "32657f1eeb04521aac156e705fe5f0a495cc1cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7bd39cb_335948d6",
         "filename": "power/rk3399.c",
         "patchSetId": 1
@@ -146,6 +236,30 @@
       "writtenOn": "2016-03-08T20:07:55Z",
       "side": 1,
       "message": "is 10ms enough?  I seem to recall some ridiculously long reset pulse time requirement for the RK3399",
+      "range": {
+        "startLine": 159,
+        "startChar": 9,
+        "endLine": 159,
+        "endChar": 11
+      },
+      "revId": "32657f1eeb04521aac156e705fe5f0a495cc1cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7bd39cb_73d82068",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-08T20:21:09Z",
+      "side": 1,
+      "message": "I\u0027ll check on it.",
+      "parentUuid": "d7bd39cb_335948d6",
       "range": {
         "startLine": 159,
         "startChar": 9,
