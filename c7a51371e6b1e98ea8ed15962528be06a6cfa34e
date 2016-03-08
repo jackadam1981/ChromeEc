@@ -34,6 +34,52 @@
       "revId": "c7a51371e6b1e98ea8ed15962528be06a6cfa34e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7f6199d_4ba445d1",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2016-03-08T08:20:10Z",
+      "side": 1,
+      "message": "SLP_S0 assertion will happen only if system is in PC10. There are scenarios, where kernel will enter freeze, but system will not enter PC10. In this scenarios SLP_S0 will not be asserted. So relying on host command alone to enter S0ix is not a fair idea.",
+      "range": {
+        "startLine": 711,
+        "startChar": 20,
+        "endLine": 711,
+        "endChar": 22
+      },
+      "revId": "c7a51371e6b1e98ea8ed15962528be06a6cfa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7f6199d_aba849a5",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2016-03-08T08:20:10Z",
+      "side": 1,
+      "message": "For a small duration (SLP_S0 de-assertion to HC from Kernel) EC remains in S0ix and SOC is in S0. What would be the implications of this scenario?",
+      "range": {
+        "startLine": 715,
+        "startChar": 20,
+        "endLine": 715,
+        "endChar": 22
+      },
+      "revId": "c7a51371e6b1e98ea8ed15962528be06a6cfa34e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
