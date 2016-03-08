@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "173fd1e9_46bc28e3",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-08T17:44:39Z",
+      "side": 1,
+      "message": "Many boards are using this branch. Let\u0027s fix this properly (link is actually crbug.com/576911).",
+      "range": {
+        "startLine": 154,
+        "startChar": 8,
+        "endLine": 154,
+        "endChar": 29
+      },
+      "revId": "18c68d03d3a4150022de328dd9d79c9bac6923eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
