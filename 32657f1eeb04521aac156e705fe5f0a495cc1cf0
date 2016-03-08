@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "d7bd39cb_968ccaf6",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2016-03-08T21:31:32Z",
+      "side": 1,
+      "message": "My bad.  PP1800_MIC_EN_L became PP1800_LID_EN_L.  I had forgotten to update go/a48-ec",
+      "parentUuid": "d7bd39cb_f310b0dc",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 18
+      },
+      "revId": "32657f1eeb04521aac156e705fe5f0a495cc1cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7bd39cb_93adbcff",
         "filename": "power/rk3399.c",
         "patchSetId": 1
@@ -149,6 +173,24 @@
       "side": 1,
       "message": "We will definitely want to use the PG interrupts to trigger our next stages, but I\u0027m not clear on which signals are asserted at which time, so I\u0027m using time-based sequencing for now.",
       "parentUuid": "d7bd39cb_93adbcff",
+      "revId": "32657f1eeb04521aac156e705fe5f0a495cc1cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7bd39cb_b689c6e5",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2016-03-08T21:31:32Z",
+      "side": 1,
+      "message": "OK. At the moment it\u0027s basically 1:1 EN to PG, but I think initial power-on will be easier with time-based sequencing.",
+      "parentUuid": "d7bd39cb_93f21cf9",
       "revId": "32657f1eeb04521aac156e705fe5f0a495cc1cf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
