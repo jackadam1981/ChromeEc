@@ -22,6 +22,30 @@
       "revId": "57ac636abe5973071f330328272fb79f6a02914f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7f6199d_2b18d9b9",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2016-03-08T11:51:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02c5cdcd_247412d8",
+      "range": {
+        "startLine": 159,
+        "startChar": 31,
+        "endLine": 159,
+        "endChar": 43
+      },
+      "revId": "57ac636abe5973071f330328272fb79f6a02914f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
