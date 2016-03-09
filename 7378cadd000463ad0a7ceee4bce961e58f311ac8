@@ -22,6 +22,30 @@
       "revId": "7378cadd000463ad0a7ceee4bce961e58f311ac8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "571a2904_b70a6801",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-03-09T11:10:38Z",
+      "side": 1,
+      "message": "states other than S0. It would be clear to see  chipset_in_state(), where only state \"POWER_S0\" will make chipset_in_state(CHIPSET_STATE_ON) true. Actually when the issue happens, the state is \"POWER_S0S3\" (transition from S0 to S3)",
+      "parentUuid": "571a2904_f710e032",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 43
+      },
+      "revId": "7378cadd000463ad0a7ceee4bce961e58f311ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
