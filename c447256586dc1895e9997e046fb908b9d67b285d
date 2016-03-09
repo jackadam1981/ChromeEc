@@ -68,6 +68,30 @@
       "revId": "c447256586dc1895e9997e046fb908b9d67b285d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e31d1d_e04fca62",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-03-09T23:06:22Z",
+      "side": 1,
+      "message": "Yes, even temperature becomes below fanmax, fan speed remains 100% and EC won\u0027t change fan speed as you indicate. \n\nFan will remain 100% until\n- battery is drained completely.\n- lid close by user\n- DPTF resume/revival.\n- enabling RPM mode by various ways(ec console, DPTF duty \u003e 100%....)",
+      "parentUuid": "571a2904_97408413",
+      "range": {
+        "startLine": 297,
+        "startChar": 6,
+        "endLine": 300,
+        "endChar": 35
+      },
+      "revId": "c447256586dc1895e9997e046fb908b9d67b285d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
