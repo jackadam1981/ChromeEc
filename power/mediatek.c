@@ -175,9 +175,7 @@ static void chipset_turn_off_power_rails(void);
  */
 static int is_suspend_asserted(void)
 {
-	if ((power_get_signals() & IN_SUSPEND) &&
-	    (system_get_board_version() < 4))
-		usleep(SUSPEND_DEBOUNCE_TIME);
+	/* TODO: board before rev4 need 50ms sleep? */
 
 	return power_get_signals() & IN_SUSPEND;
 }
@@ -190,9 +188,7 @@ static int is_suspend_asserted(void)
  */
 static int is_suspend_deasserted(void)
 {
-	if (!(power_get_signals() & IN_SUSPEND) &&
-	    (system_get_board_version() < 4))
-		usleep(SUSPEND_DEBOUNCE_TIME);
+	/* TODO: board before rev4 need 50ms sleep? */
 
 	return !(power_get_signals() & IN_SUSPEND);
 }
@@ -207,9 +203,7 @@ static int is_power_good_asserted(void)
 {
 	if (!gpio_get_level(GPIO_SYSTEM_POWER_H))
 		return 0;
-	else if ((power_get_signals() & IN_POWER_GOOD) &&
-		 (system_get_board_version() < 4))
-		usleep(POWER_DEBOUNCE_TIME);
+	/* TODO: board before rev4 need 50ms sleep? */
 
 	return power_get_signals() & IN_POWER_GOOD;
 }
@@ -228,15 +222,12 @@ static int is_power_good_deasserted(void)
 	 * In order to detect this case, check the AP_RESET_L status,
 	 * ignore the transient state if reset key is pressing.
 	 */
-	if (system_get_board_version() >= 4) {
-		if (0 == gpio_get_level(GPIO_AP_RESET_L)) {
-			return 0;
-		}
-	}
 
-	if (!(power_get_signals() & IN_POWER_GOOD) &&
-	    (system_get_board_version() < 4))
-		usleep(POWER_DEBOUNCE_TIME);
+	/* TODO: only for board from rev4 */
+	if (0 == gpio_get_level(GPIO_AP_RESET_L))
+		return 0;
+
+	/* TODO: board before rev4 need 50ms sleep? */
 
 	return !(power_get_signals() & IN_POWER_GOOD);
 }
@@ -617,10 +608,8 @@ static void power_on(void)
 	/* enable interrupt */
 	gpio_set_flags(GPIO_SUSPEND_L, INT_BOTH_PULL_UP);
 
-	if(system_get_board_version() <= 3)
-		gpio_set_flags(GPIO_EC_INT_L, GPIO_OUTPUT | GPIO_OUT_HIGH);
-	else
-		gpio_set_flags(GPIO_EC_INT_L, GPIO_ODR_HIGH);
+	/* TODO: only for board from rev4 */
+	gpio_set_flags(GPIO_EC_INT_L, GPIO_ODR_HIGH);
 
 	disable_sleep(SLEEP_MASK_AP_RUN);
 #ifdef HAS_TASK_POWERLED

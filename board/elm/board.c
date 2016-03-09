@@ -7,7 +7,6 @@
 
 #include "adc.h"
 #include "adc_chip.h"
-#include "als.h"
 #include "atomic.h"
 #include "battery.h"
 #include "charge_manager.h"
@@ -18,8 +17,6 @@
 #include "console.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
-#include "driver/accelgyro_bmi160.h"
-#include "driver/als_opt3001.h"
 #include "driver/temp_sensor/tmp432.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -64,7 +61,13 @@ void pd_mcu_interrupt(enum gpio_signal signal)
 
 void usb_evt(enum gpio_signal signal)
 {
-	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_INTR, 0);
+	/*
+	 * check if this is from BC12 or ANX7688 CABLE_DET
+	 * note that CABLE_DET can only trigger irq when 0 -> 1 (plug in)
+	 * since we use polling for CABLE_DET, just ignore this one for now
+	 */
+	if (!gpio_get_level(GPIO_BC12_WAKE_L))
+		task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
 }
 
 #include "gpio_list.h"
@@ -147,19 +150,39 @@ struct ec_thermal_config thermal_params[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
+#ifdef CONFIG_USB_PD_ANX7688
+static int anx7688_mux_init(int i2c_addr)
+{
+	return EC_SUCCESS;
+}
 
-/* ALS instances. Must be in same order as enum als_id. */
-struct als_t als[] = {
-	{"TI", opt3001_init, opt3001_read_lux, 5},
+/* Writes control register to set switch mode */
+static int anx7688_set_mux(int i2c_addr, mux_state_t mux_state)
+{
+	return EC_SUCCESS;
+}
+
+/* Reads control register and updates mux_state accordingly */
+static int anx7688_get_mux(int i2c_addr, mux_state_t *mux_state)
+{
+	*mux_state = 0;
+	return EC_SUCCESS;
+}
+
+const struct usb_mux_driver anx7688_usb_mux_driver = {
+	.init = anx7688_mux_init,
+	.set = anx7688_set_mux,
+	.get = anx7688_get_mux,
 };
-BUILD_ASSERT(ARRAY_SIZE(als) == ALS_COUNT);
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+	/* TODO: elm does not have pi3usb30532, another mux driver for 7688? */
 	{
-		.port_addr = 0x54 << 1,
-		.driver    = &pi3usb30532_usb_mux_driver,
+		.port_addr = 0,
+		.driver    = &anx7688_usb_mux_driver,
 	},
 };
+#endif
 
 /**
  * Store the current DP hardware route.
@@ -172,9 +195,7 @@ static struct mutex dp_hw_lock;
  */
 void board_reset_pd_mcu(void)
 {
-	gpio_set_level(GPIO_USB_PD_RST_L, 0);
-	usleep(100);
-	gpio_set_level(GPIO_USB_PD_RST_L, 1);
+	/* TODO: need to reset 7688 here? */
 }
 
 /**
@@ -205,8 +226,8 @@ static void board_init(void)
 	/* Enable PD MCU interrupt */
 	gpio_enable_interrupt(GPIO_PD_MCU_INT);
 
-	/* Enable BC 1.2 interrupt */
-	gpio_enable_interrupt(GPIO_USB_BC12_INT);
+	/* Enable BC 1.2 and ANX7688 CABLE_DET interrupt */
+	gpio_enable_interrupt(GPIO_BC12_CABLE_INT);
 
 	/* Update VBUS supplier */
 	usb_charger_vbus_change(0, !gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L));
@@ -260,16 +281,11 @@ int board_set_active_charge_port(int charge_port)
 	CPRINTF("New chg p%d", charge_port);
 
 	if (charge_port == CHARGE_PORT_NONE) {
-		/* Disable both ports */
+		/* Disable charging port */
 		gpio_set_level(GPIO_USB_C0_CHARGE_L, 1);
-		gpio_set_level(GPIO_USB_C1_CHARGE_L, 1);
 	} else {
-		/* Make sure non-charging port is disabled */
-		gpio_set_level(charge_port ? GPIO_USB_C0_CHARGE_L :
-					     GPIO_USB_C1_CHARGE_L, 1);
 		/* Enable charging port */
-		gpio_set_level(charge_port ? GPIO_USB_C1_CHARGE_L :
-					     GPIO_USB_C0_CHARGE_L, 0);
+		gpio_set_level(GPIO_USB_C0_CHARGE_L, 0);
 	}
 
 	return EC_SUCCESS;
@@ -324,7 +340,6 @@ int board_get_ramp_current_limit(int supplier, int sup_curr)
 static void board_typec_set_dp_hpd(int port, int level)
 {
 	gpio_set_level(GPIO_USB_DP_HPD, level);
-
 }
 
 static void hpd_irq_deferred(void)
@@ -349,7 +364,7 @@ void board_typec_dp_on(int port)
 		} else {
 			board_typec_set_dp_hpd(port, 0);
 			hook_call_deferred(hpd_irq_deferred,
-					HPD_DSTREAM_DEBOUNCE_IRQ);
+					   HPD_DSTREAM_DEBOUNCE_IRQ);
 		}
 	}
 
@@ -399,22 +414,13 @@ void board_typec_dp_set(int port, int level)
 
 /**
  * Set AP reset.
- *
- * PMIC_WARM_RESET_H (PB3) is connected to PMIC RESET before rev < 3.
  * AP_RESET_L (PC3, CPU_WARM_RESET_L) is connected to PMIC SYSRSTB
- * after rev >= 3.
  */
 void board_set_ap_reset(int asserted)
 {
-	if (system_get_board_version() < 3) {
-		/* Signal is active-high */
-		CPRINTS("pmic warm reset(%d)", asserted);
-		gpio_set_level(GPIO_PMIC_WARM_RESET_H, asserted);
-	} else {
-		/* Signal is active-low */
-		CPRINTS("ap warm reset(%d)", asserted);
-		gpio_set_level(GPIO_AP_RESET_L, !asserted);
-	}
+	/* Signal is active-low */
+	CPRINTS("ap warm reset(%d)", asserted);
+	gpio_set_level(GPIO_AP_RESET_L, !asserted);
 }
 
 static void tmp432_set_power_deferred(void)
@@ -462,7 +468,6 @@ static void board_chipset_shutdown(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
-
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
@@ -479,9 +484,9 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
 /* Motion sensors */
 /* Mutexes */
-static struct mutex g_lid_mutex;
-static struct mutex g_base_mutex;
+static struct mutex g_kx022_mutex[2];
 
+/* TODO: check if we need this rotation or not */
 /* Matrix to rotate accelrator into standard reference frame */
 const matrix_3x3_t base_standard_ref = {
 	{ FLOAT_TO_FP(-1), 0,  0},
@@ -490,93 +495,54 @@ const matrix_3x3_t base_standard_ref = {
 };
 
 /* KX022 private data */
-struct kionix_accel_data g_kx022_data = {
-	.variant = KX022,
+struct kionix_accel_data g_kx022_data[2] = {
+	{.variant = KX022},
+	{.variant = KX022},
 };
 
 struct motion_sensor_t motion_sensors[] = {
-	/*
-	 * Note: bmi160: supports accelerometer and gyro sensor
-	 * Requirement: accelerometer sensor must init before gyro sensor
-	 * DO NOT change the order of the following table.
-	 */
 	{.name = "Base Accel",
 	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
+	 .chip = MOTIONSENSE_CHIP_KX022,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &bmi160_drv,
-	 .mutex = &g_base_mutex,
-	 .drv_data = &g_bmi160_data,
-	 .addr = 1,
-	 .rot_standard_ref = &base_standard_ref,
-	 .default_range = 2,  /* g, enough for laptop. */
+	 .drv = &kionix_accel_drv,
+	 .mutex = &g_kx022_mutex[0],
+	 .drv_data = &g_kx022_data[0],
+	 .addr = 1, /* SPI */
+	 .rot_standard_ref = NULL, /* Identity matrix. */
+	 .default_range = 2, /* g, enough for laptop. */
 	 .config = {
-		 /* AP: by default use EC settings */
-		 [SENSOR_CONFIG_AP] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-		 /* EC use accel for angle detection */
-		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 10000 | ROUND_UP_FLAG,
-			 .ec_rate = 100 * MSEC,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S3] = {
-			 .odr = 0,
-			 .ec_rate = 0
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S5] = {
-			 .odr = 0,
-			 .ec_rate = 0
-		 },
+		/* AP: by default use EC settings */
+		[SENSOR_CONFIG_AP] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		},
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		},
+		/* unused */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 0,
+			.ec_rate = 0,
+		},
+		[SENSOR_CONFIG_EC_S5] = {
+			.odr = 0,
+			.ec_rate = 0,
+		},
 	 },
 	},
 
-	{.name = "Base Gyro",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
-	 .type = MOTIONSENSE_TYPE_GYRO,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &bmi160_drv,
-	 .mutex = &g_base_mutex,
-	 .drv_data = &g_bmi160_data,
-	 .addr = 1,
-	 .default_range = 1000, /* dps */
-	 .rot_standard_ref = NULL, /* Identity Matrix. */
-	 .config = {
-		 /* AP: by default shutdown all sensors */
-		 [SENSOR_CONFIG_AP] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-		 /* EC does not need in S0 */
-		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S3] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S5] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-	 },
-	},
 	{.name = "Lid Accel",
 	 .active_mask = SENSOR_ACTIVE_S0,
 	 .chip = MOTIONSENSE_CHIP_KX022,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_LID,
 	 .drv = &kionix_accel_drv,
-	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_kx022_data,
+	 .mutex = &g_kx022_mutex[1],
+	 .drv_data = &g_kx022_data[1],
 	 .addr = KX022_ADDR1,
 	 .rot_standard_ref = NULL, /* Identity matrix. */
 	 .default_range = 2, /* g, enough for laptop. */
@@ -608,6 +574,9 @@ const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 void lid_angle_peripheral_enable(int enable)
 {
 	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+
+	/* enable/disable touchpad */
+	gpio_set_level(GPIO_EN_TP_INT_L, !enable);
 }
 
 
@@ -632,14 +601,14 @@ void board_set_tcpc_power_mode(int port, int normal_mode)
 #if CONFIG_USB_PD_PORT_COUNT >= 2
 #else
        if (normal_mode) {
-               gpio_set_level(GPIO_USB_C0_PWR_EN, 1);
+               gpio_set_level(GPIO_USB_C0_PWR_EN_L, 0);
                msleep(50);
-               gpio_set_level(GPIO_USB_C0_RST_N, 1);
+               gpio_set_level(GPIO_USB_C0_RST, 0);
                msleep(10);
        } else {/* STAND BY MODE */
-               gpio_set_level(GPIO_USB_C0_RST_N, 0);
+               gpio_set_level(GPIO_USB_C0_RST, 1);
                msleep(1);
-               gpio_set_level(GPIO_USB_C0_PWR_EN, 0);
+               gpio_set_level(GPIO_USB_C0_PWR_EN_L, 1);
        }
 #endif
 }
@@ -649,7 +618,7 @@ int board_plug_is_inserted(int port)
 #if CONFIG_USB_PD_PORT_COUNT >= 2
        return 0;
 #else
-       return gpio_get_level(GPIO_USB_C0_CABLE_DET);
+       return !gpio_get_level(GPIO_USB_C0_CABLE_DET_L);
 #endif
 }
 
