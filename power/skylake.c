@@ -418,17 +418,58 @@ enum power_state power_handle_state(enum power_state state)
 }
 
 #ifdef CONFIG_POWER_S0IX
+static struct {
+	int required; /* indicates de-bounce required. */
+	int done;     /* debounced */
+} slp_s0_debounce = {
+	.required = 0,
+	.done = 1,
+};
+
+int chipset_get_ps_debounced_level(enum gpio_signal signal)
+{
+	/*
+	 * If power state is updated in power_update_signal() by any interrupts
+	 * other than SLP_S0 during the 1 msec pulse(invalid SLP_S0 signal),
+	 * reading SLP_S0 should be corrected with slp_s0_debounce.done flag.
+	 */
+	int level = gpio_get_level(signal);
+	return (signal == GPIO_PCH_SLP_S0_L) ?
+			(level & slp_s0_debounce.done) : level;
+}
+
 static void slp_s0_assertion_deferred(void)
 {
-	if (gpio_get_level(GPIO_PCH_SLP_S0_L))
-		hook_call_deferred(slp_s0_assertion_deferred, 100 * MSEC);
-	else
+	int s0_level = gpio_get_level(GPIO_PCH_SLP_S0_L);
+	/*
+	     (s0_level != 0) ||
+	     ((s0_level == 0) && (slp_s0_debounce.required == 0))
+	*/
+	if (s0_level == slp_s0_debounce.required) {
+		if (s0_level)
+			slp_s0_debounce.done = 1; /* debounced! */
+
 		power_signal_interrupt(GPIO_PCH_SLP_S0_L);
+	}
+
+	slp_s0_debounce.required = 0;
 }
 DECLARE_DEFERRED(slp_s0_assertion_deferred);
 
-void power_signal_process_S0(void)
+void power_signal_interrupt_S0(enum gpio_signal signal)
 {
-	slp_s0_assertion_deferred();
+	if (get_slp_s0_track() == 0) { /* only if HC-suspend command arrived */
+
+		CPRINTS("### %s()", __func__);
+
+		if (gpio_get_level(GPIO_PCH_SLP_S0_L)) {
+			slp_s0_debounce.required = 1;
+			hook_call_deferred(slp_s0_assertion_deferred, 3 * MSEC);
+		}
+		else if (slp_s0_debounce.required == 0) {
+			slp_s0_debounce.done = 0;
+			slp_s0_assertion_deferred();
+		}
+	}
 }
 #endif
