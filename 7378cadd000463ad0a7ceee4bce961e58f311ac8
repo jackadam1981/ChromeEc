@@ -46,6 +46,30 @@
       "revId": "7378cadd000463ad0a7ceee4bce961e58f311ac8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "571a2904_171a344e",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2016-03-09T11:32:10Z",
+      "side": 1,
+      "message": "Ok, I see.  CHIPSET_STATE_ON is a chip_state_mask, and POWER_S0S3 is a power_state.\n\nchipset_in_state() checks that the the provided chip_state_mask exactly matches the set of chipset_state_masks that correspond to the current global power_state.  (in other words, if we are in S0S3,  chipset_in_state(CHIPSET_STATE_ON|CHIPSET_STATE_SUSPEND) will return true).",
+      "parentUuid": "571a2904_b70a6801",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 43
+      },
+      "revId": "7378cadd000463ad0a7ceee4bce961e58f311ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
