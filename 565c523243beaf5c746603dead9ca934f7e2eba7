@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7e31d1d_af0895c3",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-03-09T01:06:32Z",
+      "side": 1,
+      "message": "this is much better represented by a function which accepts a pointer to a tpm2b structure.",
+      "revId": "565c523243beaf5c746603dead9ca934f7e2eba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
