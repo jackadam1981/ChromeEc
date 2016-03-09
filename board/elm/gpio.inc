@@ -48,11 +48,11 @@ GPIO(BOARD_VERSION3, PIN(E, 12), GPIO_INPUT) /* Board ID 2 */
 GPIO(BOARD_VERSION4, PIN(E, 11), GPIO_INPUT) /* Board ID 3 */
 
 /* Outputs */
-GPIO(BAT_LED0,          PIN(A, 11), GPIO_OUT_LOW)   /* LED_GREEN */
-GPIO(BAT_LED1,          PIN(B, 11), GPIO_OUT_LOW)   /* LED_RED   */
+GPIO(BAT_LED0,          PIN(A, 11), GPIO_OUT_LOW)   /* LED_BLUE */
+GPIO(BAT_LED1,          PIN(B, 11), GPIO_OUT_LOW)   /* LED_ORANGE   */
+GPIO(PWR_LED0,          PIN(E,  8), GPIO_OUT_LOW)   /* LED_BLUE */
+GPIO(PWR_LED1,          PIN(D,  6), GPIO_OUT_LOW)   /* LED_ORANGE   */
 
-UNIMPLEMENTED(PWR_LED0)
-UNIMPLEMENTED(PWR_LED1)
 GPIO(EC_BL_OVERRIDE,    PIN(F, 1),  GPIO_OUT_LOW)
 GPIO(ENTERING_RW,       PIN(F, 0),  GPIO_OUT_LOW)
 
@@ -92,6 +92,7 @@ GPIO(USB_PD_VBUS_WAKE,  PIN(B, 15), GPIO_OUT_LOW)    /* PD MCU wake */
 GPIO(USB_DP_HPD,        PIN(F, 3),  GPIO_OUT_LOW)
 GPIO(USB_C0_DEVMODE_L,  PIN(E, 4),  GPIO_OUT_HIGH)   /* set HSD2 (host mode) path as default */
 GPIO(USB_C1_DEVMODE,    PIN(E, 2),  GPIO_OUT_LOW)    /* set HSD1 (host mode) path as default */
+GPIO(EN_TP_INT_L,       PIN(E, 14), GPIO_OUT_LOW)    /* touchpad interrupt enable */
 
 /* Analog pins */
 GPIO(VDC_BOOSTIN_SENSE, PIN(C, 1), GPIO_ANALOG) /* ADC_IN11 */

@@ -92,7 +92,6 @@ void typec_set_input_current_limit(int port, uint32_t max_ma,
 	charge_manager_update_charge(CHARGE_SUPPLIER_TYPEC, port, &charge);
 }
 
-
 int pd_board_checks(void)
 {
 	return EC_SUCCESS;
@@ -141,7 +140,7 @@ void pd_check_pr_role(int port, int pr_role, int flags)
 		int partner_extpower = flags & PD_FLAGS_PARTNER_EXTPOWER;
 
 		if ((!partner_extpower && pr_role == PD_ROLE_SINK) ||
-		     (partner_extpower && pr_role == PD_ROLE_SOURCE))
+		    (partner_extpower && pr_role == PD_ROLE_SOURCE))
 			pd_request_power_swap(port);
 	}
 }
@@ -152,6 +151,7 @@ void pd_check_dr_role(int port, int dr_role, int flags)
 	if ((flags & PD_FLAGS_PARTNER_DR_DATA) && dr_role == PD_ROLE_UFP)
 		pd_request_data_swap(port);
 }
+
 /* ----------------- Vendor Defined Messages ------------------ */
 const struct svdm_response svdm_rsp = {
 	.identity = NULL,
