@@ -51,8 +51,7 @@ void pd_transition_voltage(int idx)
 int pd_set_power_supply_ready(int port)
 {
 	/* Disable charging */
-	gpio_set_level(port ? GPIO_USB_C1_CHARGE_L :
-			      GPIO_USB_C0_CHARGE_L, 1);
+	gpio_set_level(GPIO_USB_C0_CHARGE_L, 1);
 	/* Provide VBUS */
 	gpio_set_level(GPIO_USB_C0_5V_EN, 1);
 
@@ -99,7 +98,6 @@ void typec_set_input_current_limit(int port, uint32_t max_ma,
 	charge.voltage = supply_voltage;
 	charge_manager_update_charge(CHARGE_SUPPLIER_TYPEC, port, &charge);
 }
-
 
 int pd_board_checks(void)
 {
@@ -149,7 +147,7 @@ void pd_check_pr_role(int port, int pr_role, int flags)
 		int partner_extpower = flags & PD_FLAGS_PARTNER_EXTPOWER;
 
 		if ((!partner_extpower && pr_role == PD_ROLE_SINK) ||
-		     (partner_extpower && pr_role == PD_ROLE_SOURCE))
+		    (partner_extpower && pr_role == PD_ROLE_SOURCE))
 			pd_request_power_swap(port);
 	}
 }
@@ -160,6 +158,7 @@ void pd_check_dr_role(int port, int dr_role, int flags)
 	if ((flags & PD_FLAGS_PARTNER_DR_DATA) && dr_role == PD_ROLE_UFP)
 		pd_request_data_swap(port);
 }
+
 /* ----------------- Vendor Defined Messages ------------------ */
 const struct svdm_response svdm_rsp = {
 	.identity = NULL,

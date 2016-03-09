@@ -9,22 +9,16 @@
 #define __CROS_EC_BOARD_H
 
 /* Accelero meter and gyro sensor */
-#define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCEL_KX022
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_SENSOR_BASE 0
-#define CONFIG_LID_ANGLE_SENSOR_LID 2
+#define CONFIG_LID_ANGLE_SENSOR_LID 1
 #define CONFIG_LID_ANGLE_UPDATE
 
 #define CONFIG_ADC
 #undef  CONFIG_ADC_WATCHDOG
-
-/* Add for Ambient Light Sensor */
-#define CONFIG_ALS
-#define CONFIG_ALS_OPT3001
-#define CONFIG_CMD_ALS
 
 /* AC adaptor, charger, battery */
 #define CONFIG_BATTERY_CUT_OFF
@@ -61,7 +55,6 @@
 #define CONFIG_LID_SWITCH
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_MKBP_EVENT
-#define CONFIG_PMIC_FW_LONG_PRESS_TIMER
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_COMMON
 #define CONFIG_USB_CHARGER
@@ -76,7 +69,6 @@
 #define CONFIG_UART_CONSOLE 1
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_TEMP_SENSOR_TMP432
-
 
 /* Type-C */
 #define CONFIG_USBC_SS_MUX
@@ -93,6 +85,7 @@
 #define CONFIG_USB_PD_LOG_SIZE 512
 
 #define CONFIG_USB_PD_PORT_COUNT 1
+#define CONFIG_USB_PD_TCPM_MUX
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_PD_TCPM_VBUS
@@ -103,9 +96,6 @@
 /* UART DMA */
 #undef CONFIG_UART_TX_DMA
 #undef CONFIG_UART_RX_DMA
-
-/* USB Mux */
-#define CONFIG_USB_MUX_PI3USB30532
 
 /* BC 1.2 charger */
 #define CONFIG_USB_SWITCH_PI3USB9281
@@ -135,7 +125,6 @@
 /* 2 I2C master ports, connect to battery, charger, pd and USB switches */
 #define I2C_PORT_MASTER  0
 #define I2C_PORT_ACCEL   0
-#define I2C_PORT_ALS     0
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
 #define I2C_PORT_PERICOM 0
@@ -146,9 +135,6 @@
 
 /* Enable Accel over SPI */
 #define CONFIG_SPI_ACCEL_PORT    0  /* First SPI master port (SPI2) */
-
-/* Ambient Light Sensor address */
-#define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
 
 /* Timer selection */
 #define TIM_CLOCK32 2
@@ -195,13 +181,6 @@ enum temp_sensor_id {
 	TEMP_SENSOR_BATTERY,
 
 	TEMP_SENSOR_COUNT
-};
-
-/* Light sensors */
-enum als_id {
-	ALS_OPT3001 = 0,
-
-	ALS_COUNT
 };
 
 /* start as a sink in case we have no other power supply/battery */
