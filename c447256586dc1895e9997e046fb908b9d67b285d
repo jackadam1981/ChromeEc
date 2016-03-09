@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "571a2904_b7458822",
+        "filename": "common/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-03-09T12:07:50Z",
+      "side": 1,
+      "message": "Here",
+      "range": {
+        "startLine": 62,
+        "startChar": 6,
+        "endLine": 62,
+        "endChar": 29
+      },
+      "revId": "c447256586dc1895e9997e046fb908b9d67b285d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "571a2904_572bcc61",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-03-09T12:07:50Z",
+      "side": 1,
+      "message": "here",
+      "range": {
+        "startLine": 192,
+        "startChar": 24,
+        "endLine": 192,
+        "endChar": 36
+      },
+      "revId": "c447256586dc1895e9997e046fb908b9d67b285d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "571a2904_97408413",
+        "filename": "common/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-03-09T12:07:50Z",
+      "side": 1,
+      "message": "when dptf fail and temp sensor over fan_Max, EC runs fan at full speed, then, if dptf kept fail, and temp sensor.temp \u003c fan_Max, will go here and call fan_set_percent_needed(), but will do nothing due to thermal_control_enabled[] is not enabled.\n\nBesides, fmax is always 0 (fan_off\u003d0 will not change fmax)\n\nAre we going to keep fan at full speed forever until dptf alive?",
+      "range": {
+        "startLine": 297,
+        "startChar": 6,
+        "endLine": 300,
+        "endChar": 35
+      },
+      "revId": "c447256586dc1895e9997e046fb908b9d67b285d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
