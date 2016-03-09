@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "571a2904_f710e032",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2016-03-09T11:00:52Z",
+      "side": 1,
+      "message": "Previously, we would enter here if chipset state is CHIPSET_STATE_SUSPEND.\n\nHere are the possible states:\n\n 28 enum chipset_state_mask {\n 29         CHIPSET_STATE_HARD_OFF \u003d 0x01,   /* Hard off (G3) */\n 30         CHIPSET_STATE_SOFT_OFF \u003d 0x02,   /* Soft off (S5) */\n 31         CHIPSET_STATE_SUSPEND  \u003d 0x04,   /* Suspend (S3) */\n 32         CHIPSET_STATE_ON       \u003d 0x08,   /* On (S0) */\n 33         CHIPSET_STATE_STANDBY  \u003d 0x10,   /* Standby (S0ix) */\n 34         /* Common combinations */\n 35         CHIPSET_STATE_ANY_OFF \u003d (CHIPSET_STATE_HARD_OFF |\n 36                                  CHIPSET_STATE_SOFT_OFF),  /* Any off state */\n 37 };\n\nWhich of these other state are we in if not ON or SUSPEND?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 43
+      },
+      "revId": "7378cadd000463ad0a7ceee4bce961e58f311ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
