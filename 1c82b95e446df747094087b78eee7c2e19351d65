@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f7e31d1d_20f83267",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-09T17:47:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7e31d1d_cf85218c",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "1c82b95e446df747094087b78eee7c2e19351d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7bd39cb_53a5e4dc",
         "filename": "board/kevin/board.h",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2016-03-09T02:29:36Z",
       "side": 1,
       "message": "These should be alphabetized",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "1c82b95e446df747094087b78eee7c2e19351d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e31d1d_c0fdee55",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-09T17:47:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7bd39cb_53a5e4dc",
       "range": {
         "startLine": 16,
         "startChar": 0,
