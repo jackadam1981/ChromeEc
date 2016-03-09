@@ -12,7 +12,7 @@ GPIO_INT(AC_PRESENT,     PIN(C, 6),  GPIO_INT_BOTH,                     extpower
 GPIO_INT(POWER_BUTTON_L, PIN(B, 5),  GPIO_INT_BOTH | GPIO_PULL_UP,      power_button_interrupt)
 GPIO_INT(LID_OPEN,       PIN(C, 13), GPIO_INT_BOTH,                     lid_interrupt)          /* LID switch detection */
 GPIO_INT(SUSPEND_L,      PIN(C, 7),  GPIO_INT_BOTH,                     power_signal_interrupt) /* AP suspend/resume state */
-GPIO_INT(PD_MCU_INT,     PIN(E, 0),  GPIO_INT_FALLING,                  pd_mcu_interrupt)       /* Signal from PD MCU, external pull-up */
+GPIO_INT(PD_MCU_INT,     PIN(E, 0),  GPIO_INT_BOTH,                     pd_mcu_interrupt)       /* Signal from PD MCU, external pull-up */
 GPIO_INT(SPI1_NSS,       PIN(A, 4),  GPIO_INT_BOTH | GPIO_PULL_UP,      spi_event)              /* SPI Chip Select */
 
 /* Keyboard inputs */
@@ -30,9 +30,8 @@ GPIO_INT(KB_IN07, PIN(D, 2),  GPIO_KB_INPUT, keyboard_raw_gpio_interrupt)
 
 /* Board specific interrupt and input */
 GPIO_INT(SOC_POWER_GOOD, PIN(A, 3),  GPIO_INT_BOTH                 ,    power_signal_interrupt)
-GPIO_INT(USB_BC12_INT,   PIN(E, 1),  GPIO_INT_FALLING, usb_evt)
+GPIO_INT(BC12_CABLE_INT, PIN(E, 1),  GPIO_INT_FALLING, usb_evt)    /* interrupt from BC12 and CABLE_DET */
 GPIO(USB_C0_VBUS_WAKE_L, PIN(D, 12), GPIO_INPUT)
-GPIO(USB_C1_VBUS_WAKE_L, PIN(F, 2),  GPIO_INPUT)
 GPIO(EC_INT_L,           PIN(B, 9),  GPIO_ODR_HIGH)
 
 /* Inputs without interrupt handlers */
@@ -48,16 +47,16 @@ GPIO(BOARD_VERSION3, PIN(E, 12), GPIO_INPUT) /* Board ID 2 */
 GPIO(BOARD_VERSION4, PIN(E, 11), GPIO_INPUT) /* Board ID 3 */
 
 /* Outputs */
-GPIO(BAT_LED0,          PIN(A, 11), GPIO_OUT_LOW)   /* LED_GREEN */
-GPIO(BAT_LED1,          PIN(B, 11), GPIO_OUT_LOW)   /* LED_RED   */
+GPIO(BAT_LED0,          PIN(A, 11), GPIO_OUT_LOW)   /* LED_BLUE */
+GPIO(BAT_LED1,          PIN(B, 11), GPIO_OUT_LOW)   /* LED_ORANGE   */
+GPIO(PWR_LED0,          PIN(E,  8), GPIO_OUT_LOW)   /* LED_BLUE */
+GPIO(PWR_LED1,          PIN(D,  6), GPIO_OUT_LOW)   /* LED_ORANGE   */
 
-UNIMPLEMENTED(PWR_LED0)
-UNIMPLEMENTED(PWR_LED1)
 GPIO(EC_BL_OVERRIDE,    PIN(F, 1),  GPIO_OUT_LOW)
 GPIO(ENTERING_RW,       PIN(F, 0),  GPIO_OUT_LOW)
 
 GPIO(AP_RESET_L,        PIN(C, 3),  GPIO_ODR_HIGH) /* Connect to the PMU_SYSRSTB */
-GPIO(USB_C_BC12_SEL,    PIN(D, 7),  GPIO_OUT_LOW)
+GPIO(BC12_WAKE_L,       PIN(D, 7),  GPIO_INPUT)
 GPIO(KB_OUT00,          PIN(B, 0),  GPIO_KB_OUTPUT)
 GPIO(KB_OUT01,          PIN(B, 8),  GPIO_KB_OUTPUT)
 GPIO(KB_OUT02,          PIN(B, 12), GPIO_OUT_LOW)   /* KSO2 is inverted */
@@ -71,27 +70,19 @@ GPIO(KB_OUT09,          PIN(B, 1),  GPIO_KB_OUTPUT)
 GPIO(KB_OUT10,          PIN(C, 5),  GPIO_KB_OUTPUT)
 GPIO(KB_OUT11,          PIN(C, 4),  GPIO_KB_OUTPUT)
 GPIO(KB_OUT12,          PIN(D, 5),  GPIO_KB_OUTPUT)
-GPIO(DP_SWITCH_CTL,     PIN(E, 5),  GPIO_OUT_LOW)
-GPIO(EN_OTG_USB_A_PWR,  PIN(E, 4),  GPIO_OUT_HIGH)
-GPIO(OTG_USB_A_ILIM_SEL,PIN(E, 2),  GPIO_OUT_HIGH)
-GPIO(EC_IDDIG,          PIN(E,13),  GPIO_OUT_LOW)
-GPIO(DP_MUX_EN_L,       PIN(E, 6),  GPIO_OUT_LOW)
-GPIO(USB_C0_CABLE_DET,  PIN(E, 7),  GPIO_INPUT)
+GPIO(USB_C0_CABLE_DET_L,PIN(E, 7),  GPIO_INPUT)
 
 GPIO(SYSTEM_POWER_H,    PIN(B, 10), GPIO_OUT_LOW)
 GPIO(PMIC_PWRON_H,      PIN(A, 12), GPIO_OUT_LOW)
 GPIO(PMIC_WARM_RESET_H, PIN(B, 3),  GPIO_OUT_LOW)
 GPIO(LEVEL_SHIFT_EN_L,  PIN(F, 10), GPIO_OUT_LOW)    /* LID/AC level shift */
 
-GPIO(USB_PD_RST_L,      PIN(A, 15), GPIO_OUT_HIGH)   /* PD reset */
 GPIO(USB_C0_5V_EN,      PIN(D, 8),  GPIO_OUT_LOW)    /* USBC port 0 5V */
 GPIO(USB_C0_CHARGE_L,   PIN(D, 9),  GPIO_OUT_LOW)    /* USBC port 0 charge */
-GPIO(USB_C0_RST_N,      PIN(D, 10), GPIO_OUT_LOW)
-GPIO(USB_C1_CHARGE_L,   PIN(D, 11), GPIO_OUT_LOW)    /* USBC port 1 charge */
-GPIO(USB_C0_PWR_EN,     PIN(B, 15), GPIO_OUT_LOW)
+GPIO(USB_C0_RST,        PIN(D, 10), GPIO_OUT_HIGH)
+GPIO(USB_C0_PWR_EN_L,   PIN(B, 15), GPIO_OUT_HIGH)
 GPIO(USB_DP_HPD,        PIN(F, 3),  GPIO_OUT_LOW)
-GPIO(USB_C0_DEVMODE_L,  PIN(E, 4),  GPIO_OUT_HIGH)   /* set HSD2 (host mode) path as default */
-GPIO(USB_C1_DEVMODE,    PIN(E, 2),  GPIO_OUT_LOW)    /* set HSD1 (host mode) path as default */
+GPIO(EN_TP_INT_L,       PIN(E, 14), GPIO_OUT_LOW)    /* touchpad interrupt enable */
 
 /* Analog pins */
 GPIO(VDC_BOOSTIN_SENSE, PIN(C, 1), GPIO_ANALOG) /* ADC_IN11 */
