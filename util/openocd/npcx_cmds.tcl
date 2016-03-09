@@ -88,7 +88,7 @@ proc flash_npcx_all {image_dir image_offset} {
 	set spifw_image	$image_dir/chip/npcx/spiflashfw/ec_npcxflash.bin
 
 	# images offset
-	set rw_image_offset  [expr ($image_offset + 0x20000)]
+	set rw_image_offset  [expr ($image_offset + 0x40000)]
 
 	# Halt CPU first
 	halt
