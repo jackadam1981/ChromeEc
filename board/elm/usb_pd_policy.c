@@ -22,8 +22,9 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 #define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
-			 PDO_FIXED_COMM_CAP)
+			 PDO_FIXED_COMM_CAP | PDO_FIXED_EXTERNAL)
 
+int tcpc_set_command(int port, int value);
 /* TODO: fill in correct source and sink capabilities */
 const uint32_t pd_src_pdo[] = {
 		PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
@@ -53,11 +54,14 @@ int pd_set_power_supply_ready(int port)
 	gpio_set_level(port ? GPIO_USB_C1_CHARGE_L :
 			      GPIO_USB_C0_CHARGE_L, 1);
 	/* Provide VBUS */
-	gpio_set_level(port ? GPIO_USB_C1_5V_EN :
-			      GPIO_USB_C0_5V_EN, 1);
+	gpio_set_level(GPIO_USB_C0_5V_EN, 1);
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+
+       #ifdef CONFIG_USB_PD_ANX7688
+       tcpc_set_command(port, 0x77);
+       #endif
 
 	return EC_SUCCESS; /* we are ready */
 }
@@ -65,11 +69,15 @@ int pd_set_power_supply_ready(int port)
 void pd_power_supply_reset(int port)
 {
 	/* Disable VBUS */
-	gpio_set_level(port ? GPIO_USB_C1_5V_EN :
-			      GPIO_USB_C0_5V_EN, 0);
+	gpio_set_level(GPIO_USB_C0_5V_EN, 0);
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+
+       #ifdef CONFIG_USB_PD_ANX7688
+       tcpc_set_command(port, 0x66);
+       #endif
+
 }
 
 void pd_set_input_current_limit(int port, uint32_t max_ma,
