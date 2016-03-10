@@ -93,7 +93,7 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	{"battery", I2C_PORT_BATTERY, 100,  GPIO_I2C0_SCL, GPIO_I2C0_SDA},
-	{"pd",      I2C_PORT_PD_MCU,  1000, GPIO_I2C1_SCL, GPIO_I2C1_SDA}
+	{"pd",      I2C_PORT_PD_MCU,  400, GPIO_I2C1_SCL, GPIO_I2C1_SDA}
 };
 
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
@@ -613,3 +613,49 @@ void lid_angle_peripheral_enable(int enable)
 {
 	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
+
+
+#ifdef CONFIG_USB_PD_ANX7688
+
+uint16_t tcpc_get_alert_status(void)
+{
+        uint16_t status = 0;
+
+        if (!gpio_get_level(GPIO_PD_MCU_INT)) {
+                status = PD_STATUS_TCPC_ALERT_0;
+#if CONFIG_USB_PD_PORT_COUNT >= 2
+                status |= PD_STATUS_TCPC_ALERT_1;
+#endif
+        }
+
+        return status;
+}
+
+void board_set_tcpc_power_mode(int port, int normal_mode)
+{
+#if CONFIG_USB_PD_PORT_COUNT >= 2
+#else
+       if (normal_mode) {
+               gpio_set_level(GPIO_USB_C0_PWR_EN, 1);
+               msleep(50);
+               gpio_set_level(GPIO_USB_C0_RST_N, 1);
+               msleep(10);
+       } else {/* STAND BY MODE */
+               gpio_set_level(GPIO_USB_C0_RST_N, 0);
+               msleep(1);
+               gpio_set_level(GPIO_USB_C0_PWR_EN, 0);
+       }
+#endif
+}
+
+int board_plug_is_inserted(int port)
+{
+#if CONFIG_USB_PD_PORT_COUNT >= 2
+       return 0;
+#else
+       return gpio_get_level(GPIO_USB_C0_CABLE_DET);
+#endif
+}
+
+#endif
+

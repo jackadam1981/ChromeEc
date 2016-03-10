@@ -93,6 +93,10 @@ GPIO(USB_DP_HPD,        PIN(F, 3),  GPIO_OUT_LOW)
 GPIO(USB_C0_DEVMODE_L,  PIN(E, 4),  GPIO_OUT_HIGH)   /* set HSD2 (host mode) path as default */
 GPIO(USB_C1_DEVMODE,    PIN(E, 2),  GPIO_OUT_LOW)    /* set HSD1 (host mode) path as default */
 
+GPIO(USB_C0_RST_N,      PIN(D, 10), GPIO_OUT_LOW)
+GPIO(USB_C0_PWR_EN,     PIN(B, 15), GPIO_OUT_LOW)
+GPIO(USB_C0_CABLE_DET,  PIN(E, 7),  GPIO_INPUT)
+
 /* Analog pins */
 GPIO(VDC_BOOSTIN_SENSE, PIN(C, 1), GPIO_ANALOG) /* ADC_IN11 */
 GPIO(PSYS_MONITOR,      PIN(A, 2), GPIO_ANALOG) /* ADC_IN2  */

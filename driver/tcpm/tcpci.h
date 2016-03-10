@@ -108,4 +108,9 @@
 #define TCPC_REG_VBUS_VOLTAGE_ALARM_HI_CFG   0x76
 #define TCPC_REG_VBUS_VOLTAGE_ALARM_LO_CFG   0x78
 
+#ifdef CONFIG_USB_PD_ANX7688
+#define TCPC_STANDBY_MODE              (0)
+#define TCPC_NORMAL_MODE               (1)
+#endif
+
 #endif /* __CROS_EC_USB_PD_TCPM_TCPCI_H */
