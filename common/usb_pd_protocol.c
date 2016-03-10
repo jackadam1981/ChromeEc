@@ -2552,6 +2552,10 @@ void pd_task(void)
 				cc1 = cc2;
 			if (cc1 == TYPEC_CC_VOLT_OPEN) {
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
+				#ifdef CONFIG_USB_PD_ANX7688
+				tcpc_set_command(port, 0xff);
+				tcpc_set_standby(port);
+				#endif
 				/* Debouncing */
 				timeout = 10*MSEC;
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -2587,6 +2591,10 @@ void pd_task(void)
 		    pd[port].task_state != PD_STATE_HARD_RESET_EXECUTE) {
 			/* Sink: detect disconnect by monitoring VBUS */
 			set_state(port, PD_STATE_SNK_DISCONNECTED);
+			#ifdef CONFIG_USB_PD_ANX7688
+			tcpc_set_command(port, 0xff);
+			tcpc_set_standby(port);
+			#endif
 			/* set timeout small to reconnect fast */
 			timeout = 5*MSEC;
 		}
