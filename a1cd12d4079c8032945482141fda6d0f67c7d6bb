@@ -34,6 +34,24 @@
       "revId": "a1cd12d4079c8032945482141fda6d0f67c7d6bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "571a2904_3773b875",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-03-10T05:36:24Z",
+      "side": 1,
+      "message": "At the beginning, I want to keep the same flash layout no matter npcx5m5g or npcx5m6g, And as far as I know, the external storage used by mec1322 is 512KB, too. But if customers have cost consideration when they adopt smaller SRAM solution, 256KB external storage is enough. I will used CHIP_VARIANT to distinguish them.",
+      "parentUuid": "f7e31d1d_c063ae19",
+      "revId": "a1cd12d4079c8032945482141fda6d0f67c7d6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
