@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7e31d1d_0c79eca2",
+        "filename": "board/wizpig/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-10T18:46:30Z",
+      "side": 1,
+      "message": "You may want to disable this GPIO default, and enable / disable it from a S5\u003c-\u003eS3 or S3\u003c-\u003eS0 hook.",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "68252d2f045212b7b0fd5a04f135b76bd385378c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
