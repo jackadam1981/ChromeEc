@@ -14,6 +14,7 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpc.h"
 #include "util.h"
+#include "console.h"
 
 static int tcpc_vbus[CONFIG_USB_PD_PORT_COUNT];
 
@@ -262,11 +263,51 @@ void tcpc_alert(int port)
 	}
 }
 
+#ifdef CONFIG_USB_PD_ANX7688
+static void anx74xx_set_power_mode(int port, int mode)
+{
+	switch (mode) {
+		case TCPC_NORMAL_MODE:
+			/* Set PWR_EN and RST_N GPIO pins high */
+			board_set_tcpc_power_mode(port, 1);
+			pd_set_dual_role(PD_DRP_TOGGLE_ON);
+			break;
+		case TCPC_STANDBY_MODE:
+			/* Disable PWR_EN, keep Digital and analog block
+			 * ON for cable detection */
+			board_set_tcpc_power_mode(port, 0);
+			break;
+		default:
+			break;
+	}
+}
+
+int tcpc_set_command(int port, int value)
+{
+	return tcpc_write(port, TCPC_REG_COMMAND, value);
+}
+
+void tcpc_set_standby(int port)
+{
+	anx74xx_set_power_mode(port, TCPC_STANDBY_MODE);
+	task_set_event(PD_PORT_TO_TASK_ID(port),
+				       PD_EVENT_TCPC_RESET, 0);
+}
+#endif
+
 int tcpm_init(int port)
 {
 	int rv;
 	int power_status;
 
+#ifdef CONFIG_USB_PD_ANX7688
+	/* Wait for cable connection in standby mode */
+	while (!board_plug_is_inserted(port))
+		msleep(10);
+
+	/* Bring chip in normal mode to work */
+	anx74xx_set_power_mode(port, TCPC_NORMAL_MODE);
+#endif
 	while (1) {
 		rv = tcpc_read(port, TCPC_REG_POWER_STATUS, &power_status);
 		/*

@@ -53,8 +53,6 @@
 
 /* Other configs */
 #define CONFIG_HOST_COMMAND_STATUS
-#define CONFIG_HOSTCMD_PD
-#define CONFIG_HOSTCMD_PD_PANIC
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #define CONFIG_KEYBOARD_COL2_INVERTED
@@ -90,14 +88,17 @@
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_CUSTOM_VDM
 #define CONFIG_USB_PD_DUAL_ROLE
+
 #define CONFIG_USB_PD_LOGGING
 #define CONFIG_USB_PD_LOG_SIZE 512
+
 #define CONFIG_USB_PD_PORT_COUNT 1
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_PD_TCPM_VBUS
 #undef  CONFIG_TCPC_I2C_BASE_ADDR
-#define CONFIG_TCPC_I2C_BASE_ADDR 0x50
+#define CONFIG_TCPC_I2C_BASE_ADDR 0x58
+#define CONFIG_USB_PD_ANX7688
 
 /* UART DMA */
 #undef CONFIG_UART_TX_DMA
@@ -232,6 +233,9 @@ void board_set_ap_reset(int asserted);
 void board_typec_dp_on(int port);
 void board_typec_dp_off(int port, int *dp_flags);
 void board_typec_dp_set(int port, int level);
+
+void board_set_tcpc_power_mode(int port, int normal_mode);
+int board_plug_is_inserted(int port);
 
 #endif  /* !__ASSEMBLER__ */
 

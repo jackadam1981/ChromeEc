@@ -224,4 +224,25 @@ int tcpm_get_message(int port, uint32_t *payload, int *head);
 int tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
 		   const uint32_t *data);
 
+#ifdef CONFIG_USB_PD_ANX7688
+/**
+ * Transmit command
+ *
+ * @param port Type-C port number
+ * @param command value
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpc_set_command(int port, int value);
+
+/**
+ * set standby
+ *
+ * @param port Type-C port number
+ *
+ *
+ */
+void tcpc_set_standby(int port);
+#endif
+
 #endif /* __CROS_EC_USB_PD_TCPM_H */

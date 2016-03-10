@@ -95,7 +95,7 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	{"battery", I2C_PORT_BATTERY, 100,  GPIO_I2C0_SCL, GPIO_I2C0_SDA},
-	{"pd",      I2C_PORT_PD_MCU,  1000, GPIO_I2C1_SCL, GPIO_I2C1_SDA}
+	{"pd",      I2C_PORT_PD_MCU,  400, GPIO_I2C1_SCL, GPIO_I2C1_SDA}
 };
 
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
@@ -199,7 +199,6 @@ static void board_init(void)
 	 * called before system_pre_init()), otherwise a spurious wake will
 	 * occur -- see stm32 check_reset_cause() WORKAROUND comment.
 	 */
-	gpio_set_level(GPIO_USB_PD_VBUS_WAKE, 1);
 
 	/* Enable Level shift of AC_OK & LID_OPEN signals */
 	board_extpower_buffer_to_soc();
@@ -253,8 +252,7 @@ int board_set_active_charge_port(int charge_port)
 	int is_real_port = (charge_port >= 0 &&
 			    charge_port < CONFIG_USB_PD_PORT_COUNT);
 	/* check if we are source VBUS on the port */
-	int source = gpio_get_level(charge_port == 0 ? GPIO_USB_C0_5V_EN :
-						       GPIO_USB_C1_5V_EN);
+	int source = gpio_get_level(GPIO_USB_C0_5V_EN);
 
 	if (is_real_port && source) {
 		CPRINTF("Skip enable p%d", charge_port);
@@ -453,7 +451,6 @@ static void board_chipset_pre_init(void)
 	board_extpower_buffer_to_soc();
 	/* Enable DP muxer */
 	gpio_set_level(GPIO_DP_MUX_EN_L , 0);
-	gpio_set_level(GPIO_PARADE_MUX_EN, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, board_chipset_pre_init, HOOK_PRIO_DEFAULT);
 
@@ -464,7 +461,6 @@ static void board_chipset_shutdown(void)
 	gpio_set_level(GPIO_LEVEL_SHIFT_EN_L, 1);
 	/* Disable DP muxer */
 	gpio_set_level(GPIO_DP_MUX_EN_L , 1);
-	gpio_set_level(GPIO_PARADE_MUX_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
@@ -617,3 +613,48 @@ void lid_angle_peripheral_enable(int enable)
 	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif /* defined(HAS_TASK_MOTIONSENSE) */
+
+#ifdef CONFIG_USB_PD_ANX7688
+
+uint16_t tcpc_get_alert_status(void)
+{
+        uint16_t status = 0;
+
+        if (!gpio_get_level(GPIO_PD_MCU_INT)) {
+                status = PD_STATUS_TCPC_ALERT_0;
+#if CONFIG_USB_PD_PORT_COUNT >= 2
+                status |= PD_STATUS_TCPC_ALERT_1;
+#endif
+        }
+
+        return status;
+}
+
+void board_set_tcpc_power_mode(int port, int normal_mode)
+{
+#if CONFIG_USB_PD_PORT_COUNT >= 2
+#else
+       if (normal_mode) {
+               gpio_set_level(GPIO_USB_C0_PWR_EN, 1);
+               msleep(50);
+               gpio_set_level(GPIO_USB_C0_RST_N, 1);
+               msleep(10);
+       } else {/* STAND BY MODE */
+               gpio_set_level(GPIO_USB_C0_RST_N, 0);
+               msleep(1);
+               gpio_set_level(GPIO_USB_C0_PWR_EN, 0);
+       }
+#endif
+}
+
+int board_plug_is_inserted(int port)
+{
+#if CONFIG_USB_PD_PORT_COUNT >= 2
+       return 0;
+#else
+       return gpio_get_level(GPIO_USB_C0_CABLE_DET);
+#endif
+}
+
+#endif
+
