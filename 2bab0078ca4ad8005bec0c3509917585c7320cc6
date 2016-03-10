@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "571a2904_ba16cd89",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-03-10T13:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "571a2904_fa1205a9",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 12
+      },
+      "revId": "2bab0078ca4ad8005bec0c3509917585c7320cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "571a2904_5a02115a",
         "filename": "util/flash_ec",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-03-10T10:07:53Z",
       "side": 1,
       "message": "I think cave_pd should be added too.",
+      "range": {
+        "startLine": 314,
+        "startChar": 41,
+        "endLine": 314,
+        "endChar": 50
+      },
+      "revId": "2bab0078ca4ad8005bec0c3509917585c7320cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "571a2904_5a2c51e0",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-03-10T13:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "571a2904_5a02115a",
       "range": {
         "startLine": 314,
         "startChar": 41,
