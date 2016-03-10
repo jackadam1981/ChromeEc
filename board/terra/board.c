@@ -123,7 +123,14 @@ int board_charger_post_init(void)
 	if (ret)
 		return ret;
 
-	return raw_write16(REG_PROCHOT_OPTION1, 0x813C);
+	ret = raw_write16(REG_PROCHOT_OPTION1, 0x813C);
+	if (ret)
+		return ret;
+
+	if (!gpio_get_level(GPIO_IMAGE_SEL))
+		return raw_write16(REG_INPUT_CURRENT, TERRA11_INPUT_CURRENT);
+	else
+		return ret;
 }
 
 int board_get_version(void)
