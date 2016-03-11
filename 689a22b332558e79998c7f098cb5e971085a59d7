@@ -46,6 +46,29 @@
       "revId": "689a22b332558e79998c7f098cb5e971085a59d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2b0b90b_c14294e7",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2016-03-11T06:32:56Z",
+      "side": 1,
+      "message": "This is common code.",
+      "range": {
+        "startLine": 691,
+        "startChar": 56,
+        "endLine": 691,
+        "endChar": 58
+      },
+      "revId": "689a22b332558e79998c7f098cb5e971085a59d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
