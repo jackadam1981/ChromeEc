@@ -2532,6 +2532,38 @@ struct ec_response_host_event_mask {
 #define EC_CMD_HOST_EVENT_SET_WAKE_MASK 0x8e
 #define EC_CMD_HOST_EVENT_CLEAR_B       0x8f
 
+enum host_sleep_event {
+	/* Host sleep event for S3 suspend */
+	HOST_SLEEP_EVENT_S3_SUSPEND   = 0x01,
+
+	/* Host sleep event for S3 resume */
+	HOST_SLEEP_EVENT_S3_RESUME    = 0x02,
+
+	/* Host sleep event for S0ix suspend */
+	HOST_SLEEP_EVENT_S0IX_SUSPEND = 0x04,
+
+	/* Host sleep event for S0ix resume */
+	HOST_SLEEP_EVENT_S0IX_RESUME  = 0x08,
+
+	/* Number of host sleep events */
+	HOST_SLEEP_EVENT,
+};
+
+/*
+ * Host event sleep params and response structures, shared by all of the host
+ * event commands below.
+ */
+struct ec_params_host_sleep_event {
+	uint32_t sleep_event;
+} __packed;
+
+struct ec_response_host_sleep_event {
+	uint32_t sleep_event;
+} __packed;
+
+/* This uses ec_params_host_sleep_event */
+#define EC_CMD_HOST_SLEEP_EVENT         0x9a
+
 /*****************************************************************************/
 /* Switch commands */
 
