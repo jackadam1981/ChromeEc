@@ -467,4 +467,21 @@ void power_signal_interrupt_S0(enum gpio_signal signal)
 		slp_s0_assertion_deferred();
 	}
 }
-#endif
+
+static int host_event_sleep_event(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_host_sleep_event *p = args->params;
+
+	CPRINTS("Host sleep event 0x%08x", p->sleep_event);
+
+	if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_SUSPEND)
+		CPRINTS("Process S0ix suspend event from host");
+	else if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_RESUME)
+		CPRINTS("Process S0ix resume event from host");
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_HOST_SLEEP_EVENT, host_event_sleep_event,
+			EC_VER_MASK(0));
+
+#endif /* CONFIG_POWER_S0IX */
