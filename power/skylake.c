@@ -237,7 +237,7 @@ static enum power_state _power_handle_state(enum power_state state)
 			chipset_force_shutdown();
 			return POWER_S0S3;
 #ifdef CONFIG_POWER_S0IX
-		} else if ((gpio_get_level(GPIO_PCH_SLP_S0_L) == 0) &&
+		} else if ((get_slp_s0_track() == 0) &&
 			   (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1)) {
 			return POWER_S0S0ix;
 #endif
@@ -253,7 +253,7 @@ static enum power_state _power_handle_state(enum power_state state)
 		/*
 		 * TODO: add code for unexpected power loss
 		 */
-		if ((gpio_get_level(GPIO_PCH_SLP_S0_L) == 1) &&
+		if ((get_slp_s0_track() == 1) &&
 		   (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1)) {
 			return POWER_S0ixS0;
 		}
@@ -418,66 +418,20 @@ enum power_state power_handle_state(enum power_state state)
 }
 
 #ifdef CONFIG_POWER_S0IX
-static struct {
-	int required; /* indicates de-bounce required. */
-	int done;     /* debounced */
-} slp_s0_debounce = {
-	.required = 0,
-	.done = 1,
-};
-
-int chipset_get_ps_debounced_level(enum gpio_signal signal)
-{
-	/*
-	 * If power state is updated in power_update_signal() by any interrupts
-	 * other than SLP_S0 during the 1 msec pulse(invalid SLP_S0 signal),
-	 * reading SLP_S0 should be corrected with slp_s0_debounce.done flag.
-	 */
-	int level = gpio_get_level(signal);
-	return (signal == GPIO_PCH_SLP_S0_L) ?
-			(level & slp_s0_debounce.done) : level;
-}
-
-static void slp_s0_assertion_deferred(void)
-{
-	int s0_level = gpio_get_level(GPIO_PCH_SLP_S0_L);
-	/*
-	     (s0_level != 0) ||
-	     ((s0_level == 0) && (slp_s0_debounce.required == 0))
-	*/
-	if (s0_level == slp_s0_debounce.required) {
-		if (s0_level)
-			slp_s0_debounce.done = 1; /* debounced! */
-
-		power_signal_interrupt(GPIO_PCH_SLP_S0_L);
-	}
-
-	slp_s0_debounce.required = 0;
-}
-DECLARE_DEFERRED(slp_s0_assertion_deferred);
-
-void power_signal_interrupt_S0(enum gpio_signal signal)
-{
-	if (gpio_get_level(GPIO_PCH_SLP_S0_L)) {
-		slp_s0_debounce.required = 1;
-		hook_call_deferred(slp_s0_assertion_deferred, 3 * MSEC);
-	}
-	else if (slp_s0_debounce.required == 0) {
-		slp_s0_debounce.done = 0;
-		slp_s0_assertion_deferred();
-	}
-}
-
 static int host_event_sleep_event(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_sleep_event *p = args->params;
 	CPRINTS("Host sleep event 0x%08x", p->sleep_event);
 
-	if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_SUSPEND)
+	if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_SUSPEND) {
 		CPRINTS("Process S0ix suspend event from host");
-	else if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_RESUME)
+		set_slp_s0_track(0);
+	}
+	else if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_RESUME) {
 		CPRINTS("Process S0ix resume event from host");
-
+		set_slp_s0_track(1);
+	}
+	power_signal_interrupt(GPIO_PCH_SLP_S0_L);
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_HOST_SLEEP_EVENT, host_event_sleep_event,
