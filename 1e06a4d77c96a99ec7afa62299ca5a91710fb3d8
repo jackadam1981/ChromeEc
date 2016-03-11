@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77b80d3e_c58258f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-11T20:52:10Z",
+      "side": 1,
+      "message": "I have found the datasheet to be inaccurate in many aspects related to power. Can you measure S3 / S0ix power in low power idle with and without these changes?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "1e06a4d77c96a99ec7afa62299ca5a91710fb3d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b80d3e_a5875402",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-11T20:52:10Z",
+      "side": 1,
+      "message": "All of these changes should be behind CONFIG_POWER_S0IX.",
+      "revId": "1e06a4d77c96a99ec7afa62299ca5a91710fb3d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
