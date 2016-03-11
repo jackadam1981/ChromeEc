@@ -105,18 +105,13 @@ enum power_state power_handle_state(enum power_state state);
  */
 #ifdef HAS_TASK_CHIPSET
 void power_signal_interrupt(enum gpio_signal signal);
-#ifdef CONFIG_POWER_S0IX
-void power_signal_interrupt_S0(enum gpio_signal signal);
-#endif
 #else
 static inline void power_signal_interrupt(enum gpio_signal signal) { }
-#ifdef CONFIG_POWER_S0IX
-static inline void power_signal_interrupt_S0(enum gpio_signal signal) { }
-#endif
 #endif /* !HAS_TASK_CHIPSET */
 
 #ifdef CONFIG_POWER_S0IX
-int chipset_get_ps_debounced_level(enum gpio_signal signal);
+int get_slp_s0_track(void);
+void set_slp_s0_track(int val);
 #endif
 
 /**
