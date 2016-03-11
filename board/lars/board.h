@@ -68,7 +68,7 @@
 #define CONFIG_POWER_COMMON
 #define CONFIG_POWER_SHUTDOWN_PAUSE_IN_S5
 /* Disable S0IX */
-#undef CONFIG_POWER_S0IX
+#define CONFIG_POWER_S0IX
 #define CONFIG_PWM
 #define CONFIG_PWM_KBLIGHT
 /* All data won't fit in data RAM.  So, moving boundary slightly. */
@@ -166,7 +166,6 @@ enum pwm_channel {
 /* power signal definitions */
 enum power_signal {
 	X86_RSMRST_L_PWRGD = 0,
-	X86_SLP_S0_DEASSERTED,
 	X86_SLP_S3_DEASSERTED,
 	X86_SLP_S4_DEASSERTED,
 	X86_SLP_SUS_DEASSERTED,
