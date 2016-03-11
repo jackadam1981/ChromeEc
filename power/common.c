@@ -71,14 +71,18 @@ static uint32_t hibernate_delay = CONFIG_HIBERNATE_DELAY_SEC;
 static int pause_in_s5;
 #endif
 
-static int power_signal_get_level(enum gpio_signal signal)
-{
 #ifdef CONFIG_POWER_S0IX
-	return chipset_get_ps_debounced_level(signal);
-#else
-	return gpio_get_level(signal);
-#endif
+static int slp_s0_track = 1;
+int get_slp_s0_track(void)
+{
+	return slp_s0_track;
 }
+
+void set_slp_s0_track(int val)
+{
+	slp_s0_track = val ? 1 : 0;
+}
+#endif
 
 /**
  * Update input signals mask
@@ -90,7 +94,14 @@ static void power_update_signals(void)
 	int i;
 
 	for (i = 0; i < POWER_SIGNAL_COUNT; i++, s++) {
-		if (power_signal_get_level(s->gpio) == s->level)
+	#ifdef CONFIG_POWER_S0IX
+	if (((s->gpio != GPIO_PCH_SLP_S0_L)
+			? gpio_get_level(s->gpio)
+			: get_slp_s0_track())
+		== s->level)
+	#else
+		if (gpio_get_level(s->gpio) == s->level)
+	#endif
 			inew |= 1 << i;
 	}
 
