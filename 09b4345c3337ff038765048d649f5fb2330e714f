@@ -22,6 +22,30 @@
       "revId": "09b4345c3337ff038765048d649f5fb2330e714f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b80d3e_cdd55ebb",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-12T02:36:32Z",
+      "side": 1,
+      "message": "Thanks for the heads-up. I changed things to reflect the latest schematic.",
+      "parentUuid": "77b80d3e_7a0fc64e",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "09b4345c3337ff038765048d649f5fb2330e714f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
