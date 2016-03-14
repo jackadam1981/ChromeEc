@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "77b80d3e_abe562f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2016-03-14T16:10:49Z",
+      "side": 1,
+      "message": "We have done the measurements and found the difference to be \u003c 1mW",
+      "parentUuid": "77b80d3e_c58258f4",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "1e06a4d77c96a99ec7afa62299ca5a91710fb3d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b80d3e_a5875402",
         "filename": "chip/mec1322/lpc.c",
         "patchSetId": 2
