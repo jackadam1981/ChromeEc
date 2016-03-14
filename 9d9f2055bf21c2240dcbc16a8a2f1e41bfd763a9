@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77b80d3e_3cab76ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-14T23:43:28Z",
+      "side": 1,
+      "message": "If there is a corresponding CL for the tpm2 repo, you need a CQ-DEPEND line here, too. For example:\n\nCQ-DEPEND\u003dCL:nnnnnn\n\nwhere nnnnnn is the tpm2 CL. Similarly, if there is a dependency in the other direction, the commit message for that CL needs to point back here.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b80d3e_dc818a29",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-14T23:43:28Z",
+      "side": 1,
+      "message": "Assuming that this implementation passes at least as many tests as the RAM-only implementation, just go ahead and rename the functions in chip/g/nvmem_utils.[ch] to match these _plat__* functions and change chip/g/build.mk and board/cr50/build.mk to compile the new file instead of this one.\n\nThere\u0027s no point to making this file just a wrapper around the other functions.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b80d3e_bc03e6a6",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-14T23:43:28Z",
+      "side": 1,
+      "message": "Make this static if it\u0027s only called by nvmem_init().",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b80d3e_7c5fbeb4",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-14T23:43:28Z",
+      "side": 1,
+      "message": "You need to handle error codes returned from nvmem_setup().",
+      "range": {
+        "startLine": 278,
+        "startChar": 2,
+        "endLine": 278,
+        "endChar": 13
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b80d3e_1c4e720f",
+        "filename": "chip/g/nvmem_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-14T23:43:28Z",
+      "side": 1,
+      "message": "The comment in nvmem_utils.c says this is only called once, and that inside nvmem_init(). If true, it doesn\u0027t need to be declared here, or made public.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
