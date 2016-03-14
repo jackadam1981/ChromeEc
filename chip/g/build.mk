@@ -50,6 +50,7 @@ chip-$(CONFIG_USB_HID)+=usb_hid.o
 chip-$(CONFIG_USB_BLOB)+=usb_blob.o
 
 chip-$(CONFIG_FLASH)+=flash.o
+chip-$(CONFIG_FLASH)+=nvmem_utils.o
 dirs-y += chip/g/dcrypto
 
 ifneq ($(CONFIG_CUSTOMIZED_RO),)
