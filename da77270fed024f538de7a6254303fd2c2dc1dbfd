@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77b80d3e_21587100",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-14T21:13:33Z",
+      "side": 1,
+      "message": "Is it likely that FSM_IDLE will go high just before EMPTY is zero? If so, we\u0027ll end up calling init_trng() a lot more than necessary.",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "da77270fed024f538de7a6254303fd2c2dc1dbfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
