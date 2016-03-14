@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "77548de4_909a749a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2562,
+      "author": {
+        "id": 1123361
+      },
+      "writtenOn": "2016-03-14T02:25:44Z",
+      "side": 1,
+      "message": "The response structure is not used currently. It can be used for acking the wake command by EC to the kernel. If no ack comes from the EC, the kernel can retry the command.",
+      "parentUuid": "77b80d3e_e5a31cc8",
+      "range": {
+        "startLine": 2560,
+        "startChar": 0,
+        "endLine": 2562,
+        "endChar": 11
+      },
+      "revId": "77b26fb99a077fdcf45b81644848a810b6b49212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b80d3e_c517f888",
         "filename": "power/skylake.c",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2016-03-11T20:48:53Z",
       "side": 1,
       "message": "This host command handler doesn\u0027t seem to do anything useful. What am I missing? Is this simply being used as a \"wake\" command? If so, couldn\u0027t you reuse some basic command such as \"version\" to accomplish the same thing?",
+      "range": {
+        "startLine": 471,
+        "startChar": 11,
+        "endLine": 471,
+        "endChar": 33
+      },
+      "revId": "77b26fb99a077fdcf45b81644848a810b6b49212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77548de4_b09f7889",
+        "filename": "power/skylake.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1123361
+      },
+      "writtenOn": "2016-03-14T02:25:44Z",
+      "side": 1,
+      "message": "This is handled in a subsequent patch. There is more than one way in which the S0ix host command can be processed by EC. So decoupling the two patches to keep the handling changes separate from the receiving side.",
+      "parentUuid": "77b80d3e_c517f888",
       "range": {
         "startLine": 471,
         "startChar": 11,
