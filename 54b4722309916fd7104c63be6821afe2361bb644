@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77b80d3e_0b5f4e19",
+        "filename": "board/sentry/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-14T17:18:59Z",
+      "side": 1,
+      "message": "Consider removing this from power_signal_list as well.",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "54b4722309916fd7104c63be6821afe2361bb644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b80d3e_2b5a122a",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-14T17:18:59Z",
+      "side": 1,
+      "message": "This code can all go into skylake.c and the prototype can be removed.",
+      "revId": "54b4722309916fd7104c63be6821afe2361bb644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b80d3e_eb4aca54",
+        "filename": "power/skylake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-14T17:18:59Z",
+      "side": 1,
+      "message": "Remove this since the actual state of the SLP_S0 GPIO is no longer meaningful.",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 74
+      },
+      "revId": "54b4722309916fd7104c63be6821afe2361bb644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b80d3e_4b7156ac",
+        "filename": "power/skylake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-14T17:18:59Z",
+      "side": 1,
+      "message": "Consider reducing the size of these strings. Kunimitsu is already stretched for SRAM.",
+      "range": {
+        "startLine": 424,
+        "startChar": 9,
+        "endLine": 424,
+        "endChar": 32
+      },
+      "revId": "54b4722309916fd7104c63be6821afe2361bb644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
