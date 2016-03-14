@@ -26,6 +26,7 @@
  */
 
 #include "battery.h"
+#include "charge_state.h"
 #include "chipset.h" /* ./common/chipset.c implements chipset functions too */
 #include "common.h"
 #include "gpio.h"
@@ -523,6 +524,12 @@ static void power_off(void)
 static int check_for_power_on_event(void)
 {
 	int ap_off_flag;
+
+	/* check if we have enough battery to power on */
+	if (charge_prevent_power_on(0)) {
+		CPRINTS("battery is low, skip check_for_power_on_event");
+		return POWER_ON_CANCEL;
+	}
 
 	ap_off_flag = system_get_reset_flags() & RESET_FLAG_AP_OFF;
 	system_clear_reset_flags(RESET_FLAG_AP_OFF);
