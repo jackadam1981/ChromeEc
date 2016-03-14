@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77b80d3e_a61477d0",
+        "filename": "board/sentry/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-14T19:52:27Z",
+      "side": 1,
+      "message": "You can replace all of this with #define FAN_STEPS 5; static const int fan_table[FAN_STEPS] \u003d { ..... };\n\nAlso consider moving your threshold pcts to a similar table -- it will simplify your code greatly.",
+      "range": {
+        "startLine": 621,
+        "startChar": 0,
+        "endLine": 636,
+        "endChar": 2
+      },
+      "revId": "a30d23babe7adc461bb90a32f885f64a9ff56b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b80d3e_a6fd97ca",
+        "filename": "board/sentry/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-14T19:52:27Z",
+      "side": 1,
+      "message": "I think this will break badly if your RPM target swings quickly. For example, if your current RPM is 4500 and pct \u003d 18, you will stay at your current RPM.",
+      "range": {
+        "startLine": 645,
+        "startChar": 0,
+        "endLine": 646,
+        "endChar": 38
+      },
+      "revId": "a30d23babe7adc461bb90a32f885f64a9ff56b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
