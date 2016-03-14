@@ -81,3 +81,58 @@ void keyboard_raw_interrupt(void)
 	task_wake(TASK_ID_KEYSCAN);
 }
 DECLARE_IRQ(MEC1322_IRQ_KSC_INT, keyboard_raw_interrupt, 1);
+
+#ifdef CONFIG_KEYBOARD_FACTORY_TEST
+
+/* Run keyboard factory testing, scan out KSO/KSI if any shorted. */
+int keyboard_factory_test_scan(void)
+{
+	int i, j, val;
+	int shorted = 0;
+	uint32_t port, id;
+
+	const int pins[][2] = {
+				{12, 5}, {12, 6}, {14, 4}, {3, 2}, {14, 2},
+				{4, 0}, {4, 2}, {4, 3}, {0, 0}, {10, 0},
+				{10, 2}, {10, 3}, {10, 4}, {0, 1}, {0, 2},
+				{0, 3}, {10, 6}, {0, 4}, {10, 7}, {0, 5},
+	};
+
+	/* Disable keyboard scan while testing */
+	keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_CLOSED);
+
+	/* Set all of KSO/KSI pins to internal pull-up and input */
+	for (i = 0; i < ARRAY_SIZE(pins); i++) {
+		port = pins[i][0];
+		id = pins[i][1];
+		gpio_set_alternate_function(port, 1 << id, -1);
+		gpio_set_flags_by_mask(port, 1 << id,
+			GPIO_INPUT | GPIO_PULL_UP);
+	}
+
+	/*
+	 * Set start pin to output low, then check other pins
+	 * going to low level, it indicate the two pins are shorted.
+	 */
+	for (i = 0; i < ARRAY_SIZE(pins); i++) {
+		port = pins[i][0];
+		id = pins[i][1];
+		gpio_set_flags_by_mask(port, 1 << id, GPIO_OUT_LOW);
+
+		for (j = 0; j < ARRAY_SIZE(pins) && i != j; j++) {
+			val = MEC1322_GPIO_CTL(pins[j][0], pins[j][1]);
+			if ((val & (1 << 24)) == 0) {
+				shorted = 1;
+				goto done;
+			}
+		}
+		gpio_set_flags_by_mask(port, 1 << id,
+			GPIO_INPUT | GPIO_PULL_UP);
+	}
+done:
+	gpio_config_module(MODULE_KEYBOARD_SCAN, 1);
+	keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_CLOSED);
+
+	return shorted;
+}
+#endif
