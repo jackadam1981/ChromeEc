@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77b80d3e_e2eb08cb",
+        "filename": "board/chell/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-14T23:50:21Z",
+      "side": 1,
+      "message": "Do we actually want to change the LED behavior when we\u0027re on AC? That would include PWR_STATE_CHARGE_NEAR_FULL and PWR_STATE_IDLE. If so, we can check extpower_is_present() instead.\n\nBut, it might be a better idea to fall-through and apply the same logic below? Eg. WHITE LED when near-full.",
+      "range": {
+        "startLine": 96,
+        "startChar": 6,
+        "endLine": 96,
+        "endChar": 22
+      },
+      "revId": "2462c54c53c4b6bb6f8d17a4faee54464b598df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
