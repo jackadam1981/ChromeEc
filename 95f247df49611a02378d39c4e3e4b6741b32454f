@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77b80d3e_5c52badf",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-14T23:09:42Z",
+      "side": 1,
+      "message": "Checking the datasheet, I don\u0027t think we need to touch MEC1322_LPC_CLK_CTRL anymore, since you initialized the reg to 0x3 (sleep on activate bit clear). Clearing the activate bit should be sufficient.",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 21
+      },
+      "revId": "95f247df49611a02378d39c4e3e4b6741b32454f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b80d3e_3c289663",
+        "filename": "chip/mec1322/lpc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-14T23:09:42Z",
+      "side": 1,
+      "message": "add \"... until LPC activate bit cleared\".",
+      "range": {
+        "startLine": 317,
+        "startChar": 4,
+        "endLine": 317,
+        "endChar": 46
+      },
+      "revId": "95f247df49611a02378d39c4e3e4b6741b32454f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
