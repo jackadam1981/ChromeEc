@@ -22,6 +22,30 @@
       "revId": "2462c54c53c4b6bb6f8d17a4faee54464b598df6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b80d3e_423bf421",
+        "filename": "board/chell/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2016-03-14T23:55:20Z",
+      "side": 1,
+      "message": "I am not sure if we need to catch all the other charging cases or not, it might be best if they still defaulted to blinking instead of steady-white to indicate that you are suspended.\n\nThis is why I had not managed to do this change before, it starts to get complicated when you actually look at all the possible states...",
+      "parentUuid": "77b80d3e_e2eb08cb",
+      "range": {
+        "startLine": 96,
+        "startChar": 6,
+        "endLine": 96,
+        "endChar": 22
+      },
+      "revId": "2462c54c53c4b6bb6f8d17a4faee54464b598df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
