@@ -70,6 +70,30 @@
       "revId": "da77270fed024f538de7a6254303fd2c2dc1dbfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b80d3e_bcc0064c",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1148401
+      },
+      "writtenOn": "2016-03-14T22:10:08Z",
+      "side": 1,
+      "message": "Vadim is perfectly correct that it is very unlikely to goto Idle state.\nOne suggestion I have is instead of polling every cycle for FSM State, you can poll once every n (twenty) cycles, if you desire.\nAns as Bill suggests, we need to implement the detailed one where we don\u0027t restart back to back again (this means TRNG is failing again and again: attack ro weird condition). But, for now, this code looks good",
+      "parentUuid": "77b80d3e_013c4d76",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "da77270fed024f538de7a6254303fd2c2dc1dbfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
