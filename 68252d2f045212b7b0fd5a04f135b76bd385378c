@@ -22,6 +22,30 @@
       "revId": "68252d2f045212b7b0fd5a04f135b76bd385378c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77548de4_f3910a3c",
+        "filename": "board/wizpig/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1135534
+      },
+      "writtenOn": "2016-03-14T06:16:38Z",
+      "side": 1,
+      "message": "Yes, I set it to disable by default and enable it by using hook",
+      "parentUuid": "f7e31d1d_0c79eca2",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "68252d2f045212b7b0fd5a04f135b76bd385378c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
