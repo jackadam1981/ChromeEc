@@ -18,7 +18,6 @@
 #define INCOMING_QUEUE_SIZE 100
 #define OUTGOING_QUEUE_SIZE 100
 
-
 static void incoming_add(struct queue_policy const *queue_policy, size_t count)
 {
 	task_wake(TASK_ID_BLOB);
@@ -43,7 +42,9 @@ static void outgoing_add(struct queue_policy const *queue_policy, size_t count)
 static void outgoing_remove(struct queue_policy const *queue_policy,
 			    size_t count)
 {
-	/* we don't care */
+#ifdef CONFIG_USB_CONSOLE
+	blob_sent_output();
+#endif
 }
 
 static struct queue_policy const outgoing_policy = {
@@ -70,6 +71,24 @@ size_t get_bytes_from_blob(uint8_t *buffer, size_t count)
 	return QUEUE_REMOVE_UNITS(&outgoing_q, buffer, count);
 }
 
+
+/* Call this to get data back fom the blob-handler */
+size_t get_incoming_bytes_from_blob(uint8_t *buffer, size_t count)
+{
+	return QUEUE_REMOVE_UNITS(&outgoing_q, buffer, count);
+}
+
+/* Call this to get data back fom the blob-handler */
+size_t blob_send_bytes(uint8_t *buffer, size_t count)
+{
+	return QUEUE_ADD_UNITS(&outgoing_q, buffer, count);
+}
+
+int blob_get_bytes(void *buffer, size_t count)
+{
+	return QUEUE_REMOVE_UNITS(&incoming_q, buffer, count);
+}
+
 #define WEAK_FUNC(FOO)							\
 	void __ ## FOO(void) {}						\
 	void FOO(void)							\
@@ -82,19 +101,16 @@ WEAK_FUNC(blob_is_ready_to_emit_bytes);
 /* Do the magic */
 void blob_task(void)
 {
+#ifndef CONFIG_USB_CONSOLE
 	static uint8_t buf[INCOMING_QUEUE_SIZE];
 	size_t count, i;
 	task_id_t me = task_get_current();
-
 	while (1) {
 		CPRINTS("task %d waiting for events...", me);
 		task_wait_event(-1);
 		CPRINTS("task %d awakened!", me);
-
 		count = QUEUE_REMOVE_UNITS(&incoming_q, buf, sizeof(buf));
-
 		CPRINTS("task %d gets: count=%d buf=((%s))", me, count, buf);
-
 		/*
 		 * Just to have something to test to begin with, we'll
 		 * implement "tr a-zA-Z A-Za-z" and return the result.
@@ -106,8 +122,12 @@ void blob_task(void)
 			else if (tmp >= 'A' && tmp <= 'Z')
 				buf[i] = tmp + ('a' - 'A');
 		}
-
 		count = QUEUE_ADD_UNITS(&outgoing_q, buf, count);
 		CPRINTS("task %d puts: count=%d buf=((%s))", me, buf);
+#else
+	while (1) {
+		task_wait_event(-1);
+		blob_has_input();
+#endif
 	}
 }
