@@ -10,6 +10,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
+#include "nvmem_utils.h"
 #include "task.h"
 #include "trng.h"
 #include "usb_descriptor.h"
@@ -97,6 +98,8 @@ static void board_init(void)
 	init_interrupts();
 	init_trng();
 	init_runlevel(PERMISSION_MEDIUM);
+	/* Initialize NvMem translation table */
+	nvmem_init();
 
 	/* TODO(crosbug.com/p/49959): For now, leave flash WP unlocked */
 	GREG32(RBOX, EC_WP_L) = 1;
