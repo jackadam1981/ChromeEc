@@ -2481,6 +2481,13 @@ struct ec_response_get_next_event {
 	union ec_response_get_next_data data;
 } __packed;
 
+/* Run kso ksi pins short scanning */
+#define EC_CMD_KSO_KSI_SHORT_TEST 0x68
+
+struct ec_response_kso_ksi_scan {
+	uint8_t result;
+} __packed;
+
 /*****************************************************************************/
 /* Temperature sensor commands */
 

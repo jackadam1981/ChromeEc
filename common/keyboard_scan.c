@@ -748,6 +748,29 @@ DECLARE_HOST_COMMAND(EC_CMD_MKBP_SIMULATE_KEY,
 		     mkbp_command_simulate_key,
 		     EC_VER_MASK(0));
 
+static int kso_ksi_short_test(struct host_cmd_handler_args *args)
+{
+#ifdef CONFIG_KEYBOARD_MULTIPLE_KEYSCAN_CMD
+	struct ec_response_kso_ksi_scan *r = args->response;
+
+	/* Only available on unlocked systems */
+	if (system_is_locked())
+		return EC_RES_ACCESS_DENIED;
+
+	r->result = kso_ksi_short_scan();
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+#else
+	return EC_RES_INVALID_COMMAND;
+#endif
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_KSO_KSI_SHORT_TEST,
+		     kso_ksi_short_test,
+		     EC_VER_MASK(0));
+
 /*****************************************************************************/
 /* Console commands */
 #ifdef CONFIG_CMD_KEYBOARD

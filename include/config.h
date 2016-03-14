@@ -1208,6 +1208,9 @@
 /* Compile code for MKBP keyboard protocol */
 #undef CONFIG_KEYBOARD_PROTOCOL_MKBP
 
+/* Support multiple key scan testing command */
+#undef CONFIG_KEYBOARD_MULTIPLE_KEYSCAN_CMD
+
 /*
  * Keyboard config (struct keyboard_scan_config) is in board.c.  If this is
  * not defined, default values from common/keyboard_scan.c will be used.

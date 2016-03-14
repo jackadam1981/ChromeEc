@@ -121,6 +121,8 @@ const char help_str[] =
 	"      Set the delay before going into hibernation\n"
 	"  kbpress\n"
 	"      Simulate key press\n"
+	"  ksoksiscan\n"
+	"      Scan out kso ksi pins if have shortting\n"
 	"  i2cread\n"
 	"      Read I2C bus\n"
 	"  i2cwrite\n"
@@ -4203,6 +4205,23 @@ int cmd_kbpress(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_get_kso_ksi_scan_result(int argc, char *argv[])
+{
+	struct ec_response_kso_ksi_scan r;
+	int rv;
+
+	rv = ec_command(EC_CMD_KSO_KSI_SHORT_TEST, 0,
+			NULL, 0, &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	if (r.result == 1)
+		printf("KSO/KSI pins have shortting.\n");
+	else
+		printf("Scanning passed.\n");
+
+	return 0;
+}
 
 static void print_panic_reg(int regnum, const uint32_t *regs, int index)
 {
@@ -6559,6 +6578,7 @@ const struct command commands[] = {
 	{"lightbar", cmd_lightbar},
 	{"keyconfig", cmd_keyconfig},
 	{"keyscan", cmd_keyscan},
+	{"ksoksiscan", cmd_get_kso_ksi_scan_result},
 	{"motionsense", cmd_motionsense},
 	{"nextevent", cmd_next_event},
 	{"panicinfo", cmd_panic_info},

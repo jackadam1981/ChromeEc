@@ -81,3 +81,50 @@ void keyboard_raw_interrupt(void)
 	task_wake(TASK_ID_KEYSCAN);
 }
 DECLARE_IRQ(MEC1322_IRQ_KSC_INT, keyboard_raw_interrupt, 1);
+
+int kso_ksi_short_scan(void)
+{
+	int i, j, k, g, val;
+	uint32_t port;
+	uint8_t r = 0;
+
+	const int pins[][2] = {
+				{12, 5}, {12, 6}, {14, 4}, {3, 2}, {14, 2},
+				{4, 0}, {4, 2}, {4, 3},	{0, 0}, {10, 0},
+				{10, 2}, {10, 3}, {10, 4}, {0, 1}, {0, 2},
+				{0, 3}, {10, 6}, {0, 4}, {10, 7}, {0, 5},
+	};
+
+	keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_CLOSED);
+
+	for (i = 0; i < ARRAY_SIZE(pins); i++) {
+		port = pins[i][0];
+		j = pins[i][1];
+		gpio_set_alternate_function(port, 1 << j, -1);
+		gpio_set_flags_by_mask(port, 1 << j,
+			GPIO_INPUT | GPIO_PULL_UP);
+	}
+
+	for (k = 0; k < ARRAY_SIZE(pins); k++) {
+		port = pins[k][0];
+		j = pins[k][1];
+		gpio_set_flags_by_mask(port, 1 << j, GPIO_OUT_LOW);
+
+		for (g = 0; g < ARRAY_SIZE(pins); g++) {
+			if (k != g) {
+				val = MEC1322_GPIO_CTL(pins[g][0], pins[g][1]);
+				if ((val & (1 << 24)) == 0) {
+					r = 1;
+					goto out;
+				}
+			}
+		}
+		gpio_set_flags_by_mask(port, 1 << j,
+			GPIO_INPUT | GPIO_PULL_UP);
+	}
+out:
+	gpio_config_module(MODULE_KEYBOARD_SCAN, 1);
+	keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_CLOSED);
+
+	return r;
+}

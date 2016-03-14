@@ -71,4 +71,11 @@ void keyboard_raw_gpio_interrupt(enum gpio_signal signal);
 static inline void keyboard_raw_gpio_interrupt(enum gpio_signal signal) { }
 #endif /* !HAS_TASK_KEYSCAN */
 
+/**
+ * Run kso ksi pins short scanning.
+ *
+ * @return non-zero if kso/ksi pins have shortting.
+ */
+int kso_ksi_short_scan(void);
+
 #endif  /* __CROS_EC_KEYBOARD_RAW_H */
