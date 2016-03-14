@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "77b80d3e_0153adb4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2565,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-03-14T21:41:08Z",
+      "side": 1,
+      "message": "0xa0 ~ 0xa9 are available. Corresponding kernel patch need to be changed as well",
+      "parentUuid": "77b80d3e_e6b95f44",
+      "range": {
+        "startLine": 2565,
+        "startChar": 8,
+        "endLine": 2565,
+        "endChar": 31
+      },
+      "revId": "77b26fb99a077fdcf45b81644848a810b6b49212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b80d3e_c517f888",
         "filename": "power/skylake.c",
         "patchSetId": 7
