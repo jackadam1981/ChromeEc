@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77548de4_138daef0",
+        "filename": "board/oak/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-03-14T09:51:57Z",
+      "side": 1,
+      "message": "I think if you modifies below to \nif (board_version \u003e\u003d OAK_REV5)\n\nthen this patch applies to rev6.",
+      "range": {
+        "startLine": 210,
+        "startChar": 6,
+        "endLine": 210,
+        "endChar": 45
+      },
+      "revId": "5794db3197452e8857f838cca2e1936d3caee33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
