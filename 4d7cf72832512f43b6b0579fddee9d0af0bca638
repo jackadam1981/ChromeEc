@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17c6f1d9_2ea98ba9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 3018,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-15T19:49:58Z",
+      "side": 1,
+      "message": "Let\u0027s expand this comment so readers know what this host command is really for. Like \"Inform the EC when entering a sleep state\".",
+      "range": {
+        "startLine": 3018,
+        "startChar": 3,
+        "endLine": 3018,
+        "endChar": 24
+      },
+      "revId": "4d7cf72832512f43b6b0579fddee9d0af0bca638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17c6f1d9_cb80a923",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 3019,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-15T19:49:58Z",
+      "side": 1,
+      "message": "Just one space, no need to align it with the enum values.",
+      "range": {
+        "startLine": 3019,
+        "startChar": 31,
+        "endLine": 3019,
+        "endChar": 40
+      },
+      "revId": "4d7cf72832512f43b6b0579fddee9d0af0bca638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c53da28_a64cc642",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 3024,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-15T19:49:58Z",
+      "side": 1,
+      "message": "Remove these spaces between enum constants. Sorry to be so strict here, but this file is copied across several codebases, so it\u0027s good to have consistent style.",
+      "revId": "4d7cf72832512f43b6b0579fddee9d0af0bca638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c53da28_c64fc236",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 3035,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-15T19:49:58Z",
+      "side": 1,
+      "message": "It\u0027s really not the number of host sleep event events. Just remove this, I don\u0027t think it\u0027s necessary.",
+      "range": {
+        "startLine": 3034,
+        "startChar": 1,
+        "endLine": 3035,
+        "endChar": 18
+      },
+      "revId": "4d7cf72832512f43b6b0579fddee9d0af0bca638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17c6f1d9_8eeb5fcc",
+        "filename": "power/skylake.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-15T19:49:58Z",
+      "side": 1,
+      "message": "The prints in this file are super verbose and you should consider reducing their size (the folks working on squeezing kunimitsu will appreciate it). I think I commented so on the subsequent CL, but if you\u0027re going to change them, it should be here.",
+      "range": {
+        "startLine": 480,
+        "startChar": 11,
+        "endLine": 480,
+        "endChar": 46
+      },
+      "revId": "4d7cf72832512f43b6b0579fddee9d0af0bca638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
