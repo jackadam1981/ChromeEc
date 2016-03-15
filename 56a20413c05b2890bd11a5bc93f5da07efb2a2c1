@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17c6f1d9_6e9703fd",
+        "filename": "board/setzer/extpower_setzer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-15T20:21:50Z",
+      "side": 1,
+      "message": "If you\u0027re using identical settings as ADAPTER_45W then maybe you don\u0027t need table entries for ADAPTER_UNKNOWN at all?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 24
+      },
+      "revId": "56a20413c05b2890bd11a5bc93f5da07efb2a2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b80d3e_d35ea61b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-15T20:21:50Z",
+      "side": 1,
+      "message": "Can you implement this instead as a HOOK_SECOND routine in board code? Also, how is it possible for the state machine to stay in PWR_STATE_CHARGE for such a long timeout period?",
+      "range": {
+        "startLine": 588,
+        "startChar": 32,
+        "endLine": 588,
+        "endChar": 41
+      },
+      "revId": "56a20413c05b2890bd11a5bc93f5da07efb2a2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
