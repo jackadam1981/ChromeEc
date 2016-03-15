@@ -16,6 +16,17 @@
  * @param len int, input, size of iput data in byte
  * @return the crc-8 of the input data.
  */
-uint8_t crc8(const uint8_t *data, int len);
+inline uint8_t crc8(const uint8_t *data, int len);
+
+/**
+ * crc8_arg
+ * Return CRC-8 of the data, based upon pre-calculated partial CRC of previous
+ * data.
+ * @param data uint8_t *, input, a pointer to input data
+ * @param len int, input, size of iput data in bytea
+ * @param previous_crc uint8_t, input, pre-calculated CRC of previous data
+ * @return the crc-8 of the input data.
+ */
+uint8_t crc8_arg(const uint8_t *data, int len, uint8_t previous_crc);
 
 #endif /* __CROS_EC_CRC8_H */
