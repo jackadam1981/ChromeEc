@@ -143,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "77b80d3e_e29f8888",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-03-15T03:26:49Z",
+      "side": 1,
+      "message": "While at S0ix state and kernel is frozen/in panic, PCH does not assert any SLP_S* signal and EC does not change its power state(reboot at kernel console does not cause EC\u0027s power state change). I think we have to assume user will hold power button to reset system so that the flag can be cleared during power sequence.",
+      "parentUuid": "77b80d3e_02372cc7",
+      "revId": "54b4722309916fd7104c63be6821afe2361bb644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b80d3e_eb4aca54",
         "filename": "power/skylake.c",
         "patchSetId": 5
