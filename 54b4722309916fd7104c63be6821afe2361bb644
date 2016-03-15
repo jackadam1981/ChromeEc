@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "77b80d3e_621d5845",
+        "filename": "board/sentry/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-15T01:08:47Z",
+      "side": 1,
+      "message": "Keep the initialization, but remove it from power_signal_list in board.h / board.c.",
+      "parentUuid": "77b80d3e_22ecf0b0",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "54b4722309916fd7104c63be6821afe2361bb644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b80d3e_2b5a122a",
         "filename": "power/common.c",
         "patchSetId": 5
@@ -95,6 +119,24 @@
       "side": 1,
       "message": "do you mean the faulty condition is when slp_s0_track flag is still 0 and power state is not S0ix ? \nDo you mean \u0027clear\u0027 to 1 ? \nI think any state toward to S0, like S5-\u003eS3, is better place to \u0027set\u0027 the flag since it is used in S0/S0ix.",
       "parentUuid": "77b80d3e_4bf6763e",
+      "revId": "54b4722309916fd7104c63be6821afe2361bb644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b80d3e_02372cc7",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-15T01:08:47Z",
+      "side": 1,
+      "message": "Currently the flag is set / cleared only by host events, so we need some way to make sure the flag ends up in the proper state if the host doesn\u0027t clear it when coming out of S0ix. For example, what if we have a kernel panic reboot prior to clearing it on resume? What if cold reset is triggered by FW for some reason before clearing it?",
+      "parentUuid": "77b80d3e_e2102833",
       "revId": "54b4722309916fd7104c63be6821afe2361bb644",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
