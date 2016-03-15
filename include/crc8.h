@@ -18,4 +18,7 @@
  */
 uint8_t crc8(const uint8_t *data, int len);
 
+
+uint8_t crc8_arg(const uint8_t *data, int len, uint8_t old_crc);
+
 #endif /* __CROS_EC_CRC8_H */
