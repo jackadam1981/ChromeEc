@@ -8,6 +8,7 @@
 #include "button.h"
 #include "charger.h"
 #include "charge_state.h"
+#include "chipset.h"
 #include "driver/temp_sensor/tmp432.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -104,3 +105,15 @@ static void adc_pre_init(void)
 	gpio_config_module(MODULE_ADC, 1);
 }
 DECLARE_HOOK(HOOK_INIT, adc_pre_init, HOOK_PRIO_INIT_ADC - 1);
+
+static void touch_control(void)
+{
+	/* Disable touch panel on S3 and S5 */
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND) ||
+	    chipset_in_state(CHIPSET_STATE_SOFT_OFF))
+		gpio_set_level(GPIO_TOUCHPANEL_PWREN, 0);
+	/* enable touch panel on S1 */
+	if (chipset_in_state(CHIPSET_STATE_ON))
+		gpio_set_level(GPIO_TOUCHPANEL_PWREN, 1);
+}
+DECLARE_HOOK(HOOK_TICK, touch_control, HOOK_PRIO_DEFAULT);
