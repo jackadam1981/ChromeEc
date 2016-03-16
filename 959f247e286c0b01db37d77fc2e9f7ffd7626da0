@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c6a4eda_60832832",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-16T20:50:02Z",
+      "side": 1,
+      "message": "Can you use charge_set_input_current_limit instead?",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "959f247e286c0b01db37d77fc2e9f7ffd7626da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c6a4eda_20abf0bb",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-16T20:50:02Z",
+      "side": 1,
+      "message": "Can you also do this from hook_tick? Or, do you really need to catch the OC event within ~100ms?",
+      "revId": "959f247e286c0b01db37d77fc2e9f7ffd7626da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c6a4eda_a0be20f3",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-16T20:50:02Z",
+      "side": 1,
+      "message": "I hope we can remove this. See my other comments.",
+      "revId": "959f247e286c0b01db37d77fc2e9f7ffd7626da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c6a4eda_00c26c70",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-16T20:50:02Z",
+      "side": 1,
+      "message": "This can just be a #define in the source file that uses it now.",
+      "range": {
+        "startLine": 368,
+        "startChar": 7,
+        "endLine": 368,
+        "endChar": 42
+      },
+      "revId": "959f247e286c0b01db37d77fc2e9f7ffd7626da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
