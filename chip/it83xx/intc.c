@@ -4,10 +4,11 @@
  */
 
 #include "common.h"
+#include "intc.h"
+#include "kmsc_chip.h"
 #include "registers.h"
 #include "task.h"
-#include "kmsc_chip.h"
-#include "intc.h"
+#include "usb_pd_phy_chip.h"
 
 void intc_cpu_int_group_5(void)
 {
@@ -79,6 +80,15 @@ void intc_cpu_int_group_12(void)
 		peci_interrupt();
 		break;
 #endif
+#ifdef CONFIG_USB_PD_TCPM_ITE83XX
+	case IT83XX_IRQ_USBPD0:
+		chip_pd_irq(USBPD_PORT_A);
+		break;
+
+	case IT83XX_IRQ_USBPD1:
+		chip_pd_irq(USBPD_PORT_B);
+		break;
+#endif /* CONFIG_USB_PD_TCPM_8320 */
 	default:
 		break;
 	}
@@ -91,7 +101,7 @@ void intc_cpu_int_group_6(void)
 	int intc_group_6 = intc_get_ec_int();
 
 	switch (intc_group_6) {
-
+#ifdef CONFIG_I2C
 	case IT83XX_IRQ_SMB_A:
 		i2c_interrupt(0);
 		break;
@@ -103,7 +113,7 @@ void intc_cpu_int_group_6(void)
 	case IT83XX_IRQ_SMB_C:
 		i2c_interrupt(2);
 		break;
-
+#endif
 	default:
 		break;
 	}
