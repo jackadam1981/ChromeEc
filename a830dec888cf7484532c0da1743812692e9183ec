@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77548de4_f9ebab98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-03-16T11:53:50Z",
+      "side": 1,
+      "message": "Let\u0027s shorten commit message:\nTEST\u003dmanual\n  plug zinger adapter, connect uart console and type commands:\n    pd 1 dev [20|12|5]\n    pd 1 charger\n    pd 1 swap power\n  and check PD states",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 6
+      },
+      "revId": "a830dec888cf7484532c0da1743812692e9183ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
