@@ -48,6 +48,144 @@
     },
     {
       "key": {
+        "uuid": "5c6a4eda_5a0db11a",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-16T19:04:32Z",
+      "side": 1,
+      "message": "A paragraph or so describing the basic scheme would be very helpful.",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c6a4eda_1adc198b",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-16T19:04:32Z",
+      "side": 1,
+      "message": "Let\u0027s be a little more consistent in the naming.\n\nNVMEM_PHY_BLOCKSIZE is clear so the logical size should be NVMEM_LOG_BLOCKSIZE, not NVMEM_LOGICAL_SIZE.\n\nNVMEM_NUMBLOCKS could be NVMEM_PHY_BLOCKS, so that we have NVMEM_TPM_BLOCKS, NVMEM_SPARE_BLOCKS, NVMEM_CR50_BLOCKS, etc., provided we have a comment mentioning that the number of blocks is the same for PHY and LOG, it\u0027s just that there\u0027s a little bookkeeping overhead in each PHY block.",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c6a4eda_dac541b2",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-16T19:04:32Z",
+      "side": 1,
+      "message": "s/block/physical block/",
+      "range": {
+        "startLine": 48,
+        "startChar": 44,
+        "endLine": 48,
+        "endChar": 49
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c6a4eda_5abb713a",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-16T19:04:32Z",
+      "side": 1,
+      "message": "Add some comments explaining that there are actually two translations (unless you put this up at the top):\n\nFirst there\u0027s the logical flat byte address to the logical block+offset pair.\n\nThen there\u0027s the logical block to physical block mapping.\n\nBe sure to name the functions and tables so that it\u0027s clear which translation(s) they perform.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 71
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c6a4eda_1ad2d949",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-16T19:04:32Z",
+      "side": 1,
+      "message": "s/decypto/dcrypto/",
+      "range": {
+        "startLine": 104,
+        "startChar": 37,
+        "endLine": 104,
+        "endChar": 45
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c6a4eda_3df557a4",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-16T19:04:32Z",
+      "side": 1,
+      "message": "This is covering all the data and half the nvmem_tag, which is fine. But doing it this way seems kind of sketchy. It might be better to define a struct that accurately describes the memory layout. That would help get rid of a bunch of typecasts too.",
+      "range": {
+        "startLine": 124,
+        "startChar": 10,
+        "endLine": 124,
+        "endChar": 48
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b80d3e_bc03e6a6",
         "filename": "chip/g/nvmem_utils.c",
         "patchSetId": 1
