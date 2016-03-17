@@ -57,11 +57,13 @@ static void update_vbus_supplier(int port, int vbus_level)
 
 int usb_charger_port_is_sourcing_vbus(int port)
 {
+#if 0
 	if (port == 0)
 		return gpio_get_level(GPIO_USB_C0_5V_EN);
 #if CONFIG_USB_PD_PORT_COUNT >= 2
 	else if (port == 1)
 		return gpio_get_level(GPIO_USB_C1_5V_EN);
+#endif
 #endif
 	/* Not a valid port */
 	return 0;
