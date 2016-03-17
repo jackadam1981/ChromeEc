@@ -26,7 +26,7 @@ int uart_init_done(void)
 	return init_done;
 }
 
-void uart_tx_start(void)
+void uart_tx_start(int uart)
 {
 	/* If interrupt is already enabled, nothing to do */
 	if (MEC1322_UART_IER & (1 << 1))
@@ -45,7 +45,7 @@ void uart_tx_start(void)
 	task_trigger_irq(MEC1322_IRQ_UART);
 }
 
-void uart_tx_stop(void)
+void uart_tx_stop(int uart)
 {
 	MEC1322_UART_IER &= ~(1 << 1);
 
@@ -53,14 +53,14 @@ void uart_tx_stop(void)
 	enable_sleep(SLEEP_MASK_UART);
 }
 
-void uart_tx_flush(void)
+void uart_tx_flush(int uart)
 {
 	/* Wait for transmit FIFO empty */
 	while (!(MEC1322_UART_LSR & MEC1322_LSR_TX_EMPTY))
 		;
 }
 
-int uart_tx_ready(void)
+int uart_tx_ready(int uart)
 {
 	/*
 	 * We have no indication of free space in transmit FIFO. To work around
@@ -69,28 +69,28 @@ int uart_tx_ready(void)
 	return tx_fifo_used != 0 || (MEC1322_UART_LSR & MEC1322_LSR_TX_EMPTY);
 }
 
-int uart_tx_in_progress(void)
+int uart_tx_in_progress(int uart)
 {
 	/* return 0: FIFO is empty, 1: FIFO NOT Empty */
 	return !(MEC1322_UART_LSR & MEC1322_LSR_TX_EMPTY);
 }
 
-int uart_rx_available(void)
+int uart_rx_available(int uart)
 {
 	return MEC1322_UART_LSR & (1 << 0);
 }
 
-void uart_write_char(char c)
+void uart_write_char(int uart, char c)
 {
 	/* Wait for space in transmit FIFO. */
-	while (!uart_tx_ready())
+	while (!uart_tx_ready(uart))
 		;
 
 	tx_fifo_used = (tx_fifo_used + 1) % TX_FIFO_SIZE;
 	MEC1322_UART_TB = c;
 }
 
-int uart_read_char(void)
+int uart_read_char(int uart)
 {
 	return MEC1322_UART_RB;
 }
@@ -100,12 +100,12 @@ static void uart_clear_rx_fifo(int channel)
 	MEC1322_UART_FCR = (1 << 0) | (1 << 1);
 }
 
-void uart_disable_interrupt(void)
+void uart_disable_interrupt(int uart)
 {
 	task_disable_irq(MEC1322_IRQ_UART);
 }
 
-void uart_enable_interrupt(void)
+void uart_enable_interrupt(int uart)
 {
 	task_enable_irq(MEC1322_IRQ_UART);
 }

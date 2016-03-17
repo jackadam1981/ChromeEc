@@ -77,13 +77,13 @@ int uart_init_done(void)
 	return init_done;
 }
 
-void uart_tx_start(void)
+void uart_tx_start(int uart)
 {
 	stopped = 0;
 	trigger_interrupt();
 }
 
-void uart_tx_stop(void)
+void uart_tx_stop(int uart)
 {
 	stopped = 1;
 }
@@ -93,22 +93,22 @@ int uart_tx_stopped(void)
 	return stopped;
 }
 
-void uart_tx_flush(void)
+void uart_tx_flush(int uart)
 {
 	/* Nothing */
 }
 
-int uart_tx_ready(void)
+int uart_tx_ready(int uart)
 {
 	return 1;
 }
 
-int uart_rx_available(void)
+int uart_rx_available(int uart)
 {
 	return char_available;
 }
 
-void uart_write_char(char c)
+void uart_write_char(int uart, char c)
 {
 	if (capture_enabled)
 		test_capture_char(c);
@@ -116,7 +116,7 @@ void uart_write_char(char c)
 	fflush(stdout);
 }
 
-int uart_read_char(void)
+int uart_read_char(int uart)
 {
 	char ret;
 	ASSERT(in_interrupt_context());
@@ -125,12 +125,12 @@ int uart_read_char(void)
 	return ret;
 }
 
-void uart_disable_interrupt(void)
+void uart_disable_interrupt(int uart)
 {
 	int_disabled = 1;
 }
 
-void uart_enable_interrupt(void)
+void uart_enable_interrupt(int uart)
 {
 	int_disabled = 0;
 }

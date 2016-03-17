@@ -227,7 +227,7 @@ void tryLaunch(uint32_t adr, size_t max_size)
 	disarmRAMGuards();
 
 	debug_printf("Valid image found at 0x%08x, jumping", hdr);
-	uart_tx_flush();
+	uart_tx_flush(0);
 
 	_jump_to_address(&hdr[1]);
 }

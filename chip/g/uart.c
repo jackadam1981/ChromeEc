@@ -12,7 +12,18 @@
 #include "uart.h"
 #include "util.h"
 
+struct uart_interrupts {
+	int tx_int;
+	int rx_int;
+};
+static struct uart_interrupts interrupt[] = {
+	{GC_IRQNUM_UART0_TXINT, GC_IRQNUM_UART0_RXINT},
+	{GC_IRQNUM_UART1_TXINT, GC_IRQNUM_UART1_RXINT},
+	{GC_IRQNUM_UART2_TXINT, GC_IRQNUM_UART2_RXINT},
+};
 static int done_uart_init_yet;
+
+
 
 #define USE_UART_INTERRUPTS (!(defined(CONFIG_CUSTOMIZED_RO) && \
 			       defined(SECTION_IS_RO)))
@@ -21,13 +32,13 @@ int uart_init_done(void)
 	return done_uart_init_yet;
 }
 
-void uart_tx_start(void)
+void uart_tx_start(int uart)
 {
 	if (!uart_init_done())
 		return;
 
 	/* If interrupt is already enabled, nothing to do */
-	if (GR_UART_ICTRL(0) & GC_UART_ICTRL_TX_MASK)
+	if (GR_UART_ICTRL(uart) & GC_UART_ICTRL_TX_MASK)
 		return;
 
 	/* Do not allow deep sleep while transmit in progress */
@@ -40,72 +51,72 @@ void uart_tx_start(void)
 	 * threshold is _crossed_, not just met.
 	 */
 	/* TODO(crosbug.com/p/33819): Do we need this hack here? Find out. */
-	REG_WRITE_MLV(GR_UART_ICTRL(0), GC_UART_ICTRL_TX_MASK,
+	REG_WRITE_MLV(GR_UART_ICTRL(uart), GC_UART_ICTRL_TX_MASK,
 		      GC_UART_ICTRL_TX_LSB, 1);
-	task_trigger_irq(GC_IRQNUM_UART0_TXINT);
+	task_trigger_irq(interrupt[uart].tx_int);
 }
 
-void uart_tx_stop(void)
+void uart_tx_stop(int uart)
 {
 	/* Disable the TX interrupt */
-	REG_WRITE_MLV(GR_UART_ICTRL(0), GC_UART_ICTRL_TX_MASK,
+	REG_WRITE_MLV(GR_UART_ICTRL(uart), GC_UART_ICTRL_TX_MASK,
 		      GC_UART_ICTRL_TX_LSB, 0);
 
 	/* Re-allow deep sleep */
 	enable_sleep(SLEEP_MASK_UART);
 }
 
-int uart_tx_in_progress(void)
+int uart_tx_in_progress(int uart)
 {
 	/* Transmit is in progress unless the TX FIFO is empty and idle. */
-	return !(GR_UART_STATE(0) & (GC_UART_STATE_TXIDLE_MASK |
+	return !(GR_UART_STATE(uart) & (GC_UART_STATE_TXIDLE_MASK |
 				     GC_UART_STATE_TXEMPTY_MASK));
 }
 
-void uart_tx_flush(void)
+void uart_tx_flush(int uart)
 {
 	/* Wait until TX FIFO is idle. */
-	while (uart_tx_in_progress())
+	while (uart_tx_in_progress(uart))
 		;
 }
 
-int uart_tx_ready(void)
+int uart_tx_ready(int uart)
 {
 	/* True if the TX buffer is not completely full */
-	return !(GR_UART_STATE(0) & GC_UART_STATE_TX_MASK);
+	return !(GR_UART_STATE(uart) & GC_UART_STATE_TX_MASK);
 }
 
-int uart_rx_available(void)
+int uart_rx_available(int uart)
 {
 	/* True if the RX buffer is not completely empty. */
-	return !(GR_UART_STATE(0) & GC_UART_STATE_RXEMPTY_MASK);
+	return !(GR_UART_STATE(uart) & GC_UART_STATE_RXEMPTY_MASK);
 }
 
-void uart_write_char(char c)
+void uart_write_char(int uart, char c)
 {
 	/* Wait for space in transmit FIFO. */
-	while (!uart_tx_ready())
+	while (!uart_tx_ready(uart))
 		;
 
-	GR_UART_WDATA(0) = c;
+	GR_UART_WDATA(uart) = c;
 }
 
-int uart_read_char(void)
+int uart_read_char(int uart)
 {
-	return GR_UART_RDATA(0);
+	return GR_UART_RDATA(uart);
 }
 
 #if USE_UART_INTERRUPTS
-void uart_disable_interrupt(void)
+void uart_disable_interrupt(int uart)
 {
-	task_disable_irq(GC_IRQNUM_UART0_TXINT);
-	task_disable_irq(GC_IRQNUM_UART0_RXINT);
+	task_disable_irq(interrupt[uart].tx_int);
+	task_disable_irq(interrupt[uart].rx_int);
 }
 
-void uart_enable_interrupt(void)
+void uart_enable_interrupt(int uart)
 {
-	task_enable_irq(GC_IRQNUM_UART0_TXINT);
-	task_enable_irq(GC_IRQNUM_UART0_RXINT);
+	task_enable_irq(interrupt[uart].tx_int);
+	task_enable_irq(interrupt[uart].rx_int);
 }
 
 /**
@@ -134,29 +145,41 @@ DECLARE_IRQ(GC_IRQNUM_UART0_RXINT, uart_ec_rx_interrupt, 1);
 
 void uart_init(void)
 {
+	int uart = 1;
+	int i;
 	long long setting = (16 * (1 << UART_NCO_WIDTH) *
 			     (long long)CONFIG_UART_BAUD_RATE / PCLK_FREQ);
 
-	/* turn on uart clock */
 	clock_enable_module(MODULE_UART, 1);
 
-	/* set frequency */
-	GR_UART_NCO(0) = setting;
+#ifdef UART_COUNT
+	uart = UART_COUNT;
+#endif
+	/* turn on uart clock */
+	for (i = 0; i < uart; i++) {
+		/* set frequency */
+		GR_UART_NCO(i) = setting;
 
-	/* Interrupt when RX fifo has anything, when TX fifo <= half empty */
-	/* Also reset (clear) both FIFOs */
-	GR_UART_FIFO(0) = 0x63;
+		/*
+		 * Interrupt when RX fifo has anything, when TX fifo <= half
+		 * empty and reset (clear) both FIFOs
+		 */
+		GR_UART_FIFO(i) = 0x63;
 
-	/* TX enable, RX enable, HW flow control disabled, no loopback */
-	GR_UART_CTRL(0) = 0x03;
+		/*
+		 * TX enable, RX enable, HW flow control disabled, no
+		 * loopback
+		 */
+		GR_UART_CTRL(i) = 0x03;
 
-	/* enable RX interrupts in block */
-	/* Note: doesn't do anything unless turned on in NVIC */
-	GR_UART_ICTRL(0) = 0x02;
+		/* enable RX interrupts in block */
+		/* Note: doesn't do anything unless turned on in NVIC */
+		GR_UART_ICTRL(i) = 0x02;
+	}
 
 #if USE_UART_INTERRUPTS
 	/* Enable interrupts for UART0 only */
-	uart_enable_interrupt();
+	uart_enable_interrupt(0);
 #endif
 
 	done_uart_init_yet = 1;

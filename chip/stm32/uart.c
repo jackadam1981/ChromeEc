@@ -60,7 +60,7 @@ int uart_init_done(void)
 	return init_done;
 }
 
-void uart_tx_start(void)
+void uart_tx_start(int uart)
 {
 	/* If interrupt is already enabled, nothing to do */
 	if (STM32_USART_CR1(UARTN_BASE) & UART_TX_INT_ENABLE)
@@ -73,7 +73,7 @@ void uart_tx_start(void)
 	task_trigger_irq(STM32_IRQ_USART(UARTN));
 }
 
-void uart_tx_stop(void)
+void uart_tx_stop(int uart)
 {
 	STM32_USART_CR1(UARTN_BASE) &= ~UART_TX_INT_ENABLE;
 	should_stop = 1;
@@ -82,13 +82,13 @@ void uart_tx_stop(void)
 #endif
 }
 
-void uart_tx_flush(void)
+void uart_tx_flush(int uart)
 {
 	while (!(STM32_USART_SR(UARTN_BASE) & STM32_USART_SR_TXE))
 		;
 }
 
-int uart_tx_ready(void)
+int uart_tx_ready(int uart)
 {
 	return STM32_USART_SR(UARTN_BASE) & STM32_USART_SR_TXE;
 }
@@ -117,7 +117,7 @@ void uart_tx_dma_start(const char *src, int len)
 
 #endif /* CONFIG_UART_TX_DMA */
 
-int uart_rx_available(void)
+int uart_rx_available(int uart)
 {
 	return STM32_USART_SR(UARTN_BASE) & STM32_USART_SR_RXNE;
 }
@@ -139,26 +139,26 @@ int uart_rx_dma_head(void)
 
 #endif
 
-void uart_write_char(char c)
+void uart_write_char(int uart, char c)
 {
 	/* Wait for space */
-	while (!uart_tx_ready())
+	while (!uart_tx_ready(uart))
 		;
 
 	STM32_USART_TDR(UARTN_BASE) = c;
 }
 
-int uart_read_char(void)
+int uart_read_char(int uart)
 {
 	return STM32_USART_RDR(UARTN_BASE);
 }
 
-void uart_disable_interrupt(void)
+void uart_disable_interrupt(int uart)
 {
 	task_disable_irq(STM32_IRQ_USART(UARTN));
 }
 
-void uart_enable_interrupt(void)
+void uart_enable_interrupt(int uart)
 {
 	task_enable_irq(STM32_IRQ_USART(UARTN));
 }

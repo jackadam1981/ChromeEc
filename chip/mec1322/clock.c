@@ -320,7 +320,7 @@ void __idle(void)
 
 			/* UART is not being used  */
 			uart_ready_for_deepsleep = LOW_SPEED_DEEP_SLEEP_ALLOWED
-						&& !uart_tx_in_progress()
+						&& !uart_tx_in_progress(UARTN)
 						&& uart_buffer_empty();
 
 			/*

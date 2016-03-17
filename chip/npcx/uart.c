@@ -24,7 +24,7 @@ int uart_init_done(void)
 	return init_done;
 }
 
-void uart_tx_start(void)
+void uart_tx_start(int uart)
 {
 	if (uart_is_enable_wakeup()) {
 		/* disable MIWU */
@@ -53,7 +53,7 @@ void uart_tx_start(void)
 	task_trigger_irq(NPCX_IRQ_UART);
 }
 
-void uart_tx_stop(void)	/* Disable TX interrupt */
+void uart_tx_stop(int uart)	/* Disable TX interrupt */
 {
 	NPCX_UICTRL &= ~0x20;
 
@@ -61,7 +61,7 @@ void uart_tx_stop(void)	/* Disable TX interrupt */
 	enable_sleep(SLEEP_MASK_UART);
 }
 
-void uart_tx_flush(void)
+void uart_tx_flush(int uart)
 {
 	/* Wait for transmit FIFO empty */
 	while (!(NPCX_UICTRL & 0x01))
@@ -71,18 +71,18 @@ void uart_tx_flush(void)
 		;
 }
 
-int uart_tx_ready(void)
+int uart_tx_ready(int uart)
 {
 	return NPCX_UICTRL & 0x01;	/*if TX FIFO is empty return 1*/
 }
 
-int uart_tx_in_progress(void)
+int uart_tx_in_progress(int uart)
 {
 	/* Transmit is in progress if the TX busy bit is set. */
 	return NPCX_USTAT & 0x40;	/*BUSY bit , if busy return 1*/
 }
 
-int uart_rx_available(void)
+int uart_rx_available(int uart)
 {
 	uint8_t ctrl = NPCX_UICTRL;
 #ifdef CONFIG_LOW_POWER_IDLE
@@ -97,16 +97,16 @@ int uart_rx_available(void)
 	return ctrl & 0x02; /* If RX FIFO is empty return '0'*/
 }
 
-void uart_write_char(char c)
+void uart_write_char(int uart, char c)
 {
 	/* Wait for space in transmit FIFO. */
-	while (!uart_tx_ready())
+	while (!uart_tx_ready(uart))
 		;
 
 	NPCX_UTBUF = c;
 }
 
-int uart_read_char(void)
+int uart_read_char(int uart)
 {
 	return NPCX_URBUF;
 }
@@ -121,12 +121,12 @@ static void uart_clear_rx_fifo(int channel)
 	}
 }
 
-void uart_disable_interrupt(void)
+void uart_disable_interrupt(int uart)
 {
 	task_disable_irq(NPCX_IRQ_UART);
 }
 
-void uart_enable_interrupt(void)
+void uart_enable_interrupt(int uart)
 {
 	task_enable_irq(NPCX_IRQ_UART);
 }

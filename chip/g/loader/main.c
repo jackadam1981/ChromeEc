@@ -35,11 +35,11 @@ static int panic_txchar(void *context, int c)
 		panic_txchar(context, '\r');
 
 	/* Wait for space in transmit FIFO */
-	while (!uart_tx_ready())
+	while (!uart_tx_ready(UARTN))
 		;
 
 	/* Write the character directly to the transmit FIFO */
-	uart_write_char(c);
+	uart_write_char(UARTN, c);
 
 	return 0;
 }
@@ -135,8 +135,8 @@ void interrupt_disable(void)
 static int printchar(void *context, int c)
 {
 	if (c == '\n')
-		uart_write_char('\r');
-	uart_write_char(c);
+		uart_write_char(UARTN, '\r');
+	uart_write_char(UARTN, c);
 
 	return 0;
 }

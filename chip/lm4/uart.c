@@ -27,7 +27,7 @@ int uart_init_done(void)
 	return init_done;
 }
 
-void uart_tx_start(void)
+void uart_tx_start(int uart)
 {
 	/* If interrupt is already enabled, nothing to do */
 	if (LM4_UART_IM(0) & 0x20)
@@ -46,7 +46,7 @@ void uart_tx_start(void)
 	task_trigger_irq(LM4_IRQ_UART0);
 }
 
-void uart_tx_stop(void)
+void uart_tx_stop(int uart)
 {
 	LM4_UART_IM(0) &= ~0x20;
 
@@ -54,39 +54,39 @@ void uart_tx_stop(void)
 	enable_sleep(SLEEP_MASK_UART);
 }
 
-void uart_tx_flush(void)
+void uart_tx_flush(int uart)
 {
 	/* Wait for transmit FIFO empty */
 	while (!(LM4_UART_FR(0) & 0x80))
 		;
 }
 
-int uart_tx_ready(void)
+int uart_tx_ready(int uart)
 {
 	return !(LM4_UART_FR(0) & 0x20);
 }
 
-int uart_tx_in_progress(void)
+int uart_tx_in_progress(int uart)
 {
 	/* Transmit is in progress if the TX busy bit is set. */
 	return LM4_UART_FR(0) & 0x08;
 }
 
-int uart_rx_available(void)
+int uart_rx_available(int uart)
 {
 	return !(LM4_UART_FR(0) & 0x10);
 }
 
-void uart_write_char(char c)
+void uart_write_char(int uart, char c)
 {
 	/* Wait for space in transmit FIFO. */
-	while (!uart_tx_ready())
+	while (!uart_tx_ready(uart))
 		;
 
 	LM4_UART_DR(0) = c;
 }
 
-int uart_read_char(void)
+int uart_read_char(int uart)
 {
 	return LM4_UART_DR(0);
 }
@@ -98,12 +98,12 @@ static void uart_clear_rx_fifo(int channel)
 		scratch = LM4_UART_DR(channel);
 }
 
-void uart_disable_interrupt(void)
+void uart_disable_interrupt(int uart)
 {
 	task_disable_irq(LM4_IRQ_UART0);
 }
 
-void uart_enable_interrupt(void)
+void uart_enable_interrupt(int uart)
 {
 	task_enable_irq(LM4_IRQ_UART0);
 }

@@ -214,7 +214,7 @@ void clock_uart2gpio(void)
 	/* Is pimux to UART? */
 	if (npcx_is_uart()) {
 		/* Flush tx before enter deep idle */
-		uart_tx_flush();
+		uart_tx_flush(UARTN);
 		/* Change pinmux to GPIO and disable UART IRQ */
 		task_disable_irq(NPCX_IRQ_UART);
 		/* Set to GPIO */
