@@ -1714,6 +1714,16 @@
 #undef CONFIG_USB_PORT_POWER_SMART_SIMPLE
 
 /*
+ * Smart USB power control can support more usb port for use.
+*/
+#undef CONFIG_MULTIPLE_USB_PORT_POWER
+
+/*
+ * Define max USB port number for customize
+*/
+#undef CONFIG_USB_CHARGE_PORT_COUNT
+
+/*
  * Smart USB power control current limit pins may be inverted.  In this case
  * they are active low and the GPIO names will be GPIO_USBn_ILIM_SEL_L.
  */
