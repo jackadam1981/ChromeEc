@@ -297,6 +297,7 @@ static enum power_state _power_handle_state(enum power_state state)
 			return POWER_S5G3;
 		}
 
+		gpio_disable_interrupt(GPIO_PCH_SLP_S0_L);
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
 		return POWER_S3;
@@ -472,10 +473,13 @@ static int host_event_sleep_event(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_sleep_event *p = args->params;
 
-	if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_SUSPEND)
+	if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_SUSPEND) {
 		CPRINTS("S0ix sus evt");
-	else if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_RESUME)
+		gpio_enable_interrupt(GPIO_PCH_SLP_S0_L);
+	} else if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_RESUME) {
 		CPRINTS("S0ix res evt");
+		gpio_disable_interrupt(GPIO_PCH_SLP_S0_L);
+	}
 
 	return EC_RES_SUCCESS;
 }
