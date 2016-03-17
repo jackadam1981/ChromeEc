@@ -719,29 +719,40 @@ static int cc_voltage_to_status(int port, int cc_volt)
 {
 	/* If we have a pull-up, then we are source, check for Rd. */
 	if (pd[port].cc_pull == TYPEC_CC_RP) {
-		if (CC_NC(cc_volt))
+		if (CC_NC(cc_volt)) {
+			//CPRINTF("cc Rp VOpen %d\n", cc_volt);
 			return TYPEC_CC_VOLT_OPEN;
-		else if (CC_RA(cc_volt))
+		} else if (CC_RA(cc_volt)) {
+			//CPRINTF("cc Rp VRa %d\n", cc_volt);
 			return TYPEC_CC_VOLT_RA;
-		else
+		} else {
+			//CPRINTF("cc Rp VRd %d\n", cc_volt);
 			return TYPEC_CC_VOLT_RD;
+		}
 	/* If we have a pull-down, then we are sink, check for Rp. */
 	}
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	else if (pd[port].cc_pull == TYPEC_CC_RD) {
-		if (cc_volt >= TYPE_C_SRC_3000_THRESHOLD)
+		if (cc_volt >= TYPE_C_SRC_3000_THRESHOLD){
+			//CPRINTF("cc Rd VSNK3_0 %d\n", cc_volt);
 			return TYPEC_CC_VOLT_SNK_3_0;
-		else if (cc_volt >= TYPE_C_SRC_1500_THRESHOLD)
+		} else if (cc_volt >= TYPE_C_SRC_1500_THRESHOLD) {
+			//CPRINTF("cc Rd VSNK1_5 %d\n", cc_volt);
 			return TYPEC_CC_VOLT_SNK_1_5;
-		else if (CC_RP(cc_volt))
+		} else if (CC_RP(cc_volt)) {
+			//CPRINTF("cc Rd VSNK_DEF %d\n", cc_volt);
 			return TYPEC_CC_VOLT_SNK_DEF;
-		else
+		} else {
+			//CPRINTF("cc Rd VOpen %d\n", cc_volt);
 			return TYPEC_CC_VOLT_OPEN;
+		}
 	}
 #endif
 	/* If we are open, then always return 0 */
-	else
+	else {
+		//CPRINTF("cc Default Open/0\n");
 		return 0;
+	}
 }
 
 static void alert(int port, int mask)
@@ -1014,6 +1025,7 @@ int tcpc_set_rx_enable(int port, int enable)
 #if defined(CONFIG_LOW_POWER_IDLE) && !defined(CONFIG_USB_POWER_DELIVERY)
 	int i;
 #endif
+	cprintf(CC_USBPD, "tcpc_set_rx_enable port=%d, enable=%d\n", port,enable);
 	pd[port].rx_enabled = enable;
 
 	if (!enable)
