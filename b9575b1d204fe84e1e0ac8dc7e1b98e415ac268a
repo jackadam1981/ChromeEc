@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_09cd29ab",
+        "filename": "chip/mec1322/keyboard_raw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-17T17:56:22Z",
+      "side": 1,
+      "message": "j\u003ci?\n\nAs soon as j\u003d\u003di this loop will stop anyway.",
+      "range": {
+        "startLine": 122,
+        "startChar": 14,
+        "endLine": 122,
+        "endChar": 44
+      },
+      "revId": "b9575b1d204fe84e1e0ac8dc7e1b98e415ac268a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_a9f17df8",
+        "filename": "chip/mec1322/keyboard_raw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-17T17:56:22Z",
+      "side": 1,
+      "message": "gpio_get_level() doesn\u0027t work in this case?  If not, it would be helpful to describe why in a comment (and what pins[][] is)",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 124,
+        "endChar": 32
+      },
+      "revId": "b9575b1d204fe84e1e0ac8dc7e1b98e415ac268a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_29b10d2b",
+        "filename": "chip/mec1322/keyboard_raw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-17T17:56:22Z",
+      "side": 1,
+      "message": "shorted \u003d (i\u003c\u003c8)|j\n\nIf you do this now, then we can later take advantage of this to return which pins are shorted.\n\nOr if you want to return a constant now, return -1, so at least we can differentiate that from a pin-pair return later when we do add that feature.",
+      "range": {
+        "startLine": 125,
+        "startChar": 14,
+        "endLine": 125,
+        "endChar": 15
+      },
+      "revId": "b9575b1d204fe84e1e0ac8dc7e1b98e415ac268a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_a9c4dd7d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2488,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-17T17:56:22Z",
+      "side": 1,
+      "message": "Suggest making this at least uint16_t, so that we can pack (pin1,pin2) into it later without needing to change the message format.\n\nAnd then use shorted\u003d0xffff to mean \"two pins are shorted but we don\u0027t know which ones\".",
+      "range": {
+        "startLine": 2488,
+        "startChar": 1,
+        "endLine": 2488,
+        "endChar": 16
+      },
+      "revId": "b9575b1d204fe84e1e0ac8dc7e1b98e415ac268a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_e9bed5f3",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4218,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-17T17:56:22Z",
+      "side": 1,
+      "message": "!\u003d0",
+      "range": {
+        "startLine": 4218,
+        "startChar": 15,
+        "endLine": 4218,
+        "endChar": 19
+      },
+      "revId": "b9575b1d204fe84e1e0ac8dc7e1b98e415ac268a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
