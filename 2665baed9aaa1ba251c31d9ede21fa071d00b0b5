@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_8f88f9df",
+        "filename": "board/sentry/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-17T20:04:38Z",
+      "side": 1,
+      "message": "Again, I think you will have the same issue if your target swings rapidly.\n\nHere\u0027s another way to look at the problem that may be helpful: Your fan can be in 5 states. If the target is within some state-dependent range then you can keep the current state. Otherwise, you want to set a new state by applying your base rules again.",
+      "range": {
+        "startLine": 635,
+        "startChar": 19,
+        "endLine": 635,
+        "endChar": 37
+      },
+      "revId": "2665baed9aaa1ba251c31d9ede21fa071d00b0b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
