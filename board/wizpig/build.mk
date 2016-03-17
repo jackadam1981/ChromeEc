@@ -12,3 +12,4 @@ CHIP_SPI_SIZE_KB:=512
 
 board-y=board.o led.o
 board-$(CONFIG_BATTERY_SMART)+=battery.o
+board-$(CONFIG_USB_PORT_POWER_SMART)+=usb_port_power_smart.o
