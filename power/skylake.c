@@ -4,7 +4,7 @@
  */
 
 /* Skylake IMVP8 / ROP PMIC chipset power control module for Chrome EC */
-
+#include <lid_switch.h>
 #include "charge_state.h"
 #include "chipset.h"
 #include "common.h"
@@ -50,10 +50,14 @@
 
 #define CHARGER_INITIALIZED_DELAY_MS 100
 #define CHARGER_INITIALIZED_TRIES 40
+#define MAX_SLP_S0_RECOVERY 10
+#define SLP_S0_TIMEOUT 3000
 
 static int throttle_cpu;      /* Throttle CPU? */
 static int forcing_shutdown;  /* Forced shutdown in progress? */
 static int power_s5_up;       /* Chipset is sequencing up or down */
+static int slp_s0_rec_cnt;
+static int lid_wake_override;
 
 void chipset_force_shutdown(void)
 {
@@ -195,6 +199,43 @@ static enum power_state power_wait_s5_rtc_reset(void)
 }
 #endif
 
+static void override_lid_wake(void)
+{
+	if (lid_is_open() && lid_wake_override) {
+		power_button_pch_press();
+		msleep(50);
+		power_button_pch_release();
+		lid_wake_override = 0;
+	}
+}
+DECLARE_HOOK(HOOK_LID_CHANGE, override_lid_wake, HOOK_PRIO_LAST);
+
+static void slp_s0_signal_recovery(void)
+{
+	slp_s0_rec_cnt++;
+	CPRINTS("slp_s0 rec cnt:%d\n", slp_s0_rec_cnt);
+
+	if (slp_s0_rec_cnt <= MAX_SLP_S0_RECOVERY) {
+		/* when SLP_S0 is not asserted, LID open wake will fail.
+		 * Use power button to override lid wake.
+		 */
+		lid_wake_override = 1;
+		if (lid_is_open())
+			override_lid_wake();
+	} else {
+		/* SLP_S0 assertion failed for MAX_SLP_S0_RECOVERY attempts.
+		 * Trigger chipset reset so that system could recover from
+		 * SLP_S0 failure.
+		 */
+		CPRINTS("slp_s0_rec failed: call chipset_reset()\n");
+		lid_wake_override = 0;
+		slp_s0_rec_cnt = 0;
+		chipset_reset(0);
+	}
+}
+
+DECLARE_DEFERRED(slp_s0_signal_recovery);
+
 static enum power_state _power_handle_state(enum power_state state)
 {
 	int tries = 0;
@@ -297,6 +338,7 @@ static enum power_state _power_handle_state(enum power_state state)
 			return POWER_S5G3;
 		}
 
+		gpio_disable_interrupt(GPIO_PCH_SLP_S0_L);
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
 		return POWER_S3;
@@ -350,6 +392,8 @@ static enum power_state _power_handle_state(enum power_state state)
 #ifdef CONFIG_POWER_S0IX
 	case POWER_S0S0ix:
 		/* call hooks before standby */
+		slp_s0_rec_cnt = 0;
+		hook_call_deferred(slp_s0_signal_recovery, -1);
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 
 		lpc_enable_wake_mask_for_lid_open();
@@ -472,10 +516,16 @@ static int host_event_sleep_event(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_sleep_event *p = args->params;
 
-	if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_SUSPEND)
+	if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_SUSPEND) {
 		CPRINTS("S0ix sus evt");
-	else if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_RESUME)
+		gpio_enable_interrupt(GPIO_PCH_SLP_S0_L);
+		hook_call_deferred(slp_s0_signal_recovery,
+					SLP_S0_TIMEOUT * MSEC);
+	} else if (p->sleep_event & HOST_SLEEP_EVENT_S0IX_RESUME) {
 		CPRINTS("S0ix res evt");
+		gpio_disable_interrupt(GPIO_PCH_SLP_S0_L);
+		hook_call_deferred(slp_s0_signal_recovery, -1);
+	}
 
 	return EC_RES_SUCCESS;
 }
