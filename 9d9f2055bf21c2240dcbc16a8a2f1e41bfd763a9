@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c53da28_890f9d4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-17T00:42:46Z",
+      "side": 1,
+      "message": "Currently there aren\u0027t any changes in the third_party/tpm2/ directory. But, I there could be when I figure out the best way to report the correct TPM NvMem size.",
+      "parentUuid": "77b80d3e_3cab76ea",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b80d3e_dc818a29",
         "filename": "board/cr50/tpm2/NVMem.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-03-14T23:43:28Z",
       "side": 1,
       "message": "Assuming that this implementation passes at least as many tests as the RAM-only implementation, just go ahead and rename the functions in chip/g/nvmem_utils.[ch] to match these _plat__* functions and change chip/g/build.mk and board/cr50/build.mk to compile the new file instead of this one.\n\nThere\u0027s no point to making this file just a wrapper around the other functions.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c53da28_c690e2c7",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-17T00:42:46Z",
+      "side": 1,
+      "message": "I was thinking that since there are 2 users the NvMem functions (TPM2.0 and CR-50), that they wrapper functions may still be necessary. The CR-50 read/writes either need to offset their logical offset by the size of TPM2.0 logical NvMem size.",
+      "parentUuid": "77b80d3e_dc818a29",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5c6a4eda_b12670fe",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-17T00:42:46Z",
+      "side": 1,
+      "message": "Added a description along with a couple of text pictures. Might be too detailed, let me know what you think.",
+      "parentUuid": "5c6a4eda_5a0db11a",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c6a4eda_1adc198b",
         "filename": "chip/g/nvmem_utils.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-03-16T19:04:32Z",
       "side": 1,
       "message": "Let\u0027s be a little more consistent in the naming.\n\nNVMEM_PHY_BLOCKSIZE is clear so the logical size should be NVMEM_LOG_BLOCKSIZE, not NVMEM_LOGICAL_SIZE.\n\nNVMEM_NUMBLOCKS could be NVMEM_PHY_BLOCKS, so that we have NVMEM_TPM_BLOCKS, NVMEM_SPARE_BLOCKS, NVMEM_CR50_BLOCKS, etc., provided we have a comment mentioning that the number of blocks is the same for PHY and LOG, it\u0027s just that there\u0027s a little bookkeeping overhead in each PHY block.",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c53da28_869aeae1",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-17T00:42:46Z",
+      "side": 1,
+      "message": "Yes I agree that it ended up being inconsistent and I have cleaned up the naming as suggested.",
+      "parentUuid": "5c6a4eda_1adc198b",
       "range": {
         "startLine": 38,
         "startChar": 8,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3c53da28_86730a74",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-17T00:42:46Z",
+      "side": 1,
+      "message": "These macros are converting the logical offset into a logical block index and logical block offset. The logical block offset and physical block offset are one in the same. I added detail to the comment which I think clarifies this point.",
+      "parentUuid": "5c6a4eda_dac541b2",
+      "range": {
+        "startLine": 48,
+        "startChar": 44,
+        "endLine": 48,
+        "endChar": 49
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c6a4eda_5abb713a",
         "filename": "chip/g/nvmem_utils.c",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2016-03-16T19:04:32Z",
       "side": 1,
       "message": "Add some comments explaining that there are actually two translations (unless you put this up at the top):\n\nFirst there\u0027s the logical flat byte address to the logical block+offset pair.\n\nThen there\u0027s the logical block to physical block mapping.\n\nBe sure to name the functions and tables so that it\u0027s clear which translation(s) they perform.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 71
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c53da28_06827a2a",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-17T00:42:46Z",
+      "side": 1,
+      "message": "I think the most accurate description for this table is \"logical to physical block mapping\". I changed both the struct name to reflect this. This table is now called \u0027log_to_phy_map\u0027 which hopefully conveys its purpose and it\u0027s not longer in characters than the previous name since it\u0027s used in many places and the 80 character limit is challenging.",
+      "parentUuid": "5c6a4eda_5abb713a",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "3c53da28_e6763e17",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-17T00:42:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c6a4eda_1ad2d949",
+      "range": {
+        "startLine": 104,
+        "startChar": 37,
+        "endLine": 104,
+        "endChar": 45
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c6a4eda_3df557a4",
         "filename": "chip/g/nvmem_utils.c",
         "patchSetId": 1
@@ -174,6 +342,30 @@
       "writtenOn": "2016-03-16T19:04:32Z",
       "side": 1,
       "message": "This is covering all the data and half the nvmem_tag, which is fine. But doing it this way seems kind of sketchy. It might be better to define a struct that accurately describes the memory layout. That would help get rid of a bunch of typecasts too.",
+      "range": {
+        "startLine": 124,
+        "startChar": 10,
+        "endLine": 124,
+        "endChar": 48
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c53da28_4935252d",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-17T00:42:46Z",
+      "side": 1,
+      "message": "created a struct nvmem_phy_block and changed the p_tag uses to first point to the start of a physical block and use the struct definition to create p_tag. This is more robust. However, it still needs typecasts where p_block is assigned. Did you mean instead for me to create a struct that encompasses all of NvMem space?",
+      "parentUuid": "5c6a4eda_3df557a4",
       "range": {
         "startLine": 124,
         "startChar": 10,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "3c53da28_894afd9b",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-17T00:42:46Z",
+      "side": 1,
+      "message": "Changed it to static for now. Initially, I was thinking there might be a TPM2.0 call to do a one time NvMem setup, but if that\u0027s the case, I will make it public.",
+      "parentUuid": "77b80d3e_bc03e6a6",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b80d3e_7c5fbeb4",
         "filename": "chip/g/nvmem_utils.c",
         "patchSetId": 1
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "3c53da28_691901bd",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-17T00:42:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77b80d3e_7c5fbeb4",
+      "range": {
+        "startLine": 278,
+        "startChar": 2,
+        "endLine": 278,
+        "endChar": 13
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b80d3e_1c4e720f",
         "filename": "chip/g/nvmem_utils.h",
         "patchSetId": 1
@@ -243,6 +483,30 @@
       "writtenOn": "2016-03-14T23:43:28Z",
       "side": 1,
       "message": "The comment in nvmem_utils.c says this is only called once, and that inside nvmem_init(). If true, it doesn\u0027t need to be declared here, or made public.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "9d9f2055bf21c2240dcbc16a8a2f1e41bfd763a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c53da28_a69de6dd",
+        "filename": "chip/g/nvmem_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-17T00:42:46Z",
+      "side": 1,
+      "message": "Made the function static and removed this for now.",
+      "parentUuid": "77b80d3e_1c4e720f",
       "range": {
         "startLine": 23,
         "startChar": 0,
