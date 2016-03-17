@@ -55,4 +55,14 @@ int usb_charge_ports_enabled(void);
  */
 int usb_charger_port_is_sourcing_vbus(int port);
 
+
+/**
+ * Set extra USB port power for customized.
+ *
+ * @param pord_id Port to set.
+ * @param mode  New mode for port.
+*/
+void usb_charge_set_enabled_ex(int port_id, int en);
+
+
 #endif  /* __CROS_EC_USB_CHARGE_H */

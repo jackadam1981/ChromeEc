@@ -21,7 +21,11 @@
 #define USB_SYSJUMP_TAG 0x5550 /* "UP" - Usb Port */
 #define USB_HOOK_VERSION 1
 
+#if defined(CONFIG_USB_PORT_POWER_SMART_EX)
+#define USB_CHARGE_PORT_COUNT USB_CHARGE_PORT_COUNT_EX
+#else
 #define USB_CHARGE_PORT_COUNT 2
+#endif
 
 #ifndef CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE
 #define CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE USB_CHARGE_MODE_SDP2
@@ -58,10 +62,14 @@ static void usb_charge_set_control_mode(int port_id, int mode)
 
 static void usb_charge_set_enabled(int port_id, int en)
 {
+#ifndef CONFIG_USB_PORT_POWER_SMART_EX
 	if (port_id == 0)
 		gpio_set_level(GPIO_USB1_ENABLE, en);
 	else
 		gpio_set_level(GPIO_USB2_ENABLE, en);
+#else
+	usb_charge_set_enabled_ex(port_id, en);
+#endif
 }
 
 static void usb_charge_set_ilim(int port_id, int sel)
@@ -84,16 +92,33 @@ static void usb_charge_set_ilim(int port_id, int sel)
 #endif /* CONFIG_USB_PORT_POWER_SMART_SIMPLE */
 }
 
+#ifdef CONFIG_USB_PORT_POWER_SMART_EX
+static void usb_charge_all_port_ex(enum usb_charge_mode mode)
+{
+	int index;
+
+	for (index = 0; index < USB_CHARGE_PORT_COUNT; index++)
+		usb_charge_set_mode(index, mode);
+}
+#endif
 static void usb_charge_all_ports_on(void)
 {
+#ifndef CONFIG_USB_PORT_POWER_SMART_EX
 	usb_charge_set_mode(0, CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE);
 	usb_charge_set_mode(1, CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE);
+#else
+	usb_charge_all_port_ex(CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE);
+#endif
 }
 
 static void usb_charge_all_ports_off(void)
 {
+#ifndef CONFIG_USB_PORT_POWER_SMART_EX
 	usb_charge_set_mode(0, USB_CHARGE_MODE_DISABLED);
 	usb_charge_set_mode(1, USB_CHARGE_MODE_DISABLED);
+#else
+	usb_charge_all_port_ex(USB_CHARGE_MODE_DISABLED);
+#endif
 }
 
 int usb_charge_ports_enabled(void)
@@ -152,12 +177,23 @@ static int command_set_mode(int argc, char **argv)
 	int mode = -1;
 	char *e;
 
+#ifndef CONFIG_USB_PORT_POWER_SMART_EX
 	if (argc == 1) {
 		ccprintf("Port 0: %d\nPort 1: %d\n",
 			 charge_mode[0], charge_mode[1]);
 		return EC_SUCCESS;
 	}
 
+#else
+{
+	int index;
+
+	if (argc == 1) {
+		for (index = 0; index < USB_CHARGE_PORT_COUNT; index++)
+			ccprintf("Port %d: %d\n", index, charge_mode[index]);
+	}
+}
+#endif
 	if (argc != 3)
 		return EC_ERROR_PARAM_COUNT;
 
@@ -202,9 +238,18 @@ static void usb_charge_preserve_state(void)
 {
 	struct usb_state state;
 
+#ifndef CONFIG_USB_PORT_POWER_SMART_EX
 	state.port_mode[0] = charge_mode[0];
 	state.port_mode[1] = charge_mode[1];
 
+#else
+{
+	int index;
+
+	for (index = 0; index < USB_CHARGE_PORT_COUNT; index++)
+		state.port_mode[index] = charge_mode[index];
+}
+#endif
 	system_add_jump_tag(USB_SYSJUMP_TAG, USB_HOOK_VERSION,
 			    sizeof(state), &state);
 }
@@ -217,12 +262,26 @@ static void usb_charge_init(void)
 
 	prev = (const struct usb_state *)system_get_jump_tag(USB_SYSJUMP_TAG,
 							     &version, &size);
+
+#ifndef CONFIG_USB_PORT_POWER_SMART_EX
 	if (prev && version == USB_HOOK_VERSION && size == sizeof(*prev)) {
 		usb_charge_set_mode(0, prev->port_mode[0]);
 		usb_charge_set_mode(1, prev->port_mode[1]);
 	} else {
 		usb_charge_all_ports_off();
 	}
+#else
+{
+	int index;
+
+	if (prev && version == USB_HOOK_VERSION && size == sizeof(*prev)) {
+		for (index = 0; index < USB_CHARGE_PORT_COUNT; index++)
+			usb_charge_set_mode(index, prev->port_mode[index]);
+		} else {
+			usb_charge_all_ports_off();
+	}
+}
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, usb_charge_init, HOOK_PRIO_DEFAULT);
 
