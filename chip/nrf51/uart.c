@@ -30,7 +30,7 @@ int uart_init_done(void)
 	return init_done;
 }
 
-void uart_tx_start(void)
+void uart_tx_start(int uart)
 {
 	disable_sleep(SLEEP_MASK_UART);
 	should_stop = 0;
@@ -38,14 +38,14 @@ void uart_tx_start(void)
 	task_trigger_irq(NRF51_PERID_USART);
 }
 
-void uart_tx_stop(void)
+void uart_tx_stop(int uart)
 {
 	NRF51_UART_INTENCLR = (1 << NRF55_UART_TXDRDY_BIT);
 	should_stop = 1;
 	enable_sleep(SLEEP_MASK_UART);
 }
 
-int uart_tx_ready(void)
+int uart_tx_ready(int uart)
 {
 	/*
 	 * nRF51 design is NOT tx-empty style. Instead, it is if a byte is
@@ -55,18 +55,18 @@ int uart_tx_ready(void)
 	return NRF51_UART_TXDRDY || (!ever_sent);
 }
 
-int uart_rx_available(void)
+int uart_rx_available(int uart)
 {
 	return NRF51_UART_RXDRDY;
 }
 
-void uart_tx_flush(void)
+void uart_tx_flush(int uart)
 {
-	while (!uart_tx_ready())
+	while (!uart_tx_ready(uart))
 		;
 }
 
-void uart_write_char(char c)
+void uart_write_char(int uart, char c)
 {
 	ever_sent = 1;
 	NRF51_UART_TXDRDY = 0;
@@ -74,18 +74,18 @@ void uart_write_char(char c)
 	NRF51_UART_STARTTX = 1;
 }
 
-int uart_read_char(void)
+int uart_read_char(int uart)
 {
 	NRF51_UART_RXDRDY = 0;
 	return NRF51_UART_RXD;
 }
 
-void uart_disable_interrupt(void)
+void uart_disable_interrupt(int uart)
 {
 	task_disable_irq(NRF51_PERID_USART);
 }
 
-void uart_enable_interrupt(void)
+void uart_enable_interrupt(int uart)
 {
 	task_enable_irq(NRF51_PERID_USART);
 }
@@ -122,7 +122,7 @@ void uart_init(void)
 	NRF51_UART_BAUDRATE = 0x01d7e000;  /* 115200 */
 	NRF51_UART_ENABLE = 0x4;  /* Enable UART */
 
-	uart_enable_interrupt();
+	uart_enable_interrupt(UARTN);
 	NRF51_UART_INTENSET = (1 << NRF55_UART_RXDRDY_BIT);
 	NRF51_UART_STARTRX = 1;
 

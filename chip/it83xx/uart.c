@@ -27,7 +27,7 @@ int uart_init_done(void)
 	return init_done;
 }
 
-void uart_tx_start(void)
+void uart_tx_start(int uart)
 {
 	/* If interrupt is already enabled, nothing to do */
 	if (IT83XX_UART_IER(UART_PORT) & 0x02)
@@ -40,7 +40,7 @@ void uart_tx_start(void)
 	IT83XX_UART_IER(UART_PORT) |= 0x02;
 }
 
-void uart_tx_stop(void)
+void uart_tx_stop(int uart)
 {
 	IT83XX_UART_IER(UART_PORT) &= ~0x02;
 
@@ -48,7 +48,7 @@ void uart_tx_stop(void)
 	enable_sleep(SLEEP_MASK_UART);
 }
 
-void uart_tx_flush(void)
+void uart_tx_flush(int uart)
 {
 	/*
 	 * Wait for transmit FIFO empty (TEMT) and transmitter holder
@@ -58,13 +58,13 @@ void uart_tx_flush(void)
 		;
 }
 
-int uart_tx_ready(void)
+int uart_tx_ready(int uart)
 {
 	/* Transmit is ready when FIFO is empty (THRE). */
 	return IT83XX_UART_LSR(UART_PORT) & 0x20;
 }
 
-int uart_tx_in_progress(void)
+int uart_tx_in_progress(int uart)
 {
 	/*
 	 * Transmit is in progress if transmit holding register or transmitter
@@ -73,31 +73,31 @@ int uart_tx_in_progress(void)
 	return !(IT83XX_UART_LSR(UART_PORT) & 0x40);
 }
 
-int uart_rx_available(void)
+int uart_rx_available(int uart)
 {
 	return IT83XX_UART_LSR(UART_PORT) & 0x01;
 }
 
-void uart_write_char(char c)
+void uart_write_char(int uart, char c)
 {
 	/* Wait for space in transmit FIFO. */
-	while (!uart_tx_ready())
+	while (!uart_tx_ready(uart))
 		;
 
 	IT83XX_UART_THR(UART_PORT) = c;
 }
 
-int uart_read_char(void)
+int uart_read_char(int uart)
 {
 	return IT83XX_UART_RBR(UART_PORT);
 }
 
-void uart_disable_interrupt(void)
+void uart_disable_interrupt(int uart)
 {
 	task_disable_irq(IT83XX_IRQ_UART1);
 }
 
-void uart_enable_interrupt(void)
+void uart_enable_interrupt(int uart)
 {
 	task_enable_irq(IT83XX_IRQ_UART1);
 }

@@ -12,6 +12,12 @@
 #include "common.h"
 #include "gpio.h"
 
+#ifdef CONFIG_UART_CONSOLE
+#define UARTN CONFIG_UART_CONSOLE
+#else
+#define UARTN 0
+#endif
+
 /**
  * Initialize the UART module.
  */
@@ -94,17 +100,17 @@ int uart_getc(void);
 /**
  * Flush the transmit FIFO.
  */
-void uart_tx_flush(void);
+void uart_tx_flush(int uart);
 
 /**
  * Return non-zero if there is room to transmit a character immediately.
  */
-int uart_tx_ready(void);
+int uart_tx_ready(int uart);
 
 /**
  * Return non-zero if a transmit is in progress.
  */
-int uart_tx_in_progress(void);
+int uart_tx_in_progress(int uart);
 
 /**
  * Return non-zero if UART is ready to start a DMA transfer.
@@ -122,7 +128,7 @@ void uart_tx_dma_start(const char *src, int len);
 /**
  * Return non-zero if the UART has a character available to read.
  */
-int uart_rx_available(void);
+int uart_rx_available(int uart);
 
 /**
  * Start a UART receive DMA transfer.
@@ -151,26 +157,26 @@ int uart_rx_dma_head(void);
  *
  * @param c		Character to send.
  */
-void uart_write_char(char c);
+void uart_write_char(int uart, char c);
 
 /**
  * Read one char from the UART data register.
  *
  * @return		The character read.
  */
-int uart_read_char(void);
+int uart_read_char(int uart);
 
 /**
  * Disable all UART related IRQs.
  *
  * Used to avoid concurrent accesses on UART management variables.
  */
-void uart_disable_interrupt(void);
+void uart_disable_interrupt(int uart);
 
 /**
  * Re-enable UART IRQs.
  */
-void uart_enable_interrupt(void);
+void uart_enable_interrupt(int uart);
 
 /**
  * Re-enable the UART transmit interrupt.
@@ -178,12 +184,12 @@ void uart_enable_interrupt(void);
  * This also forces triggering a UART interrupt, if the transmit interrupt was
  * disabled.
  */
-void uart_tx_start(void);
+void uart_tx_start(int uart);
 
 /**
  * Disable the UART transmit interrupt.
  */
-void uart_tx_stop(void);
+void uart_tx_stop(int uart);
 
 /**
  * Helper for processing UART input.

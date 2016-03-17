@@ -33,11 +33,11 @@ static int panic_txchar(void *context, int c)
 		panic_txchar(context, '\r');
 
 	/* Wait for space in transmit FIFO */
-	while (!uart_tx_ready())
+	while (!uart_tx_ready(UARTN))
 		;
 
 	/* Write the character directly to the transmit FIFO */
-	uart_write_char(c);
+	uart_write_char(UARTN, c);
 
 	return 0;
 }
@@ -52,7 +52,7 @@ void panic_puts(const char *outstr)
 		panic_txchar(NULL, *outstr++);
 
 	/* Flush the transmit FIFO */
-	uart_tx_flush();
+	uart_tx_flush(UARTN);
 }
 
 void panic_printf(const char *format, ...)
@@ -67,7 +67,7 @@ void panic_printf(const char *format, ...)
 	va_end(args);
 
 	/* Flush the transmit FIFO */
-	uart_tx_flush();
+	uart_tx_flush(UARTN);
 }
 #endif
 

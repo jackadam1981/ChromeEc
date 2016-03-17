@@ -306,7 +306,8 @@ void __idle(void)
 			 * busy, and the console UART buffer is empty.
 			 */
 			use_low_speed_clock = LOW_SPEED_DEEP_SLEEP_ALLOWED &&
-				!uart_tx_in_progress() && uart_buffer_empty();
+					      !uart_tx_in_progress(UARTN) &&
+					      uart_buffer_empty();
 
 #ifdef CONFIG_LOW_POWER_USE_LFIOSC
 			/* Set the deep sleep clock register. Use either the

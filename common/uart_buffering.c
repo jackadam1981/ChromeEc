@@ -71,7 +71,7 @@ static int __tx_char(void *context, int c)
 #if defined CONFIG_POLLING_UART
 	(void) tx_buf_next;
 	(void) tx_buf_new_tail;
-	uart_write_char(c);
+	uart_write_char(UARTN, c);
 #else
 
 	tx_buf_next = TX_BUF_NEXT(tx_buf_head);
@@ -131,7 +131,7 @@ void uart_process_output(void)
 
 	/* Disable DMA-done interrupt if nothing to send */
 	if (head == tx_buf_tail) {
-		uart_tx_stop();
+		uart_tx_stop(UARTN);
 		return;
 	}
 
@@ -153,14 +153,14 @@ void uart_process_output(void)
 		return;
 
 	/* Copy output from buffer until TX fifo full or output buffer empty */
-	while (uart_tx_ready() && (tx_buf_head != tx_buf_tail)) {
-		uart_write_char(tx_buf[tx_buf_tail]);
+	while (uart_tx_ready(UARTN) && (tx_buf_head != tx_buf_tail)) {
+		uart_write_char(UARTN, tx_buf[tx_buf_tail]);
 		tx_buf_tail = TX_BUF_NEXT(tx_buf_tail);
 	}
 
 	/* If output buffer is empty, disable transmit interrupt */
 	if (tx_buf_tail == tx_buf_head)
-		uart_tx_stop();
+		uart_tx_stop(UARTN);
 }
 
 #endif /* !CONFIG_UART_TX_DMA */
@@ -188,11 +188,11 @@ void uart_process_input(void)
 		if (c == CTRL('S')) {
 			/* Software flow control - XOFF */
 			uart_suspended = 1;
-			uart_tx_stop();
+			uart_tx_stop(UARTN);
 		} else if (c == CTRL('Q')) {
 			/* Software flow control - XON */
 			uart_suspended = 0;
-			uart_tx_start();
+			uart_tx_start(UARTN);
 		}
 	}
 
@@ -221,8 +221,8 @@ void uart_process_input(void)
 	int got_input = 0;
 
 	/* Copy input from buffer until RX fifo empty */
-	while (uart_rx_available()) {
-		int c = uart_read_char();
+	while (uart_rx_available(UARTN)) {
+		int c = uart_read_char(UARTN);
 		int rx_buf_next = RX_BUF_NEXT(rx_buf_head);
 
 #ifdef CONFIG_UART_INPUT_FILTER
@@ -234,11 +234,11 @@ void uart_process_input(void)
 		if (c == CTRL('S')) {
 			/* Software flow control - XOFF */
 			uart_suspended = 1;
-			uart_tx_stop();
+			uart_tx_stop(UARTN);
 		} else if (c == CTRL('Q')) {
 			/* Software flow control - XON */
 			uart_suspended = 0;
-			uart_tx_start();
+			uart_tx_start(UARTN);
 		} else if (rx_buf_next != rx_buf_tail) {
 			/* Buffer all other input */
 			rx_buf[rx_buf_head] = c;
@@ -258,7 +258,7 @@ int uart_putc(int c)
 	int rv = __tx_char(NULL, c);
 
 	if (!uart_suspended)
-		uart_tx_start();
+		uart_tx_start(UARTN);
 
 	return rv ? EC_ERROR_OVERFLOW : EC_SUCCESS;
 }
@@ -272,7 +272,7 @@ int uart_puts(const char *outstr)
 	}
 
 	if (!uart_suspended)
-		uart_tx_start();
+		uart_tx_start(UARTN);
 
 	/* Successful if we consumed all output */
 	return *outstr ? EC_ERROR_OVERFLOW : EC_SUCCESS;
@@ -283,7 +283,7 @@ int uart_vprintf(const char *format, va_list args)
 	int rv = vfnprintf(__tx_char, NULL, format, args);
 
 	if (!uart_suspended)
-		uart_tx_start();
+		uart_tx_start(UARTN);
 
 	return rv;
 }
@@ -324,12 +324,12 @@ void uart_flush_output(void)
 			 * we'll be safe even if the context switches away from
 			 * us to another partial printf() and back.
 			 */
-			uart_tx_start();
+			uart_tx_start(UARTN);
 		}
 	}
 
 	/* Wait for transmit FIFO empty */
-	uart_tx_flush();
+	uart_tx_flush(UARTN);
 }
 
 int uart_getc(void)
