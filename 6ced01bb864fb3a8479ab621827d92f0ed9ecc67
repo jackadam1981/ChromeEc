@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcc18a6e_7a1b7903",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1535,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2016-03-18T12:18:34Z",
+      "side": 1,
+      "message": "when you add a new color, you must also change led_color_names in util/ectool.c, otherwise people calling \"ectool led power red\u003dff\" would crash when matching this new color (amber).",
+      "range": {
+        "startLine": 1535,
+        "startChar": 1,
+        "endLine": 1535,
+        "endChar": 19
+      },
+      "revId": "6ced01bb864fb3a8479ab621827d92f0ed9ecc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
