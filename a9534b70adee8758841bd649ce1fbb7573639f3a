@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c2a06be_528225f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-18T20:36:41Z",
+      "side": 1,
+      "message": "It was my mistake, I pushed to glados originally without realizing it. In fact, we only want to land it on master (and perhaps some factory branch.. I\u0027ll leave that up to the factory folks).",
+      "parentUuid": "9c2a06be_12270dfd",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "a9534b70adee8758841bd649ce1fbb7573639f3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_d22c55e2",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-03-18T20:30:04Z",
       "side": 1,
       "message": "is this working on non-x86 platform ?",
+      "range": {
+        "startLine": 1434,
+        "startChar": 3,
+        "endLine": 1435,
+        "endChar": 34
+      },
+      "revId": "a9534b70adee8758841bd649ce1fbb7573639f3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_d27575d4",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1435,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-18T20:36:41Z",
+      "side": 1,
+      "message": "Yes, I believe it will work fine, since this will call down into ec_readmem(), implemented in the comm driver. For non-LPC platforms, it may be implemented as a stand-alone host command EC_CMD_READ_MEMMAP (we\u0027re already reading temperature sensor data in this way with \u0027ectool temps\u0027).",
+      "parentUuid": "9c2a06be_d22c55e2",
       "range": {
         "startLine": 1434,
         "startChar": 3,
