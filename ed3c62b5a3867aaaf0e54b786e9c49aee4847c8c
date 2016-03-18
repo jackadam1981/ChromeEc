@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_d243b58b",
+        "filename": "include/crc8.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-18T20:25:32Z",
+      "side": 1,
+      "message": "you are going to make the Coreboot guys (using random toolchains) unhappy :\ncf https://chromium-review.googlesource.com/324970",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "ed3c62b5a3867aaaf0e54b786e9c49aee4847c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_124eedb2",
+        "filename": "include/crc8.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-18T20:25:32Z",
+      "side": 1,
+      "message": "typos",
+      "range": {
+        "startLine": 26,
+        "startChar": 34,
+        "endLine": 26,
+        "endChar": 52
+      },
+      "revId": "ed3c62b5a3867aaaf0e54b786e9c49aee4847c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_521985bc",
+        "filename": "include/crc8.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-18T20:25:32Z",
+      "side": 1,
+      "message": "should we comment that you are supposed to put 0 at beginning ?\n(some hashing algorithm are taking 0xffffffff as seed?)",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 74
+      },
+      "revId": "ed3c62b5a3867aaaf0e54b786e9c49aee4847c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
