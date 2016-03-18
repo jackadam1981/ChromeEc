@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_a317d6d5",
+        "filename": "board/sentry/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-18T17:35:41Z",
+      "side": 1,
+      "message": "fan_table[2]?",
+      "range": {
+        "startLine": 643,
+        "startChar": 19,
+        "endLine": 643,
+        "endChar": 37
+      },
+      "revId": "728b7c28f6b196712e8d449bfd1747c284b19e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_031502cd",
+        "filename": "board/sentry/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-18T17:35:41Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be an expression similar to your (pct \u003c 31) case?",
+      "range": {
+        "startLine": 650,
+        "startChar": 19,
+        "endLine": 650,
+        "endChar": 37
+      },
+      "revId": "728b7c28f6b196712e8d449bfd1747c284b19e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
