@@ -5,6 +5,7 @@
 /* STM32F072-discovery board based USB PD evaluation configuration */
 
 #include "common.h"
+#include "console.h"
 #include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -12,6 +13,7 @@
 #include "i2c.h"
 #include "registers.h"
 #include "task.h"
+#include "timer.h"
 #include "usb_descriptor.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
@@ -51,7 +53,7 @@ void board_reset_pd_mcu(void)
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"tcpc", I2C_PORT_TCPC, 100 /* kHz */, GPIO_I2C0_SCL, GPIO_I2C0_SDA}
+	{"tcpc", I2C_PORT_TCPC, 400 /* kHz */, GPIO_I2C0_SCL, GPIO_I2C0_SDA}
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
@@ -75,3 +77,30 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
+
+#ifdef CONFIG_USB_PD_TCPM_ANX74XX
+void board_set_tcpc_power_mode(int port, int normal_mode)
+{
+#if CONFIG_USB_PD_PORT_COUNT >= 2
+#else
+	if (normal_mode) {
+		gpio_set_level(GPIO_USB_C0_PWR_EN, 1);
+		msleep(1);
+		gpio_set_level(GPIO_USB_C0_RST_N, 1);
+		msleep(10);
+	} else {/* STAND BY MODE */
+		gpio_set_level(GPIO_USB_C0_AVDD33, 0);
+		gpio_set_level(GPIO_USB_C0_DVDDIO, 0);
+
+		gpio_set_level(GPIO_USB_C0_RST_N, 0);
+		msleep(1);
+		gpio_set_level(GPIO_USB_C0_PWR_EN, 0);
+
+		msleep(1000);
+		gpio_set_level(GPIO_USB_C0_AVDD33, 1);
+		gpio_set_level(GPIO_USB_C0_DVDDIO, 1);
+		msleep(1000);
+	}
+#endif
+}
+#endif
