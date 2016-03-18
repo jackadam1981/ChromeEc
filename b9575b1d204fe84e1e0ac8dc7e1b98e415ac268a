@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bcc18a6e_1a247df4",
+        "filename": "chip/mec1322/keyboard_raw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2016-03-18T02:22:56Z",
+      "side": 1,
+      "message": "Oops, I will fix this.",
+      "parentUuid": "9c2a06be_09cd29ab",
+      "range": {
+        "startLine": 122,
+        "startChar": 14,
+        "endLine": 122,
+        "endChar": 44
+      },
+      "revId": "b9575b1d204fe84e1e0ac8dc7e1b98e415ac268a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_a9f17df8",
         "filename": "chip/mec1322/keyboard_raw.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-03-17T17:56:22Z",
       "side": 1,
       "message": "gpio_get_level() doesn\u0027t work in this case?  If not, it would be helpful to describe why in a comment (and what pins[][] is)",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 124,
+        "endChar": 32
+      },
+      "revId": "b9575b1d204fe84e1e0ac8dc7e1b98e415ac268a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcc18a6e_ba8b510e",
+        "filename": "chip/mec1322/keyboard_raw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2016-03-18T02:22:56Z",
+      "side": 1,
+      "message": "Actually I have tried to use gpio_get_level, but we need to define all of the KSO/KSI pin to gpio.inc, this should take gpio.inc redundancy.",
+      "parentUuid": "9c2a06be_a9f17df8",
       "range": {
         "startLine": 124,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bcc18a6e_9a908d39",
+        "filename": "chip/mec1322/keyboard_raw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2016-03-18T02:22:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c2a06be_29b10d2b",
+      "range": {
+        "startLine": 125,
+        "startChar": 14,
+        "endLine": 125,
+        "endChar": 15
+      },
+      "revId": "b9575b1d204fe84e1e0ac8dc7e1b98e415ac268a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_a9c4dd7d",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "bcc18a6e_7a76d9e0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2488,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2016-03-18T02:22:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c2a06be_a9c4dd7d",
+      "range": {
+        "startLine": 2488,
+        "startChar": 1,
+        "endLine": 2488,
+        "endChar": 16
+      },
+      "revId": "b9575b1d204fe84e1e0ac8dc7e1b98e415ac268a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_e9bed5f3",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2016-03-17T17:56:22Z",
       "side": 1,
       "message": "!\u003d0",
+      "range": {
+        "startLine": 4218,
+        "startChar": 15,
+        "endLine": 4218,
+        "endChar": 19
+      },
+      "revId": "b9575b1d204fe84e1e0ac8dc7e1b98e415ac268a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcc18a6e_5a7315ef",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4218,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2016-03-18T02:22:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c2a06be_e9bed5f3",
       "range": {
         "startLine": 4218,
         "startChar": 15,
