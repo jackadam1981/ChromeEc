@@ -5,6 +5,7 @@
 /* STM32F072-discovery board based USB PD evaluation configuration */
 
 #include "common.h"
+#include "console.h"
 #include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -13,10 +14,12 @@
 #include "registers.h"
 #include "task.h"
 #include "tcpci.h"
+#include "timer.h"
 #include "usb_descriptor.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
+#include "anx74xx.h"
 
 void button_event(enum gpio_signal signal);
 
@@ -52,22 +55,27 @@ void board_reset_pd_mcu(void)
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"tcpc", I2C_PORT_TCPC, 100 /* kHz */, GPIO_I2C0_SCL, GPIO_I2C0_SDA}
+	{"tcpc", I2C_PORT_TCPC, 400 /* kHz */, GPIO_I2C0_SCL, GPIO_I2C0_SDA}
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{I2C_PORT_TCPC, TCPC1_I2C_ADDR, &tcpci_tcpm_drv},
+	{I2C_PORT_TCPC, TCPC1_I2C_ADDR, &anx74xx_tcpm_drv},
 #if CONFIG_USB_PD_PORT_COUNT >= 2
-	{I2C_PORT_TCPC, TCPC2_I2C_ADDR, &tcpci_tcpm_drv},
+	{I2C_PORT_TCPC, TCPC2_I2C_ADDR, &anx74xx_tcpm_drv},
 #endif
 };
 
 uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
+	int value = gpio_get_level(GPIO_PD_MCU_INT);
 
-	if (!gpio_get_level(GPIO_PD_MCU_INT)) {
+#if ANX74XX_INT_ACTIVE_POLARITY == ANX74XX_REG_IRQ_POL_LOW
+	value = !value;
+#endif
+
+	if (value) {
 		status = PD_STATUS_TCPC_ALERT_0;
 #if CONFIG_USB_PD_PORT_COUNT >= 2
 		status |= PD_STATUS_TCPC_ALERT_1;
@@ -76,3 +84,30 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
+
+#ifdef CONFIG_USB_PD_TCPM_ANX74XX
+void board_set_tcpc_power_mode(int port, int normal_mode)
+{
+#if CONFIG_USB_PD_PORT_COUNT >= 2
+#else
+	if (normal_mode) {
+		gpio_set_level(GPIO_USB_C0_PWR_EN, 1);
+		msleep(10);
+		gpio_set_level(GPIO_USB_C0_RST_N, 1);
+		msleep(1);
+	} else {/* STAND BY MODE */
+		gpio_set_level(GPIO_USB_C0_AVDD33, 0);
+		gpio_set_level(GPIO_USB_C0_DVDDIO, 0);
+
+		gpio_set_level(GPIO_USB_C0_RST_N, 0);
+		msleep(1);
+		gpio_set_level(GPIO_USB_C0_PWR_EN, 0);
+
+		msleep(1000);
+		gpio_set_level(GPIO_USB_C0_AVDD33, 1);
+		gpio_set_level(GPIO_USB_C0_DVDDIO, 1);
+		msleep(1000);
+	}
+#endif
+}
+#endif
