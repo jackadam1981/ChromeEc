@@ -9,13 +9,17 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 GPIO_INT(USER_BUTTON, PIN(A, 0), GPIO_INT_FALLING, button_event)
-GPIO_INT(PD_MCU_INT,  PIN(A, 1), GPIO_INT_FALLING, alert_event)
+GPIO_INT(PD_MCU_INT,  PIN(A, 1), GPIO_INT_RISING, alert_event)
 
 /* Outputs */
 GPIO(LED_U, PIN(C, 6), GPIO_OUT_LOW)
 GPIO(LED_D, PIN(C, 7), GPIO_OUT_LOW)
 GPIO(LED_L, PIN(C, 8), GPIO_OUT_LOW)
 GPIO(LED_R, PIN(C, 9), GPIO_OUT_LOW)
+GPIO(USB_C0_RST_N, PIN(B, 4), GPIO_OUT_LOW)
+GPIO(USB_C0_PWR_EN, PIN(B, 5), GPIO_OUT_LOW)
+GPIO(USB_C0_DVDDIO, PIN(C, 10), GPIO_OUT_LOW)
+GPIO(USB_C0_AVDD33, PIN(C, 11), GPIO_OUT_LOW)
 
 /*
  * I2C pins should be configured as inputs until I2C module is
@@ -23,6 +27,7 @@ GPIO(LED_R, PIN(C, 9), GPIO_OUT_LOW)
  */
 GPIO(I2C0_SCL, PIN(B, 6),  GPIO_INPUT)
 GPIO(I2C0_SDA, PIN(B, 7),  GPIO_INPUT)
+GPIO(USB_C0_CABLE_DET, PIN(D, 2),  GPIO_INPUT)
 
 /* Unimplemented signals which we need to emulate for now */
 UNIMPLEMENTED(ENTERING_RW)
