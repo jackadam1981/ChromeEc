@@ -22,6 +22,30 @@
       "revId": "2665baed9aaa1ba251c31d9ede21fa071d00b0b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcc18a6e_3afd0180",
+        "filename": "board/sentry/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1117540
+      },
+      "writtenOn": "2016-03-18T01:19:24Z",
+      "side": 1,
+      "message": "I define two targets for this range.",
+      "parentUuid": "9c2a06be_8f88f9df",
+      "range": {
+        "startLine": 635,
+        "startChar": 19,
+        "endLine": 635,
+        "endChar": 37
+      },
+      "revId": "2665baed9aaa1ba251c31d9ede21fa071d00b0b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
