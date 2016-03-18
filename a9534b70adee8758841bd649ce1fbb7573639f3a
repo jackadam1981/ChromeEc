@@ -93,6 +93,30 @@
       "revId": "a9534b70adee8758841bd649ce1fbb7573639f3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_f2551925",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1435,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-18T20:40:48Z",
+      "side": 1,
+      "message": "Yes I know that we have a workaround for the mem-mapped values, my question was more whether we were filling those values, but you are right the \u0027ectool temps\u0027 above is a good hint. Fine then",
+      "parentUuid": "9c2a06be_d27575d4",
+      "range": {
+        "startLine": 1434,
+        "startChar": 3,
+        "endLine": 1435,
+        "endChar": 34
+      },
+      "revId": "a9534b70adee8758841bd649ce1fbb7573639f3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
