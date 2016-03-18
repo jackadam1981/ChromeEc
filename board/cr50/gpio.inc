@@ -8,24 +8,24 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 /* Pull this low to interrupt the AP */
-GPIO(INT_AP_L,        PIN(0, 0), GPIO_INPUT)
+GPIO(INT_AP_L,        PIN(0, 0), GPIO_OUT_HIGH)
 
 /* Use these to take over the AP & EC flash (only when AP & EC are off!) */
-GPIO(EC_FLASH_SELECT, PIN(0, 1), GPIO_INPUT)
-GPIO(AP_FLASH_SELECT, PIN(0, 2), GPIO_INPUT)
+GPIO(EC_FLASH_SELECT, PIN(0, 1), GPIO_OUT_LOW)
+GPIO(AP_FLASH_SELECT, PIN(0, 2), GPIO_OUT_LOW)
 
 /* As an input this mirrors EC_WP_L (which is controlled by RBOX, not a GPIO).
  * As an output it can override EC_WP_L, although why would we? */
 GPIO(AP_WP_L,         PIN(0, 3), GPIO_INPUT)
 
-/* Drive high to reset the EC & AP */
-GPIO(SYS_RST,         PIN(0, 4), GPIO_INPUT)
+/* Drive low to reset the EC & AP (and EMMC) */
+GPIO(SYS_RST_L,       PIN(0, 4), GPIO_OUT_HIGH)
 
 /* Indicate to EC when CCD is enabled */
-GPIO(CCD_MODE,        PIN(0, 5), GPIO_INPUT)
+GPIO(CCD_MODE,        PIN(0, 5), GPIO_OUT_LOW)
 
 /* Battery has a 10K pulldown on its side. We provide the pullup. */
-GPIO(BATT_PRES,       PIN(0, 6), GPIO_INPUT)
+GPIO(BATT_PRES_L,     PIN(0, 6), GPIO_INPUT | GPIO_PULL_UP)
 
 /* Unimplemented signals which we need to emulate for now */
 /* TODO(wfrichar): Half the boards don't use this signal. Take it out. */
@@ -41,24 +41,23 @@ UNIMPLEMENTED(ENTERING_RW)
 #endif
 
 /* GPIOs - mark outputs as inputs too, to read back from the driven pad */
-PINMUX(GPIO(INT_AP_L),        B7, DIO_INPUT)	/* DIOB7 is p_digitial_od */
-                                                /* We can't pull it up */
-PINMUX(GPIO(EC_FLASH_SELECT), A3, DIO_INPUT)
-PINMUX(GPIO(AP_FLASH_SELECT), A7, DIO_INPUT)
-PINMUX(GPIO(AP_WP_L),         A5, 0)
-PINMUX(GPIO(SYS_RST),         M0, DIO_INPUT)
+PINMUX(GPIO(INT_AP_L),        A5, DIO_INPUT)
+PINMUX(GPIO(EC_FLASH_SELECT), B2, DIO_INPUT)
+PINMUX(GPIO(AP_FLASH_SELECT), B3, DIO_INPUT)
+PINMUX(GPIO(AP_WP_L),         M3, 0)
+PINMUX(GPIO(SYS_RST_L),       M0, DIO_INPUT)
 PINMUX(GPIO(CCD_MODE),        M1, DIO_INPUT)
-PINMUX(GPIO(BATT_PRES),       M2, 0)
+PINMUX(GPIO(BATT_PRES_L),     M2, 0)
 
 /* UARTs */
 PINMUX(FUNC(UART0_TX),        A0, DIO_OUTPUT)	/* Cr50 console */
 PINMUX(FUNC(UART0_RX),        A1, DIO_INPUT)
-PINMUX(FUNC(UART1_TX),        B3, DIO_INPUT)	/* AP console */
-PINMUX(FUNC(UART1_RX),        B2, DIO_INPUT)
+PINMUX(FUNC(UART1_TX),        A7, DIO_INPUT)	/* AP console */
+PINMUX(FUNC(UART1_RX),        A3, DIO_INPUT)
 PINMUX(FUNC(UART2_TX),        B5, DIO_INPUT)	/* EC console */
 PINMUX(FUNC(UART2_RX),        B6, DIO_INPUT)
 
-/* I2C pins are bi-directional */
+/* I2C pins are bi-directional, so enable DIO_INPUT */
 PINMUX(FUNC(I2C0_SCL),        B0, DIO_INPUT)
 PINMUX(FUNC(I2C0_SDA),        B1, DIO_INPUT)
 
