@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_63a95eb8",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-18T17:43:12Z",
+      "side": 1,
+      "message": "This won\u0027t be needed if you define it to 2 in config.h.",
+      "revId": "96e3a8639a781467c90f7aabecb75663a32f159f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_0398629a",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-18T17:43:12Z",
+      "side": 1,
+      "message": "No need for this config.",
+      "revId": "96e3a8639a781467c90f7aabecb75663a32f159f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_837d72f6",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-18T17:43:12Z",
+      "side": 1,
+      "message": "You can handle all cases with something like:\n\n#if CONFIG_MULTIPLE_USB_PORT_POWER \u003e\u003d 1\n\tif (port_id \u003d\u003d 0)\n\t\tgpio_set_level(GPIO_USB1_ENABLE, en);\n#endif\n#if CONFIG_MULTIPLE_USB_PORT_POWER \u003e\u003d 2\n\tif (port_id \u003d\u003d 2)\n\t\tgpio_set_level(GPIO_USB2_ENABLE, en);\n#endif\n...",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 39
+      },
+      "revId": "96e3a8639a781467c90f7aabecb75663a32f159f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_9ea4a9d1",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-18T17:43:12Z",
+      "side": 1,
+      "message": "Just use \u0027i\u0027 for index variables.",
+      "range": {
+        "startLine": 215,
+        "startChar": 5,
+        "endLine": 215,
+        "endChar": 10
+      },
+      "revId": "96e3a8639a781467c90f7aabecb75663a32f159f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_439a5a9b",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1719,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-18T17:43:12Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this.",
+      "range": {
+        "startLine": 1719,
+        "startChar": 7,
+        "endLine": 1719,
+        "endChar": 37
+      },
+      "revId": "96e3a8639a781467c90f7aabecb75663a32f159f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_03bfc2f1",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-18T17:43:12Z",
+      "side": 1,
+      "message": "Define this as 2 here by default. Boards can undef it, and re-define it to 3.",
+      "range": {
+        "startLine": 1724,
+        "startChar": 7,
+        "endLine": 1724,
+        "endChar": 35
+      },
+      "revId": "96e3a8639a781467c90f7aabecb75663a32f159f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
