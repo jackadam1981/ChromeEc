@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_6bbdb092",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-03-19T00:29:01Z",
+      "side": 1,
+      "message": "For some reason CHG_EN has to be disabled first and then re-enabled, only enabling the CHG_EN bit doesn\u0027t start charging.",
+      "revId": "371889cd7212d699d12b13552d5619f98232e10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
