@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "bcc18a6e_bd9d8b81",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-03-21T02:12:04Z",
+      "side": 1,
+      "message": "I think this is already done in board_init(), should it be done again here?",
+      "range": {
+        "startLine": 177,
+        "startChar": 2,
+        "endLine": 177,
+        "endChar": 43
+      },
+      "revId": "e250416099730b7669b09b615b5a72474a24180c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcc18a6e_da9e058d",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 2
