@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_b77d4af6",
+        "filename": "common/consumer_printing.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-21T20:59:49Z",
+      "side": 1,
+      "message": "block is probably what we want to specify instead of flush.  As in, should this call block trying to write out these bytes or should we just return a non-zero from printf.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 10
+      },
+      "revId": "bc11542e3338aa639b337b7b7976812684c91a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_9782c628",
+        "filename": "common/consumer_printing.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-21T20:59:49Z",
+      "side": 1,
+      "message": "This function and the one below don\u0027t deal with flushing or blocking, was working my way down the file.  :)",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 13
+      },
+      "revId": "bc11542e3338aa639b337b7b7976812684c91a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
