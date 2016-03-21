@@ -22,6 +22,54 @@
       "revId": "af47aebcbc2e0e25c97f0a2bc10ac9b2c529b215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_97364798",
+        "filename": "common/smbus.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-21T19:39:55Z",
+      "side": 1,
+      "message": "this seems fine to skip it in this corner case.",
+      "parentUuid": "9c2a06be_b7cd4b81",
+      "range": {
+        "startLine": 138,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "af47aebcbc2e0e25c97f0a2bc10ac9b2c529b215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_773bd37f",
+        "filename": "common/smbus.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-21T19:39:55Z",
+      "side": 1,
+      "message": "this seems fine to skip it in this corner case.",
+      "parentUuid": "9c2a06be_b7cd4b81",
+      "range": {
+        "startLine": 138,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "af47aebcbc2e0e25c97f0a2bc10ac9b2c529b215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
