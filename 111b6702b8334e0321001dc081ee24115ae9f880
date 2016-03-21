@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c2a06be_7c0d78d0",
+        "filename": "common/smbus.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-21T18:34:16Z",
+      "side": 1,
+      "message": "I asked ssl@ about this earlier (see https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d44052#c22). It\u0027s completely unnecessary.",
+      "parentUuid": "9c2a06be_bcc250a6",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "111b6702b8334e0321001dc081ee24115ae9f880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_fcccc8da",
         "filename": "common/smbus.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9c2a06be_7cd73839",
+        "filename": "common/smbus.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-21T18:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c2a06be_fcccc8da",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "111b6702b8334e0321001dc081ee24115ae9f880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_bc3c1076",
         "filename": "common/smbus.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-03-21T18:06:58Z",
       "side": 1,
       "message": "*plen used to be set with this value ?\nyou are no longer doing it ?",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 9
+      },
+      "revId": "111b6702b8334e0321001dc081ee24115ae9f880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_5cc8749b",
+        "filename": "common/smbus.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-21T18:34:16Z",
+      "side": 1,
+      "message": "You are right. I also need to make sure not to copy \u003e *plen bytes to data.",
+      "parentUuid": "9c2a06be_bc3c1076",
       "range": {
         "startLine": 131,
         "startChar": 1,
