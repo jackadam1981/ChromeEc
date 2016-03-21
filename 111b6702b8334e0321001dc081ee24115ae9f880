@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_bcc250a6",
+        "filename": "common/smbus.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-21T18:06:58Z",
+      "side": 1,
+      "message": "you silently removed the i2c_is_busy logic here,\nsince it used to be inside the i2c lock, not sure what it was supposed to do, but for sure if that case was ever encountered on any platform, it will now watchdog-reset rather than returning an error",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "111b6702b8334e0321001dc081ee24115ae9f880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_fcccc8da",
+        "filename": "common/smbus.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-21T18:06:58Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "111b6702b8334e0321001dc081ee24115ae9f880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_bc3c1076",
+        "filename": "common/smbus.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-21T18:06:58Z",
+      "side": 1,
+      "message": "*plen used to be set with this value ?\nyou are no longer doing it ?",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 9
+      },
+      "revId": "111b6702b8334e0321001dc081ee24115ae9f880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
