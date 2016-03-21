@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9c2a06be_bcab70e6",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-21T18:09:58Z",
+      "side": 1,
+      "message": "We\u0027re going to need to lock a mutex around any code that depends on BD99955_CMD_MAP_SET being set a certain way.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 67
+      },
+      "revId": "371889cd7212d699d12b13552d5619f98232e10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_6bbdb092",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 1
@@ -13,6 +36,29 @@
       "writtenOn": "2016-03-19T00:29:01Z",
       "side": 1,
       "message": "For some reason CHG_EN has to be disabled first and then re-enabled, only enabling the CHG_EN bit doesn\u0027t start charging.",
+      "revId": "371889cd7212d699d12b13552d5619f98232e10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_9c366c98",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-21T18:09:58Z",
+      "side": 1,
+      "message": "I don\u0027t think we actually want to commit this function, since it\u0027s basically re-implementing i2cxfer.",
+      "range": {
+        "startLine": 221,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 50
+      },
       "revId": "371889cd7212d699d12b13552d5619f98232e10c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
