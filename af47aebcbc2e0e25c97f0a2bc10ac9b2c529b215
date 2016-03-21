@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_b7cd4b81",
+        "filename": "common/smbus.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-21T18:34:16Z",
+      "side": 1,
+      "message": "CRC will be read as the (read_len + 1)th byte. We could read all of our extra data 4 bytes (sizeof(buf)) at a time, calculating CRC as we go along, and then finally comparing against the CRC byte.. but skipping is much simpler. What do you think?",
+      "range": {
+        "startLine": 138,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "af47aebcbc2e0e25c97f0a2bc10ac9b2c529b215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
