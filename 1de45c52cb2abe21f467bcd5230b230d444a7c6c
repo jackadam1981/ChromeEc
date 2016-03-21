@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_5c5fd4ea",
+        "filename": "chip/mec1322/keyboard_raw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-21T17:50:17Z",
+      "side": 1,
+      "message": "You will check each pair twice now, which I don\u0027t think is necessary. How about \"j \u003c i\" which was suggested earlier as the continue condition?",
+      "range": {
+        "startLine": 122,
+        "startChar": 13,
+        "endLine": 122,
+        "endChar": 35
+      },
+      "revId": "1de45c52cb2abe21f467bcd5230b230d444a7c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_dc290469",
+        "filename": "chip/mec1322/keyboard_raw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-21T17:50:17Z",
+      "side": 1,
+      "message": "Add a comment here, as suggested earlier?",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 51
+      },
+      "revId": "1de45c52cb2abe21f467bcd5230b230d444a7c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_bc4ff036",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4219,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-21T17:50:17Z",
+      "side": 1,
+      "message": "Now that shorted has non-boolean meaning, you should probably print it.",
+      "range": {
+        "startLine": 4219,
+        "startChar": 2,
+        "endLine": 4219,
+        "endChar": 41
+      },
+      "revId": "1de45c52cb2abe21f467bcd5230b230d444a7c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
