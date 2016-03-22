@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_f1022a58",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-22T15:45:51Z",
+      "side": 1,
+      "message": "I think we would prefer to have the muxes disconnected on initialization, in order to be sure that everything is tri-stated on initial connection",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 56
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_11fa5e87",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-22T15:45:51Z",
+      "side": 1,
+      "message": "you should not need this pin_mode variable and the set_dp_pin_mode above.\nmux_state already gives you the information :\nif you have (mux_state \u0026 MUX_USB_ENABLED) you have 2 lanes of USB, you are in the case PIN_D/PIN_F below,\nhere you will have only (mux_state \u0026 MUX_DP_ENABLED)",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 21
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_7130fa3e",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-22T15:45:51Z",
+      "side": 1,
+      "message": "please use (mux_state \u0026 MUX_POLARITY_INVERTED)",
+      "range": {
+        "startLine": 140,
+        "startChar": 12,
+        "endLine": 140,
+        "endChar": 26
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_d129e6cf",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-22T15:45:51Z",
+      "side": 1,
+      "message": "how do we disconnected/tri-state the muxes ?",
+      "range": {
+        "startLine": 164,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 30
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_5135f62c",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-22T15:45:51Z",
+      "side": 1,
+      "message": "the function doesn\u0027t do what the comment states",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 61
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_3127a2fd",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-22T15:45:51Z",
+      "side": 1,
+      "message": "you might prefer \u0027uint8_t\u0027 rather than \u0027unsigned char\u0027",
+      "range": {
+        "startLine": 240,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 14
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_7182baf6",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-22T15:45:51Z",
+      "side": 1,
+      "message": "put directly (header \u0026 0xff) here",
+      "range": {
+        "startLine": 265,
+        "startChar": 44,
+        "endLine": 265,
+        "endChar": 48
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_5187b604",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-22T15:45:51Z",
+      "side": 1,
+      "message": "put directly (header \u003e\u003e 8) here",
+      "range": {
+        "startLine": 269,
+        "startChar": 44,
+        "endLine": 269,
+        "endChar": 48
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_f1750ad4",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-22T15:45:51Z",
+      "side": 1,
+      "message": "as you are not resetting \u0027rv\u0027 when retrying, after the first failure, it seems you are always going to increment to 3 and fail",
+      "range": {
+        "startLine": 277,
+        "startChar": 2,
+        "endLine": 279,
+        "endChar": 15
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_d17286e9",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-22T15:45:51Z",
+      "side": 1,
+      "message": "uint8_t",
+      "range": {
+        "startLine": 309,
+        "startChar": 4,
+        "endLine": 309,
+        "endChar": 17
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_f1efcaa2",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-22T15:45:51Z",
+      "side": 1,
+      "message": "it\u0027s normally done from pd_dfp_exit_mode\n(right now in the board code, in .exit() callback for the displayport alternate mode.",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 2
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_31fa0261",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-22T15:45:51Z",
+      "side": 1,
+      "message": "no, muxes should not be connected on set_polarity",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 52
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_3c2ca032",
+        "filename": "driver/tcpm/anx74xx.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-22T15:45:51Z",
+      "side": 1,
+      "message": "As mentioned in patchset 9, given the register set is not following TCPCI spec, the naming is a bit confusing here.\nShould probably be something more Analogix specific.\ne.g ANX74XX_REG_",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 44
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
