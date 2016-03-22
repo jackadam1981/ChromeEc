@@ -96,7 +96,7 @@ static const struct battery_info info_sanyo = {
 	.charging_min_c = 0,
 	.charging_max_c = 60,
 	.discharging_min_c = 0,
-	.discharging_max_c = 40,
+	.discharging_max_c = 60,
 };
 
 /* see enum battery_type */
