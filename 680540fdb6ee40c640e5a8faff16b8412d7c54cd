@@ -22,6 +22,30 @@
       "revId": "680540fdb6ee40c640e5a8faff16b8412d7c54cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_76cd8baa",
+        "filename": "board/kunimitsu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2016-03-22T20:18:25Z",
+      "side": 1,
+      "message": "Yes. board_chipset_shutdown() disables this GPIO and is executed by HOOK_CHIPSET_SHUTDOWN hook.",
+      "parentUuid": "9c2a06be_36ff9311",
+      "range": {
+        "startLine": 725,
+        "startChar": 17,
+        "endLine": 725,
+        "endChar": 37
+      },
+      "revId": "680540fdb6ee40c640e5a8faff16b8412d7c54cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
