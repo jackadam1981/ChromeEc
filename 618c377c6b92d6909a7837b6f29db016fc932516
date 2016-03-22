@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_198c40f3",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-22T20:55:34Z",
+      "side": 1,
+      "message": "Minor change, but I\u0027d prefer to add a goto so that unlock / return is always handled at the end of the function.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "618c377c6b92d6909a7837b6f29db016fc932516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_5996b802",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-22T20:55:34Z",
+      "side": 1,
+      "message": "Minor change, but I\u0027d prefer to add a goto here.",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 13
+      },
+      "revId": "618c377c6b92d6909a7837b6f29db016fc932516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_797d7c8c",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-22T20:55:34Z",
+      "side": 1,
+      "message": "input_current \u0026\u003d 0x1f;",
+      "range": {
+        "startLine": 96,
+        "startChar": 18,
+        "endLine": 96,
+        "endChar": 31
+      },
+      "revId": "618c377c6b92d6909a7837b6f29db016fc932516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_b9d6d4c2",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-22T20:55:34Z",
+      "side": 1,
+      "message": "Let\u0027s change this to \"current \u0026\u003d ~0x3f\" to be consistent with general use across cros-ec?",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 31
+      },
+      "revId": "618c377c6b92d6909a7837b6f29db016fc932516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_f9c7ac0e",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-22T20:55:34Z",
+      "side": 1,
+      "message": "voltage \u0026\u003d ~0xf",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 31
+      },
+      "revId": "618c377c6b92d6909a7837b6f29db016fc932516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
