@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_2a45603e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-22T23:27:08Z",
+      "side": 1,
+      "message": "for non-polling platforms, are we actually sending a PD_EVENT_POWER_CHANGE at the timeout ?\nelse it seems that the UI might get stuck in Unknown mode.",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "fe81f7a65c9a0cbe85b9f2d11c0a7e8b62fc8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_aa59502c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-22T23:27:08Z",
+      "side": 1,
+      "message": "if the type is already USB_CHG_TYPE_PD, do we really want to reset it here ?",
+      "range": {
+        "startLine": 232,
+        "startChar": 6,
+        "endLine": 234,
+        "endChar": 34
+      },
+      "revId": "fe81f7a65c9a0cbe85b9f2d11c0a7e8b62fc8491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
