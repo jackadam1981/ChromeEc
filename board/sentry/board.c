@@ -607,6 +607,14 @@ int board_get_ramp_current_limit(int supplier, int sup_curr)
 	}
 }
 
+/* Called on AP S3 -> S0 transition */
+static void board_chipset_resume(void)
+{
+	gpio_set_level(GPIO_FAN_PWR_DIS_L, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume,
+	     MOTION_SENSE_HOOK_PRIO-1);
+
 /* Enable touchpad on chipset startup so that it can wake the system */
 static void board_chipset_startup(void)
 {
