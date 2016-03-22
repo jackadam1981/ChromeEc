@@ -225,14 +225,15 @@ static void charge_manager_fill_power_info(int port,
 		}
 		r->meas.voltage_max = available_charge[sup][port].voltage;
 
-		if (use_ramp_current) {
-			/*
-			 * If charge_ramp has not detected charger yet,
-			 * then charger type is unknown.
-			 */
-			if (!chg_ramp_is_detected())
-				r->type = USB_CHG_TYPE_UNKNOWN;
+		/*
+		 * Report unknown charger CHARGE_DETECT_DELAY after supplier
+		 * change since PD negotiation may take time.
+		 */
+		if (get_time().val < registration_time[port].val +
+				     CHARGE_DETECT_DELAY)
+			r->type = USB_CHG_TYPE_UNKNOWN;
 
+		if (use_ramp_current) {
 			/* Current limit is output of ramp module */
 			r->meas.current_lim = chg_ramp_get_current_limit();
 
