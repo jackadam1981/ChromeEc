@@ -299,6 +299,8 @@ void dptf_set_fan_duty_target(int pct)
 {
 	int fan;
 
+	ccprintf("###### DPTF sets fan duty cycle to %d%%\n", pct);
+
 	if (pct < 0 || pct > 100) {
 		/* TODO(crosbug.com/p/23803) */
 		for (fan = 0; fan < CONFIG_FANS; fan++)
