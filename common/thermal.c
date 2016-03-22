@@ -135,6 +135,28 @@ int thermal_fan_percent(int low, int high, int cur)
  */
 BUILD_ASSERT(EC_TEMP_THRESH_COUNT == 3);
 
+/*****************************************************************************/
+static int allow_fan_control = 0; /* not allowed */
+
+static void init_fan_control_deferred(void)
+{
+	allow_fan_control = 1;
+}
+DECLARE_DEFERRED(init_fan_control_deferred);
+
+/*
+ * keep fan at max-rpm and prevents EC-thermal-control from changing fan rpm
+ * for 9 sec right after EC starts
+ * */
+static void block_fan_control(void)
+{
+	allow_fan_control = 0;
+	hook_call_deferred(init_fan_control_deferred, 9 * SECOND);
+}
+
+DECLARE_HOOK(HOOK_INIT, block_fan_control, HOOK_PRIO_DEFAULT-1);
+
+/*****************************************************************************/
 /* Keep track of which thresholds have triggered */
 static cond_t cond_hot[EC_TEMP_THRESH_COUNT];
 
@@ -279,8 +301,10 @@ static void thermal_control(void)
 	 * profiles to each fan - in case one fan cools the CPU while another
 	 * cools the radios or battery.
 	 */
-	for (i = 0; i < CONFIG_FANS; i++)
-		fan_set_percent_needed(i, fmax);
+	if (allow_fan_control != 0) {
+		for (i = 0; i < CONFIG_FANS; i++)
+			fan_set_percent_needed(i, fmax);
+	}
 #endif
 
 	/* Don't forget to signal any DPTF thresholds */
