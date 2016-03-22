@@ -130,6 +130,7 @@
 #define I2C_PORT_TCPC                   NPCX_I2C_PORT1
 #define I2C_PORT_ALS                    NPCX_I2C_PORT2
 #define I2C_PORT_ACCEL                  NPCX_I2C_PORT2
+#define I2C_PORT_ACCELGYRO              NPCX_I2C_PORT2
 #define I2C_PORT_BATTERY                NPCX_I2C_PORT3
 #define I2C_PORT_CHARGER                NPCX_I2C_PORT3
 

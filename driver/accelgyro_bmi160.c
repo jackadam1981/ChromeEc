@@ -25,6 +25,10 @@
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
 
+#if !defined(CONFIG_SPI_ACCEL_PORT) && !defined(I2C_PORT_ACCELGYRO)
+#error "SPI or I2C interface definition required for BMI160"
+#endif
+
 /*
  * Struct for pairing an engineering value with the register value for a
  * parameter.
@@ -151,8 +155,8 @@ static int raw_read8(const int addr, const uint8_t reg, int *data_ptr)
 			*data_ptr = val;
 #endif
 	} else {
-#ifdef I2C_PORT_ACCEL
-		rv = i2c_read8(I2C_PORT_ACCEL, BMI160_I2C_ADDRESS(addr),
+#ifdef I2C_PORT_ACCELGYRO
+		rv = i2c_read8(I2C_PORT_ACCELGYRO, BMI160_I2C_ADDRESS(addr),
 			       reg, data_ptr);
 #endif
 	}
@@ -173,8 +177,8 @@ static int raw_write8(const int addr, const uint8_t reg, int data)
 				     cmd, 2, NULL, 0);
 #endif
 	} else {
-#ifdef I2C_PORT_ACCEL
-		rv = i2c_write8(I2C_PORT_ACCEL, BMI160_I2C_ADDRESS(addr),
+#ifdef I2C_PORT_ACCELGYRO
+		rv = i2c_write8(I2C_PORT_ACCELGYRO, BMI160_I2C_ADDRESS(addr),
 				reg, data);
 #endif
 	}
@@ -201,8 +205,8 @@ static int raw_read32(const int addr, const uint8_t reg, int *data_ptr)
 				  (uint8_t *)data_ptr, 4);
 #endif
 	} else {
-#ifdef I2C_PORT_ACCEL
-		rv = i2c_read32(I2C_PORT_ACCEL, BMI160_I2C_ADDRESS(addr),
+#ifdef I2C_PORT_ACCELGYRO
+		rv = i2c_read32(I2C_PORT_ACCELGYRO, BMI160_I2C_ADDRESS(addr),
 				reg, data_ptr);
 #endif
 	}
@@ -223,11 +227,11 @@ static int raw_read_n(const int addr, const uint8_t reg,
 		rv = spi_raw_read(BMI160_SPI_ADDRESS(addr), reg, data_ptr, len);
 #endif
 	} else {
-#ifdef I2C_PORT_ACCEL
-		i2c_lock(I2C_PORT_ACCEL, 1);
-		rv = i2c_xfer(I2C_PORT_ACCEL, BMI160_I2C_ADDRESS(addr), &reg, 1,
-				data_ptr, len, I2C_XFER_SINGLE);
-		i2c_lock(I2C_PORT_ACCEL, 0);
+#ifdef I2C_PORT_ACCELGYRO
+		i2c_lock(I2C_PORT_ACCELGYRO, 1);
+		rv = i2c_xfer(I2C_PORT_ACCELGYRO, BMI160_I2C_ADDRESS(addr),
+				&reg, 1, data_ptr, len, I2C_XFER_SINGLE);
+		i2c_lock(I2C_PORT_ACCELGYRO, 0);
 #endif
 	}
 	return rv;
