@@ -698,11 +698,9 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 				if (!modep->opos)
 					pd_dfp_enter_mode(port, 0, 0);
 
-				if (modep->opos) {
+				if (modep->opos)
 					rsize = modep->fx->status(port,
 								  payload);
-					payload[0] |= PD_VDO_OPOS(modep->opos);
-				}
 			}
 			break;
 		case CMD_DP_STATUS:
