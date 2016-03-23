@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9c2a06be_08b6a351",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-03-23T17:15:37Z",
+      "side": 1,
+      "message": "Yeah. I wasn\u0027t sure how big to make it. I just wanted to make it comparable to the UART tx buffer, but I will try your other suggestion.",
+      "parentUuid": "9c2a06be_68c2bfff",
+      "range": {
+        "startLine": 258,
+        "startChar": 33,
+        "endLine": 258,
+        "endChar": 43
+      },
+      "revId": "e00422e0a03e78f3cd57268d2ef67fca79490407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_e887cfd0",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 4
