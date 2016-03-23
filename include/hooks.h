@@ -190,22 +190,26 @@ struct hook_data {
  */
 void hook_notify(enum hook_type type);
 
+struct deferred_data {
+	/* Deferred function pointer */
+	void (*routine)(void);
+};
+
 /**
  * Start a timer to call a deferred routine.
  *
  * The routine will be called after at least the specified delay, in the
  * context of the hook task.
  *
- * @param routine	Routine to call; must have been declared with
- *			DECLARE_DEFERRED().
- * @param us		Delay in microseconds until routine will be called.
- *			If the routine is already pending, subsequent calls
- *			will change the delay.  Pass us=0 to call as soon as
- *			possible, or -1 to cancel the deferred call.
+ * @param data	The deferred_data struct created by invoking DECLARE_DEFERRED().
+ * @param us	Delay in microseconds until routine will be called.  If the
+ *		routine is already pending, subsequent calls will change the
+ *		delay.  Pass us=0 to call as soon as possible, or -1 to cancel
+ *		the deferred call.
  *
  * @return non-zero if error.
  */
-int hook_call_deferred(void (*routine)(void), int us);
+int hook_call_deferred(const struct deferred_data *data, int us);
 
 #ifdef CONFIG_COMMON_RUNTIME
 /**
@@ -239,12 +243,6 @@ int hook_call_deferred(void (*routine)(void), int us);
 	__attribute__((section(".rodata." STRINGIFY(hooktype))))	\
 	     = {routine, priority}
 
-
-struct deferred_data {
-	/* Deferred function pointer */
-	void (*routine)(void);
-};
-
 /**
  * Register a deferred function call.
  *
@@ -260,7 +258,7 @@ struct deferred_data {
  * @param routine	Function pointer, with prototype void routine(void)
  */
 #define DECLARE_DEFERRED(routine)					\
-	const struct deferred_data __keep CONCAT2(__deferred_, routine)	\
+	const struct deferred_data __keep CONCAT2(routine, _data)	\
 	__attribute__((section(".rodata.deferred")))			\
 	     = {routine}
 

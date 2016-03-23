@@ -138,14 +138,14 @@ DECLARE_DEFERRED(rx_fifo_handler);
 
 void blob_is_ready_for_more_bytes(void)
 {
-	hook_call_deferred(rx_fifo_handler, 0);
+	hook_call_deferred(&rx_fifo_handler_data, 0);
 }
 
 /* Rx/OUT interrupt handler */
 static void con_ep_rx(void)
 {
 	/* Wake up the Rx FIFO handler */
-	hook_call_deferred(rx_fifo_handler, 0);
+	hook_call_deferred(&rx_fifo_handler_data, 0);
 
 	/* clear the RX/OUT interrupts */
 	GR_USB_DOEPINT(USB_EP_BLOB) = 0xffffffff;
@@ -178,14 +178,14 @@ DECLARE_DEFERRED(tx_fifo_handler);
 
 void blob_is_ready_to_emit_bytes(void)
 {
-	hook_call_deferred(tx_fifo_handler, 0);
+	hook_call_deferred(&tx_fifo_handler_data, 0);
 }
 
 /* Tx/IN interrupt handler */
 static void con_ep_tx(void)
 {
 	/* Wake up the Tx FIFO handler */
-	hook_call_deferred(tx_fifo_handler, 0);
+	hook_call_deferred(&tx_fifo_handler_data, 0);
 
 	/* clear the Tx/IN interrupts */
 	GR_USB_DIEPINT(USB_EP_BLOB) = 0xffffffff;
@@ -211,8 +211,8 @@ static void ep_reset(void)
 	is_reset = 1;
 
 	/* Flush any queued data */
-	hook_call_deferred(tx_fifo_handler, 0);
-	hook_call_deferred(rx_fifo_handler, 0);
+	hook_call_deferred(&tx_fifo_handler_data, 0);
+	hook_call_deferred(&rx_fifo_handler_data, 0);
 }
 
 USB_DECLARE_EP(USB_EP_BLOB, con_ep_tx, con_ep_rx, ep_reset);
