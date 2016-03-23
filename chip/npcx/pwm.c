@@ -189,7 +189,7 @@ void pwm_config(enum pwm_channel ch)
 	int mdl = pwm_channels[ch].channel;
 
 	/* Disable PWM for module configuration */
-	pwm_enable(mdl, 0);
+	pwm_enable(ch, 0);
 
 	/* Set PWM heartbeat mode is no heartbeat */
 	SET_FIELD(NPCX_PWMCTL(mdl), NPCX_PWMCTL_HB_DC_CTL_FIELD,

@@ -142,6 +142,7 @@ int power_wait_signals(uint32_t want)
 
 void power_set_state(enum power_state new_state)
 {
+	ccprintf("SET STATE %d\n", new_state);
 	/* Record the time we go into G3 */
 	if (new_state == POWER_G3)
 		last_shutdown_time = get_time().val;
@@ -371,7 +372,7 @@ void chipset_task(void)
 /*****************************************************************************/
 /* Hooks */
 
-static void power_common_init(void)
+void power_common_init(void)
 {
 	const struct power_signal_info *s = power_signal_list;
 	int i;

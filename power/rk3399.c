@@ -15,6 +15,7 @@
 #include "power.h"
 #include "power_button.h"
 #include "system.h"
+#include "task.h"
 #include "timer.h"
 #include "usb_charge.h"
 #include "util.h"
@@ -56,7 +57,7 @@ static const struct power_signal_info power_control_outputs[] = {
 
 	{ GPIO_PP5000_EN, 1 },
 
-	{ GPIO_SYS_RST, 1 },
+	{ GPIO_SYS_RST, 0 },
 };
 
 
@@ -157,9 +158,9 @@ enum power_state power_handle_state(enum power_state state)
 		msleep(10); /* TBD */
 
 		/* Pulse SYS_RST */
-		gpio_set_level(GPIO_SYS_RST, 1);
-		msleep(10);
 		gpio_set_level(GPIO_SYS_RST, 0);
+		msleep(10);
+		gpio_set_level(GPIO_SYS_RST, 1);
 
 		gpio_set_level(GPIO_PP1800_LID_EN_L, 0);
 		gpio_set_level(GPIO_PP1800_SENSOR_EN_L, 0);
@@ -210,3 +211,26 @@ enum power_state power_handle_state(enum power_state state)
 
 	return state;
 }
+
+static int off = 1;
+static int tries = 0;
+void power_common_init(void);
+static void powerbtn_rockchip_changed(void)
+{
+	tries++;
+	if (tries % 2 == 0) return;
+	if (off) {
+		ccprintf("ON!\n");
+		chipset_exit_hard_off();
+		task_wake(TASK_ID_CHIPSET);
+	} else {
+		ccprintf("OFF!\n");
+		power_set_state(POWER_S0S3);
+		power_common_init();
+		power_set_state(POWER_S0S3);
+		task_wake(TASK_ID_CHIPSET);
+	}
+	off = !off;
+}
+DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, powerbtn_rockchip_changed,
+                HOOK_PRIO_DEFAULT);
