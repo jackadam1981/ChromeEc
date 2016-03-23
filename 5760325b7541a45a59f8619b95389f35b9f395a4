@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_195c3723",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-23T21:46:13Z",
+      "side": 1,
+      "message": "We need to remove the assert() and just silently return on error. And we can\u0027t simply test the sum, since it could overflow.\n\nSame for all the functions, not just read, of course.",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 46
+      },
+      "revId": "5760325b7541a45a59f8619b95389f35b9f395a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_cefe53ca",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-23T21:46:13Z",
+      "side": 1,
+      "message": "nit: I prefer \"Cr50\" over \"CR-50\".",
+      "range": {
+        "startLine": 8,
+        "startChar": 47,
+        "endLine": 8,
+        "endChar": 53
+      },
+      "revId": "5760325b7541a45a59f8619b95389f35b9f395a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_8e157bcf",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-23T21:46:13Z",
+      "side": 1,
+      "message": "The full SHA1 hash is an array of uint8_t. Casting this between uint32_t will work, but it can lead to misaligned accesses and isn\u0027t \"pure\" C. Can you use \"uint8_t sha[4]\" intead?",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 9
+      },
+      "revId": "5760325b7541a45a59f8619b95389f35b9f395a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_2ec28f70",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-23T21:46:13Z",
+      "side": 1,
+      "message": "You\u0027re inconsistent between sizes and signedness in block indices. phy_block and cache_block are int16, yet are assigned to and from int, int8_t, uint32_t. I\u0027d suggest either int or uint32_t everywhere.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 21
+      },
+      "revId": "5760325b7541a45a59f8619b95389f35b9f395a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_4e8ee35d",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-23T21:46:13Z",
+      "side": 1,
+      "message": "Here, too. nvmem_spare_block is int8_t, but cache_ram_index (just below) is uint8_t.",
+      "range": {
+        "startLine": 138,
+        "startChar": 7,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "5760325b7541a45a59f8619b95389f35b9f395a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_79fa9388",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-23T21:46:13Z",
+      "side": 1,
+      "message": "We also have to watch out for malicious configurations. What happens if I create four identical valid blocks, or multiple sets of valid blocks, or several copies of the same block all with different versions?",
+      "range": {
+        "startLine": 300,
+        "startChar": 4,
+        "endLine": 300,
+        "endChar": 21
+      },
+      "revId": "5760325b7541a45a59f8619b95389f35b9f395a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_994e67b1",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-23T21:46:13Z",
+      "side": 1,
+      "message": "This function uses assert(), which will probably be compiled out, or may either hang or reboot the Cr50. Either way, if this is important other than for testing, it should return a true/false value instead and fix things if it\u0027s false.",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 368,
+        "endChar": 25
+      },
+      "revId": "5760325b7541a45a59f8619b95389f35b9f395a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
