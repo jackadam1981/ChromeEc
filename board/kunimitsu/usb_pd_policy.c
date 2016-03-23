@@ -304,8 +304,9 @@ static void hpd1_irq_deferred(void)
 
 DECLARE_DEFERRED(hpd0_irq_deferred);
 DECLARE_DEFERRED(hpd1_irq_deferred);
-#define PORT_TO_HPD_IRQ_DEFERRED(port) ((port) ? hpd1_irq_deferred : \
-					hpd0_irq_deferred)
+#define PORT_TO_HPD_IRQ_DEFERRED(port) ((port) ?			\
+					&__deferred_hpd1_irq_deferred :	\
+					&__deferred_hpd0_irq_deferred)
 
 static int svdm_dp_attention(int port, uint32_t *payload)
 {

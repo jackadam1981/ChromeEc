@@ -1237,8 +1237,10 @@ void pd_send_hpd(int port, enum hpd_event hpd);
 
 /**
  * Enable USB Billboard Device.
+ *
+ * @param us number of microseconds from now to schedule the deferred call.
  */
-void pd_usb_billboard_deferred(void);
+void call_pd_usb_billboard_deferred(int us);
 /* --- Physical layer functions : chip specific --- */
 
 /* Packet preparation/retrieval */

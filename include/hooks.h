@@ -190,6 +190,11 @@ struct hook_data {
  */
 void hook_notify(enum hook_type type);
 
+struct deferred_data {
+	/* Deferred function pointer */
+	void (*routine)(void);
+};
+
 /**
  * Start a timer to call a deferred routine.
  *
@@ -205,7 +210,7 @@ void hook_notify(enum hook_type type);
  *
  * @return non-zero if error.
  */
-int hook_call_deferred(void (*routine)(void), int us);
+int hook_call_deferred(const struct deferred_data *data, int us);
 
 #ifdef CONFIG_COMMON_RUNTIME
 /**
@@ -238,12 +243,6 @@ int hook_call_deferred(void (*routine)(void), int us);
 	const struct hook_data __keep CONCAT4(__hook_, hooktype, _, routine) \
 	__attribute__((section(".rodata." STRINGIFY(hooktype))))	\
 	     = {routine, priority}
-
-
-struct deferred_data {
-	/* Deferred function pointer */
-	void (*routine)(void);
-};
 
 /**
  * Register a deferred function call.

@@ -119,7 +119,8 @@ static void vbus_vol_read_deferred(void)
 		vbus_vol_tail =  (flag_started == 0) ? 1 : vbus_vol_tail + 1;
 	}
 
-	hook_call_deferred(vbus_vol_read_deferred, DEFERRED_READ_TIME_US);
+	hook_call_deferred(&__deferred_vbus_vol_read_deferred,
+			   DEFERRED_READ_TIME_US);
 }
 DECLARE_DEFERRED(vbus_vol_read_deferred);
 
@@ -149,7 +150,8 @@ static void vbus_curr_read_deferred(void)
 		vbus_curr_tail = (flag_started == 0) ? 1 : vbus_curr_tail + 1;
 	}
 
-	hook_call_deferred(vbus_curr_read_deferred, DEFERRED_READ_TIME_US);
+	hook_call_deferred(&__deferred_vbus_curr_read_deferred,
+			   DEFERRED_READ_TIME_US);
 }
 DECLARE_DEFERRED(vbus_curr_read_deferred);
 #endif
@@ -364,8 +366,8 @@ void sniffer_init(void)
 	/* whether the sniffer task have started sending packet */
 	flag_started = 0;
 
-	hook_call_deferred(vbus_vol_read_deferred, 0);
-	hook_call_deferred(vbus_curr_read_deferred, 0);
+	hook_call_deferred(&__deferred_vbus_vol_read_deferred, 0);
+	hook_call_deferred(&__deferred_vbus_curr_read_deferred, 0);
 #endif
 
 	/* remap TIM1 CH1/2/3 to DMA channel 6 */

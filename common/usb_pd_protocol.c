@@ -2081,9 +2081,7 @@ void pd_task(void)
 					  PD_FLAGS_DATA_SWAPPED;
 			set_state(port, PD_STATE_SNK_DISCOVERY);
 			timeout = 10*MSEC;
-			hook_call_deferred(
-				pd_usb_billboard_deferred,
-				PD_T_AME);
+			call_pd_usb_billboard_deferred(PD_T_AME);
 			break;
 		case PD_STATE_SNK_HARD_RESET_RECOVER:
 			if (pd[port].last_state != pd[port].task_state)

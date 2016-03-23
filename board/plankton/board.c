@@ -104,7 +104,8 @@ void hpd_event(enum gpio_signal signal)
 	hpd_prev_ts = now.val;
 
 	/* All previous hpd level events need to be re-triggered */
-	hook_call_deferred(hpd_lvl_deferred, HPD_USTREAM_DEBOUNCE_LVL);
+	hook_call_deferred(&__deferred_hpd_lvl_deferred,
+			   HPD_USTREAM_DEBOUNCE_LVL);
 }
 
 /* Debounce time for voltage buttons */
@@ -177,13 +178,17 @@ static void set_active_cc(int cc)
  * is detected. If a type-C connection can be made in both polarities, then we
  * have a double CC cable, otherwise we have a single CC cable.
  */
+static void detect_cc_cable(void);
+DECLARE_DEFERRED(detect_cc_cable);
+
 static void detect_cc_cable(void)
 {
 	/*
 	 * Delay long enough to guarantee a type-C disconnect will be seen and
 	 * a new connection will be made made.
 	 */
-	hook_call_deferred(detect_cc_cable, PD_T_CC_DEBOUNCE + PD_T_SAFE_0V);
+	hook_call_deferred(&__deferred_detect_cc_cable,
+			   PD_T_CC_DEBOUNCE + PD_T_SAFE_0V);
 
 	switch (cable) {
 	case TYPEC_CABLE_NONE:
@@ -210,7 +215,6 @@ static void detect_cc_cable(void)
 		break;
 	}
 }
-DECLARE_DEFERRED(detect_cc_cable);
 
 static void fake_disconnect_end(void)
 {
@@ -218,14 +222,14 @@ static void fake_disconnect_end(void)
 	board_pd_set_host_mode(fake_pd_host_mode);
 
 	/* Restart CC cable detection */
-	hook_call_deferred(detect_cc_cable, 500*MSEC);
+	hook_call_deferred(&__deferred_detect_cc_cable, 500*MSEC);
 }
 DECLARE_DEFERRED(fake_disconnect_end);
 
 static void fake_disconnect_start(void)
 {
 	/* Cancel detection of CC cable */
-	hook_call_deferred(detect_cc_cable, -1);
+	hook_call_deferred(&__deferred_detect_cc_cable, -1);
 
 	/* Record the current host mode */
 	fake_pd_host_mode = !gpio_get_level(GPIO_USBC_CHARGE_EN);
@@ -241,7 +245,7 @@ static void fake_disconnect_start(void)
 
 	fake_pd_disconnected = 1;
 
-	hook_call_deferred(fake_disconnect_end,
+	hook_call_deferred(&__deferred_fake_disconnect_end,
 			   fake_pd_disconnect_duration_us);
 }
 DECLARE_DEFERRED(fake_disconnect_start);
@@ -261,7 +265,7 @@ static void update_usbc_dual_role(int dual_role)
 		 * since both CC lines are used and SRC/SNK changes are dictated
 		 * by the USB PD protocol state machine.
 		 */
-		hook_call_deferred(detect_cc_cable, -1);
+		hook_call_deferred(&__deferred_detect_cc_cable, -1);
 		/* Need to make sure both CC lines are set for SNK or SRC. */
 		set_active_cc(host_mode);
 		/* Ensure that PD communication is enabled. */
@@ -272,7 +276,7 @@ static void update_usbc_dual_role(int dual_role)
 		 * Dualrole mode is not active, resume cable detect function
 		 * which controls which CC line is active.
 		 */
-		hook_call_deferred(detect_cc_cable, 0);
+		hook_call_deferred(&__deferred_detect_cc_cable, 0);
 	}
 	/* Update dual role setting used in USB PD protocol state machine */
 	pd_set_dual_role(dual_role);
@@ -335,10 +339,12 @@ static void set_usbc_action(enum usbc_action act)
 			 * Fake a disconnection for long enough to guarantee
 			 * that we disconnect.
 			 */
-			hook_call_deferred(fake_disconnect_start, -1);
-			hook_call_deferred(fake_disconnect_end, -1);
+			hook_call_deferred(&__deferred_fake_disconnect_start,
+					   -1);
+			hook_call_deferred(&__deferred_fake_disconnect_end, -1);
 			fake_pd_disconnect_duration_us = PD_T_SAFE_0V;
-			hook_call_deferred(fake_disconnect_start, 0);
+			hook_call_deferred(&__deferred_fake_disconnect_start,
+					   0);
 			set_active_cc(!active_cc);
 		}
 		break;
@@ -368,17 +374,20 @@ static void set_usbc_action(enum usbc_action act)
 	}
 }
 
-/* has Pull-up */
-static int prev_dbg20v = 1;
 static void button_dbg20v_deferred(void);
+DECLARE_DEFERRED(button_dbg20v_deferred);
+
 static void enable_dbg20v_poll(void)
 {
-	hook_call_deferred(button_dbg20v_deferred, 10 * MSEC);
+	hook_call_deferred(&__deferred_button_dbg20v_deferred, 10 * MSEC);
 }
 
 /* Handle debounced button press */
 static void button_deferred(void)
 {
+	/* has Pull-up */
+	static int prev_dbg20v = 1;
+
 	if (button_pressed == GPIO_DBG_20V_TO_DUT_L) {
 		enable_dbg20v_poll();
 		if (gpio_get_level(GPIO_DBG_20V_TO_DUT_L) == prev_dbg20v)
@@ -427,7 +436,7 @@ void button_event(enum gpio_signal signal)
 {
 	button_pressed = signal;
 	/* reset debounce time */
-	hook_call_deferred(button_deferred, BUTTON_DEBOUNCE_US);
+	hook_call_deferred(&__deferred_button_deferred, BUTTON_DEBOUNCE_US);
 }
 
 static void button_dbg20v_deferred(void)
@@ -437,7 +446,6 @@ static void button_dbg20v_deferred(void)
 	else
 		enable_dbg20v_poll();
 }
-DECLARE_DEFERRED(button_dbg20v_deferred);
 
 void vbus_event(enum gpio_signal signal)
 {
@@ -729,10 +737,11 @@ static void board_init(void)
 
 	/* Initialize USB hub */
 	if (system_get_reset_flags() & RESET_FLAG_POWER_ON)
-		hook_call_deferred(board_usb_hub_reset_no_return, 500 * MSEC);
+		hook_call_deferred(&__deferred_board_usb_hub_reset_no_return,
+				   500 * MSEC);
 
 	/* Start detecting CC cable type */
-	hook_call_deferred(detect_cc_cable, SECOND);
+	hook_call_deferred(&__deferred_detect_cc_cable, SECOND);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -752,11 +761,11 @@ static int cmd_fake_disconnect(int argc, char *argv[])
 		return EC_ERROR_PARAM2;
 
 	/* Cancel any pending function calls */
-	hook_call_deferred(fake_disconnect_start, -1);
-	hook_call_deferred(fake_disconnect_end, -1);
+	hook_call_deferred(&__deferred_fake_disconnect_start, -1);
+	hook_call_deferred(&__deferred_fake_disconnect_end, -1);
 
 	fake_pd_disconnect_duration_us = duration_ms * MSEC;
-	hook_call_deferred(fake_disconnect_start, delay_ms * MSEC);
+	hook_call_deferred(&__deferred_fake_disconnect_start, delay_ms * MSEC);
 
 	ccprintf("Fake disconnect for %d ms starting in %d ms.\n",
 		 duration_ms, delay_ms);
@@ -779,7 +788,7 @@ static int cmd_trigger_dfu(int argc, char *argv[])
 	ccprintf("Asserting CASE_CLOSE_DFU_L.\n");
 	ccprintf("If you expect to see DFU debug but it doesn't show up,\n");
 	ccprintf("try flipping the USB type-C cable.\n");
-	hook_call_deferred(trigger_dfu_release, 1500 * MSEC);
+	hook_call_deferred(&__deferred_trigger_dfu_release, 1500 * MSEC);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(dfu, cmd_trigger_dfu, NULL, NULL, NULL);

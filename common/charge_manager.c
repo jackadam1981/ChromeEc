@@ -651,9 +651,8 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 		override_port = OVERRIDE_OFF;
 		if (delayed_override_port != OVERRIDE_OFF) {
 			delayed_override_port = OVERRIDE_OFF;
-			hook_call_deferred(
-				charge_override_timeout,
-				-1);
+			hook_call_deferred(&__deferred_charge_override_timeout,
+					   -1);
 		}
 	}
 
@@ -670,7 +669,8 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 		    pd_get_role(delayed_override_port) == PD_ROLE_SINK &&
 		    get_time().val < delayed_override_deadline.val) {
 			delayed_override_port = OVERRIDE_OFF;
-			hook_call_deferred(charge_override_timeout, -1);
+			hook_call_deferred(&__deferred_charge_override_timeout,
+					   -1);
 			charge_manager_set_override(port);
 		}
 	}
@@ -682,7 +682,7 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 	 * attached.
 	 */
 	if (charge_manager_is_seeded())
-		hook_call_deferred(charge_manager_refresh, 0);
+		hook_call_deferred(&__deferred_charge_manager_refresh, 0);
 }
 
 /**
@@ -739,7 +739,8 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 	if (charge_ceil[port][requestor] != ceil) {
 		charge_ceil[port][requestor] = ceil;
 		if (port == charge_port && charge_manager_is_seeded())
-				hook_call_deferred(charge_manager_refresh, 0);
+			hook_call_deferred(&__deferred_charge_manager_refresh,
+					   0);
 	}
 }
 
@@ -775,7 +776,8 @@ int charge_manager_set_override(int port)
 		if (override_port != port) {
 			override_port = port;
 			if (charge_manager_is_seeded())
-				hook_call_deferred(charge_manager_refresh, 0);
+				hook_call_deferred(
+					&__deferred_charge_manager_refresh, 0);
 		}
 	}
 	/*
@@ -787,8 +789,7 @@ int charge_manager_set_override(int port)
 		delayed_override_deadline.val = get_time().val +
 						POWER_SWAP_TIMEOUT;
 		delayed_override_port = port;
-		hook_call_deferred(
-			charge_override_timeout,
+		hook_call_deferred(&__deferred_charge_override_timeout,
 			POWER_SWAP_TIMEOUT);
 		pd_request_power_swap(port);
 	/* Can't charge from requested port -- return error. */
