@@ -102,6 +102,37 @@ int charger_set_input_current(int input_current)
 				BD99955_BAT_CHG_COMMAND);
 }
 
+int charger_get_extpower_present(void)
+{
+	int rv;
+	int reg;
+
+	rv = ch_raw_read16(BD99955_CMD_VBUS_VCC_STATUS, &reg,
+			   BD99955_EXTENDED_COMMAND);
+	if (!rv)
+		return !!(reg & 0x101);
+	return 0;
+}
+
+int charger_select_input_port(int port)
+{
+	int rv;
+	int reg;
+
+	rv = ch_raw_read16(BD99955_CMD_VIN_CTRL_SET, &reg,
+			   BD99955_EXTENDED_COMMAND);
+	if (rv)
+		return rv;
+	reg &= ~0x60;
+	if (port == 0)
+		reg |= 0x40;
+	else if (port == 1)
+		reg |= 0x20;
+
+	return ch_raw_write16(BD99955_CMD_VIN_CTRL_SET, reg,
+			      BD99955_EXTENDED_COMMAND);
+}
+
 int charger_get_input_current(int *input_current)
 {
 	int rv;
@@ -200,6 +231,22 @@ int charger_set_voltage(int voltage)
 int charger_post_init(void)
 {
 	int rv;
+	int read;
+
+	/* Close USB data switches */
+	ch_raw_read16(BD99955_CMD_VCC_UCD_SET, &read,
+				BD99955_EXTENDED_COMMAND);
+	read &= ~0x3;
+	read |= 1;
+	ch_raw_write16(BD99955_CMD_VCC_UCD_SET, read,
+				BD99955_EXTENDED_COMMAND);
+
+	ch_raw_read16(BD99955_CMD_VBUS_UCD_SET, &read,
+				BD99955_EXTENDED_COMMAND);
+	read &= ~0x3;
+	read |= 1;
+	ch_raw_write16(BD99955_CMD_VBUS_UCD_SET, read,
+				BD99955_EXTENDED_COMMAND);
 
 	/*
 	 * TODO: Disable charger & re-enable to initialize it.
@@ -232,3 +279,31 @@ int charger_discharge_on_ac(int enable)
 	return ch_raw_write16(BD99955_CMD_CHGOP_SET2, reg,
 				BD99955_EXTENDED_COMMAND);
 }
+
+static int read_ext(uint8_t cmd)
+{
+	int read = 0;
+	ch_raw_read16(cmd, &read, BD99955_EXTENDED_COMMAND);
+	return read;
+}
+
+/* Debug charging issues */
+static int console_bdd(int argc, char **argv)
+{
+	int i;
+	uint8_t regs[] = {
+		BD99955_CMD_CHGSTM_STATUS,
+		BD99955_CMD_VBAT_VSYS_STATUS,
+		BD99955_CMD_VBUS_VCC_STATUS,
+		BD99955_CMD_CHGOP_STATUS,
+		BD99955_CMD_SYSTEM_STATUS,
+	};
+	for (i = 0; i < ARRAY_SIZE(regs); ++i)
+		ccprintf("REG %d:%x\n", regs[i], read_ext(regs[i]));
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(bdd, console_bdd,
+			NULL,
+			"Get the system power in mW",
+			NULL);
