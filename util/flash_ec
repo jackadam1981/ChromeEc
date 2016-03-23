@@ -97,6 +97,7 @@ BOARDS_NPCX_5M6G_JTAG=(
 BOARDS_NPCX_SPI=(
 	kevin
 	wheatley
+	kevin
 )
 
 BOARDS_NRF51=(
@@ -460,7 +461,7 @@ fi
 
 
 	sudo timeout -k 10 -s 9 "${FLAGS_timeout}" \
-		${FLASHROM} ${FLASHROM_PARAM} -w "${T}"
+		${FLASHROM} ${FLASHROM_PARAM} -V -w "${T}"
 
 	rm $T
 
