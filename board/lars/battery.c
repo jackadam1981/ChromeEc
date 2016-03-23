@@ -181,7 +181,18 @@ int board_cut_off_battery(void)
 #define BATT_PRESENT_MV  1500
 #define ABLE 1
 #define UNABLE 0
-#define SONY_DISCHARGE_FET_BIT (0x1 << 15)
+/* For Sony
+ * b15, b14: FET Status
+ * 00: Charge FET = on,  Discharge FET = on
+ * 01: Charge FET = off, Discharge FET = on
+ * 10: Charge FET = off, Discharge FET = off
+ * 11: Charge FET = on,  Discharge FET = off
+ */
+#define SONY_DISCHARGE_FET_BIT (0x3 << 14)
+/* For Sanyo
+ * b14: Discharge FET status
+ * b15: Charge FET or Precharge FET status
+ */
 #define SANYO_DISCHARGE_FET_BIT (0x1 << 14)
 static int can_battery_provide_power(enum battery_type type)
 {
@@ -206,7 +217,10 @@ static int can_battery_provide_power(enum battery_type type)
 
 	switch (type) {
 	case SONY:
-		if (batt_discharge_fet & SONY_DISCHARGE_FET_BIT)
+		batt_discharge_fet = (batt_discharge_fet &
+					SONY_DISCHARGE_FET_BIT) >> 14;
+
+		if (batt_discharge_fet == 0x10 || batt_discharge_fet == 0x11)
 			return UNABLE;
 		break;
 	case SANYO:
