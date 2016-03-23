@@ -54,7 +54,7 @@ int pd_set_power_supply_ready(int port)
 
 	/* Provide VBUS */
 	gpio_set_level(port ? GPIO_C1_VOUT_EN_L :
-			      GPIO_C0_VOUT_EN_L, 1);
+			      GPIO_C0_VOUT_EN_L, 0);
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
@@ -66,7 +66,7 @@ void pd_power_supply_reset(int port)
 {
 	/* Disable VBUS */
 	gpio_set_level(port ? GPIO_C1_VOUT_EN_L :
-			      GPIO_C0_VOUT_EN_L, 0);
+			      GPIO_C0_VOUT_EN_L, 1);
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
