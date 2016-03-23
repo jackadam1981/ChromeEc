@@ -96,6 +96,7 @@ BOARDS_NPCX_5M6G_JTAG=(
 
 BOARDS_NPCX_SPI=(
 	wheatley
+	kevin
 )
 
 BOARDS_NRF51=(
@@ -421,7 +422,7 @@ function flash_flashrom() {
 	dut_control cold_reset:on
 
 	# Turn on SPI1 interface on servo for 3.3V SPI Flash Chip
-	dut_control spi1_vref:pp3300 spi1_buf_en:on spi1_buf_on_flex_en:on
+	dut_control spi1_vref:pp1800 spi1_buf_en:on spi1_buf_on_flex_en:on
 
 	SPI_SIZE=$(sudo ${FLASHROM} ${FLASHROM_PARAM} --get-size 2>/dev/null | tail -n 1)
 	IMG_SIZE=$(stat -c%s "$IMG")
@@ -448,7 +449,7 @@ fi
 
 
 	sudo timeout -k 10 -s 9 "${FLAGS_timeout}" \
-		${FLASHROM} ${FLASHROM_PARAM} -w "${T}"
+		${FLASHROM} ${FLASHROM_PARAM} -V -w "${T}"
 
 	rm $T
 

@@ -7,10 +7,15 @@
 #include "adc_chip.h"
 #include "backlight.h"
 #include "button.h"
+#include "charge_state.h"
+#include "charger.h"
+#include "chipset.h"
 #include "common.h"
+#include "console.h"
 #include "driver/tcpm/fusb302.h"
 #include "extpower.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
 #include "keyboard_scan.h"
@@ -27,10 +32,19 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
-static void tcpc_alert_event(enum gpio_signal signal)
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
+void tcpc_alert_event(enum gpio_signal signal)
 {
 	/* Exchange status with TCPCs */
 	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
+}
+
+void s0s3_toggle_interrupt(enum gpio_signal signal)
+{
+	/* Exchange status with TCPCs */
+	ccprintf("TOGGLE TO %d\n", gpio_get_level(GPIO_AP_EC_S3_S0_L));
 }
 
 #include "gpio_list.h"
@@ -121,20 +135,92 @@ uint16_t tcpc_get_alert_status(void)
 	return status;
 }
 
+int charger_select_input_port(int port);
+
 int board_set_active_charge_port(int charge_port)
 {
-	/* TODO: Select proper charge port through BD99955 regs. */
-	ASSERT(charge_port != 1);
-	return EC_SUCCESS;
+	CPRINTS("New chg p%d", charge_port);
+	return charger_select_input_port(charge_port);
 }
 
 void board_set_charge_limit(int charge_ma)
 {
-	/* TODO: Add support for BD99955 charger. */
+	charge_set_input_current_limit(MAX(charge_ma,
+				       CONFIG_CHARGER_INPUT_CURRENT));
+
 }
+
+int charger_get_extpower_present(void);
 
 int extpower_is_present(void)
 {
-	/* TODO: Add support for BD99955 charger. */
-	return 1;
+	return charger_get_extpower_present();
 }
+
+struct power_sequence_info {
+	enum gpio_signal gpio;
+	int level;
+	int stage;
+};
+static const struct power_sequence_info power_control_outputs[] = {
+        { GPIO_AP_CORE_EN, 1, 7 },
+        { GPIO_LPDDR_PWR_EN, 1 , 5},
+        { GPIO_PPVAR_CLOGIC_EN, 1, 3 },
+        { GPIO_PPVAR_LOGIC_EN, 1 , 1},
+
+        { GPIO_PP900_AP_EN, 1 , 1},
+        { GPIO_PP900_DDRPLL_EN, 1, 2 },
+        { GPIO_PP900_PLL_EN, 1 , 2},
+        { GPIO_PP900_PMU_EN, 1 , 2},
+        { GPIO_PP900_USB_EN, 1, 4 },
+        { GPIO_PP900_PCIE_EN, 1, 2 },
+
+        { GPIO_PP1200_HSIC_EN, 1, 6 },
+
+        { GPIO_PP1800_SENSOR_EN_L, 0, 12},
+        { GPIO_PP1800_LID_EN_L, 0, 12 },
+        { GPIO_PP1800_PMU_EN_L, 0, 4 },
+        { GPIO_PP1800_AP_AVDD_EN_L, 0, 4 },
+        { GPIO_PP1800_USB_EN_L, 0 , 4},
+        { GPIO_PP1800_S0_EN_L, 0, 9 },
+        { GPIO_PP1800_SIXAXIS_EN_L, 0, 6 },
+
+        { GPIO_PP3300_TRACKPAD_EN_L, 0, 6 },
+        { GPIO_PP3300_USB_EN_L, 0, 8 },
+        { GPIO_PP3300_S0_EN_L, 0, 10 },
+
+        { GPIO_PP5000_EN, 1, 5 },
+
+        { GPIO_SYS_RST, 1, 11 },
+};
+
+
+static int command_pwrseq(int argc, char **argv)
+{
+	const struct power_sequence_info *output_signal;
+	int i;
+	int seq;
+	char *e;
+
+	seq = strtoi(argv[1], &e, 10);
+	ccprintf("Stage %d\n", seq);
+        for (i = 0; i < ARRAY_SIZE(power_control_outputs); ++i) {
+                output_signal = &power_control_outputs[i];
+		if (output_signal->stage  == seq) {
+                	gpio_set_level(output_signal->gpio, output_signal->level);
+		}
+        }
+
+        return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(pwrseq, command_pwrseq,
+                        "[on|off]",
+                        "Get or set fast charging profile",
+                        NULL);
+
+static void board_init(void)
+{
+	gpio_enable_interrupt(GPIO_AP_EC_S3_S0_L);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+

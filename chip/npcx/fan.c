@@ -333,7 +333,7 @@ void fan_set_duty(int ch, int percent)
 		disable_sleep(SLEEP_MASK_FAN);
 
 	/* Set the duty cycle of PWM */
-	pwm_set_duty(pwm_id, percent);
+	pwm_set_duty(ch, percent);
 }
 /* ensure that only one fan used since ec enables sleep bit if duty is zero */
 BUILD_ASSERT(CONFIG_FANS <= 1);
@@ -404,7 +404,7 @@ int fan_get_enabled(int ch)
 {
 	int pwm_id = mft_channels[ch].pwm_id;
 
-	return pwm_get_enabled(pwm_id);
+	return pwm_get_enabled(ch);
 }
 /**
  * Set fan enabled.
@@ -419,7 +419,7 @@ void fan_set_enabled(int ch, int enabled)
 
 	if (!enabled)
 		fan_status[ch].auto_status = FAN_STATUS_STOPPED;
-	pwm_enable(pwm_id, enabled);
+	pwm_enable(ch, enabled);
 }
 
 /**
