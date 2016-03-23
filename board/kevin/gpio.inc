@@ -12,7 +12,6 @@
 
 
 GPIO_INT(WP_L,             PIN(9, 3), GPIO_INT_BOTH, switch_interrupt)
-GPIO_INT(SHI_CS_L,         PIN(5, 3), GPIO_INT_FALLING, shi_cs_event)
 GPIO_INT(USB_C0_PD_INT_L,  PIN(6, 0), GPIO_INT_FALLING | GPIO_PULL_UP,
          tcpc_alert_event)
 GPIO_INT(USB_C1_PD_INT_L,  PIN(6, 2), GPIO_INT_FALLING | GPIO_PULL_UP,
@@ -21,10 +20,11 @@ GPIO_INT(VOLUME_UP_L,      PIN(8, 2), GPIO_INT_BOTH | GPIO_INPUT | GPIO_PULL_UP,
          button_interrupt)
 GPIO_INT(VOLUME_DOWN_L,    PIN(8, 3), GPIO_INT_BOTH | GPIO_INPUT | GPIO_PULL_UP,
          button_interrupt)
-GPIO_INT(POWER_BUTTON_L,   PIN(0, 4), GPIO_INT_BOTH | GPIO_INPUT,
-         power_button_interrupt)
+GPIO_INT(POWER_BUTTON_L,   PIN(0, 4), GPIO_INT_BOTH, power_button_interrupt)
 GPIO_INT(LID_OPEN,         PIN(9, 7), GPIO_INT_BOTH | GPIO_INPUT | GPIO_SEL_1P8V,
          lid_interrupt)
+GPIO_INT(AP_EC_S3_S0_L,    PIN(5, 4), GPIO_INT_BOTH, s0s3_toggle_interrupt)
+GPIO_INT(SHI_CS_L,         PIN(5, 3), GPIO_INT_FALLING, shi_cs_event)
 
 /* TODO: Add power sequencing interrupt pins */
 
@@ -59,7 +59,6 @@ GPIO(PP5000_EN,            PIN(C, 6), GPIO_OUT_LOW)
 
 GPIO(PP5000_PG,            PIN(7, 1), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(TPS65261_PG,          PIN(7, 5), GPIO_INPUT | GPIO_PULL_UP)
-GPIO(AP_EC_S3_S0_L,        PIN(5, 4), GPIO_INPUT)
 GPIO(AP_CORE_PG,           PIN(6, 7), GPIO_INPUT | GPIO_PULL_UP)
 
 /*
@@ -88,17 +87,17 @@ GPIO(C0_VOUT_EN_L,         PIN(D, 3), GPIO_OUT_HIGH)
 GPIO(C1_VOUT_EN_L,         PIN(D, 2), GPIO_OUT_HIGH)
 
 GPIO(ENTERING_RW,          PIN(7, 6), GPIO_OUT_LOW)
-GPIO(SYS_RST,              PIN(6, 1), GPIO_OUT_LOW)
-GPIO(EC_INT_L,             PIN(5, 7), GPIO_OUT_HIGH)
+GPIO(SYS_RST,              PIN(6, 1), GPIO_OUT_HIGH)
+GPIO(EC_INT_L,             PIN(5, 7), GPIO_INPUT )
 GPIO(EC_BOARD_ID_EN_L,     PIN(3, 5), GPIO_OUT_HIGH)
 
 /* NC */
 GPIO(STRAP_ENG_L,          PIN(B, 6), GPIO_OUT_LOW)
 GPIO(USB_DP_HPD,           PIN(6, 6), GPIO_OUT_LOW)
 GPIO(CHARGER_RESET_L,      PIN(0, 1), GPIO_OUT_HIGH | GPIO_OPEN_DRAIN)
-GPIO(CR50_RESET_L,         PIN(0, 2), GPIO_OUT_HIGH | GPIO_OPEN_DRAIN)
+GPIO(CR50_RESET_L,         PIN(0, 2), GPIO_OUT_HIGH)
 GPIO(CHARGER_INT_L,        PIN(3, 3), GPIO_INPUT)
-GPIO(EC_BATT_PRES_L,       PIN(3, 4), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(EC_BATT_PRES_L,       PIN(3, 4), GPIO_INPUT)
 GPIO(LID_360_L,            PIN(3, 6), GPIO_INPUT | GPIO_SEL_1P8V)
 GPIO(BASE_SIXAXIS_INT_L,   PIN(4, 0), GPIO_INPUT | GPIO_SEL_1P8V)
 GPIO(CCD_MODE,             PIN(6, 3), GPIO_INPUT)
