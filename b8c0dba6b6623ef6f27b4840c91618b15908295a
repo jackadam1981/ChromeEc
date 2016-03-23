@@ -22,6 +22,30 @@
       "revId": "b8c0dba6b6623ef6f27b4840c91618b15908295a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_8e63bb86",
+        "filename": "include/hooks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-23T20:45:41Z",
+      "side": 1,
+      "message": "Sorry, forgot to mark this as WIP, yeah, I don\u0027t like the __deferred_ everywhere.  It can\u0027t be a macro though, I initially started that way, because there are cases where we\u0027re using a variable to hold the routine parameter.  I\u0027ve got a new version of this CL on the way that cleans up all the names.",
+      "parentUuid": "9c2a06be_8e345bbe",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 65
+      },
+      "revId": "b8c0dba6b6623ef6f27b4840c91618b15908295a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
