@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_8e345bbe",
+        "filename": "include/hooks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-23T20:23:49Z",
+      "side": 1,
+      "message": "I suggest making hook_call_deferred() into a macro, so that we don\u0027t have to change how it\u0027s invoked everywhere. We currently have this:\n\n  void foo(void) { ... }\n  DECLARE_DEFERRED(foo);\n\n  hook_call_deferred(foo, 0);\n\nThe current CL would change that to\n\n  void foo(void) { ... }\n  DECLARE_DEFERRED(foo);\n\n  hook_call_deferred(\u0026__deferred_foo, 0);\n\nwhich is not at all obvious. \n\nUsing a macro to automatically prepend \"\u0026__deferred_\" to the function name would be much more readable.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 65
+      },
+      "revId": "b8c0dba6b6623ef6f27b4840c91618b15908295a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
