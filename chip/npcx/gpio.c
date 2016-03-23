@@ -591,12 +591,6 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 	else
 		NPCX_PTYPE(port) &= ~mask;
 
-	/* Select direction of GPIO 0:input 1:output */
-	if (flags & GPIO_OUTPUT)
-		NPCX_PDIR(port) |= mask;
-	else
-		NPCX_PDIR(port) &= ~mask;
-
 	/* Select pull-up/down of GPIO 0:pull-up 1:pull-down */
 	if (flags & GPIO_PULL_UP) {
 		NPCX_PPUD(port)  &= ~mask;
@@ -631,6 +625,11 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 	else if (flags & GPIO_LOW)
 		NPCX_PDOUT(port) &= ~mask;
 
+	/* Select direction of GPIO 0:input 1:output */
+	if (flags & GPIO_OUTPUT)
+		NPCX_PDIR(port) |= mask;
+	else
+		NPCX_PDIR(port) &= ~mask;
 }
 
 int gpio_enable_interrupt(enum gpio_signal signal)
