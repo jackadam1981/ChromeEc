@@ -272,6 +272,7 @@ int spi_flash_write(unsigned int offset, unsigned int bytes,
 		return EC_ERROR_INVAL;
 
 	while (bytes > 0) {
+		watchdog_reload();
 		/* Write length can not go beyond the end of the flash page */
 		write_size = MIN(bytes, SPI_FLASH_MAX_WRITE_SIZE -
 		(offset & (SPI_FLASH_MAX_WRITE_SIZE - 1)));
