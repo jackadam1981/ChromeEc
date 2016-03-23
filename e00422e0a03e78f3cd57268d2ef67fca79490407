@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2a06be_8859f361",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-23T16:56:14Z",
+      "side": 1,
+      "message": "This function doesn\u0027t seem to be required.  I would suggest moving the call to hook_call_deferred up to outgoing_add and call the deferred handler only if outgoing add was passed a non-zero count.",
+      "range": {
+        "startLine": 211,
+        "startChar": 19,
+        "endLine": 211,
+        "endChar": 20
+      },
+      "revId": "e00422e0a03e78f3cd57268d2ef67fca79490407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_68c2bfff",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-23T16:56:14Z",
+      "side": 1,
+      "message": "This is a pretty huge queue, why do we need a 1KB queue here?  I assume it\u0027s because we need to buffer output instead of blocking the callers to the various printing methods below.  But 1KB?\n\nOK, having thought about this more, why do we even need this queue?  Could we just make the outgoing_q this big, and directly add to that in __tx_char?  And change the hook_call_deferred(tx_fifo_handler, 0) to hook_call_deferred(tx_fifo_handler, 100), or some other small but non-zero value.  That would let __tx_char buffer up as much as it wants before the tx_fifo_handler was actually called.  Each call to hook_call_deferred would bump the deferred call forward 100 us into the future, giving us time to get to the next __tx_char call.",
+      "range": {
+        "startLine": 258,
+        "startChar": 33,
+        "endLine": 258,
+        "endChar": 43
+      },
+      "revId": "e00422e0a03e78f3cd57268d2ef67fca79490407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_e887cfd0",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-23T16:56:14Z",
+      "side": 1,
+      "message": "This might need to be a loop, in case the tx_q read chunk is right at the end of the tx_q.  In that case we would only move a small amount to the outgoing_q and rely on some later call to fill_output (that might take a while to come) to actually flush the remaining bytes from the tx_q.",
+      "range": {
+        "startLine": 265,
+        "startChar": 5,
+        "endLine": 265,
+        "endChar": 10
+      },
+      "revId": "e00422e0a03e78f3cd57268d2ef67fca79490407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
