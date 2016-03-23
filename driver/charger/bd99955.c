@@ -102,6 +102,37 @@ int charger_set_input_current(int input_current)
 				BD99955_BAT_CHG_COMMAND);
 }
 
+int charger_get_extpower_present(void)
+{
+	int rv;
+	int reg;
+
+	rv = ch_raw_read16(BD99955_CMD_VBUS_VCC_STATUS, &reg,
+			   BD99955_EXTENDED_COMMAND);
+	if (!rv)
+		return !!(reg & 0x101);
+	return 0;
+}
+
+int charger_select_input_port(int port)
+{
+	int rv;
+	int reg;
+
+	rv = ch_raw_read16(BD99955_CMD_VIN_CTRL_SET, &reg,
+			   BD99955_EXTENDED_COMMAND);
+	if (rv)
+		return rv;
+	reg &= ~0x60;
+	if (port == 0)
+		reg |= 0x40;
+	else if (port == 1)
+		reg |= 0x20;
+
+	return ch_raw_write16(BD99955_CMD_VIN_CTRL_SET, reg,
+			      BD99955_EXTENDED_COMMAND);
+}
+
 int charger_get_input_current(int *input_current)
 {
 	int rv;

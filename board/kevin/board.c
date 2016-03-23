@@ -7,7 +7,10 @@
 #include "adc_chip.h"
 #include "backlight.h"
 #include "button.h"
+#include "charge_state.h"
+#include "charger.h"
 #include "common.h"
+#include "console.h"
 #include "driver/tcpm/fusb302.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -27,7 +30,10 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
-static void tcpc_alert_event(enum gpio_signal signal)
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
+void tcpc_alert_event(enum gpio_signal signal)
 {
 	/* Exchange status with TCPCs */
 	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
@@ -121,20 +127,24 @@ uint16_t tcpc_get_alert_status(void)
 	return status;
 }
 
+int charger_select_input_port(int port);
+
 int board_set_active_charge_port(int charge_port)
 {
-	/* TODO: Select proper charge port through BD99955 regs. */
-	ASSERT(charge_port != 1);
-	return EC_SUCCESS;
+	CPRINTS("New chg p%d", charge_port);
+	return charger_select_input_port(charge_port);
 }
 
 void board_set_charge_limit(int charge_ma)
 {
-	/* TODO: Add support for BD99955 charger. */
+	charge_set_input_current_limit(MAX(charge_ma,
+				       CONFIG_CHARGER_INPUT_CURRENT));
+
 }
+
+int charger_get_extpower_present(void);
 
 int extpower_is_present(void)
 {
-	/* TODO: Add support for BD99955 charger. */
-	return 1;
+	return charger_get_extpower_present();
 }
