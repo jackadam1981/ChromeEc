@@ -10,6 +10,15 @@
 
 #include "common.h"
 
+int set_force_lid_open(int open);
+/*
+ * Allow a forced lid open for special scenarios
+ *
+ * @param open 		Set to 1 for force lid open
+ */
+
+int force_lid_open(int open);
+
 /**
  * Return non-zero if lid is open.
  *
