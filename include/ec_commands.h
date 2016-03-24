@@ -434,6 +434,8 @@ enum host_event_code {
 	/* Keyboard fastboot combo has been pressed */
 	EC_HOST_EVENT_KEYBOARD_FASTBOOT = 25,
 
+	EC_HOST_EVENT_SLP_S0_ASSERTION_FAILURE = 26,
+
 	/*
 	 * The high bit of the event mask is not used as a host event code.  If
 	 * it reads back as set, then the entire event mask should be
@@ -3027,6 +3029,9 @@ enum host_sleep_event {
 
 struct ec_params_host_sleep_event {
 	uint32_t sleep_event;
+	uint8_t signal_detect;
+	uint16_t signal_detect_timeout_msec;
+
 } __packed;
 
 /*****************************************************************************/
