@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc6b4a69_8aa36bdb",
+        "filename": "board/elm/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-03-24T15:28:06Z",
+      "side": 1,
+      "message": "I am a bit unclear about this... According to the TCPCI spec: \"\nThe Alert# pin remains asserted until all ALERT bits are cleared by the TCPM\n\" \nIt means EC will deassert it, then with GPIO_INT_BOTH, won\u0027t it trigger another interrupt to EC after doing tcpc_alert()?",
+      "range": {
+        "startLine": 15,
+        "startChar": 37,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "884b95142cb9b9f93215ce13e0cf90ba9fcb5078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
