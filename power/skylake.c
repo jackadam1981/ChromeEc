@@ -5,6 +5,7 @@
 
 /* Skylake IMVP8 / ROP PMIC chipset power control module for Chrome EC */
 
+#include <lid_switch.h>
 #include "charge_state.h"
 #include "chipset.h"
 #include "common.h"
@@ -195,6 +196,33 @@ static enum power_state power_wait_s5_rtc_reset(void)
 }
 #endif
 
+
+#ifdef CONFIG_LID_SWITCH
+/*
+ * On S3 entry all pending events are cleared from coreboot
+ * SMI handler. If a host event is triggered after this, but
+ * before SLP_S3 gets asserted, the event doesn't get cleared.
+ * Clear the pending events from S0S3. Also if the lid is open
+ * and there is a pending lid event, clear it and re-trigger
+ * the event to resume from S3
+*/
+
+static void handle_pending_events(void)
+{
+	uint32_t pending_lid_evt = lpc_get_host_events() &
+					EC_HOST_EVENT_LID_OPEN;
+	/* Clear all events and trigger lid open event if there
+	 * is a pending lid open event triggered after
+	 * EC_CMD_ACPI_QUERY_EVENT in order to resume from S3
+	 */
+	lpc_clear_host_events();
+	if (lid_is_open() && pending_lid_evt)
+		host_set_single_event(EC_HOST_EVENT_LID_OPEN);
+}
+#else
+static void handle_pending_events(void){ }
+#endif
+
 static enum power_state _power_handle_state(enum power_state state)
 {
 	int tries = 0;
@@ -332,6 +360,7 @@ static enum power_state _power_handle_state(enum power_state state)
 
 	case POWER_S0S3:
 		/* Call hooks before we remove power rails */
+		handle_pending_events();
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 
 		gpio_set_level(GPIO_ENABLE_BACKLIGHT, 0);
