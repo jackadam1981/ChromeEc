@@ -433,6 +433,27 @@ enum power_state power_handle_state(enum power_state state)
 }
 
 #ifdef CONFIG_POWER_S0IX
+void slp_s0_signal_check_deferred(void)
+{
+	if (gpio_get_level(GPIO_PCH_SLP_S0_L) == 0)
+		CPRINTS("SLP_S0 signal is asserted");
+	else {
+		CPRINTS("SLP_S0 signal not asserted. Aborting system suspend.");
+		/*
+		 * If lid is closed, then waking up the system will again
+		 * result in system shutting down again. So we need a forced lid open
+		 * to full wake up the system.
+		 */
+
+		if (!lid_is_open())
+			force_lid_open(1);
+
+		host_set_single_event(EC_HOST_EVENT_SLP_S0_ASSERTION_FAILURE);
+		power_button_pch_pulse();
+	}
+}
+DECLARE_DEFERRED(slp_s0_signal_check_deferred);
+
 static void lid_change(void)
 {
 	/*
@@ -447,6 +468,7 @@ static void lid_change(void)
 	 */
 
 	if (lid_is_open()) {
+		hook_call_deferred(slp_s0_signal_check_deferred, -1);
 		host_set_single_event(EC_HOST_EVENT_LID_OPEN);
 		set_slp_s0_track(1);
 	}
@@ -463,14 +485,25 @@ DECLARE_HOOK(HOOK_LID_CHANGE, lid_change, HOOK_PRIO_FIRST);
 static int host_event_sleep_event(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_sleep_event *p = args->params;
-
 	if (p->sleep_event == HOST_SLEEP_EVENT_S0IX_SUSPEND) {
 		CPRINTS("S0ix sus evt");
 		set_slp_s0_track(0);
-		task_wake(TASK_ID_CHIPSET);
+	        task_wake(TASK_ID_CHIPSET);
+		if (p->signal_detect) {
+			CPRINTS("signal detect is set, timeout %d", p->signal_detect_timeout_msec);
+			hook_call_deferred(slp_s0_signal_check_deferred, p->signal_detect_timeout_msec * MSEC);
+		}
+		else
+			CPRINTS("signal detect is not set");
 	} else if (p->sleep_event == HOST_SLEEP_EVENT_S0IX_RESUME) {
 		CPRINTS("S0ix res evt");
 		set_slp_s0_track(1);
+		if (p->signal_detect) {
+			hook_call_deferred(slp_s0_signal_check_deferred, -1);
+			/* Clearing any prior forced lid open */
+			set_force_lid_open(0);
+		}
+
 		/*
 		 * For all scenarios where lid is not open
 		 * this will be trigerred when other wake
