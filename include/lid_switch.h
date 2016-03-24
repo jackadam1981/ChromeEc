@@ -10,7 +10,14 @@
 
 #include "common.h"
 
+/*
+ * Set the forced lid open variable for special scenarios
+ * This doesn't trigger the hook/set call unlike the one below.
+ *
+ * @param open 		Set to 1 for force lid open
+ */
 int set_force_lid_open(int open);
+
 /*
  * Allow a forced lid open for special scenarios
  *

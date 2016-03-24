@@ -620,10 +620,6 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
 		EC_VER_MASK(0));
 
 #ifdef CONFIG_POWER_S0IX
-static void lpc_clear_host_events(void)
-{
-	while (lpc_query_host_event_state() != 0);
-}
 
 /*
  * In AP S0 -> S3 & S0ix transitions,
@@ -660,7 +656,12 @@ void lpc_disable_wake_mask_for_lid_open(void)
 	if ((chipset_in_state(CHIPSET_STATE_STANDBY | CHIPSET_STATE_ON)) ||
 				chipset_in_state(CHIPSET_STATE_ON)) {
 		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0);
-		lpc_clear_host_events();
+
+		/*
+		 * Clearing only specific wake events instead of all events
+		 */
+		host_clear_events(EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_CLOSED));
+		host_clear_events(EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN));
 	}
 }
 
