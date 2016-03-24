@@ -16,6 +16,24 @@
       "revId": "4550550066ccd0a559cdaf264c3f31f63fb1c44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cb1265a_da5fd915",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2016-03-24T22:28:02Z",
+      "side": 1,
+      "message": "I agree that we should remove it from command_spi_flashwrite().\nFor erase, there is already a watchdog_reload() and for read I think we are OK without it as reads don\u0027t take as much time as erases and writes.",
+      "parentUuid": "9cb1265a_b732f0ed",
+      "revId": "4550550066ccd0a559cdaf264c3f31f63fb1c44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
