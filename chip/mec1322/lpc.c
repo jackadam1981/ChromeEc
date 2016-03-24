@@ -119,6 +119,11 @@ static uint8_t *lpc_get_hostcmd_data_range(void)
 	return mem_mapped;
 }
 
+uint32_t lpc_get_host_events(void)
+{
+	return host_events;
+}
+
 /**
  * Update the host event status.
  *
@@ -619,12 +624,12 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
 		lpc_get_protocol_info,
 		EC_VER_MASK(0));
 
-#ifdef CONFIG_POWER_S0IX
-static void lpc_clear_host_events(void)
+void lpc_clear_host_events(void)
 {
 	while (lpc_query_host_event_state() != 0);
 }
 
+#ifdef CONFIG_POWER_S0IX
 /*
  * In AP S0 -> S3 & S0ix transitions,
  * the chipset_suspend is called.
