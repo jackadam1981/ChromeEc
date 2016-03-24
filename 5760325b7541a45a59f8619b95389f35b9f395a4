@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9c2a06be_df9a7f99",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-24T18:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c2a06be_cefe53ca",
+      "range": {
+        "startLine": 8,
+        "startChar": 47,
+        "endLine": 8,
+        "endChar": 53
+      },
+      "revId": "5760325b7541a45a59f8619b95389f35b9f395a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_8e157bcf",
         "filename": "chip/g/nvmem_utils.c",
         "patchSetId": 2
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "9c2a06be_3a412984",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-24T18:29:30Z",
+      "side": 1,
+      "message": "I want the indices to be signed so that -1 can be used to mark table entry as non-initialized. So I am making sure that the table entries for indices are ints. W.R.T to the tags, the block index will remain a int8_t as I don\u0027t want to make the tag space larger than necessary. The version entry is only one that I will keep as signed since conceptually I think it\u0027s better for the version to span 0 -\u003e 0xFE.",
+      "parentUuid": "9c2a06be_2ec28f70",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 21
+      },
+      "revId": "5760325b7541a45a59f8619b95389f35b9f395a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_4e8ee35d",
         "filename": "chip/g/nvmem_utils.c",
         "patchSetId": 2
@@ -105,6 +153,30 @@
       "writtenOn": "2016-03-23T21:46:13Z",
       "side": 1,
       "message": "Here, too. nvmem_spare_block is int8_t, but cache_ram_index (just below) is uint8_t.",
+      "range": {
+        "startLine": 138,
+        "startChar": 7,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "5760325b7541a45a59f8619b95389f35b9f395a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_9a4e55b1",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-24T18:29:30Z",
+      "side": 1,
+      "message": "Similar to above, changed this and the cache_ram_index to both be ints",
+      "parentUuid": "9c2a06be_4e8ee35d",
       "range": {
         "startLine": 138,
         "startChar": 7,
@@ -140,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "9cb1265a_f112c898",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-24T18:29:30Z",
+      "side": 1,
+      "message": "nvmem_resovle_dup() just looks at 2 phy blocks which have the same logical block number in the tag and returns the most recent of the two by comparing the version numbers. The function verify_log_to_phy_map() would catch the case where more than two phy blocks contain the same log block number.\n\nHowever, two phy blocks (in flash) having the same logical block and version number, the resolve_dup function would by default use the 1st of those phy blocks encountered.",
+      "parentUuid": "9c2a06be_79fa9388",
+      "range": {
+        "startLine": 300,
+        "startChar": 4,
+        "endLine": 300,
+        "endChar": 21
+      },
+      "revId": "5760325b7541a45a59f8619b95389f35b9f395a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_994e67b1",
         "filename": "chip/g/nvmem_utils.c",
         "patchSetId": 2
@@ -151,6 +247,30 @@
       "writtenOn": "2016-03-23T21:46:13Z",
       "side": 1,
       "message": "This function uses assert(), which will probably be compiled out, or may either hang or reboot the Cr50. Either way, if this is important other than for testing, it should return a true/false value instead and fix things if it\u0027s false.",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 368,
+        "endChar": 25
+      },
+      "revId": "5760325b7541a45a59f8619b95389f35b9f395a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2a06be_3a73e9ef",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-03-24T18:29:30Z",
+      "side": 1,
+      "message": "The assert(s) are just there to catch any issues during development/testing. Will remove them at this point and make the function return EC_SUCCESS for passing.",
+      "parentUuid": "9c2a06be_994e67b1",
       "range": {
         "startLine": 368,
         "startChar": 1,
