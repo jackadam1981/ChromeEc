@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91f2f153_20942a30",
+        "filename": "board/elm/ec.tasklist",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2016-03-25T03:14:26Z",
+      "side": 1,
+      "message": "Do we need PD related tasks / and implementation on elm ?\n\nI encounter the build errors related to pd functions when build with emerge-elm chromeos-ec command.",
+      "range": {
+        "startLine": 25,
+        "startChar": 13,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "74ea10aaa45bfd172140cb98d46f89ba5a329b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
