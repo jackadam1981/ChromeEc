@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc6d5eb5_96ad2a6a",
+        "filename": "power/skylake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2016-03-25T02:49:09Z",
+      "side": 1,
+      "message": "Not sure why we have to clear the events.",
+      "revId": "f78b5f0c34683c1ea4e8020f6508e2d61813e765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc6d5eb5_56139279",
+        "filename": "power/skylake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2016-03-25T02:49:09Z",
+      "side": 1,
+      "message": "I am not sure if this is sufficient to wake the system up. I tried \"hostevent set 0x2\" from console when the system is in S3 and it does not wake the system and this is essentially doing the same thing.",
+      "revId": "f78b5f0c34683c1ea4e8020f6508e2d61813e765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
