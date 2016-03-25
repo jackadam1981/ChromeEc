@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc6d5eb5_f9b9ef3f",
+        "filename": "power/mediatek.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-25T18:16:38Z",
+      "side": 1,
+      "message": "First of all, on this system, you don\u0027t want to boot unconditionally if you AC plugged ?\n(including battery-less system at factory SMT ?)\n\nwhen the EC boots/reboots, the battery state of charge might not be available initially. Are you always failing the \u0027EC startup recovery\u0027 case below ?",
+      "range": {
+        "startLine": 529,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 2
+      },
+      "revId": "a357e3eb8f46569d0c35aec69982aab638b138bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
