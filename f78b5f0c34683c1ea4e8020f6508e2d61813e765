@@ -33,6 +33,24 @@
       "revId": "f78b5f0c34683c1ea4e8020f6508e2d61813e765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91f2f153_e074020d",
+        "filename": "power/skylake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2016-03-25T08:13:47Z",
+      "side": 1,
+      "message": "Please try \nhostevent clear 03 // to clear pending events\nhostevent set 02 // to set lidopen event to trigger PCH_WAKE_L toggling",
+      "parentUuid": "dc6d5eb5_56139279",
+      "revId": "f78b5f0c34683c1ea4e8020f6508e2d61813e765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
