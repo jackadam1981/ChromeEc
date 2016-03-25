@@ -137,4 +137,12 @@ int DCRYPTO_p256_ecdsa_verify(const p256_int *key_x, const p256_int *key_y,
 			const p256_int *digest, const p256_int *r,
 			const p256_int *s);
 
+/*
+ *  BN.
+ */
+int DCRYPTO_bn_generate_prime(struct BIGNUM *p);
+void DCRYPTO_bn_wrap(struct BIGNUM *b, void *buf, size_t len);
+void DCRYPTO_bn_mul(struct BIGNUM *c, const struct BIGNUM *a,
+		const struct BIGNUM *b);
+
 #endif  /* ! __EC_CHIP_G_DCRYPTO_DCRYPTO_H */

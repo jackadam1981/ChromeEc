@@ -22,6 +22,7 @@ import crypto_test
 import ecc_test
 import ftdi_spi_tpm
 import hash_test
+import hkdf_test
 import rsa_test
 import subcmd
 import upgrade_test
