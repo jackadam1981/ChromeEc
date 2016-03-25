@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc6d5eb5_79e31f1f",
+        "filename": "board/setzer/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-25T18:41:36Z",
+      "side": 1,
+      "message": "you are not using thus",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 47
+      },
+      "revId": "f3f4f9cd0ba9de125587d7913c2b3d236e32db0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc6d5eb5_b99e978b",
+        "filename": "board/setzer/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-25T18:41:36Z",
+      "side": 1,
+      "message": "it\u0027s not terribly optimized to re-compute your deadline every second rather than storing it at the beginning (you don\u0027t really care about the start time, you are only interested in the charge deadline)",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 284,
+        "endChar": 16
+      },
+      "revId": "f3f4f9cd0ba9de125587d7913c2b3d236e32db0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc6d5eb5_f90c8fd6",
+        "filename": "board/setzer/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-25T18:41:36Z",
+      "side": 1,
+      "message": "if this is a config, it should be called CONFIG_PRECHARGE_TIMEOUT_SETZER\nand documented in include/config.h",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 32
+      },
+      "revId": "f3f4f9cd0ba9de125587d7913c2b3d236e32db0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc6d5eb5_591583cb",
+        "filename": "board/setzer/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-25T18:41:36Z",
+      "side": 1,
+      "message": "the struct can be moved to extpower.c since they are not used anywhere else ?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "f3f4f9cd0ba9de125587d7913c2b3d236e32db0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc6d5eb5_f9a80fb7",
+        "filename": "board/setzer/extpower_setzer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-25T18:41:36Z",
+      "side": 1,
+      "message": "we are in 2016",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "f3f4f9cd0ba9de125587d7913c2b3d236e32db0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc6d5eb5_198eab5c",
+        "filename": "board/setzer/extpower_setzer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-25T18:41:36Z",
+      "side": 1,
+      "message": "cut and paste ?",
+      "range": {
+        "startLine": 5,
+        "startChar": 2,
+        "endLine": 5,
+        "endChar": 38
+      },
+      "revId": "f3f4f9cd0ba9de125587d7913c2b3d236e32db0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc6d5eb5_398b674d",
+        "filename": "board/setzer/extpower_setzer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-25T18:41:36Z",
+      "side": 1,
+      "message": "are you really using all those headers ?\ne.g host_command.h",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "f3f4f9cd0ba9de125587d7913c2b3d236e32db0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc6d5eb5_5998239c",
+        "filename": "board/setzer/extpower_setzer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-25T18:41:36Z",
+      "side": 1,
+      "message": "you are not using it",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 71
+      },
+      "revId": "f3f4f9cd0ba9de125587d7913c2b3d236e32db0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc6d5eb5_19778b14",
+        "filename": "board/setzer/extpower_setzer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-25T18:41:36Z",
+      "side": 1,
+      "message": "that\u0027s a global just for the trace ?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "f3f4f9cd0ba9de125587d7913c2b3d236e32db0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc6d5eb5_f981ef26",
+        "filename": "board/setzer/extpower_setzer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-25T18:41:36Z",
+      "side": 1,
+      "message": "indentation looks wrong",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "f3f4f9cd0ba9de125587d7913c2b3d236e32db0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc6d5eb5_796ebf3e",
+        "filename": "board/setzer/extpower_setzer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-03-25T18:41:36Z",
+      "side": 1,
+      "message": "I guess you are using the 200ms as the debouncing period for the charger insertion ?\nYou should define a constant to make it explicit.",
+      "range": {
+        "startLine": 110,
+        "startChar": 43,
+        "endLine": 110,
+        "endChar": 55
+      },
+      "revId": "f3f4f9cd0ba9de125587d7913c2b3d236e32db0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
