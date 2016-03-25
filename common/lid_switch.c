@@ -40,9 +40,17 @@ static int raw_lid_open(void)
 #undef LID_GPIO
 }
 
+#if 1
+static void lid_open_deferred(void)
+{
+	host_set_single_event(EC_HOST_EVENT_LID_OPEN);
+}
+DECLARE_DEFERRED(lid_open_deferred);
+#endif
 /**
  * Handle lid open.
  */
+#include "chipset.h"
 static void lid_switch_open(void)
 {
 	if (debounced_lid_open) {
@@ -53,7 +61,19 @@ static void lid_switch_open(void)
 	CPRINTS("lid open");
 	debounced_lid_open = 1;
 	hook_notify(HOOK_LID_CHANGE);
-	host_set_single_event(EC_HOST_EVENT_LID_OPEN);
+#ifndef CONFIG_POWER_S0IX
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND)) { // in S3
+#else
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND) ||
+	    chipset_in_state(CHIPSET_STATE_STANDBY))
+#endif
+		host_set_single_event(EC_HOST_EVENT_LID_OPEN);
+		CPRINTS("### no delay");
+
+	} else {
+		hook_call_deferred(lid_open_deferred, 1220 * MSEC);
+		CPRINTS("### with delay");
+	}
 }
 
 /**
