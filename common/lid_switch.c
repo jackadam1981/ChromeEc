@@ -40,10 +40,27 @@ static int raw_lid_open(void)
 #undef LID_GPIO
 }
 
-/**
- * Handle lid open.
- */
-static void lid_switch_open(void)
+#ifndef ORG_CODE
+#include "chipset.h"
+static void lid_open_deferred(void)
+{
+#ifndef CONFIG_POWER_S0IX
+	/* need to identify more condition */
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+#else
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND) ||
+	    chipset_in_state(CHIPSET_STATE_STANDBY)) {
+#endif
+		CPRINTS("# NO more delaying.");
+		host_set_single_event(EC_HOST_EVENT_LID_OPEN);
+	} else {
+		CPRINTS("# W/ delaying.");
+		hook_call_deferred(lid_open_deferred, 200 * MSEC);
+	}
+}
+DECLARE_DEFERRED(lid_open_deferred);
+
+static void conditional_lid_switch_open(void)
 {
 	if (debounced_lid_open) {
 		CPRINTS("lid already open");
@@ -53,7 +70,29 @@ static void lid_switch_open(void)
 	CPRINTS("lid open");
 	debounced_lid_open = 1;
 	hook_notify(HOOK_LID_CHANGE);
+
+	lid_open_deferred();
+}
+#endif
+
+/**
+ * Handle lid open.
+ */
+static void lid_switch_open(void)
+{
+#ifdef ORG_CODE
+	if (debounced_lid_open) {
+		CPRINTS("lid already open");
+		return;
+	}
+
+	CPRINTS("lid open");
+	debounced_lid_open = 1;
+	hook_notify(HOOK_LID_CHANGE);
 	host_set_single_event(EC_HOST_EVENT_LID_OPEN);
+#else
+	conditional_lid_switch_open();
+#endif
 }
 
 /**
