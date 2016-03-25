@@ -35,23 +35,25 @@
 /* USB interface indexes (use define rather than enum to expand them) */
 #define USB_IFACE_USART4_STREAM  0
 #define USB_IFACE_GPIO    1
-#define USB_IFACE_SPI     2
+#define USB_IFACE_SPI     7
 #define USB_IFACE_CONSOLE 3
 #define USB_IFACE_I2C     4
 #define USB_IFACE_USART3_STREAM  5
 #define USB_IFACE_USART2_STREAM  6
-#define USB_IFACE_COUNT   7
+#define USB_IFACE_POWER  2
+#define USB_IFACE_COUNT   8
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL 0
 #define USB_EP_USART4_STREAM  1
 #define USB_EP_GPIO    2
-#define USB_EP_SPI     3
+#define USB_EP_SPI     8
 #define USB_EP_CONSOLE 4
 #define USB_EP_I2C     5
 #define USB_EP_USART3_STREAM  6
 #define USB_EP_USART2_STREAM  7
-#define USB_EP_COUNT   8
+#define USB_EP_POWER   3
+#define USB_EP_COUNT   9
 
 /* Enable control of GPIOs over USB */
 #define CONFIG_USB_GPIO
@@ -70,6 +72,10 @@
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #define I2C_PORT_MASTER 0
+
+/* Enable bulk power measurements. */
+#define CONFIG_USB_POWER
+
 
 /*
  * Allow dangerous commands all the time, since we don't have a write protect

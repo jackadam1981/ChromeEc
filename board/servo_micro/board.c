@@ -18,6 +18,7 @@
 #include "usart_rx_dma.h"
 #include "usb_gpio.h"
 #include "usb_i2c.h"
+#include "usb_power.h"
 #include "usb_spi.h"
 #include "usb-stream.h"
 #include "util.h"
@@ -220,8 +221,7 @@ USB_SPI_CONFIG(usb_spi, USB_IFACE_SPI, USB_EP_SPI);
 
 
 /******************************************************************************
- * Support I2C bridging over USB, this requires usb_i2c_board_enable and
- * usb_i2c_board_disable to be defined to enable and disable the SPI bridge.
+ * Support I2C bridging over USB.
  */
 
 /* I2C ports */
@@ -232,6 +232,14 @@ const struct i2c_port_t i2c_ports[] = {
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 USB_I2C_CONFIG(usb_i2c, USB_IFACE_I2C, USB_EP_I2C);
+
+
+
+/******************************************************************************
+ * Support streaming power measurements over USB
+ */
+USB_POWER_CONFIG(usb_power, USB_IFACE_POWER, USB_EP_POWER);
+
 
 
 /******************************************************************************
