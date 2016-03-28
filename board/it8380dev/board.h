@@ -12,6 +12,7 @@
 #define CONFIG_BATTERY_SMART
 #define CONFIG_BOARD_VERSION
 #define CONFIG_FANS 1
+#define CONFIG_HIBERNATE_WAKEUP_PINS
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #define CONFIG_IT83XX_LPC_ACCESS_INT
@@ -115,5 +116,6 @@ enum ec2i_setting {
 	EC2I_SETTING_COUNT
 };
 
+void board_hibernate_wakeup_pins(void);
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */

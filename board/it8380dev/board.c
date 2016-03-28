@@ -30,6 +30,13 @@
 #include "uart.h"
 #include "util.h"
 
+void board_hibernate_wakeup_pins(void)
+{
+	/* Allow power button wake up EC from sleep (hibernate) */
+	gpio_clear_pending_interrupt(GPIO_POWER_BUTTON_L);
+	gpio_enable_interrupt(GPIO_POWER_BUTTON_L);
+}
+
 #include "gpio_list.h"
 
 /*

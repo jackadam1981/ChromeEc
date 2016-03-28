@@ -10,6 +10,7 @@
 #include "console.h"
 #include "hwtimer.h"
 #include "hwtimer_chip.h"
+#include "irq_chip.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -31,6 +32,7 @@ static int idle_doze_cnt;
 static int idle_sleep_cnt;
 static uint64_t total_idle_sleep_time_us;
 static int allow_sleep;
+static int ec_hibernate;
 /*
  * Fixed amount of time to keep the console in use flag true after boot in
  * order to give a permanent window in which the heavy sleep mode is not used.
@@ -73,9 +75,6 @@ void clock_init(void)
 #else
 #error "Support only for PLL clock speed of 48MHz."
 #endif
-
-	/* Set EC Clock Frequency to PLL frequency. */
-	IT83XX_ECPM_SCDCR3 &= 0xf0;
 
 	/*
 	 * The VCC power status is treated as power-on.
@@ -211,9 +210,80 @@ static void clock_ec_pll_ctrl(enum ec_pll_ctrl mode)
 	asm volatile ("dsb");
 }
 
+int clock_ec_hibernate(void)
+{
+	return ec_hibernate;
+}
+
+void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
+{
+	int i;
+
+	/* disable all interrupts */
+	interrupt_disable();
+	for (i = 0; i < IT83XX_IRQ_COUNT; i++) {
+		chip_disable_irq(i);
+		chip_clear_pending_irq(i);
+	}
+	/* bit5: watchdog is disabled. */
+	IT83XX_ETWD_ETWCTRL |= (1 << 5);
+	/* Setup GPIOs for hibernate */
+	if (board_hibernate_late)
+		board_hibernate_late();
+
+	if (seconds || microseconds) {
+		/*
+		 * Need at least 32 ms for hibernate if seconds and/or
+		 * microseconds is non-zero
+		 */
+		uint64_t ms = (seconds * 1000) + (microseconds / 1000) + 32;
+		uint64_t c;
+		/*
+		 * NOTE:
+		 * c should be equaled to 'ms * 32 / 1000', but this will
+		 * require '__udivdi3'.
+		 */
+		c = (ms + (ms / 4096 * 96)) / 32;
+		/* enable a 56-bit timer and clock source is 32 Hz */
+		ext_timer_stop(FREE_EXT_TIMER_L, 1);
+		ext_timer_stop(FREE_EXT_TIMER_H, 1);
+		IT83XX_ETWD_ETXPSR(FREE_EXT_TIMER_L) = EXT_PSR_32_HZ;
+		IT83XX_ETWD_ETXPSR(FREE_EXT_TIMER_H) = EXT_PSR_32_HZ;
+		IT83XX_ETWD_ETXCNTLR(FREE_EXT_TIMER_L) = c & 0xffffff;
+		IT83XX_ETWD_ETXCNTLR(FREE_EXT_TIMER_H) = (c >> 24) & 0xffffffff;
+		ext_timer_start(FREE_EXT_TIMER_H, 1);
+		ext_timer_start(FREE_EXT_TIMER_L, 0);
+	}
+
+#ifdef CONFIG_HIBERNATE_WAKEUP_PINS
+	/*
+	 * We let board code to decide which wakeup pin to enable.
+	 * here is a example for power button wake up EC:
+	 *
+	 * gpio_clear_pending_interrupt(GPIO_POWER_BUTTON_L);
+	 * gpio_enable_interrupt(GPIO_POWER_BUTTON_L);
+	 */
+	board_hibernate_wakeup_pins();
+#endif
+	/* sleep */
+	ec_hibernate = 1;
+	clock_ec_pll_ctrl(EC_PLL_SLEEP);
+	interrupt_enable();
+	/* standby instruction */
+	asm("standby wake_grant");
+
+	/* we should never reach that point */
+	while (1)
+		;
+}
+
 void clock_sleep_mode_wakeup_isr(void)
 {
 	uint32_t st_us, c;
+
+	/* trigger a reboot if wake up EC from sleep mode (system hibernate) */
+	if (clock_ec_hibernate())
+		system_reset(SYSTEM_RESET_HARD);
 
 	if (IT83XX_ECPM_PLLCTRL != EC_PLL_DOZE) {
 		clock_ec_pll_ctrl(EC_PLL_DOZE);
