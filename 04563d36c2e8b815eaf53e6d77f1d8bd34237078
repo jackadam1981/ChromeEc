@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11152184_38e31180",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-03-28T17:14:42Z",
+      "side": 1,
+      "message": "I\u0027m not sure it\u0027s safe to be calling this from two different contexts as is done below (one as a deferred call due to the con_ep_tx interrupt handler, and another directly from the console printing code).  That can result in this routine being re-entered, and the QUEUE_REMOVE_UNITS function is not re-entrant safe.  I think a solution would be to make all calls to this deferred.",
+      "revId": "04563d36c2e8b815eaf53e6d77f1d8bd34237078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
