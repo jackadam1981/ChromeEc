@@ -70,6 +70,29 @@
       "revId": "0942876c0c63307c7f0fb84a2c87bfde8274c8e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11152184_8b1aae05",
+        "filename": "chip/mec1322/keyboard_raw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-28T23:45:45Z",
+      "side": 1,
+      "message": "\"static const\" should keep this array off the stack, which should mean you don\u0027t need to increase the host command stack size.",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 6
+      },
+      "revId": "0942876c0c63307c7f0fb84a2c87bfde8274c8e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
