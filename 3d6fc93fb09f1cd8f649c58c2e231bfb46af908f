@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11152184_cdfde117",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-03-28T05:48:05Z",
+      "side": 1,
+      "message": "please mention the exact schematics version this patch applies to.",
+      "revId": "3d6fc93fb09f1cd8f649c58c2e231bfb46af908f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11152184_2d0ab507",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-03-28T05:48:05Z",
+      "side": 1,
+      "message": "please use partner bug# 50728",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 3
+      },
+      "revId": "3d6fc93fb09f1cd8f649c58c2e231bfb46af908f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11152184_0d0ff917",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-03-28T05:48:05Z",
+      "side": 1,
+      "message": "I thought you verified the outputs\u0027 behaviour?",
+      "revId": "3d6fc93fb09f1cd8f649c58c2e231bfb46af908f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
