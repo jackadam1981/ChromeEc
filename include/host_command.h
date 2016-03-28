@@ -157,6 +157,17 @@ static inline void host_set_single_event(int event)
 void host_clear_events(uint32_t mask);
 
 /**
+ * Clear and Set a single host event.
+ *
+ * @param event         Event to clear and set (EC_HOST_EVENT_*).
+ */
+static inline void host_clear_and_set_single_event(int event)
+{
+	host_clear_events(EC_HOST_EVENT_MASK(event));
+	host_set_events(EC_HOST_EVENT_MASK(event));
+}
+
+/**
  * Return the raw event state.
  */
 uint32_t host_get_events(void);
