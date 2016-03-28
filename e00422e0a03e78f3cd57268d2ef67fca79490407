@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "31722521_c5a91aea",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-03-28T07:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c2a06be_8859f361",
+      "range": {
+        "startLine": 211,
+        "startChar": 19,
+        "endLine": 211,
+        "endChar": 20
+      },
+      "revId": "e00422e0a03e78f3cd57268d2ef67fca79490407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_68c2bfff",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 4
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Yeah. I wasn\u0027t sure how big to make it. I just wanted to make it comparable to the UART tx buffer, but I will try your other suggestion.",
       "parentUuid": "9c2a06be_68c2bfff",
+      "range": {
+        "startLine": 258,
+        "startChar": 33,
+        "endLine": 258,
+        "endChar": 43
+      },
+      "revId": "e00422e0a03e78f3cd57268d2ef67fca79490407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31722521_e5a61617",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-03-28T07:53:37Z",
+      "side": 1,
+      "message": "I made outgoing_q as small as possible without losing output data during the init.",
+      "parentUuid": "9c2a06be_08b6a351",
       "range": {
         "startLine": 258,
         "startChar": 33,
