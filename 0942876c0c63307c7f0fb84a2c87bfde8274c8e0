@@ -46,6 +46,30 @@
       "revId": "0942876c0c63307c7f0fb84a2c87bfde8274c8e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31722521_65b866a2",
+        "filename": "chip/mec1322/keyboard_raw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-28T01:26:57Z",
+      "side": 1,
+      "message": "You can add a board-level callback function that takes a GPIO number and returns a header pin #.\n\nRegarding \"this function still specific on our board\", maybe you don\u0027t need a GPIO table at all. Instead you can consider all pins in the group MODULE_KEYBOARD_SCAN as keyscan pins.",
+      "parentUuid": "31722521_25ae6e5f",
+      "range": {
+        "startLine": 95,
+        "startChar": 18,
+        "endLine": 95,
+        "endChar": 48
+      },
+      "revId": "0942876c0c63307c7f0fb84a2c87bfde8274c8e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
