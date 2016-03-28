@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11152184_cbeca61d",
+        "filename": "include/hooks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-28T23:42:48Z",
+      "side": 1,
+      "message": "Please add an example showing how to call hook_call_deferred().  Because now the proper way to do it (with a variable whose name is created by concatenation) is only discoverable by searching for existing examples.\n\nFor example:\n\nCalling\n  DECLARE_DEFERRED(foofunc)\nwill create\n  const struct deferred_data foofunc_data;\n\nTo call the deferred function, for example, with a 500 us delay:\n  hook_call_deferred(\u0026foofunc_data, 500);",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 3
+      },
+      "revId": "d778df8961005e29c0049308b61cd3e37f676d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
