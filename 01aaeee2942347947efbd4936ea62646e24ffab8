@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31722521_05d092ce",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 3026,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-28T01:39:47Z",
+      "side": 1,
+      "message": "Does this need to be a mask? Checking the kernel code, I think you\u0027re only setting one of these flags at a time. Can you think of a situation where you\u0027d send multiple flags? If not, you can just make the an index, and change sleep_event in your structs below to uint8_t.",
+      "range": {
+        "startLine": 3021,
+        "startChar": 8,
+        "endLine": 3026,
+        "endChar": 2
+      },
+      "revId": "01aaeee2942347947efbd4936ea62646e24ffab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
