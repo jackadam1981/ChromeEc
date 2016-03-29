@@ -648,6 +648,7 @@ void charger_task(void)
 		battery_get_params(&curr.batt);
 
 		if (prev_bp != curr.batt.is_present) {
+			hook_notify(HOOK_BATTERY_SOC_CHANGE);
 			prev_bp = curr.batt.is_present;
 			curr.desired_input_current =
 				get_desired_input_current(prev_bp, info);
