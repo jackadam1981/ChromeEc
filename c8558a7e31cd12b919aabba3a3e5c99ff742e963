@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11152184_61403113",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-03-29T15:48:24Z",
+      "side": 1,
+      "message": "Need to update help string to match the purpose of this command.\n\nCan we add back the individual register read/write command that Vijay added previously?",
+      "range": {
+        "startLine": 308,
+        "startChar": 3,
+        "endLine": 308,
+        "endChar": 31
+      },
+      "revId": "c8558a7e31cd12b919aabba3a3e5c99ff742e963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
