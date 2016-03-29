@@ -8,6 +8,7 @@
 #include "adc.h"
 #include "battery.h"
 #include "battery_smart.h"
+#include "charge_state.h"
 #include "console.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -52,8 +53,18 @@ static const struct battery_info info = {
 const struct battery_info *battery_get_info(void)
 {
 	static struct battery_info __bss_slow batt_info;
+	static struct batt_params __bss_slow curr;
 
-	if (battery_is_present() == BP_NO) {
+	battery_get_params(&curr);
+	/* For battery remain updating mode, battery no power output
+	 * Only necessary command is responding. Under this condition
+	 * We need set set the battery minimum voltage to the battery
+	 * maximum voltage so that the charger voltage is set to the
+	 * battery maximum voltage. This adds more reliability for the
+	 * system and also avoids system reboot due to voltage drop on VBATA.
+	 */
+	if (battery_is_present() == BP_NO ||
+	    (curr.flags & BATT_FLAG_BAD_ANY)) {
 		batt_info = info;
 		batt_info.voltage_min = batt_info.voltage_max;
 		return &batt_info;
