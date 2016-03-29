@@ -648,6 +648,11 @@ void charger_task(void)
 		battery_get_params(&curr.batt);
 
 		if (prev_bp != curr.batt.is_present) {
+			/* Battery was cutoff / dead and is now available
+			 * so notify that battery state has changed
+			 * to update try source enable if needed */
+			if (curr.batt.is_present == BP_YES)
+				hook_notify(HOOK_BATTERY_SOC_CHANGE);
 			prev_bp = curr.batt.is_present;
 			curr.desired_input_current =
 				get_desired_input_current(prev_bp, info);
