@@ -16,6 +16,24 @@
       "revId": "04563d36c2e8b815eaf53e6d77f1d8bd34237078",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1f7addf_23f96a6b",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-03-29T09:27:08Z",
+      "side": 1,
+      "message": "Sounds good. Calling the deferred tx handler increases the time it takes to remove units from the tx queue, so I had to increase the size back to 1KB. Do you know if it is possible to decrease this time?",
+      "parentUuid": "11152184_38e31180",
+      "revId": "04563d36c2e8b815eaf53e6d77f1d8bd34237078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
