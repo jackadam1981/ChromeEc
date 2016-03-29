@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11152184_416c1507",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-29T13:56:48Z",
+      "side": 1,
+      "message": "thinks the",
+      "range": {
+        "startLine": 10,
+        "startChar": 48,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "0539928cf57a414e8ee7f577e6c45344eadd35dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11152184_217119df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-29T13:56:48Z",
+      "side": 1,
+      "message": "present",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "0539928cf57a414e8ee7f577e6c45344eadd35dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11152184_81660d23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-29T13:56:48Z",
+      "side": 1,
+      "message": "not",
+      "range": {
+        "startLine": 11,
+        "startChar": 52,
+        "endLine": 11,
+        "endChar": 60
+      },
+      "revId": "0539928cf57a414e8ee7f577e6c45344eadd35dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11152184_c17805cb",
+        "filename": "board/sentry/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-29T13:56:48Z",
+      "side": 1,
+      "message": "Is this necessary to be static since we\u0027re always re-populating it and never using it aside from the querying the .batt field?",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 7
+      },
+      "revId": "0539928cf57a414e8ee7f577e6c45344eadd35dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11152184_e17f01ad",
+        "filename": "board/sentry/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-29T13:56:48Z",
+      "side": 1,
+      "message": "I don\u0027t understand this check at all. We are using CONFIG_CHARGER_V2 where batt is a struct batt_params. Taking the address of a filed within a struct should never be compared against 0. \u0026curr.batt is a pointer to a struct batt_params.",
+      "range": {
+        "startLine": 59,
+        "startChar": 38,
+        "endLine": 59,
+        "endChar": 53
+      },
+      "revId": "0539928cf57a414e8ee7f577e6c45344eadd35dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
