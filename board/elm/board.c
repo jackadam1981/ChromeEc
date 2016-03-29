@@ -169,9 +169,23 @@ static struct mutex dp_hw_lock;
 /**
  * Reset PD MCU
  */
+void deferred_reset_pd_mcu(void)
+{
+	if (!gpio_get_level(GPIO_USB_C0_RST)) {
+		gpio_set_level(GPIO_USB_C0_RST, 1);
+		hook_call_deferred(deferred_reset_pd_mcu, 50 * MSEC);
+	} else {
+		gpio_set_level(GPIO_USB_C0_RST, 0);
+	}
+}
+DECLARE_DEFERRED(deferred_reset_pd_mcu);
+
 void board_reset_pd_mcu(void)
 {
-	/* TODO: need to reset 7688 here? */
+	/* Perform ANX7688 startup sequence */
+	gpio_set_level(GPIO_USB_C0_PWR_EN_L, 0);
+	gpio_set_level(GPIO_USB_C0_RST, 0);
+	hook_call_deferred(deferred_reset_pd_mcu, 0);
 }
 
 /**
@@ -204,6 +218,7 @@ static void board_init(void)
 
 	/* Enable BC 1.2 and ANX7688 CABLE_DET interrupt */
 	gpio_enable_interrupt(GPIO_BC12_CABLE_INT);
+	board_reset_pd_mcu();
 
 	/* Update VBUS supplier */
 	usb_charger_vbus_change(0, !gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L));

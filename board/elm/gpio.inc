@@ -79,8 +79,8 @@ GPIO(LEVEL_SHIFT_EN_L,  PIN(F, 10), GPIO_OUT_LOW)    /* LID/AC level shift */
 
 GPIO(USB_C0_5V_EN,      PIN(D, 8),  GPIO_OUT_LOW)    /* USBC port 0 5V */
 GPIO(USB_C0_CHARGE_L,   PIN(D, 9),  GPIO_OUT_LOW)    /* USBC port 0 charge */
-GPIO(USB_C0_RST,        PIN(D, 10), GPIO_OUT_HIGH)
-GPIO(USB_C0_PWR_EN_L,   PIN(B, 15), GPIO_OUT_HIGH)
+GPIO(USB_C0_RST,        PIN(D, 10), GPIO_OUT_LOW)
+GPIO(USB_C0_PWR_EN_L,   PIN(B, 15), GPIO_OUT_LOW)    /* Don't auto toggle */
 GPIO(USB_DP_HPD,        PIN(F, 3),  GPIO_OUT_LOW)
 GPIO(EN_TP_INT_L,       PIN(E, 14), GPIO_OUT_LOW)    /* touchpad interrupt enable */
 
