@@ -20,8 +20,6 @@
 #define CPRINTS(format, args...)
 #endif
 
-#define DEFERRED_FUNCS_COUNT (__deferred_funcs_end - __deferred_funcs)
-
 struct hook_ptrs {
 	const struct hook_data *start;
 	const struct hook_data *end;
@@ -52,7 +50,6 @@ static const struct hook_ptrs hook_list[] = {
 };
 
 /* Times for deferrable functions */
-static uint64_t defer_until[DEFERRABLE_MAX_COUNT];
 static int defer_new_call;
 static int hook_task_started;
 
@@ -134,17 +131,15 @@ void hook_notify(enum hook_type type)
 
 int hook_call_deferred(const struct deferred_data *data, int us)
 {
-	int i = data - __deferred_funcs;
-
 	if (data < __deferred_funcs || data >= __deferred_funcs_end)
 		return EC_ERROR_INVAL;  /* Routine not registered */
 
 	if (us == -1) {
 		/* Cancel */
-		defer_until[i] = 0;
+		data->state->until = 0;
 	} else {
 		/* Set alarm */
-		defer_until[i] = get_time().val + us;
+		data->state->until = get_time().val + us;
 		/*
 		 * Flag that hook_call_deferred() has been called.  If the hook
 		 * task is already active, this will allow it to go through the
@@ -177,19 +172,21 @@ void hook_task(void)
 	while (1) {
 		uint64_t t = get_time().val;
 		int next = 0;
-		int i;
+		const struct deferred_data *data;
 
 		/* Handle deferred routines */
-		for (i = 0; i < DEFERRED_FUNCS_COUNT; i++) {
-			if (defer_until[i] && defer_until[i] < t) {
+		for (data = __deferred_funcs;
+		     data < __deferred_funcs_end;
+		     ++data) {
+			if (data->state->until && data->state->until < t) {
 				CPRINTS("hook call deferred 0x%p",
-					__deferred_funcs[i].routine);
+					data->routine);
 				/*
 				 * Call deferred function.  Clear timer first,
 				 * so it can request itself be called later.
 				 */
-				defer_until[i] = 0;
-				__deferred_funcs[i].routine();
+				data->state->until = 0;
+				data->routine();
 			}
 		}
 
@@ -220,14 +217,19 @@ void hook_task(void)
 
 		/* Wake earlier if needed by a deferred routine */
 		defer_new_call = 0;
-		for (i = 0; i < DEFERRED_FUNCS_COUNT && next > 0; i++) {
-			if (!defer_until[i])
+
+		for (data = __deferred_funcs;
+		     data < __deferred_funcs_end;
+		     ++data) {
+			uint64_t until = data->state->until;
+
+			if (!until)
 				continue;
 
-			if (defer_until[i] < t)
+			if (until < t)
 				next = 0;
-			else if (defer_until[i] - t < next)
-				next = defer_until[i] - t;
+			else if (until - t < next)
+				next = until - t;
 		}
 
 		/*

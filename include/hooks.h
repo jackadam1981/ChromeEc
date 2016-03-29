@@ -190,7 +190,21 @@ struct hook_data {
  */
 void hook_notify(enum hook_type type);
 
+/**
+ * Per-deferred state stored in RAM.
+ */
+struct deferred_state {
+	/* Timestamp for when this deferred routine should be called */
+	uint64_t until;
+};
+
+/**
+ * Per-deferred data stored in flash.
+ */
 struct deferred_data {
+	/* Pointer to in RAM state for this deferred */
+	struct deferred_state *state;
+
 	/* Deferred function pointer */
 	void (*routine)(void);
 };
@@ -246,9 +260,6 @@ int hook_call_deferred(const struct deferred_data *data, int us);
 /**
  * Register a deferred function call.
  *
- * Note that if you declare a bunch of these, you may need to override
- * DEFERRABLE_MAX_COUNT in your board.h.
- *
  * DECLARE_DEFERRED creates a new deferred_data struct with a name constructed
  * by concatenating _data to the name of the routine passed.
  *
@@ -265,10 +276,12 @@ int hook_call_deferred(const struct deferred_data *data, int us);
  *
  * @param routine	Function pointer, with prototype void routine(void)
  */
-#define DECLARE_DEFERRED(routine)					\
-	const struct deferred_data __keep CONCAT2(routine, _data)	\
-	__attribute__((section(".rodata.deferred")))			\
-	     = {routine}
+#define DECLARE_DEFERRED(routine_)					\
+	const struct deferred_data __keep CONCAT2(routine_, _data)	\
+	__attribute__((section(".rodata.deferred"))) = {		\
+		.state   = &((struct deferred_state){}),		\
+		.routine = routine_,					\
+	}
 
 #else /* CONFIG_COMMON_RUNTIME */
 #define DECLARE_HOOK(t, func, p)				\

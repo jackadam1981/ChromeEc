@@ -90,9 +90,6 @@
 /* Number of buttons */
 #define CONFIG_BUTTON_COUNT		2
 
-#undef DEFERRABLE_MAX_COUNT
-#define DEFERRABLE_MAX_COUNT	12
-
 #define CONFIG_ADC
 
 /* Modules we want to exclude */

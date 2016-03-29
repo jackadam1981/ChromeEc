@@ -225,11 +225,6 @@ SECTIONS
 #endif
     __ro_end = . ;
 
-    __deferred_funcs_count =
-		(__deferred_funcs_end - __deferred_funcs) / 4;
-    ASSERT(__deferred_funcs_count <= DEFERRABLE_MAX_COUNT,
-           "Increase DEFERRABLE_MAX_COUNT")
-
     .bss : {
 	/*
 	 * Align to 512 bytes. This is convenient when some memory block

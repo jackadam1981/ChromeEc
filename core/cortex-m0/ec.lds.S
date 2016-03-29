@@ -174,11 +174,6 @@ SECTIONS
     } > FLASH
     __ro_end = . ;
 
-    __deferred_funcs_count =
-		(__deferred_funcs_end - __deferred_funcs) / 4;
-    ASSERT(__deferred_funcs_count <= DEFERRABLE_MAX_COUNT,
-           "Increase DEFERRABLE_MAX_COUNT")
-
     .bss : {
 	/*
 	 * Vector table must be at the beginning of bss section. The vector

@@ -63,7 +63,8 @@ static void non_deferred_func(void)
 }
 
 static const struct deferred_data non_deferred_func_data = {
-	non_deferred_func
+	.state   = &((struct deferred_state){}),
+	.routine = non_deferred_func,
 };
 
 static int test_init_hook(void)

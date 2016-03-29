@@ -174,12 +174,6 @@ SECTIONS
 
     } > IRAM AT>FLASH
 
-
-    __deferred_funcs_count =
-                (__deferred_funcs_end - __deferred_funcs) / 4;
-    ASSERT(__deferred_funcs_count <= DEFERRABLE_MAX_COUNT,
-           "Increase DEFERRABLE_MAX_COUNT")
-
     .bss : {
         /* Stacks must be 64-bit aligned */
         . = ALIGN(8);
