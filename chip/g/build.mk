@@ -48,6 +48,7 @@ chip-$(CONFIG_USB)+=usb.o usb_endpoints.o
 chip-$(CONFIG_USB_CONSOLE)+=usb_console.o
 chip-$(CONFIG_USB_HID)+=usb_hid.o
 chip-$(CONFIG_USB_BLOB)+=usb_blob.o
+chip-$(CONFIG_STREAM_USART)+=usart.o
 
 chip-$(CONFIG_LOW_POWER_IDLE)+=idle.o
 
