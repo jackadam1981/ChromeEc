@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d16549c5_e94be1ff",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-30T22:54:16Z",
+      "side": 1,
+      "message": "I moved this in case we have a hook that checks charger input current -- it should reflect the new state.",
+      "range": {
+        "startLine": 655,
+        "startChar": 15,
+        "endLine": 655,
+        "endChar": 38
+      },
+      "revId": "cd7b810165c09468358911e04a9649acc0b83590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
