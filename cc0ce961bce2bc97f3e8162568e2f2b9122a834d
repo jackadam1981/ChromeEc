@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "918cb188_5328d676",
+        "filename": "board/sentry/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-03-30T16:15:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1532dc8_06721c1f",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "cc0ce961bce2bc97f3e8162568e2f2b9122a834d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d16549c5_da9c258d",
         "filename": "board/sentry/battery.c",
         "patchSetId": 4
@@ -131,6 +155,24 @@
       "writtenOn": "2016-03-30T15:07:19Z",
       "side": 1,
       "message": "This is pretty heavy handed, but I see why you are using it. Please add a comment under what conditions this scenario is present.",
+      "revId": "cc0ce961bce2bc97f3e8162568e2f2b9122a834d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "918cb188_7325da9b",
+        "filename": "board/sentry/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-03-30T16:15:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d16549c5_da9c258d",
       "revId": "cc0ce961bce2bc97f3e8162568e2f2b9122a834d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
