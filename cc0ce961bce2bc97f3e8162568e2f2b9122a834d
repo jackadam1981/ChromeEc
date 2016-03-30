@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d16549c5_ba977166",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-30T15:07:19Z",
+      "side": 1,
+      "message": "I see. Please update the commit description and add a comment in the code how the scenario could happen.",
+      "parentUuid": "918cb188_139d6e22",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "cc0ce961bce2bc97f3e8162568e2f2b9122a834d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1532dc8_06721c1f",
         "filename": "board/sentry/battery.c",
         "patchSetId": 4
@@ -90,6 +114,23 @@
         "endLine": 56,
         "endChar": 30
       },
+      "revId": "cc0ce961bce2bc97f3e8162568e2f2b9122a834d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d16549c5_da9c258d",
+        "filename": "board/sentry/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-30T15:07:19Z",
+      "side": 1,
+      "message": "This is pretty heavy handed, but I see why you are using it. Please add a comment under what conditions this scenario is present.",
       "revId": "cc0ce961bce2bc97f3e8162568e2f2b9122a834d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
