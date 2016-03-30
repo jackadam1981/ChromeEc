@@ -299,6 +299,25 @@ int uart_printf(const char *format, ...)
 	return rv;
 }
 
+int uart_hexdump(const char *label, const void *data, size_t len)
+{
+	int i;
+	int rv;
+	const uint8_t *p = data;
+
+	uart_printf("%s: [%d bytes]\n", label, len);
+	for (i = 0; i < len; i++) {
+		rv = uart_printf("%02X%s", p[i],
+				(i + 1) % 16 == 0 ? "\n" : ":");
+		if (rv != EC_SUCCESS)
+			return rv;
+	}
+	if (len % 16)
+		rv = uart_printf("\n");
+
+	return rv;
+}
+
 void uart_flush_output(void)
 {
 	/* If UART not initialized or is suspended, ignore flush request. */

@@ -9,6 +9,7 @@
 #define __CROS_EC_UART_H
 
 #include <stdarg.h>  /* For va_list */
+#include <stddef.h>  /* For size_t */
 #include "common.h"
 #include "gpio.h"
 
@@ -55,6 +56,14 @@ int uart_puts(const char *outstr);
  * @return EC_SUCCESS, or non-zero if output was truncated.
  */
 int uart_printf(const char *format, ...);
+
+
+/**
+ * Print a data buffer in hex, output to the UART.
+ *
+ * @return EC_SUCCESS, or non-zero if output was truncated.
+ */
+int uart_hexdump(const char *label, const void *data, size_t len);
 
 /**
  * Print formatted output to the UART, like vprintf().
