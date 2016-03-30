@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d16549c5_2e3f9f6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-30T21:36:47Z",
+      "side": 1,
+      "message": "You can link to chromium:593822 here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "15a3226ce73d44a0802f12edaa364874af4a3aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d16549c5_4eadb3f4",
         "filename": "driver/tcpm/stub.c",
         "patchSetId": 1
