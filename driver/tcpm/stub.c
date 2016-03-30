@@ -7,6 +7,7 @@
 
 #include "task.h"
 #include "tcpci.h"
+#include "tcpm.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 

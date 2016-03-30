@@ -54,7 +54,7 @@ static int init_power_status_mask(int port)
 	return rv;
 }
 
-int tcpm_get_cc(int port, int *cc1, int *cc2)
+static int tcpci_tcpm_get_cc(int port, int *cc1, int *cc2)
 {
 	int status;
 	int rv;
@@ -80,12 +80,12 @@ int tcpm_get_cc(int port, int *cc1, int *cc2)
 	return rv;
 }
 
-int tcpm_get_power_status(int port, int *status)
+static int tcpci_tcpm_get_power_status(int port, int *status)
 {
 	return tcpc_read(port, TCPC_REG_POWER_STATUS, status);
 }
 
-int tcpm_set_cc(int port, int pull)
+static int tcpci_tcpm_set_cc(int port, int pull)
 {
 	/*
 	 * Set manual control of Rp/Rd, and set both CC lines to the same
@@ -96,57 +96,57 @@ int tcpm_set_cc(int port, int pull)
 			  TCPC_REG_ROLE_CTRL_SET(0, 0, pull, pull));
 }
 
-int tcpm_set_polarity(int port, int polarity)
+static int tcpci_tcpm_set_polarity(int port, int polarity)
 {
 	return tcpc_write(port, TCPC_REG_TCPC_CTRL,
 			  TCPC_REG_TCPC_CTRL_SET(polarity));
 }
 
-int tcpm_set_vconn(int port, int enable)
+static int tcpci_tcpm_set_vconn(int port, int enable)
 {
 	return tcpc_write(port, TCPC_REG_POWER_CTRL,
 			  TCPC_REG_POWER_CTRL_SET(enable));
 }
 
-int tcpm_set_msg_header(int port, int power_role, int data_role)
+static int tcpci_tcpm_set_msg_header(int port, int power_role, int data_role)
 {
 	return tcpc_write(port, TCPC_REG_MSG_HDR_INFO,
 			  TCPC_REG_MSG_HDR_INFO_SET(data_role, power_role));
 }
 
-int tcpm_alert_status(int port, int *alert)
+static int tcpci_tcpm_alert_status(int port, int *alert)
 {
 	/* Read TCPC Alert register */
 	return tcpc_read16(port, TCPC_REG_ALERT, alert);
 }
 
-int tcpm_set_rx_enable(int port, int enable)
+static int tcpci_tcpm_set_rx_enable(int port, int enable)
 {
 	/* If enable, then set RX detect for SOP and HRST */
 	return tcpc_write(port, TCPC_REG_RX_DETECT,
 			  enable ? TCPC_REG_RX_DETECT_SOP_HRST_MASK : 0);
 }
 
-int tcpm_set_power_status_mask(int port, uint8_t mask)
+static int tcpci_tcpm_set_power_status_mask(int port, uint8_t mask)
 {
 	/* write to the Alert Mask register */
 	return tcpc_write(port, TCPC_REG_POWER_STATUS_MASK , mask);
 }
 
-int tcpm_alert_mask_set(int port, uint16_t mask)
+static int tcpci_tcpm_alert_mask_set(int port, uint16_t mask)
 {
 	/* write to the Alert Mask register */
 	return tcpc_write16(port, TCPC_REG_ALERT_MASK, mask);
 }
 
 #ifdef CONFIG_USB_PD_TCPM_VBUS
-int tcpm_get_vbus_level(int port)
+static int tcpci_tcpm_get_vbus_level(int port)
 {
 	return tcpc_vbus[port];
 }
 #endif
 
-int tcpm_get_message(int port, uint32_t *payload, int *head)
+static int tcpci_tcpm_get_message(int port, uint32_t *payload, int *head)
 {
 	int rv, cnt, reg = TCPC_REG_RX_DATA;
 
@@ -168,8 +168,8 @@ int tcpm_get_message(int port, uint32_t *payload, int *head)
 	return rv;
 }
 
-int tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
-		   const uint32_t *data)
+static int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
+			       uint16_t header, const uint32_t *data)
 {
 	int reg = TCPC_REG_TX_DATA;
 	int rv, cnt = 4*PD_HEADER_CNT(header);
@@ -234,7 +234,7 @@ void tcpc_alert(int port)
 				       PD_EVENT_TCPC_RESET, 0);
 		} else {
 			/* Read Power Status register */
-			tcpm_get_power_status(port, &reg);
+			tcpci_tcpm_get_power_status(port, &reg);
 			/* Update VBUS status */
 			tcpc_vbus[port] = reg &
 				TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
@@ -262,7 +262,7 @@ void tcpc_alert(int port)
 	}
 }
 
-int tcpm_init(int port)
+int tcpci_tcpm_init(int port)
 {
 	int rv;
 	int power_status;
@@ -344,3 +344,21 @@ const struct usb_mux_driver tcpm_usb_mux_driver = {
 };
 
 #endif /* CONFIG_USB_PD_TCPM_MUX */
+
+const struct tcpm_drv tcpci_tcpm_drv = {
+	.init			= &tcpci_tcpm_init,
+	.alert_status		= &tcpci_tcpm_alert_status,
+	.alert_mask_set		= &tcpci_tcpm_alert_mask_set,
+	.get_cc			= &tcpci_tcpm_get_cc,
+#ifdef CONFIG_USB_PD_TCPM_VBUS
+	.get_vbus_level		= &tcpci_tcpm_get_vbus_level,
+#endif
+	.set_cc			= &tcpci_tcpm_set_cc,
+	.set_polarity		= &tcpci_tcpm_set_polarity,
+	.set_power_status_mask	= &tcpci_tcpm_set_power_status_mask,
+	.set_vconn		= &tcpci_tcpm_set_vconn,
+	.set_msg_header		= &tcpci_tcpm_set_msg_header,
+	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
+	.get_message		= &tcpci_tcpm_get_message,
+	.transmit		= &tcpci_tcpm_transmit,
+};
