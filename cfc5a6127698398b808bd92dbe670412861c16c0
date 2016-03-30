@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d16549c5_a35748d7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-30T20:20:00Z",
+      "side": 1,
+      "message": "Comment style here. Also, don\u0027t mention \"try source\" -- PD is an external module and charge_state doesn\u0027t care about it.",
+      "range": {
+        "startLine": 651,
+        "startChar": 3,
+        "endLine": 653,
+        "endChar": 46
+      },
+      "revId": "cfc5a6127698398b808bd92dbe670412861c16c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d16549c5_2325f885",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-30T20:20:00Z",
+      "side": 1,
+      "message": "Comment style here.",
+      "range": {
+        "startLine": 1215,
+        "startChar": 3,
+        "endLine": 1219,
+        "endChar": 29
+      },
+      "revId": "cfc5a6127698398b808bd92dbe670412861c16c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d16549c5_4322ec7e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-30T20:20:00Z",
+      "side": 1,
+      "message": "This condition is identical. So, you can just add pd_try_src_enable \u0026\u003d battery_is_present...\n\nAlso, what\u0027s the reasoning behind not doing a battery presence check for CONFIG_BATTERY_PRESENT_CUSTOM?",
+      "range": {
+        "startLine": 1220,
+        "startChar": 7,
+        "endLine": 1220,
+        "endChar": 53
+      },
+      "revId": "cfc5a6127698398b808bd92dbe670412861c16c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
