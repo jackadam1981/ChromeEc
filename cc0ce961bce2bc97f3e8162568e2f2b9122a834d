@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "918cb188_139d6e22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-03-30T14:24:03Z",
+      "side": 1,
+      "message": "This could be happening if user remove ac power while battery firmware update.\nbattery would be in a state that wait for update.\nIt won\u0027t output power, and only some command is responding.\ncurrent EC code would still treat it as plugged in, but battery don\u0027t actually provide any power.\nThe system keep rebooting.",
+      "parentUuid": "f1532dc8_49cee580",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "cc0ce961bce2bc97f3e8162568e2f2b9122a834d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1532dc8_06721c1f",
         "filename": "board/sentry/battery.c",
         "patchSetId": 4
