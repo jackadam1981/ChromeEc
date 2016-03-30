@@ -10,6 +10,8 @@
 #include "registers.h"
 #include "task.h"
 
+/*lalala*/
+
 /*
  * The Cr50's ARM core has two GPIO ports of 16 bits each. Each GPIO signal
  * can be routed through a full NxM crossbar to any of a number of external
