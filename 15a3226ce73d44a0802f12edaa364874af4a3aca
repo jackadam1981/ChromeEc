@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d16549c5_4eadb3f4",
+        "filename": "driver/tcpm/stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-30T21:36:22Z",
+      "side": 1,
+      "message": "These structs should be const, which may relieve some code / data size problems though compiler optimization.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 33
+      },
+      "revId": "15a3226ce73d44a0802f12edaa364874af4a3aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
