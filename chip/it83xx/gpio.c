@@ -481,12 +481,6 @@ static void __gpio_irq(void)
 	}
 #endif
 
-	if (irq == IT83XX_IRQ_WKINTAD) {
-		IT83XX_WUC_WUESR4 = 0xff;
-		task_clear_pending_irq(IT83XX_IRQ_WKINTAD);
-		return;
-	}
-
 	/*
 	 * Clear the WUC status register. Note the external pin first goes
 	 * to the WUC module and is always edge triggered.
