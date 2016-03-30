@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "918cb188_d365a6ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-03-30T14:27:06Z",
+      "side": 1,
+      "message": "the symptom is like the CL mentioned:\nhttps://chromium-review.googlesource.com/328511\nbut CL:328511 only could cover battery not plugged in case.",
+      "parentUuid": "918cb188_139d6e22",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "cc0ce961bce2bc97f3e8162568e2f2b9122a834d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1532dc8_06721c1f",
         "filename": "board/sentry/battery.c",
         "patchSetId": 4
