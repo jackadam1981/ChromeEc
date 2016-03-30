@@ -56,6 +56,14 @@ int uart_puts(const char *outstr);
  */
 int uart_printf(const char *format, ...);
 
+
+/**
+ * Print a data buffer in hex, output to the UART.
+ *
+ * @return EC_SUCCESS, or non-zero if output was truncated.
+ */
+int uart_hexdump(const char *label, const void *data, int len);
+
 /**
  * Print formatted output to the UART, like vprintf().
  *
