@@ -341,7 +341,7 @@ static int fusb302_send_message(int port, uint16_t header, const uint32_t *data,
 	return rv;
 }
 
-int tcpm_init(int port)
+static int fusb302_tcpm_init(int port)
 {
 	int reg;
 
@@ -410,7 +410,7 @@ int tcpm_init(int port)
 	return 0;
 }
 
-int tcpm_get_cc(int port, int *cc1, int *cc2)
+static int fusb302_tcpm_get_cc(int port, int *cc1, int *cc2)
 {
 	/*
 	 * can't measure while doing DFP toggling -
@@ -436,7 +436,7 @@ int tcpm_get_cc(int port, int *cc1, int *cc2)
 	return 0;
 }
 
-int tcpm_set_cc(int port, int pull)
+static int fusb302_tcpm_set_cc(int port, int pull)
 {
 	int reg;
 
@@ -533,7 +533,7 @@ int tcpm_set_cc(int port, int pull)
 	return 0;
 }
 
-int tcpm_set_polarity(int port, int polarity)
+static int fusb302_tcpm_set_polarity(int port, int polarity)
 {
 	/* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
 	int reg;
@@ -584,7 +584,7 @@ int tcpm_set_polarity(int port, int polarity)
 	return 0;
 }
 
-int tcpm_set_vconn(int port, int enable)
+static int fusb302_tcpm_set_vconn(int port, int enable)
 {
 	/*
 	 * FUSB302 does not have dedicated VCONN Enable switch.
@@ -615,7 +615,7 @@ int tcpm_set_vconn(int port, int enable)
 	return 0;
 }
 
-int tcpm_set_msg_header(int port, int power_role, int data_role)
+static int fusb302_tcpm_set_msg_header(int port, int power_role, int data_role)
 {
 	int reg;
 
@@ -634,7 +634,7 @@ int tcpm_set_msg_header(int port, int power_role, int data_role)
 	return 0;
 }
 
-int tcpm_set_rx_enable(int port, int enable)
+static int fusb302_tcpm_set_rx_enable(int port, int enable)
 {
 	int reg;
 
@@ -689,7 +689,7 @@ int tcpm_set_rx_enable(int port, int enable)
 	return 0;
 }
 
-int tcpm_get_message(int port, uint32_t *payload, int *head)
+static int fusb302_tcpm_get_message(int port, uint32_t *payload, int *head)
 {
 	/*
 	 * this is the buffer that will get the burst-read data
@@ -743,8 +743,8 @@ int tcpm_get_message(int port, uint32_t *payload, int *head)
 	return rv;
 }
 
-int tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
-			 const uint32_t *data)
+static int fusb302_tcpm_transmit(int port, enum tcpm_transmit_type type,
+				 uint16_t header, const uint32_t *data)
 {
 	/*
 	 * this is the buffer that will be burst-written into the fusb302
@@ -803,7 +803,8 @@ int tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
 	return 0;
 }
 
-int tcpm_get_vbus_level(int port)
+#ifdef CONFIG_USB_PD_TCPM_VBUS
+static int fusb302_tcpm_get_vbus_level(int port)
 {
 	int reg;
 
@@ -812,6 +813,7 @@ int tcpm_get_vbus_level(int port)
 
 	return (reg & TCPC_REG_STATUS0_VBUSOK) ? 1 : 0;
 }
+#endif
 
 void tcpc_alert(int port)
 {
@@ -981,3 +983,35 @@ void tcpm_set_bist_test_data(int port)
 	}
 }
 
+static int fusb302_tcpm_alert_status(int port, int *alert)
+{
+	return EC_ERROR_UNIMPLEMENTED;
+}
+
+static int fusb302_tcpm_alert_mask_set(int port, uint16_t mask)
+{
+	return EC_ERROR_UNIMPLEMENTED;
+}
+
+static int fusb302_tcpm_set_power_status_mask(int port, uint8_t mask)
+{
+	return EC_ERROR_UNIMPLEMENTED;
+}
+
+struct tcpm_drv fusb302_tcpm_drv = {
+	.init			= &fusb302_tcpm_init,
+	.alert_status		= &fusb302_tcpm_alert_status,
+	.alert_mask_set		= &fusb302_tcpm_alert_mask_set,
+	.get_cc			= &fusb302_tcpm_get_cc,
+#ifdef CONFIG_USB_PD_TCPM_VBUS
+	.get_vbus_level		= &fusb302_tcpm_get_vbus_level,
+#endif
+	.set_cc			= &fusb302_tcpm_set_cc,
+	.set_polarity		= &fusb302_tcpm_set_polarity,
+	.set_power_status_mask	= &fusb302_tcpm_set_power_status_mask,
+	.set_vconn		= &fusb302_tcpm_set_vconn,
+	.set_msg_header		= &fusb302_tcpm_set_msg_header,
+	.set_rx_enable		= &fusb302_tcpm_set_rx_enable,
+	.get_message		= &fusb302_tcpm_get_message,
+	.transmit		= &fusb302_tcpm_transmit,
+};
