@@ -22,6 +22,30 @@
       "revId": "34e5f1e60b950979cbe6a76bce48df6f4a7c9e8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d16549c5_095735d6",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-30T22:42:39Z",
+      "side": 1,
+      "message": "It doesn\u0027t matter (yet?). I haven\u0027t found anything that we need to do except remember whether or not we\u0027ve been told the address and the configuration.",
+      "parentUuid": "d16549c5_daea65c1",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 314,
+        "endChar": 15
+      },
+      "revId": "34e5f1e60b950979cbe6a76bce48df6f4a7c9e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
