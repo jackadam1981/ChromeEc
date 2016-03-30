@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d16549c5_9abb8d39",
+        "filename": "board/sentry/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-30T16:16:06Z",
+      "side": 1,
+      "message": "This should be struct batt_params.",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "2c9f1b6e2c6b293d7a8b974106f349ea15fcd7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
