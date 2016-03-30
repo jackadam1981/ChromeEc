@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1532dc8_49cee580",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-30T14:05:28Z",
+      "side": 1,
+      "message": "What\u0027s the order of operations here?\n\nUnplug battery?\nUpdate fw?\nPlug in battery?\n\nI don\u0027t understand the problem we are trying to fix.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "cc0ce961bce2bc97f3e8162568e2f2b9122a834d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1532dc8_06721c1f",
+        "filename": "board/sentry/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-30T14:05:28Z",
+      "side": 1,
+      "message": "You don\u0027t need the whole struct charge_state_data. You only need struct batt_params. And it looks like you should decorate it with __bss_slow like the batt_info.\n\nAnd I can see why the stack usage is getting blown out. battery_get_params() has yet another struct batt_params on the stack in its frame only when you want the flag information.",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "cc0ce961bce2bc97f3e8162568e2f2b9122a834d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1532dc8_66751006",
+        "filename": "board/sentry/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-30T14:05:28Z",
+      "side": 1,
+      "message": "Why would battery_is_present() !\u003d BP_NO but BATT_FLAG_BAD_ANY mask would be non-zero? I\u0027m having a hard time understanding why that would be the case.",
+      "revId": "cc0ce961bce2bc97f3e8162568e2f2b9122a834d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1532dc8_a9b8b9ea",
+        "filename": "board/sentry/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-30T14:05:28Z",
+      "side": 1,
+      "message": "battery_is_present() only returns BP_NO or BP_YES. Here it would seem we\u0027re able to do the i2c transaction for status, but one of the other BATT_FLAG_BAD_ is set. Which ones were not working? Almost all the checks which set BATT_FLAG_BAD_ flags are when the i2c transaction fails.\n\nIt seems you really just want to ensure communication is working by reading through a list of registers.",
+      "revId": "cc0ce961bce2bc97f3e8162568e2f2b9122a834d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
