@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d16549c5_0eb57b10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-03-30T21:59:05Z",
+      "side": 1,
+      "message": "Will update on next upload.",
+      "parentUuid": "d16549c5_2e3f9f6a",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "15a3226ce73d44a0802f12edaa364874af4a3aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d16549c5_4eadb3f4",
         "filename": "driver/tcpm/stub.c",
         "patchSetId": 1
@@ -42,6 +66,47 @@
         "endLine": 166,
         "endChar": 33
       },
+      "revId": "15a3226ce73d44a0802f12edaa364874af4a3aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d16549c5_8eea6beb",
+        "filename": "driver/tcpm/stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-03-30T21:59:05Z",
+      "side": 1,
+      "message": "Tested to make this const, but Zinger is still overflowed by 76 bytes from 84, will continue to look for a solution.\n\nAs a last resort, is it OK to remove CONFIG_USB_PD_LOGGING?",
+      "parentUuid": "d16549c5_4eadb3f4",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 33
+      },
+      "revId": "15a3226ce73d44a0802f12edaa364874af4a3aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d16549c5_ce88e350",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-03-30T21:59:05Z",
+      "side": 1,
+      "message": "Left this here because still trying to decide if the wrapper function should be in here or moved to tcpm.h like this patch #1 did.",
       "revId": "15a3226ce73d44a0802f12edaa364874af4a3aca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
