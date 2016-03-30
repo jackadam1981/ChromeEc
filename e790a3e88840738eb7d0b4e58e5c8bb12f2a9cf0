@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d16549c5_49f4cd32",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-03-30T22:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d16549c5_8efeeb10",
+      "range": {
+        "startLine": 651,
+        "startChar": 4,
+        "endLine": 653,
+        "endChar": 6
+      },
+      "revId": "e790a3e88840738eb7d0b4e58e5c8bb12f2a9cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d16549c5_ee03e7ee",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-03-30T21:24:41Z",
       "side": 1,
       "message": "We should probably trigger this hook on battery detach as well -- consider removing the \u0027if\u0027 condition.",
+      "range": {
+        "startLine": 655,
+        "startChar": 16,
+        "endLine": 655,
+        "endChar": 39
+      },
+      "revId": "e790a3e88840738eb7d0b4e58e5c8bb12f2a9cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d16549c5_e9ecc16e",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-03-30T22:37:12Z",
+      "side": 1,
+      "message": "good point. Fixed in next patch",
+      "parentUuid": "d16549c5_ee03e7ee",
       "range": {
         "startLine": 655,
         "startChar": 16,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d16549c5_690191eb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-03-30T22:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d16549c5_ce3543bc",
+      "range": {
+        "startLine": 1215,
+        "startChar": 1,
+        "endLine": 1218,
+        "endChar": 11
+      },
+      "revId": "e790a3e88840738eb7d0b4e58e5c8bb12f2a9cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d16549c5_2e25df85",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2016-03-30T21:24:41Z",
       "side": 1,
       "message": "Add parenthesis around this comparison -- ...(battery_is_present() \u003d\u003d BP_YES);",
+      "range": {
+        "startLine": 1220,
+        "startChar": 22,
+        "endLine": 1220,
+        "endChar": 52
+      },
+      "revId": "e790a3e88840738eb7d0b4e58e5c8bb12f2a9cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d16549c5_a909e914",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-03-30T22:37:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d16549c5_2e25df85",
       "range": {
         "startLine": 1220,
         "startChar": 22,
