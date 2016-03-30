@@ -108,4 +108,6 @@
 #define TCPC_REG_VBUS_VOLTAGE_ALARM_HI_CFG   0x76
 #define TCPC_REG_VBUS_VOLTAGE_ALARM_LO_CFG   0x78
 
+extern struct tcpm_drv tcpci_tcpm_drv;
+
 #endif /* __CROS_EC_USB_PD_TCPM_TCPCI_H */

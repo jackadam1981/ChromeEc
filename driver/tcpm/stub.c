@@ -7,6 +7,7 @@
 
 #include "task.h"
 #include "tcpci.h"
+#include "tcpm.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
@@ -48,7 +49,7 @@ static int init_power_status_mask(int port)
 	return tcpm_set_power_status_mask(port, 0);
 }
 
-int tcpm_init(int port)
+static int stub_tcpm_init(int port)
 {
 	int rv;
 
@@ -60,53 +61,53 @@ int tcpm_init(int port)
 	return init_power_status_mask(port);
 }
 
-int tcpm_get_cc(int port, int *cc1, int *cc2)
+static int stub_tcpm_get_cc(int port, int *cc1, int *cc2)
 {
 	return tcpc_get_cc(port, cc1, cc2);
 }
 
-int tcpm_set_cc(int port, int pull)
+static int stub_tcpm_set_cc(int port, int pull)
 {
 	return tcpc_set_cc(port, pull);
 }
 
-int tcpm_set_polarity(int port, int polarity)
+static int stub_tcpm_set_polarity(int port, int polarity)
 {
 	return tcpc_set_polarity(port, polarity);
 }
 
-int tcpm_set_power_status_mask(int port, uint8_t mask)
+static int stub_tcpm_set_power_status_mask(int port, uint8_t mask)
 {
 	return tcpc_set_power_status_mask(port, mask);
 }
 
-int tcpm_set_vconn(int port, int enable)
+static int stub_tcpm_set_vconn(int port, int enable)
 {
 	return tcpc_set_vconn(port, enable);
 }
 
-int tcpm_set_msg_header(int port, int power_role, int data_role)
+static int stub_tcpm_set_msg_header(int port, int power_role, int data_role)
 {
 	return tcpc_set_msg_header(port, power_role, data_role);
 }
 
-int tcpm_alert_status(int port, int *alert)
+static int stub_tcpm_alert_status(int port, int *alert)
 {
 	/* Read TCPC Alert register */
 	return tcpc_alert_status(port, alert);
 }
 
-int tcpm_set_rx_enable(int port, int enable)
+static int stub_tcpm_set_rx_enable(int port, int enable)
 {
 	return tcpc_set_rx_enable(port, enable);
 }
 
-int tcpm_alert_mask_set(int port, uint16_t mask)
+static int stub_tcpm_alert_mask_set(int port, uint16_t mask)
 {
 	return tcpc_alert_mask_set(port, mask);
 }
 
-int tcpm_get_message(int port, uint32_t *payload, int *head)
+static int stub_tcpm_get_message(int port, uint32_t *payload, int *head)
 {
 	int ret = tcpc_get_message(port, payload, head);
 
@@ -116,7 +117,7 @@ int tcpm_get_message(int port, uint32_t *payload, int *head)
 	return ret;
 }
 
-int tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
+static int stub_tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
 		  const uint32_t *data)
 {
 	return tcpc_transmit(port, type, header, data);
@@ -161,3 +162,21 @@ void tcpc_alert(int port)
 					   TCPC_TX_COMPLETE_FAILED);
 	}
 }
+
+struct tcpm_drv stub_tcpm_drv = {
+	.init					= &stub_tcpm_init,
+	.alert_status			= &stub_tcpm_alert_status,
+	.alert_mask_set			= &stub_tcpm_alert_mask_set,
+	.get_cc					= &stub_tcpm_get_cc,
+#ifdef CONFIG_USB_PD_TCPM_VBUS
+	.get_vbus_level			= &stub_tcpm_get_vbus_level,
+#endif
+	.set_cc					= &stub_tcpm_set_cc,
+	.set_polarity			= &stub_tcpm_set_polarity,
+	.set_power_status_mask	= &stub_tcpm_set_power_status_mask,
+	.set_vconn				= &stub_tcpm_set_vconn,
+	.set_msg_header			= &stub_tcpm_set_msg_header,
+	.set_rx_enable			= &stub_tcpm_set_rx_enable,
+	.get_message			= &stub_tcpm_get_message,
+	.transmit				= &stub_tcpm_transmit,
+};

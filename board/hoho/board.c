@@ -17,6 +17,7 @@
 #include "usb_bb.h"
 #include "usb_descriptor.h"
 #include "usb_pd.h"
+#include "usb_pd_tcpm.h"
 #include "timer.h"
 #include "util.h"
 
@@ -246,3 +247,10 @@ const struct bos_context bos_ctx = {
 	.descp = (void *)&bos_desc,
 	.size = sizeof(struct my_bos),
 };
+
+extern struct tcpm_drv stub_tcpm_drv;
+
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
+	{&stub_tcpm_drv,},
+};
+
