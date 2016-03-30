@@ -22,6 +22,30 @@
       "revId": "2c9f1b6e2c6b293d7a8b974106f349ea15fcd7e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "918cb188_33fe7213",
+        "filename": "board/sentry/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-03-30T16:28:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d16549c5_9abb8d39",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "2c9f1b6e2c6b293d7a8b974106f349ea15fcd7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
