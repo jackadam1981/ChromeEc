@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d16549c5_f4b57842",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-03-30T23:57:13Z",
+      "side": 1,
+      "message": "i should be size_t, if you\u0027re gonna be picky.",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 304,
+        "endChar": 4
+      },
+      "revId": "bc941f01093e3b5feab02e5cf99bc5df28ae1cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
