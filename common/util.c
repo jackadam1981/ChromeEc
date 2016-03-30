@@ -474,3 +474,26 @@ int parse_offset_size(int argc, char **argv, int shift,
 
 	return EC_SUCCESS;
 }
+
+
+/****************************************************************************/
+/* debuging related utilities */
+
+int uart_hexdump(const char *label, const void *data, int len)
+{
+	int i;
+	int rv;
+	const uint8_t *p = data;
+
+	uart_printf("%s: [%d bytes]\n", label, len);
+	for (i = 0; i < len; i++) {
+		rv = uart_printf("%02X%s", p[i],
+				(i + 1) % 16 == 0 ? "\n" : ":");
+		if (rv != EC_SUCCESS)
+			return rv;
+	}
+	if (len % 16)
+		rv = uart_printf("\n");
+
+	return rv;
+}

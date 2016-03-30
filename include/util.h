@@ -11,6 +11,7 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "panic.h"
+#include "uart.h"
 
 #include <stddef.h>
 
@@ -206,5 +207,15 @@ static inline int cond_went_true(cond_t *c) { return cond_went(c, 1); }
  */
 int parse_offset_size(int argc, char **argv, int shift,
 			     int *offset, int *size);
+
+/****************************************************************************/
+/* Debugging related utilities */
+
+/**
+ * Print a data buffer in hex, output to the UART.
+ *
+ * @return EC_SUCCESS, or non-zero if output was truncated.
+ */
+int uart_hexdump(const char *label, const void *data, int len);
 
 #endif  /* __CROS_EC_UTIL_H */
