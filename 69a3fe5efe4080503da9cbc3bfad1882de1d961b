@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1532dc8_8667ecaf",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-03-30T07:32:31Z",
+      "side": 1,
+      "message": "Can you quantify? What does 7 mean for security?",
+      "range": {
+        "startLine": 644,
+        "startChar": 15,
+        "endLine": 644,
+        "endChar": 16
+      },
+      "revId": "69a3fe5efe4080503da9cbc3bfad1882de1d961b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1532dc8_c66de493",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-03-30T07:32:31Z",
+      "side": 1,
+      "message": "what about zero?",
+      "range": {
+        "startLine": 693,
+        "startChar": 20,
+        "endLine": 693,
+        "endChar": 22
+      },
+      "revId": "69a3fe5efe4080503da9cbc3bfad1882de1d961b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
