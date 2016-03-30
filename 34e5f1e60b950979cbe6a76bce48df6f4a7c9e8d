@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d16549c5_daea65c1",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1135894
+      },
+      "writtenOn": "2016-03-30T21:50:21Z",
+      "side": 1,
+      "message": "DS_SUSPENDED not needed yet? Or does the IP core handle that automagically -- i.e. the task/driver doesn\u0027t care.",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 314,
+        "endChar": 15
+      },
+      "revId": "34e5f1e60b950979cbe6a76bce48df6f4a7c9e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
