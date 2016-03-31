@@ -76,6 +76,23 @@
     },
     {
       "key": {
+        "uuid": "6e91180d_e81407db",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-31T22:29:50Z",
+      "side": 1,
+      "message": "The ioapic was commented out in the assembly file, but it\u0027s being done here. Why the asymmetry?",
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e91180d_4802d32d",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 1
