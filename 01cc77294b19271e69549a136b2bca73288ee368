@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d16549c5_cf245d47",
+        "filename": "include/hooks.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-31T01:36:21Z",
+      "side": 1,
+      "message": "Technically, you would call:\n\nhook_call_deferred(\u0026foo_data, delay_in_usec)",
+      "revId": "01cc77294b19271e69549a136b2bca73288ee368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
