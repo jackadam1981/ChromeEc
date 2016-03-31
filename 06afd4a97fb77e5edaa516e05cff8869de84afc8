@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d16549c5_c08352c8",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-03-31T22:03:52Z",
+      "side": 1,
+      "message": "Why not use \"open ? 1 : 0;\" directly without defining \u0027set_force_lid_open()\" ?",
+      "range": {
+        "startLine": 149,
+        "startChar": 19,
+        "endLine": 149,
+        "endChar": 37
+      },
+      "revId": "06afd4a97fb77e5edaa516e05cff8869de84afc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
