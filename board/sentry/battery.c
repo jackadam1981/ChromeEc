@@ -13,6 +13,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "smbus.h"
 #include "system.h"
 #include "util.h"
 
@@ -148,6 +149,10 @@ enum battery_present battery_is_present(void)
 {
 	enum battery_present batt_pres;
 	int batt_status;
+	uint16_t batt_fw_mode = 0;
+  
+	/* read 0x35 for Battery firmware update status */
+	smbus_read_word(I2C_PORT_BATTERY, BATTERY_ADDR, 0x35, &batt_fw_mode);
 
 	/*
 	 * if voltage is below certain level (dependent on ratio of
@@ -169,6 +174,13 @@ enum battery_present battery_is_present(void)
 	if (batt_pres == BP_YES && !battery_status(&batt_status))
 		if (!(batt_status & STATUS_INITIALIZED))
 			batt_pres = BP_NO;
+
+	/*
+	 * Bit 8 in offset 0x35 is high mean in firmware updat mode.
+	 * Battery not supply power, report battery not present to prevent rebooting.
+	 */
+	if ((batt_fw_mode & 0x100) == 0x100)
+		batt_pres = BP_NO;
 
 	return batt_pres;
 }
