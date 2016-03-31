@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e91180d_857206e3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 3022,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-03-31T20:28:38Z",
+      "side": 1,
+      "message": "We should start at zero, since that value has no special meaning.",
+      "range": {
+        "startLine": 3022,
+        "startChar": 33,
+        "endLine": 3022,
+        "endChar": 34
+      },
+      "revId": "1a29c8754d12a295b02a1fce434e3729823752ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
