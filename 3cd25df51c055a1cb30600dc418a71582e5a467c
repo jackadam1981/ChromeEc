@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d16549c5_af6d6994",
+        "filename": "chip/g/jtag.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-31T01:12:35Z",
+      "side": 1,
+      "message": "Yeah, maybe we should rename this to pinmux_pre_init()?  Or chip_pre_init()?\n\nBut renaming is separate from adding what you need below, so that would be a separate change anyway.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "3cd25df51c055a1cb30600dc418a71582e5a467c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
