@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d16549c5_2f3f996a",
+        "filename": "board/kunimitsu/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-31T01:31:58Z",
+      "side": 1,
+      "message": "All config options should be #undef\u0027d in include/config.h, with a description.\n\nPerhaps #define CONFIG_DPTF_FAIL_SAFE_OFFSET would suffice for both options, since you can both #ifdef it and use it.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "21a69248d53f5d0c9eb6849f33100a104e685e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d16549c5_4fadadf4",
+        "filename": "board/lars/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-31T01:31:58Z",
+      "side": 1,
+      "message": "Naming: board functions all start with board_ so we can tell that they may vary between boards.  board_is dptf_active() would be a better name.\n\nAnd also, isn\u0027t this identical between the two boards where it was added (and presumably any new boards)?  So this doesn\u0027t really belong in board.c at all; it would be common functionality which would be in thermal.c.",
+      "range": {
+        "startLine": 310,
+        "startChar": 4,
+        "endLine": 310,
+        "endChar": 24
+      },
+      "revId": "21a69248d53f5d0c9eb6849f33100a104e685e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d16549c5_cf2ffd38",
+        "filename": "common/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-31T01:31:58Z",
+      "side": 1,
+      "message": "This should be defined in thermal.h\n\nBut see note in board.c; the implementation probably belongs in this file anyway.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 6
+      },
+      "revId": "21a69248d53f5d0c9eb6849f33100a104e685e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d16549c5_6f7c3143",
+        "filename": "common/thermal.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-03-31T01:31:58Z",
+      "side": 1,
+      "message": "typo: active",
+      "range": {
+        "startLine": 165,
+        "startChar": 30,
+        "endLine": 165,
+        "endChar": 32
+      },
+      "revId": "21a69248d53f5d0c9eb6849f33100a104e685e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
