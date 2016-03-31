@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e91180d_c87103ab",
+        "filename": "chip/ish30/adc_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-31T22:15:00Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "093d20ec7b3b76876918e381ac23993a276befc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e91180d_28566f04",
+        "filename": "chip/ish30/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-31T22:15:00Z",
+      "side": 1,
+      "message": "x86 has a wfi instruction? is this a minute-ia thing? if so, what compiler/assembler are you using to compile this code?",
+      "range": {
+        "startLine": 243,
+        "startChar": 3,
+        "endLine": 243,
+        "endChar": 14
+      },
+      "revId": "093d20ec7b3b76876918e381ac23993a276befc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e91180d_e8f5e731",
+        "filename": "chip/ish30/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-31T22:15:00Z",
+      "side": 1,
+      "message": "What\u0027s the story on using the TSC vs the HPET? Or is this not actually exposed or used so should be removed?",
+      "revId": "093d20ec7b3b76876918e381ac23993a276befc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e91180d_c846e34c",
+        "filename": "chip/ish30/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-31T22:15:00Z",
+      "side": 1,
+      "message": "random tab",
+      "range": {
+        "startLine": 43,
+        "startChar": 23,
+        "endLine": 43,
+        "endChar": 24
+      },
+      "revId": "093d20ec7b3b76876918e381ac23993a276befc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
