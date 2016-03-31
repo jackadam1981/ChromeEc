@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e91180d_88ad3b63",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-31T21:57:57Z",
+      "side": 1,
+      "message": "Does the minute ia handle the directional flag? If so it should be cleared here.",
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e91180d_28cbcf21",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-31T21:57:57Z",
+      "side": 1,
+      "message": "This is assuming the stack at the end of __bss? Is it inclusive? looking at the linker script it is. You seem to be trashing memory you shouldn\u0027t with this next  rep stosl",
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e91180d_a8a59f76",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-31T21:57:57Z",
+      "side": 1,
+      "message": "Below CONFIG_STACK_SIZE is used, but STACK_SIZE is employed here. Why the difference?",
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e91180d_088febea",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-31T21:57:57Z",
+      "side": 1,
+      "message": "None of this appears to be used... I haven\u0027t looked at the C code yet. But if you want to access \u0027__\u0027 variables they are already exposed in include/link_defs.h",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 14
+      },
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e91180d_4802d32d",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-31T21:57:57Z",
+      "side": 1,
+      "message": "What\u0027s w/ this commented out code? IO-APIC ACK?",
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e91180d_e8164771",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-31T21:57:57Z",
+      "side": 1,
+      "message": "local apic ack?",
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e91180d_8808db4d",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-03-31T21:57:57Z",
+      "side": 1,
+      "message": "There\u0027s floating point code in the EC codebase. This doesn\u0027t handle switching out floating point state.",
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
