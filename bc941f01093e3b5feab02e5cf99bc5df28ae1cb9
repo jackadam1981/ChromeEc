@@ -22,6 +22,30 @@
       "revId": "bc941f01093e3b5feab02e5cf99bc5df28ae1cb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d16549c5_0f09f50f",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-03-31T00:57:32Z",
+      "side": 1,
+      "message": "Changed to int.",
+      "parentUuid": "d16549c5_f4b57842",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 304,
+        "endChar": 4
+      },
+      "revId": "bc941f01093e3b5feab02e5cf99bc5df28ae1cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
