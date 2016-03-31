@@ -585,11 +585,18 @@ void charger_task(void)
 {
 	int sleep_usec;
 	int need_static = 1;
+#ifndef TEST_BUILD
+	char text[9];
+#endif
 	const struct charger_info * const info = charger_get_info();
 
 	/* Get the battery-specific values */
 	batt_info = battery_get_info();
-
+	ccprintf("Bat:");
+#ifndef TEST_BUILD
+	if (!battery_manufacturer_name(text, sizeof(text)))
+		ccprintf("%s\n", text);
+#endif
 	prev_ac = prev_charge = -1;
 	state_machine_force_idle = 0;
 	shutdown_warning_time.val = 0UL;
@@ -646,6 +653,11 @@ void charger_task(void)
 		}
 		charger_get_params(&curr.chg);
 		battery_get_params(&curr.batt);
+
+		if (curr.chg.flags & CHG_FLAG_BAD_OPTION) {
+			task_wait_event(-1);
+			continue;
+		}
 
 		if (prev_bp != curr.batt.is_present) {
 			prev_bp = curr.batt.is_present;

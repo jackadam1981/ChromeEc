@@ -136,6 +136,11 @@ int charger_get_option(int *option)
 	if (rv)
 		return rv;
 
+	if (reg & ISL9237_C1_LEARN_MODE_ENABLE) {
+		CPRINTF("learn mode enabled(0x%04x)", reg);
+		return EC_ERROR_INVAL;
+	}
+
 	controls |= reg << 16;
 	*option = controls;
 	return EC_SUCCESS;
