@@ -142,6 +142,17 @@ static void setzer_led_set_power(void)
 		pwr_led_set_color(LED_WHITE);
 }
 
+static int charge_get_battery_percent(void)
+{
+	static int remaining_capacity;
+	static int full_charge_capacity;
+
+	battery_remaining_capacity(&remaining_capacity);
+	battery_full_charge_capacity(&full_charge_capacity);
+	return DIV_ROUND_NEAREST((100 * remaining_capacity),
+		full_charge_capacity);
+}
+
 static void setzer_led_set_battery(void)
 {
 	static int battery_ticks;
@@ -150,10 +161,23 @@ static void setzer_led_set_battery(void)
 
 	switch (charge_get_state()) {
 	case PWR_STATE_CHARGE:
-		bat_led_set_color(LED_AMBER);
+		/* There's a 3% difference between the battery level
+		 * seen by the kernel and what's really going on,
+		 * so if they want to see 97%, we use 94%.
+		 * Hard code this number here, because this only affects the
+		 * LED color, not the battery charge state. */
+		if (charge_get_battery_percent() >= 94)
+			bat_led_set_color(LED_WHITE);
+		else
+			bat_led_set_color(LED_AMBER);
 		break;
 	case PWR_STATE_DISCHARGE:
-		if (charge_get_percent() < 10)
+		/* There's a 3% difference between the battery level
+		 * seen by the kernel and what's really going on,
+		 * so if they want to see 10%, we use 13%.
+		 * Hard code this number here, because this only affects the
+		 * LED color, not the battery charge state. */
+		if (charge_get_battery_percent() < 13)
 			bat_led_set_color(
 				(battery_ticks & 0x4) ? LED_WHITE : LED_OFF);
 		else
