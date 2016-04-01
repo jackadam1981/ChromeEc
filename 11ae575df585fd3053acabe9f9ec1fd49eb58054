@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8edc8cfe_7fa19bcc",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-01T23:40:59Z",
+      "side": 1,
+      "message": "Just curious, why are you printing this once?",
+      "revId": "11ae575df585fd3053acabe9f9ec1fd49eb58054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8edc8cfe_ff8cab66",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-01T23:40:59Z",
+      "side": 1,
+      "message": "Let\u0027s add something like \"/* TODO(crosbug.com/p/51196): Revert this code once we figure out the charging bug. */\"",
+      "revId": "11ae575df585fd3053acabe9f9ec1fd49eb58054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
