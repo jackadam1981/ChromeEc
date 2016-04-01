@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8edc8cfe_36e3404e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-01T20:00:01Z",
+      "side": 1,
+      "message": "This will need to eventually land in the glados firmware branch.",
+      "revId": "c6b34db06ff3614ba43a995b2ab5f3da8395eab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8edc8cfe_16b71c4d",
+        "filename": "chip/mec1322/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-01T20:00:01Z",
+      "side": 1,
+      "message": "Presumably spi_flash_read() doesn\u0027t do any scheduling or sleeping?",
+      "revId": "c6b34db06ff3614ba43a995b2ab5f3da8395eab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8edc8cfe_76c228a8",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-01T20:00:01Z",
+      "side": 1,
+      "message": "You should return an error here if yield \u003d\u003d 0 since it\u0027s not being honored?",
+      "revId": "c6b34db06ff3614ba43a995b2ab5f3da8395eab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
