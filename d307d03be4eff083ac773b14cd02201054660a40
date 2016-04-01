@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8edc8cfe_d03f5cb7",
+        "filename": "board/banon/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-01T17:29:44Z",
+      "side": 1,
+      "message": "Since all your timings are second-based, how about changing this (and related counters) to HOOK_SECOND?",
+      "range": {
+        "startLine": 216,
+        "startChar": 13,
+        "endLine": 216,
+        "endChar": 22
+      },
+      "revId": "d307d03be4eff083ac773b14cd02201054660a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
