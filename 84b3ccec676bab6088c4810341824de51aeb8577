@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6e91180d_d450ba53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-01T16:02:52Z",
+      "side": 1,
+      "message": "I see. That does indeed work on my system.",
+      "parentUuid": "8e400c44_b3f522e1",
+      "revId": "84b3ccec676bab6088c4810341824de51aeb8577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e91180d_f9eb7700",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "do we need this for revert?",
       "parentUuid": "6e91180d_f9eb7700",
+      "revId": "84b3ccec676bab6088c4810341824de51aeb8577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e91180d_942472f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-01T16:02:52Z",
+      "side": 1,
+      "message": "Well, presumably there\u0027s a bug filed for sentry disucssing the ectool reboot_ec problems? And yes, all patches Signed-off-by",
+      "parentUuid": "8e400c44_93f21ef5",
       "revId": "84b3ccec676bab6088c4810341824de51aeb8577",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
