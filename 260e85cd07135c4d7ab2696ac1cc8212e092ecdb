@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e91180d_1430622e",
+        "filename": "common/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-01T16:02:22Z",
+      "side": 1,
+      "message": "We should have interrupts disabled at this point. If we take an interrupt that attempts to use bss.slow during or after flash_read() we are toast since we just clobbered all that memory.",
+      "revId": "260e85cd07135c4d7ab2696ac1cc8212e092ecdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
