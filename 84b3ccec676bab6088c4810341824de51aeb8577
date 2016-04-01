@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e91180d_19e97b08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-01T14:19:46Z",
+      "side": 1,
+      "message": "What does auto reboot mean? If you reboot the EC it\u0027s expected the device to restart completely -- that includes the skylake part as well. That behavior should always be happening regardless of a config option.",
+      "revId": "84b3ccec676bab6088c4810341824de51aeb8577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e91180d_f9eb7700",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-01T14:19:46Z",
+      "side": 1,
+      "message": "There\u0027s no Signed-off-by: or BUG\u003d TEST\u003d",
+      "revId": "84b3ccec676bab6088c4810341824de51aeb8577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
