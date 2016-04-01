@@ -58,6 +58,9 @@ static __thread task_id_t my_task_id; /* thread local task id */
 
 static void task_enable_all_tasks_callback(void);
 
+/* Current status if global interrupts are enabled or not. */
+static uint8_t irqs_enabled;
+
 #define TASK(n, r, d, s) void r(void *);
 CONFIG_TASK_LIST
 CONFIG_TEST_TASK_LIST
@@ -493,4 +496,9 @@ void task_enable_all_tasks(void)
 {
 	/* Signal to the scheduler to enable the remaining tasks. */
 	pthread_cond_signal(&scheduler_cond);
+}
+
+uint8_t task_irqs_enabled(void)
+{
+	return irqs_enabled;
 }

@@ -475,6 +475,9 @@ static void jump_to_image(uintptr_t init_addr)
 	/* Call other hooks; these may add tags */
 	hook_notify(HOOK_SYSJUMP);
 
+	/* Disable interrupts before reading from flash. */
+	interrupt_disable();
+
 #ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
 	/*
 	 * We've used the region in which the loader resided as data space for
@@ -500,9 +503,6 @@ static void jump_to_image(uintptr_t init_addr)
 	/* Now that the lfw is loaded again, get the reset vector. */
 	init_addr = system_get_lfw_address();
 #endif /* defined(CONFIG_REPLACE_LOADER_WITH_BSS_SLOW) */
-
-	/* Disable interrupts before jump */
-	interrupt_disable();
 
 #ifdef CONFIG_DMA
 	/* Disable all DMA channels to avoid memory corruption */

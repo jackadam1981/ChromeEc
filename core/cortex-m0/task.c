@@ -28,6 +28,9 @@ typedef union {
 	};
 } task_;
 
+/* Current status if global interrupts are enabled or not. */
+static uint8_t irqs_enabled;
+
 /* Value to store in unused stack */
 #define STACK_UNUSED_VALUE 0xdeadd00d
 
@@ -671,4 +674,8 @@ int task_start(void)
 #endif
 
 	return __task_start(&start_called);
+}
+uint8_t task_irqs_enabled(void)
+{
+	return irqs_enabled;
 }
