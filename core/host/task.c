@@ -48,7 +48,7 @@ static sem_t interrupt_sem;
 static pthread_mutex_t interrupt_lock;
 static pthread_t interrupt_thread;
 static int in_interrupt;
-static int interrupt_disabled;
+static uint8_t interrupt_disabled;
 static void (*pending_isr)(void);
 static int generator_sleeping;
 static timestamp_t generator_sleep_deadline;
@@ -493,4 +493,9 @@ void task_enable_all_tasks(void)
 {
 	/* Signal to the scheduler to enable the remaining tasks. */
 	pthread_cond_signal(&scheduler_cond);
+}
+
+uint8_t task_irqs_enabled(void)
+{
+	return interrupt_disabled;
 }

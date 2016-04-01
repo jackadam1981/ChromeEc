@@ -211,6 +211,11 @@ void task_enable_irq(int irq);
 void task_disable_irq(int irq);
 
 /**
+ * Are global interrupts enabled? 1: yes, 0: no
+ */
+uint8_t task_irqs_enabled(void);
+
+/**
  * Software-trigger an interrupt.
  */
 void task_trigger_irq(int irq);

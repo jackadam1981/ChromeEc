@@ -31,6 +31,9 @@ typedef union {
 	};
 } task_;
 
+/* Current status if global interrupts are enabled or not. */
+static uint8_t irqs_enabled;
+
 /* Value to store in unused stack */
 #define STACK_UNUSED_VALUE 0xdeadd00d
 
@@ -216,6 +219,7 @@ void interrupt_disable(void)
 	uint32_t val = (1 << 30);
 	asm volatile ("mtsr %0, $INT_MASK" : : "r"(val));
 	asm volatile ("dsb");
+	irqs_enabled = 0;
 }
 
 void interrupt_enable(void)
@@ -223,6 +227,7 @@ void interrupt_enable(void)
 	/* Enable HW2 ~ HW15 and division by zero exception interrupts */
 	uint32_t val = ((1 << 30) | 0xFFFC);
 	asm volatile ("mtsr %0, $INT_MASK" : : "r"(val));
+	irqs_enabled = 1;
 }
 
 inline int in_interrupt_context(void)
@@ -790,4 +795,9 @@ int task_start(void)
 	start_called = 1;
 
 	return __task_start();
+}
+
+uint8_t task_irqs_enabled(void)
+{
+	return irqs_enabled;
 }

@@ -28,6 +28,9 @@ typedef union {
 	};
 } task_;
 
+/* Current status if global interrupts are enabled or not. */
+static uint8_t irqs_enabled;
+
 /* Value to store in unused stack */
 #define STACK_UNUSED_VALUE 0xdeadd00d
 
@@ -141,11 +144,13 @@ static inline task_ *__task_id_to_ptr(task_id_t id)
 void interrupt_disable(void)
 {
 	asm("cpsid i");
+	irqs_enabled = 0;
 }
 
 void interrupt_enable(void)
 {
 	asm("cpsie i");
+	irqs_enabled = 1;
 }
 
 inline int in_interrupt_context(void)
@@ -671,4 +676,8 @@ int task_start(void)
 #endif
 
 	return __task_start(&start_called);
+}
+uint8_t task_irqs_enabled(void)
+{
+	return irqs_enabled;
 }
