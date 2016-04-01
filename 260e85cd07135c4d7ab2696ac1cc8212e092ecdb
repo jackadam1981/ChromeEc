@@ -16,6 +16,24 @@
       "revId": "260e85cd07135c4d7ab2696ac1cc8212e092ecdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e91180d_148f02eb",
+        "filename": "common/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-04-01T16:21:37Z",
+      "side": 1,
+      "message": "That is true.\n\nI think that I had run into some hard faults if I disabled interrupts before performing the read due to trying to reschedule tasks.",
+      "parentUuid": "6e91180d_1430622e",
+      "revId": "260e85cd07135c4d7ab2696ac1cc8212e092ecdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
