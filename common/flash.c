@@ -305,8 +305,20 @@ int flash_read(int offset, int size, char *data)
 	memcpy(data, src, size);
 	return EC_SUCCESS;
 #else
-	return flash_physical_read(offset, size, data);
+	/* By default, try and yield in between read transactions. */
+	return flash_physical_read(offset, size, data, 1);
 #endif
+}
+
+int flash_block_and_read(int offset, int size, char *data)
+{
+#ifdef CONFIG_MAPPED_STORAGE
+	/* Nothing special needs to be done for memory mapped storage. */
+	return flash_read(offset, size, data);
+#else
+	/* Don't try to sleep or delay when reading from flash. */
+	return flash_physical_read(offset, size, data, 0);
+#endif /* defined(CONFIG_MAPPED_STORAGE) */
 }
 
 int flash_write(int offset, int size, const char *data)

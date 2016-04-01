@@ -456,7 +456,7 @@ int flash_spi_sel_lock(int enable)
 /*****************************************************************************/
 /* Physical layer APIs */
 
-int flash_physical_read(int offset, int size, char *data)
+int flash_physical_read(int offset, int size, char *data, int yield)
 {
 	int dest_addr = offset;
 	uint32_t idx;

@@ -42,8 +42,9 @@ enum flash_wp_range {
  * @param offset	Flash offset to write.
  * @param size	        Number of bytes to write.
  * @param data          Destination buffer for data.  Must be 32-bit aligned.
+ * @param yield         Whether to yield to other tasks between transactions.
  */
-int flash_physical_read(int offset, int size, char *data);
+int flash_physical_read(int offset, int size, char *data, int yield);
 
 /**
  * Write to physical flash.
@@ -208,6 +209,17 @@ int flash_dataptr(int offset, int size_req, int align, const char **ptrp);
  * @param data          Destination buffer for data.  Must be 32-bit aligned.
  */
 int flash_read(int offset, int size, char *data);
+
+/**
+ * Read from physical flash without yielding or delaying.
+ *
+ * You should disable interrupts before using this.
+ *
+ * @param offset	Flash offset to write.
+ * @param size	        Number of bytes to write.
+ * @param data          Destination buffer for data.  Must be 32-bit aligned.
+ */
+int flash_block_and_read(int offset, int size, char *data);
 
 /**
  * Write to flash.

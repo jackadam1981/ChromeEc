@@ -33,8 +33,9 @@ struct flash_wp_state {
  * @param offset        Flash offset to write.
  * @param size          Number of bytes to write.
  * @param data          Destination buffer for data.
+ * @param yield         Whether to yield to other tasks between transactions.
  */
-int flash_physical_read(int offset, int size, char *data)
+int flash_physical_read(int offset, int size, char *data, int yield)
 {
 	int ret = EC_SUCCESS;
 	int i, read_size;
@@ -46,8 +47,10 @@ int flash_physical_read(int offset, int size, char *data)
 					read_size);
 		if (ret != EC_SUCCESS)
 			break;
-		/* yield so other tasks get a chance to wake up */
-		msleep(1);
+
+		if (yield)
+			/* yield so other tasks get a chance to wake up */
+			msleep(1);
 	}
 
 	return ret;
