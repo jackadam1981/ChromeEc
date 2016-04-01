@@ -99,6 +99,18 @@ void intc_cpu_int_group_6(void)
 		i2c_interrupt(2);
 		break;
 
+	case IT83XX_IRQ_SMB_D:
+		i2c_interrupt(3);
+		break;
+
+	case IT83XX_IRQ_SMB_E:
+		i2c_interrupt(4);
+		break;
+
+	case IT83XX_IRQ_SMB_F:
+		i2c_interrupt(5);
+		break;
+
 	default:
 		break;
 	}
