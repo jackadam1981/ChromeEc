@@ -708,6 +708,7 @@ static void scan_bus(int port, const char *desc)
 {
 	int a;
 	uint8_t tmp;
+	uint8_t reg = 0;
 
 	ccprintf("Scanning %d %s", port, desc);
 
@@ -727,7 +728,7 @@ static void scan_bus(int port, const char *desc)
 		ccputs(".");
 
 		/* Do a single read */
-		if (!i2c_xfer(port, a, NULL, 0, &tmp, 1, I2C_XFER_SINGLE))
+		if (!i2c_xfer(port, a, &reg, 1, &tmp, 1, I2C_XFER_SINGLE))
 			ccprintf("\n  0x%02x", a);
 	}
 
