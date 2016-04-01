@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e91180d_f4161e71",
+        "filename": "chip/g/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-01T16:14:30Z",
+      "side": 1,
+      "message": "just out of curiosity: how many/which bits can be set in RSTSRC or EXITPD_SRC concurrently?\n\nAnother question: do we care about PMU_EXITPD_MASK contents? I.e. what if bit set in EXITPD_SRC is masked in PMU_EXITPD_MASK, can we trust the bit state in this case?",
+      "revId": "70378b86b4e5682b70a8145c9679e250280d6f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
