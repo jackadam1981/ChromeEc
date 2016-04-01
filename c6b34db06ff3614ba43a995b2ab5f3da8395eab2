@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "8edc8cfe_56212435",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-01T20:10:29Z",
+      "side": 1,
+      "message": "I just meant None -\u003e glados",
+      "parentUuid": "8edc8cfe_d6b0b452",
+      "revId": "c6b34db06ff3614ba43a995b2ab5f3da8395eab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8edc8cfe_16b71c4d",
         "filename": "chip/mec1322/flash.c",
         "patchSetId": 1
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "You mean if it\u0027s equal to 1? I could.",
       "parentUuid": "8edc8cfe_76c228a8",
+      "revId": "c6b34db06ff3614ba43a995b2ab5f3da8395eab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8edc8cfe_960eacc3",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-01T20:10:29Z",
+      "side": 1,
+      "message": "yield\u003d\u003d1 just means you can yield. yield\u003d\u003d0 don\u0027t. I didn\u0027t comb through this function\u0027s dependencies, but if it\u0027s yielding in any way then it\u0027s not honoring yield\u003d\u003d0.",
+      "parentUuid": "8edc8cfe_76fd48ca",
       "revId": "c6b34db06ff3614ba43a995b2ab5f3da8395eab2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
