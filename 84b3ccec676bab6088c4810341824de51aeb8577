@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8e400c44_b3f522e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-04-01T14:31:47Z",
+      "side": 1,
+      "message": "normally, the \u0027ectool reboot_ec RO\u0027 or \u0027ectool reboot_ec RW\u0027 just let EC jut to RO/RW, not causing whole system reset.\nWe pick up this option from kunimitsu earlier, but cause this side effect, \nwe\u0027d like to revert it for now before we further figure out the problem. thanks.",
+      "parentUuid": "6e91180d_19e97b08",
+      "revId": "84b3ccec676bab6088c4810341824de51aeb8577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e91180d_f9eb7700",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-04-01T14:19:46Z",
       "side": 1,
       "message": "There\u0027s no Signed-off-by: or BUG\u003d TEST\u003d",
+      "revId": "84b3ccec676bab6088c4810341824de51aeb8577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e400c44_93f21ef5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-04-01T14:31:47Z",
+      "side": 1,
+      "message": "do we need this for revert?",
+      "parentUuid": "6e91180d_f9eb7700",
       "revId": "84b3ccec676bab6088c4810341824de51aeb8577",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
