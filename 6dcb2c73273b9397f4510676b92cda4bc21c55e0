@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8edc8cfe_ca71e7aa",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-02T00:34:54Z",
+      "side": 1,
+      "message": "this one needs to be \u0027const\u0027 also ?",
+      "range": {
+        "startLine": 1001,
+        "startChar": 0,
+        "endLine": 1001,
+        "endChar": 32
+      },
+      "revId": "6dcb2c73273b9397f4510676b92cda4bc21c55e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8edc8cfe_6a4c7b72",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-02T00:34:54Z",
+      "side": 1,
+      "message": "why const is removed here ?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "6dcb2c73273b9397f4510676b92cda4bc21c55e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
