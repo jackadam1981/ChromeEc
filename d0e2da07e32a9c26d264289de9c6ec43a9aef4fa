@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8edc8cfe_2556a404",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-02T04:02:37Z",
+      "side": 1,
+      "message": "What\u0027s your opinion on changing the function name to \u003cchipname\u003e_tcpm_init?\n\nSince it is declared as static, should I keep all tcpm_* function name as-is without adding the chipname?",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 28
+      },
+      "revId": "d0e2da07e32a9c26d264289de9c6ec43a9aef4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
