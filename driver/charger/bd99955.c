@@ -10,6 +10,7 @@
 #include "bd99955.h"
 #include "charger.h"
 #include "console.h"
+#include "hooks.h"
 #include "i2c.h"
 #include "task.h"
 #include "util.h"
@@ -352,6 +353,43 @@ int charger_set_voltage(int voltage)
 				BD99955_BAT_CHG_COMMAND);
 }
 
+static void bd99995_init(void)
+{
+	int reg;
+	const struct battery_info *bi = battery_get_info();
+
+	/* Disable BC1.2 detection on VCC */
+	if (ch_raw_read16(BD99955_CMD_VCC_UCD_SET, &reg,
+			  BD99955_EXTENDED_COMMAND))
+		return;
+	reg &= ~BD99955_CMD_UCD_SET_USBDETEN;
+	ch_raw_write16(BD99955_CMD_VCC_UCD_SET, reg,
+		       BD99955_EXTENDED_COMMAND);
+
+	/* Disable BC1.2 detection on VBUS */
+	if (ch_raw_read16(BD99955_CMD_VBUS_UCD_SET, &reg,
+			  BD99955_EXTENDED_COMMAND))
+		return;
+	reg &= ~BD99955_CMD_UCD_SET_USBDETEN;
+	ch_raw_write16(BD99955_CMD_VBUS_UCD_SET, reg,
+		       BD99955_EXTENDED_COMMAND);
+
+	/* Disable BC1.2 charge enable trigger */
+	if (ch_raw_read16(BD99955_CMD_CHGOP_SET1, &reg,
+			  BD99955_EXTENDED_COMMAND))
+		return;
+	reg |= (BD99955_CMD_CHGOP_SET1_VCC_BC_DISEN |
+		BD99955_CMD_CHGOP_SET1_VBUS_BC_DISEN);
+	ch_raw_write16(BD99955_CMD_CHGOP_SET1, reg,
+		       BD99955_EXTENDED_COMMAND);
+
+	/* Set battery OVP to 500 + maximum battery voltage */
+	ch_raw_write16(BD99955_CMD_VBATOVP_SET,
+		       (bi->voltage_max + 500) & 0x7ff0,
+		       BD99955_EXTENDED_COMMAND);
+}
+DECLARE_HOOK(HOOK_INIT, bd99995_init, HOOK_PRIO_DEFAULT);
+
 int charger_post_init(void)
 {
 	int rv;
@@ -472,15 +510,14 @@ static int console_command_bd99955(int argc, char **argv)
 	char rw, *e;
 	enum bd99955_command cmd;
 
-	rw = argv[1][0];
-	if (rw == 'r') {
-		if (argc < 4)
-			return EC_ERROR_PARAM_COUNT;
-	} else if (rw == 'w') {
-		if (argc < 5)
-			return EC_ERROR_PARAM_COUNT;
-	} else
+	if (argc < 4)
 		return EC_ERROR_PARAM_COUNT;
+
+	rw = argv[1][0];
+	if (rw == 'w' && argc < 5)
+			return EC_ERROR_PARAM_COUNT;
+	else if (rw != 'r')
+		return EC_ERROR_PARAM1;
 
 	reg = strtoi(argv[2], &e, 16);
 	if (*e || reg < 0)
