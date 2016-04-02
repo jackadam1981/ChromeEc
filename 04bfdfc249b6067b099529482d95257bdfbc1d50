@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8edc8cfe_ca980733",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-02T00:30:43Z",
+      "side": 1,
+      "message": "We can change the logic here to report type PD during the 2 sec window iff we have a voltage \u003e 5V \u0026\u0026 current \u003e 500mA. It\u0027s super hacky but it will fix the latency problem you mentioned.",
+      "range": {
+        "startLine": 234,
+        "startChar": 13,
+        "endLine": 234,
+        "endChar": 33
+      },
+      "revId": "04bfdfc249b6067b099529482d95257bdfbc1d50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
