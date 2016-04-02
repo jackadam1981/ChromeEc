@@ -22,6 +22,30 @@
       "revId": "d0e2da07e32a9c26d264289de9c6ec43a9aef4fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8edc8cfe_4552c8b7",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-02T18:36:19Z",
+      "side": 1,
+      "message": "I think it\u0027s fine, just be consistent within each driver. Either way (static int tcpm_init() or static int fusb302_tcpm_init()) is fine, as long as it\u0027s consistent with the other interface functions.",
+      "parentUuid": "8edc8cfe_2556a404",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 28
+      },
+      "revId": "d0e2da07e32a9c26d264289de9c6ec43a9aef4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
