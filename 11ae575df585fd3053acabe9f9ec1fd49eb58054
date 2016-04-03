@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8edc8cfe_97978368",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2016-04-03T21:59:40Z",
+      "side": 1,
+      "message": "Since there are two battery vendors, we like to print which one is used for debug; and we assume no battery switch during one boot. So print once is enough.",
+      "parentUuid": "8edc8cfe_7fa19bcc",
+      "revId": "11ae575df585fd3053acabe9f9ec1fd49eb58054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8edc8cfe_ff8cab66",
         "filename": "driver/charger/isl9237.c",
         "patchSetId": 2
