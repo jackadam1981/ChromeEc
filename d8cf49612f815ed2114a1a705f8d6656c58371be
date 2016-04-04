@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8edc8cfe_770bff0a",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-04T15:37:28Z",
+      "side": 1,
+      "message": "so, the only way to set this is command line? Should it be controlled programmatically somehow?",
+      "revId": "d8cf49612f815ed2114a1a705f8d6656c58371be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
