@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8edc8cfe_cd96de76",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-04-04T19:16:35Z",
+      "side": 1,
+      "message": "Can you add a separate macro for this?",
+      "revId": "5c054790b4443675cdcd248b1724ca64c1a712d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8edc8cfe_8d8a1644",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-04-04T19:16:35Z",
+      "side": 1,
+      "message": "with your changes, we can remove this TODO code now",
+      "revId": "5c054790b4443675cdcd248b1724ca64c1a712d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8edc8cfe_50efe1cf",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-04-04T19:16:35Z",
+      "side": 1,
+      "message": "if rw\u003dw \u0026 argc\u003d5\ncode will enter \u0027else if\u0027 part and return invalid param",
+      "revId": "5c054790b4443675cdcd248b1724ca64c1a712d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
