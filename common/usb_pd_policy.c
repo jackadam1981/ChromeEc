@@ -445,14 +445,14 @@ static void dfp_consume_attention(int port, uint32_t *payload)
  * This algorithm defaults to choosing higher pin config over lower ones.  Pin
  * configs are organized in pairs with the following breakdown.
  *
- *  NAME | SIGNALING | OUTPUT TYPE | MULTI-FUNCTION | PIN CONFIG
+ *  NAME | SIGNALING | OUTPUT TYPE    | MULTI-FUNCTION | PIN CONFIG
  * -------------------------------------------------------------
- *  A    |  USB G2   |  ?          | no             | 00_0001
- *  B    |  USB G2   |  ?          | yes            | 00_0010
- *  C    |  DP       |  CONVERTED  | no             | 00_0100
- *  D    |  PD       |  CONVERTED  | yes            | 00_1000
- *  E    |  DP       |  DP         | no             | 01_0000
- *  F    |  PD       |  DP         | yes            | 10_0000
+ *  A    |  USB G2   |  CONV or USBC  | no             | 00_0001
+ *  B    |  USB G2   |  CONV or USBC  | yes            | 00_0010
+ *  C    |  DP       |  CONV or USBC  | no             | 00_0100
+ *  D    |  DP       |  CONV or USBC  | yes            | 00_1000
+ *  E    |  DP       |  DP            | no             | 01_0000
+ *  F    |  DP       |  DP            | yes            | 10_0000
  *
  * if UFP has NOT asserted multi-function preferred code masks away B/D/F
  * leaving only A/C/E.  For single-output dongles that should leave only one
@@ -480,6 +480,10 @@ int pd_dfp_dp_get_pin_mode(int port, uint32_t status)
 
 	/* TODO(crosbug.com/p/39656) revisit if DFP drives USB Gen 2 signals */
 	pin_caps &= ~MODE_DP_PIN_BR2_MASK;
+
+	/* If UFP is a USBC receptacle can't support pin config E & F */
+	if (mode_caps & VDO_MODE_DP_RECEPTACLE)
+		pin_caps &= MODE_DP_PIN_RECEPTACLE_MASK;
 
 	/* get_next_bit returns undefined for zero */
 	if (!pin_caps)

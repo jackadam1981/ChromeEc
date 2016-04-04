@@ -499,7 +499,7 @@ struct pd_policy {
  * <23:16> : UFP_D pin assignment supported
  * <15:8>  : DFP_D pin assignment supported
  * <7>     : USB 2.0 signaling (0b=yes, 1b=no)
- * <6>     : Plug | Receptacle (0b == plug, 1b == receptacle)
+ * <6>     : DP on USBC Plug or Receptacle (0b == plug, 1b == receptacle)
  * <5:2>   : xxx1: Supports DPv1.3, xx1x Supports USB Gen 2 signaling
  *           Other bits are reserved.
  * <1:0>   : signal direction ( 00b=rsv, 01b=sink, 10b=src 11b=both )
@@ -510,6 +510,7 @@ struct pd_policy {
 	 | ((sdir) & 0x3))
 #define PD_DP_PIN_CAPS(x) ((((x) >> 6) & 0x1) ? (((x) >> 16) & 0x3f)	\
 			   : (((x) >> 8) & 0x3f))
+#define VDO_MODE_DP_RECEPTACLE 0x40
 
 #define MODE_DP_PIN_A 0x01
 #define MODE_DP_PIN_B 0x02
@@ -524,6 +525,8 @@ struct pd_policy {
 #define MODE_DP_PIN_BR2_MASK 0x3
 /* Pin configs C/D/E/F support DP signaling levels */
 #define MODE_DP_PIN_DP_MASK 0x3c
+/* Pin configs A/B/C/D supported on UFP USBC receptacle */
+#define MODE_DP_PIN_RECEPTACLE_MASK 0xf
 
 #define MODE_DP_V13  0x1
 #define MODE_DP_GEN2 0x2
