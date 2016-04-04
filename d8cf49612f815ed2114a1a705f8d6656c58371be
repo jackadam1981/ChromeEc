@@ -16,6 +16,24 @@
       "revId": "d8cf49612f815ed2114a1a705f8d6656c58371be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8edc8cfe_77ce9fac",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-04T15:49:32Z",
+      "side": 1,
+      "message": "Eventually, yes, unless we just leave it on all the time. This is just until I get it working reliably. There are several more CLs to come.",
+      "parentUuid": "8edc8cfe_770bff0a",
+      "revId": "d8cf49612f815ed2114a1a705f8d6656c58371be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
