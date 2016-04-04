@@ -141,6 +141,9 @@ int charger_set_input_current(int input_current)
 	/* Input current step 32 mA */
 	input_current &= ~0x1F;
 
+	if (input_current <= 0)
+		input_current = bd99955_charger_info.input_current_min;
+
 	rv = ch_raw_write16(BD99955_CMD_IBUS_LIM_SET, input_current,
 				BD99955_BAT_CHG_COMMAND);
 	if (rv)
@@ -322,6 +325,9 @@ int charger_set_current(int current)
 	/* Charge current step 64 mA */
 	current &= ~0x3F;
 
+	if (current <= 0)
+		current = bd99955_charger_info.current_min;
+
 	return ch_raw_write16(BD99955_CMD_CHG_CURRENT, current,
 				BD99955_BAT_CHG_COMMAND);
 }
@@ -334,21 +340,12 @@ int charger_get_voltage(int *voltage)
 
 int charger_set_voltage(int voltage)
 {
-	/*
-	 * The BD99955 will drop voltage to as low as requested. As the
-	 * charger state machine will pass in 0 voltage, protect the system
-	 * voltage by capping to the minimum. The reason is that the BD99955
-	 * only can regulate the system voltage which will kill the board's
-	 * power if below 0.
-	 */
-	if (voltage == 0) {
-		const struct battery_info *bi = battery_get_info();
-
-		voltage = bi->voltage_min;
-	}
-
 	/* Charge voltage step 16 mV */
 	voltage &= ~0x0F;
+
+	if (voltage <= 0)
+		voltage = bd99955_charger_info.voltage_min;
+
 	return ch_raw_write16(BD99955_CMD_CHG_VOLTAGE, voltage,
 				BD99955_BAT_CHG_COMMAND);
 }
