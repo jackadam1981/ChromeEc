@@ -48,6 +48,11 @@ void nvmem_write(unsigned int startOffset, unsigned int size,
  */
 int nvmem_commit(void);
 
-int nvmem_setup(void);
+/**
+ * Configure both NvMem partitions
+ *
+ * @param version: starting version number for partition 0
+ */
+int nvmem_setup(uint16_t version);
 
 #endif /* __CROS_EC_NVMEM_UTILS_H */
