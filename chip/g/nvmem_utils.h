@@ -6,6 +6,12 @@
 #ifndef __CROS_EC_NVMEM_UTILS_H
 #define __CROS_EC_NVMEM_UTILS_H
 
+enum nvmem_users {
+	NV_TPM = 0,
+	NV_CR50,
+	NV_NUM_USERS
+};
+
 /**
  * Initialize NVMem translation table and state variables
  *
@@ -20,8 +26,10 @@ int nvmem_init(void);
  * @param startOffset: Offset (in bytes) into NVmem logical space
  * @param size: Number of bytes to read
  * @param data: Pointer to destination buffer
+ * @param user: Data section within NvMem space
  */
-void nvmem_read(unsigned int startOffset, unsigned int size, void *data);
+void nvmem_read(unsigned int startOffset, unsigned int size,
+		void *data, enum nvmem_users user);
 
 /**
  * Write 'size' amount of bytes to NvMem
@@ -29,8 +37,11 @@ void nvmem_read(unsigned int startOffset, unsigned int size, void *data);
  * @param startOffset: Offset (in bytes) into NVmem logical space
  * @param size: Number of bytes to write
  * @param data: Pointer to source buffer
+ * @param user: Data section within NvMem space
  */
-void nvmem_write(unsigned int startOffset, unsigned int size, void *data);
+void nvmem_write(unsigned int startOffset, unsigned int size,
+		 void *data, enum nvmem_users user);
+
 
 /**
  * Commit all previous NvMem writes to flash
