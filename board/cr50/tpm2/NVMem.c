@@ -15,6 +15,15 @@
 #include "PlatformData.h"
 #include "TpmError.h"
 #include "assert.h"
+#include "config_chip.h"
+#include "nvmem_utils.h"
+
+/*
+ * TODO - This #define is temporary, to be removed once the NVmem functions are
+ * fully tested. If it is not defined, then all TPM NVmem accesses use the
+ * buffer s_NV[NV_MEMORY_SIZE].
+ */
+#define USE_CHIP_NVRAM
 
 /* Local state */
 static unsigned char s_NV[NV_MEMORY_SIZE];
@@ -88,7 +97,11 @@ void _plat__NvMemoryRead(unsigned int startOffset,
 {
 	assert(startOffset + size <= NV_MEMORY_SIZE);
 	/* Copy the data from the NV image */
+#ifdef USE_CHIP_NVRAM
+	nvmem_read(startOffset, size, data);
+#else
 	memcpy(data, &s_NV[startOffset], size);
+#endif
 	return;
 }
 
@@ -115,8 +128,11 @@ void _plat__NvMemoryWrite(unsigned int startOffset,
 			  void *data)
 {
 	assert(startOffset + size <= NV_MEMORY_SIZE);
-	/* Copy the data to the NV image */
+#ifdef USE_CHIP_NVRAM
+	nvmem_write(startOffset, size, data);
+#else
 	memcpy(&s_NV[startOffset], data, size);
+#endif
 }
 
 /*
@@ -129,8 +145,13 @@ void _plat__NvMemoryMove(unsigned int sourceOffset,
 {
 	assert(sourceOffset + size <= NV_MEMORY_SIZE);
 	assert(destOffset + size <= NV_MEMORY_SIZE);
+#ifdef USE_CHIP_NVRAM
+	nvmem_read(sourceOffset, size, s_NV);
+	nvmem_write(destOffset, size, s_NV);
+#else
 	/* Move data in RAM */
 	memmove(&s_NV[destOffset], &s_NV[sourceOffset], size);
+#endif
 	return;
 }
 
@@ -144,6 +165,9 @@ void _plat__NvMemoryMove(unsigned int sourceOffset,
  */
 int _plat__NvCommit(void)
 {
+#ifdef USE_CHIP_NVRAM
+	nvmem_commit();
+#endif
 	return 0;
 }
 
