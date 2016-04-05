@@ -107,6 +107,14 @@ static void pwm_kblight_preserve_state(void)
 }
 DECLARE_HOOK(HOOK_SYSJUMP, pwm_kblight_preserve_state, HOOK_PRIO_DEFAULT);
 
+static void pwm_kblight_turn80p_on(void)
+{
+	pwm_enable(PWM_CH_KBLIGHT, 1);
+	pwm_set_duty(PWM_CH_KBLIGHT, 80);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pwm_kblight_turn80p_on, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, pwm_kblight_turn80p_on, HOOK_PRIO_DEFAULT);
+
 static void pwm_kblight_suspend(void)
 {
 	pwm_set_duty(PWM_CH_KBLIGHT, 0);

@@ -93,7 +93,7 @@ enum power_state power_chipset_init(void)
 	}
 
 	wireless_set_state(WIRELESS_OFF);
-	return POWER_G3;
+	return POWER_G3S5;
 }
 
 enum power_state power_handle_state(enum power_state state)
