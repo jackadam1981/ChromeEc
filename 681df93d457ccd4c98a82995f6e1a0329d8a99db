@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8edc8cfe_69eb1892",
+        "filename": "test/tpm_test/ftdi_spi_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-05T17:05:47Z",
+      "side": 1,
+      "message": "what happens if you just send a packet to it right away? Or is this the case when the chip comes out of deep sleep and goes through the full initialization?\n\nOther vendors\u0027 devices sure don\u0027t need this.\n\nAlso, it seems to me that Python wrapper is a better place for a kludge like this...",
+      "revId": "681df93d457ccd4c98a82995f6e1a0329d8a99db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
