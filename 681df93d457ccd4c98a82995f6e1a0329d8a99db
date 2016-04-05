@@ -16,6 +16,24 @@
       "revId": "681df93d457ccd4c98a82995f6e1a0329d8a99db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8edc8cfe_89567c02",
+        "filename": "test/tpm_test/ftdi_spi_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-05T17:15:47Z",
+      "side": 1,
+      "message": "If it\u0027s in deep sleep, Cr50 does a full warm boot when it sees the SPS_CS_L assert. It doesn\u0027t have the SPS controller set up to capture the bits that the master immediately clocks in, so the first N bits/bytes are lost and the master keeps clocking, waiting for the response which it will never get. \n\nTo be certain that the Cr50 is awake, the master just asserts SPS_CS_L briefly, then waits long enough for the Cr50 to wake up from deep sleep (50ms should be plenty), and then it can send the rest of the SPI traffic.\n\nThe Cr50 won\u0027t enter deep sleep until it\u0027s been at least a second since the last SPI activity, so we don\u0027t have to worry about it going to sleep between SPI commands as long as they\u0027re not terribly far apart.\n\nThe kernel driver will have to implement this same \"hack\" too, since the SPI bus doesn\u0027t have a suspend/resume protocol like the USB does. We\u0027ve known this for some time.",
+      "parentUuid": "8edc8cfe_69eb1892",
+      "revId": "681df93d457ccd4c98a82995f6e1a0329d8a99db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
