@@ -201,7 +201,7 @@ static int anx74xx_tcpm_mux_exit(int port)
 	return rv;
 }
 
-const struct usb_mux_driver tcpm_usb_mux_driver = {
+const struct usb_mux_driver anx74xx_tcpm_usb_mux_driver = {
 	.init = anx74xx_tcpm_mux_init,
 	.set = anx74xx_tcpm_mux_set,
 	.get = anx74xx_tcpm_mux_get,
@@ -645,8 +645,7 @@ static int anx74xx_tcpm_get_message(int port, uint32_t *payload, int *head)
 }
 
 static int anx74xx_tcpm_transmit(int port, enum tcpm_transmit_type type,
-		  uint16_t header,
-		  const uint32_t *data)
+				 uint16_t header, const uint32_t *data)
 {
 	uint8_t len = 0;
 	int ret = 0, reg = 0;
@@ -744,7 +743,7 @@ void anx74xx_tcpc_alert(int port)
 	}
 }
 
-int anx74xx_tcpm_init(int port)
+static int anx74xx_tcpm_init(int port)
 {
 	int rv = 0, reg;
 
