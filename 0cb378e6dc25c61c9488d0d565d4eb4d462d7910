@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8edc8cfe_8295fcbf",
+        "filename": "common/thermal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-04-05T00:15:48Z",
+      "side": 1,
+      "message": "It is stated in comment above. \n\u0027thermal_control_enabled[]\u0027 flag allows rpm mode.\nAnd \u00275000\u0027 is just random number bigger than 100.",
+      "parentUuid": "8edc8cfe_e274089d",
+      "range": {
+        "startLine": 156,
+        "startChar": 38,
+        "endLine": 156,
+        "endChar": 45
+      },
+      "revId": "0cb378e6dc25c61c9488d0d565d4eb4d462d7910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e91180d_c2f244f6",
         "filename": "include/config.h",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-04T23:43:57Z",
       "side": 1,
       "message": "This comment above needs to be expanded. It\u0027s the offset to what?",
+      "range": {
+        "startLine": 770,
+        "startChar": 7,
+        "endLine": 770,
+        "endChar": 35
+      },
+      "revId": "0cb378e6dc25c61c9488d0d565d4eb4d462d7910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8edc8cfe_e2f5e8df",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-04-05T00:15:48Z",
+      "side": 1,
+      "message": "This offset value will be added to pre-fixed \u0027temp_fan_max\u0027 in case of adjustment to determine temperature where fan is\nnot controlled by dptf active policy. \nI will add more comments.",
+      "parentUuid": "6e91180d_c2f244f6",
       "range": {
         "startLine": 770,
         "startChar": 7,
