@@ -89,6 +89,14 @@
 #define CONFIG_THERMISTOR_NCP15WB
 
 /*
+ * crosbug.com/p/50930: Chell is unable to wake-on-AC-plug when the PMIC
+ * is shutdown. Extend hibernate entry latency to 28 days so that this
+ * condition does not commonly occur.
+ */
+#undef  CONFIG_HIBERNATE_DELAY_SEC
+#define CONFIG_HIBERNATE_DELAY_SEC (60 * 60 * 24 * 28)
+
+/*
  * Enable 1 slot of secure temporary storage to support
  * suspend/resume with read/write memory training.
  */
