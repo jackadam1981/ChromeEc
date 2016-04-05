@@ -10,8 +10,9 @@
 #ifndef __CROS_EC_USB_PD_TCPM_ANX74XX_H
 #define __CROS_EC_USB_PD_TCPM_ANX74XX_H
 
-#define ANX74XX_REG_IRQ_POL_LOW		0x00
 #define ANX74XX_REG_IRQ_STATUS		0x53
+#define ANX74XX_REG_IRQ_POL_LOW		0x00
+#define ANX74XX_REG_IRQ_POL_HIGH	0x02
 
 #define ANX74XX_REG_INTP_VCONN_CTRL	0x33
 #define ANX74XX_REG_VCONN_DISABLE	0x0f
@@ -119,5 +120,8 @@
 #define ANX74XX_REG_STATUS_CC2_VRD_USB	(1 << 4)
 #define ANX74XX_REG_STATUS_CC2_VRD_1P5	(1 << 3)
 #define ANX74XX_REG_STATUS_CC2_VRD_3P0	(1 << 2)
+
+extern const struct tcpm_drv anx74xx_tcpm_drv;
+extern const struct usb_mux_driver anx74xx_tcpm_usb_mux_driver;
 
 #endif /* __CROS_EC_USB_PD_TCPM_ANX74XX_H */
