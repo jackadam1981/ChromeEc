@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce984492_c802c35d",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-05T22:44:19Z",
+      "side": 1,
+      "message": "why does this have to use the $(origin...) function, is \n\n$(ifeq $(HOST_CROSS_COMPILE),)\n\ncheck not sufficient?",
+      "revId": "2316a710342bb1285df50e0acb6f15bff6b7a771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_086d4b01",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-05T22:44:19Z",
+      "side": 1,
+      "message": "this really is too fancy to my taste, just using\n\nifneq ($(shell which x86_64-pc-linux-gnu-gcc),)\nHOST_CROSS_COMPILE:\u003dx86_64-pc-linux-gnu-\nendif\n\nwould be easier to read. But I\u0027ll leave this to your discretion.",
+      "range": {
+        "startLine": 14,
+        "startChar": 20,
+        "endLine": 14,
+        "endChar": 97
+      },
+      "revId": "2316a710342bb1285df50e0acb6f15bff6b7a771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
