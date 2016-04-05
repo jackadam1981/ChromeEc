@@ -225,7 +225,7 @@ enum {
 	TEST_SIGN = 0,
 	TEST_VERIFY = 1,
 	TEST_KEYGEN = 2,
-	TEST_KEYDERIVE = 3
+	TEST_KEYDERIVE = 3,
 };
 
 struct TPM2B_ECC_PARAMETER_aligned {
