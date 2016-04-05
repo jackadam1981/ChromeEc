@@ -98,7 +98,7 @@ void _plat__NvMemoryRead(unsigned int startOffset,
 	assert(startOffset + size <= NV_MEMORY_SIZE);
 	/* Copy the data from the NV image */
 #ifdef USE_CHIP_NVRAM
-	nvmem_read(startOffset, size, data);
+	nvmem_read(startOffset, size, data, NV_TPM);
 #else
 	memcpy(data, &s_NV[startOffset], size);
 #endif
@@ -129,7 +129,7 @@ void _plat__NvMemoryWrite(unsigned int startOffset,
 {
 	assert(startOffset + size <= NV_MEMORY_SIZE);
 #ifdef USE_CHIP_NVRAM
-	nvmem_write(startOffset, size, data);
+	nvmem_write(startOffset, size, data, NV_TPM);
 #else
 	memcpy(&s_NV[startOffset], data, size);
 #endif
@@ -146,8 +146,8 @@ void _plat__NvMemoryMove(unsigned int sourceOffset,
 	assert(sourceOffset + size <= NV_MEMORY_SIZE);
 	assert(destOffset + size <= NV_MEMORY_SIZE);
 #ifdef USE_CHIP_NVRAM
-	nvmem_read(sourceOffset, size, s_NV);
-	nvmem_write(destOffset, size, s_NV);
+	nvmem_read(sourceOffset, size, s_NV, NV_TPM);
+	nvmem_write(destOffset, size, s_NV, NV_TPM);
 #else
 	/* Move data in RAM */
 	memmove(&s_NV[destOffset], &s_NV[sourceOffset], size);
