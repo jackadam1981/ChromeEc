@@ -79,4 +79,8 @@
 #undef CONFIG_RO_SIZE
 #define CONFIG_RO_SIZE CONFIG_RW_MEM_OFF
 
+/*NV Memory flash definitions */
+#define CONFIG_NV_MEM_OFF (CONFIG_FLASH_SIZE>>1)
+#define CONFIG_NV_MEM_SIZE CONFIG_RO_SIZE
+
 #endif /* __CROS_EC_CONFIG_CHIP_H */
