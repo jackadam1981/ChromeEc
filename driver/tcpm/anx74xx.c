@@ -333,7 +333,7 @@ static int anx74xx_read_pd_obj(int port,
 	return rv;
 }
 
-int tcpm_get_cc(int port, int *cc1, int *cc2)
+static int anx74xx_tcpm_get_cc(int port, int *cc1, int *cc2)
 {
 	int rv = EC_SUCCESS;
 	int reg = 0;
@@ -401,7 +401,7 @@ int tcpm_get_cc(int port, int *cc1, int *cc2)
 	return EC_SUCCESS;
 }
 
-int tcpm_set_cc(int port, int pull)
+static int anx74xx_tcpm_set_cc(int port, int pull)
 {
 	int rv = EC_SUCCESS;
 	int reg;
@@ -442,7 +442,7 @@ int tcpm_set_cc(int port, int pull)
 	return rv;
 }
 
-int tcpm_set_polarity(int port, int polarity)
+static int anx74xx_tcpm_set_polarity(int port, int polarity)
 {
 	int reg, rv = EC_SUCCESS;
 
@@ -464,7 +464,7 @@ int tcpm_set_polarity(int port, int polarity)
 	return rv;
 }
 
-int tcpm_set_vconn(int port, int enable)
+static int anx74xx_tcpm_set_vconn(int port, int enable)
 {
 	int reg, rv = EC_SUCCESS;
 
@@ -486,7 +486,7 @@ int tcpm_set_vconn(int port, int enable)
 	return rv;
 }
 
-int tcpm_set_msg_header(int port, int power_role, int data_role)
+static int anx74xx_tcpm_set_msg_header(int port, int power_role, int data_role)
 {
 	int rv = 0, reg;
 
@@ -541,7 +541,7 @@ static int anx74xx_alert_status(int port, int *alert)
 	return rv;
 }
 
-int tcpm_set_rx_enable(int port, int enable)
+static int anx74xx_tcpm_set_rx_enable(int port, int enable)
 {
 	int reg, rv = 0;
 
@@ -558,7 +558,7 @@ int tcpm_set_rx_enable(int port, int enable)
 }
 
 #ifdef CONFIG_USB_PD_TCPM_VBUS
-int tcpm_get_vbus_level(int port)
+static int anx74xx_tcpm_get_vbus_level(int port)
 {
 	int reg = 0;
 
@@ -567,7 +567,7 @@ int tcpm_get_vbus_level(int port)
 }
 #endif
 
-int tcpm_get_message(int port, uint32_t *payload, int *head)
+static int anx74xx_tcpm_get_message(int port, uint32_t *payload, int *head)
 {
 	int reg = 0, rv = EC_SUCCESS;
 	int len = 0;
@@ -605,9 +605,8 @@ int tcpm_get_message(int port, uint32_t *payload, int *head)
 	return rv;
 }
 
-int tcpm_transmit(int port, enum tcpm_transmit_type type,
-		  uint16_t header,
-		  const uint32_t *data)
+static int anx74xx_tcpm_transmit(int port, enum tcpm_transmit_type type,
+				 uint16_t header, const uint32_t *data)
 {
 	unsigned char len = 0;
 	int ret = 0, reg = 0;
@@ -684,7 +683,7 @@ void tcpc_alert(int port)
 	}
 }
 
-int tcpm_init(int port)
+static int anx74xx_tcpm_init(int port)
 {
 	int rv = 0, reg;
 
@@ -717,3 +716,18 @@ int tcpm_init(int port)
 
 	return EC_SUCCESS;
 }
+
+const struct tcpm_drv anx74xx_tcpm_drv = {
+	.init			= &anx74xx_tcpm_init,
+	.get_cc			= &anx74xx_tcpm_get_cc,
+#ifdef CONFIG_USB_PD_TCPM_VBUS
+	.get_vbus_level		= &anx74xx_tcpm_get_vbus_level,
+#endif
+	.set_cc			= &anx74xx_tcpm_set_cc,
+	.set_polarity		= &anx74xx_tcpm_set_polarity,
+	.set_vconn		= &anx74xx_tcpm_set_vconn,
+	.set_msg_header		= &anx74xx_tcpm_set_msg_header,
+	.set_rx_enable		= &anx74xx_tcpm_set_rx_enable,
+	.get_message		= &anx74xx_tcpm_get_message,
+	.transmit		= &anx74xx_tcpm_transmit,
+};

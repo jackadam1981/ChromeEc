@@ -120,4 +120,6 @@
 #define TCPC_REG_STATUS_CC2_VRD_1P5	(1 << 3)
 #define TCPC_REG_STATUS_CC2_VRD_3P0	(1 << 2)
 
+extern const struct tcpm_drv anx74xx_tcpm_drv;
+
 #endif /* __CROS_EC_USB_PD_TCPM_ANX74XX_H */
