@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce984492_4958f260",
+        "filename": "board/sentry/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-06T14:12:51Z",
+      "side": 1,
+      "message": "Just don\u0027t mix the RO and RW. New board w/ new features need to have that support from the get-go. It was just lucky that ODR_HIGH happened to work because of the external pulldown.",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 36
+      },
+      "revId": "a52023c90217161a1b05a6639f7a73c9b9734830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
