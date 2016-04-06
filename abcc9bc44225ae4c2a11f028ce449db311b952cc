@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce984492_7d5b705f",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-06T19:54:17Z",
+      "side": 1,
+      "message": "Should this be \u003c bd99955_charger_info.input_current_min? With the minimums as currently set, it\u0027s equivalent, but the minimums could change..",
+      "range": {
+        "startLine": 144,
+        "startChar": 22,
+        "endLine": 144,
+        "endChar": 23
+      },
+      "revId": "abcc9bc44225ae4c2a11f028ce449db311b952cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_5d58ac60",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-06T19:54:17Z",
+      "side": 1,
+      "message": "Same here: \u003c bd99955_charger_info.current_min",
+      "range": {
+        "startLine": 328,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 17
+      },
+      "revId": "abcc9bc44225ae4c2a11f028ce449db311b952cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
