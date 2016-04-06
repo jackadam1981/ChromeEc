@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e037491_86570ad6",
+        "filename": "board/sentry/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-04-06T12:18:05Z",
+      "side": 1,
+      "message": "this is a workaround for the issue:52036.",
+      "range": {
+        "startLine": 520,
+        "startChar": 1,
+        "endLine": 520,
+        "endChar": 38
+      },
+      "revId": "1841aaf77e16c3ae622cff0e629b2f02d9501345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
