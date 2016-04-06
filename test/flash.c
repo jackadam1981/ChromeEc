@@ -373,6 +373,11 @@ static int test_region_info(void)
 	return EC_SUCCESS;
 }
 
+static int test_serial(void)
+{
+	return EC_SUCCESS;
+}
+
 static int test_write_protect(void)
 {
 	/* Test we can control write protect GPIO */
@@ -452,6 +457,7 @@ static void run_test_step1(void)
 	RUN_TEST(test_flash_info);
 	RUN_TEST(test_region_info);
 	RUN_TEST(test_write_protect);
+	RUN_TEST(test_serial);
 
 	if (test_get_error_count())
 		test_reboot_to_next_step(TEST_STATE_FAILED);

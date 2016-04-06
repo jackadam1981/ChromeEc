@@ -1988,6 +1988,9 @@
  */
 #undef CONFIG_USB_PORT_POWER_SMART_INVERTED
 
+/* Support programmable USB device iSerial field. */
+#undef CONFIG_USB_SERIALNO
+
 /******************************************************************************/
 /* USB port switch */
 
