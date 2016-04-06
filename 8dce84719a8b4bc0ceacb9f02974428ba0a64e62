@@ -278,6 +278,29 @@
     },
     {
       "key": {
+        "uuid": "ce984492_eb5d81f7",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-06T00:03:14Z",
+      "side": 1,
+      "message": "Can this be made at the board level so the interrupt polarity can be changed based on each board specific design?",
+      "range": {
+        "startLine": 698,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 67
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_3c2ca032",
         "filename": "driver/tcpm/anx74xx.h",
         "patchSetId": 14
