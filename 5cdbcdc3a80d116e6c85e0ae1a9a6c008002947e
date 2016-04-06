@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce984492_692e166a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-06T15:13:01Z",
+      "side": 1,
+      "message": "52036",
+      "revId": "5cdbcdc3a80d116e6c85e0ae1a9a6c008002947e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_a9241e8b",
+        "filename": "board/sentry/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-06T15:13:01Z",
+      "side": 1,
+      "message": "Please explain specifically how this is to work around a mismatched RO firmware that doesn\u0027t have the proper configuration for RTCRST. And that it\u0027s only to support transitioning away from that bad RO firmware on devices already distributed.",
+      "revId": "5cdbcdc3a80d116e6c85e0ae1a9a6c008002947e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
