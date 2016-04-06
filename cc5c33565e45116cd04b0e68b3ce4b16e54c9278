@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e037491_6629ae79",
+        "filename": "board/elm/gpio.inc",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-06T09:49:16Z",
+      "side": 1,
+      "message": "should be RISING? (low active becomes high active due to the level shift circuit)",
+      "range": {
+        "startLine": 15,
+        "startChar": 37,
+        "endLine": 15,
+        "endChar": 53
+      },
+      "revId": "cc5c33565e45116cd04b0e68b3ce4b16e54c9278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
