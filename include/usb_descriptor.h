@@ -229,6 +229,20 @@ struct usb_setup_packet {
 		WIDESTR(str) \
 	}
 
+/* String Descriptor for USB, for editable strings. */
+#define USB_STRING_LEN 30
+struct usb_string_desc {
+	uint8_t _len;
+	uint8_t _type;
+	wchar_t _data[USB_STRING_LEN];
+};
+#define USB_WR_STRING_DESC(str) \
+	((void *)&(struct usb_string_desc) { \
+		sizeof(WIDESTR(str)) + 2 - 2, \
+		USB_DT_STRING, \
+		WIDESTR(str) \
+})
+
 /* Use these macros for declaring descriptors, to order them properly */
 #define USB_CONF_DESC(name) CONCAT2(usb_desc_, name)			\
 	__attribute__((section(".rodata.usb_desc_" STRINGIFY(name))))

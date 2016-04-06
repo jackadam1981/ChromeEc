@@ -34,6 +34,10 @@
 #define CONFIG_USB_BCD_DEV 0x0100 /* 1.00 */
 #endif
 
+#ifndef CONFIG_USB_SERIALNO
+#define CONFIG_USB_SERIALNO 0
+#endif
+
 /* USB Standard Device Descriptor */
 static const struct usb_device_descriptor dev_desc = {
 	.bLength = USB_DT_DEVICE_SIZE,
@@ -48,7 +52,7 @@ static const struct usb_device_descriptor dev_desc = {
 	.bcdDevice = CONFIG_USB_BCD_DEV,
 	.iManufacturer = USB_STR_VENDOR,
 	.iProduct = USB_STR_PRODUCT,
-	.iSerialNumber = 0,
+	.iSerialNumber = CONFIG_USB_SERIALNO,
 	.bNumConfigurations = 1
 };
 

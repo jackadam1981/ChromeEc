@@ -5,13 +5,17 @@
 /* Servo micro board configuration */
 
 #include "common.h"
+#include "console.h"
 #include "ec_version.h"
+#include "flash.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "queue_policies.h"
 #include "registers.h"
 #include "spi.h"
+#include "stddef.h"
+#include "string.h"
 #include "task.h"
 #include "usart-stm32f0.h"
 #include "usart_tx_dma.h"
@@ -159,7 +163,7 @@ const void *const usb_strings[] = {
 	[USB_STR_DESC]         = usb_string_desc,
 	[USB_STR_VENDOR]       = USB_STRING_DESC("Google Inc."),
 	[USB_STR_PRODUCT]      = USB_STRING_DESC("Servo Micro"),
-	[USB_STR_SERIALNO]     = USB_STRING_DESC("1234-a"),
+	[USB_STR_SERIALNO]     = USB_WR_STRING_DESC(DEFAULT_SERIALNO),
 	[USB_STR_VERSION]      = USB_STRING_DESC(CROS_EC_VERSION32),
 	[USB_STR_USART4_STREAM_NAME]  = USB_STRING_DESC("Servo UART3"),
 	[USB_STR_CONSOLE_NAME] = USB_STRING_DESC("Servo EC Shell"),
@@ -168,6 +172,71 @@ const void *const usb_strings[] = {
 };
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
+
+/* Update serial number */
+static int set_serno(char *sn)
+{
+	/* TODO(nsanders): how to unconst this more elegantly? */
+	struct usb_string_desc *sd =
+		(struct usb_string_desc *)(usb_strings[USB_STR_SERIALNO]);
+	int count = 0;
+	int i;
+
+	if (!sn)
+		return -1;
+
+	count = USB_STRING_LEN;
+	for (i = 0; i < count; i++) {
+		sd->_data[i] = sn[i];
+		if (sn[i] == 0)
+			break;
+	}
+
+	/* count wchar (no null terminator) plus size, type bytes. */
+	sd->_len = (i * 2) + 2;
+	sd->_type = USB_DT_STRING;
+
+	return EC_SUCCESS;
+}
+
+/* Save serial number into pstate region. */
+static int save_serno(void)
+{
+	struct usb_string_desc *sd =
+		(struct usb_string_desc *)(usb_strings[USB_STR_SERIALNO]);
+	int ret;
+
+	/* Only serial number is here. */
+	ret = flash_erase(CONFIG_FW_PSTATE_OFF, CONFIG_FW_PSTATE_SIZE);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = flash_write(CONFIG_FW_PSTATE_OFF,
+		sizeof(struct usb_string_desc), (void *)sd);
+	return ret;
+}
+
+/* Retrieve serial number from pstate flash. */
+static int load_serno(void)
+{
+	struct usb_string_desc *sd =
+		(struct usb_string_desc *)(usb_strings[USB_STR_SERIALNO]);
+	int ret;
+
+	ret = flash_read(CONFIG_FW_PSTATE_OFF,
+		sizeof(struct usb_string_desc), (void *)sd);
+
+
+	/* Validate data. */
+	if ((sd->_len >= USB_STRING_LEN) || (sd->_len == 0) ||
+	    (sd->_type != USB_DT_STRING)) {
+		ccprintf("Serial number validation: len: %d, type: %d != %d",
+			(int)sd->_len, (int)sd->_type, (int)USB_DT_STRING);
+		set_serno(DEFAULT_SERIALNO);
+		save_serno();
+	}
+	return ret;
+}
 
 
 /******************************************************************************
@@ -257,5 +326,52 @@ static void board_init(void)
 
 	/* Structured enpoints */
 	usb_spi_enable(&usb_spi, 1);
+
+	/* Update serial number. */
+	load_serno();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+
+static int command_serialno(int argc, char **argv)
+{
+	struct usb_string_desc *sd =
+		(struct usb_string_desc *)(usb_strings[USB_STR_SERIALNO]);
+	char buf[USB_STRING_LEN];
+	int ret = EC_SUCCESS;
+	int i;
+
+	/* Read current serial number. */
+	if (argc != 1) {
+		if ((strcasecmp(argv[1], "save") == 0) &&
+		    (argc == 2)) {
+			ccprintf("Saving serial number\n");
+			ret = save_serno();
+		} else if ((strcasecmp(argv[1], "set") == 0) &&
+		    (argc == 3))  {
+			ccprintf("Setting serial number\n");
+			ret = set_serno(argv[2]);
+		} else if ((strcasecmp(argv[1], "load") == 0) &&
+		    (argc == 2)) {
+			ccprintf("Loading serial number\n");
+			ret = load_serno();
+		} else {
+			ccprintf("Usage:\n");
+			ccprintf(" serialno\n");
+			ccprintf(" serialno set [serial]\n");
+			ccprintf(" serialno save\n");
+			ccprintf(" serialno load\n");
+			ret = -1;
+		}
+	}
+
+	for (i = 0; i < USB_STRING_LEN; i++)
+		buf[i] = sd->_data[i];
+	ccprintf("Serial number: %s\n", buf);
+	return ret;
+}
+
+DECLARE_CONSOLE_COMMAND(serialno, command_serialno,
+	"set/save/load [value]",
+	"Read and write USB serial number",
+	NULL);
