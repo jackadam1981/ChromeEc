@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ce984492_bdec581a",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-04-06T20:38:44Z",
+      "side": 1,
+      "message": "Okay I will change it",
+      "parentUuid": "ce984492_7d5b705f",
+      "range": {
+        "startLine": 144,
+        "startChar": 22,
+        "endLine": 144,
+        "endChar": 23
+      },
+      "revId": "abcc9bc44225ae4c2a11f028ce449db311b952cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce984492_5d58ac60",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 1
@@ -42,6 +66,47 @@
         "endLine": 328,
         "endChar": 17
       },
+      "revId": "abcc9bc44225ae4c2a11f028ce449db311b952cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_5df30cfb",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-04-06T20:38:44Z",
+      "side": 1,
+      "message": "Okay I will change it",
+      "parentUuid": "ce984492_5d58ac60",
+      "range": {
+        "startLine": 328,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 17
+      },
+      "revId": "abcc9bc44225ae4c2a11f028ce449db311b952cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_fdd7803d",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-04-06T20:38:44Z",
+      "side": 1,
+      "message": "I will change it here too",
       "revId": "abcc9bc44225ae4c2a11f028ce449db311b952cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
