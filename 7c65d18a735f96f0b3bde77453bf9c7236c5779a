@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce984492_7f76c815",
+        "filename": "board/setzer/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-06T18:17:07Z",
+      "side": 1,
+      "message": "These shouldn\u0027t be static.",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 33
+      },
+      "revId": "7c65d18a735f96f0b3bde77453bf9c7236c5779a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_2292637a",
+        "filename": "board/setzer/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-06T18:17:07Z",
+      "side": 1,
+      "message": "You should check whether full_charge_capacity is zero (eg. due to some kind of error) before doing this division because it will assert.",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 22
+      },
+      "revId": "7c65d18a735f96f0b3bde77453bf9c7236c5779a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_9f798c06",
+        "filename": "board/setzer/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-06T18:17:07Z",
+      "side": 1,
+      "message": "Do you know about charge_get_percent()? Are you calculating this manually because charge_get_percent() isn\u0027t consistent with the OS calculation?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 1
+      },
+      "revId": "7c65d18a735f96f0b3bde77453bf9c7236c5779a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_02975f69",
+        "filename": "board/setzer/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-06T18:17:07Z",
+      "side": 1,
+      "message": "Comment style should be:\n\n/*\n * Comment comment comment ....................\n * .........................................\n */",
+      "range": {
+        "startLine": 164,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 48
+      },
+      "revId": "7c65d18a735f96f0b3bde77453bf9c7236c5779a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
