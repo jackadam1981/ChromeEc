@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e037491_463d92bd",
+        "filename": "board/elm/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-06T09:20:41Z",
+      "side": 1,
+      "message": "This triggers another interrupt after tcpc_alert() clears TCPC_REG_ALERT. I think it needs to be changed to RISING?",
+      "range": {
+        "startLine": 15,
+        "startChar": 37,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "ef3e3709dde39233ecc80f7018753b00775a41ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
