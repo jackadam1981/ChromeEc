@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4e037491_067afa45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-04-06T15:35:24Z",
+      "side": 1,
+      "message": "I added it.\n\nThis patch was actually not originally for the issue 52036,\nWe\u0027ve been request to add the changes referring chell.\nJust we need the additional WA for able to update it.",
+      "parentUuid": "ce984492_692e166a",
+      "revId": "5cdbcdc3a80d116e6c85e0ae1a9a6c008002947e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce984492_a9241e8b",
         "filename": "board/sentry/board.c",
         "patchSetId": 3
