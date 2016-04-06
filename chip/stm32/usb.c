@@ -34,6 +34,10 @@
 #define CONFIG_USB_BCD_DEV 0x0100 /* 1.00 */
 #endif
 
+#ifndef CONFIG_USB_SERIALNO
+#define USB_STR_SERIALNO 0
+#endif
+
 /* USB Standard Device Descriptor */
 static const struct usb_device_descriptor dev_desc = {
 	.bLength = USB_DT_DEVICE_SIZE,
@@ -48,7 +52,7 @@ static const struct usb_device_descriptor dev_desc = {
 	.bcdDevice = CONFIG_USB_BCD_DEV,
 	.iManufacturer = USB_STR_VENDOR,
 	.iProduct = USB_STR_PRODUCT,
-	.iSerialNumber = 0,
+	.iSerialNumber = USB_STR_SERIALNO,
 	.bNumConfigurations = 1
 };
 
@@ -137,7 +141,12 @@ static void ep0_rx(void)
 			if (idx >= USB_STR_COUNT)
 				/* The string does not exist : STALL */
 				goto unknown_req;
-			desc = usb_strings[idx];
+#ifdef CONFIG_USB_SERIALNO
+			if (idx == USB_STR_SERIALNO)
+				desc = (uint8_t *)usb_serialno_desc;
+			else
+#endif
+				desc = usb_strings[idx];
 			len = desc[0];
 			break;
 		case USB_DT_DEVICE_QUALIFIER: /* Get device qualifier desc */
