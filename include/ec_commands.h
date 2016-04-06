@@ -2213,9 +2213,9 @@ enum ec_temp_thresholds {
  * Zero values will be silently ignored by the thermal task.
  */
 struct ec_thermal_config {
-	uint32_t temp_host[EC_TEMP_THRESH_COUNT]; /* levels of hotness */
-	uint32_t temp_fan_off;		/* no active cooling needed */
-	uint32_t temp_fan_max;		/* max active cooling needed */
+	uint16_t temp_host[EC_TEMP_THRESH_COUNT]; /* levels of hotness */
+	uint16_t temp_fan_off;		/* no active cooling needed */
+	uint16_t temp_fan_max;		/* max active cooling needed */
 } __packed;
 
 /* Version 1 - get config for one sensor. */

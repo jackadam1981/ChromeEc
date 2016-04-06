@@ -121,7 +121,7 @@ test_mockable_static void smi_sensor_failure_warning(void)
 	host_set_single_event(EC_HOST_EVENT_THERMAL);
 }
 
-int thermal_fan_percent(int low, int high, int cur)
+int thermal_fan_percent(uint16_t low, uint16_t high, int cur)
 {
 	if (cur < low)
 		return 0;
@@ -353,13 +353,16 @@ static int command_thermalset(int argc, char **argv)
 			continue;
 		switch (i) {
 		case 2:
-			thermal_params[n].temp_host[EC_TEMP_THRESH_WARN] = val;
+			thermal_params[n].temp_host[EC_TEMP_THRESH_WARN] =
+								(uint16_t)val;
 			break;
 		case 3:
-			thermal_params[n].temp_host[EC_TEMP_THRESH_HIGH] = val;
+			thermal_params[n].temp_host[EC_TEMP_THRESH_HIGH] =
+								(uint16_t)val;
 			break;
 		case 4:
-			thermal_params[n].temp_host[EC_TEMP_THRESH_HALT] = val;
+			thermal_params[n].temp_host[EC_TEMP_THRESH_HALT] =
+								(uint16_t)val;
 			break;
 		case 5:
 			thermal_params[n].temp_fan_off = val;

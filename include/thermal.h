@@ -17,6 +17,6 @@
 extern struct ec_thermal_config thermal_params[];
 
 /* Helper function to compute percent cooling */
-int thermal_fan_percent(int low, int high, int cur);
+int thermal_fan_percent(uint16_t low, uint16_t high, int cur);
 
 #endif  /* __CROS_EC_THERMAL_H */
