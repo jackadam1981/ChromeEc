@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce984492_ee0464fa",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-06T22:36:26Z",
+      "side": 1,
+      "message": "Reuse the hack described below.",
+      "range": {
+        "startLine": 55,
+        "startChar": 18,
+        "endLine": 55,
+        "endChar": 37
+      },
+      "revId": "ea2a7d5a5dd687d362c40a947c69e8ebca988870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_ce5ac025",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-06T22:36:26Z",
+      "side": 1,
+      "message": "Here\u0027s part one of a hack. We want the descriptors to be const so they don\u0027t clutter up RAM. But we can\u0027t determine this value at compile time, because of all the linker magic that assembles the complete descriptor blob.",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 67
+      },
+      "revId": "ea2a7d5a5dd687d362c40a947c69e8ebca988870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_8e3dd8c0",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-06T22:36:26Z",
+      "side": 1,
+      "message": "This is part two of the hack. USB_DESC_SIZE is an run-time expression, not a constant. We update the FIFO RAM buffer with the correct value that we couldn\u0027t compile in.\n\nYou can do the same sort of thing for the serial number when asked for dev_desc;",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 33
+      },
+      "revId": "ea2a7d5a5dd687d362c40a947c69e8ebca988870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
