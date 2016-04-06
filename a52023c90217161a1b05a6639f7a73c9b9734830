@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ce984492_49a35271",
+        "filename": "board/sentry/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-06T14:30:41Z",
+      "side": 1,
+      "message": "If the RW image is updated first how does this fix an old RO and a new RW?\n\nIf anything I believe you should be employing CONFIG_BOARD_PRE_INIT and board_config_pre_init() so that the signal is properly set to low prior to gpio_pre_init()",
+      "range": {
+        "startLine": 520,
+        "startChar": 1,
+        "endLine": 520,
+        "endChar": 68
+      },
+      "revId": "a52023c90217161a1b05a6639f7a73c9b9734830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce984492_4958f260",
         "filename": "board/sentry/board.c",
         "patchSetId": 2
