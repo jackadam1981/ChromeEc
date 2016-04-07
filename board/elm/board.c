@@ -105,7 +105,8 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
-	{ CONFIG_SPI_ACCEL_PORT, 2, GPIO_SPI2_NSS }
+	{ CONFIG_SPI_ACCEL_PORT, 2, GPIO_SPI2_NSS },
+	{ CONFIG_SPI_ACCEL_PORT, 2, GPIO_SPI2_NSS_DB }
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
@@ -129,12 +130,14 @@ BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
  *     src/mainboard/google/${board}/acpi/dptf.asl
  */
 const struct temp_sensor_t temp_sensors[] = {
+#ifdef CONFIG_TEMP_SENSOR_TMP432
 	{"TMP432_Internal", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
 		TMP432_IDX_LOCAL, 4},
 	{"TMP432_Sensor_1", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
 		TMP432_IDX_REMOTE1, 4},
 	{"TMP432_Sensor_2", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
 		TMP432_IDX_REMOTE2, 4},
+#endif
 	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_temp_sensor_get_val,
 		0, 4},
 };
@@ -145,9 +148,11 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
  * same order as enum temp_sensor_id. To always ignore any temp, use 0.
  */
 struct ec_thermal_config thermal_params[] = {
+#ifdef CONFIG_TEMP_SENSOR_TMP432
 	{{0, 0, 0}, 0, 0}, /* TMP432_Internal */
 	{{0, 0, 0}, 0, 0}, /* TMP432_Sensor_1 */
 	{{0, 0, 0}, 0, 0}, /* TMP432_Sensor_2 */
+#endif
 	{{0, 0, 0}, 0, 0}, /* Battery Sensor */
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
@@ -409,6 +414,7 @@ void board_set_ap_reset(int asserted)
 	gpio_set_level(GPIO_AP_RESET_L, !asserted);
 }
 
+#ifdef CONFIG_TEMP_SENSOR_TMP432
 static void tmp432_set_power_deferred(void)
 {
 	/* Shut tmp432 down if not in S0 && no external power */
@@ -423,6 +429,7 @@ static void tmp432_set_power_deferred(void)
 		CPRINTS("ERROR: Can't turn on TMP432.");
 }
 DECLARE_DEFERRED(tmp432_set_power_deferred);
+#endif
 
 /**
  * Hook of AC change. turn on/off tmp432 depends on AP & AC status.
@@ -430,7 +437,9 @@ DECLARE_DEFERRED(tmp432_set_power_deferred);
 static void board_extpower(void)
 {
 	board_extpower_buffer_to_soc();
+#ifdef CONFIG_TEMP_SENSOR_TMP432
 	hook_call_deferred(tmp432_set_power_deferred, 0);
+#endif
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
 
@@ -453,14 +462,18 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
+#ifdef CONFIG_TEMP_SENSOR_TMP432
 	hook_call_deferred(tmp432_set_power_deferred, 0);
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
 /* Called on AP S0 -> S3 transition */
 static void board_chipset_suspend(void)
 {
+#ifdef CONFIG_TEMP_SENSOR_TMP432
 	hook_call_deferred(tmp432_set_power_deferred, 0);
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
@@ -492,7 +505,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .drv = &kionix_accel_drv,
 	 .mutex = &g_kx022_mutex[0],
 	 .drv_data = &g_kx022_data[0],
-	 .addr = 1, /* SPI */
+	 .addr = 1, /* SPI, device ID 0 */
 	 .rot_standard_ref = NULL, /* Identity matrix. */
 	 .default_range = 2, /* g, enough for laptop. */
 	 .config = {
@@ -526,7 +539,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .drv = &kionix_accel_drv,
 	 .mutex = &g_kx022_mutex[1],
 	 .drv_data = &g_kx022_data[1],
-	 .addr = KX022_ADDR0,
+	 .addr = 3, /* SPI, device ID 1 */
 	 .rot_standard_ref = NULL, /* Identity matrix. */
 	 .default_range = 2, /* g, enough for laptop. */
 	 .config = {
