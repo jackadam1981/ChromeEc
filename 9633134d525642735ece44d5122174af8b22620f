@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce984492_8dc6f462",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-07T22:37:27Z",
+      "side": 1,
+      "message": "I would rather not change default behavior, can you pick a different name for the new command, or make it an extension of this one.",
+      "revId": "9633134d525642735ece44d5122174af8b22620f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_cdd19c19",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-07T22:37:27Z",
+      "side": 1,
+      "message": "did you mean to keep these prints, here and below?",
+      "revId": "9633134d525642735ece44d5122174af8b22620f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
