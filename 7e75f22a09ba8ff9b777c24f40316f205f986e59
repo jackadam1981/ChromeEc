@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce984492_6aa15917",
+        "filename": "common/util.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-04-07T19:40:37Z",
+      "side": 1,
+      "message": "Does this need to use uart_printf() or can it use cprints()/cprintf()?\n\nWe discourage direct UART output because it clutters up the console with non-disableable output (vs. cprints(), which can be turned off on a channel-by-channel basis.\n\nWill this only be used by debug commands (in which case it can use ccprintf())?\n\nDo you care if the debug output is truncated if it fills the UART output buffer?  Or do you want to flush output after each line?\n\nSome more context for how this will be used would be helpful.",
+      "range": {
+        "startLine": 488,
+        "startChar": 1,
+        "endLine": 488,
+        "endChar": 12
+      },
+      "revId": "7e75f22a09ba8ff9b777c24f40316f205f986e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_2a5eb1f3",
+        "filename": "include/util.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-04-07T19:40:37Z",
+      "side": 1,
+      "message": "Should be in the .c file, not the .h.\n\n(The interface doesn\u0027t require uart.h)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "7e75f22a09ba8ff9b777c24f40316f205f986e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
