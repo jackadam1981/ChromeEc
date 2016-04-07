@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce984492_8d20348d",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1368,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-07T23:01:25Z",
+      "side": 1,
+      "message": "call this a nit, but this still changes default behaviour. Can it just call \"showergs\" in case it is invoked wihtout command line arguments?",
+      "revId": "cd42a6127765fe75cf927272c19a69f924203616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
