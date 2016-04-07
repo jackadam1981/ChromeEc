@@ -165,30 +165,47 @@ void power_button_interrupt(enum gpio_signal signal)
 static int command_powerbtn(int argc, char **argv)
 {
 	int ms = 200;  /* Press duration in ms */
+	int toggle_count;
+	enum ec_error_list rv;
 	char *e;
+
+	if ((argc > 1) && !strcasecmp("-t", argv[1])) {
+		rv = EC_ERROR_PARAM2;
+		toggle_count = 2;
+		argc--;
+		argv++;
+	} else {
+		toggle_count = 1;
+		rv = EC_ERROR_PARAM1;
+	}
 
 	if (argc > 1) {
 		ms = strtoi(argv[1], &e, 0);
 		if (*e)
-			return EC_ERROR_PARAM1;
+			return rv;
 	}
 
-	ccprintf("Simulating %d ms power button press.\n", ms);
-	simulate_power_pressed = 1;
-	power_button_is_stable = 0;
-	hook_call_deferred(power_button_change_deferred, 0);
+	while (1) {
+		ccprintf("Simulating %d ms power button press.\n", ms);
+		simulate_power_pressed = 1;
+		power_button_is_stable = 0;
+		hook_call_deferred(power_button_change_deferred, 0);
 
-	msleep(ms);
+		msleep(ms);
 
-	ccprintf("Simulating power button release.\n");
-	simulate_power_pressed = 0;
-	power_button_is_stable = 0;
-	hook_call_deferred(power_button_change_deferred, 0);
+		ccprintf("Simulating power button release.\n");
+		simulate_power_pressed = 0;
+		power_button_is_stable = 0;
+		hook_call_deferred(power_button_change_deferred, 0);
 
+		if (!--toggle_count)
+			break;
+		msleep(200);
+	}
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(powerbtn, command_powerbtn,
-			"[msec]",
+			"[-t] [msec]",
 			"Simulate power button press",
 			NULL);
 
