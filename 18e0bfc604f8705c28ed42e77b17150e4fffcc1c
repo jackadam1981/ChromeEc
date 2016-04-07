@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce984492_040524f4",
+        "filename": "board/it8320pd/Makefile",
+        "patchSetId": 19
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-07T16:33:44Z",
+      "side": 1,
+      "message": "I strongly suggest moving all board-level code to a separate CL.",
+      "revId": "18e0bfc604f8705c28ed42e77b17150e4fffcc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_04ec046a",
+        "filename": "board/it8320pd/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-07T16:33:44Z",
+      "side": 1,
+      "message": "It\u0027s not a huge deal since this is your board-level code, but I would rewrite this function (and the function below) to have only one set of calls to gpio_set_level().",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "18e0bfc604f8705c28ed42e77b17150e4fffcc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_24e7088c",
+        "filename": "board/it8320pd/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-07T16:33:44Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this callback function. You\u0027re just setting default pin states. Can\u0027t we do this from board_init?",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 29
+      },
+      "revId": "18e0bfc604f8705c28ed42e77b17150e4fffcc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_24102837",
+        "filename": "board/it8320pd/ec.tasklist",
+        "patchSetId": 19
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-07T16:33:44Z",
+      "side": 1,
+      "message": "Why did you remove the PDCMD task?",
+      "revId": "18e0bfc604f8705c28ed42e77b17150e4fffcc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_2435c8bb",
+        "filename": "board/it8320pd/usb_pd_policy.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-07T16:33:44Z",
+      "side": 1,
+      "message": "This should be behind CONFIG_HOSTCMD_PD. Anyway, you have neither HAS_TASK_PDCMD nor CONFIG_CHARGE_MANAGER defined. Do you plan to define them in the near future? If not, why bother with this code at all?",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 21
+      },
+      "revId": "18e0bfc604f8705c28ed42e77b17150e4fffcc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_049084cd",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-07T16:33:44Z",
+      "side": 1,
+      "message": "You might consider moving all of this code to driver/tcpm/it83xx.c (and renaming some functions accordingly).",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "18e0bfc604f8705c28ed42e77b17150e4fffcc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_44d1ecd3",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-07T16:33:44Z",
+      "side": 1,
+      "message": "We should find a place for this console command in common code (or else remove it). There\u0027s nothing here specific to your controller.",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 9
+      },
+      "revId": "18e0bfc604f8705c28ed42e77b17150e4fffcc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
