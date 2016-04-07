@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce984492_76726ab0",
+        "filename": "board/banon/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-07T04:39:22Z",
+      "side": 1,
+      "message": "I believe you just slowed your LEDs by a factor of 4 (now you increment your counters every 1s, not 250ms). You may need to adjust these constants to accommodate.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 28
+      },
+      "revId": "7bfec5bdf6a02414ad23998407e074a3853bf904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
