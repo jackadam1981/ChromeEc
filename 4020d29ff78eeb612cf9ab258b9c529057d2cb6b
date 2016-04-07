@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce984492_19a6b1e5",
+        "filename": "board/setzer/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-07T15:18:56Z",
+      "side": 1,
+      "message": "Why did you not use charge_get_percent()? Please add a comment.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 1
+      },
+      "revId": "4020d29ff78eeb612cf9ab258b9c529057d2cb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
