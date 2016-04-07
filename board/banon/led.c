@@ -204,7 +204,7 @@ static void banon_led_set_battery(void)
 	}
 }
 
-/* Called by hook task every 250mSec */
+/* Called by hook task every Sec */
 static void led_tick(void)
 {
 	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
@@ -213,4 +213,4 @@ static void led_tick(void)
 	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
 		banon_led_set_battery();
 }
-DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_SECOND, led_tick, HOOK_PRIO_DEFAULT);
