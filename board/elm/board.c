@@ -105,7 +105,8 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
-	{ CONFIG_SPI_ACCEL_PORT, 2, GPIO_SPI2_NSS }
+	{ CONFIG_SPI_ACCEL_PORT, 2, GPIO_SPI2_NSS },
+	{ CONFIG_SPI_ACCEL_PORT, 2, GPIO_SPI2_NSS_DB }
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
@@ -492,7 +493,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .drv = &kionix_accel_drv,
 	 .mutex = &g_kx022_mutex[0],
 	 .drv_data = &g_kx022_data[0],
-	 .addr = 1, /* SPI */
+	 .addr = 1, /* SPI, device ID 0 */
 	 .rot_standard_ref = NULL, /* Identity matrix. */
 	 .default_range = 2, /* g, enough for laptop. */
 	 .config = {
@@ -526,7 +527,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .drv = &kionix_accel_drv,
 	 .mutex = &g_kx022_mutex[1],
 	 .drv_data = &g_kx022_data[1],
-	 .addr = KX022_ADDR0,
+	 .addr = 3, /* SPI, device ID 1 */
 	 .rot_standard_ref = NULL, /* Identity matrix. */
 	 .default_range = 2, /* g, enough for laptop. */
 	 .config = {
