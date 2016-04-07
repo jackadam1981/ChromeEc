@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce984492_1388d0e2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2218,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-07T01:22:06Z",
+      "side": 1,
+      "message": "This is already part of ec_params_thermal_set_threshold_v1 with uint32_t\u0027s. We probably shouldn\u0027t change it since it would break some existing implementations.\n\nWhat we can do instead is change our internal implementation to use more appropriate types. Eg. don\u0027t use ec_thermal_config (except in our handler for ec_params_thermal_set_threshold_v1), instead use a new struct with appropriately sized variables.",
+      "range": {
+        "startLine": 2216,
+        "startChar": 0,
+        "endLine": 2218,
+        "endChar": 56
+      },
+      "revId": "847c9d951e5a4dfffc901d0d5e023bbb21bdbf49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
