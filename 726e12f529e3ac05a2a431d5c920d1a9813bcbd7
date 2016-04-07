@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce984492_04fd2451",
+        "filename": "board/chell/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-07T15:59:50Z",
+      "side": 1,
+      "message": "I think this would be clearer to use level instead of a register value as a proxy for the level. Their boolean values just happen to evaluate to the same thing.",
+      "range": {
+        "startLine": 502,
+        "startChar": 2,
+        "endLine": 502,
+        "endChar": 11
+      },
+      "revId": "726e12f529e3ac05a2a431d5c920d1a9813bcbd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
