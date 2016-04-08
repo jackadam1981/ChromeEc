@@ -45,6 +45,30 @@
       "revId": "a2a0848ab36980c05342df74d2be0239d06034ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce33e4d5_59c58f77",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-04-08T22:00:14Z",
+      "side": 1,
+      "message": "I think this comment tells important message.\nIn S3, EC takes fan control back(regardless EC-based or DPTF based fan control) and when necessary, thermal_control will do scan temp sensor and control fan if thermal_param[]\u0027s fan max/min are initialized with non-zero values. \nI think this cros-bug is not a bug and rest of code changes in this patch are unnecessary.",
+      "parentUuid": "ce33e4d5_b3e4eaf6",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 538,
+        "endChar": 5
+      },
+      "revId": "a2a0848ab36980c05342df74d2be0239d06034ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
