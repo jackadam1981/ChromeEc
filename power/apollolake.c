@@ -57,6 +57,13 @@ void chipset_force_shutdown(void)
 		CPRINTS("%s()", __func__);
 
 	/*
+	 * FIXME: This is incorporated from Kevin Wong's patch. We
+	 * should check that it's correct overall and safe for Amenia,
+	 * otherwise put it in a board-specific location.
+	 */
+	gpio_set_level(GPIO_EN_PP5000, 0);
+
+	/*
 	 * Disable V5A which de-assert PMIC_EN and causes PMIC to shutdown.
 	 */
 	gpio_set_level(GPIO_V5A_EN, 0);
@@ -256,6 +263,14 @@ static enum power_state _power_handle_state(enum power_state state)
 
 		/* Enable V5A */
 		gpio_set_level(GPIO_V5A_EN, 1);
+
+		/*
+		 * FIXME: This is incorporated from Kevin Wong's patch. We
+		 * should check that it's correct overall and safe for Amenia,
+		 * otherwise put it in a board-specific location.
+		 */
+		msleep(10);
+		gpio_set_level(GPIO_EN_PP5000, 1);
 
 		if (power_wait_signals(IN_PGOOD_ALL_CORE)) {
 			chipset_force_shutdown();
