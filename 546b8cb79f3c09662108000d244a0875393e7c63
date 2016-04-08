@@ -70,6 +70,24 @@
       "revId": "546b8cb79f3c09662108000d244a0875393e7c63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ea29412_2e3ea76c",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-04-08T14:50:38Z",
+      "side": 1,
+      "message": "That might need to be looking into further,\nHowever, the CL:330274 update this and cause our fan issue.\ncould we address the problem first?\nor could we revert CL:330274?",
+      "parentUuid": "8e5f2cf9_f8f01144",
+      "revId": "546b8cb79f3c09662108000d244a0875393e7c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
