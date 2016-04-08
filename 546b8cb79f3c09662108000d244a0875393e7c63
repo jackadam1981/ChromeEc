@@ -147,6 +147,24 @@
       "revId": "546b8cb79f3c09662108000d244a0875393e7c63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ea29412_ae5297b7",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-04-08T16:16:50Z",
+      "side": 1,
+      "message": "Kyoung, could you revert CL:330274 first if you are going to investigate further?\nSentry is looking to have final fw, and this issue impact our schedule, thanks",
+      "parentUuid": "ce33e4d5_ea6bc7e9",
+      "revId": "546b8cb79f3c09662108000d244a0875393e7c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
