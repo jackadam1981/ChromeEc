@@ -34,6 +34,24 @@
       "revId": "546b8cb79f3c09662108000d244a0875393e7c63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ea29412_ee33ffa5",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-04-08T14:42:43Z",
+      "side": 1,
+      "message": "this is called by \u0027thermal_control\u0027,\nwhich seems called per second:\n\nDECLARE_HOOK(HOOK_SECOND, thermal_control, HOOK_PRIO_TEMP_SENSOR_DONE);",
+      "parentUuid": "8e5f2cf9_986635f6",
+      "revId": "546b8cb79f3c09662108000d244a0875393e7c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
