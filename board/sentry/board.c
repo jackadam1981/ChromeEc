@@ -212,6 +212,12 @@ void board_rtc_reset(void)
 	gpio_set_level(GPIO_PCH_RTCRST, 0);
 }
 
+void board_clear_rtc_reset(void)
+{
+	/* De-assert RTCRST */
+	gpio_set_level(GPIO_PCH_RTCRST, 0);
+}
+
 #ifdef HAS_TASK_MOTIONSENSE
 /* Four Motion sensors */
 /* kxcj9 mutex and local/private data*/

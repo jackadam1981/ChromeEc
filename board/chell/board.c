@@ -210,6 +210,12 @@ void board_rtc_reset(void)
 	gpio_set_level(GPIO_PCH_RTCRST, 0);
 }
 
+void board_clear_rtc_reset(void)
+{
+	/* De-assert RTCRST */
+	gpio_set_level(GPIO_PCH_RTCRST, 0);
+}
+
 const struct temp_sensor_t temp_sensors[] = {
 	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_temp_sensor_get_val, 0, 4},
 

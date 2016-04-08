@@ -262,6 +262,11 @@ static enum power_state _power_handle_state(enum power_state state)
 #endif
 
 	case POWER_G3S5:
+#ifdef CONFIG_BOARD_HAS_RTC_RESET
+		/* De-assert RTCRST */
+		board_clear_rtc_reset();
+#endif
+
 		/* Call hooks to initialize PMIC */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
 
