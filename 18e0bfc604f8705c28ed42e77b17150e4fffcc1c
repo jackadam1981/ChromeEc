@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "ce33e4d5_feb54912",
+        "filename": "board/it8320pd/ec.tasklist",
+        "patchSetId": 19
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-08T21:10:49Z",
+      "side": 1,
+      "message": "You are right, I think there is no need for it, since you wake the proper PD task from your ISR.",
+      "parentUuid": "4ea29412_ae0a9704",
+      "revId": "18e0bfc604f8705c28ed42e77b17150e4fffcc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce984492_2435c8bb",
         "filename": "board/it8320pd/usb_pd_policy.c",
         "patchSetId": 19
