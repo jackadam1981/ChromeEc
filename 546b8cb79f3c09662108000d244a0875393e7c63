@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ce33e4d5_2a5ebf4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-04-08T15:45:41Z",
+      "side": 1,
+      "message": "This should be \u0027Fan\u0027 since it is common code.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "546b8cb79f3c09662108000d244a0875393e7c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e5f2cf9_986635f6",
         "filename": "common/fan.c",
         "patchSetId": 2
@@ -103,6 +126,24 @@
       "side": 1,
       "message": "I\u0027m deferring to Shawn on this one as this fan stuff I am not very familiar with in the EC code base.",
       "parentUuid": "4ea29412_2e3ea76c",
+      "revId": "546b8cb79f3c09662108000d244a0875393e7c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce33e4d5_ea6bc7e9",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-04-08T15:45:41Z",
+      "side": 1,
+      "message": "This is due to non-zero init values in thermal_param[] and thermal_control keep calculating new non-zero rpm value and turn fan power on again even though fan power supply is down by CHIPSET_SHUTDOWN. I will investigate more.",
+      "parentUuid": "6e62f8c1_7ddb0f36",
       "revId": "546b8cb79f3c09662108000d244a0875393e7c63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
