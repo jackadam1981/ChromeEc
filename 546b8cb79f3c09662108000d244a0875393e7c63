@@ -52,6 +52,24 @@
       "revId": "546b8cb79f3c09662108000d244a0875393e7c63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e5f2cf9_f8f01144",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-08T14:42:59Z",
+      "side": 1,
+      "message": "What I was asking was higher level. Should we be calling this function when we\u0027re in S3? And as such should we be making the exceptional case for DPTF in *this* function? Would it be cleaner to move this out to the caller of this function and set \u0027pct\u0027 accordingly?",
+      "parentUuid": "4ea29412_4ea853e3",
+      "revId": "546b8cb79f3c09662108000d244a0875393e7c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
