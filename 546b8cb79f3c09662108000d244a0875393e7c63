@@ -88,6 +88,24 @@
       "revId": "546b8cb79f3c09662108000d244a0875393e7c63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e62f8c1_7ddb0f36",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-08T15:15:50Z",
+      "side": 1,
+      "message": "I\u0027m deferring to Shawn on this one as this fan stuff I am not very familiar with in the EC code base.",
+      "parentUuid": "4ea29412_2e3ea76c",
+      "revId": "546b8cb79f3c09662108000d244a0875393e7c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
