@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce33e4d5_8a840b3c",
+        "filename": "common/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-04-08T17:11:08Z",
+      "side": 1,
+      "message": "static int fan_is_suspended;",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "8350b675740d0cdbe43cee233fc517b621f27474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce33e4d5_0dd4b507",
+        "filename": "common/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-04-08T17:11:08Z",
+      "side": 1,
+      "message": "if (fan_is_suspended)\n    return;\n\nor you can merged  \nif (!thermal_control...  || fan_is_suspended)   \n    return;",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 0
+      },
+      "revId": "8350b675740d0cdbe43cee233fc517b621f27474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce33e4d5_aa89cf52",
+        "filename": "common/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-04-08T17:11:08Z",
+      "side": 1,
+      "message": "remove this",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 6
+      },
+      "revId": "8350b675740d0cdbe43cee233fc517b621f27474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce33e4d5_ea83c72e",
+        "filename": "common/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-04-08T17:11:08Z",
+      "side": 1,
+      "message": "fan_is_suspended \u003d 0;",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 0
+      },
+      "revId": "8350b675740d0cdbe43cee233fc517b621f27474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce33e4d5_0a79fb03",
+        "filename": "common/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-04-08T17:11:08Z",
+      "side": 1,
+      "message": "fan_is_suspended \u003d 1;",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 0
+      },
+      "revId": "8350b675740d0cdbe43cee233fc517b621f27474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
