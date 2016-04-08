@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4ea29412_6e00afe9",
+        "filename": "board/it8320pd/Makefile",
+        "patchSetId": 19
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2016-04-08T08:24:47Z",
+      "side": 1,
+      "message": "OK, I will separate them after the review.",
+      "parentUuid": "ce984492_040524f4",
+      "revId": "18e0bfc604f8705c28ed42e77b17150e4fffcc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce984492_04ec046a",
         "filename": "board/it8320pd/board.c",
         "patchSetId": 19
@@ -30,6 +48,30 @@
       "writtenOn": "2016-04-07T16:33:44Z",
       "side": 1,
       "message": "It\u0027s not a huge deal since this is your board-level code, but I would rewrite this function (and the function below) to have only one set of calls to gpio_set_level().",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "18e0bfc604f8705c28ed42e77b17150e4fffcc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ea29412_8ee6bb8c",
+        "filename": "board/it8320pd/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2016-04-08T08:24:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce984492_04ec046a",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "4ea29412_eeebff52",
+        "filename": "board/it8320pd/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2016-04-08T08:24:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce984492_24e7088c",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 29
+      },
+      "revId": "18e0bfc604f8705c28ed42e77b17150e4fffcc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce984492_24102837",
         "filename": "board/it8320pd/ec.tasklist",
         "patchSetId": 19
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "4ea29412_ae0a9704",
+        "filename": "board/it8320pd/ec.tasklist",
+        "patchSetId": 19
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2016-04-08T08:24:47Z",
+      "side": 1,
+      "message": "it8320 is using internal PD PHY, do we still need this task?\nor we just need the \u0027pd_send_host_event\u0027 function?",
+      "parentUuid": "ce984492_24102837",
+      "revId": "18e0bfc604f8705c28ed42e77b17150e4fffcc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce984492_2435c8bb",
         "filename": "board/it8320pd/usb_pd_policy.c",
         "patchSetId": 19
@@ -93,6 +177,30 @@
       "writtenOn": "2016-04-07T16:33:44Z",
       "side": 1,
       "message": "This should be behind CONFIG_HOSTCMD_PD. Anyway, you have neither HAS_TASK_PDCMD nor CONFIG_CHARGE_MANAGER defined. Do you plan to define them in the near future? If not, why bother with this code at all?",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 21
+      },
+      "revId": "18e0bfc604f8705c28ed42e77b17150e4fffcc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ea29412_cef0c344",
+        "filename": "board/it8320pd/usb_pd_policy.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2016-04-08T08:24:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce984492_2435c8bb",
       "range": {
         "startLine": 73,
         "startChar": 7,
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "4ea29412_2ef6a73d",
+        "filename": "chip/it83xx/usb_pd_phy.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2016-04-08T08:24:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce984492_049084cd",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "18e0bfc604f8705c28ed42e77b17150e4fffcc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce984492_44d1ecd3",
         "filename": "driver/tcpm/it83xx.c",
         "patchSetId": 19
@@ -139,6 +271,30 @@
       "writtenOn": "2016-04-07T16:33:44Z",
       "side": 1,
       "message": "We should find a place for this console command in common code (or else remove it). There\u0027s nothing here specific to your controller.",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 9
+      },
+      "revId": "18e0bfc604f8705c28ed42e77b17150e4fffcc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ea29412_0ef3eb4d",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2016-04-08T08:24:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce984492_44d1ecd3",
       "range": {
         "startLine": 150,
         "startChar": 0,
