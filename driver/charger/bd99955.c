@@ -386,6 +386,24 @@ DECLARE_HOOK(HOOK_INIT, bd99995_init, HOOK_PRIO_DEFAULT);
 
 int charger_post_init(void)
 {
+	int reg;
+
+	/* USB data switches on VCC */
+	ch_raw_read16(BD99955_CMD_VCC_UCD_SET, &reg,
+				BD99955_EXTENDED_COMMAND);
+	reg &= ~BD99955_CMD_UCD_SET_USB_SW_EN;
+	reg |= BD99955_CMD_UCD_SET_USB_SW;
+	ch_raw_write16(BD99955_CMD_VCC_UCD_SET, reg,
+		       BD99955_EXTENDED_COMMAND);
+
+	/* USB data switches on VBUS */
+	ch_raw_read16(BD99955_CMD_VBUS_UCD_SET, &reg,
+		       BD99955_EXTENDED_COMMAND);
+	reg &= ~BD99955_CMD_UCD_SET_USB_SW_EN;
+	reg |= BD99955_CMD_UCD_SET_USB_SW;
+	ch_raw_write16(BD99955_CMD_VBUS_UCD_SET, reg,
+		       BD99955_EXTENDED_COMMAND);
+
 	return EC_SUCCESS;
 }
 
