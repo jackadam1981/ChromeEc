@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ea29412_8edebbf9",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1128036
+      },
+      "writtenOn": "2016-04-08T06:05:18Z",
+      "side": 1,
+      "message": "The second parameter is set as 1 on oak.\nBut I am not sure what is it really about.",
+      "revId": "65390faebfac7831bad974730ab5528e035bb5eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ea29412_ee665f24",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1128036
+      },
+      "writtenOn": "2016-04-08T06:05:18Z",
+      "side": 1,
+      "message": "Should we add this?\ngpio_set_level(GPIO_SPI2_NSS_DB, 1);",
+      "revId": "65390faebfac7831bad974730ab5528e035bb5eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ea29412_6e5b8f5f",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1128036
+      },
+      "writtenOn": "2016-04-08T06:05:18Z",
+      "side": 1,
+      "message": "No BMI160, so?\n/* Enable SPI module*/",
+      "revId": "65390faebfac7831bad974730ab5528e035bb5eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
