@@ -81,7 +81,9 @@ test_mockable void fan_set_percent_needed(int fan, int pct)
 		new_rpm = fans[fan].rpm_start;
 
 	/* enable the fan when non-zero duty */
+#ifdef CONFIG_DPTF_FAIL_SAFE_OFFSET
 	set_enabled(fan, (pct > 0) ? 1 : 0);
+#endif
 	fan_set_rpm_target(fans[fan].ch, new_rpm);
 }
 
