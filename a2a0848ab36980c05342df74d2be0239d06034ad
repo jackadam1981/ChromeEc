@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce33e4d5_532d6ed2",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-08T19:35:48Z",
+      "side": 1,
+      "message": "This is messy because fan_is_suspended will be zero on EC power-on, and then you have sysjump.. you might just want to check the chipset state in fan_set_percent_needed() rather than having a static var.",
+      "range": {
+        "startLine": 529,
+        "startChar": 1,
+        "endLine": 529,
+        "endChar": 17
+      },
+      "revId": "a2a0848ab36980c05342df74d2be0239d06034ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce33e4d5_b3e4eaf6",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-08T19:35:48Z",
+      "side": 1,
+      "message": "This will no longer work, right? Fan control will no longer function in power state \u003c\u003d S3?",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 538,
+        "endChar": 5
+      },
+      "revId": "a2a0848ab36980c05342df74d2be0239d06034ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
