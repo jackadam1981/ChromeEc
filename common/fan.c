@@ -18,6 +18,7 @@
 /* True if we're listening to the thermal control task. False if we're setting
  * things manually. */
 static int thermal_control_enabled[CONFIG_FANS];
+static int fan_is_suspended;
 
 #ifdef CONFIG_FAN_UPDATE_PERIOD
 /* Should we ignore the fans for a while? */
@@ -59,7 +60,7 @@ test_mockable void fan_set_percent_needed(int fan, int pct)
 {
 	int actual_rpm, new_rpm;
 
-	if (!thermal_control_enabled[fan])
+	if (!thermal_control_enabled[fan] || fan_is_suspended)
 		return;
 
 #ifdef CONFIG_FAN_UPDATE_PERIOD
@@ -513,6 +514,9 @@ DECLARE_HOOK(HOOK_SYSJUMP, pwm_fan_preserve_state, HOOK_PRIO_DEFAULT);
 static void pwm_fan_resume(void)
 {
 	int fan;
+
+	fan_is_suspended = 0;
+
 	for (fan = 0; fan < CONFIG_FANS; fan++)
 		set_enabled(fan, 1);
 }
@@ -521,6 +525,8 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, pwm_fan_resume, HOOK_PRIO_DEFAULT);
 static void pwm_fan_S3_S5(void)
 {
 	int fan;
+
+	fan_is_suspended = 1;
 
 	/* TODO(crosbug.com/p/23530): Still treating all fans as one. */
 	for (fan = 0; fan < CONFIG_FANS; fan++) {
