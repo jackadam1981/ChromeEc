@@ -22,6 +22,54 @@
       "revId": "847c9d951e5a4dfffc901d0d5e023bbb21bdbf49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_4b3a14c5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2218,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-04-08T01:57:56Z",
+      "side": 1,
+      "message": "Yes it is too risky due to exiting implementation. \nIf any data with this structure type(with zero init values) does not take code space but once any of member of structure is initialized with non-zero value, code size increases sizeof(structure).  \nBy intializing \"struct ec_thermal_config thermal_params[]\" in board/lars/board.c by non-zero value, it increases 80 bytes. \nI will drop this patch and will pursue other way to reduce code size.",
+      "parentUuid": "ce984492_1388d0e2",
+      "range": {
+        "startLine": 2216,
+        "startChar": 0,
+        "endLine": 2218,
+        "endChar": 56
+      },
+      "revId": "847c9d951e5a4dfffc901d0d5e023bbb21bdbf49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_2b2fd081",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2218,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2016-04-08T01:57:56Z",
+      "side": 1,
+      "message": "Yes, it is too risky due to exiting implementation. \nIf any data with this structure type(with zero init values) does not take code space but once any of member of structure is initialized with non-zero value, code size increases sizeof(structure).  \nBy intializing \"struct ec_thermal_config thermal_params[]\" in board/lars/board.c by non-zero value, it increases 80 bytes. \nI will drop this patch and will pursue other way to reduce code size.",
+      "parentUuid": "ce984492_1388d0e2",
+      "range": {
+        "startLine": 2216,
+        "startChar": 0,
+        "endLine": 2218,
+        "endChar": 56
+      },
+      "revId": "847c9d951e5a4dfffc901d0d5e023bbb21bdbf49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
