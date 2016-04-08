@@ -222,6 +222,10 @@ static void board_init(void)
 					     &charge_none);
 	}
 
+	/* Initialize backlight PWM to 50% duty for bring-up */
+	pwm_enable(PWM_CH_BKLIGHT, 1);
+	pwm_set_duty(PWM_CH_BKLIGHT, 50);
+
 	/* Sensor Init */
 	gpio_config_module(MODULE_SPI_MASTER, 1);
 	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);

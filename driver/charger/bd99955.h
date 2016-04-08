@@ -124,6 +124,8 @@ enum bd99955_charge_port {
 /* Bits for both VCC_UDC_SET and VBUS_UCD_SET regs */
 #define BD99955_CMD_UCD_SET_BCSRETRY           (1 << 12)
 #define BD99955_CMD_UCD_SET_USBDETEN           (1 << 7)
+#define BD99955_CMD_UCD_SET_USB_SW_EN	       (1 << 1)
+#define BD99955_CMD_UCD_SET_USB_SW	       (1 << 0)
 #define BD99955_CMD_VCC_UCD_STATUS	0x29
 #define BD99955_CMD_VCC_IDD_STATUS	0x2A
 #define BD99955_CMD_VCC_UCD_FCTRL_SET	0x2B
