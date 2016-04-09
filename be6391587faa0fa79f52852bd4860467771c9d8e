@@ -22,6 +22,30 @@
       "revId": "be6391587faa0fa79f52852bd4860467771c9d8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce33e4d5_47c20104",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-09T06:21:29Z",
+      "side": 1,
+      "message": "Under normal usage, I can\u0027t think of anything other than malware make use of host command to change the EC GPIO. This is just a precautionary change and a matter of user experience, but by doing Refresh+PwrBtn to reset EC will be able to recover, so if it is ok to let ectool puts the system in a bad state, I am ok to abandon this change.",
+      "parentUuid": "ce33e4d5_34929d16",
+      "range": {
+        "startLine": 10,
+        "startChar": 62,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "be6391587faa0fa79f52852bd4860467771c9d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
