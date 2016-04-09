@@ -110,8 +110,9 @@ enum adc_channel {
 };
 
 enum pwm_channel {
+	PWM_CH_FULL_LED,
 	PWM_CH_KBLIGHT,
-	PWM_CH_LED,
+	PWM_CH_CHG_LED,
 	/* Number of PWM channels */
 	PWM_CH_COUNT
 };
