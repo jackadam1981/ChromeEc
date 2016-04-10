@@ -84,9 +84,9 @@ static int valid_upgrade_chunk(uint32_t block_offset, size_t body_size)
 	return 0;
 }
 
-static void fw_upgrade_command_handler(void *body,
-				       size_t cmd_size,
-				       size_t *response_size)
+void fw_upgrade_command_handler(void *body,
+				size_t cmd_size,
+				size_t *response_size)
 {
 	struct upgrade_command *cmd_body = body;
 	uint8_t *rv = body;
