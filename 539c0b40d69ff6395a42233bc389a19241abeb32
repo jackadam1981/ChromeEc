@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce33e4d5_ea33bca5",
+        "filename": "board/cr50/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-10T16:20:51Z",
+      "side": 1,
+      "message": "this is unfortunate, SRAM is at big premium. Is there a need to keep a buffer on the stack? Can you use the \"heap\" instead?",
+      "revId": "539c0b40d69ff6395a42233bc389a19241abeb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
