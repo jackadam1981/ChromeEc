@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce33e4d5_aa29c437",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-10T16:19:13Z",
+      "side": 1,
+      "message": "this should go into ./build as other utils do, no need to add a .gitignore in that case.",
+      "revId": "a410d87fb089a2c227a55bab6df15672963d7ab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
