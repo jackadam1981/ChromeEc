@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ce33e4d5_053ac1aa",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-11T02:42:57Z",
+      "side": 1,
+      "message": "I think Rong set it on purpose. Check\nhttps://chromium-review.googlesource.com/#/c/331851/9/board/elm/board.c",
+      "parentUuid": "4ea29412_8edebbf9",
+      "revId": "65390faebfac7831bad974730ab5528e035bb5eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ea29412_ee665f24",
         "filename": "board/elm/board.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ce33e4d5_253fc59a",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-11T02:42:57Z",
+      "side": 1,
+      "message": "Thanks, we should remove this since it is already set high in gpio.inc. Also PF6 should be set to high speed.",
+      "parentUuid": "4ea29412_ee665f24",
+      "revId": "65390faebfac7831bad974730ab5528e035bb5eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ea29412_6e5b8f5f",
         "filename": "board/elm/board.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2016-04-08T06:05:18Z",
       "side": 1,
       "message": "No BMI160, so?\n/* Enable SPI module*/",
+      "revId": "65390faebfac7831bad974730ab5528e035bb5eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce33e4d5_4524b98a",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-11T02:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ea29412_6e5b8f5f",
       "revId": "65390faebfac7831bad974730ab5528e035bb5eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
