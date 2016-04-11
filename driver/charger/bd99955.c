@@ -662,6 +662,21 @@ static void bd99995_init(void)
 	ch_raw_write16(BD99955_CMD_VM_CTRL_SET, reg,
 		       BD99955_EXTENDED_COMMAND);
 
+	/* Close USB data switches */
+	ch_raw_read16(BD99955_CMD_VCC_UCD_SET, &reg,
+				BD99955_EXTENDED_COMMAND);
+	reg &= ~0x3;
+	reg |= 1;
+	ch_raw_write16(BD99955_CMD_VCC_UCD_SET, reg,
+				BD99955_EXTENDED_COMMAND);
+
+	ch_raw_read16(BD99955_CMD_VBUS_UCD_SET, &reg,
+				BD99955_EXTENDED_COMMAND);
+	reg &= ~0x3;
+	reg |= 1;
+	ch_raw_write16(BD99955_CMD_VBUS_UCD_SET, reg,
+				BD99955_EXTENDED_COMMAND);
+
 #if defined(HAS_TASK_USB_CHG) && defined(CONFIG_USB_PD_VBUS_DETECT_CHARGER)
 	bd99955_enable_vbus_detect_interrupts(BD99955_CHARGE_PORT_VBUS, 1);
 	bd99955_enable_vbus_detect_interrupts(BD99955_CHARGE_PORT_VCC, 1);

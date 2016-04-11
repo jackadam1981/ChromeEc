@@ -473,3 +473,12 @@ static void usb_charge_shutdown(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usb_charge_shutdown, HOOK_PRIO_DEFAULT);
 #endif
+
+void board_pwm_init(void)
+{
+	/* Initialize backlight PWM to 50% duty for bring-up */
+	pwm_enable(PWM_CH_DISPLIGHT, 1);
+	pwm_set_duty(PWM_CH_DISPLIGHT, 50);
+}
+/* BUG: NPCX pwm init @ HOOK_PRIO_DEFAULT */
+DECLARE_HOOK(HOOK_INIT, board_pwm_init, HOOK_PRIO_DEFAULT + 1);
