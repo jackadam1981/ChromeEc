@@ -441,3 +441,12 @@ struct motion_sensor_t motion_sensors[] = {
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 #endif /* defined(HAS_TASK_MOTIONSENSE) */
+
+void board_pwm_init(void)
+{
+	/* Initialize backlight PWM to 50% duty for bring-up */
+	pwm_enable(PWM_CH_DISPLIGHT, 1);
+	pwm_set_duty(PWM_CH_DISPLIGHT, 50);
+}
+/* BUG: NPCX pwm init @ HOOK_PRIO_DEFAULT */
+DECLARE_HOOK(HOOK_INIT, board_pwm_init, HOOK_PRIO_DEFAULT + 1);
