@@ -14,6 +14,8 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpc.h"
 #include "util.h"
+#include "console.h"
+
 
 static int tcpc_vbus[CONFIG_USB_PD_PORT_COUNT];
 
@@ -31,6 +33,9 @@ static int init_alert_mask(int port)
 		TCPC_REG_ALERT_RX_HARD_RST | TCPC_REG_ALERT_CC_STATUS
 #ifdef CONFIG_USB_PD_TCPM_VBUS
 		| TCPC_REG_ALERT_POWER_STATUS
+#endif
+#ifdef CONFIG_USB_PD_ANX7688
+		| TCPC_REG_ALERT_SPECIFIC_IRQ
 #endif
 		;
 	/* Set the alert mask in TCPC */
@@ -201,6 +206,56 @@ int tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
 	return rv;
 }
 
+#ifdef CONFIG_USB_PD_ANX7688
+int tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
+{
+	int reg, rv;
+
+	rv = tcpc_read(port, TCPC_REG_VENDOR_SPECIFIC_CONTROL, &reg);
+	if (hpd_lvl)
+		reg |= TCPC_REG_HPD_HIGH;
+	else
+		reg &= ~TCPC_REG_HPD_HIGH;
+
+	if (hpd_irq)
+		reg |= TCPC_REG_IRQ_HPD;
+	else
+		reg &= ~TCPC_REG_IRQ_HPD;
+
+	rv = tcpc_write(port, TCPC_REG_VENDOR_SPECIFIC_CONTROL, reg);
+
+	return rv;
+}
+
+int tcpc_set_dp_pin_mode(int port, int pin_mode)
+{
+	int reg, rv;
+
+	rv = tcpc_read(port, TCPC_REG_TCPC_CTRL, &reg);
+	rv = tcpc_write(port, TCPC_REG_CONFIG_STD_OUTPUT, TCPC_REG_TCPC_CTRL_POLARITY(reg) | 0x0c);
+
+	return rv;
+}
+
+int tcpc_vendor_specific_control(int port)
+{
+	int reg, rv;
+
+	rv = tcpc_read(port, TCPC_REG_VENDOR_SPECIFIC_STATUS, &reg);
+
+	if(reg & TCPC_REG_LINK_STATUS) {
+		rv = tcpc_read(port, TCPC_REG_VENDOR_SPECIFIC_CONTROL, &reg);
+		rv = tcpc_write(port, TCPC_REG_VENDOR_SPECIFIC_CONTROL, reg | TCPC_REG_HPD_ENABLE);
+	}
+	else {
+		rv = tcpc_read(port, TCPC_REG_VENDOR_SPECIFIC_CONTROL, &reg);
+		rv = tcpc_write(port, TCPC_REG_VENDOR_SPECIFIC_CONTROL, reg & (~TCPC_REG_HPD_ENABLE));
+	}
+
+	return rv;
+}
+#endif
+
 void tcpc_alert(int port)
 {
 	int status;
@@ -260,6 +315,12 @@ void tcpc_alert(int port)
 					   TCPC_TX_COMPLETE_SUCCESS :
 					   TCPC_TX_COMPLETE_FAILED);
 	}
+	#ifdef CONFIG_USB_PD_ANX7688
+	if (status & TCPC_REG_ALERT_SPECIFIC_IRQ) {
+		/* transmit complete */
+		tcpc_vendor_specific_control(port);
+	}
+	#endif
 }
 
 int tcpm_init(int port)
@@ -268,6 +329,7 @@ int tcpm_init(int port)
 	int power_status;
 
 	while (1) {
+
 		rv = tcpc_read(port, TCPC_REG_POWER_STATUS, &power_status);
 		/*
 		 * If read succeeds and the uninitialized bit is clear, then
