@@ -202,3 +202,12 @@ static void board_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+void board_pwm_init(void)
+{
+	/* Initialize backlight PWM to 50% duty for bring-up */
+	pwm_enable(PWM_CH_BKLIGHT, 1);
+	pwm_set_duty(PWM_CH_BKLIGHT, 50);
+}
+/* BUG: NPCX pwm init @ HOOK_PRIO_DEFAULT */
+DECLARE_HOOK(HOOK_INIT, board_pwm_init, HOOK_PRIO_DEFAULT + 1);
