@@ -17,6 +17,7 @@
 #define TCPC_REG_ALERT             0x10
 
 #define TCPC_REG_ALERT_MASK_ALL     0xfff
+#define TCPC_REG_ALERT_SPECIFIC_IRQ (1<<15)
 #define TCPC_REG_ALERT_VBUS_DISCNCT (1<<11)
 #define TCPC_REG_ALERT_RX_BUF_OVF   (1<<10)
 #define TCPC_REG_ALERT_FAULT        (1<<9)
@@ -110,5 +111,17 @@
 
 extern const struct tcpm_drv tcpci_tcpm_drv;
 extern const struct usb_mux_driver tcpci_tcpm_usb_mux_driver;
+
+#ifdef CONFIG_USB_PD_ANX7688
+#define TCPC_REG_VENDOR_SPECIFIC_STATUS   0x82
+#define TCPC_REG_LINK_STATUS    (1<<0)
+#define TCPC_REG_VENDOR_SPECIFIC_CONTROL   0x83
+#define TCPC_REG_HPD_HIGH    (1<<0)
+#define TCPC_REG_IRQ_HPD    (1<<1)
+#define TCPC_REG_HPD_ENABLE    (1<<2)
+
+#define TCPC_STANDBY_MODE		(0)
+#define TCPC_NORMAL_MODE		(1)
+#endif
 
 #endif /* __CROS_EC_USB_PD_TCPM_TCPCI_H */

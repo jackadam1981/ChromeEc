@@ -222,9 +222,10 @@ static void board_init(void)
 	/* Enable BC 1.2 */
 	gpio_enable_interrupt(GPIO_BC12_CABLE_INT);
 
+#ifdef CONFIG_USB_PD_ANX7688_NEW_PWRON
 	/* Turn on PD */
 	board_reset_pd_mcu();
-
+#endif
 	/* Update VBUS supplier */
 	usb_charger_vbus_change(0, !gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L));
 
@@ -510,3 +511,36 @@ uint16_t tcpc_get_alert_status(void)
 	return gpio_get_level(GPIO_PD_MCU_INT) ? PD_STATUS_TCPC_ALERT_0 : 0;
 }
 
+#ifndef CONFIG_USB_PD_ANX7688_NEW_PWRON
+void board_set_tcpc_power_mode(int port, int normal_mode)
+{
+       if (normal_mode) {
+               gpio_set_level(GPIO_USB_C0_PWR_EN_L, 0);
+               msleep(50);
+               gpio_set_level(GPIO_USB_C0_RST, 0);
+               msleep(10);
+       } else {/* STAND BY MODE */
+               gpio_set_level(GPIO_USB_C0_RST, 1);
+               msleep(1);
+               gpio_set_level(GPIO_USB_C0_PWR_EN_L, 1);
+       }
+}
+
+int board_plug_is_inserted(int port)
+{
+	unsigned int val, count = 9;
+	unsigned int cable_det_count = 0;
+
+	do {
+		val = !gpio_get_level(GPIO_USB_C0_CABLE_DET_L);
+		if (val == 1)
+			cable_det_count++;
+		msleep(1);;
+	} while (count--);
+
+	if (cable_det_count > 7)
+		return 1;
+	else
+		return 0;
+}
+#endif

@@ -97,6 +97,7 @@
 #undef  CONFIG_TCPC_I2C_BASE_ADDR
 #define CONFIG_TCPC_I2C_BASE_ADDR 0x58
 #define CONFIG_USB_PD_ANX7688
+#undef  CONFIG_USB_PD_ANX7688_NEW_PWRON
 
 /* UART DMA */
 #undef CONFIG_UART_TX_DMA
@@ -209,7 +210,10 @@ void board_set_ap_reset(int asserted);
 void board_typec_dp_on(int port);
 void board_typec_dp_off(int port, int *dp_flags);
 void board_typec_dp_set(int port, int level);
-
+#ifndef CONFIG_USB_PD_ANX7688_NEW_PWRON
+void board_set_tcpc_power_mode(int port, int normal_mode);
+int board_plug_is_inserted(int port);
+#endif
 #endif  /* !__ASSEMBLER__ */
 
 #endif  /* __CROS_EC_BOARD_H */

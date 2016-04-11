@@ -198,4 +198,25 @@ void tcpc_alert_clear(int port);
  */
 int tcpc_run(int port, int evt);
 
+#ifndef CONFIG_USB_PD_ANX7688_NEW_PWRON
+/**
+ * Transmit command
+ *
+ * @param port Type-C port number
+ * @param command value
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpc_set_command(int port, int value);
+
+/**
+ * set standby
+ *
+ * @param port Type-C port number
+ *
+ *
+ */
+void tcpc_set_standby(int port);
+#endif
+
 #endif /* __CROS_EC_USB_PD_TCPM_H */

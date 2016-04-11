@@ -14,6 +14,8 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpc.h"
 #include "util.h"
+#include "console.h"
+
 
 static int tcpc_vbus[CONFIG_USB_PD_PORT_COUNT];
 
@@ -31,6 +33,9 @@ static int init_alert_mask(int port)
 		TCPC_REG_ALERT_RX_HARD_RST | TCPC_REG_ALERT_CC_STATUS
 #ifdef CONFIG_USB_PD_TCPM_VBUS
 		| TCPC_REG_ALERT_POWER_STATUS
+#endif
+#ifdef CONFIG_USB_PD_ANX7688
+		| TCPC_REG_ALERT_SPECIFIC_IRQ
 #endif
 		;
 	/* Set the alert mask in TCPC */
@@ -189,6 +194,87 @@ static int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 	return rv;
 }
 
+#ifndef CONFIG_USB_PD_ANX7688_NEW_PWRON
+static void anx74xx_set_power_mode(int port, int mode)
+{
+	switch (mode) {
+		case TCPC_NORMAL_MODE:
+			/* Set PWR_EN and RST_N GPIO pins high */
+			board_set_tcpc_power_mode(port, 1);
+			pd_set_dual_role(PD_DRP_TOGGLE_ON);
+			break;
+		case TCPC_STANDBY_MODE:
+			/* Disable PWR_EN, keep Digital and analog block
+			 * ON for cable detection */
+			board_set_tcpc_power_mode(port, 0);
+			break;
+		default:
+			break;
+	}
+}
+
+int tcpc_set_command(int port, int value)
+{
+	return tcpc_write(port, TCPC_REG_COMMAND, value);
+}
+
+void tcpc_set_standby(int port)
+{
+	anx74xx_set_power_mode(port, TCPC_STANDBY_MODE);
+	task_set_event(PD_PORT_TO_TASK_ID(port),
+				       PD_EVENT_TCPC_RESET, 0);
+}
+#endif
+#ifdef CONFIG_USB_PD_ANX7688
+int tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
+{
+	int reg, rv;
+
+	rv = tcpc_read(port, TCPC_REG_VENDOR_SPECIFIC_CONTROL, &reg);
+	if (hpd_lvl)
+		reg |= TCPC_REG_HPD_HIGH;
+	else
+		reg &= ~TCPC_REG_HPD_HIGH;
+
+	if (hpd_irq)
+		reg |= TCPC_REG_IRQ_HPD;
+	else
+		reg &= ~TCPC_REG_IRQ_HPD;
+
+	rv = tcpc_write(port, TCPC_REG_VENDOR_SPECIFIC_CONTROL, reg);
+
+	return rv;
+}
+
+int tcpc_set_dp_pin_mode(int port, int pin_mode)
+{
+	int reg, rv;
+
+	rv = tcpc_read(port, TCPC_REG_TCPC_CTRL, &reg);
+	rv = tcpc_write(port, TCPC_REG_CONFIG_STD_OUTPUT, TCPC_REG_TCPC_CTRL_POLARITY(reg) | 0x0c);
+
+	return rv;
+}
+
+int tcpc_vendor_specific_control(int port)
+{
+	int reg, rv;
+
+	rv = tcpc_read(port, TCPC_REG_VENDOR_SPECIFIC_STATUS, &reg);
+
+	if(reg & TCPC_REG_LINK_STATUS) {
+		rv = tcpc_read(port, TCPC_REG_VENDOR_SPECIFIC_CONTROL, &reg);
+		rv = tcpc_write(port, TCPC_REG_VENDOR_SPECIFIC_CONTROL, reg | TCPC_REG_HPD_ENABLE);
+	}
+	else {
+		rv = tcpc_read(port, TCPC_REG_VENDOR_SPECIFIC_CONTROL, &reg);
+		rv = tcpc_write(port, TCPC_REG_VENDOR_SPECIFIC_CONTROL, reg & (~TCPC_REG_HPD_ENABLE));
+	}
+
+	return rv;
+}
+#endif
+
 void tcpci_tcpc_alert(int port)
 {
 	int status;
@@ -248,6 +334,12 @@ void tcpci_tcpc_alert(int port)
 					   TCPC_TX_COMPLETE_SUCCESS :
 					   TCPC_TX_COMPLETE_FAILED);
 	}
+	#ifdef CONFIG_USB_PD_ANX7688
+	if (status & TCPC_REG_ALERT_SPECIFIC_IRQ) {
+		/* transmit complete */
+		tcpc_vendor_specific_control(port);
+	}
+	#endif
 }
 
 int tcpci_tcpm_init(int port)
@@ -255,7 +347,17 @@ int tcpci_tcpm_init(int port)
 	int rv;
 	int power_status;
 
+#ifndef CONFIG_USB_PD_ANX7688_NEW_PWRON
+	/* Wait for cable connection in standby mode */
+	while (!board_plug_is_inserted(port))
+		msleep(10);
+
+	/* Bring chip in normal mode to work */
+	anx74xx_set_power_mode(port, TCPC_NORMAL_MODE);
+	msleep(500);
+#endif
 	while (1) {
+
 		rv = tcpc_read(port, TCPC_REG_POWER_STATUS, &power_status);
 		/*
 		 * If read succeeds and the uninitialized bit is clear, then
