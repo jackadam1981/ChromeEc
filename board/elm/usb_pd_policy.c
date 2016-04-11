@@ -26,6 +26,11 @@
 #define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
 			 PDO_FIXED_COMM_CAP | PDO_FIXED_EXTERNAL)
 
+#ifdef CONFIG_USB_PD_ANX7688
+int tcpc_set_dp_pin_mode(int port, int pin_mode);
+int tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq);
+#endif
+
 /* TODO: fill in correct source and sink capabilities */
 const uint32_t pd_src_pdo[] = {
 		PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
@@ -270,14 +275,21 @@ static int svdm_dp_status(int port, uint32_t *payload)
 static int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
+	#ifndef CONFIG_USB_PD_ANX7688
 	int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
+	#endif
 	int pin_mode = pd_dfp_dp_get_pin_mode(port, dp_status[port]);
 
 	if (!pin_mode)
 		return 0;
 
+	#ifdef CONFIG_USB_PD_ANX7688
+	tcpc_set_dp_pin_mode(port, pin_mode);
+	#else
+	/* TDDO: TCPC_REG_CONFIG_STD_OUTPUT bit0 is not set in usb_mux_set() */
 	usb_mux_set(port, mf_pref ? TYPEC_MUX_DOCK : TYPEC_MUX_DP,
 		    USB_SWITCH_CONNECT, pd_get_polarity(port));
+	#endif
 
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
 			 CMD_DP_CONFIG | VDO_OPOS(opos));
@@ -301,6 +313,10 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
 	int ack = 1;
+
+	#ifdef CONFIG_USB_PD_ANX7688
+	tcpc_update_hpd_status(port, lvl, irq);
+	#endif
 
 	dp_status[port] = payload[1];
 	cur_lvl = gpio_get_level(GPIO_USB_DP_HPD);
