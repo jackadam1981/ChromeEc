@@ -4,6 +4,7 @@
  */
 
 #include "gpio_signal.h"
+#include "util.h"
 
 #ifdef CONFIG_COMMON_GPIO_SHORTNAMES
 #define GPIO(name, pin, flags) {GPIO_NAME_BY_##pin, GPIO_##pin, flags},
