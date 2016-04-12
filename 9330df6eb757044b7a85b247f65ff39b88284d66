@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebe41af9_ca7cdb44",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-12T22:05:26Z",
+      "side": 1,
+      "message": "This is needed to get CONFIG_FLASH_SIZE and CONFIG_RW_SIZE, but some boards (glados_pd for example) override the value found in the $(CHIP) directory. I\u0027m wondering if there\u0027s a better way.\n\nOTOH, the stuff in extra/ isn\u0027t guaranteed for all uses. Hm.",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "9330df6eb757044b7a85b247f65ff39b88284d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
