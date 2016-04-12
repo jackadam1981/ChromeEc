@@ -47,6 +47,8 @@
 #include "watchdog.h"
 
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
+#define FLASH_BODET_START 1
+#define FLASH_BODET_END   0
 
 int flash_pre_init(void)
 {
@@ -114,6 +116,21 @@ int flash_physical_protect_now(int all)
 	return EC_SUCCESS;			/* yeah, I did it. */
 }
 
+static void flash_bodet(int en)
+{
+	/* After enabling the fast brownout circuit, need to wait a bit to make
+	 * sure it has fully ramped up and spitting out a correct value
+	 */
+
+	if (en) {
+		GWRITE_FIELD(PMU, SW_PDB, FST_BRNOUT_PWR, 1);
+		usleep(5);
+		GWRITE_FIELD(PMU, SW_PDB, FST_BRNOUT, 1);
+	} else {
+		GWRITE_FIELD(PMU, SW_PDB, FST_BRNOUT, 0);
+		GWRITE_FIELD(PMU, SW_PDB, FST_BRNOUT_PWR, 0);
+	}
+}
 
 enum flash_op {
 	OP_ERASE_BLOCK,
@@ -187,7 +204,8 @@ static int do_flash_op(enum flash_op op, int byte_offset, int words)
 	 */
 	extra_prog_pulse = 0;
 	for (retry_count = 0; retry_count < max_attempts; retry_count++) {
-		/* Kick it off */
+		/* Kick it off and enable flash brownout at the same time */
+		flash_bodet(FLASH_BODET_START);
 		GWRITE(FLASH, FSH_PE_EN, 0xb11924e1);
 		*fsh_pe_control = opcode;
 
@@ -200,6 +218,8 @@ static int do_flash_op(enum flash_op op, int byte_offset, int words)
 				break;
 			usleep(timedelay_us);
 		}
+		/* When transaction finishes, disable flash brownout */
+		flash_bodet(FLASH_BODET_END);
 
 		/* Timed out waiting for control register to clear */
 		if (tmp) {
