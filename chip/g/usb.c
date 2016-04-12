@@ -313,7 +313,7 @@ static enum {
 static uint8_t configuration_value;
 
 /* Default PHY to use */
-static uint32_t which_phy = USB_SEL_PHY0;
+static uint32_t which_phy = USB_SEL_PHY1;
 static inline void select_phy(uint32_t phy)
 {
 	which_phy = phy;
