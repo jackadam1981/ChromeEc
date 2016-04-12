@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebe41af9_4f8b7d4c",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-12T21:50:10Z",
+      "side": 1,
+      "message": "parens? Find it hard to read with the implicit left to right precedence in mind.",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 10
+      },
+      "revId": "3724740ca2d4e125512d1b911bdf4aaae362de9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebe41af9_cf76ad11",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-12T21:50:10Z",
+      "side": 1,
+      "message": "0x15? What kind of magic bit pattern is that?\nOr did you mean 15, 0xf?",
+      "revId": "3724740ca2d4e125512d1b911bdf4aaae362de9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebe41af9_eac5175b",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-12T21:50:10Z",
+      "side": 1,
+      "message": "This memset might get optimized away. Is there no secure_erase() method that has appropriate attributes to tell the compiler to always emit it?",
+      "revId": "3724740ca2d4e125512d1b911bdf4aaae362de9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
