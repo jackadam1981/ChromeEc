@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb34b668_42deb225",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-12T22:36:08Z",
+      "side": 1,
+      "message": "No, what you want is to figure out which task is running out of room and increase the stack size of just that one in board/*/ec.tasklist",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 23
+      },
+      "revId": "3a65403a719fe27a7a7813d5577413d86de22ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
