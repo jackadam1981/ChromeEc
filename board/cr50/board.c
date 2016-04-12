@@ -28,6 +28,10 @@
 	BUILD_ASSERT(((flags) & GPIO_INT_BOTH) != GPIO_INT_BOTH);
 #include "gpio.wrap"
 
+
+/* Location defined via linker, should move to link_def.h later */
+extern const void *__flash_cntr_end;
+
 static void init_pmu(void)
 {
 	/* This boot sequence may be a result of previous soft reset,
@@ -126,6 +130,7 @@ int flash_regions_to_enable(struct g_flash_region *regions,
 			    int max_regions)
 {
 	uint32_t half = CONFIG_FLASH_SIZE / 2;
+	uint32_t regions_configured = 0;
 
 	if (max_regions < 1)
 		return 0;
@@ -152,6 +157,20 @@ int flash_regions_to_enable(struct g_flash_region *regions,
 	/* The size of the write enable area is the same in both cases. */
 	regions->reg_size = half;
 	regions->reg_perms =  FLASH_REGION_EN_ALL;
+	regions_configured++;
 
-	return 1; /* One region is enough. */
+#if defined(CONFIG_FLASH_CNTR)
+	/* The start address defined in linker, there are always 2 banks of such
+	 * counters, and the software should have full access permission
+	 */
+	regions++;
+	regions->reg_base = (uint32_t)(&__flash_cntr_end) -
+	  (CONFIG_FLASH_BANK_SIZE << 1);
+	regions->reg_size = (CONFIG_FLASH_BANK_SIZE << 1);
+	regions->reg_perms =  FLASH_REGION_EN_ALL;
+	regions_configured++;
+#endif
+
+	/* May configure more than one region. */
+	return regions_configured;
 }
