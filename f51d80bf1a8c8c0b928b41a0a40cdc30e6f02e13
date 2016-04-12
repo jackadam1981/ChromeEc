@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebe41af9_ea151721",
+        "filename": "board/cr50/tpm2/hkdf.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-12T21:58:25Z",
+      "side": 1,
+      "message": "The (uint16_t) cast makes more sense on cmd[0] itself, not the (cmd[0] \u003c\u003c 8) expression.\nThen again, C rules are crazy.\n\nI figure here that cast is not needed at all, or should be (size_t) cast?",
+      "range": {
+        "startLine": 54,
+        "startChar": 25,
+        "endLine": 54,
+        "endChar": 28
+      },
+      "revId": "f51d80bf1a8c8c0b928b41a0a40cdc30e6f02e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
