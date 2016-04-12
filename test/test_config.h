@@ -96,6 +96,10 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_FANS 1
 #endif
 
+#ifdef TEST_FLASH_COUNT
+#define CONFIG_FLASH_CNTR
+#endif
+
 #ifdef TEST_BUTTON
 #define CONFIG_BUTTON_COUNT 2
 #define CONFIG_KEYBOARD_PROTOCOL_8042

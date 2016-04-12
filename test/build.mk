@@ -39,7 +39,7 @@ test-list-host+=sbs_charging host_command
 test-list-host+=bklight_lid bklight_passthru interrupt timer_dos button
 test-list-host+=math_util motion_lid sbs_charging_v2 battery_get_params_smart
 test-list-host+=lightbar inductive_charging usb_pd fan charge_manager
-test-list-host+=charge_manager_drp_charging charge_ramp
+test-list-host+=charge_manager_drp_charging charge_ramp flash_count
 
 battery_get_params_smart-y=battery_get_params_smart.o
 bklight_lid-y=bklight_lid.o
@@ -79,3 +79,4 @@ utils-y=utils.o
 battery_get_params_smart-y=battery_get_params_smart.o
 lightbar-y=lightbar.o
 fan-y=fan.o
+flash_count-y=flash_count.o

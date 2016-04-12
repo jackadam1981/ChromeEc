@@ -776,12 +776,16 @@
 /* Support programming on-chip flash */
 #define CONFIG_FLASH
 
+
 #undef CONFIG_FLASH_BANK_SIZE
 #undef CONFIG_FLASH_ERASED_VALUE32
 #undef CONFIG_FLASH_ERASE_SIZE
 
 /* Base address of program memory */
 #undef CONFIG_PROGRAM_MEMORY_BASE
+
+/* Persistent flash counter */
+#undef CONFIG_FLASH_CNTR
 
 /*
  * EC code can reside on internal or external storage. Only one of these

@@ -245,4 +245,11 @@ uint32_t flash_get_protect(void);
  */
 int flash_set_protect(uint32_t mask, uint32_t flags);
 
+/**
+ * Increment the persistent flash counter
+ *
+ * Returns the incremented flash count
+ */
+uint32_t flash_cntr_incr(void);
+
 #endif  /* __CROS_EC_FLASH_H */

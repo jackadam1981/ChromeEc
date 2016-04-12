@@ -20,6 +20,8 @@
 #define CONFIG_WP_ALWAYS
 /* TODO(crosbug.com/p/44745): For debugging only */
 #define CONFIG_CMD_FLASH
+/* Enable persistent, anti-rollback high value flash counters */
+#define CONFIG_FLASH_CNTR
 
 /* Go to sleep when nothing else is happening */
 #define CONFIG_LOW_POWER_IDLE

@@ -224,6 +224,15 @@ SECTIONS
     } > FLASH
 #endif
     __ro_end = . ;
+#if defined(SECTION_IS_RW) && defined(CONFIG_FLASH_CNTR)
+    .flash_cntr (NOLOAD) : {
+        . = ALIGN(CONFIG_FLASH_BANK_SIZE);
+	__flash_cntr_start = . ;
+        *(.flash_cntr.hi)
+        *(.flash_cntr.lo)
+    } > FLASH
+    __flash_cntr_end = . ;
+#endif
 
     __deferred_funcs_count =
 		(__deferred_funcs_end - __deferred_funcs) / 4;
