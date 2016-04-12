@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebe41af9_0f8255f1",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-12T20:44:46Z",
+      "side": 1,
+      "message": "I didn\u0027t think we could get an interrupt on detach. Does this really work?",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 47
+      },
+      "revId": "aa7b534f58d573de76e1bd0c42303a7ccc841b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
