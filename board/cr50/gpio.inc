@@ -22,7 +22,7 @@ GPIO(AP_WP_L,         PIN(0, 3), GPIO_INPUT)
 GPIO(SYS_RST,         PIN(0, 4), GPIO_INPUT)
 
 /* Indicate to EC when CCD is enabled */
-GPIO(CCD_MODE,        PIN(0, 5), GPIO_INPUT)
+GPIO(CCD_MODE,        PIN(0, 5), GPIO_OUT_LOW)
 
 /* Battery has a 10K pulldown on its side. We provide the pullup. */
 GPIO(BATT_PRES,       PIN(0, 6), GPIO_INPUT)
