@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ce984492_f96d4d8f",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-04-12T14:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e91180d_88ad3b63",
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e91180d_28cbcf21",
         "filename": "core/minute-ia/init.S",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ce984492_d9c849cc",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-04-12T14:54:04Z",
+      "side": 1,
+      "message": "Removing this as .space below allocates empty stack",
+      "parentUuid": "6e91180d_28cbcf21",
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e91180d_a8a59f76",
         "filename": "core/minute-ia/init.S",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2016-03-31T21:57:57Z",
       "side": 1,
       "message": "Below CONFIG_STACK_SIZE is used, but STACK_SIZE is employed here. Why the difference?",
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_f9e2ed47",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-04-12T14:54:04Z",
+      "side": 1,
+      "message": "Removed STACK_SIZE, will use CONFIG_STACK_SIZE instead",
+      "parentUuid": "6e91180d_a8a59f76",
       "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "ce984492_b9c585b3",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-04-12T14:54:04Z",
+      "side": 1,
+      "message": "__bss_start and __bss_end are declared and used in ec.lds.S. So removing these unused declarations.",
+      "parentUuid": "6e91180d_088febea",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 14
+      },
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e91180d_e81407db",
         "filename": "core/minute-ia/irq_handler.h",
         "patchSetId": 1
@@ -87,6 +165,24 @@
       "writtenOn": "2016-03-31T22:29:50Z",
       "side": 1,
       "message": "The ioapic was commented out in the assembly file, but it\u0027s being done here. Why the asymmetry?",
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_39c295a7",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-04-12T14:54:04Z",
+      "side": 1,
+      "message": "IOAPIC ack enabled in swtich.S, was commented out earlier by mistake",
+      "parentUuid": "6e91180d_e81407db",
       "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "ce984492_99d2c17a",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-04-12T14:54:04Z",
+      "side": 1,
+      "message": "It was a mistake, un-commented it now",
+      "parentUuid": "6e91180d_4802d32d",
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e91180d_e8164771",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 1
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "ce984492_79cffdcf",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-04-12T14:54:04Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "6e91180d_e8164771",
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e91180d_8808db4d",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 1
@@ -138,6 +270,24 @@
       "writtenOn": "2016-03-31T21:57:57Z",
       "side": 1,
       "message": "There\u0027s floating point code in the EC codebase. This doesn\u0027t handle switching out floating point state.",
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce984492_59bd592a",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-04-12T14:54:04Z",
+      "side": 1,
+      "message": "FP context save/restore not yet implemented, will submit new patch for that.",
+      "parentUuid": "6e91180d_8808db4d",
       "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
