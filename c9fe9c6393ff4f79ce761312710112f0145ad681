@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_f193d7d5",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-04-13T23:41:18Z",
+      "side": 1,
+      "message": "Won\u0027t this mean that x86 devices use LPC for *all* commands, not just memory-mapped reads?\n\nThat\u0027s potentially problematic; the dev interface provides transaction locking, but the raw LPC interface doesn\u0027t.",
+      "range": {
+        "startLine": 207,
+        "startChar": 2,
+        "endLine": 207,
+        "endChar": 15
+      },
+      "revId": "c9fe9c6393ff4f79ce761312710112f0145ad681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_9131bbca",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-04-13T23:41:18Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be inside the { } above?  We only need to redo the call if the first one fails.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 63
+      },
+      "revId": "c9fe9c6393ff4f79ce761312710112f0145ad681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
