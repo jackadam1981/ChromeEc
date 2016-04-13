@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ce984492_9061767b",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-04-13T15:33:28Z",
+      "side": 1,
+      "message": "Added a comment.",
+      "parentUuid": "f1532dc8_8667ecaf",
+      "range": {
+        "startLine": 644,
+        "startChar": 15,
+        "endLine": 644,
+        "endChar": 16
+      },
+      "revId": "69a3fe5efe4080503da9cbc3bfad1882de1d961b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1532dc8_c66de493",
         "filename": "chip/g/dcrypto/bn.c",
         "patchSetId": 2
