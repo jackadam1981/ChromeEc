@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cbd7567d_5ffc6f17",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-04-13T22:43:30Z",
+      "side": 1,
+      "message": "yeah there is nada (I\u0027ll look inside dpmu again to make sure), but I don\u0027t recall putting anything in for this.\nThe 5uS is 2.5x the amount of time the bodet is supposed to take to ramp up.  Kind of a safe conservative value.",
+      "parentUuid": "cbd7567d_24dece56",
+      "range": {
+        "startLine": 127,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 9
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd7567d_c4853239",
         "filename": "chip/g/flash_cntr.c",
         "patchSetId": 3
@@ -272,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "cbd7567d_df585f06",
+        "filename": "common/flash_cntr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-04-13T22:43:30Z",
+      "side": 1,
+      "message": "hmm... my style template (supposed to be linux) is not indenting, and in any case the cr50 style checker does not seem to complain about this.  If I try to put in spaces, I think it will complain.",
+      "parentUuid": "cbd7567d_ff90c33d",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd7567d_dffe9f4b",
         "filename": "common/flash_cntr.c",
         "patchSetId": 3
@@ -283,6 +331,30 @@
       "writtenOn": "2016-04-13T22:24:56Z",
       "side": 1,
       "message": "Why does all this code live in two places? common and chip/g\nSeems like it should all be common?",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_3f4edb41",
+        "filename": "common/flash_cntr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-04-13T22:43:30Z",
+      "side": 1,
+      "message": "Yeah I moved everything to common/flash_cntr.c and forgot to delete the former, will be doing so soon.",
+      "parentUuid": "cbd7567d_dffe9f4b",
       "range": {
         "startLine": 65,
         "startChar": 16,
@@ -318,6 +390,30 @@
     },
     {
       "key": {
+        "uuid": "cbd7567d_7f485333",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-04-13T22:43:30Z",
+      "side": 1,
+      "message": "No one cares, should be removed soon.",
+      "parentUuid": "cbd7567d_9fd6e7c7",
+      "range": {
+        "startLine": 234,
+        "startChar": 4,
+        "endLine": 234,
+        "endChar": 20
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd7567d_1f75d794",
         "filename": "test/flash_count.c",
         "patchSetId": 3
@@ -329,6 +425,30 @@
       "writtenOn": "2016-04-13T22:24:56Z",
       "side": 1,
       "message": "Try not to copy non-trivial code around.\n\nSuppose you\u0027d want to change the encoding, now you have to hunt down multiple implementations in multiple files.",
+      "range": {
+        "startLine": 82,
+        "startChar": 16,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_9f70a76a",
+        "filename": "test/flash_count.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-04-13T22:43:30Z",
+      "side": 1,
+      "message": "I guess I should probably make this a function inside flash_cntr.c that the test then references?",
+      "parentUuid": "cbd7567d_1f75d794",
       "range": {
         "startLine": 82,
         "startChar": 16,
