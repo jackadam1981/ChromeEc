@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b3e3e48_6693ca87",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T03:42:07Z",
+      "side": 1,
+      "message": "Could this memcmp be a timing channel?\nUse a fixed timing memcmp when comparing secrets.",
+      "revId": "0cfd8a47aec3ca2ec27d82bf89ff77168c494d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b3e3e48_469a469a",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T03:42:07Z",
+      "side": 1,
+      "message": "Same timing channel concern for memcmp on secret data",
+      "range": {
+        "startLine": 544,
+        "startChar": 6,
+        "endLine": 544,
+        "endChar": 12
+      },
+      "revId": "0cfd8a47aec3ca2ec27d82bf89ff77168c494d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b3e3e48_068bde4d",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T03:42:07Z",
+      "side": 1,
+      "message": "\u0026\u0026 and || are not fixed timing",
+      "revId": "0cfd8a47aec3ca2ec27d82bf89ff77168c494d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b3e3e48_a67f92e8",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T03:42:07Z",
+      "side": 1,
+      "message": "?: is likely not fixed timing either",
+      "revId": "0cfd8a47aec3ca2ec27d82bf89ff77168c494d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b3e3e48_c684163b",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T03:42:07Z",
+      "side": 1,
+      "message": "Fixed timing?",
+      "revId": "0cfd8a47aec3ca2ec27d82bf89ff77168c494d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
