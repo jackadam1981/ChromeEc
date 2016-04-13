@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_e4b676fa",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-13T21:13:35Z",
+      "side": 1,
+      "message": "I much prefer the previous implementation. I\u0027m always a little worried about multiple interrupts due to noise. If that happened here, we\u0027d just toggle in and out of CCD mode with every spike and who knows where we\u0027d end up?\n\nWhen you get the interrupt, check the PROG_DEBUG_STATE_MAP to be sure what it\u0027s detecting, and just to be sure, check RDD_CUR_STABLE_STATE_DEBUG too. Then switch.",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "6d7de8f13bd922a340836343fded505fb7a47be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
