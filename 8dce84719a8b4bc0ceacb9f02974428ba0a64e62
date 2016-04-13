@@ -373,6 +373,30 @@
     },
     {
       "key": {
+        "uuid": "8b3e3e48_697abdf9",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1147200
+      },
+      "writtenOn": "2016-04-13T10:34:47Z",
+      "side": 1,
+      "message": "ANX chip INT pin is high active in default. If ALERT pin GPIO is high active, it could be removed.",
+      "parentUuid": "ce984492_eb5d81f7",
+      "range": {
+        "startLine": 698,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 67
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_3c2ca032",
         "filename": "driver/tcpm/anx74xx.h",
         "patchSetId": 14
