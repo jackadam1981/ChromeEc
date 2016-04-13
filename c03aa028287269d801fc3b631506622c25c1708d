@@ -1,0 +1,343 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_24dece56",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T22:24:56Z",
+      "side": 1,
+      "message": "So there\u0027s no sane alternative for this delay? No status bit to poll?\nWhere does 5 come from? Would 1 do? 2?",
+      "range": {
+        "startLine": 127,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 9
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_c4853239",
+        "filename": "chip/g/flash_cntr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T22:24:56Z",
+      "side": 1,
+      "message": "(uintptr_t)\u0026p[i] - CONFIG_PROGRAM_MEMORY_BASE;",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_bf900b6f",
+        "filename": "chip/g/flash_cntr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T22:24:56Z",
+      "side": 1,
+      "message": "0x00003cff, to keep in style",
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_5fc3cf55",
+        "filename": "chip/g/flash_cntr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T22:24:56Z",
+      "side": 1,
+      "message": "this expression should probably be a #define w/ descriptive name; it appears a bunch of times in this code.",
+      "range": {
+        "startLine": 178,
+        "startChar": 22,
+        "endLine": 178,
+        "endChar": 56
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_3fcc1b88",
+        "filename": "chip/g/flash_cntr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T22:24:56Z",
+      "side": 1,
+      "message": "interrupted",
+      "range": {
+        "startLine": 183,
+        "startChar": 9,
+        "endLine": 183,
+        "endChar": 18
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_df085f80",
+        "filename": "chip/g/flash_cntr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T22:24:56Z",
+      "side": 1,
+      "message": "This comment is not very clear. Drop the highlighted part? Certainly does not make it less clear.",
+      "range": {
+        "startLine": 195,
+        "startChar": 17,
+        "endLine": 195,
+        "endChar": 53
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_3ffedb7b",
+        "filename": "chip/g/flash_cntr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T22:24:56Z",
+      "side": 1,
+      "message": "; instead of ,",
+      "range": {
+        "startLine": 196,
+        "startChar": 13,
+        "endLine": 196,
+        "endChar": 14
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_bf348b2e",
+        "filename": "chip/g/flash_cntr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T22:24:56Z",
+      "side": 1,
+      "message": "This reference to HIGH is irrelevant here.\nStick to simple, to the point comments.",
+      "range": {
+        "startLine": 211,
+        "startChar": 35,
+        "endLine": 211,
+        "endChar": 59
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_df433f90",
+        "filename": "chip/g/flash_cntr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T22:24:56Z",
+      "side": 1,
+      "message": "This is comment for at top of this if() body.",
+      "range": {
+        "startLine": 228,
+        "startChar": 5,
+        "endLine": 228,
+        "endChar": 55
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_df1a1fb4",
+        "filename": "chip/g/flash_cntr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T22:24:56Z",
+      "side": 1,
+      "message": "This is not a great sentence. Just comment in separate comment that the _write() is to re-affirm the last word of LO to make sure future reads will also see it as 0.\nE.g.\n/* re-affirm last word of LO as 0 */",
+      "range": {
+        "startLine": 228,
+        "startChar": 55,
+        "endLine": 230,
+        "endChar": 27
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_7f2a13c1",
+        "filename": "chip/g/flash_cntr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T22:24:56Z",
+      "side": 1,
+      "message": "What\u0027s this for? Testing? Why is this here? If testing only, shouldn\u0027t there be a #ifdef GUARD or so?",
+      "range": {
+        "startLine": 249,
+        "startChar": 12,
+        "endLine": 249,
+        "endChar": 30
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_ff90c33d",
+        "filename": "common/flash_cntr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T22:24:56Z",
+      "side": 1,
+      "message": "indent? This line continuation so surely should have non-zero indent.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_dffe9f4b",
+        "filename": "common/flash_cntr.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T22:24:56Z",
+      "side": 1,
+      "message": "Why does all this code live in two places? common and chip/g\nSeems like it should all be common?",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_9fd6e7c7",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T22:24:56Z",
+      "side": 1,
+      "message": "Does anything still care about this label?",
+      "range": {
+        "startLine": 234,
+        "startChar": 4,
+        "endLine": 234,
+        "endChar": 20
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_1f75d794",
+        "filename": "test/flash_count.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T22:24:56Z",
+      "side": 1,
+      "message": "Try not to copy non-trivial code around.\n\nSuppose you\u0027d want to change the encoding, now you have to hunt down multiple implementations in multiple files.",
+      "range": {
+        "startLine": 82,
+        "startChar": 16,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "c03aa028287269d801fc3b631506622c25c1708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
