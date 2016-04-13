@@ -259,6 +259,24 @@
     },
     {
       "key": {
+        "uuid": "cbd7567d_f00478b3",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "Please add comments around the instructions tickling magic addresses.",
+      "parentUuid": "ce984492_79cffdcf",
+      "revId": "7c1822820d7371261ac37f811b4f0e5b82122b11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e91180d_8808db4d",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 1
