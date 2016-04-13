@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebe41af9_8a4f330e",
+        "filename": "chip/g/dcrypto/p256_ec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T00:58:20Z",
+      "side": 1,
+      "message": "this comment is wrong. The name does not have vartime in it anymore. This one does get used by ecies where timing matters..\n\nAlso, all callers of this just want point_mul, not points_mul. Give them that? And in a constant-time manner, since scalar (and some outputs) are secret.",
+      "revId": "c8fd2ca75bb126ed5fa82b36a0e5cea0746e45d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
