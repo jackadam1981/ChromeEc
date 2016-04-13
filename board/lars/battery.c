@@ -10,6 +10,7 @@
 #include "battery_smart.h"
 #include "util.h"
 #include "console.h"
+#include "host_command.h"
 
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
@@ -43,6 +44,7 @@ enum battery_type {
 struct battery_device {
 	char				manuf[9];
 	char				device[9];
+	char				type[9];
 	int				design_mv;
 	const struct battery_info	*battery_info;
 };
@@ -104,12 +106,14 @@ static const struct battery_device support_batteries[BATTERY_TYPE_COUNT] = {
 	{
 		.manuf		= "SONYCorp",
 		.device		= "AP13J4K",
+		.type		= "Lip",
 		.design_mv	= 11400,
 		.battery_info	= &info_sony,
 	},
 	{
 		.manuf		= "SANYO",
 		.device		= "AP13J3K",
+		.type		= "LION",
 		.design_mv	= 11400,
 		.battery_info	= &info_sanyo,
 	},
@@ -118,6 +122,20 @@ static const struct battery_device support_batteries[BATTERY_TYPE_COUNT] = {
 		.battery_info	= &info_precharge,
 	},
 };
+
+static void update_static_battery_info(const struct battery_device batt)
+{
+	char *batt_str;
+
+	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_MFGR);
+	memcpy(batt_str, batt.manuf, EC_MEMMAP_TEXT_MAX);
+
+	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_MODEL);
+	memcpy(batt_str, batt.device, EC_MEMMAP_TEXT_MAX);
+
+	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_TYPE);
+	memcpy(batt_str, batt.type, EC_MEMMAP_TEXT_MAX);
+}
 
 static enum battery_type batt_inserted = INIT;
 
@@ -150,6 +168,7 @@ const struct battery_info *battery_get_info(void)
 		    (strcasecmp(support_batteries[i].device, device) == 0) &&
 		    (support_batteries[i].design_mv == design_mv)) {
 			batt_inserted = i;
+			update_static_battery_info(support_batteries[i]);
 
 			return support_batteries[batt_inserted].battery_info;
 		}
