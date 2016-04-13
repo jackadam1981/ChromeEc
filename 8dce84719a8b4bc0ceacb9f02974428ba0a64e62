@@ -397,6 +397,30 @@
     },
     {
       "key": {
+        "uuid": "cbd7567d_8a8b4b14",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-13T15:51:11Z",
+      "side": 1,
+      "message": "Our design followed your reference schematic, which has an external pulldown, so the hardware design is expecting an active high INT signal.\n\nTCPM can configure its pin to trigger on falling edge since ANX driver is currently set to active low, but it won\u0027t be optimized in terms of power consumption with the external pulldown.\n\nAlso, when ANX is in the low power mode, the pin is changed to OpenDrain from PushPull. With the external pulldown, TCPM will see a false interrupt since the signal will go low when switched to OpenDrain.\n\nSince your reference schematic and ANX chip default is default active high, I suggest to remove this code or add something like:\n\nif (board_set_tcpc_int_polarity)\n     board_set_tcpc_int_polarity(port);",
+      "parentUuid": "8b3e3e48_697abdf9",
+      "range": {
+        "startLine": 698,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 67
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_3c2ca032",
         "filename": "driver/tcpm/anx74xx.h",
         "patchSetId": 14
