@@ -22,6 +22,46 @@
       "revId": "3a65403a719fe27a7a7813d5577413d86de22ed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b3e3e48_0300b09d",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T01:09:23Z",
+      "side": 1,
+      "message": "What happens if someone changes the defines to\n#define FLASH_BODET_START 0\n#define FLASH_BODET_END 1\n\nDoes your code still work? It should.",
+      "range": {
+        "startLine": 125,
+        "startChar": 7,
+        "endLine": 125,
+        "endChar": 8
+      },
+      "revId": "3a65403a719fe27a7a7813d5577413d86de22ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b3e3e48_83de0055",
+        "filename": "chip/g/flash_cntr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T01:09:23Z",
+      "side": 1,
+      "message": "This won\u0027t work (nor did previous version). Did you test it?\n\n(ptr + int) expressions already do ptr + int * sizeof(*ptr)\nSo you have an extra multiply by sizeof(uint32_t) here.\n\nHere you could just write\nint offset \u003d (int)p + i*sizeof(v) -CONFIG_PROGRAM_MEMORY_BASE;\n\nWhat\u0027s up with that CONFIG_PROGRAM_MEMORY_BASE anyways and why is that offset not taken into account inside the flash_erase() and flash_write() routines, rather than have the caller muck with them everywhere?",
+      "revId": "3a65403a719fe27a7a7813d5577413d86de22ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
