@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "cbd7567d_1f61577b",
+        "filename": "chip/ish30/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T22:52:05Z",
+      "side": 1,
+      "message": "What did you do? Is get_tsc() used? I don\u0027t recall seeing it used.",
+      "parentUuid": "2bef1234_bd63ffe7",
+      "revId": "093d20ec7b3b76876918e381ac23993a276befc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e91180d_c846e34c",
         "filename": "chip/ish30/hwtimer.c",
         "patchSetId": 1
