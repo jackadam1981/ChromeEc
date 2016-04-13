@@ -23,6 +23,7 @@ enum bd99955_charge_port {
 	BD99955_CHARGE_PORT_VBUS,
 	BD99955_CHARGE_PORT_VCC,
 	BD99955_CHARGE_PORT_NONE,
+	BD99955_CHARGE_PORT_FOR_PG3,
 };
 
 /* Charger parameters */
@@ -210,7 +211,9 @@ enum bd99955_charge_port {
 
 /* Return true if extpower is present on their input port. */
 int bd99955_extpower_is_present(void);
-/* Select input port from {VCC, VBUS, NONE}. */
+/* Select input port from {VCC, VBUS, NONE, VCC&VBUS}. */
 int bd99955_select_input_port(enum bd99955_charge_port port);
+/* Prepare charger to enter Pseudo G3 */
+int bd99955_prepare_charger_for_pg3(void);
 
 #endif /* __CROS_EC_BD99955_H */
