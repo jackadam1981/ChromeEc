@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8b3e3e48_e6359ad2",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T01:47:59Z",
+      "side": 1,
+      "message": "To have it still work you\u0027d have to:\nif (en \u003d\u003d FLASH_BODET_START) {\n..\n\nNow the code depends implicitly on FLASH_BODET_START being !0",
+      "parentUuid": "8b3e3e48_4371d815",
+      "range": {
+        "startLine": 125,
+        "startChar": 7,
+        "endLine": 125,
+        "endChar": 8
+      },
+      "revId": "3a65403a719fe27a7a7813d5577413d86de22ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b3e3e48_83de0055",
         "filename": "chip/g/flash_cntr.c",
         "patchSetId": 2
@@ -101,6 +125,24 @@
       "side": 1,
       "message": "yeah this is still working on silicon, the test is WIP.  But in mine the v is an uint32_t instead of pointer though, so that\u0027s the same thing as sizeof(uint32_t) right?\n\nYeah I don\u0027t know about the flash thing, I guess it does make more sense to move the program memory base accounting into the chip function, I\u0027ll check with Bill.",
       "parentUuid": "8b3e3e48_83de0055",
+      "revId": "3a65403a719fe27a7a7813d5577413d86de22ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b3e3e48_662aea73",
+        "filename": "chip/g/flash_cntr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T01:47:59Z",
+      "side": 1,
+      "message": "It shouldn\u0027t work\n\nCheck the values of offset that are going by, or how did you test?",
+      "parentUuid": "8b3e3e48_e6b7daf8",
       "revId": "3a65403a719fe27a7a7813d5577413d86de22ed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
