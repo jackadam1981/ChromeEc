@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2baab253_5fd7f36e",
+        "filename": "board/elm/battery.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2016-04-13T07:23:20Z",
+      "side": 1,
+      "message": "Do we still need this comment? Elm should be using 3S bttery.",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 4
+      },
+      "revId": "f9fc2b73b51b708d2c83284edeff4b40b38a2554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebe41af9_aa1b0f56",
         "filename": "board/elm/board.c",
         "patchSetId": 20
