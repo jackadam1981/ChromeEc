@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "cbd7567d_2afe9f7b",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-04-13T15:33:28Z",
+      "side": 1,
+      "message": "Oops.  Yes, 0xf!",
+      "parentUuid": "ebe41af9_cf76ad11",
+      "revId": "3724740ca2d4e125512d1b911bdf4aaae362de9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebe41af9_eac5175b",
         "filename": "board/cr50/tpm2/rsa.c",
         "patchSetId": 4
@@ -53,6 +71,24 @@
       "writtenOn": "2016-04-12T21:50:10Z",
       "side": 1,
       "message": "This memset might get optimized away. Is there no secure_erase() method that has appropriate attributes to tell the compiler to always emit it?",
+      "revId": "3724740ca2d4e125512d1b911bdf4aaae362de9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_ca08a380",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-04-13T15:33:28Z",
+      "side": 1,
+      "message": "I added a todo, there are a couple of other places that need fixing.",
+      "parentUuid": "ebe41af9_eac5175b",
       "revId": "3724740ca2d4e125512d1b911bdf4aaae362de9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
