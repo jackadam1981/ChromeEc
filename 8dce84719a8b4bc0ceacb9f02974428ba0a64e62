@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b3e3e48_a686b2d8",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1147200
+      },
+      "writtenOn": "2016-04-13T04:11:07Z",
+      "side": 1,
+      "message": "We want to support USB devices without PD function after power on.",
+      "parentUuid": "9c2a06be_f1022a58",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 56
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_11fa5e87",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 14
@@ -255,6 +279,30 @@
     },
     {
       "key": {
+        "uuid": "8b3e3e48_8675ae96",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1147200
+      },
+      "writtenOn": "2016-04-13T04:11:07Z",
+      "side": 1,
+      "message": "when downstream device is plugged out,  .exit() function seems not called, and HDP pin cannot be pulled low.",
+      "parentUuid": "9c2a06be_f1efcaa2",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 2
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_31fa0261",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 14
@@ -266,6 +314,30 @@
       "writtenOn": "2016-03-22T15:45:51Z",
       "side": 1,
       "message": "no, muxes should not be connected on set_polarity",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 52
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b3e3e48_a30464b2",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1147200
+      },
+      "writtenOn": "2016-04-13T04:11:07Z",
+      "side": 1,
+      "message": "when CC is connected, set initial mux connection to support USB device without PD function.",
+      "parentUuid": "9c2a06be_31fa0261",
       "range": {
         "startLine": 461,
         "startChar": 0,
