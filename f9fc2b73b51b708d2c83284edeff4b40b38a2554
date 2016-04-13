@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cbd7567d_3099f0f7",
+        "filename": "board/elm/battery.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-04-13T18:08:21Z",
+      "side": 1,
+      "message": "You\u0027re right. We only need 2S support on proto boards. Will remove this in CL:337338",
+      "parentUuid": "2baab253_5fd7f36e",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 4
+      },
+      "revId": "f9fc2b73b51b708d2c83284edeff4b40b38a2554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebe41af9_aa1b0f56",
         "filename": "board/elm/board.c",
         "patchSetId": 20
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-12T22:03:05Z",
       "side": 1,
       "message": "Your TCPC doesn\u0027t support 1 MHz?",
+      "range": {
+        "startLine": 101,
+        "startChar": 31,
+        "endLine": 101,
+        "endChar": 34
+      },
+      "revId": "f9fc2b73b51b708d2c83284edeff4b40b38a2554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_900c1c25",
+        "filename": "board/elm/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-04-13T18:08:21Z",
+      "side": 1,
+      "message": "Done. Double checked ANX7688 can do 1MHz I2C clock.",
+      "parentUuid": "ebe41af9_aa1b0f56",
       "range": {
         "startLine": 101,
         "startChar": 31,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cbd7567d_9037fcc0",
+        "filename": "board/elm/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-04-13T18:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebe41af9_2a853f90",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 30
+      },
+      "revId": "f9fc2b73b51b708d2c83284edeff4b40b38a2554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebe41af9_ca4a1b2c",
         "filename": "board/elm/led.c",
         "patchSetId": 20
@@ -82,6 +154,30 @@
       "writtenOn": "2016-04-12T22:03:05Z",
       "side": 1,
       "message": "Not a huge deal, but it would be better to have one counter only and increment it in led_second?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 18
+      },
+      "revId": "f9fc2b73b51b708d2c83284edeff4b40b38a2554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_7016c82d",
+        "filename": "board/elm/led.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-04-13T18:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebe41af9_ca4a1b2c",
       "range": {
         "startLine": 118,
         "startChar": 0,
