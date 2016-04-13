@@ -208,6 +208,24 @@
     },
     {
       "key": {
+        "uuid": "cbd7567d_0daf75f1",
+        "filename": "chip/g/flash_cntr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-13T17:22:37Z",
+      "side": 1,
+      "message": "flash_read(), flash_write(), flash_erase() all use offsets into the flash, not the absolute address. Unless there\u0027s a real reason why you need a pointer, I\u0027d suggest just using offsets everywhere. You fiddle around with the linker scripts so that you have pointers located at the end of the flash. It would make more sense just to declare the blocks you want to reserve. Take a look at include/config_std_internal_flash.h and the related #defines in chip/g/config_chip.h",
+      "parentUuid": "8b3e3e48_e6b7daf8",
+      "revId": "3a65403a719fe27a7a7813d5577413d86de22ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b3e3e48_e909ed85",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 2
