@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_a4391e28",
+        "filename": "chip/g/dcrypto/p256_ec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1297,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-13T21:12:35Z",
+      "side": 1,
+      "message": "Lest we really fork, could first upstream all these changes to security/util/lite/ in g3?",
+      "revId": "cd03f6b458fb694800bcc5165c5078d400a38938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
