@@ -226,6 +226,24 @@
     },
     {
       "key": {
+        "uuid": "cbd7567d_ed04a1b3",
+        "filename": "chip/g/flash_cntr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-04-13T17:24:44Z",
+      "side": 1,
+      "message": "That was actually the path I was originally going down, but Marius recommended directly linking the variables.  I can\u0027t say I fully grasp the pros/cons of each...",
+      "parentUuid": "cbd7567d_0daf75f1",
+      "revId": "3a65403a719fe27a7a7813d5577413d86de22ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b3e3e48_e909ed85",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 2
