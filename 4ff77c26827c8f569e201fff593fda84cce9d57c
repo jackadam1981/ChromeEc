@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "ebe41af9_841bacb7",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-04-13T01:42:47Z",
+      "side": 1,
+      "message": "yeah this was trial and error. I talked to Bill, and the general past approach seemed to be this as well.  So I didn\u0027t dig too deeply as to why.",
+      "parentUuid": "ebe41af9_0144eef3",
+      "revId": "4ff77c26827c8f569e201fff593fda84cce9d57c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebe41af9_6105b2ad",
         "filename": "chip/g/flash.c",
         "patchSetId": 1
@@ -53,6 +71,24 @@
       "writtenOn": "2016-04-12T19:23:19Z",
       "side": 1,
       "message": "is there no way to poll, rather than wait a bit and assume?",
+      "revId": "4ff77c26827c8f569e201fff593fda84cce9d57c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebe41af9_64edc0da",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-04-13T01:42:47Z",
+      "side": 1,
+      "message": "yeah we didn\u0027t leave anything in hardware for us to read the actual brownout output.  Probably would be good to do so in the future.",
+      "parentUuid": "ebe41af9_6105b2ad",
       "revId": "4ff77c26827c8f569e201fff593fda84cce9d57c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -138,6 +174,24 @@
       "writtenOn": "2016-04-12T19:23:19Z",
       "side": 1,
       "message": "this one is to affirm that last word in LO is zero, akin to line 156. Comment to clarify?",
+      "revId": "4ff77c26827c8f569e201fff593fda84cce9d57c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebe41af9_a413487d",
+        "filename": "chip/g/flash_cntr.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-04-13T01:42:47Z",
+      "side": 1,
+      "message": "Is this technically striking",
+      "parentUuid": "ebe41af9_81855e37",
       "revId": "4ff77c26827c8f569e201fff593fda84cce9d57c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
