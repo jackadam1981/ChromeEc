@@ -285,14 +285,8 @@ int charger_get_status(int *status)
 int charger_set_mode(int mode)
 {
 	int rv;
-	int enable;
 
-	if (mode & CHARGE_FLAG_INHIBIT_CHARGE)
-		enable = 0;
-	else
-		enable = 1;
-
-	rv = bd99955_charger_enable(enable);
+	rv = bd99955_charger_enable(mode & CHARGE_FLAG_INHIBIT_CHARGE ? 0 : 1);
 	if (rv)
 		return rv;
 
@@ -435,13 +429,16 @@ int bd99955_select_input_port(enum bd99955_charge_port port)
 
 	if (port == BD99955_CHARGE_PORT_NONE) {
 		reg &= ~(BD99955_CMD_VIN_CTRL_SET_VBUS_EN |
-			 BD99955_CMD_VIN_CTRL_SET_VBUS_EN);
+			 BD99955_CMD_VIN_CTRL_SET_VCC_EN);
 	} else if (port == BD99955_CHARGE_PORT_VBUS) {
 		reg |= BD99955_CMD_VIN_CTRL_SET_VBUS_EN;
 		reg &= ~BD99955_CMD_VIN_CTRL_SET_VCC_EN;
 	} else if (port == BD99955_CHARGE_PORT_VCC) {
 		reg |= BD99955_CMD_VIN_CTRL_SET_VCC_EN;
 		reg &= ~BD99955_CMD_VIN_CTRL_SET_VBUS_EN;
+	} else if (port == BD99955_CHARGE_PORT_FOR_PG3) {
+		reg = BD99955_CMD_VIN_CTRL_SET_VBUS_EN |
+		      BD99955_CMD_VIN_CTRL_SET_VCC_EN;
 	} else {
 		/* Invalid charge port */
 		panic("Invalid charge port");
@@ -449,6 +446,11 @@ int bd99955_select_input_port(enum bd99955_charge_port port)
 
 	return ch_raw_write16(BD99955_CMD_VIN_CTRL_SET, reg,
 			      BD99955_EXTENDED_COMMAND);
+}
+
+int bd99955_prepare_charger_for_pg3(void)
+{
+	return bd99955_select_input_port(BD99955_CHARGE_PORT_FOR_PG3);
 }
 
 #ifdef CONFIG_CMD_CHARGER
