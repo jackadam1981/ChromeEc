@@ -1,0 +1,451 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_d9bcff2d",
+        "filename": "core/minute-ia/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "What is this definition for? I suggest you put this on its own line and document it w/ a comment.",
+      "range": {
+        "startLine": 18,
+        "startChar": 48,
+        "endLine": 18,
+        "endChar": 51
+      },
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_992d6746",
+        "filename": "core/minute-ia/ec.lds.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "Where is this introduced?",
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_39643b8b",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "Presumably this *has* to be the first instruction judging by the special handling in the linker script? If so, please be more forceful in the comments indicating that the .init section has to contain the first instruction sequence that is called by the ISH BUP.",
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_44d7820a",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you be leal vectors here? Why would you want the first dword in edx? That or just do movl $(vectors)",
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_84533a5c",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "Why? Because it\u0027s causing random memory accesses associated w/ my comment on line 298?",
+      "range": {
+        "startLine": 329,
+        "startChar": 1,
+        "endLine": 329,
+        "endChar": 34
+      },
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_24c36e09",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "I\u0027m not sure why you are dynamically setting up the idt pointer. You can just reference the __idt in assembly and lidt __idt_ptr:\n\n__idt_ptr:\n  .word 2047\n  .long __idt",
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_b9b30b2e",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "Please add some more comments here about how you are presumably building up the IDT?",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 18
+      },
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_a4dd9eff",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "Where is the stack being initialized?  %esp needs to be set to the stack you are going to use.",
+      "range": {
+        "startLine": 341,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 9
+      },
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_c4d89211",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "These are ARM specific things. Why is this applicable to ISH?",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 23
+      },
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_a468fec4",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "There\u0027s no need to initialize this to 0. Nor does it need to be marked used",
+      "range": {
+        "startLine": 27,
+        "startChar": 49,
+        "endLine": 27,
+        "endChar": 54
+      },
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_849b3a2d",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "There\u0027s no need to initialize this to 0.",
+      "range": {
+        "startLine": 30,
+        "startChar": 69,
+        "endLine": 30,
+        "endChar": 74
+      },
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_04874ad7",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "This object is referenced. There\u0027s no need to mark it used. Same for __isr_stack above.",
+      "range": {
+        "startLine": 31,
+        "startChar": 48,
+        "endLine": 31,
+        "endChar": 56
+      },
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_84f7ba73",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "Why are 5 dwords sitting at the top of the ISR stack?",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 49
+      },
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_c44ed26c",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "What?",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 40
+      },
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_644a8654",
+        "filename": "core/minute-ia/interrupts.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "What\u0027s w/ all the bumpy caps?",
+      "range": {
+        "startLine": 69,
+        "startChar": 17,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_0402aaee",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "So you aren\u0027t enabling interrupts for any of these IRQs, but the default handler does? Why the asymmetry?",
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_f0d6383f",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "You can\u0027t increment this w/ interrupts on. You would be trashing the frame on the isr stack when there are 2 nested interrupts. Once sti is executed and __in_isr \u003d\u003d 0 you can take another interrupt which would re-initialize the irq stack, clobbering the previously saved state.\n\nYou should move the increment to within the code block that utilizes the __isr_stack_ptr.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_64a9e6e9",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "This should be noted that its an interrupt vector.",
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_0433caa5",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 16
+      },
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_c4d6d271",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "These should be combined.",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 53
+      },
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_244b6e32",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-13T21:52:30Z",
+      "side": 1,
+      "message": "sizeof(uint32_t)",
+      "range": {
+        "startLine": 614,
+        "startChar": 46,
+        "endLine": 614,
+        "endChar": 47
+      },
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
