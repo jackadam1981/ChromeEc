@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_2446ce9f",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-13T21:13:10Z",
+      "side": 1,
+      "message": "It doesn\u0027t matter yet either way, but we should use \"\u003d|\" here, if only to keep VIN_ORD at default.",
+      "range": {
+        "startLine": 441,
+        "startChar": 6,
+        "endLine": 441,
+        "endChar": 7
+      },
+      "revId": "29ba48d848d5614920c7758ec71dfe9051f7820e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
