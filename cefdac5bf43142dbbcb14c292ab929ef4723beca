@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_715b67cd",
+        "filename": "board/kevin/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-13T23:50:12Z",
+      "side": 1,
+      "message": "This pin is driven high by the SOC upon booting the kernel. We need to change that (and make sure everyone has the update) before landing this patch.",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "cefdac5bf43142dbbcb14c292ab929ef4723beca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
