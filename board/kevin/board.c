@@ -44,6 +44,18 @@ static void tcpc_alert_event(enum gpio_signal signal)
 	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
 }
 
+static void ap_warm_reset_interrupt(enum gpio_signal signal)
+{
+	ccprintf("AP warm reset asserted\n");
+	chipset_reset(0);
+}
+
+static void ap_overtemp_interrupt(enum gpio_signal signal)
+{
+	ccprintf("AP overtemp asserted\n");
+	chipset_force_shutdown();
+}
+
 #include "gpio_list.h"
 
 /******************************************************************************/

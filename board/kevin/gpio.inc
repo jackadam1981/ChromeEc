@@ -25,6 +25,10 @@ GPIO_INT(POWER_BUTTON_L,   PIN(0, 4), GPIO_INT_BOTH | GPIO_INPUT,
          power_button_interrupt)
 GPIO_INT(LID_OPEN,         PIN(9, 7),
          GPIO_INT_BOTH | GPIO_INPUT | GPIO_SEL_1P8V, lid_interrupt)
+GPIO_INT(WARM_RESET_REQ,   PIN(7, 3), GPIO_INT_RISING | GPIO_PULL_DOWN,
+         ap_warm_reset_interrupt)
+GPIO_INT(AP_OVERTEMP,      PIN(7, 4), GPIO_INT_RISING | GPIO_PULL_DOWN,
+         ap_overtemp_interrupt)
 
 /* TODO: Add power sequencing interrupt pins */
 
@@ -103,8 +107,6 @@ GPIO(LID_360_L,            PIN(3, 6), GPIO_INPUT | GPIO_SEL_1P8V)
 GPIO(BASE_SIXAXIS_INT_L,   PIN(4, 0), GPIO_INPUT | GPIO_SEL_1P8V)
 GPIO(CCD_MODE,             PIN(6, 3), GPIO_INPUT)
 GPIO(USB_A_EN,             PIN(7, 0), GPIO_OUT_LOW)
-GPIO(WARM_RESET_REQ,       PIN(7, 3), GPIO_INPUT)
-GPIO(AP_OVERTEMP,          PIN(7, 4), GPIO_INPUT)
 GPIO(USB_A_CHARGE_EN,      PIN(8, 4), GPIO_INPUT)
 GPIO(SPI_SENSOR_CS_L,      PIN(9, 4), GPIO_OUT_HIGH | GPIO_OPEN_DRAIN)
 
