@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8b3e3e48_4927b9f5",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-04-13T04:54:38Z",
+      "side": 1,
+      "message": "this is in bytes.",
+      "parentUuid": "8b3e3e48_a903e561",
+      "revId": "3a65403a719fe27a7a7813d5577413d86de22ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb34b668_42deb225",
         "filename": "chip/g/config_chip.h",
         "patchSetId": 2
@@ -201,6 +219,24 @@
       "writtenOn": "2016-04-13T04:06:30Z",
       "side": 1,
       "message": "can you not just make a __flash_cntr_begin \u003d . here and then forego the gymnastics with counting back from __flash_cntr_end?",
+      "revId": "3a65403a719fe27a7a7813d5577413d86de22ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b3e3e48_e986cd0b",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-04-13T04:54:38Z",
+      "side": 1,
+      "message": "yeah i\u0027ve already done that in my local area, it\u0027ll be in the next upload when I get the test stuff working.  I also noticed I probably shouldn\u0027t be hardcoding the alignment there.",
+      "parentUuid": "8b3e3e48_e909ed85",
       "revId": "3a65403a719fe27a7a7813d5577413d86de22ed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
