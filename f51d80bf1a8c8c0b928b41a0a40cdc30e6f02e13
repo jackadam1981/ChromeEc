@@ -22,6 +22,30 @@
       "revId": "f51d80bf1a8c8c0b928b41a0a40cdc30e6f02e13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_ea90073e",
+        "filename": "board/cr50/tpm2/hkdf.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-04-13T15:52:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebe41af9_ea151721",
+      "range": {
+        "startLine": 54,
+        "startChar": 25,
+        "endLine": 54,
+        "endChar": 28
+      },
+      "revId": "f51d80bf1a8c8c0b928b41a0a40cdc30e6f02e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
