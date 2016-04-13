@@ -22,6 +22,30 @@
       "revId": "6d7de8f13bd922a340836343fded505fb7a47be3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_df95ff2b",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-04-13T22:17:28Z",
+      "side": 1,
+      "message": "That makes sense. Done",
+      "parentUuid": "cbd7567d_e4b676fa",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "6d7de8f13bd922a340836343fded505fb7a47be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
