@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cbd7567d_04b2aa08",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-04-13T21:07:27Z",
+      "side": 1,
+      "message": "Okay I will change it.",
+      "parentUuid": "cbd7567d_99b8c70b",
+      "range": {
+        "startLine": 430,
+        "startChar": 13,
+        "endLine": 430,
+        "endChar": 37
+      },
+      "revId": "509c7bb89486823a271b4acb08a7e56627a54101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd7567d_59e80ff6",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-13T20:53:23Z",
       "side": 1,
       "message": "I just found this 15 mins ago. Thanks for fixing it.",
+      "range": {
+        "startLine": 432,
+        "startChar": 4,
+        "endLine": 432,
+        "endChar": 35
+      },
+      "revId": "509c7bb89486823a271b4acb08a7e56627a54101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_c4b7f2f8",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-04-13T21:07:27Z",
+      "side": 1,
+      "message": "You are welcome",
+      "parentUuid": "cbd7567d_59e80ff6",
       "range": {
         "startLine": 432,
         "startChar": 4,
