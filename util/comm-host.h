@@ -74,4 +74,11 @@ extern int (*ec_command_proto)(int command, int version,
  */
 extern int (*ec_readmem)(int offset, int bytes, void *dest);
 
+/*
+ * Functions for initializing communication protocols.
+ */
+int comm_init_dev(const char *device_name);
+int comm_init_lpc(void);
+int comm_init_i2c(void);
+
 #endif /* __UTIL_COMM_HOST_H */

@@ -257,6 +257,13 @@ int comm_init_lpc(void)
 		return -3;
 	}
 
+	ec_readmem = ec_readmem_lpc;
+
+	if (ec_command_proto != NULL) {
+		/* Function to send commands already defined. */
+		return 0;
+	}
+
 	/*
 	 * Test if the I/O port has been configured for Chromium EC LPC
 	 * interface.  Chromium EC guarantees that at least one status bit will
@@ -308,9 +315,12 @@ int comm_init_lpc(void)
 		return -5;
 	}
 
-	/* Either one supports reading mapped memory directly. */
-	ec_readmem = ec_readmem_lpc;
 	return 0;
 }
 
-#endif
+#else  /* defined(__i386__) || defined(__x86_64__) */
+int comm_init_lpc(void)
+{
+	return -EOPNOTSUPP;
+}
+#endif  /* defined(__i386__) || defined(__x86_64__) */
