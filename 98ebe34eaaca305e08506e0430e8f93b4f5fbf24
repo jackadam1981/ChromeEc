@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_df069f00",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-13T22:46:08Z",
+      "side": 1,
+      "message": "No longer enabling CONFIG_RDD? Or saving that for later?",
+      "range": {
+        "startLine": 31,
+        "startChar": 12,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "98ebe34eaaca305e08506e0430e8f93b4f5fbf24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_ff53a3e6",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-13T22:46:08Z",
+      "side": 1,
+      "message": "If you\u0027re going to rename one symbol, rename them both.",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "98ebe34eaaca305e08506e0430e8f93b4f5fbf24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_9fdb879a",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-13T22:46:08Z",
+      "side": 1,
+      "message": "For clarity, add \n\nuint8_t cc2 \u003d GREAD_FIELD(RDD, INPUT_PIN_VALUES, CC2);\n\nand then compare (cc1 \u003d\u003d cc2) \u0026\u0026 (cc1 \u003d\u003d 3 || cc1 \u003d\u003d 7);",
+      "range": {
+        "startLine": 22,
+        "startChar": 10,
+        "endLine": 22,
+        "endChar": 56
+      },
+      "revId": "98ebe34eaaca305e08506e0430e8f93b4f5fbf24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
