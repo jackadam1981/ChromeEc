@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "console.h"
 #include "queue.h"
 #include "queue_policies.h"
 #include "uartn.h"
@@ -123,3 +124,25 @@ CONFIGURE_INTERRUPTS(ec_uart,
 		     GC_IRQNUM_UART2_RXINT,
 		     GC_IRQNUM_UART2_TXINT)
 #endif
+
+static int command_uart(int argc, char **argv)
+{
+	static int enabled;
+
+	if (argc > 1) {
+		if (!strcasecmp("enable", argv[1])) {
+			enabled = 1;
+			usart_tx_connect();
+		} else if (!strcasecmp("disable", argv[1])) {
+			enabled = 0;
+			usart_tx_disconnect();
+		}
+	}
+
+	ccprintf("UART %s\n", enabled ? "enabled" : "disabled");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(uart, command_uart,
+	"[enable|disable]",
+	"Get/set the UART TX connection state",
+	NULL);
