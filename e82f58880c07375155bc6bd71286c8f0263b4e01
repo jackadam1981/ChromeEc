@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_452db9d6",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-14T16:14:19Z",
+      "side": 1,
+      "message": "here and below : do you still need to reverse it in case of CRYPT_FAIL?",
+      "revId": "e82f58880c07375155bc6bd71286c8f0263b4e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
