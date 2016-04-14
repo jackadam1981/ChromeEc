@@ -46,6 +46,30 @@
       "revId": "cd8f2f2fd4fc32721d146ac7274940acba2d79b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_1b4fa10f",
+        "filename": "include/usb_descriptor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-14T21:29:18Z",
+      "side": 1,
+      "message": "Oh, right. I see it in the comment for USB_STRING_DESC(), immediately above.  Duh. :-P",
+      "parentUuid": "cbd7567d_383d4ba1",
+      "range": {
+        "startLine": 242,
+        "startChar": 22,
+        "endLine": 242,
+        "endChar": 30
+      },
+      "revId": "cd8f2f2fd4fc32721d146ac7274940acba2d79b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
