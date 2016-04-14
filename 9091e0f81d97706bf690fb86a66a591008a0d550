@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_b6ff8dc1",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-14T19:55:50Z",
+      "side": 1,
+      "message": "can you please rename this to ecc_ (and all other places where elliptic curve is referred to) not to confuse the hell out of people who know for sure that EC means \"embedded controller\" :)",
+      "revId": "9091e0f81d97706bf690fb86a66a591008a0d550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
