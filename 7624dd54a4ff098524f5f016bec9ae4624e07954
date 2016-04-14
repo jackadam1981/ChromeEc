@@ -63,6 +63,24 @@
       "revId": "7624dd54a4ff098524f5f016bec9ae4624e07954",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b39d2b4_f0201e33",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-04-14T23:05:06Z",
+      "side": 1,
+      "message": "As far as I can tell there is just CONCAT3(GC_PINMUX_, name, _SEL). I could add a macro to g/gpio.c",
+      "parentUuid": "2b39d2b4_7077ce5b",
+      "revId": "7624dd54a4ff098524f5f016bec9ae4624e07954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
