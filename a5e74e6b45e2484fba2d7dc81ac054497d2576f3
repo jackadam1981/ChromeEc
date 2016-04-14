@@ -34,6 +34,24 @@
       "revId": "a5e74e6b45e2484fba2d7dc81ac054497d2576f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_45c3f907",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-14T16:21:06Z",
+      "side": 0,
+      "message": "I don\u0027t understand, please add explanation to the patch description, it\u0027s ok to be verbose there ...",
+      "parentUuid": "cbd7567d_459c9935",
+      "revId": "a5e74e6b45e2484fba2d7dc81ac054497d2576f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
