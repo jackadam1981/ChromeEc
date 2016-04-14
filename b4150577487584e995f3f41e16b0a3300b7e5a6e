@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_db8b4913",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-14T21:18:22Z",
+      "side": 1,
+      "message": "This CL would be a good time to describe the algorithm and data structures used. What\u0027s a partition? What are valid values for nvmem_act_partition? How do we tell which partition is valid? It looks like we\u0027re making a RAM copy of the entire flash storage, fiddling with it, then writing it all back. Do we flag dirty blocks? Since we have A/B, could we just copy one flash block into RAM at a time? Do all the users have to call nvmem_setup() before reading or writing? etc.\n\nThis could all go into the design doc. If so, point to it either here in a comment or in the commit message.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "b4150577487584e995f3f41e16b0a3300b7e5a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_5bd47904",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-14T21:18:22Z",
+      "side": 1,
+      "message": "That might depend on the caller. Also see the comment regarding mutexes inside shared_mem_aqcuire() itself. We\u0027re starting to need this in several places. We may have to shave that yak first.",
+      "range": {
+        "startLine": 99,
+        "startChar": 6,
+        "endLine": 99,
+        "endChar": 42
+      },
+      "revId": "b4150577487584e995f3f41e16b0a3300b7e5a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_bb4db56c",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-14T21:18:22Z",
+      "side": 1,
+      "message": "We may want more assertions than these. \noffset \u003c max_offset, size \u003c max_offset, offset \u003c max_offset - size, etc. Dealing with unsigned values is tricky, since the compiler may silently discard things it considers \"impossible\", like integer overflow. It depends on where the parameters ultimately come from.\n\nSame for nvmem_write() too, so maybe put these checks into a common function.",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 36
+      },
+      "revId": "b4150577487584e995f3f41e16b0a3300b7e5a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_7bf5fd2c",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-14T21:18:22Z",
+      "side": 1,
+      "message": "This is going to cause problems. If one task holds it, and another task wants it, task 2 will take over, change things, then reset the global cache_base_ptr to null, and task 1 will barf. \n\nWe\u0027re gonna have to make this stuff reentrant and protected with mutexes. Ugh.\n\nFile a bug, but let\u0027s keep going for now. Just expect crashes under load.",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 25
+      },
+      "revId": "b4150577487584e995f3f41e16b0a3300b7e5a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
