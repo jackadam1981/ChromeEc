@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cbd7567d_2a7854c5",
+        "filename": "chip/it83xx/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1128602
+      },
+      "writtenOn": "2016-04-14T09:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd7567d_91d53b62",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "b86aee66a7dc6beb597a7b703137c745ae19769f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd7567d_71a9a7e9",
         "filename": "chip/it83xx/i2c.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-13T23:48:17Z",
       "side": 1,
       "message": "\u003c\u003d ?",
+      "range": {
+        "startLine": 213,
+        "startChar": 7,
+        "endLine": 213,
+        "endChar": 9
+      },
+      "revId": "b86aee66a7dc6beb597a7b703137c745ae19769f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_8a8500fc",
+        "filename": "chip/it83xx/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1128602
+      },
+      "writtenOn": "2016-04-14T09:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd7567d_71a9a7e9",
       "range": {
         "startLine": 213,
         "startChar": 7,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cbd7567d_6a824cf3",
+        "filename": "chip/it83xx/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1128602
+      },
+      "writtenOn": "2016-04-14T09:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd7567d_313a8f77",
+      "range": {
+        "startLine": 323,
+        "startChar": 15,
+        "endLine": 323,
+        "endChar": 16
+      },
+      "revId": "b86aee66a7dc6beb597a7b703137c745ae19769f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd7567d_9147fbf9",
         "filename": "chip/it83xx/i2c.c",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2016-04-13T23:48:17Z",
       "side": 1,
       "message": "here too",
+      "range": {
+        "startLine": 342,
+        "startChar": 15,
+        "endLine": 342,
+        "endChar": 16
+      },
+      "revId": "b86aee66a7dc6beb597a7b703137c745ae19769f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_ca6d3806",
+        "filename": "chip/it83xx/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1128602
+      },
+      "writtenOn": "2016-04-14T09:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd7567d_9147fbf9",
       "range": {
         "startLine": 342,
         "startChar": 15,
