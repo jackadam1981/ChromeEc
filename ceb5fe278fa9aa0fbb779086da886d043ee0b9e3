@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_3b1c2500",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-14T21:32:50Z",
+      "side": 1,
+      "message": "Would you add a comments about the TX lines, saying which pads they are, and that we leave them disconnected here so they don\u0027t fight with servo? That\u0027ll help the next person who comes along looking for unused pins to play with.",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "ceb5fe278fa9aa0fbb779086da886d043ee0b9e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
