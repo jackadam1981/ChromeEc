@@ -641,6 +641,9 @@
 /* Include CRC-8 utility function */
 #undef CONFIG_CRC8
 
+/* Include dodgy GPIO commands. */
+#undef CONFIG_CONSOLE_DODGY_GPIO_COMMANDS
+
 /*
  * When enabled, do not build RO image from the same set of files as the RW
  * image. Instead define a separate set of object files in the respective
