@@ -30,6 +30,8 @@ dirs-y += $(BDIR)/tpm2
 
 # Objects that we need to build
 board-y =  board.o
+board-y += rdd.o
+board-y += usart.o
 board-y += tpm2/NVMem.o
 board-y += tpm2/aes.o
 board-y += tpm2/ecc.o
