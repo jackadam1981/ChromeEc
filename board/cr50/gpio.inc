@@ -55,12 +55,8 @@ PINMUX(GPIO(BATT_PRES),       M2, 0)
 PINMUX(FUNC(UART0_TX),        A0, DIO_OUTPUT)	/* Cr50 console */
 PINMUX(FUNC(UART0_RX),        A1, DIO_INPUT | DIO_WAKE_LOW)
 /* AP console */
-/* TODO(crosbug.com/p/52281, crosbug.com/p/50700). Don't fight servo */
-/* PINMUX(FUNC(UART1_TX),        A7, DIO_OUTPUT) */
 PINMUX(FUNC(UART1_RX),        A3, DIO_INPUT)
 /* EC console */
-/* TODO(crosbug.com/p/52281, crosbug.com/p/50700). Don't fight servo */
-/* PINMUX(FUNC(UART2_TX),        B5, DIO_OUTPUT) */
 PINMUX(FUNC(UART2_RX),        B6, DIO_INPUT)
 
 /* I2C pins are bi-directional */

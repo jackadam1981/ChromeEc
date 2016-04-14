@@ -24,6 +24,18 @@ static int debug_cable_is_detected(void)
 	return (cc1 == cc2 && (cc1 == 3 || cc1 == 1));
 }
 
+static void uart_connect(void)
+{
+	GWRITE(PINMUX, DIOA7_SEL, GC_PINMUX_UART1_TX_SEL);
+	GWRITE(PINMUX, DIOB5_SEL, GC_PINMUX_DIOB5_SEL_DEFAULT);
+}
+
+static void uart_disconnect(void)
+{
+	GWRITE(PINMUX, DIOA7_SEL, GC_PINMUX_DIOA3_SEL_DEFAULT);
+	GWRITE(PINMUX, DIOB5_SEL, GC_PINMUX_DIOB5_SEL_DEFAULT);
+}
+
 void rdd_interrupt(void)
 {
 	if (debug_cable_is_detected()) {
@@ -37,6 +49,9 @@ void rdd_interrupt(void)
 		ccprintf("Debug Accessory disconnected\n");
 		/* Detect when debug cable is connected */
 		GWRITE(RDD, PROG_DEBUG_STATE_MAP, ccd_detect);
+
+		/* Disconnect from AP and EC UART */
+		uart_disconnect();
 
 		/* Select the AP PHY */
 		usb_select_phy(AP_PHY);
@@ -73,3 +88,25 @@ static int command_test_rdd(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(test_rdd, command_test_rdd, "", "", NULL);
+
+static int command_uart(int argc, char **argv)
+{
+	static int enabled;
+
+	if (argc > 1) {
+		if (!strcasecmp("enable", argv[1])) {
+			enabled = 1;
+			uart_connect();
+		} else if (!strcasecmp("disable", argv[1])) {
+			enabled = 0;
+			uart_disconnect();
+		}
+	}
+
+	ccprintf("UART %s\n", enabled ? "enabled" : "disabled");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(uart, command_uart,
+	"[enable|disable]",
+	"Get/set the UART TX connection state",
+	NULL);
