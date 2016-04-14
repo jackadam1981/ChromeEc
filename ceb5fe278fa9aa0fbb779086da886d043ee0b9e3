@@ -22,6 +22,30 @@
       "revId": "ceb5fe278fa9aa0fbb779086da886d043ee0b9e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_3e59b331",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-04-14T22:09:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd7567d_3b1c2500",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "ceb5fe278fa9aa0fbb779086da886d043ee0b9e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
