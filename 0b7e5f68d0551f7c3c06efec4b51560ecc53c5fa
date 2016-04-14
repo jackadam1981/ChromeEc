@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_c7e09176",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-04-14T02:53:38Z",
+      "side": 1,
+      "message": "During the error recovery, we might set the flag again when the interrupt of CS already is enabled.\nUsually, it\u0027s dangerous to set gpio\u0027s GPIO_INT_XXXX flag when the interrupt is enabled.\nI knew it\u0027s the same flag here and should be OK.\nIs it better to disable CS\u0027s interrupt before set the gpio\u0027s flag?",
+      "revId": "0b7e5f68d0551f7c3c06efec4b51560ecc53c5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
