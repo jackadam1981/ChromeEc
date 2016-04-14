@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "2bef1234_3d624f11",
+        "filename": "board/elm/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2016-04-14T02:52:12Z",
+      "side": 1,
+      "message": "ANX7688 does support 1MHz, but from TCPC specification R1.0 (p.80), the i2c be required to be 400KHz when TCPM is serving only one TCPC.",
+      "parentUuid": "ebe41af9_aa1b0f56",
+      "range": {
+        "startLine": 101,
+        "startChar": 31,
+        "endLine": 101,
+        "endChar": 34
+      },
+      "revId": "f9fc2b73b51b708d2c83284edeff4b40b38a2554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebe41af9_2a853f90",
         "filename": "board/elm/board.h",
         "patchSetId": 20
