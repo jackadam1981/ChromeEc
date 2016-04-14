@@ -16,6 +16,24 @@
       "revId": "a5e74e6b45e2484fba2d7dc81ac054497d2576f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_459c9935",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-04-14T16:18:21Z",
+      "side": 0,
+      "message": "In fact this change is related :-)  Would you like to take a guess as to why?  Hint: const!",
+      "parentUuid": "cbd7567d_a58595fb",
+      "revId": "a5e74e6b45e2484fba2d7dc81ac054497d2576f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

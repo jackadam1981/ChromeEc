@@ -16,6 +16,24 @@
       "revId": "e82f58880c07375155bc6bd71286c8f0263b4e01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_45ead991",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-04-14T16:18:21Z",
+      "side": 1,
+      "message": "Yes, the input data should be returned to the caller \"unmodified\" regardless of success / failure.",
+      "parentUuid": "cbd7567d_452db9d6",
+      "revId": "e82f58880c07375155bc6bd71286c8f0263b4e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
