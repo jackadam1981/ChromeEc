@@ -31,12 +31,20 @@ void rdd_interrupt(void)
 		/* Detect when debug cable is disconnected */
 		GWRITE(RDD, PROG_DEBUG_STATE_MAP, ~ccd_detect);
 
+		/* Connect to AP and EC UART */
+		GWRITE(PINMUX, DIOA7_SEL, GC_PINMUX_UART1_TX_SEL);
+		GWRITE(PINMUX, DIOB5_SEL, GC_PINMUX_UART2_TX_SEL);
+
 		/* Select the CCD PHY */
 		usb_select_phy(CCD_PHY);
 	} else {
 		ccprintf("Debug Accessory disconnected\n");
 		/* Detect when debug cable is connected */
 		GWRITE(RDD, PROG_DEBUG_STATE_MAP, ccd_detect);
+
+		/* Disconnect from AP and EC UART */
+		GWRITE(PINMUX, DIOA7_SEL, GC_PINMUX_DIOA3_SEL_DEFAULT);
+		GWRITE(PINMUX, DIOB5_SEL, GC_PINMUX_DIOB5_SEL_DEFAULT);
 
 		/* Select the AP PHY */
 		usb_select_phy(AP_PHY);
@@ -57,6 +65,7 @@ void rdd_init(void)
 	GWRITE(RDD, POWER_DOWN_B, 1);
 
 	ccd_detect = GREAD(RDD, PROG_DEBUG_STATE_MAP);
+
 	/* Detect cable disconnect if CCD is enabled */
 	if (usb_get_phy() == CCD_PHY)
 		GWRITE(RDD, PROG_DEBUG_STATE_MAP, ~ccd_detect);
