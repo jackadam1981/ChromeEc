@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_bbd658c7",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-14T18:23:57Z",
+      "side": 1,
+      "message": "No, this isn\u0027t right. This will connect the Cr50\u0027s TX to the *input* signal from pin A7, which means that the servo\u0027s TX will be driving against the Cr50\u0027s TX. The TX is an output. It should be disconnected from the pinmux when not in use.\n\nEither this, or nothing at all:\n\nPINMUX(FUNC(UART1_TX),        A7, 0);",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 44
+      },
+      "revId": "bd2727061dcae320e6eb8c663e0959ca36395851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
