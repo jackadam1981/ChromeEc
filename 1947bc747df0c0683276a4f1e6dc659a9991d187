@@ -16,6 +16,24 @@
       "revId": "1947bc747df0c0683276a4f1e6dc659a9991d187",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_00d1efce",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-04-14T17:28:43Z",
+      "side": 1,
+      "message": "\u003e putting the two huge keys on the stack something to be avoided at\n \u003e all costs.\n\nIn tests?\n\n \u003e I still don\u0027t understand why this change requires this\n \u003e modification.\n \u003e \n \u003e Can you please describe it **in detail, in patch description**.\n\nstatic const data will end up on a read-only page, so the \"reverse\" call will fail for such buffers even if the const is cast away.",
+      "parentUuid": "cbd7567d_00e8cf98",
+      "revId": "1947bc747df0c0683276a4f1e6dc659a9991d187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
