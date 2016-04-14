@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_6091cb0d",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-04-14T17:31:13Z",
+      "side": 1,
+      "message": "Maybe we should touch the board file when we start building the board, instead of touching them all when we start buildall?  That avoids false positives for boards that haven\u0027t started building when the build fails.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 31
+      },
+      "revId": "d7bd58072e9c2b2c860d68ea881f811868d5d1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
