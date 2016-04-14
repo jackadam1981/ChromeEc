@@ -6,9 +6,8 @@
 #ifndef __CROS_EC_USB_UPGRADE_H
 #define __CROS_EC_USB_UPGRADE_H
 
-#define UNOFFICIAL_USB_SUBCLASS_GOOGLE_CR50   0x53
-
 /* Commands from host */
+/* TODO: Roll this into upgrade_fw.h */
 #define UPGRADE_DONE          0xB007AB1E
 
 #endif	/* __CROS_EC_USB_UPGRADE_H */
