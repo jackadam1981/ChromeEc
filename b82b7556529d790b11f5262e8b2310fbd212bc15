@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_18d167cf",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-14T20:41:30Z",
+      "side": 1,
+      "message": "According to nvmem_utils.h, this could fail. If that\u0027s not true, then it should be declared as void nvmem_init(void);",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 11
+      },
+      "revId": "b82b7556529d790b11f5262e8b2310fbd212bc15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_d6d84111",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-14T20:41:30Z",
+      "side": 1,
+      "message": "#ifdef USE_CHIP_NVRAM\n  return nvmem_setup();\n#else\n\n??",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 11
+      },
+      "revId": "b82b7556529d790b11f5262e8b2310fbd212bc15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_56629111",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-14T20:41:30Z",
+      "side": 1,
+      "message": "return nvmem_commit();",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 1
+      },
+      "revId": "b82b7556529d790b11f5262e8b2310fbd212bc15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_588e3ff1",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-14T20:41:30Z",
+      "side": 1,
+      "message": "These are not used:\n  NVMEM_BLOCK_SIZE\n  NVMEM_CR50_SIZE\n  NVMEM_TPM_SIZE\n  NVMEM_NUM_BLOCKS\n  NVMEM_START_ADDR\n\nLet\u0027s not define them until they\u0027re needed.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 66
+      },
+      "revId": "b82b7556529d790b11f5262e8b2310fbd212bc15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_f8e0d375",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-14T20:41:30Z",
+      "side": 1,
+      "message": "This isn\u0027t needed, since cache_base_ptr is global.",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "b82b7556529d790b11f5262e8b2310fbd212bc15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
