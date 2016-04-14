@@ -16,6 +16,24 @@
       "revId": "0b7e5f68d0551f7c3c06efec4b51560ecc53c5fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_98def722",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-14T20:12:55Z",
+      "side": 1,
+      "message": "Done. Disabling the interrupt should be harmless -- in the case of error recovery, we\u0027re still in recovery state and don\u0027t care about the pin state. In the case of HOOK_CHIPSET_RESUME, the interrupt is already disabled.",
+      "parentUuid": "cbd7567d_c7e09176",
+      "revId": "0b7e5f68d0551f7c3c06efec4b51560ecc53c5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
