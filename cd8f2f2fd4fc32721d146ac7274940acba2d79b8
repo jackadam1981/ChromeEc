@@ -22,6 +22,30 @@
       "revId": "cd8f2f2fd4fc32721d146ac7274940acba2d79b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_383d4ba1",
+        "filename": "include/usb_descriptor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-04-14T20:44:08Z",
+      "side": 1,
+      "message": "It is, but the point is to convey that it\u0027s \n((sizeof(wstr) - 2): non-null terminated string\n+ \n2 header bytes.",
+      "parentUuid": "cbd7567d_b695cd5e",
+      "range": {
+        "startLine": 242,
+        "startChar": 22,
+        "endLine": 242,
+        "endChar": 30
+      },
+      "revId": "cd8f2f2fd4fc32721d146ac7274940acba2d79b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
