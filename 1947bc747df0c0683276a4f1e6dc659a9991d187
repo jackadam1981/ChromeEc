@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd7567d_00e8cf98",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-14T17:24:52Z",
+      "side": 1,
+      "message": "putting the two huge keys on the stack something to be avoided at all costs.\n\nI still don\u0027t understand why this change requires this modification.\n\nCan you please describe it **in detail, in patch description**.",
+      "revId": "1947bc747df0c0683276a4f1e6dc659a9991d187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
