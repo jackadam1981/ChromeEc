@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 The Chromium OS Authors. All rights reserved.
+ * Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -758,6 +758,10 @@ static void shi_reset_prepare(void)
 
 	/* Ready to receive */
 	state = SHI_STATE_READY_TO_RECV;
+
+	/* Enable SHI_CS_L interrupt */
+	gpio_enable_interrupt(GPIO_SHI_CS_L);
+
 	CPRINTF("RDY-");
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, shi_reset_prepare, HOOK_PRIO_DEFAULT);
@@ -826,9 +830,6 @@ static void shi_init(void)
 
 	/* Clear SHI events status register */
 	NPCX_EVSTAT = 0XFF;
-
-	/* Enable SHI_CS_L interrupt */
-	gpio_enable_interrupt(GPIO_SHI_CS_L);
 
 	/* If chipset is already on, prepare for transactions */
 #if !(DEBUG_SHI)
