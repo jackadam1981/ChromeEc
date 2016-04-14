@@ -77,19 +77,47 @@ static enum ec_error_list set(const char *name, int value)
 /*****************************************************************************/
 /* Console commands */
 
+static void print_gpio_info(int gpio)
+{
+	int changed, v, flags;
+
+	if (!gpio_is_implemented(gpio))
+		return;  /* Skip unsupported signals */
+
+	v = gpio_get_level(gpio);
+#ifdef CONFIG_CONSOLE_DODGY_GPIO_COMMANDS
+	flags = gpio_get_flags(gpio);
+#else
+	flags = 0;
+#endif
+	changed = last_val_changed(gpio, v);
+
+	ccprintf("  %d%c %s%s%s%s%s%s%s%s%s%s\n", v, (changed ? '*' : ' '),
+		 (flags & GPIO_INPUT ? "I " : ""),
+		 (flags & GPIO_OUTPUT ? "O " : ""),
+		 (flags & GPIO_LOW ? "L " : ""),
+		 (flags & GPIO_HIGH ? "H " : ""),
+		 (flags & GPIO_ANALOG ? "A " : ""),
+		 (flags & GPIO_OPEN_DRAIN ? "ODR " : ""),
+		 (flags & GPIO_PULL_UP ? "PU " : ""),
+		 (flags & GPIO_PULL_DOWN ? "PD " : ""),
+		 (flags & GPIO_ALTERNATE ? "ALT " : ""),
+		 gpio_get_name(gpio));
+
+	/* Flush console to avoid truncating output */
+	cflush();
+}
+
 static int command_gpio_get(int argc, char **argv)
 {
-	int changed, v, i;
+	int i;
 
 	/* If a signal is specified, print only that one */
 	if (argc == 2) {
 		i = find_signal_by_name(argv[1]);
 		if (i == GPIO_COUNT)
 			return EC_ERROR_PARAM1;
-		v = gpio_get_level(i);
-		changed = last_val_changed(i, v);
-		ccprintf("  %d%c %s\n", v, (changed ? '*' : ' '),
-			 gpio_get_name(i));
+		print_gpio_info(i);
 
 		return EC_SUCCESS;
 	}
@@ -99,13 +127,7 @@ static int command_gpio_get(int argc, char **argv)
 		if (!gpio_is_implemented(i))
 			continue;  /* Skip unsupported signals */
 
-		v = gpio_get_level(i);
-		changed = last_val_changed(i, v);
-		ccprintf("  %d%c %s\n", v, (changed ? '*' : ' '),
-			 gpio_get_name(i));
-
-		/* Flush console to avoid truncating output */
-		cflush();
+		print_gpio_info(i);
 	}
 
 	return EC_SUCCESS;
@@ -117,6 +139,30 @@ DECLARE_CONSOLE_COMMAND(gpioget, command_gpio_get,
 
 static int command_gpio_set(int argc, char **argv)
 {
+#ifdef CONFIG_CONSOLE_DODGY_GPIO_COMMANDS
+	int gpio;
+	int flags = 0;
+
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	gpio = find_signal_by_name(argv[1]);
+	if (gpio == GPIO_COUNT)
+		return EC_ERROR_PARAM1;
+
+	if (strcasecmp(argv[2], "IN") == 0)
+		flags = GPIO_INPUT;
+	else if (strcasecmp(argv[2], "1") == 0)
+		flags = GPIO_OUT_HIGH;
+	else if (strcasecmp(argv[2], "0") == 0)
+		flags = GPIO_OUT_LOW;
+	else if (strcasecmp(argv[2], "ALT") == 0)
+		flags = GPIO_ALTERNATE;
+	else
+		return EC_ERROR_PARAM2;
+
+	gpio_set_flags(gpio, flags);
+#else
 	char *e;
 	int v;
 
@@ -129,11 +175,15 @@ static int command_gpio_set(int argc, char **argv)
 
 	if (set(argv[1], v) != EC_SUCCESS)
 		return EC_ERROR_PARAM1;
-
+#endif
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(gpioset, command_gpio_set,
+#ifdef CONFIG_CONSOLE_DODGY_GPIO_COMMANDS
+			"name <0 | 1 | IN | ALT>",
+#else
 			"name <0 | 1>",
+#endif
 			"Set a GPIO",
 			NULL);
 

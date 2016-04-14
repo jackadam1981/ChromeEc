@@ -56,6 +56,9 @@
 /* Enable control of GPIOs over USB */
 #define CONFIG_USB_GPIO
 
+/* Enable console recasting of GPIO type. */
+#define CONFIG_CONSOLE_DODGY_GPIO_COMMANDS
+
 /* Enable control of SPI over USB */
 #define CONFIG_USB_SPI
 #define CONFIG_SPI_MASTER
