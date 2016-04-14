@@ -46,6 +46,23 @@
       "revId": "7624dd54a4ff098524f5f016bec9ae4624e07954",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b39d2b4_7077ce5b",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-14T22:57:10Z",
+      "side": 1,
+      "message": "is there any way this uses pin function as opposed to pin name?",
+      "revId": "7624dd54a4ff098524f5f016bec9ae4624e07954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
