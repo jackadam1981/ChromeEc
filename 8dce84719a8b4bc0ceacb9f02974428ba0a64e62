@@ -421,6 +421,30 @@
     },
     {
       "key": {
+        "uuid": "cbd7567d_4aedc8a7",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1147200
+      },
+      "writtenOn": "2016-04-14T09:34:18Z",
+      "side": 1,
+      "message": "Next version will support high / low active by define.\ntcpc_write(port, TCPC_REG_IRQ_STATUS, #define);\nand set the #define to according value in board.h file.",
+      "parentUuid": "cbd7567d_8a8b4b14",
+      "range": {
+        "startLine": 698,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 67
+      },
+      "revId": "8dce84719a8b4bc0ceacb9f02974428ba0a64e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c2a06be_3c2ca032",
         "filename": "driver/tcpm/anx74xx.h",
         "patchSetId": 14
