@@ -46,6 +46,30 @@
       "revId": "d7bd58072e9c2b2c860d68ea881f811868d5d1d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_80e83ff7",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-14T18:02:38Z",
+      "side": 1,
+      "message": "echo \"not started\" \u003e $(FAILED_BOARDS_DIR)/$$b at init, echo \"failed\" when compiling, finish with echo \"pass\"",
+      "parentUuid": "cbd7567d_200233ef",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 31
+      },
+      "revId": "d7bd58072e9c2b2c860d68ea881f811868d5d1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
