@@ -337,7 +337,7 @@ int board_get_ramp_current_limit(int supplier, int sup_curr)
 
 static void board_typec_set_dp_hpd(int port, int level)
 {
-	gpio_set_level(GPIO_USB_DP_HPD, level);
+//	gpio_set_level(GPIO_USB_DP_HPD, level);
 }
 
 static void hpd_irq_deferred(void)
