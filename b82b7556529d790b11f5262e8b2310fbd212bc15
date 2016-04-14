@@ -114,6 +114,29 @@
       "revId": "b82b7556529d790b11f5262e8b2310fbd212bc15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_b89dbb92",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-14T20:52:34Z",
+      "side": 1,
+      "message": "No, if it fails, we should return the error code from nvmem_acquire_cache(). If it timed out, the caller can try again later in hopes that some other task will free up the scratch buffer. If it simply doesn\u0027t have enough free RAM, that\u0027s unrecoverable and we should probably scream and panic.",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "b82b7556529d790b11f5262e8b2310fbd212bc15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
