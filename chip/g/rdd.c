@@ -9,6 +9,7 @@
 #include "hooks.h"
 #include "registers.h"
 #include "task.h"
+#include "usart.h"
 #include "usb_api.h"
 
 #define CCD_PHY USB_SEL_PHY1
@@ -37,6 +38,11 @@ void rdd_interrupt(void)
 		ccprintf("Debug Accessory disconnected\n");
 		/* Detect when debug cable is connected */
 		GWRITE(RDD, PROG_DEBUG_STATE_MAP, ccd_detect);
+
+#ifdef CONFIG_STREAM_USART
+		/* Disconnect from AP and EC UART TX */
+		usart_tx_disconnect();
+#endif
 
 		/* Select the AP PHY */
 		usb_select_phy(AP_PHY);

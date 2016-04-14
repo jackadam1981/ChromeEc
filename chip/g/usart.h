@@ -66,4 +66,10 @@ void send_data_to_usb(struct usart_config const *config);
 
 /* Read data from the consumer queue and send it to the UART */
 void get_data_from_usb(struct usart_config const *config);
+
+/* Disconnect from UART TX, so we dont interfere with servo */
+void usart_tx_disconnect(void);
+
+/* Connect to UART TX */
+void usart_tx_connect(void);
 #endif  /* __CROS_FORWARD_UART_H */
