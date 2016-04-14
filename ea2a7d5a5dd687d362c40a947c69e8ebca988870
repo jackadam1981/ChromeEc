@@ -68,6 +68,30 @@
       "revId": "ea2a7d5a5dd687d362c40a947c69e8ebca988870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd7567d_9116db2a",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-04-14T10:16:10Z",
+      "side": 1,
+      "message": "I\u0027m creating a full desc structure for serial no, so desc.len will e correct at this point.",
+      "parentUuid": "ce984492_8e3dd8c0",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 33
+      },
+      "revId": "ea2a7d5a5dd687d362c40a947c69e8ebca988870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
