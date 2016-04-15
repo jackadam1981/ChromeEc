@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e800a0f1_2a007f24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-15T23:58:53Z",
+      "side": 1,
+      "message": "please enhance this descrioption:\n\n- what is P256 based encryption, including some pointers to the spec;\n- why is it needed in this project (as in what algorithms or tpm commands use it)",
+      "revId": "000820f695b763639785f35e4e8cd77a81f1ca67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e800a0f1_eae85798",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-15T23:58:53Z",
+      "side": 1,
+      "message": "please include the relevant section of the test output in the TEST\u003d clause.",
+      "revId": "000820f695b763639785f35e4e8cd77a81f1ca67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
