@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e800a0f1_1e5069aa",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-15T19:49:02Z",
+      "side": 1,
+      "message": "I missed this before. It should be\n\nboard-$(CONFIG_RDD) +\u003d rdd.o",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "bd931f436f693ddd80c4236c5d28299635228bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e800a0f1_3e0445b2",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-15T19:49:02Z",
+      "side": 1,
+      "message": "This should be static.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "bd931f436f693ddd80c4236c5d28299635228bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
