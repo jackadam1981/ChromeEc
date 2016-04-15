@@ -84,17 +84,24 @@ struct pi3usb9281_config pi3usb9281_chips[] = {
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
 	     CONFIG_USB_SWITCH_PI3USB9281_CHIP_COUNT);
 
+struct usb_charger usb_chargers[] = {
+	{ .driver = &pi3usb9281_usb_ch_drv },
+	{ .driver = &pi3usb9281_usb_ch_drv },
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_chargers) ==
+	     CONFIG_USB_SWITCH_PI3USB9281_CHIP_COUNT);
+
 static void pericom_port0_reenable_interrupts(void)
 {
 	CPRINTS("VBUS p0 %d", gpio_get_level(GPIO_USB_C0_VBUS_WAKE));
-	pi3usb9281_enable_interrupts(0);
+	usb_chargers[0].driver->enable_intr(0);
 }
 DECLARE_DEFERRED(pericom_port0_reenable_interrupts);
 
 static void pericom_port1_reenable_interrupts(void)
 {
 	CPRINTS("VBUS p1 %d", gpio_get_level(GPIO_USB_C1_VBUS_WAKE));
-	pi3usb9281_enable_interrupts(1);
+	usb_chargers[1].driver->enable_intr(1);
 }
 DECLARE_DEFERRED(pericom_port1_reenable_interrupts);
 

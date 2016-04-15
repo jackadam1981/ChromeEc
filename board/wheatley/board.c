@@ -152,6 +152,13 @@ struct pi3usb9281_config pi3usb9281_chips[] = {
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
 	     CONFIG_USB_SWITCH_PI3USB9281_CHIP_COUNT);
 
+struct usb_charger usb_chargers[] = {
+	{ .driver = &pi3usb9281_usb_ch_drv },
+	{ .driver = &pi3usb9281_usb_ch_drv },
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_chargers) ==
+	     CONFIG_USB_SWITCH_PI3USB9281_CHIP_COUNT);
+
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.port_addr = 0xa8,

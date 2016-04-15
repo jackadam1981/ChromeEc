@@ -5,6 +5,7 @@
  * Pericom PI3USB3281 USB port switch driver.
  */
 
+#include "charge_manager.h"
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -12,6 +13,7 @@
 #include "task.h"
 #include "timer.h"
 #include "pi3usb9281.h"
+#include "usb_charge.h"
 #include "util.h"
 
  /* Console output macros */
@@ -81,21 +83,19 @@ static int pi3usb9281_write_ctrl(int port, uint8_t ctrl)
 				PI3USB9281_CTRL_RSVD_1);
 }
 
-void pi3usb9281_init(int port)
+static int pi3usb9281_set_interrupt_mask(int port, int mask)
 {
-	uint8_t dev_id;
+	uint8_t mask_val = (mask ? (0xff & ~PI3USB9281_INT_ATTACH) : 0xff);
 
-	dev_id = pi3usb9281_read(port, PI3USB9281_REG_DEV_ID);
-
-	if (dev_id != PI3USB9281_DEV_ID && dev_id != PI3USB9281_DEV_ID_A)
-		CPRINTS("PI3USB9281 invalid ID 0x%02x", dev_id);
-
-	pi3usb9281_set_interrupt_mask(port, 0xff);
-	pi3usb9281_enable_interrupts(port);
+	return pi3usb9281_write(port, PI3USB9281_REG_INT_MASK, ~mask_val);
 }
 
+static int pi3usb9281_get_interrupts(int port)
+{
+	return pi3usb9281_read(port, PI3USB9281_REG_INT);
+}
 
-int pi3usb9281_enable_interrupts(int port)
+static int pi3usb9281_enable_interrupts(int port)
 {
 	uint8_t ctrl = pi3usb9281_read(port, PI3USB9281_REG_CONTROL);
 
@@ -105,7 +105,20 @@ int pi3usb9281_enable_interrupts(int port)
 	return pi3usb9281_write_ctrl(port, ctrl & ~PI3USB9281_CTRL_INT_DIS);
 }
 
-int pi3usb9281_disable_interrupts(int port)
+static int pi3usb9281_init(int port)
+{
+	uint8_t dev_id;
+
+	dev_id = pi3usb9281_read(port, PI3USB9281_REG_DEV_ID);
+
+	if (dev_id != PI3USB9281_DEV_ID && dev_id != PI3USB9281_DEV_ID_A)
+		CPRINTS("PI3USB9281 invalid ID 0x%02x", dev_id);
+
+	pi3usb9281_set_interrupt_mask(port, 0);
+	return pi3usb9281_enable_interrupts(port);
+}
+
+static int pi3usb9281_disable_interrupts(int port)
 {
 	uint8_t ctrl = pi3usb9281_read(port, PI3USB9281_REG_CONTROL);
 	int rv;
@@ -118,27 +131,17 @@ int pi3usb9281_disable_interrupts(int port)
 	return rv;
 }
 
-int pi3usb9281_set_interrupt_mask(int port, uint8_t mask)
-{
-	return pi3usb9281_write(port, PI3USB9281_REG_INT_MASK, ~mask);
-}
-
-int pi3usb9281_get_interrupts(int port)
-{
-	return pi3usb9281_read(port, PI3USB9281_REG_INT);
-}
-
-int pi3usb9281_get_device_type(int port)
+static int pi3usb9281_get_device_type(int port)
 {
 	return pi3usb9281_read(port, PI3USB9281_REG_DEV_TYPE) & 0x77;
 }
 
-int pi3usb9281_get_charger_status(int port)
+static int pi3usb9281_get_charger_status(int port)
 {
 	return pi3usb9281_read(port, PI3USB9281_REG_CHG_STATUS) & 0x1f;
 }
 
-int pi3usb9281_get_ilim(int device_type, int charger_status)
+static int pi3usb9281_get_ilim(int port, int device_type, int charger_status)
 {
 	/* Limit USB port current. 500mA for not listed types. */
 	int current_limit_ma = 500;
@@ -160,7 +163,8 @@ int pi3usb9281_get_ilim(int device_type, int charger_status)
 	return current_limit_ma;
 }
 
-int pi3usb9281_get_vbus(int port)
+#if 0
+static int pi3usb9281_get_vbus(int port)
 {
 	int vbus = pi3usb9281_read(port, PI3USB9281_REG_VBUS);
 	if (vbus == 0xee)
@@ -168,8 +172,9 @@ int pi3usb9281_get_vbus(int port)
 
 	return !!(vbus & 0x2);
 }
+#endif
 
-int pi3usb9281_reset(int port)
+static int pi3usb9281_reset(int port)
 {
 	int rv = pi3usb9281_write(port, PI3USB9281_REG_RESET, 0x1);
 
@@ -180,7 +185,7 @@ int pi3usb9281_reset(int port)
 	return rv;
 }
 
-int pi3usb9281_set_switch_manual(int port, int val)
+static int pi3usb9281_set_switch_manual(int port, int val)
 {
 	uint8_t ctrl = pi3usb9281_read(port, PI3USB9281_REG_CONTROL);
 
@@ -195,12 +200,12 @@ int pi3usb9281_set_switch_manual(int port, int val)
 	return pi3usb9281_write_ctrl(port, ctrl);
 }
 
-int pi3usb9281_set_pins(int port, uint8_t val)
+static int pi3usb9281_set_pins(int port, int val)
 {
-	return pi3usb9281_write(port, PI3USB9281_REG_MANUAL, val);
+	return pi3usb9281_write(port, PI3USB9281_REG_MANUAL, (uint8_t) val);
 }
 
-int pi3usb9281_set_switches(int port, int open)
+static int pi3usb9281_set_switches(int port, int open)
 {
 	uint8_t ctrl = pi3usb9281_read(port, PI3USB9281_REG_CONTROL);
 
@@ -214,3 +219,50 @@ int pi3usb9281_set_switches(int port, int open)
 
 	return pi3usb9281_write_ctrl(port, ctrl);
 }
+
+static int pi3usb9281_get_any_detection(int port, int charger_status)
+{
+	return PI3USB9281_CHG_STATUS_ANY(charger_status);
+}
+
+static int pi3usb9281_get_charger_type(int port, int charger_status,
+				       int device_type)
+{
+	int type;
+
+	if (PI3USB9281_CHG_STATUS_ANY(charger_status))
+		type = CHARGE_SUPPLIER_PROPRIETARY;
+	else if (device_type & PI3USB9281_TYPE_CDP)
+		type = CHARGE_SUPPLIER_BC12_CDP;
+	else if (device_type & PI3USB9281_TYPE_DCP)
+		type = CHARGE_SUPPLIER_BC12_DCP;
+	else if (device_type & PI3USB9281_TYPE_SDP)
+		type = CHARGE_SUPPLIER_BC12_SDP;
+	else
+		type = CHARGE_SUPPLIER_OTHER;
+
+	return type;
+}
+
+static int pi3usb9281_attach_mask(int port)
+{
+	return PI3USB9281_INT_ATTACH | PI3USB9281_INT_DETACH;
+}
+
+const struct usb_ch_drv pi3usb9281_usb_ch_drv = {
+	.init			= &pi3usb9281_init,
+	.reset			= &pi3usb9281_reset,
+	.get_dev_type		= &pi3usb9281_get_device_type,
+	.get_chg_type		= &pi3usb9281_get_charger_type,
+	.get_chg_status		= &pi3usb9281_get_charger_status,
+	.get_chg_any_det	= &pi3usb9281_get_any_detection,
+	.enable_intr		= &pi3usb9281_enable_interrupts,
+	.disable_intr		= &pi3usb9281_disable_interrupts,
+	.get_intr		= &pi3usb9281_get_interrupts,
+	.set_intr_mask		= &pi3usb9281_set_interrupt_mask,
+	.attach_mask		= &pi3usb9281_attach_mask,
+	.set_switches		= &pi3usb9281_set_switches,
+	.set_switch_manual	= &pi3usb9281_set_switch_manual,
+	.set_pins		= &pi3usb9281_set_pins,
+	.get_ilim		= &pi3usb9281_get_ilim,
+};

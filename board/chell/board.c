@@ -165,6 +165,13 @@ struct pi3usb9281_config pi3usb9281_chips[] = {
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
 	     CONFIG_USB_SWITCH_PI3USB9281_CHIP_COUNT);
 
+struct usb_charger usb_chargers[] = {
+	{ .driver = &pi3usb9281_usb_ch_drv },
+	{ .driver = &pi3usb9281_usb_ch_drv },
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_chargers) ==
+	     CONFIG_USB_SWITCH_PI3USB9281_CHIP_COUNT);
+
 static int ps8740_tune_mux(const struct usb_mux *mux)
 {
 	/* Apply same USB EQ settings to both Type-C mux */

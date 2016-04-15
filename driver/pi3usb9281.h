@@ -70,41 +70,6 @@ struct pi3usb9281_config {
 
 /* Configuration struct defined at board level */
 extern struct pi3usb9281_config pi3usb9281_chips[];
-
-/* Initialize chip and enable interrupts */
-void pi3usb9281_init(int port);
-
-/* Enable interrupts. */
-int pi3usb9281_enable_interrupts(int port);
-
-/* Disable all interrupts. */
-int pi3usb9281_disable_interrupts(int port);
-
-/* Set interrupt mask. */
-int pi3usb9281_set_interrupt_mask(int port, uint8_t mask);
-
-/* Get and clear current interrupt status. */
-int pi3usb9281_get_interrupts(int port);
-
-/* Get attached device type. */
-int pi3usb9281_get_device_type(int port);
-
-/* Get attached charger status. */
-int pi3usb9281_get_charger_status(int port);
-
-/* Get charger current limit based on device type and charger status. */
-int pi3usb9281_get_ilim(int device_type, int charger_status);
-
-/* Set switch configuration to manual. */
-int pi3usb9281_set_switch_manual(int port, int val);
-
-/* Set bits to enable pins in manual switch register. */
-int pi3usb9281_set_pins(int port, uint8_t mask);
-
-/* Set D+/D-/Vbus switches to open or closed/auto-control. */
-int pi3usb9281_set_switches(int port, int open);
-
-/* Reset PI3USB9281. */
-int pi3usb9281_reset(int port);
+extern const struct usb_ch_drv pi3usb9281_usb_ch_drv;
 
 #endif /* __CROS_EC_PI3USB9281_H */
