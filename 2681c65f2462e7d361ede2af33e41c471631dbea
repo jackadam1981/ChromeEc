@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b39d2b4_e12f6e81",
+        "filename": "chip/g/dcrypto/p256_ec.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1361,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-04-15T03:33:59Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be in this source file if it is to be 3rd party and we want keep its modifications to zero.\n\nAdd a dcrypto.c that has the required wrappers?",
+      "revId": "2681c65f2462e7d361ede2af33e41c471631dbea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
