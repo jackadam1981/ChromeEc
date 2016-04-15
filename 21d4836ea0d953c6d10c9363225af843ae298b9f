@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b39d2b4_36c37e09",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-15T01:37:01Z",
+      "side": 1,
+      "message": "Just delete the last sentence.",
+      "range": {
+        "startLine": 58,
+        "startChar": 49,
+        "endLine": 59,
+        "endChar": 53
+      },
+      "revId": "21d4836ea0d953c6d10c9363225af843ae298b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b39d2b4_56c00afa",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-15T01:37:01Z",
+      "side": 1,
+      "message": "GC_PINMUX_UART2_TX_SEL",
+      "range": {
+        "startLine": 30,
+        "startChar": 27,
+        "endLine": 30,
+        "endChar": 55
+      },
+      "revId": "21d4836ea0d953c6d10c9363225af843ae298b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
