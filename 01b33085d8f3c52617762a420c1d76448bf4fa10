@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e800a0f1_5b3723c3",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-15T18:23:25Z",
+      "side": 1,
+      "message": "We need the PHY switching to be part of what\u0027s in board/$BOARD/ too. We may not *want* to switch PHYs until we\u0027re told to, or until the AP USB has suspended, or something like that. Same for turning it off - the x20 design docs suggested leaving CCD enabled after detaching until the AP powers off.\n\nSo the interrupt handler would just be:\n\n  if (debug_cable_is_detected()) {\n    GWRITE(RDD, PROG_DEBUG_STATE_MAP, ~ccd_detect);\n    rdd_attached();\n  } else {\n    GWRITE(RDD, PROG_DEBUG_STATE_MAP, ccd_detect);\n    rdd_detached();\n  }\n\nand you could declare rdd_attached() and rdd_detached() in chip/g/rdd.h",
+      "range": {
+        "startLine": 45,
+        "startChar": 6,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "01b33085d8f3c52617762a420c1d76448bf4fa10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
