@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e800a0f1_be16152c",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-15T19:28:04Z",
+      "side": 1,
+      "message": "This should be \"rdd.h\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "f8ec4a922f18acf8422f59c08601b3a750e97a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e800a0f1_fe1c9d4f",
+        "filename": "board/cr50/usart.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-15T19:28:04Z",
+      "side": 1,
+      "message": "Delete this file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
+      "revId": "f8ec4a922f18acf8422f59c08601b3a750e97a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e800a0f1_5e3711c3",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-15T19:28:04Z",
+      "side": 1,
+      "message": "You need to add this file. It\u0027s not in this patch set.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "f8ec4a922f18acf8422f59c08601b3a750e97a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e800a0f1_3e0325f5",
+        "filename": "chip/g/usart.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-15T19:28:04Z",
+      "side": 1,
+      "message": "Remove these lines.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 35
+      },
+      "revId": "f8ec4a922f18acf8422f59c08601b3a750e97a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
