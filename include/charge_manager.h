@@ -86,6 +86,9 @@ int charge_manager_get_power_limit_uw(void);
 /* Return the charger current (mA) value. */
 int charge_manager_get_charger_current(void);
 
+/* Return charge supplier type. */
+int get_charge_supplier(int port);
+
 #ifdef CONFIG_USB_PD_LOGGING
 /* Save power state log entry for the given port */
 void charge_manager_save_log(int port);
