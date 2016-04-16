@@ -52,8 +52,10 @@ int usb_charger_port_is_sourcing_vbus(int port)
 
 void usb_charger_vbus_change(int port, int vbus_level)
 {
+#if defined(CONFIG_USB_SWITCH_PI3USB9281)
 	/* If VBUS has transitioned low, notify PD module directly */
 	pd_vbus_low(port);
+
 	/* Update VBUS supplier and signal VBUS change to USB_CHG task */
 	update_vbus_supplier(port, vbus_level);
 #if CONFIG_USB_PD_PORT_COUNT == 2
@@ -62,6 +64,17 @@ void usb_charger_vbus_change(int port, int vbus_level)
 #else
 	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_VBUS, 0);
 #endif
+#elif defined(CONFIG_CHARGER_BD99955)
+#if CONFIG_USB_PD_PORT_COUNT == 2
+	task_set_event(port ? TASK_ID_USB_CHG_P1 : TASK_ID_USB_CHG_P0,
+		       vbus_level ? USB_CHG_EVENT_ATTACH : USB_CHG_EVENT_DETACH,
+		       0);
+#else
+	task_set_event(TASK_ID_USB_CHG_P0,
+		       vbus_level ? USB_CHG_EVENT_ATTACH : USB_CHG_EVENT_DETACH,
+		       0);
+#endif
+#endif /* CONFIG_CHARGER_BD99955 */
 }
 
 static void usb_charger_init(void)
