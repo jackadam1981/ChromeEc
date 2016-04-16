@@ -99,6 +99,9 @@ void charge_manager_save_log(int port);
  */
 int board_set_active_charge_port(int charge_port);
 
+/* Select PD or BC1.2 type supplier */
+int board_select_charge_supplier(int port, int supplier);
+
 /* Set the charge current limit. */
 void board_set_charge_limit(int charge_ma);
 

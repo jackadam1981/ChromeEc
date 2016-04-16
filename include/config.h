@@ -325,6 +325,9 @@
 /* The hardware has some input current ramping/back-off mechanism */
 #undef CONFIG_CHARGE_RAMP_HW
 
+/* Select PD or BC1.2 type supplier */
+#undef CONFIG_CHARGE_SELECT_SUPPLIER
+
 /*****************************************************************************/
 /* Charger config */
 
@@ -524,6 +527,7 @@
 #undef CONFIG_CMD_BATDEBUG
 #define CONFIG_CMD_BATTFAKE
 #define CONFIG_CMD_CHARGER
+#define CONFIG_CMD_CHARGE_SUPPLIER_INFO
 #undef CONFIG_CMD_CHGRAMP
 #undef CONFIG_CMD_CLOCKGATES
 #undef CONFIG_CMD_COMXTEST
