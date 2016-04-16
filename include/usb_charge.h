@@ -10,6 +10,9 @@
 
 #include "common.h"
 
+/* USB charger initialization priority */
+#define HOOK_PRIO_INIT_USB_CHARGER (HOOK_PRIO_DEFAULT - 1)
+
 /* USB charger voltage */
 #define USB_CHARGER_VOLTAGE_MV  5000
 /* USB charger minimum current */

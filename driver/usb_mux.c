@@ -41,7 +41,7 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
 	int res;
 	mux_state_t mux_state;
 
-#ifdef CONFIG_USB_CHARGER
+#if defined(CONFIG_USB_CHARGER) || defined(CONFIG_USB_CHARGER_BD99955)
 	/* Configure USB2.0 */
 	usb_charger_set_switches(port, usb_mode);
 #endif
