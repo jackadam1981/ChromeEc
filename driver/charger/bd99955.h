@@ -58,6 +58,7 @@ enum bd99955_charge_port {
 #define BD99955_CMD_CHGOP_STATUS_BATTEMP2	(1 << 10)
 #define BD99955_CMD_CHGOP_STATUS_BATTEMP1	(1 << 9)
 #define BD99955_CMD_CHGOP_STATUS_BATTEMP0	(1 << 8)
+#define BD99955_BATTTEMP_MASK			0x700
 #define BD99955_CMD_CHGOP_STATUS_BATTEMP_ROOMTEMP	0
 #define BD99955_CMD_CHGOP_STATUS_BATTEMP_HOT1		1
 #define BD99955_CMD_CHGOP_STATUS_BATTEMP_HOT2		2
@@ -81,11 +82,16 @@ enum bd99955_charge_port {
 #define BD99955_CMD_VIN_CTRL_SET_VCC_EN        (1 << 5)
 
 #define BD99955_CMD_CHGOP_SET1		0x0B
+#define BD99955_CMD_CHGOP_SET1_ILIM_AUTO_DISEN (1 << 13)
 #define BD99955_CMD_CHGOP_SET1_VCC_BC_DISEN    (1 << 11)
 #define BD99955_CMD_CHGOP_SET1_VBUS_BC_DISEN   (1 << 10)
+#define BD99955_CMD_CHGOP_SET1_SDP_CHG_TRIG_EN (1 << 9)
+#define BD99955_CMD_CHGOP_SET1_SDP_CHG_TRIG    (1 << 8)
+
 #define BD99955_CMD_CHGOP_SET2		0x0C
 #define BD99955_CMD_CHGOP_SET2_BATT_LEARN	(1 << 8)
 #define BD99955_CMD_CHGOP_SET2_CHG_EN		(1 << 7)
+#define BD99955_CMD_CHGOP_SET2_USB_SUS		(1 << 6)
 
 #define BD99955_CMD_VBUSCLPS_TH_SET	0x0D
 #define BD99955_CMD_VCCCLPS_TH_SET	0x0E
@@ -121,10 +127,31 @@ enum bd99955_charge_port {
 #define BD99955_CMD_PMON_DACIN_VAL	0x26
 #define BD99955_CMD_IOUT_DACIN_VAL	0x27
 #define BD99955_CMD_VCC_UCD_SET		0x28
-/* Bits for both VCC_UDC_SET and VBUS_UCD_SET regs */
+/* Bits for both VCC_UCD_SET and VBUS_UCD_SET regs */
 #define BD99955_CMD_UCD_SET_BCSRETRY           (1 << 12)
 #define BD99955_CMD_UCD_SET_USBDETEN           (1 << 7)
+
 #define BD99955_CMD_VCC_UCD_STATUS	0x29
+/* Bits for both VCC_UCD_STATUS and VBUS_UCD_STATUS regs */
+#define BD99955_CMD_UCD_STATUS_DCDFAIL	(1 << 15)
+#define BD99955_CMD_UCD_STATUS_CHGPORT1	(1 << 13)
+#define BD99955_CMD_UCD_STATUS_CHGPORT0	(1 << 12)
+#define BD99955_CMD_UCD_STATUS_PUPDET	(1 << 11)
+#define BD99955_CMD_UCD_STATUS_CHGDET	(1 << 6)
+#define BD99955_TYPE_VBUS_OPEN		0
+#define BD99955_TYPE_SDP		BD99955_CMD_UCD_STATUS_CHGPORT0
+#define BD99955_TYPE_CDP		(BD99955_CMD_UCD_STATUS_CHGDET | \
+					 BD99955_CMD_UCD_STATUS_CHGPORT1)
+#define BD99955_TYPE_DCP		(BD99955_CMD_UCD_STATUS_CHGDET | \
+					 BD99955_CMD_UCD_STATUS_CHGPORT0 | \
+					 BD99955_CMD_UCD_STATUS_CHGPORT1)
+#define BD99955_TYPE_PUP_PORT		(BD99955_CMD_UCD_STATUS_PUPDET | \
+					 BD99955_CMD_UCD_STATUS_DCDFAIL | \
+					 BD99955_CMD_UCD_STATUS_CHGPORT0)
+#define BD99955_TYPE_OPEN_PORT		(BD99955_CMD_UCD_STATUS_DCDFAIL | \
+					 BD99955_CMD_UCD_STATUS_CHGPORT0)
+#define BD99955_TYPE_MASK		0xB840
+
 #define BD99955_CMD_VCC_IDD_STATUS	0x2A
 #define BD99955_CMD_VCC_UCD_FCTRL_SET	0x2B
 #define BD99955_CMD_VCC_UCD_FCTRL_EN	0x2C
@@ -138,6 +165,9 @@ enum bd99955_charge_port {
 #define BD99955_CMD_IC_SET1		0x3A
 #define BD99955_CMD_IC_SET2		0x3B
 #define BD99955_CMD_SYSTEM_STATUS	0x3C
+#define BD99955_CMD_SYSTEM_STATUS_OTPLD_STATE	(1 << 1)
+#define BD99955_CMD_SYSTEM_STATUS_ALLRST_STATE	(1 << 0)
+
 #define BD99955_CMD_SYSTEM_CTRL_SET	0x3D
 #define BD99955_CMD_SYSTEM_CTRL_SET_OTPLD	(1 << 1)
 #define BD99955_CMD_SYSTEM_CTRL_SET_ALLRST	(1 << 0)
@@ -182,7 +212,15 @@ enum bd99955_charge_port {
 #define BD99955_CMD_EXTIADP_AVE_VAL	0x63
 #define BD99955_CMD_VACPCLPS_TH_SET	0x64
 #define BD99955_CMD_INT0_SET		0x68
+#define BD99955_CMD_INT0_SET_INT2_EN	(1 << 2)
+#define BD99955_CMD_INT0_SET_INT1_EN	(1 << 1)
+#define BD99955_CMD_INT0_SET_INT0_EN	(1 << 0)
+
 #define BD99955_CMD_INT1_SET		0x69
+/* Bits for both INT1 & INT2 reg */
+#define BD99955_CMD_INT_SET_DET		(1 << 1)
+#define BD99955_CMD_INT_SET_RES		(1 << 0)
+
 #define BD99955_CMD_INT2_SET		0x6A
 #define BD99955_CMD_INT3_SET		0x6B
 #define BD99955_CMD_INT4_SET		0x6C
@@ -191,6 +229,10 @@ enum bd99955_charge_port {
 #define BD99955_CMD_INT7_SET		0x6F
 #define BD99955_CMD_INT0_STATUS		0x70
 #define BD99955_CMD_INT1_STATUS		0x71
+/* Bits for both INT1_STATUS & INT2_STATUS reg */
+#define BD99955_CMD_INT_STATUS_DET	(1 << 1)
+#define BD99955_CMD_INT_STATUS_RES	(1 << 0)
+
 #define BD99955_CMD_INT2_STATUS		0x72
 #define BD99955_CMD_INT3_STATUS		0x73
 #define BD99955_CMD_INT4_STATUS		0x74
@@ -213,5 +255,14 @@ enum bd99955_charge_port {
 int bd99955_extpower_is_present(void);
 /* Select input port from {VCC, VBUS, VCC&VBUS, NONE}. */
 int bd99955_select_input_port(enum bd99955_charge_port port);
-
+/* Get CHARGE_SUPPLIER_BC12_* or 0 if the device type was not detected */
+int bd99955_get_charger_device_type(enum bd99955_charge_port port);
+/* Get BC1.2 charger current limit */
+int bd99955_get_bc12_ilim(int charge_supplier);
+/* Enable/disable BC1.2 charging */
+void bd99955_bc12_enable_charging(enum bd99955_charge_port port, int enable);
+/* Enable/disable bus detect interrupts */
+int bd99955_enable_bus_detect_interrupts(int port, int enable);
+/* Get/clear bus detected interrupts */
+int bd99955_get_bus_detect_interrupts(int port, int get);
 #endif /* __CROS_EC_BD99955_H */
