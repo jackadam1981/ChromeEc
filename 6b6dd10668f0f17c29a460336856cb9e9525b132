@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e800a0f1_2a507faa",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-16T01:19:11Z",
+      "side": 1,
+      "message": "I think CPRINTS automatically add \"[%T \" and \"]\\n\" for you?\n\nWill doing this way save anything?\nCPRINTS(\"Batt cutoff %s\", rv \u003d\u003d EC_SUCCESS ? \"success\" : \"failed\");",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 40
+      },
+      "revId": "6b6dd10668f0f17c29a460336856cb9e9525b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e800a0f1_ca5c7b56",
         "filename": "common/battery.c",
         "patchSetId": 3
@@ -18,6 +41,29 @@
         "startChar": 0,
         "endLine": 322,
         "endChar": 2
+      },
+      "revId": "6b6dd10668f0f17c29a460336856cb9e9525b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e800a0f1_0a65c388",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-16T01:19:11Z",
+      "side": 1,
+      "message": "Use CPRINTS to remove [%T ..... ]\\n",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 44
       },
       "revId": "6b6dd10668f0f17c29a460336856cb9e9525b132",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -48,6 +94,98 @@
     },
     {
       "key": {
+        "uuid": "e800a0f1_ca5ebbbc",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-16T01:19:11Z",
+      "side": 1,
+      "message": "Same thing for the [%T ...]\\n as well",
+      "parentUuid": "e800a0f1_8ad8b30e",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 2
+      },
+      "revId": "6b6dd10668f0f17c29a460336856cb9e9525b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e800a0f1_8afaf3d0",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-16T01:19:11Z",
+      "side": 1,
+      "message": "just int without the r is good enough? Or just \"(re)init buttons\" since button sort of imply it is interrupt driven?",
+      "revId": "6b6dd10668f0f17c29a460336856cb9e9525b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e800a0f1_4a04ebb2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-16T01:19:11Z",
+      "side": 1,
+      "message": "replace \"due to\" with \": \"?",
+      "revId": "6b6dd10668f0f17c29a460336856cb9e9525b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e800a0f1_2a099fc8",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-16T01:19:11Z",
+      "side": 1,
+      "message": "\"batt seems dead\"?",
+      "revId": "6b6dd10668f0f17c29a460336856cb9e9525b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e800a0f1_0aeee314",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-16T01:19:11Z",
+      "side": 1,
+      "message": "remove \"found \"?",
+      "revId": "6b6dd10668f0f17c29a460336856cb9e9525b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e800a0f1_6a068746",
         "filename": "common/fan.c",
         "patchSetId": 3
@@ -65,6 +203,40 @@
         "endLine": 212,
         "endChar": 2
       },
+      "revId": "6b6dd10668f0f17c29a460336856cb9e9525b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e800a0f1_eaea97fe",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-16T01:19:11Z",
+      "side": 1,
+      "message": "Just \"Int\"?",
+      "revId": "6b6dd10668f0f17c29a460336856cb9e9525b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e800a0f1_caf7dbe4",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-16T01:19:11Z",
+      "side": 1,
+      "message": "\"batt status %x\"?",
       "revId": "6b6dd10668f0f17c29a460336856cb9e9525b132",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
