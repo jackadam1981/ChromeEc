@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e800a0f1_ca5c7b56",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2016-04-16T00:37:59Z",
+      "side": 1,
+      "message": "This code looks a lot like the code at 280-290. Even if you don\u0027t want to say\n\nrv\u003dpending_cutoff_defered();\nif (!rv) battery_cutoff_state \u003d BATTERY_CUTOFF_STATE_CUT_OFF;\n\nif you make the strings identical then the compiler might merge them for you.",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 2
+      },
+      "revId": "6b6dd10668f0f17c29a460336856cb9e9525b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e800a0f1_8ad8b30e",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2016-04-16T00:37:59Z",
+      "side": 1,
+      "message": "Another use for a common subroutine or at least having the same string.",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 2
+      },
+      "revId": "6b6dd10668f0f17c29a460336856cb9e9525b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e800a0f1_6a068746",
+        "filename": "common/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1110034
+      },
+      "writtenOn": "2016-04-16T00:37:59Z",
+      "side": 1,
+      "message": "OK, so this code is going to be removed because we only have at most one fan, but we ought to be able to do better than this cut and paste parsing.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 2
+      },
+      "revId": "6b6dd10668f0f17c29a460336856cb9e9525b132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
