@@ -996,3 +996,18 @@ DECLARE_CONSOLE_COMMAND(chglim, command_external_power_limit,
 	"Set max charger current / voltage",
 	NULL);
 #endif /* CONFIG_CHARGE_MANAGER_EXTERNAL_POWER_LIMIT */
+
+#ifdef CONFIG_CMD_CHARGE_SUPPLIER_INFO
+static int charge_supplier_info(int argc, char **argv)
+{
+	ccprintf("port=%d, type=%d, cur=%dmA, vtg=%dmV\n",
+			charge_manager_get_active_charge_port(),
+			charge_supplier,
+			charge_current,
+			charge_voltage);
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(chgsup, charge_supplier_info,
+			NULL, "print chg supplier info", NULL);
+#endif
