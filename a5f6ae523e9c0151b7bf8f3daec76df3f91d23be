@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e800a0f1_152ba475",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-16T18:18:36Z",
+      "side": 1,
+      "message": "The behavior of this task (and related functions) is tailored to support the pericom part - actually it should be renamed \"pericom_usb_charger_task\". The only reason we need a dedicated task at all is due to quirks in this specific part (eg. need to reset + redetect after insertion, to ensure accuracy).\n\nFor straightforward implementations that simply involve reading registers, we probably don\u0027t need a dedicated task. See src/platform/ec/chip/stm32/charger_detect.c for an example.",
+      "range": {
+        "startLine": 203,
+        "startChar": 5,
+        "endLine": 203,
+        "endChar": 21
+      },
+      "revId": "a5f6ae523e9c0151b7bf8f3daec76df3f91d23be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
