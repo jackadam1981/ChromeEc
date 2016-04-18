@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28939819_06b0404c",
+        "filename": "board/umaro/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-18T16:45:13Z",
+      "side": 1,
+      "message": "You removed this i2c bus from your table. Are there external PUs on these pins?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "dbd864c544df5e6ae02b0c17c2e0d41741b6bbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28939819_a6acecfa",
+        "filename": "board/umaro/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-18T16:45:13Z",
+      "side": 1,
+      "message": "I2C1 is unused now?",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 8
+      },
+      "revId": "dbd864c544df5e6ae02b0c17c2e0d41741b6bbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
