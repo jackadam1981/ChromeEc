@@ -46,6 +46,30 @@
       "revId": "c5aa2f2b64e198a7258da7a98b1e9a23af7c4af5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28939819_86ff70c1",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-18T16:52:06Z",
+      "side": 1,
+      "message": "Some of it is mysterious. And this approach, while it seems inefficient, compiles much smaller than duplicating code. Okay.",
+      "parentUuid": "28939819_46372891",
+      "range": {
+        "startLine": 324,
+        "startChar": 1,
+        "endLine": 325,
+        "endChar": 18
+      },
+      "revId": "c5aa2f2b64e198a7258da7a98b1e9a23af7c4af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
