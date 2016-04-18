@@ -22,6 +22,30 @@
       "revId": "c5aa2f2b64e198a7258da7a98b1e9a23af7c4af5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28939819_46372891",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-18T16:48:48Z",
+      "side": 1,
+      "message": "I did not want to copy/paste stuff happening in lines 305 and 314.",
+      "parentUuid": "28939819_86e53086",
+      "range": {
+        "startLine": 324,
+        "startChar": 1,
+        "endLine": 325,
+        "endChar": 18
+      },
+      "revId": "c5aa2f2b64e198a7258da7a98b1e9a23af7c4af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
