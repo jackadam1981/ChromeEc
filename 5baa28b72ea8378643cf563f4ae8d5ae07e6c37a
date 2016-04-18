@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08a25463_3cbeb124",
+        "filename": "board/elm/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-18T08:25:49Z",
+      "side": 1,
+      "message": "this should be wrong now since this reflects the HDMI plug status, not DP, though it makes no difference as it only affects the return value, which has no influence at all.",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 305,
+        "endChar": 8
+      },
+      "revId": "5baa28b72ea8378643cf563f4ae8d5ae07e6c37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
