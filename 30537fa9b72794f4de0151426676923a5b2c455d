@@ -16,6 +16,24 @@
       "revId": "30537fa9b72794f4de0151426676923a5b2c455d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28939819_4008700c",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1147200
+      },
+      "writtenOn": "2016-04-18T03:02:24Z",
+      "side": 1,
+      "message": "It need add #ifdef #ifdef CONFIG_USB_PD_TCPM_MUX to enable compile this function.\nGernerally, pin mux should be in safe mode, and set pin mux when downstream is plugged in.",
+      "parentUuid": "cbd7567d_250525ae",
+      "revId": "30537fa9b72794f4de0151426676923a5b2c455d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
