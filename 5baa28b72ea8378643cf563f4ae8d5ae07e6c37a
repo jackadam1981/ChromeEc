@@ -22,6 +22,30 @@
       "revId": "5baa28b72ea8378643cf563f4ae8d5ae07e6c37a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8859e447_17417e19",
+        "filename": "board/elm/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-04-18T08:30:14Z",
+      "side": 1,
+      "message": "Ok, so we can just drop this and always return 1. Thanks.",
+      "parentUuid": "08a25463_3cbeb124",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 305,
+        "endChar": 8
+      },
+      "revId": "5baa28b72ea8378643cf563f4ae8d5ae07e6c37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
