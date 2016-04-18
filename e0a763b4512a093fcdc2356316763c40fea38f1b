@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28939819_d7f444e2",
+        "filename": "common/console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-04-18T19:20:26Z",
+      "side": 1,
+      "message": "we can replace ccprintf with ccprints to save one byte (\"\\n\"). As ccprints inserts \"\\n\" in the function level.",
+      "revId": "e0a763b4512a093fcdc2356316763c40fea38f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
