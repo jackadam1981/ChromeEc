@@ -36,6 +36,8 @@
 #include "pi3usb9281.h"
 #include "power.h"
 #include "power_button.h"
+#include "pwm.h"
+#include "pwm_chip.h"
 #include "registers.h"
 #include "spi.h"
 #include "switch.h"
@@ -95,6 +97,13 @@ const struct adc_t adc_channels[] = {
 	[ADC_VBUS] = {"VBUS", 33000, 4096, 0, STM32_AIN(11)},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+/* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
+const struct pwm_t pwm_channels[] = {
+	{STM32_TIM(1), STM32_TIM_CH(4), PWM_CONFIG_ALT_CLOCK}, /* Use alternate 100kHz clock source */
+	{STM32_TIM(2), STM32_TIM_CH(4), PWM_CONFIG_ALT_CLOCK},
+};
+BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
@@ -272,6 +281,15 @@ static void board_init(void)
 	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
 	CPRINTS("Board using SPI sensors");
 #endif
+
+#ifdef CONFIG_PWM
+	/* Enable BAT_LED PWM: initial duty cycle 40% */
+	//pwm_enable(PWM_CH_BAT_LED0, 1);
+	//pwm_set_duty(PWM_CH_BAT_LED0, 40);
+	//pwm_enable(PWM_CH_BAT_LED1, 1);
+	//pwm_set_duty(PWM_CH_BAT_LED1, 40);
+#endif
+
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
