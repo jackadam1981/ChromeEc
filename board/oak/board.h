@@ -86,6 +86,7 @@
 #define CONFIG_MKBP_EVENT
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_COMMON
+#define CONFIG_PWM
 #define CONFIG_USB_CHARGER
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USBC_SS_MUX_DFP_ONLY
@@ -189,7 +190,8 @@ enum power_signal {
 };
 
 enum pwm_channel {
-	PWM_CH_POWER_LED = 0,
+	PWM_CH_BAT_LED0 = 0,
+	PWM_CH_BAT_LED1,
 	/* Number of PWM channels */
 	PWM_CH_COUNT
 };
