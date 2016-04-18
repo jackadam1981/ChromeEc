@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "28939819_e6419439",
+        "filename": "board/setzer/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-18T17:26:57Z",
+      "side": 1,
+      "message": "this include is already 5 lines below.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "d4aaf84c28b6fd2a96c8553461735054d182648a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28939819_e6df5451",
         "filename": "board/setzer/board.c",
         "patchSetId": 13
@@ -41,6 +64,29 @@
         "startChar": 37,
         "endLine": 244,
         "endChar": 1
+      },
+      "revId": "d4aaf84c28b6fd2a96c8553461735054d182648a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28939819_716f80fd",
+        "filename": "board/setzer/extpower_setzer.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-18T17:26:57Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand the delay here,\nit\u0027s not a debouncing since we are not re-checking whether the adapter is plugging.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 27
       },
       "revId": "d4aaf84c28b6fd2a96c8553461735054d182648a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
