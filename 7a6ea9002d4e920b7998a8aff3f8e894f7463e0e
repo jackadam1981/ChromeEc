@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b3e3e48_b43ed80b",
+        "filename": "board/setzer/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-04-19T02:04:30Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "8b3e3e48_a3e224b9",
+      "range": {
+        "startLine": 48,
+        "startChar": 16,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "7a6ea9002d4e920b7998a8aff3f8e894f7463e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebe41af9_aae06f10",
         "filename": "board/setzer/extpower_setzer.c",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-12T23:57:56Z",
       "side": 1,
       "message": "This can be declared const.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 33
+      },
+      "revId": "7a6ea9002d4e920b7998a8aff3f8e894f7463e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b3e3e48_d4435c90",
+        "filename": "board/setzer/extpower_setzer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-04-19T02:04:30Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "ebe41af9_aae06f10",
       "range": {
         "startLine": 46,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8b3e3e48_744930b0",
+        "filename": "board/setzer/extpower_setzer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-04-19T02:04:30Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "8b3e3e48_a390e43c",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "7a6ea9002d4e920b7998a8aff3f8e894f7463e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebe41af9_0aa963e9",
         "filename": "include/config.h",
         "patchSetId": 11
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "8b3e3e48_9446349e",
+        "filename": "include/config.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-04-19T02:04:30Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "ebe41af9_0aa963e9",
+      "revId": "7a6ea9002d4e920b7998a8aff3f8e894f7463e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebe41af9_8ae6535c",
         "filename": "include/config.h",
         "patchSetId": 11
@@ -99,6 +189,30 @@
       "writtenOn": "2016-04-12T23:57:56Z",
       "side": 1,
       "message": "Change this to CONFIG_PRECHARGE_TIMEOUT, and define it to 30 by default. Then modify charge_state.h to use CONFIG_PRECHARGE_TIMEOUT. Then #undef CONFIG_PRECHARGE_TIMEOUT in your board.h and redefine it as needed.",
+      "range": {
+        "startLine": 372,
+        "startChar": 7,
+        "endLine": 372,
+        "endChar": 38
+      },
+      "revId": "7a6ea9002d4e920b7998a8aff3f8e894f7463e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b3e3e48_3453a85e",
+        "filename": "include/config.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-04-19T02:04:30Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "ebe41af9_8ae6535c",
       "range": {
         "startLine": 372,
         "startChar": 7,
