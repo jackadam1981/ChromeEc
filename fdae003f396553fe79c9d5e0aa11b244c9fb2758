@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "a801483f_00f9708f",
+        "filename": "board/elm/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2016-04-19T03:45:17Z",
+      "side": 1,
+      "message": "Unmount R24 as default is due to EC can do internal pull high, we can save one resistor here...",
+      "parentUuid": "a801483f_05e062dd",
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28939819_639ed694",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
