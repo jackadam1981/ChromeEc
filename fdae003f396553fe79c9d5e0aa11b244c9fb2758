@@ -107,6 +107,98 @@
     },
     {
       "key": {
+        "uuid": "a801483f_2b95755e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-19T08:22:02Z",
+      "side": 1,
+      "message": "Does 7688 support this register?",
+      "range": {
+        "startLine": 90,
+        "startChar": 24,
+        "endLine": 90,
+        "endChar": 45
+      },
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a801483f_4bb9d9ec",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-19T08:22:02Z",
+      "side": 1,
+      "message": "This clears all bits except bit0... not sure if applicable for 7688?",
+      "range": {
+        "startLine": 106,
+        "startChar": 25,
+        "endLine": 106,
+        "endChar": 43
+      },
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a801483f_4b90b96e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-19T08:22:02Z",
+      "side": 1,
+      "message": "Does 7688 support this register (bit0 vconn)? Besides it clears all other bits... not sure if applicable for 7688.",
+      "range": {
+        "startLine": 112,
+        "startChar": 25,
+        "endLine": 112,
+        "endChar": 44
+      },
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a801483f_cba309c4",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-19T08:22:02Z",
+      "side": 1,
+      "message": "This bit is from 7688, so 7688 should set this on its own? According to TCPCI spec:\n\"\nThe TCPC shall ignore writes to this bit if TCPC_CONTROL.DebugAccessoryControl \u003d 0\n\"\n\nAnd current TCPM\u0027s tcpm_mux_set() does not handle this bit.",
+      "range": {
+        "startLine": 266,
+        "startChar": 51,
+        "endLine": 266,
+        "endChar": 83
+      },
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28939819_639ed694",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
