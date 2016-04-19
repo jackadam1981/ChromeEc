@@ -91,6 +91,30 @@
       "revId": "d4aaf84c28b6fd2a96c8553461735054d182648a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28939819_06311b32",
+        "filename": "board/setzer/extpower_setzer.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-04-19T02:04:30Z",
+      "side": 1,
+      "message": "The delay be used for setting input current. Waiting adapter id voltage is stable and then set input current.\nIt may detect adapter type error if adapter id voltage is not stable(eg. 65W adapter is plugging but detect to 45W adapter), cause input current setting error.",
+      "parentUuid": "28939819_716f80fd",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 27
+      },
+      "revId": "d4aaf84c28b6fd2a96c8553461735054d182648a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
