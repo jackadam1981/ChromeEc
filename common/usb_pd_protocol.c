@@ -930,6 +930,18 @@ static void handle_ctrl_request(int port, uint16_t head,
 			pd[port].flags &= ~PD_FLAGS_EXPLICIT_CONTRACT;
 			set_state(port, PD_STATE_SNK_SWAP_SNK_DISABLE);
 		} else if (pd[port].task_state == PD_STATE_SNK_REQUESTED) {
+#ifdef CONFIG_CHARGE_MANAGER
+			/*
+			 * If we have enough battery power, then stop drawing
+			 * current during source transition. After transition
+			 * is over, PS_RDY will remove the charge ceiling and
+			 * allow normal charge. See crbug.com/p/44340 for info.
+			 */
+			if (charge_get_percent() >= CONFIG_USB_PD_MIN_BATT_SOC)
+				charge_manager_set_ceil(port,
+							CEIL_REQUESTOR_PD, 0);
+#endif
+
 			/* explicit contract is now in place */
 			pd[port].flags |= PD_FLAGS_EXPLICIT_CONTRACT;
 			set_state(port, PD_STATE_SNK_TRANSITION);
