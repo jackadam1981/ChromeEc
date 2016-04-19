@@ -22,6 +22,29 @@
       "revId": "19bec2d6b9aa192baf3a3aaa55ffefdda7349095",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a801483f_067b4849",
+        "filename": "board/lars/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-19T16:20:27Z",
+      "side": 1,
+      "message": "What about other memmap battery data? Why only these three attributes? Can\u0027t reading attributes like voltage, capacity, etc. also fail?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 48
+      },
+      "revId": "19bec2d6b9aa192baf3a3aaa55ffefdda7349095",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
