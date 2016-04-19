@@ -124,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "a801483f_e5f55e95",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-04-19T01:32:59Z",
+      "side": 1,
+      "message": "Oh, understood, so that\u0027s fixed on the EVT board?",
+      "parentUuid": "a801483f_65b84ee7",
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28939819_43addabf",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
