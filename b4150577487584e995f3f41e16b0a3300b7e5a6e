@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "88a2c4bd_d4301ce3",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-04-19T22:56:43Z",
+      "side": 1,
+      "message": "I will update the design, or rather create a new document to reflect this design. I put the tag as the first item in the partition so that it would be possible to only need to write one or more blocks. However, the logic to track which of the 4 blocks needs to be written has not been implemented yet.",
+      "parentUuid": "cbd7567d_db8b4913",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "b4150577487584e995f3f41e16b0a3300b7e5a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd7567d_5bd47904",
         "filename": "chip/g/nvmem_utils.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2016-04-14T21:18:22Z",
       "side": 1,
       "message": "That might depend on the caller. Also see the comment regarding mutexes inside shared_mem_aqcuire() itself. We\u0027re starting to need this in several places. We may have to shave that yak first.",
+      "range": {
+        "startLine": 99,
+        "startChar": 6,
+        "endLine": 99,
+        "endChar": 42
+      },
+      "revId": "b4150577487584e995f3f41e16b0a3300b7e5a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88a2c4bd_4fe0f9de",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-04-19T22:56:43Z",
+      "side": 1,
+      "message": "Will address this as part of crbug.com/52520",
+      "parentUuid": "cbd7567d_5bd47904",
       "range": {
         "startLine": 99,
         "startChar": 6,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "88a2c4bd_b407d8fd",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-04-19T22:56:43Z",
+      "side": 1,
+      "message": "I think it makes sense to have a common function that can be shared by both read/write routines. This particular portion needs to change anyway with the module moving to ec/common/",
+      "parentUuid": "cbd7567d_bb4db56c",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 36
+      },
+      "revId": "b4150577487584e995f3f41e16b0a3300b7e5a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd7567d_7bf5fd2c",
         "filename": "chip/g/nvmem_utils.c",
         "patchSetId": 1
@@ -106,6 +178,30 @@
       "writtenOn": "2016-04-14T21:18:22Z",
       "side": 1,
       "message": "This is going to cause problems. If one task holds it, and another task wants it, task 2 will take over, change things, then reset the global cache_base_ptr to null, and task 1 will barf. \n\nWe\u0027re gonna have to make this stuff reentrant and protected with mutexes. Ugh.\n\nFile a bug, but let\u0027s keep going for now. Just expect crashes under load.",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 25
+      },
+      "revId": "b4150577487584e995f3f41e16b0a3300b7e5a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88a2c4bd_aff0a5b0",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-04-19T22:56:43Z",
+      "side": 1,
+      "message": "Added comment and created crbug.com/52520 to track this issue.",
+      "parentUuid": "cbd7567d_7bf5fd2c",
       "range": {
         "startLine": 202,
         "startChar": 1,
