@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "a801483f_659fae7c",
+        "filename": "board/elm/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-19T01:27:57Z",
+      "side": 1,
+      "message": "you meant R24? it is not mounted so this pin is always low even in unplug state on my board.",
+      "parentUuid": "28939819_23af6ec4",
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28939819_639ed694",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
@@ -64,6 +82,24 @@
       "writtenOn": "2016-04-18T13:51:04Z",
       "side": 1,
       "message": "Huh, so the EC will keep spinning until something is plugged? \n\nWe have an interrupt on the cable detection pin, so there must be a better way.",
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a801483f_65b84ee7",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-19T01:27:57Z",
+      "side": 1,
+      "message": "it was meant to be an interrupt, however the \"shared int\" schematic on proto cannot detect ANX7688_CABLE_DET from high to low.",
+      "parentUuid": "28939819_639ed694",
       "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
