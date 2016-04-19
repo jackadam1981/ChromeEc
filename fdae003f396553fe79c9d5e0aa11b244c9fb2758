@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "a801483f_05e062dd",
+        "filename": "board/elm/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-04-19T01:31:30Z",
+      "side": 1,
+      "message": "Huh, yeah, I meant R24...\n\nTony: any idea why it is not mounted?",
+      "parentUuid": "a801483f_659fae7c",
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28939819_639ed694",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
