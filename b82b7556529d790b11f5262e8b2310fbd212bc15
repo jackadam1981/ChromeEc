@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "88a2c4bd_43ad78f4",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-04-19T22:55:25Z",
+      "side": 1,
+      "message": "I think this will instead be tied to either the nvmem_init() function, or to a global variable that\u0027s kept in this module. nvmem_setup() is more intended to be a manufacturing/test support function.",
+      "parentUuid": "cbd7567d_d6d84111",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 11
+      },
+      "revId": "b82b7556529d790b11f5262e8b2310fbd212bc15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd7567d_56629111",
         "filename": "board/cr50/tpm2/NVMem.c",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2016-04-14T20:41:30Z",
       "side": 1,
       "message": "return nvmem_commit();",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 1
+      },
+      "revId": "b82b7556529d790b11f5262e8b2310fbd212bc15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88a2c4bd_c3df4883",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-04-19T22:55:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd7567d_56629111",
       "range": {
         "startLine": 169,
         "startChar": 0,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "88a2c4bd_86cdce85",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-04-19T22:55:25Z",
+      "side": 1,
+      "message": "I have removed the unused ones. The subsequent CL will reintroduce them as they are used for read/write routines. However, this set of defines is moving anyway because the module itself is going in ec/common",
+      "parentUuid": "cbd7567d_588e3ff1",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 66
+      },
+      "revId": "b82b7556529d790b11f5262e8b2310fbd212bc15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd7567d_f8e0d375",
         "filename": "chip/g/nvmem_utils.c",
         "patchSetId": 1
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "88a2c4bd_26c4c25c",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-04-19T22:55:25Z",
+      "side": 1,
+      "message": "Removed the function.",
+      "parentUuid": "cbd7567d_f8e0d375",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "b82b7556529d790b11f5262e8b2310fbd212bc15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd7567d_b89dbb92",
         "filename": "chip/g/nvmem_utils.c",
         "patchSetId": 1
@@ -128,6 +224,30 @@
       "writtenOn": "2016-04-14T20:52:34Z",
       "side": 1,
       "message": "No, if it fails, we should return the error code from nvmem_acquire_cache(). If it timed out, the caller can try again later in hopes that some other task will free up the scratch buffer. If it simply doesn\u0027t have enough free RAM, that\u0027s unrecoverable and we should probably scream and panic.",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "b82b7556529d790b11f5262e8b2310fbd212bc15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88a2c4bd_c31ce801",
+        "filename": "chip/g/nvmem_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-04-19T22:55:25Z",
+      "side": 1,
+      "message": "Good point and I have modified the function to pass on the error code from the acquire_cache() function.",
+      "parentUuid": "cbd7567d_b89dbb92",
       "range": {
         "startLine": 112,
         "startChar": 9,
