@@ -16,6 +16,24 @@
       "revId": "2681c65f2462e7d361ede2af33e41c471631dbea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a801483f_2060f4aa",
+        "filename": "board/cr50/tpm2/aes.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-04-19T06:00:29Z",
+      "side": 0,
+      "message": "Hybrid encryption (in the dcrypto directory) depends on AES CTR, hence I\u0027m moving the implementation from tpm2 -\u003e dcrypto.\n\nI moved this part of the change into a separate CL.",
+      "parentUuid": "e800a0f1_6add67fc",
+      "revId": "2681c65f2462e7d361ede2af33e41c471631dbea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
