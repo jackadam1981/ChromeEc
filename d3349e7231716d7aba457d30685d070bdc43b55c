@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_2e7053a3",
+        "filename": "board/kunimitsu_ish/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-04-20T13:46:11Z",
+      "side": 1,
+      "message": "Added .port attribute, which was missing in the previous patchset.",
+      "revId": "d3349e7231716d7aba457d30685d070bdc43b55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
