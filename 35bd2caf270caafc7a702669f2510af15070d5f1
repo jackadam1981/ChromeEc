@@ -50,6 +50,63 @@
       "revId": "35bd2caf270caafc7a702669f2510af15070d5f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_fcbd11d9",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-20T17:03:53Z",
+      "side": 1,
+      "message": "Consider adding a config such as CONFIG_SPI_FLASH_DEFAULT for initial spi_flash_config assignment. The initial value of spi_flash_config here is based on the ordering of your ifdefs, which seems tailored for cr50.\n\nThe logic can be -- if CONFIG_SPI_FLASH_SELECT is defined, assign spi_flash_config to CONFIG_SPI_FLASH_DEFAULT. Otherwise, assign based on #ifdefs (and curr_chip won\u0027t change, so add an extra const).",
+      "range": {
+        "startLine": 92,
+        "startChar": 20,
+        "endLine": 92,
+        "endChar": 36
+      },
+      "revId": "35bd2caf270caafc7a702669f2510af15070d5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_fc0f5185",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-20T17:03:53Z",
+      "side": 1,
+      "message": "You may want to add an assertion to ensure curr_chip is assigned (eg. make sure the appropriate CONFIG is defined for \u0027select\u0027).",
+      "revId": "35bd2caf270caafc7a702669f2510af15070d5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_5c31bd31",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-20T17:03:53Z",
+      "side": 1,
+      "message": "add \"at runtime\".",
+      "revId": "35bd2caf270caafc7a702669f2510af15070d5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
