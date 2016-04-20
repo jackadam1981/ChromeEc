@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_ae40c316",
+        "filename": "chip/ish30/hwtimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-04-20T14:13:18Z",
+      "side": 1,
+      "message": "Moved DECLARE_IRQ from interrupts.c to individual drivers",
+      "revId": "8209764424d07ad48aecab327f8501c30f766c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_ce3177d0",
+        "filename": "chip/ish30/hwtimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-04-20T14:13:18Z",
+      "side": 1,
+      "message": "Need to set the correct value",
+      "revId": "8209764424d07ad48aecab327f8501c30f766c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
