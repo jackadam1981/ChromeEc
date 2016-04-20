@@ -57,8 +57,8 @@ static const struct protect_range spi_flash_protect_ranges_4x[] = {
 };
 #endif
 
-#ifdef CONFIG_SPI_FLASH_W25Q64
-static const struct protect_range spi_flash_protect_ranges_w25q64[] = {
+#if defined(CONFIG_SPI_FLASH_W25Q64) || defined(CONFIG_SPI_FLASH_GD25Q64C)
+static const struct protect_range spi_flash_protect_ranges_64[] = {
 	{ 0, X, X, { 0, 0, 0 }, 0, 0 },        /* No protection */
 	{ 0, 0, 1, { 1, 1, 0 }, 0, 0x400000 }, /* Lower 1/2 */
 	{ 0, 1, 1, { 1, 0, X }, 0, 0x008000 }, /* Lower 1/256 */
@@ -81,8 +81,12 @@ const struct spi_flash_config spi_flash[] = {
 		ARRAY_SIZE(spi_flash_protect_ranges_4x)},
 #endif
 #ifdef CONFIG_SPI_FLASH_W25Q64
-	[SPI_FLASH_W25Q64] = {1, spi_flash_protect_ranges_w25q64,
-		ARRAY_SIZE(spi_flash_protect_ranges_w25q64)},
+	[SPI_FLASH_W25Q64] = {1, spi_flash_protect_ranges_64,
+		ARRAY_SIZE(spi_flash_protect_ranges_64)},
+#endif
+#ifdef CONFIG_SPI_FLASH_GD25Q64C
+	[SPI_FLASH_GD25Q64C] = {1, spi_flash_protect_ranges_64,
+		ARRAY_SIZE(spi_flash_protect_ranges_64)},
 #endif
 };
 
