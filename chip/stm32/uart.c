@@ -106,6 +106,7 @@ void uart_tx_dma_start(const char *src, int len)
 	dma_prepare_tx(&dma_tx_option, len, src);
 
 	/* Force clear TC so we don't re-interrupt */
+	/* TODO: Do STM32_USART_ICR(UARTN_BASE) |= STM32_USART_ICR_TCCF; */
 	STM32_USART_SR(UARTN_BASE) &= ~STM32_USART_SR_TC;
 
 	/* Enable TCIE (chrome-os-partner:28837) */
@@ -306,6 +307,8 @@ void uart_init(void)
 	/*
 	 * UART enabled, 8 Data bits, oversampling x16, no parity,
 	 * TX and RX enabled.
+	 * TODO: Defer setting UE bit. Most reigisters allow changes only when
+	 * USART is disabled (UE=0) including the baud rate register.
 	 */
 	STM32_USART_CR1(UARTN_BASE) =
 		STM32_USART_CR1_UE | STM32_USART_CR1_TE | STM32_USART_CR1_RE;
