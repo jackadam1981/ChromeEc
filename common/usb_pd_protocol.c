@@ -327,7 +327,11 @@ static inline void set_state(int port, enum pd_states next_state)
 		disable_sleep(SLEEP_MASK_USB_PD);
 #endif
 
+#ifdef CONFIG_COMMON_RUNTIME
+	CPRINTF("C%d st%d %s\n", port, next_state, pd_state_names[next_state]);
+#else
 	CPRINTF("C%d st%d\n", port, next_state);
+#endif
 }
 
 /* increment message ID counter */
