@@ -38,6 +38,23 @@
 #define CONFIG_SPI_FLASH_HAS_SR2
 #endif
 
+/* Chip type */
+enum spi_flash_type {
+	SPI_FLASH_W25X40 = 0,
+	SPI_FLASH_GD25Q41B,
+	SPI_FLASH_W25Q64,
+};
+
+#ifndef CONFIG_SPI_FLASH_DEFAULT
+#ifdef CONFIG_SPI_FLASH_W25X40
+#define CONFIG_SPI_FLASH_DEFAULT SPI_FLASH_W25X40
+#elif defined(CONFIG_SPI_FLASH_GD25Q41B)
+#define CONFIG_SPI_FLASH_DEFAULT SPI_FLASH_GD25Q41B
+#elif defined(CONFIG_SPI_FLASH_W25Q64)
+#define CONFIG_SPI_FLASH_DEFAULT SPI_FLASH_W25Q64
+#endif
+#endif
+
 /**
  * Computes block write protection range from registers
  * Returns start == len == 0 for no protection
@@ -65,4 +82,15 @@ int spi_flash_reg_to_protect(uint8_t sr1, uint8_t sr2, unsigned int *start,
 int spi_flash_protect_to_reg(unsigned int start, unsigned int len, uint8_t *sr1,
 			     uint8_t *sr2);
 
+#ifdef CONFIG_SPI_FLASH_SELECT
+/* Get SR2 register existence based upon chip */
+int spi_flash_has_sr2(void);
+
+/* Select the chip to use for SPI flash */
+void spi_flash_select(enum spi_flash_type spi_select);
+#elif defined(CONFIG_SPI_FLASH_HAS_SR2)
+static inline int spi_flash_has_sr2(void) { return 1; }
+#else
+static inline int spi_flash_has_sr2(void) { return 0; }
+#endif
 #endif  /* __CROS_EC_SPI_FLASH_REG_H */
