@@ -24,4 +24,6 @@ int lid_is_open(void);
  */
 void lid_interrupt(enum gpio_signal signal);
 
+void end_state_check(void);
+
 #endif  /* __CROS_EC_LID_SWITCH_H */
