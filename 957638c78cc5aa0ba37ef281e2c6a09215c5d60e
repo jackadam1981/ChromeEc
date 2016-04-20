@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_a868b0f2",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-20T23:12:57Z",
+      "side": 1,
+      "message": "These buffer sizes are truly unfortunate.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 80
+      },
+      "revId": "957638c78cc5aa0ba37ef281e2c6a09215c5d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_2884c0fd",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-20T23:12:57Z",
+      "side": 1,
+      "message": "I\u0027m not clear why the interrupt needs to be disabled here. Can you explain?",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 224,
+        "endChar": 33
+      },
+      "revId": "957638c78cc5aa0ba37ef281e2c6a09215c5d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_8877ecd5",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-20T23:12:57Z",
+      "side": 1,
+      "message": "As soon as the host sees EC_SPI_FRAME_START (0xec), it will clock out subsequent data and treat it as the remainder of the packet. If we get preempted while in this copy function (note: we\u0027re not in interrupt context, this fxn is called from HOSTCMD task) then we\u0027ll likely have a buffer underrun.",
+      "range": {
+        "startLine": 229,
+        "startChar": 2,
+        "endLine": 229,
+        "endChar": 48
+      },
+      "revId": "957638c78cc5aa0ba37ef281e2c6a09215c5d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_08745ccc",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-20T23:12:57Z",
+      "side": 1,
+      "message": "If this interrupt gets preempted by shi_int_handler(), we can fail in numerous ways.",
+      "range": {
+        "startLine": 671,
+        "startChar": 5,
+        "endLine": 671,
+        "endChar": 17
+      },
+      "revId": "957638c78cc5aa0ba37ef281e2c6a09215c5d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
