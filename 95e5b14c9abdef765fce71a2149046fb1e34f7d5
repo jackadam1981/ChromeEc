@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_3c7089a3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-20T17:21:30Z",
+      "side": 1,
+      "message": "first of all, pd_state_names is only defined if CONFIG_COMMON_RUNTIME is set,\nso I\u0027m not sure this will compile on all platforms.\n\nOn top of that, as you can guess, if we revert the PRINTS here, there was a reason :\nto print the timestamp, cprints is doing a giant 64-bit division which is really slow on Cortex-M0. This was actually modifying the real time significantly on platforms with software PD PHY.",
+      "range": {
+        "startLine": 331,
+        "startChar": 1,
+        "endLine": 331,
+        "endChar": 70
+      },
+      "revId": "95e5b14c9abdef765fce71a2149046fb1e34f7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
