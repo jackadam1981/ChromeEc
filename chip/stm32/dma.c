@@ -62,13 +62,14 @@ stm32_dma_chan_t *dma_get_channel(enum dma_channel channel)
 #ifdef STM32_DMA_CSELR
 void dma_select_channel(enum dma_channel channel, unsigned char peripheral)
 {
+	unsigned char ch = channel % STM32_DMAC_PER_CTLR;
 	uint32_t val;
 	const unsigned char shift = STM32_DMA_PERIPHERALS_PER_CHANNEL;
 
-	ASSERT(channel < STM32_DMAC_COUNT);
+	ASSERT(ch < STM32_DMAC_PER_CTLR);
 	ASSERT(peripheral < 0x1 << shift);
-	val = STM32_DMA_CSELR(channel) & ~(0xf << channel * shift);
-	STM32_DMA_CSELR(channel) = val | (peripheral << channel * shift);
+	val = STM32_DMA_CSELR(ch) & ~(0xf << ch * shift);
+	STM32_DMA_CSELR(ch) = val | (peripheral << ch * shift);
 }
 #endif
 
@@ -228,7 +229,7 @@ void dma_test(enum dma_channel channel)
 void dma_init(void)
 {
 #ifdef CHIP_FAMILY_STM32L4
-	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_DMA1EN;
+	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_DMA1EN | STM32_RCC_AHB1ENR_DMA2EN;
 #else
 	STM32_RCC_AHBENR |= STM32_RCC_HB_DMA1;
 #endif
