@@ -7,6 +7,7 @@
  */
 
 #include "common.h"
+#include "console.h"
 #include "spi_flash_reg.h"
 #include "util.h"
 
@@ -26,6 +27,12 @@ struct protect_range {
 	uint32_t protect_len;
 };
 
+struct spi_flash_config {
+	int has_sr2;		/* SR2 register existence */
+	const struct protect_range const *protect_ranges;
+	int num_ranges;
+};
+
 /* Compare macro for (x =? b) for 'X' comparison */
 #define COMPARE_BIT(a, b) ((a) != X && (a) != !!(b))
 /* Assignment macro where 'X' = 0 */
@@ -38,7 +45,7 @@ struct protect_range {
  * according to likely configurations improves performance slightly.
  */
 #if defined(CONFIG_SPI_FLASH_W25X40) || defined(CONFIG_SPI_FLASH_GD25Q41B)
-static const struct protect_range spi_flash_protect_ranges[] = {
+static const struct protect_range spi_flash_protect_ranges_4x[] = {
 	{ X, X, X, { 0, 0, 0 }, 0, 0 },       /* No protection */
 	{ X, X, 1, { 0, 1, 1 }, 0, 0x40000 }, /* Lower 1/2 */
 	{ X, X, 1, { 0, 0, 1 }, 0, 0x10000 }, /* Lower 1/8 */
@@ -48,9 +55,10 @@ static const struct protect_range spi_flash_protect_ranges[] = {
 	{ X, X, 0, { 0, 1, 0 }, 0x60000, 0x20000 }, /* Upper 1/4*/
 	{ X, X, 0, { 0, 1, 1 }, 0x40000, 0x40000 }, /* Upper 1/2*/
 };
+#endif
 
-#elif defined(CONFIG_SPI_FLASH_W25Q64)
-static const struct protect_range spi_flash_protect_ranges[] = {
+#ifdef CONFIG_SPI_FLASH_W25Q64
+static const struct protect_range spi_flash_protect_ranges_w25q64[] = {
 	{ 0, X, X, { 0, 0, 0 }, 0, 0 },        /* No protection */
 	{ 0, 0, 1, { 1, 1, 0 }, 0, 0x400000 }, /* Lower 1/2 */
 	{ 0, 1, 1, { 1, 0, X }, 0, 0x008000 }, /* Lower 1/256 */
@@ -62,6 +70,23 @@ static const struct protect_range spi_flash_protect_ranges[] = {
 	{ 0, X, X, { 1, 1, 1 }, 0, 0x800000 }, /* All protected */
 };
 #endif
+
+const struct spi_flash_config spi_flash[] = {
+#ifdef CONFIG_SPI_FLASH_W25X40
+	[SPI_FLASH_W25X40] = {0, spi_flash_protect_ranges_4x,
+		ARRAY_SIZE(spi_flash_protect_ranges_4x)},
+#endif
+#ifdef CONFIG_SPI_FLASH_GD25Q41B
+	[SPI_FLASH_GD25Q41B] = {1, spi_flash_protect_ranges_4x,
+		ARRAY_SIZE(spi_flash_protect_ranges_4x)},
+#endif
+#ifdef CONFIG_SPI_FLASH_W25Q64
+	[SPI_FLASH_W25Q64] = {1, spi_flash_protect_ranges_w25q64,
+		ARRAY_SIZE(spi_flash_protect_ranges_w25q64)},
+#endif
+};
+
+static int select = CONFIG_SPI_FLASH_DEFAULT;
 
 /**
  * Computes block write protection range from registers
@@ -95,8 +120,8 @@ int spi_flash_reg_to_protect(uint8_t sr1, uint8_t sr2, unsigned int *start,
 	if (!start || !len || sr1 == -1 || sr2 == -1)
 		return EC_ERROR_INVAL;
 
-	for (i = 0; i < ARRAY_SIZE(spi_flash_protect_ranges); ++i) {
-		range = &spi_flash_protect_ranges[i];
+	for (i = 0; i < spi_flash[select].num_ranges; ++i) {
+		range = &spi_flash[select].protect_ranges[i];
 		if (COMPARE_BIT(range->cmp, cmp))
 			continue;
 		if (COMPARE_BIT(range->sec, sec))
@@ -147,8 +172,8 @@ int spi_flash_protect_to_reg(unsigned int start, unsigned int len, uint8_t *sr1,
 	if ((start && !len) || start + len > CONFIG_FLASH_SIZE)
 		return EC_ERROR_INVAL;
 
-	for (i = 0; i < ARRAY_SIZE(spi_flash_protect_ranges); ++i) {
-		range = &spi_flash_protect_ranges[i];
+	for (i = 0; i < spi_flash[select].num_ranges; ++i) {
+		range = &spi_flash[select].protect_ranges[i];
 		if (range->protect_start == start &&
 		    range->protect_len == len) {
 			cmp = GET_BIT(range->cmp);
@@ -169,3 +194,40 @@ int spi_flash_protect_to_reg(unsigned int start, unsigned int len, uint8_t *sr1,
 	/* Invalid range, or valid range missing from our table */
 	return EC_ERROR_INVAL;
 }
+
+#ifdef CONFIG_SPI_FLASH_SELECT
+/* Get SR2 register existence based upon chip */
+int spi_flash_has_sr2(void)
+{
+	return spi_flash[select].has_sr2;
+}
+
+int spi_flash_get_state(void)
+{
+	return select;
+}
+
+static char *get_name(enum spi_flash_type chip)
+{
+	switch (chip) {
+	case SPI_FLASH_W25X40:
+		return "W25X40";
+	case SPI_FLASH_GD25Q41B:
+		return "GD25Q41B";
+	case SPI_FLASH_W25Q64:
+		return "W25Q64";
+	case SPI_FLASH_GD25Q64C:
+		return "GD25Q64C";
+	}
+	return "Unknown chip";
+}
+
+/* Select the chip to use for SPI flash */
+void spi_flash_select(enum spi_flash_type new_chip)
+{
+	if (!spi_flash[new_chip].protect_ranges)
+		ccprintf("WARNING: %s not configured\n", get_name(new_chip));
+	else
+		select = new_chip;
+}
+#endif
