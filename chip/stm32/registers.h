@@ -1220,7 +1220,7 @@ typedef stm32_dma_chan_t dma_chan_t;
 struct stm32_dma_regs {
 	uint32_t	isr;
 	uint32_t	ifcr;
-	stm32_dma_chan_t chan[STM32_DMAC_COUNT];
+	stm32_dma_chan_t chan[STM32_DMAC_PER_CTLR];
 };
 
 /* Always use stm32_dma_regs_t so volatile keyword is included! */
