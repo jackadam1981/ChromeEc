@@ -72,8 +72,8 @@ static const struct spi_flash_config spi_flash_gd25q41b = {
 };
 #endif
 
-#ifdef CONFIG_SPI_FLASH_W25Q64
-static const struct protect_range spi_flash_protect_ranges_w25q64[] = {
+#if defined(CONFIG_SPI_FLASH_W25Q64) || defined(CONFIG_SPI_FLASH_GD25Q64C)
+static const struct protect_range spi_flash_protect_ranges_64[] = {
 	{ 0, X, X, { 0, 0, 0 }, 0, 0 },        /* No protection */
 	{ 0, 0, 1, { 1, 1, 0 }, 0, 0x400000 }, /* Lower 1/2 */
 	{ 0, 1, 1, { 1, 0, X }, 0, 0x008000 }, /* Lower 1/256 */
@@ -84,12 +84,12 @@ static const struct protect_range spi_flash_protect_ranges_w25q64[] = {
 	{ 0, 0, 1, { 1, 0, 1 }, 0, 0x200000 }, /* Lower 1/4 */
 	{ 0, X, X, { 1, 1, 1 }, 0, 0x800000 }, /* All protected */
 };
-static const struct spi_flash_config spi_flash_w25q64 = {
+static const struct spi_flash_config spi_flash_64 = {
 	.has_sr2 = 1,
-	.protect_ranges = spi_flash_protect_ranges_w25q64,
-	.num_ranges = ARRAY_SIZE(spi_flash_protect_ranges_w25q64),
+	.protect_ranges = spi_flash_protect_ranges_64,
+	.num_ranges = ARRAY_SIZE(spi_flash_protect_ranges_64),
 };
-static const struct spi_flash_config *curr_chip = &spi_flash_w25q64;
+static const struct spi_flash_config *curr_chip = &spi_flash_64;
 #else
 #ifdef CONFIG_SPI_FLASH_GD25Q41B
 static const struct spi_flash_config *curr_chip = &spi_flash_gd25q41b;
@@ -226,9 +226,10 @@ void spi_flash_select(enum spi_flash_type select)
 		curr_chip = &spi_flash_gd25q41b;
 #endif
 		break;
+	case SPI_FLASH_GD25Q64C:
 	case SPI_FLASH_W25Q64:
-#ifdef CONFIG_SPI_FLASH_W25Q64
-		curr_chip = &spi_flash_w25q64;
+#if defined(CONFIG_SPI_FLASH_W25Q64) || defined(CONFIG_SPI_FLASH_GD25Q64C)
+		curr_chip = &spi_flash_64;
 #endif
 		break;
 	}

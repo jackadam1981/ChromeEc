@@ -34,7 +34,9 @@
 /* SR2 register existence based upon chip */
 #ifdef CONFIG_SPI_FLASH_W25X40
 #undef CONFIG_SPI_FLASH_HAS_SR2
-#elif defined(CONFIG_SPI_FLASH_W25Q64) || defined(CONFIG_SPI_FLASH_GD25Q41B)
+#elif defined(CONFIG_SPI_FLASH_W25Q64) ||	\
+	defined(CONFIG_SPI_FLASH_GD25Q41B) ||	\
+	defined(CONFIG_SPI_FLASH_GD25Q64C)
 #define CONFIG_SPI_FLASH_HAS_SR2
 #endif
 
@@ -43,6 +45,7 @@ enum spi_flash_type {
 	SPI_FLASH_W25X40 = 0,
 	SPI_FLASH_GD25Q41B,
 	SPI_FLASH_W25Q64,
+	SPI_FLASH_GD25Q64C,
 };
 
 /**

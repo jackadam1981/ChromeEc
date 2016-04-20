@@ -1583,6 +1583,9 @@
 /* Support GD25Q41B SPI flash */
 #undef CONFIG_SPI_FLASH_GD25Q41B
 
+/* Support GD25Q64C SPI flash */
+#undef CONFIG_SPI_FLASH_GD25Q64C
+
 /* SPI flash part supports SR2 register */
 #undef CONFIG_SPI_FLASH_HAS_SR2
 
