@@ -227,9 +227,13 @@ void dma_test(enum dma_channel channel)
 
 void dma_init(void)
 {
+#ifdef CHIP_FAMILY_STM32L4
+	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_DMA1EN | STM32_RCC_AHB1ENR_DMA2EN;
+#else
 	STM32_RCC_AHBENR |= STM32_RCC_HB_DMA1;
 #ifdef CHIP_FAMILY_STM32F3
 	STM32_RCC_AHBENR |= STM32_RCC_HB_DMA2;
+#endif
 #endif
 	/* Delay 1 AHB clock cycle after the clock is enabled */
 	clock_wait_bus_cycles(BUS_AHB, 1);

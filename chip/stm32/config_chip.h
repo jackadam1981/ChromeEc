@@ -18,7 +18,9 @@
 #define CONFIG_UART_CONSOLE 1
 
 /* Use variant specific configuration for flash / UART / IRQ */
-#if defined(CHIP_VARIANT_STM32L15X)
+#if defined(CHIP_VARIANT_STM32L476)
+#include "config-stm32l476.h"
+#elif defined(CHIP_VARIANT_STM32L15X)
 #include "config-stm32l15x.h"
 #elif defined(CHIP_VARIANT_STM32L100)
 #include "config-stm32l100.h"
