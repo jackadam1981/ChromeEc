@@ -13,12 +13,14 @@
 #include "lid_switch.h"
 #include "timer.h"
 #include "util.h"
+#include "chipset.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SWITCH, outstr)
 #define CPRINTS(format, args...) cprints(CC_SWITCH, format, ## args)
 
 #define LID_DEBOUNCE_US    (30 * MSEC)  /* Debounce time for lid switch */
+#define LID_SWITCH_US    (200 * MSEC)
 
 /* if no X-macro is defined for LID switch GPIO, use GPIO_LID_OPEN as default */
 #ifndef CONFIG_LID_SWITCH_GPIO_LIST
@@ -27,6 +29,11 @@
 
 static int debounced_lid_open;		/* Debounced lid state */
 static int forced_lid_open;	/* Forced lid open */
+
+static int processing = 0; /* set while an event is being processed */
+static int pending = 0;    /* set when an event is deferred */
+
+static int count = 0;      /* number of retries */
 
 /**
  * Get raw lid switch state.
@@ -38,6 +45,93 @@ static int raw_lid_open(void)
 #define LID_GPIO(gpio) || gpio_get_level(gpio)
 	return (forced_lid_open CONFIG_LID_SWITCH_GPIO_LIST) ? 1 : 0;
 #undef LID_GPIO
+}
+
+/*
+ * Initiate a host event
+ * Invoke the lid change hook
+ * Setup a deferred call which will check for
+ * the desired end state
+ */
+void lid_change_with_end_state_check(int event)
+{
+	hook_notify(HOOK_LID_CHANGE);
+	host_set_single_event(event);
+
+	count = 0;
+	hook_call_deferred(end_state_check, LID_SWITCH_US);
+}
+
+/*
+ * Invoked after a desired state is reached
+ * or we give up after a fixed number of tries
+ */
+void send_pending_event(void)
+{
+	if (pending) {
+		CPRINTS("Sending pending lid event");
+
+		processing = pending;
+		lid_change_with_end_state_check(pending);
+	}
+}
+
+/*
+ * Check for the desired end state based on the
+ * current event being processed
+ */
+int in_end_state(void)
+{
+	if ((processing == EC_HOST_EVENT_LID_OPEN) && chipset_in_state(CHIPSET_STATE_ON))
+		return 1;
+	else if (((processing == EC_HOST_EVENT_LID_CLOSED) &&
+		(chipset_in_state(CHIPSET_STATE_SUSPEND) ||
+		chipset_in_state(CHIPSET_STATE_STANDBY) ||
+		chipset_in_state(CHIPSET_STATE_SOFT_OFF))))
+		return 1;
+	else
+		return 0;
+}
+
+/*
+ * Checks if the desired end state has been reached.
+ * If the state has been reached, then any pending events
+ * are processed and processing/pending bits cleared
+ *
+ * If not reached, a new deferred call is setup if count < max_retries
+ *
+ * If max number of retries have been reached, then we give up and
+ * clear any pending events without processing.
+ */
+void end_state_check(void)
+{
+	if (in_end_state()) {
+		send_pending_event();
+		processing = pending = 0;
+
+		return;
+	}
+
+	if (count++ < 10)
+		hook_call_deferred(end_state_check, LID_SWITCH_US);
+	else
+		processing = pending = 0;
+
+}
+DECLARE_DEFERRED(end_state_check);
+
+/*
+ * check if any event is being processed
+ * if not, process it immediately
+ * if yes, mark the event as pending for deferred processing
+ */
+void handle_lid_change_event(int event)
+{
+	if (!processing) {
+		processing = event;
+		lid_change_with_end_state_check(event);
+	} else
+		pending = event;
 }
 
 /**
@@ -52,8 +146,8 @@ static void lid_switch_open(void)
 
 	CPRINTS("lid open");
 	debounced_lid_open = 1;
-	hook_notify(HOOK_LID_CHANGE);
-	host_set_single_event(EC_HOST_EVENT_LID_OPEN);
+
+	handle_lid_change_event(EC_HOST_EVENT_LID_OPEN);
 }
 
 /**
@@ -68,8 +162,8 @@ static void lid_switch_close(void)
 
 	CPRINTS("lid close");
 	debounced_lid_open = 0;
-	hook_notify(HOOK_LID_CHANGE);
-	host_set_single_event(EC_HOST_EVENT_LID_CLOSED);
+
+	handle_lid_change_event(EC_HOST_EVENT_LID_CLOSED);
 }
 
 test_mockable int lid_is_open(void)
