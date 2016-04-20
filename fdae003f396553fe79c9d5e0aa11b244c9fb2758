@@ -311,6 +311,30 @@
     },
     {
       "key": {
+        "uuid": "a80ce8ee_d99ed37e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-20T02:11:11Z",
+      "side": 1,
+      "message": "Thanks for the big information! Totally no idea there is an on-going patch from Analogix, and looks like the patch we got from them for ANX7688 is so old (patch set 4, now it is 19...)\n \nNicolas/Rong: Can we ask Analogix to do the same thing for us? Maybe an implementation based on that ANX7428 version would be easier, I think.",
+      "parentUuid": "a801483f_dafe347a",
+      "range": {
+        "startLine": 364,
+        "startChar": 1,
+        "endLine": 365,
+        "endChar": 13
+      },
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28939819_43addabf",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
