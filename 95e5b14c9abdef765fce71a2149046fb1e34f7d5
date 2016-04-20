@@ -22,6 +22,30 @@
       "revId": "95e5b14c9abdef765fce71a2149046fb1e34f7d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_57cd1682",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-20T17:41:11Z",
+      "side": 1,
+      "message": "For compile, CPRINTF/CPRINTS (line 56/57) will make this an empty statement for non-CONFIG_COMMON_RUNTIME, so buildall passes.\n\nFor timestamp, agree with you on the accuracy, so I can revert back to use CPRINTF to not print the timestamp.",
+      "parentUuid": "88656498_3c7089a3",
+      "range": {
+        "startLine": 331,
+        "startChar": 1,
+        "endLine": 331,
+        "endChar": 70
+      },
+      "revId": "95e5b14c9abdef765fce71a2149046fb1e34f7d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
