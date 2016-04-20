@@ -71,6 +71,52 @@
     },
     {
       "key": {
+        "uuid": "88656498_08c45cb2",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-20T23:45:43Z",
+      "side": 1,
+      "message": "Why not replace with a single \u0027for\u0027 loop on [0, SHI_OBUF_FULL_SIZE)?",
+      "range": {
+        "startLine": 453,
+        "startChar": 1,
+        "endLine": 457,
+        "endChar": 24
+      },
+      "revId": "957638c78cc5aa0ba37ef281e2c6a09215c5d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_c84f240c",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-20T23:45:43Z",
+      "side": 1,
+      "message": "Terrible things will happen if the input buffer pointer gets incremented soon after assigning offset. Should we use SHI_OBUF_VALID_OFFSET + 1 (modulo ...) instead? (Assumption: we\u0027ll write to tx_buf before the input buffer pointer is incremented twice).",
+      "range": {
+        "startLine": 481,
+        "startChar": 1,
+        "endLine": 481,
+        "endChar": 32
+      },
+      "revId": "957638c78cc5aa0ba37ef281e2c6a09215c5d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_08745ccc",
         "filename": "chip/npcx/shi.c",
         "patchSetId": 10
