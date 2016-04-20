@@ -34,11 +34,14 @@
 /*
  * Debug log level - higher number == more log
  *   Level 0: Log state transitions
- *   Level 1: Level 0, plus packet info
- *   Level 2: Level 1, plus ping packet and packet dump on error
+ *   Level 1: Level 0, plus state name
+ *   Level 2: Level 1, plus packet info
+ *   Level 3: Level 2, plus ping packet and packet dump on error
  *
  * Note that higher log level causes timing changes and thus may affect
  * performance.
+ *
+ * Can be limited by CONFIG_USB_PD_DEBUG_LEVEL
  */
 static int debug_level;
 
@@ -345,7 +348,13 @@ static inline void set_state(int port, enum pd_states next_state)
 		disable_sleep(SLEEP_MASK_USB_PD);
 #endif
 
-	CPRINTF("C%d st%d\n", port, next_state);
+#if CONFIG_USB_PD_DEBUG_LEVEL >= 1
+	if (debug_level >= 1)
+		CPRINTF("C%d st%d %s\n", port, next_state,
+					 pd_state_names[next_state]);
+	else
+#endif
+		CPRINTF("C%d st%d\n", port, next_state);
 }
 
 /* increment message ID counter */
@@ -397,10 +406,10 @@ static int send_control(int port, int type)
 			pd[port].data_role, pd[port].msg_id, 0);
 
 	bit_len = pd_transmit(port, TCPC_TX_SOP, header, NULL);
-
-	if (debug_level >= 1)
+#if CONFIG_USB_PD_DEBUG_LEVEL >= 2
+	if (debug_level >= 2)
 		CPRINTF("CTRL[%d]>%d\n", type, bit_len);
-
+#endif
 	return bit_len;
 }
 
@@ -426,22 +435,26 @@ static int send_source_cap(int port)
 			pd[port].data_role, pd[port].msg_id, src_pdo_cnt);
 
 	bit_len = pd_transmit(port, TCPC_TX_SOP, header, src_pdo);
-	if (debug_level >= 1)
+#if CONFIG_USB_PD_DEBUG_LEVEL >= 2
+	if (debug_level >= 2)
 		CPRINTF("srcCAP>%d\n", bit_len);
-
+#endif
 	return bit_len;
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 static void send_sink_cap(int port)
 {
-	int bit_len;
 	uint16_t header = PD_HEADER(PD_DATA_SINK_CAP, pd[port].power_role,
 			pd[port].data_role, pd[port].msg_id, pd_snk_pdo_cnt);
+#if CONFIG_USB_PD_DEBUG_LEVEL >= 2
+	int bit_len = pd_transmit(port, TCPC_TX_SOP, header, pd_snk_pdo);
 
-	bit_len = pd_transmit(port, TCPC_TX_SOP, header, pd_snk_pdo);
-	if (debug_level >= 1)
+	if (debug_level >= 2)
 		CPRINTF("snkCAP>%d\n", bit_len);
+#else
+	pd_transmit(port, TCPC_TX_SOP, header, pd_snk_pdo);
+#endif
 }
 
 static int send_request(int port, uint32_t rdo)
@@ -451,9 +464,10 @@ static int send_request(int port, uint32_t rdo)
 			pd[port].data_role, pd[port].msg_id, 1);
 
 	bit_len = pd_transmit(port, TCPC_TX_SOP, header, &rdo);
-	if (debug_level >= 1)
+#if CONFIG_USB_PD_DEBUG_LEVEL >= 2
+	if (debug_level >= 2)
 		CPRINTF("REQ%d>\n", bit_len);
-
+#endif
 	return bit_len;
 }
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
@@ -512,9 +526,11 @@ static void handle_vdm_request(int port, int cnt, uint32_t *payload)
 		queue_vdm(port, rdata, &rdata[1], rlen - 1);
 		return;
 	}
-	if (debug_level >= 1)
+#if CONFIG_USB_PD_DEBUG_LEVEL >= 2
+	if (debug_level >= 2)
 		CPRINTF("Unhandled VDM VID %04x CMD %04x\n",
 			PD_VDO_VID(payload[0]), payload[0] & 0xFFFF);
+#endif
 }
 
 void pd_execute_hard_reset(int port)
@@ -1037,16 +1053,19 @@ static void handle_request(int port, uint16_t head,
 		uint32_t *payload)
 {
 	int cnt = PD_HEADER_CNT(head);
-	int p;
 
-	/* dump received packet content (only dump ping at debug level 2) */
-	if ((debug_level == 1 && PD_HEADER_TYPE(head) != PD_CTRL_PING) ||
-	    debug_level >= 2) {
+	/* dump received packet content (only dump ping at debug level 3) */
+#if CONFIG_USB_PD_DEBUG_LEVEL >= 2
+	if ((debug_level == 2 && PD_HEADER_TYPE(head) != PD_CTRL_PING) ||
+	    debug_level >= 3) {
+		int p;
+
 		CPRINTF("RECV %04x/%d ", head, cnt);
 		for (p = 0; p < cnt; p++)
 			CPRINTF("[%d]%08x ", p, payload[p]);
 		CPRINTF("\n");
 	}
+#endif
 
 	/*
 	 * If we are in disconnected state, we shouldn't get a request. Do
@@ -1194,9 +1213,11 @@ int pd_dev_store_rw_hash(int port, uint16_t dev_id, uint32_t *rw_hash,
 
 	pd[port].dev_id = dev_id;
 	memcpy(pd[port].dev_rw_hash, rw_hash, PD_RW_HASH_SIZE);
+#if CONFIG_USB_PD_DEBUG_LEVEL >= 2
 #ifdef CONFIG_CMD_PD_DEV_DUMP_INFO
-	if (debug_level >= 1)
+	if (debug_level >= 2)
 		pd_dev_dump_info(dev_id, (uint8_t *)rw_hash);
+#endif
 #endif
 	pd[port].current_image = current_image;
 
@@ -1894,9 +1915,11 @@ void pd_task(void)
 					send_control(port, PD_CTRL_GET_SINK_CAP);
 					set_state(port, PD_STATE_SRC_GET_SINK_CAP);
 					break;
-				} else if (debug_level >= 1 &&
+#if CONFIG_USB_PD_DEBUG_LEVEL >= 2
+				} else if (debug_level >= 2 &&
 					   snk_cap_count == PD_SNK_CAP_RETRIES+1) {
 					CPRINTF("ERR SNK_CAP\n");
+#endif
 				}
 			}
 

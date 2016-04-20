@@ -1990,6 +1990,9 @@
 /* Default USB data role when a USB PD debug accessory is seen */
 #define CONFIG_USB_PD_DEBUG_DR PD_ROLE_DFP
 
+/* PD Task debug level */
+#define CONFIG_USB_PD_DEBUG_LEVEL 3
+
 /*
  * Define if this board can enable VBUS discharge (eg. through a GPIO-controlled
  * discharge circuit, or through port controller registers) to discharge VBUS
