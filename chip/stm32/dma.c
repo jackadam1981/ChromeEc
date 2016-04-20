@@ -214,7 +214,15 @@ void dma_test(enum dma_channel channel)
 
 void dma_init(void)
 {
+#ifdef CHIP_FAMILY_STM32L4
+	uint32_t val;
+	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_DMA1EN;
+	/* channel select should be in uart.c */
+	val = STM32_DMA1_CSELR & ~0x0000F000;
+	STM32_DMA1_CSELR = val | 0x00002000;
+#else
 	STM32_RCC_AHBENR |= STM32_RCC_HB_DMA1;
+#endif
 #ifdef CHIP_FAMILY_STM32F3
 	STM32_RCC_AHBENR |= STM32_RCC_HB_DMA2;
 #endif
