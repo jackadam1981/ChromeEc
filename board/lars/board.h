@@ -128,7 +128,7 @@
 #define I2C_PORT_THERMAL MEC1322_I2C3
 
 #undef DEFERRABLE_MAX_COUNT
-#define DEFERRABLE_MAX_COUNT 15
+#define DEFERRABLE_MAX_COUNT 16
 
 /* Modules we want to exclude */
 #undef CONFIG_CMD_ACCEL_INFO

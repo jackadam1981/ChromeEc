@@ -13,12 +13,14 @@
 #include "lid_switch.h"
 #include "timer.h"
 #include "util.h"
+#include "chipset.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SWITCH, outstr)
 #define CPRINTS(format, args...) cprints(CC_SWITCH, format, ## args)
 
 #define LID_DEBOUNCE_US    (30 * MSEC)  /* Debounce time for lid switch */
+#define LID_SWITCH_US    (200 * MSEC)
 
 /* if no X-macro is defined for LID switch GPIO, use GPIO_LID_OPEN as default */
 #ifndef CONFIG_LID_SWITCH_GPIO_LIST
@@ -27,6 +29,9 @@
 
 static int debounced_lid_open;		/* Debounced lid state */
 static int forced_lid_open;	/* Forced lid open */
+
+static int pending = 0;    /* set when an event is deferred */
+static int count = 0;      /* count of retries */
 
 /**
  * Get raw lid switch state.
@@ -38,6 +43,85 @@ static int raw_lid_open(void)
 #define LID_GPIO(gpio) || gpio_get_level(gpio)
 	return (forced_lid_open CONFIG_LID_SWITCH_GPIO_LIST) ? 1 : 0;
 #undef LID_GPIO
+}
+
+/*
+ * Check for the desired start state based on the
+ * current pending event
+ */
+static int in_start_state(void)
+{
+	if ((pending == EC_HOST_EVENT_LID_CLOSED) && chipset_in_state(CHIPSET_STATE_ON))
+		return 1;
+	else if (((pending == EC_HOST_EVENT_LID_OPEN) &&
+		(chipset_in_state(CHIPSET_STATE_SUSPEND) ||
+		chipset_in_state(CHIPSET_STATE_STANDBY) ||
+		chipset_in_state(CHIPSET_STATE_ANY_OFF))))
+		return 1;
+	else
+		return 0;
+}
+
+/*
+ * Invoke the lid change hook
+ * Initiate a host event
+ */
+static void send_event(int event)
+{
+	hook_notify(HOOK_LID_CHANGE);
+	host_set_single_event(event);
+}
+
+/*
+ * Checks if the desired start state has been reached.
+ * If the state has been reached, then any pending event
+ * is processed
+ *
+ * If not reached, a new deferred call is setup if count < max_retries
+ *
+ * If max number of retries have been reached, then we give up and
+ * clear any pending event without processing.
+ */
+void start_state_check(void)
+{
+	if (in_start_state()) {
+		send_event(pending);
+		pending = 0;
+		return;
+	}
+
+	if (count++ < 20)
+		hook_call_deferred(start_state_check, LID_SWITCH_US);
+	else
+		pending = 0;
+}
+DECLARE_DEFERRED(start_state_check);
+
+/*
+ * If there is a pending event which is waiting for a desired
+ * state and a new event comes, we cancel any deferred checks
+ * and process the new event.
+ *
+ * if yes, mark the event as pending for deferred processing
+ */
+static void handle_lid_change_event(int event)
+{
+	if (pending) {
+		/*
+		 * Cancel if there is any pending event
+		 * waiting for a desired state
+		 */
+		hook_call_deferred(start_state_check, -1);
+	}
+
+	/* Mark the new event as pending */
+	pending = event;
+	if (in_start_state()) {
+		send_event(pending);
+		pending = count = 0;
+	}
+	else
+		hook_call_deferred(start_state_check, LID_SWITCH_US);
 }
 
 /**
@@ -52,8 +136,8 @@ static void lid_switch_open(void)
 
 	CPRINTS("lid open");
 	debounced_lid_open = 1;
-	hook_notify(HOOK_LID_CHANGE);
-	host_set_single_event(EC_HOST_EVENT_LID_OPEN);
+
+	handle_lid_change_event(EC_HOST_EVENT_LID_OPEN);
 }
 
 /**
@@ -68,8 +152,8 @@ static void lid_switch_close(void)
 
 	CPRINTS("lid close");
 	debounced_lid_open = 0;
-	hook_notify(HOOK_LID_CHANGE);
-	host_set_single_event(EC_HOST_EVENT_LID_CLOSED);
+
+	handle_lid_change_event(EC_HOST_EVENT_LID_CLOSED);
 }
 
 test_mockable int lid_is_open(void)
