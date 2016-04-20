@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "88656498_f78a0a0f",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-04-20T21:50:24Z",
+      "side": 1,
+      "message": "I added inline functions in the header instead, because of space requirements.",
+      "parentUuid": "88656498_abff5546",
+      "revId": "35bd2caf270caafc7a702669f2510af15070d5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_4b157961",
         "filename": "common/spi_flash.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-04-20T05:15:17Z",
       "side": 1,
       "message": "why does logic changes here?",
+      "revId": "35bd2caf270caafc7a702669f2510af15070d5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_37f3c28a",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-04-20T21:50:24Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "88656498_4b157961",
       "revId": "35bd2caf270caafc7a702669f2510af15070d5f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -76,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_7d283b77",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-04-20T21:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88656498_fcbd11d9",
+      "range": {
+        "startLine": 92,
+        "startChar": 20,
+        "endLine": 92,
+        "endChar": 36
+      },
+      "revId": "35bd2caf270caafc7a702669f2510af15070d5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_fc0f5185",
         "filename": "common/spi_flash_reg.c",
         "patchSetId": 1
@@ -104,6 +164,24 @@
       "writtenOn": "2016-04-20T17:03:53Z",
       "side": 1,
       "message": "add \"at runtime\".",
+      "revId": "35bd2caf270caafc7a702669f2510af15070d5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_d700262b",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-04-20T21:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88656498_5c31bd31",
       "revId": "35bd2caf270caafc7a702669f2510af15070d5f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
