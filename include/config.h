@@ -1586,6 +1586,12 @@
 /* SPI flash part supports SR2 register */
 #undef CONFIG_SPI_FLASH_HAS_SR2
 
+/* Support selecting different SPI flash at runtime */
+#undef CONFIG_SPI_FLASH_SELECT
+
+/* Default SPI flash */
+#undef CONFIG_SPI_FLASH_DEFAULT
+
 /* Support JEDEC SFDP based Serial NOR flash */
 #undef CONFIG_SPI_NOR
 
