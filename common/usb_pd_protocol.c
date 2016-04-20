@@ -54,6 +54,7 @@ static uint8_t pd_comm_enabled = 1;
 #endif
 #else /* CONFIG_COMMON_RUNTIME */
 #define CPRINTF(format, args...)
+#define CPRINTS(format, args...)
 static const int debug_level;
 static const uint8_t pd_comm_enabled = 1;
 #endif
@@ -327,7 +328,7 @@ static inline void set_state(int port, enum pd_states next_state)
 		disable_sleep(SLEEP_MASK_USB_PD);
 #endif
 
-	CPRINTF("C%d st%d\n", port, next_state);
+	CPRINTS("C%d st%d %s", port, next_state, pd_state_names[next_state]);
 }
 
 /* increment message ID counter */
