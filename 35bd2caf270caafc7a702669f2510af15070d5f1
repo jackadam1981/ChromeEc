@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_abff5546",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-20T05:15:17Z",
+      "side": 1,
+      "message": "I would put these conditional compilation statements here and in line 128 into a spi_flash_has_sr2()",
+      "revId": "35bd2caf270caafc7a702669f2510af15070d5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_4b157961",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-20T05:15:17Z",
+      "side": 1,
+      "message": "why does logic changes here?",
+      "revId": "35bd2caf270caafc7a702669f2510af15070d5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_6b12bd7c",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-20T05:15:17Z",
+      "side": 1,
+      "message": "no need to explicitly assign structure elements\u0027 values to zero.",
+      "revId": "35bd2caf270caafc7a702669f2510af15070d5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
