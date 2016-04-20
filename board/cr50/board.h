@@ -134,4 +134,6 @@ void sys_rst_asserted(enum gpio_signal signal);
 #define CONFIG_NON_HC_FW_UPDATE
 #define CONFIG_USB_FW_UPDATE
 
+#define CONFIG_I2C_SLAVE
+
 #endif /* __CROS_EC_BOARD_H */
