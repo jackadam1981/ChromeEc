@@ -26,6 +26,12 @@ struct protect_range {
 	uint32_t protect_len;
 };
 
+struct spi_flash_config {
+	int has_sr2;		/* SR2 register existence */
+	const struct protect_range const *protect_ranges;
+	int num_ranges;
+};
+
 /* Compare macro for (x =? b) for 'X' comparison */
 #define COMPARE_BIT(a, b) ((a) != X && (a) != !!(b))
 /* Assignment macro where 'X' = 0 */
@@ -38,7 +44,7 @@ struct protect_range {
  * according to likely configurations improves performance slightly.
  */
 #if defined(CONFIG_SPI_FLASH_W25X40) || defined(CONFIG_SPI_FLASH_GD25Q41B)
-static const struct protect_range spi_flash_protect_ranges[] = {
+static const struct protect_range spi_flash_protect_ranges_4x[] = {
 	{ X, X, X, { 0, 0, 0 }, 0, 0 },       /* No protection */
 	{ X, X, 1, { 0, 1, 1 }, 0, 0x40000 }, /* Lower 1/2 */
 	{ X, X, 1, { 0, 0, 1 }, 0, 0x10000 }, /* Lower 1/8 */
@@ -48,9 +54,26 @@ static const struct protect_range spi_flash_protect_ranges[] = {
 	{ X, X, 0, { 0, 1, 0 }, 0x60000, 0x20000 }, /* Upper 1/4*/
 	{ X, X, 0, { 0, 1, 1 }, 0x40000, 0x40000 }, /* Upper 1/2*/
 };
+#endif
 
-#elif defined(CONFIG_SPI_FLASH_W25Q64)
-static const struct protect_range spi_flash_protect_ranges[] = {
+#ifdef CONFIG_SPI_FLASH_W25X40
+static const struct spi_flash_config spi_flash_w25x40 = {
+	.has_sr2 = 0,
+	.protect_ranges = spi_flash_protect_ranges_4x,
+	.num_ranges = ARRAY_SIZE(spi_flash_protect_ranges_4x),
+};
+#endif
+
+#ifdef CONFIG_SPI_FLASH_GD25Q41B
+static const struct spi_flash_config spi_flash_gd25q41b = {
+	.has_sr2 = 1,
+	.protect_ranges = spi_flash_protect_ranges_4x,
+	.num_ranges = ARRAY_SIZE(spi_flash_protect_ranges_4x),
+};
+#endif
+
+#ifdef CONFIG_SPI_FLASH_W25Q64
+static const struct protect_range spi_flash_protect_ranges_w25q64[] = {
 	{ 0, X, X, { 0, 0, 0 }, 0, 0 },        /* No protection */
 	{ 0, 0, 1, { 1, 1, 0 }, 0, 0x400000 }, /* Lower 1/2 */
 	{ 0, 1, 1, { 1, 0, X }, 0, 0x008000 }, /* Lower 1/256 */
@@ -61,6 +84,18 @@ static const struct protect_range spi_flash_protect_ranges[] = {
 	{ 0, 0, 1, { 1, 0, 1 }, 0, 0x200000 }, /* Lower 1/4 */
 	{ 0, X, X, { 1, 1, 1 }, 0, 0x800000 }, /* All protected */
 };
+static const struct spi_flash_config spi_flash_w25q64 = {
+	.has_sr2 = 1,
+	.protect_ranges = spi_flash_protect_ranges_w25q64,
+	.num_ranges = ARRAY_SIZE(spi_flash_protect_ranges_w25q64),
+};
+static const struct spi_flash_config *curr_chip = &spi_flash_w25q64;
+#else
+#ifdef CONFIG_SPI_FLASH_GD25Q41B
+static const struct spi_flash_config *curr_chip = &spi_flash_gd25q41b;
+#elif defined(CONFIG_SPI_FLASH_W25X40)
+static const struct spi_flash_config *curr_chip = &spi_flash_w25x40;
+#endif
 #endif
 
 /**
@@ -95,8 +130,8 @@ int spi_flash_reg_to_protect(uint8_t sr1, uint8_t sr2, unsigned int *start,
 	if (!start || !len || sr1 == -1 || sr2 == -1)
 		return EC_ERROR_INVAL;
 
-	for (i = 0; i < ARRAY_SIZE(spi_flash_protect_ranges); ++i) {
-		range = &spi_flash_protect_ranges[i];
+	for (i = 0; i < curr_chip->num_ranges; ++i) {
+		range = &curr_chip->protect_ranges[i];
 		if (COMPARE_BIT(range->cmp, cmp))
 			continue;
 		if (COMPARE_BIT(range->sec, sec))
@@ -147,8 +182,8 @@ int spi_flash_protect_to_reg(unsigned int start, unsigned int len, uint8_t *sr1,
 	if ((start && !len) || start + len > CONFIG_FLASH_SIZE)
 		return EC_ERROR_INVAL;
 
-	for (i = 0; i < ARRAY_SIZE(spi_flash_protect_ranges); ++i) {
-		range = &spi_flash_protect_ranges[i];
+	for (i = 0; i < curr_chip->num_ranges; ++i) {
+		range = &curr_chip->protect_ranges[i];
 		if (range->protect_start == start &&
 		    range->protect_len == len) {
 			cmp = GET_BIT(range->cmp);
@@ -169,3 +204,33 @@ int spi_flash_protect_to_reg(unsigned int start, unsigned int len, uint8_t *sr1,
 	/* Invalid range, or valid range missing from our table */
 	return EC_ERROR_INVAL;
 }
+
+#ifdef CONFIG_SPI_FLASH_SELECT
+/* Get SR2 register existence based upon chip */
+int spi_flash_has_sr2(void)
+{
+	return curr_chip->has_sr2;
+}
+
+/* Select the chip to use for SPI flash */
+void spi_flash_select(enum spi_flash_type select)
+{
+	switch (select) {
+	case SPI_FLASH_W25X40:
+#ifdef CONFIG_SPI_FLASH_W25X40
+		curr_chip = &spi_flash_w25x40;
+#endif
+		break;
+	case SPI_FLASH_GD25Q41B:
+#ifdef CONFIG_SPI_FLASH_GD25Q41B
+		curr_chip = &spi_flash_gd25q41b;
+#endif
+		break;
+	case SPI_FLASH_W25Q64:
+#ifdef CONFIG_SPI_FLASH_W25Q64
+		curr_chip = &spi_flash_w25q64;
+#endif
+		break;
+	}
+}
+#endif

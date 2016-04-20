@@ -87,7 +87,10 @@ uint8_t spi_flash_get_status2(void)
 	uint8_t resp;
 
 	/* Second status register not present */
-#ifndef CONFIG_SPI_FLASH_HAS_SR2
+#ifdef SPI_FLASH_SELECT
+	if (!spi_flash_has_sr2())
+		return 0;
+#elif !defined(CONFIG_SPI_FLASH_HAS_SR2)
 	return 0;
 #endif
 
@@ -122,10 +125,12 @@ int spi_flash_set_status(int reg1, int reg2)
 		return rv;
 
 	/* Second status register not present */
-#ifndef CONFIG_SPI_FLASH_HAS_SR2
-	reg2 = -1;
+#ifdef SPI_FLASH_SELECT
+	if (!spi_flash_has_sr2())
+		return 0;
+#elif !defined(CONFIG_SPI_FLASH_HAS_SR2)
+	return 0;
 #endif
-
 	if (reg2 == -1)
 		rv = spi_transaction(SPI_FLASH_DEVICE, cmd, 2, NULL, 0);
 	else
