@@ -20,6 +20,7 @@
 #define CONFIG_WP_ALWAYS
 /* TODO(crosbug.com/p/44745): For debugging only */
 #define CONFIG_CMD_FLASH
+#define CONFIG_CMD_SPI_FLASH
 
 /* Go to sleep when nothing else is happening */
 #define CONFIG_LOW_POWER_IDLE
@@ -37,6 +38,19 @@
 #define CONFIG_STREAM_USB
 
 #define CONFIG_USB_PID 0x5014
+
+/* Enable SPI Master (SPI) module */
+#define CONFIG_SPI_MASTER
+#define CONFIG_SPI_MASTER_NO_CS_GPIOS
+#define CONFIG_SPI_MASTER_CONFIGURE_GPIOS
+
+/* SPI flash configuration */
+#define CONFIG_SPI_FLASH
+#define CONFIG_SPI_FLASH_GD25Q41B
+#define CONFIG_SPI_FLASH_GD25Q64C
+#define CONFIG_SPI_FLASH_DEFAULT SPI_FLASH_GD25Q64C
+#define CONFIG_SPI_FLASH_PORT 0
+#define CONFIG_SPI_FLASH_SELECT
 
 /* Enable SPI Slave (SPS) module */
 #define CONFIG_SPS
@@ -80,6 +94,14 @@ enum usb_strings {
 	USB_STR_UPGRADE_NAME,
 
 	USB_STR_COUNT
+};
+
+/* SPI ROM indexes */
+enum spi_flash_type {
+	SPI_FLASH_GD25Q41B = 0,
+	SPI_FLASH_GD25Q64C,
+
+	SPI_FLASH_COUNT
 };
 
 /* Interrupt handler */
