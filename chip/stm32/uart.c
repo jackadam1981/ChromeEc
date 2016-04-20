@@ -240,7 +240,7 @@ static void uart_freq_change(void)
 	div = DIV_ROUND_NEAREST(freq, CONFIG_UART_BAUD_RATE);
 
 #if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F0) || \
-	defined(CHIP_FAMILY_STM32F3)
+	defined(CHIP_FAMILY_STM32F3) || defined(CHIP_FAMILY_STM32L4)
 	if (div / 16 > 0) {
 		/*
 		 * CPU clock is high enough to support x16 oversampling.
@@ -266,15 +266,18 @@ DECLARE_HOOK(HOOK_FREQ_CHANGE, uart_freq_change, HOOK_PRIO_DEFAULT);
 
 void uart_init(void)
 {
-	/* Enable USART clock */
+	/* Select clock source */
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)
 #if (UARTN == 1)
 	STM32_RCC_CFGR3 |= 0x0003;   /* USART1 clock source from HSI(8MHz) */
 #elif (UARTN == 2)
 	STM32_RCC_CFGR3 |= 0x030000; /* USART2 clock source from HSI(8MHz) */
 #endif /* UARTN */
+#elif defined(CHIP_FAMILY_STM32L4)
+	STM32_RCC_CCIPR |= (0x2 << STM32_RCC_CCIPR_USART1SEL_SHIFT);
 #endif /* CHIP_FAMILY_STM32F0 || CHIP_FAMILY_STM32F3 */
 
+	/* Enable USART clock */
 #if (UARTN == 1)
 	STM32_RCC_APB2ENR |= STM32_RCC_PB2_USART1;
 #else
@@ -320,6 +323,9 @@ void uart_init(void)
 #ifdef CONFIG_UART_TX_DMA
 	/* Enable DMA transmitter */
 	STM32_USART_CR3(UARTN_BASE) |= STM32_USART_CR3_DMAT;
+#ifdef STM32_UART_TX_DMA_PH
+	dma_select_channel(CONFIG_UART_TX_DMA_CH, STM32_UART_TX_DMA_PH);
+#endif
 #else
 	/* DMA disabled, special modes disabled, error interrupt disabled */
 	STM32_USART_CR3(UARTN_BASE) &= ~STM32_USART_CR3_DMAR &
