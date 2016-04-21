@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c8275cf3_d980ffeb",
+        "filename": "board/setzer/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-04-21T18:35:37Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "28939819_e6419439",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "d4aaf84c28b6fd2a96c8553461735054d182648a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28939819_e6df5451",
         "filename": "board/setzer/board.c",
         "patchSetId": 13
