@@ -59,6 +59,19 @@ stm32_dma_chan_t *dma_get_channel(enum dma_channel channel)
 	return &dma->chan[channel % STM32_DMAC_PER_CTLR];
 }
 
+#ifdef STM32_DMA_CSELR
+void dma_select_channel(enum dma_channel channel, unsigned char peripheral)
+{
+	uint32_t val;
+	const unsigned char shift = STM32_DMA_PERIPHERALS_PER_CHANNEL;
+
+	ASSERT(channel < STM32_DMAC_COUNT);
+	ASSERT(peripheral < 0x1 << shift);
+	val = STM32_DMA_CSELR(channel) & ~(0xf << channel * shift);
+	STM32_DMA_CSELR(channel) = val | (peripheral << channel * shift);
+}
+#endif
+
 void dma_disable(enum dma_channel channel)
 {
 	stm32_dma_chan_t *chan = dma_get_channel(channel);
