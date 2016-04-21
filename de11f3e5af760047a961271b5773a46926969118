@@ -50,6 +50,24 @@
       "revId": "de11f3e5af760047a961271b5773a46926969118",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_3d22b9ed",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-04-21T08:22:59Z",
+      "side": 1,
+      "message": "Oops. I misunderstand what you mean.\nBut since we have preamble bytes, it\u0027s still not necessary.",
+      "parentUuid": "88656498_da804329",
+      "revId": "de11f3e5af760047a961271b5773a46926969118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
