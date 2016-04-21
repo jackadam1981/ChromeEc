@@ -180,10 +180,17 @@ static void shi_send_response_packet(struct host_packet *pkt)
 	 */
 	if (state == SHI_STATE_PROCESSING) {
 		/*
+		* Disable interrupts. This routine is not called from interrupt
+		* context and buffer underrun will likely occur if it is
+		* preempted after writing its initial reply byte.
+		*/
+		interrupt_disable();
+		/*
 		 * Disable SHI interrupt until we have prepared
 		 * the first package to output
 		 */
 		task_disable_irq(NPCX_IRQ_SHI);
+
 		/* Transmit the reply */
 		state = SHI_STATE_SENDING;
 		DEBUG_CPRINTF("SND-");
@@ -191,6 +198,7 @@ static void shi_send_response_packet(struct host_packet *pkt)
 		shi_write_outbuf_wait(shi_params.sz_response);
 		/* Enable SHI interrupt */
 		task_enable_irq(NPCX_IRQ_SHI);
+		interrupt_enable();
 	}
 	/*
 	 * If we're not processing, then the AP has already terminated the
@@ -318,7 +326,12 @@ static void shi_write_outbuf_wait(uint16_t szbytes)
 {
 	uint16_t i;
 	static uint16_t offset, size;
-	offset = SHI_OBUF_VALID_OFFSET;
+
+	/*
+	 * Start reply at (obuf + 1) to ensure the obuf pointer doesn't get
+	 * immediately incremented.
+	 */
+	offset = (SHI_OBUF_VALID_OFFSET + 1) % SHI_OBUF_FULL_SIZE;
 	shi_params.tx_buf = SHI_OBUF_START_ADDR + offset;
 
 	/* Fill half output buffer */
@@ -330,6 +343,12 @@ static void shi_write_outbuf_wait(uint16_t szbytes)
 	/* Write data from bottom address again */
 	if (shi_params.tx_buf == SHI_OBUF_FULL_ADDR)
 		shi_params.tx_buf = SHI_OBUF_START_ADDR;
+
+	/*
+	 * Wait for the obuf pointer to increment to ensure we don't overwrite
+	 * EC_SPI_PROCESSING with actual data.
+	 */
+	while ((SHI_OBUF_VALID_OFFSET + 1) % SHI_OBUF_FULL_SIZE == offset);
 
 	/* Fill next half output buffer */
 	size = MIN(SHI_OBUF_HALF_SIZE, szbytes - shi_params.sz_sending);
@@ -506,6 +525,7 @@ void shi_int_handler(void)
  * GPIO. Then we could receive CS-deasserted event even in CS-asserted ISR.
  */
 DECLARE_IRQ(NPCX_IRQ_SHI, shi_int_handler, 0);
+
 
 /* Handle an CS assert event on the SHI_CS_L pin */
 void shi_cs_event(enum gpio_signal signal)
