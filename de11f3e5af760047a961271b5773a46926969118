@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_3aa39fda",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-04-21T07:10:36Z",
+      "side": 1,
+      "message": "It\u0027s better to change SHI_OUT_PREAMBLE_LENGTH from 2 to 3.",
+      "revId": "de11f3e5af760047a961271b5773a46926969118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_5a9c5393",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-04-21T07:10:36Z",
+      "side": 1,
+      "message": "It\u0027s better to change \"Fill remaninng bytes of current half output buffer\".",
+      "revId": "de11f3e5af760047a961271b5773a46926969118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_da804329",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-04-21T07:10:36Z",
+      "side": 1,
+      "message": "Is it necessary? \nThe actual output pointer should be in the other half buffer. FW should fill the next buffer ASAP in case the shi outputs the data we don\u0027t modify yet.\nAnd it also causes problem if the actual obuf\u0027s pointer is over offset.",
+      "revId": "de11f3e5af760047a961271b5773a46926969118",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
