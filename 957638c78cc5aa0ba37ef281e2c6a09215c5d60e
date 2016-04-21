@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_94c62187",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-04-21T07:09:59Z",
+      "side": 1,
+      "message": "It\u0027s related to hardware design.\nI will forward this requirement to the designers.",
+      "parentUuid": "88656498_a868b0f2",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 80
+      },
+      "revId": "957638c78cc5aa0ba37ef281e2c6a09215c5d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_2884c0fd",
         "filename": "chip/npcx/shi.c",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-20T23:12:57Z",
       "side": 1,
       "message": "I\u0027m not clear why the interrupt needs to be disabled here. Can you explain?",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 224,
+        "endChar": 33
+      },
+      "revId": "957638c78cc5aa0ba37ef281e2c6a09215c5d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_3ad87ff4",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-04-21T07:09:59Z",
+      "side": 1,
+      "message": "The reason to disable SHI\u0027s interrupt is that we like to fill the first package of response data into output buffer at least with over half size of it before interrupt issued.\nIt helps FW to have enough time to handle output data.\nPlease notice SHI\u0027s ISR will change the pointer of TX buffer (shi_params.tx_buf).",
+      "parentUuid": "88656498_2884c0fd",
       "range": {
         "startLine": 224,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_3a815fc4",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-04-21T07:09:59Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right. I only disable SHI\u0027s interrupt here.\nIf there is a interrupt occupied CPU here, MISO has chance to output data we don\u0027t modified yet. Could you try to disable int before it and enable int after it? Copying 32 bytes might needs 10 us. It might be a good time to use GDMA.",
+      "parentUuid": "88656498_8877ecd5",
+      "range": {
+        "startLine": 229,
+        "startChar": 2,
+        "endLine": 229,
+        "endChar": 48
+      },
+      "revId": "957638c78cc5aa0ba37ef281e2c6a09215c5d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_08c45cb2",
         "filename": "chip/npcx/shi.c",
         "patchSetId": 10
@@ -82,6 +154,30 @@
       "writtenOn": "2016-04-20T23:45:43Z",
       "side": 1,
       "message": "Why not replace with a single \u0027for\u0027 loop on [0, SHI_OBUF_FULL_SIZE)?",
+      "range": {
+        "startLine": 453,
+        "startChar": 1,
+        "endLine": 457,
+        "endChar": 24
+      },
+      "revId": "957638c78cc5aa0ba37ef281e2c6a09215c5d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_1a37bbdc",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-04-21T07:09:59Z",
+      "side": 1,
+      "message": "I want the MISO pin present the status byte ASAP if user calls this function. If we use for\u0027 loop on [0, SHI_OBUF_FULL_SIZE) to replace with it, the latency between calling this function and signal on MISO is random.",
+      "parentUuid": "88656498_08c45cb2",
       "range": {
         "startLine": 453,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_3adddffc",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-04-21T07:09:59Z",
+      "side": 1,
+      "message": "The better solution is increase preamble bytes.\n(FW reserves the definition for this symptom.)\nWe test shi driver with 1MHz spi freq.\nThe symptom above has chance to occur if spi clock up to 3MHz.\nPlease change SHI_OUT_PREAMBLE_LENGTH from 2 to 3.",
+      "parentUuid": "88656498_c84f240c",
+      "range": {
+        "startLine": 481,
+        "startChar": 1,
+        "endLine": 481,
+        "endChar": 32
+      },
+      "revId": "957638c78cc5aa0ba37ef281e2c6a09215c5d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_08745ccc",
         "filename": "chip/npcx/shi.c",
         "patchSetId": 10
@@ -128,6 +248,30 @@
       "writtenOn": "2016-04-20T23:12:57Z",
       "side": 1,
       "message": "If this interrupt gets preempted by shi_int_handler(), we can fail in numerous ways.",
+      "range": {
+        "startLine": 671,
+        "startChar": 5,
+        "endLine": 671,
+        "endChar": 17
+      },
+      "revId": "957638c78cc5aa0ba37ef281e2c6a09215c5d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_5ac3f377",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-04-21T07:09:59Z",
+      "side": 1,
+      "message": "shi_cs_event only issued during the falling edge of CS pin.\nThe detection of rising edge relies on SHI\u0027s interrupt if we got clocks of SPI. It should be OK.",
+      "parentUuid": "88656498_08745ccc",
       "range": {
         "startLine": 671,
         "startChar": 5,
