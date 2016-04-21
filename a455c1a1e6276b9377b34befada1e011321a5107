@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_b478fefd",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-21T20:36:52Z",
+      "side": 1,
+      "message": "This can be const, if CONFIG_SPI_FLASH_SELECT is not defined.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 45
+      },
+      "revId": "a455c1a1e6276b9377b34befada1e011321a5107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_8fa4c7cd",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-21T20:36:52Z",
+      "side": 1,
+      "message": "This name is confusing. How about spi_flash_get_selected?",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 205,
+        "endChar": 23
+      },
+      "revId": "a455c1a1e6276b9377b34befada1e011321a5107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_0f90d76d",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-21T20:36:52Z",
+      "side": 1,
+      "message": "Do you want to check ARRAY_SIZE(spi_flash) instead?",
+      "range": {
+        "startLine": 228,
+        "startChar": 5,
+        "endLine": 228,
+        "endChar": 40
+      },
+      "revId": "a455c1a1e6276b9377b34befada1e011321a5107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
