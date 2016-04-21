@@ -33,6 +33,14 @@ struct dma_option {
 dma_chan_t *dma_get_channel(enum dma_channel channel);
 
 /**
+ * Select DMA channel for a peripheral
+ *
+ * @param channel: Channel # base 0 (Note some STM32s use base 1)
+ * @param peripheral: Refer to the TRM for 'peripheral request signals'
+ */
+void dma_select_channel(enum dma_channel channel, unsigned char peripheral);
+
+/**
  * Prepare a DMA transfer to transmit data from memory to a peripheral
  *
  * Call dma_go() afterwards to actually start the transfer.
