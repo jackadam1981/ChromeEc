@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_21be0f24",
+        "filename": "board/stm32l476g-eval/Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-04-21T23:57:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88656498_cf1cff01",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 1
+      },
+      "revId": "84126aa445c7e0b1c45d4c3389f72240de8f6486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_6f0e33c7",
         "filename": "board/stm32l476g-eval/board.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-21T21:28:06Z",
       "side": 1,
       "message": "you can also used HOOK_SECOND here",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 55
+      },
+      "revId": "84126aa445c7e0b1c45d4c3389f72240de8f6486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_21b4cf12",
+        "filename": "board/stm32l476g-eval/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-04-21T23:57:58Z",
+      "side": 1,
+      "message": "We need HOOK_TICK to get ___*___*... pattern repeated every second.",
+      "parentUuid": "88656498_6f0e33c7",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_81c33b77",
+        "filename": "chip/stm32/config-stm32l476.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-04-21T23:57:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88656498_219fef7c",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 54
+      },
+      "revId": "84126aa445c7e0b1c45d4c3389f72240de8f6486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_61be47d7",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2016-04-21T21:28:06Z",
       "side": 1,
       "message": "we use C style comments\n/* only for STM32L4 */",
+      "range": {
+        "startLine": 364,
+        "startChar": 47,
+        "endLine": 364,
+        "endChar": 66
+      },
+      "revId": "84126aa445c7e0b1c45d4c3389f72240de8f6486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_21adafc0",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-04-21T23:57:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88656498_61be47d7",
       "range": {
         "startLine": 364,
         "startChar": 47,
