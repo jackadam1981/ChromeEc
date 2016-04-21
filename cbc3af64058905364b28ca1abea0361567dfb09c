@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_6153a713",
+        "filename": "include/dma.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-04-21T21:49:31Z",
+      "side": 1,
+      "message": "Does this really need to be in the common DMA API? Some DMA controllers allow any channel to be used with any peripheral. See MEC1322 for an example.",
+      "revId": "cbc3af64058905364b28ca1abea0361567dfb09c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
