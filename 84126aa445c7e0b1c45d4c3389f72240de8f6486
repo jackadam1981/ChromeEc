@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_cf1cff01",
+        "filename": "board/stm32l476g-eval/Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-21T21:28:06Z",
+      "side": 1,
+      "message": "should be a symlink rather than a copy of the file",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 1
+      },
+      "revId": "84126aa445c7e0b1c45d4c3389f72240de8f6486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_6f0e33c7",
+        "filename": "board/stm32l476g-eval/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-21T21:28:06Z",
+      "side": 1,
+      "message": "you can also used HOOK_SECOND here",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 55
+      },
+      "revId": "84126aa445c7e0b1c45d4c3389f72240de8f6486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_219fef7c",
+        "filename": "chip/stm32/config-stm32l476.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-21T21:28:06Z",
+      "side": 1,
+      "message": "worth commenting that you are just using SRAM1 block for now\nand ignoring SRAM2",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 54
+      },
+      "revId": "84126aa445c7e0b1c45d4c3389f72240de8f6486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_61be47d7",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-21T21:28:06Z",
+      "side": 1,
+      "message": "we use C style comments\n/* only for STM32L4 */",
+      "range": {
+        "startLine": 364,
+        "startChar": 47,
+        "endLine": 364,
+        "endChar": 66
+      },
+      "revId": "84126aa445c7e0b1c45d4c3389f72240de8f6486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
