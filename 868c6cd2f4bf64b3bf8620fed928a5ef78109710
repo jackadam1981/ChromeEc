@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_14e0ea73",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-21T19:53:37Z",
+      "side": 0,
+      "message": "Rather than delaying / waiting for power states (which are not always coupled to lid open / close state), can we determine whether FW is ready to handle our host event properly (and maybe delay if it\u0027s not ready)? Maybe by using some combination of host_event_get_*_mask() / host_get_events() functions?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 47
+      },
+      "revId": "868c6cd2f4bf64b3bf8620fed928a5ef78109710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
