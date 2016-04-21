@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_3de5d983",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-04-21T10:31:09Z",
+      "side": 1,
+      "message": "And it\u0027s also dangerous to write output buffer which is generating signal at the same time.",
+      "parentUuid": "88656498_1a37bbdc",
+      "range": {
+        "startLine": 453,
+        "startChar": 1,
+        "endLine": 457,
+        "endChar": 24
+      },
+      "revId": "957638c78cc5aa0ba37ef281e2c6a09215c5d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_c84f240c",
         "filename": "chip/npcx/shi.c",
         "patchSetId": 10
