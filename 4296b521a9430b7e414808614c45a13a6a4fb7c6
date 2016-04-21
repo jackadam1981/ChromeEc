@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_407464cd",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-04-21T15:42:35Z",
+      "side": 1,
+      "message": "This should be 7. Something wrong seems wandering in the code in order to make this work.",
+      "range": {
+        "startLine": 1202,
+        "startChar": 28,
+        "endLine": 1202,
+        "endChar": 29
+      },
+      "revId": "4296b521a9430b7e414808614c45a13a6a4fb7c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
