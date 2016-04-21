@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "adc.h"
 #include "atomic.h"
 #include "charge_manager.h"
 #include "common.h"
@@ -49,6 +50,31 @@ void pd_transition_voltage(int idx)
 
 int pd_set_power_supply_ready(int port)
 {
+	int mv;
+
+	if (pd_snk_is_vbus_provided(port)) {
+		/*
+		 * VBUS is logic high and we're about to source
+		 * 5V to the port!
+		 */
+		ccprintf("Skipping p%d 5V_EN (state %d-%d-%d-%d)\n",
+			port, gpio_get_level(GPIO_USB_C0_CHARGE_EN_L),
+			gpio_get_level(GPIO_USB_C1_CHARGE_EN_L),
+			gpio_get_level(GPIO_USB_C0_5V_EN),
+			gpio_get_level(GPIO_USB_C1_5V_EN));
+		/* Enable charging to grab analog voltage */
+		gpio_set_level(port ? GPIO_USB_C0_CHARGE_EN_L :
+			GPIO_USB_C1_CHARGE_EN_L, 1);
+		gpio_set_level(port ? GPIO_USB_C1_CHARGE_EN_L :
+			GPIO_USB_C0_CHARGE_EN_L, 0);
+		msleep(5);
+		mv = adc_read_channel(ADC_VBUS);
+		gpio_set_level(port ? GPIO_USB_C1_CHARGE_EN_L :
+			GPIO_USB_C0_CHARGE_EN_L, 1);
+		ccprintf("Voltage was %d mV\n", mv);
+		ASSERT(0);
+	}
+
 	/* Disable charging */
 	gpio_set_level(port ? GPIO_USB_C1_CHARGE_EN_L :
 			      GPIO_USB_C0_CHARGE_EN_L, 1);
