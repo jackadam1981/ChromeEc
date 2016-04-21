@@ -211,3 +211,46 @@ void board_pwm_init(void)
 }
 /* BUG: NPCX pwm init @ HOOK_PRIO_DEFAULT */
 DECLARE_HOOK(HOOK_INIT, board_pwm_init, HOOK_PRIO_DEFAULT + 1);
+
+enum kevin_board_version {
+	BOARD_VERSION_UNKNOWN = -1,
+	BOARD_VERSION_PROTO1 = 0,
+	BOARD_VERSION_PROTO2 = 1,
+	BOARD_VERSION_FUTURE = 2,
+	BOARD_VERSION_COUNT,
+};
+
+struct {
+	enum kevin_board_version version;
+	int thresh_mv;
+} const kevin_board_versions[] = {
+	{ BOARD_VERSION_PROTO1, 150 },  /* 2.2 - 3.3  ohm */
+	{ BOARD_VERSION_PROTO2, 250 },  /* 6.8 - 7.32 ohm */
+	{ BOARD_VERSION_FUTURE, 3300 }, /* ??? ohm        */
+};
+BUILD_ASSERT(ARRAY_SIZE(kevin_board_versions) == BOARD_VERSION_COUNT);
+
+int board_get_version(void)
+{
+	static int version = BOARD_VERSION_UNKNOWN;
+	int mv;
+	int i;
+
+	if (version != BOARD_VERSION_UNKNOWN)
+		return version;
+
+	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 0);
+	/* Wait to allow cap charge */
+	msleep(1);
+	mv = adc_read_channel(ADC_BOARD_ID);
+	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 1);
+
+	for (i = 0; i < BOARD_VERSION_COUNT; ++i) {
+		if (mv < kevin_board_versions[i].thresh_mv) {
+			version = i;
+			break;
+		}
+	}
+
+	return version;
+}
