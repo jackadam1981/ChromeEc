@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_942b7a74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2016-04-21T19:50:18Z",
+      "side": 1,
+      "message": "In docked mode, lid close may not result in suspended state as the desired state.\n\nHave we considered alternate mechanism where the EC driver can send an HC command in its suspend routine indicating that an entry to suspended state is imminent?  On resume the EC driver\u0027s resume routine would want to send another HC command to indicate transition back to running state to deal with aborted (and successful) suspends.",
+      "revId": "d7ed95939a46653871a92c9f55143951ab896e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
