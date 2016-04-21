@@ -22,6 +22,47 @@
       "revId": "4296b521a9430b7e414808614c45a13a6a4fb7c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_0395162b",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-04-21T16:53:20Z",
+      "side": 1,
+      "message": "The number of DMA is defined by STM32_DMAC_COUNT, above.\nWhen I looked at the register mapping of the ST registers, if there is 2 DMA engine, there is gap in registers:\n0..6 DMA1\n8..9 DMA2",
+      "parentUuid": "88656498_407464cd",
+      "range": {
+        "startLine": 1202,
+        "startChar": 28,
+        "endLine": 1202,
+        "endChar": 29
+      },
+      "revId": "4296b521a9430b7e414808614c45a13a6a4fb7c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_e36802f4",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-04-21T16:53:20Z",
+      "side": 1,
+      "message": "maybe min(STM32_DMAC_COUNT, STM32_DMAC_PER_CTLR)?",
+      "revId": "4296b521a9430b7e414808614c45a13a6a4fb7c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
