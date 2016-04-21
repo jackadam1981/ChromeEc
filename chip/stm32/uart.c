@@ -15,6 +15,7 @@
 #include "task.h"
 #include "uart.h"
 #include "util.h"
+#include "stm32-dma.h"
 
 /* Console USART index */
 #define UARTN      CONFIG_UART_CONSOLE
