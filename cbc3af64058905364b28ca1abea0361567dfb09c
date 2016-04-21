@@ -16,6 +16,24 @@
       "revId": "cbc3af64058905364b28ca1abea0361567dfb09c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_37d88d0d",
+        "filename": "include/dma.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-04-21T23:43:54Z",
+      "side": 1,
+      "message": "moved to stm32-dma.h",
+      "parentUuid": "88656498_6153a713",
+      "revId": "cbc3af64058905364b28ca1abea0361567dfb09c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
