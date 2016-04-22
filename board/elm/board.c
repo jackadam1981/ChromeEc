@@ -17,6 +17,8 @@
 #include "console.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
+#include "driver/tcpm/anx7688.h"
+#include "driver/tcpm/tcpm.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/temp_sensor/tmp432.h"
 #include "extpower.h"
@@ -62,6 +64,9 @@ void pd_mcu_interrupt(enum gpio_signal signal)
 #endif
 }
 
+void deferred_reset_pd_mcu(void);
+DECLARE_DEFERRED(deferred_reset_pd_mcu);
+
 void usb_evt(enum gpio_signal signal)
 {
 	/*
@@ -71,6 +76,12 @@ void usb_evt(enum gpio_signal signal)
 	 */
 	if (!gpio_get_level(GPIO_BC12_WAKE_L))
 		task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
+
+	if (!gpio_get_level(GPIO_USB_C0_CABLE_DET_L) &&
+	    gpio_get_level(GPIO_USB_C0_PWR_EN_L)) {
+		hook_call_deferred(&deferred_reset_pd_mcu_data, -1);
+		hook_call_deferred(&deferred_reset_pd_mcu_data, 1*MSEC);
+	}
 }
 
 #include "gpio_list.h"
@@ -112,7 +123,7 @@ const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
 /* TCPC */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{I2C_PORT_TCPC, CONFIG_TCPC_I2C_BASE_ADDR, &tcpci_tcpm_drv},
+	{I2C_PORT_TCPC, CONFIG_TCPC_I2C_BASE_ADDR, &anx7688_tcpm_drv},
 };
 
 struct pi3usb9281_config pi3usb9281_chips[] = {
@@ -171,26 +182,71 @@ static struct mutex dp_hw_lock;
  * Reset PD MCU
  *   ANX7688 needs a reset pulse of 50ms after power enable.
  */
-void deferred_reset_pd_mcu(void);
-DECLARE_DEFERRED(deferred_reset_pd_mcu);
-
 void deferred_reset_pd_mcu(void)
 {
-	if (!gpio_get_level(GPIO_USB_C0_RST)) {
+	uint8_t state = gpio_get_level(GPIO_USB_C0_PWR_EN_L) |
+			(gpio_get_level(GPIO_USB_C0_RST) << 1);
+
+	switch (state) {
+	case 0:
+		/*
+		 * PWR_EN_L low, RST low
+		 * start reset sequence by turning off power enable
+		 * and wait for 1ms.
+		 */
+		gpio_set_level(GPIO_USB_C0_PWR_EN_L, 1);
+		hook_call_deferred(&deferred_reset_pd_mcu_data, 1*MSEC);
+		break;
+	case 1:
+		/*
+		 * PWR_EN_L high, RST low
+		 * pull PD reset pin and wait for another 1ms
+		 */
 		gpio_set_level(GPIO_USB_C0_RST, 1);
-		hook_call_deferred(&deferred_reset_pd_mcu_data, 50 * MSEC);
-	} else {
+		hook_call_deferred(&deferred_reset_pd_mcu_data, 1*MSEC);
+		/* on PD reset, trigger PD task to reset state */
+		task_set_event(TASK_ID_PD_C0,
+			       PD_EVENT_TCPC_RESET, 0);
+		break;
+	case 3:
+		/*
+		 * PWR_EN_L high, RST high
+		 * cable detected - enable power
+		 * cable not detected - do nothing
+		 */
+		if (gpio_get_level(GPIO_USB_C0_CABLE_DET_L))
+			return;
+		/* enable power and wait for 50ms */
+		gpio_set_level(GPIO_USB_C0_PWR_EN_L, 0);
+		hook_call_deferred(&deferred_reset_pd_mcu_data, 50*MSEC);
+		break;
+	case 2:
+		/*
+		 * PWR_EN_L low, RST high
+		 * leave reset state
+		 */
 		gpio_set_level(GPIO_USB_C0_RST, 0);
+		break;
 	}
 }
 
 void board_reset_pd_mcu(void)
 {
-	/* Perform ANX7688 startup sequence */
-	gpio_set_level(GPIO_USB_C0_PWR_EN_L, 0);
-	gpio_set_level(GPIO_USB_C0_RST, 0);
-	hook_call_deferred(&deferred_reset_pd_mcu_data, 0);
+	/* enable port controller's cable detection before reset */
+	anx7688_enable_cable_detection(0);
+	/* wait for 10ms, then start port controller's reset sequence */
+	hook_call_deferred(&deferred_reset_pd_mcu_data, 10*MSEC);
 }
+
+int command_pd_reset(int argc, char **argv)
+{
+	board_reset_pd_mcu();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(resetpd, command_pd_reset,
+			"",
+			"Reset PD IC",
+			NULL);
 
 /**
  * There is a level shift for AC_OK & LID_OPEN signal between AP & EC,
@@ -383,6 +439,8 @@ void board_typec_dp_off(int port, int *dp_flags)
 	board_typec_set_dp_hpd(port, 0);
 
 	mutex_unlock(&dp_hw_lock);
+
+	board_reset_pd_mcu();
 }
 
 /**
