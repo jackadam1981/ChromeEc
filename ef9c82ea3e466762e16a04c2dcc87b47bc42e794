@@ -22,6 +22,30 @@
       "revId": "ef9c82ea3e466762e16a04c2dcc87b47bc42e794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_ca72a31c",
+        "filename": "board/stm32l476g-eval/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-04-22T18:16:00Z",
+      "side": 1,
+      "message": "I\u0027m not sure about the naming convention for chip specific config macros. If it\u0027s CONFIG_, presubmit check complains that it\u0027s not listed in config.h.",
+      "parentUuid": "88656498_c7729c1c",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "ef9c82ea3e466762e16a04c2dcc87b47bc42e794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
