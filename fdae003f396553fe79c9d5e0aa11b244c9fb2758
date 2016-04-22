@@ -565,6 +565,24 @@
       "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_66a2d521",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-22T10:01:49Z",
+      "side": 1,
+      "message": "if you want to check some status, not spining here, you can check alert pin\u0027s status:\n When the TCPC begin to work, TCPC will tell TCPM by polling up alert pin.",
+      "parentUuid": "88656498_0600b924",
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
