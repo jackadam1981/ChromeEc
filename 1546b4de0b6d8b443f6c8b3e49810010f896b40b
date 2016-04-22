@@ -16,6 +16,24 @@
       "revId": "1546b4de0b6d8b443f6c8b3e49810010f896b40b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_bef8cdd4",
+        "filename": "include/byteorder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-04-22T21:51:02Z",
+      "side": 0,
+      "message": "My understanding is that the purpose of the builtin/ directory is that it mimics standard libraries.  This is not necessarily true of headers under include/.\n\nGiven this understanding, I expect that third party code be able to build with -fno-builtin -Ibuiltin.",
+      "parentUuid": "88656498_de4341ed",
+      "revId": "1546b4de0b6d8b443f6c8b3e49810010f896b40b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
