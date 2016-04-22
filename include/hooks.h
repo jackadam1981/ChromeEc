@@ -41,6 +41,8 @@ enum hook_priority {
 	HOOK_PRIO_INIT_VBOOT_HASH = HOOK_PRIO_FIRST + 10,
 	/* Init charge manager before usage in board init */
 	HOOK_PRIO_CHARGE_MANAGER_INIT = HOOK_PRIO_FIRST + 11,
+	/* TCPC inits before pd_task */
+	HOOK_PRIO_INIT_TCPC = HOOK_PRIO_FIRST + 12,
 
 	/* Specific values to lump temperature-related hooks together */
 	HOOK_PRIO_TEMP_SENSOR = 6000,
