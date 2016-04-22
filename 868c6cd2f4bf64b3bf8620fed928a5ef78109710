@@ -22,6 +22,30 @@
       "revId": "868c6cd2f4bf64b3bf8620fed928a5ef78109710",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68683071_ba80f027",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1123350
+      },
+      "writtenOn": "2016-04-22T11:57:25Z",
+      "side": 0,
+      "message": "The flow has now been changed to use a desired initial state instead of an end state. We use the chipset_in_state function to check the state. It seems to be working well for S3 and S5 based on an initial test run.",
+      "parentUuid": "88656498_14e0ea73",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 47
+      },
+      "revId": "868c6cd2f4bf64b3bf8620fed928a5ef78109710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
