@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_4b01d22b",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-04-22T22:57:06Z",
+      "side": 1,
+      "message": "I changed it so boards using SPI_FLASH_SELECT are responsible for enumerating the SPI ROM they use. Is that ok?",
+      "parentUuid": "88656498_7e7c958d",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 6
+      },
+      "revId": "a455c1a1e6276b9377b34befada1e011321a5107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_b478fefd",
         "filename": "common/spi_flash_reg.c",
         "patchSetId": 3
