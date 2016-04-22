@@ -13,7 +13,7 @@ GPIO_INT(LID_OPEN,       PIN(C, 13), GPIO_INT_BOTH,    lid_interrupt)          /
 GPIO_INT(SUSPEND_L,      PIN(C, 7),  GPIO_INT_BOTH,    power_signal_interrupt) /* AP suspend/resume state */
 GPIO_INT(SOC_POWER_GOOD, PIN(A, 3),  GPIO_INT_BOTH,    power_signal_interrupt)
 GPIO_INT(PD_MCU_INT,     PIN(E, 0),  GPIO_INT_RISING,  pd_mcu_interrupt)       /* Signal from PD MCU, external pull-up */
-GPIO_INT(BC12_CABLE_INT, PIN(E, 1),  GPIO_INT_FALLING, usb_evt)    /* interrupt from BC12 and CABLE_DET */
+GPIO_INT(BC12_CABLE_INT, PIN(E, 1),  GPIO_INT_FALLING | GPIO_PULL_UP, usb_evt)    /* interrupt from BC12 and CABLE_DET */
 GPIO_INT(POWER_BUTTON_L, PIN(B, 5),  GPIO_INT_BOTH | GPIO_PULL_UP,  power_button_interrupt)
 GPIO_INT(SPI1_NSS,       PIN(A, 4),  GPIO_INT_BOTH | GPIO_PULL_UP,  spi_event)              /* SPI Chip Select */
 
@@ -69,8 +69,8 @@ GPIO(EC_BL_OVERRIDE,    PIN(F, 1),  GPIO_OUT_LOW)
 GPIO(ENTERING_RW,       PIN(F, 0),  GPIO_OUT_LOW)
 
 GPIO(AP_RESET_L,        PIN(C, 3),  GPIO_ODR_HIGH) /* Connect to the PMU_SYSRSTB */
-GPIO(BC12_WAKE_L,       PIN(D, 7),  GPIO_INPUT)
-GPIO(USB_C0_CABLE_DET_L,PIN(E, 7),  GPIO_INPUT)
+GPIO(BC12_WAKE_L,       PIN(D, 7),  GPIO_INPUT | GPIO_PULL_UP)
+GPIO(USB_C0_CABLE_DET_L,PIN(E, 7),  GPIO_INPUT | GPIO_PULL_UP)
 
 GPIO(SYSTEM_POWER_H,    PIN(B, 10), GPIO_OUT_LOW)
 GPIO(PMIC_PWRON_H,      PIN(A, 12), GPIO_OUT_LOW)
@@ -79,8 +79,8 @@ GPIO(LEVEL_SHIFT_EN_L,  PIN(F, 10), GPIO_OUT_LOW)    /* LID/AC level shift */
 
 GPIO(USB_C0_5V_EN,      PIN(D, 8),  GPIO_OUT_LOW)    /* USBC port 0 5V */
 GPIO(USB_C0_CHARGE_L,   PIN(D, 9),  GPIO_OUT_LOW)    /* USBC port 0 charge */
-GPIO(USB_C0_RST,        PIN(D, 10), GPIO_OUT_LOW)    /* ANX7688 reset */
-GPIO(USB_C0_PWR_EN_L,   PIN(B, 15), GPIO_OUT_LOW)    /* ANX7688 power enable */
+GPIO(USB_C0_RST,        PIN(D, 10), GPIO_ODR_HIGH)    /* ANX7688 reset */
+GPIO(USB_C0_PWR_EN_L,   PIN(B, 15), GPIO_ODR_HIGH)    /* ANX7688 power enable */
 GPIO(USB_C0_EXTPWR_EN,  PIN(F, 2),  GPIO_OUT_HIGH)   /* ANX7688 3.3V ext power enable */
 GPIO(USB_DP_HPD,        PIN(F, 3),  GPIO_INPUT)
 GPIO(EN_TP_INT_L,       PIN(E, 14), GPIO_OUT_LOW)    /* touchpad interrupt enable */
