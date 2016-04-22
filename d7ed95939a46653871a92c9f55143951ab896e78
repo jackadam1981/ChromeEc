@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "88656498_c7f37c87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2016-04-22T16:38:40Z",
+      "side": 1,
+      "message": "We discussed this in the weekly platform sync yesterday.  Given that (a) the issue isn\u0027t limited to Chell and happens on already shipping devices, and (b) other wake sources still can wake the system up, it\u0027s ok to wait for a converged S0ix+S3 solution.  \n\nPlease rework the patch to take that into account.  Thanks.",
+      "parentUuid": "e85340c8_67d88e0e",
+      "revId": "d7ed95939a46653871a92c9f55143951ab896e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_d457b2fb",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
