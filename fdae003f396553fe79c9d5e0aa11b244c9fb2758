@@ -130,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_3d1079a5",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-22T08:32:34Z",
+      "side": 1,
+      "message": "Yes, Anx7688 support Power status register with these following features:\nB0 Sinking VBUS   RO\nB1: VCONN Present RO\nB2: VBUS Present  RO\nB3: VBUS Present Detection Enabled RO\nB4: Sourcing VBUS              RO\nB5: Sourcing High Voltage      RO\nB6: TCPC Initialization Status RO\nB7: Debug Accessory Connected  RO (only register level support:\n             0b: No Debug Accessory connected \n             1b: Debug Accessory connected\n             Reflects the state of the DebugAccessoryConnected#                \n             Register is required but output is not required )",
+      "parentUuid": "a801483f_2b95755e",
+      "range": {
+        "startLine": 90,
+        "startChar": 24,
+        "endLine": 90,
+        "endChar": 45
+      },
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a801483f_4bb9d9ec",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
@@ -141,6 +165,30 @@
       "writtenOn": "2016-04-19T08:22:02Z",
       "side": 1,
       "message": "This clears all bits except bit0... not sure if applicable for 7688?",
+      "range": {
+        "startLine": 106,
+        "startChar": 25,
+        "endLine": 106,
+        "endChar": 43
+      },
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_7d8111ed",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-22T08:32:34Z",
+      "side": 1,
+      "message": "NO, Anx7688 don\u0027t support this usage. We have to rewrite one function or macro such as tcpc_write_bit() to operate one bit of one register.  \n#define tcp_write_bit(reg, val, mask) do { tcpc_write(reg,   \\                    \n       tcpc_read(reg) \u0026 ~mask) | val))} while(0)",
+      "parentUuid": "a801483f_4bb9d9ec",
       "range": {
         "startLine": 106,
         "startChar": 25,
@@ -176,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_5d844dfe",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-22T08:32:34Z",
+      "side": 1,
+      "message": "NO, Anx7688 don\u0027t support this usage. We have to rewrite one function or macro such as tcpc_write_bit() to operate one bit of one register.  \n#define tcp_write_bit(reg, val, mask) do { tcpc_write(reg,   \\                    \n       tcpc_read(reg) \u0026 ~mask) | val))} while(0)",
+      "parentUuid": "a801483f_4b90b96e",
+      "range": {
+        "startLine": 112,
+        "startChar": 25,
+        "endLine": 112,
+        "endChar": 44
+      },
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a801483f_cba309c4",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
@@ -187,6 +259,30 @@
       "writtenOn": "2016-04-19T08:22:02Z",
       "side": 1,
       "message": "This bit is from 7688, so 7688 should set this on its own? According to TCPCI spec:\n\"\nThe TCPC shall ignore writes to this bit if TCPC_CONTROL.DebugAccessoryControl \u003d 0\n\"\n\nAnd current TCPM\u0027s tcpm_mux_set() does not handle this bit.",
+      "range": {
+        "startLine": 266,
+        "startChar": 51,
+        "endLine": 266,
+        "endChar": 83
+      },
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_7d49115c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-22T08:32:34Z",
+      "side": 1,
+      "message": "Yeath, you are right. now Anx7688 don\u0027t support this bit. TCPC FM will fix this issue to follow TCPCI spec.",
+      "parentUuid": "a801483f_cba309c4",
       "range": {
         "startLine": 266,
         "startChar": 51,
@@ -335,6 +431,48 @@
     },
     {
       "key": {
+        "uuid": "88656498_dd027def",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-22T08:32:34Z",
+      "side": 1,
+      "message": "I\u0027m checking the source code also. Yet, we need to sduty EC\u0027s framework(EC\u0027s document to me?).Maybe there is a simpler method to do such a job. Such as linux kernel\u0027s kernel-thread or soft-interrupt, or timer event actions?",
+      "parentUuid": "a80ce8ee_d99ed37e",
+      "range": {
+        "startLine": 364,
+        "startChar": 1,
+        "endLine": 365,
+        "endChar": 13
+      },
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_bd28e977",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-22T08:32:34Z",
+      "side": 1,
+      "message": "The cable_cable_det pin works only one method, when device attateched, cable detect pin is pulled high(IOVoltage 1.8V).\nInterrupt function should be triggered from low to high. \nwhen device unplugged, cable detect pin is pulled down. (IOVoltage is about 0V).  we can patch this by one polling or interrupt trigger methods to handle the cable detect action.",
+      "parentUuid": "a801483f_65b84ee7",
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28939819_43addabf",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
@@ -346,6 +484,24 @@
       "writtenOn": "2016-04-18T13:51:04Z",
       "side": 1,
       "message": "I think there is some I2C register we can poll to wait until ANX7688 boots.",
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_66f9758f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-22T08:32:34Z",
+      "side": 1,
+      "message": "this just to sync FM TCPC V0.85. EEPROM loading time is long(500ms). FM TCPC V0.9 has improved the loading time. At least 50ms dealy time is needed. suggestion: msleep(60);",
+      "parentUuid": "28939819_43addabf",
       "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
