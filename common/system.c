@@ -477,6 +477,16 @@ static void jump_to_image(uintptr_t init_addr)
 
 #ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
 	/*
+	 * Disable interrupts before copying little firmware to bss.slow section
+	 * so that task swapping stops.
+	 * If this is not done, a task that writes to data in bss.slow region
+	 * can corrupt the little firmware image that has already been copied.
+	 * In addition, a task that reads data from bss.slow region can behave
+	 * unexpectedly if the data has been replaced by little firmware.
+	 */
+	interrupt_disable();
+
+	/*
 	 * We've used the region in which the loader resided as data space for
 	 * the .bss.slow section.  Therefore, we need to reload the loader from
 	 * the external storage back into program memory so that we can load a
@@ -500,9 +510,6 @@ static void jump_to_image(uintptr_t init_addr)
 	/* Now that the lfw is loaded again, get the reset vector. */
 	init_addr = system_get_lfw_address();
 #endif /* defined(CONFIG_REPLACE_LOADER_WITH_BSS_SLOW) */
-
-	/* Disable interrupts before jump */
-	interrupt_disable();
 
 #ifdef CONFIG_DMA
 	/* Disable all DMA channels to avoid memory corruption */

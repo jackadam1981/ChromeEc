@@ -13,6 +13,7 @@
 #include "system.h"
 #include "util.h"
 #include "hooks.h"
+#include "watchdog.h"
 
 #define PAGE_SIZE 256
 
@@ -46,8 +47,13 @@ int flash_physical_read(int offset, int size, char *data)
 					read_size);
 		if (ret != EC_SUCCESS)
 			break;
-		/* yield so other tasks get a chance to wake up */
-		msleep(1);
+		/*
+		 * flashrom on host issues a large number of flash read commands
+		 * starving other EC tasks including the hooks task which
+		 * reloads watchdog. Reload it here to avoid unintended CPU
+		 * reset
+		 */
+		watchdog_reload();
 	}
 
 	return ret;
