@@ -1894,6 +1894,7 @@
 #undef CONFIG_USB_PD_TCPM_FUSB302
 #undef CONFIG_USB_PD_TCPM_ITE83XX
 #undef CONFIG_USB_PD_TCPM_ANX74XX
+#undef CONFIG_USB_PD_TCPM_ANX7688
 
 /*
  * Use this option if the TCPC port controller supports the optional register

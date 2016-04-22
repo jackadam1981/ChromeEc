@@ -93,6 +93,7 @@
 
 #define CONFIG_USB_PD_PORT_COUNT 1
 #define CONFIG_USB_PD_TCPM_MUX
+#define CONFIG_USB_PD_TCPM_ANX7688
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_TRY_SRC
 #undef  CONFIG_TCPC_I2C_BASE_ADDR
@@ -206,11 +207,6 @@ enum temp_sensor_id {
 void board_reset_pd_mcu(void);
 /* Set AP reset pin according to parameter */
 void board_set_ap_reset(int asserted);
-
-/* Control type-C DP route and hotplug detect signal */
-void board_typec_dp_on(int port);
-void board_typec_dp_off(int port, int *dp_flags);
-void board_typec_dp_set(int port, int level);
 
 #endif  /* !__ASSEMBLER__ */
 
