@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_c7729c1c",
+        "filename": "board/stm32l476g-eval/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-22T17:26:37Z",
+      "side": 1,
+      "message": "the naming looks better before with the CONFIG_ prefix ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "ef9c82ea3e466762e16a04c2dcc87b47bc42e794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
