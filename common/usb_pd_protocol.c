@@ -1285,7 +1285,7 @@ int pd_get_role(int port)
 	return pd[port].power_role;
 }
 
-static int pd_is_power_swapping(int port)
+int pd_is_power_swapping(int port)
 {
 	/* return true if in the act of swapping power roles */
 	return  pd[port].task_state == PD_STATE_SNK_SWAP_SNK_DISABLE ||
@@ -2137,6 +2137,16 @@ void pd_task(void)
 			}
 			if (pd_is_vbus_present(port) &&
 			    snk_hard_reset_vbus_off) {
+				/*
+				 * according to TCPCI spc 4.7.2
+				 * Transmitting a Hard Reset Message TCPM should
+				 * step5: The TCPM clear write to the RECEIVE_DETECT register
+				 *  to enabe PD message passing
+				 * If PD comm is enabled, enable TCPC RX
+				 */
+				if (pd_comm_enabled)
+					tcpm_set_rx_enable(port, 1);
+
 				/* VBUS went high again */
 				set_state(port, PD_STATE_SNK_DISCOVERY);
 				timeout = 10*MSEC;
