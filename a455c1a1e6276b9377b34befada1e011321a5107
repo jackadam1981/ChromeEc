@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "88656498_7e7c958d",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-22T21:25:06Z",
+      "side": 1,
+      "message": "Sorry, one last thing -- this table is kind of wasteful. If CONFIG_SPI_FLASH_W25Q64 is the only part present, you\u0027re going to have 2 unused spi_flash_config entries. And it will get worse for every part added.\n\nIt might be a better idea to not index by chip enum and instead include chip type in the struct.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 6
+      },
+      "revId": "a455c1a1e6276b9377b34befada1e011321a5107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_b478fefd",
         "filename": "common/spi_flash_reg.c",
         "patchSetId": 3
@@ -131,6 +154,30 @@
       "side": 1,
       "message": "Do you mean ARRAY_SIZE(spi_flash) or ARRAY_SIZE(spi_flash[new_chip].protect_ranges)?",
       "parentUuid": "88656498_0f90d76d",
+      "range": {
+        "startLine": 228,
+        "startChar": 5,
+        "endLine": 228,
+        "endChar": 40
+      },
+      "revId": "a455c1a1e6276b9377b34befada1e011321a5107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_7eaa554e",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-22T21:25:06Z",
+      "side": 1,
+      "message": "Sorry, I misunderstood. But, it won\u0027t work in all cases (eg. if spi_flash[] size is 1 and new_chip index is 2, you will be checking memory outside the struct). See my comment above.",
+      "parentUuid": "88656498_cd287dc7",
       "range": {
         "startLine": 228,
         "startChar": 5,
