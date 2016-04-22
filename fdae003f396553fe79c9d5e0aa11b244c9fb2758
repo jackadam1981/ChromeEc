@@ -473,6 +473,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_4606b145",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-04-22T08:47:18Z",
+      "side": 1,
+      "message": "We do not want the kernel to be involved in this.",
+      "parentUuid": "88656498_dd027def",
+      "range": {
+        "startLine": 364,
+        "startChar": 1,
+        "endLine": 365,
+        "endChar": 13
+      },
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28939819_43addabf",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
@@ -502,6 +526,24 @@
       "side": 1,
       "message": "this just to sync FM TCPC V0.85. EEPROM loading time is long(500ms). FM TCPC V0.9 has improved the loading time. At least 50ms dealy time is needed. suggestion: msleep(60);",
       "parentUuid": "28939819_43addabf",
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_0600b924",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-04-22T08:47:18Z",
+      "side": 1,
+      "message": "Yes, isn\u0027t there a register we can poll to check when the FW has booted?",
+      "parentUuid": "88656498_66f9758f",
       "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
