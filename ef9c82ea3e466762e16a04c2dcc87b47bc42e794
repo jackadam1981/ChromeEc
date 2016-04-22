@@ -46,6 +46,30 @@
       "revId": "ef9c82ea3e466762e16a04c2dcc87b47bc42e794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_4d1c8dae",
+        "filename": "board/stm32l476g-eval/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-22T18:23:10Z",
+      "side": 1,
+      "message": "This definitely looks like a configuration parameter.\nI would put the CONFIG_ prefix and add it to config.h as #undef CONFIG_UART_TX_DMA_PH (and you can mention there it\u0027s defined only for a subset of hardware name STM32L4 for now)",
+      "parentUuid": "88656498_ca72a31c",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "ef9c82ea3e466762e16a04c2dcc87b47bc42e794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
