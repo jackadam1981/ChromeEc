@@ -49,6 +49,52 @@ static const struct protect_range spi_flash_protect_ranges[] = {
 	{ X, X, 0, { 0, 1, 1 }, 0x40000, 0x40000 }, /* Upper 1/2*/
 };
 
+#elif defined(CONFIG_SPI_FLASH_GD25LQ40)
+/* BP4 (as described in datasheet) is equivalent to "sec" */
+/* FIXME: need to expand bp[] array. Also, what to do about tb bit? */
+static const struct protect_range spi_flash_protect_ranges[] = {
+	/* CMP = 0 */
+	{ 0, X, _, { X, 0, 0, 0 }, 0, 0 },             /* No protection */
+	{ 0, 0, _, { 0, 0, 0, 1 }, 0x70000, 0x7ffff }, /* Upper 1/8 */
+	{ 0, 0, _, { 0, 0, 1, 0 }, 0x60000, 0x7ffff }, /* Upper 1/4 */
+	{ 0, 0, _, { 0, 0, 1, 1 }, 0x40000, 0x7ffff }, /* Upper 1/2 */
+	{ 0, 0, _, { 1, 0, 0, 1 }, 0, 0x0ffff },       /* Lower 1/8 */
+	{ 0, 0, _, { 1, 0, 1, 0 }, 0, 0x1ffff },       /* Lower 1/4 */
+	{ 0, 0, _, { 1, 0, 1, 1 }, 0, 0x3ffff },       /* Lower 1/2 */
+	{ 0, 0, _, { X, 1, X, X }, 0, 0x7ffff },       /* All */
+	{ 0, 1, _, { 0, 0, 0, 1 }, 0x7f000, 0x7ffff }, /* Upper 1/128 */
+	{ 0, 1, _, { 0, 0, 1, 0 }, 0x7e000, 0x7ffff }, /* Upper 1/64 */
+	{ 0, 1, _, { 0, 0, 1, 1 }, 0x7c000, 0x7ffff }, /* Upper 1/32 */
+	{ 0, 1, _, { 0, 1, 0, X }, 0x78000, 0x7ffff }, /* Upper 1/16 */
+	{ 0, 1, _, { 0, 1, 1, 0 }, 0x78000, 0x7ffff }, /* Upper 1/16 */
+	{ 0, 1, _, { 1, 0, 0, 1 }, 0, 0x00fff },       /* Lower 1/128 */
+	{ 0, 1, _, { 1, 0, 1, 0 }, 0, 0x01fff },       /* Lower 1/64 */
+	{ 0, 1, _, { 1, 0, 1, 1 }, 0, 0x03fff },       /* Lower 1/32 */
+	{ 0, 1, _, { 1, 1, 0, X }, 0, 0x07fff },       /* Lower 1/16 */
+	{ 0, 1, _, { 1, 1, 1, 0 }, 0, 0x07fff },       /* Lower 1/16 */
+	{ 0, 1, _, { X, 1, 1, 1 }, 0, 0x7ffff },       /* All */
+	/* CMP = 1 */
+	{ 1, X, _, { 0, 0, 0, 0 }, 0, 0x7ffff },       /* All */
+	{ 1, 0, _, { 0, 0, 0, 1 }, 0, 0x6ffff },       /* Lower 7/8 */
+	{ 1, 0, _, { 0, 0, 1, 0 }, 0, 0x5ffff },       /* Lower 3/4 */
+	{ 1, 0, _, { 0, 0, 1, 1 }, 0, 0x3ffff },       /* Lower 1/2 */
+	{ 1, 0, _, { 1, 0, 0, 1 }, 0x10000, 0x7ffff }, /* Upper 7/8 */
+	{ 1, 0, _, { 1, 0, 1, 0 }, 0x20000, 0x7ffff }, /* Upper 3/4 */
+	{ 1, 0, _, { 1, 0, 1, 1 }, 0x40000, 0x7ffff }, /* Upper 1/2 */
+	{ 1, 0, _, { X, 1, X, X }, 0, 0 },             /* No protection */
+	{ 1, 1, _, { 0, 0, 0, 1 }, 0, 0x7efff },       /* Lower 127/128 */
+	{ 1, 1, _, { 0, 0, 1, 0 }, 0, 0x7dfff },       /* Lower 63/64 */
+	{ 1, 1, _, { 0, 0, 1, 1 }, 0, 0x7bfff },       /* Lower 31/32 */
+	{ 1, 1, _, { 0, 1, 0, X }, 0, 0x77fff },       /* Lower 15/16 */
+	{ 1, 1, _, { 0, 1, 1, 0 }, 0, 0x77fff },       /* Lower 15/16 */
+	{ 1, 1, _, { 1, 0, 0, 1 }, 0x01000, 0x7ffff }, /* Upper 127/128 */
+	{ 1, 1, _, { 1, 0, 1, 0 }, 0x02000, 0x7ffff }, /* Upper 63/64 */
+	{ 1, 1, _, { 1, 0, 1, 1 }, 0x04000, 0x7ffff }, /* Upper 31/32 */
+	{ 1, 1, _, { 1, 1, 0, X }, 0x08000, 0x7ffff }, /* Upper 15/16 */
+	{ 1, 1, _, { 1, 1, 1, 0 }, 0x08000, 0x7ffff }, /* Upper 15/16 */
+	{ 1, 1, _, { X, 1, 1, 1 }, 0, 0x7ffff },       /* All */
+};
+
 #elif defined(CONFIG_SPI_FLASH_W25Q40)
 /* Verified for W25Q40BV and W25Q40EW */
 static const struct protect_range spi_flash_protect_ranges[] = {
