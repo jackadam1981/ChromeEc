@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_bc868b0b",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-25T19:24:19Z",
+      "side": 1,
+      "message": "nit: all the other entries are not using tab for spacing here",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 26
+      },
+      "revId": "49c733597e9029c0cdd38d67d02615242e8ba838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_9c95c72d",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-25T19:24:19Z",
+      "side": 1,
+      "message": "#ifdef",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 12
+      },
+      "revId": "49c733597e9029c0cdd38d67d02615242e8ba838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
