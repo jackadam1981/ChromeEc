@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_b528e3c5",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-04-25T07:49:46Z",
+      "side": 1,
+      "message": "No. It actually won\u0027t bounce up and down. cable det doesn\u0027t go up without set tcpc command 0xff (anx specific).",
+      "parentUuid": "88656498_75e7cbfc",
+      "range": {
+        "startLine": 80,
+        "startChar": 21,
+        "endLine": 80,
+        "endChar": 44
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_359f137d",
         "filename": "board/elm/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-25T06:45:42Z",
       "side": 1,
       "message": "why needs to call another deferred_reset_pd_mcu()? In deferred_reset_pd_mcu() it should already start from case 3 then case 2.",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 57
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_d57a37be",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-04-25T07:49:46Z",
+      "side": 1,
+      "message": "that deferred resets pd into suspend mode, or bring it back to normal mode. we called it twice here, first one is to cancel previous pending deferred, second one is to start a new one.",
+      "parentUuid": "88656498_359f137d",
       "range": {
         "startLine": 83,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_f5773bd4",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-04-25T07:49:46Z",
+      "side": 1,
+      "message": "we should check cable det when on reset + power disable. right?",
+      "parentUuid": "88656498_d5a477ce",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 58
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_f5a17bbc",
         "filename": "board/elm/board.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-04-25T06:45:42Z",
       "side": 1,
       "message": "Do we still need this? I thought this was used to do cable detection again in the original ana7688 modification (CL:337969)",
+      "range": {
+        "startLine": 209,
+        "startChar": 10,
+        "endLine": 209,
+        "endChar": 29
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_556f27fc",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-04-25T07:49:46Z",
+      "side": 1,
+      "message": "this put protocol stack to tcpc reset state. i guess we need it, but i didn\u0027t try to remove it yet.",
+      "parentUuid": "88656498_f5a17bbc",
       "range": {
         "startLine": 209,
         "startChar": 10,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_7574abcd",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-04-25T07:49:46Z",
+      "side": 1,
+      "message": "dual role is controller by AP on or off. We need to test if we need that half second delay.",
+      "parentUuid": "88656498_35b873e6",
+      "range": {
+        "startLine": 229,
+        "startChar": 2,
+        "endLine": 229,
+        "endChar": 7
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_75beebd6",
         "filename": "driver/tcpm/anx7688.c",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2016-04-25T06:45:42Z",
       "side": 1,
       "message": "This corresponds to tcpc_vendor_specific_control() of CL:337969, why the implementation is different? tcpc_vendor_specific_control() manipulates TCPC_REG_VENDOR_SPECIFIC_CONTROL which is not here.",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 37
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_1569aff5",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-04-25T07:49:46Z",
+      "side": 1,
+      "message": "I renamed it. Since we moved it out from tcpci. So ANX7688_REG_HPD seems more reasonable.",
+      "parentUuid": "88656498_75beebd6",
       "range": {
         "startLine": 41,
         "startChar": 12,
@@ -156,6 +300,53 @@
         "startChar": 0,
         "endLine": 80,
         "endChar": 1
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_d5631714",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-04-25T07:49:46Z",
+      "side": 1,
+      "message": "Actually, the implementation is identical to that change. This is a simple rewrite following reviewer\u0027s comment.",
+      "parentUuid": "88656498_15b3ef0e",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 1
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_f5609b09",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-04-25T07:49:46Z",
+      "side": 1,
+      "message": "Inherite tcpci driver by copying it to ram is bad idea. Maybe I should make those interfaces public functions and add them to anx7688_tcpm_drv. That makes it a const again and save some ram space.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 64
       },
       "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
