@@ -22,6 +22,30 @@
       "revId": "2c424c3e84312f2add4147b4d72b41b269365b4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_85932ad8",
+        "filename": "chip/g/spi_master.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-25T22:56:19Z",
+      "side": 1,
+      "message": "chip/g doesn\u0027t have alternate functions for its GPIOs. It uses PINMUX instead.",
+      "parentUuid": "88656498_a56f4efb",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 6
+      },
+      "revId": "2c424c3e84312f2add4147b4d72b41b269365b4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
