@@ -110,10 +110,12 @@ enum adc_channel {
 };
 
 enum pwm_channel {
+#ifdef BOARD_KEVIN
 	PWM_CH_FULL_LED,
+	PWM_CH_PWR_LED,
+#endif
 	PWM_CH_BKLIGHT,
 	PWM_CH_CHG_LED,
-	PWM_CH_PWR_LED,
 	/* Number of PWM channels */
 	PWM_CH_COUNT
 };
