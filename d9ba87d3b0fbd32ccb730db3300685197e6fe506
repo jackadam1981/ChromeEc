@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_75e7cbfc",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-25T06:45:42Z",
+      "side": 1,
+      "message": "Is the CABLE_DET filtering in board_plug_is_inserted() of CL:337969 required?",
+      "range": {
+        "startLine": 80,
+        "startChar": 21,
+        "endLine": 80,
+        "endChar": 44
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_359f137d",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-25T06:45:42Z",
+      "side": 1,
+      "message": "why needs to call another deferred_reset_pd_mcu()? In deferred_reset_pd_mcu() it should already start from case 3 then case 2.",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 57
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_d5a477ce",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-25T06:45:42Z",
+      "side": 1,
+      "message": "why needs to go to case 3 again?",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 58
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_f5a17bbc",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-25T06:45:42Z",
+      "side": 1,
+      "message": "Do we still need this? I thought this was used to do cable detection again in the original ana7688 modification (CL:337969)",
+      "range": {
+        "startLine": 209,
+        "startChar": 10,
+        "endLine": 209,
+        "endChar": 29
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_35b873e6",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-25T06:45:42Z",
+      "side": 1,
+      "message": "There were more things (CL:337969):\n\n1. pd_set_dual_role() in anx74xx_set_power_mode() after power on.\n2. A 500 ms delay after power on\n\nNot sure if it is OK to skip these?",
+      "range": {
+        "startLine": 229,
+        "startChar": 2,
+        "endLine": 229,
+        "endChar": 7
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_75beebd6",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-25T06:45:42Z",
+      "side": 1,
+      "message": "This corresponds to tcpc_vendor_specific_control() of CL:337969, why the implementation is different? tcpc_vendor_specific_control() manipulates TCPC_REG_VENDOR_SPECIFIC_CONTROL which is not here.",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 37
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_15b3ef0e",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-25T06:45:42Z",
+      "side": 1,
+      "message": "These two correspond to tcpc_update_hpd_status() of CL:337969, why the implementation is different? tcpc_update_hpd_status() manipulates TCPC_REG_VENDOR_SPECIFIC_CONTROL which is not here.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 1
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
