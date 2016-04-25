@@ -285,6 +285,29 @@
     },
     {
       "key": {
+        "uuid": "88656498_d598f7f3",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-25T12:00:54Z",
+      "side": 1,
+      "message": "This may be called before cable being plugged in, so 7688 is not powered up yet, I wonder the TCPC regs are available here?",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_75beebd6",
         "filename": "driver/tcpm/anx7688.c",
         "patchSetId": 1
