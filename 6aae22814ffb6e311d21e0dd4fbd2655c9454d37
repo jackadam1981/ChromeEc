@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88656498_10af7dc3",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-25T16:50:59Z",
+      "side": 1,
+      "message": "If we remove this config, we can unconditionally return spi_flash[select].has_sr2.",
+      "range": {
+        "startLine": 207,
+        "startChar": 14,
+        "endLine": 207,
+        "endChar": 38
+      },
+      "revId": "6aae22814ffb6e311d21e0dd4fbd2655c9454d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_f0dd0959",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-25T16:50:59Z",
+      "side": 1,
+      "message": "Can we remove this config entirely now?",
+      "range": {
+        "startLine": 1587,
+        "startChar": 7,
+        "endLine": 1587,
+        "endChar": 31
+      },
+      "revId": "6aae22814ffb6e311d21e0dd4fbd2655c9454d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
