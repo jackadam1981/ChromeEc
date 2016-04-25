@@ -447,6 +447,30 @@
       "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_15cd2f35",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-25T08:54:03Z",
+      "side": 1,
+      "message": "set_polarity and set_vconn of TCPCI is not compatible with 7688. (Check https://chromium-review.googlesource.com/#/c/337969/5/driver/tcpm/tcpci.c@106\n\nhttps://chromium-review.googlesource.com/#/c/337969/5/driver/tcpm/tcpci.c@112)\nWe need to implement them differently in this driver.",
+      "parentUuid": "88656498_f5609b09",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 64
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
