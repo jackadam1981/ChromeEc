@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_7074b9cd",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-25T14:50:49Z",
+      "side": 1,
+      "message": "I kept only \n\ngpio_set_level(GPIO_USB_C0_RST, 1);\n\nin case 1 and DP plug/unplug still looks good.",
+      "parentUuid": "88656498_556f27fc",
+      "range": {
+        "startLine": 209,
+        "startChar": 10,
+        "endLine": 209,
+        "endChar": 29
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_35b873e6",
         "filename": "board/elm/board.c",
         "patchSetId": 1
@@ -285,6 +309,52 @@
     },
     {
       "key": {
+        "uuid": "88656498_306e41fe",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-25T14:50:49Z",
+      "side": 1,
+      "message": "I think this one should be removed, right?",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 19
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_10e21dbc",
+        "filename": "board/elm/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-25T14:50:49Z",
+      "side": 1,
+      "message": "should set these to GPIO_ODR_HIGH, HIGH for a correct initial state in deferred_reset_pd_mcu(), and open drain for there are already pull high resistors on both pins.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 79
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_d598f7f3",
         "filename": "driver/tcpm/anx7688.c",
         "patchSetId": 1
@@ -296,6 +366,30 @@
       "writtenOn": "2016-04-25T12:00:54Z",
       "side": 1,
       "message": "This may be called before cable being plugged in, so 7688 is not powered up yet, I wonder the TCPC regs are available here?",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_9084cdff",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-25T14:50:49Z",
+      "side": 1,
+      "message": "Answer my own question ^^\nThe first tcpm_init() (before the while loop in pd_task()) will keep looping since TCPC is not powered up. After plug and 7688 being powered up, it returns from tcpm_init() and completes this function. There is another tcpm_init() later due to TCPC reset. \n\nLooks like the 500ms delay is not required at all since TCPC will inform TCPM after it is ready.",
+      "parentUuid": "88656498_d598f7f3",
       "range": {
         "startLine": 22,
         "startChar": 11,
