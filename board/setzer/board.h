@@ -98,6 +98,9 @@
 #include "gpio_signal.h"
 #include "registers.h"
 
+/* This board has RTCRST connection from EC GPIO to the PCH */
+#define BOARD_HAS_RTCRST
+
 /* I2C ports */
 #define I2C_PORT_BATTERY	MEC1322_I2C0_0
 #define I2C_PORT_CHARGER	MEC1322_I2C0_0
@@ -151,6 +154,7 @@ enum als_id {
 };
 
 extern int state_charger_timeout;
+extern void chipset_reset_rtc(void);
 
 #endif /* !__ASSEMBLER__ */
 
