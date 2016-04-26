@@ -495,6 +495,13 @@ static void jump_to_image(uintptr_t init_addr)
 
 #ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
 	/*
+	 * Don't let any other task run from this point on.  Note that this will
+	 * fake out events and attempts to yield until executing the reset
+	 * vector.  This is okay since we are about to change images.
+	 */
+	task_disable_scheduling();
+
+	/*
 	 * We've used the region in which the loader resided as data space for
 	 * the .bss.slow section.  Therefore, we need to reload the loader from
 	 * the external storage back into program memory so that we can load a
@@ -514,6 +521,12 @@ static void jump_to_image(uintptr_t init_addr)
 		CPRINTS("ldr fail!");
 		cflush();
 	}
+
+	/*
+	 * That may have taken awhile, so kick the watchdog once more for good
+	 * measure.
+	 */
+	watchdog_reload();
 
 	/* Now that the lfw is loaded again, get the reset vector. */
 	init_addr = system_get_lfw_address();
