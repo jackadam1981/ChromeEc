@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_80223539",
+        "filename": "board/setzer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-04-26T17:24:21Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "88656498_b0f551dd",
+      "range": {
+        "startLine": 334,
+        "startChar": 16,
+        "endLine": 334,
+        "endChar": 28
+      },
+      "revId": "7c60859f0eabaf799754fbeb0c523401e1405813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_90f84dd5",
         "filename": "board/setzer/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-25T16:42:55Z",
       "side": 1,
       "message": "Is it really necessary to assert these signals for 3 seconds?!?",
+      "range": {
+        "startLine": 335,
+        "startChar": 1,
+        "endLine": 335,
+        "endChar": 20
+      },
+      "revId": "7c60859f0eabaf799754fbeb0c523401e1405813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_e011b1e5",
+        "filename": "board/setzer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-04-26T17:24:21Z",
+      "side": 1,
+      "message": "It is refer intel spec.",
+      "parentUuid": "88656498_90f84dd5",
       "range": {
         "startLine": 335,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_20182909",
+        "filename": "board/setzer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-04-26T17:24:21Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "88656498_f0ebc901",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 24
+      },
+      "revId": "7c60859f0eabaf799754fbeb0c523401e1405813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_5023b541",
         "filename": "power/braswell.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2016-04-25T16:42:55Z",
       "side": 1,
       "message": "You will busy wait (and possibly watchdog) if the config is not defined and you fall into the problem case.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 6
+      },
+      "revId": "7c60859f0eabaf799754fbeb0c523401e1405813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_40151dd0",
+        "filename": "power/braswell.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-04-26T17:24:21Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "88656498_5023b541",
       "range": {
         "startLine": 175,
         "startChar": 0,
