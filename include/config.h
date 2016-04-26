@@ -1420,16 +1420,6 @@
  */
 #undef CONFIG_PMU_POWERINFO
 
-/*
- * Enable this config to make console UART self sufficient (no other
- * initialization required before uart_init(), no interrupts, uart_tx_char()
- * does not exit until character finished transmitting).
- *
- * This is useful during early hardware bringup, each platform needs to
- * implement its own code to support this.
- */
-#undef CONFIG_POLLING_UART
-
 /* Compile common code to support power button debouncing */
 #undef CONFIG_POWER_BUTTON
 

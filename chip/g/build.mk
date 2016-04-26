@@ -18,13 +18,7 @@ ver_str := $(shell printf "%s%s %d_%d" $(ver_params))
 CPPFLAGS+= -DGC_REVISION="$(ver_str)"
 
 # Required chip modules
-chip-y=clock.o gpio.o hwtimer.o jtag.o system.o
-ifeq ($(CONFIG_POLLING_UART),y)
-chip-y += polling_uart.o
-else
-chip-y += uart.o
-chip-y += uartn.o
-endif
+chip-y=clock.o gpio.o hwtimer.o jtag.o system.o uart.o uartn.o
 
 chip-$(CONFIG_DCRYPTO)+= dcrypto/aes.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/bn.o
