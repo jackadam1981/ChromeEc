@@ -196,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_9daa9e4b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-26T04:33:59Z",
+      "side": 1,
+      "message": "MI-1 TCPM Firmware Specification only list the difference between m7688 register interface and USB-Port Controller Specification R1.0 [21051020].  If the register is not listed in the TCPM spec, you can refer to the register defination in USB-Port Controller Specification R1.0.pdf\nYou can check the detail register defination in USB-Port Controller Specification R1.0.pdf.  You can get the document from Birdy.",
+      "parentUuid": "88656498_b50c635d",
+      "range": {
+        "startLine": 90,
+        "startChar": 24,
+        "endLine": 90,
+        "endChar": 45
+      },
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a801483f_4bb9d9ec",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
@@ -397,6 +421,30 @@
       "side": 1,
       "message": "Thanks, when will you release a new FW for this?",
       "parentUuid": "88656498_7d49115c",
+      "range": {
+        "startLine": 266,
+        "startChar": 51,
+        "endLine": 266,
+        "endChar": 83
+      },
+      "revId": "fdae003f396553fe79c9d5e0aa11b244c9fb2758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88656498_ddad76f6",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-26T04:33:59Z",
+      "side": 1,
+      "message": "we\u0027ll release next version FM under new platform same with you and fixed this issue and fix the issue that we have reported. The time we\u0027ll report you after have a simple evaluation about your evt board.",
+      "parentUuid": "88656498_d59eb72d",
       "range": {
         "startLine": 266,
         "startChar": 51,
