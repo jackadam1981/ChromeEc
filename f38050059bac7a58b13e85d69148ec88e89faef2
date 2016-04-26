@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8475d66_e6408027",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-26T17:50:08Z",
+      "side": 1,
+      "message": "I think this will have to change to \"three byte header\" - register address and number of bytes to transfer need to be communicated. This will mostly affect the adaptation layer, not this driver per se.",
+      "range": {
+        "startLine": 31,
+        "startChar": 66,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "f38050059bac7a58b13e85d69148ec88e89faef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
