@@ -32,6 +32,7 @@
 #define CONFIG_USB_HID
 #define CONFIG_USB_CONSOLE
 #define CONFIG_USB_SELECT_PHY
+#define CONFIG_USB_SPI
 
 #define CONFIG_STREAM_USART
 #define CONFIG_STREAM_USB
@@ -85,8 +86,16 @@ enum usb_strings {
 	USB_STR_AP_NAME,
 	USB_STR_EC_NAME,
 	USB_STR_UPGRADE_NAME,
+	USB_STR_SPI_NAME,
 
 	USB_STR_COUNT
+};
+
+/* USB SPI device indexes */
+enum usb_spi {
+	USB_SPI_DISABLE = 0,
+	USB_SPI_AP,
+	USB_SPI_EC,
 };
 
 /* Interrupt handler */
@@ -100,7 +109,8 @@ void sys_rst_asserted(enum gpio_signal signal);
 #define USB_IFACE_AP      2
 #define USB_IFACE_EC      3
 #define USB_IFACE_UPGRADE 4
-#define USB_IFACE_COUNT   5
+#define USB_IFACE_SPI     5
+#define USB_IFACE_COUNT   6
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL   0
@@ -109,7 +119,8 @@ void sys_rst_asserted(enum gpio_signal signal);
 #define USB_EP_AP        3
 #define USB_EP_EC        4
 #define USB_EP_UPGRADE   5
-#define USB_EP_COUNT     6
+#define USB_EP_SPI       6
+#define USB_EP_COUNT     7
 
 /* UART indexes (use define rather than enum to expand them) */
 #define UART_CR50	0
