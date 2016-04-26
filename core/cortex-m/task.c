@@ -14,6 +14,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "watchdog.h"
 
 typedef union {
 	struct {
@@ -165,6 +166,7 @@ static int need_resched_or_profiling;
 static uint32_t tasks_ready = (1 << TASK_ID_HOOKS);
 
 static int start_called;  /* Has task swapping started */
+static uint8_t is_scheduling_disabled;
 
 static inline task_ *__task_id_to_ptr(task_id_t id)
 {
@@ -226,6 +228,10 @@ void svc_handler(int desched, task_id_t resched)
 	int exc = get_interrupt_context();
 	uint64_t t;
 #endif
+
+	/* Don't do anything if scheduling is disabled. */
+	if (is_scheduling_disabled)
+		return;
 
 	/*
 	 * Push the priority to -1 until the return, to avoid being
@@ -357,6 +363,17 @@ static uint32_t __wait_evt(int timeout_us, task_id_t resched)
 	uint32_t evt;
 	int ret __attribute__((unused));
 
+	if (is_scheduling_disabled) {
+		/*
+		 * In normal operation, waiting for an event may allow the hooks
+		 * task to run which would kick the watchdog, If scheduling is
+		 * disabled, we're no longer actually waiting for events.
+		 * Therefore, just kick the watchdog and return.
+		 */
+		watchdog_reload();
+		return TASK_EVENT_TIMER;
+	}
+
 	ASSERT(!in_interrupt_context());
 
 	if (timeout_us > 0) {
@@ -411,6 +428,13 @@ uint32_t task_wait_event_mask(uint32_t event_mask, int timeout_us)
 	uint64_t deadline = get_time().val + timeout_us;
 	uint32_t events = 0;
 	int time_remaining_us = timeout_us;
+
+	/*
+	 * If scheduling is disabled, pretend the events they were waiting for
+	 * happened.
+	 */
+	if (is_scheduling_disabled)
+		return event_mask;
 
 	/* Add the timer event to the mask so we can indicate a timeout */
 	event_mask |= TASK_EVENT_TIMER;
@@ -484,6 +508,15 @@ static void __nvic_init_irqs(void)
 	 * they're not.
 	 */
 	interrupt_enable();
+#ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
+	/* Reset the BASEPRI register.*/
+	asm volatile("mov r12, #0\n"
+		     "msr basepri, r12\n"
+		     "isb"
+		     : /* no outputs */
+		     : /* no inputs */
+		     : "r12");
+#endif /* defined(CONFIG_REPLACE_LOADER_WITH_BSS_SLOW) */
 
 	/* Set priorities */
 	for (i = 0; i < exc_calls; i++) {
@@ -695,3 +728,23 @@ int task_start(void)
 
 	return __task_start(&need_resched_or_profiling);
 }
+
+#ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
+void task_disable_scheduling(void)
+{
+	/*
+	 * Set BASEPRI to 1 to ignore any exceptions with that priority or
+	 * lower.  This will allow only the SVC handler to run.
+	 */
+	asm volatile("mov r12, #1\n"
+		     "msr basepri, r12\n"
+		     "isb"
+		     : /* no outputs */
+		     : /* no inputs */
+		     : "r12");
+
+	/* No other tasks should run from this point forward. */
+	tasks_ready = 1 << task_get_current();
+	is_scheduling_disabled = 1;
+}
+#endif /* defined(CONFIG_REPLACE_LOADER_WITH_BSS_SLOW) */
