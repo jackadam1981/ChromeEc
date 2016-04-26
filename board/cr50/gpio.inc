@@ -75,8 +75,8 @@ PINMUX(FUNC(UART1_RX),        A3, DIO_INPUT)	/* AP console */
 PINMUX(FUNC(UART2_RX),        B6, DIO_INPUT)	/* EC console */
 
 /* I2C pins are bi-directional */
-PINMUX(FUNC(I2C0_SCL),        B0, DIO_INPUT)
-PINMUX(FUNC(I2C0_SDA),        B1, DIO_INPUT)
+PINMUX(FUNC(I2CS0_SCL),        B0, DIO_INPUT | DIO_OUTPUT)
+PINMUX(FUNC(I2CS0_SDA),        B1, DIO_INPUT | DIO_OUTPUT)
 
 /* Both SPI master and slave buses are wired directly to specific pads
  *
