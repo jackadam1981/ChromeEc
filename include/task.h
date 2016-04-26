@@ -251,6 +251,19 @@ struct irq_priority {
 	uint8_t priority;
 };
 
+#ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
+/**
+ * Disable task scheduling.
+ *
+ * This disables task scheduling along with faking events and ignoring all
+ * interrupts with configurable priority less than 1.
+ *
+ * NOTE: Once this has been called, normal operation cannot be restored until a
+ * reset.
+ */
+void task_disable_scheduling(void);
+#endif
+
 /*
  * Implement the DECLARE_IRQ(irq, routine, priority) macro which is
  * a core specific helper macro to declare an interrupt handler "routine".
