@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "88656498_f3142925",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-26T15:55:14Z",
+      "side": 1,
+      "message": "You can reload a GDT in here. You can define whatever index you want for a the code and data segment descriptor. It doesn\u0027t need to be calculated at runtime since you define the descriptor number. Also, if it\u0027s known what the segment the BUP uses you can just #define it and reuse it.",
+      "parentUuid": "88656498_eefebbc4",
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd7567d_39643b8b",
         "filename": "core/minute-ia/init.S",
         "patchSetId": 4
