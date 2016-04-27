@@ -14,6 +14,10 @@
 
 #include "internal.h"
 
+#include <stddef.h>
+
+#include "cryptoc/hmac.h"
+
 enum cipher_mode {
 	CIPHER_MODE_ECB = 0,
 	CIPHER_MODE_CTR = 1,
@@ -26,26 +30,10 @@ enum encrypt_mode {
 	ENCRYPT_MODE = 1
 };
 
-struct HASH_CTX;   /* Forward declaration. */
-
-typedef struct HASH_CTX SHA1_CTX;
-typedef struct HASH_CTX SHA256_CTX;
-
 enum hashing_mode {
 	HASH_SHA1 = 0,
 	HASH_SHA256 = 1
 };
-
-#define DCRYPTO_HASH_update(ctx, data, len) \
-	((ctx)->vtab->update((ctx), (data), (len)))
-#define DCRYPTO_HASH_final(ctx) \
-	((ctx)->vtab->final((ctx)))
-#define DCRYPTO_HASH_size(ctx) \
-	((ctx)->vtab->size)
-
-#define DCRYPTO_SHA1_update(ctx, data, n) \
-	DCRYPTO_HASH_update((ctx), (data), (n))
-#define DCRYPTO_SHA1_final(ctx) DCRYPTO_HASH_final((ctx))
 
 /*
  * AES implementation, based on a hardware AES block.
@@ -68,16 +56,19 @@ int DCRYPTO_aes_ctr(uint8_t *out, const uint8_t *key, uint32_t key_bits,
  * is TRUE, in which case there will be no attempt to use the hardware for
  * this particular hashing session.
  */
-void DCRYPTO_SHA1_init(SHA1_CTX *ctx, uint32_t sw_required);
-void DCRYPTO_SHA256_init(SHA256_CTX *ctx, uint32_t sw_required);
-const uint8_t *DCRYPTO_SHA1_hash(const uint8_t *data, uint32_t n,
+void DCRYPTO_SHA1_init(SHA_CTX *ctx, uint32_t sw_required);
+void DCRYPTO_SHA256_init(LITE_SHA256_CTX *ctx, uint32_t sw_required);
+const uint8_t *DCRYPTO_SHA1_hash(const void *data, uint32_t n,
+				uint8_t *digest);
+const uint8_t *DCRYPTO_SHA256_hash(const void *data, uint32_t n,
 				uint8_t *digest);
 
-#define DCRYPTO_SHA256_update(ctx, data, n) \
-	DCRYPTO_HASH_update((ctx), (data), (n))
-#define DCRYPTO_SHA256_final(ctx) DCRYPTO_HASH_final((ctx))
-const uint8_t *DCRYPTO_SHA256_hash(const uint8_t *data, uint32_t n,
-				uint8_t *digest);
+/*
+ *  HMAC.
+ */
+void dcrypto_HMAC_SHA256_init(LITE_HMAC_CTX *ctx, const void *key,
+			unsigned int len);
+const uint8_t *dcrypto_HMAC_final(LITE_HMAC_CTX *ctx);
 
 /*
  * BIGNUM utility methods.

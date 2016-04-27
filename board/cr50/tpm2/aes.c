@@ -4,6 +4,8 @@
  */
 
 #include "CryptoEngine.h"
+#undef SHA_DIGEST_SIZE
+
 #include "dcrypto.h"
 
 #include <assert.h>

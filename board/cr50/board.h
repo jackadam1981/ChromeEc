@@ -57,16 +57,10 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
-/* Not using software sync, so verify RW signature instead */
-#define CONFIG_RSA
-#define CONFIG_SHA256
-
 #define CONFIG_SPS_TEST
 
 /* Include crypto stuff, both software and hardware. */
 #define CONFIG_DCRYPTO
-#define CONFIG_SHA1
-#define CONFIG_SHA256
 
 #ifndef __ASSEMBLER__
 
