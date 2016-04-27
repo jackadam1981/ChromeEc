@@ -426,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "c8483da3_24a638d2",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-27T05:32:33Z",
+      "side": 1,
+      "message": "the delay time is too long, in TCPC FM9.0 the delay time is 60ms.  if you only check alter interrupt as the next first event, the delay is not required. \nwhy TCPM should delay at least 50ms  here. The cause is that it takes at least 50ms to make M7688 EEPROM start to work.",
+      "parentUuid": "88656498_9084cdff",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_75beebd6",
         "filename": "driver/tcpm/anx7688.c",
         "patchSetId": 1
