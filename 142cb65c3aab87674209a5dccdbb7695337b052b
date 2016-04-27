@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8594975_c095b299",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-27T21:49:06Z",
+      "side": 1,
+      "message": "does it even worth putting this #ifdef ?\nmaybe unconditionally putting it is easier to read and just waste 8 bytes.",
+      "range": {
+        "startLine": 511,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 42
+      },
+      "revId": "142cb65c3aab87674209a5dccdbb7695337b052b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8594975_e047163a",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-27T21:49:06Z",
+      "side": 1,
+      "message": "IMO it\u0027s better to write :\n       asm volatile(\"msr basepri, %0\\n\"\n                    \"isb\" : : \"r\"(0));\n\nActually declaring a static function for this might be even better :\nstatic void set_basepri(unsigned val)\n{\n       asm volatile(\"msr basepri, %0\\n\"\n                    \"isb\" : : \"r\"(val));\n}\nand will give the same result.",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 16
+      },
+      "revId": "142cb65c3aab87674209a5dccdbb7695337b052b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8594975_806e1ab8",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-27T21:49:06Z",
+      "side": 1,
+      "message": "ditto:\n       asm volatile(\"msr basepri, %0\\n\"\n                    \"isb\" : : \"r\"(1));",
+      "range": {
+        "startLine": 739,
+        "startChar": 0,
+        "endLine": 744,
+        "endChar": 16
+      },
+      "revId": "142cb65c3aab87674209a5dccdbb7695337b052b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
