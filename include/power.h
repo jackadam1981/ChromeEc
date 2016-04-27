@@ -43,6 +43,20 @@ struct power_signal_info {
 	const char *name;	/* Name of signal */
 };
 
+/* EC can wake from S5 with lid or power button */
+#define EC_S5_WAKE_EVENTS \
+	(EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN)     |\
+	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON))
+
+/* EC can wake from S3 with lid or power button or key press */
+#define EC_S3_WAKE_EVENTS \
+	(EC_S5_WAKE_EVENTS |\
+	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEY_PRESSED))
+
+/* EC can wake from S0ix with lid */
+#define EC_S0ix_WAKE_EVENTS \
+	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN)
+
 /*
  * Each board must provide its signal list and a corresponding enum
  * power_signal.

@@ -296,6 +296,8 @@ static enum power_state _power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5S3:
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0);
+
 		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			/* Required rail went away */
 			chipset_force_shutdown();
@@ -307,6 +309,8 @@ static enum power_state _power_handle_state(enum power_state state)
 		return POWER_S3;
 
 	case POWER_S3S0:
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0);
+
 		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			/* Required rail went away */
 			chipset_force_shutdown();
@@ -339,6 +343,8 @@ static enum power_state _power_handle_state(enum power_state state)
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, EC_S3_WAKE_EVENTS);
+
 		gpio_set_level(GPIO_ENABLE_BACKLIGHT, 0);
 
 		/* Suspend wireless */
@@ -357,7 +363,7 @@ static enum power_state _power_handle_state(enum power_state state)
 		/* call hooks before standby */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 
-		lpc_enable_wake_mask_for_lid_open();
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, EC_S0ix_WAKE_EVENTS);
 
 		/*
 		 * Enable idle task deep sleep. Allow the low power idle task
@@ -369,7 +375,7 @@ static enum power_state _power_handle_state(enum power_state state)
 
 
 	case POWER_S0ixS0:
-		lpc_disable_wake_mask_for_lid_open();
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0);
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_RESUME);
@@ -386,6 +392,8 @@ static enum power_state _power_handle_state(enum power_state state)
 	case POWER_S3S5:
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
+
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, EC_S5_WAKE_EVENTS);
 
 		/* Disable wireless */
 		wireless_set_state(WIRELESS_OFF);
