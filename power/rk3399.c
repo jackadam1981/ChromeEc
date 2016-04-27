@@ -106,7 +106,7 @@ enum power_state power_handle_state(enum power_state state)
 {
 	switch (state) {
 	case POWER_G3:
-		break;
+			return POWER_G3S5;
 
 	case POWER_S5:
 		if (forcing_shutdown)
