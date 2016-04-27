@@ -48,12 +48,11 @@
 #include "timer.h"
 #include "util.h"
 
-#define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
+/* TODO: Which CC_ fits the best for NvMem? */
+#define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
 
 #define NVMEM_VERSION_BITS 16
 #define NVMEM_VERSION_MASK ((1 << NVMEM_VERSION_BITS) - 1)
-
-
 #define NVMEM_ACQUIRE_CACHE_SLEEP_MS 20
 #define NVMEM_ACQUIRE_CACHE_MAX_ATTEMPTS (200 / NVMEM_ACQUIRE_CACHE_SLEEP_MS)
 #define NVMEM_CACHE_ALIGN_BITS 4
@@ -99,7 +98,7 @@ static int nvmem_acquire_cache(void)
 	int avail_cache_size;
 	int ret;
 	int align_offset;
-	int addr;
+	uintptr_t addr;
 
 	avail_cache_size = shared_mem_size();
 	align_offset = (1 << NVMEM_CACHE_ALIGN_BITS) - 1;
@@ -113,8 +112,7 @@ static int nvmem_acquire_cache(void)
 		ret = shared_mem_acquire(NVMEM_PARTITION_SIZE,
 					 (char **)&cache_base_ptr);
 		if (ret == EC_SUCCESS) {
-			/* Align the start address */
-			addr = (int)cache_base_ptr;
+			addr = (uintptr_t)cache_base_ptr;
 			addr = ((addr + align_offset) >>
 				NVMEM_CACHE_ALIGN_BITS) <<
 				NVMEM_CACHE_ALIGN_BITS;
@@ -174,7 +172,7 @@ static int nvmem_is_unitialized(void)
 	/* Point to start of Nv Memory */
 	p_nvmem = (uint32_t *)NVMEM_BASE_ADDR;
 	/* Verify that each byte is 0xff (4 bytes at a time) */
-	for (n = 0; n < (CONFIG_NV_MEM_SIZE >> 2); n++) {
+	for (n = 0; n < (NVMEM_SIZE >> 2); n++) {
 		if (p_nvmem[n] != 0xffffffff)
 			return EC_ERROR_CRC;
 	}
@@ -305,7 +303,7 @@ static int nvmem_get_partition_off(int user, uint32_t offset,
 	 * Ensure that read/write operation that is calling this function
 	 * doesn't exceed the end of its buffer.
 	 */
-	if ((int32_t)offset + (int32_t)len >= max_len)
+	if ((int32_t)offset + (int32_t)len > max_len)
 		return EC_ERROR_OVERFLOW;
 	/* Compute offset within the partition for the rd/wr operation */
 	buffer_offset = start_offset + (int32_t)offset +
@@ -340,7 +338,8 @@ int nvmem_setup(uint16_t starting_version)
 		}
 		/* Fill in tag info */
 		p_part = (struct nvmem_partition *)cache_base_ptr;
-		p_part->tag.version = starting_version + partition;
+		/* Commit function will increment version number */
+		p_part->tag.version = starting_version + partition - 1;
 		nvmem_compute_sha(&cache_base_ptr[NVMEM_SHA_SIZE],
 				  NVMEM_PARTITION_SIZE - NVMEM_SHA_SIZE,
 				  p_part->tag.sha);
@@ -434,6 +433,10 @@ int nvmem_commit(void)
 	struct nvmem_partition *p_part;
 
 	/* Update version number */
+	if (cache_base_ptr == NULL) {
+		CPRINTF("%s:%d\n", __func__, __LINE__);
+		return EC_ERROR_UNKNOWN;
+	}
 	p_part = (struct nvmem_partition *)cache_base_ptr;
 	version = p_part->tag.version + 1;
 	/* Check for restricted version number */
