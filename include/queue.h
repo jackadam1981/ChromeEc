@@ -60,7 +60,7 @@ struct queue_state {
 	 *     head == tail
 	 *
 	 * Full:
-	 *     head - tail == buffer_units
+	 *     tail - head == buffer_units
 	 */
 	size_t head; /* head: next to dequeue */
 	size_t tail; /* tail: next to enqueue */

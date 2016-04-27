@@ -12,20 +12,12 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "printf.h"
+#include "queue.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
-
-/* Macros to advance in the circular buffers */
-#define TX_BUF_NEXT(i) (((i) + 1) & (CONFIG_UART_TX_BUF_SIZE - 1))
-#define RX_BUF_NEXT(i) (((i) + 1) & (CONFIG_UART_RX_BUF_SIZE - 1))
-#define RX_BUF_PREV(i) (((i) - 1) & (CONFIG_UART_RX_BUF_SIZE - 1))
-
-/* Macros to calculate difference of pointers in the circular buffers. */
-#define TX_BUF_DIFF(i, j) (((i) - (j)) & (CONFIG_UART_TX_BUF_SIZE - 1))
-#define RX_BUF_DIFF(i, j) (((i) - (j)) & (CONFIG_UART_RX_BUF_SIZE - 1))
 
 /*
  * Interval between rechecking the receive DMA head pointer, after a character
@@ -36,16 +28,13 @@
 				 (CONFIG_UART_RX_DMA_RECHECKS + 1))
 
 /* Transmit and receive buffers */
-static volatile char tx_buf[CONFIG_UART_TX_BUF_SIZE];
-static volatile int tx_buf_head;
-static volatile int tx_buf_tail;
-static volatile char rx_buf[CONFIG_UART_RX_BUF_SIZE];
-static volatile int rx_buf_head;
-static volatile int rx_buf_tail;
-static int tx_snapshot_head;
-static int tx_snapshot_tail;
-static int tx_last_snapshot_head;
-static int tx_next_snapshot_head;
+static const struct queue tx = QUEUE_NULL(CONFIG_UART_TX_BUF_SIZE, char);
+static const struct queue rx = QUEUE_NULL(CONFIG_UART_RX_BUF_SIZE, char);
+
+/*
+ * Queue:                       head      <= tail
+ * Host:  tail - queue.units <= host_head <= tail
+ */
 
 /**
  * Put a single character into the transmit buffer.
@@ -58,41 +47,18 @@ static int tx_next_snapshot_head;
  */
 static int __tx_char(void *context, int c)
 {
-	int tx_buf_next, tx_buf_new_tail;
+	char temp = c;
 
 	/* Do newline to CRLF translation */
 	if (c == '\n' && __tx_char(NULL, '\r'))
 		return 1;
 
 #if defined CONFIG_POLLING_UART
-	(void) tx_buf_next;
-	(void) tx_buf_new_tail;
 	uart_write_char(c);
-#else
-
-	tx_buf_next = TX_BUF_NEXT(tx_buf_head);
-	if (tx_buf_next == tx_buf_tail)
-		return 1;
-
-	/*
-	 * If we do a READ_RECENT, the buffer may have wrapped around, and
-	 * we'll drop most of the logs in this case. Make sure the place
-	 * we read from in that case is always ahead of the new tx_buf_head.
-	 *
-	 * We also want to make sure that the next time we snapshot and want
-	 * to READ_RECENT, we don't start reading from a stale tail.
-	 */
-	tx_buf_new_tail = TX_BUF_NEXT(tx_buf_next);
-	if (tx_buf_next == tx_last_snapshot_head &&
-	    tx_last_snapshot_head != tx_snapshot_head)
-		tx_last_snapshot_head = tx_buf_new_tail;
-	if (tx_buf_next == tx_next_snapshot_head)
-		tx_next_snapshot_head = tx_buf_new_tail;
-
-	tx_buf[tx_buf_head] = c;
-	tx_buf_head = tx_buf_next;
-#endif
 	return 0;
+#else
+	return !queue_add_unit(&tx, &temp);
+#endif
 }
 
 #ifdef CONFIG_UART_TX_DMA
@@ -102,54 +68,40 @@ static int __tx_char(void *context, int c)
  */
 void uart_process_output(void)
 {
-	/* Size of current DMA transfer */
-	static int tx_dma_in_progress;
+	/* Queue chunk for current DMA transfer */
+	static struct queue_chunk chunk;
 
 	/*
-	 * Get head pointer now, to avoid math problems if some other task
-	 * or interrupt adds output during this call.
+	 * If we are ready to start a DMA transfer, advance the queue head by
+	 * the size of the previous transfer (If there was no previous transfer
+	 * because this is the first call to uart_process_output the call to
+	 * queue_advance_head will have no effect), and start a new transfer if
+	 * needed.
 	 */
-	int head = tx_buf_head;
+	if (uart_tx_dma_ready()) {
+		queue_advance_head(&tx, chunk.length);
 
-	/* If DMA is still busy, nothing to do. */
-	if (!uart_tx_dma_ready())
-		return;
+		chunk = queue_get_read_chunk(&tx);
 
-	/* If a previous DMA transfer completed, free up the buffer it used */
-	if (tx_dma_in_progress) {
-		tx_buf_tail = (tx_buf_tail + tx_dma_in_progress) &
-			(CONFIG_UART_TX_BUF_SIZE - 1);
-		tx_dma_in_progress = 0;
+		if (chunk.length)
+			uart_tx_dma_start(chunk.buffer, chunk.length);
+		else
+			uart_tx_stop();
 	}
-
-	/* Disable DMA-done interrupt if nothing to send */
-	if (head == tx_buf_tail) {
-		uart_tx_stop();
-		return;
-	}
-
-	/*
-	 * Get the largest contiguous block of output.  If the transmit buffer
-	 * wraps, only use the part before the wrap.
-	 */
-	tx_dma_in_progress = (head > tx_buf_tail ? head :
-			      CONFIG_UART_TX_BUF_SIZE) - tx_buf_tail;
-
-	uart_tx_dma_start((char *)(tx_buf + tx_buf_tail), tx_dma_in_progress);
 }
 
 #else /* !CONFIG_UART_TX_DMA */
 
 void uart_process_output(void)
 {
+	char c;
+
 	/* Copy output from buffer until TX fifo full or output buffer empty */
-	while (uart_tx_ready() && (tx_buf_head != tx_buf_tail)) {
-		uart_write_char(tx_buf[tx_buf_tail]);
-		tx_buf_tail = TX_BUF_NEXT(tx_buf_tail);
-	}
+	while (uart_tx_ready() && queue_remove_unit(&tx, &c))
+		uart_write_char(c);
 
 	/* If output buffer is empty, disable transmit interrupt */
-	if (tx_buf_tail == tx_buf_head)
+	if (queue_is_empty(&tx))
 		uart_tx_stop();
 }
 
@@ -189,6 +141,13 @@ void uart_process_input(void)
 }
 DECLARE_HOOK(HOOK_TICK, uart_process_input, HOOK_PRIO_DEFAULT);
 
+static void uart_rx_dma_init(void)
+{
+	/* Start receiving */
+	uart_rx_dma_start(rx.buffer, rx.buffer_units);
+}
+DECLARE_HOOK(HOOK_INIT, uart_rx_dma_init, HOOK_PRIO_DEFAULT);
+
 #else /* !CONFIG_UART_RX_DMA */
 
 void uart_process_input(void)
@@ -198,7 +157,6 @@ void uart_process_input(void)
 	/* Copy input from buffer until RX fifo empty */
 	while (uart_rx_available()) {
 		int c = uart_read_char();
-		int rx_buf_next = RX_BUF_NEXT(rx_buf_head);
 
 #ifdef CONFIG_UART_INPUT_FILTER
 		/* Intercept the input before it goes to the console */
@@ -206,12 +164,7 @@ void uart_process_input(void)
 			continue;
 #endif
 
-		if (rx_buf_next != rx_buf_tail) {
-			/* Buffer all other input */
-			rx_buf[rx_buf_head] = c;
-			rx_buf_head = rx_buf_next;
-			got_input = 1;
-		}
+		got_input |= queue_add_unit(&rx, &c);
 	}
 
 	if (got_input)
@@ -270,7 +223,7 @@ void uart_flush_output(void)
 		return;
 
 	/* Loop until buffer is empty */
-	while (tx_buf_head != tx_buf_tail) {
+	while (!queue_is_empty(&tx)) {
 		if (in_interrupt_context()) {
 			/*
 			 * Explicitly process UART output, since the UART
@@ -298,123 +251,67 @@ void uart_flush_output(void)
 
 int uart_getc(void)
 {
-	/* Look for a non-flow-control character */
-	while (rx_buf_tail != rx_buf_head) {
-		int c = rx_buf[rx_buf_tail];
-		rx_buf_tail = RX_BUF_NEXT(rx_buf_tail);
+	char c;
 
+	if (queue_remove_unit(&rx, &c))
 		return c;
-	}
 
-	/* If we're still here, no input */
 	return -1;
 }
 
 int uart_buffer_empty(void)
 {
-	return tx_buf_head == tx_buf_tail;
+	return queue_is_empty(&tx);
 }
-
-#ifdef CONFIG_UART_RX_DMA
-static void uart_rx_dma_init(void)
-{
-	/* Start receiving */
-	uart_rx_dma_start((char *)rx_buf, CONFIG_UART_RX_BUF_SIZE);
-}
-DECLARE_HOOK(HOOK_INIT, uart_rx_dma_init, HOOK_PRIO_DEFAULT);
-#endif
 
 /*****************************************************************************/
 /* Host commands */
 
 static int host_command_console_snapshot(struct host_cmd_handler_args *args)
 {
-	/* Assume the whole circular buffer is full */
-	tx_snapshot_head = tx_buf_head;
-	tx_snapshot_tail = TX_BUF_NEXT(tx_snapshot_head);
-	/* Set up pointer for just the new part of the buffer */
-	tx_last_snapshot_head = tx_next_snapshot_head;
-	tx_next_snapshot_head = tx_buf_head;
-
 	/*
-	 * Immediately skip any unused bytes.  This doesn't always work,
-	 * because a higher-priority task or interrupt handler can write to the
-	 * buffer while we're scanning it.  This is acceptable because this
-	 * command is only for debugging, and the failure mode is a bit of
-	 * garbage at the beginning of the saved output.  The saved buffer
-	 * could also be overwritten by the head coming completely back around
-	 * before we finish.  The alternative would be to make a full copy of
-	 * the transmit buffer, but that requires a lot of RAM.
+	 * There is nothing to do here anymore, the secondary queue always
+	 * maintains the correct section of the primary queue buffer to read.
 	 */
-	while (tx_snapshot_tail != tx_snapshot_head) {
-		if (tx_buf[tx_snapshot_tail])
-			break;
-		tx_snapshot_tail = TX_BUF_NEXT(tx_snapshot_tail);
-	}
-
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_CONSOLE_SNAPSHOT,
 		     host_command_console_snapshot,
 		     EC_VER_MASK(0));
 
-/*
- * Common code for host_command_console_read and
- * host_command_console_read_recent.
- */
-static int console_read_helper(struct host_cmd_handler_args *args,
-			       int *tail)
-{
-	char *dest = (char *)args->response;
-
-	/* If no snapshot data, return empty response */
-	if (tx_snapshot_head == *tail)
-		return EC_RES_SUCCESS;
-
-	/* Copy data to response */
-	while (*tail != tx_snapshot_head &&
-	       args->response_size < args->response_max - 1) {
-
-		/*
-		 * Copy only non-zero bytes, so that we don't copy unused
-		 * bytes if the buffer hasn't completely rolled at boot.
-		 */
-		if (tx_buf[*tail]) {
-			*(dest++) = tx_buf[*tail];
-			args->response_size++;
-		}
-
-		*tail = TX_BUF_NEXT(*tail);
-	}
-
-	/* Null-terminate */
-	*(dest++) = '\0';
-	args->response_size++;
-
-	return EC_RES_SUCCESS;
-}
-
 static int host_command_console_read(struct host_cmd_handler_args *args)
 {
-	const struct ec_params_console_read_v1 *p;
+       const struct ec_params_console_read_v1 *p = args->params;
 
-	if (args->version == 0) {
-		/*
-		 * Prior versions of this command only support reading from
-		 * an entire snapshot, not just the output since the last
-		 * snapshot.
-		 */
-		return console_read_helper(args, &tx_snapshot_tail);
-	} else if (args->version == 1) {
-		/* Check the params to figure out where to start reading. */
-		p = args->params;
-		if (p->subcmd == CONSOLE_READ_NEXT)
-			return console_read_helper(args, &tx_snapshot_tail);
-		else if (p->subcmd == CONSOLE_READ_RECENT)
-			return console_read_helper(args,
-						   &tx_last_snapshot_head);
-	}
-	return EC_RES_INVALID_PARAM;
+       /*
+        * Prior versions of this command only support reading from an entire
+        * snapshot, not just the output since the last snapshot.
+        */
+       switch (args->version == 0 ? CONSOLE_READ_NEXT : p->subcmd)
+       {
+       case CONSOLE_READ_NEXT:
+               args->response_size =
+                       queue_peek_units(secondary,
+                                        args->response,
+                                        0,
+                                        args->response_max - 1);
+               break;
+
+       case CONSOLE_READ_RECENT:
+               args->response_size =
+                       queue_remove_units(secondary,
+                                          args->response,
+                                          args->response_max - 1);
+               break;
+
+       default:
+               return EC_RES_INVALID_PARAM;
+       }
+
+       /* Always Null-terminate */
+       ((char *) args->response)[args->response_size++] = '\0';
+
+	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_CONSOLE_READ,
 		     host_command_console_read,
