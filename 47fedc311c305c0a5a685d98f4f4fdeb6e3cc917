@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8483da3_ea1c17b4",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-04-27T11:00:25Z",
+      "side": 1,
+      "message": "s/micro/V4",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "47fedc311c305c0a5a685d98f4f4fdeb6e3cc917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8483da3_4a79cbeb",
+        "filename": "board/servo_v4/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-04-27T11:00:25Z",
+      "side": 1,
+      "message": "s/micro/v4",
+      "range": {
+        "startLine": 6,
+        "startChar": 9,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "47fedc311c305c0a5a685d98f4f4fdeb6e3cc917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
