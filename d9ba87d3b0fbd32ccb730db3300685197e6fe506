@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "c8483da3_8f5805ec",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-27T08:18:13Z",
+      "side": 1,
+      "message": "yes, \u003e\u003d10ms is correct.  50ms is for avoiding old chip issue.",
+      "parentUuid": "c8483da3_6fcf79c1",
+      "range": {
+        "startLine": 198,
+        "startChar": 49,
+        "endLine": 198,
+        "endChar": 57
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_d5a477ce",
         "filename": "board/elm/board.c",
         "patchSetId": 1
