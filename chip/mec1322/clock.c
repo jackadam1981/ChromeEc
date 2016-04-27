@@ -11,6 +11,8 @@
 #include "cpu.h"
 #include "hooks.h"
 #include "hwtimer.h"
+#include "pwm.h"
+#include "pwm_chip.h"
 #include "registers.h"
 #include "shared_mem.h"
 #include "system.h"
@@ -175,12 +177,45 @@ static void system_reset_htimer_alarm(void)
 	MEC1322_HTIMER_PRELOAD = 0;
 }
 
+#ifdef CONFIG_PWM
+static const uint32_t pwm_dsleep_mask[] = {
+	MEC1322_PCR_EC_SLP_EN_PWM0,
+	MEC1322_PCR_EC_SLP_EN_PWM1,
+	MEC1322_PCR_EC_SLP_EN_PWM2,
+	MEC1322_PCR_EC_SLP_EN_PWM3,
+};
+
+/*
+ * Return EC_SLP_EN mask corresponding to PWM channels that must stay awake
+ * during low-power idle / dsleep.
+ */
+static uint32_t get_pwm_awake_mask(void)
+{
+	uint32_t keep_awake_mask = 0;
+	int i;
+
+	for (i = 0; i < PWM_CH_COUNT; ++i)
+		if ((pwm_channels[i].flags & PWM_CONFIG_DSLEEP) &&
+		    pwm_get_enabled(i))
+			keep_awake_mask |=
+				pwm_dsleep_mask[pwm_channels[i].channel];
+
+	return keep_awake_mask;
+}
+#endif
+
 /**
  * This is mec1322 specific and equivalent to ARM Cortex's
  * 'DeepSleep' via system control block register, CPU_SCB_SYSCTRL
  */
 static void prepare_for_deep_sleep(void)
 {
+	uint32_t ec_slp_en = MEC1322_PCR_EC_SLP_EN |
+			     MEC1322_PCR_EC_SLP_EN_SLEEP;
+#ifdef CONFIG_PWM
+	uint32_t pwm_awake_mask;
+#endif
+
 	/* sysTick timer */
 	CPU_NVIC_ST_CTRL &= ~ST_ENABLE;
 	CPU_NVIC_ST_CTRL &= ~ST_COUNTFLAG;
@@ -199,14 +234,22 @@ static void prepare_for_deep_sleep(void)
 	MEC1322_TMR16_CTL(0) &= ~1;
 
 	MEC1322_PCR_CHIP_SLP_EN |= 0x3;
-	MEC1322_PCR_EC_SLP_EN |= MEC1322_PCR_EC_SLP_EN_SLEEP;
+#ifdef CONFIG_PWM
+	pwm_awake_mask = get_pwm_awake_mask();
+	if (pwm_awake_mask)
+		ec_slp_en &= ~pwm_awake_mask;
+	else
+#endif
+		/* Disable 100 Khz clock */
+		MEC1322_PCR_SLOW_CLK_CTL &= 0xFFFFFC00;
+
+	MEC1322_PCR_EC_SLP_EN = ec_slp_en;
 	MEC1322_PCR_HOST_SLP_EN |= MEC1322_PCR_HOST_SLP_EN_SLEEP;
 	MEC1322_PCR_EC_SLP_EN2 |= MEC1322_PCR_EC_SLP_EN2_SLEEP;
 
 #ifndef CONFIG_POWER_S0IX
 	MEC1322_LPC_ACT = 0x0;
 #endif
-	MEC1322_PCR_SLOW_CLK_CTL &= 0xFFFFFC00;
 
 	MEC1322_PCR_SYS_SLP_CTL = 0x2;  /* heavysleep 2 */
 
@@ -242,8 +285,6 @@ static void resume_from_deep_sleep(void)
 	/* Enable LPC */
 	MEC1322_LPC_ACT |= 1;
 #endif
-
-	MEC1322_PCR_SLOW_CLK_CTL = 0x1E0;
 }
 
 
