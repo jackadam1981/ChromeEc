@@ -398,6 +398,7 @@ void pd_tx_clear_circular_mode(int port)
 
 void pd_rx_start(int port)
 {
+	CPRINTF("pd_rx_start port=%d\n", port);
 	/* start sampling the edges on the CC line using the RX timer */
 	dma_start_rx(&(pd_phy[port].dma_tim_option), PD_MAX_RAW_SIZE,
 			pd_phy[port].raw_samples);
@@ -445,6 +446,27 @@ uint64_t get_time_since_last_edge(int port)
 	return get_time().val - rx_edge_ts[port][prev_idx].val;
 }
 
+#define rx_log_max  100
+static int rx_log_size = 0;
+static int rx_log[rx_log_max];
+
+static int command_pd_rx_log(int argc, char **argv)
+{
+	int i;
+	ccprintf("pd rx log: %d (max %d)\n", rx_log_size, rx_log_max);
+	for (i = 1; i < rx_log_size; i++) {
+		int diff = rx_log[i] - rx_log[i-1];
+		ccprintf("%2d: %8d\n", i, diff);
+	}
+
+	rx_log_size = 0; 
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(pdrxlog, command_pd_rx_log,
+			"[name]",
+			"Read rx log value(s)",
+			NULL);
+
 /* detect an edge on the PD RX pin */
 void pd_rx_handler(void)
 {
@@ -452,9 +474,14 @@ void pd_rx_handler(void)
 	int next_idx;
 	pending = STM32_EXTI_PR;
 
+	CPRINTF("pd_rx_handler\n");
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
 		if (pending & EXTI_COMP_MASK(i)) {
 			rx_edge_ts[i][rx_edge_ts_idx[i]].val = get_time().val;
+			if (rx_log_size < rx_log_max) {
+				rx_log[rx_log_size] = (int)rx_edge_ts[i][rx_edge_ts_idx[i]].val;
+				rx_log_size++;
+			}
 			next_idx = (rx_edge_ts_idx[i] ==
 					PD_RX_TRANSITION_COUNT - 1) ?
 						0 : rx_edge_ts_idx[i] + 1;
@@ -478,6 +505,7 @@ defined(CONFIG_USB_PD_LOW_POWER_IDLE_WHEN_CONNECTED)
 			if ((rx_edge_ts[i][rx_edge_ts_idx[i]].val -
 			     rx_edge_ts[i][next_idx].val)
 			     < PD_RX_TRANSITION_WINDOW) {
+				CPRINTF("pd_rx_handler: trigger RX\n");
 				/* start sampling */
 				pd_rx_start(i);
 				/*
@@ -488,6 +516,10 @@ defined(CONFIG_USB_PD_LOW_POWER_IDLE_WHEN_CONNECTED)
 				/* trigger the analysis in the task */
 				pd_rx_event(i);
 			} else {
+				CPRINTF("pd_rx_handler: diff=%d limit=%d\n", 
+					(int)(rx_edge_ts[i][rx_edge_ts_idx[i]].val -
+		                             rx_edge_ts[i][next_idx].val), 
+					(int)PD_RX_TRANSITION_WINDOW);
 				/* do not trigger RX start, just clear int */
 				STM32_EXTI_PR = EXTI_COMP_MASK(i);
 			}
@@ -513,6 +545,7 @@ void pd_hw_init_rx(int port)
 {
 	struct pd_physical *phy = &pd_phy[port];
 
+	CPRINTF("pd_hw_init_rx port=%d\n", port);
 	/* configure registers used for timers */
 	phy->tim_rx = (void *)TIM_REG_RX(port);
 
