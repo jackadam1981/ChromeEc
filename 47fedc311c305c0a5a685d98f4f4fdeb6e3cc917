@@ -45,6 +45,52 @@
       "revId": "47fedc311c305c0a5a685d98f4f4fdeb6e3cc917",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8483da3_d571fc68",
+        "filename": "board/servo_v4/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2016-04-27T17:42:50Z",
+      "side": 1,
+      "message": "nit, probably belongs in usbpd follow patch when usb_pd_protocol.c gets pulled in.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 32
+      },
+      "revId": "47fedc311c305c0a5a685d98f4f4fdeb6e3cc917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8483da3_b51c3005",
+        "filename": "board/servo_v4/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2016-04-27T17:42:50Z",
+      "side": 1,
+      "message": "GPIO_ODR_LOW or GPIO_INPUT (pull-down in PS8742)",
+      "range": {
+        "startLine": 11,
+        "startChar": 27,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "47fedc311c305c0a5a685d98f4f4fdeb6e3cc917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
