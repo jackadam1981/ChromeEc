@@ -22,6 +22,30 @@
       "revId": "f38050059bac7a58b13e85d69148ec88e89faef2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8475d66_c93d95ad",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-04-27T20:40:40Z",
+      "side": 1,
+      "message": "actually, scrape that - I refreshed my memory (looked up again how the 1.2 i2c layer worked) - there is no need to communicate the size in the header, so this description stands correct.",
+      "parentUuid": "c8475d66_e6408027",
+      "range": {
+        "startLine": 31,
+        "startChar": 66,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "f38050059bac7a58b13e85d69148ec88e89faef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
