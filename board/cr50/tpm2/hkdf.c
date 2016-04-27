@@ -7,6 +7,8 @@
 
 #ifdef CRYPTO_TEST_SETUP
 
+#include <string.h>
+
 #include "extension.h"
 
 enum {

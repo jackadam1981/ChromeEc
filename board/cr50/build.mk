@@ -45,10 +45,11 @@ board-y += tpm2/trng.o
 board-y += tpm2/upgrade.o
 
 # Build and link with an external library
-EXTLIB := $(realpath ../../third_party/tpm2)
-CFLAGS += -I$(EXTLIB)
+TPM2LIB := $(realpath ../../third_party/tpm2)
+CRYPTOCLIB := $(realpath ../../third_party/cryptoc)
+CFLAGS += -I$(TPM2LIB) -I$(CRYPTOCLIB)/include
 
-# For the benefit of the tpm2 library.
+# For the benefit of third party libraries.
 INCLUDE_ROOT := $(abspath ./include)
 CFLAGS += -I$(INCLUDE_ROOT)
 CPPFLAGS += -I$(abspath ./builtin)
@@ -60,19 +61,24 @@ CPPFLAGS += -I$(abspath ./test)
 
 # Make sure the context of the software sha256 implementation fits. If it ever
 # increases, a compile time assert will fire in tpm2/hash.c.
-CFLAGS += -DUSER_MIN_HASH_STATE_SIZE=210
+CFLAGS += -DUSER_MIN_HASH_STATE_SIZE=112
 # Configure TPM2 headers accordingly.
 CFLAGS += -DEMBEDDED_MODE=1
+CFLAGS += -DSUPPORT_UNALIGNED=1
 
 # Add dependencies on that library
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += -L$(out)/tpm2 -ltpm2
+$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += -L$(out)/cryptoc -lcryptoc
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/tpm2/libtpm2.a
+$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/cryptoc/libcryptoc.a
 
 #$(out)/RW/ec.RW_B.elf: $(out)/tpm2/libtpm2.a LDFLAGS_EXTRA += -L$(out)/tpm2 -ltpm2
 
 # Force the external build each time, so it can look for changed sources.
-.PHONY: $(out)/tpm2/libtpm2.a
+.PHONY: $(out)/tpm2/libtpm2.a $(out)/cryptoc/libcryptoc.a
 $(out)/tpm2/libtpm2.a:
-	$(MAKE) obj=$(realpath $(out))/tpm2 EMBEDDED_MODE=1 -C $(EXTLIB)
+	$(MAKE) obj=$(realpath $(out))/tpm2 EMBEDDED_MODE=1 -C $(TPM2LIB)
+$(out)/cryptoc/libcryptoc.a:
+	$(MAKE) obj=$(realpath $(out))/cryptoc SUPPORT_UNALIGNED=1 -C $(CRYPTOCLIB)
 
 endif   # BOARD_MK_INCLUDED_ONCE is nonempty
