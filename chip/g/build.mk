@@ -32,7 +32,6 @@ chip-$(CONFIG_DCRYPTO)+= dcrypto/hmac.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/hkdf.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/p256.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/p256_ec.o
-chip-$(CONFIG_DCRYPTO)+= dcrypto/p256_ecdsa.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/p256_ecies.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/rsa.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/sha1.o

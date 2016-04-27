@@ -10,8 +10,9 @@
 #include "flash.h"
 #include "hooks.h"
 #include "include/compile_time_macros.h"
-#include "sha1.h"
 #include "uart.h"
+
+#include "cryptoc/sha.h"
 
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
 
@@ -90,7 +91,7 @@ void fw_upgrade_command_handler(void *body,
 {
 	struct upgrade_command *cmd_body = body;
 	uint8_t *rv = body;
-	uint8_t sha1_digest[SHA1_DIGEST_SIZE];
+	uint8_t sha1_digest[SHA_DIGEST_SIZE];
 	size_t body_size;
 	uint32_t block_offset;
 

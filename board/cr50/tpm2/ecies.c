@@ -123,4 +123,3 @@ static void ecies_command_handler(void *cmd_body, size_t cmd_size,
 DECLARE_EXTENSION_COMMAND(EXTENSION_ECIES, ecies_command_handler);
 
 #endif   /* CRYPTO_TEST_SETUP */
-
