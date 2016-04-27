@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c8483da3_04005799",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-04-27T19:57:22Z",
+      "side": 1,
+      "message": "Yes, I believe it should be optimized out.",
+      "parentUuid": "c8483da3_c4acaf48",
+      "revId": "ae47e433906ee9bec405cbf7eb95f98a9d10a77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8483da3_a4b6c398",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2016-04-27T19:02:25Z",
       "side": 1,
       "message": "report r12 as a clobbered register?",
+      "revId": "ae47e433906ee9bec405cbf7eb95f98a9d10a77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8483da3_642cbb3b",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-04-27T19:57:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8483da3_a4b6c398",
       "revId": "ae47e433906ee9bec405cbf7eb95f98a9d10a77b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "c8483da3_4431bf91",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-04-27T19:57:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8483da3_64bcbb7d",
+      "revId": "ae47e433906ee9bec405cbf7eb95f98a9d10a77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8483da3_84bbc781",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2016-04-27T19:02:25Z",
       "side": 1,
       "message": "Same comments as above.",
+      "revId": "ae47e433906ee9bec405cbf7eb95f98a9d10a77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8483da3_842bc71f",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-04-27T19:57:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8483da3_84bbc781",
       "revId": "ae47e433906ee9bec405cbf7eb95f98a9d10a77b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
