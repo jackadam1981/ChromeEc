@@ -4,6 +4,7 @@
  */
 
 #include "CryptoEngine.h"
+#undef SHA_DIGEST_SIZE
 
 #include "util.h"
 #include "dcrypto.h"
@@ -99,11 +100,11 @@ uint16_t _cpri__StartHash(TPM_ALG_ID alg, BOOL sequence,
 	switch (alg) {
 	case TPM_ALG_SHA1:
 		DCRYPTO_SHA1_init(ctx, sequence);
-		result = DCRYPTO_HASH_size(ctx);
+		result = HASH_size(ctx);
 		break;
 	case TPM_ALG_SHA256:
 		DCRYPTO_SHA256_init(ctx, sequence);
-		result = DCRYPTO_HASH_size(ctx);
+		result = HASH_size(ctx);
 		break;
 /* TODO: add support for SHA384 and SHA512
  *	case TPM_ALG_SHA384:
@@ -128,7 +129,7 @@ void _cpri__UpdateHash(CPRI_HASH_STATE *state, uint32_t in_len,
 {
 	struct HASH_CTX *ctx = (struct HASH_CTX *) state->state;
 
-	DCRYPTO_HASH_update(ctx, in, in_len);
+	HASH_update(ctx, in, in_len);
 }
 
 uint16_t _cpri__CompleteHash(CPRI_HASH_STATE *state,
@@ -136,8 +137,8 @@ uint16_t _cpri__CompleteHash(CPRI_HASH_STATE *state,
 {
 	struct HASH_CTX *ctx = (struct HASH_CTX *) state->state;
 
-	out_len = MIN(DCRYPTO_HASH_size(ctx), out_len);
-	memcpy(out, DCRYPTO_HASH_final(ctx), out_len);
+	out_len = MIN(HASH_size(ctx), out_len);
+	memcpy(out, HASH_final(ctx), out_len);
 	return out_len;
 }
 

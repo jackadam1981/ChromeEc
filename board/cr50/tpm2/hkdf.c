@@ -9,6 +9,8 @@
 
 #include "extension.h"
 
+#include <string.h>
+
 enum {
 	TEST_RFC = 0,
 };
