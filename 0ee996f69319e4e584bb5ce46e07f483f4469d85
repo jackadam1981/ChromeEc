@@ -22,6 +22,30 @@
       "revId": "0ee996f69319e4e584bb5ce46e07f483f4469d85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8483da3_f09b6680",
+        "filename": "common/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-04-27T19:21:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8483da3_151d2457",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 13
+      },
+      "revId": "0ee996f69319e4e584bb5ce46e07f483f4469d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
