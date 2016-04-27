@@ -4,23 +4,13 @@
  */
 
 /*
- * Non-Volatile memory (NvMem) space is 16kB which is then divided into 8 -
- * 2kb blocks. 2kB is the minimum size that can be erased. Writes can be done
- * in as little as 4 byte pieces, but that presumes the location has already
- * been erased. Within CR-50 there are two customers for NvMem, 1) TPM2.0
- * specification and 2) CR-50 specific paramters such as BIOS password storage.
- *
  * In order to provide maximum robustness for NvMem operations, the NvMem space
- * is divided into two equal sized partions (where each partition consist of 4
- * blocks = 8kB). The partitions contain 3 elements.
- *
- *     1. Tag
- *     2. Data buffer for TPM2.0 speicification
- *     3. Data buffer for Cr-50 needs
+ * is divided into two equal sized partitions. A partition contains a tag
+ * and a buffer for each NvMem user.
  *
  *     NvMem Partiion
  *     ---------------------------------------------------------------------
- *     |0x8 tag |        0x17F8 bytes TPM2.0          |  0x400 bytes Cr-50 |
+ *     |0x8 tag | User Buffer 0 | User Buffer 1 | .... |  User Buffer N-1  |
  *     ---------------------------------------------------------------------
  *
  *     Physical Block Tag details
@@ -48,71 +38,41 @@
  * write operation, then the contents of the active partition prior the most
  * recent writes will sill preserved.
  */
-#include <string.h>
 
 #include "assert.h"
 #include "common.h"
 #include "console.h"
-#include "dcrypto/dcrypto.h"
 #include "flash.h"
-#include "flash_config.h"
-#include "nvmem_utils.h"
+#include "nvmem.h"
 #include "shared_mem.h"
 #include "timer.h"
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
 
-#define NVMEM_SHA_SIZE 4
 #define NVMEM_VERSION_BITS 16
 #define NVMEM_VERSION_MASK ((1 << NVMEM_VERSION_BITS) - 1)
-/* Struct for NV block tag */
-struct nvmem_tag {
-	uint8_t sha[NVMEM_SHA_SIZE];
-	uint16_t version;
-	uint16_t reserved;
-};
 
-/* NV Memory Block definitions */
-#define NVMEM_START_ADDR (CONFIG_NV_MEM_OFF + CONFIG_PROGRAM_MEMORY_BASE)
-#define NVMEM_NUM_PARTITIONS 2
-#define NVMEM_PARTITION_SIZE (CONFIG_NV_MEM_SIZE / NVMEM_NUM_PARTITIONS)
-#define NVMEM_BLOCK_SIZE CONFIG_FLASH_ERASE_SIZE
-#define NVMEM_CR50_SIZE 0x400
-#define NVMEM_TPM_SIZE (NVMEM_PARTITION_SIZE - NVMEM_CR50_SIZE -\
-			sizeof(struct nvmem_tag))
-#define NVMEM_NUM_BLOCKS (NVMEM_PARTITION_SIZE / NVMEM_BLOCK_SIZE)
 
 #define NVMEM_ACQUIRE_CACHE_SLEEP_MS 20
 #define NVMEM_ACQUIRE_CACHE_MAX_ATTEMPTS (200 / NVMEM_ACQUIRE_CACHE_SLEEP_MS)
 #define NVMEM_CACHE_ALIGN_BITS 4
 #define NVMEM_NOT_INITIALIZED (-1)
 
-/* Structure for physical NvMem block */
+/* Structure MvMem Partition */
 struct nvmem_partition {
 	struct nvmem_tag tag;
-	uint8_t tpm_data[NVMEM_TPM_SIZE];
-	uint8_t cr50_data[NVMEM_CR50_SIZE];
+	uint8_t buffer[NVMEM_PARTITION_SIZE - sizeof(struct nvmem_tag)];
 };
+/* Pointer to NvMem Buffer length table */
+static int32_t *p_buffer_tab;
+static int32_t nvmem_num_buffers;
 
 /* A/B partion that is most up to date */
 static int nvmem_act_partition;
 /* NvMem Cache Memory pointer */
 static uint8_t *cache_base_ptr;
 
-static void nvmem_compute_sha(uint8_t *p_buf, int num_bytes, uint8_t *p_sha)
-{
-	uint8_t sha1_digest[SHA1_DIGEST_SIZE];
-	/*
-	 * Taking advantage of the built in dcrypto engine to generate
-	 * a CRC-like value that can be used to validate contents of an
-	 * NvMem partition. Only using the lower 4 bytes of the sha1 hash.
-	 */
-	DCRYPTO_SHA1_hash((uint8_t *)p_buf,
-			  num_bytes,
-			  sha1_digest);
-	memcpy(p_sha, sha1_digest, NVMEM_SHA_SIZE);
-}
 
 static int nvmem_verify_partition_sha(int index)
 {
@@ -120,7 +80,7 @@ static int nvmem_verify_partition_sha(int index)
 	struct nvmem_partition *p_part;
 	uint8_t *p_data;
 
-	p_part = (struct nvmem_partition *)NVMEM_START_ADDR;
+	p_part = (struct nvmem_partition *)NVMEM_BASE_ADDR;
 	p_part += index;
 	p_data = (uint8_t *)p_part;
 	p_data += NVMEM_SHA_SIZE;
@@ -188,7 +148,7 @@ static int nvmem_update_cache_ptr(void)
 		if (nvmem_acquire_cache() != EC_SUCCESS)
 			return EC_ERROR_TIMEOUT;
 		/* Copy partiion contents from flash into cache buffer */
-		p_src = (uint8_t *)(NVMEM_START_ADDR + nvmem_act_partition *
+		p_src = (uint8_t *)(NVMEM_BASE_ADDR + nvmem_act_partition *
 				    NVMEM_PARTITION_SIZE);
 		memcpy(cache_base_ptr, p_src, NVMEM_PARTITION_SIZE);
 	}
@@ -212,7 +172,7 @@ static int nvmem_is_unitialized(void)
 	struct nvmem_partition *p_part;
 
 	/* Point to start of Nv Memory */
-	p_nvmem = (uint32_t *)NVMEM_START_ADDR;
+	p_nvmem = (uint32_t *)NVMEM_BASE_ADDR;
 	/* Verify that each byte is 0xff (4 bytes at a time) */
 	for (n = 0; n < (CONFIG_NV_MEM_SIZE >> 2); n++) {
 		if (p_nvmem[n] != 0xffffffff)
@@ -259,7 +219,7 @@ static int nvmem_compare_version(void)
 	uint16_t ver0, ver1;
 	uint32_t delta;
 
-	p_part = (struct nvmem_partition *)NVMEM_START_ADDR;
+	p_part = (struct nvmem_partition *)NVMEM_BASE_ADDR;
 	ver0 = p_part->tag.version;
 	p_part++;
 	ver1 = p_part->tag.version;
@@ -312,6 +272,51 @@ static int nvmem_find_partition(void)
 	return EC_SUCCESS;
 }
 
+static int nvmem_get_partition_off(int user, uint32_t offset,
+				   uint32_t len, int32_t *p_buf_offset)
+{
+	int32_t max_len;
+	int32_t start_offset;
+	int32_t buffer_offset;
+	int n;
+
+	/* Sanity check for 'user' and table being initialized */
+	if (user >= nvmem_num_buffers)
+		return EC_ERROR_OVERFLOW;
+	if (p_buffer_tab == NULL)
+		return EC_ERROR_UNKNOWN;
+
+	/*
+	 * NvMem user buffers are continguous in a partition. Determine the
+	 * starting offset for the user by adding the length of user buffers
+	 * which have lower user numbers than the current user.
+	 */
+	start_offset = 0;
+	buffer_offset = 0;
+	for (n = 0; n <= user; n++) {
+		start_offset += buffer_offset;
+		/* Buffer length for user n */
+		max_len = p_buffer_tab[n];
+		/* Add buffer length for current user for start of next */
+		buffer_offset = max_len;
+	}
+
+	/*
+	 * Ensure that read/write operation that is calling this function
+	 * doesn't exceed the end of its buffer.
+	 */
+	if ((int32_t)offset + (int32_t)len >= max_len)
+		return EC_ERROR_OVERFLOW;
+	/* Compute offset within the partition for the rd/wr operation */
+	buffer_offset = start_offset + (int32_t)offset +
+		sizeof(struct nvmem_tag);
+	/* Make partition offset available to calling function */
+	*p_buf_offset = buffer_offset;
+
+	return EC_SUCCESS;
+}
+
+
 int nvmem_setup(uint16_t starting_version)
 {
 	struct nvmem_partition *p_part;
@@ -351,81 +356,72 @@ int nvmem_init(void)
 {
 	int ret;
 
+	/* Get buffer length table info */
+	nvmem_get_buffer_array(&p_buffer_tab, &nvmem_num_buffers);
+	/* Default state for cache_base_ptr */
 	cache_base_ptr = NULL;
-	/* Verify at least one good partition is available */
 	ret = nvmem_find_partition();
 	if (ret != EC_SUCCESS) {
-		CPRINTF("NvMem init faile, partitions are corrupted\n");
+		CPRINTF("NvMem is corrupted\n");
 		return ret;
 	}
 
 	return EC_SUCCESS;
 }
 
-void nvmem_read(unsigned int offset, unsigned int size,
+int nvmem_read(unsigned int offset, unsigned int size,
 		    void *data, enum nvmem_users user)
 {
-	struct nvmem_partition *p_part;
-	int max_offset;
+	int ret;
 	uint8_t *p_src;
+	uintptr_t src_addr;
+	int32_t src_offset;
 
 	/* Point to either NvMem flash or ram if that's active */
 	if (cache_base_ptr == NULL)
-		p_part = (struct nvmem_partition *)(NVMEM_START_ADDR +
-						     nvmem_act_partition *
-						     NVMEM_PARTITION_SIZE);
-	else
-		p_part = (struct nvmem_partition *)cache_base_ptr;
+		src_addr = NVMEM_BASE_ADDR + nvmem_act_partition *
+			NVMEM_PARTITION_SIZE;
 
-	/* Point to the required data buffer based on user */
-	if (user == NV_TPM) {
-		p_src = p_part->tpm_data;
-		max_offset = NVMEM_TPM_SIZE;
-	} else if (user == NV_CR50) {
-		p_src = p_part->cr50_data;
-		max_offset = NVMEM_CR50_SIZE;
-	} else {
-		/* TODO: Shouldn't be invalid, what do with this case? */
-		CPRINTF("Invalid NvMem user entry: %d\n", user);
-		return;
-	}
+	else
+		src_addr = (uintptr_t)cache_base_ptr;
+	/* Get partition offset for this read operation */
+	ret = nvmem_get_partition_off(user, offset, size, &src_offset);
+	if (ret != EC_SUCCESS)
+		return ret;
 	/* Advance to the correct byte within the data buffer */
-	p_src += offset;
-	assert(offset + size < max_offset);
+	src_addr += src_offset;
+	p_src = (uint8_t *)src_addr;
 	/* Copy from src into the caller's destination buffer */
 	memcpy(data, p_src, size);
+
+	return EC_SUCCESS;
 }
 
-void nvmem_write(unsigned int offset, unsigned int size,
+int nvmem_write(unsigned int offset, unsigned int size,
 		 void *data, enum nvmem_users user)
 {
-	struct nvmem_partition *p_part;
+	int ret;
 	uint8_t *p_dest;
-	int max_offset;
+	uintptr_t dest_addr;
+	int32_t dest_offset;
 
 	/* Make sure that the cache buffer is active */
-	if (nvmem_update_cache_ptr())
+	ret = nvmem_update_cache_ptr();
+	if (ret)
 		/* TODO: What to do when can't access cache buffer? */
-		return;
-	/* Overlay partition at start of cache buffer. */
-	p_part = (struct nvmem_partition *)cache_base_ptr;
-	/* Select correct desitination buffer based on user */
-	if (user == NV_TPM) {
-		p_dest = p_part->tpm_data;
-		max_offset = NVMEM_TPM_SIZE;
-	} else if (user == NV_CR50) {
-		p_dest = p_part->cr50_data;
-		max_offset = NVMEM_CR50_SIZE;
-	} else {
-		/* TODO: What should happen in this unexpected case? */
-		CPRINTF("Invalid NvMem user entry: %d\n", user);
-		return;
-	}
+		return ret;
+	/* Compute partition offset for this write operation */
+	ret = nvmem_get_partition_off(user, offset, size, &dest_offset);
+	if (ret != EC_SUCCESS)
+		return ret;
 	/* Advance to correct offset within data buffer */
-	p_dest += offset;
-	assert(offset + size < max_offset);
+	dest_addr = (uintptr_t)cache_base_ptr;
+	dest_addr += dest_offset;
+	p_dest = (uint8_t *)dest_addr;
 	/* Copy data from caller into destination buffer */
 	memcpy(p_dest, data, size);
+
+	return EC_SUCCESS;
 }
 
 int nvmem_commit(void)

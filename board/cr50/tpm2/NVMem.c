@@ -16,7 +16,7 @@
 #include "TpmError.h"
 #include "assert.h"
 #include "config_chip.h"
-#include "nvmem_utils.h"
+#include "nvmem.h"
 
 /*
  * TODO - This #define is temporary, to be removed once the NVmem functions are

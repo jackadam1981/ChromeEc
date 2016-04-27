@@ -5,12 +5,13 @@
 
 #include "common.h"
 #include "console.h"
+#include "dcrypto/dcrypto.h"
 #include "ec_version.h"
 #include "flash_config.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
-#include "nvmem_utils.h"
+#include "nvmem.h"
 #include "task.h"
 #include "trng.h"
 #include "usb_descriptor.h"
@@ -20,6 +21,12 @@
 
 /* Define interrupt and gpio structs */
 #include "gpio_list.h"
+
+/* NvMem Buffer length table */
+int32_t nvmem_buffer_tab[NV_NUM_USERS] = {
+	NVMEM_TPM_SIZE,
+	NVMEM_CR50_SIZE
+};
 
 /*
  * There's no way to trigger on both rising and falling edges, so force a
@@ -167,6 +174,7 @@ int flash_regions_to_enable(struct g_flash_region *regions,
 	return 1; /* One region is enough. */
 }
 
+
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
 void sys_rst_asserted(enum gpio_signal signal)
@@ -174,3 +182,24 @@ void sys_rst_asserted(enum gpio_signal signal)
 	/* TODO(crosbug.com/p/52366): Do something useful here. */
 	CPRINTS("%s(%d)", __func__, signal);
 }
+
+void nvmem_get_buffer_array(int32_t **p_buffers, int *p_num_buffers)
+{
+	*p_buffers = nvmem_buffer_tab;
+	*p_num_buffers = NV_NUM_USERS;
+}
+
+void nvmem_compute_sha(uint8_t *p_buf, int num_bytes, uint8_t *p_sha)
+{
+	uint8_t sha1_digest[SHA1_DIGEST_SIZE];
+	/*
+	 * Taking advantage of the built in dcrypto engine to generate
+	 * a CRC-like value that can be used to validate contents of an
+	 * NvMem partition. Only using the lower 4 bytes of the sha1 hash.
+	 */
+	DCRYPTO_SHA1_hash((uint8_t *)p_buf,
+			  num_bytes,
+			  sha1_digest);
+	memcpy(p_sha, sha1_digest, NVMEM_SHA_SIZE);
+}
+
