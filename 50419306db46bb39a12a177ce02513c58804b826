@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8594975_c3401c28",
+        "filename": "driver/tcpm/ps8751.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-04-27T22:24:48Z",
+      "side": 1,
+      "message": "Should this be (1 \u003c\u003c 0)?\n\nThe datasheet I\u0027m reading is dated Feb 3, 2016. Perhaps Parade updated their documentation after this patch was uploaded.",
+      "range": {
+        "startLine": 23,
+        "startChar": 29,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "50419306db46bb39a12a177ce02513c58804b826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
