@@ -21,6 +21,8 @@
 /* TODO(crosbug.com/p/44745): For debugging only */
 #define CONFIG_CMD_FLASH
 
+#define CONFIG_FLASH_NVMEM
+
 /* Go to sleep when nothing else is happening */
 #define CONFIG_LOW_POWER_IDLE
 
@@ -102,6 +104,28 @@ enum usb_strings {
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
 #define CC_DEFAULT     (CC_ALL & ~CC_MASK(CC_TPM))
+
+/* Nv Memory defines */
+
+#ifndef __ASSEMBLER__
+enum nvmem_users {
+	NV_TPM = 0,
+	NV_CR50,
+	NV_NUM_USERS
+};
+#endif
+
+#define NVMEM_SHA_SIZE 4
+#define NVMEM_BASE_ADDR (CONFIG_NV_MEM_OFF + CONFIG_PROGRAM_MEMORY_BASE)
+#define NVMEM_SIZE CONFIG_NV_MEM_SIZE
+#define NVMEM_BLOCK_SIZE CONFIG_NV_BLOCK_SIZE
+#define NVMEM_NUM_PARTITIONS 2
+#define NVMEM_PARTITION_SIZE (NVMEM_SIZE / NVMEM_NUM_PARTITIONS)
+#define NVMEM_CR50_SIZE 0x400
+#define NVMEM_TPM_SIZE (NVMEM_PARTITION_SIZE - NVMEM_CR50_SIZE - \
+			sizeof(struct nvmem_tag))
+#define NVMEM_NUM_BLOCKS (NVMEM_PARTITION_SIZE / NVMEM_BLOCK_SIZE)
+
 
 /*
  * Let's be on the lookout for stack overflow, while debugging.

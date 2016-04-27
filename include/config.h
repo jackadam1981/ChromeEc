@@ -776,6 +776,9 @@
 /* Support programming on-chip flash */
 #define CONFIG_FLASH
 
+/* Enable support for on chip NV Ram using flash memory */
+#undef CONFIG_FLASH_NVMEM
+
 #undef CONFIG_FLASH_BANK_SIZE
 #undef CONFIG_FLASH_ERASED_VALUE32
 #undef CONFIG_FLASH_ERASE_SIZE
