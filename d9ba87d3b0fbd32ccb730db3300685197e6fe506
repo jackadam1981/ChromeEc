@@ -144,6 +144,52 @@
     },
     {
       "key": {
+        "uuid": "c8483da3_2fee1133",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-27T07:45:17Z",
+      "side": 1,
+      "message": "the state depends on the POWE_EN \u0026 RESET pin, is to save the current status ? if power down or cable unplug, if the state can correctly show the state of FM?",
+      "range": {
+        "startLine": 187,
+        "startChar": 9,
+        "endLine": 188,
+        "endChar": 41
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8483da3_cf120d48",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-27T07:45:17Z",
+      "side": 1,
+      "message": "the delay time is 10ms ? according to the power sequence of m7688\ncalbe_det ______---10ms---\u003e-------------------\n                          |---10ms--\u003e-----------\nPOWER_EN _________________|         |\n                                    ------------\nRESET_N  ___________________________|\n                                    2us---------\nReg Valid ----------------------------|\n                                      |   50ms 2keeprom work |---\nOCM works_____________________________|______________________|",
+      "range": {
+        "startLine": 198,
+        "startChar": 49,
+        "endLine": 198,
+        "endChar": 57
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_d5a477ce",
         "filename": "board/elm/board.c",
         "patchSetId": 1
@@ -202,6 +248,30 @@
       "writtenOn": "2016-04-25T08:31:55Z",
       "side": 1,
       "message": "yeah, but I think this is triggered from usb_evt()?",
+      "parentUuid": "88656498_f5773bd4",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 58
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8483da3_6ff819f6",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-27T07:45:17Z",
+      "side": 1,
+      "message": "if cable-detect interrupt can\u0027t be support for evb issue. one suggestion is that can we polling the cable detection pin in one event timer?",
       "parentUuid": "88656498_f5773bd4",
       "range": {
         "startLine": 206,
