@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8483da3_151d2457",
+        "filename": "common/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-27T16:36:46Z",
+      "side": 1,
+      "message": "return print_one_adc(i);",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 13
+      },
+      "revId": "0ee996f69319e4e584bb5ce46e07f483f4469d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
