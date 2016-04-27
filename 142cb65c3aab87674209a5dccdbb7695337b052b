@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a8594975_00c84a83",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-04-27T22:05:27Z",
+      "side": 1,
+      "message": "Only because we muck with this register with this config, but removing the #ifdef is easier to read. I\u0027ll remove it.",
+      "parentUuid": "a8594975_c095b299",
+      "range": {
+        "startLine": 511,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 42
+      },
+      "revId": "142cb65c3aab87674209a5dccdbb7695337b052b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8594975_e047163a",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-27T21:49:06Z",
       "side": 1,
       "message": "IMO it\u0027s better to write :\n       asm volatile(\"msr basepri, %0\\n\"\n                    \"isb\" : : \"r\"(0));\n\nActually declaring a static function for this might be even better :\nstatic void set_basepri(unsigned val)\n{\n       asm volatile(\"msr basepri, %0\\n\"\n                    \"isb\" : : \"r\"(val));\n}\nand will give the same result.",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 16
+      },
+      "revId": "142cb65c3aab87674209a5dccdbb7695337b052b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8594975_20a62ed2",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-04-27T22:05:27Z",
+      "side": 1,
+      "message": "Ah, that\u0027s cleaner. I\u0027ll make the change.",
+      "parentUuid": "a8594975_e047163a",
       "range": {
         "startLine": 514,
         "startChar": 0,
