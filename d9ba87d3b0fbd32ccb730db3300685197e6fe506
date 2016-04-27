@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "c8483da3_6fcf79c1",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-27T07:57:37Z",
+      "side": 1,
+      "message": "No, the power on sequence is from case 3 to case 2. But yes in case 3 it misses a 10ms delay before set POWER_EN. Another question is in firmware spec 0.32, Figure 4-1, delay between POWER_EN and RESET_N is 50ms, but you gives 10ms here. Which one is correct?",
+      "parentUuid": "c8483da3_cf120d48",
+      "range": {
+        "startLine": 198,
+        "startChar": 49,
+        "endLine": 198,
+        "endChar": 57
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_d5a477ce",
         "filename": "board/elm/board.c",
         "patchSetId": 1
