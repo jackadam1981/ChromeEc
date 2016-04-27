@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8483da3_c4acaf48",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-27T19:02:25Z",
+      "side": 1,
+      "message": "When this is never set to 1 does this check get optimized out? i.e. when BSS slow is not enabled.",
+      "revId": "ae47e433906ee9bec405cbf7eb95f98a9d10a77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8483da3_a4b6c398",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-27T19:02:25Z",
+      "side": 1,
+      "message": "report r12 as a clobbered register?",
+      "revId": "ae47e433906ee9bec405cbf7eb95f98a9d10a77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8483da3_64bcbb7d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-27T19:02:25Z",
+      "side": 1,
+      "message": "Just include isb in the first inline asm statement.",
+      "revId": "ae47e433906ee9bec405cbf7eb95f98a9d10a77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8483da3_84bbc781",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-04-27T19:02:25Z",
+      "side": 1,
+      "message": "Same comments as above.",
+      "revId": "ae47e433906ee9bec405cbf7eb95f98a9d10a77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
