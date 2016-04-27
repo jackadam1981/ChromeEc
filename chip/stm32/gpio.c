@@ -52,6 +52,7 @@ void gpio_pre_init(void)
 		/* Set up GPIO based on flags */
 		gpio_set_flags_by_mask(g->port, g->mask, flags);
 	}
+	gpio_config_module(MODULE_MCO, 1);
 }
 
 test_mockable int gpio_get_level(enum gpio_signal signal)

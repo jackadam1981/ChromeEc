@@ -597,6 +597,12 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_CFGR_SWS_HSE		(2 << 2)
 #define STM32_RCC_CFGR_SWS_PLL		(3 << 2)
 #define STM32_RCC_CFGR_SWS_MASK		(3 << 2)
+#define STM32_RCC_CFGR_MCOSEL_NONE	(0 << 24)
+#define STM32_RCC_CFGR_MCOSEL_SYSCLK	(1 << 24)
+#define STM32_RCC_CFGR_MCOSEL_MSI	(2 << 24)
+#define STM32_RCC_CFGR_MCOSEL_HSI	(3 << 24)
+#define STM32_RCC_CFGR_MCOSEL_HSE	(4 << 24)
+#define STM32_RCC_CFGR_MCOSEL_PLL	(5 << 24)
 
 #define STM32_RCC_PLLCFGR		REG32(STM32_RCC_BASE + 0x0C)
 #define STM32_RCC_PLLCFGR_PLLSRC_SHIFT	(0)

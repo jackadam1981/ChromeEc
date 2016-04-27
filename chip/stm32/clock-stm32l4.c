@@ -304,6 +304,8 @@ static void clock_set_osc(enum clock_osc osc, enum clock_osc pll_osc)
 		break;
 	}
 
+	STM32_RCC_CFGR |= STM32_RCC_CFGR_MCOSEL_SYSCLK;
+
 	/* Notify modules of frequency change unless we're initializing */
 	if (current_osc != OSC_INIT) {
 		current_osc = osc;
