@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "88656498_b581c3ef",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-27T05:22:20Z",
+      "side": 1,
+      "message": "pls check if there is noise on CABLE_DET pin, board_plug_is_inserted is requied.",
+      "parentUuid": "88656498_75e7cbfc",
+      "range": {
+        "startLine": 80,
+        "startChar": 21,
+        "endLine": 80,
+        "endChar": 44
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_359f137d",
         "filename": "board/elm/board.c",
         "patchSetId": 1
@@ -579,6 +603,30 @@
       "side": 1,
       "message": "set_polarity and set_vconn of TCPCI is not compatible with 7688. (Check https://chromium-review.googlesource.com/#/c/337969/5/driver/tcpm/tcpci.c@106\n\nhttps://chromium-review.googlesource.com/#/c/337969/5/driver/tcpm/tcpci.c@112)\nWe need to implement them differently in this driver.",
       "parentUuid": "88656498_f5609b09",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 64
+      },
+      "revId": "d9ba87d3b0fbd32ccb730db3300685197e6fe506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8483da3_041a1c07",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-27T05:22:20Z",
+      "side": 1,
+      "message": "if only two points code make the change, it seems that the new implement is too complex",
+      "parentUuid": "88656498_15cd2f35",
       "range": {
         "startLine": 123,
         "startChar": 0,
