@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8483da3_dd947e56",
+        "filename": "chip/mec1322/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-04-27T21:22:00Z",
+      "side": 1,
+      "message": "I\u0027m not thrilled by this implementation,\nthat\u0027s a large flash footprint and somewhat slow for something we mostly know at compile-time.\n\nshould we just update a (global) mask in pwm_enable() ?\n\nthe array of MEC1322_PCR_EC_SLP_EN_PWMx might be stored more compactly as something like :\n#define MEC1322_PCR_EC_SLP_EN_PWM(n) (1 \u003c\u003c ((n) ? (19+(n)) : 4))",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 6
+      },
+      "revId": "00fef2e4a13ea7d1459e692cb42446a2a234dfff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
