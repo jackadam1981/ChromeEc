@@ -11,13 +11,15 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "led_common.h"
-#include "util.h"
+#include "pwm.h"
 #include "system.h"
+#include "util.h"
+
+#define DEF_BAT_LED0_PERCENT 10
 
 const enum ec_led_id supported_led_ids[] = {
 	EC_LED_ID_BATTERY_LED
 };
-
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
 enum led_color {
@@ -65,29 +67,36 @@ static int bat_led_set(enum led_color color, int on)
 	return EC_SUCCESS;
 }
 
+static int bat_led_set_pwm(enum led_color color, int percent)
+{
+	switch (color) {
+	case BAT_LED_GREEN:
+		pwm_set_duty(PWM_CH_BAT_LED0, percent); /* BAT_LED_GREEN */
+	default:
+		return EC_ERROR_UNKNOWN;
+	}
+	return EC_SUCCESS;
+}
+
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
 	/* Ignoring led_id as both leds support the same colors */
 	brightness_range[EC_LED_COLOR_RED] = 1;
-	brightness_range[EC_LED_COLOR_GREEN] = 1;
-	brightness_range[EC_LED_COLOR_YELLOW] = 1;
+	brightness_range[EC_LED_COLOR_GREEN] = 100;
 }
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
 	if (EC_LED_ID_BATTERY_LED == led_id) {
 		if (brightness[EC_LED_COLOR_GREEN] != 0) {
-			bat_led_set(BAT_LED_GREEN, 1);
-			bat_led_set(BAT_LED_ORANGE, 0);
-		} else if (brightness[EC_LED_COLOR_YELLOW] != 0) {
-			bat_led_set(BAT_LED_GREEN, 1);
-			bat_led_set(BAT_LED_ORANGE, 1);
+			bat_led_set_pwm(BAT_LED_GREEN, brightness[EC_LED_COLOR_GREEN]);
+			bat_led_set(BAT_LED_RED, 0);
 		} else if (brightness[EC_LED_COLOR_RED] != 0) {
-			bat_led_set(BAT_LED_GREEN, 0);
+			bat_led_set_pwm(BAT_LED_GREEN, 0);
 			bat_led_set(BAT_LED_RED, 1);
 		} else {
-			bat_led_set(BAT_LED_GREEN, 0);
-			bat_led_set(BAT_LED_ORANGE, 0);
+			bat_led_set_pwm(BAT_LED_GREEN, 0);
+			bat_led_set(BAT_LED_RED, 0);
 		}
 		return EC_SUCCESS;
 	} else if (EC_LED_ID_POWER_LED == led_id) {
@@ -199,9 +208,9 @@ static void oak_led_set_battery(int board_version)
 		 * Power off: OFF
 		 */
 		if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
-			bat_led_set(BAT_LED_GREEN, 0);
+			bat_led_set_pwm(BAT_LED_GREEN, 0);
 		else if (chipset_in_state(CHIPSET_STATE_ON))
-			bat_led_set(BAT_LED_GREEN, 1);
+			bat_led_set_pwm(BAT_LED_GREEN, DEF_BAT_LED0_PERCENT);
 		else if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
 			int cycle_time = 4;
 			/* Oak rev5 with GlaDOS ID has a extremely power
@@ -209,8 +218,8 @@ static void oak_led_set_battery(int board_version)
 			 * S3 power comsuption. */
 			if (board_version >= OAK_REV5)
 				cycle_time = 10;
-			bat_led_set(BAT_LED_GREEN,
-				    (battery_second % cycle_time) ? 0 : 1);
+			bat_led_set_pwm(BAT_LED_GREEN,
+				    (battery_second % cycle_time) ? 0 : DEF_BAT_LED0_PERCENT);
 		}
 
 		/* BAT LED behavior:
@@ -223,27 +232,27 @@ static void oak_led_set_battery(int board_version)
 		 */
 		switch (charge_get_state()) {
 		case PWR_STATE_CHARGE:
-			bat_led_set(BAT_LED_ORANGE, 1);
+			bat_led_set(BAT_LED_RED, 1);
 			break;
 		case PWR_STATE_CHARGE_NEAR_FULL:
-			bat_led_set(BAT_LED_ORANGE, 1);
+			bat_led_set(BAT_LED_RED, 1);
 			break;
 		case PWR_STATE_DISCHARGE:
 			if (charge_get_percent() < 3)
-				bat_led_set(BAT_LED_ORANGE,
+				bat_led_set(BAT_LED_RED,
 					  (battery_second & 1) ? 0 : 1);
 			else if (charge_get_percent() < 10)
-				bat_led_set(BAT_LED_ORANGE,
+				bat_led_set(BAT_LED_RED,
 					  (battery_second & 3) ? 0 : 1);
 			else
-				bat_led_set(BAT_LED_ORANGE, 0);
+				bat_led_set(BAT_LED_RED, 0);
 			break;
 		case PWR_STATE_ERROR:
-			bat_led_set(BAT_LED_ORANGE,
+			bat_led_set(BAT_LED_RED,
 				    (battery_second & 1) ? 0 : 1);
 			break;
 		case PWR_STATE_IDLE: /* Ext. power connected in IDLE. */
-			bat_led_set(BAT_LED_ORANGE, 0);
+			bat_led_set(BAT_LED_RED, 0);
 			break;
 		default:
 			/* Other states don't alter LED behavior */
@@ -252,6 +261,15 @@ static void oak_led_set_battery(int board_version)
 		break; /* End of default */
 	}
 }
+
+static void led_init(void)
+{
+	/* Enable PWMs and set to 0% duty cycle. */
+	pwm_enable(PWM_CH_BAT_LED0, 1);
+	bat_led_set_pwm(BAT_LED_GREEN, 0);
+	bat_led_set(BAT_LED_RED, 0);
+}
+DECLARE_HOOK(HOOK_INIT, led_init, HOOK_PRIO_DEFAULT);
 
 /**
  * Called by hook task every 1 sec
