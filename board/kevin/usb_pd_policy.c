@@ -50,8 +50,11 @@ void pd_transition_voltage(int idx)
 
 int pd_set_power_supply_ready(int port)
 {
+	int cp;
+
 	/* Ensure we're not charging from this port */
-	if (charge_manager_get_active_charge_port() == port)
+	cp = charge_manager_get_active_charge_port();
+	if (cp == CHARGE_PORT_NONE || cp == port)
 		bd99955_select_input_port(BD99955_CHARGE_PORT_NONE);
 
 	/* Provide VBUS */
