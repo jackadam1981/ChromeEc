@@ -22,6 +22,30 @@
       "revId": "50419306db46bb39a12a177ce02513c58804b826",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8483da3_b8ca60af",
+        "filename": "driver/tcpm/ps8751.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-28T16:48:54Z",
+      "side": 1,
+      "message": "From another Parade patch, they did change it to bit 0:\nhttps://chromium-review.googlesource.com/#/c/324306/\n\nThe doc I received is also referring to bit 0.",
+      "parentUuid": "a8594975_c3401c28",
+      "range": {
+        "startLine": 23,
+        "startChar": 29,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "50419306db46bb39a12a177ce02513c58804b826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
