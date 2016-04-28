@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c8c91d9e_536f8482",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-04-28T20:01:05Z",
+      "side": 1,
+      "message": "Yeah. It doesn\u0027t need to be called in rdd attached or detached.",
+      "parentUuid": "c8c91d9e_734ba01c",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "d230782074e4a2f0535fb18881ab3d0a2dab8a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8483da3_389010a5",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 1
