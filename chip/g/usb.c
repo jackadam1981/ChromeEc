@@ -1244,7 +1244,6 @@ void usb_init(void)
 
 	/* Select the correct PHY */
 	usb_select_phy(which_phy);
-	gpio_set_level(GPIO_CCD_MODE_L, !(which_phy == USB_SEL_PHY1));
 
 	/* Full-Speed Serial PHY */
 	GR_USB_GUSBCFG = GUSBCFG_PHYSEL_FS | GUSBCFG_FSINTF_6PIN

@@ -5,7 +5,6 @@
 
 #include "clock.h"
 #include "console.h"
-#include "gpio.h"
 #include "hooks.h"
 #include "rdd.h"
 #include "registers.h"
@@ -50,16 +49,18 @@ void rdd_init(void)
 	debug_detect = GREAD(RDD, PROG_DEBUG_STATE_MAP);
 
 	/* If cable is attached, detect when it is disconnected */
-	if (debug_cable_is_attached()) {
+	if (debug_cable_is_attached())
 		GWRITE(RDD, PROG_DEBUG_STATE_MAP, ~debug_detect);
-		rdd_attached();
-	}
+
+	/* Set up board-specific state */
+	rdd_setup();
 
 	/* Enable RDD interrupts */
 	task_enable_irq(GC_IRQNUM_RDD0_INTR_DEBUG_STATE_DETECTED_INT);
 	GWRITE_FIELD(RDD, INT_ENABLE, INTR_DEBUG_STATE_DETECTED, 1);
 }
-DECLARE_HOOK(HOOK_INIT, rdd_init, HOOK_PRIO_DEFAULT);
+/* Call before usb_init(), so we can select the correct PHY */
+DECLARE_HOOK(HOOK_INIT, rdd_init, HOOK_PRIO_DEFAULT - 1);
 
 static int command_test_rdd(int argc, char **argv)
 {

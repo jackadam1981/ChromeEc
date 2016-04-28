@@ -6,9 +6,18 @@
 #ifndef __CROS_RDD_H
 #define __CROS_RDD_H
 
-/* Detach from debug cable */
+/* Current state of debug cable */
+int debug_cable_is_attached(void);
+
+/* Board-specific callbacks below */
+
+/* Called when detached from debug cable */
 void rdd_detached(void);
 
-/* Attach to debug cable */
+/* Called when attached to debug cable */
 void rdd_attached(void);
+
+/* Called during initialization */
+void rdd_setup(void);
+
 #endif  /* __CROS_RDD_H */
