@@ -33,7 +33,7 @@ enum led_color {
 	LED_RED,
 	LED_GREEN,
 	LED_BLUE,
-
+	LED_PINK,
 	/* Number of colors, not a color itself */
 	LED_COLOR_COUNT
 };
@@ -45,6 +45,7 @@ static const uint8_t color_brightness[LED_COLOR_COUNT][3] = {
 	[LED_RED]   = {90,  100, 100},
 	[LED_GREEN] = {100, 100, 80},
 	[LED_BLUE]  = {100, 80, 100},
+	[LED_PINK] = {90, 80, 100},
 };
 
 /**
@@ -86,7 +87,7 @@ static void kevin_led_set_power_battery(void)
 	/* CHIPSET_STATE_OFF */
 	switch (charge_get_state()) {
 	case PWR_STATE_DISCHARGE:
-		set_color(LED_OFF);
+		set_color(LED_PINK);
 		break;
 	case PWR_STATE_CHARGE:
 		set_color(LED_RED);
@@ -121,7 +122,7 @@ static void led_init(void)
 	pwm_enable(PWM_CH_LED_GREEN, 1);
 	pwm_enable(PWM_CH_LED_BLUE, 1);
 
-	set_color(LED_OFF);
+	set_color(LED_PINK);
 }
 DECLARE_HOOK(HOOK_INIT, led_init, HOOK_PRIO_DEFAULT);
 
@@ -138,7 +139,7 @@ static void led_tick(void)
 			kevin_led_set_power_battery();
 			return;
 
-	set_color(LED_OFF);
+	set_color(LED_PINK);
 }
 DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
 
