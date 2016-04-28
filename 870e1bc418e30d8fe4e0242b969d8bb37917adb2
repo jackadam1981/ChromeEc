@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8483da3_f83ea818",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-28T15:56:47Z",
+      "side": 1,
+      "message": "Can you explain what this is fixing? If our active charge port is CHARGE_PORT_NONE, I would expect board_set_active_charge_port() to have already handled the call to bd99955_select_input_port(BD99955_CHARGE_PORT_NONE).",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 42
+      },
+      "revId": "870e1bc418e30d8fe4e0242b969d8bb37917adb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
