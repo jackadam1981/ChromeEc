@@ -763,15 +763,21 @@ int main(int argc, char *argv[])
 	}
 
 	fw_update.flags = 0;
+	get_status(&fw_update.status);
 	rv = ec_readmem(EC_MEMMAP_BATT_FLAG, sizeof(val), &val);
 	if (rv <= 0) {
 		printf("EC Memmap read error:%d\n", rv);
 		goto out;
 	}
 
-	if (val & EC_BATT_FLAG_AC_PRESENT) {
+	if (fw_update.status.fw_update_mode) {
 		fw_update.flags |= F_AC_PRESENT;
-		printf("AC_PRESENT\n");
+		printf("AC_PRESENT at fw update mode\n");
+	} else {
+		if (val & EC_BATT_FLAG_AC_PRESENT) {
+			fw_update.flags |= F_AC_PRESENT;
+			printf("AC_PRESENT\n");
+		}
 	}
 	rv = ec_readmem(EC_MEMMAP_BATT_LFCC, sizeof(val), &val);
 	if (rv <= 0) {
