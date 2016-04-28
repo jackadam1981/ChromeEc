@@ -46,6 +46,30 @@
       "revId": "4ba2d74bf6a11ed071658f26524399bd9f9d75bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8594975_41bfe1e0",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-04-28T11:33:23Z",
+      "side": 1,
+      "message": "I am not sure, but I think it is better to get rid of the tricky \"delay\" method. Maybe we can poll some registers from 7688 that represent 7688 is \"definitely\" ready? By the way you should be able to get an Elm set next week from Birdy, so you can do modification/verification at your side.",
+      "parentUuid": "a8594975_21346dcd",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "4ba2d74bf6a11ed071658f26524399bd9f9d75bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
