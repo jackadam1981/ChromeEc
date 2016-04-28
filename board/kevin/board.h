@@ -14,6 +14,7 @@
 #define CONFIG_HOSTCMD_SPS
 #define CONFIG_POWER_COMMON
 #define CONFIG_PWM
+#define CONFIG_LED_COMMON
 
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands for testing */
 
