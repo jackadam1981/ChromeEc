@@ -22,6 +22,30 @@
       "revId": "4ba2d74bf6a11ed071658f26524399bd9f9d75bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8594975_21346dcd",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-04-28T10:30:58Z",
+      "side": 1,
+      "message": "your hook callback event immplement is ok for this ?\njust like deferred_reset_pd_mcu() do.",
+      "parentUuid": "a8594975_211d8d57",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "4ba2d74bf6a11ed071658f26524399bd9f9d75bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
