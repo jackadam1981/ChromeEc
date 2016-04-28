@@ -458,9 +458,9 @@ static void charge_manager_refresh(void)
 		 * the port, for example, if the port has become a charge
 		 * source.
 		 */
-		if ((new_port == charge_port &&
-		    new_supplier == charge_supplier) ||
-		    board_set_active_charge_port(new_port) == EC_SUCCESS)
+		if (board_set_active_charge_port(new_port) == EC_SUCCESS ||
+		    (new_port == charge_port &&
+		    new_supplier == charge_supplier))
 			break;
 
 		/* 'Dont charge' request must be accepted */
