@@ -44,6 +44,7 @@ DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 
 int watchdog_init(void)
 {
+#ifdef CONFIG_DO_A_WATCHDOG
 	/* Unlock watchdog registers */
 	STM32_IWDG_KR = STM32_IWDG_KR_UNLOCK;
 
@@ -61,6 +62,6 @@ int watchdog_init(void)
 	/* Use a harder timer to warn about an impending watchdog reset */
 	hwtimer_setup_watchdog();
 #endif
-
+#endif
 	return EC_SUCCESS;
 }
