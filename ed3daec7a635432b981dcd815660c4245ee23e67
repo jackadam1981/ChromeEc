@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8fc21c7_a498c27b",
+        "filename": "board/kevin/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-29T17:26:10Z",
+      "side": 1,
+      "message": "See crosbug.com/p/52849. I\u0027m going to back out this change. Please discuss on the crbug if you think something needs to change.\n\nAlso, please don\u0027t make significant functional changes to pending patches without first discussing with the author.",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 52
+      },
+      "revId": "ed3daec7a635432b981dcd815660c4245ee23e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
