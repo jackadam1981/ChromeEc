@@ -96,6 +96,44 @@ static const char * const prob_text[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(prob_text) == NUM_PROBLEM_TYPES);
 
+#ifdef CONFIG_BATTERY_PROTOCOL_UNSTABLE
+static int is_battery_range(int val)
+{
+	return (val >= 0 && val <= 65535) ? 1 : 0;
+}
+
+static int double_check_battery_data(void)
+{
+	int rv = 0;
+
+	if (!is_string_printable(host_get_memmap(EC_MEMMAP_BATT_MFGR)))
+		rv |= EC_ERROR_INVAL;
+
+	if (!is_string_printable(host_get_memmap(EC_MEMMAP_BATT_MODEL)))
+		rv |= EC_ERROR_INVAL;
+
+	if (!is_string_printable(host_get_memmap(EC_MEMMAP_BATT_TYPE)))
+		rv |= EC_ERROR_INVAL;
+
+	if (!is_string_printable(host_get_memmap(EC_MEMMAP_BATT_SERIAL)))
+		rv |= EC_ERROR_INVAL;
+
+	if (!is_battery_range(*(int *)host_get_memmap(EC_MEMMAP_BATT_DCAP)))
+		rv |= EC_ERROR_INVAL;
+
+	if (!is_battery_range(*(int *)host_get_memmap(EC_MEMMAP_BATT_LFCC)))
+		rv |= EC_ERROR_INVAL;
+
+	if (!is_battery_range(*(int *)host_get_memmap(EC_MEMMAP_BATT_DVLT)))
+		rv |= EC_ERROR_INVAL;
+
+	if (!is_battery_range(*(int *)host_get_memmap(EC_MEMMAP_BATT_CCNT)))
+		rv |= EC_ERROR_INVAL;
+
+	return rv;
+}
+#endif
+
 /*
  * TODO(crosbug.com/p/27639): When do we decide a problem is real and not
  * just intermittent? And what do we do about it?
@@ -163,6 +201,10 @@ static int update_static_battery_info(void)
 	/* Battery Type string */
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_TYPE);
 	rv |= battery_device_chemistry(batt_str, EC_MEMMAP_TEXT_MAX);
+
+#ifdef CONFIG_BATTERY_PROTOCOL_UNSTABLE
+	rv |= double_check_battery_data();
+#endif
 
 	/* Zero the dynamic entries. They'll come next. */
 	*(int *)host_get_memmap(EC_MEMMAP_BATT_VOLT) = 0;
@@ -821,6 +863,7 @@ wait_for_it:
 		/* Keep the AP informed */
 		if (need_static)
 			need_static = update_static_battery_info();
+
 		/* Wait on the dynamic info until the static info is good. */
 		if (!need_static)
 			update_dynamic_battery_info();

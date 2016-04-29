@@ -202,4 +202,6 @@ static inline int cond_went_true(cond_t *c) { return cond_went(c, 1); }
 int parse_offset_size(int argc, char **argv, int shift,
 			     int *offset, int *size);
 
+int is_string_printable(const char *buf);
+
 #endif  /* __CROS_EC_UTIL_H */

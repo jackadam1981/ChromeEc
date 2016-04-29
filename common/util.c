@@ -459,3 +459,14 @@ int parse_offset_size(int argc, char **argv, int shift,
 
 	return EC_SUCCESS;
 }
+
+int is_string_printable(const char *buf)
+{
+	while (*buf) {
+		if (!isprint(*buf))
+			return 0;
+		buf++;
+	}
+
+	return 1;
+}
