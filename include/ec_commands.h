@@ -2458,6 +2458,9 @@ enum ec_mkbp_event {
 	/* New Sensor FIFO data. The event data is fifo_info structure. */
 	EC_MKBP_EVENT_SENSOR_FIFO = 2,
 
+	/* New input event. The event data is ec_input_info structure. */
+	EC_MKBP_EVENT_INPUT_EVENT = 3,
+
 	/* Number of MKBP events */
 	EC_MKBP_EVENT_COUNT,
 };
@@ -2472,7 +2475,13 @@ union ec_response_get_next_data {
 		/* For aligning the fifo_info */
 		uint8_t rsvd[3];
 		struct ec_response_motion_sense_fifo_info info;
-	}        sensor_fifo;
+	}         sensor_fifo;
+
+	struct {
+		uint32_t input_type;
+		uint32_t code;
+		uint32_t value;
+	}        ec_input_info;
 } __packed;
 
 struct ec_response_get_next_event {
