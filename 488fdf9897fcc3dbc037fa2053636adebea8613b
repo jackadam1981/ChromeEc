@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8c91d9e_8b0393a8",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-04-29T17:10:03Z",
+      "side": 1,
+      "message": "I think the old code is correct. If the charge port didn\u0027t change, we shouldn\u0027t need to call board_set_active_charge_port() to re-activate it. I will check the actual problem on kevin now.",
+      "range": {
+        "startLine": 461,
+        "startChar": 4,
+        "endLine": 463,
+        "endChar": 38
+      },
+      "revId": "488fdf9897fcc3dbc037fa2053636adebea8613b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
