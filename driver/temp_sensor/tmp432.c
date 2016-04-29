@@ -13,6 +13,8 @@
 #include "hooks.h"
 #include "util.h"
 
+#define CPRINTS(format, args...) cprints(CC_THERMAL, format, ## args)
+
 static int temp_val_local;
 static int temp_val_remote1;
 static int temp_val_remote2;
@@ -36,9 +38,19 @@ static int raw_read8(const int offset, int *data_ptr)
 	return i2c_read8(I2C_PORT_THERMAL, TMP432_I2C_ADDR, offset, data_ptr);
 }
 
+static int raw_read16(const int offset, int *data_ptr)
+{
+	return i2c_read16(I2C_PORT_THERMAL, TMP432_I2C_ADDR, offset, data_ptr);
+}
+
 static int raw_write8(const int offset, int data)
 {
 	return i2c_write8(I2C_PORT_THERMAL, TMP432_I2C_ADDR, offset, data);
+}
+
+static int raw_write16(const int offset, int data)
+{
+	return i2c_write16(I2C_PORT_THERMAL, TMP432_I2C_ADDR, offset, data);
 }
 
 static int get_temp(const int offset, int *temp_ptr)
@@ -82,6 +94,36 @@ int tmp432_get_val(int idx, int *temp_ptr)
 	}
 
 	return EC_SUCCESS;
+}
+
+int tmp432_set_therm_mode(int limit_degree, int hysteresis)
+{
+	int ret = 0;
+	int data = 0;
+
+	ret = raw_read16(TMP432_CONFIGURATION1_R, &data);
+	if (ret)
+		goto tmp432_error;
+
+	data |= TMP432_CONFIG1_MODE;
+	ret = raw_write8(TMP432_CONFIGURATION1_W, data);
+	if (ret)
+		goto tmp432_error;
+
+	ret = raw_write16(TMP432_LOCAL_HIGH_LIMIT_W, limit_degree);
+	if (ret)
+		goto tmp432_error;
+
+	ret = raw_write8(TMP432_THERM_HYSTERESIS, hysteresis);
+	if (ret)
+		goto tmp432_error;
+
+	CPRINTS("TMP432 initialization done");
+	return EC_SUCCESS;
+
+tmp432_error:
+	CPRINTS("TMP432 initialization failed");
+	return EC_ERROR_UNKNOWN;
 }
 
 static void temp_sensor_poll(void)

@@ -94,3 +94,16 @@ int i2c_port_is_smbus(int port)
 {
 	return (port == MEC1322_I2C0_0 || port == MEC1322_I2C0_1) ? 1 : 0;
 }
+
+/* Initialize TMP432 */
+#define RETRY_TIMES 10
+static void board_tmp432_init(void)
+{
+	int i;
+
+	for (i = 0; i < RETRY_TIMES; i++) {
+		if (tmp432_set_therm_mode(85, 0) == EC_SUCCESS)
+			return;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_tmp432_init, HOOK_PRIO_TEMP_SENSOR + 1);
