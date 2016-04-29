@@ -89,6 +89,7 @@ common-$(CONFIG_USB_PD_TCPC)+=usb_pd_tcpc.o
 common-$(CONFIG_VBOOT_HASH)+=sha256.o vboot_hash.o
 common-$(CONFIG_VSTORE)+=vstore.o
 common-$(CONFIG_WIRELESS)+=wireless.o
+common-$(CONFIG_INPUT)+=input.o
 common-$(HAS_TASK_CHIPSET)+=chipset.o
 common-$(HAS_TASK_CONSOLE)+=console.o console_output.o uart_buffering.o
 common-$(HAS_TASK_CONSOLE)+=memory_commands.o
