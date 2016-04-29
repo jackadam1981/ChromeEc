@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8fc21c7_cd93e15e",
+        "filename": "board/pdeval-stm32f072/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-04-29T20:38:39Z",
+      "side": 1,
+      "message": "Should these be moved to anx74xx.h?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 38
+      },
+      "revId": "2aa6bba7ad6e4bc3f68d9094c77a5ad22a7d6ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
