@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8fc21c7_27aa942a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-29T18:29:30Z",
+      "side": 1,
+      "message": "\"is\" ?",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "1f39b64ddc5bf9c150f1cc68e43f978db74e25c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8fc21c7_87a3885f",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-04-29T18:29:30Z",
+      "side": 1,
+      "message": "I think you mean \"is\" ?",
+      "range": {
+        "startLine": 73,
+        "startChar": 51,
+        "endLine": 73,
+        "endChar": 55
+      },
+      "revId": "1f39b64ddc5bf9c150f1cc68e43f978db74e25c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
