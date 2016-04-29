@@ -1186,6 +1186,9 @@
  */
 #undef CONFIG_I2C_MULTI_PORT_CONTROLLER
 
+/* Add API for I2C Async reads. */
+#undef CONFIG_I2C_ASYNC
+
 /*****************************************************************************/
 /* Current/Power monitor */
 

@@ -7,6 +7,7 @@
 
 #include "battery.h"
 #include "console.h"
+#include "clock.h"
 #include "flash.h"
 #include "hooks.h"
 #include "registers.h"
@@ -26,7 +27,7 @@
 /* Flash page programming timeout.  This is 2x the datasheet max. */
 #define FLASH_TIMEOUT_US 16000
 #define FLASH_TIMEOUT_LOOP \
-	(FLASH_TIMEOUT_US * (CPU_CLOCK / SECOND) / CYCLE_PER_FLASH_LOOP)
+	(FLASH_TIMEOUT_US * (clock_get_freq() / SECOND) / CYCLE_PER_FLASH_LOOP)
 
 /* Flash unlocking keys */
 #define KEY1    0x45670123

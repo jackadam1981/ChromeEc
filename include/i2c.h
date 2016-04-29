@@ -35,6 +35,7 @@ struct i2c_port_t {
 	 * If the function is not defined, the default value is true. */
 	int (*passthru_allowed)(const struct i2c_port_t *port,
 				uint16_t address);
+	int type;             /* Interface type for nonuniform blocks. */
 };
 
 extern const struct i2c_port_t i2c_ports[];
@@ -250,4 +251,35 @@ int i2c_read_string(int port, int slave_addr, int offset, uint8_t *data,
  */
 int i2c_port_to_controller(int port);
 
+#ifdef CONFIG_I2C_ASYNC
+/* Allow per channel completion notification. */
+#define I2C_COMPLETION(port)    TASK_EVENT_CUSTOM(1 << port)
+
+/**
+ * Start an I2C read and wait for completion.
+ * This bust be called in sequence with:
+ *   start_i2c_read(port)
+ *   task_wait_event_mask(I2C_COMPLETION(port), timeout)
+ *   complete_i2c_read(port)
+ *   - Data is now valid.
+ *
+ * @param port: I2C port
+ * @param slave_addr: 7 bit slave address (in bits 1-7 of byte)
+ * @param in_bytes: bytes to transfer
+ * @param in: pointer to DMA buffer. WIll be valid after completion.
+ */
+int start_i2c_read(int port, int slave_addr, int in_bytes, uint8_t *in);
+
+/** 
+ * Complete a previously started I2C read.
+ * This bust be called in sequence with:
+ *   start_i2c_read(port)
+ *   task_wait_event_mask(I2C_COMPLETION(port), timeout)
+ *   complete_i2c_read(port)
+ *   - Data is now valid.
+ *
+ * @param port: I2C port
+ */
+int complete_i2c_read(int port);
+#endif /* CONFIG_I2C_ASYNC */
 #endif  /* __CROS_EC_I2C_H */
