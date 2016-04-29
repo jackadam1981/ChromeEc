@@ -29,6 +29,8 @@
 #include "config-stm32l15x.h"
 #elif defined(CHIP_VARIANT_STM32L100)
 #include "config-stm32l100.h"
+#elif defined(CHIP_VARIANT_STM32F446)
+#include "config-stm32f446.h"
 #elif defined(CHIP_VARIANT_STM32F373)
 #include "config-stm32f373.h"
 #elif defined(CHIP_VARIANT_STM32F09X)
@@ -56,8 +58,10 @@
 /* Program is run directly from storage */
 #define CONFIG_MAPPED_STORAGE_BASE CONFIG_PROGRAM_MEMORY_BASE
 
+#if !defined(CHIP_VARIANT_STM32F446)
 /* Compute the rest of the flash params from these */
 #include "config_std_internal_flash.h"
+#endif 
 
 /* System stack size */
 #if defined(CHIP_VARIANT_STM32F05X)

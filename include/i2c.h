@@ -35,6 +35,7 @@ struct i2c_port_t {
 	 * If the function is not defined, the default value is true. */
 	int (*passthru_allowed)(const struct i2c_port_t *port,
 				uint16_t address);
+	int type;             /* Interface type for nonuniform blocks. */
 };
 
 extern const struct i2c_port_t i2c_ports[];
