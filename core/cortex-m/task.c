@@ -15,6 +15,11 @@
 #include "timer.h"
 #include "util.h"
 
+
+
+#define CPRINTS(format, args...) cprints(CC_TASK, format, ## args)
+
+
 typedef union {
 	struct {
 		/*

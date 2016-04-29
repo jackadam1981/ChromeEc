@@ -171,6 +171,7 @@ static const char *flash_read_pstate_serial(void)
 		(const struct persist_state *)
 		flash_physical_dataptr(CONFIG_FW_PSTATE_OFF);
 
+	ccprintf("flash_read_pstate_serial off: 0x%08x\n", pstate);
 	if ((pstate->version == PERSIST_STATE_VERSION) &&
 	    (pstate->valid_fields & PSTATE_VALID_SERIALNO)) {
 		return (const char *)(pstate->serialno);
@@ -193,8 +194,10 @@ static int flash_write_pstate_data(struct persist_state *newpstate)
 	/* Erase pstate */
 	rv = flash_physical_erase(CONFIG_FW_PSTATE_OFF,
 				  CONFIG_FW_PSTATE_SIZE);
-	if (rv)
+	if (rv) {
+		ccprintf("flash_write_pstate_data rv %d\n", rv);
 		return rv;
+	}
 
 	/*
 	 * Note that if we lose power in here, we'll lose the pstate contents.
