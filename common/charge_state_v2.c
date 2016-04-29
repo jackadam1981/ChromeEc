@@ -579,12 +579,22 @@ int get_desired_input_current(enum battery_present batt_present,
 #endif
 	}
 }
+#ifdef CONFIG_BATTERY_SANYO_HOTFIX
+static int need_static = 1;
+
+int battery_need_delay(void)
+{
+	return need_static;
+}
+#endif
 
 /* Main loop */
 void charger_task(void)
 {
 	int sleep_usec;
+#ifndef CONFIG_BATTERY_SANYO_HOTFIX
 	int need_static = 1;
+#endif
 	const struct charger_info * const info = charger_get_info();
 
 	/* Get the battery-specific values */

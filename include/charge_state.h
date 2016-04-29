@@ -119,6 +119,9 @@ int charge_temp_sensor_get_val(int idx, int *temp_ptr);
  */
 const struct batt_params *charger_current_battery_params(void);
 
+#ifdef CONFIG_BATTERY_SANYO_HOTFIX
+int battery_need_delay(void);
+#endif
 
 /* Pick the right implementation */
 #ifdef CONFIG_CHARGER_V1
