@@ -31,7 +31,8 @@
 /* DMA channel options; assumes UART1 */
 static const struct dma_option dma_tx_option = {
 	CONFIG_UART_TX_DMA_CH, (void *)&STM32_USART_TDR(UARTN_BASE),
-	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT
+	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT |
+	STM32_DMA_CCR_CHANNEL(CONFIG_UART_TX_REQ_CH)
 };
 
 #else
@@ -47,6 +48,7 @@ static const struct dma_option dma_tx_option = {
 static const struct dma_option dma_rx_option = {
 	CONFIG_UART_RX_DMA_CH, (void *)&STM32_USART_RDR(UARTN_BASE),
 	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT |
+	STM32_DMA_CCR_CHANNEL(CONFIG_UART_RX_REQ_CH) |
 	STM32_DMA_CCR_CIRC
 };
 
@@ -165,9 +167,15 @@ void uart_interrupt(void)
 	if (STM32_USART_SR(UARTN_BASE) & STM32_USART_SR_TC) {
 		if (should_stop) {
 			STM32_USART_CR1(UARTN_BASE) &= ~STM32_USART_CR1_TCIE;
+#if 0
 			enable_sleep(SLEEP_MASK_UART);
+#endif
 		}
+#if defined(CHIP_FAMILY_STM32F4)
+		STM32_USART_SR(UARTN_BASE) &= ~STM32_USART_SR_TC;
+#else
 		STM32_USART_ICR(UARTN_BASE) |= STM32_USART_SR_TC;
+#endif
 		if (!(STM32_USART_SR(UARTN_BASE) & ~STM32_USART_SR_TC))
 			return;
 	}
@@ -234,7 +242,8 @@ static void uart_freq_change(void)
 #endif
 
 #if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F0) || \
-	defined(CHIP_FAMILY_STM32F3) || defined(CHIP_FAMILY_STM32L4)
+	defined(CHIP_FAMILY_STM32F3) || defined(CHIP_FAMILY_STM32L4) || \
+	defined(CHIP_FAMILY_STM32F4)
 	if (div / 16 > 0) {
 		/*
 		 * CPU clock is high enough to support x16 oversampling.
@@ -279,6 +288,8 @@ void uart_init(void)
 	/* Enable USART clock */
 #if (UARTN == 1)
 	STM32_RCC_APB2ENR |= STM32_RCC_PB2_USART1;
+#elif (UARTN == 6)
+	STM32_RCC_APB2ENR |= STM32_RCC_PB2_USART6;
 #elif (UARTN == 9)
 	STM32_RCC_APB1ENR2 |= STM32_RCC_APB1ENR2_LPUART1EN;
 #else
@@ -340,7 +351,7 @@ void uart_init(void)
 	STM32_USART_CR1(UARTN_BASE) |= STM32_USART_CR1_RXNEIE;
 #endif
 
-#ifdef CHIP_FAMILY_STM32L
+#if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F4)
 	/* Use single-bit sampling */
 	STM32_USART_CR3(UARTN_BASE) |= STM32_USART_CR3_ONEBIT;
 #endif

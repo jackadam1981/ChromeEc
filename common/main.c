@@ -144,6 +144,7 @@ test_mockable __keep int main(void)
 	 * by tasks.)
 	 */
 	watchdog_init();
+	POOOO
 #endif
 
 	/*
@@ -172,7 +173,6 @@ test_mockable __keep int main(void)
 	 * the majority of the time.
 	 */
 	CPRINTS("Inits done");
-
 	/* Launch task scheduling (never returns) */
 	return task_start();
 }
