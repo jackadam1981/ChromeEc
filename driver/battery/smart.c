@@ -13,6 +13,7 @@
 #include "smbus.h"
 #include "timer.h"
 #include "util.h"
+#include "task.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr);
@@ -40,6 +41,9 @@ test_mockable int sb_read(int cmd, int *param)
 	 */
 	if (battery_is_cut_off())
 		return EC_RES_ACCESS_DENIED;
+#endif
+#ifdef CONFIG_BATTERY_SANYO_HOTFIX
+	task_wait_event(MSEC);
 #endif
 #ifdef CONFIG_SMBUS
 	{
@@ -79,6 +83,9 @@ int sb_read_string(int port, int slave_addr, int offset, uint8_t *data,
 	 */
 	if (battery_is_cut_off())
 		return EC_RES_ACCESS_DENIED;
+#endif
+#ifdef CONFIG_BATTERY_SANYO_HOTFIX
+	task_wait_event(MSEC);
 #endif
 #ifdef CONFIG_SMBUS
 	return smbus_read_string(port, slave_addr, offset, data, len);

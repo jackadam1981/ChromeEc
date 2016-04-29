@@ -249,6 +249,15 @@
  */
 #undef CONFIG_BATTERY_REVIVE_DISCONNECT
 
+/*
+ * Sometimes a battery will return invalid value with correct protocol result,
+ * (particular for block read), that could cause unexpect error.
+ *
+ * For example, rv = sb_read(COMMAND, &data); rv will get 0 for correct,
+ * but 'data' is actually a broken data like 0xFF,0xFF..., unprintable char.
+ */
+#undef CONFIG_BATTERY_SANYO_HOTFIX
+
 /* Boot header storage offset. */
 #undef CONFIG_BOOT_HEADER_STORAGE_OFF
 
