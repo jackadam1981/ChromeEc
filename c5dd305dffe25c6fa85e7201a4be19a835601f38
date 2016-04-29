@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8fc21c7_2a625bc9",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-04-29T19:56:15Z",
+      "side": 1,
+      "message": "Calling rdd_interrupt will essentially change the default PHY to the AP phy instead of CCD phy, because rdd_detach is called when the debug cable is not detected. \n\nWith a standard SuzyQ you have to power on the AP for Rd detection to work.\n\nThere are reworked SuzyQs that have Rp/Rp instead of Rd/Rd, which can be detected no matter the state of the AP. There are some issues with that cable because the EC does not currently identify it as a debug accessory, and tries to draw too much power.\n\nOnce we get the reworked SuzyQs and the charging issues with that are fixed, then this wont be a problem.\n\nSo should we change it back to what it was before until the SuzyQ situation is sorted out? or just tell people to hit the power button?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "c5dd305dffe25c6fa85e7201a4be19a835601f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
