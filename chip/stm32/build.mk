@@ -11,7 +11,7 @@ ifeq ($(CHIP_FAMILY),stm32f0)
 CORE:=cortex-m0
 # Force ARMv6-M ISA used by the Cortex-M0
 CFLAGS_CPU+=-march=armv6-m -mcpu=cortex-m0
-else ifeq ($(CHIP_FAMILY),$(filter $(CHIP_FAMILY),stm32f3 stm32l4))
+else ifeq ($(CHIP_FAMILY),$(filter $(CHIP_FAMILY),stm32f3 stm32l4 stm32f4))
 # STM32F3xx and STM32L4xx sub-family has a Cortex-M4 ARM core
 CORE:=cortex-m
 # Allow the full Cortex-M4 instruction set
@@ -39,7 +39,6 @@ chip-$(CONFIG_STREAM_USART)+=usart_rx_interrupt-$(CHIP_FAMILY).o
 chip-$(CONFIG_STREAM_USART)+=usart_tx_interrupt.o
 chip-$(CONFIG_STREAM_USART)+=usart_rx_dma.o usart_tx_dma.o
 chip-$(CONFIG_CMD_USART_INFO)+=usart_info_command.o
-chip-$(CONFIG_STREAM_USB)+=usb-stream.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
 chip-$(HAS_TASK_CONSOLE)+=uart.o
 chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
@@ -53,6 +52,8 @@ chip-$(CONFIG_ADC)+=adc-$(CHIP_FAMILY).o
 chip-$(CONFIG_STM32_CHARGER_DETECT)+=charger_detect.o
 chip-$(CONFIG_DEBUG_PRINTF)+=debug_printf.o
 chip-$(CONFIG_PWM)+=pwm.o
+
+chip-$(CONFIG_STREAM_USB)+=usb-stream.o
 chip-$(CONFIG_USB)+=usb.o usb-$(CHIP_FAMILY).o usb_endpoints.o
 chip-$(CONFIG_USB_CONSOLE)+=usb_console.o
 chip-$(CONFIG_USB_GPIO)+=usb_gpio.o
