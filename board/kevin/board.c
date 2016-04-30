@@ -28,6 +28,7 @@
 #include "pwm_chip.h"
 #include "registers.h"
 #include "shi_chip.h"
+#include "spi.h"
 #include "switch.h"
 #include "timer.h"
 #include "thermal.h"
@@ -85,6 +86,13 @@ const struct i2c_port_t i2c_ports[] = {
 	{"battery", NPCX_I2C_PORT3,    100, GPIO_I2C3_SCL,  GPIO_I2C3_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/******************************************************************************/
+/* SPI devices */
+const struct spi_device_t spi_devices[] = {
+	{ CONFIG_SPI_ACCEL_PORT, 1, GPIO_SPI_SENSOR_CS_L }
+};
+const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
 /******************************************************************************/
 /* Wake-up pins for hibernate */
@@ -202,6 +210,20 @@ static void board_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static void board_spi_init(void)
+{
+	/* SPI sensors: put back the GPIO in its expected state */
+	gpio_set_level(GPIO_SPI_SENSOR_CS_L, 1);
+
+	/* Enable SPI for BMI160 */
+	gpio_config_module(MODULE_SPI_MASTER, 1);
+
+	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
+	CPRINTS("Board using SPI sensors");
+}
+//TODO Need to proper PRIORITY, HOOK_PRIO_DEFAULT can't do it
+DECLARE_HOOK(HOOK_INIT, board_spi_init, HOOK_PRIO_TEMP_SENSOR);
 
 enum kevin_board_version {
 	BOARD_VERSION_UNKNOWN = -1,

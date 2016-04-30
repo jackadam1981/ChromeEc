@@ -30,7 +30,9 @@
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP /* Instead of 8042 protocol of keyboard */
 #define CONFIG_POWER_BUTTON
 /* TODO: Verify W25Q40 protect regs are compatible with W25X40 */
-#define CONFIG_SPI_FLASH_W25X40
+#define CONFIG_SPI
+#define CONFIG_SPI_MASTER
+#define CONFIG_CMD_SPI_XFER
 #define CONFIG_VBOOT_HASH
 
 #define CONFIG_CHARGER
@@ -96,6 +98,9 @@
 #define I2C_PORT_TCPC1    NPCX_I2C_PORT0_1
 #define I2C_PORT_CHARGER  NPCX_I2C_PORT2
 #define I2C_PORT_BATTERY  NPCX_I2C_PORT3
+
+/* Enable Accel over SPI */
+#define CONFIG_SPI_ACCEL_PORT    0  /* SPI master port (SPIP) form BMI160 */
 
 #ifndef __ASSEMBLER__
 
