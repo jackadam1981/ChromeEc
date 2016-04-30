@@ -191,7 +191,12 @@ static void spi_init(void)
 			CGC_MODE_RUN | CGC_MODE_SLEEP);
 
 	/* Disabling spi module */
+#ifdef CONFIG_SPI_FLASH_PORT
 	spi_enable(CONFIG_SPI_FLASH_PORT, 0);
+#endif
+#ifdef CONFIG_SPI_ACCEL_PORT
+	spi_enable(CONFIG_SPI_ACCEL_PORT, 0);
+#endif
 
 	/* Disabling spi irq */
 	CLEAR_BIT(NPCX_SPI_CTL1, NPCX_SPI_CTL1_EIR);
@@ -217,7 +222,7 @@ DECLARE_HOOK(HOOK_INIT, spi_init, HOOK_PRIO_DEFAULT);
 
 /*****************************************************************************/
 /* Console commands */
-
+#ifdef CONFIG_SPI_FLASH_PORT
 static int printrx(const char *desc, const uint8_t *txdata, int txlen,
 		int rxlen)
 {
@@ -235,7 +240,6 @@ static int printrx(const char *desc, const uint8_t *txdata, int txlen,
 	CPUTS("\n");
 	return EC_SUCCESS;
 }
-
 
 static int command_spirom(int argc, char **argv)
 {
@@ -261,3 +265,4 @@ DECLARE_CONSOLE_COMMAND(spirom, command_spirom,
 		NULL,
 		"Test reading SPI EEPROM",
 		NULL);
+#endif
