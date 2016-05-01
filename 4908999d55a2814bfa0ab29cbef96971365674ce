@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8fc21c7_4e6244ca",
+        "filename": "board/amenia/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-01T23:04:41Z",
+      "side": 1,
+      "message": "Yes, we do need the TCPC driver, but all these #ifs is removed on a separate patch CL:341535, except HPD related which is WIP.",
+      "parentUuid": "e8fc21c7_cee754bb",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 21
+      },
+      "revId": "4908999d55a2814bfa0ab29cbef96971365674ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8fc21c7_eef2107f",
         "filename": "board/amenia/board.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-01T15:55:38Z",
       "side": 1,
       "message": "Can you explain this comment? I don\u0027t see how this CONFIG is related to TCPC.",
+      "range": {
+        "startLine": 98,
+        "startChar": 6,
+        "endLine": 98,
+        "endChar": 22
+      },
+      "revId": "4908999d55a2814bfa0ab29cbef96971365674ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8fc21c7_8e683cac",
+        "filename": "board/amenia/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-01T23:04:41Z",
+      "side": 1,
+      "message": "This is still under debug and it is related to the reset sequence of TCPC. gpio.inc in this patch put the TCPC in reset by default, then board_init take it out of reset, but if VBOOT_HASH is added, the extra delay cause TCPC to stay in reset longer than 10ms and power from zinger will reset.",
+      "parentUuid": "e8fc21c7_eef2107f",
       "range": {
         "startLine": 98,
         "startChar": 6,
