@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8fc21c7_cee754bb",
+        "filename": "board/amenia/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-01T15:55:38Z",
+      "side": 1,
+      "message": "Are all of these #ifs related to waiting for the TCPC driver to land?",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 21
+      },
+      "revId": "4908999d55a2814bfa0ab29cbef96971365674ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8fc21c7_eef2107f",
+        "filename": "board/amenia/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-01T15:55:38Z",
+      "side": 1,
+      "message": "Can you explain this comment? I don\u0027t see how this CONFIG is related to TCPC.",
+      "range": {
+        "startLine": 98,
+        "startChar": 6,
+        "endLine": 98,
+        "endChar": 22
+      },
+      "revId": "4908999d55a2814bfa0ab29cbef96971365674ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
