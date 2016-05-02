@@ -46,6 +46,30 @@
       "revId": "15a8b161a6a336cf5396edf338a9b44f28517eb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e816e1ff_b4dcc029",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-02T16:24:40Z",
+      "side": 1,
+      "message": "It will keep working. The default value of PROG_DEBUG_STATE_MAP is to detect debug connect.\n\nWithout this statement that is how rdd will work. The rdd_interrupt wont be called until cr50 detects that a debug accessory is connected. Once it successfully detects a connection, then it can switch to trying to detect a disconnect. This ensures rdd_detach wont be called until we know that the connect detection is working.",
+      "parentUuid": "e8fc21c7_8426db04",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 50
+      },
+      "revId": "15a8b161a6a336cf5396edf338a9b44f28517eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
