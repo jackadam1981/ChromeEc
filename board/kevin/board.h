@@ -8,13 +8,29 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
+#if 0
+#define CONFIG_ACCEL_INTRRUPTS
+#define CONFIG_ACCEL_FIFO
+#endif
 /* Optional modules */
+#define CONFIG_ACCELGYRO_BMI160
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
+#if 0
+#define CONFIG_ACCEL_INTRRUPTS
+#define CONFIG_ACCEL_FIFO
+#endif
 #define CONFIG_ADC
 #define CONFIG_CHIPSET_RK3399
 #define CONFIG_HOSTCMD_SPS
 #define CONFIG_POWER_COMMON
 #define CONFIG_PWM
 #define CONFIG_LED_COMMON
+#define CONFIG_LID_ANGLE
+#define CONFIG_LID_ANGLE_SENSOR_BASE	0
+#define CONFIG_LID_ANGLE_SENSOR_LID	2
 
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands for testing */
 
@@ -29,7 +45,6 @@
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP /* Instead of 8042 protocol of keyboard */
 #define CONFIG_POWER_BUTTON
-/* TODO: Verify W25Q40 protect regs are compatible with W25X40 */
 #define CONFIG_SPI
 #define CONFIG_SPI_MASTER
 #define CONFIG_CMD_SPI_XFER
@@ -96,6 +111,7 @@
 
 #define I2C_PORT_TCPC0    NPCX_I2C_PORT0_0
 #define I2C_PORT_TCPC1    NPCX_I2C_PORT0_1
+#define I2C_PORT_ACCEL    NPCX_I2C_PORT1
 #define I2C_PORT_CHARGER  NPCX_I2C_PORT2
 #define I2C_PORT_BATTERY  NPCX_I2C_PORT3
 
