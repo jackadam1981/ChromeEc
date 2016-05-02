@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8fc21c7_81200d3b",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-02T14:46:40Z",
+      "side": 1,
+      "message": "This should be removed. It sets the debug state to detect when no cable is attached. It will trigger rdd_interrupt, because it looks like nothing is attached until the AP is up.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 50
+      },
+      "revId": "15a8b161a6a336cf5396edf338a9b44f28517eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
