@@ -22,6 +22,30 @@
       "revId": "650af0e0303c5c790a709f95b10bb37947f6296b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e816e1ff_daafe5a2",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-02T19:40:37Z",
+      "side": 1,
+      "message": "good point, we don\u0027t, let me remove it.",
+      "parentUuid": "e816e1ff_da1365fc",
+      "range": {
+        "startLine": 253,
+        "startChar": 6,
+        "endLine": 260,
+        "endChar": 11
+      },
+      "revId": "650af0e0303c5c790a709f95b10bb37947f6296b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
