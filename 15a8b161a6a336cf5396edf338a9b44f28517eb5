@@ -22,6 +22,30 @@
       "revId": "15a8b161a6a336cf5396edf338a9b44f28517eb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8fc21c7_8426db04",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-02T15:42:27Z",
+      "side": 1,
+      "message": "will the plug in/pull out detection keep working without this statement?\n\nMaybe what\u0027s needed is some code which enables the interrupts as required, but keeps the device connected to the external PHY until a cable is *pulled out*, so it originally stays connected no matter if the cable is plugged in or not, then stays connected when the cable is plugged it, and finally disconnects is the cable is pulled out.",
+      "parentUuid": "e8fc21c7_81200d3b",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 50
+      },
+      "revId": "15a8b161a6a336cf5396edf338a9b44f28517eb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
