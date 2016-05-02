@@ -13,6 +13,9 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "ec_commands.h"
+#include "driver/accel_kionix.h"
+#include "driver/accelgyro_bmi160.h"
 #include "driver/charger/bd99955.h"
 #include "driver/tcpm/fusb302.h"
 #include "extpower.h"
@@ -30,6 +33,7 @@
 #include "shi_chip.h"
 #include "spi.h"
 #include "switch.h"
+#include "task.h"
 #include "timer.h"
 #include "thermal.h"
 #include "usb_charge.h"
@@ -258,3 +262,140 @@ int board_get_version(void)
 
 	return version;
 }
+
+#ifdef HAS_TASK_MOTIONSENSE
+/* Motion sensors */
+/* Mutexes */
+//TODO: need bma driver
+static struct mutex g_lid_mutex;
+static struct mutex g_base_mutex;
+
+/* Matrix to rotate accelrator into standard reference frame */
+const matrix_3x3_t base_standard_ref = {
+	{ 0,  FLOAT_TO_FP(1),  0},
+	{ FLOAT_TO_FP(-1), 0,  0},
+	{ 0,  0,  FLOAT_TO_FP(1)}
+};
+
+/* KX022 private data */
+struct kionix_accel_data g_kx022_data = {
+	.variant = KX022,
+};
+
+struct motion_sensor_t motion_sensors[] = {
+	/*
+	 * Note: bmi160: supports accelerometer and gyro sensor
+	 * Requirement: accelerometer sensor must init before gyro sensor
+	 * DO NOT change the order of the following table.
+	 */
+	{.name = "Base Accel",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_BMI160,
+	 .type = MOTIONSENSE_TYPE_ACCEL,
+	 .location = MOTIONSENSE_LOC_BASE,
+	 .drv = &bmi160_drv,
+	 .mutex = &g_base_mutex,
+	 .drv_data = &g_bmi160_data,
+	 .port = I2C_PORT_ACCEL,
+	 .addr = BMI160_ADDR0,
+	 .rot_standard_ref = NULL, /* Identity matrix. */
+	 .default_range = 2,  /* g, enough for laptop. */
+	 .config = {
+		 /* AP: by default use EC settings */
+		 [SENSOR_CONFIG_AP] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
+		 /* EC use accel for angle detection */
+		 [SENSOR_CONFIG_EC_S0] = {
+			 .odr = 10000 | ROUND_UP_FLAG,
+			 .ec_rate = 100,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S3] = {
+			 .odr = 0,
+			 .ec_rate = 0
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S5] = {
+			 .odr = 0,
+			 .ec_rate = 0
+		 },
+	 },
+	},
+
+	{.name = "Base Gyro",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_BMI160,
+	 .type = MOTIONSENSE_TYPE_GYRO,
+	 .location = MOTIONSENSE_LOC_BASE,
+	 .drv = &bmi160_drv,
+	 .mutex = &g_base_mutex,
+	 .drv_data = &g_bmi160_data,
+	 .port = I2C_PORT_ACCEL,
+	 .addr = BMI160_ADDR0,
+	 .default_range = 1000, /* dps */
+	 .rot_standard_ref = NULL, /* Identity Matrix. */
+	 .config = {
+		 /* AP: by default shutdown all sensors */
+		 [SENSOR_CONFIG_AP] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
+		 /* EC does not need in S0 */
+		 /* TODO : Interrupt driven? */
+		 [SENSOR_CONFIG_EC_S0] = {
+			 .odr = 10000 | ROUND_UP_FLAG,
+			 .ec_rate = 100,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S3] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S5] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
+	 },
+	},
+
+	//Assume kc022, for stack size. Let's replace this to bma255
+	{.name = "Lid Accel",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_KX022,
+	 .type = MOTIONSENSE_TYPE_ACCEL,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &kionix_accel_drv,
+	 .mutex = &g_lid_mutex,
+	 .drv_data = &g_kx022_data,
+	 .port = I2C_PORT_ACCEL,
+	 .addr = KX022_ADDR1,
+	 .rot_standard_ref = NULL, /* Identity matrix. */
+	 .default_range = 2, /* g, enough for laptop. */
+	 .config = {
+		/* AP: by default use EC settings */
+		[SENSOR_CONFIG_AP] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		},
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		},
+		/* unused */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 0,
+			.ec_rate = 0,
+		},
+		[SENSOR_CONFIG_EC_S5] = {
+			.odr = 0,
+			.ec_rate = 0,
+		},
+	 },
+	},
+};
+const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+#endif /* defined(HAS_TASK_MOTIONSENSE) */
