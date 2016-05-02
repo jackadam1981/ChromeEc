@@ -450,3 +450,21 @@ void power_signal_interrupt_S0(enum gpio_signal signal)
 	}
 }
 #endif
+
+/**
+ * chipset check if PLTRST# is valid.
+ *
+ * @return non-zero if PLTRST# is valid, 0 if invalid.
+ */
+int chipset_check_pltrst(void)
+{
+	/*
+	 * Invalid PLTRST# from SOC unless RSMRST#
+	 * from PMIC through EC to soc is deasserted.
+	 */
+	if (!gpio_get_level(GPIO_RSMRST_L_PGOOD) ||
+	    !gpio_get_level(GPIO_PCH_RSMRST_L))
+		return 0;
+	else
+		return 1;
+}

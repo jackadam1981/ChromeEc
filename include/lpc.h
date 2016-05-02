@@ -113,6 +113,12 @@ void lpc_clear_acpi_status_mask(uint8_t mask);
  */
 int lpc_get_pltrst_asserted(void);
 
+/**
+ * Optional chipset check if PLTRST# is valid.
+ *
+ * @return non-zero if PLTRST# is valid, 0 if invalid.
+ */
+int chipset_check_pltrst(void) __attribute__((weak));
 
 /* Disable LPC ACPI interrupts */
 void lpc_disable_acpi_interrupts(void);
