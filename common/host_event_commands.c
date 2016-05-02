@@ -51,10 +51,9 @@ void host_set_events(uint32_t mask)
 	lpc_set_host_event_state(events);
 #else
 	*(uint32_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS) = events;
-#endif
-
 #ifdef CONFIG_MKBP_EVENT
 	mkbp_send_event(EC_MKBP_EVENT_HOST_EVENT);
+#endif
 #endif
 }
 
@@ -70,10 +69,9 @@ void host_clear_events(uint32_t mask)
 	lpc_set_host_event_state(events);
 #else
 	*(uint32_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS) = events;
-#endif
-
 #ifdef CONFIG_MKBP_EVENT
 	mkbp_send_event(EC_MKBP_EVENT_HOST_EVENT);
+#endif
 #endif
 }
 

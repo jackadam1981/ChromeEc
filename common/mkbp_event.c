@@ -36,7 +36,12 @@ static int event_is_set(uint8_t event_type)
 static void set_host_interrupt(int active)
 {
 	/* interrupt host by using active low EC_INT signal */
+#ifdef GPIO_EC_INT_L
 	gpio_set_level(GPIO_EC_INT_L, !active);
+#else
+	if (active)
+		host_set_single_event(EC_HOST_EVENT_MKBP);
+#endif
 }
 
 void mkbp_send_event(uint8_t event_type)
