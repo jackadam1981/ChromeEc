@@ -22,6 +22,30 @@
       "revId": "8ec2c59bdef699f95526759f5e75beb21de9bb68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e816e1ff_bddca329",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-02T19:45:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e816e1ff_1ae4bd1b",
+      "range": {
+        "startLine": 299,
+        "startChar": 46,
+        "endLine": 299,
+        "endChar": 56
+      },
+      "revId": "8ec2c59bdef699f95526759f5e75beb21de9bb68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
