@@ -16,6 +16,24 @@
       "revId": "79b3d62dff3b0d7a4242410aa756d7e4ee7a522c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad84fbcc_c25fa2fc",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-05-03T16:59:42Z",
+      "side": 1,
+      "message": "Ack!  Will fix in when doing cleanup.",
+      "parentUuid": "4df53f3c_79c2e7fb",
+      "revId": "79b3d62dff3b0d7a4242410aa756d7e4ee7a522c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
