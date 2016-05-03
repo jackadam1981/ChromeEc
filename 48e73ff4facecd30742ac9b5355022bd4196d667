@@ -22,6 +22,30 @@
       "revId": "48e73ff4facecd30742ac9b5355022bd4196d667",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4df53f3c_828e5c35",
+        "filename": "board/banon/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-05-03T01:39:24Z",
+      "side": 1,
+      "message": "Never seen TMP432 init fail, just in case",
+      "parentUuid": "e8fc21c7_0a555f0c",
+      "range": {
+        "startLine": 104,
+        "startChar": 17,
+        "endLine": 104,
+        "endChar": 28
+      },
+      "revId": "48e73ff4facecd30742ac9b5355022bd4196d667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
