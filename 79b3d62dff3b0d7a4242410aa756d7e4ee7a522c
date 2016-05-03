@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4df53f3c_79c2e7fb",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-03T16:47:48Z",
+      "side": 1,
+      "message": "I realize you are not changing it now, but here and in many places in this file:\n\nif (n1) {\n}\n\nis better readable. IIRC this is also recommended by the coding style guide.",
+      "revId": "79b3d62dff3b0d7a4242410aa756d7e4ee7a522c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
