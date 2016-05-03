@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4df53f3c_9fefd3bf",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-03T00:33:26Z",
+      "side": 1,
+      "message": "This should already be deasserted on GPIO init - it\u0027s redundant.",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 41
+      },
+      "revId": "ede784d94387043e6e1da84aa972464a3ce3526c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4df53f3c_5f2f0be6",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-03T00:33:26Z",
+      "side": 1,
+      "message": "Do you know why? Ideally this will go in board_init().",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 61
+      },
+      "revId": "ede784d94387043e6e1da84aa972464a3ce3526c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
