@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4df53f3c_5fd70b35",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-03T01:19:08Z",
+      "side": 1,
+      "message": "Ah. The USB spec says this is in 2mA units. Because of course it is.",
+      "range": {
+        "startLine": 220,
+        "startChar": 14,
+        "endLine": 220,
+        "endChar": 17
+      },
+      "revId": "6aae77766086ccc3e3e272952dfc268eb366f6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
