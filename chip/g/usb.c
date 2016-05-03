@@ -216,7 +216,9 @@ const struct usb_config_descriptor USB_CONF_DESC(conf) = {
 	.bNumInterfaces = USB_IFACE_COUNT,
 	.bConfigurationValue = 1,		/* Caution: hard-coded value */
 	.iConfiguration = USB_STR_VERSION,
-	.bmAttributes = 0x80,			/* bus powered */
+	/* We claim remote-wake capability to work around crbug.com/431886.
+	 * That should have been fixed, but doesn't seem to be working. */
+	.bmAttributes = 0xa0,			/* DWR: bit 5 = Remote Wake */
 	.bMaxPower = 250,			/* MaxPower 500 mA */
 };
 
