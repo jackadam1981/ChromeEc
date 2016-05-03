@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d3d3fed_6587a2e9",
+        "filename": "chip/npcx/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-03T22:14:12Z",
+      "side": 1,
+      "message": "I think we need to pass spi_devices[i].port, not i.",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 19
+      },
+      "revId": "71f70ca646c5a81240fa1cfe9a31b93eea6df183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d3d3fed_2518fac1",
+        "filename": "chip/npcx/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-03T22:14:12Z",
+      "side": 1,
+      "message": "I changed this to HOOK_PRIO_SPI in https://chromium-review.googlesource.com/#/c/342171/. We can rebase this on top of that CL.",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 38
+      },
+      "revId": "71f70ca646c5a81240fa1cfe9a31b93eea6df183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
