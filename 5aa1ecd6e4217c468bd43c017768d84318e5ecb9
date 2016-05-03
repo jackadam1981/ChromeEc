@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4df53f3c_0276ccc9",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-03T06:21:31Z",
+      "side": 1,
+      "message": "okay I will change it. You\u0027re welcome.",
+      "parentUuid": "e8fc21c7_6ed86000",
+      "range": {
+        "startLine": 995,
+        "startChar": 7,
+        "endLine": 995,
+        "endChar": 30
+      },
+      "revId": "5aa1ecd6e4217c468bd43c017768d84318e5ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8fc21c7_2ee268b0",
         "filename": "common/usb_charger_bd99955.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-01T15:49:05Z",
       "side": 1,
       "message": "Can we do something smarter here? Checking the datasheet quickly, BC1.2 detection starts 100 ms after VBUS attach and typically completes 312 ms after VBUS attach (actually, completion time is unclear -- shall I check with Rohm?). Where do you see 1sec documented?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "5aa1ecd6e4217c468bd43c017768d84318e5ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4df53f3c_a5f96a5e",
+        "filename": "common/usb_charger_bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-03T06:21:31Z",
+      "side": 1,
+      "message": "Okay I will add a delay of (312ms) before for loop.\nI used trial and error method and was getting the type detection around 600ms to 800ms.\nYes, please check with ROMH.\n1s is not documented, I will remove the comment.",
+      "parentUuid": "e8fc21c7_2ee268b0",
       "range": {
         "startLine": 92,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4df53f3c_c5e34eb4",
+        "filename": "common/usb_charger_bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-03T06:21:31Z",
+      "side": 1,
+      "message": "from battery cut-off mode, if the device is booted with non typec \u0026 PD charger, then PD task will negotiate as VBUS even before we come to this point hence I added it to overwrite it. \nI will remove this code as the charge supplier information can be obtained from charge_manager.",
+      "parentUuid": "e8fc21c7_4ee5a4b6",
+      "range": {
+        "startLine": 125,
+        "startChar": 18,
+        "endLine": 125,
+        "endChar": 21
+      },
+      "revId": "5aa1ecd6e4217c468bd43c017768d84318e5ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8fc21c7_2e4b88a2",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2016-05-01T15:49:05Z",
       "side": 1,
       "message": "Let\u0027s check the return value?",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 15
+      },
+      "revId": "5aa1ecd6e4217c468bd43c017768d84318e5ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4df53f3c_22bc3078",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-03T06:21:31Z",
+      "side": 1,
+      "message": "okay, I will check the return value.",
+      "parentUuid": "e8fc21c7_2e4b88a2",
       "range": {
         "startLine": 126,
         "startChar": 2,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "4df53f3c_c2aa2428",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-03T06:21:31Z",
+      "side": 1,
+      "message": "it takes around 10ms (tried by trial and error method).\nOkay, I will add a timeout.",
+      "parentUuid": "e8fc21c7_0ec7ac23",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 8
+      },
+      "revId": "5aa1ecd6e4217c468bd43c017768d84318e5ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8fc21c7_aed538ca",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 3
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "4df53f3c_a2a72060",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-03T06:21:31Z",
+      "side": 1,
+      "message": "okay, I will change these values and \"Disable automatic limitation of the input current\"",
+      "parentUuid": "e8fc21c7_aed538ca",
+      "range": {
+        "startLine": 514,
+        "startChar": 9,
+        "endLine": 514,
+        "endChar": 13
+      },
+      "revId": "5aa1ecd6e4217c468bd43c017768d84318e5ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8fc21c7_8edb9cfd",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 3
@@ -151,6 +295,30 @@
       "writtenOn": "2016-05-01T15:49:05Z",
       "side": 1,
       "message": "vbus?",
+      "range": {
+        "startLine": 549,
+        "startChar": 19,
+        "endLine": 549,
+        "endChar": 22
+      },
+      "revId": "5aa1ecd6e4217c468bd43c017768d84318e5ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4df53f3c_6267d817",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-03T06:21:31Z",
+      "side": 1,
+      "message": "yes VBUS",
+      "parentUuid": "e8fc21c7_8edb9cfd",
       "range": {
         "startLine": 549,
         "startChar": 19,
