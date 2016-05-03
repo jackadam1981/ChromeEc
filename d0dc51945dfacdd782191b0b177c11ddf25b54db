@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4df53f3c_22a9d0ee",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-05-03T03:59:07Z",
+      "side": 1,
+      "message": "Will all the NMI/delay counter stuff be added here later? Specifically all the direct hardware responses?",
+      "range": {
+        "startLine": 166,
+        "startChar": 12,
+        "endLine": 166,
+        "endChar": 27
+      },
+      "revId": "d0dc51945dfacdd782191b0b177c11ddf25b54db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
