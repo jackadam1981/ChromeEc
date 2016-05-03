@@ -31,8 +31,8 @@ const struct usb_interface_descriptor USB_IFACE_DESC(USB_IFACE_HID) =
 	.bAlternateSetting = 0,
 	.bNumEndpoints = 1,
 	.bInterfaceClass = USB_CLASS_HID,
-	.bInterfaceSubClass = USB_HID_SUBCLASS_BOOT,
-	.bInterfaceProtocol = USB_HID_PROTOCOL_KEYBOARD,
+	.bInterfaceSubClass = 0,
+	.bInterfaceProtocol = 0,
 	.iInterface = USB_STR_HID_NAME,
 };
 const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_HID, 81) =

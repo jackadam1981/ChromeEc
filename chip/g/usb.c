@@ -216,8 +216,8 @@ const struct usb_config_descriptor USB_CONF_DESC(conf) = {
 	.bNumInterfaces = USB_IFACE_COUNT,
 	.bConfigurationValue = 1,		/* Caution: hard-coded value */
 	.iConfiguration = USB_STR_VERSION,
-	.bmAttributes = 0x80,			/* bus powered */
-	.bMaxPower = 250,			/* MaxPower 500 mA */
+	.bmAttributes = 0x80,		       /* Bit 7 must be 1 (USB spec) */
+	.bMaxPower = 250,
 };
 
 const uint8_t usb_string_desc[] = {
