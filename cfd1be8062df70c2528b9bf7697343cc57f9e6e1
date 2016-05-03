@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4df53f3c_85fe6613",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-03T07:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4df53f3c_dfad5b42",
+      "range": {
+        "startLine": 760,
+        "startChar": 1,
+        "endLine": 761,
+        "endChar": 30
+      },
+      "revId": "cfd1be8062df70c2528b9bf7697343cc57f9e6e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4df53f3c_3fb7a799",
         "filename": "include/lpc.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4df53f3c_650362ff",
+        "filename": "include/lpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-03T07:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4df53f3c_3fb7a799",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 24
+      },
+      "revId": "cfd1be8062df70c2528b9bf7697343cc57f9e6e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4df53f3c_3f6c47f7",
         "filename": "power/apollolake.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-05-03T00:43:10Z",
       "side": 1,
       "message": "Slightly cleaner to just do \"return (gpio_get_level(...) \u0026\u0026 gpio_get_level(...));\"",
+      "range": {
+        "startLine": 465,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 40
+      },
+      "revId": "cfd1be8062df70c2528b9bf7697343cc57f9e6e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4df53f3c_45085e17",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-03T07:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4df53f3c_3f6c47f7",
       "range": {
         "startLine": 465,
         "startChar": 0,
