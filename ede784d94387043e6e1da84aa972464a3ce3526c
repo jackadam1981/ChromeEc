@@ -69,6 +69,30 @@
       "revId": "ede784d94387043e6e1da84aa972464a3ce3526c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d3d3fed_a551aa55",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-03T22:17:06Z",
+      "side": 1,
+      "message": "Can it be HOOK_PRIO_DEFAULT after https://chromium-review.googlesource.com/#/c/342171/ lands?",
+      "parentUuid": "4df53f3c_05125649",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 61
+      },
+      "revId": "ede784d94387043e6e1da84aa972464a3ce3526c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
