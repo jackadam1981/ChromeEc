@@ -4,8 +4,8 @@
  */
 
 #include "clock.h"
-#include "registers.h"
 #include "pmu.h"
+#include "registers.h"
 
 void clock_init(void)
 {
@@ -18,7 +18,8 @@ void clock_init(void)
 void clock_enable_module(enum module_id module, int enable)
 {
 	pmu_clock_func clock_func;
-	clock_func = (enable) ?  pmu_clock_en : pmu_clock_dis;
+
+	clock_func = (enable) ? pmu_clock_en : pmu_clock_dis;
 
 	switch (module) {
 	case MODULE_UART:
@@ -54,5 +55,4 @@ void clock_enable_module(enum module_id module, int enable)
 	default:
 		break;
 	}
-	return;
 }

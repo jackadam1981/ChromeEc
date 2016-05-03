@@ -5,6 +5,7 @@
 
 #include "common.h"
 #include "debug_printf.h"
+#include "init_chip.h"
 #include "printf.h"
 #include "registers.h"
 #include "setup.h"
