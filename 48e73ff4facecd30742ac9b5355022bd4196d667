@@ -46,6 +46,30 @@
       "revId": "48e73ff4facecd30742ac9b5355022bd4196d667",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d67630f_d8a1cda7",
+        "filename": "board/banon/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-03T18:35:21Z",
+      "side": 1,
+      "message": "Let\u0027s leave out the retry. It can have unintended consequences, eg. if the sensor is broken or missing.",
+      "parentUuid": "4df53f3c_828e5c35",
+      "range": {
+        "startLine": 104,
+        "startChar": 17,
+        "endLine": 104,
+        "endChar": 28
+      },
+      "revId": "48e73ff4facecd30742ac9b5355022bd4196d667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
