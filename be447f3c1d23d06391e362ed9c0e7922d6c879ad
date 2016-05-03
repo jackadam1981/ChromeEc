@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4df53f3c_9fc11342",
+        "filename": "chip/npcx/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-03T00:30:34Z",
+      "side": 1,
+      "message": "We should delete these calls and simply call spi_enable(port, 0) for each port used in our spi_devices table.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 6
+      },
+      "revId": "be447f3c1d23d06391e362ed9c0e7922d6c879ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
