@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4df53f3c_45ff3e77",
+        "filename": "power/rk3399.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2016-05-03T05:51:34Z",
+      "side": 1,
+      "message": "Go ahead and enable GPIO_USB_A_CHARGE_EN at the same time.",
+      "revId": "ecf936c8fe1dddfd632eb5f54cea3395e3638703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
