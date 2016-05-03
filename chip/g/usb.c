@@ -9,6 +9,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "init_chip.h"
 #include "link_defs.h"
 #include "registers.h"
 #include "system.h"
@@ -1073,6 +1074,9 @@ static void usb_reset(void)
 
 	/* Reinitialize all the endpoints */
 	usb_init_endpoints();
+
+	/* Init the clock calibrator */
+	init_sof_clock();
 }
 
 static void usb_resetdet(void)
