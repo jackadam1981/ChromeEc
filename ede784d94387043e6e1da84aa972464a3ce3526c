@@ -45,6 +45,30 @@
       "revId": "ede784d94387043e6e1da84aa972464a3ce3526c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4df53f3c_05125649",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-05-03T08:00:35Z",
+      "side": 1,
+      "message": "[0.017526 Board init] \u003c-- DEFAULT \n[0.018677 spi_init] \u003c-- DEFAULT\n[0.026801 sensor_init] \u003c-- DEFAULT + 1\n\ninit code seems to be called before enabling CTL1_SPIEN setting. solutino seems \n1. Make spi_init as PRIO_DEFALT -1\n2. Make spi_init as PRIO_INIT_CHIPSET or something\n3. Caching enable bit, and enable it on spi_init again\n\nI did not see registers but 1,2 is working.",
+      "parentUuid": "4df53f3c_5f2f0be6",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 61
+      },
+      "revId": "ede784d94387043e6e1da84aa972464a3ce3526c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
