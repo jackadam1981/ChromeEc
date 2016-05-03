@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4df53f3c_1f5bc31e",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-03T00:55:54Z",
+      "side": 1,
+      "message": "Bit 7 never was commented. Bit 6 is \"self powered\". The USB spec says bit 7 must be 1 for historical reasons.",
+      "parentUuid": "4df53f3c_bfaa9726",
+      "range": {
+        "startLine": 221,
+        "startChar": 33,
+        "endLine": 221,
+        "endChar": 38
+      },
+      "revId": "fff66163eeacf34984d7d81fc98ce8e4a301415d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4df53f3c_7f62cf08",
         "filename": "chip/g/usb.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-03T00:49:30Z",
       "side": 1,
       "message": "Does 250 really mean 500 mA or is this comment stale?",
+      "range": {
+        "startLine": 222,
+        "startChar": 33,
+        "endLine": 222,
+        "endChar": 36
+      },
+      "revId": "fff66163eeacf34984d7d81fc98ce8e4a301415d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4df53f3c_7f752f88",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-03T00:55:54Z",
+      "side": 1,
+      "message": "This comment was copied verbatim from the stm32 driver, where it\u0027s also mismatched. 250 should be way more than is needed, right?",
+      "parentUuid": "4df53f3c_7f62cf08",
       "range": {
         "startLine": 222,
         "startChar": 33,
