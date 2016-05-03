@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4df53f3c_bfaa9726",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-05-03T00:49:30Z",
+      "side": 1,
+      "message": "comment about bit 7 got lost now?",
+      "range": {
+        "startLine": 221,
+        "startChar": 33,
+        "endLine": 221,
+        "endChar": 38
+      },
+      "revId": "fff66163eeacf34984d7d81fc98ce8e4a301415d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4df53f3c_7f62cf08",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-05-03T00:49:30Z",
+      "side": 1,
+      "message": "Does 250 really mean 500 mA or is this comment stale?",
+      "range": {
+        "startLine": 222,
+        "startChar": 33,
+        "endLine": 222,
+        "endChar": 36
+      },
+      "revId": "fff66163eeacf34984d7d81fc98ce8e4a301415d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4df53f3c_7ffe4f16",
+        "filename": "chip/g/usb_hid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-05-03T00:49:30Z",
+      "side": 1,
+      "message": "Lots of references to keyboard still, not sure how that\u0027ll interact?\n\nWhere\u0027s usage page F1D0? CrOS might look for that to decide to white-list legit power management?",
+      "range": {
+        "startLine": 63,
+        "startChar": 16,
+        "endLine": 63,
+        "endChar": 32
+      },
+      "revId": "fff66163eeacf34984d7d81fc98ce8e4a301415d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4df53f3c_bf2df799",
+        "filename": "chip/g/usb_hid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-05-03T00:49:30Z",
+      "side": 1,
+      "message": "this keyboard stuff no longer works w/o USB_HID_PROTOCOL_KEYBOARD, no?",
+      "range": {
+        "startLine": 138,
+        "startChar": 11,
+        "endLine": 138,
+        "endChar": 22
+      },
+      "revId": "fff66163eeacf34984d7d81fc98ce8e4a301415d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
