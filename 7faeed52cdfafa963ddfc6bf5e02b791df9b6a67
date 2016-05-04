@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4da53fc6_7fcb6f63",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-04T20:41:39Z",
+      "side": 1,
+      "message": "I added a HACK / TODO. We\u0027ll need to make this P1 again ASAP, otherwise we\u0027ll run into interrupt preemption bugs.",
+      "parentUuid": "4d3d3fed_d96bf30c",
+      "revId": "7faeed52cdfafa963ddfc6bf5e02b791df9b6a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d3d3fed_d4e57a1c",
         "filename": "chip/npcx/shi.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2016-05-04T05:23:01Z",
       "side": 1,
       "message": "\"+\" symbol should be removed",
+      "revId": "7faeed52cdfafa963ddfc6bf5e02b791df9b6a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8e4b42_34a5b8c6",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-04T20:41:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d3d3fed_d4e57a1c",
       "revId": "7faeed52cdfafa963ddfc6bf5e02b791df9b6a67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
