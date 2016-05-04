@@ -98,8 +98,12 @@ int spi_image_load(uint32_t offset)
 	BUILD_ASSERT(CONFIG_RO_SIZE == CONFIG_RW_SIZE);
 	memset((void *)buf, 0xFF, (CONFIG_RO_SIZE - 4));
 
-	for (i = 0; i < CONFIG_RO_SIZE; i += SPI_CHUNK_SIZE)
+	for (i = 0; i < CONFIG_RO_SIZE; i += SPI_CHUNK_SIZE) {
 		spi_flash_readloc(&buf[i], offset + i, SPI_CHUNK_SIZE);
+#ifdef CONFIG_WATCHDOG
+		MEC1322_WDG_KICK = 1;
+#endif /* defined(CONFIG_WATCHDOG) */
+	}
 
 	return 0;
 
