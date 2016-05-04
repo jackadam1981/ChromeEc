@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d3d3fed_7ea3a860",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-04T16:28:35Z",
+      "side": 1,
+      "message": "Add the line\n\nCQ-DEPEND\u003dCL:341294\n\nThat will cause the commit bot to push both changes together.",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "73cfb86911ed475675db456ca2ef15613198c595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
