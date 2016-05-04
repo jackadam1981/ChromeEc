@@ -293,16 +293,24 @@ int encode_word(int port, int off, uint32_t val32)
 
 /* prepare a 4b/5b-encoded PD message to send */
 int prepare_message(int port, uint16_t header, uint8_t cnt,
-		   const uint32_t *data)
+		   const uint32_t *data, int sop_prime)
 {
 	int off, i;
 	/* 64-bit preamble */
 	off = pd_write_preamble(port);
-	/* Start Of Packet: 3x Sync-1 + 1x Sync-2 */
-	off = pd_write_sym(port, off, BMC(PD_SYNC1));
-	off = pd_write_sym(port, off, BMC(PD_SYNC1));
-	off = pd_write_sym(port, off, BMC(PD_SYNC1));
-	off = pd_write_sym(port, off, BMC(PD_SYNC2));
+	if (sop_prime) {
+		/* SOP': 2x Sync-1 + 2x Sync-3 */
+		off = pd_write_sym(port, off, BMC(PD_SYNC1));
+		off = pd_write_sym(port, off, BMC(PD_SYNC1));
+		off = pd_write_sym(port, off, BMC(PD_SYNC3));
+		off = pd_write_sym(port, off, BMC(PD_SYNC3));
+	} else {
+		/* Start Of Packet: 3x Sync-1 + 1x Sync-2 */
+		off = pd_write_sym(port, off, BMC(PD_SYNC1));
+		off = pd_write_sym(port, off, BMC(PD_SYNC1));
+		off = pd_write_sym(port, off, BMC(PD_SYNC1));
+		off = pd_write_sym(port, off, BMC(PD_SYNC2));
+	}
 	/* header */
 	off = encode_short(port, off, header);
 
@@ -367,7 +375,7 @@ static int send_validate_message(int port, uint16_t header,
 	for (r = 0; r <= PD_RETRY_COUNT; r++) {
 		int bit_len, head;
 		/* write the encoded packet in the transmission buffer */
-		bit_len = prepare_message(port, header, cnt, data);
+		bit_len = prepare_message(port, header, cnt, data, 0);
 		/* Transmit the packet */
 		if (pd_start_tx(port, pd[port].polarity, bit_len) < 0) {
 			/*
@@ -438,7 +446,7 @@ static void send_goodcrc(int port, int id)
 {
 	uint16_t header = PD_HEADER(PD_CTRL_GOOD_CRC, pd[port].power_role,
 			pd[port].data_role, id, 0);
-	int bit_len = prepare_message(port, header, 0, NULL);
+	int bit_len = prepare_message(port, header, 0, NULL, 0);
 
 	if (pd_start_tx(port, pd[port].polarity, bit_len) < 0)
 		/* another packet recvd before we could send goodCRC */
