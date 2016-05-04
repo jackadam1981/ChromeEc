@@ -16,6 +16,24 @@
       "revId": "df74854c4242904e86fb7ee86aab1c9612cca31b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4da53fc6_7f212f3e",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-04T21:37:28Z",
+      "side": 1,
+      "message": "It\u0027s off by one. There are 16 ARM exception vectors, then the Cr50\u0027s SoC defines hardware interrupts 0..N, and then GC_INTERRUPTS_COUNT is defined as N + 16.\n\nBut there are actually N + 17 interrupts, because the interrupt numbering starts with 0. \n\n(GC_INTERRUPTS_COUNT + 1) - 16 \u003d\u003d GC_INTERRUPTS_COUNT - 15, which is the value that CONFIG_IRQ_COUNT should have.",
+      "parentUuid": "4d3d3fed_54fe8a15",
+      "revId": "df74854c4242904e86fb7ee86aab1c9612cca31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
