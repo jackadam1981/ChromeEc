@@ -89,11 +89,12 @@ DECLARE_HOOK(HOOK_INIT, twinkie_init, HOOK_PRIO_DEFAULT);
 /* ------ Helper functions ------ */
 
 static int send_message(int polarity, uint16_t header,
-			uint8_t cnt, const uint32_t *data)
+			uint8_t cnt, const uint32_t *data,
+			int sop_prime)
 {
 	int bit_len;
 
-	bit_len = prepare_message(0, header, cnt, data);
+	bit_len = prepare_message(0, header, cnt, data, sop_prime);
 	/* Transmit the packet */
 	pd_start_tx(0, polarity, bit_len);
 	pd_tx_done(0, polarity);
@@ -159,7 +160,7 @@ static void fsm_send(uint32_t w)
 	if (idx > INJ_CMD_COUNT)
 		return;
 
-	send_message(inj_polarity, header, cnt, inj_cmds + idx);
+	send_message(inj_polarity, header, cnt, inj_cmds + idx, 0);
 }
 
 static void fsm_wave(uint32_t w)
@@ -373,7 +374,8 @@ static int cmd_send(int argc, char **argv)
 		if (hex8tou32(argv[i+2], data + i))
 			return EC_ERROR_INVAL;
 
-	bit_len = send_message(pol, header, cnt, data);
+	bit_len = send_message(pol, header, cnt, data,
+	                       !strcasecmp(argv[-1], "sendprime"));
 	ccprintf("Sent CC%d %04x + %d = %d\n", pol + 1, header, cnt, bit_len);
 
 	return EC_SUCCESS;
@@ -543,6 +545,8 @@ static int cmd_trace(int argc, char **argv)
 static int command_tw(int argc, char **argv)
 {
 	if (!strcasecmp(argv[1], "send"))
+		return cmd_send(argc - 2, argv + 2);
+	else if (!strcasecmp(argv[1], "sendprime"))
 		return cmd_send(argc - 2, argv + 2);
 	else if (!strcasecmp(argv[1], "fsm"))
 		return cmd_fsm(argc - 2, argv + 2);
