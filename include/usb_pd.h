@@ -1318,10 +1318,11 @@ int encode_word(int port, int off, uint32_t val32);
  * @param header PD packet header
  * @param cnt number of payload words
  * @param data payload content
+ * @param sop_prime use SOP' rather than SOP as start of packet
  * @return length of the message in bits.
  */
 int prepare_message(int port, uint16_t header, uint8_t cnt,
-		    const uint32_t *data);
+		    const uint32_t *data, int sop_prime);
 
 /**
  * Dump the current PD packet on the console for debug.
