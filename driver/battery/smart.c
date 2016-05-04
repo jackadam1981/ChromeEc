@@ -70,9 +70,26 @@ test_mockable int sb_write(int cmd, int param)
 #endif
 }
 
+#ifdef CONFIG_BATTERY_VALIDATE_STRINGS
+static int is_string_validate(uint8_t *data)
+{
+	while (*data) {
+		if (*data != 0xFF)
+			data++;
+		else
+			return EC_ERROR_UNKNOWN;
+	}
+
+	return EC_SUCCESS;
+}
+#endif
+
 int sb_read_string(int port, int slave_addr, int offset, uint8_t *data,
 	int len)
 {
+#ifdef CONFIG_BATTERY_VALIDATE_STRINGS
+	int rv = 0;
+#endif
 #ifdef CONFIG_BATTERY_CUT_OFF
 	/*
 	 * Some batteries would wake up after cut-off if we talk to it.
@@ -80,11 +97,22 @@ int sb_read_string(int port, int slave_addr, int offset, uint8_t *data,
 	if (battery_is_cut_off())
 		return EC_RES_ACCESS_DENIED;
 #endif
+#ifdef CONFIG_BATTERY_VALIDATE_STRINGS
+#ifdef CONFIG_SMBUS
+	rv |= smbus_read_string(port, slave_addr, offset, data, len);
+#else
+	rv |= i2c_read_string(port, slave_addr, offset, data, len);
+#endif
+	rv |= is_string_validate(data);
+
+	return rv;
+#else
 #ifdef CONFIG_SMBUS
 	return smbus_read_string(port, slave_addr, offset, data, len);
 #else
 	return i2c_read_string(port, slave_addr, offset, data, len);
 #endif
+#endif /* CONFIG_BATTERY_VALIDATE_STRINGS */
 }
 
 int battery_get_mode(int *mode)
