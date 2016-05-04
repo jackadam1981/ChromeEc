@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d3d3fed_d96bf30c",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-05-04T05:23:01Z",
+      "side": 1,
+      "message": "Is it better to use CONFIG_HOSTCMD_SPS to determine putting CS\u0027s interrupt\u0027s priority to highest?\n\n#ifdef CONFIG_HOSTCMD_SPS\nDECLARE_IRQ(NPCX_IRQ_WKINTF_1,      __gpio_wk1f_interrupt, 0);\n#else\nDECLARE_IRQ(NPCX_IRQ_WKINTF_1,      __gpio_wk1f_interrupt, 1);\n#endif",
+      "revId": "7faeed52cdfafa963ddfc6bf5e02b791df9b6a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d3d3fed_d4e57a1c",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-05-04T05:23:01Z",
+      "side": 1,
+      "message": "\"+\" symbol should be removed",
+      "revId": "7faeed52cdfafa963ddfc6bf5e02b791df9b6a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
