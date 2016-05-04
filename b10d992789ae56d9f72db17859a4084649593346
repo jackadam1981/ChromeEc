@@ -22,6 +22,30 @@
       "revId": "b10d992789ae56d9f72db17859a4084649593346",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d86572c_a9795d20",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-04T17:49:15Z",
+      "side": 1,
+      "message": "The change applies cleanly to TOT so our tools should be able to handle it automatically.",
+      "parentUuid": "4d3d3fed_b4cb9680",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 66
+      },
+      "revId": "b10d992789ae56d9f72db17859a4084649593346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
