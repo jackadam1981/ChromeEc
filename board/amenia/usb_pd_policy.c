@@ -8,9 +8,12 @@
 #include "common.h"
 #include "console.h"
 #include "driver/charger/bd99955.h"
+#include "driver/tcpm/anx74xx.h"
+#include "driver/tcpm/ps8751.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "i2c.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -18,6 +21,7 @@
 #include "util.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_altmode_dp.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -109,8 +113,43 @@ int pd_snk_is_vbus_provided(int port)
 				      GPIO_USB_C0_VBUS_WAKE_L);
 }
 
+#define ANX7428_VER	0x10
+#define PS8751_VER	0x1B
+
 int pd_board_checks(void)
 {
+	static int p0_ver = 0xFF;
+	static int p1_ver = 0xFF;
+	int port = TASK_ID_TO_PD_PORT(task_get_current());
+
+	if (port == 0) {
+	  if (p0_ver == 0xFF) {
+	    if (i2c_read8(I2C_PORT_TCPC0, 0x50, 0x44, &p0_ver))
+	      CPRINTS("ERR - Cannot get Analogix ANX7428 FW Version");
+	    else {
+	      CPRINTS("Analogix ANX7428 FW Version: 0x%02X", p0_ver);
+	      if ((p0_ver == 0xE0) || (p0_ver < ANX7428_VER)) {
+	        CPRINTS("ERR - Outdated Analogix ANX7428 FW");
+	        CPRINTS("ERR - Expected Version 0x%02X or newer", ANX7428_VER);
+	      }
+	    }
+	  }
+	}
+
+	if (port == 1) {
+	  if (p1_ver == 0xFF) {
+	    if (i2c_read8(I2C_PORT_TCPC1, 0x10, 0x90, &p1_ver))
+	      CPRINTS("ERR - Cannot get Parade PS8751 FW Version");
+	    else {
+	      CPRINTS("Parade PS8751 FW Version: 0x%02X", p1_ver);
+	      if (p1_ver < PS8751_VER) {
+	        CPRINTS("ERR - Outdated Parade PS8751 FW");
+	        CPRINTS("ERR - Expected Version 0x%02X or newer", PS8751_VER);
+	      }
+	    }
+	  }
+	}
+
 	return EC_SUCCESS;
 }
 
@@ -228,11 +267,15 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 static int dp_flags[CONFIG_USB_PD_PORT_COUNT];
+static uint32_t dp_status[CONFIG_USB_PD_PORT_COUNT];
 
 static void svdm_safe_dp_mode(int port)
 {
 	/* make DP interface safe until configure */
 	dp_flags[port] = 0;
+	dp_status[port] = 0;
+	usb_mux_set(port, TYPEC_MUX_NONE,
+		    USB_SWITCH_CONNECT, pd_get_polarity(port));
 	/* board_set_usb_mux(port, TYPEC_MUX_NONE, pd_get_polarity(port)); */
 }
 
@@ -267,12 +310,17 @@ static int svdm_dp_status(int port, uint32_t *payload)
 static int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
+
+	usb_mux_set(port, TYPEC_MUX_DP,
+		    USB_SWITCH_CONNECT, pd_get_polarity(port));
+
 	/* board_set_usb_mux(port, TYPEC_MUX_DP, pd_get_polarity(port)); */
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
 			 CMD_DP_CONFIG | VDO_OPOS(opos));
 	payload[1] = VDO_DP_CFG(MODE_DP_PIN_E, /* pin mode */
 				1,             /* DPv1.3 signaling */
 				2);            /* UFP connected */
+
 	return 2;
 };
 
@@ -281,10 +329,30 @@ static void svdm_dp_post_config(int port)
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
+	if (port == 0)
+		anx74xx_tcpc_update_hpd_status(port, 1, 0);
+	else if (port == 1)
+		ps8751_tcpc_update_hpd_status(port, 1, 0);
 }
 
 static int svdm_dp_attention(int port, uint32_t *payload)
 {
+	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
+	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
+
+	dp_status[port] = payload[1];
+
+	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
+		if (lvl)
+			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
+		return 1;
+	}
+
+	if (port == 0)
+		anx74xx_tcpc_update_hpd_status(port, lvl, irq);
+	else if (port == 1)
+		ps8751_tcpc_update_hpd_status(port, lvl, irq);
+
 	/* ack */
 	return 1;
 }
@@ -292,7 +360,10 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 static void svdm_exit_dp_mode(int port)
 {
 	svdm_safe_dp_mode(port);
-	/* gpio_set_level(PORT_TO_HPD(port), 0); */
+	if (port == 0)
+		anx74xx_tcpc_clear_hpd_status(port);
+	else if (port == 1)
+		ps8751_tcpc_clear_hpd_status(port);
 }
 
 static int svdm_enter_gfu_mode(int port, uint32_t mode_caps)
