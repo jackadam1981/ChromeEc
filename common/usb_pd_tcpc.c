@@ -360,7 +360,7 @@ static int send_hard_reset(int port)
 }
 
 static int send_validate_message(int port, uint16_t header,
-				 const uint32_t *data)
+				 const uint32_t *data, int sop_prime)
 {
 	int r;
 	static uint32_t payload[7];
@@ -371,7 +371,7 @@ static int send_validate_message(int port, uint16_t header,
 	for (r = 0; r <= PD_RETRY_COUNT; r++) {
 		int bit_len, head;
 		/* write the encoded packet in the transmission buffer */
-		bit_len = prepare_message(port, header, cnt, data, 0);
+		bit_len = prepare_message(port, header, cnt, data, sop_prime);
 		/* Transmit the packet */
 		if (pd_start_tx(port, pd[port].polarity, bit_len) < 0) {
 			/*
@@ -641,8 +641,7 @@ int pd_analyze_rx(int port, uint32_t *payload)
 		if (val == PD_SOP) {
 			break;
 		} else if (val == PD_SOP_PRIME) {
-			CPRINTF("SOP'\n");
-			return PD_RX_ERR_UNSUPPORTED_SOP;
+			break;
 		} else if (val == PD_SOP_PRIME_PRIME) {
 			CPRINTF("SOP''\n");
 			return PD_RX_ERR_UNSUPPORTED_SOP;
@@ -737,7 +736,10 @@ static int cc_voltage_to_status(int port, int cc_volt)
 	}
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	else if (pd[port].cc_pull == TYPEC_CC_RD) {
-		if (cc_volt >= TYPE_C_SRC_3000_THRESHOLD)
+		if (cc_volt >= 3*TYPE_C_SRC_3000_THRESHOLD/2)
+			/* HACK for Twinkie: that's VCONN, ignore it */
+			return TYPEC_CC_VOLT_OPEN;
+		else if (cc_volt >= TYPE_C_SRC_3000_THRESHOLD)
 			return TYPEC_CC_VOLT_SNK_3_0;
 		else if (cc_volt >= TYPE_C_SRC_1500_THRESHOLD)
 			return TYPEC_CC_VOLT_SNK_1_5;
@@ -798,7 +800,12 @@ int tcpc_run(int port, int evt)
 		case TCPC_TX_SOP:
 			res = send_validate_message(port,
 					pd[port].tx_head,
-					pd[port].tx_data);
+					pd[port].tx_data, 0);
+			break;
+		case TCPC_TX_SOP_PRIME:
+			res = send_validate_message(port,
+					pd[port].tx_head,
+					pd[port].tx_data, 1);
 			break;
 		case TCPC_TX_BIST_MODE_2:
 			bist_mode_2_tx(port);
