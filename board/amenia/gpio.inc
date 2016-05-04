@@ -108,7 +108,7 @@ GPIO(USB_C1_RST_L,           PIN(C,  7), GPIO_OUT_LOW)                    /* A62
 
 /* Other EC Pins */
 GPIO(ENTERING_RW,            PIN(6,  0), GPIO_OUT_LOW)                    /* A30 - PWM7 for EC_ENTERING_RW */
-GPIO(BAT_PRESENT_L,          PIN(C,  3), GPIO_INPUT)                      /* A60 - PWM0 for BC_BATPRES_N */
+GPIO(BAT_PRESENT_L,          PIN(C,  3), GPIO_INPUT | GPIO_PULL_UP)       /* A60 - PWM0 for BC_BATPRES_N */
 GPIO(PLATFORM_EC_PROCHOT,    PIN(3,  6), GPIO_INPUT)                      /* B19 - GPIO36 for SOURCE_EC_PROCHOT_R */
 GPIO(THERM_OVERTEMP_L,       PIN(8,  0), GPIO_INPUT | GPIO_PULL_UP)       /* A39 - PWM3 for THERM_OVERTEMP_N */
 GPIO(USB2_OTG_ID,            PIN(7,  5), GPIO_ODR_LOW)                    /* B40 - 32KHZ_OUT for USB2_OTG_ID */
