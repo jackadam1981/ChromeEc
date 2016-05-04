@@ -42,7 +42,7 @@ void ccd_set_mode(enum ccd_mode new_mode)
 
 	/*
 	 * The forwarding of the local console over USB is read-only
-	*  if we are not in the fully enabled mode.
+	 * if we are not in the fully enabled mode.
 	 */
 	usb_console_enable(new_mode != CCD_MODE_DISABLED,
 			   new_mode != CCD_MODE_ENABLED);
@@ -51,6 +51,12 @@ void ccd_set_mode(enum ccd_mode new_mode)
 	usb_spi_enable(&ccd_usb_spi, new_mode == CCD_MODE_ENABLED);
 #endif
 
+	/*
+	 * If the USB controller can connect to different PHY, always call
+	 * usb_init, so it can connect to the other PHY even if CCD is disabled
+	 */
+#if !defined(CONFIG_USB_SELECT_PHY)
 	if (new_mode != CCD_MODE_DISABLED)
+#endif
 		usb_init();
 }
