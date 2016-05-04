@@ -114,6 +114,27 @@ int flash_physical_protect_now(int all)
 	return EC_SUCCESS;			/* yeah, I did it. */
 }
 
+/*
+ * Function to enable/disable brownout detect. During write operations flash
+ * is more sensitive to voltage drops than the rest of the chip, so this is
+ * enabled only while flash write is in progress.
+ */
+static void set_flash_brownout_detect(int enable)
+{
+	/*
+	 * After enabling the fast brownout circuit, need to wait a bit to
+	 * make sure it has fully ramped up and spitting out a correct value.
+	 */
+
+	if (enable) {
+		GWRITE_FIELD(PMU, SW_PDB, FST_BRNOUT_PWR, 1);
+		usleep(5);
+		GWRITE_FIELD(PMU, SW_PDB, FST_BRNOUT, 1);
+	} else {
+		GWRITE_FIELD(PMU, SW_PDB, FST_BRNOUT, 0);
+		GWRITE_FIELD(PMU, SW_PDB, FST_BRNOUT_PWR, 0);
+	}
+}
 
 enum flash_op {
 	OP_ERASE_BLOCK,
@@ -187,7 +208,8 @@ static int do_flash_op(enum flash_op op, int byte_offset, int words)
 	 */
 	extra_prog_pulse = 0;
 	for (retry_count = 0; retry_count < max_attempts; retry_count++) {
-		/* Kick it off */
+		/* Enable flash brownout detection and kick off the write. */
+		set_flash_brownout_detect(1);
 		GWRITE(FLASH, FSH_PE_EN, 0xb11924e1);
 		*fsh_pe_control = opcode;
 
@@ -200,6 +222,9 @@ static int do_flash_op(enum flash_op op, int byte_offset, int words)
 				break;
 			usleep(timedelay_us);
 		}
+
+		/* Done writing, disable flash brownout detection. */
+		set_flash_brownout_detect(0);
 
 		/* Timed out waiting for control register to clear */
 		if (tmp) {
