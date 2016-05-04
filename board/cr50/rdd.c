@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "case_closed_debug.h"
 #include "console.h"
 #include "gpio.h"
 #include "rdd.h"
@@ -28,6 +29,8 @@ void rdd_attached(void)
 
 	/* Select the CCD PHY */
 	usb_select_phy(USB_SEL_PHY1);
+
+	ccd_set_mode(CCD_MODE_ENABLED);
 }
 
 void rdd_detached(void)
@@ -40,26 +43,44 @@ void rdd_detached(void)
 
 	/* Select the AP PHY */
 	usb_select_phy(USB_SEL_PHY0);
+
+	ccd_set_mode(CCD_MODE_DISABLED);
 }
 
-static int command_uart(int argc, char **argv)
+static int command_ccd(int argc, char **argv)
 {
-	static int enabled;
+	int enable;
 
 	if (argc > 1) {
-		if (!strcasecmp("enable", argv[1])) {
-			enabled = 1;
-			usart_tx_connect();
-		} else if (!strcasecmp("disable", argv[1])) {
-			enabled = 0;
-			usart_tx_disconnect();
-		}
+		if (!strcasecmp("enable", argv[argc - 1]))
+			enable = 1;
+		else if (!strcasecmp("disable", argv[argc - 1]))
+			enable = 0;
+
+		if (!strcasecmp("uart", argv[1])) {
+			if (enable)
+				usart_tx_connect();
+			else
+				usart_tx_disconnect();
+
+			ccprintf("UART %s\n", GREAD(PINMUX, DIOA7_SEL) ==
+				GC_PINMUX_DIOA3_SEL_DEFAULT ?
+				"disabled" : "enabled");
+		} else if (argc == 2) {
+			if (enable)
+				rdd_attached();
+			else
+				rdd_detached();
+		} else
+			return EC_ERROR_PARAM1;
 	}
 
-	ccprintf("UART %s\n", enabled ? "enabled" : "disabled");
+	ccprintf("ccd %s\n", usb_get_phy() == USB_SEL_PHY1 ? "enabled" :
+		"disabled");
+
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(uart, command_uart,
-	"[enable|disable]",
-	"Get/set the UART TX connection state",
+DECLARE_CONSOLE_COMMAND(ccd, command_ccd,
+	"[uart] [enable|disable]",
+	"Get/set the case closed debug state",
 	NULL);
