@@ -51,6 +51,8 @@ void ccd_set_mode(enum ccd_mode new_mode)
 	usb_spi_enable(&ccd_usb_spi, new_mode == CCD_MODE_ENABLED);
 #endif
 
+#if !defined(CONFIG_USB_SELECT_PHY)
 	if (new_mode != CCD_MODE_DISABLED)
+#endif
 		usb_init();
 }
