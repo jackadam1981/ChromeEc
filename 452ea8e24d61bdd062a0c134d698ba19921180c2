@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4da53fc6_8885d6bf",
+        "filename": "board/allspark-g/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-05-05T16:07:29Z",
+      "side": 1,
+      "message": "should be a symlink not a copy of the file",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 1
+      },
+      "revId": "452ea8e24d61bdd062a0c134d698ba19921180c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4da53fc6_08c2e6fa",
+        "filename": "board/allspark-g/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-05-05T16:07:29Z",
+      "side": 1,
+      "message": "that\u0027s only half-true ?",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 14
+      },
+      "revId": "452ea8e24d61bdd062a0c134d698ba19921180c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4da53fc6_a8b1baa2",
+        "filename": "board/allspark-g/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-05-05T16:07:29Z",
+      "side": 1,
+      "message": "please put the right year in the copyright",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 67
+      },
+      "revId": "452ea8e24d61bdd062a0c134d698ba19921180c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4da53fc6_88aef63b",
+        "filename": "driver/rtk_switch/qos.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-05-05T16:07:29Z",
+      "side": 1,
+      "message": "NACK this license is not compatible with this codebase",
+      "range": {
+        "startLine": 2,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "452ea8e24d61bdd062a0c134d698ba19921180c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
