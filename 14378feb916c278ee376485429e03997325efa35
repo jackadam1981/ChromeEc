@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4da53fc6_4e4a3b46",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-05T01:59:25Z",
+      "side": 1,
+      "message": "This naming is kind of strange, how about \"validate_string\"?",
+      "range": {
+        "startLine": 74,
+        "startChar": 11,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "14378feb916c278ee376485429e03997325efa35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4da53fc6_ae5ae717",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-05T01:59:25Z",
+      "side": 1,
+      "message": "This is mostly fine, just re-arrange it a bit -- Define \"int rv\" unconditionally, then assign it to the return value of smbus_read_string / i2c_read_string. Then, add a new ifdef ...VALIDATE_STRINGS, if rv \u003d\u003d EC_SUCCESS, call validate_string(). Then unconditionally return rv.\n\nThis way, you only need to add one ifdef, and it\u0027s not nested.",
+      "revId": "14378feb916c278ee376485429e03997325efa35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
