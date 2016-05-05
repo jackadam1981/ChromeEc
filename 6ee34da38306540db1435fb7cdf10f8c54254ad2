@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d4347e3_2cf35bb1",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-05T22:38:35Z",
+      "side": 1,
+      "message": "More readable to use #ifdef and swap the clauses.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 6
+      },
+      "revId": "6ee34da38306540db1435fb7cdf10f8c54254ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
