@@ -95,3 +95,17 @@ driver-$(CONFIG_SB_FIRMWARE_UPDATE)+=battery/sb_fw_update.o
 
 # video converters
 driver-$(CONFIG_MCDP28X0)+=mcdp28x0.o
+
+# Realtek switch
+driver-$(CONFIG_RTK_SWITCH)+=rtk_switch/rate.o
+driver-$(CONFIG_RTK_SWITCH)+=rtk_switch/rtk_switch.o
+driver-$(CONFIG_RTK_SWITCH)+=rtk_switch/rtl8367c_asicdrv.o
+driver-$(CONFIG_RTK_SWITCH)+=rtk_switch/rtl8367c_asicdrv_inbwctrl.o
+driver-$(CONFIG_RTK_SWITCH)+=rtk_switch/rtl8367c_asicdrv_lut.o
+driver-$(CONFIG_RTK_SWITCH)+=rtk_switch/rtl8367c_asicdrv_mirror.o
+driver-$(CONFIG_RTK_SWITCH)+=rtk_switch/rtl8367c_asicdrv_phy.o
+driver-$(CONFIG_RTK_SWITCH)+=rtk_switch/rtl8367c_asicdrv_rma.o
+driver-$(CONFIG_RTK_SWITCH)+=rtk_switch/rtl8367c_asicdrv_scheduling.o
+driver-$(CONFIG_RTK_SWITCH)+=rtk_switch/rtl8367c_asicdrv_vlan.o
+driver-$(CONFIG_RTK_SWITCH)+=rtk_switch/smi.o
+driver-$(CONFIG_RTK_SWITCH)+=rtk_switch/vlan.o
