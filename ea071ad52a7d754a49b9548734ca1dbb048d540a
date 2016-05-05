@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4da53fc6_79ab87e6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3181,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-05T05:54:24Z",
+      "side": 1,
+      "message": "I don\u0027t know if it\u0027s better to add it here (possibly slightly confusing), or do it in a new command (along with the \"prevent EC from talking to PD chip\" command).",
+      "revId": "ea071ad52a7d754a49b9548734ca1dbb048d540a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
