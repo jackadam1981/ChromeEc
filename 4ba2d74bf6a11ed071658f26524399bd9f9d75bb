@@ -70,6 +70,30 @@
       "revId": "4ba2d74bf6a11ed071658f26524399bd9f9d75bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4da53fc6_14832269",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-05-05T13:29:44Z",
+      "side": 1,
+      "message": "got it. \nthere is a bug, in static int tcpci_tcpm_get_message(int port, uint32_t *payload, int *head) in tcpci.c: \nif (rv \u003d\u003d EC_SUCCESS \u0026\u0026 cnt \u003e 0) {\n\t\ttcpc_lock(port, 1);\n\t\trv \u003d tcpc_xfer(port,(uint8_t *)\u0026reg, 1, (uint8_t *)payload, cnt, I2C_XFER_SINGLE);\n\t\ttcpc_lock(port, 0);\n\t}\nit should be \nif (rv \u003d\u003d EC_SUCCESS \u0026\u0026 cnt \u003e 3) {\n\t\ttcpc_lock(port, 1);\n\t\trv \u003d tcpc_xfer(port,(uint8_t *)\u0026reg, 1, (uint8_t *)payload, cnt -3 , I2C_XFER_SINGLE);\n\t\ttcpc_lock(port, 0);\n\t}\n\nfor according to spec: \nThe TCPM should read the first RECEIVE_BYTE_COUNT bytes in this register. This is the number of bytes in the RX_BUFFER_DATA_OBJECTS plus three\n(for the RX_BUF_FRAME_TYPE and RX_BUF_HEADER)",
+      "parentUuid": "a8594975_41bfe1e0",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "4ba2d74bf6a11ed071658f26524399bd9f9d75bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
