@@ -286,7 +286,8 @@ static void touch_screen_set_control_mode(void)
 	* usage.  If lid is open, take touchscreen out of reset so it
 	* can wake the processor.
 	*/
-	gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, lid_is_open());
+	gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, (lid_is_open() &&
+		chipset_in_state(CHIPSET_STATE_ON)));
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, touch_screen_set_control_mode, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, touch_screen_set_control_mode,
