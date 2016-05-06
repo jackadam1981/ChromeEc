@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed9993fa_7cc6b979",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-06T16:49:50Z",
+      "side": 1,
+      "message": "In fact, the task should not exist at all. No need to define this function.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 65
+      },
+      "revId": "11aaa951fb3682dcb1e6bc4186218a8eaf2fb36c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed9993fa_dc826d11",
+        "filename": "board/it83xx_evb/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-06T16:49:50Z",
+      "side": 1,
+      "message": "Checking closer, it is straightforward to define task lists based on CONFIG options.\n\n#ifdef ....\n#define CONFIG_TASK_LIST \\\n   TASK_ALWAYS(....)\n   ...\n#else\n#define CONFIG_TASK_LIST \\\n   TASK_ALWAYS(....)\n   ...\n#endif\n\nLet\u0027s do it here, and leave PD tasks out for the non-PD board.",
+      "revId": "11aaa951fb3682dcb1e6bc4186218a8eaf2fb36c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
