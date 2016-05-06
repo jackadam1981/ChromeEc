@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "0d4347e3_dc9ce46e",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-05-06T13:20:57Z",
+      "side": 1,
+      "message": "That sounds good. Found the CS descriptor from ROM defined GDT and re-used it in init.S",
+      "parentUuid": "88656498_f3142925",
+      "revId": "302f205e1f6a8ba4c64dadab65895bd6f9974cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd7567d_39643b8b",
         "filename": "core/minute-ia/init.S",
         "patchSetId": 4
