@@ -288,6 +288,7 @@ static void touch_screen_set_control_mode(void)
 	*/
 	gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, lid_is_open());
 }
+DECLARE_HOOK(HOOK_INIT, touch_screen_set_control_mode, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_LID_CHANGE, touch_screen_set_control_mode, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, touch_screen_set_control_mode,
 	HOOK_PRIO_DEFAULT);
