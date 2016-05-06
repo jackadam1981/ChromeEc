@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed9993fa_62b8d23a",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-06T18:10:36Z",
+      "side": 1,
+      "message": "should this struct name need to be changed to anx74xx_tcpm_usb_mux_driver also?",
+      "range": {
+        "startLine": 203,
+        "startChar": 28,
+        "endLine": 203,
+        "endChar": 47
+      },
+      "revId": "b322de9b812889f547d8be83a0d4c1908b4dc596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed9993fa_c23a8687",
+        "filename": "driver/tcpm/anx74xx.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-06T18:10:36Z",
+      "side": 1,
+      "message": "You have these in CL:329081 board.h, can we add these here instead?\n\n#define ANX74XX_REG_IRQ_POL_LOW\t\t0x00\n#define ANX74XX_REG_IRQ_POL_HIGH\t\t0x02",
+      "revId": "b322de9b812889f547d8be83a0d4c1908b4dc596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed9993fa_62bff20a",
+        "filename": "driver/tcpm/anx74xx.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-06T18:10:36Z",
+      "side": 1,
+      "message": "You have these in CL:329081 board.c, can we add these here instead along with other HPD function prototype?\n\nextern const struct tcpm_drv anx74xx_tcpm_drv;\nextern const struct usb_mux_driver anx74xx_tcpm_usb_mux_driver;",
+      "revId": "b322de9b812889f547d8be83a0d4c1908b4dc596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
