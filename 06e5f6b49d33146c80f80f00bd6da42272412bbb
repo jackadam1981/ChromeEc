@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c8c91d9e_f2168196",
+        "filename": "core/minute-ia/ec.lds.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-05-06T13:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88656498_f3fbc91d",
+      "range": {
+        "startLine": 138,
+        "startChar": 9,
+        "endLine": 138,
+        "endChar": 10
+      },
+      "revId": "06e5f6b49d33146c80f80f00bd6da42272412bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_93092d16",
         "filename": "core/minute-ia/ec.lds.S",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-26T15:55:14Z",
       "side": 1,
       "message": "trailing space",
+      "range": {
+        "startLine": 139,
+        "startChar": 18,
+        "endLine": 139,
+        "endChar": 19
+      },
+      "revId": "06e5f6b49d33146c80f80f00bd6da42272412bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8c91d9e_d20b856c",
+        "filename": "core/minute-ia/ec.lds.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-05-06T13:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88656498_93092d16",
       "range": {
         "startLine": 139,
         "startChar": 18,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c8c91d9e_b210099a",
+        "filename": "core/minute-ia/ec.lds.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-05-06T13:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88656498_b30eb119",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 22
+      },
+      "revId": "06e5f6b49d33146c80f80f00bd6da42272412bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_7308390d",
         "filename": "core/minute-ia/ec.lds.S",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2016-04-26T15:55:14Z",
       "side": 1,
       "message": "What\u0027s the 8/4 calculation? sizeof some struct?",
+      "range": {
+        "startLine": 145,
+        "startChar": 53,
+        "endLine": 145,
+        "endChar": 58
+      },
+      "revId": "06e5f6b49d33146c80f80f00bd6da42272412bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4df53f3c_a58dea8c",
+        "filename": "core/minute-ia/ec.lds.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-05-06T13:20:57Z",
+      "side": 1,
+      "message": "This section was introduced recently in commit 95858f385c35fbe6a95f0bad72ade9290b2a2d41. I copied it from cortex-m.",
+      "parentUuid": "88656498_7308390d",
       "range": {
         "startLine": 145,
         "startChar": 53,
@@ -221,6 +317,24 @@
     },
     {
       "key": {
+        "uuid": "4df53f3c_e5d89290",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-05-06T13:20:57Z",
+      "side": 1,
+      "message": "Sorry that was an error on my comment, there is in fact a \u0027.\u0027 in the code but I missed it in my comment above.",
+      "parentUuid": "88656498_735a79fd",
+      "revId": "06e5f6b49d33146c80f80f00bd6da42272412bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_337f2137",
         "filename": "core/minute-ia/irq_handler.h",
         "patchSetId": 5
@@ -336,6 +450,30 @@
     },
     {
       "key": {
+        "uuid": "0d4347e3_0983ec68",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-05-06T13:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88656498_b328f11b",
+      "range": {
+        "startLine": 21,
+        "startChar": 55,
+        "endLine": 21,
+        "endChar": 56
+      },
+      "revId": "06e5f6b49d33146c80f80f00bd6da42272412bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_f30e69c4",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 5
@@ -347,6 +485,30 @@
       "writtenOn": "2016-04-26T15:55:14Z",
       "side": 1,
       "message": "trailing space",
+      "range": {
+        "startLine": 57,
+        "startChar": 45,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "06e5f6b49d33146c80f80f00bd6da42272412bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d4347e3_29882880",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-05-06T13:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88656498_f30e69c4",
       "range": {
         "startLine": 57,
         "startChar": 45,
@@ -382,6 +544,30 @@
     },
     {
       "key": {
+        "uuid": "0d4347e3_a97af811",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-05-06T13:20:57Z",
+      "side": 1,
+      "message": "Documented the parameters for the function.",
+      "parentUuid": "88656498_b3d1d14b",
+      "range": {
+        "startLine": 68,
+        "startChar": 12,
+        "endLine": 68,
+        "endChar": 45
+      },
+      "revId": "06e5f6b49d33146c80f80f00bd6da42272412bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_33de4156",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 5
@@ -405,6 +591,30 @@
     },
     {
       "key": {
+        "uuid": "0d4347e3_4977b42b",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-05-06T13:20:57Z",
+      "side": 1,
+      "message": "Yes!",
+      "parentUuid": "88656498_33de4156",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 3
+      },
+      "revId": "06e5f6b49d33146c80f80f00bd6da42272412bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88656498_f3e74924",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 5
@@ -416,6 +626,30 @@
       "writtenOn": "2016-04-26T15:55:14Z",
       "side": 1,
       "message": "trailing white space",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 6
+      },
+      "revId": "06e5f6b49d33146c80f80f00bd6da42272412bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d4347e3_c97c2464",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-05-06T13:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88656498_f3e74924",
       "range": {
         "startLine": 90,
         "startChar": 5,
@@ -480,6 +714,24 @@
     },
     {
       "key": {
+        "uuid": "0d4347e3_49b8143a",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-05-06T13:20:57Z",
+      "side": 1,
+      "message": "Yes, it does switch correctly when current_task is set to 1 initially. Next task gets set in switch_handler(), line 245. Yes, the initial stack will get overwritten by function calls of the tasks, and the latest context is saved back into the stack. I\u0027m not sure if I understood your last question correctly though.",
+      "parentUuid": "c8475d66_63b6c2ee",
+      "revId": "06e5f6b49d33146c80f80f00bd6da42272412bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e85340c8_dbf820d6",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 5
@@ -491,6 +743,30 @@
       "writtenOn": "2016-04-26T15:55:14Z",
       "side": 1,
       "message": "This whole thing is formatted weird and has some trailing spaces.\n\n__asm__ __volatile__  (\n   \"instructions\"\n   : \"outputs\"\n   : \"intputs\"\n   : \"clobbers\"\n);\n\nJust use tabs to line up the indentions. Gerrit might be playing tricks on me.",
+      "range": {
+        "startLine": 286,
+        "startChar": 23,
+        "endLine": 290,
+        "endChar": 5
+      },
+      "revId": "06e5f6b49d33146c80f80f00bd6da42272412bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d4347e3_69b5d040",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-05-06T13:20:57Z",
+      "side": 1,
+      "message": "Used tabs to indent the code.",
+      "parentUuid": "e85340c8_dbf820d6",
       "range": {
         "startLine": 286,
         "startChar": 23,
@@ -526,6 +802,30 @@
     },
     {
       "key": {
+        "uuid": "0d4347e3_c96e64b8",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-05-06T13:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28539928_069efa66",
+      "range": {
+        "startLine": 461,
+        "startChar": 68,
+        "endLine": 461,
+        "endChar": 69
+      },
+      "revId": "06e5f6b49d33146c80f80f00bd6da42272412bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8e03c3f_c4c7eeba",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 5
@@ -537,6 +837,24 @@
       "writtenOn": "2016-04-26T15:55:14Z",
       "side": 1,
       "message": "interrupt",
+      "revId": "06e5f6b49d33146c80f80f00bd6da42272412bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d4347e3_e97320a1",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-05-06T13:20:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8e03c3f_c4c7eeba",
       "revId": "06e5f6b49d33146c80f80f00bd6da42272412bbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
