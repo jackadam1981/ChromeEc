@@ -298,6 +298,7 @@ static void touch_screen_reset(void)
 	gpio_set_level(GPIO_TOUCHSCREEN_RESET_L, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, touch_screen_reset, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, touch_screen_reset, HOOK_PRIO_DEFAULT);
 
 /* Called by hook task every 1 sec  */
 void check_charger_timeout_second(void)
