@@ -173,3 +173,31 @@ void sys_rst_asserted(enum gpio_signal signal)
 	/* TODO(crosbug.com/p/52366): Do something useful here. */
 	CPRINTS("%s(%d)", __func__, signal);
 }
+
+void servo_state_change(enum gpio_signal signal)
+{
+	CPRINTS("Servo Detected");
+
+	/*
+	 * Servo is attached and will be using the EC and AP UART. Disable EC
+	 * and AP power detection interrupts.
+	 */
+	gpio_disable_interrupt(GPIO_SERVO_UART1);
+	gpio_disable_interrupt(GPIO_SERVO_UART2);
+	gpio_disable_interrupt(GPIO_AP_ON);
+	gpio_disable_interrupt(GPIO_EC_ON);
+}
+
+void ec_state_change(enum gpio_signal signal)
+{
+	CPRINTS("%s %s", __func__, gpio_get_level(signal) ? "on" : "off");
+
+	gpio_disable_interrupt(GPIO_EC_ON);
+}
+
+void ap_state_change(enum gpio_signal signal)
+{
+	CPRINTS("%s %s", __func__, gpio_get_level(signal) ? "on" : "off");
+
+	gpio_disable_interrupt(GPIO_AP_ON);
+}

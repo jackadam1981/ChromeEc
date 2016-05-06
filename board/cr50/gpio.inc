@@ -16,6 +16,10 @@
  */
 GPIO_INT(SYS_RST_L_IN, PIN(1, 0),  GPIO_INT_FALLING | GPIO_PULL_UP,
 	 sys_rst_asserted)
+GPIO_INT(AP_ON,         PIN(1, 1), GPIO_INT_RISING, ap_state_change)
+GPIO_INT(EC_ON,         PIN(1, 2), GPIO_INT_RISING, ec_state_change)
+GPIO_INT(SERVO_UART1,   PIN(1, 3), GPIO_INT_RISING, servo_state_change)
+GPIO_INT(SERVO_UART2,   PIN(1, 4), GPIO_INT_RISING, servo_state_change)
 
 /* Pull this low to interrupt the AP */
 GPIO(INT_AP_L,        PIN(0, 0), GPIO_INPUT)
@@ -73,6 +77,16 @@ PINMUX(FUNC(UART0_RX),        A1, DIO_INPUT | DIO_WAKE_LOW)
  */
 PINMUX(FUNC(UART1_RX),        A3, DIO_INPUT)	/* AP console */
 PINMUX(FUNC(UART2_RX),        B6, DIO_INPUT)	/* EC console */
+
+/*
+ * Monitor UART RX signals to detect the power state of the AP and EC. The TX
+ * signal is used to monitor the connection state of servo.
+ */
+PINMUX(GPIO(SERVO_UART1),    A7, DIO_INPUT)	/* UART1_TX */
+PINMUX(GPIO(SERVO_UART2),    B5, DIO_INPUT)	/* UART2_TX */
+PINMUX(GPIO(EC_ON),          B6, DIO_INPUT)	/* UART2_RX */
+PINMUX(GPIO(AP_ON),          A3, DIO_INPUT)	/* UART1_RX */
+
 
 /* I2C pins are bi-directional */
 PINMUX(FUNC(I2C0_SCL),        B0, DIO_INPUT)

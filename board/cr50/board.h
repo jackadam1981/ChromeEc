@@ -91,6 +91,9 @@ enum usb_strings {
 
 /* Interrupt handler */
 void sys_rst_asserted(enum gpio_signal signal);
+void ap_state_change(enum gpio_signal signal);
+void ec_state_change(enum gpio_signal signal);
+void servo_state_change(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
