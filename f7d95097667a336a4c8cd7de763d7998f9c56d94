@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed9993fa_fccf29bd",
+        "filename": "board/setzer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-06T16:29:46Z",
+      "side": 1,
+      "message": "If I understand correctly, you want to keep the touchscreen in reset, except when the lid is open in S0. The initial state of the GPIO is ODR high now, so if you boot to S5, the touchscreen won\u0027t be held in reset. You can call this routine on HOOK_INIT to fix this.",
+      "revId": "f7d95097667a336a4c8cd7de763d7998f9c56d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed9993fa_1cc5b59e",
+        "filename": "board/setzer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-06T16:29:46Z",
+      "side": 1,
+      "message": "If I understand correctly, you want to keep the touchscreen in reset, except when the lid is open in S0. The initial state of the GPIO is ODR high now, so if you boot to S5, the touchscreen won\u0027t be held in reset. You can call this routine on HOOK_INIT to fix this.",
+      "revId": "f7d95097667a336a4c8cd7de763d7998f9c56d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
