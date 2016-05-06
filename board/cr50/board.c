@@ -185,54 +185,73 @@ void sys_rst_asserted(enum gpio_signal signal)
 }
 
 /*
- * If both UARTs are enabled we cant tell anything about the
- * state of servo, so disable servo detection.
+ * If the UART is enabled we cant tell anything about the
+ * servo state, so disable servo detection.
  */
-static int servo_state_unknown(void)
+static int servo_state_unknown(enum device_type device, int uart)
 {
-	if (uartn_enabled(UART_AP) && uartn_enabled(UART_EC)) {
-		device_set_state(DEVICE_SERVO_EC, DEVICE_STATE_UNKNOWN);
-		device_set_state(DEVICE_SERVO_AP, DEVICE_STATE_UNKNOWN);
+	if (uartn_enabled(UART_AP) && uartn_enabled(UART_EC))
+		device_set_state(DEVICE_SERVO, DEVICE_STATE_UNKNOWN);
+
+	if (uartn_enabled(uart)) {
+		device_set_state(device, DEVICE_STATE_UNKNOWN);
 		return 1;
 	}
 	return 0;
 }
 
-static void servo_deferred(void)
+static void servo_detached(enum device_type device, int uart)
 {
-	if (servo_state_unknown() ||
-	    (device_get_state(DEVICE_SERVO_AP) == DEVICE_STATE_ON) ||
-	    (device_get_state(DEVICE_SERVO_EC) == DEVICE_STATE_ON))
+	if (servo_state_unknown(device, uart) ||
+	    device_get_state(device) == DEVICE_STATE_ON)
 		return;
-	device_set_state(DEVICE_SERVO_AP, DEVICE_STATE_OFF);
+
 	device_set_state(DEVICE_SERVO_EC, DEVICE_STATE_OFF);
+	device_set_state(DEVICE_SERVO_AP, DEVICE_STATE_OFF);
+	device_set_state(DEVICE_SERVO, DEVICE_STATE_OFF);
 }
-DECLARE_DEFERRED(servo_deferred);
+
+static void device_powered_off(enum device_type device, int uart)
+{
+	if (device_get_state(device) == DEVICE_STATE_ON)
+		return;
+
+	device_set_state(device, DEVICE_STATE_OFF);
+	uartn_tx_disconnect(uart);
+}
+
+static void servo_ap_deferred(void)
+{
+	servo_detached(DEVICE_SERVO_AP, UART_AP);
+}
+DECLARE_DEFERRED(servo_ap_deferred);
+
+static void servo_ec_deferred(void)
+{
+	servo_detached(DEVICE_SERVO_EC, UART_EC);
+}
+DECLARE_DEFERRED(servo_ec_deferred);
 
 static void ap_deferred(void)
 {
-	if (device_get_state(DEVICE_AP) == DEVICE_STATE_ON)
-		return;
-	device_set_state(DEVICE_AP, DEVICE_STATE_OFF);
+	device_powered_off(DEVICE_AP, UART_AP);
 }
 DECLARE_DEFERRED(ap_deferred);
 
 static void ec_deferred(void)
 {
-	if (device_get_state(DEVICE_EC) == DEVICE_STATE_ON)
-		return;
-	device_set_state(DEVICE_EC, DEVICE_STATE_OFF);
+	device_powered_off(DEVICE_EC, UART_EC);
 }
 DECLARE_DEFERRED(ec_deferred);
 
 struct device_config device_states[] = {
 	[DEVICE_SERVO_AP] = {
-		.deferred = &servo_deferred_data,
+		.deferred = &servo_ap_deferred_data,
 		.detect_on = GPIO_SERVO_UART1_ON,
 		.detect_off = GPIO_SERVO_UART1_OFF
 	},
 	[DEVICE_SERVO_EC] = {
-		.deferred = &servo_deferred_data,
+		.deferred = &servo_ec_deferred_data,
 		.detect_on = GPIO_SERVO_UART2_ON,
 		.detect_off = GPIO_SERVO_UART2_OFF
 	},
@@ -246,29 +265,49 @@ struct device_config device_states[] = {
 		.detect_on = GPIO_EC_ON,
 		.detect_off = GPIO_EC_OFF
 	},
+	[DEVICE_SERVO] = {},
 };
 BUILD_ASSERT(ARRAY_SIZE(device_states) == DEVICE_COUNT);
 
-static void device_powered_on(enum device_type device)
+static void device_powered_on(enum device_type device, int uart)
 {
 	device_set_state(device, DEVICE_STATE_ON);
+
+	if (!uartn_enabled(uart))
+		uartn_tx_connect(uart);
+}
+
+static void servo_attached(enum device_type device, int uart)
+{
+	if (servo_state_unknown(device, uart))
+		return;
+
+	device_set_state(device, DEVICE_STATE_ON);
+	device_set_state(DEVICE_SERVO, DEVICE_STATE_ON);
+	uartn_tx_disconnect(UART_AP);
+	uartn_tx_disconnect(UART_EC);
 }
 
 void device_state_on(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_AP_ON:
-		device_powered_on(DEVICE_AP);
+		device_powered_on(DEVICE_AP, UART_AP);
 		break;
 	case GPIO_EC_ON:
-		device_powered_on(DEVICE_EC);
+		device_powered_on(DEVICE_EC, UART_EC);
+		break;
+	case GPIO_SERVO_UART1_ON:
+		servo_attached(DEVICE_SERVO_AP, UART_AP);
+		break;
+	case GPIO_SERVO_UART2_ON:
+		servo_attached(DEVICE_SERVO_EC, UART_EC);
 		break;
 	default:
-		if (servo_state_unknown())
-			return;
-		device_powered_on(DEVICE_SERVO_EC);
-		device_powered_on(DEVICE_SERVO_AP);
+		CPRINTS("Device not supported");
+		return;
 	}
+
 }
 
 void device_state_off(enum gpio_signal signal)
@@ -280,15 +319,23 @@ void device_state_off(enum gpio_signal signal)
 	case GPIO_EC_OFF:
 		board_update_device_state(DEVICE_EC);
 		break;
-	default:
-		board_update_device_state(DEVICE_SERVO_EC);
+	case GPIO_SERVO_UART1_OFF:
 		board_update_device_state(DEVICE_SERVO_AP);
+		break;
+	case GPIO_SERVO_UART2_OFF:
+		board_update_device_state(DEVICE_SERVO_EC);
+		break;
+	default:
+		CPRINTS("Device not supported");
 	}
 }
 
 void board_update_device_state(enum device_type device)
 {
 	int state;
+
+	if (device == DEVICE_SERVO)
+		return;
 
 	if (device == DEVICE_SERVO_EC || device == DEVICE_SERVO_AP) {
 		/*
@@ -307,7 +354,7 @@ void board_update_device_state(enum device_type device)
 	 * thinks the device is powered off debounce the signal.
 	 */
 	if (state)
-		device_powered_on(device);
+		device_state_on(device_states[device].detect_on);
 	else {
 		device_set_state(device, DEVICE_STATE_UNKNOWN);
 
@@ -319,25 +366,19 @@ void board_update_device_state(enum device_type device)
 	}
 }
 
+static void print_state(const char *name, enum device_state state)
+{
+	ccprintf("%s %s\n", name, state == DEVICE_STATE_ON ? "on" :
+		 state == DEVICE_STATE_OFF ? "off" : "unknown");
+}
 static int command_devices(int argc, char **argv)
 {
-	int state = device_get_state(DEVICE_AP);
 
-	ccprintf("AP %s\n",
-		state == DEVICE_STATE_ON ? "on" :
-		state == DEVICE_STATE_OFF ? "off" : "unknown");
-	state = device_get_state(DEVICE_SERVO_AP);
-	ccprintf("SERVO_AP %s\n",
-		state == DEVICE_STATE_ON ? "on" :
-		state == DEVICE_STATE_OFF ? "off" : "unknown");
-	state = device_get_state(DEVICE_SERVO_EC);
-	ccprintf("SERVO_EC %s\n",
-		state == DEVICE_STATE_ON ? "on" :
-		state == DEVICE_STATE_OFF ? "off" : "unknown");
-	state = device_get_state(DEVICE_EC);
-	ccprintf("EC %s\n",
-		state == DEVICE_STATE_ON ? "on" :
-		state == DEVICE_STATE_OFF ? "off" : "unknown");
+	print_state("AP", device_get_state(DEVICE_AP));
+	print_state("EC", device_get_state(DEVICE_EC));
+	print_state("Servo", device_get_state(DEVICE_SERVO));
+	print_state("   AP", device_get_state(DEVICE_SERVO_AP));
+	print_state("   EC", device_get_state(DEVICE_SERVO_EC));
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(devices, command_devices,
