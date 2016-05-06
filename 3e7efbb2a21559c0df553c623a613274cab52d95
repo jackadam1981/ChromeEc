@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0d4347e3_89885cd7",
+        "filename": "board/it83xx_evb/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2016-05-06T06:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4da53fc6_abcbf461",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "3e7efbb2a21559c0df553c623a613274cab52d95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4da53fc6_4bc22846",
         "filename": "board/it83xx_evb/ec.tasklist",
         "patchSetId": 1
