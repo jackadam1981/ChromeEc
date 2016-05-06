@@ -13,6 +13,7 @@
 #include "registers.h"
 #include "task.h"
 #include "trng.h"
+#include "uartn.h"
 #include "usb_descriptor.h"
 #include "usb_hid.h"
 #include "util.h"
@@ -178,6 +179,10 @@ void servo_state_change(enum gpio_signal signal)
 {
 	CPRINTS("Servo Detected");
 
+	/* Disconnect cr50 from UART */
+	uartn_tx_disconnect(UART_AP);
+	uartn_tx_disconnect(UART_EC);
+
 	/*
 	 * Servo is attached and will be using the EC and AP UART. Disable EC
 	 * and AP power detection interrupts.
@@ -192,12 +197,12 @@ void ec_state_change(enum gpio_signal signal)
 {
 	CPRINTS("%s %s", __func__, gpio_get_level(signal) ? "on" : "off");
 
-	gpio_disable_interrupt(GPIO_EC_ON);
+	uartn_tx_connect(UART_EC, signal);
 }
 
 void ap_state_change(enum gpio_signal signal)
 {
 	CPRINTS("%s %s", __func__, gpio_get_level(signal) ? "on" : "off");
 
-	gpio_disable_interrupt(GPIO_AP_ON);
+	uartn_tx_connect(UART_AP, signal);
 }

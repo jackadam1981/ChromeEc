@@ -74,4 +74,10 @@ void uartn_tx_start(int uart);
  * Disable the UART transmit interrupt.
  */
 void uartn_tx_stop(int uart);
+
+/* Enable UART output */
+void uartn_tx_connect(int uart, enum gpio_signal signal);
+
+/* Disable UART output */
+void uartn_tx_disconnect(int uart);
 #endif  /* __CROS_EC_UARTN_H */
