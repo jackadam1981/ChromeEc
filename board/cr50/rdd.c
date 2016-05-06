@@ -7,18 +7,81 @@
 #include "gpio.h"
 #include "rdd.h"
 #include "registers.h"
+#include "uartn.h"
 #include "usb_api.h"
 
-static void usart_tx_connect(void)
+#define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
+
+static int enable;
+
+/* If the UART TX is enabled the pinmux select will have a non-zero value */
+static int uart_enabled(int uart)
 {
-	GWRITE(PINMUX, DIOA7_SEL, GC_PINMUX_UART1_TX_SEL);
-	GWRITE(PINMUX, DIOB5_SEL, GC_PINMUX_UART2_TX_SEL);
+	if (uart == UART_AP)
+		return GREAD(PINMUX, DIOA7_SEL);
+	return GREAD(PINMUX, DIOB5_SEL);
 }
 
-static void usart_tx_disconnect(void)
+static void uart_set_tx_out(int uart, int signal)
 {
-	GWRITE(PINMUX, DIOA7_SEL, GC_PINMUX_DIOA3_SEL_DEFAULT);
-	GWRITE(PINMUX, DIOB5_SEL, GC_PINMUX_DIOB5_SEL_DEFAULT);
+	/* Enable or disable the TX output */
+	if (uart == UART_AP)
+		GWRITE(PINMUX, DIOA7_SEL, signal);
+	else
+		GWRITE(PINMUX, DIOB5_SEL, signal);
+}
+
+static int servo_is_connected(void)
+{
+	return ((!uart_enabled(UART_EC) && gpio_get_level(GPIO_SERVO_UART2)) ||
+		(!uart_enabled(UART_AP) && gpio_get_level(GPIO_SERVO_UART1)));
+}
+
+void uartn_tx_connect(int uart, enum gpio_signal signal)
+{
+	enum gpio_signal servo_int;
+	int tx_out;
+
+	if (!enable) {
+		/*
+		 * If we are not trying to enable the UART disable the
+		 * interrupt.
+		 */
+		gpio_disable_interrupt(signal);
+		return;
+	}
+
+	if (servo_is_connected()) {
+		CPRINTS("Servo is attached cannot enable %s UART",
+			uart == UART_AP ? "AP" : "EC");
+		return;
+	}
+
+	if (uart == UART_AP) {
+		servo_int = GPIO_SERVO_UART1;
+		tx_out = GC_PINMUX_UART1_TX_SEL;
+	} else {
+		servo_int = GPIO_SERVO_UART2;
+		tx_out = GC_PINMUX_UART2_TX_SEL;
+	}
+
+	if (gpio_get_level(signal)) {
+		/* Disable power interrupts on uart */
+		gpio_disable_interrupt(servo_int);
+		gpio_disable_interrupt(signal);
+
+		/* Enable UART output */
+		uart_set_tx_out(uart, tx_out);
+	} else if (!uart_enabled(uart)) {
+		CPRINTS("%s is powered off", uart == UART_AP ? "AP" : "EC");
+		gpio_enable_interrupt(servo_int);
+		gpio_enable_interrupt(signal);
+	}
+}
+
+void uartn_tx_disconnect(int uart)
+{
+	uart_set_tx_out(uart, 0);
 }
 
 void rdd_attached(void)
@@ -33,7 +96,8 @@ void rdd_attached(void)
 void rdd_detached(void)
 {
 	/* Disconnect from AP and EC UART TX */
-	usart_tx_disconnect();
+	uartn_tx_disconnect(UART_EC);
+	uartn_tx_disconnect(UART_AP);
 
 	/* Done with case-closed debug mode */
 	gpio_set_level(GPIO_CCD_MODE_L, 1);
@@ -44,19 +108,21 @@ void rdd_detached(void)
 
 static int command_uart(int argc, char **argv)
 {
-	static int enabled;
-
 	if (argc > 1) {
 		if (!strcasecmp("enable", argv[1])) {
-			enabled = 1;
-			usart_tx_connect();
+			enable = 1;
+			uartn_tx_connect(UART_EC, GPIO_EC_ON);
+			uartn_tx_connect(UART_AP, GPIO_AP_ON);
 		} else if (!strcasecmp("disable", argv[1])) {
-			enabled = 0;
-			usart_tx_disconnect();
+			enable = 0;
+			uartn_tx_disconnect(UART_EC);
+			uartn_tx_disconnect(UART_AP);
 		}
 	}
 
-	ccprintf("UART %s\n", enabled ? "enabled" : "disabled");
+	ccprintf("AP UART %s\nEC UART %s\n",
+		uart_enabled(UART_AP) ? "enabled" : "disabled",
+		uart_enabled(UART_EC) ? "enabled" : "disabled");
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(uart, command_uart,
