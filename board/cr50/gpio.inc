@@ -81,11 +81,14 @@ PINMUX(FUNC(UART0_RX),        A1, DIO_INPUT | DIO_WAKE_LOW)
  */
 PINMUX(FUNC(UART1_RX),        A3, DIO_INPUT)	/* AP console */
 PINMUX(FUNC(UART2_RX),        B6, DIO_INPUT)	/* EC console */
-
-PINMUX(GPIO(AP_OFF),          A3, DIO_INPUT)
-PINMUX(GPIO(EC_OFF),          B6, DIO_INPUT)
+/*
+ * Monitor UART RX signals to detect the power state of the AP and EC. The TX
+ * signal is used to monitor the connection state of servo.
+ */
 PINMUX(GPIO(AP_ON),           A3, DIO_INPUT)
+PINMUX(GPIO(AP_OFF),          A3, DIO_INPUT)
 PINMUX(GPIO(EC_ON),           B6, DIO_INPUT)
+PINMUX(GPIO(EC_OFF),          B6, DIO_INPUT)
 PINMUX(GPIO(SERVO_UART1_ON),  A7, DIO_INPUT)
 PINMUX(GPIO(SERVO_UART1_OFF), A7, DIO_INPUT)
 PINMUX(GPIO(SERVO_UART2_ON),  B5, DIO_INPUT)
