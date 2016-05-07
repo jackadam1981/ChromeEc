@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "d22e3090_b155180e",
+        "filename": "common/usb_charger_bd99955.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-07T01:34:21Z",
+      "side": 1,
+      "message": "If we get a VBUS interrupt, several things should kick off -- the PD task will try to determine if a PD charger is attached. The USB charger task will try to identify a BC1.2 charge port attached. Some other task (actually, usually our VBUS interrupt) will tell charge manager about the existence of VBUS. Based on these independent inputs, charge manager will make a decision about the charge port / current limit to select.\n\nWhat does skipping BC1.2 detection gain us? It violates the division of labor I mentioned above. And, it needs to work even when a PD port is attached, even if we don\u0027t change the code, because:\n\n- PD negotiation may be slow, we might not see a PD / type-C charger yet and\n- The way you wrote get_charge_supplier, for the non-active port, you will always do BC1.2 detection.\n\nI don\u0027t see the benefit of skipping BC1.2 detection and I\u0027m worried it will create bugs.",
+      "parentUuid": "d22e3090_11050c69",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 173,
+        "endChar": 37
+      },
+      "revId": "ea343ee56901268b26b39cc76fcee1e6dd0ca3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d22e3090_2edb075f",
         "filename": "include/config.h",
         "patchSetId": 9
