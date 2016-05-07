@@ -137,6 +137,30 @@
     },
     {
       "key": {
+        "uuid": "d22e3090_31700893",
+        "filename": "common/usb_charger_bd99955.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-07T02:00:47Z",
+      "side": 1,
+      "message": "Okay, thank you for the details Shawn.\nI will add pd_snk_is_vbus_provided(port) for both attach \u0026 detach so that we don\u0027t overwrite the events which are not processed serially. And also update the charge manger for VBUS even for BC1.2 detach event.",
+      "parentUuid": "d22e3090_b155180e",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 173,
+        "endChar": 37
+      },
+      "revId": "ea343ee56901268b26b39cc76fcee1e6dd0ca3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d22e3090_2edb075f",
         "filename": "include/config.h",
         "patchSetId": 9
