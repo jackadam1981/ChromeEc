@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d22e3090_ee217f40",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-07T00:34:43Z",
+      "side": 1,
+      "message": "This function is really awkward and I hope we can leave it out altogether. See my comments on other files.",
+      "revId": "ea343ee56901268b26b39cc76fcee1e6dd0ca3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d22e3090_0eb72b05",
+        "filename": "common/usb_charger_bd99955.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-07T00:34:43Z",
+      "side": 1,
+      "message": "Why (default -1)? What needs to come after this?",
+      "range": {
+        "startLine": 76,
+        "startChar": 42,
+        "endLine": 76,
+        "endChar": 59
+      },
+      "revId": "ea343ee56901268b26b39cc76fcee1e6dd0ca3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d22e3090_4e33f399",
+        "filename": "common/usb_charger_bd99955.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-07T00:34:43Z",
+      "side": 1,
+      "message": "I think BC1.2 detection should work independently of other detection methods, if possible. Even with this code, we may not realize we have a PD / type-C charger yet, and do detection anyway. Is there any harm to always doing BC1.2 detection on attach?",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 173,
+        "endChar": 37
+      },
+      "revId": "ea343ee56901268b26b39cc76fcee1e6dd0ca3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d22e3090_2edb075f",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-07T00:34:43Z",
+      "side": 1,
+      "message": "Let\u0027s define this by default, it\u0027s useful.",
+      "range": {
+        "startLine": 527,
+        "startChar": 7,
+        "endLine": 527,
+        "endChar": 38
+      },
+      "revId": "ea343ee56901268b26b39cc76fcee1e6dd0ca3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
