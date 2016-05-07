@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "d22e3090_8e743b24",
+        "filename": "common/usb_charger_bd99955.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-07T00:53:46Z",
+      "side": 1,
+      "message": "wanted to make sure we call this before enabling VBUS interrupts in board_init()",
+      "parentUuid": "d22e3090_0eb72b05",
+      "range": {
+        "startLine": 76,
+        "startChar": 42,
+        "endLine": 76,
+        "endChar": 59
+      },
+      "revId": "ea343ee56901268b26b39cc76fcee1e6dd0ca3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d22e3090_4e33f399",
         "filename": "common/usb_charger_bd99955.c",
         "patchSetId": 9
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "d22e3090_11050c69",
+        "filename": "common/usb_charger_bd99955.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-07T00:53:46Z",
+      "side": 1,
+      "message": "For both PD \u0026 BC1.2 VBUS interrupt is same so it is not possible to find for which type detach event occurred. So added code get_charge_supplier() to get the information before the detach occurs. If type is PD (or already PD detected) then we don\u0027t see BC1.2 detected so we can skip checking for BC1.2.",
+      "parentUuid": "d22e3090_4e33f399",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 173,
+        "endChar": 37
+      },
+      "revId": "ea343ee56901268b26b39cc76fcee1e6dd0ca3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d22e3090_2edb075f",
         "filename": "include/config.h",
         "patchSetId": 9
@@ -76,6 +124,30 @@
       "writtenOn": "2016-05-07T00:34:43Z",
       "side": 1,
       "message": "Let\u0027s define this by default, it\u0027s useful.",
+      "range": {
+        "startLine": 527,
+        "startChar": 7,
+        "endLine": 527,
+        "endChar": 38
+      },
+      "revId": "ea343ee56901268b26b39cc76fcee1e6dd0ca3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d22e3090_d1f6649d",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-07T00:53:46Z",
+      "side": 1,
+      "message": "Okay I will change it",
+      "parentUuid": "d22e3090_2edb075f",
       "range": {
         "startLine": 527,
         "startChar": 7,
