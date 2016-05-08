@@ -22,6 +22,30 @@
       "revId": "2aa6bba7ad6e4bc3f68d9094c77a5ad22a7d6ac6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2a8945d_84f3e6ab",
+        "filename": "board/pdeval-stm32f072/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1147200
+      },
+      "writtenOn": "2016-05-08T06:18:32Z",
+      "side": 1,
+      "message": "modified on patch13.",
+      "parentUuid": "e8fc21c7_cd93e15e",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 38
+      },
+      "revId": "2aa6bba7ad6e4bc3f68d9094c77a5ad22a7d6ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
