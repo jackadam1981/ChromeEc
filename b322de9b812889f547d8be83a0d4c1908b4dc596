@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f2a8945d_44296ee3",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1147200
+      },
+      "writtenOn": "2016-05-08T06:19:26Z",
+      "side": 1,
+      "message": "modified on patch23.",
+      "parentUuid": "ed9993fa_62b8d23a",
+      "range": {
+        "startLine": 203,
+        "startChar": 28,
+        "endLine": 203,
+        "endChar": 47
+      },
+      "revId": "b322de9b812889f547d8be83a0d4c1908b4dc596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed9993fa_c23a8687",
         "filename": "driver/tcpm/anx74xx.h",
         "patchSetId": 22
