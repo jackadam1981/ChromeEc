@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52808013_4a11b3f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-09T18:27:22Z",
+      "side": 1,
+      "message": "Wrapping here.",
+      "revId": "6afaaa209c3012cc1fd8fb764b9b2a7631e54361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52808013_ea18a70d",
+        "filename": "power/braswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-09T18:27:22Z",
+      "side": 1,
+      "message": "I can\u0027t recall why we added this for braswell, but I\u0027m concerned that you are changing our well-tested sequence here. We should fall to G3 on powerdown after timeout in S5, unless GPIO_PCH_SLP_S4_L is deasserted.\n\nIs GPIO_PCH_SLP_S4_L deasserted? Why?",
+      "revId": "6afaaa209c3012cc1fd8fb764b9b2a7631e54361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
