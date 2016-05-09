@@ -39,6 +39,24 @@
       "revId": "11aaa951fb3682dcb1e6bc4186218a8eaf2fb36c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d261d020_d6d90231",
+        "filename": "board/it83xx_evb/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2016-05-09T07:35:44Z",
+      "side": 1,
+      "message": "It seems that HAS_TASK_* are included before CONFIG_* options.\nIf we do this, the condition of usb_pd.h will not be true and PD tasks\nwill not work properly.\n\n#ifdef HAS_TASK_PD_C0\n#define PD_PORT_TO_TASK_ID(port) (TASK_ID_PD_C0 + (port))\n#define TASK_ID_TO_PD_PORT(id) ((id) - TASK_ID_PD_C0)\n#else\n#define PD_PORT_TO_TASK_ID(port) -1 /* dummy task ID */\n#define TASK_ID_TO_PD_PORT(id) 0\n#endif /* CONFIG_COMMON_RUNTIME */",
+      "parentUuid": "ed9993fa_dc826d11",
+      "revId": "11aaa951fb3682dcb1e6bc4186218a8eaf2fb36c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
