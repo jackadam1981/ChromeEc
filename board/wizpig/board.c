@@ -236,3 +236,29 @@ static void adc_pre_init(void)
 	gpio_config_module(MODULE_ADC, 1);
 }
 DECLARE_HOOK(HOOK_INIT, adc_pre_init, HOOK_PRIO_INIT_ADC - 1);
+static void touch_power_enable(void)
+{
+	/*
+	 * Enable Touch srceen when platform in S0
+	*/
+	gpio_set_level(GPIO_TS_VDD_EN, 1);
+
+	gpio_set_level(GPIO_TS_RST_L, 0);
+	msleep(1);
+	gpio_set_level(GPIO_TS_RST_L, 1);
+}
+DECLARE_HOOK(HOOK_INIT, touch_power_enable, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_STARUP, touch_power_enable, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, touch_power_enable, HOOK_PRIO_DEFAULT);
+
+static void touch_power_disable(void)
+{
+	/*
+	 * Disable the load swich and hold touchscreen in reset
+	 * to resudce the power consumption
+	*/
+	gpio_set_level(GPIO_TS_VDD_EN, 0);
+	usleep(10);
+	gpio_set_level(GPIO_TS_RST_L, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, touch_power_disable, HOOK_PRIO_DEFAULT);
