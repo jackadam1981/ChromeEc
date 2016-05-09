@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52808013_4167d63f",
+        "filename": "chip/g/usb_spi.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-09T23:24:17Z",
+      "side": 1,
+      "message": "Why is this uint16_t[N/2] instead of uint8_t[N] ?",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 67
+      },
+      "revId": "63fc4b11b7729b14a2ad09dbb53f1534ad8c714d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
