@@ -111,8 +111,12 @@ void chipset_throttle_cpu(int throttle)
 
 enum power_state power_chipset_init(void)
 {
+#ifdef CONFIG_BOARD_HAS_RTC_RESET
+	power_set_pause_in_s5(0);
+#else
 	/* Pause in S5 when shutting down. */
 	power_set_pause_in_s5(1);
+#endif
 
 	/*
 	 * If we're switching between images without rebooting, see if the x86
