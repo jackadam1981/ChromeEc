@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "325f8ccd_bb60fb25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-10T21:51:29Z",
+      "side": 1,
+      "message": "Suggest to change to \"Shut\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "0ebc4065110116535d61dd220df2946cd158c02e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "325f8ccd_9bff3f75",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-10T21:51:29Z",
+      "side": 1,
+      "message": "Suggest to change this to \"AP_OVERTEMP asserted. Shutting down AP!\".",
+      "range": {
+        "startLine": 52,
+        "startChar": 10,
+        "endLine": 52,
+        "endChar": 32
+      },
+      "revId": "0ebc4065110116535d61dd220df2946cd158c02e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "325f8ccd_9b841fe7",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-10T21:51:29Z",
+      "side": 1,
+      "message": "Can you double check that this is persistent across sysjump? Eg. boot the AP, do \"sysjump RW\" on the EC console, then assert AP_OVERTEMP and verify we shutdown.",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 41
+      },
+      "revId": "0ebc4065110116535d61dd220df2946cd158c02e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
