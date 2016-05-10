@@ -106,7 +106,7 @@ void typec_set_input_current_limit(int port, uint32_t max_ma,
 
 int pd_snk_is_vbus_provided(int port)
 {
-	return extpower_is_present();
+	return bd99955_is_vbus_provided(port);
 }
 
 int pd_board_checks(void)
