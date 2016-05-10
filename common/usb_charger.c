@@ -50,6 +50,18 @@ int usb_charger_port_is_sourcing_vbus(int port)
 	return 0;
 }
 
+#ifdef USB_CHARGER_VBUS_INTERRUPT
+static void usb_charger_vbus_interrupt_def(void)
+{
+	usb_charger_vbus_interrupt_deferred();
+}
+DECLARE_DEFERRED(usb_charger_vbus_interrupt_def);
+
+void usb_charger_vbus_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&usb_charger_vbus_interrupt_def_data, 0);
+}
+#else
 void usb_charger_vbus_change(int port, int vbus_level)
 {
 	/* If VBUS has transitioned low, notify PD module directly */
@@ -63,6 +75,7 @@ void usb_charger_vbus_change(int port, int vbus_level)
 	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_VBUS, 0);
 #endif
 }
+#endif /* USB_CHARGER_VBUS_INTERRUPT */
 
 static void usb_charger_init(void)
 {

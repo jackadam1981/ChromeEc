@@ -220,7 +220,15 @@ enum bd99955_charge_port {
 #define BD99955_CMD_EXTIADP_AVE_VAL	0x63
 #define BD99955_CMD_VACPCLPS_TH_SET	0x64
 #define BD99955_CMD_INT0_SET		0x68
+#define BD99955_CMD_INT0_SET_INT2_EN	(1 << 2)
+#define BD99955_CMD_INT0_SET_INT1_EN	(1 << 1)
+#define BD99955_CMD_INT0_SET_INT0_EN	(1 << 0)
+
 #define BD99955_CMD_INT1_SET		0x69
+/* Bits for both INT1 & INT2 reg */
+#define BD99955_CMD_INT_SET_DET		(1 << 1)
+#define BD99955_CMD_INT_SET_RES		(1 << 0)
+
 #define BD99955_CMD_INT2_SET		0x6A
 #define BD99955_CMD_INT3_SET		0x6B
 #define BD99955_CMD_INT4_SET		0x6C
@@ -229,6 +237,10 @@ enum bd99955_charge_port {
 #define BD99955_CMD_INT7_SET		0x6F
 #define BD99955_CMD_INT0_STATUS		0x70
 #define BD99955_CMD_INT1_STATUS		0x71
+/* Bits for both INT1_STATUS & INT2_STATUS reg */
+#define BD99955_CMD_INT_STATUS_DET	(1 << 1)
+#define BD99955_CMD_INT_STATUS_RES	(1 << 0)
+
 #define BD99955_CMD_INT2_STATUS		0x72
 #define BD99955_CMD_INT3_STATUS		0x73
 #define BD99955_CMD_INT4_STATUS		0x74
@@ -253,5 +265,7 @@ int bd99955_extpower_is_present(void);
 int bd99955_select_input_port(enum bd99955_charge_port port);
 /* Enable/Disable charging triggered by BC1.2 */
 int bd99955_bc12_enable_charging(enum bd99955_charge_port port, int enable);
+/* Is VBUS provided */
+int bd99955_is_vbus_provided(int port);
 
 #endif /* __CROS_EC_BD99955_H */
