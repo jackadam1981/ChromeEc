@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2f8f0fc_bb8ca741",
+        "filename": "board/setzer/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-05-10T20:38:57Z",
+      "side": 1,
+      "message": "When system hook \"HOOK_CHIPSET_RESUME\", chipset state not update to \"CHIPSET_STATE_ON\" and chipset_in_state(CHIPSET_STATE_ON) function return \"0\".\nWe change to determine system in S0 via PCH_SLP_S3_L is asserted.",
+      "range": {
+        "startLine": 289,
+        "startChar": 26,
+        "endLine": 289,
+        "endChar": 60
+      },
+      "revId": "84a79446bf612d8c332c80063cbeb5590ff8b20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
