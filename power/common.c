@@ -280,28 +280,24 @@ int chipset_in_state(int state_mask)
 		 */
 		need_mask = CHIPSET_STATE_HARD_OFF | CHIPSET_STATE_SOFT_OFF;
 		break;
+	case POWER_S3S5:
 	case POWER_S5:
 		need_mask = CHIPSET_STATE_SOFT_OFF;
 		break;
 	case POWER_S5S3:
-	case POWER_S3S5:
-		need_mask = CHIPSET_STATE_SOFT_OFF | CHIPSET_STATE_SUSPEND;
-		break;
+	case POWER_S0S3:
 	case POWER_S3:
 		need_mask = CHIPSET_STATE_SUSPEND;
 		break;
 	case POWER_S3S0:
-	case POWER_S0S3:
-		need_mask = CHIPSET_STATE_SUSPEND | CHIPSET_STATE_ON;
-		break;
 	case POWER_S0:
 		need_mask = CHIPSET_STATE_ON;
 		break;
 #ifdef CONFIG_POWER_S0IX
 	case POWER_S0ixS0:
-	case POWER_S0S0ix:
-		need_mask = CHIPSET_STATE_ON | CHIPSET_STATE_STANDBY;
+		need_mask = CHIPSET_STATE_ON;
 		break;
+	case POWER_S0S0ix:
 	case POWER_S0ix:
 		need_mask = CHIPSET_STATE_STANDBY;
 		break;
