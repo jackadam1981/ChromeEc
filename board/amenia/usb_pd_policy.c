@@ -103,12 +103,6 @@ void typec_set_input_current_limit(int port, uint32_t max_ma,
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
 
-int pd_snk_is_vbus_provided(int port)
-{
-	return !gpio_get_level(port ? GPIO_USB_C1_VBUS_WAKE_L :
-				      GPIO_USB_C0_VBUS_WAKE_L);
-}
-
 int pd_board_checks(void)
 {
 	return EC_SUCCESS;
