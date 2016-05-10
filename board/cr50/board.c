@@ -5,6 +5,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "device_state.h"
 #include "ec_version.h"
 #include "flash_config.h"
 #include "gpio.h"
@@ -13,6 +14,7 @@
 #include "registers.h"
 #include "task.h"
 #include "trng.h"
+#include "uartn.h"
 #include "usb_descriptor.h"
 #include "usb_hid.h"
 #include "util.h"
@@ -173,3 +175,186 @@ void sys_rst_asserted(enum gpio_signal signal)
 	/* TODO(crosbug.com/p/52366): Do something useful here. */
 	CPRINTS("%s(%d)", __func__, signal);
 }
+
+static void servo_deferred(void)
+{
+	if ((device_get_state(DEVICE_SERVO_AP) == DEVICE_STATE_ON) ||
+	    (device_get_state(DEVICE_SERVO_EC) == DEVICE_STATE_ON))
+		return;
+	device_set_state(DEVICE_SERVO_AP, DEVICE_STATE_OFF);
+	device_set_state(DEVICE_SERVO_EC, DEVICE_STATE_OFF);
+}
+DECLARE_DEFERRED(servo_deferred);
+
+static void ap_deferred(void)
+{
+	if (device_get_state(DEVICE_AP) == DEVICE_STATE_ON)
+		return;
+	device_set_state(DEVICE_AP, DEVICE_STATE_OFF);
+}
+DECLARE_DEFERRED(ap_deferred);
+
+static void ec_deferred(void)
+{
+	if (device_get_state(DEVICE_EC) == DEVICE_STATE_ON)
+		return;
+	device_set_state(DEVICE_EC, DEVICE_STATE_OFF);
+}
+DECLARE_DEFERRED(ec_deferred);
+
+struct device_config device_states[] = {
+	[DEVICE_SERVO_AP] = {DEVICE_STATE_UNKNOWN, 0, &servo_deferred_data,
+		GPIO_SERVO_UART1_ON, GPIO_SERVO_UART1_OFF},
+	[DEVICE_SERVO_EC] = {DEVICE_STATE_UNKNOWN, 0, &servo_deferred_data,
+		GPIO_SERVO_UART2_ON, GPIO_SERVO_UART2_OFF},
+	[DEVICE_AP] = {DEVICE_STATE_UNKNOWN, 0, &ap_deferred_data, GPIO_AP_ON,
+		GPIO_AP_OFF},
+	[DEVICE_EC] = {DEVICE_STATE_UNKNOWN, 0, &ec_deferred_data, GPIO_EC_ON,
+		GPIO_EC_OFF},
+};
+BUILD_ASSERT(ARRAY_SIZE(device_states) == DEVICE_COUNT);
+
+static void device_disable_interrupts(enum device_type device)
+{
+	gpio_disable_interrupt(device_states[device].detect_on);
+	gpio_disable_interrupt(device_states[device].detect_off);
+}
+
+static void device_powered_on(enum device_type device)
+{
+	device_disable_interrupts(device);
+	device_set_state(device, DEVICE_STATE_ON);
+}
+
+/*
+ * If both UARTs are enabled we cant tell anything about the
+ * state of servo, so disable servo detection.
+ */
+static int servo_state_unknown(void)
+{
+	if (uartn_enabled(UART_AP) && uartn_enabled(UART_EC)) {
+		device_disable_interrupts(DEVICE_SERVO_EC);
+		device_disable_interrupts(DEVICE_SERVO_AP);
+		device_set_state(DEVICE_SERVO_EC, DEVICE_STATE_UNKNOWN);
+		device_set_state(DEVICE_SERVO_AP, DEVICE_STATE_UNKNOWN);
+		return 1;
+	}
+	return 0;
+}
+
+void device_state_on(enum gpio_signal signal)
+{
+	switch (signal) {
+	case GPIO_AP_ON:
+		device_powered_on(DEVICE_AP);
+		break;
+	case GPIO_EC_ON:
+		device_powered_on(DEVICE_EC);
+		break;
+	default:
+		if (servo_state_unknown())
+			return;
+		device_powered_on(DEVICE_SERVO_EC);
+		device_powered_on(DEVICE_SERVO_AP);
+	}
+}
+
+void device_state_off(enum gpio_signal signal)
+{
+	switch (signal) {
+	case GPIO_AP_OFF:
+		board_update_device_state(DEVICE_AP);
+		break;
+	case GPIO_EC_OFF:
+		board_update_device_state(DEVICE_EC);
+		break;
+	default:
+		board_update_device_state(DEVICE_SERVO_EC);
+		board_update_device_state(DEVICE_SERVO_AP);
+	}
+}
+
+void board_update_device_state(int device)
+{
+	int state;
+
+	/* Disable power off interrupt */
+	gpio_disable_interrupt(device_states[device].detect_off);
+
+	if (device == DEVICE_SERVO_EC || device == DEVICE_SERVO_AP) {
+		if (servo_state_unknown())
+			return;
+		/*
+		 * If either AP UART TX or EC UART TX are pulled high when
+		 * cr50 uart is not enabled, then servo is attached
+		 */
+		state = (!uartn_enabled(UART_AP) &&
+			gpio_get_level(GPIO_SERVO_UART1_ON)) ||
+			(!uartn_enabled(UART_EC) &&
+			gpio_get_level(GPIO_SERVO_UART2_ON));
+	} else
+		state = gpio_get_level(device_states[device].detect_on);
+
+	/*
+	 * If the device is currently on set its state immediately. If it
+	 * thinks the device is powered off debounce the signal.
+	 */
+	if (state)
+		device_powered_on(device);
+	else {
+		/* Enable power on detection */
+		gpio_enable_interrupt(device_states[device].detect_on);
+
+		device_set_state(device, DEVICE_STATE_UNKNOWN);
+
+		/*
+		 * Wait a bit. If cr50 detects this device is ever powered on
+		 * during this time then the status wont be set to powered off.
+		 */
+		hook_call_deferred(device_states[device].deferred, 50);
+	}
+}
+
+static void detect_power_off(enum device_type device)
+{
+	if (device_get_state(device) == DEVICE_STATE_UNKNOWN)
+		gpio_enable_interrupt(device_states[device].detect_on);
+
+	if (device_get_state(device) != DEVICE_STATE_OFF)
+		gpio_enable_interrupt(device_states[device].detect_off);
+}
+
+static void check_devices(void)
+{
+	detect_power_off(DEVICE_AP);
+	detect_power_off(DEVICE_EC);
+	detect_power_off(DEVICE_SERVO_AP);
+	detect_power_off(DEVICE_SERVO_EC);
+}
+DECLARE_HOOK(HOOK_SECOND, check_devices, HOOK_PRIO_DEFAULT);
+
+static int command_devices(int argc, char **argv)
+{
+	int state = device_get_state(DEVICE_AP);
+
+	ccprintf("AP %s\n",
+		state == DEVICE_STATE_ON ? "on" :
+		state == DEVICE_STATE_OFF ? "off" : "unknown");
+	state = device_get_state(DEVICE_SERVO_AP);
+	ccprintf("SERVO_AP %s\n",
+		state == DEVICE_STATE_ON ? "on" :
+		state == DEVICE_STATE_OFF ? "off" : "unknown");
+	state = device_get_state(DEVICE_SERVO_EC);
+	ccprintf("SERVO_EC %s\n",
+		state == DEVICE_STATE_ON ? "on" :
+		state == DEVICE_STATE_OFF ? "off" : "unknown");
+	state = device_get_state(DEVICE_EC);
+	ccprintf("EC %s\n",
+		state == DEVICE_STATE_ON ? "on" :
+		state == DEVICE_STATE_OFF ? "off" : "unknown");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(devices, command_devices,
+	"",
+	"Get the AP, EC, and servo device states",
+	NULL);
