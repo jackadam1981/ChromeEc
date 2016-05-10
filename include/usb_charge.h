@@ -85,4 +85,10 @@ void usb_charger_set_switches(int port, enum usb_switch setting);
  */
 void usb_charger_vbus_change(int port, int vbus_level);
 
+/**
+ * Interrupt handler for USB charger VBUS.
+ *
+ * @param signal	Signal which triggered the interrupt.
+ */
+void usb_charger_vbus_interrupt(enum gpio_signal signal);
 #endif  /* __CROS_EC_USB_CHARGE_H */

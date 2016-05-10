@@ -138,6 +138,53 @@ static void usb_charger_detach(int port, int type)
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
 
+#ifdef USB_CHARGER_VBUS_INTERRUPT
+static void bd99955_vbus_interrupt_def(void)
+{
+	int port;
+	int intr;
+	task_id_t usb_chg_tskid[CONFIG_USB_PD_PORT_COUNT] = {
+		TASK_ID_USB_CHG_P0,
+#if CONFIG_USB_PD_PORT_COUNT == 2
+		TASK_ID_USB_CHG_P1,
+#endif
+	};
+	task_id_t pd_chg_tskid[CONFIG_USB_PD_PORT_COUNT] = {
+		TASK_ID_PD_C0,
+#if CONFIG_USB_PD_PORT_COUNT == 2
+		TASK_ID_PD_C1,
+#endif
+	};
+
+	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++) {
+		/* Get the VBUS interrupt */
+		intr = bd99955_get_vbus_detect_interrupts(port, 1);
+		if (!intr)
+			continue;
+
+		/* VBUS is detected */
+		if (intr & BD99955_CMD_INT_SET_DET) {
+			task_set_event(usb_chg_tskid[port],
+				USB_CHG_EVENT_ATTACH,
+				0);
+		}
+
+		/* VBUS is reset */
+		if (intr & BD99955_CMD_INT_SET_RES) {
+			task_set_event(usb_chg_tskid[port],
+				USB_CHG_EVENT_DETACH,
+				0);
+		}
+
+		task_wake(pd_chg_tskid[port]);
+
+		/* Clear the VBUS interrupt */
+		bd99955_get_vbus_detect_interrupts(port, 0);
+	}
+}
+DECLARE_DEFERRED(bd99955_vbus_interrupt_def);
+#endif
+
 void usb_charger_set_switches(int port, enum usb_switch setting)
 {
 	/* If switch is not changing then return */
@@ -151,6 +198,12 @@ void usb_charger_set_switches(int port, enum usb_switch setting)
 	mutex_unlock(&usb_switch_lock[port]);
 }
 
+#ifdef USB_CHARGER_VBUS_INTERRUPT
+void usb_charger_vbus_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&bd99955_vbus_interrupt_def_data, 0);
+}
+#else
 void usb_charger_vbus_change(int port, int vbus_level)
 {
 #if CONFIG_USB_PD_PORT_COUNT == 2
@@ -163,6 +216,7 @@ void usb_charger_vbus_change(int port, int vbus_level)
 		       0);
 #endif
 }
+#endif
 
 void usb_charger_task(void)
 {
