@@ -231,9 +231,22 @@ DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 enum kevin_board_version {
 	BOARD_VERSION_UNKNOWN = -1,
-	BOARD_VERSION_PROTO1 = 0,
-	BOARD_VERSION_PROTO2 = 1,
-	BOARD_VERSION_FUTURE = 2,
+	BOARD_VERSION_REV0 = 0,
+	BOARD_VERSION_REV1 = 1,
+	BOARD_VERSION_REV2 = 2,
+	BOARD_VERSION_REV3 = 3,
+	BOARD_VERSION_REV4 = 4,
+	BOARD_VERSION_REV5 = 5,
+	BOARD_VERSION_REV6 = 6,
+	BOARD_VERSION_REV7 = 7,
+	BOARD_VERSION_REV8 = 8,
+	BOARD_VERSION_REV9 = 9,
+	BOARD_VERSION_REV10 = 10,
+	BOARD_VERSION_REV11 = 11,
+	BOARD_VERSION_REV12 = 12,
+	BOARD_VERSION_REV13 = 13,
+	BOARD_VERSION_REV14 = 14,
+	BOARD_VERSION_FUTURE = 15,
 	BOARD_VERSION_COUNT,
 };
 
@@ -241,8 +254,21 @@ struct {
 	enum kevin_board_version version;
 	int thresh_mv;
 } const kevin_board_versions[] = {
-	{ BOARD_VERSION_PROTO1, 150 },  /* 2.2 - 3.3  ohm */
-	{ BOARD_VERSION_PROTO2, 250 },  /* 6.8 - 7.32 ohm */
+	{ BOARD_VERSION_REV0, 120 },    /* 51.1 , 2.2  ohm */
+	{ BOARD_VERSION_REV1, 181 },    /* 51.1 , 6.8 ohm */
+	{ BOARD_VERSION_REV2, 242 },    /* 51.1 , 11 ohm */
+	{ BOARD_VERSION_REV3, 307 },    /* 56   , 17.4 ohm */
+	{ BOARD_VERSION_REV4, 378 },    /* 51.1 , 22 ohm */
+	{ BOARD_VERSION_REV5, 444 },    /* 51.1 , 30 ohm */
+	{ BOARD_VERSION_REV6, 511 },    /* 51.1 , 39.2 ohm */
+	{ BOARD_VERSION_REV7, 581 },    /* 56   , 56 ohm */
+	{ BOARD_VERSION_REV8, 646 },    /* 47   , 61.9 ohm */
+	{ BOARD_VERSION_REV9, 704 },    /* 47   , 80.6 ohm */
+	{ BOARD_VERSION_REV10, 763 },   /* 56   , 124 ohm */
+	{ BOARD_VERSION_REV11, 828 },   /* 51.1 , 150 ohm */
+	{ BOARD_VERSION_REV12, 895 },   /* 47   , 200 ohm */
+	{ BOARD_VERSION_REV13, 956 },   /* 47   , 330 ohm */
+	{ BOARD_VERSION_REV14, 1023 },  /* 47   , 680 ohm */
 	{ BOARD_VERSION_FUTURE, 3300 }, /* ??? ohm        */
 };
 BUILD_ASSERT(ARRAY_SIZE(kevin_board_versions) == BOARD_VERSION_COUNT);
