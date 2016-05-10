@@ -21,7 +21,11 @@
 #include "usb_charge.h"
 #include "usb_pd.h"
 
+#ifdef CONFIG_USB_PD_VBUS_DETECT_CHARGER
+void update_vbus_supplier(int port, int vbus_level)
+#else
 static void update_vbus_supplier(int port, int vbus_level)
+#endif
 {
 	struct charge_port_info charge;
 
@@ -50,6 +54,18 @@ int usb_charger_port_is_sourcing_vbus(int port)
 	return 0;
 }
 
+#ifdef CONFIG_USB_PD_VBUS_DETECT_CHARGER
+static void usb_charger_vbus_interrupt_def(void)
+{
+	usb_charger_vbus_interrupt_deferred();
+}
+DECLARE_DEFERRED(usb_charger_vbus_interrupt_def);
+
+void usb_charger_vbus_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&usb_charger_vbus_interrupt_def_data, 0);
+}
+#else
 void usb_charger_vbus_change(int port, int vbus_level)
 {
 	/* If VBUS has transitioned low, notify PD module directly */
@@ -63,6 +79,7 @@ void usb_charger_vbus_change(int port, int vbus_level)
 	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_VBUS, 0);
 #endif
 }
+#endif /* CONFIG_USB_PD_VBUS_DETECT_CHARGER */
 
 static void usb_charger_init(void)
 {

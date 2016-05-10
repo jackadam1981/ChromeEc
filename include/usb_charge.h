@@ -52,6 +52,21 @@ int usb_charge_ports_enabled(void);
 #define USB_CHG_EVENT_VBUS TASK_EVENT_CUSTOM(2)
 #define USB_CHG_EVENT_INTR TASK_EVENT_CUSTOM(4)
 
+#ifdef CONFIG_USB_PD_PORT_COUNT
+/*
+ * Define USB_CHG_PORT_TO_TASK_ID() and TASK_ID_TO_USB_CHG__PORT() macros to
+ * go between USB_CHG port number and task ID. Assume that TASK_ID_USB_CHG_P0,
+ * is the lowest task ID and IDs are on a continuous range.
+ */
+#ifdef HAS_TASK_USB_CHG_P0
+#define USB_CHG_PORT_TO_TASK_ID(port) (TASK_ID_USB_CHG_P0 + (port))
+#define TASK_ID_TO_USB_CHG_PORT(id) ((id) - TASK_ID_USB_CHG_P0)
+#else
+#define USB_CHG_PORT_TO_TASK_ID(port) -1 /* dummy task ID */
+#define TASK_ID_TO_USB_CHG_PORT(id) 0
+#endif  /* HAS_TASK_USB_CHG_P0 */
+#endif  /* CONFIG_USB_PD_PORT_COUNT */
+
 /**
  * Returns true if the passed port is a power source.
  *
@@ -81,5 +96,27 @@ void usb_charger_set_switches(int port, enum usb_switch setting);
  * @param vbus_level new VBUS level
  */
 void usb_charger_vbus_change(int port, int vbus_level);
+
+#ifdef CONFIG_USB_PD_VBUS_DETECT_CHARGER
+/**
+ * Interrupt handler for USB charger VBUS.
+ *
+ * @param signal	Signal which triggered the interrupt.
+ */
+void usb_charger_vbus_interrupt(enum gpio_signal signal);
+
+/**
+ * Deferred Interrupt handler for USB charger VBUS.
+ */
+void usb_charger_vbus_interrupt_deferred(void);
+
+/**
+ * Update charge manager about VBUS level change.
+ *
+ * @param port port number.
+ * @param vbus_level new VBUS level
+ */
+void update_vbus_supplier(int port, int vbus_level);
+#endif  /* CONFIG_USB_PD_VBUS_DETECT_CHARGER */
 
 #endif  /* __CROS_EC_USB_CHARGE_H */
