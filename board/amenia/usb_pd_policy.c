@@ -105,8 +105,12 @@ void typec_set_input_current_limit(int port, uint32_t max_ma,
 
 int pd_snk_is_vbus_provided(int port)
 {
+#ifdef CONFIG_USB_PD_VBUS_DETECT_CHARGER
+	return bd99955_is_vbus_provided(port);
+#else
 	return !gpio_get_level(port ? GPIO_USB_C1_VBUS_WAKE_L :
 				      GPIO_USB_C0_VBUS_WAKE_L);
+#endif
 }
 
 int pd_board_checks(void)
