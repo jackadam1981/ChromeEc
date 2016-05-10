@@ -403,7 +403,7 @@ void board_set_charge_limit(int port, int supplier, int charge_ma)
 
 int extpower_is_present(void)
 {
-	return bd99955_extpower_is_present();
+	return bd99955_is_vbus_provided(BD99955_CHARGE_PORT_BOTH);
 }
 
 int usb_charger_port_is_sourcing_vbus(int port)

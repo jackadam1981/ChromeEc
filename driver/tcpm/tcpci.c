@@ -226,7 +226,8 @@ void tcpci_tcpc_alert(int port)
 			/* Update VBUS status */
 			tcpc_vbus[port] = reg &
 				TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
-#if defined(CONFIG_USB_PD_TCPM_VBUS) && defined(CONFIG_USB_CHARGER)
+#if defined(CONFIG_USB_PD_TCPM_VBUS) && defined(CONFIG_USB_CHARGER) && \
+	!defined(CONFIG_CHARGER_VBUS_INTERRUPT)
 			/* Update charge manager with new VBUS state */
 			usb_charger_vbus_change(port, tcpc_vbus[port]);
 			task_wake(PD_PORT_TO_TASK_ID(port));
