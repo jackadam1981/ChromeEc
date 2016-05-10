@@ -1951,6 +1951,9 @@
 /* Common USB / BC1.2 charger detection routines */
 #undef CONFIG_USB_CHARGER
 
+/* USB charger interrupt to detect VBUS interrupts */
+#undef USB_CHARGER_VBUS_INTERRUPT
+
 /* Enable USB serial console module. */
 #undef CONFIG_USB_CONSOLE
 

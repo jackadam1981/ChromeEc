@@ -339,6 +339,69 @@ static void bd99955_bc12_detach(int port, int type)
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
+
+#ifdef USB_CHARGER_VBUS_INTERRUPT
+static int bd99955_enable_vbus_detect_interrupts(int port, int enable)
+{
+	int reg;
+	int rv;
+	int port_reg;
+	int mask_val;
+
+	/* 1st Level Interrupt Setting */
+	rv = ch_raw_read16(BD99955_CMD_INT0_SET, &reg,
+			BD99955_EXTENDED_COMMAND);
+	if (rv)
+		return rv;
+
+	mask_val = ((port == BD99955_CHARGE_PORT_VBUS) ?
+			BD99955_CMD_INT0_SET_INT1_EN :
+			BD99955_CMD_INT0_SET_INT2_EN) |
+			BD99955_CMD_INT0_SET_INT0_EN;
+	if (enable)
+		reg |= mask_val;
+	else
+		reg &= ~mask_val;
+
+	rv = ch_raw_write16(BD99955_CMD_INT0_SET, reg,
+			BD99955_EXTENDED_COMMAND);
+	if (rv)
+		return rv;
+
+	/* 2nd Level Interrupt Setting */
+	port_reg = (port == BD99955_CHARGE_PORT_VBUS) ?
+			BD99955_CMD_INT1_SET : BD99955_CMD_INT2_SET;
+	rv = ch_raw_read16(port_reg, &reg, BD99955_EXTENDED_COMMAND);
+	if (rv)
+		return rv;
+
+	if (enable)
+		reg |= (BD99955_CMD_INT_SET_RES | BD99955_CMD_INT_SET_DET);
+	else
+		reg &= ~(BD99955_CMD_INT_SET_RES | BD99955_CMD_INT_SET_DET);
+
+	return ch_raw_write16(port_reg, reg, BD99955_EXTENDED_COMMAND);
+}
+
+static int bd99955_get_vbus_detect_interrupts(int port, int get)
+{
+	int rv;
+	int reg;
+	int port_reg;
+
+	port_reg = (port == BD99955_CHARGE_PORT_VBUS) ?
+			BD99955_CMD_INT1_STATUS : BD99955_CMD_INT2_STATUS;
+	if (get) {
+		rv = ch_raw_read16(port_reg, &reg, BD99955_EXTENDED_COMMAND);
+
+		return rv ? 0 : reg &
+			(BD99955_CMD_INT_SET_RES | BD99955_CMD_INT_SET_DET);
+	} else
+		return ch_raw_write16(port_reg,
+			(BD99955_CMD_INT_SET_RES | BD99955_CMD_INT_SET_DET),
+			BD99955_EXTENDED_COMMAND);
+}
+#endif  /* USB_CHARGER_VBUS_INTERRUPT */
 #endif
 
 
@@ -596,6 +659,12 @@ static void bd99995_init(void)
 	ch_raw_write16(BD99955_CMD_VBATOVP_SET,
 		       (bi->voltage_max + 500) & 0x7ff0,
 		       BD99955_EXTENDED_COMMAND);
+
+#if (defined(HAS_TASK_USB_CHG_P0) || defined(HAS_TASK_USB_CHG_P1)) && \
+	defined(USB_CHARGER_VBUS_INTERRUPT)
+	bd99955_enable_vbus_detect_interrupts(BD99955_CHARGE_PORT_VBUS, 1);
+	bd99955_enable_vbus_detect_interrupts(BD99955_CHARGE_PORT_VCC, 1);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, bd99995_init, HOOK_PRIO_DEFAULT);
 
@@ -683,6 +752,66 @@ void usb_charger_set_switches(int port, enum usb_switch setting)
 	bd99955_enable_usb_switch(port, usb_switch_state[port]);
 	mutex_unlock(&usb_switch_lock[port]);
 }
+
+#ifdef USB_CHARGER_VBUS_INTERRUPT
+int bd99955_is_vbus_provided(int port)
+{
+	int reg;
+
+	if (ch_raw_read16(BD99955_CMD_VBUS_VCC_STATUS, &reg,
+			  BD99955_EXTENDED_COMMAND))
+		return 0;
+
+	return (reg & ((port == BD99955_CHARGE_PORT_VBUS) ?
+			BD99955_CMD_VBUS_VCC_STATUS_VBUS_DETECT :
+			BD99955_CMD_VBUS_VCC_STATUS_VCC_DETECT)) ?
+			1 : 0;
+}
+
+void usb_charger_vbus_interrupt_deferred(void)
+{
+	int port;
+	int intr;
+	task_id_t usb_chg_tskid[CONFIG_USB_PD_PORT_COUNT] = {
+		TASK_ID_USB_CHG_P0,
+#if CONFIG_USB_PD_PORT_COUNT == 2
+		TASK_ID_USB_CHG_P1,
+#endif
+	};
+	task_id_t pd_chg_tskid[CONFIG_USB_PD_PORT_COUNT] = {
+		TASK_ID_PD_C0,
+#if CONFIG_USB_PD_PORT_COUNT == 2
+		TASK_ID_PD_C1,
+#endif
+	};
+
+	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++) {
+		/* Get the VBUS interrupt */
+		intr = bd99955_get_vbus_detect_interrupts(port, 1);
+		if (!intr)
+			continue;
+
+		/* VBUS is detected */
+		if (intr & BD99955_CMD_INT_SET_DET) {
+			task_set_event(usb_chg_tskid[port],
+				USB_CHG_EVENT_ATTACH,
+				0);
+		}
+
+		/* VBUS is reset */
+		if (intr & BD99955_CMD_INT_SET_RES) {
+			task_set_event(usb_chg_tskid[port],
+				USB_CHG_EVENT_DETACH,
+				0);
+		}
+
+		task_wake(pd_chg_tskid[port]);
+
+		/* Clear the VBUS interrupt */
+		bd99955_get_vbus_detect_interrupts(port, 0);
+	}
+}
+#endif  /* USB_CHARGER_VBUS_INTERRUPT */
 
 void usb_charger_task(void)
 {
