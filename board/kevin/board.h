@@ -120,7 +120,7 @@ enum pwm_channel {
 #ifdef BOARD_KEVIN
 	PWM_CH_LED_GREEN,
 #endif
-	PWM_CH_BKLIGHT,
+	PWM_CH_DISPLIGHT,
 	PWM_CH_LED_RED,
 #ifdef BOARD_KEVIN
 	PWM_CH_LED_BLUE,
