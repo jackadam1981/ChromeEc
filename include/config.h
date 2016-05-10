@@ -1950,6 +1950,9 @@
 #undef CONFIG_USB_CHARGER
 #undef CONFIG_USB_CHARGER_BD99955
 
+/* USB charger interrupt to detect VBUS interrupts */
+#undef USB_CHARGER_VBUS_INTERRUPT
+
 /* Enable USB serial console module. */
 #undef CONFIG_USB_CONSOLE
 
