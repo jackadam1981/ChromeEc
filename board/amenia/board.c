@@ -80,6 +80,7 @@ static void tcpc_alert_event(enum gpio_signal signal)
 #endif
 }
 
+#ifndef CONFIG_USB_PD_VBUS_DETECT_CHARGER
 void vbus0_evt(enum gpio_signal signal)
 {
 	if (!gpio_get_level(GPIO_USB_C0_RST_L))
@@ -99,6 +100,7 @@ void vbus1_evt(enum gpio_signal signal)
 	usb_charger_vbus_change(1, !gpio_get_level(signal));
 	task_wake(TASK_ID_PD_C1);
 }
+#endif
 
 void board_set_tcpc_power_mode(int port, int normal_mode)
 {
@@ -216,11 +218,15 @@ void board_tcpc_init(void)
 
 	/* Enable TCPC0 interrupt */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT);
+#ifndef CONFIG_USB_PD_VBUS_DETECT_CHARGER
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
+#endif
 
 	/* Enable TCPC1 interrupt */
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_L);
+#ifndef CONFIG_USB_PD_VBUS_DETECT_CHARGER
 	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE_L);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
@@ -284,7 +290,7 @@ void chipset_do_shutdown(void)
 /* Initialize board. */
 static void board_init(void)
 {
-#if 0 /* TODO: CHARGER */
+#ifdef CONFIG_USB_PD_VBUS_DETECT_CHARGER
 	/* Enable charger interrupt */
 	gpio_enable_interrupt(GPIO_CHARGER_INT_L);
 #endif
