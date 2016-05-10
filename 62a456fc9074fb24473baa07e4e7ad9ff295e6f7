@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "325f8ccd_e94c7191",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-10T16:57:57Z",
+      "side": 1,
+      "message": "add \u0027K\u0027 to these comments, eg. /* 51.1K, 2.2K ohm */. Sorry, I left it out before.",
+      "range": {
+        "startLine": 257,
+        "startChar": 36,
+        "endLine": 257,
+        "endChar": 40
+      },
+      "revId": "62a456fc9074fb24473baa07e4e7ad9ff295e6f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "325f8ccd_c97ad5df",
         "filename": "board/kevin/board.c",
         "patchSetId": 1
@@ -13,6 +36,30 @@
       "writtenOn": "2016-05-10T16:40:55Z",
       "side": 1,
       "message": "I haven\u0027t looked at the source code using this, but it looks wrong to me.\n\nSpecifically:\n* \"future\" should almost certainly be 1023\n* \"Rev 0\" seems to be documented to be 42.  Was it stuffed incorrectly?",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 53
+      },
+      "revId": "62a456fc9074fb24473baa07e4e7ad9ff295e6f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "325f8ccd_69af213d",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-10T16:57:57Z",
+      "side": 1,
+      "message": "thresh_mv represents a voltage in mv. BOARD_VERSION_FUTURE represents \"some voltage for which a board version is not yet defined\", so it encompasses the full range of the ADC.\n\nREV0 / Kevin proto 1 has a 51.1K PU to 1.8V and a 2.2K PD \u003d~ 74 mV (also confirmed by measurement). Gru proto 1 has a 3.3K PD \u003d~ 109mV (according to datasheet, I have not confirmed). So, the BOARD_VERSION_REV0 threshold is apparently fine. I believe we\u0027ve agreed upon standardized (same for gru / kevn) resistor values going forward.\n\nBut, subsequent thresholds in this table do not make sense. 51.1K PU / 6.8K PD \u003d~ 211 mV. Wonjoon, can you explain?",
+      "parentUuid": "325f8ccd_c97ad5df",
       "range": {
         "startLine": 257,
         "startChar": 0,
