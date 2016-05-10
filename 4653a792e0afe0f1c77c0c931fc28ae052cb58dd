@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "325f8ccd_865b6a75",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-05-10T15:45:03Z",
+      "side": 1,
+      "message": "if somebody screwed up this bit, this will be a net regression without much advantage.\nMaybe we should try a more fool-proof condition ensuring we are not discarding the only available mode:\nif ((mode_caps \u0026 VDO_MODE_DP_RECEPTACLE) \u0026\u0026 (pin_caps \u0026 pin_caps \u0026 MODE_DP_PIN_RECEPTACLE_MASK))\n\nActually I wonder in the multi-function condition is not wrong,\nwe might not \u0027preferred\u0027 multi-function but still want 2 lanes of DP if that\u0027s the only available mode.\nShould we put :\nif (!PD_VDO_DPSTS_MF_PREF(status) \u0026\u0026 (pin_caps \u0026 ~MODE_DP_PIN_MF_MASK))\n\t\tpin_caps \u0026\u003d ~MODE_DP_PIN_MF_MASK;",
+      "range": {
+        "startLine": 485,
+        "startChar": 1,
+        "endLine": 486,
+        "endChar": 42
+      },
+      "revId": "4653a792e0afe0f1c77c0c931fc28ae052cb58dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
