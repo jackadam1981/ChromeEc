@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "325f8ccd_1a47cdaf",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-10T19:39:05Z",
+      "side": 1,
+      "message": "You should consider the state of the chipset before deciding whether to enable touch power. We may init into G3, S0, or anywhere in between due to sysjump.\n\nSee https://chromium-review.googlesource.com/#/c/342787/ for an example.",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 63
+      },
+      "revId": "3f5c4a60cdcda6ed69c00ff5259194566d718da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "325f8ccd_fa2d11f0",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-10T19:39:05Z",
+      "side": 1,
+      "message": "No need for this hook.",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 73
+      },
+      "revId": "3f5c4a60cdcda6ed69c00ff5259194566d718da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
