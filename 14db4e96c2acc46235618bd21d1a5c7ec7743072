@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924d985c_3af8c5d1",
+        "filename": "test/mutex.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-11T23:33:41Z",
+      "side": 1,
+      "message": "You don\u0027t need this line, do you?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "14db4e96c2acc46235618bd21d1a5c7ec7743072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
