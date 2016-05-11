@@ -15,8 +15,11 @@
  * 's' is the stack size in bytes; must be a multiple of 8
  */
 #define CONFIG_TEST_TASK_LIST \
-  TASK_TEST(MTX3C, mutex_random_task, NULL, 384) \
-  TASK_TEST(MTX3B, mutex_random_task, NULL, 384) \
-  TASK_TEST(MTX3A, mutex_random_task, NULL, 384) \
+  TASK_TEST(MTX4C, mutex_contention_task, NULL, 200) \
+  TASK_TEST(MTX4B, mutex_contention_task, NULL, 200) \
+  TASK_TEST(MTX4A, mutex_contention_task, NULL, 200) \
+  TASK_TEST(MTX3C, mutex_random_task, NULL, 200) \
+  TASK_TEST(MTX3B, mutex_random_task, NULL, 200) \
+  TASK_TEST(MTX3A, mutex_random_task, NULL, 200) \
   TASK_TEST(MTX2, mutex_second_task, NULL, 384) \
   TASK_TEST(MTX1, mutex_main_task, NULL, 384)
