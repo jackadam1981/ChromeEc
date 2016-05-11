@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "325f8ccd_d2183172",
+        "filename": "board/pdeval-stm32f072/usb_pd_policy.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-05-11T16:22:57Z",
+      "side": 1,
+      "message": "Should you also have below lines, when HI_PENDING bits are set?\nanx74xx_tcpc_update_hpd_status(port,1,0);",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 2
+      },
+      "revId": "d2eba30313ede4655e2433b746690dfbff8d77a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
