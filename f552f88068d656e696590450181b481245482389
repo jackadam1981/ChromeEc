@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924d985c_74b42643",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-05-11T22:13:45Z",
+      "side": 1,
+      "message": "what is this polling good for ? since the transitions are detected through GPIO interrupts.",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 60
+      },
+      "revId": "f552f88068d656e696590450181b481245482389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
