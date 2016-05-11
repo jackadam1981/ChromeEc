@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "325f8ccd_34bdf2e5",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-11T17:50:51Z",
+      "side": 1,
+      "message": "Aren\u0027t these addresses constant? Can we just initialize them in the struct definition?",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 48
+      },
+      "revId": "f6f8568d76fecef800f12fd5b14ae96df5d04e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
