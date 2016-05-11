@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "924d985c_d1b7a492",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-11T20:21:37Z",
+      "side": 1,
+      "message": "Whenever the state of one is changed, the state of the other is changed. They should be the same.",
+      "parentUuid": "325f8ccd_5708b01e",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 60
+      },
+      "revId": "86d593d71834b52891a54661e5ac49ebe3cbe281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "325f8ccd_d784a0e7",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-11T18:16:14Z",
       "side": 1,
       "message": "Please initialize each entry like this, for readability:\n\n[DEVICE_SERVO_AP] \u003d {\n  .deferred \u003d \u0026servo_deferred_data,\n  .detect_on \u003d GPIO_SERVO_UART1_ON,\n  .detect_off \u003d GPIO_SERVO_UART1_OFF\n},\n\nAny member that\u0027s already zero doesn\u0027t need explicit initialization.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 47
+      },
+      "revId": "86d593d71834b52891a54661e5ac49ebe3cbe281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_7176f8f4",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-11T20:21:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "325f8ccd_d784a0e7",
       "range": {
         "startLine": 206,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "325f8ccd_baf8ebd2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-11T20:21:37Z",
+      "side": 1,
+      "message": "If the state is on we wont enable any interrupts here.\n\nIf the state is off we will enable detect_on.\nIf the state is unknown. enable both.",
+      "parentUuid": "325f8ccd_d75b4074",
+      "range": {
+        "startLine": 320,
+        "startChar": 5,
+        "endLine": 320,
+        "endChar": 53
+      },
+      "revId": "86d593d71834b52891a54661e5ac49ebe3cbe281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "325f8ccd_d21591df",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "924d985c_d18404e8",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-11T20:21:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "325f8ccd_d21591df",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 44
+      },
+      "revId": "86d593d71834b52891a54661e5ac49ebe3cbe281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "325f8ccd_3485f26a",
         "filename": "include/device_state.h",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2016-05-11T18:16:14Z",
       "side": 1,
       "message": "Since you define enum device_type in board.h, change all the \"int device\" parameters to \"enum device_type device\" instead. You can just put a single \n\n  enum device_type;\n\nline in this file to declare it, and leave the definition where it is.",
+      "range": {
+        "startLine": 29,
+        "startChar": 21,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "86d593d71834b52891a54661e5ac49ebe3cbe281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_f18908ff",
+        "filename": "include/device_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-11T20:21:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "325f8ccd_3485f26a",
       "range": {
         "startLine": 29,
         "startChar": 21,
