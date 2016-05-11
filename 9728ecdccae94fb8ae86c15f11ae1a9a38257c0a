@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "325f8ccd_61764df5",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-11T03:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52808013_367b067c",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 67
+      },
+      "revId": "9728ecdccae94fb8ae86c15f11ae1a9a38257c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52808013_76757e82",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-09T22:43:08Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 67
+      },
+      "revId": "9728ecdccae94fb8ae86c15f11ae1a9a38257c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "325f8ccd_0162f930",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-11T03:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52808013_76757e82",
       "range": {
         "startLine": 205,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "325f8ccd_2167f540",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-11T03:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52808013_9642f22e",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 49
+      },
+      "revId": "9728ecdccae94fb8ae86c15f11ae1a9a38257c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52808013_16be0274",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2016-05-09T22:43:08Z",
       "side": 1,
       "message": "Add just a little more info for the casual reader, please. Something like: \"The idle state of the UART signals is high, so our RX will be high when the AP or EC is powered up and driving the signals. Our TX is wired directly to the servo\u0027s TX, so it will be high when servo is driving it. That\u0027s also why we shouldn\u0027t attempt to drive it when servo is.\"",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 59
+      },
+      "revId": "9728ecdccae94fb8ae86c15f11ae1a9a38257c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "325f8ccd_41e311b7",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-11T03:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52808013_16be0274",
       "range": {
         "startLine": 82,
         "startChar": 2,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "325f8ccd_018d193c",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-11T03:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52808013_76d1fe61",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 64
+      },
+      "revId": "9728ecdccae94fb8ae86c15f11ae1a9a38257c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52808013_563f9a75",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 2
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "325f8ccd_414791ae",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-11T03:31:08Z",
+      "side": 1,
+      "message": "We only want to enable uarts through the console command.\n\nuart_tx_connect will only enable the uart output when the global output is enabled and when that individual device is powered.",
+      "parentUuid": "52808013_563f9a75",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "9728ecdccae94fb8ae86c15f11ae1a9a38257c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52808013_d652aacb",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 2
@@ -151,6 +295,30 @@
       "writtenOn": "2016-05-09T22:43:08Z",
       "side": 1,
       "message": "This is not reliable if data is being sent.",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 27
+      },
+      "revId": "9728ecdccae94fb8ae86c15f11ae1a9a38257c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "325f8ccd_61440da9",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-11T03:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52808013_d652aacb",
       "range": {
         "startLine": 68,
         "startChar": 5,
