@@ -20,6 +20,30 @@ static struct mutex mtx;
 /* one of the 3 MTX3x tasks */
 #define RANDOM_TASK(num) (TASK_ID_MTX3C + (num % 3))
 
+int mutex_contention_task(void *unused)
+{
+	uint32_t mask;
+	char letter = 'A'+(TASK_ID_MTX4A - task_get_current());
+	/* wait to be activated */
+
+	while (1) {
+		task_wait_event(0);
+		ccprintf("%c+\n", letter);
+		mutex_lock(&mtx);
+		/* Create mask to eliminate lower priority tasks */
+		mask = ~((1 << task_get_current()) - 1);
+		/* Make sure no higher pri tasks are pending on mutex */
+		if (mask & mtx.waiters)
+			test_fail();
+		ccprintf("%c=\n", letter);
+		task_wait_event(50);
+		ccprintf("%c-\n", letter);
+		mutex_unlock(&mtx);
+	}
+
+	return EC_SUCCESS;
+}
+
 int mutex_random_task(void *unused)
 {
 	char letter = 'A'+(TASK_ID_MTX3A - task_get_current());
@@ -51,12 +75,40 @@ int mutex_second_task(void *unused)
 	mutex_lock(&mtx);
 	ccprintf("done\n");
 	task_wake(TASK_ID_MTX1);
+	/* Allow MTX1 task to run to create lock contention */
+	task_wait_event(50);
 	ccprintf("MTX2: unlocking...\n");
 	mutex_unlock(&mtx);
 
 	task_wait_event(0);
 
 	return EC_SUCCESS;
+}
+
+static void mutex_contention_loop(int offset)
+{
+	int n;
+	uint32_t task_mask = 0;
+	task_id_t task_id;
+
+	/* Grab the lock */
+	mutex_lock(&mtx);
+	/* Wake 3 tasks which attempt to grab the lock */
+	for (n = 0; n < 3; n++) {
+		task_id = TASK_ID_MTX4C + ((n + offset) % 3);
+		task_wake(task_id);
+		/* Update mask of tasks which should be pending on lock */
+		task_mask |= 1 << task_id;
+		/* Allow contention task to run */
+		task_wait_event(10);
+	}
+
+	/* Verify that mutex lock is pending for all 3 contention tasks */
+	if (mtx.waiters != task_mask)
+		test_fail();
+	mutex_unlock(&mtx);
+	/* Allow contention tasks to run now that lock is available */
+	task_wait_event(1000);
 }
 
 int mutex_main_task(void *unused)
@@ -90,12 +142,17 @@ int mutex_main_task(void *unused)
 	ccprintf("MTX1: get lock\n");
 	mutex_unlock(&mtx);
 
+	/* --- Test lock contention and order of task resume --- */
+	ccprintf("Test contention and release order\n");
+	for (i = 0; i < 3; i++)
+		mutex_contention_loop(i);
+
 	/* --- mass lock-unlocking from several tasks --- */
 	ccprintf("Massive locking/unlocking :\n");
 	for (i = 0; i < 500; i++) {
 		/* Wake up a random task */
 		task_wake(RANDOM_TASK(rtask));
-		/* next pseudo random delay */
+		/* next pseudo random task */
 		rtask = prng(rtask);
 		/* Wait for a "random" period */
 		task_wait_event(PERIOD_US(rdelay));
