@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "325f8ccd_b7d6c4cf",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-11T18:08:20Z",
+      "side": 1,
+      "message": "These are thresholds, so if the observed voltage exceeds this value, we will fall to the next version. Since you chose thresholds exactly at the expected voltage, we may easily fall above them due to resistor tolerance, rounding, ADC precision, etc.\n\nWe should either choose thresholds at the midpoint between expected voltages or modify the code below to select nearest voltage.",
+      "range": {
+        "startLine": 258,
+        "startChar": 23,
+        "endLine": 258,
+        "endChar": 26
+      },
+      "revId": "32b27c08b0cd0472b31d95f5e2d70f17bb9cd1c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
