@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "325f8ccd_54ac2e46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-11T17:19:55Z",
+      "side": 1,
+      "message": "You should test the PWM backlight functionality using ectool (command pwmsetkblight / pwmgetkblight) if you haven\u0027t done so already.",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 58
+      },
+      "revId": "960cd5b38b3657740a7c1a8fcf8ffc78005604ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "325f8ccd_34c3b201",
+        "filename": "board/cave/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-11T17:19:55Z",
+      "side": 1,
+      "message": "Just to confirm, this GPIO gates the PWM signal to the backlight, right?",
+      "range": {
+        "startLine": 436,
+        "startChar": 16,
+        "endLine": 436,
+        "endChar": 28
+      },
+      "revId": "960cd5b38b3657740a7c1a8fcf8ffc78005604ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
