@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924d985c_df34fd9b",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-12T23:09:41Z",
+      "side": 1,
+      "message": "This doesn\u0027t even compile yet, but you get the idea.. I\u0027ll probably put a call to the charger-specific set_switches function behind ifdefs.",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "1577d03ee63f8b8156d4c92d156b89d46a70c127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
