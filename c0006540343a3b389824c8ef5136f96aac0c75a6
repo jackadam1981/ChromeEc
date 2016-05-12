@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924d985c_9f1b56b8",
+        "filename": "common/usb_charger_bd99955.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-12T21:28:14Z",
+      "side": 1,
+      "message": "We need to implement some functions like usb_charger_set_switches (can simply call into the function you already wrote in the charger driver). Also, some of the functions in usb_charger.c are common.\n\nI will work on a CL now to split usb_charger.c into common code and pi3usb9281-only code.",
+      "revId": "c0006540343a3b389824c8ef5136f96aac0c75a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_df66be42",
+        "filename": "common/usb_charger_bd99955.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-12T21:28:14Z",
+      "side": 1,
+      "message": "If it\u0027s truly necessary to do this before enabling the VBUS GPIO interrupt, we should add HOOK_PRIO_INIT_CHARGER.",
+      "range": {
+        "startLine": 76,
+        "startChar": 42,
+        "endLine": 76,
+        "endChar": 63
+      },
+      "revId": "c0006540343a3b389824c8ef5136f96aac0c75a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_44492324",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-12T21:28:14Z",
+      "side": 1,
+      "message": "Suggest to change this to ... \u0026\u0026 (reg \u0026 BD99955_CMD_SYSTEM_STATUS_OTPLD_STATE) \u0026\u0026 (reg \u0026 BD99955_CMD_SYSTEM_STATUS_ALLRST_STATE))",
+      "range": {
+        "startLine": 132,
+        "startChar": 14,
+        "endLine": 135,
+        "endChar": 47
+      },
+      "revId": "c0006540343a3b389824c8ef5136f96aac0c75a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
