@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "924d985c_7f8871d8",
+        "filename": "common/usb_charger_bd99955.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-12T22:43:50Z",
+      "side": 1,
+      "message": "Okay, I will add usb_charger_set_switches().",
+      "parentUuid": "924d985c_9f1b56b8",
+      "revId": "c0006540343a3b389824c8ef5136f96aac0c75a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "924d985c_df66be42",
         "filename": "common/usb_charger_bd99955.c",
         "patchSetId": 11
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "924d985c_dfbddd77",
+        "filename": "common/usb_charger_bd99955.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-12T22:43:50Z",
+      "side": 1,
+      "message": "okay I will change it to HOOK_PRIO_INIT_CHARGER",
+      "parentUuid": "924d985c_df66be42",
+      "range": {
+        "startLine": 76,
+        "startChar": 42,
+        "endLine": 76,
+        "endChar": 63
+      },
+      "revId": "c0006540343a3b389824c8ef5136f96aac0c75a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "924d985c_44492324",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 11
@@ -53,6 +95,30 @@
       "writtenOn": "2016-05-12T21:28:14Z",
       "side": 1,
       "message": "Suggest to change this to ... \u0026\u0026 (reg \u0026 BD99955_CMD_SYSTEM_STATUS_OTPLD_STATE) \u0026\u0026 (reg \u0026 BD99955_CMD_SYSTEM_STATUS_ALLRST_STATE))",
+      "range": {
+        "startLine": 132,
+        "startChar": 14,
+        "endLine": 135,
+        "endChar": 47
+      },
+      "revId": "c0006540343a3b389824c8ef5136f96aac0c75a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_9f7fd598",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-12T22:43:50Z",
+      "side": 1,
+      "message": "Okay, I will change it.",
+      "parentUuid": "924d985c_44492324",
       "range": {
         "startLine": 132,
         "startChar": 14,
