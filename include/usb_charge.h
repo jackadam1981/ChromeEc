@@ -81,5 +81,4 @@ void usb_charger_set_switches(int port, enum usb_switch setting);
  * @param vbus_level new VBUS level
  */
 void usb_charger_vbus_change(int port, int vbus_level);
-
 #endif  /* __CROS_EC_USB_CHARGE_H */
