@@ -67,14 +67,6 @@ enum usb_switch {
 };
 
 /**
- * Configure USB data switches on type-C port.
- *
- * @param port port number.
- * @param setting new switch setting to configure.
- */
-void usb_charger_set_switches(int port, enum usb_switch setting);
-
-/**
  * Notify USB_CHG task that VBUS level has changed.
  *
  * @param port port number.
@@ -82,4 +74,11 @@ void usb_charger_set_switches(int port, enum usb_switch setting);
  */
 void usb_charger_vbus_change(int port, int vbus_level);
 
+/**
+ * Configure USB data switches on type-C port.
+ *
+ * @param port port number.
+ * @param setting new switch setting to configure.
+ */
+void usb_charger_set_switches(int port, enum usb_switch setting);
 #endif  /* __CROS_EC_USB_CHARGE_H */
