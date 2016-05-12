@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924d985c_e465b70f",
+        "filename": "common/usb_charger_bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-12T20:34:45Z",
+      "side": 0,
+      "message": "We may want to leave this function, in case we have alternate VBUS detection methods.",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 28
+      },
+      "revId": "c0006540343a3b389824c8ef5136f96aac0c75a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

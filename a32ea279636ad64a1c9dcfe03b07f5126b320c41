@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924d985c_84aceb47",
+        "filename": "common/usb_charger_bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-12T20:34:45Z",
+      "side": 1,
+      "message": "Does BC1.2 detection rely on using VBUS detection on the charger? Eg. what if I have a GPIO detection method, or detect via my TCPC. Can BC1.2 detection still work?",
+      "revId": "a32ea279636ad64a1c9dcfe03b07f5126b320c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_c4c43322",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-12T20:34:45Z",
+      "side": 1,
+      "message": "Maybe name this bd99955_is_vbus_provided(). We should leave pd_snk_is_vbus_provided() defined at the board level (it can call bd99955_is_vbus_provided()).",
+      "range": {
+        "startLine": 650,
+        "startChar": 4,
+        "endLine": 650,
+        "endChar": 27
+      },
+      "revId": "a32ea279636ad64a1c9dcfe03b07f5126b320c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
