@@ -265,6 +265,48 @@ void mutex_unlock(struct mutex *mtx)
 		}
 }
 
+void task_mutex_lock(struct task_mutex *mtx)
+{
+	int value = 0;
+	task_id_t task_num = task_get_current();
+	int id = 1 << task_num;
+
+	do {
+		if (mtx->lock == 0) {
+			mtx->lock = 1;
+			value = 1;
+		}
+
+		if (!value) {
+			if (mtx->task == task_num) {
+				ccprintf("mutex: Already held\n");
+				return;
+			}
+			mtx->waiters |= id;
+			task_wait_event_mask(TASK_EVENT_MUTEX, 0);
+		}
+	} while (!value);
+
+	mtx->task = task_num;
+	mtx->waiters &= ~id;
+}
+
+void task_mutex_unlock(struct task_mutex *mtx)
+{
+	int v;
+	mtx->lock = 0;
+
+	/* Set to value that can't equal current task */
+	mtx->task = TASK_ID_COUNT;
+	for (v = 31; v >= 0; --v)
+		if ((1ul << v) & mtx->waiters) {
+			mtx->waiters &= ~(1ul << v);
+			ccprintf("setting event for task %d\n", v);
+			task_set_event(v, TASK_EVENT_MUTEX, 0);
+			break;
+		}
+}
+
 task_id_t task_get_current(void)
 {
 	return my_task_id;
