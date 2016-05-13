@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "372a1e7b_ae193769",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-13T01:59:39Z",
+      "side": 1,
+      "message": "If ANX7688 firmware is corrupted, this will loop forever, as there is no distinction between loading in progress and CRC failed.\n\nI\u0027d check reg 0xe7 instead, see https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d50381#c33 .\n\nOr at least fail if reg 0xe7 bit 4 is set, but reg 0x29 bit ANX7688_REG_DEBUG24_TCPC1_DONE is not.",
+      "revId": "1576e318f4bb581a872d0fc7df20a71d14555d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
