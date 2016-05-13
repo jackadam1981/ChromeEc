@@ -28,6 +28,12 @@
 #define I2C_DATA_ADDR  0x35
 #define I2C_BLOCK_ADDR 0x79
 
+/* SMBus GPIO expander I2C address */
+#define I2C_GPIO_EXPANDER_ADDR  0x21
+/* SMBus GPIO expander registers */
+#define EXPANDER_REG_OUT_P1     0x3
+#define EXPANDER_REG_CONF       0x7
+
 #define I2C_FREQ 400000
 
 /* I2C pins on the FTDI interface */
@@ -491,6 +497,52 @@ static int config_i2c(struct ftdi_context *ftdi)
 
 #define SPECIAL_BUFFER_SIZE \
 	(((SPECIAL_LEN_USEC * SPECIAL_FREQ * 2 / USEC) + 7) & ~7)
+
+static int ex_i2c_w(struct ftdi_context *ftdi, uint8_t cmd, uint8_t data)
+{
+	int ret;
+	uint8_t buf[2];
+
+	buf[0] = cmd;
+	buf[1] = data;
+	ret = i2c_byte_transfer(ftdi, I2C_GPIO_EXPANDER_ADDR, buf, 1, 2);
+	if (ret < 0)
+		return -EIO;
+
+	return 0;
+}
+
+static int ex_i2c_r(struct ftdi_context *ftdi, uint8_t cmd, uint8_t *data)
+{
+	int ret;
+
+	ret = i2c_byte_transfer(ftdi, I2C_GPIO_EXPANDER_ADDR, &cmd, 1, 1);
+	if (ret < 0)
+		return -EIO;
+	ret = i2c_byte_transfer(ftdi, I2C_GPIO_EXPANDER_ADDR, data, 0, 1);
+	if (ret < 0)
+		return -EIO;
+
+	return 0;
+}
+
+static int config_smbus_io_expander(struct ftdi_context *ftdi)
+{
+	uint8_t val = 0;
+	int ret = 0;
+
+	if (config_i2c(ftdi) < 0)
+		return -1;
+
+	ret |= ex_i2c_r(ftdi, EXPANDER_REG_CONF, &val);
+	/* I2C_MUX_EN, I2C_MUX_ADD0, and I2C_MUX_ADD1 output mode */
+	ret |= ex_i2c_w(ftdi, EXPANDER_REG_CONF, (val & ~0x7));
+	ret |= ex_i2c_r(ftdi, EXPANDER_REG_OUT_P1, &val);
+	/* I2C_MUX_EN: 1, I2C_MUX_ADD1: 1, and I2C_MUX_ADD0: 0 */
+	ret |= ex_i2c_w(ftdi, EXPANDER_REG_OUT_P1, (val & ~0x7) | 0x6);
+
+	return ret;
+}
 
 static int send_special_waveform(struct ftdi_context *ftdi)
 {
@@ -1049,6 +1101,9 @@ int main(int argc, char **argv)
 	hnd = open_ftdi_device(usb_vid, usb_pid, usb_interface, usb_serial);
 	if (hnd == NULL)
 		return 1;
+
+	if (config_smbus_io_expander(hnd) < 0)
+		goto terminate;
 
 	/* Trigger embedded monitor detection */
 	if (send_special_waveform(hnd) < 0)
