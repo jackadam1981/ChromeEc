@@ -2014,9 +2014,6 @@
 /* 8-bit USB type-C switch I2C addresses */
 #undef CONFIG_USB_SWITCH_I2C_ADDRS
 
-/* Support the TSU6721 I2C smart switch */
-#undef CONFIG_USB_SWITCH_TSU6721
-
 /* Support the Pericom PI3USB9281 I2C USB switch */
 #undef CONFIG_USB_SWITCH_PI3USB9281
 
