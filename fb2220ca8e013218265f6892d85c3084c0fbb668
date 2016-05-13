@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924d985c_5956654b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-13T17:11:04Z",
+      "side": 1,
+      "message": "Is this related to Chromium OS Servo debug board (https://www.chromium.org/chromium-os/servo) or something else?",
+      "range": {
+        "startLine": 7,
+        "startChar": 38,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "fb2220ca8e013218265f6892d85c3084c0fbb668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_796c0928",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-13T17:11:04Z",
+      "side": 1,
+      "message": "Please try to limit commit message lines to 80 chars.",
+      "revId": "fb2220ca8e013218265f6892d85c3084c0fbb668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
