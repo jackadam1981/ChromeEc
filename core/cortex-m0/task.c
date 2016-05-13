@@ -540,6 +540,59 @@ void mutex_unlock(struct mutex *mtx)
 	atomic_clear(&tsk->events, TASK_EVENT_MUTEX);
 }
 
+void sloppy_mutex_lock(struct sloppy_mutex *mtx)
+{
+	task_id_t task_num = task_get_current();
+	uint32_t id = 1 << task_num;
+
+	ASSERT(id != TASK_ID_INVALID);
+
+	while (1) {
+		/* Try to get the lock (set 2 into the lock field) */
+		__asm__ __volatile__("cpsid i");
+		if (mtx->lock == 0)
+			break;
+		__asm__ __volatile__("cpsie i");
+		/* If lock already held by this task, then exit */
+		if (mtx->task == task_num)
+			return;
+		atomic_or(&mtx->waiters, id);
+		/* Contention on the mutex */
+		task_wait_event_mask(TASK_EVENT_MUTEX, 0);
+	}
+	mtx->lock = 2;
+	/* Save the task id that is acquiring the lock */
+	mtx->task = task_num;
+	__asm__ __volatile__("cpsie i");
+
+	atomic_clear(&mtx->waiters, id);
+}
+
+void sloppy_mutex_unlock(struct sloppy_mutex *mtx)
+{
+	uint32_t waiters;
+	task_ *tsk = current_task;
+
+	/* Reset to value which can't be current task number */
+	mtx->task = TASK_ID_COUNT;
+
+	__asm__ __volatile__("   ldr     %0, [%2]\n"
+			     "   str     %3, [%1]\n"
+			     : "=&r" (waiters)
+			     : "r" (&mtx->lock), "r" (&mtx->waiters), "r" (0)
+			     : "cc");
+	while (waiters) {
+		task_id_t id = __fls(waiters);
+
+		waiters &= ~(1 << id);
+		/* Somebody is waiting on the mutex */
+		task_set_event(id, TASK_EVENT_MUTEX, 0);
+	}
+
+	/* Ensure no event is remaining from mutex wake-up */
+	atomic_clear(&tsk->events, TASK_EVENT_MUTEX);
+}
+
 void task_print_list(void)
 {
 	int i;

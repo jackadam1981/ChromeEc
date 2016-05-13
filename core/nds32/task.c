@@ -650,6 +650,64 @@ void mutex_unlock(struct mutex *mtx)
 	atomic_clear(&tsk->events, TASK_EVENT_MUTEX);
 }
 
+void sloppy_mutex_lock(struct sloppy_mutex *mtx)
+{
+	task_id_t task_num = task_get_current();
+	uint32_t id = 1 << task_num;
+
+
+	ASSERT(id != TASK_ID_INVALID);
+
+	/* critical section with interrupts off */
+	interrupt_disable();
+	while (1) {
+		if (!mtx->lock) { /* we got it ! */
+			mtx->lock = 2;
+			mtx->task = task_num;
+			mtx->waiters &= ~id;
+			/* end of critical section : re-enable interrupts */
+			interrupt_enable();
+			return;
+		} else { /* Contention on the mutex */
+			/* end of critical section : re-enable interrupts */
+			interrupt_enable();
+			/* If lock already held by this task, then exit */
+			if (mtx->task == task_num)
+				return;
+			/* Set the waiter task bit */
+			atomic_or(&mtx->waiters, id);
+			/* Sleep waiting for our turn */
+			task_wait_event_mask(TASK_EVENT_MUTEX, 0);
+			/* re-enter critical section */
+			interrupt_disable();
+		}
+	}
+}
+
+void sloppy_mutex_unlock(struct sloppy_mutex *mtx)
+{
+	uint32_t waiters;
+	task_ *tsk = current_task;
+
+	/* Reset to value which can't be current task number */
+	mtx->task = TASK_ID_COUNT;
+
+	waiters = mtx->waiters;
+	/* give back the lock */
+	mtx->lock = 0;
+
+	while (waiters) {
+		task_id_t id = __fls(waiters);
+
+		waiters &= ~(1 << id);
+		/* Somebody is waiting on the mutex */
+		task_set_event(id, TASK_EVENT_MUTEX, 0);
+	}
+
+	/* Ensure no event is remaining from mutex wake-up */
+	atomic_clear(&tsk->events, TASK_EVENT_MUTEX);
+}
+
 void task_print_list(void)
 {
 	int i;

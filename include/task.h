@@ -246,6 +246,31 @@ void mutex_lock(struct mutex *mtx);
  */
 void mutex_unlock(struct mutex *mtx);
 
+struct sloppy_mutex {
+	uint32_t lock;
+	uint32_t waiters;
+	task_id_t task;
+};
+
+/**
+ * Lock a mutex.
+ *
+ * Similar behavior to mutex_lock(). But, this version enables the
+ * same task to attempt to grab the lock multiple times. This is
+ * useful for cases where a mutex lock is needed but there are
+ * multiple possible entry points which need to check for the same
+ * lock.
+ *
+ * Must not be used in interrupt context!
+ */
+void sloppy_mutex_lock(struct sloppy_mutex *mtx);
+
+/**
+ * Release a mutex previously locked by the same task and reset
+ * the task number in the mutex struct variable.
+ */
+void sloppy_mutex_unlock(struct sloppy_mutex *mtx);
+
 struct irq_priority {
 	uint8_t irq;
 	uint8_t priority;
