@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924d985c_179e61c6",
+        "filename": "driver/temp_sensor/thermistor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-14T04:04:48Z",
+      "side": 1,
+      "message": "For Reef, we have two thermistors with different parameters, so we\u0027ll have two different tables with slightly different scaling factors and number of pairs.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 47
+      },
+      "revId": "a37d03af1e2be19c04d0ed1884b256fa0ec4e388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_d7b4d944",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-14T04:04:48Z",
+      "side": 1,
+      "message": "For Reef we\u0027re dealing with 13.7Kohm and 51.1Kohm, so our readings will be much different then what the current algorithm assumes.",
+      "range": {
+        "startLine": 14,
+        "startChar": 29,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "a37d03af1e2be19c04d0ed1884b256fa0ec4e388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_97aa51e3",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-14T04:04:48Z",
+      "side": 1,
+      "message": "I\u0027m hoping the compiler is smart enough to omit this if it sees that ncp15wb_calculate_temp() is not used. If not, I can put my changes in a separate file.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "a37d03af1e2be19c04d0ed1884b256fa0ec4e388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_57a8e9ed",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-14T04:04:48Z",
+      "side": 1,
+      "message": "Maybe we can do better with there? Not sure if there\u0027s a standard return value for \"too cold\" or \"too hot\".",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 27
+      },
+      "revId": "a37d03af1e2be19c04d0ed1884b256fa0ec4e388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
