@@ -98,3 +98,42 @@ int ncp15wb_calculate_temp(uint16_t adc)
 
 	return temp;
 }
+
+int thermistor_linear_interpolate(uint16_t mv,
+		const struct thermistor_info *info)
+{
+	int i, step_mv, num_steps;
+	int v0, v1, d0, d1;
+	const struct thermistor_data_pair *data = info->data;
+
+	/* We need at least two points to form a line. */
+	ASSERT(info->num_pairs >= 2);
+
+	/*
+	 * If input value is out of bounds return the lowest or highest
+	 * value in the data sets provided.
+	 */
+	if (mv < data[0].mv * info->scaling_factor)
+		return data[0].temp;
+	else if (mv > data[info->num_pairs - 1].mv * info->scaling_factor)
+		return data[info->num_pairs - 1].temp;
+
+	for (i = 0; i < info->num_pairs - 1; i++) {
+		v0 = data[i].mv * info->scaling_factor;
+		v1 = data[i + 1].mv * info->scaling_factor;
+		if ((mv >= v0) && (mv <= v1))
+			break;
+	}
+
+	num_steps = data[i + 1].temp - data[i].temp;
+	step_mv = (v1 - v0) / num_steps;
+
+	/* Optimize precision for the higher end of the curve. */
+	d0 = v1 - (v0 + step_mv * num_steps);
+	d1 = (v0 + (step_mv + 1) * num_steps) - v1;
+	if (d1 < d0)
+		step_mv++;
+
+	num_steps = (mv - v0) / step_mv;
+	return data[i].temp + num_steps;
+}
