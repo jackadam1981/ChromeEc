@@ -98,3 +98,46 @@ int ncp15wb_calculate_temp(uint16_t adc)
 
 	return temp;
 }
+
+int thermistor_linear_interpolate(uint16_t mv,
+		const struct thermistor_info *info)
+{
+	int i, num_steps;
+	int v0, v1, t0, t1;
+	const struct thermistor_data_pair *data = info->data;
+
+	/* We need at least two points to form a line. */
+	ASSERT(info->num_pairs >= 2);
+
+	/*
+	 * If input value is out of bounds return the lowest or highest
+	 * value in the data sets provided.
+	 */
+	if (mv < data[0].mv * info->scaling_factor)
+		return data[0].temp;
+	else if (mv > data[info->num_pairs - 1].mv * info->scaling_factor)
+		return data[info->num_pairs - 1].temp;
+
+	for (i = 0; i < info->num_pairs - 1; i++) {
+		v0 = data[i].mv * info->scaling_factor;
+		v1 = data[i + 1].mv * info->scaling_factor;
+		if ((mv >= v0) && (mv <= v1))
+			break;
+	}
+
+	t0 = data[i].temp;
+	t1 = data[i + 1].temp;
+
+	/*
+	 * The obvious way of doing this would be to figure out how many mV per
+	 * degree are in between the two points (mv_per_deg_c), and then how
+	 * many of those exist between the input voltage and lower voltage (v0):
+	 *   1. mv_per_deg_c = (v1 - v0) / (t1 - t0)
+	 *   2. num_steps = (mv - v0) / mv_per_deg_c
+	 *   3. result = t0 + num_steps
+	 *
+	 * Combine #1 and #2 to mitigate precision loss due to integer division.
+	 */
+	num_steps = ((mv - v0) * (t1 - t0)) / (v1 - v0);
+	return t0 + num_steps;
+}
