@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "driver/temp_sensor/thermistor.h"
 #include "fan.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -532,6 +533,82 @@ static int test_ncp15wb_adc_to_temp(void)
 	return EC_SUCCESS;
 }
 
+/* enough to scale largest voltage down to uint8_t size */
+#define THERMISTOR_SCALING_FACTOR 13
+static int test_thermistor_linear_interpolate(void)
+{
+	int i, mv;
+	int t0;
+	/*
+	 * ADC value to temperature table. Data is derived from Seinhart-Hart
+	 * equation in a resistor divider circuit with Vdd=3300mV, R = 51.1Kohm,
+	 * and Murata NCP15WB-series thermistor (B = 4050, T0 = 298.15, nominal
+	 * resistance = 47Kohm).
+	 */
+	struct thermistor_data_pair data[] = {
+		{ 787 / THERMISTOR_SCALING_FACTOR, 0 },
+		{ 1142 / THERMISTOR_SCALING_FACTOR, 10 },
+		{ 1528 / THERMISTOR_SCALING_FACTOR, 20 },
+		{ 1901 / THERMISTOR_SCALING_FACTOR, 30 },
+		{ 2229 / THERMISTOR_SCALING_FACTOR, 40 },
+		{ 2497 / THERMISTOR_SCALING_FACTOR, 50 },
+		{ 2703 / THERMISTOR_SCALING_FACTOR, 60 },
+		{ 2857 / THERMISTOR_SCALING_FACTOR, 70 },
+		{ 2970 / THERMISTOR_SCALING_FACTOR, 80 },
+		{ 3053 / THERMISTOR_SCALING_FACTOR, 90 },
+		{ 3113 / THERMISTOR_SCALING_FACTOR, 100 },
+	};
+	struct thermistor_info info = {
+		.scaling_factor = THERMISTOR_SCALING_FACTOR,
+		.num_pairs = ARRAY_SIZE(data),
+		.data = data,
+	};
+	/* Reference data points to compare accuracy, taken from same
+	 * set of derived values but at -1, +1, and in between. */
+	struct {
+		uint16_t mv;	/* not scaled */
+		int temp;
+	} cmp[] = {
+		{ 820, 1 },  { 958, 5 }, { 1104, 9 },
+		{ 1180, 11 }, { 1334, 15 }, { 1489, 19 },
+		{ 1566, 21 }, { 1718, 25 }, { 1866, 29 },
+		{ 1937, 31 }, { 2073, 35 }, { 2199, 39 },
+		{ 2259, 41 }, { 2371, 45 }, { 2473, 49 },
+		{ 2520, 51 }, { 2607, 55 }, { 2685, 59 },
+		{ 2720, 61 }, { 2786, 65 }, { 2844, 69 },
+		{ 2870, 71 }, { 2918, 75 }, { 2960, 79 },
+		{ 2980, 81 }, { 3015, 85 }, { 3045, 89 },
+		{ 3060, 91 }, { 3085, 95 }, { 3107, 99 },
+	};
+
+	/* Verify that calculated temperature monotonically
+	 * increases with voltage (0-5V, 10mV steps) */
+	for (mv = data[0].mv * info.scaling_factor, t0 = data[0].temp;
+		mv < data[ARRAY_SIZE(data) - 1].mv;
+		mv += 10) {
+		int t1 = thermistor_linear_interpolate(mv, &info);
+
+		TEST_ASSERT(t1 >= t0);
+		t0 = t1;
+	}
+
+	/* Datapoints that seed the algorithm should produce accurate results */
+	for (i = 0; i < ARRAY_SIZE(data); i++) {
+		uint16_t mv = data[i].mv * info.scaling_factor;
+		int t = thermistor_linear_interpolate(mv, &info);
+
+		TEST_ASSERT(t >= data[i].temp - 1 && t <= data[i].temp + 1);
+	}
+
+	/* Verify comparison datapoints are within 2C accuracy */
+	for (i = 0; i < ARRAY_SIZE(cmp); i++) {
+		int t = thermistor_linear_interpolate(cmp[i].mv, &info);
+
+		TEST_ASSERT(t >= cmp[i].temp - 2 && t <= cmp[i].temp + 2);
+	}
+
+	return EC_SUCCESS;
+}
 
 void run_test(void)
 {
@@ -545,5 +622,6 @@ void run_test(void)
 	RUN_TEST(test_several_limits);
 
 	RUN_TEST(test_ncp15wb_adc_to_temp);
+	RUN_TEST(test_thermistor_linear_interpolate);
 	test_print_result();
 }
