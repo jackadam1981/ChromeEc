@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924d985c_13c4b06f",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-16T19:03:21Z",
+      "side": 1,
+      "message": "Can we remove this function (+ related data structures + constants) and replace it with calls to thermistor_linear_interpolate() w/ a proper data structure?",
+      "revId": "0c6e999298b6b3d57694a1a0903b127fb1f9e2c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_d3c9488d",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-16T19:03:21Z",
+      "side": 1,
+      "message": "Should we clamp to min / max temperature in our table? I don\u0027t want to run into a case where we fail to take action because we\u0027re *super* hot.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 27
+      },
+      "revId": "0c6e999298b6b3d57694a1a0903b127fb1f9e2c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
