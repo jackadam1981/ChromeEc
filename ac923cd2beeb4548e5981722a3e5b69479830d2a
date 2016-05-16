@@ -16,6 +16,24 @@
       "revId": "ac923cd2beeb4548e5981722a3e5b69479830d2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_6d3fd975",
+        "filename": "common/case_closed_debug.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-16T15:56:57Z",
+      "side": 1,
+      "message": "usb_init() is a HOOK_INIT function. It doesn\u0027t take args. \nusb_reset() is probably where we want to make CCD decisions. It will be called whenever the PHY changes, and should do the right thing based on the active PHY and CCD mode. See also http://crosbug.com/p/52055",
+      "parentUuid": "924d985c_2d76b192",
+      "revId": "ac923cd2beeb4548e5981722a3e5b69479830d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
