@@ -82,6 +82,10 @@
 #define TMP432_STATUS_TEMP_HIGH_ALARM	(1 << 4)
 #define TMP432_STATUS_BUSY		(1 << 7)
 
+/* Limintaions */
+#define TMP432_HYSTERESIS_HIGH_LIMIT	255
+#define TMP432_HYSTERESIS_LOW_LIMIT	0
+
 /**
  * Get the last polled value of a sensor.
  *
@@ -92,20 +96,31 @@
  * @return EC_SUCCESS if successful, non-zero if error.
  */
 int tmp432_get_val(int idx, int *temp_ptr);
+enum channel_id {
+	TMP432_CHANNEL_LOCAL,
+	TMP432_CHANNEL_REMOTE1,
+	TMP432_CHANNEL_REMOTE2,
 
+	TMP432_CHANNEL_COUNT
+};
 /*
- * Set TMP432 ALERT# pin to THERM mode
+ * Set TMP432 ALERT#/THERM2# pin to THERM mode, and give a limit
+ * for a specific channel.
+ *
  * [5] : 0 for ALERT mode(default), 1 for THERM mode
  *
- * @param limit_degree	High limit temperature, default: 85C
+ * @param channel	specific a channel, or -1 for all
+ *
+ * @param limit_c	High limit temperature, default: 85C
  *
  * @param hysteresis	Hysteresis temperature, default: 10C
+ *			All channels share the same hysteresis
  *
- * In THERM mode, ALERT# pin will trigger(Low) by itself when
- * any channel's temperature is greater( >= ) limit_degree,
- * and release(High) by itself when all temperature
- * is lower than (LimitDegree + Hysteresis)
+ * In THERM mode, ALERT# pin will trigger(Low) by itself when any
+ * channel's temperature is greater( >= )than channel's limit_c,
+ * and release(High) by itself when channel's temperature is lower
+ * than (limit_c - hysteresis)
  */
-int tmp432_set_therm_mode(int limit_degree, int hysteresis);
+int tmp432_set_therm_limit(int channel, int limit_c, int hysteresis);
 
 #endif /* __CROS_EC_TMP432_H */
