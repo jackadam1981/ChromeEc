@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924d985c_ad22a142",
+        "filename": "board/jerry/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-05-16T16:10:20Z",
+      "side": 1,
+      "message": "isn\u0027t this going to decrease our S5 battery life ?\n(as per my remark on the previous CL, we can likely make CONFIG_HIBERNATE and CONFIG_BATTERY_CRITICAL_SHUTDOWN_CUT_OFF not mutually exclusive)",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "c7468cd2b1234bf01d6eced08927dade60d68f2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
