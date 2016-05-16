@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924d985c_2d76b192",
+        "filename": "common/case_closed_debug.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-05-16T15:45:31Z",
+      "side": 1,
+      "message": "This concerns me a bit.  It means that if anyone defines the above CONFIG and the default PHY is the CCD PHY then even when it should be disabled there is a path into the EC over USB that could be used to exploit a bug in the USB driver stack...\n\nA better solution might be to change usb_init to take the PHY to enable?  Then it could be called here with the CCD PHY and in main or wherever else it\u0027s done with the other PHYs.",
+      "revId": "ac923cd2beeb4548e5981722a3e5b69479830d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
