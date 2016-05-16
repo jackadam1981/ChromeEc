@@ -94,7 +94,7 @@ int tmp432_get_val(int idx, int *temp_ptr)
 	return EC_SUCCESS;
 }
 
-int tmp432_set_therm_mode(int limit_degree, int hysteresis)
+static int tmp432_set_therm_mode(void)
 {
 	int ret = 0;
 	int data = 0;
@@ -108,7 +108,41 @@ int tmp432_set_therm_mode(int limit_degree, int hysteresis)
 	if (ret)
 		return EC_ERROR_UNKNOWN;
 
-	ret = raw_write16(TMP432_LOCAL_HIGH_LIMIT_W, limit_degree);
+	return EC_SUCCESS;
+}
+
+int tmp432_set_therm_limit(int channel, int limit_c, int hysteresis)
+{
+	int ret = 0;
+	int reg = 0;
+
+	if (channel >= TMP432_CHANNEL_COUNT)
+		return EC_ERROR_INVAL;
+
+	if (hysteresis > TMP432_HYSTERESIS_HIGH_LIMIT ||
+		hysteresis < TMP432_HYSTERESIS_LOW_LIMIT)
+		return EC_ERROR_INVAL;
+
+	/* hysteresis must be less than high limit */
+	if (hysteresis > limit_c)
+		return EC_ERROR_INVAL;
+
+	if (tmp432_set_therm_mode() != EC_SUCCESS)
+		return EC_ERROR_UNKNOWN;
+
+	switch (channel) {
+	case TMP432_CHANNEL_LOCAL:
+		reg = TMP432_LOCAL_HIGH_LIMIT_W;
+		break;
+	case TMP432_CHANNEL_REMOTE1:
+		reg = TMP432_REMOTE1_HIGH_LIMIT_W;
+		break;
+	case TMP432_CHANNEL_REMOTE2:
+		reg = TMP432_REMOTE2_HIGH_LIMIT_W;
+		break;
+	}
+
+	ret = raw_write16(reg, limit_c);
 	if (ret)
 		return EC_ERROR_UNKNOWN;
 
