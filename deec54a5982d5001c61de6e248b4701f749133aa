@@ -72,6 +72,54 @@
     },
     {
       "key": {
+        "uuid": "924d985c_21515ac7",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-16T21:36:38Z",
+      "side": 1,
+      "message": "Thank you for the details Shawn. \na. For enabling BC1.2 charging:\nI will call bd99955_bc12_enable_charging(port, 1) from board_select_charge_supplier().\nb. For disabling BC1.2 charging:\nI will check the bc1.2 enabled or not from the BD99955_CMD_CHGOP_SET1 and disable it from the detach event in the below task.",
+      "parentUuid": "924d985c_76840a1e",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 2
+      },
+      "revId": "deec54a5982d5001c61de6e248b4701f749133aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_3c06e178",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-16T21:36:38Z",
+      "side": 1,
+      "message": "Okay. I will use board_select_charge_supplier() in charge_manger.",
+      "parentUuid": "924d985c_362e0236",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 2
+      },
+      "revId": "deec54a5982d5001c61de6e248b4701f749133aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "924d985c_16c49e6f",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 15
@@ -83,6 +131,30 @@
       "writtenOn": "2016-05-16T20:33:23Z",
       "side": 1,
       "message": "I don\u0027t think we need this mutex. It was needed on the pericom part because we manipulated switch state from both the usb_charger task and the PD task.",
+      "range": {
+        "startLine": 680,
+        "startChar": 1,
+        "endLine": 680,
+        "endChar": 36
+      },
+      "revId": "deec54a5982d5001c61de6e248b4701f749133aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_1cdbdd29",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-16T21:36:38Z",
+      "side": 1,
+      "message": "Okay I will remove it.",
+      "parentUuid": "924d985c_16c49e6f",
       "range": {
         "startLine": 680,
         "startChar": 1,
