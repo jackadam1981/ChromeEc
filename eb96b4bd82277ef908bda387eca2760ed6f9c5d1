@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924d985c_d635b6c9",
+        "filename": "driver/temp_sensor/tmp432.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-16T20:06:07Z",
+      "side": 1,
+      "message": "According to my datasheet this is an 8 bit register. Why are you doing a 16-bit read?",
+      "range": {
+        "startLine": 135,
+        "startChar": 18,
+        "endLine": 135,
+        "endChar": 41
+      },
+      "revId": "eb96b4bd82277ef908bda387eca2760ed6f9c5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_96232e99",
+        "filename": "driver/temp_sensor/tmp432.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-16T20:06:07Z",
+      "side": 1,
+      "message": "Add a comment here that this configures ALERT vs THERM. It\u0027s not clear from the name.",
+      "revId": "eb96b4bd82277ef908bda387eca2760ed6f9c5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_b643d233",
+        "filename": "driver/temp_sensor/tmp432.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-16T20:06:07Z",
+      "side": 1,
+      "message": "Move this comment (or something similar) above where TMP432_CONFIG1_MODE is defined.",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 52
+      },
+      "revId": "eb96b4bd82277ef908bda387eca2760ed6f9c5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
