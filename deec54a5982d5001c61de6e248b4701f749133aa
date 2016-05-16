@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924d985c_b6fbd2ce",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-16T20:33:23Z",
+      "side": 1,
+      "message": "This is racy and needs to be removed.",
+      "range": {
+        "startLine": 299,
+        "startChar": 3,
+        "endLine": 306,
+        "endChar": 30
+      },
+      "revId": "deec54a5982d5001c61de6e248b4701f749133aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_362e0236",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-16T20:33:23Z",
+      "side": 1,
+      "message": "We should call charge_manager_update_charge() unconditionally with the detected type. If special actions need to be taken to enable BC1.2 charging (and not PD / USB-C charging) then we need to modify charge_manager. We can either add a supplier parameter to board_set_charge_limit() or add a new callback like board_select_charge_supplier(). What do you think?",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 2
+      },
+      "revId": "deec54a5982d5001c61de6e248b4701f749133aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_16c49e6f",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-16T20:33:23Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this mutex. It was needed on the pericom part because we manipulated switch state from both the usb_charger task and the PD task.",
+      "range": {
+        "startLine": 680,
+        "startChar": 1,
+        "endLine": 680,
+        "endChar": 36
+      },
+      "revId": "deec54a5982d5001c61de6e248b4701f749133aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
