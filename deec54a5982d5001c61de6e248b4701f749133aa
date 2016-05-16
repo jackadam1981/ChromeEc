@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "924d985c_76840a1e",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-16T20:36:52Z",
+      "side": 1,
+      "message": "Basically, the idea is that we tell charge_manager about the charger we\u0027ve detected, but we don\u0027t actually charge from the port until charge_manager decides to select our port. So if we need to take special actions for BC1.2 charging only, they need to be taken from the board_select_charge_supplier() callback (or a similar callback that takes supplier parameter) because only at that point has charge_manager indicated that our port + BC1.2 charging method are active. And, we might need to do cleanup (eg. call bd99955_bc12_enable_charging(port, 0)?) if a non-BC1.2 supplier is detected + chosen.",
+      "parentUuid": "924d985c_362e0236",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 2
+      },
+      "revId": "deec54a5982d5001c61de6e248b4701f749133aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "924d985c_16c49e6f",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 15
