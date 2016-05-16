@@ -34,6 +34,24 @@
       "revId": "ac923cd2beeb4548e5981722a3e5b69479830d2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_7c1149f3",
+        "filename": "common/case_closed_debug.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-16T22:06:44Z",
+      "side": 1,
+      "message": "Having the PHY default to the CCD PHY is just temporary for cr50. In production it will be the AP PHY. \n\nWe could call usb_select_phy() here before usb_init(). if CONFIG_USB_SELECT_PHY is defined.",
+      "parentUuid": "924d985c_6d3fd975",
+      "revId": "ac923cd2beeb4548e5981722a3e5b69479830d2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
