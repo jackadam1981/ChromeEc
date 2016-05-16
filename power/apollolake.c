@@ -166,11 +166,32 @@ static enum power_state _power_handle_state(enum power_state state)
 {
 	int tries = 0;
 
+	CPRINTS("%s: Power signal status:\n"
+		"\tRSMRST_L_PGOOD: %d\n"
+		"\tPCH_SLP_S0_L: %d\n"
+		"\tPCH_SLP_S3_L: %d\n"
+		"\tPCH_SLP_S4_L: %d\n"
+		"\tSUSPWRNACK: %d\n"
+		"\tALL_SYS_PGOOD: %d\n"
+		"\tPP3300_PG: %d\n"
+		"\tPP5000_PG: %d\n",
+		__func__,
+		gpio_get_level(GPIO_RSMRST_L_PGOOD),
+		gpio_get_level(GPIO_PCH_SLP_S0_L),
+		gpio_get_level(GPIO_PCH_SLP_S3_L),
+		gpio_get_level(GPIO_PCH_SLP_S4_L),
+		gpio_get_level(GPIO_SUSPWRNACK),
+		gpio_get_level(GPIO_ALL_SYS_PGOOD),
+		gpio_get_level(GPIO_PP3300_PG),
+		gpio_get_level(GPIO_PP5000_PG));
+
 	switch (state) {
 	case POWER_G3:
+		CPRINTS("%s: entered G3\n", __func__);
 		break;
 
 	case POWER_S5:
+		CPRINTS("%s: entering S5\n", __func__);
 #ifdef CONFIG_BOARD_HAS_RTC_RESET
 		/* Wait for S5 exit and attempt RTC reset it supported */
 		if (power_s5_up)
@@ -188,6 +209,7 @@ static enum power_state _power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S3:
+		CPRINTS("%s: entering S3\n", __func__);
 		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			/* Required rail went away */
 			chipset_force_shutdown();
@@ -202,6 +224,7 @@ static enum power_state _power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S0:
+		CPRINTS("%s: entering S0\n", __func__);
 		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			chipset_force_shutdown();
 			return POWER_S0S3;
@@ -219,6 +242,7 @@ static enum power_state _power_handle_state(enum power_state state)
 
 #ifdef CONFIG_POWER_S0IX
 	case POWER_S0ix:
+		CPRINTS("%s: entering S0ix\n", __func__);
 		/*
 		 * TODO: add code for unexpected power loss
 		 */
@@ -231,6 +255,7 @@ static enum power_state _power_handle_state(enum power_state state)
 #endif
 
 	case POWER_G3S5:
+		CPRINTS("%s: transitioning from G3 to S5\n", __func__);
 		/* Platform is powering up, clear forcing_coldreset */
 		forcing_coldreset = 0;
 
@@ -266,6 +291,7 @@ static enum power_state _power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5S3:
+		CPRINTS("%s: transitioning from S5 to S3\n", __func__);
 		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			/* Required rail went away */
 			chipset_force_shutdown();
@@ -277,6 +303,7 @@ static enum power_state _power_handle_state(enum power_state state)
 		return POWER_S3;
 
 	case POWER_S3S0:
+		CPRINTS("%s: transitioning from S3 to S0\n", __func__);
 		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			/* Required rail went away */
 			chipset_force_shutdown();
@@ -306,6 +333,7 @@ static enum power_state _power_handle_state(enum power_state state)
 		return POWER_S0;
 
 	case POWER_S0S3:
+		CPRINTS("%s: transitioning from S0 to S3\n", __func__);
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 
@@ -324,6 +352,7 @@ static enum power_state _power_handle_state(enum power_state state)
 
 #ifdef CONFIG_POWER_S0IX
 	case POWER_S0S0ix:
+		CPRINTS("%s: transitioning from S0 to S0ix\n", __func__);
 		/* call hooks before standby */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 
@@ -339,6 +368,7 @@ static enum power_state _power_handle_state(enum power_state state)
 
 
 	case POWER_S0ixS0:
+		CPRINTS("%s: transitioning from S0ix to S0\n", __func__);
 		lpc_disable_wake_mask_for_lid_open();
 
 		/* Call hooks now that rails are up */
@@ -354,6 +384,7 @@ static enum power_state _power_handle_state(enum power_state state)
 #endif
 
 	case POWER_S3S5:
+		CPRINTS("%s: transitioning from S3 to S5\n", __func__);
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
 
@@ -367,6 +398,7 @@ static enum power_state _power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5G3:
+		CPRINTS("%s: transitioning from S5 to G3\n", __func__);
 		chipset_force_shutdown();
 
 		/* Power up the platform again for forced cold reset */
