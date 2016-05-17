@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "722d8476_e2584a23",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-17T21:25:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "722d8476_176afea5",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 39
+      },
+      "revId": "76e86ce6e0f03ce12dfb4ba8f14fece9bdaab627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "722d8476_3791c2a9",
         "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "722d8476_1d385fc2",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-17T21:25:36Z",
+      "side": 1,
+      "message": "Good point. For thermal stuff we care more about precision at the upper end, so how about we increment step_mv if that makes v0 + (step_mv * num_steps) closer to v1?\n\nFor example:\nstep_mv \u003d (v1 - v0) / num_steps;\nd0 \u003d v1 - (v0 + step_mv * num_steps);\nd1 \u003d (v0 + (step_mv + 1) * num_steps) - v1;\nif (d1 \u003c d0)\n\tstep_mv++;",
+      "parentUuid": "722d8476_3791c2a9",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 34
+      },
+      "revId": "76e86ce6e0f03ce12dfb4ba8f14fece9bdaab627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "722d8476_d7cb06b6",
         "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2016-05-17T18:21:47Z",
       "side": 1,
       "message": "Do we really need to examine all points here? Can\u0027t we just do a single division?",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "76e86ce6e0f03ce12dfb4ba8f14fece9bdaab627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "722d8476_8fbfb6b7",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-17T21:25:36Z",
+      "side": 1,
+      "message": "Yep, you\u0027re right - A single division will do the trick:\nnum_steps \u003d (mv - v0) / step_mv;\nreturn data[i].temp + num_steps;",
+      "parentUuid": "722d8476_d7cb06b6",
       "range": {
         "startLine": 132,
         "startChar": 1,
