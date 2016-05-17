@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77b576ab_6b623da2",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-17T17:55:50Z",
+      "side": 1,
+      "message": "screen",
+      "range": {
+        "startLine": 243,
+        "startChar": 17,
+        "endLine": 243,
+        "endChar": 23
+      },
+      "revId": "77b3a6bbedc552e966117697fbdd07e582d071c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b576ab_eb6dcd8b",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-17T17:55:50Z",
+      "side": 1,
+      "message": "switch",
+      "range": {
+        "startLine": 254,
+        "startChar": 21,
+        "endLine": 254,
+        "endChar": 26
+      },
+      "revId": "77b3a6bbedc552e966117697fbdd07e582d071c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b576ab_8b6a1171",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-17T17:55:50Z",
+      "side": 1,
+      "message": "reduce",
+      "range": {
+        "startLine": 255,
+        "startChar": 7,
+        "endLine": 255,
+        "endChar": 14
+      },
+      "revId": "77b3a6bbedc552e966117697fbdd07e582d071c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b576ab_0b1061ef",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-17T17:55:50Z",
+      "side": 1,
+      "message": "And, you spelled this wrong anyway \"HOOK_CHIPSET_STARUP\" -- so it will do nothing.",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 18
+      },
+      "revId": "77b3a6bbedc552e966117697fbdd07e582d071c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b576ab_4b5df9d8",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-17T17:55:50Z",
+      "side": 1,
+      "message": "No need for this hook, you only want to change things on S3-\u003eS0 transition and back.",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 20
+      },
+      "revId": "77b3a6bbedc552e966117697fbdd07e582d071c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
