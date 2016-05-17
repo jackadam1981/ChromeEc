@@ -35,6 +35,19 @@
 static struct mutex port_mutex[I2C_CONTROLLER_COUNT];
 static uint32_t i2c_port_active_count;
 
+const struct i2c_port_t *get_i2c_port(int port)
+{
+	int i;
+
+	/* Find the matching port in i2c_ports[] table. */
+	for (i = 0; i < i2c_ports_used; i++) {
+		if (i2c_ports[i].port == port)
+			return &i2c_ports[i];
+	}
+
+	return NULL;
+}
+
 int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	     uint8_t *in, int in_size, int flags)
 {
@@ -254,43 +267,31 @@ exit:
 
 int get_sda_from_i2c_port(int port, enum gpio_signal *sda)
 {
-	int i;
-
-	/* Find the matching port in i2c_ports[] table. */
-	for (i = 0; i < i2c_ports_used; i++) {
-		if (i2c_ports[i].port == port)
-			break;
-	}
+	const struct i2c_port_t *i2c_port = get_i2c_port(port);
 
 	/* Crash if the port given is not in the i2c_ports[] table. */
-	ASSERT(i != i2c_ports_used);
+	ASSERT(i2c_port);
 
 	/* Check if the SCL and SDA pins have been defined for this port. */
-	if (i2c_ports[i].scl == 0 && i2c_ports[i].sda == 0)
+	if (i2c_port->scl == 0 && i2c_port->sda == 0)
 		return EC_ERROR_INVAL;
 
-	*sda = i2c_ports[i].sda;
+	*sda = i2c_port->sda;
 	return EC_SUCCESS;
 }
 
 int get_scl_from_i2c_port(int port, enum gpio_signal *scl)
 {
-	int i;
-
-	/* Find the matching port in i2c_ports[] table. */
-	for (i = 0; i < i2c_ports_used; i++) {
-		if (i2c_ports[i].port == port)
-			break;
-	}
+	const struct i2c_port_t *i2c_port = get_i2c_port(port);
 
 	/* Crash if the port given is not in the i2c_ports[] table. */
-	ASSERT(i != i2c_ports_used);
+	ASSERT(i2c_port);
 
 	/* Check if the SCL and SDA pins have been defined for this port. */
-	if (i2c_ports[i].scl == 0 && i2c_ports[i].sda == 0)
+	if (i2c_port->scl == 0 && i2c_port->sda == 0)
 		return EC_ERROR_INVAL;
 
-	*scl = i2c_ports[i].scl;
+	*scl = i2c_port->scl;
 	return EC_SUCCESS;
 }
 
@@ -464,20 +465,11 @@ unwedge_done:
  * as ectool supports EC_CMD_I2C_PASSTHRU.
  */
 
-static int port_is_valid(int port)
-{
-	int i;
-
-	for (i = 0; i < i2c_ports_used; i++)
-		if (i2c_ports[i].port == port)
-			return 1;
-	return 0;
-}
-
 static int i2c_command_read(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_i2c_read *p = args->params;
 	struct ec_response_i2c_read *r = args->response;
+	const struct i2c_port_t *i2c_port;
 	int data, rv = -1;
 
 #ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
@@ -485,7 +477,8 @@ static int i2c_command_read(struct host_cmd_handler_args *args)
 		return EC_RES_ACCESS_DENIED;
 #endif
 
-	if (!port_is_valid(p->port))
+	i2c_port = get_i2c_port(p->port);
+	if (!i2c_port)
 		return EC_RES_INVALID_PARAM;
 
 	if (p->read_size == 16)
@@ -505,6 +498,7 @@ DECLARE_HOST_COMMAND(EC_CMD_I2C_READ, i2c_command_read, EC_VER_MASK(0));
 static int i2c_command_write(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_i2c_write *p = args->params;
+	const struct i2c_port_t *i2c_port;
 	int rv = -1;
 
 #ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
@@ -512,7 +506,8 @@ static int i2c_command_write(struct host_cmd_handler_args *args)
 		return EC_RES_ACCESS_DENIED;
 #endif
 
-	if (!port_is_valid(p->port))
+	i2c_port = get_i2c_port(p->port);
+	if (!i2c_port)
 		return EC_RES_INVALID_PARAM;
 
 	if (p->write_size == 16)
@@ -561,12 +556,6 @@ static int check_i2c_params(const struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 	}
 
-	if (!port_is_valid(params->port)) {
-		PTHRUPRINTF("i2c passthru invalid port %d",
-			    params->port);
-		return EC_RES_INVALID_PARAM;
-	}
-
 	/* Loop and process messages */;
 	for (msgnum = 0, msg = params->msg; msgnum < params->num_msgs;
 	     msgnum++, msg++) {
@@ -606,6 +595,7 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 	const struct ec_params_i2c_passthru *params = args->params;
 	const struct ec_params_i2c_passthru_msg *msg;
 	struct ec_response_i2c_passthru *resp = args->response;
+	const struct i2c_port_t *i2c_port;
 	const uint8_t *out;
 	int in_len;
 	int ret;
@@ -625,6 +615,10 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 	if (battery_is_cut_off())
 		return EC_RES_ACCESS_DENIED;
 #endif
+
+	i2c_port = get_i2c_port(params->port);
+	if (!i2c_port)
+		return EC_RES_INVALID_PARAM;
 
 	ret = check_i2c_params(args);
 	if (ret)
