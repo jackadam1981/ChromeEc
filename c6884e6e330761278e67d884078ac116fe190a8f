@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "722d8476_d7130653",
+        "filename": "driver/temp_sensor/tmp432.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-17T18:09:40Z",
+      "side": 1,
+      "message": "Why are you using 16 bit write here? The low byte and high byte aren\u0027t contiguous on the register map. I think we\u0027re just throwing away the low byte precision.",
+      "range": {
+        "startLine": 173,
+        "startChar": 7,
+        "endLine": 173,
+        "endChar": 18
+      },
+      "revId": "c6884e6e330761278e67d884078ac116fe190a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
