@@ -31,7 +31,8 @@ static int get_temp(int idx, int *temp_ptr)
 	 *  3. define it on board.h
 	 */
 #ifdef CONFIG_THERMISTOR_NCP15WB
-	*temp_ptr = ncp15wb_calculate_temp((uint16_t) temp_raw);
+	*temp_ptr = thermistor_linear_interpolate((uint16_t)temp_raw,
+						&board_thermistor_info);
 #else
 #error "Unknown thermistor for ec_adc"
 	return EC_ERROR_UNKNOWN;

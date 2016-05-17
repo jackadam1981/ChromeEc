@@ -103,11 +103,15 @@ static void bd99992gw_init(void)
 DECLARE_HOOK(HOOK_INIT, bd99992gw_init, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, bd99992gw_init, HOOK_PRIO_DEFAULT);
 
+#ifdef CONFIG_THERMISTOR_NCP15WB
+extern const struct thermistor_info bd99992gw_thermistor_info;
+#endif
+
 /* Convert ADC result to temperature in celsius */
 static int bd99992gw_get_temp(uint16_t adc)
 {
 #ifdef CONFIG_THERMISTOR_NCP15WB
-	return ncp15wb_calculate_temp(adc);
+	return thermistor_linear_interpolate(adc, &bd99992gw_thermistor_info);
 #else
 #error "Unknown thermistor for bd99992gw"
 	return 0;

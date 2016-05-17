@@ -46,13 +46,4 @@ struct thermistor_info {
 int thermistor_linear_interpolate(uint16_t mv,
 				const struct thermistor_info *info);
 
-/**
- * ncp15wb temperature conversion routine.
- *
- * @param adc	10bit raw data on adc.
- *
- * @return	temperature in C.
- */
-int ncp15wb_calculate_temp(uint16_t adc);
-
 #endif  /* __CROS_EC_TEMP_SENSOR_THERMISTOR_NCP15WB_H */

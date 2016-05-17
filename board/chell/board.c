@@ -12,6 +12,7 @@
 #include "charger.h"
 #include "chipset.h"
 #include "console.h"
+#include "driver/temp_sensor/thermistor.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -222,6 +223,28 @@ const struct temp_sensor_t temp_sensors[] = {
 		BD99992GW_ADC_CHANNEL_SYSTHERM3, 4},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+/* NCP15WB with 24.9K divider */
+#define SCALING_FACTOR 2
+static struct thermistor_data_pair thermal_data[] = {
+	{ 406 / SCALING_FACTOR, 50 },
+	{ 356 / SCALING_FACTOR, 55 },
+	{ 314 / SCALING_FACTOR, 60 },
+	{ 276 / SCALING_FACTOR, 65 },
+	{ 242 / SCALING_FACTOR, 70 },
+	{ 212 / SCALING_FACTOR, 75 },
+	{ 186 / SCALING_FACTOR, 80 },
+	{ 162 / SCALING_FACTOR, 85 },
+	{ 140 / SCALING_FACTOR, 90 },
+	{ 122 / SCALING_FACTOR, 95 },
+	{ 106 / SCALING_FACTOR, 100 },
+};
+
+const struct thermistor_info bd99992gw_thermistor_info = {
+	.scaling_factor = 2,
+	.num_pairs = ARRAY_SIZE(thermal_data),
+	.data = thermal_data,
+};
 
 /*
  * Thermal limits for each temp sensor.  All temps are in degrees K.  Must be in
