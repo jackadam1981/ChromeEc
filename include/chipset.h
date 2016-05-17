@@ -70,6 +70,11 @@ void chipset_throttle_cpu(int throttle);
 void chipset_force_shutdown(void);
 
 /**
+ * Immediately bring AP back to S0 state
+ */
+void chipset_force_wake(void);
+
+/**
  * Reset the CPU and/or chipset.
  *
  * @param cold_reset	If !=0, force a cold reset of the CPU and chipset;
@@ -96,6 +101,7 @@ static inline int chipset_in_state(int state_mask)
 static inline void chipset_exit_hard_off(void) { }
 static inline void chipset_throttle_cpu(int throttle) { }
 static inline void chipset_force_shutdown(void) { }
+static inline void chipset_force_wake(void) { }
 static inline void chipset_reset(int cold_reset) { }
 static inline void power_interrupt(enum gpio_signal signal) { }
 

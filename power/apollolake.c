@@ -62,6 +62,11 @@ void chipset_force_shutdown(void)
 	gpio_set_level(GPIO_V5A_EN, 0);
 }
 
+void chipset_force_wake(void)
+{
+	CPRINTS("%s()", __func__);
+}
+
 void chipset_reset(int cold_reset)
 {
 	CPRINTS("%s(%d)", __func__, cold_reset);
