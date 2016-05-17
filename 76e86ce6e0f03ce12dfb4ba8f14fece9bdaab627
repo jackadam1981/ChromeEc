@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "722d8476_176afea5",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-17T18:21:47Z",
+      "side": 1,
+      "message": "Multi-line comment style in cros-ec is:\n\n/*\n * Comment..\n * Comment..\n */",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 39
+      },
+      "revId": "76e86ce6e0f03ce12dfb4ba8f14fece9bdaab627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "722d8476_3791c2a9",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-17T18:21:47Z",
+      "side": 1,
+      "message": "There\u0027s potentially big precision loss here (eg. v1 - v0 \u003d 24, num_steps \u003d 5). Can we try another way?",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 34
+      },
+      "revId": "76e86ce6e0f03ce12dfb4ba8f14fece9bdaab627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "722d8476_d7cb06b6",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-17T18:21:47Z",
+      "side": 1,
+      "message": "Do we really need to examine all points here? Can\u0027t we just do a single division?",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "76e86ce6e0f03ce12dfb4ba8f14fece9bdaab627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
