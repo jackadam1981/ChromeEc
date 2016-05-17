@@ -71,6 +71,7 @@ static const struct power_signal_info power_control_outputs[] = {
 };
 
 static int forcing_shutdown;
+static int forcing_wakeup;
 
 void chipset_force_shutdown(void)
 {
@@ -109,6 +110,16 @@ static void chipset_force_g3(void)
 	}
 }
 
+void chipset_force_wake(void)
+{
+	CPRINTS("%s()", __func__);
+	/*
+	 * Force chipset into S0
+	 */
+	forcing_wakeup = 1;
+	task_wake(TASK_ID_CHIPSET);
+}
+
 enum power_state power_chipset_init(void)
 {
 	if (system_jumped_to_this_image()) {
@@ -145,7 +156,9 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_S3:
 		if (!power_has_signals(IN_PGOOD_S3) || forcing_shutdown)
 			return POWER_S3S5;
-		else if (power_has_signals(IN_SUSPEND_DEASSERTED))
+		else if (power_has_signals(IN_SUSPEND_DEASSERTED) ||
+			 forcing_wakeup)
+			chipset_force_wake();
 			return POWER_S3S0;
 
 	case POWER_S0:

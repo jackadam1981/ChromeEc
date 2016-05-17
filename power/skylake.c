@@ -72,6 +72,14 @@ void chipset_force_shutdown(void)
 	}
 }
 
+/*
+ * Dummy function for compiling
+ */
+void chipset_force_wake(void)
+{
+	CPRINTS("%s()", __func__);
+}
+
 __attribute__((weak)) void chipset_set_pmic_slp_sus_l(int level)
 {
 	gpio_set_level(GPIO_PMIC_SLP_SUS_L, level);

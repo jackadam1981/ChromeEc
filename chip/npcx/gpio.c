@@ -18,6 +18,7 @@
 #include "system.h"
 #include "system_chip.h"
 #include "lpc_chip.h"
+#include "chipset.h"
 
 /* Flags for PWM IO type */
 #define PWM_IO_FUNC        (1 << 1)  /* PWM optional func bit */
@@ -771,9 +772,15 @@ static void gpio_interrupt(int int_no)
 
 			for (pin = 0; pin < 8; pin++, gpio++)
 				/* If pending bit is high, execute ISR*/
-				if (wui_mask & (1 << pin))
+				if (wui_mask & (1 << pin)) {
+#ifdef CONFIG_CMD_RTC_ALARM
+					if (pin == 7 && int_no == 7)
+						chipset_force_wake();
+					else
+#endif
 					gpio_execute_isr(gpio->port,
 							 1 << gpio->bit);
+				}
 		}
 	}
 }
@@ -808,7 +815,7 @@ void __gpio_wk0efgh_interrupt(void)
 		gpio_interrupt(NPCX_IRQ_WKINTEFGH_0);
 }
 
-GPIO_IRQ_FUNC(__gpio_wk0ad_interrupt  , NPCX_IRQ_MTC_WKINTAD_0);
+GPIO_IRQ_FUNC(gpio_rtc_interrupt  , NPCX_IRQ_MTC_WKINTAD_0);
 GPIO_IRQ_FUNC(__gpio_wk0b_interrupt   , NPCX_IRQ_TWD_WKINTB_0);
 GPIO_IRQ_FUNC(__gpio_wk0c_interrupt   , NPCX_IRQ_WKINTC_0);
 GPIO_IRQ_FUNC(__gpio_wk1a_interrupt   , NPCX_IRQ_WKINTA_1);
@@ -819,7 +826,7 @@ GPIO_IRQ_FUNC(__gpio_wk1f_interrupt   , NPCX_IRQ_WKINTF_1);
 GPIO_IRQ_FUNC(__gpio_wk1g_interrupt   , NPCX_IRQ_WKINTG_1);
 GPIO_IRQ_FUNC(__gpio_wk1h_interrupt   , NPCX_IRQ_WKINTH_1);
 
-DECLARE_IRQ(NPCX_IRQ_MTC_WKINTAD_0, __gpio_wk0ad_interrupt, 1);
+DECLARE_IRQ(NPCX_IRQ_MTC_WKINTAD_0, gpio_rtc_interrupt, 1);
 DECLARE_IRQ(NPCX_IRQ_TWD_WKINTB_0,  __gpio_wk0b_interrupt, 1);
 DECLARE_IRQ(NPCX_IRQ_WKINTC_0,      __gpio_wk0c_interrupt, 1);
 DECLARE_IRQ(NPCX_IRQ_WKINTEFGH_0,   __gpio_wk0efgh_interrupt, 1);
