@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "924d985c_4f7a0067",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-17T04:26:23Z",
+      "side": 1,
+      "message": "Took at stab at it here: https://chromium-review.googlesource.com/344921",
+      "parentUuid": "924d985c_13c4b06f",
+      "revId": "0c6e999298b6b3d57694a1a0903b127fb1f9e2c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "924d985c_d3c9488d",
         "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2016-05-16T19:03:21Z",
       "side": 1,
       "message": "Should we clamp to min / max temperature in our table? I don\u0027t want to run into a case where we fail to take action because we\u0027re *super* hot.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 27
+      },
+      "revId": "0c6e999298b6b3d57694a1a0903b127fb1f9e2c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d985c_afd60ccf",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-17T04:26:23Z",
+      "side": 1,
+      "message": "Yeah, I think that\u0027s a good idea. I clarified the comments in the header file to mention that the first and last data sets provided will also act as min/max. It makes sense to do it as you suggest since we can\u0027t guarantee any level of accuracy beyond the data we\u0027re given.",
+      "parentUuid": "924d985c_d3c9488d",
       "range": {
         "startLine": 109,
         "startChar": 0,
