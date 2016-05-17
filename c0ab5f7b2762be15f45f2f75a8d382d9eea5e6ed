@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "722d8476_ddade797",
+        "filename": "board/reef/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-17T19:43:41Z",
+      "side": 1,
+      "message": "Don\u0027t we want RSMRST_L_PGOOD here? PCH_RSMRST_L is an output to the PCH.",
+      "revId": "c0ab5f7b2762be15f45f2f75a8d382d9eea5e6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "722d8476_9d052f6e",
+        "filename": "board/reef/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-17T19:43:41Z",
+      "side": 1,
+      "message": "this doesn\u0027t even exist as far as i can see.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 42
+      },
+      "revId": "c0ab5f7b2762be15f45f2f75a8d382d9eea5e6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "722d8476_5ddd771b",
+        "filename": "board/reef/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-17T19:43:41Z",
+      "side": 1,
+      "message": "This name seems wrong w.r.t. the gpio name.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 52
+      },
+      "revId": "c0ab5f7b2762be15f45f2f75a8d382d9eea5e6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "722d8476_dd96c74b",
+        "filename": "board/reef/build.mk",
+        "patchSetId": 20
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-17T19:43:41Z",
+      "side": 1,
+      "message": "Remove?",
+      "revId": "c0ab5f7b2762be15f45f2f75a8d382d9eea5e6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "722d8476_2270a261",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 20
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-17T19:43:41Z",
+      "side": 1,
+      "message": "There\u0027s a pullup to 3.3 on daughter board side.",
+      "range": {
+        "startLine": 13,
+        "startChar": 54,
+        "endLine": 13,
+        "endChar": 68
+      },
+      "revId": "c0ab5f7b2762be15f45f2f75a8d382d9eea5e6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "722d8476_e2cbeab5",
+        "filename": "board/reef/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-17T19:43:41Z",
+      "side": 1,
+      "message": "Just curious: why are these doubly indented?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "c0ab5f7b2762be15f45f2f75a8d382d9eea5e6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
