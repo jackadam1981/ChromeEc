@@ -149,6 +149,33 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_USB_PD_PORT_COUNT 2
 #endif
 
+#ifdef TEST_NVMEM
+#define CONFIG_FLASH_NVMEM
+#define CONFIG_FLASH_NVMEM_OFFSET 0x1000
+#define CONFIG_FLASH_NVMEM_BASE (CONFIG_PROGRAM_MEMORY_BASE + \
+				 CONFIG_FLASH_NVMEM_OFFSET)
+#define CONFIG_FLASH_NVMEM_SIZE 0x4000
+#define CONFIG_FLASH_NVMEM_PARTITION_SIZE \
+	(CONFIG_FLASH_NVMEM_SIZE / CONFIG_FLASH_NVMEM_NUM_PARTITIONS)
+#define CONFIG_SW_CRC
+
+/* User buffer definitions for test purposes */
+#define NVMEM_USER_2_SIZE 0x201
+#define NVMEM_USER_1_SIZE 0x402
+#define NVMEM_USER_0_SIZE (CONFIG_FLASH_NVMEM_PARTITION_SIZE - \
+			   NVMEM_USER_2_SIZE - NVMEM_USER_1_SIZE - \
+			   sizeof(struct nvmem_tag))
+
+#ifndef __ASSEMBLER__
+enum nvmem_users {
+	NV_USER_0 = 0,
+	NV_USER_1,
+	NV_USER_2,
+	NV_NUM_USERS
+};
+#endif
+#endif
+
 #ifndef __ASSEMBLER__
 /* Callback function from charge_manager to send host event */
 static inline void pd_send_host_event(int mask) { }
