@@ -248,30 +248,7 @@ static void board_init(void)
 	usb_charger_vbus_change(1, 0);
 #endif
 
-#ifdef CONFIG_ACCELGYRO_BMI160
-	/* SPI sensors: put back the GPIO in its expected state */
-	gpio_set_level(GPIO_SPI2_NSS, 1);
 
-	/* Remap SPI2 to DMA channels 6 and 7 */
-	REG32(STM32_DMA1_BASE + 0xa8) |= (1 << 20) | (1 << 21) | (1 << 24) | (1 << 25);
-
-	/* Enable SPI for BMI160 */
-	gpio_config_module(MODULE_SPI_MASTER, 1);
-
-	/* Set all four SPI pins to high speed */
-	/* pins D0/D1/D3/D4 */
-	STM32_GPIO_OSPEEDR(GPIO_D) |= 0x000003cf;
-
-	/* Enable clocks to SPI2 module */
-	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
-
-	/* Reset SPI2 */
-	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI2;
-	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
-
-	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
-	CPRINTS("Board using SPI sensors");
-#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -604,6 +581,31 @@ static void board_chipset_pre_init(void)
 	gpio_set_level(GPIO_DP_MUX_EN_L , 0);
 	gpio_set_level(GPIO_PARADE_MUX_EN, 1);
 #endif
+
+#ifdef CONFIG_ACCELGYRO_BMI160
+	/* SPI sensors: put back the GPIO in its expected state */
+	gpio_set_level(GPIO_SPI2_NSS, 1);
+
+	/* Remap SPI2 to DMA channels 6 and 7 */
+	REG32(STM32_DMA1_BASE + 0xa8) |= (1 << 20) | (1 << 21) | (1 << 24) | (1 << 25);
+
+	/* Enable SPI for BMI160 */
+	gpio_config_module(MODULE_SPI_MASTER, 1);
+
+	/* Set all four SPI pins to high speed */
+	/* pins D0/D1/D3/D4 */
+	STM32_GPIO_OSPEEDR(GPIO_D) |= 0x000003cf;
+
+	/* Enable clocks to SPI2 module */
+	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
+
+	/* Reset SPI2 */
+	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI2;
+	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
+
+	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
+	CPRINTS("Board using SPI sensors");
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, board_chipset_pre_init, HOOK_PRIO_DEFAULT);
 
@@ -616,6 +618,22 @@ static void board_chipset_shutdown(void)
 	/* Disable DP muxer */
 	gpio_set_level(GPIO_DP_MUX_EN_L , 1);
 	gpio_set_level(GPIO_PARADE_MUX_EN, 0);
+#endif
+
+#ifdef CONFIG_ACCELGYRO_BMI160
+	spi_enable(CONFIG_SPI_ACCEL_PORT, 0);
+
+	/* Disable clocks to SPI2 module */
+	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
+
+	gpio_config_module(MODULE_SPI_MASTER, 0);
+
+	/*
+	 * Calling gpio_config_module sets disabled alternate function pins to
+	 * GPIO_INPUT.  But to prevent leakage we want to set GPIO_OUT_LOW
+	 */
+	gpio_set_flags_by_mask(GPIO_D, 0x1a, GPIO_OUT_LOW);
+	gpio_set_level(GPIO_SPI2_NSS, 0);
 #endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
