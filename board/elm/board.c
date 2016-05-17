@@ -112,10 +112,22 @@ const struct adc_t adc_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
+int anx7688_passthru_allowed(const struct i2c_port_t *port,
+			     const struct ec_params_i2c_passthru_msg *msg) {
+	/* Allow access to 0x2c (TCPC) */
+	if ((msg->addr_flags & EC_I2C_ADDR_MASK) == 0x2c)
+		return 1;
+
+	CPRINTF("Passthru rejected %x(%x)", msg->addr_flags, msg->len);
+
+	return 0;
+}
+
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	{"battery", I2C_PORT_BATTERY, 100,  GPIO_I2C0_SCL, GPIO_I2C0_SDA},
-	{"pd",      I2C_PORT_PD_MCU,  1000, GPIO_I2C1_SCL, GPIO_I2C1_SDA}
+	{"pd",      I2C_PORT_PD_MCU,  1000, GPIO_I2C1_SCL, GPIO_I2C1_SDA,
+		anx7688_passthru_allowed}
 };
 
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
