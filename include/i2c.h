@@ -9,6 +9,7 @@
 #define __CROS_EC_I2C_H
 
 #include "common.h"
+#include "ec_commands.h"
 
 /* Flags for slave address field, in addition to the 8-bit address */
 #define I2C_FLAG_BIG_ENDIAN 0x100  /* 16 byte values are MSB-first */
@@ -31,6 +32,10 @@ struct i2c_port_t {
 	int kbps;             /* Speed in kbps */
 	enum gpio_signal scl; /* Port SCL GPIO line */
 	enum gpio_signal sda; /* Port SDA GPIO line */
+	/* When bus is protected, returns true if passthru allowed for msg.
+	 * If the function is not defined, the default value is true. */
+	int (*passthru_allowed)(const struct i2c_port_t *port,
+				const struct ec_params_i2c_passthru_msg *msg);
 };
 
 extern const struct i2c_port_t i2c_ports[];
