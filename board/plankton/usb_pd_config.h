@@ -9,6 +9,7 @@
 #define __CROS_EC_USB_PD_CONFIG_H
 
 #include "board.h"
+#include "usb_pd_tcpm.h"
 
 /* Timer selection for baseband PD communication */
 #define TIM_CLOCK_PD_TX_C0 17
@@ -121,7 +122,7 @@ static inline void pd_tx_init(void)
 
 static inline void pd_set_host_mode(int port, int enable)
 {
-	board_pd_set_host_mode(enable);
+	board_pd_set_host_mode(enable == TYPEC_CC_RP);
 }
 
 /**

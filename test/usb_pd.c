@@ -11,6 +11,7 @@
 #include "test_util.h"
 #include "timer.h"
 #include "usb_pd.h"
+#include "usb_pd_tcpm.h"
 #include "usb_pd_test_util.h"
 #include "util.h"
 
@@ -56,7 +57,7 @@ int pd_snk_is_vbus_provided(int port)
 
 void pd_set_host_mode(int port, int enable)
 {
-	pd_port[port].host_mode = enable;
+	pd_port[port].host_mode = enable == TYPEC_CC_RP;
 }
 
 void pd_select_polarity(int port, int polarity)

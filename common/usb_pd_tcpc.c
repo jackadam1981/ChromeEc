@@ -931,7 +931,7 @@ int tcpc_set_cc(int port, int pull)
 	/* Change CC pull resistor */
 	pd[port].cc_pull = pull;
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-	pd_set_host_mode(port, pull == TYPEC_CC_RP);
+	pd_set_host_mode(port, pull);
 #endif
 
 #ifdef TCPC_LOW_POWER

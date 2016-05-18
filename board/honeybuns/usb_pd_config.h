@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_USB_PD_CONFIG_H
 #define __CROS_EC_USB_PD_CONFIG_H
 
+#include "usb_pd_tcpm.h"
+
 /* Timer selection for baseband PD communication */
 #define TIM_CLOCK_PD_TX_C0 17
 #define TIM_CLOCK_PD_RX_C0 1
@@ -116,7 +118,7 @@ static inline void pd_tx_init(void)
 
 static inline void pd_set_host_mode(int port, int enable)
 {
-	if (!enable)
+	if (enable != TYPEC_CC_RP)
 		gpio_set_level(GPIO_PPVAR_VBUS_EN, 0);
 }
 

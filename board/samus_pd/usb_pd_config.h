@@ -7,6 +7,7 @@
 #include "chip/stm32/registers.h"
 #include "gpio.h"
 #include "usb_mux.h"
+#include "usb_pd_tcpm.h"
 
 /* USB Power delivery board configuration */
 
@@ -188,34 +189,60 @@ static inline void pd_tx_init(void)
 static inline void pd_set_host_mode(int port, int enable)
 {
 	if (port == 0) {
-		if (enable) {
+		switch (enable) {
+		case TYPEC_CC_RP:
 			/* We never charging in power source mode */
 			gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, 1);
 			/* High-Z is used for host mode. */
 			gpio_set_level(GPIO_USB_C0_CC1_ODL, 1);
 			gpio_set_level(GPIO_USB_C0_CC2_ODL, 1);
-		} else {
+			break;
+		case TYPEC_CC_RD:
+		default:
 			/* Kill VBUS power supply */
 			gpio_set_level(GPIO_USB_C0_5V_EN, 0);
 			/* Pull low for device mode. */
 			gpio_set_level(GPIO_USB_C0_CC1_ODL, 0);
 			gpio_set_level(GPIO_USB_C0_CC2_ODL, 0);
 			/* Let charge_manager decide to enable the port */
+			break;
+		case TYPEC_CC_OPEN:
+			/* Disable charging */
+			gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, 1);
+			/* Disable VBUS */
+			gpio_set_level(GPIO_USB_C0_5V_EN, 0);
+			/* High-Z is used for host mode. */
+			gpio_set_level(GPIO_USB_C0_CC1_ODL, 1);
+			gpio_set_level(GPIO_USB_C0_CC2_ODL, 1);
+			break;
 		}
 	} else {
-		if (enable) {
+		switch (enable) {
+		case TYPEC_CC_RP:
 			/* We never charging in power source mode */
 			gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, 1);
 			/* High-Z is used for host mode. */
 			gpio_set_level(GPIO_USB_C1_CC1_ODL, 1);
 			gpio_set_level(GPIO_USB_C1_CC2_ODL, 1);
-		} else {
+			break;
+		case TYPEC_CC_RD:
+		default:
 			/* Kill VBUS power supply */
 			gpio_set_level(GPIO_USB_C1_5V_EN, 0);
 			/* Pull low for device mode. */
 			gpio_set_level(GPIO_USB_C1_CC1_ODL, 0);
 			gpio_set_level(GPIO_USB_C1_CC2_ODL, 0);
 			/* Let charge_manager decide to enable the port */
+			break;
+		case TYPEC_CC_OPEN:
+			/* Disable charging */
+			gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, 1);
+			/* Disable VBUS */
+			gpio_set_level(GPIO_USB_C1_5V_EN, 0);
+			/* High-Z is used for host mode. */
+			gpio_set_level(GPIO_USB_C1_CC1_ODL, 1);
+			gpio_set_level(GPIO_USB_C1_CC2_ODL, 1);
+			break;
 		}
 	}
 }

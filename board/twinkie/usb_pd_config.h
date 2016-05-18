@@ -9,6 +9,7 @@
 #define __CROS_EC_USB_PD_CONFIG_H
 
 #include "ina2xx.h"
+#include "usb_pd_tcpm.h"
 
 /* Timer selection for baseband PD communication */
 #define TIM_CLOCK_PD_TX_C0 17
@@ -143,18 +144,28 @@ static inline void pd_tx_init(void)
 
 static inline void pd_set_host_mode(int port, int enable)
 {
-	if (enable) {
+	switch (enable) {
+	case TYPEC_CC_RP:
 		gpio_set_level(GPIO_CC1_RD, 1);
 		gpio_set_level(GPIO_CC2_RD, 1);
 		/* set Rp by driving high RPUSB GPIO */
 		gpio_set_flags(GPIO_CC1_RPUSB, GPIO_OUT_HIGH);
 		gpio_set_flags(GPIO_CC2_RPUSB, GPIO_OUT_HIGH);
-	} else {
+		break;
+	case TYPEC_CC_RD:
+	default:
 		/* put back RPUSB GPIO in the default state and set Rd */
 		gpio_set_flags(GPIO_CC1_RPUSB, GPIO_ODR_HIGH);
 		gpio_set_flags(GPIO_CC2_RPUSB, GPIO_ODR_HIGH);
 		gpio_set_level(GPIO_CC1_RD, 0);
 		gpio_set_level(GPIO_CC2_RD, 0);
+		break;
+	case TYPEC_CC_OPEN:
+		gpio_set_level(GPIO_CC1_RD, 1);
+		gpio_set_level(GPIO_CC2_RD, 1);
+		gpio_set_flags(GPIO_CC1_RPUSB, GPIO_ODR_HIGH);
+		gpio_set_flags(GPIO_CC2_RPUSB, GPIO_ODR_HIGH);
+		break;
 	}
 }
 
@@ -162,7 +173,7 @@ static inline void pd_config_init(int port, uint8_t power_role)
 {
 #ifndef CONFIG_USB_PD_TX_PHY_ONLY
 	/* Set CC pull resistors */
-	pd_set_host_mode(port, power_role);
+	pd_set_host_mode(port, power_role ? TYPEC_CC_RP : TYPEC_CC_RD);
 #endif /* CONFIG_USB_PD_TX_PHY_ONLY */
 
 	/* Initialize TX pins and put them in Hi-Z */
