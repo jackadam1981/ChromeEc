@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37f21ea8_4398a4d9",
+        "filename": "board/reef/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-18T07:53:07Z",
+      "side": 1,
+      "message": "R230 is DNS according 20160404 schematic, so should ANX I2C address be 0x50?",
+      "range": {
+        "startLine": 138,
+        "startChar": 20,
+        "endLine": 138,
+        "endChar": 24
+      },
+      "revId": "d265115d6b6d2f52e96526d7cdea42eeffcdf13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f21ea8_239d98c9",
+        "filename": "board/reef/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-18T07:53:07Z",
+      "side": 1,
+      "message": "R237/R238 is DNS, so should PS8751 I2C address be 0x16?",
+      "range": {
+        "startLine": 139,
+        "startChar": 20,
+        "endLine": 139,
+        "endChar": 24
+      },
+      "revId": "d265115d6b6d2f52e96526d7cdea42eeffcdf13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f21ea8_a3a868eb",
+        "filename": "board/reef/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-18T07:53:07Z",
+      "side": 1,
+      "message": "ANX INT is Active High, unless ANX74XX_INT_ACTIVE_POLARITY is redefined.\n\nWill PM you for additional details.",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 41
+      },
+      "revId": "d265115d6b6d2f52e96526d7cdea42eeffcdf13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f21ea8_03c17c92",
+        "filename": "board/reef/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-18T07:53:07Z",
+      "side": 1,
+      "message": "This is don\u0027t care since ANX specific driver does not use it. May be make it matched line 138 above?",
+      "range": {
+        "startLine": 163,
+        "startChar": 15,
+        "endLine": 163,
+        "endChar": 19
+      },
+      "revId": "d265115d6b6d2f52e96526d7cdea42eeffcdf13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f21ea8_4381c45f",
+        "filename": "board/reef/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-18T07:53:07Z",
+      "side": 1,
+      "message": "TCPCI driver expects a zero based port numbering, so this needs to be 1.",
+      "range": {
+        "startLine": 167,
+        "startChar": 15,
+        "endLine": 167,
+        "endChar": 19
+      },
+      "revId": "d265115d6b6d2f52e96526d7cdea42eeffcdf13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f21ea8_03e85c20",
+        "filename": "board/reef/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-18T07:53:07Z",
+      "side": 1,
+      "message": "According to ANX datasheet, there is a 10ms delay on power up sequence, although https://chromium-review.googlesource.com/#/c/329081/13/board/pdeval-stm32f072/board.c line 95 is doing 1ms.\n\nChecking with ANX.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 43
+      },
+      "revId": "d265115d6b6d2f52e96526d7cdea42eeffcdf13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f21ea8_23d8f887",
+        "filename": "board/reef/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-18T07:53:07Z",
+      "side": 1,
+      "message": "Don\u0027t you need to set ANX PWR_EN to 0 first?",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 41
+      },
+      "revId": "d265115d6b6d2f52e96526d7cdea42eeffcdf13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f21ea8_e32f1078",
+        "filename": "board/reef/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-18T07:53:07Z",
+      "side": 1,
+      "message": "This should not be needed since both TCPC do not support host command",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "d265115d6b6d2f52e96526d7cdea42eeffcdf13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f21ea8_a33ea8a3",
+        "filename": "board/reef/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-18T07:53:07Z",
+      "side": 1,
+      "message": "Should need #define CONFIG_KEYBOARD_COL2_INVERTED\nand corresponding change in gpio.inc",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 37
+      },
+      "revId": "d265115d6b6d2f52e96526d7cdea42eeffcdf13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f21ea8_e348b04e",
+        "filename": "board/reef/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-18T07:53:07Z",
+      "side": 1,
+      "message": "This is already defined in include/config.h",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 35
+      },
+      "revId": "d265115d6b6d2f52e96526d7cdea42eeffcdf13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f21ea8_23391891",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-18T07:53:07Z",
+      "side": 1,
+      "message": "Why level trigger instead of edge?\nPDCMD task is looping to call tcpc_get_alert_status.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 95
+      },
+      "revId": "d265115d6b6d2f52e96526d7cdea42eeffcdf13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f21ea8_63432007",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-18T07:53:07Z",
+      "side": 1,
+      "message": "Need to trigger on both edge to handle press and un-press.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 82
+      },
+      "revId": "d265115d6b6d2f52e96526d7cdea42eeffcdf13e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
