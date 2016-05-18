@@ -293,13 +293,21 @@ static inline int pd_adc_read(int port, int cc)
 
 static inline void pd_set_vconn(int port, int polarity, int enable)
 {
-	/* Set VCONN on the opposite CC line from the polarity */
-	if (port == 0)
+	/*
+	 * Set VCONN on the opposite CC line from the polarity
+	 * Explicitly disable VCONN on the other CC line
+	 */
+	if (port == 0) {
 		gpio_set_level(polarity ? GPIO_USB_C0_CC1_VCONN1_EN_L :
 					  GPIO_USB_C0_CC2_VCONN1_EN_L, !enable);
-	else
+		gpio_set_level(polarity ? GPIO_USB_C0_CC2_VCONN1_EN_L :
+					  GPIO_USB_C0_CC1_VCONN1_EN_L, 1);
+	} else {
 		gpio_set_level(polarity ? GPIO_USB_C1_CC1_VCONN1_EN_L :
 					  GPIO_USB_C1_CC2_VCONN1_EN_L, !enable);
+		gpio_set_level(polarity ? GPIO_USB_C1_CC2_VCONN1_EN_L :
+					  GPIO_USB_C1_CC1_VCONN1_EN_L, 1);
+	}
 }
 
 #endif /* __CROS_EC_USB_PD_CONFIG_H */

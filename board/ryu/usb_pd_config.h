@@ -211,6 +211,9 @@ static inline void pd_set_vconn(int port, int polarity, int enable)
 	/* Set VCONN on the opposite CC line from the polarity */
 	gpio_set_level(polarity ? GPIO_USBC_VCONN1_EN_L :
 				  GPIO_USBC_VCONN2_EN_L, !enable);
+	/* Explicitly disable VCONN on the other CC line */
+	gpio_set_level(polarity ? GPIO_USBC_VCONN2_EN_L :
+				  GPIO_USBC_VCONN1_EN_L, 1);
 }
 
 #endif /* __CROS_EC_USB_PD_CONFIG_H */

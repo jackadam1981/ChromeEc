@@ -337,19 +337,31 @@ static inline int pd_adc_read(int port, int cc)
 
 static inline void pd_set_vconn(int port, int polarity, int enable)
 {
-	/* Set VCONN on the opposite CC line from the polarity */
+	enum gpio_signal vconn1, vconn2, data;
+
 	if (port == 0) {
-		gpio_set_level(polarity ? GPIO_USB_C0_CC1_VCONN1_EN :
-					  GPIO_USB_C0_CC2_VCONN1_EN, enable);
-		/* Set TX_DATA pin to Hi-Z */
-		gpio_set_flags(polarity	? GPIO_USB_C0_CC1_TX_DATA :
-					  GPIO_USB_C0_CC2_TX_DATA, GPIO_INPUT);
+		vconn1 = polarity ? GPIO_USB_C0_CC1_VCONN1_EN :
+				    GPIO_USB_C0_CC2_VCONN1_EN;
+		vconn2 = polarity ? GPIO_USB_C0_CC2_VCONN1_EN :
+				    GPIO_USB_C0_CC1_VCONN1_EN;
+		data = polarity ? GPIO_USB_C0_CC1_TX_DATA :
+				  GPIO_USB_C0_CC2_TX_DATA;
 	} else {
-		gpio_set_level(polarity ? GPIO_USB_C1_CC1_VCONN1_EN :
-					  GPIO_USB_C1_CC2_VCONN1_EN, enable);
-		/* Set TX_DATA pin to Hi-Z */
-		gpio_set_flags(GPIO_USB_C1_CCX_TX_DATA, GPIO_INPUT);
+		vconn1 = polarity ? GPIO_USB_C1_CC1_VCONN1_EN :
+				    GPIO_USB_C1_CC2_VCONN1_EN;
+		vconn2 = polarity ? GPIO_USB_C1_CC2_VCONN1_EN :
+				    GPIO_USB_C1_CC1_VCONN1_EN;
+		data = GPIO_USB_C1_CCX_TX_DATA;
 	}
+
+	/*
+	 * Set VCONN on the opposite CC line from the polarity.
+	 * Explicitly disable VCONN on the other CC line.
+	 */
+	gpio_set_level(vconn1, enable);
+	gpio_set_level(vconn2, 0);
+	/* Set TX_DATA pin to Hi-Z */
+	gpio_set_flags(data, GPIO_INPUT);
 }
 
 #endif /* __CROS_EC_USB_PD_CONFIG_H */
