@@ -127,7 +127,8 @@ static inline void pd_tx_init(void)
 
 static inline void pd_set_host_mode(int port, int enable)
 {
-	if (enable) {
+	switch (enable) {
+	case TYPEC_CC_RP:
 		/* We never charging in power source mode */
 		gpio_set_level(GPIO_USBC_CHARGE_EN_L, 1);
 		/* High-Z is used for host mode. */
@@ -136,7 +137,9 @@ static inline void pd_set_host_mode(int port, int enable)
 		/* Set 3.3V for Rp pull-up */
 		gpio_set_flags(GPIO_USBC_CC_PUEN1, GPIO_OUT_HIGH);
 		gpio_set_flags(GPIO_USBC_CC_PUEN2, GPIO_OUT_HIGH);
-	} else {
+		break;
+	case TYPEC_CC_RD:
+	default:
 		/* Kill VBUS power supply */
 		charger_enable_otg_power(0);
 		gpio_set_level(GPIO_CHGR_OTG, 0);
@@ -146,8 +149,23 @@ static inline void pd_set_host_mode(int port, int enable)
 		/* Pull low for device mode. */
 		gpio_set_level(GPIO_USBC_CC1_DEVICE_ODL, 0);
 		gpio_set_level(GPIO_USBC_CC2_DEVICE_ODL, 0);
-	}
+		break;
+	case TYPEC_CC_OPEN:
+		/* Kill VBUS power supply */
+		charger_enable_otg_power(0);
+		gpio_set_level(GPIO_CHGR_OTG, 0);
+		gpio_set_level(GPIO_USBC_CHARGE_EN_L, 1);
 
+		/* High-Z is used for host mode. */
+		gpio_set_level(GPIO_USBC_CC1_DEVICE_ODL, 1);
+		gpio_set_level(GPIO_USBC_CC2_DEVICE_ODL, 1);
+
+		/* Remove Rp pull-up by putting the high side in Hi-Z */
+		gpio_set_flags(GPIO_USBC_CC_PUEN1, GPIO_INPUT);
+		gpio_set_flags(GPIO_USBC_CC_PUEN2, GPIO_INPUT);
+
+		break;
+	}
 }
 
 /**
@@ -167,7 +185,7 @@ static inline void pd_config_init(int port, uint8_t power_role)
 	 * Set CC pull resistors, and charge_en and vbus_en GPIOs to match
 	 * the initial role.
 	 */
-	pd_set_host_mode(port, power_role);
+	pd_set_host_mode(port, power_role ? TYPEC_CC_RP : TYPEC_CC_RD);
 
 	/* Initialize TX pins and put them in Hi-Z */
 	pd_tx_init();

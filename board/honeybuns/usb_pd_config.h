@@ -116,7 +116,7 @@ static inline void pd_tx_init(void)
 
 static inline void pd_set_host_mode(int port, int enable)
 {
-	if (!enable)
+	if (enable != TYPEC_CC_RP)
 		gpio_set_level(GPIO_PPVAR_VBUS_EN, 0);
 }
 

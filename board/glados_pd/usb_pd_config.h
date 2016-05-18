@@ -7,6 +7,7 @@
 #include "chip/stm32/registers.h"
 #include "gpio.h"
 #include "ec_commands.h"
+#include "usb_pd_tcpm.h"
 
 /* USB Power delivery board configuration */
 
@@ -227,10 +228,12 @@ static inline void pd_tx_init(void)
 {
 	gpio_config_module(MODULE_USB_PD, 1);
 }
+
 static inline void pd_set_host_mode(int port, int enable)
 {
 	if (port == 0) {
-		if (enable) {
+		switch (enable) {
+		case TYPEC_CC_RP:
 			/* Pull up for host mode */
 			gpio_set_flags(GPIO_USB_C0_HOST_HIGH, GPIO_OUTPUT);
 			gpio_set_level(GPIO_USB_C0_HOST_HIGH, 1);
@@ -240,15 +243,29 @@ static inline void pd_set_host_mode(int port, int enable)
 			/* Set TX Hi-Z */
 			gpio_set_flags(GPIO_USB_C0_CC1_TX_DATA, GPIO_INPUT);
 			gpio_set_flags(GPIO_USB_C0_CC2_TX_DATA, GPIO_INPUT);
-		} else {
+			break;
+		case TYPEC_CC_RD:
+		default:
 			/* Set HOST_HIGH to High-Z for device mode. */
 			gpio_set_flags(GPIO_USB_C0_HOST_HIGH, GPIO_INPUT);
 			/* Pull low for device mode. */
 			gpio_set_level(GPIO_USB_C0_CC1_ODL, 0);
 			gpio_set_level(GPIO_USB_C0_CC2_ODL, 0);
+			break;
+		case TYPEC_CC_OPEN:
+			/* Set HOST_HIGH to High-Z */
+			gpio_set_flags(GPIO_USB_C0_HOST_HIGH, GPIO_INPUT);
+			/* High-Z is used for host mode. */
+			gpio_set_level(GPIO_USB_C0_CC1_ODL, 1);
+			gpio_set_level(GPIO_USB_C0_CC2_ODL, 1);
+			/* Set TX Hi-Z */
+			gpio_set_flags(GPIO_USB_C0_CC1_TX_DATA, GPIO_INPUT);
+			gpio_set_flags(GPIO_USB_C0_CC2_TX_DATA, GPIO_INPUT);
+			break;
 		}
 	} else {
-		if (enable) {
+		switch (enable) {
+		case TYPEC_CC_RP:
 			/* Pull up for host mode */
 			gpio_set_flags(GPIO_USB_C1_HOST_HIGH, GPIO_OUTPUT);
 			gpio_set_level(GPIO_USB_C1_HOST_HIGH, 1);
@@ -257,12 +274,24 @@ static inline void pd_set_host_mode(int port, int enable)
 			gpio_set_level(GPIO_USB_C1_CC2_ODL, 1);
 			/* Set TX Hi-Z */
 			gpio_set_flags(GPIO_USB_C1_CCX_TX_DATA, GPIO_INPUT);
-		} else {
+			break;
+		case TYPEC_CC_RD:
+		default:
 			/* Set HOST_HIGH to High-Z for device mode. */
 			gpio_set_flags(GPIO_USB_C1_HOST_HIGH, GPIO_INPUT);
 			/* Pull low for device mode. */
 			gpio_set_level(GPIO_USB_C1_CC1_ODL, 0);
 			gpio_set_level(GPIO_USB_C1_CC2_ODL, 0);
+			break;
+		case TYPEC_CC_OPEN:
+			/* Set HOST_HIGH to High-Z */
+			gpio_set_flags(GPIO_USB_C1_HOST_HIGH, GPIO_INPUT);
+			/* High-Z is used for host mode. */
+			gpio_set_level(GPIO_USB_C1_CC1_ODL, 1);
+			gpio_set_level(GPIO_USB_C1_CC2_ODL, 1);
+			/* Set TX Hi-Z */
+			gpio_set_flags(GPIO_USB_C1_CCX_TX_DATA, GPIO_INPUT);
+			break;
 		}
 	}
 }
@@ -284,7 +313,7 @@ static inline void pd_config_init(int port, uint8_t power_role)
 	 * Set CC pull resistors, and charge_en and vbus_en GPIOs to match
 	 * the initial role.
 	 */
-	pd_set_host_mode(port, power_role);
+	pd_set_host_mode(port, power_role ? TYPEC_CC_RP : TYPEC_CC_RD);
 
 	/* Initialize TX pins and put them in Hi-Z */
 	pd_tx_init();

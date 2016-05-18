@@ -121,7 +121,7 @@ static inline void pd_tx_init(void)
 
 static inline void pd_set_host_mode(int port, int enable)
 {
-	board_pd_set_host_mode(enable);
+	board_pd_set_host_mode(enable == TYPEC_CC_RP);
 }
 
 /**
