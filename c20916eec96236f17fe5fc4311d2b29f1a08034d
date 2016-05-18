@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7e966d0_bcf7e199",
+        "filename": "common/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-18T08:54:17Z",
+      "side": 0,
+      "message": "This test is moved to i2c_command_passthru, as we will need i2c_port structure in the next patch.",
+      "revId": "c20916eec96236f17fe5fc4311d2b29f1a08034d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
