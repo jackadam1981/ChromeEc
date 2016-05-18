@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "37f21ea8_88f46b02",
+        "filename": "board/reef/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-18T03:41:42Z",
+      "side": 1,
+      "message": "Yep, that sounds right. Done.",
+      "parentUuid": "722d8476_ddade797",
+      "revId": "c0ab5f7b2762be15f45f2f75a8d382d9eea5e6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "722d8476_9d052f6e",
         "filename": "board/reef/board.h",
         "patchSetId": 20
@@ -30,6 +48,30 @@
       "writtenOn": "2016-05-17T19:43:41Z",
       "side": 1,
       "message": "this doesn\u0027t even exist as far as i can see.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 42
+      },
+      "revId": "c0ab5f7b2762be15f45f2f75a8d382d9eea5e6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f21ea8_886aabdc",
+        "filename": "board/reef/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-18T03:41:42Z",
+      "side": 1,
+      "message": "Agreed. I didn\u0027t see which wifi chip we\u0027re using, but I suspect it\u0027s just on or off (no suspend). So we can get rid of this block of #defines and I\u0027ll just define the power enable pin in gpio.inc.",
+      "parentUuid": "722d8476_9d052f6e",
       "range": {
         "startLine": 110,
         "startChar": 0,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "37f21ea8_a8a847eb",
+        "filename": "board/reef/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-18T03:41:42Z",
+      "side": 1,
+      "message": "Yep, it should map to EN_PP3300_WLAN_ODL. I updated gpio.inc and put a comment alongside it so we know the name the schematic uses.",
+      "parentUuid": "722d8476_5ddd771b",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 52
+      },
+      "revId": "c0ab5f7b2762be15f45f2f75a8d382d9eea5e6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "722d8476_dd96c74b",
         "filename": "board/reef/build.mk",
         "patchSetId": 20
@@ -76,6 +142,24 @@
       "writtenOn": "2016-05-17T19:43:41Z",
       "side": 1,
       "message": "Remove?",
+      "revId": "c0ab5f7b2762be15f45f2f75a8d382d9eea5e6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f21ea8_280c5796",
+        "filename": "board/reef/build.mk",
+        "patchSetId": 20
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-18T03:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "722d8476_dd96c74b",
       "revId": "c0ab5f7b2762be15f45f2f75a8d382d9eea5e6ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "37f21ea8_08e87b20",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 20
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-18T03:41:42Z",
+      "side": 1,
+      "message": "Nice catch - Fixed.",
+      "parentUuid": "722d8476_2270a261",
+      "range": {
+        "startLine": 13,
+        "startChar": 54,
+        "endLine": 13,
+        "endChar": 68
+      },
+      "revId": "c0ab5f7b2762be15f45f2f75a8d382d9eea5e6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "722d8476_e2cbeab5",
         "filename": "board/reef/usb_pd_policy.c",
         "patchSetId": 20
@@ -116,6 +224,30 @@
       "writtenOn": "2016-05-17T19:43:41Z",
       "side": 1,
       "message": "Just curious: why are these doubly indented?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "c0ab5f7b2762be15f45f2f75a8d382d9eea5e6ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f21ea8_28161797",
+        "filename": "board/reef/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-18T03:41:42Z",
+      "side": 1,
+      "message": "Copy + paste. All other boards with usb_pd_policy.c do the same.\n\nWe may as well fix it for reef, at least.",
+      "parentUuid": "722d8476_e2cbeab5",
       "range": {
         "startLine": 31,
         "startChar": 0,
