@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37f21ea8_5ddfe747",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-18T02:23:08Z",
+      "side": 1,
+      "message": "It might be better to add a separate check from a function that\u0027s only executed on the pin 7 interrupt (kind of like we did for __gpio_wk0efgh_interrupt).",
+      "range": {
+        "startLine": 777,
+        "startChar": 5,
+        "endLine": 777,
+        "endChar": 33
+      },
+      "revId": "47cf8b42f817c41f032a204a1bb1e3f2b1183799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f21ea8_bde36b18",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-18T02:23:08Z",
+      "side": 1,
+      "message": "We\u0027ll need to clear this at some point.",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "47cf8b42f817c41f032a204a1bb1e3f2b1183799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
