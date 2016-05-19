@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3703fe92_a628c626",
+        "filename": "board/celes/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-19T16:41:37Z",
+      "side": 1,
+      "message": "Why are you enabling the PU/PD bits on outputs? This looks totally wrong, but I\u0027ll double check the datasheet. Does this actually show power savings?!?",
+      "range": {
+        "startLine": 35,
+        "startChar": 50,
+        "endLine": 35,
+        "endChar": 79
+      },
+      "revId": "60576735e9e51c8cc464585d6740af0c44e86126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
