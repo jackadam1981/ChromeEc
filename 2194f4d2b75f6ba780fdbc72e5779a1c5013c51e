@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3703fe92_6c74efbe",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-19T18:36:10Z",
+      "side": 1,
+      "message": "Sorry, I think my earlier guidance was wrong, regarding how to wake from S3.\n\nI think we want to create a new \"enum host_event_code\" host event (such as EC_HOST_EVENT_RTC). We should then call host_set_events(EC_HOST_EVENT_RTC) here, which will mkbp_send_event to wake the host through the interrupt line (if CONFIG_MKBP_EVENT is set correctly).\n\nThe chipset-level code can be removed.",
+      "range": {
+        "startLine": 819,
+        "startChar": 2,
+        "endLine": 819,
+        "endChar": 20
+      },
+      "revId": "2194f4d2b75f6ba780fdbc72e5779a1c5013c51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
