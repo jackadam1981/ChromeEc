@@ -70,6 +70,30 @@
       "revId": "60576735e9e51c8cc464585d6740af0c44e86126",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e966d0_3c903159",
+        "filename": "board/celes/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-05-19T17:00:08Z",
+      "side": 1,
+      "message": "Ah. Thanks. then GPIO_INPUT | GPIO_PULL_UP was best to NC pins?",
+      "parentUuid": "3703fe92_4693526b",
+      "range": {
+        "startLine": 35,
+        "startChar": 50,
+        "endLine": 35,
+        "endChar": 79
+      },
+      "revId": "60576735e9e51c8cc464585d6740af0c44e86126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
