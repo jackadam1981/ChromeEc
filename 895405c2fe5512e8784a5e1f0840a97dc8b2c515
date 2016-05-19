@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3703fe92_e927b10f",
+        "filename": "board/asuka/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-19T17:14:33Z",
+      "side": 0,
+      "message": "Are the pi3usb9281 parts not present on your system? If so, how are you doing BC1.2 charger detection?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 65
+      },
+      "revId": "895405c2fe5512e8784a5e1f0840a97dc8b2c515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
