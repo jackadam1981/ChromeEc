@@ -145,6 +145,8 @@ const char help_str[] =
 	"      Prints saved panic info\n"
 	"  pause_in_s5 [on|off]\n"
 	"      Whether or not the AP should pause in S5 on shutdown\n"
+	"  pdcontrol [update|reset|disable]\n"
+	"      Resets the PD\n"
 	"  pdlog\n"
 	"      Prints the PD event log entries\n"
 	"  pdwritelog <type> <port>\n"
@@ -6585,6 +6587,34 @@ int cmd_pd_log(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_pd_control(int argc, char *argv[])
+{
+	struct ec_params_pd_control p;
+	int rv;
+
+	if (argc < 2) {
+		fprintf(stderr, "Missing parameter\n");
+		return -1;
+	}
+
+	/* Parse command */
+	if (!strcmp(argv[1], "reset"))
+		p.subcmd = PD_RESET;
+	else if (!strcmp(argv[1], "update"))
+		p.subcmd = PD_UPDATE_BEGIN;
+	else if (!strcmp(argv[1], "disable"))
+		p.subcmd = PD_CONTROL_DISABLE;
+	else {
+		fprintf(stderr, "Unknown command: %s\n", argv[1]);
+		return -1;
+	}
+
+	p.chip = 0;
+
+	rv = ec_command(EC_CMD_PD_CONTROL, 0, &p, sizeof(p), NULL, 0);
+	return (rv < 0 ? rv : 0);
+}
+
 int cmd_pd_write_log(int argc, char *argv[])
 {
 	struct ec_params_pd_write_log_entry p;
@@ -6674,6 +6704,7 @@ const struct command commands[] = {
 	{"pdsetmode", cmd_pd_set_amode},
 	{"port80read", cmd_port80_read},
 	{"pdlog", cmd_pd_log},
+	{"pdcontrol", cmd_pd_control},
 	{"pdwritelog", cmd_pd_write_log},
 	{"powerinfo", cmd_power_info},
 	{"protoinfo", cmd_proto_info},

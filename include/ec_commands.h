@@ -3622,6 +3622,20 @@ struct ec_params_pd_write_log_entry {
 #endif  /* !__ACPI__ */
 
 
+/* Control USB-PD chip */
+#define EC_CMD_PD_CONTROL 0x119
+
+enum ec_pd_control_cmd {
+	PD_UPDATE_BEGIN = 0, /* Begin an update (EC: stop talking to PD) */
+	PD_RESET,            /* Reset the PD chip (EC: resume talking to PD) */
+	PD_CONTROL_DISABLE,  /* Disable further calls to this command */
+};
+
+struct ec_params_pd_control {
+	uint8_t chip;         /* chip id (should be 0) */
+	uint8_t subcmd;
+} __packed;
+
 /*****************************************************************************/
 /*
  * Blob commands are just opaque chunks of data, sent with proto v3.

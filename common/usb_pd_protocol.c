@@ -3364,4 +3364,35 @@ static void pd_comm_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, pd_comm_init, HOOK_PRIO_LAST);
 #endif /* CONFIG_USB_PD_COMM_LOCKED */
+
+static int pd_control_disabled;
+
+static int pd_control(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_pd_control *cmd = args->params;
+
+	if (cmd->chip != 0)
+		return EC_RES_INVALID_PARAM;
+
+	if (pd_control_disabled)
+		return EC_RES_ACCESS_DENIED;
+
+	if (cmd->subcmd == PD_UPDATE_BEGIN) {
+		pd_comm_enable(0);
+	} else if (cmd->subcmd == PD_RESET) {
+		pd_comm_enable(1);
+		board_reset_pd_mcu();
+	} else if (cmd->subcmd == PD_CONTROL_DISABLE) {
+		pd_control_disabled = 1;
+	} else {
+		return EC_RES_INVALID_COMMAND;
+	}
+
+	return EC_RES_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_PD_CONTROL,
+		     pd_control,
+		     EC_VER_MASK(0));
+
 #endif /* CONFIG_COMMON_RUNTIME */
