@@ -16,6 +16,24 @@
       "revId": "ecb93a1583729bb57b8104c872a9aff459c635a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e966d0_3cd5912a",
+        "filename": "board/elm/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-05-19T11:27:07Z",
+      "side": 1,
+      "message": "this patch does not power on 7688 after boot actually. It follows ANX\u0027s flow (power on after plug). I think we need to make board_reset_pd_mcu() a \"true\" reset function, and let DP unplug calls another function just for power off.",
+      "parentUuid": "f7e966d0_dc1cad02",
+      "revId": "ecb93a1583729bb57b8104c872a9aff459c635a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
