@@ -16,6 +16,24 @@
       "revId": "b0e3c87fac1e4fa1c50cfe85de34ebea309beda9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3703fe92_55fe5646",
+        "filename": "util/flash_ec",
+        "patchSetId": 23
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-19T21:25:44Z",
+      "side": 1,
+      "message": "Thanks!\n\nI think everybody has been using dut-control and flashrom commands manually up to this point, so we should be okay here...",
+      "parentUuid": "3703fe92_ba057904",
+      "revId": "b0e3c87fac1e4fa1c50cfe85de34ebea309beda9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
