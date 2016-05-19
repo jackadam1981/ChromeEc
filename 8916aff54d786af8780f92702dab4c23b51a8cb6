@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3703fe92_3b6bcb78",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-19T23:16:27Z",
+      "side": 1,
+      "message": "We can add CONFIG_CMD_RTC_ALARM also.",
+      "revId": "8916aff54d786af8780f92702dab4c23b51a8cb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3703fe92_db38378f",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-19T23:16:27Z",
+      "side": 1,
+      "message": "Thanks for adding this! Don\u0027t we need to add CONFIG_MKBP_EVENT as well?",
+      "revId": "8916aff54d786af8780f92702dab4c23b51a8cb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3703fe92_3b52abce",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-19T23:16:27Z",
+      "side": 1,
+      "message": "Accidental check-in?",
+      "range": {
+        "startLine": 561,
+        "startChar": 8,
+        "endLine": 561,
+        "endChar": 28
+      },
+      "revId": "8916aff54d786af8780f92702dab4c23b51a8cb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3703fe92_7b714366",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-19T23:16:27Z",
+      "side": 1,
+      "message": "Maybe change this to \"/* EC RTC event occurred */\" (sorry to be so picky, this header is copied across many projects).",
+      "range": {
+        "startLine": 437,
+        "startChar": 3,
+        "endLine": 437,
+        "endChar": 30
+      },
+      "revId": "8916aff54d786af8780f92702dab4c23b51a8cb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
