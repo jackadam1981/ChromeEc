@@ -34,6 +34,24 @@
       "revId": "71c94be4051639f6b601f6cf9cdcb6c34ba327c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e966d0_1ca295c1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3629,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-19T14:36:49Z",
+      "side": 1,
+      "message": "(last sentence above should read \"keep ANX7688 on\")\n\nThanks Koro. I think I\u0027d prefer explicit commands (just in case the initial state is inconsistent).\n\nAlso, these commands should prevent the EC from talking to the PD chip, so maybe a name like \"LOCK\"/\"UNLOCK\" would be better (now that I\u0027ve looked at the traces with a logic analyzer, I see there is a lot of chatter between EC and PD, even during update).",
+      "parentUuid": "f7e966d0_dcc66d7b",
+      "revId": "71c94be4051639f6b601f6cf9cdcb6c34ba327c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
