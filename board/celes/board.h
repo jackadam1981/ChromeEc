@@ -8,6 +8,9 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#undef CONFIG_HIBERNATE_DELAY_SEC
+#define CONFIG_HIBERNATE_DELAY_SEC 5
+
 /* Optional features */
 #define CONFIG_WATCHDOG_HELP
 #define CONFIG_CLOCK_CRYSTAL
@@ -67,9 +70,6 @@
 #define CONFIG_LED_COMMON
 
 #define CONFIG_I2C
-
-/* Not going to P-G3/Hibernation */
-#undef CONFIG_HIBERNATE
 
 /* Wireless signals */
 #define WIRELESS_GPIO_WLAN	GPIO_WLAN_OFF_L

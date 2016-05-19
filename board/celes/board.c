@@ -75,6 +75,8 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_POWER_BUTTON_L,
+	GPIO_AC_PRESENT,
+	GPIO_LID_OPEN,
 };
 
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
@@ -114,3 +116,52 @@ static void adc_pre_init(void)
 	gpio_config_module(MODULE_ADC, 1);
 }
 DECLARE_HOOK(HOOK_INIT, adc_pre_init, HOOK_PRIO_INIT_ADC - 1);
+
+void board_hibernate(void) {
+
+	gpio_set_flags(GPIO_SMC_SHUTDOWN, GPIO_OUTPUT | GPIO_PULL_DOWN);
+
+	gpio_config_module(MODULE_UART, 0);
+	gpio_set_flags_by_mask(16,0x24, GPIO_OUT_HIGH | GPIO_PULL_UP | GPIO_PULL_DOWN);
+#if 0
+	gpio_config_module(MODULE_PWM_LED, 0);
+//	gpio_set_flags_by_mask(13,0x48, GPIO_OUTPUT | GPIO_PULL_DOWN);
+//	gpio_set_flags_by_mask(14,0x02, GPIO_OUTPUT | GPIO_PULL_DOWN);
+#endif
+#if 0
+	gpio_config_module(MODULE_ADC, 0);
+	gpio_set_flags_by_mask(5,0xc0, GPIO_OUT_HIGH | GPIO_PULL_UP | GPIO_PULL_DOWN);
+	gpio_set_flags_by_mask(6,0x05, GPIO_OUT_HIGH | GPIO_PULL_UP | GPIO_PULL_DOWN);
+#endif
+
+#if 0
+	gpio_config_module(MODULE_LPC, 0);
+	gpio_set_flags_by_mask(1,0x10, GPIO_INPUT | GPIO_PULL_UP);
+	gpio_set_flags_by_mask(11,0x9e, GPIO_INPUT | GPIO_PULL_UP);
+	gpio_set_flags_by_mask(11,0x40, GPIO_INPUT | GPIO_PULL_UP);
+	gpio_set_flags_by_mask(12,0x01, GPIO_INPUT | GPIO_PULL_UP);
+#endif
+#if 1
+	gpio_config_module(MODULE_SPI, 0);
+	gpio_set_flags_by_mask(5,0x10, GPIO_INPUT | GPIO_PULL_UP);
+	gpio_set_flags_by_mask(16,0x10, GPIO_INPUT | GPIO_PULL_UP);
+	gpio_set_flags_by_mask(15,0x08, GPIO_INPUT | GPIO_PULL_UP);
+#endif
+#if 1
+	gpio_config_module(MODULE_KEYBOARD_SCAN, 0);
+	gpio_set_flags_by_mask(0,0xfc, GPIO_OUT_HIGH | GPIO_PULL_UP | GPIO_PULL_DOWN); //
+	gpio_set_flags_by_mask(1,0x03, GPIO_OUT_HIGH | GPIO_PULL_UP | GPIO_PULL_DOWN); //
+	gpio_set_flags_by_mask(10,0xd8, GPIO_OUT_HIGH | GPIO_PULL_UP | GPIO_PULL_DOWN); //
+#if 0
+	gpio_set_flags_by_mask(0,0x02, GPIO_OUT_HIGH | GPIO_PULL_UP | GPIO_PULL_DOWN);
+	gpio_set_flags_by_mask(3,0x04, GPIO_OUT_HIGH | GPIO_PULL_UP | GPIO_PULL_DOWN);
+	gpio_set_flags_by_mask(4,0x0d, GPIO_OUT_HIGH | GPIO_PULL_UP | GPIO_PULL_DOWN);
+	gpio_set_flags_by_mask(12,0x60, GPIO_OUT_HIGH | GPIO_PULL_UP | GPIO_PULL_DOWN);
+	gpio_set_flags_by_mask(14,0x14, GPIO_OUT_HIGH | GPIO_PULL_UP | GPIO_PULL_DOWN);
+#endif
+#endif
+#if 0
+	gpio_config_module(MODULE_I2C, 0);
+	gpio_set_flags_by_mask(1,0x60, GPIO_INPUT | GPIO_PULL_UP);
+#endif
+}

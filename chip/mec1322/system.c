@@ -239,7 +239,11 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 
 	/* Disable blocks */
 	MEC1322_PCR_CHIP_SLP_EN |= 0x3;
+#ifndef BOARD_CELES
 	MEC1322_PCR_EC_SLP_EN |= MEC1322_PCR_EC_SLP_EN_SLEEP;
+#else
+	MEC1322_PCR_EC_SLP_EN |= 0xe0700ff7;
+#endif
 	MEC1322_PCR_HOST_SLP_EN |= MEC1322_PCR_HOST_SLP_EN_SLEEP;
 	MEC1322_PCR_EC_SLP_EN2 |= MEC1322_PCR_EC_SLP_EN2_SLEEP;
 	MEC1322_PCR_SLOW_CLK_CTL &= 0xfffffc00;
