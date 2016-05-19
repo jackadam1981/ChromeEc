@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f7e966d0_3c3751f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-19T00:03:35Z",
+      "side": 1,
+      "message": "Oh wow, yes, looks like I need to expand my vocabulary.",
+      "parentUuid": "37f21ea8_9fa7791e",
+      "revId": "27a7109c69456e19aa9736dae60e671b8b72bdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37f21ea8_8b8462e8",
         "filename": "common/i2c.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2016-05-18T16:45:49Z",
       "side": 1,
       "message": "This might be a useful thing to fix at the same time.  Then these commands can be ripped out entirely.",
+      "range": {
+        "startLine": 465,
+        "startChar": 3,
+        "endLine": 466,
+        "endChar": 42
+      },
+      "revId": "27a7109c69456e19aa9736dae60e671b8b72bdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e966d0_5c3c1dd0",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-19T00:03:35Z",
+      "side": 1,
+      "message": "Is the statement in the bug still correct?\n\n\"These are only used by ectool in the factory (which branched at the same time as the firmware which supported these commands), so there\u0027s no need to worry about backwards-compatibility for normal OS images.\"\n\nYes, removing those should be fairly easy, I\u0027ll give that a go.",
+      "parentUuid": "37f21ea8_8b8462e8",
       "range": {
         "startLine": 465,
         "startChar": 3,
@@ -99,6 +141,30 @@
       "writtenOn": "2016-05-18T16:45:49Z",
       "side": 1,
       "message": "Wouldn\u0027t it be sufficient to pass the slave address?  Then the implementation doesn\u0027t need to know about the struct.",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 48
+      },
+      "revId": "27a7109c69456e19aa9736dae60e671b8b72bdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e966d0_1c3295ff",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-19T00:03:35Z",
+      "side": 1,
+      "message": "Yeah I was hoping we could do something smart with the length, but we\u0027d probably need the data as well.\n\nI\u0027ll just keep the address.",
+      "parentUuid": "37f21ea8_4b7a7adf",
       "range": {
         "startLine": 38,
         "startChar": 4,
