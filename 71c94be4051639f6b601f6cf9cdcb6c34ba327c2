@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7e966d0_9ce30519",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3629,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-19T12:06:23Z",
+      "side": 1,
+      "message": "Actually, what we\u0027d probably want in the next version is:\n\nPD_POWER_ON\nPD_POWER_OFF\n\nTo force turning on ANX7688 (so version can be read and FW updated), and then force turning it off (EC will turn it back on if needed).\n\nAll this depends on whether to keep EC on at all times, which would be highly preferred.",
+      "revId": "71c94be4051639f6b601f6cf9cdcb6c34ba327c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
