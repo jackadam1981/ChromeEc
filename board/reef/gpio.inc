@@ -8,6 +8,7 @@
 /* Declare symbolic names for all the GPIOs that we care about.
  * Note: Those with interrupt handlers must be declared first. */
 
+#if 0
 GPIO_INT(PD_MCU_INT,		PIN(3, 3), GPIO_INT_LOW, pd_mcu_interrupt)			/* CHARGER_EC_INT_ODL from BD99955 */
 GPIO_INT(USB_C0_PD_INT,		PIN(3, 7), GPIO_INT_RISING | GPIO_SEL_1P8V, tcpc_alert_event)	/* from Analogix TCPC */
 GPIO_INT(USB_C1_PD_INT_ODL,	PIN(D, 2), GPIO_INT_FALLING, tcpc_alert_event)			/* from Parade TCPC */
@@ -35,7 +36,43 @@ GPIO(BASE_SIXAXIS_INT_L,	PIN(9, 3), GPIO_INPUT | GPIO_SEL_1P8V)
 //GPIO_INT(LID_ACCEL_INT_L,	PIN(C, 7), GPIO_INT_LOW | GPIO_SEL_1P8V, lid_interrupt)
 GPIO(LID_ACCEL_INT_L,		PIN(C, 7), GPIO_INPUT | GPIO_SEL_1P8V)
 //GPIO_INT(TABLET_MODE,		PIN(3, 6), GPIO_INT_BOTH | GPIO_PULL_HIGH, tablet_mode_interrupt)
+#endif
 
+/*
+ * the following should be interrupts, but are made inputs for testing
+ */
+GPIO(PD_MCU_INT,		PIN(3, 3), GPIO_INPUT)		/* CHARGER_EC_INT_ODL from BD99955 */
+GPIO(USB_C0_PD_INT,		PIN(3, 7), GPIO_INPUT)		/* from Analogix TCPC */
+GPIO(USB_C1_PD_INT_ODL,		PIN(D, 2), GPIO_INPUT)		/* from Parade TCPC */
+
+GPIO(PCH_SLP_S4_L, 		PIN(8, 6), GPIO_INPUT)		/* SLP_S4_L */
+GPIO(PCH_SLP_S3_L,		PIN(7, 3), GPIO_INPUT)		/* SLP_S3_L */
+GPIO(PCH_SLP_S0_L,		PIN(7, 5), GPIO_INPUT)		/* SLP_S0_L */
+GPIO(SUSPWRNACK,		PIN(7, 2), GPIO_INPUT)
+GPIO(RSMRST_L_PGOOD,		PIN(6, 0), GPIO_INPUT)		/* PMIC_EC_RSMRST_ODL */
+GPIO(ALL_SYS_PGOOD,		PIN(5, 0), GPIO_INPUT)		/* PMIC_EC_PWROK_OD */
+
+/* FIXME(dhendrix): What to do with ACOK_OD? */
+//GPIO_INT(AC_PRESENT,		PIN(C, 1), GPIO_INT_BOTH | GPIO_INPUT, extpower_interrupt)	/* ACOK_OD from BD99955 */
+/* TODO: We might remove external pull-up for POWER_BUTTON_L in EVT */
+GPIO(POWER_BUTTON_L,	PIN(0, 4), GPIO_INPUT)		/* MECH_PWR_BTN_ODL */
+GPIO(LID_OPEN,		PIN(6, 7), GPIO_INPUT)
+GPIO(EC_VOLDN_BTN_L,	PIN(8, 3), GPIO_INPUT)
+GPIO(EC_VOLUP_BTN_L,	PIN(8, 2), GPIO_INPUT)
+
+GPIO(WP_L,			PIN(4, 0), GPIO_INPUT)	/* EC_WP_ODL */
+
+/* FIXME(dhendrix): Implement interrupt handlers for lid, tablet mode, etc. */
+//GPIO_INT(BASE_SIXAXIS_INT_L,	PIN(9, 3), GPIO_INT_LOW | GPIO_SEL_1P8V, gyro_interrupt)
+GPIO(BASE_SIXAXIS_INT_L,	PIN(9, 3), GPIO_INPUT | GPIO_SEL_1P8V)
+//GPIO_INT(LID_ACCEL_INT_L,	PIN(C, 7), GPIO_INT_LOW | GPIO_SEL_1P8V, lid_interrupt)
+GPIO(LID_ACCEL_INT_L,		PIN(C, 7), GPIO_INPUT | GPIO_SEL_1P8V)
+//GPIO_INT(TABLET_MODE,		PIN(3, 6), GPIO_INT_BOTH | GPIO_PULL_HIGH, tablet_mode_interrupt)
+
+
+/*
+ * continuing normal GPIO declarations...
+ */
 /* KB interrupt from EC to PCH */
 ALTERNATE(PIN_MASK(5, 0x08), 0, MODULE_LPC, GPIO_INT_HIGH | GPIO_ODR_HIGH)	/* FIXME(dhendrix): LPC_SERIRQ, INT_HIGH? */
 /* Use EC_PCH_KB_INT_ODL if SERIRQ doesn't work*/

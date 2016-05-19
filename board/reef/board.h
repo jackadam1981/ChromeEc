@@ -13,7 +13,11 @@
  * TODO: Remove this config before production.
  */
 #define CONFIG_SYSTEM_UNLOCKED
+#define HOOK_DEBUG
 
+#undef CONFIG_ADC
+
+#if 0
 /* Battery */
 #define CONFIG_BATTERY_CUT_OFF
 #define CONFIG_BATTERY_PRESENT_GPIO GPIO_EC_BATT_PRES_L
@@ -54,10 +58,11 @@
 #define CONFIG_LPC
 #define CONFIG_CHIPSET_APOLLOLAKE
 #undef CONFIG_PECI
+#endif
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_X86
 #define CONFIG_POWER_COMMON
-
+#if 0
 /* EC */
 #define CONFIG_ADC
 #define CONFIG_BOARD_VERSION
@@ -78,8 +83,11 @@
 #define CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD 30
 #define CONFIG_PWM
 /* #define CONFIG_TEMP_SENSOR */
+#endif
 #define CONFIG_UART_HOST 0
+#if 0
 #define CONFIG_VBOOT_HASH
+#endif
 
 #define CONFIG_FLASH_SIZE 524288
 #define CONFIG_SPI_FLASH_W25Q40	/* FIXME: Should be GD25LQ40? */
@@ -102,6 +110,7 @@
 #define GPIO_BAT_LED_RED GPIO_CHARGE_LED_1
 #define GPIO_BAT_LED_GREEN GPIO_CHARGE_LED_2
 
+#if 0
 /* I2C ports */
 #define I2C_PORT_GYRO                   NPCX_I2C_PORT1
 #define I2C_PORT_ALS                    NPCX_I2C_PORT2
@@ -124,6 +133,7 @@
 
 /* Ambient Light Sensor address */
 #define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
+#endif
 
 #undef DEFERRABLE_MAX_COUNT
 #define DEFERRABLE_MAX_COUNT 15
@@ -184,6 +194,7 @@ enum sensor_id {
 	BASE_ACCEL,
 };
 
+#if 0
 /* start as a sink in case we have no other power supply/battery */
 #define PD_DEFAULT_STATE PD_STATE_SNK_DISCONNECTED
 
@@ -211,6 +222,7 @@ void board_reset_pd_mcu(void);
 int board_get_version(void);
 
 void board_set_tcpc_power_mode(int port, int mode);
+#endif
 
 #endif /* !__ASSEMBLER__ */
 

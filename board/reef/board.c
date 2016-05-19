@@ -55,6 +55,7 @@
 #define IN_PGOOD_PP3300	POWER_SIGNAL_MASK(X86_PGOOD_PP3300)
 #define IN_PGOOD_PP5000	POWER_SIGNAL_MASK(X86_PGOOD_PP5000)
 
+#if 0
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if (!gpio_get_level(GPIO_USB_PD_RST_ODL))
@@ -89,7 +90,9 @@ void tablet_mode_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&enable_input_devices_data, 0);
 }
 
+#endif
 #include "gpio_list.h"
+#if 0
 
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
@@ -148,6 +151,7 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
+#endif
 
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_LID_OPEN,
@@ -156,6 +160,7 @@ const enum gpio_signal hibernate_wake_pins[] = {
 
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
+#if 0
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.port_addr = 0,	/* don't care / unused */
@@ -713,3 +718,4 @@ int board_get_version(void)
 
 	return version;
 }
+#endif
