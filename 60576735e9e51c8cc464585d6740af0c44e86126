@@ -46,6 +46,30 @@
       "revId": "60576735e9e51c8cc464585d6740af0c44e86126",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3703fe92_4693526b",
+        "filename": "board/celes/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-19T16:51:32Z",
+      "side": 1,
+      "message": "Push-pull is configured through PCR bit 8:\n\nOutput Buffer Type\n0 \u003d Push-Pull\n1 \u003d Open Drain\n\nPU/PD is configured through PCR bits 0+1:\n\nThese bits are used to enable an internal pull-up.\n00 \u003d None\n01 \u003d Pull Up Enabled\n10 \u003d Pull Down Enabled (Note 20-6)\n11 \u003d None\n\nSee gpio_set_flags_by_mask() for how we\u0027re setting these bits:\n                if (flags \u0026 GPIO_OPEN_DRAIN)\n                        val |\u003d (1 \u003c\u003c 8);\n                else\n                        val \u0026\u003d ~(1 \u003c\u003c 8);\n...\n\n                /* Handle pullup / pulldown */\n                if (flags \u0026 GPIO_PULL_UP)\n                        val \u003d (val \u0026 ~0x3) | 0x1;\n                else if (flags \u0026 GPIO_PULL_DOWN)\n                        val \u003d (val \u0026 ~0x3) | 0x2;\n                else\n                        val \u0026\u003d ~0x3;\n\n\nAs you can see, GPIO_PULL_UP | GPIO_PULL_DOWN is equivalent to GPIO_PULL_UP. Furthermore, I question whether the PU/PD bits even do anything when the pad is configured as output + push-pull. Output + push-pull + enabling a PU/PD is just going to cause leakage and is a broken config.",
+      "parentUuid": "f7e966d0_fc9c0979",
+      "range": {
+        "startLine": 35,
+        "startChar": 50,
+        "endLine": 35,
+        "endChar": 79
+      },
+      "revId": "60576735e9e51c8cc464585d6740af0c44e86126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
