@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7e966d0_dc1cad02",
+        "filename": "board/elm/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-19T11:00:18Z",
+      "side": 1,
+      "message": "This breaks reset when trying to update FW with cable unplugged (we do a reset before doing the update, and the chip never comes back up because of this).\n\nOf course we can work around it with a special flag, but I\u0027m wondering if this really necessary? After all, after boot, the chip is on, and detects the first plug just fine...",
+      "revId": "ecb93a1583729bb57b8104c872a9aff459c635a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
