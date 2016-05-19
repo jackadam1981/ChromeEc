@@ -107,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "f7e966d0_dc082d20",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3199,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-19T12:07:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37f21ea8_ab383e29",
+      "range": {
+        "startLine": 3199,
+        "startChar": 8,
+        "endLine": 3199,
+        "endChar": 20
+      },
+      "revId": "27a7109c69456e19aa9736dae60e671b8b72bdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37f21ea8_2b0c4e96",
         "filename": "include/i2c.h",
         "patchSetId": 2
@@ -118,6 +142,30 @@
       "writtenOn": "2016-05-18T16:45:49Z",
       "side": 1,
       "message": "Don\u0027t need the entire header file.\n\nJust\n\nstruct ec_params_i2c_passthru_msg;",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "27a7109c69456e19aa9736dae60e671b8b72bdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e966d0_7c1ab968",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-19T12:07:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37f21ea8_2b0c4e96",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -165,6 +213,30 @@
       "side": 1,
       "message": "Yeah I was hoping we could do something smart with the length, but we\u0027d probably need the data as well.\n\nI\u0027ll just keep the address.",
       "parentUuid": "37f21ea8_4b7a7adf",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 48
+      },
+      "revId": "27a7109c69456e19aa9736dae60e671b8b72bdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e966d0_9c0ea52b",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-19T12:07:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7e966d0_1c3295ff",
       "range": {
         "startLine": 38,
         "startChar": 4,
