@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37f21ea8_5fbeb1e2",
+        "filename": "board/cr50/tpm2/aes.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-05-19T00:16:36Z",
+      "side": 1,
+      "message": "this is annoying everywhere. Fix the collision on either end?",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "9057a9f338747852dab2a20e9935d96a870fb959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
