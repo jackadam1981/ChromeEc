@@ -22,6 +22,30 @@
       "revId": "60576735e9e51c8cc464585d6740af0c44e86126",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e966d0_fc9c0979",
+        "filename": "board/celes/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-05-19T16:44:29Z",
+      "side": 1,
+      "message": "Tested combination, it is best to me, INPUT | PULL_UP also. but this is slightly better when all of NC, and microchip introduce push/pull, so just trying, I also asking them",
+      "parentUuid": "3703fe92_a628c626",
+      "range": {
+        "startLine": 35,
+        "startChar": 50,
+        "endLine": 35,
+        "endChar": 79
+      },
+      "revId": "60576735e9e51c8cc464585d6740af0c44e86126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
