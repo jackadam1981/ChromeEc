@@ -653,9 +653,10 @@
 #undef CONFIG_CUSTOMIZED_RO
 
 /*
- * When enabled, build in support for hardware crypto; only supported on CR50.
+ * When enabled, build in support for crypto; only supported on CR50.
  */
 #undef CONFIG_DCRYPTO
+#undef CONFIG_DCRYPTO_HW
 
 /*****************************************************************************/
 /*
