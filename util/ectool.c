@@ -147,6 +147,8 @@ const char help_str[] =
 	"      Whether or not the AP should pause in S5 on shutdown\n"
 	"  pdlog\n"
 	"      Prints the PD event log entries\n"
+	"  pdreset\n"
+	"      Resets the PD\n"
 	"  pdwritelog <type> <port>\n"
 	"      Writes a PD event log of the given <type>\n"
 	"  pdgetmode <port>\n"
@@ -6585,6 +6587,18 @@ int cmd_pd_log(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_pd_reset(int argc, char *argv[])
+{
+	struct ec_params_pd_control p;
+	int rv;
+
+	p.chip = 0;
+	p.subcmd = PD_RESET;
+
+	rv = ec_command(EC_CMD_PD_CONTROL, 0, &p, sizeof(p), NULL, 0);
+	return (rv < 0 ? rv : 0);
+}
+
 int cmd_pd_write_log(int argc, char *argv[])
 {
 	struct ec_params_pd_write_log_entry p;
@@ -6674,6 +6688,7 @@ const struct command commands[] = {
 	{"pdsetmode", cmd_pd_set_amode},
 	{"port80read", cmd_port80_read},
 	{"pdlog", cmd_pd_log},
+	{"pdreset", cmd_pd_reset},
 	{"pdwritelog", cmd_pd_write_log},
 	{"powerinfo", cmd_power_info},
 	{"protoinfo", cmd_proto_info},
