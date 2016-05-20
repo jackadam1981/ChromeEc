@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "57bb123b_691c29af",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2016-05-20T18:21:52Z",
+      "side": 1,
+      "message": "Sorry, I think that I misunderstood the way the code works and defined this incorrectly.  I\u0027ll upload a new patch with your updates.  Thanks.",
+      "parentUuid": "3703fe92_3b52abce",
+      "range": {
+        "startLine": 561,
+        "startChar": 8,
+        "endLine": 561,
+        "endChar": 28
+      },
+      "revId": "8916aff54d786af8780f92702dab4c23b51a8cb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3703fe92_7b714366",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
