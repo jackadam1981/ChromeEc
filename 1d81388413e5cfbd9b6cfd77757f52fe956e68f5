@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57bb123b_4f4e8db2",
+        "filename": "power/apollolake.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-20T00:05:25Z",
+      "side": 1,
+      "message": "Note to self: Excessive prints seem to cause ALL_SYS_PGOOD interrupt to be missed?",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 34
+      },
+      "revId": "1d81388413e5cfbd9b6cfd77757f52fe956e68f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
