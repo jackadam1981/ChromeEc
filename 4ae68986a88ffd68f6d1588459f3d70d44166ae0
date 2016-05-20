@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "57bb123b_2ce7cac0",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-20T23:45:45Z",
+      "side": 1,
+      "message": "I will remove this case.",
+      "revId": "4ae68986a88ffd68f6d1588459f3d70d44166ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57bb123b_bbe2d2e6",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 18
@@ -108,6 +125,30 @@
       "side": 1,
       "message": "I don\u0027t understand the first part of this comment.\n\nWe need to have some logically sound method of setting and clearing the VBUS supplier.\n\n- When we have 5V on VBUS, we should set it (500 mA limit).\n- When we lose 5V on VBUS, we should clear it (0 mA limit).\n\nI don\u0027t understand the relationship with those dual role toggle states. Are you sure it\u0027s the case? Keep in mind that we don\u0027t dual-role toggle unless we\u0027re in S0.",
       "parentUuid": "57bb123b_2e9d0265",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 51
+      },
+      "revId": "4ae68986a88ffd68f6d1588459f3d70d44166ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57bb123b_ccf1de7b",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-20T23:45:45Z",
+      "side": 1,
+      "message": "Yes, It was about dual role.\nI added the code to clear VBUS all the time, it is working fine. Thanks for pointing out the error. I think previously I might have encountered race condition (patch 15) and clearing the VBUS might have prevented triggering next event.",
+      "parentUuid": "57bb123b_31e1e310",
       "range": {
         "startLine": 299,
         "startChar": 0,
