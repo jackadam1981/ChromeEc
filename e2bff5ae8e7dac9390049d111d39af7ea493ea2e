@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57bb123b_694f0926",
+        "filename": "board/celes/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-20T18:07:47Z",
+      "side": 1,
+      "message": "Is there an external PU on this pin?",
+      "range": {
+        "startLine": 65,
+        "startChar": 33,
+        "endLine": 65,
+        "endChar": 61
+      },
+      "revId": "e2bff5ae8e7dac9390049d111d39af7ea493ea2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57bb123b_09575dba",
+        "filename": "board/celes/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-20T18:07:47Z",
+      "side": 1,
+      "message": "(GPIO_OUT_HIGH | GPIO_PULL_UP) makes no sense to me -- you have a high push-pull output and you\u0027re adding a PU resistor.",
+      "range": {
+        "startLine": 68,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 62
+      },
+      "revId": "e2bff5ae8e7dac9390049d111d39af7ea493ea2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
