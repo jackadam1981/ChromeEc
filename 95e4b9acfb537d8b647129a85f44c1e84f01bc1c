@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57bb123b_e9b01906",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-20T18:26:59Z",
+      "side": 1,
+      "message": "I\u0027d rather not add yet another config, just make this a weak symbol instead.",
+      "range": {
+        "startLine": 530,
+        "startChar": 7,
+        "endLine": 530,
+        "endChar": 36
+      },
+      "revId": "95e4b9acfb537d8b647129a85f44c1e84f01bc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57bb123b_c98a752c",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-20T18:26:59Z",
+      "side": 1,
+      "message": "I was hoping we could reuse this function as-is. What breaks?",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 59
+      },
+      "revId": "95e4b9acfb537d8b647129a85f44c1e84f01bc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57bb123b_44a02ca5",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-20T18:26:59Z",
+      "side": 1,
+      "message": "Change this comment to \"Take board-specific actions to enable charging from a given type of supplier\". And I don\u0027t think we\u0027re using the return value at all -- just make it void.",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "95e4b9acfb537d8b647129a85f44c1e84f01bc1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
