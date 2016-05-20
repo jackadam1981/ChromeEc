@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57bb123b_bbe2d2e6",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-20T20:19:50Z",
+      "side": 1,
+      "message": "This supplier should be set if we have VBUS present, but I don\u0027t see it getting set anywhere. If I attach 5V VBUS w/ no CC / D+ / D- to the port, can the charger detect it?\n\n(BTW - our TCPC can also tell us if VBUS is present \u003cand sometimes we even have a GPIO for this purpose\u003e, I\u0027m just wondering if it makes sense to do VBUS detection here or at board level).",
+      "range": {
+        "startLine": 303,
+        "startChar": 31,
+        "endLine": 303,
+        "endChar": 51
+      },
+      "revId": "4ae68986a88ffd68f6d1588459f3d70d44166ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57bb123b_789d1072",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-20T20:19:50Z",
+      "side": 1,
+      "message": "We could just zero VBUS + all BC1.2 CHARGE_SUPPLIER_* here, right? (Not suggesting we necessarily make this change, just want to clarify).",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 51
+      },
+      "revId": "4ae68986a88ffd68f6d1588459f3d70d44166ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
