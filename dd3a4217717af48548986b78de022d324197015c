@@ -51,6 +51,24 @@
       "revId": "dd3a4217717af48548986b78de022d324197015c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57bb123b_5568dc78",
+        "filename": "power/apollolake.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-20T21:05:11Z",
+      "side": 1,
+      "message": "Okay, that is good. That means I can get rid of lines 267-274 and rely on CHIPSET_PRE_INIT hook which is used above.",
+      "parentUuid": "57bb123b_b580285e",
+      "revId": "dd3a4217717af48548986b78de022d324197015c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
