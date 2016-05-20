@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57bb123b_69b3895d",
+        "filename": "board/celes/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-20T17:57:22Z",
+      "side": 1,
+      "message": "Did you intend to make this (and below GPIOs) INPUT + PU?",
+      "range": {
+        "startLine": 159,
+        "startChar": 33,
+        "endLine": 159,
+        "endChar": 62
+      },
+      "revId": "fa2f9d2206f4a33bdbd03673af210a2122a7644e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57bb123b_894ced62",
+        "filename": "board/celes/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-20T17:57:22Z",
+      "side": 1,
+      "message": "Won\u0027t gpio_config_module(MODULE_SPI, 0) already set this pin to GPIO + INPUT?",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 23
+      },
+      "revId": "fa2f9d2206f4a33bdbd03673af210a2122a7644e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57bb123b_492685c2",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-20T17:57:22Z",
+      "side": 1,
+      "message": "Just remove this and make your change unconditional. We don\u0027t want to keep the PWM active in hibernate since we aren\u0027t coming back. It\u0027s fixed on TOT through pwm_get_keep_awake_mask() (applied only on prepare_for_deep_sleep()).",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 5
+      },
+      "revId": "fa2f9d2206f4a33bdbd03673af210a2122a7644e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57bb123b_2936a1d6",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-20T17:57:22Z",
+      "side": 1,
+      "message": "Is the wake timer not accurate without this change? We should get it in TOT (though I don\u0027t think we ever do timer-wake-from-hibernate, except for testing).",
+      "range": {
+        "startLine": 304,
+        "startChar": 41,
+        "endLine": 304,
+        "endChar": 47
+      },
+      "revId": "fa2f9d2206f4a33bdbd03673af210a2122a7644e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
