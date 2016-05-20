@@ -24,8 +24,17 @@
 #include "gpio_list.h"
 
 /* NvMem Buffer length table */
-#define NVMEM_CR50_SIZE 0x400
-#define NVMEM_TPM_SIZE (CONFIG_FLASH_NVMEM_PARTITION_SIZE - NVMEM_CR50_SIZE - \
+/*
+ * TODO: NV_MEMORY_SIZE is defined in 2 places. Here and in
+ * /src/third_party/tmp2/Implementation.h. This needs to be
+ * fixed so that it's only defined in one location to ensure that the TPM2.0 lib
+ * code and the NvMem code specific to Cr50 is consistent. Will
+ * either reference existing issue or create one to track
+ * this as ultimately only want this defined in 1 place.
+ */
+#define NV_MEMORY_SIZE 7168
+#define NVMEM_TPM_SIZE NV_MEMORY_SIZE
+#define NVMEM_CR50_SIZE (CONFIG_FLASH_NVMEM_PARTITION_SIZE - NVMEM_TPM_SIZE - \
 			sizeof(struct nvmem_tag))
 int32_t nvmem_buffer_tab[NV_NUM_USERS] = {
 	NVMEM_TPM_SIZE,
