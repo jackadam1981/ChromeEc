@@ -16,6 +16,41 @@
       "revId": "dd3a4217717af48548986b78de022d324197015c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57bb123b_d57fac51",
+        "filename": "power/apollolake.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-20T05:00:01Z",
+      "side": 1,
+      "message": "Let\u0027s create two generic GPIO name: GPIO_PMIC_EN and GPIO_V5A_EN.\n\nFor board design with two GPIO, then create these GPIO in gpio.inc.\n\nFor board design with single GPIO, then create one GPIO in gpio.inc and use #define to make the other GPIO points to the same one in board.h.",
+      "parentUuid": "57bb123b_f56910eb",
+      "revId": "dd3a4217717af48548986b78de022d324197015c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57bb123b_b580285e",
+        "filename": "power/apollolake.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-20T05:00:01Z",
+      "side": 1,
+      "message": "Checked the PMIC spec, PMIC_EN(V5A_EN) should be turned on after external 5V/3.3V VR is enabled, which is EN_PP5500.\n\nWith the above GPIO name change suggestion, we should:\nFirst enable GPIO_V5A_EN (Reef current GPIO_EN_PP5000)\nThen enable GPIO_PMIC_EN (Reef current GPIO_V5A_EN) \n\nV3P3A (EN_PP3300) is turned on in Reef board_init and not turn off else where, so that should be ok.",
+      "revId": "dd3a4217717af48548986b78de022d324197015c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
