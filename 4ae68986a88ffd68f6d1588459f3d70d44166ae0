@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "57bb123b_db2eb633",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-20T21:09:04Z",
+      "side": 1,
+      "message": "Yes charger can detect it (CHDDET bit is set in 31h/29h). I was thinking of making these type of chargers as CHARGE_SUPPLIER_OTHER and add it as part of BC1.2 in another CL.\nReason I added it is: PD detects BC1.2 as VBUS but doesn\u0027t clear VBUS if change manger overwrites it with BC1.2 info. If we don\u0027t clear it, next attach event will not occur.",
+      "parentUuid": "57bb123b_bbe2d2e6",
+      "range": {
+        "startLine": 303,
+        "startChar": 31,
+        "endLine": 303,
+        "endChar": 51
+      },
+      "revId": "4ae68986a88ffd68f6d1588459f3d70d44166ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57bb123b_789d1072",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 18
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-20T20:19:50Z",
       "side": 1,
       "message": "We could just zero VBUS + all BC1.2 CHARGE_SUPPLIER_* here, right? (Not suggesting we necessarily make this change, just want to clarify).",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 51
+      },
+      "revId": "4ae68986a88ffd68f6d1588459f3d70d44166ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57bb123b_2e9d0265",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-20T21:09:04Z",
+      "side": 1,
+      "message": "Charger detects type-C as SDP, so if we clear VBUS on detach (just power off Type-C charger but don\u0027t remove it from the DUT) then we don\u0027t get the following events \nC0 st2\nC0 st15\nC0 st18\nC0 st14\nC0 st3.\n\nThere is no impact of putting zero to all CHARGE_SUPPLIER_*BC1.2* but for optimization purpose I kept is simple.",
+      "parentUuid": "57bb123b_789d1072",
       "range": {
         "startLine": 299,
         "startChar": 0,
