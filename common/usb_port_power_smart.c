@@ -95,8 +95,10 @@ static void usb_charge_all_ports_ctrl(enum usb_charge_mode mode)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PORT_POWER_SMART_PORT_COUNT; i++)
+	for (i = 0; i < CONFIG_USB_PORT_POWER_SMART_PORT_COUNT; i++) {
+		msleep(20);
 		usb_charge_set_mode(i, mode);
+	}
 }
 
 int usb_charge_ports_enabled(void)
