@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57bb123b_4c45ee06",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-21T00:32:23Z",
+      "side": 1,
+      "message": "I can use common code with removed race conditions (patch 15).",
+      "revId": "734954bd12792e9404404fd487c3290cb2905742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
