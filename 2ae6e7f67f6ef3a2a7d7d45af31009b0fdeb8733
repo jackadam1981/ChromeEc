@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc33a7f3_5238348b",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-23T04:10:49Z",
+      "side": 1,
+      "message": "Kevin had also suggested initializing the GPIO in gpio.inc so we don\u0027t have to mess with this hook. I haven\u0027t tested yet, but that would probably be fine, though I\u0027m not 100% sure with the delay (normally 750us for this converter).",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 67
+      },
+      "revId": "2ae6e7f67f6ef3a2a7d7d45af31009b0fdeb8733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
