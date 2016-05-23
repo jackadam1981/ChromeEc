@@ -12,7 +12,9 @@
 # that descend from a Google USB device (this includes all USB interface nodes
 # as well as all of the TTY nodes derived from CCD USB interfaces).
 #
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="18d1", ENV{GOOGLE_CCD_NAME}="$attr{product}-$attr{busnum}-$attr{devpath}"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="18d1", \
+	PROGRAM="%ROOT%/suzy_index", \
+	ENV{GOOGLE_CCD_NAME}="$attr{product}-$attr{busnum}-$attr{devpath}"
 
 #
 # Force ModemManager to ignore all Google case closed debug devices.  It would
@@ -25,9 +27,14 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="18d1", ENV{GOOGLE_CCD_NAME}="$attr{product}
 # it would just add extraneous ID_MM_DEVICE_IGNORE tags to the TTY and USB
 # interface nodes.
 #
-SUBSYSTEM=="usb", ENV{GOOGLE_CCD_NAME}!="", ENV{DEVTYPE}=="usb_device", ENV{ID_USB_INTERFACES}=="*:ff5001:*", ENV{ID_MM_DEVICE_IGNORE}="1"
+SUBSYSTEM=="usb", ENV{GOOGLE_CCD_NAME}!="", ENV{DEVTYPE}=="usb_device", \
+	ENV{ID_USB_INTERFACES}=="*:ff5001:*", \
+	ENV{ID_MM_DEVICE_IGNORE}="1"
 
 #
 # Construct a symlink to a TTY generated from a CCD USB serial interface.
 #
-SUBSYSTEM=="tty", ENV{GOOGLE_CCD_NAME}!="", ATTRS{bInterfaceClass}=="ff", ATTRS{bInterfaceSubClass}=="50", ATTRS{bInterfaceProtocol}=="01", OPTIONS+="string_escape=replace", SYMLINK+="google/$env{GOOGLE_CCD_NAME}/serial/$attr{interface}"
+SUBSYSTEM=="tty", ENV{GOOGLE_CCD_NAME}!="", ATTRS{bInterfaceClass}=="ff", \
+	ATTRS{bInterfaceSubClass}=="50", ATTRS{bInterfaceProtocol}=="01", \
+	OPTIONS+="string_escape=replace", \
+	SYMLINK+="google/$env{GOOGLE_CCD_NAME}/serial/$attr{interface}"

@@ -1,0 +1,34 @@
+#!/bin/bash
+# Copyright 2016 The Chromium OS Authors.
+#
+# This script is invoked by udev when Chrome OS CCD (Case Closed Debug)
+# hardware is detected. It makes sure that necessary underlying modules are
+# installed and helps to generate a distinct /dev path to each new detected
+# CCD instance.
+
+# Location of raiden.ko
+
+if [ ! -d /dev/google ]; then
+  # This is the first CCD instance, let's see if necessary drivers are
+  # installed.
+  root_dir="$(readlink -f "$(dirname $0)")"
+
+  # How many necessary modules have been installed?
+  mod_count="$(lsmod | egrep  -w '^(raiden|usbserial)' |  wc -l)"
+
+  case "${mod_count}" in
+    (0)
+      # Neither of the modules has been installed, install both.
+      insmod "/lib/modules/$(uname -r)/kernel/drivers/usb/serial/usbserial.ko"
+      insmod "${root_dir}/raiden.ko"
+      ;;
+    (1)
+      # One module only (presumably usb-serial) has been installed, install the
+      # second one.
+      insmod "${root_dir}/raiden.ko"
+      ;;
+    (*)
+      # Both modules already installed.
+      break;;
+  esac
+fi
