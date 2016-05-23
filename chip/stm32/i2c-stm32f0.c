@@ -60,9 +60,10 @@ void i2c_set_timeout(int port, uint32_t timeout)
  */
 static int wait_isr(int port, int mask)
 {
-	uint64_t timeout = get_time().val + pdata[port].timeout_us;
+	uint64_t start = get_time().val;
+	uint64_t delta = 0;
 
-	while (get_time().val < timeout) {
+	do {
 		int isr = STM32_I2C_ISR(port);
 
 		/* Check for errors */
@@ -74,9 +75,12 @@ static int wait_isr(int port, int mask)
 		if ((isr & mask) == mask)
 			return EC_SUCCESS;
 
-		/* I2C is slow, so let other things run while we wait */
-		usleep(100);
-	}
+		delta = get_time().val - start;
+
+		/* Busy-loop for 150us, then let other things run. */
+		if (delta > 150)
+			usleep(100);
+	} while (delta < pdata[port].timeout_us);
 
 	return EC_ERROR_TIMEOUT;
 }
