@@ -199,6 +199,7 @@ void pd_process_source_cap(int port, int cnt, uint32_t *src_caps)
 	charge_manager_set_ceil(port, CEIL_REQUESTOR_PD, PD_MIN_MA);
 	pd_set_input_current_limit(port, ma, mv);
 #endif
+	board_process_source_cap(port, cnt, src_caps);
 }
 
 void pd_set_max_voltage(unsigned mv)
