@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc0567ff_1c5995f1",
+        "filename": "board/celes/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-05-23T14:20:05Z",
+      "side": 1,
+      "message": "Yes, Let\u0027s use IN/PU",
+      "parentUuid": "57bb123b_69b3895d",
+      "range": {
+        "startLine": 159,
+        "startChar": 33,
+        "endLine": 159,
+        "endChar": 62
+      },
+      "revId": "fa2f9d2206f4a33bdbd03673af210a2122a7644e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57bb123b_894ced62",
         "filename": "board/celes/board.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-20T17:57:22Z",
       "side": 1,
       "message": "Won\u0027t gpio_config_module(MODULE_SPI, 0) already set this pin to GPIO + INPUT?",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 23
+      },
+      "revId": "fa2f9d2206f4a33bdbd03673af210a2122a7644e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc0567ff_fc6dc987",
+        "filename": "board/celes/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-05-23T14:20:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57bb123b_894ced62",
       "range": {
         "startLine": 163,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dc0567ff_9c4da532",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-05-23T14:20:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57bb123b_492685c2",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 5
+      },
+      "revId": "fa2f9d2206f4a33bdbd03673af210a2122a7644e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57bb123b_2936a1d6",
         "filename": "chip/mec1322/system.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2016-05-20T17:57:22Z",
       "side": 1,
       "message": "Is the wake timer not accurate without this change? We should get it in TOT (though I don\u0027t think we ever do timer-wake-from-hibernate, except for testing).",
+      "range": {
+        "startLine": 304,
+        "startChar": 41,
+        "endLine": 304,
+        "endChar": 47
+      },
+      "revId": "fa2f9d2206f4a33bdbd03673af210a2122a7644e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc0567ff_7c5ad9ea",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-05-23T14:20:05Z",
+      "side": 1,
+      "message": "I\u0027d simple test, but we ran this many sleep sequence. So I think this should be 61 like clock.c(which we used so long time).We will do amount of test sooner, then I will notice to fine to use ToT.",
+      "parentUuid": "57bb123b_2936a1d6",
       "range": {
         "startLine": 304,
         "startChar": 41,
