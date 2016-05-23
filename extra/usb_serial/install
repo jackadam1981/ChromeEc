@@ -1,0 +1,23 @@
+#!/bin/bash
+# Copyright 2016 The Chromium OS Authors.
+#
+# This scripts compiles the module and installs udev rules necessary to
+# support Chromeo OS Close Case Debug hardware.
+#
+set -e
+
+rootdir="$(readlink -f "$(dirname "$0")")"
+cd "${rootdir}"
+
+# Build the kernel module.
+make
+
+# Modify the udev rule template to point at this directory.
+sed "s^%ROOT%^${rootdir}^" 51-google-serial.rules.template > \
+  51-google-serial.rules
+
+# Install the new udev rule.
+sudo mv 51-google-serial.rules /etc/udev/rules.d
+
+# Made sure udev picks up the new rule.
+sudo udevadm control --reload-rules
