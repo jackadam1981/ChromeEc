@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c84cfcd_a85b5f46",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-23T18:03:40Z",
+      "side": 1,
+      "message": "tested again, we can reuse the same code by making changes in charger code. Uploading next version.",
+      "revId": "8647eacdc9d8c6b3c303dd2bb90706f273193b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
