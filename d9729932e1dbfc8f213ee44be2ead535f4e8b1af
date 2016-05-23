@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c84cfcd_8b969502",
+        "filename": "board/setzer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-05-23T18:54:30Z",
+      "side": 1,
+      "message": "the trace in the bug shows a stack overflow in HOOKS task,\nhave you tried to only increment this particular stack size ?\n\nWhen you are looking at the task canaries returned by \u0027taskinfo\u0027 is there any reason to increment all the other task sizes you are touching here (CHARGER, MOTIONSENSE, CHIPSET, HOSTCMD) ?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 34
+      },
+      "revId": "d9729932e1dbfc8f213ee44be2ead535f4e8b1af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
