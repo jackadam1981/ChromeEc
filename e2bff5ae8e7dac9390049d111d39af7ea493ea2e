@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc0567ff_3c3d717b",
+        "filename": "board/celes/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-05-23T14:15:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57bb123b_acc3ba4a",
+      "range": {
+        "startLine": 39,
+        "startChar": 33,
+        "endLine": 39,
+        "endChar": 46
+      },
+      "revId": "e2bff5ae8e7dac9390049d111d39af7ea493ea2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57bb123b_694f0926",
         "filename": "board/celes/gpio.inc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-20T18:07:47Z",
       "side": 1,
       "message": "Is there an external PU on this pin?",
+      "range": {
+        "startLine": 65,
+        "startChar": 33,
+        "endLine": 65,
+        "endChar": 61
+      },
+      "revId": "e2bff5ae8e7dac9390049d111d39af7ea493ea2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc0567ff_1c42b503",
+        "filename": "board/celes/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-05-23T14:15:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57bb123b_694f0926",
       "range": {
         "startLine": 65,
         "startChar": 33,
@@ -82,6 +130,30 @@
       "writtenOn": "2016-05-20T23:27:16Z",
       "side": 1,
       "message": "No PU?",
+      "range": {
+        "startLine": 83,
+        "startChar": 34,
+        "endLine": 83,
+        "endChar": 47
+      },
+      "revId": "e2bff5ae8e7dac9390049d111d39af7ea493ea2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc0567ff_fc46e915",
+        "filename": "board/celes/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-05-23T14:15:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57bb123b_ecddc222",
       "range": {
         "startLine": 83,
         "startChar": 34,
