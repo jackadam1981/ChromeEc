@@ -2770,21 +2770,34 @@ static int remote_flashing(int argc, char **argv)
 #if defined(CONFIG_USB_PD_ALT_MODE) && !defined(CONFIG_USB_PD_ALT_MODE_DFP)
 void pd_send_hpd(int port, enum hpd_event hpd)
 {
-	uint32_t data[1];
-	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
+  uint32_t data[1];
+  int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
+  if (!opos)
+    return;
+
+  data[0] = VDO_DP_STATUS((hpd == hpd_irq),  /* IRQ_HPD */
+      (hpd != hpd_low),  /* HPD_HI|LOW */
+      0,		      /* request exit DP */
+      0,		      /* request exit USB */
+      0,		      /* MF pref */
+      1,                    /* enabled */
+      0,		      /* power low */
+      0x2);
+  pd_send_vdm(port, USB_SID_DISPLAYPORT,
+      VDO_OPOS(opos) | CMD_ATTENTION, data, 1);
+  /* Wait until VDM is done. */
+  while (pd[0].vdm_state > 0)
+    task_wait_event(USB_PD_RX_TMOUT_US * (PD_RETRY_COUNT + 1));
+}
+
+void pd_send_eth_link_change(int port)
+{
+	int opos = pd_alt_mode(port, USB_VID_GOOGLE);
 	if (!opos)
 		return;
 
-	data[0] = VDO_DP_STATUS((hpd == hpd_irq),  /* IRQ_HPD */
-				(hpd != hpd_low),  /* HPD_HI|LOW */
-				0,		      /* request exit DP */
-				0,		      /* request exit USB */
-				0,		      /* MF pref */
-				1,                    /* enabled */
-				0,		      /* power low */
-				0x2);
-	pd_send_vdm(port, USB_SID_DISPLAYPORT,
-		    VDO_OPOS(opos) | CMD_ATTENTION, data, 1);
+	pd_send_vdm(port, USB_VID_GOOGLE,
+		    VDO_OPOS(opos) | CMD_ATTENTION, NULL, 0);
 	/* Wait until VDM is done. */
 	while (pd[0].vdm_state > 0)
 		task_wait_event(USB_PD_RX_TMOUT_US * (PD_RETRY_COUNT + 1));
@@ -3086,12 +3099,14 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_PORTS,
 		     hc_pd_ports,
 		     EC_VER_MASK(0));
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 static const enum pd_dual_role_states dual_role_map[USB_PD_CTRL_ROLE_COUNT] = {
 	[USB_PD_CTRL_ROLE_TOGGLE_ON]    = PD_DRP_TOGGLE_ON,
 	[USB_PD_CTRL_ROLE_TOGGLE_OFF]   = PD_DRP_TOGGLE_OFF,
 	[USB_PD_CTRL_ROLE_FORCE_SINK]   = PD_DRP_FORCE_SINK,
 	[USB_PD_CTRL_ROLE_FORCE_SOURCE] = PD_DRP_FORCE_SOURCE,
 };
+#endif
 
 #ifdef CONFIG_USBC_SS_MUX
 static const enum typec_mux typec_mux_map[USB_PD_CTRL_MUX_COUNT] = {
@@ -3103,6 +3118,7 @@ static const enum typec_mux typec_mux_map[USB_PD_CTRL_MUX_COUNT] = {
 };
 #endif
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 static int hc_usb_pd_control(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_control *p = args->params;
@@ -3176,6 +3192,7 @@ static int hc_usb_pd_control(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CONTROL,
 		     hc_usb_pd_control,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
+#endif
 
 static int hc_remote_flash(struct host_cmd_handler_args *args)
 {

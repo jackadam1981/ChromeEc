@@ -321,6 +321,7 @@ struct pd_policy {
 #define VDO_CMD_FLIP         VDO_CMD_VENDOR(12)
 #define VDO_CMD_GET_LOG      VDO_CMD_VENDOR(13)
 #define VDO_CMD_CCD_EN       VDO_CMD_VENDOR(14)
+#define VDO_CMD_VLAN_ENABLE  VDO_CMD_VENDOR(15)
 
 #define PD_VDO_VID(vdo)  ((vdo) >> 16)
 #define PD_VDO_SVDM(vdo) (((vdo) >> 15) & 1)
@@ -592,6 +593,7 @@ struct pd_policy {
 #define USB_PD_HW_DEV_ID_DINGDONG    3
 #define USB_PD_HW_DEV_ID_HOHO        4
 #define USB_PD_HW_DEV_ID_HONEYBUNS   5
+#define USB_PD_HW_DEV_ID_ALLSPARK_G  6
 
 /*
  * ChromeOS specific VDO_CMD_READ_INFO responds with device info including:
@@ -1234,6 +1236,13 @@ int pd_alt_mode(int port, uint16_t svid);
  * @param hpd hotplug detect type.
  */
 void pd_send_hpd(int port, enum hpd_event hpd);
+
+/**
+ * Send Ethernet link change over USB PD.
+ *
+ * @param port port number.
+ */
+void pd_send_eth_link_change(int port);
 
 /**
  * Enable USB Billboard Device.
