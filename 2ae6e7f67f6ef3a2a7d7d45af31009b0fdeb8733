@@ -22,6 +22,47 @@
       "revId": "2ae6e7f67f6ef3a2a7d7d45af31009b0fdeb8733",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc33a7f3_7201f0a8",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-23T05:37:19Z",
+      "side": 1,
+      "message": "This delay should be fine for power on, but since there is a PP3300_PG input, we should be able to make use of that instead of a fixd time delay.",
+      "parentUuid": "dc33a7f3_5238348b",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 67
+      },
+      "revId": "2ae6e7f67f6ef3a2a7d7d45af31009b0fdeb8733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc33a7f3_92645ca0",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-23T05:37:19Z",
+      "side": 1,
+      "message": "If we shut off PP5000_A here, then we have to turn it back on at chipset_pre_init.\n\nFor power on purpose, can we leave it on until the reef power rail is fully understood?",
+      "revId": "2ae6e7f67f6ef3a2a7d7d45af31009b0fdeb8733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
