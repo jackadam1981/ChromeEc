@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9c84cfcd_6816b79e",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-23T18:40:42Z",
+      "side": 1,
+      "message": "10ms per datasheet required between PWR and RST for TCPC0.\nTCPC0 pdeval sample code is also updated to match the datasheet.",
+      "revId": "2ae6e7f67f6ef3a2a7d7d45af31009b0fdeb8733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc33a7f3_5238348b",
         "filename": "board/reef/board.c",
         "patchSetId": 2
