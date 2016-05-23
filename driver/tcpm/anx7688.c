@@ -177,4 +177,4 @@ static void anx7688_driver_init(void)
 	anx7688_usb_mux_driver = tcpci_tcpm_usb_mux_driver;
 	anx7688_usb_mux_driver.set = anx7688_mux_set;
 }
-DECLARE_HOOK(HOOK_INIT, anx7688_driver_init, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, anx7688_driver_init, HOOK_PRIO_DEFAULT-1);
