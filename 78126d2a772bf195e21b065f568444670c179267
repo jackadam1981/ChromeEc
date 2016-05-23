@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c84cfcd_c88b43d3",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-05-23T21:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57bb123b_5b25a6fb",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 2
+      },
+      "revId": "78126d2a772bf195e21b065f568444670c179267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57bb123b_1857a4ba",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-20T21:01:47Z",
       "side": 1,
       "message": "populated",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 13
+      },
+      "revId": "78126d2a772bf195e21b065f568444670c179267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c84cfcd_a5edc8c6",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-05-23T21:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57bb123b_1857a4ba",
       "range": {
         "startLine": 28,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9c84cfcd_05f114a2",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-05-23T21:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57bb123b_f81460e5",
+      "range": {
+        "startLine": 33,
+        "startChar": 36,
+        "endLine": 33,
+        "endChar": 44
+      },
+      "revId": "78126d2a772bf195e21b065f568444670c179267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57bb123b_587f6c02",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-05-20T21:01:47Z",
       "side": 1,
       "message": "We don\u0027t need both nvmem_buffer_tab[] and nvmem_get_users().  We can just say this:\n\n  extern uin32_t nvmem_user_sizes[NVMEM_NUM_USERS];\n\nand require that those terms be defined somewhere else. We can sanity-check that table in nvmem_init().\n\nYou might add a comment noting that the total of the all the user_sizes can be no more than \n\n  (CONFIG_FLASH_NVMEM_SIZE / 2) - sizeof(struct nvmem_tag)",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "78126d2a772bf195e21b065f568444670c179267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c84cfcd_283f4fc5",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-05-23T21:44:23Z",
+      "side": 1,
+      "message": "I changed the array nvmem_buffer_tab to nvmem_user_sizes[] as that\u0027s a better description and am now making the array available to common/nvmem.c via an extern declaration. nvmem_init() builds a starting offset array using the sizes.",
+      "parentUuid": "57bb123b_587f6c02",
       "range": {
         "startLine": 48,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "9c84cfcd_8569a40f",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-05-23T21:44:23Z",
+      "side": 1,
+      "message": "Yes, if not NULL was intended here.",
+      "parentUuid": "57bb123b_bb3652f0",
+      "range": {
+        "startLine": 140,
+        "startChar": 22,
+        "endLine": 140,
+        "endChar": 29
+      },
+      "revId": "78126d2a772bf195e21b065f568444670c179267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57bb123b_dbdd1623",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2016-05-20T21:01:47Z",
       "side": 1,
       "message": "I really don\u0027t like all these signed values. They lead to rollover and/or awkward casts, especially when dealing with 32-bit addresses that may legitimately have the high bit set. Make everything uint32_t. A value of 0xffffffff makes no sense for base, addr, or offset, so we can use that value for invalid/undefined if we need to.",
+      "range": {
+        "startLine": 276,
+        "startChar": 1,
+        "endLine": 277,
+        "endChar": 7
+      },
+      "revId": "78126d2a772bf195e21b065f568444670c179267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c84cfcd_25af78a3",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-05-23T21:44:23Z",
+      "side": 1,
+      "message": "I changed the offsets to unsigned. What I was trying to achieve was to make the error checking in terms of lengths easier. When the offset is unsigned then you had pointed out that checking \u0027offset + len \u003c\u003d user_size\u0027 may not be sufficient due to the possibility off a wrap.",
+      "parentUuid": "57bb123b_dbdd1623",
       "range": {
         "startLine": 276,
         "startChar": 1,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "9c84cfcd_e57f5000",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-05-23T21:44:23Z",
+      "side": 1,
+      "message": "I made the change as you suggested. Creating a nvmem_user_start_offset[NVMEM_NUM_USERS] array so it\u0027s only computed once. The array is populated when nvmem_init() is called.",
+      "parentUuid": "57bb123b_db0516b6",
+      "range": {
+        "startLine": 287,
+        "startChar": 3,
+        "endLine": 289,
+        "endChar": 56
+      },
+      "revId": "78126d2a772bf195e21b065f568444670c179267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57bb123b_3b71c2ce",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -174,6 +342,30 @@
       "writtenOn": "2016-05-20T21:01:47Z",
       "side": 1,
       "message": "Should nvmem_init() call this for us if needed?\n\nIf yes, make it static. If no, put a meaningful description for it in nvmem.h",
+      "range": {
+        "startLine": 323,
+        "startChar": 33,
+        "endLine": 324,
+        "endChar": 32
+      },
+      "revId": "78126d2a772bf195e21b065f568444670c179267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c84cfcd_28cd0f45",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-05-23T21:44:23Z",
+      "side": 1,
+      "message": "I think this function may be called via TPM2.0 \u0027manufacture()\u0027 or one time setup type function. In addition I can see it being called once an unrecoverable error case is detected. I will fixed the description in nvmem.h. I thought I had updated it, but may have lost it when I pulled it in from my dev branch.",
+      "parentUuid": "57bb123b_3b71c2ce",
       "range": {
         "startLine": 323,
         "startChar": 33,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "9c84cfcd_08fb6b55",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-05-23T21:44:23Z",
+      "side": 1,
+      "message": "I had a call here to a function that was writing values to the partition, but that was only for debug reasons. Could fill the partition with 0xffs here since the commit() call will write it to flash.",
+      "parentUuid": "57bb123b_fb0a9a10",
+      "range": {
+        "startLine": 341,
+        "startChar": 3,
+        "endLine": 341,
+        "endChar": 19
+      },
+      "revId": "78126d2a772bf195e21b065f568444670c179267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57bb123b_7b4eaab2",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -220,6 +436,30 @@
       "writtenOn": "2016-05-20T21:01:47Z",
       "side": 1,
       "message": "nvmem.c is hard-coded for only two partitions, and the partition size can be determined from the other CONFIG_ values, so we don\u0027t need these here.",
+      "range": {
+        "startLine": 860,
+        "startChar": 0,
+        "endLine": 862,
+        "endChar": 43
+      },
+      "revId": "78126d2a772bf195e21b065f568444670c179267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c84cfcd_ab46f942",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-05-23T21:44:23Z",
+      "side": 1,
+      "message": "I see your point in that neither of these is a configurable option. I think the NVMEM_NUM_PARITIONS needs to at least be in /include/nvmem.h since the partition size which is derived from that is needed where the user buffer sizes are declared.",
+      "parentUuid": "57bb123b_7b4eaab2",
       "range": {
         "startLine": 860,
         "startChar": 0,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "9c84cfcd_96055c6f",
+        "filename": "include/nvmem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-05-23T21:44:23Z",
+      "side": 1,
+      "message": "nvmem_set_dump_level isn\u0027t supposed to be there, it\u0027s in my dev branch where I have console printing options. \nI think nvmem_setup() is likely to be required for a one time manufacture path. It\u0027s not being called right now from nvmem_init(), and when I fully handle all the error cases I will verify that it\u0027s really an API function.",
+      "parentUuid": "57bb123b_5bd2c610",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "78126d2a772bf195e21b065f568444670c179267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57bb123b_9bf54e93",
         "filename": "include/nvmem.h",
         "patchSetId": 1
@@ -266,6 +530,30 @@
       "writtenOn": "2016-05-20T21:01:47Z",
       "side": 1,
       "message": "or equivalent checksum",
+      "range": {
+        "startLine": 75,
+        "startChar": 17,
+        "endLine": 75,
+        "endChar": 30
+      },
+      "revId": "78126d2a772bf195e21b065f568444670c179267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c84cfcd_16f14ca2",
+        "filename": "include/nvmem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-05-23T21:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57bb123b_9bf54e93",
       "range": {
         "startLine": 75,
         "startChar": 17,
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "9c84cfcd_b6ed00c7",
+        "filename": "include/nvmem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-05-23T21:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57bb123b_fb057a6a",
+      "range": {
+        "startLine": 77,
+        "startChar": 41,
+        "endLine": 77,
+        "endChar": 50
+      },
+      "revId": "78126d2a772bf195e21b065f568444670c179267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57bb123b_5bfbe686",
         "filename": "include/nvmem.h",
         "patchSetId": 1
@@ -324,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "9c84cfcd_d6ea04ac",
+        "filename": "include/nvmem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-05-23T21:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57bb123b_5bfbe686",
+      "range": {
+        "startLine": 78,
+        "startChar": 31,
+        "endLine": 78,
+        "endChar": 40
+      },
+      "revId": "78126d2a772bf195e21b065f568444670c179267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57bb123b_180b2470",
         "filename": "test/test_config.h",
         "patchSetId": 1
@@ -335,6 +671,30 @@
       "writtenOn": "2016-05-20T21:01:47Z",
       "side": 1,
       "message": "The first enum is always 0. You don\u0027t have to specify it.",
+      "range": {
+        "startLine": 171,
+        "startChar": 10,
+        "endLine": 171,
+        "endChar": 14
+      },
+      "revId": "78126d2a772bf195e21b065f568444670c179267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c84cfcd_08b04b4d",
+        "filename": "test/test_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-05-23T21:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57bb123b_180b2470",
       "range": {
         "startLine": 171,
         "startChar": 10,
