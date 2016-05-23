@@ -280,23 +280,6 @@ static void chipset_pre_init(void)
 		return;
 #endif
 
-	/* Enable PP5000 before PP3300 due to NFC: chrome-os-partner:50807 */
-	gpio_set_level(GPIO_EN_PP5000, 1);
-	udelay(6);	/* Double the PG low to high delay for power supply. */
-
-	/* Enable 3.3V rail */
-	gpio_set_level(GPIO_EN_PP3300, 1);
-	udelay(1500);	/* Double the PG low to high delay for converter. */
-
-	/* Make sure TCPCs are on and taken out of reset */
-	board_reset_pd_mcu();
-
-	/* FIXME: for debugging */
-	cprintf(CC_HOOK, "PP3300_PG: %d", gpio_get_level(GPIO_PP3300_PG));
-	cprintf(CC_HOOK, "PP5000_PG: %d", gpio_get_level(GPIO_PP5000_PG));
-
-	/* (Re-)Enable I2C */
-	gpio_config_module(MODULE_I2C, 1);
 #if 0
 	/* Enable PD interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT);
@@ -313,8 +296,20 @@ static void board_init(void)
 {
 	/* FIXME: Handle tablet mode */
 	/* gpio_enable_interrupt(GPIO_TABLET_MODE_L); */
+
+	/* Enable PP5000 before PP3300 due to NFC: chrome-os-partner:50807 */
+	gpio_set_level(GPIO_EN_PP5000, 1);
+	udelay(6);	/* Double the PG low to high delay for power supply. */
+
+	/* Enable 3.3V rail */
+	gpio_set_level(GPIO_EN_PP3300, 1);
+	udelay(1500);	/* Double the PG low to high delay for converter. */
+
+	/* Make sure TCPCs are on and taken out of reset */
+	board_reset_pd_mcu();
 }
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+/* PP3300 needs to be enabled before TCPC init hooks */
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_FIRST);
 
 /**
  * Set active charge port -- only one port can be active at a time.
@@ -442,13 +437,14 @@ void chipset_do_shutdown(void)
 {
 	cprintf(CC_CHIPSET, "Doing custom shutdown for Reef\n");
 
-	/* Disable I2C module */
-	gpio_config_module(MODULE_I2C, 0);
-
 	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
 	/* Disable V5A which de-assert PMIC_EN and causes PMIC to shutdown. */
 	gpio_set_level(GPIO_V5A_EN, 0);
-	gpio_set_level(GPIO_EN_PP3300, 0);
+	/*
+	 * FIXME(dhendrix): If we shut off PP3300 the TCPC tasks will fail
+	 * and spam the EC console with I2C errors.
+	 */
+	/* gpio_set_level(GPIO_EN_PP3300, 0); */
 	gpio_set_level(GPIO_EN_PP5000, 0);
 }
 
