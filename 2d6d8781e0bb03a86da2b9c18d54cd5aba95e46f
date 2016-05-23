@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c84cfcd_76b8d884",
+        "filename": "board/celes/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-23T20:01:00Z",
+      "side": 1,
+      "message": "Driving this pin low with a PU will waste power. If you want to enable the PU when not in S0 only then you should add hook routines.",
+      "range": {
+        "startLine": 85,
+        "startChar": 33,
+        "endLine": 85,
+        "endChar": 61
+      },
+      "revId": "2d6d8781e0bb03a86da2b9c18d54cd5aba95e46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c84cfcd_d681a4a3",
+        "filename": "board/celes/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-23T20:01:00Z",
+      "side": 1,
+      "message": "I realize this pin isn\u0027t used in our code, but you should double check that changing the pin state here will not interfere with other connected components.",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 14
+      },
+      "revId": "2d6d8781e0bb03a86da2b9c18d54cd5aba95e46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
