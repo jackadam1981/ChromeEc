@@ -22,6 +22,23 @@
       "revId": "24042c1ecb734cccd7bcf9e041bd656d52e8b594",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c0be362_af6179f3",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-24T10:56:43Z",
+      "side": 1,
+      "message": "Sadly, this is racy... See https://chromium-review.googlesource.com/#/c/346873/1 .",
+      "revId": "24042c1ecb734cccd7bcf9e041bd656d52e8b594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
