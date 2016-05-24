@@ -70,6 +70,30 @@
       "revId": "f351c64ffbe1d3e3f8fcf14a95caf5a7e09f4cc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c84cfcd_d850eacb",
+        "filename": "extra/usb_serial/51-google-serial.rules.template",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-24T15:35:31Z",
+      "side": 1,
+      "message": "Ah, thank you for explaining all this, Anton, a lot of things make much more sense now all of a sudden :)\n\nStay tuned for an update.",
+      "parentUuid": "9c84cfcd_583ffac3",
+      "range": {
+        "startLine": 16,
+        "startChar": 27,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "f351c64ffbe1d3e3f8fcf14a95caf5a7e09f4cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
