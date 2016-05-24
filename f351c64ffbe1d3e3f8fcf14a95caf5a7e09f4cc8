@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c84cfcd_9d7d74d7",
+        "filename": "extra/usb_serial/51-google-serial.rules.template",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-05-24T03:42:04Z",
+      "side": 1,
+      "message": "Sadly the udev rule file format is not capable of handling \\ line continuations.  :(  It actually took me a few days of reading the actual udev parsing and rule applying code before I was able to make this set of seemingly simple rules function at all.",
+      "range": {
+        "startLine": 16,
+        "startChar": 27,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "f351c64ffbe1d3e3f8fcf14a95caf5a7e09f4cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
