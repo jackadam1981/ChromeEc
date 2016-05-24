@@ -16,6 +16,167 @@
       "revId": "30522cb6e978f44246917eb565fff96665c6cbe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c2177e1_7c53c10a",
+        "filename": "board/reef/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-24T22:38:23Z",
+      "side": 1,
+      "message": "Move this down to where other charger #defines are located, like maybe line 35.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "30522cb6e978f44246917eb565fff96665c6cbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c2177e1_dc12adf0",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-24T22:38:23Z",
+      "side": 1,
+      "message": "capital D",
+      "range": {
+        "startLine": 11,
+        "startChar": 139,
+        "endLine": 11,
+        "endChar": 140
+      },
+      "revId": "30522cb6e978f44246917eb565fff96665c6cbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c2177e1_3cbe69e2",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-24T22:38:23Z",
+      "side": 1,
+      "message": "This GPIO has an external pull-up, though we might remove it later.",
+      "range": {
+        "startLine": 11,
+        "startChar": 59,
+        "endLine": 11,
+        "endChar": 74
+      },
+      "revId": "30522cb6e978f44246917eb565fff96665c6cbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c2177e1_378cc24a",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-24T22:38:23Z",
+      "side": 1,
+      "message": "usb_charger_vbus_interrupt()? See my comment in usb_charger.c.",
+      "range": {
+        "startLine": 23,
+        "startChar": 63,
+        "endLine": 23,
+        "endChar": 81
+      },
+      "revId": "30522cb6e978f44246917eb565fff96665c6cbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c2177e1_bc1b7910",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-24T22:38:23Z",
+      "side": 1,
+      "message": "This should be GPIO_ODR_HIGH (https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d53543).",
+      "range": {
+        "startLine": 109,
+        "startChar": 34,
+        "endLine": 109,
+        "endChar": 47
+      },
+      "revId": "30522cb6e978f44246917eb565fff96665c6cbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c2177e1_5c27dd4f",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-24T22:38:23Z",
+      "side": 1,
+      "message": "This should also be GPIO_ODR_HIGH (https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d53543).",
+      "range": {
+        "startLine": 112,
+        "startChar": 33,
+        "endLine": 112,
+        "endChar": 46
+      },
+      "revId": "30522cb6e978f44246917eb565fff96665c6cbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c2177e1_f7a50a55",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-24T22:38:23Z",
+      "side": 1,
+      "message": "Hmmm, I don\u0027t think we can do this for the generic case.\n\nCurrently in gpio.inc, we don\u0027t do anything with the ACOK interrupt that the BD99955 sets when it detects VBUS or VCC. Perhaps we can set it as an interrupt that invokes usb_charger_vbus_interrupt().",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 8
+      },
+      "revId": "30522cb6e978f44246917eb565fff96665c6cbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
