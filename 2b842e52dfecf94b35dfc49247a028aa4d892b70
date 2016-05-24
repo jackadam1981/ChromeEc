@@ -22,6 +22,30 @@
       "revId": "2b842e52dfecf94b35dfc49247a028aa4d892b70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c84cfcd_9d1c946e",
+        "filename": "extra/usb_serial/51-google-serial.rules.template",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-24T06:25:45Z",
+      "side": 1,
+      "message": "Yes, I understand the idea, and I agree that this should be kept, especially for lab situation.\n\nBut I find it annoying that the path is somewhat unpredictable, and changes when the wiring topology changes. In many cases the operator does not care about the components of this path, all he cares about is that the first attached device gets index 0, the second one - index 1 and so on, and many people will have just one connection any ways.\n\nI think both softlinks could coexist, I just did not figure out an efficient way to create the short ones (yet :).",
+      "parentUuid": "9c84cfcd_3d2788ff",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "2b842e52dfecf94b35dfc49247a028aa4d892b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
