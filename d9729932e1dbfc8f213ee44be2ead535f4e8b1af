@@ -22,6 +22,30 @@
       "revId": "d9729932e1dbfc8f213ee44be2ead535f4e8b1af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c0be362_2f91090c",
+        "filename": "board/setzer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-05-24T07:39:22Z",
+      "side": 1,
+      "message": "Modified, I only increased HOOKS stack size.",
+      "parentUuid": "9c84cfcd_8b969502",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 34
+      },
+      "revId": "d9729932e1dbfc8f213ee44be2ead535f4e8b1af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
