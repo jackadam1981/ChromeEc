@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fcecebcf_d08bc2d2",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-05-24T17:38:37Z",
+      "side": 1,
+      "message": "The software sha implementation in cryptoc has a different context size, i.e. 112.\n\nre: line 66.  That\u0027s a define needed by cryptoc to work on cr50. Added a comment to that effect.",
+      "parentUuid": "9c84cfcd_5fbda4e0",
+      "revId": "b0f8d36236af1a78a8e2daaac0e404726e1e2467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c84cfcd_dfc8d489",
         "filename": "board/cr50/tpm2/hash.c",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2016-05-24T00:47:48Z",
       "side": 1,
       "message": "why does USER_MIN_HASH_STATE_SIZE have to come from the command line and be defined here separately?\n\nCould it not be in an .h file?",
+      "revId": "b0f8d36236af1a78a8e2daaac0e404726e1e2467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c2177e1_489a7f77",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-05-24T17:38:37Z",
+      "side": 1,
+      "message": "Would you like USER_MIN_HASH_STATE_SIZE  to be in board.h?  The assert below is still necessary, unless you\u0027ld like board.h to #include \"cryptoc/sha.h\"?",
+      "parentUuid": "9c84cfcd_dfc8d489",
       "revId": "b0f8d36236af1a78a8e2daaac0e404726e1e2467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
