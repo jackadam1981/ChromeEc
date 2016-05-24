@@ -706,3 +706,37 @@ tmp432_error:
 	CPRINTS("TMP432 initialization failed");
 }
 DECLARE_HOOK(HOOK_INIT, board_tmp432_init, HOOK_PRIO_TEMP_SENSOR + 1);
+
+/*
+ * TODO:
+ * reset timer flag at first time when EC started
+ * whenever discharge, reset timer flag
+ * start counting when start charge/precharge
+ * check timeout when timer flag had started
+ */
+static int start_charge_sec;
+static int need_reset = 1;
+int board_check_charge_time(struct charge_state_data *curr)
+{
+	if (curr->state == ST_DISCHARGE) {
+		need_reset = 1;
+	} else if (need_reset && (curr->state >= ST_CHARGE)) {
+		start_charge_sec = 0;
+		need_reset = 0;
+	}
+
+	if ((need_reset == 0) &&
+		(start_charge_sec >= CONFIG_CHARGER_TIMEOUT_CUSTOM)) {
+		curr->state = ST_IDLE;
+	}
+
+	return 0;
+}
+
+void board_charge_time(void)
+{
+	if ((need_reset == 0) &&
+		(start_charge_sec <= CONFIG_CHARGER_TIMEOUT_CUSTOM))
+		start_charge_sec++;
+}
+DECLARE_HOOK(HOOK_SECOND, board_charge_time, HOOK_PRIO_DEFAULT);

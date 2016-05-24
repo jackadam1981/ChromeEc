@@ -461,6 +461,7 @@
  * If not defined, charger will provide current until the battery asks it to
  * stop.
  */
+#undef CONFIG_CHARGER_TIMEOUT_CUSTOM
 #undef CONFIG_CHARGER_TIMEOUT_HOURS
 
 /*

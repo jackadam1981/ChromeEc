@@ -810,6 +810,9 @@ void charger_task(void)
 		 * TODO(crosbug.com/p/27643): Quit trying if charging too long
 		 * without getting full (CONFIG_CHARGER_TIMEOUT_HOURS).
 		 */
+#ifdef CONFIG_CHARGER_TIMEOUT_CUSTOM
+		board_check_charge_time(&curr);
+#endif
 
 wait_for_it:
 #ifdef CONFIG_CHARGER_PROFILE_OVERRIDE

@@ -83,5 +83,14 @@ int charge_set_input_current_limit(int ma);
  *
  */
 int virtual_battery_read(uint8_t batt_param, uint8_t *dest, int read_len);
+
+#ifdef CONFIG_CHARGER_TIMEOUT_CUSTOM
+/**
+ * Set board-specific charge timeout policy
+ *
+ * @param curr	current charge data
+ */
+int board_check_charge_time(struct charge_state_data *curr);
+#endif
 #endif /* __CROS_EC_CHARGE_STATE_V2_H */
 
