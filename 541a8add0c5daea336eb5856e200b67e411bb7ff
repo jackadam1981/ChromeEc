@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c2177e1_77875aed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-24T21:32:17Z",
+      "side": 1,
+      "message": "is this the exact test procedure?\n\nI mean is the user supposed to run ./install after every reboot? What makes udev pick up the new rule?",
+      "revId": "541a8add0c5daea336eb5856e200b67e411bb7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
