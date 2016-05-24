@@ -586,6 +586,10 @@ void charger_task(void)
 	int sleep_usec;
 	int need_static = 1;
 	const struct charger_info * const info = charger_get_info();
+#ifdef CONFIG_CHARGER_TIMEOUT_HOURS
+	timestamp_t start_charge_time;
+	int prev_timeout_check = 1;
+#endif
 
 	/* Get the battery-specific values */
 	batt_info = battery_get_info();
@@ -720,7 +724,7 @@ void charger_task(void)
 
 		/* Okay, we're on AC and we should have a battery. */
 
-		/* Used for factory tests. */
+		/* Used for factory tests & CONFIG_CHARGER_TIMEOUT_HOURS. */
 		if (state_machine_force_idle) {
 			curr.state = ST_IDLE;
 			goto wait_for_it;
@@ -810,6 +814,20 @@ void charger_task(void)
 		 * TODO(crosbug.com/p/27643): Quit trying if charging too long
 		 * without getting full (CONFIG_CHARGER_TIMEOUT_HOURS).
 		 */
+#ifdef CONFIG_CHARGER_TIMEOUT_HOURS
+	if (curr.state == ST_DISCHARGE) {
+		prev_timeout_check = 1;
+	} else if (prev_timeout_check &&
+		(curr.state == ST_CHARGE || curr.state == ST_PRECHARGE)) {
+		prev_timeout_check = 0;
+		start_charge_time = get_time();
+	}
+
+	if ((prev_timeout_check == 0) &&
+		(get_time().val > (start_charge_time.val +
+					CONFIG_CHARGER_TIMEOUT_HOURS)))
+		state_machine_force_idle = 1;
+#endif
 
 wait_for_it:
 #ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
