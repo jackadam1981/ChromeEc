@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c84cfcd_3d2788ff",
+        "filename": "extra/usb_serial/51-google-serial.rules.template",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-05-24T03:42:04Z",
+      "side": 1,
+      "message": "This completely breaks the point of the /dev/google directory structure.  :)  If you just want a number associated with each serial stream you can get that from the /dev/ttyUSB? that is also already generated.  The point of the GOOGLE_CCD_NAME is to give you a unique path/name for each device you have connected to your computer.  And furthermore, than name is consistent across reboots.  This is not only important for devs with multiple machines attached to a desktop, but critical in a lab situation.\n\nI realize that these changes were abandoned, but I wanted to put this here for future record.  Thanks.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "2b842e52dfecf94b35dfc49247a028aa4d892b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
