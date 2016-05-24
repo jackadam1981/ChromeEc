@@ -25,6 +25,54 @@
     },
     {
       "key": {
+        "uuid": "3c0be362_4fb72d92",
+        "filename": "board/celes/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-05-24T09:14:17Z",
+      "side": 1,
+      "message": "Yes, Let\u0027s choice safety, It is product already. I think enough just on hibernation, which board function will do it.",
+      "parentUuid": "9c84cfcd_76b8d884",
+      "range": {
+        "startLine": 85,
+        "startChar": 33,
+        "endLine": 85,
+        "endChar": 61
+      },
+      "revId": "2d6d8781e0bb03a86da2b9c18d54cd5aba95e46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c0be362_afab392a",
+        "filename": "board/celes/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-05-24T09:14:17Z",
+      "side": 1,
+      "message": "Yes, Let\u0027s keep original and choice safety. I think this is enough when hibernate(It will have huge leakage).",
+      "parentUuid": "9c84cfcd_76b8d884",
+      "range": {
+        "startLine": 85,
+        "startChar": 33,
+        "endLine": 85,
+        "endChar": 61
+      },
+      "revId": "2d6d8781e0bb03a86da2b9c18d54cd5aba95e46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c84cfcd_d681a4a3",
         "filename": "board/celes/gpio.inc",
         "patchSetId": 3
@@ -36,6 +84,30 @@
       "writtenOn": "2016-05-23T20:01:00Z",
       "side": 1,
       "message": "I realize this pin isn\u0027t used in our code, but you should double check that changing the pin state here will not interfere with other connected components.",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 14
+      },
+      "revId": "2d6d8781e0bb03a86da2b9c18d54cd5aba95e46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c0be362_8fa8f52e",
+        "filename": "board/celes/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-05-24T09:14:17Z",
+      "side": 1,
+      "message": "It is definitely DNS so that will be *NC*. 1.8v cpu siginal is controlling S0 signal directly. let\u0027s represent original output rather than nc. checked some hard code, but seems fine.",
+      "parentUuid": "9c84cfcd_d681a4a3",
       "range": {
         "startLine": 106,
         "startChar": 5,
