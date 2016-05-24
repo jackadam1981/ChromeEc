@@ -282,20 +282,6 @@ static void chipset_pre_init(void)
 		return;
 #endif
 
-	/* Enable PP5000 before PP3300 due to NFC: chrome-os-partner:50807 */
-	gpio_set_level(GPIO_EN_PP5000, 1);
-	udelay(6);	/* Double the PG low to high delay for power supply. */
-
-	/* Enable 3.3V rail */
-	gpio_set_level(GPIO_EN_PP3300, 1);
-	udelay(1500);	/* Double the PG low to high delay for converter. */
-
-	/* FIXME: for debugging */
-	cprintf(CC_HOOK, "PP3300_PG: %d", gpio_get_level(GPIO_PP3300_PG));
-	cprintf(CC_HOOK, "PP5000_PG: %d", gpio_get_level(GPIO_PP5000_PG));
-
-	/* (Re-)Enable I2C */
-	gpio_config_module(MODULE_I2C, 1);
 #if 0
 	/* Enable PD interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT);
@@ -310,6 +296,15 @@ DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
 /* Initialize board. */
 static void board_init(void)
 {
+	/* Enable PP5000_A and PP3300_A prior to enabling PMIC */
+	gpio_set_level(GPIO_EN_PP5000, 1);
+	gpio_set_level(GPIO_EN_PP3300, 1);
+	while (!gpio_get_level(GPIO_PP5000_PG));
+	while (!gpio_get_level(GPIO_PP3300_PG));
+	/* Enable PMIC */
+	gpio_set_level(GPIO_V5A_EN, 1);
+	msleep(10);
+
 	/* FIXME: Handle tablet mode */
 	/* gpio_enable_interrupt(GPIO_TABLET_MODE_L); */
 }
@@ -437,16 +432,6 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
  */
 void chipset_do_shutdown(void)
 {
-	cprintf(CC_CHIPSET, "Doing custom shutdown for Reef\n");
-
-	/* Disable I2C module */
-	gpio_config_module(MODULE_I2C, 0);
-
-	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
-	/* Disable V5A which de-assert PMIC_EN and causes PMIC to shutdown. */
-	gpio_set_level(GPIO_V5A_EN, 0);
-	gpio_set_level(GPIO_EN_PP3300, 0);
-	gpio_set_level(GPIO_EN_PP5000, 0);
 }
 
 void board_set_gpio_hibernate_state(void)

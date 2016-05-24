@@ -259,10 +259,6 @@ static enum power_state _power_handle_state(enum power_state state)
 			return POWER_G3;
 		}
 
-		/* Enable V5A */
-		gpio_set_level(GPIO_V5A_EN, 1);
-		msleep(10);
-
 		if (power_wait_signals(IN_PGOOD_ALL_CORE)) {
 			chipset_force_shutdown();
 			return POWER_G3;
