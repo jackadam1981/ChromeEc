@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c0be362_0fc88534",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-05-24T04:04:13Z",
+      "side": 1,
+      "message": "this is fixed in FW1.12, so remove TODO.",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 43
+      },
+      "revId": "24042c1ecb734cccd7bcf9e041bd656d52e8b594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
