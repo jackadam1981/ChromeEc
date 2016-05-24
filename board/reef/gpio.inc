@@ -8,7 +8,7 @@
 /* Declare symbolic names for all the GPIOs that we care about.
  * Note: Those with interrupt handlers must be declared first. */
 
-GPIO_INT(PD_MCU_INT,		PIN(3, 3), GPIO_INT_LOW, pd_mcu_interrupt)			/* CHARGER_EC_INT_ODL from BD99955 */
+GPIO_INT(CHARGER_INT_L,         PIN(3, 3), GPIO_INT_FALLING | GPIO_PULL_UP, usb_charger_vbus_interrupt)        /* CHARGER_EC_INT_ODL from Bd99955 */
 GPIO_INT(USB_C0_PD_INT,		PIN(3, 7), GPIO_INT_RISING | GPIO_SEL_1P8V, tcpc_alert_event)	/* from Analogix TCPC */
 GPIO_INT(USB_C1_PD_INT_ODL,	PIN(D, 2), GPIO_INT_FALLING, tcpc_alert_event)			/* from Parade TCPC */
 
@@ -106,10 +106,10 @@ GPIO(PCH_RCIN_L,		PIN(6, 1), GPIO_ODR_HIGH)		/* SYS_RST_ODL */
 
 /* FIXME: What, if anything, to do about EC_RST_ODL on VCC1_RST#? */
 
-GPIO(CHARGER_RST_ODL,		PIN(C, 0), GPIO_ODR_HIGH)
+GPIO(CHARGER_RST_ODL,		PIN(C, 0), GPIO_OUT_HIGH)
 GPIO(USB_A_CHARGE_EN_L,		PIN(4, 2), GPIO_OUT_HIGH)
 GPIO(EN_USB_TCPC_PWR,		PIN(C, 3), GPIO_OUT_LOW)
-GPIO(USB_PD_RST_ODL,		PIN(0, 3), GPIO_ODR_HIGH)
+GPIO(USB_PD_RST_ODL,		PIN(0, 3), GPIO_OUT_HIGH)
 GPIO(EN_USB_A_5V,		PIN(4, 1), GPIO_OUT_LOW)
 GPIO(USB_C0_5V_EN,		PIN(D, 3), GPIO_OUT_LOW)		/* EN_USB_CN_5V_OUT, Enable C0 */
 GPIO(USB_C1_5V_EN,		PIN(B, 1), GPIO_OUT_LOW)		/* EN_USB_C1_5V_OUT, Enable C1 */

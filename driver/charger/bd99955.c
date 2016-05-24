@@ -770,9 +770,16 @@ void usb_charger_vbus_interrupt_deferred(void)
 	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++) {
 		/* Get the VBUS interrupt */
 		intr = bd99955_get_vbus_detect_interrupts(port, 1);
+		CPRINTS("vijay: port=%d, intr=%d", port, intr);
 		if (!intr)
 			continue;
-
+#if 1
+		pd_vbus_low(port);
+		if (intr & BD99955_CMD_INT_SET_RES)
+			update_vbus_supplier(port, 0);
+		if (intr & BD99955_CMD_INT_SET_DET)
+			update_vbus_supplier(port, 1);
+#endif
 		/* VBUS interrupt is detected */
 		task_set_event(usb_chg_tskid[port], USB_CHG_EVENT_VBUS, 0);
 
@@ -790,8 +797,10 @@ void usb_charger_task(void)
 	int bc12_type = CHARGE_SUPPLIER_NONE;
 	int vbus_provided;
 
+	bd99955_get_vbus_detect_interrupts(port, 0);
 	while (1) {
 		vbus_provided = pd_snk_is_vbus_provided(port);
+		CPRINTS("task-usb: port=%d, vbus=%d", port, vbus_provided);
 
 		if (vbus_provided) {
 			/* Charger/sync attached */

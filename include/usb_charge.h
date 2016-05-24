@@ -94,4 +94,6 @@ void usb_charger_vbus_interrupt(enum gpio_signal signal);
  */
 void usb_charger_vbus_interrupt_deferred(void);
 
+void update_vbus_supplier(int port, int vbus_level);
+
 #endif  /* __CROS_EC_USB_CHARGE_H */

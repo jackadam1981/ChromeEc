@@ -8,6 +8,9 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define CONFIG_USB_CHARGER
+#define USB_CHARGER_VBUS_INTERRUPT
+
 /*
  * Allow dangerous commands.
  * TODO: Remove this config before production.

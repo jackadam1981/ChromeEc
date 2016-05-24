@@ -106,7 +106,11 @@ void typec_set_input_current_limit(int port, uint32_t max_ma,
 
 int pd_snk_is_vbus_provided(int port)
 {
+#ifdef USB_CHARGER_VBUS_INTERRUPT
+	return bd99955_is_vbus_provided(port);
+#else
 	return extpower_is_present();
+#endif
 }
 
 int pd_board_checks(void)
