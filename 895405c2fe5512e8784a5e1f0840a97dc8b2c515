@@ -22,6 +22,29 @@
       "revId": "895405c2fe5512e8784a5e1f0840a97dc8b2c515",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c2177e1_ef58924b",
+        "filename": "board/asuka/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-24T23:42:08Z",
+      "side": 0,
+      "message": "Please add a TODO here, related to re-adding the interrupt once we get the board change for the next revision. Eg. \"TODO: crosbug.com/p/######: Re-add this interrupt for next board revision\".",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 65
+      },
+      "revId": "895405c2fe5512e8784a5e1f0840a97dc8b2c515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
