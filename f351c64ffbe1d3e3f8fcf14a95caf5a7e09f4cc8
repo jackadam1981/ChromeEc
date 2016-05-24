@@ -46,6 +46,30 @@
       "revId": "f351c64ffbe1d3e3f8fcf14a95caf5a7e09f4cc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c84cfcd_583ffac3",
+        "filename": "extra/usb_serial/51-google-serial.rules.template",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-05-24T14:31:48Z",
+      "side": 1,
+      "message": "Yes, the links would be created with this new rule file, no it is not at all working.  What has happened is that each line is now a new udev rule all by itself.  The \\ linebreaks are ignored.  So, looking at this new rule file we can see what would happen.  The first line matches idVendor\u003d18d1 in the USB subsystem, then does nothing.  The second line ALWAYS runs the suzy_index program, for EVERY device that udev inspects.  The third line sets GOOGLE_CCD_NAME for EVERY device.\n\nMoving on, the first line in the second line breaked rule below just matches subsystem, GOOGLE_CCD_NAME and usb_device type, then does nothing.  The line after that matches all USB interfaces that have a Class/SubClass/Protocol of 0xff 0x50 0x01, then does nothing.  The next line sets ID_MM_DEVICE_IGNORE \u003d 1 for EVERY device udev encounters.\n\nThe final old rule has been split into four new rules, the first does nothing but mach, the second does nothing but match, the third sets an option, but since there is nothing else on that line this option is useless.  The final line, which will always run creates the symlink.  If this line is being run for a Suzy-Q device you\u0027ll get what you expect to see (other than that the string_escape\u003dreplace option is missing, which causes other problems).  If this line is run for a non-Suzy-Q device you might see a symlink in /dev/googl/, or you might not, it depends on whether $attr{interface} is defined for that device.\n\nSo I\u0027m guessing that what you saw was that after installing this rule file you could still unplug and plug back in a Suzy-Q device and see the symlink coming and going.  But if you inspect the udev device node database you\u0027ll see that every node associated with that Suzy-Q device has things like GOOGLE_CCD_NAME and ID_MM_DEVICE_IGNORE set.  And if you had plugged in any other hotplug device it would have run each of the rules against it further polluting the udev node database, and possible also creating new symlinks that you wouldn\u0027t want.\n\nI\u0027m guessing this behavior is why you couldn\u0027t get the suzy_index script to work as you wanted, it was running many more times than you would expect.  All in all, the udev rule format and parsing code are pretty frustrating, it took me days of reading their parser to understand why it does what it does, because the documentation is also wrong in many places.  Yay!",
+      "parentUuid": "9c84cfcd_1d29648a",
+      "range": {
+        "startLine": 16,
+        "startChar": 27,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "f351c64ffbe1d3e3f8fcf14a95caf5a7e09f4cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
