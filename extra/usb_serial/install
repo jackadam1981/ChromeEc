@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+make modules
+sudo make modules_install
+sudo depmod -a
+sudo cp 51-google-serial.rules /etc/udev/rules.d
