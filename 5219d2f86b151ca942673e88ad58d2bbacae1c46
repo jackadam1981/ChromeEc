@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c84cfcd_9fc32c71",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-24T00:47:48Z",
+      "side": 0,
+      "message": "why are you removing this dependency and target specific variable setting?",
+      "revId": "5219d2f86b151ca942673e88ad58d2bbacae1c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

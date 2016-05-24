@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c84cfcd_5fbda4e0",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-24T00:47:48Z",
+      "side": 1,
+      "message": "how are changes in line 63 and 66 related to this patch?",
+      "revId": "b0f8d36236af1a78a8e2daaac0e404726e1e2467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c84cfcd_dfc8d489",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-24T00:47:48Z",
+      "side": 1,
+      "message": "why does USER_MIN_HASH_STATE_SIZE have to come from the command line and be defined here separately?\n\nCould it not be in an .h file?",
+      "revId": "b0f8d36236af1a78a8e2daaac0e404726e1e2467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c84cfcd_df769429",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-24T00:47:48Z",
+      "side": 1,
+      "message": "I think you can say here\n\n$(out)/RW/ec.RW*.elf LDFLAGS_EXTRA +\u003d -L$(out)/cryptoc -lcryptoc\n\nif this does not work - can you wrap long lines here and in line 119",
+      "revId": "b0f8d36236af1a78a8e2daaac0e404726e1e2467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
