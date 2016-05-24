@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c84cfcd_f815ae31",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-24T14:47:33Z",
+      "side": 1,
+      "message": "Please add HOOK_PRIO_INIT_TCPC (include/hooks.h).",
+      "range": {
+        "startLine": 180,
+        "startChar": 45,
+        "endLine": 180,
+        "endChar": 62
+      },
+      "revId": "cc253a6a5623efb50a9dc6cd12b2c2c551bb2955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
