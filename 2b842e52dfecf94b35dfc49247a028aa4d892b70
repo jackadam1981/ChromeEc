@@ -46,6 +46,30 @@
       "revId": "2b842e52dfecf94b35dfc49247a028aa4d892b70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c84cfcd_981ca26e",
+        "filename": "extra/usb_serial/51-google-serial.rules.template",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-05-24T14:31:48Z",
+      "side": 1,
+      "message": "I disagree, the operator (at least this one) cares more about a consistent path, and not so much about an unpredictable but unique path that can be trivially tab completed from the command line and doesn\u0027t matter when scripting.  The correct solution here is to use a unique USB serial number for each CCD device, but I got pushback from people on implementing that.  So we are stuck with the physical path through the USB hub tree to uniquely identify a device.\n\nAnd yes, it should be easy to make them both exist, nothing wrong with that.  Just add a /dev/google/simple/ directory and put each of them there.  Once you read my tomb about why the line breaks didn\u0027t do what you wanted them to do you will see how to do it.  :)",
+      "parentUuid": "9c84cfcd_9d1c946e",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "2b842e52dfecf94b35dfc49247a028aa4d892b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
