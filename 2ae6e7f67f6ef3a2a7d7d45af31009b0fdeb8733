@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5c2177e1_cf0f8e2a",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-25T00:44:53Z",
+      "side": 1,
+      "message": "Good catch, fixed in https://chromium-review.googlesource.com/347067.",
+      "parentUuid": "9c84cfcd_6816b79e",
+      "revId": "2ae6e7f67f6ef3a2a7d7d45af31009b0fdeb8733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc33a7f3_5238348b",
         "filename": "board/reef/board.c",
         "patchSetId": 2
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "5c2177e1_b2543d48",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-25T00:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc33a7f3_7201f0a8",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 67
+      },
+      "revId": "2ae6e7f67f6ef3a2a7d7d45af31009b0fdeb8733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc33a7f3_92645ca0",
         "filename": "board/reef/board.c",
         "patchSetId": 2
@@ -77,6 +119,24 @@
       "writtenOn": "2016-05-23T05:37:19Z",
       "side": 1,
       "message": "If we shut off PP5000_A here, then we have to turn it back on at chipset_pre_init.\n\nFor power on purpose, can we leave it on until the reef power rail is fully understood?",
+      "revId": "2ae6e7f67f6ef3a2a7d7d45af31009b0fdeb8733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c2177e1_f258754b",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-25T00:44:53Z",
+      "side": 1,
+      "message": "Makes sense. FWIW, my board also seems more stable if this is left enabled.",
+      "parentUuid": "dc33a7f3_92645ca0",
       "revId": "2ae6e7f67f6ef3a2a7d7d45af31009b0fdeb8733",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
