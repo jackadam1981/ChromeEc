@@ -229,6 +229,10 @@ static void device_powered_off(enum device_type device, int uart)
 
 	device_state_changed(device, DEVICE_STATE_OFF);
 
+	/* Disable RX and TX on the UART peripheral */
+	uartn_disable(uart);
+
+	/* Disconnect the TX pin from the UART peripheral */
 	uartn_tx_disconnect(uart);
 
 	gpio_enable_interrupt(device_states[device].detect_on);
@@ -308,6 +312,9 @@ static void servo_attached(enum device_type device, int uart)
 
 static void uart_enable(int uart)
 {
+	/* Enable RX and TX on the UART peripheral */
+	uartn_enable(uart);
+
 	/* Connect the TX pin to the UART TX Signal */
 	if (device_get_state(DEVICE_SERVO) != DEVICE_STATE_ON &&
 	    !uartn_enabled(uart))
@@ -335,7 +342,6 @@ void device_state_on(enum gpio_signal signal)
 		CPRINTS("Device not supported");
 		return;
 	}
-
 }
 
 void device_state_off(enum gpio_signal signal)
