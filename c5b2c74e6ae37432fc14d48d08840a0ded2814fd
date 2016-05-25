@@ -125,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_f1bd5ae5",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-25T17:44:50Z",
+      "side": 1,
+      "message": "OK, will modify Amenia to handle in hook as well.",
+      "parentUuid": "5c0977ae_515f8634",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 34
+      },
+      "revId": "c5b2c74e6ae37432fc14d48d08840a0ded2814fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_ee321bac",
         "filename": "power/apollolake.c",
         "patchSetId": 1
@@ -172,6 +196,24 @@
       "side": 1,
       "message": "EC does honor the value. Does it not? If the signal from the pmic is low then it\u0027ll be passed as low. \n\nIf we want to explicitly control rsmrst_l I think it should be done in less convoluted way. If rsmsrt_l is going ot be special just make it special instead of changing handle_pass_through()  to be more complicated.\n\nThe skylake code is a lot clearer since it\u0027s explicit as to what we\u0027re handling plus there are comments explaining why.",
       "parentUuid": "5c0977ae_6ed2ab3e",
+      "revId": "c5b2c74e6ae37432fc14d48d08840a0ded2814fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_91261e52",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-25T17:44:50Z",
+      "side": 1,
+      "message": "OK, will create:\nhandle_rsmrst to conditional passthrough based on state and pin value.\n\nhandle_socpwrok to direct passthrough.",
+      "parentUuid": "5c0977ae_512666ba",
       "revId": "c5b2c74e6ae37432fc14d48d08840a0ded2814fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
