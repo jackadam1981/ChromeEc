@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cb5afdc_faa2494a",
+        "filename": "extra/usb_serial/suzy_index",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-25T01:16:02Z",
+      "side": 1,
+      "message": "You don\u0027t need all this. Just run \"modprobe usbserial -q\" and ignore the result. If it\u0027s already loaded, this does nothing. If it\u0027s compiled into the kernel, modprobe will fail but it won\u0027t matter.\n\nThen worry about raiden.ko",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 2
+      },
+      "revId": "747763e7a6f8a06e181c8e4571e605b61e6b46fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
