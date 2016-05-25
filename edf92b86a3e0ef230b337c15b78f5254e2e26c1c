@@ -45,6 +45,30 @@
       "revId": "edf92b86a3e0ef230b337c15b78f5254e2e26c1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_719f2a66",
+        "filename": "common/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000404
+      },
+      "writtenOn": "2016-05-25T16:46:37Z",
+      "side": 1,
+      "message": "My recollection from earlier discussion was that all firmwares are in branches, so there will never be an upgrade case. \n\nIf there will be upgrades over pstate struct versions, there\u0027s no way to solidly test this upgrade path, and I\u0027m not comfortable modifying this struct. I\u0027d rather make a new struct at a known PSTATE offset and not intermingle the two.",
+      "parentUuid": "5c0977ae_2ebdd326",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "edf92b86a3e0ef230b337c15b78f5254e2e26c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
