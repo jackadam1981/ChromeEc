@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0977ae_97b60e94",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-25T18:53:49Z",
+      "side": 1,
+      "message": "why do you care about assigning this initial counter value?\n\nfor (i \u003d 0; i \u003c MAX_GENERATE_ATTEMPTS; i++) {\n}\n\nwould do just fine, would be better readable and faster.",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 270,
+        "endChar": 27
+      },
+      "revId": "df7eae44e7ac4c4906a6afd4f5f8482fa5cc316f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
