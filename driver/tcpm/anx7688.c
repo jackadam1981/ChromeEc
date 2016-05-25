@@ -86,6 +86,24 @@ static void anx7688_update_hpd_enable(int port)
 	}
 }
 
+void anx7688_hpd_disable(int port)
+{
+	int reg, rv;
+
+	rv = tcpc_read(port, ANX7688_REG_HPD, &reg);
+	if (rv)
+		return;
+
+	ccprintf("disable HDP(pull HDP low, and HDP_ENABLE=0), 0x83=%x\n", reg);
+	tcpc_write(port, ANX7688_REG_HPD, 0x00);
+
+	rv = tcpc_read(port, ANX7688_REG_HPD, &reg);
+	if (rv)
+		return;
+	ccprintf("after disable 0x83=%x(should be 0)\n", reg);
+}
+
+
 int anx7688_update_hpd_level(int port, int level)
 {
 	int reg, rv;
@@ -94,6 +112,7 @@ int anx7688_update_hpd_level(int port, int level)
 	if (rv)
 		return rv;
 
+	reg &= ~ANX7688_REG_HPD_IRQ;
 	return tcpc_write(port, ANX7688_REG_HPD,
 			  level ? reg | ANX7688_REG_HPD_HIGH
 				: reg & ~ANX7688_REG_HPD_HIGH);
@@ -164,8 +183,10 @@ static int anx7688_mux_set(int i2c_addr, mux_state_t mux_state)
 	rv = tcpc_read(port, TCPC_REG_TCPC_CTRL, &polarity);
 	if (rv != EC_SUCCESS)
 		return rv;
-	reg |= TCPC_REG_TCPC_CTRL_POLARITY(polarity);
 
+	/* copy the polarity from TCPC_CTRL[0], take care clear then set */
+	reg &= ~TCPC_REG_TCPC_CTRL_POLARITY(1);
+	reg |= TCPC_REG_TCPC_CTRL_POLARITY(polarity);
 	return tcpc_write(port, TCPC_REG_CONFIG_STD_OUTPUT, reg);
 }
 
