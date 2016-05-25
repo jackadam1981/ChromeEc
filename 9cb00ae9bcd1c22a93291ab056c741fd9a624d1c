@@ -22,6 +22,30 @@
       "revId": "9cb00ae9bcd1c22a93291ab056c741fd9a624d1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c2177e1_2521299d",
+        "filename": "include/util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-05-25T02:06:34Z",
+      "side": 1,
+      "message": "Indeed.  Fixed.",
+      "parentUuid": "9cb5afdc_7a7639c7",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "9cb00ae9bcd1c22a93291ab056c741fd9a624d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
