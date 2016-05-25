@@ -193,7 +193,7 @@ void board_reset_pd_mcu(void)
 	msleep(10);
 
 	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
-	msleep(1);
+	msleep(10);
 	gpio_set_level(GPIO_USB_PD_RST_ODL, 1);
 	/*
 	 * ANX7688 needed 50ms to release RESET_N, but the ANX7428 datasheet
