@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c2177e1_520181a8",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-25T00:51:21Z",
+      "side": 1,
+      "message": "Not specific to this change, but for TCPC1, the reset assertion time should not be greater than ~10ms. If TCPC1 is powered and kept in reset, it will stop presenting Rd and Type-C Power Supply like Zinger will stop providing VBUS.",
+      "revId": "64634356b0804c468a277307b45f3f38b4636ed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c2177e1_920bf9c8",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-25T00:51:21Z",
+      "side": 1,
+      "message": "Confirmed that TCPC0 is out of reset after 1ms. Will update Amenia TODO as well.",
+      "revId": "64634356b0804c468a277307b45f3f38b4636ed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
