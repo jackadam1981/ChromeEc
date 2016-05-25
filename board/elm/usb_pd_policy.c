@@ -331,7 +331,7 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 static void svdm_exit_dp_mode(int port)
 {
 	svdm_safe_dp_mode(port);
-	board_reset_pd_mcu();
+	anx7688_hpd_disable(port);
 }
 
 static int svdm_enter_gfu_mode(int port, uint32_t mode_caps)

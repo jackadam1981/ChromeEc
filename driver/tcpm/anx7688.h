@@ -14,6 +14,7 @@ int anx7688_set_dp_pin_mode(int port, int pin_mode);
 int anx7688_enable_cable_detection(int port);
 int anx7688_set_power_supply_ready(int port);
 int anx7688_power_supply_reset(int port);
+int anx7688_hpd_disable(int port);
 
 extern struct tcpm_drv anx7688_tcpm_drv;
 extern struct usb_mux_driver anx7688_usb_mux_driver;
