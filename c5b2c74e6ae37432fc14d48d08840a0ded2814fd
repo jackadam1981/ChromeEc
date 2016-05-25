@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0977ae_2eeb931b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-25T16:21:28Z",
+      "side": 1,
+      "message": "This could use a lot better description about the actual changes at hand.",
+      "revId": "c5b2c74e6ae37432fc14d48d08840a0ded2814fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_eed33b73",
+        "filename": "board/reef/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-25T16:21:28Z",
+      "side": 1,
+      "message": "This seems like an entire separate bug?",
+      "revId": "c5b2c74e6ae37432fc14d48d08840a0ded2814fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_aef66304",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-25T16:21:28Z",
+      "side": 1,
+      "message": "Why wouldn\u0027t we handle this situation in the hook? It seems silly to have one enable for pmic when there are board dependencies. Just do all the enabling in the board\u0027s hook?",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 34
+      },
+      "revId": "c5b2c74e6ae37432fc14d48d08840a0ded2814fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_ee321bac",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-25T16:21:28Z",
+      "side": 1,
+      "message": "Why are we only passing low? I actually don\u0027t understand the actual problem these passthrough_* are trying to accomplish. If we need to go to this much trouble then we should just add a callback into the board again.",
+      "revId": "c5b2c74e6ae37432fc14d48d08840a0ded2814fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
