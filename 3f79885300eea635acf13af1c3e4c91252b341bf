@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_e833284e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-25T23:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c0977ae_d7a9269f",
+      "revId": "3f79885300eea635acf13af1c3e4c91252b341bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_22bde2bd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2016-05-25T19:46:40Z",
       "side": 1,
       "message": "why does flashrom command fail when ccd is disabled? Does this refer to flashrom ran on the target, through servo or throug CCD?\n\nWhat does \"uart access can still be enabled manually\" mean?\n\nthese all are good candidates for being explained in the patch description",
+      "revId": "3f79885300eea635acf13af1c3e4c91252b341bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_a83d301b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-25T23:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c0977ae_22bde2bd",
       "revId": "3f79885300eea635acf13af1c3e4c91252b341bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_82fece43",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-25T23:33:37Z",
+      "side": 1,
+      "message": "On init RDD selects the phy and uses ccd_set_mode to call usb_init, so we dont need to call usb_init on HOOK_INIT.",
+      "parentUuid": "5c0977ae_1777be26",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "3f79885300eea635acf13af1c3e4c91252b341bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_577d3606",
         "filename": "common/case_closed_debug.c",
         "patchSetId": 4
@@ -70,6 +130,30 @@
       "writtenOn": "2016-05-25T19:46:40Z",
       "side": 1,
       "message": "this could be re-written as \nif !defined(CONFIG_USB_SELECT_PHY)\n\tif (new_mode !\u003d CCD_MODE_DISABLED)\n#endif\n    {\n\tusb_init();\n    }",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 1
+      },
+      "revId": "3f79885300eea635acf13af1c3e4c91252b341bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_082f9ce4",
+        "filename": "common/case_closed_debug.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-25T23:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c0977ae_577d3606",
       "range": {
         "startLine": 54,
         "startChar": 1,
