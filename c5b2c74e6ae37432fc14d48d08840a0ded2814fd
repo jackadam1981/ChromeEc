@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_ae0ae3c3",
+        "filename": "board/reef/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-25T16:39:50Z",
+      "side": 1,
+      "message": "This is probably cut\u0026paste from Amenia, will add to commit message if there is already an existing crosbug.",
+      "parentUuid": "5c0977ae_eed33b73",
+      "revId": "c5b2c74e6ae37432fc14d48d08840a0ded2814fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_aef66304",
         "filename": "power/apollolake.c",
         "patchSetId": 1
@@ -59,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_aee0a308",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-25T16:39:50Z",
+      "side": 1,
+      "message": "PMIC_EN will be common and generic for Apollolake PMIC.\nIt is the power rail control that is board dependent.",
+      "parentUuid": "5c0977ae_aef66304",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 34
+      },
+      "revId": "c5b2c74e6ae37432fc14d48d08840a0ded2814fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_ee321bac",
         "filename": "power/apollolake.c",
         "patchSetId": 1
@@ -70,6 +112,24 @@
       "writtenOn": "2016-05-25T16:21:28Z",
       "side": 1,
       "message": "Why are we only passing low? I actually don\u0027t understand the actual problem these passthrough_* are trying to accomplish. If we need to go to this much trouble then we should just add a callback into the board again.",
+      "revId": "c5b2c74e6ae37432fc14d48d08840a0ded2814fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_6ed2ab3e",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-25T16:39:50Z",
+      "side": 1,
+      "message": "Passing low always because if PMIC want to shutdown, EC should honor it ASAP.\n\nPassing high only in POWER_G3S5 (line 283), this is similar design from Skylake with SLP_SUS where EC will block the system from booting to S0 unless it has sufficient power.",
+      "parentUuid": "5c0977ae_ee321bac",
       "revId": "c5b2c74e6ae37432fc14d48d08840a0ded2814fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
