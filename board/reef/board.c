@@ -281,15 +281,6 @@ static void chipset_pre_init(void)
 	if (system_jumped_to_this_image())
 		return;
 #endif
-
-#if 0
-	/* Enable PD interrupts */
-	gpio_enable_interrupt(GPIO_USB_C0_PD_INT);
-	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
-
-	/* Enable charger interrupts */
-	gpio_enable_interrupt(GPIO_PD_MCU_INT);
-#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
 
@@ -308,6 +299,18 @@ static void board_init(void)
 	while (!gpio_get_level(GPIO_PP3300_PG) ||
 		!(gpio_get_level(GPIO_PP5000_PG)))
 		;
+
+	/* Make sure TCPCs are on and taken out of reset */
+	board_reset_pd_mcu();
+
+	/* Enable PD interrupts */
+	gpio_enable_interrupt(GPIO_USB_C0_PD_INT);
+	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
+
+#if 0
+	/* Enable charger interrupts */
+	gpio_enable_interrupt(GPIO_PD_MCU_INT);
+#endif
 }
 /* PP3300 needs to be enabled before TCPC init hooks */
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_FIRST);
@@ -438,7 +441,7 @@ void chipset_do_shutdown(void)
 {
 	cprintf(CC_CHIPSET, "Doing custom shutdown for Reef\n");
 
-	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
+//	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
 	/* Disable V5A which de-assert PMIC_EN and causes PMIC to shutdown. */
 	gpio_set_level(GPIO_V5A_EN, 0);
 	/*
