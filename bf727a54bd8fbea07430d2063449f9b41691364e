@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c2177e1_77e47ab4",
+        "filename": "common/flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-05-25T01:19:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8483da3_55c7ac22",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 50
+      },
+      "revId": "bf727a54bd8fbea07430d2063449f9b41691364e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8483da3_35cca045",
         "filename": "common/flash.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-27T16:16:01Z",
       "side": 1,
       "message": "serial?",
+      "range": {
+        "startLine": 173,
+        "startChar": 32,
+        "endLine": 173,
+        "endChar": 38
+      },
+      "revId": "bf727a54bd8fbea07430d2063449f9b41691364e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8fc21c7_73684aab",
+        "filename": "common/flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-05-25T01:19:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8483da3_35cca045",
       "range": {
         "startLine": 173,
         "startChar": 32,
