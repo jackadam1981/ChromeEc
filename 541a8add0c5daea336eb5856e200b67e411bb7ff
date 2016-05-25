@@ -39,6 +39,30 @@
       "revId": "541a8add0c5daea336eb5856e200b67e411bb7ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_8e3ddf1b",
+        "filename": "extra/usb_serial/install",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-05-25T15:14:55Z",
+      "side": 1,
+      "message": "The first two are not required, udev uses inotify to watch the /etc/udev/rules.d directory for any changes and loads the new rules.  The last one (which only works if you remember to use \"sudo\", it silently fails otherwise) triggers the new rules.  I usually just unplug and plug in my device at that stage, but am happy to add the trigger to the install script.",
+      "parentUuid": "9cb5afdc_1ab8dd83",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 48
+      },
+      "revId": "541a8add0c5daea336eb5856e200b67e411bb7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
