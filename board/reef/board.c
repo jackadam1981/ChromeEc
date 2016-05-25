@@ -294,6 +294,9 @@ static void chipset_pre_init(void)
 	cprintf(CC_HOOK, "PP3300_PG: %d", gpio_get_level(GPIO_PP3300_PG));
 	cprintf(CC_HOOK, "PP5000_PG: %d", gpio_get_level(GPIO_PP5000_PG));
 
+	/* Enable PMIC */
+	gpio_set_level(GPIO_V5A_EN, 1);
+
 	/* (Re-)Enable I2C */
 	gpio_config_module(MODULE_I2C, 1);
 #if 0
