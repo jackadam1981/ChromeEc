@@ -47,16 +47,21 @@
 #define CHARGER_INITIALIZED_DELAY_MS 100
 #define CHARGER_INITIALIZED_TRIES 40
 
+/* Passthrough level condition */
+enum passthrough_level {
+	passthrough_low		= 0,
+	passthrough_high	= 1,
+	passthrough_both	= 2,
+};
+
 static int throttle_cpu;      /* Throttle CPU? */
 static int forcing_coldreset; /* Forced coldreset in progress? */
 static int power_s5_up;       /* Chipset is sequencing up or down */
 
 __attribute__((weak)) void chipset_do_shutdown(void)
 {
-	/*
-	 * Disable V5A which de-assert PMIC_EN and causes PMIC to shutdown.
-	 */
-	gpio_set_level(GPIO_V5A_EN, 0);
+	/* Disable PMIC */
+	gpio_set_level(GPIO_PMIC_EN, 0);
 }
 
 void chipset_force_shutdown(void)
@@ -118,7 +123,8 @@ enum power_state power_chipset_init(void)
 
 static void handle_pass_through(enum power_state state,
 				enum gpio_signal pin_in,
-				enum gpio_signal pin_out)
+				enum gpio_signal pin_out,
+				enum passthrough_level passthrough_level)
 {
 	/*
 	 * Pass through asynchronously, as SOC may not react
@@ -126,6 +132,11 @@ static void handle_pass_through(enum power_state state,
 	 */
 	int in_level = gpio_get_level(pin_in);
 	int out_level = gpio_get_level(pin_out);
+
+	/* Check for passthrough level condition */
+	if ((in_level != passthrough_level) &&
+	    (passthrough_level != passthrough_both))
+		return;
 
 	/* Nothing to do. */
 	if (in_level == out_level)
@@ -242,6 +253,9 @@ static enum power_state _power_handle_state(enum power_state state)
 		/* Call hooks to initialize PMIC */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
 
+		/* Enable PMIC */
+		gpio_set_level(GPIO_PMIC_EN, 1);
+
 		/*
 		 * Allow up to 1s for charger to be initialized, in case
 		 * we're trying to boot the AP with no battery.
@@ -259,14 +273,15 @@ static enum power_state _power_handle_state(enum power_state state)
 			return POWER_G3;
 		}
 
-		/* Enable V5A */
-		gpio_set_level(GPIO_V5A_EN, 1);
-		msleep(10);
-
+		/* Wait for RSMRST_L de-assert */
 		if (power_wait_signals(IN_PGOOD_ALL_CORE)) {
 			chipset_force_shutdown();
 			return POWER_G3;
 		}
+
+		/* Process RSMRST_L state changes if de-asserted. */
+		handle_pass_through(state, GPIO_RSMRST_L_PGOOD,
+				    GPIO_PCH_RSMRST_L, passthrough_high);
 
 		power_s5_up = 1;
 		return POWER_S5;
@@ -394,11 +409,13 @@ enum power_state power_handle_state(enum power_state state)
 {
 	enum power_state new_state;
 
-	/* Process RSMRST_L state changes. */
-	handle_pass_through(state, GPIO_RSMRST_L_PGOOD, GPIO_PCH_RSMRST_L);
+	/* Process RSMRST_L state changes if asserted. */
+	handle_pass_through(state, GPIO_RSMRST_L_PGOOD, GPIO_PCH_RSMRST_L,
+			    passthrough_low);
 
 	/* Process ALL_SYS_PGOOD state changes. */
-	handle_pass_through(state, GPIO_ALL_SYS_PGOOD, GPIO_PCH_SYS_PWROK);
+	handle_pass_through(state, GPIO_ALL_SYS_PGOOD, GPIO_PCH_SYS_PWROK,
+			    passthrough_both);
 
 	new_state = _power_handle_state(state);
 

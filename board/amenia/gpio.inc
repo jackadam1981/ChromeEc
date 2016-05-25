@@ -63,6 +63,7 @@ GPIO(BAT_LED_AMBER,          PIN(C,  0), GPIO_OUT_LOW)                    /* B61
 
 /* Power Control*/
 GPIO(V5A_EN,                 PIN(C,  4), GPIO_OUT_LOW)                    /* B64 - PWM2 for V5A_EN */
+#define GPIO_PMIC_EN GPIO_V5A_EN
 GPIO(G3_SLEEP_EN,            PIN(E,  3), GPIO_OUT_LOW)                    /* B51 - GPIOE3 for G3_SLEEP_ENA */
 GPIO(ENABLE_BACKLIGHT,       PIN(E,  2), GPIO_OUT_LOW)                    /* A41 - JTAG_TDI1 for EC_BL_DISABLE_N */
 GPIO(ENABLE_TOUCHPAD,        PIN(A,  6), GPIO_OUT_LOW)                    /* B55 - PS2_CLK3/TA2/F_CS1# for TRACKPAD_PWR_EN */

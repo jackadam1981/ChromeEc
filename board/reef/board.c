@@ -475,7 +475,7 @@ void chipset_do_shutdown(void)
 
 	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
 	/* Disable V5A which de-assert PMIC_EN and causes PMIC to shutdown. */
-	gpio_set_level(GPIO_V5A_EN, 0);
+	gpio_set_level(GPIO_PMIC_EN, 0);
 	gpio_set_level(GPIO_EN_PP3300, 0);
 	gpio_set_level(GPIO_EN_PP5000, 0);
 }
