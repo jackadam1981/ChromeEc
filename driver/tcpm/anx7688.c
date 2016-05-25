@@ -157,8 +157,10 @@ static int anx7688_mux_set(int i2c_addr, mux_state_t mux_state)
 	rv = tcpc_read(port, TCPC_REG_TCPC_CTRL, &polarity);
 	if (rv != EC_SUCCESS)
 		return rv;
-	reg |= TCPC_REG_TCPC_CTRL_POLARITY(polarity);
 
+	/* copy the polarity from TCPC_CTRL[0], take care clear then set */
+	reg &= ~TCPC_REG_TCPC_CTRL_POLARITY(1);
+	reg |= TCPC_REG_TCPC_CTRL_POLARITY(polarity);
 	return tcpc_write(port, TCPC_REG_CONFIG_STD_OUTPUT, reg);
 }
 
