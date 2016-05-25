@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0977ae_bc3c597f",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-25T18:30:18Z",
+      "side": 1,
+      "message": "This change should be behind a new CONFIG. Also it would be an improvement to reduce the scenarios in which you delay. Eg. probably you only have issues when you go from port disable to enable? So, check the old port state vs new in usb_charge_set_mode() instead and only delay when necessary.",
+      "revId": "2a69072ffdf2c34fed332d4a3fece64a0f1ebab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
