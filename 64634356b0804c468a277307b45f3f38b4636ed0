@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5c2177e1_65e9618b",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-25T02:20:27Z",
+      "side": 1,
+      "message": "Hmm, that\u0027s interesting. Well, maybe we can utilize other methods of resetting the TCPC chips via their I2C interface and only use this if we detect a more severe problem.\n\nI forget exactly how I came up with these delays (IIRC from older code), and they don\u0027t seem correct according to the ANX74xx docs. Maybe we can shorten some of them to accomodate.\n\nFor powerdown, figure 5-16 of the ANX7428 datasheet shows 1ms for RESETN to go low. It doesn\u0027t really specify for PWR_EN. Code example 9.1 uses 1ms delays in sp_tx_hardware_powerdown().\n\nPower poweron, figure 5-17 and table 5-5 of the datasheet show a delay of 1ns for PWR_EN to go high, and 10ms for RESETN to go high and an additional 20us for register access to become valid. The code example uses T3 (\u003d1ns) and T5 (\u003d20us) in the poweron example.",
+      "parentUuid": "5c2177e1_520181a8",
+      "revId": "64634356b0804c468a277307b45f3f38b4636ed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c2177e1_920bf9c8",
         "filename": "board/reef/board.c",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2016-05-25T01:49:11Z",
       "side": 1,
       "message": "Should write 0 to disable on shutdown.",
+      "revId": "64634356b0804c468a277307b45f3f38b4636ed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c2177e1_0519856e",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-25T02:20:27Z",
+      "side": 1,
+      "message": "Yikes, not sure how that crept in (your patch was good). Fixed here: https://chromium-review.googlesource.com/347096",
+      "parentUuid": "5c2177e1_4567fd12",
       "revId": "64634356b0804c468a277307b45f3f38b4636ed0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
