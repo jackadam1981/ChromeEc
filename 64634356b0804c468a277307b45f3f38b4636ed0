@@ -33,6 +33,23 @@
       "revId": "64634356b0804c468a277307b45f3f38b4636ed0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c2177e1_4567fd12",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-25T01:49:11Z",
+      "side": 1,
+      "message": "Should write 0 to disable on shutdown.",
+      "revId": "64634356b0804c468a277307b45f3f38b4636ed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
