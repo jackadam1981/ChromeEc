@@ -22,6 +22,30 @@
       "revId": "dda003846940f6c0fe870cc00320c52b9867ebbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_88bcb7e6",
+        "filename": "builtin/assert.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-05-25T05:52:36Z",
+      "side": 1,
+      "message": "Ah.  I\u0027ve added a guarded include for common.h.  Third party libraries will have to build with -DTHIRD_PARTY.  Does this look ok?\n\nThe way build files structured, CFLAGS for EC and third_party code don\u0027t differ, so \n\n#ifdef BOARD\n#include \"common.h\"\n#endif\n\ndoesn\u0027t work here.",
+      "parentUuid": "5c0977ae_085b2718",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "dda003846940f6c0fe870cc00320c52b9867ebbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
