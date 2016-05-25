@@ -16,6 +16,24 @@
       "revId": "4d349919b09064e3c7a71884e7af6ae39af815f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_2beee5c1",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-25T06:57:30Z",
+      "side": 1,
+      "message": "There is existing code from CONFIG_USB_PORT_POWER_DUMB, but that requires separate GPIO control per port though, so will need some enhancement and will also need to update corresponding changes in ectool and faft to go with it.",
+      "parentUuid": "5c0977ae_88095722",
+      "revId": "4d349919b09064e3c7a71884e7af6ae39af815f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
