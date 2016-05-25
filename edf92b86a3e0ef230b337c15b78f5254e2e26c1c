@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0977ae_4e3a47b2",
+        "filename": "common/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-25T16:16:10Z",
+      "side": 1,
+      "message": "Still \"sernal\"",
+      "range": {
+        "startLine": 175,
+        "startChar": 32,
+        "endLine": 175,
+        "endChar": 38
+      },
+      "revId": "edf92b86a3e0ef230b337c15b78f5254e2e26c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_2ebdd326",
+        "filename": "common/flash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-25T16:16:10Z",
+      "side": 1,
+      "message": "Hmm, won\u0027t this cause existing boards to lose their PROTECT_RO_AT_BOOT flag?  May need an upgrade path:\n\nif (pstate-\u003eversion \u003d\u003d 2) {\n  /* Only had flags; upgrade to version 3 */\n  pstate-\u003eversion \u003d PERSIST_STATE_VERSION;\n  pstate-\u003evalid_fields \u003d PSTATE_VALID_FLAGS;\n} else {\n  /* Reset everything */\n}\n\nI\u0027m thinking of the case where we release a new RO firmware for dogfood systems which currently have version 2.  Or a RW firmware update which now will always report to the AP that the EC is unprotected, because it doesn\u0027t think the flags are valid anymore.\n\nAlso need to think about the downgrade case.  That is, what if we release a RW update from ToT that supports version 4, and the RO firmware only supports version 3.  It won\u0027t be able to accept the structure the RW firmware writes.  So maybe we only reset everything if version is 0, 1, or 0xFF?",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "edf92b86a3e0ef230b337c15b78f5254e2e26c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
