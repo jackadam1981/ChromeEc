@@ -46,6 +46,7 @@
 #define TCPC_REG_TCPC_CTRL         0x19
 #define TCPC_REG_TCPC_CTRL_SET(polarity) (polarity)
 #define TCPC_REG_TCPC_CTRL_POLARITY(reg) ((reg) & 0x1)
+#define TCPC_REG_TCPC_CTRL_POLARITY_BIT	    1
 
 #define TCPC_REG_ROLE_CTRL         0x1a
 #define TCPC_REG_ROLE_CTRL_SET(drp, rp, cc1, cc2) \

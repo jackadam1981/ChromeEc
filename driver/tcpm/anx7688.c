@@ -85,6 +85,24 @@ static void anx7688_update_hpd_enable(int port)
 	}
 }
 
+void anx7688_hpd_disable(int port)
+{
+	int reg, rv;
+
+	rv = tcpc_read(port, ANX7688_REG_HPD, &reg);
+	if (rv)
+		return;
+
+	ccprintf("disable HDP(pull HDP low, and HDP_ENABLE=0), 0x83=%x\n", reg);
+	tcpc_write(port, ANX7688_REG_HPD, 0x00);
+
+	rv = tcpc_read(port, ANX7688_REG_HPD, &reg);
+	if (rv)
+		return;
+	ccprintf("after disable 0x83=%x(should be 0)\n", reg);
+}
+
+
 int anx7688_update_hpd_level(int port, int level)
 {
 	int reg, rv;
@@ -93,6 +111,7 @@ int anx7688_update_hpd_level(int port, int level)
 	if (rv)
 		return rv;
 
+	reg &= ~ANX7688_REG_HPD_IRQ;
 	return tcpc_write(port, ANX7688_REG_HPD,
 			  level ? reg | ANX7688_REG_HPD_HIGH
 				: reg & ~ANX7688_REG_HPD_HIGH);
@@ -135,8 +154,64 @@ static void anx7688_tcpc_alert(int port)
 	/* process and clear alert status */
 	tcpci_tcpm_drv.tcpc_alert(port);
 
+	ccprintf("alert_p %x\n", alert);
 	if (!rv && (alert & ANX7688_VENDOR_ALERT))
 		anx7688_update_hpd_enable(port);
+
+	/* 
+         * If Always Power-ON, Anx7688 needs to reset chip to keep 
+         * default status correctly after calbe unplugged
+         * only sink trigger VBUS_DISCONNECTED ALERT INTERUPT
+         */
+        if (alert & (TCPC_REG_ALERT_CC_STATUS)) {
+                int cc1, cc2;
+                int count = 0;
+                int polarity;
+
+                /* not connected */
+                if (!pd_is_connected(port))
+                        return;
+
+                ccprintf("alertnew %x\n", alert);
+                /* check current PD status is no pswap */
+                //if (pd_is_power_swapping(port))
+                 //       return;
+
+                if (tcpc_read(port, TCPC_REG_TCPC_CTRL, &polarity)!= EC_SUCCESS)
+                        return;
+
+                do {
+                        tcpm_get_cc(port, &cc1, &cc2);
+                        msleep(1);
+                        /* tCCDebounce time 10~20ms */
+                        if (count++ > 20) {
+                                ccprintf("power down video by drive hpd low\n");
+                                anx7688_hpd_disable(port);
+                                return;
+                        }
+                        
+                        if (tcpc_read(port, TCPC_REG_TCPC_CTRL, &polarity)!= EC_SUCCESS)
+                                return;
+
+                } while(TCPC_REG_TCPC_CTRL_POLARITY(polarity) ? cc2 == TYPEC_CC_VOLT_OPEN :
+                        cc2 == TYPEC_CC_VOLT_OPEN);
+        }
+
+
+	if (alert & TCPC_REG_ALERT_VBUS_DISCNCT) {
+                /* not connected */
+                if (!pd_is_connected(port))
+                        return;
+
+                ccprintf("Vbusdisconnect Alert=%x,close HPD\n\n", alert);
+                /* check current PD status is no pswap */
+//                if (pd_is_power_swapping(port))
+ //                       return;
+                anx7688_hpd_disable(port);
+        }
+
+
+
 }
 
 static int anx7688_mux_set(int i2c_addr, mux_state_t mux_state)
@@ -145,6 +220,7 @@ static int anx7688_mux_set(int i2c_addr, mux_state_t mux_state)
 	int rv, polarity;
 	int port = i2c_addr; /* use port index in port_addr field */
 
+	ccprintf("anx7688_mut_set \n");
 	rv = tcpc_read(port, TCPC_REG_CONFIG_STD_OUTPUT, &reg);
 	if (rv != EC_SUCCESS)
 		return rv;
@@ -163,8 +239,11 @@ static int anx7688_mux_set(int i2c_addr, mux_state_t mux_state)
 	rv = tcpc_read(port, TCPC_REG_TCPC_CTRL, &polarity);
 	if (rv != EC_SUCCESS)
 		return rv;
-	reg |= TCPC_REG_TCPC_CTRL_POLARITY(polarity);
+	ccprintf("polarity %x\n", polarity);
 
+	/*copy the polarity from TCPC_CTRL[0], take care clear then set*/	
+	reg  &= ~TCPC_REG_TCPC_CTRL_POLARITY_BIT;
+	reg |= TCPC_REG_TCPC_CTRL_POLARITY(polarity);
 	return tcpc_write(port, TCPC_REG_CONFIG_STD_OUTPUT, reg);
 }
 
