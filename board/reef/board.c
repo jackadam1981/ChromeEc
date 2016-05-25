@@ -66,16 +66,6 @@ static void tcpc_alert_event(enum gpio_signal signal)
 #endif
 }
 
-
-/* Exchange status with PD MCU. */
-static void pd_mcu_interrupt(enum gpio_signal signal)
-{
-#ifdef HAS_TASK_PDCMD
-	/* Exchange status with PD MCU to determine interrupt cause */
-	host_command_pd_send_status(0);
-#endif
-}
-
 /*
  * enable_input_devices() is called by the tablet_mode ISR, but changes the
  * state of GPIOs, so its definition must reside after including gpio_list.
@@ -313,34 +303,10 @@ static void board_init(void)
 	/* FIXME: Handle tablet mode */
 	/* gpio_enable_interrupt(GPIO_TABLET_MODE_L); */
 
-	struct charge_port_info charge_none;
-	int i;
-
-	/* Initialize all BC1.2 charge suppliers to 0 */
-	charge_none.voltage = USB_CHARGER_VOLTAGE_MV;
-	charge_none.current = 0;
-
-	/* TODO: Implement BC1.2 + VBUS detection */
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
-		charge_manager_update_charge(CHARGE_SUPPLIER_PROPRIETARY,
-					     i,
-					     &charge_none);
-		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP,
-					     i,
-					     &charge_none);
-		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_DCP,
-					     i,
-					     &charge_none);
-		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_SDP,
-					     i,
-					     &charge_none);
-		charge_manager_update_charge(CHARGE_SUPPLIER_OTHER,
-					     i,
-					     &charge_none);
-		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS,
-					     i,
-					     &charge_none);
-	}
+#ifdef CONFIG_CHARGER_VBUS_INTERRUPT
+	/* Enable charger interrupts */
+	gpio_enable_interrupt(GPIO_CHARGER_INT_L);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -397,6 +363,14 @@ int board_set_active_charge_port(int charge_port)
  */
 void board_set_charge_limit(int port, int supplier, int charge_ma)
 {
+	/* Enable charging trigger by BC1.2 detection */
+	if (supplier == CHARGE_SUPPLIER_BC12_CDP ||
+		supplier == CHARGE_SUPPLIER_BC12_DCP ||
+		supplier == CHARGE_SUPPLIER_BC12_SDP) {
+		if (bd99955_bc12_enable_charging(port, 1))
+			return;
+	}
+
 	charge_set_input_current_limit(MAX(charge_ma,
 					   CONFIG_CHARGER_INPUT_CURRENT));
 }
@@ -404,11 +378,6 @@ void board_set_charge_limit(int port, int supplier, int charge_ma)
 int extpower_is_present(void)
 {
 	return bd99955_is_vbus_provided(BD99955_CHARGE_PORT_BOTH);
-}
-
-int usb_charger_port_is_sourcing_vbus(int port)
-{
-	return gpio_get_level(port ? GPIO_USB_C1_5V_EN : GPIO_USB_C0_5V_EN);
 }
 
 /* Enable or disable input devices, based upon chipset state and tablet mode */
@@ -451,7 +420,7 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 static void board_chipset_shutdown(void)
 {
 	/* Disable USB-A port. */
-	gpio_set_level(GPIO_EN_USB_A_5V, 1);
+	gpio_set_level(GPIO_EN_USB_A_5V, 0);
 
 	hook_call_deferred(&enable_input_devices_data, 0);
 	/* FIXME(dhendrix): Drive USB_PD_RST_ODL low to prevent
