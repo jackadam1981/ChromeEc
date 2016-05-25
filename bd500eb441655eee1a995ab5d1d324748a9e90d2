@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0977ae_5c82fdba",
+        "filename": "board/lars/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-25T18:18:08Z",
+      "side": 1,
+      "message": "Suggest to use static variable for \"prev_state\" instead of need_reset. It makes the code  much easier to understand.",
+      "range": {
+        "startLine": 722,
+        "startChar": 2,
+        "endLine": 722,
+        "endChar": 12
+      },
+      "revId": "bd500eb441655eee1a995ab5d1d324748a9e90d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_fce9b18f",
+        "filename": "board/lars/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-25T18:18:08Z",
+      "side": 1,
+      "message": "This is confusing, just list the states you are checking (eg. \u003d\u003d ST_CHARGE || \u003d\u003d ST_PRECHARGE). It can also easily break if someone adds a new enum.",
+      "range": {
+        "startLine": 723,
+        "startChar": 39,
+        "endLine": 723,
+        "endChar": 42
+      },
+      "revId": "bd500eb441655eee1a995ab5d1d324748a9e90d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_9c9f5516",
+        "filename": "board/lars/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-25T18:18:08Z",
+      "side": 1,
+      "message": "No need for a new CONFIG since this is only used in board code, just add #define above.",
+      "range": {
+        "startLine": 729,
+        "startChar": 23,
+        "endLine": 729,
+        "endChar": 52
+      },
+      "revId": "bd500eb441655eee1a995ab5d1d324748a9e90d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_1cf5a55c",
+        "filename": "board/lars/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-25T18:18:08Z",
+      "side": 1,
+      "message": "I think you can do this by keeping a timestamp in a static variable in board_check_charge_time ( get_time().val) rather than adding a hook routine.",
+      "range": {
+        "startLine": 736,
+        "startChar": 2,
+        "endLine": 742,
+        "endChar": 64
+      },
+      "revId": "bd500eb441655eee1a995ab5d1d324748a9e90d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_dcc70d24",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-25T18:18:08Z",
+      "side": 1,
+      "message": "Can\u0027t you use charger_profile_override() for this, rather than adding a new callback?",
+      "range": {
+        "startLine": 819,
+        "startChar": 15,
+        "endLine": 819,
+        "endChar": 39
+      },
+      "revId": "bd500eb441655eee1a995ab5d1d324748a9e90d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
