@@ -16,6 +16,29 @@
       "revId": "541a8add0c5daea336eb5856e200b67e411bb7ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cb5afdc_1ab8dd83",
+        "filename": "extra/usb_serial/install",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-25T00:58:29Z",
+      "side": 1,
+      "message": "After updating udev, there are additional things that sometimes need doing:\n\ninitctl restart udev\ninitctl reload udev\nudevadm trigger\n\nI don\u0027t know which are really necessary. Doing them all seems to work.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 48
+      },
+      "revId": "541a8add0c5daea336eb5856e200b67e411bb7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
