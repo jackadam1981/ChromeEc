@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cb5afdc_ba77f1be",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-25T02:00:15Z",
+      "side": 1,
+      "message": "Just put this line in nvmem.h instead of here and the style checker will stop complaining about the extern.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 50
+      },
+      "revId": "16b5c3ec6f11569c1ced00873de5ee93491c10fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cb5afdc_da84a5b6",
+        "filename": "include/nvmem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-25T02:00:15Z",
+      "side": 1,
+      "message": "Add before this line:\n\n  The board.h file must define a macro or enum named NVMEM_NUM_USERS.",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 7
+      },
+      "revId": "16b5c3ec6f11569c1ced00873de5ee93491c10fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cb5afdc_fa58894b",
+        "filename": "include/nvmem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-25T02:00:15Z",
+      "side": 1,
+      "message": "Put the \n\n  /* NvMem user buffer length table */\n  extern uint32_t nvmem_user_sizes[NVMEM_NUM_USERS];\n\nhere.",
+      "revId": "16b5c3ec6f11569c1ced00873de5ee93491c10fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
