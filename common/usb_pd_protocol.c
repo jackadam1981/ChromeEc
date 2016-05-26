@@ -1965,10 +1965,6 @@ void pd_task(void)
 			}
 			break;
 		case PD_STATE_SUSPENDED:
-			/*
-			 * TODO: Suspend state only supported if we are also
-			 * the TCPC.
-			 */
 #ifdef CONFIG_USB_PD_TCPC
 			pd_rx_disable_monitoring(port);
 			pd_hw_release(port);
@@ -1979,6 +1975,10 @@ void pd_task(void)
 				task_wait_event(-1);
 
 			pd_hw_init(port, PD_ROLE_DEFAULT);
+#else
+			/* Wait for resume */
+			while (pd[port].task_state == PD_STATE_SUSPENDED)
+				task_wait_event(-1);
 #endif
 			break;
 		case PD_STATE_SNK_DISCONNECTED:
