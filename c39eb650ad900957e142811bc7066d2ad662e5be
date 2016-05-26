@@ -16,6 +16,24 @@
       "revId": "c39eb650ad900957e142811bc7066d2ad662e5be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_c9d17fe2",
+        "filename": "power/apollolake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-26T21:55:31Z",
+      "side": 1,
+      "message": "You should add that nugget of information to the comment itself so people don\u0027t scratch their head in the future.",
+      "parentUuid": "5c0977ae_bd80c90a",
+      "revId": "c39eb650ad900957e142811bc7066d2ad662e5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
