@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0977ae_ba0faf22",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-26T16:21:01Z",
+      "side": 1,
+      "message": "Would you ever pass a value that\u0027s not ARRAY_SIZE(ranges)? If not, just remove this parameter, and use ARRAY_SIZE(ranges) explicitly.",
+      "range": {
+        "startLine": 65,
+        "startChar": 17,
+        "endLine": 65,
+        "endChar": 21
+      },
+      "revId": "3151714806bff437d2f47f817f684e6b0a907bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_5a07930f",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-26T16:21:01Z",
+      "side": 1,
+      "message": "This check is only needed for i \u003d 0, right? Because you\u0027re checking i+1 below? If so, move it outside the loop.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 12
+      },
+      "revId": "3151714806bff437d2f47f817f684e6b0a907bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_fa040709",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-26T16:21:01Z",
+      "side": 1,
+      "message": "Would you prefer \"return round_up ? i + 1 : i;\"?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 13
+      },
+      "revId": "3151714806bff437d2f47f817f684e6b0a907bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_5a16733e",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-26T16:21:01Z",
+      "side": 1,
+      "message": "Unneeded intent here.",
+      "revId": "3151714806bff437d2f47f817f684e6b0a907bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_da202389",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-26T16:21:01Z",
+      "side": 1,
+      "message": "Need a space between the variable declaration and the return, or just remove the variable altogether.",
+      "revId": "3151714806bff437d2f47f817f684e6b0a907bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_7a3017d6",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-26T16:21:01Z",
+      "side": 1,
+      "message": "Need a space between the variable declaration and the return, or just remove the variable altogether.",
+      "revId": "3151714806bff437d2f47f817f684e6b0a907bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_3a497f5b",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-26T16:21:01Z",
+      "side": 1,
+      "message": "Need a space between the variable declaration and the code below, or just remove the variable altogether.",
+      "revId": "3151714806bff437d2f47f817f684e6b0a907bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_3a705f93",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-26T16:21:01Z",
+      "side": 1,
+      "message": "How long does reset typically take? Maybe consider moving this sleep to the end of the loop, if there is some chance it\u0027s already done before the sleep?",
+      "range": {
+        "startLine": 295,
+        "startChar": 2,
+        "endLine": 295,
+        "endChar": 12
+      },
+      "revId": "3151714806bff437d2f47f817f684e6b0a907bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
