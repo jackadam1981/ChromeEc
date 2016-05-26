@@ -36,6 +36,7 @@
 #include "timer.h"
 #include "thermal.h"
 #include "usb_charge.h"
+#include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
@@ -327,6 +328,30 @@ static void overtemp_interrupt_disable(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, overtemp_interrupt_disable,
 	     HOOK_PRIO_DEFAULT);
+
+void board_pd_idle(int port)
+{
+	ccprintf("PD %d is idle\n", port);
+
+	if (chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
+		ccprintf("Suspending PD %d\n", port);
+		pd_set_suspend(port, 1);
+	}
+}
+
+static int command_unsuspend(int argc, char **argv)
+{
+	int port;
+	char *e;
+
+	port = strtoi(argv[1], &e, 10);
+	if (*e || port > CONFIG_USB_PD_PORT_COUNT)
+		return EC_ERROR_PARAM1;
+	pd_set_suspend(port, 0);
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(unsuspend, command_unsuspend, "<port>", 0, 0);
 
 /* Motion sensors */
 #ifdef HAS_TASK_MOTIONSENSE

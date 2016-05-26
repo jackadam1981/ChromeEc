@@ -204,7 +204,8 @@ static inline void set_state_timeout(int port,
 /* Return flag for pd state is connected */
 int pd_is_connected(int port)
 {
-	if (pd[port].task_state == PD_STATE_DISABLED)
+	if (pd[port].task_state == PD_STATE_DISABLED ||
+	    pd[port].task_state == PD_STATE_SUSPENDED)
 		return 0;
 
 	return DUAL_ROLE_IF_ELSE(port,
@@ -263,7 +264,6 @@ static inline void set_state(int port, enum pd_states next_state)
 #ifdef CONFIG_LOW_POWER_IDLE
 	int i;
 #endif
-
 	set_state_timeout(port, 0, 0);
 	pd[port].task_state = next_state;
 
@@ -1965,19 +1965,15 @@ void pd_task(void)
 			}
 			break;
 		case PD_STATE_SUSPENDED:
-			/*
-			 * TODO: Suspend state only supported if we are also
-			 * the TCPC.
-			 */
 #ifdef CONFIG_USB_PD_TCPC
 			pd_rx_disable_monitoring(port);
 			pd_hw_release(port);
 			pd_power_supply_reset(port);
-
+#endif
 			/* Wait for resume */
 			while (pd[port].task_state == PD_STATE_SUSPENDED)
 				task_wait_event(-1);
-
+#ifdef CONFIG_USB_PD_TCPC
 			pd_hw_init(port, PD_ROLE_DEFAULT);
 #endif
 			break;
@@ -2032,6 +2028,15 @@ void pd_task(void)
 
 				/* Swap states quickly */
 				timeout = 2*MSEC;
+			} else {
+				/*
+				 * No state transition -- we're idle. Inform
+				 * board-level, which may decide to put
+				 * components into a low-power state and
+				 * transition the state machine to suspend.
+				 */
+				if (board_pd_idle)
+					board_pd_idle(port);
 			}
 			break;
 		case PD_STATE_SNK_DISCONNECTED_DEBOUNCE:

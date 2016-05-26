@@ -1551,4 +1551,12 @@ static inline void pd_log_event(uint8_t type, uint8_t size_port,
 static inline int pd_vdm_get_log_entry(uint32_t *payload) { return 0; }
 #endif /* CONFIG_USB_PD_LOGGING */
 
+/**
+ * Inform board-level that PD is disconnected and idle. The board-level
+ * implementation may decide to put the PD state machine into suspend from
+ * this callback by calling pd_set_suspend().
+ *
+ * @param port USB-C port number
+ */
+void board_pd_idle(int port) __attribute__((weak));
 #endif  /* __CROS_EC_USB_PD_H */
