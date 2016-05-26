@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c12bbd9_696e2585",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-26T09:22:54Z",
+      "side": 1,
+      "message": "Separated RESUME and RESET, as advised by Julius.",
+      "revId": "9eac176c34d55c69c350f008421ca9712ce44843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c12bbd9_895839ef",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3369,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-26T09:22:54Z",
+      "side": 1,
+      "message": "To follow up on Julius question (I2C passthru protection). What happens to this variable on EC jump from RO to RW? Does it get reset?",
+      "revId": "9eac176c34d55c69c350f008421ca9712ce44843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
