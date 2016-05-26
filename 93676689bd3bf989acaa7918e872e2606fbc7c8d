@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0977ae_c9b61f95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-26T22:06:21Z",
+      "side": 1,
+      "message": "I still think it is inconsistent to have both \u0027ccd enable/disable\u0027 and \u0027ccd uart enable/disable\u0027, but if other reviewers are fine with this - so be it.\n\nWhat I beleive is still missing is a comprehensive test with servo. From recent experience here are a few modes which need to  be explicitly tested:\n\n- powercycle the DUT (including disconnecting the battery), connect the servo. Are both EC and AP consoles operational? Could both EC and AP SPI flash devices be programmed through servo?\n\n- connect suzyQ to the DUT and the host. Did the devices show up, are all three consoles available in read only mode? Are they still fully operational through servo? Can SPI flashes still be programmed through servo?\n\n- disconnect servo, enable uarts/spi and verify that the consoles are fully available and the SPI devices can be programmed.",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 36
+      },
+      "revId": "93676689bd3bf989acaa7918e872e2606fbc7c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
