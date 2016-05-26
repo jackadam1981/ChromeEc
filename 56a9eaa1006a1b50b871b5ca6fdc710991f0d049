@@ -36,6 +36,47 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_0eb79de4",
+        "filename": "board/reef/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-26T20:33:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c0977ae_8394869e",
+      "revId": "56a9eaa1006a1b50b871b5ca6fdc710991f0d049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_eeb1e99e",
+        "filename": "board/reef/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-26T20:33:03Z",
+      "side": 1,
+      "message": "Removed this stuff for now, may introduce in a later patch once we have something more coherent.",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 2
+      },
+      "revId": "56a9eaa1006a1b50b871b5ca6fdc710991f0d049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_43ed6e31",
         "filename": "board/reef/board.c",
         "patchSetId": 6
@@ -53,6 +94,24 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_aefe5143",
+        "filename": "board/reef/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-26T20:33:03Z",
+      "side": 1,
+      "message": "OK, let\u0027s just make this function a noop for now.",
+      "parentUuid": "5c0977ae_43ed6e31",
+      "revId": "56a9eaa1006a1b50b871b5ca6fdc710991f0d049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_23f27a14",
         "filename": "board/reef/board.c",
         "patchSetId": 6
@@ -64,6 +123,30 @@
       "writtenOn": "2016-05-26T19:45:43Z",
       "side": 1,
       "message": "Can we just remove all of this commented out code?",
+      "range": {
+        "startLine": 482,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 41
+      },
+      "revId": "56a9eaa1006a1b50b871b5ca6fdc710991f0d049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_4ed475fc",
+        "filename": "board/reef/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-26T20:33:03Z",
+      "side": 1,
+      "message": "Replaced with a simple comment and console print for when someone tries to shut down the SOC and wonders why nothing is happening.",
+      "parentUuid": "5c0977ae_23f27a14",
       "range": {
         "startLine": 482,
         "startChar": 0,
