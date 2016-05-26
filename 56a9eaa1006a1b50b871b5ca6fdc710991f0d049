@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0977ae_03f77603",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-26T19:45:43Z",
+      "side": 1,
+      "message": "Are we trying to fix 53646 as well?",
+      "revId": "56a9eaa1006a1b50b871b5ca6fdc710991f0d049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_8394869e",
+        "filename": "board/reef/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-26T19:45:43Z",
+      "side": 1,
+      "message": "Could you please add a comment that this sequence is to keep PD chips always powered, but it also means keeping the pmic always on as well because of dependencies in the power topology.",
+      "revId": "56a9eaa1006a1b50b871b5ca6fdc710991f0d049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_43ed6e31",
+        "filename": "board/reef/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-26T19:45:43Z",
+      "side": 1,
+      "message": "I don\u0027t think we should ever be shutting down the PMIC while keeping PP3300_A on.",
+      "revId": "56a9eaa1006a1b50b871b5ca6fdc710991f0d049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_23f27a14",
+        "filename": "board/reef/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-26T19:45:43Z",
+      "side": 1,
+      "message": "Can we just remove all of this commented out code?",
+      "range": {
+        "startLine": 482,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 41
+      },
+      "revId": "56a9eaa1006a1b50b871b5ca6fdc710991f0d049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
