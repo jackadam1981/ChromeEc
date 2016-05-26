@@ -52,6 +52,24 @@
       "revId": "8d9495c8cc5b6d198178349c13c22ae550b3b7cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_9d5f4534",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-26T17:28:17Z",
+      "side": 1,
+      "message": "Rebased CL:346633 to have PMIC enable after power good signal are received.",
+      "parentUuid": "5c0977ae_d438f92c",
+      "revId": "8d9495c8cc5b6d198178349c13c22ae550b3b7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
