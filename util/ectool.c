@@ -191,6 +191,8 @@ const char help_str[] =
 	"      Print real-time clock\n"
 	"  rtcset <time>\n"
 	"      Set real-time clock\n"
+	"  rtcalarm <sec>\n"
+	"      Set real-time clock alarm to go off in <sec> seconds\n"
 	"  rwhashpd <dev_id> <HASH[0] ... <HASH[4]>\n"
 	"      Set entry in PD MCU's device rw_hash table.\n"
 	"  sertest\n"
@@ -5962,6 +5964,30 @@ int cmd_rtc_set(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_rtc_set_alarm(int argc, char *argv[])
+{
+	struct ec_params_rtc p;
+	char *e;
+	int rv;
+
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s <sec>\n", argv[0]);
+		return -1;
+	}
+	p.time = strtol(argv[1], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad time.\n");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_RTC_SET_ALARM, 0, &p, sizeof(p), NULL, 0);
+	if (rv < 0)
+		return rv;
+
+	printf("Alarm Set to go off in %d secs.\n", p.time);
+	return 0;
+}
+
 int cmd_console(int argc, char *argv[])
 {
 	char *out = (char *)ec_inbuf;
@@ -6738,6 +6764,7 @@ const struct command commands[] = {
 	{"reboot_ec", cmd_reboot_ec},
 	{"rtcget", cmd_rtc_get},
 	{"rtcset", cmd_rtc_set},
+	{"rtcalarm", cmd_rtc_set_alarm},
 	{"rwhashpd", cmd_rw_hash_pd},
 	{"sertest", cmd_serial_test},
 	{"port80flood", cmd_port_80_flood},
