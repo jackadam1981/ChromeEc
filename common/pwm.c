@@ -40,19 +40,28 @@ static int get_target_channel(enum pwm_channel *channel, int type, int index)
 	return *channel >= PWM_CH_COUNT;
 }
 
+/*
+ * TODO(crbug.com/615109): These host commands use 16 bit duty cycle, but
+ * all of our internal code uses percent on [0, 100]. Convert internal
+ * functions to use 16 bit duty and remove the conversions below.
+ */
 static int host_command_pwm_set_duty(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pwm_set_duty *p = args->params;
 	enum pwm_channel channel;
+	int percent;
 
-	if (p->percent > 100)
-		return EC_RES_INVALID_PARAM;
+	/* Convert 16 bit duty to percent on [0, 100] */
+	percent = p->duty * 100 / 65535;
+	/* Round up if required */
+	if ((p->duty * 100) % 65535 > 65535 / 2)
+		percent++;
 
 	if (get_target_channel(&channel, p->pwm_type, p->index))
 		return EC_RES_INVALID_PARAM;
 
-	pwm_set_duty(channel, p->percent);
-	pwm_enable(channel, p->percent > 0);
+	pwm_set_duty(channel, percent);
+	pwm_enable(channel, percent > 0);
 
 	return EC_RES_SUCCESS;
 }
@@ -70,7 +79,8 @@ static int host_command_pwm_get_duty(struct host_cmd_handler_args *args)
 	if (get_target_channel(&channel, p->pwm_type, p->index))
 		return EC_RES_INVALID_PARAM;
 
-	r->percent = pwm_get_duty(channel);
+	/* Convert percent on [0, 100] to 16 bit duty */
+	r->duty = pwm_get_duty(channel) * 65535 / 100;
 	args->response_size = sizeof(*r);
 
 	return EC_RES_SUCCESS;
