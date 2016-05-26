@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0977ae_bd80c90a",
+        "filename": "power/apollolake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-26T17:55:41Z",
+      "side": 1,
+      "message": "Move here so that it will make sure RSMRST_L de-assertion is pass-through when it transition from POWER_G3S5 to POWER_S5.\n\nFor RSMRST_L assertion, _power_handle_state for S0/S3 already check for RSMRST_L to handle PMIC shutdown.",
+      "revId": "c39eb650ad900957e142811bc7066d2ad662e5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
