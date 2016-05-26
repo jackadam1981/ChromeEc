@@ -140,6 +140,30 @@
       "revId": "588d1eef7ec56add8e3ce763cfbb82868b5a06f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_a929ab8c",
+        "filename": "common/case_closed_debug.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-26T22:06:21Z",
+      "side": 1,
+      "message": "I don\u0027t understand this explanation, in particular how CONFIG_USB_SELECT_PHY and stp32 are related.\n\nMy question still is: why would we need to call usb_init() when cd needs to be *disabled*, and *only* if CONFIG_USB_SELECT_PHY is not defined.",
+      "parentUuid": "5c0977ae_ee0fa97b",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "588d1eef7ec56add8e3ce763cfbb82868b5a06f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
