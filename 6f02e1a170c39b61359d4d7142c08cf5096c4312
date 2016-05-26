@@ -46,6 +46,30 @@
       "revId": "6f02e1a170c39b61359d4d7142c08cf5096c4312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_54f2c2de",
+        "filename": "board/reef/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-26T23:40:28Z",
+      "side": 1,
+      "message": "Yes - Kevin moved this from apollolake.c to this location, and my patch moves it from this location to board_init() along with the above GPIO enables for PP5000 and PP3300.",
+      "parentUuid": "5c0977ae_94d4bacf",
+      "range": {
+        "startLine": 294,
+        "startChar": 1,
+        "endLine": 294,
+        "endChar": 15
+      },
+      "revId": "6f02e1a170c39b61359d4d7142c08cf5096c4312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
