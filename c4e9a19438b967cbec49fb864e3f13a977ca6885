@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_da75c3b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2016-05-26T15:48:49Z",
+      "side": 1,
+      "message": "this dependency is missing the asterisk to indicate that it points at the internal gerrit (try CL:*260618)",
+      "revId": "c4e9a19438b967cbec49fb864e3f13a977ca6885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_9afbcb54",
         "filename": "board/cr50/board.h",
         "patchSetId": 1
