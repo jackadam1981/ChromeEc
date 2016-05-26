@@ -34,6 +34,24 @@
       "revId": "8d9495c8cc5b6d198178349c13c22ae550b3b7cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_d438f92c",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-05-26T06:55:33Z",
+      "side": 1,
+      "message": "In CL:346633, dhendrix has already make the change to the power good signal instead of a fix delay.\n\nFor this patch, I will put PMIC enable after the 1.5ms delay to ensure the PP3300_A is stable, but before the console debug print.",
+      "parentUuid": "5c0977ae_a39af1cb",
+      "revId": "8d9495c8cc5b6d198178349c13c22ae550b3b7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
