@@ -111,6 +111,9 @@ static struct pd_protocol {
 	uint8_t msg_id;
 	/* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
 	uint8_t polarity;
+	/* Whether port is suspended (we cannot keep this status in
+	 * task_state as it is set asynchronously). */
+	uint8_t suspended;
 	/* PD state for port */
 	enum pd_states task_state;
 	/* PD state when we run state handler the last time */
@@ -160,7 +163,7 @@ static struct pd_protocol {
 
 #ifdef CONFIG_COMMON_RUNTIME
 static const char * const pd_state_names[] = {
-	"DISABLED", "SUSPENDED",
+	"DISABLED",
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	"SNK_DISCONNECTED", "SNK_DISCONNECTED_DEBOUNCE",
 	"SNK_HARD_RESET_RECOVER",
@@ -1510,6 +1513,26 @@ void pd_task(void)
 		}
 #endif
 
+		if (pd[port].suspended) {
+			CPRINTF("[%T TCPC p%d suspended!]\n", port);
+#ifdef CONFIG_USB_PD_TCPC
+			pd_rx_disable_monitoring(port);
+			pd_hw_release(port);
+			pd_power_supply_reset(port);
+
+			/* Wait for resume */
+			while (pd[port].suspended)
+				task_wait_event(-1);
+
+			pd_hw_init(port, PD_ROLE_DEFAULT);
+#else
+			/* Wait for resume */
+			while (pd[port].suspended)
+				task_wait_event(-1);
+#endif
+			CPRINTF("[%T TCPC p%d resumed!]\n", port);
+		}
+
 		/* process any potential incoming message */
 		incoming_packet = evt & PD_EVENT_RX;
 		if (incoming_packet) {
@@ -1963,23 +1986,6 @@ void pd_task(void)
 						  PD_T_PS_SOURCE_ON,
 						  PD_STATE_SNK_DISCONNECTED);
 			}
-			break;
-		case PD_STATE_SUSPENDED:
-			/*
-			 * TODO: Suspend state only supported if we are also
-			 * the TCPC.
-			 */
-#ifdef CONFIG_USB_PD_TCPC
-			pd_rx_disable_monitoring(port);
-			pd_hw_release(port);
-			pd_power_supply_reset(port);
-
-			/* Wait for resume */
-			while (pd[port].task_state == PD_STATE_SUSPENDED)
-				task_wait_event(-1);
-
-			pd_hw_init(port, PD_ROLE_DEFAULT);
-#endif
 			break;
 		case PD_STATE_SNK_DISCONNECTED:
 #ifdef CONFIG_USB_PD_LOW_POWER
@@ -2667,7 +2673,10 @@ DECLARE_HOOK(HOOK_INIT, dual_role_init, HOOK_PRIO_DEFAULT);
 #ifdef CONFIG_COMMON_RUNTIME
 void pd_set_suspend(int port, int enable)
 {
-	set_state(port, enable ? PD_STATE_SUSPENDED : PD_DEFAULT_STATE);
+	if (!enable)
+		set_state(port, PD_DEFAULT_STATE);
+
+	pd[port].suspended = enable;
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
