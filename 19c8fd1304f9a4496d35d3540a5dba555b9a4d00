@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0977ae_896b8772",
+        "filename": "common/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2016-05-26T22:34:29Z",
+      "side": 1,
+      "message": "How about DIV_ROUND_NEAREST()?\n\nAnd maybe 65535 should be a macro in the command header, so we can use it nicely in the kernel too?\nSo:\n\n  percent \u003d DIV_ROUND_NEAREST(p-\u003eduty * 100, CROS_EC_PWM_MAX_DUTY);\n\nor something like that.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 12
+      },
+      "revId": "19c8fd1304f9a4496d35d3540a5dba555b9a4d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
