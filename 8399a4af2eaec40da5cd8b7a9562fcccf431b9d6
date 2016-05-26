@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0977ae_1a38fb8a",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-26T16:35:29Z",
+      "side": 1,
+      "message": "We only need to sleep in between enables, right? No need to sleep before enabling the first port or after enabling the last? I only suggest this change because 20ms is a long time.\n\nHow about:\n\n\t\tif (i !\u003d 0 \u0026\u0026 !usb_charge_is_enabled(i) \u0026\u0026\n\t\t    mode !\u003d USB_CHARGE_MODE_DISABLED)",
+      "range": {
+        "startLine": 121,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 14
+      },
+      "revId": "8399a4af2eaec40da5cd8b7a9562fcccf431b9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
