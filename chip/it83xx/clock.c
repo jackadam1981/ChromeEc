@@ -65,16 +65,110 @@ static void clock_module_disable(void)
 		CGC_OFFSET_USB), 0, 0);
 }
 
+struct clock_pll_t {
+	uint8_t freq;
+	uint8_t div_fnd;
+	uint8_t div_uart;
+	uint8_t div_usb;
+	uint8_t div_smb;
+	uint8_t div_sspi;
+	uint8_t div_ec;
+	uint8_t div_jtag;
+	uint8_t div_pwm;
+	uint8_t div_usbpd;
+};
+
+enum pll_freq_idx {
+	PLL_24_MHZ = 1,
+	PLL_48_MHZ = 2,
+	PLL_96_MHZ = 4,
+};
+
+const struct clock_pll_t clock_pll_ctrl[] = {
+	/*
+	 * Common clock frequency setting:
+	 * UART:  24MHz
+	 * SMB:   24MHz
+	 * EC:     8MHz
+	 * JTAG:  24MHz
+	 * USBPD:  8MHz
+	 * USB:   48MHz(no support if PLL=24MHz)
+	 * SSPI:  48MHz(24MHz if PLL=24MHz)
+	 */
+	/* PLL:24MHz, MCU:24MHz, Fnd: 24MHz */
+	[PLL_24_MHZ] = {2, 0, 0, 0, 0, 0, 2, 0, 0, 0x2},
+	/* PLL:48MHz, MCU:48MHz, Fnd: 24MHz */
+	[PLL_48_MHZ] = {4, 1, 1, 0, 1, 0, 2, 1, 0, 0x5},
+	/* PLL:96MHz, MCU:96MHz, Fnd: 32MHz */
+	[PLL_96_MHZ] = {7, 2, 3, 1, 3, 1, 4, 3, 1, 0xb},
+};
+
+/* NOTE: Never use this function at other place. */
+static void clock_set_pll(enum pll_freq_idx idx)
+{
+	uint8_t div_fnd = clock_pll_ctrl[idx].div_fnd;
+	uint8_t div_ec = clock_pll_ctrl[idx].div_ec;
+	uint8_t freq = clock_pll_ctrl[idx].freq;
+
+	/* USB and UART */
+	IT83XX_ECPM_SCDCR1 = (clock_pll_ctrl[idx].div_usb << 4) |
+				clock_pll_ctrl[idx].div_uart;
+	/* SSPI and SMB */
+	IT83XX_ECPM_SCDCR2 = (clock_pll_ctrl[idx].div_sspi << 4) |
+				clock_pll_ctrl[idx].div_smb;
+	/* USBPD and PWM */
+	IT83XX_ECPM_SCDCR4 = (clock_pll_ctrl[idx].div_usbpd << 4) |
+				clock_pll_ctrl[idx].div_pwm;
+
+	if (((IT83XX_ECPM_PLLFREQR & 0xf) != freq) ||
+		((IT83XX_ECPM_SCDCR0 & 0xf0) != (div_fnd << 4)) ||
+		((IT83XX_ECPM_SCDCR3 & 0xf) != div_ec)) {
+		uint8_t m5 = IT83XX_GPIO_GPCRM5;
+
+		IT83XX_GPIO_GPCRM5 = 0x80;
+		/* FND (e-flash) */
+		IT83XX_ECPM_SCDCR0 = (div_fnd << 4);
+		/* JTAG and EC */
+		IT83XX_ECPM_SCDCR3 =
+			(clock_pll_ctrl[idx].div_jtag << 4) | div_ec;
+		/*
+		 * Update PLL settings.
+		 * Writing data to this register doesn't change the
+		 * PLL frequency immediately until the status is changed
+		 * into wakeup from the sleep mode.
+		 * The following code is intended to make the system
+		 * enter sleep mode, and set up a HW timer to wakeup EC to
+		 * complete PLL update.
+		 */
+		IT83XX_ECPM_PLLFREQR = freq;
+		/* Enable hw timer to wakeup EC from the sleep mode */
+		ext_timer_ms(LOW_POWER_EXT_TIMER, EXT_PSR_32P768K_HZ,
+				1, 1, 5, 1, 0);
+		task_clear_pending_irq(et_ctrl_regs[LOW_POWER_EXT_TIMER].irq);
+		IT83XX_ECPM_PLLCTRL = EC_PLL_SLEEP;
+		asm volatile ("dsb");
+		/* Global interrupt enable */
+		asm volatile ("setgie.e");
+		/* To wait a interrupt and wakeup EC from the sleep mode */
+		asm("standby wake_grant");
+		/* Global interrupt disable */
+		asm volatile ("setgie.d");
+		IT83XX_ECPM_PLLCTRL = EC_PLL_DOZE;
+		IT83XX_GPIO_GPCRM5 = m5;
+	}
+}
+
 void clock_init(void)
 {
-#if PLL_CLOCK == 48000000
-	/* Set PLL frequency to 48MHz. */
-	IT83XX_ECPM_PLLFREQR = 0x04;
+#if (PLL_CLOCK == 24000000)     || \
+	(PLL_CLOCK == 48000000) || \
+	(PLL_CLOCK == 96000000)
+	/* Set PLL frequency */
+	clock_set_pll(PLL_CLOCK / 24000000);
 	freq = PLL_CLOCK;
 #else
-#error "Support only for PLL clock speed of 48MHz."
+#error "Support only for PLL clock speed of 24/48/96MHz."
 #endif
-
 	/*
 	 * The VCC power status is treated as power-on.
 	 * The VCC supply of LPC and related functions (EC2I,
@@ -213,7 +307,7 @@ void clock_sleep_mode_wakeup_isr(void)
 {
 	uint32_t st_us, c;
 
-	if (IT83XX_ECPM_PLLCTRL != EC_PLL_DOZE) {
+	if (IT83XX_ECPM_PLLCTRL == EC_PLL_DEEP_DOZE) {
 		clock_ec_pll_ctrl(EC_PLL_DOZE);
 
 		/* update free running timer */
