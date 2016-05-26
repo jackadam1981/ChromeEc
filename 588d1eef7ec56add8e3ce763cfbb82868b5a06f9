@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_69c05340",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-26T21:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c0977ae_a3d791d3",
+      "range": {
+        "startLine": 18,
+        "startChar": 36,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "588d1eef7ec56add8e3ce763cfbb82868b5a06f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_63e199a7",
         "filename": "/COMMIT_MSG",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_ce8bc5f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-26T21:47:10Z",
+      "side": 1,
+      "message": "\u0027ccd enable\u0027 changes the phy and enables the spi endpoint and cr50 console.",
+      "parentUuid": "5c0977ae_63e199a7",
+      "range": {
+        "startLine": 26,
+        "startChar": 41,
+        "endLine": 26,
+        "endChar": 59
+      },
+      "revId": "588d1eef7ec56add8e3ce763cfbb82868b5a06f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_63a63962",
         "filename": "common/case_closed_debug.c",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2016-05-26T00:40:04Z",
       "side": 1,
       "message": "sorry, if I don\u0027t fully understand this:\n\nisn\u0027t it needed to always run usb_init() in case (new_mode !\u003d CCD_MODE_DISABLE) is true, I mean be USB_SELECT_PHY defined or not?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "588d1eef7ec56add8e3ce763cfbb82868b5a06f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_ee0fa97b",
+        "filename": "common/case_closed_debug.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-26T21:47:10Z",
+      "side": 1,
+      "message": "I believe that devices using ccd on stm32 only use the usb peripheral to do CCD. When changing the ccd mode usb is released and not initialized so the endpoints dont show up when the device is connected to a computer even if they aren\u0027t usable.",
+      "parentUuid": "5c0977ae_63a63962",
       "range": {
         "startLine": 60,
         "startChar": 1,
