@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0977ae_a3d791d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-26T00:40:04Z",
+      "side": 1,
+      "message": "so, there was command \u0027uart [enable|disable]\u0027, now it becomes \u0027ccd uart [enable|disable]\u0027 - do I get it right?\n\nThis should be explicitly mentioned in the beginning of the patch description.",
+      "range": {
+        "startLine": 18,
+        "startChar": 36,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "588d1eef7ec56add8e3ce763cfbb82868b5a06f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_63e199a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-26T00:40:04Z",
+      "side": 1,
+      "message": "should this be \u0027ccd spi [enable|disable]\u0027 to be consistent?",
+      "range": {
+        "startLine": 26,
+        "startChar": 41,
+        "endLine": 26,
+        "endChar": 59
+      },
+      "revId": "588d1eef7ec56add8e3ce763cfbb82868b5a06f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_63a63962",
+        "filename": "common/case_closed_debug.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-26T00:40:04Z",
+      "side": 1,
+      "message": "sorry, if I don\u0027t fully understand this:\n\nisn\u0027t it needed to always run usb_init() in case (new_mode !\u003d CCD_MODE_DISABLE) is true, I mean be USB_SELECT_PHY defined or not?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "588d1eef7ec56add8e3ce763cfbb82868b5a06f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
