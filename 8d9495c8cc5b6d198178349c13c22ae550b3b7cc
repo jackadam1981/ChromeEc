@@ -16,6 +16,24 @@
       "revId": "8d9495c8cc5b6d198178349c13c22ae550b3b7cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_a39af1cb",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-05-26T01:01:43Z",
+      "side": 1,
+      "message": "PP3300_A needs come online with the PMIC. We\u0027re delaying that by 1.5 ms plus console timing. This is to avoid the gpio pads fluttering because VNN isn\u0027t on. We can\u0027t tightly control things, but we need them to be as close as possible in the sequencing.",
+      "parentUuid": "5c0977ae_d7a3660c",
+      "revId": "8d9495c8cc5b6d198178349c13c22ae550b3b7cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
