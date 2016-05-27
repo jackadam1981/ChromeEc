@@ -25,6 +25,47 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_7577fd25",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-27T17:38:17Z",
+      "side": 1,
+      "message": "Okay, I will add a TODO.",
+      "parentUuid": "5c0977ae_1a223041",
+      "range": {
+        "startLine": 327,
+        "startChar": 12,
+        "endLine": 327,
+        "endChar": 28
+      },
+      "revId": "ef4e6e2437b7c5240c98175e928dcac7a5021af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_f099bb82",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-27T17:38:17Z",
+      "side": 1,
+      "message": "This is behind #ifndef CONFIG_USB_PD_TCPM_VBUS, but we need for REEF otherwise we end up in losing power if we set VBUS to 0. I will add it for Reef also in the BC1.2 enabling patch",
+      "revId": "ef4e6e2437b7c5240c98175e928dcac7a5021af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_9a1620e5",
         "filename": "board/reef/board.c",
         "patchSetId": 4
@@ -36,6 +77,30 @@
       "writtenOn": "2016-05-27T16:28:26Z",
       "side": 1,
       "message": "Make this HOOK_PRIO_CHARGE_MANAGER_INIT + 1.",
+      "range": {
+        "startLine": 356,
+        "startChar": 42,
+        "endLine": 356,
+        "endChar": 71
+      },
+      "revId": "ef4e6e2437b7c5240c98175e928dcac7a5021af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_d09fd763",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-27T17:38:17Z",
+      "side": 1,
+      "message": "Okay",
+      "parentUuid": "5c0977ae_9a1620e5",
       "range": {
         "startLine": 356,
         "startChar": 42,
@@ -71,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_b09c6370",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-27T17:38:17Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "5c0977ae_5ad78838",
+      "range": {
+        "startLine": 117,
+        "startChar": 45,
+        "endLine": 117,
+        "endChar": 74
+      },
+      "revId": "ef4e6e2437b7c5240c98175e928dcac7a5021af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_da1c980a",
         "filename": "common/usb_charger.c",
         "patchSetId": 4
@@ -94,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_90a95f8b",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-27T17:38:17Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "5c0977ae_da1c980a",
+      "range": {
+        "startLine": 98,
+        "startChar": 42,
+        "endLine": 98,
+        "endChar": 71
+      },
+      "revId": "ef4e6e2437b7c5240c98175e928dcac7a5021af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_fae51c17",
         "filename": "include/hooks.h",
         "patchSetId": 4
@@ -105,6 +218,30 @@
       "writtenOn": "2016-05-27T16:28:26Z",
       "side": 1,
       "message": "Suggest to change this to \"Init charge manager before usage in board init\".",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "ef4e6e2437b7c5240c98175e928dcac7a5021af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_70a6ebb8",
+        "filename": "include/hooks.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-27T17:38:17Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "5c0977ae_fae51c17",
       "range": {
         "startLine": 42,
         "startChar": 4,
