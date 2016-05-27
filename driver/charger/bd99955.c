@@ -437,7 +437,7 @@ int charger_get_status(int *status)
 	}
 
 	/* source of power */
-	if (bd99955_extpower_is_present())
+	if (bd99955_is_vbus_provided(BD99955_CHARGE_PORT_BOTH))
 		*status |= CHARGER_AC_PRESENT;
 
 	return EC_SUCCESS;
@@ -578,7 +578,7 @@ int charger_discharge_on_ac(int enable)
 
 /*** Non-standard interface functions ***/
 
-int bd99955_extpower_is_present(void)
+int bd99955_is_vbus_provided(int port)
 {
 	int reg;
 
@@ -586,8 +586,16 @@ int bd99955_extpower_is_present(void)
 			  BD99955_EXTENDED_COMMAND))
 		return 0;
 
-	reg &= (BD99955_CMD_VBUS_VCC_STATUS_VCC_DETECT |
-		BD99955_CMD_VBUS_VCC_STATUS_VBUS_DETECT);
+	if (port == BD99955_CHARGE_PORT_VBUS)
+		reg &= BD99955_CMD_VBUS_VCC_STATUS_VBUS_DETECT;
+	else if (port == BD99955_CHARGE_PORT_VCC)
+		reg &= BD99955_CMD_VBUS_VCC_STATUS_VCC_DETECT;
+	else if (port == BD99955_CHARGE_PORT_BOTH)
+		reg &= (BD99955_CMD_VBUS_VCC_STATUS_VCC_DETECT |
+			BD99955_CMD_VBUS_VCC_STATUS_VBUS_DETECT);
+	else
+		reg = 0;
+
 	return !!reg;
 }
 
