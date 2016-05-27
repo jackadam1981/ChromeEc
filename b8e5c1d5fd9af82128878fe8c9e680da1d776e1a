@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c12bbd9_2cf83b56",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-05-27T08:04:52Z",
+      "side": 1,
+      "message": "This resets the chip on every warm reboot, can we avoid doing this? (and only reset on cold reboot?)",
+      "revId": "b8e5c1d5fd9af82128878fe8c9e680da1d776e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
