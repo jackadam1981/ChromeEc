@@ -164,6 +164,30 @@
       "revId": "588d1eef7ec56add8e3ce763cfbb82868b5a06f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_b4cd7e74",
+        "filename": "common/case_closed_debug.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-27T00:02:29Z",
+      "side": 1,
+      "message": "usb_init is called all the time when config_usb_select_phy is defined.\n\nwhen select phy is not defined, usb_init is called when ccd is not being disabled, so when it is being enabled either partially or fully.",
+      "parentUuid": "5c0977ae_a929ab8c",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "588d1eef7ec56add8e3ce763cfbb82868b5a06f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
