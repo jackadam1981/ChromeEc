@@ -561,38 +561,45 @@ def _prime_from_seed(seed):
 # TEST VECTORS.
 #
 _ENCRYPT_INPUTS = (
-  ('OAEP', 'SHA1', 768),
-  ('OAEP', 'SHA256', 768),
-  ('PKCS1-ES', 'NONE', 768),
+  ('OAEP', 'SHA1', 2048),
+  ('OAEP', 'SHA256', 2048),
+  ('PKCS1-ES', 'NONE', 1024),
   ('PKCS1-ES', 'NONE', 2048),
-  ('NULL', 'NONE', 768),
+  ('NULL', 'NONE', 2048),
 )
 
 
 _SIGN_INPUTS = (
-  ('PKCS1-SSA', 'SHA1', 768),
-  ('PKCS1-SSA', 'SHA256', 768),
-  ('PKCS1-PSS', 'SHA1', 768),
-  ('PKCS1-PSS', 'SHA256', 768),
+  ('PKCS1-SSA', 'SHA1', 2048),
+  ('PKCS1-SSA', 'SHA256', 1024),
+  ('PKCS1-SSA', 'SHA256', 2048),
+  ('PKCS1-PSS', 'SHA1', 2048),
+  ('PKCS1-PSS', 'SHA256', 2048),
 )
 
 _KEYTEST_INPUTS = (
-  (768,),
+  (1024,),
   (2048,),
 )
 
 _KEYGEN_INPUTS = (
-  (768, 65537, "rsa_test"),
-  (768, 65537, ''),
+  (1024, 65537, "rsa_test"),
+  (2048, 65537, "rsa_test"),
+  (2048, 65537, ''),
 )
 
 
 _PRIMEGEN_INPUTS = (
-  768,
-  768,
-  768,
-  768,
-  768
+  1024,
+  1024,
+  1024,
+  1024,
+  1024,
+  2048,
+  2048,
+  2048,
+  2048,
+  2048
 )
 
 def _encrypt_tests(tpm):
