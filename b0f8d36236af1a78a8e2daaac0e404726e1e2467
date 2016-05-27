@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "5cb8973d_d657b4f3",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-27T22:11:56Z",
+      "side": 1,
+      "message": "it should come from the implementation .h file",
+      "parentUuid": "9c84cfcd_dfc8d489",
+      "revId": "b0f8d36236af1a78a8e2daaac0e404726e1e2467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c84cfcd_df769429",
         "filename": "chip/g/build.mk",
         "patchSetId": 7
