@@ -55,6 +55,7 @@ void process_timers(int overflow)
 	timestamp_t next;
 	timestamp_t now;
 
+	interrupt_disable();
 	if (overflow)
 		clksrc_high++;
 
@@ -85,12 +86,15 @@ void process_timers(int overflow)
 			/* no deadline to set */
 			__hw_clock_event_clear();
 			next_deadline = 0xffffffff;
+			interrupt_enable();
 			return;
 		}
 
 		__hw_clock_event_set(next.le.lo);
 		next_deadline = next.le.lo;
 	} while (next.val <= get_time().val);
+
+	interrupt_enable();
 }
 
 #ifndef CONFIG_HW_SPECIFIC_UDELAY
