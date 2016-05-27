@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_01e64b23",
+        "filename": "common/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-27T03:01:13Z",
+      "side": 1,
+      "message": "Thanks. I wasn\u0027t aware this macro existed. I will change it.",
+      "parentUuid": "5c0977ae_c1f153a4",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 12
+      },
+      "revId": "19c8fd1304f9a4496d35d3540a5dba555b9a4d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_81a6bbb5",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "To clarify:  If any *released* system uses the current commands, including in factory test.\n\nIf this command is only used in pre-MP systems, and is not used in any MP release, then sure, you can simply modify it.  If that will impact current internal users (for example, by causing the backlight not to come on if the OS is replaced but not the firmware or vice-versa), I\u0027d suggest sending out a PSA so everyone knows to upgrade both.\n\nLooking at \u0027git blame\u0027, it looks like this went in ~2 weeks ago, so you\u0027re probably ok.",
       "parentUuid": "5c0977ae_814a3bb7",
+      "range": {
+        "startLine": 1222,
+        "startChar": 1,
+        "endLine": 1222,
+        "endChar": 50
+      },
+      "revId": "19c8fd1304f9a4496d35d3540a5dba555b9a4d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_e11c570a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-27T03:01:13Z",
+      "side": 1,
+      "message": "Yes, these commands were added explicitly for kevin / gru a few weeks ago. I\u0027m aware of the need to rev the command version when changing the I/O or behavior of a command, but I thought we could get away with a silent change here since surely nobody else but the gru / kevin team is using these commands (and we\u0027re not even using them outside of ectool yet - kernel / FW usage hasn\u0027t landed yet).",
+      "parentUuid": "5c0977ae_81e8fb1c",
       "range": {
         "startLine": 1222,
         "startChar": 1,
