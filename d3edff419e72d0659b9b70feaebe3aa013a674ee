@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_1516814a",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-27T17:10:46Z",
+      "side": 1,
+      "message": "Okay I will add comment.",
+      "parentUuid": "5c0977ae_f58bedf6",
+      "range": {
+        "startLine": 406,
+        "startChar": 33,
+        "endLine": 406,
+        "endChar": 57
+      },
+      "revId": "d3edff419e72d0659b9b70feaebe3aa013a674ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_3582a5de",
         "filename": "board/reef/usb_pd_policy.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-27T16:51:45Z",
       "side": 1,
       "message": "We should map the board port number to bd99955 VCC / VBUS, even if it happens to align for this board, because this code will get copied for other boards and people will spend a while trying to hunt down the bug. Eg, like we have in board.c:\n\n\tswitch (port) {\n\tcase 0:\n\t\tbd99955_port \u003d BD99955_CHARGE_PORT_VBUS;\n\t\tbreak;\n\tcase 1:\n\t\tbd99955_port \u003d BD99955_CHARGE_PORT_VCC;\n\t\tbreak;\n\tdefault:\n\t\tpanic(\"Invalid charge port\\n\");\n\t\tbreak;\n\t}\n\nWe can add a static compile-time mapping in a future CL to prevent duplication.",
+      "range": {
+        "startLine": 109,
+        "startChar": 33,
+        "endLine": 109,
+        "endChar": 37
+      },
+      "revId": "d3edff419e72d0659b9b70feaebe3aa013a674ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_551cf96b",
+        "filename": "board/reef/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-27T17:10:46Z",
+      "side": 1,
+      "message": "Okay I will add it",
+      "parentUuid": "5c0977ae_3582a5de",
       "range": {
         "startLine": 109,
         "startChar": 33,
