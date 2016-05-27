@@ -337,6 +337,32 @@ static void board_init(void)
 /* PP3300 needs to be enabled before TCPC init hooks */
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_FIRST);
 
+static void enable_sensor_i2c_bus(void)
+{
+	/*
+	 * Note: Before we change these pins, the load switch from the PMIC
+	 * must be enabled so that PP1800_SENSOR_U and PP1800_SENSOR_S are up.
+	 */
+	/* GPIO87 for EC_I2C_GYRO_SDA */
+	gpio_set_alternate_function(GPIO_PORT_8, 0x80, 1);
+	/* GPIO90 for EC_I2C_GYRO_SCL */
+	gpio_set_alternate_function(GPIO_PORT_9, 0x01, 1);
+	/* GPIO92-91 for EC_I2C_SENSOR_SDA/SCL */
+	gpio_set_alternate_function(GPIO_PORT_9, 0x06, 1);
+}
+
+static void board_chipset_resume(void)
+{
+	static int sensor_bus_enabled;
+
+	if (!sensor_bus_enabled) {
+		enable_sensor_i2c_bus();
+		sensor_bus_enabled = 1;
+	}
+}
+/* Pin config must happen before sensor tasks begin. */
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_FIRST);
+
 /**
  * Set active charge port -- only one port can be active at a time.
  *
