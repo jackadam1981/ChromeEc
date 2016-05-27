@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_10ac4f93",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-27T17:40:05Z",
+      "side": 1,
+      "message": "What you have here is fine. I\u0027m not convinced that the call needs to be behind CONFIG_USB_PD_TCPM_VBUS in usb_charger.c, but I need to check closer. The TODO above will be a reminder for me.",
+      "parentUuid": "5c0977ae_f099bb82",
+      "revId": "ef4e6e2437b7c5240c98175e928dcac7a5021af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_9a1620e5",
         "filename": "board/reef/board.c",
         "patchSetId": 4
