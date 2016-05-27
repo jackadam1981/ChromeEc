@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0977ae_c4cf2191",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-27T05:04:03Z",
+      "side": 1,
+      "message": "If we reset the VBUS current we lose the power in the beginning.",
+      "revId": "da5ecbbb78964589f4f44657776f2474c92404cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_04bd39e1",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-27T05:04:03Z",
+      "side": 1,
+      "message": "in https://chromium-review.googlesource.com/#/c/346633/ we change the charge HOOK_INIT priority so I made a separate function and added additional meaning to run it after Charge manager init is done",
+      "revId": "da5ecbbb78964589f4f44657776f2474c92404cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
