@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0977ae_1a223041",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-27T16:28:26Z",
+      "side": 1,
+      "message": "Let\u0027s add a TODO here, since this function is duplicated from usb_charger. We only duplicate it because the call to update_vbus_supplier in usb_charger.c is behind #ifndef CONFIG_USB_PD_TCPM_VBUS, right?",
+      "range": {
+        "startLine": 327,
+        "startChar": 12,
+        "endLine": 327,
+        "endChar": 28
+      },
+      "revId": "ef4e6e2437b7c5240c98175e928dcac7a5021af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_9a1620e5",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-27T16:28:26Z",
+      "side": 1,
+      "message": "Make this HOOK_PRIO_CHARGE_MANAGER_INIT + 1.",
+      "range": {
+        "startLine": 356,
+        "startChar": 42,
+        "endLine": 356,
+        "endChar": 71
+      },
+      "revId": "ef4e6e2437b7c5240c98175e928dcac7a5021af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_5ad78838",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-27T16:28:26Z",
+      "side": 1,
+      "message": "Since this is charge manager init, it should have priority HOOK_PRIO_CHARGE_MANAGER_INIT.",
+      "range": {
+        "startLine": 117,
+        "startChar": 45,
+        "endLine": 117,
+        "endChar": 74
+      },
+      "revId": "ef4e6e2437b7c5240c98175e928dcac7a5021af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_da1c980a",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-27T16:28:26Z",
+      "side": 1,
+      "message": "Make this HOOK_PRIO_CHARGE_MANAGER_INIT + 1.",
+      "range": {
+        "startLine": 98,
+        "startChar": 42,
+        "endLine": 98,
+        "endChar": 71
+      },
+      "revId": "ef4e6e2437b7c5240c98175e928dcac7a5021af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_fae51c17",
+        "filename": "include/hooks.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-27T16:28:26Z",
+      "side": 1,
+      "message": "Suggest to change this to \"Init charge manager before usage in board init\".",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "ef4e6e2437b7c5240c98175e928dcac7a5021af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
