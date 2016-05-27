@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5cb8973d_3080c809",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-27T20:35:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c0977ae_772145e6",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "07021dcb2ad864400cd7a1ea96883e7e33d6da0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_b727bdfc",
         "filename": "board/reef/gpio.inc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-27T06:02:09Z",
       "side": 1,
       "message": "PIN(D, 1)",
+      "range": {
+        "startLine": 54,
+        "startChar": 24,
+        "endLine": 54,
+        "endChar": 33
+      },
+      "revId": "07021dcb2ad864400cd7a1ea96883e7e33d6da0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cb8973d_107dc407",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-05-27T20:35:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c0977ae_b727bdfc",
       "range": {
         "startLine": 54,
         "startChar": 24,
