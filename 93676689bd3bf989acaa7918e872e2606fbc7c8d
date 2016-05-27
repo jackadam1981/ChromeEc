@@ -22,6 +22,30 @@
       "revId": "93676689bd3bf989acaa7918e872e2606fbc7c8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_14056a6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-27T00:02:29Z",
+      "side": 1,
+      "message": "Would it be better for it to be \u0027ccd [enable|disable] uart\u0027?",
+      "parentUuid": "5c0977ae_c9b61f95",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 36
+      },
+      "revId": "93676689bd3bf989acaa7918e872e2606fbc7c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
