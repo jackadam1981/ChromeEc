@@ -33,6 +33,24 @@
       "revId": "9eac176c34d55c69c350f008421ca9712ce44843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cb8973d_9639ace2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3369,
+      "author": {
+        "id": 1000316
+      },
+      "writtenOn": "2016-05-27T22:01:26Z",
+      "side": 1,
+      "message": "Yes, it gets reset.  Which should be fine.  EC software sync should take place first, then PD.  So by the time PD sync runs (or doesn\u0027t need to run) and the control is disabled, EC has already finished jumping.",
+      "parentUuid": "7c12bbd9_895839ef",
+      "revId": "9eac176c34d55c69c350f008421ca9712ce44843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
