@@ -8,6 +8,9 @@
 
 #include "common.h"
 
+/* */
+#define HOOK_PRIO_CHARGE_MANAGER_INIT (HOOK_PRIO_DEFAULT - 1)
+
 /* Charge port that indicates no active port */
 #define CHARGE_SUPPLIER_NONE -1
 #define CHARGE_PORT_NONE -1
