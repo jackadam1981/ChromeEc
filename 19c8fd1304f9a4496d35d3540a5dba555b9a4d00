@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_81e8fb1c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-27T02:23:03Z",
+      "side": 1,
+      "message": "To clarify:  If any *released* system uses the current commands, including in factory test.\n\nIf this command is only used in pre-MP systems, and is not used in any MP release, then sure, you can simply modify it.  If that will impact current internal users (for example, by causing the backlight not to come on if the OS is replaced but not the firmware or vice-versa), I\u0027d suggest sending out a PSA so everyone knows to upgrade both.\n\nLooking at \u0027git blame\u0027, it looks like this went in ~2 weeks ago, so you\u0027re probably ok.",
+      "parentUuid": "5c0977ae_814a3bb7",
+      "range": {
+        "startLine": 1222,
+        "startChar": 1,
+        "endLine": 1222,
+        "endChar": 50
+      },
+      "revId": "19c8fd1304f9a4496d35d3540a5dba555b9a4d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_21e38fe6",
         "filename": "util/ectool.c",
         "patchSetId": 1
