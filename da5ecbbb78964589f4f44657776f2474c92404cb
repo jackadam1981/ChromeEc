@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5c0977ae_c496015f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-27T05:10:29Z",
+      "side": 1,
+      "message": "The actual hook priority part of this change is basically identical to before, right? charge_manager init was prio (default-1) and the init function was at default.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "da5ecbbb78964589f4f44657776f2474c92404cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_c4cf2191",
         "filename": "board/reef/board.c",
         "patchSetId": 2
@@ -30,6 +53,29 @@
       "writtenOn": "2016-05-27T05:04:03Z",
       "side": 1,
       "message": "in https://chromium-review.googlesource.com/#/c/346633/ we change the charge HOOK_INIT priority so I made a separate function and added additional meaning to run it after Charge manager init is done",
+      "revId": "da5ecbbb78964589f4f44657776f2474c92404cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_048bf931",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-27T05:10:29Z",
+      "side": 1,
+      "message": "It\u0027s better to put this with the rest of the HOOK_INIT_* constants (hooks.h I think) with priority next in the list.",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 37
+      },
       "revId": "da5ecbbb78964589f4f44657776f2474c92404cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
