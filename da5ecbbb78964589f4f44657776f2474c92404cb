@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_37de2d25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-27T05:20:30Z",
+      "side": 1,
+      "message": "yes current, nothing changed but wanted add it to make it more clear for initializing board level charger sppliers",
+      "parentUuid": "5c0977ae_c496015f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "da5ecbbb78964589f4f44657776f2474c92404cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_c4cf2191",
         "filename": "board/reef/board.c",
         "patchSetId": 2
@@ -70,6 +94,30 @@
       "writtenOn": "2016-05-27T05:10:29Z",
       "side": 1,
       "message": "It\u0027s better to put this with the rest of the HOOK_INIT_* constants (hooks.h I think) with priority next in the list.",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "da5ecbbb78964589f4f44657776f2474c92404cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_57d9a13b",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-27T05:20:30Z",
+      "side": 1,
+      "message": "okay I will make it HOOK_PRIO_CHARGE_MANAGER_INIT \u003d HOOK_PRIO_FIRST + 11",
+      "parentUuid": "5c0977ae_048bf931",
       "range": {
         "startLine": 12,
         "startChar": 8,
