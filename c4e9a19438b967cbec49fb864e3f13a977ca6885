@@ -177,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "5cb8973d_7619a86e",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-27T22:07:21Z",
+      "side": 1,
+      "message": "the reader browsing the history of this file could not be able to access the co-dependant change.\n\nAll these questions which require looking at co-depend must be answered in the patch description.",
+      "parentUuid": "5cb8973d_73a6da61",
+      "revId": "c4e9a19438b967cbec49fb864e3f13a977ca6885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_1a823bde",
         "filename": "chip/g/dcrypto/bn.c",
         "patchSetId": 1
