@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5cb8973d_b3c20215",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-05-27T21:38:21Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "5c0977ae_9afbcb54",
+      "revId": "c4e9a19438b967cbec49fb864e3f13a977ca6885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_1ac8fb34",
         "filename": "board/cr50/build.mk",
         "patchSetId": 1
@@ -100,6 +118,24 @@
       "writtenOn": "2016-05-26T15:38:13Z",
       "side": 1,
       "message": "why is this necessary",
+      "revId": "c4e9a19438b967cbec49fb864e3f13a977ca6885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cb8973d_33d732d6",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-05-27T21:38:21Z",
+      "side": 1,
+      "message": "Added a comment.",
+      "parentUuid": "5c0977ae_1ac8fb34",
       "revId": "c4e9a19438b967cbec49fb864e3f13a977ca6885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -123,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "5cb8973d_73a6da61",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-05-27T21:38:21Z",
+      "side": 1,
+      "message": "Please refer to corresponding change under CQ-DEPEND.  That change requires this function.",
+      "parentUuid": "5c0977ae_facc074a",
+      "revId": "c4e9a19438b967cbec49fb864e3f13a977ca6885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_1a823bde",
         "filename": "chip/g/dcrypto/bn.c",
         "patchSetId": 1
@@ -134,6 +188,24 @@
       "writtenOn": "2016-05-26T15:38:13Z",
       "side": 1,
       "message": "remove white space change",
+      "revId": "c4e9a19438b967cbec49fb864e3f13a977ca6885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cb8973d_53a3d64f",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-05-27T21:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c0977ae_1a823bde",
       "revId": "c4e9a19438b967cbec49fb864e3f13a977ca6885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -157,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "5cb8973d_d37506ba",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-05-27T21:38:21Z",
+      "side": 1,
+      "message": "Please refer to change under CQ-DEPEND.  That change implements this function.",
+      "parentUuid": "5c0977ae_bad7afd3",
+      "revId": "c4e9a19438b967cbec49fb864e3f13a977ca6885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_1aefdb93",
         "filename": "chip/g/dcrypto/internal.h",
         "patchSetId": 1
@@ -168,6 +258,24 @@
       "writtenOn": "2016-05-26T15:38:13Z",
       "side": 1,
       "message": "why are these changes necessary, do they belong to this patch?",
+      "revId": "c4e9a19438b967cbec49fb864e3f13a977ca6885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cb8973d_13782eaf",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-05-27T21:38:21Z",
+      "side": 1,
+      "message": "As above.",
+      "parentUuid": "5c0977ae_1aefdb93",
       "revId": "c4e9a19438b967cbec49fb864e3f13a977ca6885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
