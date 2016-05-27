@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5c0977ae_814a3bb7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2016-05-27T01:04:29Z",
+      "side": 1,
+      "message": "Really? The whole point of this change (requested by me and Doug) was to get the API changed early, before there are real users, so we don\u0027t have do this sort of change later, and have 2 APIs for it.\n\nBut if you and Shawn agree, I won\u0027t get in the way.",
+      "parentUuid": "5c0977ae_81a6bbb5",
+      "range": {
+        "startLine": 1222,
+        "startChar": 1,
+        "endLine": 1222,
+        "endChar": 50
+      },
+      "revId": "19c8fd1304f9a4496d35d3540a5dba555b9a4d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_21e38fe6",
         "filename": "util/ectool.c",
         "patchSetId": 1
