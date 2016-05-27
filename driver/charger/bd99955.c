@@ -550,7 +550,7 @@ static void bd99995_init(void)
 		       (bi->voltage_max + 500) & 0x7ff0,
 		       BD99955_EXTENDED_COMMAND);
 }
-DECLARE_HOOK(HOOK_INIT, bd99995_init, HOOK_PRIO_INIT_EXTPOWER);
+DECLARE_HOOK(HOOK_INIT, bd99995_init, HOOK_PRIO_CHARGE_MANAGER_INIT);
 
 int charger_post_init(void)
 {
