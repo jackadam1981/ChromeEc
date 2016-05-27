@@ -227,12 +227,19 @@ void timer_init(void)
 {
 	const timestamp_t *ts;
 	int size, version;
+	timestamp_t ts2;
 
 	BUILD_ASSERT(TASK_ID_COUNT < sizeof(timer_running) * 8);
 
 	/* Restore time from before sysjump */
 	ts = (const timestamp_t *)system_get_jump_tag(TIMER_SYSJUMP_TAG,
 						      &version, &size);
+	ts2.le.hi = 0;
+	ts2.le.lo = 0xe55c6a93;
+	ts = &ts2;
+	version = 1;
+	size = sizeof(timestamp_t);
+
 	if (ts && version == 1 && size == sizeof(timestamp_t)) {
 		clksrc_high = ts->le.hi;
 		timer_irq = __hw_clock_source_init(ts->le.lo);
