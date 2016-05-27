@@ -335,6 +335,53 @@ static void board_init(void)
 /* PP3300 needs to be enabled before TCPC init hooks */
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_FIRST);
 
+/*
+ * Need to wait for load switch from PMIC to be enabled so that PP1800_SENSOR_U
+ * and PP1800_SENSOR_S are up. We can't read from the PMIC directly on this
+ * board, so instead wait for the pins (configured as GPIs) to read '1' on
+ * each bus to indicate that the PP1800 rails are up. Then set the pins to
+ * alternate function mode.
+ */
+#define EC_I2C_SENSOR_BUS_TRIES 5
+static void enable_sensor_i2c_bus(void)
+{
+	int tries = EC_I2C_SENSOR_BUS_TRIES;
+
+	/* FIXME(dhendrix): This loop probably isn't necessary. Remove it
+	 * if the warnings below never show up. */
+	while (tries) {
+		if (gpio_get_level(GPIO_EC_I2C_SENSOR_SCL) &&
+			gpio_get_level(GPIO_EC_I2C_SENSOR_SDA) &&
+			gpio_get_level(GPIO_EC_I2C_GYRO_SCL) &&
+			gpio_get_level(GPIO_EC_I2C_GYRO_SDA))
+			break;
+		msleep(1);
+		tries--;
+	}
+
+	if (!tries) {
+		CPRINTS("Warning: PP1800 did not come up at all.\n");
+		return;
+	} else if (tries != EC_I2C_SENSOR_BUS_TRIES) {
+		CPRINTS("Warning: PP1800 not coming up soon enough.\n");
+	}
+
+	/* GPIO87 for EC_I2C_GYRO_SDA */
+	gpio_set_alternate_function(GPIO_PORT_8, 0x80, 1);
+	/* GPIO90 for EC_I2C_GYRO_SCL */
+	gpio_set_alternate_function(GPIO_PORT_9, 0x01, 1);
+	/* GPIO92-91 for EC_I2C_SENSOR_SDA/SCL */
+	gpio_set_alternate_function(GPIO_PORT_9, 0x06, 1);
+}
+
+static void board_chipset_resume(void)
+{
+	enable_sensor_i2c_bus();
+	msleep(600);
+}
+/* Pin config must happen before sensor tasks begin. */
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_FIRST);
+
 /**
  * Set active charge port -- only one port can be active at a time.
  *
@@ -428,6 +475,17 @@ static void board_chipset_startup(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
+static void board_chipset_suspend(void)
+{
+	/* _S rails go low in S3 */
+	/* GPIO87 for EC_I2C_GYRO_SDA */
+	gpio_set_flags_by_mask(8, 0x80, GPIO_INPUT | GPIO_SEL_1P8V);
+	/* GPIO90 for EC_I2C_GYRO_SCL */
+	gpio_set_flags_by_mask(9, 0x01, GPIO_INPUT | GPIO_SEL_1P8V);
+
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
+
 /* Called on AP S3 -> S5 transition */
 static void board_chipset_shutdown(void)
 {
@@ -437,6 +495,10 @@ static void board_chipset_shutdown(void)
 	hook_call_deferred(&enable_input_devices_data, 0);
 	/* FIXME(dhendrix): Drive USB_PD_RST_ODL low to prevent
 	   leakage? (see comment in schematic) */
+
+	/* _U rails go low in S5 */
+	/* GPIO92-91 for EC_I2C_SENSOR_SDA/SCL */
+	gpio_set_flags_by_mask(9, 0x06, GPIO_INPUT | GPIO_SEL_1P8V);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
