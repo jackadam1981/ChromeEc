@@ -22,6 +22,99 @@
       "revId": "19c8fd1304f9a4496d35d3540a5dba555b9a4d00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_c1f153a4",
+        "filename": "common/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-27T00:58:09Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "5c0977ae_896b8772",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 12
+      },
+      "revId": "19c8fd1304f9a4496d35d3540a5dba555b9a4d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_81a6bbb5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-27T00:58:09Z",
+      "side": 1,
+      "message": "If any current system uses the current commands, we can\u0027t change them, or new ectool / cros_ec drivers will send incompatible messages.\n\nYou\u0027ll need to add a new version of the command which has a bigger duty cycle field.  See EC_CMD_SWITCH_ENABLE_WIRELESS for an example.",
+      "range": {
+        "startLine": 1222,
+        "startChar": 1,
+        "endLine": 1222,
+        "endChar": 50
+      },
+      "revId": "19c8fd1304f9a4496d35d3540a5dba555b9a4d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_21e38fe6",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1938,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-27T00:58:09Z",
+      "side": 1,
+      "message": "Then here, you\u0027ll need to check which versions of EC_CMD_GET_DUTY are supported by the EC.",
+      "range": {
+        "startLine": 1938,
+        "startChar": 1,
+        "endLine": 1938,
+        "endChar": 71
+      },
+      "revId": "19c8fd1304f9a4496d35d3540a5dba555b9a4d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0977ae_4105636b",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1954,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-05-27T00:58:09Z",
+      "side": 1,
+      "message": "This gets trickier, because we should probably support the default duty being percent.\n\nMaybe allow float:\n\nectool pwm_set_duty 0 95.3\n\nAnd/or have an option to set as 16-bit\n\nectool pwm_set_duty 0 16bit 62000\n\nIf the EC supports version 1 of the command, convert duty to 16-bit and send.  Else if it supports version 0, convert duty to percent and send.",
+      "range": {
+        "startLine": 1954,
+        "startChar": 19,
+        "endLine": 1954,
+        "endChar": 56
+      },
+      "revId": "19c8fd1304f9a4496d35d3540a5dba555b9a4d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
