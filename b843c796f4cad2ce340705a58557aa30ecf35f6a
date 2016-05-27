@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cb8973d_f05da06f",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-27T19:22:01Z",
+      "side": 1,
+      "message": "Let\u0027s not change this! The only dependency here should be that we need to call bd99995_init() before calling any routines in this driver, which should be already satisfied.",
+      "revId": "b843c796f4cad2ce340705a58557aa30ecf35f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
