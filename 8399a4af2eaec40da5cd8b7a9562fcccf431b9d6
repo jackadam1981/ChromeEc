@@ -22,6 +22,30 @@
       "revId": "8399a4af2eaec40da5cd8b7a9562fcccf431b9d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c12bbd9_8c996784",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1139964
+      },
+      "writtenOn": "2016-05-28T07:02:13Z",
+      "side": 1,
+      "message": "Yes. It can reduce 20ms delay time. Done and upload.",
+      "parentUuid": "5c0977ae_1a38fb8a",
+      "range": {
+        "startLine": 121,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 14
+      },
+      "revId": "8399a4af2eaec40da5cd8b7a9562fcccf431b9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
