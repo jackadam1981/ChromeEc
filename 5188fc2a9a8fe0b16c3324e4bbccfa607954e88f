@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cb8973d_ea62cb26",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-05-28T19:47:24Z",
+      "side": 1,
+      "message": "Comment style here:\n/*\n * ...\n */\n\nCan you clarify the TODO here? I\u0027m not sure I understand. Basically, we have no way of knowing that anti-collapse is bringing down the current limit? AFAIK, we don\u0027t check for anti-collapse state anywhere, right?",
+      "range": {
+        "startLine": 219,
+        "startChar": 2,
+        "endLine": 226,
+        "endChar": 5
+      },
+      "revId": "5188fc2a9a8fe0b16c3324e4bbccfa607954e88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
