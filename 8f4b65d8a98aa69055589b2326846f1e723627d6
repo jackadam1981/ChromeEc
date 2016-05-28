@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cb8973d_ffb1eb9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-28T01:43:22Z",
+      "side": 1,
+      "message": "It\u0027s preferable that we run every CL on some physical hardware, or give some indication how this change fixes a problem (or at least doesn\u0027t introduce one). The TEST line should tell what you did for that.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "8f4b65d8a98aa69055589b2326846f1e723627d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
