@@ -79,6 +79,7 @@ static int wake_up_needed;
 static int fifo_flush_needed;
 /* Number of element the AP should collect */
 static int fifo_queue_count;
+static int fifo_enabled;
 
 struct queue motion_sense_fifo = QUEUE_NULL(CONFIG_ACCEL_FIFO,
 		struct ec_response_motion_sensor_data);
@@ -804,11 +805,13 @@ void motion_sense_task(void)
 			mutex_unlock(&g_sensor_mutex);
 #ifdef CONFIG_MKBP_EVENT
 			/*
-			 * We don't currently support wake up sensor.
-			 * When we do, add per sensor test to know
-			 * when sending the event.
+			 * Send an event if we know we are in S0 and the kernel
+			 * driver is listening, or the AP needs to be waken up.
+			 * In the later case, the driver pull the event and
+			 * will resume listenning until it is suspended again.
 			 */
-			if (sensor_active == SENSOR_ACTIVE_S0 ||
+			if ((fifo_enabled &&
+			     sensor_active == SENSOR_ACTIVE_S0) ||
 			    wake_up_needed) {
 				mkbp_send_event(EC_MKBP_EVENT_SENSOR_FIFO);
 				wake_up_needed = 0;
@@ -1125,6 +1128,19 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		out->fifo_read.number_data = reported;
 		args->response_size = sizeof(out->fifo_read) + reported *
 			motion_sense_fifo.unit_bytes;
+		break;
+	case MOTIONSENSE_CMD_FIFO_ENABLE:
+		switch (in->fifo_enable.enable) {
+		case 0:
+		case 1:
+			fifo_enabled = in->fifo_enable.enable;
+		case EC_MOTION_SENSE_NO_VALUE:
+			out->fifo_enable.ret = fifo_enabled;
+			args->response_size = sizeof(out->fifo_enable);
+			break;
+		default:
+			return EC_RES_INVALID_PARAM;
+		}
 		break;
 #else
 	case MOTIONSENSE_CMD_FIFO_INFO:

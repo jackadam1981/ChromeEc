@@ -1756,6 +1756,12 @@ enum motionsense_command {
 	 */
 	MOTIONSENSE_CMD_LID_ANGLE = 14,
 
+	/*
+	 * Allow the FIFO to trigger interrupt.
+	 * By defaul the FIFO does not send interrupt.
+	 */
+	MOTIONSENSE_CMD_FIFO_ENABLE = 15,
+
 	/* Number of motionsense sub-commands. */
 	MOTIONSENSE_NUM_CMDS
 };
@@ -1964,6 +1970,12 @@ struct ec_params_motion_sense {
 		/* Used for MOTIONSENSE_CMD_LID_ANGLE */
 		struct {
 		} lid_angle;
+
+		/* Used for MOTIONSENSE_CMD_FIFO_ENABLE */
+		struct {
+			/* 1: enable, 0 disable fifo, -1 return value */
+			int8_t enable;
+		} fifo_enable;
 	};
 } __packed;
 
@@ -2001,13 +2013,14 @@ struct ec_response_motion_sense {
 
 		/*
 		 * Used for MOTIONSENSE_CMD_EC_RATE, MOTIONSENSE_CMD_SENSOR_ODR,
-		 * MOTIONSENSE_CMD_SENSOR_RANGE, and
-		 * MOTIONSENSE_CMD_KB_WAKE_ANGLE.
+		 * MOTIONSENSE_CMD_SENSOR_RANGE,
+		 * MOTIONSENSE_CMD_KB_WAKE_ANGLE and
+		 * MOTIONSENSE_CMD_FIFO_ENABLE.
 		 */
 		struct {
 			/* Current value of the parameter queried. */
 			int32_t ret;
-		} ec_rate, sensor_odr, sensor_range, kb_wake_angle;
+		} ec_rate, sensor_odr, sensor_range, kb_wake_angle, fifo_enable;
 
 		/* Used for MOTIONSENSE_CMD_SENSOR_OFFSET */
 		struct {
