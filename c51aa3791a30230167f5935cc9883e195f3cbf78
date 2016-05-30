@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c68fb9e_997c7bda",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-05-30T02:50:45Z",
+      "side": 1,
+      "message": "Why do we need this? anx7688_hpd_disable() is already called by svdm_exit_dp_mode() (in usb_pd_policy.c) when dongle is unplugged.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 1
+      },
+      "revId": "c51aa3791a30230167f5935cc9883e195f3cbf78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c68fb9e_b9813fdb",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-05-30T02:50:45Z",
+      "side": 1,
+      "message": "you can do this in line 228",
+      "range": {
+        "startLine": 245,
+        "startChar": 10,
+        "endLine": 245,
+        "endChar": 41
+      },
+      "revId": "c51aa3791a30230167f5935cc9883e195f3cbf78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
