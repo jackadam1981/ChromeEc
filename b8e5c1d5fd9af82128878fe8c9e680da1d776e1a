@@ -16,6 +16,24 @@
       "revId": "b8e5c1d5fd9af82128878fe8c9e680da1d776e1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c68fb9e_99639b2e",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-05-30T02:56:16Z",
+      "side": 1,
+      "message": "hmm...because this is a \"reset\" function. Maybe we should create another \"board_turn_on_pd_mcu()\" and call it here, and this new function can skip power off the chip if the chip is already on. The board_reset_pd_mcu() will still be there so you can use it at the last step of FW upgrade. Is it OK?",
+      "parentUuid": "7c12bbd9_2cf83b56",
+      "revId": "b8e5c1d5fd9af82128878fe8c9e680da1d776e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
