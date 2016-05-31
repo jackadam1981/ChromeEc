@@ -16,6 +16,26 @@
 #include "registers.h"
 #include "util.h"
 
+/*
+ *  * ----------------- The LEDs behavior of umaro -----------------
+ *  * Power status | the behavior of AC and Battery    |   red amber green
+ *  * Power On     | Adapter in, no battery            |   red
+ *  *              | Adapter in，battery charging      |   amber
+ *  *              | Adapter in，battery full charge   |   green
+ *  *              | Only battery，capacity above 5%   |   green
+ *  *              | Only battery，capacity below 5%   |   amber blink
+ *  * Power Off    | Adapter in, no battery            |   red
+ *  *              | Adapter in，battery charging      |   amber
+ *  *              | Adapter in，battery full charge   |   green
+ *  *              | Only battery，capacity above 5%   |   off
+ *  *              | Only battery，capacity below 5%   |   off
+ *  * Suspend      | Adapter in, no battery            |   red
+ *  *              | Adapter in，battery charging      |   amber
+ *  *              | Adapter in，battery full chargee  |   green
+ *  *              | Only battery，capacity above 5%   |   amber blink
+ *  *              | Only battery，capacity below 5%   |   amber blink
+ *  */
+
 #define CPRINTF(format, args...) cprintf(CC_PWM, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_PWM, format, ## args)
 
@@ -40,10 +60,10 @@ enum led_color {
 
 /* Brightness vs. color, in the order of off, red, amber, and green */
 static const uint8_t color_brightness[LED_COLOR_COUNT][3] = {
-	/* {Red, Blue, Green}, */
+	/* {Red, Amber, Green}, */
 	[LED_OFF]   = {  0,   0,   0},
 	[LED_RED]   = {100,   0,   0},
-	[LED_AMBER] = { 75,   0,  10},
+	[LED_AMBER] = {  0, 100,   0},
 	[LED_GREEN] = {  0,   0, 100},
 };
 
@@ -54,22 +74,22 @@ static const uint8_t color_brightness[LED_COLOR_COUNT][3] = {
  */
 static void set_color(enum led_color color)
 {
-	pwm_set_duty(PWM_CH_LED_RED, color_brightness[color][0]);
-	pwm_set_duty(PWM_CH_LED_BLUE, color_brightness[color][1]);
+	pwm_set_duty(PWM_CH_LED_RED,   color_brightness[color][0]);
+	pwm_set_duty(PWM_CH_LED_AMBER, color_brightness[color][1]);
 	pwm_set_duty(PWM_CH_LED_GREEN, color_brightness[color][2]);
 }
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
 	brightness_range[EC_LED_COLOR_RED] = 100;
-	brightness_range[EC_LED_COLOR_BLUE] = 100;
+	brightness_range[EC_LED_COLOR_YELLOW] = 100;
 	brightness_range[EC_LED_COLOR_GREEN] = 100;
 }
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
 	pwm_set_duty(PWM_CH_LED_RED, brightness[EC_LED_COLOR_RED]);
-	pwm_set_duty(PWM_CH_LED_BLUE, brightness[EC_LED_COLOR_BLUE]);
+	pwm_set_duty(PWM_CH_LED_AMBER, brightness[EC_LED_COLOR_YELLOW]);
 	pwm_set_duty(PWM_CH_LED_GREEN, brightness[EC_LED_COLOR_GREEN]);
 	return EC_SUCCESS;
 }
@@ -100,8 +120,14 @@ static void umaro_led_set_power(void)
 
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		set_color(LED_OFF);
-	else if (chipset_in_state(CHIPSET_STATE_ON))
-		set_color(LED_GREEN);
+	else if (chipset_in_state(CHIPSET_STATE_ON)) {
+			if (charge_get_percent() < 5)
+				set_color(
+					(power_ticks % LED_TOTAL_TICKS) < LED_ON_TICKS ?
+					LED_AMBER : LED_OFF);
+			else
+				set_color(LED_GREEN);
+		}
 }
 
 static void umaro_led_set_battery(void)
@@ -138,7 +164,7 @@ static void led_init(void)
 	 */
 	pwm_enable(PWM_CH_LED_RED, 1);
 	pwm_enable(PWM_CH_LED_GREEN, 1);
-	pwm_enable(PWM_CH_LED_BLUE, 1);
+	pwm_enable(PWM_CH_LED_AMBER, 1);
 
 	set_color(LED_OFF);
 }
