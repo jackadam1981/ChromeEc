@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9cf3946_ccd58fce",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-05-31T22:43:48Z",
+      "side": 1,
+      "message": "Flashing the AP only works if the jittery clock is centered around 24MHz.\n\nKoon is checking if the USB or SPI peripherals are affected by the jittery clock.\n\nCan I change the jittery_clock value from 1 to 0? It is lower security.",
+      "range": {
+        "startLine": 131,
+        "startChar": 20,
+        "endLine": 131,
+        "endChar": 21
+      },
+      "revId": "d17640d966e3cd2a93bd8761fbaf39a9320f6e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
