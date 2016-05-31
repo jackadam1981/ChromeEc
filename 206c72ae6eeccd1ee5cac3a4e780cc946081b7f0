@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "598ee9f0_00d346e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-31T16:50:57Z",
+      "side": 1,
+      "message": "For public EC changes, we like to see a reason for the change, a bug report if applicable, and some indication of testing even if it\u0027s just \"make buildall; tried on $BOARD\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "206c72ae6eeccd1ee5cac3a4e780cc946081b7f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
