@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "598ee9f0_e02ae2c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-31T16:46:09Z",
+      "side": 1,
+      "message": "No, that was an FPGA bug that needs to be merged into the general intrusion detection stuff. This should be\n\nBUG\u003db:28007148",
+      "parentUuid": "5cb8973d_1ae31ae6",
+      "revId": "ee157db782e198db375229bc66a48afb5bbc3bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cb8973d_fae736ed",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
