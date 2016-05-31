@@ -22,6 +22,30 @@
       "revId": "d17640d966e3cd2a93bd8761fbaf39a9320f6e61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9cf3946_6cffbb0c",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-05-31T23:00:13Z",
+      "side": 1,
+      "message": "If this is a hardware problem, we need to file a bug once we know the extent and possible workaround.\n\nIf you can update the AP only when the jittery clock is disabled, then AP update may be something that should be gated by the WP assertion (http://crosbug.com/p/49959).\n\nIf you need to disable it only temporarily until the fix is available, that\u0027s fine, but file a bug for that too.",
+      "parentUuid": "d9cf3946_ccd58fce",
+      "range": {
+        "startLine": 131,
+        "startChar": 20,
+        "endLine": 131,
+        "endChar": 21
+      },
+      "revId": "d17640d966e3cd2a93bd8761fbaf39a9320f6e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
