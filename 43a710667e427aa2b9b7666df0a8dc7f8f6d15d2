@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c68fb9e_3ca99d32",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-05-31T07:30:10Z",
+      "side": 1,
+      "message": "Hello lehai deng,\nAfter I ran repo sync to sync source code, building an EC binary(board:Setzer) had an error as show \"common/usb_port_power_smart.c:57:12: error: ‘usb_charge_is_enabled’ defined but not used [-Werror\u003dunused-function]\".",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 45
+      },
+      "revId": "43a710667e427aa2b9b7666df0a8dc7f8f6d15d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
