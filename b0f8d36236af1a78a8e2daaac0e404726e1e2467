@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "d9cf3946_6cf1fb0e",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-05-31T23:07:19Z",
+      "side": 1,
+      "message": "Turns out that USER_MIN_HASH_STATE_SIZE is defined in this build environment.  Using here.",
+      "parentUuid": "5cb8973d_5916573e",
+      "revId": "b0f8d36236af1a78a8e2daaac0e404726e1e2467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c84cfcd_df769429",
         "filename": "chip/g/build.mk",
         "patchSetId": 7
