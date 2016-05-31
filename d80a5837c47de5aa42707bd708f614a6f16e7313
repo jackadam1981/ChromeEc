@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "598ee9f0_e3e98cf2",
+        "filename": "common/nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-05-31T19:24:17Z",
+      "side": 1,
+      "message": "is this function ever called by anyone but test? I don\u0027t see it...",
+      "revId": "d80a5837c47de5aa42707bd708f614a6f16e7313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
