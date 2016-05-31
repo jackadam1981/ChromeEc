@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "598ee9f0_260a22c5",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-31T20:40:51Z",
+      "side": 1,
+      "message": "okay I will change it to kb_enable \u003d tp_enable \u003d 0",
+      "parentUuid": "598ee9f0_665b4aed",
+      "range": {
+        "startLine": 452,
+        "startChar": 2,
+        "endLine": 452,
+        "endChar": 15
+      },
+      "revId": "41da6331af96792c45f761a73b51259ded20780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "598ee9f0_06435e07",
         "filename": "board/reef/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-31T20:37:38Z",
       "side": 1,
       "message": "no need for the parens around tp_enable",
+      "range": {
+        "startLine": 456,
+        "startChar": 45,
+        "endLine": 456,
+        "endChar": 56
+      },
+      "revId": "41da6331af96792c45f761a73b51259ded20780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "598ee9f0_06f11eeb",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-31T20:40:51Z",
+      "side": 1,
+      "message": "okay I will remove parens",
+      "parentUuid": "598ee9f0_06435e07",
       "range": {
         "startLine": 456,
         "startChar": 45,
