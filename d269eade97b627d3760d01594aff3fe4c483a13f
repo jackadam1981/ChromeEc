@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7c68fb9e_fc5805f0",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-05-31T15:01:53Z",
+      "side": 1,
+      "message": "Done, Actuaally I\u0027m using \"git push\", I remember \"repo upload\" was never success. assume our complicate network. I will try and get a way to do pre-submit manually.",
+      "parentUuid": "5c0977ae_b59c5570",
+      "range": {
+        "startLine": 76,
+        "startChar": 20,
+        "endLine": 76,
+        "endChar": 22
+      },
+      "revId": "d269eade97b627d3760d01594aff3fe4c483a13f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_75a6ddb8",
         "filename": "driver/accel_bma2x2.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-27T16:39:50Z",
       "side": 1,
       "message": "Change this to \"int tries \u003d 0\" - tries is more descriptive, and the variable doesn\u0027t need to be specific bit length. And you can remove the \" \u003d 0\" assignment below.",
+      "range": {
+        "startLine": 269,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 17
+      },
+      "revId": "d269eade97b627d3760d01594aff3fe4c483a13f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c68fb9e_1c6e9983",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-05-31T15:01:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c0977ae_75a6ddb8",
       "range": {
         "startLine": 269,
         "startChar": 1,
