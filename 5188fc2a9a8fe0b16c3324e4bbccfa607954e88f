@@ -22,6 +22,30 @@
       "revId": "5188fc2a9a8fe0b16c3324e4bbccfa607954e88f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cb8973d_579a9bce",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-05-31T14:01:31Z",
+      "side": 1,
+      "message": "Okay I will change the comment style.\n\nYes we don\u0027t have a way to find out anti-collapse for BC1.2 chargers (weak or slow chargers).\n\nYes we don\u0027t check anti-collapse status anywhere.\n\nI have a plan to create another CL: For non-BC1.2 compliant chargers we can set current limit as 2.4A (2.4A apple charger).\nAfter setting the IBUS_LIM_SET \u0026 ICC_LIM_SET (at board level set event for USB charger task) we can check for the CUR_ILIM_VAL. \nIF CUR_ILIM_VAL has dropped by 1/2 or 1/4 or to 128mA (configurable in CHGOP_SET2) we can consider it as anti-collapse.\nWe can keep lowering the IBUS_LIM_SET \u0026 ICC_LIM_SET (2A, 1.5A, 1A, 500mA) until we get same CUR_ILIM_VAL and then update the charge manger with new values.",
+      "parentUuid": "5cb8973d_ea62cb26",
+      "range": {
+        "startLine": 219,
+        "startChar": 2,
+        "endLine": 226,
+        "endChar": 5
+      },
+      "revId": "5188fc2a9a8fe0b16c3324e4bbccfa607954e88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
