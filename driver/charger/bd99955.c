@@ -605,6 +605,14 @@ int bd99955_select_input_port(enum bd99955_charge_port port)
 	int rv;
 	int reg;
 
+	/*
+	 * If EC is alive so that this function called without(or broken?) battery,
+	 * this port might be the only power source. so if we disable both VCC/VBUS
+	 * Then it should cut off EC's own power. Prevent it when ac only mode
+	 */
+	if(battery_is_present() == BP_NO && port == BD99955_CHARGE_PORT_NONE)
+		return EC_SUCCESS;
+
 	rv = ch_raw_read16(BD99955_CMD_VIN_CTRL_SET, &reg,
 			   BD99955_EXTENDED_COMMAND);
 	if (rv)
