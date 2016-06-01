@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "593a69f7_e02d627c",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-01T08:15:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c0be362_af6179f3",
+      "revId": "24042c1ecb734cccd7bcf9e041bd656d52e8b594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c84cfcd_58ce1acb",
         "filename": "driver/tcpm/anx7688.c",
         "patchSetId": 14
@@ -53,6 +71,30 @@
       "writtenOn": "2016-05-24T15:21:25Z",
       "side": 1,
       "message": "Please add HOOK_PRIO_INIT_TCPC (\u003d HOOK_PRIO_FIRST + 11) in include/hooks.h and use it here.",
+      "range": {
+        "startLine": 180,
+        "startChar": 45,
+        "endLine": 180,
+        "endChar": 62
+      },
+      "revId": "24042c1ecb734cccd7bcf9e041bd656d52e8b594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "593a69f7_40488e55",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-01T08:15:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c84cfcd_58ce1acb",
       "range": {
         "startLine": 180,
         "startChar": 45,
