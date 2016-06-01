@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c12bbd9_c91ab1c0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2148,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-01T08:15:40Z",
+      "side": 1,
+      "message": "Move this section to another CL in a #ifdef CONFIG_USB_PD_TCPM_TCPCI. We need this only when using TCPCI port controller.",
+      "range": {
+        "startLine": 2140,
+        "startChar": 0,
+        "endLine": 2148,
+        "endChar": 33
+      },
+      "revId": "910408539243f60b3b342b8de6af3e5c63acfb2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
