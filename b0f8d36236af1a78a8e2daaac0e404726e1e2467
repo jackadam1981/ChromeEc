@@ -126,6 +126,29 @@
     },
     {
       "key": {
+        "uuid": "d9cf3946_0c52b707",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-06-01T01:14:03Z",
+      "side": 1,
+      "message": "USER_MIN_HASH_STATE_SIZE",
+      "range": {
+        "startLine": 46,
+        "startChar": 40,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "b0f8d36236af1a78a8e2daaac0e404726e1e2467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c84cfcd_df769429",
         "filename": "chip/g/build.mk",
         "patchSetId": 7
