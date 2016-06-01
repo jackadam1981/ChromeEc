@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "593a69f7_20058ab6",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-06-01T15:01:30Z",
+      "side": 1,
+      "message": "ACtually we need CONFIG_BATTERY_PRESENT_GPIO to use here, maybe board level blocking we need? or any other condition like this one?",
+      "range": {
+        "startLine": 613,
+        "startChar": 4,
+        "endLine": 613,
+        "endChar": 24
+      },
+      "revId": "0b19b4e88cfc10063bcb0d580d8a38892759f179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
