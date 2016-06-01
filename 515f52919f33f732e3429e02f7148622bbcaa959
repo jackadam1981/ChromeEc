@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7c68fb9e_79a32750",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-06-01T01:18:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c0977ae_35bd0574",
+      "range": {
+        "startLine": 819,
+        "startChar": 2,
+        "endLine": 819,
+        "endChar": 20
+      },
+      "revId": "515f52919f33f732e3429e02f7148622bbcaa959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c0977ae_5591990a",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 3
