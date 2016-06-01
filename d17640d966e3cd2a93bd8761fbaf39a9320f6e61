@@ -46,6 +46,30 @@
       "revId": "d17640d966e3cd2a93bd8761fbaf39a9320f6e61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d94d79b0_e291e2ae",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-06-01T17:27:12Z",
+      "side": 1,
+      "message": "Koon is looking into the USB issues, and I opened a bug for the temporary change.",
+      "parentUuid": "d9cf3946_6cffbb0c",
+      "range": {
+        "startLine": 131,
+        "startChar": 20,
+        "endLine": 131,
+        "endChar": 21
+      },
+      "revId": "d17640d966e3cd2a93bd8761fbaf39a9320f6e61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
