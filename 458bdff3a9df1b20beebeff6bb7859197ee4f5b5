@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "593a69f7_8004560a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1981,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-01T08:01:38Z",
+      "side": 1,
+      "message": "if (pd_comm_enabled)\n        tcpm_set_rx_enable(port, 0);\n\n/* Wait for resume */\nwhile (pd[port].task_state \u003d\u003d PD_STATE_SUSPENDED)\n        task_wait_event(-1);\n\nif (pd_comm_enabled)\n        tcpm_set_rx_enable(port, 1);",
+      "range": {
+        "startLine": 1979,
+        "startChar": 0,
+        "endLine": 1981,
+        "endChar": 24
+      },
+      "revId": "458bdff3a9df1b20beebeff6bb7859197ee4f5b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
