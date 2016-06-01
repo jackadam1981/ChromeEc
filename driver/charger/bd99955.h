@@ -29,7 +29,7 @@ enum bd99955_charge_port {
 /* Charger parameters */
 #define CHARGER_NAME	"bd99955"
 #define CHARGE_V_MAX	19200
-#define CHARGE_V_MIN	3072
+#define CHARGE_V_MIN	6140
 #define CHARGE_V_STEP	16
 #define CHARGE_I_MAX	16320
 #define CHARGE_I_MIN	64
