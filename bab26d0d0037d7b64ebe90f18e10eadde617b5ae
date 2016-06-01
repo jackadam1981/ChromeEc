@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d94d79b0_7c5579b6",
+        "filename": "driver/charger/bd99955.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-01T16:28:39Z",
+      "side": 1,
+      "message": "This represents the minimum charge voltage that the charger is able to provide and was correct before, based on the datasheet. See board/kevin/battery.c for the parameters that are relevant to your battery.",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "bab26d0d0037d7b64ebe90f18e10eadde617b5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
