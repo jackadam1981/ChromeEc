@@ -22,6 +22,30 @@
       "revId": "6e170014c6f30ee9a786b53d1e26048280f6e110",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "595429e4_e485c2e5",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-06-02T23:02:55Z",
+      "side": 1,
+      "message": "If we skip BC1.2 charge enable, device loses power as PD task tries to negotiates and does hard reset. If we have already updated charger as BC1.2, hard reset on PD is a don\u0027t care for charger as charging is triggered by BC1.2. This issue is easily reproducible with DCP charger.\n\nIf we don\u0027t have this code, PD considers chargers as VBUS type and limits charger current to 500mA only (need to insert BC1.2 charger after Clearing IADP enable bit).",
+      "parentUuid": "595429e4_19ccef74",
+      "range": {
+        "startLine": 377,
+        "startChar": 5,
+        "endLine": 377,
+        "endChar": 33
+      },
+      "revId": "6e170014c6f30ee9a786b53d1e26048280f6e110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
