@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "799bad8d_50a77a5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-02T16:12:44Z",
+      "side": 1,
+      "message": "Can you do a quick boot test on a strago platform, if you have one available?",
+      "revId": "2f419354253bfb275d3f8b38050276d96de5a5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "799bad8d_90ad0240",
+        "filename": "board/kefka/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-02T16:12:44Z",
+      "side": 1,
+      "message": "We can remove these.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "2f419354253bfb275d3f8b38050276d96de5a5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
