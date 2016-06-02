@@ -16,6 +16,24 @@
       "revId": "e629578f839c5a19d99b4c33dad002f33853bc61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "799bad8d_f027aea0",
+        "filename": "board/amenia/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-02T16:39:15Z",
+      "side": 1,
+      "message": "Done. Even though we do have VBUS detect GPIOs, I suggest to eventually have a common implementation between amenia + reef, and that means using the charger for VBUS detection (since reef doesn\u0027t have these GPIOs).",
+      "parentUuid": "799bad8d_01faca1c",
+      "revId": "e629578f839c5a19d99b4c33dad002f33853bc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
