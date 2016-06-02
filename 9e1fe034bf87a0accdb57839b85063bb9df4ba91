@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "595429e4_d9cb472f",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-02T22:47:25Z",
+      "side": 1,
+      "message": "usb_charger_vbus_change() is our non-static routine. Is it not appropriate for your use? If so, we need to rethink this, because update_vbus_supplier() and usb_charger_vbus_change() are quite similar, and the differences aren\u0027t obvious from function names.\n\n.. and I think I see why you\u0027re calling this routine -- if you call usb_charger_vbus_change() from your deferred routine, you\u0027ll immediately wake the USB charger task and get preempted.",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 25
+      },
+      "revId": "9e1fe034bf87a0accdb57839b85063bb9df4ba91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "595429e4_b9da035e",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-02T22:47:25Z",
+      "side": 1,
+      "message": "This is getting messy with the deferred routine. I realize why they are needed -- we can\u0027t distinguish between VCC and VBUS interrupt from the ISR.\n\nHow about these alternatives?\n\n- We wake the charger (not usb_charger) task from the ISR. Then, from some callback (maybe from extpower_is_present()), we check the VBUS / VCC status, and wake the appropriate USB_CHARGER task.\n\nor\n\n- We have a single usb_charger task only (not one per port). When woken, it checks the interrupt status register and does detection on the changed ports. I think it\u0027s the best overall solution. One drawback is that detection may be delayed in some corner cases where ports are attached at the same time (since the task may be delaying for detection of port A, and not doing detection of port B).\n\nWhat do you think?",
+      "range": {
+        "startLine": 768,
+        "startChar": 5,
+        "endLine": 768,
+        "endChar": 40
+      },
+      "revId": "9e1fe034bf87a0accdb57839b85063bb9df4ba91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
