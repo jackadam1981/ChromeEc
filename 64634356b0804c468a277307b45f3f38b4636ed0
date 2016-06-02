@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "595429e4_530bb61c",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-06-02T21:13:03Z",
+      "side": 1,
+      "message": "Also upped this to 10ms when enabling TCPC power as per https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d53673",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 10
+      },
+      "revId": "64634356b0804c468a277307b45f3f38b4636ed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c2177e1_520181a8",
         "filename": "board/reef/board.c",
         "patchSetId": 2
