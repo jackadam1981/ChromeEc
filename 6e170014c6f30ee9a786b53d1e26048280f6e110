@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "595429e4_19ccef74",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-02T22:05:50Z",
+      "side": 1,
+      "message": "I should have brought this up in the BC1.2 patch review -- in your testing, is it really necessary to enable these TRIG registers? What will happen if we skip this function call entirely and just set the current limit to whatever we decide based on BC1.2 detection?\n\nConsider how this works without your patch series when we insert a USB-C charger. We don\u0027t do BC1.2 detection yet, but if we did, we wouldn\u0027t care about the result. We\u0027d just set the current limit based on Rp detection. So why is it any different for a BC1.2 charger?",
+      "range": {
+        "startLine": 377,
+        "startChar": 5,
+        "endLine": 377,
+        "endChar": 33
+      },
+      "revId": "6e170014c6f30ee9a786b53d1e26048280f6e110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
