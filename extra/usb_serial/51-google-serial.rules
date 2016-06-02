@@ -31,3 +31,11 @@ SUBSYSTEM=="usb", ENV{GOOGLE_CCD_NAME}!="", ENV{DEVTYPE}=="usb_device", ENV{ID_U
 # Construct a symlink to a TTY generated from a CCD USB serial interface.
 #
 SUBSYSTEM=="tty", ENV{GOOGLE_CCD_NAME}!="", ATTRS{bInterfaceClass}=="ff", ATTRS{bInterfaceSubClass}=="50", ATTRS{bInterfaceProtocol}=="01", OPTIONS+="string_escape=replace", SYMLINK+="google/$env{GOOGLE_CCD_NAME}/serial/$attr{interface}"
+
+#
+# Add USB VID/PID for usb-serial devices
+# For Ryu
+ACTION=="add", ATTRS{idVendor}=="18d1", ATTRS{idProduct}=="500f", RUN+="/sbin/modprobe usbserial" RUN+="/bin/sh -c 'echo 18d1 500f > /sys/bus/usb-serial/drivers/generic/new_id'"
+# For Cr50
+ACTION=="add", ATTRS{idVendor}=="18d1", ATTRS{idProduct}=="5014", RUN+="/bin/sh -c 'echo 18d1 5014 > /sys/bus/usb-serial/drivers/generic/new_id'"
+
