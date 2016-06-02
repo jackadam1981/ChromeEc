@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "799bad8d_1090d207",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-02T16:01:40Z",
+      "side": 1,
+      "message": "This won\u0027t work as you expect. HOOK_CHIPSET_STARTUP is called from POWER_S5S3.\n\n\tCHIPSET_STATE_ANY_OFF \u003d (CHIPSET_STATE_HARD_OFF |\n\t\t\t\t CHIPSET_STATE_SOFT_OFF)\n\nchipset_in_state()\n...\n\tcase POWER_S5S3:\n\tcase POWER_S3S5:\n\t\tneed_mask \u003d CHIPSET_STATE_SOFT_OFF | CHIPSET_STATE_SUSPEND;\n\t\tbreak;\n\nYou need to add a new routine similar to chipset_will_be_in_s0 for s3 case.",
+      "revId": "980fb565e084a5b2ec1ee08ec3fb6e82f2c92c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
