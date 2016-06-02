@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "799bad8d_b04da68c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-02T16:23:53Z",
+      "side": 1,
+      "message": "Charge manager sets the input current limit and sets charge port enable / disable. It does not directly set any battery charge voltage.",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 43
+      },
+      "revId": "a64014b86501f2d28b3038f1fa3386d6f91fac8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
