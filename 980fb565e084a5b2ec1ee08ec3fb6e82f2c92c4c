@@ -16,6 +16,24 @@
       "revId": "980fb565e084a5b2ec1ee08ec3fb6e82f2c92c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9eebd35_ddb1abef",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1135534
+      },
+      "writtenOn": "2016-06-02T17:55:34Z",
+      "side": 1,
+      "message": "But we want to enable it except system is under S5/G3. And to call this hook to enable touch screen when EC start up. Is it \nbetter with using HOOK_CHIPSET_RESUME?",
+      "parentUuid": "799bad8d_1090d207",
+      "revId": "980fb565e084a5b2ec1ee08ec3fb6e82f2c92c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
