@@ -8,7 +8,9 @@
 /* Declare symbolic names for all the GPIOs that we care about.
  * Note: Those with interrupt handlers must be declared first. */
 
-GPIO_INT(PD_MCU_INT,		PIN(3, 3), GPIO_INT_LOW, pd_mcu_interrupt)			/* CHARGER_EC_INT_ODL from BD99955 */
+#ifdef CONFIG_USB_PD_VBUS_DETECT_CHARGER
+GPIO_INT(CHARGER_INT_L,		PIN(3, 3), GPIO_INT_FALLING, bd99955_vbus_interrupt)		/* CHARGER_EC_INT_ODL from BD99955 */
+#endif
 GPIO_INT(USB_C0_PD_INT,		PIN(3, 7), GPIO_INT_RISING, tcpc_alert_event)	/* from Analogix TCPC */
 GPIO_INT(USB_C1_PD_INT_ODL,	PIN(D, 2), GPIO_INT_FALLING, tcpc_alert_event)			/* from Parade TCPC */
 
@@ -29,6 +31,9 @@ GPIO_INT(EC_VOLUP_BTN_L,	PIN(8, 2), GPIO_INT_LOW | GPIO_PULL_UP, button_interrup
 
 GPIO_INT(WP_L,			PIN(4, 0), GPIO_INT_BOTH | GPIO_SEL_1P8V, switch_interrupt)	/* EC_WP_ODL */
 
+#ifndef CONFIG_USB_PD_VBUS_DETECT_CHARGER
+GPIO(CHARGER_INT_L,		PIN(3, 3), GPIO_INPUT)						/* CHARGER_EC_INT_ODL from BD99955 */
+#endif
 /* FIXME(dhendrix): Implement interrupt handlers for lid, tablet mode, etc. */
 //GPIO_INT(BASE_SIXAXIS_INT_L,	PIN(9, 3), GPIO_INT_LOW | GPIO_SEL_1P8V, gyro_interrupt)
 GPIO(BASE_SIXAXIS_INT_L,	PIN(9, 3), GPIO_INPUT | GPIO_SEL_1P8V)
