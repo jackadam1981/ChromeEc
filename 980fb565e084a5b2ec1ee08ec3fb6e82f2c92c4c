@@ -106,6 +106,24 @@
       "revId": "980fb565e084a5b2ec1ee08ec3fb6e82f2c92c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a630a213_c2d4a2d0",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1139964
+      },
+      "writtenOn": "2016-06-03T04:19:14Z",
+      "side": 1,
+      "message": "I think HOOK_INIT is not needed. Just as touch_screen_power_disable(), set the two GPIO to 1 in HOOK_CHIPSET_STARTUP. Then, \u0027enable \u003d !(chipset_in_state(CHIPSET_STATE_ANY_OFF))\u0027 is not necessary.",
+      "parentUuid": "a630a213_c272e2fd",
+      "revId": "980fb565e084a5b2ec1ee08ec3fb6e82f2c92c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
