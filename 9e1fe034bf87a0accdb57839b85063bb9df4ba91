@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "86d55ed1_b7d5f0f8",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-06-03T02:17:50Z",
+      "side": 1,
+      "message": "I will remove this code and call \nvoid usb_charger_vbus_change(int port, int vbus_level)\nfrom the bd99955.c",
+      "parentUuid": "595429e4_d9cb472f",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 25
+      },
+      "revId": "9e1fe034bf87a0accdb57839b85063bb9df4ba91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "595429e4_b9da035e",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2016-06-02T22:47:25Z",
       "side": 1,
       "message": "This is getting messy with the deferred routine. I realize why they are needed -- we can\u0027t distinguish between VCC and VBUS interrupt from the ISR.\n\nHow about these alternatives?\n\n- We wake the charger (not usb_charger) task from the ISR. Then, from some callback (maybe from extpower_is_present()), we check the VBUS / VCC status, and wake the appropriate USB_CHARGER task.\n\nor\n\n- We have a single usb_charger task only (not one per port). When woken, it checks the interrupt status register and does detection on the changed ports. I think it\u0027s the best overall solution. One drawback is that detection may be delayed in some corner cases where ports are attached at the same time (since the task may be delaying for detection of port A, and not doing detection of port B).\n\nWhat do you think?",
+      "range": {
+        "startLine": 768,
+        "startChar": 5,
+        "endLine": 768,
+        "endChar": 40
+      },
+      "revId": "9e1fe034bf87a0accdb57839b85063bb9df4ba91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86d55ed1_974a2cba",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-06-03T02:17:50Z",
+      "side": 1,
+      "message": "As we have 4 interrupts (attach \u0026 detach on each port) clubbed in a single line we cannot rely on the VBUS/VCC status alone as we need to update VBUS status to charge manager.\n\nYes, second approach you suggested looks good. We can save some memory also. I can take it up in a separate CL.",
+      "parentUuid": "595429e4_b9da035e",
       "range": {
         "startLine": 768,
         "startChar": 5,
