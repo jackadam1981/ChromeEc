@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a630a213_02f04a9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1128259
+      },
+      "writtenOn": "2016-06-03T02:13:45Z",
+      "side": 1,
+      "message": "I did a quick boot test on Umaro, it can power on.",
+      "parentUuid": "799bad8d_50a77a5d",
+      "revId": "2f419354253bfb275d3f8b38050276d96de5a5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "799bad8d_90ad0240",
         "filename": "board/kefka/board.h",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2016-06-02T16:12:44Z",
       "side": 1,
       "message": "We can remove these.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "2f419354253bfb275d3f8b38050276d96de5a5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a630a213_c2f5c28f",
+        "filename": "board/kefka/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1128259
+      },
+      "writtenOn": "2016-06-03T02:13:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "799bad8d_90ad0240",
       "range": {
         "startLine": 96,
         "startChar": 0,
