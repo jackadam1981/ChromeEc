@@ -70,6 +70,24 @@
       "revId": "980fb565e084a5b2ec1ee08ec3fb6e82f2c92c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a630a213_02d96a34",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2016-06-03T02:03:51Z",
+      "side": 1,
+      "message": "OK, it will include G3, G3S5, S5G3, and S5 to let enable be zero.",
+      "parentUuid": "a630a213_82e57aec",
+      "revId": "980fb565e084a5b2ec1ee08ec3fb6e82f2c92c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
