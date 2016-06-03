@@ -49,6 +49,75 @@
     },
     {
       "key": {
+        "uuid": "a6e0a23d_2b420904",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-03T22:00:58Z",
+      "side": 1,
+      "message": "Let\u0027s consider reducing the DCP limit to 900 mA. For certain chargers, anti-collapse can\u0027t kick in fast enough to prevent VBUS low detection.",
+      "range": {
+        "startLine": 215,
+        "startChar": 9,
+        "endLine": 215,
+        "endChar": 13
+      },
+      "revId": "9e1fe034bf87a0accdb57839b85063bb9df4ba91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6e0a23d_cb027db0",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-03T22:00:58Z",
+      "side": 1,
+      "message": "Let\u0027s clear these bits rather than setting them to prevent any auto-trigger behavior.",
+      "range": {
+        "startLine": 607,
+        "startChar": 9,
+        "endLine": 608,
+        "endChar": 39
+      },
+      "revId": "9e1fe034bf87a0accdb57839b85063bb9df4ba91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6e0a23d_eb1141f8",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-03T22:00:58Z",
+      "side": 1,
+      "message": "In my testing, this function isn\u0027t necessary.",
+      "range": {
+        "startLine": 724,
+        "startChar": 4,
+        "endLine": 724,
+        "endChar": 32
+      },
+      "revId": "9e1fe034bf87a0accdb57839b85063bb9df4ba91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "595429e4_b9da035e",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 10
