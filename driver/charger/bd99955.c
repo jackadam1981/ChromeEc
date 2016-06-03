@@ -505,6 +505,7 @@ int charger_set_voltage(int voltage)
 static void bd99995_init(void)
 {
 	int reg;
+	int current;
 	const struct battery_info *bi = battery_get_info();
 
 	/* Enable BC1.2 detection on VCC */
@@ -557,6 +558,12 @@ static void bd99995_init(void)
 	reg &= ~BD99955_CMD_VM_CTRL_SET_EXTIADPEN;
 	ch_raw_write16(BD99955_CMD_VM_CTRL_SET, reg,
 		       BD99955_EXTENDED_COMMAND);
+
+	/* Overwrite the inrush current caused by IADP */
+	if (charger_get_current(&current))
+		return;
+	if (current > PD_MAX_CURRENT_MA)
+		charger_set_current(PD_MAX_CURRENT_MA);
 }
 DECLARE_HOOK(HOOK_INIT, bd99995_init, HOOK_PRIO_INIT_EXTPOWER);
 
