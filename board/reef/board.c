@@ -47,6 +47,7 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
+#include "vboot_hash.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -465,6 +466,15 @@ static void board_chipset_startup(void)
 	gpio_set_level(GPIO_EN_USB_A_5V, 1);
 
 	hook_call_deferred(&enable_input_devices_data, 0);
+
+	/*
+	 * vboot hashing consumes a lot of processing time and can starve
+	 * other hooks and time-sensitive tasks of resources during the
+	 * S3 -> S0 transition. To avoid this, allow the hash to finish
+	 * during S5 -> S3 (chrome-os-partner:53791#c10).
+	 */
+	while (vboot_hash_in_progress())
+		msleep(5);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
