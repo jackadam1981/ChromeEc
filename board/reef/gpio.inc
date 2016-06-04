@@ -56,8 +56,8 @@ GPIO(EC_I2C_POWER_SCL,		PIN(9, 0), GPIO_INPUT)
  * (GPIOB0) in case it doesn't work (Set CONFIG_KEYBOARD_IRQ_GPIO in this case).
  */
 
-GPIO(EC_SMI_ODL,               PIN(A, 6), GPIO_ODR_HIGH | GPIO_SEL_1P8V)
-GPIO(EC_SCI_ODL,               PIN(A, 7), GPIO_ODR_HIGH | GPIO_SEL_1P8V)
+GPIO(PCH_SMI_L,			PIN(A, 6), GPIO_ODR_HIGH | GPIO_SEL_1P8V)	/* EC_SMI_ODL */
+GPIO(PCH_SCI_L,			PIN(A, 7), GPIO_ODR_HIGH | GPIO_SEL_1P8V)	/* EC_SCI_ODL */
 
 /*
  * BRD_ID1 is a an ADC pin which will be used to measure multiple values.
