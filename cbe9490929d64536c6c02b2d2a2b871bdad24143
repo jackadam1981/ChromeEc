@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03208090_d53c1c1b",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-04T19:47:26Z",
+      "side": 1,
+      "message": "vboot_hash_next_chunk() runs as a deferred routine from the HOOKS task, which is the lowest priority task. And, it tries to play nice by hashing small chunks at a time, to let other deferred routines run. It should only mess with your power signal output timing if:\n\n- Your power signals are changed from a deferred task or\n- You have some dependency on the shared mem buffer (eg. you call shared_mem_acquire() somewhere). vboot_hash_next_chunk() also uses this buffer, so you will have priority inversion if you depend on it.",
+      "revId": "cbe9490929d64536c6c02b2d2a2b871bdad24143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
