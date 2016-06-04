@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03208090_551a4cbe",
+        "filename": "board/reef/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-04T19:59:19Z",
+      "side": 1,
+      "message": "What will happen if these pins are set to I2C functional and we don\u0027t have a PU? In the past (eg. for lm4, mec1322) we\u0027ve gotten away with it (eg. for I2C pins pulled up by the PD MCU) -- maybe i2c unwedge will be kicked off, but typically nothing breaks.\n\nAnother solution might be to enable the internal PUs on the I2C pins by default and remove them only when we\u0027re sure they are being pulled up externally.",
+      "range": {
+        "startLine": 393,
+        "startChar": 1,
+        "endLine": 401,
+        "endChar": 2
+      },
+      "revId": "cc57d8d8476eb1bb08ec4f81151d6701363d8e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
