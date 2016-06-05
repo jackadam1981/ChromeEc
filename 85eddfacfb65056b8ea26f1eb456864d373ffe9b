@@ -46,6 +46,30 @@
       "revId": "85eddfacfb65056b8ea26f1eb456864d373ffe9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "232584a0_16b05ce6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-06-05T06:28:42Z",
+      "side": 1,
+      "message": "Thus I modify \"wait_for_it:\"(line 803 to line 785), when system !ac jump to run \"wait_for_it\" and can determine charge state is ST_DISCHARGE or not. Fix system always keep charge timeout state at AC-in.",
+      "parentUuid": "232584a0_56b6d4e7",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 66
+      },
+      "revId": "85eddfacfb65056b8ea26f1eb456864d373ffe9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
