@@ -22,6 +22,30 @@
       "revId": "85eddfacfb65056b8ea26f1eb456864d373ffe9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "232584a0_56b6d4e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1140664
+      },
+      "writtenOn": "2016-06-05T06:16:38Z",
+      "side": 1,
+      "message": "Step1: When system !ac (line 692), charge state assign ST_DISCHARGE(line 693).\nStep2: Then process will jump to run \"wait_for_it\"(goto wait_for_it;(line 694)).\nStep3: Process jump to run line 803.\nStep4\" So system !ac, it can not run line 790 to determine charge state is ST_DISCHARGE or not and \"was_discharging\" can not assign \"1\"(line 791).\nStep5: \"was_discharging\" always is 0 so system can not recalculate deadline value(line 792-line 796).\nStep6: Thus when AC-in timeoue always expired and \"state_machine_force_idle\" assign \"1\"(line 799-line 800).\nSo system AC-in charge always time out state.",
+      "parentUuid": "03208090_359c701f",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 66
+      },
+      "revId": "85eddfacfb65056b8ea26f1eb456864d373ffe9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
