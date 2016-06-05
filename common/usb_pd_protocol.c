@@ -1223,6 +1223,16 @@ static void pd_update_try_source(void)
 	 * Also check if battery is initialized and ready to provide power.
 	 */
 	pd_try_src_enable &= (battery_is_present() == BP_YES);
+	if (pd_try_src_enable) {
+		const struct batt_params *batt;
+
+		/*
+		 * Don't try source till the charger task knows
+		 * about the battery connection status.
+		 */
+		batt = charger_current_battery_params();
+		pd_try_src_enable &= (batt->is_present != BP_NOT_SURE);
+	}
 #endif
 
 	/*

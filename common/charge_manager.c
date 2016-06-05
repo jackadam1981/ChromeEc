@@ -7,6 +7,7 @@
 #include "battery.h"
 #include "charge_manager.h"
 #include "charge_ramp.h"
+#include "charge_state.h"
 #include "charger.h"
 #include "console.h"
 #include "gpio.h"
@@ -136,6 +137,22 @@ static int charge_manager_is_seeded(void)
 			    available_charge[i][j].voltage ==
 			    CHARGE_VOLTAGE_UNINITIALIZED)
 				return 0;
+
+#if defined(CONFIG_CHARGER_V2) || defined(CONFIG_CHARGER_V1)
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; ++i) {
+		if (dualrole_capability[i] != CAP_DEDICATED) {
+			const struct batt_params *batt;
+
+			/*
+			 * Don't seed till the charger task knows
+			 * about the battery connection status.
+			 */
+			batt = charger_current_battery_params();
+			if (batt->is_present == BP_NOT_SURE)
+				return 0;
+		}
+	}
+#endif
 
 	is_seeded = 1;
 	return 1;
