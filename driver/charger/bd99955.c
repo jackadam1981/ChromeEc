@@ -30,6 +30,12 @@
 /* TODO: Add accurate timeout for detecting BC1.2 */
 #define BC12_DETECT_RETRY	10
 
+/* POR input current limit value in mA */
+#define BD99955_POR_INPUT_CURRENT_LIMIT_VAL 1472
+
+/* Set charging current during initialization in mA */
+#define BD99955_CHG_CURRENT_INIT_LIMIT_VAL 512
+
 /* Charger parameters */
 static const struct charger_info bd99955_charger_info = {
 	.name         = CHARGER_NAME,
@@ -505,6 +511,7 @@ int charger_set_voltage(int voltage)
 static void bd99995_init(void)
 {
 	int reg;
+	int current;
 	const struct battery_info *bi = battery_get_info();
 
 	/* Enable BC1.2 detection on VCC */
@@ -557,6 +564,18 @@ static void bd99995_init(void)
 	reg &= ~BD99955_CMD_VM_CTRL_SET_EXTIADPEN;
 	ch_raw_write16(BD99955_CMD_VM_CTRL_SET, reg,
 		       BD99955_EXTENDED_COMMAND);
+
+	/* Set the charging current to min current required for the battery */
+	if (charger_get_current(&current))
+		return;
+	if (current > BD99955_CHG_CURRENT_INIT_LIMIT_VAL)
+		charger_set_current(BD99955_CHG_CURRENT_INIT_LIMIT_VAL);
+
+	/* If the input current is less than the POR limit reset to POR */
+	if (charger_get_input_current(&current))
+		return;
+	if (current < BD99955_POR_INPUT_CURRENT_LIMIT_VAL)
+		charger_set_input_current(BD99955_POR_INPUT_CURRENT_LIMIT_VAL);
 }
 DECLARE_HOOK(HOOK_INIT, bd99995_init, HOOK_PRIO_INIT_EXTPOWER);
 
