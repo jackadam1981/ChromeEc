@@ -39,6 +39,30 @@
       "revId": "13af3afb9418a6b6d9e9da54ef3c1cacdca5d080",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3144c8a_24b132ef",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2554,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-06-06T23:50:46Z",
+      "side": 1,
+      "message": "So it does not set the state to the timeout state below... But, yeah, probably not necessary as it\u0027ll loop again.",
+      "parentUuid": "43b8b8a6_a71f0aa7",
+      "range": {
+        "startLine": 2553,
+        "startChar": 0,
+        "endLine": 2554,
+        "endChar": 12
+      },
+      "revId": "13af3afb9418a6b6d9e9da54ef3c1cacdca5d080",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
