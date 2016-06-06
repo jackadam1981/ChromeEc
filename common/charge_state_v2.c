@@ -566,8 +566,19 @@ int get_desired_input_current(enum battery_present batt_present,
 {
 	if (batt_present == BP_YES || system_is_locked()) {
 #ifdef CONFIG_CHARGE_MANAGER
-		return MAX(CONFIG_CHARGER_INPUT_CURRENT,
-			charge_manager_get_charger_current());
+		int input_curr;
+		int chg_mgr_curr = MAX(CONFIG_CHARGER_INPUT_CURRENT,
+					charge_manager_get_charger_current());
+
+		if (!charger_get_input_current(&input_curr)) {
+			input_curr = MAX(chg_mgr_curr, input_curr);
+#ifdef CONFIG_USB_POWER_DELIVERY
+			return MIN(PD_MAX_CURRENT_MA, input_curr);
+#else
+			return input_curr;
+#endif
+		} else
+			return chg_mgr_curr;
 #else
 		return CONFIG_CHARGER_INPUT_CURRENT;
 #endif
