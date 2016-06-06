@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "43b8b8a6_67c5921f",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-06-06T18:33:03Z",
+      "side": 1,
+      "message": "okay, I will disable anti-collapse and try with 2A if it doesn\u0027t help I will set it to 0.9A",
+      "parentUuid": "a6e0a23d_2b420904",
+      "range": {
+        "startLine": 215,
+        "startChar": 9,
+        "endLine": 215,
+        "endChar": 13
+      },
+      "revId": "9e1fe034bf87a0accdb57839b85063bb9df4ba91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6e0a23d_cb027db0",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 10
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "43b8b8a6_a7514a55",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-06-06T18:33:03Z",
+      "side": 1,
+      "message": "okay, I will remove it",
+      "parentUuid": "a6e0a23d_cb027db0",
+      "range": {
+        "startLine": 607,
+        "startChar": 9,
+        "endLine": 608,
+        "endChar": 39
+      },
+      "revId": "9e1fe034bf87a0accdb57839b85063bb9df4ba91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6e0a23d_eb1141f8",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 10
@@ -106,6 +154,30 @@
       "writtenOn": "2016-06-03T22:00:58Z",
       "side": 1,
       "message": "In my testing, this function isn\u0027t necessary.",
+      "range": {
+        "startLine": 724,
+        "startChar": 4,
+        "endLine": 724,
+        "endChar": 32
+      },
+      "revId": "9e1fe034bf87a0accdb57839b85063bb9df4ba91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43b8b8a6_2766ba3f",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-06-06T18:33:03Z",
+      "side": 1,
+      "message": "Okay, I will test it again with the changes suggested by you",
+      "parentUuid": "a6e0a23d_eb1141f8",
       "range": {
         "startLine": 724,
         "startChar": 4,
