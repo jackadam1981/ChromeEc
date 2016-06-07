@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3144c8a_e40c3a38",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-06-07T09:51:38Z",
+      "side": 1,
+      "message": "Hi Shawn:\nIn order to handle \"Quick Command\" SMBus protocol, FW also can use STASTRE bit of SMBCTL1 register. Once this bit is set, EC can receive interrupt after sending address byte. We have chance to generate STOP condition without doing a dummy read. But it\u0027s more complicated than this change. How do you think?",
+      "revId": "d5aa12d2e950c128e4971cb88034453e63c26e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
