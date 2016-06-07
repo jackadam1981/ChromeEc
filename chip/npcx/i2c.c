@@ -585,9 +585,17 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 {
 	int ctrl = i2c_port_to_controller(port);
 	volatile struct i2c_status *p_status = i2c_stsobjs + ctrl;
+	static uint8_t dummy_input;
 
-	if (out_size == 0 && in_size == 0)
-		return EC_SUCCESS;
+	/*
+	 * If I/O sizes are zero, return the ACK / NACK status of the slave
+	 * device. We must do a dummy read in order to generate a stop
+	 * condition if we're ACK'ed.
+	 */
+	if (out_size == 0 && in_size == 0) {
+		in = &dummy_input;
+		in_size = 1;
+	}
 
 	interrupt_disable();
 	/* make sure bus is not occupied by the other task */
