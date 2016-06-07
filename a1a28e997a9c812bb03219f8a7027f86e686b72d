@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c34828a3_c70f912a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2677,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-07T07:22:06Z",
+      "side": 1,
+      "message": "we have created CPRINTS to save a few bytes on this case :\nCPRINTS(\"TCPC p%d set_suspend failed!\", port);",
+      "range": {
+        "startLine": 2677,
+        "startChar": 2,
+        "endLine": 2677,
+        "endChar": 55
+      },
+      "revId": "a1a28e997a9c812bb03219f8a7027f86e686b72d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
