@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c34828a3_e499eb8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-07T03:38:34Z",
+      "side": 1,
+      "message": "This commit message is kind of confusing because you\u0027re talking about two different signals here. PCH_SYS_PWROK has no PU on the PCH side, right?",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "f5085ce3c3af02572588766a4a2c10e8bf0a37e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
