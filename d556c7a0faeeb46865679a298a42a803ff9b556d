@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c34828a3_f07ec696",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-06-07T00:34:27Z",
+      "side": 1,
+      "message": "Disabling charge trigger by SDP works.",
+      "revId": "d556c7a0faeeb46865679a298a42a803ff9b556d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c34828a3_b00f1e2b",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-06-07T00:34:27Z",
+      "side": 1,
+      "message": "writing zero to VBUSCLPS_TH_SET(0Dh) \u0026 VCCCLPS_TH_SET(0Eh) doesn\u0027t disable the anti-collapse.",
+      "revId": "d556c7a0faeeb46865679a298a42a803ff9b556d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c34828a3_9047826f",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-06-07T00:34:27Z",
+      "side": 1,
+      "message": "If we set DCP ilim as 0.9mA and remove this code it works, but we slow down charging.",
+      "revId": "d556c7a0faeeb46865679a298a42a803ff9b556d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
