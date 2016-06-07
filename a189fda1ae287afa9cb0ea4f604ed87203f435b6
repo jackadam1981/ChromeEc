@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c34828a3_faed00c6",
+        "filename": "board/reef/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-06-07T15:54:21Z",
+      "side": 1,
+      "message": "Not related to this CL, but when enabling lid angle, this should use LID_ACCEL and BASE_ACCEL enum instead of hardcoded value.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 73
+      },
+      "revId": "a189fda1ae287afa9cb0ea4f604ed87203f435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
