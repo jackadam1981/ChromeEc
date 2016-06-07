@@ -22,6 +22,30 @@
       "revId": "f5085ce3c3af02572588766a4a2c10e8bf0a37e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c34828a3_8766293d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-06-07T05:04:11Z",
+      "side": 1,
+      "message": "Bleh, yeah, what I meant is that we need to drive the signal to the PCH low until the PMIC drives PMIC_EC_PWROK_OD (ALL_SYS_PGOOD) high and we pass it thru.\n\nBut mentioning the PMIC --\u003e EC signal here (especially in such a poorly worded fashion) confuses things. Let\u0027s take that part off and only talk about the EC --\u003e PCH signal that\u0027s relevant here.\n\nThe PCH does have an internal pull-up on that pin according to the note on the schematic, though I didn\u0027t see it mentioned in the datasheet.\n\nIn any case, we certainly don\u0027t want this pin in a weird state after power is turned on by the EC.",
+      "parentUuid": "c34828a3_e499eb8e",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "f5085ce3c3af02572588766a4a2c10e8bf0a37e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
