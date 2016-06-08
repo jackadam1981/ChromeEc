@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03c6c0d9_28134359",
+        "filename": "board/amenia/usb_pd_policy.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-08T18:59:04Z",
+      "side": 1,
+      "message": "This is getting messy with the CONFIG_USB_PD_VBUS_DETECT_CHARGER / TCPC define checks, but it\u0027s your board. If you don\u0027t need to test both configurations, I suggest to just assume CONFIG_USB_PD_VBUS_DETECT_CHARGER will be defined.",
+      "range": {
+        "startLine": 108,
+        "startChar": 7,
+        "endLine": 108,
+        "endChar": 40
+      },
+      "revId": "97e1de24541bf8997200ee67c8af89856b6c3884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c6c0d9_48315fef",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-08T18:59:04Z",
+      "side": 1,
+      "message": "Please add a TODO related to using a single USB charger task.",
+      "revId": "97e1de24541bf8997200ee67c8af89856b6c3884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c6c0d9_c8726fd0",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-08T18:59:04Z",
+      "side": 1,
+      "message": "No need for this ifdef, right?",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "97e1de24541bf8997200ee67c8af89856b6c3884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
