@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03c6c0d9_8ea07f05",
+        "filename": "board/amenia/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-06-08T20:56:36Z",
+      "side": 1,
+      "message": "These should not be part of this patch, please remove.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 23
+      },
+      "revId": "3e9aaa929c35a4861b5b6a847f2962d29125c515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c6c0d9_ce71d795",
+        "filename": "board/amenia/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-06-08T20:56:36Z",
+      "side": 1,
+      "message": "These should not be part of this patch, please remove.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "3e9aaa929c35a4861b5b6a847f2962d29125c515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c6c0d9_6eba632e",
+        "filename": "board/amenia/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-06-08T20:56:36Z",
+      "side": 1,
+      "message": "Remove this?",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 70
+      },
+      "revId": "3e9aaa929c35a4861b5b6a847f2962d29125c515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c6c0d9_2e3eaba2",
+        "filename": "driver/tcpm/ps8751.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-06-08T20:56:36Z",
+      "side": 1,
+      "message": "These should be moved to the H file.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "3e9aaa929c35a4861b5b6a847f2962d29125c515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c6c0d9_6e4ee32f",
+        "filename": "include/usb_pd_altmode_dp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-06-08T20:56:36Z",
+      "side": 1,
+      "message": "Since the code are using a function called anx74xx_tcpc_update_hpd_status and ps8751_tcpc_update_hpd_status, do we really need this?\n\nMay be create a function pointer in the \"struct usb_mux\" instead, then the code in board/usb_pd_policy can be simplify without doing \"if (port \u003d\u003d 0) then ... else ...\"",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "3e9aaa929c35a4861b5b6a847f2962d29125c515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
