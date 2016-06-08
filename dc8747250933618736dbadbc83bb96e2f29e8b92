@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03c6c0d9_28b0634e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-08T19:05:08Z",
+      "side": 1,
+      "message": "You don\u0027t need to mention charge manager here at all. I don\u0027t see how it\u0027s relevant at all. Just explain why you\u0027re setting max. voltage when battery isn\u0027t present.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "dc8747250933618736dbadbc83bb96e2f29e8b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
