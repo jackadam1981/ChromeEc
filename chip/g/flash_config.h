@@ -10,6 +10,10 @@
 			     (1 << GC_GLOBALSEC_FLASH_REGION0_CTRL_RD_EN_LSB) |\
 			     (1 << GC_GLOBALSEC_FLASH_REGION0_CTRL_WR_EN_LSB))
 
+/* Offsets to flash_read(), flash_write(), etc. set this bit if the
+   operation is to a corresponding info bank. */
+#define INFO_BANK_OFFSET_MASK (1 << 31)
+
 /*
  * The below structure describes a single flash region (the hardware supports
  * up to eight). The reg_size field is the actual region size, The reg_perms

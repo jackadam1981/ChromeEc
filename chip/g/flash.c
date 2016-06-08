@@ -120,13 +120,15 @@ enum flash_op {
 	OP_WRITE_BLOCK,
 };
 
-static int do_flash_op(enum flash_op op, int byte_offset, int words)
+static int do_flash_op(enum flash_op op, unsigned int byte_offset, int words)
 {
 	volatile uint32_t *fsh_pe_control;
 	uint32_t opcode, tmp, errors;
 	int retry_count, max_attempts, extra_prog_pulse, i;
 	int timedelay_us = 100;
 	uint32_t prev_error = 0;
+	const int is_info_bank = byte_offset & INFO_BANK_OFFSET_MASK;
+	byte_offset &= ~INFO_BANK_OFFSET_MASK;
 
 	/* Make sure the smart program/erase algorithms are enabled. */
 	if (!GREAD(FLASH, FSH_TIMING_PROG_SMART_ALGO_ON) ||
@@ -150,7 +152,10 @@ static int do_flash_op(enum flash_op op, int byte_offset, int words)
 	}
 
 	/* We have two flash banks. Adjust offset and registers accordingly. */
-	if (byte_offset >= CONFIG_FLASH_SIZE / 2) {
+	if (is_info_bank) {
+		/* Only INFO bank 1 operations are supported. */
+		fsh_pe_control = GREG32_ADDR(FLASH, FSH_PE_CONTROL1);
+	} else if (byte_offset >= CONFIG_FLASH_SIZE / 2) {
 		byte_offset -= CONFIG_FLASH_SIZE / 2;
 		fsh_pe_control = GREG32_ADDR(FLASH, FSH_PE_CONTROL1);
 	} else {
@@ -160,6 +165,10 @@ static int do_flash_op(enum flash_op op, int byte_offset, int words)
 	/* What are we doing? */
 	switch (op) {
 	case OP_ERASE_BLOCK:
+		if (is_info_bank)
+			/* Erasing INFO banks from the RW section is
+			 * unsupported. */
+			return EC_ERROR_INVAL;
 		opcode = 0x31415927;
 		words = 0;			/* don't care, really */
 		/* This number is based on the TSMC spec Nme=Terase/Tsme */
@@ -179,7 +188,7 @@ static int do_flash_op(enum flash_op op, int byte_offset, int words)
 	 */
 	GWRITE_FIELD(FLASH, FSH_TRANS, OFFSET,
 		     byte_offset / 4);		  /* word offset */
-	GWRITE_FIELD(FLASH, FSH_TRANS, MAINB, 0); /* NOT the info bank */
+	GWRITE_FIELD(FLASH, FSH_TRANS, MAINB, is_info_bank? 1 : 0);
 	GWRITE_FIELD(FLASH, FSH_TRANS, SIZE, words);
 
 	/* TODO: Make sure this function isn't getting called "too often" in
