@@ -558,8 +558,18 @@ void charger_init(void)
 	/* Initialize current state */
 	memset(&curr, 0, sizeof(curr));
 	curr.batt.is_present = BP_NOT_SURE;
+
+	/* Get the battery-specific values */
+	batt_info = battery_get_info();
+
+	/*
+	 * If system is not locked and we don't have a battery to live on,
+	 * then use max input current limit so that we can pull as much power
+	 * as needed.
+	 */
+	battery_get_params(&curr.batt);
 }
-DECLARE_HOOK(HOOK_INIT, charger_init, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, charger_init, HOOK_PRIO_CHARGE_MANAGER_INIT);
 
 int get_desired_input_current(enum battery_present batt_present,
 			      const struct charger_info * const info)
@@ -587,20 +597,11 @@ void charger_task(void)
 	int need_static = 1;
 	const struct charger_info * const info = charger_get_info();
 
-	/* Get the battery-specific values */
-	batt_info = battery_get_info();
-
 	prev_ac = prev_charge = -1;
 	state_machine_force_idle = 0;
 	shutdown_warning_time.val = 0UL;
 	battery_seems_to_be_dead = 0;
 
-	/*
-	 * If system is not locked and we don't have a battery to live on,
-	 * then use max input current limit so that we can pull as much power
-	 * as needed.
-	 */
-	battery_get_params(&curr.batt);
 	prev_bp = curr.batt.is_present;
 	curr.desired_input_current = get_desired_input_current(prev_bp, info);
 
