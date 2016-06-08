@@ -6,6 +6,16 @@
 #ifndef __EC_CHIP_G_FLASH_CONFIG_H
 #define __EC_CHIP_G_FLASH_CONFIG_H
 
+#define FLASH_INFO_SIZE                      (2 * 1024)
+#define FLASH_INFO1_MEMORY_BASE              0x28000
+/* INFO1 is a 2-KB flash page that consists of four regions.  The
+ * first two regions are used by the boot-room and boot-loader
+ * respectively.  Manufacture related state is written to the fourth
+ * region. */
+#define FLASH_INFO1_MANUFACTURE_STATE_OFFSET 0x600
+#define FLASH_INFO1_MANUFACTURE_STATE_SIZE   0x200
+
+
 #define FLASH_REGION_EN_ALL ((1 << GC_GLOBALSEC_FLASH_REGION0_CTRL_EN_LSB) |\
 			     (1 << GC_GLOBALSEC_FLASH_REGION0_CTRL_RD_EN_LSB) |\
 			     (1 << GC_GLOBALSEC_FLASH_REGION0_CTRL_WR_EN_LSB))
