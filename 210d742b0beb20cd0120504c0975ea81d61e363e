@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c31bc859_a689088d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-08T23:30:11Z",
+      "side": 1,
+      "message": "moving the atomic_or here creates a race condition:\nif you fail to grab the mutex which is already taken,\nthen the other guy unlock (and doesn\u0027t see your waiter flag), then you arrive here,you will wait forever.",
+      "range": {
+        "startLine": 576,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 32
+      },
+      "revId": "210d742b0beb20cd0120504c0975ea81d61e363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c31bc859_a65d88de",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-08T23:30:11Z",
+      "side": 1,
+      "message": "either there is a design issue here or you should clarify the API in the .h :\nin the task calls sloppy_mutex_unlock twice, the critical section is no longer protected between the 2 unlock() calls,e.g.\n\nTask A: sloppy_mutex_lock()  \nTask A: sloppy_mutex_lock()\nTask A: sloppy_mutex_unlock()\nTask B: sloppy_mutex_lock()    \u003c\u003c\u003c this should not succeed immediately\nTask A: sloppy_mutex_unlock()\n --- we are totally confused here ----\n\nor we should call _unlock() only once but the _lock() doesn\u0027t tell us if we grabbed the lock or not, so that\u0027s difficult...",
+      "range": {
+        "startLine": 592,
+        "startChar": 0,
+        "endLine": 599,
+        "endChar": 16
+      },
+      "revId": "210d742b0beb20cd0120504c0975ea81d61e363e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
