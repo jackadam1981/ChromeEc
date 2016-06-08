@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "03c6c0d9_8b307143",
+        "filename": "board/amenia/usb_pd_policy.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-06-08T19:28:38Z",
+      "side": 1,
+      "message": "okay, I will remove all these ifdefs in board/amenia/*",
+      "parentUuid": "03c6c0d9_28134359",
+      "range": {
+        "startLine": 108,
+        "startChar": 7,
+        "endLine": 108,
+        "endChar": 40
+      },
+      "revId": "97e1de24541bf8997200ee67c8af89856b6c3884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03c6c0d9_48315fef",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 13
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "03c6c0d9_eb35a531",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-06-08T19:28:38Z",
+      "side": 1,
+      "message": "Okay I will add a TODO",
+      "parentUuid": "03c6c0d9_48315fef",
+      "revId": "97e1de24541bf8997200ee67c8af89856b6c3884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03c6c0d9_c8726fd0",
         "filename": "include/usb_charge.h",
         "patchSetId": 13
@@ -53,6 +95,30 @@
       "writtenOn": "2016-06-08T18:59:04Z",
       "side": 1,
       "message": "No need for this ifdef, right?",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "97e1de24541bf8997200ee67c8af89856b6c3884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c6c0d9_cb654933",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-06-08T19:28:38Z",
+      "side": 1,
+      "message": "yes, I will remove it",
+      "parentUuid": "03c6c0d9_c8726fd0",
       "range": {
         "startLine": 55,
         "startChar": 7,
