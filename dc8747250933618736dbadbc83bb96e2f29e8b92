@@ -22,6 +22,30 @@
       "revId": "dc8747250933618736dbadbc83bb96e2f29e8b92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c6c0d9_4b2cb980",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-06-08T19:54:00Z",
+      "side": 1,
+      "message": "okay, I will change this",
+      "parentUuid": "03c6c0d9_28b0634e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "dc8747250933618736dbadbc83bb96e2f29e8b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
