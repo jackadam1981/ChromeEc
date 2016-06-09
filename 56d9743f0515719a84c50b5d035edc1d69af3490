@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c31bc859_f83ab51e",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-09T17:04:10Z",
+      "side": 1,
+      "message": "so we no longer get any sensor data when something is too close, is this really what we want ?",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "56d9743f0515719a84c50b5d035edc1d69af3490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c31bc859_b8075d77",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-09T17:04:10Z",
+      "side": 1,
+      "message": "maybe you can fix the typo while you are moving this code",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 14
+      },
+      "revId": "56d9743f0515719a84c50b5d035edc1d69af3490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c31bc859_5823c9f3",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-09T17:04:10Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 116,
+        "startChar": 30,
+        "endLine": 116,
+        "endChar": 38
+      },
+      "revId": "56d9743f0515719a84c50b5d035edc1d69af3490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c31bc859_f88c7512",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-09T17:04:10Z",
+      "side": 1,
+      "message": "this computation looks mysterious to me but that\u0027s unrelated to the CL",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 35
+      },
+      "revId": "56d9743f0515719a84c50b5d035edc1d69af3490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
