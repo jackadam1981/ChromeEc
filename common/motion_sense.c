@@ -1475,6 +1475,7 @@ DECLARE_CONSOLE_COMMAND(accelinfo, command_display_accel_info,
 	" and set calculation frequency.", NULL);
 #endif /* CONFIG_CMD_ACCEL_INFO */
 
+
 #ifdef CONFIG_ACCEL_INTERRUPTS
 /* TODO(crosbug.com/p/426659): this code is broken, does not with ST sensors. */
 void accel_int_lid(enum gpio_signal signal)
