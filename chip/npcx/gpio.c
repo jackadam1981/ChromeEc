@@ -561,11 +561,20 @@ void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
 
 test_mockable int gpio_get_level(enum gpio_signal signal)
 {
-	return !!(NPCX_PDIN(gpio_list[signal].port) & gpio_list[signal].mask);
+	int value = 0;
+	int res;
+
+	board_gpio_remap(&signal, &value);
+	res = !!(NPCX_PDIN(gpio_list[signal].port) & gpio_list[signal].mask);
+	if (value)
+		res = !res;
+	return res;
 }
 
 void gpio_set_level(enum gpio_signal signal, int value)
 {
+	board_gpio_remap(&signal, &value);
+
 	if (value)
 		NPCX_PDOUT(gpio_list[signal].port) |=  gpio_list[signal].mask;
 	else
@@ -629,8 +638,13 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 
 int gpio_enable_interrupt(enum gpio_signal signal)
 {
-	const struct gpio_info *g     = gpio_list + signal;
-	struct gpio_wui_gpio_info wui = gpio_find_wui_from_io(g->port, g->mask);
+	const struct gpio_info *g;
+	struct gpio_wui_gpio_info wui;
+	int value;
+
+	board_gpio_remap(&signal, &value);
+	g = gpio_list + signal;
+	wui = gpio_find_wui_from_io(g->port, g->mask);
 
 	/* Set MIWU enable bit */
 	if (wui.valid)
@@ -643,8 +657,13 @@ int gpio_enable_interrupt(enum gpio_signal signal)
 
 int gpio_disable_interrupt(enum gpio_signal signal)
 {
-	const struct gpio_info *g     = gpio_list + signal;
-	struct gpio_wui_gpio_info wui = gpio_find_wui_from_io(g->port, g->mask);
+	const struct gpio_info *g;
+	struct gpio_wui_gpio_info wui;
+	int value;
+
+	board_gpio_remap(&signal, &value);
+	g = gpio_list + signal;
+	wui = gpio_find_wui_from_io(g->port, g->mask);
 
 	/* Clear MIWU enable bit */
 	if (wui.valid)

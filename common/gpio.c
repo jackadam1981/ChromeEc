@@ -108,8 +108,11 @@ int gpio_config_pin(enum module_id id, enum gpio_signal signal, int enable)
 
 void gpio_set_flags(enum gpio_signal signal, int flags)
 {
-	const struct gpio_info *g = gpio_list + signal;
+	const struct gpio_info *g;
+	int value = 0;
 
+	board_gpio_remap(&signal, &value);
+	g = gpio_list + signal;
 	gpio_set_flags_by_mask(g->port, g->mask, flags);
 }
 
@@ -130,8 +133,12 @@ int gpio_get_default_flags(enum gpio_signal signal)
 void gpio_reset(enum gpio_signal signal)
 {
 	const struct gpio_info *g = gpio_list + signal;
+	int flags = g->flags;
+	int value = 0;
 
-	gpio_set_flags_by_mask(g->port, g->mask, g->flags);
+	board_gpio_remap(&signal, &value);
+	g = gpio_list + signal;
+	gpio_set_flags_by_mask(g->port, g->mask, flags);
 	gpio_set_alternate_function(g->port, g->mask, -1);
 }
 
@@ -143,6 +150,11 @@ const char *gpio_get_name(enum gpio_signal signal)
 int gpio_is_implemented(enum gpio_signal signal)
 {
 	return !!gpio_list[signal].mask;
+}
+
+__attribute__((weak))
+	void board_gpio_remap(enum gpio_signal *signal, int *value)
+{
 }
 
 /*****************************************************************************/

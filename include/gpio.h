@@ -245,4 +245,8 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags);
  */
 void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func);
 
+/**
+ * Hack GPIO remap function.
+ */
+void board_gpio_remap(enum gpio_signal *signal, int *value);
 #endif  /* __CROS_EC_GPIO_H */
