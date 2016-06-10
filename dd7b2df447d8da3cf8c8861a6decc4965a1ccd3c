@@ -22,6 +22,30 @@
       "revId": "dd7b2df447d8da3cf8c8861a6decc4965a1ccd3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f9da06f_d19ac426",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-06-10T22:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f0ba862_63516a1c",
+      "range": {
+        "startLine": 53,
+        "startChar": 31,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "dd7b2df447d8da3cf8c8861a6decc4965a1ccd3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
