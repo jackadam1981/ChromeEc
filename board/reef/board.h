@@ -14,6 +14,9 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
+/* EC console commands  */
+#define CONFIG_CMD_ACCELS
+
 /* Battery */
 #define CONFIG_BATTERY_CUT_OFF
 #define CONFIG_BATTERY_PRESENT_GPIO GPIO_EC_BATT_PRES_L
@@ -122,6 +125,7 @@
 #define I2C_PORT_GYRO                   NPCX_I2C_PORT1
 #define I2C_PORT_LID_ACCEL              NPCX_I2C_PORT2
 #define I2C_PORT_ALS                    NPCX_I2C_PORT2
+#define I2C_PORT_BARO	                NPCX_I2C_PORT2
 #define I2C_PORT_BATTERY                NPCX_I2C_PORT3
 #define I2C_PORT_CHARGER                NPCX_I2C_PORT3
 
@@ -141,6 +145,7 @@
 #define CONFIG_ALS
 #define CONFIG_ALS_OPT3001
 #define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
+#define CONFIG_BARO_BMP280
 /* FIXME: Need to add BMP280 barometer */
 /* #define CONFIG_LID_ANGLE */	/* FIXME(dhendrix): maybe? */
 /* #define CONFIG_LID_ANGLE_SENSOR_BASE 0 */	/* FIXME(dhendrix): maybe? */
@@ -190,6 +195,15 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
+/* Barometer sensor */
+enum baro_id {
+	BARO_BMP280 = 0,
+
+	BARO_COUNT
+};
+
+
+
 /* Light sensors */
 enum als_id {
 	ALS_OPT3001 = 0,
@@ -203,6 +217,7 @@ enum sensor_id {
 	BASE_GYRO,
 	BASE_MAG,
 	LID_ACCEL,
+	BASE_BARO,
 };
 
 /* start as a sink in case we have no other power supply/battery */

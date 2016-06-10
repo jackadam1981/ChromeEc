@@ -7,6 +7,7 @@
 
 #include "adc_chip.h"
 #include "als.h"
+#include "barometer.h"
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_state.h"
@@ -17,6 +18,7 @@
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/bmp280.h"
 #include "driver/charger/bd99955.h"
 #include "driver/tcpm/anx74xx.h"
 #include "driver/tcpm/tcpci.h"
@@ -613,6 +615,44 @@ struct motion_sensor_t motion_sensors[] = {
 		},
 	 },
 	},
+
+	[BASE_BARO] = {
+	 .name = "Base Baro",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_BMP280,
+	 .type = MOTIONSENSE_TYPE_BARO,
+	 .location = MOTIONSENSE_LOC_BASE,
+	 .drv = &bmp280_drv,
+/*	 .mutex = &g_base_mutex, */
+	 .drv_data = &bmp280_drv_data,
+	 .port = I2C_PORT_BARO,
+	 .addr = BMP280_I2C_ADDRESS1,
+/*	 .default_range = 1 << 11, */
+	 .rot_standard_ref = NULL, /* Identity Matrix. */
+	 .config = {
+		 /* AP: by default shutdown all sensors */
+		 [SENSOR_CONFIG_AP] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
+		 /* EC does not need in S0 */
+		 [SENSOR_CONFIG_EC_S0] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S3] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S5] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
+	 },
+	},
+
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
