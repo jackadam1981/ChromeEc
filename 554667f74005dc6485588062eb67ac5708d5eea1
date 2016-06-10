@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2f0ba862_b8d53d1a",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-10T21:45:21Z",
+      "side": 1,
+      "message": "I will add board-level hooks to enable these going into S0 and disable them going back down to S5 (similar to usb_port_power_smart.c hooks). CL will be up soon.",
+      "parentUuid": "2f0ba862_32204ea5",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 42
+      },
+      "revId": "554667f74005dc6485588062eb67ac5708d5eea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f0ba862_92101a50",
         "filename": "power/rk3399.c",
         "patchSetId": 1
