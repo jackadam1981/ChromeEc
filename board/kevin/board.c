@@ -33,6 +33,7 @@
 #include "shi_chip.h"
 #include "spi.h"
 #include "switch.h"
+#include "system.h"
 #include "task.h"
 #include "tcpm.h"
 #include "timer.h"
@@ -325,6 +326,57 @@ int board_get_version(void)
 	}
 
 	return version;
+}
+
+/*
+ * TODO(crosbug.com/p/54265): Remove these defines and remap functions below
+ * once we're done with old kevin / gru.
+ */
+#ifdef BOARD_KEVIN
+#define BOARD_VERSION_NEW_GPIO_CFG BOARD_VERSION_REV3
+#else
+#define BOARD_VERSION_NEW_GPIO_CFG BOARD_VERSION_REV1
+#endif
+
+static int old_gpio_cfg;
+
+static void gpio_cfg_setup(void)
+{
+	int board_ver = board_get_version();
+
+	if (board_ver >= BOARD_VERSION_NEW_GPIO_CFG)
+		return;
+
+	ccprintf("Applying GPIO changes for old board rev(%d).\n");
+	old_gpio_cfg = 1;
+
+	if (!system_jumped_to_this_image()) {
+		/* Re-init GPIOs due to changed I/O state */
+		gpio_reset(GPIO_AP_EC_S3_S0_L);
+		gpio_reset(GPIO_PP900_PLL_EN);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, gpio_cfg_setup, HOOK_PRIO_INIT_ADC + 1);
+
+void board_gpio_remap(enum gpio_signal *signal, int *value)
+{
+	if (!old_gpio_cfg)
+		return;
+
+	switch (*signal) {
+	case GPIO_USB_C0_5V_EN:
+	case GPIO_USB_C1_5V_EN:
+		*value = !*value;
+		break;
+	case GPIO_AP_EC_S3_S0_L:
+		*signal = GPIO_PP900_PLL_EN;
+		break;
+	case GPIO_PP900_PLL_EN:
+		*signal = GPIO_AP_EC_S3_S0_L;
+		break;
+	default:
+		break;
+	}
 }
 
 static void overtemp_interrupt_enable(void)
