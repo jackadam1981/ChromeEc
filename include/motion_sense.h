@@ -106,8 +106,18 @@ struct motion_sensor_t {
 
 	/* state parameters */
 	enum sensor_state state;
-	vector_3_t raw_xyz;
-	vector_3_t xyz;
+	/* can be used to store raw x,y,z axis values or pressure
+	 * depending upon the type of sensor
+	 * */
+	union {
+		vector_3_t raw_xyz;
+		int raw_pressure;
+	};
+
+	union {
+		int pressure;
+		vector_3_t xyz;
+	};
 
 	/* How many flush events are pending */
 	uint32_t flush_pending;

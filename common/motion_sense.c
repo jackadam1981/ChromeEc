@@ -1456,6 +1456,7 @@ DECLARE_CONSOLE_COMMAND(accelinfo, command_display_accel_info,
 	" and set calculation frequency.", NULL);
 #endif /* CONFIG_CMD_ACCEL_INFO */
 
+
 #ifdef CONFIG_ACCEL_INTERRUPTS
 /* TODO(crosbug.com/p/426659): this code is broken, does not with ST sensors. */
 void accel_int_lid(enum gpio_signal signal)
@@ -1540,3 +1541,60 @@ DECLARE_CONSOLE_COMMAND(fiforead, motion_sense_read_fifo,
 #endif
 
 #endif /* CONFIG_CMD_ACCELS */
+
+#ifdef CONFIG_CMD_BARO
+static int command_baro_read(int argc, char **argv)
+{
+	int rv;
+	int val[3];
+	struct motion_sensor_t *sensor;
+
+	sensor = &motion_sensors[BASE_BARO];
+	if (!sensor && !(sensor->drv))
+		return -1;
+
+	rv = sensor->drv->read(sensor, val);
+	switch (rv) {
+	case EC_SUCCESS:
+		ccprintf("Compensated pressure = %dPa\n", val[0]);
+		break;
+	default:
+		ccprintf("Error %d\n", rv);
+	}
+
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(baro_read, command_baro_read,
+			NULL,
+			"Print pressure value",
+			NULL);
+
+static int command_baro_init(int argc, char **argv)
+{
+	int rv;
+	struct motion_sensor_t *sensor;
+
+	sensor = &motion_sensors[BASE_BARO];
+	if (!sensor && !(sensor->drv))
+		return -1;
+
+	rv = sensor->drv->init(sensor);
+
+	switch (rv) {
+	case EC_SUCCESS:
+		ccprintf("%d Baro init successful\n");
+		break;
+	default:
+		ccprintf("Baro initialization error %d\n", rv);
+	}
+
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(baro_init, command_baro_init,
+			NULL,
+			"Init barometer",
+			NULL);
+
+#endif /* CONFIG_CMD_BARO */
