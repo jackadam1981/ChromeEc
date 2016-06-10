@@ -271,6 +271,13 @@
 #undef CONFIG_BOARD_POST_GPIO_INIT
 
 /*
+ * HACK: Call board_gpio_remap() to remap GPIO signals / values at run-time,
+ * to support different GPIO configurations with the same image.
+ * TODO(crosbug.com/p/54265): Remove this once we're done with old kevin / gru.
+ */
+#undef CONFIG_GPIO_REMAP_HACK
+
+/*
  * Call board_config_pre_init() before any inits are called.  See
  * include/board_config.h for more information.
  */

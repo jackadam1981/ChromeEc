@@ -23,6 +23,9 @@
 
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands for testing */
 
+/* TODO(crosbug.com/p/54265): Remove once we're done with old kevin / gru. */
+#define CONFIG_GPIO_REMAP_HACK
+
 /*
  * We are code space-constrained on kevin, so take 4K that is normally used
  * as data RAM (was 30K, now 26K) and use it for code RAM (was 96K, now 100K)
@@ -190,6 +193,12 @@ enum sensor_id {
 
 void board_reset_pd_mcu(void);
 int board_get_version(void);
+
+/**
+ * Hack GPIO remap function.
+ * TODO(crosbug.com/p/54265): Remove once we're done with old kevin / gru.
+ */
+void board_gpio_remap(enum gpio_signal *signal, int *value);
 
 #endif /* !__ASSEMBLER__ */
 

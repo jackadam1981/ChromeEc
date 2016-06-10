@@ -95,8 +95,10 @@ GPIO(LID_ACCEL_INT_L,      PIN(C, 7), GPIO_INPUT | GPIO_PULL_UP)
 /* KSO2 is inverted */
 GPIO(KBD_KSO2,             PIN(1, 7), GPIO_OUT_LOW)
 
-GPIO(USB_C0_5V_EN,       PIN(D, 3), GPIO_OUT_LOW)
-GPIO(USB_C1_5V_EN,       PIN(D, 2), GPIO_OUT_LOW)
+/* Let signals float to accommodate both old and new GPIO configs. */
+/* TODO(crosbug.com/p/54265): Change once we're done with old kevin / gru. */
+GPIO(USB_C0_5V_EN,         PIN(D, 3), GPIO_OUT_HIGH | GPIO_OPEN_DRAIN)
+GPIO(USB_C1_5V_EN,         PIN(D, 2), GPIO_OUT_HIGH | GPIO_OPEN_DRAIN)
 
 GPIO(ENTERING_RW,          PIN(7, 6), GPIO_OUT_LOW)
 GPIO(SYS_RST_L,            PIN(6, 1), GPIO_OUT_HIGH | GPIO_OPEN_DRAIN)
