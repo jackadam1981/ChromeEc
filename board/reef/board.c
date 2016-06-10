@@ -9,6 +9,7 @@
 #include "adc_chip.h"
 #include "als.h"
 #include "button.h"
+#include "barometer.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "charger.h"
@@ -18,6 +19,7 @@
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/bmp280.h"
 #include "driver/charger/bd99955.h"
 #include "driver/tcpm/anx74xx.h"
 #include "driver/tcpm/tcpci.h"
@@ -247,6 +249,22 @@ struct ec_thermal_config thermal_params[] = {
 	{{0, 0, 0}, 0, 0},	/* Charger */
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
+
+/* Barometer instances */
+const struct baro_sensor_t baro[] = {
+	/* bmp280: Has temperature and pressure sensor */
+	{
+	.name = "BMP280 Pressure",
+	.port = I2C_PORT_BARO,
+	.addr = BMP280_I2C_ADDRESS1,
+	.func = BAROSENSOR_FUNC_PRESSURE,
+	.mode = BMP280_STANDARD_RESOLUTION_MODE,
+	.init = bmp280_init,
+	.read = bmp280_read_uncomp_pressure,
+	.comp = bmp280_compensate_pressure,
+	.set_work_mode = bmp280_set_work_mode,
+	},
+};
 
 /* ALS instances. Must be in same order as enum als_id. */
 struct als_t als[] = {
