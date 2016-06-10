@@ -7,6 +7,8 @@
 
 CONSOLE_CHANNEL(CC_COMMAND,      "command")
 CONSOLE_CHANNEL(CC_ACCEL,        "accel")
+CONSOLE_CHANNEL(CC_BARO,        "baro")
+
 #ifdef CONFIG_EXTENSION_COMMAND
 CONSOLE_CHANNEL(CC_EXTENSION,    "extension")
 #endif
