@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c31bc859_d1894f8c",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-06-10T07:34:44Z",
+      "side": 1,
+      "message": "Under DER, encoding such at XX820001 is not legal, no? Since not minimally encoded?\nYour DER parser tolerates it though, might want to point that out in the comment. Maybe is more a generic ASN.1 parser?",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "8d98a3380801932357d00597d9c3dcf05236ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c31bc859_31b0e34e",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-06-10T07:34:44Z",
+      "side": 1,
+      "message": "Why else? The if() body ends in return already.\nReads more complicated than it is now.",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 7
+      },
+      "revId": "8d98a3380801932357d00597d9c3dcf05236ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c31bc859_51ad5ff5",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-06-10T07:34:44Z",
+      "side": 1,
+      "message": "Same here, no else?",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 7
+      },
+      "revId": "8d98a3380801932357d00597d9c3dcf05236ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c31bc859_b1d69361",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-06-10T07:34:44Z",
+      "side": 1,
+      "message": "this is a repeat of the if body() above. Merge?\nThus get obj_len, obj_len_bytes and then have common remainder of checks and return?",
+      "revId": "8d98a3380801932357d00597d9c3dcf05236ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c31bc859_f17e4b53",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-06-10T07:34:44Z",
+      "side": 1,
+      "message": "certificate",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 31
+      },
+      "revId": "8d98a3380801932357d00597d9c3dcf05236ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c31bc859_71ec1b32",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-06-10T07:34:44Z",
+      "side": 1,
+      "message": "At some point you should also check that the cert is about a key/subject you care about, not just that the cert is signed..",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 4
+      },
+      "revId": "8d98a3380801932357d00597d9c3dcf05236ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c31bc859_11fda7de",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-06-10T07:34:44Z",
+      "side": 1,
+      "message": "While seems bit much. At most there\u0027s one 0x00 in case the signature integer has its high bit set and sig_len \u003d\u003d pub_key size, no?\n\nAnything else is invalid (bigger, more than 1 0x00, ..)\n\nCan rsa_verify handle the case where sig_len \u003c pub_key size? That\u0027s legal if rare (\u003c 1/512)",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 6
+      },
+      "revId": "8d98a3380801932357d00597d9c3dcf05236ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
