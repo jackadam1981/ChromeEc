@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f0ba862_63516a1c",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-06-10T22:45:25Z",
+      "side": 1,
+      "message": "What\u0027s wrong w/ 127?\nSeems tighter, ~128 as int is not 127",
+      "range": {
+        "startLine": 53,
+        "startChar": 31,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "dd7b2df447d8da3cf8c8861a6decc4965a1ccd3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
