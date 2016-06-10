@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2f0ba862_5251921b",
+        "filename": "extra/usb_serial/51-google-serial.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1129901
+      },
+      "writtenOn": "2016-06-10T18:50:47Z",
+      "side": 1,
+      "message": "Don\u0027t know how to, feel free to modify it.",
+      "parentUuid": "2f0ba862_8f247556",
+      "range": {
+        "startLine": 38,
+        "startChar": 40,
+        "endLine": 38,
+        "endChar": 64
+      },
+      "revId": "9152d4d4b371fe0af6217f0d7272b59b1172eb22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f0ba862_4f33ada1",
         "filename": "extra/usb_serial/51-google-serial.rules",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-06-10T18:03:15Z",
       "side": 1,
       "message": "why the one above is forcing the modprobe and not this one ?",
+      "range": {
+        "startLine": 40,
+        "startChar": 65,
+        "endLine": 40,
+        "endChar": 145
+      },
+      "revId": "9152d4d4b371fe0af6217f0d7272b59b1172eb22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f0ba862_d25c6234",
+        "filename": "extra/usb_serial/51-google-serial.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129901
+      },
+      "writtenOn": "2016-06-10T18:50:47Z",
+      "side": 1,
+      "message": "Just missed. I will add it.",
+      "parentUuid": "2f0ba862_4f33ada1",
       "range": {
         "startLine": 40,
         "startChar": 65,
