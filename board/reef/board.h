@@ -14,6 +14,9 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
+/* EC console commands  */
+#define CONFIG_CMD_BARO
+
 /* Battery */
 #define CONFIG_BATTERY_CUT_OFF
 #define CONFIG_BATTERY_PRESENT_GPIO GPIO_EC_BATT_PRES_L
@@ -110,6 +113,7 @@
 #define I2C_PORT_GYRO                   NPCX_I2C_PORT1
 #define I2C_PORT_ALS                    NPCX_I2C_PORT2
 #define I2C_PORT_ACCEL                  NPCX_I2C_PORT2
+#define I2C_PORT_BARO	                NPCX_I2C_PORT2
 #define I2C_PORT_BATTERY                NPCX_I2C_PORT3
 #define I2C_PORT_CHARGER                NPCX_I2C_PORT3
 #define I2C_PORT_PD_MCU                 NPCX_I2C_PORT3
@@ -172,6 +176,15 @@ enum temp_sensor_id {
 	TEMP_SENSOR_CHARGER,
 	TEMP_SENSOR_COUNT
 };
+
+/* Barometer sensor */
+enum baro_id {
+	BARO_BMP280 = 0,
+
+	BARO_COUNT
+};
+
+
 
 /* Light sensors */
 enum als_id {
