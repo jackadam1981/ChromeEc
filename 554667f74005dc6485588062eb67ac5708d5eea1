@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f0ba862_32204ea5",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2016-06-10T18:33:46Z",
+      "side": 1,
+      "message": "Don\u0027t we continue charging USB-A in S3?  We\u0027re not disabling 5V until S5 anyway.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 42
+      },
+      "revId": "554667f74005dc6485588062eb67ac5708d5eea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f0ba862_92101a50",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2016-06-10T18:33:46Z",
+      "side": 1,
+      "message": "Similarly, we probably need something to deal with HID wake...not for this patch, though.",
+      "range": {
+        "startLine": 213,
+        "startChar": 17,
+        "endLine": 213,
+        "endChar": 37
+      },
+      "revId": "554667f74005dc6485588062eb67ac5708d5eea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
