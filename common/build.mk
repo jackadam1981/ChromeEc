@@ -26,6 +26,7 @@ common-$(CONFIG_BATTERY_BQ27541)+=battery.o
 common-$(CONFIG_BATTERY_BQ27621)+=battery.o
 common-$(CONFIG_BATTERY_SMART)+=battery.o
 common-$(CONFIG_BUTTON_COUNT)+=button.o
+common-y+=barometer.o
 common-$(CONFIG_CAPSENSE)+=capsense.o
 common-$(CONFIG_CASE_CLOSED_DEBUG)+=case_closed_debug.o
 common-$(CONFIG_CHARGE_MANAGER)+=charge_manager.o
