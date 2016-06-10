@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c31bc859_1854e7ef",
+        "filename": "board/amenia/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-06-10T16:49:38Z",
+      "side": 1,
+      "message": "Should you add .clear_hpd \u003d \u0026anx74xx_tcpc_clear_hpd_status?",
+      "revId": "16e722cda4087dc567ba93ad12f82cc063adbffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c31bc859_b82cb381",
+        "filename": "board/amenia/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-06-10T16:49:38Z",
+      "side": 1,
+      "message": ".clear_hpd \u003d \u0026ps8751_tcpc_clear_hpd_status",
+      "revId": "16e722cda4087dc567ba93ad12f82cc063adbffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c31bc859_58357fc5",
+        "filename": "board/amenia/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-06-10T16:49:38Z",
+      "side": 1,
+      "message": "You had clear_hpd_status in this place before. Do you want to add another function pointer for that for both ports instead of using the same hpd_update?\n\nFor analogix anx74xx_tcpc_clear_hpd_status clears bit 4(HPD_OUT_DATA) and 5(HPD_OEN), whereas update_hpd_status would clear only bit 4.",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 1
+      },
+      "revId": "16e722cda4087dc567ba93ad12f82cc063adbffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
