@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2f0ba862_18c9e915",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-06-10T21:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31bc859_d1894f8c",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "8d98a3380801932357d00597d9c3dcf05236ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c31bc859_31b0e34e",
         "filename": "chip/g/dcrypto/x509.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-06-10T07:34:44Z",
       "side": 1,
       "message": "Why else? The if() body ends in return already.\nReads more complicated than it is now.",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 7
+      },
+      "revId": "8d98a3380801932357d00597d9c3dcf05236ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f0ba862_58c371f3",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-06-10T21:49:51Z",
+      "side": 1,
+      "message": "Reorganized this code a bit.  Sorry, it\u0027s basically a new code review.",
+      "parentUuid": "c31bc859_31b0e34e",
       "range": {
         "startLine": 46,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2f0ba862_b8b7fd9b",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-06-10T21:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31bc859_51ad5ff5",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 7
+      },
+      "revId": "8d98a3380801932357d00597d9c3dcf05236ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c31bc859_b1d69361",
         "filename": "chip/g/dcrypto/x509.c",
         "patchSetId": 3
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "2f0ba862_63096a7b",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-06-10T21:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31bc859_b1d69361",
+      "revId": "8d98a3380801932357d00597d9c3dcf05236ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c31bc859_f17e4b53",
         "filename": "chip/g/dcrypto/x509.c",
         "patchSetId": 3
@@ -99,6 +189,30 @@
       "writtenOn": "2016-06-10T07:34:44Z",
       "side": 1,
       "message": "certificate",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 31
+      },
+      "revId": "8d98a3380801932357d00597d9c3dcf05236ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f0ba862_a31a32be",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-06-10T21:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31bc859_f17e4b53",
       "range": {
         "startLine": 73,
         "startChar": 20,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "2f0ba862_4371c6fa",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-06-10T21:49:51Z",
+      "side": 1,
+      "message": "Will add that once the certificate format is confirmed.",
+      "parentUuid": "c31bc859_71ec1b32",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 4
+      },
+      "revId": "8d98a3380801932357d00597d9c3dcf05236ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c31bc859_11fda7de",
         "filename": "chip/g/dcrypto/x509.c",
         "patchSetId": 3
@@ -145,6 +283,30 @@
       "writtenOn": "2016-06-10T07:34:44Z",
       "side": 1,
       "message": "While seems bit much. At most there\u0027s one 0x00 in case the signature integer has its high bit set and sig_len \u003d\u003d pub_key size, no?\n\nAnything else is invalid (bigger, more than 1 0x00, ..)\n\nCan rsa_verify handle the case where sig_len \u003c pub_key size? That\u0027s legal if rare (\u003c 1/512)",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 6
+      },
+      "revId": "8d98a3380801932357d00597d9c3dcf05236ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f0ba862_036fbe12",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-06-10T21:49:51Z",
+      "side": 1,
+      "message": "Ah, good point.  Done.",
+      "parentUuid": "c31bc859_11fda7de",
       "range": {
         "startLine": 149,
         "startChar": 1,
