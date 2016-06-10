@@ -122,6 +122,11 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5S3:
+/* TODO(crosbug.com/p/54265): Remove once we're done with old kevin / gru. */
+#ifdef CONFIG_GPIO_REMAP_HACK
+		/* Make sure power signals are in their _real_ init state */
+		msleep(100);
+#endif
 		gpio_set_level(GPIO_PPVAR_LOGIC_EN, 1);
 		gpio_set_level(GPIO_PP900_AP_EN, 1);
 		msleep(2);
