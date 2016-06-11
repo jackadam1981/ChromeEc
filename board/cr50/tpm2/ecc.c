@@ -7,11 +7,15 @@
  */
 
 #include "CryptoEngine.h"
+#include "Global.h"
 #include "TPMB.h"
 
 #include "trng.h"
 #include "util.h"
 #include "dcrypto.h"
+#include "key_ladder.h"
+
+#include "registers.h"
 
 #include "cryptoc/p256.h"
 #include "cryptoc/p256_ecdsa.h"
@@ -22,6 +26,7 @@ static void reverse_tpm2b(TPM2B *b)
 }
 
 TPM2B_BYTE_VALUE(4);
+TPM2B_BYTE_VALUE(32);
 
 static int check_p256_param(const TPM2B_ECC_PARAMETER *a)
 {
@@ -129,12 +134,15 @@ CRYPT_RESULT _cpri__EccPointMultiply(
 
 /* Key generation based on FIPS-186.4 section B.1.2 (Key Generation by
  * Testing Candidates) */
+BUILD_ASSERT(PRIMARY_SEED_SIZE == sizeof(p256_int));
 CRYPT_RESULT _cpri__GenerateKeyEcc(
 	TPMS_ECC_POINT *q, TPM2B_ECC_PARAMETER *d,
 	TPM_ECC_CURVE curve_id,	TPM_ALG_ID hash_alg,
 	TPM2B *seed, const char *label,	TPM2B *extra, UINT32 *counter)
 {
+	int i;
 	TPM2B_4_BYTE_VALUE marshaled_counter = { .t = {4} };
+	TPM2B_32_BYTE_VALUE local_seed = { .t = {32} };
 	uint32_t count = 0;
 	uint8_t key_bytes[P256_NBYTES];
 
@@ -149,6 +157,22 @@ CRYPT_RESULT _cpri__GenerateKeyEcc(
 		count = *counter;
 	if (count == 0)
 		count++;
+
+	/* For ECC key generation, mask the primary seed, so that it
+	 * has a derivation tree distinct from RSA key derivation.
+	 * Masking is done via a constant hardware derived secret. */
+
+	/* Compute HPRIV by running cert 8. */
+	dcrypto_key_ladder_step(KEYMGR_CERT_8);
+	for (i = 0; i < sizeof(p256_int) / sizeof(uint32_t); i++) {
+		uint32_t word = GREG32_ADDR(KEYMGR, HKEY_FRR0)[i];
+
+		memcpy(&local_seed.t.buffer[i * sizeof(uint32_t)],
+			&word, sizeof(word));
+	}
+	for (i = 0; i < PRIMARY_SEED_SIZE; i++)
+		local_seed.t.buffer[i] ^= seed->buffer[i];
+	seed = &local_seed.b;
 
 	for (; count != 0; count++) {
 		memcpy(marshaled_counter.t.buffer, &count, sizeof(count));
@@ -169,6 +193,8 @@ CRYPT_RESULT _cpri__GenerateKeyEcc(
 			break;
 		}
 	}
+	/* TODO(ngm): implement secure memset. */
+	memset(local_seed.b.buffer, 0, PRIMARY_SEED_SIZE);
 
 	if (count == 0)
 		FAIL(FATAL_ERROR_INTERNAL);
