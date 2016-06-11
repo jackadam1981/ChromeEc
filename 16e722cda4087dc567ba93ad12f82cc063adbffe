@@ -103,6 +103,30 @@
       "revId": "16e722cda4087dc567ba93ad12f82cc063adbffe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fe920fa_f4e0b637",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-06-11T02:07:07Z",
+      "side": 1,
+      "message": "For board that support two or more different tcpc, using the function pointer in the struct simplify the SVDM DP code slightly from this:\n\nif (port \u003d\u003d 0)\n\tanx74xx_tcpc_update_hpd_status(port, 1, 0);\nelse if (port \u003d\u003d 1)\n\tps8751_tcpc_update_hpd_status(port, 1, 0);",
+      "parentUuid": "6fe920fa_b12c80f9",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 56
+      },
+      "revId": "16e722cda4087dc567ba93ad12f82cc063adbffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
