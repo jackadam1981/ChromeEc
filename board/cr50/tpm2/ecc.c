@@ -7,11 +7,14 @@
  */
 
 #include "CryptoEngine.h"
+#include "Global.h"
 #include "TPMB.h"
 
 #include "trng.h"
 #include "util.h"
 #include "dcrypto.h"
+
+#include "registers.h"
 
 #include "cryptoc/p256.h"
 #include "cryptoc/p256_ecdsa.h"
@@ -22,6 +25,7 @@ static void reverse_tpm2b(TPM2B *b)
 }
 
 TPM2B_BYTE_VALUE(4);
+TPM2B_BYTE_VALUE(32);
 
 static int check_p256_param(const TPM2B_ECC_PARAMETER *a)
 {
@@ -135,8 +139,10 @@ CRYPT_RESULT _cpri__GenerateKeyEcc(
 	TPM2B *seed, const char *label,	TPM2B *extra, UINT32 *counter)
 {
 	TPM2B_4_BYTE_VALUE marshaled_counter = { .t = {4} };
+	TPM2B_32_BYTE_VALUE local_seed = { .t = {32} };
 	uint32_t count = 0;
 	uint8_t key_bytes[P256_NBYTES];
+	LITE_HMAC_CTX hmac;
 
 	if (curve_id != TPM_ECC_NIST_P256)
 		return CRYPT_PARAMETER;
@@ -149,6 +155,14 @@ CRYPT_RESULT _cpri__GenerateKeyEcc(
 		count = *counter;
 	if (count == 0)
 		count++;
+
+	/* Hash down the primary seed for ECC key generation, so that
+	 * the derivation tree is distinct from RSA key derivation. */
+	DCRYPTO_HMAC_SHA256_init(&hmac, seed->buffer, seed->size);
+	HASH_update(&hmac.hash, "ECC", 4);
+	memcpy(local_seed.t.buffer, DCRYPTO_HMAC_final(&hmac),
+	       local_seed.t.size);
+	seed = &local_seed.b;
 
 	for (; count != 0; count++) {
 		memcpy(marshaled_counter.t.buffer, &count, sizeof(count));
@@ -169,6 +183,8 @@ CRYPT_RESULT _cpri__GenerateKeyEcc(
 			break;
 		}
 	}
+	/* TODO(ngm): implement secure memset. */
+	memset(local_seed.t.buffer, 0, local_seed.t.size);
 
 	if (count == 0)
 		FAIL(FATAL_ERROR_INTERNAL);
