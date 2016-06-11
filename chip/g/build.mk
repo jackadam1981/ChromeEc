@@ -46,6 +46,8 @@ chip-$(CONFIG_DCRYPTO)+= dcrypto/p256_ecies.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/rsa.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/sha1.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/sha256.o
+chip-$(CONFIG_DCRYPTO)+= loader/debug_printf.o
+chip-$(CONFIG_DCRYPTO)+= loader/key_ladder.o
 
 chip-$(CONFIG_SPI_MASTER)+=spi_master.o
 
@@ -72,6 +74,7 @@ chip-$(CONFIG_LOW_POWER_IDLE)+=idle.o
 
 chip-$(CONFIG_FLASH)+=flash.o
 dirs-y += chip/g/dcrypto
+dirs-y += chip/g/loader
 
 ifneq ($(CONFIG_CUSTOMIZED_RO),)
 custom-ro_objs-y  = chip/g/clock.o
