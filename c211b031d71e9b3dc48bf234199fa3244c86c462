@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fe0143e_82a7bacf",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-06-11T17:48:31Z",
+      "side": 1,
+      "message": "How do you make sure the hidden key ladder registers that the are inputs to cert 8 have the right values here?\nTypically one has to rerun the key ladder from the start, every time..\n\nAlso, cert 8 is low down the ladder, does not depend on FRK etc. Is that what we want?\n\nTo be sure we\u0027re talking about the same mechanics: a single key_ladder_step is a single hmac-sha256 on two inputs. There are hidden registers like isr0, isr1, .. One needs to call the key_ladder_steps in the right order to get consistent derived values.\n\nI was thinking more something like we store master seed,\nderive rsa from hmac(seed, \"rsa\") and we share that derived seed w/ CA.\nAnd we generate ecc with hmac(seed, \"ecc\") and not share that derived seed, just the public key. And not share the master seed.",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 16
+      },
+      "revId": "c211b031d71e9b3dc48bf234199fa3244c86c462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
