@@ -63,12 +63,17 @@ void usb_charger_vbus_change(int port, int vbus_level)
 	/* Update VBUS supplier and signal VBUS change to USB_CHG task */
 	update_vbus_supplier(port, vbus_level);
 
-	/* USB Charger task */
-	task_set_event(USB_CHG_PORT_TO_TASK_ID(port), USB_CHG_EVENT_VBUS, 0);
-
 #ifdef CONFIG_USB_PD_VBUS_DETECT_CHARGER
+	/* USB Charger task */
+	task_set_event(TASK_ID_USB_CHG,
+		       port ? USB_CHG_EVENT_VBUS_P1 : USB_CHG_EVENT_VBUS_P0,
+		       0);
+
 	/* USB PD task */
 	task_wake(PD_PORT_TO_TASK_ID(port));
+#else
+	/* USB Charger task */
+	task_set_event(USB_CHG_PORT_TO_TASK_ID(port), USB_CHG_EVENT_VBUS, 0);
 #endif
 }
 

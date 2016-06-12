@@ -48,9 +48,14 @@ int usb_charge_set_mode(int usb_port_id, enum usb_charge_mode mode);
 int usb_charge_ports_enabled(void);
 
 /* Events handled by the USB_CHG task */
+#ifdef CONFIG_USB_PD_VBUS_DETECT_CHARGER
+#define USB_CHG_EVENT_VBUS_P0 TASK_EVENT_CUSTOM(1)
+#define USB_CHG_EVENT_VBUS_P1 TASK_EVENT_CUSTOM(2)
+#else
 #define USB_CHG_EVENT_BC12 TASK_EVENT_CUSTOM(1)
 #define USB_CHG_EVENT_VBUS TASK_EVENT_CUSTOM(2)
 #define USB_CHG_EVENT_INTR TASK_EVENT_CUSTOM(4)
+#endif
 
 /*
  * Define USB_CHG_PORT_TO_TASK_ID() and TASK_ID_TO_USB_CHG__PORT() macros to
