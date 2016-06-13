@@ -22,6 +22,30 @@
       "revId": "673c1118943e5818ed6ef820dcb3ca8915b5b671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "142a7d7a_d111c654",
+        "filename": "extra/usb_serial/51-google-serial-fallback.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-06-13T22:00:21Z",
+      "side": 1,
+      "message": "A good point, I\u0027ve been spending the day trying to figure out how to make udev escape quotes in the RUN command to make it possible to only add the new device if it doesn\u0027t already exist, and haven\u0027t been able to make it work.  The only solution I can see is to make a small script that udev would call to do the check and update of the IDs.  But I\u0027m not sure if that\u0027s a good idea.  Any thoughts?",
+      "parentUuid": "8fe0143e_713402ed",
+      "range": {
+        "startLine": 6,
+        "startChar": 174,
+        "endLine": 6,
+        "endChar": 256
+      },
+      "revId": "673c1118943e5818ed6ef820dcb3ca8915b5b671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
