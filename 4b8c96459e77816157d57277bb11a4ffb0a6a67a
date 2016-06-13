@@ -213,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "142a7d7a_37759a6f",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-06-13T23:34:50Z",
+      "side": 1,
+      "message": "Okay, I will remove it. It doesn\u0027t have any advantages.\nI added it because we get switch disconnect for BC1.2 also.",
+      "parentUuid": "142a7d7a_51727699",
+      "range": {
+        "startLine": 791,
+        "startChar": 2,
+        "endLine": 791,
+        "endChar": 32
+      },
+      "revId": "4b8c96459e77816157d57277bb11a4ffb0a6a67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fe0143e_1c74ad70",
         "filename": "include/usb_charge.h",
         "patchSetId": 1
