@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fe0143e_dcc7e5a0",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-13T20:12:56Z",
+      "side": 1,
+      "message": "Use HAS_TASK.. here as I discussed in the header file comment.",
+      "range": {
+        "startLine": 66,
+        "startChar": 7,
+        "endLine": 66,
+        "endChar": 40
+      },
+      "revId": "4b8c96459e77816157d57277bb11a4ffb0a6a67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8fe0143e_bce5c146",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-13T20:12:56Z",
+      "side": 1,
+      "message": "We can use (1 \u003c\u003c port) here.",
+      "range": {
+        "startLine": 69,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 62
+      },
+      "revId": "4b8c96459e77816157d57277bb11a4ffb0a6a67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8fe0143e_3cd25168",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-13T20:12:56Z",
+      "side": 1,
+      "message": "Put only the task_wake call behind CONFIG_USB_PD_VBUS_DETECT_CHARGER.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 37
+      },
+      "revId": "4b8c96459e77816157d57277bb11a4ffb0a6a67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8fe0143e_7c5a19e0",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-13T20:12:56Z",
+      "side": 1,
+      "message": "Does this need to be a global?",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "4b8c96459e77816157d57277bb11a4ffb0a6a67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8fe0143e_1c74ad70",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-13T20:12:56Z",
+      "side": 1,
+      "message": "Let\u0027s not reuse this CONFIG, it\u0027s not directly related. Instead, let\u0027s check for HAS_TASK_USB_CHG_P0. So, we\u0027ll have to configurations:\n\nHAS_TASK_USB_CHG_P* - one task per port.\nHAS_TASK_USB - one task for all ports.\n\nLet\u0027s also add a comment here explaining this.",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 40
+      },
+      "revId": "4b8c96459e77816157d57277bb11a4ffb0a6a67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
