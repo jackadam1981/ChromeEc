@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "cf992cfb_9c9c652a",
+        "filename": "board/elm/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-06-13T03:59:46Z",
+      "side": 1,
+      "message": "this was changed to anx7688_hpd_disable() in the later CL:347181, which only disables HDMI_HPD in anx7688 side.",
+      "parentUuid": "03c6c0d9_25b08e4e",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 22
+      },
+      "revId": "ce2df2963b5dda435ce630f1482d8a3dfcbf1f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03c6c0d9_68d89b30",
         "filename": "driver/tcpm/anx7688.c",
         "patchSetId": 27
@@ -128,6 +152,30 @@
       "writtenOn": "2016-06-08T18:41:46Z",
       "side": 1,
       "message": "reading the ANX7688 register spec, it\u0027s impossible to guess that this bit is doing what it is supposed to do here.\nBut I imagine you have probed the HPD output for this case",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 39
+      },
+      "revId": "ce2df2963b5dda435ce630f1482d8a3dfcbf1f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf992cfb_3c07d146",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-06-13T03:59:46Z",
+      "side": 1,
+      "message": "you can get the document from https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d52815#c7 \nand check Table 8-45 for the register definition, if you don\u0027t have this one in hand.",
+      "parentUuid": "03c6c0d9_68d89b30",
       "range": {
         "startLine": 103,
         "startChar": 0,
@@ -163,6 +211,30 @@
     },
     {
       "key": {
+        "uuid": "cf992cfb_5c049d3f",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-06-13T03:59:46Z",
+      "side": 1,
+      "message": "Yeah, thanks for pointing this out, will fix this.",
+      "parentUuid": "03c6c0d9_e80e4b81",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 43
+      },
+      "revId": "ce2df2963b5dda435ce630f1482d8a3dfcbf1f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03c6c0d9_48795fde",
         "filename": "driver/tcpm/anx7688.c",
         "patchSetId": 27
@@ -174,6 +246,30 @@
       "writtenOn": "2016-06-08T18:41:46Z",
       "side": 1,
       "message": "maybe I missed the previous discussion, but why not doing a static initialization as everything else ?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 46
+      },
+      "revId": "ce2df2963b5dda435ce630f1482d8a3dfcbf1f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf992cfb_7c01592e",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-06-13T03:59:46Z",
+      "side": 1,
+      "message": "not sure but there were some comments from Shawn in CL:346873:\n\"\nChecking closer, the tcpci_tcpm_* functions are declared static in tcpci.c (as they should be) so what we already have here may be the most elegant solution. We just need to change the HOOK_INIT priority.\n\"",
+      "parentUuid": "03c6c0d9_48795fde",
       "range": {
         "startLine": 171,
         "startChar": 0,
