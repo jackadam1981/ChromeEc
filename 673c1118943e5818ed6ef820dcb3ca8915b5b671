@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fe0143e_713402ed",
+        "filename": "extra/usb_serial/51-google-serial-fallback.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-13T18:36:45Z",
+      "side": 1,
+      "message": "please note that if you run this command one thousand times with the same ids, you will get one thousand entries in /sys/bus/usb-serial/drivers/generic/new_id\n\nI imagine we can likely avoid the duplication by adding a condition to this rule, the cost is about 40 bytes of RAM and searching through the list on device insertion.",
+      "range": {
+        "startLine": 6,
+        "startChar": 174,
+        "endLine": 6,
+        "endChar": 256
+      },
+      "revId": "673c1118943e5818ed6ef820dcb3ca8915b5b671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
