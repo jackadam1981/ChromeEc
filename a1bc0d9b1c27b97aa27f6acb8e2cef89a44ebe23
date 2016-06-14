@@ -22,6 +22,30 @@
       "revId": "a1bc0d9b1c27b97aa27f6acb8e2cef89a44ebe23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "142a7d7a_e863aff4",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-06-14T05:59:37Z",
+      "side": 1,
+      "message": "Thanks Shawn, nice catch. I will remove vbus_provided[] from here. Keep bc12_type[] only as we store the bc12 type for detach purpose.",
+      "parentUuid": "142a7d7a_22c436fb",
+      "range": {
+        "startLine": 830,
+        "startChar": 2,
+        "endLine": 831,
+        "endChar": 45
+      },
+      "revId": "a1bc0d9b1c27b97aa27f6acb8e2cef89a44ebe23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
