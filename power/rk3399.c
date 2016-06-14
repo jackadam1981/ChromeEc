@@ -91,15 +91,19 @@ enum power_state power_handle_state(enum power_state state)
 			return POWER_S5G3;
 		else
 			return POWER_S5S3;
+		break;
 
 	case POWER_S3:
 		if (!power_has_signals(IN_PGOOD_S3) || forcing_shutdown)
 			return POWER_S3S5;
-		else if (power_has_signals(IN_SUSPEND_DEASSERTED))
+		else if (!gpio_get_level(GPIO_AP_EC_S3_S0_L))
 			return POWER_S3S0;
+		break;
 
 	case POWER_S0:
 		if (!power_has_signals(IN_PGOOD_S0) || forcing_shutdown)
+			return POWER_S0S3;
+		else if (gpio_get_level(GPIO_AP_EC_S3_S0_L))
 			return POWER_S0S3;
 		break;
 
