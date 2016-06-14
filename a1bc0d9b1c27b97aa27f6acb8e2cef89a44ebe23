@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "142a7d7a_22c436fb",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-14T00:28:07Z",
+      "side": 1,
+      "message": "We don\u0027t even need these local vars, right? Can we re-write usb_charger_process() to not take these params?",
+      "range": {
+        "startLine": 830,
+        "startChar": 2,
+        "endLine": 831,
+        "endChar": 45
+      },
+      "revId": "a1bc0d9b1c27b97aa27f6acb8e2cef89a44ebe23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
