@@ -402,6 +402,9 @@ struct ble_pdu ll_rcv_packet;
 int ble_ll_adv(int chan)
 {
 	int rv;
+	/* Change channel */
+	NRF51_RADIO_FREQUENCY = NRF51_RADIO_FREQUENCY_VAL(chan2freq(chan));
+	NRF51_RADIO_DATAWHITEIV = chan;
 
 	ble_tx(&ll_adv_pdu);
 
@@ -514,12 +517,12 @@ void bluetooth_ll_task(void)
 			usleep(ll_adv_interval_us + ll_pseudo_rand(10000));
 
 			if (get_time().val > deadline.val) {
-				deadline.val = 0;
 				ll_state = STANDBY;
 				break;
 			}
 		break;
 		case STANDBY:
+			deadline.val = 0;
 			CPRINTS("Standby %d events", ll_adv_events);
 			ll_adv_events = 0;
 			task_wait_event(-1);
@@ -539,7 +542,6 @@ void bluetooth_ll_task(void)
 		break;
 		case UNINITIALIZED:
 			ll_adv_events = 0;
-			deadline.val = 0;
 			task_wait_event(-1);
 		break;
 		default:
