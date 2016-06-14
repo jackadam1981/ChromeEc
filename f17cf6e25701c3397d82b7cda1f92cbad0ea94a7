@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "142a7d7a_636c8089",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-14T17:25:52Z",
+      "side": 1,
+      "message": "that\u0027s actually a CPRINTS ...\nalso nit: a single CPRINT might be more compact \nres \u003d tcpm_init(port);\nCPRINTS(\"TCPC p%d init %s\", port, res ? \"failed\" : \"ready\");",
+      "range": {
+        "startLine": 1423,
+        "startChar": 0,
+        "endLine": 1426,
+        "endChar": 41
+      },
+      "revId": "f17cf6e25701c3397d82b7cda1f92cbad0ea94a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "142a7d7a_236678a9",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-14T17:25:52Z",
+      "side": 1,
+      "message": "bikeshed of the day: I prefer decrementing tries (eg. int tries \u003d TCPM_INIT_TRIES;  [...]  \u0026\u0026 tries--)\nbut maybe your wonderful modern compiler is doing as well in both cases.",
+      "range": {
+        "startLine": 263,
+        "startChar": 5,
+        "endLine": 263,
+        "endChar": 15
+      },
+      "revId": "f17cf6e25701c3397d82b7cda1f92cbad0ea94a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
