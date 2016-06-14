@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f42409af_d0d30233",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-06-14T14:59:30Z",
+      "side": 1,
+      "message": "good catch. Could also \u0026\u0026 0xff after memcpy in line 250 to make sure upper bits are ignored.",
+      "revId": "2698aba559975f402190e58c9a8dc6e3d5827e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
