@@ -16,6 +16,24 @@
       "revId": "b7c005b1177fb4ae899c5962f56bbb12f80075ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4888938_f3a268bf",
+        "filename": "board/kevin/led_gru.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-14T21:46:07Z",
+      "side": 1,
+      "message": "Low period (\u003c1ms, \u003c10ms) enables one of the three outputs, according to the datasheet. And yes, I did note that brightness changed for green / amber as I lowered the duty cycle. Brightness for amber was observed by me to seem brighter than green, so I selected a green duty at the bright end of its range and amber at the dull end if its range.",
+      "parentUuid": "f4888938_50f17271",
+      "revId": "b7c005b1177fb4ae899c5962f56bbb12f80075ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
