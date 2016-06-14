@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "d4a1c55f_3c1eb156",
+        "filename": "board/elm/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-14T08:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03c6c0d9_c5e25a12",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 38
+      },
+      "revId": "ce2df2963b5dda435ce630f1482d8a3dfcbf1f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03c6c0d9_25e88eef",
         "filename": "board/elm/usb_pd_policy.c",
         "patchSetId": 27
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "d4a1c55f_dc322ded",
+        "filename": "board/elm/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-14T08:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03c6c0d9_25e88eef",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 34
+      },
+      "revId": "ce2df2963b5dda435ce630f1482d8a3dfcbf1f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03c6c0d9_c58d3a46",
         "filename": "board/elm/usb_pd_policy.c",
         "patchSetId": 27
@@ -82,6 +130,30 @@
       "writtenOn": "2016-06-08T18:41:46Z",
       "side": 1,
       "message": "what is the point of having the 2 different function calls to set the same register on the ANX7688 side ?",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 35
+      },
+      "revId": "ce2df2963b5dda435ce630f1482d8a3dfcbf1f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4a1c55f_fc2fe97f",
+        "filename": "board/elm/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-14T08:00:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03c6c0d9_c58d3a46",
       "range": {
         "startLine": 310,
         "startChar": 0,
@@ -128,6 +200,30 @@
       "writtenOn": "2016-06-13T03:59:46Z",
       "side": 1,
       "message": "this was changed to anx7688_hpd_disable() in the later CL:347181, which only disables HDMI_HPD in anx7688 side.",
+      "parentUuid": "03c6c0d9_25b08e4e",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 22
+      },
+      "revId": "ce2df2963b5dda435ce630f1482d8a3dfcbf1f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4a1c55f_9c2ca58d",
+        "filename": "board/elm/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-14T08:00:37Z",
+      "side": 1,
+      "message": "Done. Move anx7688_hpd_disable() from CL:347181 to here.",
       "parentUuid": "03c6c0d9_25b08e4e",
       "range": {
         "startLine": 334,
@@ -269,6 +365,30 @@
       "writtenOn": "2016-06-13T03:59:46Z",
       "side": 1,
       "message": "not sure but there were some comments from Shawn in CL:346873:\n\"\nChecking closer, the tcpci_tcpm_* functions are declared static in tcpci.c (as they should be) so what we already have here may be the most elegant solution. We just need to change the HOOK_INIT priority.\n\"",
+      "parentUuid": "03c6c0d9_48795fde",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 46
+      },
+      "revId": "ce2df2963b5dda435ce630f1482d8a3dfcbf1f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4a1c55f_bc29617c",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-14T08:00:37Z",
+      "side": 1,
+      "message": "Done.",
       "parentUuid": "03c6c0d9_48795fde",
       "range": {
         "startLine": 171,
