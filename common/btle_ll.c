@@ -399,9 +399,18 @@ uint8_t ll_set_advertising_params(uint8_t *params)
 static uint32_t tx_end, rsp_end, tx_rsp_end;
 struct ble_pdu ll_rcv_packet;
 
+/* Advertises packet that has already been generated
+ * (see function ll_set_advertising_params) on given
+ * channel. Also processes any incoming scan requests.
+ * Returns EC_SUCCESS when packet is received, and
+ * appropriate error value if not.
+ */
 int ble_ll_adv(int chan)
 {
 	int rv;
+	/* Change channel */
+	NRF51_RADIO_FREQUENCY = NRF51_RADIO_FREQUENCY_VAL(chan2freq(chan));
+	NRF51_RADIO_DATAWHITEIV = chan;
 
 	ble_tx(&ll_adv_pdu);
 
@@ -514,12 +523,12 @@ void bluetooth_ll_task(void)
 			usleep(ll_adv_interval_us + ll_pseudo_rand(10000));
 
 			if (get_time().val > deadline.val) {
-				deadline.val = 0;
 				ll_state = STANDBY;
 				break;
 			}
 		break;
 		case STANDBY:
+			deadline.val = 0;
 			CPRINTS("Standby %d events", ll_adv_events);
 			ll_adv_events = 0;
 			task_wait_event(-1);
@@ -539,7 +548,6 @@ void bluetooth_ll_task(void)
 		break;
 		case UNINITIALIZED:
 			ll_adv_events = 0;
-			deadline.val = 0;
 			task_wait_event(-1);
 		break;
 		default:
