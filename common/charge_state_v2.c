@@ -810,25 +810,35 @@ void charger_task(void)
 			curr.state = ST_CHARGE;
 		}
 
+wait_for_it:
 		/*
 		 * TODO(crosbug.com/p/27643): Quit trying if charging too long
 		 * without getting full (CONFIG_CHARGER_TIMEOUT_HOURS).
 		 */
 #ifdef CONFIG_CHARGER_TIMEOUT_HOURS
-	if (curr.state == ST_DISCHARGE) {
-		was_discharging = 1;
-	} else if (was_discharging &&
-		(curr.state == ST_CHARGE || curr.state == ST_PRECHARGE)) {
-		was_discharging = 0;
-		deadline = get_time();
-		deadline.val += CONFIG_CHARGER_TIMEOUT_HOURS * HOUR;
-	}
+		if (curr.state == ST_DISCHARGE) {
+			was_discharging = 1;
+		} else if (was_discharging && (curr.state == ST_CHARGE ||
+			curr.state == ST_PRECHARGE) && !calc_is_full()) {
+			was_discharging = 0;
+			deadline = get_time();
+			deadline.val += CONFIG_CHARGER_TIMEOUT_HOURS * HOUR;
+		}
 
-	if ((was_discharging == 0) && timestamp_expired(deadline, NULL))
-		state_machine_force_idle = 1;
+		if (was_discharging == 0) {
+			if (calc_is_full()) {
+				/* release was_discharging so that we can
+				 * re-check timeout when Battery discharge
+				 * to accept charge current again by itself
+				 */
+				was_discharging = 1;
+			} else if (timestamp_expired(deadline, NULL)) {
+				/* must be !calc_is_full() */
+				state_machine_force_idle = 1;
+				battery_seems_to_be_dead = 1;
+			}
+		}
 #endif
-
-wait_for_it:
 #ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
 		sleep_usec = charger_profile_override(&curr);
 		if (sleep_usec < 0)
