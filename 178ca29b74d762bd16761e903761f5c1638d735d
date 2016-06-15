@@ -70,6 +70,30 @@
       "revId": "178ca29b74d762bd16761e903761f5c1638d735d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bff131_c3c1b65d",
+        "filename": "chip/g/loader/debug_printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-06-15T18:07:24Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b4bff131_830fbe80",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "178ca29b74d762bd16761e903761f5c1638d735d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
