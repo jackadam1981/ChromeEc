@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b47a9131_b179f86a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1112784
+      },
+      "writtenOn": "2016-06-15T14:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94090de0_3d2c1ba5",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "fd2b5d7cf1196a1910ad237589e9f36e9f2e1117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94090de0_dd46bf5b",
         "filename": "extra/usb_serial/51-google-serial-fallback.rules",
         "patchSetId": 2
