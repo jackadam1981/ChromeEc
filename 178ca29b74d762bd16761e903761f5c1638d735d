@@ -22,6 +22,30 @@
       "revId": "178ca29b74d762bd16761e903761f5c1638d735d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bff131_037bcea8",
+        "filename": "chip/g/loader/debug_printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-06-15T17:39:11Z",
+      "side": 1,
+      "message": "I would like to use (in a forthcoming CL) chip/g/key_ladder.o in the RW section, and key_ladder.o depends on debug_printf().\n\nI\u0027m sending this change for review in preparation for the next one.  If you prefer I can batch them together, I was just anticipating a request to split the CLs, hence this change on its own.",
+      "parentUuid": "b4bff131_830fbe80",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "178ca29b74d762bd16761e903761f5c1638d735d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
