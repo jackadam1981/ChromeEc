@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4bff131_3d7edf98",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-06-15T23:29:09Z",
+      "side": 1,
+      "message": "shouldn\u0027t grabbing the lock be part of nvmem_acquire_cache()?",
+      "revId": "4c8e7a213ed949e21476e1af2809990ed238c95e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
