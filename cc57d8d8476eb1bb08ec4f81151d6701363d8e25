@@ -22,6 +22,30 @@
       "revId": "cc57d8d8476eb1bb08ec4f81151d6701363d8e25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b47a9131_2ee847ae",
+        "filename": "board/reef/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-06-15T06:01:52Z",
+      "side": 1,
+      "message": "If we don\u0027t have a PU first then we get a few i2c unwedge messages at the serial console on the way up. Maybe not harmful, probably not ideal either. But then when we go into S5 we have errors if something tries to use I2C.\n\nI\u0027ll try your suggestion tomorrow of enabling/disabling the internal pull resistors only instead of changing between GPIO and alt mode in this file. The NPCX seems to have a special way of doing this for I2C pins (see PUPD_EN0).",
+      "parentUuid": "03208090_551a4cbe",
+      "range": {
+        "startLine": 393,
+        "startChar": 1,
+        "endLine": 401,
+        "endChar": 2
+      },
+      "revId": "cc57d8d8476eb1bb08ec4f81151d6701363d8e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
