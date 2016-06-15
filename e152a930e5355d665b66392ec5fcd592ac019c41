@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4bff131_89acfdb9",
+        "filename": "docs/case_closed_debugging.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-06-15T20:43:21Z",
+      "side": 1,
+      "message": "should this be updated?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "e152a930e5355d665b66392ec5fcd592ac019c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bff131_69a6e1d6",
+        "filename": "docs/case_closed_debugging.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-06-15T20:43:21Z",
+      "side": 1,
+      "message": "I think it would be clearer to write\n\n\"The connector must be plugged in in exactly right way, because ...\" \n\nmodulo proper English :)",
+      "range": {
+        "startLine": 58,
+        "startChar": 25,
+        "endLine": 58,
+        "endChar": 62
+      },
+      "revId": "e152a930e5355d665b66392ec5fcd592ac019c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
