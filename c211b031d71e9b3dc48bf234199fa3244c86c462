@@ -22,6 +22,30 @@
       "revId": "c211b031d71e9b3dc48bf234199fa3244c86c462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8fe0143e_a86f3fe5",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-06-15T17:39:51Z",
+      "side": 1,
+      "message": "Ah, makes sense.  Done.",
+      "parentUuid": "8fe0143e_82a7bacf",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 16
+      },
+      "revId": "c211b031d71e9b3dc48bf234199fa3244c86c462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
