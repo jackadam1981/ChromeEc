@@ -46,6 +46,30 @@
       "revId": "178ca29b74d762bd16761e903761f5c1638d735d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bff131_23336af3",
+        "filename": "chip/g/loader/debug_printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-06-15T17:49:01Z",
+      "side": 1,
+      "message": "I see. I think it makes a little more sense to wait and split them with the next CL, though. Each CL should do only one thing, or close to it. Adding RW stuff for a RO change makes it two things. The +Rw CL will need to move the debug_printf.h header up one level and won\u0027t need the #include \"uart.h\", so let\u0027s do that all together.",
+      "parentUuid": "b4bff131_037bcea8",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "178ca29b74d762bd16761e903761f5c1638d735d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
