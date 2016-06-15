@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4bff131_830fbe80",
+        "filename": "chip/g/loader/debug_printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-06-15T17:29:17Z",
+      "side": 1,
+      "message": "You can delete the entire #else clause, and the #ifdef itself. There is no code in the RW section that uses debug_printf at all. It\u0027s all in chip/g/loader/, where it belongs. RW code has other print functions.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "178ca29b74d762bd16761e903761f5c1638d735d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
