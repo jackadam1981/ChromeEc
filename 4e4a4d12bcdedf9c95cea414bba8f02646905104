@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4bff131_cc69dee3",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-16T00:55:09Z",
+      "side": 1,
+      "message": "On the EC side, we indicate inverted KSO2 through CONFIG_KEYBOARD_COL2_INVERTED. I\u0027m not sure how we should handle it here. Does this code need to support both inverted and non-inverted configs?",
+      "revId": "4e4a4d12bcdedf9c95cea414bba8f02646905104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
