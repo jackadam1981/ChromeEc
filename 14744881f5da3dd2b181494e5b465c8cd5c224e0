@@ -22,6 +22,30 @@
       "revId": "14744881f5da3dd2b181494e5b465c8cd5c224e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74e3b94a_44678003",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-06-16T03:07:54Z",
+      "side": 1,
+      "message": "I think only pd_task() is blocked, other EC tasks should be working as usual, right? And in the case of a failing TCPC, shouldn\u0027t we just stuck pd_task() here so we won\u0027t go into the state machine and any unexpected PD state? Can you shed some more light on this?",
+      "parentUuid": "b47a9131_11a6ccd5",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "14744881f5da3dd2b181494e5b465c8cd5c224e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
