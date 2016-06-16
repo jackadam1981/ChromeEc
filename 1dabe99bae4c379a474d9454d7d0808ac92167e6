@@ -22,6 +22,30 @@
       "revId": "1dabe99bae4c379a474d9454d7d0808ac92167e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74e3b94a_67cf265c",
+        "filename": "board/cave/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1148402
+      },
+      "writtenOn": "2016-06-16T11:06:18Z",
+      "side": 1,
+      "message": "The Min value of ODR is 1 Hz in BMI160 spec, and there is no requirements for max value. The function of accelerometer is normal with this value.",
+      "parentUuid": "74e3b94a_e7e216dc",
+      "range": {
+        "startLine": 528,
+        "startChar": 11,
+        "endLine": 528,
+        "endChar": 16
+      },
+      "revId": "1dabe99bae4c379a474d9454d7d0808ac92167e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
