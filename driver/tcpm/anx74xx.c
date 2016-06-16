@@ -443,6 +443,20 @@ static int anx74xx_tcpm_set_cc(int port, int pull)
 		reg |= ANX74XX_REG_CC_PULL_RP;
 		rv |= tcpc_write(port, ANX74XX_REG_ANALOG_STATUS, reg);
 		anx[port].pull = 1;
+
+#if defined(CONFIG_USB_PD_PULLUP_1_5A) || defined(CONFIG_USB_PD_PULLUP_3A)
+		rv |= tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_6, &reg);
+		if (rv)
+			return EC_ERROR_UNKNOWN;
+#ifdef CONFIG_USB_PD_PULLUP_1_5A
+		/* Set Rp strength to 12K for presenting 1.5A */
+		reg |= ANX74XX_REG_CC_PULL_RP_12K;
+#else
+		/* Set Rp strength to 4K for presenting 3A */
+		reg |= ANX74XX_REG_CC_PULL_RP_4K;
+#endif
+		rv |= tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_6, reg);
+#endif
 		break;
 	case TYPEC_CC_RD:
 	/* Enable Rd */
@@ -457,6 +471,7 @@ static int anx74xx_tcpm_set_cc(int port, int pull)
 		rv = EC_ERROR_UNKNOWN;
 		break;
 	}
+
 
 	return rv;
 }

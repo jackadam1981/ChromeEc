@@ -2052,6 +2052,14 @@
 /* Support programmable USB device iSerial field. */
 #undef CONFIG_USB_SERIALNO
 
+/* USB-C ports should be configured to present 1.5A pullup and provide
+ * 5V at 1.5A. */
+#undef CONFIG_USB_PD_PULLUP_1_5A
+
+/* USB-C ports should be configured to present 3A pullup and provide
+ * 5V at 3A. */
+#undef CONFIG_USB_PD_PULLUP_3A
+
 /******************************************************************************/
 /* USB port switch */
 

@@ -450,7 +450,12 @@ static int fusb302_tcpm_set_cc(int port, int pull)
 	/* NOTE: FUSB302 Does not support Ra. */
 	switch (pull) {
 	case TYPEC_CC_RP:
-
+		/**
+		 * TODO(crosbug.com/p/54452): Add configuration of Rp strength
+		 * values for presenting desired current to port partner.
+		 * This value will depend on config flags
+		 * CONFIG_USB_PD_PULLUP_* in the board file
+		 */
 		/* if fusb302 hasn't figured anything out yet */
 		if (!state[port].togdone_pullup_cc1 &&
 		    !state[port].togdone_pullup_cc2) {
