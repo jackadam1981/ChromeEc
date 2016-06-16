@@ -22,6 +22,30 @@
       "revId": "3a2395dfac5de32be967c226b6b20091e2d8a236",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c933ecf3_cf4a4198",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-06-16T21:29:33Z",
+      "side": 1,
+      "message": "fixed.",
+      "parentUuid": "c933ecf3_ac71435d",
+      "range": {
+        "startLine": 27,
+        "startChar": 11,
+        "endLine": 27,
+        "endChar": 63
+      },
+      "revId": "3a2395dfac5de32be967c226b6b20091e2d8a236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
