@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4bff131_00057707",
+        "filename": "board/gale/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-16T17:01:31Z",
+      "side": 1,
+      "message": "doesn\u0027t seem the right place to do it.",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 60
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bff131_453301f2",
+        "filename": "board/gale/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-16T17:01:31Z",
+      "side": 1,
+      "message": "you mean power_on_ap ?",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 16
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bff131_253085e3",
+        "filename": "board/gale/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-16T17:01:31Z",
+      "side": 1,
+      "message": "is that what you want if you plug a CCD cable while the system is running ?",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 16
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bff131_6090ab09",
+        "filename": "board/gale/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-16T17:01:31Z",
+      "side": 1,
+      "message": "why you are not using the common code in common/usb_pd_protocol.c ?\n(when new_cc_state \u003d\u003d PD_CC_DEBUG_ACC)\n\n\u003cupdate\u003eOh I see, this is not a dual role PD device ...\nStill doing the detection only at EC startup, is this ok ?\nMaybe you don\u0027t have other power source, so you will always boot EC on cable plug ?",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 311,
+        "endChar": 1
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bff131_60b9cb8f",
+        "filename": "board/gale/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-16T17:01:31Z",
+      "side": 1,
+      "message": "please define CONFIG_CMD_TYPEC and get this for free",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 1
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bff131_856179ef",
+        "filename": "board/gale/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-16T17:01:31Z",
+      "side": 1,
+      "message": "do you need this ?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 56
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bff131_80b047a3",
+        "filename": "board/gale/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-16T17:01:31Z",
+      "side": 1,
+      "message": "2016 ?",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bff131_a0b3c3ae",
+        "filename": "board/gale/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-16T17:01:31Z",
+      "side": 1,
+      "message": "is it stm32f07x or stm32f051 ?",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bff131_40076f0e",
+        "filename": "board/gale/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-16T17:01:31Z",
+      "side": 1,
+      "message": "on purpose, we won\u0027t boot the AP even with 2.5A ?",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bff131_c057df12",
+        "filename": "board/gale/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-16T17:01:31Z",
+      "side": 1,
+      "message": "that\u0027s likely going to break something ...",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
