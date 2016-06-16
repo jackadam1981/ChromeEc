@@ -70,6 +70,9 @@ void rbox_init(void)
 	/* Make sure fuse override is not already enabled */
 	GWRITE(RBOX, FUSE_CTRL, 0);
 
+	/* Invert KSO2 */
+	GWRITE_FIELD(RBOX, DEBUG_POL, KEY1_IN, 1);
+
 	/* Block output from key0 and 1 when power button is pressed */
 	GWRITE_FIELD(RBOX, DEBUG_BLOCK_OUTPUT, KEY0_SEL, 1);
 	GWRITE_FIELD(RBOX, DEBUG_BLOCK_OUTPUT, KEY1_SEL, 1);
