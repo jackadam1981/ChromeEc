@@ -9,7 +9,6 @@
 #include "rbox.h"
 #include "task.h"
 
-#ifdef CONFIG_RBOX_DEBUG
 RBOX_INT(KEY0_IN_FED, "KEY0 pressed");
 RBOX_INT(KEY0_IN_RED, "KEY0 released");
 RBOX_INT(KEY1_IN_FED, "KEY1 pressed");
@@ -56,7 +55,6 @@ static void enable_interrupts(void)
 	task_enable_irq(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO1_RDY_INT);
 	task_enable_irq(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO2_RDY_INT);
 }
-#endif
 
 void rbox_init(void)
 {
@@ -67,22 +65,6 @@ void rbox_init(void)
 	GWRITE(RBOX, WAKEUP_CLEAR, 1);
 	GWRITE(RBOX, INT_STATE, 1);
 
-	/* Make sure fuse override is not already enabled */
-	GWRITE(RBOX, FUSE_CTRL, 0);
-
-	/* Block output from key0 and 1 when power button is pressed */
-	GWRITE_FIELD(RBOX, DEBUG_BLOCK_OUTPUT, KEY0_SEL, 1);
-	GWRITE_FIELD(RBOX, DEBUG_BLOCK_OUTPUT, KEY1_SEL, 1);
-
-	/* Increase debounce */
-	GWRITE_FIELD(RBOX, DEBUG_DEBOUNCE, PERIOD, 15);
-
-	/* Enable debug override */
-	GWRITE_FIELD(RBOX, FUSE_CTRL, OVERRIDE_FUSE, 1);
-	GWRITE_FIELD(RBOX, FUSE_CTRL, OVERRIDE_FUSE_READY, 1);
-
-#ifdef CONFIG_RBOX_DEBUG
 	enable_interrupts();
-#endif
 }
 DECLARE_HOOK(HOOK_INIT, rbox_init, HOOK_PRIO_DEFAULT);

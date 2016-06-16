@@ -13,7 +13,6 @@
 #define CPUTS(outstr) cputs(CC_RBOX, outstr)
 #define CPRINTS(format, args...) cprints(CC_RBOX, format, ## args)
 
-#ifdef CONFIG_RBOX_DEBUG
 #define INTR(field) CONCAT2(INTR_, field)
 
 #define ENABLE_INT(field) GWRITE_FIELD(RBOX, INT_ENABLE, INTR(field), 1)
@@ -31,5 +30,4 @@
 		GWRITE_FIELD(RBOX, INT_STATE, INTR(NAME), 1);		\
 	}
 
-#endif  /* DEBUG_RBOX */
-#endif  /* __CROS_RDD_H */
+#endif  /* __CROS_RBOX_H */

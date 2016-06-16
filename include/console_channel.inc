@@ -36,7 +36,7 @@ CONSOLE_CHANNEL(CC_PD_HOST_CMD,  "pdhostcm")
 CONSOLE_CHANNEL(CC_PORT80,       "port80")
 CONSOLE_CHANNEL(CC_PWM,          "pwm")
 CONSOLE_CHANNEL(CC_SPI,          "spi")
-#ifdef CONFIG_RBOX
+#ifdef CONFIG_RBOX_DEBUG
 CONSOLE_CHANNEL(CC_RBOX,         "rbox")
 #endif
 #ifdef CONFIG_SPS
