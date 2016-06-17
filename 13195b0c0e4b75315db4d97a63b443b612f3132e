@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "89b574dc_00acea04",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-17T20:00:39Z",
+      "side": 1,
+      "message": "In this example, the console command below will do it. For actual implementation, you\u0027ll probably want to call pd_set_suspend(port, 0) on S5-\u003eS3 transition (HOOK_CHIPSET_STARTUP) and on ACOK detection, when the PD is in a suspended state.",
+      "parentUuid": "89b574dc_6073e6d0",
+      "revId": "13195b0c0e4b75315db4d97a63b443b612f3132e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89b574dc_20c64e09",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-06-17T19:27:21Z",
       "side": 1,
       "message": "If we\u0027re going to go this route why not just add a CONFIG to indicate the board supports such semantics?",
+      "revId": "13195b0c0e4b75315db4d97a63b443b612f3132e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89b574dc_401422ed",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2038,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-17T20:00:39Z",
+      "side": 1,
+      "message": "Either way works, but I prefer CONFIG-less, because it\u0027s one more thing that can be messed up in board.h.",
+      "parentUuid": "89b574dc_20c64e09",
       "revId": "13195b0c0e4b75315db4d97a63b443b612f3132e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
