@@ -63,6 +63,24 @@
       "revId": "1dabe99bae4c379a474d9454d7d0808ac92167e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "296ac8d9_57cd8c3b",
+        "filename": "board/cave/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1148402
+      },
+      "writtenOn": "2016-06-17T02:38:32Z",
+      "side": 1,
+      "message": "If set \u0027Base Gyro\u0027 before \u0027Lid Accel\u0027, the result is failed.\nlocalhost ~# ectool motionsense\nMotion sensing active\nSensor 0: 996   227     -16101\nSensor 1: -8    22      27\nSensor 2: 638   -15673  4906\nlocalhost ~# cat /sys/bus/iio/devices/iio\\:device1/name\ncros-ec-gyro\nlocalhost ~# cat /sys/bus/iio/devices/iio\\:device1/in_anglvel_x_raw\n622\nlocalhost ~# cat /sys/bus/iio/devices/iio\\:device1/in_anglvel_x_raw\n613\nlocalhost ~# cat /sys/bus/iio/devices/iio\\:device1/in_anglvel_x_raw\n631",
+      "parentUuid": "b4bff131_a55d9564",
+      "revId": "1dabe99bae4c379a474d9454d7d0808ac92167e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
