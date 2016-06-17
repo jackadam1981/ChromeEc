@@ -267,8 +267,31 @@ static int is_typec_sink(int cc)
 		cc == TYPEC_CC_VOLT_SNK_DEF);
 }
 
+static const uint32_t bootloader_magic = 0xb00f10ad;
+static volatile uint32_t * const bootloader_magic_addr =
+	(uint32_t *)(CONFIG_RAM_BASE + CONFIG_RAM_SIZE - sizeof(uint32_t));
+
+static void jump_to_bootloader(void)
+{
+	*bootloader_magic_addr = bootloader_magic;
+	CPU_NVIC_APINT = 0x05fa0004;
+}
+
 void board_config_pre_init(void)
 {
+	/* check if we need to enter DFU */
+	if (*bootloader_magic_addr == bootloader_magic) {
+		*bootloader_magic_addr = 0;
+		__asm__ __volatile__(
+			"ldr r0, =0x1fffc800\n"
+			"ldr r1, [r0, #0]\n"
+			"mov sp, r1\n"
+			"ldr r0, [r0, #4]\n"
+			"bx  r0\n"
+			: : : );
+		while (1)
+			;
+	}
 	/* enable SYSCFG clock */
 	STM32_RCC_APB2ENR |= 1 << 0;
 
@@ -336,12 +359,15 @@ static int gale_command_power(int argc, char **argv)
 {
 	int val;
 
-	if (!system_is_locked() && argc >= 2)
-		if (parse_bool(argv[1], &val)) {
+	if (!system_is_locked() && argc >= 2) {
+		if (strncasecmp(argv[1], "bootloader", 10) == 0) {
+			jump_to_bootloader();
+		} else if (parse_bool(argv[1], &val)) {
 			board_set_power_supply_ready(val);
 			CPUTS("OK\n");
 			return EC_SUCCESS;
 		}
+	}
 
 	CPRINTF("%8s - %s\n", argv[0], gale_power ? "on" : "off");
 	return EC_SUCCESS;
