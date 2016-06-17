@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c933ecf3_b3999731",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2016-06-17T04:42:46Z",
+      "side": 1,
+      "message": "If I comment out these two lines my kevin wakes up much less grumpy.",
+      "range": {
+        "startLine": 217,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 37
+      },
+      "revId": "6c64572a38ff227f0fcd74f1d9bcec4a3d44126a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
