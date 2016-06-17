@@ -4,58 +4,94 @@
  */
 
 #include "clock.h"
+#include "console.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "rbox.h"
+#include "registers.h"
 #include "task.h"
+#include "timer.h"
 
-#ifdef CONFIG_RBOX_DEBUG
-RBOX_INT(KEY0_IN_FED, "KEY0 pressed");
-RBOX_INT(KEY0_IN_RED, "KEY0 released");
-RBOX_INT(KEY1_IN_FED, "KEY1 pressed");
-RBOX_INT(KEY1_IN_RED, "KEY1 released");
-RBOX_INT(PWRB_IN_FED, "PWRB pressed");
-RBOX_INT(PWRB_IN_RED, "PWRB released");
-RBOX_INT(EC_RST_RED, "EC RST rising");
-RBOX_INT(EC_RST_FED, "EC RST falling");
-RBOX_INT(AC_PRESENT_RED, "AC attached");
-RBOX_INT(AC_PRESENT_FED, "AC detached");
+/* Console output macros */
+#define CPUTS(outstr) cputs(CC_RBOX, outstr)
+#define CPRINTS(format, args...) cprints(CC_RBOX, format, ## args)
 
-RBOX_INT(BUTTON_COMBO0_RDY, "COMBO0");
-RBOX_INT(BUTTON_COMBO1_RDY, "COMBO1");
-RBOX_INT(BUTTON_COMBO2_RDY, "COMBO2");
+#ifdef GC_RBOX_ENABLE_INT
+const int num_interrupts = 15;
+
+static const char * const interrupt_descs[] = {
+	"AC attached", "AC detached", "Entering RW", "Leaving RW",
+	"PWRB released", "PWRB pressed", "KEY0 released", "KEY0 pressed",
+	"KEY1 released", "KEY1 pressed", "EC RST rising", "EC RST falling",
+	"COMBO0", "COMBO1", "COMBO2"};
+
+static void rbox_int_handler(void)
+{
+	int state = GREAD(RBOX, INT_STATE);
+	int i;
+
+	for (i = 0; i < num_interrupts; i++)
+		if (state & 1 << i)
+			CPRINTS("%d %s", i, interrupt_descs[i]);
+
+	/* Clear interrupt */
+	GWRITE(RBOX, INT_STATE, GREAD(RBOX, INT_STATE));
+	GWRITE(RBOX, INT_TEST, 0);
+}
+
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_AC_PRESENT_FED_INT, rbox_int_handler, 1);
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_AC_PRESENT_RED_INT, rbox_int_handler, 1);
+
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_PWRB_IN_FED_INT, rbox_int_handler, 1);
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_PWRB_IN_RED_INT, rbox_int_handler, 1);
+
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_KEY0_IN_RED_INT, rbox_int_handler, 1);
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_KEY0_IN_FED_INT, rbox_int_handler, 1);
+
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_KEY1_IN_RED_INT, rbox_int_handler, 1);
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_KEY1_IN_FED_INT, rbox_int_handler, 1);
+
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_EC_RST_RED_INT, rbox_int_handler, 1);
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_EC_RST_FED_INT, rbox_int_handler, 1);
+
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO0_RDY_INT, rbox_int_handler, 1);
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO1_RDY_INT, rbox_int_handler, 1);
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO2_RDY_INT, rbox_int_handler, 1);
 
 static void enable_interrupts(void)
 {
-	ENABLE_INT_RF(ENTERING_RW);
-	ENABLE_INT_RF(AC_PRESENT);
-	ENABLE_INT_RF(PWRB_IN);
-	ENABLE_INT_RF(KEY1_IN);
-	ENABLE_INT_RF(KEY0_IN);
-	ENABLE_INT_RF(EC_RST);
-	ENABLE_INT(BUTTON_COMBO0_RDY);
-	ENABLE_INT(BUTTON_COMBO1_RDY);
-	ENABLE_INT(BUTTON_COMBO2_RDY);
+	int i;
+	/* Enable All interrupts */
+	GWRITE(RBOX, INT_ENABLE, 0x7fff);
 
-	task_enable_irq(GC_IRQNUM_RBOX0_INTR_AC_PRESENT_FED_INT);
-	task_enable_irq(GC_IRQNUM_RBOX0_INTR_AC_PRESENT_RED_INT);
-
-	task_enable_irq(GC_IRQNUM_RBOX0_INTR_PWRB_IN_FED_INT);
-	task_enable_irq(GC_IRQNUM_RBOX0_INTR_PWRB_IN_RED_INT);
-
-	task_enable_irq(GC_IRQNUM_RBOX0_INTR_KEY0_IN_RED_INT);
-	task_enable_irq(GC_IRQNUM_RBOX0_INTR_KEY0_IN_FED_INT);
-
-	task_enable_irq(GC_IRQNUM_RBOX0_INTR_KEY1_IN_RED_INT);
-	task_enable_irq(GC_IRQNUM_RBOX0_INTR_KEY1_IN_FED_INT);
-
-	task_enable_irq(GC_IRQNUM_RBOX0_INTR_EC_RST_RED_INT);
-	task_enable_irq(GC_IRQNUM_RBOX0_INTR_EC_RST_FED_INT);
-
-	task_enable_irq(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO0_RDY_INT);
-	task_enable_irq(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO1_RDY_INT);
-	task_enable_irq(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO2_RDY_INT);
+	for (i = GC_IRQNUM_RBOX0_INTR_AC_PRESENT_FED_INT;
+		i <= GC_IRQNUM_RBOX0_INTR_PWRB_IN_RED_INT; i++)
+		task_enable_irq(i);
 }
+
+static int command_rbox_test(int argc, char **argv)
+{
+	char *e;
+	int i;
+
+	if (argc > 1) {
+		i = strtoi(argv[1], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM1;
+		GWRITE(RBOX, INT_TEST, 1 << i);
+	} else {
+		for (i = 0; i < num_interrupts; i++) {
+			GWRITE(RBOX, INT_TEST, 1 << i);
+			usleep(1);
+		}
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(rboxtest, command_rbox_test,
+	"int",
+	"number between 0 and 14 representing the interrupt",
+	NULL);
 #endif
 
 void rbox_init(void)
@@ -66,9 +102,9 @@ void rbox_init(void)
 	/* Clear existing interrupts */
 	GWRITE(RBOX, WAKEUP_CLEAR, 1);
 	GWRITE(RBOX, WAKEUP_CLEAR, 0);
-	GWRITE(RBOX, INT_STATE, 1);
+	GWRITE(RBOX, INT_STATE, 0x7fff);
 
-#ifdef CONFIG_RBOX_DEBUG
+#ifdef GC_RBOX_ENABLE_INT
 	enable_interrupts();
 #endif
 }
