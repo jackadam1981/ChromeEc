@@ -67,25 +67,21 @@ static void pd_mcu_interrupt(enum gpio_signal signal)
 void vbus0_evt(enum gpio_signal signal)
 {
 	/* VBUS present GPIO is inverted */
-	usb_charger_vbus_change(0, !gpio_get_level(signal));
 	task_wake(TASK_ID_PD_C0);
 }
 
 void vbus1_evt(enum gpio_signal signal)
 {
 	/* VBUS present GPIO is inverted */
-	usb_charger_vbus_change(1, !gpio_get_level(signal));
 	task_wake(TASK_ID_PD_C1);
 }
 
 void usb0_evt(enum gpio_signal signal)
 {
-	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
 }
 
 void usb1_evt(enum gpio_signal signal)
 {
-	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);
 }
 
 #include "gpio_list.h"
@@ -163,19 +159,6 @@ const enum gpio_signal hibernate_wake_pins[] = {
 };
 
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
-
-struct pi3usb9281_config pi3usb9281_chips[] = {
-	{
-		.i2c_port = I2C_PORT_USB_CHARGER_1,
-		.mux_lock = NULL,
-	},
-	{
-		.i2c_port = I2C_PORT_USB_CHARGER_2,
-		.mux_lock = NULL,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
-	     CONFIG_USB_SWITCH_PI3USB9281_CHIP_COUNT);
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
@@ -735,3 +718,31 @@ void lid_angle_peripheral_enable(int enable)
 	}
 }
 #endif
+
+static void usb_charger_init(void)
+{
+	int i;
+	struct charge_port_info charge_none;
+
+	/* Initialize all charge suppliers to 0 */
+	charge_none.voltage = USB_CHARGER_VOLTAGE_MV;
+	charge_none.current = 0;
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+		charge_manager_update_charge(CHARGE_SUPPLIER_PROPRIETARY,
+					     i,
+					     &charge_none);
+		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP,
+					     i,
+					     &charge_none);
+		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_DCP,
+					     i,
+					     &charge_none);
+		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_SDP,
+					     i,
+					     &charge_none);
+		charge_manager_update_charge(CHARGE_SUPPLIER_OTHER,
+					     i,
+					     &charge_none);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, usb_charger_init, HOOK_PRIO_DEFAULT);
