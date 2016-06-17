@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c933ecf3_d60f712e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-17T07:42:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31bc859_582f4976",
+      "range": {
+        "startLine": 13,
+        "startChar": 51,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "56d9743f0515719a84c50b5d035edc1d69af3490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c31bc859_f83ab51e",
         "filename": "driver/als_si114x.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-06-09T17:04:10Z",
       "side": 1,
       "message": "so we no longer get any sensor data when something is too close, is this really what we want ?",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "56d9743f0515719a84c50b5d035edc1d69af3490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c933ecf3_f62cad91",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-17T07:42:10Z",
+      "side": 1,
+      "message": "yes, because we don\u0027t know if we are under the sun (infinite) or the thumb is reflecting other light source in the sensor.",
+      "parentUuid": "c31bc859_f83ab51e",
       "range": {
         "startLine": 104,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c933ecf3_7621dd99",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-17T07:42:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31bc859_b8075d77",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 14
+      },
+      "revId": "56d9743f0515719a84c50b5d035edc1d69af3490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c31bc859_5823c9f3",
         "filename": "driver/als_si114x.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c933ecf3_5616e13d",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-17T07:42:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31bc859_5823c9f3",
+      "range": {
+        "startLine": 116,
+        "startChar": 30,
+        "endLine": 116,
+        "endChar": 38
+      },
+      "revId": "56d9743f0515719a84c50b5d035edc1d69af3490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c31bc859_f88c7512",
         "filename": "driver/als_si114x.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2016-06-09T17:04:10Z",
       "side": 1,
       "message": "this computation looks mysterious to me but that\u0027s unrelated to the CL",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 35
+      },
+      "revId": "56d9743f0515719a84c50b5d035edc1d69af3490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c933ecf3_163059e0",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-17T07:42:10Z",
+      "side": 1,
+      "message": "From the kernel, where 4 bytes is split in 2, allowing to express a multiplier between 0.0001 and 65535.9999.",
+      "parentUuid": "c31bc859_f88c7512",
       "range": {
         "startLine": 120,
         "startChar": 0,
