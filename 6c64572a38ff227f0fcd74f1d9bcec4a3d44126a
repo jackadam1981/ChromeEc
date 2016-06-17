@@ -22,6 +22,30 @@
       "revId": "6c64572a38ff227f0fcd74f1d9bcec4a3d44126a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89b574dc_c3dd9ce7",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-17T20:26:16Z",
+      "side": 1,
+      "message": "This enables PPVAR_LITCPU / PPVAR_BIGCPU / PPVAR_GPU. According to our docs, we do want to bring these rails down in S3.",
+      "parentUuid": "c933ecf3_b3999731",
+      "range": {
+        "startLine": 217,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 37
+      },
+      "revId": "6c64572a38ff227f0fcd74f1d9bcec4a3d44126a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
