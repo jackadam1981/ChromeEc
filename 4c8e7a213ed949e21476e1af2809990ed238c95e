@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c933ecf3_ec04e044",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-06-17T15:42:02Z",
+      "side": 1,
+      "message": "Looks like I missed a word or two here. Meant to say that I modified when the variable cache.base_ptr gets updated. The key is that this variable is now set only after the memcpy from flash to shared_mem area is complete.\n\nUpdated the description here.",
+      "parentUuid": "b4bff131_60f1cba0",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 20
+      },
+      "revId": "4c8e7a213ed949e21476e1af2809990ed238c95e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4bff131_3d7edf98",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "b4bff131_dda06b0e",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-06-17T15:42:02Z",
+      "side": 1,
+      "message": "I have changed this function name to \u0027nvmem_lock_cache\u0027. It more accurately reflects the purpose of the function. The mutex_lock call needs to be in this function because this is the one that\u0027s called by any method that is attempting to change the contents of NvMem.",
+      "parentUuid": "b4bff131_3d7edf98",
+      "revId": "4c8e7a213ed949e21476e1af2809990ed238c95e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4bff131_80b4c736",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2016-06-16T17:16:54Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 128,
+        "startChar": 23,
+        "endLine": 128,
+        "endChar": 31
+      },
+      "revId": "4c8e7a213ed949e21476e1af2809990ed238c95e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c933ecf3_cc47e48d",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-06-17T15:42:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4bff131_80b4c736",
       "range": {
         "startLine": 128,
         "startChar": 23,
