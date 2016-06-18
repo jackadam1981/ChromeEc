@@ -127,7 +127,7 @@ static int get_engineering_val(const int reg_val,
 	return pairs[i].val;
 }
 
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_SPI
 static inline int spi_raw_read(const int addr, const uint8_t reg,
 			       uint8_t *data, const int len)
 {
@@ -145,14 +145,14 @@ static int raw_read8(const int port, const int addr, const uint8_t reg,
 	int rv = -EC_ERROR_PARAM1;
 
 	if (BMI160_IS_SPI(addr)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_SPI
 		uint8_t val;
 		rv = spi_raw_read(BMI160_SPI_ADDRESS(addr), reg, &val, 1);
 		if (rv == EC_SUCCESS)
 			*data_ptr = val;
 #endif
 	} else {
-#ifdef I2C_PORT_ACCEL
+#ifdef CONFIG_I2C
 		rv = i2c_read8(port, BMI160_I2C_ADDRESS(addr),
 			       reg, data_ptr);
 #endif
@@ -169,13 +169,13 @@ static int raw_write8(const int port, const int addr, const uint8_t reg,
 	int rv = -EC_ERROR_PARAM1;
 
 	if (BMI160_IS_SPI(addr)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_SPI
 		uint8_t cmd[2] = { reg, data };
 		rv = spi_transaction(&spi_devices[BMI160_SPI_ADDRESS(addr)],
 				     cmd, 2, NULL, 0);
 #endif
 	} else {
-#ifdef I2C_PORT_ACCEL
+#ifdef CONFIG_I2C
 		rv = i2c_write8(port, BMI160_I2C_ADDRESS(addr),
 				reg, data);
 #endif
@@ -199,12 +199,12 @@ static int raw_read32(const int port, const int addr, const uint8_t reg,
 {
 	int rv = -EC_ERROR_PARAM1;
 	if (BMI160_IS_SPI(addr)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_SPI
 		rv = spi_raw_read(BMI160_SPI_ADDRESS(addr), reg,
 				  (uint8_t *)data_ptr, 4);
 #endif
 	} else {
-#ifdef I2C_PORT_ACCEL
+#ifdef CONFIG_I2C
 		rv = i2c_read32(port, BMI160_I2C_ADDRESS(addr),
 				reg, data_ptr);
 #endif
@@ -222,11 +222,11 @@ static int raw_read_n(const int port, const int addr, const uint8_t reg,
 	int rv = -EC_ERROR_PARAM1;
 
 	if (BMI160_IS_SPI(addr)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_SPI
 		rv = spi_raw_read(BMI160_SPI_ADDRESS(addr), reg, data_ptr, len);
 #endif
 	} else {
-#ifdef I2C_PORT_ACCEL
+#ifdef CONFIG_I2C
 		i2c_lock(port, 1);
 		rv = i2c_xfer(port, BMI160_I2C_ADDRESS(addr), &reg, 1,
 				data_ptr, len, I2C_XFER_SINGLE);
