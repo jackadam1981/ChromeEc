@@ -11,6 +11,7 @@
 #include "driver/charger/bd99955.h"
 #include "driver/tcpm/anx74xx.h"
 #include "driver/tcpm/ps8751.h"
+#include "driver/tcpm/tcpci.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -65,6 +66,21 @@ int pd_set_power_supply_ready(int port)
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 
 	return EC_SUCCESS; /* we are ready */
+}
+
+void pd_power_discharge(int port)
+{
+	if (port == 0) {
+		anx74xx_tcpc_discharge_vbus(port, 1);
+		msleep(250);
+		anx74xx_tcpc_discharge_vbus(port, 0);
+	}
+
+	if (port == 1) {
+		tcpci_tcpc_discharge_vbus(port, 1);
+		msleep(250);
+		tcpci_tcpc_discharge_vbus(port, 0);
+	}
 }
 
 void pd_power_supply_reset(int port)
