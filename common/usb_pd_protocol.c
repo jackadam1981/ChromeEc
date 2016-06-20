@@ -282,6 +282,10 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
+#ifdef CONFIG_USB_PD_DISCHARGE_TCPC
+	if (last_state == PD_STATE_SRC_SWAP_SRC_DISABLE)
+		pd_power_discharge(port);
+#endif
 	if (next_state == PD_STATE_SRC_DISCONNECTED ||
 	    next_state == PD_STATE_SNK_DISCONNECTED) {
 		/* Clear the input current limit */
@@ -1941,6 +1945,9 @@ void pd_task(void)
 			/* Turn power off */
 			if (pd[port].last_state != pd[port].task_state) {
 				pd_power_supply_reset(port);
+#ifdef CONFIG_USB_PD_DISCHARGE_TCPC
+				pd_power_discharge(port);
+#endif
 				set_state_timeout(port,
 						  get_time().val +
 						  PD_POWER_SUPPLY_TURN_OFF_DELAY,
