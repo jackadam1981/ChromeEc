@@ -1931,10 +1931,16 @@
 #define CONFIG_USB_PD_DEBUG_DR PD_ROLE_DFP
 
 /*
- * Define if this board has a GPIO-controlled 5v discharge circuit that can be
- * used to discharge VBUS when power swapping out of source role.
+ * Discharge PD VBUS on src/sync disconnect & power role swap.
+ * Need to select CONFIG_USB_PD_DISCHARGE_GPIO or CONFIG_USB_PD_DISCHARGE_TCPC.
  */
+#undef CONFIG_USB_PD_DISCHARGE
+
+/* Discharge PD VBUS using GPIO controlled discharge circuit */
 #undef CONFIG_USB_PD_DISCHARGE_GPIO
+
+/* Discharge PD VBUS using PD discharge registers */
+#undef CONFIG_USB_PD_DISCHARGE_TCPC
 
 /* Define if this board can act as a dual-role PD port (source and sink) */
 #undef CONFIG_USB_PD_DUAL_ROLE
