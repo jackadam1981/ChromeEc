@@ -546,6 +546,12 @@ static void charge_manager_refresh(void)
 		board_set_charge_limit(new_port, new_supplier,
 					new_charge_current);
 #endif /* HAS_TASK_CHG_RAMP */
+
+#ifdef CONFIG_USB_PD_DISCHARGE_TCPC
+		if (new_port == CHARGE_PORT_NONE)
+			pd_power_discharge(charge_port);
+#endif
+
 		CPRINTS("CL: p%d s%d i%d v%d", new_port, new_supplier,
 			new_charge_current, new_charge_voltage);
 	}

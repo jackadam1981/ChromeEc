@@ -1523,6 +1523,13 @@ void pd_prepare_reset(void);
  */
 void pd_set_new_power_request(int port);
 
+/**
+ * Discharge PD VBUS upon power disconnect
+ *
+ * @param port USB-C port number
+ */
+void pd_power_discharge(int port);
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**
