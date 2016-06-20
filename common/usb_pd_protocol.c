@@ -306,10 +306,8 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-#ifdef CONFIG_USB_PD_DISCHARGE_GPIO
 	if (last_state == PD_STATE_SRC_SWAP_SRC_DISABLE)
-		gpio_set_level(pd_discharge_gpio[port], 0);
-#endif
+		pd_power_discharge(port, 0);
 
 	if (next_state == PD_STATE_SRC_DISCONNECTED ||
 	    next_state == PD_STATE_SNK_DISCONNECTED) {
@@ -2004,9 +2002,7 @@ void pd_task(void)
 			/* Turn power off */
 			if (pd[port].last_state != pd[port].task_state) {
 				pd_power_supply_reset(port);
-#ifdef CONFIG_USB_PD_DISCHARGE_GPIO
-				gpio_set_level(pd_discharge_gpio[port], 1);
-#endif
+				pd_power_discharge(port, 1);
 				set_state_timeout(port,
 						  get_time().val +
 						  PD_POWER_SUPPLY_TURN_OFF_DELAY,
@@ -2956,6 +2952,15 @@ void pd_set_external_voltage_limit(int port, int mv)
 }
 
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
+
+void pd_power_discharge(int port, int enable)
+{
+#ifdef CONFIG_USB_PD_DISCHARGE_GPIO
+	gpio_set_level(pd_discharge_gpio[port], enable);
+#elif defined(CONFIG_USB_PD_DISCHARGE)
+	tcpc_discharge_vbus(port, enable);
+#endif
+}
 
 static int command_pd(int argc, char **argv)
 {

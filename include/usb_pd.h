@@ -1524,6 +1524,14 @@ void pd_prepare_reset(void);
  */
 void pd_set_new_power_request(int port);
 
+/**
+ * Discharge PD VBUS on src/sync disconnect & power role swap
+ *
+ * @param port Type-C port number
+ * @param enable Discharge enable or disable
+ */
+void pd_power_discharge(int port, int enable);
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**

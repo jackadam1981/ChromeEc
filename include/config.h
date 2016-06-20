@@ -1927,6 +1927,9 @@
 /* Default USB data role when a USB PD debug accessory is seen */
 #define CONFIG_USB_PD_DEBUG_DR PD_ROLE_DFP
 
+/* Discharge PD VBUS using PD discharge registers */
+#undef CONFIG_USB_PD_DISCHARGE
+
 /*
  * Define if this board has a GPIO-controlled 5v discharge circuit that can be
  * used to discharge VBUS when power swapping out of source role.
