@@ -85,6 +85,25 @@ static int tcpci_tcpm_get_power_status(int port, int *status)
 	return tcpc_read(port, TCPC_REG_POWER_STATUS, status);
 }
 
+void tcpci_tcpc_discharge_vbus(int port, int enable)
+{
+	int reg;
+	int rv;
+
+	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &reg);
+
+	/* If tcpc read fails, return error */
+	if (rv)
+		return;
+
+	if (enable)
+		reg |= TCPC_REG_POWER_CTRL_FORCE_DISCHARGE;
+	else
+		reg &= ~TCPC_REG_POWER_CTRL_FORCE_DISCHARGE;
+
+	tcpc_write(port, TCPC_REG_POWER_CTRL, reg);
+}
+
 int tcpci_tcpm_set_cc(int port, int pull)
 {
 	uint8_t rp = 0;

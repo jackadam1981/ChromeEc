@@ -294,6 +294,10 @@ static inline void set_state(int port, enum pd_states next_state)
 #ifdef CONFIG_USB_PD_DISCHARGE_GPIO
 	if (last_state == PD_STATE_SRC_SWAP_SRC_DISABLE)
 		gpio_set_level(pd_discharge_gpio[port], 0);
+#elif defined(CONFIG_USB_PD_DISCHARGE_TCPC)
+	if (last_state == PD_STATE_SRC_SWAP_SRC_DISABLE ||
+	    next_state == PD_STATE_SNK_DISCONNECTED)
+		pd_power_discharge(port);
 #endif
 
 	if (next_state == PD_STATE_SRC_DISCONNECTED ||
@@ -313,8 +317,12 @@ static inline void set_state(int port, enum pd_states next_state)
 	if (next_state == PD_STATE_SRC_DISCONNECTED) {
 #endif
 		/* If we are source, make sure VBUS is off */
-		if (pd[port].power_role == PD_ROLE_SOURCE)
+		if (pd[port].power_role == PD_ROLE_SOURCE) {
 			pd_power_supply_reset(port);
+#ifdef CONFIG_USB_PD_DISCHARGE_TCPC
+			pd_power_discharge(port);
+#endif
+		}
 
 		pd[port].dev_id = 0;
 		pd[port].flags &= ~PD_FLAGS_RESET_ON_DISCONNECT_MASK;
@@ -1957,6 +1965,8 @@ void pd_task(void)
 				pd_power_supply_reset(port);
 #ifdef CONFIG_USB_PD_DISCHARGE_GPIO
 				gpio_set_level(pd_discharge_gpio[port], 1);
+#elif defined(CONFIG_USB_PD_DISCHARGE_TCPC)
+				pd_power_discharge(port);
 #endif
 				set_state_timeout(port,
 						  get_time().val +
