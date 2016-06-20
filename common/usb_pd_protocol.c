@@ -306,13 +306,13 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-#ifdef CONFIG_USB_PD_DISCHARGE_GPIO
-	if (last_state == PD_STATE_SRC_SWAP_SRC_DISABLE)
-		gpio_set_level(pd_discharge_gpio[port], 0);
-#endif
-
 	if (next_state == PD_STATE_SRC_DISCONNECTED ||
 	    next_state == PD_STATE_SNK_DISCONNECTED) {
+#ifdef CONFIG_USB_PD_DISCHARGE
+		if (next_state == PD_STATE_SNK_DISCONNECTED)
+			pd_power_discharge(port);
+#endif
+
 		/* Clear the input current limit */
 		pd_set_input_current_limit(port, 0, 0);
 #ifdef CONFIG_CHARGE_MANAGER
@@ -328,8 +328,12 @@ static inline void set_state(int port, enum pd_states next_state)
 	if (next_state == PD_STATE_SRC_DISCONNECTED) {
 #endif
 		/* If we are source, make sure VBUS is off */
-		if (pd[port].power_role == PD_ROLE_SOURCE)
+		if (pd[port].power_role == PD_ROLE_SOURCE) {
 			pd_power_supply_reset(port);
+#ifdef CONFIG_USB_PD_DISCHARGE
+			pd_power_discharge(port);
+#endif
+		}
 
 		pd[port].dev_id = 0;
 		pd[port].flags &= ~PD_FLAGS_RESET_ON_DISCONNECT_MASK;
@@ -2017,8 +2021,8 @@ void pd_task(void)
 			/* Turn power off */
 			if (pd[port].last_state != pd[port].task_state) {
 				pd_power_supply_reset(port);
-#ifdef CONFIG_USB_PD_DISCHARGE_GPIO
-				gpio_set_level(pd_discharge_gpio[port], 1);
+#ifdef CONFIG_USB_PD_DISCHARGE
+				pd_power_discharge(port);
 #endif
 				set_state_timeout(port,
 						  get_time().val +
@@ -2978,6 +2982,44 @@ void pd_update_contract(int port)
 }
 
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
+
+#ifdef CONFIG_USB_PD_DISCHARGE
+static void pd_power_discharge_port1_deferred(void)
+{
+#ifdef CONFIG_USB_PD_DISCHARGE_GPIO
+	gpio_set_level(pd_discharge_gpio[1], 0);
+#elif defined(CONFIG_USB_PD_DISCHARGE_TCPC)
+	tcpc_discharge_vbus(1, 0);
+#endif
+}
+DECLARE_DEFERRED(pd_power_discharge_port1_deferred);
+
+static void pd_power_discharge_port0_deferred(void)
+{
+#ifdef CONFIG_USB_PD_DISCHARGE_GPIO
+	gpio_set_level(pd_discharge_gpio[0], 0);
+#elif defined(CONFIG_USB_PD_DISCHARGE_TCPC)
+	tcpc_discharge_vbus(0, 0);
+#endif
+}
+DECLARE_DEFERRED(pd_power_discharge_port0_deferred);
+
+void pd_power_discharge(int port)
+{
+#ifdef CONFIG_USB_PD_DISCHARGE_GPIO
+	gpio_set_level(pd_discharge_gpio[port], 1);
+#elif defined(CONFIG_USB_PD_DISCHARGE_TCPC)
+	tcpc_discharge_vbus(port, 1);
+#endif
+	if (port)
+		hook_call_deferred(
+			&pd_power_discharge_port1_deferred_data, 250 * MSEC);
+	else
+		hook_call_deferred(
+			&pd_power_discharge_port0_deferred_data, 250 * MSEC);
+
+}
+#endif
 
 static int command_pd(int argc, char **argv)
 {
