@@ -11,6 +11,7 @@
 #include "driver/charger/bd99955.h"
 #include "driver/tcpm/anx74xx.h"
 #include "driver/tcpm/ps8751.h"
+#include "driver/tcpm/tcpci.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -67,15 +68,52 @@ int pd_set_power_supply_ready(int port)
 	return EC_SUCCESS; /* we are ready */
 }
 
+uint32_t discharge_delay = 250;
+
 void pd_power_supply_reset(int port)
 {
 	/* Disable VBUS */
 	gpio_set_level(port ? GPIO_USB_C1_5V_EN :
 			      GPIO_USB_C0_5V_EN, 0);
 
+	if (port == 0) {
+		anx74xx_tcpc_discharge_vbus(port, 1);
+		msleep(discharge_delay);
+		anx74xx_tcpc_discharge_vbus(port, 0);
+	}
+
+	if (port == 1) {
+		tcpci_tcpc_discharge_vbus(port, 1);
+		msleep(discharge_delay);
+		tcpci_tcpc_discharge_vbus(port, 0);
+	}
+
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
+
+static int command_discharge(int argc, char **argv)
+{
+	char *e;
+
+	if (argc >= 2) {
+		uint32_t s = strtoi(argv[1], &e, 0);
+
+		if (*e)
+			return EC_ERROR_PARAM1;
+
+		discharge_delay = s;
+	}
+
+	/* Print the current setting */
+	ccprintf("Dicharge Time: %d msec\n", discharge_delay);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(discharge, command_discharge,
+			"[msec]",
+			"VBUS Discharge",
+			NULL);
 
 void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage)

@@ -130,4 +130,6 @@ int tcpci_tcpm_mux_init(int i2c_addr);
 int tcpci_tcpm_mux_set(int i2c_addr, mux_state_t mux_state);
 int tcpci_tcpm_mux_get(int i2c_addr, mux_state_t *mux_state);
 
+void tcpci_tcpc_discharge_vbus(int port, int enable);
+
 #endif /* __CROS_EC_USB_PD_TCPM_TCPCI_H */
