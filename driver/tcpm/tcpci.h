@@ -59,6 +59,7 @@
 
 #define TCPC_REG_FAULT_CTRL        0x1b
 #define TCPC_REG_POWER_CTRL        0x1c
+#define TCPC_REG_POWER_CTRL_FORCE_DISCHARGE  (1 << 2)
 #define TCPC_REG_POWER_CTRL_SET(vconn) (vconn)
 #define TCPC_REG_POWER_CTRL_VCONN(reg)    ((reg) & 0x1)
 
@@ -129,5 +130,7 @@ int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 int tcpci_tcpm_mux_init(int i2c_addr);
 int tcpci_tcpm_mux_set(int i2c_addr, mux_state_t mux_state);
 int tcpci_tcpm_mux_get(int i2c_addr, mux_state_t *mux_state);
+
+void tcpci_tcpc_discharge_vbus(int port, int enable);
 
 #endif /* __CROS_EC_USB_PD_TCPM_TCPCI_H */

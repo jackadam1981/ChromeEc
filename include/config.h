@@ -1910,6 +1910,9 @@
 /* Default USB data role when a USB PD debug accessory is seen */
 #define CONFIG_USB_PD_DEBUG_DR PD_ROLE_DFP
 
+/* Discharge PD VBUS upon power disconnect */
+#undef CONFIG_USB_PD_DISCHARGE_TCPC
+
 /* Define if this board can act as a dual-role PD port (source and sink) */
 #undef CONFIG_USB_PD_DUAL_ROLE
 
