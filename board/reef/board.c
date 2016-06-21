@@ -380,12 +380,6 @@ void board_set_charge_limit(int port, int supplier, int charge_ma)
 					   CONFIG_CHARGER_INPUT_CURRENT));
 }
 
-int extpower_is_present(void)
-{
-	/* Check VBUS on either port */
-	return bd99955_is_vbus_provided(BD99955_CHARGE_PORT_BOTH);
-}
-
 /* Enable or disable input devices, based upon chipset state and tablet mode */
 static void enable_input_devices(void)
 {
