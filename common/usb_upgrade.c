@@ -7,11 +7,13 @@
 #include "common.h"
 #include "console.h"
 #include "consumer.h"
+#include "include/compile_time_macros.h"
 #include "queue_policies.h"
 #include "shared_mem.h"
 #include "system.h"
 #include "upgrade_fw.h"
 #include "usb-stream.h"
+#include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
@@ -240,6 +242,9 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 						sizeof(resp_value));
 				rx_state_ = rx_awaiting_reset;
 				return;
+			} else {
+				CPRINTS("Unexpected packet command 0x%x",
+					command);
 			}
 		}
 

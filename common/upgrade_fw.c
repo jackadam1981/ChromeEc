@@ -5,17 +5,20 @@
 
 #include "byteorder.h"
 #include "console.h"
-#include "dcrypto/dcrypto.h"
 #include "extension.h"
 #include "flash.h"
 #include "hooks.h"
 #include "include/compile_time_macros.h"
-#include "memory.h"
 #include "uart.h"
+#include "util.h"
 
+#ifdef CHIP_FAMILY_CR50
+#include "dcrypto/dcrypto.h"
+#include "memory.h"
 #include "cryptoc/sha.h"
+#endif
 
-#define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
 
 /* Various upgrade extension command return values. */
 enum return_value {
@@ -43,28 +46,37 @@ struct upgrade_command {
 } __packed;
 
 /*
- * This array defines two possibe sections available for the firmare update.
- * The section whcih does not map the current execting code is picked as the
+ * This array defines possible sections available for the firmare update.
+ * The section which does not map the current execting code is picked as the
  * valid update area. The values are offsets into the flash space.
+ *
+ * TODO(nsanders): This should be in board.c
  */
 const struct section_descriptor {
 	uint32_t sect_base_offset;
 	uint32_t sect_top_offset;
 } rw_sections[] = {
+#ifdef CHIP_STM32
+	{CONFIG_RO_MEM_OFF,
+	 CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE},
+#endif
 	{CONFIG_RW_MEM_OFF,
 	 CONFIG_RW_MEM_OFF + CONFIG_RW_SIZE},
+#ifdef CHIP_FAMILY_CR50
 	{CONFIG_RW_B_MEM_OFF,
-	 CONFIG_RW_B_MEM_OFF + CONFIG_RW_SIZE}
+	 CONFIG_RW_B_MEM_OFF + CONFIG_RW_SIZE},
+#endif
 };
 
 const struct section_descriptor *valid_section;
 
 /* Pick the section where updates can go to based on current code address. */
-static void set_valid_section(void)
+static int set_valid_section(void)
 {
 	int i;
 	uint32_t run_time_offs = (uint32_t) set_valid_section -
 		CONFIG_PROGRAM_MEMORY_BASE;
+	valid_section = rw_sections;
 
 	for (i = 0; i < ARRAY_SIZE(rw_sections); i++) {
 		if ((run_time_offs > rw_sections[i].sect_base_offset) &&
@@ -73,6 +85,11 @@ static void set_valid_section(void)
 		valid_section = rw_sections + i;
 		break;
 	}
+	if (i == ARRAY_SIZE(rw_sections)) {
+		CPRINTF("%s:%d No valid section found!\n", __func__, __LINE__);
+		return EC_ERROR_INVAL;
+	}
+	return EC_SUCCESS;
 }
 
 /* Verify that the passed in block fits into the valid area. */
@@ -80,7 +97,7 @@ static int valid_upgrade_chunk(uint32_t block_offset, size_t body_size)
 {
 	if (valid_section &&
 	    (block_offset >= valid_section->sect_base_offset) &&
-	    ((block_offset + body_size) < valid_section->sect_top_offset))
+	    ((block_offset + body_size) <= valid_section->sect_top_offset))
 		return 1;
 
 	return 0;
@@ -92,7 +109,9 @@ void fw_upgrade_command_handler(void *body,
 {
 	struct upgrade_command *cmd_body = body;
 	uint8_t *rv = body;
+#ifdef CHIP_FAMILY_CR50
 	uint8_t sha1_digest[SHA_DIGEST_SIZE];
+#endif
 	size_t body_size;
 	uint32_t block_offset;
 
@@ -110,11 +129,16 @@ void fw_upgrade_command_handler(void *body,
 	}
 
 	if (!cmd_body->block_base && !body_size) {
+		int ret;
 		/*
 		 * This is the first message of the upgrade process, let's
 		 * determine the valid upgrade section and erase its contents.
 		 */
-		set_valid_section();
+		ret = set_valid_section();
+		if (ret) {
+			CPRINTF("%s:%d no valid section\n", __func__, __LINE__);
+			return;
+		}
 
 		if (flash_physical_erase(valid_section->sect_base_offset,
 					 valid_section->sect_top_offset -
@@ -128,8 +152,9 @@ void fw_upgrade_command_handler(void *body,
 			return;
 		}
 
+#ifdef CHIP_FAMILY_CR50
 		wipe_nvram(); /* Do not keep any state around. */
-
+#endif
 		/*
 		 * Successful erase means that we need to return the base
 		 * address of the section to be programmed with the upgrade.
@@ -145,14 +170,16 @@ void fw_upgrade_command_handler(void *body,
 		CONFIG_PROGRAM_MEMORY_BASE;
 	if (!valid_upgrade_chunk(block_offset, body_size)) {
 		*rv = UPGRADE_BAD_ADDR;
-		CPRINTF("%s:%d %x, %d base %x top %x\n", __func__, __LINE__,
+		CPRINTF("%s:%d Write out of range %x ..+%d (Window %x - %x)\n",
+			__func__, __LINE__,
 			block_offset, body_size,
 			valid_section->sect_base_offset,
 			valid_section->sect_top_offset);
 		return;
 	}
 
-	/* Check if the block was received properly. */
+#ifdef CHIP_FAMILY_CR50
+	/* Check if the block was received properly. Only supported in Cr50. */
 	DCRYPTO_SHA1_hash((uint8_t *)&cmd_body->block_base,
 			  body_size + sizeof(cmd_body->block_base),
 			  sha1_digest);
@@ -165,14 +192,13 @@ void fw_upgrade_command_handler(void *body,
 			block_offset);
 		return;
 	}
+#endif
 
-	CPRINTF("%s: programming at address 0x%x\n", __func__,
-		block_offset + CONFIG_PROGRAM_MEMORY_BASE);
 	if (flash_physical_write(block_offset, body_size,
 				 cmd_body->block_body) != EC_SUCCESS) {
 		*rv = UPGRADE_WRITE_FAILURE;
-		CPRINTF("%s:%d upgrade write error\n",
-			__func__, __LINE__);
+		CPRINTF("%s:%d upgrade write error @0x%x:%x\n",
+			__func__, __LINE__, block_offset, body_size);
 		return;
 	}
 
