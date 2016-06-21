@@ -260,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "a95318c9_862a8cde",
+        "filename": "board/gale/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-21T11:47:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4bff131_856179ef",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 56
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4bff131_80b047a3",
         "filename": "board/gale/build.mk",
         "patchSetId": 5
