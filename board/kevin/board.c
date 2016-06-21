@@ -351,6 +351,20 @@ struct bma2x2_accel_data g_bma255_data = {
 };
 #endif
 
+/* Four Motion sensors */
+/* Matrix to rotate accelrator into standard reference frame */
+const matrix_3x3_t base_standard_ref = {
+	{ 0, FLOAT_TO_FP(-1),  0},
+	{ FLOAT_TO_FP(-1),  0, 0},
+	{ 0,  0,  FLOAT_TO_FP(1)}
+};
+
+const matrix_3x3_t lid_standard_ref = {
+	{ 0,  FLOAT_TO_FP(-1), 0},
+	{FLOAT_TO_FP(1),   0,  0},
+	{ 0,  0, FLOAT_TO_FP(-1)}
+};
+
 struct motion_sensor_t motion_sensors[] = {
 	/*
 	 * Note: bmi160: supports accelerometer and gyro sensor
@@ -367,7 +381,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .drv_data = &g_bmi160_data,
 	 .port = CONFIG_SPI_ACCEL_PORT,
 	 .addr = BMI160_SET_SPI_ADDRESS(CONFIG_SPI_ACCEL_PORT),
-	 .rot_standard_ref = NULL, /* Identity matrix. */
+	 .rot_standard_ref = &base_standard_ref, /* Identity matrix. */
 	 .default_range = 2,  /* g, enough for laptop. */
 	 .config = {
 		 /* AP: by default use EC settings */
@@ -404,7 +418,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .port = CONFIG_SPI_ACCEL_PORT,
 	 .addr = BMI160_SET_SPI_ADDRESS(CONFIG_SPI_ACCEL_PORT),
 	 .default_range = 1000, /* dps */
-	 .rot_standard_ref = NULL, /* Identity Matrix. */
+	 .rot_standard_ref = &base_standard_ref, /* Identity Matrix. */
 	 .config = {
 		 /* AP: by default shutdown all sensors */
 		 [SENSOR_CONFIG_AP] = {
@@ -440,7 +454,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .drv_data = &g_bma255_data,
 	 .port = I2C_PORT_ACCEL,
 	 .addr = BMA2x2_I2C_ADDR1,
-	 .rot_standard_ref = NULL, /* Identity matrix. */
+	 .rot_standard_ref = &lid_standard_ref, /* Identity matrix. */
 	 .default_range = 2, /* g, enough for laptop. */
 	 .config = {
 		/* AP: by default use EC settings */
