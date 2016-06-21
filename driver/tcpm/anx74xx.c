@@ -162,6 +162,9 @@ static int anx74xx_tcpm_mux_set(int i2c_addr, mux_state_t mux_state)
 			val = ANX74XX_REG_MUX_DP_MODE_ACE_CC1;
 			reg |= ANX74XX_REG_MUX_ML2_A;
 		}
+	} else if (!mux_state) {
+		/* Clear pin assignment */
+		val = 0x00;
 	} else {
 		return  EC_ERROR_UNIMPLEMENTED;
 	 }
