@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0990a4c9_c4db7225",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-06-21T18:56:53Z",
+      "side": 1,
+      "message": "And now this one should have /* CONFIG_MKBP_EVENT */\n\nMore or less, the goal is to make it easy to read nested #ifdefs, or ones where the #endif is more than a handful of lines after the #ifdef.",
+      "revId": "4eb0c30f150bb7767f76cea43ca512d94f8b9fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0990a4c9_64ba9ed3",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-06-21T18:56:53Z",
+      "side": 1,
+      "message": "Well, technically !CONFIG_LPC, because there\u0027s an #else up there",
+      "revId": "4eb0c30f150bb7767f76cea43ca512d94f8b9fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
