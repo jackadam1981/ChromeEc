@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "896574c6_80e87a8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-21T20:18:23Z",
+      "side": 1,
+      "message": "arg, let\u0027s fix this. I have an idea.",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "9a9f5ed09f3a697aca0a1052cd54e2f126a41cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2962c8c0_fd939f61",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-21T20:18:23Z",
+      "side": 1,
+      "message": "Need a blank \"/*\" line first for multi-line comments.",
+      "range": {
+        "startLine": 474,
+        "startChar": 2,
+        "endLine": 474,
+        "endChar": 13
+      },
+      "revId": "9a9f5ed09f3a697aca0a1052cd54e2f126a41cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a96dd8b5_f6ad7e56",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-21T20:18:23Z",
+      "side": 1,
+      "message": "I think this sub-condition is redundant.",
+      "range": {
+        "startLine": 479,
+        "startChar": 6,
+        "endLine": 479,
+        "endChar": 40
+      },
+      "revId": "9a9f5ed09f3a697aca0a1052cd54e2f126a41cb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
