@@ -29,8 +29,8 @@
 /* Look for Cr50 FW update interface */
 #define VID USB_VID_GOOGLE
 #define PID CONFIG_USB_PID
-#define SUBCLASS USB_SUBCLASS_GOOGLE_CR50
-#define PROTOCOL USB_PROTOCOL_GOOGLE_CR50_NON_HC_FW_UPDATE
+#define SUBCLASS USB_SUBCLASS_GOOGLE_UPGRADE
+#define PROTOCOL USB_PROTOCOL_GOOGLE_UPGRADE
 
 struct usb_endpoint {
 	struct libusb_device_handle *devh;
