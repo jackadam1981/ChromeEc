@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "09f42401_8724ec56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-06-21T02:19:30Z",
+      "side": 1,
+      "message": "change to \u0027and\u0027",
+      "range": {
+        "startLine": 12,
+        "startChar": 32,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "8f9269e4067e4cec3dee712d75bf494f50447905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09f42401_a4cac60a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -156,6 +179,29 @@
         "startChar": 18,
         "endLine": 811,
         "endChar": 28
+      },
+      "revId": "8f9269e4067e4cec3dee712d75bf494f50447905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89b574dc_0180690c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-06-21T02:19:30Z",
+      "side": 1,
+      "message": "missing \u0027t\u0027",
+      "range": {
+        "startLine": 1761,
+        "startChar": 7,
+        "endLine": 1761,
+        "endChar": 13
       },
       "revId": "8f9269e4067e4cec3dee712d75bf494f50447905",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
