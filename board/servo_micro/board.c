@@ -164,6 +164,7 @@ const void *const usb_strings[] = {
 	[USB_STR_CONSOLE_NAME] = USB_STRING_DESC("Servo EC Shell"),
 	[USB_STR_USART3_STREAM_NAME]  = USB_STRING_DESC("Servo UART2"),
 	[USB_STR_USART2_STREAM_NAME]  = USB_STRING_DESC("Servo UART1"),
+	[USB_STR_UPGRADE_NAME]  = USB_STRING_DESC("Firmware upgrade"),
 };
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
@@ -172,6 +173,7 @@ BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
  * Support SPI bridging over USB, this requires usb_spi_board_enable and
  * usb_spi_board_disable to be defined to enable and disable the SPI bridge.
  */
+#if 0
 
 /* SPI devices */
 /* Set clock divider to 7 since our SPI routing is non-optimal. */
@@ -215,7 +217,7 @@ void usb_spi_board_disable(struct usb_spi_config const *config)
 }
 
 USB_SPI_CONFIG(usb_spi, USB_IFACE_SPI, USB_EP_SPI);
-
+#endif
 
 /******************************************************************************
  * Support I2C bridging over USB, this requires usb_i2c_board_enable and
@@ -252,8 +254,9 @@ static void board_init(void)
 
 	/* Enable GPIO expander. */
 	gpio_set_level(GPIO_TCA6416_RESET_L, 1);
-
+#if 0
 	/* Structured enpoints */
 	usb_spi_enable(&usb_spi, 1);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);

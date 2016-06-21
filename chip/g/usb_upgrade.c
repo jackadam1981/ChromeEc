@@ -7,11 +7,13 @@
 #include "common.h"
 #include "console.h"
 #include "consumer.h"
+#include "include/compile_time_macros.h"
 #include "queue_policies.h"
 #include "shared_mem.h"
 #include "system.h"
 #include "upgrade_fw.h"
 #include "usb-stream.h"
+#include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
