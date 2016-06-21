@@ -3345,6 +3345,7 @@ struct ec_response_pd_status {
 #define PD_EVENT_POWER_CHANGE      (1 << 1)
 #define PD_EVENT_IDENTITY_RECEIVED (1 << 2)
 #define PD_EVENT_DATA_SWAP         (1 << 3)
+#define PD_EVENT_ETH_LINK_CHANGE   (1 << 4)
 struct ec_response_host_event_status {
 	uint32_t status;      /* PD MCU host event status */
 } __packed;
@@ -3552,6 +3553,7 @@ struct ec_response_pd_log {
 #define PD_EVENT_ACC_BASE       0x20
 #define PD_EVENT_ACC_RW_FAIL   (PD_EVENT_ACC_BASE+0)
 #define PD_EVENT_ACC_RW_ERASE  (PD_EVENT_ACC_BASE+1)
+#define PD_EVENT_ACC_ETH_LINK  (PD_EVENT_ACC_BASE+2)
 /* PD power supply events */
 #define PD_EVENT_PS_BASE        0x40
 #define PD_EVENT_PS_FAULT      (PD_EVENT_PS_BASE+0)
@@ -3661,6 +3663,8 @@ struct ec_params_pd_control {
 	uint8_t chip;         /* chip id (should be 0) */
 	uint8_t subcmd;
 } __packed;
+
+#define EC_CMD_PD_ETH_LINK_STATUS 0x11A
 
 /*****************************************************************************/
 /*

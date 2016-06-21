@@ -178,8 +178,6 @@ DECLARE_DEFERRED(power_on_ap);
 static void power_off_ap(void)
 {
 	CPUTS("power off ap\n");
-	/* drive MCU_INT_L low */
-	gpio_set_level(GPIO_MCU_INT_L, 0);
 	/* turn off AP core power */
 	gpio_set_level(GPIO_VDD_1P1_CPU_EN, 0);
 	/* turn off 1.35v, 1.8v and 3.3v power rails */

@@ -206,9 +206,11 @@ static int hc_pd_write_log_entry(struct host_cmd_handler_args *args)
 
 	switch (type) {
 	/* Charge event: Log data for all ports */
+#ifdef CONFIG_CHARGE_MANAGER
 	case PD_EVENT_MCU_CHARGE:
 		charge_manager_save_log(port);
 		break;
+#endif /* CONFIG_CHARGE_MANAGER */
 
 	/* Other events: no extra data, just log event type + port */
 	case PD_EVENT_MCU_CONNECT:
