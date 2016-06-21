@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0990a4c9_0182ace1",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-06-21T18:21:01Z",
+      "side": 1,
+      "message": "could edit this for grammatical correctness just as well.",
+      "revId": "6868e301eac3adba8b73e17516768d4674681a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0990a4c9_81131ca7",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-06-21T18:21:01Z",
+      "side": 1,
+      "message": "looks like the parameter is not required here?",
+      "revId": "6868e301eac3adba8b73e17516768d4674681a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
