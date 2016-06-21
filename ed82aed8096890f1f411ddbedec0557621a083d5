@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09798473_5ca9f5a5",
+        "filename": "board/elm/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-21T20:27:30Z",
+      "side": 1,
+      "message": "Should be 11550 mV.",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "ed82aed8096890f1f411ddbedec0557621a083d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
