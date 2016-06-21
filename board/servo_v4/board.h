@@ -27,6 +27,8 @@
 #define CONFIG_USB
 #define CONFIG_USB_PID 0x501b
 #define CONFIG_USB_CONSOLE
+#define CONFIG_USB_FW_UPDATE
+#define CONFIG_NON_HC_FW_UPDATE
 
 #define CONFIG_USB_SERIALNO
 #define DEFAULT_SERIALNO "Uninitialized"
@@ -37,7 +39,8 @@
 #define USB_IFACE_I2C     2
 #define USB_IFACE_USART3_STREAM  3
 #define USB_IFACE_USART4_STREAM  4
-#define USB_IFACE_COUNT   5
+#define USB_IFACE_UPGRADE 5
+#define USB_IFACE_COUNT   6
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL 0
@@ -46,7 +49,8 @@
 #define USB_EP_I2C     3
 #define USB_EP_USART3_STREAM  4
 #define USB_EP_USART4_STREAM  5
-#define USB_EP_COUNT   6
+#define USB_EP_UPGRADE 6
+#define USB_EP_COUNT   7
 
 /* Enable control of GPIOs over USB */
 #define CONFIG_USB_GPIO
@@ -91,6 +95,7 @@ enum usb_strings {
 	USB_STR_CONSOLE_NAME,
 	USB_STR_USART3_STREAM_NAME,
 	USB_STR_USART4_STREAM_NAME,
+	USB_STR_UPGRADE_NAME,
 
 	USB_STR_COUNT
 };
