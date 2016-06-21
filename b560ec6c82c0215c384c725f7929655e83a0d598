@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0990a4c9_be683979",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1688,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-06-21T18:07:18Z",
+      "side": 1,
+      "message": "Technically, no hyphen.  megabyte, not mega-byte",
+      "range": {
+        "startLine": 1688,
+        "startChar": 45,
+        "endLine": 1688,
+        "endChar": 46
+      },
+      "revId": "b560ec6c82c0215c384c725f7929655e83a0d598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0990a4c9_5e0d75dd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-06-21T18:07:18Z",
+      "side": 1,
+      "message": "A little confusing.  Is this enabling/disabling FIFO interrupts, or is it enabling/disabling storing items in the FIFO?",
+      "range": {
+        "startLine": 1760,
+        "startChar": 4,
+        "endLine": 1761,
+        "endChar": 48
+      },
+      "revId": "b560ec6c82c0215c384c725f7929655e83a0d598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0990a4c9_fe348188",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1977,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-06-21T18:07:18Z",
+      "side": 1,
+      "message": "EC_MOTION_SENSE_NO_VALUE\n\n(that is, the caller should use the #defined constant)",
+      "range": {
+        "startLine": 1977,
+        "startChar": 33,
+        "endLine": 1977,
+        "endChar": 35
+      },
+      "revId": "b560ec6c82c0215c384c725f7929655e83a0d598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
