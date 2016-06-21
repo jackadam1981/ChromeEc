@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a95318c9_e396d25c",
+        "filename": "board/gale/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-21T09:56:28Z",
+      "side": 1,
+      "message": "Done. Removed.",
+      "parentUuid": "b4bff131_00057707",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 60
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4bff131_453301f2",
         "filename": "board/gale/board.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-06-16T17:01:31Z",
       "side": 1,
       "message": "you mean power_on_ap ?",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 16
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a95318c9_838b5e37",
+        "filename": "board/gale/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-21T09:56:28Z",
+      "side": 1,
+      "message": "Done. Fixed comment. Gale developers wants to keep AP in reset state after CCD SPI ops.",
+      "parentUuid": "b4bff131_453301f2",
       "range": {
         "startLine": 251,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a95318c9_a390da5f",
+        "filename": "board/gale/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-21T09:56:28Z",
+      "side": 1,
+      "message": "Done. Removed.",
+      "parentUuid": "b4bff131_253085e3",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 16
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4bff131_6090ab09",
         "filename": "board/gale/board.c",
         "patchSetId": 5
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a95318c9_4386c62d",
+        "filename": "board/gale/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-21T09:56:28Z",
+      "side": 1,
+      "message": "Add comment in code. Gale is powered only by type-C adapter, and EC always boots on cable plug.",
+      "parentUuid": "b4bff131_6090ab09",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 311,
+        "endChar": 1
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4bff131_60b9cb8f",
         "filename": "board/gale/board.c",
         "patchSetId": 5
@@ -105,6 +201,30 @@
       "writtenOn": "2016-06-16T17:01:31Z",
       "side": 1,
       "message": "please define CONFIG_CMD_TYPEC and get this for free",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 1
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a95318c9_e6890039",
+        "filename": "board/gale/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-21T09:56:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4bff131_60b9cb8f",
       "range": {
         "startLine": 354,
         "startChar": 0,
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "a95318c9_a6930863",
+        "filename": "board/gale/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-21T09:56:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4bff131_80b047a3",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4bff131_a0b3c3ae",
         "filename": "board/gale/build.mk",
         "patchSetId": 5
@@ -174,6 +318,30 @@
       "writtenOn": "2016-06-16T17:01:31Z",
       "side": 1,
       "message": "is it stm32f07x or stm32f051 ?",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a95318c9_868e0c3e",
+        "filename": "board/gale/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-21T09:56:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4bff131_a0b3c3ae",
       "range": {
         "startLine": 11,
         "startChar": 14,
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "a95318c9_06a3fcb7",
+        "filename": "board/gale/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-21T09:56:28Z",
+      "side": 1,
+      "message": "Done. The original spec said Gale should be automatically powered on when connects to 5V3A adapter only. Local tests and recent design changes showed it runs good at 2A. I will set it to 2.5A and check the system spec again.",
+      "parentUuid": "b4bff131_40076f0e",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4bff131_c057df12",
         "filename": "board/gale/usb_pd_policy.c",
         "patchSetId": 5
@@ -220,6 +412,30 @@
       "writtenOn": "2016-06-16T17:01:31Z",
       "side": 1,
       "message": "that\u0027s likely going to break something ...",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "66178d3a0ad9d94eaf7e16c9a728e655f7357f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a95318c9_c6aba48c",
+        "filename": "board/gale/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-06-21T09:56:28Z",
+      "side": 1,
+      "message": "It is probably ok for Gale. Gale acts like a dongle, and type-C VBUS is the only power source. The only exception might be connecting to Suzy-Q, I will take a look.",
+      "parentUuid": "b4bff131_c057df12",
       "range": {
         "startLine": 67,
         "startChar": 0,
