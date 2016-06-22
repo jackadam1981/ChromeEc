@@ -143,7 +143,9 @@ static int raw_read8(const int port, const int addr, const int reg,
 
 #endif
 	} else {
+#ifdef CONFIG_KIONIX_I2C
 		rv = i2c_read8(port, addr, reg, data_ptr);
+#endif
 	}
 	return rv;
 }
@@ -163,7 +165,9 @@ static int raw_write8(const int port, const int addr, const int reg, int data)
 				     cmd, 2, NULL, 0);
 #endif
 	} else {
+#ifdef CONFIG_KIONIX_I2C
 		rv = i2c_write8(port, addr, reg, data);
+#endif
 	}
 	return rv;
 }
@@ -180,10 +184,12 @@ static int raw_read_multi(const int port, int addr, uint8_t reg,
 				     &reg, 1, rxdata, rxlen);
 #endif
 	} else {
+#ifdef CONFIG_KIONIX_I2C
 		i2c_lock(port, 1);
 		rv = i2c_xfer(port, addr, &reg, 1, rxdata, rxlen,
 			      I2C_XFER_SINGLE);
 		i2c_lock(port, 0);
+#endif
 	}
 	return rv;
 }

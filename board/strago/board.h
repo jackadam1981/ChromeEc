@@ -86,6 +86,7 @@
 
 /* Accelerometer */
 #define CONFIG_ACCEL_KXCJ9
+#define   CONFIG_KIONIX_I2C
 #undef CONFIG_CMD_ACCELS
 #undef CONFIG_CMD_ACCEL_INFO
 #define CONFIG_LID_ANGLE
