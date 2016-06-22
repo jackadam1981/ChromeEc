@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ed2dae5_b985e0b8",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-22T18:08:22Z",
+      "side": 1,
+      "message": "Are these redundant? They are already low until we initialize below, right?",
+      "range": {
+        "startLine": 295,
+        "startChar": 2,
+        "endLine": 296,
+        "endChar": 36
+      },
+      "revId": "1ed39f6c0deca6f6028851d8adce002383832d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
