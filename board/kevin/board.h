@@ -15,6 +15,7 @@
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #define CONFIG_LED_COMMON
+#define CONFIG_LOW_POWER_IDLE
 #define CONFIG_POWER_COMMON
 #define CONFIG_PWM
 #define CONFIG_PWM_DISPLIGHT
@@ -115,7 +116,6 @@
 /* Optional for testing */
 #undef  CONFIG_PECI
 #undef  CONFIG_PSTORE
-#undef  CONFIG_LOW_POWER_IDLE           /* Deep Sleep Support */
 
 #define I2C_PORT_TCPC0    NPCX_I2C_PORT0_0
 #define I2C_PORT_TCPC1    NPCX_I2C_PORT0_1
