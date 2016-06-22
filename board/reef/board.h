@@ -114,6 +114,7 @@
 
 /* Sensors */
 #define CONFIG_ACCELGYRO_BMI160
+#define   CONFIG_BMI160_I2C
 #define   CONFIG_MAG_BMI160_BMM150
 #define   BMM150_I2C_ADDRESS BMM150_ADDR0	/* 8-bit address */
 #define   CONFIG_MAG_CALIBRATE
