@@ -132,7 +132,7 @@ static int raw_read8(const int port, const int addr, const int reg,
 	int rv = EC_ERROR_INVAL;
 
 	if (KIONIX_IS_SPI(addr)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_KIONIX_SPI
 		uint8_t val;
 		uint8_t cmd = 0x80 | reg;
 
@@ -158,7 +158,7 @@ static int raw_write8(const int port, const int addr, const int reg, int data)
 	int rv = EC_ERROR_INVAL;
 
 	if (KIONIX_IS_SPI(addr)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_KIONIX_SPI
 		uint8_t cmd[2] = { reg, data };
 
 		rv = spi_transaction(&spi_devices[KIONIX_SPI_ADDRESS(addr)],
@@ -178,7 +178,7 @@ static int raw_read_multi(const int port, int addr, uint8_t reg,
 	int rv = EC_ERROR_INVAL;
 
 	if (KIONIX_IS_SPI(addr)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_KIONIX_SPI
 		reg |= 0x80;
 		rv = spi_transaction(&spi_devices[KIONIX_SPI_ADDRESS(addr)],
 				     &reg, 1, rxdata, rxlen);

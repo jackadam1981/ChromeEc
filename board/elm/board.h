@@ -16,6 +16,7 @@
 
 /* Accelero meter and gyro sensor */
 #define CONFIG_ACCEL_KX022
+#define   CONFIG_KIONIX_SPI
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_LID_ANGLE
