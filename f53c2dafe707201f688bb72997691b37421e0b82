@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "03c96579_f65500b2",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-23T21:08:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3617921_b64f26ab",
+      "range": {
+        "startLine": 167,
+        "startChar": 5,
+        "endLine": 167,
+        "endChar": 36
+      },
+      "revId": "f53c2dafe707201f688bb72997691b37421e0b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3617921_93315cdd",
         "filename": "driver/usb_mux_virtual.c",
         "patchSetId": 2
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "03c96579_d65804ed",
+        "filename": "driver/usb_mux_virtual.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-23T21:08:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3f6d99b_cb3795ec",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 33,
+        "endChar": 19
+      },
+      "revId": "f53c2dafe707201f688bb72997691b37421e0b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "230bc962_0f61a51c",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "Yes, I agree it is slightly confusing to have two sub-commands. I was thinking that EC_CMD_USB_PD_MUX_INFO could be added later to non-virtual mux platforms, if desired (but left it out for RAM / flash savings).\n\nI will modify the usbpdmuxinfo sub-command to use the other host command (which can\u0027t get inverted state, but that\u0027s mostly fine) in the case that EC_CMD_USB_PD_MUX_INFO fails. So, users of ectool can just use usbpdmuxinfo in all cases.",
       "parentUuid": "230bc962_0f61a51c",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 32
+      },
+      "revId": "f53c2dafe707201f688bb72997691b37421e0b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c96579_5613140a",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-23T21:08:32Z",
+      "side": 1,
+      "message": "I started working on the change as previously mentioned, then I realized that ec_response_usb_pd_control / ec_response_usb_pd_control_v1 doesn\u0027t have a mux field! We can only set the state of the mux through ec_params_usb_pd_control-\u003emux.\n\nWith this in mind, I think it\u0027s worthwhile to support the new host command on all devices with a USB mux, since we have no other way of checking the mux state via host command.",
+      "parentUuid": "a3f6d99b_4b19e570",
       "range": {
         "startLine": 220,
         "startChar": 0,
