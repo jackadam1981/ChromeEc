@@ -12,6 +12,7 @@
 #include "byteorder.h"
 #include "console.h"
 #include "extension.h"
+#include "system.h"
 #include "task.h"
 #include "tpm_registers.h"
 #include "util.h"
@@ -37,6 +38,7 @@
 #define TPM_INTERFACE_ID     0x30
 #define TPM_DID_VID	    0xf00
 #define TPM_RID		    0xf04
+#define TPM_FW_VER          0xf90
 
 #define GOOGLE_VID 0x1ae0
 #define GOOGLE_DID 0x0028
@@ -99,6 +101,12 @@ enum tpm_sts_bits {
 	self_test_done = (1 << 2),
 	response_retry = (1 << 1),
 };
+
+#define TPM_FW_VER_MAX_SIZE 64
+/* Used to count bytes read in version string */
+static int tpm_fw_ver_index;
+/* Pointer to version string */
+static const uint8_t *tpm_fw_ver_ptr;
 
 static void set_tpm_state(enum tpm_states state)
 {
@@ -346,6 +354,12 @@ void tpm_register_put(uint32_t regaddr, const uint8_t *data, uint32_t data_size)
 	case TPM_DATA_FIFO:
 		fifo_reg_write(data, data_size);
 		break;
+	case TPM_FW_VER:
+		/* Reset read byte count */
+		tpm_fw_ver_index = 0;
+		/* Point to FW RW version string */
+		tpm_fw_ver_ptr = system_get_version(SYSTEM_IMAGE_RW);
+		break;
 	default:
 		CPRINTF("%s(0x%06x, %d bytes:", __func__, regaddr, data_size);
 		for (i = 0; i < data_size; i++)
@@ -377,6 +391,8 @@ void fifo_reg_read(uint8_t *dest, uint32_t data_size)
  * it should be. Return 0x00 or 0xff or whatever the spec says instead. */
 void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 {
+	int i;
+
 	CPRINTF("%s(0x%06x, %d)", __func__, regaddr, data_size);
 	switch (regaddr) {
 	case TPM_DID_VID:
@@ -398,6 +414,31 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 	case TPM_DATA_FIFO:
 		fifo_reg_read(dest, data_size);
 		break;
+	case TPM_FW_VER:
+		/* Make sure no more than 4 bytes are read */
+		data_size = MIN(4, data_size);
+		for (i = 0; i < data_size; i++) {
+			/*
+			 * Only read from pointer address if it is not NULL and
+			 * the total number of bytes read since last reset is
+			 * less than the maximum allowed value.
+			 */
+			if (tpm_fw_ver_ptr != NULL &&
+			    tpm_fw_ver_index++ < TPM_FW_VER_MAX_SIZE) {
+				*dest++ = *tpm_fw_ver_ptr;
+				/*
+				 * If reached end of string, or exceeded maximum
+				 * allowed bytes, then reset pointer to prevent
+				 * further reads.
+				 */
+				if (*tpm_fw_ver_ptr++ == '\0' ||
+				    tpm_fw_ver_index >= TPM_FW_VER_MAX_SIZE)
+					tpm_fw_ver_ptr = NULL;
+			} else
+				/* Not in a valid state, just stuff 0s */
+				*dest++ = 0;
+		}
+		break;
 	default:
 		CPRINTS("%s(0x%06x, %d) => ??", __func__, regaddr, data_size);
 		return;
@@ -412,6 +453,8 @@ static void tpm_init(void)
 	tpm_.regs.access = tpm_reg_valid_sts;
 	tpm_.regs.sts = (tpm_family_tpm2 << tpm_family_shift) |
 		(64 << burst_count_shift) | sts_valid;
+	/* Set FW version pointer to default */
+	tpm_fw_ver_ptr = NULL;
 
 	/* TPM2 library functions. */
 	_plat__Signal_PowerOn();
