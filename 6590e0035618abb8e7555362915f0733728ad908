@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "03c96579_9cf22dd7",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-06-23T23:37:14Z",
+      "side": 1,
+      "message": "I changed this so that it\u0027s now being set in tpm_init() and is not changed during any reads. Just the index is being reset here.",
+      "parentUuid": "03c96579_d6d3a434",
+      "revId": "6590e0035618abb8e7555362915f0733728ad908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03c96579_56b79402",
         "filename": "common/tpm_registers.c",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2016-06-23T21:12:50Z",
       "side": 1,
       "message": "It would be cleaner if tpm_fw_ver_ptr was set just once, say in tpm_init() and then never changed.\n\njust checking that tpm_fw_ver_index does not increment too far should be enough.",
+      "range": {
+        "startLine": 426,
+        "startChar": 7,
+        "endLine": 426,
+        "endChar": 29
+      },
+      "revId": "6590e0035618abb8e7555362915f0733728ad908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c96579_fcf961ba",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-06-23T23:37:14Z",
+      "side": 1,
+      "message": "I modified this so that the index is checked against the max length. When the end of string character is detected, then the index is not incremented so that reads beyond the end of string will just cause 0s to be written into *dest",
+      "parentUuid": "03c96579_56b79402",
       "range": {
         "startLine": 426,
         "startChar": 7,
