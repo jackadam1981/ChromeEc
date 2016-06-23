@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03c6c530_f12aa26d",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-23T17:46:05Z",
+      "side": 1,
+      "message": "\u003e\u003d ?",
+      "range": {
+        "startLine": 167,
+        "startChar": 5,
+        "endLine": 167,
+        "endChar": 36
+      },
+      "revId": "f53c2dafe707201f688bb72997691b37421e0b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3617921_93315cdd",
+        "filename": "driver/usb_mux_virtual.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-23T17:46:05Z",
+      "side": 1,
+      "message": "we have slightly changed the semantic of the get() callback :\nin other drivers, it returns the current state of the muxing hardware while here it returns the state we wish to be in (regardless if it has been set).",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 33,
+        "endChar": 19
+      },
+      "revId": "f53c2dafe707201f688bb72997691b37421e0b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "230bc962_0f61a51c",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-23T17:46:05Z",
+      "side": 1,
+      "message": "might be a bit confusing:\nusbpdmuxinfo is working only on systems with virtual mux,,\nto get the mux info on other systems one would need to call \u0027usbpd\u0027 command ?\nWe probably need to put a slightly more precise description\n(or put muxinfo host command on all type-C platform at the expense of size ?)",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 32
+      },
+      "revId": "f53c2dafe707201f688bb72997691b37421e0b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
