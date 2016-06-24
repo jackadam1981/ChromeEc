@@ -75,7 +75,11 @@ struct gpio_info {
 };
 
 /* Signal information from board.c.  Must match order from enum gpio_signal. */
+#if defined BOARD_KEVIN || defined BOARD_GRU
+extern struct gpio_info gpio_list[];
+#else
 extern const struct gpio_info gpio_list[];
+#endif
 
 /* Interrupt handler table for those GPIOs which have IRQ handlers.
  *

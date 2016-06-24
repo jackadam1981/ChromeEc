@@ -46,14 +46,24 @@ static void update_vbus_supplier(int port, int vbus_level)
 
 int usb_charger_port_is_sourcing_vbus(int port)
 {
+	int value;
+
 	if (port == 0)
-		return USB_5V_EN(0);
+		value = USB_5V_EN(0);
 #if CONFIG_USB_PD_PORT_COUNT >= 2
 	else if (port == 1)
-		return USB_5V_EN(1);
+		value = USB_5V_EN(1);
 #endif
 	/* Not a valid port */
 	return 0;
+#if defined BOARD_KEVIN || defined BOARD_GRU
+	if (board_get_version() >= BOARD_VERSION_NEW_GPIO_CFG)
+		return value;
+	else
+		return !value;
+#else
+	return value;
+#endif
 }
 
 void usb_charger_vbus_change(int port, int vbus_level)
