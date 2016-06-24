@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03c96579_a5a0a8b6",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1147200
+      },
+      "writtenOn": "2016-06-24T10:28:23Z",
+      "side": 1,
+      "message": "if want to clear pin assignment,please replace val \u003d 0x00; with the function anx74XX_tcpm_mux_exit().",
+      "range": {
+        "startLine": 167,
+        "startChar": 12,
+        "endLine": 167,
+        "endChar": 13
+      },
+      "revId": "8269455517206277175130b24eae04fd369e8776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
