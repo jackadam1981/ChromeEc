@@ -53,21 +53,21 @@ chip-$(CONFIG_SPI_MASTER)+=spi_master.o
 chip-y+= jitter.o
 chip-y+= pmu.o
 chip-y+= trng.o
-chip-$(CONFIG_USB_FW_UPDATE)+= usb_upgrade.o
+chip-$(CONFIG_I2C_SLAVE)+= i2cs.o
 chip-$(CONFIG_NON_HC_FW_UPDATE)+= upgrade_fw.o
-chip-$(CONFIG_SPS)+= sps.o
-chip-$(CONFIG_TPM_SPS)+=sps_tpm.o
-chip-$(CONFIG_WATCHDOG)+=watchdog.o
-
-chip-$(CONFIG_USB)+=usb.o usb_endpoints.o
-chip-$(CONFIG_USB_CONSOLE)+=usb_console.o
-chip-$(CONFIG_USB_HID)+=usb_hid.o
-chip-$(CONFIG_USB_BLOB)+=blob.o
-chip-$(CONFIG_USB_SPI)+=usb_spi.o
-chip-$(CONFIG_RDD)+=rdd.o
 chip-$(CONFIG_RBOX)+=rbox.o
-chip-$(CONFIG_STREAM_USB)+=usb-stream.o
+chip-$(CONFIG_RDD)+=rdd.o
+chip-$(CONFIG_SPS)+= sps.o
 chip-$(CONFIG_STREAM_USART)+=usart.o
+chip-$(CONFIG_STREAM_USB)+=usb-stream.o
+chip-$(CONFIG_TPM_SPS)+=sps_tpm.o
+chip-$(CONFIG_USB)+=usb.o usb_endpoints.o
+chip-$(CONFIG_USB_BLOB)+=blob.o
+chip-$(CONFIG_USB_CONSOLE)+=usb_console.o
+chip-$(CONFIG_USB_FW_UPDATE)+= usb_upgrade.o
+chip-$(CONFIG_USB_HID)+=usb_hid.o
+chip-$(CONFIG_USB_SPI)+=usb_spi.o
+chip-$(CONFIG_WATCHDOG)+=watchdog.o
 
 chip-$(CONFIG_LOW_POWER_IDLE)+=idle.o
 

@@ -60,7 +60,6 @@ enum tpm_states {
 /* Volatile registers for FIFO mode */
 struct tpm_register_file {
 	uint8_t access;
-	uint32_t int_status;
 	uint32_t sts;
 	uint8_t data_fifo[2048]; /* this might have to be even deeper. */
 };
@@ -361,6 +360,7 @@ void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 {
 	uint32_t still_in_fifo = tpm_.fifo_write_index -
 		tpm_.fifo_read_index;
+	uint32_t tpm_sts;
 
 	data_size = MIN(data_size, still_in_fifo);
 	memcpy(dest,
@@ -368,8 +368,23 @@ void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 	       data_size);
 
 	tpm_.fifo_read_index += data_size;
-	if (tpm_.fifo_write_index == tpm_.fifo_read_index)
-		tpm_.regs.sts &= ~(data_avail | command_ready);
+
+	tpm_sts = tpm_.regs.sts;
+	tpm_sts &= ~(burst_count_mask << burst_count_shift);
+	if (tpm_.fifo_write_index == tpm_.fifo_read_index) {
+		tpm_sts &= ~(data_avail | command_ready);
+		/* Birst size for the following write requests. */
+		tpm_sts |= 63 << burst_count_shift;
+	} else {
+		/*
+		 * Tell the master how much there is to read in the next
+		 * burst.
+		 */
+		tpm_sts |= MIN(tpm_.fifo_write_index -
+			       tpm_.fifo_read_index, 63) << burst_count_shift;
+	}
+
+	tpm_.regs.sts = tpm_sts;
 }
 
 
@@ -412,7 +427,7 @@ static void tpm_init(void)
 	set_tpm_state(tpm_state_idle);
 	tpm_.regs.access = tpm_reg_valid_sts;
 	tpm_.regs.sts = (tpm_family_tpm2 << tpm_family_shift) |
-		(64 << burst_count_shift) | sts_valid;
+		(63 << burst_count_shift) | sts_valid;
 
 	/* TPM2 library functions. */
 	_plat__Signal_PowerOn();
@@ -421,6 +436,11 @@ static void tpm_init(void)
 	TPM_Manufacture(1);
 	_TPM_Init();
 	_plat__SetNvAvail();
+}
+
+size_t tpm_get_burst_size(void)
+{
+	return (tpm_.regs.sts >> burst_count_shift) & burst_count_mask;
 }
 
 #ifdef CONFIG_EXTENSION_COMMAND
@@ -484,6 +504,8 @@ void tpm_task(void)
 		CPRINTF("got %d bytes in response\n", response_size);
 		if (response_size &&
 		    (response_size <= sizeof(tpm_.regs.data_fifo))) {
+			uint32_t tpm_sts;
+
 #ifdef CONFIG_EXTENSION_COMMAND
 			if (command_code != CONFIG_EXTENSION_COMMAND)
 #endif
@@ -497,8 +519,12 @@ void tpm_task(void)
 			}
 			tpm_.fifo_read_index = 0;
 			tpm_.fifo_write_index = response_size;
-			tpm_.regs.sts |= data_avail;
 			set_tpm_state(tpm_state_completing_cmd);
+			tpm_sts = tpm_.regs.sts;
+			tpm_sts &= ~(burst_count_mask << burst_count_shift);
+			tpm_sts |= (MIN(response_size, 63) << burst_count_shift)
+				| data_avail;
+			tpm_.regs.sts = tpm_sts;
 		}
 	}
 }
