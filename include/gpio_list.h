@@ -17,9 +17,15 @@
 #define GPIO_INT(name, pin, flags, signal) GPIO(name, pin, flags)
 
 /* GPIO signal list. */
+#if defined BOARD_KEVIN || defined BOARD_GRU
+struct gpio_info gpio_list[] = {
+	#include "gpio.wrap"
+};
+#else
 const struct gpio_info gpio_list[] = {
 	#include "gpio.wrap"
 };
+#endif
 
 BUILD_ASSERT(ARRAY_SIZE(gpio_list) == GPIO_COUNT);
 

@@ -254,27 +254,6 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
-enum kevin_board_version {
-	BOARD_VERSION_UNKNOWN = -1,
-	BOARD_VERSION_REV0 = 0,
-	BOARD_VERSION_REV1 = 1,
-	BOARD_VERSION_REV2 = 2,
-	BOARD_VERSION_REV3 = 3,
-	BOARD_VERSION_REV4 = 4,
-	BOARD_VERSION_REV5 = 5,
-	BOARD_VERSION_REV6 = 6,
-	BOARD_VERSION_REV7 = 7,
-	BOARD_VERSION_REV8 = 8,
-	BOARD_VERSION_REV9 = 9,
-	BOARD_VERSION_REV10 = 10,
-	BOARD_VERSION_REV11 = 11,
-	BOARD_VERSION_REV12 = 12,
-	BOARD_VERSION_REV13 = 13,
-	BOARD_VERSION_REV14 = 14,
-	BOARD_VERSION_REV15 = 15,
-	BOARD_VERSION_COUNT,
-};
-
 struct {
 	enum kevin_board_version version;
 	int expect_mv;
@@ -324,6 +303,26 @@ int board_get_version(void)
 
 	return version;
 }
+
+static void gpio_cfg_setup(void)
+{
+	int board_ver = board_get_version();
+
+	if (board_ver >= BOARD_VERSION_NEW_GPIO_CFG)
+		return;
+
+	/* Re-init GPIOs due to changed I/O state */
+	ccprintf("Applying GPIO changes for old board rev(%d).\n");
+	(gpio_list + GPIO_AP_EC_S3_S0_L)->port = 0x5;
+	(gpio_list + GPIO_AP_EC_S3_S0_L)->mask = 0x10;
+	(gpio_list + GPIO_PP900_PLL_EN)->port = 0xc;
+	(gpio_list + GPIO_PP900_PLL_EN)->mask = 0x2;
+	gpio_reset(GPIO_AP_EC_S3_S0_L);
+	gpio_reset(GPIO_PP900_PLL_EN);
+
+	/* NOTE : Also USB_CX_5V_EN is inverted after REV3 */
+}
+DECLARE_HOOK(HOOK_INIT, gpio_cfg_setup, HOOK_PRIO_INIT_ADC + 1);
 
 static void overtemp_interrupt_enable(void)
 {
