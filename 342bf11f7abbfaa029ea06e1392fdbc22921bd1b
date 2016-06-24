@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "03c96579_ab05d943",
+        "filename": "common/usb_upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-06-24T17:31:17Z",
+      "side": 1,
+      "message": "Even USB_SUBCLASS_GOOGLE_CR50?",
+      "parentUuid": "630ce1ee_599e436f",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "342bf11f7abbfaa029ea06e1392fdbc22921bd1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03c96579_307e9852",
         "filename": "extra/usb_updater/fw_update.py",
         "patchSetId": 3
@@ -129,6 +153,23 @@
         "endLine": 350,
         "endChar": 9
       },
+      "revId": "342bf11f7abbfaa029ea06e1392fdbc22921bd1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c96579_4bd0c5d6",
+        "filename": "extra/usb_updater/servo_micro.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-06-24T17:31:17Z",
+      "side": 1,
+      "message": "It\u0027s not necessary, but maybe we could add \"comment\" keys here to add hex representations just for readability?",
       "revId": "342bf11f7abbfaa029ea06e1392fdbc22921bd1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
