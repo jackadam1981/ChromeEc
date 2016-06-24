@@ -46,6 +46,54 @@
       "revId": "ec0c906760a497c4774031a03362cf3c606cdd1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3cff19c_355630e7",
+        "filename": "board/elm/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-06-24T08:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9720c91_fa580172",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "ec0c906760a497c4774031a03362cf3c606cdd1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3cff19c_155334f7",
+        "filename": "board/elm/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-06-24T08:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e98a709e_466128ee",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "ec0c906760a497c4774031a03362cf3c606cdd1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
