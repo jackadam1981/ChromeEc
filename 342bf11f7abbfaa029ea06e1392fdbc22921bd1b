@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03c96579_d0b004a1",
+        "filename": "common/upgrade_fw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-06-24T16:07:14Z",
+      "side": 1,
+      "message": "Agreed.",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 44
+      },
+      "revId": "342bf11f7abbfaa029ea06e1392fdbc22921bd1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c96579_5046b442",
+        "filename": "common/usb_upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-06-24T16:07:14Z",
+      "side": 1,
+      "message": "Is this going to need changing too?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "342bf11f7abbfaa029ea06e1392fdbc22921bd1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c96579_307e9852",
+        "filename": "extra/usb_updater/fw_update.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-06-24T16:07:14Z",
+      "side": 1,
+      "message": "needs to move above doc string. Also, remove extra asterisk.",
+      "revId": "342bf11f7abbfaa029ea06e1392fdbc22921bd1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c96579_70a1f00a",
+        "filename": "extra/usb_updater/fw_update.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-06-24T16:07:14Z",
+      "side": 1,
+      "message": "nit: Don\u0027t think you need these asterisks?",
+      "range": {
+        "startLine": 234,
+        "startChar": 4,
+        "endLine": 234,
+        "endChar": 5
+      },
+      "revId": "342bf11f7abbfaa029ea06e1392fdbc22921bd1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c96579_108a7cc8",
+        "filename": "extra/usb_updater/fw_update.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-06-24T16:07:14Z",
+      "side": 1,
+      "message": "Start",
+      "range": {
+        "startLine": 350,
+        "startChar": 4,
+        "endLine": 350,
+        "endChar": 9
+      },
+      "revId": "342bf11f7abbfaa029ea06e1392fdbc22921bd1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c96579_701e506d",
+        "filename": "include/upgrade_fw.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-06-24T16:07:14Z",
+      "side": 1,
+      "message": "Change to CROS_EC_UPGRADE_FW",
+      "range": {
+        "startLine": 6,
+        "startChar": 10,
+        "endLine": 6,
+        "endChar": 30
+      },
+      "revId": "342bf11f7abbfaa029ea06e1392fdbc22921bd1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
