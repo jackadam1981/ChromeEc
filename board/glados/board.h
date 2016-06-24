@@ -19,7 +19,7 @@
 #define CONFIG_ACCEL_KX022
 #define CONFIG_ADC
 #define CONFIG_ALS
-#define CONFIG_ALS_OPT3001
+#define CONFIG_ALS_AL3010
 #define CONFIG_BATTERY_CUT_OFF
 #define CONFIG_BATTERY_PRESENT_GPIO GPIO_BAT_PRESENT_L
 #define CONFIG_BATTERY_SMART
@@ -138,7 +138,7 @@
 #define I2C_PORT_THERMAL I2C_PORT_PMIC
 
 /* Ambient Light Sensor address */
-#define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
+#define AL3010_I2C_ADDR AL3010_I2C_ADDR1
 
 /* Modules we want to exclude */
 #undef CONFIG_CMD_HASH
@@ -186,7 +186,7 @@ enum temp_sensor_id {
 
 /* Light sensors */
 enum als_id {
-	ALS_OPT3001 = 0,
+	ALS_AL3010 = 0,
 
 	ALS_COUNT
 };

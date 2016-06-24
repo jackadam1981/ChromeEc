@@ -14,7 +14,7 @@
 #include "charger.h"
 #include "chipset.h"
 #include "console.h"
-#include "driver/als_opt3001.h"
+#include "driver/als_al3010.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
 #include "driver/accelgyro_bmi160.h"
@@ -212,7 +212,7 @@ BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
 /* ALS instances. Must be in same order as enum als_id. */
 struct als_t als[] = {
-	{"TI", opt3001_init, opt3001_read_lux, 5},
+	{"DI", al3010_init, al3010_read_lux, 5},
 };
 BUILD_ASSERT(ARRAY_SIZE(als) == ALS_COUNT);
 
