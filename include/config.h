@@ -1093,6 +1093,12 @@
 /* Panic when status of PD MCU reflects that it has crashed */
 #undef CONFIG_HOSTCMD_PD_PANIC
 
+/* Board supports RTC host commands*/
+#undef CONFIG_HOSTCMD_RTC
+
+/* Board supports RTC console commands*/
+#undef CONFIG_CNSLCMD_RTC
+
 /*****************************************************************************/
 
 /* Enable debugging and profiling statistics for hook functions */
