@@ -806,9 +806,11 @@ void __gpio_rtc_interrupt(void)
 {
 	/* Check pending bit 7 */
 	if (NPCX_WKPND(MIWU_TABLE_0, MIWU_GROUP_4) & 0x80) {
+#ifdef CONFIG_HOSTCMD_RTC
 		/* Clear pending bit for WUI */
 		SET_BIT(NPCX_WKPCL(MIWU_TABLE_0, MIWU_GROUP_4), 7);
 		host_set_events(EC_HOST_EVENT_MASK(EC_HOST_EVENT_RTC));
+#endif
 	} else
 		gpio_interrupt(NPCX_IRQ_MTC_WKINTAD_0);
 }

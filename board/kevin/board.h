@@ -11,6 +11,7 @@
 /* Optional modules */
 #define CONFIG_ADC
 #define CONFIG_CHIPSET_RK3399
+#define CONFIG_HOSTCMD_RTC
 #define CONFIG_HOSTCMD_SPS
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER

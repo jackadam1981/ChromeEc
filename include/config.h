@@ -1081,6 +1081,9 @@
 #define CONFIG_HOSTCMD_RATE_LIMITING_MIN_REST (3   * MSEC)
 #define CONFIG_HOSTCMD_RATE_LIMITING_RECESS   (20  * MSEC)
 
+/* Board supports RTC console/host command*/
+#undef CONFIG_HOSTCMD_RTC
+
 /* PD MCU supports host commands */
 #undef CONFIG_HOSTCMD_PD
 
