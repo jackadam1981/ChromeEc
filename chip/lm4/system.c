@@ -625,6 +625,7 @@ const char *system_get_chip_revision(void)
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_RTC
 static int command_system_rtc(int argc, char **argv)
 {
 	uint32_t rtc;
@@ -713,3 +714,4 @@ static int system_rtc_set_value(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_RTC_SET_VALUE,
 		     system_rtc_set_value,
 		     EC_VER_MASK(0));
+#endif /* CONFIG_RTC */
