@@ -324,7 +324,7 @@ void system_set_gpios_and_wakeup_inputs_hibernate(void)
  * @param microseconds Number of microseconds to sleep before LCT alarm
  */
 void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
-{
+
 	int i;
 	void (*__hibernate_in_lpram)(void) =
 			(void(*)(void))(__lpram_fw_start | 0x01);
@@ -708,7 +708,7 @@ int system_is_reboot_warm(void)
 
 /*****************************************************************************/
 /* Console commands */
-
+#ifdef CONFIG_RTC
 static int command_system_rtc(int argc, char **argv)
 {
 	uint32_t sec;
@@ -819,6 +819,7 @@ DECLARE_HOST_COMMAND(EC_CMD_RTC_GET_ALARM,
 		system_rtc_get_alarm,
 		EC_VER_MASK(0));
 
+#endif /* CONFIG_RTC */
 #ifdef CONFIG_EXTERNAL_STORAGE
 void system_jump_to_booter(void)
 {

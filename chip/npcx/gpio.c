@@ -802,6 +802,7 @@ void __gpio_wk0efgh_interrupt(void)
 		gpio_interrupt(NPCX_IRQ_WKINTEFGH_0);
 }
 
+#ifdef CONFIG_RTC
 void __gpio_rtc_interrupt(void)
 {
 	/* Check pending bit 7 */
@@ -812,6 +813,7 @@ void __gpio_rtc_interrupt(void)
 	} else
 		gpio_interrupt(NPCX_IRQ_MTC_WKINTAD_0);
 }
+#endif
 
 GPIO_IRQ_FUNC(__gpio_wk0ad_interrupt  , NPCX_IRQ_MTC_WKINTAD_0);
 GPIO_IRQ_FUNC(__gpio_wk0b_interrupt   , NPCX_IRQ_TWD_WKINTB_0);
