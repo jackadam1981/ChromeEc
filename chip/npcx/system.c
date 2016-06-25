@@ -708,7 +708,7 @@ int system_is_reboot_warm(void)
 
 /*****************************************************************************/
 /* Console commands */
-
+#ifdef CONFIG_CMD_RTC
 static int command_system_rtc(int argc, char **argv)
 {
 	uint32_t sec;
@@ -819,6 +819,7 @@ DECLARE_HOST_COMMAND(EC_CMD_RTC_GET_ALARM,
 		system_rtc_get_alarm,
 		EC_VER_MASK(0));
 
+#endif /* CONFIG_CMD_RTC */
 #ifdef CONFIG_EXTERNAL_STORAGE
 void system_jump_to_booter(void)
 {
