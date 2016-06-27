@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23d4a97c_3fd6d25f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1688,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-27T21:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0990a4c9_be683979",
+      "range": {
+        "startLine": 1688,
+        "startChar": 45,
+        "endLine": 1688,
+        "endChar": 46
+      },
+      "revId": "b560ec6c82c0215c384c725f7929655e83a0d598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0990a4c9_5e0d75dd",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "23d4a97c_ff49da20",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-27T21:56:45Z",
+      "side": 1,
+      "message": "The former. By default the EC will not trigger MKBP events to process the FIFO until the AP is ready to handle them.",
+      "parentUuid": "0990a4c9_5e0d75dd",
+      "range": {
+        "startLine": 1760,
+        "startChar": 4,
+        "endLine": 1761,
+        "endChar": 48
+      },
+      "revId": "b560ec6c82c0215c384c725f7929655e83a0d598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0990a4c9_fe348188",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2016-06-21T18:07:18Z",
       "side": 1,
       "message": "EC_MOTION_SENSE_NO_VALUE\n\n(that is, the caller should use the #defined constant)",
+      "range": {
+        "startLine": 1977,
+        "startChar": 33,
+        "endLine": 1977,
+        "endChar": 35
+      },
+      "revId": "b560ec6c82c0215c384c725f7929655e83a0d598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23d4a97c_d5a95790",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1977,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-27T21:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0990a4c9_fe348188",
       "range": {
         "startLine": 1977,
         "startChar": 33,
