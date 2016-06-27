@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23d4a97c_5588c73a",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-06-27T22:52:52Z",
+      "side": 1,
+      "message": "Maybe instead of this, we could add it for the user at the bottom of include/config.h near the other checks?\n\n    #ifdef CONFIG_THROTTLE_AP\n    #ifndef CONFIG_TEMP_SENSOR\n    #define CONFIG_TEMP_SENSOR\n    #endif /* !defined(CONFIG_TEMP_SENSOR) */\n    #endif /* defined(CONFIG_THROTTLE_AP) */",
+      "revId": "26c7d2fc2cf0b8f792732be6b341d0b5997d11c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
