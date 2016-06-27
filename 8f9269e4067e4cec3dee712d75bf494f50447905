@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "09f42401_25a98d4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-27T21:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f42401_c4c552fd",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "8f9269e4067e4cec3dee712d75bf494f50447905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09f42401_45901905",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-27T21:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f42401_8724ec56",
+      "range": {
+        "startLine": 12,
+        "startChar": 32,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "8f9269e4067e4cec3dee712d75bf494f50447905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09f42401_a4cac60a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-06-21T00:15:02Z",
       "side": 1,
       "message": "OS ?",
+      "range": {
+        "startLine": 14,
+        "startChar": 60,
+        "endLine": 14,
+        "endChar": 62
+      },
+      "revId": "8f9269e4067e4cec3dee712d75bf494f50447905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09f42401_c5ca690c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-27T21:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f42401_a4cac60a",
       "range": {
         "startLine": 14,
         "startChar": 60,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "09f42401_6516f54b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-27T21:56:45Z",
+      "side": 1,
+      "message": "You need a newer kernel for this to work. (newer kernel handler older ec). \nWhen you upgrade your EC, you will end up running a newer kernel as well.",
+      "parentUuid": "09f42401_0473bad1",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 24
+      },
+      "revId": "8f9269e4067e4cec3dee712d75bf494f50447905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09f42401_e477aeb9",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2016-06-21T00:15:02Z",
       "side": 1,
       "message": "woken ?",
+      "range": {
+        "startLine": 809,
+        "startChar": 49,
+        "endLine": 809,
+        "endChar": 54
+      },
+      "revId": "8f9269e4067e4cec3dee712d75bf494f50447905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09f42401_45065914",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-27T21:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f42401_e477aeb9",
       "range": {
         "startLine": 809,
         "startChar": 49,
@@ -163,6 +283,54 @@
     },
     {
       "key": {
+        "uuid": "09f42401_452db98a",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-27T21:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f42401_247a36a3",
+      "range": {
+        "startLine": 810,
+        "startChar": 13,
+        "endLine": 810,
+        "endChar": 18
+      },
+      "revId": "8f9269e4067e4cec3dee712d75bf494f50447905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09f42401_e51b2566",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-27T21:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f42401_8487cabd",
+      "range": {
+        "startLine": 810,
+        "startChar": 36,
+        "endLine": 810,
+        "endChar": 40
+      },
+      "revId": "8f9269e4067e4cec3dee712d75bf494f50447905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09f42401_64843eb9",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "09f42401_2516ad3c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-27T21:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f42401_64843eb9",
+      "range": {
+        "startLine": 811,
+        "startChar": 18,
+        "endLine": 811,
+        "endChar": 28
+      },
+      "revId": "8f9269e4067e4cec3dee712d75bf494f50447905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89b574dc_0180690c",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -197,6 +389,30 @@
       "writtenOn": "2016-06-21T02:19:30Z",
       "side": 1,
       "message": "missing \u0027t\u0027",
+      "range": {
+        "startLine": 1761,
+        "startChar": 7,
+        "endLine": 1761,
+        "endChar": 13
+      },
+      "revId": "8f9269e4067e4cec3dee712d75bf494f50447905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09f42401_85834169",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-06-27T21:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89b574dc_0180690c",
       "range": {
         "startLine": 1761,
         "startChar": 7,
