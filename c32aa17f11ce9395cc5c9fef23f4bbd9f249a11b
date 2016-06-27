@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23d4a97c_04e0e7cd",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-27T18:49:24Z",
+      "side": 1,
+      "message": "RTC is just one bit in this register. We still need to handle the other 7 bits. Probably we need #else DECLARE_IRQ(...) below.",
+      "range": {
+        "startLine": 809,
+        "startChar": 2,
+        "endLine": 809,
+        "endChar": 53
+      },
+      "revId": "c32aa17f11ce9395cc5c9fef23f4bbd9f249a11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23d4a97c_a4cf5b60",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-27T18:49:24Z",
+      "side": 1,
+      "message": "Let\u0027s make this CONFIG_HOSTCMD_RTC",
+      "range": {
+        "startLine": 924,
+        "startChar": 7,
+        "endLine": 924,
+        "endChar": 17
+      },
+      "revId": "c32aa17f11ce9395cc5c9fef23f4bbd9f249a11b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
