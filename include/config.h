@@ -1732,6 +1732,9 @@
  */
 #undef CONFIG_TEMP_SENSOR_POWER_GPIO
 
+/* Compile common code for throttling the CPU based on the temp sensors */
+#undef CONFIG_THROTTLE_AP
+
 /*****************************************************************************/
 /* TPM-like configuration */
 

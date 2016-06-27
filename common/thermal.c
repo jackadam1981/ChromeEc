@@ -21,6 +21,10 @@
 #include "timer.h"
 #include "util.h"
 
+#if !defined(CONFIG_TEMP_SENSOR)
+#error "CONFIG_TEMP_SENSOR must be defined to use the thermal engine module"
+#endif
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_THERMAL, outstr)
 #define CPRINTS(format, args...) cprints(CC_THERMAL, format, ## args)

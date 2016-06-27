@@ -13,6 +13,10 @@
 #include "throttle_ap.h"
 #include "util.h"
 
+#if !defined(CONFIG_TEMP_SENSOR)
+#error "CONFIG_TEMP_SENSOR must be defined to throttle the AP"
+#endif
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
