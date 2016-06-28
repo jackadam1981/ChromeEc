@@ -33,8 +33,8 @@ const enum ec_led_id supported_led_ids[] = {
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
 static int asuka_led_set_gpio(enum led_color color,
-			     enum gpio_signal gpio_led_white_l,
-			     enum gpio_signal gpio_led_amber_l)
+			     enum gpio_signal gpio_led_amber_l,
+			     enum gpio_signal gpio_led_white_l)
 {
 	switch (color) {
 	case LED_OFF:
