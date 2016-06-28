@@ -69,6 +69,30 @@
       "revId": "6e08a5838330fd1dcbf16ed3ba1e50373db8e0ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60d5b7ce_d48bd2dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-06-28T17:52:26Z",
+      "side": 1,
+      "message": "It\u0027s fine (actually better) to submit this on master first.\nbut actually the BRANCH\u003d field is there to indicate which branch it should be cherry-picked.\nSo IMO, it should BRANCH\u003dlucid here",
+      "parentUuid": "60d5b7ce_54828218",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "6e08a5838330fd1dcbf16ed3ba1e50373db8e0ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
