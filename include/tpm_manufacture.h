@@ -1,0 +1,25 @@
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/*
+ * This header declares the TPM manufacture related interface.
+ * Individual boards are expected to provide implementations.
+ */
+
+#ifndef __CROS_EC_TPM_MANUFACTURE_H
+#define __CROS_EC_TPM_MANUFACTURE_H
+
+#include <stdint.h>
+
+#include "common.h"
+
+/* Returns non-zero if the TPM manufacture steps have been completed. */
+int tpm_manufactured(void);
+
+/* Handle pre-manufacture SPI commands. */
+int tpm_manufacture_command(const uint8_t *command, uint8_t *response,
+			    uint32_t *response_size);
+
+#endif	/* __CROS_EC_TPM_MANUFACTURE_H */
