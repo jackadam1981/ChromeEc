@@ -128,7 +128,7 @@ void fw_upgrade_command_handler(void *body,
 			return;
 		}
 
-		wipe_nvram(); /* Do not keep any state around. */
+		/*		wipe_nvram(); Do not keep any state around. */
 
 		/*
 		 * Successful erase means that we need to return the base
