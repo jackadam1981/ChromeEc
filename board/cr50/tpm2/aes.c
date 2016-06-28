@@ -213,7 +213,11 @@ CRYPT_RESULT _cpri__AESEncryptOFB(
 #include "hooks.h"
 #include "uart.h"
 
+#ifdef CONFIG_EXTENSION_COMMAND
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
+#else
+#define CPRINTF(...)
+#endif
 
 static void aes_command_handler(void *cmd_body,
 				size_t cmd_size,

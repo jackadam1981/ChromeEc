@@ -15,7 +15,11 @@
 
 #include "cryptoc/sha.h"
 
+#ifdef CONFIG_EXTENSION_COMMAND
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
+#else
+#define CPRINTF(...)
+#endif
 
 /* Various upgrade extension command return values. */
 enum return_value {

@@ -47,7 +47,11 @@
 #include "timer.h"
 #include "watchdog.h"
 
+#ifdef CONFIG_EXTENSION_COMMAND
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
+#else
+#define CPRINTF(...)
+#endif
 
 int flash_pre_init(void)
 {

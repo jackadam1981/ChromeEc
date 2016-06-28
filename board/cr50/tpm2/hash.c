@@ -148,7 +148,11 @@ uint16_t _cpri__CompleteHash(CPRI_HASH_STATE *state,
 #include "extension.h"
 #include "shared_mem.h"
 
+#ifdef CONFIG_EXTENSION_COMMAND
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
+#else
+#define CPRINTF(...)
+#endif
 
 struct test_context {
 	int context_handle;
