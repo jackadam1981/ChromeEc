@@ -285,6 +285,46 @@ static void chipset_pre_init(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
 
+/*
+ * This will be called once and will drive the SYS_RST_ODL signal high (pin
+ * configured as push-pull) for the specified amount of time before releasing
+ * it (pin configured as open-drain).
+ */
+static void drive_sys_rst_odl(void);
+DECLARE_DEFERRED(drive_sys_rst_odl);
+static void drive_sys_rst_odl(void)
+{
+	CPRINTS("Driving RCIN");
+	gpio_set_flags(GPIO_PCH_RCIN_L, GPIO_OUT_HIGH);
+	gpio_set_level(GPIO_PCH_RCIN_L, 1);
+	msleep(1000);
+	gpio_set_flags(GPIO_PCH_RCIN_L, GPIO_ODR_HIGH);
+	CPRINTS("Released SYS_RST_ODL");
+}
+
+#if 0
+enum {
+	DRIVE = 0,
+	RELEASE = 1,
+};
+
+/* This is for manually driving the signal from different stages */
+static void sys_rst_odl(int cfg)
+{
+	if (cfg == DRIVE) {
+		CPRINTS("Driving RCIN");
+		gpio_set_flags(GPIO_PCH_RCIN_L, GPIO_OUT_HIGH);
+		gpio_set_level(GPIO_PCH_RCIN_L, 1);
+	} else {
+		gpio_set_flags(GPIO_PCH_RCIN_L, GPIO_ODR_HIGH);
+		CPRINTS("Released RCIN");
+		usleep(100);
+		CPRINTS("RCIN: %d", gpio_get_level(GPIO_PCH_RCIN_L));
+	}
+}
+#endif
+
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -307,6 +347,7 @@ static void board_init(void)
 
 	/* FIXME: Handle tablet mode */
 	/* gpio_enable_interrupt(GPIO_TABLET_MODE_L); */
+	gpio_config_pin(MODULE_GPIO, GPIO_PCH_RCIN_L, 1);
 
 	/* Enable charger interrupts */
 	gpio_enable_interrupt(GPIO_CHARGER_INT_L);
@@ -323,6 +364,13 @@ static void board_init(void)
 	gpio_set_level(GPIO_EN_PP5000, 1);
 	while (!gpio_get_level(GPIO_PP5000_PG))
 		;
+
+	/*
+	 * Drive SYS_RST_ODL to avoid intermediate state when PMIC is enabled
+	 * and signal has not been pulled high.
+	 */
+	hook_call_deferred(&drive_sys_rst_odl_data, 0);
+//	sys_rst_odl(DRIVE);
 
 	/* Enable PMIC */
 	gpio_set_level(GPIO_V5A_EN, 1);
@@ -377,7 +425,7 @@ static void enable_sensor_i2c_bus(void)
 static void board_chipset_resume(void)
 {
 	enable_sensor_i2c_bus();
-	msleep(600);
+//	sys_rst_odl(RELEASE);
 }
 /* Pin config must happen before sensor tasks begin. */
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_FIRST);
