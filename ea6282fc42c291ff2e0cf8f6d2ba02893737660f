@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "60d5b7ce_71b0f8f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-28T16:41:25Z",
+      "side": 1,
+      "message": "Title this something like \"cleanup: Gate RTC host command with new config\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "ea6282fc42c291ff2e0cf8f6d2ba02893737660f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60d5b7ce_51ab7486",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-28T16:41:25Z",
+      "side": 1,
+      "message": "`make buildall` should be the minimum test.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "ea6282fc42c291ff2e0cf8f6d2ba02893737660f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23d4a97c_cd98ab92",
         "filename": "chip/lm4/system.c",
         "patchSetId": 3
@@ -19,6 +65,23 @@
         "endLine": 629,
         "endChar": 52
       },
+      "revId": "ea6282fc42c291ff2e0cf8f6d2ba02893737660f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80846bcd_6bf2313f",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-28T16:41:25Z",
+      "side": 1,
+      "message": "This should go up one line (and the endif down one line). Otherwise if the RTC interrupt pending bit is set somehow, it will never be cleared, and we\u0027ll never service the other 7 interrupts.",
       "revId": "ea6282fc42c291ff2e0cf8f6d2ba02893737660f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
