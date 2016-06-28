@@ -77,6 +77,10 @@
 #define CONFIG_CUSTOMIZED_RO
 #define CONFIG_EXTENSION_COMMAND 0xbaccd00a
 
+/* Manufacture related commands. */
+#define CONFIG_ACK_COMMAND_CODE  0xb006b006
+#define CONFIG_PERSO_COMMAND_CODE  0xb007b007
+
 #undef CONFIG_RO_SIZE
 #define CONFIG_RO_SIZE CONFIG_RW_MEM_OFF
 

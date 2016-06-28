@@ -24,6 +24,7 @@ all: hex
 
 # The simulator components have their own subdirectory
 CFLAGS += -I$(realpath chip/$(CHIP)/dcrypto)
+CFLAGS += -I$(realpath chip/$(CHIP)/loader)
 CFLAGS += -I$(realpath $(BDIR)/tpm2)
 dirs-y += chip/$(CHIP)/dcrypto
 dirs-y += $(BDIR)/tpm2

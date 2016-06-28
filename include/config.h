@@ -1737,6 +1737,11 @@
 #undef CONFIG_TPM_SPS
 
 /*****************************************************************************/
+/* TPM-manufacture related commands */
+#undef CONFIG_ACK_COMMAND_CODE
+#undef CONFIG_PERSO_COMMAND_CODE
+
+/*****************************************************************************/
 /* USART stream config */
 #undef CONFIG_STREAM_USART
 
