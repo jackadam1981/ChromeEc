@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23d4a97c_cd98ab92",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-06-28T15:23:01Z",
+      "side": 1,
+      "message": "Is this intended to gate the console command as well? Or should there be a separate CONFIG_CMD_RTC here?",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 629,
+        "endChar": 52
+      },
+      "revId": "ea6282fc42c291ff2e0cf8f6d2ba02893737660f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
