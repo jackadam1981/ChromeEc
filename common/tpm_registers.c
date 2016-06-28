@@ -14,6 +14,7 @@
 #include "extension.h"
 #include "system.h"
 #include "task.h"
+#include "tpm_manufacture.h"
 #include "tpm_registers.h"
 #include "util.h"
 
@@ -21,7 +22,6 @@
 #include "ExecCommand_fp.h"
 #include "Platform.h"
 #include "_TPM_Init_fp.h"
-#include "Manufacture_fp.h"
 
 #define CPRINTS(format, args...) cprints(CC_TPM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_TPM, format, ## args)
@@ -443,8 +443,7 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 	CPRINTF("\n");
 }
 
-
-static void tpm_init(void)
+static void task_init(void)
 {
 	set_tpm_state(tpm_state_idle);
 	tpm_.regs.access = tpm_reg_valid_sts;
@@ -455,9 +454,6 @@ static void tpm_init(void)
 
 	/* TPM2 library functions. */
 	_plat__Signal_PowerOn();
-	/* TODO(ngm): CRBUG/50115, initialize state expected by TPM2
-	 * compliance tests. */
-	TPM_Manufacture(1);
 	_TPM_Init();
 	_plat__SetNvAvail();
 }
@@ -493,8 +489,9 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 
 void tpm_task(void)
 {
-	tpm_init();
+	task_init();
 	sps_tpm_enable();
+
 	while (1) {
 		uint8_t *response;
 		unsigned response_size;
@@ -503,6 +500,7 @@ void tpm_task(void)
 
 		/* Wait for the next command event */
 		task_wait_event(-1);
+		/* Verify tag. */
 		tpmh = (struct tpm_cmd_header *)tpm_.regs.data_fifo;
 		command_code = be32toh(tpmh->command_code);
 		CPRINTF("%s: received fifo command 0x%04x\n",
@@ -514,7 +512,16 @@ void tpm_task(void)
 			call_extension_command(tpmh, &response_size);
 		} else
 #endif
-		{
+		if (!tpm_manufactured()) {
+			if (!tpm_manufacture_command(tpm_.regs.data_fifo,
+							tpm_.regs.data_fifo,
+							&response_size)) {
+				CPRINTF("FAIL: manufacture\n");
+				/* TODO(ngm): send nack? */
+			} else {
+				/* TODO(ngm): send ack? */
+			}
+		} else {
 			ExecuteCommand(tpm_.fifo_write_index,
 				       tpm_.regs.data_fifo,
 				       &response_size,
@@ -522,17 +529,20 @@ void tpm_task(void)
 		}
 		CPRINTF("got %d bytes in response\n", response_size);
 		if (response_size &&
-		    (response_size <= sizeof(tpm_.regs.data_fifo))) {
+			(response_size <= sizeof(tpm_.regs.data_fifo))) {
+			if (
 #ifdef CONFIG_EXTENSION_COMMAND
-			if (command_code != CONFIG_EXTENSION_COMMAND)
+			command_code != CONFIG_EXTENSION_COMMAND &&
 #endif
+			command_code != CONFIG_ACK_COMMAND_CODE &&
+			command_code !=  CONFIG_PERSO_COMMAND_CODE)
 			{
 				/*
 				 * Extension commands reuse FIFO buffer, the
 				 * rest need to copy.
 				 */
 				memcpy(tpm_.regs.data_fifo,
-				       response, response_size);
+					response, response_size);
 			}
 			tpm_.fifo_read_index = 0;
 			tpm_.fifo_write_index = response_size;

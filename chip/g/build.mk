@@ -53,6 +53,7 @@ chip-$(CONFIG_SPI_MASTER)+=spi_master.o
 chip-y+= jitter.o
 chip-y+= pmu.o
 chip-y+= trng.o
+chip-y+=loader/debug_printf.o
 chip-$(CONFIG_USB_FW_UPDATE)+= usb_upgrade.o
 chip-$(CONFIG_NON_HC_FW_UPDATE)+= upgrade_fw.o
 chip-$(CONFIG_SPS)+= sps.o
@@ -72,11 +73,13 @@ chip-$(CONFIG_STREAM_USART)+=usart.o
 chip-$(CONFIG_LOW_POWER_IDLE)+=idle.o
 
 chip-$(CONFIG_FLASH)+=flash.o
+chip-$(CONFIG_FLASH)+=loader/rom_flash.o
 dirs-y += chip/g/dcrypto
 
 ifneq ($(CONFIG_CUSTOMIZED_RO),)
 custom-ro_objs-y  = chip/g/clock.o
 custom-ro_objs-y += chip/g/dcrypto/sha256.o
+custom-ro_objs-y += chip/g/loader/debug_printf.o
 custom-ro_objs-y += chip/g/loader/key_ladder.o
 custom-ro_objs-y += chip/g/loader/debug_printf.o
 custom-ro_objs-y += chip/g/loader/launch.o
