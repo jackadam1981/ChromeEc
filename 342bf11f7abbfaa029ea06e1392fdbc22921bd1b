@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "80b54bdc_3d3f5b7d",
+        "filename": "common/upgrade_fw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-06-29T23:16:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03c96579_d0b004a1",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 44
+      },
+      "revId": "342bf11f7abbfaa029ea06e1392fdbc22921bd1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03c96579_5046b442",
         "filename": "common/usb_upgrade.c",
         "patchSetId": 3
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "Technically yes. We should probably rename that subclass to USB_SUBCLASS_GOOGLE_FW_UPGRADE or something.",
       "parentUuid": "03c96579_ab05d943",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "342bf11f7abbfaa029ea06e1392fdbc22921bd1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80b54bdc_ddbadf1d",
+        "filename": "common/usb_upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-06-29T23:16:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03c96579_6bfd810a",
       "range": {
         "startLine": 50,
         "startChar": 0,
