@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e088c738_2d456d36",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-06-29T18:20:58Z",
+      "side": 1,
+      "message": "The convention is just \"CONFIG_CMD_FOO\" for console commands. See around line 521 in include/config.h for some examples.",
+      "revId": "16b5a7cda7f543dad9bd1bb5321ea73363d0bbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
