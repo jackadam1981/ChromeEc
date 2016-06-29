@@ -22,6 +22,30 @@
       "revId": "e3aaeb212897c14e1cae75ac9b73d8a96012e21f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80b54bdc_fa7fa9f3",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-06-29T02:08:08Z",
+      "side": 1,
+      "message": "ah, you are right. I wanted to limit the amount of memory this thing uses though, 64 was ok for a const string, 50 feels better for SRAM :)\n\nI should have removed the definition in line 108",
+      "parentUuid": "80b54bdc_5ab6d508",
+      "range": {
+        "startLine": 112,
+        "startChar": 26,
+        "endLine": 112,
+        "endChar": 28
+      },
+      "revId": "e3aaeb212897c14e1cae75ac9b73d8a96012e21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
