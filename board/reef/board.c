@@ -375,6 +375,7 @@ static void enable_sensor_i2c_bus(void)
 	/* GPIO92-91 for EC_I2C_SENSOR_SDA/SCL */
 	gpio_set_alternate_function(GPIO_PORT_9, 0x06, 1);
 }
+
 static void board_chipset_resume(void)
 {
 	enable_sensor_i2c_bus();
@@ -463,6 +464,26 @@ static void enable_input_devices(void)
 	keyboard_scan_enable(kb_enable, KB_SCAN_DISABLE_LID_ANGLE);
 
 	gpio_set_level(GPIO_EN_P3300_TRACKPAD_ODL, !tp_enable);
+}
+
+static void drive_sys_rst_odl(void);
+DECLARE_DEFERRED(drive_sys_rst_odl);
+static void drive_sys_rst_odl(void)
+{
+	CPRINTS("SYS_RST_ODL asserted");
+	gpio_set_flags(GPIO_PCH_RCIN_L, GPIO_OUT_HIGH);
+	msleep(1000);
+	gpio_set_flags(GPIO_PCH_RCIN_L, GPIO_ODR_HIGH);
+	CPRINTS("SYS_RST_ODL deasserted");
+}
+
+void board_set_pmu_rstbtn(int level)
+{
+	if (!level) {
+		gpio_set_flags(GPIO_PCH_RCIN_L, GPIO_ODR_LOW);
+	} else {
+		hook_call_deferred(&drive_sys_rst_odl_data, 0);
+	}
 }
 
 /* Called on AP S5 -> S3 transition */
