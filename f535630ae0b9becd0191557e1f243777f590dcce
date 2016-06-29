@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0b583f9_ffcf7b64",
+        "filename": "board/reef/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-06-29T21:04:18Z",
+      "side": 1,
+      "message": "I don\u0027t think I\u0027ve ever seen this warning under normal circumstances, so I can remove it if others feel it\u0027s not palatable. Also, Nuvoton mentioned that this isn\u0027t necessarily a reliable check since the reading may return \u00271\u0027 even if the voltage has not reached sufficiently high level for what the check is intended for, since Vih (min) is too low to be considered as a 1.8V good indicator.",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 2
+      },
+      "revId": "f535630ae0b9becd0191557e1f243777f590dcce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
