@@ -48,6 +48,7 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
+#include "vboot_hash.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -357,6 +358,9 @@ static void board_chipset_resume(void)
 		enable_sensor_i2c_bus();
 		sensor_bus_enabled = 1;
 	}
+
+	while (vboot_hash_in_progress())
+		msleep(1);
 }
 /* Pin config must happen before sensor tasks begin. */
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_FIRST);
