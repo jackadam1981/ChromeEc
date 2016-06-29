@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00031b92_2613b661",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-06-29T21:42:48Z",
+      "side": 1,
+      "message": "This is a really really minor nit. But, usually for commit messages, you\u0027ll want your title, including your label, to be the first line of the commit message.\n\ne.g:\n\n    cleanup: Put RTC command code behind config options.\n\n\n    Placed RTC code supporting console/host command\n    behind new flags \u0027CONFIG_CMD_RTC\u0027/\u0027CONFIG_HOSTCMD_RTC\u0027\n\n\n    [..snip..]",
+      "revId": "f6c2d3ca180dc2a596c428f9162e28b6f7012d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
