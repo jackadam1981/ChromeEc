@@ -10,10 +10,8 @@
 #include "system.h"
 #include "task.h"
 #include "uart.h"
+#include "uartn.h"
 #include "util.h"
-
-#define USE_UART_INTERRUPTS (!(defined(CONFIG_CUSTOMIZED_RO) && \
-			       defined(SECTION_IS_RO)))
 
 struct uartn_interrupts {
 	int tx_int;
@@ -24,7 +22,6 @@ static struct uartn_interrupts interrupt[] = {
 	{GC_IRQNUM_UART1_TXINT, GC_IRQNUM_UART1_RXINT},
 	{GC_IRQNUM_UART2_TXINT, GC_IRQNUM_UART2_RXINT},
 };
-
 
 void uartn_tx_start(int uart)
 {
@@ -140,11 +137,13 @@ void uartn_init(int uart)
 	 */
 	GR_UART_FIFO(uart) = 0x63;
 
-	/*
-	 * TX enable, RX enable, HW flow control disabled, no
-	 * loopback
-	 */
-	uartn_enable(uart);
+
+	if (uart == UARTN)
+		/* Enable main uart. */
+		uartn_enable(uart);
+	else
+		/* Disable the EC and AP uart until we know their state */
+		uartn_disable(uart);
 
 	/* enable RX interrupts in block */
 	/* Note: doesn't do anything unless turned on in NVIC */
@@ -154,5 +153,4 @@ void uartn_init(int uart)
 	/* Enable interrupts for UART */
 	uartn_enable_interrupt(uart);
 #endif
-
 }

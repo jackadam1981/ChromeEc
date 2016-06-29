@@ -8,6 +8,12 @@
 
 #include "common.h"
 
+#define USE_UART_INTERRUPTS (!(defined(CONFIG_CUSTOMIZED_RO) && \
+			       defined(SECTION_IS_RO)))
+#ifndef UARTN
+#define UARTN 0
+#endif
+
 /**
  * Initialize the UART module.
  */
