@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0a6cf25_0b047d44",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-06-29T23:28:38Z",
+      "side": 1,
+      "message": "On gru and kevin we do not have anything externally driving uart0 rx. Do we want to still have this as a wakeup source?",
+      "range": {
+        "startLine": 55,
+        "startChar": 43,
+        "endLine": 55,
+        "endChar": 58
+      },
+      "revId": "5aec786f4c698f264c868cef000d88b4d2e43100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
