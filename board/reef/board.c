@@ -465,6 +465,24 @@ static void enable_input_devices(void)
 	gpio_set_level(GPIO_EN_P3300_TRACKPAD_ODL, !tp_enable);
 }
 
+static void drive_sys_rst_odl_high(void)
+{
+	gpio_set_flags(GPIO_PCH_RCIN_L, GPIO_OUT_HIGH);
+	CPRINTS("SYS_RST_ODL driven high");
+	msleep(1000);
+	gpio_set_flags(GPIO_PCH_RCIN_L, GPIO_ODR_HIGH);
+	CPRINTS("SYS_RST_ODL left floating (open-drain)");
+}
+DECLARE_DEFERRED(drive_sys_rst_odl_high);
+
+void board_set_pmu_rstbtn(int level)
+{
+	if (!level)
+		gpio_set_flags(GPIO_PCH_RCIN_L, GPIO_ODR_LOW);
+	else
+		hook_call_deferred(&drive_sys_rst_odl_high_data, 0);
+}
+
 /* Called on AP S5 -> S3 transition */
 static void board_chipset_startup(void)
 {
