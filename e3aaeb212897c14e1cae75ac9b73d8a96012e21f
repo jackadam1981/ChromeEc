@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80b54bdc_5ab6d508",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-06-29T02:02:13Z",
+      "side": 1,
+      "message": "TPM_FW_VER_MAX_SIZE defined above as 64 can be used here. It serves for limiting the max allowed string size when reading anyways.",
+      "range": {
+        "startLine": 112,
+        "startChar": 26,
+        "endLine": 112,
+        "endChar": 28
+      },
+      "revId": "e3aaeb212897c14e1cae75ac9b73d8a96012e21f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
