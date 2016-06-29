@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80b54bdc_20abae87",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-06-29T08:20:17Z",
+      "side": 1,
+      "message": "need to not need this",
+      "revId": "299f88646c38c39669d381819a698405d7901763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80b54bdc_40b0a2f3",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-06-29T08:20:17Z",
+      "side": 1,
+      "message": "integrate the function from loader/rom_flash you need into flash?\nThat drops need for debug_printf and all the loader/ cross referencing..",
+      "revId": "299f88646c38c39669d381819a698405d7901763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
