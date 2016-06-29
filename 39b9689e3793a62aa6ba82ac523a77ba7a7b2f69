@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "00031b92_49936569",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-29T23:19:18Z",
+      "side": 1,
+      "message": "/board/gru symlinks to /board/kevin. The boards are 98% identical, just a few scattered #ifdefs, such as this one.",
+      "parentUuid": "80b54bdc_432a6c82",
+      "range": {
+        "startLine": 316,
+        "startChar": 7,
+        "endLine": 316,
+        "endChar": 18
+      },
+      "revId": "39b9689e3793a62aa6ba82ac523a77ba7a7b2f69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40d6f30d_4020ae91",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "writtenOn": "2016-06-29T16:54:05Z",
       "side": 1,
       "message": "I think the C compiler will now allow you to mix code and variable declarations.  So you can just board_gpio_remap() before the variables are declared.",
+      "range": {
+        "startLine": 641,
+        "startChar": 1,
+        "endLine": 646,
+        "endChar": 24
+      },
+      "revId": "39b9689e3793a62aa6ba82ac523a77ba7a7b2f69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20bbbf3c_8f2a35d8",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-29T23:19:18Z",
+      "side": 1,
+      "message": "Is my build environment stale? \"chip/npcx/gpio.c:655:2: error: ISO C90 forbids mixed declarations and code\"",
+      "parentUuid": "80b54bdc_8301e401",
       "range": {
         "startLine": 641,
         "startChar": 1,
