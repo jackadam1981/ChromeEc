@@ -56,6 +56,11 @@ __attribute__((weak)) void chipset_do_shutdown(void)
 	/* Need to implement board specific shutdown */
 }
 
+__attribute__((weak)) void board_set_pmu_rstbtn(int level)
+{
+	/* In case board needs to set PMU_RSTBTN_N */
+};
+
 void chipset_force_shutdown(void)
 {
 	if (!forcing_coldreset)
@@ -149,6 +154,8 @@ static void handle_all_sys_pgood(enum power_state state)
 		return;
 
 	gpio_set_level(GPIO_PCH_SYS_PWROK, in_level);
+	msleep(1);
+	board_set_pmu_rstbtn(1);
 
 	CPRINTS("Pass through GPIO_ALL_SYS_PGOOD: %d", in_level);
 }
