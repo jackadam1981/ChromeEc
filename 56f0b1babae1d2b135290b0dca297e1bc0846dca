@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd43127f_47e7044d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-06-30T21:32:07Z",
+      "side": 1,
+      "message": "please test it on Reef to see if this helps, also, please verify that updating AP/EC bios is still possible. \n\nShould these pins be switched back to tri state mode when CCD is not active?",
+      "revId": "56f0b1babae1d2b135290b0dca297e1bc0846dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
