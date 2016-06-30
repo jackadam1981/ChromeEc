@@ -122,7 +122,8 @@ PINMUX(FUNC(I2C0_SDA),        B1, DIO_INPUT)
  *   DIOA8  = SPI_CLK   (output)
  *   DIOA11 = SPI_MISO  (input)
  *   DIOA14 = SPI_CS_L  (output)
+ * The pads are only connected to the peripheral outputs when SPI is enabled to
+ * avoid interfering with other things on the board.
  * Note: Double-check to be sure these are configured in spi_master.c
  */
-
 #undef PINMUX

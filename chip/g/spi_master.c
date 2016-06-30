@@ -127,6 +127,15 @@ int spi_enable(int port, int enable)
 		int spi_device_found = 0;
 		uint8_t max_div = 0;
 
+#ifdef CONFIG_SPI_MASTER_CONFIGURE_GPIOS
+	/* Set SPI MOSI, CLK, and CS_L as outputs */
+	GWRITE_FIELD(PINMUX, DIOA4_CTL, IE, 0); /* SPI_MOSI */
+	GWRITE_FIELD(PINMUX, DIOA8_CTL, IE, 0); /* SPI_CLK */
+	GWRITE_FIELD(PINMUX, DIOA14_CTL, IE, 0); /* SPI_CS_L */
+	/* Set SPI_CS to be an internal pull up */
+	GWRITE_FIELD(PINMUX, DIOA14_CTL, PU, 1);
+#endif
+
 #ifndef CONFIG_SPI_MASTER_NO_CS_GPIOS
 		gpio_config_module(MODULE_SPI, 1);
 #endif  /* CONFIG_SPI_MASTER_NO_CS_GPIOS */
@@ -183,6 +192,15 @@ int spi_enable(int port, int enable)
 		GWRITE_FIELD_I(SPI, port, ICTRL, TXDONE, 0);
 
 	} else {
+#ifdef CONFIG_SPI_MASTER_CONFIGURE_GPIOS
+		/* Disable SPI_CS internal pull up */
+		GWRITE_FIELD(PINMUX, DIOA14_CTL, PU, 0);
+		/* Set SPI MOSI, CLK, and CS_L back as inputs */
+		GWRITE_FIELD(PINMUX, DIOA4_CTL, IE, 1); /* SPI_MOSI */
+		GWRITE_FIELD(PINMUX, DIOA8_CTL, IE, 1); /* SPI_CLK */
+		GWRITE_FIELD(PINMUX, DIOA14_CTL, IE, 1); /* SPI_CS_L */
+#endif
+
 		for (i = 0; i < spi_devices_used; i++) {
 			if (spi_devices[i].port != port)
 				continue;
@@ -212,10 +230,14 @@ static void spi_init(void)
 	size_t i;
 
 #ifdef CONFIG_SPI_MASTER_CONFIGURE_GPIOS
-	/* Set SPI_MISO as an input */
-	GWRITE_FIELD(PINMUX, DIOA11_CTL, IE, 1); /* SPS_MISO */
-	/* Set SPI_CS to be an internal pull up */
-	GWRITE_FIELD(PINMUX, DIOA14_CTL, PU, 1);
+	/*
+	 * Set SPI master output pads as inputs to avoid interfering with other
+	 * devices
+	 */
+	GWRITE_FIELD(PINMUX, DIOA4_CTL, IE, 1); /* SPI_MOSI */
+	GWRITE_FIELD(PINMUX, DIOA8_CTL, IE, 1); /* SPI_CLK */
+	GWRITE_FIELD(PINMUX, DIOA11_CTL, IE, 1); /* SPI_MISO */
+	GWRITE_FIELD(PINMUX, DIOA14_CTL, IE, 1); /* SPI_CS_L */
 #endif
 
 	for (i = 0; i < SPI_NUM_PORTS; i++) {
