@@ -24,6 +24,7 @@ all: hex
 
 # The simulator components have their own subdirectory
 CFLAGS += -I$(realpath chip/$(CHIP)/dcrypto)
+CFLAGS += -I$(realpath chip/$(CHIP)/loader)
 CFLAGS += -I$(realpath $(BDIR)/tpm2)
 dirs-y += chip/$(CHIP)/dcrypto
 dirs-y += $(BDIR)/tpm2
@@ -42,6 +43,7 @@ board-y += tpm2/ecies.o
 board-y += tpm2/hash.o
 board-y += tpm2/hash_data.o
 board-y += tpm2/hkdf.o
+board-y += tpm2/manufacture.o
 board-y += tpm2/platform.o
 board-y += tpm2/rsa.o
 board-y += tpm2/stubs.o

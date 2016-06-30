@@ -16,6 +16,7 @@
 #include "signed_header.h"
 #include "system.h"
 #include "task.h"
+#include "tpm_manufacture.h"
 #include "tpm_registers.h"
 #include "util.h"
 
@@ -23,7 +24,6 @@
 #include "ExecCommand_fp.h"
 #include "Platform.h"
 #include "_TPM_Init_fp.h"
-#include "Manufacture_fp.h"
 
 #define CPRINTS(format, args...) cprints(CC_TPM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_TPM, format, ## args)
@@ -66,7 +66,7 @@ struct tpm_register_file {
 	uint8_t access;
 	uint32_t int_status;
 	uint32_t sts;
-	uint8_t data_fifo[2048]; /* this might have to be even deeper. */
+	uint8_t data_fifo[2100]; /* this might have to be even deeper. */
 };
 
 /*
@@ -457,7 +457,6 @@ static void tpm_init(void)
 	_plat__Signal_PowerOn();
 	/* TODO(ngm): CRBUG/50115, initialize state expected by TPM2
 	 * compliance tests. */
-	TPM_Manufacture(1);
 	_TPM_Init();
 	_plat__SetNvAvail();
 }
@@ -529,7 +528,7 @@ void tpm_task(void)
 			call_extension_command(tpmh, &response_size);
 		} else
 #endif
-		{
+		if (tpm_manufactured()) {
 			ExecuteCommand(tpm_.fifo_write_index,
 				       tpm_.regs.data_fifo,
 				       &response_size,

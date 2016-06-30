@@ -72,6 +72,7 @@ chip-$(CONFIG_STREAM_USART)+=usart.o
 chip-$(CONFIG_LOW_POWER_IDLE)+=idle.o
 
 chip-$(CONFIG_FLASH)+=flash.o
+chip-$(CONFIG_FLASH)+=loader/rom_flash.o
 dirs-y += chip/g/dcrypto
 
 ifneq ($(CONFIG_CUSTOMIZED_RO),)
