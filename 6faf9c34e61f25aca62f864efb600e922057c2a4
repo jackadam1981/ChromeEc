@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd43127f_f2e1b031",
+        "filename": "board/glados_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2016-06-30T22:49:30Z",
+      "side": 1,
+      "message": "Disabling HOST_HIGH doesn\u0027t put the high side into hi-z; it actually connects the two CC pins together with 24.18k resistance.  This isn\u0027t enough to be considered \"open\" from the type-c spec, and is really here just to save power when DEVICE_ODL is asserted low.\n\nSo Glados should be treated the same as Samus in that it cannot truly go hi-z.",
+      "revId": "6faf9c34e61f25aca62f864efb600e922057c2a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd43127f_92f14c06",
+        "filename": "board/ryu/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2016-06-30T22:49:30Z",
+      "side": 1,
+      "message": "Disabling PUEN doesn\u0027t put the high side into hi-z; it actually connects the two CC pins together with 20.4k resistance.  This isn\u0027t enough to be considered \"open\" from the type-c spec, and is really here just to save power when DEVICE_ODL is asserted low.\n\nSo Ryu should be treated the same as Samus in that it cannot truly go hi-z.",
+      "revId": "6faf9c34e61f25aca62f864efb600e922057c2a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8082ab4f_38b1715a",
+        "filename": "board/samus_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2016-06-30T22:49:30Z",
+      "side": 1,
+      "message": "Is it okay to silently \"fail\" to present hi-Z on CC when requested?",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 21
+      },
+      "revId": "6faf9c34e61f25aca62f864efb600e922057c2a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
