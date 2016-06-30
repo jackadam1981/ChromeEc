@@ -22,6 +22,30 @@
       "revId": "32e4ebd173b1d869cf0ec1cd081d7ce4a613baf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00279b99_66fe2e3b",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-30T01:54:43Z",
+      "side": 1,
+      "message": "We actually have several instances of \"#ifdef BOARD_KEVIN\" in this file and a few other board-level files. How about adding a README instead?",
+      "parentUuid": "a0a6cf25_ebd3f1e1",
+      "range": {
+        "startLine": 333,
+        "startChar": 39,
+        "endLine": 333,
+        "endChar": 40
+      },
+      "revId": "32e4ebd173b1d869cf0ec1cd081d7ce4a613baf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
