@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fd43127f_6d314192",
+        "filename": "board/glados_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1146300
+      },
+      "writtenOn": "2016-06-30T23:55:20Z",
+      "side": 1,
+      "message": "Bummer. I\u0027ll see if I can simulate CC_OPEN/High-z instead.",
+      "parentUuid": "fd43127f_f2e1b031",
+      "revId": "6faf9c34e61f25aca62f864efb600e922057c2a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd43127f_92f14c06",
         "filename": "board/ryu/usb_pd_config.h",
         "patchSetId": 2
@@ -47,6 +65,30 @@
       "writtenOn": "2016-06-30T22:49:30Z",
       "side": 1,
       "message": "Is it okay to silently \"fail\" to present hi-Z on CC when requested?",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 21
+      },
+      "revId": "6faf9c34e61f25aca62f864efb600e922057c2a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd43127f_6d1ae11d",
+        "filename": "board/samus_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1146300
+      },
+      "writtenOn": "2016-06-30T23:55:20Z",
+      "side": 1,
+      "message": "Yes, that would be another (and maybe simpler) option. Let me look into it.",
+      "parentUuid": "8082ab4f_38b1715a",
       "range": {
         "startLine": 209,
         "startChar": 0,
