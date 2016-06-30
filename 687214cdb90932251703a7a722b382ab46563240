@@ -22,6 +22,30 @@
       "revId": "687214cdb90932251703a7a722b382ab46563240",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e021a786_451daab8",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-06-30T01:54:43Z",
+      "side": 1,
+      "message": "These \u0027old\u0027 flags will apply instead to the new/remapped signal, which is exactly what we want to achieve.",
+      "parentUuid": "807c6b58_225dee03",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 22
+      },
+      "revId": "687214cdb90932251703a7a722b382ab46563240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
