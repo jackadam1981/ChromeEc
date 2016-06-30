@@ -16,6 +16,24 @@
       "revId": "56f0b1babae1d2b135290b0dca297e1bc0846dca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd43127f_72f92083",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-06-30T22:37:55Z",
+      "side": 1,
+      "message": "They are switched back to tri state mode because usb_spi is disabled in ccd_set_mode. Scott will test it once he gets his reef working again.",
+      "parentUuid": "fd43127f_47e7044d",
+      "revId": "56f0b1babae1d2b135290b0dca297e1bc0846dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
