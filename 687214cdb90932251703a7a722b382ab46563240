@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "807c6b58_225dee03",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-06-30T00:30:27Z",
+      "side": 1,
+      "message": "If board_gpio_remap changes signal, won\u0027t these now be the wrong flags?",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 22
+      },
+      "revId": "687214cdb90932251703a7a722b382ab46563240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
