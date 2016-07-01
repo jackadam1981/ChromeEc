@@ -110,16 +110,10 @@ int pd_snk_is_vbus_provided(int port)
 {
 	enum bd99955_charge_port bd99955_port;
 
-	/*
-	 * TODO: Add a compile-time mapping to prevent
-	 * duplication of this code.
-	 */
 	switch (port) {
 	case 0:
-		bd99955_port = BD99955_CHARGE_PORT_VBUS;
-		break;
 	case 1:
-		bd99955_port = BD99955_CHARGE_PORT_VCC;
+		bd99955_port = bd99955_pd_port_to_chg_port(port);
 		break;
 	default:
 		panic("Invalid charge port\n");

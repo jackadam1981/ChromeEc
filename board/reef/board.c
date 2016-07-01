@@ -365,10 +365,8 @@ int board_set_active_charge_port(int charge_port)
 
 	switch (charge_port) {
 	case 0:
-		bd99955_port = BD99955_CHARGE_PORT_VBUS;
-		break;
 	case 1:
-		bd99955_port = BD99955_CHARGE_PORT_VCC;
+		bd99955_port = bd99955_pd_port_to_chg_port(charge_port);
 		break;
 	case CHARGE_PORT_NONE:
 		bd99955_port = BD99955_CHARGE_PORT_NONE;
