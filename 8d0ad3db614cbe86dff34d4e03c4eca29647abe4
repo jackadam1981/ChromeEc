@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3daf6a91_f81c110e",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-01T21:37:37Z",
+      "side": 1,
+      "message": "Added blank line?",
+      "revId": "8d0ad3db614cbe86dff34d4e03c4eca29647abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_d8d10d2d",
+        "filename": "cts/flash_boards.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-01T21:37:37Z",
+      "side": 1,
+      "message": "2016, no (c)",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 20
+      },
+      "revId": "8d0ad3db614cbe86dff34d4e03c4eca29647abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_7be2bbda",
+        "filename": "cts/flash_boards.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-01T21:37:37Z",
+      "side": 1,
+      "message": "But does \u0027sudo flash_boards.py\u0027 work in the chroot?  That\u0027d be an ok way of calling it in the chroot.\n\nOr is the problem that this both builds the code and flashes it, so if you run it as root, the build artifacts are owned by root?\n\nIn the long run, we probably want to assume that the machine building the code may not be the one running the tests.  So there would be two phases - building the code (for TIB and DUT), which could run like a variant of \u0027make buildall\u0027, and a second phase which runs the tests (by executing this script, sans building).  Does that solve the problem of running this script as root?",
+      "range": {
+        "startLine": 7,
+        "startChar": 45,
+        "endLine": 8,
+        "endChar": 52
+      },
+      "revId": "8d0ad3db614cbe86dff34d4e03c4eca29647abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_bbc3733e",
+        "filename": "cts/flash_boards.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-01T21:37:37Z",
+      "side": 1,
+      "message": "-c?",
+      "range": {
+        "startLine": 32,
+        "startChar": 17,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "8d0ad3db614cbe86dff34d4e03c4eca29647abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_1bfa9f7b",
+        "filename": "cts/flash_boards.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-01T21:37:37Z",
+      "side": 1,
+      "message": "Advantage for doing this as a subprocess vs. just parsing the output of \u0027lsusb\u0027 directly in python?",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "8d0ad3db614cbe86dff34d4e03c4eca29647abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_9bedcfc3",
+        "filename": "cts/flash_boards.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-01T21:37:37Z",
+      "side": 1,
+      "message": "Try to keep line length within 80 chars.",
+      "range": {
+        "startLine": 57,
+        "startChar": 78,
+        "endLine": 57,
+        "endChar": 81
+      },
+      "revId": "8d0ad3db614cbe86dff34d4e03c4eca29647abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_fbe40bdb",
+        "filename": "cts/flash_boards.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-01T21:37:37Z",
+      "side": 1,
+      "message": "Do these need \u0027shutdown\u0027 since it seems to be appended by openocd_cmd() anyway?",
+      "range": {
+        "startLine": 98,
+        "startChar": 22,
+        "endLine": 98,
+        "endChar": 30
+      },
+      "revId": "8d0ad3db614cbe86dff34d4e03c4eca29647abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_5b2fb7eb",
+        "filename": "cts/flash_boards.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-01T21:37:37Z",
+      "side": 1,
+      "message": "os.path.join() would be more pythonic",
+      "range": {
+        "startLine": 117,
+        "startChar": 35,
+        "endLine": 117,
+        "endChar": 42
+      },
+      "revId": "8d0ad3db614cbe86dff34d4e03c4eca29647abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_3b1123a9",
+        "filename": "cts/flash_boards.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-01T21:37:37Z",
+      "side": 1,
+      "message": "eventually, would be good to use argparse to parse arguments",
+      "range": {
+        "startLine": 127,
+        "startChar": 9,
+        "endLine": 127,
+        "endChar": 30
+      },
+      "revId": "8d0ad3db614cbe86dff34d4e03c4eca29647abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
