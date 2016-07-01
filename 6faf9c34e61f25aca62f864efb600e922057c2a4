@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "8082ab4f_4cb6f3eb",
+        "filename": "board/glados_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1146300
+      },
+      "writtenOn": "2016-07-01T12:53:31Z",
+      "side": 1,
+      "message": "The requirement is to disconnect any resistors from CC1/CC2 (both Rd and Rp) so the remote side sees the link as disconnected. Is there any way to do this with those products ?",
+      "parentUuid": "fd43127f_f2e1b031",
+      "revId": "6faf9c34e61f25aca62f864efb600e922057c2a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd43127f_92f14c06",
         "filename": "board/ryu/usb_pd_config.h",
         "patchSetId": 2
