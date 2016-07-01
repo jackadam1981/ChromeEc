@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8082ab4f_012af481",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-07-01T07:37:39Z",
+      "side": 1,
+      "message": "This should not be needed since it seems be done by NPCX driver already: \n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/chip/npcx/gpio.c#604\n\nLine 604-611",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 51
+      },
+      "revId": "58bf97613df23071b8648f955182bd926fff3994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
