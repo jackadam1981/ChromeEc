@@ -5,3 +5,11 @@ http://www.chromium.org/chromium-os/2014-firmware-summit
 For instructions on building from source, refer to
 
 http://www.chromium.org/chromium-os/ec-development/getting-started-building-ec-images-quickly
+
+To run CTS tests:
+
+The first time you use this with a particular th,
+connect only the th and run ./cts.py --th
+
+Then connect both boards and you can run
+./cts.py to build for and flash both boards.
