@@ -272,6 +272,9 @@ enum bd99955_charge_port {
 #define BD99955_CMD_SMBREG		0x7C
 #define BD99955_CMD_DEBUG_MODE_SET	0x7F
 
+/* Map PD port number to charge port number */
+extern const enum bd99955_charge_port pd_port_to_bd99955_port[];
+
 /*
  * Non-standard interface functions - bd99955 integrates additional
  * functionality not part of the standard charger interface.

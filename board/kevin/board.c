@@ -159,12 +159,6 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{I2C_PORT_TCPC1, FUSB302_I2C_SLAVE_ADDR, &fusb302_tcpm_drv},
 };
 
-static const enum bd99955_charge_port
-	pd_port_to_bd99955_port[CONFIG_USB_PD_PORT_COUNT] = {
-	[0] = BD99955_CHARGE_PORT_VBUS,
-	[1] = BD99955_CHARGE_PORT_VCC,
-};
-
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.port_addr = 0,
