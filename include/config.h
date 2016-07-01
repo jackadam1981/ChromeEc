@@ -353,6 +353,13 @@
 #undef CONFIG_CHARGER_TPS65090  /* Note: does not use CONFIG_CHARGER */
 
 /*
+ * BD99955 PD port to charger port mapping.
+ * By default VBUS is selected as primary port.
+ * Define only if the VCC is the primary port.
+ */
+#undef CONFIG_BD99955_PRIMARY_CHARGE_PORT_VCC
+
+/*
  * BQ2589x IR Compensation settings.
  * Should be the combination of BQ2589X_IR_TREG_xxxC, BQ2589X_IR_VCLAMP_yyyMV
  * and  BQ2589X_IR_BAT_COMP_zzzMOHM.
