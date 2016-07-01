@@ -824,8 +824,8 @@ void motion_sense_task(void)
 			 * Delay appropriately to keep sampling time
 			 * consistent.
 			 */
-			wait_us = motion_interval -
-				(ts_end_task.val - ts_begin_task.val);
+			wait_us = MIN(motion_interval -
+				(ts_end_task.val - ts_begin_task.val), 0);
 
 			/*
 			 * Guarantee some minimum delay to allow other lower
