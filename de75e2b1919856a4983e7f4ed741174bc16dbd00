@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8082ab4f_7bd5b352",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-07-01T01:03:11Z",
+      "side": 1,
+      "message": "10ms is ok. But the first conversion of ADC still fails. Do you plan to fix it along with this CL?",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 316,
+        "endChar": 12
+      },
+      "revId": "de75e2b1919856a4983e7f4ed741174bc16dbd00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
