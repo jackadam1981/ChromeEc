@@ -21,6 +21,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "fake_key.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_KEYSCAN, outstr)
@@ -165,6 +166,8 @@ static void ensure_keyboard_scanned(int old_polls)
 	       (get_time().val - start_time < SCAN_TASK_TIMEOUT_US))
 		usleep(keyscan_config.scan_period_us);
 }
+
+
 
 /**
  * Simulate a keypress.
@@ -507,6 +510,16 @@ static int check_keys_changed(uint8_t *state)
 	return any_pressed;
 }
 
+void fake_key(int type, int pressed)
+{
+	if( type == KEYBOARD_BUTTON_VOLUME_UP ) {
+		simulate_key(0, 4, pressed);
+	} else if ( type == KEYBOARD_BUTTON_VOLUME_DOWN ) {
+		simulate_key(1, 9, pressed);
+	} else {
+		CPRINTF("Not handled");
+	}
+}
 /*
  * Return non-zero if the specified key is pressed, with at most the keys used
  * for keyboard-controlled reset also pressed.
