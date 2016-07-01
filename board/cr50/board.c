@@ -14,7 +14,9 @@
 #include "init_chip.h"
 #include "registers.h"
 #include "nvmem.h"
+#include "system.h"
 #include "task.h"
+#include "timer.h"
 #include "trng.h"
 #include "uartn.h"
 #include "usb_descriptor.h"
@@ -205,8 +207,9 @@ int flash_regions_to_enable(struct g_flash_region *regions,
 
 void sys_rst_asserted(enum gpio_signal signal)
 {
-	/* TODO(crosbug.com/p/52366): Do something useful here. */
-	CPRINTS("%s(%d)", __func__, signal);
+	CPRINTS("%s resceived signal %d)", __func__, signal);
+	cflush();
+	system_reset(SYSTEM_RESET_HARD);
 }
 
 void nvmem_compute_sha(uint8_t *p_buf, int num_bytes,
