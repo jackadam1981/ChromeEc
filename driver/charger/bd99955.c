@@ -30,6 +30,12 @@
 /* TODO: Add accurate timeout for detecting BC1.2 */
 #define BC12_DETECT_RETRY	10
 
+const enum bd99955_charge_port
+	pd_port_to_bd99955_port[BD99955_CHARGE_PORT_COUNT] = {
+	[0] = BD99955_PD_TO_CHARGE_PORT_0,
+	[1] = BD99955_PD_TO_CHARGE_PORT_1,
+};
+
 /* Charger parameters */
 static const struct charger_info bd99955_charger_info = {
 	.name         = CHARGER_NAME,
@@ -377,8 +383,7 @@ static void usb_charger_process(enum bd99955_charge_port port)
 	int vbus_provided = bd99955_is_vbus_provided(port);
 
 	/* Inform other modules about VBUS level */
-	/* TODO: map charger port num to board port num, they may differ. */
-	usb_charger_vbus_change(port, vbus_provided);
+	usb_charger_vbus_change(pd_port_to_bd99955_port[port], vbus_provided);
 
 	/* Do BC1.2 detection */
 	if (vbus_provided) {

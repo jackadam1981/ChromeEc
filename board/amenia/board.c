@@ -251,12 +251,6 @@ const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
 	 30 * MSEC, 0},
 };
 
-static const enum bd99955_charge_port
-	pd_port_to_bd99955_port[CONFIG_USB_PD_PORT_COUNT] = {
-	[0] = BD99955_CHARGE_PORT_VBUS,
-	[1] = BD99955_CHARGE_PORT_VCC,
-};
-
 /* Called by APL power state machine when transitioning from G3 to S5 */
 static void chipset_pre_init(void)
 {
