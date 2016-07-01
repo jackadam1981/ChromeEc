@@ -225,7 +225,7 @@ $(out)/RW/%.hex: $(out)/RW/%.elf $(out)/RW/%.smap
 	$(call quiet,elf_to_hex,OBJCOPY)
 
 ifeq ($(SIGNED_IMAGES),)
-$(out)/%.flat: $(out)/%.elf $(out)/%.smap utils-build
+$(out)/%.flat: $(out)/%.elf $(out)/%.smap
 	$(call quiet,ec_elf_to_flat,OBJCOPY)
 
 $(out)/RO/%.hex: $(out)/RO/%.elf $(out)/RO/%.smap
@@ -244,12 +244,12 @@ $(out)/$(PROJECT).hex: $(out)/$(PROJECT).bin
 	$(call quiet,bin_to_hex,OBJCOPY)
 
 $(out)/RW/%.elf: override BLD:=RW
-$(out)/RW/%.elf: private objs := $(rw-objs)
+$(out)/RW/%.elf: objs := $(rw-objs)
 $(out)/RW/%.elf: $(out)/RW/%.lds $(rw-objs) $(libsharedobjs_elf-y)
 	$(call quiet,elf,LD     )
 
 $(out)/RO/%.elf: override BLD:=RO
-$(out)/RO/%.elf: private objs := $(ro-objs)
+$(out)/RO/%.elf: objs := $(ro-objs)
 $(out)/RO/%.elf: $(out)/RO/%.lds $(ro-objs) $(libsharedobjs_elf-y)
 	$(call quiet,elf,LD     )
 
