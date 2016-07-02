@@ -281,6 +281,8 @@ enum bd99955_charge_port {
 int bd99955_is_vbus_provided(int port);
 /* Select input port from {VCC, VBUS, VCC&VBUS, NONE}. */
 int bd99955_select_input_port(enum bd99955_charge_port port);
+/* Get input current limit for BC1.2 suppliers */
+int bd99955_get_bc12_ilim(int charge_supplier);
 /* Enable/Disable charging triggered by BC1.2 */
 int bd99955_bc12_enable_charging(enum bd99955_charge_port port, int enable);
 /* Interrupt handler for USB charger VBUS */
