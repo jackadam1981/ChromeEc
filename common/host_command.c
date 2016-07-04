@@ -24,7 +24,7 @@
 #define TASK_EVENT_CMD_PENDING TASK_EVENT_CUSTOM(1)
 
 /* Maximum delay to skip printing repeated host command debug output */
-#define HCDEBUG_MAX_REPEAT_DELAY (50 * MSEC)
+#define HCDEBUG_MAX_REPEAT_DELAY (150 * MSEC)
 
 static struct host_cmd_handler_args *pending_args;
 
