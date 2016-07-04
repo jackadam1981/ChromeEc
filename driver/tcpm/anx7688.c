@@ -15,6 +15,7 @@
 
 #define ANX7688_REG_STATUS      0x82
 #define ANX7688_REG_STATUS_LINK (1 << 0)
+#define ANX7688_REG_STATUS_SNKCNT_CHANGE (1 << 2)
 
 #define ANX7688_REG_HPD         0x83
 #define ANX7688_REG_HPD_HIGH    (1 << 0)
@@ -78,6 +79,26 @@ static void anx7688_update_hpd_enable(int port)
 			   ? reg | ANX7688_REG_HPD_ENABLE
 			   : reg & ~ANX7688_REG_HPD_ENABLE);
 	}
+
+
+	/* check sink count changed interrupt */	
+	rv = tcpc_read(port, ANX7688_REG_STATUS, &status);
+	if (rv)
+		return;
+
+	if (status & ANX7688_REG_STATUS_SNKCNT_CHANGE) {
+		tcpc_write(port, ANX7688_REG_STATUS, status & ~ANX7688_REG_STATUS_SNKCNT_CHANGE);
+		rv |= tcpc_read(port, 0x88, &reg);
+		if (rv)
+			return;
+		/* if sink count is 0, tell HDMI side */
+		if (0 == reg) {
+			tcpc_read(port,  ANX7688_REG_HPD, &reg);
+			tcpc_write(port, ANX7688_REG_HPD, reg & ~(ANX7688_REG_HPD_ENABLE | ANX7688_REG_HPD_IRQ));
+		}
+	}
+
+	
 }
 
 int anx7688_hpd_disable(int port)
