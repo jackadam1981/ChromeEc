@@ -831,7 +831,7 @@ void motion_sense_task(void)
 			 * Guarantee some minimum delay to allow other lower
 			 * priority tasks to run.
 			 */
-			if (wait_us < motion_min_interval)
+			if (wait_us < (int)motion_min_interval)
 				wait_us = motion_min_interval;
 		} else {
 			wait_us = -1;
