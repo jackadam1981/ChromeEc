@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3daf6a91_f2ac28b5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-07-05T18:04:59Z",
+      "side": 1,
+      "message": "make motion_min_interval a int instead of a unsigned int.",
+      "revId": "76842825fa2cace012521ed8e9a79e17cd335cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
