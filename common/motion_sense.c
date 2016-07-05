@@ -34,10 +34,10 @@
 /*
  * Sampling interval for measuring acceleration and calculating lid angle.
  */
-test_export_static unsigned int motion_interval;
+test_export_static int motion_interval;
 
 /* Delay between FIFO interruption. */
-static unsigned int motion_int_interval;
+static int motion_int_interval;
 
 /* Minimum time in between running motion sense task loop. */
 unsigned int motion_min_interval = CONFIG_MOTION_MIN_SENSE_WAIT_TIME * MSEC;
