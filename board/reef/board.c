@@ -711,14 +711,14 @@ struct {
 	enum reef_board_version version;
 	int thresh_mv;
 } const reef_board_versions[] = {
-	{ BOARD_VERSION_1, 330 },  /* 5.11 Kohm */
-	{ BOARD_VERSION_2, 670 },  /* 11.8 Kohm */
-	{ BOARD_VERSION_3, 1010 }, /* 20.5 Kohm */
-	{ BOARD_VERSION_4, 1390 }, /* 32.4 Kohm */
-	{ BOARD_VERSION_5, 1690 }, /* 48.7 Kohm */
-	{ BOARD_VERSION_6, 2020 }, /* 73.2 Kohm */
-	{ BOARD_VERSION_7, 2350 }, /* 115 Kohm */
-	{ BOARD_VERSION_8, 2800 }, /* 261 Kohm */
+	{ BOARD_VERSION_1, 330 * 1.03 },  /* 5.11 Kohm */
+	{ BOARD_VERSION_2, 670 * 1.03 },  /* 11.8 Kohm */
+	{ BOARD_VERSION_3, 1010 * 1.03 }, /* 20.5 Kohm */
+	{ BOARD_VERSION_4, 1390 * 1.03 }, /* 32.4 Kohm */
+	{ BOARD_VERSION_5, 1690 * 1.03 }, /* 48.7 Kohm */
+	{ BOARD_VERSION_6, 2020 * 1.03 }, /* 73.2 Kohm */
+	{ BOARD_VERSION_7, 2350 * 1.03 }, /* 115 Kohm */
+	{ BOARD_VERSION_8, 2800 * 1.03 }, /* 261 Kohm */
 };
 BUILD_ASSERT(ARRAY_SIZE(reef_board_versions) == BOARD_VERSION_COUNT);
 
