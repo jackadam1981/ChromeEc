@@ -16,6 +16,24 @@
       "revId": "6b2a8b9b4b8dba5adf16bab3b88786eff0e99099",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d80e612_0dfa757b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-07-06T05:28:15Z",
+      "side": 1,
+      "message": "I think 8kb might be a little overkill anyway, especially if we disable host command debug.",
+      "parentUuid": "3daf6a91_b2255052",
+      "revId": "6b2a8b9b4b8dba5adf16bab3b88786eff0e99099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
