@@ -45,6 +45,30 @@
       "revId": "264bca7e40cccd6f8576f69a6af32bd5bd0c1bfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_18553ad7",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-06T20:51:03Z",
+      "side": 0,
+      "message": "Change with line 247 and 252 are a workaround to make older make work. https://chromium-review.googlesource.com/#/c/340108/. The should be restored.",
+      "parentUuid": "3daf6a91_58bedde6",
+      "range": {
+        "startLine": 247,
+        "startChar": 17,
+        "endLine": 247,
+        "endChar": 25
+      },
+      "revId": "264bca7e40cccd6f8576f69a6af32bd5bd0c1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
