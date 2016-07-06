@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3daf6a91_2e9c7873",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-06T22:43:23Z",
+      "side": 1,
+      "message": "You still have this line.",
+      "revId": "0bb82af0a11f6ac1d850fe92a3111535ba5e6783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_ce385c31",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-06T22:43:23Z",
+      "side": 1,
+      "message": "Do you need this ifdef?",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 16
+      },
+      "revId": "0bb82af0a11f6ac1d850fe92a3111535ba5e6783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_0ee894ad",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-06T22:43:23Z",
+      "side": 1,
+      "message": "extra line",
+      "revId": "0bb82af0a11f6ac1d850fe92a3111535ba5e6783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_8e8104e4",
+        "filename": "board/nucleo-f072rb/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-06T22:43:23Z",
+      "side": 1,
+      "message": "Do you need to comment that this task has to be at the bottom (highest priority)?",
+      "revId": "0bb82af0a11f6ac1d850fe92a3111535ba5e6783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_0eb6d4e8",
+        "filename": "cts/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-06T22:43:23Z",
+      "side": 1,
+      "message": "s/2012/2016/",
+      "range": {
+        "startLine": 2,
+        "startChar": 16,
+        "endLine": 2,
+        "endChar": 20
+      },
+      "revId": "0bb82af0a11f6ac1d850fe92a3111535ba5e6783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
