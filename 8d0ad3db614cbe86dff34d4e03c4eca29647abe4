@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "3daf6a91_f30187ff",
+        "filename": "cts/flash_boards.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-06T22:08:48Z",
+      "side": 1,
+      "message": "sudo is needed to get hla_serial from the test harness. Once TH is set up (serial is retrieved), we can run the script without sudo. So, we should write instructions (for non-chroot) or ebuild script (for chroot) accordingly. \n\nRegarding build and test phases, do we need to separate them at all? I guess FAFT retrieves artifacts from build servers and run tests on different machines. (is that right?) EC CTS is chip test. So, we\u0027ll be running flash_boards.py for each evaluation board not for chromium os board. It\u0027s better to build \u0026 test CTS on the same machine (because build servers run for chrome os boards).\n\nI\u0027m also thinking of not using chroot at all on the CTS test machines. After all, we want to give favor to non-chroot environment so that we can avoid putting CTS in chroot jail. As long as make buildall is not broken inside chroot, I think we don\u0027t need to worry whether the script runs inside chroot or not.",
+      "parentUuid": "3daf6a91_7be2bbda",
+      "range": {
+        "startLine": 7,
+        "startChar": 45,
+        "endLine": 8,
+        "endChar": 52
+      },
+      "revId": "8d0ad3db614cbe86dff34d4e03c4eca29647abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3daf6a91_bbc3733e",
         "filename": "cts/flash_boards.py",
         "patchSetId": 1
