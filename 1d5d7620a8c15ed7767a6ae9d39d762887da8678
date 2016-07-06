@@ -16,6 +16,24 @@
       "revId": "1d5d7620a8c15ed7767a6ae9d39d762887da8678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d80e612_cde77ddd",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-07-06T05:27:39Z",
+      "side": 1,
+      "message": "I\u0027m just concerned that disabling all host command output will make the EC console logs less useful (when the purpose of this is to include it in feedback reports).\n\nMaybe we should have a have a default logging mode that does not print GET_NEXT_EVENT and EC_CMD_MOTION_SENSE_CMD?",
+      "parentUuid": "3daf6a91_722c983f",
+      "revId": "1d5d7620a8c15ed7767a6ae9d39d762887da8678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
