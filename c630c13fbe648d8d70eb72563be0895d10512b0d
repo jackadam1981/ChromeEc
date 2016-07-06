@@ -16,6 +16,29 @@
       "revId": "c630c13fbe648d8d70eb72563be0895d10512b0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_f3ed07f9",
+        "filename": "cts/gpio/th.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-06T22:43:23Z",
+      "side": 1,
+      "message": "FYI: it can be as short as sleep(1).",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "c630c13fbe648d8d70eb72563be0895d10512b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
