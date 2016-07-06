@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3daf6a91_7f49c071",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-07-06T15:54:03Z",
+      "side": 1,
+      "message": "if wait_us is negative and motion_min_interval is a int - instead of a unsigned int, then this test is valid.",
+      "revId": "e34652f2492b2c927d656deb1b28184fb8fab8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
