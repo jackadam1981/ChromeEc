@@ -16,6 +16,24 @@
       "revId": "76842825fa2cace012521ed8e9a79e17cd335cca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d80e612_4abe13e7",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-07-06T02:09:05Z",
+      "side": 1,
+      "message": "Yes you are right, this goes wrong when motion_min_interval is extremely large. I submit another patch, and please help take another look, thank you!",
+      "parentUuid": "3daf6a91_f2ac28b5",
+      "revId": "76842825fa2cace012521ed8e9a79e17cd335cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
