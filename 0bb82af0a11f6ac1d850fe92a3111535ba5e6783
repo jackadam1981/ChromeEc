@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "5d85fe57_b1302090",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-06T23:46:57Z",
+      "side": 1,
+      "message": "s/flash_boards/cts/",
+      "range": {
+        "startLine": 10,
+        "startChar": 26,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "0bb82af0a11f6ac1d850fe92a3111535ba5e6783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d85fe57_11200c3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-06T23:46:57Z",
+      "side": 1,
+      "message": "Could you put these in README as well?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "0bb82af0a11f6ac1d850fe92a3111535ba5e6783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3daf6a91_2e9c7873",
         "filename": "Makefile",
         "patchSetId": 5
