@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3daf6a91_ffbb101f",
+        "filename": "driver/bmp280.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-07-06T17:15:33Z",
+      "side": 1,
+      "message": "Bosh code is notorious to be overly wordy.\nCan you simplify a little, code space is spare on the EC.\n- remove BMP280_SHIFT_BIT_POSITION_BY_xx_BITS definition, _NULL definiton or other obviouse #define.\n- use loop in init routine\n- remove type casting unless necessary.",
+      "revId": "cea81bd58768f8f15f578012315fe423eab37e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_ff1f90ff",
+        "filename": "driver/bmp280.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-07-06T17:15:33Z",
+      "side": 1,
+      "message": "remove #define, use proper ec code.",
+      "revId": "cea81bd58768f8f15f578012315fe423eab37e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_bfa278be",
+        "filename": "driver/bmp280.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-07-06T17:15:33Z",
+      "side": 1,
+      "message": "these _LENGTH seems a duplicate of their respective _SIZE define.",
+      "revId": "cea81bd58768f8f15f578012315fe423eab37e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_df864c2f",
+        "filename": "driver/bmp280.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-07-06T17:15:33Z",
+      "side": 1,
+      "message": "see if this could be 2 arrays instead and if a loop could be used to fill them.",
+      "revId": "cea81bd58768f8f15f578012315fe423eab37e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_5fc95c8a",
+        "filename": "driver/bmp280.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-07-06T17:15:33Z",
+      "side": 1,
+      "message": "can it be a #define?",
+      "revId": "cea81bd58768f8f15f578012315fe423eab37e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_7fbe20e7",
+        "filename": "driver/bmp280.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-07-06T17:15:33Z",
+      "side": 1,
+      "message": "can it be a #define",
+      "revId": "cea81bd58768f8f15f578012315fe423eab37e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
