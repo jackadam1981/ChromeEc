@@ -695,7 +695,7 @@ void board_hibernate(void)
 
 enum reef_board_version {
 	BOARD_VERSION_UNKNOWN = -1,
-	BOARD_VERSION_1,
+	BOARD_VERSION_1 = 1,
 	BOARD_VERSION_2,
 	BOARD_VERSION_3,
 	BOARD_VERSION_4,
@@ -703,7 +703,8 @@ enum reef_board_version {
 	BOARD_VERSION_6,
 	BOARD_VERSION_7,
 	BOARD_VERSION_8,
-	BOARD_VERSION_COUNT,
+	/* Versions for Reef begin at 1 instead of 0 */
+	BOARD_VERSION_COUNT = BOARD_VERSION_8,
 };
 
 struct {
@@ -744,7 +745,7 @@ int board_get_version(void)
 		return version;
 	}
 
-	for (i = 0; i < BOARD_VERSION_COUNT; i++) {
+	for (i = 0; i < ARRAY_SIZE(reef_board_versions); i++) {
 		if (mv < reef_board_versions[i].thresh_mv) {
 			version = reef_board_versions[i].version;
 			break;
