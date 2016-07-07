@@ -50,6 +50,24 @@
       "revId": "24fc4941008791ef70c4acb2787bfeea68c3cc77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d80e612_d042b299",
+        "filename": "driver/als_al3010.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1156224
+      },
+      "writtenOn": "2016-07-07T02:14:43Z",
+      "side": 1,
+      "message": "It should be on glados board, but I can\u0027t sure the board is right. I will add the board commit.",
+      "parentUuid": "3daf6a91_7f4e2085",
+      "revId": "24fc4941008791ef70c4acb2787bfeea68c3cc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
