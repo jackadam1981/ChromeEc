@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d85fe57_3ace4567",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2543,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-07T04:26:53Z",
+      "side": 1,
+      "message": "bigger bitmask maybe? Not sure how many buttons we\u0027d end up supporting...",
+      "range": {
+        "startLine": 2543,
+        "startChar": 1,
+        "endLine": 2543,
+        "endChar": 8
+      },
+      "revId": "7bade5e2a9db81f0b46b396474528e964263de2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d8f067e_5e1a1975",
+        "filename": "include/keyboard_mkbp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-07T04:26:53Z",
+      "side": 1,
+      "message": "These bit defs should probably go in the other CL. But, also this will need to be consistent across projects (coreboot, depthcharge, linux kernel).\n\nMaybe ec_commands.h might be a better home? Only because I know at least that header is copied from the EC.",
+      "revId": "7bade5e2a9db81f0b46b396474528e964263de2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
