@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "bd20ba83_9853852a",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-07T20:20:17Z",
+      "side": 1,
+      "message": "For example, can you do something like this in cts/build.mk:\n\n  $(CTS_MODULE)-y+\u003d$(CTS_MODULE)/th.o (or dut.o)\n\nThen in this Makefile, you do:\n\n  include cts/build.mk (without ifdef...endif)\n  all-obj-y+\u003d$(call objs_from_dir,cts,$(CTS_MODULE))",
+      "parentUuid": "3daf6a91_ce385c31",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 16
+      },
+      "revId": "0bb82af0a11f6ac1d850fe92a3111535ba5e6783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3daf6a91_0ee894ad",
         "filename": "Makefile",
         "patchSetId": 5
