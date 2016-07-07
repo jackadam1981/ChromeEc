@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3af21056_c6e596b0",
+        "filename": "driver/bmp280.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-07-07T22:35:14Z",
+      "side": 1,
+      "message": "Agreed. Have tried to remove most, and still working on some more. Too many changes so uploading a patch set anyway.",
+      "parentUuid": "3daf6a91_ffbb101f",
+      "revId": "cea81bd58768f8f15f578012315fe423eab37e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3daf6a91_ff1f90ff",
         "filename": "driver/bmp280.h",
         "patchSetId": 12
@@ -30,6 +48,24 @@
       "writtenOn": "2016-07-06T17:15:33Z",
       "side": 1,
       "message": "remove #define, use proper ec code.",
+      "revId": "cea81bd58768f8f15f578012315fe423eab37e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_62ff676b",
+        "filename": "driver/bmp280.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-07-07T22:35:14Z",
+      "side": 1,
+      "message": "Sure removing this.",
+      "parentUuid": "3daf6a91_ff1f90ff",
       "revId": "cea81bd58768f8f15f578012315fe423eab37e62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "3daf6a91_02e86bad",
+        "filename": "driver/bmp280.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-07-07T22:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3daf6a91_bfa278be",
+      "revId": "cea81bd58768f8f15f578012315fe423eab37e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3daf6a91_df864c2f",
         "filename": "driver/bmp280.h",
         "patchSetId": 12
@@ -64,6 +118,24 @@
       "writtenOn": "2016-07-06T17:15:33Z",
       "side": 1,
       "message": "see if this could be 2 arrays instead and if a loop could be used to fill them.",
+      "revId": "cea81bd58768f8f15f578012315fe423eab37e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3daf6a91_02578bb9",
+        "filename": "driver/bmp280.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-07-07T22:35:14Z",
+      "side": 1,
+      "message": "The data type of first calibration parameter is unsigned vs others are signed. For readability I am tending towards keeping it as it is for now. I have removed macros for indexing it, which I agree is extra wordy instead using constants.",
+      "parentUuid": "3daf6a91_df864c2f",
       "revId": "cea81bd58768f8f15f578012315fe423eab37e62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "3af21056_26d7a2ce",
+        "filename": "driver/bmp280.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-07-07T22:35:14Z",
+      "side": 1,
+      "message": "This is populated from board file through motion_sensor_t, so #define may not be suitable.",
+      "parentUuid": "3daf6a91_5fc95c8a",
+      "revId": "cea81bd58768f8f15f578012315fe423eab37e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3daf6a91_7fbe20e7",
         "filename": "driver/bmp280.h",
         "patchSetId": 12
@@ -98,6 +188,24 @@
       "writtenOn": "2016-07-06T17:15:33Z",
       "side": 1,
       "message": "can it be a #define",
+      "revId": "cea81bd58768f8f15f578012315fe423eab37e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_06dc9eec",
+        "filename": "driver/bmp280.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-07-07T22:35:14Z",
+      "side": 1,
+      "message": "Same as above",
+      "parentUuid": "3daf6a91_7fbe20e7",
       "revId": "cea81bd58768f8f15f578012315fe423eab37e62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
