@@ -703,32 +703,19 @@ void board_hibernate(void)
 	 * turn off whatever can be turned off. */
 }
 
-enum reef_board_version {
-	BOARD_VERSION_UNKNOWN = -1,
-	BOARD_VERSION_1,
-	BOARD_VERSION_2,
-	BOARD_VERSION_3,
-	BOARD_VERSION_4,
-	BOARD_VERSION_5,
-	BOARD_VERSION_6,
-	BOARD_VERSION_7,
-	BOARD_VERSION_8,
-	BOARD_VERSION_COUNT,
-};
-
 struct {
 	enum reef_board_version version;
 	int thresh_mv;
 } const reef_board_versions[] = {
 	/* Vin = 3.3V, R1 = 46.4K, R2 values listed below */
-	{ BOARD_VERSION_1, 328 * 1.03 },  /* 5.11 Kohm */
-	{ BOARD_VERSION_2, 670 * 1.03 },  /* 11.8 Kohm */
-	{ BOARD_VERSION_3, 1012 * 1.03 }, /* 20.5 Kohm */
-	{ BOARD_VERSION_4, 1357 * 1.03 }, /* 32.4 Kohm */
-	{ BOARD_VERSION_5, 1690 * 1.03 }, /* 48.7 Kohm */
-	{ BOARD_VERSION_6, 2020 * 1.03 }, /* 73.2 Kohm */
-	{ BOARD_VERSION_7, 2352 * 1.03 }, /* 115 Kohm */
-	{ BOARD_VERSION_8, 2802 * 1.03 }, /* 261 Kohm */
+	{ BOARD_VERSION_PROTO,	328 * 1.03 },  /* 5.11 Kohm */
+	{ BOARD_VERSION_EVT,	670 * 1.03 },  /* 11.8 Kohm */
+	{ BOARD_VERSION_3,	1012 * 1.03 }, /* 20.5 Kohm */
+	{ BOARD_VERSION_4,	1357 * 1.03 }, /* 32.4 Kohm */
+	{ BOARD_VERSION_5,	1690 * 1.03 }, /* 48.7 Kohm */
+	{ BOARD_VERSION_6,	2020 * 1.03 }, /* 73.2 Kohm */
+	{ BOARD_VERSION_7,	2352 * 1.03 }, /* 115 Kohm */
+	{ BOARD_VERSION_8,	2802 * 1.03 }, /* 261 Kohm */
 };
 BUILD_ASSERT(ARRAY_SIZE(reef_board_versions) == BOARD_VERSION_COUNT);
 
