@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3af21056_a65292c6",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-07T23:09:00Z",
+      "side": 1,
+      "message": "If you make this function simply return 0 or non-zero, you can change this to \u0027return !differ\u0027",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 11
+      },
+      "revId": "b3efe6fc1b47adff25a5115b5bd0d798f557015f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3af21056_266a029a",
         "filename": "common/keyboard_mkbp.c",
         "patchSetId": 2
@@ -13,6 +36,87 @@
       "writtenOn": "2016-07-07T22:58:49Z",
       "side": 1,
       "message": "Just realized that this is pointless and wrong. I need to adjust for the cookie in kb_fifo_remove.",
+      "revId": "b3efe6fc1b47adff25a5115b5bd0d798f557015f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_e671ba5a",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-07T23:09:00Z",
+      "side": 1,
+      "message": "And really, buttons/switches should only be 4-byte events the way they\u0027re defined, not (13-cookiesize)",
+      "parentUuid": "3af21056_266a029a",
+      "revId": "b3efe6fc1b47adff25a5115b5bd0d798f557015f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_46f06600",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-07T23:09:00Z",
+      "side": 1,
+      "message": "Do you need to re-set the event below if data_size \u003d\u003d -EC_ERROR_BUSY?",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 19
+      },
+      "revId": "b3efe6fc1b47adff25a5115b5bd0d798f557015f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_8638ae92",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-07T23:09:00Z",
+      "side": 1,
+      "message": "This could potentially loop forever and watchdog if there\u0027s a bug in one of the event sources so it always returns busy.\n\nIf we wrap fully around (that is, if last is the same as it was when we entered mkbp_next_event()), should we return error?",
+      "range": {
+        "startLine": 117,
+        "startChar": 10,
+        "endLine": 117,
+        "endChar": 37
+      },
+      "revId": "b3efe6fc1b47adff25a5115b5bd0d798f557015f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_06913eb6",
+        "filename": "include/keyboard_mkbp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-07T23:09:00Z",
+      "side": 1,
+      "message": "Hmm.  If we\u0027re going to have lots of cookies, maybe it\u0027d be better just to expand out the kb_fifo_data to have an event type, the same way ec_response_get_next_event does.\n\nOr even just use an array of ec_response_get_next_event for the FIFO.",
       "revId": "b3efe6fc1b47adff25a5115b5bd0d798f557015f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
