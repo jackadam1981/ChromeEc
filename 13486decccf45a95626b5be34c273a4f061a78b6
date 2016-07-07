@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d4dfe58_d1e96488",
+        "filename": "chip/it83xx/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-07-07T11:01:13Z",
+      "side": 1,
+      "message": "we should probably put slightly less hardcoded / more human readable assembly here.\n\nMy proposal :\n        uint32_t prev_mask \u003d get_int_mask();\n        uint32_t val;\n\n        interrupt_disable();\n        asm volatile(\n                /* read observation register for the first time */\n                \"lwi %0,[%1]\\n\\t\"\n                /*\n                 * the delay time between reading the first and second\n                 * observation registers need to be greater than 0.125us and\n                 * smaller than 0.250us.\n                 */\n                \".rept %2\\n\\t\"  /* n# of cycles in 125us */\n                \"nop\\n\\t\"\n                \".endr\\n\\t\"\n                /* read for the second time */\n                \"lwi %0,[%1]\\n\\t\"\n                : \"\u003d\u0026r\"(val) : \"r\"(IT83XX_ETWD_ETXCNTOR(FREE_EXT_TIMER_H)),\n                               \"i\"(CYCLES_125NS) );\n        /* restore interrupts */\n        set_int_mask(prev_mask);\n        return val;\n\nwith:\n/* Number of CPU cycles in 125 us */\n#define CYCLES_125NS (125*(PLL_CLOCK/SECOND) / 1000)",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 10
+      },
+      "revId": "13486decccf45a95626b5be34c273a4f061a78b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
