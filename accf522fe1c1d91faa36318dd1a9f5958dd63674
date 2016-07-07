@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d85fe57_f4f53621",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-07-07T00:35:41Z",
+      "side": 1,
+      "message": "Use ADC_MAX_VOLT for 2816 and ADC_READ_MAX+1 for 1024?",
+      "range": {
+        "startLine": 102,
+        "startChar": 45,
+        "endLine": 102,
+        "endChar": 55
+      },
+      "revId": "accf522fe1c1d91faa36318dd1a9f5958dd63674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
