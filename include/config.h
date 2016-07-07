@@ -2138,6 +2138,21 @@
 #define CONFIG_CRC8
 #endif /* defined(CONFIG_EXPERIMENTAL_CONSOLE) */
 
+/******************************************************************************/
+/*
+ * Throttle AP must have temperature sensor enabled to get the readings for
+ * thermal throttling.
+ */
+#if defined(CONFIG_THROTTLE_AP) && !defined(CONFIG_TEMP_SENSOR)
+#define CONFIG_TEMP_SENSOR
+#endif
+
+/******************************************************************************/
+/* The Matrix Keyboard Protocol depends on MKBP events. */
+#ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
+#define CONFIG_MKBP_EVENT
+#endif
+
 /*****************************************************************************/
 /*
  * Handle task-dependent configs.
