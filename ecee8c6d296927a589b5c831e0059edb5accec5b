@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d85fe57_fad75dfb",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-07T04:23:01Z",
+      "side": 1,
+      "message": "I thought about just naming this keyboard_update_button, and then just using the above call...",
+      "revId": "ecee8c6d296927a589b5c831e0059edb5accec5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d85fe57_bae1d5d6",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-07T04:23:01Z",
+      "side": 1,
+      "message": "This, and the other bit positions, I added in keyboard_mkbp.h. They should probably be part of this commit.",
+      "range": {
+        "startLine": 183,
+        "startChar": 20,
+        "endLine": 183,
+        "endChar": 32
+      },
+      "revId": "ecee8c6d296927a589b5c831e0059edb5accec5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d85fe57_5ac7894c",
+        "filename": "common/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-07T04:23:01Z",
+      "side": 1,
+      "message": "Haven\u0027t decided if this should be the only CONFIG_* option for this feature. We probably want something that conveys the ability to handle non-matrixed keys using MKBP.",
+      "revId": "ecee8c6d296927a589b5c831e0059edb5accec5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
