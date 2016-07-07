@@ -226,10 +226,23 @@ enum sensor_id {
 #define PD_MAX_CURRENT_MA     3000
 #define PD_MAX_VOLTAGE_MV     20000
 
-/* Reset PD MCU */
-void board_reset_pd_mcu(void);
+enum reef_board_version {
+	BOARD_VERSION_UNKNOWN = -1,
+	BOARD_VERSION_1,
+	BOARD_VERSION_2,
+	BOARD_VERSION_3,
+	BOARD_VERSION_4,
+	BOARD_VERSION_5,
+	BOARD_VERSION_6,
+	BOARD_VERSION_7,
+	BOARD_VERSION_8,
+	BOARD_VERSION_COUNT,
+};
 
 int board_get_version(void);
+
+/* Reset PD MCU */
+void board_reset_pd_mcu(void);
 
 void board_set_tcpc_power_mode(int port, int mode);
 

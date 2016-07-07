@@ -703,19 +703,6 @@ void board_hibernate(void)
 	 * turn off whatever can be turned off. */
 }
 
-enum reef_board_version {
-	BOARD_VERSION_UNKNOWN = -1,
-	BOARD_VERSION_1,
-	BOARD_VERSION_2,
-	BOARD_VERSION_3,
-	BOARD_VERSION_4,
-	BOARD_VERSION_5,
-	BOARD_VERSION_6,
-	BOARD_VERSION_7,
-	BOARD_VERSION_8,
-	BOARD_VERSION_COUNT,
-};
-
 struct {
 	enum reef_board_version version;
 	int thresh_mv;
