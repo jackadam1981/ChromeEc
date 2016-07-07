@@ -31,6 +31,7 @@
 
 #ifdef TEST_KB_MKBP
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
+#define CONFIG_MKBP_EVENT
 #endif
 
 #ifdef TEST_KB_SCAN
