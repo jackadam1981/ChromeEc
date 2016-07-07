@@ -21,6 +21,8 @@
 #define ANX7688_REG_HPD_IRQ     (1 << 1)
 #define ANX7688_REG_HPD_ENABLE  (1 << 2)
 
+#define ANX7688_REG_SINK_COUNT  0x88
+
 #define ANX7688_USBC_ADDR		0x50
 #define ANX7688_REG_RAMCTRL		0xe7
 #define ANX7688_REG_RAMCTRL_BOOT_DONE	(1 << 6)
@@ -63,12 +65,21 @@ static int anx7688_init(int port)
 
 static void anx7688_update_hpd_enable(int port)
 {
-	int status, reg, rv;
+	int status, reg, rv, sink_count;
 
 	rv = tcpc_read(port, ANX7688_REG_STATUS, &status);
 	rv |= tcpc_read(port, ANX7688_REG_HPD, &reg);
+	rv |= tcpc_read(port, ANX7688_REG_SINK_COUNT, &sink_count);
+
 	if (rv)
 		return;
+
+	/*
+	 * if sink count is zero but link training is OK => sink detach
+	 * consider link training is actually failed and turn off HPD
+	 */
+	if (sink_count == 0 && (status & ANX7688_REG_STATUS_LINK))
+		status &= ~ANX7688_REG_STATUS_LINK;
 
 	if (!(reg & ANX7688_REG_HPD_ENABLE) ||
 	    !(status & ANX7688_REG_STATUS_LINK)) {
