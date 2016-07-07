@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3af21056_866c2ef1",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-07T22:54:16Z",
+      "side": 1,
+      "message": "Yes, please.",
+      "parentUuid": "5d85fe57_fad75dfb",
+      "revId": "ecee8c6d296927a589b5c831e0059edb5accec5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d85fe57_bae1d5d6",
         "filename": "common/keyboard_mkbp.c",
         "patchSetId": 2
@@ -42,6 +60,29 @@
     },
     {
       "key": {
+        "uuid": "3af21056_e629ba7b",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-07T22:54:16Z",
+      "side": 1,
+      "message": "Why not just initialize it to that when it\u0027s declared?",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 62
+      },
+      "revId": "ecee8c6d296927a589b5c831e0059edb5accec5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d85fe57_5ac7894c",
         "filename": "common/power_button.c",
         "patchSetId": 2
@@ -53,6 +94,24 @@
       "writtenOn": "2016-07-07T04:23:01Z",
       "side": 1,
       "message": "Haven\u0027t decided if this should be the only CONFIG_* option for this feature. We probably want something that conveys the ability to handle non-matrixed keys using MKBP.",
+      "revId": "ecee8c6d296927a589b5c831e0059edb5accec5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_c6b0f69e",
+        "filename": "common/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-07T22:54:16Z",
+      "side": 1,
+      "message": "Look at keyboard_power_button() in keyboard_8042.c.  That uses the HOOK_POWER_BUTTON_CHANGE hook rather than putting code in power_button.c.",
+      "parentUuid": "5d85fe57_5ac7894c",
       "revId": "ecee8c6d296927a589b5c831e0059edb5accec5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
