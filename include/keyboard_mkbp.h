@@ -49,4 +49,12 @@ static inline void keyboard_send_battery_key(void) { }
  */
 void mkbp_update_switches(uint32_t sw, int state);
 
+/**
+ * Update the state of non-matrixed buttons.
+ *
+ * @param button	The button that changed.
+ * @param is_pressed	Whether the button is now pressed.
+ */
+void keyboard_update_button(enum keyboard_button_type button, int is_pressed);
+
 #endif  /* __CROS_EC_KEYBOARD_MKBP_H */
