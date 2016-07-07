@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3af21056_266a029a",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-07T22:58:49Z",
+      "side": 1,
+      "message": "Just realized that this is pointless and wrong. I need to adjust for the cookie in kb_fifo_remove.",
+      "revId": "b3efe6fc1b47adff25a5115b5bd0d798f557015f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
