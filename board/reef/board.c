@@ -266,6 +266,70 @@ const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
 	 30 * MSEC, 0},
 };
 
+enum reef_board_version {
+	BOARD_VERSION_UNKNOWN = -1,
+	BOARD_VERSION_1 = 1,
+	BOARD_VERSION_2,
+	BOARD_VERSION_3,
+	BOARD_VERSION_4,
+	BOARD_VERSION_5,
+	BOARD_VERSION_6,
+	BOARD_VERSION_7,
+	BOARD_VERSION_8,
+	/* Versions for Reef begin at 1 instead of 0 */
+	BOARD_VERSION_COUNT = BOARD_VERSION_8,
+};
+
+struct {
+	enum reef_board_version version;
+	int thresh_mv;
+} const reef_board_versions[] = {
+	/* Vin = 3.3V, R1 = 46.4K, R2 values listed below */
+	{ BOARD_VERSION_1, 328 * 1.03 },  /* 5.11 Kohm */
+	{ BOARD_VERSION_2, 670 * 1.03 },  /* 11.8 Kohm */
+	{ BOARD_VERSION_3, 1012 * 1.03 }, /* 20.5 Kohm */
+	{ BOARD_VERSION_4, 1357 * 1.03 }, /* 32.4 Kohm */
+	{ BOARD_VERSION_5, 1690 * 1.03 }, /* 48.7 Kohm */
+	{ BOARD_VERSION_6, 2020 * 1.03 }, /* 73.2 Kohm */
+	{ BOARD_VERSION_7, 2352 * 1.03 }, /* 115 Kohm */
+	{ BOARD_VERSION_8, 2802 * 1.03 }, /* 261 Kohm */
+};
+BUILD_ASSERT(ARRAY_SIZE(reef_board_versions) == BOARD_VERSION_COUNT);
+
+int board_get_version(void)
+{
+	static int version = BOARD_VERSION_UNKNOWN;
+	int mv, i;
+
+	if (version != BOARD_VERSION_UNKNOWN)
+		return version;
+
+	/* FIXME(dhendrix): enable ADC */
+	gpio_set_flags(GPIO_EC_BRD_ID_EN_ODL, GPIO_ODR_HIGH);
+	gpio_set_level(GPIO_EC_BRD_ID_EN_ODL, 0);
+	/* Wait to allow cap charge */
+	msleep(1);
+	mv = adc_read_channel(ADC_BOARD_ID);
+	/* FIXME(dhendrix): disable ADC */
+	gpio_set_level(GPIO_EC_BRD_ID_EN_ODL, 1);
+	gpio_set_flags(GPIO_EC_BRD_ID_EN_ODL, GPIO_INPUT);
+
+	if (mv == ADC_READ_ERROR) {
+		version = BOARD_VERSION_UNKNOWN;
+		return version;
+	}
+
+	for (i = 0; i < ARRAY_SIZE(reef_board_versions); i++) {
+		if (mv < reef_board_versions[i].thresh_mv) {
+			version = reef_board_versions[i].version;
+			break;
+		}
+	}
+
+	CPRINTS("Board version: %d\n", version);
+	return version;
+}
+
 /* Called by APL power state machine when transitioning from G3 to S5 */
 static void chipset_pre_init(void)
 {
@@ -691,67 +755,4 @@ void board_hibernate(void)
 
 	/* FIXME(dhendrix): What to do here? EC is always on so we need to
 	 * turn off whatever can be turned off. */
-}
-
-enum reef_board_version {
-	BOARD_VERSION_UNKNOWN = -1,
-	BOARD_VERSION_1 = 1,
-	BOARD_VERSION_2,
-	BOARD_VERSION_3,
-	BOARD_VERSION_4,
-	BOARD_VERSION_5,
-	BOARD_VERSION_6,
-	BOARD_VERSION_7,
-	BOARD_VERSION_8,
-	/* Versions for Reef begin at 1 instead of 0 */
-	BOARD_VERSION_COUNT = BOARD_VERSION_8,
-};
-
-struct {
-	enum reef_board_version version;
-	int thresh_mv;
-} const reef_board_versions[] = {
-	{ BOARD_VERSION_1, 330 },  /* 5.11 Kohm */
-	{ BOARD_VERSION_2, 670 },  /* 11.8 Kohm */
-	{ BOARD_VERSION_3, 1010 }, /* 20.5 Kohm */
-	{ BOARD_VERSION_4, 1390 }, /* 32.4 Kohm */
-	{ BOARD_VERSION_5, 1690 }, /* 48.7 Kohm */
-	{ BOARD_VERSION_6, 2020 }, /* 73.2 Kohm */
-	{ BOARD_VERSION_7, 2350 }, /* 115 Kohm */
-	{ BOARD_VERSION_8, 2800 }, /* 261 Kohm */
-};
-BUILD_ASSERT(ARRAY_SIZE(reef_board_versions) == BOARD_VERSION_COUNT);
-
-int board_get_version(void)
-{
-	static int version = BOARD_VERSION_UNKNOWN;
-	int mv, i;
-
-	if (version != BOARD_VERSION_UNKNOWN)
-		return version;
-
-	/* FIXME(dhendrix): enable ADC */
-	gpio_set_flags(GPIO_EC_BRD_ID_EN_ODL, GPIO_ODR_HIGH);
-	gpio_set_level(GPIO_EC_BRD_ID_EN_ODL, 0);
-	/* Wait to allow cap charge */
-	msleep(1);
-	mv = adc_read_channel(ADC_BOARD_ID);
-	/* FIXME(dhendrix): disable ADC */
-	gpio_set_level(GPIO_EC_BRD_ID_EN_ODL, 1);
-	gpio_set_flags(GPIO_EC_BRD_ID_EN_ODL, GPIO_INPUT);
-
-	if (mv == ADC_READ_ERROR) {
-		version = BOARD_VERSION_UNKNOWN;
-		return version;
-	}
-
-	for (i = 0; i < ARRAY_SIZE(reef_board_versions); i++) {
-		if (mv < reef_board_versions[i].thresh_mv) {
-			version = reef_board_versions[i].version;
-			break;
-		}
-	}
-
-	CPRINTS("Board version: %d\n", version);
-	return version;
 }
