@@ -2521,6 +2521,9 @@ enum ec_mkbp_event {
 	/* New Sensor FIFO data. The event data is fifo_info structure. */
 	EC_MKBP_EVENT_SENSOR_FIFO = 2,
 
+	/* The state of the non-matrixed buttons have changed. */
+	EC_MKBP_EVENT_BUTTON = 3,
+
 	/* Number of MKBP events */
 	EC_MKBP_EVENT_COUNT,
 };
@@ -2536,6 +2539,8 @@ union ec_response_get_next_data {
 		uint8_t rsvd[3];
 		struct ec_response_motion_sense_fifo_info info;
 	}        sensor_fifo;
+
+	uint8_t   buttons;
 } __packed;
 
 struct ec_response_get_next_event {

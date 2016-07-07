@@ -9,6 +9,27 @@
 #define __CROS_EC_KEYBOARD_MKBP_H
 
 #include "common.h"
+#include "keyboard_config.h"
+
+#define MKBP_BUTTON_COOKIE "bTnZ" /* Buttons! */
+#define MKBP_BUTTON_COOKIE_LEN 4
+
+struct mkbp_btn_data {
+	char cookie[MKBP_BUTTON_COOKIE_LEN];
+
+	/* State of non-matrixed buttons. */
+	uint8_t state;
+} __packed;
+
+union kb_fifo_data {
+	uint8_t key_matrix[KEYBOARD_COLS];
+
+	struct mkbp_btn_data data;
+} __packed;
+
+#define POWER_BUTTON	0
+#define VOL_UP		1
+#define VOL_DOWN	2
 
 /**
  * Add keyboard state into FIFO

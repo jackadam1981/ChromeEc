@@ -7,10 +7,12 @@
 
 #include "atomic.h"
 #include "chipset.h"
+#include "common.h"
 #include "console.h"
 #include "gpio.h"
 #include "host_command.h"
 #include "keyboard_config.h"
+#include "keyboard_mkbp.h"
 #include "keyboard_protocol.h"
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"
@@ -30,8 +32,8 @@
  * series of keys is pressed in rapid succession and the kernel is too busy
  * to read them out right away.
  *
- * RAM usage is (depth * #cols); see kb_fifo[][] below.  A 16-entry FIFO will
- * consume 16x13=208 bytes, which is non-trivial but not horrible.
+ * RAM usage is (depth * #cols); A 16-entry FIFO will consume 16x13=208 bytes,
+ * which is non-trivial but not horrible.
  */
 #define KB_FIFO_DEPTH 16
 
@@ -45,7 +47,7 @@
 static uint32_t kb_fifo_start;		/* first entry */
 static uint32_t kb_fifo_end;		/* last entry */
 static uint32_t kb_fifo_entries;	/* number of existing entries */
-static uint8_t kb_fifo[KB_FIFO_DEPTH][KEYBOARD_COLS];
+static union kb_fifo_data kb_fifo[KB_FIFO_DEPTH];
 static struct mutex fifo_mutex;
 
 /* Config for mkbp protocol; does not include fields from scan config */
@@ -78,7 +80,7 @@ static int kb_fifo_remove(uint8_t *buffp)
 	if (!kb_fifo_entries) {
 		/* no entry remaining in FIFO : return last known state */
 		int last = (kb_fifo_start + KB_FIFO_DEPTH - 1) % KB_FIFO_DEPTH;
-		memcpy(buffp, kb_fifo[last], KEYBOARD_COLS);
+		memcpy(buffp, &kb_fifo[last], sizeof(union kb_fifo_data));
 
 		/*
 		 * Bail out without changing any FIFO indices and let the
@@ -87,7 +89,8 @@ static int kb_fifo_remove(uint8_t *buffp)
 		 */
 		return EC_ERROR_UNKNOWN;
 	}
-	memcpy(buffp, kb_fifo[kb_fifo_start], KEYBOARD_COLS);
+
+	memcpy(buffp, &kb_fifo[kb_fifo_start], sizeof(union kb_fifo_data));
 
 	kb_fifo_start = (kb_fifo_start + 1) % KB_FIFO_DEPTH;
 
@@ -118,18 +121,26 @@ void keyboard_clear_buffer(void)
 	kb_fifo_end = 0;
 	kb_fifo_entries = 0;
 	for (i = 0; i < KB_FIFO_DEPTH; i++)
-		memset(kb_fifo[i], 0, KEYBOARD_COLS);
+		memset(&kb_fifo[i], 0, sizeof(union kb_fifo_data));
 }
 
 test_mockable int keyboard_fifo_add(const uint8_t *buffp)
 {
 	int ret = EC_SUCCESS;
+	int is_button;
 
 	/*
-	 * If keyboard protocol is not enabled, don't save the state to the
-	 * FIFO or trigger an interrupt.
+	 * Determine if the data is the matrixed keys or the non-matrixed
+	 * buttons.
 	 */
-	if (!(config.flags & EC_MKBP_FLAGS_ENABLE))
+	is_button = memcmp(buffp, (void *)MKBP_BUTTON_COOKIE,
+			   MKBP_BUTTON_COOKIE_LEN) ? 0 : 1;
+
+	/*
+	 * If the data is a keyboard matrix and the keyboard protocol is not
+	 * enabled, don't save the state to the FIFO or trigger an interrupt.
+	 */
+	if (!(config.flags & EC_MKBP_FLAGS_ENABLE) && !is_button)
 		return EC_SUCCESS;
 
 	if (kb_fifo_entries >= config.fifo_max_depth) {
@@ -140,7 +151,7 @@ test_mockable int keyboard_fifo_add(const uint8_t *buffp)
 	}
 
 	mutex_lock(&fifo_mutex);
-	memcpy(kb_fifo[kb_fifo_end], buffp, KEYBOARD_COLS);
+	memcpy(&kb_fifo[kb_fifo_end], buffp, sizeof(union kb_fifo_data));
 	kb_fifo_end = (kb_fifo_end + 1) % KB_FIFO_DEPTH;
 	atomic_add(&kb_fifo_entries, 1);
 	mutex_unlock(&fifo_mutex);
@@ -149,7 +160,10 @@ kb_fifo_push_done:
 
 	if (ret == EC_SUCCESS) {
 #ifdef CONFIG_MKBP_EVENT
-		mkbp_send_event(EC_MKBP_EVENT_KEY_MATRIX);
+		if (is_button)
+			mkbp_send_event(EC_MKBP_EVENT_BUTTON);
+		else
+			mkbp_send_event(EC_MKBP_EVENT_KEY_MATRIX);
 #else
 		set_host_interrupt(1);
 #endif
@@ -159,20 +173,72 @@ kb_fifo_push_done:
 }
 
 #ifdef CONFIG_MKBP_EVENT
-static int keyboard_get_next_event(uint8_t *out)
+static int get_next_event(uint8_t *out, enum ec_mkbp_event evt)
 {
+	int is_button;
+	int next_elem_is_button;
+
 	if (!kb_fifo_entries)
 		return -1;
 
+	/*
+	 * We need to peek at the next event to check that we were called with
+	 * the correct event.
+	 */
+	next_elem_is_button = memcmp(&kb_fifo[kb_fifo_start],
+				     (void *)MKBP_BUTTON_COOKIE,
+				     MKBP_BUTTON_COOKIE_LEN) ? 0 : 1;
+
+	if ((next_elem_is_button && evt != EC_MKBP_EVENT_BUTTON) ||
+	    (!next_elem_is_button && evt == EC_MKBP_EVENT_BUTTON)) {
+		/*
+		 * We were called with the wrong event.  The next element in the
+		 * keyboard FIFO doesn't match with what we were called with.
+		 * Repost the event and return an error that we're busy.  The
+		 * caller will need to call us with the correct event first.
+		 */
+		mkbp_send_event(evt);
+		return -EC_ERROR_BUSY;
+	}
+
 	kb_fifo_remove(out);
+	is_button = next_elem_is_button;
 
 	/* Keep sending events if FIFO is not empty */
-	if (kb_fifo_entries)
-		mkbp_send_event(EC_MKBP_EVENT_KEY_MATRIX);
+	if (kb_fifo_entries) {
+		/*
+		 * We need to peek at the next event to see if it's a button
+		 * entry or not so that we can send the correct pending event.
+		 */
+		next_elem_is_button = memcmp(&kb_fifo[kb_fifo_start],
+			(void *)MKBP_BUTTON_COOKIE,
+			MKBP_BUTTON_COOKIE_LEN) ? 0 : 1;
+		if (next_elem_is_button)
+			mkbp_send_event(EC_MKBP_EVENT_BUTTON);
+		else
+			mkbp_send_event(EC_MKBP_EVENT_KEY_MATRIX);
+	}
 
-	return KEYBOARD_COLS;
+	/* Adjust for the button cookie if necessary. */
+	if (is_button) {
+		out += MKBP_BUTTON_COOKIE_LEN;
+		return sizeof(uint8_t);
+	} else {
+		return KEYBOARD_COLS;
+	}
+}
+
+static int keyboard_get_next_event(uint8_t *out)
+{
+	return get_next_event(out, EC_MKBP_EVENT_KEY_MATRIX);
 }
 DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_KEY_MATRIX, keyboard_get_next_event);
+
+static int button_get_next_event(uint8_t *out)
+{
+	return get_next_event(out, EC_MKBP_EVENT_BUTTON);
+}
+DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_BUTTON, button_get_next_event);
 #endif
 
 void keyboard_send_battery_key(void)
