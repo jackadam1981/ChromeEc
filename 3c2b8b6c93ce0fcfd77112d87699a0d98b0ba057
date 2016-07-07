@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3af21056_c0d21e31",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-07T21:24:45Z",
+      "side": 1,
+      "message": "I think this and BOARD_VERSION_X should just use what we\u0027re calling each build. i.e. current boards in hand are PROTO. Next ones are EVT. We don\u0027t know the next incarnation\u0027s name, but we can adjust accordingly. I don\u0027t think there\u0027s a need to re-define a new namespace for board names than the one\u0027s we\u0027re currently using.",
+      "range": {
+        "startLine": 370,
+        "startChar": 22,
+        "endLine": 370,
+        "endChar": 28
+      },
+      "revId": "3c2b8b6c93ce0fcfd77112d87699a0d98b0ba057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
