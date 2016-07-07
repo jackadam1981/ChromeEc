@@ -18,6 +18,8 @@
 #include "task.h"
 #include "tpm_registers.h"
 #include "util.h"
+#include "nvmem.h"
+#include "registers.h"
 
 /* TPM2 library includes. */
 #include "ExecCommand_fp.h"
@@ -448,6 +450,10 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 
 static void tpm_init(void)
 {
+
+	uint32_t saved_value;
+	const uint32_t manufacturing_done = 0x12344321;
+
 	set_tpm_state(tpm_state_idle);
 	tpm_.regs.access = tpm_reg_valid_sts;
 	tpm_.regs.sts = (tpm_family_tpm2 << tpm_family_shift) |
@@ -455,9 +461,17 @@ static void tpm_init(void)
 
 	/* TPM2 library functions. */
 	_plat__Signal_PowerOn();
+
+	if (saved_value != manufacturing_done) {
+		TPM_Manufacture(1);
+		saved_value = manufacturing_done;
+		nvmem_write(0, sizeof(saved_value), &saved_value, NVMEM_CR50);
+		nvmem_commit();
+	}
+
 	/* TODO(ngm): CRBUG/50115, initialize state expected by TPM2
 	 * compliance tests. */
-	TPM_Manufacture(1);
+
 	_TPM_Init();
 	_plat__SetNvAvail();
 }
