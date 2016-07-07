@@ -34,6 +34,24 @@
       "revId": "1d5d7620a8c15ed7767a6ae9d39d762887da8678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1dd4667c_e7f322a3",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2016-07-07T05:18:44Z",
+      "side": 1,
+      "message": "But if you only print some host commands, you will lose the flow.\nInstead of disabling HC channel altogether, let\u0027s set hcdebug to off by default. We will still get command errors.",
+      "parentUuid": "1d80e612_cde77ddd",
+      "revId": "1d5d7620a8c15ed7767a6ae9d39d762887da8678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
