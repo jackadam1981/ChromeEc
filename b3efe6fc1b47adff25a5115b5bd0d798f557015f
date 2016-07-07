@@ -83,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "3af21056_69857d1f",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-07T23:30:30Z",
+      "side": 1,
+      "message": "The get_data() function actually re-posts the event. I could bring it out here for readability.",
+      "parentUuid": "3af21056_46f06600",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 19
+      },
+      "revId": "b3efe6fc1b47adff25a5115b5bd0d798f557015f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3af21056_8638ae92",
         "filename": "common/mkbp_event.c",
         "patchSetId": 2
@@ -106,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "3af21056_c9b6c9e9",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-07T23:30:30Z",
+      "side": 1,
+      "message": "That\u0027s a good idea. We probably should.",
+      "parentUuid": "3af21056_8638ae92",
+      "range": {
+        "startLine": 117,
+        "startChar": 10,
+        "endLine": 117,
+        "endChar": 37
+      },
+      "revId": "b3efe6fc1b47adff25a5115b5bd0d798f557015f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3af21056_06913eb6",
         "filename": "include/keyboard_mkbp.h",
         "patchSetId": 2
@@ -117,6 +165,24 @@
       "writtenOn": "2016-07-07T23:09:00Z",
       "side": 1,
       "message": "Hmm.  If we\u0027re going to have lots of cookies, maybe it\u0027d be better just to expand out the kb_fifo_data to have an event type, the same way ec_response_get_next_event does.\n\nOr even just use an array of ec_response_get_next_event for the FIFO.",
+      "revId": "b3efe6fc1b47adff25a5115b5bd0d798f557015f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_86978e5f",
+        "filename": "include/keyboard_mkbp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-07T23:30:30Z",
+      "side": 1,
+      "message": "Yeah, actually I think that\u0027s a better idea.",
+      "parentUuid": "3af21056_06913eb6",
       "revId": "b3efe6fc1b47adff25a5115b5bd0d798f557015f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
