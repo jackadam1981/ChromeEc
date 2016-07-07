@@ -186,6 +186,29 @@
       "revId": "b3efe6fc1b47adff25a5115b5bd0d798f557015f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_a9170598",
+        "filename": "include/keyboard_mkbp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2016-07-07T23:34:12Z",
+      "side": 1,
+      "message": "These probably need to be somewhere where the kernel can get at them.\n\nAlso need the lid, right?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 18
+      },
+      "revId": "b3efe6fc1b47adff25a5115b5bd0d798f557015f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
