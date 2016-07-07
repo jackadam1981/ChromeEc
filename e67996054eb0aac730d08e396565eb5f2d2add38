@@ -16,6 +16,24 @@
       "revId": "e67996054eb0aac730d08e396565eb5f2d2add38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_a394c4fc",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-07T22:48:56Z",
+      "side": 1,
+      "message": "Darn. Oh well, let\u0027s abandon this patch and maybe use your later suggestion (Proto, EVT, etc) instead to make it more obvious to the reader.",
+      "parentUuid": "3af21056_e048821c",
+      "revId": "e67996054eb0aac730d08e396565eb5f2d2add38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
