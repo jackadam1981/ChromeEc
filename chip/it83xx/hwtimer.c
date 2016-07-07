@@ -96,13 +96,61 @@ static void event_timer_clear_pending_isr(void)
 	task_clear_pending_irq(et_ctrl_regs[EVENT_EXT_TIMER].irq);
 }
 
-uint32_t __hw_clock_source_read(void)
+uint32_t __ram_code __hw_clock_source_read(void)
 {
+#if 0
 	/*
 	 * In combinational mode, the counter observation register of
 	 * timer 4(TIMER_H) will increment.
 	 */
 	return IT83XX_ETWD_ETXCNTOR(FREE_EXT_TIMER_H);
+#else
+	/*
+	 * TODO(crosbug.com/p/55044):
+	 * observation register of external timer latch issue.
+	 * we can remove this workaround after version change.
+	 */
+	asm(
+		/* disable all interrupts */
+		"mfsr $r2,$INT_MASK\n\t"
+		"sethi $r1,0x40000\n\t"
+		"mtsr $r1,$INT_MASK\n\t"
+		"dsb\n\t"
+		/* read observation register for the first time */
+		"la $r1,0x00F01F4C\n\t"
+		"lwi $r0,[$r1]\n\t"
+		/*
+		 * the delay time between reading the first and second
+		 * observation registers need to be greater than 0.125us and
+		 * smaller than 0.250us.
+		 */
+		"nop\n\t"
+		"nop\n\t"
+		"nop\n\t"
+#if (48000000 == PLL_CLOCK)
+		"nop\n\t"
+		"nop\n\t"
+		"nop\n\t"
+#elif (96000000 == PLL_CLOCK)
+		"nop\n\t"
+		"nop\n\t"
+		"nop\n\t"
+		"nop\n\t"
+		"nop\n\t"
+		"nop\n\t"
+		"nop\n\t"
+		"nop\n\t"
+		"nop\n\t"
+#endif
+		/* read for the second time */
+		"lwi $r0,[$r1]\n\t"
+		/* restore interrupts */
+		"mtsr $r2,$INT_MASK\n\t"
+		"ret $lp\n\t"
+		"j .");
+	/* we should never reach that point */
+	return 0;
+#endif
 }
 
 void __hw_clock_source_set(uint32_t ts)
