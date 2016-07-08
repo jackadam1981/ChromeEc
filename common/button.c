@@ -13,6 +13,7 @@
 #include "keyboard_protocol.h"
 #include "timer.h"
 #include "util.h"
+#include "fake_key.h"
 
 /* Console output macro */
 #define CPRINTS(format, args...) cprints(CC_SWITCH, format, ## args)
@@ -81,6 +82,7 @@ static void button_change_deferred(void)
 				CPRINTS("Button '%s' was %s",
 					buttons[i].name, new_pressed ?
 					"pressed" : "released");
+				fake_key(buttons[i].type, new_pressed); 
 #ifdef HAS_TASK_KEYPROTO
 				keyboard_update_button(buttons[i].type,
 					new_pressed);

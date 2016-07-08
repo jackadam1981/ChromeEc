@@ -105,4 +105,6 @@ static inline void keyboard_scan_enable(int enable,
 void keyboard_suppress_noise(void);
 #endif
 
+void make_key(int row, int col, int pressed);
+
 #endif  /* __CROS_EC_KEYBOARD_SCAN_H */
