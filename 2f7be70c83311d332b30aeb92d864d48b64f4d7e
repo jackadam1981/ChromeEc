@@ -16,6 +16,24 @@
       "revId": "2f7be70c83311d332b30aeb92d864d48b64f4d7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_9419f473",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-08T01:35:43Z",
+      "side": 1,
+      "message": "Looks like we\u0027ll need a CONFIG to indicate board specific implementations that would change the input to an output and drive accordingly when chipset_throttle_cpu() is called.  \n\nThe existing code wouldn\u0027t have worked as it is since EC_PCH_PROCHOT_OVERRIDE_ODL was active low anyway.\n\nAlso, there\u0027s an external pullup on the PROCHOT signal so there\u0027s no need to add a pullup here as well.",
+      "parentUuid": "3af21056_148044ab",
+      "revId": "2f7be70c83311d332b30aeb92d864d48b64f4d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
