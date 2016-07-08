@@ -25,6 +25,75 @@
     },
     {
       "key": {
+        "uuid": "fa979800_a16298ed",
+        "filename": "cts/cts.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-08T17:27:38Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem like you\u0027re running into line length limitations here, so might as well just \u0027import subprocess\u0027 for readability.",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "9a0fcf8247715d345a4f9f000ee08ef1c3313942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_414dd47b",
+        "filename": "cts/cts.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-08T17:27:38Z",
+      "side": 1,
+      "message": "Seems like these could be combined:\n\nif \u0027iSerial\u0027 in line:\n  serials.append(line.split()[2])",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 36
+      },
+      "revId": "9a0fcf8247715d345a4f9f000ee08ef1c3313942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_41ce34c3",
+        "filename": "cts/cts.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-08T17:27:38Z",
+      "side": 1,
+      "message": "nit: Line length",
+      "range": {
+        "startLine": 56,
+        "startChar": 80,
+        "endLine": 56,
+        "endChar": 89
+      },
+      "revId": "9a0fcf8247715d345a4f9f000ee08ef1c3313942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3af21056_c9b1295a",
         "filename": "cts/cts.py",
         "patchSetId": 10
