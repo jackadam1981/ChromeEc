@@ -62,6 +62,30 @@
       "revId": "549f02c8b7c65b5e3aa67ad694910b0095f2d8fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_c47012ee",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-08T17:52:17Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we be taking the PD chips *out* of reset here? For some reason we\u0027re leaving them in the reset state.",
+      "parentUuid": "fa979800_01c34c41",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 43
+      },
+      "revId": "549f02c8b7c65b5e3aa67ad694910b0095f2d8fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
