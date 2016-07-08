@@ -1686,14 +1686,16 @@ int cmd_thermal_set_threshold(int argc, char *argv[])
 
 static int get_num_fans(void)
 {
-	int idx, rv;
+	int idx = 0;
+#ifdef CONFIG_FANS
+	int rv;
 
 	for (idx = 0; idx < EC_FAN_SPEED_ENTRIES; idx++) {
 		rv = read_mapped_mem16(EC_MEMMAP_FAN + 2 * idx);
 		if (rv == EC_FAN_SPEED_NOT_PRESENT)
 			break;
 	}
-
+#endif
 	return idx;
 }
 
