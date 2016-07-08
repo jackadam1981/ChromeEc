@@ -6,7 +6,7 @@
 # Host tools build
 #
 
-host-util-bin=ectool lbplay stm32mon ec_sb_firmware_update lbcc
+host-util-bin=ectool lbplay stm32mon ec_sb_firmware_update lbcc cr50_update
 build-util-bin=ec_uartd iteflash
 ifeq ($(CHIP),npcx)
 build-util-bin+=ecst
@@ -19,3 +19,5 @@ ectool-objs=ectool.o ectool_keyscan.o ec_flash.o $(comm-objs)
 ec_sb_firmware_update-objs=ec_sb_firmware_update.o $(comm-objs) misc_util.o
 ec_sb_firmware_update-objs+=powerd_lock.o
 lbplay-objs=lbplay.o $(comm-objs)
+
+cr50_update-objs=cr50_update.o
