@@ -14,6 +14,9 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
+/* By default, enable all console messages excepted host */
+#define CC_DEFAULT     (CC_ALL & ~CC_MASK(CC_HOSTCMD))
+
 /* Accelero meter and gyro sensor */
 #define CONFIG_ACCEL_KX022
 #define CONFIG_CMD_ACCELS
