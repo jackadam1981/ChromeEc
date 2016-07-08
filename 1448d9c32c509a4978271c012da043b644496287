@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa979800_9e149d46",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-08T15:55:31Z",
+      "side": 1,
+      "message": "sizeof(struct ec_response_get_next_event.key_matrix)?\n\nOr do we make enough assumptions that\u0027s always 13 that adding one more won\u0027t hurt?",
+      "range": {
+        "startLine": 82,
+        "startChar": 9,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_1efacd10",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-08T15:55:31Z",
+      "side": 1,
+      "message": "This duplicates logic in get_data_size().  Should only be in one place.",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 2
+      },
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_1e13ad52",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-08T15:55:31Z",
+      "side": 1,
+      "message": "Doesn\u0027t this break now if the next entry in the fifo is buttons or switches?",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 23
+      },
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_9e3b3dd8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2564,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-08T15:55:31Z",
+      "side": 1,
+      "message": "Please call it EC_MKBP_LID_OPEN or EC_MKBP_LID_CLOSED, so it\u0027s obvious which direction the bit indicates.",
+      "range": {
+        "startLine": 2564,
+        "startChar": 8,
+        "endLine": 2564,
+        "endChar": 26
+      },
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_5e27f5bd",
+        "filename": "include/keyboard_mkbp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-08T15:55:31Z",
+      "side": 1,
+      "message": "is_on?\n\nOr maybe just \u0027state\u0027?",
+      "range": {
+        "startLine": 50,
+        "startChar": 43,
+        "endLine": 50,
+        "endChar": 53
+      },
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
