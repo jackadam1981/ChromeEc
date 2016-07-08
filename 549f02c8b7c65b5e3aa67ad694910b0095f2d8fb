@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa979800_21a4486e",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-07-08T17:06:38Z",
+      "side": 1,
+      "message": "If you use tcpc init to take both ports out of reset (see next comment below), then there may be a time gap and it might be better to check the input parameter \"signal\" and then check the corresponding reset pin to decide if you should continue or return.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 42
+      },
+      "revId": "549f02c8b7c65b5e3aa67ad694910b0095f2d8fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_21d208de",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-07-08T17:06:38Z",
+      "side": 1,
+      "message": "You will need to add a similar function for Port 1 to take it out of reset on the initial boot.\nThis board_set_tcpc_power_mode is only called once during tcpc init via anx74xx_set_power_mode, so for amenia, I make this an empty function until I have a better understand on the tcpc low power mode, and I take both tcpc out of reset via board_init.",
+      "revId": "549f02c8b7c65b5e3aa67ad694910b0095f2d8fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_01c34c41",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-07-08T17:06:38Z",
+      "side": 1,
+      "message": "what do you think of the sequence done in Amenia? If port 1 is held in reset for ~10ms or more, it will cause zinger to reset, which will shut off the system in a dead battery case.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 43
+      },
+      "revId": "549f02c8b7c65b5e3aa67ad694910b0095f2d8fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
