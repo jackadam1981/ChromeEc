@@ -101,6 +101,7 @@ void fw_upgrade_command_handler(void *body,
 	 * programming sequence.
 	 */
 	*response_size = sizeof(*rv);
+	CPRINTF("%s:%d response size %x\n", __func__, __LINE__, *response_size);
 
 	body_size = cmd_size - offsetof(struct upgrade_command, block_body);
 	if (body_size < 0) {
@@ -110,6 +111,7 @@ void fw_upgrade_command_handler(void *body,
 	}
 
 	if (!cmd_body->block_base && !body_size) {
+		CPRINTF("%s:%d first message\n", __func__, __LINE__);
 		/*
 		 * This is the first message of the upgrade process, let's
 		 * determine the valid upgrade section and erase its contents.
@@ -140,12 +142,15 @@ void fw_upgrade_command_handler(void *body,
 		*(uint32_t *)body = htobe32(valid_section->sect_base_offset +
 					    CONFIG_PROGRAM_MEMORY_BASE);
 		*response_size = sizeof(uint32_t);
+		CPRINTF("%s:%d base = %x\n", __func__, __LINE__,
+			*(uint32_t *)body);
 		return;
 	}
 
 	/* Check if the block will fit into the valid area. */
 	block_offset = be32toh(cmd_body->block_base) -
 		CONFIG_PROGRAM_MEMORY_BASE;
+	CPRINTF("%s:%d block_offset = %x\n", __func__, __LINE__, block_offset);
 	if (!valid_upgrade_chunk(block_offset, body_size)) {
 		*rv = UPGRADE_BAD_ADDR;
 		CPRINTF("%s:%d %x, %d base %x top %x\n", __func__, __LINE__,
