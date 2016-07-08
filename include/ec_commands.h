@@ -2383,10 +2383,29 @@ struct ec_response_tmp006_get_raw {
 /* Provide information about the matrix : number of rows and columns */
 #define EC_CMD_MKBP_INFO 0x61
 
-struct ec_response_mkbp_info {
+struct ec_response_mkbp_kbd_info {
 	uint32_t rows;
 	uint32_t cols;
 	uint8_t switches;
+} __packed;
+
+struct ec_response_mkbp_info {
+	union {
+		struct ec_response_mkbp_kbd_info kbd_info;
+
+		uint32_t buttons;
+
+		uint32_t avail_buttons;
+
+		uint32_t switches;
+
+		uint32_t avail_switches;
+	}
+} __packed;
+
+struct ec_params_mkbp_info {
+	uint8_t item;
+	uint8_t list_avail; /* To just return what items are available. */
 } __packed;
 
 /* Simulate key press */

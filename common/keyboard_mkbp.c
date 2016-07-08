@@ -361,21 +361,66 @@ DECLARE_HOST_COMMAND(EC_CMD_MKBP_STATE,
 		     keyboard_get_scan,
 		     EC_VER_MASK(0));
 
-static int keyboard_get_info(struct host_cmd_handler_args *args)
+static int mkbp_get_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_mkbp_info *r = args->response;
+	struct ec_params_mkbp_info *p = args->params;
+	uint32_t avail = 0;
 
-	r->rows = KEYBOARD_ROWS;
-	r->cols = KEYBOARD_COLS;
-	r->switches = 0;
+	if (args->params_size == 0) {
+		/* Version 0 just returns info about the keyboard. */
+		r->kbd_info.rows = KEYBOARD_ROWS;
+		r->kbd_info.cols = KEYBOARD_COLS;
+		r->kbd_info.switches = 0;
 
-	args->response_size = sizeof(*r);
+		args->response_size = sizeof(struct ec_response_mkbp_kbd_info);
+	} else {
+		/* Version 1 */
+		switch (p->item) {
+		case EC_MKBP_EVENT_BUTTON:
+			/* Just return what buttons are available. */
+			if (p->list_avail) {
+#ifdef CONFIG_POWER_BUTTON
+				avail |= (1 << EC_MKBP_POWER_BUTTON);
+#endif /* defined(CONFIG_POWER_BUTTON) */
+				for (i=0; i<CONFIG_BUTTON_COUNT; i++) {
+					if (buttons[i] == KEYBOARD_BUTTON_VOLUME_UP)
+						avail |= (1 << EC_MKBP_VOL_UP);
+					else if (buttons[i] == KEYBOARD_BUTTON_VOLUME_DOWN)
+						avail |= (1 << EC_MKBP_VOL_DOWN);
+				}
+				r->avail_buttons = avail;
+			} else {
+				/* Just want the current button state. */
+				r->buttons = mkbp_button_state;
+			}
+			args->response_size = sizeof(uint32_t);
+			break;
 
+		case EC_MKBP_EVENT_SWITCH:
+			if (p->list_avail) {
+				/* Just return what switches are available. */
+#ifdef CONFIG_LID_SWITCH
+				avail |= (1 << EC_MKBP_LID_SWITCH_OPEN);
+#endif /* defined(CONFIG_LID_SWITCH) */
+				r->avail_switches = avail;
+			} else {
+				/* Just want the current switches state. */
+				r->switches = mkbp_switch_state;
+			}
+			args->response_size = sizeof(uint32_t);
+			break;
+
+		default:
+			/* Unsupported query. */
+			return EC_RES_ERROR;
+		}
+	}
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_MKBP_INFO,
-		     keyboard_get_info,
-		     EC_VER_MASK(0));
+		     mkbp_get_info,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 static void set_keyscan_config(const struct ec_mkbp_config *src,
 			       struct ec_mkbp_protocol_config *dst,
