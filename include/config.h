@@ -1714,6 +1714,8 @@
  */
 #undef CONFIG_TEST_TASK_LIST
 
+#undef CONFIG_CTS_TASK_LIST
+
 /*
  * Enable task profiling.
  *
