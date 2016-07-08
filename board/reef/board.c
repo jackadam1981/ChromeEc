@@ -58,7 +58,12 @@
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
-	if (!gpio_get_level(GPIO_USB_PD_RST_ODL))
+	if ((signal == GPIO_USB_C0_PD_INT) &&
+			(!gpio_get_level(GPIO_USB_C0_PD_RST_ODL)))
+		return;
+
+	if ((signal == GPIO_USB_C1_PD_INT_ODL) &&
+			(!gpio_get_level(GPIO_USB_C1_PD_RST_ODL)))
 		return;
 
 #ifdef HAS_TASK_PDCMD
@@ -163,17 +168,14 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	}
 };
 
-/* called from anx74xx_set_power_mode() */
 void board_set_tcpc_power_mode(int port, int mode)
 {
-	gpio_set_level(GPIO_EN_USB_TCPC_PWR, mode);
-	msleep(mode ? 10 : 1);
-
-	/* FIXME(dhendrix): This is also connected to the PS8751 which
-	 * we might not want to reset just because something happened
-	 * on the ANX3429. */
-	gpio_set_level(GPIO_USB_PD_RST_ODL, mode);
-	msleep(10);
+	/*
+	 * This is called during init by the ANX driver to take the TCPC out
+	 * of reset and enable power. Since we have two TCPC chips and one
+	 * power enable on Reef, we take both chips out of reset during
+	 * board_init() instead.
+	 */
 }
 
 /**
@@ -183,20 +185,24 @@ void board_set_tcpc_power_mode(int port, int mode)
  */
 void board_reset_pd_mcu(void)
 {
-	gpio_set_level(GPIO_USB_PD_RST_ODL, 0);
+	/* Assert reset to TCPC1 */
+	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
+
+	/* Assert reset to TCPC0 */
+	gpio_set_level(GPIO_USB_C0_PD_RST_ODL, 0);
 	msleep(1);
 	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
+
+	/* Deassert reset to TCPC1 */
+	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 1);
+
+	/* TCPC0 requires 10ms reset/power down assertion */
 	msleep(10);
 
+	/* Deassert reset to TCPC0 */
 	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
 	msleep(10);
-	gpio_set_level(GPIO_USB_PD_RST_ODL, 1);
-	/*
-	 * ANX7688 needed 50ms to release RESET_N, but the ANX7428 datasheet
-	 * does not indicate such a long delay is necessary. Leave it in due
-	 * to paranoia.
-	 */
-	msleep(50);
+	gpio_set_level(GPIO_USB_C0_PD_RST_ODL, 1);
 }
 
 int board_get_battery_temp(int idx, int *temp_ptr)
@@ -333,6 +339,8 @@ static void board_init(void)
 	gpio_set_level(GPIO_EN_PP3300, 1);
 	while (!gpio_get_level(GPIO_PP3300_PG))
 		;
+
+	board_reset_pd_mcu();
 }
 /* PP3300 needs to be enabled before TCPC init hooks */
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_FIRST);
