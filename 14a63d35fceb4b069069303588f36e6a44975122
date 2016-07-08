@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa979800_0db4dd90",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-08T22:38:43Z",
+      "side": 1,
+      "message": "should not be needed",
+      "revId": "14a63d35fceb4b069069303588f36e6a44975122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_cd0a7519",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-08T22:38:43Z",
+      "side": 1,
+      "message": "s/ok/response/",
+      "range": {
+        "startLine": 435,
+        "startChar": 10,
+        "endLine": 435,
+        "endChar": 12
+      },
+      "revId": "14a63d35fceb4b069069303588f36e6a44975122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_8d1ead58",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-08T22:38:43Z",
+      "side": 1,
+      "message": "cannot fail?",
+      "range": {
+        "startLine": 457,
+        "startChar": 3,
+        "endLine": 457,
+        "endChar": 18
+      },
+      "revId": "14a63d35fceb4b069069303588f36e6a44975122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_2d13d952",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-08T22:38:43Z",
+      "side": 1,
+      "message": "handle fail?",
+      "range": {
+        "startLine": 473,
+        "startChar": 3,
+        "endLine": 473,
+        "endChar": 23
+      },
+      "revId": "14a63d35fceb4b069069303588f36e6a44975122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
