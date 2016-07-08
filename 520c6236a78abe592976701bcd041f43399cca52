@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa979800_64f1fe6d",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-08T17:54:21Z",
+      "side": 1,
+      "message": "Is there a reason why you can\u0027t ensure board_get_version() was called once prior to kicking things off?",
+      "revId": "520c6236a78abe592976701bcd041f43399cca52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
