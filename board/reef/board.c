@@ -58,7 +58,8 @@
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
-	if (!gpio_get_level(GPIO_USB_PD_RST_ODL))
+	if (!gpio_get_level(GPIO_USB_C0_PD_RST_ODL) &&
+		!gpio_get_level(GPIO_USB_C1_PD_RST_ODL))
 		return;
 
 #ifdef HAS_TASK_PDCMD
@@ -132,7 +133,7 @@ uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
 
-	if (gpio_get_level(GPIO_USB_C0_PD_INT))
+	if (gpio_get_level(GPIO_USB_C0_PD_INT_ODL))
 		status |= PD_STATUS_TCPC_ALERT_0;
 	if (!gpio_get_level(GPIO_USB_C1_PD_INT_ODL))
 		status |= PD_STATUS_TCPC_ALERT_1;
@@ -167,10 +168,7 @@ void board_set_tcpc_power_mode(int port, int mode)
 	gpio_set_level(GPIO_EN_USB_TCPC_PWR, mode);
 	msleep(mode ? 10 : 1);
 
-	/* FIXME(dhendrix): This is also connected to the PS8751 which
-	 * we might not want to reset just because something happened
-	 * on the ANX3429. */
-	gpio_set_level(GPIO_USB_PD_RST_ODL, mode);
+	gpio_set_level(GPIO_USB_C0_PD_RST_ODL, mode);
 	msleep(10);
 }
 
@@ -181,14 +179,16 @@ void board_set_tcpc_power_mode(int port, int mode)
  */
 void board_reset_pd_mcu(void)
 {
-	gpio_set_level(GPIO_USB_PD_RST_ODL, 0);
+	gpio_set_level(GPIO_USB_C0_PD_RST_ODL, 0);
+	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
 	msleep(1);
 	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
 	msleep(10);
 
 	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
 	msleep(10);
-	gpio_set_level(GPIO_USB_PD_RST_ODL, 1);
+	gpio_set_level(GPIO_USB_C0_PD_RST_ODL, 0);
+	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
 	/*
 	 * ANX7688 needed 50ms to release RESET_N, but the ANX7428 datasheet
 	 * does not indicate such a long delay is necessary. Leave it in due
@@ -279,7 +279,7 @@ static void chipset_pre_init(void)
 
 #if 0
 	/* Enable PD interrupts */
-	gpio_enable_interrupt(GPIO_USB_C0_PD_INT);
+	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
 #endif
 }

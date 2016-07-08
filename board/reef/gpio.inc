@@ -9,8 +9,8 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 GPIO_INT(CHARGER_INT_L,		PIN(3, 3), GPIO_INT_FALLING, bd99955_vbus_interrupt)		/* CHARGER_EC_INT_ODL from BD99955 */
-GPIO_INT(USB_C0_PD_INT,		PIN(3, 7), GPIO_INT_RISING, tcpc_alert_event)	/* from Analogix TCPC */
-GPIO_INT(USB_C1_PD_INT_ODL,	PIN(D, 2), GPIO_INT_FALLING, tcpc_alert_event)			/* from Parade TCPC */
+GPIO_INT(USB_C0_PD_INT_ODL,	PIN(3, 7), GPIO_INT_RISING, tcpc_alert_event)			/* from Analogix TCPC */
+GPIO_INT(USB_C1_PD_INT_ODL,	PIN(B, 1), GPIO_INT_FALLING, tcpc_alert_event)			/* from Parade TCPC */
 
 GPIO_INT(PCH_SLP_S4_L,		PIN(8, 6), GPIO_INT_BOTH, power_signal_interrupt)		/* SLP_S4_L */
 GPIO_INT(PCH_SLP_S3_L,		PIN(7, 3), GPIO_INT_BOTH, power_signal_interrupt)		/* SLP_S3_L */
@@ -114,10 +114,17 @@ GPIO(PCH_RCIN_L,		PIN(6, 1), GPIO_ODR_HIGH)		/* SYS_RST_ODL */
 GPIO(CHARGER_RST_ODL,		PIN(C, 0), GPIO_ODR_HIGH)
 GPIO(USB_A_CHARGE_EN_L,		PIN(4, 2), GPIO_OUT_HIGH)
 GPIO(EN_USB_TCPC_PWR,		PIN(C, 3), GPIO_OUT_LOW)
-GPIO(USB_PD_RST_ODL,		PIN(0, 3), GPIO_ODR_LOW)
+GPIO(USB_C0_PD_RST_ODL,		PIN(0, 3), GPIO_ODR_LOW)
+GPIO(USB_C1_PD_RST_ODL,		PIN(7, 4), GPIO_ODR_LOW)
 GPIO(EN_USB_A_5V,		PIN(4, 1), GPIO_OUT_LOW)
-GPIO(USB_C0_5V_EN,		PIN(D, 3), GPIO_OUT_LOW)		/* EN_USB_CN_5V_OUT, Enable C0 */
-GPIO(USB_C1_5V_EN,		PIN(B, 1), GPIO_OUT_LOW)		/* EN_USB_C1_5V_OUT, Enable C1 */
+/*
+ * Configure as open-drain with pull-up to enable @ 1.5A, configure as
+ * push-pull without pull-up and drive high to enable @ 3A. The board's
+ * typec_set_input_current_limit() can re-configure the pins as needed
+ * depending on the desired Ilim.
+ */
+GPIO(USB_C0_5V_EN,		PIN(D, 3), GPIO_ODR_LOW)		/* EN_USB_CN_5V_OUT, Enable C0 */
+GPIO(USB_C1_5V_EN,		PIN(D, 2), GPIO_ODR_LOW)		/* EN_USB_C1_5V_OUT, Enable C1 */
 
 /* Clear for non-HDI breakout, must be pulled high */
 GPIO(NC1,			PIN(8, 4), GPIO_INPUT | GPIO_PULL_UP | GPIO_SEL_1P8V)
