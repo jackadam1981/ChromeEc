@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3af21056_e9faadbc",
+        "filename": "README",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-08T00:21:21Z",
+      "side": 1,
+      "message": "Could you put these lines in cts/README?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "9a0fcf8247715d345a4f9f000ee08ef1c3313942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_c9b1295a",
+        "filename": "cts/cts.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-08T00:21:21Z",
+      "side": 1,
+      "message": "Why is this repeated?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 69
+      },
+      "revId": "9a0fcf8247715d345a4f9f000ee08ef1c3313942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_69669daa",
+        "filename": "cts/cts.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-08T00:21:21Z",
+      "side": 1,
+      "message": "Could you define a variable for this?",
+      "range": {
+        "startLine": 154,
+        "startChar": 51,
+        "endLine": 154,
+        "endChar": 64
+      },
+      "revId": "9a0fcf8247715d345a4f9f000ee08ef1c3313942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_690fbde0",
+        "filename": "cts/cts.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-08T00:21:21Z",
+      "side": 1,
+      "message": "What happens if this read fails?",
+      "range": {
+        "startLine": 160,
+        "startChar": 68,
+        "endLine": 160,
+        "endChar": 74
+      },
+      "revId": "9a0fcf8247715d345a4f9f000ee08ef1c3313942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
