@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa979800_1224fc52",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-08T21:45:57Z",
+      "side": 1,
+      "message": "Well, we technically could return the mask of supported host events or the matrix of keys with all 1-bits, which would make sense, but nobody needs that data right now so erroring out is fine.",
+      "range": {
+        "startLine": 398,
+        "startChar": 7,
+        "endLine": 398,
+        "endChar": 47
+      },
+      "revId": "5d1ecbd3ecb281a8e650cdf955947f0ad54f24b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_d21d3408",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2416,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-08T21:45:57Z",
+      "side": 1,
+      "message": "For each one, indicate which struct is returned.\n\nAlso, for SUPPORTED and CURRENT, indicate event_type must be set.\n\n(Remember, this is the documentation... :)",
+      "range": {
+        "startLine": 2405,
+        "startChar": 0,
+        "endLine": 2416,
+        "endChar": 2
+      },
+      "revId": "5d1ecbd3ecb281a8e650cdf955947f0ad54f24b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
