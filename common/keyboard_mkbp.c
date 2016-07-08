@@ -340,21 +340,120 @@ void keyboard_send_battery_key(void)
 
 /*****************************************************************************/
 /* Host commands */
-static int keyboard_get_info(struct host_cmd_handler_args *args)
+static uint32_t get_supported_buttons(void)
+{
+#ifdef CONFIG_BUTTON_COUNT
+	int i;
+#endif
+	uint32_t val;
+
+	val = 0;
+#ifdef CONFIG_BUTTON_COUNT
+	for (i=0; i < CONFIG_BUTTON_COUNT; i++) {
+		if (buttons[i].type == KEYBOARD_BUTTON_VOLUME_UP)
+			val |= (1 << EC_MKBP_VOL_UP);
+		if (buttons[i].type == KEYBOARD_BUTTON_VOLUME_DOWN)
+			val |= (1 << EC_MKBP_VOL_DOWN);
+	}
+#endif
+#ifdef CONFIG_POWER_BUTTON
+	val |= (1 << EC_MKBP_POWER_BUTTON);
+#endif
+	return val;
+}
+
+static uint32_t get_supported_switches(void)
+{
+	uint32_t val = 0;
+
+#ifdef CONFIG_LID_SWITCH
+	val |= (1 << EC_MKBP_LID_OPEN);
+#endif
+	return val;
+}
+
+static int mkbp_get_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_mkbp_info *r = args->response;
+	const struct ec_params_mkbp_info *p = args->params;
 
-	r->rows = KEYBOARD_ROWS;
-	r->cols = KEYBOARD_COLS;
-	r->switches = 0;
+	if (args->params_size == 0) {
+		/* Version 0 just returns info about the keyboard. */
+		r->rows = KEYBOARD_ROWS;
+		r->cols = KEYBOARD_COLS;
+		/* This used to be "switches" which was previously 0. */
+		r->reserved = 0;
 
-	args->response_size = sizeof(*r);
+		args->response_size = sizeof(struct ec_response_mkbp_info);
+	} else {
+		/* Version 1 */
+		args->response_size = sizeof(struct ec_response_get_next_event);
+		switch (p->info_type) {
+		case EC_MKBP_INFO_KBD:
+			r->rows = KEYBOARD_ROWS;
+			r->cols = KEYBOARD_COLS;
+			/* This used to be "switches" which was previously 0. */
+			r->reserved = 0;
 
+			args->response_size = \
+				sizeof(struct ec_response_mkbp_info);
+			break;
+
+		case EC_MKBP_INFO_SUPPORTED:
+			switch (p->event_type) {
+			case EC_MKBP_EVENT_BUTTON:
+				((union ec_response_get_next_data *)(r))-> \
+					buttons = get_supported_buttons();
+				break;
+
+			case EC_MKBP_EVENT_SWITCH:
+				((union ec_response_get_next_data *)(r))-> \
+					switches = get_supported_switches();
+				break;
+
+			default:
+				/* Don't care for now for other types. */
+				return EC_RES_INVALID_PARAM;
+			}
+			break;
+
+		case EC_MKBP_INFO_CURRENT:
+			switch (p->event_type) {
+			case EC_MKBP_EVENT_KEY_MATRIX:
+				memcpy(r, keyboard_scan_get_state(),
+				       KEYBOARD_COLS);
+				break;
+
+			case EC_MKBP_EVENT_HOST_EVENT:
+				((union ec_response_get_next_data *)(r))-> \
+					host_event = host_get_events();
+				break;
+
+			case EC_MKBP_EVENT_BUTTON:
+				((union ec_response_get_next_data *)(r))-> \
+					buttons = mkbp_button_state;
+				break;
+
+			case EC_MKBP_EVENT_SWITCH:
+				((union ec_response_get_next_data *)(r))-> \
+					switches = mkbp_switch_state;
+				break;
+
+			default:
+				/* Doesn't make sense for other event types. */
+				return EC_RES_INVALID_PARAM;
+			}
+			break;
+
+		default:
+			/* Unsupported query. */
+			return EC_RES_ERROR;
+		}
+	}
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_MKBP_INFO,
-		     keyboard_get_info,
-		     EC_VER_MASK(0));
+DECLARE_HOST_COMMAND(EC_CMD_MKBP_INFO, mkbp_get_info,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 static void set_keyscan_config(const struct ec_mkbp_config *src,
 			       struct ec_mkbp_protocol_config *dst,
