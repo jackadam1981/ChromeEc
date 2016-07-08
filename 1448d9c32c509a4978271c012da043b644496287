@@ -242,6 +242,30 @@
     },
     {
       "key": {
+        "uuid": "fa979800_12495c1e",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-08T21:42:01Z",
+      "side": 1,
+      "message": "EC_CMD_GET_NEXT_EVENT, but yes.",
+      "parentUuid": "fa979800_67e6e053",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 23
+      },
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa979800_9e3b3dd8",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
