@@ -46,6 +46,30 @@
       "revId": "3c2b8b6c93ce0fcfd77112d87699a0d98b0ba057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_d4553cb2",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-08T02:34:14Z",
+      "side": 1,
+      "message": "I\u0027m not suggesting predetermining all names. I\u0027m suggesting the names we have now: proto and evt. If there\u0027s an evt2 so be it, but for now there are 2 board versions that people use in discussing things. It\u0027s silly to user different terms in the code that people use in discussion. That just creates confusion.",
+      "parentUuid": "3af21056_4642a600",
+      "range": {
+        "startLine": 370,
+        "startChar": 22,
+        "endLine": 370,
+        "endChar": 28
+      },
+      "revId": "3c2b8b6c93ce0fcfd77112d87699a0d98b0ba057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
