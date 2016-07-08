@@ -56,11 +56,23 @@
 #define IN_PGOOD_PP3300	POWER_SIGNAL_MASK(X86_PGOOD_PP3300)
 #define IN_PGOOD_PP5000	POWER_SIGNAL_MASK(X86_PGOOD_PP5000)
 
+/*
+ * FIXME: This is for proto boards. board_get_version() uses a long delay and
+ * thus cannot be used in tcpc_alert_event(). When proto is obsolete we can
+ * remove the board version check and move this variable back inside
+ * board_get_version().
+ */
+static int board_version = BOARD_VERSION_UNKNOWN;
 static void tcpc_alert_event(enum gpio_signal signal)
 {
-	if (!gpio_get_level(GPIO_USB_C0_PD_RST_ODL) &&
-		!gpio_get_level(GPIO_USB_C1_PD_RST_ODL))
-		return;
+	if (board_version < BOARD_VERSION_2) {
+		if (!gpio_get_level(GPIO_USB_C0_PD_RST_ODL))
+			return;
+	} else {
+		if (!gpio_get_level(GPIO_USB_C0_PD_RST_ODL) &&
+			!gpio_get_level(GPIO_USB_C1_PD_RST_ODL))
+			return;
+	}
 
 #ifdef HAS_TASK_PDCMD
 	/* Exchange status with TCPCs */
@@ -180,7 +192,8 @@ void board_set_tcpc_power_mode(int port, int mode)
 void board_reset_pd_mcu(void)
 {
 	gpio_set_level(GPIO_USB_C0_PD_RST_ODL, 0);
-	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
+	if (board_get_version() >= BOARD_VERSION_2)
+		gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
 	msleep(1);
 	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
 	msleep(10);
@@ -188,7 +201,8 @@ void board_reset_pd_mcu(void)
 	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
 	msleep(10);
 	gpio_set_level(GPIO_USB_C0_PD_RST_ODL, 0);
-	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
+	if (board_get_version() >= BOARD_VERSION_2)
+		gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
 	/*
 	 * ANX7688 needed 50ms to release RESET_N, but the ANX7428 datasheet
 	 * does not indicate such a long delay is necessary. Leave it in due
@@ -710,11 +724,10 @@ BUILD_ASSERT(ARRAY_SIZE(reef_board_versions) == BOARD_VERSION_COUNT);
 
 int board_get_version(void)
 {
-	static int version = BOARD_VERSION_UNKNOWN;
 	int mv, i;
 
-	if (version != BOARD_VERSION_UNKNOWN)
-		return version;
+	if (board_version != BOARD_VERSION_UNKNOWN)
+		return board_version;
 
 	/* FIXME(dhendrix): enable ADC */
 	gpio_set_flags(GPIO_EC_BRD_ID_EN_ODL, GPIO_ODR_HIGH);
@@ -727,16 +740,16 @@ int board_get_version(void)
 	gpio_set_flags(GPIO_EC_BRD_ID_EN_ODL, GPIO_INPUT);
 
 	if (mv == ADC_READ_ERROR) {
-		version = BOARD_VERSION_UNKNOWN;
-		return version;
+		board_version = BOARD_VERSION_UNKNOWN;
+		return board_version;
 	}
 
 	for (i = 0; i < BOARD_VERSION_COUNT; i++) {
 		if (mv < reef_board_versions[i].thresh_mv) {
-			version = reef_board_versions[i].version;
+			board_version = reef_board_versions[i].version;
 			break;
 		}
 	}
 
-	return version;
+	return board_version;
 }
