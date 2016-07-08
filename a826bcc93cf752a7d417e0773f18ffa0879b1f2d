@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3af21056_cf1a49c0",
+        "filename": "board/elm/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-07-08T04:41:59Z",
+      "side": 1,
+      "message": "If you do that you want get host command errors:  CPRINTS( in host_command.c becomes a NOOP.\nInstead, you should set hcdebug to HCDEBUG_OFF, either directly or through a config define, like: CONFIG_HCDEBUG_DEFAULT.",
+      "revId": "a826bcc93cf752a7d417e0773f18ffa0879b1f2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
