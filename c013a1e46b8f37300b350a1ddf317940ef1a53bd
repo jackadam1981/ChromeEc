@@ -46,6 +46,30 @@
       "revId": "c013a1e46b8f37300b350a1ddf317940ef1a53bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_efebcda9",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-07-08T04:31:57Z",
+      "side": 1,
+      "message": "The behavior on PMIC power lost fault was found from a different issue, and this behavior was used as a workaround (line 309-321 below / CL:354762) to avoid a rework on Proto.\n\nThis sequence is actually being used on Proto already (line 328-333 below). May be V3P3A is stable by the time PMIC checks? Should confirm with PMIC vendor on the timing and if this is a valid sequence.",
+      "parentUuid": "3af21056_545b6ce0",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 3
+      },
+      "revId": "c013a1e46b8f37300b350a1ddf317940ef1a53bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
