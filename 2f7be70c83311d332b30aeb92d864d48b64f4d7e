@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3af21056_148044ab",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-07-08T01:28:23Z",
+      "side": 1,
+      "message": "GPIO_CPU_PROCHOT is a common name used by existing EC code to assert PROCHOT#, so should this be OpenDrain-High by default even for EVT?\n\nAnd I don\u0027t think there is existing EC code to monitor PROCHOT# driven by PMIC or charger.",
+      "revId": "2f7be70c83311d332b30aeb92d864d48b64f4d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
