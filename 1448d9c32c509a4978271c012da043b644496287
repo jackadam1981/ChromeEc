@@ -25,6 +25,63 @@
     },
     {
       "key": {
+        "uuid": "fa979800_9ed25d30",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2016-07-08T16:50:30Z",
+      "side": 1,
+      "message": "Suggest (!!is_pressed) to make sure you have either a 0 or a 1.",
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_1ebf2de2",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2016-07-08T16:50:30Z",
+      "side": 1,
+      "message": "You\u0027re passing a pointer to 4 bytes but the function will actually copy \"sizeof(union ec_response_get_next_data)\" bytes starting at this address, right?  It might not hurt, but doesn\u0027t seem like a super great idea.",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 65
+      },
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_81299ce8",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2016-07-08T16:50:30Z",
+      "side": 1,
+      "message": "As per email, for lid closed things get broken because we clear the FIFO when the lid is closed.",
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa979800_1efacd10",
         "filename": "common/keyboard_mkbp.c",
         "patchSetId": 4
@@ -82,6 +139,30 @@
       "writtenOn": "2016-07-08T15:55:31Z",
       "side": 1,
       "message": "Please call it EC_MKBP_LID_OPEN or EC_MKBP_LID_CLOSED, so it\u0027s obvious which direction the bit indicates.",
+      "range": {
+        "startLine": 2564,
+        "startChar": 8,
+        "endLine": 2564,
+        "endChar": 26
+      },
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_c1cc846f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2564,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2016-07-08T16:50:30Z",
+      "side": 1,
+      "message": "EC_MKBP_LID_OPEN appears to match the current way things work, so I\u0027ll assume that in the kernel.\n\nAlso note that you want a \"tab\" here to match the buttons.",
+      "parentUuid": "fa979800_9e3b3dd8",
       "range": {
         "startLine": 2564,
         "startChar": 8,
