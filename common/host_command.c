@@ -375,6 +375,16 @@ static const struct host_command *find_host_command(int command)
 
 static void host_command_init(void)
 {
+
+#ifndef CONFIG_FANS
+	uint16_t *mapped;
+	int i;
+	/* Initialize memory-mapped data */
+	mapped = (uint16_t *)host_get_memmap(EC_MEMMAP_FAN);
+	for (i = 0; i < EC_FAN_SPEED_ENTRIES; i++)
+		mapped[i] = EC_FAN_SPEED_NOT_PRESENT;
+
+#endif
 	/* Initialize memory map ID area */
 	host_get_memmap(EC_MEMMAP_ID)[0] = 'E';
 	host_get_memmap(EC_MEMMAP_ID)[1] = 'C';
