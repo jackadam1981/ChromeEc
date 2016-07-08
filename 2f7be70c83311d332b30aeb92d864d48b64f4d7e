@@ -52,6 +52,24 @@
       "revId": "2f7be70c83311d332b30aeb92d864d48b64f4d7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_1ed2cddd",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-08T14:40:32Z",
+      "side": 1,
+      "message": "Reef is ODL so it\u0027s active low with an external pullup.",
+      "parentUuid": "3af21056_ef1d0dba",
+      "revId": "2f7be70c83311d332b30aeb92d864d48b64f4d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
