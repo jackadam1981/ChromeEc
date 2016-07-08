@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3af21056_f4c2803b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-07-08T00:45:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3af21056_e9018d38",
+      "range": {
+        "startLine": 10,
+        "startChar": 48,
+        "endLine": 10,
+        "endChar": 57
+      },
+      "revId": "9c164e181a57491f65abc39451696a9313f58148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3af21056_098ef1f0",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2016-07-07T23:49:00Z",
       "side": 1,
       "message": "why would this ever be enabled - this function is called only when the device comes out of reset, right?",
+      "revId": "9c164e181a57491f65abc39451696a9313f58148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_b49ab875",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-07-08T00:45:11Z",
+      "side": 1,
+      "message": "If the EC already asserted sys_rst then it will be enabled.",
+      "parentUuid": "3af21056_098ef1f0",
       "revId": "9c164e181a57491f65abc39451696a9313f58148",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "3af21056_14c60452",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-07-08T00:45:11Z",
+      "side": 1,
+      "message": "This should be 2 seconds. I just checked that it didn\u0027t go into a reboot loop at any point. It is not too long right?",
+      "parentUuid": "3af21056_89c321fd",
+      "range": {
+        "startLine": 160,
+        "startChar": 43,
+        "endLine": 160,
+        "endChar": 47
+      },
+      "revId": "9c164e181a57491f65abc39451696a9313f58148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3af21056_896c41f1",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2016-07-07T23:49:00Z",
       "side": 1,
       "message": "what\u0027s achieved by calling this?",
+      "range": {
+        "startLine": 236,
+        "startChar": 2,
+        "endLine": 236,
+        "endChar": 47
+      },
+      "revId": "9c164e181a57491f65abc39451696a9313f58148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_74ae7099",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-07-08T00:45:11Z",
+      "side": 1,
+      "message": "If the EC asserts sys_rst in between the board_init and the second after then it cancels that deferred function. I guess it doesn\u0027t really matter.",
+      "parentUuid": "3af21056_896c41f1",
       "range": {
         "startLine": 236,
         "startChar": 2,
