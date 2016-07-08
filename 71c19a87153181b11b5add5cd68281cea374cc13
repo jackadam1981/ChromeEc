@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa979800_3e60e988",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-07-08T16:27:35Z",
+      "side": 1,
+      "message": "You\u0027re luck to use #define, HCDEBUG_NORMAL is only defined in host_command.c",
+      "revId": "71c19a87153181b11b5add5cd68281cea374cc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
