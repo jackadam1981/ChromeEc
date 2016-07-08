@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "3af21056_54eb6c7e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-08T01:22:23Z",
+      "side": 1,
+      "message": "please add a comment explaining this.",
+      "parentUuid": "3af21056_098ef1f0",
+      "revId": "9c164e181a57491f65abc39451696a9313f58148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3af21056_89c321fd",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -166,6 +184,30 @@
       "side": 1,
       "message": "If the EC asserts sys_rst in between the board_init and the second after then it cancels that deferred function. I guess it doesn\u0027t really matter.",
       "parentUuid": "3af21056_896c41f1",
+      "range": {
+        "startLine": 236,
+        "startChar": 2,
+        "endLine": 236,
+        "endChar": 47
+      },
+      "revId": "9c164e181a57491f65abc39451696a9313f58148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_f4b3a0a8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-08T01:22:23Z",
+      "side": 1,
+      "message": "I would not worry about it: just some extra stuff to do on interrupt context I presume - not worth it.",
+      "parentUuid": "3af21056_74ae7099",
       "range": {
         "startLine": 236,
         "startChar": 2,
