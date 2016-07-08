@@ -17,15 +17,16 @@
 #include "signed_header.h"
 #include "system.h"
 #include "task.h"
+#include "tpm_manufacture.h"
 #include "tpm_registers.h"
 #include "util.h"
 #include "watchdog.h"
 
 /* TPM2 library includes. */
+#include "Platform.h"	/* Keep this one on top. */
 #include "ExecCommand_fp.h"
-#include "Platform.h"
-#include "_TPM_Init_fp.h"
 #include "Manufacture_fp.h"
+#include "_TPM_Init_fp.h"
 
 #define CPRINTS(format, args...) cprints(CC_TPM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_TPM, format, ## args)
@@ -68,7 +69,7 @@ struct tpm_register_file {
 	uint8_t access;
 	uint32_t int_status;
 	uint32_t sts;
-	uint8_t data_fifo[2048]; /* this might have to be even deeper. */
+	uint8_t data_fifo[2100]; /* this might have to be even deeper. */
 };
 
 /*
@@ -447,12 +448,8 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 	CPRINTF("\n");
 }
 
-
 static void tpm_init(void)
 {
-	uint32_t saved_value;
-	const uint32_t manufacturing_done = 0x12344321;
-
 	set_tpm_state(tpm_state_idle);
 	tpm_.regs.access = tpm_reg_valid_sts;
 	tpm_.regs.sts = (tpm_family_tpm2 << tpm_family_shift) |
@@ -461,25 +458,26 @@ static void tpm_init(void)
 	/* TPM2 library functions. */
 	_plat__Signal_PowerOn();
 
-
 	/*
-	 * TODO(ngm): CRBUG/50115, initialize state expected by TPM2
-	 * compliance tests.
+	 * Make sure NV RAM metadata is initialzed, needed to check
+	 * manufactured status. This is a speculative call which will have to
+	 * be repeated in case the TPM has not been through the manufacturing
+	 * sequence yet.
 	 *
-	 * Until it is done properly, use location at offset 0 in the generic
-	 * section of NVRAM to store the manufacturing status. Otherwise the
-	 * NV RAM is wiped out on every reboot.
+	 * No harm in calling it twice in that case.
 	 */
-	nvmem_read(0, sizeof(saved_value), &saved_value, NVMEM_CR50);
-	if (saved_value != manufacturing_done) {
+	_TPM_Init();
+
+	if (!tpm_manufactured()) {
+		/*
+		 * If tpm has not been manufactured yet - this needs to run on
+		 * every startup. It will wipe out NV RAM, among other things.
+		 */
 		TPM_Manufacture(1);
-		saved_value = manufacturing_done;
-		nvmem_write(0, sizeof(saved_value), &saved_value, NVMEM_CR50);
-		nvmem_commit();
+		_TPM_Init();
 	}
 
-	_TPM_Init();
-	_plat__SetNvAvail();
+       _plat__SetNvAvail();
 }
 
 #ifdef CONFIG_EXTENSION_COMMAND
@@ -530,6 +528,7 @@ void tpm_task(void)
 	set_version_string();
 	tpm_init();
 	sps_tpm_enable();
+
 	while (1) {
 		uint8_t *response;
 		unsigned response_size;
