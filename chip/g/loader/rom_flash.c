@@ -4,6 +4,14 @@
  */
 
 #include "debug_printf.h"
+
+#if defined(SECTION_IS_RO)
+#include "debug_printf.h"
+#else
+#include "console.h"
+#define debug_printf(format, args...) cprintf(CC_TPM, format, ## args)
+#endif
+
 #include "setup.h"
 #include "rom_flash.h"
 
