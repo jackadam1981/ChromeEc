@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3af21056_142de487",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-07-08T01:39:29Z",
+      "side": 1,
+      "message": "I understand the intention was to working around signal glitches, but has this been tested to to make sure PMIC will not go to a fault state and shut off because PMIC is enabled before V3P3A is enabled, where a raise condition could happen with PMIC not sensing V3P3A and fault itself.",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 3
+      },
+      "revId": "c013a1e46b8f37300b350a1ddf317940ef1a53bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
