@@ -34,6 +34,24 @@
       "revId": "2f7be70c83311d332b30aeb92d864d48b64f4d7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af21056_ef1d0dba",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-07-08T04:43:43Z",
+      "side": 1,
+      "message": "Good catch, Amenia has an inverter, so the existing code works for Amenia but will not work for Reef if it was changed GPIO_ODR_HIGH.",
+      "parentUuid": "3af21056_9419f473",
+      "revId": "2f7be70c83311d332b30aeb92d864d48b64f4d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
