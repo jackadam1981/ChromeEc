@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa979800_c7233499",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-08T20:43:17Z",
+      "side": 1,
+      "message": "Leaving it because of the latter reason.",
+      "parentUuid": "fa979800_9e149d46",
+      "range": {
+        "startLine": 82,
+        "startChar": 9,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa979800_9ed25d30",
         "filename": "common/keyboard_mkbp.c",
         "patchSetId": 4
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "fa979800_a72628aa",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-08T20:43:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa979800_9ed25d30",
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa979800_1ebf2de2",
         "filename": "common/keyboard_mkbp.c",
         "patchSetId": 4
@@ -53,6 +95,30 @@
       "writtenOn": "2016-07-08T16:50:30Z",
       "side": 1,
       "message": "You\u0027re passing a pointer to 4 bytes but the function will actually copy \"sizeof(union ec_response_get_next_data)\" bytes starting at this address, right?  It might not hurt, but doesn\u0027t seem like a super great idea.",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 65
+      },
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_67426033",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-08T20:43:17Z",
+      "side": 1,
+      "message": "Hmm, since I\u0027m passing in the event, I can make mkbp_fifo_add() look up the expected length and copy that amount.",
+      "parentUuid": "fa979800_1ebf2de2",
       "range": {
         "startLine": 210,
         "startChar": 1,
@@ -105,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "fa979800_e73510c8",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-08T20:43:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa979800_1efacd10",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 2
+      },
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa979800_1e13ad52",
         "filename": "common/keyboard_mkbp.c",
         "patchSetId": 4
@@ -116,6 +206,30 @@
       "writtenOn": "2016-07-08T15:55:31Z",
       "side": 1,
       "message": "Doesn\u0027t this break now if the next entry in the fifo is buttons or switches?",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 23
+      },
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_67e6e053",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-08T20:43:17Z",
+      "side": 1,
+      "message": "I forgot what we decided to do here. Just drop support entirely and make the AP use the new EC_CMD_MKBP_INFO?",
+      "parentUuid": "fa979800_1e13ad52",
       "range": {
         "startLine": 301,
         "startChar": 0,
@@ -175,6 +289,30 @@
     },
     {
       "key": {
+        "uuid": "fa979800_a7b1485a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2564,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-08T20:43:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa979800_c1cc846f",
+      "range": {
+        "startLine": 2564,
+        "startChar": 8,
+        "endLine": 2564,
+        "endChar": 26
+      },
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa979800_5e27f5bd",
         "filename": "include/keyboard_mkbp.h",
         "patchSetId": 4
@@ -186,6 +324,30 @@
       "writtenOn": "2016-07-08T15:55:31Z",
       "side": 1,
       "message": "is_on?\n\nOr maybe just \u0027state\u0027?",
+      "range": {
+        "startLine": 50,
+        "startChar": 43,
+        "endLine": 50,
+        "endChar": 53
+      },
+      "revId": "1448d9c32c509a4978271c012da043b644496287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_87820c6f",
+        "filename": "include/keyboard_mkbp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-08T20:43:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa979800_5e27f5bd",
       "range": {
         "startLine": 50,
         "startChar": 43,
