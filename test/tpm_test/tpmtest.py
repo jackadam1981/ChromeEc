@@ -50,20 +50,23 @@ class TPM(object):
   STARTUP_RSP = ('80 01 00 00 00 0a 00 00 00 00',
                  '80 01 00 00 00 0a 00 00 01 00')
 
-  def __init__(self, freq=800*1000, debug_mode=False):
+  def __init__(self, freq=800*1000, debug_mode=False, try_startup=True):
     self._debug_enabled = debug_mode
     self._handle = ftdi_spi_tpm
     if not self._handle.FtdiSpiInit(freq, debug_mode):
       raise subcmd.TpmTestError('Failed to connect')
+    if not try_startup:
+      return
     response = self.command(''.join('%c' % int('0x%s' % x, 16)
                                     for x in self.STARTUP_CMD.split()))
     if ' '.join('%2.2x' % ord(x) for x in response) not in self.STARTUP_RSP:
       raise subcmd.TpmTestError('init failed')
 
-  def validate(self, data_blob, response_mode=False):
+  @classmethod
+  def validate(cls, data_blob, response_mode=False):
     """Check if a data blob complies with TPM command/response header format."""
     (tag, size, cmd_code, _) = struct.unpack_from(
-        self.HEADER_FMT, data_blob + '  ')
+        cls.HEADER_FMT, data_blob + '  ')
     prefix = 'Misformatted blob: '
     if tag not in (0x8001, 0x8002):
       raise subcmd.TpmTestError(prefix + 'bad tag value 0x%4.4x' % tag)
@@ -88,9 +91,10 @@ class TPM(object):
     self.validate(response, response_mode=True)
     return response
 
-  def wrap_ext_command(self, subcmd_code, cmd_body):
-    return struct.pack(self.HEADER_FMT, 0x8001,
-                       len(cmd_body) + struct.calcsize(self.HEADER_FMT),
+  @classmethod
+  def wrap_ext_command(cls, subcmd_code, cmd_body):
+    return struct.pack(cls.HEADER_FMT, 0x8001,
+                       len(cmd_body) + struct.calcsize(cls.HEADER_FMT),
                        EXT_CMD, subcmd_code) + cmd_body
 
   def unwrap_ext_response(self, expected_subcmd, response):
