@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa979800_cd94b5fe",
+        "filename": "chip/g/dcrypto/sha256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-08T22:16:33Z",
+      "side": 1,
+      "message": "i worry about this one too.. just write whole register with TRIG_STOP_MASK here?",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 13
+      },
+      "revId": "e34660d02aaf5c825dc38c5e4960d1a002dee6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
