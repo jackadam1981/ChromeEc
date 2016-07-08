@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa979800_21f0c8ff",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2373,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-08T17:25:35Z",
+      "side": 1,
+      "message": "Maybe",
+      "range": {
+        "startLine": 2373,
+        "startChar": 10,
+        "endLine": 2373,
+        "endChar": 16
+      },
+      "revId": "e5ac65950d8af917244de12f8775681c5605107e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_81ebdc16",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2380,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-08T17:25:35Z",
+      "side": 1,
+      "message": "Might comment that this is now superseded by get next event, and that newer ECs don\u0027t even support this, and that if you want to get the instantaneous state, use mkbp_info with the new subcommands you\u0027re adding below.",
+      "range": {
+        "startLine": 2380,
+        "startChar": 0,
+        "endLine": 2380,
+        "endChar": 3
+      },
+      "revId": "e5ac65950d8af917244de12f8775681c5605107e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_41c2b4f7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2389,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-08T17:25:35Z",
+      "side": 1,
+      "message": "Flags?  Seems like we\u0027re overloading \u0027switches\u0027 pretty heavily.",
+      "range": {
+        "startLine": 2389,
+        "startChar": 9,
+        "endLine": 2389,
+        "endChar": 17
+      },
+      "revId": "e5ac65950d8af917244de12f8775681c5605107e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_c13c84b1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2406,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-08T17:25:35Z",
+      "side": 1,
+      "message": "uint8_t info_type\n- 0 \u003d kbd_info\n- 1 \u003d supported bits (for events which are bitfields)\n- 2 \u003d current (non-FIFO\u0027d) bits (ditto)\n\nuint8_t event_type (for 1,2 above)\n\nThen if the info type is 1 or 2, instead of a ec_response_mkbp_info, you get back a ec_response_mkbp_event with the bits.  \n\nIf you try info_type\u003d1 or 2 for a non-bitfield event type, you get back invalid_param.",
+      "range": {
+        "startLine": 2406,
+        "startChar": 0,
+        "endLine": 2406,
+        "endChar": 28
+      },
+      "revId": "e5ac65950d8af917244de12f8775681c5605107e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
