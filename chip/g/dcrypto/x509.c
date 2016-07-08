@@ -197,7 +197,11 @@ int DCRYPTO_x509_verify(const uint8_t *cert, size_t len,
 		sig_len--;
 	}
 
-	DCRYPTO_SHA256_hash(tbs, tbs_len, digest);
+	/* TODO(ngm): use DCRYPTO_SHA256_hash().  A bug in this method
+	 * results in incorrect results when invoked after use of the
+	 * key ladder.
+	 */
+	SHA256_hash(tbs, tbs_len, digest);
 	return DCRYPTO_rsa_verify(ca_pub_key, digest, sizeof(digest),
 				sig, sig_len, PADDING_MODE_PKCS1, HASH_SHA256);
 }
