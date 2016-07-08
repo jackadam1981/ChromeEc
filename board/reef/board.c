@@ -133,7 +133,7 @@ uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
 
-	if (gpio_get_level(GPIO_USB_C0_PD_INT))
+	if (gpio_get_level(GPIO_USB_C0_PD_INT_ODL))
 		status |= PD_STATUS_TCPC_ALERT_0;
 	if (!gpio_get_level(GPIO_USB_C1_PD_INT_ODL))
 		status |= PD_STATUS_TCPC_ALERT_1;
@@ -279,7 +279,7 @@ static void chipset_pre_init(void)
 
 #if 0
 	/* Enable PD interrupts */
-	gpio_enable_interrupt(GPIO_USB_C0_PD_INT);
+	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
 #endif
 }
