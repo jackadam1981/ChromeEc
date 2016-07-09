@@ -149,8 +149,6 @@
 #ifndef __ASSEMBLER__
 
 enum adc_channel {
-	/* No VBUS ADC channel on kevin */
-	ADC_VBUS = -1,
 	/* Real ADC channels begin here */
 	ADC_BOARD_ID = 0,
 	ADC_PP900_AP,
