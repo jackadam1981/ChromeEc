@@ -12,6 +12,7 @@
 #include "charge_state.h"
 #include "charger.h"
 #include "console.h"
+#include "dptf.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kxcj9.h"
 #include "driver/gyro_l3gd20h.h"
@@ -799,3 +800,32 @@ const int keyboard_factory_scan_pins[][2] = {
 const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
 #endif
+
+/*
+ * abort thermal_thread not to control fan unless power state is not S0 or S0ix.
+ */
+int abort_thermal_control_on_suspend(void)
+{
+	/* if S0/S0ix/S0S0ix/S0ixS0 but NOT S0S3/S3S0 */
+	if (chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_STANDBY) &&
+	    !chipset_in_state(CHIPSET_STATE_SUSPEND))
+		return 0;
+
+	return 1;
+}
+
+/*
+ * abort fan control in thermal_thread unless power state is not S0 or S0ix.
+ */
+void abort_fan_control_on_suspend(void)
+{
+	if (chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_STANDBY)
+	      && !chipset_in_state(CHIPSET_STATE_SUSPEND))
+		return;
+
+	dptf_set_fan_duty_target(0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, abort_fan_control_on_suspend,
+		HOOK_PRIO_TEMP_SENSOR);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, abort_fan_control_on_suspend,
+		HOOK_PRIO_TEMP_SENSOR);
