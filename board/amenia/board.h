@@ -166,8 +166,7 @@
 
 /* ADC signal */
 enum adc_channel {
-	ADC_VBUS,
-	ADC_AMON_BMON,
+	ADC_AMON_BMON = 1,
 	ADC_PSYS,
 	ADC_THERM_SYS0,
 	ADC_THERM_SYS1,

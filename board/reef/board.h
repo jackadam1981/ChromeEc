@@ -159,7 +159,6 @@
 
 /* ADC signal */
 enum adc_channel {
-	ADC_VBUS = -1,	/* FIXME(dhendrix) */
 	ADC_BOARD_ID = 2,
 	ADC_CH_COUNT
 };
