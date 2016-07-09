@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa979800_9347ae40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-09T01:08:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa979800_b88ac980",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "c7912cdffafe1f72c0f4d4191ca489dd352c8910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa979800_b8b1695a",
         "filename": "common/keyboard_mkbp.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-08T23:45:54Z",
       "side": 1,
       "message": "uint32_t val \u003d 0?",
+      "range": {
+        "startLine": 348,
+        "startChar": 1,
+        "endLine": 350,
+        "endChar": 9
+      },
+      "revId": "c7912cdffafe1f72c0f4d4191ca489dd352c8910",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_d323f698",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-09T01:08:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa979800_b8b1695a",
       "range": {
         "startLine": 348,
         "startChar": 1,
