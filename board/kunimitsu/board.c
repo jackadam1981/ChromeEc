@@ -747,3 +747,16 @@ void lid_angle_peripheral_enable(int enable)
 	}
 }
 #endif
+
+/*
+ * abort thermal_thread not to control fan unless power state is not S0 or S0ix.
+ */
+int abort_thermal_control_on_suspend(void)
+{
+	/* if S0/S0ix/S0S0ix/S0ixS0 but NOT S0S3/S3S0 */
+	if (chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_STANDBY) &&
+	    !chipset_in_state(CHIPSET_STATE_SUSPEND))
+		return 0;
+
+	return 1;
+}

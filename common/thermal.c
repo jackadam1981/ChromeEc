@@ -162,6 +162,8 @@ static int is_dptf_still_active(void)
 }
 #endif
 
+int abort_thermal_control_on_suspend(void)  __attribute__((weak));
+
 /* Keep track of which thresholds have triggered */
 static cond_t cond_hot[EC_TEMP_THRESH_COUNT];
 
@@ -192,6 +194,11 @@ static void thermal_control(void)
 			return;
 	}
 #endif
+	/* some boards needs to abort under certain condition */
+	if (abort_thermal_control_on_suspend) {
+		if(abort_thermal_control_on_suspend())
+			return;
+	}
 
 	/* go through all the sensors */
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
