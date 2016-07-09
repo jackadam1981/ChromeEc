@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa979800_65e1f5d4",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2016-07-09T02:10:06Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure this is wrong.\n\nIn many cases you are actually just returning an uint32, right?",
+      "range": {
+        "startLine": 390,
+        "startChar": 2,
+        "endLine": 390,
+        "endChar": 66
+      },
+      "revId": "ef7eaff0077b0864f7bd40641c5153635abc2652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
