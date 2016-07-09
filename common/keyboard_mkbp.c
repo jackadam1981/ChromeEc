@@ -374,10 +374,11 @@ static uint32_t get_supported_switches(void)
 
 static int mkbp_get_info(struct host_cmd_handler_args *args)
 {
-	struct ec_response_mkbp_info *r = args->response;
 	const struct ec_params_mkbp_info *p = args->params;
 
-	if (args->params_size == 0) {
+	if (args->params_size == 0 || p->info_type == EC_MKBP_INFO_KBD) {
+		struct ec_response_mkbp_info *r = args->response;
+
 		/* Version 0 just returns info about the keyboard. */
 		r->rows = KEYBOARD_ROWS;
 		r->cols = KEYBOARD_COLS;
@@ -386,29 +387,20 @@ static int mkbp_get_info(struct host_cmd_handler_args *args)
 
 		args->response_size = sizeof(struct ec_response_mkbp_info);
 	} else {
-		/* Version 1 */
-		args->response_size = sizeof(struct ec_response_get_next_event);
+		union ec_response_get_next_data *r = args->response;
+
+		/* Version 1 (other than EC_MKBP_INFO_KBD) */
 		switch (p->info_type) {
-		case EC_MKBP_INFO_KBD:
-			r->rows = KEYBOARD_ROWS;
-			r->cols = KEYBOARD_COLS;
-			/* This used to be "switches" which was previously 0. */
-			r->reserved = 0;
-
-			args->response_size = \
-				sizeof(struct ec_response_mkbp_info);
-			break;
-
 		case EC_MKBP_INFO_SUPPORTED:
 			switch (p->event_type) {
 			case EC_MKBP_EVENT_BUTTON:
-				((union ec_response_get_next_data *)(r))-> \
-					buttons = get_supported_buttons();
+				r->buttons = get_supported_buttons();
+				args->response_size = sizeof(r->buttons);
 				break;
 
 			case EC_MKBP_EVENT_SWITCH:
-				((union ec_response_get_next_data *)(r))-> \
-					switches = get_supported_switches();
+				r->switches = get_supported_switches();
+				args->response_size = sizeof(r->switches);
 				break;
 
 			default:
@@ -420,23 +412,24 @@ static int mkbp_get_info(struct host_cmd_handler_args *args)
 		case EC_MKBP_INFO_CURRENT:
 			switch (p->event_type) {
 			case EC_MKBP_EVENT_KEY_MATRIX:
-				memcpy(r, keyboard_scan_get_state(),
-				       KEYBOARD_COLS);
+				memcpy(r->key_matrix, keyboard_scan_get_state(),
+				       sizeof(r->key_matrix));
+				args->response_size = sizeof(r->key_matrix);
 				break;
 
 			case EC_MKBP_EVENT_HOST_EVENT:
-				((union ec_response_get_next_data *)(r))-> \
-					host_event = host_get_events();
+				r->host_event = host_get_events();
+				args->response_size = sizeof(r->host_event);
 				break;
 
 			case EC_MKBP_EVENT_BUTTON:
-				((union ec_response_get_next_data *)(r))-> \
-					buttons = mkbp_button_state;
+				r->buttons = mkbp_button_state;
+				args->response_size = sizeof(r->buttons);
 				break;
 
 			case EC_MKBP_EVENT_SWITCH:
-				((union ec_response_get_next_data *)(r))-> \
-					switches = mkbp_switch_state;
+				r->switches = mkbp_switch_state;
+				args->response_size = sizeof(r->switches);
 				break;
 
 			default:
