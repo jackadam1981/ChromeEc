@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa979800_85ae81af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-10T00:47:32Z",
+      "side": 1,
+      "message": "does Reef boot ok now?\n\nis it possible to program AP SPI on Reef and Kevin now?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 4
+      },
+      "revId": "3da7081c3262dc96362e73c9522fab8e34acf7c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_05d91155",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-10T00:47:32Z",
+      "side": 1,
+      "message": "does this require a pull up/pull down?",
+      "revId": "3da7081c3262dc96362e73c9522fab8e34acf7c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_25d68d27",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-10T00:47:32Z",
+      "side": 1,
+      "message": "why a whitespace change?",
+      "revId": "3da7081c3262dc96362e73c9522fab8e34acf7c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_c5d24931",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-10T00:47:32Z",
+      "side": 1,
+      "message": "could this be a static (compile time) assert?",
+      "revId": "3da7081c3262dc96362e73c9522fab8e34acf7c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
