@@ -94,6 +94,30 @@
       "revId": "4f953a16a19d78381ff158d4dba5cfea5fbbb467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da1f3453_95e0e42e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-07-10T15:29:57Z",
+      "side": 1,
+      "message": "that is \"motion_int_interval\", not \"motion_min_interval\"",
+      "parentUuid": "fa979800_5e0a95d1",
+      "range": {
+        "startLine": 834,
+        "startChar": 3,
+        "endLine": 834,
+        "endChar": 37
+      },
+      "revId": "4f953a16a19d78381ff158d4dba5cfea5fbbb467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
