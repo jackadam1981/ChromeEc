@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1a38b3_5a4d257c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-11T23:28:59Z",
+      "side": 1,
+      "message": "what does this mean? You should reproduce the problem caused by the TPM not resetting and then demonstrate that this patch fixes the problem,  while resetting the TPM along with the AP, without rebooting the EC.",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "421c3ffa3206792f8b88d8fbe59f60f7bfec4d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
