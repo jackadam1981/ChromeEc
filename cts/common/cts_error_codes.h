@@ -1,0 +1,9 @@
+/* Copyright 2016 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+CTS_ERROR_CODE(SUCCESS)
+CTS_ERROR_CODE(FAILURE)
+CTS_ERROR_CODE(BAD_SYNC)
+CTS_ERROR_CODE(UNKNOWN)
