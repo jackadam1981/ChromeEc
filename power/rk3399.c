@@ -127,17 +127,17 @@ enum power_state power_handle_state(enum power_state state)
 		msleep(2);
 		gpio_set_level(GPIO_PP900_PMU_EN, 1);
 		gpio_set_level(GPIO_PP900_PLL_EN, 1);
-		gpio_set_level(GPIO_PP900_USB_EN, 1);
-		gpio_set_level(GPIO_PP900_DDRPLL_EN, 1);
-		gpio_set_level(GPIO_PP900_PCIE_EN, 1);
-		msleep(2);
-		gpio_set_level(GPIO_PP1800_PMU_EN_L, 0);
 		gpio_set_level(GPIO_PPVAR_CLOGIC_EN, 1);
 		msleep(2);
-		gpio_set_level(GPIO_PP1800_USB_EN_L, 0);
+		gpio_set_level(GPIO_PP900_DDRPLL_EN, 1);
+		gpio_set_level(GPIO_PP900_PCIE_EN, 1);
+		gpio_set_level(GPIO_PP900_USB_EN, 1);
+		msleep(2);
+		gpio_set_level(GPIO_PP1800_PMU_EN_L, 0);
 		gpio_set_level(GPIO_PP1800_AP_AVDD_EN_L, 0);
 		msleep(2);
 		gpio_set_level(GPIO_LPDDR_PWR_EN, 1);
+		gpio_set_level(GPIO_PP1800_USB_EN_L, 0);
 		gpio_set_level(GPIO_PP5000_EN, 1);
 		msleep(2);
 
@@ -169,13 +169,13 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_PP3300_USB_EN_L, 0);
 		msleep(2);
 
+		gpio_set_level(GPIO_PP1800_LID_EN_L, 0);
+		gpio_set_level(GPIO_PP1800_SENSOR_EN_L, 0);
+
 		/* Pulse SYS_RST */
 		gpio_set_level(GPIO_SYS_RST_L, 0);
 		msleep(10);
 		gpio_set_level(GPIO_SYS_RST_L, 1);
-
-		gpio_set_level(GPIO_PP1800_LID_EN_L, 0);
-		gpio_set_level(GPIO_PP1800_SENSOR_EN_L, 0);
 
 		if (power_wait_signals(IN_PGOOD_S0)) {
 			chipset_force_shutdown();
