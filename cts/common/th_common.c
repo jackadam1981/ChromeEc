@@ -32,5 +32,5 @@ enum cts_error_code sync(void)
 		input_level = gpio_get_level(GPIO_HANDSHAKE_INPUT);
 	} while (input_level);
 
-	return CTS_SUCCESS;
+	return CTS_RC_SUCCESS;
 }
