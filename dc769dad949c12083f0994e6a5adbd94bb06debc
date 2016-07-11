@@ -22,6 +22,29 @@
       "revId": "dc769dad949c12083f0994e6a5adbd94bb06debc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_b912c8ac",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2016-07-11T18:19:21Z",
+      "side": 1,
+      "message": "PP1800_PMU needs to be on before CLOGIC to avoid spikes in the voltage due to DVS.",
+      "range": {
+        "startLine": 136,
+        "startChar": 17,
+        "endLine": 136,
+        "endChar": 37
+      },
+      "revId": "dc769dad949c12083f0994e6a5adbd94bb06debc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
