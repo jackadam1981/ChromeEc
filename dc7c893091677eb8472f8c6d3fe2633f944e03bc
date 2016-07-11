@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_299aa92e",
+        "filename": "cts/common/dut_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-07-11T22:07:50Z",
+      "side": 1,
+      "message": "Yes - the plan is to have each test result reported to the host after it occurs, and the host can timeout if no test results are read in a certain timeframe.",
+      "parentUuid": "fa1a38b3_662dee39",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "dc7c893091677eb8472f8c6d3fe2633f944e03bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1a38b3_e6071ec2",
         "filename": "cts/common/dut_common.c",
         "patchSetId": 1
@@ -76,6 +100,30 @@
       "writtenOn": "2016-07-11T21:10:36Z",
       "side": 1,
       "message": "UNKNOWN?",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "dc7c893091677eb8472f8c6d3fe2633f944e03bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_29974961",
+        "filename": "cts/common/dut_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-07-11T22:07:50Z",
+      "side": 1,
+      "message": "The last part of the DUT\u0027s sync is blind, it doesn\u0027t know whether or not the TH read it.",
+      "parentUuid": "fa1a38b3_e6071ec2",
       "range": {
         "startLine": 27,
         "startChar": 8,
