@@ -7,6 +7,7 @@
 #include "timer.h"
 #include "watchdog.h"
 #include "cts_common.h"
+#include "th_common.h"
 
 enum cts_error_code sync(void)
 {
