@@ -18,11 +18,13 @@
 /* In a single test, only one board can return unknown, the other must
  * return a useful result (i.e. success, failure, etc)
  */
+
+#define CTS_ERROR_CODE(code) CTS_RC_##code,
+
 enum cts_error_code {
-	CTS_SUCCESS,
-	CTS_ERROR_FAILURE,
-	CTS_ERROR_BAD_SYNC,
-	CTS_ERROR_UNKNOWN
+	#include "cts_error_codes.h"
 };
+
+void cts_task(void);
 
 #endif
