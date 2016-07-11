@@ -136,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_9aa4bd1d",
+        "filename": "cts/common/dut_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-11T23:44:31Z",
+      "side": 1,
+      "message": "But from DUT\u0027s perspective, it\u0027s success, isn\u0027t it? Returning here doesn\u0027t necessarily have to indicate sync protocol was successful as a whole.",
+      "parentUuid": "fa1a38b3_29974961",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "dc7c893091677eb8472f8c6d3fe2633f944e03bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1a38b3_46cef2c2",
         "filename": "cts/common/dut_common.h",
         "patchSetId": 1
@@ -175,6 +199,29 @@
         "startChar": 0,
         "endLine": 6,
         "endChar": 20
+      },
+      "revId": "dc7c893091677eb8472f8c6d3fe2633f944e03bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_ba9099b3",
+        "filename": "cts/gpio/th.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-11T23:44:31Z",
+      "side": 1,
+      "message": "I think you\u0027d better check the return code. If not, let\u0027s make sync return void.",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 8
       },
       "revId": "dc7c893091677eb8472f8c6d3fe2633f944e03bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
