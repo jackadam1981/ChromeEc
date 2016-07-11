@@ -100,6 +100,7 @@ buildall:
 	@mkdir $(FAILED_BOARDS_DIR)
 	@for b in $(boards); do echo 'starting' > $(FAILED_BOARDS_DIR)/$$b; done
 	$(MAKE) try_buildall
+	$(MAKE) build_cts
 	$(MAKE) runtests
 	@touch .tests-passed
 	@echo "$@ completed successfully!"
@@ -174,6 +175,37 @@ $(run-test-targets): run-%: host-%
 .PHONY: hosttests runtests
 hosttests: $(host-test-targets)
 runtests: $(run-test-targets)
+
+# Automatically enumerate all suites.
+cts_excludes := common
+cts_suites := $(filter-out $(cts_excludes), \
+	$(shell find cts -maxdepth 1 -mindepth 1 -type d -printf "%f "))
+
+# Add boards below as CTS is expanded.
+cts_boards := stm32l476g-eval nucleo-f072rb
+
+# Serialize builds. If we don't, parallel make fails because all suites
+# try to produce ec.bin in the same directory (e.g. build/stm32l476g-eval).
+# TODO: Automatically create these rules
+cts-pingpong-nucleo-f072rb: cts-gpio-nucleo-f072rb
+cts-pingpong-stm32l476g-eval: cts-gpio-stm32l476g-eval
+
+.PHONY: build_cts
+
+# Create CTS rule automatically for given suite and board
+# $1: suite name
+# $2: board name
+define make-cts =
+build_cts: cts-$(1)-$(2)
+cts-$(1)-$(2):
+	$$(MAKE) CTS_MODULE=$(1) BOARD=$(2)
+endef
+
+$(foreach b, $(cts_boards), \
+	$(foreach s, $(cts_suites), \
+		$(eval $(call make-cts,$(s),$(b))) \
+	) \
+)
 
 cov-test-targets=$(foreach t,$(test-list-host),build/host/$(t).info)
 bldversion=$(shell (./util/getversion.sh ; echo VERSION) | $(CPP) -P)
