@@ -22,6 +22,30 @@
       "revId": "ddd0645590ee0669cb3793cb3ba0699e1f14a9d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_be3b8ed7",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-11T17:40:48Z",
+      "side": 1,
+      "message": "Added an init hook for lid_change() to occur after the lid switch init hook.",
+      "parentUuid": "fa979800_3e59be77",
+      "range": {
+        "startLine": 60,
+        "startChar": 16,
+        "endLine": 60,
+        "endChar": 33
+      },
+      "revId": "ddd0645590ee0669cb3793cb3ba0699e1f14a9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
