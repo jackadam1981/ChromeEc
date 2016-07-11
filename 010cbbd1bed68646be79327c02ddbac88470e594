@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa979800_7bae78b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-07-11T16:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd43127f_5eefd58a",
+      "revId": "010cbbd1bed68646be79327c02ddbac88470e594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd43127f_7e81f1e0",
         "filename": "util/flash_ec",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2016-06-30T17:35:59Z",
       "side": 1,
       "message": "please don\u0027t add new lines longer than 80 col (at least this is how gerrit marks it)",
+      "revId": "010cbbd1bed68646be79327c02ddbac88470e594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa979800_dbcf8c88",
+        "filename": "util/flash_ec",
+        "patchSetId": 9
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-07-11T16:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd43127f_7e81f1e0",
       "revId": "010cbbd1bed68646be79327c02ddbac88470e594",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
