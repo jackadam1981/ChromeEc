@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1a38b3_864f4aab",
+        "filename": "cts/common/cts_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-11T21:10:36Z",
+      "side": 1,
+      "message": "Looks like we don\u0027t use camel case. Please change it to lower case. You also probably want to prefix it with cts_ to avoid name conflict.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "dc7c893091677eb8472f8c6d3fe2633f944e03bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_26381691",
+        "filename": "cts/common/dut_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-11T21:10:36Z",
+      "side": 1,
+      "message": "Why don\u0027t you #include \"dut_common.h\"?",
+      "revId": "dc7c893091677eb8472f8c6d3fe2633f944e03bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_662dee39",
+        "filename": "cts/common/dut_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-11T21:10:36Z",
+      "side": 1,
+      "message": "Can this loop infinitely if something goes wrong on TH?",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "dc7c893091677eb8472f8c6d3fe2633f944e03bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_e6071ec2",
+        "filename": "cts/common/dut_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-11T21:10:36Z",
+      "side": 1,
+      "message": "UNKNOWN?",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "dc7c893091677eb8472f8c6d3fe2633f944e03bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_46cef2c2",
+        "filename": "cts/common/dut_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-11T21:10:36Z",
+      "side": 1,
+      "message": "Does it compile?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "dc7c893091677eb8472f8c6d3fe2633f944e03bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_46c43272",
+        "filename": "cts/gpio/th.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-11T21:10:36Z",
+      "side": 1,
+      "message": "Why do you include this?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "dc7c893091677eb8472f8c6d3fe2633f944e03bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
