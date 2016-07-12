@@ -58,6 +58,10 @@ static int accel_disp;
  */
 #define MOTION_SENSOR_INT_ADJUSTMENT_US 10
 
+#ifdef CONFIG_ACCEL_KX022_RESET
+static int force_reset;
+#endif
+
 /*
  * Mutex to protect sensor values between host command task and
  * motion sense task:
@@ -635,6 +639,16 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 		ret = EC_ERROR_BUSY;
 	}
 	if (ret == EC_SUCCESS) {
+#ifdef CONFIG_ACCEL_KX022_RESET
+		/* check if sensor is dead */
+		if ((sensor->raw_xyz[X] == 0 && sensor->raw_xyz[Y] == 0 &&
+		    sensor->raw_xyz[Z] == 0) || force_reset) {
+			CPRINTS("%s all zeros!", sensor->name);
+			force_reset = 0;
+			/* return and keep last good calibrate data */
+			return EC_ERROR_SENSOR_DEAD;
+		}
+#endif
 		sensor->last_collection = ts->le.lo;
 		mutex_lock(&g_sensor_mutex);
 		memcpy(sensor->xyz, sensor->raw_xyz, sizeof(sensor->xyz));
@@ -644,6 +658,30 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 #endif
 	return ret;
 }
+
+#ifdef CONFIG_ACCEL_KX022_RESET
+static void motion_sense_reset_sensors(void)
+{
+	int i, ret;
+	struct motion_sensor_t *sensor;
+
+	board_power_off_sensors();
+	/* min VDD off time is 10 ms, make it larger */
+	msleep(20);
+	board_power_on_sensors();
+	/* power up time is 10 ms, make it larger */
+	msleep(20);
+
+	for (i = 0; i < motion_sensor_count; ++i) {
+		sensor = &motion_sensors[i];
+		ret = motion_sense_init(sensor);
+		if (ret != EC_SUCCESS) {
+			CPRINTS("%s: %d: init failed: %d",
+				sensor->name, i, ret);
+		}
+	}
+}
+#endif
 
 /*
  * Motion Sense Task
@@ -694,6 +732,14 @@ void motion_sense_task(void)
 
 				ret = motion_sense_process(sensor, &event,
 						&ts_begin_task);
+#ifdef CONFIG_ACCEL_KX022_RESET
+				if (ret == EC_ERROR_SENSOR_DEAD) {
+					/* sensor is dead, try to recover */
+					motion_sense_reset_sensors();
+					ready_status = 0;
+					break;
+				}
+#endif
 				if (ret != EC_SUCCESS)
 					continue;
 				ready_status |= (1 << i);
@@ -1540,6 +1586,17 @@ static int motion_sense_read_fifo(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(fiforead, motion_sense_read_fifo,
 	"id",
 	"Read Fifo sensor", NULL);
+#endif
+
+#ifdef CONFIG_ACCEL_KX022_RESET
+static int command_accel_reset(int argc, char **argv)
+{
+	force_reset = 1;
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(accelreset, command_accel_reset,
+	NULL,
+	"force reset sensors", NULL);
 #endif
 
 #endif /* CONFIG_CMD_ACCELS */
