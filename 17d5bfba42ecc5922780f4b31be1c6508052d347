@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1a38b3_d73563c8",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-12T20:44:44Z",
+      "side": 1,
+      "message": "Updated to be push-pull as per chrome-os-partner:55165.",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 22
+      },
+      "revId": "17d5bfba42ecc5922780f4b31be1c6508052d347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
