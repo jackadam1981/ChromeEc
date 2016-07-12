@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "fa1a38b3_bba1bbbe",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-12T06:10:28Z",
+      "side": 1,
+      "message": "This needs to be dynamic, B1 silicon -\u003e 0, B2 silicon -\u003e 1\nMimic cros_personalize",
+      "range": {
+        "startLine": 46,
+        "startChar": 31,
+        "endLine": 46,
+        "endChar": 32
+      },
+      "revId": "20048c3485f32eb73de9557ca282d218bb1cd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_fbab3398",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-12T06:10:28Z",
+      "side": 1,
+      "message": "this can be read from RWR[0]",
+      "range": {
+        "startLine": 48,
+        "startChar": 31,
+        "endLine": 48,
+        "endChar": 32
+      },
+      "revId": "20048c3485f32eb73de9557ca282d218bb1cd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_9b9e7f7c",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-12T06:10:28Z",
+      "side": 1,
+      "message": "this needs to be read from RWR[7]",
+      "range": {
+        "startLine": 50,
+        "startChar": 31,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "20048c3485f32eb73de9557ca282d218bb1cd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_1b9c4f80",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-12T06:10:28Z",
+      "side": 1,
+      "message": "this needs to read from RWR[1]",
+      "range": {
+        "startLine": 51,
+        "startChar": 31,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "20048c3485f32eb73de9557ca282d218bb1cd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_dba8f79e",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-12T06:10:28Z",
+      "side": 1,
+      "message": "!!",
+      "range": {
+        "startLine": 277,
+        "startChar": 8,
+        "endLine": 277,
+        "endChar": 9
+      },
+      "revId": "20048c3485f32eb73de9557ca282d218bb1cd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1a38b3_203d9681",
         "filename": "board/cr50/tpm2/manufacture.c",
         "patchSetId": 10
