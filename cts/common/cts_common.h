@@ -23,4 +23,11 @@ enum cts_error_code {
 	UNKNOWN
 };
 
+struct cts_test {
+	enum cts_error_code (*run)(void);
+	char *name;
+};
+
+#define CTS_TEST(test)	{test, STRINGIFY(test)},
+
 #endif
