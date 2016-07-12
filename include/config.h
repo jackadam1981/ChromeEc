@@ -61,6 +61,12 @@
 #undef CONFIG_BARO_BMP280
 
 /*
+ * Enable accelerometer reset flow to recover it from internal HW error.
+ * You must define board_reset_sensors() in your board to reset the sensors.
+ */
+#undef CONFIG_ACCEL_RESET
+
+/*
  * Use the old standard reference frame for accelerometers. The old
  * reference frame is:
  * Z-axis: perpendicular to keyboard, pointing up, such that if the device
@@ -568,6 +574,7 @@
 #undef CONFIG_CMD_ACCELS
 #undef CONFIG_CMD_ACCEL_FIFO
 #undef CONFIG_CMD_ACCEL_INFO
+#undef CONFIG_CMD_ACCEL_RESET
 #undef CONFIG_CMD_ALS
 #define CONFIG_CMD_APTHROTTLE
 #undef CONFIG_CMD_BATDEBUG
