@@ -22,6 +22,30 @@
       "revId": "a0bc37de950a845423e584b481f726b7478c9028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_f70a1f18",
+        "filename": "board/reef/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-12T20:45:14Z",
+      "side": 1,
+      "message": "FTR I think it\u0027s a bad idea and would prefer to just annotate the enums using comments instead. But I don\u0027t feel like arguing over the bikeshed color(s), so done.",
+      "parentUuid": "fa979800_8400ca68",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 17
+      },
+      "revId": "a0bc37de950a845423e584b481f726b7478c9028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
