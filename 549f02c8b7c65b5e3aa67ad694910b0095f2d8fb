@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_dbfbd745",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-12T05:03:54Z",
+      "side": 1,
+      "message": "Good point, done.\n\nBTW - I stole your tcpc_get_alert_status() function: https://chromium-review.googlesource.com/360020",
+      "parentUuid": "fa979800_21a4486e",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 42
+      },
+      "revId": "549f02c8b7c65b5e3aa67ad694910b0095f2d8fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa979800_21d208de",
         "filename": "board/reef/board.c",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2016-07-08T17:06:38Z",
       "side": 1,
       "message": "You will need to add a similar function for Port 1 to take it out of reset on the initial boot.\nThis board_set_tcpc_power_mode is only called once during tcpc init via anx74xx_set_power_mode, so for amenia, I make this an empty function until I have a better understand on the tcpc low power mode, and I take both tcpc out of reset via board_init.",
+      "revId": "549f02c8b7c65b5e3aa67ad694910b0095f2d8fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_fbe5f3af",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-12T05:03:54Z",
+      "side": 1,
+      "message": "Yep, also a good point. Done.\n\nOn EVT the TCPCs will be taken out of reset later due to the hook priority, but I think that will be OK. (note: Amenia had a special hook for this which was called early)",
+      "parentUuid": "fa979800_21d208de",
       "revId": "549f02c8b7c65b5e3aa67ad694910b0095f2d8fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -77,6 +119,54 @@
       "side": 1,
       "message": "Shouldn\u0027t we be taking the PD chips *out* of reset here? For some reason we\u0027re leaving them in the reset state.",
       "parentUuid": "fa979800_01c34c41",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 43
+      },
+      "revId": "549f02c8b7c65b5e3aa67ad694910b0095f2d8fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_9bc2ff3a",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-12T05:03:54Z",
+      "side": 1,
+      "message": "Ah yes, that seems much more suitable now that we have separate reset signals like Amenia.",
+      "parentUuid": "fa979800_01c34c41",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 43
+      },
+      "revId": "549f02c8b7c65b5e3aa67ad694910b0095f2d8fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_fbcfb360",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-12T05:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa979800_c47012ee",
       "range": {
         "startLine": 182,
         "startChar": 0,
