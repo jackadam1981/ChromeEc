@@ -132,12 +132,18 @@ static int spi_master_shutdown(int port)
 
 int spi_enable(int port, int enable)
 {
+	int rv;
+
 	if (enable == spi_enabled[port])
 		return EC_SUCCESS;
+
+	mutex_lock(spi_mutex + port);
 	if (enable)
-		return spi_master_initialize(port);
+		rv = spi_master_initialize(port);
 	else
-		return spi_master_shutdown(port);
+		rv = spi_master_shutdown(port);
+	mutex_unlock(spi_mutex + port);
+	return rv;
 }
 
 static int spi_dma_start(int port, const uint8_t *txdata,
@@ -251,9 +257,15 @@ int spi_transaction(const struct spi_device_t *spi_device,
 	int port = spi_device->port;
 
 	mutex_lock(spi_mutex + port);
+	if (!spi_enabled[port]) {
+		rv = EC_ERROR_ACCESS_DENIED;
+		goto spi_transaction_end;
+	}
+
 	rv = spi_transaction_async(spi_device, txdata, txlen, rxdata, rxlen);
 	rv |= spi_transaction_flush(spi_device);
-	mutex_unlock(spi_mutex + port);
 
+spi_transaction_end:
+	mutex_unlock(spi_mutex + port);
 	return rv;
 }

@@ -128,6 +128,9 @@ enum ec_error_list {
 
 	EC_ERROR_NOT_HANDLED = 21,  /* Interrupt event not handled */
 
+#ifdef CONFIG_ACCEL_KX022_RESET
+	EC_ERROR_SENSOR_DEAD = 22,  /* sensor is dead */
+#endif
 	/* Module-internal error codes may use this range.   */
 	EC_ERROR_INTERNAL_FIRST = 0x10000,
 	EC_ERROR_INTERNAL_LAST =  0x1FFFF
