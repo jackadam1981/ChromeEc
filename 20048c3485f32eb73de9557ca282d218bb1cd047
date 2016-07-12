@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1a38b3_203d9681",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-12T02:29:13Z",
+      "side": 1,
+      "message": "I think this is where it is failing, I see that both rsa_cert_done and p256_cert_done are set, but the response is RESPONSE_NOT_OK.",
+      "revId": "20048c3485f32eb73de9557ca282d218bb1cd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
