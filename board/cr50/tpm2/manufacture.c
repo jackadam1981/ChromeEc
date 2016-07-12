@@ -72,7 +72,7 @@ enum cros_perso_component_type {
 	CROS_PERSO_COMPONENT_TYPE_P256_CERT = 130
 };
 
-struct haven_perso_response_header_v0 {
+struct haven_perso_blob_header_v0 {
 	uint8_t  magic[4];
 	uint16_t payload_version;
 	uint8_t  hwcat[2];
@@ -85,7 +85,7 @@ struct haven_perso_response_header_v0 {
 	uint8_t  reserved[3];
 } __packed;  /* Size: 88B */
 
-struct cros_perso_response_component_info_v0 {
+struct cros_perso_blob_component_info_v0 {
 	uint16_t component_size;
 	uint8_t  component_type;
 	uint8_t  reserved[5];
@@ -94,22 +94,22 @@ struct cros_perso_response_component_info_v0 {
 /* key_id: key for which this is the certificate */
 /* cert_len: length of the following certificate */
 /* cert: the certificate bytes */
-struct cros_perso_certificate_response_v0 {
+struct cros_perso_certificate_blob_v0 {
 	uint8_t key_id[4];
 	uint32_t cert_len;
 	uint8_t cert[CROS_ENDORSEMENT_CERT_MAX_SIZE];
 } __packed;                                             /* Size: 1940B */
 
-/* Personalization response. */
-struct cros_perso_response_v0 {
-	struct haven_perso_response_header_v0 haven_perso_response_header;
-	struct cros_perso_response_component_info_v0 cert_info;
-	struct cros_perso_certificate_response_v0 cert;
+/* Personalization blob sent from the host. */
+struct cros_perso_blob_v0 {
+	struct haven_perso_blob_header_v0 haven_perso_blob_header;
+	struct cros_perso_blob_component_info_v0 cert_info;
+	struct cros_perso_certificate_blob_v0 cert;
 } __packed;                                             /* Size: 2036B */
-BUILD_ASSERT(sizeof(struct haven_perso_response_header_v0) == 88);
-BUILD_ASSERT(sizeof(struct cros_perso_response_component_info_v0) == 8);
-BUILD_ASSERT(sizeof(struct cros_perso_certificate_response_v0) == 1940);
-BUILD_ASSERT(sizeof(struct cros_perso_response_v0) == 2036);
+BUILD_ASSERT(sizeof(struct haven_perso_blob_header_v0) == 88);
+BUILD_ASSERT(sizeof(struct cros_perso_blob_component_info_v0) == 8);
+BUILD_ASSERT(sizeof(struct cros_perso_certificate_blob_v0) == 1940);
+BUILD_ASSERT(sizeof(struct cros_perso_blob_v0) == 2036);
 /* Adding the TPM header brings the total frame size to 2048-bytes. */
 
 #define RESPONSE_OK     0x8080
@@ -166,8 +166,8 @@ void uart_hexdump(const char *label, const uint8_t *p, size_t len)
 }
 
 static int validate_cert(
-	const struct cros_perso_response_component_info_v0 *cert_info,
-	const struct cros_perso_certificate_response_v0 *cert)
+	const struct cros_perso_blob_component_info_v0 *cert_info,
+	const struct cros_perso_certificate_blob_v0 *cert)
 {
 	if (cert_info->component_type != CROS_PERSO_COMPONENT_TYPE_RSA_CERT &&
 		cert_info->component_type !=
@@ -175,7 +175,7 @@ static int validate_cert(
 		return 0;  /* Invalid component type. */
 
 	if (cert_info->component_size != sizeof(
-			struct cros_perso_certificate_response_v0))
+			struct cros_perso_certificate_blob_v0))
 		return 0;  /* Invalid component size. */
 
 	/* TODO(ngm): verify key_id against HIK/FRK0. */
@@ -188,7 +188,7 @@ static int validate_cert(
 }
 
 static int store_cert(enum cros_perso_component_type component_type,
-		const struct cros_perso_certificate_response_v0 *cert)
+		const struct cros_perso_certificate_blob_v0 *cert)
 {
 	const uint32_t ek_nv_index_0 = 0x01C00000;
 	const uint32_t ek_nv_index_1 = ek_nv_index_0 + 1;
@@ -428,7 +428,7 @@ static void perso_command_handler(void *request, size_t command_size,
 				size_t *response_size)
 {
 	uint16_t ok = RESPONSE_NOT_OK;
-	const struct cros_perso_response_v0  *perso_response = request;
+	const struct cros_perso_blob_v0  *perso_blob = request;
 	struct cros_perso_ok_response_v0 *ok_response =
 		(struct cros_perso_ok_response_v0 *) request;
 
@@ -439,12 +439,12 @@ static void perso_command_handler(void *request, size_t command_size,
 		if (tpm_manufactured())
 			break;
 
-		if (command_size != sizeof(struct cros_perso_response_v0))
+		if (command_size != sizeof(struct cros_perso_blob_v0))
 			break;
 
 		/* Write RSA / P256 endorsement certificate. */
-		if (!validate_cert(&perso_response->cert_info,
-					&perso_response->cert))
+		if (!validate_cert(&perso_blob->cert_info,
+					&perso_blob->cert))
 			break;  /* Invalid cert. */
 
 		if (!rsa_cert_done && !p256_cert_done)
@@ -452,13 +452,13 @@ static void perso_command_handler(void *request, size_t command_size,
 			if (TPM_Manufacture(1) != 0)
 				break;
 
-		if (!store_cert(perso_response->cert_info.component_type,
-					&perso_response->cert))
+		if (!store_cert(perso_blob->cert_info.component_type,
+					&perso_blob->cert))
 			break;  /* Internal failure. */
 
 		/* TODO(ngm): verify that storage succeeded. */
 
-		if (perso_response->cert_info.component_type ==
+		if (perso_blob->cert_info.component_type ==
 			CROS_PERSO_COMPONENT_TYPE_RSA_CERT)
 			rsa_cert_done = 1;
 		else
