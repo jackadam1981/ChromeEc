@@ -28,6 +28,8 @@ GPIO_INT(SERVO_UART1_OFF, PIN(1, 7),  GPIO_INT_FALLING | GPIO_PULL_DOWN,
 	device_state_off)
 GPIO_INT(SERVO_UART2_OFF, PIN(1, 8),  GPIO_INT_FALLING | GPIO_PULL_DOWN,
 	device_state_off)
+GPIO_INT(UART0_RX,        PIN(1, 9),  GPIO_INT_HIGH,
+	enable_uart0_rx)
 
 /* Pull this low to interrupt the AP */
 GPIO(INT_AP_L,        PIN(0, 0), GPIO_INPUT)
@@ -76,13 +78,10 @@ PINMUX(GPIO(BATT_PRES),       M2, 0)
 
 /* UARTs */
 PINMUX(FUNC(UART0_TX),        A0, DIO_OUTPUT)	/* Cr50 console */
+PINMUX(FUNC(UART0_RX),       A13, DIO_INPUT)
+PINMUX(GPIO(UART0_RX),       A13, DIO_INPUT)	/* Used to enable UART0 RX */
+						/* when DIOA13 is pulled up */
 /*
- * UART0_RX should only be used for debugging purposes. There is no internal
- * pull up on DIOA13, so make sure there is an external pull up. If there is
- * no external pull up cr50 will be held in UART0RX interrupts and will
- * constantly reboot.
- *   UART0_RX = DIOA13
- *
  * UART1_TX and UART2_TX are configured in usart.c. They are not set as outputs
  * here in order to avoid interfering with servo. They can be controlled using
  * the 'uart' console command.

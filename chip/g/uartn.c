@@ -5,7 +5,6 @@
 
 #include "clock.h"
 #include "common.h"
-#include "gpio.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -119,8 +118,13 @@ void uartn_enable(int uart)
 	/* Enable UART TX */
 	GR_UART_CTRL(uart) = 0x01;
 
-	/* Enable UART RX if it is connected to an external pad */
-	if (DIO_SEL_REG(GC_PINMUX_UART0_RX_SEL_OFFSET + (uart * 16)))
+	/*
+	 * DIOA13 does not have an internal pull up. If UART0 RX is enabled
+	 * without a pull up Cr50 cant boot. Only enable it when the external
+	 * pull up is detected.
+	 */
+	if (uart ||
+	    DIO_SEL_REG(GC_PINMUX_UART0_RX_SEL_OFFSET) != GC_PINMUX_DIOA13_SEL)
 		GR_UART_CTRL(uart) |= 0x02;
 }
 

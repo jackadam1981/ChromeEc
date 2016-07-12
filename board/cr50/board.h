@@ -129,6 +129,7 @@ enum usb_spi {
 void sys_rst_asserted(enum gpio_signal signal);
 void device_state_on(enum gpio_signal signal);
 void device_state_off(enum gpio_signal signal);
+void enable_uart0_rx(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 

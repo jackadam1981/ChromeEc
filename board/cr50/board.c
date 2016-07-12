@@ -204,6 +204,16 @@ int flash_regions_to_enable(struct g_flash_region *regions,
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
+/* If DIOA13 has an external pull up then UART0 RX can be enabled */
+void enable_uart0_rx(enum gpio_signal signal)
+{
+	if (!gpio_get_level(GPIO_UART0_RX))
+		return;
+
+	gpio_disable_interrupt(GPIO_UART0_RX);
+	GR_UART_CTRL(0) |= 0x02;
+}
+
 void sys_rst_asserted(enum gpio_signal signal)
 {
 	/*
