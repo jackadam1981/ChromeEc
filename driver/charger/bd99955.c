@@ -658,6 +658,14 @@ static void bd99995_init(void)
 	reg &= ~BD99955_CMD_VM_CTRL_SET_EXTIADPEN;
 	ch_raw_write16(BD99955_CMD_VM_CTRL_SET, reg,
 		       BD99955_EXTENDED_COMMAND);
+
+	/* Fast charging watchdog -> 1020 min */
+	ch_raw_write16(BD99955_CMD_CHGWDT_SET, 0x3010,
+		       BD99955_EXTENDED_COMMAND);
+
+	/* Charging stop curretn 256mA -> 0mA */
+	ch_raw_write16(BD99955_CMD_ITERM_SET, 0,
+		       BD99955_EXTENDED_COMMAND);
 }
 DECLARE_HOOK(HOOK_INIT, bd99995_init, HOOK_PRIO_INIT_EXTPOWER);
 

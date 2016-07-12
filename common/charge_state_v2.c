@@ -382,7 +382,8 @@ static int charge_request(int voltage, int current)
 		/* And handle dead battery case */
 		voltage = MAX(voltage, battery_get_info()->voltage_min);
 #else
-		voltage = current = 0;
+		voltage = 8700;
+		current = 0;
 #endif
 	}
 
@@ -412,7 +413,7 @@ static int charge_request(int voltage, int current)
 	 * Set the charge inhibit bit when possible as it appears to save
 	 * power in some cases (e.g. Nyan with BQ24735).
 	 */
-	if (voltage > 0 || current > 0)
+	if (current > 0)
 		r3 = charger_set_mode(0);
 	else
 		r3 = charger_set_mode(CHARGE_FLAG_INHIBIT_CHARGE);
