@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_3b766bf0",
+        "filename": "board/glados_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2016-07-12T03:33:45Z",
+      "side": 1,
+      "message": "Nope.  The best way to do it is to flip to the opposite state to force a disconnect:\n\n\"A port may choose not to support the ErrorRecovery state. If the ErrorRecovery state is not supported, the port shall be directed to the Disabled state if supported. If the Disabled state is not supported, the port shall be directed to either the Unattached.SNK or Unattached.SRC states.\"\n\nSo if you\u0027re in Attached.SRC and you want to force a disconnect, you would go into Unattached.SNK.\n\nIf you want to make sure *nothing* connects to you, the only option is to go into Unattached.SRC but never apply VBUS.",
+      "parentUuid": "8082ab4f_4cb6f3eb",
+      "revId": "6faf9c34e61f25aca62f864efb600e922057c2a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd43127f_92f14c06",
         "filename": "board/ryu/usb_pd_config.h",
         "patchSetId": 2
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Can I set GPIO_USBC_CC_EN to 0 ?",
       "parentUuid": "fd43127f_92f14c06",
+      "revId": "6faf9c34e61f25aca62f864efb600e922057c2a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_db70f7ed",
+        "filename": "board/ryu/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2016-07-12T03:33:45Z",
+      "side": 1,
+      "message": "Nope...that\u0027ll just enable the dead battery circuitry and present an extra Rd",
+      "parentUuid": "7db562d9_4460af8b",
       "revId": "6faf9c34e61f25aca62f864efb600e922057c2a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
