@@ -7,6 +7,5 @@
 #define __GPIO_COMMON_H
 
 #define READ_WAIT_TIME_MS 100
-#define GPIO_CTS_TEST_COUNT 7
 
 #endif
