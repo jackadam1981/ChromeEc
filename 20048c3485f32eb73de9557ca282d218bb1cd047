@@ -94,6 +94,75 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_a1c985bb",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-12T17:52:20Z",
+      "side": 1,
+      "message": "how many keys could be there in theory? is one not always enough?",
+      "range": {
+        "startLine": 59,
+        "startChar": 9,
+        "endLine": 59,
+        "endChar": 64
+      },
+      "revId": "20048c3485f32eb73de9557ca282d218bb1cd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_21bd9514",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-12T17:52:20Z",
+      "side": 1,
+      "message": "why do you care that the response if of a full frame size?\n\nalso, the calculation in line 59 does not include this field\u0027s size.",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "20048c3485f32eb73de9557ca282d218bb1cd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_8147290e",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-12T17:52:20Z",
+      "side": 1,
+      "message": "if you really want to enforce the frame size - this should be \n\n(FRAME_SIZE - header_size)\n\n\nalso, it seems to me that the check should be for \u003c\u003d .",
+      "range": {
+        "startLine": 63,
+        "startChar": 52,
+        "endLine": 63,
+        "endChar": 56
+      },
+      "revId": "20048c3485f32eb73de9557ca282d218bb1cd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1a38b3_dba8f79e",
         "filename": "board/cr50/tpm2/manufacture.c",
         "patchSetId": 10
