@@ -130,6 +130,7 @@
  * actually use the value, so we should eventually re-factor the driver to
  * be less confusing.
  */
+#if 0
 #define I2C_PORT_ACCEL			I2C_PORT_GYRO
 
 /* Sensors */
@@ -138,6 +139,7 @@
 #define   BMM150_I2C_ADDRESS BMM150_ADDR0	/* 8-bit address */
 #define   CONFIG_MAG_CALIBRATE
 #define CONFIG_ACCEL_KX022
+#endif
 #define CONFIG_ALS
 #define CONFIG_ALS_OPT3001
 #define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1

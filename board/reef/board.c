@@ -15,9 +15,11 @@
 #include "chipset.h"
 #include "console.h"
 #include "driver/als_opt3001.h"
+#if 0
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
 #include "driver/accelgyro_bmi160.h"
+#endif
 #include "driver/charger/bd99955.h"
 #include "driver/tcpm/anx74xx.h"
 #include "driver/tcpm/ps8751.h"
@@ -30,8 +32,10 @@
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "math_util.h"
+#if 0
 #include "motion_sense.h"
 #include "motion_lid.h"
+#endif
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -116,10 +120,12 @@ const struct i2c_port_t i2c_ports[]  = {
 		GPIO_EC_I2C_USB_C0_PD_SCL, GPIO_EC_I2C_USB_C0_PD_SDA},
 	{"tcpc1",     NPCX_I2C_PORT0_1, 400,
 		GPIO_EC_I2C_USB_C1_PD_SCL, GPIO_EC_I2C_USB_C1_PD_SDA},
+#if 0
 	{"gyro",      I2C_PORT_GYRO,   400,
 		GPIO_EC_I2C_GYRO_SCL,      GPIO_EC_I2C_GYRO_SDA},
 	{"sensors",   NPCX_I2C_PORT2,   400,
 		GPIO_EC_I2C_SENSOR_SCL,    GPIO_EC_I2C_SENSOR_SDA},
+#endif
 	{"batt",      NPCX_I2C_PORT3,   100,
 		GPIO_EC_I2C_POWER_SCL,     GPIO_EC_I2C_POWER_SDA},
 };
@@ -337,6 +343,7 @@ static void board_init(void)
 /* PP3300 needs to be enabled before TCPC init hooks */
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_FIRST);
 
+#if 0
 static void enable_sensor_i2c_bus(void)
 {
 	/*
@@ -350,15 +357,18 @@ static void enable_sensor_i2c_bus(void)
 	/* GPIO92-91 for EC_I2C_SENSOR_SDA/SCL */
 	gpio_set_alternate_function(GPIO_PORT_9, 0x06, 1);
 }
+#endif
 
 static void board_chipset_resume(void)
 {
+#if 0
 	static int sensor_bus_enabled;
 
 	if (!sensor_bus_enabled) {
 		enable_sensor_i2c_bus();
 		sensor_bus_enabled = 1;
 	}
+#endif
 }
 /* Pin config must happen before sensor tasks begin. */
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_FIRST);
@@ -531,6 +541,7 @@ void board_set_gpio_hibernate_state(void)
 	gpio_set_flags_by_mask(0x0, 0xE0, GPIO_INPUT | GPIO_PULL_UP);
 }
 
+#if 0
 /* Motion sensors */
 /* Mutexes */
 static struct mutex g_lid_mutex;
@@ -703,6 +714,7 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+#endif
 
 void board_hibernate(void)
 {
