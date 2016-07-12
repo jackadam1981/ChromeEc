@@ -620,6 +620,7 @@ int pd_analyze_rx(int port, uint32_t *payload)
 	bit = pd_find_preamble(port);
 	if (bit == PD_RX_ERR_HARD_RESET || bit == PD_RX_ERR_CABLE_RESET) {
 		/* Hard reset or cable reset */
+		CPRINTF("###PD_RX_ERR_HARD_RESET\n");
 		return bit;
 	} else if (bit < 0) {
 		msg = "Preamble";
@@ -751,8 +752,11 @@ static void alert(int port, int mask)
 	 * Only send interrupt to TCPM if corresponding
 	 * bit in the alert_enable register is set.
 	 */
-	if (pd[port].alert_mask & mask)
+	if (pd[port].alert_mask & mask) {
 		tcpc_alert(port);
+		
+		ccprintf("##alert :%d\n", mask);
+	}
 }
 
 int tcpc_run(int port, int evt)
