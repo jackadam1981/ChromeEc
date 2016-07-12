@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1a38b3_34d03200",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-07-12T22:05:32Z",
+      "side": 1,
+      "message": "Change the name to remove _ODL if no longer opendrain?",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 22
+      },
+      "revId": "b2acf904e0b96dcd5529bda7822e9931d2af8ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
