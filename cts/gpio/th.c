@@ -10,7 +10,6 @@
 #include "watchdog.h"
 #include "dut_common.h"
 #include "cts_common.h"
-#include "gpio_common.h"
 
 enum cts_error_code sync_test(void)
 {
@@ -71,48 +70,42 @@ enum cts_error_code od_read_high_test(void)
 	return UNKNOWN;
 }
 
+#include "cts_testlist.h"
+
 void cts_task(void)
 {
-	enum cts_error_code results[GPIO_CTS_TEST_COUNT];
+	enum cts_error_code results[CTS_TEST_ID_COUNT];
 	int i;
 
-	sync();
-	results[0] = sync_test();
-	sync();
-	results[1] = empty_test();
-	sync();
-	results[2] = dut_set_low_test();
-	sync();
-	results[3] = dut_set_high_test();
-	sync();
-	results[4] = dut_read_high_test();
-	sync();
-	results[5] = dut_read_low_test();
-	sync();
-	results[6] = od_read_high_test();
+	for (i = 0; i < CTS_TEST_ID_COUNT; i++) {
+		sync();
+		results[i] = tests[i].run();
+	}
 
 	CPRINTS("GPIO test suite finished");
 	uart_flush_output();
 	CPRINTS("Results:");
-	for (i = 0; i < GPIO_CTS_TEST_COUNT; i++) {
+	for (i = 0; i < CTS_TEST_ID_COUNT; i++) {
 		switch (results[i]) {
 		case SUCCESS:
-			CPRINTS("%d) Passed", i);
+			CPRINTS("%s) Passed", tests[i].name);
 			break;
 		case FAILURE:
-			CPRINTS("%d) Failed", i);
+			CPRINTS("%s) Failed", tests[i].name);
 			break;
 		case BAD_SYNC:
-			CPRINTS("%d) Bad sync", i);
+			CPRINTS("%s) Bad sync", tests[i].name);
 			break;
 		case UNKNOWN:
-			CPRINTS("%d) Test result unknown", i);
+			CPRINTS("%s) Test result unknown", tests[i].name);
 			break;
 		default:
-			CPRINTS("%d) ErrorCode not recognized", i);
+			CPRINTS("%s) ErrorCode (%d) not recognized",
+				tests[i].name, results[i]);
 			break;
 		}
 	}
+
 
 	while (1) {
 		watchdog_reload();
