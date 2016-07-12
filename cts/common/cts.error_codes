@@ -3,7 +3,8 @@
  * found in the LICENSE file.
  */
 
+/* UNKNOWN must be first error code defined (i.e. 0 when enumerated) */
+CTS_ERROR_CODE(UNKNOWN)
 CTS_ERROR_CODE(SUCCESS)
 CTS_ERROR_CODE(FAILURE)
 CTS_ERROR_CODE(BAD_SYNC)
-CTS_ERROR_CODE(UNKNOWN)
