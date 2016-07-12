@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1a38b3_b74f047e",
+        "filename": "board/reef/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-12T23:01:23Z",
+      "side": 1,
+      "message": "proto",
+      "range": {
+        "startLine": 284,
+        "startChar": 43,
+        "endLine": 284,
+        "endChar": 53
+      },
+      "revId": "33ae4d4225058dbd6a3da3bcb1dffb3e503dca4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_776c6cf0",
+        "filename": "board/reef/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-12T23:01:23Z",
+      "side": 1,
+      "message": "These comments are referring to proto, correct?",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 33
+      },
+      "revId": "33ae4d4225058dbd6a3da3bcb1dffb3e503dca4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_f77fbc8c",
+        "filename": "board/reef/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-12T23:01:23Z",
+      "side": 1,
+      "message": "We don\u0027t enable the charger interrupt on the \u003c EVT boards?",
+      "revId": "33ae4d4225058dbd6a3da3bcb1dffb3e503dca4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
