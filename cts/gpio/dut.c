@@ -83,6 +83,7 @@ void cts_task(void)
 	enum cts_rc result;
 	int i;
 
+	uart_flush_output();
 	for (i = 0; i < CTS_TEST_ID_COUNT; i++) {
 		sync();
 		result = tests[i].run();
