@@ -70,6 +70,30 @@
       "revId": "c013a1e46b8f37300b350a1ddf317940ef1a53bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_d78a80da",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-12T22:56:11Z",
+      "side": 1,
+      "message": "I meant to respond to this earlier, but I guess I forgot. The TI pmic doesn\u0027t observe 3.3 at all from what I can tell.",
+      "parentUuid": "3af21056_efebcda9",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 3
+      },
+      "revId": "c013a1e46b8f37300b350a1ddf317940ef1a53bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
