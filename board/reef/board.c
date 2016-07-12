@@ -152,9 +152,17 @@ uint16_t tcpc_get_alert_status(void)
 	uint16_t status = 0;
 
 	if (gpio_get_level(GPIO_USB_C0_PD_INT))
-		status |= PD_STATUS_TCPC_ALERT_0;
-	if (!gpio_get_level(GPIO_USB_C1_PD_INT_ODL))
-		status |= PD_STATUS_TCPC_ALERT_1;
+		if (gpio_get_level(GPIO_USB_C0_PD_RST_ODL))
+			status |= PD_STATUS_TCPC_ALERT_0;
+
+	if (!gpio_get_level(GPIO_USB_C1_PD_INT_ODL)) {
+		if (board_version >= BOARD_VERSION_2) {
+			if (gpio_get_level(GPIO_USB_C1_PD_RST_ODL))
+				status |= PD_STATUS_TCPC_ALERT_1;
+		} else {
+			status |= PD_STATUS_TCPC_ALERT_1;
+		}
+	}
 
 	return status;
 }
@@ -354,8 +362,6 @@ static void board_init_rev1(void)
 	gpio_set_level(GPIO_EN_PP3300, 1);
 	while (!gpio_get_level(GPIO_PP3300_PG))
 		;
-
-	board_reset_pd_mcu();
 }
 
 /* Initialize board. */
