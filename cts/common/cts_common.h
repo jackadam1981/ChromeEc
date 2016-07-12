@@ -22,7 +22,7 @@
 #define CTS_ERROR_CODE(code) CTS_RC_##code,
 
 enum cts_error_code {
-	#include "cts_error_codes.h"
+	#include "cts.error_codes"
 };
 
 void cts_task(void);

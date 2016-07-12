@@ -16,11 +16,6 @@ enum cts_error_code sync_test(void)
 	return CTS_RC_SUCCESS;
 }
 
-enum cts_error_code empty_test(void)
-{
-	return CTS_RC_SUCCESS;
-}
-
 enum cts_error_code set_high_test(void)
 {
 	gpio_set_flags(GPIO_OUTPUT_TEST, GPIO_ODR_LOW);
@@ -83,6 +78,7 @@ void cts_task(void)
 	enum cts_error_code result;
 	int i;
 
+	uart_flush_output();
 	for (i = 0; i < CTS_TEST_ID_COUNT; i++) {
 		sync();
 		result = tests[i].run();
