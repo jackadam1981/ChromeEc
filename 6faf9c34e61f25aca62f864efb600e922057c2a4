@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_0dd37236",
+        "filename": "board/glados_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1146300
+      },
+      "writtenOn": "2016-07-12T14:32:15Z",
+      "side": 1,
+      "message": "Would be nice if that worked, but several of the adapters I tested simply won\u0027t reconnect unless they get a complete disconnect after a protocol error. Such error states are easy to trigger, for example by resetting the protocol engine (or rebooting the system) in a connected state. Disconnecting power doesn\u0027t help if power is applied from the other end.\nThe only alternative is to physically disconnect the adapters in such cases.",
+      "parentUuid": "fa1a38b3_3b766bf0",
+      "revId": "6faf9c34e61f25aca62f864efb600e922057c2a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd43127f_92f14c06",
         "filename": "board/ryu/usb_pd_config.h",
         "patchSetId": 2
