@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1a38b3_9efbfc7d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-07-13T18:09:30Z",
+      "side": 1,
+      "message": "these can be part of command_accel_read_xyz() \u0026 command_accel_init().\nwe can check for sensor type and add required print msg",
+      "revId": "c63969a78d42afda16728d76ed30fbc2ff8780d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
