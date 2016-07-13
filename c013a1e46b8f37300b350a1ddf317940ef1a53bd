@@ -94,6 +94,30 @@
       "revId": "c013a1e46b8f37300b350a1ddf317940ef1a53bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_a84fa17d",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-07-13T01:12:36Z",
+      "side": 1,
+      "message": "Agree, I did some experiment today and just by toggling 3.3V will not cause PMIC to fault/reset without either the HW rework or the CL workaround.",
+      "parentUuid": "fa1a38b3_d78a80da",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 3
+      },
+      "revId": "c013a1e46b8f37300b350a1ddf317940ef1a53bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
