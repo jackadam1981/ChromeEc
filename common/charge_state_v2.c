@@ -10,6 +10,9 @@
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "charger.h"
+#ifdef CONFIG_CHARGER_BD99955
+#include "driver/charger/bd99955.h"
+#endif /* defined(CONFIG_CHARGER_BD99955) */
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -660,6 +663,14 @@ void charger_task(void)
 			batt_info = battery_get_info();
 			need_static = 1;
 
+#ifdef CONFIG_CHARGER_BD99955
+			/*
+			 * Need to update VSYSREG settings since the battery has
+			 * changed in presence.
+			 */
+			hook_call_deferred(&bd99955_update_vsysreg_data, 0);
+#endif /* defined(CONFIG_CHARGER_BD99955) */
+
 			curr.desired_input_current =
 				get_desired_input_current(prev_bp, info);
 			charger_set_input_current(curr.desired_input_current);
@@ -842,6 +853,11 @@ wait_for_it:
 		if ((!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
 		    curr.batt.state_of_charge != prev_charge) ||
 		    (is_full != prev_full)) {
+#ifdef CONFIG_CHARGER_BD99955
+			if (is_full != prev_full)
+				hook_call_deferred(&bd99955_update_vsysreg_data,
+						   0);
+#endif /* defined(CONFIG_CHARGER_BD99955) */
 			show_charging_progress();
 			prev_charge = curr.batt.state_of_charge;
 			hook_notify(HOOK_BATTERY_SOC_CHANGE);
