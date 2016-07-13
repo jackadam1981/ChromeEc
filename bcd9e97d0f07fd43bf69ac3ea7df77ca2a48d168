@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_9d5149fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-07-13T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa1a38b3_3db135a1",
+      "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1a38b3_dd4f41aa",
         "filename": "board/cr50/tpm2/manufacture.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2016-07-13T00:12:15Z",
       "side": 1,
       "message": "who uses this on the server side?",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_dd32a1dd",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-07-13T00:41:21Z",
+      "side": 1,
+      "message": "In theory cros_ack should check.",
+      "parentUuid": "fa1a38b3_dd4f41aa",
       "range": {
         "startLine": 46,
         "startChar": 8,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_7d6bada0",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-07-13T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa1a38b3_1d9b997c",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1a38b3_dd1d81ba",
         "filename": "board/cr50/tpm2/manufacture.c",
         "patchSetId": 2
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_bdc9a5bb",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-07-13T00:41:21Z",
+      "side": 1,
+      "message": "These macros are magic.",
+      "parentUuid": "fa1a38b3_dd1d81ba",
+      "range": {
+        "startLine": 171,
+        "startChar": 7,
+        "endLine": 171,
+        "endChar": 14
+      },
+      "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1a38b3_bd8085df",
         "filename": "board/cr50/tpm2/manufacture.c",
         "patchSetId": 2
@@ -99,6 +189,24 @@
       "writtenOn": "2016-07-13T00:12:15Z",
       "side": 1,
       "message": "you\u0027re considering the FPGA option here, but not in the function below. It is either not needed here, or is needed to be added in the other function.",
+      "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_fdc2fd93",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-07-13T00:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa1a38b3_bd8085df",
       "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
