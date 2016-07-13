@@ -387,6 +387,18 @@ static int charge_request(int voltage, int current)
 	}
 
 	if (curr.ac) {
+#ifdef BOARD_KEVIN
+		/*
+		 * HACK: TODO(aaboagye): Remove this once we've figured out the
+		 * discharge issue.
+		 */
+		/*
+		 * If the battery is full, request the max voltage.  Bit 5
+		 * indicates full.
+		 */
+		if (curr.batt.status & (1 << 5))
+			voltage = 8688;
+#endif /* BOARD_KEVIN */
 		if (prev_volt != voltage || prev_curr != current)
 			CPRINTS("%s(%dmV, %dmA)", __func__, voltage, current);
 	}
