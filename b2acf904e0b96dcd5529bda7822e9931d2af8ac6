@@ -46,6 +46,30 @@
       "revId": "b2acf904e0b96dcd5529bda7822e9931d2af8ac6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_837ba6a2",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-07-13T04:46:23Z",
+      "side": 1,
+      "message": "OK if format for reef is to use net name.\n\nJust my opinion, other than have *_L to indicate active low, I will prefer a generic name and add comment with net name. Simplify board port and compare, and type less when using gpioget/set if a shorter/easier name.",
+      "parentUuid": "fa1a38b3_97f00869",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 22
+      },
+      "revId": "b2acf904e0b96dcd5529bda7822e9931d2af8ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
