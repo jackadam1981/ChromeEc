@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1a38b3_3db135a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-13T00:12:15Z",
+      "side": 1,
+      "message": "does cert installation still work?",
+      "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_dd4f41aa",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-13T00:12:15Z",
+      "side": 1,
+      "message": "who uses this on the server side?",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_1d9b997c",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-13T00:12:15Z",
+      "side": 1,
+      "message": "not used anywhere",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_dd1d81ba",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-13T00:12:15Z",
+      "side": 1,
+      "message": "use GREAD_FIELD(PMU, CHIPD_ID, REVISON) instead, no need shifting either.\n\nswithc (GREAD_FIELD(PMU, CHIPD_ID, REVISON)) {\n  case 3:\n...\n}",
+      "range": {
+        "startLine": 171,
+        "startChar": 7,
+        "endLine": 171,
+        "endChar": 14
+      },
+      "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_bd8085df",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-13T00:12:15Z",
+      "side": 1,
+      "message": "you\u0027re considering the FPGA option here, but not in the function below. It is either not needed here, or is needed to be added in the other function.",
+      "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_7d9a8d2f",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-13T00:12:15Z",
+      "side": 1,
+      "message": "this function reads 8 register spaces, but only first two of them are used - why not limit it to the two registers, and read them into a byte array to avoid typecast in the calling function?",
+      "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_dd8aa1da",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-13T00:12:15Z",
+      "side": 1,
+      "message": "this seems redundant: hw cat is included explicitly and implicitly as the magic value. Just a thought.",
+      "range": {
+        "startLine": 477,
+        "startChar": 37,
+        "endLine": 477,
+        "endChar": 43
+      },
+      "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
