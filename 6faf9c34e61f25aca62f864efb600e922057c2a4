@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_c07629bd",
+        "filename": "board/glados_pd/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2016-07-13T23:52:17Z",
+      "side": 1,
+      "message": "Swapping to an Rp isn\u0027t sufficient?  Unfortunately, there\u0027s not much we can do on these gen-1 systems if that\u0027s the case.",
+      "parentUuid": "fa1a38b3_0dd37236",
+      "revId": "6faf9c34e61f25aca62f864efb600e922057c2a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd43127f_92f14c06",
         "filename": "board/ryu/usb_pd_config.h",
         "patchSetId": 2
