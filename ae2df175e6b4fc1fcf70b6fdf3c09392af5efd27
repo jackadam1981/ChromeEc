@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1a38b3_09e6b7e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-13T15:58:55Z",
+      "side": 1,
+      "message": "Does your commit message need modifying?\n\nBased off of the description here and the changes, I\u0027m a bit confused about how this is disabling uart 1 and 2. I\u0027m assuming that the AP and EC UARTs are enabled elsewhere?",
+      "revId": "ae2df175e6b4fc1fcf70b6fdf3c09392af5efd27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
