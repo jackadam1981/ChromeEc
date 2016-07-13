@@ -8,8 +8,12 @@
 #ifndef __CROS_EC_BD99955_H
 #define __CROS_EC_BD99955_H
 
+#include "hooks.h"
+
 #define BD99955_ADDR		0x12 /* 7bit address 0001_001 */
 #define I2C_ADDR_CHARGER	BD99955_ADDR
+
+extern const struct deferred_data bd99955_update_vsysreg_data;
 
 /* BD99955 commands to change the command code map */
 enum bd99955_command {
