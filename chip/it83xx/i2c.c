@@ -185,6 +185,7 @@ const struct i2c_ctrl_t i2c_ctrl_regs[] = {
 enum i2c_ch_status {
 	I2C_CH_NORMAL = 0,
 	I2C_CH_W2R,
+	I2C_CH_W2W,
 	I2C_CH_WAIT_READ,
 	I2C_CH_DIRECT_W2R = 4,
 };
@@ -401,6 +402,10 @@ static int i2c_tran_write(int p)
 				pd->widx++;
 				/* W/C byte done for next byte */
 				IT83XX_SMB_HOSTA(p) = HOSTA_NEXT_BYTE;
+				if (pd->i2ccs == I2C_CH_W2W) {
+					pd->i2ccs = I2C_CH_NORMAL;
+					task_enable_irq(i2c_ctrl_regs[p].irq);
+				}
 			} else {
 				/* done */
 				pd->out_size = 0;
@@ -415,7 +420,7 @@ static int i2c_tran_write(int p)
 						IT83XX_SMB_HOSTA(p) =
 							HOSTA_NEXT_BYTE;
 					} else {
-						pd->i2ccs = I2C_CH_W2R;
+						pd->i2ccs = I2C_CH_W2W;
 						return 0;
 					}
 				}
@@ -719,6 +724,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 		return EC_SUCCESS;
 
 	if ((pd->i2ccs == I2C_CH_W2R) ||
+		(pd->i2ccs == I2C_CH_W2W) ||
 		(pd->i2ccs == I2C_CH_WAIT_READ) ||
 		(pd->i2ccs & I2C_CH_DIRECT_W2R)) {
 		if ((flags & I2C_XFER_SINGLE) == I2C_XFER_SINGLE)
