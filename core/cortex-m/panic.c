@@ -14,6 +14,7 @@
 #include "timer.h"
 #include "util.h"
 #include "watchdog.h"
+#include "registers.h"
 
 /* Whether bus fault is ignored */
 static int bus_fault_ignored;
@@ -61,6 +62,11 @@ static void print_reg(int regnum, const uint32_t *regs, int index)
 	else
 		panic_puts("        ");
 	panic_puts((regnum & 3) == 3 ? "\n" : " ");
+
+	if (regnum == 14)
+		GREG32(PMU, PWRDN_SCRATCH20) = regs[index];
+	else if (regnum == 15)
+		GREG32(PMU, PWRDN_SCRATCH21) = regs[index];
 }
 
 /*

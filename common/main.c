@@ -27,6 +27,7 @@
 #include "uart.h"
 #include "util.h"
 #include "watchdog.h"
+#include "registers.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
@@ -124,6 +125,13 @@ test_mockable __keep int main(void)
 		CPRINTS("UART initialized after sysjump");
 	} else {
 		CPUTS("\n\n--- UART initialized after reboot ---\n");
+
+		ccprintf("Last LR %08x last PC %08x\n",
+			 GREG32(PMU, PWRDN_SCRATCH20),
+			 GREG32(PMU, PWRDN_SCRATCH21));
+		GREG32(PMU, PWRDN_SCRATCH20) = 0;
+		GREG32(PMU, PWRDN_SCRATCH21) = 0;
+
 		CPUTS("[Reset cause: ");
 		system_print_reset_flags();
 		CPUTS("]\n");
