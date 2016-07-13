@@ -122,6 +122,24 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_bd4245fd",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-13T00:37:06Z",
+      "side": 1,
+      "message": "RWR is a 8 word construct; this function just fetches it.\nThere\u0027s no point in optimizing this routine here.\n\nAlso, word 0,1 and 7 are referenced below.",
+      "parentUuid": "fa1a38b3_7d9a8d2f",
+      "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1a38b3_dd8aa1da",
         "filename": "board/cr50/tpm2/manufacture.c",
         "patchSetId": 2
@@ -133,6 +151,30 @@
       "writtenOn": "2016-07-13T00:12:15Z",
       "side": 1,
       "message": "this seems redundant: hw cat is included explicitly and implicitly as the magic value. Just a thought.",
+      "range": {
+        "startLine": 477,
+        "startChar": 37,
+        "endLine": 477,
+        "endChar": 43
+      },
+      "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_5d66b1a9",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-13T00:37:06Z",
+      "side": 1,
+      "message": "ack, but this is how the *_personalize pieces of code make up filenames.\nThis function tells the tester/host what certificate filename to look for..\n\nThere\u0027s no freedom of choice at this point for this.",
+      "parentUuid": "fa1a38b3_dd8aa1da",
       "range": {
         "startLine": 477,
         "startChar": 37,
