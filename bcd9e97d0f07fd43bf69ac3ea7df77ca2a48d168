@@ -292,6 +292,30 @@
       "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_08cd1569",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-13T00:54:26Z",
+      "side": 1,
+      "message": "yes, it\u0027s just odd that the filename needs to be created on this side - why don\u0027t you guys send the server the pieces and have it compile the file name out of them.",
+      "parentUuid": "fa1a38b3_5d66b1a9",
+      "range": {
+        "startLine": 477,
+        "startChar": 37,
+        "endLine": 477,
+        "endChar": 43
+      },
+      "revId": "bcd9e97d0f07fd43bf69ac3ea7df77ca2a48d168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
