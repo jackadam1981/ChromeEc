@@ -8,8 +8,12 @@
 #ifndef __CROS_EC_BD99955_H
 #define __CROS_EC_BD99955_H
 
+#include "hooks.h"
+
 #define BD99955_ADDR		0x12 /* 7bit address 0001_001 */
 #define I2C_ADDR_CHARGER	BD99955_ADDR
+
+extern const struct deferred_data bd99955_update_vsysreg_data;
 
 /* BD99955 commands to change the command code map */
 enum bd99955_command {
@@ -38,6 +42,9 @@ enum bd99955_charge_port {
 #define INPUT_I_MAX	16352
 #define INPUT_I_MIN	512
 #define INPUT_I_STEP	32
+
+#define BAT_NOT_PRES_VSYSREG	8960
+#define BAT_PRES_VSYSREG	6144
 
 /* Battery Charger Commands */
 #define BD99955_CMD_CHG_CURRENT		0x14

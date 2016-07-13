@@ -9,6 +9,7 @@
 #include "battery_smart.h"
 #include "bd99955.h"
 #include "charge_manager.h"
+#include "charge_state.h"
 #include "charger.h"
 #include "console.h"
 #include "ec_commands.h"
@@ -16,6 +17,7 @@
 #include "i2c.h"
 #include "task.h"
 #include "time.h"
+#include "timer.h"
 #include "util.h"
 #include "usb_charge.h"
 #include "usb_pd.h"
@@ -548,6 +550,18 @@ int charger_set_mode(int mode)
 {
 	int rv;
 
+	if (!(mode & CHARGE_FLAG_INHIBIT_CHARGE)) {
+		/*
+		 * Set fast charge voltage before enabling charging.  The fast
+		 * charge voltage is the maximum voltage of the battery.
+		 */
+		rv = ch_raw_write16(BD99955_CMD_VFASTCHG_REG_SET1,
+				    battery_get_info()->voltage_max,
+				    BD99955_EXTENDED_COMMAND);
+		if (rv)
+			return rv;
+	}
+
 	rv = bd99955_charger_enable(mode & CHARGE_FLAG_INHIBIT_CHARGE ? 0 : 1);
 	if (rv)
 		return rv;
@@ -668,6 +682,52 @@ static void bd99995_init(void)
 		       BD99955_EXTENDED_COMMAND);
 }
 DECLARE_HOOK(HOOK_INIT, bd99995_init, HOOK_PRIO_INIT_EXTPOWER);
+
+/* The battery has just changed in presence.  Update voltages. */
+static void bd99955_update_vsysreg(void)
+{
+	struct batt_params p;
+	int rv;
+
+	battery_get_params(&p);
+	if (!p.is_present || 100 == charge_get_percent()) {
+		if (!p.is_present)
+			CPRINTS("Batt is NOT present!");
+		CPRINTS("Updating VSYSREG_SET!");
+		/* Set VSYSREG_SET. */
+		rv = ch_raw_write16(BD99955_CMD_VSYSREG_SETa,
+				    BAT_NOT_PRES_VSYSREG,
+				    BD99955_EXTENDED_COMMAND);
+		if (rv) {
+			CPRINTS("Error setting VSYSREG_SET!");
+			return;
+		}
+		/* Wait 50ms. */
+		msleep(50);
+		/* Turn off charging. */
+		CPRINTS("Disabling charging!");
+		charger_set_mode(CHARGE_FLAG_INHIBIT_CHARGE);
+	} else if (p.is_present) {
+		CPRINTS("Batt is present!");
+		/*
+		 * Enable charging.  Fast charging voltage will be set before
+		 * enabling charging.
+		 */
+		CPRINTS("Enabling charging!");
+		charger_set_mode(0);
+
+		/* Set VSYSREG_SET */
+		CPRINTS("Enabling VSYSREG_SET");
+		rv = ch_raw_write16(BD99955_CMD_VSYSREG_SETa,
+				    BAT_PRES_VSYSREG,
+				    BD99955_EXTENDED_COMMAND);
+		if (rv) {
+			CPRINTS("Error setting VSYSREG_SET!");
+			return;
+		}
+	}
+}
+DECLARE_DEFERRED(bd99955_update_vsysreg);
 
 int charger_post_init(void)
 {
