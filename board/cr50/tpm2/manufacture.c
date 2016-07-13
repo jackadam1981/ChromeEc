@@ -383,8 +383,7 @@ static int decrypt_and_copy_eps(void)
 	if (!compute_frk2(frk2))
 		return 0;
 
-	for (i = 0; i < INFO1_EPS_SIZE / sizeof(uint32_t);
-	     i += sizeof(uint32_t)) {
+	for (i = 0; i < INFO1_EPS_SIZE / sizeof(uint32_t); i++) {
 		uint32_t word;
 
 		if (flash_physical_info_read_word(
