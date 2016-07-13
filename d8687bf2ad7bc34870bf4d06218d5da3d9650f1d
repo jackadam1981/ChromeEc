@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1a38b3_88faa575",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-13T00:54:26Z",
+      "side": 1,
+      "message": "this and the above functions should be combined - no one cares about the hw_cat value, right?",
+      "revId": "d8687bf2ad7bc34870bf4d06218d5da3d9650f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
