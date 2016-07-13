@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1a38b3_4800ad67",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-07-13T00:54:18Z",
+      "side": 0,
+      "message": "After removing the code that was testing for UARTN in uartn_init(), I don\u0027t think you need to change the location of these defines to the .h file any longer.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 6
+      },
+      "revId": "9146e44c7d14ce73061b949373b4787483c39ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
