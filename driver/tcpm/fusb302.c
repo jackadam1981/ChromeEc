@@ -17,6 +17,8 @@
 #include "usb_pd_tcpc.h"
 #include "util.h"
 
+#undef AUTO_TOGGLE_ENABLED
+
 static struct fusb302_chip_state {
 	int cc_polarity;
 	int vconn_enabled;
@@ -95,6 +97,7 @@ static int convert_bc_lvl(int port, int bc_lvl)
 	return ret;
 }
 
+#ifdef AUTO_TOGGLE_ENABLED
 /* Determine cc pin state for source */
 static void detect_cc_pin_source(int port, int *cc1_lvl, int *cc2_lvl)
 {
@@ -193,6 +196,7 @@ static void detect_cc_pin_source(int port, int *cc1_lvl, int *cc2_lvl)
 		}
 	}
 }
+#endif
 
 /* Determine cc pin state for sink */
 static void detect_cc_pin_sink(int port, int *cc1, int *cc2)
@@ -382,8 +386,13 @@ static int fusb302_tcpm_init(int port)
 	tcpc_write(port, TCPC_REG_MASK, reg);
 
 	reg = 0xFF;
+#ifdef AUTO_TOGGLE_ENABLED
 	/* informs of attaches */
 	reg &= ~TCPC_REG_MASKA_TOGDONE;
+#else
+	/* Don't enable toggle done interrupt */
+	reg |= TCPC_REG_MASKA_TOGDONE;
+#endif
 	/* when all pd message retries fail... */
 	reg &= ~TCPC_REG_MASKA_RETRYFAIL;
 	/* when fusb302 send a hard reset. */
@@ -417,6 +426,7 @@ static int fusb302_tcpm_init(int port)
 
 static int fusb302_tcpm_get_cc(int port, int *cc1, int *cc2)
 {
+#ifdef AUTO_TOGGLE_ENABLED
 	/*
 	 * can't measure while doing DFP toggling -
 	 * FUSB302 takes control of the switches.
@@ -437,6 +447,9 @@ static int fusb302_tcpm_get_cc(int port, int *cc1, int *cc2)
 		/* Sink mode? */
 		detect_cc_pin_sink(port, cc1, cc2);
 	}
+#else
+	detect_cc_pin_sink(port, cc1, cc2);
+#endif
 
 	return 0;
 }
@@ -459,7 +472,7 @@ static int fusb302_tcpm_set_cc(int port, int pull)
 	/* NOTE: FUSB302 Does not support Ra. */
 	switch (pull) {
 	case TYPEC_CC_RP:
-
+#ifdef AUTO_TOGGLE_ENABLED
 		/* if fusb302 hasn't figured anything out yet */
 		if (!state[port].togdone_pullup_cc1 &&
 		    !state[port].togdone_pullup_cc2) {
@@ -500,6 +513,30 @@ static int fusb302_tcpm_set_cc(int port, int pull)
 			state[port].pulling_up = 1;
 			state[port].dfp_toggling_on = 0;
 		}
+#else
+		/* enable the pull-up we know to be necessary */
+		tcpc_read(port, TCPC_REG_SWITCHES0, &reg);
+
+		reg &= ~(TCPC_REG_SWITCHES0_CC2_PU_EN);
+		reg &= ~(TCPC_REG_SWITCHES0_CC1_PU_EN);
+		reg &= ~TCPC_REG_SWITCHES0_CC1_PD_EN;
+		reg &= ~TCPC_REG_SWITCHES0_CC2_PD_EN;
+
+		if (state[port].device_id == FUSB302_DEVID_302A) {
+			if (state[port].togdone_pullup_cc1)
+				reg |= TCPC_REG_SWITCHES0_CC1_PU_EN;
+			else
+				reg |= TCPC_REG_SWITCHES0_CC2_PU_EN;
+		} else {
+			reg |= TCPC_REG_SWITCHES0_CC1_PU_EN |
+				TCPC_REG_SWITCHES0_CC2_PU_EN;
+		}
+
+			tcpc_write(port, TCPC_REG_SWITCHES0, reg);
+
+			state[port].pulling_up = 1;
+			state[port].dfp_toggling_on = 0;
+#endif
 
 		break;
 	case TYPEC_CC_RD:
