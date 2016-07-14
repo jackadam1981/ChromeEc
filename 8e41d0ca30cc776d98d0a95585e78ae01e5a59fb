@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_908be085",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-14T05:05:20Z",
+      "side": 1,
+      "message": "I\u0027ll just change to CONFIG_CHARGER_BD99955 for now.",
+      "parentUuid": "1af38ceb_d5c7ec06",
+      "range": {
+        "startLine": 418,
+        "startChar": 7,
+        "endLine": 418,
+        "endChar": 32
+      },
+      "revId": "8e41d0ca30cc776d98d0a95585e78ae01e5a59fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1af38ceb_558bfcdf",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 5
@@ -82,6 +106,30 @@
       "writtenOn": "2016-07-14T05:03:45Z",
       "side": 1,
       "message": "can be merged above else{}",
+      "range": {
+        "startLine": 571,
+        "startChar": 5,
+        "endLine": 571,
+        "endChar": 41
+      },
+      "revId": "8e41d0ca30cc776d98d0a95585e78ae01e5a59fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_b0eb7c16",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-14T05:05:20Z",
+      "side": 1,
+      "message": "I meant to remove this.",
+      "parentUuid": "1af38ceb_f5c2f0f8",
       "range": {
         "startLine": 571,
         "startChar": 5,
