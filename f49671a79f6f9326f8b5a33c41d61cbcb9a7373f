@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_1081b0e2",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-14T03:23:43Z",
+      "side": 1,
+      "message": "Ah, this I wasn\u0027t sure about. So these values will be the same regardless of the battery chosen?\n\nI was wondering about in the future if someone else wanted to use the bd999955 charger but perhaps with different battery/usage requirements.",
+      "parentUuid": "1af38ceb_354d18b2",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 33
+      },
+      "revId": "f49671a79f6f9326f8b5a33c41d61cbcb9a7373f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1af38ceb_d5cc8c44",
         "filename": "board/kevin/board.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-14T03:20:24Z",
       "side": 1,
       "message": "this comes from battery query, we can use voltage_max of battery info or curr-\u003erequested current",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "f49671a79f6f9326f8b5a33c41d61cbcb9a7373f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_f085f4ee",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-14T03:23:43Z",
+      "side": 1,
+      "message": "If fastcharge voltage is the max voltage of the battery, I\u0027ll get it through battery  info then.",
+      "parentUuid": "1af38ceb_d5cc8c44",
       "range": {
         "startLine": 57,
         "startChar": 0,
