@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_d1d6a4cf",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-14T21:54:28Z",
+      "side": 1,
+      "message": "Instead of hardcoding the offset, just search within the cert-\u003ecert[] for N\n\nSimple for loop will do.\nThen we\u0027re more independent from cert layout changes as done by server-side, whilst still very reliably checking that it\u0027s our cert.",
+      "revId": "ec1671328e3a48d21a77da849bf9bce0b694e28a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
