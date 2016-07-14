@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1a38b3_90592016",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-14T04:53:45Z",
+      "side": 1,
+      "message": "I don\u0027t understand this - why would the verification step be not necessary in the future?\n\nHow long does verification step take? Factory flow is very sensitive to time.",
+      "range": {
+        "startLine": 14,
+        "startChar": 38,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "60884100de07b6b9199e9c8c216541f092e3e7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_b099bcea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-14T04:53:45Z",
+      "side": 1,
+      "message": "please add this to the BUG\u003d clause so that this patch is automatically linked to this bug.",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "60884100de07b6b9199e9c8c216541f092e3e7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
