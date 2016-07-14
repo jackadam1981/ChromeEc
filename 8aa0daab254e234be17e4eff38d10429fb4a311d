@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1af38ceb_75328001",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-07-14T07:11:17Z",
+      "side": 1,
+      "message": "Sorry just found rv is not initialize so it should be \u003d",
+      "range": {
+        "startLine": 561,
+        "startChar": 2,
+        "endLine": 561,
+        "endChar": 6
+      },
+      "revId": "8aa0daab254e234be17e4eff38d10429fb4a311d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af38ceb_552f7c97",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-07-14T07:11:17Z",
+      "side": 1,
+      "message": "here also",
+      "range": {
+        "startLine": 565,
+        "startChar": 5,
+        "endLine": 565,
+        "endChar": 7
+      },
+      "revId": "8aa0daab254e234be17e4eff38d10429fb4a311d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
