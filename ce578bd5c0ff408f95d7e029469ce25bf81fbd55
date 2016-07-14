@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1af38ceb_957a849e",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-07-14T05:52:00Z",
+      "side": 1,
+      "message": "I just have guide. We need sequence and some tolerence like\nrv |\u003d bd99955_charger_enable(1);\nmsleep(1);\nrv |\u003d bd99955_set_vsysreg(CHARGE_VSYSREG);",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 34
+      },
+      "revId": "ce578bd5c0ff408f95d7e029469ce25bf81fbd55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
