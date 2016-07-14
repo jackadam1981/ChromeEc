@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1a38b3_19927b6d",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-14T18:34:04Z",
+      "side": 1,
+      "message": "Still super skeptical about this half length stuff..\n\nThe code could likely be way simpler with doing actual two\u0027s complement in RSA_MAX_WORDS+1 across the board and use plain add and sub. Thus top bit is sign bit etc.\n\nThey won\u0027t go out of range and add and sub for unsigned vs. signed is literally just the same code.\n\nNo tricky tracking of signs and carries etc..",
+      "revId": "74c705cdcb733bfc2bc21be6da9174a2d5a002bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
