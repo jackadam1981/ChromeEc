@@ -16,6 +16,24 @@
       "revId": "59dbffee5d00e65c901ef1f51b00db58505bba74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_7960cfe5",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-14T18:11:11Z",
+      "side": 1,
+      "message": "The bulk of the code is normal C code.\nCan run both on target and host\nTesting on host against known good implementations is sorely needed.\n\nAnd you also want to option to use just C code on target, so __arm__ is the wrong switch.",
+      "parentUuid": "fa1a38b3_73246ea2",
+      "revId": "59dbffee5d00e65c901ef1f51b00db58505bba74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
