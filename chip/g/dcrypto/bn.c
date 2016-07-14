@@ -340,6 +340,7 @@ void bn_mont_modexp(struct LITE_BIGNUM *output, const struct LITE_BIGNUM *input,
 	struct LITE_BIGNUM acc;
 	struct LITE_BIGNUM aR;
 
+#ifndef CR50_NO_BN_ASM
 	if (bn_bits(N) == 2048 || bn_bits(N) == 1024) {
 		/* TODO(ngm): add hardware support for standard key sizes. */
 		bn_mont_modexp_asm(output, input, exp, N);
@@ -349,6 +350,7 @@ void bn_mont_modexp(struct LITE_BIGNUM *output, const struct LITE_BIGNUM *input,
 			bn_add(output, N);
 		return;
 	}
+#endif
 
 	bn_init(&RR, RR_buf, bn_size(N));
 	bn_init(&acc, acc_buf, bn_size(N));
