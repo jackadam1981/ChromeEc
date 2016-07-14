@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1af38ceb_528e7298",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-07-14T02:21:56Z",
+      "side": 1,
+      "message": "spi_enabled is only modified in this function ( spi_master_initialize()/spi_master_shutdown() below) so I think we don\u0027t need to protect that check, right?",
+      "parentUuid": "1af38ceb_b276be73",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 30
+      },
+      "revId": "47e221c43125ece8b58544964b2774772e300fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1af38ceb_52a55216",
         "filename": "common/motion_sense.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-13T07:25:21Z",
       "side": 1,
       "message": "int8_t",
+      "range": {
+        "startLine": 62,
+        "startChar": 7,
+        "endLine": 62,
+        "endChar": 10
+      },
+      "revId": "47e221c43125ece8b58544964b2774772e300fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af38ceb_752160f4",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-07-14T02:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af38ceb_52a55216",
       "range": {
         "startLine": 62,
         "startChar": 7,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1af38ceb_551e5cb6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-07-14T02:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af38ceb_f29326ca",
+      "range": {
+        "startLine": 669,
+        "startChar": 39,
+        "endLine": 669,
+        "endChar": 45
+      },
+      "revId": "47e221c43125ece8b58544964b2774772e300fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1af38ceb_d29822e7",
         "filename": "common/motion_sense.c",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2016-07-13T07:25:21Z",
       "side": 1,
       "message": "longer",
+      "range": {
+        "startLine": 672,
+        "startChar": 36,
+        "endLine": 672,
+        "endChar": 42
+      },
+      "revId": "47e221c43125ece8b58544964b2774772e300fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af38ceb_351bd8c6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-07-14T02:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af38ceb_d29822e7",
       "range": {
         "startLine": 672,
         "startChar": 36,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1af38ceb_1518d4c5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-07-14T02:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af38ceb_b29d9ed5",
+      "range": {
+        "startLine": 678,
+        "startChar": 2,
+        "endLine": 678,
+        "endChar": 24
+      },
+      "revId": "47e221c43125ece8b58544964b2774772e300fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1af38ceb_32b2ce5e",
         "filename": "common/motion_sense.c",
         "patchSetId": 5
@@ -128,6 +248,30 @@
       "writtenOn": "2016-07-13T07:25:21Z",
       "side": 1,
       "message": "CONFIG_CMD_ACCEL_KX022_RESET. Add it in config.h and make it undef by default.",
+      "range": {
+        "startLine": 1591,
+        "startChar": 7,
+        "endLine": 1591,
+        "endChar": 31
+      },
+      "revId": "47e221c43125ece8b58544964b2774772e300fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af38ceb_f57550e3",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-07-14T02:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af38ceb_32b2ce5e",
       "range": {
         "startLine": 1591,
         "startChar": 7,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "1af38ceb_d57a4cd1",
+        "filename": "include/common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-07-14T02:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af38ceb_123d8aaa",
+      "range": {
+        "startLine": 131,
+        "startChar": 7,
+        "endLine": 131,
+        "endChar": 31
+      },
+      "revId": "47e221c43125ece8b58544964b2774772e300fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1af38ceb_b2647ecf",
         "filename": "include/common.h",
         "patchSetId": 5
@@ -174,6 +342,30 @@
       "writtenOn": "2016-07-13T07:25:21Z",
       "side": 1,
       "message": "Since error_list is common, I guess it might be better to use EC_ERROR_HW_INTERNAL as hardware component\u0027s internal error. When calling sensor\u0027s API, returning this means sensor hardware error.",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 21
+      },
+      "revId": "47e221c43125ece8b58544964b2774772e300fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af38ceb_b57fc8bf",
+        "filename": "include/common.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-07-14T02:21:56Z",
+      "side": 1,
+      "message": "Done, and also move the check into kionix driver.",
+      "parentUuid": "1af38ceb_b2647ecf",
       "range": {
         "startLine": 132,
         "startChar": 1,
