@@ -94,6 +94,8 @@ DECLARE_DEFERRED(force_shutdown);
 
 enum power_state power_handle_state(enum power_state state)
 {
+	static int is_firsttime = 1;
+
 	switch (state) {
 	case POWER_G3:
 		break;
@@ -117,7 +119,10 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_G3S5:
 		forcing_shutdown = 0;
-
+		if (is_firsttime) {
+			msleep(500);
+			is_firsttime = 0;
+		}
 		/* Power up to next state */
 		return POWER_S5;
 
