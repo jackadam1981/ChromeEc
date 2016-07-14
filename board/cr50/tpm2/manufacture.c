@@ -231,10 +231,12 @@ static int validate_cert(
 				&ENDORSEMENT_CA_RSA_PUB);
 }
 
+#define RSA_EK_NV_INDEX  0x01C00000
+
 static int store_cert(enum cros_perso_component_type component_type,
 		const struct cros_perso_certificate_response_v0 *cert)
 {
-	const uint32_t ek_nv_index_0 = 0x01C00000;
+	const uint32_t ek_nv_index_0 = RSA_EK_NV_INDEX;
 	const uint32_t ek_nv_index_1 = ek_nv_index_0 + 1;
 	uint32_t nv_index;
 	NV_DefineSpace_In define_space;
@@ -403,6 +405,12 @@ static int decrypt_and_copy_eps(void)
 
 static void manufacture_complete(void)
 {
+	/* The code below commented out as a temporary allowance for
+	 * development; so as to allow re-manufacturability of a chip
+	 * after a full flash wipe.  See CRBUG/P/55288 for a detailed
+	 * description.
+	 */
+#if 0
 	int i;
 	const uint32_t erase = INFO1_SENTINEL_MANUFACTURE_DONE;
 
@@ -411,16 +419,37 @@ static void manufacture_complete(void)
 		flash_info_physical_write(
 			FLASH_INFO_MANUFACTURE_STATE_OFFSET + i, sizeof(erase),
 			(unsigned char *) &erase);
-
+#endif
 	/* TODO(ngm): lock HIK export. */
 }
 
 int tpm_manufactured(void)
 {
+	/* The code below commented out as a temporary allowance for
+	 * development; so as to allow re-manufacturability of a chip
+	 * after a full flash wipe.  See CRBUG/P/55288 for a detailed
+	 * description.
+	 */
+#if 0
 	uint32_t sentinel;
 
 	flash_physical_info_read_word(INFO1_SENTINEL_OFFSET, &sentinel);
 	return sentinel == INFO1_SENTINEL_MANUFACTURE_DONE;
+#else
+
+	/* If either endorsement certificate is not installed,
+	 * consider the chip un-manufactured.  Thus, wiping flash
+	 * cause the chip to be un-manufactured.
+	 */
+	const uint32_t ek_nv_index_0 = RSA_EK_NV_INDEX;
+	const uint32_t ek_nv_index_1 = ek_nv_index_0 + 1;
+
+	if (NvIsUndefinedIndex(ek_nv_index_0) == TPM_RC_SUCCESS ||
+		NvIsUndefinedIndex(ek_nv_index_1) == TPM_RC_SUCCESS)
+		return 0;
+	else
+		return 1;
+#endif
 }
 
 static void ack_command_handler(void *request, size_t command_size,
