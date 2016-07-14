@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fa1a38b3_3388363a",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-14T16:09:23Z",
+      "side": 1,
+      "message": "Sorry, I was looking at the wrong diff. But thanks for catching this. Luckily with our values, it didn\u0027t matter.\n\nAlthough I wonder, is masking off the value here necessary? I was assuming the hardware would ignore those bits.",
+      "revId": "714c601902c389e9983d12d6a72d5a59e03ad94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1a38b3_13225aab",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 11
