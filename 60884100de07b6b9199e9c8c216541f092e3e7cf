@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_90212045",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-07-14T05:27:56Z",
+      "side": 1,
+      "message": "RSA keygen is dog slow.  I think we should take the hit for the current batch just to be sure.  Here are latest (representative) cros_ack times.\n\nRSA PERSO RESULT: 8080\nECC PERSO RESULT: 8080\nSUCCESS\n\nreal\t0m22.189s\nuser\t0m0.103s\nsys\t0m0.413s",
+      "parentUuid": "fa1a38b3_90592016",
+      "range": {
+        "startLine": 14,
+        "startChar": 38,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "60884100de07b6b9199e9c8c216541f092e3e7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1a38b3_b099bcea",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_701e2405",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-07-14T05:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa1a38b3_b099bcea",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "60884100de07b6b9199e9c8c216541f092e3e7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1a38b3_f0f5f4f0",
         "filename": "board/cr50/tpm2/manufacture.c",
         "patchSetId": 2
@@ -59,6 +107,24 @@
       "writtenOn": "2016-07-14T05:18:39Z",
       "side": 1,
       "message": "move this to top of compute_frk2?\nseems bit much to do every step and might mask other probs.",
+      "revId": "60884100de07b6b9199e9c8c216541f092e3e7cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_f0321497",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-07-14T05:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa1a38b3_f0f5f4f0",
       "revId": "60884100de07b6b9199e9c8c216541f092e3e7cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
