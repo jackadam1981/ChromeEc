@@ -22,6 +22,30 @@
       "revId": "a0a3dc3e5649f44af848d06fe59b8ebbff8e9d7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_4d5f11fb",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-14T02:10:41Z",
+      "side": 1,
+      "message": "Actually 1, CHARGE_FLAG_INHIBIT_CHARGE, would disable charging. \n\nI\u0027m not sure why the polarity was chosen this way; seems a bit backwards.",
+      "parentUuid": "fa1a38b3_0d50791b",
+      "range": {
+        "startLine": 714,
+        "startChar": 19,
+        "endLine": 714,
+        "endChar": 20
+      },
+      "revId": "a0a3dc3e5649f44af848d06fe59b8ebbff8e9d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
