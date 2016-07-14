@@ -13,9 +13,10 @@ src = .
 SWIG = /usr/bin/swig
 
 CFLAGS = -fPIC
-CFLAGS += -I /usr/include/python2.7
+CFLAGS += -I /usr/include/python2.7 -I../../../../../chroot/usr/include/
 CFLAGS +=  -DLIBFTDI1=1
 CFLAGS +=  -c
+LDFLAGS += -L/usr/lib/x86_64-linux-gnu
 
 TARGET = ftdi_spi_tpm
 .PRECIOUS: $(obj)/ftdi_spi_tpm_wrap.c
@@ -40,7 +41,7 @@ $(obj)/%.o: $(src)/%.c
 $(obj)/_$(TARGET).so: $(OBJS) $(obj)/$(TARGET).py
 	@echo "  LD      $(notdir $@)"
 	$(Q)rm -f $@
-	$(Q)gcc -shared $(OBJS) -lftdi1 -o $@
+	$(Q)gcc -shared $(OBJS) $(LDFLAGS) -lftdi -o $@
 
 $(obj)/%_wrap.c: $(src)/%.i
 	@echo "  SWIG    $(notdir $@)"
