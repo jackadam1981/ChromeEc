@@ -137,6 +137,8 @@ CRYPT_RESULT _cpri__GenerateKeyEcc(
 {
 	TPM2B_4_BYTE_VALUE marshaled_counter = { .t = {4} };
 	TPM2B_32_BYTE_VALUE local_seed = { .t = {32} };
+	TPM2B_4_BYTE_VALUE truncated_extra = { .t = {4} };
+	TPM2B *local_extra;
 	uint32_t count = 0;
 	uint8_t key_bytes[P256_NBYTES];
 	LITE_HMAC_CTX hmac;
@@ -159,10 +161,19 @@ CRYPT_RESULT _cpri__GenerateKeyEcc(
 	HASH_update(&hmac.hash, "ECC", 4);
 	memcpy(local_seed.t.buffer, DCRYPTO_HMAC_final(&hmac),
 	       local_seed.t.size);
+	/* TODO(ngm): CRBUG/P/55260: the personalize code uses only
+	 * the first 4 bytes of extra.
+	 */
+	if (extra && extra->size == 32) {
+		memcpy(truncated_extra.b.buffer, extra->buffer, 4);
+		local_extra = &truncated_extra.b;
+	} else {
+		local_extra = extra;
+	}
 
 	for (; count != 0; count++) {
 		memcpy(marshaled_counter.t.buffer, &count, sizeof(count));
-		_cpri__KDFa(hash_alg, &local_seed.b, label, extra,
+		_cpri__KDFa(hash_alg, &local_seed.b, label, local_extra,
 			&marshaled_counter.b, sizeof(key_bytes) * 8, key_bytes,
 			NULL, FALSE);
 		if (DCRYPTO_p256_key_from_bytes(
