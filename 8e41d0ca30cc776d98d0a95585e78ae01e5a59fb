@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1af38ceb_d5c7ec06",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-07-14T05:03:45Z",
+      "side": 1,
+      "message": "please somebody confirm it is safe to other project which use this config, otherwise we can consider CONFIG_CHARGER_BD99955",
+      "range": {
+        "startLine": 418,
+        "startChar": 7,
+        "endLine": 418,
+        "endChar": 32
+      },
+      "revId": "8e41d0ca30cc776d98d0a95585e78ae01e5a59fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af38ceb_558bfcdf",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-07-14T05:03:45Z",
+      "side": 1,
+      "message": "we do it below",
+      "range": {
+        "startLine": 564,
+        "startChar": 2,
+        "endLine": 564,
+        "endChar": 33
+      },
+      "revId": "8e41d0ca30cc776d98d0a95585e78ae01e5a59fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af38ceb_758e00f2",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-07-14T05:03:45Z",
+      "side": 1,
+      "message": "we do it below",
+      "range": {
+        "startLine": 567,
+        "startChar": 2,
+        "endLine": 567,
+        "endChar": 34
+      },
+      "revId": "8e41d0ca30cc776d98d0a95585e78ae01e5a59fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af38ceb_f5c2f0f8",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-07-14T05:03:45Z",
+      "side": 1,
+      "message": "can be merged above else{}",
+      "range": {
+        "startLine": 571,
+        "startChar": 5,
+        "endLine": 571,
+        "endChar": 41
+      },
+      "revId": "8e41d0ca30cc776d98d0a95585e78ae01e5a59fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af38ceb_b5a34867",
+        "filename": "driver/charger/bd99955.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-07-14T05:03:45Z",
+      "side": 1,
+      "message": "6144 I missed at email",
+      "range": {
+        "startLine": 43,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 28
+      },
+      "revId": "8e41d0ca30cc776d98d0a95585e78ae01e5a59fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af38ceb_95a84442",
+        "filename": "driver/charger/bd99955.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-07-14T05:03:45Z",
+      "side": 1,
+      "message": "8960",
+      "range": {
+        "startLine": 44,
+        "startChar": 26,
+        "endLine": 44,
+        "endChar": 30
+      },
+      "revId": "8e41d0ca30cc776d98d0a95585e78ae01e5a59fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
