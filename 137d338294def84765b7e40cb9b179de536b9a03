@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_e5cddec5",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-15T02:38:07Z",
+      "side": 1,
+      "message": "This could be lower, like maybe 11, so we lose less precision. Depends how high we want to be able to measure. We just need to fit the first value (millivolts) into an 8-bit unsigned.",
+      "range": {
+        "startLine": 224,
+        "startChar": 34,
+        "endLine": 224,
+        "endChar": 36
+      },
+      "revId": "137d338294def84765b7e40cb9b179de536b9a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_65e1ee31",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-15T02:38:07Z",
+      "side": 1,
+      "message": "CHARGER_THERMISTOR_SCALING_FACTOR",
+      "range": {
+        "startLine": 224,
+        "startChar": 8,
+        "endLine": 224,
+        "endChar": 33
+      },
+      "revId": "137d338294def84765b7e40cb9b179de536b9a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_c5cedac3",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-15T02:38:07Z",
+      "side": 1,
+      "message": "AMB_THERMISTOR_SCALING_FACTOR",
+      "range": {
+        "startLine": 256,
+        "startChar": 8,
+        "endLine": 256,
+        "endChar": 33
+      },
+      "revId": "137d338294def84765b7e40cb9b179de536b9a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_25c0868b",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-15T02:38:07Z",
+      "side": 1,
+      "message": "Just guessing.",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 54
+      },
+      "revId": "137d338294def84765b7e40cb9b179de536b9a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
