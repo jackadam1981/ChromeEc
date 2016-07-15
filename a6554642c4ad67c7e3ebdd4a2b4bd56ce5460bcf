@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_80acc0b2",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-07-15T06:05:13Z",
+      "side": 1,
+      "message": "how about: int bd99955_get_temp(int *temp)?\nso that we can compare with return value and decide to take data or not.",
+      "revId": "a6554642c4ad67c7e3ebdd4a2b4bd56ce5460bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
