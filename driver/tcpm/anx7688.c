@@ -61,6 +61,19 @@ static int anx7688_init(int port)
 	return rv;
 }
 
+static int anx7688_set_vconn(int port, int enable)
+{
+	int reg, rv;
+
+	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &reg);
+	if (rv)
+		return rv;
+
+	reg &= ~TCPC_REG_POWER_CTRL_VCONN(1);
+	reg |= TCPC_REG_POWER_CTRL_VCONN(enable);
+	return tcpc_write(port, TCPC_REG_POWER_CTRL, reg);
+}
+
 static void anx7688_update_hpd_enable(int port)
 {
 	int status, reg, rv;
@@ -169,7 +182,7 @@ const struct tcpm_drv anx7688_tcpm_drv = {
 #endif
 	.set_cc			= &tcpci_tcpm_set_cc,
 	.set_polarity		= &tcpci_tcpm_set_polarity,
-	.set_vconn		= &tcpci_tcpm_set_vconn,
+	.set_vconn		= &anx7688_set_vconn,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
 	.get_message		= &tcpci_tcpm_get_message,
