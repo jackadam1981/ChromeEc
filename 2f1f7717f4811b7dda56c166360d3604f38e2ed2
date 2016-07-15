@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_30a56118",
+        "filename": "driver/temp_sensor/thermistor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-15T18:27:23Z",
+      "side": 1,
+      "message": "const",
+      "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_50daa583",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-15T18:27:23Z",
+      "side": 1,
+      "message": "I\u0027m curious why the scaling factor wouldn\u0027t be baked into the table themselves? Presumably you\u0027d just have a static table of values? They could be generated with FACTOR*VOLTAGE for each entry?",
+      "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_f05f59c9",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-15T18:27:23Z",
+      "side": 1,
+      "message": "Don\u0027t we need to know if an actual match was found? What if mv is more than any of the entries?",
+      "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_705369cd",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-15T18:27:23Z",
+      "side": 1,
+      "message": "By doing what?",
+      "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
