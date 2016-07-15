@@ -308,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "1a570ceb_eff4c1f5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-07-15T06:59:35Z",
+      "side": 1,
+      "message": "CONFIG_CMD_ \u003c\u003d\u003d this is an extra CONFIG_ for the console command.",
+      "parentUuid": "1af38ceb_f57550e3",
+      "range": {
+        "startLine": 1591,
+        "startChar": 7,
+        "endLine": 1591,
+        "endChar": 31
+      },
+      "revId": "47e221c43125ece8b58544964b2774772e300fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1af38ceb_123d8aaa",
         "filename": "include/common.h",
         "patchSetId": 5
