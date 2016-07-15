@@ -22,6 +22,30 @@
       "revId": "83069e2b282790230e1456adfea3d2c11fd23b82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_dffa1e7a",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-15T23:11:14Z",
+      "side": 1,
+      "message": "As far as I can tell, this is how we usually do power sequencing, that is by state. e.g: G3 -\u003e S5 -\u003e S3 -\u003e S0.\n\nI thought that the Power state column in the spreadsheet represented the state where each power rail should be enabled. Is this not the case?\n\nWhere do you draw the line between S3 and S0?\n\nAlso, I was able to boot up into ChromeOS with this patch, which would be hard to do without DRAM?",
+      "parentUuid": "5ab18456_84568be2",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 41
+      },
+      "revId": "83069e2b282790230e1456adfea3d2c11fd23b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
