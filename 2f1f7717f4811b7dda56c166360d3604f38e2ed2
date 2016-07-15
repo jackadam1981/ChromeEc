@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ab18456_13eb0780",
+        "filename": "driver/temp_sensor/thermistor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-15T20:08:29Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "5ab18456_30a56118",
+      "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ab18456_50daa583",
         "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2016-07-15T18:27:23Z",
       "side": 1,
       "message": "I\u0027m curious why the scaling factor wouldn\u0027t be baked into the table themselves? Presumably you\u0027d just have a static table of values? They could be generated with FACTOR*VOLTAGE for each entry?",
+      "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_739533f7",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-15T20:08:29Z",
+      "side": 1,
+      "message": "Space constraints.\n\nI was also wondering if __packed should be used, though I didn\u0027t see that used everywhere else so I wasn\u0027t sure if it\u0027s really necessary with the way the EC code is built.",
+      "parentUuid": "5ab18456_50daa583",
       "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5ab18456_b3703bc3",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-15T20:08:29Z",
+      "side": 1,
+      "message": "Not quite - All we care about is finding if mv is between two data points (inclusive). From there we figure out many degrees are in between the two points and approximately how many millivolts represent each degree in that range, and add that to the lower data point\u0027s voltage until we reach the input voltage and thus determine the number of degrees to add to the lower point\u0027s temperature to reach the actual temperature.\n\nLine 118 handles the case where mv is more than any of the entries - If we\u0027re out of bounds, we just return the lowest/highest entry. That\u0027s convention used for generating the table - Anything below the lowest data point doesn\u0027t matter and the highest point and anything higher is critical.",
+      "parentUuid": "5ab18456_f05f59c9",
+      "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ab18456_705369cd",
         "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
         "patchSetId": 5
@@ -64,6 +118,24 @@
       "writtenOn": "2016-07-15T18:27:23Z",
       "side": 1,
       "message": "By doing what?",
+      "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_aed0ce01",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-15T20:08:29Z",
+      "side": 1,
+      "message": "Since we lose a bit of precision in the above division, the next couple lines will increment step_mv if doing so brings the result of v0 + (step_mv * num_steps) closer to v1, even if it means overshooting by a bit. The rationale is that it\u0027s better to report slightly higher temperature than slightly lower temperature. BTW - Shawn\u0027s suggestion in #4 might obviate the need for this.\n\nExample:\n{ 1000, 50 }  /* 1000mV, 50C */\n{ 1991, 70 }  /* 1991mV, 70C */\n\nnum_steps \u003d 20\nstep_mv \u003d 49mV\n\nHowever, 1000 + (20 * 49) \u003d 1980, so we\u0027d end up underreporting temperature if the input voltage is something like 1989.\n\nSo the next two lines will calculate the difference if we increment step_mv or not, and increment step_mv if it makes sense to do so:\nd0 \u003d 1991 - (1000 + 49 * 20) \u003d 11\nd1 \u003d (1000 + (49 + 1) * 20)) - 1991 \u003d 9\n\nSince d1 \u003c d0, we know that if we increment step_mv then we get slightly better precision and avoid underreporting temperature.",
+      "parentUuid": "5ab18456_705369cd",
       "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
