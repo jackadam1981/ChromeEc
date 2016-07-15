@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_ba65b09d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1135579
+      },
+      "writtenOn": "2016-07-15T17:03:58Z",
+      "side": 1,
+      "message": "Will this brick the rev1 board if I flash an image with this change in it?  Or just render it useless but still flashable?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "1aa3a41b820d5236ecb4c00da83685a0a5aa338c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_1a14bcef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1135579
+      },
+      "writtenOn": "2016-07-15T17:03:58Z",
+      "side": 1,
+      "message": "I\u0027m guessing this implies only rev2 boards will allow uservo routing on bootup?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "1aa3a41b820d5236ecb4c00da83685a0a5aa338c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
