@@ -421,11 +421,15 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	return EC_SUCCESS;
 }
 
+extern timestamp_t resume_time;
+
 static int init(const struct motion_sensor_t *s)
 {
 	int ret, val, reg, reset_field;
 	uint8_t timeout;
 	struct kionix_accel_data *data = s->drv_data;
+
+	ccprints("------------------- JMS: KX022_INIT: %ld", get_time().val - resume_time.val);
 
 	reg = KIONIX_CTRL2_REG(data->variant);
 	reset_field = KIONIX_RESET_FIELD(data->variant);

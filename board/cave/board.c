@@ -225,12 +225,14 @@ struct als_t als[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(als) == ALS_COUNT);
 
+#if 0
 const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
 	{"Volume Down", KEYBOARD_BUTTON_VOLUME_DOWN, GPIO_VOLUME_DOWN_L,
 	 30 * MSEC, 0},
 	{"Volume Up", KEYBOARD_BUTTON_VOLUME_UP, GPIO_VOLUME_UP_L,
 	 30 * MSEC, 0},
 };
+#endif
 
 static void board_pmic_init(void)
 {
@@ -406,12 +408,54 @@ static void board_chipset_shutdown(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
+static int read_sensor(int addr)
+{
+	uint8_t tmp;
+	return i2c_xfer(0x03, addr, NULL, 0, &tmp, 1, I2C_XFER_SINGLE);
+}
+
+static int sensor_ok;
+timestamp_t resume_time;
+
+void test_sensor(void)
+{
+	if ((sensor_ok & 0x01) == 0) {
+		if (read_sensor(0x88) == EC_SUCCESS) {
+			sensor_ok |= 0x01;
+			CPRINTS("JMS: ALS Ready: %ldus after RESUME", get_time().val - resume_time.val);
+		}
+	}
+
+	if ((sensor_ok & 0x02) == 0) {
+		if (read_sensor(0x3c) == EC_SUCCESS) {
+			sensor_ok |= 0x02;
+			CPRINTS("JMS: KX022 Ready: %ldus after RESUME", get_time().val - resume_time.val);
+		}
+	}
+
+	if ((sensor_ok & 0x04) == 0) {
+		if (read_sensor(0xd0) == EC_SUCCESS) {
+			sensor_ok |= 0x04;
+			CPRINTS("JMS: BMI160 Ready: %ldus after RESUME", get_time().val - resume_time.val);
+		}
+	}
+
+	if (sensor_ok != 0x07) {
+		hook_call_deferred(test_sensor, 1000);
+	} else {
+		gpio_set_level(GPIO_KBBL_EN, 1);
+		CPRINTS("-------------------- JMS: ALL Sensor OK: t = %ld", get_time().val - resume_time.val);
+		gpio_set_level(GPIO_KBBL_EN, 0);
+	}
+}
+DECLARE_DEFERRED(test_sensor);
+
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
 	gpio_set_level(GPIO_PP1800_DX_AUDIO_EN, 1);
 	gpio_set_level(GPIO_PP1800_DX_SENSOR_EN, 1);
-	gpio_set_level(GPIO_KBBL_EN, 1);
+	// gpio_set_level(GPIO_KBBL_EN, 1);
 
 	/*
 	 * Now that we have enabled the rail to the sensors, let's give enough
@@ -424,6 +468,12 @@ static void board_chipset_resume(void)
 	 * tries to initialize the sensors.
 	 */
 	msleep(3);
+
+	CPRINTS("RESUME");
+
+	resume_time = get_time();
+	sensor_ok = 0;
+	test_sensor();
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume,
 	     MOTION_SENSE_HOOK_PRIO-1);

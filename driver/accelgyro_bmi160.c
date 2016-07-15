@@ -1072,9 +1072,13 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	return EC_SUCCESS;
 }
 
+extern timestamp_t resume_time;
+
 static int init(const struct motion_sensor_t *s)
 {
 	int ret = 0, tmp;
+
+	ccprints("-------------------- JMS: BMI160 INIT: %ld", get_time().val - resume_time.val);
 
 	ret = raw_read8(s->addr, BMI160_CHIP_ID, &tmp);
 	if (ret)

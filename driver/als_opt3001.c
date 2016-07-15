@@ -7,6 +7,9 @@
 
 #include "driver/als_opt3001.h"
 #include "i2c.h"
+#include "gpio.h"
+#include "timer.h"
+#include "console.h"
 
 /**
  *  Read register from OPT3001 light sensor.
@@ -36,6 +39,8 @@ static int opt3001_i2c_write(const int reg, int data)
 	return ret;
 }
 
+extern timestamp_t resume_time;
+
 /**
  * Initialise OPT3001 light sensor.
  */
@@ -43,6 +48,8 @@ int opt3001_init(void)
 {
 	int data;
 	int ret;
+
+	ccprints("-------------------- JMS: OPT3001 INIT: %ld", get_time().val - resume_time.val);
 
 	ret = opt3001_i2c_read(OPT3001_REG_MAN_ID, &data);
 	if (ret || data != OPT3001_MANUFACTURER_ID)
