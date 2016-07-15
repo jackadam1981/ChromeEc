@@ -70,6 +70,30 @@
       "revId": "83069e2b282790230e1456adfea3d2c11fd23b82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_bfd3da69",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-07-15T23:56:56Z",
+      "side": 1,
+      "message": "Aseda: power sequencing related backpower and leakage not necessarily would cause boot failure - often they won\u0027t. But will show up in customer not reliabily getting the feature after boot up, reduced product life expectancy due to component \u0027s sequencing not met, and customer calls/returns. I am proposing a state based power sequence from your code back to Rockchip for confirmation. We have to figure out an optimal way to get over turning on S3 devices before finishing SoC\u0027s bootup sequence ( which need some S0 rail ben turn on). Can we seperate SoC vs. component sequence? otherwise, I may have to significnatly reshuffle GPIO, adding lots of FET isolations to alleviate back powering and leakage.",
+      "parentUuid": "5ab18456_9f4d36b4",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 41
+      },
+      "revId": "83069e2b282790230e1456adfea3d2c11fd23b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
