@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a570ceb_0fdae582",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-07-15T06:59:35Z",
+      "side": 1,
+      "message": "Remove HACK",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "5e4dbb216f600de36a65f0c9a9b5f33259269524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a570ceb_2fd7a95b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-07-15T06:59:35Z",
+      "side": 1,
+      "message": "Add reset flow to recover KX022 sensors from hardware error.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "5e4dbb216f600de36a65f0c9a9b5f33259269524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a570ceb_afd39969",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-07-15T06:59:35Z",
+      "side": 1,
+      "message": "Add commit message: This patch also prevents spi_enable call race with spi_transaction.",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 30
+      },
+      "revId": "5e4dbb216f600de36a65f0c9a9b5f33259269524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a570ceb_4fe4ed42",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-07-15T06:59:35Z",
+      "side": 1,
+      "message": "Remember to add #define in board.h",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 6
+      },
+      "revId": "5e4dbb216f600de36a65f0c9a9b5f33259269524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
