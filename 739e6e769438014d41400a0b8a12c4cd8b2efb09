@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a570ceb_afe0f904",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2016-07-15T07:40:26Z",
+      "side": 1,
+      "message": "How about remove KX022 here to make it more common. And move CONFIG_ACCEL_RESET to its own line in config.h. Add description.",
+      "range": {
+        "startLine": 652,
+        "startChar": 20,
+        "endLine": 652,
+        "endChar": 26
+      },
+      "revId": "739e6e769438014d41400a0b8a12c4cd8b2efb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
