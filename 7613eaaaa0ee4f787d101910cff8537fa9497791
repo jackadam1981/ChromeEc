@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_baff7068",
+        "filename": "cts/gpio/dut.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T16:29:37Z",
+      "side": 1,
+      "message": "CTS_FAILURE/UNKNOWN/BAD_SYNC seem too short. As we grow CTS, it\u0027ll probably have many enums. So, each of these enums should have CTS_ then one more suffix describing which enum group it belongs to.",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 20
+      },
+      "revId": "7613eaaaa0ee4f787d101910cff8537fa9497791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
