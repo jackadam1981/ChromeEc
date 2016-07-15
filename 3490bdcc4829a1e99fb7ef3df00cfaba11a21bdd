@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_09191427",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-07-15T21:47:00Z",
+      "side": 1,
+      "message": "This variable-setting stuff should be done in rdd_attached() and rdd_detached() in board/cr50/rdd.c, not chip/g/rdd.c, since it\u0027s specific to our implementation of CCD in Cr50 and not something that all firmwares need to do based on the chip itself.",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 24
+      },
+      "revId": "3490bdcc4829a1e99fb7ef3df00cfaba11a21bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_890504bc",
+        "filename": "chip/g/rdd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-07-15T21:47:00Z",
+      "side": 1,
+      "message": "Let\u0027s change this to\n\nint is_utmi_wakeup_allowed(void);\n\nbecause as it is, it sounds like something we\u0027d call to enable wakeup.",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "3490bdcc4829a1e99fb7ef3df00cfaba11a21bdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
