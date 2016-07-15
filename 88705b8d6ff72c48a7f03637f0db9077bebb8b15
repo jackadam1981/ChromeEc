@@ -1,0 +1,619 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_fa0bb877",
+        "filename": "cts/common/cts_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "Could you make this change in the previous CL?",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_3a18a078",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "By the way, Google\u0027s python indentation is 2 spaces.\n\nAlso, you need to add docstrings to all functions.\n\nI think whole thing can be written more cleanly with classes...",
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_1a915c69",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "Do you still need it or it\u0027s misplaced?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_bdf5aa5b",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "/tmp is busy directory. Probably better to put \u0027cts\u0027 somewhere? /tmp/cts, /tmp/cts_results,...",
+      "range": {
+        "startLine": 23,
+        "startChar": 20,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_dd26aec0",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "Please use lower case.",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_dd998e3b",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "Why don\u0027t you use th_board?",
+      "range": {
+        "startLine": 28,
+        "startChar": 21,
+        "endLine": 28,
+        "endChar": 36
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_53210ff4",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "Please split long string as you did in get_serials.",
+      "range": {
+        "startLine": 68,
+        "startChar": 48,
+        "endLine": 68,
+        "endChar": 51
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_7d24e2a1",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "Here as well you can use with statement.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 17
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_73fc133f",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "This open isn\u0027t closed. Let\u0027s use with statement.",
+      "range": {
+        "startLine": 125,
+        "startChar": 17,
+        "endLine": 125,
+        "endChar": 38
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_10c93dba",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "while True:",
+      "range": {
+        "startLine": 149,
+        "startChar": 3,
+        "endLine": 149,
+        "endChar": 15
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_1314a7ef",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "Not sure whether we should give up everything here. We can do results[tokens[0]] \u003d \u0027CONFLICT\u0027 for example.",
+      "range": {
+        "startLine": 208,
+        "startChar": 26,
+        "endLine": 208,
+        "endChar": 66
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_896064e7",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "Let\u0027s do this in stringify_results.",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 50
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_ce6f12aa",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "What about prettify?",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 13
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_53a2afc2",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "How about:\n    t_long \u003d max(len(s) for s in results.items()[0])\n    e_max_len \u003d max(len(s) for s in results.items()[1])",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 33
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_6ea8a6f0",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "So, we don\u0027t distingish TH and DUT as long as serial ports are concerned. Could you at least comment on that and why we don\u0027t need to?",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 33
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_1ae67c1f",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "Could you rewrite this with statement?",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 13
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_3a66e004",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "Are these necessary? If so, why not \u0027global th_board\u0027? By the way, Google\u0027s style guide discourage using global variables.",
+      "range": {
+        "startLine": 270,
+        "startChar": 3,
+        "endLine": 271,
+        "endChar": 17
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_90b24d5c",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "Do you need these?",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 18
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_ddc7ce1f",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "I think these are better placed near the other default values.",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 36
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_ba9810e6",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "This seems confusing because \u0027--dut\u0027 is used to specify a board name. What about \u0027--th_setup\u0027 or something similar?",
+      "range": {
+        "startLine": 288,
+        "startChar": 25,
+        "endLine": 288,
+        "endChar": 29
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_f017593a",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "It\u0027s not clear what option is a sub-command. I think we should use sub-commands.",
+      "range": {
+        "startLine": 299,
+        "startChar": 1,
+        "endLine": 302,
+        "endChar": 44
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_5a32c400",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "why repeating?",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 30
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_0947540f",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "If you do th_serial_path \u003d os.path.join(th_ser_dir, th_ser_file) before this, you can pass it to update_th_serial and all the rest of calls to get_serials. Actuall, you don\u0027t need th_ser_dir at all.",
+      "range": {
+        "startLine": 312,
+        "startChar": 17,
+        "endLine": 312,
+        "endChar": 45
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_1a4cbc60",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "Why are you raising exceptions (here and other places)? I think you can handle these errors normally.",
+      "range": {
+        "startLine": 316,
+        "startChar": 12,
+        "endLine": 316,
+        "endChar": 55
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_ae59ee15",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "Instead of calling this multiple times, why don\u0027t you do make first (and return) then call get_serials once for the rest?",
+      "range": {
+        "startLine": 326,
+        "startChar": 7,
+        "endLine": 326,
+        "endChar": 76
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_7012495a",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "Do we need to separate reset and reset_and_record? I think recording always when boards are reset makes sense.",
+      "range": {
+        "startLine": 338,
+        "startChar": 8,
+        "endLine": 338,
+        "endChar": 24
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_90852d25",
+        "filename": "cts/cts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-15T21:38:11Z",
+      "side": 1,
+      "message": "Why don\u0027t we make flash_boards only do flashing? Here we do:\nflash_boards(dut_board, th_hla, dut_hla)\nreset_boards(dut_board, th_hla, dut_hla)",
+      "range": {
+        "startLine": 343,
+        "startChar": 7,
+        "endLine": 343,
+        "endChar": 20
+      },
+      "revId": "88705b8d6ff72c48a7f03637f0db9077bebb8b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
