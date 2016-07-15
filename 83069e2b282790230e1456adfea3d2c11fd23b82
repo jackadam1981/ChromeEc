@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_84568be2",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-07-15T22:52:57Z",
+      "side": 1,
+      "message": "Looks like we turn on all S3 rail before start turn on S0 rail, This significantly violated SOC boot sequence. \n\nFor example: PP900_DDRPLL need to be turn on after CENTER_LOGIC, but before we can do LPDDR_PWR_EN. Now it is after LPDDR_EN which will means DRAM is not booting up.   \n\n\nCan we restructure the sequence code not by power state, but just a boot up sequence + a power down sequence.",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 41
+      },
+      "revId": "83069e2b282790230e1456adfea3d2c11fd23b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
