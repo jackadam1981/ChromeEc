@@ -11,4 +11,10 @@ void rdd_detached(void);
 
 /* Attach to debug cable */
 void rdd_attached(void);
+
+/*
+ * Use RDD to enable USB as a wakeup source only when a debug accessory is
+ * connected. Other USB traffic is not relevant and should not trigger a wakeup.
+ */
+int rdd_enable_utmi_wakeup(void);
 #endif  /* __CROS_RDD_H */

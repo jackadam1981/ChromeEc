@@ -15,6 +15,7 @@
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
 static uint16_t debug_detect;
+static int enable_usb_wakeup;
 
 int debug_cable_is_attached(void)
 {
@@ -24,11 +25,17 @@ int debug_cable_is_attached(void)
 	return (cc1 == cc2 && (cc1 == 3 || cc1 == 1));
 }
 
+int rdd_enable_utmi_wakeup(void)
+{
+	return enable_usb_wakeup;
+}
+
 void rdd_interrupt(void)
 {
 	if (debug_cable_is_attached()) {
 		CPRINTS("Debug Accessory connected");
 		disable_sleep(SLEEP_MASK_RDD);
+		enable_usb_wakeup = 1;
 		/* Detect when debug cable is disconnected */
 		GWRITE(RDD, PROG_DEBUG_STATE_MAP, ~debug_detect);
 		rdd_attached();
@@ -37,6 +44,7 @@ void rdd_interrupt(void)
 		/* Detect when debug cable is connected */
 		GWRITE(RDD, PROG_DEBUG_STATE_MAP, debug_detect);
 		rdd_detached();
+		enable_usb_wakeup = 0;
 		enable_sleep(SLEEP_MASK_RDD);
 	}
 
