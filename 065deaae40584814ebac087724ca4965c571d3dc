@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ab18456_ee23f607",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-15T20:08:29Z",
+      "side": 1,
+      "message": "I was thinking it would be 6-8 entries for most cases. Binary search seems like it would be slightly helpful since we\u0027ll probably be in the middle most of the time, I just never got around to implementing it here.",
+      "parentUuid": "37f21ea8_a8c5e751",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 9
+      },
+      "revId": "065deaae40584814ebac087724ca4965c571d3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37f21ea8_e8a6cfbd",
         "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-18T02:33:14Z",
       "side": 1,
       "message": "I think we can minimize precision loss by not using this temporary variable. For example, below you have:\n\nnum_steps \u003d (mv - v0) / step_mv;\n\nChange this to:\n\nnum_steps \u003d (mv - v0) * num_steps / (v1 - v0);\n\nWhat do you think?",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 33
+      },
+      "revId": "065deaae40584814ebac087724ca4965c571d3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_ce59d24a",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-15T20:08:29Z",
+      "side": 1,
+      "message": "Seems to work... Gotta think about this a bit more, but looks promising.",
+      "parentUuid": "37f21ea8_e8a6cfbd",
       "range": {
         "startLine": 129,
         "startChar": 1,
