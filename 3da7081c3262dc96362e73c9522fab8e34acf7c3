@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_598073ac",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-07-15T00:21:08Z",
+      "side": 1,
+      "message": "There is an external pull up on SPI_CS_L.",
+      "parentUuid": "fa979800_05d91155",
+      "revId": "3da7081c3262dc96362e73c9522fab8e34acf7c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa979800_25d68d27",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 5
@@ -59,6 +77,24 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_d96bc39e",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-07-15T00:21:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa979800_25d68d27",
+      "revId": "3da7081c3262dc96362e73c9522fab8e34acf7c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa979800_c5d24931",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 5
@@ -70,6 +106,24 @@
       "writtenOn": "2016-07-10T00:47:32Z",
       "side": 1,
       "message": "could this be a static (compile time) assert?",
+      "revId": "3da7081c3262dc96362e73c9522fab8e34acf7c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_39665705",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-07-15T00:21:08Z",
+      "side": 1,
+      "message": "No. It is reading from hardware.",
+      "parentUuid": "fa979800_c5d24931",
       "revId": "3da7081c3262dc96362e73c9522fab8e34acf7c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
