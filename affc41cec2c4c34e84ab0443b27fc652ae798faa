@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5ab18456_45694ad3",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-15T01:54:28Z",
+      "side": 0,
+      "message": "please remove this whitespace change",
+      "revId": "affc41cec2c4c34e84ab0443b27fc652ae798faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa979800_e5cf4588",
         "filename": "chip/g/spi_master.c",
         "patchSetId": 5
