@@ -161,10 +161,16 @@ struct tcpm_drv {
 	void (*tcpc_alert)(int port);
 };
 
+enum tcpc_irq_polarity {
+	IRQ_ACTIVE_LOW,
+	IRQ_ACTIVE_HIGH,
+};
+
 struct tcpc_config_t {
 	int i2c_host_port;
 	int i2c_slave_addr;
 	const struct tcpm_drv *drv;
+	enum tcpc_irq_polarity pol;
 };
 
 /**
