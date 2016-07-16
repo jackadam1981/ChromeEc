@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_32d7a500",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-16T04:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa979800_04ba7acd",
+      "revId": "bac5c0621ea78abd441eeb19028f9b1c8eec253d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa979800_01d6ec26",
         "filename": "board/reef/gpio.inc",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fa1a38b3_b217154a",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-16T04:54:20Z",
+      "side": 1,
+      "message": "Argh... Thanks for catching that.\n\nI tried addressing it in CL:360947, CL:360948, and this patch (see change to board.h).",
+      "parentUuid": "fa979800_01d6ec26",
+      "revId": "bac5c0621ea78abd441eeb19028f9b1c8eec253d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa979800_0466fa04",
         "filename": "board/reef/gpio.inc",
         "patchSetId": 3
@@ -47,6 +83,30 @@
       "writtenOn": "2016-07-08T18:01:24Z",
       "side": 1,
       "message": "Where is the pullup? Also, where are you gating the presense of pp5000 on the enable signals?",
+      "range": {
+        "startLine": 122,
+        "startChar": 21,
+        "endLine": 122,
+        "endChar": 28
+      },
+      "revId": "bac5c0621ea78abd441eeb19028f9b1c8eec253d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_bf98f930",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-16T04:54:20Z",
+      "side": 1,
+      "message": "Internal pull-up. Also updated to GPIO_ODR_HIGH. I was misreading the schematic earlier, we should set the pin in hi-z to come up with these disabled.",
+      "parentUuid": "fa979800_0466fa04",
       "range": {
         "startLine": 122,
         "startChar": 21,
