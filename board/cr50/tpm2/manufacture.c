@@ -383,6 +383,9 @@ static int store_cert(enum cros_perso_component_type component_type,
 	TPMA_NV space_attributes;
 	NV_Write_In in;
 
+	memset(&define_space, 0, sizeof(define_space));
+	memset(&space_attributes, 0, sizeof(space_attributes));
+
 	/* Indicate that a system reset has occurred, and currently
 	 * running with Platform auth.
 	 */
