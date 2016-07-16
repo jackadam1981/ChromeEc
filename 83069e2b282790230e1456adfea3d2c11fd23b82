@@ -94,6 +94,30 @@
       "revId": "83069e2b282790230e1456adfea3d2c11fd23b82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_9f853625",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-16T00:19:43Z",
+      "side": 1,
+      "message": "Ah, okay. Thanks for the explanations of the side effects. By all means, we should do it the correct way according to Rockchip. But there must be some subset of signals that we enable in some order for each state.\n\nOr maybe we\u0027d say that this SoC boots from hard-off(G3)/soft-off(S5) directly to S0.",
+      "parentUuid": "5ab18456_bfd3da69",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 41
+      },
+      "revId": "83069e2b282790230e1456adfea3d2c11fd23b82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
