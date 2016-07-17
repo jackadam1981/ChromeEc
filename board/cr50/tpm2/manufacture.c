@@ -401,6 +401,7 @@ static int store_cert(enum cros_perso_component_type component_type,
 	NV_DefineSpace_In define_space;
 	TPMA_NV space_attributes;
 	NV_Write_In in;
+	int rv;
 
 	/* Clear up structures potentially uszed only partially. */
 	memset(&define_space, 0, sizeof(define_space));
@@ -455,10 +456,10 @@ static int store_cert(enum cros_perso_component_type component_type,
 	memcpy(in.data.t.buffer, cert->cert, cert->cert_len);
 	in.offset = 0;
 
-	if (TPM2_NV_Write(&in) == TPM_RC_SUCCESS)
-		return 1;
-	else
-		return 0;
+	rv = TPM2_NV_Write(&in) == TPM_RC_SUCCESS;
+	rv &= _plat__NvCommit() == EC_SUCCESS;
+
+	return rv;
 }
 
 static uint32_t hw_key_ladder_step(uint32_t cert)
@@ -602,7 +603,7 @@ static int store_eps(uint8_t eps[PRIMARY_SEED_SIZE])
 
 	/* Persist the seed to flash. */
 	NvWriteReserved(NV_EP_SEED, &gp.EPSeed);
-	return 1;
+	return _plat__NvCommit() == EC_SUCCESS;
 }
 
 static void manufacture_complete(void)
