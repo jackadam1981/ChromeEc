@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_e23ca686",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-07-17T03:26:31Z",
+      "side": 1,
+      "message": "I\u0027m assuming that TPM_Manufacture(1) writes a non 0xFF value at offset 0?  Good enough for now I guess...",
+      "revId": "98f1c8b97f75a81f251d97d7502ffb26110c7e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
