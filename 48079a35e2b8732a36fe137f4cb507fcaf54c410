@@ -16,6 +16,24 @@
       "revId": "48079a35e2b8732a36fe137f4cb507fcaf54c410",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_c26fe274",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-17T04:31:34Z",
+      "side": 1,
+      "message": "I don\u0027t think  it belongs here. I think eventually we should make init_runlevel() public and use it in tpm_manufactured() to reduce current privilege level.",
+      "parentUuid": "5ab18456_8275da48",
+      "revId": "48079a35e2b8732a36fe137f4cb507fcaf54c410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
