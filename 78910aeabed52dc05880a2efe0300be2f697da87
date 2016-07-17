@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_25c4f870",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-17T18:31:28Z",
+      "side": 1,
+      "message": "doing bitwise-\u0026 on return codes seem fragile. What if NvCommit() decides to return 2 for success?",
+      "revId": "78910aeabed52dc05880a2efe0300be2f697da87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
