@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_c521ac44",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-07-17T17:07:02Z",
+      "side": 1,
+      "message": "Not sure what the convention is, g_error_code?",
+      "range": {
+        "startLine": 127,
+        "startChar": 16,
+        "endLine": 127,
+        "endChar": 26
+      },
+      "revId": "e18fd1fd2f6794d88a2b8dda317931a61d2cdeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
