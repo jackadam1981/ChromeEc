@@ -16,6 +16,24 @@
       "revId": "dd4c0d87f2db2e935190de5d8bef6063cff68eab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_65fba0c2",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-07-17T16:36:16Z",
+      "side": 0,
+      "message": "phi is supposed to equal N at the end of this block, i.e. add here is complementary to the sub above.  The mul takes care of setting phi to N.",
+      "parentUuid": "5ab18456_a2d0de28",
+      "revId": "dd4c0d87f2db2e935190de5d8bef6063cff68eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
