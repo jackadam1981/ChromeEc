@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_a2af3ef4",
+        "filename": "board/reef/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-07-17T01:09:23Z",
+      "side": 1,
+      "message": "Is it easier to just obsolete the old boards and squash all new board-related changes into a single CL? Then, if someone does want to build for a proto board, they can just revert a single CL.",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "fd9f9e6385cfa3ca92f8e4b6343526e8e70ffa56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
