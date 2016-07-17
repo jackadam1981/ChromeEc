@@ -16,6 +16,24 @@
       "revId": "98f1c8b97f75a81f251d97d7502ffb26110c7e13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_22198e27",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-17T04:52:32Z",
+      "side": 1,
+      "message": "yes, it writes zero at this offset as a part of NVRAM initialization procedure.",
+      "parentUuid": "5ab18456_e23ca686",
+      "revId": "98f1c8b97f75a81f251d97d7502ffb26110c7e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
