@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "5ab18456_94cd146b",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-18T20:01:20Z",
+      "side": 1,
+      "message": "What space constraints? The types used in the table taking up too much space?",
+      "parentUuid": "5ab18456_739533f7",
+      "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ab18456_f05f59c9",
         "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
         "patchSetId": 5
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "Since we lose a bit of precision in the above division, the next couple lines will increment step_mv if doing so brings the result of v0 + (step_mv * num_steps) closer to v1, even if it means overshooting by a bit. The rationale is that it\u0027s better to report slightly higher temperature than slightly lower temperature. BTW - Shawn\u0027s suggestion in #4 might obviate the need for this.\n\nExample:\n{ 1000, 50 }  /* 1000mV, 50C */\n{ 1991, 70 }  /* 1991mV, 70C */\n\nnum_steps \u003d 20\nstep_mv \u003d 49mV\n\nHowever, 1000 + (20 * 49) \u003d 1980, so we\u0027d end up underreporting temperature if the input voltage is something like 1989.\n\nSo the next two lines will calculate the difference if we increment step_mv or not, and increment step_mv if it makes sense to do so:\nd0 \u003d 1991 - (1000 + 49 * 20) \u003d 11\nd1 \u003d (1000 + (49 + 1) * 20)) - 1991 \u003d 9\n\nSince d1 \u003c d0, we know that if we increment step_mv then we get slightly better precision and avoid underreporting temperature.",
       "parentUuid": "5ab18456_705369cd",
+      "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_541e0cb6",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-18T20:01:20Z",
+      "side": 1,
+      "message": "So please explain that you are targeting closest value based of MIN(understhoot delta, overshoot delta); I don\u0027t see anything in this logic that targets the higher end of the curve.\n\nBut presumably you\u0027d not have this issue if you use a type with more precision to begin with?",
+      "parentUuid": "5ab18456_aed0ce01",
       "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
