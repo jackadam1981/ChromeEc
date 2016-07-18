@@ -16,6 +16,24 @@
       "revId": "545e84c1715439934414cb011c313229f4b92b41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_a83f1d12",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2720,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-18T15:38:09Z",
+      "side": 1,
+      "message": "Just note that they\u0027re deprecated.\n\nWe should not remove them entirely; there are launched systems which support them but not I2C_PASSTHRU.",
+      "parentUuid": "1a570ceb_52401223",
+      "revId": "545e84c1715439934414cb011c313229f4b92b41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
