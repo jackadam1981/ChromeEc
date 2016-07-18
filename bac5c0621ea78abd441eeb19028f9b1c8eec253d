@@ -116,6 +116,30 @@
       "revId": "bac5c0621ea78abd441eeb19028f9b1c8eec253d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_34eb8880",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-18T20:10:12Z",
+      "side": 1,
+      "message": "If you drive it low the voltage will be off. If there\u0027s an internal pullup it should be specified in this config.",
+      "parentUuid": "5ab18456_bf98f930",
+      "range": {
+        "startLine": 122,
+        "startChar": 21,
+        "endLine": 122,
+        "endChar": 28
+      },
+      "revId": "bac5c0621ea78abd441eeb19028f9b1c8eec253d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
