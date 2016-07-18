@@ -22,6 +22,7 @@
 /* The UART console is on USART1 (PA9/PA10) */
 #undef CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 1
+#define CONFIG_EXPERIMENTAL_CONSOLE
 
 /* Optional features */
 #define CONFIG_STM_HWTIMER32
@@ -34,7 +35,6 @@
 
 /* USB interface indexes (use define rather than enum to expand them) */
 #define USB_IFACE_USART4_STREAM  0
-#define USB_IFACE_GPIO    1
 #define USB_IFACE_SPI     2
 #define USB_IFACE_CONSOLE 3
 #define USB_IFACE_I2C     4
@@ -45,16 +45,12 @@
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL 0
 #define USB_EP_USART4_STREAM  1
-#define USB_EP_GPIO    2
 #define USB_EP_SPI     3
 #define USB_EP_CONSOLE 4
 #define USB_EP_I2C     5
 #define USB_EP_USART3_STREAM  6
 #define USB_EP_USART2_STREAM  7
 #define USB_EP_COUNT   8
-
-/* Enable control of GPIOs over USB */
-#define CONFIG_USB_GPIO
 
 /* Enable console recasting of GPIO type. */
 #define CONFIG_CMD_GPIO_EXTENDED
