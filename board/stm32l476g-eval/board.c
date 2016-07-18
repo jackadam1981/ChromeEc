@@ -7,6 +7,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
+
 #include "gpio_list.h"
 
 void tick_event(void)

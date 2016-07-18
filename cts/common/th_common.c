@@ -34,3 +34,11 @@ enum cts_rc sync(void)
 
 	return CTS_RC_SUCCESS;
 }
+
+/*
+ * Dummy interrupt handler. It's supposed to be overwritten by each suite
+ * if needed.
+ */
+__attribute__((weak)) void cts_notify(enum gpio_signal signal)
+{
+}
