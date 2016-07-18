@@ -107,6 +107,10 @@
  * specific drivers for each module.
  */
 #undef CONFIG_ALS
+
+/* Delay time for ALS initialize after resume */
+#undef CONFIG_ALS_INIT_DELAY_MS
+
 #undef CONFIG_ALS_ISL29035
 #undef CONFIG_ALS_OPT3001
 /* Define the exact model ID present on the board: SI1141 = 41, SI1142 = 42, */

@@ -54,6 +54,10 @@ static void als_task_enable(void)
 	int err;
 	int i;
 
+#ifdef CONFIG_ALS_INIT_DELAY_MS
+	msleep(CONFIG_ALS_INIT_DELAY_MS);
+#endif
+
 	for (i = 0; i < EC_ALS_ENTRIES && i < ALS_COUNT; i++) {
 		err = als[i].init();
 		if (err) {
