@@ -150,9 +150,10 @@ static inline unsigned time_since32(timestamp_t start)
 }
 
 /**
- * Returns a free running high resolution (ten us or better) clock.
+ * Returns a free running clock tick counter.  To be combined with
+ * CONFIG_CLOCKS_PER_SEC to get a time measurement.
  *
- * Used by third party libraries requiring MSDN services.
+ * This function used by third party libraries requiring MSDN services.
  */
 clock_t clock(void);
 
