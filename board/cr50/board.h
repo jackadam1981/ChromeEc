@@ -86,6 +86,11 @@
 /* Include crypto stuff, both software and hardware. */
 #define CONFIG_DCRYPTO
 
+/* Configuration for MSDN clock() function; third_party/tpm2 code
+ * expects a millisecond resolution counter from clock().
+ */
+#define CONFIG_CLOCKS_PER_SEC  1000
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"

@@ -183,10 +183,14 @@ timestamp_t get_time(void)
 	return ts;
 }
 
+#ifdef CONFIG_CLOCKS_PER_SEC
+#define USEC_PER_CLOCK (1000000 / CONFIG_CLOCKS_PER_SEC)
 clock_t clock(void)
 {
-	return (clock_t) __hw_clock_source_read();
+	/* __hw_clock_source_read() returns a microsecond resolution timer.*/
+	return (clock_t) __hw_clock_source_read() / USEC_PER_CLOCK;
 }
+#endif
 
 void force_time(timestamp_t ts)
 {
