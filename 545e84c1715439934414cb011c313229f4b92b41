@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a570ceb_52401223",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2720,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-07-18T02:14:12Z",
+      "side": 1,
+      "message": "Or we could just comment them out. I guess we still want to make sure we do not reuse these numbers, for now.",
+      "revId": "545e84c1715439934414cb011c313229f4b92b41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
