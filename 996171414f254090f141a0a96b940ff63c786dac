@@ -22,6 +22,30 @@
       "revId": "996171414f254090f141a0a96b940ff63c786dac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_889fb478",
+        "filename": "driver/tcpm/anx74xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-18T21:59:20Z",
+      "side": 0,
+      "message": "I\u0027d be fine with that approach, too. However I didn\u0027t see an option to set polarity on the PS8751, so I\u0027m not sure if it\u0027s really common enough to be included in that struct.",
+      "parentUuid": "5ab18456_c82701a6",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "996171414f254090f141a0a96b940ff63c786dac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
