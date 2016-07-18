@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa69c26_94708ac3",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-18T04:13:38Z",
+      "side": 1,
+      "message": "this implementation is common for all EC boards, it can\u0027t be changed just because cr50 needs something different.",
+      "revId": "3bb25b81a8b2d9451feb1a384252b27781f42740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
