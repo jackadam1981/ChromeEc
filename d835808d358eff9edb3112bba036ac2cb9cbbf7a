@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5ab18456_73040a11",
+        "filename": "board/asuka/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-07-18T17:25:07Z",
+      "side": 1,
+      "message": "Before we were checking for is_real_port \u003d\u003d 1, now we\u0027re checking is_real_port \u003d\u003d 0. I think the old way was correct, the reason for the check is to not source and sink from the same port. And, there\u0027s no reason to reject \"charge from no port\" (is_real_port \u003d\u003d 0).",
+      "parentUuid": "1a570ceb_52857221",
+      "range": {
+        "startLine": 523,
+        "startChar": 6,
+        "endLine": 523,
+        "endChar": 18
+      },
+      "revId": "d835808d358eff9edb3112bba036ac2cb9cbbf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ab18456_489e71d1",
         "filename": "board/asuka/board.c",
         "patchSetId": 2
