@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5ab18456_08fbc97f",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-18T01:59:21Z",
+      "side": 0,
+      "message": "why is bn_mul() being dropped here?",
+      "revId": "dd4c0d87f2db2e935190de5d8bef6063cff68eab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ab18456_a2d0de28",
         "filename": "chip/g/dcrypto/rsa.c",
         "patchSetId": 2
