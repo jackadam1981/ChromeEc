@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa306fe9_8cde8701",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-07-18T23:07:53Z",
+      "side": 1,
+      "message": "Joe, do we want to leave this PU enabled while we do measurement on the other CC line? Probably we don\u0027t want to enable the PU if we\u0027ve turned on VCONN. What\u0027s the reason for enabling both PUs during measurement?",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 31
+      },
+      "revId": "f655cceab10d49c941f510040b830369859d75bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
