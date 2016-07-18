@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_c8d0a103",
+        "filename": "board/cr50/tpm2/manufacture.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-18T01:57:40Z",
+      "side": 0,
+      "message": "Please restore the order of attribute assignments which are not removed, it makes the patch much easier to review. \n\nAlso, this needs to be tested on a chrome os device.",
+      "revId": "da69b8bd1d7568ef1aaa59d5093544f38d5617f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
