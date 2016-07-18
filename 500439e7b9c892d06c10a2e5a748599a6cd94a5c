@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1a38b3_9b0aeece",
+        "filename": "board/amenia/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-07-18T16:57:35Z",
+      "side": 1,
+      "message": "How about just BD99955_CHARGE_PORT_0 / 1? And maybe they should be CONFIGs?",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "500439e7b9c892d06c10a2e5a748599a6cd94a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1a38b3_3b05baba",
+        "filename": "board/reef/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-07-18T16:57:35Z",
+      "side": 1,
+      "message": "Can you just use the constants you defied in the header here? Then, this doesn\u0027t need to be declared extern. It would also be fine to add a pd_port-to-port inline function to the bd99955 driver to do table lookup.",
+      "range": {
+        "startLine": 116,
+        "startChar": 17,
+        "endLine": 116,
+        "endChar": 40
+      },
+      "revId": "500439e7b9c892d06c10a2e5a748599a6cd94a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
