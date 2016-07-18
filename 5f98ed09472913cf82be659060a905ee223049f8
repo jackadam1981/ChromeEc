@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_f499003b",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-18T20:14:02Z",
+      "side": 1,
+      "message": "Don\u0027t you need to specify a flag to enable the internal pullup? Turning off would be to drive it low.",
+      "range": {
+        "startLine": 140,
+        "startChar": 27,
+        "endLine": 140,
+        "endChar": 39
+      },
+      "revId": "5f98ed09472913cf82be659060a905ee223049f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
