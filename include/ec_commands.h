@@ -2712,33 +2712,15 @@ enum gpio_get_subcmd {
 /* I2C commands. Only available when flash write protect is unlocked. */
 
 /*
- * TODO(crosbug.com/p/23570): These commands are deprecated, and will be
- * removed soon.  Use EC_CMD_I2C_PASSTHRU instead.
+ * TODO(crosbug.com/p/23570): These commands are deprecated, and have been
+ * removed on newer ECs.  Use EC_CMD_I2C_PASSTHRU instead.
  */
 
 /* Read I2C bus */
-#define EC_CMD_I2C_READ 0x94
-
-struct ec_params_i2c_read {
-	uint16_t addr; /* 8-bit address (7-bit shifted << 1) */
-	uint8_t read_size; /* Either 8 or 16. */
-	uint8_t port;
-	uint8_t offset;
-} __packed;
-struct ec_response_i2c_read {
-	uint16_t data;
-} __packed;
+#define EC_CMD_I2C_READ_DEPRECATED 0x94
 
 /* Write I2C bus */
-#define EC_CMD_I2C_WRITE 0x95
-
-struct ec_params_i2c_write {
-	uint16_t data;
-	uint16_t addr; /* 8-bit address (7-bit shifted << 1) */
-	uint8_t write_size; /* Either 8 or 16. */
-	uint8_t port;
-	uint8_t offset;
-} __packed;
+#define EC_CMD_I2C_WRITE_DEPRECATED 0x95
 
 /*****************************************************************************/
 /* Charge state commands. Only available when flash write protect unlocked. */
