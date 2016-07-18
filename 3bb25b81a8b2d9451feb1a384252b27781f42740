@@ -34,6 +34,24 @@
       "revId": "3bb25b81a8b2d9451feb1a384252b27781f42740",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa69c26_d4533227",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-18T04:27:05Z",
+      "side": 1,
+      "message": "but even for the same chip other parts of the code expect this to be microseconds, let me look at the tpm2 side.",
+      "parentUuid": "9aa69c26_b454a613",
+      "revId": "3bb25b81a8b2d9451feb1a384252b27781f42740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
