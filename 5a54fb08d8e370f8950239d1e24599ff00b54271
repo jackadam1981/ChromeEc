@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ad7287f_81d95e58",
+        "filename": "chip/nrf51/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-18T23:09:08Z",
+      "side": 0,
+      "message": "Why don\u0027t you remove this macro from board.h entirely?",
+      "range": {
+        "startLine": 43,
+        "startChar": 27,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "5a54fb08d8e370f8950239d1e24599ff00b54271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
