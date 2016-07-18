@@ -93,6 +93,29 @@
       "revId": "1aa3a41b820d5236ecb4c00da83685a0a5aa338c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa306fe9_ec5aabf8",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-18T23:38:46Z",
+      "side": 1,
+      "message": "? extraneous brace?",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 2
+      },
+      "revId": "1aa3a41b820d5236ecb4c00da83685a0a5aa338c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
