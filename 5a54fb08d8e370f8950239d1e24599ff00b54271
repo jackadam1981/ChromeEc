@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ab8503d_c6709bc4",
+        "filename": "chip/nrf51/ppi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-18T23:09:04Z",
+      "side": 1,
+      "message": "Where is the origin of the code?",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "5a54fb08d8e370f8950239d1e24599ff00b54271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a3d5fbd_70a690ac",
+        "filename": "chip/nrf51/ppi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-18T23:09:04Z",
+      "side": 1,
+      "message": "Shall we use a macro and move it higher to make it more visible?",
+      "range": {
+        "startLine": 30,
+        "startChar": 23,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "5a54fb08d8e370f8950239d1e24599ff00b54271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
