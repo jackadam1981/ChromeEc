@@ -45,6 +45,75 @@
       "revId": "5a54fb08d8e370f8950239d1e24599ff00b54271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa306fe9_ccc7ef0c",
+        "filename": "chip/nrf51/ppi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-18T23:13:47Z",
+      "side": 1,
+      "message": "NRF51_PPI_NUM_GRPS ?",
+      "range": {
+        "startLine": 56,
+        "startChar": 25,
+        "endLine": 56,
+        "endChar": 26
+      },
+      "revId": "5a54fb08d8e370f8950239d1e24599ff00b54271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa306fe9_0c7857f4",
+        "filename": "chip/nrf51/ppi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-18T23:13:47Z",
+      "side": 1,
+      "message": "Update copyright header to 2016 and drop the (c).",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "5a54fb08d8e370f8950239d1e24599ff00b54271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa306fe9_2c4af3b1",
+        "filename": "chip/nrf51/ppi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-18T23:13:47Z",
+      "side": 1,
+      "message": "Please add comments to these declarations.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "5a54fb08d8e370f8950239d1e24599ff00b54271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
