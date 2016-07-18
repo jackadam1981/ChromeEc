@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ab18456_73052a44",
+        "filename": "board/amenia/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-07-18T16:59:15Z",
+      "side": 1,
+      "message": "Thinking about this more, it\u0027s probably better to add a single config (....PRIMARY_CHARGE_PORT_VCC/VBUS) to indicate that port 0 is VCC/VBUS (if not defined, it will indicate the opposite).",
+      "parentUuid": "fa1a38b3_9b0aeece",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "500439e7b9c892d06c10a2e5a748599a6cd94a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1a38b3_3b05baba",
         "filename": "board/reef/usb_pd_policy.c",
         "patchSetId": 3
