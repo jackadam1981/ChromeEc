@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a570ceb_3272ae5f",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-07-18T08:43:41Z",
+      "side": 1,
+      "message": "Whoops, you are forgetting to unlock the mutex, here...",
+      "revId": "707b118f187f76175485c69b79508dfeacd63f20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
