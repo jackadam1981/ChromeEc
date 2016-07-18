@@ -185,7 +185,8 @@ timestamp_t get_time(void)
 
 clock_t clock(void)
 {
-	return (clock_t) __hw_clock_source_read();
+	/* Return a millisecond resolution clock. */
+	return (clock_t) __hw_clock_source_read() / 1000;
 }
 
 void force_time(timestamp_t ts)

@@ -150,7 +150,7 @@ static inline unsigned time_since32(timestamp_t start)
 }
 
 /**
- * Returns a free running high resolution (ten us or better) clock.
+ * Returns a free running millisecond resolution clock.
  *
  * Used by third party libraries requiring MSDN services.
  */
