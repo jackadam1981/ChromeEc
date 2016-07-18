@@ -22,6 +22,30 @@
       "revId": "fd9f9e6385cfa3ca92f8e4b6343526e8e70ffa56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_0be1fe07",
+        "filename": "board/reef/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-18T22:25:27Z",
+      "side": 1,
+      "message": "I was actually thinking of something similar, but instead there would be a single patch that undoes changes for newer boards in order to make proto boards work.\n\nOnly problem is that it would probably need to be rebased occasionally. Changing a #define in ToT seemed easier than cherry-picking a patch and dealing with potential conflicts.\n\nI was also thinking that the user could just add EXTRA_CFLAGS\u003d-D\u0027IS_PROTO\u003d1\u0027 to the build command, but that didn\u0027t quite work because board/\u003cboard\u003e/config.h is processed before EXTRA_CFLAGS. I\u0027m not sure if we want to update Makefile.toolchain for this or if doing so would have some other impact, but it seems like a useful idea in general. \n\nMaybe we can introduce a CONFIG_OVERRIDE environment variable in BUILD_CPPFLAGS for this sort of thing so that the user easily can tweak certain options at build time (documented in the C\u0026F guide) and we\u0027d guard the config variable (IS_PROTO) with #ifndef.",
+      "parentUuid": "5ab18456_a2af3ef4",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "fd9f9e6385cfa3ca92f8e4b6343526e8e70ffa56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
