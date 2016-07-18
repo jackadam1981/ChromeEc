@@ -2177,6 +2177,11 @@
 #undef CONFIG_NON_HC_FW_UPDATE
 #undef CONFIG_USB_FW_UPDATE
 
+/* Board specific multiplier constant for the MSDN clock() function:
+ *   https://msdn.microsoft.com/en-us/library/4e2ess30.aspx
+ */
+#undef CONFIG_CLOCKS_PER_SEC
+
 /*****************************************************************************/
 /*
  * Include board and core configs, since those hold the CONFIG_ constants for a

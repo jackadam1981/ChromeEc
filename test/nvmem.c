@@ -60,11 +60,13 @@ static int generate_random_data(int offset, int num_bytes)
 {
 	int m, n, limit;
 	uint32_t r_data;
+	timestamp_t current;
 
 	/* Ensure it will fit in the write buffer */
 	TEST_ASSERT((num_bytes + offset) <= NVMEM_PARTITION_SIZE);
 	/* Seed random number sequence */
-	r_data = prng((uint32_t)clock());
+	current = get_time();
+	r_data = prng((uint32_t)current.val);
 	m = 0;
 	while (m < num_bytes) {
 		r_data = prng(r_data);
