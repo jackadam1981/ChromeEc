@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_f3dbda58",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-07-18T18:03:09Z",
+      "side": 1,
+      "message": "This function really doesn\u0027t work as described. You\u0027re assuming that if the battery is at \u003e 1% then it\u0027s using all available input current, right? But that doesn\u0027t always hold true, eg. with a full battery.",
+      "range": {
+        "startLine": 430,
+        "startChar": 3,
+        "endLine": 430,
+        "endChar": 60
+      },
+      "revId": "fc49523c4ac1425c7632012e1590897c91c177bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
