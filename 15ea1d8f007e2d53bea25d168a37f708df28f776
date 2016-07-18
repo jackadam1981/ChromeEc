@@ -22,6 +22,29 @@
       "revId": "15ea1d8f007e2d53bea25d168a37f708df28f776",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_a8539dcb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-07-18T16:22:35Z",
+      "side": 1,
+      "message": "If the battery doesn\u0027t request 0V and 0A at 0% charge then why add this config?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "15ea1d8f007e2d53bea25d168a37f708df28f776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
