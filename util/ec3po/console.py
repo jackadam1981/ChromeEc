@@ -81,6 +81,7 @@ class ControlKey(object):
   CTRL_P = 0x10
   CARRIAGE_RETURN = 0x0d
   ESC = 0x1b
+  NEWLINE = 0x0a
 
 
 class Console(object):
@@ -486,7 +487,7 @@ class Console(object):
       os.write(self.master_pty, chr(byte))
       return
 
-    if byte == ControlKey.CARRIAGE_RETURN:
+    if byte == ControlKey.CARRIAGE_RETURN or byte == ControlKey.NEWLINE:
       if self.receiving_oobm_cmd:
         # Terminate the command and place it in the OOBM queue.
         self.logger.debug('End OOBM command.')
