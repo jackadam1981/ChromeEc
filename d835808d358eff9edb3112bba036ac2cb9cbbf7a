@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_28f5edef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-07-18T16:19:47Z",
+      "side": 1,
+      "message": "You should test various charging scenarios as well.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "d835808d358eff9edb3112bba036ac2cb9cbbf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_685c1505",
+        "filename": "board/asuka/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-07-18T16:19:47Z",
+      "side": 1,
+      "message": "I think you inverted the logic here.",
+      "range": {
+        "startLine": 523,
+        "startChar": 6,
+        "endLine": 523,
+        "endChar": 18
+      },
+      "revId": "d835808d358eff9edb3112bba036ac2cb9cbbf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_489e71d1",
+        "filename": "board/asuka/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-07-18T16:19:47Z",
+      "side": 1,
+      "message": "\"Disable port\".",
+      "range": {
+        "startLine": 531,
+        "startChar": 5,
+        "endLine": 531,
+        "endChar": 23
+      },
+      "revId": "d835808d358eff9edb3112bba036ac2cb9cbbf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
