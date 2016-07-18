@@ -499,6 +499,9 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, motion_sense_suspend,
 static void motion_sense_resume(void)
 {
 	sensor_active = SENSOR_ACTIVE_S0;
+#ifdef CONFIG_MOTION_SENSORS_INIT_DELAY_MS
+	msleep(CONFIG_MOTION_SENSORS_INIT_DELAY_MS);
+#endif
 	motion_sense_switch_sensor_rate();
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, motion_sense_resume,

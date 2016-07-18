@@ -1400,6 +1400,9 @@
 /* Microchip EC SRAM size */
 #undef CONFIG_MEC_SRAM_SIZE
 
+/* Delay time for motion sensors */
+#undef CONFIG_MOTION_SENSORS_INIT_DELAY_MS
+
 /*
  * Define Megachips DisplayPort to HDMI protocol converter/level shifter serial
  * interface.
