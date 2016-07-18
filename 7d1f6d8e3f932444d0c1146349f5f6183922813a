@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab18456_48330c55",
+        "filename": "cts/common/cts.error_codes",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-18T21:07:40Z",
+      "side": 1,
+      "message": "I\u0027m wondering if we need to use macro here or not. This file is included only by cts_common.h. So, we can literally write what CTS_ERROR_CODE(x) would output:\n\nCTS_RC_SUCCESS,\nCTS_RC_FAILURE,\nCTS_RC_...\n\nMacro is useful but it disturbs code reading. A developer starts reading dut.c and finds CTS_ERROR_UNKNOWN. S/he wants to know its value but grep will find it nowhere...",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "7d1f6d8e3f932444d0c1146349f5f6183922813a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_a8055846",
+        "filename": "cts/common/cts_common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-18T21:07:40Z",
+      "side": 1,
+      "message": "Let\u0027s rename it to cts_rc.",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 19
+      },
+      "revId": "7d1f6d8e3f932444d0c1146349f5f6183922813a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
