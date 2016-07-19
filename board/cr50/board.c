@@ -214,8 +214,8 @@ void sys_rst_asserted(enum gpio_signal signal)
 	if (ap_spi_update_in_progress())
 		return;
 
-	cflush();
-	system_reset(0);
+	/* Re-initialize the TPM software state */
+	task_set_event(TASK_ID_TPM, TPM_EVENT_RESET, 0);
 }
 
 void nvmem_compute_sha(uint8_t *p_buf, int num_bytes,
