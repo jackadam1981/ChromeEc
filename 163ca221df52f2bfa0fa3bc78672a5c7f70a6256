@@ -16,6 +16,24 @@
       "revId": "163ca221df52f2bfa0fa3bc78672a5c7f70a6256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa306fe9_35d7d2f4",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-07-19T02:06:37Z",
+      "side": 1,
+      "message": "No, still needs CR in the command. From the code it looks like maybe this is just for oobm commands?",
+      "parentUuid": "aa306fe9_8fc559a5",
+      "revId": "163ca221df52f2bfa0fa3bc78672a5c7f70a6256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
