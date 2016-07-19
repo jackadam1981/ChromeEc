@@ -22,6 +22,30 @@
       "revId": "959dfe01b74c9a9064ea39f335791244746d083d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa306fe9_e68f621d",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-19T17:09:34Z",
+      "side": 1,
+      "message": "The assumption is made, but it would be better to explicitly define it. Or rather, should we just remove CONFIG_MKBP_EVENT altogether?",
+      "parentUuid": "aa306fe9_b5e182c5",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "959dfe01b74c9a9064ea39f335791244746d083d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
