@@ -23,7 +23,7 @@
 #include "usb-stream.h"
 #include "util.h"
 
-
+#include "gpio_list.h"
 
 /******************************************************************************
  * Forward UARTs as a USB serial interface.
