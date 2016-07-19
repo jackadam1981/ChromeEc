@@ -523,6 +523,13 @@ static void set_version_string(void)
 		 sh->img_chk_, system_get_version(SYSTEM_IMAGE_RW));
 }
 
+static void tpm_reset(void)
+{
+	sps_tpm_disable();
+	tpm_init();
+	sps_tpm_enable();
+}
+
 void tpm_task(void)
 {
 	set_version_string();
@@ -533,9 +540,14 @@ void tpm_task(void)
 		unsigned response_size;
 		uint32_t command_code;
 		struct tpm_cmd_header *tpmh;
+		uint32_t evt;
 
 		/* Wait for the next command event */
-		task_wait_event(-1);
+		evt = task_wait_event(-1);
+		if (evt & TPM_EVENT_RESET) {
+			tpm_reset();
+			continue;
+		}
 		tpmh = (struct tpm_cmd_header *)tpm_.regs.data_fifo;
 		command_code = be32toh(tpmh->command_code);
 		CPRINTF("%s: received fifo command 0x%04x\n",
