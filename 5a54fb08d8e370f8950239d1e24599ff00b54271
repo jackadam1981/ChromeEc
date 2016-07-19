@@ -22,6 +22,30 @@
       "revId": "5a54fb08d8e370f8950239d1e24599ff00b54271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa306fe9_a1e82478",
+        "filename": "chip/nrf51/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-19T18:14:39Z",
+      "side": 0,
+      "message": "Good catch! Done.",
+      "parentUuid": "7ad7287f_81d95e58",
+      "range": {
+        "startLine": 43,
+        "startChar": 27,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "5a54fb08d8e370f8950239d1e24599ff00b54271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
