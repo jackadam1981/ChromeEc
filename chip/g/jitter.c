@@ -24,6 +24,7 @@ void init_jittery_clock(int highsec)
 	unsigned setting = trimfast << 4;
 	unsigned stepx16;
 	unsigned bankval;
+
 	int bank;
 
 	if (highsec)
@@ -71,6 +72,8 @@ void init_sof_clock(void)
 	unsigned addOp      = 0x2 | 0x1 << 4;
 	unsigned nop        = 0;
 
+	uint64_t cutOff;
+
 	GREG32(XO, CLK_TIMER_RC_COARSE_ATE_TRIM) = coarseTrimVal;
 	GREG32(XO, CLK_TIMER_RC_FINE_ATE_TRIM) = fineTrimVal;
 
@@ -85,11 +88,14 @@ void init_sof_clock(void)
 	GREG32(XO, CLK_TIMER_SLOW_CALIB0) = targetCnt * 70 / 100;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB1) = targetCnt * 80 / 100;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB2) = targetCnt * 90 / 100;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB3) =
-		targetCnt * (1000000 - 1250) / 1000000;
+
+	cutOff = (uint64_t)targetCnt * (1000000 - 1250) / 1000000;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB3) = (uint32_t)cutOff;
+
 	GREG32(XO, CLK_TIMER_SLOW_CALIB4) = targetCnt;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB5) =
-		targetCnt * (1000000 + 1250) / 1000000;
+
+	cutOff = (uint64_t)targetCnt * (1000000 + 1250) / 1000000;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB5) = (uint32_t)cutOff;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB6) = targetCnt * 110 / 100;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB7) = targetCnt * 120 / 100;
 
