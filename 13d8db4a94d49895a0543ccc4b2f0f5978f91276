@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa306fe9_49dac674",
+        "filename": "cts/timer/th.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-19T21:01:07Z",
+      "side": 1,
+      "message": "May trigger watchdog?\n\nIs the interrupt latency on the TH low enough that we could just get the time in the GPIO interrupt handler rather than spin-waiting?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 3
+      },
+      "revId": "13d8db4a94d49895a0543ccc4b2f0f5978f91276",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
