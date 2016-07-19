@@ -46,6 +46,30 @@
       "revId": "cd3e738d21505545af0146e2b2605622f0caa06e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa306fe9_9b0c7791",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2016-07-19T16:03:15Z",
+      "side": 1,
+      "message": "lgtm.",
+      "parentUuid": "cac3e320_2da52d9b",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 1
+      },
+      "revId": "cd3e738d21505545af0146e2b2605622f0caa06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
