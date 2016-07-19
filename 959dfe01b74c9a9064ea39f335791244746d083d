@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa306fe9_b5e182c5",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-19T02:11:15Z",
+      "side": 1,
+      "message": "Now that we\u0027ve nuked the old keyboard state host command, isn\u0027t this guaranteed to be defined?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "959dfe01b74c9a9064ea39f335791244746d083d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
