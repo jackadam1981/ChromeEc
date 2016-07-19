@@ -24,6 +24,7 @@ void init_jittery_clock(int highsec)
 	unsigned setting = trimfast << 4;
 	unsigned stepx16;
 	unsigned bankval;
+
 	int bank;
 
 	if (highsec)
@@ -67,9 +68,9 @@ void init_sof_clock(void)
 	/* The possible operations of a particular calibration bucket */
 	unsigned binaryDnOp = 0x1 | 0x1 << 4;
 	unsigned binaryUpOp = 0x1 | 0x0 << 4;
-	unsigned subOp      = 0x3 | 0x1 << 4;
-	unsigned addOp      = 0x2 | 0x1 << 4;
 	unsigned nop        = 0;
+
+	uint64_t cutOff;
 
 	GREG32(XO, CLK_TIMER_RC_COARSE_ATE_TRIM) = coarseTrimVal;
 	GREG32(XO, CLK_TIMER_RC_FINE_ATE_TRIM) = fineTrimVal;
@@ -85,11 +86,14 @@ void init_sof_clock(void)
 	GREG32(XO, CLK_TIMER_SLOW_CALIB0) = targetCnt * 70 / 100;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB1) = targetCnt * 80 / 100;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB2) = targetCnt * 90 / 100;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB3) =
-		targetCnt * (1000000 - 1250) / 1000000;
+
+	cutOff = (uint64_t)targetCnt * (1000000 - 1250) / 1000000;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB3) = (uint32_t)cutOff;
+
 	GREG32(XO, CLK_TIMER_SLOW_CALIB4) = targetCnt;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB5) =
-		targetCnt * (1000000 + 1250) / 1000000;
+
+	cutOff = (uint64_t)targetCnt * (1000000 + 1250) / 1000000;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB5) = (uint32_t)cutOff;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB6) = targetCnt * 110 / 100;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB7) = targetCnt * 120 / 100;
 
@@ -97,10 +101,10 @@ void init_sof_clock(void)
 	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL0) = nop;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL1) = binaryDnOp;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL2) = binaryDnOp;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL3) = subOp;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL3) = binaryDnOp;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL4) = nop;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL5) = nop;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL6) = addOp;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL6) = binaryUpOp;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL7) = binaryUpOp;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL8) = binaryUpOp;
 
@@ -129,6 +133,26 @@ void init_sof_clock(void)
 	task_enable_irq(GC_IRQNUM_XO0_SLOW_CALIB_OVERFLOW_INT);
 }
 
+/* Disable and re-enable slow calibration */
+static void sof_cal_en_toggle(void)
+{
+	unsigned nops;
+
+	/* Disable calibration */
+	GWRITE_FIELD(XO, CLK_TIMER_CALIB_TRIM_CTRL, ENABLE_SLOW, 0);
+	GREG32(XO, CLK_TIMER_SYNC_CONTENTS) = 1;
+
+	/* Some dummy cycles in between to settle */
+	for(nops = 0; nops < 15; nops++) {
+		__asm__("nop");
+	}
+
+	/* Enable calibration */
+	GWRITE_FIELD(XO, CLK_TIMER_CALIB_TRIM_CTRL, ENABLE_SLOW, 1);
+	GREG32(XO, CLK_TIMER_SYNC_CONTENTS) = 1;
+}
+
+
 /* When the calibration under runs, it means the fine trim code
  * has reached 0, but the clock is still too slow.  Thus,
  * software must reduce the coarse trim code by 1 */
@@ -138,8 +162,14 @@ static void timer_sof_calibration_underrun_int(void)
 
 	CPRINTS("%s: 0x%02x", __func__, coarseTrimValue);
 
-	if (coarseTrimValue > 0x00)
+	if (coarseTrimValue > 0x00) {
 		GREG32(XO, CLK_TIMER_RC_COARSE_ATE_TRIM) = coarseTrimValue - 1;
+		/* Sync everything! */
+		GREG32(XO, CLK_TIMER_SYNC_CONTENTS) = 1;
+	}
+
+	/* toggle sof calibration to correctly set binary ceiling/floors */
+	sof_cal_en_toggle();
 
 	GREG32(XO, DXO_INT_STATE) =
 		GC_XO_DXO_INT_STATE_SLOW_CALIB_UNDERRUN_MASK;
@@ -153,17 +183,17 @@ DECLARE_IRQ(GC_IRQNUM_XO0_SLOW_CALIB_UNDERRUN_INT,
 static void timer_sof_calibration_overflow_int(void)
 {
 	unsigned coarseTrimValue = GREG32(XO, CLK_TIMER_RC_COARSE_ATE_TRIM);
-	unsigned max;
 
 	CPRINTS("%s: 0x%02x", __func__, coarseTrimValue);
 
-	if (GREAD_FIELD(XO, CLK_TIMER_CALIB_TRIM_CTRL, MAX_TRIM_SEL))
-		max = 0x1f;
-	else
-		max = 0xff;
-
-	if (coarseTrimValue < max)
+	if (coarseTrimValue < 0xFF) {
 		GREG32(XO, CLK_TIMER_RC_COARSE_ATE_TRIM) = coarseTrimValue + 1;
+		/* Sync everything! */
+		GREG32(XO, CLK_TIMER_SYNC_CONTENTS) = 1;
+	}
+
+	/* toggle sof calibration to correctly set binary ceiling/floors */
+	sof_cal_en_toggle();
 
 	GREG32(XO, DXO_INT_STATE) =
 		GC_XO_DXO_INT_STATE_SLOW_CALIB_OVERFLOW_MASK;
