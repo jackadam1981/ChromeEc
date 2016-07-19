@@ -41,7 +41,6 @@
 #define SUBCLASS USB_SUBCLASS_GOOGLE_CR50
 #define PROTOCOL USB_PROTOCOL_GOOGLE_CR50_NON_HC_FW_UPDATE
 
-
 /*
  * Need to create an entire TPM PDU when upgrading over /dev/tpm0 and need to
  * have space to prepare the entire PDU.
