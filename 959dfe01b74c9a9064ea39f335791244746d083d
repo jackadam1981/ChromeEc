@@ -46,6 +46,30 @@
       "revId": "959dfe01b74c9a9064ea39f335791244746d083d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa306fe9_5689411b",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-19T19:47:10Z",
+      "side": 1,
+      "message": "Decided to keep the define, but if CONFIG_KEYBOARD_PROTOCOL_MKBP is defined, define CONFIG_MKBP_EVENT as well.",
+      "parentUuid": "aa306fe9_e68f621d",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "959dfe01b74c9a9064ea39f335791244746d083d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
