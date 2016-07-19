@@ -18,6 +18,7 @@
 #include "task.h"
 #include "trng.h"
 #include "uartn.h"
+#include "upgrade_fw.h"
 #include "usb_descriptor.h"
 #include "usb_hid.h"
 #include "util.h"
@@ -46,6 +47,27 @@ uint32_t nvmem_user_sizes[NVMEM_NUM_USERS] = {
 	NVMEM_TPM_SIZE,
 	NVMEM_CR50_SIZE
 };
+
+
+/******************************************************************************
+ * Support firmware upgrade over USB. We can update whichever section is not
+ * the current section.
+ */
+
+/*
+ * This array defines possible sections available for the firmare update.
+ * The section which does not map the current executing code is picked as the
+ * valid update area. The values are offsets into the flash space.
+ */
+const struct section_descriptor board_rw_sections[] = {
+	{CONFIG_RW_MEM_OFF,
+	 CONFIG_RW_MEM_OFF + CONFIG_RW_SIZE},
+	{CONFIG_RW_B_MEM_OFF,
+	 CONFIG_RW_B_MEM_OFF + CONFIG_RW_SIZE},
+};
+const struct section_descriptor * const rw_sections = board_rw_sections;
+const int num_rw_sections = ARRAY_SIZE(board_rw_sections);
+
 
 /*
  * There's no way to trigger on both rising and falling edges, so force a
