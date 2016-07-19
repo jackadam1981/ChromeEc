@@ -22,6 +22,30 @@
       "revId": "cd3e738d21505545af0146e2b2605622f0caa06e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cac3e320_2da52d9b",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1128036
+      },
+      "writtenOn": "2016-07-19T07:23:18Z",
+      "side": 1,
+      "message": "You mean like this?\n\nint tcpci_tcpm_set_vconn(int port, int enable)\n{\n\tint reg, rv;\n\n\trv \u003d tcpc_read(port, TCPC_REG_POWER_CTRL, \u0026reg);\n\tif (rv)\n\t\treturn rv;\n\n\treg \u0026\u003d ~TCPC_REG_POWER_CTRL_VCONN(1);\n\treg |\u003d TCPC_REG_POWER_CTRL_VCONN(enable);\n\n\treturn tcpc_write(port, TCPC_REG_POWER_CTRL, reg);\n}\n\n@Rong\nIs this good?",
+      "parentUuid": "5ab18456_d43cbc86",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 1
+      },
+      "revId": "cd3e738d21505545af0146e2b2605622f0caa06e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
