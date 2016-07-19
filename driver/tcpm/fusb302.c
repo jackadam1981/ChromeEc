@@ -373,8 +373,6 @@ static int fusb302_tcpm_init(int port)
 
 	/* Create interrupt masks */
 	reg = 0xFF;
-	/* CC level changes */
-	reg &= ~TCPC_REG_MASK_BC_LVL;
 	/* collisions */
 	reg &= ~TCPC_REG_MASK_COLLISION;
 	/* misc alert */
@@ -844,11 +842,6 @@ void fusb302_tcpc_alert(int port)
 	tcpc_read(port, TCPC_REG_INTERRUPT, &interrupt);
 	tcpc_read(port, TCPC_REG_INTERRUPTA, &interrupta);
 	tcpc_read(port, TCPC_REG_INTERRUPTB, &interruptb);
-
-	if (interrupt & TCPC_REG_INTERRUPT_BC_LVL) {
-		/* CC Status change */
-		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
-	}
 
 	if (interrupt & TCPC_REG_INTERRUPT_COLLISION) {
 		/* packet sending collided */
