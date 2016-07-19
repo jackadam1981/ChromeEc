@@ -34,6 +34,24 @@
       "revId": "545e84c1715439934414cb011c313229f4b92b41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a570ceb_957504e5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2720,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-07-19T01:32:54Z",
+      "side": 1,
+      "message": "Restored the hunk, and improved the comment, PTAL.",
+      "parentUuid": "5ab18456_a83f1d12",
+      "revId": "545e84c1715439934414cb011c313229f4b92b41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
