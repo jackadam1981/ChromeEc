@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "aa306fe9_7250d063",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-07-19T00:57:53Z",
+      "side": 1,
+      "message": "I think this function should preserve the entry value of SWITCHES0, then in a copy, clear out both measure and pullup bits. Set the desired CC pull up and measure. Upon exit, restore SWITCHES0 to what was saved. This way we don\u0027t have to explicitly check for vconn_enabled here and is more consistent with the generic version of tcpm_get_cc()",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 36
+      },
+      "revId": "f655cceab10d49c941f510040b830369859d75bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa306fe9_8cde8701",
         "filename": "driver/tcpm/fusb302.c",
         "patchSetId": 2
