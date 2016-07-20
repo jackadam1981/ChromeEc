@@ -93,6 +93,30 @@
       "revId": "f8507313d0a706ef824afc9598c82ae50b787347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a0a5b5d_e3ca7a9b",
+        "filename": "chip/nrf51/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-20T21:51:28Z",
+      "side": 1,
+      "message": "\u0027#define NRF51_RADIO_END_BIT 3\u0027 seems enough. If I were debugging, I would want to verify these values at a grance. I don\u0027t see the equation in the TRM.",
+      "parentUuid": "0a0a5b5d_3892eda4",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 55
+      },
+      "revId": "f8507313d0a706ef824afc9598c82ae50b787347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
