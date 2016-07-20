@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0a0a5b5d_83672ef4",
+        "filename": "cts/common/cts.rc",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-07-20T21:40:50Z",
+      "side": 1,
+      "message": "I put unknown as 0 because cts.py treats it differently than the other error codes - essentially OR-ing it with other error codes, so I figured placing it at 0 was a way to prevent having to hard code the same unknown error code into the parser",
+      "parentUuid": "0a0a5b5d_f866a553",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "6c807cf08bed721801dde2b0048b872e86042fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a0a5b5d_f83d0514",
         "filename": "cts/cts.py",
         "patchSetId": 7
