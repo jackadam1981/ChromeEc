@@ -93,6 +93,30 @@
       "revId": "cf4ce0ee0ac0ebc33b6d189a0db0ecf43b012d1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a0a5b5d_aff699c6",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-20T18:11:35Z",
+      "side": 1,
+      "message": "\"btle\"?\n\nConsole channels haven\u0027t been scaling well.  There are some assumptions any given system has less than 32 of them.",
+      "parentUuid": "0a0a5b5d_ef126105",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "cf4ce0ee0ac0ebc33b6d189a0db0ecf43b012d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
