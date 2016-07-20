@@ -15,6 +15,7 @@
 #undef CONFIG_LID_SWITCH
 
 /* Flash configuration */
+#undef CONFIG_FLASH
 #undef CONFIG_FLASH_PSTATE
 /* TODO(crosbug.com/p/44745): Bringup only! Do the right thing for real! */
 #define CONFIG_WP_ALWAYS
