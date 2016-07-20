@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a0a5b5d_78ee35bb",
+        "filename": "cts/common/cts_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-20T20:13:49Z",
+      "side": 1,
+      "message": "I don\u0027t see other task handlers are declared (console_task, hook_task for example). To be consistent, let\u0027s not declare it. \n\nInterestingly, this should be \u0027int r(void *)\u0027 according to cortex-m/task.c but hook_task and console_task are defined as void r(void). Nevertheless, it\u0027s better not to touch it.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "cba8eb7fe9b28bca9b830585774708967c6947cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a0a5b5d_55569cd6",
+        "filename": "cts/gpio/cts.testlist",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-20T20:13:49Z",
+      "side": 1,
+      "message": "This file is already fixed. If you sync your local repo, these diffs should disappear.",
+      "revId": "cba8eb7fe9b28bca9b830585774708967c6947cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
