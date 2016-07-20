@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a0a5b5d_32084e32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-20T18:39:13Z",
+      "side": 1,
+      "message": "Do you think you can include the code actually using these macros to the CL?",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "f8507313d0a706ef824afc9598c82ae50b787347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a0a5b5d_52307204",
+        "filename": "chip/nrf51/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-20T18:39:13Z",
+      "side": 1,
+      "message": "These values are cryptic to me.",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 55
+      },
+      "revId": "f8507313d0a706ef824afc9598c82ae50b787347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
