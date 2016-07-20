@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a0a5b5d_f866a553",
+        "filename": "cts/common/cts.rc",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-20T20:22:28Z",
+      "side": 1,
+      "message": "Suggest swapping.\n\nIt\u0027s common convention that 0\u003dsuccess, non-zero\u003derror code.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "6c807cf08bed721801dde2b0048b872e86042fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a0a5b5d_f83d0514",
+        "filename": "cts/cts.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-20T20:22:28Z",
+      "side": 1,
+      "message": "Alphabetize imports",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "6c807cf08bed721801dde2b0048b872e86042fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a0a5b5d_58dd31d9",
+        "filename": "cts/cts.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-20T20:22:28Z",
+      "side": 1,
+      "message": "command_list?",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 13
+      },
+      "revId": "6c807cf08bed721801dde2b0048b872e86042fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
