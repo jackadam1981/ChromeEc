@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa306fe9_3ef2076d",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-20T03:51:41Z",
+      "side": 1,
+      "message": "Figured the enum name ought to change too. TBH I\u0027m not sure what the difference is between alert and IRQ, only that the former seems to be used in TCPC parlance.",
+      "range": {
+        "startLine": 164,
+        "startChar": 5,
+        "endLine": 164,
+        "endChar": 24
+      },
+      "revId": "89e82e9338a3cb5851bb393386f2e08eb8c099da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
