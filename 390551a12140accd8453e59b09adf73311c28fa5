@@ -22,6 +22,30 @@
       "revId": "390551a12140accd8453e59b09adf73311c28fa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa306fe9_9e557b55",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-20T03:46:43Z",
+      "side": 1,
+      "message": "Done.\n\nI was hoping to make these generic at some point. But for now they\u0027re TCPC-specific so your suggested naming scheme makes more sense.",
+      "parentUuid": "aa306fe9_bdfde0a3",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 15
+      },
+      "revId": "390551a12140accd8453e59b09adf73311c28fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
