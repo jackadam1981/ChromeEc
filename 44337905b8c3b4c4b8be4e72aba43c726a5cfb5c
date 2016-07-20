@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0a0a5b5d_527872f5",
+        "filename": "chip/nrf51/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-20T18:26:16Z",
+      "side": 1,
+      "message": "Thanks for spotting it!",
+      "parentUuid": "0a0a5b5d_72d776f3",
+      "range": {
+        "startLine": 321,
+        "startChar": 29,
+        "endLine": 321,
+        "endChar": 30
+      },
+      "revId": "44337905b8c3b4c4b8be4e72aba43c726a5cfb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a0a5b5d_8f4ab57c",
         "filename": "chip/nrf51/registers.h",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "I think the space after NRF51_RADIO_PCNF1_VAL makes the compiler think that the rest of the first line isn\u0027t parameters. If you kill the space, it might work.",
       "parentUuid": "0a0a5b5d_8f4ab57c",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 45
+      },
+      "revId": "44337905b8c3b4c4b8be4e72aba43c726a5cfb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a0a5b5d_f266c653",
+        "filename": "chip/nrf51/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-20T18:26:16Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "0a0a5b5d_0fe885e4",
       "range": {
         "startLine": 321,
         "startChar": 0,
