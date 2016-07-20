@@ -117,6 +117,30 @@
       "revId": "cf4ce0ee0ac0ebc33b6d189a0db0ecf43b012d1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a0a5b5d_234122f5",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-20T21:57:39Z",
+      "side": 1,
+      "message": "The radio on nRF51 can be used to implement multiple standards, but only one at a time.  I figured that that would be true of most chips that we\u0027d think of using.\n\nI was suprised that only some of these channels are protected with ifdefs, but I ran into the limit when I tried to add CC_RADIO without the ifdef for one of the boards (cr50?)",
+      "parentUuid": "0a0a5b5d_aff699c6",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "cf4ce0ee0ac0ebc33b6d189a0db0ecf43b012d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
