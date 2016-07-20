@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a0a5b5d_8f4ab57c",
+        "filename": "chip/nrf51/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-20T17:38:22Z",
+      "side": 1,
+      "message": "I can\u0027t find the error here, but I\u0027m not sure it\u0027s a false positive (PCNF0_VAL passes the check):\n\n  ERROR: Macros with complex values should be enclosed in parentheses\n  #95: FILE: chip/nrf51/registers.h:321:\n  +#define NRF51_RADIO_PCNF1_VAL (max_bytes, extra_bytes, ba_bytes, whiten) \\\n  +\t((max_bytes) \u003c\u003c NRF51_RADIO_PCNF1_MAXLEN_SHIFT | \\\n  +\t (extra_bytes) \u003c\u003c NRF51_RADIO_PCNF1_STATLEN_SHIFT | \\\n  +\t (ba_bytes) \u003c\u003c NRF51_RADIO_PCNF1_BALEN_SHIFT | \\\n  +\t ((whiten) ? NRF51_RADIO_PCNF1_WHITEEN : 0))",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 45
+      },
+      "revId": "44337905b8c3b4c4b8be4e72aba43c726a5cfb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
