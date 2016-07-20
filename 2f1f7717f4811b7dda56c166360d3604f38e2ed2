@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "aa306fe9_9884726f",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-20T02:10:38Z",
+      "side": 1,
+      "message": "Yep.",
+      "parentUuid": "5ab18456_94cd146b",
+      "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ab18456_f05f59c9",
         "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
         "patchSetId": 5
@@ -172,6 +190,24 @@
       "side": 1,
       "message": "So please explain that you are targeting closest value based of MIN(understhoot delta, overshoot delta); I don\u0027t see anything in this logic that targets the higher end of the curve.\n\nBut presumably you\u0027d not have this issue if you use a type with more precision to begin with?",
       "parentUuid": "5ab18456_aed0ce01",
+      "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa306fe9_82bc0385",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-20T02:10:38Z",
+      "side": 1,
+      "message": "No need - I went ahead and implemented Shawn\u0027s suggestion. It works very nicely and I was even able to tighten the tolerance in the unit test.",
+      "parentUuid": "5ab18456_541e0cb6",
       "revId": "2f1f7717f4811b7dda56c166360d3604f38e2ed2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
