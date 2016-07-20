@@ -117,6 +117,30 @@
       "revId": "f8507313d0a706ef824afc9598c82ae50b787347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_4e5d5352",
+        "filename": "chip/nrf51/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-20T23:25:33Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "0a0a5b5d_e3ca7a9b",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 55
+      },
+      "revId": "f8507313d0a706ef824afc9598c82ae50b787347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
