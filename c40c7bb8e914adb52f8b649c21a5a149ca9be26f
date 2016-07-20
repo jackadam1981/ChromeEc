@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa306fe9_c70fb632",
+        "filename": "chip/nrf51/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-20T17:06:36Z",
+      "side": 1,
+      "message": "How do you like these in registers.h?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "c40c7bb8e914adb52f8b649c21a5a149ca9be26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa306fe9_a70dca43",
+        "filename": "chip/nrf51/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-20T17:06:36Z",
+      "side": 1,
+      "message": "Maybe it\u0027s good time to macro all these zeros, too.",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 17
+      },
+      "revId": "c40c7bb8e914adb52f8b649c21a5a149ca9be26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
