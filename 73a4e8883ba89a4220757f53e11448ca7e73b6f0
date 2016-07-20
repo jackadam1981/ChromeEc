@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea8ee740_ae74f797",
+        "filename": "board/reef/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-20T23:46:07Z",
+      "side": 1,
+      "message": "Ravi looked into this some more and will submit a follow-up patch to split DPTF logic out from the common thermal code so that we don\u0027t need to include this table.",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 33
+      },
+      "revId": "73a4e8883ba89a4220757f53e11448ca7e73b6f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
