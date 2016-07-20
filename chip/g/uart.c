@@ -15,8 +15,12 @@
 
 static int done_uart_init_yet;
 
-#define USE_UART_INTERRUPTS (!(defined(CONFIG_CUSTOMIZED_RO) && \
-			       defined(SECTION_IS_RO)))
+#if !(defined(CONFIG_CUSTOMIZED_RO) && \
+			defined(SECTION_IS_RO))
+#define USE_UART_INTERRUPTS 1
+#else
+#define USE_UART_INTERRUPTS 0
+#endif
 #ifndef UARTN
 #define UARTN 0
 #endif

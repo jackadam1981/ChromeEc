@@ -15,6 +15,8 @@
 #include "timer.h"
 #include "util.h"
 
+#include "debug.h"
+
 typedef union {
 	struct {
 		/*
@@ -111,7 +113,7 @@ static void task_exit_trap(void)
 	.pc = (uint32_t)r,	\
 	.stack_size = s,	\
 },
-static const struct {
+struct {
 	uint32_t r0;
 	uint32_t pc;
 	uint16_t stack_size;
@@ -142,7 +144,11 @@ uint8_t task_stacks[0
 #undef TASK
 
 /* Reserve space to discard context on first context switch. */
-uint32_t scratchpad[17];
+uint32_t scratchpad[64] = {
+	0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+	0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+	0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+	0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff};
 
 static task_ *current_task = (task_ *)scratchpad;
 
@@ -251,10 +257,21 @@ void svc_handler(int desched, task_id_t resched)
 
 	current = current_task;
 
+	if (current == (task_ *)scratchpad) {
+		CPUTS("INIT task\n");
+		CFLUSH();
+	}
 #ifdef CONFIG_DEBUG_STACK_OVERFLOW
 	if (*current->stack != STACK_UNUSED_VALUE) {
+		CPUTS("\nSTACK_OVFL\n");
+
+		CPRINTF("&current->stack[0]=%p\n", &current->stack[0]);
+		CPRINTF("&current->stack=%p\n", &current->stack);
+		CPRINTF("current->stack=%x\n", (uint32_t)current->stack);
+		CPRINTF("*current->stack=%x\n", *current->stack);
+		CPRINTF("scratchpad=%p\n", &scratchpad[0]);
 		panic_printf("\n\nStack overflow in %s task!\n",
-			     task_names[current - tasks]);
+				task_names[current - tasks]);
 #ifdef CONFIG_SOFTWARE_PANIC
 		software_panic(PANIC_SW_STACK_OVERFLOW, current - tasks);
 #endif
@@ -302,6 +319,17 @@ void svc_handler(int desched, task_id_t resched)
 	task_switches++;
 #endif
 	current_task = next;
+
+#ifdef CONFIG_DEBUG_CLANG
+	{
+		task_id_t next_tid = next-tasks;
+
+		CPRINTF("next_tid=%x, next=%s\n", next_tid,
+				task_names[next_tid]);
+		CFLUSH();
+	}
+#endif
+
 	__switchto(current, next);
 }
 

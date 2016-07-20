@@ -14,6 +14,8 @@
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
+#include "debug.h"
+
 static int uart_enabled;
 
 struct uart_config {
@@ -86,11 +88,14 @@ void rdd_attached(void)
 	/* Indicate case-closed debug mode (active low) */
 	gpio_set_level(GPIO_CCD_MODE_L, 0);
 
+	CCPUTS(CC_USB, "rdd attached0->\n"); CFLUSH();
 	/* Enable CCD */
 	ccd_set_mode(CCD_MODE_ENABLED);
 
+	CCPUTS(CC_USB, "rdd attached1->\n"); CFLUSH();
 	/* Enable device state monitoring */
 	device_detect_state_enable(1);
+	CCPUTS(CC_USB, "<-rdd attached done\n"); CFLUSH();
 }
 
 void rdd_detached(void)
@@ -135,6 +140,7 @@ static int command_ccd(int argc, char **argv)
 			return EC_ERROR_PARAM1;
 	}
 
+	CCPUTS(CC_USB, "CCD enabled\n"); CFLUSH();
 	ccprintf("CCD:     %s\nAP UART: %s\nEC UART: %s\n",
 		ccd_is_enabled() ? " enabled" : "disabled",
 		uartn_enabled(UART_AP) ? " enabled" : "disabled",

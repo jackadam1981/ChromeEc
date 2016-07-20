@@ -65,7 +65,11 @@
  * Useful for C functions called only from assembly or through special sections.
  */
 #ifndef __keep
+#ifdef __clang__
+#define __keep __attribute__((used, visibility("default")))
+#else
 #define __keep __attribute__((used)) __attribute__((externally_visible))
+#endif
 #endif
 
 /*

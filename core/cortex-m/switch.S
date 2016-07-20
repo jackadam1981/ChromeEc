@@ -84,7 +84,7 @@ __task_start:
   mov r3, #2             @ use : priv. mode / thread stack / no floating point
                          @ setting FP to unused here means first context switch
                          @ will not store FP regs
-  add r2, #17*4          @ put the pointer at the top of the stack
+  add r2, #64*4          @ put the pointer at the top of the stack
   mov r1, #0             @ __Schedule parameter : re-schedule nothing
   msr psp, r2            @ setup a thread stack up to the first context switch
   mov r2, #1

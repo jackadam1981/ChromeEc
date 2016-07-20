@@ -27,6 +27,10 @@
 #define offsetof(type, member)  __builtin_offsetof(type, member)
 #endif
 
+#ifdef __clang__
+#define __visible	__attribute__((visibility("default")))
+#else
 #define __visible	__attribute__((externally_visible))
+#endif
 
 #endif /* __CROS_EC_COMPILE_TIME_MACROS_H */

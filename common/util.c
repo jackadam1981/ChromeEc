@@ -7,6 +7,18 @@
 
 #include "util.h"
 
+#ifdef __clang__
+void __aeabi_memclr4(void *s, size_t n)
+{
+	memset(s, 0, n);
+}
+
+void __aeabi_memclr(void *s, size_t n)
+{
+	memset(s, 0, n);
+}
+#endif
+
 int strlen(const char *s)
 {
 	int len = 0;

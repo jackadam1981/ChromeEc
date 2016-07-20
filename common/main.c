@@ -121,7 +121,7 @@ test_mockable __keep int main(void)
 	uart_init();
 
 	if (system_jumped_to_this_image()) {
-		CPRINTS("UART initialized after sysjump");
+		CPUTS("UART initialized after sysjump");
 	} else {
 		CPUTS("\n\n--- UART initialized after reboot ---\n");
 		CPUTS("[Reset cause: ");
@@ -132,7 +132,7 @@ test_mockable __keep int main(void)
 		 system_get_image_copy_string(), system_get_build_info());
 
 #ifdef CONFIG_BRINGUP
-	ccprintf("\n\nWARNING: BRINGUP BUILD\n\n\n");
+	CPUTS("\n\nWARNING: BRINGUP BUILD\n\n\n");
 #endif
 
 #ifdef CONFIG_WATCHDOG
@@ -171,7 +171,13 @@ test_mockable __keep int main(void)
 	 * into account the time before timer_init(), but it'll at least catch
 	 * the majority of the time.
 	 */
-	CPRINTS("Inits done");
+	CPUTS("Inits done\n");
+
+#ifdef __clang__
+	CPUTS("Compiled with clang " __clang_version__ "\n");
+	cflush();
+#endif
+
 
 	/* Launch task scheduling (never returns) */
 	return task_start();

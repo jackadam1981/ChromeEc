@@ -18,7 +18,7 @@ static enum {
 	NUM_CHOICES
 } idle_action;
 
-static const char const *idle_name[] = {
+static const char *const idle_name[] = {
 	"wfi",
 	"sleep",
 	"deep sleep",

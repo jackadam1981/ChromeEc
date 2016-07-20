@@ -33,6 +33,20 @@ PEM ?= $(BDIR)/dev_key.pem
 
 include Makefile.toolchain
 
+ifneq ($(CONFIG_USE_CLANG),)
+#CC=/mnt/host//code/llvm/llvm-install/bin/clang -fvisibility=default -target arm-none-eabi -mcpu=cortex-m3 -mfloat-abi=softfp
+CC=clang -target arm-none-eabi -mcpu=cortex-m3 -mfloat-abi=softfp
+CFLAGS+=-fvisibility=default
+CFLAGS+=-ffreestanding
+CFLAGS+=-Wno-tautological-constant-out-of-range-compare
+CFLAGS+=-Wno-unused-function
+CFLAGS+=-fshort-enums
+CFLAGS+=-fno-short-wchar
+CFLAGS+=-mno-unaligned-access
+CFLAGS+=-Os
+endif
+
+
 # Define the traditional first target. The dependencies of this are near the
 # bottom as they can be altered by chip and board files.
 .PHONY: all

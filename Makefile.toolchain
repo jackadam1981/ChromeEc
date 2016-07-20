@@ -63,7 +63,9 @@ CPPFLAGS+=-Ibuiltin/
 endif
 CFLAGS=$(CPPFLAGS) $(CFLAGS_CPU) $(CFLAGS_DEBUG) $(CFLAGS_WARN) $(CFLAGS_y)
 CFLAGS+= -ffunction-sections -fshort-wchar
-CFLAGS+= -fno-delete-null-pointer-checks -fconserve-stack
+ifeq ($(CONFIG_USE_CLANG),)
+CFLAGS+=-fno-delete-null-pointer-checks -fconserve-stack
+endif
 
 FTDIVERSION=$(shell $(PKG_CONFIG) --modversion libftdi1 2>/dev/null)
 ifneq ($(FTDIVERSION),)

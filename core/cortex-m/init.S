@@ -430,9 +430,9 @@ __aeabi_unwind_cpp_pr2:
 	bx lr
 
 /* Reserve space for system stack */
-.section .bss.system_stack
+.section .bss
 stack_start:
-.space CONFIG_STACK_SIZE, 0
+.space CONFIG_STACK_SIZE
 stack_end:
 .global stack_end
 

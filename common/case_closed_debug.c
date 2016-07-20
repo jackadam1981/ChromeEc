@@ -28,15 +28,19 @@
 USB_SPI_CONFIG(ccd_usb_spi, USB_IFACE_SPI, USB_EP_SPI);
 #endif
 
+#include "debug.h"
+
 static enum ccd_mode current_mode = CCD_MODE_DISABLED;
 
 void ccd_set_mode(enum ccd_mode new_mode)
 {
+	CCPUTS(CC_USB, "ccd set mode->\n"); CFLUSH();
 	if (new_mode == current_mode)
 		return;
 
 	if (current_mode != CCD_MODE_DISABLED)
 		usb_release();
+	CCPUTS(CC_USB, "ccd set mode0->\n"); CFLUSH();
 
 	current_mode = new_mode;
 
@@ -46,11 +50,15 @@ void ccd_set_mode(enum ccd_mode new_mode)
 	 */
 	usb_console_enable(new_mode != CCD_MODE_DISABLED,
 			   new_mode != CCD_MODE_ENABLED);
+	CCPUTS(CC_USB, "ccd set mode1->\n"); CFLUSH();
 
 #if defined(CONFIG_USB_SPI)
 	usb_spi_enable(&ccd_usb_spi, new_mode == CCD_MODE_ENABLED);
+	CCPUTS(CC_USB, "ccd set mode2->\n"); CFLUSH();
 #endif
 
 	if (new_mode != CCD_MODE_DISABLED)
 		usb_init();
+
+	CCPUTS(CC_USB, "<-ccd set mdoe done\n"); CFLUSH();
 }

@@ -200,9 +200,14 @@ void host_packet_receive(struct host_packet *pkt);
 	__attribute__((section(".rodata.hcmds")))			\
 	     = {routine, command, version_mask}
 #else
+#ifdef __clang__
 #define DECLARE_HOST_COMMAND(command, routine, version_mask)		\
-	int (routine)(struct host_cmd_handler_args *args)		\
+	int (routine)(struct host_cmd_handler_args *args)
+#else
+#define DECLARE_HOST_COMMAND(command, routine, version_mask)		\
+	int (routine)(struct host_cmd_handler_args *args) \
 	__attribute__((unused))
+#endif
 #endif
 
 

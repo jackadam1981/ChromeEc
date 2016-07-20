@@ -11,6 +11,8 @@
 #include "task.h"
 #include "usb_api.h"
 
+#include "debug.h"
+
 static uint16_t debug_detect;
 
 int debug_cable_is_attached(void)
@@ -42,9 +44,11 @@ DECLARE_IRQ(GC_IRQNUM_RDD0_INTR_DEBUG_STATE_DETECTED_INT, rdd_interrupt, 1);
 
 void rdd_init(void)
 {
+	CCPUTS(CC_HOOK, "rdd init->\n"); CFLUSH();
 	/* Enable RDD */
 	clock_enable_module(MODULE_RDD, 1);
 	GWRITE(RDD, POWER_DOWN_B, 1);
+	CCPUTS(CC_HOOK, "<-rdd init done1\n"); CFLUSH();
 
 	debug_detect = GREAD(RDD, PROG_DEBUG_STATE_MAP);
 
@@ -53,13 +57,16 @@ void rdd_init(void)
 	 * the USB-C connector.
 	 */
 	rdd_attached();
+	CCPUTS(CC_HOOK, "<-rdd init done2\n"); CFLUSH();
 
 	/* Make sure the interrupt fires next time debug cable is connected. */
 	GWRITE(RDD, PROG_DEBUG_STATE_MAP, debug_detect);
 
 	/* Enable RDD interrupts */
 	task_enable_irq(GC_IRQNUM_RDD0_INTR_DEBUG_STATE_DETECTED_INT);
+	CCPUTS(CC_HOOK, "<-rdd init done3\n"); CFLUSH();
 	GWRITE_FIELD(RDD, INT_ENABLE, INTR_DEBUG_STATE_DETECTED, 1);
+	CCPUTS(CC_HOOK, "<-rdd init done\n"); CFLUSH();
 }
 DECLARE_HOOK(HOOK_INIT, rdd_init, HOOK_PRIO_DEFAULT);
 

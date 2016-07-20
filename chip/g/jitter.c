@@ -132,7 +132,7 @@ void init_sof_clock(void)
 /* When the calibration under runs, it means the fine trim code
  * has reached 0, but the clock is still too slow.  Thus,
  * software must reduce the coarse trim code by 1 */
-static void timer_sof_calibration_underrun_int(void)
+void timer_sof_calibration_underrun_int(void)
 {
 	unsigned coarseTrimValue = GREG32(XO, CLK_TIMER_RC_COARSE_ATE_TRIM);
 
@@ -150,7 +150,7 @@ DECLARE_IRQ(GC_IRQNUM_XO0_SLOW_CALIB_UNDERRUN_INT,
 /* When the calibration overflows, it means the fine trim code
  * has reached 0x1F, but the clock is still too fast.  Thus,
  * software must increase the coarse trim code by 1 */
-static void timer_sof_calibration_overflow_int(void)
+void timer_sof_calibration_overflow_int(void)
 {
 	unsigned coarseTrimValue = GREG32(XO, CLK_TIMER_RC_COARSE_ATE_TRIM);
 	unsigned max;

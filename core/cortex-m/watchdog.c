@@ -11,6 +11,8 @@
 #include "timer.h"
 #include "watchdog.h"
 
+#include "debug.h"
+
 void __keep watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 {
 	uint32_t psp;
@@ -25,12 +27,17 @@ void __keep watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 		stack = (uint32_t *)psp;
 	}
 
+	panic_puts("### WATCHDOG ###\n");
+	CFLUSH();
 	panic_printf("### WATCHDOG PC=%08x / LR=%08x / pSP=%08x ",
 		     stack[6], stack[5], psp);
 	if ((excep_lr & 0xf) == 1)
 		panic_puts("(exc) ###\n");
-	else
-		panic_printf("(task %d) ###\n", task_get_current());
+	else {
+		/* panic_printf("(task %d) ###\n", task_get_current()); */
+		panic_puts("(task) ###\n");
+	}
+	CFLUSH();
 
 	/* If we are blocked in a high priority IT handler, the following debug
 	 * messages might not appear but they are useless in that situation. */

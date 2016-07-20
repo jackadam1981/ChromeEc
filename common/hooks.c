@@ -20,6 +20,8 @@
 #define CPRINTS(format, args...)
 #endif
 
+#include "debug.h"
+
 #define DEFERRED_FUNCS_COUNT (__deferred_funcs_end - __deferred_funcs)
 
 struct hook_ptrs {
@@ -118,6 +120,8 @@ void hook_notify(enum hook_type type)
 		for (p = start; p < end; p++) {
 			if (p->priority == prio) {
 				called++;
+				CCPUTS(CC_HOOK, "call@%p\n", p->routine);
+				CFLUSH();
 				p->routine();
 			}
 		}

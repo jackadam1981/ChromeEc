@@ -26,7 +26,11 @@ extern void (*usb_ep_rx[]) (void);
 extern void (*usb_ep_reset[]) (void);
 struct usb_setup_packet;
 /* EP0 Interface handler callbacks */
+#ifndef __clang__
 static int (*usb_iface_request[]) (struct usb_setup_packet *req);
+#else
+static int (**usb_iface_request) (struct usb_setup_packet *req);
+#endif
 
 /*
  * Declare any interface-specific control request handlers. These Setup packets

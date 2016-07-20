@@ -29,6 +29,8 @@
 
 #include "cryptoc/sha.h"
 
+#include "debug.h"
+
 /*
  * TODO: NV_MEMORY_SIZE is defined in 2 places. Here and in
  * /src/third_party/tmp2/Implementation.h. This needs to be
@@ -117,6 +119,11 @@ static void init_runlevel(const enum permission_level desired_level)
 		uint32_t current_level;
 
 		while (1) {
+#ifdef __clang__
+			/* there is a race somewhere if we remove this flush
+			 */
+			cflush();
+#endif
 			current_level = *reg_addrs[i];
 			if (current_level <= desired_level)
 				break;
@@ -133,9 +140,13 @@ static void board_init(void)
 	init_interrupts();
 	init_trng();
 	init_jittery_clock(1);
+	CCPUTS(CC_HOOK, "init runlevel->\n"); cflush();
 	init_runlevel(PERMISSION_MEDIUM);
+	CCPUTS(CC_HOOK, "<-init runlevel done\n"); cflush();
 	/* Initialize NvMem partitions */
+	CCPUTS(CC_HOOK, "nvmem init->\n"); cflush();
 	nvmem_init();
+	CCPUTS(CC_HOOK, "<-nvmem init done\n"); cflush();
 
 	/* TODO(crosbug.com/p/49959): For now, leave flash WP unlocked */
 	GREG32(RBOX, EC_WP_L) = 1;

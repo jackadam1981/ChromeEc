@@ -12,6 +12,8 @@
 #include "timer.h"
 #include "util.h"
 
+#include "debug.h"
+
 /* Not defined in the hardware register spec, the RX and TX buffers are 128B. */
 #define SPI_BUF_SIZE 0x80
 
@@ -211,6 +213,7 @@ static void spi_init(void)
 {
 	size_t i;
 
+	CCPUTS(CC_HOOK, "spi init->\n"); CFLUSH();
 #ifdef CONFIG_SPI_MASTER_CONFIGURE_GPIOS
 	/* Set SPI_MISO as an input */
 	GWRITE_FIELD(PINMUX, DIOA11_CTL, IE, 1); /* SPS_MISO */
@@ -227,5 +230,6 @@ static void spi_init(void)
 		 * using the SPI bus. */
 		spi_enable(i, 0);
 	}
+	CCPUTS(CC_HOOK, "<-spi init done\n"); CFLUSH();
 }
 DECLARE_HOOK(HOOK_INIT, spi_init, HOOK_PRIO_DEFAULT);

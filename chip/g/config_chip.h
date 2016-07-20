@@ -49,13 +49,13 @@
 #define CONFIG_STACK_SIZE 1024
 
 /* Idle task stack size */
-#define IDLE_TASK_STACK_SIZE 256
+#define IDLE_TASK_STACK_SIZE 1024
 
 /* Default task stack size */
-#define TASK_STACK_SIZE 488
+#define TASK_STACK_SIZE 2048
 
 /* Larger task stack size, for hook task */
-#define LARGER_TASK_STACK_SIZE 640
+#define LARGER_TASK_STACK_SIZE 4096
 
 /* Magic for gpio.inc */
 #define GPIO_PIN(port, index) (port), (1 << (index))

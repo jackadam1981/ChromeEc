@@ -111,7 +111,7 @@ L_divison_by_0:
 
 L_fallback_32bits:
 	mov	r1, r0
-	udiv	r0, r2		@ r0 = quotient
+	udiv	r0, r0, r2	@ r0 = quotient
 	mul	r3, r0, r2	@ r3 = quotient * divisor
 	subs	r2, r3, r2	@ r2 = remainder
 	movs	r1, #0

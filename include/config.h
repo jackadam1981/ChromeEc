@@ -2142,7 +2142,7 @@
 #undef CONFIG_WATCHDOG_HELP
 
 /* Watchdog period in ms; see also AUX_TIMER_PERIOD_MS */
-#define CONFIG_WATCHDOG_PERIOD_MS 1600
+#define CONFIG_WATCHDOG_PERIOD_MS 3200
 
 /*
  * Fire auxiliary timer 500ms before watchdog timer expires. This leaves

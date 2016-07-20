@@ -26,6 +26,8 @@
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
 
+#include "debug.h"
+
 /* This is not defined anywhere else. Change it here to debug. */
 #undef DEBUG_ME
 #ifdef DEBUG_ME
@@ -321,7 +323,10 @@ void usb_select_phy(uint32_t phy)
 	which_phy = phy;
 	GR_USB_GGPIO = GGPIO_WRITE(USB_CUSTOM_CFG_REG,
 				   (USB_PHY_ACTIVE | which_phy));
-	CPRINTS("USB PHY %c", which_phy == USB_SEL_PHY0 ? 'A' : 'B');
+	if (which_phy == USB_SEL_PHY0)
+		CPRINTF("USB PHY A\n");
+	else
+		CPRINTF("USB PHY B\n");
 }
 
 uint32_t usb_get_phy(void)
@@ -1248,6 +1253,7 @@ void usb_init(void)
 	GR_USB_DIEPMSK = 0;
 	GR_USB_DOEPMSK = 0;
 
+	CCPUTS(CC_USB, "OKk->\n"); CFLUSH();
 	/* Select the correct PHY */
 	usb_select_phy(which_phy);
 
@@ -1257,6 +1263,7 @@ void usb_init(void)
 		/* FIXME: Magic number! 14 is for 15MHz! Use 9 for 30MHz */
 		| GUSBCFG_USBTRDTIM(14);
 
+	CCPUTS(CC_USB, "OK->\n"); CFLUSH();
 	if (!resume)
 		/* Don't reset on resume, because some preserved internal state
 		 * will be lost and there's no way to restore it. */
@@ -1298,6 +1305,7 @@ void usb_init(void)
 
 	/* Now that DCFG.DesDMA is accurate, prepare the FIFOs */
 	setup_data_fifos();
+	CCPUTS(CC_USB, "OK->\n"); CFLUSH();
 
 	/* If resuming, reinitialize the endpoints now. For a cold boot we'll
 	 * do this as part of handling the host-driven reset. */

@@ -363,7 +363,7 @@ int nvmem_init(void)
 		return ret;
 	}
 
-	CPRINTS("Active NVram partition set to %d", nvmem_act_partition);
+	cputs(CC_COMMAND, "Active NVram partition set\n"); cflush();
 	return EC_SUCCESS;
 }
 

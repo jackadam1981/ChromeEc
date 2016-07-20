@@ -72,6 +72,10 @@ CFLAGS += -DSUPPORT_UNALIGNED=1
 
 # Add dependencies on that library
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += -L$(out)/tpm2 -ltpm2
+ifneq ($(CONFIG_USE_CLANG),)
+	LDFLAGS_EXTRA+=-lc -lgcc
+endif
+
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/tpm2/libtpm2.a
 
 #$(out)/RW/ec.RW_B.elf: $(out)/tpm2/libtpm2.a LDFLAGS_EXTRA += -L$(out)/tpm2 -ltpm2
