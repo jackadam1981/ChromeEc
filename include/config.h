@@ -1830,6 +1830,9 @@
 /* The DMA peripheral request signal for UART TX. STM32 only. */
 #undef CONFIG_UART_TX_DMA_PH
 
+/* Disable UART0 RX */
+#undef CONFIG_UART0_RX_DISABLE
+
 /*****************************************************************************/
 /* USB PD config */
 
