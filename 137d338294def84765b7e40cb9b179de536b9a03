@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "5ab18456_731893c7",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-20T02:12:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ab18456_701ec904",
+      "revId": "137d338294def84765b7e40cb9b179de536b9a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ab18456_70f7e9c4",
         "filename": "board/reef/board.c",
         "patchSetId": 1
@@ -82,6 +100,24 @@
     },
     {
       "key": {
+        "uuid": "5ab18456_5353cf57",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-20T02:12:07Z",
+      "side": 1,
+      "message": "A few bytes. Scaling doesn\u0027t cost us much precision, but it does save us some space for each entry which in turn makes it easier to add more data points to model the curve better.",
+      "parentUuid": "5ab18456_70f7e9c4",
+      "revId": "137d338294def84765b7e40cb9b179de536b9a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ab18456_50f0e5ce",
         "filename": "board/reef/board.c",
         "patchSetId": 1
@@ -93,6 +129,24 @@
       "writtenOn": "2016-07-15T18:29:42Z",
       "side": 1,
       "message": "const",
+      "revId": "137d338294def84765b7e40cb9b179de536b9a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_f3d643cf",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-20T02:12:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ab18456_50f0e5ce",
       "revId": "137d338294def84765b7e40cb9b179de536b9a03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -122,6 +176,30 @@
     },
     {
       "key": {
+        "uuid": "5ab18456_13078770",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-20T02:12:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ab18456_c5cedac3",
+      "range": {
+        "startLine": 256,
+        "startChar": 8,
+        "endLine": 256,
+        "endChar": 33
+      },
+      "revId": "137d338294def84765b7e40cb9b179de536b9a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ab18456_d0db3559",
         "filename": "board/reef/board.c",
         "patchSetId": 1
@@ -139,6 +217,24 @@
     },
     {
       "key": {
+        "uuid": "5ab18456_33356b36",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-20T02:12:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ab18456_d0db3559",
+      "revId": "137d338294def84765b7e40cb9b179de536b9a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ab18456_b0e03105",
         "filename": "board/reef/board.c",
         "patchSetId": 1
@@ -150,6 +246,24 @@
       "writtenOn": "2016-07-15T18:29:42Z",
       "side": 1,
       "message": "const",
+      "revId": "137d338294def84765b7e40cb9b179de536b9a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_b3115bac",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-20T02:12:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ab18456_b0e03105",
       "revId": "137d338294def84765b7e40cb9b179de536b9a03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -191,6 +305,30 @@
       "side": 1,
       "message": "We probably don\u0027t need this section since we don\u0027t have a fan and DPTF is managing the thermal throttling.",
       "parentUuid": "5ab18456_25c0868b",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 54
+      },
+      "revId": "137d338294def84765b7e40cb9b179de536b9a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_f332c34f",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-20T02:12:07Z",
+      "side": 1,
+      "message": "Hmm, unfortunately I can\u0027t get rid of it entirely since this table is used in the common codepath for console and host commands. The last two members of each entry are for fan control and can be safely set to 0 (the common code checks for this), but I guess the other stuff is used for displaying thermal info.",
+      "parentUuid": "1a570ceb_d2f4028f",
       "range": {
         "startLine": 300,
         "startChar": 0,
