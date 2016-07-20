@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0a0a5b5d_039a1e07",
+        "filename": "cts/common/cts.rc",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-07-20T21:40:04Z",
+      "side": 1,
+      "message": "It\u0027s also processed (in the next patch) by cts.py to get the names of the error codes",
+      "parentUuid": "0a0a5b5d_b8e7fdd9",
+      "revId": "cba8eb7fe9b28bca9b830585774708967c6947cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a0a5b5d_78ee35bb",
         "filename": "cts/common/cts_common.h",
         "patchSetId": 6
