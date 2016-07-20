@@ -173,7 +173,15 @@ int flash_regions_to_enable(struct g_flash_region *regions,
 {
 	uint32_t half = CONFIG_FLASH_SIZE / 2;
 
-	if (max_regions < 1)
+	/*
+	 * This needs to account for two regions: the "other" RW partition and
+	 * the NVRAM at the top.
+	 *
+	 * In case of running from RW_A the two regions are adjacent, but it
+	 * is simpler to keep function logic the same and always configure two
+	 * separate regions.
+	 */
+	if (max_regions < 2)
 		return 0;
 
 	if ((uint32_t)flash_regions_to_enable <
@@ -182,7 +190,8 @@ int flash_regions_to_enable(struct g_flash_region *regions,
 		 * Running from RW_A. Need to enable writes into the top half,
 		 * which consists of NV_RAM and RW_B sections.
 		 */
-		regions->reg_base = CONFIG_MAPPED_STORAGE_BASE + half;
+		regions[0].reg_base = CONFIG_MAPPED_STORAGE_BASE + half
+			+ CONFIG_RO_SIZE;
 	else
 		/*
 		 * Running from RW_B, need to enable access to both program
@@ -192,14 +201,19 @@ int flash_regions_to_enable(struct g_flash_region *regions,
 		 * NVRAM space in the top half by design is at the same offset
 		 * and of the same size as the RO section in the lower half.
 		 */
-		regions->reg_base = CONFIG_MAPPED_STORAGE_BASE +
+		regions[0].reg_base = CONFIG_MAPPED_STORAGE_BASE +
 			CONFIG_RO_SIZE;
 
 	/* The size of the write enable area is the same in both cases. */
-	regions->reg_size = half;
-	regions->reg_perms =  FLASH_REGION_EN_ALL;
+	regions[0].reg_size = half - CONFIG_RO_SIZE - CONFIG_TOP_SPACE;
+	regions[0].reg_perms =  FLASH_REGION_EN_ALL;
 
-	return 1; /* One region is enough. */
+	regions[1].reg_base = CONFIG_MAPPED_STORAGE_BASE +
+		CONFIG_FLASH_SIZE - CONFIG_TOP_SPACE;
+	regions[1].reg_size = CONFIG_TOP_SPACE;
+	regions[1].reg_perms = FLASH_REGION_EN_ALL;
+
+	return 2;
 }
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
