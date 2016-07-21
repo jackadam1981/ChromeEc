@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "ea8ee740_d81f425f",
+        "filename": "chip/nrf51/radio_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-21T22:12:52Z",
+      "side": 1,
+      "message": "Does this file exist?",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "15d2169af601d58116d91b6c751f6957ba125780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_15ac339b",
+        "filename": "chip/nrf51/radio_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-21T22:12:52Z",
+      "side": 1,
+      "message": "nit: It seems chromium ec codebase doesn\u0027t align break with case.",
+      "revId": "15d2169af601d58116d91b6c751f6957ba125780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8ee740_d54aab7d",
         "filename": "chip/nrf51/radio_test.c",
         "patchSetId": 1
@@ -18,6 +58,29 @@
         "startChar": 2,
         "endLine": 83,
         "endChar": 31
+      },
+      "revId": "15d2169af601d58116d91b6c751f6957ba125780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_98abfa1f",
+        "filename": "chip/nrf51/radio_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-21T22:12:52Z",
+      "side": 1,
+      "message": "Where is this defined?",
+      "range": {
+        "startLine": 156,
+        "startChar": 9,
+        "endLine": 156,
+        "endChar": 47
       },
       "revId": "15d2169af601d58116d91b6c751f6957ba125780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
