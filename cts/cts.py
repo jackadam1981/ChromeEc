@@ -38,9 +38,11 @@ class Cts(object):
     test_results: Dictionary of results of each test from module
     return_codes: List of strings of return codes, with a code's integer
     value being the index for the corresponding string representation
+    debug: Boolean that indicates whether or not on-board debug message
+      printing should be enabled when building.
   """
 
-  def __init__(self, ec_dir, dut_board='nucleo-f072rb', module='gpio'):
+  def __init__(self, ec_dir, dut_board='nucleo-f072rb', module='gpio', debug=False):
     """Initializes cts class object with given arguments.
 
     Args:
@@ -52,6 +54,7 @@ class Cts(object):
     self.results_dir = '/tmp/cts_results'
     self.dut_board = dut_board
     self.module = module
+    self.debug = debug
     self.ec_directory = ec_dir
     self.th_hla = ''
     self.dut_hla = ''
@@ -90,21 +93,39 @@ class Cts(object):
     """
     self.module = mod
 
+  def setDebug(self, debug):
+    """Sets debug variable
+
+    Args:
+      debug: Boolean indicating whether to build with debug
+    """
+    self.debug = debug
+
   def make(self):
     """Builds test suite module for given th/dut boards"""
-    print 'Building module \'' + self.module + '\' for th ' + self.th_board
-    sp.call(['make',
+
+    th_cmds = ['make',
          '--directory=' + str(self.ec_directory),
          'BOARD=' + self.th_board,
          'CTS_MODULE=' + self.module,
-         '-j'])
+         '-j']
 
-    print 'Building module \'' + self.module + '\' for dut ' + self.dut_board
-    sp.call(['make',
+    dut_cmds = ['make',
          '--directory=' + str(self.ec_directory),
          'BOARD=' + self.dut_board,
          'CTS_MODULE=' + self.module,
-         '-j'])
+         '-j']
+
+    # If debug is false, leave undefined
+    if self.debug:
+      th_cmds.append('CTS_DEBUG=TRUE')
+      dut_cmds.append('CTS_DEBUG=TRUE')
+
+    print 'Building module \'' + self.module + '\' for th ' + self.th_board
+    sp.call(th_cmds)
+
+    print 'Building module \'' + self.module + '\' for dut ' + self.dut_board
+    sp.call(dut_cmds)
 
   def openocdCmd(self, command_list, board):
     """Sends the specified commands to openocd for a board
@@ -462,6 +483,10 @@ def main():
   parser.add_argument('-m',
             '--module',
             help='Specify module you want to build/flash')
+  parser.add_argument('--debug',
+            action='store_true',
+            help='If building, build with debug printing enabled. This may'
+                 'change test results')
   parser.add_argument('-s',
             '--setup',
             action='store_true',
@@ -501,6 +526,10 @@ def main():
     cts_suite.resetAndRecord()
 
   elif args.build:
+    if args.debug:
+      cts_suite.setDebug(True)
+    else:
+      cts_suite.setDebug(False)
     cts_suite.make()
 
   elif args.flash:
