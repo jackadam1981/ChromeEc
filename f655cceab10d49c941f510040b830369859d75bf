@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea8ee740_882acbe2",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-07-21T18:00:11Z",
+      "side": 1,
+      "message": "I do have a CL which modifies this function so that it can be common to both the manual detect and auto detect methods. So there is no need to make a change here because https://chromium-review.googlesource.com/#/c/361617/ modifies this portion anyway.",
+      "parentUuid": "aa306fe9_7250d063",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 36
+      },
+      "revId": "f655cceab10d49c941f510040b830369859d75bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa306fe9_8cde8701",
         "filename": "driver/tcpm/fusb302.c",
         "patchSetId": 2
