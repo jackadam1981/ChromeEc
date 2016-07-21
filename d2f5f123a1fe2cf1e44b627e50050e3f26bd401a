@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea8ee740_88c64b12",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-21T18:21:28Z",
+      "side": 1,
+      "message": "Should we rename to something like \"chg_ctl_mode\" ? The meaning of the variable has changed slightly.",
+      "range": {
+        "startLine": 49,
+        "startChar": 35,
+        "endLine": 49,
+        "endChar": 59
+      },
+      "revId": "d2f5f123a1fe2cf1e44b627e50050e3f26bd401a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_e83d0f14",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-21T18:21:28Z",
+      "side": 1,
+      "message": "I wonder if this should change to something like \"set_chg_ctrl_mode()\" ?",
+      "range": {
+        "startLine": 443,
+        "startChar": 11,
+        "endLine": 443,
+        "endChar": 28
+      },
+      "revId": "d2f5f123a1fe2cf1e44b627e50050e3f26bd401a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_685d9f52",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-21T18:21:28Z",
+      "side": 1,
+      "message": "And if we change the function name, maybe \"enable\" isn\u0027t needed anymore. We could just do the checks based off of the mode.\n\n  if (mode \u003d\u003d CHARGE_CONTROL_NORMAL) {\n          manual_mode \u003d 0;\n  } else {\n          if (!curr.ac)\n                  return EC_ERROR_NOT_POWERED;\n\n          charge_request(0, 0);\n          manual_mode \u003d 1;\n  }\n\n\n  chg_ctl_mode \u003d mode;",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 2
+      },
+      "revId": "d2f5f123a1fe2cf1e44b627e50050e3f26bd401a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
