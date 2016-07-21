@@ -22,6 +22,29 @@
       "revId": "9484c9c981945ec0f516ac5556ff6ecdb89b859d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_bd634b14",
+        "filename": "common/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-07-21T16:47:41Z",
+      "side": 1,
+      "message": "A lot of 6s. Think it\u0027s worth it to \"#define ADDR_LEN 6\", or something similar?",
+      "range": {
+        "startLine": 170,
+        "startChar": 16,
+        "endLine": 170,
+        "endChar": 17
+      },
+      "revId": "9484c9c981945ec0f516ac5556ff6ecdb89b859d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
