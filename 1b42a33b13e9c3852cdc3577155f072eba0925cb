@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea8ee740_58b0b246",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-07-21T22:23:18Z",
+      "side": 1,
+      "message": "We need to make sure we get an alert interrupt in the following cases:\n\n- USB-C charger is attached (try donette / twinkie).\n- USB-C charger PU changes (try attaching donette second port, then attach first port to another device, I think the second port PU will drop to 1.5A level)\n\nCan you make sure these cases still work?",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 11
+      },
+      "revId": "1b42a33b13e9c3852cdc3577155f072eba0925cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
