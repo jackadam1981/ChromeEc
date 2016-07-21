@@ -7,6 +7,7 @@
 
 import select
 import time
+import html
 import fcntl
 import os
 import subprocess as sp
@@ -373,6 +374,29 @@ class Cts(object):
 
     return pretty_results
 
+  def resultsAsHtml(self):
+    """Takes saved results and returns a simple html representation of them
+
+    Return: String that contains html with results
+    """
+    tb = html.HtmlTag('table', attr={'style':'width:50%'})
+    title_row = html.HtmlTag('tr')
+    t_names_title = html.HtmlTag('th', contents='Test Name')
+    t_results_title = html.HtmlTag('th', contents='Test Result')
+    title_row.appendContent(t_names_title)
+    title_row.appendContent(t_results_title)
+    tb.appendContent(title_row)
+
+    for name, result in self.test_results.items():
+      row = html.HtmlTag('tr')
+      row.appendContent(html.HtmlTag('td', contents=name))
+      row.appendContent(html.HtmlTag('td', contents=result))
+      tb.appendContent(row)
+
+    doc = html.HtmlDoc.basicDoc(tb)
+
+    return doc.toString()
+
   def resetAndRecord(self):
     """Resets boards, records test results in results dir"""
 
@@ -405,19 +429,22 @@ class Cts(object):
                        'If you are running cat on a ttyACMx file,\n'
                        'please kill that process and try again')
     self.parseOutput(res1, res2)
+
     pretty_results = self.resultsAsString()
+    html_results = self.resultsAsHtml()
 
     dest = os.path.join(
       self.results_dir,
       self.dut_board,
-      self.module + '.txt')
+      self.module + '.html')
     if not os.path.exists(os.path.dirname(dest)):
       os.makedirs(os.path.dirname(dest))
 
     with open(dest, 'w') as fl:
-      fl.write(pretty_results)
+      fl.write(html_results)
 
     print pretty_results
+
 
 def main():
   """Main entry point for cts script from command line"""
