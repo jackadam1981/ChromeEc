@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea8ee740_02d23acd",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-21T15:22:53Z",
+      "side": 1,
+      "message": "This means we can\u0027t mux bluetooth and bluetooth_le. I still vote for \u0027bluetooth\u0027. I\u0027ll do +1 anyway assuming that\u0027s understood.",
+      "range": {
+        "startLine": 11,
+        "startChar": 34,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "460ee3733906fec740b15ac966c4b4c90e89af58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
