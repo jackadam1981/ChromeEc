@@ -389,6 +389,9 @@ static void enable_input_devices(void)
 
 	keyboard_scan_enable(kb_enable, KB_SCAN_DISABLE_LID_ANGLE);
 	gpio_set_level(GPIO_ENABLE_TOUCHPAD, tp_enable);
+
+	if (!chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
 }
 DECLARE_DEFERRED(enable_input_devices);
 
