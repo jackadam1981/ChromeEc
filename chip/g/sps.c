@@ -9,6 +9,7 @@
 #include "pmu.h"
 #include "registers.h"
 #include "sps.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "watchdog.h"
@@ -238,6 +239,10 @@ int sps_unregister_rx_handler(void)
 
 static void sps_init(void)
 {
+#ifdef BOARD_CR50
+	if (system_get_slave_config() != SLAVE_CFG_SPI)
+		return;
+#endif
 	pmu_clock_en(PERIPH_SPS);
 
 	/* The pinmux connections are preset, but we have to set IN/OUT */

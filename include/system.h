@@ -443,4 +443,17 @@ uintptr_t system_get_fw_reset_vector(uintptr_t base);
  */
 int system_is_reboot_warm(void);
 
+enum ap_slave_config {
+	SLAVE_CFG_SPI = 1,
+	SLAVE_CFG_I2C,
+};
+/**
+ * Get the slave interface type used to communicate with AP
+ *
+ * The function lives in board.c for boards that need this feature.
+ *
+ * @return one of the enum values in ap_slave_config
+ */
+enum ap_slave_config system_get_slave_config(void);
+
 #endif  /* __CROS_EC_SYSTEM_H */

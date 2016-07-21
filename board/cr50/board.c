@@ -47,6 +47,9 @@ uint32_t nvmem_user_sizes[NVMEM_NUM_USERS] = {
 	NVMEM_CR50_SIZE
 };
 
+/* AP to Cr50 communication interface */
+static enum ap_slave_config slave_cfg;
+
 /*
  * There's no way to trigger on both rising and falling edges, so force a
  * compiler error if we try. The workaround is to use the pinmux to connect
@@ -458,4 +461,36 @@ void board_update_device_state(enum device_type device)
 		 */
 		hook_call_deferred(device_states[device].deferred, 50);
 	}
+}
+
+static void detect_slave_config(void)
+{
+	enum ap_slave_config cfg;
+
+	/* Check for power on reset */
+	if (system_get_reset_flags() & RESET_FLAG_POWER_ON) {
+		/* Read DIOA1 strap pin */
+		if (gpio_get_level(GPIO_STRAP0))
+			/* Strap is pulled high -> Kevin SPI TPM option */
+			cfg = SLAVE_CFG_SPI;
+		else
+			/* Strap is low -> Reef I2C TPM option */
+			cfg = SLAVE_CFG_I2C;
+		/* Set enable bit for LONG_LIFE_SCRATCH1 register */
+		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN,
+			     REG1, 1);
+		/* Save type in LONG_LIFE register */
+		GREG32(PMU, LONG_LIFE_SCRATCH1) = cfg;
+	} else {
+		/* Not a power on reset, so can read what was discovered */
+		cfg = GREG32(PMU, LONG_LIFE_SCRATCH1);
+	}
+	slave_cfg = cfg;
+}
+/* Need this hook to run before the default hook level */
+DECLARE_HOOK(HOOK_INIT, detect_slave_config, HOOK_PRIO_DEFAULT - 1);
+
+enum ap_slave_config system_get_slave_config(void)
+{
+	return slave_cfg;
 }
