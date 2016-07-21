@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea8ee740_48bc6384",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-21T18:12:27Z",
+      "side": 1,
+      "message": "Is this just a temp message for testing?\nShould it be const?",
+      "revId": "85903f11ab33e01418f7c555e0d1cc7e3b43ccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_68d83feb",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-21T18:12:27Z",
+      "side": 1,
+      "message": "So, timeout must be at least 2 to avoid EC_ERROR_TIMEOUT?",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 21
+      },
+      "revId": "85903f11ab33e01418f7c555e0d1cc7e3b43ccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_88dd6bdc",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-21T18:12:27Z",
+      "side": 1,
+      "message": "Does this need to be uint32_t to match the type of the register?",
+      "range": {
+        "startLine": 176,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 6
+      },
+      "revId": "85903f11ab33e01418f7c555e0d1cc7e3b43ccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_a87867d5",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-21T18:12:27Z",
+      "side": 1,
+      "message": "Should this be a #defined constant?\n\n#define NRF51_WHITELIST_MAX_SIZE 8",
+      "range": {
+        "startLine": 198,
+        "startChar": 17,
+        "endLine": 198,
+        "endChar": 18
+      },
+      "revId": "85903f11ab33e01418f7c555e0d1cc7e3b43ccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_08641b4a",
+        "filename": "chip/nrf51/bluetooth_le.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-21T18:12:27Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 61,
+        "startChar": 39,
+        "endLine": 61,
+        "endChar": 46
+      },
+      "revId": "85903f11ab33e01418f7c555e0d1cc7e3b43ccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_48554352",
+        "filename": "chip/nrf51/bluetooth_le.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-21T18:12:27Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 64,
+        "startChar": 44,
+        "endLine": 64,
+        "endChar": 51
+      },
+      "revId": "85903f11ab33e01418f7c555e0d1cc7e3b43ccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
