@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0abdfbe5_f7520044",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2016-07-21T08:46:14Z",
+      "side": 1,
+      "message": "This function does not get called when USB is connected, were you envisioning a different calling path to set the limits?\n\nWe do get a call to pd_set_power_supply_ready() when USB is inserted, but it only provides the port.\n\nMaybe we need to keep track of which is plugged in, and the first one gets 3A and the second gets 1.5A.  (since we may not be able to supply 3A out of both ports)",
+      "range": {
+        "startLine": 142,
+        "startChar": 28,
+        "endLine": 142,
+        "endChar": 59
+      },
+      "revId": "204decd47cada11b48bf0ccbb48a8cb6547e7b3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
