@@ -16,6 +16,24 @@
       "revId": "45c5cfa9ef4ae7bb3bb6d24817245a362c6eed57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_b18ffa1d",
+        "filename": "common/upgrade_fw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-07-21T00:09:05Z",
+      "side": 1,
+      "message": "Seems like a good idea. This pile of CL\u0027s is already verified though, I\u0027d rather rename in a separate CL.",
+      "parentUuid": "ea8ee740_0e3c2b7c",
+      "revId": "45c5cfa9ef4ae7bb3bb6d24817245a362c6eed57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
