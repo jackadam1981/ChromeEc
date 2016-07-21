@@ -60,6 +60,7 @@ enum cts_rc read_low_test(void)
 
 enum cts_rc od_read_high_test(void)
 {
+	CTS_DEBUG_PRINTF("Test debug output");
 	gpio_set_flags(GPIO_INPUT_TEST, GPIO_OUTPUT | GPIO_ODR_LOW);
 	msleep(READ_WAIT_TIME_MS*2);
 	return CTS_RC_SUCCESS;
