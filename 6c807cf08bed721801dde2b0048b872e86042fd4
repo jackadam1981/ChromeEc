@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ea8ee740_48f9c382",
+        "filename": "cts/common/cts.rc",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-21T17:57:27Z",
+      "side": 1,
+      "message": "Can we fix that in cts.py?\n\nIf we can\u0027t, that should be very well documented here, so that someone else doesn\u0027t come in and make the same swap later.",
+      "parentUuid": "0a0a5b5d_83672ef4",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "6c807cf08bed721801dde2b0048b872e86042fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a0a5b5d_f83d0514",
         "filename": "cts/cts.py",
         "patchSetId": 7
