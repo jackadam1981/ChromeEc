@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea8ee740_8201ca5c",
+        "filename": "chip/nrf51/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-21T15:08:52Z",
+      "side": 1,
+      "message": "These values just define how the capture/compare registers are used in this file.  It would work with any assignment of these three values.",
+      "parentUuid": "aa306fe9_c70fb632",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "c40c7bb8e914adb52f8b649c21a5a149ca9be26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa306fe9_a70dca43",
         "filename": "chip/nrf51/hwtimer.c",
         "patchSetId": 1
@@ -65,6 +89,53 @@
         "startChar": 16,
         "endLine": 69,
         "endChar": 17
+      },
+      "revId": "c40c7bb8e914adb52f8b649c21a5a149ca9be26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_e20fee83",
+        "filename": "chip/nrf51/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-21T15:08:52Z",
+      "side": 1,
+      "message": "Daisuke:\nI didn\u0027t do it before because I couldn\u0027t figure out how to get it to work with DECLARE_IRQ.  Let me know what you think about this solution.\n\nAseda: You\u0027re right.  I think it\u0027s a good idea to have it defined, since we may decide that another one of the timers is a better idea to implement the hardware timer.",
+      "parentUuid": "ea8ee740_91e75eda",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 17
+      },
+      "revId": "c40c7bb8e914adb52f8b649c21a5a149ca9be26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_020dda8b",
+        "filename": "chip/nrf51/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-21T15:08:52Z",
+      "side": 1,
+      "message": "Here\u0027s the problematic part.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 46
       },
       "revId": "c40c7bb8e914adb52f8b649c21a5a149ca9be26f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
