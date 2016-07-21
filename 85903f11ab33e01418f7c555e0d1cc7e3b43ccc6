@@ -88,6 +88,29 @@
     },
     {
       "key": {
+        "uuid": "ea8ee740_382126ba",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-21T22:11:03Z",
+      "side": 1,
+      "message": "This is not initialized.",
+      "range": {
+        "startLine": 278,
+        "startChar": 9,
+        "endLine": 278,
+        "endChar": 11
+      },
+      "revId": "85903f11ab33e01418f7c555e0d1cc7e3b43ccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8ee740_08641b4a",
         "filename": "chip/nrf51/bluetooth_le.h",
         "patchSetId": 3
