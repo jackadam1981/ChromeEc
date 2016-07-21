@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea8ee740_2b7f0e13",
+        "filename": "common/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-21T22:40:25Z",
+      "side": 1,
+      "message": "I wanted the freedom to pack 1, 2, 3, or 4 bytes into the advertising data.",
+      "parentUuid": "ea8ee740_7dc64315",
+      "range": {
+        "startLine": 99,
+        "startChar": 25,
+        "endLine": 99,
+        "endChar": 31
+      },
+      "revId": "9484c9c981945ec0f516ac5556ff6ecdb89b859d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8ee740_bd634b14",
         "filename": "common/bluetooth_le.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-21T16:47:41Z",
       "side": 1,
       "message": "A lot of 6s. Think it\u0027s worth it to \"#define ADDR_LEN 6\", or something similar?",
+      "range": {
+        "startLine": 170,
+        "startChar": 16,
+        "endLine": 170,
+        "endChar": 17
+      },
+      "revId": "9484c9c981945ec0f516ac5556ff6ecdb89b859d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_2ba62eab",
+        "filename": "common/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-21T22:40:25Z",
+      "side": 1,
+      "message": "Good idea.  I\u0027ll put it in include/bluetooth_le.h",
+      "parentUuid": "ea8ee740_bd634b14",
       "range": {
         "startLine": 170,
         "startChar": 16,
