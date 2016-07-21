@@ -45,6 +45,30 @@
       "revId": "c40c7bb8e914adb52f8b649c21a5a149ca9be26f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_91e75eda",
+        "filename": "chip/nrf51/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-07-21T00:40:54Z",
+      "side": 1,
+      "message": "Aren\u0027t they just the timer index? Timer 0?",
+      "parentUuid": "aa306fe9_a70dca43",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 17
+      },
+      "revId": "c40c7bb8e914adb52f8b649c21a5a149ca9be26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
