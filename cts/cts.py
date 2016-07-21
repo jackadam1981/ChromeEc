@@ -23,6 +23,8 @@ CTS_COLOR_GREEN = '#7dfb9f'
 TH_BOARD = 'stm32l476g-eval'
 OCD_SCRIPT_DIR = '/usr/local/share/openocd/scripts'
 MAX_SUITE_TIME_SEC = 3
+CTS_DEBUG_START = '[DEBUG]'
+CTS_DEBUG_END = '[DEBUG_END]'
 
 class Board(object):
   """Class representing a single board connected to a host machine
@@ -76,8 +78,16 @@ class Board(object):
     args.append('shutdown')
     sp.call(args)
 
-  def make(self, module, ec_dir):
-    """Builds test suite module for board"""
+  def make(self, module, ec_dir, debug=False):
+    """Builds test suite module for board
+
+    Args:
+      module: String of the test module you are building,
+        i.e. gpio, timer, etc.
+      ec_dir: String of the ec directory path
+      debug: True means compile in debug messages when building (may
+        affect test results)
+    """
     cmds = ['make',
         '--directory=' + str(ec_dir),
         'BOARD=' + self.model,
@@ -85,8 +95,13 @@ class Board(object):
         '-j',
         '-B']
 
+    # If debug is false, leave undefined
+    if debug:
+      cmds.append('CTS_DEBUG=TRUE')
+
     print 'EC directory is ' + str(ec_dir)
-    print 'Building module \'' + module + '\' for ' + self.model
+    print ('Building module \'' + module + '\' for ' + self.model +
+           'with debug = ' + str(debug))
     sp.call(cmds)
 
   def flash(self):
@@ -343,18 +358,27 @@ class Cts(object):
     test_results: Dictionary of results of each test from module
     return_codes: List of strings of return codes, with a code's integer
       value being the index for the corresponding string representation
+    debug: Boolean that indicates whether or not on-board debug message
+      printing should be enabled when building.
+    debug_output: Dictionary mapping test name to an array contain debug
+      messages sent while it was running
   """
 
-  def __init__(self, ec_dir, dut='nucleo-f072rb', module='gpio'):
+  def __init__(self, ec_dir,
+               dut='nucleo-f072rb', module='gpio', debug=False):
     """Initializes cts class object with given arguments.
 
     Args:
       dut: Name of Device Under Test (DUT) board
       ec_dir: String path to ec directory
+      dut: Name of board to use for DUT
       module: Name of module to build/run tests for
+      debug: Boolean that indicates whether or not on-board debug message
+        printing should be enabled when building.
     """
     self.results_dir = '/tmp/cts_results'
     self.module = module
+    self.debug = debug
     self.ec_directory = ec_dir
     self.th = TestHarness()
     self.dut = DeviceUnderTest(dut, self.th)  # DUT constructor needs TH
@@ -381,6 +405,9 @@ class Cts(object):
     self.return_codes = Cts._getMacroArgs(
       return_codes_path, 'CTS_RC_')
     self.test_results = collections.OrderedDict()
+    self.debug_output = {}
+    for test in self.test_names:
+      self.debug_output[test] = []
 
   def set_dut_board(self, brd):
     """Sets the dut_board instance variable
@@ -398,9 +425,17 @@ class Cts(object):
     """
     self.module = mod
 
+  def setDebug(self, debug):
+    """Sets debug variable
+
+    Args:
+      debug: Boolean indicating whether to build with debug
+    """
+    self.debug = debug
+
   def make(self):
-    self.dut.make(self.module, self.ec_directory)
-    self.th.make(self.module, self.ec_directory)
+    self.dut.make(self.module, self.ec_directory, self.debug)
+    self.th.make(self.module, self.ec_directory, self.debug)
 
   def flashBoards(self):
     """Flashes th and dut boards with their most recently build ec.bin"""
@@ -446,6 +481,38 @@ class Cts(object):
         args.append(ln.strip('()').replace(',', ''))
     return args
 
+  def extractDebugOutput(self, output):
+    """Append the debug messages from output to self.debug_output
+
+    Args:
+      output: String containing output from which to extract debug
+        messages
+    """
+    lines = [ln.strip() for ln in output.split('\n')]
+    test_num = 0
+    i = 0
+    message_buf = []
+    while i < len(lines):
+      if test_num >= len(self.test_names):
+        break
+      if lines[i].strip() == CTS_DEBUG_START:
+        i += 1
+        msg = ''
+        while i < len(lines):
+          if lines[i] == CTS_DEBUG_END:
+            break
+          else:
+            msg += lines[i]
+            break
+        message_buf.append(msg)
+      else:
+        current_test = self.test_names[test_num]
+        if lines[i].strip().startswith(current_test):
+          self.debug_output[current_test] += message_buf
+          message_buf = []
+          test_num += 1
+      i += 1
+
   def _parseOutput(self, r1, r2):
     """Parse the outputs of the DUT and TH together
 
@@ -456,6 +523,9 @@ class Cts(object):
     self.test_results.clear()  # empty out any old results
 
     first_corrupted_test = len(self.test_names)
+
+    self.extractDebugOutput(r1)
+    self.extractDebugOutput(r2)
 
     for output_str in [r1, r2]:
       test_num = 0
@@ -482,9 +552,6 @@ class Cts(object):
       if test_num != len(self.test_names): # If a suite didn't finish
         first_corrupted_test = min(first_corrupted_test, test_num)
     if first_corrupted_test < len(self.test_names):
-      print 'Test results corrupted at ' + str(first_corrupted_test)
-      print 'Corrupted tests: '
-      print self.test_names[first_corrupted_test]
       for test in self.test_names[first_corrupted_test:]:
         self.test_results[test] = CTS_CORRUPTED_CODE
 
@@ -522,19 +589,36 @@ class Cts(object):
                   'body {font-family: \"Lucida Console\", Monaco, monospace')
     body = et.SubElement(root, 'body')
     table = et.SubElement(body, 'table')
-    table.set('align', 'center')
+    table.set('style','width:100%')
     title_row = et.SubElement(table, 'tr')
     test_name_title = et.SubElement(title_row, 'th')
     test_name_title.text = 'Test Name'
+    test_name_title.set('style', 'white-space : nowrap')
     test_results_title = et.SubElement(title_row, 'th')
     test_results_title.text = 'Test Result'
+    test_results_title.set('style', 'white-space : nowrap')
+    test_debug_title = et.SubElement(title_row, 'th')
+    test_debug_title.text = 'Debug Output'
+    test_debug_title.set('style', 'width:99%')
 
     for name, result in self.test_results.items():
       row = et.SubElement(table, 'tr')
       name_e = et.SubElement(row, 'td')
       name_e.text = name
+      name_e.set('style', 'white-space : nowrap')
       result_e = et.SubElement(row, 'td')
       result_e.text = result
+      result_e.set('style', 'white-space : nowrap')
+      debug_e = et.SubElement(row, 'td')
+      debug_e.set('style', 'width:99%')
+      if len(self.debug_output[name]) == 0:
+        debug_e.text = 'None'
+      else:
+        combined_message = ''
+        for msg in self.debug_output[name]:
+          combined_message = '\n' + msg
+        combined_message = combined_message[1:]
+        debug_e.text = combined_message
       if result == self.return_codes[CTS_SUCCESS_CODE]:
         result_e.set('bgcolor', CTS_COLOR_GREEN)
       else:
@@ -550,16 +634,19 @@ class Cts(object):
 
     self.dut.readAvailableBytes()  # clear buffer
     self.th.readAvailableBytes()
+    bad_cat_message = ('Output missing from boards.\n'
+                       'If you are running cat on a ttyACMx file,\n'
+                       'please kill that process and try again')
+
     self.resetBoards()
 
     time.sleep(MAX_SUITE_TIME_SEC)
 
     dut_results = self.dut.readAvailableBytes()
     th_results = self.th.readAvailableBytes()
+
     if len(dut_results) == 0 or len(th_results) == 0:
-      raise ValueError('Output missing from boards.\n'
-               'If you are running cat on a ttyACMx file,\n'
-               'please kill that process and try again')
+      raise ValueError(bad_cat_message)
 
     self._parseOutput(dut_results, th_results)
     pretty_results = self._resultsAsString()
@@ -593,6 +680,10 @@ def main():
   parser.add_argument('-m',
             '--module',
             help='Specify module you want to build/flash')
+  parser.add_argument('--debug',
+            action='store_true',
+            help='If building, build with debug printing enabled. This may'
+                 'change test results')
   parser.add_argument('-s',
             '--setup',
             action='store_true',
@@ -632,6 +723,10 @@ def main():
     cts_suite.resetAndRecord()
 
   elif args.build:
+    if args.debug:
+      cts_suite.setDebug(True)
+    else:
+      cts_suite.setDebug(False)
     cts_suite.make()
 
   elif args.flash:
