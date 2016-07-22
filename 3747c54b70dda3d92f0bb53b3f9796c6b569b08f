@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea8ee740_df7564dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-22T19:56:22Z",
+      "side": 1,
+      "message": "this test does not prove correctness of this patch",
+      "revId": "3747c54b70dda3d92f0bb53b3f9796c6b569b08f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_ff1ea072",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-22T19:56:22Z",
+      "side": 1,
+      "message": "this seems confusing, sizeof(uint32_t) would make more sense.",
+      "range": {
+        "startLine": 342,
+        "startChar": 19,
+        "endLine": 342,
+        "endChar": 43
+      },
+      "revId": "3747c54b70dda3d92f0bb53b3f9796c6b569b08f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_bf7898d5",
+        "filename": "include/tpm_manufacture.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-22T19:56:22Z",
+      "side": 1,
+      "message": "please add return value description",
+      "revId": "3747c54b70dda3d92f0bb53b3f9796c6b569b08f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
