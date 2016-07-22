@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3a9356_f6522644",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-22T23:40:52Z",
+      "side": 1,
+      "message": "this is pointless, because both TPM init and TPM_Manufacture are heavy nvram users.\n\nThe nvram is guaranteed to be up by virtue of the fact that init hooks finish before any task context starts.\n\nPlease remove this and add error reporting so we can proceed.",
+      "revId": "accfa9c4caa47a8dd9657486c94ff92fe934e25a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
