@@ -46,6 +46,30 @@
       "revId": "c4070f9ed85b6012e92708d3760501c578d30d46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_0e6fc0c1",
+        "filename": "chip/nrf51/radio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-22T21:37:32Z",
+      "side": 1,
+      "message": "Good catch.  It changed from the last version of the manual.  I liked the old meaning better, but it\u0027s hard to argue with the manual :)",
+      "parentUuid": "ea8ee740_1df45f8b",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 29
+      },
+      "revId": "c4070f9ed85b6012e92708d3760501c578d30d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
