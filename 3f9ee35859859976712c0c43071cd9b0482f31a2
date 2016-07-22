@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3a9356_04abd873",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-07-22T17:15:06Z",
+      "side": 1,
+      "message": "I\u0027m concerned these registers are not set correctly (though the datasheet isn\u0027t exactly clear). These look like rising / falling hysteresis values for valid battery voltage. I think you have interpreted the meaning differently. Can you clarify? Did Rohm suggest these changes?",
+      "range": {
+        "startLine": 667,
+        "startChar": 0,
+        "endLine": 673,
+        "endChar": 35
+      },
+      "revId": "3f9ee35859859976712c0c43071cd9b0482f31a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
