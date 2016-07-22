@@ -476,9 +476,11 @@ static void tpm_init(void)
 		 */
 		TPM_Manufacture(1);
 		_TPM_Init();
+		_plat__SetNvAvail();
+		tpm_endorse();
+	} else {
+		_plat__SetNvAvail();
 	}
-
-	_plat__SetNvAvail();
 }
 
 #ifdef CONFIG_EXTENSION_COMMAND
