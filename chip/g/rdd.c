@@ -73,11 +73,7 @@ void rdd_init(void)
 
 	GWRITE(RDD, PROG_DEBUG_STATE_MAP, DETECT_DEBUG);
 
-	/* Initialize the debug state based on the current cc values */
-	rdd_interrupt();
-
-	/* Enable RDD interrupts */
-	task_enable_irq(GC_IRQNUM_RDD0_INTR_DEBUG_STATE_DETECTED_INT);
-	GWRITE_FIELD(RDD, INT_ENABLE, INTR_DEBUG_STATE_DETECTED, 1);
+	/* Detect when debug cable is disconnected */
+	rdd_attached();
 }
 DECLARE_HOOK(HOOK_INIT, rdd_init, HOOK_PRIO_DEFAULT);
