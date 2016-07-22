@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4a3a9356_a791ce4f",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-22T18:53:47Z",
+      "side": 1,
+      "message": "When I couldn\u0027t find an existing config option that seemed like a good fit (there is no config CONFIG_PORT80, there are a ton of CONFIG_ACCEL, ...) I left it for future work.",
+      "parentUuid": "4a3a9356_416232b1",
+      "revId": "bc5c925fc9d2902c3b0d125a9050222bfe2a3e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a3a9356_81583a01",
         "filename": "include/console_channel.inc",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2016-07-22T16:51:44Z",
       "side": 1,
       "message": "Looks like we can do ifdef CONFIG_CHARGER this line. Every board defines CONFIG_CHARGER if it has a charger.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "bc5c925fc9d2902c3b0d125a9050222bfe2a3e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_27affe92",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-22T18:53:47Z",
+      "side": 1,
+      "message": "I only did the easy ones in this CL.\n\nThis works for the charger, but it seems like there might be some refactoring needed to the code when there are that many CONFIG options for one CC.\n\n#if defined(CONFIG_CHARGER) || defined(CONFIG_CHARGER_V1) || \\\n\tdefined(CHARGER_V2) || defined(CONFIG_CHARGER_TPS65090)",
+      "parentUuid": "4a3a9356_81583a01",
       "range": {
         "startLine": 13,
         "startChar": 0,
