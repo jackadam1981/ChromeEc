@@ -13,5 +13,7 @@
 
 /* Returns non-zero if the TPM manufacture steps have been completed. */
 int tpm_manufactured(void);
+/* Returns non-zero if TPM endorsement initialization succeeds. */
+int tpm_endorse(void);
 
 #endif	/* __CROS_EC_TPM_MANUFACTURE_H */
