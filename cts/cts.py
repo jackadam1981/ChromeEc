@@ -15,8 +15,8 @@ import time
 from abc import ABCMeta, abstractmethod
 import xml.etree.ElementTree as et
 
-# For most tests, error codes should never conflict
-CTS_CONFLICTING_CODE = -1
+CTS_CORRUPTED_CODE = -2  # The test didn't execute correctly
+CTS_CONFLICTING_CODE = -1 # Error codes should never conflict
 CTS_SUCCESS_CODE = 0
 CTS_COLOR_RED = '#fb7d7d'
 CTS_COLOR_GREEN = '#7dfb9f'
@@ -455,36 +455,44 @@ class Cts(object):
     """
     self.test_results.clear()  # empty out any old results
 
+    first_corrupted_test = len(self.test_names)
+
     for output_str in [r1, r2]:
+      test_num = 0
       for ln in [ln.strip() for ln in output_str.split('\n')]:
         tokens = ln.split()
         if len(tokens) != 2:
           continue
-        elif tokens[0].strip() not in self.test_names:
+        t_name = tokens[0].strip()
+        t_result = int(tokens[1].strip())
+        if t_name not in self.test_names:
           continue
-        elif tokens[0] in self.test_results.keys():
-          if self.test_results[tokens[0]] != int(tokens[1]):
-            if self.test_results[tokens[0]] == CTS_SUCCESS_CODE:
-              self.test_results[tokens[0]] = int(tokens[1])
-            elif int(tokens[1]) == CTS_SUCCESS_CODE:
-              continue
+        if t_name != self.test_names[test_num]:
+          first_corrupted_test = test_num
+          break # Results after this are corrupted
+        if t_name in self.test_results.keys():
+          if self.test_results[t_name] != t_result:
+            if self.test_results[t_name] == CTS_SUCCESS_CODE:
+              self.test_results[t_name] = t_result
             else:
-              self.test_results[tokens[0]] = CTS_CONFLICTING_CODE
-          else:
-            continue
+              self.test_results[t_name] = CTS_CONFLICTING_CODE
         else:
-          self.test_results[tokens[0]] = int(tokens[1])
+          self.test_results[t_name] = t_result
+        test_num += 1
+      if test_num != len(self.test_names): # If a suite didn't finish
+        first_corrupted_test = min(first_corrupted_test, test_num)
+    if first_corrupted_test < len(self.test_names):
+      for test in self.test_names[first_corrupted_test:]:
+        self.test_results[test] = CTS_CORRUPTED_CODE
 
     # Convert codes to strings
     for test, code in self.test_results.items():
       if code == CTS_CONFLICTING_CODE:
-        self.test_results[test] = 'RESULTS CONFLICT'
-      self.test_results[test] = self.return_codes[code]
-
-    for tn in self.test_names:
-      if tn not in self.test_results.keys():
-        # Exceptional case
-        self.test_results[tn] = 'NO RESULT RETURNED'
+        self.test_results[test] = 'CONFLICT'
+      elif code == CTS_CORRUPTED_CODE:
+        self.test_results[test] = 'CORRUPTED'
+      else:
+        self.test_results[test] = self.return_codes[code]
 
   def _resultsAsString(self):
     """Takes saved results and returns a string representation of them
@@ -565,7 +573,6 @@ class Cts(object):
       fl.write(html_results)
 
     print pretty_results
-
 
 def main():
   """Main entry point for cts script from command line"""
