@@ -450,6 +450,8 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 
 static void tpm_init(void)
 {
+	int manufacture_status;
+
 	set_tpm_state(tpm_state_idle);
 	tpm_.regs.access = tpm_reg_valid_sts;
 	tpm_.regs.sts = (tpm_family_tpm2 << tpm_family_shift) |
@@ -469,16 +471,23 @@ static void tpm_init(void)
 	 */
 	_TPM_Init();
 
-	if (!tpm_manufactured()) {
+	if (tpm_manufactured() != ENDORSE_SUCCESS) {
 		/*
 		 * If tpm has not been manufactured yet - this needs to run on
 		 * every startup. It will wipe out NV RAM, among other things.
 		 */
 		TPM_Manufacture(1);
 		_TPM_Init();
+		_plat__SetNvAvail();
+		tpm_endorse();
+		manufacture_status = tpm_manufactured();
+	} else {
+		manufacture_status = ENDORSE_SUCCESS;
+		_plat__SetNvAvail();
 	}
 
-	_plat__SetNvAvail();
+	/* TODO: set TPM SPI register to manufacture status */
+	(void) manufacture_status;
 }
 
 #ifdef CONFIG_EXTENSION_COMMAND
