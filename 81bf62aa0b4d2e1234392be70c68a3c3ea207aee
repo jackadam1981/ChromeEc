@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea8ee740_c94db298",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-07-22T00:15:47Z",
+      "side": 1,
+      "message": "Will this actually work on the rev. A parts? I\u0027m strongly in favor of removing rev. A support entirely. It will certainly reduce code size.",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 67
+      },
+      "revId": "81bf62aa0b4d2e1234392be70c68a3c3ea207aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
