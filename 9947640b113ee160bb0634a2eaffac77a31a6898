@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea8ee740_bfc09826",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-22T03:58:18Z",
+      "side": 1,
+      "message": "let\u0027s not do drive by changes. Cleaning up could be a separate patch if you like to do it.",
+      "revId": "9947640b113ee160bb0634a2eaffac77a31a6898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_7ffc7063",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-22T03:58:18Z",
+      "side": 1,
+      "message": "another drive by change",
+      "revId": "9947640b113ee160bb0634a2eaffac77a31a6898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
