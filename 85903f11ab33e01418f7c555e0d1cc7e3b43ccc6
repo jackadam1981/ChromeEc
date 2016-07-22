@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4a3a9356_db55cbc9",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-22T22:56:47Z",
+      "side": 1,
+      "message": "Yes.  I moved it and the test functions to the bottom in the next patch.",
+      "parentUuid": "ea8ee740_48bc6384",
+      "revId": "85903f11ab33e01418f7c555e0d1cc7e3b43ccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8ee740_68d83feb",
         "filename": "chip/nrf51/bluetooth_le.c",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2016-07-21T18:12:27Z",
       "side": 1,
       "message": "So, timeout must be at least 2 to avoid EC_ERROR_TIMEOUT?",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 21
+      },
+      "revId": "85903f11ab33e01418f7c555e0d1cc7e3b43ccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_7b5b5ffe",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-22T22:56:47Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "ea8ee740_68d83feb",
       "range": {
         "startLine": 171,
         "startChar": 2,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "4a3a9356_9b58a301",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-22T22:56:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea8ee740_88dd6bdc",
+      "range": {
+        "startLine": 176,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 6
+      },
+      "revId": "85903f11ab33e01418f7c555e0d1cc7e3b43ccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8ee740_a87867d5",
         "filename": "chip/nrf51/bluetooth_le.c",
         "patchSetId": 3
@@ -76,6 +142,30 @@
       "writtenOn": "2016-07-21T18:12:27Z",
       "side": 1,
       "message": "Should this be a #defined constant?\n\n#define NRF51_WHITELIST_MAX_SIZE 8",
+      "range": {
+        "startLine": 198,
+        "startChar": 17,
+        "endLine": 198,
+        "endChar": 18
+      },
+      "revId": "85903f11ab33e01418f7c555e0d1cc7e3b43ccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_3b65d7b7",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-22T22:56:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea8ee740_a87867d5",
       "range": {
         "startLine": 198,
         "startChar": 17,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "4a3a9356_5b621bb1",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-22T22:56:47Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "ea8ee740_382126ba",
+      "range": {
+        "startLine": 278,
+        "startChar": 9,
+        "endLine": 278,
+        "endChar": 11
+      },
+      "revId": "85903f11ab33e01418f7c555e0d1cc7e3b43ccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8ee740_08641b4a",
         "filename": "chip/nrf51/bluetooth_le.h",
         "patchSetId": 3
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "4a3a9356_9b7f4344",
+        "filename": "chip/nrf51/bluetooth_le.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-22T22:56:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea8ee740_08641b4a",
+      "range": {
+        "startLine": 61,
+        "startChar": 39,
+        "endLine": 61,
+        "endChar": 46
+      },
+      "revId": "85903f11ab33e01418f7c555e0d1cc7e3b43ccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8ee740_48554352",
         "filename": "chip/nrf51/bluetooth_le.h",
         "patchSetId": 3
@@ -145,6 +283,30 @@
       "writtenOn": "2016-07-21T18:12:27Z",
       "side": 1,
       "message": "const?",
+      "range": {
+        "startLine": 64,
+        "startChar": 44,
+        "endLine": 64,
+        "endChar": 51
+      },
+      "revId": "85903f11ab33e01418f7c555e0d1cc7e3b43ccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_5b79bb5c",
+        "filename": "chip/nrf51/bluetooth_le.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-22T22:56:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea8ee740_48554352",
       "range": {
         "startLine": 64,
         "startChar": 44,
