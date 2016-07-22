@@ -22,6 +22,30 @@
       "revId": "3d4c4ffdfa81eeae04410186b8c149535fa79658",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_c190829b",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-07-22T16:35:47Z",
+      "side": 0,
+      "message": "The stuff in here is only used by common/system.c and common/flash.c, and neither one is really meaningful or accurate given the way our flash works.\n\nThat file assumes one write-protected/RO region containing one RO firmware, one mutable/RW region containing one RW firmware, and a PSTATE block to mimic the SW WP found in a standard flash chip.\n\nNone of that applies to chip/g",
+      "parentUuid": "4a3a9356_812cbafe",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "3d4c4ffdfa81eeae04410186b8c149535fa79658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
