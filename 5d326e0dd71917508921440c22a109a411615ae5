@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3a9356_61fc1611",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-07-22T15:57:49Z",
+      "side": 1,
+      "message": "You don\u0027t need a trailing \\n on CPRINTS, only on CPRINTF",
+      "range": {
+        "startLine": 247,
+        "startChar": 37,
+        "endLine": 247,
+        "endChar": 40
+      },
+      "revId": "5d326e0dd71917508921440c22a109a411615ae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
