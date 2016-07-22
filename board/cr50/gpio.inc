@@ -84,9 +84,8 @@ PINMUX(GPIO(STRAP0),          A1, DIO_INPUT)
 
 /* UARTs */
 PINMUX(FUNC(UART0_TX),        A0, DIO_OUTPUT)	/* Cr50 console */
-PINMUX(FUNC(UART0_RX),        A13, DIO_INPUT | DIO_WAKE_FALLING)
-/*
- * UART1_TX and UART2_TX are configured in usart.c. They are not set as outputs
+PINMUX(FUNC(UART0_RX),        A1, DIO_INPUT | DIO_WAKE_LOW)
+/* UART1_TX and UART2_TX are configured in usart.c. They are not set as outputs
  * here in order to avoid interfering with servo. They can be controlled using
  * the 'uart' console command.
  *   UART1_TX = DIOA7	AP console
