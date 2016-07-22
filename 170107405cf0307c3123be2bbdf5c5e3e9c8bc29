@@ -22,6 +22,30 @@
       "revId": "170107405cf0307c3123be2bbdf5c5e3e9c8bc29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_0486bf10",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-07-22T03:13:32Z",
+      "side": 1,
+      "message": "okay, I will change it to \"val ? CHARGE_CONTROL_IDLE : CHARGE_CONTROL_NORMAL\" more readable.\nI will also plan to add discarge_on_ac() option in on another CL.",
+      "parentUuid": "ea8ee740_e92c2e48",
+      "range": {
+        "startLine": 1312,
+        "startChar": 26,
+        "endLine": 1312,
+        "endChar": 29
+      },
+      "revId": "170107405cf0307c3123be2bbdf5c5e3e9c8bc29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
