@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3a9356_c1f2c29d",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-22T14:58:54Z",
+      "side": 0,
+      "message": "why is this include needed any more?\n\nIs it possible that config_std_internal_flash.h is included elsewhere and some of its defines do not match this config_chip.h",
+      "revId": "3d4c4ffdfa81eeae04410186b8c149535fa79658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
