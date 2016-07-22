@@ -81,6 +81,30 @@
       "revId": "bc5c925fc9d2902c3b0d125a9050222bfe2a3e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_6a162ba6",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-22T19:09:29Z",
+      "side": 1,
+      "message": "I meant:\n\n  #if defined(CONFIG_CHARGER)\n  CONSOLE_CHANNEL(CC_CHARGER,      \"charger\")\n  #endif\n\nwas enough but actually pit breaks it. board/pit/board.h doesn\u0027t define CONFIG_CHARGER. All other boards define it. So, it does require an additional change.",
+      "parentUuid": "4a3a9356_27affe92",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "bc5c925fc9d2902c3b0d125a9050222bfe2a3e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
