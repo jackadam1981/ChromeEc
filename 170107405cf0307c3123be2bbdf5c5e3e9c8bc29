@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea8ee740_e92c2e48",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-07-22T00:48:09Z",
+      "side": 1,
+      "message": "Should this be \u0027!!val\u0027 (or maybe \u0027val ? CHARGE_CONTROL_IDLE : CHARGE_CONTROL_NORMAL\u0027) to keep the same behavior?",
+      "range": {
+        "startLine": 1312,
+        "startChar": 26,
+        "endLine": 1312,
+        "endChar": 29
+      },
+      "revId": "170107405cf0307c3123be2bbdf5c5e3e9c8bc29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
