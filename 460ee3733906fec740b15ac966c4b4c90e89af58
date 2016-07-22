@@ -22,6 +22,30 @@
       "revId": "460ee3733906fec740b15ac966c4b4c90e89af58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8ee740_1ad29acd",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-07-22T14:03:09Z",
+      "side": 1,
+      "message": "If console channels are cheap (which they are on hadoken), it will be helpful to have multiple channels for Bluetooth.  In another patch, I\u0027ve includeded console channels for the HCI and Link layers.",
+      "parentUuid": "ea8ee740_02d23acd",
+      "range": {
+        "startLine": 11,
+        "startChar": 34,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "460ee3733906fec740b15ac966c4b4c90e89af58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
