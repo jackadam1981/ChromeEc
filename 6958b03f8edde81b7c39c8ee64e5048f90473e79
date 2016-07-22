@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3a9356_442a4082",
+        "filename": "cts/common/cts.rc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-22T17:39:51Z",
+      "side": 1,
+      "message": "Greater than 80 chars...\n\nAlso, multi-line comments should be\n\n/*\n * This file blah...\n * blah blah...\n */\n\n(yeah, the copyright doesn\u0027t do that, but ignore that...)",
+      "range": {
+        "startLine": 8,
+        "startChar": 71,
+        "endLine": 8,
+        "endChar": 75
+      },
+      "revId": "6958b03f8edde81b7c39c8ee64e5048f90473e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_e45cb42a",
+        "filename": "cts/cts.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-22T17:39:51Z",
+      "side": 1,
+      "message": "Imports should all be alphabetized",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "6958b03f8edde81b7c39c8ee64e5048f90473e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
