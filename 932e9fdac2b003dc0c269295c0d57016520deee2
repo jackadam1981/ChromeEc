@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3a9356_6aedcb21",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-22T19:56:22Z",
+      "side": 1,
+      "message": "this should be defined as\n\nCONFIG_FLASH_NVMEM_BASE + CONFIG_RO_SIZE - RO_CERTS_REGION_SIZE",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 27
+      },
+      "revId": "932e9fdac2b003dc0c269295c0d57016520deee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_2a7ca34d",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-22T19:56:22Z",
+      "side": 1,
+      "message": "each time you access a field in the register you should use a field accessor macro in chip/registers.h (GREAD_FIELD/GWRITE_FIELD)\n\nit\u0027s not rocket science, and frankly is a bit tedious to mention on every new patch ;)",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 12
+      },
+      "revId": "932e9fdac2b003dc0c269295c0d57016520deee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_6a094bda",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-22T19:56:22Z",
+      "side": 1,
+      "message": "using p and c makes the code less readable.\n\nwhat if you assigned\n\nrsa_cert \u003d (const struct ro_cert *)RO_CERTS_START_ADDR;",
+      "revId": "932e9fdac2b003dc0c269295c0d57016520deee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_aa35138f",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-22T19:56:22Z",
+      "side": 1,
+      "message": "then you could check if \n\nrsa_cert-\u003ecert_response.cert_len is larger than it could (0xffffffff included it the wrong values range) and bail out here.",
+      "revId": "932e9fdac2b003dc0c269295c0d57016520deee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_4a27a75f",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-22T19:56:22Z",
+      "side": 1,
+      "message": "and could assign\n\necc_cert \u003d  (const struct ro_cert *)((uintptr_t)(rsa_cert + 1) + rsa_cert-\u003ecert_response.cert_len",
+      "revId": "932e9fdac2b003dc0c269295c0d57016520deee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
