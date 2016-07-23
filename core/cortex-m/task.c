@@ -59,7 +59,6 @@ static uint32_t task_switches;   /* Number of times active task changed */
 static uint32_t irq_dist[CONFIG_IRQ_COUNT];  /* Distribution of IRQ calls */
 #endif
 
-extern void __switchto(task_ *from, task_ *to);
 extern int __task_start(int *task_stack_ready);
 
 #ifndef CONFIG_LOW_POWER_IDLE
@@ -142,9 +141,13 @@ uint8_t task_stacks[0
 #undef TASK
 
 /* Reserve space to discard context on first context switch. */
+#ifdef CONFIG_FPU
+uint32_t scratchpad[17+18];
+#else
 uint32_t scratchpad[17];
+#endif
 
-static task_ *current_task = (task_ *)scratchpad;
+task_ *current_task = (task_ *)scratchpad;
 
 /*
  * Should IRQs chain to svc_handler()?  This should be set if either of the
@@ -157,7 +160,7 @@ static task_ *current_task = (task_ *)scratchpad;
  * task unblocking.  After checking for a task switch, svc_handler() will clear
  * the flag (unless profiling is also enabled; then the flag remains set).
  */
-static int need_resched_or_profiling;
+int need_resched_or_profiling;
 
 /*
  * Bitmap of all tasks ready to be run.
@@ -223,7 +226,7 @@ int task_start_called(void)
 /**
  * Scheduling system call
  */
-void svc_handler(int desched, task_id_t resched)
+task_ *__svc_handler(int desched, task_id_t resched)
 {
 	task_ *current, *next;
 #ifdef CONFIG_TASK_PROFILING
@@ -293,16 +296,13 @@ void svc_handler(int desched, task_id_t resched)
 	need_resched_or_profiling = 0;
 #endif
 
-	/* Nothing to do */
-	if (next == current)
-		return;
-
 	/* Switch to new task */
 #ifdef CONFIG_TASK_PROFILING
-	task_switches++;
+	if (next != current)
+		task_switches++;
 #endif
 	current_task = next;
-	__switchto(current, next);
+	return current;
 }
 
 void __schedule(int desched, int resched)
@@ -341,18 +341,6 @@ void __keep task_start_irq_handler(void *excep_return)
 	exc_start_time = t;
 }
 #endif
-
-void __keep task_resched_if_needed(void *excep_return)
-{
-	/*
-	 * Continue iff a rescheduling event happened or profiling is active,
-	 * and we are not called from another exception.
-	 */
-	if (!need_resched_or_profiling || (((uint32_t)excep_return & 0xf) == 1))
-		return;
-
-	svc_handler(0, 0);
-}
 
 static uint32_t __wait_evt(int timeout_us, task_id_t resched)
 {

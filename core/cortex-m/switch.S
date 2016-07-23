@@ -99,3 +99,40 @@ __task_start:
   mov r0, #1             @ set to EC_ERROR_UNKNOWN
   bx lr
 
+/**
+ * SVC exception handler
+ */
+.global svc_handler
+.thumb_func
+svc_handler:
+  push {lr}                  @ save link register
+  bl __svc_handler           @ call svc handler helper
+  ldr r3,=current_task       @ load the current task's address
+  ldr r1, [r3]               @ load the current task
+  cmp r0, r1                 @ compare with previous task returned by helper
+  beq svc_handler_return     @ return if they are the same
+  bl __switchto              @ switch to the new task if they're not the same
+svc_handler_return:
+  pop {pc}                   @ return from exception or return to caller
+
+/**
+ * Resched task if needed:
+ * Continue iff a rescheduling event happened or profiling is active,
+ * and we are not called from another exception.
+ */
+.global task_resched_if_needed
+.thumb_func
+task_resched_if_needed:
+  push {lr}                                 @ save link register
+  ldr r3,=need_resched_or_profiling         @ load need's address
+  ldr r1, [r3]                              @ load need
+  cbz r1, task_resched_if_needed_return     @ return if there is no need
+  and r0, #0xf                              @ called from another exception
+  cmp r0, #1                                @ check bit
+  beq task_resched_if_needed_return         @ return if called from exception
+  movs r1, #0                               @ desched nothing
+  movs r0, #0                               @ resched nothing
+  bl svc_handler                            @ re-schedule the highest priority
+                                            @ task
+task_resched_if_needed_return:
+  pop {pc}                                  @ return to caller
