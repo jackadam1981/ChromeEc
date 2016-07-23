@@ -13,6 +13,61 @@
 .code 16
 
 /**
+ * Start the task scheduling.  r0 is a pointer to task_stack_ready, which is
+ * set to 1 after the task stack is set up.
+ */
+.global __task_start
+.thumb_func
+__task_start:
+  ldr r2,=scratchpad     @ area used as dummy thread stack for the first switch
+  mov r3, #2             @ use : priv. mode / thread stack / no floating point
+                         @ setting FP to unused here means first context switch
+                         @ will not store FP regs
+  add r2, #17*4          @ put the pointer at the top of the stack
+  mov r1, #0             @ __Schedule parameter : re-schedule nothing
+  msr psp, r2            @ setup a thread stack up to the first context switch
+  mov r2, #1
+  isb                    @ ensure the write is done
+  msr control, r3
+  mov r3, r0
+  mov r0, #0             @ __Schedule parameter : de-schedule nothing
+  isb                    @ ensure the write is done
+  str r2, [r3]           @ Task scheduling is now active
+  bl __schedule          @ execute the task with the highest priority
+  /* we should never return here */
+  mov r0, #1             @ set to EC_ERROR_UNKNOWN
+  bx lr
+
+/**
+ * SVC exception handler
+ *
+ * First, work around issue where a late exception can corrupt r0 to r3,
+ * see section 2.7 (svc) of Cortex-M3 Application Note 179:
+ * http://infocenter.arm.com/help/topic/com.arm.doc.dai0179b/AppsNote179.pdf
+ *
+ * This approach differs slightly from the one in the document,
+ * it only loads r0 (desched) and r1 (resched) for svc_handler.
+ */
+.global svc_handler
+.thumb_func
+svc_handler:
+  tst lr, #4                 @ see if called from supervisor mode
+  mrs r2, msp                @ get the correct stack pointer into r2
+  it ne
+  mrsne r2, psp
+  ldr r1, [r2, #4]           @ get regs from stack frame
+  ldr r0, [r2]
+
+svc_handler_entry:
+  push {lr}                  @ save link register
+  bl __svc_handler           @ call svc handler helper
+  ldr r3,=current_task       @ load the current task's address
+  ldr r1, [r3]               @ load the current task
+  cmp r0, r1                 @ compare with previous task returned by helper
+  beq svc_handler_return     @ return if they are the same
+  /* continue to __switchto to switch to the new task */
+
+/**
  * Task context switching
  *
  * Change the task scheduled after returning from the exception.
@@ -43,8 +98,6 @@
  * 0 otherwise.
  *
  */
-.global __switchto
-.thumb_func
 __switchto:
   mrs r3, psp            @ get the task stack where the context has been saved
   ldr r2, [r1]           @ get the new scheduled task stack pointer
@@ -71,31 +124,28 @@ __switchto:
   ldmia r2!, {r4-r11}    @ restore r4-r11 for the next task context
   str r3, [r0]           @ save the task stack pointer in its context
   msr psp, r2            @ set the process stack pointer to exception context
-  bx lr                  @ return from exception
+
+svc_handler_return:
+  pop {pc}               @ return from exception or return to caller
 
 /**
- * Start the task scheduling.  r0 is a pointer to task_stack_ready, which is
- * set to 1 after the task stack is set up.
+ * Resched task if needed:
+ * Continue iff a rescheduling event happened or profiling is active,
+ * and we are not called from another exception.
  */
-.global __task_start
+.global task_resched_if_needed
 .thumb_func
-__task_start:
-  ldr r2,=scratchpad     @ area used as dummy thread stack for the first switch
-  mov r3, #2             @ use : priv. mode / thread stack / no floating point
-                         @ setting FP to unused here means first context switch
-                         @ will not store FP regs
-  add r2, #17*4          @ put the pointer at the top of the stack
-  mov r1, #0             @ __Schedule parameter : re-schedule nothing
-  msr psp, r2            @ setup a thread stack up to the first context switch
-  mov r2, #1
-  isb                    @ ensure the write is done
-  msr control, r3
-  mov r3, r0
-  mov r0, #0             @ __Schedule parameter : de-schedule nothing
-  isb                    @ ensure the write is done
-  str r2, [r3]           @ Task scheduling is now active
-  bl __schedule          @ execute the task with the highest priority
-  /* we should never return here */
-  mov r0, #1             @ set to EC_ERROR_UNKNOWN
-  bx lr
-
+task_resched_if_needed:
+  push {lr}                                 @ save link register
+  ldr r3,=need_resched_or_profiling         @ load need's address
+  ldr r1, [r3]                              @ load need
+  cbz r1, task_resched_if_needed_return     @ return if there is no need
+  and r0, #0xf                              @ called from another exception
+  cmp r0, #1                                @ check bit
+  beq task_resched_if_needed_return         @ return if called from exception
+  movs r1, #0                               @ desched nothing
+  movs r0, #0                               @ resched nothing
+  bl svc_handler_entry                      @ re-schedule the highest priority
+                                            @ task
+task_resched_if_needed_return:
+  pop {pc}                                  @ return to caller
