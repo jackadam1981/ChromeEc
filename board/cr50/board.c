@@ -8,21 +8,24 @@
 #include "dcrypto/dcrypto.h"
 #include "device_state.h"
 #include "ec_version.h"
+#include "flash.h"
 #include "flash_config.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "init_chip.h"
-#include "registers.h"
 #include "nvmem.h"
+#include "registers.h"
+#include "signed_header.h"
+#include "signed_header.h"
+#include "spi.h"
 #include "system.h"
 #include "task.h"
 #include "trng.h"
 #include "uartn.h"
 #include "usb_descriptor.h"
 #include "usb_hid.h"
-#include "util.h"
-#include "spi.h"
 #include "usb_spi.h"
+#include "util.h"
 
 /* Define interrupt and gpio structs */
 #include "gpio_list.h"
@@ -125,6 +128,157 @@ static void init_runlevel(const enum permission_level desired_level)
 	}
 }
 
+extern char new_b1_ro_start, new_b1_ro_end;
+extern char new_b2_ro_start, new_b2_ro_end;
+
+static uint8_t nvram_buffer[1024];
+
+static void report_flash_configs(void)
+{
+	volatile struct {
+		uint32_t reg_base_addr;
+		uint32_t reg_size;
+	} *flash_block;
+	volatile uint32_t *flash_ctrl;
+	int i;
+
+	flash_ctrl = GREG32_ADDR(GLOBALSEC, FLASH_REGION0_CTRL);
+	flash_block = (volatile void *)GREG32_ADDR(GLOBALSEC, FLASH_REGION0_BASE_ADDR);
+
+	for (i = 0; i < 8; i++)
+		ccprintf("base 0x%x, size 0x%x, enable %x\n",
+			 flash_block[i].reg_base_addr,
+			 flash_block[i].reg_size,
+			 flash_ctrl[i] & 7);
+}
+
+static void open_ro_b_window(void *b, size_t size_b)
+{
+	GREG32(GLOBALSEC, FLASH_REGION6_BASE_ADDR) = (uint32_t)b;
+	GREG32(GLOBALSEC, FLASH_REGION6_SIZE) = size_b - 1;
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, EN, 1);
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, RD_EN, 1);
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, WR_EN, 1);
+}
+
+static void convert_to_new_layout(void)
+{
+	//	struct SignedHeader *a, *b;
+	struct SignedHeader *b;
+	int i;
+	const char *g_rev;
+	const char *new_ro_base;
+	size_t new_ro_size;
+
+	//	a = (struct SignedHeader *)CONFIG_PROGRAM_MEMORY_BASE;
+	b = (struct SignedHeader *)(CONFIG_PROGRAM_MEMORY_BASE + CFG_FLASH_HALF);
+
+	if ((b->magic == 0xffffffff) &&
+	    (b->ro_base == (uint32_t) b)) {
+		ccprintf("%s: new RO already in place, b at %p, b->ro_base at %p\n",
+			 __func__, b, &b->ro_base);
+		return;
+	}
+
+	ccprintf("%s: upgrade required\n",  __func__);
+
+	/* First - prepare the new nvram space. */
+	ccprintf("%s: erase NVRAM space",  __func__);
+	if (flash_physical_erase(CONFIG_FLASH_NVMEM_BASE -
+				 CONFIG_PROGRAM_MEMORY_BASE,
+				 CONFIG_FLASH_NVMEM_SIZE) != EC_SUCCESS) {
+		return;
+	}
+	ccprintf("\n");
+
+	/* Now, copy old nvmem contents to the new location */
+	ccprintf("%s: copy nvram",  __func__);
+	for (i = 0; i < CONFIG_FLASH_NVMEM_SIZE/sizeof(nvram_buffer); i++) {
+		size_t offset = i * sizeof(nvram_buffer);
+		const uint8_t *old_nvram_section = (const uint8_t *)b + offset;
+
+		ccprintf(" %d",  i);
+		memcpy(nvram_buffer, old_nvram_section, sizeof(nvram_buffer));
+		if (flash_physical_write(CONFIG_FLASH_NVMEM_BASE + offset,
+					 sizeof(nvram_buffer),
+					 nvram_buffer) != EC_SUCCESS) {
+			return;
+		}
+	}
+	ccprintf("\n");
+	ccprintf("%s: compare old and new nvram",  __func__);
+	if (memcmp((const void *)CONFIG_FLASH_NVMEM_BASE,
+		   b, CONFIG_FLASH_NVMEM_SIZE)) {
+		ccprintf(" failed!\n");
+		return;
+	}
+	ccprintf("\n");
+
+	g_rev = system_get_chip_revision();
+	ccprintf("%s: program  %s RO_B",  __func__, g_rev);
+	switch(g_rev[1]) {
+	case '1':
+		new_ro_base = &new_b1_ro_start;
+		new_ro_size = &new_b1_ro_end - &new_b1_ro_start;
+		break;
+
+	case '2':
+		new_ro_base = &new_b2_ro_start;
+		new_ro_size = &new_b2_ro_end - &new_b2_ro_start;
+		break;
+
+	default:
+		ccprintf(" impossible\n");
+		return;
+	}
+	ccprintf("\n");
+
+	/* Align new ro size to flash erase boundary. */
+	new_ro_size = (new_ro_size + CONFIG_FLASH_ERASE_SIZE - 1) &
+		~(CONFIG_FLASH_ERASE_SIZE -1);
+	ccprintf("%s: erase %x bytes at offset %x",  __func__,
+		 new_ro_size, CFG_FLASH_HALF);
+
+	open_ro_b_window(b, new_ro_size);
+	if (flash_physical_erase(CFG_FLASH_HALF, new_ro_size) != EC_SUCCESS) {
+		report_flash_configs();
+		return;
+	}
+	ccprintf("\n");
+	ccprintf("%s: program new ro:",  __func__);
+	for (i = 0; i < new_ro_size/sizeof(nvram_buffer); i++) {
+		size_t offset = i * sizeof(nvram_buffer);
+		const uint8_t *new_ro_section = new_ro_base + offset;
+
+		ccprintf(" %d",  i);
+		memcpy(nvram_buffer, new_ro_section, sizeof(nvram_buffer));
+		if (flash_physical_write(CFG_FLASH_HALF + offset,
+					 sizeof(nvram_buffer),
+					 nvram_buffer) != EC_SUCCESS) {
+			ccprintf(" failed!\n");
+			return;
+		}
+	}
+	ccprintf("\n");
+	ccprintf("%s: verify new RO",  __func__);
+	if (memcmp(b, new_ro_base, new_ro_size)) {
+		ccprintf(" failed!\n");
+		return;
+	}
+	ccprintf("\n");
+
+	ccprintf("%s: corrupt old RO", __func__);
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION0_CTRL, WR_EN, 1);
+	if (flash_physical_erase(0, CONFIG_FLASH_ERASE_SIZE) != EC_SUCCESS) {
+		report_flash_configs();
+		return;
+	}
+	ccprintf("\n");
+	ccprintf("Success!!!\n");
+	usleep(20000);
+	system_reset(0);
+}
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -134,6 +288,9 @@ static void board_init(void)
 	init_trng();
 	init_jittery_clock(1);
 	init_runlevel(PERMISSION_MEDIUM);
+
+	convert_to_new_layout();
+
 	/* Initialize NvMem partitions */
 	nvmem_init();
 
