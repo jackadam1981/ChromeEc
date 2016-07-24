@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3a9356_edb9f032",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-24T00:43:00Z",
+      "side": 1,
+      "message": "Also comment that this comparison function better match the one that RO has.",
+      "revId": "734a08f8e82fdc6913c80ce53f23a458558277e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_8dbf0415",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-24T00:43:00Z",
+      "side": 1,
+      "message": "aha, I knew I had a good reason to leave that word as 0xffffffff ;-)",
+      "range": {
+        "startLine": 173,
+        "startChar": 16,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "734a08f8e82fdc6913c80ce53f23a458558277e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_6dc640b1",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-24T00:43:00Z",
+      "side": 1,
+      "message": "those 3 bits are all the relevant bits in that register, just write EN|RD_EN|WR_EN.. faster and safer.",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 55
+      },
+      "revId": "734a08f8e82fdc6913c80ce53f23a458558277e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_0d9214a5",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-24T00:43:00Z",
+      "side": 1,
+      "message": "Still is suspicious that counter is not 1, as expected for clean runs, no? I would not call that universal successs.",
+      "revId": "734a08f8e82fdc6913c80ce53f23a458558277e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
