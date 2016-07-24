@@ -443,4 +443,15 @@ uintptr_t system_get_fw_reset_vector(uintptr_t base);
  */
 int system_is_reboot_warm(void);
 
+/**
+ * Process retry counter to determine if there has been a fallback from a
+ * botched RW update. If the fallback condition is detected - corrupt the
+ * header of the other image to prevent it from running on the next restart.
+ *
+ * Not available on all platforms.
+ *
+ * @return EC_SUCCESS if no errors have been encountered.
+ */
+int system_process_retry_counter(void);
+
 #endif  /* __CROS_EC_SYSTEM_H */
