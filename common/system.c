@@ -96,12 +96,7 @@ static enum ec_reboot_cmd reboot_at_shutdown;
 /* On-going actions preventing going into deep-sleep mode */
 uint32_t sleep_mask;
 
-/**
- * Return the program memory address where the image `copy` begins or should
- * begin. In the case of external storage, the image may or may not currently
- * reside at the location returned.
- */
-static uintptr_t get_program_memory_addr(enum system_image_copy_t copy)
+uintptr_t get_program_memory_addr(enum system_image_copy_t copy)
 {
 	switch (copy) {
 	case SYSTEM_IMAGE_RO:
