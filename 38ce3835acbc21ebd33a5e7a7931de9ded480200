@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a6b739b_7c831500",
+        "filename": "board/cave/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-25T20:18:27Z",
+      "side": 1,
+      "message": "We already queried chipset_in_state() at line 387. Might as well unconditionally call it now prior to if/else if above and use the cached value here. Or add an else to the if/else if to call host_set_single_event().",
+      "revId": "38ce3835acbc21ebd33a5e7a7931de9ded480200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a6b739b_9cb0e9f9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-25T20:18:27Z",
+      "side": 1,
+      "message": "This CL with ec_commands.h changes needs to land in master first so that we don\u0027t get collisions in additional commands being added.",
+      "revId": "38ce3835acbc21ebd33a5e7a7931de9ded480200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a6b739b_dcba61d7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-07-25T20:18:27Z",
+      "side": 1,
+      "message": "I don\u0027t think this needs to be guarded.",
+      "revId": "38ce3835acbc21ebd33a5e7a7931de9ded480200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
