@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3a9356_43b46dcd",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-25T15:17:33Z",
+      "side": 1,
+      "message": "this is inconsistent - RW_B is guarded by a CONFIG_ class variable and RO_B - by a \"second class\" simple #define.\n\nMaybe a single config like CONFIG_REDUNDANT_IMAGES could work?",
+      "revId": "5d1d45a615c5d7ee9db3d6bf252a4797378df1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_e023375e",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-25T15:17:33Z",
+      "side": 1,
+      "message": "seems like 20 would be more than enough here",
+      "range": {
+        "startLine": 174,
+        "startChar": 8,
+        "endLine": 174,
+        "endChar": 22
+      },
+      "revId": "5d1d45a615c5d7ee9db3d6bf252a4797378df1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_c091534f",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-25T15:17:33Z",
+      "side": 1,
+      "message": "I think having it in one line is preferable, as everything is visible with a simple grep of the firmware log.\n\nHow about just adding an asterisk before the colon for the active images?",
+      "revId": "5d1d45a615c5d7ee9db3d6bf252a4797378df1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_a390d93f",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-25T15:17:33Z",
+      "side": 1,
+      "message": "I did not think about it at the time, but what harm is it to have this enum include all options at all times - do some swtich() compilations start failing?",
+      "revId": "5d1d45a615c5d7ee9db3d6bf252a4797378df1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
