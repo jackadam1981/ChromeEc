@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca2e8326_3b0ddf8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-07-25T16:05:22Z",
+      "side": 1,
+      "message": "given you are fixing a bug, it would be nice to have a bug number here and have the bug description including the disassembly in the broken case.",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 8
+      },
+      "revId": "37bcf2a075bd5be5e240850914b27a885705daee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca2e8326_9b72f315",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-07-25T16:05:22Z",
+      "side": 1,
+      "message": "no it\u0027s not actually,\nthere is already another helper, see \u0027svc_helper_handler\u0027\n\nhaving several helpers jumping from one to another is just slowing down the execution.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 24
+      },
+      "revId": "37bcf2a075bd5be5e240850914b27a885705daee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca2e8326_fb6d2736",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-07-25T16:05:22Z",
+      "side": 1,
+      "message": "__switchto is designed to be a tail-call function,\nwhat is the point of doing a \u0027bl\u0027 here ?\n\nOverall if this is converted to assembly, the code should just be before the __switchto routine and continue to it.",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 77
+      },
+      "revId": "37bcf2a075bd5be5e240850914b27a885705daee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
