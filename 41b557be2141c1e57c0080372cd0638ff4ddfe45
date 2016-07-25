@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a6b739b_8897bfdc",
+        "filename": "common/bluetooth_le.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-25T23:31:55Z",
+      "side": 1,
+      "message": "Marginally clearer:\n\nfreq \u003d (channel - 11) * 2 + 2428",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 55
+      },
+      "revId": "41b557be2141c1e57c0080372cd0638ff4ddfe45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
