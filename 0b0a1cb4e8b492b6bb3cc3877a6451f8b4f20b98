@@ -16,6 +16,24 @@
       "revId": "0b0a1cb4e8b492b6bb3cc3877a6451f8b4f20b98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3a9356_393f1ae2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-25T17:51:02Z",
+      "side": 1,
+      "message": "I will try not to.\n\nBut shouldn\u0027t the bootrom be able to recover no mater what is in the corrupted RO space?",
+      "parentUuid": "4a3a9356_e09337fc",
+      "revId": "0b0a1cb4e8b492b6bb3cc3877a6451f8b4f20b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
