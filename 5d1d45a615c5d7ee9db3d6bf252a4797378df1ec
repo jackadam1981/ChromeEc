@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "4a6b739b_edeccdfa",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-07-25T23:05:42Z",
+      "side": 1,
+      "message": "I changed the version command to use a \u0027*\u0027 too, and found that it\u0027s easier to read if it follows the \u0027:\u0027, so I did that here too for consistency.",
+      "parentUuid": "4a3a9356_f9a452a0",
+      "revId": "5d1d45a615c5d7ee9db3d6bf252a4797378df1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a3a9356_a390d93f",
         "filename": "include/system.h",
         "patchSetId": 1
@@ -148,6 +166,24 @@
       "side": 1,
       "message": "No, it\u0027s probably okay. That would actually be simpler. I\u0027ll try it.",
       "parentUuid": "4a3a9356_a390d93f",
+      "revId": "5d1d45a615c5d7ee9db3d6bf252a4797378df1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a6b739b_6d019d9f",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-07-25T23:05:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a3a9356_79b122dc",
       "revId": "5d1d45a615c5d7ee9db3d6bf252a4797378df1ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
