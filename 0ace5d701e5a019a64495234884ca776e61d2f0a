@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3a9356_fec51807",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-07-25T16:21:09Z",
+      "side": 1,
+      "message": "Should be \"lfsr % (max+1)\"\nIf the max is 50, the number 50 should sometimes be returned.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 18
+      },
+      "revId": "0ace5d701e5a019a64495234884ca776e61d2f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
