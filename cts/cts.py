@@ -12,118 +12,95 @@ import os
 import select
 import subprocess as sp
 import time
+from abc import ABCMeta, abstractmethod
 
 # For most tests, error codes should never conflict
 CTS_CONFLICTING_CODE = -1
 CTS_SUCCESS_CODE = 0
+TH_BOARD = 'stm32l476g-eval'
+OCD_SCRIPT_DIR = '/usr/local/share/openocd/scripts'
+MAX_SUITE_TIME_SEC = 3
 
+class Board(object):
+  """Class representing a single board connected to a host machine
 
-class Cts(object):
-  """Class that represents a CTS testing setup and provides
-  interface to boards (building, flashing, etc.)
+  This class is abstract, subclasses must define the updateSerial()
+  method
 
   Attributes:
-    ocd_script_dir: String containing locations of openocd's config files
-    th_board: String containing name of the Test Harness (th) board
-    results_dir: String containing test output directory path
-    dut_board: Name of Device Under Test (DUT) board
-    module: Name of module to build/run tests for
-    ec_directory: String containing path to EC top level directory
-    th_hla: String containing hla_serial for the th
-    dut_hla: String containing hla_serial for the dut, only used for
-    boards which have an st-link v2.1 debugger
-    th_ser_path: String which contains full path to th serial file
-    test_names: List of strings of test names contained in given module
-    test_results: Dictionary of results of each test from module
-    return_codes: List of strings of return codes, with a code's integer
-    value being the index for the corresponding string representation
+    model: String containing actual type of board, i.e. nucleo-f072rb
+    config: Directory of board config file relative to openocd's
+      scripts directory
+    hla_serial: String containing board's hla_serial number (if board
+    is an stm32 board)
+    tty_port: String that is the path to the tty port which board's
+      UART outputs to
+    _tty_descriptor: String of file descriptor for tty_port
   """
 
-  def __init__(self, ec_dir, dut_board='nucleo-f072rb', module='gpio'):
-    """Initializes cts class object with given arguments.
+  __metaclass__ = ABCMeta  # This is an Abstract Base Class (ABC)
+  def __init__(self, model, hla_serial=''):
+    """Initializes a board object with given attributes
 
     Args:
-      dut_board: Name of Device Under Test (DUT) board
-      module: Name of module to build/run tests for
+      model: String containing board model
+      hla_serial: Serial number if board's adaptor is an HLA
     """
-    self.ocd_script_dir = '/usr/local/share/openocd/scripts'
-    self.th_board = 'stm32l476g-eval'
-    self.results_dir = '/tmp/cts_results'
-    self.dut_board = dut_board
-    self.module = module
-    self.ec_directory = ec_dir
-    self.th_hla = ''
-    self.dut_hla = ''
-    self.th_ser_path = os.path.join(
-      self.ec_directory,
-      'build',
-      self.th_board,
-      'th_hla_serial')
-    testlist_path = os.path.join(
-      self.ec_directory,
-      'cts',
-      self.module,
-      'cts.testlist')
-    self.test_names = self.getMacroArgs(testlist_path, 'CTS_TEST')
-    return_codes_path = os.path.join(self.ec_directory,
-                    'cts',
-                    'common',
-                    'cts.rc')
-    self.return_codes = self.getMacroArgs(
-      return_codes_path, 'CTS_RC_')
-    self.test_results = collections.OrderedDict()
+    self.model = model
+    self.hla_serial = hla_serial
+    self.config = Board.getBoardConfigName(self.model)
+    self.tty_port = None
+    self._tty_descriptor = None
 
-  def set_dut_board(self, brd):
-    """Sets the dut_board instance variable
+  @abstractmethod
+  def updateSerial(self):
+    """Subclass should implement this"""
+    pass
+
+  def sendCommands(self, commands):
+    """Send a command to the board via openocd
 
     Args:
-      brd: String of board name
+      commands: A list of commands to send
     """
-    self.dut_board = brd
+    args = ['openocd', '-s', OCD_SCRIPT_DIR,
+        '-f', self.config, '-c', 'hla_serial ' + self.hla_serial]
 
-  def set_module(self, mod):
-    """Sets the module instance variable
-
-    Args:
-      brd: String of board name
-    """
-    self.module = mod
-
-  def make(self):
-    """Builds test suite module for given th/dut boards"""
-    print 'Building module \'' + self.module + '\' for th ' + self.th_board
-    sp.call(['make',
-         '--directory=' + str(self.ec_directory),
-         'BOARD=' + self.th_board,
-         'CTS_MODULE=' + self.module,
-         '-j'])
-
-    print 'Building module \'' + self.module + '\' for dut ' + self.dut_board
-    sp.call(['make',
-         '--directory=' + str(self.ec_directory),
-         'BOARD=' + self.dut_board,
-         'CTS_MODULE=' + self.module,
-         '-j'])
-
-  def openocdCmd(self, command_list, board):
-    """Sends the specified commands to openocd for a board
-
-    Args:
-      board: String that contains board name
-    """
-
-    board_cfg = self.getBoardConfigName(board)
-
-    args = ['openocd', '-s', self.ocd_script_dir,
-        '-f', board_cfg]
-    for cmd in command_list:
+    for cmd in commands:
       args.append('-c')
       args.append(cmd)
     args.append('-c')
     args.append('shutdown')
     sp.call(args)
 
-  def getStLinkSerialNumbers(self):
+  def make(self, module, ec_dir):
+    """Builds test suite module for board"""
+    cmds = ['make',
+        '--directory=' + str(ec_dir),
+        'BOARD=' + self.model,
+        'CTS_MODULE=' + module,
+        '-j',
+        '-B']
+
+    print 'EC directory is ' + str(ec_dir)
+    print 'Building module \'' + module + '\' for ' + self.model
+    sp.call(cmds)
+
+  def flash(self):
+    """Flashes board with most recent build ec.bin"""
+    flash_cmds = [
+      'reset_config connect_assert_srst',
+      'init',
+      'reset init',
+      'flash write_image erase build/' +
+      self.model +
+      '/ec.bin 0x08000000',
+      'reset']
+
+    self.sendCommands(flash_cmds)
+
+  @staticmethod
+  def getSerialNumbers():
     """Gets serial numbers of all st-link v2.1 board attached to host
 
     Returns:
@@ -138,43 +115,9 @@ class Cts(object):
         st_serials.append(line.split()[2])
     return st_serials
 
-  # params: th_hla_serial is your personal th board's serial
-  def saveDutSerial(self):
-    """If dut uses same debugger as th, save its serial"""
-    stlink_serials = self.getStLinkSerialNumbers()
-    if len(stlink_serials) == 1:  # dut doesn't use same debugger
-      return ''
-    elif len(stlink_serials) == 2:
-      dut = [s for s in stlink_serials if self.th_hla not in s]
-      if len(dut) != 1:
-        raise RuntimeError('Incorrect TH hla_serial')
-      else:
-        return dut[0]  # Found your other st-link device serial!
-    else:
-      msg = ('Please connect TH and your DUT\n'
-           'and remove all other st-link devices')
-      raise RuntimeError(msg)
-
-  def saveThSerial(self):
-    """Saves the th serial number to a file located at th_ser_path
-
-    Return: the serial number saved
-    """
-    serial = self.getStLinkSerialNumbers()
-    if len(serial) != 1:
-      msg = ('TH could not be identified.\n'
-           '\nConnect your TH and remove other st-link devices')
-      raise RuntimeError(msg)
-    else:
-      ser = serial[0]
-      if not os.path.exists(os.path.dirname(self.th_ser_path)):
-        os.makedirs(os.path.dirname(self.th_ser_path))
-      with open(self.th_ser_path, mode='w') as ser_f:
-        ser_f.write(ser)
-      return ser
-
-  def getBoardConfigName(self, board):
-    """Gets the path for the config file relative to the
+  @staticmethod
+  def getBoardConfigName(board):
+    """Gets the path for the config file of 'board' relative to the
     openocd scripts directory
 
     Args:
@@ -196,112 +139,295 @@ class Cts(object):
         board +
         ' was not found')
 
-  def flashBoards(self):
-    """Flashes th and dut boards with their most recently build ec.bin"""
-    self.updateSerials()
-    th_flash_cmds = [
-      'hla_serial ' +
-      self.th_hla,
-      'reset_config connect_assert_srst',
-      'init',
-      'reset init',
-      'flash write_image erase build/' +
-      self.th_board +
-      '/ec.bin 0x08000000',
-      'reset halt']
+  def setModel(self, mod):
+    self.model = mod
+    self.config = Board.getBoardConfigName(self.model)
 
-    dut_flash_cmds = [
-      'hla_serial ' +
-      self.dut_hla,
-      'reset_config connect_assert_srst',
-      'init',
-      'reset init',
-      'flash write_image erase build/' +
-      self.dut_board +
-      '/ec.bin 0x08000000',
-      'reset halt']
+  def toString(self):
+    s = ('Type: Board\n'
+       'model: ' + self.model + '\n'
+       'hla_serial: ' + self.hla_serial + '\n'
+       'config: ' + self.config + '\n'
+       'tty_port ' + self.tty_port + '\n'
+       '_tty_descriptor: ' + str(self._tty_descriptor) + '\n')
+    return s
 
-    self.openocdCmd(th_flash_cmds, self.th_board)
-    self.openocdCmd(dut_flash_cmds, self.dut_board)
-    self.openocdCmd(['hla_serial ' + self.th_hla,
-             'init',
-             'reset init',
-             'resume'],
-              self.th_board)
-    self.openocdCmd(['hla_serial ' + self.dut_hla,
-             'init',
-             'reset init',
-             'resume'],
-             self.dut_board)
+  def resetBoard(self):
+    """Reset board (used when can't connect to TTY)"""
+    self.sendCommands(['init', 'reset init', 'resume'])
 
-  def updateSerials(self):
-    """Updates serial #s for th and dut"""
+  def setupForOutput(self):
+    """Call this before trying to call readOutput for the first time.
+    This is not in the initialization because caller only should call
+    this function after serial numbers are setup
+    """
+    self.updateSerial()
+    self.resetBoard()
+    self._identifyTtyPort()
+
     try:
-      with open(self.th_ser_path) as th_f:
-        self.th_hla = th_f.read()
-    except IOError:
-      msg = ('Your th hla_serial may not have been saved.\n'
-             'Connect only your th and run ./cts --setup, then try again.')
-      raise RuntimeError(msg)
-    self.saveDutSerial()
+      self._getDevFileDescriptor()
+    except:  # If board was just connected, must be reset to be read from
+      for i in range(3):
+        self.resetBoard()
+        time.sleep(10)  # Needs time to connect to host
+        try:
+          self._getDevFileDescriptor()
+          break
+        except:
+          continue
+    if self._tty_descriptor is None:
+      raise ValueError('Unable to read ' + self.name + '\n'
+               'If you are running cat on a ttyACMx file,\n'
+               'please kill that process and try again')
 
-  def resetBoards(self):
-    """Resets the boards and allows them to run tests"""
-    self.updateSerials()
-    self.openocdCmd(['hla_serial ' + self.dut_hla,
-             'init', 'reset init'], self.dut_board)
-    self.openocdCmd(['hla_serial ' + self.th_hla,
-             'init', 'reset init'], self.th_board)
-    self.openocdCmd(['hla_serial ' + self.th_hla,
-             'init', 'resume'], self.th_board)
-    self.openocdCmd(['hla_serial ' + self.dut_hla,
-             'init', 'resume'], self.dut_board)
-
-  def readAvailableBytes(self, fd):
+  def readAvailableBytes(self):
     """Read info from a serial port described by a file descriptor
 
-    Args:
-      fd: file descriptor for device ttyACM file
+    Return: Bytes that UART has output
     """
     buf = []
     while True:
-      if select.select([fd], [], [], 1)[0]:
-        buf.append(os.read(fd, 1))
+      if select.select([self._tty_descriptor], [], [], 1)[0]:
+        buf.append(os.read(self._tty_descriptor, 1))
       else:
         break
     result = ''.join(buf)
     return result
 
-  def getDevFileDescriptor(self, path):
-    """Read available bytes from device dev path
+  def _identifyTtyPort(self):
+    """Saves this board's serial port
 
-    Args:
-      path: The serial device file path to read from
+    Return: tty port which device is connected and outputting to
+    """
+    dev_dir = '/dev/'
+    id_prefix = 'ID_SERIAL_SHORT='
+    num_reset_tries = 3
+    reset_wait_time_s = 10
+    com_devices = [f for f in os.listdir(
+      dev_dir) if f.startswith('ttyACM')]
+
+    for i in range(num_reset_tries):
+      for device in com_devices:
+        properties = sp.check_output(['udevadm',
+                        'info',
+                        '-a',
+                        '-n',
+                        os.path.join(dev_dir, device),
+                        '--query=property'])
+        for line in [l.strip() for l in properties.split('\n')]:
+          if line.startswith(id_prefix):
+            if self.hla_serial == line[len(id_prefix):]:
+              self.tty_port = os.path.join(dev_dir, device)
+              return self.tty_port
+      if i != num_reset_tries - 1: # No need to reset the obard the last time
+        self.resetBoard() # May need to reset to connect
+        time.sleep(reset_wait_time_s)
+
+    # If we get here without returning, something is wrong
+    raise RuntimeError('The device dev path could not be found')
+
+  def _getDevFileDescriptor(self):
+    """Read available bytes from device dev path
 
     Return: the file descriptor for the open serial device file
     """
-    fd = os.open(path, os.O_RDONLY)
+    fd = os.open(self.tty_port, os.O_RDONLY)
     flag = fcntl.fcntl(fd, fcntl.F_GETFL)
     fcntl.fcntl(fd, fcntl.F_SETFL, flag | os.O_NONBLOCK)
+    self._tty_descriptor = fd
     return fd
 
-  def getDevFilenames(self):
-    """Read available bytes from device dev path
+class TestHarness(Board):
+  """Subclass of Board representing a Test Harness
+
+  Attributes:
+    serial_path: Path to file containing serial number
+  """
+
+  def __init__(self, serial_path=None):
+    """Initializes a board object with given attributes
 
     Args:
-      path: The serial device file path to read from
-
-    Return: the file descriptor for the open serial device file
+      serial_path: Path to file containing serial number
     """
-    com_files = [f for f in os.listdir('/dev/') if f.startswith('ttyACM')]
-    if len(com_files) < 2:
-      raise RuntimeError('The device dev paths could not be found')
-    elif len(com_files) > 2:
-      raise RuntimeError('Too many serial devices connected to host')
-    else:
-      return ('/dev/' + com_files[0], '/dev/' + com_files[1])
+    Board.__init__(self, TH_BOARD)
+    self.serial_path = serial_path
 
-  def getMacroArgs(self, filepath, macro):
+  def updateSerial(self):
+    """Loads serial number from saved location
+
+    Return: serial number that was loaded
+    """
+    try:
+      with open(self.serial_path, mode='r') as ser_f:
+        self.hla_serial = ser_f.read()
+        return self.hla_serial
+    except IOError:
+      msg = ('Your th hla_serial may not have been saved.\n'
+           'Connect only your th and run ./cts --setup, then try again.')
+      raise RuntimeError(msg)
+
+  def saveSerial(self):
+    """Saves the th serial number to a file
+
+    Return: the serial number saved
+    """
+    serial = Board.getSerialNumbers()
+    if len(serial) != 1:
+      msg = ('TH could not be identified.\n'
+           '\nConnect your TH and remove other st-link devices')
+      raise RuntimeError(msg)
+    else:
+      ser = serial[0]
+      if not os.path.exists(os.path.dirname(self.serial_path)):
+        os.makedirs(os.path.dirname(self.serial_path))
+      with open(self.serial_path, mode='w') as ser_f:
+        ser_f.write(ser)
+        self.hla_serial = ser
+        return ser
+
+class DeviceUnderTest(Board):
+  """Subclass of Board representing a DUT board
+
+  Attributes:
+    th: Reference to test harness board to which this DUT is attached
+  """
+
+  def __init__(self, model, th, hla_serial=''):
+    """Initializes a Device Under Test object with given attributes
+
+    Args:
+      model: String containing board model
+      th: Reference to test harness board to which this DUT is attached
+      hla_serial: Serial number if board uses an HLA adaptor
+    """
+    self.model = model
+    self.hla_serial = hla_serial
+    self.config = Board.getBoardConfigName(self.model)
+    self.th = th
+    self._tty_descriptor = None
+
+  def updateSerial(self):
+    """Stores the DUT's serial number
+
+    Return: dut's serial number
+    """
+    serials = Board.getSerialNumbers()
+    if len(serials) == 1:  # dut doesn't use same debugger
+      return ''
+    elif len(serials) == 2:
+      dut = [s for s in serials if self.th.hla_serial not in s]
+      if len(dut) != 1:
+        raise RuntimeError('Incorrect TH hla_serial saved')
+      else:
+        self.hla_serial = dut[0]
+        return self.hla_serial  # Found your other st-link device serial!
+    else:
+      msg = ('T')
+      raise RuntimeError(msg)
+
+class Cts(object):
+  """Class that represents a CTS testing setup and provides
+  interface to boards (building, flashing, etc.)
+
+  Attributes:
+    dut: DeviceUnderTest object representing dut
+    th: TestHarness object representing th
+    module: Name of module to build/run tests for
+    ec_directory: String containing path to EC top level directory
+    test_names: List of strings of test names contained in given module
+    test_results: Dictionary of results of each test from module
+    return_codes: List of strings of return codes, with a code's integer
+      value being the index for the corresponding string representation
+  """
+
+  def __init__(self, ec_dir, dut='nucleo-f072rb', module='gpio'):
+    """Initializes cts class object with given arguments.
+
+    Args:
+      dut: Name of Device Under Test (DUT) board
+      ec_dir: String path to ec directory
+      module: Name of module to build/run tests for
+    """
+    self.results_dir = '/tmp/cts_results'
+    self.module = module
+    self.ec_directory = ec_dir
+    self.th = TestHarness()
+    self.dut = DeviceUnderTest(dut, self.th)  # DUT constructor needs TH
+
+    th_ser_path = os.path.join(
+      self.ec_directory,
+      'build',
+      self.th.model,
+      'th_hla_serial')
+
+    self.th.serial_path = th_ser_path
+
+    testlist_path = os.path.join(
+      self.ec_directory,
+      'cts',
+      self.module,
+      'cts.testlist')
+
+    self.test_names = Cts._getMacroArgs(testlist_path, 'CTS_TEST')
+    return_codes_path = os.path.join(self.ec_directory,
+                     'cts',
+                     'common',
+                     'cts.rc')
+    self.return_codes = Cts._getMacroArgs(
+      return_codes_path, 'CTS_RC_')
+    self.test_results = collections.OrderedDict()
+
+  def set_dut_board(self, brd):
+    """Sets the dut_board instance variable
+
+    Args:
+      brd: String of board name
+    """
+    self.dut.setModel(brd)
+
+  def set_module(self, mod):
+    """Sets the module instance variable
+
+    Args:
+      brd: String of board name
+    """
+    self.module = mod
+
+  def make(self):
+    self.dut.make(self.module, self.ec_directory)
+    self.th.make(self.module, self.ec_directory)
+
+  def flashBoards(self):
+    """Flashes th and dut boards with their most recently build ec.bin"""
+    self.updateSerials()
+    self.th.flash()
+    self.dut.flash()
+    self.resetAndRecord()
+
+  def setup(self):
+    self.th.saveSerial()
+
+  def updateSerials(self):
+    self.th.updateSerial()
+    self.dut.updateSerial()
+
+  def resetBoards(self):
+    """Resets the boards and allows them to run tests
+    Due to current (7/27/16) version of sync function,
+    both boards must be rest and halted, with the th
+    resuming first, in order for the test suite to run
+    in sync
+    """
+    self.updateSerials()
+    self.th.sendCommands(['init', 'reset halt'])
+    self.dut.sendCommands(['init', 'reset halt'])
+    self.th.sendCommands(['init', 'resume'])
+    self.dut.sendCommands(['init', 'resume'])
+
+  @staticmethod
+  def _getMacroArgs(filepath, macro):
     """Get list of args of a certain macro in a file when macro is used
     by itself on a line
 
@@ -314,10 +440,10 @@ class Cts(object):
       for ln in [ln for ln in fl.readlines(
       ) if ln.strip().startswith(macro)]:
         ln = ln.strip()[len(macro):]
-        args.append(ln.strip('()').replace(',',''))
+        args.append(ln.strip('()').replace(',', ''))
     return args
 
-  def parseOutput(self, r1, r2):
+  def _parseOutput(self, r1, r2):
     """Parse the outputs of the DUT and TH together
 
     Args;
@@ -354,9 +480,10 @@ class Cts(object):
 
     for tn in self.test_names:
       if tn not in self.test_results.keys():
-        self.test_results[tn] = 'NO RESULT RETURNED' # Exceptional case
+        # Exceptional case
+        self.test_results[tn] = 'NO RESULT RETURNED'
 
-  def resultsAsString(self):
+  def _resultsAsString(self):
     """Takes saved results and returns a string representation of them
 
     Return: Saved string that contains results
@@ -375,41 +502,29 @@ class Cts(object):
 
   def resetAndRecord(self):
     """Resets boards, records test results in results dir"""
+    self.updateSerials()
+    self.dut.setupForOutput()
+    self.th.setupForOutput()
 
+    self.dut.readAvailableBytes()  # clear buffer
+    self.th.readAvailableBytes()
     self.resetBoards()
-    # Doesn't matter which is dut or th because we combine their results
-    d1, d2 = self.getDevFilenames()
 
-    try:
-      fd1 = self.getDevFileDescriptor(d1)
-      fd2 = self.getDevFileDescriptor(d2)
-    except:  # If board was just connected, must be reset to be read from
-      for i in range(3):
-        self.resetBoards()
-        time.sleep(10)
-        try:
-          fd1 = self.getDevFileDescriptor(d1)
-          fd2 = self.getDevFileDescriptor(d2)
-          break
-        except:
-          continue
+    time.sleep(MAX_SUITE_TIME_SEC)
 
-    self.readAvailableBytes(fd1)  # clear any junk from buffer
-    self.readAvailableBytes(fd2)
-    self.resetBoards()
-    time.sleep(3)
-    res1 = self.readAvailableBytes(fd1)
-    res2 = self.readAvailableBytes(fd2)
-    if len(res1) == 0 or len(res2) == 0:
+    dut_results = self.dut.readAvailableBytes()
+    th_results = self.th.readAvailableBytes()
+    if len(dut_results) == 0 or len(th_results) == 0:
       raise ValueError('Output missing from boards.\n'
-                       'If you are running cat on a ttyACMx file,\n'
-                       'please kill that process and try again')
-    self.parseOutput(res1, res2)
-    pretty_results = self.resultsAsString()
+               'If you are running cat on a ttyACMx file,\n'
+               'please kill that process and try again')
+
+    self._parseOutput(dut_results, th_results)
+    pretty_results = self._resultsAsString()
 
     dest = os.path.join(
       self.results_dir,
-      self.dut_board,
+      self.dut.model,
       self.module + '.txt')
     if not os.path.exists(os.path.dirname(dest)):
       os.makedirs(os.path.dirname(dest))
@@ -418,6 +533,7 @@ class Cts(object):
       fl.write(pretty_results)
 
     print pretty_results
+
 
 def main():
   """Main entry point for cts script from command line"""
@@ -446,11 +562,11 @@ def main():
   parser.add_argument('-f',
             '--flash',
             action='store_true',
-            help='Flash boards with last image built for them')
+            help='Flash boards with most recent image and record results')
   parser.add_argument('-r',
             '--reset',
             action='store_true',
-            help='Reset boards and save test results')
+            help='Reset boards and save test results (no flashing)')
 
   args = parser.parse_args()
 
@@ -463,7 +579,7 @@ def main():
     cts_suite.set_dut_board(dut_board)
 
   if args.setup:
-    serial = cts_suite.saveThSerial()
+    serial = cts_suite.setup()
     if(serial is not None):
       print 'Your th hla_serial # has been saved as: ' + serial
     else:
