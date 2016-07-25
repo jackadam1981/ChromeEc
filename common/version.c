@@ -13,12 +13,12 @@
 const struct version_struct __keep version_data
 	__attribute__((section(".rodata.ver"))) = {
 	CROS_EC_VERSION_COOKIE1,
-	CROS_EC_VERSION32,
+	CROS_EC_ALL_VERSION32,
 	CROS_EC_VERSION_COOKIE2
 };
 
 const char build_info[] __keep __attribute__((section(".rodata.buildinfo"))) =
-	CROS_EC_VERSION " " DATE " " BUILDER;
+	CROS_EC_ALL_VERSION " " DATE " " BUILDER;
 
 uint32_t ver_get_numcommits(void)
 {
