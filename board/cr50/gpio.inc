@@ -36,9 +36,7 @@ GPIO(INT_AP_L,        PIN(0, 0), GPIO_INPUT)
 GPIO(EC_FLASH_SELECT, PIN(0, 1), GPIO_OUT_LOW)
 GPIO(AP_FLASH_SELECT, PIN(0, 2), GPIO_OUT_LOW)
 
-/* As an input this mirrors EC_WP_L (which is controlled by RBOX, not a GPIO).
- * As an output it can override EC_WP_L, although why would we? */
-GPIO(AP_WP_L,         PIN(0, 3), GPIO_INPUT)
+GPIO(SPS_CS_L,         PIN(0, 3), GPIO_INPUT)
 
 /* Pull this low to reset the AP. (We reset the EC with the RBOX.) */
 GPIO(SYS_RST_L_OUT,   PIN(0, 4), GPIO_INPUT)
@@ -77,8 +75,7 @@ PINMUX(GPIO(INT_AP_L),        A5, DIO_INPUT)	/* DIOB7 is p_digitial_od */
 PINMUX(GPIO(EC_FLASH_SELECT), B2, DIO_INPUT)
 PINMUX(GPIO(AP_FLASH_SELECT), B3, DIO_INPUT)
 PINMUX(GPIO(EN_PP3300_INA_L), B7, DIO_INPUT)
-PINMUX(GPIO(AP_WP_L),         M3, 0)
-PINMUX(GPIO(SYS_RST_L_IN),    M0, 0)
+PINMUX(GPIO(SYS_RST_L_IN),    M0, DIO_WAKE_FALLING)
 PINMUX(GPIO(SYS_RST_L_OUT),   M0, DIO_INPUT)
 PINMUX(GPIO(CCD_MODE_L),      M1, DIO_INPUT)
 PINMUX(GPIO(BATT_PRES),       M2, 0)
@@ -123,7 +120,8 @@ PINMUX(GPIO(SERVO_UART2_OFF), B5, DIO_INPUT)
 PINMUX(FUNC(I2C0_SCL),        B0, DIO_INPUT)
 PINMUX(FUNC(I2C0_SDA),        B1, DIO_INPUT)
 
-/* Both SPI master and slave buses are wired directly to specific pads
+/*
+ * Both SPI master and slave buses are wired directly to specific pads
  *
  * If CONFIG_SPS is defined, these pads are used:
  *   DIOA2  = SPS_MOSI  (input)
@@ -131,7 +129,9 @@ PINMUX(FUNC(I2C0_SDA),        B1, DIO_INPUT)
  *   DIOA10 = SPS_MISO  (output)
  *   DIOA12 = SPS_CS_L  (input)
  * The digital inputs are enabled in sps.c
- *
+ */
+PINMUX(GPIO(SPI_CS_L),          A12, DIO_INPUT)
+/*
  * If CONFIG_SPI_MASTER is defined, these pads are used:
  *   DIOA4  = SPI_MOSI  (output)
  *   DIOA8  = SPI_CLK   (output)
