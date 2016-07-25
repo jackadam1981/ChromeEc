@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a6b739b_8dd5110f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-07-25T23:12:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a6b739b_4212e868",
+      "range": {
+        "startLine": 479,
+        "startChar": 9,
+        "endLine": 479,
+        "endChar": 17
+      },
+      "revId": "d7ca52a390780138f21a22646c7157116f3638a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a6b739b_621fec6f",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-25T21:50:22Z",
       "side": 1,
       "message": "write access should be disabled once you wrote.",
+      "range": {
+        "startLine": 480,
+        "startChar": 2,
+        "endLine": 480,
+        "endChar": 14
+      },
+      "revId": "d7ca52a390780138f21a22646c7157116f3638a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a6b739b_2da5e5b1",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-07-25T23:12:48Z",
+      "side": 1,
+      "message": "Added a write to clear the enable bit.",
+      "parentUuid": "4a6b739b_621fec6f",
       "range": {
         "startLine": 480,
         "startChar": 2,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "4a6b739b_a87e4313",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-07-25T23:12:48Z",
+      "side": 1,
+      "message": "Added a function system_get_board_properties() in chip/g/system.c that can be called by sps_init and similarly i2cs_init() that returns a bit field. There is a unique bit for SPI and one for I2C options enabled. Therefore, the conditional compile has been removed from here. system_get_board_properties() returns 0 unless a board specific function is called.",
+      "parentUuid": "4a6b739b_e2021cd8",
+      "revId": "d7ca52a390780138f21a22646c7157116f3638a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a6b739b_62f7ecf2",
         "filename": "include/system.h",
         "patchSetId": 1
@@ -76,6 +142,24 @@
       "writtenOn": "2016-07-25T21:50:22Z",
       "side": 1,
       "message": "this should have a third choice - undefined or unknown. Also, this should identify a board it is running on - kevin vs reef. There could be other things tied to a certaiin board.",
+      "revId": "d7ca52a390780138f21a22646c7157116f3638a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a6b739b_4890473f",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-07-25T23:12:48Z",
+      "side": 1,
+      "message": "Changed this to be a bit field. This way we can have multiple boards use either SPI or I2C without having to name the specific board for that option.",
+      "parentUuid": "4a6b739b_62f7ecf2",
       "revId": "d7ca52a390780138f21a22646c7157116f3638a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
