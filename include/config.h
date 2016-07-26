@@ -510,6 +510,9 @@
  */
 #undef CONFIG_CLOCK_CRYSTAL
 
+/* Indicate if a clock source is connected to stm32f4's "HSE" specific input */
+#undef CONFIG_CLOCK_HSE_HZ
+
 /*****************************************************************************/
 /* PMIC config */
 
@@ -1838,6 +1841,11 @@
 
 /* The DMA peripheral request signal for UART TX. STM32 only. */
 #undef CONFIG_UART_TX_DMA_PH
+
+/* The DMA channel mapping config for stm32f4. */
+#undef CONFIG_UART_TX_REQ_CH
+#undef CONFIG_UART_RX_REQ_CH
+
 
 /*****************************************************************************/
 /* USB PD config */
