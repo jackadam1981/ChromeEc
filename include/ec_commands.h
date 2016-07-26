@@ -305,6 +305,9 @@
 /* Value to disable DPTF battery charging limit */
 #define EC_ACPI_MEM_CHARGING_LIMIT_DISABLED  0xff
 
+/* Report tablet mode  */
+#define EC_ACPI_TABLET_MODE            0x09
+
 /*
  * ACPI addresses 0x20 - 0xff map to EC_MEMMAP offset 0x00 - 0xdf.  This data
  * is read-only from the AP.  Added in EC_ACPI_MEM_VERSION 2.
@@ -433,6 +436,18 @@ enum host_event_code {
 
 	/* Keyboard fastboot combo has been pressed */
 	EC_HOST_EVENT_KEYBOARD_FASTBOOT = 25,
+
+	/* EC RTC event occurred */
+	EC_HOST_EVENT_RTC = 26,
+
+	/* Emulate MKBP event */
+	EC_HOST_EVENT_MKBP = 27,
+
+	/* EC desires to change state of host-controlled USB mux */
+	EC_HOST_EVENT_USB_MUX = 28,
+
+	/* TABLET/LAPTOP mode event*/
+	EC_HOST_EVENT_MODE_CHANGE = 29,
 
 	/*
 	 * The high bit of the event mask is not used as a host event code.  If
