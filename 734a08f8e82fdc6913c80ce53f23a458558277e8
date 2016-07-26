@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ef6d1912_36e1582b",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-26T17:29:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a3a9356_edb9f032",
+      "revId": "734a08f8e82fdc6913c80ce53f23a458558277e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a3a9356_8dbf0415",
         "filename": "chip/g/system.c",
         "patchSetId": 1
@@ -53,6 +71,30 @@
       "writtenOn": "2016-07-24T00:43:00Z",
       "side": 1,
       "message": "those 3 bits are all the relevant bits in that register, just write EN|RD_EN|WR_EN.. faster and safer.",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 55
+      },
+      "revId": "734a08f8e82fdc6913c80ce53f23a458558277e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef6d1912_b678c88c",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-26T17:29:45Z",
+      "side": 1,
+      "message": "This matches the style of chrome os codebase, and generally speaking is more accurate, as we\u0027re not supposed to be changing register bit fields unintentionally.",
+      "parentUuid": "4a3a9356_6dc640b1",
       "range": {
         "startLine": 185,
         "startChar": 0,
