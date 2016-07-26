@@ -378,17 +378,12 @@ int board_get_ramp_current_limit(int supplier, int sup_curr)
 static void enable_input_devices(void)
 {
 	int kb_enable = 1;
-	int tp_enable = 1;
 
-	/* Disable both TP and KB in tablet mode */
+	/* Disable KB in tablet mode */
 	if (!gpio_get_level(GPIO_TABLET_MODE_L))
-		kb_enable = tp_enable = 0;
-	/* Disable TP if chipset is off */
-	else if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
-		tp_enable = 0;
+		kb_enable = 0;
 
 	keyboard_scan_enable(kb_enable, KB_SCAN_DISABLE_LID_ANGLE);
-	gpio_set_level(GPIO_ENABLE_TOUCHPAD, tp_enable);
 }
 DECLARE_DEFERRED(enable_input_devices);
 
@@ -412,6 +407,7 @@ static void board_chipset_resume(void)
 	gpio_set_level(GPIO_PP1800_DX_AUDIO_EN, 1);
 	gpio_set_level(GPIO_PP1800_DX_SENSOR_EN, 1);
 	gpio_set_level(GPIO_KBBL_EN, 1);
+	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 1);
 
 	/*
 	 * Now that we have enabled the rail to the sensors, let's give enough
@@ -434,6 +430,7 @@ static void board_chipset_suspend(void)
 	gpio_set_level(GPIO_PP1800_DX_AUDIO_EN, 0);
 	gpio_set_level(GPIO_PP1800_DX_SENSOR_EN, 0);
 	gpio_set_level(GPIO_KBBL_EN, 0);
+	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
