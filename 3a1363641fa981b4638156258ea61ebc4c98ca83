@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af3081e9_4c1f7fc4",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-26T01:47:11Z",
+      "side": 1,
+      "message": "the comment does not quite apply any more.",
+      "revId": "3a1363641fa981b4638156258ea61ebc4c98ca83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af3081e9_2cfd535e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-26T01:47:11Z",
+      "side": 1,
+      "message": "this and line 485 - don\u0027t look like they need to be split in two.",
+      "revId": "3a1363641fa981b4638156258ea61ebc4c98ca83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af3081e9_cc136fb3",
+        "filename": "chip/g/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-26T01:47:11Z",
+      "side": 1,
+      "message": "mabye board_get_properties() instead?",
+      "revId": "3a1363641fa981b4638156258ea61ebc4c98ca83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af3081e9_ec5bcb8a",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-26T01:47:11Z",
+      "side": 1,
+      "message": "mention that this is expected to come from the board\u0027s board.c file.",
+      "revId": "3a1363641fa981b4638156258ea61ebc4c98ca83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
