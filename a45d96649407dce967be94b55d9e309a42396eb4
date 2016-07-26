@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef6d1912_bfba5bba",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-07-26T20:16:06Z",
+      "side": 1,
+      "message": "get_program_memory_addr(SYSTEM_IMAGE_RW);",
+      "range": {
+        "startLine": 234,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 52
+      },
+      "revId": "a45d96649407dce967be94b55d9e309a42396eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef6d1912_9fb79fd4",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-07-26T20:16:06Z",
+      "side": 1,
+      "message": "get_program_memory_addr(SYSTEM_IMAGE_RW_B);",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 54
+      },
+      "revId": "a45d96649407dce967be94b55d9e309a42396eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
