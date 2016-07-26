@@ -115,6 +115,24 @@
       "revId": "734a08f8e82fdc6913c80ce53f23a458558277e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af3081e9_d2e544d3",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-26T16:21:49Z",
+      "side": 1,
+      "message": "but this function does more than marking image as valid (by resetting the retry counter).\n\nIt also invalidates the new RW if it is running on the old RW context. This is why I think \"process_retry_counter\" is appropriate. \n\nI could call it\n\nmark_new_image_as_valid_or_invalid()\n\nbut I am not sure this would be much better :)",
+      "parentUuid": "af3081e9_52d154fe",
+      "revId": "734a08f8e82fdc6913c80ce53f23a458558277e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
