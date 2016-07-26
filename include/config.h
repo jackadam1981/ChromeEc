@@ -2092,6 +2092,9 @@
 /* Support programmable USB device iSerial field. */
 #undef CONFIG_USB_SERIALNO
 
+/* Support reporting of configuration bMaxPower in mA */
+#define CONFIG_USB_MAXPOWER 500
+
 /******************************************************************************/
 /* USB port switch */
 

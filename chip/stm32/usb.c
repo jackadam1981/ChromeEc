@@ -68,7 +68,7 @@ const struct usb_config_descriptor USB_CONF_DESC(conf) = {
 	.bConfigurationValue = 1,
 	.iConfiguration = USB_STR_VERSION,
 	.bmAttributes = 0x80, /* bus powered */
-	.bMaxPower = 250, /* MaxPower 500 mA */
+	.bMaxPower = (CONFIG_USB_MAXPOWER / 2), /* MaxPower default 500 mA */
 };
 
 const uint8_t usb_string_desc[] = {
