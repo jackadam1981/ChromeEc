@@ -22,6 +22,30 @@
       "revId": "ccc05a9da9ca36a4ac3278513a897dd7f7373d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef6d1912_b9bd5b1e",
+        "filename": "cts/timer/dut.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-26T18:27:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef6d1912_5977e706",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "ccc05a9da9ca36a4ac3278513a897dd7f7373d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
