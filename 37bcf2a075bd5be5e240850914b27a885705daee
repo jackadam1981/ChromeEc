@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "8f473d8f_9b1e8b62",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1133285
+      },
+      "writtenOn": "2016-07-26T19:30:19Z",
+      "side": 1,
+      "message": "Should I move the assembly from svc_helper_handler to this function then? I feel like it\u0027s more consistent to keep those task-switching-related functions in switch.S rather than init.S (and also keeps it consistent with my cortex-m0 change). This way, we can also use the \"vector\" macro for it.\n\nAlso, I\u0027d like to keep the name \"svc_handler\", to stay consistent with the cortex-m0 code.",
+      "parentUuid": "ca2e8326_9b72f315",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 24
+      },
+      "revId": "37bcf2a075bd5be5e240850914b27a885705daee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca2e8326_fb6d2736",
         "filename": "core/cortex-m/switch.S",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2016-07-25T16:05:22Z",
       "side": 1,
       "message": "__switchto is designed to be a tail-call function,\nwhat is the point of doing a \u0027bl\u0027 here ?\n\nOverall if this is converted to assembly, the code should just be before the __switchto routine and continue to it.",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 77
+      },
+      "revId": "37bcf2a075bd5be5e240850914b27a885705daee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cfacd570_85ff629a",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1133285
+      },
+      "writtenOn": "2016-07-26T19:30:19Z",
+      "side": 1,
+      "message": "Little point in bl indeed. I\u0027m fine with merging __switchto at the end of svc_handler, but the label and comment should probably be kept, they\u0027re useful. What do you think?",
+      "parentUuid": "ca2e8326_fb6d2736",
       "range": {
         "startLine": 114,
         "startChar": 2,
