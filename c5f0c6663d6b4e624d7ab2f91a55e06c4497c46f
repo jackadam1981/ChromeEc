@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef6d1912_c55b048b",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2016-07-26T22:22:26Z",
+      "side": 1,
+      "message": "Maybe just note that this enables DPTF to manage thermals, but it doesn\u0027t necessary imply that it is completely taken care of since we have some hybrid solutions where the EC is still managing the fans.",
+      "range": {
+        "startLine": 1769,
+        "startChar": 15,
+        "endLine": 1769,
+        "endChar": 52
+      },
+      "revId": "c5f0c6663d6b4e624d7ab2f91a55e06c4497c46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
