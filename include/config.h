@@ -1766,6 +1766,8 @@
 
 /* Compile common code for throttling the CPU based on the temp sensors */
 #undef CONFIG_THROTTLE_AP
+/* If defined, thermal control is taken care by dptf */
+#undef CONFIG_DPTF
 
 /*****************************************************************************/
 /* TPM-like configuration */
