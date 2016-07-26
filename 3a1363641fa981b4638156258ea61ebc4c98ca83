@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ef6d1912_1f89cfcc",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-07-26T22:59:38Z",
+      "side": 1,
+      "message": "Updated the comment",
+      "parentUuid": "af3081e9_4c1f7fc4",
+      "revId": "3a1363641fa981b4638156258ea61ebc4c98ca83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af3081e9_2cfd535e",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2016-07-26T01:47:11Z",
       "side": 1,
       "message": "this and line 485 - don\u0027t look like they need to be split in two.",
+      "revId": "3a1363641fa981b4638156258ea61ebc4c98ca83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef6d1912_7f8e03d6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-07-26T22:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af3081e9_2cfd535e",
       "revId": "3a1363641fa981b4638156258ea61ebc4c98ca83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ef6d1912_a5db6842",
+        "filename": "chip/g/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-07-26T22:59:38Z",
+      "side": 1,
+      "message": "I renamed this function system_board_properties_callback()",
+      "parentUuid": "af3081e9_cc136fb3",
+      "revId": "3a1363641fa981b4638156258ea61ebc4c98ca83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af3081e9_ec5bcb8a",
         "filename": "include/system.h",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2016-07-26T01:47:11Z",
       "side": 1,
       "message": "mention that this is expected to come from the board\u0027s board.c file.",
+      "revId": "3a1363641fa981b4638156258ea61ebc4c98ca83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef6d1912_c5de6434",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-07-26T22:59:38Z",
+      "side": 1,
+      "message": "Added a comment here.",
+      "parentUuid": "af3081e9_ec5bcb8a",
       "revId": "3a1363641fa981b4638156258ea61ebc4c98ca83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
