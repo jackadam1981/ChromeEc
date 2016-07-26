@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef6d1912_252598c6",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-26T22:30:40Z",
+      "side": 1,
+      "message": "Not sure the comment helps.  Particularly since it precedes a check if debug is true.  Might as well just nuke the comment.",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 40
+      },
+      "revId": "b8ffca535fb8888e363160ef61ec9bf1951a8109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
