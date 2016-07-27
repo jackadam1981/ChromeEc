@@ -9,6 +9,13 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 GPIO_INT(USER_BUTTON, PIN(C, 13), GPIO_INT_FALLING, button_event)
+#ifdef CTS_MODULE
+#ifndef CTS_MODULE_GPIO
+/* Overload C1 for interrupt. Enabled only for non-GPIO suites as
+ * GPIO tests don't require a separate notification line. */
+GPIO_INT(CTS_IRQ, PIN(C, 1), GPIO_INT_FALLING | GPIO_PULL_UP , cts_irq)
+#endif
+#endif
 
 /* Outputs */
 GPIO(LED_U, PIN(A, 5), GPIO_OUT_LOW)
@@ -23,6 +30,8 @@ ALTERNATE(PIN_MASK(A, 0x000C), 1, MODULE_UART,  0) /* USART2: PA2/PA3 */
 /* CTS Signals */
 GPIO(HANDSHAKE_INPUT, PIN(A, 4), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(HANDSHAKE_OUTPUT, PIN(B, 0), GPIO_ODR_LOW)
+#ifdef CTS_MODULE_GPIO
 GPIO(INPUT_TEST, PIN(C, 1), GPIO_INPUT | GPIO_PULL_UP)
+#endif
 GPIO(OUTPUT_TEST, PIN(C, 0), GPIO_ODR_LOW)
 #endif
