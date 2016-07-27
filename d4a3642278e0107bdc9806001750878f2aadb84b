@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fe76925_86925a48",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-07-27T23:36:53Z",
+      "side": 1,
+      "message": "This seems weird. Is this a bug workaround?",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 35
+      },
+      "revId": "d4a3642278e0107bdc9806001750878f2aadb84b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fe76925_a6dafe17",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-07-27T23:36:53Z",
+      "side": 1,
+      "message": "This is already done in chip/g/sps.c, isn\u0027t it? Line 247?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 47
+      },
+      "revId": "d4a3642278e0107bdc9806001750878f2aadb84b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
