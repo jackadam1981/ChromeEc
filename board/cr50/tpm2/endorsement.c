@@ -473,3 +473,30 @@ int tpm_endorse(void)
 	memset(eps, 0, sizeof(eps));
 	return result;
 }
+
+int certs_valid(const uint8_t *certbuf)
+{
+	size_t i;
+	uint8_t seed[32];
+	LITE_HMAC_CTX hmac;
+	const uint8_t *digest;
+	uint8_t accu;
+
+	if (!get_decrypted_eps(seed))
+		return 0;
+
+	HMAC_SHA256_init(&hmac, seed, sizeof(seed));
+	HMAC_update(&hmac, "RSA", 4);
+	memcpy(seed, HMAC_final(&hmac), sizeof(seed));
+
+	HMAC_SHA256_init(&hmac, seed, sizeof(seed));
+	HMAC_update(&hmac, certbuf, RO_CERTS_REGION_SIZE - SHA256_DIGEST_SIZE);
+	digest = HMAC_final(&hmac);
+
+	accu = 0;
+	for (i = 0; i < 32; ++i)
+		accu |= (certbuf[RO_CERTS_REGION_SIZE -
+					SHA256_DIGEST_SIZE + i] ^ digest[i]);
+
+	return !accu;
+}
