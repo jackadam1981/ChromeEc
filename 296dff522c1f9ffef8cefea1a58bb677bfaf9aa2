@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef6d1912_d64a995d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2016-07-27T17:20:10Z",
+      "side": 1,
+      "message": "These might need to be not indented for them to be parsed properly?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "296dff522c1f9ffef8cefea1a58bb677bfaf9aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef6d1912_1645314d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2016-07-27T17:20:10Z",
+      "side": 1,
+      "message": "This just mentions reef, but you probably want to ensure make buildall passes since there are a number of boards that use dptf.  (which may already be done to pass the presubmit check)",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "296dff522c1f9ffef8cefea1a58bb677bfaf9aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef6d1912_36130d62",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2016-07-27T17:20:10Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is needed, or if it is I\u0027m not sure this is the right thing to guard it with as this bit of code is about reporting fan speeds not throttling the AP.",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 25
+      },
+      "revId": "296dff522c1f9ffef8cefea1a58bb677bfaf9aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
