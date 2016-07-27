@@ -68,6 +68,53 @@
       "revId": "296dff522c1f9ffef8cefea1a58bb677bfaf9aa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fe76925_b2eb60e0",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-27T23:29:46Z",
+      "side": 1,
+      "message": "CONFIG_FANS seems more appropriate.\n\n(I\u0027m actually re-factoring some of the fan code now to make it so CONFIG_FANS doesn\u0027t pull in a ton of other stuff...)",
+      "parentUuid": "ef6d1912_36130d62",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 25
+      },
+      "revId": "296dff522c1f9ffef8cefea1a58bb677bfaf9aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fe76925_55141e9b",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-27T23:29:46Z",
+      "side": 1,
+      "message": "I think we should use the existing thermal console channel for DPTF print statements. I don\u0027t see a reason why the user would want to see one without the other, so this just adds complications to masking/unmasking serial console channels.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 6
+      },
+      "revId": "296dff522c1f9ffef8cefea1a58bb677bfaf9aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
