@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ef6d1912_cbbaf5bb",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-27T00:17:24Z",
+      "side": 1,
+      "message": "Let\u0027s define this in cts/build.mk. You\u0027ll see CFLAGS_CTS there if you sync your tree.",
+      "range": {
+        "startLine": 40,
+        "startChar": 12,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "b8ffca535fb8888e363160ef61ec9bf1951a8109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef6d1912_252598c6",
         "filename": "cts/cts.py",
         "patchSetId": 4
