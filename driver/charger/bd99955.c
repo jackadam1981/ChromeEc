@@ -567,8 +567,7 @@ enum bd99955_charge_update {
 enum bd99955_charge_state {
 	BD99955_CHARGE_STATE_UNINITIALIZED,
 	BD99955_CHARGE_STATE_NOT_CHARGING,
-	BD99955_CHARGE_STATE_PRECHARGE,
-	BD99955_CHARGE_STATE_FASTCHARGE,
+	BD99955_CHARGE_STATE_CHARGE,
 };
 
 /*
@@ -581,7 +580,6 @@ static int bd99955_update_charge_state(enum bd99955_charge_update update)
 		BD99955_CHARGE_STATE_UNINITIALIZED;
 	enum bd99955_charge_state new_state;
 	int rv;
-	int bat_voltage = 0;
 
 	switch (update) {
 	case BD99955_UPDATE_STOP_CHARGING:
@@ -596,16 +594,7 @@ static int bd99955_update_charge_state(enum bd99955_charge_update update)
 		}
 		/* Fall through */
 	case BD99955_UPDATE_START_CHARGING:
-		/* Transition to fast or precharge upon battery */
-		rv = ch_raw_read16(BD99955_CMD_VBAT_VAL, &bat_voltage,
-				   BD99955_EXTENDED_COMMAND);
-
-		/* Assume we're in precharge range on read error */
-		if (rv)
-			bat_voltage = 0;
-		new_state = bat_voltage > FASTCHARGE_VSYSREG ?
-			BD99955_CHARGE_STATE_FASTCHARGE :
-			BD99955_CHARGE_STATE_PRECHARGE;
+		new_state = BD99955_CHARGE_STATE_CHARGE;
 		break;
 	default:
 		panic("Invalid update param");
@@ -614,33 +603,26 @@ static int bd99955_update_charge_state(enum bd99955_charge_update update)
 	if (new_state == charge_state)
 		return 0;
 
-	CPRINTS("New bd99955 state: %d (%d mV)", new_state, bat_voltage);
+	CPRINTS("New bd99955 state: %d (%d mV)", new_state);
 
 	switch (new_state) {
 	case BD99955_CHARGE_STATE_NOT_CHARGING:
 		/* Bring up vsys if necessary, then disable charging */
-		if (charge_state != BD99955_CHARGE_STATE_PRECHARGE) {
-			rv = bd99955_set_vsysreg(PRECHARGE_DISCHARGE_VSYSREG);
-			msleep(50);
-		}
+		rv = bd99955_set_vsysreg(DISCHARGE_VSYSREG);
+		msleep(50);
 		rv |= bd99955_charger_enable(0);
 		break;
 
-	case BD99955_CHARGE_STATE_PRECHARGE:
-	case BD99955_CHARGE_STATE_FASTCHARGE:
+	case BD99955_CHARGE_STATE_CHARGE:
 		/*
 		 * Enable charging if necessary, then bring down vsys if
 		 * fastcharging.
 		 */
-		if (charge_state != BD99955_CHARGE_STATE_PRECHARGE &&
-		    charge_state != BD99955_CHARGE_STATE_FASTCHARGE) {
+		if (charge_state != BD99955_CHARGE_STATE_CHARGE) {
 			rv = bd99955_charger_enable(1);
 			msleep(1);
 		}
-		rv |= bd99955_set_vsysreg(
-			new_state == BD99955_CHARGE_STATE_PRECHARGE ?
-				     PRECHARGE_DISCHARGE_VSYSREG :
-				     FASTCHARGE_VSYSREG);
+		rv |= bd99955_set_vsysreg(CHARGE_VSYSREG);
 		break;
 
 	default:
