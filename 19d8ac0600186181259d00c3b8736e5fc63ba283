@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef6d1912_f327e75e",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-27T16:28:01Z",
+      "side": 1,
+      "message": "uint8_t stat \u003d NPCX_IBUFSTAT;\n\nOtherwise, the first compare below is with whatever 8-bit value is on the stack, which has a 1 in 256 chance of being a match.",
+      "range": {
+        "startLine": 488,
+        "startChar": 0,
+        "endLine": 488,
+        "endChar": 14
+      },
+      "revId": "19d8ac0600186181259d00c3b8736e5fc63ba283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
