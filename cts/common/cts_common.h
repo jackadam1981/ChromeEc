@@ -27,7 +27,8 @@
 #define CTS_DEBUG_PRINTF(format, args...)
 #endif
 
-#define READ_WAIT_TIME_MS 100
+#define READ_WAIT_TIME_MS		100
+#define CTS_INTERRUPT_TIMEOUT_US	(500 * MSEC)
 
 /* In a single test, only one board can return unknown, the other must
  * return a useful result (i.e. success, failure, etc)
