@@ -84,6 +84,13 @@ static void prepare_to_sleep(void)
 
 	if (idle_action == IDLE_DEEP_SLEEP) {
 		/*
+		 * In deep sleep the AP is off. Stop listening to i2c and spi
+		 * slave events.
+		 */
+		GWRITE_FIELD(PINMUX, EXITEN0, DIOA12, 0); /* SPS_CS_L */
+		/* TODO remove i2cs wake event */
+
+		/*
 		 * Preserve some state prior to deep sleep. Pretty much all we
 		 * need is the device address, since everything else can be
 		 * reinitialized on resume.
