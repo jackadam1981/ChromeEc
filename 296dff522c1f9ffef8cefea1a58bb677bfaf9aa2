@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ef6d1912_b1a1e792",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2016-07-28T00:17:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef6d1912_d64a995d",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "296dff522c1f9ffef8cefea1a58bb677bfaf9aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef6d1912_1645314d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-27T17:20:10Z",
       "side": 1,
       "message": "This just mentions reef, but you probably want to ensure make buildall passes since there are a number of boards that use dptf.  (which may already be done to pass the presubmit check)",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "296dff522c1f9ffef8cefea1a58bb677bfaf9aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fe76925_06df8ad5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2016-07-28T00:17:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef6d1912_1645314d",
       "range": {
         "startLine": 13,
         "startChar": 9,
@@ -83,6 +131,30 @@
       "side": 1,
       "message": "CONFIG_FANS seems more appropriate.\n\n(I\u0027m actually re-factoring some of the fan code now to make it so CONFIG_FANS doesn\u0027t pull in a ton of other stuff...)",
       "parentUuid": "ef6d1912_36130d62",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 25
+      },
+      "revId": "296dff522c1f9ffef8cefea1a58bb677bfaf9aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fe76925_a6831e64",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2016-07-28T00:17:58Z",
+      "side": 1,
+      "message": "I added a ifdef since this function uses thermal_params to calculate the possible fan_percent based on the temperatures read from the sensors, fan_off and fan_max temperatures declared in thermal_params. With this change we define thermal params only when we want EC to control the thermal logic(thermal_control in thermal.c). Boards in which the thermal control is completely taken care by DPTF, thermal_params will not be available. Since CONFIG_THROTTLE_AP is the flag guarding both thermal.c and throttle_ap.c,  I think, CONFIG_THROTTLE_AP makes more sense. Ideally, I think printing fan percent here is not needed. As the function reads I think it should only print the temperatures read by sensors.",
+      "parentUuid": "6fe76925_b2eb60e0",
       "range": {
         "startLine": 114,
         "startChar": 7,
