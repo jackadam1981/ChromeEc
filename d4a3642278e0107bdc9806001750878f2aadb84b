@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6fe76925_813124a3",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-07-28T01:22:23Z",
+      "side": 1,
+      "message": "Ummm. I am not sure the specifics of why they latch the wake pin when it is triggered by an edge, but I believe that is the intended behavior. This is the only way to clear the wakeup once it has been set.",
+      "parentUuid": "6fe76925_86925a48",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 35
+      },
+      "revId": "d4a3642278e0107bdc9806001750878f2aadb84b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fe76925_a6dafe17",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-27T23:36:53Z",
       "side": 1,
       "message": "This is already done in chip/g/sps.c, isn\u0027t it? Line 247?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 47
+      },
+      "revId": "d4a3642278e0107bdc9806001750878f2aadb84b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fe76925_41cfbcac",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-07-28T01:22:23Z",
+      "side": 1,
+      "message": "At one point I was checking the value of SPS_CS_L in the wakeup interrupt, and I forgot to remove this.\nDone.",
+      "parentUuid": "6fe76925_a6dafe17",
       "range": {
         "startLine": 133,
         "startChar": 0,
