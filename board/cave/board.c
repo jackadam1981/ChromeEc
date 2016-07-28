@@ -87,17 +87,6 @@ void usb1_evt(enum gpio_signal signal)
 	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);
 }
 
-/*
- * enable_input_devices() is called by the tablet_mode ISR, but changes the
- * state of GPIOs, so its definition must reside after including gpio_list.
- */
-static void enable_input_devices(void);
-
-void tablet_mode_interrupt(enum gpio_signal signal)
-{
-	hook_call_deferred(enable_input_devices, 0);
-}
-
 #include "gpio_list.h"
 
 /* power signal list.  Must match order of enum power_signal. */
@@ -374,35 +363,17 @@ int board_get_ramp_current_limit(int supplier, int sup_curr)
 	}
 }
 
-/* Enable or disable input devices, based upon chipset state and tablet mode */
-static void enable_input_devices(void)
-{
-	int kb_enable = 1;
-	int tp_enable = 1;
-
-	/* Disable both TP and KB in tablet mode */
-	if (!gpio_get_level(GPIO_TABLET_MODE_L))
-		kb_enable = tp_enable = 0;
-	/* Disable TP if chipset is off */
-	else if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
-		tp_enable = 0;
-
-	keyboard_scan_enable(kb_enable, KB_SCAN_DISABLE_LID_ANGLE);
-	gpio_set_level(GPIO_ENABLE_TOUCHPAD, tp_enable);
-}
-DECLARE_DEFERRED(enable_input_devices);
-
 /* Called on AP S5 -> S3 transition */
 static void board_chipset_startup(void)
 {
-	hook_call_deferred(enable_input_devices, 0);
+	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
 /* Called on AP S3 -> S5 transition */
 static void board_chipset_shutdown(void)
 {
-	hook_call_deferred(enable_input_devices, 0);
+	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
@@ -629,3 +600,28 @@ struct motion_sensor_t motion_sensors[] = {
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 #endif /* defined(HAS_TASK_MOTIONSENSE) */
+
+#ifdef CONFIG_LID_ANGLE_UPDATE
+void lid_angle_peripheral_enable(int enable)
+{
+	if (enable) {
+		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
+		gpio_set_level(GPIO_ENABLE_TOUCHPAD, 1);
+	} else {
+		/*
+		 * Ensure chipset is off before disabling keyboard. When chipset
+		 * is on, EC keeps keyboard enabled and the AP decides when to
+		 * ignore keys based on its more accurate lid angle calculation.
+		 *
+		 * TODO(crosbug.com/p/43695): Remove this check once we have a
+		 * host command that can inform EC when we are entering or
+		 * exiting tablet mode in S0. Also, add this check back to the
+		 * function lid_angle_update in lid_angle.c
+		 */
+		if (!chipset_in_state(CHIPSET_STATE_ON)) {
+			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
+			/* TODO: disable touchpad interrupt to chipset */
+		}
+	}
+}
+#endif
