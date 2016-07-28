@@ -39,9 +39,9 @@
 struct consumer const upgrade_consumer;
 struct usb_stream_config const usb_upgrade;
 
-static struct queue const upgrade_to_usb = QUEUE_DIRECT(64, uint8_t,
-						     null_producer,
-						     usb_upgrade.consumer);
+static struct queue const upgrade_to_usb = QUEUE_DIRECT(1024, uint8_t,
+							null_producer,
+							usb_upgrade.consumer);
 static struct queue const usb_to_upgrade = QUEUE_DIRECT(64, uint8_t,
 						     usb_upgrade.producer,
 						     upgrade_consumer);
@@ -306,8 +306,7 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 	 */
 	fw_upgrade_command_handler(block_buffer, block_index, &resp_size);
 
-	resp_value = block_buffer[0];
-	QUEUE_ADD_UNITS(&upgrade_to_usb, &resp_value, sizeof(resp_value));
+	QUEUE_ADD_UNITS(&upgrade_to_usb, block_buffer, resp_size);
 	rx_state_ = rx_outside_block;
 	shared_mem_release(block_buffer);
 	block_buffer = NULL;

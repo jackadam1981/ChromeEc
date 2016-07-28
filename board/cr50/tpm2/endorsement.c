@@ -26,6 +26,7 @@
 #include "registers.h"
 #include "tpm_manufacture.h"
 #include "tpm_registers.h"
+#include "system.h"
 
 #include "dcrypto.h"
 
@@ -294,15 +295,20 @@ static void flash_info_read_disable(void)
 	GREG32(GLOBALSEC, FLASH_REGION7_CTRL) = 0;
 }
 
-static void flash_cert_region_enable(void)
+static void flash_cert_region_enable(int write_too)
 {
+	uint32_t bits;
+
 	/* Enable R access to CERT block. */
 	GREG32(GLOBALSEC, FLASH_REGION6_BASE_ADDR) = RO_CERTS_START_ADDR;
-	GREG32(GLOBALSEC, FLASH_REGION6_SIZE) =
-		RO_CERTS_REGION_SIZE - 1;
-	GREG32(GLOBALSEC, FLASH_REGION6_CTRL) =
-		GC_GLOBALSEC_FLASH_REGION6_CTRL_EN_MASK |
+	GREG32(GLOBALSEC, FLASH_REGION6_SIZE) =	RO_CERTS_REGION_SIZE - 1;
+
+	bits = GC_GLOBALSEC_FLASH_REGION6_CTRL_EN_MASK |
 		GC_GLOBALSEC_FLASH_REGION6_CTRL_RD_EN_MASK;
+	if (write_too)
+		bits |= GC_GLOBALSEC_FLASH_REGION6_CTRL_WR_EN_MASK;
+
+	GREG32(GLOBALSEC, FLASH_REGION6_CTRL) = bits;
 }
 
 /* EPS is stored XOR'd with FRK2, so make sure that the sizes match. */
@@ -327,6 +333,11 @@ static int get_decrypted_eps(uint8_t eps[PRIMARY_SEED_SIZE])
 			memset(frk2, 0, sizeof(frk2));
 			return 0;     /* Flash read INFO1 failed. */
 		}
+		if (word == 0 || word == 0xFFFFFFFF) {
+			CPRINTF("EPS not found; flash info has been wiped\n");
+			return 0;
+		}
+
 		memcpy(eps + i, &word, sizeof(word));
 	}
 
@@ -353,7 +364,7 @@ static int store_eps(const uint8_t eps[PRIMARY_SEED_SIZE])
 
 static void endorsement_complete(void)
 {
-	CPRINTF("%s(): SUCCESS\n", __func__);
+	CPRINTF("%s: SUCCESS\n", __func__);
 }
 
 static int handle_cert(
@@ -368,7 +379,7 @@ static int handle_cert(
 
 	/* TODO(ngm): verify that storage succeeded. */
 	if (!store_cert(cert_info->component_type, cert)) {
-		CPRINTF("%s(): cert storage failed, type: %d\n", __func__,
+		CPRINTF("%s: cert storage failed, type: %d\n", __func__,
 			cert_info->component_type);
 		return 0;  /* Internal failure. */
 	}
@@ -400,14 +411,16 @@ int tpm_endorse(void)
 	int result = 0;
 	uint8_t eps[PRIMARY_SEED_SIZE];
 
-	flash_cert_region_enable();
+	flash_cert_region_enable(0);
 
 	/* First boot, certs not yet installed. */
-	if (*c == 0xFFFFFFFF)
+	if (*c == 0xFFFFFFFF) {
+		CPRINTF("%s: no certs in ROM\n", __func__);
 		return 0;
+	}
 
 	if (!get_decrypted_eps(eps)) {
-		CPRINTF("%s(): failed to read eps\n", __func__);
+		CPRINTF("%s: failed to read eps\n", __func__);
 		return 0;
 	}
 
@@ -415,25 +428,31 @@ int tpm_endorse(void)
 	rsa_cert = (const struct ro_cert *) p;
 	/* Sanity check cert region contents. */
 	if ((2 * sizeof(struct ro_cert)) +
-		rsa_cert->cert_response.cert_len > RO_CERTS_REGION_SIZE)
+	    rsa_cert->cert_response.cert_len > RO_CERTS_REGION_SIZE) {
+		CPRINTF("%s: wrong rsa region size\n", __func__);
 		return 0;
+	}
 
 	/* Unpack ecc cert struct. */
 	ecc_cert = (const struct ro_cert *) (p + sizeof(struct ro_cert) +
 					rsa_cert->cert_response.cert_len);
 	/* Sanity check cert region contents. */
 	if ((2 * sizeof(struct ro_cert)) +
-		rsa_cert->cert_response.cert_len +
-		ecc_cert->cert_response.cert_len > RO_CERTS_REGION_SIZE)
+	    rsa_cert->cert_response.cert_len +
+	    ecc_cert->cert_response.cert_len > RO_CERTS_REGION_SIZE) {
+		CPRINTF("%s: wrong ecc region size\n", __func__);
 		return 0;
+	}
 
 	/* Verify expected component types. */
 	if (rsa_cert->cert_info.component_type !=
 		CROS_PERSO_COMPONENT_TYPE_RSA_CERT) {
+		CPRINTF("%s: wrong rsa component type\n", __func__);
 		return 0;
 	}
 	if (ecc_cert->cert_info.component_type !=
 		CROS_PERSO_COMPONENT_TYPE_P256_CERT) {
+		CPRINTF("%s: wrong ecc component type\n", __func__);
 		return 0;
 	}
 
@@ -458,7 +477,7 @@ int tpm_endorse(void)
 
 		/* Copy EPS from INFO1 to flash data region. */
 		if (!store_eps(eps)) {
-			CPRINTF("%s(): eps storage failed\n", __func__);
+			CPRINTF("%s: eps storage failed\n", __func__);
 			break;
 		}
 
@@ -472,3 +491,184 @@ int tpm_endorse(void)
 	memset(eps, 0, sizeof(eps));
 	return result;
 }
+
+
+#define KEY_SIZE               32
+#define FRAME_SIZE             1024
+#define PAYLOAD_MAGIC_B1       0xb1
+#define PAYLOAD_MAGIC_B2       0xb2
+#define PAYLOAD_MAGIC_FAIL     0x00
+#define PAYLOAD_VERSION        0x8000
+#define PRODUCT_TYPE           2
+
+struct cros_ack_response_v0 {
+	uint32_t magic;
+	uint16_t payload_version;
+	uint16_t n_keys;
+	struct {
+		char name[KEY_SIZE];
+	} keys[(FRAME_SIZE - SHA256_DIGEST_SIZE - 4 - 2 - 2) / KEY_SIZE];
+	uint8_t _filler[12];  /* Pad out to get exactly to FRAME_SIZE. */
+	uint32_t checksum[SHA256_DIGEST_WORDS];
+} __packed;
+BUILD_ASSERT(sizeof(struct cros_ack_response_v0) == 1012);
+
+static void prepare_ack_cmd_error_return(uint16_t *buffer,
+					 size_t *response_size, uint16_t code)
+{
+	*buffer = code;
+	*response_size = sizeof(code);
+}
+
+static uint8_t get_payload_magic(void)
+{
+	switch (system_get_chip_revision()[1]) {
+	case '1':
+		return PAYLOAD_MAGIC_B1;
+	case '2':
+		return PAYLOAD_MAGIC_B2;
+	}
+	return PAYLOAD_MAGIC_FAIL;
+}
+
+static void get_rwr(uint32_t *rwr)
+{
+	int i;
+	const volatile uint32_t *base_ptr = GREG32_ADDR(KEYMGR, HKEY_RWR0);
+
+	for (i = 0; i < 8; i++)
+		*rwr++ = *base_ptr++;
+}
+
+void ack_command_handler(void *request, size_t command_size,
+			 size_t *response_size)
+{
+	uint32_t rwr_cros[8];
+	uint8_t hw_cat;
+	uint32_t dev_id0;
+	uint32_t dev_id1;
+	uint8_t rwr0;
+	uint8_t test_registration_flag;
+	uint8_t devkey_id;
+	uint32_t product_type;
+	struct cros_ack_response_v0 *ack_response = request;
+
+	if (tpm_manufactured()) {
+		prepare_ack_cmd_error_return(request,
+					     response_size, __LINE__);
+		return;
+	}
+
+	if (command_size) {
+		prepare_ack_cmd_error_return(request,
+					     response_size, __LINE__);
+		CPRINTF("%s:%d\n", __func__, __LINE__);
+		return;
+	}
+
+	memset(ack_response, 0, sizeof(struct cros_ack_response_v0));
+
+	{
+		int i;
+
+		for (i = 0; i < (sizeof(struct cros_ack_response_v0)/2); i++) {
+			((uint8_t *)request)[2 * i] = i >> 8;
+			((uint8_t *)request)[2 * i + 1] = i;
+		}
+	}
+	ack_response->magic = get_payload_magic();
+	ack_response->payload_version = PAYLOAD_VERSION;
+	ack_response->n_keys = 1;
+
+	get_rwr(rwr_cros);
+	/* Pick up low byte of specified words. */
+	rwr0 = rwr_cros[0];
+	test_registration_flag = rwr_cros[1];
+	devkey_id = rwr_cros[7];
+
+	dev_id0 = htobe32(GREG32(FUSE, DEV_ID0));
+	dev_id1 = htobe32(GREG32(FUSE, DEV_ID1));
+
+	product_type = htobe16(PRODUCT_TYPE);
+	snprintf(ack_response->keys[0].name, KEY_SIZE,
+		"%02X:%08X%08X:%02X%02X%02X:%04X", hw_cat, dev_id0, dev_id1,
+		rwr0, test_registration_flag, devkey_id, product_type);
+
+	/* Compute a checksum over all previous fields. */
+	SHA256_hash(ack_response,
+		    sizeof(struct cros_ack_response_v0) - SHA256_DIGEST_SIZE,
+		    (uint8_t *) ack_response->checksum);
+
+	*response_size = sizeof(*ack_response);
+}
+
+static int certs_valid(const uint8_t *certbuf)
+{
+	size_t i;
+	uint8_t seed[32];
+	LITE_HMAC_CTX hmac;
+	const uint8_t *digest;
+	uint8_t accu;
+
+	if (!get_decrypted_eps(seed)) {
+		CPRINTF("%s: failed to read eps\n", __func__);
+		return 0;
+	}
+
+	HMAC_SHA256_init(&hmac, seed, sizeof(seed));
+	HMAC_update(&hmac, "RSA", 4);
+	memcpy(seed, HMAC_final(&hmac), sizeof(seed));
+
+	HMAC_SHA256_init(&hmac, seed, sizeof(seed));
+	HMAC_update(&hmac, certbuf, RO_CERTS_REGION_SIZE - SHA256_DIGEST_SIZE);
+	digest = HMAC_final(&hmac);
+
+	accu = 0;
+	for (i = 0; i < 32; ++i)
+		accu |= (certbuf[RO_CERTS_REGION_SIZE -
+					SHA256_DIGEST_SIZE + i] ^ digest[i]);
+
+	return !accu;
+}
+
+void perso_command_handler(void *request, size_t command_size,
+			   size_t *response_size)
+{
+	uint32_t cert_offset;
+	uint8_t *response = request;
+
+	*response_size = 1;
+
+	CPRINTF("%s: got %d bytes\n", __func__, command_size);
+	CPRINTF("%s: got %02x:%02x:%02x...%02x:%02x:%02x\n", __func__,
+		((uint8_t *)request)[0], ((uint8_t *)request)[1], ((uint8_t *)request)[2],
+		((uint8_t *)request)[command_size - 3],
+		((uint8_t *)request)[command_size - 2],
+		((uint8_t *)request)[command_size - 1]);
+	if (!certs_valid(request)) {
+		CPRINTF("certs are NOT valid\n", __func__);
+		*response = 1;
+		return;
+	}
+
+	CPRINTF("certs are valid\n", __func__);
+	flash_cert_region_enable(1);
+
+	cert_offset = RO_CERTS_START_ADDR - CONFIG_PROGRAM_MEMORY_BASE;
+	if (flash_physical_erase(cert_offset, RO_CERTS_REGION_SIZE) != EC_SUCCESS) {
+		CPRINTF("%s: failed to erase\n", __func__);
+		*response = 2;
+		return;
+	}
+
+	if (flash_physical_write(cert_offset, command_size, request) != EC_SUCCESS) {
+		CPRINTF("%s: failed to write\n", __func__);
+		*response = 3;
+		return;
+	}
+	CPRINTF("%s: SUCCESS!!!\n", __func__);
+	*response = 0;
+}
+
+DECLARE_EXTENSION_COMMAND(EXTENSION_MANUFACTURE_ACK, ack_command_handler);
+DECLARE_EXTENSION_COMMAND(EXTENSION_MANUFACTURE_PERSO, perso_command_handler);

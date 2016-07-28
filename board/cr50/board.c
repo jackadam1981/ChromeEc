@@ -303,7 +303,7 @@ static void board_init(void)
 	init_interrupts();
 	init_trng();
 	init_jittery_clock(1);
-	init_runlevel(PERMISSION_MEDIUM);
+	init_runlevel(PERMISSION_HIGH);
 	/* Initialize NvMem partitions */
 	nvmem_init();
 
