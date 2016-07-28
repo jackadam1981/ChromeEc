@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6fe76925_d2a0198f",
+        "filename": "util/getversion.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-28T17:47:25Z",
+      "side": 1,
+      "message": "what is reference parameter?\n\nthis is used in lines 63 and 66",
+      "parentUuid": "6fe76925_d287f907",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 6
+      },
+      "revId": "545198ea396c805c23241b35ece2043594b2bd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fe76925_b928e0eb",
         "filename": "util/getversion.sh",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "writtenOn": "2016-07-28T17:39:20Z",
       "side": 1,
       "message": "BTW I was unsure what purpose this served but left it in there.",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "545198ea396c805c23241b35ece2043594b2bd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fe76925_f2d0bdfd",
+        "filename": "util/getversion.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-28T17:47:25Z",
+      "side": 1,
+      "message": "I also was not sure, I presumed it was helping with the \u0027git diff-index\u0027 below.",
+      "parentUuid": "6fe76925_b928e0eb",
       "range": {
         "startLine": 50,
         "startChar": 18,
