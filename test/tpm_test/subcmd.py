@@ -9,10 +9,12 @@
 AES = 0
 HASH = 1
 RSA = 2
-ECC = 3
+EC = 3
 FW_UPGRADE = 4
 HKDF = 5
 ECIES = 6
+MANUFACTURE_ACK = 7
+MANUFACTURE_PERSO = 8
 
 # The same exception class used by all tpmtest modules.
 class TpmTestError(Exception):

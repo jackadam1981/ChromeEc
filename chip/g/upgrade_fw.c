@@ -65,17 +65,6 @@ static void set_valid_sections(void)
 		CONFIG_RW_SIZE;
 }
 
-/* Enable write access to the backup RO section. */
-static void open_ro_window(uint32_t offset, size_t size_b)
-{
-	GREG32(GLOBALSEC, FLASH_REGION6_BASE_ADDR) =
-		offset + CONFIG_PROGRAM_MEMORY_BASE;
-	GREG32(GLOBALSEC, FLASH_REGION6_SIZE) = size_b - 1;
-	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, EN, 1);
-	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, RD_EN, 1);
-	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, WR_EN, 1);
-}
-
 /*
  * Verify that the passed in block fits into the valid area. If it does, and
  * is destined to the base address of the area - erase the area contents.
@@ -111,32 +100,6 @@ static uint8_t check_update_chunk(uint32_t block_offset, size_t body_size)
 		return UPGRADE_SUCCESS;
 	}
 
-	/* Is this an RO chunk? */
-	if (valid_sections.ro_top_offset &&
-	    (block_offset >= valid_sections.ro_base_offset) &&
-	    ((block_offset + body_size) <= valid_sections.ro_top_offset)) {
-		/*
-		 * If this is the first chunk for this section, it needs to
-		 * be erased.
-		 */
-		if (block_offset == valid_sections.ro_base_offset) {
-			uint32_t base;
-			uint32_t size;
-
-			base = valid_sections.ro_base_offset;
-			size = valid_sections.ro_top_offset -
-				valid_sections.ro_base_offset;
-			/* backup RO area write access needs to be enabled. */
-			open_ro_window(base, size);
-			if (flash_erase(base, size) != EC_SUCCESS) {
-				CPRINTF("%s:%d erase failure of 0x%x..+0x%x\n",
-					__func__, __LINE__, base, size);
-				return UPGRADE_ERASE_FAILURE;
-			}
-		}
-		return UPGRADE_SUCCESS;
-	}
-
 	CPRINTF("%s:%d %x, %d ro base %x top %x, rw base %x top %x\n",
 		__func__, __LINE__,
 		block_offset, body_size,
@@ -146,6 +109,54 @@ static uint8_t check_update_chunk(uint32_t block_offset, size_t body_size)
 		valid_sections.rw_top_offset);
 
 	return UPGRADE_BAD_ADDR;
+}
+
+void ack_command_handler(void *request, size_t command_size,
+			 size_t *response_size);
+void perso_command_handler(void *request, size_t command_size,
+			   size_t *response_size);
+
+static void try_endorsement_command(uint8_t *error_code,
+				    void *cmd_body,
+				    size_t cmd_size,
+				    size_t *resp_size)
+{
+	uint8_t subcommand;
+	size_t response_size;
+	void *payload;
+	char cmd_start[] = {0x80, 0x01, 0x00, 0x00, 0x00,
+			    0x0c, 0xba, 0xcc, 0xd0, 0x0a, 0x00};
+
+	if (cmd_size < (sizeof(cmd_start) + 1))
+		return;
+
+	if (memcmp(cmd_body, cmd_start, sizeof(cmd_start))) {
+		/* Try other command header, difference in one byte only. */
+		cmd_start[4] = 8;
+		if (memcmp(cmd_body, cmd_start, sizeof(cmd_start)))
+			return;
+	}
+
+	subcommand = ((uint8_t *)cmd_body)[sizeof(cmd_start)];
+	payload = (void *)((uintptr_t)cmd_body + sizeof(cmd_start) + 1);
+	switch(subcommand) {
+	case EXTENSION_MANUFACTURE_ACK:
+		ack_command_handler(payload,
+				    cmd_size - sizeof(cmd_start) - 1,
+				    &response_size);
+		break;
+	case EXTENSION_MANUFACTURE_PERSO:
+		perso_command_handler(payload,
+				      cmd_size - sizeof(cmd_start) - 1,
+				      &response_size);
+		break;
+	default:
+		CPRINTF("Subcommand is %d\n", subcommand);
+		return;
+	}
+
+	memcpy(error_code, payload, response_size);
+	*resp_size = response_size;
 }
 
 void fw_upgrade_command_handler(void *body,
@@ -237,8 +248,12 @@ void fw_upgrade_command_handler(void *body,
 	/* Check if the block will fit into the valid area. */
 	block_offset = be32toh(cmd_body->block_base);
 	*error_code = check_update_chunk(block_offset, body_size);
-	if (*error_code)
+	if (*error_code) {
+		try_endorsement_command(error_code,
+					cmd_body + 1, body_size,
+					response_size);
 		return;
+	}
 
 	CPRINTF("%s: programming at address 0x%x\n", __func__,
 		block_offset + CONFIG_PROGRAM_MEMORY_BASE);

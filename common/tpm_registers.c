@@ -64,7 +64,7 @@ enum tpm_states {
 struct tpm_register_file {
 	uint8_t access;
 	uint32_t sts;
-	uint8_t data_fifo[2048]; /* this might have to be even deeper. */
+	uint8_t data_fifo[2100]; /* this might have to be even deeper. */
 };
 
 /*
