@@ -203,6 +203,8 @@ void motion_lid_calc(void)
 			&lid_angle_deg);
 #endif
 
+	ccprints("lid_angle = %d", lid_angle_deg);
+
 #ifdef CONFIG_LID_ANGLE_UPDATE
 	lid_angle_update(motion_lid_get_angle());
 #endif
