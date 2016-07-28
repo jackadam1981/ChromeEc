@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fe76925_b901005e",
+        "filename": "util/getversion.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2016-07-28T17:39:20Z",
+      "side": 1,
+      "message": "Ick...why not use a reference parameter?",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 6
+      },
+      "revId": "545198ea396c805c23241b35ece2043594b2bd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fe76925_b928e0eb",
+        "filename": "util/getversion.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000294
+      },
+      "writtenOn": "2016-07-28T17:39:20Z",
+      "side": 1,
+      "message": "BTW I was unsure what purpose this served but left it in there.",
+      "range": {
+        "startLine": 50,
+        "startChar": 18,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "545198ea396c805c23241b35ece2043594b2bd63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
