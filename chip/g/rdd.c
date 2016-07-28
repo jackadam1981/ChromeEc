@@ -54,8 +54,10 @@ void rdd_init(void)
 
 	debug_detect = GREAD(RDD, PROG_DEBUG_STATE_MAP);
 
-	/* Initialize the debug state based on the current cc values */
+	/* Initialize the debug state based on the current cc values
 	rdd_interrupt();
+	*/
+	rdd_attached();
 
 	/* Enable RDD interrupts */
 	task_enable_irq(GC_IRQNUM_RDD0_INTR_DEBUG_STATE_DETECTED_INT);
