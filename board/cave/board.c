@@ -377,32 +377,26 @@ int board_get_ramp_current_limit(int supplier, int sup_curr)
 /* Enable or disable input devices, based upon chipset state and tablet mode */
 static void enable_input_devices(void)
 {
-	int kb_enable = 1;
-	int tp_enable = 1;
-
-	/* Disable both TP and KB in tablet mode */
-	if (!gpio_get_level(GPIO_TABLET_MODE_L))
-		kb_enable = tp_enable = 0;
-	/* Disable TP if chipset is off */
-	else if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
-		tp_enable = 0;
-
-	keyboard_scan_enable(kb_enable, KB_SCAN_DISABLE_LID_ANGLE);
-	gpio_set_level(GPIO_ENABLE_TOUCHPAD, tp_enable);
+	/*
+	 * TODO: Dont control keyboard and touch here, but sent event to system
+	 * for dynamic DPTF setting
+	 */
 }
 DECLARE_DEFERRED(enable_input_devices);
 
 /* Called on AP S5 -> S3 transition */
 static void board_chipset_startup(void)
 {
-	hook_call_deferred(enable_input_devices, 0);
+	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 1);
+	gpio_set_level(GPIO_PP1800_DX_SENSOR_EN, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
 /* Called on AP S3 -> S5 transition */
 static void board_chipset_shutdown(void)
 {
-	hook_call_deferred(enable_input_devices, 0);
+	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
+	gpio_set_level(GPIO_PP1800_DX_SENSOR_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
@@ -410,7 +404,6 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 static void board_chipset_resume(void)
 {
 	gpio_set_level(GPIO_PP1800_DX_AUDIO_EN, 1);
-	gpio_set_level(GPIO_PP1800_DX_SENSOR_EN, 1);
 	gpio_set_level(GPIO_KBBL_EN, 1);
 
 	/*
@@ -432,7 +425,6 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume,
 static void board_chipset_suspend(void)
 {
 	gpio_set_level(GPIO_PP1800_DX_AUDIO_EN, 0);
-	gpio_set_level(GPIO_PP1800_DX_SENSOR_EN, 0);
 	gpio_set_level(GPIO_KBBL_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
@@ -523,7 +515,7 @@ struct motion_sensor_t motion_sensors[] = {
 
 	/* Note: bmi160: supports accelerometer and gyro sensor */
 	{.name = "Base Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_BASE,
@@ -544,12 +536,12 @@ struct motion_sensor_t motion_sensors[] = {
 			 .odr = 10000 | ROUND_UP_FLAG,
 			 .ec_rate = 100 * MSEC,
 		 },
-		 /* Sensor off in S3/S5 */
+		 /* Sensor on in S3 */
 		 [SENSOR_CONFIG_EC_S3] = {
-			 .odr = 0,
-			 .ec_rate = 0
+			 .odr = 10000 | ROUND_UP_FLAG,
+			 .ec_rate = 100 * MSEC,
 		 },
-		 /* Sensor off in S3/S5 */
+		 /* Sensor off in S5 */
 		 [SENSOR_CONFIG_EC_S5] = {
 			 .odr = 0,
 			 .ec_rate = 0
@@ -558,7 +550,7 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 
 	{.name = "Lid Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_KX022,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_LID,
@@ -579,11 +571,12 @@ struct motion_sensor_t motion_sensors[] = {
 			.odr = 10000 | ROUND_UP_FLAG,
 			.ec_rate = 100 * MSEC,
 		},
-		/* unused */
+		/* Sensor on in S3 */
 		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
-			.ec_rate = 0,
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
 		},
+		/* Sensor off in S5 */
 		[SENSOR_CONFIG_EC_S5] = {
 			.odr = 0,
 			.ec_rate = 0,
@@ -629,3 +622,36 @@ struct motion_sensor_t motion_sensors[] = {
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 #endif /* defined(HAS_TASK_MOTIONSENSE) */
+
+#ifdef CONFIG_LID_ANGLE_UPDATE
+void lid_angle_peripheral_enable(int enable)
+{
+	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
+
+	if (enable) {
+		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
+		gpio_set_level(GPIO_ENABLE_TOUCHPAD, 1);
+
+		/* turn on keyboard backlight power only in s0 */
+		if (chipset_in_s0)
+			gpio_set_level(GPIO_KBBL_EN, 1);
+	} else {
+		/*
+		 * Ensure chipset is off before disabling keyboard. When chipset
+		 * is on, EC keeps keyboard enabled and the AP decides when to
+		 * ignore keys based on its more accurate lid angle calculation.
+		 *
+		 * TODO(crosbug.com/p/43695): Remove this check once we have a
+		 * host command that can inform EC when we are entering or
+		 * exiting tablet mode in S0. Also, add this check back to the
+		 * function lid_angle_update in lid_angle.c
+		 */
+		if (!chipset_in_s0) {
+			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
+			gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
+		}
+
+		gpio_set_level(GPIO_KBBL_EN, 0);
+	}
+}
+#endif
