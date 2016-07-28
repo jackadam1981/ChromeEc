@@ -86,15 +86,11 @@ TPM_HEADER_SIZE = struct.Struct(CrosTPMPersoResponseHeader_v0_FMT).size
 
 def chip_filename(chip_id):
   # Filenames are of the form:
-  #   00:2205413401000003:028039:0200 or
-  #   00:2205413401000003:028039:0200.res or
-  #   00_2205413401000003_028039_0200 or
-  #   00_2205413401000003_028039_0200.res
+  #   00:2205413401000003:028039:0200.certs
+  #   00_2205413401000003_028039_0200.certs
   chip_id_underscores = chip_id.replace(':', '_')
-  candidate_filenames = map(
-    lambda x: os.path.join(FLAGS.input, x),
-    [chip_id, chip_id + '.res',
-     chip_id_underscores, chip_id_underscores + '.res'])
+  candidate_filenames = [os.path.join(FLAGS.input, x + '.certs') for
+                         x in [chip_id, chip_id_underscores]]
 
   for filename in candidate_filenames:
     if os.path.exists(filename):
@@ -154,6 +150,7 @@ def cros_ack():
     return False
 
   chip_id = ack.names[:PERSO_FILENAME_LEN]
+  print('chip id', chip_id)
 
   perso_data = ''
   chip_perso_data_file = chip_filename(chip_id)
@@ -164,28 +161,16 @@ def cros_ack():
     perso_data = f.read()
   print(utils.cursor_back() + 'CHIP ID: %s' % chip_id)
 
-  assert len(perso_data) == struct.Struct(CrosEndorsementBlob_v0_FMT).size
-  blob = CrosEndorsementBlob_v0._make(
-    struct.Struct(CrosEndorsementBlob_v0_FMT).unpack(perso_data))
+  assert len(perso_data) == 2048
+  print('data size', len(perso_data))
 
-  # Blobs include serialized TPM header.
-  response = t.command(blob.rsa_blob)
-  # Skip over TPM header and unpack Ok response.
-  rsa_ok = struct.unpack(CrosOkResponse_v0_FMT, response[TPM_HEADER_SIZE:])[0]
-  print(utils.cursor_back() + 'RSA PERSO RESULT: %d' % rsa_ok)
+  wrapped_response = t.command(t.wrap_ext_command(
+    subcmd.MANUFACTURE_PERSO, perso_data))
+  ack_body = wrapped_response[TPM_HEADER_SIZE:]
 
-  # Blobs include serialized TPM header.
-  response = t.command(blob.ecc_blob)
-  # Skip over TPM header and unpack Ok response.
-  ecc_ok = struct.unpack(CrosOkResponse_v0_FMT, response[TPM_HEADER_SIZE:])[0]
-  print(utils.cursor_back() + 'ECC PERSO RESULT: %d' % ecc_ok)
+  print('ack body size %d', ack_body)
 
-  if rsa_ok or ecc_ok:
-    print(utils.cursor_back() + 'FAIL')
-    return False
-  else:
-    print(utils.cursor_back() + 'SUCCESS')
-    return True
+  return False
 
 
 def parse_args():
