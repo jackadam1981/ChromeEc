@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef90b9cc_8db26de1",
+        "filename": "chip/stm32/config-stm32f446.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-29T16:26:22Z",
+      "side": 1,
+      "message": "We\u0027re just ignoring 75% of the flash to reduce programming time and image size?  Might comment that.",
+      "range": {
+        "startLine": 6,
+        "startChar": 20,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_3231b8a1",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-29T16:26:22Z",
+      "side": 1,
+      "message": "This is only used in one place below.  Maybe move this calculation there?  Don\u0027t like macro constants hiding function calls.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 72
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_ad19e9e1",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-29T16:26:22Z",
+      "side": 1,
+      "message": "Same comment as flash-f.c",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_f21d901a",
+        "filename": "chip/stm32/jtag-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-29T16:26:22Z",
+      "side": 1,
+      "message": "JTAG is used only rarely.  Ok to leave this unimplemented with a TODO bug along the lines of \"implement if you care about JTAG\".",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 39
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_b26ea898",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-29T16:26:22Z",
+      "side": 1,
+      "message": "Does this work on other STM32 chips with DMA?  Or does it need guarding with #ifdef?",
+      "range": {
+        "startLine": 34,
+        "startChar": 54,
+        "endLine": 35,
+        "endChar": 45
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_126e7c97",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-29T16:26:22Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 47
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_f24f5036",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-29T16:26:22Z",
+      "side": 1,
+      "message": "Redefine this as CONFIG_CLOCK_HSE_HZ, so it\u0027s both the config flag and the frequency?",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 56
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_726420bd",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-07-29T16:26:22Z",
+      "side": 1,
+      "message": "TASK_EVENT_CUSTOM is designed to be owned by a task.  But I2C doesn\u0027t have its own task; it runs in other tasks.  So this will conflict with things like TASK_EVENT_CMD_PENDING.\n\nShould reserve these bits globally (in task.h), the same way we do TASK_EVENT_I2C_IDLE (which this new event replaces on STM32F446?)",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 60
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
