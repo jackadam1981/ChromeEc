@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_5b757cda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-07-29T21:37:20Z",
+      "side": 1,
+      "message": "Or bollocks?\n;-)",
+      "parentUuid": "ef90b9cc_9861cdae",
+      "range": {
+        "startLine": 16,
+        "startChar": 30,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_f3b3d251",
         "filename": "board/stm32f446e-eval/board.c",
         "patchSetId": 4
