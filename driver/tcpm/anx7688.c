@@ -10,6 +10,7 @@
 #include "tcpm.h"
 #include "timer.h"
 #include "usb_mux.h"
+#include "console.h"
 
 #define ANX7688_VENDOR_ALERT    (1 << 15)
 
@@ -59,6 +60,19 @@ static int anx7688_init(int port)
 	mask |= ANX7688_VENDOR_ALERT;
 	rv = tcpc_write16(port, TCPC_REG_ALERT_MASK, mask);
 	return rv;
+}
+
+static int anx7688_set_vconn(int port, int enable)
+{
+	int reg, rv;
+
+	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &reg);
+	if (rv)
+		return rv;
+
+	reg &= ~TCPC_REG_POWER_CTRL_VCONN(1);
+	reg |= TCPC_REG_POWER_CTRL_VCONN(enable);
+	return tcpc_write(port, TCPC_REG_POWER_CTRL, reg);
 }
 
 static void anx7688_update_hpd_enable(int port)
@@ -160,16 +174,27 @@ static int anx7688_mux_set(int i2c_addr, mux_state_t mux_state)
 	return tcpc_write(port, TCPC_REG_CONFIG_STD_OUTPUT, reg);
 }
 
+#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
+
+static int anx7688_tcpm_get_vbus_level(int port)
+{
+	int reg = 0;
+
+	i2c_read8(I2C_PORT_TCPC, 0x50, 0x40, &reg);
+	ccprintf("vbus presnet %x\n", reg);
+	return ((reg & 0x10) ? 1 : 0);
+}
+#endif
 /* ANX7688 is a TCPCI compatible port controller */
 const struct tcpm_drv anx7688_tcpm_drv = {
 	.init			= &anx7688_init,
 	.get_cc			= &tcpci_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
-	.get_vbus_level		= &tcpci_tcpm_get_vbus_level,
+	.get_vbus_level		= &anx7688_tcpm_get_vbus_level,
 #endif
 	.set_cc			= &tcpci_tcpm_set_cc,
 	.set_polarity		= &tcpci_tcpm_set_polarity,
-	.set_vconn		= &tcpci_tcpm_set_vconn,
+	.set_vconn		= &anx7688_set_vconn,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
 	.get_message		= &tcpci_tcpm_get_message,

@@ -226,6 +226,7 @@ void pd_vbus_low(int port)
 static inline int pd_is_vbus_present(int port)
 {
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
+		
 	return tcpm_get_vbus_level(port);
 #else
 	return pd_snk_is_vbus_provided(port);
@@ -234,8 +235,7 @@ static inline int pd_is_vbus_present(int port)
 
 static int pd_snk_debug_acc_toggle(int port)
 {
-#if defined(CONFIG_CASE_CLOSED_DEBUG) || \
-defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
+#ifdef CONFIG_CASE_CLOSED_DEBUG
 	/*
 	 * when we are in SNK_DISCONNECTED and we see VBUS appearing
 	 * (without having seen Rp before), that might be a powered debug
@@ -250,8 +250,7 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 
 static int pd_debug_acc_plugged(int port)
 {
-#if defined(CONFIG_CASE_CLOSED_DEBUG) || \
-defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
+#ifdef CONFIG_CASE_CLOSED_DEBUG
 	return pd[port].task_state == PD_STATE_SRC_ACCESSORY;
 #else
 	/* Debug accessories not supported */
@@ -1950,6 +1949,9 @@ void pd_task(void)
 		case PD_STATE_SRC_SWAP_STANDBY:
 			/* Send PS_RDY to let sink know our power is off */
 			if (pd[port].last_state != pd[port].task_state) {
+				/* Switch to Rd and swap roles to sink */
+				tcpm_set_cc(port, TYPEC_CC_RD);
+				ccprintf("set cc rd new \n\n\n");
 				/* Send PS_RDY */
 				res = send_control(port, PD_CTRL_PS_RDY);
 				if (res < 0) {
@@ -1958,9 +1960,6 @@ void pd_task(void)
 						  PD_STATE_SRC_DISCONNECTED);
 					break;
 				}
-				/* Switch to Rd and swap roles to sink */
-				tcpm_set_cc(port, TYPEC_CC_RD);
-				pd[port].power_role = PD_ROLE_SINK;
 				/* Wait for PS_RDY from new source */
 				set_state_timeout(port,
 						  get_time().val +
@@ -2617,6 +2616,7 @@ void pd_task(void)
 		    !pd_is_vbus_present(port) &&
 		    pd[port].task_state != PD_STATE_SNK_HARD_RESET_RECOVER &&
 		    pd[port].task_state != PD_STATE_HARD_RESET_EXECUTE) {
+			ccprintf("vbus not present dis Connect snk\n");
 			/* Sink: detect disconnect by monitoring VBUS */
 			set_state(port, PD_STATE_SNK_DISCONNECTED);
 			/* set timeout small to reconnect fast */
