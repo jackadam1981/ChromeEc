@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef90b9cc_58110563",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-07-29T17:37:45Z",
+      "side": 1,
+      "message": "Yes there is. In tpm_registers.c, we do something similar to this:\n\n  printf(\"%s %s\", \n  system_get_version(SYSTEM_IMAGE_RO),\n  system_get_version(SYSTEM_IMAGE_RO_B));\n\nThat invokes the call twice, saves the pointers returned, and then passes them to printf. Since system_get_version() returns the same buffer each time, the result is that whichever call the compiler chooses to invoke last is printed twice.",
+      "range": {
+        "startLine": 16,
+        "startChar": 17,
+        "endLine": 17,
+        "endChar": 5
+      },
+      "revId": "99265698121e1028182d4faf85e23cf23a09441a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
