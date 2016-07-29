@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_64e37ece",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-07-29T00:52:11Z",
+      "side": 1,
+      "message": "SGTM as well",
+      "parentUuid": "6fe76925_a6831e64",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 25
+      },
+      "revId": "296dff522c1f9ffef8cefea1a58bb677bfaf9aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fe76925_55141e9b",
         "filename": "include/console_channel.inc",
         "patchSetId": 4
