@@ -629,3 +629,15 @@ struct motion_sensor_t motion_sensors[] = {
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 #endif /* defined(HAS_TASK_MOTIONSENSE) */
+
+int board_get_version(void)
+{
+	int v;
+
+	if (gpio_get_level(GPIO_BOARD_VERSION1))
+		v |= 0x01;
+	if (gpio_get_level(GPIO_BOARD_VERSION2))
+		v |= 0x02;
+
+	return v;
+}
