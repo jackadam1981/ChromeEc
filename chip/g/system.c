@@ -171,11 +171,34 @@ enum system_image_copy_t system_get_ro_image_copy(void)
 }
 
 /*
- * The RW images contain version strings. The RO images don't, so we'll make
- * some here.
+ * The RW images contain version strings but need to be truncated, the RO
+ * images version strings need to be created, so we'll use this buffer in both
+ * cases.
  */
 #define MAX_RO_VER_LEN 48
-static char ro_str[2][MAX_RO_VER_LEN];
+static char version_str[MAX_RO_VER_LEN];
+
+static const char *copy_til_first_space(const char *version)
+{
+	int i;
+
+	/*
+	 * Do not copy past the first space in the version string and use
+	 * version_str as the buffer.
+	 */
+
+	for (i = 0; i < sizeof(version_str); i++) {
+		char c = version[i];
+
+		if (c == ' ')
+			break;
+
+		version_str[i] = c;
+	}
+
+	version_str[i] = '\0';
+	return version_str;
+}
 
 const char *system_get_version(enum system_image_copy_t copy)
 {
@@ -183,7 +206,6 @@ const char *system_get_version(enum system_image_copy_t copy)
 	const struct SignedHeader *h;
 	enum system_image_copy_t this_copy;
 	uintptr_t vaddr, delta;
-	int i;
 
 	switch (copy) {
 	case SYSTEM_IMAGE_RO:
@@ -193,11 +215,10 @@ const char *system_get_version(enum system_image_copy_t copy)
 		if (vaddr == INVALID_ADDR)
 			break;
 		h = (const struct SignedHeader *)vaddr;
-		i = (copy == SYSTEM_IMAGE_RO) ? 0 : 1;
 		/* Use some fields from the header for the version string */
-		snprintf(ro_str[i], MAX_RO_VER_LEN, "%d.%d.%d/%08x",
+		snprintf(version_str, sizeof(version_str), "%d.%d.%d/%08x",
 			 h->epoch_, h->major_, h->minor_, h->img_chk_);
-		return ro_str[i];
+		return version_str;
 
 	case SYSTEM_IMAGE_RW:
 	case SYSTEM_IMAGE_RW_B:
@@ -208,7 +229,7 @@ const char *system_get_version(enum system_image_copy_t copy)
 		 */
 		this_copy = system_get_image_copy();
 		if (copy == this_copy)
-			return version_data.version;
+			return copy_til_first_space(version_data.version);
 
 		/*
 		 * We want the version of the other RW image. The linker script
@@ -231,7 +252,7 @@ const char *system_get_version(enum system_image_copy_t copy)
 		 */
 		if (v->cookie1 == version_data.cookie1 &&
 		    v->cookie2 == version_data.cookie2)
-			return v->version;
+			return copy_til_first_space(v->version);
 	default:
 		break;
 	}
