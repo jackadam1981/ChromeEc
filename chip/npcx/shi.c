@@ -293,9 +293,6 @@ void shi_handle_host_package(void)
 /* Parse header for version of spi-protocol */
 static void shi_parse_header(void)
 {
-	/* Disable SHI interrupt until we're sure the size of request package.*/
-	task_disable_irq(NPCX_IRQ_SHI);
-
 	/* We're now inside a transaction */
 	state = SHI_STATE_RECEIVING;
 	DEBUG_CPRINTF("RV-");
@@ -329,9 +326,6 @@ static void shi_parse_header(void)
 
 		/* Computing total bytes need to receive */
 		shi_params.sz_request = pkt_size;
-
-		/* Enable SHI interrupt & handle request package */
-		task_enable_irq(NPCX_IRQ_SHI);
 
 		shi_handle_host_package();
 	} else {
@@ -500,12 +494,6 @@ static void shi_bad_received_data(void)
 	for (i = 0; i < shi_params.sz_received; i++)
 		CPRINTF("%02x ", in_msg[i]);
 	CPRINTF("]\n");
-
-	/*
-	 * Enable SHI interrupt again since we disable it
-	 * at the begin of SHI_STATE_RECEIVING state
-	 */
-	task_enable_irq(NPCX_IRQ_SHI);
 
 	/* Reset shi's state machine for error recovery */
 	shi_reset_prepare();
@@ -688,6 +676,8 @@ void shi_cs_event(enum gpio_signal signal)
 
 	DEBUG_CPRINTF("CSL-");
 
+	task_enable_irq(NPCX_IRQ_SHI);
+
 	/* Read first three bytes to parse which protocol is receiving */
 	shi_parse_header();
 }
@@ -702,6 +692,8 @@ void shi_cs_event(enum gpio_signal signal)
 static void shi_reset_prepare(void)
 {
 	uint16_t i;
+
+	task_disable_irq(NPCX_IRQ_SHI);
 
 	/* Initialize parameters of next transaction */
 	shi_params.rx_msg = in_msg;
