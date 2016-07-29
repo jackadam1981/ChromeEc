@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0f618dbb_77ab3084",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-07-29T11:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f79fd40_ee89df85",
+      "range": {
+        "startLine": 174,
+        "startChar": 12,
+        "endLine": 174,
+        "endChar": 48
+      },
+      "revId": "575c39b19557715290de352a8ae896694343025b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f79fd40_ce92e3a5",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-28T19:56:47Z",
       "side": 1,
       "message": "Nothing (at least in this commit) seems to actually send this event.",
+      "range": {
+        "startLine": 450,
+        "startChar": 1,
+        "endLine": 450,
+        "endChar": 26
+      },
+      "revId": "575c39b19557715290de352a8ae896694343025b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f618dbb_b79dc864",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-07-29T11:43:12Z",
+      "side": 1,
+      "message": "Yes, I will use the event in board.c file. It will be another commit.",
+      "parentUuid": "8f79fd40_ce92e3a5",
       "range": {
         "startLine": 450,
         "startChar": 1,
