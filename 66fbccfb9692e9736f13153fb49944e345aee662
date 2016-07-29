@@ -284,6 +284,54 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_45caf917",
+        "filename": "chip/stm32/config-stm32f446.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-07-29T21:38:27Z",
+      "side": 1,
+      "message": "Yes, flashing 512k takes forever. Added comment",
+      "parentUuid": "ef90b9cc_8db26de1",
+      "range": {
+        "startLine": 6,
+        "startChar": 20,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_25c5ed07",
+        "filename": "chip/stm32/config-stm32f446.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-07-29T21:38:27Z",
+      "side": 1,
+      "message": "Yes, flashing 512k takes forever.",
+      "parentUuid": "ef90b9cc_8db26de1",
+      "range": {
+        "startLine": 6,
+        "startChar": 20,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_db1eecc6",
         "filename": "chip/stm32/config-stm32f446.h",
         "patchSetId": 4
@@ -330,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_058e31d4",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-07-29T21:38:27Z",
+      "side": 1,
+      "message": "changed to function",
+      "parentUuid": "ef90b9cc_3231b8a1",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 72
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_ad19e9e1",
         "filename": "chip/stm32/flash-stm32f4.c",
         "patchSetId": 4
@@ -341,6 +413,30 @@
       "writtenOn": "2016-07-29T16:26:22Z",
       "side": 1,
       "message": "Same comment as flash-f.c",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 38
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_e556a537",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-07-29T21:38:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_ad19e9e1",
       "range": {
         "startLine": 30,
         "startChar": 22,
@@ -376,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_65fa9515",
+        "filename": "chip/stm32/jtag-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-07-29T21:38:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_f21d901a",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 39
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_b26ea898",
         "filename": "chip/stm32/uart.c",
         "patchSetId": 4
@@ -387,6 +507,30 @@
       "writtenOn": "2016-07-29T16:26:22Z",
       "side": 1,
       "message": "Does this work on other STM32 chips with DMA?  Or does it need guarding with #ifdef?",
+      "range": {
+        "startLine": 34,
+        "startChar": 54,
+        "endLine": 35,
+        "endChar": 45
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_c53a89f0",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-07-29T21:38:27Z",
+      "side": 1,
+      "message": "It\u0027s extra data in otherwise unused bits. It\u0027s stm32f4 specific so I can ifdef it if you\u0027d prefer.",
+      "parentUuid": "ef90b9cc_b26ea898",
       "range": {
         "startLine": 34,
         "startChar": 54,
@@ -422,6 +566,30 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_e50dc541",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-07-29T21:38:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_126e7c97",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 47
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_f24f5036",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -433,6 +601,30 @@
       "writtenOn": "2016-07-29T16:26:22Z",
       "side": 1,
       "message": "Redefine this as CONFIG_CLOCK_HSE_HZ, so it\u0027s both the config flag and the frequency?",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 56
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_454bd962",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-07-29T21:38:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_f24f5036",
       "range": {
         "startLine": 514,
         "startChar": 0,
