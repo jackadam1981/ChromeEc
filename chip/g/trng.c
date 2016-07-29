@@ -8,21 +8,28 @@
 void init_trng(void)
 {
 	GWRITE(TRNG, POWER_DOWN_B, 1);
+	GWRITE(TRNG, TIMEOUT_COUNTER, 0xfff);
+	GWRITE(TRNG, POST_PROCESSING_CTRL, 0xe);
+	GWRITE(TRNG, ALLOWED_VALUES, 0x25);
+	GWRITE(TRNG, SLICE_MAX_UPPER_LIMIT, 0x1);
+	GWRITE(TRNG, SLICE_MIN_LOWER_LIMIT, 0x0);
+	GWRITE(TRNG, OUTPUT_TIME_COUNTER, 0x10000);
 	GWRITE(TRNG, GO_EVENT, 1);
-	while (GREAD(TRNG, EMPTY))
-		;
+        while (GREAD(TRNG, EMPTY)) 
+                ;
 	GREAD(TRNG, READ_DATA);
 }
 
 uint32_t rand(void)
 {
-	while (GREAD(TRNG, EMPTY)) {
-		if (!GREAD_FIELD(TRNG, FSM_STATE, FSM_IDLE))
-			continue;
-
+        /* Check if FIFO has data and bitstream not skewed */
+	while (GREAD(TRNG, EMPTY) || (GREAD(TRNG, CUR_NUM_ONES) > 1050) ||
+               (GREAD(TRNG, CUR_NUM_ONES) < 1000) ) {
 		/* TRNG must have stopped, needs to be restarted. */
-		GWRITE(TRNG, STOP_WORK, 1);
-		init_trng();
+		if (GREAD_FIELD(TRNG, FSM_STATE, FSM_IDLE)) {
+			GWRITE(TRNG, STOP_WORK, 1);
+		        GWRITE(TRNG, GO_EVENT, 1);
+                }
 	}
 	return GREAD(TRNG, READ_DATA);
 }
