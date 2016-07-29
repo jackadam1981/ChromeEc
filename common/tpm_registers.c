@@ -533,6 +533,8 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 }
 #endif
 
+#define TPM_CC_PCR_Read	0x0000017e
+
 void tpm_task(void)
 {
 	set_version_string();
@@ -568,6 +570,12 @@ void tpm_task(void)
 		CPRINTF("got %d bytes in response\n", response_size);
 		if (response_size &&
 		    (response_size <= sizeof(tpm_.regs.data_fifo))) {
+			/*
+			 * TODO(vbendeb): revisit this when
+			 * crosbug.com/p/55667 has been addressed.
+			 */
+			if (command_code == TPM_CC_PCR_Read)
+				system_process_retry_counter();
 #ifdef CONFIG_EXTENSION_COMMAND
 			if (command_code != CONFIG_EXTENSION_COMMAND)
 #endif

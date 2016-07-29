@@ -458,4 +458,11 @@ uintptr_t system_get_fw_reset_vector(uintptr_t base);
  */
 int system_is_reboot_warm(void);
 
+/**
+ * Check if the EC is warm booting.
+ *
+ * @return true if the EC is warm booting.
+ */
+int system_process_retry_counter(void);
+
 #endif  /* __CROS_EC_SYSTEM_H */
