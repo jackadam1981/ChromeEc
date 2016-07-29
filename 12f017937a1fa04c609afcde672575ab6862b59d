@@ -1,0 +1,624 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef90b9cc_4db865c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "Could you make it unique so that when we refactor this script again, the title would be different.",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_8dd18dcc",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "Both \u0027board\u0027 and \u0027model\u0027 are used interchangingly throughout the file. Why don\u0027t we stick to \u0027board\u0027?",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_0ddbbd1e",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "nit: Need 4 spaces.",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 6
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_ed2931a1",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "Could you rename it to make it clear that this is for openocd commands not ec commands.",
+      "range": {
+        "startLine": 60,
+        "startChar": 6,
+        "endLine": 60,
+        "endChar": 18
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_0d61fd0f",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "Let\u0027s do \u0027args +\u003d [\u0027-c\u0027, cmd].",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_8d6d0d01",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "nit: Do you need this? ec_dir is a string.",
+      "range": {
+        "startLine": 79,
+        "startChar": 25,
+        "endLine": 79,
+        "endChar": 28
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_2d4f998f",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "nit: Need 4 spaces.",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 6
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_6d49a187",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "nit: Need to indent.",
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_6d45214c",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "I think this should belong to class cts.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 21
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_522e443e",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "A bit confusing. This refers to openocd\u0027s config or chromium ec\u0027s config. Can you pick a better name which includes \u0027openocd\u0027? getOpenOcdConfigName, for example.",
+      "range": {
+        "startLine": 119,
+        "startChar": 6,
+        "endLine": 119,
+        "endChar": 24
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_32837835",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "nit: This should be in the next line.",
+      "range": {
+        "startLine": 126,
+        "startChar": 12,
+        "endLine": 126,
+        "endChar": 65
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_52800426",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "nit: Let\u0027s put these in a single line.",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 140,
+        "endChar": 24
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_123cbc77",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "You need to return something on KeyError.",
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_f2b910e3",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "Why do you need to call this again? self.config is already set when a board is instantiated.",
+      "range": {
+        "startLine": 144,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 54
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_ada9e9e3",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "It\u0027s prohibited by style guide to use \u0027catch-all\u0027 except statements because they mask all errors.",
+      "range": {
+        "startLine": 170,
+        "startChar": 4,
+        "endLine": 170,
+        "endChar": 10
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_cdfc75dd",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "Could you add comment on why this is 3 and give a name as done in _identifyTtyPort?",
+      "range": {
+        "startLine": 171,
+        "startChar": 21,
+        "endLine": 171,
+        "endChar": 22
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_cd9d5564",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "Could you add comment on why this is 10 and give a name as done in _identifyTtyPort?",
+      "range": {
+        "startLine": 173,
+        "startChar": 19,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_0d073de9",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "nit: need new line.",
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_8dfd0da3",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "nit: This should be in the next line.",
+      "range": {
+        "startLine": 187,
+        "startChar": 12,
+        "endLine": 187,
+        "endChar": 38
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_d86c353b",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "This is done 2nd time here. You can probably assign it to self.tty_port above since you\u0027re raising an exception when a port is not found.",
+      "range": {
+        "startLine": 221,
+        "startChar": 30,
+        "endLine": 221,
+        "endChar": 59
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_8d842d09",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "It doesn\u0027t need to return anything.",
+      "range": {
+        "startLine": 222,
+        "startChar": 21,
+        "endLine": 222,
+        "endChar": 34
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_18505d61",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "It doesn\u0027t need to return anything.",
+      "range": {
+        "startLine": 265,
+        "startChar": 15,
+        "endLine": 265,
+        "endChar": 30
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_4d8f851d",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "Why don\u0027t you call Board.__init__?",
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_2df31973",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "s/brd/mod.",
+      "range": {
+        "startLine": 394,
+        "startChar": 6,
+        "endLine": 394,
+        "endChar": 9
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_0d29fdee",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "nit: You don\u0027t need this part.",
+      "range": {
+        "startLine": 482,
+        "startChar": 36,
+        "endLine": 482,
+        "endChar": 43
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_0d773d07",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "Why do you add \u0027_\u0027?",
+      "range": {
+        "startLine": 486,
+        "startChar": 6,
+        "endLine": 486,
+        "endChar": 7
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_587585da",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "nit: style guides says \u0027use implicit false\u0027. please fix.",
+      "range": {
+        "startLine": 517,
+        "startChar": 7,
+        "endLine": 517,
+        "endChar": 52
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_ad500966",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T17:33:39Z",
+      "side": 1,
+      "message": "nit: These fit in a single line.",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 27
+      },
+      "revId": "12f017937a1fa04c609afcde672575ab6862b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
