@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f618dbb_97b5249b",
+        "filename": "board/elm/usb_pd_policy.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-07-29T03:32:56Z",
+      "side": 1,
+      "message": "Question: Why do we need this for anx7688, but we do not seem to need it for any other board?",
+      "revId": "8d2aac6bef0307dfcb0c48eb3d04e7d843764731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
