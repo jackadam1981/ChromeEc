@@ -109,7 +109,7 @@ enum tpm_sts_bits {
 
 /* Used to count bytes read in version string */
 static int tpm_fw_ver_index;
-static uint8_t tpm_fw_ver[180];
+static uint8_t tpm_fw_ver[260];
 
 /*
  * We need to be able to report firmware version to the host, both RO and RW
@@ -119,19 +119,44 @@ static uint8_t tpm_fw_ver[180];
 static void set_version_string(void)
 {
 	enum system_image_copy_t active_ro, active_rw;
+	int string_size;
 
 	active_ro = system_get_ro_image_copy();
 	active_rw = system_get_image_copy();
-	snprintf(tpm_fw_ver, sizeof(tpm_fw_ver),
-		 "RO_A:%s %s RO_B:%s %s RW_A:%s %s RW_B:%s %s",
-		 (active_ro == SYSTEM_IMAGE_RO ? "*" : ""),
-		 system_get_version(SYSTEM_IMAGE_RO),
-		 (active_ro == SYSTEM_IMAGE_RO_B ? "*" : ""),
-		 system_get_version(SYSTEM_IMAGE_RO_B),
-		 (active_rw == SYSTEM_IMAGE_RW ? "*" : ""),
-		 system_get_version(SYSTEM_IMAGE_RW),
-		 (active_rw == SYSTEM_IMAGE_RW_B ? "*" : ""),
-		 system_get_version(SYSTEM_IMAGE_RW_B));
+
+	string_size = snprintf(tpm_fw_ver, sizeof(tpm_fw_ver), "RO_A:%s %s\n",
+			       (active_ro == SYSTEM_IMAGE_RO ? "*" : ""),
+			       system_get_version(SYSTEM_IMAGE_RO));
+	if (string_size >= sizeof(tpm_fw_ver))
+		return;
+
+	string_size += snprintf(tpm_fw_ver + string_size,
+				sizeof(tpm_fw_ver) - string_size,
+				"RO_B:%s %s\n",
+				(active_ro == SYSTEM_IMAGE_RO_B ? "*" : ""),
+				system_get_version(SYSTEM_IMAGE_RO_B));
+	if (string_size >= sizeof(tpm_fw_ver))
+		return;
+
+	string_size += snprintf(tpm_fw_ver + string_size,
+				sizeof(tpm_fw_ver) - string_size,
+				"RW_A:%s %s\n",
+				(active_rw == SYSTEM_IMAGE_RW ? "*" : ""),
+				system_get_version(SYSTEM_IMAGE_RW));
+	if (string_size >= sizeof(tpm_fw_ver))
+		return;
+
+	string_size += snprintf(tpm_fw_ver + string_size,
+				sizeof(tpm_fw_ver) - string_size,
+				"RW_B:%s %s\n",
+				(active_rw == SYSTEM_IMAGE_RW_B ? "*" : ""),
+				system_get_version(SYSTEM_IMAGE_RW_B));
+	if (string_size >= sizeof(tpm_fw_ver))
+		return;
+
+	snprintf(tpm_fw_ver + string_size, sizeof(tpm_fw_ver) - string_size,
+		 "%s", system_get_build_info());
+	ccprintf("will send to host:\n%s\n", tpm_fw_ver);
 }
 
 static void set_tpm_state(enum tpm_states state)
