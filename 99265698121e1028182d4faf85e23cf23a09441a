@@ -22,6 +22,30 @@
       "revId": "99265698121e1028182d4faf85e23cf23a09441a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_f3ee72b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-29T18:10:13Z",
+      "side": 1,
+      "message": "yes, i mentioned this in the review request, this patch is not ready for merging.",
+      "parentUuid": "ef90b9cc_58110563",
+      "range": {
+        "startLine": 16,
+        "startChar": 17,
+        "endLine": 17,
+        "endChar": 5
+      },
+      "revId": "99265698121e1028182d4faf85e23cf23a09441a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
