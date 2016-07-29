@@ -2,6 +2,241 @@
   "comments": [
     {
       "key": {
+        "uuid": "ef90b9cc_9861cdae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T21:28:39Z",
+      "side": 1,
+      "message": "blocks?",
+      "range": {
+        "startLine": 16,
+        "startChar": 30,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_f3b3d251",
+        "filename": "board/stm32f446e-eval/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T21:28:39Z",
+      "side": 1,
+      "message": "You can\u0027t do this in a hook (e.g. HOOK_INIT)? No other boards use CONFIG_BOARD_POST_GPIO_INIT. I\u0027m wondering what is special about this board or stm32f446.",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_32be1819",
+        "filename": "board/stm32f446e-eval/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T21:28:39Z",
+      "side": 1,
+      "message": "I suppose you mean \u0027Chromium EC\u0027.",
+      "range": {
+        "startLine": 45,
+        "startChar": 30,
+        "endLine": 45,
+        "endChar": 47
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_338d3a2e",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T21:28:39Z",
+      "side": 1,
+      "message": "There are lots of duplicates among clock-stm32f0.c, -stm32f3.c, and -stm32f4.c. I think it\u0027s time to create clock.c and put common code there.",
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_48ca1018",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T21:28:39Z",
+      "side": 1,
+      "message": "Could you define a subroutine for this? This is repeated 3 times.",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 2
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_68750cdb",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T21:28:39Z",
+      "side": 1,
+      "message": "nit: Extra line.",
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_a80e3485",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T21:28:39Z",
+      "side": 1,
+      "message": "nit: Extra line.",
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_688fcc1d",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T21:28:39Z",
+      "side": 1,
+      "message": "You need to disable STM32_RCC_CR_PLLON before touching this register.",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 15
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_887098dc",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T21:28:39Z",
+      "side": 1,
+      "message": "This has no effect, contradicting 2 \u003c\u003c 30.",
+      "range": {
+        "startLine": 276,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 35
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_e83f5cdd",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T21:28:39Z",
+      "side": 1,
+      "message": "This line, too.",
+      "range": {
+        "startLine": 277,
+        "startChar": 2,
+        "endLine": 277,
+        "endChar": 33
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_fba0088f",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T21:28:39Z",
+      "side": 1,
+      "message": "These should be actually specific to the board not to the chip. At least these should be described as a comment for the function.",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 32
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_8db26de1",
         "filename": "chip/stm32/config-stm32f446.h",
         "patchSetId": 4
@@ -18,6 +253,29 @@
         "startChar": 20,
         "endLine": 6,
         "endChar": 20
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_db1eecc6",
+        "filename": "chip/stm32/config-stm32f446.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T21:28:39Z",
+      "side": 1,
+      "message": "nit: better be consistent with tab (v.s. spaces).",
+      "range": {
+        "startLine": 35,
+        "startChar": 29,
+        "endLine": 35,
+        "endChar": 32
       },
       "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -156,6 +414,29 @@
         "startChar": 0,
         "endLine": 514,
         "endChar": 56
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_d307b670",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-07-29T21:28:39Z",
+      "side": 1,
+      "message": "This is stm32 specific. Why don\u0027t we name it as such?",
+      "range": {
+        "startLine": 515,
+        "startChar": 7,
+        "endLine": 515,
+        "endChar": 23
       },
       "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
