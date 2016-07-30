@@ -14,7 +14,14 @@
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
-static uint16_t debug_detect;
+/*
+ * The default PROG_DEBUG_STATE_MAP value. Used to tell the to controller send
+ * an interrupt when CC1/2 are detected to be in the defined voltage range of a
+ * debug accessory.
+ */
+#define DETECT_DEBUG 0x420
+
+static uint16_t detect_debug, detect_disconnect;
 
 int debug_cable_is_attached(void)
 {
@@ -26,17 +33,28 @@ int debug_cable_is_attached(void)
 
 void rdd_interrupt(void)
 {
-	if (debug_cable_is_attached()) {
+	int is_debug, current_map;
+
+	disable_sleep(SLEEP_MASK_RDD);
+
+	current_map = 0xffff & GREAD(RDD, PROG_DEBUG_STATE_MAP);
+	is_debug = debug_cable_is_attached();
+
+	if (is_debug && detect_debug == current_map) {
 		CPRINTS("Debug Accessory connected");
-		disable_sleep(SLEEP_MASK_RDD);
+
 		/* Detect when debug cable is disconnected */
-		GWRITE(RDD, PROG_DEBUG_STATE_MAP, ~debug_detect);
+		GWRITE(RDD, PROG_DEBUG_STATE_MAP, detect_disconnect);
+
 		rdd_attached();
-	} else {
+	} else if (!is_debug && (detect_disconnect == current_map)) {
 		CPRINTS("Debug Accessory disconnected");
+
 		/* Detect when debug cable is connected */
-		GWRITE(RDD, PROG_DEBUG_STATE_MAP, debug_detect);
+		GWRITE(RDD, PROG_DEBUG_STATE_MAP, detect_debug);
+
 		rdd_detached();
+
 		cflush();
 		enable_sleep(SLEEP_MASK_RDD);
 	}
@@ -52,7 +70,10 @@ void rdd_init(void)
 	clock_enable_module(MODULE_RDD, 1);
 	GWRITE(RDD, POWER_DOWN_B, 1);
 
-	debug_detect = GREAD(RDD, PROG_DEBUG_STATE_MAP);
+	detect_debug = 0xffff & DETECT_DEBUG;
+	detect_disconnect = 0xffff & ~(DETECT_DEBUG);
+
+	GWRITE(RDD, PROG_DEBUG_STATE_MAP, detect_debug);
 
 	/* Initialize the debug state based on the current cc values */
 	rdd_interrupt();
