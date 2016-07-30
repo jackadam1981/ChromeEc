@@ -106,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_aca1e1ee",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-30T21:07:10Z",
+      "side": 1,
+      "message": "You could start by taking a factor 10 out of both sides across the division. What\u0027s the max for targetCnt?\n\nAlso, that expression occurs twice here, refactor into a routine which then can carry some documentation about whichever optimization is made to make its computation avoid 64 bit arith.\n\nComputers aren\u0027t very good doing stuff in base 10. Are these values that significant or can approximate power of 2 values do the trick?",
+      "parentUuid": "ef90b9cc_2cb4f139",
+      "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_ac73a1ae",
         "filename": "chip/g/jitter.c",
         "patchSetId": 3
@@ -135,6 +153,24 @@
       "side": 1,
       "message": "it needs to be about 6 clock cycles, so i think usleep(1) might be overkill.  But it should do the same thing though.",
       "parentUuid": "ef90b9cc_ac73a1ae",
+      "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_ecf769f7",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-30T21:07:10Z",
+      "side": 1,
+      "message": "Agreed, for something this short, always delay in-line. The task switch for usleep() will burn order of magnitude more cycles for no gain.",
+      "parentUuid": "ef90b9cc_4cb93d30",
       "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
