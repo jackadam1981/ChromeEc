@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_0caf35e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-07-30T20:40:22Z",
+      "side": 1,
+      "message": "I think it will be difficult for you guys to observe the results of this patch.  The original faulty code and bugs actually caused SOF cal to not work at all.  But the USB controller is tolerant enough to deal with those issues.  We only really started seeing problems at temperatures \u003c 0C and \u003e100C.\n\nI\u0027m not sure how to illustrate that here.",
+      "parentUuid": "ef90b9cc_ac5ac124",
+      "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_cc570dfd",
         "filename": "chip/g/jitter.c",
         "patchSetId": 3
@@ -70,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_2cb4f139",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-07-30T20:40:22Z",
+      "side": 1,
+      "message": "So the code was meant to calculate the 1250ppm cutoff for the sof trim buckets.  The problem is, the targetCnt*(1000000-1250) overflowed the 32b values and caused the buckets to be completely wrong.  \n\nI\u0027m sure there is a much smarter way to deal with this, but I just did the easy thing and made it a 64b int.",
+      "parentUuid": "ef90b9cc_cc70eda4",
+      "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_ac73a1ae",
         "filename": "chip/g/jitter.c",
         "patchSetId": 3
@@ -81,6 +117,24 @@
       "writtenOn": "2016-07-30T20:29:11Z",
       "side": 1,
       "message": "how long does this have to be? Maybe usleep(1) will suffice?",
+      "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_4cb93d30",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-07-30T20:40:22Z",
+      "side": 1,
+      "message": "it needs to be about 6 clock cycles, so i think usleep(1) might be overkill.  But it should do the same thing though.",
+      "parentUuid": "ef90b9cc_ac73a1ae",
       "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
