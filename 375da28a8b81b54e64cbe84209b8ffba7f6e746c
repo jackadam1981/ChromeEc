@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef90b9cc_ac5ac124",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-30T20:29:11Z",
+      "side": 1,
+      "message": "this commit message needs improvement, \n\nBUG\u003d and TEST\u003d clauses are required, how can one see improvements/problem fixes as a result of this patch?\nalso, it could not have passed presubmit check",
+      "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_cc570dfd",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-30T20:29:11Z",
+      "side": 1,
+      "message": "why an extra line?",
+      "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_ec84c970",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-30T20:29:11Z",
+      "side": 1,
+      "message": "is extra white space needed here?",
+      "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_cc70eda4",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-30T20:29:11Z",
+      "side": 1,
+      "message": "why does cutoff need to be int64 if only its lowest 32 bits are used?\n\nyou could define it as uint32_t and assign like\n\ncutOff \u003d (uint32_t)(((uint64_t)targetCnt * (1000000 - 1250) / 1000000));",
+      "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_ac73a1ae",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-30T20:29:11Z",
+      "side": 1,
+      "message": "how long does this have to be? Maybe usleep(1) will suffice?",
+      "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
