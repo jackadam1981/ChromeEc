@@ -124,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_6cec3926",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-07-30T21:18:40Z",
+      "side": 1,
+      "message": "that\u0027s what I did at first, but then I realized that would place a maximum constraint on targetCnt, and I thought maybe making it that specialized wasn\u0027t a good idea.  Target Count will end up directly correlating to how fast the system clock is. So at 24MHz, it is 24000, at 100Mhz, it will be 100k, so on and so forth.   I did not actually work through the math to see how much a divide by 10 factor would cover, just said screw it and did 64bits.  \n\nI did not think about power of 2s, let me take a look.  The 1250ppm requirement is apparently important based on USB spec, although in practice it will vary on HOST/DEVICE combination.\n\nWhat\u0027s the general feeling here though? Should this be made generic enough to cover arbitrary frequencies (within reason?)",
+      "parentUuid": "ef90b9cc_aca1e1ee",
+      "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_ac73a1ae",
         "filename": "chip/g/jitter.c",
         "patchSetId": 3
@@ -189,6 +207,24 @@
       "side": 1,
       "message": "whell, IMHO the gain is cleaner code, without __asm__ statements used for no compelling reason. \n\nWho cares if we spent 10 us here instead of 6 cycles, it happens seldom enough not to care about time savings.",
       "parentUuid": "ef90b9cc_ecf769f7",
+      "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_ccf38d05",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-07-30T21:18:40Z",
+      "side": 1,
+      "message": "I can change it to usleep, I believe the end result will be the same.  As long as the clocks remain clean, I don\u0027t mind one way or another.",
+      "parentUuid": "ef90b9cc_2c0231da",
       "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
