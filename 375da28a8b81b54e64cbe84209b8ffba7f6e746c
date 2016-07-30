@@ -174,6 +174,24 @@
       "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_2c0231da",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-07-30T21:14:36Z",
+      "side": 1,
+      "message": "whell, IMHO the gain is cleaner code, without __asm__ statements used for no compelling reason. \n\nWho cares if we spent 10 us here instead of 6 cycles, it happens seldom enough not to care about time savings.",
+      "parentUuid": "ef90b9cc_ecf769f7",
+      "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
