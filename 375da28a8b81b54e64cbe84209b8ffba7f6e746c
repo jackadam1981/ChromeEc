@@ -142,6 +142,23 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_2cdb1178",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-30T21:29:30Z",
+      "side": 1,
+      "message": "As general observation, a single glitch of this assignment would moot the whole exercise, yes?\n\nIt would be useful get into the habit of noting such single points of defeat in some annotation for when we get around to get serious about glitch protection.",
+      "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_ac73a1ae",
         "filename": "chip/g/jitter.c",
         "patchSetId": 3
@@ -224,6 +241,24 @@
       "writtenOn": "2016-07-30T21:18:40Z",
       "side": 1,
       "message": "I can change it to usleep, I believe the end result will be the same.  As long as the clocks remain clean, I don\u0027t mind one way or another.",
+      "parentUuid": "ef90b9cc_2c0231da",
+      "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_0ce65542",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-07-30T21:29:30Z",
+      "side": 1,
+      "message": "fair enough, performance likely does not matter here.",
       "parentUuid": "ef90b9cc_2c0231da",
       "revId": "375da28a8b81b54e64cbe84209b8ffba7f6e746c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
