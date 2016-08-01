@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf8db5b7_3a3c2878",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-01T22:32:22Z",
+      "side": 1,
+      "message": "We should probably de-assert the HPD GPIO here.",
+      "revId": "10346af7072b5abac60f1d562ba7db84bec1810d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf8db5b7_7af310d9",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-01T22:32:22Z",
+      "side": 1,
+      "message": "I think we can remove these comments now.",
+      "range": {
+        "startLine": 291,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 27
+      },
+      "revId": "10346af7072b5abac60f1d562ba7db84bec1810d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
