@@ -22,6 +22,30 @@
       "revId": "97295f654a2e1f98f7489c3d017297c6da677b50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf8db5b7_cc12b75c",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-01T17:13:55Z",
+      "side": 1,
+      "message": "version.h is a common file, and this version size is very board specific.\n\nI could add something to getversion.h to generate this number, but am not sure if it is worth the trouble, and it does not know about two ROs and two RWs anyways...\n\nHow about I add a comment to explain where this number comes from.",
+      "parentUuid": "cf8db5b7_acb56b9a",
+      "range": {
+        "startLine": 112,
+        "startChar": 26,
+        "endLine": 112,
+        "endChar": 30
+      },
+      "revId": "97295f654a2e1f98f7489c3d017297c6da677b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
