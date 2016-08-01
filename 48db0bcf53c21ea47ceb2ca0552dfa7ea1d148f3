@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf8db5b7_d707a470",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-08-01T18:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf8db5b7_ccbab787",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 48
+      },
+      "revId": "48db0bcf53c21ea47ceb2ca0552dfa7ea1d148f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf8db5b7_4cc7870e",
         "filename": "chip/g/rdd.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cf8db5b7_1702ec60",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-08-01T18:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf8db5b7_4cc7870e",
+      "range": {
+        "startLine": 43,
+        "startChar": 17,
+        "endLine": 43,
+        "endChar": 44
+      },
+      "revId": "48db0bcf53c21ea47ceb2ca0552dfa7ea1d148f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf8db5b7_6ced2387",
         "filename": "chip/g/rdd.c",
         "patchSetId": 3
@@ -59,6 +107,24 @@
       "writtenOn": "2016-08-01T17:01:33Z",
       "side": 1,
       "message": "just curious: could the interrupt be happening without any of the two above cases being true?",
+      "revId": "48db0bcf53c21ea47ceb2ca0552dfa7ea1d148f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf8db5b7_372288ac",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-08-01T18:21:57Z",
+      "side": 1,
+      "message": "There shouldn\u0027t be an interrupt sent without those conditions being true, but when we call rdd_interupt in rdd_init if a debug cable is not attached is_debug will be false and current_map will be DETECT_DEBUG so it wont do anything.",
+      "parentUuid": "cf8db5b7_6ced2387",
       "revId": "48db0bcf53c21ea47ceb2ca0552dfa7ea1d148f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
