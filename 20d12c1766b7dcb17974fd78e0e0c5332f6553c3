@@ -16,6 +16,29 @@
       "revId": "20d12c1766b7dcb17974fd78e0e0c5332f6553c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf8db5b7_91fd2ca3",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-01T16:30:40Z",
+      "side": 1,
+      "message": "what exactly does this value return - the number of ones in the last 2048 bits generated or the bits available in FIFO?\n\nShould the FIFO be drained inside this loop?",
+      "range": {
+        "startLine": 26,
+        "startChar": 31,
+        "endLine": 26,
+        "endChar": 57
+      },
+      "revId": "20d12c1766b7dcb17974fd78e0e0c5332f6553c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
