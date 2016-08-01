@@ -115,7 +115,7 @@ static int tpm_fw_ver_index;
  * cr50 image components. The number is somewhat arbitrary, calculated for the
  * worst case scenario when all compontent trees are 'dirty'.
  */
-static uint8_t tpm_fw_ver[260];
+static uint8_t tpm_fw_ver[280];
 
 /*
  * We need to be able to report firmware version to the host, both RO and RW
@@ -161,6 +161,15 @@ static void set_version_string(void)
 		 " RW_B:%s %s",
 		 (active_rw == SYSTEM_IMAGE_RW_B ? "*" : ""),
 		 system_get_version(SYSTEM_IMAGE_RW_B));
+	offset = strlen(tpm_fw_ver);
+	if (offset == sizeof(tpm_fw_ver) - 1)
+		return;
+
+	snprintf(tpm_fw_ver + offset,
+		 sizeof(tpm_fw_ver) - offset,
+		 "\nChip:%s Board:%d",
+		 system_get_chip_revision(),
+		 system_get_board_version());
 	offset = strlen(tpm_fw_ver);
 	if (offset == sizeof(tpm_fw_ver) - 1)
 		return;
