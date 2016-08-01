@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf8db5b7_b0f3f905",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-01T23:53:09Z",
+      "side": 1,
+      "message": "It won\u0027t matter for our chip, but let\u0027s change this to be lowercase also.",
+      "range": {
+        "startLine": 578,
+        "startChar": 24,
+        "endLine": 578,
+        "endChar": 31
+      },
+      "revId": "78c4bd69628b08c25ad6ac8e169b8d8fefd9cdb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
