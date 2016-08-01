@@ -22,6 +22,30 @@
       "revId": "41b557be2141c1e57c0080372cd0638ff4ddfe45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf8db5b7_a6eae76d",
+        "filename": "common/bluetooth_le.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-01T19:19:24Z",
+      "side": 1,
+      "message": "Sure.  While I\u0027m at it, would it be even clearer with something like this:\n\nlocal defines:\n\n#define CHAN_FREQ_37  2402\n#define CHAN_FREQ_38  2426\n#define CHAN_FREQ_39  2480\n#define CHAN_FREQ_0   2404\n#define CHAN_FREQ_11  2428\n\n\t\tif (channel \u003c 11)\n\t\t\tfreq \u003d channel * 2 + CHAN_FREQ_0;\n\t\telse\n\t\t\tfreq \u003d (channel - 11) * 2 + CHAN_FREQ_11; /* Skip Chan 38 */",
+      "parentUuid": "4a6b739b_8897bfdc",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 55
+      },
+      "revId": "41b557be2141c1e57c0080372cd0638ff4ddfe45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
