@@ -46,6 +46,30 @@
       "revId": "97295f654a2e1f98f7489c3d017297c6da677b50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf8db5b7_cc60f7e0",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-01T17:18:25Z",
+      "side": 1,
+      "message": "That\u0027ll do. +2 after that.",
+      "parentUuid": "cf8db5b7_cc12b75c",
+      "range": {
+        "startLine": 112,
+        "startChar": 26,
+        "endLine": 112,
+        "endChar": 30
+      },
+      "revId": "97295f654a2e1f98f7489c3d017297c6da677b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
