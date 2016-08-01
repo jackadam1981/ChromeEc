@@ -582,7 +582,7 @@ const char *system_get_chip_vendor(void)
 	uint8_t fam_id = NPCX_SID_CR;
 	switch (fam_id) {
 	case 0x20:
-		return "Nuvoton";
+		return "nuvoton";
 	default:
 		*p       = system_to_hex((fam_id & 0xF0) >> 4);
 		*(p + 1) = system_to_hex(fam_id & 0x0F);
