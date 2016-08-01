@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf8db5b7_ccbab787",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-01T17:01:33Z",
+      "side": 1,
+      "message": "do these values ever changed? It does not look like the do from examining the code. Why not define DETECT_DISCONNECT and use the definitions instead of variables?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 48
+      },
+      "revId": "48db0bcf53c21ea47ceb2ca0552dfa7ea1d148f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf8db5b7_4cc7870e",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-01T17:01:33Z",
+      "side": 1,
+      "message": "to be consistent with line 50 - please add parens around this too.",
+      "range": {
+        "startLine": 43,
+        "startChar": 17,
+        "endLine": 43,
+        "endChar": 44
+      },
+      "revId": "48db0bcf53c21ea47ceb2ca0552dfa7ea1d148f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf8db5b7_6ced2387",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-01T17:01:33Z",
+      "side": 1,
+      "message": "just curious: could the interrupt be happening without any of the two above cases being true?",
+      "revId": "48db0bcf53c21ea47ceb2ca0552dfa7ea1d148f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
