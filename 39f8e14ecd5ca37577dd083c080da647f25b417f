@@ -22,6 +22,30 @@
       "revId": "39f8e14ecd5ca37577dd083c080da647f25b417f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf8db5b7_f06ca13a",
+        "filename": "board/reef/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-01T23:23:31Z",
+      "side": 1,
+      "message": "Now that you mention it, I seem to be getting the same value as well.\n\nBug filed: https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d55834",
+      "parentUuid": "cf8db5b7_e99da063",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 21
+      },
+      "revId": "39f8e14ecd5ca37577dd083c080da647f25b417f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
