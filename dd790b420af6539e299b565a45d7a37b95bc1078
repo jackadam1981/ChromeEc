@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf8db5b7_b59e8ba7",
+        "filename": "common/bluetooth_le.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-01T23:00:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf8db5b7_098d6c7f",
+      "range": {
+        "startLine": 174,
+        "startChar": 16,
+        "endLine": 174,
+        "endChar": 17
+      },
+      "revId": "dd790b420af6539e299b565a45d7a37b95bc1078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf8db5b7_9fc52ea6",
         "filename": "include/bluetooth_le.h",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-01T21:53:51Z",
       "side": 1,
       "message": "Too many \u0027w\u0027s",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "dd790b420af6539e299b565a45d7a37b95bc1078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf8db5b7_75a403fe",
+        "filename": "include/bluetooth_le.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-01T23:00:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf8db5b7_9fc52ea6",
       "range": {
         "startLine": 30,
         "startChar": 11,
