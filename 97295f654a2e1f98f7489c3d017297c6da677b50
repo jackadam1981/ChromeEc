@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf8db5b7_acb56b9a",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-01T16:57:57Z",
+      "side": 1,
+      "message": "Should we try to define the upper bound in version.h or somewhere, rather than just using some magic number here?",
+      "range": {
+        "startLine": 112,
+        "startChar": 26,
+        "endLine": 112,
+        "endChar": 30
+      },
+      "revId": "97295f654a2e1f98f7489c3d017297c6da677b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
