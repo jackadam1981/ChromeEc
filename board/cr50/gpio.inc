@@ -123,10 +123,6 @@ PINMUX(GPIO(SERVO_UART1_OFF), A7, DIO_INPUT)
 PINMUX(GPIO(SERVO_UART2_ON),  B5, DIO_INPUT)
 PINMUX(GPIO(SERVO_UART2_OFF), B5, DIO_INPUT)
 
-/* I2C pins are bi-directional */
-PINMUX(FUNC(I2C0_SCL),        B0, DIO_INPUT)
-PINMUX(FUNC(I2C0_SDA),        B1, DIO_INPUT)
-
 /*
  * Both SPI master and slave buses are wired directly to specific pads
  *
