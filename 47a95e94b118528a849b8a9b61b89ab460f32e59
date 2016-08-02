@@ -178,6 +178,24 @@
       "revId": "47a95e94b118528a849b8a9b61b89ab460f32e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_d59eb0a8",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1151724
+      },
+      "writtenOn": "2016-08-02T09:50:38Z",
+      "side": 1,
+      "message": "1) About CTS:\nIn USB PD CTS, when VBUS is 3.7V, CTS requires sink Device can found VBUS is not present. that`s why TCPC FW set the threshold to 4.0V.\n2) About handling this inside anx7688:\nThrough TCPC FW to handle this, it is necessary that anx7688 FW need some delay to do this. As you know, anx7688 FW included TCPC module and video module.",
+      "parentUuid": "0f618dbb_bd076771",
+      "revId": "47a95e94b118528a849b8a9b61b89ab460f32e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
