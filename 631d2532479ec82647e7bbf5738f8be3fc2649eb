@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "746e62eb_836444f4",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T21:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_9829cd8d",
+      "range": {
+        "startLine": 229,
+        "startChar": 41,
+        "endLine": 229,
+        "endChar": 70
+      },
+      "revId": "631d2532479ec82647e7bbf5738f8be3fc2649eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_b83689eb",
         "filename": "chip/stm32/usb.c",
         "patchSetId": 4
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "746e62eb_2369b8ca",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T21:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_b83689eb",
+      "revId": "631d2532479ec82647e7bbf5738f8be3fc2649eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_18369dea",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -53,6 +95,30 @@
       "writtenOn": "2016-07-29T17:49:13Z",
       "side": 1,
       "message": "Suggest CONFIG_USA_MAXPOWER_MA\n\n...I mean, CONFIG_USB_MAXPOWER_MA.  Watching too many political conventions.",
+      "range": {
+        "startLine": 2096,
+        "startChar": 8,
+        "endLine": 2096,
+        "endChar": 27
+      },
+      "revId": "631d2532479ec82647e7bbf5738f8be3fc2649eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "746e62eb_e379808f",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2096,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T21:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_18369dea",
       "range": {
         "startLine": 2096,
         "startChar": 8,
