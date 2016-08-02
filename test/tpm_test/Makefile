@@ -54,3 +54,27 @@ $(obj):
 	$(Q)mkdir -p $(obj)
 
 -include $(DEPS)
+
+
+# TODO: refactor into targets above.
+#
+# all: bn_test
+
+# CC=gcc
+# CFLAGS += -Wall -Wunused -Werror -ggdb -I. -I../../../../third_party/cryptoc/include -Itestlib -DCR50_NO_BN_ASM
+# LDFLAGS += -lcrypto
+
+# # Crude dependencies
+# DEPS= ../../chip/g/dcrypto/dcrypto.h ../../chip/g/dcrypto/internal.h testlib/common.h testlib/trng.h Makefile
+
+# bn.o: ../../chip/g/dcrypto/bn.c $(DEPS)
+# bn_test.o: bn_test.c $(DEPS)
+# common.o: testlib/common.c $(DEPS)
+
+# OBJS=../../chip/g/dcrypto/bn.o testlib/common.o
+
+# bn_test: bn_test.c $(DEPS) $(OBJS)
+# 	$(CC) $(CFLAGS) bn_test.c -o bn_test $(OBJS) $(LDFLAGS)
+
+# clean:
+# 	rm -f bn_test $(OBJS)
