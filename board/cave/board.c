@@ -89,6 +89,7 @@ void usb1_evt(enum gpio_signal signal)
 
 void tablet_mode_interrupt(enum gpio_signal signal)
 {
+	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
 }
 
 #include "gpio_list.h"
@@ -365,6 +366,11 @@ int board_get_ramp_current_limit(int supplier, int sup_curr)
 	default:
 		return 500;
 	}
+}
+
+int board_get_tablet_mode(void)
+{
+	return !gpio_get_level(GPIO_TABLET_MODE_L);
 }
 
 /* Called on AP S5 -> S3 transition */
