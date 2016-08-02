@@ -798,6 +798,30 @@
     },
     {
       "key": {
+        "uuid": "746e62eb_fdbfe3a0",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T19:42:09Z",
+      "side": 1,
+      "message": "Yeah, but can we put it in stm32/config_chip.h not here?",
+      "parentUuid": "ef90b9cc_5284766b",
+      "range": {
+        "startLine": 515,
+        "startChar": 7,
+        "endLine": 515,
+        "endChar": 23
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_726420bd",
         "filename": "include/i2c.h",
         "patchSetId": 4
