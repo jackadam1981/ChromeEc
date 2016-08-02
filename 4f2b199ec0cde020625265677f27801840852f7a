@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef90b9cc_fb12bd5b",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2016-08-02T17:10:43Z",
+      "side": 1,
+      "message": "it is convenient to look for the version string in the console log by grepping it for cr50. and the strings are already qute long long. \n\nHow about adding Bx:N: in the beginning of the string with the build version, where x is silicon version and N is board number ?",
+      "revId": "4f2b199ec0cde020625265677f27801840852f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
