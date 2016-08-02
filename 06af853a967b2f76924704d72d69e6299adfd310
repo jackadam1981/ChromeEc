@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef90b9cc_db6ee199",
+        "filename": "include/task.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-02T17:27:01Z",
+      "side": 1,
+      "message": "This will break NPCX:\n\nchip/npcx/peci.c:#define TASK_EVENT_PECI_DONE  TASK_EVENT_CUSTOM(1\u003c\u003c26)\n\nJust change that to 1\u003c\u003c19",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 45
+      },
+      "revId": "06af853a967b2f76924704d72d69e6299adfd310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_5b83b133",
+        "filename": "include/task.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-02T17:27:01Z",
+      "side": 1,
+      "message": "(1 \u003c\u003c ((port) + 20))",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "06af853a967b2f76924704d72d69e6299adfd310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
