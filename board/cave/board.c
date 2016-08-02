@@ -374,13 +374,21 @@ int board_get_ramp_current_limit(int supplier, int sup_curr)
 	}
 }
 
+int board_get_tablet_mode(void)
+{
+	return !gpio_get_level(GPIO_TABLET_MODE_L);
+}
+
 /* Enable or disable input devices, based upon chipset state and tablet mode */
 static void enable_input_devices(void)
 {
-	/*
-	 * TODO: Dont control keyboard and touch here, but sent event to system
-	 * for dynamic DPTF setting
-	 */
+	static int prev_tablet_mode_status;
+	int tablet_mode_status = !gpio_get_level(GPIO_TABLET_MODE_L);
+
+	if (prev_tablet_mode_status != tablet_mode_status) {
+		prev_tablet_mode_status = tablet_mode_status;
+		host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
+	}
 }
 DECLARE_DEFERRED(enable_input_devices);
 

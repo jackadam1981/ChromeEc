@@ -46,6 +46,7 @@
 #define CONFIG_CHIPSET_SKYLAKE
 #define CONFIG_CHIPSET_RESET_HOOK
 #define CONFIG_CLOCK_CRYSTAL
+#define CONFIG_DPTF_TABLE_MODE_SWITCH
 #define CONFIG_EXTPOWER_GPIO
 #define CONFIG_HOSTCMD_PD
 #define CONFIG_I2C
@@ -239,7 +240,7 @@ enum pwm_channel {
 
 /* Reset PD MCU */
 void board_reset_pd_mcu(void);
-
+int board_get_tablet_mode(void);
 int board_get_version(void);
 
 #endif /* !__ASSEMBLER__ */
