@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "746e62eb_2e38bf83",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2016-08-02T22:03:04Z",
+      "side": 1,
+      "message": "The DPTF code is all in ACPI so we need it to be memory mapped in to the acpi EC RAM.. But it does seem like this should be named EC_ACPI_MEM_TABLET_MODE to be consistent with the other names.",
+      "parentUuid": "ef90b9cc_21c072f8",
+      "range": {
+        "startLine": 172,
+        "startChar": 7,
+        "endLine": 172,
+        "endChar": 26
+      },
+      "revId": "521976d324da7da3b5346d68954fc48965938634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_c07a6c51",
         "filename": "common/acpi.c",
         "patchSetId": 4
