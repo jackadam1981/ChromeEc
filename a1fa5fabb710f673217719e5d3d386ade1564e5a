@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef90b9cc_9be379cd",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-02T17:02:37Z",
+      "side": 1,
+      "message": "So we don\u0027t use this argument?",
+      "range": {
+        "startLine": 20,
+        "startChar": 28,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_7b75cdda",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-02T17:02:37Z",
+      "side": 1,
+      "message": "I\u0027d suggest keeping current_task in a pre-determined register like edx or something. That way we don\u0027t have to shuffle at all but only when transitioning next_task -\u003e current_task, but that\u0027s only when we\u0027re setting edx from next_task.",
+      "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_fb071d70",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-02T17:02:37Z",
+      "side": 1,
+      "message": "Why is current_task in parens here?",
+      "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_7bf06d64",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-02T17:02:37Z",
+      "side": 1,
+      "message": "We aren\u0027t using parens here or below in line 93.",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_db67c155",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-02T17:02:37Z",
+      "side": 1,
+      "message": "At this point we already have current_task, no?",
+      "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_7b594d92",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-02T17:02:37Z",
+      "side": 1,
+      "message": "Is 17 enough now that you added floating point support? I\u0027d much rather see this scalar calculated correctly instead of open coded. Shouldn\u0027t this at least be the sizeof(task_) ?",
+      "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_bb3cb515",
+        "filename": "core/minute-ia/task_defs.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-02T17:02:37Z",
+      "side": 1,
+      "message": "The previous comment format was the correct block comment format.",
+      "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
