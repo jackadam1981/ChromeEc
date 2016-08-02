@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef90b9cc_fb60fddf",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-02T17:17:36Z",
+      "side": 1,
+      "message": "Just make this system_get_board_properties().",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 535,
+        "endChar": 47
+      },
+      "revId": "59e9f8bc14931d6c51e0c3dbef1f8b23db2646cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_bb42f542",
+        "filename": "chip/g/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-02T17:17:36Z",
+      "side": 1,
+      "message": "Put this in board.c and have it just return the variable value. You don\u0027t need another level of indirect function-calling for that.",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 1
+      },
+      "revId": "59e9f8bc14931d6c51e0c3dbef1f8b23db2646cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_7b486d65",
+        "filename": "include/system.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-02T17:17:36Z",
+      "side": 1,
+      "message": "Add a note that this function is optional and board-specific",
+      "revId": "59e9f8bc14931d6c51e0c3dbef1f8b23db2646cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_5b4bb162",
+        "filename": "include/system.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-02T17:17:36Z",
+      "side": 1,
+      "message": "You can just delete this",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 48
+      },
+      "revId": "59e9f8bc14931d6c51e0c3dbef1f8b23db2646cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
