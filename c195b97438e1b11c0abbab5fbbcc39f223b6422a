@@ -22,6 +22,30 @@
       "revId": "c195b97438e1b11c0abbab5fbbcc39f223b6422a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_01e61642",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1135579
+      },
+      "writtenOn": "2016-08-02T18:31:19Z",
+      "side": 1,
+      "message": "That\u0027s something I\u0027m unfamiliar with and maybe this is the wrong fix, perhaps servo v4 needs a cold_reset interface instead?\n\nHoping Nick can chime in on this.",
+      "parentUuid": "ef90b9cc_010e163d",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 3
+      },
+      "revId": "c195b97438e1b11c0abbab5fbbcc39f223b6422a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
