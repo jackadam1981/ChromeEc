@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef90b9cc_00b29498",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "Need 4 spaces.",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 4
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_40ac9c36",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "\u0027board name\u0027?",
+      "range": {
+        "startLine": 51,
+        "startChar": 31,
+        "endLine": 51,
+        "endChar": 42
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_bb359543",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "This is chip specific parameter. Let\u0027s give it a name.",
+      "range": {
+        "startLine": 99,
+        "startChar": 21,
+        "endLine": 99,
+        "endChar": 31
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_662e10f8",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "We probably don\u0027t need this if we set these self variables in the constructors (, which is more standard way). Please see the comment in main().",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_c698c40f",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "nit: reset. Because we have make, flash, .... \u0027Board\u0027 is implied from the class name.",
+      "range": {
+        "startLine": 116,
+        "startChar": 6,
+        "endLine": 116,
+        "endChar": 16
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_9bed398a",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "This is called multiple times. Can you make it return immediately if self.hla_serial is already set?",
+      "range": {
+        "startLine": 217,
+        "startChar": 6,
+        "endLine": 217,
+        "endChar": 18
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_9bb539cd",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be \u0027!\u003d\u0027?",
+      "range": {
+        "startLine": 274,
+        "startChar": 54,
+        "endLine": 274,
+        "endChar": 60
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_fbab9d6f",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "Can this entire thing be as follows?\n\ndut \u003d [s for s in serials if s !\u003d self.th.hla_serial]\nif len(dut) !\u003d 1:\n  raise RuntimeError(\u0027...\u0027)\nelse\n  self.hla_serial \u003d dut[0]\n  return",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 29
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_264b28b6",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "Same comment as the one for Board.setboard.",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 26
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_a0f7202a",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "I think it\u0027s 4 spaces here. Please read 3.4 of the style guide.",
+      "range": {
+        "startLine": 348,
+        "startChar": 4,
+        "endLine": 348,
+        "endChar": 6
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_80fa2412",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "I think you need 4 spaces. Please see 3.4 of the style guide.",
+      "range": {
+        "startLine": 348,
+        "startChar": 4,
+        "endLine": 348,
+        "endChar": 6
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_1bc049f8",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "Let\u0027s not call it here.",
+      "range": {
+        "startLine": 364,
+        "startChar": 4,
+        "endLine": 364,
+        "endChar": 25
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_fb3b9dd1",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think you need keys().",
+      "range": {
+        "startLine": 440,
+        "startChar": 43,
+        "endLine": 440,
+        "endChar": 50
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_7b4dcd6b",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "tokens[0].strip(). Why don\u0027t you assign it to \u0027test\u0027?",
+      "range": {
+        "startLine": 440,
+        "startChar": 13,
+        "endLine": 440,
+        "endChar": 22
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_9b00d99e",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "Why don\u0027t we do this in _resultsAsString? _parseOutput should be parsing the output and _resultsAsString should be stringifying the parsed results.",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 52
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_6050b809",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-02T17:49:33Z",
+      "side": 1,
+      "message": "Could you create an instance after you parse the args?\n\ncts \u003d Cts(ec_dir, module, dut_board)\n\nThen, you don\u0027t need to call set_module or set_dut_board explicitly because module and dut can be set by the constructor of Cts.",
+      "range": {
+        "startLine": 518,
+        "startChar": 2,
+        "endLine": 518,
+        "endChar": 25
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
