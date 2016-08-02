@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "746e62eb_e0fdf60b",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T21:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_48ca1018",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 2
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_68750cdb",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 4
@@ -236,6 +260,24 @@
       "writtenOn": "2016-07-29T21:28:39Z",
       "side": 1,
       "message": "nit: Extra line.",
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "746e62eb_00fb4a17",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T21:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_68750cdb",
       "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -282,6 +324,30 @@
     },
     {
       "key": {
+        "uuid": "746e62eb_63cfb05e",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T21:17:03Z",
+      "side": 1,
+      "message": "This block moved above.",
+      "parentUuid": "ef90b9cc_688fcc1d",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 15
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_887098dc",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 4
@@ -293,6 +359,30 @@
       "writtenOn": "2016-07-29T21:28:39Z",
       "side": 1,
       "message": "This has no effect, contradicting 2 \u003c\u003c 30.",
+      "range": {
+        "startLine": 276,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 35
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "746e62eb_202e8e94",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T21:17:03Z",
+      "side": 1,
+      "message": "Doh, done.",
+      "parentUuid": "ef90b9cc_887098dc",
       "range": {
         "startLine": 276,
         "startChar": 2,
@@ -328,6 +418,30 @@
     },
     {
       "key": {
+        "uuid": "746e62eb_804afa2a",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T21:17:03Z",
+      "side": 1,
+      "message": "This is added for readability, indicating that the field is intentionally zero, to go with the comment.",
+      "parentUuid": "ef90b9cc_e83f5cdd",
+      "range": {
+        "startLine": 277,
+        "startChar": 2,
+        "endLine": 277,
+        "endChar": 33
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_fba0088f",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 4
@@ -339,6 +453,30 @@
       "writtenOn": "2016-07-29T21:28:39Z",
       "side": 1,
       "message": "These should be actually specific to the board not to the chip. At least these should be described as a comment for the function.",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 32
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "746e62eb_c076b26b",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T21:17:03Z",
+      "side": 1,
+      "message": "Added comment.",
+      "parentUuid": "ef90b9cc_fba0088f",
       "range": {
         "startLine": 275,
         "startChar": 0,
@@ -810,6 +948,30 @@
       "side": 1,
       "message": "Yeah, but can we put it in stm32/config_chip.h not here?",
       "parentUuid": "ef90b9cc_5284766b",
+      "range": {
+        "startLine": 515,
+        "startChar": 7,
+        "endLine": 515,
+        "endChar": 23
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "746e62eb_e0a17640",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T21:17:03Z",
+      "side": 1,
+      "message": "All the entries in config_chip.h are also in config.h though? Presubmit complains otherwise.",
+      "parentUuid": "746e62eb_fdbfe3a0",
       "range": {
         "startLine": 515,
         "startChar": 7,
