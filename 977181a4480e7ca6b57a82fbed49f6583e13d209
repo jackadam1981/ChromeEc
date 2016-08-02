@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef90b9cc_a0b560cc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-02T14:07:36Z",
+      "side": 1,
+      "message": "Where do we set this event on a mode change? I see that we\u0027re able to query the value, but I don\u0027t see where we notice a change and update the event mask.",
+      "revId": "977181a4480e7ca6b57a82fbed49f6583e13d209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
