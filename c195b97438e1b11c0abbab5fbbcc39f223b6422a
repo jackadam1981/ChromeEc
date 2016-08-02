@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef90b9cc_010e163d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-02T18:24:29Z",
+      "side": 1,
+      "message": "Doesn\u0027t the EC only check boot0 at boot time?  If we don\u0027t cold reset the EC, how does it detect boot0?",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 3
+      },
+      "revId": "c195b97438e1b11c0abbab5fbbcc39f223b6422a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
