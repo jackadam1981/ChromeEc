@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3a9356_61bf3616",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-02T22:11:46Z",
+      "side": 1,
+      "message": "Echoing Daisuke. rv not initialized",
+      "range": {
+        "startLine": 278,
+        "startChar": 9,
+        "endLine": 278,
+        "endChar": 11
+      },
+      "revId": "6d4169e616080161c622d102968212d946df7180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
