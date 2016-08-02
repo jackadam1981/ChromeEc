@@ -128,6 +128,30 @@
       "revId": "9b8e0aff8a182410880981311e21b92477c814e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_0089b4cc",
+        "filename": "board/cave/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-02T15:11:47Z",
+      "side": 1,
+      "message": "I missed that these were getting undef\u0027d.",
+      "parentUuid": "6f34c9be_b25772fd",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 30
+      },
+      "revId": "9b8e0aff8a182410880981311e21b92477c814e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
