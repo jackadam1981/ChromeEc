@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_1b3a14ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T03:30:46Z",
+      "side": 1,
+      "message": "Haha fixed.",
+      "parentUuid": "ef90b9cc_5b757cda",
+      "range": {
+        "startLine": 16,
+        "startChar": 30,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_f3b3d251",
         "filename": "board/stm32f446e-eval/board.c",
         "patchSetId": 4
@@ -60,6 +84,30 @@
       "writtenOn": "2016-07-29T21:28:39Z",
       "side": 1,
       "message": "You can\u0027t do this in a hook (e.g. HOOK_INIT)? No other boards use CONFIG_BOARD_POST_GPIO_INIT. I\u0027m wondering what is special about this board or stm32f446.",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_3bfd100c",
+        "filename": "board/stm32f446e-eval/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T03:30:46Z",
+      "side": 1,
+      "message": "This is GPIO setup that isn\u0027t taken care of by the standard GPIO code, which seems like what post_gpio_init is for.\n\nThis stuff needs to happen before usb init, which doesn\u0027t seem guaranteed to occur before board init.",
+      "parentUuid": "ef90b9cc_f3b3d251",
       "range": {
         "startLine": 30,
         "startChar": 5,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_3e17bea2",
+        "filename": "board/stm32f446e-eval/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T03:30:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_32be1819",
+      "range": {
+        "startLine": 45,
+        "startChar": 30,
+        "endLine": 45,
+        "endChar": 47
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_338d3a2e",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 4
@@ -106,6 +178,24 @@
       "writtenOn": "2016-07-29T21:28:39Z",
       "side": 1,
       "message": "There are lots of duplicates among clock-stm32f0.c, -stm32f3.c, and -stm32f4.c. I think it\u0027s time to create clock.c and put common code there.",
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_3e789ed3",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T03:30:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_338d3a2e",
       "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -343,6 +433,30 @@
       "writtenOn": "2016-07-29T21:28:39Z",
       "side": 1,
       "message": "nit: better be consistent with tab (v.s. spaces).",
+      "range": {
+        "startLine": 35,
+        "startChar": 29,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_921fde5e",
+        "filename": "chip/stm32/config-stm32f446.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T03:30:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_db1eecc6",
       "range": {
         "startLine": 35,
         "startChar": 29,
@@ -660,6 +774,30 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_5284766b",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T03:30:46Z",
+      "side": 1,
+      "message": "Done. \n\nI notice there is also an HSE in STM32L4. Should I rename it to this also? It doesn\u0027t seem to be an option there though.",
+      "parentUuid": "ef90b9cc_d307b670",
+      "range": {
+        "startLine": 515,
+        "startChar": 7,
+        "endLine": 515,
+        "endChar": 23
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_726420bd",
         "filename": "include/i2c.h",
         "patchSetId": 4
@@ -671,6 +809,30 @@
       "writtenOn": "2016-07-29T16:26:22Z",
       "side": 1,
       "message": "TASK_EVENT_CUSTOM is designed to be owned by a task.  But I2C doesn\u0027t have its own task; it runs in other tasks.  So this will conflict with things like TASK_EVENT_CMD_PENDING.\n\nShould reserve these bits globally (in task.h), the same way we do TASK_EVENT_I2C_IDLE (which this new event replaces on STM32F446?)",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 60
+      },
+      "revId": "66fbccfb9692e9736f13153fb49944e345aee662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_7279728f",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-02T03:30:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_726420bd",
       "range": {
         "startLine": 254,
         "startChar": 0,
