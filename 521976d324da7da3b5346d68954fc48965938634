@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ef90b9cc_21c072f8",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-02T18:16:06Z",
+      "side": 1,
+      "message": "Instead of adding a new ACPI command, why not make a new byte of memmap data for the device mode? Then the host can just read it with EC_CMD_ACPI_READ.",
+      "range": {
+        "startLine": 172,
+        "startChar": 7,
+        "endLine": 172,
+        "endChar": 26
+      },
+      "revId": "521976d324da7da3b5346d68954fc48965938634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_c07a6c51",
         "filename": "common/acpi.c",
         "patchSetId": 4
