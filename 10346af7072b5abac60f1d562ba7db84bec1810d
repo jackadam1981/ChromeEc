@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_75c07c27",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1146659
+      },
+      "writtenOn": "2016-08-02T06:47:55Z",
+      "side": 1,
+      "message": "It is set in svdm_dp_attention(), though, so it would appear that it makes sense to clear it here.",
+      "parentUuid": "0f618dbb_7d994f68",
+      "revId": "10346af7072b5abac60f1d562ba7db84bec1810d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf8db5b7_7af310d9",
         "filename": "board/kevin/usb_pd_policy.c",
         "patchSetId": 2
