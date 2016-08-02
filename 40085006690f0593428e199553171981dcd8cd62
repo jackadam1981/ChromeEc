@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef90b9cc_c6cc44b9",
+        "filename": "cts/cts.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-02T18:12:30Z",
+      "side": 1,
+      "message": "if t.name in self.test_results()",
+      "range": {
+        "startLine": 454,
+        "startChar": 8,
+        "endLine": 454,
+        "endChar": 45
+      },
+      "revId": "40085006690f0593428e199553171981dcd8cd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_c1b26ee2",
+        "filename": "cts/cts.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-02T18:12:30Z",
+      "side": 1,
+      "message": "This whole block is a little confusing.  Seems like\n\nif self.test_results.get(t_name, CTS_SUCCESS_CODE) \u003d\u003d CTS_SUCCESS_CODE:\n  self.test_results[t_name] \u003d t_result\nelif self.test_results[t_name] !\u003d t_result:\n  self.test_results[t_name] \u003d CTS_CONFLICTING_CODE",
+      "range": {
+        "startLine": 455,
+        "startChar": 1,
+        "endLine": 461,
+        "endChar": 46
+      },
+      "revId": "40085006690f0593428e199553171981dcd8cd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_81bdc6ac",
+        "filename": "cts/cts.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-02T18:12:30Z",
+      "side": 1,
+      "message": "Why aren\u0027t conflict and corrupted just in self.return_codes?",
+      "range": {
+        "startLine": 471,
+        "startChar": 1,
+        "endLine": 475,
+        "endChar": 11
+      },
+      "revId": "40085006690f0593428e199553171981dcd8cd62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
