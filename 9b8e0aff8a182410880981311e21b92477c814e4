@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ef90b9cc_80f06465",
+        "filename": "board/cave/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-08-02T15:08:16Z",
+      "side": 1,
+      "message": "I remove this function.",
+      "parentUuid": "ef90b9cc_e0cbe84c",
+      "range": {
+        "startLine": 381,
+        "startChar": 52,
+        "endLine": 381,
+        "endChar": 57
+      },
+      "revId": "9b8e0aff8a182410880981311e21b92477c814e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_00d1b4ff",
         "filename": "board/cave/board.c",
         "patchSetId": 4
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "4f39c5b7_4679238f",
+        "filename": "board/cave/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-08-02T15:08:16Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/#/c/365287/",
+      "parentUuid": "ef90b9cc_00d1b4ff",
+      "revId": "9b8e0aff8a182410880981311e21b92477c814e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_20d6b0f7",
         "filename": "board/cave/board.h",
         "patchSetId": 4
@@ -53,6 +95,30 @@
       "writtenOn": "2016-08-02T14:09:55Z",
       "side": 1,
       "message": "These seem unrelated?",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 30
+      },
+      "revId": "9b8e0aff8a182410880981311e21b92477c814e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f34c9be_b25772fd",
+        "filename": "board/cave/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-08-02T15:08:16Z",
+      "side": 1,
+      "message": "These #undef is for more code space,\nI move they to another CL:\nhttps://chromium-review.googlesource.com/#/c/365288/",
+      "parentUuid": "ef90b9cc_20d6b0f7",
       "range": {
         "startLine": 156,
         "startChar": 0,
