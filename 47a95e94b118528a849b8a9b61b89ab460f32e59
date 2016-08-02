@@ -160,6 +160,24 @@
       "revId": "47a95e94b118528a849b8a9b61b89ab460f32e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f618dbb_bd076771",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-08-02T08:27:35Z",
+      "side": 1,
+      "message": "According to TCPCI spec TCPM should use TCPC_REG_POWER_STATUS bit2 to check vbus present from TCPC, but this patch changes the interface (to a proprietary register of anx7688), and that\u0027s why I think you should keep the interface unchanged and handle this inside anx7688. And can you explain \n\"\nIn some CTS test item, it will check Vbus present with very details difference(immplement in TCPC F/W), so now this two registers cann\u0027t be merged one for passing CTS test item.\n\"\nmentioned by Zhentian? .get_vbus_level is the only way TCPM gets vbus present from TCPC, so sounds like this change will also impact the CTS tests?",
+      "parentUuid": "ef90b9cc_f5672c55",
+      "revId": "47a95e94b118528a849b8a9b61b89ab460f32e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
