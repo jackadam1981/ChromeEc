@@ -16,6 +16,24 @@
       "revId": "521976d324da7da3b5346d68954fc48965938634",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef90b9cc_86e95c17",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-02T17:58:55Z",
+      "side": 1,
+      "message": "I agree, but we\u0027ve not consistent with our use throughout the codebase. Probably this can land as-is. I\u0027ll open a crbug for cleanup.",
+      "parentUuid": "ef90b9cc_c07a6c51",
+      "revId": "521976d324da7da3b5346d68954fc48965938634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
