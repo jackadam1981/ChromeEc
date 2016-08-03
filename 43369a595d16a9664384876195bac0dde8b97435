@@ -140,6 +140,30 @@
     },
     {
       "key": {
+        "uuid": "b411ba9a_6dfaed66",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-03T17:25:18Z",
+      "side": 1,
+      "message": "I meant \u0027you\u0027 as \u0027this loop\u0027 just in case it\u0027s misunderstood weirdly.",
+      "parentUuid": "b411ba9a_279ad46b",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 3
+      },
+      "revId": "43369a595d16a9664384876195bac0dde8b97435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b411ba9a_e7871c0d",
         "filename": "chip/stm32/flash-stm32f4.c",
         "patchSetId": 11
