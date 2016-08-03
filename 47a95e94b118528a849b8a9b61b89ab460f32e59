@@ -196,6 +196,24 @@
       "revId": "47a95e94b118528a849b8a9b61b89ab460f32e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4989235_33049a1d",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1124569
+      },
+      "writtenOn": "2016-08-03T01:40:49Z",
+      "side": 1,
+      "message": "Thanks for the information. So in summary this patch\n1) does not follow TCPCI spec\n2) probably fails some CTS VBUS tests (by changing VBUS present threshold from 4.0V to 3.6V)\n\nAm I correct?",
+      "parentUuid": "ef90b9cc_d59eb0a8",
+      "revId": "47a95e94b118528a849b8a9b61b89ab460f32e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
