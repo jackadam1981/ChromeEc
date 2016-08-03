@@ -9,6 +9,7 @@
 #include "charge_state.h"
 #include "chipset.h"
 #include "ec_commands.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -27,7 +28,8 @@
 #define LED_ON_2SECS_TICKS 2
 
 const enum ec_led_id supported_led_ids[] = {
-			EC_LED_ID_BATTERY_LED};
+			EC_LED_ID_BATTERY_LED,
+			EC_LED_ID_POWER_LED};
 
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
@@ -38,7 +40,7 @@ enum led_color {
 	LED_COLOR_COUNT  /* Number of colors, not a color itself */
 };
 
-static int bat_led_set_color(enum led_color color)
+static int set_color(enum led_color color)
 {
 	switch (color) {
 	case LED_OFF:
@@ -65,19 +67,26 @@ void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 	brightness_range[EC_LED_COLOR_AMBER] = 1;
 }
 
-static int led_set_color_battery(enum led_color color)
+static inline int led_set_color_battery(enum led_color color)
 {
-	return bat_led_set_color(color);
+	return set_color(color);
+}
+
+static inline int led_set_color_power(enum led_color color)
+{
+	return set_color(color);
 }
 
 static int led_set_color(enum ec_led_id led_id, enum led_color color)
 {
 	int rv;
-
 	led_auto_control(led_id, 0);
 	switch (led_id) {
 	case EC_LED_ID_BATTERY_LED:
 		rv = led_set_color_battery(color);
+		break;
+	case EC_LED_ID_POWER_LED:
+		rv = led_set_color_power(color);
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;
@@ -95,6 +104,36 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 		led_set_color(led_id, LED_OFF);
 
 	return EC_SUCCESS;
+}
+
+static void led_set_power(void)
+{
+	static int power_ticks;
+	static int previous_state_suspend;
+
+	power_ticks++;
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+		/* Reset ticks if entering suspend so LED turns amber
+		 * as soon as possible.
+		 */
+
+		if (!previous_state_suspend)
+			power_ticks = 0;
+
+		/* Blink once every four seconds. */
+		led_set_color_power(
+			(power_ticks % LED_TOTAL_4SECS_TICKS)
+			< LED_ON_1SEC_TICKS ? LED_AMBER : LED_OFF);
+
+		previous_state_suspend = 1;
+		return;
+	}
+
+	previous_state_suspend = 0;
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		led_set_color_power(LED_OFF);
+	else if (chipset_in_state(CHIPSET_STATE_ON))
+		led_set_color_power(LED_BLUE);
 }
 
 static void led_set_battery(void)
@@ -153,7 +192,12 @@ static void led_set_battery(void)
 /** * Called by hook task every 1 sec  */
 static void led_second(void)
 {
-	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
+	if (extpower_is_present() &&
+		led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
 		led_set_battery();
+	else if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
+		led_set_power();
+	else
+		set_color(LED_OFF);
 }
 DECLARE_HOOK(HOOK_SECOND, led_second, HOOK_PRIO_DEFAULT);
