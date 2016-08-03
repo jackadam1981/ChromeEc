@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b411ba9a_c78140a2",
+        "filename": "chip/nrf51/radio_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-03T16:31:00Z",
+      "side": 1,
+      "message": "I believe so. The commit with is has been pushed to the tree.\nhttps://chromium-review.googlesource.com/#/c/362348/",
+      "parentUuid": "ea8ee740_d81f425f",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "15d2169af601d58116d91b6c751f6957ba125780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8ee740_15ac339b",
         "filename": "chip/nrf51/radio_test.c",
         "patchSetId": 1
@@ -65,6 +89,29 @@
     },
     {
       "key": {
+        "uuid": "b411ba9a_47371004",
+        "filename": "chip/nrf51/radio_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-03T16:31:00Z",
+      "side": 1,
+      "message": "#define LARGEST_CHANNEL, or something to that effect?",
+      "range": {
+        "startLine": 117,
+        "startChar": 12,
+        "endLine": 117,
+        "endChar": 14
+      },
+      "revId": "15d2169af601d58116d91b6c751f6957ba125780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8ee740_98abfa1f",
         "filename": "chip/nrf51/radio_test.c",
         "patchSetId": 1
@@ -76,6 +123,30 @@
       "writtenOn": "2016-07-21T22:12:52Z",
       "side": 1,
       "message": "Where is this defined?",
+      "range": {
+        "startLine": 156,
+        "startChar": 9,
+        "endLine": 156,
+        "endChar": 47
+      },
+      "revId": "15d2169af601d58116d91b6c751f6957ba125780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b411ba9a_c7e660ad",
+        "filename": "chip/nrf51/radio_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-03T16:31:00Z",
+      "side": 1,
+      "message": "btle_hci_int.h / line 3088, which was added in another commit",
+      "parentUuid": "ea8ee740_98abfa1f",
       "range": {
         "startLine": 156,
         "startChar": 9,
@@ -104,6 +175,29 @@
         "startChar": 15,
         "endLine": 172,
         "endChar": 18
+      },
+      "revId": "15d2169af601d58116d91b6c751f6957ba125780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b411ba9a_675b2c5e",
+        "filename": "chip/nrf51/radio_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-03T16:31:00Z",
+      "side": 1,
+      "message": "Is timeout the right term? It seems more a number of attempts than a timeout.",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 179,
+        "endChar": 21
       },
       "revId": "15d2169af601d58116d91b6c751f6957ba125780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
