@@ -316,6 +316,30 @@
       "revId": "15d2169af601d58116d91b6c751f6957ba125780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b411ba9a_6d5b0d5e",
+        "filename": "chip/nrf51/radio_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-03T17:40:30Z",
+      "side": 1,
+      "message": "retries would be a more accurate term",
+      "parentUuid": "b411ba9a_675b2c5e",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 179,
+        "endChar": 21
+      },
+      "revId": "15d2169af601d58116d91b6c751f6957ba125780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
