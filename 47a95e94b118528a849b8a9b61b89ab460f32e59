@@ -214,6 +214,24 @@
       "revId": "47a95e94b118528a849b8a9b61b89ab460f32e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "746e62eb_61db25e5",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1151724
+      },
+      "writtenOn": "2016-08-03T03:59:18Z",
+      "side": 1,
+      "message": "1) does not follow TCPCI spec;\n-\u003e Yes, the new regsiter is not TCPCI register.\n2) probably fails some CTS VBUS tests (by changing VBUS present threshold from 4.0V to 3.6V)\n-\u003e Yes, but ANX7688 provided VUBS_VOLTAGE register to show the real voltage of VBUS, maybe we have workaround for that.",
+      "parentUuid": "f4989235_33049a1d",
+      "revId": "47a95e94b118528a849b8a9b61b89ab460f32e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
