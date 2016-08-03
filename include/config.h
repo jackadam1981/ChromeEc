@@ -2156,6 +2156,12 @@
 #undef CONFIG_USB_PD_PULLUP_3A
 
 /******************************************************************************/
+/* stm32f4 dwc usb configs. */
+
+/* Set USB speed to FS rather than HS */
+#undef CONFIG_DWC_USB_FS
+
+/******************************************************************************/
 /* USB port switch */
 
 /* Support the Pericom PI3USB9281 I2C USB switch */
