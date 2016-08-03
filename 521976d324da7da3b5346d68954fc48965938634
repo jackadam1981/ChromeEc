@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b411ba9a_048236fb",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-03T14:11:12Z",
+      "side": 1,
+      "message": "Sorry for the churn. I\u0027m wondering if we should waste an entire byte for this. Should we make it be a bit field indicating different modes of the device? BoChao, don\u0027t make the change just yet. I\u0027m just curious if we should pack more information into this field.",
+      "parentUuid": "746e62eb_2e38bf83",
+      "range": {
+        "startLine": 172,
+        "startChar": 7,
+        "endLine": 172,
+        "endChar": 26
+      },
+      "revId": "521976d324da7da3b5346d68954fc48965938634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_c07a6c51",
         "filename": "common/acpi.c",
         "patchSetId": 4
