@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "b411ba9a_84c58609",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2016-08-03T15:29:56Z",
+      "side": 1,
+      "message": "Ya I asked this question before too, do we need to worry about things like \"tent mode\" ever?\n\nI suppose we could leave room for expansion by just making bit 0 be tablet mode and worry about adding other modes later.",
+      "parentUuid": "b411ba9a_048236fb",
+      "range": {
+        "startLine": 172,
+        "startChar": 7,
+        "endLine": 172,
+        "endChar": 26
+      },
+      "revId": "521976d324da7da3b5346d68954fc48965938634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_c07a6c51",
         "filename": "common/acpi.c",
         "patchSetId": 4
