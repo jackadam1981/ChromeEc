@@ -46,6 +46,30 @@
       "revId": "0ace5d701e5a019a64495234884ca776e61d2f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b411ba9a_e4627ab1",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-03T16:08:10Z",
+      "side": 1,
+      "message": "I\u0027ve always been a fan of very literal names. max_plus_one gets the point across pretty well. Maybe bound_non_inclusive ?",
+      "parentUuid": "746e62eb_a92b692e",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 18
+      },
+      "revId": "0ace5d701e5a019a64495234884ca776e61d2f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
