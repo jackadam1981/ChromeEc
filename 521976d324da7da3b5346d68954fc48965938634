@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "b411ba9a_64a84a27",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-03T15:41:46Z",
+      "side": 1,
+      "message": "I\u0027m not sure we need to worry about \u0027tent mode\u0027, e.g., but I don\u0027t think it hurts to leave room for more modes. I think it\u0027s wise to make this bit 0 \u003d\u003d tablet mode. And change the EC_ACPI_TABLET_MODE name EC_ACPI_DEVICE_ORIENTATION or something like that. That way, we\u0027ve plumbed everything in which allows for expansion if needed.",
+      "parentUuid": "b411ba9a_84c58609",
+      "range": {
+        "startLine": 172,
+        "startChar": 7,
+        "endLine": 172,
+        "endChar": 26
+      },
+      "revId": "521976d324da7da3b5346d68954fc48965938634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_c07a6c51",
         "filename": "common/acpi.c",
         "patchSetId": 4
