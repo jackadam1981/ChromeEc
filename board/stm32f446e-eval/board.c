@@ -12,6 +12,31 @@
 #include "i2c.h"
 #include "registers.h"
 #include "stm32-dma.h"
+#include "usb_descriptor.h"
+#include "usb_dwc_hw.h"
+#include "usb_dwc_console.h"
+
+
+/******************************************************************************
+ * Define the strings used in our USB descriptors.
+ */
+const void *const usb_strings[] = {
+	[USB_STR_DESC]		= usb_string_desc,
+	[USB_STR_VENDOR]	= USB_STRING_DESC("Google Inc."),
+	[USB_STR_PRODUCT]	= USB_STRING_DESC("stm32f446-eval"),
+	[USB_STR_SERIALNO]	= USB_STRING_DESC("1234-a"),
+	[USB_STR_VERSION]	= USB_STRING_DESC(CROS_EC_VERSION32),
+	[USB_STR_CONSOLE_NAME]	= USB_STRING_DESC("EC Shell"),
+};
+
+BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
+
+struct dwc_usb usb_ctl = {
+	.ep = {&ep0_ctl, &ep_console_ctl},
+	.speed = 0,
+	.phy_type = 0,
+	.dma_en = 1,
+};
 
 
 /* I2C ports */
@@ -62,9 +87,4 @@ void board_config_post_gpio_init(void)
 	GPIO_SET_HS(C,  6);
 	GPIO_SET_HS(C,  7);
 }
-
-static void board_init(void)
-{
-}
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
