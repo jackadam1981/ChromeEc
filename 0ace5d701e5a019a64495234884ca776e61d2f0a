@@ -70,6 +70,75 @@
       "revId": "0ace5d701e5a019a64495234884ca776e61d2f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b411ba9a_44c70e6a",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-03T16:16:41Z",
+      "side": 1,
+      "message": "Doesn\u0027t shifting a uint8_t past its range make it equal to 0? You might have to cast it to a larger datatype first.",
+      "range": {
+        "startLine": 231,
+        "startChar": 31,
+        "endLine": 231,
+        "endChar": 47
+      },
+      "revId": "0ace5d701e5a019a64495234884ca776e61d2f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b411ba9a_c765c04a",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-03T16:16:41Z",
+      "side": 1,
+      "message": "6s VS #define ? Continuation of fix from previous commit",
+      "range": {
+        "startLine": 361,
+        "startChar": 49,
+        "endLine": 361,
+        "endChar": 50
+      },
+      "revId": "0ace5d701e5a019a64495234884ca776e61d2f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b411ba9a_2700145b",
+        "filename": "include/bluetooth_le.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-03T16:16:41Z",
+      "side": 1,
+      "message": "This is in the header, but I don\u0027t see the corresponding function. Is it written in a different commit? If so, should they be grouped together?",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 54
+      },
+      "revId": "0ace5d701e5a019a64495234884ca776e61d2f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
