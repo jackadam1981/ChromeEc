@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "94e3d6ef_d5eb9c0e",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-03T21:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_00b29498",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 4
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_40ac9c36",
         "filename": "cts/cts.py",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-02T17:49:33Z",
       "side": 1,
       "message": "\u0027board name\u0027?",
+      "range": {
+        "startLine": 51,
+        "startChar": 31,
+        "endLine": 51,
+        "endChar": 42
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "746e62eb_e94ba183",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-03T21:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_40ac9c36",
       "range": {
         "startLine": 51,
         "startChar": 31,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "94e3d6ef_15f6e4f3",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-03T21:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_bb359543",
+      "range": {
+        "startLine": 99,
+        "startChar": 21,
+        "endLine": 99,
+        "endChar": 31
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_662e10f8",
         "filename": "cts/cts.py",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2016-08-02T17:49:33Z",
       "side": 1,
       "message": "We probably don\u0027t need this if we set these self variables in the constructors (, which is more standard way). Please see the comment in main().",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54ecfe09_71c3b835",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-03T21:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_662e10f8",
       "range": {
         "startLine": 104,
         "startChar": 0,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "d4dd4e2d_5157a459",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-03T21:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_9bed398a",
+      "range": {
+        "startLine": 217,
+        "startChar": 6,
+        "endLine": 217,
+        "endChar": 18
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_9bb539cd",
         "filename": "cts/cts.py",
         "patchSetId": 4
@@ -186,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "b411ba9a_dee0e5c2",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-03T21:46:13Z",
+      "side": 1,
+      "message": "If the DUT does not use an st-link device then it won\u0027t return a serial",
+      "parentUuid": "ef90b9cc_fbab9d6f",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 29
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_264b28b6",
         "filename": "cts/cts.py",
         "patchSetId": 4
@@ -197,6 +341,30 @@
       "writtenOn": "2016-08-02T17:49:33Z",
       "side": 1,
       "message": "Same comment as the one for Board.setboard.",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 26
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b411ba9a_fe9a015c",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-03T21:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_264b28b6",
       "range": {
         "startLine": 330,
         "startChar": 0,
@@ -255,6 +423,54 @@
     },
     {
       "key": {
+        "uuid": "b411ba9a_be90893e",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-03T21:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_a0f7202a",
+      "range": {
+        "startLine": 348,
+        "startChar": 4,
+        "endLine": 348,
+        "endChar": 6
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b411ba9a_9e8dcd2a",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-03T21:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_80fa2412",
+      "range": {
+        "startLine": 348,
+        "startChar": 4,
+        "endLine": 348,
+        "endChar": 6
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_1bc049f8",
         "filename": "cts/cts.py",
         "patchSetId": 4
@@ -266,6 +482,30 @@
       "writtenOn": "2016-08-02T17:49:33Z",
       "side": 1,
       "message": "Let\u0027s not call it here.",
+      "range": {
+        "startLine": 364,
+        "startChar": 4,
+        "endLine": 364,
+        "endChar": 25
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b411ba9a_5e8cf52d",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-03T21:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_1bc049f8",
       "range": {
         "startLine": 364,
         "startChar": 4,
@@ -324,6 +564,54 @@
     },
     {
       "key": {
+        "uuid": "b411ba9a_13b8b6dc",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-03T21:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_7b4dcd6b",
+      "range": {
+        "startLine": 440,
+        "startChar": 13,
+        "endLine": 440,
+        "endChar": 22
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b411ba9a_73bdaacc",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-03T21:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_fb3b9dd1",
+      "range": {
+        "startLine": 440,
+        "startChar": 43,
+        "endLine": 440,
+        "endChar": 50
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_9b00d99e",
         "filename": "cts/cts.py",
         "patchSetId": 4
@@ -347,6 +635,30 @@
     },
     {
       "key": {
+        "uuid": "14d8c639_08afab7b",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-03T21:46:13Z",
+      "side": 1,
+      "message": "Ok I ended up changing the usage of _resultsAsString and added a new function to replace it, so that Cts\u0027s internal storage of results will remain as integer return codes",
+      "parentUuid": "ef90b9cc_9b00d99e",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 52
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_6050b809",
         "filename": "cts/cts.py",
         "patchSetId": 4
@@ -358,6 +670,30 @@
       "writtenOn": "2016-08-02T17:49:33Z",
       "side": 1,
       "message": "Could you create an instance after you parse the args?\n\ncts \u003d Cts(ec_dir, module, dut_board)\n\nThen, you don\u0027t need to call set_module or set_dut_board explicitly because module and dut can be set by the constructor of Cts.",
+      "range": {
+        "startLine": 518,
+        "startChar": 2,
+        "endLine": 518,
+        "endChar": 25
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b411ba9a_33905299",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-03T21:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef90b9cc_6050b809",
       "range": {
         "startLine": 518,
         "startChar": 2,
