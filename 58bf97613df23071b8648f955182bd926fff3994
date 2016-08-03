@@ -22,6 +22,53 @@
       "revId": "58bf97613df23071b8648f955182bd926fff3994",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "741e62f5_1a37bd49",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-03T23:22:58Z",
+      "side": 1,
+      "message": "Cool - thanks for digging in and finding that.\n\nCleaned up these GPIO declarations in the next patch revision.",
+      "parentUuid": "8082ab4f_012af481",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 51
+      },
+      "revId": "58bf97613df23071b8648f955182bd926fff3994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "741e62f5_1a0edd8b",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-03T23:22:58Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "58bf97613df23071b8648f955182bd926fff3994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
