@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "746e62eb_8939c5db",
+        "filename": "chip/nrf51/radio_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-03T17:15:50Z",
+      "side": 1,
+      "message": "It does now.  It was in the NewBlue header files commit.",
+      "parentUuid": "ea8ee740_d81f425f",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "15d2169af601d58116d91b6c751f6957ba125780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8ee740_15ac339b",
         "filename": "chip/nrf51/radio_test.c",
         "patchSetId": 1
@@ -66,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "746e62eb_e9472157",
+        "filename": "chip/nrf51/radio_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-03T17:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea8ee740_15ac339b",
+      "revId": "15d2169af601d58116d91b6c751f6957ba125780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8ee740_d54aab7d",
         "filename": "chip/nrf51/radio_test.c",
         "patchSetId": 1
@@ -77,6 +119,30 @@
       "writtenOn": "2016-07-21T21:16:26Z",
       "side": 1,
       "message": "Do you think memset would be cleaner? ... Only if the nrf51 has memset",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "15d2169af601d58116d91b6c751f6957ba125780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "746e62eb_896465f4",
+        "filename": "chip/nrf51/radio_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-03T17:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea8ee740_d54aab7d",
       "range": {
         "startLine": 82,
         "startChar": 2,
@@ -159,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "746e62eb_0945b54e",
+        "filename": "chip/nrf51/radio_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-03T17:15:50Z",
+      "side": 1,
+      "message": "btle_hci_int.h",
+      "parentUuid": "ea8ee740_98abfa1f",
+      "range": {
+        "startLine": 156,
+        "startChar": 9,
+        "endLine": 156,
+        "endChar": 47
+      },
+      "revId": "15d2169af601d58116d91b6c751f6957ba125780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8ee740_d5462b59",
         "filename": "chip/nrf51/radio_test.c",
         "patchSetId": 1
@@ -170,6 +260,30 @@
       "writtenOn": "2016-07-21T21:16:26Z",
       "side": 1,
       "message": "Is this arbitrary or does it mean something?",
+      "range": {
+        "startLine": 172,
+        "startChar": 15,
+        "endLine": 172,
+        "endChar": 18
+      },
+      "revId": "15d2169af601d58116d91b6c751f6957ba125780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "746e62eb_091e1563",
+        "filename": "chip/nrf51/radio_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-03T17:15:50Z",
+      "side": 1,
+      "message": "It\u0027s arbitrary.  It is supposed to be long enough to start your test transmission, but short enough so that it isn\u0027t an endless loop.",
+      "parentUuid": "ea8ee740_d5462b59",
       "range": {
         "startLine": 172,
         "startChar": 15,
