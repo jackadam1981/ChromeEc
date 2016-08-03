@@ -5,6 +5,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "rbox.h"
 #include "rdd.h"
 #include "registers.h"
 #include "system.h"
@@ -65,10 +66,19 @@ static void prepare_to_sleep(void)
 	/* No task switching! */
 	interrupt_disable();
 
+#ifdef GC_RBOX_ENABLE_WAKEUP
+	/* Clear PMU wakeup */
+	rbox_wakeup_clear();
+
+	/* Enable RBOX wakeup interrupts */
+	GWRITE(RBOX, WAKEUP_ENABLE, 1);
+#endif
+
 	/* Enable all possible internal wake sources */
 	GR_PMU_EXITPD_MASK =
 		GC_PMU_EXITPD_MASK_PIN_PD_EXIT_MASK |
 		GC_PMU_EXITPD_MASK_RDD0_PD_EXIT_TIMER_MASK |
+		GC_PMU_EXITPD_MASK_RBOX_WAKEUP_MASK |
 		GC_PMU_EXITPD_MASK_TIMELS0_PD_EXIT_TIMER0_MASK |
 		GC_PMU_EXITPD_MASK_TIMELS0_PD_EXIT_TIMER1_MASK;
 

@@ -17,6 +17,10 @@
 #define CPRINTS(format, args...) cprints(CC_RBOX, format, ## args)
 
 #ifdef GC_RBOX_ENABLE_INT
+/* If no interrupts are explicitly enabled enable all of them. */
+#ifndef GC_RBOX_INTS
+#define GC_RBOX_INTS 0x7fff
+#endif
 const int num_interrupts = 15;
 
 static const char * const interrupt_descs[] = {
@@ -28,15 +32,21 @@ static const char * const interrupt_descs[] = {
 static void rbox_int_handler(void)
 {
 	int state = GREAD(RBOX, INT_STATE);
+	int wakeup = GREAD(RBOX, WAKEUP_INTR);
 	int i;
 
-	for (i = 0; i < num_interrupts; i++)
-		if (state & 1 << i)
-			CPRINTS("%d %s", i, interrupt_descs[i]);
+	for (i = 0; i < num_interrupts; i++) {
+		if ((state | wakeup) & 1 << i)
+			CPRINTS("%s%d %s", wakeup & 1 << i ? "wake " : "",
+				i, interrupt_descs[i]);
+	}
 
 	/* Clear interrupt */
 	GWRITE(RBOX, INT_STATE, GREAD(RBOX, INT_STATE));
 	GWRITE(RBOX, INT_TEST, 0);
+
+	/* Clear PMU wakeup */
+	rbox_wakeup_clear();
 }
 
 DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_AC_PRESENT_FED_INT, rbox_int_handler, 1);
@@ -62,7 +72,7 @@ static void enable_interrupts(void)
 {
 	int i;
 	/* Enable All interrupts */
-	GWRITE(RBOX, INT_ENABLE, 0x7fff);
+	GWRITE(RBOX, INT_ENABLE, GC_RBOX_INTS);
 
 	for (i = GC_IRQNUM_RBOX0_INTR_AC_PRESENT_FED_INT;
 		i <= GC_IRQNUM_RBOX0_INTR_PWRB_IN_RED_INT; i++)
@@ -94,18 +104,30 @@ DECLARE_CONSOLE_COMMAND(rboxtest, command_rbox_test,
 	NULL);
 #endif
 
+void rbox_wakeup_clear(void)
+{
+	GWRITE(RBOX, WAKEUP_CLEAR, 1);
+	GWRITE(RBOX, WAKEUP_CLEAR, 0);
+}
+
 void rbox_init(void)
 {
 	/* Enable RBOX */
 	clock_enable_module(MODULE_RBOX, 1);
 
 	/* Clear existing interrupts */
-	GWRITE(RBOX, WAKEUP_CLEAR, 1);
-	GWRITE(RBOX, WAKEUP_CLEAR, 0);
 	GWRITE(RBOX, INT_STATE, 0x7fff);
 
 #ifdef GC_RBOX_ENABLE_INT
 	enable_interrupts();
+#endif
+
+	/* Clear the rbox wakeup registers */
+	rbox_wakeup_clear();
+
+#ifdef GC_RBOX_ENABLE_WAKEUP
+	/* Enable RBOX as sleep wake source */
+	GWRITE(RBOX, WAKEUP_ENABLE, 1);
 #endif
 }
 DECLARE_HOOK(HOOK_INIT, rbox_init, HOOK_PRIO_DEFAULT - 1);

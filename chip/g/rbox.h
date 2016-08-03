@@ -1,0 +1,11 @@
+/* Copyright 2016 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#ifndef __CROS_RBOX_H
+#define __CROS_RBOX_H
+
+/* clear rbox wakeup state */
+void rbox_wakeup_clear(void);
+#endif  /* __CROS_RBOX_H */
