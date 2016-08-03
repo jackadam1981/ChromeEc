@@ -139,6 +139,30 @@
       "revId": "0ace5d701e5a019a64495234884ca776e61d2f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b411ba9a_8dec8991",
+        "filename": "include/bluetooth_le.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-03T17:58:02Z",
+      "side": 1,
+      "message": "The idea is that there must be a ble_tx() and a ble_rx() defined for this to work.  They\u0027re chip specific, so they aren\u0027t defined here, but the prototypes are declared so that they can be called.",
+      "parentUuid": "b411ba9a_2700145b",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 54
+      },
+      "revId": "0ace5d701e5a019a64495234884ca776e61d2f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
