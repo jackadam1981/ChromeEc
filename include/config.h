@@ -2109,6 +2109,20 @@
 /* Support programmable USB device iSerial field. */
 #undef CONFIG_USB_SERIALNO
 
+
+/******************************************************************************/
+/* stm32f4 dwc usb configs. */
+
+/* Set USB speed to FS rather than HS */
+#undef CONFIG_DWC_USB_FS
+
+/* Use ULPI external USB phy */
+#undef CONFIG_DWC_ULPI
+
+/* Use DMA for DWC USB transactions */
+#undef CONFIG_DWC_DMA
+
+
 /******************************************************************************/
 /* USB port switch */
 
