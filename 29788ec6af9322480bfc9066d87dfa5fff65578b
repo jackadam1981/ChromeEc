@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "741e62f5_8fece528",
+        "filename": "cts/cts.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-04T18:20:59Z",
+      "side": 1,
+      "message": "If self.return_codes is a dict, then you can just add \n\nself.return_codes[CTS_CORRUPTED_CODE] \u003d \u0027CORRUPTED\u0027\n\nand then when mapping from codes to strings, you can just do\n\nrcstring \u003d self.return_codes.get(code, \u0027UNKNOWN %d\u0027 % code)",
+      "revId": "29788ec6af9322480bfc9066d87dfa5fff65578b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
