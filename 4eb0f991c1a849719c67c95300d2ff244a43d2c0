@@ -474,6 +474,30 @@
     },
     {
       "key": {
+        "uuid": "741e62f5_c1d87123",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-04T21:21:49Z",
+      "side": 1,
+      "message": "Currently this script doesn\u0027t work without serials. Instead of letting it do something unpredictable, we should fail here when a DUT serial is not found.",
+      "parentUuid": "741e62f5_342c1046",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 29
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_264b28b6",
         "filename": "cts/cts.py",
         "patchSetId": 4
