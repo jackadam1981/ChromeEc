@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "741e62f5_41b221e2",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-04T18:56:25Z",
+      "side": 1,
+      "message": "why is this file changing so much?",
+      "revId": "16976300e33c4522e093b7d5bf4bf6a019d1a4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "741e62f5_01a429a2",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-04T18:56:25Z",
+      "side": 1,
+      "message": "setting up i2c follows board specific mapping, should happen in a board/cr50 file.",
+      "revId": "16976300e33c4522e093b7d5bf4bf6a019d1a4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "741e62f5_81c35934",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-04T18:56:25Z",
+      "side": 1,
+      "message": "so, tpm_registers.o is included twice now - does not seem right.",
+      "revId": "16976300e33c4522e093b7d5bf4bf6a019d1a4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "741e62f5_a12a1de3",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-04T18:56:25Z",
+      "side": 1,
+      "message": "what about TPM_FW_VER - we want to access it too.",
+      "revId": "16976300e33c4522e093b7d5bf4bf6a019d1a4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "741e62f5_211e0dc7",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-04T18:56:25Z",
+      "side": 1,
+      "message": "this file\u0027s changes don\u0027t seem to be i2c driver related.",
+      "revId": "16976300e33c4522e093b7d5bf4bf6a019d1a4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
