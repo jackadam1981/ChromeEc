@@ -355,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "741e62f5_1471cc78",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-04T17:40:37Z",
+      "side": 1,
+      "message": "Ah ok I agree, I thought that you were talking about line 273 being !\u003d instead of \u003d\u003d. I didn\u0027t see the highlight when I responded.",
+      "parentUuid": "741e62f5_e916c1fd",
+      "range": {
+        "startLine": 274,
+        "startChar": 54,
+        "endLine": 274,
+        "endChar": 60
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_fbab9d6f",
         "filename": "cts/cts.py",
         "patchSetId": 4
@@ -414,6 +438,30 @@
       "side": 1,
       "message": "If the DUT doesn\u0027t use an st-link device, dut \u003d [], len(dut) !\u003d 1, then it raises RuntimeError. It\u0027s what we want, right?\n\nOr, are you saying this script works without hla_serial for DUT?",
       "parentUuid": "b411ba9a_dee0e5c2",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 29
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "741e62f5_342c1046",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-04T17:40:37Z",
+      "side": 1,
+      "message": "Yeah the script is supposed to work without an hla_serial for DUT, since not all boards have an hla_serial. The new patch (7) only raises RuntimeError when len(dut) \u003e\u003d 2, because then we don\u0027t know which one is the DUT.",
+      "parentUuid": "741e62f5_c925fd65",
       "range": {
         "startLine": 271,
         "startChar": 0,
