@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "74e10240_222a2ee5",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-08-04T03:48:54Z",
+      "side": 1,
+      "message": "Done. I change the name to EC_ACPI_DEVICE_ORIENTATION, and the board function rename to board_get_device_orientation()",
+      "parentUuid": "b411ba9a_64a84a27",
+      "range": {
+        "startLine": 172,
+        "startChar": 7,
+        "endLine": 172,
+        "endChar": 26
+      },
+      "revId": "521976d324da7da3b5346d68954fc48965938634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_c07a6c51",
         "filename": "common/acpi.c",
         "patchSetId": 4
