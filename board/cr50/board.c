@@ -503,28 +503,45 @@ void board_update_device_state(enum device_type device)
 	}
 }
 
+static uint32_t read_strapping_options(void)
+{
+	uint32_t properties = 0;
+
+	/* Read DIOA1 strap pin */
+	if (gpio_get_level(GPIO_STRAP0))
+		/* Strap is pulled high -> Kevin SPI TPM option */
+		properties |= BOARD_SLAVE_CONFIG_SPI;
+	else
+		/* Strap is low -> Reef I2C TPM option */
+		properties |= BOARD_SLAVE_CONFIG_I2C;
+	/* Write enable bit for LONG_LIFE_SCRATCH1 register */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
+	/* Save type in LONG_LIFE register */
+	GREG32(PMU, LONG_LIFE_SCRATCH1) = properties;
+	/* Clear enable bit of LONG_LIFE_SCRATCH1 register */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
+
+	return properties;
+}
+
 static void detect_slave_config(void)
 {
 	uint32_t properties = 0;
 
 	/* Check for power on reset */
 	if (system_get_reset_flags() & RESET_FLAG_POWER_ON) {
-		/* Read DIOA1 strap pin */
-		if (gpio_get_level(GPIO_STRAP0))
-			/* Strap is pulled high -> Kevin SPI TPM option */
-			properties |= BOARD_SLAVE_CONFIG_SPI;
-		else
-			/* Strap is low -> Reef I2C TPM option */
-			properties |= BOARD_SLAVE_CONFIG_I2C;
-		/* Write enable bit for LONG_LIFE_SCRATCH1 register */
-		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
-		/* Save type in LONG_LIFE register */
-		GREG32(PMU, LONG_LIFE_SCRATCH1) = properties;
-		/* Clear enable bit of LONG_LIFE_SCRATCH1 register */
-		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
+		properties = read_strapping_options();
 	} else {
 		/* Not a power on reset, so can read what was discovered */
 		properties = GREG32(PMU, LONG_LIFE_SCRATCH1);
+		if (!properties && system_get_reset_flags() & RESET_FLAG_HARD)
+			/*
+			 * This case is not expected, but covers situations
+			 * where Cr50 is upgraded from code that did not
+			 * previously store board configuraitons and does not
+			 * undergo a POR event following the FW upgrade.
+			 */
+			properties = read_strapping_options();
 	}
 	/* Save this configuration setting */
 	board_properties = properties;
