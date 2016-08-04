@@ -22,6 +22,30 @@
       "revId": "ae4bfa8228594f7a9e32f9971ad4607396f9c182",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "741e62f5_7417e856",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-04T16:49:16Z",
+      "side": 1,
+      "message": "I agree.  The timing here needs to be improved.  The idea is that packets are supposed to arrive every 625us.  The more you sleep here, the more power you save.  I\u0027ll change the comment to reflect that in the next version.\n\nThanks",
+      "parentUuid": "741e62f5_f4b4589b",
+      "range": {
+        "startLine": 530,
+        "startChar": 3,
+        "endLine": 530,
+        "endChar": 27
+      },
+      "revId": "ae4bfa8228594f7a9e32f9971ad4607396f9c182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
