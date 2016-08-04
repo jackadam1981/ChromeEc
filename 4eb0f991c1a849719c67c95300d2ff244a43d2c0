@@ -307,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "741e62f5_a3a78855",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-04T01:41:33Z",
+      "side": 1,
+      "message": "If there is just one serial, then it is the TH\u0027s serial, so we don\u0027t have to do anything else (return), because DUT doesn\u0027t have to have a serial. If there are two serials, then we want to distinguish the dut from the th, so we remove the TH\u0027s serial (refactored in newest patch). If there are more than 2, then it\u0027s an error because too many boards are attached.",
+      "parentUuid": "741e62f5_9aeaedde",
+      "range": {
+        "startLine": 274,
+        "startChar": 54,
+        "endLine": 274,
+        "endChar": 60
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_fbab9d6f",
         "filename": "cts/cts.py",
         "patchSetId": 4
