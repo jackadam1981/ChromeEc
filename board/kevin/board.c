@@ -467,7 +467,7 @@ struct motion_sensor_t motion_sensors[] = {
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S0] = {
 			 .odr = 10000 | ROUND_UP_FLAG,
-			 .ec_rate = 100,
+			 .ec_rate = 100 * MSEC,
 		 },
 		 /* Sensor off in S3/S5 */
 		 [SENSOR_CONFIG_EC_S3] = {
@@ -482,6 +482,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 },
 	},
 
+#ifdef BOARD_KEVIN
 	{.name = "Base Gyro",
 	 .active_mask = SENSOR_ACTIVE_S0,
 	 .chip = MOTIONSENSE_CHIP_BMI160,
@@ -493,11 +494,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .port = CONFIG_SPI_ACCEL_PORT,
 	 .addr = BMI160_SET_SPI_ADDRESS(CONFIG_SPI_ACCEL_PORT),
 	 .default_range = 1000, /* dps */
-#ifdef BOARD_KEVIN
 	 .rot_standard_ref = &base_standard_ref,
-#else
-	 .rot_standard_ref = NULL, /* Identity matrix. */
-#endif
 	 .config = {
 		 /* AP: by default shutdown all sensors */
 		 [SENSOR_CONFIG_AP] = {
@@ -506,8 +503,8 @@ struct motion_sensor_t motion_sensors[] = {
 		 },
 		 /* EC does not need in S0 */
 		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 0,
-			 .ec_rate = 0,
+			 .odr = 1600000 | ROUND_UP_FLAG,
+			 .ec_rate = 100 * MSEC,
 		 },
 		 /* Sensor off in S3/S5 */
 		 [SENSOR_CONFIG_EC_S3] = {
@@ -522,7 +519,6 @@ struct motion_sensor_t motion_sensors[] = {
 	 },
 	},
 
-#ifdef BOARD_KEVIN
 	{.name = "Lid Accel",
 	 .active_mask = SENSOR_ACTIVE_S0,
 	 .chip = MOTIONSENSE_CHIP_BMA255,
@@ -558,6 +554,42 @@ struct motion_sensor_t motion_sensors[] = {
 	 },
 	},
 #else
+	{.name = "Base Gyro",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_BMI160,
+	 .type = MOTIONSENSE_TYPE_GYRO,
+	 .location = MOTIONSENSE_LOC_BASE,
+	 .drv = &bmi160_drv,
+	 .mutex = &g_base_mutex,
+	 .drv_data = &g_bmi160_data,
+	 .port = CONFIG_SPI_ACCEL_PORT,
+	 .addr = BMI160_SET_SPI_ADDRESS(CONFIG_SPI_ACCEL_PORT),
+	 .default_range = 1000, /* dps */
+	 .rot_standard_ref = NULL, /* Identity matrix. */
+	 .config = {
+		 /* AP: by default shutdown all sensors */
+		 [SENSOR_CONFIG_AP] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
+		 /* EC does not need in S0 */
+		 [SENSOR_CONFIG_EC_S0] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S3] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S5] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
+	 },
+	},
+
 	{.name = "Lid Accel",
 	 .active_mask = SENSOR_ACTIVE_S0,
 	 .chip = MOTIONSENSE_CHIP_KX022,
