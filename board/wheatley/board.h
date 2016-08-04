@@ -148,6 +148,10 @@
 #undef CONFIG_CMD_TIMERINFO
 #undef CONFIG_CONSOLE_CMDHELP
 
+/* Features of eSPI */
+#undef CONFIG_ESPI       /* Used eSPI protocol for host interface of x86 CPU */
+#undef CONFIG_VW_SIGNALS /* Used VW signals instead of GPIOs */
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
