@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "741e62f5_f4b4589b",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-04T16:26:19Z",
+      "side": 1,
+      "message": "Comment makes no sense.  Is there a 325us delay in ble_test_rx()?",
+      "range": {
+        "startLine": 530,
+        "startChar": 3,
+        "endLine": 530,
+        "endChar": 27
+      },
+      "revId": "ae4bfa8228594f7a9e32f9971ad4607396f9c182",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
