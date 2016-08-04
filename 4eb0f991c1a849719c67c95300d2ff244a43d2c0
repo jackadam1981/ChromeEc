@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "741e62f5_e916c1fd",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-04T15:35:52Z",
+      "side": 1,
+      "message": "I still think it should be !\u003d because you\u0027re trying to select all serials that are not equal to self.th.hla_serial. \u0027not in\u0027 here means TH\u0027s serial as a string is not included in each serial as a string.",
+      "parentUuid": "741e62f5_a3a78855",
+      "range": {
+        "startLine": 274,
+        "startChar": 54,
+        "endLine": 274,
+        "endChar": 60
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_fbab9d6f",
         "filename": "cts/cts.py",
         "patchSetId": 4
@@ -366,6 +390,30 @@
       "side": 1,
       "message": "If the DUT does not use an st-link device then it won\u0027t return a serial",
       "parentUuid": "ef90b9cc_fbab9d6f",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 29
+      },
+      "revId": "4eb0f991c1a849719c67c95300d2ff244a43d2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "741e62f5_c925fd65",
+        "filename": "cts/cts.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-04T15:35:52Z",
+      "side": 1,
+      "message": "If the DUT doesn\u0027t use an st-link device, dut \u003d [], len(dut) !\u003d 1, then it raises RuntimeError. It\u0027s what we want, right?\n\nOr, are you saying this script works without hla_serial for DUT?",
+      "parentUuid": "b411ba9a_dee0e5c2",
       "range": {
         "startLine": 271,
         "startChar": 0,
