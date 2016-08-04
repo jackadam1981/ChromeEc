@@ -16,6 +16,24 @@
       "revId": "331ab9cbd3a4b876ae3d2df96cd3f6c2f7349403",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4797274_f6a2e094",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-04T20:48:44Z",
+      "side": 0,
+      "message": "I removed them because the SDA pin is used both as a GPIO input to read the strapping option(s) and then possibly used as the I2C0_SDA pin. Instead of deleting this section, I have replaced it with a commented out version that describes more accurately what\u0027s being done.",
+      "parentUuid": "741e62f5_a1b53dca",
+      "revId": "331ab9cbd3a4b876ae3d2df96cd3f6c2f7349403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

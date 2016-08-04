@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "741e62f5_c4f95f72",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-04T20:48:44Z",
+      "side": 1,
+      "message": "I guess that happened when I did the rebase m/master and I didn\u0027t look too closely at the result. I have fixed it now so the only change is the addition of chip-$(CONFIG_I2C_SLAVE)+\u003d i2cs.o",
+      "parentUuid": "741e62f5_41b221e2",
+      "revId": "16976300e33c4522e093b7d5bf4bf6a019d1a4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "741e62f5_01a429a2",
         "filename": "chip/g/i2cs.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2016-08-04T18:56:25Z",
       "side": 1,
       "message": "setting up i2c follows board specific mapping, should happen in a board/cr50 file.",
+      "revId": "16976300e33c4522e093b7d5bf4bf6a019d1a4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4797274_b6d30805",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-04T20:48:44Z",
+      "side": 1,
+      "message": "I have moved everything that\u0027s specific to A1/A9 which I believe captures all of the board specific setup for I2CS to a function i2cs_set_pinmux() which is in board.c.",
+      "parentUuid": "741e62f5_01a429a2",
       "revId": "16976300e33c4522e093b7d5bf4bf6a019d1a4b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "741e62f5_0452f76a",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-04T20:48:44Z",
+      "side": 1,
+      "message": "Bill suggested that I replace both of these with common-$(HAS_TASK_TPM)+\u003dtpm_registers.o so that it works for both SPS and I2C configs.",
+      "parentUuid": "741e62f5_81c35934",
+      "revId": "16976300e33c4522e093b7d5bf4bf6a019d1a4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "741e62f5_a12a1de3",
         "filename": "common/i2cs_tpm.c",
         "patchSetId": 2
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "741e62f5_643df30e",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-04T20:48:44Z",
+      "side": 1,
+      "message": "For this patch, my goal was to put in the changes required to get the I2CS bus working on Reef and have its initialization dependent on reading the strapping pin. My thought was that there may be other changes required to support the TPM piece and those would be in a subsequent CL.",
+      "parentUuid": "741e62f5_a12a1de3",
+      "revId": "16976300e33c4522e093b7d5bf4bf6a019d1a4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "741e62f5_211e0dc7",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -81,6 +153,47 @@
       "writtenOn": "2016-08-04T18:56:25Z",
       "side": 1,
       "message": "this file\u0027s changes don\u0027t seem to be i2c driver related.",
+      "revId": "16976300e33c4522e093b7d5bf4bf6a019d1a4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7483c255_ac043fe6",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-04T20:48:44Z",
+      "side": 1,
+      "message": "Do you want me to split this changes out into a different CL? They are here because they were in patch set 1 so they came along for the ride when I cherry picked that and rebased against TOT.",
+      "parentUuid": "741e62f5_211e0dc7",
+      "revId": "16976300e33c4522e093b7d5bf4bf6a019d1a4b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "546b1e9b_59cd835d",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-04T20:48:44Z",
+      "side": 1,
+      "message": "Looking at these changes I noticed the 63 here. I assume this should be 64 as it is in the tpm_init() function. Should this number be converted to a #define so that it\u0027s guaranteed to be consistent where it\u0027s used?",
+      "range": {
+        "startLine": 455,
+        "startChar": 2,
+        "endLine": 455,
+        "endChar": 37
+      },
       "revId": "16976300e33c4522e093b7d5bf4bf6a019d1a4b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
