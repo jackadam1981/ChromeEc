@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "741e62f5_8f5ce582",
+        "filename": "cts/cts.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-04T17:51:37Z",
+      "side": 1,
+      "message": "i +\u003d 1 ?\n\nA little weird this is consuming multiple lines of output but not changing i.",
+      "range": {
+        "startLine": 470,
+        "startChar": 12,
+        "endLine": 470,
+        "endChar": 17
+      },
+      "revId": "fe05b8eea2d4811628a69dc9d267bf73c558707e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
