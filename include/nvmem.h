@@ -55,6 +55,12 @@
  *   sum(user sizes) <= (CONFIG_FLASH_NVMEM_SIZE / 2) - sizeof(struct nvmem_tag)
  */
 
+enum nvmem_error {
+	NV_SUCCESS = 0,
+	NV_ERR_CACHE_ACCESS = 1,
+	NV_ERR_BUFFER_OVERFLOW = 2,
+};
+
 /* NvMem user buffer length table */
 extern uint32_t nvmem_user_sizes[NVMEM_NUM_USERS];
 
