@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "597357d0_0db9412c",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-05T20:02:10Z",
+      "side": 1,
+      "message": "return !!(value \u0026 vw_events_list[sig_idx].evt_val);",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 11
+      },
+      "revId": "3ad56d1136aa80e130d79d894515212cd7c5d34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597357d0_2d0445e6",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-05T20:02:10Z",
+      "side": 1,
+      "message": "int",
+      "range": {
+        "startLine": 575,
+        "startChar": 1,
+        "endLine": 575,
+        "endChar": 8
+      },
+      "revId": "3ad56d1136aa80e130d79d894515212cd7c5d34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597357d0_0deb8110",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-05T20:02:10Z",
+      "side": 1,
+      "message": "Enable",
+      "range": {
+        "startLine": 631,
+        "startChar": 4,
+        "endLine": 631,
+        "endChar": 10
+      },
+      "revId": "3ad56d1136aa80e130d79d894515212cd7c5d34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597357d0_0d786187",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-05T20:02:10Z",
+      "side": 1,
+      "message": "Swap order of clauses",
+      "range": {
+        "startLine": 798,
+        "startChar": 0,
+        "endLine": 798,
+        "endChar": 19
+      },
+      "revId": "3ad56d1136aa80e130d79d894515212cd7c5d34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597357d0_2d81a55e",
+        "filename": "chip/npcx/lpc_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-05T20:02:10Z",
+      "side": 1,
+      "message": "Swap order of clauses.\n\nIn general,\n\n#ifdef FOO\n...stuff A\n#else\n...stuff B\n#endif\n\nis more readable than\n\n#ifndef FOO\n...stuff B\n#else\n...stuff A\n#endif",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 6
+      },
+      "revId": "3ad56d1136aa80e130d79d894515212cd7c5d34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597357d0_ad429545",
+        "filename": "include/espi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-05T20:02:10Z",
+      "side": 1,
+      "message": "level?  value?",
+      "range": {
+        "startLine": 49,
+        "startChar": 56,
+        "endLine": 49,
+        "endChar": 60
+      },
+      "revId": "3ad56d1136aa80e130d79d894515212cd7c5d34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597357d0_0d1dc164",
+        "filename": "include/espi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-05T20:02:10Z",
+      "side": 1,
+      "message": "signal?",
+      "range": {
+        "startLine": 49,
+        "startChar": 41,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "3ad56d1136aa80e130d79d894515212cd7c5d34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597357d0_6d355dde",
+        "filename": "include/espi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-05T20:02:10Z",
+      "side": 1,
+      "message": "signal?",
+      "range": {
+        "startLine": 57,
+        "startChar": 41,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "3ad56d1136aa80e130d79d894515212cd7c5d34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597357d0_4d3419e0",
+        "filename": "include/espi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-05T20:02:10Z",
+      "side": 1,
+      "message": "enable",
+      "range": {
+        "startLine": 62,
+        "startChar": 35,
+        "endLine": 62,
+        "endChar": 41
+      },
+      "revId": "3ad56d1136aa80e130d79d894515212cd7c5d34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
