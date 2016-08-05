@@ -268,7 +268,7 @@ void sps_tpm_enable(void)
 	init_new_cycle();
 }
 
-static void sps_tpm_disable(void)
+void sps_tpm_disable(void)
 {
 	sps_tpm_state = SPS_TPM_STATE_PONDERING;
 	sps_unregister_rx_handler();
