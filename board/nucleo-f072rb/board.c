@@ -8,6 +8,7 @@
 #include "hooks.h"
 #include "registers.h"
 #include "task.h"
+#include "gpio.h"
 
 void button_event(enum gpio_signal signal)
 {
@@ -15,6 +16,15 @@ void button_event(enum gpio_signal signal)
 }
 
 #include "gpio_list.h"
+
+#ifdef CTS_MODULE
+#include "i2c.h"
+const struct i2c_port_t i2c_ports[]  = {
+	{"test", STM32_I2C1_PORT, 1000, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
+};
+
+const unsigned int i2c_ports_used = 1;
+#endif
 
 void tick_event(void)
 {

@@ -331,8 +331,8 @@ int i2c_raw_mode(int port, int enable)
 		ret_sda = gpio_config_pin(MODULE_I2C, sda, 0);
 		ret_scl = gpio_config_pin(MODULE_I2C, scl, 0);
 
-		gpio_set_flags(scl, GPIO_ODR_HIGH);
-		gpio_set_flags(sda, GPIO_ODR_HIGH);
+		gpio_set_flags(scl, GPIO_OUT_HIGH);
+		gpio_set_flags(sda, GPIO_OUT_HIGH);
 	} else {
 		/*
 		 * Configure the I2C pins to exit raw mode and return

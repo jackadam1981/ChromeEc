@@ -15,6 +15,11 @@
 #undef CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 2
 
+#ifdef CTS_MODULE
+#define CONFIG_I2C
+#define CONFIG_I2C_MASTER
+#endif
+
 /* Optional features */
 #define CONFIG_STM_HWTIMER32
 
