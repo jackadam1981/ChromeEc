@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "597357d0_a8d0434d",
+        "filename": "test/tpm_test/ftdi_spi_tpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-05T21:04:28Z",
+      "side": 1,
+      "message": "Oh, duh. Stand by...",
+      "parentUuid": "597357d0_82ff60cd",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 42
+      },
+      "revId": "530d85547dabf48e203ebebdcd8233181847cb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "597357d0_220454e6",
         "filename": "test/tpm_test/mpsse.h",
         "patchSetId": 2
