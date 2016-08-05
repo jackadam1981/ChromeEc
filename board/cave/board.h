@@ -49,6 +49,7 @@
 #define CONFIG_CHIPSET_SKYLAKE
 #define CONFIG_CHIPSET_RESET_HOOK
 #define CONFIG_CLOCK_CRYSTAL
+#define CONFIG_DPTF_TABLE_MODE_SWITCH
 #define CONFIG_EXTPOWER_GPIO
 #define CONFIG_HOSTCMD_PD
 #define CONFIG_I2C
@@ -244,6 +245,8 @@ enum pwm_channel {
 void board_reset_pd_mcu(void);
 
 int board_get_version(void);
+
+int board_get_device_orientation(void);
 
 /* Reset RTC */
 void board_rtc_reset(void);

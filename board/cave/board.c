@@ -668,3 +668,17 @@ void lid_angle_peripheral_enable(int enable)
 	}
 }
 #endif
+
+int board_get_device_orientation(void)
+{
+	int i = 0;
+
+	if (!gpio_get_level(GPIO_TABLET_MODE_L)) {
+		CPRINTS("cave: send tablet mode flag");
+		i |= 0x01;
+	} else {
+		CPRINTS("cave: send nb mode flag");
+	}
+
+	return i;
+}
