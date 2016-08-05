@@ -31,17 +31,31 @@
 #include "cryptoc/sha.h"
 
 /*
- * TODO: NV_MEMORY_SIZE is defined in 2 places. Here and in
- * /src/third_party/tmp2/Implementation.h. This needs to be
- * fixed so that it's only defined in one location to ensure that the TPM2.0 lib
- * code and the NvMem code specific to Cr50 is consistent. Will
- * either reference existing issue or create one to track
- * this as ultimately only want this defined in 1 place.
+ * Need to include Implementation.h here to make sure that NVRAM size
+ * definitions match across different git repos.
+ *
+ * MAX() definition from include/utils.h does not work in Implementation.h, as
+ * it is used in a preprocessor expression there.
+ *
+ * To untangle compiler errors let's just undefine MAX() here, as it is not
+ * necessary in this case: all we want from Implementation.h at this point is
+ * the definition for NV_MEMORY_SIZE.
  */
-#define NV_MEMORY_SIZE 7168
-#define NVMEM_TPM_SIZE NV_MEMORY_SIZE
-#define NVMEM_CR50_SIZE (NVMEM_PARTITION_SIZE - NVMEM_TPM_SIZE - \
-			sizeof(struct nvmem_tag))
+#undef MAX
+#include "Implementation.h"
+
+#define NVMEM_CR50_SIZE 300
+#define NVMEM_TPM_SIZE ((sizeof((struct nvmem_partition *)0)->buffer) \
+			- NVMEM_CR50_SIZE)
+
+/*
+ * Make sure NV memory size deifiniton in Implementation.h matches reality. It
+ * should be set to
+ *
+ * NVMEM_PARTITION_SIZE - NVMEM_CR50_SIZE - 8
+ */
+BUILD_ASSERT(NVMEM_TPM_SIZE == NV_MEMORY_SIZE);
+
 /* NvMem user buffer lengths table */
 uint32_t nvmem_user_sizes[NVMEM_NUM_USERS] = {
 	NVMEM_TPM_SIZE,
