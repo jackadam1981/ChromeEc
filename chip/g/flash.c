@@ -353,10 +353,9 @@ int flash_physical_info_read_word(int byte_offset, uint32_t *dst)
 void flash_info_write_enable(void)
 {
 	/* Enable R/W access to INFO. */
-	GREG32(GLOBALSEC, FLASH_REGION3_BASE_ADDR) = FLASH_INFO_MEMORY_BASE +
-		FLASH_INFO_MANUFACTURE_STATE_OFFSET;
+	GREG32(GLOBALSEC, FLASH_REGION3_BASE_ADDR) = FLASH_INFO_MEMORY_BASE;
 	GREG32(GLOBALSEC, FLASH_REGION3_SIZE) =
-		FLASH_INFO_MANUFACTURE_STATE_SIZE - 1;
+		FLASH_INFO_SIZE - 1;
 	GREG32(GLOBALSEC, FLASH_REGION3_CTRL) =
 		GC_GLOBALSEC_FLASH_REGION3_CTRL_EN_MASK |
 		GC_GLOBALSEC_FLASH_REGION3_CTRL_WR_EN_MASK |
@@ -404,3 +403,50 @@ int flash_physical_erase(int byte_offset, int num_bytes)
 
 	return EC_SUCCESS;
 }
+
+static int command_read_info(int argc, char **argv)
+{
+	uint8_t offset = 0;
+	uint32_t data = 0;
+	int result;
+
+	if (argc >= 2) {
+		char *e;
+		offset = strtoi(argv[1], &e, 16);
+		if (*e)
+			return EC_ERROR_PARAM1;
+	}
+	flash_info_write_enable();
+	result = flash_physical_info_read_word(512 + offset * 4, &data);
+	CPRINTF("%08x: %08x\n", 512 + offset * 4, data);
+	flash_info_write_disable();
+	return result;
+}
+
+DECLARE_CONSOLE_COMMAND(read_info, command_read_info,
+			"[offset]",
+			"read info word",
+			NULL);
+
+static int command_write_info(int argc, char **argv)
+{
+	uint8_t offset = 0;
+	uint32_t data = 0;
+	int result;
+
+	if (argc >= 2) {
+		char *e;
+		offset = strtoi(argv[1], &e, 16);
+		if (*e)
+			return EC_ERROR_PARAM1;
+	}
+	flash_info_write_enable();
+	result = flash_info_physical_write(512 + offset * 4, 4, (const uint8_t*)&data);
+	flash_info_write_disable();
+	return result;
+}
+
+DECLARE_CONSOLE_COMMAND(write_info, command_write_info,
+			"[offset]",
+			"write 0 to info word",
+			NULL);
