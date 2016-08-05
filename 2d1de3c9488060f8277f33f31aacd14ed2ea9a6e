@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "597357d0_025b508a",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-05T18:22:30Z",
+      "side": 1,
+      "message": "Could you also bring in the definition for ANX74XX_REG_ANALOG_CTRL_6, ANX74XX_REG_CC_PULL_RP_12K and ANX74XX_REG_CC_PULL_RP_4K in this patch?",
+      "range": {
+        "startLine": 594,
+        "startChar": 5,
+        "endLine": 594,
+        "endChar": 7
+      },
+      "revId": "2d1de3c9488060f8277f33f31aacd14ed2ea9a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
