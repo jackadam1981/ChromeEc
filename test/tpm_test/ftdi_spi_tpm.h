@@ -3,8 +3,8 @@
  * found in the LICENSE file.
  */
 
-#ifndef __EC_TEST_TPM_TEST_FTDI_SPI_TPM_H
-#define __EC_TEST_TPM_TEST_FTDI_SPI_TPM_H
+#ifndef __ECC_TEST_TPM_TEST_FTDI_SPI_TPM_H
+#define __ECC_TEST_TPM_TEST_FTDI_SPI_TPM_H
 
 #include "mpsse.h"
 
@@ -22,4 +22,4 @@ void FtdiStop(void);
 struct swig_string_data FtdiSendCommandAndWait(char *tpm_command,
 					       int command_size);
 
-#endif				/* ! __EC_TEST_TPM_TEST_FTDI_SPI_TPM_H */
+#endif				/* ! __ECC_TEST_TPM_TEST_FTDI_SPI_TPM_H */

@@ -6,8 +6,8 @@
  * https://github.com/devttys0/libmpsse
  */
 
-#ifndef __EC_TEST_TPM_TEST_SUPPORT_H
-#define __EC_TEST_TPM_TEST_SUPPORT_H
+#ifndef __ECC_TEST_TPM_TEST_SUPPORT_H
+#define __ECC_TEST_TPM_TEST_SUPPORT_H
 
 #include "mpsse.h"
 
@@ -84,4 +84,4 @@ int set_bits_low(struct mpsse_context *mpsse, int port);
 int gpio_write(struct mpsse_context *mpsse, int pin, int direction);
 int is_valid_context(struct mpsse_context *mpsse);
 
-#endif  /* ! __EC_TEST_TPM_TEST_SUPPORT_H */
+#endif  /* ! __ECC_TEST_TPM_TEST_SUPPORT_H */

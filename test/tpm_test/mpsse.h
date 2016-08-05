@@ -6,8 +6,8 @@
  * https://github.com/devttys0/libmpsse
  */
 
-#ifndef __EC_TEST_TPM_TEST_MPSSE_H
-#define __EC_TEST_TPM_TEST_MPSSE_H
+#ifndef __ECC_TEST_TPM_TEST_MPSSE_H
+#define __ECC_TEST_TPM_TEST_MPSSE_H
 
 #define MPSSE_OK		0
 #define MPSSE_FAIL		-1
@@ -42,4 +42,4 @@ int PinHigh(struct mpsse_context *mpsse, int pin);
 int PinLow(struct mpsse_context *mpsse, int pin);
 int Start(struct mpsse_context *mpsse);
 
-#endif  /* ! __EC_TEST_TPM_TEST_MPSSE_H */
+#endif  /* ! __ECC_TEST_TPM_TEST_MPSSE_H */
