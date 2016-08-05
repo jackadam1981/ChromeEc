@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f4797274_c5ffe4cc",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-05T07:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b411ba9a_a7e9a4b2",
+      "range": {
+        "startLine": 55,
+        "startChar": 22,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "43369a595d16a9664384876195bac0dde8b97435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b411ba9a_8a074fc7",
         "filename": "chip/stm32/flash-stm32f4.c",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-03T17:18:36Z",
       "side": 1,
       "message": "This can be just\n\nreturn entire_flash_locked ? EC_FLASH_PROTECT_ALL_NOW : 0;",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 14
+      },
+      "revId": "43369a595d16a9664384876195bac0dde8b97435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4797274_65f9b0e4",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-05T07:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b411ba9a_8a074fc7",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f4797274_450834d8",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-05T07:20:56Z",
+      "side": 1,
+      "message": "Setting FLASH_CR_LOCK can be unlocked again with the key, but failing the key check locks until reboot. So this implements write protect securely.",
+      "parentUuid": "b411ba9a_8ad8ef46",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 32
+      },
+      "revId": "43369a595d16a9664384876195bac0dde8b97435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b411ba9a_6abdb3cc",
         "filename": "chip/stm32/flash-stm32f4.c",
         "patchSetId": 11
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "145606ee_e42ce0b4",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-05T07:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b411ba9a_6abdb3cc",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 20
+      },
+      "revId": "43369a595d16a9664384876195bac0dde8b97435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b411ba9a_aab7abd1",
         "filename": "chip/stm32/flash-stm32f4.c",
         "patchSetId": 11
@@ -105,6 +201,30 @@
       "writtenOn": "2016-08-03T17:18:36Z",
       "side": 1,
       "message": "This function should return false when it timed out.",
+      "range": {
+        "startLine": 168,
+        "startChar": 7,
+        "endLine": 168,
+        "endChar": 11
+      },
+      "revId": "43369a595d16a9664384876195bac0dde8b97435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1461a6bb_0051cc62",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-05T07:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b411ba9a_aab7abd1",
       "range": {
         "startLine": 168,
         "startChar": 7,
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "1942bf4c_cfbebda5",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-05T07:20:56Z",
+      "side": 1,
+      "message": "Switched to usleep, with a smaller value, since writes should take a very short time compared to erase.",
+      "parentUuid": "b411ba9a_6dfaed66",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 3
+      },
+      "revId": "43369a595d16a9664384876195bac0dde8b97435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b411ba9a_e7871c0d",
         "filename": "chip/stm32/flash-stm32f4.c",
         "patchSetId": 11
@@ -181,6 +325,24 @@
     },
     {
       "key": {
+        "uuid": "1942bf4c_cfe7dddb",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-05T07:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b411ba9a_e7871c0d",
+      "revId": "43369a595d16a9664384876195bac0dde8b97435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b411ba9a_8ab46fce",
         "filename": "chip/stm32/flash-stm32f4.c",
         "patchSetId": 11
@@ -192,6 +354,30 @@
       "writtenOn": "2016-08-03T17:18:36Z",
       "side": 1,
       "message": "All these calls to flash_idle should check timeout.",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 11
+      },
+      "revId": "43369a595d16a9664384876195bac0dde8b97435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1942bf4c_8f32f556",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-05T07:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b411ba9a_8ab46fce",
       "range": {
         "startLine": 201,
         "startChar": 1,
@@ -227,6 +413,30 @@
     },
     {
       "key": {
+        "uuid": "1942bf4c_6f011160",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-05T07:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b411ba9a_0ad4ffeb",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 36
+      },
+      "revId": "43369a595d16a9664384876195bac0dde8b97435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b411ba9a_4a28b7ed",
         "filename": "chip/stm32/flash-stm32f4.c",
         "patchSetId": 11
@@ -238,6 +448,30 @@
       "writtenOn": "2016-08-03T17:18:36Z",
       "side": 1,
       "message": "Do you have to do this every time you write a word? Ether way, you only need this or the one outside the loop.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 32
+      },
+      "revId": "43369a595d16a9664384876195bac0dde8b97435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1942bf4c_4f064d7a",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-05T07:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b411ba9a_4a28b7ed",
       "range": {
         "startLine": 220,
         "startChar": 0,
@@ -273,6 +507,30 @@
     },
     {
       "key": {
+        "uuid": "1942bf4c_2ffb096a",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-05T07:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b411ba9a_0a123f59",
+      "range": {
+        "startLine": 223,
+        "startChar": 15,
+        "endLine": 223,
+        "endChar": 19
+      },
+      "revId": "43369a595d16a9664384876195bac0dde8b97435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b411ba9a_4799d072",
         "filename": "chip/stm32/flash-stm32f4.c",
         "patchSetId": 11
@@ -284,6 +542,30 @@
       "writtenOn": "2016-08-03T17:18:36Z",
       "side": 1,
       "message": "Can we call flash_idle?",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 3
+      },
+      "revId": "43369a595d16a9664384876195bac0dde8b97435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1942bf4c_0f004558",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-05T07:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b411ba9a_4799d072",
       "range": {
         "startLine": 326,
         "startChar": 0,
