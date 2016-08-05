@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "597357d0_62a56ca0",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-05T18:13:44Z",
+      "side": 1,
+      "message": "so, can you not just do the same thing and add something like\n\n( ../../tpm2/*.o)(.bss)\n\nhere and be done with it?",
+      "revId": "dcbca30111dc34d21c1eda6e40714d78b369275b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
