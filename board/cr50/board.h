@@ -127,6 +127,9 @@ void sys_rst_asserted(enum gpio_signal signal);
 void device_state_on(enum gpio_signal signal);
 void device_state_off(enum gpio_signal signal);
 
+/* Event to request a reset/re-initialization of the TPM task */
+#define TPM_EVENT_RESET (TASK_EVENT_CUSTOM(1))
+
 #endif /* !__ASSEMBLER__ */
 
 /* USB interface indexes (use define rather than enum to expand them) */

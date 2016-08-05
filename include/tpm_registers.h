@@ -25,6 +25,8 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size);
 
 /* Enable SPS TPM driver. */
 void sps_tpm_enable(void);
+/* Disable SPS TPM driver. */
+void sps_tpm_disable(void);
 
 /*
  * This structure describes the header of all commands and responses sent and
