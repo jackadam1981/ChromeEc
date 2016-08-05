@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "597357d0_1f4debc9",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-05T17:36:38Z",
+      "side": 1,
+      "message": "this function is not just reading the strapping options, it also is saving them in the register.\n\nThis could have been a smaller change if you just did this in the beginning of detect_slave_config()\n\nstatic void detect_slave_config(void)\n{\n    porperties \u003d GREG32(PMU, LONG_LIFE_SCRATCH1);\n\n    if ((system_get_reset_flags() \u0026 RESET_FLAG_POWER_ON) || (!properties  \u0026\u0026 (system_get_reset_flags() \u0026 RESET_FLAG_HARD)))) {\n\nand the rest would stay the same.",
+      "revId": "331ab9cbd3a4b876ae3d2df96cd3f6c2f7349403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
