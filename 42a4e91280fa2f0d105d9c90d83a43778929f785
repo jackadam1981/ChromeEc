@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "99a22f7b_032cceb0",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-08-06T05:19:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "597357d0_f8c1282d",
+      "revId": "42a4e91280fa2f0d105d9c90d83a43778929f785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "597357d0_b8cbb049",
         "filename": "chip/npcx/registers.h",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2016-08-06T02:11:45Z",
       "side": 1,
       "message": "Change \"max frequency\" to \"operating frequency\"",
+      "revId": "42a4e91280fa2f0d105d9c90d83a43778929f785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99a22f7b_2331ca07",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1411,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-08-06T05:19:10Z",
+      "side": 1,
+      "message": "I think \"max supported freq\" is better since only host has power to decide which freq of bus is used.",
+      "parentUuid": "597357d0_b8cbb049",
       "revId": "42a4e91280fa2f0d105d9c90d83a43778929f785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
