@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "597357d0_22a3efb1",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-06T01:06:44Z",
+      "side": 1,
+      "message": "Need to delete this, since the file is gone.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "6b20ae851b7bd16925b44958fb37ddc23c3eb7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597357d0_45f14d97",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-06T01:06:44Z",
+      "side": 1,
+      "message": "You don\u0027t mention this anywhere, but you deleted CONFIG_RBOX_DEBUG.  Just take the #ifdef out completely.",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "6b20ae851b7bd16925b44958fb37ddc23c3eb7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597357d0_658b3116",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-06T01:06:44Z",
+      "side": 1,
+      "message": "These should be in numerical order, if you\u0027re going to loop between AC_PRESENT_FED and PWRB_IN_RED below.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 77
+      },
+      "revId": "6b20ae851b7bd16925b44958fb37ddc23c3eb7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597357d0_e51c2179",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-06T01:06:44Z",
+      "side": 1,
+      "message": "really?",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "6b20ae851b7bd16925b44958fb37ddc23c3eb7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597357d0_e532e157",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-06T01:06:44Z",
+      "side": 1,
+      "message": "This doesn\u0027t do what the comments say. This does:\n\n/* disable wake and clear mask */\nGREG32(RBOX, WAKEUP) \u003d GC_RBOX_WAKEUP_CLEAR_MASK;\nGREG32(RBOX, WAKEUP) \u003d 0;",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 31
+      },
+      "revId": "6b20ae851b7bd16925b44958fb37ddc23c3eb7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
