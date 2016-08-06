@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99a22f7b_839c3e01",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-08-06T00:41:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "597357d0_6d223dc3",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 38
+      },
+      "revId": "c2a2f5b2bfbc9e02b345949c049b7347e540b2fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "597357d0_2d5a0559",
         "filename": "power/skylake.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-05T19:50:42Z",
       "side": 1,
       "message": "Swap order, so it starts\n\n#ifdef CONFIG_VW_SIGNALS",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 6
+      },
+      "revId": "c2a2f5b2bfbc9e02b345949c049b7347e540b2fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99a22f7b_a3993a10",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-08-06T00:41:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "597357d0_2d5a0559",
       "range": {
         "startLine": 68,
         "startChar": 0,
