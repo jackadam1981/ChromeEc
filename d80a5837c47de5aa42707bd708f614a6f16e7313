@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "79cd7b78_82ef1aed",
+        "filename": "common/nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-07T20:41:38Z",
+      "side": 1,
+      "message": "so, this is called nvmem_is_unitialized(), but in fact it initializes one partition?\n\nHow does the second partition get initialized?",
+      "revId": "d80a5837c47de5aa42707bd708f614a6f16e7313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_a2f33ed6",
+        "filename": "common/nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-07T20:41:38Z",
+      "side": 1,
+      "message": "here and in other places in this file:\n\nshould it be using flash_{read,write,erase}() as opposed to flash_physical_{read,write,erase}() ?",
+      "range": {
+        "startLine": 155,
+        "startChar": 5,
+        "endLine": 155,
+        "endChar": 25
+      },
+      "revId": "d80a5837c47de5aa42707bd708f614a6f16e7313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "598ee9f0_e3e98cf2",
         "filename": "common/nvmem.c",
         "patchSetId": 6
