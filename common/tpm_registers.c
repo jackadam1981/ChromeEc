@@ -14,6 +14,7 @@
 #include "extension.h"
 #include "nvmem.h"
 #include "printf.h"
+#include "registers.h"
 #include "signed_header.h"
 #include "system.h"
 #include "task.h"
@@ -508,9 +509,15 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 
 void convert_to_new_layout(void);
 
-static void tpm_init(void)
+static int tpm_init(void)
 {
 	convert_to_new_layout();
+	if (GREG32(PMU, LONG_LIFE_SCRATCH0) > 50) {
+		ccprintf("%s: "
+			 "Rolling reboots suspected, will not initialize tpm\n",
+			 __func__);
+		return ~EC_SUCCESS;
+	}
 
 	set_tpm_state(tpm_state_idle);
 	tpm_.regs.access = tpm_reg_valid_sts;
@@ -542,6 +549,7 @@ static void tpm_init(void)
 	}
 
 	_plat__SetNvAvail();
+	return EC_SUCCESS;
 }
 
 #ifdef CONFIG_EXTENSION_COMMAND
@@ -575,7 +583,9 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 
 void tpm_task(void)
 {
-	tpm_init();
+	if (tpm_init() != EC_SUCCESS)
+		return;
+
 	sps_tpm_enable();
 	while (1) {
 		uint8_t *response;
