@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "597357d0_3c38fdf1",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "Please add comment to the code.",
+      "parentUuid": "f4797274_450834d8",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 32
+      },
+      "revId": "43369a595d16a9664384876195bac0dde8b97435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b411ba9a_6abdb3cc",
         "filename": "chip/stm32/flash-stm32f4.c",
         "patchSetId": 11
@@ -296,6 +320,30 @@
       "side": 1,
       "message": "Switched to usleep, with a smaller value, since writes should take a very short time compared to erase.",
       "parentUuid": "b411ba9a_6dfaed66",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 3
+      },
+      "revId": "43369a595d16a9664384876195bac0dde8b97435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597357d0_fcfb6513",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "Could comment that?",
+      "parentUuid": "1942bf4c_cfbebda5",
       "range": {
         "startLine": 174,
         "startChar": 1,
