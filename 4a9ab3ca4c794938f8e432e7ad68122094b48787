@@ -1,0 +1,302 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79cd7b78_cb45bd51",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "Could you be consistent with function comments? Some functions have no comments, some have comments only on return values, some have a full description.",
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_6b391187",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "Need a newline.",
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_6b16714f",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "It would be nice this and wait_fmpi2c_isr_poll are united. Only difference is error bit positions. I would do: \n\nwait_sr1_poll(...)\n{\n        wait_sr_poll(STM32_I2C_SR1_ARLO | STM32_I2C_SR1_BERR |\n\t\t\t   STM32_I2C_SR1_AF, ...);\n}\n\nwait_fmpi2c_isr_poll(...)\n{\n        wait_sr_poll(FMPI2C_ISR_ARLO | FMPI2C_ISR_BERR |\n\t\t\t   FMPI2C_ISR_NACKF, ...);\n}",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 24
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_2b22a9c1",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "nit: m:0x%08x",
+      "range": {
+        "startLine": 148,
+        "startChar": 28,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_0b9a4503",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "This assignment is unused.",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 6
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_2b50e939",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "Unused assignment.",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 6
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_cb605d0e",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "nit: NULL",
+      "range": {
+        "startLine": 201,
+        "startChar": 8,
+        "endLine": 201,
+        "endChar": 9
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_0bcec5b1",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "nit: Could you rewrite this ~(x | y | ... ) as you did in fmpi2c_clear_regs and i2c_clear_regs?",
+      "range": {
+        "startLine": 258,
+        "startChar": 8,
+        "endLine": 260,
+        "endChar": 59
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_cbea1d0b",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "What does 0 mean? Can you name it?",
+      "range": {
+        "startLine": 274,
+        "startChar": 16,
+        "endLine": 274,
+        "endChar": 17
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_cb069dcc",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "Where is this declared? I don\u0027t see it in any header files.",
+      "range": {
+        "startLine": 366,
+        "startChar": 4,
+        "endLine": 366,
+        "endChar": 24
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_8b257568",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "This one too.",
+      "range": {
+        "startLine": 382,
+        "startChar": 4,
+        "endLine": 382,
+        "endChar": 21
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_2b3f0970",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "nit: extra line",
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_2bc9c97f",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "SDA",
+      "range": {
+        "startLine": 798,
+        "startChar": 10,
+        "endLine": 798,
+        "endChar": 13
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_ab3239a1",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-08T17:19:05Z",
+      "side": 1,
+      "message": "Need a newline.",
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
