@@ -140,6 +140,29 @@
       "revId": "22c040327ccd9689ae0ef2511de338c1e3745089",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_f6426846",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-08-08T17:59:18Z",
+      "side": 1,
+      "message": "can we calculate it explicitly based on NV_MEMORY_SIZE, or vice versa, or both on some 3rd constant? as I understand, they are inter-dependent",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "22c040327ccd9689ae0ef2511de338c1e3745089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
