@@ -16,6 +16,24 @@
       "revId": "5bdabfa706ebecc8031cb2d3173f7230b7ccc7fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99a22f7b_c68fa41f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-08-08T17:46:34Z",
+      "side": 1,
+      "message": "This commit will be used for cave, that firmware is firmware-glados-7820.B and the kernel is v3.18. Can we use the MKBP event and input driver (cros-ec-keyb)?",
+      "parentUuid": "79cd7b78_6bbcb1d0",
+      "revId": "5bdabfa706ebecc8031cb2d3173f7230b7ccc7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
