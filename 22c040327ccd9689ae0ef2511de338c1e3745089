@@ -163,6 +163,30 @@
       "revId": "22c040327ccd9689ae0ef2511de338c1e3745089",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_b632a0a1",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-08T18:16:30Z",
+      "side": 1,
+      "message": "this value applies to both halves of SPI flash, while nvram is of the same size, but is in just one half of SPI flash.\n\nSo this value is exactly equal to NV_MEMORY_SIZE, but has a wider meaning.",
+      "parentUuid": "79cd7b78_f6426846",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "22c040327ccd9689ae0ef2511de338c1e3745089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
