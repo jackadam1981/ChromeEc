@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79cd7b78_4b8b6dc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-08T16:48:39Z",
+      "side": 1,
+      "message": "Why this change?",
+      "range": {
+        "startLine": 21,
+        "startChar": 35,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "22c040327ccd9689ae0ef2511de338c1e3745089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_ab631918",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-08T16:48:39Z",
+      "side": 1,
+      "message": "\"definition\"",
+      "range": {
+        "startLine": 56,
+        "startChar": 28,
+        "endLine": 56,
+        "endChar": 38
+      },
+      "revId": "22c040327ccd9689ae0ef2511de338c1e3745089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_8b5f3547",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-08T16:48:39Z",
+      "side": 1,
+      "message": "I think just deleting this part of the comment is sufficient.",
+      "range": {
+        "startLine": 56,
+        "startChar": 75,
+        "endLine": 59,
+        "endChar": 45
+      },
+      "revId": "22c040327ccd9689ae0ef2511de338c1e3745089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
