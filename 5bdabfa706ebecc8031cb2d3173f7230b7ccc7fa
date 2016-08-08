@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79cd7b78_6bbcb1d0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-08T17:19:31Z",
+      "side": 1,
+      "message": "Instead of using another ec event, why not using a MKBP event (EC_MKBP_EVENT_SWITCH) and process it through the input driver (cros-ec-keyb)?\n\nMKBP events are now supported on ACPI platforms.",
+      "revId": "5bdabfa706ebecc8031cb2d3173f7230b7ccc7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
