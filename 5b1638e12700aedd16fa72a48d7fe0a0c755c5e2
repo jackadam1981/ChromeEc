@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79cd7b78_e8f7e7ef",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2016-08-08T14:39:56Z",
+      "side": 1,
+      "message": "EC_ACPI_MEM_DEVICE_ORIENTATION to be consistent in the naming.\n\nPerhaps define EC_ACPI_MEM_DEVICE_TABLET_MODE as bit 0",
+      "range": {
+        "startLine": 309,
+        "startChar": 8,
+        "endLine": 309,
+        "endChar": 34
+      },
+      "revId": "5b1638e12700aedd16fa72a48d7fe0a0c755c5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
