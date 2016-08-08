@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "79cd7b78_6cb4c482",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-08-08T22:52:55Z",
+      "side": 1,
+      "message": "Need to add:\n\nBUG\u003dchrome-os-partner:54452\nBRANCH\u003dnone\nTEST\u003d\u003c\u003c\u003cHow you test this\u003e\u003e\u003e",
+      "revId": "2d1de3c9488060f8277f33f31aacd14ed2ea9a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "597357d0_025b508a",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 3
@@ -18,6 +35,29 @@
         "startChar": 5,
         "endLine": 594,
         "endChar": 7
+      },
+      "revId": "2d1de3c9488060f8277f33f31aacd14ed2ea9a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_493532de",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-08-08T22:52:55Z",
+      "side": 1,
+      "message": "Can you do #elif defined(CONFIG_USB_PD_PULLUP_3A)?\n\nIf someone accidentally defined both then you will have 11b, which is not defined.",
+      "range": {
+        "startLine": 605,
+        "startChar": 0,
+        "endLine": 606,
+        "endChar": 30
       },
       "revId": "2d1de3c9488060f8277f33f31aacd14ed2ea9a6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
