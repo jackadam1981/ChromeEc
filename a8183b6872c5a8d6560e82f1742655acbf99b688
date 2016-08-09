@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "197f1fe8_8a51eb0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2016-08-09T17:41:46Z",
+      "side": 1,
+      "message": "The commit message is confusing. Is the current change for DVT1 or EVT?\n\nIf this for EVT and will be added back for DVT1 then please open a bug to track the re-adding in DVT1. Otherwise we may lose track of adding it back again.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "a8183b6872c5a8d6560e82f1742655acbf99b688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "197f1fe8_ea3fc7b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2016-08-09T17:41:46Z",
+      "side": 1,
+      "message": "This bug is already marked fixed. Please open a bug for this issue.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "a8183b6872c5a8d6560e82f1742655acbf99b688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "197f1fe8_ea58a72c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002584
+      },
+      "writtenOn": "2016-08-09T17:41:46Z",
+      "side": 1,
+      "message": "The test should not be just building the code. The test should be related to the actual change i.e. testing the enabling/disabling of BC1.2",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "a8183b6872c5a8d6560e82f1742655acbf99b688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
