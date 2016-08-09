@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79cd7b78_fdc4000e",
+        "filename": "board/reef/board.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-08-09T05:20:39Z",
+      "side": 1,
+      "message": "this line can be removed",
+      "revId": "0deb2c11efe99815a1f832c613c1364615494985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_f8becea4",
+        "filename": "board/reef/board.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-08-09T05:20:39Z",
+      "side": 1,
+      "message": "where can this be used?",
+      "revId": "0deb2c11efe99815a1f832c613c1364615494985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_d8fe6a06",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-08-09T05:20:39Z",
+      "side": 1,
+      "message": "we can remove it",
+      "revId": "0deb2c11efe99815a1f832c613c1364615494985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_98bea277",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-08-09T05:20:39Z",
+      "side": 1,
+      "message": "How about?\nif (!var1)\n    return 0;\n\nif (p \u003c 0x80000000)\n  p \u003d (p \u003c\u003c 1) / ((uint32_t)var1);\nelse\n  p \u003d (p / (uint32_t)var1) * 2;",
+      "revId": "0deb2c11efe99815a1f832c613c1364615494985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_58017a5f",
+        "filename": "driver/bmp280.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-08-09T05:20:39Z",
+      "side": 1,
+      "message": "some of these elements are present in \"struct motion_sensor_t\", we can remove those.",
+      "revId": "0deb2c11efe99815a1f832c613c1364615494985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_388116a2",
+        "filename": "driver/build.mk",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-08-09T05:20:39Z",
+      "side": 1,
+      "message": "how about changing file name to baro_bmp280.c or baro_tmp_bmp280.c?",
+      "revId": "0deb2c11efe99815a1f832c613c1364615494985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
