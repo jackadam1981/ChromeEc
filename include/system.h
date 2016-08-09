@@ -52,6 +52,9 @@ enum system_image_copy_t {
  */
 void system_pre_init(void);
 
+
+void ec_war(void);
+
 /**
  * System common pre-initialization; called after chip-specific
  * system_pre_init().

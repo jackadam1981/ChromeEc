@@ -83,6 +83,23 @@ void system_pre_init(void)
 	GREG32(GLOBALSEC, FLASH_REGION0_CTRL_CFG_EN) = 0;
 }
 
+void ec_war(void)
+{
+  uint32_t regValue;
+
+  regValue = GREAD(RBOX, ASSERT_EC_RST);
+  ccprintf("R: %x\n", regValue);
+
+  /* stuff */
+  GREG32(RBOX, ASSERT_EC_RST) = 0;
+
+  /* Unfreeze the PINMUX */
+  GREG32(PINMUX, HOLD) = 0;
+
+
+}
+
+
 void system_reset(int flags)
 {
 	/* TODO: Do we need to handle SYSTEM_RESET_PRESERVE_FLAGS? Doubtful. */
