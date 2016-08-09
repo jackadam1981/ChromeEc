@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99bcefcf_5c5a5159",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-09T20:21:56Z",
+      "side": 1,
+      "message": "The *typical* format for functions is the following. It\u0027s like doxygen format (even though we don\u0027t actually run doxygen). :)\n\n\n    \n/**\n * Advertises packet that has already been generated on given channel.\n *\n * This function also processes any incoming scan requests.\n *\n * @param    chan The channel on which to advertise.\n * @returns  EC_SUCCESS on packet reception, otherwise on error.\n */\nint ble_ll_adv(int chan)",
+      "revId": "d65da4e22de7fc9394e1dc93c2760ac6cf618fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
