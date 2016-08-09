@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79cd7b78_f89faef3",
+        "filename": "driver/als_al3010.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-09T05:19:53Z",
+      "side": 1,
+      "message": "why defining an array if we are just using one of its value.\n4 should be a constant.\nDefine them as constant in the .h",
+      "revId": "04830d576f0e7edbf9da475697900f64dc0d0e9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_b831a609",
+        "filename": "driver/als_al3010.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-09T05:19:53Z",
+      "side": 1,
+      "message": "looking at the spec: \"Enable ALS, typical conversion time is 50ms.\" Although this is the simple mode, do we need a measurement available every 50ms? Using mode 0b101 (+INT) saves power, but may not worth it.",
+      "revId": "04830d576f0e7edbf9da475697900f64dc0d0e9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_9805c21d",
+        "filename": "driver/als_al3010.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-09T05:19:53Z",
+      "side": 1,
+      "message": "I assume we read wathever is preset in the register, AL3010 doesn\u0027t wait for the next sample to be ready.",
+      "revId": "04830d576f0e7edbf9da475697900f64dc0d0e9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
