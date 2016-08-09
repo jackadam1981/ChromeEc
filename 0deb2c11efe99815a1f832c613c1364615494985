@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "197f1fe8_6a6d97d4",
+        "filename": "board/reef/board.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "Will fix in next patch.",
+      "parentUuid": "79cd7b78_fdc4000e",
+      "revId": "0deb2c11efe99815a1f832c613c1364615494985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79cd7b78_f8becea4",
         "filename": "board/reef/board.h",
         "patchSetId": 17
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "197f1fe8_ca5be326",
+        "filename": "board/reef/board.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "Not used anymore, will remove it. Since its added as another motion sensor.",
+      "parentUuid": "79cd7b78_f8becea4",
+      "revId": "0deb2c11efe99815a1f832c613c1364615494985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79cd7b78_d8fe6a06",
         "filename": "driver/bmp280.c",
         "patchSetId": 17
@@ -47,6 +83,24 @@
       "writtenOn": "2016-08-09T05:20:39Z",
       "side": 1,
       "message": "we can remove it",
+      "revId": "0deb2c11efe99815a1f832c613c1364615494985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "197f1fe8_2aad5fef",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "Will fix.",
+      "parentUuid": "79cd7b78_d8fe6a06",
       "revId": "0deb2c11efe99815a1f832c613c1364615494985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -88,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "197f1fe8_0a917b9e",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "Good point. Will optimize.",
+      "parentUuid": "79cd7b78_b890c698",
+      "revId": "0deb2c11efe99815a1f832c613c1364615494985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79cd7b78_58017a5f",
         "filename": "driver/bmp280.h",
         "patchSetId": 17
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "197f1fe8_ea7187a4",
+        "filename": "driver/bmp280.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "I will update.",
+      "parentUuid": "79cd7b78_58017a5f",
+      "revId": "0deb2c11efe99815a1f832c613c1364615494985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79cd7b78_388116a2",
         "filename": "driver/build.mk",
         "patchSetId": 17
@@ -116,6 +206,24 @@
       "writtenOn": "2016-08-09T05:20:39Z",
       "side": 1,
       "message": "how about changing file name to baro_bmp280.c or baro_tmp_bmp280.c?",
+      "revId": "0deb2c11efe99815a1f832c613c1364615494985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "197f1fe8_6a903798",
+        "filename": "driver/build.mk",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "79cd7b78_388116a2",
       "revId": "0deb2c11efe99815a1f832c613c1364615494985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
