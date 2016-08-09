@@ -227,6 +227,40 @@
       "revId": "0deb2c11efe99815a1f832c613c1364615494985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99bcefcf_160c3a3f",
+        "filename": "include/barometer.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-09T18:58:37Z",
+      "side": 1,
+      "message": "still used?",
+      "revId": "0deb2c11efe99815a1f832c613c1364615494985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99bcefcf_16227ac1",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-09T18:58:37Z",
+      "side": 1,
+      "message": "we are running out of channel, keep using CC_ACCEL, or put it under a _DEBUG config variable.",
+      "revId": "0deb2c11efe99815a1f832c613c1364615494985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
