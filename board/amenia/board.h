@@ -21,6 +21,7 @@
 #define CONFIG_ALS
 #define CONFIG_ALS_ISL29035
 #define CONFIG_BACKLIGHT_LID
+#define CONFIG_BARO_BMP280
 #define CONFIG_BATTERY_CUT_OFF
 #define CONFIG_BATTERY_PRESENT_CUSTOM
 #define CONFIG_BATTERY_SMART
@@ -148,6 +149,7 @@
 #define I2C_PORT_ACCELGYRO              NPCX_I2C_PORT1
 #define I2C_PORT_ALS                    NPCX_I2C_PORT2
 #define I2C_PORT_ACCEL                  NPCX_I2C_PORT2
+#define I2C_PORT_BARO	                NPCX_I2C_PORT2
 #define I2C_PORT_BATTERY                NPCX_I2C_PORT3
 #define I2C_PORT_CHARGER                NPCX_I2C_PORT3
 #define I2C_PORT_THERMAL                NPCX_I2C_PORT3
@@ -196,6 +198,13 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
+/* Barometer sensor */
+enum baro_id {
+	BARO_BMP280 = 0,
+
+	BARO_COUNT
+};
+
 /* Light sensors */
 enum als_id {
 	ALS_ISL29035 = 0,
@@ -209,6 +218,7 @@ enum sensor_id {
 	LID_GYRO,
 	LID_MAG,
 	BASE_ACCEL,
+	BASE_BARO,
 };
 
 /* start as a sink in case we have no other power supply/battery */
