@@ -22,6 +22,29 @@
       "revId": "d0a6f66653f318a8f7cc961f5bbc81a4d4d1eea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f6afe4_036b0eef",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-08-09T22:27:52Z",
+      "side": 1,
+      "message": "sleep(8) is only needed for WiFi reset, I moved that to AP sequencing. We don\u0027t need to delay between TRACKPAD and SIXAXIS.",
+      "range": {
+        "startLine": 211,
+        "startChar": 2,
+        "endLine": 211,
+        "endChar": 12
+      },
+      "revId": "d0a6f66653f318a8f7cc961f5bbc81a4d4d1eea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
