@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "79cd7b78_b8c36605",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-09T05:18:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79cd7b78_6b391187",
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79cd7b78_6b16714f",
         "filename": "chip/stm32/i2c-stm32f4.c",
         "patchSetId": 13
@@ -47,6 +65,30 @@
       "writtenOn": "2016-08-08T17:19:05Z",
       "side": 1,
       "message": "It would be nice this and wait_fmpi2c_isr_poll are united. Only difference is error bit positions. I would do: \n\nwait_sr1_poll(...)\n{\n        wait_sr_poll(STM32_I2C_SR1_ARLO | STM32_I2C_SR1_BERR |\n\t\t\t   STM32_I2C_SR1_AF, ...);\n}\n\nwait_fmpi2c_isr_poll(...)\n{\n        wait_sr_poll(FMPI2C_ISR_ARLO | FMPI2C_ISR_BERR |\n\t\t\t   FMPI2C_ISR_NACKF, ...);\n}",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 24
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_d8c74a10",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-09T05:18:38Z",
+      "side": 1,
+      "message": "One register (i2c sr1) is 16b while the other (fmp isr) is 32b, which makes it hard to combine these two.",
+      "parentUuid": "79cd7b78_6b16714f",
       "range": {
         "startLine": 125,
         "startChar": 11,
@@ -128,6 +170,30 @@
     },
     {
       "key": {
+        "uuid": "79cd7b78_38cf5627",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-09T05:18:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79cd7b78_2b50e939",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 6
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79cd7b78_cb605d0e",
         "filename": "chip/stm32/i2c-stm32f4.c",
         "patchSetId": 13
@@ -139,6 +205,30 @@
       "writtenOn": "2016-08-08T17:19:05Z",
       "side": 1,
       "message": "nit: NULL",
+      "range": {
+        "startLine": 201,
+        "startChar": 8,
+        "endLine": 201,
+        "endChar": 9
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_58ddfad8",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-09T05:18:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79cd7b78_cb605d0e",
       "range": {
         "startLine": 201,
         "startChar": 8,
@@ -174,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "79cd7b78_98d782b9",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-09T05:18:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79cd7b78_0bcec5b1",
+      "range": {
+        "startLine": 258,
+        "startChar": 8,
+        "endLine": 260,
+        "endChar": 59
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79cd7b78_cbea1d0b",
         "filename": "chip/stm32/i2c-stm32f4.c",
         "patchSetId": 13
@@ -185,6 +299,30 @@
       "writtenOn": "2016-08-08T17:19:05Z",
       "side": 1,
       "message": "What does 0 mean? Can you name it?",
+      "range": {
+        "startLine": 274,
+        "startChar": 16,
+        "endLine": 274,
+        "endChar": 17
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_38e83678",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-09T05:18:38Z",
+      "side": 1,
+      "message": "Named STM32F4_FMPI2C and STM32F4_I2C",
+      "parentUuid": "79cd7b78_cbea1d0b",
       "range": {
         "startLine": 274,
         "startChar": 16,
@@ -220,6 +358,30 @@
     },
     {
       "key": {
+        "uuid": "79cd7b78_58afba30",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-09T05:18:38Z",
+      "side": 1,
+      "message": "Sorry, part of an upcoming CL that I forgot to refactor out.",
+      "parentUuid": "79cd7b78_cb069dcc",
+      "range": {
+        "startLine": 366,
+        "startChar": 4,
+        "endLine": 366,
+        "endChar": 24
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79cd7b78_8b257568",
         "filename": "chip/stm32/i2c-stm32f4.c",
         "patchSetId": 13
@@ -231,6 +393,30 @@
       "writtenOn": "2016-08-08T17:19:05Z",
       "side": 1,
       "message": "This one too.",
+      "range": {
+        "startLine": 382,
+        "startChar": 4,
+        "endLine": 382,
+        "endChar": 21
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_78b47e82",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-09T05:18:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79cd7b78_8b257568",
       "range": {
         "startLine": 382,
         "startChar": 4,
@@ -283,6 +469,30 @@
     },
     {
       "key": {
+        "uuid": "79cd7b78_b8ae0630",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-09T05:18:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79cd7b78_2bc9c97f",
+      "range": {
+        "startLine": 798,
+        "startChar": 10,
+        "endLine": 798,
+        "endChar": 13
+      },
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79cd7b78_ab3239a1",
         "filename": "chip/stm32/i2c-stm32f4.c",
         "patchSetId": 13
@@ -294,6 +504,24 @@
       "writtenOn": "2016-08-08T17:19:05Z",
       "side": 1,
       "message": "Need a newline.",
+      "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_d8a2ea44",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-09T05:18:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79cd7b78_ab3239a1",
       "revId": "4a9ab3ca4c794938f8e432e7ad68122094b48787",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
