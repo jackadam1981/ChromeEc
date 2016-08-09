@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "99bcefcf_27dd82da",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-09T21:22:27Z",
+      "side": 1,
+      "message": "Now that i\u0027m looking at this I believe you want this done prior to pusha so that your fpu context is *after* your general purpose regs. I see nothing that reserves this space on the current stack.",
+      "revId": "7020904236ed3c9ee5d93e7749e22cfad9724faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99bcefcf_0733265d",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-09T21:22:27Z",
+      "side": 1,
+      "message": "tastk_start_called()",
+      "range": {
+        "startLine": 180,
+        "startChar": 8,
+        "endLine": 180,
+        "endChar": 20
+      },
+      "revId": "7020904236ed3c9ee5d93e7749e22cfad9724faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f6afe4_23b3aae7",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-09T21:22:27Z",
+      "side": 1,
+      "message": "This was where that scratchpad object was used --  to not trigger this warning.",
+      "revId": "7020904236ed3c9ee5d93e7749e22cfad9724faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99bcefcf_dcfd81a1",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 9
@@ -19,6 +76,46 @@
         "endLine": 606,
         "endChar": 26
       },
+      "revId": "7020904236ed3c9ee5d93e7749e22cfad9724faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99bcefcf_e70e2a8a",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-09T21:22:27Z",
+      "side": 1,
+      "message": "I don\u0027t see how that\u0027s true. We\u0027re going to go through a task switch, right?",
+      "range": {
+        "startLine": 620,
+        "startChar": 37,
+        "endLine": 621,
+        "endChar": 35
+      },
+      "revId": "7020904236ed3c9ee5d93e7749e22cfad9724faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99bcefcf_07c96650",
+        "filename": "core/minute-ia/task_defs.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-09T21:22:27Z",
+      "side": 1,
+      "message": "put a space in front of \u0027*\u0027 to line up the \u0027*\u0027 with the ones on the \u0027/*\u0027 line. Same goes for the \u0027*/\u0027",
       "revId": "7020904236ed3c9ee5d93e7749e22cfad9724faa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
