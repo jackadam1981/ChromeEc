@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "99bcefcf_9cd6a94a",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-09T20:55:40Z",
+      "side": 1,
+      "message": "I\u0027d remove it. All we\u0027re doing is creating a table w/ the same interrupt vector entry point for every one. I\u0027d put a comment every 16 or so indicating what number we\u0027re at.",
+      "parentUuid": "99a22f7b_06337c1a",
+      "range": {
+        "startLine": 20,
+        "startChar": 28,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_7b75cdda",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 8
