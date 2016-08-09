@@ -87,6 +87,24 @@
       "revId": "42a4e91280fa2f0d105d9c90d83a43778929f785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99a22f7b_a632a856",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1411,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-08-09T02:37:29Z",
+      "side": 1,
+      "message": "Hi Shamile:\n\nThis enumeration is used to indicate the freq limitation of eSPI slave. EC is not sure which freq of eSPI bus the host will adopt. \"operating frequency\" also implies slave device has ability to choose the frequency of bus. How do you think?",
+      "parentUuid": "79cd7b78_62e5ab0f",
+      "revId": "42a4e91280fa2f0d105d9c90d83a43778929f785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
