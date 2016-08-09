@@ -16,6 +16,24 @@
       "revId": "1c1c403ff6fb06baf02574e8cbd7bd43a9865c79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99bcefcf_bced258d",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-09T20:14:48Z",
+      "side": 1,
+      "message": "I guess it was never added in. Just did so. But yeah, exactly that + processing scan packets. Transmits and receives always come in pairs in BTLE.",
+      "parentUuid": "197f1fe8_6a34b7e0",
+      "revId": "1c1c403ff6fb06baf02574e8cbd7bd43a9865c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
