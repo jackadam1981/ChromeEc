@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99bcefcf_d66d6203",
+        "filename": "board/reef/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-08-09T18:50:18Z",
+      "side": 1,
+      "message": "it would be good to remove this wrapper function if there is no plan to add one more LED. What do you think?",
+      "revId": "6e03f2a3954a385d3cd96c1ec5d02ad4080cbadf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
