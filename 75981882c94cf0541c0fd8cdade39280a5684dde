@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "197f1fe8_47a9ae28",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-09T15:50:11Z",
+      "side": 1,
+      "message": "Isn\u0027t this checking CONFIG_BRINGUP twice?",
+      "range": {
+        "startLine": 440,
+        "startChar": 0,
+        "endLine": 440,
+        "endChar": 54
+      },
+      "revId": "75981882c94cf0541c0fd8cdade39280a5684dde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
