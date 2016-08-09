@@ -69,6 +69,24 @@
       "revId": "42a4e91280fa2f0d105d9c90d83a43778929f785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cd7b78_62e5ab0f",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1411,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2016-08-09T00:58:49Z",
+      "side": 1,
+      "message": "Yes host configures the frequency, however calling it maximum seems to imply that the actual frequency used could be less than that. So that is why I suggested operating frequency.",
+      "parentUuid": "99a22f7b_2331ca07",
+      "revId": "42a4e91280fa2f0d105d9c90d83a43778929f785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
