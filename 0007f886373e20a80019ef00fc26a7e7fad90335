@@ -16,6 +16,222 @@
       "revId": "0007f886373e20a80019ef00fc26a7e7fad90335",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_6969c0d3",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "Make it inline",
+      "revId": "0007f886373e20a80019ef00fc26a7e7fad90335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_893984e1",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "Remove initialization.",
+      "revId": "0007f886373e20a80019ef00fc26a7e7fad90335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_292178a7",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "ret if error",
+      "revId": "0007f886373e20a80019ef00fc26a7e7fad90335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_c92b8c86",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "EC_SUCCESS",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 11
+      },
+      "revId": "0007f886373e20a80019ef00fc26a7e7fad90335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_c9f42c28",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "initialize it else wrong value",
+      "range": {
+        "startLine": 164,
+        "startChar": 13,
+        "endLine": 164,
+        "endChar": 14
+      },
+      "revId": "0007f886373e20a80019ef00fc26a7e7fad90335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_49015cff",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "take care of init for ret and val  need not be init",
+      "revId": "0007f886373e20a80019ef00fc26a7e7fad90335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_c91d4c5e",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "remove ret variable",
+      "revId": "0007f886373e20a80019ef00fc26a7e7fad90335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_29133853",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "return from here",
+      "revId": "0007f886373e20a80019ef00fc26a7e7fad90335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_492afc70",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "return from here",
+      "revId": "0007f886373e20a80019ef00fc26a7e7fad90335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_a940c823",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "No need of temperature, no need of initialising",
+      "revId": "0007f886373e20a80019ef00fc26a7e7fad90335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_c998ace7",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "return from here",
+      "revId": "0007f886373e20a80019ef00fc26a7e7fad90335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab18456_89afc4f4",
+        "filename": "driver/bmp280.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T17:46:46Z",
+      "side": 1,
+      "message": "Remove prints",
+      "revId": "0007f886373e20a80019ef00fc26a7e7fad90335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
