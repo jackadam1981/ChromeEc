@@ -22,6 +22,7 @@
 
 #include "common.h"
 #include "util.h"
+#include "ppi.h"
 
 #define BLUETOOTH_ADDR_OCTETS                   6
 
