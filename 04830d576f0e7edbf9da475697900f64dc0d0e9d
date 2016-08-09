@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "99a22f7b_c6fec406",
+        "filename": "driver/als_al3010.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1156224
+      },
+      "writtenOn": "2016-08-09T05:51:32Z",
+      "side": 1,
+      "message": "I\u0027ll change this to header file.",
+      "parentUuid": "79cd7b78_f89faef3",
+      "revId": "04830d576f0e7edbf9da475697900f64dc0d0e9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79cd7b78_b831a609",
         "filename": "driver/als_al3010.c",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "99a22f7b_0605bc1a",
+        "filename": "driver/als_al3010.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1156224
+      },
+      "writtenOn": "2016-08-09T05:51:32Z",
+      "side": 1,
+      "message": "1.do we need a measurement available every 50ms?\nNot need.\n\n2.Using mode 0b101 to saves power.\nIf we don\u0027t need the real time data, it\u0027s worth. otherwise not.",
+      "parentUuid": "79cd7b78_b831a609",
+      "revId": "04830d576f0e7edbf9da475697900f64dc0d0e9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79cd7b78_9805c21d",
         "filename": "driver/als_al3010.c",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2016-08-09T05:19:53Z",
       "side": 1,
       "message": "I assume we read wathever is preset in the register, AL3010 doesn\u0027t wait for the next sample to be ready.",
+      "revId": "04830d576f0e7edbf9da475697900f64dc0d0e9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99a22f7b_460bb430",
+        "filename": "driver/als_al3010.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1156224
+      },
+      "writtenOn": "2016-08-09T05:51:32Z",
+      "side": 1,
+      "message": "Check the sample ready need to read interrupt status(reg 0x01), we don\u0027t need to waste time to check this.",
+      "parentUuid": "79cd7b78_9805c21d",
       "revId": "04830d576f0e7edbf9da475697900f64dc0d0e9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
