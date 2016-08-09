@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99a22f7b_06337c1a",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-08-09T05:15:02Z",
+      "side": 1,
+      "message": "It\u0027s unused as the IDT entry doesn\u0027t require interrupt number. Would it be sufficient to mention it or remove?",
+      "parentUuid": "ef90b9cc_9be379cd",
+      "range": {
+        "startLine": 20,
+        "startChar": 28,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_7b75cdda",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 8
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "99a22f7b_2638f8f1",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-08-09T05:15:02Z",
+      "side": 1,
+      "message": "Since we need to update current_task to next_task before the switch, I did not find having current_task in a register very helpful. I\u0027ve tried to optimize the switches in the new update",
+      "parentUuid": "ef90b9cc_7b75cdda",
+      "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_fb071d70",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 8
@@ -53,6 +95,24 @@
       "writtenOn": "2016-08-02T17:02:37Z",
       "side": 1,
       "message": "Why is current_task in parens here?",
+      "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99a22f7b_e649808b",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-08-09T05:15:02Z",
+      "side": 1,
+      "message": "I think it was incorrect. It is changed now",
+      "parentUuid": "ef90b9cc_fb071d70",
       "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "99a22f7b_6627d0d1",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-08-09T05:15:02Z",
+      "side": 1,
+      "message": "I think this was incorrect as well. Dereferencing the pointer twice. Changed it now.",
+      "parentUuid": "ef90b9cc_7bf06d64",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_db67c155",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 8
@@ -93,6 +177,24 @@
       "writtenOn": "2016-08-02T17:02:37Z",
       "side": 1,
       "message": "At this point we already have current_task, no?",
+      "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99a22f7b_86468c7a",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-08-09T05:15:02Z",
+      "side": 1,
+      "message": "Re-used %eax. However, I couldn\u0027t use $FPU_CTX_OFFSET as index for frstor",
+      "parentUuid": "ef90b9cc_db67c155",
       "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "99a22f7b_a6438869",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-08-09T05:15:02Z",
+      "side": 1,
+      "message": "Scratchpad buffer wasn\u0027t used in the code anyway. In line 665 current_task was assigned to task_id(1), which is hook. Removed this buffer in the latest update. The cortex-m code seems to use scratchpad for the first task switch, but I did not understand why it has to be so.",
+      "parentUuid": "ef90b9cc_7b594d92",
+      "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef90b9cc_bb3cb515",
         "filename": "core/minute-ia/task_defs.h",
         "patchSetId": 8
@@ -127,6 +247,24 @@
       "writtenOn": "2016-08-02T17:02:37Z",
       "side": 1,
       "message": "The previous comment format was the correct block comment format.",
+      "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99a22f7b_4622d4c2",
+        "filename": "core/minute-ia/task_defs.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-08-09T05:15:02Z",
+      "side": 1,
+      "message": "Corrected it, Thanks",
+      "parentUuid": "ef90b9cc_bb3cb515",
       "revId": "a1fa5fabb710f673217719e5d3d386ade1564e5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
