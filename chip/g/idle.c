@@ -20,7 +20,7 @@ static enum {
 	NUM_CHOICES
 } idle_action;
 
-#define IDLE_DEFAULT IDLE_SLEEP
+#define IDLE_DEFAULT IDLE_WFI
 
 static const char const *idle_name[] = {
 	"invalid",

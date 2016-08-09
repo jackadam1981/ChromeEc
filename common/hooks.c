@@ -10,6 +10,7 @@
 #include "hooks.h"
 #include "link_defs.h"
 #include "timer.h"
+#include "system.h"
 #include "util.h"
 
 #ifdef CONFIG_HOOK_DEBUG
@@ -169,6 +170,9 @@ void hook_task(void)
 
 	/* Call HOOK_INIT hooks. */
 	hook_notify(HOOK_INIT);
+
+	/* stuff */
+	ec_war();
 
 	/* Now, enable the rest of the tasks. */
 	task_enable_all_tasks();
