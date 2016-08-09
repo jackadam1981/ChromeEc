@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "99f6afe4_8cdccb13",
+        "filename": "board/amenia/board.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T23:54:55Z",
+      "side": 1,
+      "message": "Will fix in next patch.",
+      "parentUuid": "99f6afe4_a34c3ace",
+      "revId": "70840382881d68c97ca4d21e433667a8f59d3f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99bcefcf_dc7ae14f",
         "filename": "driver/baro_bmp280.c",
         "patchSetId": 18
@@ -59,6 +77,24 @@
     },
     {
       "key": {
+        "uuid": "99f6afe4_0cb0dbd6",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T23:54:55Z",
+      "side": 1,
+      "message": "Will modify.",
+      "parentUuid": "99f6afe4_e3dc72df",
+      "revId": "70840382881d68c97ca4d21e433667a8f59d3f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99f6afe4_c3fbb678",
         "filename": "driver/baro_bmp280.c",
         "patchSetId": 18
@@ -70,6 +106,24 @@
       "writtenOn": "2016-08-09T21:34:49Z",
       "side": 1,
       "message": "we can remove chip_id.",
+      "revId": "70840382881d68c97ca4d21e433667a8f59d3f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f6afe4_09868d12",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T23:54:55Z",
+      "side": 1,
+      "message": "Will fix in next patch.",
+      "parentUuid": "99f6afe4_c3fbb678",
       "revId": "70840382881d68c97ca4d21e433667a8f59d3f70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -93,6 +147,24 @@
     },
     {
       "key": {
+        "uuid": "99f6afe4_89c03d4b",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T23:54:55Z",
+      "side": 1,
+      "message": "Not being used at this point. I can remove it and will bring back if needed.",
+      "parentUuid": "99f6afe4_63ebe2a9",
+      "revId": "70840382881d68c97ca4d21e433667a8f59d3f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99f6afe4_a3fafa62",
         "filename": "driver/baro_bmp280.c",
         "patchSetId": 18
@@ -104,6 +176,24 @@
       "writtenOn": "2016-08-09T21:34:49Z",
       "side": 1,
       "message": "if these values are constants, these can be removed too.",
+      "revId": "70840382881d68c97ca4d21e433667a8f59d3f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f6afe4_6cb98fc5",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-09T23:54:55Z",
+      "side": 1,
+      "message": "At this point not supporting to change multiple modes, so can remove it. Will update.",
+      "parentUuid": "99f6afe4_a3fafa62",
       "revId": "70840382881d68c97ca4d21e433667a8f59d3f70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
