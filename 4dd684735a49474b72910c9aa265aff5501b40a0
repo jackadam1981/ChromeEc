@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1988ffa3_2216d05b",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-10T21:54:13Z",
+      "side": 1,
+      "message": "These don\u0027t add more readability than writing integer literal (e.g. \u00270\u0027, \u00271\u0027, ...). I think we should name them _PCLK, _LSI, _HSI16, _LSE, _SYSCLK, _NOCLOCK, _MSI, ... or shouldn\u0027t define them at all.",
+      "range": {
+        "startLine": 635,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 32
+      },
+      "revId": "4dd684735a49474b72910c9aa265aff5501b40a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
