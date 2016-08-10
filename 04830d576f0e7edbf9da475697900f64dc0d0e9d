@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "99f6afe4_1d5fe3e4",
+        "filename": "driver/als_al3010.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-10T16:13:50Z",
+      "side": 1,
+      "message": "My point is this array unnecessary consumes RAM space.\nIn the .h, you can have:\n#define AL3010_RANGE_VALUE0 11872\n#define AL3010_RANGE_VALUE1 ...\n\n#define AL3010_RANGE_VALUE(n) CONCAT2(AL3010_RANGE_VALUE, n)\n\nand use AL3010_RANGE_VALUE(AL3010_RANGE) when needed.",
+      "parentUuid": "390063b2_982615d3",
+      "revId": "04830d576f0e7edbf9da475697900f64dc0d0e9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79cd7b78_b831a609",
         "filename": "driver/als_al3010.c",
         "patchSetId": 4
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "1.do we need a measurement available every 50ms?\nNot need.\n\n2.Using mode 0b101 to saves power.\nIf we don\u0027t need the real time data, it\u0027s worth. otherwise not.",
       "parentUuid": "79cd7b78_b831a609",
+      "revId": "04830d576f0e7edbf9da475697900f64dc0d0e9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f6afe4_7d81372c",
+        "filename": "driver/als_al3010.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-10T16:13:50Z",
+      "side": 1,
+      "message": "1. So in this case, we are wasting energy by forcing the sensor to measure every ~50/60ms.\nThe power saving might not worth the driver complexity.\nIf it does, you can take example on sil114x driver to initiate the reading on read() and gather the data in a interrupt handler, assuming the interrupt line is routed properly.",
+      "parentUuid": "99a22f7b_0605bc1a",
       "revId": "04830d576f0e7edbf9da475697900f64dc0d0e9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
