@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99f6afe4_58eb2910",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2016-08-10T17:30:20Z",
+      "side": 1,
+      "message": "Oh, actually.  You always transition through S3, right?  So I guess not.  Just seems weird that both this and the \"else if\" return the same thing.",
+      "parentUuid": "99f6afe4_78a5c5fb",
+      "range": {
+        "startLine": 122,
+        "startChar": 17,
+        "endLine": 122,
+        "endChar": 20
+      },
+      "revId": "d0a6f66653f318a8f7cc961f5bbc81a4d4d1eea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99bcefcf_0797a635",
         "filename": "power/rk3399.c",
         "patchSetId": 1
