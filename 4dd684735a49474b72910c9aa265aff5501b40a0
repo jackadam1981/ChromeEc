@@ -22,6 +22,30 @@
       "revId": "4dd684735a49474b72910c9aa265aff5501b40a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99414f2e_2b0799c9",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1155774
+      },
+      "writtenOn": "2016-08-10T23:56:49Z",
+      "side": 1,
+      "message": "Ok I think we shouldn\u0027t define them since they have different meanings for the different parts of the register ( see page 244 of http://www.st.com/content/ccc/resource/technical/document/reference_manual/02/35/09/0c/4f/f7/40/03/DM00083560.pdf/files/DM00083560.pdf/jcr:content/translations/en.DM00083560.pdf)",
+      "parentUuid": "1988ffa3_2216d05b",
+      "range": {
+        "startLine": 635,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 32
+      },
+      "revId": "4dd684735a49474b72910c9aa265aff5501b40a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
