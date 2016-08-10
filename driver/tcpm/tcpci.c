@@ -59,6 +59,14 @@ int tcpci_tcpm_get_cc(int port, int *cc1, int *cc2)
 	int status;
 	int rv;
 
+#ifdef CONFIG_USB_PD_TCPM_PS8751
+	/*
+	 * Additional delay for CC_STATUS to settle.
+	 * TODO: Add actual delay needed.
+	 */
+	msleep(20);
+#endif
+
 	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
 
 	/* If tcpc read fails, return error */
