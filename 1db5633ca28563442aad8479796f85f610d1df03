@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1988ffa3_3fb6e7d6",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2123,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-10T21:00:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f6afe4_d2a93a7c",
+      "range": {
+        "startLine": 2121,
+        "startChar": 0,
+        "endLine": 2123,
+        "endChar": 3
+      },
+      "revId": "1db5633ca28563442aad8479796f85f610d1df03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99f6afe4_b29ebe4a",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-10T03:05:17Z",
       "side": 1,
       "message": "same comment",
+      "range": {
+        "startLine": 2126,
+        "startChar": 0,
+        "endLine": 2128,
+        "endChar": 3
+      },
+      "revId": "1db5633ca28563442aad8479796f85f610d1df03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1988ffa3_7fb06fd8",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2128,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-10T21:00:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f6afe4_b29ebe4a",
       "range": {
         "startLine": 2126,
         "startChar": 0,
