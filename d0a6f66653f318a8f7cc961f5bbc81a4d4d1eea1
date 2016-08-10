@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "99f6afe4_18781156",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-10T17:34:48Z",
+      "side": 1,
+      "message": "\u003e Just seems weird that both this and the \"else if\" return the same thing.\n\nYou\u0027re right, I\u0027ll revise it.",
+      "parentUuid": "99f6afe4_9852c1df",
+      "range": {
+        "startLine": 122,
+        "startChar": 17,
+        "endLine": 122,
+        "endChar": 20
+      },
+      "revId": "d0a6f66653f318a8f7cc961f5bbc81a4d4d1eea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99bcefcf_0797a635",
         "filename": "power/rk3399.c",
         "patchSetId": 1
