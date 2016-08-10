@@ -16,6 +16,24 @@
       "revId": "6e03f2a3954a385d3cd96c1ec5d02ad4080cbadf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f6afe4_8c904640",
+        "filename": "board/reef/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-10T17:43:43Z",
+      "side": 1,
+      "message": "Will follow-on boards have both power and battery LEDs?  If so, I\u0027d add a comment here that the reference board only has one LED so we\u0027re overloading it to act as both LEDs, and leave both functions.\n\nIf we strip all this out, it\u0027ll be harder to recreate the logic for two separate LEDs in a follow-on board.",
+      "parentUuid": "99bcefcf_d66d6203",
+      "revId": "6e03f2a3954a385d3cd96c1ec5d02ad4080cbadf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
