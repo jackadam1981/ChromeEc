@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "99f6afe4_9852c1df",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-10T17:34:03Z",
+      "side": 1,
+      "message": "There is no such state. To go to S5 from S0, we need to transition through both S0S3 and S3S5. In the \u0027forcing shutdown\u0027 case, we will fall through automatically. In the lost power signal case, we will go to S3 (assuming IN_PGOOD_PP5000 is still ok) and then transition based on GPIO_AP_EC_S3_S0_L (eg. if GPIO_AP_EC_S3_S0_L is high, we will transition right back to S0).",
+      "parentUuid": "99f6afe4_78a5c5fb",
+      "range": {
+        "startLine": 122,
+        "startChar": 17,
+        "endLine": 122,
+        "endChar": 20
+      },
+      "revId": "d0a6f66653f318a8f7cc961f5bbc81a4d4d1eea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99bcefcf_0797a635",
         "filename": "power/rk3399.c",
         "patchSetId": 1
