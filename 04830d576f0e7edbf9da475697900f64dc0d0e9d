@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "390063b2_982615d3",
+        "filename": "driver/als_al3010.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1156224
+      },
+      "writtenOn": "2016-08-10T03:12:49Z",
+      "side": 1,
+      "message": "The Defined AL3010_RANGE is select which one to be used on this array. on line 44. I think it was not need to changed.",
+      "parentUuid": "79cd7b78_f89faef3",
+      "revId": "04830d576f0e7edbf9da475697900f64dc0d0e9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79cd7b78_b831a609",
         "filename": "driver/als_al3010.c",
         "patchSetId": 4
