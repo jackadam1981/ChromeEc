@@ -598,6 +598,9 @@ static void charge_manager_refresh(void)
 		pd_set_new_power_request(updated_new_port);
 	if (updated_old_port != CHARGE_PORT_NONE)
 		pd_set_new_power_request(updated_old_port);
+
+	/* notify host of power info change */
+	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
 DECLARE_DEFERRED(charge_manager_refresh);
 
