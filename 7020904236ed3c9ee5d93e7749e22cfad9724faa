@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "99f6afe4_8f81582f",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-10T20:15:33Z",
+      "side": 1,
+      "message": "Right. I was confusing myself thinking we our tasks were sitting on the stack for some reason.",
+      "parentUuid": "390063b2_f8c2b15a",
+      "revId": "7020904236ed3c9ee5d93e7749e22cfad9724faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99bcefcf_0733265d",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 9
@@ -113,6 +131,24 @@
       "side": 1,
       "message": "With CONFIG_DEBUG_STACK_OVERFLOW enabled, I did not find the code passing if(), though scratchpad was not used now..",
       "parentUuid": "99f6afe4_23b3aae7",
+      "revId": "7020904236ed3c9ee5d93e7749e22cfad9724faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f6afe4_0f1688ff",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-10T20:15:33Z",
+      "side": 1,
+      "message": "I see. I\u0027m not sure what our initial stack is, but we haven\u0027t saved the stack pointer value to stack prior to calling this switch_handler() so the stacks are still initialized to UNUSED_VALUE. Makes sense now.",
+      "parentUuid": "390063b2_b8c8397d",
       "revId": "7020904236ed3c9ee5d93e7749e22cfad9724faa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
