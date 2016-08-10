@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1988ffa3_428cb432",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-10T22:20:01Z",
+      "side": 1,
+      "message": "Silly me. Thanks",
+      "parentUuid": "1988ffa3_1f33e3a8",
+      "range": {
+        "startLine": 10,
+        "startChar": 49,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "c9e8ca2328bb82cad58dd4fd0960b1a455a71464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1988ffa3_82b07cd9",
         "filename": "include/bluetooth_le.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1988ffa3_8286bc10",
+        "filename": "include/bluetooth_le.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-10T22:20:01Z",
+      "side": 1,
+      "message": "Prettified.",
+      "parentUuid": "1988ffa3_82b07cd9",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 3
+      },
+      "revId": "c9e8ca2328bb82cad58dd4fd0960b1a455a71464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1988ffa3_42bf54a1",
         "filename": "include/bluetooth_le_ll.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-08-10T22:02:18Z",
       "side": 1,
       "message": "can you align this with the others?",
+      "range": {
+        "startLine": 85,
+        "startChar": 39,
+        "endLine": 85,
+        "endChar": 40
+      },
+      "revId": "c9e8ca2328bb82cad58dd4fd0960b1a455a71464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1988ffa3_8597a633",
+        "filename": "include/bluetooth_le_ll.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-10T22:20:01Z",
+      "side": 1,
+      "message": "Strange. They showed up as aligned in my editor. Fixed.",
+      "parentUuid": "1988ffa3_42bf54a1",
       "range": {
         "startLine": 85,
         "startChar": 39,
