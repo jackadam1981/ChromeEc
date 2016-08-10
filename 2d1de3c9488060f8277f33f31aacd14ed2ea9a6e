@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "99f6afe4_37d1a051",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-08-10T02:18:28Z",
+      "side": 1,
+      "message": "yeth. move ANX74XX_REG_CC_PULL_RP_12K  and ANX74XX_REG_CC_PULL_RP_4K below the register ANX74XX_REG_ANALOG_CTRL_6 like this: \n\n#define ANX74XX_REG_ANALOG_CTRL_6       0x47\n#define ANX74XX_REG_CC_PULL_RP_36K      0x00\n#define ANX74XX_REG_CC_PULL_RP_12K      0x01\n#define ANX74XX_REG_CC_PULL_RP_4K       0x02",
+      "parentUuid": "597357d0_025b508a",
+      "range": {
+        "startLine": 594,
+        "startChar": 5,
+        "endLine": 594,
+        "endChar": 7
+      },
+      "revId": "2d1de3c9488060f8277f33f31aacd14ed2ea9a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79cd7b78_493532de",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 3
@@ -53,6 +77,30 @@
       "writtenOn": "2016-08-08T22:52:55Z",
       "side": 1,
       "message": "Can you do #elif defined(CONFIG_USB_PD_PULLUP_3A)?\n\nIf someone accidentally defined both then you will have 11b, which is not defined.",
+      "range": {
+        "startLine": 605,
+        "startChar": 0,
+        "endLine": 606,
+        "endChar": 30
+      },
+      "revId": "2d1de3c9488060f8277f33f31aacd14ed2ea9a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f6afe4_b74d9043",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2016-08-10T02:18:28Z",
+      "side": 1,
+      "message": "Ok, it\u0027s better for reading and in use.",
+      "parentUuid": "79cd7b78_493532de",
       "range": {
         "startLine": 605,
         "startChar": 0,
