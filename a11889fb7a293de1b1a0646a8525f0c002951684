@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99414f2e_abac69f3",
+        "filename": "include/bluetooth_le.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-10T23:36:50Z",
+      "side": 1,
+      "message": "nit: missing \u0027the\u0027\n\nUses the algorithm defined in the BLE core .... to select the next data channel",
+      "range": {
+        "startLine": 360,
+        "startChar": 7,
+        "endLine": 360,
+        "endChar": 8
+      },
+      "revId": "a11889fb7a293de1b1a0646a8525f0c002951684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
