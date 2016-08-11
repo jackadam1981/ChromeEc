@@ -417,7 +417,8 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define stm32_i2c_reg(port, offset) \
 	((uint16_t *)((STM32_I2C1_BASE + ((port) * 0x400)) + (offset)))
 
-#if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)
+#if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3) \
+	|| defined(CHIP_FAMILY_STM32L4)
 #define STM32_I2C_CR1(n)            REG32(stm32_i2c_reg(n, 0x00))
 #define STM32_I2C_CR1_PE            (1 << 0)
 #define STM32_I2C_CR1_TXIE          (1 << 1)
@@ -495,7 +496,9 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 
 #define STM32_I2C_CCR(n)            REG16(stm32_i2c_reg(n, 0x1C))
 #define STM32_I2C_TRISE(n)          REG16(stm32_i2c_reg(n, 0x20))
-#endif /* !CHIP_FAMILY_STM32F0 && !CHIP_FAMILY_STM32F3 */
+/* !CHIP_FAMILY_STM32F0 && !CHIP_FAMILY_STM32F3 && !CHIP_FAMILY_STM32L4 */
+#endif
+
 
 /* --- Power / Reset / Clocks --- */
 #define STM32_PWR_BASE              0x40007000
