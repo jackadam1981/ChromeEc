@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99414f2e_11c84c1f",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-11T03:26:17Z",
+      "side": 1,
+      "message": "I don\u0027t think the enum is needed in the first place, but as an observation: is you assing this variable the enum values, it should be of that enum type.\n\nIn this particular case just a boolean (error/no error) would work just fine.",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "605cb3ae21d552a446b195c0f35703f1a6021653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99414f2e_d1bde47c",
+        "filename": "include/nvmem.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-11T03:26:17Z",
+      "side": 1,
+      "message": "nobody uses this enum outside of nvmem.c, and even there nobody looks at the error value.\n\nDo you really need this?",
+      "revId": "605cb3ae21d552a446b195c0f35703f1a6021653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99414f2e_91b35cb3",
+        "filename": "test/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-11T03:26:17Z",
+      "side": 1,
+      "message": "this is not how the user of nvram operates, you should also ignore the return value here.",
+      "revId": "605cb3ae21d552a446b195c0f35703f1a6021653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
