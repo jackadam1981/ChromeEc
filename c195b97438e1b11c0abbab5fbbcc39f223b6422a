@@ -46,6 +46,30 @@
       "revId": "c195b97438e1b11c0abbab5fbbcc39f223b6422a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ed9290e_1032c4a2",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-11T21:36:57Z",
+      "side": 1,
+      "message": "While flashing over USB, there is no servod running so none of these du-controls will work. This covers everything in BOARDS_STM32_DFU, as well as CR50",
+      "parentUuid": "ef90b9cc_01e61642",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 3
+      },
+      "revId": "c195b97438e1b11c0abbab5fbbcc39f223b6422a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
