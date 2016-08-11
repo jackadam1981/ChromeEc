@@ -16,6 +16,18 @@
 #include "task.h"
 #include "util.h"
 
+/* I2C ports */
+const struct i2c_port_t i2c_ports[] = {
+	{"i2c1", I2C_PORT_0, 800,
+		GPIO_I2C1_SCL, GPIO_I2C1_SDA, 0, 0},
+	{"i2c2", I2C_PORT_1, 800,
+		GPIO_I2C2_SCL, GPIO_I2C2_SDA, 0, 0},
+	{"i2c3", I2C_PORT_2, 800,
+		GPIO_I2C3_SCL, GPIO_I2C3_SDA, 0, 0},
+	{"fmpi2c4", FMPI2C_PORT_3, 800,
+		GPIO_FMPI2C_SCL, GPIO_FMPI2C_SDA, 0, 1},
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 #define GPIO_SET_HS(bank, number)	\
 	(STM32_GPIO_OSPEEDR(GPIO_##bank) |= (0x3 << ((number) * 2)))
