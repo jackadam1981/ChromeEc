@@ -58,9 +58,9 @@
 #define TCPC_REG_ROLE_CTRL_CC1(reg) ((reg) & 0x3)
 
 #define TCPC_REG_FAULT_CTRL        0x1b
+
 #define TCPC_REG_POWER_CTRL        0x1c
-#define TCPC_REG_POWER_CTRL_SET(vconn) (vconn)
-#define TCPC_REG_POWER_CTRL_VCONN(reg)    ((reg) & 0x1)
+#define TCPC_REG_POWER_CTRL_VCONN          (1 << 0)
 
 #define TCPC_REG_CC_STATUS         0x1d
 #define TCPC_REG_CC_STATUS_SET(term, cc1, cc2) \

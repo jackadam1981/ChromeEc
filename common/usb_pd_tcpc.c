@@ -1152,7 +1152,7 @@ static void tcpc_i2c_write(int port, int reg, int len, uint8_t *payload)
 		tcpc_set_cc(port, TCPC_REG_ROLE_CTRL_CC1(payload[1]));
 		break;
 	case TCPC_REG_POWER_CTRL:
-		tcpc_set_vconn(port, TCPC_REG_POWER_CTRL_VCONN(payload[1]));
+		tcpc_set_vconn(port, payload[1] & TCPC_REG_POWER_CTRL_VCONN);
 		break;
 	case TCPC_REG_TCPC_CTRL:
 		tcpc_set_polarity(port,

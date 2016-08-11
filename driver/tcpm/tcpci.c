@@ -109,8 +109,10 @@ int tcpci_tcpm_set_vconn(int port, int enable)
 	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &reg);
 	if (rv)
 		return rv;
-	reg &= ~TCPC_REG_POWER_CTRL_VCONN(1);
-	reg |= TCPC_REG_POWER_CTRL_VCONN(enable);
+	if (enable)
+		reg |= TCPC_REG_POWER_CTRL_VCONN;
+	else
+		reg &= ~TCPC_REG_POWER_CTRL_VCONN;
 	return tcpc_write(port, TCPC_REG_POWER_CTRL, reg);
 }
 
