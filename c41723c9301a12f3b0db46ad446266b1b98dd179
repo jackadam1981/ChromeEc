@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99414f2e_3430d699",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-11T17:24:38Z",
+      "side": 1,
+      "message": "poll",
+      "revId": "c41723c9301a12f3b0db46ad446266b1b98dd179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99414f2e_749c1eaf",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-11T17:24:38Z",
+      "side": 1,
+      "message": "flags",
+      "revId": "c41723c9301a12f3b0db46ad446266b1b98dd179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99414f2e_34a376b2",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-11T17:24:38Z",
+      "side": 1,
+      "message": "nit: Not needed.",
+      "range": {
+        "startLine": 417,
+        "startChar": 39,
+        "endLine": 417,
+        "endChar": 47
+      },
+      "revId": "c41723c9301a12f3b0db46ad446266b1b98dd179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99414f2e_b4fe86cf",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-11T17:24:38Z",
+      "side": 1,
+      "message": "Can this be removed?",
+      "range": {
+        "startLine": 420,
+        "startChar": 1,
+        "endLine": 420,
+        "endChar": 51
+      },
+      "revId": "c41723c9301a12f3b0db46ad446266b1b98dd179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99414f2e_dfa88b28",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-11T17:24:38Z",
+      "side": 1,
+      "message": "Can you help me understand why reading 2 bytes and 1 byte have to take different code path?",
+      "revId": "c41723c9301a12f3b0db46ad446266b1b98dd179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99414f2e_1f15b396",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-11T17:24:38Z",
+      "side": 1,
+      "message": "Unused assignment.",
+      "range": {
+        "startLine": 517,
+        "startChar": 2,
+        "endLine": 517,
+        "endChar": 14
+      },
+      "revId": "c41723c9301a12f3b0db46ad446266b1b98dd179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99414f2e_74f5fee6",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-11T17:24:38Z",
+      "side": 1,
+      "message": "nit: These would be checked twice here and in chip_fmpi2c_xfer.",
+      "range": {
+        "startLine": 613,
+        "startChar": 0,
+        "endLine": 614,
+        "endChar": 25
+      },
+      "revId": "c41723c9301a12f3b0db46ad446266b1b98dd179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99414f2e_34d45641",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-11T17:24:38Z",
+      "side": 1,
+      "message": "If calls are forwarded to chip_fmpi2c_xfer like this, why does chip_fmpi2c_xfer need to be exported? Why don\u0027t we have just one API for i2c and fmpi2c?",
+      "range": {
+        "startLine": 616,
+        "startChar": 0,
+        "endLine": 619,
+        "endChar": 2
+      },
+      "revId": "c41723c9301a12f3b0db46ad446266b1b98dd179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
