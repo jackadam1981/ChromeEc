@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99414f2e_14ee7a20",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-11T16:41:20Z",
+      "side": 1,
+      "message": "I have removed the enum for the error list as you pointed out that it\u0027s not necessary since it\u0027s not being exposed outside of this file. Initially, I had pictured an API call that let some user read the error state and that\u0027s why I added the enum, but then decided to just let the error state be cleared automatically by the commit() operation.",
+      "parentUuid": "99414f2e_11c84c1f",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "605cb3ae21d552a446b195c0f35703f1a6021653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99414f2e_d1bde47c",
         "filename": "include/nvmem.h",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "99414f2e_34eb7611",
+        "filename": "include/nvmem.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-11T16:41:20Z",
+      "side": 1,
+      "message": "I have removed this.",
+      "parentUuid": "99414f2e_d1bde47c",
+      "revId": "605cb3ae21d552a446b195c0f35703f1a6021653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99414f2e_91b35cb3",
         "filename": "test/nvmem.c",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2016-08-11T03:26:17Z",
       "side": 1,
       "message": "this is not how the user of nvram operates, you should also ignore the return value here.",
+      "revId": "605cb3ae21d552a446b195c0f35703f1a6021653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99414f2e_d44dd242",
+        "filename": "test/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-11T16:41:20Z",
+      "side": 1,
+      "message": "The test for ret !\u003d 0 was necessary so that following TEST_ASSERT_ARRAY_EQ() wouldn\u0027t fail for test cases where the write doesn\u0027t happen (buffer overflow or shared_mem is locked). \n\nIn order to make this test mirror more closely how the routines are called, in that a write() must be followed by a commit(), I have removed the intermediate read/memcmp check.",
+      "parentUuid": "99414f2e_91b35cb3",
       "revId": "605cb3ae21d552a446b195c0f35703f1a6021653",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
