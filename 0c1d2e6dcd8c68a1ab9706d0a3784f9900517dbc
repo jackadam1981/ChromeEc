@@ -22,6 +22,30 @@
       "revId": "0c1d2e6dcd8c68a1ab9706d0a3784f9900517dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99414f2e_14491a6c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-08-11T16:22:39Z",
+      "side": 1,
+      "message": "We add delay here since VBUS interrupt happens first and will wake the PD_TASK, but TCPC IRQ does not come until much later. We tested 10ms and not consistencely work, 15ms seems ok, but we put 20ms for the safe side.\n\nDo you have any suggestion to workaround this?\nCan we make the CCD support port dependent?\nOr make the CCD detection only swtich to SRC_DISCONNECTED when role swap timer expired?",
+      "parentUuid": "fe531125_e6475ea9",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 12
+      },
+      "revId": "0c1d2e6dcd8c68a1ab9706d0a3784f9900517dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
