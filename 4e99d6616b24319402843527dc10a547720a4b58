@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "def9ed3d_9d9243f0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1954,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-11T11:34:01Z",
+      "side": 1,
+      "message": "Indeed, this clarification was added to PD R2 v1.2.\nBut starting moving the CC level just before the PS_RDY transmit (and also to some extend doing the PS_RDY + GOOD_CRC with Rd on both level, ie 0V) has some implications on the waveforms seen by both parties, we would need to re-test extensively PR_SWAP including with our machines and peripherals with soft-PHY (e.g Samus) to validate this.",
+      "range": {
+        "startLine": 1953,
+        "startChar": 35,
+        "endLine": 1954,
+        "endChar": 4
+      },
+      "revId": "4e99d6616b24319402843527dc10a547720a4b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
