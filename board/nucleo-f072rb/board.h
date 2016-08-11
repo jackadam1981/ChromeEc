@@ -18,6 +18,9 @@
 /* Optional features */
 #define CONFIG_STM_HWTIMER32
 
+#define CONFIG_I2C
+#define CONFIG_I2C_MASTER
+
 #undef CONFIG_WATCHDOG_HELP
 #undef CONFIG_LID_SWITCH
 
