@@ -93,6 +93,11 @@ static inline int tcpm_set_vconn(int port, int enable)
 	return tcpc_config[port].drv->set_vconn(port, enable);
 }
 
+static inline int tcpm_set_autodischarge(int port, int enable)
+{
+	return tcpc_config[port].drv->set_autodischarge(port, enable);
+}
+
 static inline int tcpm_set_msg_header(int port, int power_role, int data_role)
 {
 	return tcpc_config[port].drv->set_msg_header(port, power_role,
@@ -180,6 +185,16 @@ int tcpm_set_polarity(int port, int polarity);
  * @return EC_SUCCESS or error
  */
 int tcpm_set_vconn(int port, int enable);
+
+/**
+ * Set AutoDischargeDisconnect.
+ *
+ * @param port Type-C port number
+ * @param enable Enable Auto discharge
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpm_set_autodischarge(int port, int enable);
 
 /**
  * Set PD message header to use for goodCRC

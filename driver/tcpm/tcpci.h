@@ -60,7 +60,8 @@
 #define TCPC_REG_FAULT_CTRL        0x1b
 
 #define TCPC_REG_POWER_CTRL        0x1c
-#define TCPC_REG_POWER_CTRL_VCONN          (1 << 0)
+#define TCPC_REG_POWER_CTRL_VCONN         (1 << 0)
+#define TCPC_REG_POWER_CTRL_AUTODISCHARGE (1 << 4)
 
 #define TCPC_REG_CC_STATUS         0x1d
 #define TCPC_REG_CC_STATUS_SET(term, cc1, cc2) \
@@ -120,6 +121,7 @@ int tcpci_tcpm_get_vbus_level(int port);
 int tcpci_tcpm_set_cc(int port, int pull);
 int tcpci_tcpm_set_polarity(int port, int polarity);
 int tcpci_tcpm_set_vconn(int port, int enable);
+int tcpci_tcpm_set_autodischarge(int port, int enable);
 int tcpci_tcpm_set_msg_header(int port, int power_role, int data_role);
 int tcpci_tcpm_set_rx_enable(int port, int enable);
 int tcpci_tcpm_get_message(int port, uint32_t *payload, int *head);

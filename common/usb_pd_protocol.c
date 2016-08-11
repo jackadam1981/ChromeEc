@@ -1984,6 +1984,8 @@ void pd_task(void)
 			CPRINTS("TCPC p%d resumed!", port);
 			break;
 		case PD_STATE_SNK_DISCONNECTED:
+			tcpm_set_autodischarge(port, 1);
+
 #ifdef CONFIG_USB_PD_LOW_POWER
 			timeout = drp_state != PD_DRP_TOGGLE_ON ? SECOND
 								: 10*MSEC;
@@ -2249,6 +2251,9 @@ void pd_task(void)
 						  PD_STATE_HARD_RESET_SEND);
 			break;
 		case PD_STATE_SNK_READY:
+			/* Make sure autodischarge is on */
+			tcpm_set_autodischarge(port, 1);
+
 			timeout = 20*MSEC;
 
 			/*
@@ -2297,8 +2302,10 @@ void pd_task(void)
 			break;
 		case PD_STATE_SNK_SWAP_INIT:
 			if (pd[port].last_state != pd[port].task_state) {
+				tcpm_set_autodischarge(port, 0);
 				res = send_control(port, PD_CTRL_PR_SWAP);
 				if (res < 0) {
+					tcpm_set_autodischarge(port, 1);
 					timeout = 10*MSEC;
 					/*
 					 * If failed to get goodCRC, send
@@ -2318,6 +2325,12 @@ void pd_task(void)
 			}
 			break;
 		case PD_STATE_SNK_SWAP_SNK_DISABLE:
+			/* If we did not initiate the power role swap, we need
+			 * to disable AutoDischargeDisconnect. */
+			if (pd[port].last_state != PD_STATE_SNK_SWAP_INIT) {
+				tcpm_set_autodischarge(port, 0);
+			}
+
 			/* Stop drawing power */
 			pd_set_input_current_limit(port, 0, 0);
 #ifdef CONFIG_CHARGE_MANAGER
@@ -2358,6 +2371,8 @@ void pd_task(void)
 			}
 			break;
 		case PD_STATE_SNK_SWAP_COMPLETE:
+			tcpm_set_autodischarge(port, 1);
+
 			/* Send PS_RDY and change to source role */
 			res = send_control(port, PD_CTRL_PS_RDY);
 			if (res < 0) {

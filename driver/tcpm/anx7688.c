@@ -170,6 +170,7 @@ const struct tcpm_drv anx7688_tcpm_drv = {
 	.set_cc			= &tcpci_tcpm_set_cc,
 	.set_polarity		= &tcpci_tcpm_set_polarity,
 	.set_vconn		= &tcpci_tcpm_set_vconn,
+	.set_autodischarge	= &tcpci_tcpm_set_autodischarge,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
 	.get_message		= &tcpci_tcpm_get_message,

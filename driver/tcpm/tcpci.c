@@ -116,6 +116,20 @@ int tcpci_tcpm_set_vconn(int port, int enable)
 	return tcpc_write(port, TCPC_REG_POWER_CTRL, reg);
 }
 
+int tcpci_tcpm_set_autodischarge(int port, int enable)
+{
+	int reg, rv;
+
+	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &reg);
+	if (rv)
+		return rv;
+	if (enable)
+		reg |= TCPC_REG_POWER_CTRL_AUTODISCHARGE;
+	else
+		reg &= ~TCPC_REG_POWER_CTRL_AUTODISCHARGE;
+	return tcpc_write(port, TCPC_REG_POWER_CTRL, reg);
+}
+
 int tcpci_tcpm_set_msg_header(int port, int power_role, int data_role)
 {
 	return tcpc_write(port, TCPC_REG_MSG_HDR_INFO,
@@ -361,6 +375,7 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 	.set_cc			= &tcpci_tcpm_set_cc,
 	.set_polarity		= &tcpci_tcpm_set_polarity,
 	.set_vconn		= &tcpci_tcpm_set_vconn,
+	.set_autodischarge	= &tcpci_tcpm_set_autodischarge,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
 	.get_message		= &tcpci_tcpm_get_message,

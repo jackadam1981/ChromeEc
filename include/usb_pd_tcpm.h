@@ -108,6 +108,16 @@ struct tcpm_drv {
 	int (*set_vconn)(int port, int enable);
 
 	/**
+	 * Set AutoDischargeDisconnect.
+	 *
+	 * @param port Type-C port number
+	 * @param enable
+	 *
+	 * @return EC_SUCCESS or error
+	 */
+	int (*set_autodischarge)(int port, int enable);
+
+	/**
 	 * Set PD message header to use for goodCRC
 	 *
 	 * @param port Type-C port number
