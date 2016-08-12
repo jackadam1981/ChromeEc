@@ -9,11 +9,14 @@
 #define __CROS_EC_USB_PD_H
 
 #include "common.h"
+#include "task.h"
 
 /* PD Host command timeout */
 #define PD_HOST_COMMAND_TIMEOUT_US SECOND
 
 #ifdef CONFIG_USB_PD_PORT_COUNT
+extern struct mutex pd_mutex[CONFIG_USB_PD_PORT_COUNT];
+
 /*
  * Define PD_PORT_TO_TASK_ID() and TASK_ID_TO_PD_PORT() macros to
  * go between PD port number and task ID. Assume that TASK_ID_PD_C0 is the
