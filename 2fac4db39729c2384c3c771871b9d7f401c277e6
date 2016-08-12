@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9e0e957b_a904d9c6",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-08-12T17:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e74d5be_13296cec",
+      "range": {
+        "startLine": 603,
+        "startChar": 1,
+        "endLine": 603,
+        "endChar": 43
+      },
+      "revId": "2fac4db39729c2384c3c771871b9d7f401c277e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ed9290e_b095f832",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-11T20:45:12Z",
       "side": 1,
       "message": "No need for these comments.",
+      "range": {
+        "startLine": 284,
+        "startChar": 3,
+        "endLine": 286,
+        "endChar": 5
+      },
+      "revId": "2fac4db39729c2384c3c771871b9d7f401c277e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_8953dde6",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-08-12T17:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ed9290e_b095f832",
       "range": {
         "startLine": 284,
         "startChar": 3,
