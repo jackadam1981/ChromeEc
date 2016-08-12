@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e0e957b_9dd4b348",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-12T19:56:31Z",
+      "side": 1,
+      "message": "Only the PD tasks are locking this now, so I think the change as-is is a NOP. Do you intend to have other tasks lock it later?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 55
+      },
+      "revId": "d9012ad704c9cbc893184be3ef38bf23f42945db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
