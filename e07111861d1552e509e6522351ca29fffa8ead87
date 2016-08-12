@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e0e957b_49d8c525",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-08-12T07:53:16Z",
+      "side": 1,
+      "message": "TCPC I2C is not accessible in standby mode, so if Zinger is hot plug while the system is in SOC-G3/POWER_STATE_G3, then you may need to use the CABLE_DET pin as interrupt and put it back to normal mode so that it can do PD negiotation back to 20V again.",
+      "revId": "e07111861d1552e509e6522351ca29fffa8ead87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_29c9095b",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-08-12T07:53:16Z",
+      "side": 1,
+      "message": "Should we turn off EN_PP5000 and PMIC_EN as well?\n\nRefer to:\n#9 and #13 at https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d54962",
+      "revId": "e07111861d1552e509e6522351ca29fffa8ead87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
