@@ -46,6 +46,30 @@
       "revId": "0c1d2e6dcd8c68a1ab9706d0a3784f9900517dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be943951_8c74a7dd",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-12T15:30:00Z",
+      "side": 1,
+      "message": "15 ms is as bad as 20 ms.\n\n\u003e Can we make the CCD support port dependent?\n\nThat will be as broken.\n\n\u003e Do you have any suggestion to workaround this?\n\nIn this whole 20ms window, we should have time to go to SRC_DISCONNECTED then bounce back to SNK_DISCONNECT when we see no Rd. Why it is not going back ?",
+      "parentUuid": "99414f2e_14491a6c",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 12
+      },
+      "revId": "0c1d2e6dcd8c68a1ab9706d0a3784f9900517dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
