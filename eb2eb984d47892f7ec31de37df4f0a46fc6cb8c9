@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "9e0e957b_97981415",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-12T17:27:09Z",
+      "side": 1,
+      "message": "Maybe also add a brief description of the change. Something along the lines of \"This commit changes the timeout to be based on a time period. Previously, timeout was treated as a retry count.\" Feel free to reword that to your liking. :)\n\nPersonally, I found that just reading the commit title was a little cryptic.",
+      "revId": "eb2eb984d47892f7ec31de37df4f0a46fc6cb8c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e0e957b_77775803",
         "filename": "chip/nrf51/bluetooth_le.c",
         "patchSetId": 1
