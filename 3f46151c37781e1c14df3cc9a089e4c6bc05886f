@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e0e957b_7d2c5795",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-12T19:48:33Z",
+      "side": 1,
+      "message": "Not sure if we should bother doing anything here. We could just call set_c0_active() if the board is EVT or newer, though it should have no effect.",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 4
+      },
+      "revId": "3f46151c37781e1c14df3cc9a089e4c6bc05886f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
