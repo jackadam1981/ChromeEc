@@ -173,6 +173,22 @@ uint16_t tcpc_get_alert_status(void)
 	return status;
 }
 
+static void set_c0_standby(void)
+{
+	/* force ANX74xx into standby mode */
+	gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
+	msleep(1);
+	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
+}
+
+static void set_c0_active(void)
+{
+	/* force ANX74xx into active mode */
+	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
+	msleep(10);
+	gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
+}
+
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_AC_PRESENT,
 	GPIO_LID_OPEN,
@@ -217,10 +233,7 @@ void board_reset_pd_mcu(void)
 	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
 #endif
 
-	/* Assert reset to TCPC0 */
-	gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
-	msleep(1);
-	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
+	set_c0_standby();
 
 #if IS_PROTO == 0
 	/* Deassert reset to TCPC1 */
@@ -230,10 +243,7 @@ void board_reset_pd_mcu(void)
 	/* TCPC0 requires 10ms reset/power down assertion */
 	msleep(10);
 
-	/* Deassert reset to TCPC0 */
-	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
-	msleep(10);
-	gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
+	set_c0_active();
 }
 
 void board_tcpc_init(void)
@@ -384,6 +394,8 @@ static void chipset_pre_init(void)
 	gpio_set_level(GPIO_EN_PP3300, 1);
 	while (!gpio_get_level(GPIO_PP3300_PG))
 		;
+
+	set_c0_active();
 #endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
@@ -569,8 +581,10 @@ static void board_chipset_shutdown(void)
 	gpio_set_level(GPIO_EN_USB_A_5V, 0);
 
 	hook_call_deferred(&enable_input_devices_data, 0);
-	/* FIXME(dhendrix): Drive USB_PD_RST_ODL low to prevent
-	   leakage? (see comment in schematic) */
+
+#if IS_PROTO == 0
+	gpio_set_level(GPIO_EN_PP5000, 0);
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
@@ -583,12 +597,18 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
  */
 void chipset_do_shutdown(void)
 {
+#if IS_PROTO == 1
 	/*
 	 * If we shut off TCPCs the TCPC tasks will fail and spam the
 	 * EC console with I2C errors. So for now we'll leave the TCPCs
 	 * on which means leaving PMIC_EN, PP3300, and PP5000 enabled.
 	 */
 	cprintf(CC_CHIPSET, "%s called, but not doing anything.\n", __func__);
+#else
+	set_c0_standby();
+	gpio_set_level(GPIO_PMIC_EN, 0);
+	gpio_set_level(GPIO_EN_PP3300, 0);
+#endif
 }
 
 void board_set_gpio_hibernate_state(void)
