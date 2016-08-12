@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e0e957b_ec741fcc",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-12T16:36:02Z",
+      "side": 1,
+      "message": "Why not using NORMAL mode and set t_standby in set_rate (if rate !\u003d 0)?",
+      "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_4cc29304",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-12T16:36:02Z",
+      "side": 1,
+      "message": "this is bad: you will wait in the motion sense task for a long time, preventing other sensor to be serviced.\nIs it possible to use an interrupt handler and wake the task when the reading is available?",
+      "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_ec4b7f83",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-12T16:36:02Z",
+      "side": 1,
+      "message": "not needed.",
+      "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_ac518739",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-12T16:36:02Z",
+      "side": 1,
+      "message": "as said before, given the sensor usage model is to gather a continuous stream of data, (see http://source.android.com/devices/sensors/sensor-types.html#pressure), when rate !\u003d0, set the period here.\nWhen rate is 0, put the sensor in standby.",
+      "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_8c448ba6",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-12T16:36:02Z",
+      "side": 1,
+      "message": "static variable, no need to set fields to NULL.",
+      "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_6c066f2a",
+        "filename": "driver/baro_bmp280.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-12T16:36:02Z",
+      "side": 1,
+      "message": "update comment. As far as I can see, this driver only support the I2C mode.",
+      "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_2c0bd72c",
+        "filename": "driver/baro_bmp280.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-12T16:36:02Z",
+      "side": 1,
+      "message": "remove (, we don\u0027t use them for simple constants.",
+      "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
