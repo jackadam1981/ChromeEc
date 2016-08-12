@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9e0e957b_9db953be",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-12T19:45:48Z",
+      "side": 1,
+      "message": "Yep, that\u0027s the plan: https://chromium-review.googlesource.com/#/c/368465\n\nFor some reason, however, I am seeing several CABLE_DET interrupts occurring for about 20-30sec while testing with Donette. I\u0027m looking into that further and will also test with Zinger.",
+      "parentUuid": "9e0e957b_49d8c525",
+      "revId": "e07111861d1552e509e6522351ca29fffa8ead87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e0e957b_29c9095b",
         "filename": "board/reef/board.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2016-08-12T07:53:16Z",
       "side": 1,
       "message": "Should we turn off EN_PP5000 and PMIC_EN as well?\n\nRefer to:\n#9 and #13 at https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d54962",
+      "revId": "e07111861d1552e509e6522351ca29fffa8ead87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_b22b9e2a",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-12T19:45:48Z",
+      "side": 1,
+      "message": "Yes, though should EN_PP5000 be disabled in S5?",
+      "parentUuid": "9e0e957b_29c9095b",
       "revId": "e07111861d1552e509e6522351ca29fffa8ead87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
