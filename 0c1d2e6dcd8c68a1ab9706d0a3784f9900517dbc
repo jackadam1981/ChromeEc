@@ -70,6 +70,30 @@
       "revId": "0c1d2e6dcd8c68a1ab9706d0a3784f9900517dbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_8ce00bbe",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-08-12T15:59:51Z",
+      "side": 1,
+      "message": "\u003e In this whole 20ms window, we should have time to go to\n \u003e SRC_DISCONNECTED then bounce back to SNK_DISCONNECT when we see no\n \u003e Rd. Why it is not going back ?\n\nIt does go back to SNK_DISCONNECT, but it just go through the same cycle again. From SRC_DISCONNECT, there is a 10ms or role swap timeout, it set TCPC CC back to Rd, 2ms timeout, execute SNK_DISCONNECT state, and CC_STATUS is not updated yet, EC continues to see open cc, then check for VBUS next, saw VBUS from Guppy, think it is CCD device, switch back to SRC_DISCONNECTED again and the next cycle begin.",
+      "parentUuid": "be943951_8c74a7dd",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 12
+      },
+      "revId": "0c1d2e6dcd8c68a1ab9706d0a3784f9900517dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
