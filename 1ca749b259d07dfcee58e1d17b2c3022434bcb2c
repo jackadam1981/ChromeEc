@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e0e957b_1d9ba3c5",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-12T19:48:33Z",
+      "side": 1,
+      "message": "I added prints here and saw interrupts occur with USB_C0_CABLE_DET \u003d\u003d 1 about every 111ms for about 13sec after plugging in a charger. I do not see USB_C0_CABLE_DET go low, though. Hmmmmm...",
+      "revId": "1ca749b259d07dfcee58e1d17b2c3022434bcb2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
