@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e0e957b_6c778f03",
+        "filename": "driver/als_al3010.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-12T16:03:19Z",
+      "side": 1,
+      "message": "revert this: given you just have enable the sensor for continuous reading, you may get older value when you read the LUX registers, bu the these are still meaningful.\nInterrupt is useful if you use the single measurement state, or enable threshold.",
+      "revId": "aeddeb022135425d04f49c0a6d4a7afef7f12a49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
