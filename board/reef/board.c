@@ -196,15 +196,29 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	}
 };
 
-/* called from anx74xx_set_power_mode() */
 void board_set_tcpc_power_mode(int port, int mode)
 {
 	/*
-	 * This is called during init by the ANX driver to take the TCPC out
-	 * of reset and enable power. Since we have two TCPC chips and one
-	 * power enable on Reef, we take both chips out of reset in a
-	 * separate function.
+	 * This is called by the ANX74xx driver during TCPM init. On proto
+	 * we have two TCPC chips and one reset signal, so we take both chips
+	 * out of reset in a separate function. On EVT and newer we have finer-
+	 * grained control and can put the Analogix chip in active mode itself.
 	 */
+#if IS_PROTO == 0
+	if (!port) {
+		if (!mode) {
+			pd_set_suspend(port, 1);
+			gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
+			msleep(1);
+			gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
+		} else {
+			gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
+			msleep(10);
+			gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
+			pd_set_suspend(port, 0);
+		}
+	}
+#endif
 }
 
 /**
@@ -219,10 +233,7 @@ void board_reset_pd_mcu(void)
 	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
 #endif
 
-	/* Assert reset to TCPC0 */
-	gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
-	msleep(1);
-	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
+	board_set_tcpc_power_mode(0, 0);
 
 #if IS_PROTO == 0
 	/* Deassert reset to TCPC1 */
@@ -232,10 +243,7 @@ void board_reset_pd_mcu(void)
 	/* TCPC0 requires 10ms reset/power down assertion */
 	msleep(10);
 
-	/* Deassert reset to TCPC0 */
-	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
-	msleep(10);
-	gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
+	board_set_tcpc_power_mode(0, 1);
 }
 
 void board_tcpc_init(void)
