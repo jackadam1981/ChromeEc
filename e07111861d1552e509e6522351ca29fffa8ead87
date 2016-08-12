@@ -69,6 +69,24 @@
       "revId": "e07111861d1552e509e6522351ca29fffa8ead87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e06899f_a8b89b2b",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-12T21:29:16Z",
+      "side": 1,
+      "message": "Nevermind, I checked with Rachel and she says G3 is the place to disable PP5000.",
+      "parentUuid": "9e0e957b_b22b9e2a",
+      "revId": "e07111861d1552e509e6522351ca29fffa8ead87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
