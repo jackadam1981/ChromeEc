@@ -22,6 +22,30 @@
       "revId": "e6afb2ef97fbe09d65fe54e9ffcb0e6a9f26c95f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_e31392b4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3191,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-12T00:40:36Z",
+      "side": 0,
+      "message": "I had this response struct removed from the original branch CL (see https://chromium-review.googlesource.com/#/c/328955/) but I missed it when it was added back to TOT.",
+      "parentUuid": "9e0e957b_23f00a93",
+      "range": {
+        "startLine": 3189,
+        "startChar": 0,
+        "endLine": 3191,
+        "endChar": 11
+      },
+      "revId": "e6afb2ef97fbe09d65fe54e9ffcb0e6a9f26c95f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
