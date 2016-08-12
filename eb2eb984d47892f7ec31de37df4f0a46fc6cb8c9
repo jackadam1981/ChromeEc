@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9e0e957b_d248da89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-12T18:29:16Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "9e0e957b_17df04da",
+      "revId": "eb2eb984d47892f7ec31de37df4f0a46fc6cb8c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e0e957b_97981415",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-08-12T17:27:09Z",
       "side": 1,
       "message": "Maybe also add a brief description of the change. Something along the lines of \"This commit changes the timeout to be based on a time period. Previously, timeout was treated as a retry count.\" Feel free to reword that to your liking. :)\n\nPersonally, I found that just reading the commit title was a little cryptic.",
+      "revId": "eb2eb984d47892f7ec31de37df4f0a46fc6cb8c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_3225eec2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-12T18:29:16Z",
+      "side": 1,
+      "message": "I see what you mean. Done! Thank you!",
+      "parentUuid": "9e0e957b_97981415",
       "revId": "eb2eb984d47892f7ec31de37df4f0a46fc6cb8c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9e0e957b_d23e1a0a",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-12T18:29:16Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "9e0e957b_77775803",
+      "revId": "eb2eb984d47892f7ec31de37df4f0a46fc6cb8c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e0e957b_974494a6",
         "filename": "chip/nrf51/bluetooth_le.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2016-08-12T17:21:47Z",
       "side": 1,
       "message": "nit: please leave a blank line after L127.",
+      "revId": "eb2eb984d47892f7ec31de37df4f0a46fc6cb8c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_32b32eb2",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-12T18:29:16Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "9e0e957b_974494a6",
       "revId": "eb2eb984d47892f7ec31de37df4f0a46fc6cb8c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -93,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "9e0e957b_b2c6fe14",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-12T18:29:16Z",
+      "side": 1,
+      "message": "Yes I can! That saves an intermediate variable. Thanks!",
+      "parentUuid": "9e0e957b_376de033",
+      "range": {
+        "startLine": 131,
+        "startChar": 6,
+        "endLine": 131,
+        "endChar": 18
+      },
+      "revId": "eb2eb984d47892f7ec31de37df4f0a46fc6cb8c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e0e957b_b7327056",
         "filename": "chip/nrf51/bluetooth_le.c",
         "patchSetId": 1
@@ -104,6 +200,24 @@
       "writtenOn": "2016-08-12T17:21:47Z",
       "side": 1,
       "message": "How long can this take? Does the nRF51 not have a watchdog? I\u0027m worried with a tight loop like this, you may run into the watchdog timer.\n\nAlso, it looks like radio_disable() already has timeout handling. Is that likely to fail hence this retry wrapper?",
+      "revId": "eb2eb984d47892f7ec31de37df4f0a46fc6cb8c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_b251de39",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-12T18:29:16Z",
+      "side": 1,
+      "message": "This is a potentially blocking call, but will only block if there is an unexpected state. I have never seen it block. I replaced it with a non-blocking statement, paired with a check to make sure it works. It will return an error if it is in an unexpected state.",
+      "parentUuid": "9e0e957b_b7327056",
       "revId": "eb2eb984d47892f7ec31de37df4f0a46fc6cb8c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
