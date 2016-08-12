@@ -22,6 +22,30 @@
       "revId": "d9012ad704c9cbc893184be3ef38bf23f42945db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e06899f_8b52716c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-12T21:58:41Z",
+      "side": 1,
+      "message": "Yes, in the follow-up patch. I want to use the CABLE_DET pin as an interrupt and have the board-level code put the Analogix TCPC in suspend or active mode.",
+      "parentUuid": "9e0e957b_9dd4b348",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 55
+      },
+      "revId": "d9012ad704c9cbc893184be3ef38bf23f42945db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
