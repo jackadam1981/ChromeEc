@@ -21,7 +21,7 @@
 /* Number of attempts for each PD host command */
 #define PD_HOST_COMMAND_ATTEMPTS 3
 
-static struct mutex pd_mutex;
+static struct mutex pd_hc_mutex;
 
 /**
  * Non-task-safe internal version of pd_host_command().
@@ -169,12 +169,12 @@ int pd_host_command(int command, int version,
 	/* Try multiple times to send host command. */
 	for (tries = 0; tries < PD_HOST_COMMAND_ATTEMPTS; tries++) {
 		/* Acquire mutex */
-		mutex_lock(&pd_mutex);
+		mutex_lock(&pd_hc_mutex);
 		/* Call internal version of host command */
 		rv = pd_host_command_internal(command, version, outdata,
 					      outsize, indata, insize);
 		/* Release mutex */
-		mutex_unlock(&pd_mutex);
+		mutex_unlock(&pd_hc_mutex);
 
 		/* If host command error due to i2c bus error, try again. */
 		if (rv != -EC_RES_BUS_ERROR)

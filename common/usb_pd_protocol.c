@@ -24,6 +24,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+#include "task.h"
 #include "tcpm.h"
 #include "version.h"
 
@@ -41,6 +42,12 @@
  * performance.
  */
 static int debug_level;
+
+/*
+ * Mutex used by pd_task() to avoid interference from other parts of the code
+ * which may change PD chip state while the task goes thru the state machine.
+ */
+struct mutex pd_mutex[CONFIG_USB_PD_PORT_COUNT];
 
 /*
  * PD communication enabled flag. When false, PD state machine still
@@ -1467,7 +1474,13 @@ void pd_task(void)
 		}
 
 		/* wait for next event/packet or timeout expiration */
+#ifdef CONFIG_COMMON_RUNTIME
+		mutex_unlock(&pd_mutex[port]);
+#endif
 		evt = task_wait_event(timeout);
+#ifdef CONFIG_COMMON_RUNTIME
+		mutex_lock(&pd_mutex[port]);
+#endif
 
 #ifdef CONFIG_USB_PD_TCPC
 		/*
