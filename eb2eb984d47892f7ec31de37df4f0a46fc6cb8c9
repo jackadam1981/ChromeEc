@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e0e957b_17df04da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-12T17:21:47Z",
+      "side": 1,
+      "message": "It\u0027d be nice if you could also add a function header for ble_rx in bluetooth_le.h describing the parameters.",
+      "revId": "eb2eb984d47892f7ec31de37df4f0a46fc6cb8c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_77775803",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-12T17:21:47Z",
+      "side": 1,
+      "message": "nit: please leave a blank line between the declarations and the rest of the code.",
+      "revId": "eb2eb984d47892f7ec31de37df4f0a46fc6cb8c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_974494a6",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-12T17:21:47Z",
+      "side": 1,
+      "message": "nit: please leave a blank line after L127.",
+      "revId": "eb2eb984d47892f7ec31de37df4f0a46fc6cb8c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_376de033",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-12T17:21:47Z",
+      "side": 1,
+      "message": "Could you just call get_time() here?",
+      "range": {
+        "startLine": 131,
+        "startChar": 6,
+        "endLine": 131,
+        "endChar": 18
+      },
+      "revId": "eb2eb984d47892f7ec31de37df4f0a46fc6cb8c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0e957b_b7327056",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-12T17:21:47Z",
+      "side": 1,
+      "message": "How long can this take? Does the nRF51 not have a watchdog? I\u0027m worried with a tight loop like this, you may run into the watchdog timer.\n\nAlso, it looks like radio_disable() already has timeout handling. Is that likely to fail hence this retry wrapper?",
+      "revId": "eb2eb984d47892f7ec31de37df4f0a46fc6cb8c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
