@@ -78,6 +78,14 @@ static void tcpc_alert_event(enum gpio_signal signal)
 #endif
 }
 
+static void set_tcpc0_mode(void);
+DECLARE_DEFERRED(set_tcpc0_mode);
+
+void usb_c0_cable_detect_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&set_tcpc0_mode_data, 0);
+}
+
 /*
  * enable_input_devices() is called by the tablet_mode ISR, but changes the
  * state of GPIOs, so its definition must reside after including gpio_list.
@@ -221,6 +229,22 @@ void board_set_tcpc_power_mode(int port, int mode)
 #endif
 }
 
+static void set_tcpc0_mode(void)
+{
+#if IS_PROTO == 0
+	if (!gpio_get_level(GPIO_USB_C0_CABLE_DET)) {
+		/*
+		 * Ensure C0's PD task is run first so that it sets the mux
+		 * appropriately.
+		 */
+		task_wake(TASK_ID_PD_C0);
+		board_set_tcpc_power_mode(0, 0);
+	} else {
+		board_set_tcpc_power_mode(0, 1);
+	}
+#endif
+}
+
 /**
  * Reset PD MCU -- currently only called from handle_pending_reboot() in
  * common/power.c just before hard resetting the system. This logic is likely
@@ -257,6 +281,9 @@ void board_tcpc_init(void)
 
 	/* Enable TCPC1 interrupt */
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
+
+	/* Enable cable detection interrupt on TCPC0 */
+	gpio_enable_interrupt(GPIO_USB_C0_CABLE_DET);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
