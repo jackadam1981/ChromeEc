@@ -76,6 +76,14 @@ static void tcpc_alert_event(enum gpio_signal signal)
 #endif
 }
 
+static void set_c0_mode(void);
+DECLARE_DEFERRED(set_c0_mode);
+
+void usb_c0_cable_detect_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&set_c0_mode_data, 0);
+}
+
 /*
  * enable_input_devices() is called by the tablet_mode ISR, but changes the
  * state of GPIOs, so its definition must reside after including gpio_list.
@@ -187,6 +195,22 @@ static void set_c0_active(void)
 	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
 	msleep(10);
 	gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
+}
+
+static void set_c0_mode(void)
+{
+#if IS_PROTO == 0
+	if (!gpio_get_level(GPIO_USB_C0_CABLE_DET)) {
+		/*
+		 * Ensure C0's PD task is run first so that it sets the mux
+		 * appropriately.
+		 */
+		task_wake(TASK_ID_PD_C0);
+		set_c0_standby();
+	} else {
+		set_c0_active();
+	}
+#endif
 }
 
 const enum gpio_signal hibernate_wake_pins[] = {
