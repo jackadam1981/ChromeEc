@@ -583,12 +583,17 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
  */
 void chipset_do_shutdown(void)
 {
+#if IS_PROTO == 1
 	/*
 	 * If we shut off TCPCs the TCPC tasks will fail and spam the
 	 * EC console with I2C errors. So for now we'll leave the TCPCs
 	 * on which means leaving PMIC_EN, PP3300, and PP5000 enabled.
 	 */
 	cprintf(CC_CHIPSET, "%s called, but not doing anything.\n", __func__);
+#else
+	gpio_set_level(GPIO_EN_PP3300, 0);
+	gpio_set_level(GPIO_EN_PP5000, 0);
+#endif
 }
 
 void board_set_gpio_hibernate_state(void)
