@@ -391,6 +391,14 @@ static void charge_manager_get_best_charge_port(int *new_port,
 				    available_charge[i][j].voltage == 0)
 					continue;
 
+#ifdef CONFIG_USB_POWER_DELIVERY
+#ifdef CONFIG_COMMON_RUNTIME
+				/* Skip port if its PD task is suspended. */
+				if (pd_is_suspended(j))
+					continue;
+#endif
+#endif
+
 				/*
 				 * Don't select this port if we have a
 				 * charge on another override port.
