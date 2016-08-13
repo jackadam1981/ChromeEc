@@ -1389,6 +1389,14 @@ int pd_rx_started(int port);
  */
 void pd_set_suspend(int port, int enable);
 
+/**
+ * Check whether the PD task is suspended.
+ *
+ * @param port USB-C port number
+ * @return true if PD task is suspended.
+ */
+int pd_is_suspended(int port);
+
 /* Callback when the hardware has detected an incoming packet */
 void pd_rx_event(int port);
 /* Start sampling the CC line for reception */

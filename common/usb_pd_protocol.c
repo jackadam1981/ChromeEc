@@ -2691,6 +2691,11 @@ void pd_set_suspend(int port, int enable)
 		CPRINTS("TCPC p%d set_suspend failed!", port);
 }
 
+int pd_is_suspended(int port)
+{
+	return pd[port].task_state == PD_STATE_SUSPENDED;
+}
+
 #if defined(CONFIG_CMD_PD) && defined(CONFIG_CMD_PD_FLASH)
 static int hex8tou32(char *str, uint32_t *val)
 {
