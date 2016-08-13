@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e3be95b_492019ab",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-13T03:04:37Z",
+      "side": 1,
+      "message": "why is this change needed?",
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3be95b_093771e4",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-13T03:04:37Z",
+      "side": 1,
+      "message": "what about TPM_FW_VER ?",
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3be95b_a92be57c",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-13T03:04:37Z",
+      "side": 1,
+      "message": "why not to print out the i2cs_data_size value just in case.",
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3be95b_095e9124",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-13T03:04:37Z",
+      "side": 1,
+      "message": "this contradicts to the comment in the header of the file and might turn out to be a problem.\n\n\nPlease open a bug to track this issue to be fixed soon and include the bug nuber in the BUG\u003d clause.",
+      "range": {
+        "startLine": 104,
+        "startChar": 42,
+        "endLine": 105,
+        "endChar": 50
+      },
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3be95b_099bf1c5",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-13T03:04:37Z",
+      "side": 1,
+      "message": "you assume here that this is a FIFO register read, but it could be the TPM_FW_VER read as well (once you add it to the set).",
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3be95b_e9956d90",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-13T03:04:37Z",
+      "side": 1,
+      "message": "I am not sure this is right: burst size value is used by the master to decide how many bytes to send to the tpm.\n\nIn the opposite direction the master can take as much as TOM would give, and it will stop clocking or stop the transaction if it runs out of space.\n\nI think we need to know how much bytes are there actually in the FIFO.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 34
+      },
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3be95b_c9942993",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-13T03:04:37Z",
+      "side": 1,
+      "message": "why does this file have to change?",
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
