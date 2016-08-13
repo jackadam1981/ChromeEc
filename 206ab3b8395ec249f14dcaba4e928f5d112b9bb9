@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "3e3be95b_46f7a625",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-13T01:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e0e957b_ec741fcc",
+      "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e0e957b_4cc29304",
         "filename": "driver/baro_bmp280.c",
         "patchSetId": 20
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "3e3be95b_e60a7a27",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-13T01:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e0e957b_1711c462",
+      "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e0e957b_ec4b7f83",
         "filename": "driver/baro_bmp280.c",
         "patchSetId": 20
@@ -83,6 +119,24 @@
       "writtenOn": "2016-08-12T16:36:02Z",
       "side": 1,
       "message": "not needed.",
+      "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3be95b_46db2617",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-13T01:05:11Z",
+      "side": 1,
+      "message": "Without this junk values will be print out in the other two fields console output of \"accelread 4\" \nCurrent data 4: 97228 537661124 537660464",
+      "parentUuid": "9e0e957b_ec4b7f83",
       "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -106,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "3e3be95b_a676b204",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-13T01:05:11Z",
+      "side": 1,
+      "message": "Todo added",
+      "parentUuid": "9e0e957b_ac518739",
+      "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e0e957b_8c448ba6",
         "filename": "driver/baro_bmp280.c",
         "patchSetId": 20
@@ -117,6 +189,24 @@
       "writtenOn": "2016-08-12T16:36:02Z",
       "side": 1,
       "message": "static variable, no need to set fields to NULL.",
+      "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3be95b_0672fe13",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-13T01:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e0e957b_8c448ba6",
       "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -140,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "3e3be95b_4668061c",
+        "filename": "driver/baro_bmp280.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-13T01:05:11Z",
+      "side": 1,
+      "message": "Copy-paste fixed.",
+      "parentUuid": "9e0e957b_6c066f2a",
+      "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e0e957b_2c0bd72c",
         "filename": "driver/baro_bmp280.h",
         "patchSetId": 20
@@ -151,6 +259,24 @@
       "writtenOn": "2016-08-12T16:36:02Z",
       "side": 1,
       "message": "remove (, we don\u0027t use them for simple constants.",
+      "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e3be95b_861cce70",
+        "filename": "driver/baro_bmp280.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-13T01:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e0e957b_2c0bd72c",
       "revId": "206ab3b8395ec249f14dcaba4e928f5d112b9bb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
