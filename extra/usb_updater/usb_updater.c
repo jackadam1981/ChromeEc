@@ -101,7 +101,6 @@ static int tpm_send_pkt(int fd, unsigned int digest, unsigned int addr,
 
 	struct upgrade_pkt *out = (struct upgrade_pkt *)outbuf;
 	/* Use the same structure, it will not be filled completely. */
-	struct upgrade_pkt reply;
 	int len, done;
 	int response_offset = offsetof(struct upgrade_pkt, digest);
 
@@ -136,29 +135,30 @@ static int tpm_send_pkt(int fd, unsigned int digest, unsigned int addr,
 		return -1;
 	}
 
-	len = read(fd, &reply, sizeof(reply));
-	if ((len < response_offset) ||
-	    (len > ((int)(response_offset + sizeof(uint32_t))))) {
-		fprintf(stderr, "Problems reading from TPM, got %d bytes\n",
-			len);
-		return -1;
-	}
-
-	debug("Read %d bytes from TPM\n", len);
-	len = len - response_offset;
-	memcpy(response, &reply.digest, len);
-	*response_size = len;
+	/* Let's reuse the output buffer as the receve buffer. */
+	len = read(fd, outbuf,
+		   sizeof(struct upgrade_pkt) +
+		   sizeof(struct first_response_pdu));
 #ifdef DEBUG
-	{
-		uint8_t *inbuf = response;
+	debug("Read %d bytes from TPM\n", len);
+	if (len > 0) {
 		int i;
 
-		debug("Response size is %d bytes\n", len);
 		for (i = 0; i < len; i++)
-			debug("%2.2x ", inbuf[i]);
+			debug("%2.2x ", outbuf[i]);
 		debug("\n");
 	}
 #endif
+	len = len - response_offset;
+	if (len < 0) {
+		fprintf(stderr, "Problems reading from TPM, got %d bytes\n",
+			len + response_offset);
+		return -1;
+	}
+
+	len = MIN(len, *response_size);
+	memcpy(response, outbuf + response_offset, len);
+	*response_size = len;
 	return 0;
 }
 
@@ -527,15 +527,14 @@ static void transfer_section(struct transfer_endpoint *tep,
 
 			if (!max_retries) {
 				fprintf(stderr,
-					"Failed to trasfer block, %zd to go\n",
+					"Failed to transfer block, %zd to go\n",
 					data_len);
 				exit(1);
 			}
 		} else {
 			struct startup_resp resp;
-			size_t rxed_size;
+			size_t rxed_size = sizeof(resp);
 
-			rxed_size = sizeof(resp);
 			if (tpm_send_pkt(tep->tpm_fd,
 					 updu.cmd.block_digest,
 					 section_addr,
@@ -547,11 +546,15 @@ static void transfer_section(struct transfer_endpoint *tep,
 					data_len);
 				exit(1);
 			}
-			if ((rxed_size != 1) || *((uint8_t *)&resp)) {
+			if (((protocol_version < 2) &&
+			     ((rxed_size != 1) || *((uint8_t *)&resp))) ||
+			    (((protocol_version >= 2) && resp.value))) {
 				fprintf(stderr,
-					"got response of size %zd, value %#x\n",
-					rxed_size, resp.value);
-
+					"got response of size "
+					"%zd, value %#x protocol version %d\n",
+					rxed_size,
+					be32toh(resp.value),
+					protocol_version);
 				exit(1);
 			}
 		}
