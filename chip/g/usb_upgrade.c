@@ -67,25 +67,6 @@ enum rx_state {
 	rx_awaiting_reset /* Waiting for reset confirmation. */
 };
 
-/* This is the format of the header the programmer expects. */
-struct upgrade_command {
-	uint32_t  block_digest;  /* first 4 bytes of sha1 of the rest of the
-				    block. */
-	uint32_t  block_base;    /* Offset of this block into the flash SPI. */
-};
-
-/* This is the format of the header the host uses. */
-struct update_pdu_header {
-	uint32_t block_size;    /* Total size of the block, including this
-				   field. */
-	union {
-		struct upgrade_command cmd;
-		uint32_t resp; /* The programmer puts response to the same
-				  buffer where the command was. */
-	};
-	/* The actual payload goes here. */
-};
-
 enum rx_state rx_state_ = rx_idle;
 static uint8_t *block_buffer;
 static uint32_t block_size;
@@ -130,8 +111,6 @@ static int valid_transfer_start(struct consumer const *consumer, size_t count,
  * timer.
  */
 static uint64_t prev_activity_timestamp;
-
-#define UPGRADE_PROTOCOL_VERSION 2
 
 /* Called to deal with data from the host */
 static void upgrade_out_handler(struct consumer const *consumer, size_t count)

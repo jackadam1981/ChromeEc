@@ -403,11 +403,6 @@ static void usb_findit(uint16_t vid, uint16_t pid, struct usb_endpoint *uep)
 	printf("READY\n-------\n");
 }
 
-struct upgrade_command {
-	uint32_t  block_digest;
-	uint32_t  block_base;
-};
-
 struct update_pdu {
 	uint32_t block_size; /* Total block size, include this field's size. */
 	struct upgrade_command cmd;

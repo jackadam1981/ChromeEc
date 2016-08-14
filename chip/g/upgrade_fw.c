@@ -13,6 +13,7 @@
 #include "memory.h"
 #include "uart.h"
 
+#include "upgrade_fw.h"
 #include "cryptoc/sha.h"
 
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
@@ -27,20 +28,6 @@ enum return_value {
 	UPGRADE_VERIFY_ERROR = 5,
 	UPGRADE_GEN_ERROR = 6,
 };
-
-/*
- * The payload of the upgrade command. (Integer values in network byte order).
- *
- * block digest: the first four bytes of the sha1 digest of the rest of the
- *               structure.
- * block_base:  address where this block needs to be written to.
- * block_body:  variable size data to written at address 'block_base'.
- */
-struct upgrade_command {
-	uint32_t  block_digest;
-	uint32_t  block_base;
-	uint8_t   block_body[0];
-} __packed;
 
 /*
  * This array defines two possibe sections available for the firmare update.
