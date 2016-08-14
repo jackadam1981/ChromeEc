@@ -412,25 +412,6 @@ struct update_pdu {
 };
 
 #define FLASH_BASE 0x40000
-/*
- * When responding to the very first packet of the upgrade sequence, the
- * original implementation was responding with a four byte value, just as to
- * any other block of the transfer sequence.
- *
- * It became clear that there is a need to be able to enhance the upgrade
- * protocol, while stayng backwards compatible. To achieve that a new startup
- * response option was introduced, 8 bytes in size. The first 4 bytes the same
- * as before, the second 4 bytes - the protocol version number.
- *
- * So, receiving of a four byte value in response to the startup packet is an
- * indication of the 'legacy' protocol, version 0. Receiving of an 8 byte
- * value communicates the protocol version in the second 4 bytes.
- */
-
-struct startup_resp {
-	uint32_t value;
-	uint32_t version;
-};
 
 static int transfer_block(struct usb_endpoint *uep, struct update_pdu *updu,
 			  uint8_t *transfer_data_ptr, size_t payload_size)
@@ -532,29 +513,30 @@ static void transfer_section(struct transfer_endpoint *tep,
 				exit(1);
 			}
 		} else {
-			struct startup_resp resp;
-			size_t rxed_size = sizeof(resp);
+			uint32_t error_code;
+			size_t rxed_size = sizeof(error_code);
 
 			if (tpm_send_pkt(tep->tpm_fd,
 					 updu.cmd.block_digest,
 					 section_addr,
 					 data_ptr,
-					 payload_size, &resp,
+					 payload_size, &error_code,
 					 &rxed_size) < 0) {
 				fprintf(stderr,
 					"Failed to trasfer block, %zd to go\n",
 					data_len);
 				exit(1);
 			}
-			if (((protocol_version < 2) &&
-			     ((rxed_size != 1) || *((uint8_t *)&resp))) ||
-			    (((protocol_version >= 2) && resp.value))) {
-				fprintf(stderr,
-					"got response of size "
-					"%zd, value %#x protocol version %d\n",
-					rxed_size,
-					be32toh(resp.value),
-					protocol_version);
+			if (rxed_size != 1) {
+				fprintf(stderr, "Unexpected return size %zd\n",
+					rxed_size);
+				exit(1);
+			}
+
+			/* In SPI mode retrun is always one byte in size. */
+			error_code = *((uint8_t *)&error_code);
+			if (error_code) {
+				fprintf(stderr, "error %d\n", error_code);
 				exit(1);
 			}
 		}
@@ -562,18 +544,21 @@ static void transfer_section(struct transfer_endpoint *tep,
 		data_ptr += payload_size;
 		section_addr += payload_size;
 	}
-
 }
 
 static void transfer_and_reboot(struct transfer_endpoint *tep,
 				uint8_t *data, size_t data_len)
 {
-	uint32_t out;
-	uint32_t reply;
+	uint32_t error_code = 0;
+	uint32_t rw_offset = 0;
+	uint32_t ro_offset = 0;
 	struct update_pdu updu;
-	struct startup_resp first_resp;
 	size_t rxed_size;
 	struct usb_endpoint *uep = &tep->uep;
+	union {
+		struct first_response_pdu rpdu;
+		uint32_t legacy_resp;
+	} start_resp;
 
 	/* Send start/erase request */
 	printf("erase\n");
@@ -582,51 +567,97 @@ static void transfer_and_reboot(struct transfer_endpoint *tep,
 	updu.block_size = htobe32(sizeof(updu));
 
 	if (tep->ep_type == usb_xfer) {
-		do_xfer(uep, &updu, sizeof(updu), &first_resp,
-			sizeof(first_resp), 1, &rxed_size);
+		do_xfer(uep, &updu, sizeof(updu), &start_resp,
+			sizeof(start_resp), 1, &rxed_size);
 	} else {
-		rxed_size = sizeof(first_resp);
+		rxed_size = sizeof(start_resp);
 		if (tpm_send_pkt(tep->tpm_fd, 0, 0, NULL, 0,
-				 &first_resp, &rxed_size) < 0) {
-			perror("Failed to start transfer");
+				 &start_resp, &rxed_size) < 0) {
+			fprintf(stderr, "Failed to start transfer\n");
 			return;
 		}
 	}
 
-	if (rxed_size == sizeof(uint32_t))
+	if (rxed_size <= 4) {
+
+		if (tep->ep_type != spi_xfer) {
+			fprintf(stderr, "Unexpected response size %zd\n",
+				rxed_size);
+			return;
+		}
+
+		/* This is a protocol version zero response. */
 		protocol_version = 0;
-	else
-		protocol_version = be32toh(first_resp.version);
+
+		if (rxed_size == 1)
+			/* Target is reporting an error. */
+			error_code = *((uint8_t *) &start_resp.legacy_resp);
+		else
+			/* Target reporting RW base_address. */
+			rw_offset = be32toh(start_resp.legacy_resp) -
+				FLASH_BASE;
+	} else {
+		protocol_version = be32toh(start_resp.rpdu.protocol_version);
+		error_code = be32toh(start_resp.rpdu.return_value);
+
+		if (protocol_version == 2) {
+			if (error_code > 256) {
+				rw_offset = error_code - FLASH_BASE;
+				error_code = 0;
+			}
+		} else {
+			/* All newer protocols. */
+			rw_offset = be32toh
+				(start_resp.rpdu.vers3.backup_rw_offset) -
+				FLASH_BASE;
+		}
+	}
 
 	printf("Target running protocol version %d\n", protocol_version);
 
-	reply = be32toh(first_resp.value);
-
-	if (reply < 256) {
-		fprintf(stderr, "Target reports error %d\n", reply);
+	if (error_code) {
+		fprintf(stderr, "Target reporting error %d\n", error_code);
 		shut_down(uep);
 	}
 
-	if ((reply - FLASH_BASE + CONFIG_RW_SIZE) > data_len) {
-		fprintf(stderr, "Base addr of %#x too high\n", reply);
-		shut_down(uep);
+	if (protocol_version > 2) {
+		ro_offset = be32toh(start_resp.rpdu.vers3.backup_ro_offset) -
+			FLASH_BASE;
+		printf("Offsets: backup RO at %#x, backup RW at %#x\n",
+		       ro_offset, rw_offset);
+	} else if (tep->update_ro) {
+		fprintf(stderr, "Target does not support RO updates\n");
+		exit(1);
 	}
 
-	transfer_section(tep, data + reply - FLASH_BASE,
-			 reply, CONFIG_RW_SIZE);
+	if ((rw_offset + CONFIG_RW_SIZE) > data_len) {
+		fprintf(stderr, "Base RW offset of %#x too high\n", rw_offset);
+		shut_down(uep);
+	}
+	transfer_section(tep, data + rw_offset, rw_offset + FLASH_BASE,
+			 CONFIG_RW_SIZE);
+
+	/* Transfer the RO part if requested. */
+	if (tep->update_ro)
+		transfer_section(tep, data + ro_offset, ro_offset + FLASH_BASE,
+				 CONFIG_RO_SIZE);
 
 	printf("-------\nupdate complete\n");
-	if (tep->ep_type != usb_xfer)
-		return;
+	if (tep->ep_type == usb_xfer) {
+		uint32_t out;
 
-	/* Send stop request, ignorign reply. */
-	out = htobe32(UPGRADE_DONE);
-	xfer(uep, &out, sizeof(out), &reply, sizeof(reply));
+		/* Send stop request, ignoring reply. */
+		out = htobe32(UPGRADE_DONE);
+		xfer(uep, &out, sizeof(out), &out, sizeof(out));
 
-	printf("reboot\n");
+		printf("reboot\n");
 
-	/* Send a second stop request, which should reboot without replying */
-	xfer(uep, &out, sizeof(out), 0, 0);
+		/*
+		 * Send a second stop request, which should reboot without
+		 * replying.
+		 */
+		xfer(uep, &out, sizeof(out), 0, 0);
+	}
 }
 
 int main(int argc, char *argv[])
