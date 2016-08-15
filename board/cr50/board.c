@@ -15,6 +15,7 @@
 #include "init_chip.h"
 #include "registers.h"
 #include "nvmem.h"
+#include "timels.h"
 #include "system.h"
 #include "task.h"
 #include "trng.h"
@@ -94,9 +95,13 @@ static void init_pmu(void)
 
 void pmu_wakeup_interrupt(void)
 {
-	int exiten;
+	int exiten, wakeup_src;
 
-	delay_sleep_by(1000);
+	timels_update_hw_timer();
+
+	delay_sleep_by(1 * MSEC);
+
+	wakeup_src = GR_PMU_EXITPD_SRC;
 
 	/* Clear interrupt state */
 	GWRITE_FIELD(PMU, INT_STATE, INTR_WAKEUP, 1);
@@ -104,7 +109,15 @@ void pmu_wakeup_interrupt(void)
 	/* Clear pmu reset */
 	GWRITE(PMU, CLRRST, 1);
 
-	if (GR_PMU_EXITPD_SRC & GC_PMU_EXITPD_SRC_PIN_PD_EXIT_MASK) {
+	/* Clear timer0 interrupt */
+	if (wakeup_src & GC_PMU_EXITPD_SRC_TIMELS0_PD_EXIT_TIMER0_MASK)
+		GWRITE(TIMELS, TIMER0_WAKEUP_ACK, 1);
+
+	/* Clear timer1 interrupt */
+	if (wakeup_src & GC_PMU_EXITPD_SRC_TIMELS0_PD_EXIT_TIMER1_MASK)
+		GWRITE(TIMELS, TIMER1_WAKEUP_ACK, 1);
+
+	if (wakeup_src & GC_PMU_EXITPD_SRC_PIN_PD_EXIT_MASK) {
 		/*
 		 * If any wake pins are edge triggered, the pad logic latches
 		 * the wakeup. Clear EXITEN0 to reset the wakeup logic.
@@ -184,6 +197,16 @@ static void init_runlevel(const enum permission_level desired_level)
 			*reg_addrs[i] = desired_level;
 		}
 	}
+}
+
+void board_config_pre_init(void)
+{
+	/* Verify the contents of CC_TRIM are valid */
+	ASSERT(GR_FUSE(RC_RTC_OSC256K_CC_EN) == 0x5);
+
+	/* Initialize RTC before permission levels are dropped */
+	GWRITE_FIELD(RTC, CTRL, X_RTC_RC_CTRL,
+		GR_FUSE(RC_RTC_OSC256K_CC_TRIM));
 }
 
 /* Initialize board. */

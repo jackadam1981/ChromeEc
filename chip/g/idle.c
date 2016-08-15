@@ -8,6 +8,7 @@
 #include "console.h"
 #include "rdd.h"
 #include "registers.h"
+#include "timels.h"
 #include "system.h"
 #include "task.h"
 #include "util.h"
@@ -65,6 +66,13 @@ static void prepare_to_sleep(void)
 {
 	/* No task switching! */
 	interrupt_disable();
+
+	/* Set up low speed timer for sleep */
+	if (timels_setup_sleep(idle_action == IDLE_DEEP_SLEEP)) {
+		/* Next event is about to occur. Don't go to sleep */
+		interrupt_enable();
+		return;
+	}
 
 	/* Enable all possible internal wake sources */
 	GR_PMU_EXITPD_MASK =

@@ -62,6 +62,7 @@ chip-$(CONFIG_STREAM_USB)+=usb-stream.o
 chip-$(CONFIG_STREAM_USART)+=usart.o
 
 chip-$(CONFIG_LOW_POWER_IDLE)+=idle.o
+chip-$(CONFIG_LOW_POWER_IDLE)+= timels.o
 
 chip-$(CONFIG_FLASH)+=flash.o
 dirs-y += chip/g/dcrypto
