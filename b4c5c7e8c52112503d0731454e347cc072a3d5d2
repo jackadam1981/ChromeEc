@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7e6641d2_038ab414",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-15T19:32:36Z",
+      "side": 1,
+      "message": "Thank you! I\u0027ll get this eventually.",
+      "parentUuid": "7e6641d2_dd8fbf7b",
+      "revId": "b4c5c7e8c52112503d0731454e347cc072a3d5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e6641d2_5dd2cf5b",
         "filename": "chip/nrf51/bluetooth_le.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-08-15T18:20:26Z",
       "side": 1,
       "message": "Do you ever want to bail out if something is wrong?",
+      "revId": "b4c5c7e8c52112503d0731454e347cc072a3d5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e6641d2_438cac2d",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-15T19:32:36Z",
+      "side": 1,
+      "message": "Good idea. Added it in.",
+      "parentUuid": "7e6641d2_5dd2cf5b",
       "revId": "b4c5c7e8c52112503d0731454e347cc072a3d5d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "7e6641d2_c3a6fca4",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-15T19:32:36Z",
+      "side": 1,
+      "message": "You\u0027re right. This was a redundant call. I\u0027ve removed it.",
+      "parentUuid": "7e6641d2_5ddc8f3e",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 25
+      },
+      "revId": "b4c5c7e8c52112503d0731454e347cc072a3d5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e6641d2_3da7dbfe",
         "filename": "chip/nrf51/bluetooth_le.c",
         "patchSetId": 1
@@ -70,6 +130,24 @@
       "writtenOn": "2016-08-15T18:20:26Z",
       "side": 1,
       "message": "nit: multi-line comment format.",
+      "revId": "b4c5c7e8c52112503d0731454e347cc072a3d5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e6641d2_23b6d8d4",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-15T19:32:36Z",
+      "side": 1,
+      "message": "Fixed!",
+      "parentUuid": "7e6641d2_3da7dbfe",
       "revId": "b4c5c7e8c52112503d0731454e347cc072a3d5d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
