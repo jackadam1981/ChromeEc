@@ -16,6 +16,24 @@
       "revId": "aeddeb022135425d04f49c0a6d4a7afef7f12a49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e24d548_5361a438",
+        "filename": "driver/als_al3010.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1156224
+      },
+      "writtenOn": "2016-08-15T05:34:01Z",
+      "side": 1,
+      "message": "So in al3010_read_lux only need the al3010_get_lux, remove the al3010_check_interrupt?",
+      "parentUuid": "9e0e957b_6c778f03",
+      "revId": "aeddeb022135425d04f49c0a6d4a7afef7f12a49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
