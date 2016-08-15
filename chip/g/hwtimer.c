@@ -103,6 +103,12 @@ uint32_t __hw_clock_source_read(void)
 	return ticks_to_usecs(0xffffffff - GR_TIMEHS_VALUE(0, 1));
 }
 
+uint32_t __hw_clock_source_get_max(void)
+{
+	/* Return the max timer value in usecs. */
+	return ticks_to_usecs(0xffffffff);
+}
+
 void __hw_clock_source_set(uint32_t ts)
 {
 	hw_rollover_count = ((uint64_t)ts * clock_mul_factor) >> 32;
