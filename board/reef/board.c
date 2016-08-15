@@ -290,6 +290,9 @@ int board_get_charger_temp(int idx, int *temp_ptr)
 {
 	int mv = adc_read_channel(NPCX_ADC_CH0);
 
+	*temp_ptr = 296;
+	return 0;
+
 	if (mv < 0)
 		return -1;
 
@@ -321,6 +324,9 @@ static const struct thermistor_info amb_thermistor_info = {
 int board_get_ambient_temp(int idx, int *temp_ptr)
 {
 	int mv = adc_read_channel(NPCX_ADC_CH1);
+
+	*temp_ptr = 296;
+	return 0;
 
 	if (mv < 0)
 		return -1;
