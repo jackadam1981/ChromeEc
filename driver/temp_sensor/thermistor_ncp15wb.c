@@ -103,8 +103,8 @@ int thermistor_linear_interpolate(uint16_t mv,
 		const struct thermistor_info *info)
 {
 	const struct thermistor_data_pair *data = info->data;
-	int v0, v1, t0, t1, num_steps;
-	int head, tail, mid;
+	int v0 = 0, v1 = 0, t0, t1, num_steps;
+	int head, tail, mid = 0;
 
 	/* We need at least two points to form a line. */
 	ASSERT(info->num_pairs >= 2);
