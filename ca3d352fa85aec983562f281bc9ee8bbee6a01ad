@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b186770_02e5b4ce",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-15T22:38:44Z",
+      "side": 1,
+      "message": "Oh yes, that\u0027s right. You said that it might be redundant with the shortcuts set up during init.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 23
+      },
+      "revId": "ca3d352fa85aec983562f281bc9ee8bbee6a01ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
