@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bd3b3eb_528054a6",
+        "filename": "include/i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-15T23:05:22Z",
+      "side": 1,
+      "message": "Why do we need to add this? Is this for the separate fastmode plus block?\n\nIs it possible to do the distinction based upon the port number only? How many regular ports are there? Could you do some sort of offset?",
+      "revId": "cbe187aed36698e69da7e19c43ff541e3ab99f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
