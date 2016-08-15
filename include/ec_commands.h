@@ -843,6 +843,16 @@ struct ec_response_test_protocol {
 /* Flags for ec_response_get_protocol_info.flags */
 /* EC_RES_IN_PROGRESS may be returned if a command is slow */
 #define EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED (1 << 0)
+/*
+ * EC is slow to handle host commands after sysjump, so host should wait
+ * EC_REBOOT_DELAY_SLOW prior to sending commands.
+ */
+#define EC_PROTOCOL_INFO_SLOW_SYSJUMP (1 << 1)
+
+/* Default post-sysjump reboot delay (msec) */
+#define EC_REBOOT_DELAY		50
+/* Slow post-sysjump reboot delay (msec) */
+#define EC_REBOOT_DELAY_SLOW	400
 
 struct ec_response_get_protocol_info {
 	/* Fields which exist if at least protocol version 3 supported */

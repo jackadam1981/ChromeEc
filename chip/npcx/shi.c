@@ -853,7 +853,8 @@ static int shi_get_protocol_info(struct host_cmd_handler_args *args)
 	r->protocol_versions = (1 << 3);
 	r->max_request_packet_size = SHI_MAX_REQUEST_SIZE;
 	r->max_response_packet_size = SHI_MAX_RESPONSE_SIZE;
-	r->flags = EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED;
+	r->flags = EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED |
+		   EC_PROTOCOL_INFO_SLOW_SYSJUMP;
 
 	args->response_size = sizeof(*r);
 

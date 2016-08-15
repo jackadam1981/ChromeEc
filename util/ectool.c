@@ -5915,6 +5915,8 @@ int cmd_proto_info(int argc, char *argv[])
 	printf("  flags: 0x%08x\n", info.flags);
 	if (info.flags & EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED)
 		printf("    EC_RES_IN_PROGRESS supported\n");
+	if (info.flags & EC_PROTOCOL_INFO_SLOW_SYSJUMP)
+		printf("    EC_REBOOT_DELAY_SLOW delay required\n");
 	return 0;
 }
 
