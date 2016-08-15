@@ -271,13 +271,13 @@ DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
  * Vdd=3300mV, R = 13.7Kohm, and Murata NCP15WB-series thermistor (B = 4050,
  * T0 = 298.15, nominal resistance (R0) = 47Kohm).
  */
-#define CHARGER_THERMISTOR_SCALING_FACTOR 11
+#define CHARGER_THERMISTOR_SCALING_FACTOR 8
 static const struct thermistor_data_pair charger_thermistor_data[] = {
-	{ 1500 / CHARGER_THERMISTOR_SCALING_FACTOR, 50 },
-	{ 1810 / CHARGER_THERMISTOR_SCALING_FACTOR, 60 },
-	{ 2092 / CHARGER_THERMISTOR_SCALING_FACTOR, 70 },
-	{ 2334 / CHARGER_THERMISTOR_SCALING_FACTOR, 80 },
-	{ 2697 / CHARGER_THERMISTOR_SCALING_FACTOR, 100 },
+	{ 1800 / CHARGER_THERMISTOR_SCALING_FACTOR, 50 },
+	{ 1490 / CHARGER_THERMISTOR_SCALING_FACTOR, 60 },
+	{ 1208 / CHARGER_THERMISTOR_SCALING_FACTOR, 70 },
+	{ 966 / CHARGER_THERMISTOR_SCALING_FACTOR, 80 },
+	{ 603 / CHARGER_THERMISTOR_SCALING_FACTOR, 100 },
 };
 
 static const struct thermistor_info charger_thermistor_info = {
@@ -303,13 +303,13 @@ int board_get_charger_temp(int idx, int *temp_ptr)
  * Vdd=3300mV, R = 51.1Kohm, and Murata NCP15WB-series thermistor (B = 4050,
  * T0 = 298.15, nominal resistance (R0) = 47Kohm).
  */
-#define AMB_THERMISTOR_SCALING_FACTOR 13
+#define AMB_THERMISTOR_SCALING_FACTOR 4
 static const struct thermistor_data_pair amb_thermistor_data[] = {
-	{ 2497 / AMB_THERMISTOR_SCALING_FACTOR, 50 },
-	{ 2703 / AMB_THERMISTOR_SCALING_FACTOR, 60 },
-	{ 2857 / AMB_THERMISTOR_SCALING_FACTOR, 70 },
-	{ 2970 / AMB_THERMISTOR_SCALING_FACTOR, 80 },
-	{ 3113 / AMB_THERMISTOR_SCALING_FACTOR, 100 },
+	{ 803 / AMB_THERMISTOR_SCALING_FACTOR, 50 },
+	{ 597 / AMB_THERMISTOR_SCALING_FACTOR, 60 },
+	{ 443 / AMB_THERMISTOR_SCALING_FACTOR, 70 },
+	{ 329 / AMB_THERMISTOR_SCALING_FACTOR, 80 },
+	{ 187 / AMB_THERMISTOR_SCALING_FACTOR, 100 },
 };
 
 static const struct thermistor_info amb_thermistor_info = {

@@ -113,9 +113,9 @@ int thermistor_linear_interpolate(uint16_t mv,
 	 * If input value is out of bounds return the lowest or highest
 	 * value in the data sets provided.
 	 */
-	if (mv < data[0].mv * info->scaling_factor)
+	if (mv > data[0].mv * info->scaling_factor)
 		return data[0].temp;
-	else if (mv > data[info->num_pairs - 1].mv * info->scaling_factor)
+	else if (mv < data[info->num_pairs - 1].mv * info->scaling_factor)
 		return data[info->num_pairs - 1].temp;
 
 	head = 0;
@@ -125,11 +125,11 @@ int thermistor_linear_interpolate(uint16_t mv,
 		v0 = data[mid].mv * info->scaling_factor;
 		v1 = data[mid + 1].mv * info->scaling_factor;
 
-		if ((mv >= v0) && (mv <= v1))
+		if ((mv <= v0) && (mv >= v1))
 			break;
-		else if (mv < v0)
+		else if (mv > v0)
 			tail = mid;
-		else if (mv > v1)
+		else if (mv < v1)
 			head = mid + 1;
 	}
 
@@ -139,13 +139,14 @@ int thermistor_linear_interpolate(uint16_t mv,
 	/*
 	 * The obvious way of doing this is to figure out how many mV per
 	 * degree are in between the two points (mv_per_deg_c), and then how
-	 * many of those exist between the input voltage and lower voltage (v0):
-	 *   1. mv_per_deg_c = (v1 - v0) / (t1 - t0)
-	 *   2. num_steps = (mv - v0) / mv_per_deg_c
+	 * many of those exist between the input voltage and voltage of
+	 * lower temperature :
+	 *   1. mv_per_deg_c = (v0 - v1) / (t1 - t0)
+	 *   2. num_steps = (v0 - mv) / mv_per_deg_c
 	 *   3. result = t0 + num_steps
 	 *
 	 * Combine #1 and #2 to mitigate precision loss due to integer division.
 	 */
-	num_steps = ((mv - v0) * (t1 - t0)) / (v1 - v0);
+	num_steps = ((v0 - mv) * (t1 - t0)) / (v0 - v1);
 	return t0 + num_steps;
 }
