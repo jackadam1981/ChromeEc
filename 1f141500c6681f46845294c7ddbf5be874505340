@@ -22,6 +22,30 @@
       "revId": "1f141500c6681f46845294c7ddbf5be874505340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_55f11e97",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-15T23:35:22Z",
+      "side": 1,
+      "message": "Yes. That makes much more sense. My bad. I was thinking about it the wrong way.",
+      "parentUuid": "7bd3b3eb_9597863b",
+      "range": {
+        "startLine": 428,
+        "startChar": 9,
+        "endLine": 428,
+        "endChar": 56
+      },
+      "revId": "1f141500c6681f46845294c7ddbf5be874505340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
