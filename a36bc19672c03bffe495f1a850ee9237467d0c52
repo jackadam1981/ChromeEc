@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b186770_67e0fa91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-15T22:10:03Z",
+      "side": 1,
+      "message": "Thank you! Got it.",
+      "parentUuid": "9b186770_5c3831d2",
+      "range": {
+        "startLine": 13,
+        "startChar": 34,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "a36bc19672c03bffe495f1a850ee9237467d0c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b186770_f99caf09",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-15T21:49:27Z",
       "side": 1,
       "message": "missing \u0027f\u0027.",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "a36bc19672c03bffe495f1a850ee9237467d0c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b186770_27da02e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-15T22:10:03Z",
+      "side": 1,
+      "message": "Got it!",
+      "parentUuid": "9b186770_f99caf09",
       "range": {
         "startLine": 18,
         "startChar": 10,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9b186770_bc8aa516",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-15T22:10:03Z",
+      "side": 1,
+      "message": "The value I chose was somewhat arbitrary. I wanted it to be long enough that it was an unreasonable amount of time to set up. But not so long that it would drop the connection. I didn\u0027t want this waiting so long that it would miss the next packet. Does that address your concern, or do you think this requires a closer look?",
+      "parentUuid": "9b186770_9c1129b0",
+      "range": {
+        "startLine": 129,
+        "startChar": 33,
+        "endLine": 129,
+        "endChar": 52
+      },
+      "revId": "a36bc19672c03bffe495f1a850ee9237467d0c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b186770_b9263760",
         "filename": "chip/nrf51/bluetooth_le.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-08-15T21:49:27Z",
       "side": 1,
       "message": "should this be \u0027TX\u0027?",
+      "range": {
+        "startLine": 132,
+        "startChar": 42,
+        "endLine": 132,
+        "endChar": 44
+      },
+      "revId": "a36bc19672c03bffe495f1a850ee9237467d0c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b186770_677fda0c",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-15T22:10:03Z",
+      "side": 1,
+      "message": "Woops. Yes. On it. Thank you!",
+      "parentUuid": "9b186770_b9263760",
       "range": {
         "startLine": 132,
         "startChar": 42,
