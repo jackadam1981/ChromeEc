@@ -21,6 +21,13 @@
 /* TODO(crosbug.com/p/44745): For debugging only */
 #define CONFIG_CMD_FLASH
 
+/*
+ * Use board_pre_init to initialize RTC before the permission level is
+ * decreased
+ */
+#define CONFIG_BOARD_PRE_INIT
+#define CONFIG_TIMELS
+
 /* We're using all of TOP_B for NVMEM. TOP_A is unused as yet. */
 #define CONFIG_FLASH_NVMEM
 /* Offset to start of NvMem area from base of flash */

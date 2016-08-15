@@ -1799,6 +1799,10 @@
 #undef CONFIG_DPTF
 
 /*****************************************************************************/
+/* Enable low speed timers */
+#undef CONFIG_TIMELS
+
+/*****************************************************************************/
 /* TPM-like configuration */
 
 /* Speak the TPM SPI Hardware Protocol on the SPI slave interface */
