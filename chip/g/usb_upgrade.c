@@ -116,8 +116,9 @@ static uint64_t prev_activity_timestamp;
 static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 {
 	struct update_pdu_header updu;
+	union first_pdu_block fpdu;
 	size_t resp_size;
-	uint32_t resp_value;
+	uint8_t resp_value;
 	uint64_t delta_time;
 
 	/* How much time since the previous USB callback? */
@@ -139,53 +140,25 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 	}
 
 	if (rx_state_ == rx_idle) {
-		/*
-		 * When responding to the very first packet of the upgrade
-		 * sequence, the original implementation was responding with a
-		 * four byte value, just as to any other block of the transfer
-		 * sequence.
-		 *
-		 * It became clear that there is a need to be able to enhance
-		 * the upgrade protocol, while stayng backwards compatible. To
-		 * achieve that we respond to the very first packet with an 8
-		 * byte value, the first 4 bytes the same as before, the
-		 * second 4 bytes - the protocol version number.
-		 *
-		 * This way if on the host side receiving of a four byte value
-		 * in response to the first packet is an indication of the
-		 * 'legacy' protocol, version 0. Receiving of an 8 byte
-		 * response would communicate the protocol version in the
-		 * second 4 bytes.
-		 */
-		struct {
-			uint32_t value;
-			uint32_t version;
-		} startup_resp;
+		struct first_response_pdu *response;
 
-		if (!valid_transfer_start(consumer, count, &updu))
+		if (!valid_transfer_start(consumer, count, &fpdu.updu))
 			return;
 
-		CPRINTS("FW update: starting...");
-
-		fw_upgrade_command_handler(&updu.cmd, count -
-					   offsetof(struct update_pdu_header,
-						    cmd),
+		fw_upgrade_command_handler(&fpdu.updu.cmd, count -
+					   offsetof(union first_pdu_block,
+						    updu.cmd),
 					   &resp_size);
 
-		if (resp_size == 4) {
-			/* Already in network order. */
-			startup_resp.value = updu.resp;
+		response = (struct first_response_pdu *)&fpdu.updu.cmd;
+
+		if (!response->return_value) {
+			/* Ready for the rest of the update process. */
+			CPRINTS("FW update: starting...");
 			rx_state_ = rx_outside_block;
-		} else {
-			/* This must be a single byte error code. */
-			startup_resp.value = htobe32(*((uint8_t *)&updu.resp));
 		}
 
-		startup_resp.version = htobe32(UPGRADE_PROTOCOL_VERSION);
-
-		/* Let the host know what upgrader had to say. */
-		QUEUE_ADD_UNITS(&upgrade_to_usb, &startup_resp,
-				sizeof(startup_resp));
+		QUEUE_ADD_UNITS(&upgrade_to_usb, response, resp_size);
 		return;
 	}
 
@@ -214,9 +187,14 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 			command = be32toh(command);
 			if (command == UPGRADE_DONE) {
 				CPRINTS("FW update: done");
-				resp_value = 0;
-				QUEUE_ADD_UNITS(&upgrade_to_usb, &resp_value,
-						sizeof(resp_value));
+
+				/*
+				 * The updater expects a 4 byte response at
+				 * this point.
+				 */
+				command = 0;
+				QUEUE_ADD_UNITS(&upgrade_to_usb, &command,
+						sizeof(command));
 				rx_state_ = rx_awaiting_reset;
 				return;
 			}

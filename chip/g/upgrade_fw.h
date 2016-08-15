@@ -8,7 +8,7 @@
 
 #include <stddef.h>
 
-#define UPGRADE_PROTOCOL_VERSION 2
+#define UPGRADE_PROTOCOL_VERSION 3
 
 /* This is the format of the header the programmer expects. */
 struct upgrade_command {
