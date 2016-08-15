@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b186770_5c3831d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-15T21:49:27Z",
+      "side": 1,
+      "message": "extra period?",
+      "range": {
+        "startLine": 13,
+        "startChar": 34,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "a36bc19672c03bffe495f1a850ee9237467d0c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b186770_f99caf09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-15T21:49:27Z",
+      "side": 1,
+      "message": "missing \u0027f\u0027.",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "a36bc19672c03bffe495f1a850ee9237467d0c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b186770_9c1129b0",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-15T21:49:27Z",
+      "side": 1,
+      "message": "This is minor, and I\u0027m assuming this timeout is long enough, but is this the right timeout? Reading the datasheet, I\u0027m guessing this is the max allowed consecutive TX time and not the TXRU-\u003eTXIDLE transition time as the name implies. (that\u0027s what I\u0027m assuming is meant by radio setup.)\n\nIf so, should it be BLE_MAX_TX_TIMEOUT (or something)?",
+      "range": {
+        "startLine": 129,
+        "startChar": 33,
+        "endLine": 129,
+        "endChar": 52
+      },
+      "revId": "a36bc19672c03bffe495f1a850ee9237467d0c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b186770_b9263760",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-15T21:49:27Z",
+      "side": 1,
+      "message": "should this be \u0027TX\u0027?",
+      "range": {
+        "startLine": 132,
+        "startChar": 42,
+        "endLine": 132,
+        "endChar": 44
+      },
+      "revId": "a36bc19672c03bffe495f1a850ee9237467d0c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
