@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b186770_228f90d5",
+        "filename": "board/sweetberry/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-15T22:53:38Z",
+      "side": 1,
+      "message": "nit: need a new line",
+      "revId": "44ac79fec51550f161a5e1d5b5c4fe1f2a13b8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b186770_22543059",
+        "filename": "board/sweetberry/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-15T22:53:38Z",
+      "side": 1,
+      "message": "It should boot without this.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 55
+      },
+      "revId": "44ac79fec51550f161a5e1d5b5c4fe1f2a13b8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_527a941d",
+        "filename": "board/sweetberry/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-15T22:53:38Z",
+      "side": 1,
+      "message": "nit: You mean \u0027Chromium EC\u0027?",
+      "range": {
+        "startLine": 35,
+        "startChar": 27,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "44ac79fec51550f161a5e1d5b5c4fe1f2a13b8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_92b0fcd7",
+        "filename": "board/sweetberry/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-15T22:53:38Z",
+      "side": 1,
+      "message": "These are repeated.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 24
+      },
+      "revId": "44ac79fec51550f161a5e1d5b5c4fe1f2a13b8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
