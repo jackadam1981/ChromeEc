@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "9b186770_27c3225a",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-15T22:33:24Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s fine. Thanks for explaining it to me offline as well.",
+      "parentUuid": "9b186770_bc8aa516",
+      "range": {
+        "startLine": 129,
+        "startChar": 33,
+        "endLine": 129,
+        "endChar": 52
+      },
+      "revId": "a36bc19672c03bffe495f1a850ee9237467d0c52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b186770_b9263760",
         "filename": "chip/nrf51/bluetooth_le.c",
         "patchSetId": 1
