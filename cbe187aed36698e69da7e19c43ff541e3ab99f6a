@@ -34,6 +34,24 @@
       "revId": "cbe187aed36698e69da7e19c43ff541e3ab99f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_21077827",
+        "filename": "include/i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T16:56:03Z",
+      "side": 1,
+      "message": "Sure, it\u0027s more readable. But, it seems like this modification would only be used by this chip variant. My gut is to see if you could handle this within your i2c driver completely without changing the common data structure. I could be wrong though...\n\nIf your port number is \u003d\u003d 3, then it\u0027s FMP.",
+      "parentUuid": "7bd3b3eb_78ebf9dd",
+      "revId": "cbe187aed36698e69da7e19c43ff541e3ab99f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
