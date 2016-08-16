@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b05bb4a_d0c8dcc0",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T18:14:13Z",
+      "side": 1,
+      "message": "I mean, this is already in include/i2c.h.",
+      "range": {
+        "startLine": 555,
+        "startChar": 0,
+        "endLine": 567,
+        "endChar": 3
+      },
+      "revId": "2ac9f2ea7ff94a4735f353de9a56ea1ad94844c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b05bb4a_109c24ba",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T18:14:13Z",
+      "side": 1,
+      "message": "and this",
+      "range": {
+        "startLine": 701,
+        "startChar": 0,
+        "endLine": 705,
+        "endChar": 3
+      },
+      "revId": "2ac9f2ea7ff94a4735f353de9a56ea1ad94844c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b05bb4a_5096ac9b",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T18:14:13Z",
+      "side": 1,
+      "message": "and this",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 721,
+        "endChar": 3
+      },
+      "revId": "2ac9f2ea7ff94a4735f353de9a56ea1ad94844c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b05bb4a_90a774fe",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T18:14:13Z",
+      "side": 1,
+      "message": "and this.",
+      "range": {
+        "startLine": 732,
+        "startChar": 0,
+        "endLine": 737,
+        "endChar": 3
+      },
+      "revId": "2ac9f2ea7ff94a4735f353de9a56ea1ad94844c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
