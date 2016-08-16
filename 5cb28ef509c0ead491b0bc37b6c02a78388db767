@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7bd3b3eb_01c35407",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:16:47Z",
+      "side": 1,
+      "message": "This is the big issue here. For some reason, nothing will work without these lines of code. I\u0027m trying to diagnose.",
+      "parentUuid": "7bd3b3eb_46c3b258",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 51
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_06a5aaad",
         "filename": "chip/nrf51/bluetooth_le.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-16T15:59:07Z",
       "side": 1,
       "message": "Good catch!",
+      "range": {
+        "startLine": 101,
+        "startChar": 37,
+        "endLine": 101,
+        "endChar": 40
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_21bc587d",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:16:47Z",
+      "side": 1,
+      "message": "Thanks! :)",
+      "parentUuid": "7bd3b3eb_06a5aaad",
       "range": {
         "startLine": 101,
         "startChar": 37,
@@ -76,6 +124,30 @@
       "writtenOn": "2016-08-16T15:59:07Z",
       "side": 1,
       "message": "I was hoping to use the ppi functions.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 44
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_81b7449c",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:16:47Z",
+      "side": 1,
+      "message": "This uses the PPI shortcuts. What do you mean?",
+      "parentUuid": "7bd3b3eb_a6b13ef4",
       "range": {
         "startLine": 169,
         "startChar": 0,
@@ -145,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "7bd3b3eb_21d538b7",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:16:47Z",
+      "side": 1,
+      "message": "It does not work without this. I\u0027m trying to diagnose, but I believe it might have something to do with improper handling of radio disabling.",
+      "parentUuid": "7bd3b3eb_81a8a471",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 0
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_41a2bc91",
         "filename": "common/btle_ll.c",
         "patchSetId": 1
@@ -156,6 +252,30 @@
       "writtenOn": "2016-08-16T15:59:07Z",
       "side": 1,
       "message": "In the other file, you\u0027re using ppi for this.  Did it not work here?",
+      "range": {
+        "startLine": 589,
+        "startChar": 0,
+        "endLine": 589,
+        "endChar": 35
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_a17da8bf",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:16:47Z",
+      "side": 1,
+      "message": "Good catch! I overlooked this. Now on PPI.",
+      "parentUuid": "7bd3b3eb_41a2bc91",
       "range": {
         "startLine": 589,
         "startChar": 0,
@@ -237,6 +357,30 @@
     },
     {
       "key": {
+        "uuid": "7bd3b3eb_c17a2cc5",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:16:47Z",
+      "side": 1,
+      "message": "I agree. Still trying to diagnose.",
+      "parentUuid": "7bd3b3eb_e1bbb0b2",
+      "range": {
+        "startLine": 691,
+        "startChar": 0,
+        "endLine": 692,
+        "endChar": 29
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_01b914ba",
         "filename": "common/btle_ll.c",
         "patchSetId": 1
@@ -248,6 +392,30 @@
       "writtenOn": "2016-08-16T15:59:07Z",
       "side": 1,
       "message": "Isn\u0027t this set in ble_rx()?",
+      "range": {
+        "startLine": 693,
+        "startChar": 0,
+        "endLine": 695,
+        "endChar": 41
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_212e98a5",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:16:47Z",
+      "side": 1,
+      "message": "No it is not. I don\u0027t believe ble_rx ever had channel/frequency setting. ble_ll_adv and some other adv functions do.",
+      "parentUuid": "7bd3b3eb_01b914ba",
       "range": {
         "startLine": 693,
         "startChar": 0,
@@ -329,6 +497,30 @@
     },
     {
       "key": {
+        "uuid": "7bd3b3eb_a155a8fc",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:16:47Z",
+      "side": 1,
+      "message": "Yes! I have this changed in a later edit, but I forgot to update it here. Thank you!",
+      "parentUuid": "7bd3b3eb_c1c22c30",
+      "range": {
+        "startLine": 716,
+        "startChar": 0,
+        "endLine": 716,
+        "endChar": 24
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_a1428897",
         "filename": "common/btle_ll.c",
         "patchSetId": 1
@@ -392,6 +584,30 @@
     },
     {
       "key": {
+        "uuid": "7bd3b3eb_21b8d828",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:16:47Z",
+      "side": 1,
+      "message": "What do you mean by this? The timer works as expected. NRF51_TIMER_CC(0, 1) holds the time of packet arrival.",
+      "parentUuid": "7bd3b3eb_611ee0ce",
+      "range": {
+        "startLine": 788,
+        "startChar": 0,
+        "endLine": 788,
+        "endChar": 28
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_c1db0c14",
         "filename": "common/btle_ll.c",
         "patchSetId": 1
@@ -415,6 +631,30 @@
     },
     {
       "key": {
+        "uuid": "7bd3b3eb_41807c5b",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:16:47Z",
+      "side": 1,
+      "message": "My bad. Deleted.",
+      "parentUuid": "7bd3b3eb_c1db0c14",
+      "range": {
+        "startLine": 795,
+        "startChar": 0,
+        "endLine": 795,
+        "endChar": 28
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_012fd4ee",
         "filename": "common/btle_ll.c",
         "patchSetId": 1
@@ -426,6 +666,30 @@
       "writtenOn": "2016-08-16T15:59:07Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 801,
+        "startChar": 4,
+        "endLine": 801,
+        "endChar": 34
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_c1a1cce8",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:16:47Z",
+      "side": 1,
+      "message": "Good catch. I had overlooked. Thank you!",
+      "parentUuid": "7bd3b3eb_012fd4ee",
       "range": {
         "startLine": 801,
         "startChar": 4,
@@ -472,6 +736,30 @@
       "writtenOn": "2016-08-16T16:22:47Z",
       "side": 1,
       "message": "What\u0027s this for?",
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_21df7868",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:16:47Z",
+      "side": 1,
+      "message": "Nothing anymore. Thanks! Deleted.",
+      "parentUuid": "7bd3b3eb_e1e410d5",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 817,
+        "endChar": 20
+      },
       "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
