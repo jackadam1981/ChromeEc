@@ -309,9 +309,12 @@ static void update_host_event_status(void)
 		/* Only generate SMI for first event */
 		if (!(NPCX_HIPMIE(PMC_ACPI) & NPCX_HIPMIE_SMIE))
 			need_smi = 1;
+		SET_BIT(NPCX_HIPMST(PMC_ACPI), NPCX_HIPMST_ST2);
 		SET_BIT(NPCX_HIPMIE(PMC_ACPI), NPCX_HIPMIE_SMIE);
-	} else
+	} else {
 		CLEAR_BIT(NPCX_HIPMIE(PMC_ACPI), NPCX_HIPMIE_SMIE);
+		CLEAR_BIT(NPCX_HIPMST(PMC_ACPI), NPCX_HIPMST_ST2);
+	}
 
 	if (host_events & event_mask[LPC_HOST_EVENT_SCI]) {
 		/* Generate SCI for every event */

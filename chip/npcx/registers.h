@@ -949,6 +949,7 @@ enum NPCX_PMC_PWDWN_CTL_T {
 
 /* NPCX_HIPMST */
 #define NPCX_HIPMST_ST1                  5
+#define NPCX_HIPMST_ST2                  6
 
 /* NPCX_HIPMIC */
 #define NPCX_HIPMIC_SCIB                 2
