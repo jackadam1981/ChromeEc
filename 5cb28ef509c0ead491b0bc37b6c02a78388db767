@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "3b05bb4a_b0743896",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-16T18:11:02Z",
+      "side": 1,
+      "message": "The functions in ppi.c",
+      "parentUuid": "7bd3b3eb_81b7449c",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 44
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_a1692821",
         "filename": "common/btle_ll.c",
         "patchSetId": 1
@@ -242,6 +266,24 @@
       "side": 1,
       "message": "Good point. If the hop increment was illegal, there was most likely an error in transmission and the connection would be dropped anyways, but this should be more explicit.",
       "parentUuid": "7bd3b3eb_26978e49",
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b05bb4a_f06ec0bf",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-16T18:11:02Z",
+      "side": 1,
+      "message": "Is this a common error?  I would think that checking the CRC would make this never occur.",
+      "parentUuid": "3b05bb4a_70013060",
       "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -794,6 +836,30 @@
       "side": 1,
       "message": "Upon further manual reading, this line is not required. Deleting.",
       "parentUuid": "7bd3b3eb_21b8d828",
+      "range": {
+        "startLine": 788,
+        "startChar": 0,
+        "endLine": 788,
+        "endChar": 28
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b05bb4a_709130a2",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-16T18:11:02Z",
+      "side": 1,
+      "message": "I was talking about hwtimer.c  I\u0027m afraid that using the same timer for too many things is dangerous.",
+      "parentUuid": "3b05bb4a_300a0827",
       "range": {
         "startLine": 788,
         "startChar": 0,
