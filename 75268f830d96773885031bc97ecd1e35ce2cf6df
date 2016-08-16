@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb8163c9_f6ece022",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-16T14:19:47Z",
+      "side": 1,
+      "message": "you no longer need this change.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "75268f830d96773885031bc97ecd1e35ce2cf6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb8163c9_96f9ece3",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-16T14:19:47Z",
+      "side": 1,
+      "message": "you mean vbus ?",
+      "range": {
+        "startLine": 169,
+        "startChar": 29,
+        "endLine": 169,
+        "endChar": 34
+      },
+      "revId": "75268f830d96773885031bc97ecd1e35ce2cf6df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
