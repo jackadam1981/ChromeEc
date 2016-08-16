@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7bd3b3eb_9b401742",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-08-16T05:27:31Z",
+      "side": 1,
+      "message": "That was my first impression. But I was not sure about the original intention behind doing it here. So, I did not move that.",
+      "parentUuid": "7bd3b3eb_9bfa570d",
+      "range": {
+        "startLine": 319,
+        "startChar": 2,
+        "endLine": 319,
+        "endChar": 51
+      },
+      "revId": "f0e4c9f4eb90f0f7abec2b764150fd2c641f6582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_1b60a707",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Hi Duncan:\n\nYes, ST1-2 flags should be set/clear before generating SCI/SMI. \nBy the way, is ST2 flag used by SMI in coreboot? If yes, we should set/clear ST2 in line 312 \u0026 314 of lpc.c.",
       "parentUuid": "7bd3b3eb_1b60a707",
+      "range": {
+        "startLine": 320,
+        "startChar": 2,
+        "endLine": 320,
+        "endChar": 51
+      },
+      "revId": "f0e4c9f4eb90f0f7abec2b764150fd2c641f6582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_5b586f37",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-08-16T05:27:31Z",
+      "side": 1,
+      "message": "Yes, we would need setting of SMI bit as well.",
+      "parentUuid": "bba52b84_2406b279",
       "range": {
         "startLine": 320,
         "startChar": 2,
