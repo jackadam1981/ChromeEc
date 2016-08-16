@@ -16,6 +16,24 @@
       "revId": "cbe187aed36698e69da7e19c43ff541e3ab99f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_78ebf9dd",
+        "filename": "include/i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-08-16T01:52:03Z",
+      "side": 1,
+      "message": "Yes, this is to distinguish FMP from regular. Three are 3 regular and 1 FMP, it seems like specifying it in the i2c port declaration is most readable, although it wastes a few bytes on other systems.",
+      "parentUuid": "7bd3b3eb_528054a6",
+      "revId": "cbe187aed36698e69da7e19c43ff541e3ab99f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
