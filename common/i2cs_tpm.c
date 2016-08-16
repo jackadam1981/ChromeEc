@@ -57,6 +57,16 @@
 #define CPUTS(outstr) cputs(CC_I2C, outstr)
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
 
+#define I2C_LOG_SIZE 50
+struct i2c_log_entry {
+	uint8_t type;
+	uint32_t addr;
+	uint32_t size;
+	uint32_t data;
+};
+static int i2c_log_index;
+static struct i2c_log_entry i2c_log[I2C_LOG_SIZE];
+
 struct i2c_tpm_reg_map {
 	uint8_t   i2c_address;
 	uint8_t   reg_size;
@@ -72,6 +82,69 @@ static const struct i2c_tpm_reg_map i2c_to_tpm[] = {
 	{0xf, 4, 0xf90}, /* TPM_FW_VER */
 };
 
+static void i2c_log_reset(void)
+{
+	i2c_log_index = 0;
+}
+
+static void i2c_log_add(uint8_t rd, uint32_t addr, uint32_t size, uint32_t data)
+{
+	//ccprintf("log index = %d\n", i2c_log_index);
+	if (i2c_log_index < I2C_LOG_SIZE) {
+		i2c_log[i2c_log_index].type = rd;
+		i2c_log[i2c_log_index].addr = addr;
+		i2c_log[i2c_log_index].size = size;
+		i2c_log[i2c_log_index].data = data;
+		i2c_log_index++;
+	}
+}
+
+static void i2c_log_print(void)
+{
+	char rd[3] = "RD";
+	char wr[3] = "WR";
+	char chunk[5];
+	int i;
+
+	if (i2c_log_index == 0) {
+		ccprintf("I2c Log: No entries\n");
+		return;
+	}
+
+	chunk[4] = '\0';
+	for (i = 0; i < i2c_log_index; i++) {
+		if (i2c_log[i].type & (i2c_log[i].addr == 0xf90)) {
+			memcpy(chunk, &i2c_log[i].data, 4);
+			ccprintf("[%02d]: %s -> 0x%x, s = %d, d = %s\n",
+				 i, i2c_log[i].type ? rd : wr, i2c_log[i].addr,
+				 i2c_log[i].size, chunk);
+		} else {
+			ccprintf("[%02d]: %s -> 0x%x, s = %d, d = 0x%x\n",
+				 i, i2c_log[i].type ? rd : wr, i2c_log[i].addr,
+				 i2c_log[i].size, i2c_log[i].data);
+		}
+	}
+}
+static int command_i2c(int argc, char **argv)
+{
+
+	if (argc < 2) {
+		i2c_log_print();
+		return EC_SUCCESS;
+	}
+
+	if (!strcasecmp(argv[1], "reset"))
+		i2c_log_reset();
+	else
+		return EC_ERROR_PARAM1;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(i2c, command_i2c,
+			"reset",
+			"I2C Log display",
+			NULL);
+
 static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 {
 	size_t i;
@@ -80,6 +153,7 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 	uint8_t reg_value[4];
 	const struct i2c_tpm_reg_map *i2c_reg_entry = NULL;
 	uint16_t reg_size;
+	uint32_t *p_value;
 
 	if (i2cs_data_size < 1) {
 		/*
@@ -124,6 +198,7 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 			/* Always read 4 bytes. */
 			tpm_register_get(tpm_reg, &byte_reg, sizeof(byte_reg));
 			i2cs_post_read_data(byte_reg);
+			i2c_log_add(1, tpm_reg, reg_size, (uint32_t)byte_reg);
 			return;
 		}
 
@@ -134,6 +209,8 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 			for (i = 0; i < sizeof(reg_value); i++)
 				i2cs_post_read_data(reg_value[sizeof(reg_value)
 							      - 1 - i]);
+			p_value = (uint32_t *)reg_value;
+			i2c_log_add(1, tpm_reg, reg_size, *p_value);
 			return;
 		}
 
@@ -153,12 +230,17 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 		tpm_register_get(tpm_reg, data, reg_size);
 		for (i = 0; i < reg_size; i++)
 			i2cs_post_read_data(data[i]);
+
+		p_value = (uint32_t *)data;
+		i2c_log_add(1, tpm_reg, reg_size, *p_value);
 		return;
 	}
 
 	/* This is an actual write request. */
 	if (reg_size == 0) { /* Fifo write, send the stream down directly. */
 		tpm_register_put(tpm_reg, data, i2cs_data_size);
+		p_value = (uint32_t *)data;
+		i2c_log_add(0, tpm_reg, reg_size, *p_value);
 		return;
 	}
 
@@ -171,6 +253,8 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 
 	if (reg_size == 1) {
 		tpm_register_put(tpm_reg, data, 1);
+		p_value = (uint32_t *)data;
+		i2c_log_add(0, tpm_reg, reg_size, *p_value & 0xff);
 		return;
 	}
 
@@ -179,10 +263,13 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 		reg_value[i] = data[3 - i];
 
 	tpm_register_put(tpm_reg, reg_value, 4);
+	p_value = (uint32_t *)reg_value;
+	i2c_log_add(0, tpm_reg, reg_size, *p_value);
 }
 
 static void i2cs_tpm_init(void)
 {
 	i2cs_register_write_complete_handler(wr_complete_handler);
+	i2c_log_reset();
 }
 DECLARE_HOOK(HOOK_INIT, i2cs_tpm_init, HOOK_PRIO_LAST);

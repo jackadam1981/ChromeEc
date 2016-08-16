@@ -415,7 +415,13 @@ void tpm_register_put(uint32_t regaddr, const uint8_t *data, uint32_t data_size)
 		break;
 	case TPM_FW_VER:
 		/* Reload versions, in case something has been updated */
-		set_version_string();
+		/*
+		 * TODO (scollyer): Can't call this follwoing I2CS write because
+		 * the function takes too long to execute. Will need to figure
+		 * out how to update it. Temporarily have this call happen at
+		 * intiialization time.
+		 */
+		/* set_version_string(); */
 		/* Reset read byte count */
 		tpm_fw_ver_index = 0;
 		break;
@@ -549,6 +555,9 @@ static void tpm_init(void)
 	}
 
 	_plat__SetNvAvail();
+
+	/* TODO (scollyer): For I2C can't call this following write to ver reg */
+	set_version_string();
 }
 
 size_t tpm_get_burst_size(void)
