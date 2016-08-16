@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9b0ea77b_065d1c27",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T22:03:23Z",
+      "side": 1,
+      "message": "Also, don\u0027t worry about trying to make this line up neatly at the end. Now that your tab size has been updated, they\u0027re ... (wait for it) ... out of line.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 26
+      },
+      "revId": "a8034608bbe4a8c02af36127eda21a0fe2bf4d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b0ea77b_662e90a6",
         "filename": "include/bluetooth_le.h",
         "patchSetId": 5
