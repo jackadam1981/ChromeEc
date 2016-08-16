@@ -782,6 +782,30 @@
     },
     {
       "key": {
+        "uuid": "3b05bb4a_300a0827",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:55:24Z",
+      "side": 1,
+      "message": "Upon further manual reading, this line is not required. Deleting.",
+      "parentUuid": "7bd3b3eb_21b8d828",
+      "range": {
+        "startLine": 788,
+        "startChar": 0,
+        "endLine": 788,
+        "endChar": 28
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_c1db0c14",
         "filename": "common/btle_ll.c",
         "patchSetId": 1
