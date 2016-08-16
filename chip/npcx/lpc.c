@@ -161,7 +161,7 @@ static void lpc_generate_sci(void)
 	/* Set signal high, now that we've generated the edge */
 	gpio_set_level(CONFIG_SCI_GPIO, 1);
 #else
-	SET_BIT(NPCX_HIPMIE(PMC_ACPI), NPCX_HIPMIE_SCIE);
+	SET_BIT(NPCX_HIPMIC(PMC_ACPI), NPCX_HIPMIC_SCIB);
 #endif
 
 	if (host_events & event_mask[LPC_HOST_EVENT_SCI])
@@ -316,9 +316,16 @@ static void update_host_event_status(void)
 	if (host_events & event_mask[LPC_HOST_EVENT_SCI]) {
 		/* Generate SCI for every event */
 		need_sci = 1;
-		SET_BIT(NPCX_HIPMIE(PMC_ACPI), NPCX_HIPMIE_SCIE);
-	} else
+
+		/* Make sure HIPMIE_SCIE bit is zero. */
 		CLEAR_BIT(NPCX_HIPMIE(PMC_ACPI), NPCX_HIPMIE_SCIE);
+
+		/* Set ST1 bit of HIPMST (ACPI SCI bit). */
+		SET_BIT(NPCX_HIPMST(PMC_ACPI), NPCX_HIPMST_ST1);
+	} else {
+		CLEAR_BIT(NPCX_HIPMIE(PMC_ACPI), NPCX_HIPMIE_SCIE);
+		CLEAR_BIT(NPCX_HIPMST(PMC_ACPI), NPCX_HIPMST_ST1);
+	}
 
 	/* Copy host events to mapped memory */
 	*(uint32_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS) = host_events;

@@ -939,9 +939,19 @@ enum NPCX_PMC_PWDWN_CTL_T {
 #define NPCX_HIPMIE(n)                    REG8(NPCX_PM_CH_BASE_ADDR(n) + 0x010)
 
 /* PM Channel register field */
+
+/* NPCX_HIPMIE */
 #define NPCX_HIPMIE_SCIE                 1
 #define NPCX_HIPMIE_SMIE                 2
+
+/* NPCX_HIPMCTL */
 #define NPCX_HIPMCTL_IBFIE               0
+
+/* NPCX_HIPMST */
+#define NPCX_HIPMST_ST1                  5
+
+/* NPCX_HIPMIC */
+#define NPCX_HIPMIC_SCIB                 2
 
 /*
  * PM Channel enumeration
