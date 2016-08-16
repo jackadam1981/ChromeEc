@@ -113,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "3bd93b0e_05eda01c",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:48:57Z",
+      "side": 1,
+      "message": "That actually breaks the code. Are you sure that\u0027s valid syntax? I think it may be upset because NRF51_PPI_CHEN is a macro that addresses a register.",
+      "parentUuid": "7bd3b3eb_d5d8ae7d",
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_a6b13ef4",
         "filename": "chip/nrf51/bluetooth_le.c",
         "patchSetId": 1
@@ -177,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "3bd93b0e_65426c19",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:48:57Z",
+      "side": 1,
+      "message": "This function pulls data out of an incoming CONNECT_REQ packet, which defines the parameters of the connection, and stores the data locally. Do you think it is poorly named?",
+      "parentUuid": "7bd3b3eb_a1692821",
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_26978e49",
         "filename": "common/btle_ll.c",
         "patchSetId": 1
@@ -188,6 +224,24 @@
       "writtenOn": "2016-08-16T16:22:47Z",
       "side": 1,
       "message": "If the hop_increment is wrong, we just ignore it?",
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b05bb4a_70013060",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:48:57Z",
+      "side": 1,
+      "message": "Good point. If the hop increment was illegal, there was most likely an error in transmission and the connection would be dropped anyways, but this should be more explicit.",
+      "parentUuid": "7bd3b3eb_26978e49",
       "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -311,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "3b05bb4a_10a8a46f",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:48:57Z",
+      "side": 1,
+      "message": "It\u0027s a margin of error. This line only gets called if there has previously been a failure in communication (a missed packet). If this occurs, it listens for how much time is expected TIMES 1.25. This is to account for the fact that the time that the error actually occurred and the time that the error is registered may be slightly different. Removing the \"+(listen_time \u003e\u003e 2)\" actually breaks the code. Is this a sufficient explanation or is it still unsatisfactory?",
+      "parentUuid": "7bd3b3eb_810c249a",
+      "range": {
+        "startLine": 665,
+        "startChar": 3,
+        "endLine": 665,
+        "endChar": 35
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_e11ad0cb",
         "filename": "common/btle_ll.c",
         "patchSetId": 1
@@ -322,6 +400,30 @@
       "writtenOn": "2016-08-16T16:22:47Z",
       "side": 1,
       "message": "what\u0027s this constant?",
+      "range": {
+        "startLine": 678,
+        "startChar": 16,
+        "endLine": 678,
+        "endChar": 21
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b05bb4a_50a22c91",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:48:57Z",
+      "side": 1,
+      "message": "This is an arbitrary constant defined by the spec. Since it didn\u0027t make sense to you, I\u0027ve #define\u0027d it.",
+      "parentUuid": "7bd3b3eb_e11ad0cb",
       "range": {
         "startLine": 678,
         "startChar": 16,
@@ -451,6 +553,30 @@
     },
     {
       "key": {
+        "uuid": "3b05bb4a_b0bb98b3",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:48:57Z",
+      "side": 1,
+      "message": "My editor had this aligned just right to trick me. Fixed!",
+      "parentUuid": "7bd3b3eb_214f78c6",
+      "range": {
+        "startLine": 700,
+        "startChar": 37,
+        "endLine": 700,
+        "endChar": 38
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_e14890bb",
         "filename": "common/btle_ll.c",
         "patchSetId": 1
@@ -462,6 +588,30 @@
       "writtenOn": "2016-08-16T16:22:47Z",
       "side": 1,
       "message": "nit: align with paren",
+      "range": {
+        "startLine": 709,
+        "startChar": 3,
+        "endLine": 709,
+        "endChar": 4
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b05bb4a_d0c29c2f",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:48:57Z",
+      "side": 1,
+      "message": "Done. Didn\u0027t know how the style worked for multilines. Thank you!",
+      "parentUuid": "7bd3b3eb_e14890bb",
       "range": {
         "startLine": 709,
         "startChar": 3,
@@ -532,6 +682,30 @@
       "writtenOn": "2016-08-16T16:22:47Z",
       "side": 1,
       "message": "You could probably just return rv.",
+      "range": {
+        "startLine": 724,
+        "startChar": 0,
+        "endLine": 727,
+        "endChar": 19
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b05bb4a_10cd4465",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T17:48:57Z",
+      "side": 1,
+      "message": "Very true. Thanks!",
+      "parentUuid": "7bd3b3eb_a1428897",
       "range": {
         "startLine": 724,
         "startChar": 0,
