@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "3b05bb4a_10d4241b",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T21:06:39Z",
+      "side": 1,
+      "message": "Compiles for me. Does it not for you?\n\n     296:       4a45            ldr     r2, [pc, #276]  ; (3ac \u003cble_rx+0x14c\u003e)    \n     298:       6813            ldr     r3, [r2, #0]\n     29a:       430b            orrs    r3, r1\n     29c:       6013            str     r3, [r2, #0]\n     ..snip..\n     3ac:       4001f500\n\nr1 has 1 \u003c\u003c 26.",
+      "parentUuid": "3bd93b0e_05eda01c",
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_a6b13ef4",
         "filename": "chip/nrf51/bluetooth_le.c",
         "patchSetId": 1
@@ -231,6 +249,24 @@
       "side": 1,
       "message": "This function pulls data out of an incoming CONNECT_REQ packet, which defines the parameters of the connection, and stores the data locally. Do you think it is poorly named?",
       "parentUuid": "7bd3b3eb_a1692821",
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b0ea77b_e35f12e9",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T21:06:39Z",
+      "side": 1,
+      "message": "Ah okay. No, with that explanation, it makes sense. Could you add a short header?",
+      "parentUuid": "3bd93b0e_65426c19",
       "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -431,6 +467,30 @@
     },
     {
       "key": {
+        "uuid": "3b05bb4a_907134a6",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T21:06:39Z",
+      "side": 1,
+      "message": "Oh no, I wasn\u0027t implying that you remove it; just looking for an explanation. Could you add a comment?",
+      "parentUuid": "3b05bb4a_10a8a46f",
+      "range": {
+        "startLine": 665,
+        "startChar": 3,
+        "endLine": 665,
+        "endChar": 35
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_e11ad0cb",
         "filename": "common/btle_ll.c",
         "patchSetId": 1
@@ -466,6 +526,30 @@
       "side": 1,
       "message": "This is an arbitrary constant defined by the spec. Since it didn\u0027t make sense to you, I\u0027ve #define\u0027d it.",
       "parentUuid": "7bd3b3eb_e11ad0cb",
+      "range": {
+        "startLine": 678,
+        "startChar": 16,
+        "endLine": 678,
+        "endChar": 21
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b05bb4a_5067ccf0",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T21:06:39Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "3b05bb4a_50a22c91",
       "range": {
         "startLine": 678,
         "startChar": 16,
