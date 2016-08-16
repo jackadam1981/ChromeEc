@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "7bd3b3eb_d8746597",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2016-08-16T01:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bd3b3eb_d5aaeec5",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "fe37a709507cb6a94972115c14c66ae9f2e22ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_f5f612c4",
         "filename": "test/thermal.c",
         "patchSetId": 4
@@ -70,6 +94,30 @@
       "writtenOn": "2016-08-16T00:37:53Z",
       "side": 1,
       "message": "The for-loop will break immediately as it is written now. I think it should look like:\nfor (mv \u003d line_data[0].mv];\n\tmv \u003e line_data[line_info.num_pairs - 1].mv;\n\tmv--) {\n\tt \u003d thermistor_linear_interpolate(mv, \u0026line_info);\n\tTEST_ASSERT(mv \u003d\u003d line_data[line_info.num_pairs - 1].temp - t;\n}",
+      "range": {
+        "startLine": 605,
+        "startChar": 0,
+        "endLine": 610,
+        "endChar": 2
+      },
+      "revId": "fe37a709507cb6a94972115c14c66ae9f2e22ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_580ab527",
+        "filename": "test/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2016-08-16T01:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bd3b3eb_f5f612c4",
       "range": {
         "startLine": 605,
         "startChar": 0,
