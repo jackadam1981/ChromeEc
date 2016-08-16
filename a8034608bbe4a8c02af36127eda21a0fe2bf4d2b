@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b0ea77b_662e90a6",
+        "filename": "include/bluetooth_le.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T21:59:48Z",
+      "side": 1,
+      "message": "A wild header file appears! Why is this here now? For your ppi_request_channel addition? If so, you should include it in bluetooth_le.c.",
+      "revId": "a8034608bbe4a8c02af36127eda21a0fe2bf4d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
