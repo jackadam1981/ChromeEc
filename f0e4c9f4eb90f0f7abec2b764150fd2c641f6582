@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7bd3b3eb_9bfa570d",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2016-08-16T05:12:44Z",
+      "side": 1,
+      "message": "Actually shouldn\u0027t this be done only in lpc_generate_sci(), and then only when we are doing an SERIRQ based SCI?",
+      "range": {
+        "startLine": 319,
+        "startChar": 2,
+        "endLine": 319,
+        "endChar": 51
+      },
+      "revId": "f0e4c9f4eb90f0f7abec2b764150fd2c641f6582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_1b60a707",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 1
