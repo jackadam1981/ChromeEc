@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bd3b3eb_b5872a10",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-16T00:37:53Z",
+      "side": 1,
+      "message": "May as well add some data points for lower temperatures too so that people have a better sense of whether the algorithm is functioning at all.\n\nI\u0027d suggest starting at 10C.",
+      "revId": "fe37a709507cb6a94972115c14c66ae9f2e22ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_f88a8910",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-16T00:37:53Z",
+      "side": 1,
+      "message": "Same comment as above. If a user (or developer) sees 50C as the lowest reported temperature it may appear that there is a bug.",
+      "revId": "fe37a709507cb6a94972115c14c66ae9f2e22ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_d5aaeec5",
+        "filename": "driver/temp_sensor/thermistor_ncp15wb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-16T00:37:53Z",
+      "side": 1,
+      "message": "It might help to change these names from v0, v1, t0, and t1 to v_low, v_high, t_low, t_high now that the array ordering is reversed.",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "fe37a709507cb6a94972115c14c66ae9f2e22ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_f5f612c4",
+        "filename": "test/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-16T00:37:53Z",
+      "side": 1,
+      "message": "The for-loop will break immediately as it is written now. I think it should look like:\nfor (mv \u003d line_data[0].mv];\n\tmv \u003e line_data[line_info.num_pairs - 1].mv;\n\tmv--) {\n\tt \u003d thermistor_linear_interpolate(mv, \u0026line_info);\n\tTEST_ASSERT(mv \u003d\u003d line_data[line_info.num_pairs - 1].temp - t;\n}",
+      "range": {
+        "startLine": 605,
+        "startChar": 0,
+        "endLine": 610,
+        "endChar": 2
+      },
+      "revId": "fe37a709507cb6a94972115c14c66ae9f2e22ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
