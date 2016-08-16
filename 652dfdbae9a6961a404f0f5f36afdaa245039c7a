@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b0ea77b_268018a6",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T21:43:48Z",
+      "side": 1,
+      "message": "I\u0027d like to say it was my editor\u0027s fault, but maybe I just *spaced* out. I have now updated my editor\u0027s tab size. Hopefully this looks nicer now.",
+      "parentUuid": "3b05bb4a_30816863",
+      "range": {
+        "startLine": 712,
+        "startChar": 0,
+        "endLine": 712,
+        "endChar": 5
+      },
+      "revId": "652dfdbae9a6961a404f0f5f36afdaa245039c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b05bb4a_d0529c11",
         "filename": "common/btle_ll.c",
         "patchSetId": 4
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "9b0ea77b_a6c5280d",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T21:43:48Z",
+      "side": 1,
+      "message": "OH. WOW. Woops... Let\u0027s pretend this never happened. Fixed.",
+      "parentUuid": "3b05bb4a_d0529c11",
+      "revId": "652dfdbae9a6961a404f0f5f36afdaa245039c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b0ea77b_2342ca17",
         "filename": "common/btle_ll.c",
         "patchSetId": 4
@@ -53,6 +95,24 @@
       "writtenOn": "2016-08-16T21:06:39Z",
       "side": 1,
       "message": "Should you check the return value of this?",
+      "revId": "652dfdbae9a6961a404f0f5f36afdaa245039c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b0ea77b_e67d60bf",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-16T21:43:48Z",
+      "side": 1,
+      "message": "Yes I should! Done. Thank you :)",
+      "parentUuid": "9b0ea77b_2342ca17",
       "revId": "652dfdbae9a6961a404f0f5f36afdaa245039c7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
