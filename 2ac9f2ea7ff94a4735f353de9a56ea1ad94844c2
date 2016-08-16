@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9b0ea77b_83661e21",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-16T20:34:08Z",
+      "side": 1,
+      "message": "I recommend to put a function description in the header for the exported and above the definition for the unexported because I think these descriptions will unlikely be kept in sync as one is satisfied by updating here but not the other or vice versa...\n\nSorry if I didn\u0027t make it clear on the previous CL.",
+      "parentUuid": "3b05bb4a_538fd6d3",
+      "range": {
+        "startLine": 555,
+        "startChar": 0,
+        "endLine": 567,
+        "endChar": 3
+      },
+      "revId": "2ac9f2ea7ff94a4735f353de9a56ea1ad94844c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b05bb4a_109c24ba",
         "filename": "chip/stm32/i2c-stm32f4.c",
         "patchSetId": 9
