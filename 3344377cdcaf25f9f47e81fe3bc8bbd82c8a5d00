@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bd3b3eb_61582038",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T16:56:03Z",
+      "side": 1,
+      "message": "For the interface functions, you don\u0027t need to provide function headers here. They\u0027re already defined in include/i2c.h.",
+      "revId": "3344377cdcaf25f9f47e81fe3bc8bbd82c8a5d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_610a6028",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T16:56:03Z",
+      "side": 1,
+      "message": "transpose",
+      "range": {
+        "startLine": 49,
+        "startChar": 17,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "3344377cdcaf25f9f47e81fe3bc8bbd82c8a5d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_41671cf1",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T16:56:03Z",
+      "side": 1,
+      "message": "You should just be able to make this decision based off of the port number.",
+      "revId": "3344377cdcaf25f9f47e81fe3bc8bbd82c8a5d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
