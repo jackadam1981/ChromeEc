@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "7bd3b3eb_bb115baf",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-16T03:03:24Z",
+      "side": 1,
+      "message": "That could work, too. We don\u0027t care much about accuracy below a certain point since low temperatures generally don\u0027t cause the system to react; It\u0027s higher temperatures that we really care about.\n\nStill, it would be nice for developers to be able to see the temperature change under normal conditions. So we could just do 10C increments beginning at 0 and then add a few extra datapoints at 5C increments between 80-120 (or whatever the critical temperatures are for charger and ambient sensors).",
+      "parentUuid": "7bd3b3eb_78a219a4",
+      "revId": "fe37a709507cb6a94972115c14c66ae9f2e22ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_f88a8910",
         "filename": "board/reef/board.c",
         "patchSetId": 4
