@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "7bd3b3eb_d5d8ae7d",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T16:22:47Z",
+      "side": 1,
+      "message": "alternatively:\n\n    NRF51_PPI_CHEN |\u003d (1 \u003c\u003c NRF51_PPI_CH_RADIO_ADDR__TIMER0CC1);",
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_a6b13ef4",
         "filename": "chip/nrf51/bluetooth_le.c",
         "patchSetId": 1
@@ -65,6 +82,40 @@
         "endLine": 170,
         "endChar": 44
       },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_a1692821",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T16:22:47Z",
+      "side": 1,
+      "message": "This function seems to just fill out some memory. Is that all that\u0027s necessary to initialize the connection?",
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_26978e49",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T16:22:47Z",
+      "side": 1,
+      "message": "If the hop_increment is wrong, we just ignore it?",
       "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -110,6 +161,52 @@
         "startChar": 0,
         "endLine": 589,
         "endChar": 35
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_810c249a",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T16:22:47Z",
+      "side": 1,
+      "message": "??? can you explain why? is this accounting for the overhead in preparing to rx a packet?",
+      "range": {
+        "startLine": 665,
+        "startChar": 3,
+        "endLine": 665,
+        "endChar": 35
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_e11ad0cb",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T16:22:47Z",
+      "side": 1,
+      "message": "what\u0027s this constant?",
+      "range": {
+        "startLine": 678,
+        "startChar": 16,
+        "endLine": 678,
+        "endChar": 21
       },
       "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -163,6 +260,52 @@
     },
     {
       "key": {
+        "uuid": "7bd3b3eb_214f78c6",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T16:22:47Z",
+      "side": 1,
+      "message": "replace tab with space.",
+      "range": {
+        "startLine": 700,
+        "startChar": 37,
+        "endLine": 700,
+        "endChar": 38
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_e14890bb",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T16:22:47Z",
+      "side": 1,
+      "message": "nit: align with paren",
+      "range": {
+        "startLine": 709,
+        "startChar": 3,
+        "endLine": 709,
+        "endChar": 4
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bd3b3eb_c1c22c30",
         "filename": "common/btle_ll.c",
         "patchSetId": 1
@@ -179,6 +322,29 @@
         "startChar": 0,
         "endLine": 716,
         "endChar": 24
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_a1428897",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T16:22:47Z",
+      "side": 1,
+      "message": "You could probably just return rv.",
+      "range": {
+        "startLine": 724,
+        "startChar": 0,
+        "endLine": 727,
+        "endChar": 19
       },
       "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -203,6 +369,23 @@
         "endLine": 788,
         "endChar": 28
       },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_417b9ced",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T16:22:47Z",
+      "side": 1,
+      "message": "What\u0027s this for?",
       "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -272,6 +455,23 @@
         "endLine": 817,
         "endChar": 20
       },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_e1c5f00b",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T16:22:47Z",
+      "side": 1,
+      "message": "What\u0027s this for?",
       "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
