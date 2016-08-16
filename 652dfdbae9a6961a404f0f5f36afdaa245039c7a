@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b05bb4a_30816863",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T21:06:39Z",
+      "side": 1,
+      "message": "does your editor hate spaces? :p Our tab width is 8 spaces btw.",
+      "range": {
+        "startLine": 712,
+        "startChar": 0,
+        "endLine": 712,
+        "endChar": 5
+      },
+      "revId": "652dfdbae9a6961a404f0f5f36afdaa245039c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b05bb4a_d0529c11",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T21:06:39Z",
+      "side": 1,
+      "message": "Did you mean rv? Because now it will always return EC_SUCCESS.",
+      "revId": "652dfdbae9a6961a404f0f5f36afdaa245039c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b0ea77b_2342ca17",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-16T21:06:39Z",
+      "side": 1,
+      "message": "Should you check the return value of this?",
+      "revId": "652dfdbae9a6961a404f0f5f36afdaa245039c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
