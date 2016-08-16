@@ -317,8 +317,11 @@ static void update_host_event_status(void)
 		/* Generate SCI for every event */
 		need_sci = 1;
 		SET_BIT(NPCX_HIPMIE(PMC_ACPI), NPCX_HIPMIE_SCIE);
-	} else
+		SET_BIT(NPCX_HIPMST(PMC_ACPI), NPCX_HIPMST_SCIE);
+	} else {
 		CLEAR_BIT(NPCX_HIPMIE(PMC_ACPI), NPCX_HIPMIE_SCIE);
+		CLEAR_BIT(NPCX_HIPMST(PMC_ACPI), NPCX_HIPMST_SCIE);
+	}
 
 	/* Copy host events to mapped memory */
 	*(uint32_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS) = host_events;
