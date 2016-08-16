@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bd3b3eb_46c3b258",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-16T15:59:07Z",
+      "side": 1,
+      "message": "I wouldn\u0027t commit this.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 51
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_06a5aaad",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-16T15:59:07Z",
+      "side": 1,
+      "message": "Good catch!",
+      "range": {
+        "startLine": 101,
+        "startChar": 37,
+        "endLine": 101,
+        "endChar": 40
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_a6b13ef4",
+        "filename": "chip/nrf51/bluetooth_le.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-16T15:59:07Z",
+      "side": 1,
+      "message": "I was hoping to use the ppi functions.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 44
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_81a8a471",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-16T15:59:07Z",
+      "side": 1,
+      "message": "This shouldn\u0027t need to be done so frequently.  Does it not work without it?",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 0
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_41a2bc91",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-16T15:59:07Z",
+      "side": 1,
+      "message": "In the other file, you\u0027re using ppi for this.  Did it not work here?",
+      "range": {
+        "startLine": 589,
+        "startChar": 0,
+        "endLine": 589,
+        "endChar": 35
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_e1bbb0b2",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-16T15:59:07Z",
+      "side": 1,
+      "message": "This shouldn\u0027t need to be done every time.",
+      "range": {
+        "startLine": 691,
+        "startChar": 0,
+        "endLine": 692,
+        "endChar": 29
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_01b914ba",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-16T15:59:07Z",
+      "side": 1,
+      "message": "Isn\u0027t this set in ble_rx()?",
+      "range": {
+        "startLine": 693,
+        "startChar": 0,
+        "endLine": 695,
+        "endChar": 41
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_c1c22c30",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-16T15:59:07Z",
+      "side": 1,
+      "message": "Isn\u0027t there a shortcut for sending packets after Rx?",
+      "range": {
+        "startLine": 716,
+        "startChar": 0,
+        "endLine": 716,
+        "endChar": 24
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_611ee0ce",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-16T15:59:07Z",
+      "side": 1,
+      "message": "I didn\u0027t see a CL to change the timer for the OS.  Are you sure?",
+      "range": {
+        "startLine": 788,
+        "startChar": 0,
+        "endLine": 788,
+        "endChar": 28
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_c1db0c14",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-16T15:59:07Z",
+      "side": 1,
+      "message": "twice?",
+      "range": {
+        "startLine": 795,
+        "startChar": 0,
+        "endLine": 795,
+        "endChar": 28
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_012fd4ee",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-16T15:59:07Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 801,
+        "startChar": 4,
+        "endLine": 801,
+        "endChar": 34
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd3b3eb_e1e410d5",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-16T15:59:07Z",
+      "side": 1,
+      "message": "What\u0027s this for?",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 817,
+        "endChar": 20
+      },
+      "revId": "5cb28ef509c0ead491b0bc37b6c02a78388db767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
