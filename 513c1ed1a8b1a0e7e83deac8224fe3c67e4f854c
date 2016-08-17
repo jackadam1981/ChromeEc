@@ -50,6 +50,23 @@
       "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_554c2c75",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2016-08-17T23:11:21Z",
+      "side": 1,
+      "message": "I don\u0027t believe this msleep is needed since pp3300_s0 and pp1800_s0 can sequence/ramp at the same time for power on according to the power sequence spreadsheet.",
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
