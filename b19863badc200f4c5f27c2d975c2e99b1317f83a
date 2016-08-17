@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb944b51_afecf521",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-17T19:32:27Z",
+      "side": 1,
+      "message": "can you move these to the top with the rest of the variable declarations?",
+      "range": {
+        "startLine": 635,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 46
+      },
+      "revId": "b19863badc200f4c5f27c2d975c2e99b1317f83a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
