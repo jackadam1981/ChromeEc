@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb944b51_f3697f20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-17T21:56:46Z",
+      "side": 1,
+      "message": "Also do \"accelinfo on 4000\" to read all sensors every 4s.",
+      "revId": "a1f4f2f93843c510a63b53387507bbd4c3aebfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_13c36b35",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-17T21:56:46Z",
+      "side": 1,
+      "message": "Looking at the spec, a period is defined by standby_durn + acuqisition time. You need to add orsr_[tp]. bmp280_compute_wait_time() is still needed.",
+      "revId": "a1f4f2f93843c510a63b53387507bbd4c3aebfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_530c1399",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-17T21:56:46Z",
+      "side": 1,
+      "message": "Why not SLEEP MODE? We are not using it yet.",
+      "revId": "a1f4f2f93843c510a63b53387507bbd4c3aebfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_1371abd9",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-17T21:56:46Z",
+      "side": 1,
+      "message": "could this be a constant, then bmp280_compute_wait_time() is a constant as well.\n\nLooking at android API, these parameter can not be change.\nI am not a baro expert, but I am guessing we could pick acceptable values for a handled device.",
+      "revId": "a1f4f2f93843c510a63b53387507bbd4c3aebfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
