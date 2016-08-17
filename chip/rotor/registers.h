@@ -262,6 +262,12 @@ typedef volatile struct rotor_mcu_dma_regs rotor_mcu_dma_regs_t;
 
 #define ROTOR_MCU_DMA_REGS ((rotor_mcu_dma_regs_t *)ROTOR_MCU_DMA_BASE)
 
+/* Crystal */
+#define CRYSTAL_PMU0_PWRST_CTRL		0x840
+#define CRYSTAL_PMU0_PWR_STATE		0x890
+#define CRYSTAL_USB_DPMU_INT_STAT	0x94C
+#define CRYSTAL_USB_DPMU_INT_CTRL	0x944
+
 /* IRQ Numbers */
 #define ROTOR_MCU_IRQ_TIMER_0		6
 #define ROTOR_MCU_IRQ_TIMER_1		7

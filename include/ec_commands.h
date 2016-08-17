@@ -3810,6 +3810,32 @@ struct ec_response_usb_pd_mux_info {
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
+/* Change the current power state of a Crystal chip. */
+#define EC_CMD_CRYSTAL_POWER_STATE_SET 0x204
+
+enum crystal_power_state {
+	PS_NORMAL = 0,
+	PS_HIBERNATE = 1,
+	PS_COUNT
+};
+
+struct ec_params_crystal_ps_set {
+	uint8_t chip;
+	uint8_t requested_state;
+} __packed;
+
+struct ec_response_crystal_ps_set {
+	uint8_t chip;
+	uint8_t new_state;
+} __packed;
+
+/* Notify the APMU that a USB event interrupt occurred on a Crystal chip. */
+#define EC_CMD_CRYSTAL_USB_WAKE_EVT 0x205
+
+struct ec_params_crystal_usb_wake_evt {
+	uint8_t chip;
+} __packed;
+
 /*****************************************************************************/
 /*
  * Reserve a range of host commands for the CR51 firmware.
