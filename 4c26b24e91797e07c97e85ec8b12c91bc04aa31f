@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "bb944b51_b3c5370d",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-17T21:49:50Z",
+      "side": 1,
+      "message": "You can move them all to the top.  Aseda has a much better sense of style than I do.",
+      "parentUuid": "bb944b51_06a24eec",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 57
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb944b51_327f880d",
         "filename": "common/btle_ll.c",
         "patchSetId": 2
@@ -286,6 +310,30 @@
     },
     {
       "key": {
+        "uuid": "bb944b51_f3cfbf26",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-17T21:49:50Z",
+      "side": 1,
+      "message": "\"update\" by not changing it is confusing to me.",
+      "parentUuid": "bb944b51_662872e8",
+      "range": {
+        "startLine": 651,
+        "startChar": 53,
+        "endLine": 651,
+        "endChar": 62
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb944b51_dbf9ffe2",
         "filename": "common/btle_ll.c",
         "patchSetId": 2
@@ -368,6 +416,30 @@
       "side": 1,
       "message": "I have found nothing in the spec concerning this. I have also never encountered this looping re-sending. I just put this here as a precaution. I am afraid it might happen at some point",
       "parentUuid": "bb944b51_9bef7716",
+      "range": {
+        "startLine": 675,
+        "startChar": 4,
+        "endLine": 675,
+        "endChar": 33
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_1367eb4d",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-17T21:49:50Z",
+      "side": 1,
+      "message": "The problem I have is that it\u0027s perfectly legal to nack as many times as you\u0027d like (up to the supervision timeout)  Some devices use it to implement flow control.",
+      "parentUuid": "bb944b51_e697023a",
       "range": {
         "startLine": 675,
         "startChar": 4,
@@ -463,6 +535,30 @@
       "side": 1,
       "message": "I don\u0027t know how, but I will ask Myles for some help in that.",
       "parentUuid": "bb944b51_9bee9781",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 679,
+        "endChar": 28
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_1340cb8e",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1117279
+      },
+      "writtenOn": "2016-08-17T21:49:50Z",
+      "side": 1,
+      "message": "I would prefer to remove the check (see above)",
+      "parentUuid": "bb944b51_1b9d4768",
       "range": {
         "startLine": 678,
         "startChar": 0,
