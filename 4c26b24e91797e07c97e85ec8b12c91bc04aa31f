@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bb944b51_7bd72bf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-17T19:37:17Z",
+      "side": 1,
+      "message": "I learned something today! Thank you! :)\nBut this merge conflict should be resolved once my other two CLs go through, right?",
+      "parentUuid": "bb944b51_8ff9f9b5",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb944b51_327f880d",
         "filename": "common/btle_ll.c",
         "patchSetId": 2
@@ -66,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "bb944b51_bb8a730f",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-17T19:37:17Z",
+      "side": 1,
+      "message": "This isn\u0027t something that should be called outside of this file. Do you mean to put the headers up at the top of the file? Like \"uint8_t is_repeated_packet(struct ble_pdu *packet);\" ?",
+      "parentUuid": "bb944b51_327f880d",
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb944b51_801f0615",
         "filename": "common/btle_ll.c",
         "patchSetId": 2
@@ -77,6 +119,30 @@
       "writtenOn": "2016-08-17T19:32:27Z",
       "side": 1,
       "message": "Should we add a print here indicating when this situation occurs? Would it be useful when debugging?",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 679,
+        "endChar": 28
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_5b842f09",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-17T19:37:17Z",
+      "side": 1,
+      "message": "This could probably be useful when debugging. I\u0027ll add that in. Thanks!\n\nWhen it\u0027s all good and done and all, all the prints should be disabled.",
+      "parentUuid": "bb944b51_801f0615",
       "range": {
         "startLine": 678,
         "startChar": 0,
