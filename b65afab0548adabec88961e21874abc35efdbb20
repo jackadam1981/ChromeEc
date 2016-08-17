@@ -93,6 +93,30 @@
       "revId": "b65afab0548adabec88961e21874abc35efdbb20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_60077a26",
+        "filename": "board/amenia/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-17T19:16:52Z",
+      "side": 1,
+      "message": "Sounds good, but I\u0027d prefer to go with 4600 mV here, just so that we\u0027re consistent with Samus (in theory anyway, Samus uses stm32 HW ADC which probably has much tighter accuracy).",
+      "parentUuid": "bb944b51_80a8e61f",
+      "range": {
+        "startLine": 410,
+        "startChar": 61,
+        "endLine": 410,
+        "endChar": 64
+      },
+      "revId": "b65afab0548adabec88961e21874abc35efdbb20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
