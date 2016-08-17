@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "9b0ea77b_3d55bf59",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-17T16:12:55Z",
+      "side": 1,
+      "message": "I\u0027d have to disagree about having them here as well as in the header. Like Daisuke mentioned, they\u0027ll probably get out of sync.\n\nIMO, it\u0027s not so hard to pull up the header file alongside the source file if you want some documentation.\n\nBut yes, for non-exported functions we would prefer to have the function headers here.",
+      "parentUuid": "9b0ea77b_83661e21",
+      "range": {
+        "startLine": 555,
+        "startChar": 0,
+        "endLine": 567,
+        "endChar": 3
+      },
+      "revId": "2ac9f2ea7ff94a4735f353de9a56ea1ad94844c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b05bb4a_109c24ba",
         "filename": "chip/stm32/i2c-stm32f4.c",
         "patchSetId": 9
