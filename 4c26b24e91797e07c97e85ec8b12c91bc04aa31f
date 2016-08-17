@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "bb944b51_86063e77",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-17T20:15:13Z",
+      "side": 1,
+      "message": "I don\u0027t have these in the function because their values need to persist into the next call. But using the NESN would be a clever way of doing it. Do you think it\u0027s more clear to do that? I don\u0027t think it is, but I wrote this code so I\u0027m not the most objective.",
+      "parentUuid": "bb944b51_3bb923df",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 57
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb944b51_327f880d",
         "filename": "common/btle_ll.c",
         "patchSetId": 2
@@ -173,6 +197,24 @@
     },
     {
       "key": {
+        "uuid": "bb944b51_bba433b3",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-17T20:15:13Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "bb944b51_7bdacbe6",
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb944b51_3bea0302",
         "filename": "common/btle_ll.c",
         "patchSetId": 2
@@ -184,6 +226,30 @@
       "writtenOn": "2016-08-17T20:04:23Z",
       "side": 1,
       "message": "I would expect that we would not call this function if rx_rv !\u003d EC_SUCCESS",
+      "range": {
+        "startLine": 651,
+        "startChar": 53,
+        "endLine": 651,
+        "endChar": 62
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_662872e8",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-17T20:15:13Z",
+      "side": 1,
+      "message": "It does call this function, even if rx_rv !\u003d EC_SUCCESS.  I have it set up so that when an RX occurs in the connection state, this function is always called. If there is a failure in the receive, this will still \"update\" the packet by not changing it--to re-send it. Calling this function also keeps track of metrics and debug information (\"++num_consecutive_nacks_received\").",
+      "parentUuid": "bb944b51_3bea0302",
       "range": {
         "startLine": 651,
         "startChar": 53,
@@ -219,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "bb944b51_06aece77",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-17T20:15:13Z",
+      "side": 1,
+      "message": "I guess that should be more RX failure. On it! Thanks!",
+      "parentUuid": "bb944b51_dbf9ffe2",
+      "range": {
+        "startLine": 657,
+        "startChar": 5,
+        "endLine": 657,
+        "endChar": 7
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb944b51_9bef7716",
         "filename": "common/btle_ll.c",
         "patchSetId": 2
@@ -230,6 +320,30 @@
       "writtenOn": "2016-08-17T20:04:23Z",
       "side": 1,
       "message": "Is this defined in the spec?",
+      "range": {
+        "startLine": 675,
+        "startChar": 4,
+        "endLine": 675,
+        "endChar": 33
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_e697023a",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-17T20:15:13Z",
+      "side": 1,
+      "message": "I have found nothing in the spec concerning this. I have also never encountered this looping re-sending. I just put this here as a precaution. I am afraid it might happen at some point",
+      "parentUuid": "bb944b51_9bef7716",
       "range": {
         "startLine": 675,
         "startChar": 4,
@@ -301,6 +415,30 @@
       "side": 1,
       "message": "Okay, can you file a bug for disabling prints when ready?",
       "parentUuid": "bb944b51_5b842f09",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 679,
+        "endChar": 28
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_1b9d4768",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-17T20:15:13Z",
+      "side": 1,
+      "message": "I don\u0027t know how, but I will ask Myles for some help in that.",
+      "parentUuid": "bb944b51_9bee9781",
       "range": {
         "startLine": 678,
         "startChar": 0,
