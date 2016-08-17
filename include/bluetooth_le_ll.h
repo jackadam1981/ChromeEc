@@ -17,6 +17,8 @@ enum ll_state_t {
 	TEST_TX,
 };
 
+#define NUM_TOLERATED_NACKS_RECEIVED  3
+
 #define LL_ADV_INTERVAL_UNIT_US       625
 #define LL_ADV_TIMEOUT_UNIT_US        1000000
 

@@ -38,8 +38,8 @@ static int ll_adv_timeout_us;
 
 static struct ble_pdu ll_adv_pdu;
 static struct ble_pdu ll_scan_rsp_pdu;
-static struct ble_pdu tx_packet_1;
-static struct ble_pdu *packet_tb_sent;
+static struct ble_pdu tx_packet_1, tx_packet_2;
+static struct ble_pdu *packet_tb_sent, *packet_last_sent;
 static struct ble_connection_params conn_params;
 static int connection_initialized;
 static struct remapping_table remap_table;
@@ -516,7 +516,7 @@ uint8_t ll_set_advertising_params(uint8_t *params)
 	return HCI_SUCCESS;
 }
 
-static uint32_t tx_end, rsp_end, tx_rsp_end;
+static uint32_t tx_end, tx_rsp_end;
 struct ble_pdu ll_rcv_packet;
 
 /**
@@ -611,7 +611,7 @@ int ble_ll_adv(int chan)
 	break;
 	}
 
-	CPRINTF("ADV %u Response %u %u\n", tx_end, rsp_end, tx_rsp_end);
+	CPRINTF("ADV %u Response %u\n", tx_end, tx_rsp_end);
 
 	return rv;
 }
@@ -632,12 +632,91 @@ int ble_ll_adv_event(void)
 	return rv;
 }
 
+static uint8_t last_received_sn, last_received_nesn;
+static uint8_t num_consecutive_nacks_received;
+static uint16_t num_unexpected_nesn_sn, num_abnormal_conn_events,
+		num_nacks_received, num_nack_limit_exceeded;
+uint8_t is_repeated_packet(struct ble_pdu *packet)
+{
+	return (packet->header.data.nesn == last_received_nesn &&
+		packet->header.data.sn == last_received_sn) ||
+		num_consecutive_nacks_received > NUM_TOLERATED_NACKS_RECEIVED;
+}
+uint8_t is_expected_sn_nesn(struct ble_pdu *packet)
+{
+	return (packet_last_sent->header.data.nesn
+		== packet->header.data.sn) ||
+		num_consecutive_nacks_received > NUM_TOLERATED_NACKS_RECEIVED;
+}
+void update_packet_tb_sent(struct ble_pdu *received, int rx_rv)
+{
+	struct ble_pdu *temp;
+	/*SN, NESN flow control Vol 6, Part B, 4.5.9 */
+
+	if (rx_rv != EC_SUCCESS) {
+		/* EC failure. Send previous packet. No updating required. */
+		++num_consecutive_nacks_received;
+		++num_abnormal_conn_events;
+		return;
+	}
+
+	if (is_repeated_packet(received)) {
+		/*
+		 * Received repeat packet. This means they missed our packet.
+		 * Re-send previous packet. No updating required.
+		 */
+		++num_nacks_received;
+		++num_consecutive_nacks_received;
+		++num_abnormal_conn_events;
+		return;
+	}
+
+	/*
+	 * An escape in case both sides continually ask the other side to
+	 * re-send data.
+	 */
+	if (num_consecutive_nacks_received > NUM_TOLERATED_NACKS_RECEIVED)
+		++num_nack_limit_exceeded;
+
+	/* In case something strange and unexpected occurs */
+	if (!is_expected_sn_nesn(received)) {
+		++num_unexpected_nesn_sn;
+		++num_abnormal_conn_events;
+		return;
+	}
+
+	/* Data came as expected! */
+	temp = packet_last_sent;
+	packet_last_sent = packet_tb_sent;
+	packet_tb_sent = temp;
+	packet_tb_sent->header.data.sn = received->header.data.nesn;
+	packet_tb_sent->header.data.nesn =
+		(packet_last_sent->header.data.nesn + 1) & 0x01;
+
+	/*
+	 * @TODO This is where the packet payload
+	 * (and length/LLID) will be set.
+	 */
+	set_empty_data_packet(packet_tb_sent);
+
+	last_received_nesn = received->header.data.nesn;
+	last_received_sn = received->header.data.sn;
+	num_consecutive_nacks_received = 0;
+}
 
 void print_connection_state(void)
 {
 	CPRINTF("vvvvvvvvvvvvvvvvvvvCONNECTION STATEvvvvvvvvvvvvvvvvvvv\n");
 	CPRINTF("Number of connections events processed: %d\n", ll_conn_events);
 	CPRINTF("Recovered from %d bad receives.\n", errors_recovered);
+	CPRINTF("Number of unexpected SN/NESN combos: %d\n",
+		num_unexpected_nesn_sn);
+	CPRINTF("Number of abnormal LL conection events: %d\n",
+		num_abnormal_conn_events);
+	CPRINTF("Number of NACKS received in LL control: %d\n",
+		num_nacks_received);
+	CPRINTF("Number of times the NACK limit was exceeded: %d\n",
+		num_nack_limit_exceeded);
 	CPRINTF("Access addr(hex): %x\n", conn_params.access_addr);
 	CPRINTF("win_size(hex): %x\n", conn_params.win_size);
 	CPRINTF("win_offset(hex): %x\n", conn_params.win_offset);
@@ -735,6 +814,7 @@ int connected_communicate(void)
 	 * occurs automatically after receiving. The radio just needs
 	 * to know where to find the packet to be sent.
 	 */
+	update_packet_tb_sent(&ll_rcv_packet, rv);
 	NRF51_RADIO_PACKETPTR = (uint32_t)packet_tb_sent;
 
 	receive_time = NRF51_TIMER_CC(0, 1);
@@ -793,6 +873,9 @@ void bluetooth_ll_task(void)
 			task_wait_event(-1);
 			connection_initialized = 0;
 			errors_recovered = 0;
+			num_consecutive_nacks_received = 0;
+			num_unexpected_nesn_sn = num_abnormal_conn_events = 0;
+			num_nacks_received = num_nack_limit_exceeded = 0;
 		break;
 		case TEST_RX:
 			if (ble_test_rx() == HCI_SUCCESS)
@@ -812,8 +895,10 @@ void bluetooth_ll_task(void)
 			ll_adv_events = 0;
 			task_wait_event(-1);
 			connection_initialized = 0;
+			packet_last_sent = &tx_packet_1;
 			packet_tb_sent = &tx_packet_1;
 			set_empty_data_packet(&tx_packet_1);
+			set_empty_data_packet(&tx_packet_2);
 		break;
 		case CONNECTION:
 			if (!connection_initialized) {
