@@ -34,4 +34,16 @@ struct mkbp_event_source {
 	__attribute__((section(".rodata.evtsrcs")))            \
 		 = {type, func}
 
+#ifdef CONFIG_MKBP_EVENT_NO_GPIO
+/**
+ * Indicate to the host that there's a new event.
+ *
+ * This should only be defined if the chip does not use a GPIO to indicate a
+ * host event.
+ *
+ * @param active	Non-zero to set interrupt, zero to clear.
+ */
+void chip_set_host_interrupt(int active);
+#endif /* defined(CONFIG_MKBP_EVENT_NO_GPIO) */
+
 #endif  /* __CROS_EC_MKBP_EVENT_H */
