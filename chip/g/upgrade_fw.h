@@ -58,6 +58,12 @@ struct update_pdu_header {
 struct first_response_pdu {
 	uint32_t return_value;
 	uint32_t protocol_version;
+	union {
+		struct {
+			uint32_t  backup_ro_offset;
+			uint32_t  backup_rw_offset;
+		} vers3;
+	};
 };
 
 /* TODO: Handle this in upgrade_fw.c, not usb_upgrade.c */
