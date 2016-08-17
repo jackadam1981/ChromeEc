@@ -149,6 +149,29 @@
 /* To prevent accidental restarts, this magic value must be written to CRR. */
 #define ROTOR_MCU_WDT_KICK		0x76
 
+/* IPC */
+#define ROTOR_MCU_AP_IPC	0
+#define ROTOR_MCU_APMU_IPC	1
+#define ROTOR_MCU_SP_IPC	2
+#define ROTOR_MCU_NUM_IPC_CH	3
+#define ROTOR_MCU_IPC_BUF_LEN	128
+
+#define ROTOR_MCU_IPC_REG_BASE(ch)	(0xED0C0100 + ch*0x1000)
+#define ROTOR_MCU_IPC_ISRR(ch)		REG32(ROTOR_MCU_IPC_REG_BASE(ch) + 0x00)
+#define ROTOR_MCU_IPC_WDR_0(ch)		REG32(ROTOR_MCU_IPC_REG_BASE(ch) + 0x04)
+#define ROTOR_MCU_IPC_WDR_1(ch)		REG32(ROTOR_MCU_IPC_REG_BASE(ch) + 0x08)
+#define ROTOR_MCU_IPC_ISRW(ch)		REG32(ROTOR_MCU_IPC_REG_BASE(ch) + 0x0C)
+#define ROTOR_MCU_IPC_ICR(ch)		REG32(ROTOR_MCU_IPC_REG_BASE(ch) + 0x10)
+#define ROTOR_MCU_IPC_IIR(ch)		REG32(ROTOR_MCU_IPC_REG_BASE(ch) + 0x14)
+#define ROTOR_MCU_IPC_RDR_0(ch)		REG32(ROTOR_MCU_IPC_REG_BASE(ch) + 0x18)
+#define ROTOR_MCU_IPC_RDR_1(ch)		REG32(ROTOR_MCU_IPC_REG_BASE(ch) + 0x1C)
+#define ROTOR_MCU_IPC_MAJ_MID_REV(ch)	REG32(ROTOR_MCU_IPC_REG_BASE(ch) + 0x20)
+#define ROTOR_MCU_IPC_CFG_REV(ch)	REG32(ROTOR_MCU_IPC_REG_BASE(ch) + 0x24)
+#define ROTOR_MCU_IPC_DUMMY(ch)		REG32(ROTOR_MCU_IPC_REG_BASE(ch) + 0x28)
+
+/* The AP side of the IPC clear register. */
+#define ROTOR_MCU_IPC_AP_ICR		REG32(0xED0C0010)
+
 /* SSI */
 #define ROTOR_MCU_SSI_BASE(port)	(0xED070000 + (port * 0x1000))
 #define ROTOR_MCU_SSI_CTRLR0(port)	REG32(ROTOR_MCU_SSI_BASE(port) + 0x00)
@@ -251,6 +274,9 @@ typedef volatile struct rotor_mcu_dma_regs rotor_mcu_dma_regs_t;
 #define ROTOR_MCU_IRQ_I2C_3		23
 #define ROTOR_MCU_IRQ_I2C_4		24
 #define ROTOR_MCU_IRQ_I2C_5		25
+#define ROTOR_MCU_IRQ_IPC_WU_AP		39
+#define ROTOR_MCU_IRQ_IPC_WU_APMU	40
+#define ROTOR_MCU_IRQ_IPC_WU_SP		41
 #define ROTOR_MCU_IRQ_DMAC_0		44
 #define ROTOR_MCU_IRQ_DMAC_1		45
 #define ROTOR_MCU_IRQ_DMAC_2		46
