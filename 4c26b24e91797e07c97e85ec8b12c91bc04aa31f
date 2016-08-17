@@ -334,6 +334,30 @@
     },
     {
       "key": {
+        "uuid": "bb944b51_330dc746",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-17T23:47:41Z",
+      "side": 1,
+      "message": "This might just be how I think, but it makes more sense to me this way. Every time the ble_rx function is called, it calls this function. This function decides what the data in the packet is supposed to be. It could be a re-sent packet, or it could be new data. It feels less intuitive to me to have this function selectively called. Does that make sense?",
+      "parentUuid": "bb944b51_f3cfbf26",
+      "range": {
+        "startLine": 651,
+        "startChar": 53,
+        "endLine": 651,
+        "endChar": 62
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb944b51_dbf9ffe2",
         "filename": "common/btle_ll.c",
         "patchSetId": 2
@@ -440,6 +464,30 @@
       "side": 1,
       "message": "The problem I have is that it\u0027s perfectly legal to nack as many times as you\u0027d like (up to the supervision timeout)  Some devices use it to implement flow control.",
       "parentUuid": "bb944b51_e697023a",
+      "range": {
+        "startLine": 675,
+        "startChar": 4,
+        "endLine": 675,
+        "endChar": 33
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_930cbb48",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-17T23:47:41Z",
+      "side": 1,
+      "message": "Oh, really? I didn\u0027t know that. I\u0027ll change this.",
+      "parentUuid": "bb944b51_1367eb4d",
       "range": {
         "startLine": 675,
         "startChar": 4,
