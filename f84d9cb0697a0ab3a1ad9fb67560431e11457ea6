@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bf2b7e6_6fbcf1ab",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-17T08:01:26Z",
+      "side": 1,
+      "message": "could you clarify how this is useful for slave controllers ?",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 23
+      },
+      "revId": "f84d9cb0697a0ab3a1ad9fb67560431e11457ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
