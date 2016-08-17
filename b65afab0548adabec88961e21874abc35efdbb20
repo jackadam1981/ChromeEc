@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bb944b51_20f1f298",
+        "filename": "board/amenia/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-08-17T19:12:53Z",
+      "side": 1,
+      "message": "okay, I will change to 2%",
+      "parentUuid": "bb944b51_afdf9532",
+      "range": {
+        "startLine": 402,
+        "startChar": 8,
+        "endLine": 402,
+        "endChar": 16
+      },
+      "revId": "b65afab0548adabec88961e21874abc35efdbb20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb944b51_4ff0f1ca",
         "filename": "board/amenia/board.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-17T17:58:44Z",
       "side": 1,
       "message": "This might be too high (eg. some chargers may output ~4.8V even when operating under spec), but double check the BC1.2 spec. We used 4600 mV here on Samus, probably we should do the same here unless we have a good reason to change it.",
+      "range": {
+        "startLine": 410,
+        "startChar": 61,
+        "endLine": 410,
+        "endChar": 64
+      },
+      "revId": "b65afab0548adabec88961e21874abc35efdbb20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_80a8e61f",
+        "filename": "board/amenia/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-08-17T19:12:53Z",
+      "side": 1,
+      "message": "okay.\nBC1.2: charging port output voltage range is 4.75V to 5.25V.\nBD99955: Anti-Collapse Threshold Voltage Accuracy -100mV to +100mV\nwould it be good to set it to 4.65V?",
+      "parentUuid": "bb944b51_4ff0f1ca",
       "range": {
         "startLine": 410,
         "startChar": 61,
