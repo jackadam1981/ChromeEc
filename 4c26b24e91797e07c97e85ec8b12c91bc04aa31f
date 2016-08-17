@@ -22,6 +22,70 @@
       "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_8ff9f9b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-17T19:32:27Z",
+      "side": 1,
+      "message": "Fun fact, if you upload a set of patches together stacked (like you\u0027ve done), they\u0027ll be implicitly dependent on another.\n\nThis is good too to call out the dependency though.",
+      "parentUuid": "bb944b51_4f1ab127",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_327f880d",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-17T19:32:27Z",
+      "side": 1,
+      "message": "Function headers please? :) Also, do you anticipate these functions being used outside this file? If not, let\u0027s not export them. Otherwise, place these declarations in a header file.",
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_801f0615",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-17T19:32:27Z",
+      "side": 1,
+      "message": "Should we add a print here indicating when this situation occurs? Would it be useful when debugging?",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 679,
+        "endChar": 28
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
