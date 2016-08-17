@@ -1,9 +1,9 @@
-/* Copyright 2015 The Chromium OS Authors. All rights reserved.
+/* Copyright 2016 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
-/* Skylake IMVP8 / ROP PMIC chipset power control module for Chrome EC */
+/* Skylake/Apollolake IMVP8 / ROP PMIC chipset power control module for Chrome EC */
 
 #include "charge_state.h"
 #include "chipset.h"
@@ -18,68 +18,48 @@
 #include "util.h"
 #include "wireless.h"
 #include "lpc.h"
-#include "espi.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
 /* Input state flags */
-#define IN_PCH_SLP_S0_DEASSERTED  POWER_SIGNAL_MASK(X86_SLP_S0_DEASSERTED)
-#define IN_PCH_SLP_S3_DEASSERTED  POWER_SIGNAL_MASK(X86_SLP_S3_DEASSERTED)
-#define IN_PCH_SLP_S4_DEASSERTED  POWER_SIGNAL_MASK(X86_SLP_S4_DEASSERTED)
-#define IN_PCH_SLP_SUS_DEASSERTED POWER_SIGNAL_MASK(X86_SLP_SUS_DEASSERTED)
+#define IN_RSMRST_N	POWER_SIGNAL_MASK(X86_RSMRST_N)
 
-#ifdef CONFIG_POWER_S0IX
-#define IN_ALL_PM_SLP_DEASSERTED (IN_PCH_SLP_S0_DEASSERTED | \
-				  IN_PCH_SLP_S3_DEASSERTED | \
-				  IN_PCH_SLP_S4_DEASSERTED | \
-				  IN_PCH_SLP_SUS_DEASSERTED)
-#else
-#define IN_ALL_PM_SLP_DEASSERTED (IN_PCH_SLP_S3_DEASSERTED | \
-				  IN_PCH_SLP_S4_DEASSERTED | \
-				  IN_PCH_SLP_SUS_DEASSERTED)
-#endif
+#define IN_SLP_S0_N	POWER_SIGNAL_MASK(X86_SLP_S0_N)
+#define IN_SLP_S3_N	POWER_SIGNAL_MASK(X86_SLP_S3_N)
+#define IN_SLP_S4_N	POWER_SIGNAL_MASK(X86_SLP_S4_N)
 
-/*
- * DPWROK is NC / stuffing option on initial boards.
- * TODO(shawnn): Figure out proper control signals.
- */
-#define IN_PGOOD_ALL_CORE 0
+#define IN_PGOOD_ALL_CORE (IN_RSMRST_N)
 
 #define IN_ALL_S0 (IN_PGOOD_ALL_CORE | IN_ALL_PM_SLP_DEASSERTED)
 
 #define CHARGER_INITIALIZED_DELAY_MS 100
 #define CHARGER_INITIALIZED_TRIES 40
-
+#define WARM_RESET_PULSE (32 * MSEC)
 static int throttle_cpu;      /* Throttle CPU? */
+static int forcing_coldreset; /* Forced coldreset in progress? */
 static int forcing_shutdown;  /* Forced shutdown in progress? */
 static int power_s5_up;       /* Chipset is sequencing up or down */
 
-enum sys_sleep_state {
-	SYS_SLEEP_S5,
-	SYS_SLEEP_S4,
-	SYS_SLEEP_S3
-};
 
-/* Get system sleep state through GPIOs or VWs */
-static int chipset_get_sleep_signal(enum sys_sleep_state state)
+__attribute__((weak)) void chipset_force_g3(void)
 {
-#ifdef CONFIG_VW_SIGNALS
-	if (state == SYS_SLEEP_S4)
-		return espi_vw_get_wire(VW_SLP_S4_L);
-	else if (state == SYS_SLEEP_S3)
-		return espi_vw_get_wire(VW_SLP_S3_L);
-#else
-	if (state == SYS_SLEEP_S4)
-		return gpio_get_level(GPIO_PCH_SLP_S4_L);
-	else if (state == SYS_SLEEP_S3)
-		return gpio_get_level(GPIO_PCH_SLP_S3_L);
-#endif
+	return;
+}
 
-	/* We should never run here */
-	ASSERT(0);
-	return 0;
+__attribute__((weak)) void board_cold_reset(void)
+{
+	return;
+}
+
+__attribute__((weak)) void board_pre_state_changes(int state)
+{
+	return;
+}
+__attribute__((weak)) void board_post_state_changes(int state)
+{
+	return;
 }
 
 void chipset_force_shutdown(void)
@@ -99,39 +79,23 @@ void chipset_force_shutdown(void)
 	}
 }
 
-__attribute__((weak)) void chipset_set_pmic_slp_sus_l(int level)
-{
-	gpio_set_level(GPIO_PMIC_SLP_SUS_L, level);
-}
-
-static void chipset_force_g3(void)
-{
-	CPRINTS("Forcing fake G3.");
-
-	chipset_set_pmic_slp_sus_l(0);
-}
 
 void chipset_reset(int cold_reset)
 {
 	CPRINTS("%s(%d)", __func__, cold_reset);
-
 	if (cold_reset) {
-		if (gpio_get_level(GPIO_SYS_RESET_L) == 0)
-			return;
-		gpio_set_level(GPIO_SYS_RESET_L, 0);
-		/* Debounce time for SYS_RESET_L is 16 ms */
-		udelay(20 * MSEC);
-		gpio_set_level(GPIO_SYS_RESET_L, 1);
+		/*
+		 * Perform chipset_force_shutdown and mark forcing_coldreset.
+		 * Once in S5G3 state, check forcing_coldreset to power up.
+		 */
+		forcing_coldreset = 1;
+		board_cold_reset();
 	} else {
 		/*
-		 * Send a RCIN_PCH_RCIN_L
-		 * assert INIT# to the CPU without dropping power or asserting
-		 * PLTRST# to reset the rest of the system.
+		 * Send a pulse to SOC PMU_RSTBTN_N to trigger a warm reset.
 		 */
-
-		/* Pulse must be at least 16 PCI clocks long = 500 ns */
 		gpio_set_level(GPIO_PCH_RCIN_L, 0);
-		udelay(10);
+		usleep(WARM_RESET_PULSE);
 		gpio_set_level(GPIO_PCH_RCIN_L, 1);
 	}
 }
@@ -164,36 +128,26 @@ enum power_state power_chipset_init(void)
 	return POWER_G3;
 }
 
-static void handle_rsmrst(enum power_state state)
+void handle_rsmrst_l_pgood(void)
 {
 	/*
-	 * Pass through RSMRST asynchronously, as PCH may not react
+	 * Pass through asynchronously, as SOC may not react
 	 * immediately to power changes.
 	 */
-	int rsmrst_in = gpio_get_level(GPIO_RSMRST_L_PGOOD);
-	int rsmrst_out = gpio_get_level(GPIO_PCH_RSMRST_L);
+	int in_level = gpio_get_level(GPIO_RSMRST_L_PGOOD);
+	int out_level = gpio_get_level(GPIO_PCH_RSMRST_L);
 
 	/* Nothing to do. */
-	if (rsmrst_in == rsmrst_out)
-		return;
-	/*
-	 * Wait at least 10ms between power signals going high
-	 * and deasserting RSMRST to PCH.
-	 */
-	if (rsmrst_in)
-		msleep(10);
-	gpio_set_level(GPIO_PCH_RSMRST_L, rsmrst_in);
-	CPRINTS("RSMRST: %d", rsmrst_in);
-}
-
-static void handle_slp_sus(enum power_state state)
-{
-	/* If we're down or going down don't do anythin with SLP_SUS_L. */
-	if (state == POWER_G3 || state == POWER_S5G3)
+	if (in_level == out_level)
 		return;
 
-	/* Always mimic PCH SLP_SUS request for all other states. */
-	chipset_set_pmic_slp_sus_l(gpio_get_level(GPIO_PCH_SLP_SUS_L));
+	/* Only passthrough RSMRST_L de-assertion on power up */
+	if (in_level && !power_s5_up)
+		return;
+	msleep(10);
+	gpio_set_level(GPIO_PCH_RSMRST_L, in_level);
+
+	CPRINTS("Pass through GPIO_RSMRST_L_PGOOD: %d", in_level);
 }
 
 #ifdef CONFIG_BOARD_HAS_RTC_RESET
@@ -246,8 +200,15 @@ static enum power_state _power_handle_state(enum power_state state)
 		if (power_s5_up)
 			return power_wait_s5_rtc_reset();
 #endif
-		if (chipset_get_sleep_signal(SYS_SLEEP_S4) == 1)
-			return POWER_S5S3; /* Power up to next state */
+
+		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
+			/* Required rail went away */
+			chipset_force_shutdown();
+			return POWER_S5G3;
+		} else if (gpio_get_level(GPIO_PCH_SLP_S4_L) == 1) {
+			/* Power up to next state */
+			return POWER_S5S3;
+		}
 		break;
 
 	case POWER_S3:
@@ -255,10 +216,10 @@ static enum power_state _power_handle_state(enum power_state state)
 			/* Required rail went away */
 			chipset_force_shutdown();
 			return POWER_S3S5;
-		} else if (chipset_get_sleep_signal(SYS_SLEEP_S3) == 1) {
+		} else if (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1) {
 			/* Power up to next state */
 			return POWER_S3S0;
-		} else if (chipset_get_sleep_signal(SYS_SLEEP_S4) == 0) {
+		} else if (gpio_get_level(GPIO_PCH_SLP_S4_L) == 0) {
 			/* Power down to next state */
 			return POWER_S3S5;
 		}
@@ -270,10 +231,10 @@ static enum power_state _power_handle_state(enum power_state state)
 			return POWER_S0S3;
 #ifdef CONFIG_POWER_S0IX
 		} else if ((gpio_get_level(GPIO_PCH_SLP_S0_L) == 0) &&
-			   (chipset_get_sleep_signal(SYS_SLEEP_S3) == 1)) {
+			   (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1)) {
 			return POWER_S0S0ix;
 #endif
-		} else if (chipset_get_sleep_signal(SYS_SLEEP_S3) == 0) {
+		} else if (gpio_get_level(GPIO_PCH_SLP_S3_L) == 0) {
 			/* Power down to next state */
 			return POWER_S0S3;
 		}
@@ -286,7 +247,7 @@ static enum power_state _power_handle_state(enum power_state state)
 		 * TODO: add code for unexpected power loss
 		 */
 		if ((gpio_get_level(GPIO_PCH_SLP_S0_L) == 1) &&
-		   (chipset_get_sleep_signal(SYS_SLEEP_S3) == 1)) {
+		   (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1)) {
 			return POWER_S0ixS0;
 		}
 
@@ -294,6 +255,9 @@ static enum power_state _power_handle_state(enum power_state state)
 #endif
 
 	case POWER_G3S5:
+		/* Platform is powering up, clear forcing_coldreset */
+		forcing_coldreset = 0;
+
 		/* Call hooks to initialize PMIC */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
 
@@ -314,7 +278,7 @@ static enum power_state _power_handle_state(enum power_state state)
 			return POWER_G3;
 		}
 
-		if (power_wait_signals(IN_PCH_SLP_SUS_DEASSERTED)) {
+		if (power_wait_signals(POWER_UP_SIGNAL)) {
 			chipset_force_shutdown();
 			return POWER_G3;
 		}
@@ -425,6 +389,13 @@ static enum power_state _power_handle_state(enum power_state state)
 
 	case POWER_S5G3:
 		chipset_force_g3();
+
+		/* Power up the platform again for forced cold reset */
+		if (forcing_coldreset) {
+			forcing_coldreset = 0;
+			return POWER_G3S5;
+		}
+
 		return POWER_G3;
 
 	default:
@@ -438,14 +409,9 @@ enum power_state power_handle_state(enum power_state state)
 {
 	enum power_state new_state;
 
-	/* Process RSMRST_L state changes. */
-	handle_rsmrst(state);
-
+	board_pre_state_changes(state);
 	new_state = _power_handle_state(state);
-
-	/* Process SLP_SUS_L state changes after a new state is decided. */
-	handle_slp_sus(new_state);
-
+	board_post_state_changes(new_state);
 	return new_state;
 }
 
@@ -466,6 +432,7 @@ int chipset_get_ps_debounced_level(enum gpio_signal signal)
 	 * reading SLP_S0 should be corrected with slp_s0_debounce.done flag.
 	 */
 	int level = gpio_get_level(signal);
+
 	return (signal == GPIO_PCH_SLP_S0_L) ?
 			(level & slp_s0_debounce.done) : level;
 }
@@ -492,11 +459,11 @@ void power_signal_interrupt_S0(enum gpio_signal signal)
 {
 	if (gpio_get_level(GPIO_PCH_SLP_S0_L)) {
 		slp_s0_debounce.required = 1;
-		hook_call_deferred(&slp_s0_assertion_deferred_data, 3 * MSEC);
-	}
-	else if (slp_s0_debounce.required == 0) {
+		hook_call_deferred(slp_s0_assertion_deferred, 3 * MSEC);
+	} else if (slp_s0_debounce.required == 0) {
 		slp_s0_debounce.done = 0;
 		slp_s0_assertion_deferred();
 	}
 }
 #endif
+

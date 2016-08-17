@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Apollolake chipset power control module for Chrome EC */
+/* Skylake/Apollolake IMVP8 / ROP PMIC chipset power control module for Chrome EC */
 
 #include "charge_state.h"
 #include "chipset.h"
@@ -17,6 +17,7 @@
 #include "task.h"
 #include "util.h"
 #include "wireless.h"
+#include "lpc.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
@@ -24,21 +25,10 @@
 
 /* Input state flags */
 #define IN_RSMRST_N	POWER_SIGNAL_MASK(X86_RSMRST_N)
-#define IN_ALL_SYS_PG	POWER_SIGNAL_MASK(X86_ALL_SYS_PG)
+
 #define IN_SLP_S0_N	POWER_SIGNAL_MASK(X86_SLP_S0_N)
 #define IN_SLP_S3_N	POWER_SIGNAL_MASK(X86_SLP_S3_N)
 #define IN_SLP_S4_N	POWER_SIGNAL_MASK(X86_SLP_S4_N)
-#define IN_SUSPWRDNACK	POWER_SIGNAL_MASK(X86_SUSPWRDNACK)
-#define IN_SUS_STAT_N	POWER_SIGNAL_MASK(X86_SUS_STAT_N)
-
-#ifdef CONFIG_POWER_S0IX
-#define IN_ALL_PM_SLP_DEASSERTED (IN_SLP_S0_N | \
-				  IN_SLP_S3_N | \
-				  IN_SLP_S4_N)
-#else
-#define IN_ALL_PM_SLP_DEASSERTED (IN_SLP_S3_N | \
-				  IN_SLP_S4_N)
-#endif
 
 #define IN_PGOOD_ALL_CORE (IN_RSMRST_N)
 
@@ -46,23 +36,49 @@
 
 #define CHARGER_INITIALIZED_DELAY_MS 100
 #define CHARGER_INITIALIZED_TRIES 40
-
+#define WARM_RESET_PULSE (32 * MSEC)
 static int throttle_cpu;      /* Throttle CPU? */
 static int forcing_coldreset; /* Forced coldreset in progress? */
+static int forcing_shutdown;  /* Forced shutdown in progress? */
 static int power_s5_up;       /* Chipset is sequencing up or down */
 
-__attribute__((weak)) void chipset_do_shutdown(void)
+
+__attribute__((weak)) void chipset_force_g3(void)
 {
-	/* Need to implement board specific shutdown */
+	return;
+}
+
+__attribute__((weak)) void board_cold_reset(void)
+{
+	return;
+}
+
+__attribute__((weak)) void board_pre_state_changes(int state)
+{
+	return;
+}
+__attribute__((weak)) void board_post_state_changes(int state)
+{
+	return;
 }
 
 void chipset_force_shutdown(void)
 {
-	if (!forcing_coldreset)
-		CPRINTS("%s()", __func__);
+	CPRINTS("%s()", __func__);
 
-	chipset_do_shutdown();
+	/*
+	 * Force off. Sending a reset command to the PMIC will power off
+	 * the EC, so simulate a long power button press instead. This
+	 * condition will reset once the state machine transitions to G3.
+	 * Consider reducing the latency here by changing the power off
+	 * hold time on the PMIC.
+	 */
+	if (!chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
+		forcing_shutdown = 1;
+		power_button_pch_press();
+	}
 }
+
 
 void chipset_reset(int cold_reset)
 {
@@ -73,14 +89,13 @@ void chipset_reset(int cold_reset)
 		 * Once in S5G3 state, check forcing_coldreset to power up.
 		 */
 		forcing_coldreset = 1;
-
-		chipset_force_shutdown();
+		board_cold_reset();
 	} else {
 		/*
 		 * Send a pulse to SOC PMU_RSTBTN_N to trigger a warm reset.
 		 */
 		gpio_set_level(GPIO_PCH_RCIN_L, 0);
-		usleep(32 * MSEC);
+		usleep(WARM_RESET_PULSE);
 		gpio_set_level(GPIO_PCH_RCIN_L, 1);
 	}
 }
@@ -106,14 +121,14 @@ enum power_state power_chipset_init(void)
 			return POWER_S0;
 		} else {
 			/* Force all signals to their G3 states */
-			chipset_force_shutdown();
+			chipset_force_g3();
 		}
 	}
 
 	return POWER_G3;
 }
 
-static void handle_rsmrst_l_pgood(enum power_state state)
+void handle_rsmrst_l_pgood(void)
 {
 	/*
 	 * Pass through asynchronously, as SOC may not react
@@ -129,28 +144,10 @@ static void handle_rsmrst_l_pgood(enum power_state state)
 	/* Only passthrough RSMRST_L de-assertion on power up */
 	if (in_level && !power_s5_up)
 		return;
-
+	msleep(10);
 	gpio_set_level(GPIO_PCH_RSMRST_L, in_level);
 
 	CPRINTS("Pass through GPIO_RSMRST_L_PGOOD: %d", in_level);
-}
-
-static void handle_all_sys_pgood(enum power_state state)
-{
-	/*
-	 * Pass through asynchronously, as SOC may not react
-	 * immediately to power changes.
-	 */
-	int in_level = gpio_get_level(GPIO_ALL_SYS_PGOOD);
-	int out_level = gpio_get_level(GPIO_PCH_SYS_PWROK);
-
-	/* Nothing to do. */
-	if (in_level == out_level)
-		return;
-
-	gpio_set_level(GPIO_PCH_SYS_PWROK, in_level);
-
-	CPRINTS("Pass through GPIO_ALL_SYS_PGOOD: %d", in_level);
 }
 
 #ifdef CONFIG_BOARD_HAS_RTC_RESET
@@ -193,6 +190,11 @@ static enum power_state _power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S5:
+		if (forcing_shutdown) {
+			power_button_pch_release();
+			forcing_shutdown = 0;
+		}
+
 #ifdef CONFIG_BOARD_HAS_RTC_RESET
 		/* Wait for S5 exit and attempt RTC reset it supported */
 		if (power_s5_up)
@@ -276,8 +278,7 @@ static enum power_state _power_handle_state(enum power_state state)
 			return POWER_G3;
 		}
 
-		/* Wait for RSMRST_L de-assert */
-		if (power_wait_signals(IN_PGOOD_ALL_CORE)) {
+		if (power_wait_signals(POWER_UP_SIGNAL)) {
 			chipset_force_shutdown();
 			return POWER_G3;
 		}
@@ -387,7 +388,7 @@ static enum power_state _power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5G3:
-		chipset_force_shutdown();
+		chipset_force_g3();
 
 		/* Power up the platform again for forced cold reset */
 		if (forcing_coldreset) {
@@ -408,19 +409,9 @@ enum power_state power_handle_state(enum power_state state)
 {
 	enum power_state new_state;
 
-	/* Process ALL_SYS_PGOOD state changes. */
-	handle_all_sys_pgood(state);
-
+	board_pre_state_changes(state);
 	new_state = _power_handle_state(state);
-
-	/*
-	 * Process RSMRST_L state changes:
-	 * RSMRST_L de-assertion is passed to SoC only on G3S5 to S5 transition.
-	 * RSMRST_L is also checked in some states and, if asserted, will
-	 * force shutdown.
-	 */
-	handle_rsmrst_l_pgood(new_state);
-
+	board_post_state_changes(new_state);
 	return new_state;
 }
 
@@ -476,17 +467,3 @@ void power_signal_interrupt_S0(enum gpio_signal signal)
 }
 #endif
 
-/**
- * chipset check if PLTRST# is valid.
- *
- * @return non-zero if PLTRST# is valid, 0 if invalid.
- */
-int chipset_pltrst_is_valid(void)
-{
-	/*
-	 * Invalid PLTRST# from SOC unless RSMRST#
-	 * from PMIC through EC to soc is deasserted.
-	 */
-	return (gpio_get_level(GPIO_RSMRST_L_PGOOD) &&
-		gpio_get_level(GPIO_PCH_RSMRST_L));
-}

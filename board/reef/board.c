@@ -581,14 +581,30 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
  * FIXME(dhendrix): Weak symbol hack until we can get a better solution for
  * both Amenia and Reef.
  */
-void chipset_do_shutdown(void)
+
+void chipset_force_g3(void)
+{
+	gpio_set_level(GPIO_PMIC_EN, 0);
+}
+
+void board_cold_reset(void)
+{
+	gpio_set_level(GPIO_PMIC_EN, 0);;
+}
+
+/**
+ * chipset check if PLTRST# is valid.
+ *
+ * @return non-zero if PLTRST# is valid, 0 if invalid.
+ */
+int chipset_pltrst_is_valid(void)
 {
 	/*
-	 * If we shut off TCPCs the TCPC tasks will fail and spam the
-	 * EC console with I2C errors. So for now we'll leave the TCPCs
-	 * on which means leaving PMIC_EN, PP3300, and PP5000 enabled.
+	 * Invalid PLTRST# from SOC unless RSMRST#
+	 * from PMIC through EC to soc is deasserted.
 	 */
-	cprintf(CC_CHIPSET, "%s called, but not doing anything.\n", __func__);
+	return (gpio_get_level(GPIO_RSMRST_L_PGOOD) &&
+		gpio_get_level(GPIO_PCH_RSMRST_L));
 }
 
 void board_set_gpio_hibernate_state(void)
@@ -876,6 +892,38 @@ int board_get_version(void)
 	CPRINTS("Board version: %d\n", version);
 	return version;
 }
+
+void board_pre_state_changes(int state)
+{
+	/* Process ALL_SYS_PGOOD state changes. */
+	/*
+	 * Pass through asynchronously, as SOC may not react
+	 * immediately to power changes.
+	 */
+	int in_level = gpio_get_level(GPIO_ALL_SYS_PGOOD);
+	int out_level = gpio_get_level(GPIO_PCH_SYS_PWROK);
+
+	/* Nothing to do. */
+	if (in_level == out_level)
+		return;
+
+	gpio_set_level(GPIO_PCH_SYS_PWROK, in_level);
+
+	CPRINTS("Pass through GPIO_ALL_SYS_PGOOD: %d", in_level);
+
+}
+
+void board_post_state_changes(int state)
+{
+	/*
+	 * Process RSMRST_L state changes:
+	 * RSMRST_L de-assertion is passed to SoC only on G3S5 to S5 transition.
+	 * RSMRST_L is also checked in some states and, if asserted, will
+	 * force shutdown.
+	 */
+	handle_rsmrst_l_pgood();
+}
+
 
 /* FIXME: Remove this once proto boards are obsolete */
 static void check_ec_fw_mismatch(void)
