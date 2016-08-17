@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "ipc.h"
+#include "mkbp_event.h"
 #include "panic.h" /* for PANIC_DATA_PTR */
 #include "registers.h"
 #include "task.h"
@@ -192,6 +193,22 @@ int send_message(uint8_t channel, uint32_t *src, uint8_t bit)
 #endif /* defined(CONFIG_BRINGUP) */
 
 	return EC_SUCCESS;
+}
+
+void chip_set_host_interrupt(int active)
+{
+	if (active) {
+		ROTOR_MCU_IPC_ISRW(ROTOR_MCU_AP_IPC) = ROTOR_MCU_IPC_HOST_EVENT;
+		CPRINTS("Asserted host interrupt via reg write to "
+			"MCU/AP ISRW.");
+	} else {
+		/*
+		 * When we deassert the interrupt, we must do it on the AP side
+		 * registers.
+		 */
+		ROTOR_MCU_IPC_AP_ICR = ROTOR_MCU_IPC_HOST_EVENT;
+		CPRINTS("Deasserted host interrupt via reg write to AP ICR.");
+	}
 }
 
 /* Host command send response functions. */
