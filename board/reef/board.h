@@ -9,7 +9,7 @@
 #define __CROS_EC_BOARD_H
 
 /* FIXME: Gross hack. Remove it once proto boards are obsolete. */
-#define IS_PROTO 0
+#define IS_PROTO 1
 
 /*
  * Allow dangerous commands.
@@ -36,14 +36,6 @@
 #define CONFIG_CHARGER_NARROW_VDC
 #define CONFIG_USB_CHARGER
 
-/* USB-A config */
-#define CONFIG_USB_PORT_POWER_SMART
-#define CONFIG_USB_PORT_POWER_SMART_SIMPLE
-#define GPIO_USB1_ENABLE GPIO_EN_USB_A_5V
-#define GPIO_USB2_ENABLE GPIO_EN_USB_A_5V
-#define GPIO_USB_ILIM_SEL GPIO_USB_A_CHARGE_EN_L
-#define GPIO_USB_CTL1 GPIO_EN_PP5000
-
 /* USB PD config */
 #define CONFIG_CASE_CLOSED_DEBUG_EXTERNAL
 #define CONFIG_USB_PD_ALT_MODE
@@ -53,13 +45,11 @@
 #define CONFIG_USB_PD_LOGGING
 #define CONFIG_USB_PD_LOG_SIZE 512
 #define CONFIG_USB_PD_PORT_COUNT 2
-#define CONFIG_USB_PD_PULLUP_1_5A
 #define CONFIG_USB_PD_VBUS_DETECT_CHARGER
 #define CONFIG_USB_PD_TCPM_MUX  /* for both PS8751 and ANX3429 */
 #define CONFIG_USB_PD_TCPM_ANX74XX
 #define CONFIG_USB_PD_TCPM_PS8751
 #define CONFIG_USB_PD_TCPM_TCPCI
-#define CONFIG_USB_PD_VBUS_DETECT_TCPC
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_POWER_DELIVERY
 
@@ -197,6 +187,19 @@ enum power_signal {
 	/* Number of X86 signals */
 	POWER_SIGNAL_COUNT
 };
+#define IN_ALL_SYS_PG	POWER_SIGNAL_MASK(X86_ALL_SYS_PG)
+#define IN_SUSPWRDNACK	POWER_SIGNAL_MASK(X86_SUSPWRDNACK)
+#define IN_SUS_STAT_N	POWER_SIGNAL_MASK(X86_SUS_STAT_N)
+#define POWER_UP_SIGNAL IN_PGOOD_ALL_CORE
+#ifdef CONFIG_POWER_S0IX
+#define IN_ALL_PM_SLP_DEASSERTED (IN_SLP_S0_N | \
+				  IN_SLP_S3_N | \
+				  IN_SLP_S4_N)
+#else
+#define IN_ALL_PM_SLP_DEASSERTED (IN_SLP_S3_N | \
+				  IN_SLP_S4_N)
+#endif
+
 
 enum temp_sensor_id {
 	TEMP_SENSOR_BATTERY = 0,
@@ -253,6 +256,9 @@ enum reef_board_version {
 #define PD_MAX_POWER_MW       45000
 #define PD_MAX_CURRENT_MA     3000
 #define PD_MAX_VOLTAGE_MV     20000
+
+/* Board specific functions for power sequence */
+void handle_rsmrst_l_pgood(void);
 
 /* Reset PD MCU */
 void board_reset_pd_mcu(void);

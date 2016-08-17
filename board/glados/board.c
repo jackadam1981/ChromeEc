@@ -8,6 +8,7 @@
 #include "adc_chip.h"
 #include "als.h"
 #include "bd99992gw.h"
+#include "board.h"
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_state.h"
@@ -465,6 +466,46 @@ static void board_handle_reboot(void)
 		; /* wait here */
 }
 DECLARE_HOOK(HOOK_INIT, board_handle_reboot, HOOK_PRIO_FIRST);
+
+void chipset_set_pmic_slp_sus_l(int level)
+{
+	gpio_set_level(GPIO_PMIC_SLP_SUS_L, level);
+}
+
+void chipset_force_g3(void)
+{
+	CPRINTS("Forcing fake G3.");
+
+	chipset_set_pmic_slp_sus_l(0);
+}
+
+void board_cold_reset(void)
+{
+	if (gpio_get_level(GPIO_SYS_RESET_L) == 0)
+		return;
+	gpio_set_level(GPIO_SYS_RESET_L, 0);
+	/* Debounce time for SYS_RESET_L is 16 ms */
+	udelay(20 * MSEC);
+	gpio_set_level(GPIO_SYS_RESET_L, 1);
+}
+
+void board_pre_state_changes(int state)
+{
+	/* Process RSMRST_L state changes. */
+	handle_rsmrst_l_pgood();
+}
+
+void board_post_state_changes(enum power_state state) 
+{
+	/* Process SLP_SUS_L state changes after a new state is decided. */
+	/* If we're down or going down don't do anythin with SLP_SUS_L. */
+	if (state == POWER_G3 || state == POWER_S5G3)
+		return;
+
+	/* Always mimic PCH SLP_SUS request for all other states. */
+	chipset_set_pmic_slp_sus_l(gpio_get_level(GPIO_PCH_SLP_SUS_L));
+}
+
 
 #ifdef HAS_TASK_MOTIONSENSE
 /* Motion sensors */

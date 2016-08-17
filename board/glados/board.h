@@ -150,7 +150,6 @@
 
 #include "gpio_signal.h"
 #include "registers.h"
-
 /* ADC signal */
 enum adc_channel {
 	ADC_VBUS,
@@ -162,15 +161,28 @@ enum adc_channel {
 
 /* power signal definitions */
 enum power_signal {
-	X86_RSMRST_L_PWRGD = 0,
-	X86_SLP_S3_DEASSERTED,
-	X86_SLP_S4_DEASSERTED,
+	X86_RSMRST_N = 0,
+	X86_SLP_S3_N,
+	X86_SLP_S4_N,
 	X86_SLP_SUS_DEASSERTED,
 	X86_PMIC_DPWROK,
 
 	/* Number of X86 signals */
 	POWER_SIGNAL_COUNT
 };
+#define IN_PCH_SLP_SUS_DEASSERTED POWER_SIGNAL_MASK(X86_SLP_SUS_DEASSERTED)
+#define POWER_UP_SIGNAL IN_PCH_SLP_SUS_DEASSERTED
+
+#ifdef CONFIG_POWER_S0IX
+#define IN_ALL_PM_SLP_DEASSERTED (IN_PCH_SLP_S0_DEASSERTED | \
+				  IN_PCH_SLP_S3_DEASSERTED | \
+				  IN_PCH_SLP_S4_DEASSERTED | \
+				  IN_PCH_SLP_SUS_DEASSERTED)
+#else
+#define IN_ALL_PM_SLP_DEASSERTED (IN_SLP_S3_N | \
+				  IN_SLP_S4_N | \
+				  IN_PCH_SLP_SUS_DEASSERTED)
+#endif
 
 enum temp_sensor_id {
 	TEMP_SENSOR_BATTERY,
@@ -212,6 +224,9 @@ enum als_id {
 
 /* Try to negotiate to 20V since i2c noise problems should be fixed. */
 #define PD_MAX_VOLTAGE_MV     20000
+
+/* Board specific functions for power sequence */
+void handle_rsmrst_l_pgood(void);
 
 /* Reset PD MCU */
 void board_reset_pd_mcu(void);
