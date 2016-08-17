@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "bb944b51_fb115bae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-17T19:43:09Z",
+      "side": 1,
+      "message": "Yes, that\u0027s correct.",
+      "parentUuid": "bb944b51_7bd72bf7",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb944b51_327f880d",
         "filename": "common/btle_ll.c",
         "patchSetId": 2
@@ -102,6 +126,24 @@
       "side": 1,
       "message": "This isn\u0027t something that should be called outside of this file. Do you mean to put the headers up at the top of the file? Like \"uint8_t is_repeated_packet(struct ble_pdu *packet);\" ?",
       "parentUuid": "bb944b51_327f880d",
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_7bdacbe6",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-17T19:43:09Z",
+      "side": 1,
+      "message": "No, just add \u0027static\u0027 to the functions. And by headers, I just mean some documentation for the function.\n\n    \n/**\n * Checks whether packet rx\u0027d is the same as the last rx\u0027d.\n *\n * @param packet ...\n */\nstatic uint8_t is_repeated_packet(struct ble_pdu *packet)",
+      "parentUuid": "bb944b51_bb8a730f",
       "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -143,6 +185,30 @@
       "side": 1,
       "message": "This could probably be useful when debugging. I\u0027ll add that in. Thanks!\n\nWhen it\u0027s all good and done and all, all the prints should be disabled.",
       "parentUuid": "bb944b51_801f0615",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 679,
+        "endChar": 28
+      },
+      "revId": "4c26b24e91797e07c97e85ec8b12c91bc04aa31f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb944b51_9bee9781",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-17T19:43:09Z",
+      "side": 1,
+      "message": "Okay, can you file a bug for disabling prints when ready?",
+      "parentUuid": "bb944b51_5b842f09",
       "range": {
         "startLine": 678,
         "startChar": 0,
