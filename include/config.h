@@ -1436,6 +1436,9 @@
 /* Support MKBP event */
 #undef CONFIG_MKBP_EVENT
 
+/* MKBP events are not indicated via a GPIO. */
+#undef CONFIG_MKBP_EVENT_NO_GPIO
+
 /* MKBP events are sent using host event */
 #undef CONFIG_MKBP_USE_HOST_EVENT
 

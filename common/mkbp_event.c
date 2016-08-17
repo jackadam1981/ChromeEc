@@ -41,7 +41,11 @@ static void set_host_interrupt(int active)
 	if (active)
 		host_set_single_event(EC_HOST_EVENT_MKBP);
 #else
+#ifdef CONFIG_MKBP_EVENT_NO_GPIO
+	chip_set_host_interrupt(active);
+#else /* defined(CONFIG_MKBP_EVENT_NO_GPIO) */
 	gpio_set_level(GPIO_EC_INT_L, !active);
+#endif /* !defined(CONFIG_MKBP_EVENT_NO_GPIO) */
 #endif
 }
 
