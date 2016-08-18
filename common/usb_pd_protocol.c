@@ -628,12 +628,14 @@ static int pd_send_request_msg(int port, int always_send_request)
 		CPRINTF(" Mismatch");
 	CPRINTF("\n");
 
-	pd[port].curr_limit = curr_limit;
-	pd[port].supply_voltage = supply_voltage;
-	pd[port].prev_request_mv = supply_voltage;
+	/* If send failed, cann't update pre_supply_voltage and current info */
 	res = send_request(port, rdo);
 	if (res < 0)
 		return res;
+
+	pd[port].curr_limit = curr_limit;
+	pd[port].supply_voltage = supply_voltage;
+	pd[port].prev_request_mv = supply_voltage;
 	set_state(port, PD_STATE_SNK_REQUESTED);
 	return EC_SUCCESS;
 }
@@ -1030,6 +1032,8 @@ static void handle_request(int port, uint16_t head,
 		CPRINTF("\n");
 	}
 
+	CPRINTS("R%04x\n", head);
+
 	/*
 	 * If we are in disconnected state, we shouldn't get a request. Do
 	 * a hard reset if we get one.
@@ -1414,6 +1418,8 @@ void pd_task(void)
 	/* Initialize TCPM driver and wait for TCPC to be ready */
 	res = tcpm_init(port);
 	CPRINTS("TCPC p%d init %s", port, res ? "failed" : "ready");
+
+	debug_level = 0;
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	/*
@@ -2261,7 +2267,7 @@ void pd_task(void)
 			/* Check for new power to request */
 			if (pd[port].new_power_request) {
 				if (pd_send_request_msg(port, 0) != EC_SUCCESS)
-					set_state(port, PD_STATE_SOFT_RESET);
+					pd[port].new_power_request = 1;
 				break;
 			}
 
