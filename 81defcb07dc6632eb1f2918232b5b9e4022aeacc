@@ -16,6 +16,24 @@
       "revId": "81defcb07dc6632eb1f2918232b5b9e4022aeacc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_0f0c5997",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1156614
+      },
+      "writtenOn": "2016-08-18T16:35:31Z",
+      "side": 1,
+      "message": "I find my layout to be a bit more intuitive. All the checking for updating and actual updating happens in a single function, and all the checks are right next to each other. If you guys think Aseda\u0027s is better, I\u0027ll change it, but I\u0027m a fan of my current layout.",
+      "parentUuid": "db2e5f26_7b67d71e",
+      "revId": "81defcb07dc6632eb1f2918232b5b9e4022aeacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
