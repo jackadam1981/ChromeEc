@@ -1030,6 +1030,8 @@ static void handle_request(int port, uint16_t head,
 		CPRINTF("\n");
 	}
 
+	CPRINTS("R%04x\n", head);
+
 	/*
 	 * If we are in disconnected state, we shouldn't get a request. Do
 	 * a hard reset if we get one.
@@ -1414,6 +1416,8 @@ void pd_task(void)
 	/* Initialize TCPM driver and wait for TCPC to be ready */
 	res = tcpm_init(port);
 	CPRINTS("TCPC p%d init %s", port, res ? "failed" : "ready");
+
+	debug_level = 0;
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	/*
@@ -2261,7 +2265,7 @@ void pd_task(void)
 			/* Check for new power to request */
 			if (pd[port].new_power_request) {
 				if (pd_send_request_msg(port, 0) != EC_SUCCESS)
-					set_state(port, PD_STATE_SOFT_RESET);
+					pd[port].new_power_request = 1;
 				break;
 			}
 

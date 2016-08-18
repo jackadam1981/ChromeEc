@@ -16,6 +16,9 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpc.h"
 #include "util.h"
+#include "console.h"
+//#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) 
 
 struct anx_state {
 	int	polarity;
@@ -262,9 +265,7 @@ static int anx74xx_send_message(int port, uint16_t header,
 				uint8_t len)
 {
 	int reg, rv = EC_SUCCESS;
-	uint8_t *buf = NULL;
 	int num_retry = 0, i = 0;
-
 
 	/* Inform chip about message length and TX type
 	 * type->bit-0..2, len->bit-3..7
@@ -285,41 +286,57 @@ static int anx74xx_send_message(int port, uint16_t header,
 	/* Enqueue payload */
 	if (len > 2) {
 		len -= 2;
-		buf = (uint8_t *)payload;
-		while (1) {
-			if (i < 18)
-				rv = tcpc_write(port,
-						ANX74XX_REG_TX_START_ADDR_0 + i,
-						*buf);
-			else
-				rv = tcpc_write(port,
-					ANX74XX_REG_TX_START_ADDR_1 + i - 18,
-						*buf);
-			if (rv) {
-				num_retry++;
-			} else {
-				buf++;
-				len--;
-				num_retry = 0;
-				i++;
+		while (1){
+			if (i < 5) {
+				rv = tcpc_write32(port,ANX74XX_REG_TX_START_ADDR_0 + i * 4, payload[i]);
+				if (rv) {
+					num_retry++;
+				} else {
+					len-=4;
+					num_retry = 0;
+					i++;
+				}
+
 			}
-			if (len == 0 || num_retry >= 3)
+			if (len == 0 || num_retry >= 3) {
+			//	ccprintf("tcpc_write32 done len:%d retry:%d\n", len, num_retry);
 				break;
-		}
+			}
 		/* If enqueue failed, do not request anx to transmit
 		 * messages, FIFO will get cleared in next call
 		 * before enqueue.
 		 * num_retry = 0, refer to success
 		 */
-		if (num_retry)
-			return EC_ERROR_UNKNOWN;
+			if (num_retry)
+				return EC_ERROR_UNKNOWN;
+
+		}
 	}
 	/* Request a data transmission
 	 * This bit will be cleared by ANX after TX success
 	 */
-	rv = tcpc_read(port, ANX74XX_REG_CTRL_COMMAND, &reg);
-	if (rv)
+	rv = tcpc_read(port, ANX74XX_REG_RX_CTRL_2, &reg);
+	if (reg & ANX74XX_REG_RX_DATA_RCVING) {
+		pd_transmit_complete(port, TCPC_TX_COMPLETE_FAILED);
+		ccprintf("Sending Msg Busy!\n");
 		return EC_ERROR_UNKNOWN;
+	}
+
+	rv = tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg);
+	if (reg & 0x01) {
+		rv |= tcpc_read16(port, ANX74XX_REG_PD_HEADER, &reg);
+
+		/* let PD does not wait for this */
+		pd_transmit_complete(port, TCPC_TX_COMPLETE_FAILED);
+
+		CPRINTS("Conflict Packet Hdr%x\n", reg);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	reg = 0;
+	rv = tcpc_read(port, ANX74XX_REG_CTRL_COMMAND, &reg);
+	//CPRINTS("really send!! head:%x\n", header);
+	ccprintf("Really send !\n");
 	reg |= ANX74XX_REG_TX_SEND_DATA_REQ;
 	rv |= tcpc_write(port, ANX74XX_REG_CTRL_COMMAND, reg);
 
@@ -330,22 +347,40 @@ static int anx74xx_read_pd_obj(int port,
 				uint8_t *buf,
 				int plen)
 {
-	int rv = EC_SUCCESS, i;
-	int reg, addr = ANX74XX_REG_PD_RX_DATA_OBJ;
+	int rv = EC_SUCCESS;
+	uint32_t reg ;
+	int i;
 
+	int addr =   ANX74XX_REG_PD_RX_DATA_OBJ;
 	/* Read PD data objects from ANX */
-	for (i = 0; i < plen ; i++) {
+	for (i = 0; i < plen ; i += 4) {
 		/* Register sequence changes for last two bytes, if
 		 * plen is greater than 26
 		 */
-		if (i == 26)
-			addr = ANX74XX_REG_PD_RX_DATA_OBJ_M;
-		rv = tcpc_read(port, addr + i, &reg);
+		if (i >= 24)
+			break;
+		rv = tcpc_read32(port, addr + i, &reg);
 		if (rv)
 			break;
-		buf[i] = reg;
+		buf[i] = reg & 0xff;
+		buf[i+1] = (reg >> 8  & 0xff);
+		buf[i+2] = (reg >> 16 & 0xff);
+		buf[i+3] = (reg >> 24 & 0xff);
 	}
 
+	while (plen > 24 ){
+		rv = tcpc_read16(port, addr + i, &reg);
+		if (rv)
+			break;
+		buf[i] = reg & 0xff;
+		buf[i+1] = (reg >> 8  & 0xff);
+		i += 2;
+		
+		if (i >= plen)
+			break;
+	}
+	if (rv)
+		return rv;
 	/* Clear receive message interrupt bit(bit-0) */
 	rv |= tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg);
 	rv |= tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG,
@@ -539,6 +574,9 @@ static int anx74xx_alert_status(int port, int *alert)
 	if (rv)
 		return EC_ERROR_UNKNOWN;
 
+	/* clear msg received bit, until read it completely */
+	rv |= tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, (reg & 1) ? 1 : 0);
+
 	if (reg & ANX74XX_REG_IRQ_CC_MSG_INT)
 		*alert |= ANX74XX_REG_ALERT_MSG_RECV;
 	else
@@ -546,24 +584,18 @@ static int anx74xx_alert_status(int port, int *alert)
 
 	if (reg & ANX74XX_REG_IRQ_CC_STATUS_INT) {
 		*alert |= ANX74XX_REG_ALERT_CC_CHANGE;
-		rv |= tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG,
-				reg & 0xfd);
 	} else {
 		*alert &= (~ANX74XX_REG_ALERT_CC_CHANGE);
 	}
 
 	if (reg & ANX74XX_REG_IRQ_GOOD_CRC_INT) {
 		*alert |= ANX74XX_REG_ALERT_TX_ACK_RECV;
-		rv |= tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG,
-				reg & 0xfb);
 	} else {
 		*alert &= (~ANX74XX_REG_ALERT_TX_ACK_RECV);
 	}
 
 	if (reg & ANX74XX_REG_IRQ_TX_FAIL_INT) {
 		*alert |= ANX74XX_REG_ALERT_TX_MSG_ERROR;
-		rv |= tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG,
-				reg & 0xf7);
 	}
 	/* Read TCPC Alert register2 */
 	rv |= tcpc_read(port, ANX74XX_REG_IRQ_EXT_SOURCE_2, &reg);
@@ -621,12 +653,20 @@ static int anx74xx_tcpm_get_message(int port, uint32_t *payload, int *head)
 		return EC_ERROR_UNKNOWN;
 	}
 	*head = reg;
+	CPRINTS("tcpm_get_message() start %x\n", *head);
 	len = PD_HEADER_CNT(*head) * 4;
 	if (!len) {
 		/* Clear receive message interrupt bit(bit-0) */
 		tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg);
 		tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG,
 			 reg & (~0x01));
+		tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg);
+		if ((reg & 0x1)){
+				CPRINTS("It should be zero !!!! Msg :%x reg: %x\n", *head, reg);
+				rv |= tcpc_read16(port, ANX74XX_REG_PD_HEADER, &reg);
+				
+				ccprintf("Next conflict msg: %x\n", reg);
+		}
 		return EC_SUCCESS;
 	}
 
@@ -638,7 +678,12 @@ static int anx74xx_tcpm_get_message(int port, uint32_t *payload, int *head)
 		*head = 0;
 		return EC_ERROR_UNKNOWN;
 	}
-
+/*
+	tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg);
+	if (reg & 0x1){
+		CPRINTS("it should be zeor! %x \n", reg);
+	}
+	*/
 	return rv;
 }
 
@@ -697,10 +742,12 @@ void anx74xx_tcpc_alert(int port)
 {
 	int status;
 
+//	CPRINTS("A!\n");
 	/* Check the alert status */
 	if (anx74xx_alert_status(port, &status))
 		status = 0;
 	if (status) {
+//		CPRINTS("IStatus: %x\n", status);
 
 		if (status & ANX74XX_REG_ALERT_CC_CHANGE) {
 			/* CC status changed, wake task */

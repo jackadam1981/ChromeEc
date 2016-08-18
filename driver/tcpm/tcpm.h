@@ -30,7 +30,12 @@ static inline int tcpc_write16(int port, int reg, int val)
 			   tcpc_config[port].i2c_slave_addr,
 			   reg, val);
 }
-
+static inline int tcpc_write32(int port, int reg,  uint32_t val)
+{
+	return i2c_write32(tcpc_config[port].i2c_host_port,
+			   tcpc_config[port].i2c_slave_addr,
+			   reg, val);
+}
 static inline int tcpc_read(int port, int reg, int *val)
 {
 	return i2c_read8(tcpc_config[port].i2c_host_port,
@@ -41,6 +46,12 @@ static inline int tcpc_read(int port, int reg, int *val)
 static inline int tcpc_read16(int port, int reg, int *val)
 {
 	return i2c_read16(tcpc_config[port].i2c_host_port,
+			  tcpc_config[port].i2c_slave_addr,
+			  reg, val);
+}
+static inline int tcpc_read32(int port, int reg, int *val)
+{
+	return i2c_read32(tcpc_config[port].i2c_host_port,
 			  tcpc_config[port].i2c_slave_addr,
 			  reg, val);
 }
