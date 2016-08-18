@@ -184,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "db249f97_056ad2e6",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-08-18T23:36:05Z",
+      "side": 1,
+      "message": "Sorry, have to flip sixaxi back to S3 for Kevin since all their other sensors are on P1.8V_Sensor rail which is an S0 rail enabled by AP. If we don\u0027t keep sixaxis as S3, kevin won\u0027t be able to support any wake via sensor -ex: double-tap wake .",
+      "parentUuid": "db2e5f26_9ea2e140",
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db2e5f26_95064428",
         "filename": "power/rk3399.c",
         "patchSetId": 3
@@ -284,6 +302,24 @@
       "side": 1,
       "message": "PP1800_S0 and PP3300_S0 has to be staged with Pp1800_S0 ramp up first since it is used by RK3399 as staging / intermediate rail for 3.3V GPIOs. Power off typicaly would be in reverse order as Shawn is doing. But I am double checking with Rockchip .",
       "parentUuid": "db2e5f26_1e7ed1ba",
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db249f97_25442e55",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-08-18T23:36:05Z",
+      "side": 1,
+      "message": "Just got confirmation from Rockchip / TSMC guidance with regard of impact on GPIO ( since PP3300_S0 is powering GPIO pads where Pp1800_S0 is the intermediate rail for those same pads). The guideline is that if we can ensue that PP3300_S0 and PP1800_S0 are powering down in same slew rate , then we can turn of fthem at the same time. Otherwise, it is safer and recommended to turn off PP3300_S0 before turning off PP1800_S0 .",
+      "parentUuid": "db2e5f26_54a2e5ed",
       "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
