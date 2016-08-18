@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b4bb346_1204ccc5",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-08-18T22:34:25Z",
+      "side": 1,
+      "message": "These properties need to be updated whenever there is a hard reset to make sure they are reset after we update the firmware.",
+      "range": {
+        "startLine": 516,
+        "startChar": 1,
+        "endLine": 516,
+        "endChar": 19
+      },
+      "revId": "abb826e237b65e31f79121623b20fbd37f79b6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
