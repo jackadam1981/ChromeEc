@@ -9,6 +9,7 @@
 #include "gpio.h"
 #include "rdd.h"
 #include "registers.h"
+#include "system.h"
 #include "uartn.h"
 #include "usb_api.h"
 
@@ -121,6 +122,35 @@ void rdd_detached(void)
 
 	/* Disable CCD */
 	ccd_set_mode(CCD_MODE_DISABLED);
+}
+
+void ccd_phy_init(int enable_ccd)
+{
+	uint32_t properties = system_get_board_properties();
+	uint32_t ccd_phy, ap_phy;
+
+	/*
+	 * TODO: if both PHYs are connected to the external port select the
+	 * PHY based on the detected polarity
+	 */
+
+	/* Select the PHYs based on the board configuration */
+	if (properties & BOARD_CCD_PHY0) {
+		ccd_phy = USB_SEL_PHY0;
+		ap_phy = USB_SEL_PHY1;
+	} else {
+		ccd_phy = USB_SEL_PHY1;
+		ap_phy = USB_SEL_PHY0;
+	}
+	usb_select_phy(enable_ccd ? ccd_phy : ap_phy);
+
+	/*
+	 * If the board has the non-ccd phy connected to the AP initialize the
+	 * phy no matter what. Otherwise only initialized the phy if ccd is
+	 * enabled.
+	 */
+	if ((properties & BOARD_USB_AP) || enable_ccd)
+		usb_init();
 }
 
 static int command_ccd(int argc, char **argv)
