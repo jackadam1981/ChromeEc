@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "7b4bb346_12604c36",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-18T22:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db2e5f26_fead1531",
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db2e5f26_94c39d06",
         "filename": "power/rk3399.c",
         "patchSetId": 3
@@ -71,6 +89,30 @@
       "writtenOn": "2016-08-18T21:30:49Z",
       "side": 1,
       "message": "similar risk to turn on trackpad before booting RK3399. For PP1800_LID particular, need to check if this back power RK3399\u0027s audio block by check leakage on PP1800_S0 ( Pp1800_AP).",
+      "range": {
+        "startLine": 172,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 42
+      },
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_b7001b5e",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-18T22:09:32Z",
+      "side": 1,
+      "message": "If these leakage issues exist in the S5-\u003eS3-\u003eS0 transition (which I have not verified), would they not also exist in steady-state S3 (when GPIO_PP3300_TRACKPAD_EN_L / GPIO_PP1800_LID_EN_L are asserted, PP1800_S0 and PP3300_S0 are off)?",
+      "parentUuid": "db2e5f26_b45fb94d",
       "range": {
         "startLine": 172,
         "startChar": 2,
@@ -147,6 +189,24 @@
       "side": 1,
       "message": "Yes, I think we can remove this entirely. Will check closer.",
       "parentUuid": "db2e5f26_95064428",
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b4bb346_325d5083",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-18T22:09:32Z",
+      "side": 1,
+      "message": "Yup, will remove in follow-up CL. TODO added.",
+      "parentUuid": "db2e5f26_1e97b1e4",
       "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
