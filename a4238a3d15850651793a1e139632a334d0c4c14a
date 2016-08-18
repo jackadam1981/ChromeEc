@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "db2e5f26_346089a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-08-18T21:39:53Z",
+      "side": 1,
+      "message": "We need to use the highspeed timer while cr50 is awake, but it does not run while cr50 is asleep. So we need the low speed one to update the high speed one and to be able to trigger events during sleep.",
+      "parentUuid": "db2e5f26_611f2172",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "a4238a3d15850651793a1e139632a334d0c4c14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db2e5f26_fe9c306d",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "is it defined as a weak function there?\n\nWhy does this have to run on a pre-init context, could it be done in some of the init hooks?\n\nwhy is this functionality required with this patch? I it would be good to explain it in the patch description.",
       "parentUuid": "db2e5f26_a118d9d3",
+      "revId": "a4238a3d15850651793a1e139632a334d0c4c14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_1401cdd9",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-08-18T21:39:53Z",
+      "side": 1,
+      "message": "Ok. So it isnt needed. We just need to do this stuff before init_runlevel(PERMISSION_MEDIUM);",
+      "parentUuid": "db2e5f26_414d4596",
       "revId": "a4238a3d15850651793a1e139632a334d0c4c14a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
