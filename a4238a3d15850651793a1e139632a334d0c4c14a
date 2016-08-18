@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "db2e5f26_611f2172",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2016-08-18T20:12:19Z",
+      "side": 1,
+      "message": "why are two timers needed - can we not get by with just one?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "a4238a3d15850651793a1e139632a334d0c4c14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db2e5f26_fe9c306d",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -31,6 +54,24 @@
       "side": 1,
       "message": "common/main.c",
       "parentUuid": "db2e5f26_fe9c306d",
+      "revId": "a4238a3d15850651793a1e139632a334d0c4c14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_414d4596",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2016-08-18T20:12:19Z",
+      "side": 1,
+      "message": "is it defined as a weak function there?\n\nWhy does this have to run on a pre-init context, could it be done in some of the init hooks?\n\nwhy is this functionality required with this patch? I it would be good to explain it in the patch description.",
+      "parentUuid": "db2e5f26_a118d9d3",
       "revId": "a4238a3d15850651793a1e139632a334d0c4c14a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -148,6 +189,24 @@
       "side": 1,
       "message": "They\u0027re re-enabled in resume_from_sleep",
       "parentUuid": "db2e5f26_5eda0443",
+      "revId": "a4238a3d15850651793a1e139632a334d0c4c14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_a19a190a",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2016-08-18T20:12:19Z",
+      "side": 1,
+      "message": "I need to learn how this works :)",
+      "parentUuid": "db2e5f26_e105716c",
       "revId": "a4238a3d15850651793a1e139632a334d0c4c14a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
