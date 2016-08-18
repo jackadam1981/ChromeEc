@@ -21,6 +21,7 @@
 #include "keyboard_scan.h"
 #include "keyboard_test.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "mkbp_event.h"
 #include "power_button.h"
 #include "system.h"
@@ -50,6 +51,8 @@
 #define BATTERY_KEY_ROW 7
 #define BATTERY_KEY_ROW_MASK (1 << BATTERY_KEY_ROW)
 
+#define TABLET_ZONE_LID_ANGLE 350
+
 static uint32_t fifo_start;	/* first entry */
 static uint32_t fifo_end;	/* last entry */
 static uint32_t fifo_entries;	/* number of existing entries */
@@ -59,6 +62,28 @@ static struct mutex fifo_mutex;
 /* Button and switch state. */
 static uint32_t mkbp_button_state;
 static uint32_t mkbp_switch_state;
+
+#ifdef CONFIG_TABLET_MODE_SWITCH
+/*
+ * Where are in tablet mode when the lid angle has been calculated
+ * to be large and the LID switch is activated.
+ *
+ * By default, at boot, we are in tablet mode.
+ * Once a lid angle is calculated, we will get out of this fake state and enter
+ * tablet mode only if a high angle has been calucalted.
+ *
+ * There might be false positive:
+ * - when the EC enters RO or RW mode.
+ * - when lid is closed while the hinge is perpendicalar to the floor, we will
+ *   stay in tablet mode.
+ */
+enum tablet_mode_value {
+	TABLET_MODE_ENABLED,
+	TABLET_MODE_DISABLED,
+};
+
+static enum tablet_mode_value tablet_mode = TABLET_MODE_ENABLED;
+#endif
 
 /* Config for mkbp protocol; does not include fields from scan config */
 struct ec_mkbp_protocol_config {
@@ -207,12 +232,36 @@ void mkbp_update_switches(uint32_t sw, int state)
 /**
  * Handle lid changing state.
  */
-static void lid_change(void)
+static void mkbp_lid_change(void)
+{
+#ifdef CONFIG_TABLET_MODE_SWITCH
+	int lid_angle = motion_lid_get_angle();
+
+	if (lid_angle >= TABLET_ZONE_LID_ANGLE ||
+	    lid_angle == LID_ANGLE_UNRELIABLE)
+		tablet_mode = TABLET_MODE_ENABLED;
+	if (tablet_mode == TABLET_MODE_ENABLED) {
+		if (lid_is_open())
+			tablet_mode = TABLET_MODE_DISABLED;
+		mkbp_update_switches(EC_MKBP_TABLET_MODE, !lid_is_open());
+	} else {
+		mkbp_update_switches(EC_MKBP_LID_OPEN, lid_is_open());
+	}
+#else
+	mkbp_update_switches(EC_MKBP_LID_OPEN, lid_is_open());
+#endif
+}
+DECLARE_HOOK(HOOK_LID_CHANGE, mkbp_lid_change, HOOK_PRIO_LAST);
+
+static void mkbp_lid_init(void)
 {
 	mkbp_update_switches(EC_MKBP_LID_OPEN, lid_is_open());
+#ifdef CONFIG_TABLET_MODE_SWITCH
+	mkbp_update_switches(EC_MKBP_TABLET_MODE, !lid_is_open());
+#endif
 }
-DECLARE_HOOK(HOOK_LID_CHANGE, lid_change, HOOK_PRIO_LAST);
-DECLARE_HOOK(HOOK_INIT, lid_change, HOOK_PRIO_INIT_LID+1);
+
+DECLARE_HOOK(HOOK_INIT, mkbp_lid_init, HOOK_PRIO_INIT_LID+1);
 
 void keyboard_update_button(enum keyboard_button_type button, int is_pressed)
 {
@@ -351,6 +400,9 @@ static uint32_t get_supported_switches(void)
 
 #ifdef CONFIG_LID_SWITCH
 	val |= (1 << EC_MKBP_LID_OPEN);
+#endif
+#ifdef CONFIG_TABLET_MODE_SWITCH
+	val |= (1 << EC_MKBP_TABLET_MODE);
 #endif
 	return val;
 }
