@@ -125,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "7b4bb346_529734e3",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-08-18T22:17:33Z",
+      "side": 1,
+      "message": "Not necessarily, during the initial boot, RK3399\u0027s GPIO wasn\u0027t configured, the trackpad, Lid sensor, DMIC, and ALC5514 have not been configured by the system . That\u0027s when the leakage might happens. Whereas in susped /resume, before we suspend, we can configure GPIO and configure component properly to reduce leakage. \n\nAgain, this is just a risk, I will work with Samsung termi to quickly check out. If no major issue, then we are good to go with a nice state based sequencing.",
+      "parentUuid": "db2e5f26_b7001b5e",
+      "range": {
+        "startLine": 172,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 42
+      },
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db2e5f26_b53d80e2",
         "filename": "power/rk3399.c",
         "patchSetId": 3
@@ -242,6 +266,47 @@
       "side": 1,
       "message": "See lines 35-37 here: https://docs.google.com/spreadsheets/d/1STXMiX-0vCyIjDm69k9J92xjeTap-kpWqXvJpmg0s4Y/edit#gid\u003d270972962. Are we referencing the same doc?",
       "parentUuid": "db2e5f26_554c2c75",
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_54a2e5ed",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-08-18T22:17:33Z",
+      "side": 1,
+      "message": "PP1800_S0 and PP3300_S0 has to be staged with Pp1800_S0 ramp up first since it is used by RK3399 as staging / intermediate rail for 3.3V GPIOs. Power off typicaly would be in reverse order as Shawn is doing. But I am double checking with Rockchip .",
+      "parentUuid": "db2e5f26_1e7ed1ba",
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_94f71dc0",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-08-18T22:17:33Z",
+      "side": 1,
+      "message": "Does this strigger AP side to start WiFi power down sequencing in // as EC continue shut down stuffs?",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 35
+      },
       "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
