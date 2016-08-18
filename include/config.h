@@ -1743,6 +1743,14 @@
  */
 #undef CONFIG_SYSTEM_UNLOCKED
 
+/*
+ * Compile tablet mode support.
+ *
+ * Add support for tablet mode detection: Send event when the device is in
+ * tablet mode.
+ */
+#undef CONFIG_TABLET_MODE
+
 /*****************************************************************************/
 /* Task config */
 
