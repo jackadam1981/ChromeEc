@@ -14,6 +14,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "motion_lid.h"
 #include "keyboard_config.h"
 #include "keyboard_mkbp.h"
 #include "keyboard_protocol.h"
@@ -21,6 +22,7 @@
 #include "keyboard_scan.h"
 #include "keyboard_test.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "mkbp_event.h"
 #include "power_button.h"
 #include "system.h"
@@ -207,12 +209,24 @@ void mkbp_update_switches(uint32_t sw, int state)
 /**
  * Handle lid changing state.
  */
-static void lid_change(void)
+static void mkbp_lid_change(void)
+{
+	if (motion_lid_in_tablet_mode())
+		mkbp_update_switches(EC_MKBP_TABLET_MODE, !lid_is_open());
+	else
+		mkbp_update_switches(EC_MKBP_LID_OPEN, lid_is_open());
+}
+DECLARE_HOOK(HOOK_LID_CHANGE, mkbp_lid_change, HOOK_PRIO_LAST);
+
+static void mkbp_lid_init(void)
 {
 	mkbp_update_switches(EC_MKBP_LID_OPEN, lid_is_open());
+#ifdef CONFIG_TABLET_MODE_SWITCH
+	mkbp_update_switches(EC_MKBP_TABLET_MODE, !lid_is_open());
+#endif
 }
-DECLARE_HOOK(HOOK_LID_CHANGE, lid_change, HOOK_PRIO_LAST);
-DECLARE_HOOK(HOOK_INIT, lid_change, HOOK_PRIO_INIT_LID+1);
+
+DECLARE_HOOK(HOOK_INIT, mkbp_lid_init, HOOK_PRIO_INIT_LID+1);
 
 void keyboard_update_button(enum keyboard_button_type button, int is_pressed)
 {
@@ -351,6 +365,9 @@ static uint32_t get_supported_switches(void)
 
 #ifdef CONFIG_LID_SWITCH
 	val |= (1 << EC_MKBP_LID_OPEN);
+#endif
+#ifdef CONFIG_TABLET_MODE_SWITCH
+	val |= (1 << EC_MKBP_TABLET_MODE);
 #endif
 	return val;
 }

@@ -66,7 +66,7 @@ static void lid_switch_close(void)
 		return;
 	}
 
-	CPRINTS("lid close");
+	CPRINTS("lid near base");
 	debounced_lid_open = 0;
 	hook_notify(HOOK_LID_CHANGE);
 	host_set_single_event(EC_HOST_EVENT_LID_CLOSED);

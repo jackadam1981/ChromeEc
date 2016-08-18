@@ -16,6 +16,7 @@
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "switch.h"
 #include "system.h"
 #include "task.h"
@@ -734,7 +735,7 @@ static void keyboard_lid_change(void)
 {
 	if (lid_is_open())
 		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_CLOSED);
-	else
+	else if (!motion_lid_in_tablet_mode())
 		keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_CLOSED);
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, keyboard_lid_change, HOOK_PRIO_DEFAULT);
