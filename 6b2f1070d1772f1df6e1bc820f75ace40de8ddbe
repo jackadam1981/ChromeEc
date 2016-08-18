@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db2e5f26_a4ef8ce7",
+        "filename": "board/cave/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-18T16:13:09Z",
+      "side": 1,
+      "message": "This is really helpful for debugging and catching mistakes. Does defining CONFIG_DEBUG_ASSERT_BRIEF instead free up enough space? Can you check for other console / host commands that we might be able to remove?",
+      "range": {
+        "startLine": 164,
+        "startChar": 7,
+        "endLine": 164,
+        "endChar": 26
+      },
+      "revId": "6b2f1070d1772f1df6e1bc820f75ace40de8ddbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
