@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db2e5f26_7b67d71e",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-18T01:10:56Z",
+      "side": 1,
+      "message": "I can see this being 2 functions. bad_seq_num() and update_packet_tb_sent(). (I just realized what tb means now...) I don\u0027t know if this complicates things or makes it easier. But the flow I can see is the following. What do you all think?\n\nbad_sn \u003d 1;\nrv \u003d ble_rx(pdu, ...);    \nif (rv \u003d\u003d EC_SUCCESS) {\n    /* Check if the sequence numbers are good. */\n    bad_sn \u003d check_seq_num(pdu);\n    if (!bad_sn) {\n        /* Advance sequence numbers */\n        /* Update next packet */\n    }\n}\n\n\nif (rv || bad_sn) {\n    /* Update error counters */\n    /* You could examine bad_sn to update specific counters. */\n}",
+      "revId": "81defcb07dc6632eb1f2918232b5b9e4022aeacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
