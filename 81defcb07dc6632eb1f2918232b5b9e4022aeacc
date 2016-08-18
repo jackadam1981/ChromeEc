@@ -34,6 +34,24 @@
       "revId": "81defcb07dc6632eb1f2918232b5b9e4022aeacc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_6f6aade8",
+        "filename": "common/btle_ll.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-18T16:50:57Z",
+      "side": 1,
+      "message": "Yeah, I see both of your guys\u0027 viewpoints. Maybe it\u0027s just a naming thing that\u0027s confusing?\n\nAs you mentioned, your approach has pretty much everything contained within it and that function is unconditionally called.\n\nBut, I think I also see Myles\u0027 viewpoint of calling update but it may not actually update the packet.\n\nGenerally, I\u0027m a fan of having a function just do one thing. But as I said, I\u0027m not sure if my approach makes it easier or more difficult to understand what\u0027s going on. I don\u0027t feel strongly either way, but if one way is clearer, let\u0027s go with that.",
+      "parentUuid": "db2e5f26_0f0c5997",
+      "revId": "81defcb07dc6632eb1f2918232b5b9e4022aeacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
