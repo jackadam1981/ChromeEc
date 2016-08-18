@@ -18,21 +18,43 @@ enum power_state {
 			 * which means totally unpowered...)
 			 */
 	POWER_S5,		/* System is soft-off */
+#ifdef CONFIG_CHIPSET_ROTOR
+	POWER_S5_STOD,
+	POWER_S5_R,
+	POWER_S5_APR,
+	POWER_S5_SOF,
+	POWER_S5_SO,
+#endif /* defined(CONFIG_CHIPSET_ROTOR) */
 	POWER_S3,		/* Suspend; RAM on, processor is asleep */
 	POWER_S0,		/* System is on */
 #ifdef CONFIG_POWER_S0IX
 	POWER_S0ix,
 #endif
 	/* Transitions */
-	POWER_G3S5,	/* G3 -> S5 (at system init time) */
-	POWER_S5S3,	/* S5 -> S3 */
-	POWER_S3S0,	/* S3 -> S0 */
-	POWER_S0S3,	/* S0 -> S3 */
-	POWER_S3S5,	/* S3 -> S5 */
-	POWER_S5G3,	/* S5 -> G3 */
+	POWER_G3S5,		/* G3 -> S5 (at system init time) */
+	POWER_S5S3,		/* S5 -> S3 */
+	POWER_S3S0,		/* S3 -> S0 */
+	POWER_S0S3,		/* S0 -> S3 */
+	POWER_S3S5,		/* S3 -> S5 */
+	POWER_S5G3,		/* S5 -> G3 */
+#ifdef CONFIG_CHIPSET_ROTOR
+	POWER_G3S5_STOD,	/* G3->S5 StOD */
+	POWER_S5_STODG3,	/* S5 StOD->G3 */
+	POWER_S5_STODS0,	/* S5 StOD->S0 */
+	POWER_S0S5_SOF,		/* S0->S5 SOF */
+	POWER_S3S5_SOF,		/* S3->S5 SOF */
+	POWER_S5_SOFS5_SO,	/* S5 SOF->S5 SO */
+	POWER_S5_SOS5_SOF,	/* S5 SO->S5 SOF */
+	POWER_S5_SOFG3,		/* S5 SOF->G3 */
+	POWER_S5_SOFS5_APR,	/* S5 SOF->S5 APR */
+	POWER_S5_APRS5_R,	/* S5 APR->S5 R */
+	POWER_S5_APRS5_SOF,	/* S5 APR->S5 SOF */
+	POWER_S5_RS0,		/* S5 R->S0 */
+	POWER_S5_RG3,		/* S5 R->G3 */
+#endif /* defined(CONFIG_CHIPSET_ROTOR) */
 #ifdef CONFIG_POWER_S0IX
-	POWER_S0ixS0,   /* S0ix -> S0 */
-	POWER_S0S0ix,   /* S0 -> S0ix */
+	POWER_S0ixS0,		/* S0ix -> S0 */
+	POWER_S0S0ix,		/* S0 -> S0ix */
 #endif
 };
 
