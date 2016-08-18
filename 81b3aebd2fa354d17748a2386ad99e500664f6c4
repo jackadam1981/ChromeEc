@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b4bb346_127f6c41",
+        "filename": "power/rk3399.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-08-18T22:33:08Z",
+      "side": 1,
+      "message": "I am double-checking Kevin DVT2 now. There is some difference on how they power LID, sensor and other devices which may impact the sequencing among:\n\nPP1800_LID,\nPP1800_SENSOR\nPP1800_SIXAXIS",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 45
+      },
+      "revId": "81b3aebd2fa354d17748a2386ad99e500664f6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
