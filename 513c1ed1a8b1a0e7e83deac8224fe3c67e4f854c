@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "db2e5f26_fead1531",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-18T02:00:41Z",
+      "side": 1,
+      "message": "Probably not, will remove.",
+      "parentUuid": "db2e5f26_d53efcdf",
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db2e5f26_b53d80e2",
         "filename": "power/rk3399.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2016-08-17T23:09:50Z",
       "side": 1,
       "message": "Sixaxis is now S0 only?",
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_9ea2e140",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-18T02:00:41Z",
+      "side": 1,
+      "message": "Yes, see discussion on linked crbug.",
+      "parentUuid": "db2e5f26_b53d80e2",
       "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "db2e5f26_1e97b1e4",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-18T02:00:41Z",
+      "side": 1,
+      "message": "Yes, I think we can remove this entirely. Will check closer.",
+      "parentUuid": "db2e5f26_95064428",
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db2e5f26_554c2c75",
         "filename": "power/rk3399.c",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2016-08-17T23:11:21Z",
       "side": 1,
       "message": "I don\u0027t believe this msleep is needed since pp3300_s0 and pp1800_s0 can sequence/ramp at the same time for power on according to the power sequence spreadsheet.",
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_1e7ed1ba",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-18T02:00:41Z",
+      "side": 1,
+      "message": "See lines 35-37 here: https://docs.google.com/spreadsheets/d/1STXMiX-0vCyIjDm69k9J92xjeTap-kpWqXvJpmg0s4Y/edit#gid\u003d270972962. Are we referencing the same doc?",
+      "parentUuid": "db2e5f26_554c2c75",
       "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
