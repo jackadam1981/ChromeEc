@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db2e5f26_8fbf090f",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-18T17:13:45Z",
+      "side": 1,
+      "message": "Could you use tabs to align the assigned values?",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 672,
+        "endChar": 34
+      },
+      "revId": "a4deb51ee765d124cd3fe311d3e4a2e782b87b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_efe47d38",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-18T17:13:45Z",
+      "side": 1,
+      "message": "STM32_RCC_CCIPR_UART_SYSCLK",
+      "range": {
+        "startLine": 273,
+        "startChar": 21,
+        "endLine": 273,
+        "endChar": 22
+      },
+      "revId": "a4deb51ee765d124cd3fe311d3e4a2e782b87b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_cfe3c12b",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-08-18T17:13:45Z",
+      "side": 1,
+      "message": "likewise",
+      "range": {
+        "startLine": 276,
+        "startChar": 21,
+        "endLine": 276,
+        "endChar": 22
+      },
+      "revId": "a4deb51ee765d124cd3fe311d3e4a2e782b87b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
