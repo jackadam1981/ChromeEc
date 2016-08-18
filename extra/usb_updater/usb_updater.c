@@ -22,12 +22,14 @@
 #define __packed __attribute__((packed))
 #endif
 
-#include "misc_util.h"
-#include "usb_descriptor.h"
-#include "upgrade_fw.h"
 #include "config_chip.h"
 #include "board.h"
+
 #include "compile_time_macros.h"
+#include "misc_util.h"
+#include "signed_header.h"
+#include "upgrade_fw.h"
+#include "usb_descriptor.h"
 
 #ifdef DEBUG
 #define debug printf
@@ -168,11 +170,12 @@ struct transfer_descriptor {
 
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = ":d:hrs";
+static char *short_opts = ":bd:hrs";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"device",   1,   NULL, 'd'},
 	{"help",     0,   NULL, 'h'},
+	{"binvers",  0,   NULL, 'b'},
 	{"ro",       0,   NULL, 'r'},
 	{"spi",      0,   NULL, 's'},
 	{NULL,       0,   NULL,  0},
@@ -262,7 +265,7 @@ static void shut_down(struct usb_endpoint *uep)
 
 static void usage(int errs)
 {
-	printf("\nUsage: %s [options] ec.bin\n"
+	printf("\nUsage: %s [options] <binary image>\n"
 	       "\n"
 	       "This updates the Cr50 RW firmware over USB.\n"
 	       "The required argument is the full RO+RW image.\n"
@@ -778,6 +781,32 @@ static void transfer_and_reboot(struct transfer_descriptor *td,
 	}
 }
 
+static int show_headers_versions(const void *image)
+{
+	size_t i;
+	const struct {
+		const char *name;
+		uint32_t    offset;
+	} sections[] = {
+		{"RO_A", CONFIG_RO_MEM_OFF},
+		{"RW_A", CONFIG_RW_MEM_OFF},
+		{"RO_B", CHIP_RO_B_MEM_OFF},
+		{"RW_B", CONFIG_RW_B_MEM_OFF}
+	};
+
+	for (i = 0; i < ARRAY_SIZE(sections); i++) {
+		const struct SignedHeader *h;
+
+		h = (const struct SignedHeader *)((uintptr_t)image +
+						  sections[i].offset);
+		printf("%s%s:%d.%d.%d", i ? " " : "", sections[i].name,
+		       h->epoch_, h->major_, h->minor_);
+	}
+	printf("\n");
+
+	return 0;
+}
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
@@ -786,6 +815,7 @@ int main(int argc, char *argv[])
 	size_t data_len = 0;
 	uint16_t vid = VID, pid = PID;
 	int i;
+	int binary_vers = 0;
 
 	progname = strrchr(argv[0], '/');
 	if (progname)
@@ -801,6 +831,9 @@ int main(int argc, char *argv[])
 	opterr = 0;				/* quiet, you */
 	while ((i = getopt_long(argc, argv, short_opts, long_opts, 0)) != -1) {
 		switch (i) {
+		case 'b':
+			binary_vers = 1;
+			break;
 		case 'd':
 			if (!parse_vidpid(optarg, &vid, &pid)) {
 				printf("Invalid argument: \"%s\"\n", optarg);
@@ -840,17 +873,22 @@ int main(int argc, char *argv[])
 		usage(errorcnt);
 
 	if (optind >= argc) {
-		fprintf(stderr, "\nERROR: Missing required ec.bin file\n\n");
+		fprintf(stderr,
+			"\nERROR: Missing required <binary image>\n\n");
 		usage(1);
 	}
 
 	data = get_file_or_die(argv[optind], &data_len);
-	printf("read 0x%zx bytes from %s\n", data_len, argv[optind]);
+	printf("read %zd(%#zx) bytes from %s\n",
+	       data_len, data_len, argv[optind]);
 	if (data_len != CONFIG_FLASH_SIZE) {
 		fprintf(stderr, "Image file is not %d bytes\n",
 			CONFIG_FLASH_SIZE);
 		exit(1);
 	}
+
+	if (binary_vers)
+		exit(show_headers_versions(data));
 
 	if (td.ep_type == usb_xfer) {
 		usb_findit(vid, pid, &td.uep);
