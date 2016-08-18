@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db2e5f26_ea322bf5",
+        "filename": "board/cave/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-18T17:57:20Z",
+      "side": 1,
+      "message": "Don\u0027t undef this, CONFIG_DEBUG_ASSERT_BRIEF only takes effect when CONFIG_DEBUG_ASSERT is defined. Think of it as \"lite debug assert\".",
+      "range": {
+        "startLine": 164,
+        "startChar": 7,
+        "endLine": 164,
+        "endChar": 26
+      },
+      "revId": "10b4b3cc4e61fde4f4bc676fcca01cb35544d7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
