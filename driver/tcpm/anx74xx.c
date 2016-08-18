@@ -538,6 +538,9 @@ static int anx74xx_alert_status(int port, int *alert)
 	rv = tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg);
 	if (rv)
 		return EC_ERROR_UNKNOWN;
+	
+	/* Clear interrupt Register to avoid interrupt missing */
+	rv |= tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, 0); 
 
 	if (reg & ANX74XX_REG_IRQ_CC_MSG_INT)
 		*alert |= ANX74XX_REG_ALERT_MSG_RECV;
@@ -546,24 +549,18 @@ static int anx74xx_alert_status(int port, int *alert)
 
 	if (reg & ANX74XX_REG_IRQ_CC_STATUS_INT) {
 		*alert |= ANX74XX_REG_ALERT_CC_CHANGE;
-		rv |= tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG,
-				reg & 0xfd);
 	} else {
 		*alert &= (~ANX74XX_REG_ALERT_CC_CHANGE);
 	}
 
 	if (reg & ANX74XX_REG_IRQ_GOOD_CRC_INT) {
 		*alert |= ANX74XX_REG_ALERT_TX_ACK_RECV;
-		rv |= tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG,
-				reg & 0xfb);
 	} else {
 		*alert &= (~ANX74XX_REG_ALERT_TX_ACK_RECV);
 	}
 
 	if (reg & ANX74XX_REG_IRQ_TX_FAIL_INT) {
 		*alert |= ANX74XX_REG_ALERT_TX_MSG_ERROR;
-		rv |= tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG,
-				reg & 0xf7);
 	}
 	/* Read TCPC Alert register2 */
 	rv |= tcpc_read(port, ANX74XX_REG_IRQ_EXT_SOURCE_2, &reg);
