@@ -116,6 +116,30 @@
     },
     {
       "key": {
+        "uuid": "db2e5f26_4fc9f1c1",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-08-18T17:09:52Z",
+      "side": 1,
+      "message": "PTP spec says that there can be less than burstcnt bytes actually available in the FIFO on reads: \n1) In 5.5.2.1 (lines 1355-1359): \"TPM_STS_x.burstCount indicates only the depth of the command FIFO, not the direction nor whether the TPM expects more data to be sent or received.\" Similar, in 5.5.2.5.2 (1838-1846): \"on response read if there are only three bytes left of the response to read, software must only read three bytes from the data FIFO even if burstCount \u003d 16\"\n2) it is possible to have a statis burstCount (burstCountStatic in TPM_INTF_CAPABILITY), and then the burtCount switches between 0 and some fixed value regardless of the remaining data size.\n\nOn the other hand, it is possible to implement burtsCount in the upper layer in a way when burstCount on reads is never bigger than the size of the remaining data. But that\u0027s implementation-specific.",
+      "parentUuid": "3e3be95b_e9956d90",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 34
+      },
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e3be95b_c9942993",
         "filename": "common/tpm_registers.c",
         "patchSetId": 4
