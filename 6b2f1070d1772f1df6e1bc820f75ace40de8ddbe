@@ -22,6 +22,30 @@
       "revId": "6b2f1070d1772f1df6e1bc820f75ace40de8ddbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbf40304_1e530dea",
+        "filename": "board/cave/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-08-18T18:06:36Z",
+      "side": 1,
+      "message": "Done. Thank you. I add the #define CONFIG_DEBUG_ASSERT_BRIEF, and the space is enough. I had checked the build/cave/.config, and try to remove other setting, but the space is not enough, so I try to remove the CONFIG_DEBUG_ASSERT. I know that is bad idea, but I don\u0027t know how to reduce the image size...",
+      "parentUuid": "db2e5f26_a4ef8ce7",
+      "range": {
+        "startLine": 164,
+        "startChar": 7,
+        "endLine": 164,
+        "endChar": 26
+      },
+      "revId": "6b2f1070d1772f1df6e1bc820f75ace40de8ddbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
