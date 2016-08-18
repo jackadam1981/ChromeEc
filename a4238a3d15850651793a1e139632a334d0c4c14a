@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "9b24e748_8be5b8d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-08-18T21:56:15Z",
+      "side": 1,
+      "message": "so timels just has lower resolution and is not a perfect integer (~4uS).  Depending on whether software cares about that, it can be a little undesirable (I guess since we\u0027re not a radio chip, the accuracy probably doesn\u0027t matter as much).\n\nIn the future, we may slow the clock even more due to power reasons (so you can expect a resolution of \u003e30uS).",
+      "parentUuid": "db2e5f26_14a22da3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "a4238a3d15850651793a1e139632a334d0c4c14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db2e5f26_fe9c306d",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
