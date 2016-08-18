@@ -33,4 +33,6 @@ enum ccd_mode {
  */
 void ccd_set_mode(enum ccd_mode new_mode);
 
+/* Initialize the PHY based on CCD state */
+void ccd_phy_init(int enable_ccd);
 #endif /* __CROS_EC_CASE_CLOSED_DEBUG_H */
