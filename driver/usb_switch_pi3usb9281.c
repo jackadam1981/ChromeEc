@@ -61,6 +61,19 @@ static void unselect_chip(int port)
 		mutex_unlock(chip->mux_lock);
 }
 
+static uint8_t pi3usb9281_read_u(int port, uint8_t reg)
+{
+	struct pi3usb9281_config *chip = &pi3usb9281_chips[port];
+	int res, val;
+
+	res = i2c_read8(chip->i2c_port, PI3USB9281_I2C_ADDR, reg, &val);
+
+	if (res)
+		return 0xee;
+
+	return val;
+}
+
 static uint8_t pi3usb9281_read(int port, uint8_t reg)
 {
 	struct pi3usb9281_config *chip = &pi3usb9281_chips[port];
@@ -74,6 +87,18 @@ static uint8_t pi3usb9281_read(int port, uint8_t reg)
 		return 0xee;
 
 	return val;
+}
+
+static int pi3usb9281_write_u(int port, uint8_t reg, uint8_t val)
+{
+	struct pi3usb9281_config *chip = &pi3usb9281_chips[port];
+	int res;
+
+	res = i2c_write8(chip->i2c_port, PI3USB9281_I2C_ADDR, reg, val);
+
+	if (res)
+		CPRINTS("PI3USB9281 I2C write failed");
+	return res;
 }
 
 static int pi3usb9281_write(int port, uint8_t reg, uint8_t val)
@@ -94,6 +119,13 @@ static int pi3usb9281_write(int port, uint8_t reg, uint8_t val)
 static int pi3usb9281_write_ctrl(int port, uint8_t ctrl)
 {
 	return pi3usb9281_write(port, PI3USB9281_REG_CONTROL,
+				(ctrl & PI3USB9281_CTRL_MASK) |
+				PI3USB9281_CTRL_RSVD_1);
+}
+
+static int pi3usb9281_write_ctrl_u(int port, uint8_t ctrl)
+{
+	return pi3usb9281_write_u(port, PI3USB9281_REG_CONTROL,
 				(ctrl & PI3USB9281_CTRL_MASK) |
 				PI3USB9281_CTRL_RSVD_1);
 }
@@ -190,17 +222,22 @@ static int pi3usb9281_reset(int port)
 
 static int pi3usb9281_set_switch_manual(int port, int val)
 {
-	uint8_t ctrl = pi3usb9281_read(port, PI3USB9281_REG_CONTROL);
+	int res = EC_ERROR_UNKNOWN;
+	uint8_t ctrl;
 
-	if (ctrl == 0xee)
-		return EC_ERROR_UNKNOWN;
+	select_chip(port);
+	ctrl = pi3usb9281_read_u(port, PI3USB9281_REG_CONTROL);
 
-	if (val)
-		ctrl &= ~PI3USB9281_CTRL_AUTO;
-	else
-		ctrl |= PI3USB9281_CTRL_AUTO;
+	if (ctrl != 0xee) {
+		if (val)
+			ctrl &= ~PI3USB9281_CTRL_AUTO;
+		else
+			ctrl |= PI3USB9281_CTRL_AUTO;
+		res = pi3usb9281_write_ctrl_u(port, ctrl);
+	}
 
-	return pi3usb9281_write_ctrl(port, ctrl);
+	unselect_chip(port);
+	return res;
 }
 
 static int pi3usb9281_set_pins(int port, uint8_t val)
@@ -210,17 +247,22 @@ static int pi3usb9281_set_pins(int port, uint8_t val)
 
 static int pi3usb9281_set_switches(int port, int open)
 {
-	uint8_t ctrl = pi3usb9281_read(port, PI3USB9281_REG_CONTROL);
+	int res = EC_ERROR_UNKNOWN;
+	uint8_t ctrl;
 
-	if (ctrl == 0xee)
-		return EC_ERROR_UNKNOWN;
+	select_chip(port);
+	ctrl = pi3usb9281_read_u(port, PI3USB9281_REG_CONTROL);
 
-	if (open)
-		ctrl &= ~PI3USB9281_CTRL_SWITCH_AUTO;
-	else
-		ctrl |= PI3USB9281_CTRL_SWITCH_AUTO;
+	if (ctrl != 0xee) {
+		if (open)
+			ctrl &= ~PI3USB9281_CTRL_SWITCH_AUTO;
+		else
+			ctrl |= PI3USB9281_CTRL_SWITCH_AUTO;
+		res = pi3usb9281_write_ctrl_u(port, ctrl);
+	}
 
-	return pi3usb9281_write_ctrl(port, ctrl);
+	unselect_chip(port);
+	return res;
 }
 
 void usb_charger_set_switches(int port, enum usb_switch setting)
