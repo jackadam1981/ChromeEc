@@ -37,6 +37,52 @@
     },
     {
       "key": {
+        "uuid": "db2e5f26_94c39d06",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-08-18T21:30:49Z",
+      "side": 1,
+      "message": "Kevin\u0027s DVT2 hack code finishes core booting before turning device- not strictly following power state. So if we decide to do this way by finishing turn on all S3 component before turning on S0 blocks in RK3399, we need to check several things. \n\nFor trackpad specifically, need to check if PP3300_TRACKPAD_EN back powering RK3300\u0027s 3.3V GPIO bank by measuring PP1800_S0 and PP3300_S0 leakage.",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 47
+      },
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_b45fb94d",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-08-18T21:30:49Z",
+      "side": 1,
+      "message": "similar risk to turn on trackpad before booting RK3399. For PP1800_LID particular, need to check if this back power RK3399\u0027s audio block by check leakage on PP1800_S0 ( Pp1800_AP).",
+      "range": {
+        "startLine": 172,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 42
+      },
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db2e5f26_b53d80e2",
         "filename": "power/rk3399.c",
         "patchSetId": 3
