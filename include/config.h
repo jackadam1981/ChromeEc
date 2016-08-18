@@ -501,6 +501,7 @@
 #undef CONFIG_CHIPSET_RK3399    /* Rockchip rk3399 */
 /* TODO: Rename below config to CONFIG_CHIPSET_RK32XX */
 #undef CONFIG_CHIPSET_ROCKCHIP  /* Rockchip rk32xx */
+#undef CONFIG_CHIPSET_ROTOR     /* Rotor */
 #undef CONFIG_CHIPSET_SKYLAKE   /* Intel Skylake (x86) */
 #undef CONFIG_CHIPSET_TEGRA     /* nVidia Tegra 5 */
 

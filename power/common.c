@@ -37,6 +37,13 @@
 static const char * const state_names[] = {
 	"G3",
 	"S5",
+#ifdef CONFIG_CHIPSET_ROTOR
+	"S5 StOD",
+	"S5 R",
+	"S5 APR",
+	"S5 SOF",
+	"S5 SO",
+#endif /* defined(CONFIG_CHIPSET_ROTOR) */
 	"S3",
 	"S0",
 #ifdef CONFIG_POWER_S0IX
@@ -48,6 +55,21 @@ static const char * const state_names[] = {
 	"S0->S3",
 	"S3->S5",
 	"S5->G3",
+#ifdef CONFIG_CHIPSET_ROTOR
+	"G3->S5 StOD",
+	"S5 StOD->G3",
+	"S5 StOD->S0",
+	"S0->S5 SOF",
+	"S3->S5 SOF",
+	"S5 SOF->S5 SO",
+	"S5 SO->S5 SOF",
+	"S5 SOF->G3",
+	"S5 SOF->S5 APR",
+	"S5 APR->S5 R",
+	"S5 APR->S5 SOF",
+	"S5 R->S0",
+	"S5 R->G3",
+#endif /* defined(CONFIG_CHIPSET_ROTOR) */
 #ifdef CONFIG_POWER_S0IX
 	"S0ix->S0",
 	"S0->S0ix",
@@ -290,6 +312,12 @@ int chipset_in_state(int state_mask)
 		break;
 	case POWER_G3S5:
 	case POWER_S5G3:
+#ifdef CONFIG_CHIPSET_ROTOR
+	case POWER_G3S5_STOD:
+	case POWER_S5_STODG3:
+	case POWER_S5_RG3:
+	case POWER_S5_SOFG3:
+#endif /* defined(CONFIG_CHIPSET_ROTOR) */
 		/*
 		 * In between hard and soft off states.  Match only if caller
 		 * will accept both.
@@ -297,10 +325,25 @@ int chipset_in_state(int state_mask)
 		need_mask = CHIPSET_STATE_HARD_OFF | CHIPSET_STATE_SOFT_OFF;
 		break;
 	case POWER_S5:
+#ifdef CONFIG_CHIPSET_ROTOR
+	case POWER_S5_STOD:
+	case POWER_S5_SOF:
+	case POWER_S5_SO:
+	case POWER_S5_R:
+	case POWER_S5_APR:
+	case POWER_S5_SOS5_SOF:
+	case POWER_S5_SOFS5_SO:
+	case POWER_S5_SOFS5_APR:
+	case POWER_S5_APRS5_R:
+	case POWER_S5_APRS5_SOF:
+#endif /* defined(CONFIG_CHIPSET_ROTOR) */
 		need_mask = CHIPSET_STATE_SOFT_OFF;
 		break;
 	case POWER_S5S3:
 	case POWER_S3S5:
+#ifdef CONFIG_CHIPSET_ROTOR
+	case POWER_S3S5_SOF:
+#endif /* defined(CONFIG_CHIPSET_ROTOR) */
 		need_mask = CHIPSET_STATE_SOFT_OFF | CHIPSET_STATE_SUSPEND;
 		break;
 	case POWER_S3:
@@ -322,6 +365,13 @@ int chipset_in_state(int state_mask)
 		need_mask = CHIPSET_STATE_STANDBY;
 		break;
 #endif
+#ifdef CONFIG_CHIPSET_ROTOR
+	case POWER_S5_RS0:
+	case POWER_S5_STODS0:
+	case POWER_S0S5_SOF:
+		need_mask = CHIPSET_STATE_SOFT_OFF | CHIPSET_STATE_ON;
+		break;
+#endif /* defined(CONFIG_CHIPSET_ROTOR) */
 	}
 
 	/* Return non-zero if all needed bits are present */

@@ -3810,6 +3810,38 @@ struct ec_response_usb_pd_mux_info {
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
+/* Indicate what level of boot is possible depending on current system power. */
+#define EC_CMD_SYS_POWER_STATUS 0x200
+
+enum sys_power_status {
+	SYS_PWR_INSUFFICIENT = 0,
+	SYS_PWR_RESTRICTED = 1,
+	SYS_PWR_FULL = 2
+};
+
+struct ec_params_sys_power_status {
+	uint8_t power_status; /* enum sys_power_status */
+} __packed;
+
+/* Shutdown all EC functions and wait-for-interrupt (WFI). */
+#define EC_CMD_SHUTDOWN 0x201
+
+/* Notify of system power state transitions. */
+#define EC_CMD_SYS_POWER_STATE_CHANGE 0x202
+
+enum sys_power_state_change {
+	SYS_ENTERING_S0 = 0,
+	SYS_ENTERING_S3 = 3,
+	SYS_ENTERING_S5 = 5
+};
+
+struct ec_params_sys_power_change {
+	uint8_t state_change; /* enum sys_power_state_change */
+} __packed;
+
+/* Ask the APMU to initiate a S3->S5 SOF transition. */
+#define EC_CMD_SYS_POWER_DOWN_REQUEST 0x203
+
 /* Change the current power state of a Crystal chip. */
 #define EC_CMD_CRYSTAL_POWER_STATE_SET 0x204
 
