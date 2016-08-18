@@ -28,6 +28,10 @@
 
 /* Current acceleration vectors and current lid angle. */
 static int lid_angle_deg;
+
+/* Previous lid_angle. */
+static int last_lid_angle_deg;
+
 static int lid_angle_is_reliable;
 
 /*
@@ -37,6 +41,12 @@ static int lid_angle_is_reliable;
  * at 15 degrees, the value would be cos(15 deg) = 0.96593.
  */
 #define HINGE_ALIGNED_WITH_GRAVITY_THRESHOLD FLOAT_TO_FP(0.96593)
+
+/*
+ * Constant to debounce lid angle changes around 360 - 0:
+ * If the difference with the last value is too big, ignore.
+ */
+#define DEBOUNCE_ANGLE_DELTA 350
 
 /*
  * Define the accelerometer orientation matrices based on the standard
@@ -167,13 +177,17 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 	 */
 	*lid_angle = FP_TO_INT(ang_lid_to_base + FLOAT_TO_FP(0.5));
 
+	/* Check if we have a sudden rotation from 360 <-> 0 */
+	if (ABS(last_lid_angle_deg - lid_angle_deg) < DEBOUNCE_ANGLE_DELTA)
+		last_lid_angle_deg = lid_angle_deg;
+
 	return reliable;
 }
 
 int motion_lid_get_angle(void)
 {
 	if (lid_angle_is_reliable)
-		return lid_angle_deg;
+		return last_lid_angle_deg;
 	else
 		return LID_ANGLE_UNRELIABLE;
 }
