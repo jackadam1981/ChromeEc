@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "db2e5f26_1b15839a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-18T00:26:55Z",
+      "side": 1,
+      "message": "Done. The prints are too long and you don\u0027t see all the sensors values in the ec console. I verified it by limiting the prints to two sensors for checking locally.",
+      "parentUuid": "bb944b51_f3697f20",
+      "revId": "a1f4f2f93843c510a63b53387507bbd4c3aebfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb944b51_13c36b35",
         "filename": "driver/baro_bmp280.c",
         "patchSetId": 22
@@ -48,6 +66,24 @@
       "side": 1,
       "message": "Makes sense. Will change and upload in a bit.",
       "parentUuid": "bb944b51_13c36b35",
+      "revId": "a1f4f2f93843c510a63b53387507bbd4c3aebfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_3b12bfb3",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-18T00:26:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb944b51_16399938",
       "revId": "a1f4f2f93843c510a63b53387507bbd4c3aebfc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -89,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "db2e5f26_db6b8b1d",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-18T00:26:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb944b51_93bd9b1b",
+      "revId": "a1f4f2f93843c510a63b53387507bbd4c3aebfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb944b51_1371abd9",
         "filename": "driver/baro_bmp280.c",
         "patchSetId": 22
@@ -118,6 +172,24 @@
       "side": 1,
       "message": "These oversampling values are from the spec for standard resolution that is recommended.Sure, then let me add the constant measurement time to the standby duration in the array. Thanks",
       "parentUuid": "bb944b51_1371abd9",
+      "revId": "a1f4f2f93843c510a63b53387507bbd4c3aebfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_fb70c70d",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-18T00:26:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb944b51_962d89f9",
       "revId": "a1f4f2f93843c510a63b53387507bbd4c3aebfc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
