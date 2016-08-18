@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db2e5f26_fe9c306d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-18T19:28:37Z",
+      "side": 1,
+      "message": "who invokes this function?",
+      "revId": "a4238a3d15850651793a1e139632a334d0c4c14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_9e2adc24",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-18T19:28:37Z",
+      "side": 1,
+      "message": "so, what happens if the contents are not valid? The chip is in rolling reboot, no indication fo what\u0027s wrong whatsoever?",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 45
+      },
+      "revId": "a4238a3d15850651793a1e139632a334d0c4c14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_7efa60aa",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-18T19:28:37Z",
+      "side": 1,
+      "message": "I think using ths timer for sleep is a must for this chip, and as such does not require a separate config flag, can be added unconditionally.",
+      "revId": "a4238a3d15850651793a1e139632a334d0c4c14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_5eda0443",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-18T19:28:37Z",
+      "side": 1,
+      "message": "just out of curiosity: where are interrupts re-enabled if this code does not run?",
+      "revId": "a4238a3d15850651793a1e139632a334d0c4c14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2e5f26_dec29454",
+        "filename": "chip/g/timels.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-18T19:28:37Z",
+      "side": 1,
+      "message": "why is a new file required? Is this timer very different from the one used before?",
+      "revId": "a4238a3d15850651793a1e139632a334d0c4c14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
