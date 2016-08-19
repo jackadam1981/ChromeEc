@@ -19,6 +19,7 @@ enum device_state {
 struct device_config {
 	const char *name;		/* Device name */
 	enum device_state state;	/* Device status */
+	enum device_state last_known_state;	/* Either off or on */
 	/* Deferred handler to detect power off */
 	const struct deferred_data *deferred;
 	enum gpio_signal detect_on;	/* GPIO detecting power on */

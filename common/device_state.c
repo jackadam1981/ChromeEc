@@ -19,6 +19,9 @@ void device_set_state(enum device_type device, enum device_state state)
 	if (device_states[device].state == state)
 		return;
 
+	if (state != DEVICE_STATE_UNKNOWN)
+		device_states[device].last_known_state = state;
+
 	device_states[device].state = state;
 }
 
