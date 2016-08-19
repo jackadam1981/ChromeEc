@@ -22,6 +22,30 @@
       "revId": "a5996dc536649e4700653b5269b99378611c1765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db249f97_eb32e509",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-08-19T02:02:10Z",
+      "side": 1,
+      "message": "okay, thanks Shawn\n1. yes, on quick connect and disconnect it dint work\n2. Okay, I will refer this code and call the discharge API as the dischage GPIO is not available for Reef",
+      "parentUuid": "db249f97_4bdf7902",
+      "range": {
+        "startLine": 551,
+        "startChar": 1,
+        "endLine": 552,
+        "endChar": 35
+      },
+      "revId": "a5996dc536649e4700653b5269b99378611c1765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
