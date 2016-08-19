@@ -133,20 +133,28 @@ CRYPT_RESULT _cpri__AESEncryptCFB(
 		return CRYPT_PARAMETER;
 
 	for (; slen > 0; slen -= 16) {
-		DCRYPTO_aes_block(in, out);
+		if (slen < 16) {
+			uint8_t buf[16];
+
+			memcpy(buf, in, slen);
+			memset(buf+slen, 0, 16-slen);
+			DCRYPTO_aes_block(buf, buf);
+			memcpy(out, buf, slen);
+		} else {
+			DCRYPTO_aes_block(in, out);
+		}
 		ivp = iv;
 		for (i = slen < 16 ? slen : 16; i > 0; i--) {
 			*ivp++ = *out++;
 			in++;
 		}
+		/* If the inner loop (i loop) was smaller than 16,
+		 * pad out the IV for the next round.
+		 */
+		for (i = slen; i < 16; i++)
+			*ivp++ = 0;
 		DCRYPTO_aes_write_iv(iv);
 	}
-	/* If the inner loop (i loop) was smaller than 16, then slen
-	 * would have been smaller than 16 and it is now negative. If
-	 * it is negative, then it indicates how many bytes are needed
-	 * to pad out the IV for the next round. */
-	for (; slen < 0; slen++)
-		*ivp++ = 0;
 	return CRYPT_SUCCESS;
 }
 
