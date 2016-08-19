@@ -525,6 +525,10 @@ static void detect_slave_config(void)
 {
 	uint32_t properties;
 
+	/* If board_properties is already populated dont repopulate it */
+	if (board_properties & BOARD_PROPERTIES_SET)
+		return;
+
 	properties = GREG32(PMU, LONG_LIFE_SCRATCH1);
 
 	/*
@@ -541,7 +545,15 @@ static void detect_slave_config(void)
 			properties |= BOARD_SLAVE_CONFIG_I2C;
 			/* One PHY is connected to the AP */
 			properties |= BOARD_USB_AP;
+			/*
+			 * TODO(crosbug.com/p/56540): enable UART0 RX on Reef
+			 * DVT. Early reef boards dont have the necessary
+			 * pullups on UART0RX so disable this until DVT
+			 */
+			properties |= BOARD_DISABLE_UART0_RX;
 		}
+
+		properties |= BOARD_PROPERTIES_SET;
 
 		/*
 		 * Now save the properties value for future use.
@@ -563,5 +575,12 @@ DECLARE_HOOK(HOOK_INIT, detect_slave_config, HOOK_PRIO_DEFAULT - 1);
 
 uint32_t system_board_properties_callback(void)
 {
+	/*
+	 * If board_properties has not already been set, call
+	 * detect_slave_config to update the properties.
+	 */
+	if (!(board_properties & BOARD_PROPERTIES_SET))
+		detect_slave_config();
+
 	return board_properties;
 }

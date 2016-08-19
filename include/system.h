@@ -463,10 +463,13 @@ int system_is_reboot_warm(void);
 int system_process_retry_counter(void);
 
 /* Board properties options */
-#define BOARD_SLAVE_CONFIG_SPI       (1 << 0)   /* Slave SPI interface */
-#define BOARD_SLAVE_CONFIG_I2C       (1 << 1)   /* Slave I2C interface */
-#define BOARD_USB_AP                 (1 << 2)   /* One of the PHYs is  */
+#define BOARD_PROPERTIES_SET         (1 << 0)   /* Used to validate    */
+						/* the properties      */
+#define BOARD_SLAVE_CONFIG_SPI       (1 << 1)   /* Slave SPI interface */
+#define BOARD_SLAVE_CONFIG_I2C       (1 << 2)   /* Slave I2C interface */
+#define BOARD_USB_AP                 (1 << 3)   /* One of the PHYs is  */
 						/* connected to the AP */
+#define BOARD_DISABLE_UART0_RX       (1 << 4)   /* Disable UART0 RX    */
 /**
  * Get board properites
  *
