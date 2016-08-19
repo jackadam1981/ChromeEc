@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db249f97_62b9afba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-19T21:13:47Z",
+      "side": 1,
+      "message": "? Not ToT?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "97a2ecdb142ec239003f2aa2b8664b3188b84102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db249f97_a7e5790c",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-19T21:13:47Z",
+      "side": 1,
+      "message": "Does last_lid_angle_deg require some initialization at EC boot time? Basically, I\u0027m trying to imagine if the EC resets for whatever reason and the current lid angle is greater than DEBOUNCE_ANGLE_DELTA. Until the angle is reduced, motion_lid_get_angle() will always return 0, correct? Or am I mistaken?",
+      "revId": "97a2ecdb142ec239003f2aa2b8664b3188b84102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
