@@ -10,15 +10,20 @@
 #include "gpio.h"
 #include "gpio_list.h"
 #include "hooks.h"
+#include "queue_policies.h"
 #include "registers.h"
 #include "stm32-dma.h"
 #include "task.h"
 #include "update_fw.h"
+#include "usart-stm32f4.h"
+#include "usart_tx_dma.h"
+#include "usart_rx_dma.h"
+#include "usb-stream.h"
 #include "usb_descriptor.h"
-#include "util.h"
 #include "usb_dwc_hw.h"
 #include "usb_dwc_console.h"
 #include "usb_dwc_update.h"
+#include "util.h"
 
 /******************************************************************************
  * Define the strings used in our USB descriptors.
@@ -31,6 +36,9 @@ const void *const usb_strings[] = {
 	[USB_STR_VERSION]	= USB_STRING_DESC(CROS_EC_VERSION32),
 	[USB_STR_CONSOLE_NAME]	= USB_STRING_DESC("Polyberry EC Shell"),
 	[USB_STR_UPDATE_NAME]	= USB_STRING_DESC("Firmware update"),
+	[USB_STR_USART2_STREAM_NAME]  = USB_STRING_DESC("Polyberry AP"),
+	[USB_STR_USART3_STREAM_NAME]  = USB_STRING_DESC("Polyberry SH"),
+	[USB_STR_USART5_STREAM_NAME]  = USB_STRING_DESC("Polyberry SSC"),
 };
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
@@ -47,6 +55,103 @@ struct dwc_usb usb_ctl = {
 	.irq = STM32_IRQ_OTG_HS,
 };
 
+
+
+/******************************************************************************
+ * Forward UARTs as a USB serial interface.
+ */
+
+#define USB_STREAM_RX_SIZE	16
+#define USB_STREAM_TX_SIZE	16
+
+/******************************************************************************
+ * Forward USART2 as a simple USB serial interface.
+ */
+
+static struct usart_config const usart2;
+struct usb_stream_config const usart2_usb;
+
+static struct queue const usart2_to_usb = QUEUE_DIRECT(64, uint8_t,
+	usart2.producer, usart2_usb.consumer);
+static struct queue const usb_to_usart2 = QUEUE_DIRECT(64, uint8_t,
+	usart2_usb.producer, usart2.consumer);
+
+static struct usart_config const usart2 =
+	USART_CONFIG(usart2_hw,
+		usart_rx_interrupt,
+		usart_tx_interrupt,
+		115200,
+		usart2_to_usb,
+		usb_to_usart2);
+
+USB_STREAM_CONFIG(usart2_usb,
+	USB_IFACE_USART2_STREAM,
+	USB_STR_USART2_STREAM_NAME,
+	USB_EP_USART2_STREAM,
+	USB_STREAM_RX_SIZE,
+	USB_STREAM_TX_SIZE,
+	usb_to_usart2,
+	usart2_to_usb)
+
+
+/******************************************************************************
+ * Forward USART3 as a simple USB serial interface.
+ */
+
+static struct usart_config const usart3;
+struct usb_stream_config const usart3_usb;
+
+static struct queue const usart3_to_usb = QUEUE_DIRECT(64, uint8_t,
+	usart3.producer, usart3_usb.consumer);
+static struct queue const usb_to_usart3 = QUEUE_DIRECT(64, uint8_t,
+	usart3_usb.producer, usart3.consumer);
+
+static struct usart_config const usart3 =
+	USART_CONFIG(usart3_hw,
+		usart_rx_interrupt,
+		usart_tx_interrupt,
+		115200,
+		usart3_to_usb,
+		usb_to_usart3);
+
+USB_STREAM_CONFIG(usart3_usb,
+	USB_IFACE_USART3_STREAM,
+	USB_STR_USART3_STREAM_NAME,
+	USB_EP_USART3_STREAM,
+	USB_STREAM_RX_SIZE,
+	USB_STREAM_TX_SIZE,
+	usb_to_usart3,
+	usart3_to_usb)
+
+
+/******************************************************************************
+ * Forward USART5 as a simple USB serial interface.
+ */
+
+static struct usart_config const usart5;
+struct usb_stream_config const usart5_usb;
+
+static struct queue const usart5_to_usb = QUEUE_DIRECT(64, uint8_t,
+	usart5.producer, usart5_usb.consumer);
+static struct queue const usb_to_usart5 = QUEUE_DIRECT(64, uint8_t,
+	usart5_usb.producer, usart5.consumer);
+
+static struct usart_config const usart5 =
+	USART_CONFIG(usart5_hw,
+		usart_rx_interrupt,
+		usart_tx_interrupt,
+		115200,
+		usart5_to_usb,
+		usb_to_usart5);
+
+USB_STREAM_CONFIG(usart5_usb,
+	USB_IFACE_USART5_STREAM,
+	USB_STR_USART5_STREAM_NAME,
+	USB_EP_USART5_STREAM,
+	USB_STREAM_RX_SIZE,
+	USB_STREAM_TX_SIZE,
+	usb_to_usart5,
+	usart5_to_usb)
 /******************************************************************************
  * Support firmware upgrade over USB. We can update whichever section is not
  * the current section.
