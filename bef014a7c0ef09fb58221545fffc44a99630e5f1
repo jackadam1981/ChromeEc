@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db249f97_bf0bc780",
+        "filename": "board/cr50/tpm2/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-08-19T15:49:32Z",
+      "side": 1,
+      "message": "iv is an IN/OUT parameter that, as I understand, is supposed to be used for repeated calling of this encryption function over several sequential parts of the unencrypted data. Thus we care about filling it. In practice it\u0027s never called that way.\nNot sure if it makes any sense for parts which are not multiples of the block size anyways.",
+      "range": {
+        "startLine": 136,
+        "startChar": 10,
+        "endLine": 136,
+        "endChar": 12
+      },
+      "revId": "bef014a7c0ef09fb58221545fffc44a99630e5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db249f97_3f18b7d2",
+        "filename": "board/cr50/tpm2/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-08-19T15:49:32Z",
+      "side": 1,
+      "message": "Is IV useful as an OUT parameter if this part is not a multiple of a block size? Can it ever be called that way? If not, we can delete these two memcpy/memset lines.",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 146,
+        "endChar": 28
+      },
+      "revId": "bef014a7c0ef09fb58221545fffc44a99630e5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
