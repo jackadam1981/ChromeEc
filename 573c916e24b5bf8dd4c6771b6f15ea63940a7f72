@@ -46,6 +46,30 @@
       "revId": "573c916e24b5bf8dd4c6771b6f15ea63940a7f72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db249f97_bf28279a",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-08-19T16:21:37Z",
+      "side": 1,
+      "message": "OK, I saw https://chromium-review.googlesource.com/371059 has created some new #define. I will follow the same style then.",
+      "parentUuid": "db249f97_1f53fb42",
+      "range": {
+        "startLine": 430,
+        "startChar": 34,
+        "endLine": 430,
+        "endChar": 35
+      },
+      "revId": "573c916e24b5bf8dd4c6771b6f15ea63940a7f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
