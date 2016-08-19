@@ -362,10 +362,10 @@ static void servo_detached(enum device_type device, int uart)
 	gpio_enable_interrupt(device_states[DEVICE_SERVO_EC].detect_on);
 }
 
-static void device_powered_off(enum device_type device, int uart)
+static int device_powered_off(enum device_type device, int uart)
 {
 	if (device_get_state(device) == DEVICE_STATE_ON)
-		return;
+		return EC_ERROR_UNKNOWN;
 
 	device_state_changed(device, DEVICE_STATE_OFF);
 
@@ -376,6 +376,7 @@ static void device_powered_off(enum device_type device, int uart)
 	uartn_tx_disconnect(uart);
 
 	gpio_enable_interrupt(device_states[device].detect_on);
+	return EC_SUCCESS;
 }
 
 static void servo_ap_deferred(void)
@@ -392,7 +393,10 @@ DECLARE_DEFERRED(servo_ec_deferred);
 
 static void ap_deferred(void)
 {
-	device_powered_off(DEVICE_AP, UART_AP);
+	if (device_powered_off(DEVICE_AP, UART_AP))
+		return;
+
+	hook_notify(HOOK_CHIPSET_SHUTDOWN);
 }
 DECLARE_DEFERRED(ap_deferred);
 
