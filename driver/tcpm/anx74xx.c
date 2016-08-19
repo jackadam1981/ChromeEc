@@ -772,13 +772,40 @@ void anx74xx_tcpc_alert(int port)
 	}
 }
 
+/*
+ * TCPC init might be called before EC's I2C module and the TCPC are ready.
+ * Allow several attempts before failing.
+ */
+#define ANX74XX_INIT_TRIES 30
+
 int anx74xx_tcpm_init(int port)
 {
-	int rv = 0, reg;
+	int rv, reg;
 
 	memset(anx, 0, CONFIG_USB_PD_PORT_COUNT*sizeof(struct anx_state));
+
 	/* Bring chip in normal mode to work */
 	anx74xx_set_power_mode(port, ANX74XX_NORMAL_MODE);
+
+	/* Wait until TCPC registers can be read from before proceeding */
+	while (1) {
+		int vendor_id_l = 0, vendor_id_h = 0, tries = 0;
+
+		rv = 0;
+		if (tries >= ANX74XX_INIT_TRIES)
+			return EC_ERROR_TIMEOUT;
+
+		rv |= tcpc_read(port, ANX74XX_REG_VENDOR_ID_L, &vendor_id_l);
+		rv |= tcpc_read(port, ANX74XX_REG_VENDOR_ID_H, &vendor_id_h);
+
+		if (!rv &&
+			(vendor_id_l == ANX74XX_VENDOR_ID_L) &&
+			(vendor_id_h == ANX74XX_VENDOR_ID_H))
+			break;
+
+		msleep(10);
+		tries++;
+	}
 
 	/* Set Pd dual role mode */
 	pd_set_dual_role(PD_DRP_TOGGLE_ON);
