@@ -202,6 +202,24 @@
     },
     {
       "key": {
+        "uuid": "db249f97_d1115765",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-19T18:49:37Z",
+      "side": 1,
+      "message": "Double-tap confirmed not needed as a wake source by katierh@.",
+      "parentUuid": "db249f97_056ad2e6",
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db2e5f26_95064428",
         "filename": "power/rk3399.c",
         "patchSetId": 3
@@ -326,6 +344,24 @@
     },
     {
       "key": {
+        "uuid": "db249f97_3118eb8b",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-19T18:49:37Z",
+      "side": 1,
+      "message": "Ok, so what we have here is safer and recommended.",
+      "parentUuid": "db249f97_25442e55",
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db2e5f26_94f71dc0",
         "filename": "power/rk3399.c",
         "patchSetId": 3
@@ -337,6 +373,30 @@
       "writtenOn": "2016-08-18T22:17:33Z",
       "side": 1,
       "message": "Does this strigger AP side to start WiFi power down sequencing in // as EC continue shut down stuffs?",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 35
+      },
+      "revId": "513c1ed1a8b1a0e7e83deac8224fe3c67e4f854c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db249f97_1133ef0f",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-19T18:49:37Z",
+      "side": 1,
+      "message": "No, this doesn\u0027t do anything useful for our board, I have a TODO to remove it.",
+      "parentUuid": "db2e5f26_94f71dc0",
       "range": {
         "startLine": 281,
         "startChar": 2,
