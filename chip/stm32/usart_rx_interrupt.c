@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Interrupt based USART RX driver for STM32F0 and STM32F3 */
+/* Interrupt based USART RX driver for STM32F0,3,4 */
 
 #include "usart.h"
 
@@ -18,7 +18,9 @@ static void usart_rx_init(struct usart_config const *config)
 
 	STM32_USART_CR1(base) |= STM32_USART_CR1_RXNEIE;
 	STM32_USART_CR1(base) |= STM32_USART_CR1_RE;
+#if !defined(CHIP_FAMILY_STM32F4)
 	STM32_USART_CR3(base) |= STM32_USART_CR3_OVRDIS;
+#endif
 }
 
 static void usart_rx_interrupt_handler(struct usart_config const *config)

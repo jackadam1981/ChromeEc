@@ -1899,6 +1899,8 @@
 #undef CONFIG_STREAM_USART2
 #undef CONFIG_STREAM_USART3
 #undef CONFIG_STREAM_USART4
+#undef CONFIG_STREAM_USART5
+#undef CONFIG_STREAM_USART6
 
 /*****************************************************************************/
 /* USB stream config */

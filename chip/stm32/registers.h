@@ -1049,6 +1049,7 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_PB2_SPI1		(1 << 12)
 #if defined(CHIP_FAMILY_STM32F4)
 #define STM32_RCC_PB2_USART1		(1 << 4)
+#define STM32_RCC_PB2_USART6		(1 << 5)
 #else
 #define STM32_RCC_PB2_USART1		(1 << 14)
 #endif
