@@ -102,17 +102,12 @@ void rdd_attached(void)
 	ccd_set_mode(CCD_MODE_ENABLED);
 
 	enable_usb_wakeup = 1;
-	uartn_tx_connect(UART_AP);
 
-	/* Enable device state monitoring */
-	device_detect_state_enable(1);
+	uartn_tx_connect(UART_AP);
 }
 
 void rdd_detached(void)
 {
-	/* Disable device state monitoring */
-	device_detect_state_enable(0);
-
 	/* Disconnect from AP and EC UART TX peripheral from gpios */
 	uartn_tx_disconnect(UART_EC);
 	uartn_tx_disconnect(UART_AP);
@@ -174,7 +169,7 @@ void disable_ap_usb(void)
 		usb_is_initialized = 0;
 	}
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, disable_ap_usb, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, disable_ap_usb, HOOK_PRIO_DEFAULT);
 
 void enable_ap_usb(void)
 {
