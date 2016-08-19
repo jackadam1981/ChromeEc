@@ -416,12 +416,18 @@ static void handle_acpi_write(int is_cmd)
 {
 	uint8_t value, result;
 
+	/* Set processing flag before reading command byte */
+	SET_BIT(NPCX_HIPMST(PMC_ACPI), 2);
+
 	/* Read command/data; this clears the FRMH status bit. */
 	value = NPCX_HIPMDI(PMC_ACPI);
 
 	/* Handle whatever this was. */
 	if (acpi_ap_to_ec(is_cmd, value, &result))
 		NPCX_HIPMDO(PMC_ACPI) = result;
+
+	/* Clear processing flag */
+	CLEAR_BIT(NPCX_HIPMST(PMC_ACPI), 2);
 
 	/*
 	 * ACPI 5.0-12.6.1: Generate SCI for Input Buffer Empty / Output Buffer
