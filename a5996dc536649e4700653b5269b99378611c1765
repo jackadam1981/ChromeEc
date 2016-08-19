@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db249f97_4bdf7902",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-19T01:33:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the right approach.\n\n1. If we switch from charging on port 0 to charging on port 1, discharge will never be enabled.\n\n2. Even in the case where a single port is connected, we won\u0027t enable our discharge until VBUS crosses some voltage threshold (eg. we won\u0027t enable discharge until we _already_ naturally discharge to some degree).\n\nIn this CL, we enable discharging in certain cases where we need to bring down VBUS quickly (on power role swap):\n\nhttps://chromium-review.googlesource.com/#/c/362761/\n\nIs this not sufficient for your device? Do we really need to enable discharge on simple unplug of a power source? Why?",
+      "range": {
+        "startLine": 551,
+        "startChar": 1,
+        "endLine": 552,
+        "endChar": 35
+      },
+      "revId": "a5996dc536649e4700653b5269b99378611c1765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
