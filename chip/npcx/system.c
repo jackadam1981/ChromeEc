@@ -884,3 +884,10 @@ enum system_image_copy_t system_get_shrspi_image_copy(void)
 		return SYSTEM_IMAGE_RW;
 }
 #endif
+
+static void wake_back_up(void)
+{
+	CPRINTS("WBU: Setting alarm");
+	system_set_rtc_alarm(1, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, wake_back_up, HOOK_PRIO_LAST);
