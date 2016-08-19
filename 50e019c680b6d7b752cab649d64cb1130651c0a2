@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "db249f97_2ee24bc7",
+        "filename": "board/cr50/tpm2/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-08-19T04:14:39Z",
+      "side": 1,
+      "message": "not a fan of this loop pushing to 0\n\nIt\u0027s clearer to separate whole blocks of 16 vs. the potential partial block at the end.\n\nthus (; slen \u003e\u003d 16; slen -\u003d 16) { .. }\nand take care of the partial block past this loop?\n\nwriting the final iv to the engine is also futile (but harmless). A flow that writes iv first, then does block is more natural.",
+      "revId": "50e019c680b6d7b752cab649d64cb1130651c0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db249f97_2eb96bbb",
         "filename": "board/cr50/tpm2/aes.c",
         "patchSetId": 1
