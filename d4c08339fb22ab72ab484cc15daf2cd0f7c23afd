@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db249f97_47d68551",
+        "filename": "chip/ish30/hwtimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-19T20:57:52Z",
+      "side": 1,
+      "message": "Why is 0x1f4240 the right value?",
+      "range": {
+        "startLine": 94,
+        "startChar": 22,
+        "endLine": 94,
+        "endChar": 30
+      },
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
