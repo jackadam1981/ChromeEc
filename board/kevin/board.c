@@ -446,7 +446,8 @@ struct motion_sensor_t motion_sensors[] = {
 	 * Requirement: accelerometer sensor must init before gyro sensor
 	 * DO NOT change the order of the following table.
 	 */
-	{.name = "Base Accel",
+	[BASE_ACCEL] = {
+	 .name = "Base Accel",
 	 .active_mask = SENSOR_ACTIVE_S0,
 	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
@@ -467,7 +468,7 @@ struct motion_sensor_t motion_sensors[] = {
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S0] = {
 			 .odr = 10000 | ROUND_UP_FLAG,
-			 .ec_rate = 100,
+			 .ec_rate = 0,
 		 },
 		 /* Sensor off in S3/S5 */
 		 [SENSOR_CONFIG_EC_S3] = {
@@ -481,8 +482,8 @@ struct motion_sensor_t motion_sensors[] = {
 		 },
 	 },
 	},
-
-	{.name = "Base Gyro",
+	[BASE_GYRO] = {
+	 .name = "Base Gyro",
 	 .active_mask = SENSOR_ACTIVE_S0,
 	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_GYRO,
@@ -521,9 +522,9 @@ struct motion_sensor_t motion_sensors[] = {
 		 },
 	 },
 	},
-
 #ifdef BOARD_KEVIN
-	{.name = "Lid Accel",
+	[LID_ACCEL] = {
+	 .name = "Lid Accel",
 	 .active_mask = SENSOR_ACTIVE_S0,
 	 .chip = MOTIONSENSE_CHIP_BMA255,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
@@ -538,13 +539,13 @@ struct motion_sensor_t motion_sensors[] = {
 	 .config = {
 		/* AP: by default use EC settings */
 		[SENSOR_CONFIG_AP] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 100 * MSEC,
+			.odr = 0,
+			.ec_rate = 0,
 		},
 		/* EC use accel for angle detection */
 		[SENSOR_CONFIG_EC_S0] = {
 			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 100 * MSEC,
+			.ec_rate = 0,
 		},
 		/* unused */
 		[SENSOR_CONFIG_EC_S3] = {
@@ -558,7 +559,8 @@ struct motion_sensor_t motion_sensors[] = {
 	 },
 	},
 #else
-	{.name = "Lid Accel",
+	[LID_ACCEL] = {
+	 .name = "Lid Accel",
 	 .active_mask = SENSOR_ACTIVE_S0,
 	 .chip = MOTIONSENSE_CHIP_KX022,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
@@ -573,13 +575,13 @@ struct motion_sensor_t motion_sensors[] = {
 	 .config = {
 		/* AP: by default use EC settings */
 		[SENSOR_CONFIG_AP] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 100 * MSEC,
+			.odr = 0,
+			.ec_rate = 0,
 		},
 		/* EC use accel for angle detection */
 		[SENSOR_CONFIG_EC_S0] = {
 			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 100 * MSEC,
+			.ec_rate = 0,
 		},
 		/* unused */
 		[SENSOR_CONFIG_EC_S3] = {
