@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db249f97_24bc27ab",
+        "filename": "chip/g/upgrade_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-19T19:38:16Z",
+      "side": 1,
+      "message": "success",
+      "range": {
+        "startLine": 24,
+        "startChar": 30,
+        "endLine": 24,
+        "endChar": 37
+      },
+      "revId": "c7dd595f2abffddc9f6c2ca748e4206de1e27264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db249f97_a4f01796",
+        "filename": "chip/g/upgrade_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-19T19:38:16Z",
+      "side": 1,
+      "message": "establishment",
+      "range": {
+        "startLine": 31,
+        "startChar": 29,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "c7dd595f2abffddc9f6c2ca748e4206de1e27264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db249f97_447123eb",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-19T19:38:16Z",
+      "side": 1,
+      "message": "I think we should have an explicit \"reboot\" command, rather than just hanging here indefinitely. Maybe a separate EXTENSION?",
+      "range": {
+        "startLine": 184,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 5
+      },
+      "revId": "c7dd595f2abffddc9f6c2ca748e4206de1e27264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db249f97_2418a78b",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-19T19:38:16Z",
+      "side": 1,
+      "message": "But do we reset the state to idle? Doesn\u0027t look like it.\n\nI think we should be prepared for the update to be abandoned or restarted by the other end at any time (AP reboots, CCD goes away, someone hits ^C, whatever). We should expect to get back-to-back transfer start messages, or another start message instead of rebooting, or a short packet, or any other thing.\n\nA test for this would be nice, which would require moving this into common/.",
+      "range": {
+        "startLine": 225,
+        "startChar": 3,
+        "endLine": 233,
+        "endChar": 3
+      },
+      "revId": "c7dd595f2abffddc9f6c2ca748e4206de1e27264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
