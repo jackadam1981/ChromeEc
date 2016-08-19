@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db249f97_d185d76e",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-19T19:20:25Z",
+      "side": 1,
+      "message": "What\u0027s PDU stand for?",
+      "range": {
+        "startLine": 62,
+        "startChar": 69,
+        "endLine": 62,
+        "endChar": 72
+      },
+      "revId": "266ec4176125e5393c59ce481eca8d02c1f71507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db249f97_119ccf67",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-19T19:20:25Z",
+      "side": 1,
+      "message": "From the code I see, the confirmation response to image transfer packets is always 1 byte.",
+      "range": {
+        "startLine": 68,
+        "startChar": 69,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "266ec4176125e5393c59ce481eca8d02c1f71507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db249f97_d19b17c2",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-19T19:20:25Z",
+      "side": 1,
+      "message": "Let\u0027s describe the connection protocol before the image transfer protocol, since that\u0027s the order they occur.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 41
+      },
+      "revId": "266ec4176125e5393c59ce481eca8d02c1f71507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db249f97_44b4c3cb",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-19T19:20:25Z",
+      "side": 1,
+      "message": "synchronization",
+      "range": {
+        "startLine": 600,
+        "startChar": 23,
+        "endLine": 600,
+        "endChar": 38
+      },
+      "revId": "266ec4176125e5393c59ce481eca8d02c1f71507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
