@@ -113,8 +113,6 @@ static void prepare_to_sleep(void)
 		 * reinitialized on resume.
 		 */
 		GREG32(PMU, PWRDN_SCRATCH18) = GR_USB_DCFG;
-		/* And the idle action */
-		GREG32(PMU, PWRDN_SCRATCH17) = idle_action;
 
 		/* Latch the pinmux values */
 		GREG32(PINMUX, HOLD) = 1;
@@ -164,22 +162,22 @@ void clock_refresh_console_in_use(void)
 	delay_sleep_by(10 * SECOND);
 }
 
+void enable_deep_sleep(void)
+{
+	idle_action = IDLE_DEEP_SLEEP;
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, enable_deep_sleep, HOOK_PRIO_DEFAULT);
+
 /* Custom idle task, executed when no tasks are ready to be scheduled. */
 void __idle(void)
 {
 	int sleep_ok, sleep_delay_passed;
 
 	/*
-	 * This register is preserved across soft reboots, but not hard. It
-	 * defaults to zero, which is how we can tell whether this is the
-	 * preserved value or not. We only need to remember it because we might
-	 * change it with the console command.
+	 * On init or resume from deep sleep set the idle action to default. If
+	 * it should be something else it will be determined during runtime.
 	 */
-	idle_action = GREG32(PMU, PWRDN_SCRATCH17);
-	if (idle_action == DONT_KNOW || idle_action >= NUM_CHOICES) {
-		idle_action = IDLE_DEFAULT;
-		GREG32(PMU, PWRDN_SCRATCH17) = idle_action;
-	}
+	idle_action = IDLE_DEFAULT;
 
 	/* Disable sleep until 3 minutes after init */
 	delay_sleep_by(3 * MINUTE);
