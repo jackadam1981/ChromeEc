@@ -133,7 +133,6 @@ void pmu_wakeup_interrupt(void)
 	/* Trigger timer1 interrupt */
 	if (wakeup_src & GC_PMU_EXITPD_SRC_TIMELS0_PD_EXIT_TIMER1_MASK)
 		task_trigger_irq(GC_IRQNUM_TIMELS0_TIMINT1);
-
 }
 DECLARE_IRQ(GC_IRQNUM_PMU_INTR_WAKEUP_INT, pmu_wakeup_interrupt, 1);
 
@@ -345,10 +344,10 @@ static int servo_state_unknown(void)
 	return 0;
 }
 
-static void device_powered_off(enum device_type device, int uart)
+static int device_powered_off(enum device_type device, int uart)
 {
 	if (device_get_state(device) == DEVICE_STATE_ON)
-		return;
+		return EC_ERROR_UNKNOWN;
 
 	device_state_changed(device, DEVICE_STATE_OFF);
 
@@ -361,6 +360,7 @@ static void device_powered_off(enum device_type device, int uart)
 	}
 
 	gpio_enable_interrupt(device_states[device].detect_on);
+	return EC_SUCCESS;
 }
 
 static void servo_deferred(void)
@@ -374,7 +374,10 @@ DECLARE_DEFERRED(servo_deferred);
 
 static void ap_deferred(void)
 {
-	device_powered_off(DEVICE_AP, UART_AP);
+	if (device_powered_off(DEVICE_AP, UART_AP))
+		return;
+
+	hook_notify(HOOK_CHIPSET_SHUTDOWN);
 }
 DECLARE_DEFERRED(ap_deferred);
 
@@ -406,8 +409,12 @@ struct device_config device_states[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(device_states) == DEVICE_COUNT);
 
-static void device_powered_on(enum device_type device, int uart)
+/* Returns EC_SUCCESS if the device state changed to on */
+static int device_powered_on(enum device_type device, int uart)
 {
+	int state_changed = DEVICE_STATE_ON !=
+		device_states[device].last_known_state;
+
 	/* Update the device state */
 	device_state_changed(device, DEVICE_STATE_ON);
 
@@ -418,6 +425,8 @@ static void device_powered_on(enum device_type device, int uart)
 	if (device_get_state(DEVICE_SERVO) != DEVICE_STATE_ON &&
 	    !uartn_enabled(uart))
 		uartn_tx_connect(uart);
+
+	return state_changed ? EC_SUCCESS : EC_ERROR_UNKNOWN;
 }
 
 static void servo_attached(void)
@@ -437,7 +446,13 @@ void device_state_on(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_AP_ON:
-		device_powered_on(DEVICE_AP, UART_AP);
+		/*
+		 * If the AP state just changed to on notify
+		 * HOOK_CHIPSET_RESUME. If it was already on don't do anything
+		 */
+		if (device_powered_on(DEVICE_AP, UART_AP))
+			return;
+		hook_notify(HOOK_CHIPSET_RESUME);
 		break;
 	case GPIO_EC_ON:
 		device_powered_on(DEVICE_EC, UART_EC);
