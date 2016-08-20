@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88373bda_01ab7486",
+        "filename": "driver/als_al3010.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-20T17:37:02Z",
+      "side": 1,
+      "message": "remove this function.",
+      "revId": "feb99686483b6f774d7206edd58ad5bbda72e690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_e1a750b6",
+        "filename": "driver/als_al3010.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-20T17:37:02Z",
+      "side": 1,
+      "message": "fold into al3010_read_lux",
+      "revId": "feb99686483b6f774d7206edd58ad5bbda72e690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
