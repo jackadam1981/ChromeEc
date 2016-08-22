@@ -1998,6 +1998,12 @@
 #undef CONFIG_USB_PD_TCPM_MUX
 
 /*
+ * if defined with one of the tcpc_rp_value, set the maximum amount of current
+ * we can advertise on a single source port.
+ */
+#undef CONFIG_USB_PD_TOTAL_SOURCE_CURRENT
+
+/*
  * The TCPM must know whether VBUS is present in order to make proper state
  * transitions. In addition, charge_manager must know about VBUS presence in
  * order to make charging decisions. VBUS state can be determined by various
