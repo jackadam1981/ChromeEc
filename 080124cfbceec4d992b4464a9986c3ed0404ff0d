@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "685f6759_3fadafed",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-22T20:46:23Z",
+      "side": 1,
+      "message": "From a C style guide\n// binary operators usually have spaces around them, but it\u0027s\n// OK to remove spaces around factors.  Parentheses should have no\n// internal padding.\n\nYou\u0027re fine, forget about it.",
+      "parentUuid": "685f6759_1f354bd9",
+      "revId": "080124cfbceec4d992b4464a9986c3ed0404ff0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "685f6759_bc9d4d05",
         "filename": "driver/baro_bmp280.h",
         "patchSetId": 23
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "Sure. Yes this is. I will mention this in the comment above.",
       "parentUuid": "685f6759_9c9a0909",
+      "revId": "080124cfbceec4d992b4464a9986c3ed0404ff0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "685f6759_3f948f91",
+        "filename": "driver/baro_bmp280.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-22T20:46:23Z",
+      "side": 1,
+      "message": "Instead of comment, use that code: given it is all preprocessor, no code will be wasted.",
+      "parentUuid": "685f6759_9ffe7b01",
       "revId": "080124cfbceec4d992b4464a9986c3ed0404ff0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
