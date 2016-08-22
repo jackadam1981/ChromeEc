@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08542b0d_e94971c1",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1160634
+      },
+      "writtenOn": "2016-08-22T11:17:09Z",
+      "side": 1,
+      "message": "I think that the first code line (to set the SMI high) is not needed. If the SMI is active Low it means that it is High most of the time therefore you only need to:\n1. Set it low\n2. Delay \n3. Set it high again",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 52
+      },
+      "revId": "cb4b9f9facb2f264fc13e180a5f060f80d4122e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08542b0d_c946b5af",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1160634
+      },
+      "writtenOn": "2016-08-22T11:17:09Z",
+      "side": 1,
+      "message": "same comment as in SMI.",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 52
+      },
+      "revId": "cb4b9f9facb2f264fc13e180a5f060f80d4122e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
