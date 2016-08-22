@@ -517,6 +517,9 @@
 #define CONFIG_CHIPSET_HAS_PP1350
 #define CONFIG_CHIPSET_HAS_PP5000
 
+/* Enable board-specific default flags for the "reboot" console command */
+#define CONFIG_DEFAULT_REBOOT_CMD_FLAGS 0
+
 /*****************************************************************************/
 /*
  * Chip config for clock circuitry
