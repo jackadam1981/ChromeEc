@@ -1872,6 +1872,18 @@ void pd_task(void)
 			    (pd[port].vdm_state == VDM_STATE_BUSY))
 				break;
 
+			/* Send updated source capabilities to our partner */
+			if (pd[port].flags & PD_FLAGS_UPDATE_SRC_CAPS) {
+				res = send_source_cap(port);
+				if (res >= 0) {
+					set_state(port,
+						  PD_STATE_SRC_NEGOCIATE);
+					pd[port].flags &=
+						~PD_FLAGS_UPDATE_SRC_CAPS;
+				}
+				break;
+			}
+
 			/* Send get sink cap if haven't received it yet */
 			if (pd[port].last_state != pd[port].task_state &&
 			    !(pd[port].flags & PD_FLAGS_SNK_CAP_RECVD)) {
@@ -2936,6 +2948,14 @@ void pd_set_external_voltage_limit(int port, int mv)
 	    pd[port].task_state == PD_STATE_SNK_TRANSITION) {
 		/* Set flag to send new power request in pd_task */
 		pd[port].new_power_request = 1;
+		task_wake(PD_PORT_TO_TASK_ID(port));
+	}
+}
+
+void pd_update_contract(int port)
+{
+	if (pd[port].flags & PD_FLAGS_EXPLICIT_CONTRACT) {
+		pd[port].flags |= PD_FLAGS_UPDATE_SRC_CAPS;
 		task_wake(PD_PORT_TO_TASK_ID(port));
 	}
 }

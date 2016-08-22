@@ -91,6 +91,12 @@ int charge_manager_get_charger_current(void);
 void charge_manager_save_log(int port);
 #endif
 
+/* Update whether a given port is sourcing current. */
+void charge_manager_source_port(int port, int enable);
+
+/* Returns the number of ports sourcing current. */
+int charge_manager_get_source_port_count(void);
+
 /* Board-level callback functions */
 
 /*
