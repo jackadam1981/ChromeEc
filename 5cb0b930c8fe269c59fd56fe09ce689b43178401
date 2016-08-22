@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a80ebf7a_a691a84f",
+        "filename": "chip/g/timels.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-08-22T22:05:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db249f97_67dd4139",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "5cb0b930c8fe269c59fd56fe09ce689b43178401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db249f97_e2f59f84",
         "filename": "chip/g/timels.c",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a80ebf7a_c6882424",
+        "filename": "chip/g/timels.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-08-22T22:05:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db249f97_e2f59f84",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "5cb0b930c8fe269c59fd56fe09ce689b43178401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db249f97_875dddf2",
         "filename": "chip/g/timels.h",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2016-08-19T21:12:52Z",
       "side": 1,
       "message": "Document the value that this function returns.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 42
+      },
+      "revId": "5cb0b930c8fe269c59fd56fe09ce689b43178401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a80ebf7a_29790927",
+        "filename": "chip/g/timels.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-08-22T22:05:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db249f97_875dddf2",
       "range": {
         "startLine": 13,
         "startChar": 0,
