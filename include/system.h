@@ -467,6 +467,8 @@ int system_process_retry_counter(void);
 #define BOARD_SLAVE_CONFIG_I2C       (1 << 1)   /* Slave I2C interface */
 #define BOARD_USB_AP                 (1 << 2)   /* One of the PHYs is  */
 						/* connected to the AP */
+#define BOARD_REMOVE_SYS_RST_PULL_UP (1 << 3)   /* remove the pullup  */
+						/* on sys_rst_l        */
 /**
  * Get board properites
  *

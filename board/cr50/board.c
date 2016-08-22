@@ -15,6 +15,8 @@
 #include "init_chip.h"
 #include "registers.h"
 #include "nvmem.h"
+#include "rbox.h"
+#include "spi.h"
 #include "system.h"
 #include "task.h"
 #include "trng.h"
@@ -22,7 +24,6 @@
 #include "usb_descriptor.h"
 #include "usb_hid.h"
 #include "util.h"
-#include "spi.h"
 #include "usb_spi.h"
 
 /* Define interrupt and gpio structs */
@@ -185,6 +186,12 @@ static void init_runlevel(const enum permission_level desired_level)
 		}
 	}
 }
+static void board_configure_gpios(uint32_t properties)
+{
+	/* Remove the pullup on sys_rst_l */
+	if (properties & BOARD_REMOVE_SYS_RST_PULL_UP)
+		GWRITE_FIELD(PINMUX, DIOM0_CTL, PU, 0);
+}
 
 /* Initialize board. */
 static void board_init(void)
@@ -197,6 +204,8 @@ static void board_init(void)
 	init_runlevel(PERMISSION_MEDIUM);
 	/* Initialize NvMem partitions */
 	nvmem_init();
+	/* Configure board specific gpios */
+	board_configure_gpios(system_get_board_properties());
 
 	/* TODO(crosbug.com/p/49959): For now, leave flash WP unlocked */
 	GREG32(RBOX, EC_WP_L) = 1;
@@ -275,7 +284,7 @@ void sys_rst_asserted(enum gpio_signal signal)
 	 * asserting this signal should not cause a system reset.
 	 */
 	CPRINTS("%s resceived signal %d)", __func__, signal);
-	if (usb_spi_update_in_progress())
+	if (usb_spi_update_in_progress() || rbox_is_asserting_ec_reset())
 		return;
 
 	cflush();
@@ -541,6 +550,8 @@ static void detect_slave_config(void)
 			properties |= BOARD_SLAVE_CONFIG_I2C;
 			/* One PHY is connected to the AP */
 			properties |= BOARD_USB_AP;
+			/* Remove the pullup on sys_rst_l */
+			properties |= BOARD_REMOVE_SYS_RST_PULL_UP;
 		}
 
 		/*
