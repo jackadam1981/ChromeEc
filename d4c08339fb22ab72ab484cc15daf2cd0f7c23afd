@@ -2,6 +2,131 @@
   "comments": [
     {
       "key": {
+        "uuid": "db249f97_277fc941",
+        "filename": "chip/ish30/clock.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "These \u0027wfi\u0027 instructions are arm-specific.",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_d927a45d",
+        "filename": "chip/ish30/config_chip.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "why is this defaulting to a bigger size?",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_19abec86",
+        "filename": "chip/ish30/config_chip.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "I\u0027m confused by this comment. It says these addresses are ram but then we use addresses like 0xff000000 below.",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_39c6b06a",
+        "filename": "chip/ish30/config_chip.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "Is this really flash? I thought it was all sram that gets written to from flash? I didn\u0027t think this device had access to flash.",
+      "range": {
+        "startLine": 44,
+        "startChar": 21,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_59ef34ec",
+        "filename": "chip/ish30/config_chip.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "This size is off by one because BASE_END is not exclusive.",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db249f97_a7381985",
+        "filename": "chip/ish30/config_chip.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "If you aren\u0027t adding support for any of these things just remove them (including the \u0027#if 0\u0027).",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_1cb4fac8",
+        "filename": "chip/ish30/config_flash_layout.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "Is there even a notion of flash or flash layout for this chip? It\u0027s all just sram as far as I know.",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db249f97_47d68551",
         "filename": "chip/ish30/hwtimer.c",
         "patchSetId": 11
@@ -19,6 +144,308 @@
         "endLine": 94,
         "endChar": 30
       },
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_fcbb76b0",
+        "filename": "chip/ish30/hwtimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "no tabs after the left hand side assignment",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 47
+      },
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_5c7962f3",
+        "filename": "chip/ish30/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "I think i2c_ctxs should be const.",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_9c6fca2d",
+        "filename": "chip/ish30/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "Why are all these variables globally scoped and not static?",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_9c046a75",
+        "filename": "chip/ish30/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "Why isn\u0027t i2c_ctxs initialized in the data segment using struct initializers?",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 36
+      },
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_dc49d28f",
+        "filename": "chip/ish30/ipc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "What is this #define? What does it represent?",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_1c4f5a6f",
+        "filename": "chip/ish30/ipc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "So this register has an address to a data structure? Where is it pointing? SRAM within the ISH or somewhere else?",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_3c2fbe8c",
+        "filename": "chip/ish30/ipc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "These \u00274\u0027 and \u00271\u0027 magic values presumably mean something?",
+      "range": {
+        "startLine": 242,
+        "startChar": 41,
+        "endLine": 242,
+        "endChar": 45
+      },
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_fc401644",
+        "filename": "chip/ish30/ipc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "What is this out of band message? Where does one get access to the ISH\u0027s internal memory?",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_5c13a260",
+        "filename": "chip/ish30/ipc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "What are we doing here and why? Please comment.",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_fcfed601",
+        "filename": "chip/ish30/ipc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "header_length_mask ? Also there\u0027s already a call to IPC_HEADER_GET_LENGTH() in ipc_read(). Why are we re-doing the work in there when we already pulled out the information.",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_1c63da45",
+        "filename": "chip/ish30/ipc.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "Where is ipc_base defined?",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_3c557e53",
+        "filename": "chip/ish30/ipc.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "double define",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_dc6c3235",
+        "filename": "chip/ish30/ipc.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "spaces around \u0027\u0026\u0027",
+      "range": {
+        "startLine": 50,
+        "startChar": 13,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_fc46d6ae",
+        "filename": "chip/ish30/ipc.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "spaces",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_1cecfa8b",
+        "filename": "chip/ish30/ipc.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "This seems like an odd place to create a new type. If one wants a boolean in the EC code base I suggest making it available generically.",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_3c921efc",
+        "filename": "chip/ish30/ipc.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-22T17:55:18Z",
+      "side": 1,
+      "message": "why all the typedef\u0027ing ?",
       "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
