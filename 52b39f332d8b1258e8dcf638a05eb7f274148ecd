@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a80ebf7a_09740dfc",
+        "filename": "chip/g/timels.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-22T22:19:10Z",
+      "side": 1,
+      "message": "This is calculated a little strangely, since neither __hw_clock_event_get() nor get_time().le.lo care about TICKS_PER_USEC.\n\nTIMER_MAX is about 4000 seconds.  (TIMER_MAX - SECOND) should catch all the overshoots.",
+      "range": {
+        "startLine": 23,
+        "startChar": 31,
+        "endLine": 23,
+        "endChar": 74
+      },
+      "revId": "52b39f332d8b1258e8dcf638a05eb7f274148ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a80ebf7a_c9403593",
+        "filename": "chip/g/timels.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-22T22:19:10Z",
+      "side": 1,
+      "message": "Can this be a uint32_t now?\n\nIf not, then the calculation below should have a well-defined behavior if it would cause TIMER0_LOAD to wrap around - that is, if next_evt_us \u003e (MAXINT32 * TICKS_PER_USEC).",
+      "range": {
+        "startLine": 42,
+        "startChar": 22,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "52b39f332d8b1258e8dcf638a05eb7f274148ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
