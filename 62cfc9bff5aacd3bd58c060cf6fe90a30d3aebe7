@@ -93,6 +93,30 @@
       "revId": "62cfc9bff5aacd3bd58c060cf6fe90a30d3aebe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_7cf7868a",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-22T17:17:11Z",
+      "side": 1,
+      "message": "Actually, I remove this code, Nicolas already took care of it in cl/373284",
+      "parentUuid": "88373bda_3918f07a",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 45
+      },
+      "revId": "62cfc9bff5aacd3bd58c060cf6fe90a30d3aebe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
