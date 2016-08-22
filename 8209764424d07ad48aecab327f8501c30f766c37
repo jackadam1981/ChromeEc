@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "285baf40_8a88ab22",
+        "filename": "chip/ish30/hwtimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-08-22T17:34:50Z",
+      "side": 1,
+      "message": "This is supposed to be the comparator value for Timer 0, on whose expiry interrupt needs to be generated. In the latest patch, updated it to generate 10 interrupts per second. I\u0027m not really sure about the firmware\u0027s requirement.",
+      "parentUuid": "c8475d66_63dda224",
+      "revId": "8209764424d07ad48aecab327f8501c30f766c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8475d66_83c09e3b",
         "filename": "chip/ish30/hwtimer.c",
         "patchSetId": 9
@@ -65,6 +83,24 @@
       "writtenOn": "2016-04-26T15:58:12Z",
       "side": 1,
       "message": "extra new line",
+      "revId": "8209764424d07ad48aecab327f8501c30f766c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "285baf40_4d7e4d10",
+        "filename": "chip/ish30/hwtimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-08-22T17:34:50Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "c8475d66_83c09e3b",
       "revId": "8209764424d07ad48aecab327f8501c30f766c37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -88,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "285baf40_2d831904",
+        "filename": "chip/ish30/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-08-22T17:34:50Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "c8475d66_43e2a6e6",
+      "revId": "8209764424d07ad48aecab327f8501c30f766c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8475d66_23e7aaf6",
         "filename": "chip/ish30/ipc.c",
         "patchSetId": 9
@@ -99,6 +153,24 @@
       "writtenOn": "2016-04-26T15:58:12Z",
       "side": 1,
       "message": "extra new line",
+      "revId": "8209764424d07ad48aecab327f8501c30f766c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "285baf40_0d88551c",
+        "filename": "chip/ish30/ipc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-08-22T17:34:50Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "c8475d66_23e7aaf6",
       "revId": "8209764424d07ad48aecab327f8501c30f766c37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
