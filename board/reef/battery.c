@@ -105,8 +105,13 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 		if (rv || data[2] || data[3] || data[4] || data[5])
 			return BATTERY_DISCONNECT_ERROR;
 
-		/* No safety fault, battery is disconnected */
-		return BATTERY_DISCONNECTED;
+		/*
+		 * Battery is not in cut-off state and
+		 * No safety fault, battery is disconnected
+		 */
+		if (battery_is_present() ==
+			gpio_get_level(GPIO_EC_BATT_PRES_L))
+			return BATTERY_DISCONNECTED;
 	}
 	not_disconnected = 1;
 	return BATTERY_NOT_DISCONNECTED;
