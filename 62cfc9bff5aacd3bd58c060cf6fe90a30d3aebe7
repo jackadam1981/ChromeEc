@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88373bda_e72ac027",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-22T15:37:42Z",
+      "side": 1,
+      "message": "perhaps: \"a lot of debug messages\" ?",
+      "range": {
+        "startLine": 12,
+        "startChar": 32,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "62cfc9bff5aacd3bd58c060cf6fe90a30d3aebe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_27f448ba",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-22T15:37:42Z",
+      "side": 1,
+      "message": "But this will disable ALL host command debug output... I\u0027m not sure if we want that. What issues is the output causing? In normal mode, repeated commands should just have a \u0027+\u0027 printed. However, I think if they come in intervals greater than HCDEBUG_MAX_REPEAT_DELAY, then we\u0027ll still print them. (Which I think is currently the case...)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 45
+      },
+      "revId": "62cfc9bff5aacd3bd58c060cf6fe90a30d3aebe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
