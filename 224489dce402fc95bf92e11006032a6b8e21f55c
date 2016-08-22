@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "285baf40_cd891d21",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-08-22T17:34:50Z",
+      "side": 1,
+      "message": "LPC and SPI - not really required for ISH but it\u0027s quite hard to build without them.",
+      "revId": "224489dce402fc95bf92e11006032a6b8e21f55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "285baf40_8d93254b",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-08-22T17:34:50Z",
+      "side": 1,
+      "message": "HPET clock frequency varies across versions. For example, ISH3(SKL) is 12MHz, ISH4(APL) is 32.768KHz. ISH_(20|30|40..) would be passed from board/$(BOARD)/build.mk",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 25
+      },
+      "revId": "224489dce402fc95bf92e11006032a6b8e21f55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "285baf40_ed8ce132",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-08-22T17:34:50Z",
+      "side": 1,
+      "message": "get_tsc() is unused, and it should\u0027ve been removed. I\u0027ll remove in the next version.",
+      "revId": "224489dce402fc95bf92e11006032a6b8e21f55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "285baf40_ad96e93a",
+        "filename": "chip/ish/ipc.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-08-22T17:34:50Z",
+      "side": 1,
+      "message": "These lpc_ functions are needed by files under common/",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 270,
+        "endChar": 29
+      },
+      "revId": "224489dce402fc95bf92e11006032a6b8e21f55c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
