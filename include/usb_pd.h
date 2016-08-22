@@ -700,6 +700,7 @@ enum pd_states {
 #define PD_FLAGS_VCONN_ON          (1 << 12)/* vconn is being sourced */
 #define PD_FLAGS_TRY_SRC           (1 << 13)/* Try.SRC states are active */
 #define PD_FLAGS_PARTNER_USB_COMM  (1 << 14)/* port partner is USB comms */
+#define PD_FLAGS_UPDATE_SRC_CAPS   (1 << 15)/* send new source capabilities */
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
 					   PD_FLAGS_PARTNER_DR_DATA | \
@@ -712,7 +713,8 @@ enum pd_states {
 					   PD_FLAGS_PARTNER_EXTPOWER | \
 					   PD_FLAGS_VCONN_ON | \
 					   PD_FLAGS_TRY_SRC | \
-					   PD_FLAGS_PARTNER_USB_COMM)
+					   PD_FLAGS_PARTNER_USB_COMM | \
+					   PD_FLAGS_UPDATE_SRC_CAPS)
 
 
 enum pd_cc_states {
@@ -968,6 +970,14 @@ void pd_set_external_voltage_limit(int port, int mv);
  */
 void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage);
+
+
+/**
+ * Update the power contract if it exists.
+ *
+ * @param port USB-C port number.
+ */
+void pd_update_contract(int port);
 
 /**
  * Set the type-C input current limit.

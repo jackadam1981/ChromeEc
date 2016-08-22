@@ -13,8 +13,10 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "system.h"
+#include "tcpm.h"
 #include "timer.h"
 #include "usb_pd.h"
+#include "usb_pd_tcpm.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
@@ -71,6 +73,10 @@ static int override_port = OVERRIDE_OFF;
 
 static int delayed_override_port = OVERRIDE_OFF;
 static timestamp_t delayed_override_deadline;
+
+/* Bitmap of ports used as power source */
+static unsigned source_port_bitmap;
+BUILD_ASSERT(sizeof(source_port_bitmap)*8 >= CONFIG_USB_PD_PORT_COUNT);
 
 enum charge_manager_change_type {
 	CHANGE_CHARGE,
@@ -879,6 +885,53 @@ int charge_manager_get_power_limit_uw(void)
 		return 0;
 	else
 		return current_ma * voltage_mv;
+}
+
+#ifndef TEST_BUILD
+void charge_manager_source_port(int port, int enable)
+{
+	int new_bitmap = source_port_bitmap;
+	int p;
+
+	if (enable)
+		new_bitmap |= 1 << port;
+	else
+		new_bitmap &= ~(1 << port);
+
+	/* No change, exit early. */
+	if (new_bitmap == source_port_bitmap)
+		return;
+
+	/* Set port limit according to policy */
+	for (p = 0; p < CONFIG_USB_PD_PORT_COUNT; p++) {
+#ifdef CONFIG_USB_PD_TOTAL_SOURCE_CURRENT
+		/*
+		 * if we are the only active source port or there is none,
+		 * advertise all the available power.
+		 */
+		int rp = (new_bitmap & ~(1 << p)) ? CONFIG_USB_PD_PULLUP
+					: CONFIG_USB_PD_TOTAL_SOURCE_CURRENT;
+#else
+		int rp = CONFIG_USB_PD_PULLUP;
+#endif
+		tcpm_select_rp_value(port, rp);
+		pd_update_contract(port);
+	}
+
+	source_port_bitmap = new_bitmap;
+}
+#endif /* !TEST_BUILD */
+
+int charge_manager_get_source_port_count(void)
+{
+	int p;
+	int count = 0;
+
+	for (p = 0; p < CONFIG_USB_PD_PORT_COUNT; p++)
+		if (source_port_bitmap & (1 << p))
+			count++;
+
+	return count;
 }
 
 #ifndef TEST_BUILD
