@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88373bda_390d9046",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-22T16:40:40Z",
+      "side": 1,
+      "message": "It is actually a log of host command (at least every 100ms, up to every 5ms when an app is actively using a sensor).\nI fix the \"them\".",
+      "parentUuid": "88373bda_e72ac027",
+      "range": {
+        "startLine": 12,
+        "startChar": 32,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "62cfc9bff5aacd3bd58c060cf6fe90a30d3aebe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88373bda_27f448ba",
         "filename": "board/kevin/board.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-22T15:37:42Z",
       "side": 1,
       "message": "But this will disable ALL host command debug output... I\u0027m not sure if we want that. What issues is the output causing? In normal mode, repeated commands should just have a \u0027+\u0027 printed. However, I think if they come in intervals greater than HCDEBUG_MAX_REPEAT_DELAY, then we\u0027ll still print them. (Which I think is currently the case...)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 45
+      },
+      "revId": "62cfc9bff5aacd3bd58c060cf6fe90a30d3aebe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_3918f07a",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-22T16:40:40Z",
+      "side": 1,
+      "message": "The problem is for each sample, the AP may send 2 commands (67h an 2Bh), so the \u0027+\u0027 optimization will not work.\nWe come to this solution in cl/359112",
+      "parentUuid": "88373bda_27f448ba",
       "range": {
         "startLine": 14,
         "startChar": 0,
