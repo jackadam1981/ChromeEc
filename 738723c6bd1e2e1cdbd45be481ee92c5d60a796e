@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08b0abbd_06c13a51",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-22T08:00:04Z",
+      "side": 1,
+      "message": "rather than CONFIG_MKBP_EVENT_NO_GPIO_NO_LPC_BUT_STILL_NOTHING, I would probably prefer something like:\nCONFIG_CHIP_MKBP_EVENT\n\nbut overall, is there a reason why we are not implementing host event (and use the case above) ?\n\nIt seems we are currently doing something on the !active condition, but I thought the reset was done by the AP here.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "738723c6bd1e2e1cdbd45be481ee92c5d60a796e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
