@@ -339,6 +339,31 @@ static int fusb302_send_message(int port, uint16_t header, const uint32_t *data,
 	return rv;
 }
 
+static int fusb302_tcpm_select_rp_value(int port, int rp)
+{
+	int reg;
+	int rv;
+
+	rv = tcpc_read(port, TCPC_REG_CONTROL0, &reg);
+	if (rv)
+		return rv;
+
+	/* Set the current source for Rp value */
+	reg &= ~TCPC_REG_CONTROL0_HOST_CUR_MASK;
+	switch (rp) {
+	case TYPEC_RP_1A5:
+		reg |= TCPC_REG_CONTROL0_HOST_CUR_1A5;
+		break;
+	case TYPEC_RP_3A0:
+		reg |= TCPC_REG_CONTROL0_HOST_CUR_3A0;
+		break;
+	case TYPEC_RP_USB:
+	default:
+		reg |= TCPC_REG_CONTROL0_HOST_CUR_USB;
+	}
+	return tcpc_write(port, TCPC_REG_CONTROL0, reg);
+}
+
 static int fusb302_tcpm_init(int port)
 {
 	int reg;
@@ -397,15 +422,6 @@ static int fusb302_tcpm_init(int port)
 	/* Interrupt Enable */
 	tcpc_read(port, TCPC_REG_CONTROL0, &reg);
 	reg &= ~TCPC_REG_CONTROL0_INT_MASK;
-	/* Set the current source for Rp value */
-	reg &= ~TCPC_REG_CONTROL0_HOST_CUR_MASK;
-#ifdef CONFIG_USB_PD_PULLUP_1_5A
-	reg |= TCPC_REG_CONTROL0_HOST_CUR_1A5;
-#elif defined(CONFIG_USB_PD_PULLUP_3A)
-	reg |= TCPC_REG_CONTROL0_HOST_CUR_3A0;
-#else
-	reg |= TCPC_REG_CONTROL0_HOST_CUR_USB;
-#endif
 	tcpc_write(port, TCPC_REG_CONTROL0, reg);
 
 	/* Set VCONN switch defaults */
@@ -468,12 +484,6 @@ static int fusb302_tcpm_set_cc(int port, int pull)
 	case TYPEC_CC_RP:
 
 		/* Only use autodetect feature for revA silicon */
-		/*
-		 * TODO(crosbug.com/p/54452): Add configuration of Rp strength
-		 * values for presenting desired current to port partner.
-		 * This value will depend on config flags
-		 * CONFIG_USB_PD_PULLUP_* in the board file
-		 */
 		/* if fusb302 hasn't figured anything out yet */
 		if ((state[port].device_id == FUSB302_DEVID_302A) &&
 		    !state[port].togdone_pullup_cc1 &&
@@ -1032,6 +1042,7 @@ const struct tcpm_drv fusb302_tcpm_drv = {
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	.get_vbus_level		= &fusb302_tcpm_get_vbus_level,
 #endif
+	.select_rp_value	= &fusb302_tcpm_select_rp_value,
 	.set_cc			= &fusb302_tcpm_set_cc,
 	.set_polarity		= &fusb302_tcpm_set_polarity,
 	.set_vconn		= &fusb302_tcpm_set_vconn,
