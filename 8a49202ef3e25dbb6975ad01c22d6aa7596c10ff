@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88373bda_b9c5003b",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-22T16:14:54Z",
+      "side": 1,
+      "message": "Do you mean sysjumps between the RO or RW image?",
+      "revId": "8a49202ef3e25dbb6975ad01c22d6aa7596c10ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_4762acab",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-22T16:14:54Z",
+      "side": 1,
+      "message": "nit: extra space.",
+      "range": {
+        "startLine": 66,
+        "startChar": 25,
+        "endLine": 66,
+        "endChar": 26
+      },
+      "revId": "8a49202ef3e25dbb6975ad01c22d6aa7596c10ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_c7b45ce2",
+        "filename": "test/motion_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-22T16:14:54Z",
+      "side": 1,
+      "message": "nit: align this comment.",
+      "revId": "8a49202ef3e25dbb6975ad01c22d6aa7596c10ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88373bda_07926452",
+        "filename": "test/test_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-22T16:14:54Z",
+      "side": 1,
+      "message": "Accidentally repeated?",
+      "revId": "8a49202ef3e25dbb6975ad01c22d6aa7596c10ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
