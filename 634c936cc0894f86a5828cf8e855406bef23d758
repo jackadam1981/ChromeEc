@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "488b83e0_007346aa",
+        "filename": "board/rei/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-22T06:46:40Z",
+      "side": 1,
+      "message": "trends come and go,\nthis file is not longer fashionable, you can remove it.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "634c936cc0894f86a5828cf8e855406bef23d758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a846bf69_43b2a64a",
+        "filename": "board/rei/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-22T06:46:40Z",
+      "side": 1,
+      "message": "might not be functional yet but it will be needed at some point AFAICT",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "634c936cc0894f86a5828cf8e855406bef23d758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08b0abbd_26cb167c",
+        "filename": "board/rei/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-22T06:46:40Z",
+      "side": 1,
+      "message": "this is dead,\njust remove it",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 31
+      },
+      "revId": "634c936cc0894f86a5828cf8e855406bef23d758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8c95f46_2b6af9ba",
+        "filename": "board/rei/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-22T06:46:40Z",
+      "side": 1,
+      "message": "you already have one at line 19\nby the way, avoid commenting out #define, it confuses a few scripts grepping #define / #undef",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 29
+      },
+      "revId": "634c936cc0894f86a5828cf8e855406bef23d758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08b0abbd_c6dfa232",
+        "filename": "board/rei/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-22T06:46:40Z",
+      "side": 1,
+      "message": "That\u0027s the power the main board is able to source (for USB peripherals).\nThis seems a \u0027legit\u0027 value but it depends on what is soldered on your motherboard",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 73
+      },
+      "revId": "634c936cc0894f86a5828cf8e855406bef23d758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08b0abbd_e6dc1e40",
+        "filename": "board/rei/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-22T06:46:40Z",
+      "side": 1,
+      "message": "most of the validation is already done in the common code\nand you have already defined the acceptable voltage range in board.h (ie PD_MAX_VOLTAGE_MV).\nThat\u0027s for boards having \u0027gaps\u0027 in the voltage range their power input can handle.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 3
+      },
+      "revId": "634c936cc0894f86a5828cf8e855406bef23d758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
