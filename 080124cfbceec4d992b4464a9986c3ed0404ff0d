@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "685f6759_1f354bd9",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-22T20:40:40Z",
+      "side": 1,
+      "message": "sorry didn\u0027t get your point.",
+      "parentUuid": "685f6759_1cdd59de",
+      "revId": "080124cfbceec4d992b4464a9986c3ed0404ff0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "685f6759_bc9d4d05",
         "filename": "driver/baro_bmp280.h",
         "patchSetId": 23
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "685f6759_bf01bf11",
+        "filename": "driver/baro_bmp280.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-22T20:40:40Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "685f6759_bc9d4d05",
+      "revId": "080124cfbceec4d992b4464a9986c3ed0404ff0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "685f6759_9c9a0909",
         "filename": "driver/baro_bmp280.h",
         "patchSetId": 23
@@ -47,6 +83,24 @@
       "writtenOn": "2016-08-22T19:57:08Z",
       "side": 1,
       "message": "Use BMP280_prefix as well.\nAlso, isn\u0027t this compute time based on oversampling parameters below?",
+      "revId": "080124cfbceec4d992b4464a9986c3ed0404ff0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "685f6759_9ffe7b01",
+        "filename": "driver/baro_bmp280.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-08-22T20:40:40Z",
+      "side": 1,
+      "message": "Sure. Yes this is. I will mention this in the comment above.",
+      "parentUuid": "685f6759_9c9a0909",
       "revId": "080124cfbceec4d992b4464a9986c3ed0404ff0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
