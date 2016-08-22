@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08b0abbd_89969d3b",
+        "filename": "chip/rotor/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-22T09:41:14Z",
+      "side": 1,
+      "message": "looks like a NO-OP ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "07b866315d4e69caadc71255d8db798fbe878b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48b2a3c6_c806cfd0",
+        "filename": "chip/rotor/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-22T09:41:14Z",
+      "side": 1,
+      "message": "(port)",
+      "range": {
+        "startLine": 153,
+        "startChar": 48,
+        "endLine": 153,
+        "endChar": 52
+      },
+      "revId": "07b866315d4e69caadc71255d8db798fbe878b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48b2a3c6_e80393bd",
+        "filename": "chip/rotor/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-22T09:41:14Z",
+      "side": 1,
+      "message": "this doesn\u0027t seem to add up properly,\n0xA0 ?",
+      "range": {
+        "startLine": 232,
+        "startChar": 24,
+        "endLine": 232,
+        "endChar": 43
+      },
+      "revId": "07b866315d4e69caadc71255d8db798fbe878b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
