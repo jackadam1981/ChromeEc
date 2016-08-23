@@ -74,7 +74,7 @@ static const struct i2c_tpm_reg_map i2c_to_tpm[] = {
 	{6, 4, 0xf00},   /* TPM DID VID */
 	{0xa, 4, 0x14},  /* TPM TPM_INTF_CAPABILITY */
 	{0xe, 1, 0xf04}, /* TPM RID */
-	{0xf, 4, 0xf90}, /* TPM_FW_VER */
+	{0xf, 0, 0xf90}, /* TPM_FW_VER */
 };
 
 static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
