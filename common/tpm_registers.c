@@ -387,8 +387,6 @@ void tpm_register_put(uint32_t regaddr, const uint8_t *data, uint32_t data_size)
 		fifo_reg_write(data, data_size);
 		break;
 	case TPM_FW_VER:
-		/* Reload versions, in case something has been updated */
-		set_version_string();
 		/* Reset read byte count */
 		tpm_fw_ver_index = 0;
 		break;
@@ -419,7 +417,7 @@ void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 	tpm_sts &= ~(burst_count_mask << burst_count_shift);
 	if (tpm_.fifo_write_index == tpm_.fifo_read_index) {
 		tpm_sts &= ~(data_avail | command_ready);
-		/* Birst size for the following write requests. */
+		/* Burst size for the following write requests. */
 		tpm_sts |= 63 << burst_count_shift;
 	} else {
 		/*
@@ -500,6 +498,8 @@ static void tpm_init(void)
 	/* TPM2 library functions. */
 	_plat__Signal_PowerOn();
 
+	/* Create version string to be read by host */
+	set_version_string();
 
 	/*
 	 * Make sure NV RAM metadata is initialized, needed to check
@@ -596,6 +596,7 @@ void tpm_task(void)
 		if (response_size &&
 		    (response_size <= sizeof(tpm_.regs.data_fifo))) {
 			uint32_t tpm_sts;
+			uint16_t burstsize;
 			/*
 			 * TODO(vbendeb): revisit this when
 			 * crosbug.com/p/55667 has been addressed.
@@ -618,8 +619,13 @@ void tpm_task(void)
 			set_tpm_state(tpm_state_completing_cmd);
 			tpm_sts = tpm_.regs.sts;
 			tpm_sts &= ~(burst_count_mask << burst_count_shift);
-			tpm_sts |= (MIN(response_size, 63) << burst_count_shift)
-				| data_avail;
+			burstsize = 63;
+			/* For I2C, send enough for host to determine msg len */
+			if (system_get_board_properties() &
+			    BOARD_SLAVE_CONFIG_I2C)
+				burstsize = 6;
+			tpm_sts |= (MIN(response_size, burstsize) <<
+				    burst_count_shift) | data_avail;
 			tpm_.regs.sts = tpm_sts;
 		}
 	}
