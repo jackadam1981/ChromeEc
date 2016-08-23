@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a8dddf5f_147e9ab8",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-23T21:10:13Z",
+      "side": 1,
+      "message": "tpm_registers.h needs to be after the other includes in this file so that it will compile. I moved tpm_manufacture.h just to keep them together.",
+      "parentUuid": "3e3be95b_492019ab",
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e3be95b_093771e4",
         "filename": "common/i2cs_tpm.c",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a8dddf5f_14957ad6",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-23T21:10:13Z",
+      "side": 1,
+      "message": "TPM_FW_VER is added in a CL that builds on this one. For this CL I was attempting to make only the necessary changes required for the I2CS bus to work properly. I was thinking that changes for required for complete TPM functionality over I2C would be in following CLs.",
+      "parentUuid": "3e3be95b_093771e4",
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e3be95b_a92be57c",
         "filename": "common/i2cs_tpm.c",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2016-08-13T03:04:37Z",
       "side": 1,
       "message": "why not to print out the i2cs_data_size value just in case.",
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8dddf5f_f43b0eee",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-23T21:10:13Z",
+      "side": 1,
+      "message": "I modified the CPRINTF to display the received data size. However, I\u0027m pretty certain that this case can only be true if data size is 0. Since it\u0027s an unsigned type it can only be \u003c 1 if it\u0027s 0.",
+      "parentUuid": "3e3be95b_a92be57c",
       "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "a8dddf5f_94216a57",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-23T21:10:13Z",
+      "side": 1,
+      "message": "Opened crosbug.com/p/56539 to track this issue and added this to the comment.",
+      "parentUuid": "3e3be95b_095e9124",
+      "range": {
+        "startLine": 104,
+        "startChar": 42,
+        "endLine": 105,
+        "endChar": 50
+      },
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e3be95b_099bf1c5",
         "filename": "common/i2cs_tpm.c",
         "patchSetId": 4
@@ -87,6 +165,24 @@
       "writtenOn": "2016-08-13T03:04:37Z",
       "side": 1,
       "message": "you assume here that this is a FIFO register read, but it could be the TPM_FW_VER read as well (once you add it to the set).",
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8dddf5f_3403d6b0",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-23T21:10:13Z",
+      "side": 1,
+      "message": "I update this comment in the subsequent CL that adds support to read the version register.",
+      "parentUuid": "3e3be95b_099bf1c5",
       "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -140,6 +236,54 @@
     },
     {
       "key": {
+        "uuid": "a8dddf5f_3fe04fbd",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-23T21:10:13Z",
+      "side": 1,
+      "message": "The Infineon v1.2 I2C driver uses a fixed burstcount value for FIFO reads for the first access. The scheme works as follows.\n\n- TPM (Cr50 in our case) sets the burstcount to a value large enough to extract the message length from the header (6 bytes)\n\n- Host reads the burstcount when it sees the data_avail bit set in the STS register and reads only that amount of bytes from the FIFO\n\n- After the FIFO read, the Cr50 sets the burst count back to its nominal value (63)\n\n- Host computes the message length from the header and then issues FIFO read requests of MIN(remaining_bytes, burstcount) until the full message has been read by the host.",
+      "parentUuid": "db2e5f26_4fc9f1c1",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 34
+      },
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8dddf5f_ff6e4730",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-23T21:10:13Z",
+      "side": 1,
+      "message": "I have described the method below. As we discussed, another possibility would be for the i2cs TPM driver to keep track of a fifo read state. The method I describe below requires only one place in tpm_registers.c where it needs to know if it\u0027s I2C or SPI being used.",
+      "parentUuid": "3e3be95b_e9956d90",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 34
+      },
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e3be95b_c9942993",
         "filename": "common/tpm_registers.c",
         "patchSetId": 4
@@ -151,6 +295,24 @@
       "writtenOn": "2016-08-13T03:04:37Z",
       "side": 1,
       "message": "why does this file have to change?",
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8dddf5f_3f816fa6",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-23T21:10:13Z",
+      "side": 1,
+      "message": "The changes here are needed to support FIFO reads via I2C. The proposed method relies on the burstcount field within the STS register to handshake with the Host so that it can extract enough of the message header to calculate the total message length. After the first read, then the burstcount field needs to be set back to the maximum or nominal value. That\u0027s why there\u0027s a check to see if it\u0027s the first FIFO read.\n\nI did not modify this section from the original patch, but the modifications seem correct to me.",
+      "parentUuid": "3e3be95b_c9942993",
       "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
