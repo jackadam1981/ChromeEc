@@ -47,8 +47,11 @@ int led_auto_control_is_enabled(enum ec_led_id led_id);
  *		2 -> 255 max brightness under PWM control.
  *
  */
+#ifdef CONFIG_USE_16BIT_DUTY_CYCLE
+void led_get_brightness_range(enum ec_led_id, uint16_t *brightness_range);
+#else
 void led_get_brightness_range(enum ec_led_id, uint8_t *brightness_range);
-
+#endif
 /**
  * Set brightness per color channel for an LED.
  *
@@ -58,8 +61,11 @@ void led_get_brightness_range(enum ec_led_id, uint8_t *brightness_range);
  * @returns		EC_SUCCESS or EC_ERROR_INVAL
  *
  */
+#ifdef CONFIG_USE_16BIT_DUTY_CYCLE
+int led_set_brightness(enum ec_led_id led_id, const uint16_t *brightness);
+#else
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness);
-
+#endif
 /**
  * Enable LED.
  *

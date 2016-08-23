@@ -8,6 +8,12 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+/*
+ * Should be removed after all boards have been changed to use 16-bit duty
+ * cycles
+ */
+#define CONFIG_USE_16BIT_DUTY_CYCLE
+
 /* Optional modules */
 #define CONFIG_ADC
 #define CONFIG_CHIPSET_RK3399

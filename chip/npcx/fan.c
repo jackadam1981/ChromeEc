@@ -331,9 +331,12 @@ void fan_set_duty(int ch, int percent)
 		enable_sleep(SLEEP_MASK_FAN);
 	} else
 		disable_sleep(SLEEP_MASK_FAN);
-
 	/* Set the duty cycle of PWM */
+#ifdef CONFIG_USE_16BIT_DUTY_CYCLE
+	pwm_set_raw_duty(pwm_id, percent);
+#else
 	pwm_set_duty(pwm_id, percent);
+#endif
 }
 /* ensure that only one fan used since ec enables sleep bit if duty is zero */
 BUILD_ASSERT(CONFIG_FANS <= 1);
@@ -350,7 +353,11 @@ int fan_get_duty(int ch)
 	int pwm_id = mft_channels[ch].pwm_id;
 
 	/* Return percent */
+#ifdef CONFIG_USE_16BIT_DUTY_CYCLE
+	return pwm_get_raw_duty(pwm_id);
+#else
 	return pwm_get_duty(pwm_id);
+#endif
 }
 /**
  * Check fan is rpm operation mode.

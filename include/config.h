@@ -36,6 +36,9 @@
  * BOARD_*, CHIP_*, and CHIP_FAMILY_*.
  */
 
+/* Default to using 0 to 100 PWM duty cycle */
+#undef CONFIG_USE_16BIT_DUTY_CYCLE
+
 /* Enable accelerometer interrupts. */
 #undef CONFIG_ACCEL_INTERRUPTS
 /* Add support for sensor FIFO:

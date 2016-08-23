@@ -1599,7 +1599,11 @@ struct ec_params_led_control {
 	uint8_t led_id;     /* Which LED to control */
 	uint8_t flags;      /* Control flags */
 
+#ifdef CONFIG_USE_16BIT_DUTY_CYCLE
+	uint16_t brightness[EC_LED_COLOR_COUNT];
+#else
 	uint8_t brightness[EC_LED_COLOR_COUNT];
+#endif
 } __packed;
 
 struct ec_response_led_control {
@@ -1610,7 +1614,11 @@ struct ec_response_led_control {
 	 * Range 1 means on/off control.
 	 * Other values means the LED is control by PWM.
 	 */
+#ifdef CONFIG_USE_16BIT_DUTY_CYCLE
+	uint16_t brightness_range[EC_LED_COLOR_COUNT];
+#else
 	uint8_t brightness_range[EC_LED_COLOR_COUNT];
+#endif
 } __packed;
 
 /*****************************************************************************/

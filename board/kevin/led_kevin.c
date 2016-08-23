@@ -38,6 +38,15 @@ enum led_color {
 	LED_COLOR_COUNT
 };
 
+#ifdef CONFIG_USE_16BIT_DUTY_CYCLE
+static const uint16_t color_brightness[LED_COLOR_COUNT][3] = {
+	/* {Red, Blue, Green}, */
+	[LED_OFF]   = {65535, 65535, 65535},
+	[LED_RED]   = {58982,  65535, 65535},
+	[LED_GREEN] = {65535, 65535, 52428},
+	[LED_BLUE]  = {65535, 52428, 65535},
+};
+#else
 /* Brightness vs. color, in the order of off, red, green and blue */
 static const uint8_t color_brightness[LED_COLOR_COUNT][3] = {
 	/* {Red, Blue, Green}, */
@@ -46,6 +55,8 @@ static const uint8_t color_brightness[LED_COLOR_COUNT][3] = {
 	[LED_GREEN] = {100, 100, 80},
 	[LED_BLUE]  = {100, 80, 100},
 };
+#endif
+
 
 /**
  * Set LED color
@@ -54,11 +65,33 @@ static const uint8_t color_brightness[LED_COLOR_COUNT][3] = {
  */
 static void set_color(enum led_color color)
 {
+#ifdef CONFIG_USE_16BIT_DUTY_CYCLE
+	pwm_set_raw_duty(PWM_CH_LED_RED, color_brightness[color][0]);
+	pwm_set_raw_duty(PWM_CH_LED_BLUE, color_brightness[color][1]);
+	pwm_set_raw_duty(PWM_CH_LED_GREEN, color_brightness[color][2]);
+#else
 	pwm_set_duty(PWM_CH_LED_RED, color_brightness[color][0]);
 	pwm_set_duty(PWM_CH_LED_BLUE, color_brightness[color][1]);
 	pwm_set_duty(PWM_CH_LED_GREEN, color_brightness[color][2]);
+#endif
 }
 
+#ifdef CONFIG_USE_16BIT_DUTY_CYCLE
+void led_get_brightness_range(enum ec_led_id led_id, uint16_t *brightness_range)
+{
+	brightness_range[EC_LED_COLOR_RED] = 65535;
+	brightness_range[EC_LED_COLOR_BLUE] = 65535;
+	brightness_range[EC_LED_COLOR_GREEN] = 65535;
+}
+
+int led_set_brightness(enum ec_led_id led_id, const uint16_t *brightness)
+{
+	pwm_set_raw_duty(PWM_CH_LED_RED, brightness[EC_LED_COLOR_RED]);
+	pwm_set_raw_duty(PWM_CH_LED_BLUE, brightness[EC_LED_COLOR_BLUE]);
+	pwm_set_raw_duty(PWM_CH_LED_GREEN, brightness[EC_LED_COLOR_GREEN]);
+	return EC_SUCCESS;
+}
+#else
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
 	brightness_range[EC_LED_COLOR_RED] = 100;
@@ -73,6 +106,7 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 	pwm_set_duty(PWM_CH_LED_GREEN, brightness[EC_LED_COLOR_GREEN]);
 	return EC_SUCCESS;
 }
+#endif
 
 static void kevin_led_set_power_battery(void)
 {

@@ -49,17 +49,22 @@ static int host_command_pwm_set_duty(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pwm_set_duty *p = args->params;
 	enum pwm_channel channel;
+#ifndef CONFIG_USE_16BIT_DUTY_CYCLE
 	int percent;
 
 	/* Convert 16 bit duty to percent on [0, 100] */
 	percent = DIV_ROUND_NEAREST(p->duty * 100, EC_PWM_MAX_DUTY);
-
+#endif
 	if (get_target_channel(&channel, p->pwm_type, p->index))
 		return EC_RES_INVALID_PARAM;
 
+#ifndef CONFIG_USE_16BIT_DUTY_CYCLE
 	pwm_set_duty(channel, percent);
 	pwm_enable(channel, percent > 0);
-
+#else
+	pwm_set_raw_duty(channel, p->duty);
+	pwm_enable(channel, p->duty > 0);
+#endif
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_DUTY,
@@ -76,8 +81,12 @@ static int host_command_pwm_get_duty(struct host_cmd_handler_args *args)
 	if (get_target_channel(&channel, p->pwm_type, p->index))
 		return EC_RES_INVALID_PARAM;
 
+#ifndef CONFIG_USE_16BIT_DUTY_CYCLE
 	/* Convert percent on [0, 100] to 16 bit duty */
 	r->duty = pwm_get_duty(channel) * EC_PWM_MAX_DUTY / 100;
+#else
+	r->duty = pwm_get_raw_duty(channel);
+#endif
 	args->response_size = sizeof(*r);
 
 	return EC_RES_SUCCESS;
@@ -94,7 +103,11 @@ DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_DUTY,
 static void print_channel(enum pwm_channel ch)
 {
 	if (pwm_get_enabled(ch))
+#ifndef CONFIG_USE_16BIT_DUTY_CYCLE
 		ccprintf("  %d: %d%%\n", ch, pwm_get_duty(ch));
+#else
+		ccprintf("  %d: %d%%\n", ch, pwm_get_raw_duty(ch));
+#endif
 	else
 		ccprintf("  %d: disabled\n", ch);
 }
@@ -127,7 +140,11 @@ static int cc_pwm_duty(int argc, char **argv)
 		} else {
 			ccprintf("Setting channel %d to %d%%\n", ch, percent);
 			pwm_enable(ch, 1);
+#ifdef CONFIG_USE_16BIT_DUTY_CYCLE
+			pwm_set_raw_duty(ch, percent);
+#else
 			pwm_set_duty(ch, percent);
+#endif
 		}
 	}
 

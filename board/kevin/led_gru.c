@@ -28,7 +28,14 @@ enum led_color {
 	LED_GREEN,
 	LED_COLOR_COUNT  /* Number of colors, not a color itself */
 };
-
+#ifdef CONFIG_USE_16BIT_DUTY_CYCLE
+static const int led_color_to_pwm_duty[LED_COLOR_COUNT] = {
+	[LED_OFF] =   65535,
+	[LED_RED] =   0,
+	[LED_AMBER] = 52428,
+	[LED_GREEN] = 55705,
+};
+#else
 /* One LED active at a time. PWM low period determines which LED is active. */
 static const int led_color_to_pwm_duty[LED_COLOR_COUNT] = {
 	[LED_OFF] =   100,
@@ -36,13 +43,53 @@ static const int led_color_to_pwm_duty[LED_COLOR_COUNT] = {
 	[LED_AMBER] = 80,
 	[LED_GREEN] = 85,
 };
+#endif
 
 static int bat_led_set_color(enum led_color color)
 {
+#ifdef CONFIG_USE_16BIT_DUTY_CYCLE
+	pwm_set_raw_duty(GRU_BAT_LED_PWM, led_color_to_pwm_duty[color]);
+#else
 	pwm_set_duty(GRU_BAT_LED_PWM, led_color_to_pwm_duty[color]);
+#endif
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_USE_16BIT_DUTY_CYCLE
+void led_get_brightness_range(enum ec_led_id led_id, uint16_t *brightness_range)
+{
+	switch (led_id) {
+	case EC_LED_ID_BATTERY_LED:
+		brightness_range[EC_LED_COLOR_RED] = 65535;
+		brightness_range[EC_LED_COLOR_AMBER] = 65535;
+		brightness_range[EC_LED_COLOR_GREEN] = 65535;
+		break;
+	default:
+		/* ignore */
+		break;
+	}
+}
+
+int led_set_brightness(enum ec_led_id led_id, const uint16_t *brightness)
+{
+	switch (led_id) {
+	case EC_LED_ID_BATTERY_LED:
+		if (brightness[EC_LED_COLOR_RED] != 0)
+			bat_led_set_color(LED_RED);
+		else if (brightness[EC_LED_COLOR_AMBER] != 0)
+			bat_led_set_color(LED_AMBER);
+		else if (brightness[EC_LED_COLOR_GREEN] != 0)
+			bat_led_set_color(LED_GREEN);
+		else
+			bat_led_set_color(LED_OFF);
+		break;
+	default:
+		return EC_ERROR_UNKNOWN;
+	}
+	return EC_SUCCESS;
+}
+
+#else
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
 	switch (led_id) {
@@ -75,7 +122,7 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 	}
 	return EC_SUCCESS;
 }
-
+#endif
 static void gru_led_set_battery(void)
 {
 	static int battery_second;
