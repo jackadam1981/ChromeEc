@@ -48,7 +48,6 @@ int led_auto_control_is_enabled(enum ec_led_id led_id);
  *
  */
 void led_get_brightness_range(enum ec_led_id, uint8_t *brightness_range);
-
 /**
  * Set brightness per color channel for an LED.
  *
@@ -59,7 +58,6 @@ void led_get_brightness_range(enum ec_led_id, uint8_t *brightness_range);
  *
  */
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness);
-
 /**
  * Enable LED.
  *
