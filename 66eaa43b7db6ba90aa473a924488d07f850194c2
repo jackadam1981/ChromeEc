@@ -22,6 +22,30 @@
       "revId": "66eaa43b7db6ba90aa473a924488d07f850194c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8dddf5f_c0260c1e",
+        "filename": "power/rk3399.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-23T22:18:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8dddf5f_c5997e6a",
+      "range": {
+        "startLine": 164,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 42
+      },
+      "revId": "66eaa43b7db6ba90aa473a924488d07f850194c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
