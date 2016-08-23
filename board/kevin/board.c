@@ -374,7 +374,7 @@ static void board_config_warning(void)
 	/* Flash red LED as warning */
 	led_auto_control(EC_LED_ID_POWER_LED, 0);
 	led_auto_control(EC_LED_ID_BATTERY_LED, 0);
-	pwm_set_duty(PWM_CH_LED_RED, led_toggle ? 0 : 100);
+	pwm_set_raw_duty(PWM_CH_LED_RED, led_toggle ? 0 : 65535);
 	led_toggle  = !led_toggle;
 
 	hook_call_deferred(&board_config_warning_data, SECOND);
@@ -633,13 +633,13 @@ static void pwm_displight_restore_state(void)
 	prev = (const int *)system_get_jump_tag(PWM_DISPLIGHT_SYSJUMP_TAG,
 						&version, &size);
 	if (prev && version == PWM_HOOK_VERSION && size == sizeof(*prev))
-		pwm_set_duty(PWM_CH_DISPLIGHT, *prev);
+		pwm_set_raw_duty(PWM_CH_DISPLIGHT, *prev);
 }
 DECLARE_HOOK(HOOK_INIT, pwm_displight_restore_state, HOOK_PRIO_INIT_PWM + 1);
 
 static void pwm_displight_preserve_state(void)
 {
-	int pwm_displight_duty = pwm_get_duty(PWM_CH_DISPLIGHT);
+	int pwm_displight_duty = pwm_get_raw_duty(PWM_CH_DISPLIGHT);
 
 	system_add_jump_tag(PWM_DISPLIGHT_SYSJUMP_TAG, PWM_HOOK_VERSION,
 			    sizeof(pwm_displight_duty), &pwm_displight_duty);
