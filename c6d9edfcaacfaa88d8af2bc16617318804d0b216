@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "a8dddf5f_b4fd865a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1604,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-23T19:43:13Z",
+      "side": 1,
+      "message": "Just to provide more detail, this header is copied across separate system components (eg. kernel, coreboot, depthcharge, flashrom) which all send host commands to the EC. If we want to change the interface, we\u0027ll need to maintain backward support and update those other components. (I don\u0027t think we need to change the interface though, we can leave it at percent precision).\n\nAlso, changing the interface dynamically based on board config isn\u0027t a good idea.",
+      "parentUuid": "a8dddf5f_949e0a4f",
+      "range": {
+        "startLine": 1602,
+        "startChar": 0,
+        "endLine": 1604,
+        "endChar": 5
+      },
+      "revId": "c6d9edfcaacfaa88d8af2bc16617318804d0b216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8dddf5f_54b1c2d7",
         "filename": "include/led_common.h",
         "patchSetId": 1
