@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8dddf5f_6ee06ff0",
+        "filename": "chip/g/timels.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-23T20:08:48Z",
+      "side": 1,
+      "message": "max_hwtime_us \u003e 0 \u0026\u0026",
+      "range": {
+        "startLine": 59,
+        "startChar": 9,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "93e1d6cc683bc3f8576f4bd728cfd9786fb210f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
