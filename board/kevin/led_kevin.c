@@ -68,9 +68,9 @@ void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
-	pwm_set_duty(PWM_CH_LED_RED, brightness[EC_LED_COLOR_RED]);
-	pwm_set_duty(PWM_CH_LED_BLUE, brightness[EC_LED_COLOR_BLUE]);
-	pwm_set_duty(PWM_CH_LED_GREEN, brightness[EC_LED_COLOR_GREEN]);
+	pwm_set_raw_duty(PWM_CH_LED_RED, brightness[EC_LED_COLOR_RED]);
+	pwm_set_raw_duty(PWM_CH_LED_BLUE, brightness[EC_LED_COLOR_BLUE]);
+	pwm_set_raw_duty(PWM_CH_LED_GREEN, brightness[EC_LED_COLOR_GREEN]);
 	return EC_SUCCESS;
 }
 
