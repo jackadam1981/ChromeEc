@@ -209,6 +209,15 @@ CRYPT_RESULT _cpri__AESEncryptOFB(
 #include "hooks.h"
 #include "uart.h"
 
+enum aes_test_cipher_mode {
+	TEST_MODE_ECB = 0,
+	TEST_MODE_CTR = 1,
+	TEST_MODE_CBC = 2,
+	TEST_MODE_GCM = 3,
+	TEST_MODE_OFB = 4,
+	TEST_MODE_CFB = 5,
+};
+
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
 
 static void aes_command_handler(void *cmd_body,
@@ -219,7 +228,7 @@ static void aes_command_handler(void *cmd_body,
 	uint16_t key_len;
 	uint8_t iv_len;
 	uint8_t *iv;
-	enum cipher_mode c_mode;
+	enum aes_test_cipher_mode c_mode;
 	enum encrypt_mode e_mode;
 	uint8_t *cmd = (uint8_t *)cmd_body;
 	int16_t data_len;
@@ -235,7 +244,7 @@ static void aes_command_handler(void *cmd_body,
 	 * field       |    size  |              note
 	 * ================================================================
 	 * mode        |    1     | 0 - decrypt, 1 - encrypt
-	 * cipher_mode |    1     | ECB = 0, CTR = 1, CBC = 2, GCM = 3
+	 * cipher_mode |    1     | as per aes_test_cipher_mode
 	 * key_len     |    1     | key size in bytes (16, 24 or 32)
 	 * key         | key len  | key to use
 	 * iv_len      |    1     | either 0 or 16
@@ -286,7 +295,7 @@ static void aes_command_handler(void *cmd_body,
 
 
 	switch (c_mode) {
-	case CIPHER_MODE_ECB:
+	case TEST_MODE_ECB:
 		if (e_mode == 0) {
 			if (_cpri__AESDecryptECB((uint8_t *)cmd_body,
 						 key_len,
@@ -313,7 +322,7 @@ static void aes_command_handler(void *cmd_body,
 			return;
 		}
 		break;
-	case CIPHER_MODE_CTR:
+	case TEST_MODE_CTR:
 		if (e_mode == 0) {
 			if (_cpri__AESDecryptCTR((uint8_t *)cmd_body,
 						 key_len,
@@ -340,6 +349,96 @@ static void aes_command_handler(void *cmd_body,
 			return;
 		}
 		break;
+	case TEST_MODE_CBC:
+	{
+		/* Use a local buffer for IV, as CBC updates the iv. */
+		uint8_t iv_local[16];
+
+		memcpy(iv_local, iv, 16);
+
+		if (e_mode == 0) {
+			if (_cpri__AESDecryptCBC(
+					(uint8_t *)cmd_body,
+					key_len,
+					key, iv_local, data_len, cmd) ==
+				CRYPT_SUCCESS) {
+				*response_size = data_len;
+			}
+			CPRINTF("%s:%d response size %d\n",
+				__func__, __LINE__, *response_size);
+			return;
+		}
+		if (e_mode == 1) {
+			if (_cpri__AESEncryptCBC(
+					(uint8_t *)cmd_body,
+					key_len,
+					key, iv_local, data_len, cmd) ==
+			    CRYPT_SUCCESS) {
+				*response_size = data_len;
+			}
+			CPRINTF("%s:%d response size %d\n",
+				__func__, __LINE__, *response_size);
+			return;
+		}
+		break;
+	}
+	case TEST_MODE_OFB:
+		if (e_mode == 0) {
+			if (_cpri__AESDecryptOFB((uint8_t *)cmd_body,
+						 key_len,
+						 key, iv, data_len, cmd) ==
+			    CRYPT_SUCCESS) {
+				*response_size = data_len;
+			}
+			CPRINTF("%s:%d response size %d\n",
+				__func__, __LINE__, *response_size);
+			return;
+		}
+		if (e_mode == 1) {
+			if (_cpri__AESEncryptOFB((uint8_t *)cmd_body,
+						 key_len,
+						 key, iv, data_len, cmd) ==
+			    CRYPT_SUCCESS) {
+				*response_size = data_len;
+			}
+			CPRINTF("%s:%d response size %d\n",
+				__func__, __LINE__, *response_size);
+			return;
+		}
+		break;
+	case TEST_MODE_CFB:
+	{
+		/* Use a local buffer for IV, as CFB updates the iv. */
+		uint8_t iv_local[16];
+
+		memcpy(iv_local, iv, 16);
+
+		if (e_mode == 0) {
+			if (_cpri__AESDecryptCFB(
+					(uint8_t *)cmd_body,
+					key_len,
+					key, iv_local, data_len, cmd) ==
+			    CRYPT_SUCCESS) {
+				*response_size = data_len;
+			}
+			CPRINTF("%s:%d response size %d\n",
+				__func__, __LINE__, *response_size);
+			return;
+		}
+		if (e_mode == 1) {
+			if (_cpri__AESEncryptCFB(
+					(uint8_t *)cmd_body,
+					key_len,
+					key, iv_local, data_len, cmd) ==
+			    CRYPT_SUCCESS) {
+				*response_size = data_len;
+			}
+			CPRINTF("%s:%d response size %d\n",
+				__func__, __LINE__, *response_size);
+			return;
+		}
+		break;
+	}
 	default:
 		break;
 	}
