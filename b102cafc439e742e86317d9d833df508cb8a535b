@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a80ebf7a_f8105501",
+        "filename": "test/tpm_test/testlib/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-08-23T04:27:03Z",
+      "side": 1,
+      "message": "using all bits of rand() isn\u0027t very good random\nit\u0027s int rand(), so long int pads w/ pile of zeros to boot?\n\njust call openssl RAND_bytes() instead?",
+      "revId": "b102cafc439e742e86317d9d833df508cb8a535b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
