@@ -99,6 +99,12 @@ static void force_shutdown(void)
 }
 DECLARE_DEFERRED(force_shutdown);
 
+/*
+ * Debounce PGOOD_AP if we lose it suddenly during S0, since output voltage
+ * transitions may cause spurious pulses.
+ */
+#define PGOOD_AP_DEBOUNCE_TIMEOUT (100 * MSEC)
+
 enum power_state power_handle_state(enum power_state state)
 {
 	static int sys_reset_needed;
@@ -123,10 +129,13 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S0:
-		if (!power_has_signals(IN_PGOOD_S0) ||
-		    forcing_shutdown ||
-		    gpio_get_level(GPIO_AP_EC_S3_S0_L))
+		if (forcing_shutdown ||
+		    gpio_get_level(GPIO_AP_EC_S3_S0_L) ||
+		    !power_has_signals(IN_PGOOD_S3) ||
+		    (power_wait_signals_timeout(IN_PGOOD_AP,
+		     PGOOD_AP_DEBOUNCE_TIMEOUT) == EC_ERROR_TIMEOUT))
 			return POWER_S0S3;
+
 		break;
 
 	case POWER_G3S5:
