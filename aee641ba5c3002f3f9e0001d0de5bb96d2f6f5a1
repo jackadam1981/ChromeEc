@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a80ebf7a_1dbc43cd",
+        "filename": "board/reef/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-23T02:47:09Z",
+      "side": 1,
+      "message": "Is EC_WIRELESS_SWITCH_WLAN needed? I think we only need EC_WIRELESS_SWITCH_WLAN_POWER since we only control power (no additional enable signal on the wifi chip) and we don\u0027t set WIRELESS_GPIO_WLAN in reef\u0027s board.h.",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 25
+      },
+      "revId": "aee641ba5c3002f3f9e0001d0de5bb96d2f6f5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
