@@ -61,19 +61,18 @@ static void set_color(enum led_color color)
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
-	brightness_range[EC_LED_COLOR_RED] = 100;
-	brightness_range[EC_LED_COLOR_BLUE] = 100;
-	brightness_range[EC_LED_COLOR_GREEN] = 100;
+	brightness_range[EC_LED_COLOR_RED] = 1;
+	brightness_range[EC_LED_COLOR_BLUE] = 1;
+	brightness_range[EC_LED_COLOR_GREEN] = 1;
 }
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
-	pwm_set_duty(PWM_CH_LED_RED, brightness[EC_LED_COLOR_RED]);
-	pwm_set_duty(PWM_CH_LED_BLUE, brightness[EC_LED_COLOR_BLUE]);
-	pwm_set_duty(PWM_CH_LED_GREEN, brightness[EC_LED_COLOR_GREEN]);
+	pwm_set_raw_duty(PWM_CH_LED_RED, brightness[EC_LED_COLOR_RED]);
+	pwm_set_raw_duty(PWM_CH_LED_BLUE, brightness[EC_LED_COLOR_BLUE]);
+	pwm_set_raw_duty(PWM_CH_LED_GREEN, brightness[EC_LED_COLOR_GREEN]);
 	return EC_SUCCESS;
 }
-
 static void kevin_led_set_power_battery(void)
 {
 	static int power_ticks;

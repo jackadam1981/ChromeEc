@@ -331,7 +331,6 @@ void fan_set_duty(int ch, int percent)
 		enable_sleep(SLEEP_MASK_FAN);
 	} else
 		disable_sleep(SLEEP_MASK_FAN);
-
 	/* Set the duty cycle of PWM */
 	pwm_set_duty(pwm_id, percent);
 }

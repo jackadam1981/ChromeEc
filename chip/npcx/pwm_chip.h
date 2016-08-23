@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_PWM_CHIP_H
 #define __CROS_EC_PWM_CHIP_H
 
+#define PWM_MAX_DUTY 0xffff
+
 /* Data structure to define PWM channels. */
 struct pwm_t {
 	/* PWM channel ID */

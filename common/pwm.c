@@ -40,25 +40,30 @@ static int get_target_channel(enum pwm_channel *channel, int type, int index)
 	return *channel >= PWM_CH_COUNT;
 }
 
-/*
- * TODO(crbug.com/615109): These host commands use 16 bit duty cycle, but
- * all of our internal code uses percent on [0, 100]. Convert internal
- * functions to use 16 bit duty and remove the conversions below.
- */
+void pwm_set_raw_duty(enum pwm_channel ch, uint16_t duty)
+{
+	int percent;
+
+	/* Convert 16 bit duty to percent on [0, 100] */
+	percent = DIV_ROUND_NEAREST((uint32_t)duty * 100, 65535);
+	pwm_set_duty(ch, percent);
+}
+
+uint16_t pwm_get_raw_duty(enum pwm_channel ch)
+{
+	return (pwm_get_duty(ch) * 65535) / 100;
+}
+
 static int host_command_pwm_set_duty(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pwm_set_duty *p = args->params;
 	enum pwm_channel channel;
-	int percent;
-
-	/* Convert 16 bit duty to percent on [0, 100] */
-	percent = DIV_ROUND_NEAREST(p->duty * 100, EC_PWM_MAX_DUTY);
 
 	if (get_target_channel(&channel, p->pwm_type, p->index))
 		return EC_RES_INVALID_PARAM;
 
-	pwm_set_duty(channel, percent);
-	pwm_enable(channel, percent > 0);
+	pwm_set_raw_duty(channel, p->duty);
+	pwm_enable(channel, p->duty > 0);
 
 	return EC_RES_SUCCESS;
 }
@@ -76,8 +81,8 @@ static int host_command_pwm_get_duty(struct host_cmd_handler_args *args)
 	if (get_target_channel(&channel, p->pwm_type, p->index))
 		return EC_RES_INVALID_PARAM;
 
-	/* Convert percent on [0, 100] to 16 bit duty */
-	r->duty = pwm_get_duty(channel) * EC_PWM_MAX_DUTY / 100;
+	r->duty = pwm_get_raw_duty(channel);
+
 	args->response_size = sizeof(*r);
 
 	return EC_RES_SUCCESS;
@@ -94,7 +99,7 @@ DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_DUTY,
 static void print_channel(enum pwm_channel ch)
 {
 	if (pwm_get_enabled(ch))
-		ccprintf("  %d: %d%%\n", ch, pwm_get_duty(ch));
+		ccprintf("  %d: %d%%\n", ch, pwm_get_raw_duty(ch));
 	else
 		ccprintf("  %d: disabled\n", ch);
 }
@@ -127,7 +132,8 @@ static int cc_pwm_duty(int argc, char **argv)
 		} else {
 			ccprintf("Setting channel %d to %d%%\n", ch, percent);
 			pwm_enable(ch, 1);
-			pwm_set_duty(ch, percent);
+
+			pwm_set_raw_duty(ch, percent);
 		}
 	}
 

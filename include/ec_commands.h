@@ -1598,7 +1598,6 @@ enum ec_led_colors {
 struct ec_params_led_control {
 	uint8_t led_id;     /* Which LED to control */
 	uint8_t flags;      /* Control flags */
-
 	uint8_t brightness[EC_LED_COLOR_COUNT];
 } __packed;
 

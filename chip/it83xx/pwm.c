@@ -17,6 +17,7 @@
 
 #define PWM_CTRX_MIN 120
 #define PWM_EC_FREQ  8000000
+#define PWM_MAX_DUTY 0xffff
 
 const struct pwm_ctrl_t pwm_ctrl_regs[] = {
 	{ &IT83XX_PWM_DCR0, &IT83XX_PWM_PCSSGL, &IT83XX_GPIO_GPCRA0},
