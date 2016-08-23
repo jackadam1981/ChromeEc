@@ -6,6 +6,9 @@
 #ifndef __CROS_EC_PWM_H
 #define __CROS_EC_PWM_H
 
+/* 16 bit duty cycle, 0xffff = 100% */
+#define EC_PWM_MAX_DUTY 0xFFFF
+
 /* The values are defined in board.h */
 enum pwm_channel;
 
@@ -18,6 +21,16 @@ void pwm_enable(enum pwm_channel ch, int enabled);
  * Get PWM channel enabled status.
  */
 int pwm_get_enabled(enum pwm_channel ch);
+
+/**
+ * Set PWM channel duty cycle (0-65535).
+ */
+void pwm_set_raw_duty(enum pwm_channel ch, uint16_t duty) __attribute__((weak));
+
+/**
+ * Get PWM channel duty cycle.
+ */
+uint16_t pwm_get_raw_duty(enum pwm_channel ch) __attribute__((weak));
 
 /**
  * Set PWM channel duty cycle (0-100).
