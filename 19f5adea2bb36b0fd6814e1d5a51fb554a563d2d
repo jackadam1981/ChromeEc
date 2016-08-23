@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8dddf5f_badfad64",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-23T21:21:43Z",
+      "side": 1,
+      "message": "as we found out, this is not compatible with tpm1.2 i2c encapsulation, so this driver does not do this any more.",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 42
+      },
+      "revId": "19f5adea2bb36b0fd6814e1d5a51fb554a563d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8dddf5f_5ad7a949",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-23T21:21:43Z",
+      "side": 1,
+      "message": "this still contradicts the comment in the header.",
+      "range": {
+        "startLine": 105,
+        "startChar": 56,
+        "endLine": 106,
+        "endChar": 50
+      },
+      "revId": "19f5adea2bb36b0fd6814e1d5a51fb554a563d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8dddf5f_3a5f3deb",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-23T21:21:43Z",
+      "side": 1,
+      "message": "what does this mean?",
+      "range": {
+        "startLine": 151,
+        "startChar": 11,
+        "endLine": 151,
+        "endChar": 40
+      },
+      "revId": "19f5adea2bb36b0fd6814e1d5a51fb554a563d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8dddf5f_3a117d04",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-23T21:21:43Z",
+      "side": 1,
+      "message": "haven\u0027t you discovered that byte order conversion is not necessary?",
+      "range": {
+        "startLine": 178,
+        "startChar": 4,
+        "endLine": 178,
+        "endChar": 50
+      },
+      "revId": "19f5adea2bb36b0fd6814e1d5a51fb554a563d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
