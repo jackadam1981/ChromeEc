@@ -153,5 +153,4 @@ static int command_ccd(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(ccd, command_ccd,
 	"[uart] [enable|disable]",
-	"Get/set the case closed debug state",
-	NULL);
+	"Get/set the case closed debug state");
