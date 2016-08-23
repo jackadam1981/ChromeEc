@@ -651,6 +651,5 @@ static int command_espi(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(espi, command_espi,
 			"cfg/vms/vsm/en/dis [channel]",
-			"eSPI configurations",
-			NULL);
+			"eSPI configurations");
 

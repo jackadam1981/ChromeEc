@@ -1399,5 +1399,4 @@ static int command_usb(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(usb, command_usb,
 			"[on|off|a|b]",
-			"Get/set the USB connection state and PHY selection",
-			NULL);
+			"Get/set the USB connection state and PHY selection");

@@ -956,8 +956,7 @@ static int console_bd99955_dump_regs(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(bd99955_dump, console_bd99955_dump_regs,
 			NULL,
-			"Dump all charger registers",
-			NULL);
+			"Dump all charger registers");
 
 static int console_command_bd99955(int argc, char **argv)
 {
@@ -1000,8 +999,7 @@ static int console_command_bd99955(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(bd99955, console_command_bd99955,
 			"bd99955 <r/w> <reg_hex> <cmd_type> | <val_hex>",
-			"Read or write a charger register",
-			NULL);
+			"Read or write a charger register");
 #endif /* CONFIG_CMD_CHARGER */
 
 #ifdef CONFIG_CMD_CHARGER_PSYS
@@ -1067,8 +1065,7 @@ static int console_command_psys(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(psys, console_command_psys,
 			NULL,
-			"Get the system power in mW",
-			NULL);
+			"Get the system power in mW");
 #endif /* CONFIG_CMD_CHARGER_PSYS */
 
 #ifdef CONFIG_CMD_CHARGER_ADC_AMON_BMON
@@ -1159,6 +1156,5 @@ static int console_command_amon_bmon(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(amonbmon, console_command_amon_bmon,
 			"amonbmon [a|b]",
-			"Get charger AMON/BMON voltage diff, current",
-			NULL);
+			"Get charger AMON/BMON voltage diff, current");
 #endif /* CONFIG_CMD_CHARGER_ADC_AMON_BMON */
