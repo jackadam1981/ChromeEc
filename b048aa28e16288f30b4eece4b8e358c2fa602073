@@ -34,6 +34,24 @@
       "revId": "b048aa28e16288f30b4eece4b8e358c2fa602073",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8dddf5f_f1a9e029",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-23T18:46:03Z",
+      "side": 1,
+      "message": "I find this very confusing.  Can\u0027t we get a battery_hw_present() function which returns BP_NO vs BP_YES to indicate that something is plugged in? Below is the truth table that I can see in the code.\n\n\nhw present BATT_PRES_L  battery_is_present()\n0          1            0\n1          0            1 if battery_status() ok\n1          0            0 if battery_status() !ok\n\nSo we only want to return DISCONNECTED when battery_status is !ok??\n\nIsn\u0027t that the following?\n\n/* Only return DISCONNECTED when hardware is present but the status is not yet initialized. */\nif (battery_hw_present() \u0026\u0026 !battery_is_present())\n\nAnd can we also fix the comment to indicate the bit about status not being valid?",
+      "parentUuid": "a8dddf5f_ee9fbf4d",
+      "revId": "b048aa28e16288f30b4eece4b8e358c2fa602073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
