@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88e1fb42_82cfba2a",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-24T16:39:45Z",
+      "side": 1,
+      "message": "-g0 (or just leaving -g off) means \"no debugging\". We can probably add this arg to the conditional.",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 3
+      },
+      "revId": "9adcb909b51219ae867aba001b5fa278e816f1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
