@@ -32,6 +32,11 @@
  * Build GPIO tables and expose a subset of the GPIOs over USB.
  */
 
+static void typec_plug_event_d(enum gpio_signal signal);
+static void typec_plug_event(enum gpio_signal signal)
+{
+	typec_plug_event_d(signal);
+}
 #include "gpio_list.h"
 
 static enum gpio_signal const usb_gpio_list[] = {
@@ -226,10 +231,92 @@ const int num_rw_sections = ARRAY_SIZE(board_rw_sections);
 /******************************************************************************
  * Initialize board.
  */
-static void board_init(void)
+
+static void write_ioexpander(int bank, int gpio, int val)
 {
 	int tmp;
+	static int state = 0xffff;
 
+	/* High bits are in the low register */
+	bank = bank ? 0 : 1;
+	if (val)
+		state |= ((1 << gpio) << (8 * bank));
+	else
+		state &= ~((1 << gpio) << (8 * bank));
+
+	i2c_write8(1, 0x40, 0x0 + bank, (state >> (8 * bank)) & 0xff);
+	i2c_read8(1, 0x40, 0x2 + bank, &tmp);
+	i2c_write8(1, 0x40, 0x2 + bank, tmp & ~(1 << gpio));
+}
+
+/* Enable uservo USB. */
+static void init_uservo_port(void)
+{
+#if 0
+	/* Write USERVO_POWER_EN */
+	i2c_write8(1, 0x40, 0x1, 0xff | (1 << 7));
+	i2c_read8(1, 0x40, 0x3, &tmp);
+	i2c_write8(1, 0x40, 0x3, tmp & ~(1 << 7));
+	/* Write USERVO_FASTBOOT_MUX_SEL */
+	i2c_write8(1, 0x40, 0x0, 0xff & ~(1 << 0));
+	i2c_read8(1, 0x40, 0x2, &tmp);
+	i2c_write8(1, 0x40, 0x2, tmp & ~(1 << 0));
+#else
+	/* Write USERVO_POWER_EN */
+	write_ioexpander(0, 7, 1);
+	/* Write USERVO_FASTBOOT_MUX_SEL */
+	write_ioexpander(1, 0, 0);
+#endif
+}
+
+static void typec_plug_event_d(enum gpio_signal signal)
+{
+	int sbu1, sbu2;
+	/* Note: this does not work if dock charging is enabled */
+
+	/* Check unplug case. */
+	if ((signal == GPIO_USB_DET_PP_DUT) &&
+	    !gpio_get_level(GPIO_USB_DET_PP_DUT)) {
+		/* Disable debug */
+		gpio_set_flags(GPIO_USB_DUT_CC2_RD, GPIO_INPUT);
+		/* Disable CCD */
+		gpio_set_level(GPIO_SBU_MUX_EN, 0);
+	}
+
+	/* Check plug case */
+	if ((signal == GPIO_USB_DET_PP_DUT) &&
+	    gpio_get_level(GPIO_USB_DET_PP_DUT)) {
+		/* Enable debug signalling */
+		gpio_set_flags(GPIO_USB_DUT_CC2_RD, GPIO_OUT_LOW);
+
+		sbu1 = adc_read_channel(ADC_SBU1_DET);
+		sbu2 = adc_read_channel(ADC_SBU2_DET);
+
+		/* USB FS pulls one line high for connect request */
+		if ((sbu1 > 2500) && (sbu2 < 500)) {
+			/* SBU flip = 1 */
+			write_ioexpander(0, 2, 1);
+			gpio_set_level(GPIO_SBU_MUX_EN, 1);
+		}
+
+		if ((sbu2 > 2500) && (sbu1 < 500)) {
+			/* SBU flip = 0 */
+			write_ioexpander(0, 2, 0);
+			gpio_set_level(GPIO_SBU_MUX_EN, 1);
+		}
+	}
+}
+
+static void init_ccd(void)
+{
+	gpio_set_level(GPIO_USB_DUT_CC1_RD, 0);
+
+	/* Disable CCD until we can detect orientation */
+	gpio_set_level(GPIO_SBU_MUX_EN, 0);
+}
+
+static void board_init(void)
+{
 	/* USB to serial queues */
 	queue_init(&usart3_to_usb);
 	queue_init(&usb_to_usart3);
@@ -248,13 +335,10 @@ static void board_init(void)
 	i2c_write8(1, 0x20, 0x0, 0x20);
 
 	/* Enable uservo USB by default. */
-	/* Write USERVO_POWER_EN */
-	i2c_write8(1, 0x40, 0x1, 0xff | (1 << 7));
-	i2c_read8(1, 0x40, 0x3, &tmp);
-	i2c_write8(1, 0x40, 0x3, tmp & ~(1 << 7));
-	/* Write USERVO_FASTBOOT_MUX_SEL */
-	i2c_write8(1, 0x40, 0x0, 0xff & ~(1 << 0));
-	i2c_read8(1, 0x40, 0x2, &tmp);
-	i2c_write8(1, 0x40, 0x2, tmp & ~(1 << 0));
+	init_uservo_port();
+
+	/* Enable CCD if type-c */
+	if (gpio_get_level(GPIO_DONGLE_DET))
+		init_ccd();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
