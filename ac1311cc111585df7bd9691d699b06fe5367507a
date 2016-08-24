@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "08326b87_1ffd6fcc",
+        "filename": "board/kevin/led_kevin.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-08-24T23:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08326b87_5f4f676d",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "ac1311cc111585df7bd9691d699b06fe5367507a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08326b87_1f27afb7",
         "filename": "chip/npcx/pwm_chip.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-24T16:09:14Z",
       "side": 1,
       "message": "We have EC_PWM_MAX_DUTY for this already.",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "ac1311cc111585df7bd9691d699b06fe5367507a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08326b87_ffeaf303",
+        "filename": "chip/npcx/pwm_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-08-24T23:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08326b87_1f27afb7",
       "range": {
         "startLine": 11,
         "startChar": 8,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "8883bb54_db6e1f31",
+        "filename": "common/pwm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-08-24T23:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08326b87_3fc86bc1",
+      "revId": "ac1311cc111585df7bd9691d699b06fe5367507a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08326b87_dfacd7f2",
         "filename": "common/pwm.c",
         "patchSetId": 3
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "88e1fb42_c5d70cbd",
+        "filename": "common/pwm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-08-24T23:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08326b87_dfacd7f2",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 21
+      },
+      "revId": "ac1311cc111585df7bd9691d699b06fe5367507a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08326b87_3f24ebaf",
         "filename": "include/pwm.h",
         "patchSetId": 3
@@ -99,6 +189,24 @@
       "writtenOn": "2016-08-24T16:09:14Z",
       "side": 1,
       "message": "It\u0027s confusing to declare the weak symbol here, will this work only if the chip-level code doesn\u0027t include the header? Or does it just work by accident / linking order? Better to declare the weak symbol in common/pwm.c.",
+      "revId": "ac1311cc111585df7bd9691d699b06fe5367507a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_e20de60e",
+        "filename": "include/pwm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-08-24T23:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08326b87_3f24ebaf",
       "revId": "ac1311cc111585df7bd9691d699b06fe5367507a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
