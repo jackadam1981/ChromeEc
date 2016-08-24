@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08326b87_39564b04",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-24T02:47:02Z",
+      "side": 1,
+      "message": "should this change be also reflected/commented in chip/g/uartn.c:uatn_enable() ?",
+      "revId": "1c947a8c4cda1b9356cbe593488a2a0c1b13e206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
