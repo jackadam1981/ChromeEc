@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "88e1fb42_e254c658",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-24T16:36:49Z",
+      "side": 1,
+      "message": "just out of curiosity: should the comment read \"since we came from s3\" instead? I mean \u0027if\u0027 does not really apply here, this *is* an s3-\u003es0 transition?",
+      "range": {
+        "startLine": 231,
+        "startChar": 22,
+        "endLine": 231,
+        "endChar": 40
+      },
+      "revId": "f5be6c3c91f5908a096b571cdd39f1497e45c206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08326b87_5fb447c9",
         "filename": "power/rk3399.c",
         "patchSetId": 1
@@ -13,6 +36,30 @@
       "writtenOn": "2016-08-24T14:35:26Z",
       "side": 1,
       "message": "Is this delay still necessary?",
+      "range": {
+        "startLine": 232,
+        "startChar": 3,
+        "endLine": 232,
+        "endChar": 14
+      },
+      "revId": "f5be6c3c91f5908a096b571cdd39f1497e45c206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_a273de14",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-24T16:36:49Z",
+      "side": 1,
+      "message": "depending how fast it cat transition from s3 to s0?",
+      "parentUuid": "08326b87_5fb447c9",
       "range": {
         "startLine": 232,
         "startChar": 3,
