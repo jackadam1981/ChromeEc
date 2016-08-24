@@ -22,6 +22,29 @@
       "revId": "738723c6bd1e2e1cdbd45be481ee92c5d60a796e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_08090b03",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:01:11Z",
+      "side": 1,
+      "message": "This is now really pick-one-of-three:\n\n/* Choose one of these three configurations */\n\n/* MKBP events alert the AP via host events */\n#undef CONFIG_MKBP_EVENT_HOST\n\n/* MKBP events alert the host via chip_set_mkbp_interrupt() */\n#undef CONFIG_MKBP_EVENT_CHIP\n\n/* MKBP events alert the host via GPIO_EC_INT_L */\n#undef CONFIG_MKBP_EVENT_GPIO",
+      "range": {
+        "startLine": 1439,
+        "startChar": 0,
+        "endLine": 1443,
+        "endChar": 33
+      },
+      "revId": "738723c6bd1e2e1cdbd45be481ee92c5d60a796e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
