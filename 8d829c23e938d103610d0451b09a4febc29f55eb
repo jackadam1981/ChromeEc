@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88e1fb42_68d1b752",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-24T19:03:40Z",
+      "side": 1,
+      "message": "this is what I was wondering about: does this have to change to reflect that we expect UART RX to be on the different pin now?",
+      "range": {
+        "startLine": 127,
+        "startChar": 17,
+        "endLine": 127,
+        "endChar": 46
+      },
+      "revId": "8d829c23e938d103610d0451b09a4febc29f55eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
