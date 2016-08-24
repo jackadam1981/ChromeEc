@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "a8dddf5f_37dd1308",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-24T00:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8dddf5f_da0399e2",
+      "revId": "affddff1e75ef126cc719abd3e8f1e95c61d2822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e3be95b_095e9124",
         "filename": "common/i2cs_tpm.c",
         "patchSetId": 4
