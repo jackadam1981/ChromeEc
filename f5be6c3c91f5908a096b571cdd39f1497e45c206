@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88e1fb42_25e358cd",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-24T17:42:12Z",
+      "side": 1,
+      "message": "No, the EC doesn\u0027t have an internal PU for this pin. This change will will prevent the signal from floating / being pulled up to P1.8V_PMU initially on boot from S5, so any devices which are reset by it will be held in reset.",
+      "parentUuid": "88e1fb42_62fa76d6",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 25
+      },
+      "revId": "f5be6c3c91f5908a096b571cdd39f1497e45c206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88e1fb42_e254c658",
         "filename": "power/rk3399.c",
         "patchSetId": 1
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "RK3399 requires NPOR ( reset ) pulse \u003e 10 ms. eMMC need \u003e 1 us. How much time does TPM portion of Haven need to get a reliable reset? is that where the 17 ms come from?",
       "parentUuid": "88e1fb42_c2d702bd",
+      "range": {
+        "startLine": 232,
+        "startChar": 3,
+        "endLine": 232,
+        "endChar": 14
+      },
+      "revId": "f5be6c3c91f5908a096b571cdd39f1497e45c206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_0527341b",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-24T17:42:12Z",
+      "side": 1,
+      "message": "17ms is the sum of the delays in S5S3 and this state, in between asserting GPIO_PP1800_PMU_EN_L and here.",
+      "parentUuid": "88e1fb42_c26702bb",
       "range": {
         "startLine": 232,
         "startChar": 3,
