@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a8dddf5f_d7992f6a",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-24T00:00:30Z",
+      "side": 1,
+      "message": "I removed this portion and updated the parts about register accesses being limited to 1 or 4 bytes.",
+      "parentUuid": "a8dddf5f_badfad64",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 42
+      },
+      "revId": "19f5adea2bb36b0fd6814e1d5a51fb554a563d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8dddf5f_5ad7a949",
         "filename": "common/i2cs_tpm.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-23T21:21:43Z",
       "side": 1,
       "message": "this still contradicts the comment in the header.",
+      "range": {
+        "startLine": 105,
+        "startChar": 56,
+        "endLine": 106,
+        "endChar": 50
+      },
+      "revId": "19f5adea2bb36b0fd6814e1d5a51fb554a563d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8dddf5f_3794f331",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-24T00:00:30Z",
+      "side": 1,
+      "message": "I have modified the header comments and also included the crosbug link there.",
+      "parentUuid": "a8dddf5f_5ad7a949",
       "range": {
         "startLine": 105,
         "startChar": 56,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a8dddf5f_548c1d36",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-24T00:00:30Z",
+      "side": 1,
+      "message": "I have removed this portion of the comment as I don\u0027t know what it means and I think the relevant information is that we are reusing the buffer in chip/g/i2cs.c to hold the TPM fifo bytes that are read.",
+      "parentUuid": "a8dddf5f_3a5f3deb",
+      "range": {
+        "startLine": 151,
+        "startChar": 11,
+        "endLine": 151,
+        "endChar": 40
+      },
+      "revId": "19f5adea2bb36b0fd6814e1d5a51fb554a563d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8dddf5f_3a117d04",
         "filename": "common/i2cs_tpm.c",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2016-08-23T21:21:43Z",
       "side": 1,
       "message": "haven\u0027t you discovered that byte order conversion is not necessary?",
+      "range": {
+        "startLine": 178,
+        "startChar": 4,
+        "endLine": 178,
+        "endChar": 50
+      },
+      "revId": "19f5adea2bb36b0fd6814e1d5a51fb554a563d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8dddf5f_778a7b16",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-08-24T00:00:30Z",
+      "side": 1,
+      "message": "I was planning on making this change in a following CL where I have tested with the AP TPM register accesses. But, as you point out, there is no value in checking in something I know is not going to remain. So, I have removed the code that swaps to/from network byte order for 4 byte register accesses.",
+      "parentUuid": "a8dddf5f_3a117d04",
       "range": {
         "startLine": 178,
         "startChar": 4,
