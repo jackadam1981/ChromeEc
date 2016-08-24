@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "683a0757_fb5a0f2f",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-24T00:06:41Z",
+      "side": 1,
+      "message": "this return is not heeded.",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 185,
+        "endChar": 8
+      },
+      "revId": "dc8b5a73a6e790eb270011f653d7a011881f8cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
