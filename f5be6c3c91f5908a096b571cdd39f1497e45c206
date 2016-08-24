@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88e1fb42_22c22e04",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-24T16:40:13Z",
+      "side": 1,
+      "message": "We don\u0027t pulse SYS_RST on S0-\u003eS3 and back, so I think the comment is accurate. If we started in S5, we\u0027re holding SYS_RST low, and we need to release it.",
+      "parentUuid": "88e1fb42_e254c658",
+      "range": {
+        "startLine": 231,
+        "startChar": 22,
+        "endLine": 231,
+        "endChar": 40
+      },
+      "revId": "f5be6c3c91f5908a096b571cdd39f1497e45c206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08326b87_5fb447c9",
         "filename": "power/rk3399.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "depending how fast it cat transition from s3 to s0?",
       "parentUuid": "08326b87_5fb447c9",
+      "range": {
+        "startLine": 232,
+        "startChar": 3,
+        "endLine": 232,
+        "endChar": 14
+      },
+      "revId": "f5be6c3c91f5908a096b571cdd39f1497e45c206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_c2d702bd",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-24T16:40:13Z",
+      "side": 1,
+      "message": "Time from GPIO_PP1800_PMU_EN_L assertion is guaranteed to be \u003e 17ms, but I\u0027m not sure about the required timing relative to GPIO_PP3300_S0_EN_L assertion.",
+      "parentUuid": "88e1fb42_a273de14",
       "range": {
         "startLine": 232,
         "startChar": 3,
