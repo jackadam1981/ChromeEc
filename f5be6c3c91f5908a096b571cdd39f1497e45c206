@@ -259,6 +259,24 @@
       "revId": "f5be6c3c91f5908a096b571cdd39f1497e45c206",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48b54343_566aa417",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2016-08-24T22:39:54Z",
+      "side": 1,
+      "message": "\u003e RK3399 requires NPOR ( reset ) pulse \u003e 10 ms.\n\nUhh... on warm reset (see chipset_reset() above), we only assert it for 90us. Does the SoC make a difference between warm and cold reset there?",
+      "parentUuid": "88e1fb42_0527341b",
+      "revId": "f5be6c3c91f5908a096b571cdd39f1497e45c206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
