@@ -46,6 +46,30 @@
       "revId": "bef904ea914f1aac7986060d0479eccd07244fa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48b54343_99dc3fe3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-24T23:43:25Z",
+      "side": 0,
+      "message": "Any problem with including it in npcx/pwm.c?",
+      "parentUuid": "48b54343_590f778a",
+      "range": {
+        "startLine": 1231,
+        "startChar": 8,
+        "endLine": 1231,
+        "endChar": 23
+      },
+      "revId": "bef904ea914f1aac7986060d0479eccd07244fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
