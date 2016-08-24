@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88e1fb42_c55a6c2f",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 2162,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T18:07:30Z",
+      "side": 1,
+      "message": "CONFIG_USB_DWC_FS, to keep the naming convention of CONFIG_GROUP_OPTION?",
+      "range": {
+        "startLine": 2162,
+        "startChar": 14,
+        "endLine": 2162,
+        "endChar": 21
+      },
+      "revId": "f292160ded83c9b83c506794fc18ef93bf3295ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
