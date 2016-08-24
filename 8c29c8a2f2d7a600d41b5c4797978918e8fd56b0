@@ -22,6 +22,30 @@
       "revId": "8c29c8a2f2d7a600d41b5c4797978918e8fd56b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48b54343_19e32fcd",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-08-24T23:42:14Z",
+      "side": 1,
+      "message": "Yes. I miss read the code and thought the comment was wrong.",
+      "parentUuid": "48b54343_76fd28cc",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 50
+      },
+      "revId": "8c29c8a2f2d7a600d41b5c4797978918e8fd56b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -22,6 +22,30 @@
       "revId": "bef904ea914f1aac7986060d0479eccd07244fa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48b54343_590f778a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-08-24T23:42:14Z",
+      "side": 0,
+      "message": "Okay but npcx/pwm.c doesn\u0027t include this file, so EC_PWM_MAX_DUTY will need to be duplicated in that file.",
+      "parentUuid": "48b54343_f61c7822",
+      "range": {
+        "startLine": 1231,
+        "startChar": 8,
+        "endLine": 1231,
+        "endChar": 23
+      },
+      "revId": "bef904ea914f1aac7986060d0479eccd07244fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
