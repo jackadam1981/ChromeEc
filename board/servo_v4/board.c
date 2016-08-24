@@ -28,6 +28,9 @@
 #include "util.h"
 
 
+#define CPRINTS(format, args...) cprints(CC_CLOCK, format, ## args)
+
+
 /******************************************************************************
  * Build GPIO tables and expose a subset of the GPIOs over USB.
  */
@@ -62,12 +65,12 @@ GPIO_USB_DET_PP_CHG,
 GPIO_USB_DUT_CC2_RPUSB,
 GPIO_USB_DUT_CC2_RD,
 GPIO_USB_DUT_CC2_RA,		/* 20 */
-GPIO_USB_DUT_CC1_PR3A0,
+GPIO_USB_DUT_CC1_RP3A0,
 GPIO_USB_DUT_CC1_RP1A5,
 GPIO_USB_DUT_CC1_RPUSB,
 GPIO_USB_DUT_CC1_RD,
 GPIO_USB_DUT_CC1_RA,		/* 25 */
-GPIO_USB_DUT_CC2_PR3A0,
+GPIO_USB_DUT_CC2_RP3A0,
 GPIO_USB_DUT_CC2_RP1A5,
 
 };
@@ -226,10 +229,210 @@ const int num_rw_sections = ARRAY_SIZE(board_rw_sections);
 /******************************************************************************
  * Initialize board.
  */
-static void board_init(void)
+
+/* Write a GPIO output on the I2C ioexpander. */
+static void write_ioexpander(int bank, int gpio, int val)
 {
 	int tmp;
 
+	/* High bits are in the low register */
+	bank = bank ? 0 : 1;
+
+	i2c_read8(1, 0x40, 0x0 + bank, &tmp);
+	if (val)
+		tmp |= (1 << gpio);
+	else
+		tmp &= ~(1 << gpio);
+	i2c_write8(1, 0x40, 0x0 + bank, tmp);
+	i2c_read8(1, 0x40, 0x2 + bank, &tmp);
+	i2c_write8(1, 0x40, 0x2 + bank, tmp & ~(1 << gpio));
+}
+
+/* Enable uservo USB. */
+static void init_uservo_port(void)
+{
+	/* Write USERVO_POWER_EN */
+	write_ioexpander(0, 7, 1);
+	/* Write USERVO_FASTBOOT_MUX_SEL */
+	write_ioexpander(1, 0, 0);
+}
+
+/* Enable all ioexpander outputs. */
+static void init_ioexpander(void)
+{
+	/* Write all GPIO to outputs */
+	i2c_write8(1, 0x40, 0x2, 0x0);
+	i2c_write8(1, 0x40, 0x3, 0x0);
+}
+
+/* State of CC lines presented to DUT */
+/* Dual Rd pulldown, classic debug device. */
+#define CCD_ID_RDRD	0
+/* RpUSB + Rp1A5, indicates a self powered dongle. */
+#define CCD_ID_RPUSB	1
+/* One Rd. Device w/o CCD */
+#define CCD_ID_NONE	4
+
+static int ccd_id = CCD_ID_NONE;
+
+/* Set CC values according to requested mode. */
+static void init_ccd(int mode)
+{
+	int cc1_rd = GPIO_INPUT;
+	int cc2_rd = GPIO_INPUT;
+	int cc1_rpusb = GPIO_INPUT;
+	int cc2_rpusb = GPIO_INPUT;
+	int cc1_rp1a5 = GPIO_INPUT;
+	int cc2_rp1a5 = GPIO_INPUT;
+	int cc1_rp3a0 = GPIO_INPUT;
+	int cc2_rp3a0 = GPIO_INPUT;
+
+	switch (mode) {
+	case CCD_ID_RDRD:
+		cc1_rd = GPIO_OUT_LOW;
+		cc2_rd = GPIO_OUT_LOW;
+		break;
+
+	case CCD_ID_RPUSB:
+		cc1_rpusb = GPIO_OUT_HIGH;
+		cc2_rp1a5 = GPIO_OUT_HIGH;
+		break;
+
+	default:
+		cc1_rd = GPIO_OUT_LOW;
+		mode = CCD_ID_NONE;
+		break;
+	}
+
+	gpio_set_flags(GPIO_USB_DUT_CC1_RD, cc1_rd);
+	gpio_set_flags(GPIO_USB_DUT_CC2_RD, cc2_rd);
+	gpio_set_flags(GPIO_USB_DUT_CC1_RPUSB, cc1_rpusb);
+	gpio_set_flags(GPIO_USB_DUT_CC2_RPUSB, cc2_rpusb);
+	gpio_set_flags(GPIO_USB_DUT_CC1_RP1A5, cc1_rp1a5);
+	gpio_set_flags(GPIO_USB_DUT_CC2_RP1A5, cc2_rp1a5);
+	gpio_set_flags(GPIO_USB_DUT_CC1_RP3A0, cc1_rp3a0);
+	gpio_set_flags(GPIO_USB_DUT_CC2_RP3A0, cc2_rp3a0);
+
+	/* Disable CCD until we can detect orientation */
+	gpio_set_level(GPIO_SBU_MUX_EN, 0);
+
+	ccd_id = mode;
+}
+
+/* Check if presented CCD was accepted by the device */
+static int check_ccd_request(int cc1, int cc2)
+{
+	if ((ccd_id == CCD_ID_RDRD) &&
+	    (cc1 > 350) && (cc1 < 550) &&
+	    (cc2 > 350) && (cc2 < 550))
+		return 1;
+
+	if ((ccd_id == CCD_ID_RPUSB) &&
+	    (cc1 > 350) && (cc1 < 550) &&
+	    (cc2 > 900) && (cc2 < 1100))
+		return 1;
+
+	return 0;
+}
+
+/* Check if CC lines indicate an unplug event */
+static int check_usb_disconnect(int cc1, int cc2)
+{
+	if ((cc1 < 100) && (cc2 < 100))
+		return 1;
+
+	if ((cc1 > 3000) && (cc2 > 3000))
+		return 1;
+
+	return 0;
+}
+
+
+/* Current mode for CCD USB line connection */
+/* Cable not plugged in */
+#define CCD_MODE_DISCONNECTED	0
+/* Cable plugged in, CCD detected in defalt orientation */
+#define CCD_MODE_CONNECTED	1
+/* Cable plugged in, CCD detected in flip orientation */
+#define CCD_MODE_CONNECTED_FLIP	2
+/* Cable plugged in, nothing detected on SBU lines */
+#define CCD_MODE_CONNECTED_NONE	3
+/* No type-c cable in servo. */
+#define CCD_MODE_USBA		4
+
+static int mode = CCD_MODE_DISCONNECTED;
+
+/* We don't have an available interrupt, so we'll just check this
+ * every second. Update state every tick if necessary.
+ */
+static void usb_sbu_tick(void)
+{
+	int cc1, cc2;
+
+	/* Check if we have a CCD cable */
+	if ((mode == CCD_MODE_USBA) || !gpio_get_level(GPIO_DONGLE_DET)) {
+		mode = CCD_MODE_USBA;
+		return;
+	}
+
+	/* Check CC lines via ADC */
+	cc1 = adc_read_channel(ADC_DUT_CC1_PD);
+	cc2 = adc_read_channel(ADC_DUT_CC2_PD);
+
+	if (mode == CCD_MODE_DISCONNECTED) {
+		/* Check if both CC lines are pulled, and we are conencted */
+		if (check_ccd_request(cc1, cc2)) {
+			int sbu1;
+			int sbu2;
+
+			/* Give the onboard CCD micro 190ms
+			 * to notice and enable USB, then check adc levels.
+			 */
+			usleep(100000);
+			sbu1 = adc_read_channel(ADC_SBU1_DET);
+			sbu2 = adc_read_channel(ADC_SBU2_DET);
+
+			CPRINTS("CCD: Plug detect cc1:%d cc2:%d "
+				"sbu1:%d, sbu2:%d",
+				cc1, cc2, sbu1, sbu2);
+
+			/* USB FS pulls one line high for connect request */
+			if ((sbu1 > 2500) && (sbu2 < 500)) {
+				/* SBU flip = 1 */
+				write_ioexpander(0, 2, 1);
+				usleep(10000);
+				gpio_set_level(GPIO_SBU_MUX_EN, 1);
+				mode = CCD_MODE_CONNECTED;
+				CPRINTS("CCD: connected flip");
+			} else if ((sbu2 > 2500) && (sbu1 < 500)) {
+				/* SBU flip = 0 */
+				write_ioexpander(0, 2, 0);
+				usleep(10000);
+				gpio_set_level(GPIO_SBU_MUX_EN, 1);
+				mode = CCD_MODE_CONNECTED_FLIP;
+				CPRINTS("CCD: connected noflip");
+			} else {
+				mode = CCD_MODE_CONNECTED_NONE;
+				CPRINTS("CCD: connected none");
+			}
+		}
+	} else {
+		/* mode == CCD_MODE_CONNECTED[_FLIP] */
+		if (check_usb_disconnect(cc1, cc2)) {
+			/* We are not connected to anything */
+
+			/* Turn off CCD */
+			gpio_set_level(GPIO_SBU_MUX_EN, 0);
+			CPRINTS("CCD: disconnect");
+			mode = CCD_MODE_DISCONNECTED;
+		}
+	}
+}
+DECLARE_HOOK(HOOK_TICK, usb_sbu_tick, HOOK_PRIO_DEFAULT);
+
+
+static void board_init(void)
+{
 	/* USB to serial queues */
 	queue_init(&usart3_to_usb);
 	queue_init(&usb_to_usart3);
@@ -248,13 +451,11 @@ static void board_init(void)
 	i2c_write8(1, 0x20, 0x0, 0x20);
 
 	/* Enable uservo USB by default. */
-	/* Write USERVO_POWER_EN */
-	i2c_write8(1, 0x40, 0x1, 0xff | (1 << 7));
-	i2c_read8(1, 0x40, 0x3, &tmp);
-	i2c_write8(1, 0x40, 0x3, tmp & ~(1 << 7));
-	/* Write USERVO_FASTBOOT_MUX_SEL */
-	i2c_write8(1, 0x40, 0x0, 0xff & ~(1 << 0));
-	i2c_read8(1, 0x40, 0x2, &tmp);
-	i2c_write8(1, 0x40, 0x2, tmp & ~(1 << 0));
+	init_ioexpander();
+	init_uservo_port();
+
+	/* Enable CCD if type-c */
+	if (gpio_get_level(GPIO_DONGLE_DET))
+		init_ccd(CCD_ID_RPUSB);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
