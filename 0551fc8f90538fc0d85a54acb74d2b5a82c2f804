@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08326b87_ff2bd396",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-24T15:49:53Z",
+      "side": 1,
+      "message": "Let\u0027s add a build assert? ARRAY_SIZE(pd_src_pdo_3A) \u003d\u003d ARRAY_SIZE(pd_src_pdo).",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "0551fc8f90538fc0d85a54acb74d2b5a82c2f804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08326b87_df0db749",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-24T15:49:53Z",
+      "side": 1,
+      "message": "Do we want to build this into charge_manager? Define pd_src_pdo and pd_src_pdo_max at board level, and have charge_manager copy from the proper one. Then charge_manager_get_source_port_count() probably won\u0027t need to exist.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 1
+      },
+      "revId": "0551fc8f90538fc0d85a54acb74d2b5a82c2f804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
