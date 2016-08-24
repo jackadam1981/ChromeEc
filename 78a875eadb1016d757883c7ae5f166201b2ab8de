@@ -16,6 +16,24 @@
       "revId": "78a875eadb1016d757883c7ae5f166201b2ab8de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_f60c884b",
+        "filename": "common/dptf.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2016-08-24T20:36:57Z",
+      "side": 1,
+      "message": "Hi Vijay. Please update your OS. That is because of crosbug.com/p/56312",
+      "parentUuid": "88e1fb42_ebcae175",
+      "revId": "78a875eadb1016d757883c7ae5f166201b2ab8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
