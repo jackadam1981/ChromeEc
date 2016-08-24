@@ -35,9 +35,9 @@
 /* Rails requires for S3 */
 #define IN_PGOOD_S3            (IN_PGOOD_PP5000)
 /* Rails required for S0 */
-#define IN_PGOOD_S0            (IN_PGOOD_S3 | IN_PGOOD_AP | IN_PGOOD_SYS)
+#define IN_PGOOD_S0            (IN_PGOOD_S3 | IN_PGOOD_SYS)
 /* All inputs in the right state for S0 */
-#define IN_ALL_S0              (IN_PGOOD_S0 | IN_SUSPEND_DEASSERTED)
+#define IN_ALL_S0              (IN_PGOOD_S0 | IN_PGOOD_AP | IN_SUSPEND_DEASSERTED)
 
 /* Long power key press to force shutdown in S0 */
 #define FORCED_SHUTDOWN_DELAY  (8 * SECOND)
@@ -218,7 +218,7 @@ enum power_state power_handle_state(enum power_state state)
 		msleep(2);
 		gpio_set_level(GPIO_PP1800_SENSOR_EN_L, 0);
 
-		if (power_wait_signals(IN_PGOOD_S0)) {
+		if (power_wait_signals(IN_PGOOD_S0 | IN_PGOOD_AP)) {
 			chipset_force_shutdown();
 			return POWER_S3S0;
 		}
