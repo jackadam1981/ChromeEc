@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88e1fb42_a8173ffc",
+        "filename": "chip/rotor/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:29:57Z",
+      "side": 1,
+      "message": "CPU_CLOCK\n\nUnless you\u0027re hoping to add support for changing the clock later, might as well get rid of freq entirely...",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "8c1c051bdcb6792030e4557560403e63f88d0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_88119b06",
+        "filename": "chip/rotor/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:29:57Z",
+      "side": 1,
+      "message": "Why 500?  We\u0027ve used 250 on some other systems.\n\n(500 may be correct, just checking that we\u0027ve thought about it)",
+      "range": {
+        "startLine": 13,
+        "startChar": 30,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "8c1c051bdcb6792030e4557560403e63f88d0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_88287b30",
+        "filename": "chip/rotor/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:29:57Z",
+      "side": 1,
+      "message": "Is !!(val \u0026 (1 \u003c\u003c i)) more efficient?\n\n(make all dis and check the assembly...)",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "8c1c051bdcb6792030e4557560403e63f88d0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_680097a1",
+        "filename": "chip/rotor/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:29:57Z",
+      "side": 1,
+      "message": "Isn\u0027t (1\u003c\u003ci) the inverse of GPIO_MASK_TO_NUM?\n\nThat is, can\u0027t you just use mask directly?",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 57
+      },
+      "revId": "8c1c051bdcb6792030e4557560403e63f88d0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_68d7f717",
+        "filename": "chip/rotor/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:29:57Z",
+      "side": 1,
+      "message": "Might be cleaner to:\n\nconst uint32_t this_mask \u003d 1 \u003c\u003c i;\n\nand then use it below.",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 20
+      },
+      "revId": "8c1c051bdcb6792030e4557560403e63f88d0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_08c10b52",
+        "filename": "chip/rotor/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:29:57Z",
+      "side": 1,
+      "message": "Someday we\u0027ll do this reverse-mapping more efficiently so we don\u0027t have to do a linear search in the interrupt handler.\n\nMaybe it\u0027s more feasible now that we have all those fancy gpio macros?",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 57
+      },
+      "revId": "8c1c051bdcb6792030e4557560403e63f88d0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_2bbcc9a8",
+        "filename": "chip/rotor/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:29:57Z",
+      "side": 1,
+      "message": "Both of these do terrible things the way common/timer.c is currently implemented (we have the same problem in chip/g)\n\nOther parts of the code assume this returns a full-range 32-bit value, not something that wraps before 0xffffffff.\n\nSo, say you wrap at 0x0aaaaaaa because CLOCK_FREQ is 24 MHz.  If you start udelay(10000) at 0x0aaaaaa0, then 10 ticks later wrap to 0x00000000, udelay will think that roughly 4000 seconds have passed and will exit.\n\nWe could make __hw_clock_source_read keep its own 32-bit accumulator.  But it\u0027s probably better just to add support to common/timer.c to handle the case where __hw_clock_source_read() returns something not microseconds (could be a 24MHz clock, could be a 262KHz clock), because we\u0027ve run into this on several chips now.  And then make sure that ONLY timer.c calls __hw_clock_source_read().",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 31
+      },
+      "revId": "8c1c051bdcb6792030e4557560403e63f88d0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_0bec65bd",
+        "filename": "chip/rotor/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:29:57Z",
+      "side": 1,
+      "message": "Unless the frequency of this timer is 1 Hz, I\u0027d call it something other than \"second timer\" :)\n\nMaybe additional timer or aux timer?",
+      "range": {
+        "startLine": 170,
+        "startChar": 53,
+        "endLine": 170,
+        "endChar": 65
+      },
+      "revId": "8c1c051bdcb6792030e4557560403e63f88d0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_2be329cd",
+        "filename": "chip/rotor/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:29:57Z",
+      "side": 1,
+      "message": "Do these need TODOs, or are they really no-ops?",
+      "range": {
+        "startLine": 203,
+        "startChar": 5,
+        "endLine": 203,
+        "endChar": 27
+      },
+      "revId": "8c1c051bdcb6792030e4557560403e63f88d0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_0b27451b",
+        "filename": "chip/rotor/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:29:57Z",
+      "side": 1,
+      "message": "(b)",
+      "range": {
+        "startLine": 47,
+        "startChar": 15,
+        "endLine": 47,
+        "endChar": 16
+      },
+      "revId": "8c1c051bdcb6792030e4557560403e63f88d0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_ab21f908",
+        "filename": "chip/rotor/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:29:57Z",
+      "side": 1,
+      "message": "(n)",
+      "range": {
+        "startLine": 53,
+        "startChar": 12,
+        "endLine": 53,
+        "endChar": 13
+      },
+      "revId": "8c1c051bdcb6792030e4557560403e63f88d0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_cb6efd30",
+        "filename": "chip/rotor/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:29:57Z",
+      "side": 1,
+      "message": "(port)\n\nIn general, all macro args must be () encapsulated to avoid order-of-operation issues in expansion.  I haven\u0027t commented all of them, but please check the rest of the file...",
+      "range": {
+        "startLine": 55,
+        "startChar": 40,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "8c1c051bdcb6792030e4557560403e63f88d0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_0b7905f5",
+        "filename": "chip/rotor/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:29:57Z",
+      "side": 1,
+      "message": "(pin)",
+      "range": {
+        "startLine": 55,
+        "startChar": 72,
+        "endLine": 55,
+        "endChar": 75
+      },
+      "revId": "8c1c051bdcb6792030e4557560403e63f88d0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_4b314d51",
+        "filename": "chip/rotor/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:29:57Z",
+      "side": 1,
+      "message": "(n)",
+      "range": {
+        "startLine": 62,
+        "startChar": 56,
+        "endLine": 62,
+        "endChar": 57
+      },
+      "revId": "8c1c051bdcb6792030e4557560403e63f88d0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_8b6d1531",
+        "filename": "chip/rotor/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-24T19:29:57Z",
+      "side": 1,
+      "message": "Where does this number come from?  Make it a constant?",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "8c1c051bdcb6792030e4557560403e63f88d0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
