@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48b54343_76fd28cc",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-24T23:14:59Z",
+      "side": 1,
+      "message": "Are we changing the default here to 100% duty?",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 50
+      },
+      "revId": "8c29c8a2f2d7a600d41b5c4797978918e8fd56b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48b54343_f61c7822",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-24T23:14:59Z",
+      "side": 0,
+      "message": "We should leave this here -- it\u0027s referenced by other components which use the above host commands (currently only linux kernel). Removing it would break their build, when they pickup the header update.",
+      "range": {
+        "startLine": 1231,
+        "startChar": 8,
+        "endLine": 1231,
+        "endChar": 23
+      },
+      "revId": "bef904ea914f1aac7986060d0479eccd07244fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
