@@ -46,6 +46,29 @@
       "revId": "a6568a24fc71235817ba4eddc04cb2ccb91a1cfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08326b87_79604337",
+        "filename": "board/cr50/tpm2/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-08-24T01:41:07Z",
+      "side": 1,
+      "message": "That doesn\u0027t seem to be enough to catch the issue (unless I miss smth).\nWhen you run _cpri__AESEncryptCFB(out, ..., len, in) and pass len, for which len%16 !\u003d 0, it writes more than len bytes to out. So, it\u0027s necessary to allocate a separate buffer first, memset(buf, 0, len+16) before calling _cpri__AESEncryptCFB(buf, ...) and then verify that bytes past buf+len remained zeroes, before copying buf to cmd_body, and report error if that\u0027s not the case.\n\nSame for other modes.",
+      "range": {
+        "startLine": 422,
+        "startChar": 4,
+        "endLine": 422,
+        "endChar": 29
+      },
+      "revId": "a6568a24fc71235817ba4eddc04cb2ccb91a1cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
