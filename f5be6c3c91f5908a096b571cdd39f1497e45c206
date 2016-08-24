@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "88e1fb42_c5038c6b",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-08-24T20:32:24Z",
+      "side": 1,
+      "message": "Aha, makes sense.",
+      "parentUuid": "88e1fb42_25e358cd",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 25
+      },
+      "revId": "f5be6c3c91f5908a096b571cdd39f1497e45c206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88e1fb42_e254c658",
         "filename": "power/rk3399.c",
         "patchSetId": 1
@@ -89,6 +113,29 @@
         "startChar": 22,
         "endLine": 231,
         "endChar": 40
+      },
+      "revId": "f5be6c3c91f5908a096b571cdd39f1497e45c206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_767078d3",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-08-24T20:32:24Z",
+      "side": 1,
+      "message": "Just thought about one potential issue during lunch break. In current sequence, EC will do sys_rst before AP  controls its rails - including PP3000. Which means eMMC will not get a HW reset since it won\u0027t get 3.0 V power from AP\u0027s EN signal after sys_reset has been released. So we\u0027ll have to rely on SW cmd for eMMC reset. I have run into some eMMC part that a SW cmd reset after power on is not enough to put the eMMC into a known good state. we should check both the eMMC p[art used by Samsung and Gru to make sure it can be functional properly without a HW reset after 1.8V and 3.0V ramp up.",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 231,
+        "endChar": 43
       },
       "revId": "f5be6c3c91f5908a096b571cdd39f1497e45c206",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
