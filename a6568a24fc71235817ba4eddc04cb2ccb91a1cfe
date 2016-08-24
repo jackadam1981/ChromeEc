@@ -22,6 +22,30 @@
       "revId": "a6568a24fc71235817ba4eddc04cb2ccb91a1cfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08326b87_3625f854",
+        "filename": "board/cr50/tpm2/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-08-24T01:12:17Z",
+      "side": 1,
+      "message": "The enums in CIPHER_MODE represent those that have native hardware support, i.e. OFB and CFB are \"layered\" on CTR/ECB, so to represent OFB/CFB another enum is necessary.",
+      "parentUuid": "08326b87_564f546d",
+      "range": {
+        "startLine": 231,
+        "startChar": 6,
+        "endLine": 231,
+        "endChar": 26
+      },
+      "revId": "a6568a24fc71235817ba4eddc04cb2ccb91a1cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
