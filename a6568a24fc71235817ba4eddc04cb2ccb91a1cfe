@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08326b87_564f546d",
+        "filename": "board/cr50/tpm2/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-08-24T00:43:33Z",
+      "side": 1,
+      "message": "why do we need to make a distinction between CIPHER_MODE_* and TEST_MODE_*?",
+      "range": {
+        "startLine": 231,
+        "startChar": 6,
+        "endLine": 231,
+        "endChar": 26
+      },
+      "revId": "a6568a24fc71235817ba4eddc04cb2ccb91a1cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
