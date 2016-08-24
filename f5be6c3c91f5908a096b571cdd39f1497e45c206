@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "88e1fb42_62fa76d6",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-08-24T17:22:36Z",
+      "side": 1,
+      "message": "So sys_rst_L is asserted before any of the PU rail ( associated with each of the device need to be reset) has been powered on. Does EC has internal PU for this OD pin?",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 25
+      },
+      "revId": "f5be6c3c91f5908a096b571cdd39f1497e45c206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88e1fb42_e254c658",
         "filename": "power/rk3399.c",
         "patchSetId": 1
@@ -108,6 +131,30 @@
       "side": 1,
       "message": "Time from GPIO_PP1800_PMU_EN_L assertion is guaranteed to be \u003e 17ms, but I\u0027m not sure about the required timing relative to GPIO_PP3300_S0_EN_L assertion.",
       "parentUuid": "88e1fb42_a273de14",
+      "range": {
+        "startLine": 232,
+        "startChar": 3,
+        "endLine": 232,
+        "endChar": 14
+      },
+      "revId": "f5be6c3c91f5908a096b571cdd39f1497e45c206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e1fb42_c26702bb",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-08-24T17:22:36Z",
+      "side": 1,
+      "message": "RK3399 requires NPOR ( reset ) pulse \u003e 10 ms. eMMC need \u003e 1 us. How much time does TPM portion of Haven need to get a reliable reset? is that where the 17 ms come from?",
+      "parentUuid": "88e1fb42_c2d702bd",
       "range": {
         "startLine": 232,
         "startChar": 3,
