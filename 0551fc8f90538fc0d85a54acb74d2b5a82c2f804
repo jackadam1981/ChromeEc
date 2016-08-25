@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "255bda40_47b50e91",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-25T10:57:54Z",
+      "side": 1,
+      "message": "updated along with the changes below.",
+      "parentUuid": "08326b87_ff2bd396",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "0551fc8f90538fc0d85a54acb74d2b5a82c2f804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08326b87_df0db749",
         "filename": "board/kevin/usb_pd_policy.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-24T15:49:53Z",
       "side": 1,
       "message": "Do we want to build this into charge_manager? Define pd_src_pdo and pd_src_pdo_max at board level, and have charge_manager copy from the proper one. Then charge_manager_get_source_port_count() probably won\u0027t need to exist.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 1
+      },
+      "revId": "0551fc8f90538fc0d85a54acb74d2b5a82c2f804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "255bda40_27ba1a81",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-25T10:57:54Z",
+      "side": 1,
+      "message": "This seems a better option,\nI moved this to charge manager and the new version looks slightly better to handle the future \u0027charge high-voltage pass-through\u0027 we might try to implement.\n\nI will upload a new version soon.",
+      "parentUuid": "08326b87_df0db749",
       "range": {
         "startLine": 44,
         "startChar": 0,
