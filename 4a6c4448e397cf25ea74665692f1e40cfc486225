@@ -22,6 +22,30 @@
       "revId": "4a6c4448e397cf25ea74665692f1e40cfc486225",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5775ebf_ba2089ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-25T18:39:13Z",
+      "side": 1,
+      "message": "Probably not. There\u0027s no easy way to determine its presence at compile-time, and the help messages go into .rodata so we can\u0027t change them at run-time. I just noticed it when I ran \"help list\" because it had a \"\\n\" in there that messed up the output. When I looked closer, I realized that it mentioned a command that had been renamed.",
+      "parentUuid": "c5775ebf_377d72df",
+      "range": {
+        "startLine": 29,
+        "startChar": 38,
+        "endLine": 29,
+        "endChar": 44
+      },
+      "revId": "4a6c4448e397cf25ea74665692f1e40cfc486225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
