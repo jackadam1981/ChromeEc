@@ -12,7 +12,8 @@
 
 
 GPIO_INT(WP_L,             PIN(9, 3), GPIO_INT_BOTH, switch_interrupt)
-GPIO_INT(SHI_CS_L,         PIN(5, 3), GPIO_INT_FALLING, shi_cs_event)
+GPIO_INT(SHI_CS_L,         PIN(5, 3), GPIO_INT_FALLING | GPIO_PULL_DOWN,
+         shi_cs_event)
 GPIO_INT(USB_C0_PD_INT_L,  PIN(6, 0), GPIO_INT_FALLING | GPIO_PULL_UP,
          tcpc_alert_event)
 GPIO_INT(USB_C1_PD_INT_L,  PIN(6, 2), GPIO_INT_FALLING | GPIO_PULL_UP,
