@@ -46,6 +46,30 @@
       "revId": "4a6c4448e397cf25ea74665692f1e40cfc486225",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5775ebf_9a258db1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-25T18:42:04Z",
+      "side": 1,
+      "message": "but the command support is conditionally compiled in, I think the same condition should be used to alter the help message.",
+      "parentUuid": "c5775ebf_ba2089ae",
+      "range": {
+        "startLine": 29,
+        "startChar": 38,
+        "endLine": 29,
+        "endChar": 44
+      },
+      "revId": "4a6c4448e397cf25ea74665692f1e40cfc486225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
