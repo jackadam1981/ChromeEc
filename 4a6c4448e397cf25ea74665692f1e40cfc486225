@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5775ebf_377d72df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-08-25T17:33:36Z",
+      "side": 1,
+      "message": "I don\u0027t see this command in the cr50 image. Should this addition be conditional by presence of the command in the image?",
+      "range": {
+        "startLine": 29,
+        "startChar": 38,
+        "endLine": 29,
+        "endChar": 44
+      },
+      "revId": "4a6c4448e397cf25ea74665692f1e40cfc486225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
