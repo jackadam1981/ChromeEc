@@ -16,6 +16,24 @@
       "revId": "b102cafc439e742e86317d9d833df508cb8a535b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8531e618_712be2e5",
+        "filename": "test/tpm_test/testlib/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-08-25T22:29:25Z",
+      "side": 1,
+      "message": "\u003e using all bits of rand() isn\u0027t very good random\n \u003e it\u0027s int rand(), so long int pads w/ pile of zeros to boot?\n \u003e \n \u003e just call openssl RAND_bytes() instead?\n\nDone.",
+      "parentUuid": "a80ebf7a_f8105501",
+      "revId": "b102cafc439e742e86317d9d833df508cb8a535b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
