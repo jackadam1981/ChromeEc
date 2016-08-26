@@ -41,6 +41,7 @@
 #include "tcpm.h"
 #include "timer.h"
 #include "thermal.h"
+#include "uart.h"
 #include "usb_charge.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
@@ -275,6 +276,26 @@ static void board_init(void)
 	CPRINTS("Board using SPI sensors");
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+void board_hibernate(void)
+{
+	int i;
+	int rv;
+
+	/*
+	 * Disable the power enables for the TCPCs since we're going into
+	 * hibernate.  The charger VBUS interrupt will wake us up and reset the
+	 * EC.  Upon init, we'll reinitialize the TCPCs to be at full power.
+	 */
+	CPRINTS("Setting TCPCs to low power mode.");
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+		rv = tcpc_write(i, TCPC_REG_POWER, TCPC_REG_POWER_PWR_LOW);
+		if (rv)
+			CPRINTS("Error setting TCPC %d to low power!", i);
+	}
+
+	uart_flush_output();
+}
 
 enum kevin_board_version {
 	BOARD_VERSION_UNKNOWN = -1,
