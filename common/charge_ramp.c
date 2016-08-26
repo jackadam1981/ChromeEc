@@ -23,6 +23,9 @@
 /* Maximum allowable time charger can be unplugged to be considered an OCP */
 #define OC_RECOVER_MAX_TIME (SECOND)
 
+/* Maximum allowable time to re-detect the charger which lost power */
+#define CHG_RECOVER_MAX_TIME (SECOND >> 1)
+
 /* Delay for running state machine when board is not consuming full current */
 #define CURRENT_DRAW_DELAY  (5*SECOND)
 
@@ -68,6 +71,12 @@ static int active_sup;
 static int active_icl;
 static timestamp_t reg_time;
 
+/* Previous charging information */
+static int active_port_prev = CHARGE_PORT_NONE;
+static int active_sup_prev = CHARGE_SUPPLIER_NONE;
+static int active_icl_prev;
+static int time_prev;
+
 static int stablize_port;
 static int stablize_sup;
 
@@ -101,7 +110,19 @@ void chg_ramp_charge_supplier_change(int port, int supplier, int current,
 	/* Set min and max input current limit based on if ramp is allowed */
 	if (board_is_ramp_allowed(active_sup)) {
 		min_icl = RAMP_CURR_START_MA;
-		max_icl = board_get_ramp_current_limit(active_sup, current);
+		/* Find out if it is the same charger */
+		if (get_time().val > time_prev + CHG_RECOVER_MAX_TIME)
+			active_icl_prev = 0;
+
+		/* Restore the last good maximum current ramped */
+		if (active_port_prev == active_port &&
+			active_sup_prev == active_sup &&
+			active_icl_prev)
+			max_icl = MAX(active_icl_prev - RAMP_CURR_INCR_MA,
+					RAMP_CURR_START_MA);
+		else
+			max_icl = board_get_ramp_current_limit(
+					active_sup, current);
 	} else {
 		min_icl = max_icl = current;
 	}
@@ -321,6 +342,14 @@ void chg_ramp_task(void)
 		/* Set the input current limit */
 		board_set_charge_limit(active_port, active_sup,
 					chg_ramp_get_current_limit());
+
+		/* Store the charging information */
+		if (board_is_ramp_allowed(active_sup)) {
+			active_port_prev = active_port;
+			active_sup_prev = active_sup;
+			active_icl_prev = active_icl;
+			time_prev = get_time().val;
+		}
 
 		if (ramp_st == CHG_RAMP_STABILIZE)
 			/*
