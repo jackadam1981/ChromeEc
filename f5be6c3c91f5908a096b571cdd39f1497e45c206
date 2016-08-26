@@ -277,6 +277,24 @@
       "revId": "f5be6c3c91f5908a096b571cdd39f1497e45c206",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5b2fe10_c50750ee",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1138080
+      },
+      "writtenOn": "2016-08-26T22:17:38Z",
+      "side": 1,
+      "message": "10 ms was the placeholder Rockchip ask us to planned for. Just confirmed with Rockchip that the delay only need to be \u003e 10 cycles of main clock , which is ~ 4.2 us  with 24 MHz clock. I am asking them to double check if system is operating on sleep clock, but even 100 cycles of sleep clock is only at 32.768 KHz, we\u0027ll need 3.05 ms. With Shawn\u0027s new sequence,looks like we meet this for both warm reset and cold reset.",
+      "parentUuid": "48b54343_566aa417",
+      "revId": "f5be6c3c91f5908a096b571cdd39f1497e45c206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
