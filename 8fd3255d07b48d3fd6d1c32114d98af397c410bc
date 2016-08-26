@@ -49,6 +49,52 @@
     },
     {
       "key": {
+        "uuid": "c5b2fe10_e209228c",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-26T20:36:53Z",
+      "side": 1,
+      "message": "why?",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 28
+      },
+      "revId": "8fd3255d07b48d3fd6d1c32114d98af397c410bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5b2fe10_e286c2c3",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-26T20:36:53Z",
+      "side": 1,
+      "message": "Sometimes you use TIMER0, sometimes TIMER1. Let\u0027s put a comment at the top saying which is used for what, and maybe some macros:\n\n  #define FOO_THING(b) TIMER0_ ## b\n  #define BAR_THING(b) TIMER1_ ## b\n\nthen we can say\n\n  GWRITE(TIMELS, FOO_THING(WAKEUP_ACK));\n  GREG32(TIMELS, BAR_THING(LOAD)) \u003d TIMELS_MAX;",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 22
+      },
+      "revId": "8fd3255d07b48d3fd6d1c32114d98af397c410bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5b2fe10_df6ddf9b",
         "filename": "chip/g/idle.c",
         "patchSetId": 2
