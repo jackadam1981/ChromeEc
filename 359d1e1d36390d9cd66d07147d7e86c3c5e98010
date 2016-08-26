@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8531e618_a2c7d36e",
+        "filename": "common/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-26T16:02:17Z",
+      "side": 1,
+      "message": "Would it still be desired to print restricted commands at all? Perhaps we hide them from the help output if we\u0027re in restricted mode?",
+      "revId": "359d1e1d36390d9cd66d07147d7e86c3c5e98010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
