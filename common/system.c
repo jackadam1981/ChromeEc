@@ -4,6 +4,7 @@
  */
 
 /* System module for Chrome EC : common functions */
+#include "chipset.h"
 #include "clock.h"
 #include "common.h"
 #include "console.h"
@@ -804,6 +805,9 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 		/* That shouldn't return... */
 		return EC_ERROR_UNKNOWN;
 #endif
+	case EC_REBOOT_FORCE_SHUTDOWN:
+		CPRINTS("Force Shutdown");
+		chipset_force_shutdown();
 	default:
 		return EC_ERROR_INVAL;
 	}
@@ -1272,7 +1276,8 @@ int host_command_reboot(struct host_cmd_handler_args *args)
 	if (p.cmd == EC_REBOOT_JUMP_RO ||
 	    p.cmd == EC_REBOOT_JUMP_RW ||
 	    p.cmd == EC_REBOOT_COLD ||
-	    p.cmd == EC_REBOOT_HIBERNATE) {
+	    p.cmd == EC_REBOOT_HIBERNATE ||
+	    p.cmd == EC_REBOOT_FORCE_SHUTDOWN) {
 		/* Clean busy bits on host for commands that won't return */
 		args->result = EC_RES_SUCCESS;
 		host_send_response(args);
