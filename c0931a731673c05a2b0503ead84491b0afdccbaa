@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5b2fe10_8bdb9976",
+        "filename": "include/console.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-26T23:46:23Z",
+      "side": 1,
+      "message": "Suggest console_in_restricted_mode() and move to console.h, so that implementation mismatch will be caught at compile time.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "c0931a731673c05a2b0503ead84491b0afdccbaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
