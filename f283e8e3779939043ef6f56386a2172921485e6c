@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5b2fe10_cbb52132",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-26T23:42:18Z",
+      "side": 1,
+      "message": "If the goal of this is to make sure those CPRINTS emit, please use cflush() rather than calling the low-level uart API (which might not work if the console is on something other than a uart).",
+      "range": {
+        "startLine": 297,
+        "startChar": 1,
+        "endLine": 297,
+        "endChar": 20
+      },
+      "revId": "f283e8e3779939043ef6f56386a2172921485e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
