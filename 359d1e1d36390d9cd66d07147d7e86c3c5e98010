@@ -16,6 +16,24 @@
       "revId": "359d1e1d36390d9cd66d07147d7e86c3c5e98010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5b2fe10_9c6765ba",
+        "filename": "common/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-26T18:44:32Z",
+      "side": 1,
+      "message": "Ha. I spent a couple of hours on that. Turns out it\u0027s a real pain, because we\u0027re all used to seeing the output in alphabetical order, column-first:\n\n  aaa  ddd  ggg\n  bbb  eee  hhh\n  ccc  fff\n\nPrinting it in that order requires looking ahead, and when the restricted commands are scattered randomly among the non-restricted ones (all in alphabetical order), looking ahead adds a non-trivial amount of code.\n\nThe alternatives are to change the order:\n\n  aaa  bbb  ccc\n  ddd  eee  fff\n  ggg  hhh\n\nor to show them all. Showing them all is a lot easier.",
+      "parentUuid": "8531e618_a2c7d36e",
+      "revId": "359d1e1d36390d9cd66d07147d7e86c3c5e98010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
