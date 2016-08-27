@@ -22,6 +22,30 @@
       "revId": "c0931a731673c05a2b0503ead84491b0afdccbaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5b2fe10_f199eac9",
+        "filename": "include/console.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-27T02:52:33Z",
+      "side": 1,
+      "message": "What? Renaming the function is fine, but this IS console.h\n\nWe\u0027ll always need some board-specific means of changing what this function returns. Did you mean to just take it out of the #ifdef?",
+      "parentUuid": "c5b2fe10_8bdb9976",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "c0931a731673c05a2b0503ead84491b0afdccbaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
