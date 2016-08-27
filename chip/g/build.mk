@@ -100,6 +100,16 @@ $(out)/RW/ec.RW_B.flat: $(out)/util/signer
 endif
 
 CR50_RO_KEY ?= rom-testkey-A.pem
+ifeq ($(CR50_DEV),)
+CR50_RW_KEY = loader-testkey-A.pem
+SIGNER = $(out)/util/signer
+SIGNER_EXTRAS =
+else
+SIGNER = $(HOME)/bin/codesigner
+CR50_RW_KEY = cr50_rom0-dev-blsign.pem.pub
+SIGNER_EXTRAS += -x util/signer/fuses.xml
+SIGNER_EXTRAS += -j util/signer/ec_RW-manifest-kevin_evt_1.json
+endif
 
 # This file is included twice by the Makefile, once to determine the CHIP info
 # # and then again after defining all the CONFIG_ and HAS_TASK variables. We use
