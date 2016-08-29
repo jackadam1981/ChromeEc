@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "c5b2fe10_59e7a4a7",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-29T16:52:26Z",
+      "side": 1,
+      "message": "Let\u0027s keep these includes alpha-sorted.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "4b98f59795f84ddcab68b39624c30585247af410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5b2fe10_797380f3",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-29T16:52:26Z",
+      "side": 1,
+      "message": "Just include ec_commands.h, no need to redefine this constant.",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "4b98f59795f84ddcab68b39624c30585247af410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05041697_66a9aed3",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 7
