@@ -140,6 +140,30 @@
       "revId": "4cfd34b4ccdcc58abf0bcc92bcea0f8d22cf9a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "857d6655_2530984e",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-29T22:49:44Z",
+      "side": 1,
+      "message": "To answer your question more specifically, section 5.9.1 of the ANX74xx datasheet claims that the chip should take under 11ms to come out of low power mode (T3 + T4 + T5 + T6).",
+      "parentUuid": "05041697_c69982ca",
+      "range": {
+        "startLine": 806,
+        "startChar": 0,
+        "endLine": 807,
+        "endChar": 10
+      },
+      "revId": "4cfd34b4ccdcc58abf0bcc92bcea0f8d22cf9a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
