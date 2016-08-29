@@ -22,6 +22,30 @@
       "revId": "123d4d52480e336dcaf1164b42665efc23c9f631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "857d6655_e26306e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-29T22:23:39Z",
+      "side": 1,
+      "message": "Better yet, merge them into one CL, since they\u0027re related and in the same repo.",
+      "parentUuid": "857d6655_e2506667",
+      "range": {
+        "startLine": 25,
+        "startChar": 29,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "123d4d52480e336dcaf1164b42665efc23c9f631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
