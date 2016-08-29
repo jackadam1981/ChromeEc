@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5b2fe10_5c3f92b4",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-29T18:13:23Z",
+      "side": 1,
+      "message": "Minor nit: variable should indicate what state means what.  Is 0 locked, or unlocked?  \"console_locked\"?\n\n(If you call it console_unlocked, then you\u0027ll get the right default behavior; then just make in_restricted_mode() return !console_unlocked.)",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "91820544e41ca829c84c8b879ba0cd82bf4539e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
