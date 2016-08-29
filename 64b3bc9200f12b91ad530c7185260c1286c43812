@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c5fafef1_62d8b247",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-08-29T21:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5fafef1_a2e8fae3",
+      "range": {
+        "startLine": 348,
+        "startChar": 8,
+        "endLine": 348,
+        "endChar": 34
+      },
+      "revId": "64b3bc9200f12b91ad530c7185260c1286c43812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5fafef1_222cea41",
         "filename": "board/kevin/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-29T21:37:40Z",
       "side": 1,
       "message": "Move to board_config_check().",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 63
+      },
+      "revId": "64b3bc9200f12b91ad530c7185260c1286c43812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5fafef1_c2b546e4",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-08-29T21:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5fafef1_222cea41",
       "range": {
         "startLine": 401,
         "startChar": 0,
