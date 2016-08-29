@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "c5fafef1_3cc0919c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-29T19:16:27Z",
+      "side": 1,
+      "message": "Change this to something like \"pi3usb9281: Prevent race condition ...\"",
+      "revId": "6bbe92d7e8c45d70c11be11179d95637be665c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5fafef1_bc94a193",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-29T19:16:27Z",
+      "side": 1,
+      "message": "It might be a good idea to do a quick test. Let\u0027s grab a samus or chell unit?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "6bbe92d7e8c45d70c11be11179d95637be665c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5fafef1_fc7c697d",
         "filename": "driver/usb_switch_pi3usb9281.c",
         "patchSetId": 1
