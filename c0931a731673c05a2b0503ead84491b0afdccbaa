@@ -46,6 +46,30 @@
       "revId": "c0931a731673c05a2b0503ead84491b0afdccbaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5b2fe10_9c1aba81",
+        "filename": "include/console.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-08-29T18:04:20Z",
+      "side": 1,
+      "message": "I have no idea what I meant about moving to console.h.  Because it\u0027s already there.\n\nDo we envision this single lock affecting more things than just the console?  If so, how does it differ from system_is_locked()?  I\u0027m concerned that without the \"console\" qualifier, someone will use the wrong lock in the wrong place, and it\u0027ll mostly work.\n\nOn second pass, \"console_is_restricted()\" might be a better name.",
+      "parentUuid": "c5b2fe10_f199eac9",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "c0931a731673c05a2b0503ead84491b0afdccbaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
