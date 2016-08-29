@@ -47,6 +47,7 @@ die() {
 
 BOARDS_IT83XX=(
 	it83xx_evb
+	it885x
 )
 
 BOARDS_LM4=(

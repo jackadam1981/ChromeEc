@@ -13,7 +13,7 @@ build-srcs := $(foreach u,$(build-util-bin),$(sort $($(u)-objs:%.o=util/%.c) uti
 host-srcs := $(foreach u,$(host-util-bin),$(sort $($(u)-objs:%.o=util/%.c) util/$(u).c))
 
 # Don't do a build test on the following boards:
-skip_boards = OWNERS host it83xx_evb
+skip_boards = OWNERS host it83xx_evb it885x
 # Skip building cr50 if private folder is not present
 ifeq ("$(wildcard ./private-cr51)","")
 skip_boards += cr50
