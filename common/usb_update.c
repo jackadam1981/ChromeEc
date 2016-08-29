@@ -266,6 +266,7 @@ static void update_out_handler(struct consumer const *consumer, size_t count)
 		/* Let's allocate a large enough buffer. */
 		block_size = be32toh(updu.block_size) -
 			offsetof(struct update_pdu_header, cmd);
+
 		if (shared_mem_acquire(block_size, (char **)&block_buffer)
 		    != EC_SUCCESS) {
 			/* TODO:(vbendeb) report out of memory here. */
@@ -308,6 +309,7 @@ static void update_out_handler(struct consumer const *consumer, size_t count)
 			shared_mem_release(block_buffer);
 			block_size = be32toh(updu.block_size) -
 				offsetof(struct update_pdu_header, cmd);
+
 			if (shared_mem_acquire(block_size,
 					       (char **)&block_buffer)
 			    != EC_SUCCESS) {
