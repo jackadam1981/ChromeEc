@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5b2fe10_59b444e0",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-29T17:41:34Z",
+      "side": 1,
+      "message": "Please create a tracking bug for this cleanup and reference it here: TODO(crosbug.com/p/NNNNNN).",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "5e028cb084d91fdc570298b76c187aed026d3e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
