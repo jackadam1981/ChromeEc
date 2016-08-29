@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5b2fe10_fc3f7e67",
+        "filename": "board/amenia/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-29T18:27:49Z",
+      "side": 1,
+      "message": "Can this function be implemented in common code? Add a discharge function pointer and call it (if TCPC discharge is defined) otherwise assert our GPIO. And do we really need the hard-wait, or can we call this function with an extra param to \"stop discharge\", as we do for the GPIO implementation?",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "eeb8338d9b39071f593f1d866f506daf0bd1d933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5b2fe10_9c7d1a48",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-29T18:27:49Z",
+      "side": 1,
+      "message": "Let\u0027s unify the conditions for PD vs GPIO discharge, and call pd_power_discharge() regardless which is defined. pd_power_discharge() can probably be implemented in this file (not board-level), see my other comments.",
+      "range": {
+        "startLine": 300,
+        "startChar": 2,
+        "endLine": 300,
+        "endChar": 20
+      },
+      "revId": "eeb8338d9b39071f593f1d866f506daf0bd1d933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
