@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c5b2fe10_5c3af22d",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-08-29T17:52:30Z",
+      "side": 1,
+      "message": "yes, I will return EC_SUCCESS;",
+      "parentUuid": "c5b2fe10_5929e430",
+      "range": {
+        "startLine": 811,
+        "startChar": 2,
+        "endLine": 811,
+        "endChar": 32
+      },
+      "revId": "5bb35f4c4c0f8191d7f95cbeafdf49d2bfa2699e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5b2fe10_b9f228cf",
         "filename": "common/system.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c5b2fe10_1c058a70",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-08-29T17:52:30Z",
+      "side": 1,
+      "message": "okay I will add ifdef",
+      "parentUuid": "c5b2fe10_b9f228cf",
+      "range": {
+        "startLine": 808,
+        "startChar": 1,
+        "endLine": 812,
+        "endChar": 26
+      },
+      "revId": "5bb35f4c4c0f8191d7f95cbeafdf49d2bfa2699e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5b2fe10_193b5c80",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2016-08-29T17:33:18Z",
       "side": 1,
       "message": "This should be renamed to something like \"EC_REBOOT_AP_SHUTDOWN\" to make it clear what we\u0027re shutting down (not the EC).",
+      "range": {
+        "startLine": 3367,
+        "startChar": 1,
+        "endLine": 3367,
+        "endChar": 25
+      },
+      "revId": "5bb35f4c4c0f8191d7f95cbeafdf49d2bfa2699e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5b2fe10_3cde0604",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3367,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-08-29T17:52:30Z",
+      "side": 1,
+      "message": "okay, I will change it",
+      "parentUuid": "c5b2fe10_193b5c80",
       "range": {
         "startLine": 3367,
         "startChar": 1,
