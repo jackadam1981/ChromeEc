@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05041697_e6947e94",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-29T14:00:21Z",
+      "side": 1,
+      "message": "if this part is true, please fix the priority or whatever to avoid it, should not happen\n(else remove this part of the sentence)",
+      "range": {
+        "startLine": 776,
+        "startChar": 29,
+        "endLine": 776,
+        "endChar": 51
+      },
+      "revId": "4cfd34b4ccdcc58abf0bcc92bcea0f8d22cf9a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05041697_c69982ca",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-08-29T14:00:21Z",
+      "side": 1,
+      "message": "looping 300 ms here is not great\n(and I repeatedly nacked the Analogix proposal to add a giant wait loop, it was to wait for the chip going off low power but still ...)\nHow long is the chip supposed to take to come out of low power mode/boot to normal mode ?",
+      "range": {
+        "startLine": 806,
+        "startChar": 0,
+        "endLine": 807,
+        "endChar": 10
+      },
+      "revId": "4cfd34b4ccdcc58abf0bcc92bcea0f8d22cf9a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
