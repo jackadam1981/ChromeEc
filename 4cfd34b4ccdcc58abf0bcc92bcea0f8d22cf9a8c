@@ -49,6 +49,53 @@
     },
     {
       "key": {
+        "uuid": "857d6655_e58150fc",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-29T22:44:47Z",
+      "side": 1,
+      "message": "I had encountered this when making CABLE_DET an interrupt which would wake the PD task. That might not matter anymore since CL:374020 (npcx: Don\u0027t enable GPIO interrupts by default) will ensure that we don\u0027t enable the interrupt prematurely and thus won\u0027t wake the PD_C0 task (for the ANX TCPC on Reef) too early.",
+      "parentUuid": "c5b2fe10_594564a1",
+      "range": {
+        "startLine": 776,
+        "startChar": 29,
+        "endLine": 776,
+        "endChar": 51
+      },
+      "revId": "4cfd34b4ccdcc58abf0bcc92bcea0f8d22cf9a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5fafef1_c211c60c",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-29T22:44:47Z",
+      "side": 1,
+      "message": "this should be out of the loop",
+      "range": {
+        "startLine": 792,
+        "startChar": 38,
+        "endLine": 792,
+        "endChar": 49
+      },
+      "revId": "4cfd34b4ccdcc58abf0bcc92bcea0f8d22cf9a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05041697_c69982ca",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2
@@ -60,6 +107,30 @@
       "writtenOn": "2016-08-29T14:00:21Z",
       "side": 1,
       "message": "looping 300 ms here is not great\n(and I repeatedly nacked the Analogix proposal to add a giant wait loop, it was to wait for the chip going off low power but still ...)\nHow long is the chip supposed to take to come out of low power mode/boot to normal mode ?",
+      "range": {
+        "startLine": 806,
+        "startChar": 0,
+        "endLine": 807,
+        "endChar": 10
+      },
+      "revId": "4cfd34b4ccdcc58abf0bcc92bcea0f8d22cf9a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5fafef1_7c3fb9b4",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-08-29T22:44:47Z",
+      "side": 1,
+      "message": "I agree that 300ms seems rather excessive. I was just aping the delay used in tcpci_tcpm_init(): https://chromium.googlesource.com/chromiumos/platform/ec/+/master/driver/tcpm/tcpci.c#278",
+      "parentUuid": "05041697_c69982ca",
       "range": {
         "startLine": 806,
         "startChar": 0,
