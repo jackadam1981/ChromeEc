@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5fafef1_fc7c697d",
+        "filename": "driver/usb_switch_pi3usb9281.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-29T19:14:34Z",
+      "side": 1,
+      "message": "To reduce code duplication, can we add a new function param (eg. \u0027int single\u0027, \"single transaction\") to indicate whether to call select_chip() / unselect_chip()?",
+      "revId": "6bbe92d7e8c45d70c11be11179d95637be665c27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
