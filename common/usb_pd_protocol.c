@@ -1419,6 +1419,7 @@ void pd_task(void)
 	int caps_count = 0, hard_reset_sent = 0;
 	int snk_cap_count = 0;
 	int evt;
+	int ret;
 
 	/* Ensure the power supply is in the default state */
 	pd_power_supply_reset(port);
@@ -2004,8 +2005,8 @@ void pd_task(void)
 #else
 			timeout = 10*MSEC;
 #endif
-			tcpm_get_cc(port, &cc1, &cc2);
-
+			ret = tcpm_get_cc(port, &cc1, &cc2);
+			CPRINTF("---p:%d cc1:%d cc2:%d ret_dis:%d---\n", port, cc1, cc2, ret);
 			/* Source connection monitoring */
 			if (cc1 != TYPEC_CC_VOLT_OPEN ||
 			    cc2 != TYPEC_CC_VOLT_OPEN) {
@@ -2051,7 +2052,8 @@ void pd_task(void)
 			}
 			break;
 		case PD_STATE_SNK_DISCONNECTED_DEBOUNCE:
-			tcpm_get_cc(port, &cc1, &cc2);
+			ret = tcpm_get_cc(port, &cc1, &cc2);
+			CPRINTF("---p:%d cc1:%d cc2:%d ret:%d---\n", port, cc1, cc2, ret);
 			if (cc1 == TYPEC_CC_VOLT_OPEN &&
 			    cc2 == TYPEC_CC_VOLT_OPEN) {
 				/* No connection any more */
@@ -2064,8 +2066,10 @@ void pd_task(void)
 
 			/* Wait for CC debounce and VBUS present */
 			if (get_time().val < pd[port].cc_debounce ||
-			    !pd_is_vbus_present(port))
+			    !pd_is_vbus_present(port)) {
+				 CPRINTF("---p:%d break 1 vbus:%d---\n", port, pd_is_vbus_present(port));
 				break;
+			}
 
 			if (pd_try_src_enable &&
 			    !(pd[port].flags & PD_FLAGS_TRY_SRC)) {
@@ -2082,6 +2086,7 @@ void pd_task(void)
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
 				/* Set flag after the state change */
 				pd[port].flags |= PD_FLAGS_TRY_SRC;
+				CPRINTF("---p:%d break 2 flags:%d---\n", port, pd[port].flags);
 				break;
 			}
 
