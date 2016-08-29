@@ -27,8 +27,12 @@
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_CHARGER_V2
 #define CONFIG_CHIPSET_ROCKCHIP
-#define CONFIG_CMD_ACCEL_INFO
-#define CONFIG_CMD_ACCELS
+#undef CONFIG_CMD_MEM
+
+/* Depends on how fast the AP boots and typical ODRs */
+#define CONFIG_ACCEL_FIFO 512
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+
 #define CONFIG_EXTPOWER_GPIO
 #define CONFIG_FORCE_CONSOLE_RESUME
 #define CONFIG_HOST_COMMAND_STATUS
@@ -66,6 +70,21 @@
 /* Keyboard output port list */
 #define KB_OUT_PORT_LIST GPIO_A, GPIO_B, GPIO_C
 
+/* Sensor index definition */
+enum sensor_id {
+	BASE_ACCEL = 0,
+	LID_ACCEL = 1,
+};
+
+/*
+ * We have not enabled the sensor FIFO on the accels, so we force the EC
+ * to collect at every sample.
+ */
+#define CONFIG_ACCEL_FORCE_MODE_MASK \
+	((1 << BASE_ACCEL) | (1 << LID_ACCEL))
+
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
 /* Single I2C port, where the EC is the master. */
 #define I2C_PORT_MASTER 0
 #define I2C_PORT_ACCEL   I2C_PORT_MASTER
