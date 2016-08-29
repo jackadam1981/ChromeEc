@@ -256,26 +256,6 @@ int pd_snk_is_vbus_provided(int port)
 	return bd99955_is_vbus_provided(bd99955_port);
 }
 
-static void board_init(void)
-{
-	/* Enable TCPC alert interrupts */
-	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_L);
-	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_L);
-
-	/* Enable charger interrupt for BC1.2 detection on attach / detach */
-	gpio_enable_interrupt(GPIO_CHARGER_INT_L);
-
-	/* Enable reboot / shutdown control inputs from AP */
-	gpio_enable_interrupt(GPIO_WARM_RESET_REQ);
-	gpio_enable_interrupt(GPIO_AP_OVERTEMP);
-
-	/* Sensor Init */
-	gpio_config_module(MODULE_SPI_MASTER, 1);
-	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
-	CPRINTS("Board using SPI sensors");
-}
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-
 enum kevin_board_version {
 	BOARD_VERSION_UNKNOWN = -1,
 	BOARD_VERSION_REV0 = 0,
@@ -362,8 +342,10 @@ int board_get_version(void)
  */
 #ifdef BOARD_KEVIN
 #define BOARD_VERSION_NEW_GPIO_CFG BOARD_VERSION_REV3
+#define BOARD_VERSION_DISCREET_TPM BOARD_VERSION_REV5
 #else
 #define BOARD_VERSION_NEW_GPIO_CFG BOARD_VERSION_REV1
+#define BOARD_VERSION_DISCREET_TPM BOARD_VERSION_COUNT
 #endif
 
 /* CONFIG removed in CL:351151. */
@@ -397,6 +379,31 @@ static void board_config_check(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_config_check, HOOK_PRIO_LAST);
 #endif /* ifndef CONFIG_USB_PD_5V_EN_ACTIVE_LOW */
+
+static void board_init(void)
+{
+	/* Enable TCPC alert interrupts */
+	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_L);
+	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_L);
+
+	/* Enable charger interrupt for BC1.2 detection on attach / detach */
+	gpio_enable_interrupt(GPIO_CHARGER_INT_L);
+
+	/* Enable reboot / shutdown control inputs from AP */
+	gpio_enable_interrupt(GPIO_WARM_RESET_REQ);
+	gpio_enable_interrupt(GPIO_AP_OVERTEMP);
+
+	/* Sensor Init */
+	gpio_config_module(MODULE_SPI_MASTER, 1);
+	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
+	CPRINTS("Board using SPI sensors");
+
+	/* On Boards without a discreet TPM add a pullup to SYR_RST_L */
+	if (board_get_version() < BOARD_VERSION_DISCREET_TPM)
+		gpio_set_flags(GPIO_SYS_RST_L, GPIO_ODR_HIGH | GPIO_PULL_UP);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
 
 /* Motion sensors */
 #ifdef HAS_TASK_MOTIONSENSE
