@@ -70,6 +70,30 @@
       "revId": "c0931a731673c05a2b0503ead84491b0afdccbaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5fafef1_df9fdf49",
+        "filename": "include/console.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-29T19:50:42Z",
+      "side": 1,
+      "message": "console_is_restricted() works for me.\n\nThis is completely orthogonal to system_is_locked(). That governs whether or not we can jump between RO and RW images (because WP is disabled, so who cares). \n\nCr50 doesn\u0027t work that way and can never jump between RO and RW images. It just reboots if it tries.\n\nThis is about restricting the console commands so that some commands are available to anyone who wanders by with a SuzyQ can see what\u0027s happening, but viewing or modifying protected RAM or flash is prohibited. To allow that, certain device-specific steps must be taken first (such as erasing all secrets, providing a password, being obvious, etc). Once the console is unlocked, the full set of console commands is available and can do whatever they do.",
+      "parentUuid": "c5b2fe10_9c1aba81",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "c0931a731673c05a2b0503ead84491b0afdccbaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
