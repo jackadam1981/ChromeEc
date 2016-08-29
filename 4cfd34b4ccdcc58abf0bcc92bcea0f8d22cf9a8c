@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c5b2fe10_594564a1",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-29T16:41:22Z",
+      "side": 1,
+      "message": "Your board_tcpc_init() is already init prio HOOK_PRIO_INIT_I2C+1, so that looks fine. Another possibility is that PD_C* is getting task_wake()\u0027d before HOOK_PRIO_INIT_I2C routines are completed.",
+      "parentUuid": "05041697_e6947e94",
+      "range": {
+        "startLine": 776,
+        "startChar": 29,
+        "endLine": 776,
+        "endChar": 51
+      },
+      "revId": "4cfd34b4ccdcc58abf0bcc92bcea0f8d22cf9a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05041697_c69982ca",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2
