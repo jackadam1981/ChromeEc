@@ -14,6 +14,7 @@
 #include "registers.h"
 #include "stm32-dma.h"
 #include "task.h"
+#include "update_fw.h"
 #include "usb_descriptor.h"
 #include "util.h"
 #include "usb_dwc_hw.h"
@@ -29,6 +30,7 @@ const void *const usb_strings[] = {
 	[USB_STR_SERIALNO]	= USB_STRING_DESC("1234-a"),
 	[USB_STR_VERSION]	= USB_STRING_DESC(CROS_EC_VERSION32),
 	[USB_STR_CONSOLE_NAME]	= USB_STRING_DESC("Sweetberry EC Shell"),
+	[USB_STR_UPDATE_NAME]	= USB_STRING_DESC("Firmware update"),
 };
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
@@ -56,6 +58,26 @@ const struct i2c_port_t i2c_ports[] = {
 		GPIO_FMPI2C_SCL, GPIO_FMPI2C_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/******************************************************************************
+ * Support firmware upgrade over USB. We can update whichever section is not
+ * the current section.
+ */
+
+/*
+ * This array defines possible sections available for the firmware update.
+ * The section which does not map the current executing code is picked as the
+ * valid update area. The values are offsets into the flash space.
+ */
+const struct section_descriptor board_rw_sections[] = {
+	{CONFIG_RO_MEM_OFF,
+	 CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE},
+	{CONFIG_RW_MEM_OFF,
+	 CONFIG_RW_MEM_OFF + CONFIG_RW_SIZE},
+};
+const struct section_descriptor * const rw_sections = board_rw_sections;
+const int num_rw_sections = ARRAY_SIZE(board_rw_sections);
+
 
 #define GPIO_SET_HS(bank, number)	\
 	(STM32_GPIO_OSPEEDR(GPIO_##bank) |= (0x3 << ((number) * 2)))

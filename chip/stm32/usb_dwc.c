@@ -176,11 +176,13 @@ struct dwc_usb_ep ep0_ctl = {
 	.out_data = 0,
 	.out_databuffer = ep0_setup_buf,
 	.out_databuffer_max = sizeof(ep0_setup_buf),
+	.rx_deferred = 0,
 	.in_packets = 0,
 	.in_pending = 0,
 	.in_data = 0,
 	.in_databuffer = ep0_in_buf,
 	.in_databuffer_max = sizeof(ep0_in_buf),
+	.tx_deferred = 0,
 };
 
 /* Overall device state (USB 2.0 spec, section 9.1.1).
@@ -192,6 +194,171 @@ static enum {
 	DS_CONFIGURED,
 } device_state;
 static uint8_t configuration_value;
+
+
+/* True if the HW Rx/OUT FIFO is currently listening. */
+int rx_ep_is_active(uint32_t ep_num)
+{
+	return (GR_USB_DOEPCTL(ep_num) & DXEPCTL_EPENA);
+}
+
+/* Number of bytes the HW Rx/OUT FIFO has for us.
+ *
+ * @param ep_num	USB endpoint
+ *
+ * @returns		number of bytes ready, zero if none.
+ */
+int rx_ep_pending(uint32_t ep_num)
+{
+	struct dwc_usb_ep *ep = usb_ctl.ep[ep_num];
+
+	if (rx_ep_is_active(ep_num))
+		return 0;
+
+	return ep->out_pending;
+}
+
+/* True if the Tx/IN FIFO can take some bytes from us. */
+int tx_ep_is_ready(uint32_t ep_num)
+{
+	struct dwc_usb_ep *ep = usb_ctl.ep[ep_num];
+	int ready;
+
+	/* Is the tx hw idle? */
+	ready = !(GR_USB_DIEPCTL(ep_num) & DXEPCTL_EPENA);
+
+	/* Is there no pending data? */
+	ready &= (ep->in_pending == 0);
+	return ready;
+}
+
+/* Write packets of data IN to the host.
+ *
+ * This function uses DMA, so the *data write buffer
+ * must persist until the write completion event.
+ *
+ * @param ep_num	USB endpoint to write
+ * @param len		number of bytes to write
+ * @param data		pointer of data to write
+ *
+ * @return		bytes written
+ */
+int usb_write_ep(uint32_t ep_num, int len, void *data)
+{
+	struct dwc_usb_ep *ep = usb_ctl.ep[ep_num];
+
+	/* We will send as many packets as necessary, including a final
+	 * packet of < USB_MAX_PACKET_SIZE (maybe zero length)
+	 */
+	ep->in_packets = (len + USB_MAX_PACKET_SIZE)/USB_MAX_PACKET_SIZE;
+	ep->in_pending = len;
+	ep->in_data = data;
+
+	GR_USB_DIEPTSIZ(ep_num) = 0;
+
+	GR_USB_DIEPTSIZ(ep_num) |= DXEPTSIZ_PKTCNT(ep->in_packets);
+	GR_USB_DIEPTSIZ(ep_num) |= DXEPTSIZ_XFERSIZE(len);
+	GR_USB_DIEPDMA(ep_num) = (uint32_t)ep->in_data;
+
+
+	/* We're sending this much.
+	 * TODO: we should support sending more than one packet.
+	 */
+	ep->in_pending -= len;
+	ep->in_packets -= ep->in_packets;
+	ep->in_data += len;
+
+	/* We are ready to enable this endpoint to start transferring data. */
+	GR_USB_DIEPCTL(ep_num) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
+	return len;
+}
+
+/* Tx/IN interrupt handler */
+void usb_epN_tx(uint32_t ep_num)
+{
+	struct dwc_usb_ep *ep = usb_ctl.ep[ep_num];
+
+	uint32_t dieptsiz = GR_USB_DIEPTSIZ(ep_num);
+
+	/* clear the Tx/IN interrupts */
+	GR_USB_DIEPINT(ep_num) = 0xffffffff;
+
+	/* Let's assume this is actually true. */
+	ep->in_packets = 0;
+	ep->in_pending = dieptsiz & GC_USB_DIEPTSIZ1_XFERSIZE_MASK;
+
+	if (ep->tx_deferred)
+		hook_call_deferred(ep->tx_deferred, 0);
+}
+
+/* Read a packet of data OUT from the host.
+ *
+ * This function uses DMA, so the *data write buffer
+ * must persist until the read completion event.
+ *
+ * @param ep_num	USB endpoint to read
+ * @param len		number of bytes to read
+ * @param data		pointer of data to read
+ *
+ * @return		EC_SUCCESS on success
+ */
+int usb_read_ep(uint32_t ep_num, int len, void *data)
+{
+	struct dwc_usb_ep *ep = usb_ctl.ep[ep_num];
+
+	ep->out_data = data;
+	ep->out_pending = 0;
+
+	GR_USB_DOEPTSIZ(ep_num) = 0;
+	GR_USB_DOEPTSIZ(ep_num) |= DXEPTSIZ_PKTCNT(1);
+	GR_USB_DOEPTSIZ(ep_num) |= DXEPTSIZ_XFERSIZE(len);
+	GR_USB_DOEPDMA(ep_num) = (uint32_t)ep->out_data;
+
+	GR_USB_DOEPCTL(ep_num) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
+	return EC_SUCCESS;
+}
+
+/* Rx/OUT endpoint interrupt handler */
+void usb_epN_rx(uint32_t ep_num)
+{
+	struct dwc_usb_ep *ep = usb_ctl.ep[ep_num];
+
+	if (GR_USB_DOEPCTL(ep_num) & DXEPCTL_EPENA)
+		return;
+
+	/* Bytes received decrement DOEPTSIZ XFERSIZE */
+	if (GR_USB_DOEPINT(ep_num) & DOEPINT_XFERCOMPL) {
+		ep->out_pending =
+			ep->max_packet -
+			(GR_USB_DOEPTSIZ(ep_num) &
+			 GC_USB_DOEPTSIZ1_XFERSIZE_MASK);
+	}
+
+	/* clear the RX/OUT interrupts */
+	GR_USB_DOEPINT(ep_num) = 0xffffffff;
+
+	if (ep->rx_deferred)
+		hook_call_deferred(ep->rx_deferred, 0);
+}
+
+/* Reset endpoint HW block. */
+void epN_reset(uint32_t ep_num)
+{
+	GR_USB_DOEPCTL(ep_num) = DXEPCTL_MPS(USB_MAX_PACKET_SIZE) |
+		DXEPCTL_USBACTEP | DXEPCTL_EPTYPE_BULK |
+		DXEPCTL_CNAK | DXEPCTL_EPENA;
+	GR_USB_DIEPCTL(ep_num) = DXEPCTL_MPS(USB_MAX_PACKET_SIZE) |
+		DXEPCTL_USBACTEP | DXEPCTL_EPTYPE_BULK |
+		DXEPCTL_TXFNUM(ep_num);
+	GR_USB_DAINTMSK |= DAINT_INEP(ep_num) |
+			   DAINT_OUTEP(ep_num);
+}
+
+
+/******************************************************************************
+ * Internal and EP0 functions.
+ */
+
 
 static void flush_all_fifos(void)
 {
@@ -213,9 +380,9 @@ int send_in_packet(uint32_t ep_num)
 		return -1;
 	}
 
-	GR_USB_DIEPTSIZ(0) = 0;
+	GR_USB_DIEPTSIZ(ep_num) = 0;
 
-	GR_USB_DIEPTSIZ(0) |= DXEPTSIZ_PKTCNT(1);
+	GR_USB_DIEPTSIZ(ep_num) |= DXEPTSIZ_PKTCNT(1);
 	GR_USB_DIEPTSIZ(0) |= DXEPTSIZ_XFERSIZE(len);
 	GR_USB_DIEPDMA(0) = (uint32_t)ep->in_data;
 
@@ -414,6 +581,9 @@ static int handle_setup_with_in_stage(enum table_case tc,
 			break;
 		case USB_DT_DEVICE_QUALIFIER:
 			/* We're not high speed */
+			return -1;
+		case USB_DT_DEBUG:
+			/* Not supported */
 			return -1;
 		default:
 			report_error(type);
