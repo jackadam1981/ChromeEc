@@ -22,6 +22,30 @@
       "revId": "bd3be97eccef8ef8e3a4eff463facef0d529293c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5b2fe10_9ced1a8a",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-08-29T17:57:50Z",
+      "side": 1,
+      "message": "okay, I will assign ITRICH_SET \u003d bi-\u003eprecharge_current",
+      "parentUuid": "c5b2fe10_19959c8e",
+      "range": {
+        "startLine": 712,
+        "startChar": 1,
+        "endLine": 714,
+        "endChar": 35
+      },
+      "revId": "bd3be97eccef8ef8e3a4eff463facef0d529293c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
