@@ -479,11 +479,6 @@ static int init(const struct motion_sensor_t *s)
 	} while (1);
 	mutex_unlock(s->mutex);
 
-	/* Initialize with the desired parameters. */
-	ret = set_range(s, s->default_range, 1);
-	if (ret != EC_SUCCESS)
-		return ret;
-
 	if (V(s))
 		ret = set_resolution(s, 12, 1);
 	else
