@@ -236,9 +236,11 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 	if (ret)
 		return ret;
 
+#if 0
 	CPRINTS("%s ODR: %d - roundup %d from config %d [AP %d]",
 		sensor->name, odr, roundup, config_id,
 		BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr));
+#endif
 	mutex_lock(&g_sensor_mutex);
 	if (ap_odr_mhz)
 		/*
@@ -1089,6 +1091,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		args->response_size = sizeof(out->sensor_offset);
 		break;
 
+#if 0
 	case MOTIONSENSE_CMD_PERFORM_CALIB:
 		/* Verify sensor number is valid. */
 		sensor = host_sensor_id_to_real_sensor(
@@ -1107,6 +1110,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			return ret;
 		args->response_size = sizeof(out->sensor_offset);
 		break;
+#endif
 
 #ifdef CONFIG_ACCEL_FIFO
 	case MOTIONSENSE_CMD_FIFO_FLUSH:
