@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5156d515_286b0b1b",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-08-30T22:02:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5b2fe10_59e7a4a7",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "4b98f59795f84ddcab68b39624c30585247af410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5b2fe10_797380f3",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-29T16:52:26Z",
       "side": 1,
       "message": "Just include ec_commands.h, no need to redefine this constant.",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "4b98f59795f84ddcab68b39624c30585247af410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5156d515_e854d355",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-08-30T22:02:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5b2fe10_797380f3",
       "range": {
         "startLine": 29,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5156d515_a83b7bd6",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-08-30T22:02:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05041697_66a9aed3",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 18
+      },
+      "revId": "4b98f59795f84ddcab68b39624c30585247af410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05041697_26a3b6f5",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2016-08-29T14:14:07Z",
       "side": 1,
       "message": "ditto as above\n\nand also for code size reason, we usually don\u0027t assert on internal values which are unlikely to be wrong (ie INT_32K_CLOCK is a constant and apb2_freq cannot be 0 ?)",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "4b98f59795f84ddcab68b39624c30585247af410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5156d515_0864c7e5",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-08-30T22:02:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05041697_26a3b6f5",
       "range": {
         "startLine": 77,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "5156d515_28766b9b",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-08-30T22:02:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05041697_46a6b205",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 30
+      },
+      "revId": "4b98f59795f84ddcab68b39624c30585247af410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05041697_06a0bae4",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 7
@@ -128,6 +248,30 @@
       "writtenOn": "2016-08-29T14:14:07Z",
       "side": 1,
       "message": "\u0027duty\u0027 is unsigned, I would put \u0027if (duty)\u0027 to avoid misleading other people.\nAnd actually I\u0027m a ternary operator fan-boy:\npwn_enable(ch, !!duty);",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 14
+      },
+      "revId": "4b98f59795f84ddcab68b39624c30585247af410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5156d515_884f975c",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-08-30T22:02:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05041697_06a0bae4",
       "range": {
         "startLine": 159,
         "startChar": 4,
