@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5156d515_68d8e374",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-30T20:44:30Z",
+      "side": 1,
+      "message": "Are these pins unused now? If so, you should probably change the ALTERNATE mask, change the pin names to something like UNUSED_GPIOXX, and remove them from the board.c / board.h structures.",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "c64d350f706b1f4e2dda467635ffbb97fedd541b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
