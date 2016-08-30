@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "857d6655_c8af032a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-30T00:01:03Z",
+      "side": 1,
+      "message": "Let\u0027s have a comment for this, if anyone remembers why it\u0027s here.",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 26
+      },
+      "revId": "2dc27ce023381de6ad4af79f6b69a03b5bb3eb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "857d6655_a8aabf1a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-30T00:01:03Z",
+      "side": 1,
+      "message": "We don\u0027t delay sleep anymore.",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 20
+      },
+      "revId": "2dc27ce023381de6ad4af79f6b69a03b5bb3eb2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
