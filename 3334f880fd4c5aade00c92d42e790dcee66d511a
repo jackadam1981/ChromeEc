@@ -46,6 +46,30 @@
       "revId": "3334f880fd4c5aade00c92d42e790dcee66d511a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7173d9d0_7cff5551",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-30T22:57:26Z",
+      "side": 1,
+      "message": "By \"chips with different values\" you mean \"different from what they should be\", not \"purposely different from each other\", right?\n\n(at least I *hope* not!)",
+      "parentUuid": "5156d515_e86f33ba",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 4
+      },
+      "revId": "3334f880fd4c5aade00c92d42e790dcee66d511a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
