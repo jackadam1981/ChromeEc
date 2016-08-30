@@ -46,6 +46,63 @@
       "revId": "28ed125ef90dcad7683eec16e02efad7c008f9b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "857d6655_89ca5ab9",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-30T19:08:25Z",
+      "side": 1,
+      "message": "missing tab indention",
+      "revId": "28ed125ef90dcad7683eec16e02efad7c008f9b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "857d6655_e99926ca",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-30T19:08:25Z",
+      "side": 1,
+      "message": "Are you building with data sections? If so .bss and .data won\u0027t cover everything. Looks like you aren\u0027t otherwise this linkder script wouldn\u0027t work if it were. Something to look into.",
+      "range": {
+        "startLine": 242,
+        "startChar": 50,
+        "endLine": 242,
+        "endChar": 54
+      },
+      "revId": "28ed125ef90dcad7683eec16e02efad7c008f9b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "857d6655_69bd1614",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-08-30T19:08:25Z",
+      "side": 1,
+      "message": "missing tab indention",
+      "revId": "28ed125ef90dcad7683eec16e02efad7c008f9b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
