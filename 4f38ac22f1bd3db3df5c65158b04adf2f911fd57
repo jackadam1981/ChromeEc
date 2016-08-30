@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "857d6655_69b276e0",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-30T18:15:29Z",
+      "side": 1,
+      "message": "Yes. You have to poke the power button at least once every two seconds, or you lose. Every poke extends the callback time. When you\u0027ve been poking for long enough, the power_button_poked interrupt handler clears dance_in_progress and lets the callback proceed. If the callback fires while dance_in_progress is set, it means you didn\u0027t poke the button.",
+      "parentUuid": "857d6655_37a9aad4",
+      "revId": "4f38ac22f1bd3db3df5c65158b04adf2f911fd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "857d6655_3777ea98",
         "filename": "board/cr50/wp.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-08-30T17:50:53Z",
       "side": 1,
       "message": "Maybe delay_sleep_by(DANCE_TIME) ?",
+      "revId": "4f38ac22f1bd3db3df5c65158b04adf2f911fd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "857d6655_49be92a3",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-30T18:15:29Z",
+      "side": 1,
+      "message": "Sure. But I\u0027m not sure that we need to, since this CL also sets up the wake-on-RBOX-event flags. It depends on whether we have a timer that keeps running while we\u0027re asleep. Mary has CLs up to ensure that, so I don\u0027t *think* we need it.",
+      "parentUuid": "857d6655_3777ea98",
       "revId": "4f38ac22f1bd3db3df5c65158b04adf2f911fd57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
