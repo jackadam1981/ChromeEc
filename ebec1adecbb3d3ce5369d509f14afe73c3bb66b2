@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11e1bde4_618130fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-31T17:10:03Z",
+      "side": 1,
+      "message": "typo: voltage",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "ebec1adecbb3d3ce5369d509f14afe73c3bb66b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11e1bde4_a18a5815",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-31T17:10:03Z",
+      "side": 1,
+      "message": "typo: voltage",
+      "range": {
+        "startLine": 137,
+        "startChar": 32,
+        "endLine": 137,
+        "endChar": 39
+      },
+      "revId": "ebec1adecbb3d3ce5369d509f14afe73c3bb66b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11e1bde4_219e485a",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-31T17:10:03Z",
+      "side": 1,
+      "message": "Capital \u0027I\u0027",
+      "range": {
+        "startLine": 138,
+        "startChar": 44,
+        "endLine": 138,
+        "endChar": 46
+      },
+      "revId": "ebec1adecbb3d3ce5369d509f14afe73c3bb66b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11e1bde4_e194603c",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-31T17:10:03Z",
+      "side": 1,
+      "message": "grammar nit: will be disabled due to",
+      "range": {
+        "startLine": 139,
+        "startChar": 32,
+        "endLine": 139,
+        "endChar": 49
+      },
+      "revId": "ebec1adecbb3d3ce5369d509f14afe73c3bb66b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11e1bde4_e108e0ce",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-31T17:10:03Z",
+      "side": 1,
+      "message": "nit: capital W and add period at end of sentence.",
+      "range": {
+        "startLine": 144,
+        "startChar": 6,
+        "endLine": 144,
+        "endChar": 7
+      },
+      "revId": "ebec1adecbb3d3ce5369d509f14afe73c3bb66b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11e1bde4_41f0b4c6",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-08-31T17:10:03Z",
+      "side": 1,
+      "message": "This is checking charge, not current.",
+      "range": {
+        "startLine": 153,
+        "startChar": 42,
+        "endLine": 153,
+        "endChar": 49
+      },
+      "revId": "ebec1adecbb3d3ce5369d509f14afe73c3bb66b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
