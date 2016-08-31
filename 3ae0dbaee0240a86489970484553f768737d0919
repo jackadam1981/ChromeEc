@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51ac159b_7e9d4959",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-31T19:21:02Z",
+      "side": 1,
+      "message": "You may wait indefinitely, and it\u0027s not clear to the developer why. I don\u0027t think this is a good idea. Either go to hibernate regardless of extpower, or just assert if extpower is present.",
+      "range": {
+        "startLine": 917,
+        "startChar": 0,
+        "endLine": 919,
+        "endChar": 31
+      },
+      "revId": "3ae0dbaee0240a86489970484553f768737d0919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51ac159b_de94953c",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-08-31T19:21:02Z",
+      "side": 1,
+      "message": "We\u0027ve used \"Pseudo G3\" to refer to a mode where the EC is de-powered. That\u0027s not the case here.",
+      "revId": "3ae0dbaee0240a86489970484553f768737d0919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
