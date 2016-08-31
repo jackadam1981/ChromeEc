@@ -22,6 +22,30 @@
       "revId": "1f19309196a7a63632ddfa467f9dc29e1dc447c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31a401cb_9f7ab37d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-08-31T23:39:04Z",
+      "side": 1,
+      "message": "it is indeed not obvious\n\n\n   motion_sense_switch_sensor_rate\n    -\u003e call init\n\nwhich is called by motion_sense_shutdown()\n\nThis function is called at shutdown, but also we have a RO -\u003e RW transition.\nBut you have a point, set_range() is not called when we have a S5-\u003eS3 transition or if the sensor is not active in S5.\n\nIt should be in init(), not in motion_sense.c.",
+      "parentUuid": "51ac159b_1ed28d24",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "1f19309196a7a63632ddfa467f9dc29e1dc447c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
