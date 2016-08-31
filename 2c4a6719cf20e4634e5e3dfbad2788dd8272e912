@@ -34,6 +34,24 @@
       "revId": "2c4a6719cf20e4634e5e3dfbad2788dd8272e912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_5291d451",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-08-31T23:51:10Z",
+      "side": 0,
+      "message": "okay, this looks more cleaner that attach \u0026 detach interrupt.",
+      "parentUuid": "91e76d24_b283605c",
+      "revId": "2c4a6719cf20e4634e5e3dfbad2788dd8272e912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
