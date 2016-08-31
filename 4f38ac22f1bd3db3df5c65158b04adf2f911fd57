@@ -105,6 +105,24 @@
       "revId": "4f38ac22f1bd3db3df5c65158b04adf2f911fd57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51ac159b_f8d971ea",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-08-31T17:34:38Z",
+      "side": 1,
+      "message": "Well, yeah, but we\u0027d wake the AP up on the first power-button press. It doesn\u0027t hurt - I\u0027ll add it.",
+      "parentUuid": "857d6655_491a1284",
+      "revId": "4f38ac22f1bd3db3df5c65158b04adf2f911fd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
