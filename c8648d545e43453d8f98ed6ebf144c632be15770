@@ -46,6 +46,30 @@
       "revId": "c8648d545e43453d8f98ed6ebf144c632be15770",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51ac159b_fed6b9e0",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-08-31T19:25:10Z",
+      "side": 1,
+      "message": "Yes, saw other changes now. 0x4000 is right here.",
+      "parentUuid": "51ac159b_3ef11193",
+      "range": {
+        "startLine": 98,
+        "startChar": 22,
+        "endLine": 98,
+        "endChar": 28
+      },
+      "revId": "c8648d545e43453d8f98ed6ebf144c632be15770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
