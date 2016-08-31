@@ -313,9 +313,11 @@ static int bd99955_enable_vbus_detect_interrupts(int port, int enable)
 		return rv;
 
 	if (enable)
-		reg |= (BD99955_CMD_INT_SET_RES | BD99955_CMD_INT_SET_DET);
+		reg |= (BD99955_CMD_INT_SET_TH_RES |
+			BD99955_CMD_INT_SET_TH_DET);
 	else
-		reg &= ~(BD99955_CMD_INT_SET_RES | BD99955_CMD_INT_SET_DET);
+		reg &= ~(BD99955_CMD_INT_SET_TH_RES |
+			 BD99955_CMD_INT_SET_TH_DET);
 
 	return ch_raw_write16(port_reg, reg, BD99955_EXTENDED_COMMAND);
 }
@@ -683,6 +685,12 @@ static void bd99995_init(void)
 	/* Set charge termination current to 0 mA. */
 	ch_raw_write16(BD99955_CMD_ITERM_SET, 0,
 		       BD99955_EXTENDED_COMMAND);
+
+	/* Set VBUS / VCC detection interrupt threshold */
+	ch_raw_write16(BD99955_CMD_VBUS_TH_SET, BD99955_VBUS_PRESENT_TH,
+		       BD99955_EXTENDED_COMMAND);
+	ch_raw_write16(BD99955_CMD_VCC_TH_SET, BD99955_VBUS_PRESENT_TH,
+		       BD99955_EXTENDED_COMMAND);
 }
 DECLARE_HOOK(HOOK_INIT, bd99995_init, HOOK_PRIO_INIT_EXTPOWER);
 
@@ -732,22 +740,21 @@ int bd99955_is_vbus_provided(int port)
 {
 	int reg;
 
-	if (ch_raw_read16(BD99955_CMD_VBUS_VCC_STATUS, &reg,
-			  BD99955_EXTENDED_COMMAND))
-		return 0;
+	if (port == BD99955_CHARGE_PORT_VBUS ||
+	    port == BD99955_CHARGE_PORT_BOTH)
+		if (!ch_raw_read16(BD99955_CMD_VBUS_VAL,
+				   &reg, BD99955_EXTENDED_COMMAND) &&
+				   reg > BD99955_VBUS_PRESENT_TH)
+			return 1;
 
-	if (port == BD99955_CHARGE_PORT_VBUS)
-		reg &= BD99955_CMD_VBUS_VCC_STATUS_VBUS_DETECT;
-	else if (port == BD99955_CHARGE_PORT_VCC)
-		reg &= BD99955_CMD_VBUS_VCC_STATUS_VCC_DETECT;
-	else if (port == BD99955_CHARGE_PORT_BOTH) {
-		/* Check VBUS on either port */
-		reg &= (BD99955_CMD_VBUS_VCC_STATUS_VCC_DETECT |
-			BD99955_CMD_VBUS_VCC_STATUS_VBUS_DETECT);
-	} else
-		reg = 0;
+	if (port == BD99955_CHARGE_PORT_VCC ||
+	    port == BD99955_CHARGE_PORT_BOTH)
+		if (!ch_raw_read16(BD99955_CMD_VCC_VAL,
+				   &reg, BD99955_EXTENDED_COMMAND) &&
+				   reg > BD99955_VBUS_PRESENT_TH)
+			return 1;
 
-	return !!reg;
+	return 0;
 }
 
 int bd99955_select_input_port(enum bd99955_charge_port port)
