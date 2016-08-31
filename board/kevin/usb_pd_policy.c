@@ -52,6 +52,29 @@ void pd_transition_voltage(int idx)
 	/* No-operation: we are always 5V */
 }
 
+static int discharge_requested[CONFIG_USB_PD_PORT_COUNT];
+
+static void set_discharge_gpios(int port)
+{
+	static struct mutex discharge_lock[CONFIG_USB_PD_PORT_COUNT];
+	int src, discharge_disable;
+
+	mutex_lock(&discharge_lock[port]);
+	src = gpio_get_level(port ? GPIO_USB_C1_5V_EN :
+				    GPIO_USB_C0_5V_EN);
+
+	discharge_disable = src || !discharge_requested[port];
+	gpio_set_level(port ? GPIO_USB_C1_DISCHARGE :
+			      GPIO_USB_C0_DISCHARGE, !discharge_disable);
+	mutex_unlock(&discharge_lock[port]);
+}
+
+void pd_set_vbus_discharge(int port, int enable)
+{
+	discharge_requested[port] = enable;
+	set_discharge_gpios(port);
+}
+
 int pd_set_power_supply_ready(int port)
 {
 	/* Ensure we're not charging from this port */
@@ -64,6 +87,7 @@ int pd_set_power_supply_ready(int port)
 	/* Provide VBUS */
 	gpio_set_level(port ? GPIO_USB_C1_5V_EN :
 			      GPIO_USB_C0_5V_EN, 1);
+	set_discharge_gpios(port);
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
@@ -76,6 +100,8 @@ void pd_power_supply_reset(int port)
 	/* Disable VBUS */
 	gpio_set_level(port ? GPIO_USB_C1_5V_EN :
 			      GPIO_USB_C0_5V_EN, 0);
+	/* TODO: force-enable discharge if VBUS was on ?? */
+	set_discharge_gpios(port);
 
 	/* Give back the current quota we are no longer using */
 	charge_manager_source_port(port, 0);
