@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "31a401cb_3fda8708",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-08-31T21:57:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11e1bde4_618130fb",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "ebec1adecbb3d3ce5369d509f14afe73c3bb66b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11e1bde4_a18a5815",
         "filename": "power/rk3399.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-31T17:10:03Z",
       "side": 1,
       "message": "typo: voltage",
+      "range": {
+        "startLine": 137,
+        "startChar": 32,
+        "endLine": 137,
+        "endChar": 39
+      },
+      "revId": "ebec1adecbb3d3ce5369d509f14afe73c3bb66b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31a401cb_ff12dfc3",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-08-31T21:57:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11e1bde4_a18a5815",
       "range": {
         "startLine": 137,
         "startChar": 32,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "31a401cb_df171bb2",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-08-31T21:57:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11e1bde4_219e485a",
+      "range": {
+        "startLine": 138,
+        "startChar": 44,
+        "endLine": 138,
+        "endChar": 46
+      },
+      "revId": "ebec1adecbb3d3ce5369d509f14afe73c3bb66b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11e1bde4_e194603c",
         "filename": "power/rk3399.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-08-31T17:10:03Z",
       "side": 1,
       "message": "grammar nit: will be disabled due to",
+      "range": {
+        "startLine": 139,
+        "startChar": 32,
+        "endLine": 139,
+        "endChar": 49
+      },
+      "revId": "ebec1adecbb3d3ce5369d509f14afe73c3bb66b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31a401cb_9f219311",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-08-31T21:57:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11e1bde4_e194603c",
       "range": {
         "startLine": 139,
         "startChar": 32,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "31a401cb_7f27ef22",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-08-31T21:57:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11e1bde4_e108e0ce",
+      "range": {
+        "startLine": 144,
+        "startChar": 6,
+        "endLine": 144,
+        "endChar": 7
+      },
+      "revId": "ebec1adecbb3d3ce5369d509f14afe73c3bb66b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11e1bde4_41f0b4c6",
         "filename": "power/rk3399.c",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2016-08-31T17:10:03Z",
       "side": 1,
       "message": "This is checking charge, not current.",
+      "range": {
+        "startLine": 153,
+        "startChar": 42,
+        "endLine": 153,
+        "endChar": 49
+      },
+      "revId": "ebec1adecbb3d3ce5369d509f14afe73c3bb66b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31a401cb_5f242b1c",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-08-31T21:57:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11e1bde4_41f0b4c6",
       "range": {
         "startLine": 153,
         "startChar": 42,
