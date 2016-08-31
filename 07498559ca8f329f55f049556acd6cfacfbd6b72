@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "11e1bde4_214488fd",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-08-31T16:55:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7173d9d0_79be87d6",
+      "range": {
+        "startLine": 551,
+        "startChar": 40,
+        "endLine": 551,
+        "endChar": 50
+      },
+      "revId": "07498559ca8f329f55f049556acd6cfacfbd6b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7173d9d0_59a063a5",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-30T22:52:23Z",
       "side": 1,
       "message": "I don\u0027t think we can do this at any arbitrary time. It should always be run as an init hook, at HOOK_PRIO_DEFAULT - 1. If we need to detect the board before UART starts, we should reorder the priorities.",
+      "range": {
+        "startLine": 578,
+        "startChar": 1,
+        "endLine": 583,
+        "endChar": 24
+      },
+      "revId": "07498559ca8f329f55f049556acd6cfacfbd6b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11e1bde4_a137b89b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-08-31T16:55:59Z",
+      "side": 1,
+      "message": "I moved the board property initialization to system_pre_init.",
+      "parentUuid": "7173d9d0_59a063a5",
       "range": {
         "startLine": 578,
         "startChar": 1,
