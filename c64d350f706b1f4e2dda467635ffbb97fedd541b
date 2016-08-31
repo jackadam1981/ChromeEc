@@ -22,6 +22,30 @@
       "revId": "c64d350f706b1f4e2dda467635ffbb97fedd541b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1a2b17a_2cd1b71c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1136339
+      },
+      "writtenOn": "2016-08-31T09:20:30Z",
+      "side": 1,
+      "message": "yes,gpio22\u002623 not used now.The schematic delete the reference circuit.I will update it agian,thanks for your help.",
+      "parentUuid": "5156d515_68d8e374",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "c64d350f706b1f4e2dda467635ffbb97fedd541b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
