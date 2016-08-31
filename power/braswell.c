@@ -19,6 +19,7 @@
 #include "timer.h"
 #include "usb_charge.h"
 #include "util.h"
+#include "watchdog.h"
 #include "wireless.h"
 #include "registers.h"
 
@@ -358,6 +359,6 @@ void enter_pseudo_g3(void)
 
 	/* Power to EC should shut down now */
 	while (1)
-		;
+		watchdog_reload();
 }
 #endif
