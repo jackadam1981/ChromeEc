@@ -12,7 +12,9 @@
 #include "host_command.h"
 #include "timer.h"
 
+#ifndef EXTPOWER_DEBOUNCE_US
 #define EXTPOWER_DEBOUNCE_US  (30 * MSEC)
+#endif
 
 static int debounced_extpower_presence;
 
