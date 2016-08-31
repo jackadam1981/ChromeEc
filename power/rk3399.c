@@ -43,8 +43,11 @@
 
 #define CHARGER_INITIALIZED_DELAY_MS 100
 #define CHARGER_INITIALIZED_TRIES 40
+#define BATTERY_INITIALIZED_DELAY_MS 20
+#define BATTERY_INITIALIZED_TRIES 49
 
 static int forcing_shutdown;
+static int chipset_is_just_jumped_in;
 
 void chipset_force_shutdown(void)
 {
@@ -75,6 +78,9 @@ enum power_state power_chipset_init(void)
 		if ((power_get_signals() & IN_ALL_S0) == IN_ALL_S0) {
 			disable_sleep(SLEEP_MASK_AP_RUN);
 			CPRINTS("already in S0");
+#ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT
+			chipset_is_just_jumped_in = 1;
+#endif
 			return POWER_S0;
 		}
 	} else if (!(system_get_reset_flags() & RESET_FLAG_AP_OFF))
@@ -100,10 +106,16 @@ DECLARE_DEFERRED(force_shutdown);
 enum power_state power_handle_state(enum power_state state)
 {
 	static int sys_reset_asserted;
-	int tries = 0;
+	int tries = 0, tries_s0 = 0;
 
 	switch (state) {
 	case POWER_G3:
+#ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT
+		if (chipset_is_just_jumped_in) {
+			chipset_is_just_jumped_in = 0;
+			chipset_exit_hard_off();
+		}
+#endif
 		break;
 
 	case POWER_S5:
@@ -121,6 +133,30 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S0:
+		/*
+		 * Charge_manager will change volatge, current from supplier
+		 * that case, input_current also changed. if system is turned on
+		 * with drained battery, NVDC will down because lack of power
+		 * Let's turn off system until we have enough power
+		 */
+#ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT
+		if (chipset_is_just_jumped_in) {
+			/* wait until battery info is reliable */
+			while (!(charge_get_flags() &
+				   CHARGE_FLAG_BATT_RESPONSIVE) &&
+				   tries_s0++ < BATTERY_INITIALIZED_TRIES)
+				msleep(BATTERY_INITIALIZED_DELAY_MS);
+
+			if (tries_s0 < BATTERY_INITIALIZED_TRIES &&
+				  charge_get_percent() <
+				    CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT) {
+				CPRINTS("Turn off AP until get enough current");
+				chipset_force_shutdown();
+				return POWER_S0S3;
+			}
+			chipset_is_just_jumped_in = 0;
+		}
+#endif
 		if (!power_has_signals(IN_PGOOD_S3) ||
 		    forcing_shutdown ||
 		    !(power_get_signals() & IN_SUSPEND_DEASSERTED))
