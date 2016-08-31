@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51ac159b_5b425791",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-08-31T18:23:46Z",
+      "side": 1,
+      "message": "should it be 0x8000 instead. we used to have 0x2800+0x2800 before this change, now we have 0x4000+0x4000?",
+      "range": {
+        "startLine": 98,
+        "startChar": 22,
+        "endLine": 98,
+        "endChar": 28
+      },
+      "revId": "c8648d545e43453d8f98ed6ebf144c632be15770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
