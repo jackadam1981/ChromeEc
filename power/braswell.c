@@ -19,6 +19,7 @@
 #include "timer.h"
 #include "usb_charge.h"
 #include "util.h"
+#include "watchdog.h"
 #include "wireless.h"
 #include "registers.h"
 
@@ -350,14 +351,25 @@ void board_hibernate(void)
 
 void enter_pseudo_g3(void)
 {
+	timestamp_t t;
+
 	CPRINTS("Enter Psuedo G3");
 	cflush();
+
+	t = get_time();
 
 	gpio_set_level(GPIO_EC_HIB_L, 1);
 	gpio_set_level(GPIO_SMC_SHUTDOWN, 1);
 
 	/* Power to EC should shut down now */
-	while (1)
-		;
+	while (1) {
+		if (get_time().val > (t.val + 100 * MSEC)) {
+			t = get_time();
+			CPRINTS("wait...");
+			cflush();
+
+			watchdog_reload();
+		}
+	}
 }
 #endif
