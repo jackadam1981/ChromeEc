@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "71dd999f_923262fe",
+        "filename": "driver/tcpm/ps8751.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-01T23:42:11Z",
+      "side": 1,
+      "message": "int ps8751_tcpc_get_fw_version(int port, *version)?\nso that we can decide valid or not.",
+      "revId": "b3a5a534f0256dae6bdd4a85a9b3878d056fcf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71dd999f_72a24e4a",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 2
