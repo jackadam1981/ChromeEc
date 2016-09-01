@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71dd999f_8c3247fe",
+        "filename": "chip/g/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-09-01T22:09:41Z",
+      "side": 1,
+      "message": "It is weird having all of these board specific ifdefs in these chip/g files",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 108,
+        "endChar": 22
+      },
+      "revId": "49c0969c75b421495d037b57749629a5ac7030ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
