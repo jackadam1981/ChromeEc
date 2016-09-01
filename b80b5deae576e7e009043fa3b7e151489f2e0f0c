@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "312321ee_6a0ad732",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-09-01T13:41:47Z",
+      "side": 1,
+      "message": "it\u0027s a bit off-topic",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "b80b5deae576e7e009043fa3b7e151489f2e0f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "312321ee_aa032f19",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-09-01T13:41:47Z",
+      "side": 1,
+      "message": "is there a point in moving around this code ?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 7
+      },
+      "revId": "b80b5deae576e7e009043fa3b7e151489f2e0f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "312321ee_0a0cfb44",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-09-01T13:41:47Z",
+      "side": 1,
+      "message": "you are not going to modify if you write this in an optimal fashion ...",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 64
+      },
+      "revId": "b80b5deae576e7e009043fa3b7e151489f2e0f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "312321ee_6a11375d",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-09-01T13:41:47Z",
+      "side": 1,
+      "message": "that\u0027s an unoptimal version of just doing a conditional pop here ?\n(or actually once you have removed the push above, moving lr into pc conditionally)",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 40
+      },
+      "revId": "b80b5deae576e7e009043fa3b7e151489f2e0f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "312321ee_2a073f24",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-09-01T13:41:47Z",
+      "side": 1,
+      "message": "I don\u0027t think you want to do a branch and link here,\nyou don\u0027t want to return here, that\u0027s really a tail-call.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 27
+      },
+      "revId": "b80b5deae576e7e009043fa3b7e151489f2e0f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
