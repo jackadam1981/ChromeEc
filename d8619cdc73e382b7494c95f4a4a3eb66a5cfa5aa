@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91e76d24_5b7e8fb9",
+        "filename": "include/config.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-01T18:26:14Z",
+      "side": 1,
+      "message": "Should this say \"when port zero or one\" or \"when only one port\"?",
+      "range": {
+        "startLine": 2153,
+        "startChar": 30,
+        "endLine": 2153,
+        "endChar": 56
+      },
+      "revId": "d8619cdc73e382b7494c95f4a4a3eb66a5cfa5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
