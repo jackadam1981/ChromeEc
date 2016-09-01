@@ -3786,7 +3786,7 @@ enum ec_pd_control_cmd {
 };
 
 struct ec_params_pd_control {
-	uint8_t chip;         /* chip id (should be 0) */
+	uint8_t port;        /* port to control */
 	uint8_t subcmd;
 } __packed;
 
