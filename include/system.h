@@ -468,6 +468,7 @@ int system_process_retry_counter(void);
 #define BOARD_USB_AP                 (1 << 2)   /* One of the PHYs is  */
 						/* connected to the AP */
 #define BOARD_DISABLE_UART0_RX       (1 << 3)   /* Disable UART0 RX    */
+#define BOARD_USE_PLT_RESET          (1 << 4)   /* Platform reset exists */
 /**
  * Get board properites
  *
