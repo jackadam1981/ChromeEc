@@ -22,6 +22,30 @@
       "revId": "91cc1e1ff0ddd911adb010cdaeea71117a28db14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_b2b2359c",
+        "filename": "board/reef/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-01T16:14:36Z",
+      "side": 1,
+      "message": "Okay I will take care of it in next revision.\nRe-based the patch to remove merge conflict so that we can use for internal validation.",
+      "parentUuid": "312321ee_4af9d368",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 14
+      },
+      "revId": "91cc1e1ff0ddd911adb010cdaeea71117a28db14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
