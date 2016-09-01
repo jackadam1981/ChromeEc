@@ -127,6 +127,8 @@ void motion_sense_fifo_add_unit(struct ec_response_motion_sensor_data *data,
 		motion_sense_insert_timestamp();
 		wake_up_needed = 1;
 	}
+	data->flags |= (motion_lid_in_tablet_mode() ?
+			MOTIONSENSE_SENSOR_FLAG_TABLET_MODE : 0);
 	mutex_lock(&g_sensor_mutex);
 	queue_add_unit(&motion_sense_fifo, data);
 	mutex_unlock(&g_sensor_mutex);
