@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "312321ee_4af9d368",
+        "filename": "board/reef/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-09-01T09:06:13Z",
+      "side": 1,
+      "message": "as commented by Shawn earlier, you cannot block the PD state machine for that long, you need to find another solution here\n(e.g a deferred call or calling this twice from the PD state machine)",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 14
+      },
+      "revId": "91cc1e1ff0ddd911adb010cdaeea71117a28db14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
