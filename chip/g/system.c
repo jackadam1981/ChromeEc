@@ -13,6 +13,7 @@
 #include "signed_header.h"
 #include "system.h"
 #include "task.h"
+#include "upgrade_fw.h"
 #include "version.h"
 
 static void check_reset_cause(void)
@@ -96,6 +97,18 @@ void system_reset(int flags)
 	interrupt_disable();
 
 	if (flags & SYSTEM_RESET_HARD) {
+#if defined(CONFIG_NON_HC_FW_UPDATE) && !defined(SECTION_IS_RO)
+		/*
+		 * If the system was updated during this boot clear the reset
+		 * counter.
+		 */
+		if (fw_upgraded()) {
+			GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG0, 1);
+			GREG32(PMU, LONG_LIFE_SCRATCH0) = 0;
+			GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG0, 0);
+		}
+#endif
+
 		/* Reset the full microcontroller */
 		GR_PMU_GLOBAL_RESET = GC_PMU_GLOBAL_RESET_KEY;
 	} else {
