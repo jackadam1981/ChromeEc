@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b160f11c_16c41a04",
+        "filename": "core/cortex-m0/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-09-01T13:20:58Z",
+      "side": 1,
+      "message": "this is likely wrong,\nthe ARM EABI specifies that the stack must be 64-bit aligned\n(that\u0027s actually why the compiler is doing the issue you are trying to solve here)",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 12
+      },
+      "revId": "27501308493bf2adadfc3b133fd1d6f4b4feec12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "312321ee_6a3c97f3",
+        "filename": "core/cortex-m0/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-09-01T13:20:58Z",
+      "side": 1,
+      "message": "rather than this, we can probably do slightly better and have __svc_handler return prev/next in r0/r1, then just do the comparison here.\nand keep current_task static there.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "27501308493bf2adadfc3b133fd1d6f4b4feec12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "312321ee_ca2303c2",
+        "filename": "core/cortex-m0/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-09-01T13:20:58Z",
+      "side": 1,
+      "message": "I\u0027m not convinced that the instruction scheduling is optimal here.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 49
+      },
+      "revId": "27501308493bf2adadfc3b133fd1d6f4b4feec12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "312321ee_2a10df62",
+        "filename": "core/cortex-m0/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-09-01T13:20:58Z",
+      "side": 1,
+      "message": "do we want to do another branch and link , just to execute the few instructions in the small svc_handler assembly stub ?\nit\u0027s probably better to do it here directly",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "27501308493bf2adadfc3b133fd1d6f4b4feec12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
