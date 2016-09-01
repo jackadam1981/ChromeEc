@@ -145,12 +145,23 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 #if IS_PROTO == 1
-	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_HIGH},
+	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_HIGH,
+						anx74xx_tcpc_get_fw_version},
 #else
-	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW,
+						anx74xx_tcpc_get_fw_version},
 #endif
-	{NPCX_I2C_PORT0_1, 0x16, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{NPCX_I2C_PORT0_1, 0x16, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW,
+						ps8751_tcpc_get_fw_version},
 };
+
+uint16_t board_tcpc_get_fw_version(int port)
+{
+	if (tcpc_config[port].fw_version)
+		return tcpc_config[port].fw_version(port);
+
+	return EC_ERROR_UNKNOWN;
+}
 
 uint16_t tcpc_get_alert_status(void)
 {
@@ -249,6 +260,9 @@ void board_tcpc_init(void)
 
 	/* Enable TCPC1 interrupt */
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
+
+	CPRINTF("Port 0 FW VER: 0x%x\n", board_tcpc_get_fw_version(0));
+	CPRINTF("Port 1 FW VER: 0x%x\n", board_tcpc_get_fw_version(1));
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
