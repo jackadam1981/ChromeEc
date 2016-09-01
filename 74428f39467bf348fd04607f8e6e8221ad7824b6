@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91e76d24_2f813e2f",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-01T14:33:28Z",
+      "side": 1,
+      "message": "REG32 is not defined in here but used. You need to include the headers which define the things you use.",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_4f84823f",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-01T14:33:28Z",
+      "side": 1,
+      "message": "Should these be a CONFIG_ option? Where are you expecting someone to set this such that it\u0027s #defined here? Since there are no includes there\u0027s no guarantee these will be defined when hpet.h is included.",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_ef21f661",
+        "filename": "chip/ish/ish_i2c.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-01T14:33:28Z",
+      "side": 1,
+      "message": "trailing white space",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_cf263278",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-01T14:33:28Z",
+      "side": 1,
+      "message": "This should just be ARRAY_SIZE(baud_conf). The division by the size of the element is in the macro.",
+      "range": {
+        "startLine": 128,
+        "startChar": 17,
+        "endLine": 128,
+        "endChar": 65
+      },
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_af2bee3f",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-01T14:33:28Z",
+      "side": 1,
+      "message": "i?",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
