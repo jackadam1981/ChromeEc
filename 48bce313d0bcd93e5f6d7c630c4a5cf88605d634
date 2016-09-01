@@ -22,6 +22,30 @@
       "revId": "48bce313d0bcd93e5f6d7c630c4a5cf88605d634",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_8f651947",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-01T22:32:55Z",
+      "side": 1,
+      "message": "This is an extra test feature so I skipped to add a BUG. Do you want me to file one?",
+      "parentUuid": "71dd999f_6cda7309",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "48bce313d0bcd93e5f6d7c630c4a5cf88605d634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
