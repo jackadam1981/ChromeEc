@@ -13,6 +13,7 @@
  * so we attach two internal GPIOs to the same pad.
  */
 GPIO_INT(SYS_RST_L_IN,    PIN(1, 0),  GPIO_INT_FALLING, sys_rst_asserted)
+GPIO_INT(PLT_RST_L,       PIN(1, 10), GPIO_INT_FALLING, sys_rst_asserted)
 GPIO_INT(AP_ON,           PIN(1, 1),  GPIO_INT_RISING, device_state_on)
 GPIO_INT(EC_ON,           PIN(1, 2),  GPIO_INT_RISING, device_state_on)
 GPIO_INT(SERVO_UART1_ON,  PIN(1, 3),  GPIO_INT_RISING | GPIO_PULL_DOWN,
@@ -77,6 +78,11 @@ PINMUX(GPIO(SYS_RST_L_IN),    M0, DIO_WAKE_FALLING)
 PINMUX(GPIO(SYS_RST_L_OUT),   M0, DIO_INPUT)
 PINMUX(GPIO(CCD_MODE_L),      M1, DIO_INPUT)
 PINMUX(GPIO(BATT_PRES_L),     M2, 0)
+/* TODO(crosbug.com/p/56540): Can't connect the pinmux by default for
+ * PLT_RST_L until it's been moved to DIOM3. Until this change is made this
+ * signal is connected to DIOA13 and is connected in board.c at board init.
+ * PINMUX(GPIO(PLT_RST_L),       M3, DIO_WAKE_FALLING).
+ */
 PINMUX(GPIO(STRAP0),          A1, DIO_INPUT)
 
 /* UARTs */

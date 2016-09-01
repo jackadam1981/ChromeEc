@@ -96,6 +96,7 @@ static void init_pmu(void)
 void pmu_wakeup_interrupt(void)
 {
 	int exiten, wakeup_src;
+	int plt_rst_asserted;
 
 	delay_sleep_by(1 * MSEC);
 
@@ -122,7 +123,13 @@ void pmu_wakeup_interrupt(void)
 		 */
 		delay_sleep_by(3 * MINUTE);
 
-		if (!gpio_get_level(GPIO_SYS_RST_L_IN))
+		/*
+		 * If either SYS_RST_IN_L or PLT_RST_IN are low, then assume
+		 * reset was triggered while Cr50 was sleeping.
+		 */
+		plt_rst_asserted = board_properties & BOARD_USE_PLT_RESET ?
+			!gpio_get_level(GPIO_PLT_RST_L) : 0;
+		if (!gpio_get_level(GPIO_SYS_RST_L_IN) || plt_rst_asserted)
 			sys_rst_asserted(GPIO_SYS_RST_L_IN);
 	}
 
@@ -198,6 +205,20 @@ static void configure_board_specific_gpios(void)
 	/* Add a pullup to sys_rst_l */
 	if (system_get_board_properties() & BOARD_NEEDS_SYS_RST_PULL_UP)
 		GWRITE_FIELD(PINMUX, DIOM0_CTL, PU, 1);
+
+	/*
+	 * TODO(crosbug.com/p/55115): Need to connect platform reset to DI0A13
+	 * for current Reef boards. This function is a no-op for Kevin/Gru. When
+	 * platform reset is moved to DIOM3 in HW, then this section can be
+	 * removed when the deafault is set in gpio.inc
+	 */
+	/* Connect PLT_RST_L signal to the pinmux */
+	if (system_get_board_properties() & BOARD_USE_PLT_RESET) {
+		/* Signal using GPIO1 pin 10 for DIOA13 */
+		GWRITE(PINMUX, GPIO1_GPIO10_SEL, GC_PINMUX_DIOA13_SEL);
+		/* Enbale the input */
+		GWRITE_FIELD(PINMUX, DIOA13_CTL, IE, 1);
+	}
 }
 
 /* Initialize board. */
@@ -584,6 +605,11 @@ void system_init_board_properties(void)
 			 * benchmark for marking the updated image as good.
 			 */
 			properties |= BOARD_MARK_UPDATE_ON_USB_REQ;
+			/*
+			 * Platform reset is present and will need to be
+			 * configured as a an falling edge interrupt.
+			 */
+			properties |= BOARD_USE_PLT_RESET;
 		}
 
 		/*
