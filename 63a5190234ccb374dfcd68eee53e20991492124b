@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71dd999f_096009a0",
+        "filename": "common/extpower_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-01T21:47:00Z",
+      "side": 1,
+      "message": "MSEC should be used here.",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 37
+      },
+      "revId": "63a5190234ccb374dfcd68eee53e20991492124b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
