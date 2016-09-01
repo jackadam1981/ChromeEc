@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71dd999f_b22846a8",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-01T23:39:27Z",
+      "side": 1,
+      "message": "we dont need to check here as it is defined above, or use the config (CONFIG_TCPC_FW_VERSION above also) if we plan to remove that in future.",
+      "revId": "b3a5a534f0256dae6bdd4a85a9b3878d056fcf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_32045621",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-01T23:39:27Z",
+      "side": 1,
+      "message": "ANX** PS** instead of Port 0 \u0026 1?",
+      "revId": "b3a5a534f0256dae6bdd4a85a9b3878d056fcf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_d2b21a9d",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-01T23:39:27Z",
+      "side": 1,
+      "message": "register 0x44?\nit works on EC console\n\u003ei2cxfer r 0 0x50 0x44\n0x10 [16]",
+      "revId": "b3a5a534f0256dae6bdd4a85a9b3878d056fcf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_72a24e4a",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-01T23:39:27Z",
+      "side": 1,
+      "message": "you can add a seperate config \nCONFIG_TCPC_FW_VERSION?",
+      "revId": "b3a5a534f0256dae6bdd4a85a9b3878d056fcf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
