@@ -188,7 +188,13 @@ struct tcpc_config_t {
 	int i2c_slave_addr;
 	const struct tcpm_drv *drv;
 	enum tcpc_alert_polarity pol;
+	uint16_t (*fw_version)(int port);
 };
+
+/**
+ * Get tcpc firmware version
+ */
+uint16_t tcpc_get_fw_version(int port);
 
 /**
  * Returns the PD_STATUS_TCPC_ALERT_* mask corresponding to the TCPC ports

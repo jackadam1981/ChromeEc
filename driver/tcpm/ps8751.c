@@ -60,3 +60,14 @@ void ps8751_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
 		dp_set_irq(port, hpd_irq);
 	}
 }
+
+uint16_t ps8751_tcpc_get_fw_version(int port)
+{
+	int reg;
+	int rv;
+
+	rv = tcpc_read(port, PS8751_REG_VERSION, &reg);
+	if (rv)
+		return 0;
+	return reg;
+}
