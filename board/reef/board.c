@@ -145,11 +145,14 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 #if IS_PROTO == 1
-	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_HIGH},
+	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_HIGH,
+						anx74xx_tcpc_get_fw_version},
 #else
-	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW,
+						anx74xx_tcpc_get_fw_version},
 #endif
-	{NPCX_I2C_PORT0_1, 0x16, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{NPCX_I2C_PORT0_1, 0x16, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW,
+						ps8751_tcpc_get_fw_version},
 };
 
 uint16_t tcpc_get_alert_status(void)
@@ -237,6 +240,24 @@ void board_reset_pd_mcu(void)
 	msleep(10);
 	gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
 }
+
+#ifdef CONFIG_USB_PD_TCPC_FW_VERSION
+void board_get_tcpc_fw_version(void)
+{
+	int i, version;
+
+	if (system_jumped_to_this_image())
+		return;
+
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+		if (tcpc_config[i].fw_version)
+			tcpc_config[i].fw_version(i, &version);
+			CPRINTF("TCPC p%d FW VER: 0x%x\n", i, version);
+	}
+}
+
+DECLARE_HOOK(HOOK_INIT, board_get_tcpc_fw_version, HOOK_PRIO_INIT_I2C+2);
+#endif
 
 void board_tcpc_init(void)
 {
