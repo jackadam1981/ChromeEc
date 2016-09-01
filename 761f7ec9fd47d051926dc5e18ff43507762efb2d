@@ -16,6 +16,24 @@
       "revId": "761f7ec9fd47d051926dc5e18ff43507762efb2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_75e60208",
+        "filename": "driver/charger/bd99955.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-01T00:30:35Z",
+      "side": 1,
+      "message": "Yeah, see \"VCC UVLO Release Voltage\". It\u0027s 3.7V - 3.9V on the rising side, and 3.52V - 3.82V falling.",
+      "parentUuid": "91e76d24_95f84667",
+      "revId": "761f7ec9fd47d051926dc5e18ff43507762efb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
