@@ -149,8 +149,8 @@ const char help_str[] =
 	"      Prints saved panic info\n"
 	"  pause_in_s5 [on|off]\n"
 	"      Whether or not the AP should pause in S5 on shutdown\n"
-	"  pdcontrol [suspend|resume|reset|disable]\n"
-	"      Controls the PD chip\n"
+	"  pdcontrol <port> [suspend|resume|reset|disable]\n"
+	"      Controls PD task for <port>\n"
 	"  pdlog\n"
 	"      Prints the PD event log entries\n"
 	"  pdwritelog <type> <port>\n"
@@ -6815,27 +6815,32 @@ int cmd_pd_control(int argc, char *argv[])
 {
 	struct ec_params_pd_control p;
 	int rv;
+	char *e;
 
-	if (argc < 2) {
-		fprintf(stderr, "Missing parameter\n");
+	if (argc < 3) {
+		fprintf(stderr, "Usage: %s <port> <command>\n", argv[0]);
+		return -1;
+	}
+
+	p.port = strtol(argv[1], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad port parameter.\n");
 		return -1;
 	}
 
 	/* Parse command */
-	if (!strcmp(argv[1], "reset"))
+	if (!strcmp(argv[2], "reset"))
 		p.subcmd = PD_RESET;
-	else if (!strcmp(argv[1], "suspend"))
+	else if (!strcmp(argv[2], "suspend"))
 		p.subcmd = PD_SUSPEND;
-	else if (!strcmp(argv[1], "resume"))
+	else if (!strcmp(argv[2], "resume"))
 		p.subcmd = PD_RESUME;
-	else if (!strcmp(argv[1], "disable"))
+	else if (!strcmp(argv[2], "disable"))
 		p.subcmd = PD_CONTROL_DISABLE;
 	else {
-		fprintf(stderr, "Unknown command: %s\n", argv[1]);
+		fprintf(stderr, "Unknown command: %s\n", argv[2]);
 		return -1;
 	}
-
-	p.chip = 0;
 
 	rv = ec_command(EC_CMD_PD_CONTROL, 0, &p, sizeof(p), NULL, 0);
 	return (rv < 0 ? rv : 0);
