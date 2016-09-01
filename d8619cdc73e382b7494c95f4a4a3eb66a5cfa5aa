@@ -22,6 +22,30 @@
       "revId": "d8619cdc73e382b7494c95f4a4a3eb66a5cfa5aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "318ec181_b2633edf",
+        "filename": "include/config.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-01T18:30:28Z",
+      "side": 1,
+      "message": "I think the idea is that we can advertise max Rp / PDO on all ports if nothing is connected, since nothing is actually pulling a current load, hence \"zero or one\".",
+      "parentUuid": "91e76d24_5b7e8fb9",
+      "range": {
+        "startLine": 2153,
+        "startChar": 30,
+        "endLine": 2153,
+        "endChar": 56
+      },
+      "revId": "d8619cdc73e382b7494c95f4a4a3eb66a5cfa5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
