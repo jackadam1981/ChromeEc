@@ -145,11 +145,14 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 #if IS_PROTO == 1
-	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_HIGH},
+	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_HIGH,
+						anx74xx_tcpc_get_fw_version},
 #else
-	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW,
+						anx74xx_tcpc_get_fw_version},
 #endif
-	{NPCX_I2C_PORT0_1, 0x16, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{NPCX_I2C_PORT0_1, 0x16, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW,
+						ps8751_tcpc_get_fw_version},
 };
 
 uint16_t tcpc_get_alert_status(void)

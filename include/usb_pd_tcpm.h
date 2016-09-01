@@ -188,6 +188,9 @@ struct tcpc_config_t {
 	int i2c_slave_addr;
 	const struct tcpm_drv *drv;
 	enum tcpc_alert_polarity pol;
+#ifdef CONFIG_USB_PD_TCPC_FW_VERSION
+	int (*fw_version)(int port, int *version);
+#endif
 };
 
 /**

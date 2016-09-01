@@ -71,6 +71,7 @@
 #define CONFIG_USB_PD_PORT_COUNT 2
 #define CONFIG_USB_PD_QUIRK_SLOW_CC_STATUS
 #define CONFIG_USB_PD_VBUS_DETECT_CHARGER
+#define CONFIG_USB_PD_TCPC_FW_VERSION
 #define CONFIG_USB_PD_TCPM_MUX  /* for both PS8751 and ANX3429 */
 #define CONFIG_USB_PD_TCPM_ANX74XX
 #define CONFIG_USB_PD_TCPM_PS8751
@@ -265,7 +266,6 @@ void board_reset_pd_mcu(void);
 int board_get_version(void);
 
 void board_set_tcpc_power_mode(int port, int mode);
-
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */
