@@ -22,6 +22,53 @@
       "revId": "dfc83791f814aa20b1b59315d771bb9432c56e74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_ec6ae314",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3790,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-01T22:05:06Z",
+      "side": 1,
+      "message": "Ah, that makes much more sense. I\u0027ll rename things back to \"chip\" and update the comment.",
+      "parentUuid": "71dd999f_ac9d8b5e",
+      "range": {
+        "startLine": 3790,
+        "startChar": 1,
+        "endLine": 3790,
+        "endChar": 43
+      },
+      "revId": "dfc83791f814aa20b1b59315d771bb9432c56e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_4c4def8a",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-01T22:05:06Z",
+      "side": 1,
+      "message": "Since a chip may control multiple ports, Should we modify this to take both a chip and a port? ie, \"pdcontrol 0 0 suspend\" will suspend port 0 of chip 0.\n\nIt\u0027s probably more burdensome for most use cases, but seems like it will mitigate the risk of needing changes down the road.",
+      "range": {
+        "startLine": 152,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 20
+      },
+      "revId": "dfc83791f814aa20b1b59315d771bb9432c56e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
