@@ -530,6 +530,11 @@ static int anx74xx_tcpm_set_polarity(int port, int polarity)
 	return rv;
 }
 
+uint16_t anx74xx_tcpc_get_fw_version(int port)
+{
+	return EC_ERROR_UNKNOWN;
+}
+
 static int anx74xx_tcpm_set_vconn(int port, int enable)
 {
 	int reg, rv = EC_SUCCESS;
