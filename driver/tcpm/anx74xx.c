@@ -530,6 +530,13 @@ static int anx74xx_tcpm_set_polarity(int port, int polarity)
 	return rv;
 }
 
+#ifdef CONFIG_USB_PD_TCPC_FW_VERSION
+int anx74xx_tcpc_get_fw_version(int port, int *version)
+{
+	return tcpc_read(port, ANX74XX_REG_FW_VERSION, version);
+}
+#endif
+
 static int anx74xx_tcpm_set_vconn(int port, int enable)
 {
 	int reg, rv = EC_SUCCESS;

@@ -1482,6 +1482,7 @@ void pd_task(void)
 	/* Initialize TCPM driver and wait for TCPC to be ready */
 	res = tcpm_init(port);
 	CPRINTS("TCPC p%d init %s", port, res ? "failed" : "ready");
+
 	this_state = res ? PD_STATE_SUSPENDED : PD_DEFAULT_STATE;
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
