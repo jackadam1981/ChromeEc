@@ -93,6 +93,30 @@
       "revId": "dfc83791f814aa20b1b59315d771bb9432c56e74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_8f219963",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-01T23:14:58Z",
+      "side": 1,
+      "message": "I really like that idea from a syntax standpoint. Is there already an easy way to map port to chip? I was thinking adding a function in board.c to do it.\n\nFor most boards it would be a trivial function - \"return 0\" if the board has 1 TCPC or \"return port\" if each TCPC controls a single port. If we have a board where TCPCs control multiple ports things might get a bit more complicated, but not by much.\n\nYea or Nay?",
+      "parentUuid": "71dd999f_0c3f77c5",
+      "range": {
+        "startLine": 152,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 20
+      },
+      "revId": "dfc83791f814aa20b1b59315d771bb9432c56e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
