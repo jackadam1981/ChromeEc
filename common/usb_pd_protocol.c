@@ -1469,6 +1469,9 @@ void pd_task(void)
 	int typec_curr = 0, typec_curr_change = 0;
 #endif /* CONFIG_CHARGE_MANAGER */
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
+#ifdef CONFIG_USB_PD_TCPC_FW_VERSION
+	int version;
+#endif
 	enum pd_states this_state;
 	enum pd_cc_states new_cc_state;
 	timestamp_t now;
@@ -1482,6 +1485,14 @@ void pd_task(void)
 	/* Initialize TCPM driver and wait for TCPC to be ready */
 	res = tcpm_init(port);
 	CPRINTS("TCPC p%d init %s", port, res ? "failed" : "ready");
+
+#ifdef CONFIG_USB_PD_TCPC_FW_VERSION
+	if (tcpc_config[port].fw_version) {
+		if (!tcpc_config[port].fw_version(port, &version))
+			CPRINTF("\nTCPC p%d FW VER: 0x%x\n", port, version);
+	}
+#endif
+
 	this_state = res ? PD_STATE_SUSPENDED : PD_DEFAULT_STATE;
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
