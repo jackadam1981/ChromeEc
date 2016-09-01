@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71dd999f_ac9d8b5e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3790,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-01T21:53:36Z",
+      "side": 1,
+      "message": "This argument is \u0027chip\u0027 because it originally supported two ports on a single PD MCU. In the near future we\u0027ll probably have similar configs (multiple ports on a single TCPC). I don\u0027t think we should change \u0027chip\u0027 to \u0027port\u0027, but you can leave a comment explaining that a given chip can have multiple ports.",
+      "range": {
+        "startLine": 3790,
+        "startChar": 1,
+        "endLine": 3790,
+        "endChar": 43
+      },
+      "revId": "dfc83791f814aa20b1b59315d771bb9432c56e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
