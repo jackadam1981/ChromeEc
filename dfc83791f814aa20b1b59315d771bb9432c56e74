@@ -69,6 +69,30 @@
       "revId": "dfc83791f814aa20b1b59315d771bb9432c56e74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_0c3f77c5",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-01T22:11:19Z",
+      "side": 1,
+      "message": "If we were starting from scratch, I would just take a port parameter, and let the EC map port-to-chip on its side. But I don\u0027t think we should change it at this point (maybe others disagree), so basically we\u0027re stuck with a solution that requires the host command sender to know the port-to-chip mapping. It\u0027s slightly inconvenient.",
+      "parentUuid": "71dd999f_4c4def8a",
+      "range": {
+        "startLine": 152,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 20
+      },
+      "revId": "dfc83791f814aa20b1b59315d771bb9432c56e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
