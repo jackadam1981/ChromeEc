@@ -46,6 +46,30 @@
       "revId": "48bce313d0bcd93e5f6d7c630c4a5cf88605d634",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_ef9655f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-01T22:40:07Z",
+      "side": 1,
+      "message": "It would help to know whether this is just for occasional manual testing, or as part of an automated test framework, or what.  That lets know later whether it\u0027s something we can do without to save space.",
+      "parentUuid": "71dd999f_8f651947",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "48bce313d0bcd93e5f6d7c630c4a5cf88605d634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
