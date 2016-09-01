@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "91e76d24_8f382a8e",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-01T14:54:27Z",
+      "side": 1,
+      "message": "I think the naming of \u0027RAM\u0027 vs \u0027SRAM\u0027 could use some help. What is your distinction of RAM vs SRAM? Is one code and the other data?",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_af42ceed",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-01T14:54:27Z",
+      "side": 1,
+      "message": "Same issue with off by one like above. You may just want to make your _END macros exclusive instead of inclusive.",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91e76d24_2f813e2f",
         "filename": "chip/ish/hpet.h",
         "patchSetId": 13
@@ -30,6 +64,154 @@
       "writtenOn": "2016-09-01T14:33:28Z",
       "side": 1,
       "message": "Should these be a CONFIG_ option? Where are you expecting someone to set this such that it\u0027s #defined here? Since there are no includes there\u0027s no guarantee these will be defined when hpet.h is included.",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_cf3d1280",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-01T14:54:27Z",
+      "side": 1,
+      "message": "Is 100ms tick granularity enough? It seems rather coarse.",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_6f350692",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-01T14:54:27Z",
+      "side": 1,
+      "message": "If ISH_TICKS_PER_SEC ever changes this comment will go stale. Leave the comment where the macro is defined.",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_aff9aeb3",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-01T14:54:27Z",
+      "side": 1,
+      "message": "See my note below about this global being insufficient for what you want to do. Even if you only had one host controller what is stopping 2 tasks from wanting to transact on the same bus and overwriting the host controller\u0027s registers?",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 34
+      },
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_2f2ffe41",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-01T14:54:27Z",
+      "side": 1,
+      "message": "Why is this global? Should be static, no?",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_cff4f2bb",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-01T14:54:27Z",
+      "side": 1,
+      "message": "You have potentially 2 interrupt handlers as well as multiple host controllers. This wait_tsk_id should be within the i2c_ctxs. Otherwise you have really bad races.",
+      "range": {
+        "startLine": 375,
+        "startChar": 15,
+        "endLine": 375,
+        "endChar": 27
+      },
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_4f3242ac",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-01T14:54:27Z",
+      "side": 1,
+      "message": "You could just pass the \u0026i2c_ctxs[0] here instead of the index that you then just use to address the array. Just pass the pointer you care about.",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_0feb1add",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-01T14:54:27Z",
+      "side": 1,
+      "message": "Why is this not static?",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e76d24_0fd2fa24",
+        "filename": "chip/ish/ipc.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-01T14:54:27Z",
+      "side": 1,
+      "message": "I\u0027m confused. Why are all these global functions not declared in the header if you want them global? Could you please go over the files added and ensure only the globals you want exposed out are truly global as well as declaring them in an appropriate header file?",
       "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
