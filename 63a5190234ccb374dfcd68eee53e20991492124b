@@ -22,6 +22,30 @@
       "revId": "63a5190234ccb374dfcd68eee53e20991492124b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_7d985fc7",
+        "filename": "common/extpower_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-02T00:34:57Z",
+      "side": 1,
+      "message": "It may be clearer to leave it as 1000 since we\u0027re converting away from milliseconds to microseconds, whereas usually MSEC is used to convert to milliseconds.\n\nWe can do it either way, though. I went ahead and made the change, LMK if you have second thoughts and I can change it back.",
+      "parentUuid": "71dd999f_096009a0",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 37
+      },
+      "revId": "63a5190234ccb374dfcd68eee53e20991492124b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
