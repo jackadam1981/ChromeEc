@@ -23,13 +23,12 @@
 /* Maximum allowable time charger can be unplugged to be considered an OCP */
 #define OC_RECOVER_MAX_TIME (SECOND)
 
+/* Maximum allowable time to re-detect the charger which lost power */
+#define CHG_RECOVER_MAX_TIME (CHARGE_DETECT_DELAY + RAMP_CURR_DELAY + \
+				(RAMP_CURR_DELAY >> 1))
+
 /* Delay for running state machine when board is not consuming full current */
 #define CURRENT_DRAW_DELAY  (5*SECOND)
-
-/* Current ramp increment */
-#define RAMP_CURR_INCR_MA   64
-#define RAMP_CURR_DELAY     (500*MSEC)
-#define RAMP_CURR_START_MA  500
 
 /* How much to backoff the input current limit when limit has been found */
 #define RAMP_ICL_BACKOFF    (2*RAMP_CURR_INCR_MA)
@@ -147,7 +146,7 @@ void chg_ramp_task(void)
 {
 	int task_wait_time = -1;
 	int i, lim;
-	uint64_t detect_end_time_us = 0, time_us;
+	uint64_t detect_end_time_us = 0, time_prev = 0, time_us;
 	int last_active_port = CHARGE_PORT_NONE;
 
 	/*
@@ -187,6 +186,19 @@ void chg_ramp_task(void)
 				task_wait_time = CHARGE_DETECT_DELAY;
 				break;
 			}
+
+			/*
+			 * Adjust the Max Input current limit as OCP reset
+			 * occurred on external charger or VBUS is less than
+			 * internal charger operating range.
+			 */
+			if (ramp_st_prev == ramp_st &&
+			    active_port != CHARGE_PORT_NONE &&
+			    active_port == last_active_port &&
+			    ACTIVE_OC_INFO.icl > min_icl &&
+			    get_time().val < time_prev + CHG_RECOVER_MAX_TIME)
+				max_icl = MAX(min_icl, ACTIVE_OC_INFO.icl -
+							      RAMP_ICL_BACKOFF);
 
 			/* If detect delay has not passed, set wait time */
 			time_us = get_time().val;
@@ -265,6 +277,9 @@ void chg_ramp_task(void)
 				stablize_sup = active_sup;
 				break;
 			}
+
+			/* Update last ramp time */
+			time_prev = get_time().val;
 
 			/* Ramp the current limit if we haven't reached max */
 			if (active_icl == max_icl)

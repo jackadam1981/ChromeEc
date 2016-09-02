@@ -28,6 +28,14 @@
  */
 #define CHARGE_DETECT_DELAY_TEST (CHARGE_DETECT_DELAY - 100*MSEC)
 
+/*
+ * If the charger loses power because of over current ramping, adjust the
+ * MAX ramp current to last good ramped current.
+ */
+#define CHARAGE_RAMP_MAX_REDUCED(curr) (((((curr) - RAMP_CURR_START_MA) / \
+			RAMP_CURR_INCR_MA) - 1) * RAMP_CURR_INCR_MA + \
+			RAMP_CURR_START_MA)
+
 static int system_load_current_ma;
 static int vbus_low_current_ma = 500;
 static int overcurrent_current_ma = 3000;
@@ -460,7 +468,8 @@ static int test_ramp_limit(void)
 	usleep(SECOND);
 	TEST_ASSERT(is_in_range(charge_limit_ma, 500, 700));
 	TEST_ASSERT(wait_stable_no_overcurrent());
-	TEST_ASSERT(charge_limit_ma == 1600);
+	TEST_ASSERT(charge_limit_ma == 1600 ||
+		    charge_limit_ma == CHARAGE_RAMP_MAX_REDUCED(1600));
 
 	/* Switch to supplier that is limited to 2.4A */
 	plug_charger(CHARGE_SUPPLIER_TEST8, 1, 500, 3000, 3000);
