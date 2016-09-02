@@ -236,7 +236,7 @@ enum sensor_id {
 #define PD_MAX_VOLTAGE_MV     20000
 
 /* Reset PD MCU */
-void board_reset_pd_mcu(void);
+void board_reset_pd_mcu(int tcpc);
 
 void board_set_tcpc_power_mode(int port, int normal_mode);
 

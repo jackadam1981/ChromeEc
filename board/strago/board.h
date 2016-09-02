@@ -193,7 +193,7 @@ enum als_id {
 #define PD_MAX_VOLTAGE_MV     20000
 
 /* Reset PD MCU */
-void board_reset_pd_mcu(void);
+void board_reset_pd_mcu(int tcpc);
 
 #endif /* !__ASSEMBLER__ */
 

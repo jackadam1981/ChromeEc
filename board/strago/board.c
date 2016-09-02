@@ -173,7 +173,7 @@ BUILD_ASSERT(ARRAY_SIZE(buttons) == CONFIG_BUTTON_COUNT);
 /**
  * Reset PD MCU
  */
-void board_reset_pd_mcu(void)
+void board_reset_pd_mcu(int tcpc)
 {
 	gpio_set_level(GPIO_PD_RST_L, 0);
 	usleep(100);

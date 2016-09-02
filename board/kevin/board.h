@@ -230,7 +230,7 @@ enum sensor_id {
 #include "gpio_signal.h"
 #include "registers.h"
 
-void board_reset_pd_mcu(void);
+void board_reset_pd_mcu(int tcpc);
 int board_get_version(void);
 
 #endif /* !__ASSEMBLER__ */

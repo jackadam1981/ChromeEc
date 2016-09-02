@@ -217,7 +217,7 @@ enum temp_sensor_id {
 #define PD_PREFER_LOW_VOLTAGE
 
 /* Reset PD MCU */
-void board_reset_pd_mcu(void);
+void board_reset_pd_mcu(int tcpc);
 /* Set AP reset pin according to parameter */
 void board_set_ap_reset(int asserted);
 

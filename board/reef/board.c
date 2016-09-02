@@ -212,37 +212,41 @@ void board_set_tcpc_power_mode(int port, int mode)
  * common/power.c just before hard resetting the system. This logic is likely
  * not needed as the PP3300_A rail should be dropped on EC reset.
  */
-void board_reset_pd_mcu(void)
+void board_reset_pd_mcu(int tcpc)
 {
+	if (tcpc == 0) {
+		/* Assert reset to TCPC0 */
+		gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
+		msleep(1);
+		gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
+
+		/* TCPC0 requires 10ms reset/power down assertion */
+		msleep(10);
+
+		/* Deassert reset to TCPC0 */
+		gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
+		msleep(10);
+		gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
+	} else {
 #if IS_PROTO == 0
-	/* Assert reset to TCPC1 */
-	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
+		/* Assert reset to TCPC1 */
+		gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
+
+		msleep(1);
+
+		/* Deassert reset to TCPC1 */
+		gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 1);
 #endif
-
-	/* Assert reset to TCPC0 */
-	gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
-	msleep(1);
-	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
-
-#if IS_PROTO == 0
-	/* Deassert reset to TCPC1 */
-	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 1);
-#endif
-
-	/* TCPC0 requires 10ms reset/power down assertion */
-	msleep(10);
-
-	/* Deassert reset to TCPC0 */
-	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
-	msleep(10);
-	gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
+	}
 }
 
 void board_tcpc_init(void)
 {
 	/* Only reset TCPC if not sysjump */
-	if (!system_jumped_to_this_image())
-		board_reset_pd_mcu();
+	if (!system_jumped_to_this_image()) {
+		board_reset_pd_mcu(0);
+		board_reset_pd_mcu(1);
+	}
 
 	/* Enable TCPC0 interrupt */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
