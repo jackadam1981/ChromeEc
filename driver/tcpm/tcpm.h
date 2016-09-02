@@ -251,4 +251,26 @@ void tcpc_alert(int port);
 
 #endif
 
+/**
+ * Map Type-C port to TCPC chip
+ *
+ * @param port Type-C port number
+ *
+ * @returns TCPC which controls given port
+ */
+#if CONFIG_USB_PD_PORT_COUNT == CONFIG_USB_PD_TCPC_COUNT
+static inline int tcpc_port_to_chip(int port)
+{
+	return port;	/* identity mapping between port and TCPC */
+}
+#elif CONFIG_USB_PD_TCPC_COUNT == 1
+static inline int tcpc_port_to_chip(int port)
+{
+	return 0;	/* the only possibility */
+}
+#else
+/* Other combinations are handled in board-specific code. */
+int tcpc_port_to_chip(int port);
+#endif	/* CONFIG_USB_PD_PORT_COUNT */
+
 #endif
