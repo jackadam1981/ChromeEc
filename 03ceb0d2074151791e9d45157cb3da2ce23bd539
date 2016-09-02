@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71dd999f_86da1bdd",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-02T19:45:32Z",
+      "side": 1,
+      "message": "Let\u0027s add a /* TODO(crosbug.com/p/56540): Remove when no longer needed */ here.",
+      "range": {
+        "startLine": 736,
+        "startChar": 2,
+        "endLine": 736,
+        "endChar": 18
+      },
+      "revId": "03ceb0d2074151791e9d45157cb3da2ce23bd539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
