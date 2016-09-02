@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "318881a4_bf1757b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-09-02T09:46:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand this immediate goal of this CL:\nsuch a board doesn\u0027t exist ?\nthe TCPCI spec doesn\u0027t define this case (unless the said TCPC defines several I2C slave interfaces/addresses).\n\nWhat do we get now from adding this complexity ?",
+      "range": {
+        "startLine": 10,
+        "startChar": 44,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "74bde93e851c7e119e5abca66f062340eef74c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
