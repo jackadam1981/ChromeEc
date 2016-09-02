@@ -824,11 +824,24 @@ int anx74xx_tcpm_init(int port)
 	if (rv)
 		return EC_ERROR_UNKNOWN;
 
+	/* Set AVDD10_BMC to 1.08 */
+	rv |= tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_5, &reg);
+	if (rv)
+		return EC_ERROR_UNKNOWN;
+	rv = tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_5, (reg & 0xf3));
+	if (rv)
+		return EC_ERROR_UNKNOWN;
+
 	/* Decrease BMC TX lowest swing voltage */
 	rv |= tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_11, &reg);
 	if (rv)
 		return EC_ERROR_UNKNOWN;
 	rv = tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_11, (reg & 0x3f) | 0x40);
+	if (rv)
+		return EC_ERROR_UNKNOWN;
+
+	/* Set BMC TX cap slew rate to 400ns */
+	rv = tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_12, 0x4);
 	if (rv)
 		return EC_ERROR_UNKNOWN;
 
