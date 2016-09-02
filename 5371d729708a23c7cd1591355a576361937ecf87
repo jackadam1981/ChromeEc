@@ -22,6 +22,30 @@
       "revId": "5371d729708a23c7cd1591355a576361937ecf87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_722249b1",
+        "filename": "board/cave/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-09-02T14:47:21Z",
+      "side": 0,
+      "message": "The audio power source is PP1800_A, which control by SLP_SUS_L_PMIC. When system is in s5, the PP1800_A is turn off. I upload the patch 2 for turn off GPIO_PP1800_DX_AUDIO_EN in s5, but the result is the same.",
+      "parentUuid": "71dd999f_29706d9b",
+      "range": {
+        "startLine": 428,
+        "startChar": 16,
+        "endLine": 428,
+        "endChar": 39
+      },
+      "revId": "5371d729708a23c7cd1591355a576361937ecf87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
