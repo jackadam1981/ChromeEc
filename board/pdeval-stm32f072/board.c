@@ -46,7 +46,7 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
-void board_reset_pd_mcu(void)
+void board_reset_pd_mcu(int port)
 {
 }
 

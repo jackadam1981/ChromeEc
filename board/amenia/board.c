@@ -176,33 +176,39 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
  * TCPC0 minimum reset assertion time: 10ms
  * TCPC1 minimum reset assertion time: 1ms (must be less than 10ms)
  */
-void board_reset_pd_mcu(void)
+void board_reset_pd_mcu(int port)
 {
-	/* Assert reset to TCPC1 */
-	gpio_set_level(GPIO_USB_C1_RST_L, 0);
+	if (port == 0) {
+		/* Assert reset to TCPC0 */
+		gpio_set_level(GPIO_USB_C0_RST_L, 0);
+		msleep(1);
+		gpio_set_level(GPIO_USB_C0_PWR_EN, 0);
 
-	/* Assert reset to TCPC0 */
-	gpio_set_level(GPIO_USB_C0_RST_L, 0);
-	msleep(1);
-	gpio_set_level(GPIO_USB_C0_PWR_EN, 0);
+		/* TCPC0 requires 10ms reset/power down assertion */
+		msleep(10);
 
-	/* Deassert reset to TCPC1 */
-	gpio_set_level(GPIO_USB_C1_RST_L, 1);
+		/* Deassert reset to TCPC0 */
+		gpio_set_level(GPIO_USB_C0_PWR_EN, 1);
+		msleep(10);
+		gpio_set_level(GPIO_USB_C0_RST_L, 1);
+	} else {
+		/* Assert reset to TCPC1 */
+		gpio_set_level(GPIO_USB_C1_RST_L, 0);
 
-	/* TCPC0 requires 10ms reset/power down assertion */
-	msleep(10);
+		msleep(1);
 
-	/* Deassert reset to TCPC0 */
-	gpio_set_level(GPIO_USB_C0_PWR_EN, 1);
-	msleep(10);
-	gpio_set_level(GPIO_USB_C0_RST_L, 1);
+		/* Deassert reset to TCPC1 */
+		gpio_set_level(GPIO_USB_C1_RST_L, 1);
+	}
 }
 
 void board_tcpc_init(void)
 {
 	/* Only reset TCPC if not sysjump */
-	if (!system_jumped_to_this_image())
-		board_reset_pd_mcu();
+	if (!system_jumped_to_this_image()) {
+		board_reset_pd_mcu(0);
+		board_reset_pd_mcu(1);
+	}
 
 	/* Enable TCPC0 interrupt */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT);

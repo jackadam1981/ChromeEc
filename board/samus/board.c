@@ -260,7 +260,7 @@ int board_is_discharging_on_ac(void)
 /**
  * Reset PD MCU
  */
-void board_reset_pd_mcu(void)
+void board_reset_pd_mcu(int port)
 {
 	gpio_set_level(GPIO_USB_MCU_RST, 1);
 	usleep(100);

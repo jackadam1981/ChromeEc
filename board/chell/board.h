@@ -213,7 +213,7 @@ extern const int keyboard_factory_scan_pins_used;
 #endif
 
 /* Reset PD MCU */
-void board_reset_pd_mcu(void);
+void board_reset_pd_mcu(int tcpc);
 
 /* Reset RTC */
 void board_rtc_reset(void);

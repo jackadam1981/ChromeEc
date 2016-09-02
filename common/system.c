@@ -784,16 +784,25 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 		return system_run_image_copy(SYSTEM_IMAGE_RO);
 	case EC_REBOOT_JUMP_RW:
 		return system_run_image_copy(SYSTEM_IMAGE_RW);
-	case EC_REBOOT_COLD:
+	case EC_REBOOT_COLD: {
 #ifdef HAS_TASK_PDCMD
-		/* Reboot the PD chip as well */
-		board_reset_pd_mcu();
+#ifdef CONFIG_USB_PD_PORT_COUNT
+		int i;
+
+		for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+			/* Reboot the PD chip as well */
+			board_reset_pd_mcu(i);
+		}
+#else
+		board_reset_pd_mcu(0);
+#endif
 #endif
 
 		cflush();
 		system_reset(SYSTEM_RESET_HARD);
 		/* That shouldn't return... */
 		return EC_ERROR_UNKNOWN;
+	}
 	case EC_REBOOT_DISABLE_JUMP:
 		system_disable_jump();
 		return EC_SUCCESS;

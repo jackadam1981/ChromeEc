@@ -193,7 +193,7 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 /**
  * Reset PD MCU
  */
-void board_reset_pd_mcu(void)
+void board_reset_pd_mcu(int port)
 {
 	gpio_set_level(GPIO_PD_RST_L, 0);
 	usleep(100);

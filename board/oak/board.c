@@ -187,7 +187,7 @@ static struct mutex dp_hw_lock;
 /**
  * Reset PD MCU
  */
-void board_reset_pd_mcu(void)
+void board_reset_pd_mcu(int port)
 {
 	gpio_set_level(GPIO_USB_PD_RST_L, 0);
 	usleep(100);

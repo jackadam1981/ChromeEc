@@ -93,7 +93,7 @@ enum usb_strings {
 	USB_STR_COUNT
 };
 
-void board_reset_pd_mcu(void);
+void board_reset_pd_mcu(int tcpc);
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __BOARD_H */

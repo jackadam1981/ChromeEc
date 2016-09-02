@@ -181,7 +181,7 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 };
 
-void board_reset_pd_mcu(void)
+void board_reset_pd_mcu(int port)
 {
 }
 

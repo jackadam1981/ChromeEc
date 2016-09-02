@@ -218,7 +218,7 @@ static void board_power_on_pd_mcu(void)
 	hook_call_deferred(&deferred_reset_pd_mcu_data, 1*MSEC);
 }
 
-void board_reset_pd_mcu(void)
+void board_reset_pd_mcu(int port)
 {
 	/* enable port controller's cable detection before reset */
 	anx7688_enable_cable_detection(0);
@@ -229,7 +229,7 @@ void board_reset_pd_mcu(void)
 
 int command_pd_reset(int argc, char **argv)
 {
-	board_reset_pd_mcu();
+	board_reset_pd_mcu(0);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(resetpd, command_pd_reset,

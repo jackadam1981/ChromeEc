@@ -192,7 +192,7 @@ enum als_id {
 int board_is_discharging_on_ac(void);
 
 /* Reset PD MCU */
-void board_reset_pd_mcu(void);
+void board_reset_pd_mcu(int tcpc);
 
 /* Backboost detected interrupt */
 void bkboost_det_interrupt(enum gpio_signal signal);
