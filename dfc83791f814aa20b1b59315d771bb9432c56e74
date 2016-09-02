@@ -117,6 +117,30 @@
       "revId": "dfc83791f814aa20b1b59315d771bb9432c56e74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_3dcc27b2",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-02T00:56:37Z",
+      "side": 1,
+      "message": "Another issue here - Is it reasonable for somebody to want to suspend or resume the PD task for a single port? If so, what about \"reset\"?\n\nI\u0027m thinking that we should split some of the functionality out so that commands which operate at port-level granularity begin with pd* and commands which operate at chip-level granularity begin with tcpc*. So we\u0027d move the \"reset\" command to \"tcpc reset\" or something.",
+      "parentUuid": "71dd999f_8f219963",
+      "range": {
+        "startLine": 152,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 20
+      },
+      "revId": "dfc83791f814aa20b1b59315d771bb9432c56e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
