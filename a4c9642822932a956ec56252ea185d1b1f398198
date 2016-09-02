@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71dd999f_818845cd",
+        "filename": "util/ec_panicinfo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-02T21:08:44Z",
+      "side": 1,
+      "message": "Please include a comment describing what this function does.\n\n/**\n * Prints panic information to stdout.\n *\n * @param pdata  Panic information to print\n * @return 0 if success or non-zero error code if error.\n */",
+      "revId": "a4c9642822932a956ec56252ea185d1b1f398198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_6181d1a9",
+        "filename": "util/ec_panicinfo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-02T21:08:44Z",
+      "side": 1,
+      "message": "const?",
+      "revId": "a4c9642822932a956ec56252ea185d1b1f398198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_e18ca1e8",
+        "filename": "util/ec_parse_panicinfo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-02T21:08:44Z",
+      "side": 1,
+      "message": "return parse_panic_info(\u0026pdata) ? 1 : 0;",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 11
+      },
+      "revId": "a4c9642822932a956ec56252ea185d1b1f398198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
