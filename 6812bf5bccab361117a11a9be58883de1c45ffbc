@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71dd999f_e87ac67d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-02T19:16:34Z",
+      "side": 1,
+      "message": "None",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_c8a26206",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-02T19:16:34Z",
+      "side": 1,
+      "message": "We ?",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_88c18a92",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-02T19:16:34Z",
+      "side": 1,
+      "message": "typo: calculated",
+      "range": {
+        "startLine": 36,
+        "startChar": 45,
+        "endLine": 36,
+        "endChar": 55
+      },
+      "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_a88e0e84",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-02T19:16:34Z",
+      "side": 1,
+      "message": "nit: positives",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_089aba73",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-02T19:16:34Z",
+      "side": 1,
+      "message": "This is immediately following a sysjump, correct?",
+      "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_0b76349a",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-02T19:16:34Z",
+      "side": 1,
+      "message": "Is this another debounce region? Is there any spec regarding what these angles should be?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_a8f56ee8",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-02T19:16:34Z",
+      "side": 1,
+      "message": "extra space",
+      "range": {
+        "startLine": 67,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 26
+      },
+      "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_8b6a24a8",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1750,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-02T19:16:34Z",
+      "side": 1,
+      "message": "Maybe add this sentence with the CL that actually does so.",
+      "range": {
+        "startLine": 1749,
+        "startChar": 40,
+        "endLine": 1750,
+        "endChar": 15
+      },
+      "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
