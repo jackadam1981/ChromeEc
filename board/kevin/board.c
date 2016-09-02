@@ -163,12 +163,12 @@ const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
 	 30 * MSEC, 0},
 };
 
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_TCPC_COUNT] = {
 	{I2C_PORT_TCPC0, FUSB302_I2C_SLAVE_ADDR, &fusb302_tcpm_drv},
 	{I2C_PORT_TCPC1, FUSB302_I2C_SLAVE_ADDR, &fusb302_tcpm_drv},
 };
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_TCPC_COUNT] = {
 	{
 		.port_addr = 0,
 		.driver = &virtual_usb_mux_driver,

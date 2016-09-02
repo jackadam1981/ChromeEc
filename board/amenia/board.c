@@ -140,7 +140,7 @@ const struct i2c_port_t i2c_ports[]  = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_TCPC_COUNT] = {
 	{I2C_PORT_TCPC0, TCPC0_I2C_ADDR, &anx74xx_tcpm_drv,
 		TCPC_ALERT_ACTIVE_HIGH},
 	{I2C_PORT_TCPC1, TCPC1_I2C_ADDR, &tcpci_tcpm_drv,
@@ -156,7 +156,7 @@ const enum gpio_signal hibernate_wake_pins[] = {
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
 #if 1 /* TODO: TCPC */
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_TCPC_COUNT] = {
 	{
 		.port_addr = 0,
 		.driver = &anx74xx_tcpm_usb_mux_driver,

@@ -1993,6 +1993,12 @@
 #undef CONFIG_USB_PD_TCPC
 
 /*
+ * Number of TCPC chips, may be equal to CONFIG_USB_PD_PORT_COUNT if each
+ * port is controlled by its own TCPC.
+ */
+#undef CONFIG_USB_PD_TCPC_COUNT
+
+/*
  * Track VBUS level in TCPC module. This will only be needed if we're acting
  * as an external TCPC.
  */

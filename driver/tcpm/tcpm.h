@@ -258,6 +258,7 @@ void tcpc_alert(int port);
  *
  * @returns the chip which controls port
  */
+#ifdef CONFIG_USB_PD_PORT_COUNT
 #if CONFIG_USB_PD_PORT_COUNT == CONFIG_USB_PD_TCPC_COUNT
 static inline int tcpc_port_to_chip(int port)
 {
@@ -271,6 +272,7 @@ static inline int tcpc_port_to_chip(int port)
 #else
 /* Other combinations are handled in board-specific code. */
 int tcpc_port_to_chip(int port);
-#endif	/* !CONFIG_USB_PD_PORT_COUNT */
+#endif
+#endif	/* CONFIG_USB_PD_PORT_COUNT */
 
 #endif

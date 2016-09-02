@@ -1103,13 +1103,13 @@ void tcpc_init(int port)
 	}
 
 #ifdef CONFIG_USB_PD_TCPC_TRACK_VBUS
-#if CONFIG_USB_PD_PORT_COUNT >= 2
+#if CONFIG_USB_PD_TCPC_COUNT >= 2
 	tcpc_set_power_status(port, !gpio_get_level(port ?
 			      GPIO_USB_C1_VBUS_WAKE_L :
 			      GPIO_USB_C0_VBUS_WAKE_L));
 #else
 	tcpc_set_power_status(port, !gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L));
-#endif /* CONFIG_USB_PD_PORT_COUNT >= 2 */
+#endif /* CONFIG_USB_PD_TCPC_COUNT >= 2 */
 #endif /* CONFIG_USB_PD_TCPC_TRACK_VBUS */
 
 	/* set default alert and power mask register values */
@@ -1128,14 +1128,14 @@ void pd_vbus_evt_p0(enum gpio_signal signal)
 	task_wake(TASK_ID_PD_C0);
 }
 
-#if CONFIG_USB_PD_PORT_COUNT >= 2
+#if CONFIG_USB_PD_TCPC_COUNT >= 2
 void pd_vbus_evt_p1(enum gpio_signal signal)
 {
 	tcpc_set_power_status(TASK_ID_TO_PD_PORT(TASK_ID_PD_C1),
 				 !gpio_get_level(GPIO_USB_C1_VBUS_WAKE_L));
 	task_wake(TASK_ID_PD_C1);
 }
-#endif /* PD_PORT_COUNT >= 2 */
+#endif /* PD_CHIP_COUNT >= 2 */
 #endif /* CONFIG_USB_PD_TCPC_TRACK_VBUS */
 
 #ifndef CONFIG_USB_POWER_DELIVERY

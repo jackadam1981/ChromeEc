@@ -143,7 +143,7 @@ const struct i2c_port_t i2c_ports[]  = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_TCPC_COUNT] = {
 #if IS_PROTO == 1
 	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_HIGH},
 #else
@@ -183,7 +183,7 @@ const enum gpio_signal hibernate_wake_pins[] = {
 
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_TCPC_COUNT] = {
 	{
 		.port_addr = 0,	/* don't care / unused */
 		.driver = &anx74xx_tcpm_usb_mux_driver,
@@ -474,7 +474,7 @@ int board_set_active_charge_port(int charge_port)
 
 	/* charge port is a physical port */
 	int is_real_port = (charge_port >= 0 &&
-			    charge_port < CONFIG_USB_PD_PORT_COUNT);
+			    charge_port < CONFIG_USB_PD_TCPC_COUNT);
 	/* check if we are source VBUS on the port */
 	int source = gpio_get_level(charge_port == 0 ? GPIO_USB_C0_5V_EN :
 						       GPIO_USB_C1_5V_EN);

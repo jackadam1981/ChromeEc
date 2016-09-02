@@ -112,7 +112,7 @@ const struct spi_device_t spi_devices[] = {
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 #endif
 
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_TCPC_COUNT] = {
 	{I2C_PORT_TCPC, CONFIG_TCPC_I2C_BASE_ADDR, &tcpci_tcpm_drv},
 	{I2C_PORT_TCPC, CONFIG_TCPC_I2C_BASE_ADDR + 2, &tcpci_tcpm_drv},
 };
@@ -160,7 +160,7 @@ struct als_t als[] = {
 BUILD_ASSERT(ARRAY_SIZE(als) == ALS_COUNT);
 #endif
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_TCPC_COUNT] = {
 	{
 		.port_addr = 0x54 << 1,
 		.driver    = &pi3usb30532_usb_mux_driver,
@@ -491,11 +491,11 @@ void vbus_task(void)
 		uint8_t device_type;
 		uint8_t charger_status;
 		uint8_t vbus;
-	} bc12[CONFIG_USB_PD_PORT_COUNT];
+	} bc12[CONFIG_USB_PD_TCPC_COUNT];
 	uint8_t port, vbus, reg, wake;
 
 	while (1) {
-		for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++) {
+		for (port = 0; port < CONFIG_USB_PD_TCPC_COUNT; port++) {
 #if BOARD_REV == OAK_REV3
 			vbus = !gpio_get_level(port ? GPIO_USB_C1_VBUS_WAKE_L :
 						      GPIO_USB_C0_VBUS_WAKE_L);

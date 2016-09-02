@@ -789,7 +789,7 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 #ifdef HAS_TASK_PDCMD
 		int i;
 
-		for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+		for (i = 0; i < CONFIG_USB_PD_TCPC_COUNT; i++) {
 			/* Reboot the PD chip as well */
 			board_reset_pd_mcu(i);
 		}

@@ -56,9 +56,9 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_TCPC_COUNT] = {
 	{I2C_PORT_TCPC, TCPC1_I2C_ADDR, &tcpci_tcpm_drv},
-#if CONFIG_USB_PD_PORT_COUNT >= 2
+#if CONFIG_USB_PD_TCPC_COUNT >= 2
 	{I2C_PORT_TCPC, TCPC2_I2C_ADDR, &tcpci_tcpm_drv},
 #endif
 };
@@ -69,7 +69,7 @@ uint16_t tcpc_get_alert_status(void)
 
 	if (!gpio_get_level(GPIO_PD_MCU_INT)) {
 		status = PD_STATUS_TCPC_ALERT_0;
-#if CONFIG_USB_PD_PORT_COUNT >= 2
+#if CONFIG_USB_PD_TCPC_COUNT >= 2
 		status |= PD_STATUS_TCPC_ALERT_1;
 #endif
 	}

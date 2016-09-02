@@ -59,7 +59,7 @@ const struct usb_mux_driver board_custom_usb_mux_driver = {
 	.get = board_get_usb_mux,
 };
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_TCPC_COUNT] = {
 	{
 		.port_addr = 0,
 		.driver    = &board_custom_usb_mux_driver,

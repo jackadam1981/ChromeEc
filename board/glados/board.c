@@ -128,7 +128,7 @@ const struct i2c_port_t i2c_ports[]  = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_TCPC_COUNT] = {
 	{I2C_PORT_TCPC, CONFIG_TCPC_I2C_BASE_ADDR, &tcpci_tcpm_drv},
 	{I2C_PORT_TCPC, CONFIG_TCPC_I2C_BASE_ADDR + 2, &tcpci_tcpm_drv},
 };
@@ -160,7 +160,7 @@ struct pi3usb9281_config pi3usb9281_chips[] = {
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
 	     CONFIG_USB_SWITCH_PI3USB9281_CHIP_COUNT);
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_TCPC_COUNT] = {
 	{
 		.port_addr = 0xa8,
 		.driver = &pi3usb30532_usb_mux_driver,

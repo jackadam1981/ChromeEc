@@ -117,7 +117,7 @@ const struct i2c_port_t i2c_ports[]  = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_TCPC_COUNT] = {
 	{I2C_PORT_TCPC, CONFIG_TCPC_I2C_BASE_ADDR, &tcpci_tcpm_drv},
 	{I2C_PORT_TCPC, CONFIG_TCPC_I2C_BASE_ADDR + 2, &tcpci_tcpm_drv},
 };
@@ -177,7 +177,7 @@ static int ps8740_tune_mux(const struct usb_mux *mux)
 	return EC_SUCCESS;
 }
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_TCPC_COUNT] = {
 	{
 		.port_addr = 0x34,
 		.driver = &ps8740_usb_mux_driver,
