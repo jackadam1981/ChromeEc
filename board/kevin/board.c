@@ -28,6 +28,7 @@
 #include "keyboard_scan.h"
 #include "led_common.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -674,3 +675,16 @@ static void pwm_displight_preserve_state(void)
 			    sizeof(pwm_displight_duty), &pwm_displight_duty);
 }
 DECLARE_HOOK(HOOK_SYSJUMP, pwm_displight_preserve_state, HOOK_PRIO_DEFAULT);
+
+static void tablet_mode_change(void)
+{
+	if (motion_lid_in_tablet_mode()) {
+		/*
+		 * Force GPIO_LID to prevent false detection when the lid
+		 * magnet is close to the base.
+		 */
+	} else {
+		/* Let the GPIO be itself. */
+	}
+}
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, tablet_mode_change, HOOK_PRIO_DEFAULT);
