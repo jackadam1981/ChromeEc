@@ -150,6 +150,15 @@ const enum gpio_signal hibernate_wake_pins[] = {
 
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
+void write_pdic(int reg, uint8_t value)
+{
+	int ret;
+	ret = i2c_write8(I2C_PORT_TCPC, CONFIG_TCPC_I2C_BASE_ADDR, reg, value);
+
+	if (ret)
+		CPRINTS("ERR: write_pdic return %d", ret);
+}
+
 struct pi3usb9281_config pi3usb9281_chips[] = {
 	{
 		.i2c_port = I2C_PORT_USB_CHARGER_1,
@@ -384,11 +393,18 @@ int board_get_ramp_current_limit(int supplier, int sup_curr)
 	}
 }
 
+static int boot_count = 0;
+
 /* Called on AP S5 -> S3 transition */
 static void board_chipset_startup(void)
 {
 	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 1);
 	gpio_set_level(GPIO_PP1800_DX_SENSOR_EN, 1);
+	write_pdic(0xF0, 3);
+
+	++boot_count;
+	CPRINTS("----- boot count %d -----", boot_count);
+	i2c_write16(I2C_PORT_TCPC, CONFIG_TCPC_I2C_BASE_ADDR, 0xF5, boot_count);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -397,6 +413,7 @@ static void board_chipset_shutdown(void)
 {
 	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
 	gpio_set_level(GPIO_PP1800_DX_SENSOR_EN, 0);
+	write_pdic(0xF0, 5);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
@@ -406,7 +423,7 @@ static void board_chipset_resume(void)
 	gpio_set_level(GPIO_PP3300_DX_CAM_EN, 1);
 	gpio_set_level(GPIO_PP1800_DX_AUDIO_EN, 1);
 	gpio_set_level(GPIO_KBBL_EN, 1);
-
+	write_pdic(0xF0, 0);
 	/*
 	 * Now that we have enabled the rail to the sensors, let's give enough
 	 * time for the sensors to boot up.  Without this delay, the very first
@@ -428,6 +445,7 @@ static void board_chipset_suspend(void)
 	gpio_set_level(GPIO_PP1800_DX_AUDIO_EN, 0);
 	gpio_set_level(GPIO_KBBL_EN, 0);
 	gpio_set_level(GPIO_PP3300_DX_CAM_EN, 0);
+	write_pdic(0xF0, 3);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
@@ -681,3 +699,17 @@ int board_get_device_orientation(void)
 	return ret;
 }
 #endif
+
+static int pdversion(int argc, char *argv[])
+{
+	write_pdic(0xF1, 0);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(pdv, pdversion, NULL, NULL, NULL);
+
+static int pddump(int argc, char *argv[])
+{
+	write_pdic(0xF2, 0);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(pdd, pddump, NULL, NULL, NULL);

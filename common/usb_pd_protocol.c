@@ -265,6 +265,8 @@ static int pd_debug_acc_plugged(int port)
 }
 #endif
 
+void write_pdic(int reg, int value);
+
 static inline void set_state(int port, enum pd_states next_state)
 {
 	enum pd_states last_state = pd[port].task_state;
@@ -341,6 +343,13 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif
 
 	CPRINTF("C%d st%d\n", port, next_state);
+
+	if (next_state == PD_STATE_SRC_READY) {
+		write_pdic(0xF3, 0);
+	}
+	else if (next_state == PD_STATE_SNK_READY) {
+		write_pdic(0xF4, 0);
+	}
 }
 
 /* increment message ID counter */

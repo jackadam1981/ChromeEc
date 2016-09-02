@@ -755,6 +755,18 @@ static void alert(int port, int mask)
 		tcpc_alert(port);
 }
 
+static const char *status_str[] =
+{
+	"OPEN",
+	"RA",
+	"RD",
+	"",
+	"",
+	"SNK_DEF",
+	"SNK_1.5",
+	"SNK_3",
+};
+
 int tcpc_run(int port, int evt)
 {
 	int cc, i, res;
@@ -825,6 +837,7 @@ int tcpc_run(int port, int evt)
 			/* convert voltage to status, and check status change */
 			cc = cc_voltage_to_status(port, cc);
 			if (pd[port].cc_status[i] != cc) {
+				CPRINTF("cc_%d/%s->%s\n", port, status_str[pd[port].cc_status[i]], status_str[cc]);
 				pd[port].cc_status[i] = cc;
 				alert(port, TCPC_REG_ALERT_CC_STATUS);
 			}
@@ -921,11 +934,17 @@ int tcpc_alert_mask_set(int port, uint16_t mask)
 	return EC_SUCCESS;
 }
 
+static const char *cc_status[] = {
+	"RA", "RP", "RD", "OP",
+};
+
 int tcpc_set_cc(int port, int pull)
 {
 	/* If CC pull resistor not changing, then nothing to do */
 	if (pd[port].cc_pull == pull)
 		return EC_SUCCESS;
+
+	CPRINTF("set c%d/%s->%s\n", port, cc_status[pd[port].cc_pull], cc_status[pull]);
 
 	/* Change CC pull resistor */
 	pd[port].cc_pull = pull;
@@ -1138,9 +1157,14 @@ void pd_vbus_evt_p1(enum gpio_signal signal)
 #endif /* CONFIG_USB_PD_TCPM_VBUS */
 
 #ifndef CONFIG_USB_POWER_DELIVERY
+int command_version(int argc, char **argv);
+
+static void dump(void);
+
 static void tcpc_i2c_write(int port, int reg, int len, uint8_t *payload)
 {
 	uint16_t alert;
+	int tmp = 0;
 
 	/* If we are not yet initialized, ignore any write command */
 	if (pd[port].power_status & TCPC_REG_POWER_STATUS_UNINIT)
@@ -1189,6 +1213,29 @@ static void tcpc_i2c_write(int port, int reg, int len, uint8_t *payload)
 	case TCPC_REG_TRANSMIT:
 		tcpc_transmit(port, TCPC_REG_TRANSMIT_TYPE(payload[1]),
 			      pd[port].tx_head, pd[port].tx_payload);
+		break;
+	case 0xF0:
+		tmp = payload[1];
+		CPRINTF("*S%d*\n", tmp);
+		if (tmp == 0 || tmp == 5)
+			dump();
+		break;
+	case 0xF1:
+		command_version(0, 0);
+		break;
+	case 0xF2:
+		dump();
+		break;
+	case 0xF3:
+		CPRINTF("SRC_RDY\n");
+		break;
+	case 0xF4:
+		CPRINTF("SNK_RDY\n");
+		break;
+	case 0xF5:
+		tmp = payload[1];
+		tmp |= (payload[2] << 8);
+		CPRINTF("--- %d ---\n", tmp);
 		break;
 	}
 }
@@ -1288,8 +1335,10 @@ void tcpc_i2c_process(int read, int port, int len, uint8_t *payload,
 	}
 
 	/* if this is a write, length must be at least 2 */
-	if (!read && len < 2)
+	if (!read && len < 2) {
+		CPRINTF("P/%d Inval WR/%d %02x %02x\n", port, len, payload[0], payload[1]);
 		return;
+	}
 
 	/* register is always first byte */
 	reg = payload[0];
@@ -1297,12 +1346,35 @@ void tcpc_i2c_process(int read, int port, int len, uint8_t *payload,
 	/* perform read or write */
 	if (read) {
 		len = tcpc_i2c_read(port, reg, payload);
+		if (reg == TCPC_REG_ROLE_CTRL)
+			CPRINTF("P/%d RD/%d %02x %02x %02x\n", port, len, payload[0], payload[1], payload[2]);
 		(*send_response)(len);
 	} else {
+		if (reg == TCPC_REG_ROLE_CTRL)
+			CPRINTF("P/%d WR/%d %02x %02x %02x\n", port, len, payload[0], payload[1], payload[2]);
 		tcpc_i2c_write(port, reg, len, payload);
 	}
 }
 #endif
+
+static void dump(void)
+{
+	int port = 1;
+
+	ccprintf("----------\n");
+
+	// for (port = 0; port < 2; port++) {
+		ccprintf("Port C%d, %s - CC:%d, CC0:%d, CC1:%d\n"
+			 "Alert: 0x%02x Mask: 0x%04x\n"
+			 "Power Status: 0x%02x Mask: 0x%02x\n", port,
+			 pd[port].rx_enabled ? "Ena" : "Dis",
+			 pd[port].cc_pull,
+			 pd[port].cc_status[0], pd[port].cc_status[1],
+			 pd[port].alert, pd[port].alert_mask,
+			 pd[port].power_status, pd[port].power_status_mask);
+		ccprintf("----------\n");
+	// }
+}
 
 #ifdef CONFIG_COMMON_RUNTIME
 static int command_tcpc(int argc, char **argv)

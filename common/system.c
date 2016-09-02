@@ -865,7 +865,7 @@ DECLARE_CONSOLE_COMMAND(hibernate, command_hibernate,
 			NULL);
 #endif /* CONFIG_HIBERNATE */
 
-static int command_version(int argc, char **argv)
+int command_version(int argc, char **argv)
 {
 	ccprintf("Chip:    %s %s %s\n", system_get_chip_vendor(),
 		 system_get_chip_name(), system_get_chip_revision());
