@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "360dd72c_977464c7",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-02T23:34:06Z",
+      "side": 1,
+      "message": "Yes, but that can be done in a later CL.",
+      "range": {
+        "startLine": 587,
+        "startChar": 4,
+        "endLine": 587,
+        "endChar": 63
+      },
+      "revId": "94e60e0ea924d0bc9b56785f9aa0c589c5a64f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360dd72c_979fc4fd",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-02T23:34:06Z",
+      "side": 1,
+      "message": "This needs to be added to include/config.h\nYou can add it right next to CONFIG_TPM_SPS",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 23
+      },
+      "revId": "94e60e0ea924d0bc9b56785f9aa0c589c5a64f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360dd72c_17373408",
+        "filename": "chip/g/i2cs.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-02T23:34:06Z",
+      "side": 1,
+      "message": "specific",
+      "range": {
+        "startLine": 29,
+        "startChar": 21,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "94e60e0ea924d0bc9b56785f9aa0c589c5a64f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360dd72c_f704c024",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-02T23:34:06Z",
+      "side": 1,
+      "message": "register",
+      "range": {
+        "startLine": 49,
+        "startChar": 56,
+        "endLine": 49,
+        "endChar": 63
+      },
+      "revId": "94e60e0ea924d0bc9b56785f9aa0c589c5a64f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360dd72c_77067029",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-02T23:34:06Z",
+      "side": 1,
+      "message": "How were these mappings chosen? To match existing TPMv1.2 chips? The firmware/kernel drivers obviously need to know this - is it written down anywhere?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 34
+      },
+      "revId": "94e60e0ea924d0bc9b56785f9aa0c589c5a64f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
