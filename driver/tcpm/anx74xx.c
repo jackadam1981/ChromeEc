@@ -23,6 +23,9 @@ struct anx_state {
 	int	vconn_en;
 	int	mux_state;
 };
+#define clear_recvd_msg_int(port) \
+	tcpc_write(port, ANX74XX_REG_RECVD_MSG_INT, 0x00)
+
 static struct anx_state anx[CONFIG_USB_PD_PORT_COUNT];
 
 static int anx74xx_set_mux(int port, int polarity);
@@ -278,8 +281,21 @@ static int anx74xx_send_message(int port, uint16_t header,
 	int reg, rv = EC_SUCCESS;
 	uint8_t *buf = NULL;
 	int num_retry = 0, i = 0;
-
-
+	/*If sending Soft_reset, clear received message */
+	/*CPRINTS("MSG_H: %x\n", header);*/
+	/*Soft Reset Message type = 1101 and Number of Data Object = 0 */
+	if (((header & 0x000d) == 0x000d) && ((header & 0x7000) == 0x0000)) {
+		/*
+		* When sending soft reset,
+		* the Rx buffer of ANX3429 shall be clear
+		*/
+		rv = tcpc_read(port, ANX74XX_REG_CTRL_FW, &reg);
+		rv |= tcpc_write(
+			port, ANX74XX_REG_CTRL_FW, reg | CLEAR_RX_BUFFER);
+		if (rv)
+			return EC_ERROR_UNKNOWN;
+		clear_recvd_msg_int(port);
+	}
 	/* Inform chip about message length and TX type
 	 * type->bit-0..2, len->bit-3..7
 	 */
@@ -328,10 +344,11 @@ static int anx74xx_send_message(int port, uint16_t header,
 		if (num_retry)
 			return EC_ERROR_UNKNOWN;
 	}
+
+	rv = tcpc_read(port, ANX74XX_REG_CTRL_COMMAND, &reg);
 	/* Request a data transmission
 	 * This bit will be cleared by ANX after TX success
 	 */
-	rv = tcpc_read(port, ANX74XX_REG_CTRL_COMMAND, &reg);
 	if (rv)
 		return EC_ERROR_UNKNOWN;
 	reg |= ANX74XX_REG_TX_SEND_DATA_REQ;
@@ -359,21 +376,64 @@ static int anx74xx_read_pd_obj(int port,
 			break;
 		buf[i] = reg;
 	}
-
-	/* Clear receive message interrupt bit(bit-0) */
-	rv |= tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg);
-	rv |= tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG,
-			 reg & (~0x01));
-
+	clear_recvd_msg_int(port);
 	return rv;
 }
 
+/* defined in the inter-bock Spec: 4.2.10 CC Detect Status */
+
+#define TYPEC_CC_VOLT_OPEN           0x00
+#define BIT_VALUE_OF_SRC_CC1_RD      0x01
+#define BIT_VALUE_OF_SRC_CC1_RA      0x02
+#define BIT_VALUE_OF_SNK_CC1_DEFAULT 0x04
+#define BIT_VALUE_OF_SNK_CC1_1_P_5   0x08
+#define BIT_VALUE_OF_SNK_CC1_3_P_0   0x0C
+#define BIT_VALUE_OF_SRC_CC2_RD      0x10
+#define BIT_VALUE_OF_SRC_CC2_RA      0x20
+#define BIT_VALUE_OF_SNK_CC2_DEFAULT 0x40
+#define BIT_VALUE_OF_SNK_CC2_1_P_5   0x80
+#define BIT_VALUE_OF_SNK_CC2_3_P_0   0xC0
 static int anx74xx_tcpm_get_cc(int port, int *cc1, int *cc2)
 {
 	int rv = EC_SUCCESS;
 	int reg = 0;
-	int status = 0;
-
+	rv |= tcpc_read(port, ANX74XX_REG_CC_STATUS, &reg);
+	if (!anx[port].pull) {/* get CC in sink mode */
+		/* CC1 */
+		if (reg & BIT_VALUE_OF_SNK_CC1_DEFAULT)
+			*cc1 = TYPEC_CC_VOLT_SNK_DEF;
+		else if (reg & BIT_VALUE_OF_SNK_CC1_1_P_5)
+			*cc1 = TYPEC_CC_VOLT_SNK_1_5;
+		else if (reg & BIT_VALUE_OF_SNK_CC1_3_P_0)
+			*cc1 = TYPEC_CC_VOLT_SNK_3_0;
+		else
+			*cc1 = TYPEC_CC_VOLT_OPEN;
+		/* CC2 */
+		if (reg & BIT_VALUE_OF_SNK_CC2_DEFAULT)
+			*cc2 = TYPEC_CC_VOLT_SNK_DEF;
+		else if (reg & BIT_VALUE_OF_SNK_CC2_1_P_5)
+			*cc2 = TYPEC_CC_VOLT_SNK_1_5;
+		else if (reg & BIT_VALUE_OF_SNK_CC2_3_P_0)
+			*cc2 = TYPEC_CC_VOLT_SNK_3_0;
+		else
+			*cc2 = TYPEC_CC_VOLT_OPEN;
+	} else {/* get CC in source mode */
+		/* CC1 */
+		if (reg & BIT_VALUE_OF_SRC_CC1_RA)
+			*cc1 = TYPEC_CC_VOLT_RA;
+		else if (reg & BIT_VALUE_OF_SRC_CC1_RD)
+			*cc1 = TYPEC_CC_VOLT_RD;
+		else
+			*cc1 = TYPEC_CC_VOLT_OPEN;
+		/* CC2 */
+		if (reg & BIT_VALUE_OF_SRC_CC2_RA)
+			*cc2 = TYPEC_CC_VOLT_RA;
+		else if (reg & BIT_VALUE_OF_SRC_CC2_RD)
+			*cc2 = TYPEC_CC_VOLT_RD;
+		else
+			*cc2 = TYPEC_CC_VOLT_OPEN;
+	}
+ #if 0
 	rv |= tcpc_read(port, ANX74XX_REG_ANALOG_STATUS, &reg);
 
 	if (!anx[port].pull) {/* get CC in sink mode */
@@ -425,6 +485,7 @@ static int anx74xx_tcpm_get_cc(int port, int *cc1, int *cc2)
 				*cc2 = TYPEC_CC_VOLT_OPEN;
 		}
 	}
+	#endif
 	/* clear HPD status*/
 	if (!(*cc1) && !(*cc2)) {
 		anx74xx_tcpc_clear_hpd_status(port);
@@ -432,15 +493,45 @@ static int anx74xx_tcpm_get_cc(int port, int *cc1, int *cc2)
 		anx74xx_tcpm_mux_exit(port);
 #endif
 	}
-
 	return EC_SUCCESS;
 }
+static int anx74xx_rp_control(int port, int rp)
+{
 
+
+	int reg;
+	int rv;
+
+	rv = tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_6, &reg);
+	if (rv)
+		return EC_ERROR_UNKNOWN;
+
+	/* clear Bit[0,1] R_RP to default Rp's value */
+	reg &= ~0x03;
+
+	switch (rp) {
+	case TYPEC_RP_1A5:
+		/* Set Rp strength to 12K for presenting 1.5A */
+		reg |= ANX74XX_REG_CC_PULL_RP_12K;
+		break;
+	case TYPEC_RP_3A0:
+		/* Set Rp strength to 4K for presenting 3A */
+		reg |= ANX74XX_REG_CC_PULL_RP_4K;
+		break;
+	case TYPEC_RP_USB:
+	default:
+		/* default: Set Rp strength to 36K */
+		break;
+	}
+
+	return tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_6, reg);
+}
 static int anx74xx_tcpm_select_rp_value(int port, int rp)
 {
 	int reg;
 	int rv;
-
+	/*For ANX3429 cannot get cc incorrectly when Rp != USB_Defalut*/
+	return 1;
 	rv = tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_6, &reg);
 	if (rv)
 		return EC_ERROR_UNKNOWN;
@@ -567,30 +658,23 @@ static int anx74xx_tcpm_set_msg_header(int port, int power_role, int data_role)
 static int anx74xx_alert_status(int port, int *alert)
 {
 	int reg, rv = EC_SUCCESS;
-
 	/* Clear soft irq bit */
 	rv |= tcpc_write(port, ANX74XX_REG_IRQ_EXT_SOURCE_3,
 			 ANX74XX_REG_CLEAR_SOFT_IRQ);
-
 	/* Read TCPC Alert register1 */
 	rv |= tcpc_read(port, ANX74XX_REG_IRQ_EXT_SOURCE_1, &reg);
 	if (rv)
 		return EC_ERROR_UNKNOWN;
-
 	/* Clears interrupt bits */
 	rv |= tcpc_write(port, ANX74XX_REG_IRQ_EXT_SOURCE_1, reg);
 
 	*alert = reg;
 	rv = tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg);
+
 	if (rv)
 		return EC_ERROR_UNKNOWN;
+	/*Clear msg received bit, until read it by TCPM*/
 	rv |= tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, 0);
-
-	if (reg & ANX74XX_REG_IRQ_CC_MSG_INT)
-		*alert |= ANX74XX_REG_ALERT_MSG_RECV;
-	else
-		*alert &= (~ANX74XX_REG_ALERT_MSG_RECV);
-
 	if (reg & ANX74XX_REG_IRQ_CC_STATUS_INT) {
 		*alert |= ANX74XX_REG_ALERT_CC_CHANGE;
 	} else {
@@ -606,6 +690,14 @@ static int anx74xx_alert_status(int port, int *alert)
 	if (reg & ANX74XX_REG_IRQ_TX_FAIL_INT) {
 		*alert |= ANX74XX_REG_ALERT_TX_MSG_ERROR;
 	}
+
+
+	rv |= tcpc_read(port, ANX74XX_REG_RECVD_MSG_INT, &reg);
+	if (reg != 0)
+		*alert |= ANX74XX_REG_ALERT_MSG_RECV;
+	else
+		*alert &= (~ANX74XX_REG_ALERT_MSG_RECV);
+
 	/* Read TCPC Alert register2 */
 	rv |= tcpc_read(port, ANX74XX_REG_IRQ_EXT_SOURCE_2, &reg);
 
@@ -627,11 +719,20 @@ static int anx74xx_tcpm_set_rx_enable(int port, int enable)
 	rv = tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG_MASK, &reg);
 	if (rv)
 		return rv;
-	if (enable)
+	if (enable) {
 		reg &= ~(ANX74XX_REG_IRQ_CC_MSG_INT);
-	else/* Disable RX message by masking interrupt */
+		anx74xx_tcpm_set_auto_good_crc(port, 1);
+		anx74xx_rp_control(port, TYPEC_RP_1A5);
+
+	} else {/* Disable RX message by masking interrupt */
 		reg |= (ANX74XX_REG_IRQ_CC_MSG_INT);
-	anx74xx_tcpm_set_auto_good_crc(port, enable);
+		anx74xx_tcpm_set_auto_good_crc(port, 0);
+		anx74xx_rp_control(port, TYPEC_RP_USB);
+
+	}
+	/*When this function was call, the interrupt status shall be cleared*/
+	tcpc_write(port, 0x6b, 0);
+
 	return tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG_MASK, reg);
 }
 
@@ -654,20 +755,27 @@ static int anx74xx_tcpm_get_message(int port, uint32_t *payload, int *head)
 	rv |= tcpc_read16(port, ANX74XX_REG_PD_HEADER, &reg);
 	if (rv) {
 		*head = 0;
+
+		clear_recvd_msg_int(port);
+		#if 0
 		/* Clear receive message interrupt bit(bit-0) */
 		tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg);
 		tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG,
 			 reg & (~0x01));
-
+		#endif
 		return EC_ERROR_UNKNOWN;
 	}
 	*head = reg;
+
 	len = PD_HEADER_CNT(*head) * 4;
 	if (!len) {
+		clear_recvd_msg_int(port);
+		#if 0
 		/* Clear receive message interrupt bit(bit-0) */
 		tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg);
 		tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG,
 			 reg & (~0x01));
+		#endif
 		return EC_SUCCESS;
 	}
 
@@ -682,6 +790,7 @@ static int anx74xx_tcpm_get_message(int port, uint32_t *payload, int *head)
 
 	return rv;
 }
+
 
 static int anx74xx_tcpm_transmit(int port, enum tcpm_transmit_type type,
 		  uint16_t header,
@@ -704,6 +813,8 @@ static int anx74xx_tcpm_transmit(int port, enum tcpm_transmit_type type,
 		tcpc_read(port, ANX74XX_REG_TX_CTRL_1, &reg);
 		reg |= ANX74XX_REG_TX_HARD_RESET_REQ;
 		ret = tcpc_write(port, ANX74XX_REG_TX_CTRL_1, reg);
+	/*After Hard Reset, TCPM shall disable goodCRC*/
+		anx74xx_tcpm_set_auto_good_crc(port, 0);
 		break;
 	case TCPC_TX_CABLE_RESET:
 	/* Request CABLE RESET */
@@ -848,6 +959,7 @@ const struct tcpm_drv anx74xx_tcpm_drv = {
 	.set_msg_header		= &anx74xx_tcpm_set_msg_header,
 	.set_rx_enable		= &anx74xx_tcpm_set_rx_enable,
 	.get_message		= &anx74xx_tcpm_get_message,
-	.transmit		= &anx74xx_tcpm_transmit,
-	.tcpc_alert		= &anx74xx_tcpc_alert,
+	.transmit               = &anx74xx_tcpm_transmit,
+	.tcpc_alert             = &anx74xx_tcpc_alert,
 };
+
