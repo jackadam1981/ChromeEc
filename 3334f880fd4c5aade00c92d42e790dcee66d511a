@@ -70,6 +70,30 @@
       "revId": "3334f880fd4c5aade00c92d42e790dcee66d511a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_e89be61c",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1122644
+      },
+      "writtenOn": "2016-09-02T17:57:55Z",
+      "side": 1,
+      "message": "Yes. I meant \"different programmed values\". They should be same normally.",
+      "parentUuid": "7173d9d0_7cff5551",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 4
+      },
+      "revId": "3334f880fd4c5aade00c92d42e790dcee66d511a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
