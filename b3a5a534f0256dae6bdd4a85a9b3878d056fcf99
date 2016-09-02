@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "71dd999f_12e2f229",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-02T00:01:19Z",
+      "side": 1,
+      "message": "Sure. will do.",
+      "parentUuid": "71dd999f_b22846a8",
+      "revId": "b3a5a534f0256dae6bdd4a85a9b3878d056fcf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71dd999f_32045621",
         "filename": "board/reef/board.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2016-09-01T23:39:27Z",
       "side": 1,
       "message": "ANX** PS** instead of Port 0 \u0026 1?",
+      "revId": "b3a5a534f0256dae6bdd4a85a9b3878d056fcf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_92dc2269",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-02T00:01:19Z",
+      "side": 1,
+      "message": "Sure will do. Mostly will move this to usb_pd_protocol as per Kevins suggestions.",
+      "parentUuid": "71dd999f_32045621",
       "revId": "b3a5a534f0256dae6bdd4a85a9b3878d056fcf99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "71dd999f_b2f046f9",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-02T00:01:19Z",
+      "side": 1,
+      "message": "waiting for Analogix consent to expose the register.",
+      "parentUuid": "71dd999f_d2b21a9d",
+      "revId": "b3a5a534f0256dae6bdd4a85a9b3878d056fcf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71dd999f_923262fe",
         "filename": "driver/tcpm/ps8751.c",
         "patchSetId": 2
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "71dd999f_f2fabed6",
+        "filename": "driver/tcpm/ps8751.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-02T00:01:19Z",
+      "side": 1,
+      "message": "Sure, will change.",
+      "parentUuid": "71dd999f_923262fe",
+      "revId": "b3a5a534f0256dae6bdd4a85a9b3878d056fcf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71dd999f_72a24e4a",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 2
@@ -81,6 +153,24 @@
       "writtenOn": "2016-09-01T23:39:27Z",
       "side": 1,
       "message": "you can add a seperate config \nCONFIG_TCPC_FW_VERSION?",
+      "revId": "b3a5a534f0256dae6bdd4a85a9b3878d056fcf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dd999f_32e57632",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-02T00:01:19Z",
+      "side": 1,
+      "message": "I will add it. And I want ot move this to usb_pd_protocol.c so CONFIG will be needed.",
+      "parentUuid": "71dd999f_72a24e4a",
       "revId": "b3a5a534f0256dae6bdd4a85a9b3878d056fcf99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
