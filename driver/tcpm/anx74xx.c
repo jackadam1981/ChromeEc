@@ -440,7 +440,7 @@ static int anx74xx_tcpm_select_rp_value(int port, int rp)
 {
 	int reg;
 	int rv;
-
+	return 0;
 	rv = tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_6, &reg);
 	if (rv)
 		return EC_ERROR_UNKNOWN;
