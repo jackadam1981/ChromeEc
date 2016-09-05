@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d64abb97_02304e59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-05T23:18:16Z",
+      "side": 1,
+      "message": "this patch was already reverted once, not because cr50 does not boot, but because issuing the \u0027reboot\u0027 command on the AP on Kevin reboots the AP, but not cr50, resulting in a bricked system.\n\nIs my Kevin somehow deficient and it does not happen on yours?\n\nWhy was it needed to restore this patch anyways, wasn\u0027t it decided that the EC would change the pullup setting on reef?",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 52
+      },
+      "revId": "5e6da91fe86301d276b452a660139c27c3786a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
