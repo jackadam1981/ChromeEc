@@ -22,6 +22,30 @@
       "revId": "410a6952abbce46170c458598b4d357b5a2f3384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_d805a16d",
+        "filename": "common/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-09-06T22:00:24Z",
+      "side": 1,
+      "message": "When the raw value, say 65535, was given, \"Setting channel 1 to raw 65535%\" was printed. I changed the code to only print the % when the value was given in percent.",
+      "parentUuid": "360a375e_d8d761dd",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 152,
+        "endChar": 16
+      },
+      "revId": "410a6952abbce46170c458598b4d357b5a2f3384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
