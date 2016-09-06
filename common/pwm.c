@@ -144,8 +144,12 @@ static int cc_pwm_duty(int argc, char **argv)
 			/* Negative = disable */
 			pwm_enable(ch, 0);
 		} else {
-			ccprintf("Setting channel %d to%s%d%%\n",
-				ch, (max_duty == 100) ? " " : " raw ", value);
+			if (max_duty == 100)
+				ccprintf("Setting channel %d to %d%%\n",
+					ch, value);
+			else
+				ccprintf("Setting channel %d to raw %d\n",
+					ch, value);
 			pwm_enable(ch, 1);
 			(max_duty == 100) ? pwm_set_duty(ch, value) :
 				pwm_set_raw_duty(ch, value);
