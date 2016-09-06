@@ -685,3 +685,30 @@ int board_get_device_orientation(void)
 	return ret;
 }
 #endif
+
+#define S5_MAX_VOLTAGE 15000
+
+static void check_s5_low_voltage(void)
+{
+	int port = charge_manager_get_active_charge_port();
+	unsigned max_voltage = pd_get_max_voltage();
+
+	if (port == CHARGE_PORT_NONE)
+		return;
+
+	if (chipset_in_state(POWER_S5) &&
+		(charge_get_state() == PWR_STATE_CHARGE_NEAR_FULL)) {
+		if (max_voltage != S5_MAX_VOLTAGE) {
+			CPRINTS("try set %dmv", S5_MAX_VOLTAGE);
+			pd_set_max_voltage(S5_MAX_VOLTAGE);
+			pd_set_new_power_request(port);
+		}
+	} else {
+		if (max_voltage != 20000) {
+			CPRINTS("try set 20v");
+			pd_set_max_voltage(20000);
+			pd_set_new_power_request(port);
+		}
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, check_s5_low_voltage, HOOK_PRIO_DEFAULT);
