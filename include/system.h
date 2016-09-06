@@ -470,6 +470,7 @@ int system_process_retry_counter(void);
 #define BOARD_DISABLE_UART0_RX       (1 << 3)   /* Disable UART0 RX */
 #define BOARD_MARK_UPDATE_ON_USB_REQ (1 << 4)   /* update is good once the   */
 						/* controller gets a request */
+#define BOARD_HAS_SYS_RST_PULL_UP    (1 << 5)   /* Add a pullup to sys_rst_l */
 
 /**
  * Get board properites
