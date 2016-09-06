@@ -188,9 +188,6 @@ enum power_state power_handle_state(enum power_state state)
 
 		gpio_set_level(GPIO_PP1800_PMU_EN_L, 0);
 		msleep(2);
-		/* TODO(crosbug.com/p/55981): De-power CLOGIC in S3 */
-		gpio_set_level(GPIO_PPVAR_CLOGIC_EN, 1);
-		msleep(2);
 		gpio_set_level(GPIO_LPDDR_PWR_EN, 1);
 		msleep(2);
 		gpio_set_level(GPIO_PP1800_USB_EN_L, 0);
@@ -217,6 +214,8 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S3;
 
 	case POWER_S3S0:
+		gpio_set_level(GPIO_PPVAR_CLOGIC_EN, 1);
+		msleep(2);
 		gpio_set_level(GPIO_PP900_DDRPLL_EN, 1);
 		msleep(2);
 		gpio_set_level(GPIO_PP1800_AP_AVDD_EN_L, 0);
@@ -273,6 +272,8 @@ enum power_state power_handle_state(enum power_state state)
 		msleep(10);
 		gpio_set_level(GPIO_PP900_DDRPLL_EN, 0);
 		msleep(10);
+		gpio_set_level(GPIO_PPVAR_CLOGIC_EN, 0);
+		msleep(10);
 
 		/*
 		 * Enable idle task deep sleep. Allow the low power idle task
@@ -304,8 +305,6 @@ enum power_state power_handle_state(enum power_state state)
 		msleep(2);
 		gpio_set_level(GPIO_LPDDR_PWR_EN, 0);
 		msleep(2);
-		gpio_set_level(GPIO_PPVAR_CLOGIC_EN, 0);
-		msleep(10);
 		gpio_set_level(GPIO_PP1800_PMU_EN_L, 1);
 		msleep(2);
 		gpio_set_level(GPIO_PP900_PCIE_EN, 0);
