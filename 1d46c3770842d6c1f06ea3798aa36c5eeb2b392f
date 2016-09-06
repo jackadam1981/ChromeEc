@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d64abb97_c5faf03b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-06T16:18:42Z",
+      "side": 1,
+      "message": "this comment does not quite apply any more.",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 21
+      },
+      "revId": "1d46c3770842d6c1f06ea3798aa36c5eeb2b392f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d64abb97_a5f7e453",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-06T16:18:42Z",
+      "side": 1,
+      "message": "aren\u0027t offsets the same as base_addr - flash_base?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "1d46c3770842d6c1f06ea3798aa36c5eeb2b392f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
