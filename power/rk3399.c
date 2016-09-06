@@ -217,6 +217,8 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S3;
 
 	case POWER_S3S0:
+		gpio_set_level(GPIO_PPVAR_CLOGIC_EN, 1);
+		msleep(2);
 		gpio_set_level(GPIO_PP900_DDRPLL_EN, 1);
 		msleep(2);
 		gpio_set_level(GPIO_PP1800_AP_AVDD_EN_L, 0);
@@ -272,6 +274,8 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_PP1800_AP_AVDD_EN_L, 1);
 		msleep(10);
 		gpio_set_level(GPIO_PP900_DDRPLL_EN, 0);
+		msleep(10);
+		gpio_set_level(GPIO_PPVAR_CLOGIC_EN, 0);
 		msleep(10);
 
 		/*
