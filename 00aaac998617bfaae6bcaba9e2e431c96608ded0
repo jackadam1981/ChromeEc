@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "360a375e_95164453",
+        "filename": "chip/rotor/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-06T21:33:04Z",
+      "side": 1,
+      "message": "Usually we\u0027ve used strtol() to catch parsing errors, though since atoi() defaults to 0 on error this at least won\u0027t break.\n\nShould limit this to a valid port number, or it can be used to dump arbitrary EC memory.",
+      "range": {
+        "startLine": 55,
+        "startChar": 11,
+        "endLine": 55,
+        "endChar": 24
+      },
+      "revId": "00aaac998617bfaae6bcaba9e2e431c96608ded0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_352f9898",
+        "filename": "chip/rotor/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-06T21:33:04Z",
+      "side": 1,
+      "message": "Comment why this code is #ifdef\u0027d out?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 5
+      },
+      "revId": "00aaac998617bfaae6bcaba9e2e431c96608ded0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_f53cf0cf",
+        "filename": "chip/rotor/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-06T21:33:04Z",
+      "side": 1,
+      "message": "These bitfields should be #defined constants to be less typo-prone.\n\n(elsewhere, too.  Search for \"(1 \u003c\u003c\" )",
+      "range": {
+        "startLine": 109,
+        "startChar": 44,
+        "endLine": 109,
+        "endChar": 52
+      },
+      "revId": "00aaac998617bfaae6bcaba9e2e431c96608ded0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_d5bc4c27",
+        "filename": "chip/rotor/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-06T21:33:04Z",
+      "side": 1,
+      "message": "Add blank line between setting slave address and writing output data, so it doesn\u0027t look like this is part of setting the slave address.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 16
+      },
+      "revId": "00aaac998617bfaae6bcaba9e2e431c96608ded0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_15a7f417",
+        "filename": "chip/rotor/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-06T21:33:04Z",
+      "side": 1,
+      "message": "Don\u0027t need if(out_size), since the for loop will just drop through if out_size\u003d\u003d.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 34
+      },
+      "revId": "00aaac998617bfaae6bcaba9e2e431c96608ded0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_358b1878",
+        "filename": "chip/rotor/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-06T21:33:04Z",
+      "side": 1,
+      "message": "Same here for getting rid of if (in_size)",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 33
+      },
+      "revId": "00aaac998617bfaae6bcaba9e2e431c96608ded0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_b59ee8b2",
+        "filename": "chip/rotor/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-06T21:33:04Z",
+      "side": 1,
+      "message": "(ROTOR_FOO(port) \u003e\u003e 24) \u0026 0x3",
+      "range": {
+        "startLine": 269,
+        "startChar": 8,
+        "endLine": 269,
+        "endChar": 61
+      },
+      "revId": "00aaac998617bfaae6bcaba9e2e431c96608ded0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_95c924a3",
+        "filename": "chip/rotor/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-06T21:33:04Z",
+      "side": 1,
+      "message": "A lot of this seems duplicated.\n\nCan you just determine the constants in the switch statement and do the math afterwards?  Or better still, have a const struct array which has the timing constants, and just index it based on freq?",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 1
+      },
+      "revId": "00aaac998617bfaae6bcaba9e2e431c96608ded0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_d568cc88",
+        "filename": "chip/rotor/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-06T21:33:04Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 373,
+        "startChar": 54,
+        "endLine": 373,
+        "endChar": 63
+      },
+      "revId": "00aaac998617bfaae6bcaba9e2e431c96608ded0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
