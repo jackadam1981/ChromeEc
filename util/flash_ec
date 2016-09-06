@@ -600,7 +600,14 @@ function flash_it83xx() {
 	if [ ! -x "$ITEFLASH" ]; then
 		die "no iteflash util found."
 	fi
+	# TODO(crosbug.com/p/53664):
+	# For now, we have to run 'servod' and terminate it
+	# before we can do flashing via flex cable.
 	sudo ${ITEFLASH} -w ${IMG}
+	# TODO(crosbug.com/p/53664):
+	# We need to do a EC cold reset manually after flashing.
+	# (press COLD_RST_L on servo board or
+	# run servod again and using the dut-control interfaces)
 }
 
 function flash_lm4() {
