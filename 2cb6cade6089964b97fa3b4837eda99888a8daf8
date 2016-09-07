@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76dd8f9f_ac8aab70",
+        "filename": "chip/rotor/ipc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-07T23:56:22Z",
+      "side": 1,
+      "message": "Any concern about alignment issues?  Or are both the panic data ptr and buf size guaranteed to be 32-bit aligned?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 74
+      },
+      "revId": "2cb6cade6089964b97fa3b4837eda99888a8daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56832b87_a011fac2",
+        "filename": "chip/rotor/ipc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-07T23:56:22Z",
+      "side": 1,
+      "message": "Do we ever write into this or modify it in place?  If not, could it be const?",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "2cb6cade6089964b97fa3b4837eda99888a8daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6c1dbc3_a47c827c",
+        "filename": "chip/rotor/ipc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-07T23:56:22Z",
+      "side": 1,
+      "message": "on that channel?",
+      "range": {
+        "startLine": 57,
+        "startChar": 52,
+        "endLine": 57,
+        "endChar": 70
+      },
+      "revId": "2cb6cade6089964b97fa3b4837eda99888a8daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6c1dbc3_e4ab1adf",
+        "filename": "chip/rotor/ipc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-07T23:56:22Z",
+      "side": 1,
+      "message": "Is this always called by a single thread?  If not, use atomic ops for tx_allowed_mask, etc.",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 16
+      },
+      "revId": "2cb6cade6089964b97fa3b4837eda99888a8daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16cc53f8_86586a2c",
+        "filename": "chip/rotor/ipc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-07T23:56:22Z",
+      "side": 1,
+      "message": "The polling way?",
+      "range": {
+        "startLine": 145,
+        "startChar": 50,
+        "endLine": 145,
+        "endChar": 65
+      },
+      "revId": "2cb6cade6089964b97fa3b4837eda99888a8daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56832b87_e0694221",
+        "filename": "chip/rotor/ipc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-07T23:56:22Z",
+      "side": 1,
+      "message": "Is there a TODO here?",
+      "range": {
+        "startLine": 151,
+        "startChar": 54,
+        "endLine": 151,
+        "endChar": 66
+      },
+      "revId": "2cb6cade6089964b97fa3b4837eda99888a8daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7682ef83_41de72fc",
+        "filename": "chip/rotor/ipc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-07T23:56:22Z",
+      "side": 1,
+      "message": "Use enumerated or defined constants?",
+      "range": {
+        "startLine": 189,
+        "startChar": 27,
+        "endLine": 189,
+        "endChar": 28
+      },
+      "revId": "2cb6cade6089964b97fa3b4837eda99888a8daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6c89fe8_c5c6da5b",
+        "filename": "chip/rotor/ipc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-07T23:56:22Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 204,
+        "startChar": 51,
+        "endLine": 204,
+        "endChar": 55
+      },
+      "revId": "2cb6cade6089964b97fa3b4837eda99888a8daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6c89fe8_e87f6b04",
+        "filename": "chip/rotor/ipc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-07T23:56:22Z",
+      "side": 1,
+      "message": "Seems a little odd to do this in the send-response function, rather than higher up.\n\nWhat\u0027s the task context at this time?",
+      "range": {
+        "startLine": 230,
+        "startChar": 4,
+        "endLine": 231,
+        "endChar": 24
+      },
+      "revId": "2cb6cade6089964b97fa3b4837eda99888a8daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6c1dbc3_e4283a8e",
+        "filename": "chip/rotor/ipc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-07T23:56:22Z",
+      "side": 1,
+      "message": "What are valid channels?  Is there an enum somewhere, or some collection of #defined constants?",
+      "range": {
+        "startLine": 20,
+        "startChar": 33,
+        "endLine": 20,
+        "endChar": 40
+      },
+      "revId": "2cb6cade6089964b97fa3b4837eda99888a8daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6c1dbc3_24437245",
+        "filename": "chip/rotor/ipc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-07T23:56:22Z",
+      "side": 1,
+      "message": "Is \"preparation\" just setting up the message contents?  Or is there additional preparation?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 12
+      },
+      "revId": "2cb6cade6089964b97fa3b4837eda99888a8daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16cc53f8_66260ed7",
+        "filename": "chip/rotor/ipc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-07T23:56:22Z",
+      "side": 1,
+      "message": "send_ipc_message?",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 9
+      },
+      "revId": "2cb6cade6089964b97fa3b4837eda99888a8daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6a5471d_2bfe9998",
+        "filename": "chip/rotor/ipc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-07T23:56:22Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 35,
+        "startChar": 33,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "2cb6cade6089964b97fa3b4837eda99888a8daf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
