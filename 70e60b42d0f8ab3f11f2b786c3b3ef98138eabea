@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "763aef56_a128de8c",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-07T19:52:13Z",
+      "side": 1,
+      "message": "I don\u0027t think this is what you want.\n\n#define GPIO_ODR_HIGH       (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_HIGH)\n\nIf there\u0027s no external PU, you probably want to define the pin as (GPIO_INT_BOTH | GPIO_PULL_UP).",
+      "range": {
+        "startLine": 37,
+        "startChar": 54,
+        "endLine": 37,
+        "endChar": 67
+      },
+      "revId": "70e60b42d0f8ab3f11f2b786c3b3ef98138eabea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
