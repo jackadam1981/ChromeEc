@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "360a375e_7863d0e0",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-07T13:22:42Z",
+      "side": 1,
+      "message": "Where does this 0x160 come from? Is this just a hard coded offset?\n\nThis variable should also be static const.",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_787c7079",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-07T13:22:42Z",
+      "side": 1,
+      "message": "I\u0027m curious how the resulting linked program actually gets loaded into the right place. Does the format in flash have load address and size encoded in it?",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_b86d38c3",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-07T13:22:42Z",
+      "side": 1,
+      "message": "thumb mode as well?",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_f84ea05e",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-07T13:22:42Z",
+      "side": 1,
+      "message": "Presumably this is for thumb mode transition?",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_98779497",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-07T13:22:42Z",
+      "side": 1,
+      "message": "What is ensuring we hit all these requirements in practice? If we fail any of these checks then we just fail to sysjump. That would be really bad.",
+      "range": {
+        "startLine": 889,
+        "startChar": 0,
+        "endLine": 900,
+        "endChar": 9
+      },
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_587d2c77",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-07T13:22:42Z",
+      "side": 1,
+      "message": "\u0027i\u0027 is getting incremented by 1 while you are copying bytes in groups of 4. Therefore you are copying things 4 times over.",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_d8475c46",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-07T13:22:42Z",
+      "side": 1,
+      "message": "This file is already in chip/npcx. Is there any reason why we would guard this?",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_985e7415",
+        "filename": "chip/npcx/system_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-07T13:22:42Z",
+      "side": 1,
+      "message": "FWIW these should just be char arrays[]. These are just symbols provided by the linker script, and it makes things easier to work with.",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
