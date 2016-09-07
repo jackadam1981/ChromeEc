@@ -70,6 +70,30 @@
       "revId": "410a6952abbce46170c458598b4d357b5a2f3384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_1bdc3ed9",
+        "filename": "common/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-07T16:08:48Z",
+      "side": 1,
+      "message": "My only concern is that we may keep two copies of the \"Setting channel ..\" string now, and we\u0027re already short on RAM. Can we just remove the \u0027%\u0027 char?",
+      "parentUuid": "360a375e_d85ac17c",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 152,
+        "endChar": 16
+      },
+      "revId": "410a6952abbce46170c458598b4d357b5a2f3384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
