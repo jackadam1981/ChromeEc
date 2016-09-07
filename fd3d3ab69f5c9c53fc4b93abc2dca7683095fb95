@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "360a375e_78a0f0a3",
+        "filename": "include/power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-07T15:40:22Z",
+      "side": 1,
+      "message": "How many of these are internal to the rotor power state machine vs. have effects on the rest of the EC?  Cluttering up the common power code with these is ugly.  Let\u0027s ponder in person.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 27
+      },
+      "revId": "fd3d3ab69f5c9c53fc4b93abc2dca7683095fb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_3b7b021d",
+        "filename": "power/rotor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-07T15:40:22Z",
+      "side": 1,
+      "message": "Make this into a function; it\u0027s used below too.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 17
+      },
+      "revId": "fd3d3ab69f5c9c53fc4b93abc2dca7683095fb95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
