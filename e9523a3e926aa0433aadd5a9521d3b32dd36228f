@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "360a375e_98cdd482",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-07T15:27:13Z",
+      "side": 1,
+      "message": "This CL didn\u0027t introduce these changes, but can you change these as well?",
+      "range": {
+        "startLine": 355,
+        "startChar": 13,
+        "endLine": 355,
+        "endChar": 17
+      },
+      "revId": "e9523a3e926aa0433aadd5a9521d3b32dd36228f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_78d2b023",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-07T15:27:13Z",
+      "side": 1,
+      "message": "Here too",
+      "range": {
+        "startLine": 361,
+        "startChar": 13,
+        "endLine": 361,
+        "endChar": 17
+      },
+      "revId": "e9523a3e926aa0433aadd5a9521d3b32dd36228f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_d8e63c07",
+        "filename": "include/config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-07T15:27:13Z",
+      "side": 1,
+      "message": "sink",
+      "range": {
+        "startLine": 1940,
+        "startChar": 28,
+        "endLine": 1940,
+        "endChar": 32
+      },
+      "revId": "e9523a3e926aa0433aadd5a9521d3b32dd36228f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_18e1e4ec",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-07T15:27:13Z",
+      "side": 1,
+      "message": "sink",
+      "range": {
+        "startLine": 1532,
+        "startChar": 28,
+        "endLine": 1532,
+        "endChar": 32
+      },
+      "revId": "e9523a3e926aa0433aadd5a9521d3b32dd36228f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_38bdc8d7",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-07T15:27:13Z",
+      "side": 1,
+      "message": "sink",
+      "range": {
+        "startLine": 181,
+        "startChar": 29,
+        "endLine": 181,
+        "endChar": 33
+      },
+      "revId": "e9523a3e926aa0433aadd5a9521d3b32dd36228f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
