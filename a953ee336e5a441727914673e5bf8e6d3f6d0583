@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "360a375e_5ed87970",
+        "filename": "board/reef/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-07T00:16:03Z",
+      "side": 1,
+      "message": "gpio_enable_interrupt(GPIO_USB_C0_CABLE_DET);",
+      "revId": "a953ee336e5a441727914673e5bf8e6d3f6d0583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
