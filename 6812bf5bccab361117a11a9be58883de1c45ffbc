@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_9706fc76",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-08T19:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71dd999f_c8a26206",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71dd999f_88c18a92",
         "filename": "common/motion_lid.c",
         "patchSetId": 4
@@ -59,6 +83,30 @@
       "writtenOn": "2016-09-02T19:16:34Z",
       "side": 1,
       "message": "typo: calculated",
+      "range": {
+        "startLine": 36,
+        "startChar": 45,
+        "endLine": 36,
+        "endChar": 55
+      },
+      "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_b75f7873",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-08T19:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71dd999f_88c18a92",
       "range": {
         "startLine": 36,
         "startChar": 45,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_d764044c",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-08T19:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71dd999f_a88e0e84",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71dd999f_089aba73",
         "filename": "common/motion_lid.c",
         "patchSetId": 4
@@ -105,6 +177,24 @@
       "writtenOn": "2016-09-02T19:16:34Z",
       "side": 1,
       "message": "This is immediately following a sysjump, correct?",
+      "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_37544854",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-08T19:57:31Z",
+      "side": 1,
+      "message": "correct: going to RW, we lose the previous state, so we fall back to tablet_mode by default.",
+      "parentUuid": "71dd999f_089aba73",
       "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -134,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_f784a066",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-08T19:57:31Z",
+      "side": 1,
+      "message": "Good question: contrary to chrome in the AP, for the EC, tablet mode means tablet mode: the base is against the lid, screen showing up. Tenting mode is not tablet mode, blocking keyboard in S3 when lid angle \u003e 180 is independant.\n\nThis is already the case for cave, which uses 2 HAL sensors to detect lid position (close (10), open (00), tablet (01))\n(See \n\nWhen we only have one HAL sensor, I use the angle:\n\n\ntablet_mode:\n  1 |                  +-----\u003c----+----------\n    |                  \\/         /\\\n    |                  |          |\n  0 |------------------------\u003e----+\n    +------------------+----------+----------+ lid angle\n    0                 240        300        360\n\n(I like my diagram so much I put it in the code :-))",
+      "parentUuid": "71dd999f_0b76349a",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71dd999f_a8f56ee8",
         "filename": "common/motion_lid.c",
         "patchSetId": 4
@@ -145,6 +259,30 @@
       "writtenOn": "2016-09-02T19:16:34Z",
       "side": 1,
       "message": "extra space",
+      "range": {
+        "startLine": 67,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 26
+      },
+      "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_9768bcb0",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-08T19:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71dd999f_a8f56ee8",
       "range": {
         "startLine": 67,
         "startChar": 25,
