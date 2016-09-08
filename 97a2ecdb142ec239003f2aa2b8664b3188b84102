@@ -39,6 +39,24 @@
       "revId": "97a2ecdb142ec239003f2aa2b8664b3188b84102",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_d78fa47f",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-08T19:57:31Z",
+      "side": 1,
+      "message": "You\u0027re right. I set an invalid value at init.",
+      "parentUuid": "db249f97_a7e5790c",
+      "revId": "97a2ecdb142ec239003f2aa2b8664b3188b84102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
