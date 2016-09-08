@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_7f522209",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-08T21:59:59Z",
+      "side": 1,
+      "message": "okay, thank you for the details.",
+      "parentUuid": "f68dffb6_7f24e2bc",
+      "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f68dffb6_406bd0e5",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 2
