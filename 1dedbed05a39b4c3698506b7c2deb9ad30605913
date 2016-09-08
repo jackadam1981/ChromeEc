@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_3da6ef5e",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-08T00:19:53Z",
+      "side": 1,
+      "message": "\"\"\" range member actually be the number of bits to shift right?\"\"\"\nYes it is. if the default range argument is 262144 (aka 1 \u003c\u003c 18), then __builtin_clz(range) is 13 and data-\u003erange \u003d\u003d 2, the amount to right shift.\n\niio expect a scale parameter to process the raw data.\n\nHistorically, EC provide a range argument, where \nvalue \u003d scale * raw_data\n\nwhere raw_data is what come the EC MOTIONSENSE_CMD_DATA command and scale is:\n\nscale \u003d si_conv * range / 2^15 or 2^16\n\nrange is what comes from MOTIONSENSE_CMD_SENSOR_RANGE\nIf the raw_data is signed (accel, gyro, mag) we use 2^15 otherwise 2^16.\n\nsi_conv converts the units from the EC to what IIO expects:\n\naccelerator: G-\u003em/s^2\ngyro : deg/s -\u003e rad/s\ncompass : uT -\u003e Gauss\nbaro : Pa -\u003e hPa\n\nYou\u0027re right at this point, I can put whatever I want into the range argument. I want to put in the range the maximum value the sensor returns. For instance\naccel range is 2G or 8G, gyro is 200 deg/s, ...",
+      "parentUuid": "f68dffb6_1db3f3f2",
+      "revId": "1dedbed05a39b4c3698506b7c2deb9ad30605913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56cecbf0_086e47bd",
         "filename": "driver/baro_bmp280.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-09-08T00:01:06Z",
       "side": 1,
       "message": "I\u0027m a bit confused as to what value is supposed to go here. It doesn\u0027t seem like the number of bits to shift as implied by your other comment.",
+      "revId": "1dedbed05a39b4c3698506b7c2deb9ad30605913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_9d59c362",
+        "filename": "driver/baro_bmp280.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-08T00:19:53Z",
+      "side": 1,
+      "message": "yes it is. cls is return the number of 0 before the first 1 in a binary number.",
+      "parentUuid": "56cecbf0_086e47bd",
       "revId": "1dedbed05a39b4c3698506b7c2deb9ad30605913",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
