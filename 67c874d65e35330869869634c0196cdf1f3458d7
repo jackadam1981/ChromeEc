@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_1ffafe5d",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-08T21:40:32Z",
+      "side": 1,
+      "message": "I will move the code to common/usb_pd_policy.c. We\u0027ll need to implement TCPC routines to set discharge state (already done in pending CL) and get present discharge state (not done yet I think).",
+      "parentUuid": "f68dffb6_231a4e79",
+      "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f68dffb6_400d90eb",
         "filename": "board/kevin/usb_pd_policy.c",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2016-09-08T01:34:10Z",
       "side": 1,
       "message": "we can discharge disable in deferred function with only this change in BD99955.c\nif (interrupts \u0026 BD99955_CMD_INT_SET_TH_RES \u0026\u0026\n    vbus \u003c BD99955_VBUS_DISCHARGE_TH)\n    pd_set_vbus_discharge(bd99955_pd_port_to_chg_port(port))",
+      "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_ff69d220",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-08T21:40:32Z",
+      "side": 1,
+      "message": "I don\u0027t understand, can you explain your comment more? Are you suggesting that we can disable discharge if VBUS level is below 4V, regardless of whether we\u0027re sourcing it or not?",
+      "parentUuid": "f68dffb6_400d90eb",
       "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_bfc3ca2e",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-08T21:40:32Z",
+      "side": 1,
+      "message": "Done. Thanks for catching that.",
+      "parentUuid": "f68dffb6_406bd0e5",
+      "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f68dffb6_a0ef3415",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 2
@@ -88,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_7fc22227",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-08T21:40:32Z",
+      "side": 1,
+      "message": "My thought here is that our past interrupt history is irrelevant (it\u0027s even possible that both bits are set) and we should set discharge entirely based upon our voltage at present. What do you think?",
+      "parentUuid": "f68dffb6_a0ef3415",
+      "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f68dffb6_c081a067",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -99,6 +171,30 @@
       "writtenOn": "2016-09-08T03:59:42Z",
       "side": 1,
       "message": "This won\u0027t necessarily be GPIO-controlled always, right? It could be TCPC driven. Since there\u0027s that option, should we leave it as CONFIG_USB_PD_DISCHARGE_GPIO and possibly add CONFIG_USB_PD_DISCHARGE_TCPC?",
+      "range": {
+        "startLine": 1940,
+        "startChar": 30,
+        "endLine": 1940,
+        "endChar": 45
+      },
+      "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_9f5b6e81",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-08T21:40:32Z",
+      "side": 1,
+      "message": "Thanks, will change.",
+      "parentUuid": "f68dffb6_c081a067",
       "range": {
         "startLine": 1940,
         "startChar": 30,
