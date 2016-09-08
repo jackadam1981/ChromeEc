@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_cc90f7fe",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-08T13:50:28Z",
+      "side": 1,
+      "message": "I understand that. My point is how is this code actually *loaded* into that memory location?",
+      "parentUuid": "ebf9963d_3d1b2fdf",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "360a375e_b86d38c3",
         "filename": "chip/npcx/system.c",
         "patchSetId": 2
@@ -107,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_ec95b3eb",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-08T13:50:28Z",
+      "side": 1,
+      "message": "You are relying on the compiler to emit those instructions. It is thumb mode you are trying to achieve. As such you need to put in the inline assembly to force the bx instruction as you are relying on it. That or comment very heavily the assumptions you are making such that when things blow up there\u0027s some pieces to look at after the fact.",
+      "parentUuid": "ebf9963d_bda97f80",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "360a375e_f84ea05e",
         "filename": "chip/npcx/system.c",
         "patchSetId": 2
@@ -136,6 +172,24 @@
       "side": 1,
       "message": "Please see comment above.",
       "parentUuid": "360a375e_f84ea05e",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_0c9bbf1e",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-08T13:50:28Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "f68dffb6_2326ce27",
       "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -218,6 +272,24 @@
       "side": 1,
       "message": "Yes, i is getting incremented by 1. But please notice \u0026__flash_lpfw_end means the 32-bits pointer of flash address. In this case, the size of lowpower_ram2 section is 60 bytes and (\u0026__flash_lplfw_end - \u0026__flash_lplfw_start) is 15.",
       "parentUuid": "360a375e_587d2c77",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_acb48b8d",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-08T13:50:28Z",
+      "side": 1,
+      "message": "Right. I forgot the pointer arithmetic was taking the size of the object into account.",
+      "parentUuid": "ebf9963d_9dd8030d",
       "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
