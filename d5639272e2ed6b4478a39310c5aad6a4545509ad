@@ -46,6 +46,30 @@
       "revId": "d5639272e2ed6b4478a39310c5aad6a4545509ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_a04814b3",
+        "filename": "board/reef/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-08T00:44:51Z",
+      "side": 0,
+      "message": "Yeah, I was thinking perhaps introducing something like CONFIG_ACCELGYRO_BMI160_I2C/SPI. You only need to define it once and it doesn\u0027t matter which location it resides.",
+      "parentUuid": "f68dffb6_c064404c",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 21
+      },
+      "revId": "d5639272e2ed6b4478a39310c5aad6a4545509ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
