@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f68dffb6_663a9f25",
+        "filename": "board/cave/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-08T18:33:42Z",
+      "side": 1,
+      "message": "It\u0027s unfortunate that we need to call this every second, but we don\u0027t have a hook that is called on charge_get_state() change.",
+      "range": {
+        "startLine": 712,
+        "startChar": 13,
+        "endLine": 712,
+        "endChar": 24
+      },
+      "revId": "ab933917db0a4f209968e14ea95625081b3297e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
