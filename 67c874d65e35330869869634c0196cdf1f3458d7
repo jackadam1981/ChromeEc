@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_7f24e2bc",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-08T21:57:49Z",
+      "side": 1,
+      "message": "I don\u0027t think we can avoid using this interrupt. Ignoring source cases (only acting as a sink), we still need to enable discharge at some point (to ensure we don\u0027t end up at intermediate voltage where VBUS is still detected, yet we aren\u0027t charging) and we also need to disable it at some point (to ensure charger efficiency).",
+      "parentUuid": "f68dffb6_9f4e0e86",
+      "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f68dffb6_406bd0e5",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 2
