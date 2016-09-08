@@ -391,6 +391,10 @@ static void chipset_pre_init(void)
 
 	/* Enable PMIC */
 	gpio_set_level(GPIO_PMIC_EN, 1);
+
+	/* Put Analogix TCPC in active mode */
+	board_set_tcpc_power_mode(0, 1);
+
 #endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
@@ -634,8 +638,9 @@ static void board_chipset_shutdown(void)
 	gpio_set_level(GPIO_EN_USB_A_5V, 0);
 
 	hook_call_deferred(&enable_input_devices_data, 0);
-	/* FIXME(dhendrix): Drive USB_PD_RST_ODL low to prevent
-	   leakage? (see comment in schematic) */
+
+	/* Put Analogix TCPC in standby mode */
+	board_set_tcpc_power_mode(0, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
