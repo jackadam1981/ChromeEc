@@ -277,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "ebf9963d_dd50cb26",
+        "filename": "chip/ish30/config_flash_layout.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "I\u0027ve added comments in the latest commit.",
+      "parentUuid": "91e76d24_6f0e26ec",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db249f97_47d68551",
         "filename": "chip/ish30/hwtimer.c",
         "patchSetId": 11
@@ -610,6 +628,24 @@
       "side": 1,
       "message": "But you are writing this information to someone else. So something is picking up the actual buffer. Who and how is it accessing those resources?",
       "parentUuid": "85cd667b_82d8faeb",
+      "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d64abb97_e5672cdf",
+        "filename": "chip/ish30/ipc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "The OOB messages are written to per-peer memory mapped registers, which are accessible to the corresponding peer (PMC, CSME, etc) over IOSF.",
+      "parentUuid": "91e76d24_2f181e2d",
       "revId": "d4c08339fb22ab72ab484cc15daf2cd0f7c23afd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
