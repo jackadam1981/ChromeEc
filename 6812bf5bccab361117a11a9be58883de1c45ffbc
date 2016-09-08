@@ -248,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_2915c849",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-08T20:21:40Z",
+      "side": 1,
+      "message": "Ah, okay. \u0026\u0026 That *is* a nice diagram. :)",
+      "parentUuid": "f68dffb6_f784a066",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "6812bf5bccab361117a11a9be58883de1c45ffbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71dd999f_a8f56ee8",
         "filename": "common/motion_lid.c",
         "patchSetId": 4
