@@ -394,7 +394,7 @@ int flash_physical_erase(int byte_offset, int num_bytes)
 		ret = do_flash_op(OP_ERASE_BLOCK,
 				  0,              /* not the INFO bank */
 				  byte_offset,
-				  num_bytes / 4); /* word count */
+				  CONFIG_FLASH_ERASE_SIZE / 4); /* word count */
 		if (ret) {
 			CPRINTF("Failed to erase block at %x\n", byte_offset);
 			return ret;
