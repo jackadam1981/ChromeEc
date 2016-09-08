@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_805b1881",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-08T00:44:58Z",
+      "side": 1,
+      "message": "yes, if the AP read 2^16 (-1) from the EC, it means the pressure is 2^18 Pa, aka ~2600 hPa (and your chromebook is probably underwater). If we design a chromebook for diver, the AP can change the range.",
+      "parentUuid": "f68dffb6_1d43f344",
+      "revId": "1dedbed05a39b4c3698506b7c2deb9ad30605913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56cecbf0_086e47bd",
         "filename": "driver/baro_bmp280.h",
         "patchSetId": 1
