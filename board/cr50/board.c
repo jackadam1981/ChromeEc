@@ -573,6 +573,88 @@ void board_configure_deep_sleep_wakepins(void)
 	}
 }
 
+static void report_flash_configs(void)
+{
+	volatile struct {
+		uint32_t reg_base_addr;
+		uint32_t reg_size;
+	} *flash_block;
+	volatile uint32_t *flash_ctrl;
+	int i;
+
+	flash_ctrl = GREG32_ADDR(GLOBALSEC, FLASH_REGION0_CTRL);
+	flash_block = (volatile void *)GREG32_ADDR(GLOBALSEC,
+						   FLASH_REGION0_BASE_ADDR);
+
+	for (i = 0; i < 8; i++)
+		ccprintf("%d: base 0x%x, size 0x%x, enable %x\n", i,
+			 flash_block[i].reg_base_addr, flash_block[i].reg_size,
+			 flash_ctrl[i] & 7);
+}
+
+static void open_ro_window(volatile const void *b, size_t size_b)
+{
+	if (GREG32(GLOBALSEC, FLASH_REGION0_BASE_ADDR) == (uint32_t)b) {
+		GREG32(GLOBALSEC, FLASH_REGION0_SIZE) = size_b - 1;
+		GWRITE_FIELD(GLOBALSEC, FLASH_REGION0_CTRL, WR_EN, 1);
+		return;
+	}
+
+	GREG32(GLOBALSEC, FLASH_REGION6_BASE_ADDR) = (uint32_t)b;
+	GREG32(GLOBALSEC, FLASH_REGION6_SIZE) = size_b - 1;
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, EN, 1);
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, RD_EN, 1);
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, WR_EN, 1);
+}
+
+static enum ec_error_list downgrade_ro(int b_not_a)
+{
+	volatile const struct SignedHeader *h;
+	const char *g_rev = system_get_chip_revision();
+	const void *ro_base_addrs[] = {
+		(const struct SignedHeader *)CONFIG_PROGRAM_MEMORY_BASE,
+		(const struct SignedHeader *)(CONFIG_PROGRAM_MEMORY_BASE +
+					      CFG_FLASH_HALF)
+	};
+	uint32_t new_minor;
+
+	switch(g_rev[1]) {
+	case '1':
+		ccprintf("%s: B1 reprogramming not supported\n", __func__);
+		return EC_ERROR_BUSY;
+
+	case '2':
+		break;
+
+	default:
+		ccprintf("unknown chip HW revision %s\n", g_rev);
+		return EC_ERROR_BUSY;
+	}
+
+	h = ro_base_addrs[!!b_not_a];
+	new_minor = h->minor_ & 0x7; /* this should guarantee downgrade. */
+	open_ro_window(h, sizeof(*h));
+	ccprintf("%s: update minor RO version from %d to %d", __func__,
+		 h->minor_, new_minor);
+
+	if (flash_physical_write(
+		    ((uintptr_t)&h->minor_) - CONFIG_PROGRAM_MEMORY_BASE,
+		    sizeof(new_minor), (char *)&new_minor) != EC_SUCCESS) {
+		ccprintf(" failed!\n");
+		report_flash_configs();
+		return EC_ERROR_HW_INTERNAL;
+	}
+
+	if (h->minor_ != new_minor) {
+		ccprintf(" failed to verify (%d != %d)!\n", h->minor_,
+			 new_minor);
+		return EC_ERROR_HW_INTERNAL;
+	}
+
+	ccprintf(" Success!!!\n");
+	return EC_SUCCESS;
+}
+
 static void deferred_tpm_rst_isr(void);
 DECLARE_DEFERRED(deferred_tpm_rst_isr);
 
@@ -1511,9 +1593,30 @@ static int command_sysinfo(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_SAFE_CONSOLE_COMMAND(sysinfo, command_sysinfo,
-			     NULL,
+DECLARE_SAFE_CONSOLE_COMMAND(sysinfo, command_sysinfo, NULL,
 			     "Print system info");
+
+static int command_corrupt_ro(int argc, char **argv)
+{
+	int index;
+
+	if (argc < 2) {
+		ccprintf(
+			"a parameter is required, the RO to corrupt, a or b\n");
+		return EC_ERROR_PARAM_COUNT;
+	}
+
+	index = *argv[1] - 'a';
+
+	if ((index < 0) || (index > 1)) {
+		ccprintf("wrong image name, a or b is required\n");
+		return EC_ERROR_PARAM1;
+	}
+	return downgrade_ro(index);
+}
+DECLARE_SAFE_CONSOLE_COMMAND(
+	cro, command_corrupt_ro, NULL,
+	"Downgrade RO minor version, which results in corruption");
 
 /*
  * SysInfo command:

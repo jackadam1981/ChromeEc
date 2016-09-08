@@ -228,6 +228,5 @@ static int command_rdd_keepalive(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(rddkeepalive, command_rdd_keepalive,
-			"[BOOLEAN]",
-			"Get Rdd state or force keepalive");
+DECLARE_SAFE_CONSOLE_COMMAND(rddkeepalive, command_rdd_keepalive, "[BOOLEAN]",
+			     "Get Rdd state or force keepalive");
