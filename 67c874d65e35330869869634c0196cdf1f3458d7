@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_231a4e79",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-08T03:59:42Z",
+      "side": 1,
+      "message": "Is that true? They may all call pd_set_vbus_discharge(), but not necessarily set_discharge_gpios() correct? Isn\u0027t it up to the board to define whether they want to use these GPIOs or the TCPCs? They could do that using CONFIG_* options.\n\nHowever, I could see other boards in the future wanting to set discharge. That code would probably be identical to what\u0027s here, so I vote for moving it to common/usb_pd_policy.c.",
+      "parentUuid": "f68dffb6_dd0fcb36",
+      "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f68dffb6_400d90eb",
         "filename": "board/kevin/usb_pd_policy.c",
         "patchSetId": 2
@@ -64,6 +82,29 @@
       "writtenOn": "2016-09-08T01:34:10Z",
       "side": 1,
       "message": "if (interrupts \u0026 BD99955_CMD_INT_SET_TH_RES \u0026\u0026\n    vbus \u003c BD99955_VBUS_DISCHARGE_TH)\n    pd_set_vbus_discharge(bd99955_pd_port_to_chg_port(port), 1);\n\nif (interrupts \u0026 BD99955_CMD_INT_SET_TH_DET \u0026\u0026\n    vbus \u003e BD99955_VBUS_DISCHARGE_TH)\n    pd_set_vbus_discharge(bd99955_pd_port_to_chg_port(port), 0);",
+      "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_c081a067",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-08T03:59:42Z",
+      "side": 1,
+      "message": "This won\u0027t necessarily be GPIO-controlled always, right? It could be TCPC driven. Since there\u0027s that option, should we leave it as CONFIG_USB_PD_DISCHARGE_GPIO and possibly add CONFIG_USB_PD_DISCHARGE_TCPC?",
+      "range": {
+        "startLine": 1940,
+        "startChar": 30,
+        "endLine": 1940,
+        "endChar": 45
+      },
       "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
