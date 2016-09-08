@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_9f4e0e86",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-08T21:53:09Z",
+      "side": 1,
+      "message": "Yes correct. And also we can avoid BD99955_CMD_INT_SET_TH_DET interrupt.",
+      "parentUuid": "f68dffb6_ff69d220",
+      "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f68dffb6_406bd0e5",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 2
@@ -154,6 +172,24 @@
       "side": 1,
       "message": "My thought here is that our past interrupt history is irrelevant (it\u0027s even possible that both bits are set) and we should set discharge entirely based upon our voltage at present. What do you think?",
       "parentUuid": "f68dffb6_a0ef3415",
+      "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_df15f654",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-08T21:53:09Z",
+      "side": 1,
+      "message": "okay sounds good.",
+      "parentUuid": "f68dffb6_7fc22227",
       "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
