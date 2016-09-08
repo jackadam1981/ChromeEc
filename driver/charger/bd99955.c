@@ -693,6 +693,12 @@ static void bd99995_init(void)
 	ch_raw_write16(BD99955_CMD_ITRICH_SET,
 		       bi->precharge_current & 0x07C0,
 		       BD99955_EXTENDED_COMMAND);
+
+	/*
+	 * Power save mode for BGATE - Don't monitor PROCHOT# since we're not
+	 * using it anyways.
+	 */
+	ch_raw_write16(BD99955_CMD_SMBREG, 0x5, BD99955_EXTENDED_COMMAND);
 }
 DECLARE_HOOK(HOOK_INIT, bd99995_init, HOOK_PRIO_INIT_EXTPOWER);
 
