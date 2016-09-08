@@ -22,6 +22,30 @@
       "revId": "70e60b42d0f8ab3f11f2b786c3b3ef98138eabea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_7cf5d049",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-08T21:09:07Z",
+      "side": 1,
+      "message": "Bleh, of course. Not sure why the net name has _ODL on it...\n\nReverted back to the previous configuration (but with the changed net name)",
+      "parentUuid": "763aef56_a128de8c",
+      "range": {
+        "startLine": 37,
+        "startChar": 54,
+        "endLine": 37,
+        "endChar": 67
+      },
+      "revId": "70e60b42d0f8ab3f11f2b786c3b3ef98138eabea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
