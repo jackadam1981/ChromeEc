@@ -621,6 +621,7 @@ int charger_set_voltage(int voltage)
 static void bd99995_init(void)
 {
 	int reg;
+	int val = 0;
 	const struct battery_info *bi = battery_get_info();
 
 	/* Enable BC1.2 detection on VCC */
@@ -693,6 +694,12 @@ static void bd99995_init(void)
 	ch_raw_write16(BD99955_CMD_ITRICH_SET,
 		       bi->precharge_current & 0x07C0,
 		       BD99955_EXTENDED_COMMAND);
+
+	/* Power save mode when VBUS/VCC is removed. */
+#ifdef CONFIG_BD99955_POWER_SAVE_MODE
+	val = CONFIG_BD99955_POWER_SAVE_MODE;
+#endif
+	ch_raw_write16(BD99955_CMD_SMBREG, val, BD99955_EXTENDED_COMMAND);
 }
 DECLARE_HOOK(HOOK_INIT, bd99995_init, HOOK_PRIO_INIT_EXTPOWER);
 
