@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f68dffb6_9de623aa",
+        "filename": "board/reef/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-08T00:16:15Z",
+      "side": 0,
+      "message": "Is there a bug for this? I agree it could be clearer. If we\u0027re removing this comment, we should at least file a bug so that we don\u0027t forget about it if there isn\u0027t one already.\n\nI guess it\u0027s being used to determine whether or not the sensor is using the i2c interface or SPI interface?",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 21
+      },
+      "revId": "d5639272e2ed6b4478a39310c5aad6a4545509ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
