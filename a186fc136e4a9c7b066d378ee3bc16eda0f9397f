@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f68dffb6_0cb49f88",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-08T13:59:56Z",
+      "side": 1,
+      "message": "The extra parens should not be needed.",
+      "range": {
+        "startLine": 879,
+        "startChar": 1,
+        "endLine": 879,
+        "endChar": 39
+      },
+      "revId": "a186fc136e4a9c7b066d378ee3bc16eda0f9397f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_6ca3634e",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-08T13:59:56Z",
+      "side": 1,
+      "message": "Why is this global?",
+      "revId": "a186fc136e4a9c7b066d378ee3bc16eda0f9397f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_4ca6a75f",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-08T13:59:56Z",
+      "side": 1,
+      "message": "Aren\u0027t these the same ?",
+      "revId": "a186fc136e4a9c7b066d378ee3bc16eda0f9397f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
