@@ -16,6 +16,24 @@
       "revId": "ddc65305a848e12a2f713f843b0f1bbce3eebd0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_9cbffca8",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2016-09-08T20:51:48Z",
+      "side": 1,
+      "message": "Yes.  Wakeup events are asynchronous and not related to the core having power provided.\n\nSpecifically the wakeup logic in the rk3399 works from the \"PMU\" power domain so as long as that domain has power then the rk3399 can notice a wakeup event on one of its gpios and then request to the PMIC (AKA the EC in this case) that all rails be turned back on for wakeup.",
+      "parentUuid": "f68dffb6_fc7f2004",
+      "revId": "ddc65305a848e12a2f713f843b0f1bbce3eebd0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
