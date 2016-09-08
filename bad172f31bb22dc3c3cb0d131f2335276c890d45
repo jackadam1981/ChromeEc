@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebf9963d_7d2bf7a5",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "These are not applicable for ISH, but I have to retain them for the build to succeed.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 45
+      },
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebf9963d_9d4a4375",
+        "filename": "chip/ish/config_flash_layout.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "All the macros here, except for CONFIG_ISH_BOOT_START are not applicable for ISH, however the build fails if they are not defined. Ideally, there should be an option in EC build to turn off SPI and flash, making these unnecessary.",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebf9963d_bd4dff90",
+        "filename": "chip/ish/config_flash_layout.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "This macro is used.",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
