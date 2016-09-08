@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f68dffb6_e6586f2d",
+        "filename": "chip/rotor/crystal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-08T19:08:57Z",
+      "side": 1,
+      "message": "Might be nice if this were a defined constant, used on line 129 as well.",
+      "range": {
+        "startLine": 117,
+        "startChar": 11,
+        "endLine": 117,
+        "endChar": 14
+      },
+      "revId": "a20fab7d749ef8e4e319c5372616d2af24df026a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_6640df36",
+        "filename": "chip/rotor/crystal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-08T19:08:57Z",
+      "side": 1,
+      "message": "Space",
+      "range": {
+        "startLine": 121,
+        "startChar": 57,
+        "endLine": 121,
+        "endChar": 58
+      },
+      "revId": "a20fab7d749ef8e4e319c5372616d2af24df026a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_a64f475a",
+        "filename": "chip/rotor/crystal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-08T19:08:57Z",
+      "side": 1,
+      "message": "Should be abstracted to a function (see other CL which has same issue).",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 18
+      },
+      "revId": "a20fab7d749ef8e4e319c5372616d2af24df026a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_06ac7bf6",
+        "filename": "chip/rotor/crystal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-08T19:08:57Z",
+      "side": 1,
+      "message": "Or just\n\n#define PMU0_PWRST_CTRL_VALID_BITS 0xF0018101\n\n/* Mask with valid bits so reserved bits are written as 0 */\nval \u0026\u003d VALID_BITS;\n\nOr better still, define the other bits first...\n#define FOO_NORMAL (1\u003c\u003c0)\n#define FOO_HIBERNATE (1\u003c\u003c8)\n#define VALID_BITS (FOO_NORMAL | FOO_HIBERNATE | ...)\nwhich is even more typo-robust",
+      "range": {
+        "startLine": 201,
+        "startChar": 8,
+        "endLine": 201,
+        "endChar": 45
+      },
+      "revId": "a20fab7d749ef8e4e319c5372616d2af24df026a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_c6eff314",
+        "filename": "chip/rotor/crystal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-08T19:08:57Z",
+      "side": 1,
+      "message": "Should this case return EC_TIMEOUT?",
+      "range": {
+        "startLine": 236,
+        "startChar": 3,
+        "endLine": 236,
+        "endChar": 9
+      },
+      "revId": "a20fab7d749ef8e4e319c5372616d2af24df026a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_0610fb59",
+        "filename": "chip/rotor/crystal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-08T19:08:57Z",
+      "side": 1,
+      "message": "Extra space",
+      "range": {
+        "startLine": 11,
+        "startChar": 52,
+        "endLine": 11,
+        "endChar": 53
+      },
+      "revId": "a20fab7d749ef8e4e319c5372616d2af24df026a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
