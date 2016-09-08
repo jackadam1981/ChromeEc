@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f68dffb6_e30a2630",
+        "filename": "board/gale/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1143334
+      },
+      "writtenOn": "2016-09-08T03:31:54Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be one and only of the CC pins is connected as sink?\nif (is_typec_sink(cc1) ^ is_typec_sink(cc2))\n\tenable_ccd();",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 15
+      },
+      "revId": "e1109cad6d5511d545caf3f994c2f756f121eeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
