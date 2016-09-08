@@ -22,6 +22,30 @@
       "revId": "d5639272e2ed6b4478a39310c5aad6a4545509ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_c064404c",
+        "filename": "board/reef/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-08T00:41:47Z",
+      "side": 0,
+      "message": "I2C_PORT_ACCEL is used in accelgyro to remove some code at compilation. \nLooking at the code, I agree this is not right, because I2C_PORT_ACCEL should at least be I2C_PORT_BASE_ACCEL, and then it does not have any place in the driver/ .c file.",
+      "parentUuid": "f68dffb6_9de623aa",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 21
+      },
+      "revId": "d5639272e2ed6b4478a39310c5aad6a4545509ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
