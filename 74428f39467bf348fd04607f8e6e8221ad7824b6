@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ebf9963d_1d3f53e6",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "These macros are required by common/panic_output. In core/cortex-m/ec.lds.S for example, the memory region is partitioned into flash, USB, IRAM. This is not done for ISH.\nIn core/minute-ia/ec.lds.S, the sections are laid out starting with .init. For ISH, RAM\u003d\u003dSRAM, I\u0027m unable to configure these macros suitable for ISH. Since panic handling is not implemented for ISH yet, I guess they are quite harmless at this point.",
+      "parentUuid": "91e76d24_8f382a8e",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91e76d24_af42ceed",
         "filename": "chip/ish/config_chip.h",
         "patchSetId": 13
@@ -30,6 +48,24 @@
       "writtenOn": "2016-09-01T14:54:27Z",
       "side": 1,
       "message": "Same issue with off by one like above. You may just want to make your _END macros exclusive instead of inclusive.",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebf9963d_fd538730",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "Made _END inclusive, thanks",
+      "parentUuid": "91e76d24_af42ceed",
       "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d64abb97_e5744cc8",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "91e76d24_2f813e2f",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91e76d24_4f84823f",
         "filename": "chip/ish/hpet.h",
         "patchSetId": 13
@@ -64,6 +118,24 @@
       "writtenOn": "2016-09-01T14:33:28Z",
       "side": 1,
       "message": "Should these be a CONFIG_ option? Where are you expecting someone to set this such that it\u0027s #defined here? Since there are no includes there\u0027s no guarantee these will be defined when hpet.h is included.",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d64abb97_c504b025",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "Ok, changed it to a CONFIG_ option, to be defined in board/\u003cboard\u003e/board.h.",
+      "parentUuid": "91e76d24_4f84823f",
       "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "360a375e_b8aff880",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "Changed it to 100 ticks per second (period of 10ms), similar to other ISH users.",
+      "parentUuid": "91e76d24_cf3d1280",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91e76d24_6f350692",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 13
@@ -98,6 +188,24 @@
       "writtenOn": "2016-09-01T14:54:27Z",
       "side": 1,
       "message": "If ISH_TICKS_PER_SEC ever changes this comment will go stale. Leave the comment where the macro is defined.",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d64abb97_c5b5d03e",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "Changed comment to \"Set comparator value\". Will modify at the place of definition.",
+      "parentUuid": "91e76d24_6f350692",
       "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -127,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "ebf9963d_3dde8fce",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "Moved the wait_task_id to i2c_context. Thanks",
+      "parentUuid": "91e76d24_aff9aeb3",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 34
+      },
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91e76d24_2f2ffe41",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 13
@@ -138,6 +270,24 @@
       "writtenOn": "2016-09-01T14:54:27Z",
       "side": 1,
       "message": "Why is this global? Should be static, no?",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebf9963d_9dd7e3b3",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "91e76d24_2f2ffe41",
       "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -167,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "ebf9963d_5de95b7a",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "True, moved wait_task_id to i2c_context.",
+      "parentUuid": "91e76d24_cff4f2bb",
+      "range": {
+        "startLine": 375,
+        "startChar": 15,
+        "endLine": 375,
+        "endChar": 27
+      },
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91e76d24_4f3242ac",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 13
@@ -178,6 +352,24 @@
       "writtenOn": "2016-09-01T14:54:27Z",
       "side": 1,
       "message": "You could just pass the \u0026i2c_ctxs[0] here instead of the index that you then just use to address the array. Just pass the pointer you care about.",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_f8dd002e",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "Done, it is much better",
+      "parentUuid": "91e76d24_4f3242ac",
       "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -201,6 +393,42 @@
     },
     {
       "key": {
+        "uuid": "ebf9963d_bdda9fdb",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "91e76d24_0feb1add",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebf9963d_ddcd6b29",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "91e76d24_0feb1add",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91e76d24_0fd2fa24",
         "filename": "chip/ish/ipc.c",
         "patchSetId": 13
@@ -212,6 +440,24 @@
       "writtenOn": "2016-09-01T14:54:27Z",
       "side": 1,
       "message": "I\u0027m confused. Why are all these global functions not declared in the header if you want them global? Could you please go over the files added and ensure only the globals you want exposed out are truly global as well as declaring them in an appropriate header file?",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebf9963d_3d3a0ff6",
+        "filename": "chip/ish/ipc.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "Sure, fixed all.",
+      "parentUuid": "91e76d24_0fd2fa24",
       "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -235,6 +481,24 @@
     },
     {
       "key": {
+        "uuid": "d64abb97_05ffb8fb",
+        "filename": "chip/ish/ish_i2c.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "91e76d24_ef21f661",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91e76d24_cf263278",
         "filename": "chip/ish/uart.c",
         "patchSetId": 13
@@ -246,6 +510,30 @@
       "writtenOn": "2016-09-01T14:33:28Z",
       "side": 1,
       "message": "This should just be ARRAY_SIZE(baud_conf). The division by the size of the element is in the macro.",
+      "range": {
+        "startLine": 128,
+        "startChar": 17,
+        "endLine": 128,
+        "endChar": 65
+      },
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "360a375e_d8b2bcec",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-09-08T18:12:23Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "91e76d24_cf263278",
       "range": {
         "startLine": 128,
         "startChar": 17,
