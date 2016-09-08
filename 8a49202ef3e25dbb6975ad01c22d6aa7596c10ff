@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_579c74ba",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-08T19:57:31Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "88373bda_b9c5003b",
+      "revId": "8a49202ef3e25dbb6975ad01c22d6aa7596c10ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88373bda_4762acab",
         "filename": "common/motion_lid.c",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2016-08-22T16:14:54Z",
       "side": 1,
       "message": "nit: extra space.",
+      "range": {
+        "startLine": 66,
+        "startChar": 25,
+        "endLine": 66,
+        "endChar": 26
+      },
+      "revId": "8a49202ef3e25dbb6975ad01c22d6aa7596c10ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_9796fc98",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-08T19:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88373bda_4762acab",
       "range": {
         "startLine": 66,
         "startChar": 25,
