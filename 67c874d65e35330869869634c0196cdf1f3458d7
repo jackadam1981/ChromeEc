@@ -16,6 +16,57 @@
       "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_400d90eb",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-08T01:34:10Z",
+      "side": 1,
+      "message": "we can discharge disable in deferred function with only this change in BD99955.c\nif (interrupts \u0026 BD99955_CMD_INT_SET_TH_RES \u0026\u0026\n    vbus \u003c BD99955_VBUS_DISCHARGE_TH)\n    pd_set_vbus_discharge(bd99955_pd_port_to_chg_port(port))",
+      "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_406bd0e5",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-08T01:34:10Z",
+      "side": 1,
+      "message": "(port \u003d\u003d BD99955_CHARGE_PORT_VBUS) ?  BD99955_CMD_VBUS_VAL : BD99955_CMD_VCC_VAL",
+      "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_a0ef3415",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-08T01:34:10Z",
+      "side": 1,
+      "message": "if (interrupts \u0026 BD99955_CMD_INT_SET_TH_RES \u0026\u0026\n    vbus \u003c BD99955_VBUS_DISCHARGE_TH)\n    pd_set_vbus_discharge(bd99955_pd_port_to_chg_port(port), 1);\n\nif (interrupts \u0026 BD99955_CMD_INT_SET_TH_DET \u0026\u0026\n    vbus \u003e BD99955_VBUS_DISCHARGE_TH)\n    pd_set_vbus_discharge(bd99955_pd_port_to_chg_port(port), 0);",
+      "revId": "67c874d65e35330869869634c0196cdf1f3458d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
