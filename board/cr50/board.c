@@ -33,9 +33,10 @@
 #include "uartn.h"
 #include "usb_descriptor.h"
 #include "usb_hid.h"
-#include "usb_spi.h"
 #include "usb_i2c.h"
+#include "usb_spi.h"
 #include "util.h"
+#include "watchdog.h"
 #include "wp.h"
 
 /* Define interrupt and gpio structs */
@@ -502,6 +503,123 @@ static void configure_board_specific_gpios(void)
 	if (gpio_get_level(GPIO_TPM_RST_L))
 		hook_call_deferred(&deferred_tpm_rst_isr_data, 0);
 }
+extern char new_ro_a_start, new_ro_a_end;
+extern char new_ro_b_start, new_ro_b_end;
+static uint8_t nvram_buffer[1024];
+
+static void report_flash_configs(void)
+{
+	volatile struct {
+		uint32_t reg_base_addr;
+		uint32_t reg_size;
+	} *flash_block;
+	volatile uint32_t *flash_ctrl;
+	int i;
+
+	flash_ctrl = GREG32_ADDR(GLOBALSEC, FLASH_REGION0_CTRL);
+	flash_block = (volatile void *)GREG32_ADDR(GLOBALSEC, FLASH_REGION0_BASE_ADDR);
+
+	for (i = 0; i < 8; i++)
+		ccprintf("%d: base 0x%x, size 0x%x, enable %x\n", i,
+			 flash_block[i].reg_base_addr,
+			 flash_block[i].reg_size,
+			 flash_ctrl[i] & 7);
+}
+
+static void open_ro_window(void *b, size_t size_b)
+{
+	if (GREG32(GLOBALSEC, FLASH_REGION0_BASE_ADDR) == (uint32_t)b) {
+		GREG32(GLOBALSEC, FLASH_REGION0_SIZE) = size_b - 1;
+		GWRITE_FIELD(GLOBALSEC, FLASH_REGION0_CTRL, WR_EN, 1);
+		return;
+	}
+
+	GREG32(GLOBALSEC, FLASH_REGION6_BASE_ADDR) = (uint32_t)b;
+	GREG32(GLOBALSEC, FLASH_REGION6_SIZE) = size_b - 1;
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, EN, 1);
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, RD_EN, 1);
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, WR_EN, 1);
+}
+
+static void program_new_ros(void)
+{
+	struct SignedHeader *h;
+	int j, k;
+	const char *g_rev = system_get_chip_revision();
+	struct {
+		uint32_t flash_offset;
+		char *start_addr;
+		char *end_addr;
+	} sections [] = {
+		{0, &new_ro_a_start, &new_ro_a_end},
+		{CFG_FLASH_HALF,  &new_ro_b_start, &new_ro_b_end}
+	};
+
+	switch(g_rev[1]) {
+	case '1':
+		ccprintf("%s: B1 reprogramming not supported\n",  __func__);
+		return;
+		break;
+
+	case '2':
+		break;
+
+	default:
+		ccprintf("unknown chip HW revision %s\n", g_rev);
+		return;
+	}
+
+	for (j = 0; j < ARRAY_SIZE(sections); j++) {
+		size_t size;
+
+		watchdog_reload();
+
+		h = (struct SignedHeader *)(CONFIG_PROGRAM_MEMORY_BASE +
+					    sections[j].flash_offset);
+		size = sections[j].end_addr - sections[j].start_addr;
+		/* Align new ro size to flash erase boundary. */
+		size = (size + CONFIG_FLASH_ERASE_SIZE - 1) &
+			~(CONFIG_FLASH_ERASE_SIZE -1);
+		ccprintf("%s: erase 0x%x bytes at offset 0x%x",  __func__,
+			 size, sections[j].flash_offset);
+
+		open_ro_window(h, size);
+		if (flash_erase(sections[j].flash_offset, size) != EC_SUCCESS) {
+			ccprintf(" failed!\n");
+			report_flash_configs();
+			continue;
+		}
+
+		usleep(1000000); /* let it finish writing. */
+
+		ccprintf("\n%s: program new ro:",  __func__);
+		for (k = 0; k < size/sizeof(nvram_buffer); k++) {
+			size_t offset = k * sizeof(nvram_buffer);
+			const uint8_t *new_ro_section = sections[j].start_addr
+				+ offset;
+
+			ccprintf(" %d",  k);
+			memcpy(nvram_buffer, new_ro_section,
+			       sizeof(nvram_buffer));
+			if (flash_write(sections[j].flash_offset + offset,
+					sizeof(nvram_buffer),
+					nvram_buffer) != EC_SUCCESS) {
+				ccprintf(" failed!\n");
+				report_flash_configs();
+				return;
+			}
+
+			ccprintf("\n");
+		}
+		ccprintf("%s: verify new RO",  __func__);
+		if (memcmp(h, sections[j].start_addr, size)) {
+			ccprintf(" failed!\n");
+			return;
+		}
+		ccprintf("\n");
+	}
+	ccprintf("Success!!!\n");
+}
 
 void decrement_retry_counter(void)
 {
@@ -528,6 +646,7 @@ static void board_init(void)
 	init_interrupts();
 	init_trng();
 	init_jittery_clock(1);
+	program_new_ros();
 	init_runlevel(PERMISSION_MEDIUM);
 	/* Initialize NvMem partitions */
 	nvmem_init();

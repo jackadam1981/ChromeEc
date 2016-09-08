@@ -82,8 +82,8 @@ void system_pre_init(void)
 	 * sure the active bootloader is also locked. Any images updates must
 	 * go into an inactive image location. If it's already locked, this has
 	 * no effect.
+	 GREG32(GLOBALSEC, FLASH_REGION0_CTRL_CFG_EN) = 0;
 	 */
-	GREG32(GLOBALSEC, FLASH_REGION0_CTRL_CFG_EN) = 0;
 }
 
 void system_reset(int flags)
