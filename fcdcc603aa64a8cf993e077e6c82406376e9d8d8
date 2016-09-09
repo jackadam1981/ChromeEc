@@ -16,6 +16,116 @@
       "revId": "fcdcc603aa64a8cf993e077e6c82406376e9d8d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b1e22a7_8ede3ff9",
+        "filename": "chip/rotor/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-09T17:57:57Z",
+      "side": 1,
+      "message": "Maybe it\u0027s still around in low power modes when the higher-speed clocks go away?",
+      "parentUuid": "4b1e22a7_4bd9d972",
+      "revId": "fcdcc603aa64a8cf993e077e6c82406376e9d8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b1e22a7_8ecd9f2a",
+        "filename": "chip/rotor/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-09T17:57:57Z",
+      "side": 1,
+      "message": "\u003d ?",
+      "range": {
+        "startLine": 415,
+        "startChar": 34,
+        "endLine": 415,
+        "endChar": 36
+      },
+      "revId": "fcdcc603aa64a8cf993e077e6c82406376e9d8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b1e22a7_2e8f53df",
+        "filename": "chip/rotor/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-09T17:57:57Z",
+      "side": 1,
+      "message": "Does some function call before this set I2C_CON to a known-good state?  Or do we only call this in i2c_init(), so we\u0027re sure it\u0027s in a good state?",
+      "range": {
+        "startLine": 490,
+        "startChar": 25,
+        "endLine": 490,
+        "endChar": 27
+      },
+      "revId": "fcdcc603aa64a8cf993e077e6c82406376e9d8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b1e22a7_0ef36f9a",
+        "filename": "chip/rotor/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-09T17:57:57Z",
+      "side": 1,
+      "message": "ROTOR_MCU_M4_BIST_CLKEN?\n\nI suspect there\u0027s more than one CLKEN bit...",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 13
+      },
+      "revId": "fcdcc603aa64a8cf993e077e6c82406376e9d8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b1e22a7_4eed67b5",
+        "filename": "chip/rotor/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-09T17:57:57Z",
+      "side": 1,
+      "message": "Same here.  These are likely to conflict in the global namespace.",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 18
+      },
+      "revId": "fcdcc603aa64a8cf993e077e6c82406376e9d8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
