@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bbbe6d1_28a2b3b0",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-09T23:36:26Z",
+      "side": 1,
+      "message": "there should be a blank line after local parameter definitions. Does presubmit check not warn about this?",
+      "revId": "2beebbba4157929c4e6d92a425f880326507930a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
