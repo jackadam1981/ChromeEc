@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b1e22a7_4bd9d972",
+        "filename": "chip/rotor/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-09T17:35:31Z",
+      "side": 1,
+      "message": "Also, I wonder why we even have this source clock... It just results in a 32KHz bus speed regardless of desired frequency.",
+      "revId": "fcdcc603aa64a8cf993e077e6c82406376e9d8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
