@@ -49,4 +49,7 @@ struct tpm_cmd_header {
  */
 #define TPM2_PCR_Read		0x0000017e
 
+/* Request the TPM task to reset itself and restart */
+void tpm_reset(void);
+
 #endif	/* __CROS_EC_TPM_REGISTERS_H */

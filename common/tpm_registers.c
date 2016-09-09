@@ -563,6 +563,24 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 }
 #endif
 
+static void actually_do_the_tpm_reset(void)
+{
+	/* TODO(crosbug.com/p/52366): For now, we have to reboot. */
+	CPRINTS("TPM task restarting");
+	cflush();
+	system_reset(0);
+}
+
+/* Event to request a reset/re-initialization of the TPM task */
+#define TPM_EVENT_RESET (TASK_EVENT_CUSTOM(1))
+
+/* Other tasks can use this to reset the TPM without blocking */
+void tpm_reset(void)
+{
+	/* Just ask the TPM task to restart */
+	task_set_event(TASK_ID_TPM, TPM_EVENT_RESET, 0);
+}
+
 void tpm_task(void)
 {
 	if (system_rolling_reboot_suspected())
@@ -575,9 +593,15 @@ void tpm_task(void)
 		unsigned response_size;
 		uint32_t command_code;
 		struct tpm_cmd_header *tpmh;
+		uint32_t evt;
 
 		/* Wait for the next command event */
-		task_wait_event(-1);
+		evt = task_wait_event(-1);
+		if (evt & TPM_EVENT_RESET) {
+			actually_do_the_tpm_reset();
+			continue;
+		}
+
 		tpmh = (struct tpm_cmd_header *)tpm_.regs.data_fifo;
 		command_code = be32toh(tpmh->command_code);
 		CPRINTF("%s: received fifo command 0x%04x\n",

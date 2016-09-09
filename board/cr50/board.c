@@ -14,17 +14,18 @@
 #include "hooks.h"
 #include "i2cs.h"
 #include "init_chip.h"
-#include "registers.h"
 #include "nvmem.h"
+#include "registers.h"
+#include "spi.h"
 #include "system.h"
 #include "task.h"
+#include "tpm_registers.h"
 #include "trng.h"
 #include "uartn.h"
 #include "usb_descriptor.h"
 #include "usb_hid.h"
-#include "util.h"
-#include "spi.h"
 #include "usb_spi.h"
+#include "util.h"
 
 /* Define interrupt and gpio structs */
 #include "gpio_list.h"
@@ -284,14 +285,13 @@ void sys_rst_asserted(enum gpio_signal signal)
 {
 	/*
 	 * Cr50 drives SYS_RST_L in certain scenarios, in those cases
-	 * asserting this signal should not cause a system reset.
+	 * asserting this signal should not do anything.
 	 */
 	CPRINTS("%s resceived signal %d)", __func__, signal);
 	if (usb_spi_update_in_progress())
 		return;
 
-	cflush();
-	system_reset(0);
+	tpm_reset();
 }
 
 void nvmem_compute_sha(uint8_t *p_buf, int num_bytes,

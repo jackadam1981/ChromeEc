@@ -9,6 +9,7 @@
 #include "registers.h"
 #include "spi.h"
 #include "timer.h"
+#include "tpm_registers.h"
 #include "usb_spi.h"
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
@@ -65,12 +66,9 @@ static void update_finished(void)
 
 	/*
 	 * The AP and EC are reset in usb_spi_enable so the TPM is in a bad
-	 * state. Assert SYS_RST_L to reset the state.
+	 * state. Reset it.
 	 */
-	ASSERT(GREAD(PINMUX, GPIO0_GPIO4_SEL) == GC_PINMUX_DIOM0_SEL);
-	GWRITE(PINMUX, DIOM0_SEL, GC_PINMUX_GPIO0_GPIO4_SEL);
-	gpio_set_flags(GPIO_SYS_RST_L_OUT, GPIO_OUT_HIGH);
-	gpio_set_level(GPIO_SYS_RST_L_OUT, 0);
+	tpm_reset();
 }
 DECLARE_DEFERRED(update_finished);
 
@@ -124,10 +122,9 @@ void usb_spi_board_disable(struct usb_spi_config const *config)
 
 	/*
 	 * TODO(crosbug.com/p/52366): remove once sys_rst just resets the TPM
-	 * instead of cr50.
-	 * Resetting the EC and AP cause sys_rst to be asserted currently that
-	 * will cause cr50 to do a soft reset. Delay the end of the transaction
-	 * to prevent cr50 from resetting during a series of usb_spi calls.
+	 * instead of the whole Cr50, and just call tpm_reset() immediately.
+	 * Until then, delay a bit to prevent cr50 from rebooting during a
+	 * series of independent usb_spi calls.
 	 */
 	hook_call_deferred(&update_finished_data, 1 * SECOND);
 }
