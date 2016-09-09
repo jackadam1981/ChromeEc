@@ -23,11 +23,8 @@ void disable_spi(void)
 	gpio_set_level(GPIO_EC_FLASH_SELECT, 0);
 
 	/* Release AP and EC */
-	GWRITE(RBOX, ASSERT_EC_RST, 0);
-	gpio_set_level(GPIO_SYS_RST_L_OUT, 1);
-
-	/* Set SYS_RST_L as an input otherwise cr50 will hold the AP in reset */
-	gpio_set_flags(GPIO_SYS_RST_L_OUT, GPIO_INPUT);
+	deassert_ec_rst();
+	deassert_sys_rst();
 }
 
 void enable_ec_spi(void)
@@ -37,7 +34,7 @@ void enable_ec_spi(void)
 	gpio_set_level(GPIO_EC_FLASH_SELECT, 1);
 
 	/* hold EC in reset */
-	GWRITE(RBOX, ASSERT_EC_RST, 1);
+	assert_ec_rst();
 }
 
 void enable_ap_spi(void)
@@ -46,16 +43,14 @@ void enable_ap_spi(void)
 	gpio_set_level(GPIO_AP_FLASH_SELECT, 1);
 	gpio_set_level(GPIO_EC_FLASH_SELECT, 0);
 
-	/* hold the EC in reset */
-	GWRITE(RBOX, ASSERT_EC_RST, 1);
+	/* hold the AP in reset */
+	assert_sys_rst();
 
-	/* Set SYS_RST_L as an output */
-	ASSERT(GREAD(PINMUX, GPIO0_GPIO4_SEL) == GC_PINMUX_DIOM0_SEL);
-	GWRITE(PINMUX, DIOM0_SEL, GC_PINMUX_GPIO0_GPIO4_SEL);
-	gpio_set_flags(GPIO_SYS_RST_L_OUT, GPIO_OUT_HIGH);
-
-	/* hold AP in reset */
-	gpio_set_level(GPIO_SYS_RST_L_OUT, 0);
+	/*
+	 * On some systems SYS_RST_L is not level sensitive, so the only way to
+	 * be sure we're holding the AP in reset is to hold the EC too.
+	 */
+	assert_ec_rst();
 }
 
 int usb_spi_update_in_progress(void)
