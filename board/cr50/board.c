@@ -28,6 +28,7 @@
 #include "usb_descriptor.h"
 #include "usb_hid.h"
 #include "usb_spi.h"
+#include "usb_i2c.h"
 #include "util.h"
 
 /* Define interrupt and gpio structs */
@@ -609,7 +610,7 @@ static void servo_attached(void)
 	uartn_tx_disconnect(UART_EC);
 
 	/* Disconnect i2cm interface to ina */
-	ina_disconnect();
+	usb_i2c_board_disable(0);
 }
 
 void device_state_on(enum gpio_signal signal)
