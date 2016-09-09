@@ -288,8 +288,10 @@ static inline void set_state(int port, enum pd_states next_state)
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 #ifdef CONFIG_USB_PD_DISCHARGE_GPIO
-	if (last_state == PD_STATE_SRC_SWAP_SRC_DISABLE)
+	if (last_state == PD_STATE_SRC_SWAP_SRC_DISABLE) {
+		CPRINTS("pd_discharge_gpio[%d]=0", port);
 		gpio_set_level(pd_discharge_gpio[port], 0);
+	}
 #endif
 
 	if (next_state == PD_STATE_SRC_DISCONNECTED ||
@@ -1952,6 +1954,7 @@ void pd_task(void)
 				pd_power_supply_reset(port);
 #ifdef CONFIG_USB_PD_DISCHARGE_GPIO
 				gpio_set_level(pd_discharge_gpio[port], 1);
+				CPRINTS("pd_discharge_gpio[port]=1");
 #endif
 				set_state_timeout(port,
 						  get_time().val +

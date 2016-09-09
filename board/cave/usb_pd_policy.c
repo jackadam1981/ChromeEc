@@ -37,6 +37,14 @@ const uint32_t pd_snk_pdo[] = {
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
+static void set_vbus_discharge_gpio(int port, int enable)
+{
+	enum gpio_signal gpio;
+
+	gpio = port ? GPIO_USB_C1_DISCHARGE : GPIO_USB_C0_DISCHARGE;
+	gpio_set_level(gpio, enable);
+}
+
 int pd_is_valid_input_voltage(int mv)
 {
 	return 1;
@@ -56,6 +64,8 @@ int pd_set_power_supply_ready(int port)
 	gpio_set_level(port ? GPIO_USB_C1_5V_EN :
 			      GPIO_USB_C0_5V_EN, 1);
 
+	set_vbus_discharge_gpio(port, 0);
+
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 
@@ -64,9 +74,18 @@ int pd_set_power_supply_ready(int port)
 
 void pd_power_supply_reset(int port)
 {
+	enum gpio_signal gpio;
+	int prev_en;
+
+	gpio = port ? GPIO_USB_C1_5V_EN : GPIO_USB_C0_5V_EN;
+	prev_en = gpio_get_level(gpio);
+
 	/* Disable VBUS */
-	gpio_set_level(port ? GPIO_USB_C1_5V_EN :
-			      GPIO_USB_C0_5V_EN, 0);
+	gpio_set_level(gpio, 0);
+
+	/* Enable discharge if we were previously sourcing 5V */
+	if (prev_en)
+		set_vbus_discharge_gpio(port, 1);
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
