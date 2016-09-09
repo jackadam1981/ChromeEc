@@ -16,6 +16,24 @@
       "revId": "d353f9234902afe67677c11020b0c6125f7f2cae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b1e22a7_4bcf197b",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-09T17:45:08Z",
+      "side": 0,
+      "message": "SYS_RST_L won\u0027t be, but system_reset(0) will be invoked. We just finished asserting SYS_RST_L to everything except Cr50 while the update was happening, so we shouldn\u0027t need to do it again.",
+      "parentUuid": "4b1e22a7_4bb0b94a",
+      "revId": "d353f9234902afe67677c11020b0c6125f7f2cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
