@@ -445,7 +445,7 @@ static void charge_manager_refresh(void)
 				new_port, new_supplier, new_charge_current,
 				registration_time[new_port]);
 #else
-		board_set_charge_limit(new_charge_current);
+		board_set_charge_limit(new_charge_current, new_supplier);
 #endif
 		CPRINTS("CL: p%d s%d i%d v%d", new_port, new_supplier,
 			new_charge_current, new_charge_voltage);
@@ -657,7 +657,7 @@ void charge_manager_force_ceil(int port, int ceil)
 	 * waiting for our deferred task to run.
 	 */
 	if (port == charge_port && ceil < charge_current)
-		board_set_charge_limit(ceil);
+		board_set_charge_limit(ceil, CHARGE_SUPPLIER_PD);
 
 	/*
 	 * Now inform charge_manager so it stays in sync with the state of

@@ -489,12 +489,6 @@ static void board_init(void)
 		pd_enable = 1;
 	}
 	pd_comm_enable(pd_enable);
-
-#ifdef CONFIG_PWM
-	/* Enable ILIM PWM: initial duty cycle 0% = 500mA limit. */
-	pwm_enable(PWM_CH_ILIM, 1);
-	pwm_set_duty(PWM_CH_ILIM, 0);
-#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -822,10 +816,13 @@ int board_is_vbus_too_low(enum chg_ramp_vbus_state ramp_state)
 	return vbus_sum < (VBUS_STABLE_SAMPLE_COUNT * VBUS_LOW_THRESHOLD_MV);
 }
 
+static int active_supplier = CHARGE_SUPPLIER_NONE;
+
 static int board_update_charge_limit(int charge_ma)
 {
 	static int actual_charge_rate_ma = -1;
 
+	ASSERT(charge_ma <= PD_MAX_CURRENT_MA);
 	desired_charge_rate_ma = charge_ma;
 
 	if (batt_soc >= HIGH_BATT_THRESHOLD &&
@@ -838,18 +835,23 @@ static int board_update_charge_limit(int charge_ma)
 
 	actual_charge_rate_ma = charge_ma;
 
-#ifdef CONFIG_PWM
-	int pwm_duty = MA_TO_PWM(charge_ma);
-	if (pwm_duty < 0)
-		pwm_duty = 0;
-	else if (pwm_duty > 100)
-		pwm_duty = 100;
-
-	pwm_set_duty(PWM_CH_ILIM, pwm_duty);
-#endif
-
 	pd_status.curr_lim_ma = MAX(0, charge_ma -
 					INPUT_CURRENT_LIMIT_OFFSET_MA);
+
+	/*
+	 * Perform additional adjustment of current, based on linear
+	 * interpolation of following observations:
+	 * - 3000 mA charging can exceed limit by 150mA
+	 * - 2250 mA charging can exceed limit by 250mA
+	 * Only perform adjustment when we're not ramping, since ramp
+	 * algorithm should usually find appropriate charger current
+	 * limit on its own. Note that actual applied current limit will
+	 * not be 0mA but rather CONFIG_CHARGER_INPUT_CURRENT (320mA on samus).
+	 */
+	if (!board_is_ramp_allowed(active_supplier))
+		pd_status.curr_lim_ma = MAX(0,
+					    pd_status.curr_lim_ma - 150 -
+					    (3000 - charge_ma) * 10 / 75);
 
 	CPRINTS("New ilim %d", charge_ma);
 	return 1;
@@ -860,8 +862,10 @@ static int board_update_charge_limit(int charge_ma)
  *
  * @param charge_ma     Desired charge limit (mA).
  */
-void board_set_charge_limit(int charge_ma)
+void board_set_charge_limit(int charge_ma, int supplier)
 {
+	active_supplier = supplier;
+
 	/* Update current limit and notify EC if it changed */
 	if (board_update_charge_limit(charge_ma))
 		pd_send_ec_int();

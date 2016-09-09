@@ -37,7 +37,7 @@ static int new_power_request[PD_PORT_COUNT];
 static int power_role[PD_PORT_COUNT];
 
 /* Callback functions called by CM on state change */
-void board_set_charge_limit(int charge_ma)
+void board_set_charge_limit(int charge_ma, int supplier)
 {
 	active_charge_limit = charge_ma;
 }

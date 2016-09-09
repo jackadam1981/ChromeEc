@@ -330,7 +330,8 @@ void chg_ramp_task(void)
 		active_icl = active_icl_new;
 
 		/* Set the input current limit */
-		board_set_charge_limit(chg_ramp_get_current_limit());
+		board_set_charge_limit(chg_ramp_get_current_limit(),
+				       active_sup);
 
 		if (ramp_st == CHG_RAMP_STABILIZE)
 			/*

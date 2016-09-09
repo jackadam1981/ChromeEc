@@ -53,6 +53,8 @@ enum charge_supplier {
 	CHARGE_SUPPLIER_COUNT
 };
 
+#define CHARGE_SUPPLIER_PD CHARGE_SUPPLIER_TEST1
+
 /* supplier_priority table defined in board.c */
 extern const int supplier_priority[];
 
