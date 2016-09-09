@@ -386,6 +386,23 @@ int is_ec_rst_asserted(void)
 	return GREAD(RBOX, ASSERT_EC_RST);
 }
 
+void nvmem_wipe_or_reboot(void)
+{
+	/*
+	 * Blindly zapping the TPM space while the AP is awake and poking at it
+	 * will bork the TPM task and the AP itself, so force the system off.
+	 */
+	assert_sys_rst();
+	assert_ec_rst();
+
+	/* The reset must succeed. If anything goes wrong, reboot. */
+	if (nvmem_setup(0) != EC_SUCCESS || tpm_reset() != 1)
+		system_reset(SYSTEM_RESET_HARD);
+
+	deassert_ec_rst();
+	deassert_sys_rst();
+}
+
 void nvmem_compute_sha(uint8_t *p_buf, int num_bytes,
 		       uint8_t *p_sha, int sha_len)
 {
