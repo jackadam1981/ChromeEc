@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bbbe6d1_687f4b06",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-09T22:54:01Z",
+      "side": 1,
+      "message": "I am not sure how safe this is from the nested interrupts point of view:\n\nHopefully this write does not change the interrupt level the core is running at and the next interrupt asserting before processing of this one is completed would not case a preemption, but can you double check on this?\n\nAdding rspangler@ for further comments.",
+      "revId": "5b6900839bad393126dc413f5c9ae21e9eda13e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
