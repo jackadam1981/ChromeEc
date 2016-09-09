@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bbbe6d1_88cc9f2f",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-09T23:10:17Z",
+      "side": 1,
+      "message": "should you still be returning a nonzero value if the pointers have been adjusted?",
+      "revId": "34fcfad9cf96d15f7d05b681d1533f6683a21010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bbbe6d1_48e9a77a",
+        "filename": "chip/g/i2cs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-09T23:10:17Z",
+      "side": 1,
+      "message": "i think there should be a different function for resetting the fifo. It does not make sense to reset the fifo and return the number of characters in it.",
+      "revId": "34fcfad9cf96d15f7d05b681d1533f6683a21010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
