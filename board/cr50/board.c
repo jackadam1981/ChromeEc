@@ -12,6 +12,7 @@
 #include "flash_config.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "i2cs.h"
 #include "init_chip.h"
 #include "nvmem.h"
@@ -264,6 +265,7 @@ const void * const usb_strings[] = {
 	[USB_STR_EC_NAME] = USB_STRING_DESC("EC"),
 	[USB_STR_UPGRADE_NAME] = USB_STRING_DESC("Firmware upgrade"),
 	[USB_STR_SPI_NAME] = USB_STRING_DESC("AP EC upgrade"),
+	[USB_STR_I2C_NAME] = USB_STRING_DESC("I2C"),
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 #endif
@@ -273,6 +275,11 @@ const struct spi_device_t spi_devices[] = {
 	[CONFIG_SPI_FLASH_PORT] = {0, 2, GPIO_COUNT}
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
+
+const struct i2c_port_t i2c_ports[] = {
+	{ "master", I2C_PORT_MASTER, 0, GPIO_I2C0_SCL, GPIO_STRAP0 },
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 int flash_regions_to_enable(struct g_flash_region *regions,
 			    int max_regions)
