@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b1e22a7_6844a39e",
+        "filename": "board/cave/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-09T16:08:39Z",
+      "side": 1,
+      "message": "This may get left on indefinitely, eg. if we\u0027re dual role toggling and finally settle into sink role.\n\nDid you copy this from my recent discharge CL? We implement something different there to work-around some quirks of the bd9995* charger.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 35
+      },
+      "revId": "23718ee943e8f5ed480a5e3932303cc651c9f222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
