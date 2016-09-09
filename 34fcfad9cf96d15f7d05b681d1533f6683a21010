@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6bbbe6d1_e8b8bbe2",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-09-09T23:44:05Z",
+      "side": 1,
+      "message": "I can make a specific function to reset the fifo. I was still returning the original depth just so that I could track have that info for logging.",
+      "parentUuid": "6bbbe6d1_88cc9f2f",
+      "revId": "34fcfad9cf96d15f7d05b681d1533f6683a21010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bbbe6d1_48e9a77a",
         "filename": "chip/g/i2cs.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2016-09-09T23:10:17Z",
       "side": 1,
       "message": "i think there should be a different function for resetting the fifo. It does not make sense to reset the fifo and return the number of characters in it.",
+      "revId": "34fcfad9cf96d15f7d05b681d1533f6683a21010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bbbe6d1_88a1ffaa",
+        "filename": "chip/g/i2cs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-09-09T23:44:05Z",
+      "side": 1,
+      "message": "I will separate the two uses into two functions. But, I\u0027m not so convinced anymore that checking for non-zero fifo depth is needed for TPM fifo register reads. Because the Host always reads burstcount prior to starting a read of the TPM fifo register, it should always read the correct number of bytes.",
+      "parentUuid": "6bbbe6d1_48e9a77a",
       "revId": "34fcfad9cf96d15f7d05b681d1533f6683a21010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
