@@ -22,6 +22,30 @@
       "revId": "cd6dfd2c99fe704a21424719ae53b38bac6a69a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b1e22a7_686dc32e",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-09T16:07:30Z",
+      "side": 1,
+      "message": "I would not put that code here, because it will be hard to locate (we set CONFIG_ in inclue/config.h or board.h only).\nI can move this code in config.h, there are already some sanity checks there, but it is a little bit out of context.",
+      "parentUuid": "f68dffb6_eb5f4f72",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 6
+      },
+      "revId": "cd6dfd2c99fe704a21424719ae53b38bac6a69a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
