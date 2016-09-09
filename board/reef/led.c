@@ -112,6 +112,24 @@ static void led_set_power(void)
 	static int previous_state_suspend;
 
 	power_ticks++;
+
+	if (!chipset_in_state(CHIPSET_STATE_ANY_OFF) &&
+		charge_get_percent() < LOW_BATTERY_PERCENTAGE) {
+
+		/* Less than 3%, blink one second every two second */
+		if (charge_get_percent() <
+			CRITICAL_LOW_BATTERY_PERCENTAGE)
+			led_set_color_battery(
+				(power_ticks % LED_TOTAL_2SECS_TICKS <
+				LED_ON_1SEC_TICKS) ? LED_AMBER : LED_OFF);
+		/* Less than 10%, blink one second every four seconds */
+		else
+			led_set_color_battery(
+				(power_ticks % LED_TOTAL_4SECS_TICKS <
+				LED_ON_1SEC_TICKS) ? LED_AMBER : LED_OFF);
+		return;
+	}
+
 	if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
 		/*
 		 * Reset ticks if entering suspend so LED turns amber
@@ -143,6 +161,11 @@ static void led_set_battery(void)
 	uint32_t chflags = charge_get_flags();
 
 	battery_ticks++;
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		led_set_color_power(LED_OFF);
+		return;
+	}
 
 	switch (charge_get_state()) {
 	case PWR_STATE_CHARGE:
