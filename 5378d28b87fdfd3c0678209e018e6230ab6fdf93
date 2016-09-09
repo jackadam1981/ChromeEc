@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b1e22a7_8eac7f91",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-09T17:49:39Z",
+      "side": 1,
+      "message": "nit: this is better to be mentioned where the enum value is defined such that all places where it is used are checked when the bug is closed.",
+      "range": {
+        "startLine": 567,
+        "startChar": 5,
+        "endLine": 568,
+        "endChar": 30
+      },
+      "revId": "5378d28b87fdfd3c0678209e018e6230ab6fdf93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
