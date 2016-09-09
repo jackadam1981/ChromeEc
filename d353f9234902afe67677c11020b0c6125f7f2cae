@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b1e22a7_4bb0b94a",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-09T17:27:59Z",
+      "side": 0,
+      "message": "SYS_RST_L is asserted by this code, but is not going to be any more once this change landed?",
+      "revId": "d353f9234902afe67677c11020b0c6125f7f2cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

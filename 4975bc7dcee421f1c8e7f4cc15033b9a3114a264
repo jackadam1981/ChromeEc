@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b1e22a7_6b781d85",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-09T17:27:59Z",
+      "side": 1,
+      "message": "I suggest \"this signal\u0027s assertion should be ignored here\"",
+      "range": {
+        "startLine": 288,
+        "startChar": 4,
+        "endLine": 288,
+        "endChar": 48
+      },
+      "revId": "4975bc7dcee421f1c8e7f4cc15033b9a3114a264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
