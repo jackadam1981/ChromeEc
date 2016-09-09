@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "4b1e22a7_eb4d2d90",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-09T17:41:49Z",
+      "side": 1,
+      "message": "that\u0027s great you sorted through these things, but you really need to add comments in these files indicating what\u0027s actually happening. It\u0027s not clear from someone who is picking this up and looking at what is currently going on. \n\nMoreover, these functions should be marked __attribute__((noreturn)) so that 1. it provide more information to the reader and 2. let\u0027s the compiler perform certain optimizations.",
+      "parentUuid": "2bb72eb7_677a7218",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "360a375e_b86d38c3",
         "filename": "chip/npcx/system.c",
         "patchSetId": 2
@@ -191,6 +209,24 @@
       "side": 1,
       "message": "The cortex-m4 only supports ARMv7E-M thumb instruction set. Since \"bx\" means branch and exchange instruction set, it uses the bit 0 of address to distinguish which mode it wants to exchange.\n \nBack to the question itself, generally, the compiler will use \"bx\" instruction for \"function pointer\" and vector ISRs because it doesn\u0027t know whether callee jumps back to caller. \"bx\" won\u0027t store pc to lr and compiler also handles the bit 0 of address automatically.\n\nBut in this case, we cast a 32-bits integer into a function pointer directly. The compiler won\u0027t handle address bit 0 for us. We need to add it by ourselves. I don\u0027t think we need to inline assembly. The reason I listed the instructions is just want to explain why setting bit 0 of address to 1.",
       "parentUuid": "f68dffb6_ec95b3eb",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b1e22a7_cb194931",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-09T17:41:49Z",
+      "side": 1,
+      "message": "That reasoning doesn\u0027t make sense at all to me. A function pointer does not mean \"it may never return\". All functions return in C unless you indicate to the compiler otherwise.\n\nThat ldmia is reloading the link register. This is a tail call optimization in that it expects the callee to return back to this function which would subsequently return back to the caller.\n\nThe reality is that you are wanting to force a thumb branch. Since the core expects it to be thumb mode. Just comment that you are requiring thumb mode (thus the lowest bit set). I still think it\u0027d be better to provide clearer constructs through inline assembly or inline functions which have \u0027| 0x1\u0027 in one place, but a comment should suffice.",
+      "parentUuid": "ebf9963d_bdff3ff9",
       "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -285,6 +321,30 @@
       "side": 1,
       "message": "As Michal point out in comment#25, my Israeli colleague try to make api being generic and not force the start address to be 16B aligned. But it influences the performance a lot. So far, no matter source, destination address and size are all 16 bytes aligned. It\u0027s worth to take this limitation. I\u0027ll change this condition checking to ASSERT marco.",
       "parentUuid": "360a375e_98779497",
+      "range": {
+        "startLine": 889,
+        "startChar": 0,
+        "endLine": 900,
+        "endChar": 9
+      },
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b1e22a7_2be905e5",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-09T17:41:49Z",
+      "side": 1,
+      "message": "But assert doesn\u0027t help. Since this is a vitally important piece of infrastructure what is ensuring all RO and RW images meet these requirements? If it\u0027s being done in the linker or somewhere else, please locate it and comment it heavily that this chip absolutely requires these constraints.",
+      "parentUuid": "ebf9963d_5d7a7b17",
       "range": {
         "startLine": 889,
         "startChar": 0,
