@@ -16,6 +16,24 @@
       "revId": "bc04d88b36a897ef697620e977f3f4c87a125a70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_f0f10195",
+        "filename": "board/reef/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-09T04:26:46Z",
+      "side": 1,
+      "message": "Done. Only issue was that we need to reverse the order of setting USB_C0_PD_RST_L and EN_USB_TCPC_PWR for standby/active mode. So I kept those separate for now.",
+      "parentUuid": "360a375e_3e5495f8",
+      "revId": "bc04d88b36a897ef697620e977f3f4c87a125a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
