@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b1e22a7_482eff53",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-09T16:47:25Z",
+      "side": 1,
+      "message": "can you call this \"BOARD_NEEDS_SYS_RST_PULL_UP\" instead please.\n\nalso, please add a comment mentioning that this is going to be not needed once crosbug.com/p/54059 has been fixed.",
+      "range": {
+        "startLine": 473,
+        "startChar": 8,
+        "endLine": 473,
+        "endChar": 33
+      },
+      "revId": "1c2721ab52c8980f0ceac32023a45cf8e064cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
