@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f68dffb6_8bcfab1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-09T04:28:45Z",
+      "side": 1,
+      "message": "Not strictly necessary now, however this will become necessary when we are using CABLE_DET to set the power mode (I\u0027m still experimenting with that...).",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "9d37fee424579a7f243da08bb881ff01937e8300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
