@@ -347,6 +347,29 @@ int is_ec_rst_asserted(void)
 	return GREAD(RBOX, ASSERT_EC_RST);
 }
 
+/* TODO: This wipes ALL users' spaces. It should be more discerning. */
+int nvmem_wipe(enum nvmem_users user)
+{
+	int r;
+
+	/*
+	 * Blindly zapping the TPM space while the AP is awake and poking at it
+	 * will bork the TPM task and the AP itself, so force the AP off first.
+	 */
+	assert_sys_rst();
+
+	r = nvmem_setup(0);
+
+	/*
+	 * TODO(crosbug.com/p/52366): Reset the TPM task on EC_SUCCESS
+	 * before allowing the AP to reboot.
+	 */
+
+	deassert_sys_rst();
+
+	return r;
+}
+
 void nvmem_compute_sha(uint8_t *p_buf, int num_bytes,
 		       uint8_t *p_sha, int sha_len)
 {

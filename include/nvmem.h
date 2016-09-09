@@ -51,9 +51,10 @@
  *    CONFIG_FLASH_NVMEM_BASE_(A|B) -> address of start of each partition
  *
  * The board.h file must define a macro or enum named NVMEM_NUM_USERS.
- * The board.c file must include 1 function and an array of user buffer lengths
+ * The board.c file must implement:
  *    nvmem_user_sizes[] -> array of user buffer lengths
  *    nvmem_compute_sha() -> function used to compute 4 byte sha (or equivalent)
+ *    nvmem_wipe() -> function to erase and reformat the users' storage
  *
  * Note that total length of user buffers must satisfy the following:
  *   sum(user sizes) <= (NVMEM_PARTITION_SIZE) - sizeof(struct nvmem_tag)
@@ -175,5 +176,13 @@ int nvmem_setup(uint8_t version);
  */
 void nvmem_compute_sha(uint8_t *p_buf, int num_bytes, uint8_t *p_sha,
 		       int sha_len);
+
+/*
+ * Erase and reformat the given user's storage space.
+ *
+ * @param user: Data section within NvMem space
+ * @return EC_SUCCESS if flash operations are successful, error otherwise.
+ */
+int nvmem_wipe(enum nvmem_users user);
 
 #endif /* __CROS_EC_NVMEM_UTILS_H */

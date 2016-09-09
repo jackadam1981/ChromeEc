@@ -6,6 +6,7 @@
 #include "common.h"
 #include "console.h"
 #include "hooks.h"
+#include "nvmem.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -62,14 +63,12 @@ static int dance_in_progress;
 /* This will only be invoked when the dance is done, either good or bad. */
 static void dance_is_over(void)
 {
-	if (dance_in_progress) {
-		CPRINTS("Unlock dance failed");
-	} else {
-		CPRINTS("Unlock dance completed successfully");
-		console_restricted_state = 0;
-	}
+	int completed = !dance_in_progress;
 
 	dance_in_progress = 0;
+
+	if (!completed)
+		CPRINTS("Unlock dance failed");
 
 	/* Disable power button interrupt */
 	GWRITE_FIELD(RBOX, INT_ENABLE, INTR_PWRB_IN_FED, 0);
@@ -77,6 +76,21 @@ static void dance_is_over(void)
 
 	/* Allow sleeping again */
 	enable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
+
+	if (completed) {
+		CPRINTS("Unlock dance completed successfully");
+
+		if (nvmem_wipe(NVMEM_TPM) == EC_SUCCESS) {
+			console_restricted_state = 0;
+			CPRINTS("TPM is erased, console is unlocked.");
+			/*
+			 * TODO(crosbug.com/p/52366): nvmem_wipe() should
+			 * reset the TPM task so we don't have to do this.
+			 */
+			system_reset(SYSTEM_RESET_HARD);
+		} else
+			CPRINTS("TPM not erased. Leaving console locked.");
+	}
 }
 DECLARE_DEFERRED(dance_is_over);
 
@@ -129,6 +143,10 @@ static int start_the_dance(void)
 }
 
 /****************************************************************************/
+static const char warning[] = "\n\t!!! WARNING !!!\n\n"
+	"\tThe AP will be impolitely shut down and the TPM persistent memory\n"
+	"\tERASED before the console is unlocked. If this is not what you\n"
+	"\twant, simply do nothing and the unlock process will fail.\n\n";
 
 static int command_lock(int argc, char **argv)
 {
@@ -162,9 +180,12 @@ static int command_lock(int argc, char **argv)
 			return EC_ERROR_BUSY;
 		}
 
+		/* Warn about the side effects of wiping nvmem */
+		ccputs(warning);
+
 		/* Now the user has to sit there and poke the button */
 		ccprintf("Start poking the power button in ");
-		for (i = 5; i; i--) {
+		for (i = 10; i; i--) {
 			ccprintf("%d ", i);
 			sleep(1);
 		}
