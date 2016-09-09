@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "2bb72eb7_677a7218",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-09-09T03:46:14Z",
+      "side": 1,
+      "message": "Indeed, it\u0027s a little tricky. At the beginning I developed the utilities located in suspend ram, the original ec.lds.S looked like:\n\n1. Add a 1568 bytes memory declaration, LPRAM, in MEMORY section.\n2. Add a lowpower_ram section and declare it is loaded from flash to lpram. (ie. \"} \u003e LPRAM AT \u003e FLASH\")\n\nBut during the arranging the memory mapping of ec with Shawn, I don\u0027t want to add the complexity of linker script and put them in .text section together. It should be OK since we keep it small and doesn\u0027t touch any data in rodata section. Any local const data related to function is put in text region. (For example, register addresses.) It will be copied to suspend ram, too.\n\nThere\u0027s is another method to achieve this. Put __start_gdma() in the end of CDRAM. Kick off GDMA to move the other region from flash to ram. (Exclude itself.) Make sure the length and address meet 16 bytes aligned. But since it didn\u0027t move itself from RW region. I think there\u0027s side effect during computing hash value of RW region. That\u0027s why I move it into lpram. It\u0027s simpler.",
+      "parentUuid": "f68dffb6_0c69ffee",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "360a375e_b86d38c3",
         "filename": "chip/npcx/system.c",
         "patchSetId": 2
@@ -155,6 +173,24 @@
       "side": 1,
       "message": "You are relying on the compiler to emit those instructions. It is thumb mode you are trying to achieve. As such you need to put in the inline assembly to force the bx instruction as you are relying on it. That or comment very heavily the assumptions you are making such that when things blow up there\u0027s some pieces to look at after the fact.",
       "parentUuid": "ebf9963d_bda97f80",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebf9963d_bdff3ff9",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-09-09T03:46:14Z",
+      "side": 1,
+      "message": "The cortex-m4 only supports ARMv7E-M thumb instruction set. Since \"bx\" means branch and exchange instruction set, it uses the bit 0 of address to distinguish which mode it wants to exchange.\n \nBack to the question itself, generally, the compiler will use \"bx\" instruction for \"function pointer\" and vector ISRs because it doesn\u0027t know whether callee jumps back to caller. \"bx\" won\u0027t store pc to lr and compiler also handles the bit 0 of address automatically.\n\nBut in this case, we cast a 32-bits integer into a function pointer directly. The compiler won\u0027t handle address bit 0 for us. We need to add it by ourselves. I don\u0027t think we need to inline assembly. The reason I listed the instructions is just want to explain why setting bit 0 of address to 1.",
+      "parentUuid": "f68dffb6_ec95b3eb",
       "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
