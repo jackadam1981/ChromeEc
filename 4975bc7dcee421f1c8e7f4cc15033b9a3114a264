@@ -46,6 +46,52 @@
       "revId": "4975bc7dcee421f1c8e7f4cc15033b9a3114a264",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b1e22a7_2e5753fc",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-09T18:01:13Z",
+      "side": 1,
+      "message": "So, maybe tpm_reset_async()?\n\nIs there a way that the tasks can tell the reset has completed?  Or do they just not care?",
+      "range": {
+        "startLine": 578,
+        "startChar": 5,
+        "endLine": 578,
+        "endChar": 14
+      },
+      "revId": "4975bc7dcee421f1c8e7f4cc15033b9a3114a264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b1e22a7_4e6607f3",
+        "filename": "include/tpm_registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-09T18:01:13Z",
+      "side": 1,
+      "message": "Note: Asynchronous!",
+      "range": {
+        "startLine": 52,
+        "startChar": 51,
+        "endLine": 52,
+        "endChar": 52
+      },
+      "revId": "4975bc7dcee421f1c8e7f4cc15033b9a3114a264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
