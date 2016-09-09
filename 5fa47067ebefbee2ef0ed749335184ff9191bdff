@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "f68dffb6_355d1be9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-09T00:20:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71dd999f_86a97b7e",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "5fa47067ebefbee2ef0ed749335184ff9191bdff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71dd999f_a6dabf05",
         "filename": "common/keyboard_mkbp.c",
         "patchSetId": 1
@@ -59,6 +83,24 @@
       "writtenOn": "2016-09-02T19:30:36Z",
       "side": 1,
       "message": "I remember dianders@ saying that the kernel likes to know the state of switches at boot time.  Should we add a HOOK_INIT here as well?",
+      "revId": "5fa47067ebefbee2ef0ed749335184ff9191bdff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68dffb6_755fa3df",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-09T00:20:44Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "71dd999f_a6dabf05",
       "revId": "5fa47067ebefbee2ef0ed749335184ff9191bdff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
