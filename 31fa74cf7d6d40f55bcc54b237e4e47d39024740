@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6bbbe6d1_f892484b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-10T05:26:26Z",
+      "side": 1,
+      "message": "Aaron, I don\u0027t understand your grave concern about this issue:\n\nthe objective is to have one image for all platforms.\n\nWe can achieve this delineating behavior between ARM and x86 platforms.\n\nWhen and if this becomes inadequate - we will address the issue. I don\u0027t believe in trying to solve all problems before they become problems, I still think the approach we are taking is perfectly fine.\n\nThe bits determining behavior differences are well defined, their setting can be revisited/fine tuned at any time.\n\nThe need for this gpio setting difference will be eliminated with the next gru hardware revision.",
+      "parentUuid": "6bbbe6d1_252019a8",
+      "revId": "31fa74cf7d6d40f55bcc54b237e4e47d39024740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bbbe6d1_452c2da5",
         "filename": "board/cr50/board.c",
         "patchSetId": 5
@@ -30,6 +48,30 @@
       "writtenOn": "2016-09-10T02:23:01Z",
       "side": 1,
       "message": "This isn\u0027t even the correct bug?",
+      "range": {
+        "startLine": 567,
+        "startChar": 11,
+        "endLine": 567,
+        "endChar": 30
+      },
+      "revId": "31fa74cf7d6d40f55bcc54b237e4e47d39024740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bbbe6d1_389cc05e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-10T05:26:26Z",
+      "side": 1,
+      "message": "good point, this will have to be fixed both here and in the .h file, Mary, can you please upload a patch.",
+      "parentUuid": "6bbbe6d1_452c2da5",
       "range": {
         "startLine": 567,
         "startChar": 11,
