@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bbbe6d1_78fd58cc",
+        "filename": "board/reef/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-10T18:02:49Z",
+      "side": 1,
+      "message": "It\u0027s probably best to leave battery LED control in led_set_battery(), and power LED control in led_set_power().",
+      "revId": "4b6a98f2cd6bd0d3989e963184fdbcfc15a1b369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
