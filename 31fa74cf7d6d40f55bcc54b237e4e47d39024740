@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bbbe6d1_252019a8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-10T02:23:01Z",
+      "side": 1,
+      "message": "So we did make this strap to mean more than just the IO. I hope this  change has been propagated to all relevant docs. I see there is a TODO, but is that going to happen? There was talk about wanting SPI I/O on x86, but if we are following the same x86 designs (except for SPI over i2c) this will break such notions which is what I explicitly noted we should not be doing.",
+      "revId": "31fa74cf7d6d40f55bcc54b237e4e47d39024740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bbbe6d1_452c2da5",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-10T02:23:01Z",
+      "side": 1,
+      "message": "This isn\u0027t even the correct bug?",
+      "range": {
+        "startLine": 567,
+        "startChar": 11,
+        "endLine": 567,
+        "endChar": 30
+      },
+      "revId": "31fa74cf7d6d40f55bcc54b237e4e47d39024740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
