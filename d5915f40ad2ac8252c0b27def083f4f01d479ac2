@@ -251,6 +251,24 @@
     },
     {
       "key": {
+        "uuid": "abddde5f_8b9a6d5f",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-09-10T00:46:15Z",
+      "side": 1,
+      "message": "Sorry. I didn\u0027t explain this very well. The reason compiler chooses \"bx\" or \"blx\" for function pointer and vector ISRs is jumping range. Only \"bx\" and \"blx\" support A32. The other branch commands have their own range limitation. \n\nBut \"bx\" and \"blx\" also have their own burden. (That\u0027s my personal opinion. Although they support A32 but also need to exchange instruction set at the same time.) They\u0027re OK for ARM CPU since it supports both ARM and thumb instruction sets. But cortex-m series only support thumb instruction set. The compiler needs to handle jumping address carefully for different CPUs.\n\nI\u0027ll add the comment to indicate it\u0027s related to thumb branch.",
+      "parentUuid": "4b1e22a7_cb194931",
+      "revId": "d5915f40ad2ac8252c0b27def083f4f01d479ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "360a375e_f84ea05e",
         "filename": "chip/npcx/system.c",
         "patchSetId": 2
