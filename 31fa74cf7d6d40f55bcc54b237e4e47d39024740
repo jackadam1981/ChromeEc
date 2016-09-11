@@ -81,6 +81,30 @@
       "revId": "31fa74cf7d6d40f55bcc54b237e4e47d39024740",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb4516e6_dd586b5d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-09-11T19:32:20Z",
+      "side": 1,
+      "message": "I just uploaded a patch.\n\nhttps://chromium-review.googlesource.com/#/c/383962/",
+      "parentUuid": "6bbbe6d1_389cc05e",
+      "range": {
+        "startLine": 567,
+        "startChar": 11,
+        "endLine": 567,
+        "endChar": 30
+      },
+      "revId": "31fa74cf7d6d40f55bcc54b237e4e47d39024740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
