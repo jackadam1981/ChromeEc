@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "763aef56_87028a15",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-11T22:07:37Z",
+      "side": 1,
+      "message": "Can we enable discharge from pd_power_supply_reset() instead?",
+      "range": {
+        "startLine": 334,
+        "startChar": 3,
+        "endLine": 334,
+        "endChar": 21
+      },
+      "revId": "7d41b72e04328a142641b59eaa40f5b08bb56dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "763aef56_8717ea4f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 3010,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-11T22:07:37Z",
+      "side": 1,
+      "message": "Can we replace this with a simple routine that enables (or disables, add an \u0027enable\u0027 param) discharge indefinitely? Eg. if we transition to the appropriate power swap state, enable discharge. When we leave that state, disable discharge.",
+      "range": {
+        "startLine": 3010,
+        "startChar": 5,
+        "endLine": 3010,
+        "endChar": 23
+      },
+      "revId": "7d41b72e04328a142641b59eaa40f5b08bb56dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
