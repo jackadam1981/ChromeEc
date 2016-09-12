@@ -603,7 +603,26 @@ function flash_it83xx() {
 	if [ ! -x "$ITEFLASH" ]; then
 		die "no iteflash util found."
 	fi
+
+	dut_control i2c_mux_en:on
+	dut_control i2c_mux:remote_adc
+
+	pids=$(lsof -FR 2>/dev/null | tr -d 'pR')
+	for pid in $(echo ${pids} | tac -s " "); do
+		if test ${pid} -gt 0; then
+			if ps -o cmd= "${pid}" | grep -qE "servod"; then
+				info "Kill process ${pid}!"
+				sleep 0.02
+				sudo kill ${pid}
+			fi
+		fi
+	done
+
 	sudo ${ITEFLASH} -w ${IMG}
+	sleep 0.1
+	info "To restart servod (board=${BOARD})"
+	sudo servod --board=${BOARD} &
+	sleep 1
 }
 
 function flash_lm4() {
