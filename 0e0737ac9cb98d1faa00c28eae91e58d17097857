@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb4516e6_09576cfb",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-12T22:59:09Z",
+      "side": 1,
+      "message": "This is the only addition since last time. I haven\u0027t encountered the wedged state again in my testing and synthetically producing an error leads to correct recovery.",
+      "range": {
+        "startLine": 708,
+        "startChar": 1,
+        "endLine": 708,
+        "endChar": 42
+      },
+      "revId": "0e0737ac9cb98d1faa00c28eae91e58d17097857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
