@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb4516e6_51ee8417",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-09-12T18:39:42Z",
+      "side": 1,
+      "message": "Changing the settings while the pin is enabled caused cr50 to have weird wake pin behavior.",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 62
+      },
+      "revId": "09d530ad98688d587cdb8df353185589c79f8812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
