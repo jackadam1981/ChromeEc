@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb4516e6_312f38fd",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-12T18:17:31Z",
+      "side": 1,
+      "message": "As we are calling it from function pointer make it static function and add #ifdef so that we dont add extra code to non users.",
+      "revId": "649227d3f2584beacffa9600cc4de7a340879a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb4516e6_d11ff4c6",
+        "filename": "driver/tcpm/ps8751.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-12T18:17:31Z",
+      "side": 1,
+      "message": "As we are calling it from function pointer make it static function and add #ifdef so that we don\u0027t add extra code to non users.",
+      "revId": "649227d3f2584beacffa9600cc4de7a340879a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb4516e6_b1434896",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-12T18:17:31Z",
+      "side": 1,
+      "message": "you can define function here so that we dont have to add it in tcpc_config[] of board.c",
+      "revId": "649227d3f2584beacffa9600cc4de7a340879a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
