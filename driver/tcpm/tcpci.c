@@ -5,6 +5,7 @@
 
 /* Type-C port manager */
 
+#include "console.h"
 #include "task.h"
 #include "tcpci.h"
 #include "tcpm.h"
@@ -87,13 +88,27 @@ int tcpm_get_power_status(int port, int *status)
 
 int tcpm_set_cc(int port, int pull)
 {
+	int retries = 3;
+	int rv = -1, readback;
+	int value = TCPC_REG_ROLE_CTRL_SET(0, 0, pull, pull);
 	/*
 	 * Set manual control of Rp/Rd, and set both CC lines to the same
 	 * pull.
 	 */
 	/* TODO: set desired Rp strength */
-	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
-			  TCPC_REG_ROLE_CTRL_SET(0, 0, pull, pull));
+	while (retries--) {
+		rv = tcpc_write(port, TCPC_REG_ROLE_CTRL, value);
+		if (!rv)
+			rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &readback);
+		if (!rv && readback == value)
+			break;
+		else
+			ccprintf("set_cc: P%d retries %d rv %d value %d readback %d\n",
+				port, retries, rv, value, readback);
+	}
+	if (rv)
+		ccprintf("set_cc: P%d FAIL ROLE_CTRL = %x\n", port, value);
+	return rv;
 }
 
 int tcpm_set_polarity(int port, int polarity)
