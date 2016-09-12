@@ -16,6 +16,24 @@
       "revId": "4b6a98f2cd6bd0d3989e963184fdbcfc15a1b369",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb4516e6_c91ae4d9",
+        "filename": "board/reef/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2016-09-12T22:42:40Z",
+      "side": 1,
+      "message": "Hi Shawn, if we have two sets of LED, we can use one for power status, and one for battery status, it will be clear and no confusion. But Reef only has one set LED, we are trying to show both power and battery status conditionally. I used extpower_is_present() as condition check, if true, show battery LED; if false, show power LED. But critical battery case is blocked by this condition check. And it\u0027s important to show critical battery if we run into this. That\u0027s why I add it to led_set_power().\nSimilarly, in SOC G3, I changed to turn LED off no matter charged is connected or not. Other option is, LED show blue(extpower is true and battery is full), amber(extpower is true and charging), off(if extpower is false). Which way    is better from your point of view?",
+      "parentUuid": "6bbbe6d1_78fd58cc",
+      "revId": "4b6a98f2cd6bd0d3989e963184fdbcfc15a1b369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
