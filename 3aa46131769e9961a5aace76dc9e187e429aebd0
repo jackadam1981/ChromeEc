@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eb4516e6_23292ea7",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-09-12T16:53:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bbbe6d1_fbdb2207",
+      "range": {
+        "startLine": 377,
+        "startChar": 5,
+        "endLine": 377,
+        "endChar": 22
+      },
+      "revId": "3aa46131769e9961a5aace76dc9e187e429aebd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bbbe6d1_1bd9b60f",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-11T00:14:55Z",
       "side": 1,
       "message": "Say \n\n  if (device_powered_on() \u003d\u003d EC_SUCCESS)\n    hook_notify();\n\ninstead. That reads like English and doesn\u0027t need a comment to explain it.",
+      "range": {
+        "startLine": 449,
+        "startChar": 2,
+        "endLine": 455,
+        "endChar": 35
+      },
+      "revId": "3aa46131769e9961a5aace76dc9e187e429aebd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb4516e6_c3f72aba",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-09-12T16:53:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bbbe6d1_1bd9b60f",
       "range": {
         "startLine": 449,
         "startChar": 2,

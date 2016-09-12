@@ -46,6 +46,30 @@
       "revId": "9c3f9d586c066e2619aaae734ee251c0417dd1d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb4516e6_e32a66a1",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-09-12T16:53:12Z",
+      "side": 0,
+      "message": "By default detect state stuff is enabled. Removing the device_detect_state_enable call in rdd_detached means it is never disabled. Should I remove all of that enable/disable stuff in device_state to make it clearer?",
+      "parentUuid": "6bbbe6d1_9bedc6b8",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 1
+      },
+      "revId": "9c3f9d586c066e2619aaae734ee251c0417dd1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
