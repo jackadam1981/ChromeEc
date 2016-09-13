@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "eb74360d_6b6675f3",
+        "filename": "board/samus_pd/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-09-13T15:14:12Z",
+      "side": 1,
+      "message": "the 3A observation was at 9V\nthe 2.25A observation was at 20V\n\nI believe (from vague memories from the previous episodes) this at least at much voltage related as current related.\nso the adjustment calculated here from those datapoints is mostly wrong.\n\nI also agree with Alec, it\u0027s likely too low at lower current.",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 845,
+        "endChar": 48
+      },
+      "revId": "f35239ba18fa8de26fefe884e81ca612b3aa6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bbbe6d1_e8f0bbf1",
         "filename": "board/samus_pd/board.c",
         "patchSetId": 1
