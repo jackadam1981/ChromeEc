@@ -16,6 +16,24 @@
       "revId": "ac88f5c423d5f0c65fc3ed49c40a98ddb7e89521",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b712657_cf2bb18c",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-13T20:04:45Z",
+      "side": 1,
+      "message": "Sure.\n\nI was kind of thinking it would be handy to allow individual features:\n\n#ifdef CR50_DEV\n#if CR50_DEV \u003d\u003d 14 \n  ...\n\nbut that\u0027s probably only going to cause problems.",
+      "parentUuid": "6b712657_8f34d900",
+      "revId": "ac88f5c423d5f0c65fc3ed49c40a98ddb7e89521",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
