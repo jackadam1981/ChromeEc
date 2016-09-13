@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b712657_7d54bf50",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-13T21:34:35Z",
+      "side": 1,
+      "message": "Adding this sleep makes this not break waking from hibernate.",
+      "revId": "0df33a61d88acc9ba9f9c5bb2580f50f0b9bb1d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
