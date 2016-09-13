@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6b712657_a9a0bda5",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-13T18:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb4516e6_2b4a57ae",
+      "revId": "649227d3f2584beacffa9600cc4de7a340879a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb4516e6_d11ff4c6",
         "filename": "driver/tcpm/ps8751.c",
         "patchSetId": 4
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "#ifdef CONFIG_USB_PD_TCPC_FW_VERSION",
       "parentUuid": "eb4516e6_d11ff4c6",
+      "revId": "649227d3f2584beacffa9600cc4de7a340879a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b712657_4996e14b",
+        "filename": "driver/tcpm/ps8751.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-13T18:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb4516e6_4b4fa3bc",
       "revId": "649227d3f2584beacffa9600cc4de7a340879a62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
