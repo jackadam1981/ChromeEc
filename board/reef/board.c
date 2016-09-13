@@ -387,6 +387,17 @@ static void chipset_pre_init(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
 
+static void board_reset_charger(void)
+{
+	/* Reset the charger before we initialize it. */
+	gpio_set_level(GPIO_CHARGER_RST_ODL, 0);
+	usleep(100); /* Reset detection is 100 us minimum. */
+	gpio_set_level(GPIO_CHARGER_RST_ODL, 1);
+	/* Allow time for the charger to reinitialize. */
+	usleep(120);
+}
+DECLARE_HOOK(HOOK_INIT, board_reset_charger, HOOK_PRIO_INIT_EXTPOWER-1);
+
 #if IS_PROTO == 1
 /* FIXME: Remove this hack once proto boards are obsolete. */
 static void board_init_proto(void)
