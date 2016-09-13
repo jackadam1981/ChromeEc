@@ -22,6 +22,30 @@
       "revId": "3a38efe0bedb953deacb8499c55317587d07d4b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b712657_ef4eb5bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-09-13T19:48:33Z",
+      "side": 1,
+      "message": "Cr50s.\n\nThe signal is debounced, so cr50 only decides the AP is off if the signal is low for more than 50usecs.",
+      "parentUuid": "6b712657_af9afd5e",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "3a38efe0bedb953deacb8499c55317587d07d4b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
