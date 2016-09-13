@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb74360d_6bf75574",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-09-13T12:32:58Z",
+      "side": 1,
+      "message": "on a lot of platforms (particularly the one with HW division), doing division by a constant with uint64divmod is really suboptimal.\nbut maybe that\u0027s the easiest workaround.",
+      "range": {
+        "startLine": 658,
+        "startChar": 1,
+        "endLine": 658,
+        "endChar": 26
+      },
+      "revId": "ae250692e07193bf0e8453fd668100601cfed950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
