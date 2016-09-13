@@ -17,6 +17,12 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
+/*
+ * By default, enable all console messages excepted HC, ACPI and event:
+ * The sensor stack is generating a lot of activity.
+ */
+#define CC_DEFAULT     (CC_ALL & ~(CC_MASK(CC_EVENTS) | CC_MASK(CC_LPC)))
+
 /* EC console commands  */
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_CHARGER_ADC_AMON_BMON
@@ -152,10 +158,12 @@
 #define I2C_PORT_ACCEL			I2C_PORT_GYRO
 
 /* Sensors */
+#define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_HOST_EVENT
 #define CONFIG_ACCELGYRO_BMI160
-#define   CONFIG_MAG_BMI160_BMM150
-#define   BMM150_I2C_ADDRESS BMM150_ADDR0	/* 8-bit address */
-#define   CONFIG_MAG_CALIBRATE
+#define CONFIG_MAG_BMI160_BMM150
+#define BMM150_I2C_ADDRESS BMM150_ADDR0	/* 8-bit address */
+#define CONFIG_MAG_CALIBRATE
 #define CONFIG_ACCEL_KX022
 #define CONFIG_ALS
 #define CONFIG_ALS_OPT3001
