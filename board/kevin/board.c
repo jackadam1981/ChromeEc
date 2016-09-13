@@ -295,6 +295,17 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND,
 	     board_spi_disable,
 	     MOTION_SENSE_HOOK_PRIO + 1);
 
+static void board_reset_charger(void)
+{
+	/* Reset the charger before we initialize it. */
+	gpio_set_level(GPIO_CHARGER_RESET_L, 0);
+	usleep(100); /* Reset detection is 100 us minimum. */
+	gpio_set_level(GPIO_CHARGER_RESET_L, 1);
+	/* Allow time for the charger to reinitialize. */
+	usleep(120);
+}
+DECLARE_HOOK(HOOK_INIT, board_reset_charger, HOOK_PRIO_INIT_EXTPOWER-1);
+
 static void board_init(void)
 {
 	/* Enable TCPC alert interrupts */
