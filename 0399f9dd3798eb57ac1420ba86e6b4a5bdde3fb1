@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb4516e6_cb6ad3e4",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-13T15:01:39Z",
+      "side": 1,
+      "message": "I still don\u0027t know where in the build we\u0027re meeting these requirements. Can you please comment in the appropriate place where we wouldn\u0027t hit this situation?",
+      "revId": "0399f9dd3798eb57ac1420ba86e6b4a5bdde3fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
