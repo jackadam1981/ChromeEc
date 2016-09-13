@@ -5,6 +5,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "i2cs.h"
 #include "registers.h"
@@ -77,6 +78,12 @@ static const struct i2c_tpm_reg_map i2c_to_tpm[] = {
 	{0xf, 0, 0xf90}, /* TPM_FW_VER */
 };
 
+static void pulse_ap_int(void)
+{
+	gpio_set_level(GPIO_INT_AP_L, 0);
+	gpio_set_level(GPIO_INT_AP_L, 1);
+}
+
 static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 {
 	size_t i;
@@ -132,6 +139,7 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 			tpm_register_get(tpm_reg, reg_value, reg_size);
 			for (i = 0; i < reg_size; i++)
 				i2cs_post_read_data(reg_value[i]);
+			pulse_ap_int();
 			return;
 		}
 
@@ -155,10 +163,11 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 		 * response has been fully read.
 		 *
 		 */
-		if (i2cs_get_read_fifo_buffer_depth())
+		if (i2cs_get_read_fifo_buffer_depth()) {
+			pulse_ap_int();
 			/* Data is already in the queue, just return */
 			return;
-
+		}
 		/*
 		 * Now, this is a hack, but we are short on SRAM, so let's
 		 * reuse the receive buffer for the FIFO data sotrage. We know
@@ -170,6 +179,7 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 		tpm_register_get(tpm_reg, data, reg_size);
 		/* Transfer TPM fifo data to the I2CS HW fifo */
 		i2cs_post_read_fill_fifo(data, reg_size);
+		pulse_ap_int();
 		return;
 	}
 
@@ -181,6 +191,7 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 	 */
 	if (reg_size == 0) {
 		tpm_register_put(tpm_reg, data, i2cs_data_size);
+		pulse_ap_int();
 		return;
 	}
 
@@ -188,11 +199,13 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 		CPRINTF("%s: data size mismatch for reg 0x%x "
 			"(rx %d, need %d)\n", __func__, tpm_reg,
 			i2cs_data_size, reg_size);
+		pulse_ap_int();
 		return;
 	}
 
 	/* Write the data to the appropriate TPM register */
 	tpm_register_put(tpm_reg, data, reg_size);
+	pulse_ap_int();
 }
 
 static void i2cs_tpm_init(void)
