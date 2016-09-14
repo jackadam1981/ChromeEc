@@ -408,10 +408,6 @@ static int device_state_changed(enum device_type device,
 
 	device_set_state(device, state);
 
-	/* Disable interrupts */
-	gpio_disable_interrupt(device_states[device].detect_on);
-	gpio_disable_interrupt(device_states[device].detect_off);
-
 	/*
 	 * We've determined the device state, so cancel any deferred callbacks.
 	 */
@@ -450,7 +446,6 @@ static int device_powered_off(enum device_type device, int uart)
 		uartn_tx_disconnect(uart);
 	}
 
-	gpio_enable_interrupt(device_states[device].detect_on);
 	return state_changed ? EC_SUCCESS : EC_ERROR_UNKNOWN;
 }
 
@@ -479,20 +474,17 @@ DECLARE_DEFERRED(ec_deferred);
 struct device_config device_states[] = {
 	[DEVICE_SERVO] = {
 		.deferred = &servo_deferred_data,
-		.detect_on = GPIO_SERVO_UART2_ON,
-		.detect_off = GPIO_SERVO_UART2_OFF,
+		.detect = GPIO_DETECT_SERVO,
 		.name = "Servo"
 	},
 	[DEVICE_AP] = {
 		.deferred = &ap_deferred_data,
-		.detect_on = GPIO_AP_ON,
-		.detect_off = GPIO_AP_OFF,
+		.detect = GPIO_DETECT_AP,
 		.name = "AP"
 	},
 	[DEVICE_EC] = {
 		.deferred = &ec_deferred_data,
-		.detect_on = GPIO_EC_ON,
-		.detect_off = GPIO_EC_OFF,
+		.detect = GPIO_DETECT_EC,
 		.name = "EC"
 	},
 };
@@ -503,6 +495,12 @@ static int device_powered_on(enum device_type device, int uart)
 {
 	/* Update the device state */
 	int state_changed = device_state_changed(device, DEVICE_STATE_ON);
+
+	/*
+	 * The device is on. Disable the interrupt so it isn't triggered every
+	 * time a character is sent.
+	 */
+	gpio_disable_interrupt(device_states[device].detect);
 
 	/* Enable RX and TX on the UART peripheral */
 	uartn_enable(uart);
@@ -531,14 +529,14 @@ static void servo_attached(void)
 void device_state_on(enum gpio_signal signal)
 {
 	switch (signal) {
-	case GPIO_AP_ON:
+	case GPIO_DETECT_AP:
 		if (device_powered_on(DEVICE_AP, UART_AP) == EC_SUCCESS)
 			hook_notify(HOOK_CHIPSET_RESUME);
 		break;
-	case GPIO_EC_ON:
+	case GPIO_DETECT_EC:
 		device_powered_on(DEVICE_EC, UART_EC);
 		break;
-	case GPIO_SERVO_UART2_ON:
+	case GPIO_DETECT_SERVO:
 		servo_attached();
 		break;
 	default:
@@ -547,47 +545,24 @@ void device_state_on(enum gpio_signal signal)
 	}
 }
 
-void device_state_off(enum gpio_signal signal)
-{
-	switch (signal) {
-	case GPIO_AP_OFF:
-		board_update_device_state(DEVICE_AP);
-		break;
-	case GPIO_EC_OFF:
-		board_update_device_state(DEVICE_EC);
-		break;
-	case GPIO_SERVO_UART2_OFF:
-		board_update_device_state(DEVICE_SERVO);
-		break;
-	default:
-		CPRINTS("Device not supported");
-	}
-}
-
 void board_update_device_state(enum device_type device)
 {
-	int state;
+	int state = gpio_get_level(device_states[device].detect);
 
-	if (device == DEVICE_SERVO) {
-		/*
-		 * If EC UART TX is pulled high when EC UART is not enabled,
-		 * then servo is attached.
-		 */
-		state = (!uartn_enabled(UART_EC) &&
-			gpio_get_level(GPIO_SERVO_UART2_ON));
-	} else
-		state = gpio_get_level(device_states[device].detect_on);
+	if (device == DEVICE_SERVO && servo_state_unknown())
+		return;
 
 	/*
 	 * If the device is currently on set its state immediately. If it
 	 * thinks the device is powered off debounce the signal.
 	 */
 	if (state)
-		device_state_on(device_states[device].detect_on);
+		device_state_on(device_states[device].detect);
 	else {
 		device_set_state(device, DEVICE_STATE_UNKNOWN);
 
-		gpio_enable_interrupt(device_states[device].detect_on);
+		gpio_enable_interrupt(device_states[device].detect);
+
 		/*
 		 * The signal is low now, but the detect signals are on UART RX
 		 * which may be receiving something. Wait long enough for an

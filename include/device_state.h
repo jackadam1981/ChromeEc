@@ -22,8 +22,7 @@ struct device_config {
 	enum device_state last_known_state;	/* Either off or on */
 	/* Deferred handler to detect power off */
 	const struct deferred_data *deferred;
-	enum gpio_signal detect_on;	/* GPIO detecting power on */
-	enum gpio_signal detect_off;	/* GPIO detecting power off */
+	enum gpio_signal detect;	/* GPIO detecting power on */
 };
 
 enum device_type;
