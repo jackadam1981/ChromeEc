@@ -126,7 +126,6 @@ enum usb_spi {
 /* Interrupt handler */
 void sys_rst_asserted(enum gpio_signal signal);
 void device_state_on(enum gpio_signal signal);
-void device_state_off(enum gpio_signal signal);
 
 /* Special controls over EC and AP */
 void assert_sys_rst(void);
