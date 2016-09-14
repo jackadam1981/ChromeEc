@@ -45,6 +45,9 @@ enum npcx_pwm_heartbeat_mode {
 	NPCX_PWM_HBM_UNDEF     = 0xFF
 };
 
+/* Default duty cycle resolution */
+#define DUTY_CYCLE_RESOLUTION 100
+
 /**
  * Set PWM operation clock.
  *
@@ -74,20 +77,25 @@ static void pwm_set_freq(enum pwm_channel ch, uint32_t freq)
 		clock = clock_get_apb2_freq();
 
 	/*
-	 * Based on freq = clock / ((ctr + 1) * (prsc + 1))
-	 *   where:  prsc = prescaler_divider
-	 *           ctr  = MAX_DUTY_CYCLE
+	 * Using PWM Frequency and Resolution we calculate
+	 * prescaler for input clock
 	 */
-	prescaler_divider = (clock / ((EC_PWM_MAX_DUTY + 1) * freq)) - 1;
+	prescaler_divider = ((clock / freq)/DUTY_CYCLE_RESOLUTION);
+
+	/* Set clock prescaler divider to PWM module*/
+	if (prescaler_divider >= 1)
+		prescaler_divider = prescaler_divider - 1;
+	if (prescaler_divider > 0xFFFF)
+		prescaler_divider = 0xFFFF;
 
 	/* Configure computed prescaler and resolution */
 	NPCX_PRSC(mdl) = (uint16_t)prescaler_divider;
 
 	/* Set PWM cycle time */
-	NPCX_CTR(mdl) = EC_PWM_MAX_DUTY;
+	NPCX_CTR(mdl) = DUTY_CYCLE_RESOLUTION - 1;
 
 	/* Set the duty cycle to 100% since DCR == CTR */
-	NPCX_DCR(mdl) = EC_PWM_MAX_DUTY;
+	NPCX_DCR(mdl) = DUTY_CYCLE_RESOLUTION - 1;
 }
 
 /**
@@ -126,8 +134,13 @@ int pwm_get_enabled(enum pwm_channel ch)
  */
 void pwm_set_duty(enum pwm_channel ch, int percent)
 {
-	/* Convert 16 bit duty to percent on [0, 100] */
-	pwm_set_raw_duty(ch, (percent * EC_PWM_MAX_DUTY) / 100);
+	/* Checking duty value first */
+	if (percent < 0)
+		percent = 0;
+	else if (percent > 100)
+		percent = 100;
+
+	pwm_set_raw_duty(ch, percent);
 }
 
 /**
@@ -140,6 +153,9 @@ void pwm_set_duty(enum pwm_channel ch, int percent)
 void pwm_set_raw_duty(enum pwm_channel ch, uint16_t duty)
 {
 	int mdl = pwm_channels[ch].channel;
+
+	/* convert to percent */
+	duty = DIV_ROUND_NEAREST(duty * 100, EC_PWM_MAX_DUTY);
 
 	CPRINTS("pwm%d, set duty=%d", mdl, duty);
 
