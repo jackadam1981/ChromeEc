@@ -46,6 +46,30 @@
       "revId": "72f12a54ac938e46514d55c2e5ffae924ec8f922",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b712657_06bd2b86",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-14T16:20:24Z",
+      "side": 0,
+      "message": "Got it.",
+      "parentUuid": "6b712657_064a0bae",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 0
+      },
+      "revId": "72f12a54ac938e46514d55c2e5ffae924ec8f922",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
