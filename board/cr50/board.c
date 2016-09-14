@@ -456,12 +456,6 @@ static void device_powered_on(enum device_type device, int uart)
 	/* Update the device state */
 	device_state_changed(device, DEVICE_STATE_ON);
 
-	/*
-	 * The device is on. Disable the interrupt so it isn't triggered every
-	 * time a character is sent.
-	 */
-	gpio_disable_interrupt(device_states[device].detect);
-
 	/* Enable RX and TX on the UART peripheral */
 	uartn_enable(uart);
 
@@ -486,6 +480,8 @@ static void servo_attached(void)
 
 void device_state_on(enum gpio_signal signal)
 {
+	gpio_disable_interrupt(signal);
+
 	switch (signal) {
 	case GPIO_DETECT_AP:
 		device_powered_on(DEVICE_AP, UART_AP);
