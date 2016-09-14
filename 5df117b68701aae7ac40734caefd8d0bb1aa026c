@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6b712657_d767bf1b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-09-14T21:11:45Z",
+      "side": 1,
+      "message": "The interrupt source is being taken care of in gpio.inc where PLT_RST_L is defined and assigned to the same ISR as sys_rst_l.",
+      "parentUuid": "6b712657_dc4844b4",
+      "revId": "5df117b68701aae7ac40734caefd8d0bb1aa026c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b712657_5cef747a",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2016-09-14T19:00:01Z",
       "side": 1,
       "message": "I am not sure I understand this comment.\n\nDIOM3 serves a different purpose on reef evt vs reef dvt.\n\nProcessing of sys_rst_l needs to happen on dvt only. \n\nplt_rst_l is not connected to DIOA13 anywhere.",
+      "revId": "5df117b68701aae7ac40734caefd8d0bb1aa026c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b712657_b7980b22",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-09-14T21:11:45Z",
+      "side": 1,
+      "message": "plt_rst_l is connected to DIOA13 on the EVT units. It was my understanding that we wanted to reset TPM via plt_rst_t on the EVT units and then would change the function to the correct pin for DVT which is why the todo is linked to 56540. \n\nConfirmed with rachelsn@ that connecting plt_rst_l to DIOA13 was done as a rework and isn\u0027t reflected in the EVT schematic.",
+      "parentUuid": "6b712657_5cef747a",
       "revId": "5df117b68701aae7ac40734caefd8d0bb1aa026c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
