@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b712657_c048525a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1493,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-14T23:29:47Z",
+      "side": 1,
+      "message": "I\u0027m not sure this needs to be here. How about printing the FW version from a hook_init routine in board.c, or even in the TCPC driver? Printing from the driver saves a lot of complexity.",
+      "range": {
+        "startLine": 1490,
+        "startChar": 0,
+        "endLine": 1493,
+        "endChar": 2
+      },
+      "revId": "cd62fab4bc6ab538b9d83940582c1ee9d7217fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b712657_a0199e84",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-14T23:29:47Z",
+      "side": 1,
+      "message": "Why not add this to \u0027struct tcpm_drv\u0027 instead?",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 43
+      },
+      "revId": "cd62fab4bc6ab538b9d83940582c1ee9d7217fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
