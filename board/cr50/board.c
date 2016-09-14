@@ -12,6 +12,7 @@
 #include "flash_config.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "i2cs.h"
 #include "init_chip.h"
 #include "nvmem.h"
@@ -70,6 +71,14 @@ uint32_t nvmem_user_sizes[NVMEM_NUM_USERS] = {
 
 /*  Board specific configuration settings */
 static uint32_t board_properties;
+
+/* I2C Port definition */
+/* TODO need to add port, SCL gpio line, SDA gpio line */
+const struct i2c_port_t i2c_ports[]  = {
+	{"ina",     0, 400,
+		0, 1},
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /*
  * There's no way to trigger on both rising and falling edges, so force a

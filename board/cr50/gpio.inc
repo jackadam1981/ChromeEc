@@ -41,7 +41,7 @@ GPIO(SPI_CLK,         PIN(0, 8), GPIO_INPUT)
 GPIO(SPI_CS_L,        PIN(0, 9), GPIO_INPUT)
 
 /* Control the load switch powering the INA 3.3V rail */
-GPIO(EN_PP3300_INA_L, PIN(1, 9), GPIO_ODR_HIGH)
+GPIO(EN_PP3300_INA_L, PIN(1, 9), GPIO_OUT_LOW)
 
 /* GPIOs used for Cr50 strapping options */
 GPIO(STRAP0,        PIN(0, 10), GPIO_INPUT)
@@ -64,7 +64,7 @@ PINMUX(GPIO(INT_AP_L),        A5, DIO_INPUT)	/* DIOB7 is p_digitial_od */
                                                 /* We can't pull it up */
 PINMUX(GPIO(EC_FLASH_SELECT), B2, DIO_INPUT)
 PINMUX(GPIO(AP_FLASH_SELECT), B3, DIO_INPUT)
-PINMUX(GPIO(EN_PP3300_INA_L), B7, DIO_INPUT)
+PINMUX(GPIO(EN_PP3300_INA_L), B7, DIO_OUTPUT)
 PINMUX(GPIO(SYS_RST_L_IN),    M0, DIO_WAKE_FALLING)
 PINMUX(GPIO(SYS_RST_L_OUT),   M0, DIO_INPUT)
 PINMUX(GPIO(CCD_MODE_L),      M1, DIO_INPUT)
@@ -107,6 +107,11 @@ PINMUX(GPIO(DETECT_SERVO),    B5, DIO_INPUT)
  * PINMUX(FUNC(I2C0_SCL),        A9, DIO_INPUT)
  * PINMUX(FUNC(I2C0_SDA),        A1, DIO_INPUT)
 */
+
+
+/* I2CM pinmux setting */
+PINMUX(FUNC(I2C0_SCL),        B0, DIO_INPUT | DIO_OUTPUT | GPIO_PULL_UP )
+PINMUX(FUNC(I2C0_SDA),        B1, DIO_INPUT | DIO_OUTPUT | GPIO_PULL_UP )
 
 /*
  * Both SPI master and slave buses are wired directly to specific pads
