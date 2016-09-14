@@ -34,6 +34,24 @@
       "revId": "6456741690eda28b2bb1d525bc1dcc565e9a1834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b712657_26e94f7c",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-14T16:24:07Z",
+      "side": 1,
+      "message": "If that\u0027s all in config_flash_layout.h then we\u0027re good.",
+      "parentUuid": "ab107e06_f3ddb0d1",
+      "revId": "6456741690eda28b2bb1d525bc1dcc565e9a1834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
