@@ -6,6 +6,7 @@
 /* Flash memory module for Chrome EC */
 
 #include "flash.h"
+#include "host_command.h"
 #include "registers.h"
 #include "switch.h"
 #include "system.h"
@@ -154,6 +155,30 @@ uint8_t flash_get_status2(void)
 	/* Enable tri-state */
 	TRISTATE_FLASH(1);
 	return NPCX_UMA_DB0;
+}
+
+uint16_t flash_get_mfr_dev_id(void)
+{
+	/* Disable tri-state */
+	TRISTATE_FLASH(0);
+	/* Read manufacturer and device ID */
+	flash_execute_cmd(CMD_READ_MAN_DEV_ID, MASK_CMD_RD_2BYTE);
+	/* Enable tri-state */
+	TRISTATE_FLASH(1);
+
+	return (uint16_t)(NPCX_UMA_DB1) << 8 | NPCX_UMA_DB0;
+}
+
+uint32_t flash_get_jedec_id(void)
+{
+	/* Disable tri-state */
+	TRISTATE_FLASH(0);
+	/* Read manufacturer and device ID */
+	flash_execute_cmd(CMD_READ_ID, MASK_CMD_RD_4BYTE);
+	/* Enable tri-state */
+	TRISTATE_FLASH(1);
+
+	return NPCX_UMA_DB0_3;
 }
 
 /*****************************************************************************/
@@ -776,6 +801,29 @@ int flash_pre_init(void)
 
 		return EC_SUCCESS;
 }
+
+/*****************************************************************************/
+/* Host commands */
+
+#ifndef BOARD_NPCX_EVB  /* Uses implementation from spi_flash.c */
+
+static int flash_command_spi_info(struct host_cmd_handler_args *args)
+{
+	struct ec_response_flash_spi_info *r = args->response;
+
+	*(uint16_t *)r->mfr_dev_id = flash_get_mfr_dev_id();
+	*(uint32_t *)r->jedec = flash_get_jedec_id();
+	r->sr1 = flash_get_status1();
+	r->sr2 = flash_get_status2();
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_SPI_INFO,
+		     flash_command_spi_info,
+		     EC_VER_MASK(0));
+
+#endif
 
 /*****************************************************************************/
 /* Console commands */

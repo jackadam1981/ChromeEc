@@ -8,6 +8,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "host_command.h"
 #include "shared_mem.h"
 #include "spi.h"
 #include "spi_flash.h"
@@ -328,6 +329,23 @@ uint32_t spi_flash_get_jedec_id(void)
 }
 
 /**
+ * Returns the SPI flash manufacturer and device ID
+ *
+ * @return flash manufacturer and device ID or -1 on error
+ */
+uint16_t spi_flash_get_mfr_dev_id(void)
+{
+	uint8_t cmd = SPI_FLASH_MFR_DEV_ID;
+	uint16_t resp;
+
+	if (spi_transaction(SPI_FLASH_DEVICE,
+			    &cmd, 1, (uint8_t *)&resp, 2) != EC_SUCCESS)
+		return -1;
+
+	return resp;
+}
+
+/**
  * Returns the SPI flash unique ID (serial)
  *
  * @return flash unique ID or -1 on error
@@ -491,6 +509,22 @@ static int command_spi_flashinfo(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(spi_flashinfo, command_spi_flashinfo,
 	NULL,
 	"Print SPI flash info");
+
+static int flash_command_spi_info(struct host_cmd_handler_args *args)
+{
+	struct ec_response_flash_spi_info *r = args->response;
+
+	*(uint16_t *)r->mfr_dev_id = spi_flash_get_mfr_dev_id();
+	*(uint32_t *)r->jedec = spi_flash_get_jedec_id();
+	r->sr1 = spi_flash_get_status1();
+	r->sr2 = spi_flash_get_status2();
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_SPI_INFO,
+		     flash_command_spi_info,
+		     EC_VER_MASK(0));
 
 #ifdef CONFIG_CMD_SPI_FLASH
 static int command_spi_flasherase(int argc, char **argv)
