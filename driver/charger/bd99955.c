@@ -199,6 +199,7 @@ static int bd99955_get_bc12_device_type(enum bd99955_charge_port port)
 	case BD99955_TYPE_SDP:
 		return CHARGE_SUPPLIER_BC12_SDP;
 	case BD99955_TYPE_OTHER:
+	case BD99955_TYPE_VBUS:
 		return CHARGE_SUPPLIER_OTHER;
 	case BD99955_TYPE_VBUS_OPEN:
 	case BD99955_TYPE_PUP_PORT:
@@ -419,12 +420,11 @@ int charger_get_option(int *option)
 	int rv;
 	int reg;
 
-	rv = ch_raw_read16(BD99955_CMD_CHGOP_SET1, &reg,
+	rv = ch_raw_read16(BD99955_CMD_CHGOP_SET1, option,
 				BD99955_EXTENDED_COMMAND);
 	if (rv)
 		return rv;
 
-	*option = reg;
 	rv = ch_raw_read16(BD99955_CMD_CHGOP_SET2, &reg,
 				BD99955_EXTENDED_COMMAND);
 	if (rv)
