@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b712657_2b2918a7",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-14T13:43:45Z",
+      "side": 1,
+      "message": "My concern is where in the linker scripts/build ensures the constraints above are met? Those things need the comment so that if anyone starts messing with those things they\u0027ll know they can\u0027t since it will break this device.",
+      "revId": "6456741690eda28b2bb1d525bc1dcc565e9a1834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
