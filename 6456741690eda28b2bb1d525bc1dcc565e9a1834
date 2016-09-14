@@ -16,6 +16,24 @@
       "revId": "6456741690eda28b2bb1d525bc1dcc565e9a1834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab107e06_f3ddb0d1",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-09-14T14:37:26Z",
+      "side": 1,
+      "message": "All of the factors influences those constraints are defined in chip/npcx/config_flash_layout.h. It defines the memory map usage of npcx and our hardware spec. I don\u0027t think we need to worry someone will change these definitions casually. (If so, a alert indicates it violates the condition check is enough.)\n\nBut if you still think the comments to avoid someone break this device are needed, could you comment which line you think putting them are suitable? I\u0027ll add them in next patch. Thanks.",
+      "parentUuid": "6b712657_2b2918a7",
+      "revId": "6456741690eda28b2bb1d525bc1dcc565e9a1834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
