@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b712657_06ee8bb5",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-14T16:05:12Z",
+      "side": 1,
+      "message": "Maybe replace with SECOND. It\u0027s defined in timer.h.",
+      "range": {
+        "startLine": 355,
+        "startChar": 14,
+        "endLine": 355,
+        "endChar": 21
+      },
+      "revId": "9afbe340cf51104d37bb070451ffa1ba1de71f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b712657_e6ec97bb",
+        "filename": "driver/baro_bmp280.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-14T16:05:12Z",
+      "side": 1,
+      "message": "Maybe replace with SECOND. It\u0027s defined in timer.h.",
+      "range": {
+        "startLine": 386,
+        "startChar": 16,
+        "endLine": 386,
+        "endChar": 23
+      },
+      "revId": "9afbe340cf51104d37bb070451ffa1ba1de71f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
