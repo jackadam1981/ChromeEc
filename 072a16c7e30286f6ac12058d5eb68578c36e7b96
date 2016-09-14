@@ -81,6 +81,24 @@
       "revId": "072a16c7e30286f6ac12058d5eb68578c36e7b96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b712657_dc836404",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-09-14T18:29:00Z",
+      "side": 1,
+      "message": "It looks like for flashing the AP on kevin sys_rst also needs to be asserted.",
+      "parentUuid": "eb4516e6_b5480b59",
+      "revId": "072a16c7e30286f6ac12058d5eb68578c36e7b96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
