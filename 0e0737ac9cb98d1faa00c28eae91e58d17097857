@@ -22,6 +22,40 @@
       "revId": "0e0737ac9cb98d1faa00c28eae91e58d17097857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab107e06_13ce6c24",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-09-14T11:11:40Z",
+      "side": 1,
+      "message": "Please notice you won\u0027t get real gpio level if shi\u0027s pinmux is set. Moving this line before line 764 is better.",
+      "revId": "0e0737ac9cb98d1faa00c28eae91e58d17097857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab107e06_73db60e2",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-09-14T11:11:40Z",
+      "side": 1,
+      "message": "The same reason above. If you want to use gpio_get_level(GPIO_SHI_CS_L). Please make sure pinmux is selected to GPIO.",
+      "revId": "0e0737ac9cb98d1faa00c28eae91e58d17097857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
