@@ -721,6 +721,7 @@ int cmd_reboot_ec(int argc, char *argv[])
 int cmd_flash_info(int argc, char *argv[])
 {
 	struct ec_response_flash_info_1 r;
+	struct ec_response_flash_spi_info s;
 	int cmdver = 1;
 	int rsize = sizeof(r);
 	int rv;
@@ -745,6 +746,21 @@ int cmd_flash_info(int argc, char *argv[])
 		/* Fields added in ver.1 available */
 		printf("WriteIdealSize %d\nFlags 0x%x\n",
 		       r.write_ideal_size, r.flags);
+	}
+
+	/* Print SPI flash info if available */
+	rv = ec_command(EC_CMD_FLASH_SPI_INFO, 0, NULL, 0, &s, sizeof(s));
+	if (rv == EC_RES_SUCCESS) {
+		printf("JEDECManufacturerID 0x%02x\n", s.jedec[0]);
+		printf("JEDECDeviceID 0x%02x 0x%02x\n", s.jedec[1], s.jedec[2]);
+		printf("JEDECCapacity %d\n", 1 << s.jedec[2]);
+		printf("ManufacturerID 0x%02x\n", s.mfr_dev_id[0]);
+		printf("DeviceID 0x%02x\n", s.mfr_dev_id[1]);
+		printf("StatusRegister1 0x%02x\n", s.sr1);
+		printf("StatusRegister2 0x%02x\n", s.sr2);
+	} else if (rv != -EC_RES_INVALID_COMMAND) {
+		/* Command was supported, but failed */
+		return rv;
 	}
 
 	return 0;

@@ -130,6 +130,13 @@ int spi_flash_write(unsigned int offset, unsigned int bytes,
 uint32_t spi_flash_get_jedec_id(void);
 
 /**
+ * Returns the SPI flash manufacturer and device ID
+ *
+ * @return flash manufacturer and device ID or -1 on error
+ */
+uint16_t spi_flash_get_mfr_dev_id(void);
+
+/**
  * Returns the SPI flash unique ID (serial)
  *
  * @return flash unique ID
