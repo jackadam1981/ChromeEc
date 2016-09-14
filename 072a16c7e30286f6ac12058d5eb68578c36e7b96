@@ -117,6 +117,24 @@
       "revId": "072a16c7e30286f6ac12058d5eb68578c36e7b96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b712657_dc9da410",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-09-14T19:00:49Z",
+      "side": 1,
+      "message": "yeah. You can verify it yourself with sudo flashrom -p raiden_debug_spi:target\u003dAP -r ap_img.bin",
+      "parentUuid": "6b712657_1c681c1f",
+      "revId": "072a16c7e30286f6ac12058d5eb68578c36e7b96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
