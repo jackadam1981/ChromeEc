@@ -99,6 +99,24 @@
       "revId": "072a16c7e30286f6ac12058d5eb68578c36e7b96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b712657_1c681c1f",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-14T18:49:24Z",
+      "side": 1,
+      "message": "you mean EC_RST_L kept asserted is not enough?",
+      "parentUuid": "6b712657_dc836404",
+      "revId": "072a16c7e30286f6ac12058d5eb68578c36e7b96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
