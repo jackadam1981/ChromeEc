@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "6b712657_c6c95378",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-14T17:08:04Z",
+      "side": 1,
+      "message": "If we detect the CS level only before line 764 then we will fail in the case CS gets asserted after line 764, before we enable the GPIO interrupt.\n\nAre you certain that we\u0027re unable to get the GPIO level after muxing the pin to SHI? What will gpio_get_level() return in this case?",
+      "parentUuid": "ab107e06_13ce6c24",
+      "revId": "0e0737ac9cb98d1faa00c28eae91e58d17097857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab107e06_73db60e2",
         "filename": "chip/npcx/shi.c",
         "patchSetId": 2
