@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b712657_dc4844b4",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-14T19:00:01Z",
+      "side": 1,
+      "message": "does this input have to be an interrupt source as well?",
+      "revId": "5df117b68701aae7ac40734caefd8d0bb1aa026c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b712657_5cef747a",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-14T19:00:01Z",
+      "side": 1,
+      "message": "I am not sure I understand this comment.\n\nDIOM3 serves a different purpose on reef evt vs reef dvt.\n\nProcessing of sys_rst_l needs to happen on dvt only. \n\nplt_rst_l is not connected to DIOA13 anywhere.",
+      "revId": "5df117b68701aae7ac40734caefd8d0bb1aa026c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
