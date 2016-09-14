@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b712657_a16a09e3",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-09-14T17:47:30Z",
+      "side": 1,
+      "message": "Since this change will be removed when crosbug.com/p/55115 is addressed, I don\u0027t think we need an ASSERT here. The only possible conflict is the UART console and that won\u0027t be active if it\u0027s a Reef.",
+      "parentUuid": "71dd999f_c1651d46",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 33
+      },
+      "revId": "f048b6ed2b87e1b633551cb0acdaf9f50e647370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71dd999f_668a8751",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d64abb97_a56d24c3",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-09-14T17:47:30Z",
+      "side": 1,
+      "message": "Ended up removing the CPRINTS() that I had added to board_init(). Instead I\u0027m going to add a console command to display/set board properties in another CL.",
+      "parentUuid": "71dd999f_668a8751",
+      "range": {
+        "startLine": 299,
+        "startChar": 8,
+        "endLine": 299,
+        "endChar": 15
+      },
+      "revId": "f048b6ed2b87e1b633551cb0acdaf9f50e647370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71dd999f_c6f533e8",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2016-09-02T22:30:07Z",
       "side": 1,
       "message": "crosbug.com/p/56540 This is the umbrella bug we\u0027re using for all of the things that should be removed with the next revision of reef.",
+      "range": {
+        "startLine": 81,
+        "startChar": 9,
+        "endLine": 81,
+        "endChar": 27
+      },
+      "revId": "f048b6ed2b87e1b633551cb0acdaf9f50e647370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d64abb97_457d4077",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-09-14T17:47:30Z",
+      "side": 1,
+      "message": "Changed the issue to 56540 as suggested.",
+      "parentUuid": "71dd999f_c6f533e8",
       "range": {
         "startLine": 81,
         "startChar": 9,
