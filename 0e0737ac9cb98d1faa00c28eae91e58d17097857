@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "6b712657_c17e1d09",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-14T17:14:10Z",
+      "side": 1,
+      "message": "Quick testing shows that with the code as-is, we are reading \u00270\u0027 on this pin (maybe always reading 0). Maybe a simpler solution is to always enable SHI interrupts just in case CS is already asserted.",
+      "parentUuid": "6b712657_c6c95378",
+      "revId": "0e0737ac9cb98d1faa00c28eae91e58d17097857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab107e06_73db60e2",
         "filename": "chip/npcx/shi.c",
         "patchSetId": 2
