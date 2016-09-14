@@ -78,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "ab107e06_b38e98df",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-09-14T17:18:05Z",
+      "side": 1,
+      "message": "I\u0027m sure about that since I like to use both edge trigger for CS GPIO\u0027s interrupt at the beginning. But I cannot know which type of interrupt issued without getting GPIO\u0027s level.",
+      "parentUuid": "6b712657_c6c95378",
+      "revId": "0e0737ac9cb98d1faa00c28eae91e58d17097857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab107e06_73db60e2",
         "filename": "chip/npcx/shi.c",
         "patchSetId": 2
