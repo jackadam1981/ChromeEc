@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cb9692c8_3f3d03ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1133285
+      },
+      "writtenOn": "2016-09-15T15:59:54Z",
+      "side": 1,
+      "message": "I think it provides context as to why we ended up in this situation (i.e. why it was decided to write the exception routines in C in the first place). It also gives some technical context regarding what we\u0027re dealing with here, which I think doesn\u0027t hurt.",
+      "parentUuid": "312321ee_6a0ad732",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "b80b5deae576e7e009043fa3b7e151489f2e0f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "312321ee_aa032f19",
         "filename": "core/cortex-m/switch.S",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-01T13:41:47Z",
       "side": 1,
       "message": "is there a point in moving around this code ?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 7
+      },
+      "revId": "b80b5deae576e7e009043fa3b7e151489f2e0f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb9692c8_7f378be7",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1133285
+      },
+      "writtenOn": "2016-09-15T15:59:54Z",
+      "side": 1,
+      "message": "This is rather an effect of diff understanding __switchto being moved to a tail call (as suggested earlier) as __task_start being moved. The code was not manually moved and is not changing either.\n\nI understand it worsens the readability of the patch, but I don\u0027t really see what I could do about it.",
+      "parentUuid": "312321ee_aa032f19",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cb9692c8_1f4be756",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1133285
+      },
+      "writtenOn": "2016-09-15T15:59:54Z",
+      "side": 1,
+      "message": "Good point, thanks.",
+      "parentUuid": "312321ee_0a0cfb44",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 64
+      },
+      "revId": "b80b5deae576e7e009043fa3b7e151489f2e0f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "312321ee_6a11375d",
         "filename": "core/cortex-m/switch.S",
         "patchSetId": 6
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "cb9692c8_ff655be5",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1133285
+      },
+      "writtenOn": "2016-09-15T15:59:54Z",
+      "side": 1,
+      "message": "It is, will be fixed in the next version.",
+      "parentUuid": "312321ee_6a11375d",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 40
+      },
+      "revId": "b80b5deae576e7e009043fa3b7e151489f2e0f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "312321ee_2a073f24",
         "filename": "core/cortex-m/switch.S",
         "patchSetId": 6
@@ -105,6 +201,30 @@
       "writtenOn": "2016-09-01T13:41:47Z",
       "side": 1,
       "message": "I don\u0027t think you want to do a branch and link here,\nyou don\u0027t want to return here, that\u0027s really a tail-call.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 27
+      },
+      "revId": "b80b5deae576e7e009043fa3b7e151489f2e0f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb9692c8_5f556fea",
+        "filename": "core/cortex-m/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1133285
+      },
+      "writtenOn": "2016-09-15T15:59:54Z",
+      "side": 1,
+      "message": "I had wanted to play it safe and not call the late exception issue workaround code, as this is the closest behaviour to was was done with the C call previously, but if you think it\u0027s safe, I can make svc_handler a tail call. Otherwise, a branch to svc_handler_entry will be needed, either here or in svc_handler.\n\nEither way, no need to branch *with link* after the changes you suggested above.",
+      "parentUuid": "312321ee_2a073f24",
       "range": {
         "startLine": 148,
         "startChar": 0,
