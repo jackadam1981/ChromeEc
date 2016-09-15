@@ -22,6 +22,30 @@
       "revId": "11aebdb0d675ed547b7571b2c262dfb9b9591ad5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_ae44776f",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-09-15T17:49:30Z",
+      "side": 1,
+      "message": "There is not a problem with how this works. It is is just confusing to read. I should rename usb_is_initialized. But I dont know what it should be called.",
+      "parentUuid": "ab415e2d_2e8087a6",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 24
+      },
+      "revId": "11aebdb0d675ed547b7571b2c262dfb9b9591ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
