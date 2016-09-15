@@ -2296,6 +2296,11 @@
 #undef CONFIG_USB_I2C
 
 /*****************************************************************************/
+/* USB Power monitoring interface config */
+#undef CONFIG_USB_POWER
+
+
+/*****************************************************************************/
 
 /* Support computing hash of code for verified boot */
 #undef CONFIG_VBOOT_HASH
