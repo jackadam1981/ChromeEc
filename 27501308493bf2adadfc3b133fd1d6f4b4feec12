@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cb9692c8_1f192783",
+        "filename": "core/cortex-m0/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1133285
+      },
+      "writtenOn": "2016-09-15T15:34:20Z",
+      "side": 1,
+      "message": "Thanks for the insight.\n\nSo, should I just push and pop some register, like r3, to keep it 64-bit aligned?",
+      "parentUuid": "b160f11c_16c41a04",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 12
+      },
+      "revId": "27501308493bf2adadfc3b133fd1d6f4b4feec12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "312321ee_6a3c97f3",
         "filename": "core/cortex-m0/switch.S",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-01T13:20:58Z",
       "side": 1,
       "message": "rather than this, we can probably do slightly better and have __svc_handler return prev/next in r0/r1, then just do the comparison here.\nand keep current_task static there.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "27501308493bf2adadfc3b133fd1d6f4b4feec12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb9692c8_bf3033f6",
+        "filename": "core/cortex-m0/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1133285
+      },
+      "writtenOn": "2016-09-15T15:34:20Z",
+      "side": 1,
+      "message": "Well, __svc_handler is a C function (that returns the previous task and sets current_task to the next one).\n\nI don\u0027t really see how we could get it to set both r0 and r1 as you suggested, as returning from the function will only set r0. Unless going with some inline assembly perhaps?",
+      "parentUuid": "312321ee_6a3c97f3",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cb9692c8_df25ffb6",
+        "filename": "core/cortex-m0/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1133285
+      },
+      "writtenOn": "2016-09-15T15:34:20Z",
+      "side": 1,
+      "message": "This is a slightly improved version of what GCC was producing for the matching C function it replaces. If you have a better suggestion, feel free to let me know!",
+      "parentUuid": "312321ee_ca2303c2",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 49
+      },
+      "revId": "27501308493bf2adadfc3b133fd1d6f4b4feec12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "312321ee_2a10df62",
         "filename": "core/cortex-m0/switch.S",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2016-09-01T13:20:58Z",
       "side": 1,
       "message": "do we want to do another branch and link , just to execute the few instructions in the small svc_handler assembly stub ?\nit\u0027s probably better to do it here directly",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "27501308493bf2adadfc3b133fd1d6f4b4feec12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb9692c8_ff2abb85",
+        "filename": "core/cortex-m0/switch.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1133285
+      },
+      "writtenOn": "2016-09-15T15:34:20Z",
+      "side": 1,
+      "message": "Are you suggesting that I duplicate the contents of svc_handler here? As far as I could understand, storage space is tight on ECs and duplication should preferably be avoided. But if you do confirm you think it\u0027s best, I\u0027ll do that.",
+      "parentUuid": "312321ee_2a10df62",
       "range": {
         "startLine": 112,
         "startChar": 0,
