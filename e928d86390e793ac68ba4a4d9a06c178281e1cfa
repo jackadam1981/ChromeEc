@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab107e06_d32a3486",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-09-15T02:23:18Z",
+      "side": 1,
+      "message": "Only this SHA256_update uses CONFIG_MAPPED_STORAGE_BASE directly. It\u0027s a better solution than mine.",
+      "revId": "e928d86390e793ac68ba4a4d9a06c178281e1cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
