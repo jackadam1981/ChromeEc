@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab415e2d_2be4f935",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-15T17:03:04Z",
+      "side": 1,
+      "message": "need port# for PD \u0026 muxes.",
+      "revId": "061e77b0c203e174c225a5ce80a23ae0609e9f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_abf709ec",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-15T17:03:04Z",
+      "side": 1,
+      "message": "add code to test all devices on individual I2C ports.",
+      "revId": "061e77b0c203e174c225a5ce80a23ae0609e9f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
