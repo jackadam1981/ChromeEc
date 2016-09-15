@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_ae82b769",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1493,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-15T18:04:14Z",
+      "side": 1,
+      "message": "Makes sense. Will try to add it in board file.",
+      "parentUuid": "6b712657_c048525a",
+      "range": {
+        "startLine": 1490,
+        "startChar": 0,
+        "endLine": 1493,
+        "endChar": 2
+      },
+      "revId": "cd62fab4bc6ab538b9d83940582c1ee9d7217fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b712657_a0199e84",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-14T23:29:47Z",
       "side": 1,
       "message": "Why not add this to \u0027struct tcpm_drv\u0027 instead?",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 43
+      },
+      "revId": "cd62fab4bc6ab538b9d83940582c1ee9d7217fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_ae30f7f5",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-15T18:04:14Z",
+      "side": 1,
+      "message": "Vijay had same comment. This approach is fine with Analogix but TCPCI compliant chip does not have compliant register definition for getting the firmware version. Any idea how to deal with this?",
+      "parentUuid": "6b712657_a0199e84",
       "range": {
         "startLine": 192,
         "startChar": 1,
