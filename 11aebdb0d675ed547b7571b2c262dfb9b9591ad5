@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab415e2d_2e8087a6",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-15T17:45:24Z",
+      "side": 1,
+      "message": "If the AP is on, there\u0027s no USB connection to the AP, and CCD is disabled, then usb_is_initialized \u003d 1 but we don\u0027t call usb_init().\n\nIsn\u0027t that a problem somehow?",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 24
+      },
+      "revId": "11aebdb0d675ed547b7571b2c262dfb9b9591ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
