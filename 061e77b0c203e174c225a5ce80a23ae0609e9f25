@@ -33,6 +33,23 @@
       "revId": "061e77b0c203e174c225a5ce80a23ae0609e9f25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_eb5bd1f2",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-15T17:05:37Z",
+      "side": 1,
+      "message": "#ifdef CONFIG_CMD_I2C_STRESS_TEST_BD99955\nto avoid space constraint",
+      "revId": "061e77b0c203e174c225a5ce80a23ae0609e9f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
