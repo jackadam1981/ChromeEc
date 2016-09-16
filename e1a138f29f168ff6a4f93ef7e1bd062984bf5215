@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab415e2d_4d487058",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-09-16T16:26:02Z",
+      "side": 1,
+      "message": "This is a bug fix not related to the purpose of this patch, can you submit a separate patch to get this fixed first?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
