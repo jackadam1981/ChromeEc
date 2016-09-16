@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_b958325c",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-09-16T20:33:23Z",
+      "side": 1,
+      "message": "Added this comment to the explanation following the TODO",
+      "parentUuid": "ab415e2d_6eefef7a",
+      "range": {
+        "startLine": 221,
+        "startChar": 2,
+        "endLine": 221,
+        "endChar": 42
+      },
+      "revId": "9ca7b5c1b2c4a24f740989872b44f031c27ed934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_ee9d9f10",
         "filename": "board/cr50/board.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-15T17:45:23Z",
       "side": 1,
       "message": "The wake pin should be enabled after it is configured.",
+      "range": {
+        "startLine": 225,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 48
+      },
+      "revId": "9ca7b5c1b2c4a24f740989872b44f031c27ed934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_d95dfe4a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-09-16T20:33:23Z",
+      "side": 1,
+      "message": "Changed the order so it\u0027s enabled after being configured.",
+      "parentUuid": "ab415e2d_ee9d9f10",
       "range": {
         "startLine": 225,
         "startChar": 2,
