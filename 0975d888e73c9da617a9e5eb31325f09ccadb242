@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_beb57887",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-16T19:39:22Z",
+      "side": 1,
+      "message": "Yeah, you do. Otherwise you get duplicate invocations of the same files and boards in that repo fail to build.",
+      "parentUuid": "ab415e2d_5e549450",
+      "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_be49f8ba",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2016-09-16T19:34:17Z",
       "side": 1,
       "message": "should be taken through tcg suite",
+      "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_deba4476",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-16T19:39:22Z",
+      "side": 1,
+      "message": "Good point. Will do.",
+      "parentUuid": "ab415e2d_be49f8ba",
       "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
