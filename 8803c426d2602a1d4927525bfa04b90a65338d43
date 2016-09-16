@@ -69,6 +69,30 @@
       "revId": "8803c426d2602a1d4927525bfa04b90a65338d43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_832949a9",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-16T18:31:13Z",
+      "side": 1,
+      "message": "Testing it right now, will either open a new bug or delete the TODO. This is only relevant during SW sync, flashrom flashing will be faster without it, it does read / update-if-changed sector-by-sector on its own.",
+      "parentUuid": "ab415e2d_a38ac5c4",
+      "range": {
+        "startLine": 576,
+        "startChar": 5,
+        "endLine": 576,
+        "endChar": 9
+      },
+      "revId": "8803c426d2602a1d4927525bfa04b90a65338d43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
