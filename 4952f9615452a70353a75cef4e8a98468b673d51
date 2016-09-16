@@ -16,6 +16,24 @@
       "revId": "4952f9615452a70353a75cef4e8a98468b673d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_284952b6",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-16T17:15:27Z",
+      "side": 1,
+      "message": "True, its possible here, but again the same mechanism is not applicable in the TCPCI driver.",
+      "parentUuid": "ab415e2d_14ed95b5",
+      "revId": "4952f9615452a70353a75cef4e8a98468b673d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
