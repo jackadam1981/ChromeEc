@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_b9a112ae",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T21:35:08Z",
+      "side": 1,
+      "message": "okay, I will group it",
+      "parentUuid": "ab415e2d_b9ed92ba",
+      "range": {
+        "startLine": 883,
+        "startChar": 0,
+        "endLine": 891,
+        "endChar": 14
+      },
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_7955eaea",
         "filename": "common/i2c.c",
         "patchSetId": 5
@@ -53,6 +77,30 @@
       "writtenOn": "2016-09-16T21:03:12Z",
       "side": 1,
       "message": "Should this behavior be documented in the command description below?",
+      "range": {
+        "startLine": 921,
+        "startChar": 2,
+        "endLine": 921,
+        "endChar": 17
+      },
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_dd74092c",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T21:35:08Z",
+      "side": 1,
+      "message": "okay, I will make it \"i2ctest count|udelay|dev\"\nin a separate CL: I will add devices on each port separately to test.",
+      "parentUuid": "ab415e2d_7955eaea",
       "range": {
         "startLine": 921,
         "startChar": 2,
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_5db019e2",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T21:35:08Z",
+      "side": 1,
+      "message": "Idea here is to test randomly. In the system I2C read/writes are random on each of the devices. Plan is to make the I2C fail by randomizing.\nMay be I can add a separate CL to give option to do random/sequence test.",
+      "parentUuid": "ab415e2d_f9255ab6",
+      "range": {
+        "startLine": 932,
+        "startChar": 2,
+        "endLine": 932,
+        "endChar": 24
+      },
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_79296aa6",
         "filename": "common/i2c.c",
         "patchSetId": 5
@@ -111,6 +183,64 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_3ded0db6",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T21:35:08Z",
+      "side": 1,
+      "message": "Thanks Good catch.\nWrite register is predefined in the driver so developer can put appropriate register value.\nint write_reg;     /* Read/Write reg which doesn\u0027t impact the system */",
+      "parentUuid": "ab415e2d_79296aa6",
+      "range": {
+        "startLine": 945,
+        "startChar": 0,
+        "endLine": 949,
+        "endChar": 6
+      },
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_9ddc4102",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T21:35:08Z",
+      "side": 1,
+      "message": "If read fails we can skip writing.\nmutex_unlock(\u0026i2c_test_mutex);\ncontinue;",
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_7d223515",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T21:35:08Z",
+      "side": 1,
+      "message": "try rewriting few times if data !\u003d data_verify\n/* Write same value back */\ndo {\n---\n--\ni+\u003d2;\n} while (data !\u003d data_verify, #of trues)",
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_3940c237",
         "filename": "common/i2c.c",
         "patchSetId": 5
@@ -122,6 +252,30 @@
       "writtenOn": "2016-09-16T21:03:12Z",
       "side": 1,
       "message": "Duplicate print statement (line 919 should take care of this)",
+      "range": {
+        "startLine": 992,
+        "startChar": 1,
+        "endLine": 992,
+        "endChar": 34
+      },
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_3df7cd74",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T21:35:08Z",
+      "side": 1,
+      "message": "Okay, I will remove it as we have next statement to tell finished",
+      "parentUuid": "ab415e2d_3940c237",
       "range": {
         "startLine": 992,
         "startChar": 1,
@@ -192,6 +346,30 @@
       "writtenOn": "2016-09-16T21:03:12Z",
       "side": 1,
       "message": "Since ports and addrs were changed to ints elsewhere, does it makes sense to make these ints as well?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 14
+      },
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_39e442ff",
+        "filename": "include/i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T21:35:08Z",
+      "side": 1,
+      "message": "okay, I will change it to int",
+      "parentUuid": "ab415e2d_99ee1615",
       "range": {
         "startLine": 70,
         "startChar": 0,
