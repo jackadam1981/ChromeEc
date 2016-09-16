@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_397282a3",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-16T21:04:57Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "ab415e2d_dea5e40f",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_7e7790c8",
         "filename": "chip/g/dcrypto/bn_hw.c",
         "patchSetId": 2
@@ -129,6 +153,24 @@
       "writtenOn": "2016-09-16T19:57:12Z",
       "side": 1,
       "message": "might as well make this an entirely opaque blob.\n\nAnd change the calls to use the 0..15 indices in the vector table in the beginning and drop all the tantalizing CF__ defines.",
+      "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_d9517ed6",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-16T21:04:57Z",
+      "side": 1,
+      "message": "Er... not me. Nagendra, maybe.",
+      "parentUuid": "ab415e2d_7e7790c8",
       "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
