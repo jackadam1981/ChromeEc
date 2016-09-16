@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_d9797e23",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T20:11:57Z",
+      "side": 1,
+      "message": "yes unrelated to this bug, some of the boards have enough space to accommodate inline functions so optimized it.",
+      "parentUuid": "ab415e2d_7edeb02a",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "fae6018583a7586ed2dbd2eced7b625083006af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_debfa4cc",
         "filename": "driver/als_opt3001.c",
         "patchSetId": 1
