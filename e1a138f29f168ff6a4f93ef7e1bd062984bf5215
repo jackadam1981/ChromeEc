@@ -19,6 +19,121 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_b9ed92ba",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-16T21:03:12Z",
+      "side": 1,
+      "message": "style nit: join the uint8_t lines, and try to group some of the ints as well.",
+      "range": {
+        "startLine": 883,
+        "startChar": 0,
+        "endLine": 891,
+        "endChar": 14
+      },
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_7955eaea",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-16T21:03:12Z",
+      "side": 1,
+      "message": "Should this behavior be documented in the command description below?",
+      "range": {
+        "startLine": 921,
+        "startChar": 2,
+        "endLine": 921,
+        "endChar": 17
+      },
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_f9255ab6",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-16T21:03:12Z",
+      "side": 1,
+      "message": "Does randomization really buy us anything?\n\nIt might be more useful to just do reads, writes, and alternating reads/writes in multiple loops to guarantee that whatever metrics we care about are achieved.\n\nMaybe the logic below can be split into helper functions so that reads and writes can invoked deterministically in addition to randomly.",
+      "range": {
+        "startLine": 932,
+        "startChar": 2,
+        "endLine": 932,
+        "endChar": 24
+      },
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_79296aa6",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-16T21:03:12Z",
+      "side": 1,
+      "message": "How do we know the write actually worked if we don\u0027t change the value? Shouldn\u0027t it be incumbent on the user of the test to find a register which can be changed safely?\n\nI think we need something like:\n1. Read the register\n2. Come up with a new value by change bits (deemed safe to change).\n3. Read to verify the new was written.\n4. Write the original value.\n5. Read to verify the original value was restored.",
+      "range": {
+        "startLine": 945,
+        "startChar": 0,
+        "endLine": 949,
+        "endChar": 6
+      },
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_3940c237",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-16T21:03:12Z",
+      "side": 1,
+      "message": "Duplicate print statement (line 919 should take care of this)",
+      "range": {
+        "startLine": 992,
+        "startChar": 1,
+        "endLine": 992,
+        "endChar": 34
+      },
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_4d487058",
         "filename": "driver/als_opt3001.c",
         "patchSetId": 5
@@ -59,6 +174,29 @@
         "startChar": 0,
         "endLine": 57,
         "endChar": 26
+      },
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_99ee1615",
+        "filename": "include/i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-16T21:03:12Z",
+      "side": 1,
+      "message": "Since ports and addrs were changed to ints elsewhere, does it makes sense to make these ints as well?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 14
       },
       "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
