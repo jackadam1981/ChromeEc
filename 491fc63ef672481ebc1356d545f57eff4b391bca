@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab415e2d_cafc465c",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T07:44:48Z",
+      "side": 1,
+      "message": "[32]",
+      "range": {
+        "startLine": 314,
+        "startChar": 42,
+        "endLine": 314,
+        "endChar": 44
+      },
+      "revId": "491fc63ef672481ebc1356d545f57eff4b391bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_8a031e69",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T07:44:48Z",
+      "side": 1,
+      "message": "counter \u003d 0;",
+      "revId": "491fc63ef672481ebc1356d545f57eff4b391bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_eaf10281",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T07:44:48Z",
+      "side": 1,
+      "message": "32?\nOr static_assert?\n\nMakes it easier to ascertain that this memcpy is safe.",
+      "range": {
+        "startLine": 367,
+        "startChar": 3,
+        "endLine": 367,
+        "endChar": 21
+      },
+      "revId": "491fc63ef672481ebc1356d545f57eff4b391bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_2a0cea9b",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T07:44:48Z",
+      "side": 1,
+      "message": "at least",
+      "range": {
+        "startLine": 402,
+        "startChar": 54,
+        "endLine": 402,
+        "endChar": 61
+      },
+      "revId": "491fc63ef672481ebc1356d545f57eff4b391bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_2a578a57",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T07:44:48Z",
+      "side": 1,
+      "message": "how about:\n\nif (counter_in !\u003d NULL) counter \u003d *counter_in;\n\n++counter;",
+      "revId": "491fc63ef672481ebc1356d545f57eff4b391bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
