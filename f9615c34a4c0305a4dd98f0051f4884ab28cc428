@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab415e2d_7490994c",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T03:01:47Z",
+      "side": 1,
+      "message": "it is more of making driver register read/write function global. I will remove it and add directly raw_read8/raw_write8 for such drivers.",
+      "revId": "f9615c34a4c0305a4dd98f0051f4884ab28cc428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_b774c32a",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T03:01:47Z",
+      "side": 1,
+      "message": "reuse driver read/write with some extra technique as we dont have port \u0026 address params",
+      "revId": "f9615c34a4c0305a4dd98f0051f4884ab28cc428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_948d0538",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T03:01:47Z",
+      "side": 1,
+      "message": "special read/write so need it",
+      "revId": "f9615c34a4c0305a4dd98f0051f4884ab28cc428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
