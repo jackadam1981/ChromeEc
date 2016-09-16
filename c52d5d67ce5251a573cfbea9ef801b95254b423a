@@ -22,6 +22,30 @@
       "revId": "c52d5d67ce5251a573cfbea9ef801b95254b423a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_de096439",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-09-16T19:47:56Z",
+      "side": 1,
+      "message": "Oh, after the 2nd look, actually, 0x00 0x0B is the TPM_ALG_SHA256 in big endian. So, mystery solved. Just revert these bytes here, and the code should be good to go.",
+      "parentUuid": "ab415e2d_9e743cc4",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 12
+      },
+      "revId": "c52d5d67ce5251a573cfbea9ef801b95254b423a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
