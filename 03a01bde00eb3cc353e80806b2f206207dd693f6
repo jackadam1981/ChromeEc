@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab415e2d_037f1906",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-16T18:02:30Z",
+      "side": 1,
+      "message": "Generally we\u0027d say\n\n  uint8_t foo[] \u003d { 0x00, ... };\n  BUILD_ASSERT(SIZEOF(foo) \u003d\u003d REQUIRED_FOO_SIZE);\n\nThat ensures we only the initializers that we specify.",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 39
+      },
+      "revId": "03a01bde00eb3cc353e80806b2f206207dd693f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
