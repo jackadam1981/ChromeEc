@@ -22,6 +22,30 @@
       "revId": "8803c426d2602a1d4927525bfa04b90a65338d43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab1a3e55_e39a1260",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-09-16T02:04:23Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right. We should put mutex before cs is pulling down.",
+      "parentUuid": "ab415e2d_d4786d58",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 15
+      },
+      "revId": "8803c426d2602a1d4927525bfa04b90a65338d43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
