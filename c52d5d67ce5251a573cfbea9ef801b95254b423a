@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab415e2d_9e743cc4",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-09-16T19:44:07Z",
+      "side": 1,
+      "message": "Should be 0x00, 0x0b. I didn\u0027t check the code, why. But that\u0027s what I see on the actual tpm:\n00 0B 32 50 39 29 A1 28 7E ED AA 3E 89 D9 32 F9 B5 1A 6F 92 AB D0 FA 57 72 1F FA 6F C0 41 E0 4F 74 98",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 12
+      },
+      "revId": "c52d5d67ce5251a573cfbea9ef801b95254b423a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
