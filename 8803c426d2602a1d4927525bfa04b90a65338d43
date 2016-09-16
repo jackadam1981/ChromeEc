@@ -46,6 +46,29 @@
       "revId": "8803c426d2602a1d4927525bfa04b90a65338d43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_a38ac5c4",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-16T18:27:41Z",
+      "side": 1,
+      "message": "Do you want to add a bug for this? Maybe the same one in the commit message?",
+      "range": {
+        "startLine": 576,
+        "startChar": 5,
+        "endLine": 576,
+        "endChar": 9
+      },
+      "revId": "8803c426d2602a1d4927525bfa04b90a65338d43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
