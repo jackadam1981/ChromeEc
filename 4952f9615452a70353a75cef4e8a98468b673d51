@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ab415e2d_e34a0d0c",
+        "filename": "board/reef/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T19:04:23Z",
+      "side": 1,
+      "message": "#ifdef CONFIG_USB_PD_TCPC_FW_VERSION\nvoid board_print_tcpc_fw_version(int port)\n{\n  int rv;\n  int version;\n  if (port)\n    rv \u003d ps8751_tcpc_get_fw_version(port, \u0026version);\n  else\n    rv \u003d anx74xx_tcpc_get_fw_version(port, \u0026version);\n}\n#endif",
+      "revId": "4952f9615452a70353a75cef4e8a98468b673d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_14ed95b5",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 7
@@ -31,6 +48,41 @@
       "side": 1,
       "message": "True, its possible here, but again the same mechanism is not applicable in the TCPCI driver.",
       "parentUuid": "ab415e2d_14ed95b5",
+      "revId": "4952f9615452a70353a75cef4e8a98468b673d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_23733579",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T19:04:23Z",
+      "side": 1,
+      "message": "#ifdef CONFIG_USB_PD_TCPC_FW_VERSION\n        board_print_tcpc_fw_version(port);\n#endif",
+      "parentUuid": "ab415e2d_284952b6",
+      "revId": "4952f9615452a70353a75cef4e8a98468b673d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_0329d94a",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T19:04:23Z",
+      "side": 1,
+      "message": "in driver/tcpm/tcpci.c\n\nstatic int init_alert_mask(int port)\n{\n\n#ifdef CONFIG_USB_PD_TCPC_FW_VERSION\n        board_print_tcpc_fw_version(port);\n#endif\n}",
       "revId": "4952f9615452a70353a75cef4e8a98468b673d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
