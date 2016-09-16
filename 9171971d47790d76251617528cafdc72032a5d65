@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_c358b15d",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-09-16T18:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab415e2d_63f53d48",
+      "revId": "9171971d47790d76251617528cafdc72032a5d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_e393ed03",
         "filename": "board/cr50/tpm2/rsa.c",
         "patchSetId": 9
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_03639913",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-09-16T18:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab415e2d_e393ed03",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 50
+      },
+      "revId": "9171971d47790d76251617528cafdc72032a5d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_a3ef2579",
         "filename": "board/cr50/tpm2/rsa.c",
         "patchSetId": 9
@@ -53,6 +95,30 @@
       "writtenOn": "2016-09-16T18:21:55Z",
       "side": 1,
       "message": "sizeof(TPM2_RSA_EK_NAME_CR50)",
+      "range": {
+        "startLine": 368,
+        "startChar": 54,
+        "endLine": 368,
+        "endChar": 56
+      },
+      "revId": "9171971d47790d76251617528cafdc72032a5d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_233fb5e5",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-09-16T18:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab415e2d_a3ef2579",
       "range": {
         "startLine": 368,
         "startChar": 54,
