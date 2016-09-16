@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ab415e2d_59f58e47",
+        "filename": "board/reef/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T20:28:41Z",
+      "side": 1,
+      "message": "This list become big, so I will make _ACCEL, _ALS, _BATTERY, _CHARGER, _TCPC, _TEMPERATURE",
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_4d487058",
         "filename": "driver/als_opt3001.c",
         "patchSetId": 5
