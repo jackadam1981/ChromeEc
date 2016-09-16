@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_4de4f036",
+        "filename": "board/cr50/tpm2/rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-16T16:29:57Z",
+      "side": 1,
+      "message": "We have a BUILD_ASSERT() macro that runs at compile time.",
+      "parentUuid": "ab415e2d_eaf10281",
+      "range": {
+        "startLine": 367,
+        "startChar": 3,
+        "endLine": 367,
+        "endChar": 21
+      },
+      "revId": "491fc63ef672481ebc1356d545f57eff4b391bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_2a0cea9b",
         "filename": "board/cr50/tpm2/rsa.c",
         "patchSetId": 5
