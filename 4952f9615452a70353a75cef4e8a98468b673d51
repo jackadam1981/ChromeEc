@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab415e2d_14ed95b5",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T00:38:01Z",
+      "side": 1,
+      "message": "to avoid complexity may be we can add a function similar to board_hibernate and call from here.\nboard_print_fw_version(int port)?",
+      "revId": "4952f9615452a70353a75cef4e8a98468b673d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
