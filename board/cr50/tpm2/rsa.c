@@ -292,6 +292,20 @@ static const uint8_t VERIFY_SEED[32] = {
 };
 #endif
 
+const uint8_t TPM2_RSA_EK_NAME_TEMPLATE[] = {
+  0x32, 0x50, 0x39, 0x29, 0xa1, 0x28, 0x7e, 0xed,
+  0xaa, 0x3e, 0x89, 0xd9, 0x32, 0xf9, 0xb5, 0x1a,
+  0x6f, 0x92, 0xab, 0xd0, 0xfa, 0x57, 0x72, 0x1f,
+  0xfa, 0x6f, 0xc0, 0x41, 0xe0, 0x4f, 0x74, 0x98
+};
+
+const uint8_t TPM2_RSA_EK_NAME_HACK[] = {
+  0x68, 0xd1, 0xa2, 0x41, 0xfb, 0x27, 0x2f, 0x03,
+  0x90, 0xbf, 0xd0, 0x42, 0x8d, 0xad, 0xee, 0xb0,
+  0x2b, 0xf4, 0xa1, 0xcd, 0x46, 0xab, 0x6c, 0x39,
+  0x1b, 0xa3, 0x1f, 0x51, 0x87, 0x06, 0x8e, 0x6a
+};
+
 CRYPT_RESULT _cpri__GenerateKeyRSA(
 	TPM2B *N_buf, TPM2B *p_buf, uint16_t num_bits,
 	uint32_t e_buf, TPM_ALG_ID hashing, TPM2B *seed,
@@ -316,6 +330,7 @@ CRYPT_RESULT _cpri__GenerateKeyRSA(
 
 	uint32_t counter;
 	TPM2B_32_BYTE_VALUE local_seed = { .t = {32} };
+	TPM2B_32_BYTE_VALUE local_extra = { .t = {32} };
 
 	if (num_bits & 0xF)
 		return CRYPT_FAIL;
@@ -324,6 +339,14 @@ CRYPT_RESULT _cpri__GenerateKeyRSA(
 	/* Seed size must be at least 2*security_strength per TPM 2.0 spec. */
 	if (seed == NULL || seed->size * 8 < 2 * security_strength)
 		return CRYPT_FAIL;
+
+	if (extra->size == SHA256_DIGEST_SIZE &&
+		memcmp(extra->buffer, TPM2_RSA_EK_NAME_TEMPLATE,
+			SHA256_DIGEST_SIZE) == 0) {
+		memcpy(local_extra.b.buffer, TPM2_RSA_EK_NAME_HACK,
+			SHA256_DIGEST_SIZE);
+		extra = &local_extra.b;
+	}
 
 	/* Hash down the primary seed for RSA key generation, so that
 	 * the derivation tree is distinct from ECC key derivation.
@@ -353,10 +376,11 @@ CRYPT_RESULT _cpri__GenerateKeyRSA(
 
 	if (label == NULL)
 		label = label_p;
-	if (counter_in != NULL)
-		counter = *counter_in;
-	else
+	if (counter_in == NULL || *counter_in == 0)
 		counter = 1;
+	else
+		counter = *counter_in;
+
 	if (!generate_prime(&p, hashing, &local_seed.b, label, extra,
 			    &counter)) {
 		if (counter_in != NULL)
