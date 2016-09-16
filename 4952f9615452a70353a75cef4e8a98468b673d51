@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_190226e2",
+        "filename": "board/reef/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-16T21:03:04Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ab415e2d_e34a0d0c",
+      "revId": "4952f9615452a70353a75cef4e8a98468b673d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_14ed95b5",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 7
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_19d94674",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-16T21:03:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab415e2d_23733579",
+      "revId": "4952f9615452a70353a75cef4e8a98468b673d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_0329d94a",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 7
@@ -83,6 +119,24 @@
       "writtenOn": "2016-09-16T19:04:23Z",
       "side": 1,
       "message": "in driver/tcpm/tcpci.c\n\nstatic int init_alert_mask(int port)\n{\n\n#ifdef CONFIG_USB_PD_TCPC_FW_VERSION\n        board_print_tcpc_fw_version(port);\n#endif\n}",
+      "revId": "4952f9615452a70353a75cef4e8a98468b673d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_f9d39a52",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-16T21:03:04Z",
+      "side": 1,
+      "message": "My bad, yes updating it.",
+      "parentUuid": "ab415e2d_0329d94a",
       "revId": "4952f9615452a70353a75cef4e8a98468b673d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
