@@ -22,6 +22,30 @@
       "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_fedd40d1",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-16T19:36:16Z",
+      "side": 1,
+      "message": "okay, I will push a separate patch",
+      "parentUuid": "ab415e2d_4d487058",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "e1a138f29f168ff6a4f93ef7e1bd062984bf5215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
