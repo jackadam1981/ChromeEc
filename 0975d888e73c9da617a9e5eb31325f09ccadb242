@@ -69,6 +69,253 @@
       "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_5e481458",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T19:57:12Z",
+      "side": 1,
+      "message": "w/o documentation this comment is infuriating. Remove?",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_dea5e40f",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T19:57:12Z",
+      "side": 1,
+      "message": "How about just\n\"firmware blob for crypto accelerator\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_7e7790c8",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T19:57:12Z",
+      "side": 1,
+      "message": "might as well make this an entirely opaque blob.\n\nAnd change the calls to use the 0..15 indices in the vector table in the beginning and drop all the tantalizing CF__ defines.",
+      "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_9e20bcaa",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T19:57:12Z",
+      "side": 1,
+      "message": "13",
+      "range": {
+        "startLine": 1101,
+        "startChar": 14,
+        "endLine": 1101,
+        "endChar": 28
+      },
+      "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_1e14cc49",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T19:57:12Z",
+      "side": 1,
+      "message": "10",
+      "range": {
+        "startLine": 1124,
+        "startChar": 15,
+        "endLine": 1124,
+        "endChar": 28
+      },
+      "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_fe2540b6",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T19:57:12Z",
+      "side": 1,
+      "message": "12",
+      "range": {
+        "startLine": 1137,
+        "startChar": 15,
+        "endLine": 1137,
+        "endChar": 26
+      },
+      "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_5e165452",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T19:57:12Z",
+      "side": 1,
+      "message": "12",
+      "range": {
+        "startLine": 1141,
+        "startChar": 15,
+        "endLine": 1141,
+        "endChar": 26
+      },
+      "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_1e2bec8b",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T19:57:12Z",
+      "side": 1,
+      "message": "12",
+      "range": {
+        "startLine": 1150,
+        "startChar": 16,
+        "endLine": 1150,
+        "endChar": 27
+      },
+      "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_de3084f7",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T19:57:12Z",
+      "side": 1,
+      "message": "12",
+      "range": {
+        "startLine": 1157,
+        "startChar": 17,
+        "endLine": 1157,
+        "endChar": 28
+      },
+      "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_be2bb88c",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T19:57:12Z",
+      "side": 1,
+      "message": "11",
+      "range": {
+        "startLine": 1166,
+        "startChar": 15,
+        "endLine": 1166,
+        "endChar": 26
+      },
+      "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_1e876c6a",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-09-16T19:57:12Z",
+      "side": 1,
+      "message": "if deemed beneficial after side-channel analysis",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 36
+      },
+      "revId": "0975d888e73c9da617a9e5eb31325f09ccadb242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
