@@ -22,6 +22,30 @@
       "revId": "c2966fe10110565bac59b98e5d46511cd6e27958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_31d9b674",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1151774
+      },
+      "writtenOn": "2016-09-17T05:52:25Z",
+      "side": 1,
+      "message": "yes. just set bits bit3-bit2 to operate AVDD10_BMC to 1.08.\nbit3-bit2: set avdd10_bmc internally.00:1.08; 01:1.12; 10:1.17: 11:1.22",
+      "parentUuid": "71dd999f_88c6aa8e",
+      "range": {
+        "startLine": 831,
+        "startChar": 51,
+        "endLine": 831,
+        "endChar": 61
+      },
+      "revId": "c2966fe10110565bac59b98e5d46511cd6e27958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
