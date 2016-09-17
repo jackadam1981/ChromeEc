@@ -826,6 +826,7 @@ static int fusb302_tcpm_transmit(int port, enum tcpm_transmit_type type,
 	int buf_pos = 0;
 
 	int reg;
+	static int rstcnt = 0;
 
 	/* Flush the TXFIFO */
 	fusb302_flush_tx_fifo(port);
@@ -844,12 +845,15 @@ static int fusb302_tcpm_transmit(int port, enum tcpm_transmit_type type,
 
 		return fusb302_send_message(port, header, data, buf, buf_pos);
 	case TCPC_TX_HARD_RESET:
+		rstcnt++;
 		state[port].tx_hard_reset_req = 1;
 
 		/* Simply hit the SEND_HARD_RESET bit */
 		tcpc_read(port, TCPC_REG_CONTROL3, &reg);
 		reg |= TCPC_REG_CONTROL3_SEND_HARDRESET;
 		tcpc_write(port, TCPC_REG_CONTROL3, reg);
+		if (rstcnt % 100 == 0)
+			ccprintf("DBG-HARD RST! %d\n", rstcnt);
 
 		break;
 	case TCPC_TX_BIST_MODE_2:
@@ -887,6 +891,12 @@ void fusb302_tcpc_alert(int port)
 	int toggle_answer;
 	int head;
 	uint32_t payload[7];
+
+	static int cnt = 0;
+
+	cnt++;
+	if (cnt % 100 == 0)
+		ccprintf("DBG-ALERT! %d\n", cnt);
 
 	/* reading interrupt registers clears them */
 
@@ -1069,3 +1079,23 @@ const struct tcpm_drv fusb302_tcpm_drv = {
 	.transmit		= &fusb302_tcpm_transmit,
 	.tcpc_alert		= &fusb302_tcpc_alert,
 };
+
+static int command_fusb302dump(int argc, char **argv)
+{
+	int port, i;
+	int reg;
+
+	for (port = 0; port < 2; ++port) {
+		for (i = 1; i <= 0xf; ++i) {
+			tcpc_read(port, i, &reg);
+			ccprintf("REG %x\t%x\n", i, reg);
+		}
+		for (i = 0x3c; i <= 0x42; ++i) {
+			tcpc_read(port, i, &reg);
+			ccprintf("REG %x\t%x\n", i, reg);
+		}
+	}
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(fusb302dump, command_fusb302dump, "", "");
