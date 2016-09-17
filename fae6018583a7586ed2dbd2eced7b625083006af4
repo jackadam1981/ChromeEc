@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_cc58d95d",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-17T16:06:15Z",
+      "side": 1,
+      "message": "Yes, I suggest not to use inline here. Let the compiler decide.\n\nI prefer to use inline only in header files, usually for empty / single-line functions that the compiler is almost certainly going to inline (or optimize away).",
+      "parentUuid": "ab415e2d_f1672e4d",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "fae6018583a7586ed2dbd2eced7b625083006af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_debfa4cc",
         "filename": "driver/als_opt3001.c",
         "patchSetId": 1
