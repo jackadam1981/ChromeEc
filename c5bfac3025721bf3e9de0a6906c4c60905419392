@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab415e2d_c6743ac5",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-17T01:01:14Z",
+      "side": 1,
+      "message": "I\u0027d recommend leaving these out for now. Some bits are volatile and might be confusing if the output is inconsistent.\n\nThe status register bits could be useful in other contexts, though, as part of the response packet.",
+      "range": {
+        "startLine": 777,
+        "startChar": 0,
+        "endLine": 778,
+        "endChar": 43
+      },
+      "revId": "c5bfac3025721bf3e9de0a6906c4c60905419392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
