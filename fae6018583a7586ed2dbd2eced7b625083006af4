@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ab415e2d_f1672e4d",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-17T03:24:25Z",
+      "side": 1,
+      "message": "That may be true for now, but we often end up struggling with code size - Shawn is facing that difficulty on the Kevin platform right now, in fact. Though it\u0027s not a big deal in this case I think the rule of thumb should be to only use inline if there is an explicit need to do so.\n\nThe Linux coding style guide makes some good general points points about inlines, particularly chapter 15: https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/Documentation/CodingStyle?id\u003drefs/tags/v4.8-rc6#n747",
+      "parentUuid": "ab415e2d_d9797e23",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "fae6018583a7586ed2dbd2eced7b625083006af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_debfa4cc",
         "filename": "driver/als_opt3001.c",
         "patchSetId": 1
