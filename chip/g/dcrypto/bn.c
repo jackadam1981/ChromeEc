@@ -7,8 +7,43 @@
 #include "internal.h"
 
 #include "trng.h"
+#include "uart.h"
 
 #include <assert.h>
+
+
+// Ghetto profiling
+#define CYC_DCRYPTO 0
+#define CYC_TRNG 1
+#define CYC_SIEVE 2
+#define CYC_TOTAL 3
+#define CYC_MODEXPS 4
+#define CYC_MAX 5
+uint32_t __cyclecounts[CYC_MAX];
+
+void cyclecounter_init(void) {
+  memset(__cyclecounts, 0, sizeof(__cyclecounts));
+  *(volatile uint32_t*)(GC_M3_DEMCR_ADDR) |= 1<<24;
+  *(volatile uint32_t*)(GC_M3_DWT_CTRL_ADDR) |= 1<<24;
+}
+
+void cyclecounter_print(void) {
+  uart_printf("TOTAL  : %u\n", __cyclecounts[CYC_TOTAL]);
+  uart_printf("DCRYPTO: %u\n", __cyclecounts[CYC_DCRYPTO]);
+  uart_printf("TRNG   : %u\n", __cyclecounts[CYC_TRNG]);
+  uart_printf("SIEVE  : %u\n", __cyclecounts[CYC_SIEVE]);
+  uart_printf("MODEXPS: %u\n", __cyclecounts[CYC_MODEXPS]);
+  uart_printf("--\n");
+}
+
+uint32_t cyclecounter(void) {
+  return *(volatile uint32_t*)(GC_M3_DWT_CYCCNT_ADDR);
+}
+
+#define START(x) __cyclecounts[CYC_##x] -= cyclecounter()
+#define STOP(x) __cyclecounts[CYC_##x] += cyclecounter()
+#define COUNT(x) __cyclecounts[CYC_##x] += 1
+
 
 #ifdef CONFIG_WATCHDOG
 extern void watchdog_reload(void);
@@ -343,11 +378,14 @@ void bn_mont_modexp(struct LITE_BIGNUM *output, const struct LITE_BIGNUM *input,
 #ifndef CR50_NO_BN_ASM
 	if (bn_bits(N) == 2048 || bn_bits(N) == 1024) {
 		/* TODO(ngm): add hardware support for standard key sizes. */
+START(DCRYPTO);
+COUNT(MODEXPS);
 		bn_mont_modexp_asm(output, input, exp, N);
 		/* Final reduce. */
 		/* TODO(ngm): constant time. */
 		if (bn_sub(output, N))
 			bn_add(output, N);
+STOP(DCRYPTO);
 		return;
 	}
 #endif
@@ -902,6 +940,7 @@ static int bn_probable_prime(const struct LITE_BIGNUM *p)
 		int i;
 
 		/* pick random A, such that A < p */
+START(TRNG);
 		rand_bytes(A_buf, bn_size(&A));
 		for (i = A.dmax - 1; i >= 0; i--) {
 			while (BN_DIGIT(&A, i) > BN_DIGIT(p, i))
@@ -909,6 +948,7 @@ static int bn_probable_prime(const struct LITE_BIGNUM *p)
 			if (BN_DIGIT(&A, i) < BN_DIGIT(p, i))
 				break;
 		}
+STOP(TRNG);
 
 		/* y = a ^ r mod p */
 		bn_mont_modexp(&y, &A, &r, p);
@@ -953,11 +993,15 @@ int DCRYPTO_bn_generate_prime(struct LITE_BIGNUM *p)
 	struct LITE_BIGNUM composites;
 	uint16_t prime = PRIME1;
 
+	cyclecounter_init();
+
+START(TOTAL);
 	/* Set top two bits, as well as LSB. */
 	bn_set_bit(p, 0);
 	bn_set_bit(p, bn_bits(p) - 1);
 	bn_set_bit(p, bn_bits(p) - 2);
 
+START(SIEVE);
 	/* Save on trial division by marking known composites. */
 	bn_init(&composites, composites_buf, sizeof(composites_buf));
 	for (i = 0; i < sizeof(PRIME_DELTAS) / sizeof(PRIME_DELTAS[0]); i++) {
@@ -973,12 +1017,14 @@ int DCRYPTO_bn_generate_prime(struct LITE_BIGNUM *p)
 				bn_set_bit(&composites, j >> 1);
 		}
 	}
+STOP(SIEVE);
 
 	/* composites now marked, apply Miller-Rabin to prime candidates. */
 	j = 0;
 	for (i = 0; i < bn_bits(&composites); i++) {
 		uint32_t diff_buf;
 		struct LITE_BIGNUM diff;
+		int result;
 
 		if (bn_is_bit_set(&composites, i))
 			continue;
@@ -989,9 +1035,13 @@ int DCRYPTO_bn_generate_prime(struct LITE_BIGNUM *p)
 		DCRYPTO_bn_wrap(&diff, &diff_buf, sizeof(diff_buf));
 		bn_add(p, &diff);
 		/* Make sure prime will work with F4 public exponent. */
-		if (bn_mod_f4(p) >= 2) {
-			if (bn_probable_prime(p))
-				return 1;
+		if (bn_mod_f4(p) < 2) continue;
+		result = bn_probable_prime(p);
+		if (result ) {
+STOP(TOTAL);
+uart_printf("Prime  : %08X%08X\n", p->d[0], p->d[1]);
+			cyclecounter_print();
+			return 1;
 		}
 	}
 
