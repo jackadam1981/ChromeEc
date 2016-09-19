@@ -90,7 +90,7 @@ static int wait_isr(int port, int mask)
 		 * Depending on the bus speed, busy loop for a while before
 		 * sleeping and letting other things run.
 		 */
-		if (delta >= busyloop_us[pdata[port].freq])
+		//if (delta >= busyloop_us[pdata[port].freq])
 			usleep(100);
 	} while (delta < pdata[port].timeout_us);
 

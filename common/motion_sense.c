@@ -669,6 +669,8 @@ static void motion_sense_reset_sensors(void)
 }
 #endif
 
+int dummy_count = 3;
+
 /*
  * Motion Sense Task
  * Requirement: motion_sensors[] are defined in board.c file.
@@ -719,10 +721,14 @@ void motion_sense_task(void)
 				ret = motion_sense_process(sensor, &event,
 						&ts_begin_task);
 #ifdef CONFIG_ACCEL_RESET
+				dummy_count--;
 				if (ret == EC_ERROR_HW_INTERNAL ||
-				    force_reset) {
+				    force_reset || dummy_count < 0) {
+					dummy_count = 3;
+					CPRINTF("reset\n");
 					/* Sensor is dead, try to recover */
 					motion_sense_reset_sensors();
+					CPRINTF("done\n");
 					ready_status = 0;
 					force_reset = 0;
 					break;
