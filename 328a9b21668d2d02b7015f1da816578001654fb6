@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab415e2d_5a4572f7",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-09-19T20:44:11Z",
+      "side": 1,
+      "message": "Should we also resume from deep sleep on the rising edge of plt_rst?",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 71
+      },
+      "revId": "328a9b21668d2d02b7015f1da816578001654fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
