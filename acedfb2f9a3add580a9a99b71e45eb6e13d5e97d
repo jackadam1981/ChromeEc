@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0c34720_d3068c2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-20T15:53:39Z",
+      "side": 1,
+      "message": "Is a boot sufficient to exercise all the supported host commands? Maybe FAFT (or a subset of test cases where HCs are exercised) as well, but just checking for panics?",
+      "revId": "acedfb2f9a3add580a9a99b71e45eb6e13d5e97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0c34720_532a9ca1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1209,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-20T15:53:39Z",
+      "side": 1,
+      "message": "You\u0027re squeezing this new HC in with this commit? Or maybe this change is already inflight?",
+      "range": {
+        "startLine": 1194,
+        "startChar": 0,
+        "endLine": 1209,
+        "endChar": 18
+      },
+      "revId": "acedfb2f9a3add580a9a99b71e45eb6e13d5e97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0c34720_a1536608",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3194,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-20T15:53:39Z",
+      "side": 1,
+      "message": "__ec_cmd_struct ?",
+      "revId": "acedfb2f9a3add580a9a99b71e45eb6e13d5e97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0c34720_c150f2fd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3214,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-20T15:53:39Z",
+      "side": 1,
+      "message": "__ec_cmd_struct ?",
+      "revId": "acedfb2f9a3add580a9a99b71e45eb6e13d5e97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
