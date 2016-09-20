@@ -495,6 +495,12 @@ static int device_powered_on(enum device_type device, int uart)
 	if (!device_state_changed(device, DEVICE_STATE_ON))
 		return EC_ERROR_UNKNOWN;
 
+	/*
+	 * Set the FIFO RXILVL to only trigger rx interrupts every 16
+	 * characters and reset the RX FIFO
+	 */
+	GR_UART_FIFO(uart) |= 0xd;
+
 	/* Enable RX and TX on the UART peripheral */
 	uartn_enable(uart);
 
