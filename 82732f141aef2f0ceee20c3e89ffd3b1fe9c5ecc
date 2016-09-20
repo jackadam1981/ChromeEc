@@ -16,6 +16,24 @@
       "revId": "82732f141aef2f0ceee20c3e89ffd3b1fe9c5ecc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0c34720_bc1e2d66",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-20T16:52:49Z",
+      "side": 1,
+      "message": "In test code\n1. test_ramp_limit()\ncharger limit is 1.6A, it loses power at 1.6A hence we backup the ICL and ramp to 1.52A. But the test expects to ramp to 1.6A.\n2. test_fast_switch()\nuser plugs \u0026 unplugs charger in 600ms, this is little less than 3s when last ramp occurred and new charge charge detected.\n\nI will have to reduce the CHG_RECOVER_MAX_TIME for both tests to pass. I will retest and update the results.",
+      "parentUuid": "f0c34720_41ee42b3",
+      "revId": "82732f141aef2f0ceee20c3e89ffd3b1fe9c5ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
