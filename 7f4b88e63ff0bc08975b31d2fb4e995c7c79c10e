@@ -16,6 +16,24 @@
       "revId": "7f4b88e63ff0bc08975b31d2fb4e995c7c79c10e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab1a3e55_a6f2e893",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-09-20T02:12:11Z",
+      "side": 1,
+      "message": "Looking closer, the situation I mentioned won\u0027t occur. Hostcmd only has chance to handle request after leaving CS\u0027s ISR. Clearing EOR here is safe.",
+      "parentUuid": "ab1a3e55_46c5b42c",
+      "revId": "7f4b88e63ff0bc08975b31d2fb4e995c7c79c10e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
