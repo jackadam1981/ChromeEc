@@ -22,6 +22,30 @@
       "revId": "328a9b21668d2d02b7015f1da816578001654fb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0c34720_5004d220",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-09-20T00:24:55Z",
+      "side": 1,
+      "message": "I added the equivalent configuration for plt_rst_l so that a rising edge on this signal will cause a wake from deep sleep.",
+      "parentUuid": "ab415e2d_5a4572f7",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 71
+      },
+      "revId": "328a9b21668d2d02b7015f1da816578001654fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
