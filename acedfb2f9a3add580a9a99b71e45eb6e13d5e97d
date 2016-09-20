@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f0c34720_e7f89e43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-20T17:04:18Z",
+      "side": 1,
+      "message": "We don\u0027t need to exercise all the host commands, just all the protocol engines (LPC, SPI, I2C) that set up host command buffers.",
+      "parentUuid": "f0c34720_d3068c2d",
+      "revId": "acedfb2f9a3add580a9a99b71e45eb6e13d5e97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0c34720_532a9ca1",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2016-09-20T15:53:39Z",
       "side": 1,
       "message": "You\u0027re squeezing this new HC in with this commit? Or maybe this change is already inflight?",
+      "range": {
+        "startLine": 1194,
+        "startChar": 0,
+        "endLine": 1209,
+        "endChar": 18
+      },
+      "revId": "acedfb2f9a3add580a9a99b71e45eb6e13d5e97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0c34720_c7356231",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1209,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-20T17:04:18Z",
+      "side": 1,
+      "message": "It\u0027s in flight in another branch, and I don\u0027t want to forget to __ec_cmd_struct-ify it.",
+      "parentUuid": "f0c34720_532a9ca1",
       "range": {
         "startLine": 1194,
         "startChar": 0,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "f0c34720_67bcae8a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3194,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-20T17:04:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0c34720_a1536608",
+      "revId": "acedfb2f9a3add580a9a99b71e45eb6e13d5e97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0c34720_c150f2fd",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -70,6 +130,24 @@
       "writtenOn": "2016-09-20T15:53:39Z",
       "side": 1,
       "message": "__ec_cmd_struct ?",
+      "revId": "acedfb2f9a3add580a9a99b71e45eb6e13d5e97d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0c34720_87c19af9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3214,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-20T17:04:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0c34720_c150f2fd",
       "revId": "acedfb2f9a3add580a9a99b71e45eb6e13d5e97d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
