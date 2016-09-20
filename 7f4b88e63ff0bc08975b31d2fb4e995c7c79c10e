@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab1a3e55_46c5b42c",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-09-20T01:56:47Z",
+      "side": 1,
+      "message": "If host command transaction is short and pull up cs quickly since hostcmd task gives a quick response, we might encounter the \"Unexpected state\" situation. As you point out in issue 57563, the root cause might be that recovery image has long sysjump time and doesn\u0027t contains CL 384583. Do we need to add this CL if recovery image is new enough?",
+      "revId": "7f4b88e63ff0bc08975b31d2fb4e995c7c79c10e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
