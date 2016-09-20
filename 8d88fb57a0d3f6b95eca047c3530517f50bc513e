@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0c34720_42e400a2",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-20T17:38:34Z",
+      "side": 1,
+      "message": "We should use the board-level hibernate_wake_pins[] for this.",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 15
+      },
+      "revId": "8d88fb57a0d3f6b95eca047c3530517f50bc513e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
