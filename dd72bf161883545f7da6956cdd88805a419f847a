@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0c34720_a0791722",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-09-21T00:53:19Z",
+      "side": 1,
+      "message": "Shaoliang, base on our PM, can you please comment on whether this line 152 is needed or not? And instead of 0x09, should it just write back reg, which is the original read value?",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 63
+      },
+      "revId": "dd72bf161883545f7da6956cdd88805a419f847a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
