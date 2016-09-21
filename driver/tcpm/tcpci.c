@@ -136,6 +136,23 @@ int tcpci_tcpm_set_cc(int port, int pull)
 			  TCPC_REG_ROLE_CTRL_SET(0, rp, pull, pull));
 }
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+static int tcpci_tcpc_drp_toggle(int port)
+{
+	int reg, rv;
+	uint8_t rp;
+
+	rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &reg);
+	if (rv)
+		return rv;
+	rp = TCPC_REG_ROLE_CTRL_RP(reg);
+	/* Set auto drp toggle */
+	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
+			  TCPC_REG_ROLE_CTRL_SET(1, rp, TYPEC_CC_OPEN,
+						 TYPEC_CC_OPEN));
+}
+#endif
+
 int tcpci_tcpm_set_polarity(int port, int polarity)
 {
 	return tcpc_write(port, TCPC_REG_TCPC_CTRL,
@@ -407,5 +424,8 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 	.tcpc_alert		= &tcpci_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &tcpci_tcpc_discharge_vbus,
+#endif
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	.drp_toggle	= &tcpci_tcpc_drp_toggle,
 #endif
 };

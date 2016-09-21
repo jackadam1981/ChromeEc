@@ -515,6 +515,22 @@ static int anx74xx_tcpm_set_cc(int port, int pull)
 	return rv;
 }
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+static int anx74xx_tcpc_drp_toggle(int port)
+{
+	int rv;
+	int reg;
+
+	/* Enable CC software Control */
+	rv = tcpc_read(port, ANX74XX_REG_CC_SOFTWARE_CTRL, &reg);
+	if (rv)
+		return EC_ERROR_UNKNOWN;
+	reg &= ~ANX74XX_REG_CC_SW_CTRL_ENABLE;
+	rv |= tcpc_write(port, ANX74XX_REG_CC_SOFTWARE_CTRL, reg);
+	return rv;
+}
+#endif
+
 static int anx74xx_tcpm_set_polarity(int port, int polarity)
 {
 	int reg, mux_state, rv = EC_SUCCESS;
@@ -874,6 +890,9 @@ const struct tcpm_drv anx74xx_tcpm_drv = {
 	.tcpc_alert		= &anx74xx_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &anx74xx_tcpc_discharge_vbus,
+#endif
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	.drp_toggle	= &anx74xx_tcpc_drp_toggle,
 #endif
 };
 
