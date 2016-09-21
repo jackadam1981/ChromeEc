@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "90104bd0_ea12076b",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-09-21T23:50:16Z",
+      "side": 1,
+      "message": "As commented by Shawn, this will set AVDD10_BMC to 1.12? Do we want 1.08 or 1.12?",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 10
+      },
+      "revId": "c2966fe10110565bac59b98e5d46511cd6e27958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71dd999f_88c6aa8e",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 1
