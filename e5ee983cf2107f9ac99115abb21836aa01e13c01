@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90104bd0_ca4f43ba",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-21T23:23:36Z",
+      "side": 1,
+      "message": "Is it fine that this will be called only for Port 0?",
+      "revId": "e5ee983cf2107f9ac99115abb21836aa01e13c01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
