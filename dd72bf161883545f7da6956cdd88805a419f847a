@@ -22,6 +22,30 @@
       "revId": "dd72bf161883545f7da6956cdd88805a419f847a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "101c5bae_06507a58",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1151724
+      },
+      "writtenOn": "2016-09-21T02:29:26Z",
+      "side": 1,
+      "message": "This function(anx74xx_tcpm_mux_exit(int port)) is to set the MUX to safe mode (USB Alt mode spec defined). Bit0 \u003d 1 (ANX74XX_REG_MODE_TRANS) set MUX to safe mode, it is enough for this. Bit7/6/5/4/ \u003d 0 is to disconnect SUB0/1, so 0x09 is OK too. Don`t need to change anything here.",
+      "parentUuid": "f0c34720_a0791722",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 63
+      },
+      "revId": "dd72bf161883545f7da6956cdd88805a419f847a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
