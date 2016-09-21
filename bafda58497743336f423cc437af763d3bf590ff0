@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0c34720_443e42c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-09-21T17:12:00Z",
+      "side": 1,
+      "message": "16 characters is pretty annoying, but Bill was talking about reducing the number of UART1 RX interrupts. We could do 4 characters. \n\nIs this necessary. UART1 RX just triggers a lot of interrupts during boot. After that there aren\u0027t many.",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "bafda58497743336f423cc437af763d3bf590ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
