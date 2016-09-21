@@ -60,6 +60,36 @@
 #define IN_PGOOD_PP3300	POWER_SIGNAL_MASK(X86_PGOOD_PP3300)
 #define IN_PGOOD_PP5000	POWER_SIGNAL_MASK(X86_PGOOD_PP5000)
 
+static void ps8751_cable_det_handler(void)
+{
+	int i, cc1, cc2;
+
+	for (i = 0; i < 100; i++) {
+		tcpm_get_cc(1, &cc1, &cc2);
+		if (cc1 != TYPEC_CC_VOLT_OPEN ||
+		    cc2 != TYPEC_CC_VOLT_OPEN)
+			break;
+		msleep(5);
+	}
+
+	/* False interrupt since nothing is attached */
+	if (i == 100)
+		return;
+
+	CPRINTS("ps8751 re-init %s", tcpm_init(1) ? "failed" : "ready");
+
+	tcpm_set_cc(1, TYPEC_CC_RD);
+
+	tcpc_drp_state[1] = PD_DRP_TOGGLE_RESET;
+
+#ifdef HAS_TASK_PDCMD
+	/* Exchange status with TCPCs */
+	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
+#endif
+}
+DECLARE_DEFERRED(ps8751_cable_det_handler);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, ps8751_cable_det_handler, HOOK_PRIO_DEFAULT);
+
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if ((signal == GPIO_USB_C0_PD_INT_ODL) &&
@@ -72,10 +102,63 @@ static void tcpc_alert_event(enum gpio_signal signal)
 		return;
 #endif
 
+	if ((signal == GPIO_USB_C1_PD_INT_ODL) &&
+	    (tcpc_drp_state[1] == PD_DRP_TOGGLE_ENTERED)) {
+		hook_call_deferred(&ps8751_cable_det_handler_data, 0);
+		return;
+	}
+
 #ifdef HAS_TASK_PDCMD
 	/* Exchange status with TCPCs */
 	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
 #endif
+}
+
+static void anx74xx_cable_det_handler(void)
+{
+	if (!gpio_get_level(GPIO_USB_C0_CABLE_DET) ||
+		gpio_get_level(GPIO_USB_C0_PD_RST_L))
+		return;
+
+	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
+	msleep(10);
+	gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
+
+	CPRINTS("anx74xx re-init %s", tcpm_init(0) ? "failed" : "ready");
+
+	tcpm_set_cc(0, TYPEC_CC_RD);
+
+	tcpc_drp_state[0] = PD_DRP_TOGGLE_RESET;
+}
+DECLARE_DEFERRED(anx74xx_cable_det_handler);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, anx74xx_cable_det_handler, HOOK_PRIO_DEFAULT);
+
+void anx74xx_cable_det_interrupt(enum gpio_signal signal)
+{
+	/* debounce for 2ms */
+	hook_call_deferred(&anx74xx_cable_det_handler_data, (2 * MSEC));
+}
+
+void pd_enable_tcpc_drp_toggle(int port)
+{
+	tcpc_drp_state[port] = PD_DRP_TOGGLE_ENTERED;
+
+	if (port == 0) {
+		gpio_enable_interrupt(GPIO_USB_C0_CABLE_DET);
+
+		gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
+		msleep(1);
+		gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
+	}
+
+	if (port == 1) {
+		int reg;
+
+		tcpc_read(port, 0x1A, &reg);
+		tcpc_write(port, 0x1A, reg | 0x4f);
+	}
+
+	CPRINTS("C%d Enable Auto DRP Toggle / Enter Low Power Mode", port);
 }
 
 /*

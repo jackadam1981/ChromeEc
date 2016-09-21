@@ -93,6 +93,9 @@ enum vdm_states {
 /* Port dual-role state */
 enum pd_dual_role_states drp_state = PD_DRP_TOGGLE_OFF;
 
+/* Track if TCPC should handle DRP toggle */
+enum pd_tcpc_drp_states tcpc_drp_state[CONFIG_USB_PD_PORT_COUNT];
+
 /* Last received source cap */
 static uint32_t pd_src_caps[CONFIG_USB_PD_PORT_COUNT][PDO_MAX_OBJECTS];
 static int pd_src_cap_cnt[CONFIG_USB_PD_PORT_COUNT];
@@ -1627,6 +1630,9 @@ void pd_task(void)
 #endif
 			break;
 		case PD_STATE_SRC_DISCONNECTED_DEBOUNCE:
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+			tcpc_drp_state[port] = PD_DRP_TOGGLE_RESET;
+#endif
 			timeout = 20*MSEC;
 			tcpm_get_cc(port, &cc1, &cc2);
 
@@ -2052,6 +2058,21 @@ void pd_task(void)
 #else
 			timeout = 10*MSEC;
 #endif
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+			/* Check if TCPC should control DRP toggle */
+			if (pd_enable_tcpc_drp_toggle) {
+				if (tcpc_drp_state[port] ==
+					PD_DRP_TOGGLE_ENTERED) {
+					/*
+					 * Skip pd_task DRP toggle if
+					 * TCPC is handling it
+					 */
+					break;
+				}
+			}
+#endif
+
 			tcpm_get_cc(port, &cc1, &cc2);
 
 			/* Source connection monitoring */
@@ -2080,6 +2101,26 @@ void pd_task(void)
 				break;
 			}
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+			/* Check if TCPC should control DRP toggle */
+			if (pd_enable_tcpc_drp_toggle) {
+				if (tcpc_drp_state[port] ==
+					PD_DRP_TOGGLE_ENTRY) {
+					/* Use TCPC to control DRP toggle */
+					pd_enable_tcpc_drp_toggle(port);
+					break;
+				} else {
+					/*
+					 * Update TCPC DRP toggle state
+					 * counter and continue pd_task
+					 * DRP toggle
+					 */
+					tcpc_drp_state[port]++;
+					timeout = 10*MSEC;
+				}
+			}
+#endif
+
 			/*
 			 * If no source detected, check for role toggle.
 			 * If VBUS is detected, and we are in the debug
@@ -2097,8 +2138,12 @@ void pd_task(void)
 				/* Swap states quickly */
 				timeout = 2*MSEC;
 			}
+
 			break;
 		case PD_STATE_SNK_DISCONNECTED_DEBOUNCE:
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+			tcpc_drp_state[port] = PD_DRP_TOGGLE_RESET;
+#endif
 			tcpm_get_cc(port, &cc1, &cc2);
 
 			if (cc_is_rp(cc1) && cc_is_rp(cc2)) {

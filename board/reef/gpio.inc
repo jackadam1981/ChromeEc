@@ -43,6 +43,9 @@ GPIO_INT(TABLET_MODE,		PIN(3, 6), GPIO_INT_BOTH, tablet_mode_interrupt)
 
 GPIO_INT(WP_L,			PIN(4, 0), GPIO_INT_BOTH | GPIO_SEL_1P8V, switch_interrupt)	/* EC_WP_ODL */
 
+GPIO_INT(USB_C0_CABLE_DET,	PIN(C, 5), GPIO_INT_RISING, anx74xx_cable_det_interrupt)
+
+
 /* FIXME(dhendrix): Implement interrupt handlers for lid, tablet mode, etc. */
 //GPIO_INT(BASE_SIXAXIS_INT_L,	PIN(9, 3), GPIO_INT_LOW | GPIO_SEL_1P8V, gyro_interrupt)
 GPIO(BASE_SIXAXIS_INT_L,	PIN(9, 3), GPIO_INPUT | GPIO_SEL_1P8V)
@@ -84,13 +87,6 @@ GPIO(EC_BRD_ID_EN_ODL,		PIN(3, 5), GPIO_INPUT)
 GPIO(CCD_MODE_ODL,		PIN(6, 3), GPIO_INPUT)
 GPIO(EC_HAVEN_RESET_ODL,	PIN(0, 2), GPIO_ODR_HIGH)
 GPIO(ENTERING_RW,		PIN(7, 6), GPIO_OUTPUT)			/* EC_ENTERING_RW */
-
-/*
- * FIXME(dhendrix): Should this be an interrupt? It's a normal input on elm.
- * ANX72xx programming guide section 6 suggests it should interrupt on both
- * high and low edges and we should use it to set PWR_EN and RESET_N pins.
- */
-GPIO(USB_C0_CABLE_DET,		PIN(C, 5), GPIO_INPUT)
 
 GPIO(PCH_RSMRST_L,		PIN(7, 0), GPIO_OUT_LOW)
 GPIO(EC_BATT_PRES_L,		PIN(3, 4), GPIO_INPUT)
