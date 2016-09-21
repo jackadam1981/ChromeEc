@@ -119,7 +119,7 @@ static void tcpci_tcpc_discharge_vbus(int port, int enable)
 }
 #endif
 
-int tcpci_tcpm_set_cc(int port, int pull)
+static int set_role_ctrl(int port, int toggle, int pull)
 {
 	int reg, rv;
 	uint8_t rp;
@@ -128,13 +128,25 @@ int tcpci_tcpm_set_cc(int port, int pull)
 	if (rv)
 		return rv;
 	rp = TCPC_REG_ROLE_CTRL_RP(reg);
-	/*
-	 * Set manual control of Rp/Rd, and set both CC lines to the same
-	 * pull.
-	 */
 	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
-			  TCPC_REG_ROLE_CTRL_SET(0, rp, pull, pull));
+			  TCPC_REG_ROLE_CTRL_SET(toggle, rp, pull, pull));
 }
+
+int tcpci_tcpm_set_cc(int port, int pull)
+{
+	/* Set manual control, and set both CC lines to the same pull */
+	return set_role_ctrl(port, 0, pull);
+}
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+static int tcpci_tcpc_drp_toggle(int port, int toggle)
+{
+	/* Set auto drp toggle */
+	return set_role_ctrl(port, 1, TYPEC_CC_OPEN);
+
+	/* TODO: Send look4connection Command */
+}
+#endif
 
 int tcpci_tcpm_set_polarity(int port, int polarity)
 {
@@ -407,5 +419,8 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 	.tcpc_alert		= &tcpci_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &tcpci_tcpc_discharge_vbus,
+#endif
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	.drp_toggle	= &tcpci_tcpc_drp_toggle,
 #endif
 };
