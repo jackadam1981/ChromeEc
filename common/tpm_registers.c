@@ -570,7 +570,30 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 }
 #endif
 
-static void tpm_reset(void)
+/* Event (to TPM task) to request reset, or (from TPM task) on completion. */
+#define TPM_EVENT_RESET (TASK_EVENT_CUSTOM(1))
+
+/* Task to notify when the TPM reset has happened. */
+static task_id_t waiting_for_reset;
+
+/* Synchronous if possible */
+void tpm_reset(void)
+{
+	cprints(CC_TASK, "%s", __func__);
+
+	task_set_event(TASK_ID_TPM, TPM_EVENT_RESET, 0);
+
+	if (in_interrupt_context() ||
+	    task_get_current() == TASK_ID_TPM)
+		return;			   /* Can't sleep. Clown'll eat me. */
+
+	/* Try to wait until the TPM is reset, but timeout eventually */
+	waiting_for_reset = task_get_current();
+	task_wait_event_mask(TPM_EVENT_RESET, 500 * MSEC); /* Long enough? */
+	/* TODO: What should we do if it times out? */
+}
+
+static void tpm_reset_now(void)
 {
 	/* This is more related to TPM task activity than TPM transactions */
 	cprints(CC_TASK, "%s", __func__);
@@ -595,6 +618,12 @@ static void tpm_reset(void)
 	tpm_init();
 
 	sps_tpm_enable();
+
+	if (waiting_for_reset) {
+		/* Wake the waiting task, if any */
+		task_set_event(waiting_for_reset, TPM_EVENT_RESET, 0);
+		waiting_for_reset = 0;
+	}
 }
 
 void tpm_task(void)
@@ -614,7 +643,7 @@ void tpm_task(void)
 		/* Wait for the next command event */
 		evt = task_wait_event(-1);
 		if (evt & TPM_EVENT_RESET) {
-			tpm_reset();
+			tpm_reset_now();
 			continue;
 		}
 		tpmh = (struct tpm_cmd_header *)tpm_.regs.data_fifo;

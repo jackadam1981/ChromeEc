@@ -31,6 +31,9 @@ void sps_tpm_disable(void);
 /* Get the current value of the burst size field of the status register. */
 size_t tpm_get_burst_size(void);
 
+/* Reset the TPM task completely. Synchronously when possible. */
+void tpm_reset(void);
+
 /*
  * This structure describes the header of all commands and responses sent and
  * received over TPM FIFO.
