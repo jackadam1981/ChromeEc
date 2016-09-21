@@ -758,6 +758,22 @@ void pd_set_dual_role(enum pd_dual_role_states state);
  * @param port Port number from which to get role
  */
 int pd_get_role(int port);
+
+/**
+ * Allow TCPC to control dual role state toggle
+ *
+ * @param port TCPC Port port number
+ */
+void pd_enable_tcpc_drp_toggle(int port) __attribute__((weak));
+
+enum pd_tcpc_drp_states {
+	PD_DRP_TOGGLE_RESET = 0,
+	PD_DRP_TOGGLE_ENTRY = 100, /* Manual DRP toggle 100 times */
+	PD_DRP_TOGGLE_ENTERED,
+	PD_DRP_TOGGLE_EXIT,
+};
+
+extern enum pd_tcpc_drp_states tcpc_drp_state[CONFIG_USB_PD_PORT_COUNT];
 #endif
 
 /* Control Message type */

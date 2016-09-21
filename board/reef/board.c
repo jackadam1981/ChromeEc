@@ -78,6 +78,50 @@ static void tcpc_alert_event(enum gpio_signal signal)
 #endif
 }
 
+static void anx74xx_cable_det_handler(void)
+{
+	if (!gpio_get_level(GPIO_USB_C0_CABLE_DET))
+		return;
+
+	gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
+	msleep(10);
+	gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
+
+	ccprintf("anx74xx re-init %s\n", tcpm_init(0) ? "failed" : "ready");
+
+	tcpm_set_cc(0, TYPEC_CC_RD);
+
+	tcpc_drp_state[0] = PD_DRP_TOGGLE_RESET;
+}
+DECLARE_DEFERRED(anx74xx_cable_det_handler);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, anx74xx_cable_det_handler, HOOK_PRIO_DEFAULT);
+
+void anx74xx_cable_det_interrupt(enum gpio_signal signal)
+{
+	/* debounce for 2ms */
+	hook_call_deferred(&anx74xx_cable_det_handler_data, (2 * MSEC));
+}
+
+void pd_enable_tcpc_drp_toggle(int port)
+{
+	tcpc_drp_state[port] = PD_DRP_TOGGLE_ENTERED;
+
+	if (port == 0) {
+		gpio_enable_interrupt(GPIO_USB_C0_CABLE_DET);
+
+		gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
+		msleep(1);
+		gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
+
+		ccprintf("%s - port %d\n", __func__, port);
+	}
+
+	if (port == 1) {
+		/* TODO for PS8751*/
+		tcpc_drp_state[port] = PD_DRP_TOGGLE_RESET;
+	}
+}
+
 /*
  * enable_input_devices() is called by the tablet_mode ISR, but changes the
  * state of GPIOs, so its definition must reside after including gpio_list.
