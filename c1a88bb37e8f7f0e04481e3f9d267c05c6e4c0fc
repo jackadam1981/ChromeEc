@@ -117,6 +117,30 @@
       "revId": "c1a88bb37e8f7f0e04481e3f9d267c05c6e4c0fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_5e92c94e",
+        "filename": "common/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-22T23:12:24Z",
+      "side": 1,
+      "message": "discussed with Shawn. We can\u0027t stop preempting so will remove this lock and chose write registers which are not used often and have minimal impact if changed.",
+      "parentUuid": "f076e782_7bbb172c",
+      "range": {
+        "startLine": 894,
+        "startChar": 21,
+        "endLine": 894,
+        "endChar": 35
+      },
+      "revId": "c1a88bb37e8f7f0e04481e3f9d267c05c6e4c0fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
