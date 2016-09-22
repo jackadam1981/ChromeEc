@@ -46,6 +46,30 @@
       "revId": "9e1a7778dd9cc4e586dd1cb8e921810d8d73207a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90104bd0_1befe4b1",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-22T16:10:05Z",
+      "side": 1,
+      "message": "So, the meat of the change is to configure the muxes based on HPD level from the initial DP status message, right?",
+      "parentUuid": "90104bd0_a0978346",
+      "range": {
+        "startLine": 307,
+        "startChar": 1,
+        "endLine": 307,
+        "endChar": 33
+      },
+      "revId": "9e1a7778dd9cc4e586dd1cb8e921810d8d73207a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
