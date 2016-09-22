@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90104bd0_801b5f89",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-22T14:58:02Z",
+      "side": 1,
+      "message": "Why are we calling bus dependent functions when we know we have 2 different bus types connecting to this part?",
+      "revId": "914b39f070208ea4e48d442a322fd73277fd9fea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
