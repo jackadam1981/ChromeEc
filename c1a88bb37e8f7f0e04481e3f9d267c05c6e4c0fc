@@ -93,6 +93,30 @@
       "revId": "c1a88bb37e8f7f0e04481e3f9d267c05c6e4c0fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_7bbb172c",
+        "filename": "common/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-22T22:53:04Z",
+      "side": 1,
+      "message": "The only thing that locks this particular mutex is your function here. Any other attempt to modify regs over i2c (eg. from component drivers) will not be stopped by your mutex. Unless I\u0027m missing something, this mutex does nothing useful.",
+      "parentUuid": "f076e782_5b281ba2",
+      "range": {
+        "startLine": 894,
+        "startChar": 21,
+        "endLine": 894,
+        "endChar": 35
+      },
+      "revId": "c1a88bb37e8f7f0e04481e3f9d267c05c6e4c0fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
