@@ -94,6 +94,30 @@
       "revId": "df7da370c50e3140097b471af2884451119ea70a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_b5a1409e",
+        "filename": "board/reef/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-22T20:29:48Z",
+      "side": 1,
+      "message": "Yup, you can rebase your patch on top of mine.",
+      "parentUuid": "f076e782_b578601e",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 41
+      },
+      "revId": "df7da370c50e3140097b471af2884451119ea70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
