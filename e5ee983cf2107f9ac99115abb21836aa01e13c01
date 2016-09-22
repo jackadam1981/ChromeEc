@@ -34,6 +34,24 @@
       "revId": "e5ee983cf2107f9ac99115abb21836aa01e13c01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90104bd0_5bc9dca0",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-22T16:50:17Z",
+      "side": 1,
+      "message": "Nevermind. I was thinking if this function is called with port 1 (for Reef) as parameter it will return INVALID, but that seems to be fine as all the functions here take care of single shared control signal.",
+      "parentUuid": "90104bd0_2ada5fdd",
+      "revId": "e5ee983cf2107f9ac99115abb21836aa01e13c01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
