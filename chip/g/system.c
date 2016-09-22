@@ -92,6 +92,14 @@ void system_reset(int flags)
 	/* TODO: Do we need to handle SYSTEM_RESET_PRESERVE_FLAGS? Doubtful. */
 	/* TODO(crosbug.com/p/47289): handle RESET_FLAG_WATCHDOG */
 
+#ifdef BOARD_CR50
+	/*
+	 * On CR50 we want every reset be hard reset, causing the entire
+	 * chromebook to reboot: we don't want the TPM reset while the AP
+	 * stays up.
+	 */
+	GR_PMU_GLOBAL_RESET = GC_PMU_GLOBAL_RESET_KEY;
+#else
 	/* Disable interrupts to avoid task swaps during reboot */
 	interrupt_disable();
 
@@ -127,6 +135,7 @@ void system_reset(int flags)
 
 	/* Wait for reboot; should never return  */
 	asm("wfi");
+#endif  /* ^^^^^^^ BOARD_CR50 Not defined */
 }
 
 const char *system_get_chip_vendor(void)
