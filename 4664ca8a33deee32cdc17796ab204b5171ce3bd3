@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5006d39f_0e89efd0",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-22T18:30:55Z",
+      "side": 1,
+      "message": "Is there a way for the caller to determine the reset succeeded/failed?",
+      "range": {
+        "startLine": 593,
+        "startChar": 1,
+        "endLine": 593,
+        "endChar": 47
+      },
+      "revId": "4664ca8a33deee32cdc17796ab204b5171ce3bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5006d39f_6ef98b45",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-22T18:30:55Z",
+      "side": 1,
+      "message": "TASK_ID_INVALID\n\nSince technically task ID 0 is a valid task.\n\n(and associated fixes to the if() and declaration of waiting_for_reset)",
+      "range": {
+        "startLine": 625,
+        "startChar": 22,
+        "endLine": 625,
+        "endChar": 23
+      },
+      "revId": "4664ca8a33deee32cdc17796ab204b5171ce3bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
