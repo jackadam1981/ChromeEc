@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "308ebf81_4fb10de6",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1151724
+      },
+      "writtenOn": "2016-09-22T01:52:51Z",
+      "side": 1,
+      "message": "Yes, You are correct. Thanks a lot.\nChange from:\nrv |\u003d tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_5, 0x04);\nTo:\nrv |\u003d tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_5, \u0026reg);\nrv |\u003d tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_5,(reg\u00260x0F));\n\nNOTE:\nBit7/6/5/4: for MUX setting.",
+      "parentUuid": "90104bd0_ea12076b",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 10
+      },
+      "revId": "c2966fe10110565bac59b98e5d46511cd6e27958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71dd999f_88c6aa8e",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 1
