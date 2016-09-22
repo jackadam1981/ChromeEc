@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f076e782_bbca0f42",
+        "filename": "board/reef/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-22T22:29:47Z",
+      "side": 1,
+      "message": "No need to remove it I think, but it is a very low-hanging fruit for RAM savings, if we are constrained.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "c1a88bb37e8f7f0e04481e3f9d267c05c6e4c0fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_3b851f08",
+        "filename": "common/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-22T22:29:47Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this is needed. command_i2ctest() will only be called by the console task.",
+      "range": {
+        "startLine": 894,
+        "startChar": 21,
+        "endLine": 894,
+        "endChar": 35
+      },
+      "revId": "c1a88bb37e8f7f0e04481e3f9d267c05c6e4c0fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
