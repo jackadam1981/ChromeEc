@@ -46,6 +46,23 @@
       "revId": "25bb4b9692963189488e2f1a1c83dfa1409e438a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_d5fb1cd7",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-22T21:22:17Z",
+      "side": 1,
+      "message": "Now that CL:380317 is merged, can you put the old code in another function (anx74xx_tcpm_get_cc_legacy() or something) and call it if the firmware version is less than 1.5?\n\nWe can remove it once we\u0027re reasonably confident that old boards are obsolete or updated.",
+      "revId": "25bb4b9692963189488e2f1a1c83dfa1409e438a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
