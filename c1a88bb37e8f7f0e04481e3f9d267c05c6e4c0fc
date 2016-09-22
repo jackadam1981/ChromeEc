@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f076e782_3b043f23",
+        "filename": "board/reef/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-22T22:48:01Z",
+      "side": 1,
+      "message": "okay I will keep it and we can remove once we are out of memory.",
+      "parentUuid": "f076e782_bbca0f42",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "c1a88bb37e8f7f0e04481e3f9d267c05c6e4c0fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f076e782_3b851f08",
         "filename": "common/i2c.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-22T22:29:47Z",
       "side": 1,
       "message": "I don\u0027t understand why this is needed. command_i2ctest() will only be called by the console task.",
+      "range": {
+        "startLine": 894,
+        "startChar": 21,
+        "endLine": 894,
+        "endChar": 35
+      },
+      "revId": "c1a88bb37e8f7f0e04481e3f9d267c05c6e4c0fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_5b281ba2",
+        "filename": "common/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-22T22:48:01Z",
+      "side": 1,
+      "message": "for the write: we read first then write same value back and then read back to validate the data. Want to make sure other tasks don\u0027t run \u0026 write something to those write registers during this time.",
+      "parentUuid": "f076e782_3b851f08",
       "range": {
         "startLine": 894,
         "startChar": 21,
