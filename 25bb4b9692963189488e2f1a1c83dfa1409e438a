@@ -22,6 +22,30 @@
       "revId": "25bb4b9692963189488e2f1a1c83dfa1409e438a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90104bd0_1b1ec41e",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-09-22T16:58:33Z",
+      "side": 1,
+      "message": "According to the PD spec, the message type is bit3:0, and Soft Reset message type (1101b) is the last defined message type. If the spec expanded and defined 1110b and 1111b message type, then the previous code using (header \u0026 0x700d) will fail, that\u0027s why we change to 0x700f.",
+      "parentUuid": "90104bd0_bb38d8f3",
+      "range": {
+        "startLine": 296,
+        "startChar": 5,
+        "endLine": 296,
+        "endChar": 33
+      },
+      "revId": "25bb4b9692963189488e2f1a1c83dfa1409e438a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
