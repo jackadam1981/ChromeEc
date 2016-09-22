@@ -70,6 +70,30 @@
       "revId": "df7da370c50e3140097b471af2884451119ea70a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_b578601e",
+        "filename": "board/reef/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2016-09-22T20:26:28Z",
+      "side": 1,
+      "message": "Shawn, since above patch is ready, should I add defining CONFIG_USB_PORT_SMART_COUNT to 1 in this patch?",
+      "parentUuid": "90104bd0_ea61e73d",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 41
+      },
+      "revId": "df7da370c50e3140097b471af2884451119ea70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
