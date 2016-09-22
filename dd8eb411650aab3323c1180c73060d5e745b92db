@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90104bd0_db7dcc0c",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-22T16:02:35Z",
+      "side": 1,
+      "message": "I\u0027d prefer to always call interrupt_disable() and asm(\"wfi\"), just in case it takes a little time for the PMU to react.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 21
+      },
+      "revId": "dd8eb411650aab3323c1180c73060d5e745b92db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
