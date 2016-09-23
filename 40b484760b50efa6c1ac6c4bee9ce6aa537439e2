@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f076e782_2afce39c",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-09-23T11:59:17Z",
+      "side": 1,
+      "message": "None of these if conditionals need more than one set of parens.\n\nAnd the right side of |\u003d doesn\u0027t need parens either.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 48
+      },
+      "revId": "40b484760b50efa6c1ac6c4bee9ce6aa537439e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
