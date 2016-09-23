@@ -79,6 +79,10 @@ static int min_icl;
 void chg_ramp_charge_supplier_change(int port, int supplier, int current,
 				     timestamp_t registration_time)
 {
+#ifdef CONFIG_CHARGE_RAMP_LOST_POWER
+	static int charger_lost_power;
+#endif
+
 	/*
 	 * If the last active port was a valid port and the port
 	 * has changed, then this may have been an over-current.
@@ -101,7 +105,15 @@ void chg_ramp_charge_supplier_change(int port, int supplier, int current,
 	/* Set min and max input current limit based on if ramp is allowed */
 	if (board_is_ramp_allowed(active_sup)) {
 		min_icl = RAMP_CURR_START_MA;
-		max_icl = board_get_ramp_current_limit(active_sup, current);
+#ifdef CONFIG_CHARGE_RAMP_LOST_POWER
+		if (charger_lost_power && ACTIVE_OC_INFO.icl > min_icl) {
+			max_icl = MAX(min_icl,
+					ACTIVE_OC_INFO.icl - RAMP_ICL_BACKOFF);
+			charger_lost_power = 0;
+		} else
+#endif
+			max_icl = board_get_ramp_current_limit(
+							active_sup, current);
 	} else {
 		min_icl = max_icl = current;
 	}
@@ -110,6 +122,12 @@ void chg_ramp_charge_supplier_change(int port, int supplier, int current,
 	if (ramp_st != CHG_RAMP_STABILIZE) {
 		ramp_st = (active_port == CHARGE_PORT_NONE) ?
 			  CHG_RAMP_DISCONNECTED : CHG_RAMP_CHARGE_DETECT_DELAY;
+
+#ifdef CONFIG_CHARGE_RAMP_LOST_POWER
+		if (ramp_st == CHG_RAMP_DISCONNECTED)
+			charger_lost_power = board_charger_lost_power();
+#endif
+
 		CPRINTS("Ramp reset: st%d", ramp_st);
 		task_wake(TASK_ID_CHG_RAMP);
 	}
