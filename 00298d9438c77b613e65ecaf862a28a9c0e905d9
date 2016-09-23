@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "f076e782_a3973894",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-23T23:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f076e782_83215c12",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 17
+      },
+      "revId": "00298d9438c77b613e65ecaf862a28a9c0e905d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f076e782_236c0831",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
