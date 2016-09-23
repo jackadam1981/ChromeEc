@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f076e782_d745d76c",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-23T19:30:56Z",
+      "side": 1,
+      "message": "Assert if this is \u003c 100, which means we have \u003c 1pct resolution.",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "b268f074898441a4ed7cbe80e75b85a3df6bc5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_571b8789",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-23T19:30:56Z",
+      "side": 1,
+      "message": "Might want to assert in this case as well (though maybe it\u0027s better to use the other clock source), we will end up with a signal that doesn\u0027t match the requested freq.",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 21
+      },
+      "revId": "b268f074898441a4ed7cbe80e75b85a3df6bc5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_3741ab3d",
+        "filename": "common/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-23T19:30:56Z",
+      "side": 1,
+      "message": "I suggest to pretend the max duty is still EC_PWM_MAX_DUTY and silently adjust the parameters on the back end.",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 138,
+        "endChar": 30
+      },
+      "revId": "b268f074898441a4ed7cbe80e75b85a3df6bc5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
