@@ -22,6 +22,30 @@
       "revId": "40b484760b50efa6c1ac6c4bee9ce6aa537439e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_6db7d0d2",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-09-23T20:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f076e782_2afce39c",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 48
+      },
+      "revId": "40b484760b50efa6c1ac6c4bee9ce6aa537439e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
