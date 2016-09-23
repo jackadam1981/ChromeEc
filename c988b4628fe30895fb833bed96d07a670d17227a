@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f076e782_144aeda9",
+        "filename": "chip/lm4/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-23T18:13:45Z",
+      "side": 1,
+      "message": "Actually, I\u0027m wondering if I should be printing these in the \"system\" channel instead of the \"command\" channel.",
+      "range": {
+        "startLine": 633,
+        "startChar": 1,
+        "endLine": 633,
+        "endChar": 9
+      },
+      "revId": "c988b4628fe30895fb833bed96d07a670d17227a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
