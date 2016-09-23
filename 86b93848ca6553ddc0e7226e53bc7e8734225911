@@ -22,6 +22,30 @@
       "revId": "86b93848ca6553ddc0e7226e53bc7e8734225911",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_c140b55f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-09-23T17:15:09Z",
+      "side": 1,
+      "message": "Removed the dependency on BOARD_SLAVE_CONFIG_I2C. I did this as well in the enable function. I know that one isn\u0027t strictly necessary for Gru platforms, but I think it\u0027s better to have the default setting/level match what is being set in gpio.inc",
+      "parentUuid": "f076e782_81da3ddb",
+      "range": {
+        "startLine": 580,
+        "startChar": 1,
+        "endLine": 580,
+        "endChar": 62
+      },
+      "revId": "86b93848ca6553ddc0e7226e53bc7e8734225911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
