@@ -309,6 +309,12 @@ void board_hibernate_late(void) __attribute__((weak));
 timestamp_t system_get_rtc(void);
 
 /**
+ * Print out the current real-time clock value to the console.
+ */
+__attribute__((weak))
+void print_system_rtc(void);
+
+/**
  * Enable hibernate interrupt
  */
 void system_enable_hib_interrupt(void);
