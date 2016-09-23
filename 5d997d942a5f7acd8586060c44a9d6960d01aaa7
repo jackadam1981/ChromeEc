@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f076e782_bedaf868",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-23T16:07:18Z",
+      "side": 1,
+      "message": "Why don\u0027t you just put this into a HOOK_CHIPSET_SHUTDOWN callback instead? Invoking that is what ap_deferred() is supposed to do.",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 475,
+        "endChar": 2
+      },
+      "revId": "5d997d942a5f7acd8586060c44a9d6960d01aaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
