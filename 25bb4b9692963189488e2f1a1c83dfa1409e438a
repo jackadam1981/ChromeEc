@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "f076e782_4fe3f130",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-09-23T03:04:10Z",
+      "side": 1,
+      "message": "For example, assume the value of header is 0x000F, which F is not Soft Reset Message type, with original code (header \u0026 0x000d) \u003d\u003d 0x000d, (0x000f \u0026 0x000d) is equal to 0x000d, so it will become true and execute your new code, although this example should never happen since 0xf is reserved/undefined message type.\n\nShaiLiang, just want to confirm, do you accept this change from 0x700d to 0x700f?",
+      "parentUuid": "308ebf81_af119965",
+      "range": {
+        "startLine": 296,
+        "startChar": 5,
+        "endLine": 296,
+        "endChar": 33
+      },
+      "revId": "25bb4b9692963189488e2f1a1c83dfa1409e438a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f076e782_d5fb1cd7",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 9
