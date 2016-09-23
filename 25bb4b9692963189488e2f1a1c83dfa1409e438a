@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "308ebf81_ef17a158",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1151724
+      },
+      "writtenOn": "2016-09-23T02:46:02Z",
+      "side": 1,
+      "message": "Code review. it is OK.\nHi Kevin, Sorry, I don`t understand what you said. if message type \u003d 1110b or 1111b, (header \u0026 0x000d \u003d\u003d 0x000d) is false.",
+      "parentUuid": "90104bd0_1b1ec41e",
+      "range": {
+        "startLine": 296,
+        "startChar": 5,
+        "endLine": 296,
+        "endChar": 33
+      },
+      "revId": "25bb4b9692963189488e2f1a1c83dfa1409e438a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f076e782_d5fb1cd7",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 9
