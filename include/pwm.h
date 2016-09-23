@@ -40,8 +40,6 @@ void pwm_set_duty(enum pwm_channel ch, int percent);
 int pwm_get_duty(enum pwm_channel ch);
 
 
-/* Flags for PWM config table */
-
 /**
  * PWM output signal is inverted, so 100% duty means always low
  */
