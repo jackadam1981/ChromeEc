@@ -60,6 +60,9 @@ void chipset_force_shutdown(void)
 
 void chipset_reset(int cold_reset)
 {
+	/* Print out the RTC to help correlate resets in logs. */
+	print_system_rtc();
+
 	/* TODO: handle cold_reset */
 	CPRINTS("%s(%d)", __func__, cold_reset);
 
@@ -183,6 +186,9 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5S3:
+		/* To help correlate transitions in logs. */
+		print_system_rtc();
+
 		gpio_set_level(GPIO_PPVAR_LOGIC_EN, 1);
 		gpio_set_level(GPIO_PP900_AP_EN, 1);
 		msleep(2);
@@ -230,6 +236,9 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S3;
 
 	case POWER_S3S0:
+		/* To help correlate transitions in logs. */
+		print_system_rtc();
+
 		gpio_set_level(GPIO_PP900_DDRPLL_EN, 1);
 		msleep(2);
 		gpio_set_level(GPIO_PP1800_AP_AVDD_EN_L, 0);
@@ -270,6 +279,9 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S0;
 
 	case POWER_S0S3:
+		/* To help correlate transitions in logs. */
+		print_system_rtc();
+
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 		CHECK_ABORTED_SUSPEND();
@@ -317,6 +329,9 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S3;
 
 	case POWER_S3S5:
+		/* To help correlate transitions in logs. */
+		print_system_rtc();
+
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
 
