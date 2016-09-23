@@ -244,7 +244,7 @@ void i2cs_post_read_fill_fifo(uint8_t *buffer, size_t len)
 	remainder_bytes = len;
 	if (remainder_bytes) {
 		/* read from HW fifo */
-		word_out_value = *value_addr;
+		word_out_value = value_addr[addr_offset];
 		/* Mask bytes that need to be kept */
 		word_out_value &= (0xffffffff << (8 * remainder_bytes));
 		for (i = 0; i < remainder_bytes; i++)
