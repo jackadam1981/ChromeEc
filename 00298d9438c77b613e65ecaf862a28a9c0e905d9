@@ -93,6 +93,30 @@
       "revId": "00298d9438c77b613e65ecaf862a28a9c0e905d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_83215c12",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-23T22:50:29Z",
+      "side": 1,
+      "message": "but I don\u0027t see tpm_reset() here, it just makes me a bit nervous that this function is called without tpm_reset() being called. Why not to call tpm_reset() before deasserting ec_rst()?\n\nAlso, are both sys_rst and ec_rst assertions even needed - ec_rst should be enough.",
+      "parentUuid": "f076e782_23d088f0",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 17
+      },
+      "revId": "00298d9438c77b613e65ecaf862a28a9c0e905d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
