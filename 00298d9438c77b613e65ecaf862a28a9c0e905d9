@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f076e782_63ba80bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-23T22:46:37Z",
+      "side": 1,
+      "message": "Tested on Gru. I\u0027ll update the message.",
+      "parentUuid": "f076e782_7706c3c4",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "00298d9438c77b613e65ecaf862a28a9c0e905d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f076e782_77dfa324",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-23T21:24:23Z",
       "side": 1,
       "message": "so, this will reset the entire system, but will not reset the TPM?\n\nWould it be safer to reset the TPM after nvram was cleared?",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 17
+      },
+      "revId": "00298d9438c77b613e65ecaf862a28a9c0e905d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_23d088f0",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-23T22:46:37Z",
+      "side": 1,
+      "message": "This holds the EC in reset, which holds the AP in reset too.\n\nnvmem_setup(0) clears nvram, and THEN tpm_reset() resets the TPM, so we are doing what you suggest.\n\nWe let the EC/AP boot only after all that.",
+      "parentUuid": "f076e782_77dfa324",
       "range": {
         "startLine": 396,
         "startChar": 1,
