@@ -567,6 +567,41 @@ void board_update_device_state(enum device_type device)
 	}
 }
 
+void disable_int_ap_l(void)
+{
+	/*
+	 * If I2C TPM is configured then the INT_AP_L signal is used as
+	 * a low pulse trigger to sync I2C transactions with the
+	 * host. By default Cr50 is driving this line high, but when the
+	 * AP powers off, the 1.8V rail that it's pulled up to will be
+	 * off and cause exessive power to be consumed by the Cr50. Set
+	 * INT_AP_L as an input while the AP is powered off.
+	 */
+	if (system_get_board_properties() & BOARD_SLAVE_CONFIG_I2C) {
+		gpio_set_flags(GPIO_INT_AP_L, GPIO_INPUT);
+		GWRITE(PINMUX, DIOA5_SEL, 0);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, disable_int_ap_l, HOOK_PRIO_DEFAULT);
+
+void enable_int_ap_l(void)
+{
+	if (system_get_board_properties() &
+	    BOARD_SLAVE_CONFIG_I2C) {
+		/*
+		 * AP is powering up, set the I2C host sync
+		 * signal to output and set it high which is the
+		 * default level.
+		 */
+		GWRITE(PINMUX, DIOA5_SEL,
+		       GC_PINMUX_GPIO0_GPIO0_SEL);
+		gpio_set_flags(GPIO_INT_AP_L, GPIO_OUTPUT);
+		gpio_set_level(GPIO_INT_AP_L, 1);
+	}
+
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, enable_int_ap_l, HOOK_PRIO_DEFAULT);
+
 void system_init_board_properties(void)
 {
 	uint32_t properties;
