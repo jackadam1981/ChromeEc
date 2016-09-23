@@ -838,6 +838,19 @@ int bd9995x_select_input_port(enum bd9995x_charge_port port, int select)
 			      BD9995X_EXTENDED_COMMAND);
 }
 
+#ifdef CONFIG_CHARGE_RAMP_LOST_POWER
+int bd9995x_vacp_detected(void)
+{
+	int reg;
+	int rv;
+
+	rv = ch_raw_read16(BD9995X_CMD_VACP_VAL, &reg,
+			   BD9995X_EXTENDED_COMMAND);
+
+	return rv || (reg < BD9995X_VBUS_DISCHARGE_TH) ? 0 : 1;
+}
+#endif
+
 #ifdef CONFIG_CHARGER_BATTERY_TSENSE
 int bd9995x_get_battery_temp(int *temp_ptr)
 {
