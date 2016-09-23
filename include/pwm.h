@@ -39,6 +39,10 @@ void pwm_set_duty(enum pwm_channel ch, int percent);
  */
 int pwm_get_duty(enum pwm_channel ch);
 
+/**
+ * Get PWM channel resolution.
+ */
+int pwm_get_res(enum pwm_channel ch);
 
 /* Flags for PWM config table */
 

@@ -54,6 +54,11 @@ __attribute__((weak)) uint16_t pwm_get_raw_duty(enum pwm_channel ch)
 	return (pwm_get_duty(ch) * 65535) / 100;
 }
 
+__attribute__((weak)) int pwm_get_res(enum pwm_channel ch)
+{
+	return 100;
+}
+
 static int host_command_pwm_set_duty(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pwm_set_duty *p = args->params;
@@ -130,7 +135,7 @@ static int cc_pwm_duty(int argc, char **argv)
 		if (!strcasecmp(raw, "raw")) {
 			/* use raw duty */
 			value = strtoi(argv[3], &e, 0);
-			max_duty = EC_PWM_MAX_DUTY;
+			max_duty = pwm_get_res(ch);
 		} else {
 			/* use percent duty */
 			value = strtoi(argv[2], &e, 0);
