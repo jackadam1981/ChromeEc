@@ -10,6 +10,7 @@
 
 #include "atomic.h"
 #include "common.h"
+#include "console.h"
 #include "timer.h"
 
 /* Reset causes */
@@ -307,6 +308,14 @@ void board_hibernate_late(void) __attribute__((weak));
  * @return The real-time clock value as a timestamp.
  */
 timestamp_t system_get_rtc(void);
+
+/**
+ * Print out the current real-time clock value to the console.
+ *
+ * @param channel	Console channel to print on.
+ */
+__attribute__((weak))
+void print_system_rtc(enum console_channel channel);
 
 /**
  * Enable hibernate interrupt
