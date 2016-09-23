@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "e51b8768_f486f815",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1151724
+      },
+      "writtenOn": "2016-09-23T04:11:03Z",
+      "side": 1,
+      "message": "Hi Kevin, Thanks for your explanation. I think that it is a must to change from 0x700d to 0x700f.",
+      "parentUuid": "f076e782_4fe3f130",
+      "range": {
+        "startLine": 296,
+        "startChar": 5,
+        "endLine": 296,
+        "endChar": 33
+      },
+      "revId": "25bb4b9692963189488e2f1a1c83dfa1409e438a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f076e782_d5fb1cd7",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 9
