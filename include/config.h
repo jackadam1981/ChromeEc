@@ -363,6 +363,9 @@
 /* The hardware has some input current ramping/back-off mechanism */
 #undef CONFIG_CHARGE_RAMP_HW
 
+/* Adjust the MAX ramp current if charger lost power due to OCP */
+#undef CONFIG_CHARGE_RAMP_LOST_POWER
+
 /*****************************************************************************/
 /* Charger config */
 
