@@ -358,5 +358,7 @@ int bd9995x_bc12_enable_charging(enum bd9995x_charge_port port, int enable);
 void bd9995x_vbus_interrupt(enum gpio_signal signal);
 /* Read temperature measurement value (in Celsius) */
 int bd9995x_get_battery_temp(int *temp_ptr);
+/* Check if valid VACP detected */
+int bd9995x_vacp_detected(void);
 
 #endif /* __CROS_EC_BD9995X_H */

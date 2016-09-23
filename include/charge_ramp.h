@@ -52,6 +52,13 @@ int board_is_consuming_full_charge(void);
 int board_is_vbus_too_low(enum chg_ramp_vbus_state ramp_state);
 
 /**
+ * Check if the charger is still attached but lost power
+ *
+ * @return charger lost power
+ */
+int board_is_charger_lost_power(void);
+
+/**
  * Get the input current limit set by ramp module
  *
  * Active input current limit (mA)

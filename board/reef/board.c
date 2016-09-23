@@ -592,6 +592,14 @@ int board_is_vbus_too_low(enum chg_ramp_vbus_state ramp_state)
 	return charger_get_vbus_level() < BD9995X_BC12_MIN_VOLTAGE;
 }
 
+/**
+ * Return if charger is still attached but lost power
+ */
+int board_is_charger_lost_power(void)
+{
+	return bd9995x_vacp_detected();
+}
+
 /* Enable or disable input devices, based upon chipset state and tablet mode */
 static void enable_input_devices(void)
 {
