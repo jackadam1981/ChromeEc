@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f076e782_c8461209",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-23T21:55:47Z",
+      "side": 1,
+      "message": "If you put your function calls behind CONFIG_HOSTCMD_RTC then you won\u0027t need weak linking? Or you can even define an empty inline version here, based on CONFIG_HOSTCMD_RTC.",
+      "range": {
+        "startLine": 318,
+        "startChar": 5,
+        "endLine": 318,
+        "endChar": 21
+      },
+      "revId": "73d8ce5002f720bde231666c5b96386fe2785f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
