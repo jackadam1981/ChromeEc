@@ -1241,7 +1241,7 @@ enum ec_pwm_type {
 };
 
 struct ec_params_pwm_set_duty {
-	uint16_t duty;     /* Duty cycle, EC_PWM_MAX_DUTY = 100% */
+	uint16_t duty;     /* Duty cycle */
 	uint8_t pwm_type;  /* ec_pwm_type */
 	uint8_t index;     /* Type-specific index, or 0 if unique */
 } __packed;
@@ -1254,7 +1254,7 @@ struct ec_params_pwm_get_duty {
 } __packed;
 
 struct ec_response_pwm_get_duty {
-	uint16_t duty;     /* Duty cycle, EC_PWM_MAX_DUTY = 100% */
+	uint16_t duty;     /* Duty cycle */
 } __packed;
 
 /*****************************************************************************/
