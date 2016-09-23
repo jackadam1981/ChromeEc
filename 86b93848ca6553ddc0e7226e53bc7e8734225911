@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f076e782_81da3ddb",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-09-23T17:01:43Z",
+      "side": 1,
+      "message": "INT_AP_L should not be left as GPIO_OUT_HIGH on gru either.",
+      "range": {
+        "startLine": 580,
+        "startChar": 1,
+        "endLine": 580,
+        "endChar": 62
+      },
+      "revId": "86b93848ca6553ddc0e7226e53bc7e8734225911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
