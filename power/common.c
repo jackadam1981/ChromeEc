@@ -370,10 +370,20 @@ void chipset_exit_hard_off(void)
 void chipset_task(void)
 {
 	enum power_state new_state;
+	static uint32_t last_in_signals;
+	int print;
 
 	while (1) {
-		CPRINTS("power state %d = %s, in 0x%04x",
-			state, state_names[state], in_signals);
+		/*
+		 * In order to prevent repeated console spam, only print the
+		 * current power state if something has actually changed.  It's
+		 * possible that one of the power signals goes away briefly and
+		 * comes back by the time we update our in_signals.
+		 */
+		if (last_in_signals != in_signals)
+			print = 1;
+
+		last_in_signals = in_signals;
 
 		/* Always let the specific chipset handle the state first */
 		new_state = power_handle_state(state);
@@ -386,8 +396,16 @@ void chipset_task(void)
 			new_state = power_common_state(state);
 
 		/* Handle state changes */
-		if (new_state != state)
+		if (new_state != state) {
 			power_set_state(new_state);
+			print = 1; /* Definitely print if our state changes. */
+		}
+
+		if (print) {
+			CPRINTS("power state %d = %s, in 0x%04x",
+				state, state_names[state], in_signals);
+			print = 0;
+		}
 	}
 }
 
