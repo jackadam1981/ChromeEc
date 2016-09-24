@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "f076e782_8c150948",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-24T18:36:43Z",
+      "side": 1,
+      "message": "Ah yes, this is better. Thanks.",
+      "parentUuid": "f076e782_cc2541cb",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 31
+      },
+      "revId": "a638de6e0a913d55d35cc77d512f70b34a3b1b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f076e782_ec12fd6a",
         "filename": "power/common.c",
         "patchSetId": 1
