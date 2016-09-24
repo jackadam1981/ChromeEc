@@ -24,6 +24,7 @@
 #define CONFIG_PWM_DISPLIGHT
 #define CONFIG_SPI
 #define CONFIG_SPI_MASTER
+#define CONFIG_SOFTWARE_PANIC
 
 #ifdef BOARD_GRU
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands for testing */
