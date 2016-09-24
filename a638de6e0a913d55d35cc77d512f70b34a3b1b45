@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f076e782_8c1b4989",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-24T18:10:04Z",
+      "side": 1,
+      "message": "print -\u003e print_change?",
+      "range": {
+        "startLine": 374,
+        "startChar": 5,
+        "endLine": 374,
+        "endChar": 11
+      },
+      "revId": "a638de6e0a913d55d35cc77d512f70b34a3b1b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_cc2541cb",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-24T18:10:04Z",
+      "side": 1,
+      "message": "This introduces a race condition, if in_signals changes between the check and saving.  I think we need something like:\n\nthis_in_signals \u003d in_signals;\nif (this_in_signals !\u003d last_in_signals || state !\u003d last_state) {\n  CPRINTS(...)\n  last_in_signals \u003d this_in_signals;\n  last_state \u003d state;\n}",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 31
+      },
+      "revId": "a638de6e0a913d55d35cc77d512f70b34a3b1b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_ec12fd6a",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-09-24T18:10:04Z",
+      "side": 1,
+      "message": "Note that this now prints the *new* state, not the one which existed when in_signals was sampled (this may affect comparing logs with existing bug reports).  And in_signals may have changed since we decided to print, so there\u0027ll still be duplicate prints now and then.\n\nThe suggested fix above takes care of both issues.",
+      "range": {
+        "startLine": 405,
+        "startChar": 3,
+        "endLine": 406,
+        "endChar": 43
+      },
+      "revId": "a638de6e0a913d55d35cc77d512f70b34a3b1b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
