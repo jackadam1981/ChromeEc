@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f076e782_c64c4293",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-24T00:09:35Z",
+      "side": 1,
+      "message": "while I think this is right to change this, it would be much better if the name change was in a separate patch.",
+      "revId": "5d2cd55067329be982529423592689e35720f6d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_463912f6",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-24T00:09:35Z",
+      "side": 1,
+      "message": "why did this block had to move?",
+      "revId": "5d2cd55067329be982529423592689e35720f6d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
