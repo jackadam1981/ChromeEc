@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f076e782_3dafc1ee",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-26T17:10:32Z",
+      "side": 1,
+      "message": "separate CL",
+      "revId": "493e940b3b066e03e86aa066e863f5ea5e66cbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_fd8d498b",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-26T17:10:32Z",
+      "side": 1,
+      "message": "why not turning them off at S5-\u003eS3 transition?",
+      "revId": "493e940b3b066e03e86aa066e863f5ea5e66cbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_3d88a178",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-26T17:10:32Z",
+      "side": 1,
+      "message": "it is rather expensive, you are doing an extra register access at every transaction.\n\nCan we guarantee by design that spi_enable() has been called before we issue SPI transaction?",
+      "revId": "493e940b3b066e03e86aa066e863f5ea5e66cbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f076e782_1dd5a538",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-09-26T17:10:32Z",
+      "side": 1,
+      "message": "I am not too hot about this code here.\nI would think the issue would be solve when we call motion_sense_switch_sensor_rate(): when we know the sensor must be initialized, we may want to try harder there.",
+      "revId": "493e940b3b066e03e86aa066e863f5ea5e66cbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
