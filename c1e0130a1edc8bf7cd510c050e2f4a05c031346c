@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65d9570d_334b52b2",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-26T18:56:34Z",
+      "side": 1,
+      "message": "Now nothing initializes this, because it\u0027s put outside of __bss_start and __bss_end. I\u0027ll upload a tweak.",
+      "range": {
+        "startLine": 49,
+        "startChar": 57,
+        "endLine": 49,
+        "endChar": 70
+      },
+      "revId": "c1e0130a1edc8bf7cd510c050e2f4a05c031346c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
