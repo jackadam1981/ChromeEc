@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "25d67f37_b9db5be3",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-26T23:16:45Z",
+      "side": 1,
+      "message": "I don\u0027t think we should: asserting reset_in_progress makes it impossible to communicate with the tpm, but while ExecuteCommand is running, the ISRs could be polling the TPM status register, so we want it to be available.",
+      "parentUuid": "25d67f37_b97c7b0f",
+      "range": {
+        "startLine": 635,
+        "startChar": 1,
+        "endLine": 635,
+        "endChar": 23
+      },
+      "revId": "0a63996aa6a1654f335d82f06d12407182a48cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25d67f37_36bbd8dd",
         "filename": "include/tpm_registers.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-26T23:06:56Z",
       "side": 1,
       "message": "reset",
+      "range": {
+        "startLine": 45,
+        "startChar": 31,
+        "endLine": 45,
+        "endChar": 37
+      },
+      "revId": "0a63996aa6a1654f335d82f06d12407182a48cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25d67f37_d963b70c",
+        "filename": "include/tpm_registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-26T23:16:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25d67f37_36bbd8dd",
       "range": {
         "startLine": 45,
         "startChar": 31,
