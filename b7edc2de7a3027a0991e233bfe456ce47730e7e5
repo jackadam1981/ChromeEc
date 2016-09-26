@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "f076e782_5289cc5a",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-26T15:27:48Z",
+      "side": 1,
+      "message": "Eg. this code:\n\n\tfor (i \u003d 0; i \u003c CHARGE_SUPPLIER_COUNT; ++i)\n\t\tfor (j \u003d 0; j \u003c PD_PORT_COUNT; ++j)\n\t\t\tif (charge_copy[j][i] \u003e 0) {\n\t\t\t\tnew_supplier \u003d i;\n\t\t\t\tnew_port \u003d j;\n\t\t\t\tgoto got_supplier;\n\t\t\t}\n\nWe need to search supplier in index order, so indexing on supplier first lets us use charge_copy[i][j] rather than [j][i].",
+      "parentUuid": "e51b8768_942a242b",
+      "revId": "b7edc2de7a3027a0991e233bfe456ce47730e7e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d038a85e_0ae67ac2",
         "filename": "common/charge_manager.c",
         "patchSetId": 4
