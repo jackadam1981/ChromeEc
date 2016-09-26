@@ -34,6 +34,24 @@
       "revId": "e20115de1ced426ae4842203fa3254c3576006fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65d9570d_900c74e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-09-26T18:25:13Z",
+      "side": 1,
+      "message": "Yes this was tested on Reef and does not cause any I2C issues. In addition I tested the different power states and verified the AP_INT_L signal level. mruthven@ also verified that on her setup that the power level was expected.\n\nI didn\u0027t catch that I had forgot to put this test description in the commit message.",
+      "parentUuid": "f076e782_d74a2eac",
+      "revId": "e20115de1ced426ae4842203fa3254c3576006fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
