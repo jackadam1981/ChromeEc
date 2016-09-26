@@ -22,6 +22,30 @@
       "revId": "c1e0130a1edc8bf7cd510c050e2f4a05c031346c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5cc6755_4ffe7153",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-26T19:03:16Z",
+      "side": 1,
+      "message": "Well... It\u0027s there:\n\n0x00010000 0x00000000          .bss    g  NOTYPE __bss_start\n0x00010400 0x00000000          .bss    g  NOTYPE __bss_libtpm2_start\n0x000144c8 0x00000000          .bss    g  NOTYPE __bss_libtpm2_end\n0x0001a0ac 0x00000001 .bss.noreinit    l  OBJECT reset_in_progress\n0x0001a0b0 0x00000000     .bss.slow    g  NOTYPE __bss_end\n\n\nBut I don\u0027t know why.\nVadim thinks the linker puts it there automatically. Okay...",
+      "parentUuid": "65d9570d_334b52b2",
+      "range": {
+        "startLine": 49,
+        "startChar": 57,
+        "endLine": 49,
+        "endChar": 70
+      },
+      "revId": "c1e0130a1edc8bf7cd510c050e2f4a05c031346c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
