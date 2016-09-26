@@ -173,24 +173,6 @@ static void detect_cc_pin_source_manual(int port, int *cc1_lvl, int *cc2_lvl)
 
 }
 
-/* Determine cc pin state for source when autotoggle feature is enabled */
-static void detect_cc_pin_source_auto(int port, int *cc1_lvl, int *cc2_lvl)
-{
-	*cc1_lvl = TYPEC_CC_VOLT_OPEN;
-	*cc2_lvl = TYPEC_CC_VOLT_OPEN;
-
-	if (state[port].togdone_pullup_cc1 == 1) {
-		/* Measure CC1 */
-		*cc1_lvl = measure_cc_pin_source(port,
-						 TCPC_REG_SWITCHES0_MEAS_CC1);
-
-	} else if (state[port].togdone_pullup_cc2 == 1) {
-		/* Measure CC2 */
-		*cc2_lvl = measure_cc_pin_source(port,
-						 TCPC_REG_SWITCHES0_MEAS_CC2);
-	}
-}
-
 /* Determine cc pin state for sink */
 static void detect_cc_pin_sink(int port, int *cc1, int *cc2)
 {
@@ -417,10 +399,6 @@ static int fusb302_tcpm_init(int port)
 	tcpc_write(port, TCPC_REG_MASK, reg);
 
 	reg = 0xFF;
-	/* Only use autodetect feature for revA silicon */
-	if (state[port].device_id == FUSB302_DEVID_302A)
-		/* informs of attaches */
-		reg &= ~TCPC_REG_MASKA_TOGDONE;
 	/* when all pd message retries fail... */
 	reg &= ~TCPC_REG_MASKA_RETRYFAIL;
 	/* when fusb302 send a hard reset. */
@@ -469,10 +447,7 @@ static int fusb302_tcpm_get_cc(int port, int *cc1, int *cc2)
 
 	if (state[port].pulling_up) {
 		/* Source mode? */
-		if (state[port].device_id == FUSB302_DEVID_302A)
-			detect_cc_pin_source_auto(port, cc1, cc2);
-		else
-			detect_cc_pin_source_manual(port, cc1, cc2);
+		detect_cc_pin_source_manual(port, cc1, cc2);
 	} else {
 		/* Sink mode? */
 		detect_cc_pin_sink(port, cc1, cc2);
@@ -499,56 +474,28 @@ static int fusb302_tcpm_set_cc(int port, int pull)
 	/* NOTE: FUSB302 Does not support Ra. */
 	switch (pull) {
 	case TYPEC_CC_RP:
+		/* enable the pull-up we know to be necessary */
+		tcpc_read(port, TCPC_REG_SWITCHES0, &reg);
 
-		/* Only use autodetect feature for revA silicon */
-		/* if fusb302 hasn't figured anything out yet */
-		if ((state[port].device_id == FUSB302_DEVID_302A) &&
-		    !state[port].togdone_pullup_cc1 &&
-		    !state[port].togdone_pullup_cc2) {
+		reg &= ~(TCPC_REG_SWITCHES0_CC2_PU_EN |
+			 TCPC_REG_SWITCHES0_CC1_PU_EN |
+			 TCPC_REG_SWITCHES0_CC1_PD_EN |
+			 TCPC_REG_SWITCHES0_CC2_PD_EN |
+			 TCPC_REG_SWITCHES0_VCONN_CC1 |
+			 TCPC_REG_SWITCHES0_VCONN_CC2);
 
-			/* Enable DFP Toggle Mode */
-			tcpc_read(port, TCPC_REG_CONTROL2, &reg);
+		reg |= TCPC_REG_SWITCHES0_CC1_PU_EN |
+			TCPC_REG_SWITCHES0_CC2_PU_EN;
 
-			/* turn on toggle */
-			reg |= (TCPC_REG_CONTROL2_MODE_DFP <<
-				TCPC_REG_CONTROL2_MODE_POS);
-			reg |= TCPC_REG_CONTROL2_TOGGLE;
-			tcpc_write(port, TCPC_REG_CONTROL2, reg);
+		if (state[port].vconn_enabled)
+			reg |= state[port].togdone_pullup_cc1 ?
+			       TCPC_REG_SWITCHES0_VCONN_CC2 :
+			       TCPC_REG_SWITCHES0_VCONN_CC1;
 
-			state[port].pulling_up = 1;
-			state[port].dfp_toggling_on = 1;
-		} else {
+		tcpc_write(port, TCPC_REG_SWITCHES0, reg);
 
-			/* enable the pull-up we know to be necessary */
-			tcpc_read(port, TCPC_REG_SWITCHES0, &reg);
-
-			reg &= ~(TCPC_REG_SWITCHES0_CC2_PU_EN |
-				 TCPC_REG_SWITCHES0_CC1_PU_EN |
-				 TCPC_REG_SWITCHES0_CC1_PD_EN |
-				 TCPC_REG_SWITCHES0_CC2_PD_EN |
-				 TCPC_REG_SWITCHES0_VCONN_CC1 |
-				 TCPC_REG_SWITCHES0_VCONN_CC2);
-
-			if (state[port].device_id == FUSB302_DEVID_302A) {
-				if (state[port].togdone_pullup_cc1)
-					reg |= TCPC_REG_SWITCHES0_CC1_PU_EN;
-				else
-					reg |= TCPC_REG_SWITCHES0_CC2_PU_EN;
-			} else {
-				reg |= TCPC_REG_SWITCHES0_CC1_PU_EN |
-				       TCPC_REG_SWITCHES0_CC2_PU_EN;
-			}
-			if (state[port].vconn_enabled)
-				reg |= state[port].togdone_pullup_cc1 ?
-				       TCPC_REG_SWITCHES0_VCONN_CC2 :
-				       TCPC_REG_SWITCHES0_VCONN_CC1;
-
-			tcpc_write(port, TCPC_REG_SWITCHES0, reg);
-
-			state[port].pulling_up = 1;
-			state[port].dfp_toggling_on = 0;
-		}
-
+		state[port].pulling_up = 1;
+		state[port].dfp_toggling_on = 0;
 		break;
 	case TYPEC_CC_RD:
 		/* Enable UFP Mode */
@@ -963,15 +910,8 @@ void fusb302_tcpc_alert(int port)
 				 TCPC_REG_SWITCHES0_VCONN_CC1 |
 				 TCPC_REG_SWITCHES0_VCONN_CC2);
 
-			if (state[port].device_id == FUSB302_DEVID_302A) {
-				if (state[port].togdone_pullup_cc1)
-					reg |= TCPC_REG_SWITCHES0_CC1_PU_EN;
-				else
-					reg |= TCPC_REG_SWITCHES0_CC2_PU_EN;
-			} else {
-				reg |= TCPC_REG_SWITCHES0_CC1_PU_EN |
-				       TCPC_REG_SWITCHES0_CC2_PU_EN;
-			}
+			reg |= TCPC_REG_SWITCHES0_CC1_PU_EN |
+			       TCPC_REG_SWITCHES0_CC2_PU_EN;
 
 			if (state[port].vconn_enabled)
 				reg |= state[port].togdone_pullup_cc1 ?
