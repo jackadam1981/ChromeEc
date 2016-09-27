@@ -302,8 +302,10 @@ $(out)/$(PROJECT).exe: $(ro-objs)
 	$(call quiet,exe,EXE    )
 
 $(out)/RO/%.o:%.c
+	$(shell mkdir -p $(@D))
 	$(call quiet,c_to_o,CC     )
 $(out)/RW/%.o:%.c
+	$(shell mkdir -p $(@D))
 	$(call quiet,c_to_o,CC     )
 
 $(out)/$(SHOBJLIB)/%.o: override LATE_CFLAGS_DEFINE:=-DSHAREDLIB_IMAGE
