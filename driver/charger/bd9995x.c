@@ -14,6 +14,7 @@
 #include "ec_commands.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "system.h"
 #include "task.h"
 #include "time.h"
 #include "util.h"
@@ -622,6 +623,28 @@ int charger_set_voltage(int voltage)
 	return ch_raw_write16(BD9995X_CMD_CHG_VOLTAGE, voltage,
 				BD9995X_BAT_CHG_COMMAND);
 }
+
+#ifdef CONFIG_BD9995X_POR_RESET
+/*
+ * Reset our charger IC on power-on. This will briefly cut extpower to the
+ * system, so skip the reset if our battery can't provide sufficient charge
+ * to briefly power the system.
+ */
+static void bd9995x_reset_charger(void)
+{
+	int bat_pct = 0;
+
+	if (!system_jumped_to_this_image() &&
+	    battery_is_present() == BP_YES &&
+	    battery_get_disconnect_state() != BATTERY_DISCONNECTED) {
+		if (battery_state_of_charge_abs(&bat_pct) ||
+		    bat_pct < CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
+			return;
+		charger_set_mode(CHARGE_FLAG_POR_RESET);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, bd9995x_reset_charger, HOOK_PRIO_INIT_EXTPOWER - 1);
+#endif
 
 static void bd99995_init(void)
 {

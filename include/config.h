@@ -384,6 +384,9 @@
  */
 #undef CONFIG_BD9995X_PRIMARY_CHARGE_PORT_VCC
 
+/* Bd9995x POR reset on Init */
+#undef CONFIG_BD9995X_POR_RESET
+
 /*
  * BD9995X Power Save Mode
  *
