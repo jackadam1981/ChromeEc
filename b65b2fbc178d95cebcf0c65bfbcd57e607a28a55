@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e54e270b_dce70dd1",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-09-27T01:28:19Z",
+      "side": 1,
+      "message": "Adding CONFIG_SOFTWARE_PANIC is unnecessary. This definition is introduced in core/cortex-m/config_core.h.",
+      "revId": "b65b2fbc178d95cebcf0c65bfbcd57e607a28a55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
