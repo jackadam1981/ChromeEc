@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c5a5a31c_6ec54f9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-09-27T21:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25d67f37_10dc5c6b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "8a1677e6a432054d7987605d6ba5d0b6e8001ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25d67f37_90e98c0d",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-27T16:50:41Z",
       "side": 1,
       "message": "I\u0027m worried this may break another board. Also, we may need to generate an exact frequency in some cases. How about if we set the prescaler and adjust the effective duty automatically instead? Eg. I request 50 Hz clock w/ 15 MHz input clk -\u003e set prescaler to 10, effective resolution of 30,000.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 31
+      },
+      "revId": "8a1677e6a432054d7987605d6ba5d0b6e8001ef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_ce5f2315",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-09-27T21:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25d67f37_90e98c0d",
       "range": {
         "startLine": 90,
         "startChar": 1,
