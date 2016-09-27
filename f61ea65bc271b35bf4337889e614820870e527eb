@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e54e270b_9c7185a0",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2016-09-27T19:19:03Z",
+      "side": 1,
+      "message": "Rather than invoking \"mkdir\" using the \"shell\" command, it appears way more common in this file to simply invoke \"mkdir\" directly. However, you probably want to use \"@\" to reduce noise in the output.\n\nHowever, there is clearly magic somewhere that creates the appropriate output directories before compiling. If possible, we should hook into that magic. Can we add the desired path to the \"dirs-y\" variable in build.mk?",
+      "range": {
+        "startLine": 305,
+        "startChar": 3,
+        "endLine": 305,
+        "endChar": 8
+      },
+      "revId": "f61ea65bc271b35bf4337889e614820870e527eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
