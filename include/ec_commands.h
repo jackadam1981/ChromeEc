@@ -3367,6 +3367,33 @@ struct ec_response_i2c_passthru_protect {
 } __packed;
 
 /*****************************************************************************/
+/* I2C stress tests */
+#define EC_CMD_I2C_STRESS_TEST 0xc0
+
+struct ec_params_i2c_stress_test {
+	uint8_t dev;      /* EC I2C test device number */
+	uint8_t read;     /* Perform read only tests */
+	uint8_t rand_seq; /* Test devices sequentially */
+} __packed;
+
+struct ec_response_i2c_tests_done {
+	uint8_t num_tests; /* Number of tests executed */
+} __packed;
+
+#define EC_CMD_I2C_STRESS_TEST_RESULT 0xc1
+
+struct ec_params_i2c_test_result {
+	uint8_t dev;       /* EC I2C test device number */
+} __packed;
+
+struct ec_response_i2c_test_result {
+	int32_t read_success;  /* Successful read count */
+	int32_t read_fail;     /* Read fail count */
+	int32_t write_success; /* Successful write count */
+	int32_t write_fail;    /* Write fail count */
+} __packed;
+
+/*****************************************************************************/
 /* System commands */
 
 /*

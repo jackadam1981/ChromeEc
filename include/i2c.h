@@ -80,7 +80,6 @@ struct i2c_stress_test {
 };
 
 extern struct i2c_stress_test i2c_stress_tests[];
-extern const int i2c_test_dev_used;
 #endif
 
 /* Flags for i2c_xfer() */
