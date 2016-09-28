@@ -203,7 +203,8 @@ struct i2c_stress_test i2c_stress_tests[] = {
 	},
 #endif
 };
-const int i2c_test_dev_used = ARRAY_SIZE(i2c_stress_tests);
+BUILD_ASSERT(ARRAY_SIZE(i2c_stress_tests) ==
+		CONFIG_I2C_STRESS_TEST_DEVICE_COUNT);
 #endif /* CONFIG_CMD_I2C_STRESS_TEST */
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {

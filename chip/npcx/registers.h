@@ -688,6 +688,7 @@ enum NPCX_I2C_PORT_T {
 	NPCX_I2C_PORT1    = 2, /* I2C port 1 */
 	NPCX_I2C_PORT2    = 3, /* I2C port 2 */
 	NPCX_I2C_PORT3    = 4, /* I2C port 3 */
+	CHIP_I2C_PORT_COUNT = 5,
 };
 
 /******************************************************************************/
