@@ -185,6 +185,7 @@ struct i2c_stress_test i2c_stress_tests[] = {
 #endif
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_ALS
 	{
+		.port = I2C_PORT_ALS,
 		.i2c_test = &opt3001_i2c_stress_test_dev,
 	},
 #endif
@@ -192,16 +193,19 @@ struct i2c_stress_test i2c_stress_tests[] = {
 /* NPCX_I2C_PORT3 */
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_BATTERY
 	{
+		.port = I2C_PORT_BATTERY,
 		.i2c_test = &battery_i2c_stress_test_dev,
 	},
 #endif
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_CHARGER
 	{
+		.port = I2C_PORT_CHARGER,
 		.i2c_test = &bd9995x_i2c_stress_test_dev,
 	},
 #endif
 };
-const int i2c_test_dev_used = ARRAY_SIZE(i2c_stress_tests);
+BUILD_ASSERT(ARRAY_SIZE(i2c_stress_tests) ==
+		CONFIG_I2C_STRESS_TEST_DEVICE_COUNT);
 #endif /* CONFIG_CMD_I2C_STRESS_TEST */
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
