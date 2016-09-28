@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5a5a31c_05dc66d9",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-28T03:53:04Z",
+      "side": 1,
+      "message": "Can\u0027t we just calculate this rather than looping? Something like ROUND_UP(clock / (0xffff * freq))?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "201330632485f4d259b379499aad6dc198e5be3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
