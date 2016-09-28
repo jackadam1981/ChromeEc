@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5a5a31c_3df88d62",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-28T23:07:14Z",
+      "side": 1,
+      "message": "is there a way I can send this report to host too?",
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_fdfd6555",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5282,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-09-28T23:07:14Z",
+      "side": 1,
+      "message": "I see these kind of error but test runs in console.\nI am missing something?\n\nlocalhost ~ # ectool i2ctest\ndev\u003d0 count\u003d10000 udelay\u003d100 read\u003d0 seq\u003d0 report\u003d0\nioctl -1, errno 5 (Input/output error), EC result 255 (\u003cunknown\u003e)",
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
