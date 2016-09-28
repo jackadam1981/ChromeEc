@@ -70,6 +70,24 @@
       "revId": "cbe187aed36698e69da7e19c43ff541e3ab99f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_b4c1414b",
+        "filename": "include/i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-28T16:04:00Z",
+      "side": 1,
+      "message": "I\u0027m writing a i2c driver for stm32l4. Interestingly, stm32l4 has three i2c ports and all of them can be a standard, fast-mode, fast-mode plus. So, this field may come back.",
+      "parentUuid": "3b05bb4a_303328fb",
+      "revId": "cbe187aed36698e69da7e19c43ff541e3ab99f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
