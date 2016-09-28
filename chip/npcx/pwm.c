@@ -19,6 +19,7 @@
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "registers.h"
+#include "system.h"
 #include "util.h"
 
 #if !(DEBUG_PWM)
@@ -232,8 +233,14 @@ static void pwm_init(void)
 		pd_mask |= (1 << pwm_channels[i].channel);
 	clock_enable_peripheral(CGC_OFFSET_PWM, pd_mask, CGC_MODE_ALL);
 
-	for (i = 0; i < PWM_CH_COUNT; i++)
-		pwm_config(i);
+	for (i = 0; i < PWM_CH_COUNT; i++) {
+		/* Do not re-init PWM when sysjumped */
+		if (system_jumped_to_this_image() &&
+			(pwm_channels[i].flags & PWM_CONFIG_NO_RESET_SYSJUMP))
+			continue;
+		else
+			pwm_config(i);
+	}
 }
 
 /* The chip-specific fan module initializes before this. */

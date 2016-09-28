@@ -65,4 +65,8 @@ int pwm_get_duty(enum pwm_channel ch);
  * PWM channel must stay active in low-power idle, if enabled.
  */
 #define PWM_CONFIG_DSLEEP		(1 << 4)
+/**
+ * PWM channel must not re-init the pwm on sysjump, if enabled.
+ */
+#define PWM_CONFIG_NO_RESET_SYSJUMP	(1 << 5)
 #endif  /* __CROS_EC_PWM_H */
