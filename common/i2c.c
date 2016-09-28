@@ -858,21 +858,29 @@ DECLARE_CONSOLE_COMMAND(i2cxfer, command_i2cxfer,
 #endif
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST
-static void i2c_test_status(int test_dev_num)
+static void i2c_test_status(int test_dev_num,
+			struct ec_response_i2c_test_result *r)
 {
 	struct i2c_stress_test_dev *dev =
 		i2c_stress_tests[test_dev_num].i2c_test;
 	struct i2c_test_results *i2c_test_dev = &dev->test_results;
 
-	ccprintf("test_dev=%2d, ", test_dev_num);
-	ccprintf("r=%5d, rs=%5d, rf=%5d, ",
-		i2c_test_dev->read_success + i2c_test_dev->read_fail,
-		i2c_test_dev->read_success,
-		i2c_test_dev->read_fail);
-	ccprintf("w=%5d, ws=%5d, wf=%5d\n",
-		i2c_test_dev->write_success + i2c_test_dev->write_fail,
-		i2c_test_dev->write_success,
-		i2c_test_dev->write_fail);
+	if (r) {
+		r->read_success = i2c_test_dev->read_success;
+		r->read_fail = i2c_test_dev->read_fail;
+		r->write_success = i2c_test_dev->write_success;
+		r->write_fail = i2c_test_dev->write_fail;
+	} else {
+		ccprintf("test_dev=%2d, ", test_dev_num);
+		ccprintf("r=%5d, rs=%5d, rf=%5d, ",
+			i2c_test_dev->read_success + i2c_test_dev->read_fail,
+			i2c_test_dev->read_success,
+			i2c_test_dev->read_fail);
+		ccprintf("w=%5d, ws=%5d, wf=%5d\n",
+			i2c_test_dev->write_success + i2c_test_dev->write_fail,
+			i2c_test_dev->write_success,
+			i2c_test_dev->write_fail);
+	}
 
 	i2c_test_dev->read_success = 0;
 	i2c_test_dev->read_fail = 0;
@@ -882,32 +890,50 @@ static void i2c_test_status(int test_dev_num)
 
 static int i2c_test_read(int test_dev_num, int *data)
 {
+	int rv;
 	struct i2c_stress_test_dev *dev =
 		i2c_stress_tests[test_dev_num].i2c_test;
 	struct i2c_test_reg_info *reg_s_info = &dev->reg_info;
 
-	return dev->i2c_read ?
+	/* Increase the I2C timeout to avoid I2C unwedge */
+	i2c_set_timeout(i2c_stress_tests[test_dev_num].port, SECOND);
+
+	rv = dev->i2c_read ?
 		dev->i2c_read(i2c_stress_tests[test_dev_num].port,
 			i2c_stress_tests[test_dev_num].addr,
 			reg_s_info->read_reg,
 			data) :
 		dev->i2c_read_dev(reg_s_info->read_reg,
 			data);
+
+	/* Restore the I2C timeout to default */
+	i2c_set_timeout(i2c_stress_tests[test_dev_num].port, 0);
+
+	return rv;
 }
 
 static int i2c_test_write(int test_dev_num, int data)
 {
+	int rv;
 	struct i2c_stress_test_dev *dev =
 		i2c_stress_tests[test_dev_num].i2c_test;
 	struct i2c_test_reg_info *reg_s_info = &dev->reg_info;
 
-	return dev->i2c_write ?
+	/* Increase the I2C timeout to avoid I2C unwedge */
+	i2c_set_timeout(i2c_stress_tests[test_dev_num].port, SECOND);
+
+	rv = dev->i2c_write ?
 		dev->i2c_write(i2c_stress_tests[test_dev_num].port,
 			i2c_stress_tests[test_dev_num].addr,
 			reg_s_info->write_reg,
 			data) :
 		dev->i2c_write_dev(reg_s_info->write_reg,
 			data);
+
+	/* Restore the I2C timeout to default */
+	i2c_set_timeout(i2c_stress_tests[test_dev_num].port, 0);
+
+	return rv;
 }
 
 #define I2C_STRESS_TEST_DATA_VERIFY_RETRY_COUNT 3
@@ -922,9 +948,9 @@ static int i2c_stress_test(int dev, int read, int rand_seq)
 	struct i2c_test_results *test_s_results;
 
 	k++;
-	if (dev == i2c_test_dev_used) {
+	if (dev == CONFIG_I2C_STRESS_TEST_DEVICE_COUNT) {
 		rand = rand_seq ? k : get_time().val;
-		test_dev = rand % i2c_test_dev_used;
+		test_dev = rand % CONFIG_I2C_STRESS_TEST_DEVICE_COUNT;
 	} else
 		test_dev = dev;
 
@@ -958,7 +984,7 @@ static int i2c_stress_test(int dev, int read, int rand_seq)
 		}
 		test_s_results->read_success++;
 
-		j = i2c_test_dev_used;
+		j = I2C_STRESS_TEST_DATA_VERIFY_RETRY_COUNT;
 		do {
 			/* Write same value back */
 			rv = i2c_test_write(test_dev, data);
@@ -992,7 +1018,7 @@ static int i2c_stress_test(int dev, int read, int rand_seq)
 static int command_i2ctest(int argc, char **argv)
 {
 	int i, j, val;
-	int dev = i2c_test_dev_used;
+	int dev = CONFIG_I2C_STRESS_TEST_DEVICE_COUNT;
 	int count = 10000, udelay = 100;
 	int rand_seq = 0, read = 0;
 	char *e;
@@ -1029,7 +1055,7 @@ static int command_i2ctest(int argc, char **argv)
 
 		switch (j) {
 		case 0:
-			if (val >= i2c_test_dev_used)
+			if (val >= CONFIG_I2C_STRESS_TEST_DEVICE_COUNT)
 				return EC_ERROR_PARAM1 + i;
 
 			dev = val;
@@ -1065,16 +1091,16 @@ static int command_i2ctest(int argc, char **argv)
 	}
 
 	/* Get the results */
-	if (dev == i2c_test_dev_used) {
+	if (dev == CONFIG_I2C_STRESS_TEST_DEVICE_COUNT) {
 		i = 0;
-		j = i2c_test_dev_used;
+		j = CONFIG_I2C_STRESS_TEST_DEVICE_COUNT;
 	} else {
 		i = dev;
 		j = dev + 1;
 	}
 
 	for (; i < j; i++) {
-		i2c_test_status(i);
+		i2c_test_status(i, NULL);
 		msleep(100);
 	}
 	cflush();
@@ -1091,6 +1117,34 @@ static int command_i2ctest(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(i2ctest, command_i2ctest,
 			"dev <value>|count <value>|udelay <value>|read|seq",
 			"I2C stress test");
+
+static int hc_i2c_test(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_i2c_stress_test *p = args->params;
+	struct ec_response_i2c_tests_done *r = args->response;
+
+	args->response_size = sizeof(struct ec_response_i2c_tests_done);
+	r->num_tests = i2c_stress_test(p->dev, p->read, p->rand_seq);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_I2C_STRESS_TEST,
+		     hc_i2c_test,
+		     EC_VER_MASK(0));
+
+static int hc_i2c_test_result(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_i2c_test_result *p = args->params;
+	struct ec_response_i2c_test_result *r = args->response;
+
+	args->response_size = sizeof(struct ec_response_i2c_test_result);
+	i2c_test_status(p->dev, r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_I2C_STRESS_TEST_RESULT,
+		     hc_i2c_test_result,
+		     EC_VER_MASK(0));
 #endif /* CONFIG_CMD_I2C_STRESS_TEST */
 
 #ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
