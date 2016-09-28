@@ -88,6 +88,24 @@
       "revId": "cbe187aed36698e69da7e19c43ff541e3ab99f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_34955143",
+        "filename": "include/i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-09-28T16:11:06Z",
+      "side": 1,
+      "message": "Can\u0027t you just do it based off of the kbps field? At least, that\u0027s what I did for Rotor MCU.\n\nSee: https://chromium.git.corp.google.com/chromiumos/platform/ec/+/91d23fa94d6a8504da654053ba1f923a7e03c949/chip/rotor/i2c.c#468",
+      "parentUuid": "c5a5a31c_b4c1414b",
+      "revId": "cbe187aed36698e69da7e19c43ff541e3ab99f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
