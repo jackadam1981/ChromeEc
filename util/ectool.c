@@ -136,6 +136,10 @@ const char help_str[] =
 	"      Write I2C bus\n"
 	"  i2cxfer <port> <slave_addr> <read_count> [write bytes...]\n"
 	"      Perform I2C transfer on EC's I2C bus\n"
+#ifdef CONFIG_CMD_I2C_STRESS_TEST
+	"  i2ctest dev<n>|count<n>|udelay<n>|read|seq|report\n"
+	"      Perform I2C stress test on EC's I2C bus\n"
+#endif
 	"  infopddev <port>\n"
 	"      Get info about USB type-C accessory attached to port\n"
 	"  inventory\n"
@@ -5204,6 +5208,83 @@ int cmd_i2c_xfer(int argc, char *argv[])
 	return 0;
 }
 
+#ifdef CONFIG_CMD_I2C_STRESS_TEST
+int cmd_i2c_test(int argc, char *argv[])
+{
+	struct ec_params_i2c_stress_test p = {
+		.dev = 0,
+		.count = 10000,
+		.udelay = 100,
+		.read = 0,
+		.rand_seq = 0,
+		.report = 0,
+	};
+	static const char * const args[] = {
+		[0] = "dev",
+		[1] = "count",
+		[2] = "udelay",
+		[3] = "read",
+		[4] = "seq",
+		[5] = "report",
+	};
+	char *e;
+	int i, j, val;
+
+	if (argc > 1) {
+		for (i = 1; i < argc; i++) {
+			for (j = 0; j < ARRAY_SIZE(args); j++)
+				if (!strcasecmp(args[j], argv[i]))
+					break;
+
+			if (j == ARRAY_SIZE(args))
+				return EC_ERROR_PARAM1 + i;
+
+			if (j < 3) {
+				i++;
+				if (i == argc)
+					return EC_ERROR_PARAM1 + --i;
+
+				val = strtol(argv[i], &e, 0);
+				if (*e || val < 0)
+					return EC_ERROR_PARAM1 + i;
+			}
+
+			switch (j) {
+			case 0:
+				if (!val)
+					return EC_ERROR_PARAM1 + i;
+
+				p.dev = val;
+				break;
+			case 1:
+				p.count = val;
+				break;
+			case 2:
+				p.udelay = val;
+				break;
+			case 3:
+				p.read = 1;
+				break;
+			case 4:
+				p.rand_seq = 1;
+				break;
+			case 5:
+				p.report = 1;
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	printf("dev=%d count=%d udelay=%d read=%d seq=%d report=%d\n",
+		p.dev, p.count, p.udelay, p.read, p.rand_seq, p.report);
+
+	return ec_command(EC_CMD_I2C_STRESS_TEST, 1, &p, sizeof(p),
+			  NULL, 0);
+}
+#endif
+
 int cmd_lcd_backlight(int argc, char *argv[])
 {
 	struct ec_params_switch_enable_backlight p;
@@ -6843,6 +6924,9 @@ const struct command commands[] = {
 	{"i2cread", cmd_i2c_read},
 	{"i2cwrite", cmd_i2c_write},
 	{"i2cxfer", cmd_i2c_xfer},
+#ifdef CONFIG_CMD_I2C_STRESS_TEST
+	{"i2ctest", cmd_i2c_test},
+#endif
 	{"infopddev", cmd_pd_device_info},
 	{"inventory", cmd_inventory},
 	{"led", cmd_led},

@@ -3209,6 +3209,18 @@ struct ec_params_host_sleep_event {
 } __packed;
 
 /*****************************************************************************/
+#define EC_CMD_I2C_STRESS_TEST 0xaa
+
+struct ec_params_i2c_stress_test {
+	int dev;
+	int count;
+	int udelay;
+	int read;
+	int rand_seq;
+	int report;
+} __packed;
+
+/*****************************************************************************/
 /* Smart battery pass-through */
 
 /* Get / Set 16-bit smart battery registers */
