@@ -1,0 +1,314 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5a5a31c_d4e692d2",
+        "filename": "board/nucleo-f072rb/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-28T20:06:00Z",
+      "side": 1,
+      "message": "Should be defined as ARRAY_SIZE(i2c_ports) as done for other chips.",
+      "range": {
+        "startLine": 36,
+        "startChar": 19,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "6706c2ddfb1ece22480fd2d1dd1bf927b7fa0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_342b96ed",
+        "filename": "chip/stm32/i2c-stm32l4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-28T20:06:00Z",
+      "side": 1,
+      "message": "I2C2 is hardcoded. To make this driver more generic, these mask and shift have to be calculated.",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 80
+      },
+      "revId": "6706c2ddfb1ece22480fd2d1dd1bf927b7fa0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_54a58299",
+        "filename": "chip/stm32/i2c-stm32l4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-28T20:06:00Z",
+      "side": 1,
+      "message": "I think we can just use p-\u003ekbps to store I2C_FREQ_*KHZ and remove this redundant translation. I didn\u0027t find any code using the value (e.g. 1000, 400, ...) instead of the enum value except here.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 2
+      },
+      "revId": "6706c2ddfb1ece22480fd2d1dd1bf927b7fa0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_740cfe9c",
+        "filename": "chip/stm32/i2c-stm32l4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-28T20:06:00Z",
+      "side": 1,
+      "message": "nit: Redundant naming. This file is entirely about i2c. So, it can be just isr without incurring confusion.",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 12
+      },
+      "revId": "6706c2ddfb1ece22480fd2d1dd1bf927b7fa0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_b4994677",
+        "filename": "chip/stm32/i2c-stm32l4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-28T20:06:00Z",
+      "side": 1,
+      "message": "This is defined in cts/i2c/th.c. So, to make this driver work in general, it has to be defined differently.",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 10
+      },
+      "revId": "6706c2ddfb1ece22480fd2d1dd1bf927b7fa0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_687d3ab8",
+        "filename": "chip/stm32/i2c-stm32l4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-28T20:06:00Z",
+      "side": 1,
+      "message": "This makes the driver bound to CTS.",
+      "range": {
+        "startLine": 306,
+        "startChar": 4,
+        "endLine": 306,
+        "endChar": 29
+      },
+      "revId": "6706c2ddfb1ece22480fd2d1dd1bf927b7fa0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_5460e22a",
+        "filename": "chip/stm32/i2c-stm32l4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-28T20:06:00Z",
+      "side": 1,
+      "message": "nit: I think we should unfold this. It\u0027s just a function which happens to be called in an interrupt.",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 316,
+        "endChar": 67
+      },
+      "revId": "6706c2ddfb1ece22480fd2d1dd1bf927b7fa0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_f4458e9c",
+        "filename": "chip/stm32/i2c-stm32l4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-28T20:06:00Z",
+      "side": 1,
+      "message": "s/SCL/SDA",
+      "range": {
+        "startLine": 453,
+        "startChar": 10,
+        "endLine": 453,
+        "endChar": 13
+      },
+      "revId": "6706c2ddfb1ece22480fd2d1dd1bf927b7fa0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_487afec1",
+        "filename": "cts/i2c/th.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-28T20:06:00Z",
+      "side": 1,
+      "message": "let\u0027s merge these with \u0027default\u0027.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "6706c2ddfb1ece22480fd2d1dd1bf927b7fa0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_743a3e21",
+        "filename": "cts/i2c/th.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-28T20:06:00Z",
+      "side": 1,
+      "message": "newline",
+      "revId": "6706c2ddfb1ece22480fd2d1dd1bf927b7fa0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_b48826d8",
+        "filename": "cts/i2c/th.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-28T20:06:00Z",
+      "side": 1,
+      "message": "nit: This is redundant and wasteful. end_time should be calculated before entering the loop and it should be compared against get_time().val without any division or subtraction.",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "6706c2ddfb1ece22480fd2d1dd1bf927b7fa0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_b4294691",
+        "filename": "cts/i2c/th.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-28T20:06:00Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 5
+      },
+      "revId": "6706c2ddfb1ece22480fd2d1dd1bf927b7fa0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_34171656",
+        "filename": "cts/i2c/th.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-28T20:06:00Z",
+      "side": 1,
+      "message": "newline",
+      "range": {
+        "startLine": 70,
+        "startChar": 21,
+        "endLine": 70,
+        "endChar": 22
+      },
+      "revId": "6706c2ddfb1ece22480fd2d1dd1bf927b7fa0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a5a31c_b4bae68b",
+        "filename": "cts/i2c/th.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-09-28T20:06:00Z",
+      "side": 1,
+      "message": "newline",
+      "revId": "6706c2ddfb1ece22480fd2d1dd1bf927b7fa0876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
