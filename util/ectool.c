@@ -136,6 +136,8 @@ const char help_str[] =
 	"      Write I2C bus\n"
 	"  i2cxfer <port> <slave_addr> <read_count> [write bytes...]\n"
 	"      Perform I2C transfer on EC's I2C bus\n"
+	"  i2ctest dev <value>|count <value>|udelay <value>|read|seq\n"
+	"      Perform I2C stress test on EC's I2C bus\n"
 	"  infopddev <port>\n"
 	"      Get info about USB type-C accessory attached to port\n"
 	"  inventory\n"
@@ -5226,6 +5228,146 @@ int cmd_i2c_xfer(int argc, char *argv[])
 	return 0;
 }
 
+static int print_i2c_test_results(int test_dev_num)
+{
+	int rv;
+	struct ec_params_i2c_test_result p;
+	struct ec_response_i2c_test_result r;
+
+	p.dev = test_dev_num;
+	rv = ec_command(EC_CMD_I2C_STRESS_TEST_RESULT, 0, &p, sizeof(p),
+			&r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	printf("test_dev=%2d, ", test_dev_num);
+	printf("r=%5d, rs=%5d, rf=%5d, ",
+		r.read_success + r.read_fail,
+		r.read_success,
+		r.read_fail);
+	printf("w=%5d, ws=%5d, wf=%5d\n",
+		r.write_success + r.write_fail,
+		r.write_success,
+		r.write_fail);
+
+	return rv;
+}
+
+int cmd_i2c_test(int argc, char *argv[])
+{
+	int i, j;
+	int val, rv;
+	int udelay = 100, count = 10000;
+	struct ec_params_i2c_stress_test p = {
+		.dev = CONFIG_I2C_STRESS_TEST_DEVICE_COUNT,
+		.read = 0,
+		.rand_seq = 0,
+	};
+	struct ec_response_i2c_tests_done r;
+	static const char * const args[] = {
+		/* Arguments need a value */
+		[0] = "dev",	/* device number to be tested */
+		[1] = "count",	/* number of tests to be executed */
+		[2] = "udelay",	/* delay between read/write in micro seconds */
+		/* Arguments don't need a value */
+		[3] = "read",	/* only do reads */
+		[4] = "seq",	/* test devices sequentially */
+	};
+	char *e;
+
+	for (i = 1; i < argc; i++) {
+		for (j = 0; j < ARRAY_SIZE(args); j++)
+			if (!strcasecmp(args[j], argv[i]))
+				break;
+
+		/* Invalid argument */
+		if (j == ARRAY_SIZE(args))
+			goto i2ctest_error;
+
+		/* Arguments need a value */
+		if (j < 3) {
+			i++;
+			/* Make sure we are not indexing out of arguments */
+			if (i == argc) {
+				--i;
+				goto i2ctest_error;
+			}
+
+			val = strtol(argv[i], &e, 0);
+			if (*e || val < 0)
+				goto i2ctest_error;
+		}
+
+		switch (j) {
+		case 0:
+			if (val >= CONFIG_I2C_STRESS_TEST_DEVICE_COUNT)
+				goto i2ctest_error;
+
+			p.dev = val;
+			break;
+		case 1:
+			if (!val)
+				goto i2ctest_error;
+
+			count = val;
+			break;
+		case 2:
+			if (!val)
+				goto i2ctest_error;
+
+			udelay = val;
+			break;
+		case 3:
+			p.read = 1;
+			break;
+		case 4:
+			p.rand_seq = 1;
+			break;
+		default:
+			break;
+		}
+	}
+
+	/* Run the tests */
+	for (i = 0; i < count; ) {
+		rv = ec_command(EC_CMD_I2C_STRESS_TEST, 0, &p, sizeof(p),
+				&r, sizeof(r));
+		if (rv < 0)
+			return rv;
+
+		i += r.num_tests;
+		usleep(udelay);
+		if (!(i % 1000))
+			printf("running test %d\n", i);
+	}
+
+	/* Get the results */
+	if (p.dev == CONFIG_I2C_STRESS_TEST_DEVICE_COUNT) {
+		i = 0;
+		j = CONFIG_I2C_STRESS_TEST_DEVICE_COUNT;
+	} else {
+		i = p.dev;
+		j = p.dev + 1;
+	}
+
+	for (; i < j; i++) {
+		rv = print_i2c_test_results(i);
+		if (rv < 0)
+			return rv;
+	}
+
+	return EC_RES_SUCCESS;
+
+i2ctest_error:
+	fprintf(stderr,
+		"Invalid arg %d\n"
+		"Usage: i2ctest dev <value>|count <value>|udelay <value>|"
+		"read|seq\n",
+		i);
+
+	return EC_RES_INVALID_PARAM;
+}
+
 int cmd_lcd_backlight(int argc, char *argv[])
 {
 	struct ec_params_switch_enable_backlight p;
@@ -6865,6 +7007,7 @@ const struct command commands[] = {
 	{"i2cread", cmd_i2c_read},
 	{"i2cwrite", cmd_i2c_write},
 	{"i2cxfer", cmd_i2c_xfer},
+	{"i2ctest", cmd_i2c_test},
 	{"infopddev", cmd_pd_device_info},
 	{"inventory", cmd_inventory},
 	{"led", cmd_led},
