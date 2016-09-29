@@ -206,6 +206,18 @@ static enum power_state power_wait_s5_rtc_reset(void)
 }
 #endif
 
+#ifdef CONFIG_POWER_S0IX
+static void handle_chipset_reset(void)
+{
+	if ((get_slp_s0_track() == 0)) {
+		CPRINTS("chipset reset: exit s0ix");
+		set_slp_s0_track(1);
+		task_wake(TASK_ID_CHIPSET);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESET, handle_chipset_reset, HOOK_PRIO_FIRST);
+#endif
+
 static enum power_state _power_handle_state(enum power_state state)
 {
 	int tries = 0;
