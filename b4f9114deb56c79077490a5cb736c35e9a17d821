@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "826561f7_7af897a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-30T23:22:21Z",
+      "side": 1,
+      "message": "can you mention here why only a few of board .h files need to be modified. Is this because the new config is set by default?",
+      "parentUuid": "826561f7_17b73642",
+      "range": {
+        "startLine": 13,
+        "startChar": 17,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "b4f9114deb56c79077490a5cb736c35e9a17d821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "826561f7_176a96a5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
