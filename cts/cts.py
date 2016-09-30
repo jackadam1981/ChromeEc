@@ -94,8 +94,10 @@ class Cts(object):
 
   def build(self):
     """Build images for DUT and TH"""
-    self.dut.build(self.module, self.ec_dir, self.debug)
-    self.th.build(self.module, self.ec_dir, self.debug)
+    rv = self.dut.build(self.module, self.ec_dir, self.debug)
+    if rv != 0:
+      return rv
+    return self.th.build(self.module, self.ec_dir, self.debug)
 
   def flash_boards(self):
     """Flashes th and dut boards with their most recently build ec.bin"""
@@ -394,7 +396,8 @@ def main():
   elif args.run:
     cts.run()
   else:
-    cts.build()
+    if cts.build() != 0:
+      sys.exit(rv)
     cts.flash_boards()
     cts.run()
 

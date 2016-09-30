@@ -116,7 +116,7 @@ class Board(object):
       cmds.append('CTS_DEBUG=TRUE')
 
     print ' '.join(cmds)
-    sp.call(cmds)
+    return sp.call(cmds)
 
   def flash(self):
     """Flashes board with most recent build ec.bin"""
