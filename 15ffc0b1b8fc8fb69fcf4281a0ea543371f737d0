@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "826561f7_d5663fe1",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-09-30T05:01:47Z",
+      "side": 1,
+      "message": "I think it\u0027s acceptable to just override the hibernate shortcut to enter pg3. This is only used for debug, and almost certainly nobody will notice or complain if you change it slightly (btw, other braswell platforms use pg3 instead of hibernate). I think it\u0027s best not to add a new key combo, just in case we decide to use that key combo in-OS for something someday.",
+      "range": {
+        "startLine": 349,
+        "startChar": 2,
+        "endLine": 352,
+        "endChar": 11
+      },
+      "revId": "15ffc0b1b8fc8fb69fcf4281a0ea543371f737d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
