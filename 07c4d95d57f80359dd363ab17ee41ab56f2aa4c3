@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "826561f7_579a4e66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-30T22:03:46Z",
+      "side": 1,
+      "message": "which key to sign the RW binary with.",
+      "range": {
+        "startLine": 11,
+        "startChar": 57,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "07c4d95d57f80359dd363ab17ee41ab56f2aa4c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "826561f7_f7d702ba",
+        "filename": "util/sign_cr50.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-30T22:03:46Z",
+      "side": 1,
+      "message": "set -e\n\nto make sure it stops on error",
+      "revId": "07c4d95d57f80359dd363ab17ee41ab56f2aa4c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "826561f7_57b00e91",
+        "filename": "util/sign_cr50.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-30T22:03:46Z",
+      "side": 1,
+      "message": "it would be great to be able to override the default key file - can be used for prod signing in that case.",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "07c4d95d57f80359dd363ab17ee41ab56f2aa4c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "826561f7_37a59a4f",
+        "filename": "util/sign_cr50.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-30T22:03:46Z",
+      "side": 1,
+      "message": "to avoid copy and paste could this be in a loop like\n\nfor suffix in \u0027\u0027 \u0027_B\u0027; do\n\n\ndone",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 64
+      },
+      "revId": "07c4d95d57f80359dd363ab17ee41ab56f2aa4c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "826561f7_173e1614",
+        "filename": "util/sign_cr50.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-30T22:03:46Z",
+      "side": 1,
+      "message": "please wrap long lines",
+      "revId": "07c4d95d57f80359dd363ab17ee41ab56f2aa4c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "826561f7_f7f02258",
+        "filename": "util/sign_cr50.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-09-30T22:03:46Z",
+      "side": 1,
+      "message": "print \"SUCCESS\" or something like this if the last command return value is zero - otherwise it is hard to say if the script succeeded or not",
+      "revId": "07c4d95d57f80359dd363ab17ee41ab56f2aa4c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
