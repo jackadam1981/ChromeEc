@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "826561f7_9aeeabac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-30T22:44:41Z",
+      "side": 1,
+      "message": "I don\u0027t see a need for a production image to be erasing and writing flash at all. Especially not into the non-NVMEM regions. And there are a bunch of functions lying around in this file that aren\u0027t really relevant to our use too. I don\u0027t like leaving targets for return-oriented programming.",
+      "parentUuid": "826561f7_b7f4eae9",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "b4f9114deb56c79077490a5cb736c35e9a17d821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "826561f7_17b73642",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2016-09-30T22:23:30Z",
       "side": 1,
       "message": "try and see what?",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 31
+      },
+      "revId": "b4f9114deb56c79077490a5cb736c35e9a17d821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "826561f7_bae96fa7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-09-30T22:44:41Z",
+      "side": 1,
+      "message": "See that it still boots, updates, wipes, restores, etc. without linking common/flash.o in the production image and that those commands are still there in the dev build.",
+      "parentUuid": "826561f7_176a96a5",
       "range": {
         "startLine": 17,
         "startChar": 20,
