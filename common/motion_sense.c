@@ -131,11 +131,8 @@ void motion_sense_fifo_add_unit(struct ec_response_motion_sensor_data *data,
 	data->flags |= (motion_lid_in_tablet_mode() ?
 			MOTIONSENSE_SENSOR_FLAG_TABLET_MODE : 0);
 #elif defined(CONFIG_DPTF_DEVICE_ORIENTATION)
-	/*
-	 * TODO(gwendal): When other method finding tablet mode are used.
-	 * define them here.
-	 */
-#error "Need to set we are in tablet mode"
+	data->flags |= (board_get_device_orientation() ?
+			MOTIONSENSE_SENSOR_FLAG_TABLET_MODE : 0);
 #endif
 	mutex_lock(&g_sensor_mutex);
 	queue_add_unit(&motion_sense_fifo, data);
