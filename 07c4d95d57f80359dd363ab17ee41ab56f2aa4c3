@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "826561f7_6b920709",
+        "filename": "util/sign_cr50.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-01T02:52:26Z",
+      "side": 1,
+      "message": "this has not been addressed, in fact objcopy in lines 37 and 42 could also be included in the loop. \n\nSo much copy and paste could be eliminated.",
+      "parentUuid": "826561f7_37a59a4f",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 64
+      },
+      "revId": "07c4d95d57f80359dd363ab17ee41ab56f2aa4c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "826561f7_173e1614",
         "filename": "util/sign_cr50.sh",
         "patchSetId": 2
