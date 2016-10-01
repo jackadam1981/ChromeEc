@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "826561f7_0b794bca",
+        "filename": "util/sign_cr50.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-01T02:52:26Z",
+      "side": 1,
+      "message": "now when it is clearer what this script does: I think including this RO hex will produce a brick - spiflash would cause the entire flash erased, and this RO will never properly verified.\n\ndd would be a better way to create a binary which can be programmed using usb_updater",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "f8105536f6298eafbcfd220349b4ddd3b51a11ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
