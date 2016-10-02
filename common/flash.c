@@ -950,6 +950,12 @@ static int flash_command_write(struct host_cmd_handler_args *args)
 	if (system_unsafe_to_overwrite(offset, p->size))
 		return EC_RES_ACCESS_DENIED;
 
+	/* Indicate that we might be a while */
+#if defined(HAS_TASK_HOSTCMD) && defined(CONFIG_HOST_COMMAND_STATUS)
+	args->result = EC_RES_IN_PROGRESS;
+	host_send_response(args);
+#endif
+
 	if (flash_write(offset, p->size, (const uint8_t *)(p + 1)))
 		return EC_RES_ERROR;
 

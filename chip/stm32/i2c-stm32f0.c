@@ -210,8 +210,8 @@ static void i2c_send_response_packet(struct host_packet *pkt)
 	uint8_t *out = host_buffer;
 
 	/* Ignore host command in-progress */
-	if (pkt->driver_result == EC_RES_IN_PROGRESS)
-		return;
+	//if (pkt->driver_result == EC_RES_IN_PROGRESS)
+		//return;
 
 	/* Write result and size to first two bytes. */
 	*out++ = pkt->driver_result;

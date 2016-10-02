@@ -456,4 +456,4 @@ static int gale_command(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(gale, gale_command,
 			"[power [on|off]|polarity [0|1]|dev [on|off]|"
 			"rec [on|off]|cc|vbus",
-			"Get and set gale controls", NULL);
+			"Get and set gale controls");

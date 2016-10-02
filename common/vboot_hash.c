@@ -423,6 +423,11 @@ static int host_command_vboot_hash(struct host_cmd_handler_args *args)
 
 	case EC_VBOOT_HASH_START:
 	case EC_VBOOT_HASH_RECALC:
+#if defined(HAS_TASK_HOSTCMD) && defined(CONFIG_HOST_COMMAND_STATUS)
+		args->result = EC_RES_IN_PROGRESS;
+		host_send_response(args);
+#endif
+
 		rv = host_start_hash(p);
 		if (rv != EC_RES_SUCCESS)
 			return rv;
