@@ -17,12 +17,12 @@
 #define PARAM_CUT_OFF_LOW  0x10
 #define PARAM_CUT_OFF_HIGH 0x00
 
-/* Battery info for BQ40Z55 */
+/* Battery info for BQ40Z50 */
 static const struct battery_info info = {
-	.voltage_max = 8700,        /* mV */
-	.voltage_normal = 7600,
-	.voltage_min = 6000,
-	.precharge_current = 256,   /* mA */
+	.voltage_max = 13200,        /* mV */
+	.voltage_normal = 11460,
+	.voltage_min = 9000,
+	.precharge_current = 125,   /* mA */
 	.start_charging_min_c = 0,
 	.start_charging_max_c = 46,
 	.charging_min_c = 0,
@@ -122,9 +122,9 @@ int charger_profile_override(struct charge_state_data *curr)
 		batt_voltage = prev_batt_voltage;
 	} else {
 		batt_voltage = prev_batt_voltage = curr->batt.voltage;
-		if (batt_voltage < 8200)
+		if (batt_voltage < 12300)
 			voltage_range = VOLTAGE_RANGE_LOW;
-		else if (batt_voltage > 8300)
+		else if (batt_voltage > 12450)
 			voltage_range = VOLTAGE_RANGE_HIGH;
 	}
 
@@ -137,54 +137,43 @@ int charger_profile_override(struct charge_state_data *curr)
 
 	/*
 	 * Okay, impose our custom will:
-	 * When battery is 0-10C:
-	 * CC at 486mA @ 8.7V
-	 * CV at 8.7V
-	 *
-	 * When battery is <15C:
-	 * CC at 1458mA @ 8.7V
-	 * CV at 8.7V
-	 *
-	 * When battery is <23C:
-	 * CC at 3402mA until 8.3V @ 8.7V
-	 * CC at 2430mA @ 8.7V
-	 * CV at 8.7V
+	 * When battery is 0-15C:
+	 * CC at 814mA @ 13.2V
+	 * CV at 13.2V
 	 *
 	 * When battery is <45C:
-	 * CC at 4860mA until 8.3V @ 8.7V
-	 * CC at 2430mA @ 8.7V
+	 * CC at 2035mA @ 13.2V
 	 * CV at 8.7V until current drops to 450mA
 	 *
 	 * When battery is >45C:
-	 * CC at 2430mA @ 8.3V
-	 * CV at 8.3V (when battery is hot we don't go to fully charged)
+	 * CC at 2035mA @ 12.3V
 	 */
 	switch (temp_range) {
 	case TEMP_RANGE_1:
-		curr->requested_current = 486;
-		curr->requested_voltage = 8700;
+		curr->requested_current = 814;
+		curr->requested_voltage = 13200;
 		break;
 	case TEMP_RANGE_2:
-		curr->requested_current = 1458;
-		curr->requested_voltage = 8700;
+		curr->requested_current = 814;
+		curr->requested_voltage = 13200;
 		break;
 	case TEMP_RANGE_3:
-		curr->requested_voltage = 8700;
+		curr->requested_voltage = 13200;
 		if (voltage_range == VOLTAGE_RANGE_HIGH)
-			curr->requested_current = 2430;
+			curr->requested_current = 2035;
 		else
-			curr->requested_current = 3402;
+			curr->requested_current = 2035;
 		break;
 	case TEMP_RANGE_4:
-		curr->requested_voltage = 8700;
+		curr->requested_voltage = 13200;
 		if (voltage_range == VOLTAGE_RANGE_HIGH)
-			curr->requested_current = 2430;
+			curr->requested_current = 2035;
 		else
-			curr->requested_current = 4860;
+			curr->requested_current = 2035;
 		break;
 	case TEMP_RANGE_5:
-		curr->requested_current = 2430;
-		curr->requested_voltage = 8300;
+		curr->requested_current = 2035;
+		curr->requested_voltage = 12300;
 		break;
 	}
 
