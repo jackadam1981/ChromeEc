@@ -143,23 +143,35 @@ int spi_flash_set_status(int reg1, int reg2)
 /**
  * Returns the content of SPI flash
  *
- * @param buf Buffer to write flash contents
+ * @param buf_usr Buffer to write flash contents
  * @param offset Flash offset to start reading from
- * @param bytes Number of bytes to read. Limited by receive buffer to 256.
+ * @param bytes Number of bytes to read.
  *
  * @return EC_SUCCESS, or non-zero if any error.
  */
 int spi_flash_read(uint8_t *buf_usr, unsigned int offset, unsigned int bytes)
 {
-	uint8_t cmd[4] = {SPI_FLASH_READ,
-			  (offset >> 16) & 0xFF,
-			  (offset >> 8) & 0xFF,
-			  offset & 0xFF};
-
+	int i, read_size, ret;
+	uint8_t cmd[4];
 	if (offset + bytes > CONFIG_FLASH_SIZE)
 		return EC_ERROR_INVAL;
-
-	return spi_transaction(SPI_FLASH_DEVICE, cmd, 4, buf_usr, bytes);
+	cmd[0] = SPI_FLASH_READ;
+	for (i = 0; i < bytes; i += read_size) {
+		offset += i;
+		cmd[1] = (offset >> 16) & 0xFF;
+		cmd[2] = (offset >> 8) & 0xFF;
+		cmd[3] = offset & 0xFF;
+		read_size = MIN((bytes - i), SPI_FLASH_MAX_READ_SIZE);
+		ret = spi_transaction(SPI_FLASH_DEVICE,
+			cmd,
+			4,
+			buf_usr + i,
+			read_size);
+		if (ret != EC_SUCCESS)
+			break;
+		msleep(1);
+	}
+	return ret;
 }
 
 /**
@@ -586,8 +598,8 @@ static int command_spi_flashread(int argc, char **argv)
 	int i;
 	int offset = -1;
 	int bytes = -1;
-	int read_len;
-	int rv;
+	int rv = EC_SUCCESS;
+	char *buf_local;
 
 	rv = parse_offset_size(argc, argv, 1, &offset, &bytes);
 	if (rv)
@@ -599,41 +611,33 @@ static int command_spi_flashread(int argc, char **argv)
 	if (offset + bytes > CONFIG_FLASH_SIZE)
 		return EC_ERROR_INVAL;
 
-	/* Wait for previous operation to complete */
-	rv = spi_flash_wait();
+	rv = shared_mem_acquire(bytes, &buf_local);
 	if (rv)
 		return rv;
 
+	/* Wait for previous operation to complete */
+	rv = spi_flash_wait();
+	if (rv)
+		goto err_free;
+
 	ccprintf("Reading %d bytes from 0x%x...\n", bytes, offset);
-	/* Read <= 256 bytes to avoid allocating another buffer */
-	while (bytes > 0) {
-		watchdog_reload();
+	rv = spi_flash_read(buf_local, offset, bytes);
+	if (rv)
+		goto err_free;
 
-		/* First read (bytes % 256), then in multiples of 256 */
-		read_len = (bytes % SPI_FLASH_MAX_READ_SIZE) ?
-					(bytes % SPI_FLASH_MAX_READ_SIZE) :
-					SPI_FLASH_MAX_READ_SIZE;
+	for (i = 0; i < bytes; i++) {
+		if (i % 16 == 0)
+			ccprintf("%02x:", offset + i);
 
-		rv = spi_flash_read(buf, offset, read_len);
-		if (rv)
-			return rv;
+		ccprintf(" %02x", buf_local[i]);
 
-		for (i = 0; i < read_len; i++) {
-			if (i % 16 == 0)
-				ccprintf("%02x:", offset + i);
-
-			ccprintf(" %02x", buf[i]);
-
-			if (i % 16 == 15 || i == read_len - 1)
-				ccputs("\n");
-		}
-
-		offset += read_len;
-		bytes -= read_len;
+		if (i % 16 == 15 || i == bytes - 1)
+			ccputs("\n");
 	}
 
-	ASSERT(bytes == 0);
-	return EC_SUCCESS;
+err_free:
+	shared_mem_release(buf_local);
+	return rv;
 }
 DECLARE_CONSOLE_COMMAND(spi_flashread, command_spi_flashread,
 	"offset bytes",
