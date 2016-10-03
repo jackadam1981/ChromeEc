@@ -602,7 +602,7 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 			/* get batt param from write msg */
 			if (*out)
 				batt_param = *out;
-			rv = virtual_battery_read(batt_param,
+			virtual_battery_read(batt_param,
 						  &resp->data[in_len],
 						  read_len);
 		}
