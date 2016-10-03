@@ -1037,7 +1037,8 @@ int virtual_battery_read(uint8_t batt_param, uint8_t *dest, int read_len)
 		       read_len);
 		break;
 	default:
-		return EC_ERROR_INVAL;
+		/* Unexpected param request from AP, Ignore it so that i2c make not to retry */
+		break;
 	}
 	return EC_SUCCESS;
 
