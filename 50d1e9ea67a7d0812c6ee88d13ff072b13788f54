@@ -22,6 +22,30 @@
       "revId": "50d1e9ea67a7d0812c6ee88d13ff072b13788f54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2bffdbf_5ac41509",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-03T22:19:31Z",
+      "side": 0,
+      "message": "it is going to be very soon",
+      "parentUuid": "e2bffdbf_7afe314f",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 740,
+        "endChar": 6
+      },
+      "revId": "50d1e9ea67a7d0812c6ee88d13ff072b13788f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
