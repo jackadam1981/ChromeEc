@@ -155,11 +155,6 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 
 /* SoC power control */
 
-static void set_error_led(int level)
-{
-	gpio_set_level(GPIO_ERROR_LED, level);
-}
-
 static void power_on_ap(void)
 {
 	CPUTS("power on ap\n");
@@ -195,7 +190,6 @@ DECLARE_DEFERRED(power_off_ap);
 
 void board_set_power_supply_ready(int ready)
 {
-	set_error_led(!ready);
 	hook_call_deferred(ready ? &power_on_ap_data : &power_off_ap_data, 0);
 }
 
@@ -309,8 +303,6 @@ DECLARE_DEFERRED(detect_ccd);
 
 static void board_init(void)
 {
-	set_error_led(1);
-
 	/*
 	 * Initialize AP console forwarding USART and queues.
 	 */
