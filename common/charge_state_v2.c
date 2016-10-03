@@ -1001,6 +1001,11 @@ int virtual_battery_read(uint8_t batt_param, uint8_t *dest, int read_len)
 {
 	int val;
 
+#ifdef CONFIG_BATTERY_PRESENT_GPIO
+	if (battery_is_present() != BP_YES)
+		return EC_ERROR_INVAL;
+#endif
+
 	switch (batt_param) {
 	case SB_SERIAL_NUMBER:
 		val = strtoi(host_get_memmap(EC_MEMMAP_BATT_SERIAL), NULL, 16);
