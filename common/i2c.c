@@ -612,7 +612,7 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 			    "write_len=%x, data=%p, read_len=%x, flags=%x",
 			    params->port, addr, out, write_len,
 			    &resp->data[in_len], read_len, xferflags);
-		if (rv)
+		if (!rv)
 			rv = i2c_xfer(params->port, addr, out, write_len,
 				      &resp->data[in_len], read_len, xferflags);
 
