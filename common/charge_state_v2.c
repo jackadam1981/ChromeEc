@@ -1037,7 +1037,10 @@ int virtual_battery_read(uint8_t batt_param, uint8_t *dest, int read_len)
 		       read_len);
 		break;
 	default:
-		return EC_ERROR_INVAL;
+		/* This is virtual feature, if there is not expected param here
+		 * ignore it and return SUCCESS so that i2c_passthru don't retry
+		 */
+		break;
 	}
 	return EC_SUCCESS;
 
