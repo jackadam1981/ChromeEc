@@ -72,10 +72,10 @@ SECTIONS
 #endif
     .text : {
 #if defined(SECTION_IS_RO) && defined(CONFIG_RO_HEAD_ROOM)
-	. = . +  CONFIG_RO_HEAD_ROOM;
+        . = . +  CONFIG_RO_HEAD_ROOM;
 #endif
 #if defined(SECTION_IS_RW) && defined(CONFIG_RW_HEAD_ROOM)
-	. = . +  CONFIG_RW_HEAD_ROOM;
+        . = . +  CONFIG_RW_HEAD_ROOM;
 #endif
         STRINGIFY(OUTDIR/core/CORE/init.o) (.text.vecttable)
         . = ALIGN(4);
@@ -89,7 +89,7 @@ SECTIONS
         STRINGIFY(OUTDIR/core/CORE/init.o) (.text)
         *(.text*)
 #ifdef CONFIG_EXTERNAL_STORAGE
-	. = ALIGN(4);
+        . = ALIGN(4);
         __flash_lpfw_start = .;
         /* Entering deep idle FW for better power consumption */
         KEEP(*(.lowpower_ram))
@@ -106,7 +106,7 @@ SECTIONS
 #endif
     . = ALIGN(4);
     .rodata : {
-	/* Symbols defined here are declared in link_defs.h */
+        /* Symbols defined here are declared in link_defs.h */
         __irqprio = .;
         KEEP(*(.rodata.irqprio))
         __irqprio_end = .;
@@ -119,17 +119,17 @@ SECTIONS
         . = ALIGN(4);
         __extension_cmds = .;
         KEEP(*(.rodata.extensioncmds))
-	__extension_cmds_end = .;
+        __extension_cmds_end = .;
 
         . = ALIGN(4);
         __hcmds = .;
         KEEP(*(.rodata.hcmds))
         __hcmds_end = .;
 
-	. = ALIGN(4);
-	__mkbp_evt_srcs = .;
-	KEEP(*(.rodata.evtsrcs))
-	__mkbp_evt_srcs_end = .;
+        . = ALIGN(4);
+        __mkbp_evt_srcs = .;
+        KEEP(*(.rodata.evtsrcs))
+        __mkbp_evt_srcs_end = .;
 
         . = ALIGN(4);
         __hooks_init = .;
@@ -231,36 +231,36 @@ SECTIONS
     __ro_end = . ;
 
     .bss : {
-	/*
-	 * Align to 512 bytes. This is convenient when some memory block
-	 * needs big alignment. This is the beginning of the RAM, so there
-	 * is usually no penalty on aligning this.
-	 */
+        /*
+         * Align to 512 bytes. This is convenient when some memory block
+         * needs big alignment. This is the beginning of the RAM, so there
+         * is usually no penalty on aligning this.
+         */
         . = ALIGN(512);
         __bss_start = .;
-	*(.bss.big_align)
-	/* Stacks must be 64-bit aligned */
+        *(.bss.big_align)
+        /* Stacks must be 64-bit aligned */
         . = ALIGN(8);
         *(.bss.system_stack)
-	/* Rest of .bss takes care of its own alignment */
+        /* Rest of .bss takes care of its own alignment */
 
-	/* Group libtpm2 data so it can be cleared on system reset */
-	__bss_libtpm2_start = .;
-	Tpm2_*(.bss)
-	/* TPM registers should be cleared at the same time */
+        /* Group libtpm2 data so it can be cleared on system reset */
+        __bss_libtpm2_start = .;
+        Tpm2_*(.bss)
+        /* TPM registers should be cleared at the same time */
         STRINGIFY(OUTDIR/common/tpm_registers.o*)(.bss)
-	__bss_libtpm2_end = .;
+        __bss_libtpm2_end = .;
 
         *(.bss)
 
-	/*
-	 * Reserve space for deferred function firing times.  Each time is a
-	 * uint64_t, each func is a 32-bit pointer, thus the scaling factor of
-	 * two.  The 8 byte alignment of uint64_t is required by the ARM ABI.
-	 */
+        /*
+         * Reserve space for deferred function firing times.  Each time is a
+         * uint64_t, each func is a 32-bit pointer, thus the scaling factor of
+         * two.  The 8 byte alignment of uint64_t is required by the ARM ABI.
+         */
         . = ALIGN(8);
         __deferred_until = .;
-	. += (__deferred_funcs_end - __deferred_funcs) * (8 / 4);
+        . += (__deferred_funcs_end - __deferred_funcs) * (8 / 4);
         __deferred_until_end = .;
 
 #ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
@@ -270,15 +270,15 @@ SECTIONS
     } > IRAM
 
     .bss.slow : {
-	/* Region of RAM reclaimed from the little firmware(LFW). */
-	*(.bss.slow)
+        /* Region of RAM reclaimed from the little firmware(LFW). */
+        *(.bss.slow)
 #ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
     } > LDR_REGION
 #else
-	/*
-	 * Not replacing the loader, so .bss.slow is part of .bss.  It needs to
-	 * be followed by __bss_end so that .bss.slow will be zeroed by init.
-	 */
+        /*
+         * Not replacing the loader, so .bss.slow is part of .bss.  It needs to
+         * be followed by __bss_end so that .bss.slow will be zeroed by init.
+         */
         . = ALIGN(4);
         __bss_end = .;
     } > IRAM
@@ -293,19 +293,19 @@ SECTIONS
         __data_start = .;
         *(.data.tasks)
 
-	/* Group libtpm2 data so it can be reinitialized on system reset */
-	__data_libtpm2_start = .;
-	Tpm2_*(.data)
-	/* TPM registers should be reinitialized at the same time */
+        /* Group libtpm2 data so it can be reinitialized on system reset */
+        __data_libtpm2_start = .;
+        Tpm2_*(.data)
+        /* TPM registers should be reinitialized at the same time */
         STRINGIFY(OUTDIR/common/tpm_registers.o*)(.data)
-	__data_libtpm2_end = .;
+        __data_libtpm2_end = .;
 
-	/*
-	 * TPM reset currently only clears BSS for the TPM library.  It does
-	 * not reset any initialized variables in data.  So, make sure there
-	 * aren't any.
-	 */
-	ASSERT(__data_libtpm2_start == __data_libtpm2_end,
+        /*
+         * TPM reset currently only clears BSS for the TPM library.  It does
+         * not reset any initialized variables in data.  So, make sure there
+         * aren't any.
+         */
+        ASSERT(__data_libtpm2_start == __data_libtpm2_end,
         "libtpm2 .data section is nonzero");
 
         *(.data*)
@@ -325,19 +325,19 @@ SECTIONS
 #endif
         __data_end = .;
 
-	/* Shared memory buffer must be at the end of preallocated RAM, so it
-	 * can expand to use all the remaining RAM. */
-	__shared_mem_buf = .;
+        /* Shared memory buffer must be at the end of preallocated RAM, so it
+         * can expand to use all the remaining RAM. */
+        __shared_mem_buf = .;
 
-	/* Tag at end of firmware image so that we can find the image size.
-	 * This may be overwritten by the shared memory buffer; that's ok
-	 * because we only use it to find the image size in flash. */
+        /* Tag at end of firmware image so that we can find the image size.
+         * This may be overwritten by the shared memory buffer; that's ok
+         * because we only use it to find the image size in flash. */
         . = ALIGN(4);
         BYTE(0x45);
         BYTE(0x4e);
         BYTE(0x44);
         BYTE(0xea);
-	/* NOTHING MAY GO AFTER THIS! */
+        /* NOTHING MAY GO AFTER THIS! */
     } > IRAM
 
     /* The linker won't notice if the .data section is too big to fit,
