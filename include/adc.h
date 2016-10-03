@@ -10,6 +10,8 @@
 
 #include "common.h"
 
+#ifdef CONFIG_ADC
+
 #define HOOK_PRIO_INIT_ADC HOOK_PRIO_DEFAULT /* ADC priority */
 
 #define ADC_READ_ERROR -1  /* Value returned by adc_read_channel() on error */
@@ -60,4 +62,5 @@ int adc_disable_watchdog(void);
  */
 int adc_set_watchdog_delay(int delay_ms);
 
+#endif	/* CONFIG_ADC */
 #endif  /* __CROS_EC_ADC_H */
