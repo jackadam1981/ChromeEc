@@ -14,6 +14,8 @@
 #include "power.h"
 #include "espi.h"
 #include "lpc_chip.h"
+#include "hooks.h"
+#include "timer.h"
 
 /* Console output macros */
 #if !(DEBUG_ESPI)
@@ -378,10 +380,19 @@ int espi_vw_disable_wire_int(enum espi_vw_signal signal)
 /*****************************************************************************/
 /* VW event handlers */
 
+#ifdef CONFIG_CHIPSET_RESET_HOOK
+static void espi_chipset_reset(void)
+{
+	hook_notify(HOOK_CHIPSET_RESET);
+}
+DECLARE_DEFERRED(espi_chipset_reset);
+#endif
+
 /* PLTRST# event handler */
 void espi_vw_evt_pltrst(void)
 {
-	CPRINTS("VW PLTRST: %d", espi_vw_get_wire(VW_PLTRST_L));
+	int pltrst = espi_vw_get_wire(VW_PLTRST_L);
+	CPRINTS("VW PLTRST: %d", pltrst);
 
 	/* Disable eSPI peripheral channel support first */
 	CLEAR_BIT(NPCX_ESPICFG, NPCX_ESPICFG_PCCHN_SUPP);
@@ -395,9 +406,9 @@ void espi_vw_evt_pltrst(void)
 	SET_BIT(NPCX_ESPICFG, NPCX_ESPICFG_PCCHN_SUPP);
 
 #ifdef CONFIG_CHIPSET_RESET_HOOK
-	if (lpc_get_pltrst_asserted()) {
+	if (!pltrst) {
 		/* Notify HOOK_CHIPSET_RESET */
-		hook_call_deferred(lpc_chipset_reset, MSEC);
+		hook_call_deferred(&espi_chipset_reset_data, MSEC);
 	}
 #endif
 }

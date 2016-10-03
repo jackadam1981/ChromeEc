@@ -461,11 +461,11 @@ DECLARE_HOOK(HOOK_AC_CHANGE, power_ac_change, HOOK_PRIO_DEFAULT);
 /*****************************************************************************/
 /* Interrupts */
 
-#if defined(CONFIG_BRINGUP) && defined(CONFIG_VW_SIGNALS)
-#error "Not support CONFIG_BRINGUP since gpio_get_name func"
+#if defined(CONFIG_SIGLOG) && defined(CONFIG_VW_SIGNALS)
+#error "Not support CONFIG_SIGLOG since gpio_get_name func"
 #endif
 
-#ifdef CONFIG_BRINGUP
+#ifdef CONFIG_SIGLOG
 #define MAX_SIGLOG_ENTRIES 24
 
 static unsigned int siglog_entries;
@@ -524,7 +524,7 @@ static void siglog_add(enum gpio_signal signal)
 
 #else
 #define SIGLOG(S)
-#endif	/* CONFIG_BRINGUP */
+#endif	/* CONFIG_SIGLOG */
 
 #ifdef CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD
 /*
