@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "826561f7_802ab57d",
+        "filename": "board/caroline/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-03T15:41:11Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the plan is with this signal. Once DX_TOUCHPAD goes low this will assert.",
+      "revId": "9add436a0c083b1b1979dfc7fc55c1a26c74d62a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "826561f7_606d81bd",
+        "filename": "board/caroline/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-03T15:41:11Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to turn this rail on by default. But we aren\u0027t touching this anywhere else w.r.t. the power sequencing. We\u0027ll be leaking power into the SoC and other places in sleep states unless we fix it.",
+      "revId": "9add436a0c083b1b1979dfc7fc55c1a26c74d62a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
