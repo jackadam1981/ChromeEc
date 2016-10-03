@@ -102,6 +102,7 @@ BOARDS_NPCX_5M6G_JTAG=(
 
 BOARDS_NPCX_SPI=(
 	amenia
+	bison
 	gru
 	kevin
 	reef
@@ -125,6 +126,7 @@ BOARDS_SPI_1800MV=(
 )
 
 BOARDS_RAIDEN=(
+	bison
 	gru
 	kevin
 	reef
