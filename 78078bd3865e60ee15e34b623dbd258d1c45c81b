@@ -22,6 +22,75 @@
       "revId": "78078bd3865e60ee15e34b623dbd258d1c45c81b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "826561f7_f99b6c13",
+        "filename": "board/pbody/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-03T19:50:59Z",
+      "side": 1,
+      "message": "Can simplify by using common code for both cases:\n\ncase TEMP_RANGE_1:\ncase TEMP_RANGE_2:",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 19
+      },
+      "revId": "78078bd3865e60ee15e34b623dbd258d1c45c81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "826561f7_79b09c91",
+        "filename": "board/pbody/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-03T19:50:59Z",
+      "side": 1,
+      "message": "No need for this \u0027if\u0027 statement.",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 42
+      },
+      "revId": "78078bd3865e60ee15e34b623dbd258d1c45c81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e29e1d21_1d863d18",
+        "filename": "board/pbody/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-03T19:50:59Z",
+      "side": 1,
+      "message": "You may actually call gpio_set_level() twice here on transition, since chipset state is controlled by a separate task.\n\nReplace with \"gpio_set_level(GPIO_PWR_LED, chipset_in_state(CHIPSET_STATE_ANY_OFF));\"?",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 34
+      },
+      "revId": "78078bd3865e60ee15e34b623dbd258d1c45c81b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
