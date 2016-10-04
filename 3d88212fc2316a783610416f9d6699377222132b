@@ -2,6 +2,144 @@
   "comments": [
     {
       "key": {
+        "uuid": "c26af92c_26f3d8d1",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-04T04:24:28Z",
+      "side": 1,
+      "message": "I suggest \"test_num\" to avoid confusion with the i2c_stress_test_dev type",
+      "range": {
+        "startLine": 881,
+        "startChar": 29,
+        "endLine": 881,
+        "endChar": 37
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26af92c_06ffbc4d",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-04T04:24:28Z",
+      "side": 1,
+      "message": "I suggest naming this \"dev\" instead of \"i2c_s_test\". Otherwise it looks like it could be a \"struct i2c_stress_test\".",
+      "range": {
+        "startLine": 884,
+        "startChar": 29,
+        "endLine": 884,
+        "endChar": 39
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26af92c_8601ecb0",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-04T04:24:28Z",
+      "side": 1,
+      "message": "Should be done in the calling function, I assume.",
+      "range": {
+        "startLine": 895,
+        "startChar": 0,
+        "endLine": 896,
+        "endChar": 18
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26af92c_a6fee891",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-04T04:24:28Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 904,
+        "startChar": 29,
+        "endLine": 904,
+        "endChar": 39
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26af92c_c60be4ca",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-04T04:24:28Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 909,
+        "startChar": 28,
+        "endLine": 909,
+        "endChar": 29
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26af92c_e608e0d0",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-04T04:24:28Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 915,
+        "startChar": 0,
+        "endLine": 916,
+        "endChar": 18
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5a5a31c_3df88d62",
         "filename": "common/i2c.c",
         "patchSetId": 2
@@ -13,6 +151,208 @@
       "writtenOn": "2016-09-28T23:07:14Z",
       "side": 1,
       "message": "is there a way I can send this report to host too?",
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26af92c_a6e7c8fd",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-04T04:24:28Z",
+      "side": 1,
+      "message": "Yes - Define a response packet (ec_response_* in include/ec_commands.h) and add it as an argument to ec_command() in cmd_i2c_test() in ectool. You\u0027ll also need to pass the response packet into this function to be filled in.",
+      "parentUuid": "c5a5a31c_3df88d62",
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26af92c_c6e4c4fb",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-04T04:24:28Z",
+      "side": 1,
+      "message": "Maybe have i2c_stress_test take ec_params_i2c_stress_test. Then you can easily have it take a response packet to send info back to the host.",
+      "range": {
+        "startLine": 1111,
+        "startChar": 17,
+        "endLine": 1112,
+        "endChar": 25
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2bffdbf_68caeb45",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-04T04:24:28Z",
+      "side": 1,
+      "message": "Start at 0.",
+      "range": {
+        "startLine": 1118,
+        "startChar": 19,
+        "endLine": 1118,
+        "endChar": 20
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2bffdbf_bd83633d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3212,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-04T04:24:28Z",
+      "side": 1,
+      "message": "Perhaps it would be useful to place this at the beginning of an unused numbering block, for example 0xc0, where we can put other stress test in the future.",
+      "range": {
+        "startLine": 3212,
+        "startChar": 0,
+        "endLine": 3212,
+        "endChar": 35
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2bffdbf_48044f7a",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-04T04:24:28Z",
+      "side": 1,
+      "message": "Doesn\u0027t need to be guarded - ectool should return an error code to the shell if the command is unsupported.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 33
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26af92c_63d6a21c",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-04T04:24:28Z",
+      "side": 1,
+      "message": "usage is unclear from this",
+      "range": {
+        "startLine": 140,
+        "startChar": 12,
+        "endLine": 140,
+        "endChar": 53
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26af92c_03a6ce17",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5211,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-04T04:24:28Z",
+      "side": 1,
+      "message": "No need to guard it for ectool.",
+      "range": {
+        "startLine": 5211,
+        "startChar": 0,
+        "endLine": 5211,
+        "endChar": 33
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26af92c_c3bd96af",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5233,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-04T04:24:28Z",
+      "side": 1,
+      "message": "You can check also check if argc \u003c 2 and print a helpful error for the user:\nif (argc \u003c 2) {\n\tfprintf(stderr,\n\t\"Usage: %s dev\u003d\u003cn\u003e | count\u003d\u003cn\u003e | udelay\u003d\u003cn\u003e | read | seq | report\\n\", argv[0]);\n\treturn -1;\n}\n\nThat way the code below reduce indentation by 1 level.",
+      "range": {
+        "startLine": 5233,
+        "startChar": 0,
+        "endLine": 5233,
+        "endChar": 16
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26af92c_635f8216",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5247,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-04T04:24:28Z",
+      "side": 1,
+      "message": "I think you\u0027re missing logic to offset argv[i] so that it begins on the number the user is specifying.",
+      "range": {
+        "startLine": 5247,
+        "startChar": 10,
+        "endLine": 5247,
+        "endChar": 24
+      },
       "revId": "3d88212fc2316a783610416f9d6699377222132b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
