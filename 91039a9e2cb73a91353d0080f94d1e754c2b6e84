@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "820f21e2_027c500c",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-04T23:01:55Z",
+      "side": 1,
+      "message": "Why not just \n\nraise ValueError(\u0027Output missing...\u0027\n                            \u0027...try again.\u0027)",
+      "range": {
+        "startLine": 325,
+        "startChar": 1,
+        "endLine": 327,
+        "endChar": 27
+      },
+      "revId": "91039a9e2cb73a91353d0080f94d1e754c2b6e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
