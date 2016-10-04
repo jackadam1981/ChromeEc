@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2791940_0e90eb49",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-04T18:29:19Z",
+      "side": 1,
+      "message": "Per Mary\u0027s suggestion, I had tried to use battery_get_params() and use the is_present field in the batt_params struct, but that seemed to hang forever.",
+      "revId": "2aa9d4da1ac96efd730c68d498925ec8e4662ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
