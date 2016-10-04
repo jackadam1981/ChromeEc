@@ -12,9 +12,11 @@
 #include "flash_config.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "i2cs.h"
 #include "init_chip.h"
 #include "nvmem.h"
+#include "rdd.h"
 #include "registers.h"
 #include "spi.h"
 #include "system.h"
@@ -70,6 +72,13 @@ uint32_t nvmem_user_sizes[NVMEM_NUM_USERS] = {
 
 /*  Board specific configuration settings */
 static uint32_t board_properties;
+
+/* I2C Port definition */
+const struct i2c_port_t i2c_ports[]  = {
+	{"master", I2C_PORT_MASTER, 100,
+	 GPIO_I2C_SCL_INA, GPIO_I2C_SDA_INA},
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /*
  * There's no way to trigger on both rising and falling edges, so force a
@@ -585,6 +594,9 @@ static void servo_attached(void)
 	/* Disconnect AP and EC UART when servo is attached */
 	uartn_tx_disconnect(UART_AP);
 	uartn_tx_disconnect(UART_EC);
+
+	/* Disconnect i2cm interface to ina */
+	ina_disconnect();
 }
 
 void device_state_on(enum gpio_signal signal)
