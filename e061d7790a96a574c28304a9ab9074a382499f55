@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c26af92c_7714985a",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-04T16:15:54Z",
+      "side": 1,
+      "message": "According to the schematics they appear to be counting by starting with the MSB set. I\u0027m not sure it matters -- we\u0027ll just have to sort out the non-incrementing board id space.",
+      "revId": "e061d7790a96a574c28304a9ab9074a382499f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
