@@ -47,6 +47,7 @@ die() {
 
 BOARDS_IT83XX=(
 	it83xx_evb
+	espi_rvp
 )
 
 BOARDS_LM4=(
