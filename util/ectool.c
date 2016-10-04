@@ -136,6 +136,8 @@ const char help_str[] =
 	"      Write I2C bus\n"
 	"  i2cxfer <port> <slave_addr> <read_count> [write bytes...]\n"
 	"      Perform I2C transfer on EC's I2C bus\n"
+	"  i2ctest port=<n> | count=<n> | udelay=<n> | read | seq | report\n"
+	"      Perform I2C stress test on EC's I2C bus\n"
 	"  infopddev <port>\n"
 	"      Get info about USB type-C accessory attached to port\n"
 	"  inventory\n"
@@ -5204,6 +5206,73 @@ int cmd_i2c_xfer(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_i2c_test(int argc, char *argv[])
+{
+	struct ec_params_i2c_stress_test p = {
+		.dev = 0,
+		.count = 10000,
+		.udelay = 100,
+		.read = 0,
+		.rand_seq = 0,
+		.report = 0,
+	};
+	struct {
+		const char *name;
+		int has_arg;
+		int *val;
+	} args[] = {
+		{ .name = "dev",	.has_arg = 1,	.val = &p.dev },
+		{ .name = "count",	.has_arg = 1,	.val = &p.count },
+		{ .name = "udelay",	.has_arg = 1,	.val = &p.udelay },
+		{ .name = "read",	.has_arg = 0,	.val = &p.read },
+		{ .name = "rand_seq",	.has_arg = 0,	.val = &p.rand_seq },
+		{ .name = "report",	.has_arg = 0,	.val = &p.report },
+	};
+	int i, j, val;
+
+	if (argc < 2) {
+		fprintf(stderr,
+		"Usage: %s dev=n | count=n | udelay=n | "
+			"read | seq | report\n", argv[0]);
+		return -1;
+	}
+
+	for (i = 1; i < argc; i++) {
+		for (j = 0; j < ARRAY_SIZE(args); j++) {
+			if (!strncmp(argv[i], args[j].name,
+					strlen(args[j].name))) {
+				if (args[j].has_arg) {
+					char *p, *e;
+
+					p = strchr(argv[i], '=');
+					if (!p)
+						return -1;
+
+					p++;	/* advance past '=' */
+					if (!strlen(p))
+						return EC_ERROR_PARAM1 + i - 1;
+
+					val = strtol(p, &e, 0);
+					if (*e || val < 0)
+						return EC_ERROR_PARAM1 + i - 1;
+				} else {
+					val = 1;
+				}
+
+				*(args[j].val) = val;
+				break;
+			}
+		}
+	}
+
+	/* FIXME: Remove this before patch is merged? */
+	fprintf(stdout, "dev=%d count=%d udelay=%d read=%d seq=%d report=%d\n",
+		p.dev, p.count, p.udelay, p.read, p.rand_seq, p.report);
+
+	return ec_command(EC_CMD_I2C_STRESS_TEST, 1, &p, sizeof(p),
+			  NULL, 0);
+}
+
 int cmd_lcd_backlight(int argc, char *argv[])
 {
 	struct ec_params_switch_enable_backlight p;
@@ -6843,6 +6912,7 @@ const struct command commands[] = {
 	{"i2cread", cmd_i2c_read},
 	{"i2cwrite", cmd_i2c_write},
 	{"i2cxfer", cmd_i2c_xfer},
+	{"i2ctest", cmd_i2c_test},
 	{"infopddev", cmd_pd_device_info},
 	{"inventory", cmd_inventory},
 	{"led", cmd_led},
