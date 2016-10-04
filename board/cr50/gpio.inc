@@ -47,6 +47,10 @@ GPIO(EN_PP3300_INA_L, PIN(1, 9), GPIO_ODR_HIGH)
 /* GPIOs used for Cr50 strapping options */
 GPIO(STRAP0,        PIN(0, 10), GPIO_INPUT)
 
+/* GPIOs used for I2CM pins for INAs */
+GPIO(I2C_SCL_INA,     PIN(1, 11), GPIO_INPUT)
+GPIO(I2C_SDA_INA,     PIN(1, 12), GPIO_INPUT)
+
 /* Unimplemented signals which we need to emulate for now */
 /* TODO(wfrichar): Half the boards don't use this signal. Take it out. */
 UNIMPLEMENTED(ENTERING_RW)
@@ -65,13 +69,14 @@ PINMUX(GPIO(INT_AP_L),        A5, DIO_INPUT)	/* DIOB7 is p_digitial_od */
                                                 /* We can't pull it up */
 PINMUX(GPIO(EC_FLASH_SELECT), B2, DIO_INPUT)
 PINMUX(GPIO(AP_FLASH_SELECT), B3, DIO_INPUT)
-PINMUX(GPIO(EN_PP3300_INA_L), B7, DIO_INPUT)
+PINMUX(GPIO(EN_PP3300_INA_L), B7, DIO_INPUT | DIO_OUTPUT)
 PINMUX(GPIO(SYS_RST_L_IN),    M0, DIO_WAKE_FALLING)
 PINMUX(GPIO(SYS_RST_L_OUT),   M0, DIO_INPUT)
 PINMUX(GPIO(CCD_MODE_L),      M1, DIO_INPUT)
 PINMUX(GPIO(BATT_PRES_L),     M2, 0)
 PINMUX(GPIO(STRAP0),          A1, DIO_INPUT)
-
+PINMUX(GPIO(I2C_SCL_INA),     B0, DIO_INPUT)
+PINMUX(GPIO(I2C_SDA_INA),     B1, DIO_INPUT)
 /* UARTs */
 PINMUX(FUNC(UART0_TX),        A0, DIO_OUTPUT)	/* Cr50 console */
 PINMUX(FUNC(UART0_RX),        A13, DIO_INPUT | DIO_WAKE_FALLING)
