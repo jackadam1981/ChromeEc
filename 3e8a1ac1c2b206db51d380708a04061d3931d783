@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "820f21e2_dfd5130f",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-04T23:00:30Z",
+      "side": 1,
+      "message": "Indicate return value in docstring?",
+      "revId": "3e8a1ac1c2b206db51d380708a04061d3931d783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "820f21e2_df3fd36f",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-04T23:00:30Z",
+      "side": 1,
+      "message": "just \u0027if rv:\u0027 would be more pythonic.",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 98,
+        "endChar": 14
+      },
+      "revId": "3e8a1ac1c2b206db51d380708a04061d3931d783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "820f21e2_7fba07d8",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-04T23:00:30Z",
+      "side": 1,
+      "message": "Can\u0027t this one fail too?",
+      "range": {
+        "startLine": 393,
+        "startChar": 4,
+        "endLine": 393,
+        "endChar": 15
+      },
+      "revId": "3e8a1ac1c2b206db51d380708a04061d3931d783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "820f21e2_7f0cc7e3",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-04T23:00:30Z",
+      "side": 1,
+      "message": "How does rv propagate down here?  Isn\u0027t it a local variable to build()?\n\nMaybe cts.build() should raise an exception on failure, with rv as a parameter of the exception?  Then catch that in main and return it?\n\nOr have cts.build() call sys.exit() directly()?\n\nSeems like the other steps could fail too.  What happens if flash_boards() fails, for example?",
+      "range": {
+        "startLine": 400,
+        "startChar": 15,
+        "endLine": 400,
+        "endChar": 17
+      },
+      "revId": "3e8a1ac1c2b206db51d380708a04061d3931d783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
