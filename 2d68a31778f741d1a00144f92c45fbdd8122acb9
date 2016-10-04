@@ -22,6 +22,30 @@
       "revId": "2d68a31778f741d1a00144f92c45fbdd8122acb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2b29d10_e5e7eca0",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-04T17:24:40Z",
+      "side": 1,
+      "message": "Oh, hmm, is the problem that for cached values, we\u0027re returning _something_ even though the battery isn\u0027t there?\n\nActually, then I believe that we should return a NAK in i2c_command_passthru regardless if we support the cached values.\n\nLet me try a patch and see.",
+      "parentUuid": "c26af92c_927be2c3",
+      "range": {
+        "startLine": 1006,
+        "startChar": 2,
+        "endLine": 1006,
+        "endChar": 24
+      },
+      "revId": "2d68a31778f741d1a00144f92c45fbdd8122acb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
