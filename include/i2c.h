@@ -14,6 +14,12 @@
 #define I2C_FLAG_BIG_ENDIAN 0x100  /* 16 byte values are MSB-first */
 
 /*
+ * Max data size for a version 3 request/response packet. This is
+ * big enough for EC_CMD_GET_VERSION plus header info.
+ */
+#define I2C_MAX_HOST_PACKET_SIZE 128
+
+/*
  * Supported I2C CLK frequencies.
  * TODO(crbug.com/549286): Use this enum in i2c_port_t.
  */
