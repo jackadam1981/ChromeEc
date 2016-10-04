@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c26af92c_927be2c3",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-10-04T17:14:19Z",
+      "side": 1,
+      "message": "Right now if virtual_battery_read returns any error the i2c_passthru will directly ask the battery. \n\nIf the battery is not present we should return a different error than the command not implemented error. In i2c_command_passthru it should check rv is not the battery not present error before trying i2c_xfer.",
+      "range": {
+        "startLine": 1006,
+        "startChar": 2,
+        "endLine": 1006,
+        "endChar": 24
+      },
+      "revId": "2d68a31778f741d1a00144f92c45fbdd8122acb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
