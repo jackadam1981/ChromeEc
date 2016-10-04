@@ -286,4 +286,10 @@ int i2c_read_string(int port, int slave_addr, int offset, uint8_t *data,
  */
 int i2c_port_to_controller(int port);
 
+/**
+ * Initialize i2c master ports. This function can be called for cases where i2c
+ * ports are not initialized by default via a hook call.
+ */
+void i2cm_init(void);
+
 #endif  /* __CROS_EC_I2C_H */
