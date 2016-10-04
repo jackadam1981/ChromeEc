@@ -301,4 +301,10 @@ int i2c_port_to_controller(int port);
  */
 int i2c_get_protocol_info(struct host_cmd_handler_args *args);
 
+/**
+ * Initialize i2c master ports. This function can be called for cases where i2c
+ * ports are not initialized by default via a hook call.
+ */
+void i2cm_init(void);
+
 #endif  /* __CROS_EC_I2C_H */
