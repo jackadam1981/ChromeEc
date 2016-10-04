@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "821561c1_89727909",
+        "filename": "board/caroline/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-04T10:18:07Z",
+      "side": 1,
+      "message": "I think this net is only useful for TRACKPAD_INT_DISABLE workaround but the stuffing option for this is currently not used.\nSo basically it\u0027s just Hi-Z here.",
+      "parentUuid": "826561f7_802ab57d",
+      "revId": "9add436a0c083b1b1979dfc7fc55c1a26c74d62a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "826561f7_606d81bd",
         "filename": "board/caroline/gpio.inc",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2016-10-03T15:41:11Z",
       "side": 1,
       "message": "I don\u0027t think we want to turn this rail on by default. But we aren\u0027t touching this anywhere else w.r.t. the power sequencing. We\u0027ll be leaking power into the SoC and other places in sleep states unless we fix it.",
+      "revId": "9add436a0c083b1b1979dfc7fc55c1a26c74d62a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "821561c1_a9465da7",
+        "filename": "board/caroline/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-04T10:18:07Z",
+      "side": 1,
+      "message": "DX_AUDIO_EN was changed to be this way on Cave as per\nhttps://chromium-review.googlesource.com/383553\nand \nhttps://chromium-review.googlesource.com/#/c/378600/3\nto fix an audio issue at boot/resume.\nBut the DX_AUDIO control there is different, so let\u0027s imagine it won\u0027t happen here, I will revert to the regular control in  chipset_suspend/resume",
+      "parentUuid": "826561f7_606d81bd",
       "revId": "9add436a0c083b1b1979dfc7fc55c1a26c74d62a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
