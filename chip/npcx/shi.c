@@ -227,6 +227,11 @@ static void shi_send_response_packet(struct host_packet *pkt)
 #ifdef NPCX_SHI_BYPASS_OVER_256B
 		}
 #endif
+		/*
+		 * Ensure SHI interrupt is enabled since we may have disabled
+		 * it awaiting host command completion.
+		 */
+		task_enable_irq(NPCX_IRQ_SHI);
 	}
 	/*
 	 * If we're not processing, then the AP has already terminated the
@@ -495,9 +500,6 @@ static void shi_bad_received_data(void)
 		CPRINTF("%02x ", in_msg[i]);
 	CPRINTF("]\n");
 
-	/* Reset shi's state machine for error recovery */
-	shi_reset_prepare();
-
 	DEBUG_CPRINTF("END\n");
 }
 
@@ -562,7 +564,8 @@ void shi_int_handler(void)
 			return;
 
 		/* Error state for checking*/
-		if (state != SHI_STATE_SENDING)
+		if (state != SHI_STATE_SENDING &&
+		    state != SHI_STATE_BAD_RECEIVED_DATA)
 			log_unexpected_state("IBEOR");
 
 		/* reset SHI and prepare to next transaction again */
@@ -655,18 +658,6 @@ void shi_cs_event(enum gpio_signal signal)
 	if (state == SHI_STATE_DISABLED)
 		return;
 
-	/*
-	 * IBUFSTAT resets on the 7th clock cycle after CS assertion, which
-	 * may not have happened yet. We use NPCX_IBUFSTAT for calculating
-	 * buffer fill depth, so make sure it's valid before proceeding.
-	 */
-	if (shi_is_cs_glitch()) {
-		CPRINTS("ERR-GTH");
-		shi_reset_prepare();
-		DEBUG_CPRINTF("END\n");
-		return;
-	}
-
 	/* NOT_READY should be sent and there're no spi transaction now. */
 	if (state == SHI_STATE_CNL_RESP_NOT_RDY)
 		return;
@@ -691,6 +682,18 @@ void shi_cs_event(enum gpio_signal signal)
 	 * command or reset on failure from here.
 	 */
 	task_enable_irq(NPCX_IRQ_SHI);
+
+	/*
+	 * IBUFSTAT resets on the 7th clock cycle after CS assertion, which
+	 * may not have happened yet. We use NPCX_IBUFSTAT for calculating
+	 * buffer fill depth, so make sure it's valid before proceeding.
+	 */
+	if (shi_is_cs_glitch()) {
+		CPRINTS("ERR-GTH");
+		shi_bad_received_data();
+		DEBUG_CPRINTF("END\n");
+		return;
+	}
 
 	/* Read first three bytes to parse which protocol is receiving */
 	shi_parse_header();
