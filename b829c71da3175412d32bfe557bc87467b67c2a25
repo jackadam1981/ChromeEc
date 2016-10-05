@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fe76925_21ab9885",
+        "filename": "cts/interrupt/dut.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-05T19:43:21Z",
+      "side": 1,
+      "message": "This doesn\u0027t disable interrupt, thus test fails.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "b829c71da3175412d32bfe557bc87467b67c2a25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
