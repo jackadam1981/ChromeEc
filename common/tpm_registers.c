@@ -593,6 +593,28 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 }
 #endif
 
+/*
+ * This function is declared in the TPM2 library's Implementation.h file, and
+ * TPM2 library may call it to let us know when it's doing certain things that
+ * we need to know about. The only other way we could know what's happening is
+ * to try to parse the input/output of ExecuteCommand(), which is insanely
+ * complex.
+ */
+void embedded_callback(uint32_t command_code, void *params)
+{
+	switch (command_code) {
+	case TPM2_PCR_Read:
+		/*
+		 * TODO(vbendeb): revisit this when
+		 * crosbug.com/p/55667 has been addressed.
+		 */
+		system_process_retry_counter();
+		break;
+	default:
+		break;
+	}
+}
+
 /* Event (to TPM task) to request reset, or (from TPM task) on completion. */
 #define TPM_EVENT_RESET (TASK_EVENT_CUSTOM(1))
 
@@ -701,12 +723,6 @@ void tpm_task(void)
 		if (response_size &&
 		    (response_size <= sizeof(tpm_.regs.data_fifo))) {
 			uint32_t tpm_sts;
-			/*
-			 * TODO(vbendeb): revisit this when
-			 * crosbug.com/p/55667 has been addressed.
-			 */
-			if (command_code == TPM2_PCR_Read)
-				system_process_retry_counter();
 #ifdef CONFIG_EXTENSION_COMMAND
 			if (command_code != CONFIG_EXTENSION_COMMAND)
 #endif
