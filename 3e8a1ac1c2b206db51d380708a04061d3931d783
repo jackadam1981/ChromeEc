@@ -85,6 +85,30 @@
       "revId": "3e8a1ac1c2b206db51d380708a04061d3931d783",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "820f21e2_88bebfa8",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-05T17:05:11Z",
+      "side": 1,
+      "message": "Done. Made build and flash raise an exception.",
+      "parentUuid": "820f21e2_7f0cc7e3",
+      "range": {
+        "startLine": 400,
+        "startChar": 15,
+        "endLine": 400,
+        "endChar": 17
+      },
+      "revId": "3e8a1ac1c2b206db51d380708a04061d3931d783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
