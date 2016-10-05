@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f08a41b_feddb903",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-05T20:49:04Z",
+      "side": 1,
+      "message": "okay I will make it test_dev_num so that we know for which device we are testing.",
+      "parentUuid": "c26af92c_26f3d8d1",
+      "range": {
+        "startLine": 881,
+        "startChar": 29,
+        "endLine": 881,
+        "endChar": 37
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c26af92c_06ffbc4d",
         "filename": "common/i2c.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-10-04T04:24:28Z",
       "side": 1,
       "message": "I suggest naming this \"dev\" instead of \"i2c_s_test\". Otherwise it looks like it could be a \"struct i2c_stress_test\".",
+      "range": {
+        "startLine": 884,
+        "startChar": 29,
+        "endLine": 884,
+        "endChar": 39
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f08a41b_3e1fb1cf",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-05T20:49:04Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "c26af92c_06ffbc4d",
       "range": {
         "startLine": 884,
         "startChar": 29,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5f08a41b_7eb9a995",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-05T20:49:04Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "c26af92c_8601ecb0",
+      "range": {
+        "startLine": 895,
+        "startChar": 0,
+        "endLine": 896,
+        "endChar": 18
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c26af92c_a6fee891",
         "filename": "common/i2c.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2016-10-04T04:24:28Z",
       "side": 1,
       "message": "same as above",
+      "range": {
+        "startLine": 904,
+        "startChar": 29,
+        "endLine": 904,
+        "endChar": 39
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f08a41b_1ec86d1c",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-05T20:49:04Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "c26af92c_a6fee891",
       "range": {
         "startLine": 904,
         "startChar": 29,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "5f08a41b_fecc9932",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-05T20:49:04Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "c26af92c_c60be4ca",
+      "range": {
+        "startLine": 909,
+        "startChar": 28,
+        "endLine": 909,
+        "endChar": 29
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c26af92c_e608e0d0",
         "filename": "common/i2c.c",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2016-10-04T04:24:28Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 915,
+        "startChar": 0,
+        "endLine": 916,
+        "endChar": 18
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f08a41b_dec9d520",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-05T20:49:04Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "c26af92c_e608e0d0",
       "range": {
         "startLine": 915,
         "startChar": 0,
@@ -175,6 +319,24 @@
     },
     {
       "key": {
+        "uuid": "5f08a41b_6176ac2f",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-05T20:49:04Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "c26af92c_a6e7c8fd",
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c26af92c_c6e4c4fb",
         "filename": "common/i2c.c",
         "patchSetId": 2
@@ -186,6 +348,30 @@
       "writtenOn": "2016-10-04T04:24:28Z",
       "side": 1,
       "message": "Maybe have i2c_stress_test take ec_params_i2c_stress_test. Then you can easily have it take a response packet to send info back to the host.",
+      "range": {
+        "startLine": 1111,
+        "startChar": 17,
+        "endLine": 1112,
+        "endChar": 25
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f08a41b_417ba815",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-05T20:49:04Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "c26af92c_c6e4c4fb",
       "range": {
         "startLine": 1111,
         "startChar": 17,
@@ -221,6 +407,30 @@
     },
     {
       "key": {
+        "uuid": "5f08a41b_2180b4fb",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-05T20:49:04Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "e2bffdbf_68caeb45",
+      "range": {
+        "startLine": 1118,
+        "startChar": 19,
+        "endLine": 1118,
+        "endChar": 20
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2bffdbf_bd83633d",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -232,6 +442,30 @@
       "writtenOn": "2016-10-04T04:24:28Z",
       "side": 1,
       "message": "Perhaps it would be useful to place this at the beginning of an unused numbering block, for example 0xc0, where we can put other stress test in the future.",
+      "range": {
+        "startLine": 3212,
+        "startChar": 0,
+        "endLine": 3212,
+        "endChar": 35
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f08a41b_4192884d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3212,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-05T20:49:04Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "e2bffdbf_bd83633d",
       "range": {
         "startLine": 3212,
         "startChar": 0,
@@ -267,6 +501,30 @@
     },
     {
       "key": {
+        "uuid": "5f08a41b_81eae09b",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-05T20:49:04Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "e2bffdbf_48044f7a",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 33
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c26af92c_63d6a21c",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -278,6 +536,30 @@
       "writtenOn": "2016-10-04T04:24:28Z",
       "side": 1,
       "message": "usage is unclear from this",
+      "range": {
+        "startLine": 140,
+        "startChar": 12,
+        "endLine": 140,
+        "endChar": 53
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f08a41b_41e4c8cd",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-05T20:49:04Z",
+      "side": 1,
+      "message": "okay I will add more details",
+      "parentUuid": "c26af92c_63d6a21c",
       "range": {
         "startLine": 140,
         "startChar": 12,
@@ -313,6 +595,30 @@
     },
     {
       "key": {
+        "uuid": "5f08a41b_01ded0ff",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5211,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-05T20:49:04Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "c26af92c_03a6ce17",
+      "range": {
+        "startLine": 5211,
+        "startChar": 0,
+        "endLine": 5211,
+        "endChar": 33
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c26af92c_c3bd96af",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -336,6 +642,30 @@
     },
     {
       "key": {
+        "uuid": "bf2d2096_4b76452f",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5233,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-05T20:49:04Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "c26af92c_c3bd96af",
+      "range": {
+        "startLine": 5233,
+        "startChar": 0,
+        "endLine": 5233,
+        "endChar": 16
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c26af92c_635f8216",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -347,6 +677,30 @@
       "writtenOn": "2016-10-04T04:24:28Z",
       "side": 1,
       "message": "I think you\u0027re missing logic to offset argv[i] so that it begins on the number the user is specifying.",
+      "range": {
+        "startLine": 5247,
+        "startChar": 10,
+        "endLine": 5247,
+        "endChar": 24
+      },
+      "revId": "3d88212fc2316a783610416f9d6699377222132b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf18c06f_599043fc",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5247,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-05T20:49:04Z",
+      "side": 1,
+      "message": "This plan is to make it robust so that we dont have the pass the args in specific sequence",
+      "parentUuid": "c26af92c_635f8216",
       "range": {
         "startLine": 5247,
         "startChar": 10,
