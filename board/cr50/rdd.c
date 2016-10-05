@@ -9,6 +9,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "rdd.h"
+#include "rbox.h"
 #include "registers.h"
 #include "system.h"
 #include "uartn.h"
@@ -184,6 +185,8 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, enable_ap_usb, HOOK_PRIO_DEFAULT);
 static int command_ccd(int argc, char **argv)
 {
 	int val;
+	char *e;
+	int ms = 200;
 
 	if (argc > 1) {
 		if (!strcasecmp("uart", argv[1]) && argc > 2) {
@@ -197,10 +200,41 @@ static int command_ccd(int argc, char **argv)
 				ec_uart_enabled = 0;
 				uartn_tx_disconnect(UART_EC);
 			}
-		} else if (argc == 2) {
-			if (!parse_bool(argv[1], &val))
-				return EC_ERROR_PARAM1;
+		} else if (!strcasecmp("ec_rst", argv[1]) && argc > 2) {
+			if (!parse_bool(argv[2], &val))
+				return EC_ERROR_PARAM2;
 
+			if (val)
+				assert_ec_rst();
+			else
+				deassert_ec_rst();
+		} else if (!strcasecmp("sys_rst", argv[1]) && argc > 2) {
+			if (!parse_bool(argv[2], &val))
+				return EC_ERROR_PARAM2;
+
+			if (val)
+				assert_sys_rst();
+			else
+				deassert_sys_rst();
+		} else if (!strcasecmp("powerbtn", argv[1])) {
+			if (argc > 2) {
+				ms = strtoi(argv[2], &e, 0);
+				if (*e)
+					return EC_ERROR_PARAM2;
+			}
+			ccprintf("Simulating %dms power button press\n", ms);
+			rbox_press_power_btn(ms);
+		} else if (!strcasecmp("apreset", argv[1])) {
+			ccprintf("Issuing AP reset");
+			assert_sys_rst();
+			msleep(ms);
+			deassert_sys_rst();
+		} else if (!strcasecmp("ecreset", argv[1])) {
+			ccprintf("Issuing EC reset");
+			assert_ec_rst();
+			msleep(ms);
+			deassert_ec_rst();
+		} else if (parse_bool(argv[1], &val) && argc == 2) {
 			if (val)
 				rdd_attached();
 			else
@@ -216,5 +250,6 @@ static int command_ccd(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(ccd, command_ccd,
-			"[uart] [<BOOLEAN>]",
-			"Get/set the case closed debug state");
+			"[uart | ec_rst | sys_rst] [<BOOLEAN>]\n\t"
+			"   powerbtn ms\n\t   [apreset | ecreset | <BOOLEAN>]",
+			"Control different CCD features");
