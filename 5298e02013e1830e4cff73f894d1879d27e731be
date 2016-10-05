@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "42ba8938_890cede4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-10-05T17:34:03Z",
+      "side": 1,
+      "message": "will do\n\nIt proves that if the keyladder is different than expected (1 vs. 0 in FWR), the hmac fails. That covers the entirety of the code added.",
+      "parentUuid": "820f21e2_ee8dc38b",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "5298e02013e1830e4cff73f894d1879d27e731be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "820f21e2_6ec1b393",
         "filename": "board/cr50/tpm2/endorsement.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2016-10-05T15:44:42Z",
       "side": 1,
       "message": "this is invoked only if there is no certs in NVRAM, who will make sure that this is the case when tpm moves between keys?",
+      "revId": "5298e02013e1830e4cff73f894d1879d27e731be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62830d88_149744f7",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-10-05T17:34:03Z",
+      "side": 1,
+      "message": "That\u0027s somewhat orthogonal.\n\nThis change is necessary but not sufficient to complete the entire scheme.",
+      "parentUuid": "820f21e2_6ec1b393",
       "revId": "5298e02013e1830e4cff73f894d1879d27e731be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
