@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "820f21e2_ee8dc38b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-05T15:44:42Z",
+      "side": 1,
+      "message": "can you please elaborate in the patch description what is going on and why this statement proves that this patch does what it\u0027s supposed to.",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "5298e02013e1830e4cff73f894d1879d27e731be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "820f21e2_6ec1b393",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-05T15:44:42Z",
+      "side": 1,
+      "message": "this is invoked only if there is no certs in NVRAM, who will make sure that this is the case when tpm moves between keys?",
+      "revId": "5298e02013e1830e4cff73f894d1879d27e731be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
