@@ -16,6 +16,24 @@
       "revId": "e061d7790a96a574c28304a9ab9074a382499f55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fee4874_e111a65d",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-05T12:51:29Z",
+      "side": 1,
+      "message": "the encoding has been rectified on the schematics side.\nNow MSB is 0 for the first ones",
+      "parentUuid": "c26af92c_7714985a",
+      "revId": "e061d7790a96a574c28304a9ab9074a382499f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
