@@ -87,6 +87,24 @@
       "revId": "66ebf44ddb5536508f8d0bc3f9ba706ece0374fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f7f70e8_2a1b9f8b",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-10-06T23:56:43Z",
+      "side": 1,
+      "message": "Yes, but the only time when you\u0027d end up with ret !\u003d EC_SUCCESS is if this break is taken.",
+      "parentUuid": "7fd2c819_44f280ca",
+      "revId": "66ebf44ddb5536508f8d0bc3f9ba706ece0374fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
