@@ -16,6 +16,24 @@
       "revId": "f995ba48f8f61ef7b6dc97bd69966288143cce7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd2c819_27157eae",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-10-06T19:18:23Z",
+      "side": 1,
+      "message": "In struct SignedHeader, yes. But the struct returned by the first reply isn\u0027t that, it\u0027s struct first_response_pdu (in upgrade_fw.h), which contains an array of struct signed_header_version. If I add keyid to that, then the updater needs to know both v4 and v5 formats by different names. If I add an array of keyid to the end, then I can use the same struct here, and just ignore the v5 part that\u0027s not included in the v4 response.",
+      "parentUuid": "7fd2c819_c496904d",
+      "revId": "f995ba48f8f61ef7b6dc97bd69966288143cce7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
