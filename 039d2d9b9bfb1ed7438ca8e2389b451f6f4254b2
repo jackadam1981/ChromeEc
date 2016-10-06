@@ -16,6 +16,24 @@
       "revId": "039d2d9b9bfb1ed7438ca8e2389b451f6f4254b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f7f70e8_ca9f6300",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1508,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-06T23:48:34Z",
+      "side": 1,
+      "message": "I was originally calling pd_comm_enable(), but looking at what the function actually does, everything except setting pd_comm_enabled will be skipped because our state machine is still in initial state. Also, when CONFIG_USB_PD_COMM_LOCKED is not defined, we simply initialize pd_comm_enabled \u003d 1 statically, so I think it makes sense to do the equivalent here.",
+      "parentUuid": "3f7f70e8_6afbd75c",
+      "revId": "039d2d9b9bfb1ed7438ca8e2389b451f6f4254b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
