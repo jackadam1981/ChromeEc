@@ -22,6 +22,30 @@
       "revId": "04d9044f2b5a14d161273c5c263ce5202a074fcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf9b6032_2a1f3fcf",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-06T16:07:19Z",
+      "side": 1,
+      "message": "Fixed and also moved EN_PP3300_INA_L to the (0. n) bank since it\u0027s a non-interrupt GPIO and grouped it next to the I2C gpio inputs.",
+      "parentUuid": "bf9b6032_2fce7184",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "04d9044f2b5a14d161273c5c263ce5202a074fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
