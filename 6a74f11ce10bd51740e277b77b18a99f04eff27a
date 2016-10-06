@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf9b6032_8ff225c8",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-06T15:32:07Z",
+      "side": 1,
+      "message": "I changed this to (0,11) and made the following one (1,11)",
+      "parentUuid": "bf9b6032_efb88930",
+      "range": {
+        "startLine": 51,
+        "startChar": 26,
+        "endLine": 51,
+        "endChar": 27
+      },
+      "revId": "6a74f11ce10bd51740e277b77b18a99f04eff27a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf9b6032_0fb61542",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bf9b6032_2ff751ba",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-06T15:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf9b6032_0fb61542",
+      "range": {
+        "startLine": 72,
+        "startChar": 43,
+        "endLine": 72,
+        "endChar": 56
+      },
+      "revId": "6a74f11ce10bd51740e277b77b18a99f04eff27a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf9b6032_cfbfcd13",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2016-10-06T14:46:18Z",
       "side": 1,
       "message": "It can just be \"[uart | ina] [\u003cBOOLEAN\u003e]\"",
+      "range": {
+        "startLine": 270,
+        "startChar": 4,
+        "endLine": 270,
+        "endChar": 39
+      },
+      "revId": "6a74f11ce10bd51740e277b77b18a99f04eff27a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf9b6032_ef0089ad",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-06T15:32:07Z",
+      "side": 1,
+      "message": "Cleaned up as suggested.",
+      "parentUuid": "bf9b6032_cfbfcd13",
       "range": {
         "startLine": 270,
         "startChar": 4,
