@@ -687,6 +687,7 @@ static void transfer_section(struct transfer_descriptor *td,
  * 1.
  */
 static struct signed_header_version target_shv[2];
+static uint32_t target_keyid[2];
 
 /*
  * Each RO or RW section of the new image can be in one of the following
@@ -711,6 +712,7 @@ static struct {
 	uint32_t    size;
 	enum upgrade_status  ustatus;
 	struct signed_header_version shv;
+	uint32_t keyid;
 } sections[] = {
 	{"RO_A", CONFIG_RO_MEM_OFF, CONFIG_RO_SIZE},
 	{"RW_A", CONFIG_RW_MEM_OFF, CONFIG_RW_SIZE},
@@ -734,6 +736,7 @@ static void fetch_header_versions(const void *image)
 		sections[i].shv.epoch = h->epoch_;
 		sections[i].shv.major = h->major_;
 		sections[i].shv.minor = h->minor_;
+		sections[i].keyid = h->keyid;
 	}
 }
 
@@ -910,12 +913,22 @@ static void setup_connection(struct transfer_descriptor *td)
 						(start_resp.rpdu.shv[i].epoch);
 				}
 			}
+			if (protocol_version > 4) {
+				size_t i;
+
+				for (i = 0; i < ARRAY_SIZE(target_shv); i++)
+					target_keyid[i] = be32toh
+						(start_resp.rpdu.keyid[i]);
+			}
 		}
 	}
 
 	printf("Target running protocol version %d\n", protocol_version);
 
 	if (!error_code) {
+		if (protocol_version > 4)
+			printf("Keyids: RO 0x%08x, RW 0x%08x\n",
+			       target_keyid[0], target_keyid[1]);
 		if (protocol_version > 2) {
 			td->ro_offset = be32toh
 				(start_resp.rpdu.backup_ro_offset);

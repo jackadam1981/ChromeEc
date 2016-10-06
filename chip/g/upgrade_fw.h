@@ -32,7 +32,7 @@
  * first_response_pdu structure below.
  */
 
-#define UPGRADE_PROTOCOL_VERSION 4
+#define UPGRADE_PROTOCOL_VERSION 5
 
 /* This is the format of the update frame header. */
 struct upgrade_command {
@@ -106,6 +106,10 @@ struct first_response_pdu {
 	/* The below fields are present in versions 4 and up. */
 	/* Versions of the currently active RO and RW sections. */
 	struct signed_header_version shv[2];
+
+	/* The below fields are present in versions 5 and up */
+	/* keyids of the currently active RO and RW sections. */
+	uint32_t keyid[2];
 };
 
 /* TODO: Handle this in upgrade_fw.c, not usb_upgrade.c */
