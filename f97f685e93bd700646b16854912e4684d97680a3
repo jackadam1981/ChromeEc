@@ -22,6 +22,30 @@
       "revId": "f97f685e93bd700646b16854912e4684d97680a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd2c819_8180fafd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-10-06T18:44:18Z",
+      "side": 1,
+      "message": "All boards where BMI160 is not the first sensor in motion_sensor array.",
+      "parentUuid": "1f1c6cae_66c32e03",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "f97f685e93bd700646b16854912e4684d97680a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
