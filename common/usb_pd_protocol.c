@@ -1495,6 +1495,31 @@ void pd_task(void)
 	tcpm_set_cc(port, PD_ROLE_DEFAULT == PD_ROLE_SOURCE ? TYPEC_CC_RP :
 							      TYPEC_CC_RD);
 
+#ifdef CONFIG_COMMON_RUNTIME
+#ifdef CONFIG_USB_PD_COMM_LOCKED
+	/* Enable PD communication at init if we're in RW or unlocked. */
+	if (system_get_image_copy() != SYSTEM_IMAGE_RW
+	    && system_is_locked()) {
+		ccprintf("[%T PD comm disabled]\n");
+		pd_comm_enabled = 0;
+	} else {
+		pd_comm_enabled = 1;
+	}
+#endif
+
+#ifdef HAS_TASK_CHIPSET
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	/* Set dual-role state based on chipset power state */
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		pd_set_dual_role(PD_DRP_FORCE_SINK);
+	else if (chipset_in_state(CHIPSET_STATE_SUSPEND))
+		pd_set_dual_role(PD_DRP_TOGGLE_OFF);
+	else /* CHIPSET_STATE_ON */
+		pd_set_dual_role(PD_DRP_TOGGLE_ON);
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
+#endif /* HAS_TASK_CHIPSET */
+#endif /* CONFIG_COMMON_RUNTIME */
+
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 	/* Initialize PD Policy engine */
 	pd_dfp_pe_init(port);
@@ -2747,6 +2772,7 @@ static void dual_role_on(void)
 		task_wake(PD_PORT_TO_TASK_ID(i));
 	}
 }
+/* TODO: Call pd_set_dual_role() exclusively from PD task */
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, dual_role_on, HOOK_PRIO_DEFAULT);
 
 static void dual_role_off(void)
@@ -2765,18 +2791,6 @@ static void dual_role_force_sink(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, dual_role_force_sink, HOOK_PRIO_DEFAULT);
 
-#ifdef HAS_TASK_CHIPSET
-static void dual_role_init(void)
-{
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
-		dual_role_force_sink();
-	else if (chipset_in_state(CHIPSET_STATE_SUSPEND))
-		dual_role_off();
-	else /* CHIPSET_STATE_ON */
-		dual_role_on();
-}
-DECLARE_HOOK(HOOK_INIT, dual_role_init, HOOK_PRIO_DEFAULT);
-#endif /* HAS_TASK_CHIPSET */
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -3477,23 +3491,6 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_SET_AMODE,
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 
 #endif /* HAS_TASK_HOSTCMD */
-
-#ifdef CONFIG_USB_PD_COMM_LOCKED
-/* Enable PD communication at init if we're in RO or unlocked. */
-static void pd_comm_init(void)
-{
-	int pd_enable = 1;
-
-	if (system_get_image_copy() != SYSTEM_IMAGE_RW
-	    && system_is_locked()) {
-		ccprintf("[%T PD comm disabled]\n");
-		pd_enable = 0;
-	}
-
-	pd_comm_enable(pd_enable);
-}
-DECLARE_HOOK(HOOK_INIT, pd_comm_init, HOOK_PRIO_LAST);
-#endif /* CONFIG_USB_PD_COMM_LOCKED */
 
 #ifdef CONFIG_CMD_PD_CONTROL
 static int pd_control_disabled;
