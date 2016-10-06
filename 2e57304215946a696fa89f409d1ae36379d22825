@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f0a105e_af84d910",
+        "filename": "board/elm/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-06T07:04:45Z",
+      "side": 1,
+      "message": "given the 2 batteries configurations have nearly nothing in common, I would do a battery_elm.c and a battery_hana.c\nthen do something like this in the build.mk\nboard-$(BOARD_ELM)+\u003dbattery_elm.o\nboard-$(BOARD_HANA)+\u003dbattery_hana.o",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "2e57304215946a696fa89f409d1ae36379d22825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
