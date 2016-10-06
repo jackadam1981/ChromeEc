@@ -16,6 +16,24 @@
       "revId": "f9272713da615e51ea14f70872fec46fbd88e938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd2c819_a4f34c61",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-06T18:20:38Z",
+      "side": 1,
+      "message": "Does making two separate structures help fix this?\n#ifdef CONFIG_ACCEL_KX022\nstruct i2c_stress_test_dev kx022_i2c_stress_test_dev \u003d {...};\n#endif\n#ifdef CONFIG_ACCEL_KXCJ9\nstruct i2c_stress_test_dev kxcj9_i2c_stress_test_dev \u003d {...};\n#endif",
+      "parentUuid": "7fd2c819_01c94aa5",
+      "revId": "f9272713da615e51ea14f70872fec46fbd88e938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
