@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fd2c819_01330af8",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-10-06T17:34:41Z",
+      "side": 1,
+      "message": "Since nothing uses this now, should it be removed? Or do you plan to use it again later?",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 23
+      },
+      "revId": "a529b984fa6146d06e4b1308e4b39b5368844270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
