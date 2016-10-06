@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f7f70e8_6afbd75c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1508,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-06T23:35:57Z",
+      "side": 1,
+      "message": "pd_comm_enable() seems like it could also set the TCPC RX enable flag. Do we still want to do that?",
+      "revId": "039d2d9b9bfb1ed7438ca8e2389b451f6f4254b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
