@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf9b6032_2fce7184",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-10-06T15:37:23Z",
+      "side": 1,
+      "message": "this should be 0, 12",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "04d9044f2b5a14d161273c5c263ce5202a074fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
