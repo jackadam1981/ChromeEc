@@ -34,6 +34,24 @@
       "revId": "f995ba48f8f61ef7b6dc97bd69966288143cce7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd2c819_07079a7a",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-06T19:22:11Z",
+      "side": 1,
+      "message": "sure, what I meant to ask was is the separate data oblect target_keyid required? Can the values received from the target be saved in the appropriate fields of target_shv instead?\n\ndoes this make sense?",
+      "parentUuid": "7fd2c819_27157eae",
+      "revId": "f995ba48f8f61ef7b6dc97bd69966288143cce7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
