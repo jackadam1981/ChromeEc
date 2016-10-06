@@ -70,6 +70,24 @@
       "revId": "f995ba48f8f61ef7b6dc97bd69966288143cce7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd2c819_2a71c335",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-06T20:14:20Z",
+      "side": 1,
+      "message": "ah, of course, I and did not look at the code and confused between SignedHeader and signed_header_version structures.\n\n\nBut still I think it would be cleaner to keep a single object for all that data we retrieve from the target in the first protocol reply.\n\nMaybe it is worth storing a first_response_pdu object instead of target_shv and target_keyid, just convert values in it to the machine representation.\n\nThis way when new fields are added to for a new protocol version the object to store them will be already there, just more fields would need to be converted.",
+      "parentUuid": "7fd2c819_07c95aa5",
+      "revId": "f995ba48f8f61ef7b6dc97bd69966288143cce7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
