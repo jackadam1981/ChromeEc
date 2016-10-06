@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fd2c819_64d86475",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-10-06T18:52:16Z",
+      "side": 1,
+      "message": "I\u0027m actually not sure what BRANCH does, but maybe \u003dnone if this is useful on oak/elm as well?",
+      "revId": "66ebf44ddb5536508f8d0bc3f9ba706ece0374fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd2c819_24de5c64",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-10-06T18:52:16Z",
+      "side": 1,
+      "message": "Just unlock the mutex and return here?",
+      "revId": "66ebf44ddb5536508f8d0bc3f9ba706ece0374fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
