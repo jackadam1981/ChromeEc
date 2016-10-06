@@ -22,6 +22,30 @@
       "revId": "b829c71da3175412d32bfe557bc87467b67c2a25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd2c819_64ace43f",
+        "filename": "cts/interrupt/dut.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-10-06T18:27:31Z",
+      "side": 1,
+      "message": "This is fixed. Currently, it\u0027s not possible to test interrupt_disable and task_wait_event at the same time because task_wait_event enables interrupt necessarily. We use task_disable_irq instead.",
+      "parentUuid": "6fe76925_21ab9885",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "b829c71da3175412d32bfe557bc87467b67c2a25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
