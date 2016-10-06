@@ -52,6 +52,24 @@
       "revId": "f995ba48f8f61ef7b6dc97bd69966288143cce7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd2c819_07c95aa5",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-10-06T19:58:16Z",
+      "side": 1,
+      "message": "That\u0027s the question I answered. \n\nOn the wire, with v4, struct first_response_pdu looks like this:\n\n  {\n        uint32_t return_value;\n        uint32_t protocol_version;\n        uint32_t  backup_ro_offset;\n        uint32_t  backup_rw_offset;\n        {\n          uint32_t minor;\n          uint32_t major;\n          uint32_t epoch;\n        }\n        {\n          uint32_t minor;\n          uint32_t major;\n          uint32_t epoch;\n        }\n  }\n\nAdding keyid to struct signed_header_version would change it to this:\n\n  {\n        uint32_t return_value;\n        uint32_t protocol_version;\n        uint32_t  backup_ro_offset;\n        uint32_t  backup_rw_offset;\n        {\n          uint32_t minor;\n          uint32_t major;\n          uint32_t epoch;\n          uint32_t keyid;             NEW\n        }\n        {\n          uint32_t minor;\n          uint32_t major;\n          uint32_t epoch;\n          uint32_t keyid;             NEW\n        }\n  }\n\nIf we do this instead:\n\n  {\n        uint32_t return_value;\n        uint32_t protocol_version;\n        uint32_t  backup_ro_offset;\n        uint32_t  backup_rw_offset;\n        {\n          uint32_t minor;\n          uint32_t major;\n          uint32_t epoch;\n        }\n        {\n          uint32_t minor;\n          uint32_t major;\n          uint32_t epoch;\n        }\n  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ same as V4\n        uint32_t keyid[0];            NEW\n        uint32_t keyid[1];            NEW\n  }\n\nThen usb_updater.c doesn\u0027t have to keep track of both the v4 and v5 version\nof struct first_response_pdu. V4 is a strict subset of V5.",
+      "parentUuid": "7fd2c819_07079a7a",
+      "revId": "f995ba48f8f61ef7b6dc97bd69966288143cce7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
