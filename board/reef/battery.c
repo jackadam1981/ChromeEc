@@ -19,6 +19,15 @@
 #define PARAM_CUT_OFF_LOW  0x10
 #define PARAM_CUT_OFF_HIGH 0x00
 
+#define ELECTRO_SHIP_MODE_REG 0x3a
+#define ELECTRO_SHIP_MODE_DAT 0xC574
+
+enum BatteryType {
+	UNKNOWN = -1,
+	REEF = 0,
+	ELECTRO,
+};
+
 /* Battery info for BQ40Z55 */
 static const struct battery_info info = {
 	/* FIXME(dhendrix): where do these values come from? */
@@ -47,7 +56,7 @@ const struct battery_info *battery_get_info(void)
 	return &info;
 }
 
-int board_cut_off_battery(void)
+int reef_cut_off_battery(void)
 {
 	int rv;
 	uint8_t buf[3];
@@ -65,6 +74,43 @@ int board_cut_off_battery(void)
 	i2c_lock(I2C_PORT_BATTERY, 0);
 
 	return rv;
+}
+
+int electro_cut_off_battery(void)
+{
+	int rv;
+
+	/* Ship mode command must be sent twice to take effect */
+	rv = sb_write(ELECTRO_SHIP_MODE_REG, ELECTRO_SHIP_MODE_DAT);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	return sb_write(ELECTRO_SHIP_MODE_REG, ELECTRO_SHIP_MODE_DAT);
+}
+
+
+int board_cut_off_battery(void)
+{
+	char manuf[9];
+	enum BatteryType type = UNKNOWN;
+
+	if (battery_manufacturer_name(manuf, sizeof(manuf)))
+		return EC_ERROR_ACCESS_DENIED;
+
+	if (strstr(manuf, "SMP-COS"))
+		type = REEF;
+	else if (strstr(manuf, "SONYCor"))
+		type = ELECTRO;
+	/* else: default is UNKNOWN */
+
+	switch (type) {
+	case REEF:
+		return reef_cut_off_battery();
+	case ELECTRO:
+		return electro_cut_off_battery();
+	default:
+		return EC_ERROR_ACCESS_DENIED;
+	}
 }
 
 enum battery_disconnect_state battery_get_disconnect_state(void)

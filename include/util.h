@@ -72,7 +72,8 @@ void *memmove(void *dest, const void *src, size_t len);
 int strcasecmp(const char *s1, const char *s2);
 int strncasecmp(const char *s1, const char *s2, size_t size);
 int strlen(const char *s);
-
+/* also true if s1 == sub*/
+int strstr(const char *s1, const char *sub);
 /* Like strtol(), but for integers. */
 int strtoi(const char *nptr, char **endptr, int base);
 

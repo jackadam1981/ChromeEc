@@ -479,3 +479,30 @@ int parse_offset_size(int argc, char **argv, int shift,
 
 	return EC_SUCCESS;
 }
+
+int strstr(const char *s1, const char *sub)
+{
+	int i, j, n_tmp;
+	int s1_size;
+	int sub_size;
+	int max_compare_size;
+
+	s1_size = strlen(s1);
+	sub_size = strlen(sub);
+	max_compare_size = s1_size - sub_size;
+
+	for (i = 0; i <= max_compare_size; ++i) {
+		n_tmp = i;
+		for (j = 0; j < sub_size; ++j) {
+			if (s1[n_tmp] == sub[j]) {
+				if (j == sub_size - 1)
+					return 1;
+				n_tmp++;
+			} else {
+				break;
+			}
+		}
+	}
+
+	return 0;
+}
