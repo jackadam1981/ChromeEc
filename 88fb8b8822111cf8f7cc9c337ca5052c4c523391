@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1fd62c37_593327aa",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:30Z",
+      "side": 1,
+      "message": "This is used in common/i2c.c and must be defined. It\u0027s a chip specific setting and I see it defined in other config_chip.h files. Since its describing the number of I2C ports supported by H1, I thought it made sense to define here.",
+      "parentUuid": "7fd2c819_645304e1",
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd62c37_76cdd02b",
         "filename": "chip/g/i2cm.c",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2016-10-07T04:00:40Z",
       "side": 1,
       "message": "is this not a sequence, this is a bitmap to write into I2C_INST",
+      "range": {
+        "startLine": 33,
+        "startChar": 27,
+        "endLine": 33,
+        "endChar": 54
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_f9ec33f2",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:30Z",
+      "side": 1,
+      "message": "Yes it\u0027s a bitmap that defines a sequence of operations that will take place. In the chip documentation it\u0027s referred to as a compound instruction that is defined by the bits set in the INST register.",
+      "parentUuid": "1fd62c37_76cdd02b",
       "range": {
         "startLine": 33,
         "startChar": 27,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "1fd62c37_99fbffa4",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:30Z",
+      "side": 1,
+      "message": "Yes, this would be the register address. This example assumes that chip_i2c_xfer() is called with out_bytes \u003d 1. The read example and the write example I put here are 2 of the examples listed in the H1 chip spec.",
+      "parentUuid": "1fd62c37_b69488f0",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd62c37_567c14b9",
         "filename": "chip/g/i2cm.c",
         "patchSetId": 4
@@ -76,6 +142,30 @@
       "writtenOn": "2016-10-07T04:00:40Z",
       "side": 1,
       "message": "does it end up with the same bitmask as the one written into I2C_INST?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 21
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_99d2df22",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:30Z",
+      "side": 1,
+      "message": "b23:0 of INST gets copied to b23:0 of STATUS when the compound instruction is initiated. The difference is that the slave device address bits contained in INST are not copied into STATUS. As the compound instruction (sequence) progresses, the bits 23:0 of STATUS are updated by HW to track the what the current state is. When the sequence is complete these bits should be 0. If there are no errors, then the upper 7 bits will be 0 as well.",
+      "parentUuid": "1fd62c37_567c14b9",
       "range": {
         "startLine": 64,
         "startChar": 3,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "1fd62c37_b9c8fb6f",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:30Z",
+      "side": 1,
+      "message": "Yes it would be 25 msec and it\u0027s an upper bound that\u0027s enough to cover the longest expected transaction (68 bytes) at 100 kHz. I could modify this to be a lower value for higher speeds, but it\u0027s really only handling the case that the HW doesn\u0027t respond for some reason. If there is any unexpected error (NACK, arbirtration loss, clock stretch timeout) then i2cm will abort the instruction and clear INTB.",
+      "parentUuid": "1fd62c37_36a0783d",
+      "range": {
+        "startLine": 87,
+        "startChar": 34,
+        "endLine": 87,
+        "endChar": 39
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd62c37_b666c81c",
         "filename": "chip/g/i2cm.c",
         "patchSetId": 4
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "1fd62c37_99cd3f80",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:30Z",
+      "side": 1,
+      "message": "Modified the macros so they generate the shifted bit/field only.",
+      "parentUuid": "1fd62c37_b666c81c",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 28
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd62c37_f643206b",
         "filename": "chip/g/i2cm.c",
         "patchSetId": 4
@@ -145,6 +283,30 @@
       "writtenOn": "2016-10-07T04:00:40Z",
       "side": 1,
       "message": "what about using GFIELD_MASK() for single bit fields? No need in \u00271 \u003c\u003c\u0027 in that case",
+      "range": {
+        "startLine": 95,
+        "startChar": 37,
+        "endLine": 95,
+        "endChar": 74
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_59b0c7f4",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:30Z",
+      "side": 1,
+      "message": "Yes, that would work and be cleaner.",
+      "parentUuid": "1fd62c37_f643206b",
       "range": {
         "startLine": 95,
         "startChar": 37,
@@ -203,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "1fd62c37_9c964d3e",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:30Z",
+      "side": 1,
+      "message": "I prepended \u0027i2c_mode\u0027 to each.",
+      "parentUuid": "1fd62c37_162a1c97",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 14
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd62c37_562094b6",
         "filename": "chip/g/i2cm.c",
         "patchSetId": 4
@@ -214,6 +400,30 @@
       "writtenOn": "2016-10-07T04:00:40Z",
       "side": 1,
       "message": "where do these divisor and phase steps numbers come from?\n\nDid you have a chance to test all clock speeds?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 3
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_99a41fb6",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:30Z",
+      "side": 1,
+      "message": "They come originally from the H1 chip spec. However, the current version of the spec has suggested values based on a 26 MHz bus clock and H1 is at 24 MHz. In addition, for 100 and 400 kHz, I have made phase0 longer because the external pullups are too weak. I have an ask of gchips to get me updated suggested values for 24 MHz.\n\nI have tested at 100 and 400 kHz. I can\u0027t test 1000 at this time because the rise time on both Reef and Gru is too slow (\u003e iuSec) to run at that speed. I have highlighted the issue to HW team. Since Reef only has 4 INAs, if I get stronger pullups then I may be able to test 1000 kHz.\n\nAdded a TODO comment to document the current state.",
+      "parentUuid": "1fd62c37_562094b6",
       "range": {
         "startLine": 126,
         "startChar": 0,
@@ -249,6 +459,30 @@
     },
     {
       "key": {
+        "uuid": "1fd62c37_5997a749",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:30Z",
+      "side": 1,
+      "message": "That\u0027s a mistake. It\u0027s supposed be \u0027disabled\u0027. Corrected it.",
+      "parentUuid": "1fd62c37_f6156056",
+      "range": {
+        "startLine": 146,
+        "startChar": 32,
+        "endLine": 146,
+        "endChar": 44
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd62c37_d61a6486",
         "filename": "chip/g/i2cm.c",
         "patchSetId": 4
@@ -260,6 +494,24 @@
       "writtenOn": "2016-10-07T04:00:40Z",
       "side": 1,
       "message": "how about writing zero into I2C_INST at this point to make sure that it does not do anything immediately when enabled.",
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_1ca35d9b",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:30Z",
+      "side": 1,
+      "message": "Added a statement to set INST to 0.",
+      "parentUuid": "1fd62c37_d61a6486",
       "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -312,6 +564,30 @@
     },
     {
       "key": {
+        "uuid": "1fd62c37_1cbebda8",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fd62c37_f600c011",
+      "range": {
+        "startLine": 228,
+        "startChar": 19,
+        "endLine": 228,
+        "endChar": 26
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd62c37_b60a482e",
         "filename": "chip/g/i2cm.c",
         "patchSetId": 4
@@ -323,6 +599,30 @@
       "writtenOn": "2016-10-07T04:00:40Z",
       "side": 1,
       "message": "where is this defined?",
+      "range": {
+        "startLine": 465,
+        "startChar": 17,
+        "endLine": 465,
+        "endChar": 31
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_bcf6a9ba",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:30Z",
+      "side": 1,
+      "message": "This is defined board.c where the i2c port is defined. i2c_ports_used is required to be defined for common/i2c.c. The i2cm.c file is only compiled if CONFIG_I2C_MASTER is defined.",
+      "parentUuid": "1fd62c37_b60a482e",
       "range": {
         "startLine": 465,
         "startChar": 17,
