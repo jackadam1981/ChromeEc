@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f046c97_09dfad29",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-07T20:28:46Z",
+      "side": 1,
+      "message": "Just for my own curiosity, why is that?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "8aacf5621a7c67aa3ede02e9acdb629df60eea31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f046c97_c9c3d552",
+        "filename": "board/amenia/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-07T20:28:46Z",
+      "side": 1,
+      "message": "Wrong comment?",
+      "range": {
+        "startLine": 501,
+        "startChar": 42,
+        "endLine": 501,
+        "endChar": 64
+      },
+      "revId": "8aacf5621a7c67aa3ede02e9acdb629df60eea31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
