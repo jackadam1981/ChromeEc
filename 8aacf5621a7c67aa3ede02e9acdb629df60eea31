@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f046c97_b570ea00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-10-07T23:30:32Z",
+      "side": 1,
+      "message": "It was defined when sensors were introduced in the first pixel. See ec_commands.h:\n#define EC_MEMMAP_ACC_DATA         0x92 /* Accelerometers data 0x92 - 0x9f */\n/* 0x92: Lid Angle if available, LID_ANGLE_UNRELIABLE otherwise */\n/* 0x94 - 0x99: 1st Accelerometer */\n/* 0x9a - 0x9f: 2nd Accelerometer */\n#define EC_MEMMAP_GYRO_DATA        0xa0 /* Gyroscope data 0xa0 - 0xa5 */\n/* Unused 0xa6 - 0xdf */",
+      "parentUuid": "1f046c97_09dfad29",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "8aacf5621a7c67aa3ede02e9acdb629df60eea31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f046c97_c9c3d552",
         "filename": "board/amenia/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-10-07T20:28:46Z",
       "side": 1,
       "message": "Wrong comment?",
+      "range": {
+        "startLine": 501,
+        "startChar": 42,
+        "endLine": 501,
+        "endChar": 64
+      },
+      "revId": "8aacf5621a7c67aa3ede02e9acdb629df60eea31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f046c97_1539fe27",
+        "filename": "board/amenia/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-10-07T23:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f046c97_c9c3d552",
       "range": {
         "startLine": 501,
         "startChar": 42,
