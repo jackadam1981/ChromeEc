@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1fd62c37_9ffabf57",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:54Z",
+      "side": 1,
+      "message": "It\u0027s needed for the call to ina_disconnect() which is in board/cr50/rdd.c",
+      "parentUuid": "1fd62c37_5612d462",
+      "revId": "5926c26c14d0eb558ef15d6cc47add1c3e2e6583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd62c37_361f586b",
         "filename": "board/cr50/board.c",
         "patchSetId": 4
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "1fd62c37_7f1003b2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:54Z",
+      "side": 1,
+      "message": "It does compile without this because the previous patch doesn\u0027t have #define CONFIG_I2C_MASTER",
+      "parentUuid": "1fd62c37_361f586b",
+      "range": {
+        "startLine": 81,
+        "startChar": 19,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "5926c26c14d0eb558ef15d6cc47add1c3e2e6583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd62c37_f627a0ba",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 4
@@ -53,6 +95,30 @@
       "writtenOn": "2016-10-07T04:05:57Z",
       "side": 1,
       "message": "why did these lines have to move?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 48
+      },
+      "revId": "5926c26c14d0eb558ef15d6cc47add1c3e2e6583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_3f65eb3d",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:01:54Z",
+      "side": 1,
+      "message": "mruthven@ pointed out that this signal should really have been assigned initially to bank 0 since it\u0027s not being used for interrupts. So I changed it\u0027s gpio assignment to (0,11) and then it would have been the only one out of order of the bank 0 GPIOs. Since this signal wasn\u0027t being used until this patch, we felt it could be changed here. In addition, moving it keeps it grouped more closely with the two I2C input signals.",
+      "parentUuid": "1fd62c37_f627a0ba",
       "range": {
         "startLine": 47,
         "startChar": 0,
