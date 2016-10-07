@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fd62c37_9c3d2de2",
+        "filename": "cts/interrupt/dut.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-07T15:00:29Z",
+      "side": 1,
+      "message": "got_interrupt?\n\nBecause when busy_loop() sees the value, it\u0027s not in an interrupt context.",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "918436172e79940803fe4487c731446766412f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
