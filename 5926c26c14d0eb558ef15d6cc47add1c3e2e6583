@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "1fd62c37_5fe8a707",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T17:15:34Z",
+      "side": 1,
+      "message": "It may be that the prototypes for ina_connect and ina_disconnect() don\u0027t belong in rdd.h, but I don\u0027t think creating i2cm.h is the correct solution. Powering up and then powering down the INA chips is very board specific and not related to the i2cm driver. To me it\u0027s more like a case closed debugging feature for Reef/Gru to have access to the ICs for power measurements.",
+      "parentUuid": "1fd62c37_3f684bae",
+      "revId": "5926c26c14d0eb558ef15d6cc47add1c3e2e6583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd62c37_361f586b",
         "filename": "board/cr50/board.c",
         "patchSetId": 4
