@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3f0a105e_cfde7d2c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-07T07:57:08Z",
+      "side": 1,
+      "message": "I would move this even earlier in this function,\nfirst thing done, so it\u0027s clear that pd_comm_enabled (which is known at startup, is defined correctly for all other init calls",
+      "range": {
+        "startLine": 1500,
+        "startChar": 0,
+        "endLine": 1501,
+        "endChar": 47
+      },
+      "revId": "039d2d9b9bfb1ed7438ca8e2389b451f6f4254b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f7f70e8_6afbd75c",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -49,6 +72,52 @@
       "side": 1,
       "message": "Ah, I see now. Yeah, that\u0027s fine.",
       "parentUuid": "3f7f70e8_ca9f6300",
+      "revId": "039d2d9b9bfb1ed7438ca8e2389b451f6f4254b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f0a105e_2fbf49cd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-07T07:57:08Z",
+      "side": 1,
+      "message": "most of this used to be overriden (excepted setting drp_state \u003d , all the actual state/hardware changes it was doing were done again above at line 1490 ?)\nrather doing those random operation, maybe we should do simpler, just set \u0027drp_state\u0027 properly above.\nNot much else to do ?",
+      "range": {
+        "startLine": 1513,
+        "startChar": 0,
+        "endLine": 1518,
+        "endChar": 37
+      },
+      "revId": "039d2d9b9bfb1ed7438ca8e2389b451f6f4254b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f0a105e_efe1c1ea",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2775,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-07T07:57:08Z",
+      "side": 1,
+      "message": "maybe we should let all the dual_role_XXX() and pd_set_dual_role() as they currently are.\nbut defer all the actions in pd_set_dual_role() to the PD main loop\n\nby moving all the content of pd_set_dual_role() into a new function (e.g update_dual_role_config()), then have pd_set_dual_role only set \u0027drp_requested_state\u0027 and send a PD_EVENT_UPDATE_ROLE event to the PD tasks.\nIn the PD main loop, we would call update_dual_role_config() just after the task_wait_event if PD_EVENT_UPDATE_ROLE is set (calling tcpc_run just after it might be catch some bad transient state though , to be tested)",
+      "range": {
+        "startLine": 2775,
+        "startChar": 0,
+        "endLine": 2775,
+        "endChar": 60
+      },
       "revId": "039d2d9b9bfb1ed7438ca8e2389b451f6f4254b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
