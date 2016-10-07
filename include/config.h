@@ -833,6 +833,9 @@
 /* Support EC chip internal data EEPROM */
 #undef CONFIG_EEPROM
 
+/* Support eSPI interface */
+#undef CONFIG_ESPI
+
 /* Include code for handling external power */
 #define CONFIG_EXTPOWER
 
