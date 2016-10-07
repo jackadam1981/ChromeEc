@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f046c97_0901ed14",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-07T20:06:18Z",
+      "side": 1,
+      "message": "\"pulse\" might be a better term than \"toggle\".\n\nToggle \u003d off \u003c--\u003e on\nPulse \u003d off --\u003e on --\u003e off",
+      "range": {
+        "startLine": 228,
+        "startChar": 19,
+        "endLine": 228,
+        "endChar": 25
+      },
+      "revId": "8191b1aa15f64f16aa68e2a87ca6084895151af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
