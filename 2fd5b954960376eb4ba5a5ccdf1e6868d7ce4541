@@ -22,6 +22,30 @@
       "revId": "2fd5b954960376eb4ba5a5ccdf1e6868d7ce4541",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_1fd46fb1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2090,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-07T16:46:11Z",
+      "side": 1,
+      "message": "Shawn, once the auto toggle is enabled, PD_TASK will only loop around SNK_DISCONNECTED state but all of the existing code will be skipped, and the behavior I saw is that the CABLE_DET interrupt will trigger as soon as something is connect.\nIf a SNK is attached during this auto toggle, interrupt is triggered, TCPC-specific code in board.c will initialized TCPC and set Rd since PD_TASK is looping in SNK_DISCONNECTED, the tcpc_drp_state flag will be update so that the original SNK_DISCONNECTED is resumed, which will detect a SNK device is attached and move on to SNK_DISCONNECTED_DEBOUNCE.\nIf a SRC is attached, interrupt is triggered, same sequence will execute, and since we set to Rd, get_cc will return CC_OPEN, then will check if DRP is enabled. In S0 which DRP is set to manual toggle, it will transition to SRC_DISCONNECTED and detected the SRC. In S5 which DRP is set to force sink, it will just stay in SNK_DISCONNECTED, and when the counter is reached, enter back into auto-toggle/low power mode, but since CABLE_DET will remains high and it is only trigger on rising edge, it will not trigger again while the SRC continue to stay attached. In this case, a HOOK_CHIPSET_RESUME is added to force it to wake up if the system goes to S0.",
+      "parentUuid": "820f21e2_c2a5380c",
+      "range": {
+        "startLine": 2090,
+        "startChar": 3,
+        "endLine": 2090,
+        "endChar": 48
+      },
+      "revId": "2fd5b954960376eb4ba5a5ccdf1e6868d7ce4541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
