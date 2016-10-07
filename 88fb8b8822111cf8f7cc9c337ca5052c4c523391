@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "1fd62c37_ca3d13ea",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T18:05:20Z",
+      "side": 1,
+      "message": "can you mention this in the comment?",
+      "parentUuid": "1fd62c37_b9c8fb6f",
+      "range": {
+        "startLine": 87,
+        "startChar": 34,
+        "endLine": 87,
+        "endChar": 39
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd62c37_b666c81c",
         "filename": "chip/g/i2cm.c",
         "patchSetId": 4
@@ -342,6 +366,30 @@
     },
     {
       "key": {
+        "uuid": "9f9bfc7b_955ae681",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T18:05:20Z",
+      "side": 1,
+      "message": "can you add this comment please.",
+      "parentUuid": "1fd62c37_b63da8ea",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 109,
+        "endChar": 47
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd62c37_162a1c97",
         "filename": "chip/g/i2cm.c",
         "patchSetId": 4
@@ -424,6 +472,30 @@
       "side": 1,
       "message": "They come originally from the H1 chip spec. However, the current version of the spec has suggested values based on a 26 MHz bus clock and H1 is at 24 MHz. In addition, for 100 and 400 kHz, I have made phase0 longer because the external pullups are too weak. I have an ask of gchips to get me updated suggested values for 24 MHz.\n\nI have tested at 100 and 400 kHz. I can\u0027t test 1000 at this time because the rise time on both Reef and Gru is too slow (\u003e iuSec) to run at that speed. I have highlighted the issue to HW team. Since Reef only has 4 INAs, if I get stronger pullups then I may be able to test 1000 kHz.\n\nAdded a TODO comment to document the current state.",
       "parentUuid": "1fd62c37_562094b6",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 3
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fc21c70_3dd85b10",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T18:05:20Z",
+      "side": 1,
+      "message": "please open a bug to track this and mention it in the patch description",
+      "parentUuid": "1fd62c37_99a41fb6",
       "range": {
         "startLine": 126,
         "startChar": 0,
@@ -529,6 +601,30 @@
       "writtenOn": "2016-10-07T04:00:40Z",
       "side": 1,
       "message": "byte_count and j should be internal in this block",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 14
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fc21c70_dd195feb",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T18:05:20Z",
+      "side": 1,
+      "message": "this has not been addressed",
+      "parentUuid": "1fd62c37_3604f824",
       "range": {
         "startLine": 198,
         "startChar": 0,
