@@ -324,6 +324,8 @@ const void * const usb_strings[] = {
 	[USB_STR_EC_NAME] = USB_STRING_DESC("EC"),
 	[USB_STR_UPGRADE_NAME] = USB_STRING_DESC("Firmware upgrade"),
 	[USB_STR_SPI_NAME] = USB_STRING_DESC("AP EC upgrade"),
+	[USB_STR_SERIALNO] = USB_STRING_DESC(DEFAULT_SERIALNO),
+	[USB_STR_I2C_NAME] = USB_STRING_DESC("I2C"),
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 #endif
