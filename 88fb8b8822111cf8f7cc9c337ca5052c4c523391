@@ -249,6 +249,30 @@
     },
     {
       "key": {
+        "uuid": "1f046c97_a6cd6688",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T19:47:57Z",
+      "side": 1,
+      "message": "I updated the comment that clarifies that it\u0027s a 25 msec timer and that it\u0027s based off a worst case 100 kHz clock.",
+      "parentUuid": "1fd62c37_ca3d13ea",
+      "range": {
+        "startLine": 87,
+        "startChar": 34,
+        "endLine": 87,
+        "endChar": 39
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd62c37_b666c81c",
         "filename": "chip/g/i2cm.c",
         "patchSetId": 4
@@ -390,6 +414,30 @@
     },
     {
       "key": {
+        "uuid": "1f046c97_460c72f7",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T19:47:57Z",
+      "side": 1,
+      "message": "I modified the comment to make it more specific.",
+      "parentUuid": "9f9bfc7b_955ae681",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 109,
+        "endChar": 47
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd62c37_162a1c97",
         "filename": "chip/g/i2cm.c",
         "patchSetId": 4
@@ -496,6 +544,30 @@
       "side": 1,
       "message": "please open a bug to track this and mention it in the patch description",
       "parentUuid": "1fd62c37_99a41fb6",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 3
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f046c97_46e592f5",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T19:47:57Z",
+      "side": 1,
+      "message": "I opened a new issue to track the need to update the phasesteps based both off 24 MHz bus clock and when the rise time issue is fixed in HW.",
+      "parentUuid": "9fc21c70_3dd85b10",
       "range": {
         "startLine": 126,
         "startChar": 0,
@@ -625,6 +697,30 @@
       "side": 1,
       "message": "this has not been addressed",
       "parentUuid": "1fd62c37_3604f824",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 14
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f046c97_6601aeaf",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-07T19:47:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_dd195feb",
       "range": {
         "startLine": 198,
         "startChar": 0,
