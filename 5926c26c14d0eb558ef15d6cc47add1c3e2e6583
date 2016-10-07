@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1fd62c37_3f684bae",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-10-07T17:07:56Z",
+      "side": 1,
+      "message": "ina_connect and disconnect dont have anything to do with rdd. There should probably be a i2cm.h",
+      "parentUuid": "1fd62c37_9ffabf57",
+      "revId": "5926c26c14d0eb558ef15d6cc47add1c3e2e6583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd62c37_361f586b",
         "filename": "board/cr50/board.c",
         "patchSetId": 4
