@@ -105,6 +105,24 @@
       "revId": "66ebf44ddb5536508f8d0bc3f9ba706ece0374fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f046c97_352d1aaf",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-10-07T23:39:10Z",
+      "side": 1,
+      "message": "That\u0027s fine. The purpose of this loop is to wait for the accel to boot up.",
+      "parentUuid": "3f7f70e8_2a1b9f8b",
+      "revId": "66ebf44ddb5536508f8d0bc3f9ba706ece0374fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
