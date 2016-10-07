@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f046c97_c96bd517",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-07T20:56:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f0a105e_cfde7d2c",
+      "range": {
+        "startLine": 1500,
+        "startChar": 0,
+        "endLine": 1501,
+        "endChar": 47
+      },
+      "revId": "039d2d9b9bfb1ed7438ca8e2389b451f6f4254b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f7f70e8_6afbd75c",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -101,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "1f046c97_a9709900",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-07T20:56:01Z",
+      "side": 1,
+      "message": "Yes, it\u0027s fine to just initialize drp_state, as long as our initial role is sink (if it were source, we would have to switch out of it potentially) - PD_ROLE_DEFAULT is initialized to PD_ROLE_SINK, so we\u0027re fine.",
+      "parentUuid": "3f0a105e_2fbf49cd",
+      "range": {
+        "startLine": 1513,
+        "startChar": 0,
+        "endLine": 1518,
+        "endChar": 37
+      },
+      "revId": "039d2d9b9bfb1ed7438ca8e2389b451f6f4254b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f0a105e_efe1c1ea",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -112,6 +160,30 @@
       "writtenOn": "2016-10-07T07:57:08Z",
       "side": 1,
       "message": "maybe we should let all the dual_role_XXX() and pd_set_dual_role() as they currently are.\nbut defer all the actions in pd_set_dual_role() to the PD main loop\n\nby moving all the content of pd_set_dual_role() into a new function (e.g update_dual_role_config()), then have pd_set_dual_role only set \u0027drp_requested_state\u0027 and send a PD_EVENT_UPDATE_ROLE event to the PD tasks.\nIn the PD main loop, we would call update_dual_role_config() just after the task_wait_event if PD_EVENT_UPDATE_ROLE is set (calling tcpc_run just after it might be catch some bad transient state though , to be tested)",
+      "range": {
+        "startLine": 2775,
+        "startChar": 0,
+        "endLine": 2775,
+        "endChar": 60
+      },
+      "revId": "039d2d9b9bfb1ed7438ca8e2389b451f6f4254b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f046c97_ac7307a4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2775,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-07T20:56:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f0a105e_efe1c1ea",
       "range": {
         "startLine": 2775,
         "startChar": 0,
