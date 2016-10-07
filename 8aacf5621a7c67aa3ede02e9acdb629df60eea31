@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1f046c97_d58fe6de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-07T23:34:55Z",
+      "side": 1,
+      "message": "Ah, I see. Thanks.",
+      "parentUuid": "1f046c97_b570ea00",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "8aacf5621a7c67aa3ede02e9acdb629df60eea31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f046c97_c9c3d552",
         "filename": "board/amenia/board.c",
         "patchSetId": 2
