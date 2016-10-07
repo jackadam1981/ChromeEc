@@ -1,0 +1,337 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fd2c819_645304e1",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T04:00:40Z",
+      "side": 1,
+      "message": "is this used anywhere else but in i2cm.c? If not - it should be defined there.",
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_76cdd02b",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T04:00:40Z",
+      "side": 1,
+      "message": "is this not a sequence, this is a bitmap to write into I2C_INST",
+      "range": {
+        "startLine": 33,
+        "startChar": 27,
+        "endLine": 33,
+        "endChar": 54
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_b69488f0",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T04:00:40Z",
+      "side": 1,
+      "message": "this is the register address, right?",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_567c14b9",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T04:00:40Z",
+      "side": 1,
+      "message": "does it end up with the same bitmask as the one written into I2C_INST?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 21
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_36a0783d",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T04:00:40Z",
+      "side": 1,
+      "message": "does this mean max poll time is 25 ms?\n\nShould it be dependent on the clock speed?",
+      "range": {
+        "startLine": 87,
+        "startChar": 34,
+        "endLine": 87,
+        "endChar": 39
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_b666c81c",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T04:00:40Z",
+      "side": 1,
+      "message": "this and below: looks like a function call, but in fact it modifies the argument. This is very counterintuitive.",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 28
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_f643206b",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T04:00:40Z",
+      "side": 1,
+      "message": "what about using GFIELD_MASK() for single bit fields? No need in \u00271 \u003c\u003c\u0027 in that case",
+      "range": {
+        "startLine": 95,
+        "startChar": 37,
+        "endLine": 95,
+        "endChar": 74
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_b63da8ea",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T04:00:40Z",
+      "side": 1,
+      "message": "you mean INTB and all bits above it indicate error? Please say it in the comment.",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 109,
+        "endChar": 47
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_162a1c97",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T04:00:40Z",
+      "side": 1,
+      "message": "these enum names are very hard to distinquish from local variables in functions.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 14
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_562094b6",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T04:00:40Z",
+      "side": 1,
+      "message": "where do these divisor and phase steps numbers come from?\n\nDid you have a chance to test all clock speeds?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 3
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_f6156056",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T04:00:40Z",
+      "side": 1,
+      "message": "this will not disable it.",
+      "range": {
+        "startLine": 146,
+        "startChar": 32,
+        "endLine": 146,
+        "endChar": 44
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_d61a6486",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T04:00:40Z",
+      "side": 1,
+      "message": "how about writing zero into I2C_INST at this point to make sure that it does not do anything immediately when enabled.",
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_3604f824",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T04:00:40Z",
+      "side": 1,
+      "message": "byte_count and j should be internal in this block",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 14
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_f600c011",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T04:00:40Z",
+      "side": 1,
+      "message": "no need to \u0026\u0026 0xff here",
+      "range": {
+        "startLine": 228,
+        "startChar": 19,
+        "endLine": 228,
+        "endChar": 26
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd62c37_b60a482e",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-07T04:00:40Z",
+      "side": 1,
+      "message": "where is this defined?",
+      "range": {
+        "startLine": 465,
+        "startChar": 17,
+        "endLine": 465,
+        "endChar": 31
+      },
+      "revId": "88fb8b8822111cf8f7cc9c337ca5052c4c523391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
