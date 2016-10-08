@@ -45,6 +45,30 @@
       "revId": "4deed8dc1590abd67d6fe01345efc6878f72ee06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f046c97_a0fae656",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-08T01:37:16Z",
+      "side": 1,
+      "message": "I just tried including it - it brings in a lot of other includes which start conflicting with the system level definitions.\n\nIt is probably possible to somehow rectify, but should be a separate change.",
+      "parentUuid": "1f046c97_e019feea",
+      "range": {
+        "startLine": 159,
+        "startChar": 27,
+        "endLine": 159,
+        "endChar": 34
+      },
+      "revId": "4deed8dc1590abd67d6fe01345efc6878f72ee06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
