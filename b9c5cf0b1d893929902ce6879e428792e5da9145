@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f046c97_fb8ad3d0",
+        "filename": "board/kefka/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-08T16:20:48Z",
+      "side": 1,
+      "message": "Can simplify to gpio_set_level(GPIO_TRACKPAD_PWREN, enable).",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 8
+      },
+      "revId": "b9c5cf0b1d893929902ce6879e428792e5da9145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f046c97_1beb6f6c",
+        "filename": "board/kefka/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-08T16:20:48Z",
+      "side": 1,
+      "message": "Indentation is messed up here.",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 2
+      },
+      "revId": "b9c5cf0b1d893929902ce6879e428792e5da9145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
