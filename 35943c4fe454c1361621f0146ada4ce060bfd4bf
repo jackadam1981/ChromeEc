@@ -22,6 +22,30 @@
       "revId": "35943c4fe454c1361621f0146ada4ce060bfd4bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfa814f6_bb97733d",
+        "filename": "chip/g/i2cm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-10T19:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f046c97_60dbce0f",
+      "range": {
+        "startLine": 129,
+        "startChar": 9,
+        "endLine": 129,
+        "endChar": 28
+      },
+      "revId": "35943c4fe454c1361621f0146ada4ce060bfd4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
