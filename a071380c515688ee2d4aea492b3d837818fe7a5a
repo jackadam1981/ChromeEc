@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfa814f6_d2fa2458",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-10-10T17:08:38Z",
+      "side": 1,
+      "message": "Why do we need a \"set\" keyword?",
+      "range": {
+        "startLine": 1469,
+        "startChar": 3,
+        "endLine": 1469,
+        "endChar": 42
+      },
+      "revId": "a071380c515688ee2d4aea492b3d837818fe7a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
