@@ -7,6 +7,8 @@
 #include "registers.h"
 #include "pmu.h"
 
+static const int freq = 256000;
+
 void clock_init(void)
 {
 	pmu_clock_en(PERIPH_TIMEHS0);
@@ -55,4 +57,12 @@ void clock_enable_module(enum module_id module, int enable)
 		break;
 	}
 	return;
+}
+
+/**
+ * Return the current clock frequency in Hz.
+ */
+int clock_get_freq(void)
+{
+	return freq;
 }

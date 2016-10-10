@@ -165,4 +165,9 @@ static inline int time_after(uint32_t a, uint32_t b)
 	return (int32_t)(b - a) < 0;
 }
 
+/**
+ * Returns a free running microsecond clock counter.
+ */
+uint32_t clock_source_read(void);
+
 #endif  /* __CROS_EC_TIMER_H */

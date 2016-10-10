@@ -32,9 +32,11 @@ void __hw_clock_event_clear(void)
 	LM4_TIMER_IMR(6) &= ~0x10;
 }
 
-uint32_t __hw_clock_source_read(void)
+
+/* Returns the value of the free-running counter used as clock. */
+timer_cnt_t __hw_timer_ticks_read(void)
 {
-	return 0xffffffff - LM4_TIMER_TAV(6);
+	return (timer_cnt_t){ 0xffffffff - LM4_TIMER_TAV(6), 0 };
 }
 
 void __hw_clock_source_set(uint32_t ts)

@@ -6,6 +6,7 @@
 /* Timer module for Chrome EC operating system */
 
 #include "atomic.h"
+#include "clock.h"
 #include "console.h"
 #include "hooks.h"
 #include "hwtimer.h"
@@ -96,7 +97,7 @@ void process_timers(int overflow)
 #ifndef CONFIG_HW_SPECIFIC_UDELAY
 void udelay(unsigned us)
 {
-	unsigned t0 = __hw_clock_source_read();
+	unsigned t0 = clock_source_read();
 
 	/*
 	 * udelay() may be called with interrupts disabled, so we can't rely on
@@ -108,7 +109,7 @@ void udelay(unsigned us)
 	 * subtraction below can overflow.  That's acceptable, because the
 	 * watchdog timer would have tripped long before that anyway.
 	 */
-	while (__hw_clock_source_read() - t0 <= us)
+	while (clock_source_read() - t0 <= us)
 		;
 }
 #endif
@@ -151,7 +152,7 @@ void timer_cancel(task_id_t tskid)
 void usleep(unsigned us)
 {
 	uint32_t evt = 0;
-	uint32_t t0 = __hw_clock_source_read();
+	uint32_t t0 = clock_source_read();
 
 	/* If task scheduling has not started, just delay */
 	if (!task_start_called()) {
@@ -163,7 +164,7 @@ void usleep(unsigned us)
 	do {
 		evt |= task_wait_event(us);
 	} while (!(evt & TASK_EVENT_TIMER) &&
-		((__hw_clock_source_read() - t0) < us));
+		((clock_source_read() - t0) < us));
 
 	/* Re-queue other events which happened in the meanwhile */
 	if (evt)
@@ -175,18 +176,30 @@ timestamp_t get_time(void)
 {
 	timestamp_t ts;
 	ts.le.hi = clksrc_high;
-	ts.le.lo = __hw_clock_source_read();
+	ts.le.lo = clock_source_read();
 	if (ts.le.hi != clksrc_high) {
 		ts.le.hi = clksrc_high;
-		ts.le.lo = __hw_clock_source_read();
+		ts.le.lo = clock_source_read();
 	}
 	return ts;
 }
 
+uint32_t clock_source_read(void)
+{
+	timer_cnt_t tc = __hw_timer_ticks_read();
+	uint32_t us = (0xFFFFFFFF / clock_get_freq()) *
+			SECOND * tc.rollover_cnt;
+
+	if (clock_get_freq() / SECOND)
+		return us + (tc.ticks / (clock_get_freq() / SECOND));
+	else
+		return us + (tc.ticks * (SECOND / clock_get_freq()));
+}
+
 clock_t clock(void)
 {
-	/* __hw_clock_source_read() returns a microsecond resolution timer.*/
-	return (clock_t) __hw_clock_source_read() / 1000;
+	/* clock_source_read() returns a microsecond resolution timer.*/
+	return (clock_t) clock_source_read() / 1000;
 }
 
 void force_time(timestamp_t ts)

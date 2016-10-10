@@ -105,10 +105,16 @@ int spi_image_load(uint32_t offset)
 
 }
 
+uint32_t clock_source_read(void)
+{
+	return __hw_timer_ticks_read().ticks;
+}
+
 void udelay(unsigned us)
 {
-	uint32_t t0 = __hw_clock_source_read();
-	while (__hw_clock_source_read() - t0 < us)
+	uint32_t t0 = clock_source_read();
+
+	while (clock_source_read() - t0 < us)
 		;
 }
 
@@ -135,7 +141,7 @@ timestamp_t get_time(void)
 	timestamp_t ts;
 
 	ts.le.hi = 0;
-	ts.le.lo = __hw_clock_source_read();
+	ts.le.lo = clock_source_read();
 	return ts;
 }
 

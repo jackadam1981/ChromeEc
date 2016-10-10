@@ -76,9 +76,9 @@ void __hw_clock_event_set(uint32_t deadline)
 
 	/* mark min event value */
 	evt_expired_us = deadline;
-	evt_cnt_us = deadline - __hw_clock_source_read();
+	evt_cnt_us = deadline - clock_source_read();
 #if DEBUG_TMR
-	evt_cnt_us_dbg = deadline - __hw_clock_source_read();
+	evt_cnt_us_dbg = deadline - clock_source_read();
 #endif
 	/* Deadline is behind current timer */
 	if (evt_cnt_us < 0)
@@ -213,13 +213,13 @@ void hw_clock_source_set_preload(uint32_t ts, uint8_t clear)
 }
 
 /* Returns the value of the free-running counter used as clock. */
-uint32_t __hw_clock_source_read(void)
+timer_cnt_t __hw_timer_ticks_read(void)
 {
-	uint32_t cnt = NPCX_ITCNT32;
+	timer_cnt_t ts = {TICK_ITIM32_MAX_CNT - NPCX_ITCNT32, 0};
 #if DEBUG_TMR
-	cur_cnt_us_dbg = TICK_ITIM32_MAX_CNT - cnt;
+	cur_cnt_us_dbg = ts.ticks;
 #endif
-	return TICK_ITIM32_MAX_CNT - cnt;
+	return ts;
 }
 
 /* Override the current value of the hardware counter */

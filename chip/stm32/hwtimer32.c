@@ -38,9 +38,9 @@ void __hw_clock_event_clear(void)
 	STM32_TIM_DIER(TIM_CLOCK32) &= ~2;
 }
 
-uint32_t __hw_clock_source_read(void)
+timer_cnt_t __hw_timer_ticks_read(void)
 {
-	return STM32_TIM32_CNT(TIM_CLOCK32);
+	return (timer_cnt_t){ STM32_TIM32_CNT(TIM_CLOCK32), 0 };
 }
 
 void __hw_clock_source_set(uint32_t ts)
