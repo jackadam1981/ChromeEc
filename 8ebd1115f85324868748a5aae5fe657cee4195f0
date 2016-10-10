@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dfa814f6_c6a42612",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-10-10T21:43:49Z",
+      "side": 1,
+      "message": "I don\u0027t think so. And currently servo wont override the power button while it is pressed so we shouldn\u0027t. Done",
+      "parentUuid": "dfa814f6_061f4ece",
+      "range": {
+        "startLine": 308,
+        "startChar": 5,
+        "endLine": 308,
+        "endChar": 29
+      },
+      "revId": "8ebd1115f85324868748a5aae5fe657cee4195f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfa814f6_06e46ecc",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-10-10T21:23:08Z",
       "side": 1,
       "message": "I\u0027d say \"Forced\", because it\u0027s not simulated - the EC/AP actually see it being pressed.",
+      "range": {
+        "startLine": 314,
+        "startChar": 42,
+        "endLine": 314,
+        "endChar": 51
+      },
+      "revId": "8ebd1115f85324868748a5aae5fe657cee4195f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfa814f6_666572d4",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-10-10T21:43:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfa814f6_06e46ecc",
       "range": {
         "startLine": 314,
         "startChar": 42,
