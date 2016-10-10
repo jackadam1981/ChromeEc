@@ -8,6 +8,7 @@
 #include "hwtimer.h"
 #include "registers.h"
 #include "task.h"
+#include "timer.h"
 #include "util.h"
 
 /* The frequency of timerls is 256k so there are about 4usec/tick */
@@ -34,7 +35,7 @@ static inline uint32_t usec_to_ticks(uint32_t next_evt_us)
 uint32_t __hw_clock_event_get(void)
 {
 	/* At what time will the next event fire? */
-	return __hw_clock_source_read() +
+	return clock_source_read() +
 		ticks_to_usecs(GREG32(TIMELS, EVENT(VALUE)));
 }
 
@@ -58,7 +59,7 @@ void __hw_clock_event_set(uint32_t deadline)
 	__hw_clock_event_clear();
 
 	/* How long from the current time to the deadline? */
-	event_time = (deadline - __hw_clock_source_read());
+	event_time = (deadline - clock_source_read());
 
 	/* Convert event_time to ticks rounding up */
 	GREG32(TIMELS, EVENT(LOAD)) =
@@ -81,13 +82,10 @@ void __hw_clock_event_irq(void)
 }
 DECLARE_IRQ(GC_IRQNUM_TIMELS0_TIMINT1, __hw_clock_event_irq, 1);
 
-uint32_t __hw_clock_source_read(void)
+timer_cnt_t __hw_timer_ticks_read(void)
 {
-	/*
-	 * Return the current time in usecs. Since the counter counts down,
-	 * we have to invert the value.
-	 */
-	return ticks_to_usecs(TIMELS_MAX - GREG32(TIMELS, SOURCE(VALUE)));
+	/* Since the counter counts down, we have to invert the value. */
+	return (timer_cnt_t){ TIMELS_MAX - GREG32(TIMELS, SOURCE(VALUE)), 0 };
 }
 
 void __hw_clock_source_set(uint32_t ts)

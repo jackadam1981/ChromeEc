@@ -8,6 +8,12 @@
 #ifndef __CROS_EC_HWTIMER_H
 #define __CROS_EC_HWTIMER_H
 
+/* Data structure for the counter of the hardware timer */
+typedef struct {
+	uint32_t ticks;
+	uint32_t rollover_cnt;
+} timer_cnt_t;
+
 /**
  * Programs when the next timer should fire an interrupt.
  * deadline: timestamp of the event.
@@ -20,11 +26,11 @@ uint32_t __hw_clock_event_get(void);
 /* Cancel the next event programed by __hw_clock_event_set */
 void __hw_clock_event_clear(void);
 
-/* Returns the value of the free-running counter used as clock. */
-uint32_t __hw_clock_source_read(void);
-
 /* Override the current value of the hardware counter */
 void __hw_clock_source_set(uint32_t ts);
+
+/* Returns the current value of the hardware counter. */
+timer_cnt_t __hw_timer_ticks_read(void);
 
 /**
  * Enable clock to a timer.

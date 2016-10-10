@@ -13,6 +13,8 @@
 #include "timer.h"
 #include "util.h"
 
+#define TICK_PER_USEC (CPU_CLOCK / SECOND)
+
 /*
  * Timer 0 is the clock timer.
  * Timer 1 is the event timer.
@@ -32,7 +34,7 @@ void __hw_clock_event_set(uint32_t deadline)
 
 	__hw_clock_event_clear();
 
-	delta = deadline - __hw_clock_source_read();
+	delta = deadline - clock_source_read();
 
 	/* Convert the delta to ticks. */
 	ticks = delta * (clock_get_freq() / SECOND);
@@ -49,7 +51,7 @@ uint32_t __hw_clock_event_get(void)
 	uint32_t ticks;
 	/* Get the time of the next programmed deadline. */
 	ticks = ROTOR_MCU_TMR_TNCV(1);
-	return __hw_clock_source_read() + ((ticks * SECOND) / clock_get_freq());
+	return clock_source_read() + ((ticks * SECOND) / clock_get_freq());
 }
 
 void __hw_clock_event_clear(void)
@@ -72,20 +74,14 @@ void __hw_clock_event_irq(void)
 }
 DECLARE_IRQ(ROTOR_MCU_IRQ_TIMER_1, __hw_clock_event_irq, 1);
 
-uint32_t __hw_clock_source_read(void)
+timer_cnt_t __hw_timer_ticks_read(void)
 {
+	uint32_t ticks = 0xFFFFFFFF - ROTOR_MCU_TMR_TNCV(0);
 #ifdef BOARD_REI
-	/* uint32_t ticks = reload_val - ROTOR_MCU_TMR_TNCV(0); */
-	uint32_t ticks = 0xFFFFFFFF - ROTOR_MCU_TMR_TNCV(0);
-	/* Convert the ticks into microseconds. */
-	/* return ticks * (SECOND / clock_get_freq()); */
+	return (timer_cnt_t){ ticks, 0 };
 
-	return (ticks * (clock_get_freq() / SECOND));
 #else
-	/* Convert ticks to microseconds and account for the rollovers. */
-	uint32_t ticks = 0xFFFFFFFF - ROTOR_MCU_TMR_TNCV(0);
-	uint32_t us = (0xFFFFFFFF / clock_get_freq()) * rollover_cnt * SECOND;
-	return us + ((ticks * SECOND) / clock_get_freq());
+	return (timer_cnt_t){ ticks, rollover_cnt };
 #endif /* defined(BOARD_REI) */
 }
 
