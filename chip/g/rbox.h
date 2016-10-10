@@ -6,6 +6,25 @@
 #ifndef __CROS_RBOX_H
 #define __CROS_RBOX_H
 
-/* Simultate a power button press */
-void rbox_press_power_btn(int ms);
+/**
+ * Return true if the power button output shows it is pressed
+ */
+int rbox_powerbtn_is_pressed(void);
+
+/**
+ * Return true if power button rbox output override is enabled
+ */
+int rbox_powerbtn_override_is_enabled(void);
+
+/**
+ * Disable the output override
+ */
+void rbox_powerbtn_disable_override(void);
+
+/**
+ * Override power button output to simulate a power button press
+ *
+ * @param powerbtn_val	1 to simulate press 0 for release
+ */
+void rbox_powerbtn_override(int powerbtn_val);
 #endif  /* __CROS_RBOX_H */

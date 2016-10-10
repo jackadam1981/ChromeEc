@@ -280,18 +280,43 @@ DECLARE_SAFE_CONSOLE_COMMAND(ecrst, command_ec_rst,
 static int command_powerbtn(int argc, char **argv)
 {
 	char *e;
+	int val;
 	int ms = 200;
 
-	if (argc == 2) {
-		ms = strtoi(argv[1], &e, 0);
-		if (*e)
+	if (argc > 1) {
+		if (!strcasecmp("reset", argv[1])) {
+			ccprintf("Disable powerbtn override\n");
+			rbox_powerbtn_disable_override();
+		} else if (!strcasecmp("pulse", argv[1])) {
+			if (argc == 3) {
+				ms = strtoi(argv[2], &e, 0);
+				if (*e)
+					return EC_ERROR_PARAM2;
+			}
+
+			ccprintf("Simulating %dms power button press\n", ms);
+
+			rbox_powerbtn_override(1);
+			msleep(ms);
+			rbox_powerbtn_override(0);
+
+			rbox_powerbtn_disable_override();
+		} else if (parse_bool(argv[1], &val)) {
+			if (val)
+				rbox_powerbtn_override(1);
+			else
+				rbox_powerbtn_override(0);
+		} else
 			return EC_ERROR_PARAM1;
 	}
-	ccprintf("Simulating %dms power button press\n", ms);
-	rbox_press_power_btn(ms);
 
+	ccprintf("%sPowerbtn: %s\n",
+		 rbox_powerbtn_override_is_enabled() ? "Simulated " : "",
+		 rbox_powerbtn_is_pressed() ? "pressed\n" : "released\n");
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(powerbtn, command_powerbtn,
-			"ms",
+			"[pulse [ms] | <BOOLEAN> | reset]",
 			"Simulate a power button press");
+
+
