@@ -200,7 +200,7 @@ void __idle(void)
 		sleep_delay_passed = timestamp_expired(next_sleep_time, 0);
 
 		/* Don't enable sleep if there is about to be an event */
-		next_evt_us = __hw_clock_event_get() - __hw_clock_source_read();
+		next_evt_us = __hw_clock_event_get() - clock_source_read();
 
 		/* If it hasn't yet been long enough, check again when it is */
 		if (!sleep_delay_passed)

@@ -107,9 +107,9 @@ static void vbus_vol_read_deferred(void)
 		/* if sniffer isn't started, always write to the first position */
 		temp_tail = (flag_started == 0) ?
 					0 : (vbus_vol_tail & (VBUS_ARRAY_SIZE - 1));
-		tstamp_bf = __hw_clock_source_read();
+		tstamp_bf = clock_source_read();
 		vol = ((ina2xx_read(0, INA2XX_REG_BUS_VOLT)*5) >> 2); /* *125/100 */
-		tstamp_af = __hw_clock_source_read();
+		tstamp_af = clock_source_read();
 		if (tstamp_bf > tstamp_af)
 			vbus_vol_array[temp_tail].tstamp =
 			((tstamp_bf + tstamp_af + 0xFFFF)>>1) & 0xFFFF;
@@ -137,9 +137,9 @@ static void vbus_curr_read_deferred(void)
 		/* if sniffer isn't started, always write to the first position */
 		temp_tail = (flag_started == 0) ?
 					0 : vbus_curr_tail & (VBUS_ARRAY_SIZE - 1);
-		tstamp_bf = __hw_clock_source_read();
+		tstamp_bf = clock_source_read();
 		curr = ina2xx_read(0, INA2XX_REG_CURRENT);
-		tstamp_af = __hw_clock_source_read();
+		tstamp_af = clock_source_read();
 		if (tstamp_bf > tstamp_af)
 			vbus_curr_array[temp_tail].tstamp =
 			((tstamp_bf + tstamp_af + 0xFFFF)>>1) & 0xFFFF;
@@ -159,7 +159,7 @@ static inline void led_set_activity(int ch)
 {
 	static int accumul[2];
 	static uint32_t last_ts[2];
-	uint32_t now = __hw_clock_source_read();
+	uint32_t now = clock_source_read();
 	int delta = now - last_ts[ch];
 	last_ts[ch] = now;
 	accumul[ch] = MAX(0, accumul[ch] + (30000 - delta));
@@ -271,7 +271,7 @@ void tim_rx1_handler(uint32_t stat)
 	uint32_t mask = idx ? 0xFF00 : 0x00FF;
 	uint32_t next = idx ? 0x0001 : 0x0100;
 
-	sample_tstamp[idx] = __hw_clock_source_read();
+	sample_tstamp[idx] = clock_source_read();
 	sample_seq[idx] = ((seq++ << 3) & 0x0ff8) |
 			(SNIFFER_CHANNEL_CC1<<12);
 	if (filled_dma & next) {
@@ -293,7 +293,7 @@ void tim_rx2_handler(uint32_t stat)
 	uint32_t next = idx ? 0x00010000 : 0x01000000;
 
 	idx += 2;
-	sample_tstamp[idx] = __hw_clock_source_read();
+	sample_tstamp[idx] = clock_source_read();
 	sample_seq[idx] = ((seq++ << 3) & 0x0ff8) |
 			(SNIFFER_CHANNEL_CC2<<12);
 	if (filled_dma & next) {
@@ -484,14 +484,14 @@ int wait_packet(int pol, uint32_t min_edges, uint32_t timeout_us)
 {
 	stm32_dma_chan_t *chan = dma_get_channel(pol ? DMAC_TIM_RX2
 						     : DMAC_TIM_RX1);
-	uint32_t t0 = __hw_clock_source_read();
+	uint32_t t0 = clock_source_read();
 	uint32_t c0 = chan->cndtr;
 	uint32_t t_gap = t0;
 	uint32_t c_gap = c0;
 	uint32_t total_edges = 0;
 
 	while (1) {
-		uint32_t t = __hw_clock_source_read();
+		uint32_t t = clock_source_read();
 		uint32_t c = chan->cndtr;
 		if (t - t0 > timeout_us) /* Timeout */
 			break;
@@ -511,7 +511,7 @@ int wait_packet(int pol, uint32_t min_edges, uint32_t timeout_us)
 			}
 		}
 	}
-	return (__hw_clock_source_read() - t0 > timeout_us);
+	return (clock_source_read() - t0 > timeout_us);
 }
 
 uint8_t recording_enable(uint8_t new_mask)

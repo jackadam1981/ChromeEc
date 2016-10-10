@@ -147,7 +147,7 @@ static void motion_sense_insert_flush(struct motion_sensor_t *sensor)
 	struct ec_response_motion_sensor_data vector;
 	vector.flags = MOTIONSENSE_SENSOR_FLAG_FLUSH |
 		       MOTIONSENSE_SENSOR_FLAG_TIMESTAMP;
-	vector.timestamp = __hw_clock_source_read();
+	vector.timestamp = clock_source_read();
 	vector.sensor_num = sensor - motion_sensors;
 
 	motion_sense_fifo_add_unit(&vector, sensor, 0);
@@ -157,7 +157,7 @@ static void motion_sense_insert_timestamp(void)
 {
 	struct ec_response_motion_sensor_data vector;
 	vector.flags = MOTIONSENSE_SENSOR_FLAG_TIMESTAMP;
-	vector.timestamp = __hw_clock_source_read();
+	vector.timestamp = clock_source_read();
 	vector.sensor_num = 0;
 	motion_sense_fifo_add_unit(&vector, NULL, 0);
 }
@@ -170,7 +170,7 @@ static void motion_sense_get_fifo_info(
 	fifo_info->count = fifo_queue_count;
 	fifo_info->total_lost = motion_sense_fifo_lost;
 	mutex_unlock(&g_sensor_mutex);
-	fifo_info->timestamp = __hw_clock_source_read();
+	fifo_info->timestamp = clock_source_read();
 }
 #endif
 

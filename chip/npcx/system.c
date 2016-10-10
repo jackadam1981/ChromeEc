@@ -760,6 +760,7 @@ void print_system_rtc(enum console_channel ch)
 
 static int command_system_rtc(int argc, char **argv)
 {
+	ccprintf("Freq: %d\n", clock_get_apb2_freq());
 	if (argc == 3 && !strcasecmp(argv[1], "set")) {
 		char *e;
 		uint32_t t = strtoi(argv[2], &e, 0);

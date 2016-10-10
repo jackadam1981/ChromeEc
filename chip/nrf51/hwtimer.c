@@ -89,11 +89,11 @@ void __hw_clock_event_clear(void)
 		1 << NRF51_TIMER_COMPARE_BIT(CC_INTERRUPT);
 }
 
-uint32_t __hw_clock_source_read(void)
+timer_cnt_t __hw_timer_ticks_read(void)
 {
 	/* to capture the current value */
 	NRF51_TIMER_CAPTURE(HWTIMER, CC_CURRENT) = 1;
-	return NRF51_TIMER_CC(HWTIMER, CC_CURRENT) + shift;
+	return (timer_cnt_t){ NRF51_TIMER_CC(HWTIMER, CC_CURRENT) + shift, 0 };
 }
 
 void __hw_clock_source_set(uint32_t ts)
