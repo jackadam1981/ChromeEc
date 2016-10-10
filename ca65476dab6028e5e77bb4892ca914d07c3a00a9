@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f00a4b2_78522132",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-10T08:38:19Z",
+      "side": 1,
+      "message": "this TLA is a bit WIP",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "ca65476dab6028e5e77bb4892ca914d07c3a00a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f00a4b2_382389c6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-10T08:38:19Z",
+      "side": 1,
+      "message": "static ?",
+      "range": {
+        "startLine": 1446,
+        "startChar": 0,
+        "endLine": 1446,
+        "endChar": 24
+      },
+      "revId": "ca65476dab6028e5e77bb4892ca914d07c3a00a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
