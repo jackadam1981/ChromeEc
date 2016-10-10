@@ -93,6 +93,30 @@
       "revId": "b9c5cf0b1d893929902ce6879e428792e5da9145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfa814f6_9b74375e",
+        "filename": "board/kefka/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-10T21:05:27Z",
+      "side": 1,
+      "message": "What you had was fine (and correct I think, it should be the host\u0027s decision), I was just suggesting that your code indentation (eg. space count / alignment) was not correct.",
+      "parentUuid": "5fe7c456_e0c7a20b",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 2
+      },
+      "revId": "b9c5cf0b1d893929902ce6879e428792e5da9145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
