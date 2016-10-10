@@ -192,7 +192,8 @@ void __hw_clock_event_clear(void)
 	STM32_TIM_DIER(TIM_CLOCK_MSB) &= ~2;
 }
 
-uint32_t __hw_clock_source_read(void)
+/* Returns the value of the free-running counter used as clock. */
+timer_cnt_t __hw_timer_ticks_read(void)
 {
 	uint32_t hi;
 	uint32_t lo;
@@ -203,7 +204,7 @@ uint32_t __hw_clock_source_read(void)
 		lo = STM32_TIM_CNT(TIM_CLOCK_LSB);
 	} while (hi != STM32_TIM_CNT(TIM_CLOCK_MSB));
 
-	return (hi << 16) | lo;
+	return (timer_cnt_t){ (hi << 16) | lo, 0 };
 }
 
 void __hw_clock_source_set(uint32_t ts)

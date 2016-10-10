@@ -63,7 +63,7 @@ static const uint32_t busyloop_us[I2C_FREQ_COUNT] = {
  */
 static int wait_isr(int port, int mask)
 {
-	uint32_t start = __hw_clock_source_read();
+	uint32_t start = clock_source_read();
 	uint32_t delta = 0;
 
 	do {
@@ -78,7 +78,7 @@ static int wait_isr(int port, int mask)
 		if ((isr & mask) == mask)
 			return EC_SUCCESS;
 
-		delta = __hw_clock_source_read() - start;
+		delta = clock_source_read() - start;
 
 		/**
 		 * Depending on the bus speed, busy loop for a while before

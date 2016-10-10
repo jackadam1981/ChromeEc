@@ -96,7 +96,7 @@ static void event_timer_clear_pending_isr(void)
 	task_clear_pending_irq(et_ctrl_regs[EVENT_EXT_TIMER].irq);
 }
 
-uint32_t __ram_code __hw_clock_source_read(void)
+timer_cnt_t __ram_code __hw_timer_ticks_read(void)
 {
 #if 0
 	/*
@@ -106,7 +106,7 @@ uint32_t __ram_code __hw_clock_source_read(void)
 	return IT83XX_ETWD_ETXCNTOR(FREE_EXT_TIMER_H);
 #else
 	/* TODO(crosbug.com/p/55044) */
-	return ext_observation_reg_read(FREE_EXT_TIMER_H);
+	return (timer_cnt_t){ ext_observation_reg_read(FREE_EXT_TIMER_H), 0 };
 #endif
 }
 
@@ -126,7 +126,7 @@ void __hw_clock_event_set(uint32_t deadline)
 	/* w/c interrupt status */
 	event_timer_clear_pending_isr();
 	/* microseconds to timer counter */
-	wait = deadline - __hw_clock_source_read();
+	wait = deadline - clock_source_read();
 	IT83XX_ETWD_ETXCNTLR(EVENT_EXT_TIMER) =
 		wait < EVENT_TIMER_COUNT_TO_US(0xffffffff) ?
 		EVENT_TIMER_US_TO_COUNT(wait) : 0xffffffff;
@@ -137,7 +137,7 @@ void __hw_clock_event_set(uint32_t deadline)
 
 uint32_t __hw_clock_event_get(void)
 {
-	uint32_t next_event_us = __hw_clock_source_read();
+	uint32_t next_event_us = clock_source_read();
 
 	/* bit0, event timer is enabled */
 	if (IT83XX_ETWD_ETXCTRL(EVENT_EXT_TIMER) & (1 << 0)) {
