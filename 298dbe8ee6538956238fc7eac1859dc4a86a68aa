@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfa814f6_26208ab6",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-10-10T21:37:03Z",
+      "side": 1,
+      "message": "Hey, could you also make this contingent on using the CCD PHY? We\u0027d prefer NOT to make the Cr50 device ID available to the AP directly, because Reasons.",
+      "range": {
+        "startLine": 609,
+        "startChar": 3,
+        "endLine": 609,
+        "endChar": 31
+      },
+      "revId": "298dbe8ee6538956238fc7eac1859dc4a86a68aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
