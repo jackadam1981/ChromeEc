@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcffee21_8fec45f1",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-11T20:24:06Z",
+      "side": 1,
+      "message": "clock? I would choose CC_SYSTEM instead.",
+      "range": {
+        "startLine": 31,
+        "startChar": 41,
+        "endLine": 31,
+        "endChar": 49
+      },
+      "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_8fa44512",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-11T20:24:06Z",
+      "side": 1,
+      "message": "Are these necessary? In gpio.inc, it looks like they will already be initialized as GPIO_INPUT.",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 316,
+        "endChar": 51
+      },
+      "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_aa8a4f17",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-11T20:24:06Z",
+      "side": 1,
+      "message": "typo: default",
+      "range": {
+        "startLine": 357,
+        "startChar": 37,
+        "endLine": 357,
+        "endChar": 43
+      },
+      "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_af14a1fc",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-11T20:24:06Z",
+      "side": 1,
+      "message": "nit: multi-line comment style.",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 3
+      },
+      "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_f4fc89d2",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-11T20:24:06Z",
+      "side": 1,
+      "message": "typo: connected",
+      "range": {
+        "startLine": 386,
+        "startChar": 51,
+        "endLine": 386,
+        "endChar": 60
+      },
+      "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab415e2d_1402f5e1",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-11T20:24:06Z",
+      "side": 1,
+      "message": "nit: Nothing on the first or last line of multi-line comments.\n\n    /*\n     * Like this.\n     */",
+      "range": {
+        "startLine": 391,
+        "startChar": 4,
+        "endLine": 392,
+        "endChar": 54
+      },
+      "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_8a70b333",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-11T20:24:06Z",
+      "side": 1,
+      "message": "This is only 100ms not 190ms like your above comment states.",
+      "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_ef818938",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-11T20:24:06Z",
+      "side": 1,
+      "message": "Is this wait sufficient? necessary? What exactly are you waiting for?",
+      "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
