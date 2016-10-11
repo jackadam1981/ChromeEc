@@ -79,6 +79,52 @@
       "revId": "42ce3504fe792842cbea30ead28adaa7f448e270",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_de81e138",
+        "filename": "include/hwtimer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-11T16:34:58Z",
+      "side": 1,
+      "message": "Why does the hardware timer module maintain the rollover count?",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "42ce3504fe792842cbea30ead28adaa7f448e270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_be7e1537",
+        "filename": "include/timer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-11T16:34:58Z",
+      "side": 1,
+      "message": "Is this just the equivalent of get_time().le.lo?\n\nIf so, get_time_lo() or get_time32()?",
+      "range": {
+        "startLine": 169,
+        "startChar": 3,
+        "endLine": 169,
+        "endChar": 52
+      },
+      "revId": "42ce3504fe792842cbea30ead28adaa7f448e270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
