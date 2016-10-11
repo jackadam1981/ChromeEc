@@ -1422,6 +1422,14 @@ static inline int get_typec_current_limit(int polarity, int cc1, int cc2)
 }
 
 /**
+ * Get current pd state
+ */
+enum pd_states pd_get_state(int port)
+{
+	return pd[port].task_state;
+}
+
+/**
  * Signal power request to indicate a charger update that affects the port.
  */
 void pd_set_new_power_request(int port)
