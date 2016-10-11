@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25d67f37_1f510f2d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-11T21:49:30Z",
+      "side": 1,
+      "message": "I think the 0 should be 400 here to specify 400 kHz port speed. I\u0027m not sure how the GPIO signal names can be used. I haven\u0027t fully looked into this, but I think they are used for when the common/i2c interface wants to \u0027bit-bang\u0027 the bus.",
+      "range": {
+        "startLine": 344,
+        "startChar": 30,
+        "endLine": 344,
+        "endChar": 60
+      },
+      "revId": "4eebd3126789127dfb0c54eb96e4bbd6ec8b2a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25d67f37_bf0d7b4e",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-10-11T21:49:30Z",
+      "side": 1,
+      "message": "I think the same pins are used on Gru for the I2C master",
+      "range": {
+        "startLine": 74,
+        "startChar": 51,
+        "endLine": 74,
+        "endChar": 67
+      },
+      "revId": "4eebd3126789127dfb0c54eb96e4bbd6ec8b2a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
