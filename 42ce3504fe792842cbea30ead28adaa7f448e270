@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f91ccce_9efb7d5f",
+        "filename": "chip/lm4/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-11T00:05:01Z",
+      "side": 1,
+      "message": "Extra line.",
+      "revId": "42ce3504fe792842cbea30ead28adaa7f448e270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfa814f6_21cfd4ad",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-11T00:05:01Z",
+      "side": 1,
+      "message": "I wonder why these motionsense functions are using (hw)clock_source_read() instead of get_time...",
+      "revId": "42ce3504fe792842cbea30ead28adaa7f448e270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f91ccce_9e437d6c",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-11T00:05:01Z",
+      "side": 1,
+      "message": "Remove this. Technically, in some cases it\u0027s not quite 1us resolution.",
+      "range": {
+        "startLine": 201,
+        "startChar": 46,
+        "endLine": 201,
+        "endChar": 56
+      },
+      "revId": "42ce3504fe792842cbea30ead28adaa7f448e270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
