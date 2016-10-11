@@ -900,7 +900,8 @@ int charge_manager_get_power_limit_uw(void)
 	int current_ma = charge_current;
 	int voltage_mv = charge_voltage;
 
-	if (current_ma == CHARGE_CURRENT_UNINITIALIZED ||
+	if (pd_get_new_power_request(0) || pd_get_new_power_request(1) ||
+	    current_ma == CHARGE_CURRENT_UNINITIALIZED ||
 	    voltage_mv == CHARGE_VOLTAGE_UNINITIALIZED)
 		return 0;
 	else
