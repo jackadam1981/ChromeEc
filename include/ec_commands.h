@@ -139,11 +139,6 @@
 #define EC_TEMP_SENSOR_OFFSET      200
 
 /*
- * Number of ALS readings at EC_MEMMAP_ALS
- */
-#define EC_ALS_ENTRIES             2
-
-/*
  * The default value a temperature sensor will return when it is present but
  * has not been read this boot.  This is a reasonable number to avoid
  * triggering alarms on the host.
@@ -1941,6 +1936,8 @@ enum motionsensor_chip {
 	MOTIONSENSE_CHIP_L3GD20H = 7,
 	MOTIONSENSE_CHIP_BMA255 = 8,
 	MOTIONSENSE_CHIP_BMP280 = 9,
+	MOTIONSENSE_CHIP_OPT3001 = 10,
+	MOTIONSENSE_CHIP_ISL29035 = 11,
 };
 
 struct __ec_todo_packed ec_response_motion_sensor_data {
