@@ -361,8 +361,10 @@ case "${BOARD}" in
 	*) MCU="ec" ;;
 esac
 
-servo_VARS="${MCU}_uart_en ${MCU}_uart_parity \
-${MCU}_uart_baudrate jtag_buf_on_flex_en jtag_buf_en dev_mode"
+#servo_VARS="${MCU}"
+#_uart_en"
+#${MCU}_uart_parity \
+#${MCU}_uart_baudrate jtag_buf_on_flex_en jtag_buf_en dev_mode"
 if [ "${CHIP}" = "stm32" ] ; then
 	servo_VARS+=" ${MCU}_boot_mode"
 fi
@@ -448,7 +450,8 @@ function flash_flashrom() {
 		info "Using raiden debug cable."
 		FLASHROM_PARAM="-p raiden_debug_spi:target=EC"
 	else
-		FLASHROM_PARAM="-p ft2232_spi:type=servo-v2,port=B"
+		#FLASHROM_PARAM="-p ft2232_spi:type=servo-v2,port=B"
+		FLASHROM_PARAM="-p raiden_debug_spi"
 	fi
 
 	if [ ! -x "$FLASHROM" ]; then
@@ -460,7 +463,7 @@ function flash_flashrom() {
 			SERIALNAME=$(${DUT_CONTROL_CMD} serialname | \
 				cut -d: -f2)
 			if [[ "$SERIALNAME" != "" ]] ; then
-				FLASHROM_PARAM+=",serial=${SERIALNAME}"
+				echo #FLASHROM_PARAM+=",serial=${SERIALNAME}"
 			fi
 		fi
 
@@ -473,8 +476,7 @@ function flash_flashrom() {
 		dut_control cold_reset:on
 
 		# Turn on SPI1 interface on servo for SPI Flash Chip
-		dut_control spi1_vref:${SPI_VOLTAGE} spi1_buf_en:on \
-			spi1_buf_on_flex_en:on
+		dut_control spi1_vref:${SPI_VOLTAGE} spi1_buf_en:on 
 	else
 		# Temp layout
 		L=/tmp/flash_spi_layout_$$
@@ -517,8 +519,7 @@ fi
 
 	if ! on_raiden; then
 		# Turn off SPI1 interface on servo
-		dut_control spi1_vref:off spi1_buf_en:off \
-			spi1_buf_on_flex_en:off
+		dut_control spi1_vref:off spi1_buf_en:off 
 	else
 		rm $L
 	fi
