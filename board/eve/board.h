@@ -200,11 +200,6 @@ enum pwm_channel {
 	PWM_CH_COUNT
 };
 
-enum als_id {
-	ALS_ISL29035,
-	ALS_COUNT
-};
-
 /*
  * Motion sensors:
  * When reading through IO memory is set up for sensors (LPC is used),

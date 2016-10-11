@@ -259,14 +259,6 @@ enum power_signal {
 	POWER_SIGNAL_COUNT,
 };
 
-/* Light sensors */
-#ifdef BOARD_GRU
-enum als_id {
-	ALS_OPT3001 = 0,
-	ALS_COUNT
-};
-#endif
-
 /* Motion sensors */
 enum sensor_id {
 	BASE_ACCEL = 0,

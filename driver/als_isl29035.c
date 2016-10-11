@@ -5,35 +5,43 @@
  * Intersil ILS29035 light sensor driver
  */
 
+#include "als.h"
+#include "accelgyro.h"
+#include "console.h"
 #include "driver/als_isl29035.h"
 #include "i2c.h"
 
-/* I2C interface */
-#define ILS29035_I2C_ADDR       0x88
-#define ILS29035_REG_COMMAND_I  0
-#define ILS29035_REG_COMMAND_II 1
-#define ILS29035_REG_DATA_LSB   2
-#define ILS29035_REG_DATA_MSB   3
-#define ILS29035_REG_INT_LT_LSB 4
-#define ILS29035_REG_INT_LT_MSB 5
-#define ILS29035_REG_INT_HT_LSB 6
-#define ILS29035_REG_INT_HT_MSB 7
-#define ILS29035_REG_ID         15
+#define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 
-int isl29035_init(void)
+/* I2C interface */
+static inline int isl29035_i2c_read(const int port, const int addr,
+				    const int reg, int *data_ptr)
+{
+	return i2c_read8(port, addr, reg, data_ptr);
+}
+
+static inline int isl29035_i2c_write(const int port, const int addr,
+				     const int reg, int data)
+{
+	return i2c_write8(port, addr, reg, data);
+}
+
+static int isl29035_init(const struct motion_sensor_t *s)
 {
 	/*
 	 * Tell it to read continually. This uses 70uA, as opposed to nearly
 	 * zero, but it makes the hook/update code cleaner (we don't want to
 	 * wait 90ms to read on demand while processing hook callbacks).
 	 */
-	return i2c_write8(I2C_PORT_ALS, ILS29035_I2C_ADDR,
-			 ILS29035_REG_COMMAND_I, 0xa0);
+	return isl29035_i2c_write(s->port, s->addr,
+				  ILS29035_REG_COMMAND_I, 0xa0);
 }
 
-int isl29035_read_lux(int *lux, int af)
+static int isl29035_read_lux(const struct motion_sensor_t *s, vector_3_t v)
 {
 	int rv, lsb, msb, data;
+	struct isl29035_drv_data_t *drv_data =
+		(struct isl29035_drv_data_t *) s->drv_data;
 
 	/*
 	 * NOTE: It is necessary to read the LSB first, then the MSB. If you do
@@ -43,14 +51,12 @@ int isl29035_read_lux(int *lux, int af)
 	 */
 
 	/* Read lsb */
-	rv = i2c_read8(I2C_PORT_ALS, ILS29035_I2C_ADDR,
-		       ILS29035_REG_DATA_LSB, &lsb);
+	rv = isl29035_i2c_read(s->port, s->addr, ILS29035_REG_DATA_LSB, &lsb);
 	if (rv)
 		return rv;
 
 	/* Read msb */
-	rv = i2c_read8(I2C_PORT_ALS, ILS29035_I2C_ADDR,
-		       ILS29035_REG_DATA_MSB, &msb);
+	rv = isl29035_i2c_read(s->port, s->addr, ILS29035_REG_DATA_LSB, &msb);
 	if (rv)
 		return rv;
 
@@ -67,7 +73,55 @@ int isl29035_read_lux(int *lux, int af)
 	 * are still getting useful readings, you probably have your sensor
 	 * pointed directly into the sun.
 	 */
-	*lux = data * af * 1000 / 0xffff;
+	v[0] = (int) ((uint64_t)
+			(data * drv_data->attenuation_factor * 1000) / 0xffff);
+	v[1] = 0;
+	v[2] = 0;
 
 	return EC_SUCCESS;
 }
+
+#ifdef HAS_TASK_ALS
+const struct als_driver isl29035_drv = {
+	.name = "ISL29035",
+	.port = I2C_PORT_ALS,
+	.addr = ILS29035_I2C_ADDR,
+	.init = &isl29035_init,
+	.read = &isl29035_read_lux,
+};
+#else
+static int isl29035_set_range(const struct motion_sensor_t *s, int range,
+			      int rnd)
+{
+	return EC_SUCCESS;
+}
+
+static int isl29035_get_range(const struct motion_sensor_t *s)
+{
+	return EC_SUCCESS;
+}
+
+static int isl29035_set_data_rate(const struct motion_sensor_t *s,
+				int rate, int roundup)
+{
+	return EC_SUCCESS;
+}
+
+static int isl29035_get_data_rate(const struct motion_sensor_t *s)
+{
+	return EC_SUCCESS;
+}
+
+const struct accelgyro_drv isl29035_drv = {
+	.init = isl29035_init,
+	.read = isl29035_read_lux,
+	.set_range = isl29035_set_range,
+	.get_range = isl29035_get_range,
+	.set_data_rate = isl29035_set_data_rate,
+	.get_data_rate = isl29035_get_data_rate,
+};
+#endif
+
+struct isl29035_drv_data_t g_isl29035_data = {
+	.attenuation_factor = 1,
+};

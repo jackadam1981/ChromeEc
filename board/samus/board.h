@@ -176,13 +176,6 @@ enum temp_sensor_id {
 /* The number of TMP006 sensor chips on the board. */
 #define TMP006_COUNT 6
 
-/* Light sensors attached to the EC. */
-enum als_id {
-	ALS_ISL29035 = 0,
-
-	ALS_COUNT,
-};
-
 /* Wireless signals */
 #define WIRELESS_GPIO_WLAN GPIO_WLAN_OFF_L
 #define WIRELESS_GPIO_WLAN_POWER GPIO_PP3300_WLAN_EN

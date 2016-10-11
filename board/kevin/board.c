@@ -509,12 +509,11 @@ const matrix_3x3_t lid_standard_ref = {
 struct kionix_accel_data g_kx022_data;
 struct bmp280_drv_data_t bmp280_drv_data;
 
-/* ALS instances. Must be in same order as enum als_id. */
-struct als_t als[] = {
+const struct als_t als = {
 	/* FIXME(dhendrix): verify attenuation_factor */
-	{"TI", opt3001_init, opt3001_read_lux, 5},
+	.attenuation_factor = 5,
+	.drv = &opt3001_drv,
 };
-BUILD_ASSERT(ARRAY_SIZE(als) == ALS_COUNT);
 #endif /* BOARD_KEVIN */
 
 struct motion_sensor_t motion_sensors[] = {
