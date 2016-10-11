@@ -476,6 +476,26 @@ static void board_handle_reboot(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_handle_reboot, HOOK_PRIO_FIRST);
 
+/* combo button for recovery mode */
+static int button_pressed(const struct button_config *button) {
+	int value = gpio_get_level(button->gpio);
+	return button->flags & BUTTON_FLAG_ACTIVE_HIGH ?
+				value : !value;
+}
+static void pbody_button_recovery_mode(void) {
+	if ((system_get_reset_flags() & RESET_FLAG_RESET_PIN) &&
+			power_button_is_pressed()) {
+		if ((button_pressed(&buttons[BUTTON_VOLDOWN])) &&
+			(button_pressed(&buttons[BUTTON_VOLUP]))) {
+			host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
+		}
+	}
+}
+DECLARE_HOOK(HOOK_TICK, pbody_button_recovery_mode, HOOK_PRIO_DEFAULT);
+
+void board_config_post_gpio_init(void) {
+	pbody_button_recovery_mode();
+}
 #ifdef HAS_TASK_MOTIONSENSE
 /* Motion sensors */
 /* Mutexes */
