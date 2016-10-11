@@ -1531,6 +1531,13 @@ void pd_soft_reset(void);
 void pd_prepare_reset(void);
 
 /**
+ * Get the moment power_request set
+ *
+ * @param port USB-C port number
+ */
+int pd_get_new_power_request(int port);
+
+/**
  * Signal power request to indicate a charger update that affects the port.
  *
  * @param port USB-C port number

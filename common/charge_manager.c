@@ -897,14 +897,22 @@ int charge_manager_get_charger_current(void)
  */
 int charge_manager_get_power_limit_uw(void)
 {
+	static int prev_ma = 0;
+	static int prev_mv = 0;
 	int current_ma = charge_current;
 	int voltage_mv = charge_voltage;
 
 	if (current_ma == CHARGE_CURRENT_UNINITIALIZED ||
 	    voltage_mv == CHARGE_VOLTAGE_UNINITIALIZED)
 		return 0;
-	else
-		return current_ma * voltage_mv;
+
+	if (pd_get_new_power_request(0) || pd_get_new_power_request(1))
+		return prev_ma * prev_mv;
+
+	prev_ma = current_ma;
+	prev_mv = voltage_mv;
+
+	return current_ma * voltage_mv;
 }
 
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT

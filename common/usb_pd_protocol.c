@@ -1422,6 +1422,14 @@ static inline int get_typec_current_limit(int polarity, int cc1, int cc2)
 }
 
 /**
+ * Get the moment power_request set
+ */
+int pd_get_new_power_request(int port)
+{
+	return pd[port].new_power_request;
+}
+
+/**
  * Signal power request to indicate a charger update that affects the port.
  */
 void pd_set_new_power_request(int port)
