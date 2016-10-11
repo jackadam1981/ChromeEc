@@ -25,7 +25,7 @@ static int task_timeout = -1;
 int als_read(enum als_id id, int *lux)
 {
 	int af = als[id].attenuation_factor;
-	return als[id].read(lux, af);
+	return als[id].drv->read(lux, af);
 }
 
 void als_task(void)
@@ -55,16 +55,16 @@ static void als_task_enable(void)
 	int i;
 
 	for (i = 0; i < EC_ALS_ENTRIES && i < ALS_COUNT; i++) {
-		err = als[i].init();
+		err = als[i].drv->init();
 		if (err) {
 			fail_count++;
 			ccprintf("%s ALS sensor failed to initialize, err=%d\n",
-				als[i].name, err);
+				als[i].drv->name, err);
 		}
 	}
 
 	/*
-	 * If all the ALS filed to initialize, disable the ALS task.
+	 * If all the ALS failed to initialize, disable the ALS task.
 	 */
 	if (fail_count == ALS_COUNT)
 		task_timeout = -1;
@@ -103,7 +103,7 @@ static int command_als(int argc, char **argv)
 	int i, rv, val;
 
 	for (i = 0; i < ALS_COUNT; i++) {
-		ccprintf("%s: ", als[i].name);
+		ccprintf("%s: ", als[i].drv->name);
 		rv = als_read(i, &val);
 		switch (rv) {
 		case EC_SUCCESS:

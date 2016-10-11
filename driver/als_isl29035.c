@@ -5,6 +5,7 @@
  * Intersil ILS29035 light sensor driver
  */
 
+#include "als.h"
 #include "driver/als_isl29035.h"
 #include "i2c.h"
 
@@ -20,7 +21,7 @@
 #define ILS29035_REG_INT_HT_MSB 7
 #define ILS29035_REG_ID         15
 
-int isl29035_init(void)
+static int isl29035_init(void)
 {
 	/*
 	 * Tell it to read continually. This uses 70uA, as opposed to nearly
@@ -31,7 +32,7 @@ int isl29035_init(void)
 			 ILS29035_REG_COMMAND_I, 0xa0);
 }
 
-int isl29035_read_lux(int *lux, int af)
+static int isl29035_read_lux(int *lux, const int af)
 {
 	int rv, lsb, msb, data;
 
@@ -71,3 +72,9 @@ int isl29035_read_lux(int *lux, int af)
 
 	return EC_SUCCESS;
 }
+
+const struct als_driver isl29035_drv = {
+	.name = "ISL29035",
+	.init = &isl29035_init,
+	.read = &isl29035_read_lux,
+};
