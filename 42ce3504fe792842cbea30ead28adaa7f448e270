@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3c5bfe40_c7a9fe7b",
+        "filename": "board/twinkie/sniffer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-11T12:53:21Z",
+      "side": 1,
+      "message": "this code is time-critical (else we are dropping samples) and executed in interrupt context. Please don\u0027t put a software division here.",
+      "range": {
+        "startLine": 274,
+        "startChar": 22,
+        "endLine": 274,
+        "endChar": 41
+      },
+      "revId": "42ce3504fe792842cbea30ead28adaa7f448e270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f91ccce_9efb7d5f",
         "filename": "chip/lm4/hwtimer.c",
         "patchSetId": 1
