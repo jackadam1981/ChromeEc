@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bcffee21_b57630c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-10-11T21:33:00Z",
+      "side": 1,
+      "message": "I forgot to change the test. I removed that print statement from chip/g/usb_i2c.c. done",
+      "parentUuid": "bcffee21_6a8fa7e0",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 59
+      },
+      "revId": "6c236fdfd4ad98334f0cda6db97cd45e9270377d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcffee21_ca87dbc2",
         "filename": "board/cr50/usb_i2c.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-10-11T20:42:55Z",
       "side": 1,
       "message": "This and the next two functions can be static.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "6c236fdfd4ad98334f0cda6db97cd45e9270377d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_f56cb8fc",
+        "filename": "board/cr50/usb_i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-10-11T21:33:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcffee21_ca87dbc2",
       "range": {
         "startLine": 19,
         "startChar": 0,
