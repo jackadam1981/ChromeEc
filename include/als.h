@@ -14,24 +14,35 @@
 /* Defined in board.h */
 enum als_id;
 
+/* ALS Driver */
+struct als_driver {
+	/* ALS name */
+	const char *name;
+
+	/**
+	 * Init an ALS
+	 *
+	 * @return EC_SUCCESS, or non-zero if error.
+	 */
+	int (*init)(void);
+
+	/**
+	 * Read an ALS
+	 *
+	 * @param id		Which one?
+	 * @param lux	        Put value here
+	 *
+	 * @return EC_SUCCESS, or non-zero if error.
+	 */
+	int (*read)(int *lux, const int af);
+};
+
 /* Initialized in board.c */
 struct als_t {
-	const char const *name;
-	int (*init)(void);
-	int (*read)(int *lux, int af);
-	int attenuation_factor;
+	const int attenuation_factor;
+	const struct als_driver *drv;
 };
 
 extern struct als_t als[];
-
-/**
- * Read an ALS
- *
- * @param id		Which one?
- * @param lux	        Put value here
- *
- * @return EC_SUCCESS, or non-zero if error.
- */
-int als_read(enum als_id id, int *lux);
 
 #endif  /* __CROS_EC_ALS_H */

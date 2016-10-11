@@ -26,8 +26,7 @@
 #define OPT3001_MANUFACTURER_ID		0x5449
 #define OPT3001_DEVICE_ID		0x3001
 
-int opt3001_init(void);
-int opt3001_read_lux(int *lux, int af);
+extern const struct als_driver opt3001_drv;
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_ALS
 extern struct i2c_stress_test_dev opt3001_i2c_stress_test_dev;

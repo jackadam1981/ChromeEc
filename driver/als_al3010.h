@@ -34,7 +34,6 @@
 #define AL3010_GAIN_SCALE_4 186		/* 0.0186 lux/count */
 #define AL3010_GAIN_SCALE CONCAT2(AL3010_GAIN_SCALE_, AL3010_GAIN_SELECT)
 
-int al3010_init(void);
-int al3010_read_lux(int *lux, int af);
+extern const struct als_driver al3010_drv;
 
 #endif	/* __CROS_EC_ALS_AL3010_H */

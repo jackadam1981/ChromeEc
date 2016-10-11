@@ -5,6 +5,7 @@
  * TI OPT3001 light sensor driver
  */
 
+#include "als.h"
 #include "driver/als_opt3001.h"
 #include "i2c.h"
 
@@ -35,7 +36,7 @@ static int opt3001_i2c_write(const int reg, int data)
 /**
  * Initialise OPT3001 light sensor.
  */
-int opt3001_init(void)
+static int opt3001_init(void)
 {
 	int data;
 	int ret;
@@ -64,7 +65,7 @@ int opt3001_init(void)
 /**
  * Read OPT3001 light sensor data.
  */
-int opt3001_read_lux(int *lux, int af)
+static int opt3001_read_lux(int *lux, const int af)
 {
 	int ret;
 	int data;
@@ -87,6 +88,12 @@ int opt3001_read_lux(int *lux, int af)
 
 	return EC_SUCCESS;
 }
+
+const struct als_driver opt3001_drv = {
+	.name = "TI_OPT3001",
+	.init = &opt3001_init,
+	.read = &opt3001_read_lux,
+};
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_ALS
 struct i2c_stress_test_dev opt3001_i2c_stress_test_dev = {

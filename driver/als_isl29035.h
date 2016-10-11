@@ -8,7 +8,6 @@
 #ifndef __CROS_EC_ALS_ISL29035_H
 #define __CROS_EC_ALS_ISL29035_H
 
-int isl29035_init(void);
-int isl29035_read_lux(int *lux, int af);
+extern const struct als_driver isl29035_drv;
 
 #endif	/* __CROS_EC_ALS_ISL29035_H */

@@ -198,7 +198,10 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
 /* ALS instances. Must be in same order as enum als_id. */
 struct als_t als[] = {
-	{"TI", opt3001_init, opt3001_read_lux, 5},
+	{
+		.attenuation_factor = 5,
+		.drv = &opt3001_drv,
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(als) == ALS_COUNT);
 

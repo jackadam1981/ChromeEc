@@ -11,7 +11,7 @@
 /**
  * Initialise AL3010 light sensor.
  */
-int al3010_init(void)
+static int al3010_init(void)
 {
 	int ret;
 
@@ -27,7 +27,7 @@ int al3010_init(void)
 /**
  * Read AL3010 light sensor data.
  */
-int al3010_read_lux(int *lux, int af)
+static int al3010_read_lux(int *lux, const int af)
 {
 	int ret;
 	int val;
@@ -47,3 +47,9 @@ int al3010_read_lux(int *lux, int af)
 
 	return EC_SUCCESS;
 }
+
+const struct als_driver al3010_drv = {
+	.name = "DI_AL3010",
+	.init = &al3010_init,
+	.read = &al3010_read_lux,
+};
