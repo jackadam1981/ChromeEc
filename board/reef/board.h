@@ -241,13 +241,6 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
-/* Light sensors */
-enum als_id {
-	ALS_OPT3001 = 0,
-
-	ALS_COUNT
-};
-
 /*
  * Motion sensors:
  * When reading through IO memory is set up for sensors (LPC is used),

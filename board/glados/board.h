@@ -184,13 +184,6 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
-/* Light sensors */
-enum als_id {
-	ALS_OPT3001 = 0,
-
-	ALS_COUNT
-};
-
 /* start as a sink in case we have no other power supply/battery */
 #define PD_DEFAULT_STATE PD_STATE_SNK_DISCONNECTED
 

@@ -153,11 +153,10 @@ const struct temp_sensor_t temp_sensors[] = {
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
 #ifdef CONFIG_ALS
-/* ALS instances. Must be in same order as enum als_id. */
-struct als_t als[] = {
-	{"TI", opt3001_init, opt3001_read_lux, 5},
+const struct als_t als = {
+	.attenuation_factor = 5,
+	.drv = &opt3001_drv,
 };
-BUILD_ASSERT(ARRAY_SIZE(als) == ALS_COUNT);
 #endif
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
