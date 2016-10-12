@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c0a1e5e_4f8c4d91",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-12T15:59:52Z",
+      "side": 1,
+      "message": "You should do this once, and as early as possible (probably from board_config_post_gpio_init() callback).",
+      "range": {
+        "startLine": 501,
+        "startChar": 0,
+        "endLine": 501,
+        "endChar": 65
+      },
+      "revId": "7491c21d22092faf6e07c721b3fcbb2c68628fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
