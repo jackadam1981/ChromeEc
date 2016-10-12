@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc91ae63_0be17d90",
+        "filename": "common/timer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-12T21:54:41Z",
+      "side": 1,
+      "message": "This will still be too slow if TICK_PER_USEC is not a factor of 2.",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 29
+      },
+      "revId": "09a6873259099e46b85d2f9c497d14b2b216d7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc91ae63_abc8691b",
+        "filename": "common/timer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-12T21:54:41Z",
+      "side": 1,
+      "message": "This is broken, too.  It will wrap at (2^32)/1000 milliseconds.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 1
+      },
+      "revId": "09a6873259099e46b85d2f9c497d14b2b216d7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
