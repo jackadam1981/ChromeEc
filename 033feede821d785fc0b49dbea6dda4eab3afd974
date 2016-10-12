@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcffee21_ba14d8fc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-12T05:06:09Z",
+      "side": 1,
+      "message": "Would it make sense to move this so it\u0027s also guarded by CONFIG_USB_PD_DUAL_ROLE?",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 6
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_da30c49e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2696,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-12T05:06:09Z",
+      "side": 1,
+      "message": "Do we really need the while-loop? If you set timeout to -1 in this case it will be passed to task_wait_event() near the beginning of the outer loop.",
+      "range": {
+        "startLine": 2695,
+        "startChar": 0,
+        "endLine": 2696,
+        "endChar": 37
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_9ad59c11",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2699,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-12T05:06:09Z",
+      "side": 1,
+      "message": "Do you need to add a TCPC-specific function to disable auto-toggle?\n\nThe calls to tcpm_set_cc() below would seem to conflict if the TCPC still controls the CC signals.",
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_3afb28a5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2735,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-12T05:06:09Z",
+      "side": 1,
+      "message": "Are you sure you\u0027re entering PD_STATE_DRP_AUTO_TOGGLE as expected? I notice that we only enter thru PD_STATE_SRC_DISCONNECTED and PD_STATE_SNK_DISCONNECTED, and only if this bit is not set.",
+      "range": {
+        "startLine": 2735,
+        "startChar": 4,
+        "endLine": 2735,
+        "endChar": 47
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_9aec7cf1",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-12T05:06:09Z",
+      "side": 1,
+      "message": "Aren\u0027t we disabling software control?",
+      "range": {
+        "startLine": 524,
+        "startChar": 4,
+        "endLine": 524,
+        "endChar": 30
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
