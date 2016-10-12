@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fc95e6fb_237a0e11",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-12T23:14:29Z",
+      "side": 1,
+      "message": "Another approach might be to add an #error, perhaps in the .h file:\n#if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)\n#ifndef CONFIG_USB_PD_DUAL_ROLE\n#error \"Helpful error message.\"\n#endif\n#endif",
+      "parentUuid": "3c0a1e5e_ef8d4133",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 6
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcffee21_da30c49e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -131,6 +155,47 @@
     },
     {
       "key": {
+        "uuid": "bc91ae63_aea9577c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2699,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-12T23:14:29Z",
+      "side": 1,
+      "message": "Ah, that makes perfect sense.",
+      "parentUuid": "bcffee21_fd249a1d",
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc91ae63_4b754588",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2731,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-12T23:14:29Z",
+      "side": 1,
+      "message": "Some of this logic appears to be done by the code below the giant switch() statement, though there are a few other conditions. I wonder if you can set pd[port].power_role and then fall thru. That will reduce redundancy in this already monstrous state machine.\n\nOtherwise you can keep this the same and have the outer loop continue before reaching the undesirable portions below.",
+      "range": {
+        "startLine": 2711,
+        "startChar": 0,
+        "endLine": 2731,
+        "endChar": 5
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcffee21_3afb28a5",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -171,6 +236,75 @@
         "startChar": 4,
         "endLine": 2735,
         "endChar": 47
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc744ebe_5c705132",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2767,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-12T23:14:29Z",
+      "side": 1,
+      "message": "You may also need to update this function for the auto-toggling case.",
+      "range": {
+        "startLine": 2767,
+        "startChar": 6,
+        "endLine": 2767,
+        "endChar": 32
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc91ae63_0b717d6e",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-12T23:14:29Z",
+      "side": 1,
+      "message": "Can this be re-factored to call anx74xx_tcpc_drp_toggle()?",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 26
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc91ae63_ab814939",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-12T23:14:29Z",
+      "side": 1,
+      "message": "Would it make sense to add an argument to enable/disable? That way this function can be called by anx74xx_tcpm_set_cc().",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 44
       },
       "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -219,6 +353,63 @@
         "endLine": 524,
         "endChar": 30
       },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc91ae63_8b0d6df6",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-12T23:14:29Z",
+      "side": 1,
+      "message": "Also might make sense to add an argument to enable/disable.",
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc91ae63_cbbbf5d6",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-12T23:14:29Z",
+      "side": 1,
+      "message": "According to the TCPC spec, section 4.4.5.2:\nIf DRP\u003d1b, the only allowed values for CC1/CC2 are Rp/Rp or Rd/Rd.\nCOMMAND.Look4Connection shall do nothing if CC1/CC2 are not Rp/Rp or Rd/Rd.",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 23
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc91ae63_8e83bb08",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-12T23:14:29Z",
+      "side": 1,
+      "message": "For enable, we also need to issue COMMAND.Look4Connection which you defined in the header.",
       "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
