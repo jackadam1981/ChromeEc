@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "bcffee21_daa684ab",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-10-12T03:05:35Z",
+      "side": 1,
+      "message": "This function should be able to reinit or switch interfaces as well. I\u0027ve added to console commandline for this.",
+      "parentUuid": "bcffee21_8fa44512",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 316,
+        "endChar": 51
+      },
+      "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcffee21_aa8a4f17",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 4
@@ -59,6 +83,30 @@
       "writtenOn": "2016-10-11T20:24:06Z",
       "side": 1,
       "message": "typo: default",
+      "range": {
+        "startLine": 357,
+        "startChar": 37,
+        "endLine": 357,
+        "endChar": 43
+      },
+      "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_7ac77041",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-10-12T03:05:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcffee21_aa8a4f17",
       "range": {
         "startLine": 357,
         "startChar": 37,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "bcffee21_3ad1e8f7",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-10-12T03:05:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcffee21_af14a1fc",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 3
+      },
+      "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab415e2d_f4fc89d2",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 4
@@ -105,6 +177,30 @@
       "writtenOn": "2016-10-11T20:24:06Z",
       "side": 1,
       "message": "typo: connected",
+      "range": {
+        "startLine": 386,
+        "startChar": 51,
+        "endLine": 386,
+        "endChar": 60
+      },
+      "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_1ab62cd4",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-10-12T03:05:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab415e2d_f4fc89d2",
       "range": {
         "startLine": 386,
         "startChar": 51,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "bcffee21_dabfa4a3",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-10-12T03:05:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab415e2d_1402f5e1",
+      "range": {
+        "startLine": 391,
+        "startChar": 4,
+        "endLine": 392,
+        "endChar": 54
+      },
+      "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcffee21_8a70b333",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 4
@@ -157,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "bcffee21_babcd8af",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-10-12T03:05:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcffee21_8a70b333",
+      "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcffee21_ef818938",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 4
@@ -168,6 +306,24 @@
       "writtenOn": "2016-10-11T20:24:06Z",
       "side": 1,
       "message": "Is this wait sufficient? necessary? What exactly are you waiting for?",
+      "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_3aea089a",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-10-12T03:05:35Z",
+      "side": 1,
+      "message": "This delays enabling the DUT hub until the host side logic comes up, as the HW guys had a concern that inrush current of both the DUT hub and host hub side of servo v4 initializing at the same time could exceed the power supply\u0027s spec.",
+      "parentUuid": "bcffee21_ef818938",
       "revId": "fd8db471c71e445be80c7df70d9b5df8ac1b8deb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
