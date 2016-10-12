@@ -308,7 +308,8 @@ enum power_state power_handle_state(enum power_state state)
 		CHECK_ABORTED_SUSPEND();
 
 		gpio_set_level(GPIO_PPVAR_CLOGIC_EN, 0);
-		msleep(10);
+		/* Wait 100ms for CLOGIC to discharge */
+		msleep(100);
 		CHECK_ABORTED_SUSPEND();
 
 		/*
