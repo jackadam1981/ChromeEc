@@ -96,6 +96,23 @@
     },
     {
       "key": {
+        "uuid": "bcffee21_8a71d370",
+        "filename": "chip/g/usb_i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-10-12T01:30:05Z",
+      "side": 1,
+      "message": "Can you put this in common/ instead of chip/g?",
+      "revId": "6c236fdfd4ad98334f0cda6db97cd45e9270377d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcffee21_8a17935f",
         "filename": "chip/g/usb_i2c.c",
         "patchSetId": 5
@@ -137,6 +154,23 @@
         "endLine": 69,
         "endChar": 55
       },
+      "revId": "6c236fdfd4ad98334f0cda6db97cd45e9270377d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcffee21_ca7ebb38",
+        "filename": "chip/g/usb_i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-10-12T01:30:05Z",
+      "side": 1,
+      "message": "Can you put this in include/ instead of chip/g?",
       "revId": "6c236fdfd4ad98334f0cda6db97cd45e9270377d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
