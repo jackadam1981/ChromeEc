@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cb0fabd_664a6e81",
+        "filename": "board/pyro/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-12T13:50:10Z",
+      "side": 1,
+      "message": "this change does nothing in practice ...\nI don\u0027t think this value is used anywhere.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "9f95071b6f5e3d469692301bd1613eb21d980f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
