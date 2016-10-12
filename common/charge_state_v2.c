@@ -571,24 +571,65 @@ void charger_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, charger_init, HOOK_PRIO_DEFAULT);
 
-static int get_desired_input_current(enum battery_present batt_present,
-				     const struct charger_info * const info)
+static int get_desired_input_current(enum battery_present batt_present)
 {
+#ifdef CONFIG_USB_POWER_DELIVERY
+	int ilim = charge_manager_get_charger_current();
+#endif
+
 	if (batt_present == BP_YES || system_is_locked()) {
-#ifdef CONFIG_CHARGE_MANAGER
-		int ilim = charge_manager_get_charger_current();
+#ifdef CONFIG_USB_POWER_DELIVERY
 		return ilim == CHARGE_CURRENT_UNINITIALIZED ?
 			CHARGE_CURRENT_UNINITIALIZED :
 			MAX(CONFIG_CHARGER_INPUT_CURRENT, ilim);
 #else
 		return CONFIG_CHARGER_INPUT_CURRENT;
-#endif
+#endif /* CONFIG_USB_POWER_DELIVERY */
 	} else {
 #ifdef CONFIG_USB_POWER_DELIVERY
-		return MIN(PD_MAX_CURRENT_MA, info->input_current_max);
+#if ((PD_MAX_POWER_MW * 1000) / PD_MAX_VOLTAGE_MV == PD_MAX_CURRENT_MA)
+		return PD_MAX_CURRENT_MA;
 #else
-		return info->input_current_max;
+		/*
+		 * Initially charger is detected as VBUS supplier type, hence
+		 * return valid ilim which exceeds min charger input current.
+		 */
+		if (ilim < CONFIG_CHARGER_INPUT_CURRENT)
+			return CHARGE_CURRENT_UNINITIALIZED;
+		else
+			return ilim;
 #endif
+#else
+		return charger_get_info()->input_current_max;
+#endif /* CONFIG_USB_POWER_DELIVERY */
+	}
+}
+
+static void set_desired_input_current(void)
+{
+	/*
+	 * Some chargers are unpowered when the AC is
+	 * off, so we'll reinitialize it when AC
+	 * comes back and set the input current limit.
+	 * Try again if it fails.
+	 */
+	int rv = charger_post_init();
+
+	if (rv != EC_SUCCESS) {
+		problem(PR_POST_INIT, rv);
+	} else {
+		if (curr.desired_input_current ==
+			CHARGE_CURRENT_UNINITIALIZED)
+			curr.desired_input_current =
+				get_desired_input_current(prev_bp);
+		else {
+			rv = charger_set_input_current(
+				curr.desired_input_current);
+			if (rv != EC_SUCCESS)
+				problem(PR_SET_INPUT_CURR, rv);
+			else
+				prev_ac = curr.ac;
+		}
 	}
 }
 
@@ -597,7 +638,6 @@ void charger_task(void)
 {
 	int sleep_usec;
 	int need_static = 1;
-	const struct charger_info * const info = charger_get_info();
 
 	/* Get the battery-specific values */
 	batt_info = battery_get_info();
@@ -614,7 +654,7 @@ void charger_task(void)
 	 */
 	battery_get_params(&curr.batt);
 	prev_bp = curr.batt.is_present;
-	curr.desired_input_current = get_desired_input_current(prev_bp, info);
+	curr.desired_input_current = get_desired_input_current(prev_bp);
 
 	while (1) {
 
@@ -632,25 +672,7 @@ void charger_task(void)
 		curr.ac = extpower_is_present();
 		if (curr.ac != prev_ac) {
 			if (curr.ac) {
-				/*
-				 * Some chargers are unpowered when the AC is
-				 * off, so we'll reinitialize it when AC
-				 * comes back and set the input current limit.
-				 * Try again if it fails.
-				 */
-				int rv = charger_post_init();
-				if (rv != EC_SUCCESS) {
-					problem(PR_POST_INIT, rv);
-				} else {
-					if (curr.desired_input_current !=
-					    CHARGE_CURRENT_UNINITIALIZED)
-						rv = charger_set_input_current(
-						    curr.desired_input_current);
-					if (rv != EC_SUCCESS)
-						problem(PR_SET_INPUT_CURR, rv);
-					else
-						prev_ac = curr.ac;
-				}
+				set_desired_input_current();
 			} else {
 				/* Some things are only meaningful on AC */
 				chg_ctl_mode = CHARGE_CONTROL_NORMAL;
@@ -669,7 +691,7 @@ void charger_task(void)
 			need_static = 1;
 
 			curr.desired_input_current =
-				get_desired_input_current(prev_bp, info);
+				get_desired_input_current(prev_bp);
 			if (curr.desired_input_current !=
 			    CHARGE_CURRENT_UNINITIALIZED)
 				charger_set_input_current(
@@ -900,7 +922,8 @@ wait_for_it:
 		} else {
 			charge_request(
 				charger_closest_voltage(
-				  curr.batt.voltage + info->voltage_step), -1);
+				  curr.batt.voltage +
+				  charger_get_info()->voltage_step), -1);
 		}
 
 		/* How long to sleep? */
