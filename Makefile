@@ -23,7 +23,11 @@ endif
 PROJECT?=ec
 
 # Output directory for build objects
+ifndef CTS_MODULE
 out?=build/$(BOARD)
+else
+out?=build/$(BOARD)/cts_$(CTS_MODULE)
+endif
 
 # File containing configuration information
 config=$(out)/.config
