@@ -22,6 +22,30 @@
       "revId": "9f95071b6f5e3d469692301bd1613eb21d980f6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcc32620_ed10855b",
+        "filename": "board/pyro/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-10-12T14:19:15Z",
+      "side": 1,
+      "message": "do you mean \u0027.charging_max_c\u0027?\nor also the \u0027.voltage_max\u0027?",
+      "parentUuid": "1cb0fabd_664a6e81",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "9f95071b6f5e3d469692301bd1613eb21d980f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
