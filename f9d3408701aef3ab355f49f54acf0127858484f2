@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc2ec625_5814614e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-13T22:44:10Z",
+      "side": 1,
+      "message": "Compile?",
+      "range": {
+        "startLine": 10,
+        "startChar": 61,
+        "endLine": 10,
+        "endChar": 69
+      },
+      "revId": "f9d3408701aef3ab355f49f54acf0127858484f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc2ec625_381ba57d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-13T22:44:10Z",
+      "side": 1,
+      "message": "Preferable to swap clauses:\n\nifdef CTS_MODULE\nout?\u003dbuild/$(BOARD)/cts_$(CTS_MODULE)\nelse\nout?\u003dbuild/$(BOARD)\nendif",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 5
+      },
+      "revId": "f9d3408701aef3ab355f49f54acf0127858484f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
