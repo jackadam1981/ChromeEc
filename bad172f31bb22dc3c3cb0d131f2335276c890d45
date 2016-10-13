@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dccbc292_fa166162",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-13T21:16:52Z",
+      "side": 1,
+      "message": "Please comment them accordingly to that effect.",
+      "parentUuid": "ebf9963d_7d2bf7a5",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 45
+      },
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebf9963d_9d4a4375",
         "filename": "chip/ish/config_flash_layout.h",
         "patchSetId": 14
@@ -36,6 +60,24 @@
       "writtenOn": "2016-09-08T18:12:23Z",
       "side": 1,
       "message": "All the macros here, except for CONFIG_ISH_BOOT_START are not applicable for ISH, however the build fails if they are not defined. Ideally, there should be an option in EC build to turn off SPI and flash, making these unnecessary.",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccbc292_9a3c0de4",
+        "filename": "chip/ish/config_flash_layout.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-13T21:16:52Z",
+      "side": 1,
+      "message": "I think that\u0027d be a good comment to putin this file explaining things.",
+      "parentUuid": "ebf9963d_9d4a4375",
       "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -59,6 +101,165 @@
         "endLine": 24,
         "endChar": 29
       },
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccbc292_7a6ff1b8",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-13T21:16:52Z",
+      "side": 1,
+      "message": "This seems like the wrong condition? If in_size is \u003e 0 we\u0027re writing?",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccbc292_ba74698d",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-13T21:16:52Z",
+      "side": 1,
+      "message": "fwiw, there\u0027s no need for the parens here.",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccbc292_1a66bde2",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-13T21:16:52Z",
+      "side": 1,
+      "message": "logic seems wrong here",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccbc292_baad89f3",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-13T21:16:52Z",
+      "side": 1,
+      "message": "is_write but we\u0027re reading???",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccbc292_7ae931d3",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-13T21:16:52Z",
+      "side": 1,
+      "message": "Why is this port - 1?  we have 3 controllers and 3 ports? i.e they are 1:1. If you pass in ISH_I2C1 you return 0 here which is the same as ISH_I2C0 ?",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccbc292_3a95f940",
+        "filename": "chip/ish/ipc.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-13T21:16:52Z",
+      "side": 1,
+      "message": "move back to where it was before. Actually, the original indention was fine. Why did thsi get moved around?",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccbc292_dd74bf27",
+        "filename": "chip/ish/ipc.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-13T21:16:52Z",
+      "side": 1,
+      "message": "These need another indent. They were right before.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccbc292_9afacd9e",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-13T21:16:52Z",
+      "side": 1,
+      "message": "This seems like a weird place to put this. Why isn\u0027t this in the i2c header?",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccbc292_fd989b6f",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-13T21:16:52Z",
+      "side": 1,
+      "message": "More indention for these fields -- one more than the curlies.",
       "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
