@@ -70,6 +70,30 @@
       "revId": "afcfb4b99844ea79db732dfcad222c32550477ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc2ec625_9892f94c",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-13T22:19:25Z",
+      "side": 0,
+      "message": "Nevermind, we\u0027re checking the logic level of the reset signal, not the interrupt line.",
+      "parentUuid": "fc2ec625_157f9435",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 9
+      },
+      "revId": "afcfb4b99844ea79db732dfcad222c32550477ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
