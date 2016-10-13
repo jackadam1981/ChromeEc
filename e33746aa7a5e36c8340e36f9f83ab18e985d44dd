@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dccbc292_5aaaf570",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-13T20:24:05Z",
+      "side": 1,
+      "message": "Can we simplify this?\n\n--\u003e If charge_manager_get_active_charge_port() returns a real port then make sure return value doesn\u0027t exceed charge_manager_get_charger_current().\n\n.. but recall that we added this \"loose\" limit in the first place to prevent OC when we have no battery. We may be breaking no-battery boot with certain systems if we change this.",
+      "range": {
+        "startLine": 590,
+        "startChar": 1,
+        "endLine": 596,
+        "endChar": 22
+      },
+      "revId": "e33746aa7a5e36c8340e36f9f83ab18e985d44dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
