@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c1432d4_98daf5db",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-13T21:32:35Z",
+      "side": 1,
+      "message": "This is a 500 ms+ delay in hooks / chipset task, I don\u0027t think we can accommodate this. How was 100 chosen?",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 12
+      },
+      "revId": "3a74d1815b5f4f36752553fe6f6846edfb999cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccbc292_fa8c2195",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-13T21:32:35Z",
+      "side": 1,
+      "message": "We shouldn\u0027t call tcpm_* functions (except alert) outside of the PD tasks. You\u0027re going to run into reg read/mask/write problems, and other hard-to-debug race conditions. (I have removed existing calls here --https://chromium-review.googlesource.com/#/c/396137/, waiting for additional testing before landing on TOT).",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 12
+      },
+      "revId": "3a74d1815b5f4f36752553fe6f6846edfb999cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
