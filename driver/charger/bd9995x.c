@@ -688,6 +688,11 @@ static void bd99995_init(void)
 	ch_raw_write16(BD9995X_CMD_VM_CTRL_SET, reg,
 		       BD9995X_EXTENDED_COMMAND);
 
+	/* Re-charge Battery Voltage Setting */
+	ch_raw_write16(BD9995X_CMD_VRECHG_SET,
+		       bi->voltage_min & 0x7FF0,
+		       BD9995X_EXTENDED_COMMAND);
+
 	/* Disable fast/pre-charging watchdog */
 	ch_raw_write16(BD9995X_CMD_CHGWDT_SET, 0,
 		       BD9995X_EXTENDED_COMMAND);
