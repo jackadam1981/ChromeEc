@@ -22,6 +22,30 @@
       "revId": "62fee1670eec44d6fdc5f398d9588c3a0d146afe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc6a8e2b_03becece",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-13T17:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cb0fabd_e6fc1e9b",
+      "range": {
+        "startLine": 887,
+        "startChar": 28,
+        "endLine": 887,
+        "endChar": 29
+      },
+      "revId": "62fee1670eec44d6fdc5f398d9588c3a0d146afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
