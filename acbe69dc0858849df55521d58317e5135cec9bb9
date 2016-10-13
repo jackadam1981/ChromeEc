@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dccbc292_f4b798a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-13T18:29:44Z",
+      "side": 1,
+      "message": "Why is this a problem? According to my reading of the datasheet, if we\u0027re using the recharge function, we\u0027d want VRECHG_DET set to something close to the battery maximum voltage (transfer from top-off to fast charging).",
+      "range": {
+        "startLine": 10,
+        "startChar": 48,
+        "endLine": 11,
+        "endChar": 64
+      },
+      "revId": "acbe69dc0858849df55521d58317e5135cec9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
