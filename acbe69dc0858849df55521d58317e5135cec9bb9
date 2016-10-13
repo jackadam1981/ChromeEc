@@ -22,6 +22,30 @@
       "revId": "acbe69dc0858849df55521d58317e5135cec9bb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccbc292_3453d037",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-13T18:43:08Z",
+      "side": 1,
+      "message": "Thank you for the correction Shawn, I misread the datasheet. I need to make VRECHG_SET to bat max to get TOF.",
+      "parentUuid": "dccbc292_f4b798a1",
+      "range": {
+        "startLine": 10,
+        "startChar": 48,
+        "endLine": 11,
+        "endChar": 64
+      },
+      "revId": "acbe69dc0858849df55521d58317e5135cec9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
