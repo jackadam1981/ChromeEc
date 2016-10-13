@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "dccbc292_7a14914e",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-13T21:16:52Z",
+      "side": 1,
+      "message": "You should nuke them if they aren\u0027t being used at all.",
+      "parentUuid": "ebf9963d_1d3f53e6",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91e76d24_af42ceed",
         "filename": "chip/ish/config_chip.h",
         "patchSetId": 13
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Made _END inclusive, thanks",
       "parentUuid": "91e76d24_af42ceed",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccbc292_1a1b5d7d",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-13T21:16:52Z",
+      "side": 1,
+      "message": "I think you meant exclusive... but I see what you did.",
+      "parentUuid": "ebf9963d_fd538730",
       "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -557,6 +593,24 @@
       "writtenOn": "2016-09-01T14:33:28Z",
       "side": 1,
       "message": "i?",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccbc292_9d97673c",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-13T21:16:52Z",
+      "side": 1,
+      "message": "still i?",
+      "parentUuid": "91e76d24_af2bee3f",
       "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
