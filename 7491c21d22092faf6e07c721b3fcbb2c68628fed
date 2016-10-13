@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1c99da37_f8cb7116",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2016-10-13T13:31:00Z",
+      "side": 1,
+      "message": "Possibly Im missing something, but this seems overly complicated. Doesn\u0027t this code amount to:\n\nif (button_pressed(\u0026buttons[0]) \u0026\u0026 button_pressed(\u0026buttons[1])) host_set_single_event(...)\n\nIf written that way then defines could be done for 0 and 1 so the checks could be meaningful eg \u0026buttons[BUTTON_VOLUP] making the code easier to maintain (and easier for hardware types like me to read)?",
+      "range": {
+        "startLine": 498,
+        "startChar": 0,
+        "endLine": 498,
+        "endChar": 3
+      },
+      "revId": "7491c21d22092faf6e07c721b3fcbb2c68628fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c0a1e5e_4f8c4d91",
         "filename": "board/pbody/board.c",
         "patchSetId": 1
