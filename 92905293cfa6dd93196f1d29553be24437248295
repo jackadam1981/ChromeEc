@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc2ec625_c4a5e8b2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-14T05:10:50Z",
+      "side": 1,
+      "message": "charge_manager_get_active_charge_port() is not needed as we are using negotiated ilim as is",
+      "revId": "92905293cfa6dd93196f1d29553be24437248295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
