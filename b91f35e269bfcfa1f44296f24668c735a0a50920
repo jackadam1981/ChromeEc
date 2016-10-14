@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc2ec625_e428248e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2738,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-14T03:40:53Z",
+      "side": 1,
+      "message": "Just to be clear, the intention here is to disable auto-toggle?",
+      "range": {
+        "startLine": 2738,
+        "startChar": 4,
+        "endLine": 2738,
+        "endChar": 35
+      },
+      "revId": "b91f35e269bfcfa1f44296f24668c735a0a50920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc2ec625_643df4c4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2792,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-14T03:40:53Z",
+      "side": 1,
+      "message": "Do you also need to check if !(pd[port].flags \u0026 PD_FLAGS_TCPC_DRP_TOGGLE) to avoid ensure auto-toggle stays enabled? Or maybe set pd_try_src_enable \u003d 0?",
+      "range": {
+        "startLine": 2792,
+        "startChar": 8,
+        "endLine": 2792,
+        "endChar": 25
+      },
+      "revId": "b91f35e269bfcfa1f44296f24668c735a0a50920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
