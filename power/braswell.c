@@ -53,9 +53,14 @@
 static int throttle_cpu;      /* Throttle CPU? */
 static int forcing_shutdown;  /* Forced shutdown in progress? */
 
+static timestamp_t boot_time;
+
 void chipset_force_shutdown(void)
 {
 	CPRINTS("%s()", __func__);
+
+	if (get_time().val - boot_time.val < 10 * SECOND)
+		return;
 
 	/*
 	 * Force power off. This condition will reset once the state machine
@@ -239,6 +244,9 @@ enum power_state power_handle_state(enum power_state state)
 
 		/* Set SYS and CORE PWROK */
 		gpio_set_level(GPIO_PCH_SYS_PWROK, 1);
+
+		/* record the boot time and check in chipset_force_shutdown() */
+		boot_time = get_time();
 
 		return POWER_S0;
 
