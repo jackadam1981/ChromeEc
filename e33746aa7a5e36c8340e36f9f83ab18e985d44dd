@@ -22,6 +22,30 @@
       "revId": "e33746aa7a5e36c8340e36f9f83ab18e985d44dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc2ec625_84561025",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-14T03:35:29Z",
+      "side": 1,
+      "message": "1. This approach looks good.\n2. Yes, if the PD doesn\u0027t negotiate intermediate value other than 500mA then we are good I think.\n3. I will add this to avoid breaking majority of the systems.\n#if ((PD_MAX_POWER_MW * 1000) / PD_MAX_VOLTAGE_MV \u003d\u003d PD_MAX_CURRENT_MA) \n---\n#else\n--\n#endif",
+      "parentUuid": "dccbc292_5aaaf570",
+      "range": {
+        "startLine": 590,
+        "startChar": 1,
+        "endLine": 596,
+        "endChar": 22
+      },
+      "revId": "e33746aa7a5e36c8340e36f9f83ab18e985d44dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
