@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9caf8af5_92609c05",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1167184
+      },
+      "writtenOn": "2016-10-14T06:21:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c99da37_f8cb7116",
+      "range": {
+        "startLine": 498,
+        "startChar": 0,
+        "endLine": 498,
+        "endChar": 3
+      },
+      "revId": "7491c21d22092faf6e07c721b3fcbb2c68628fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c0a1e5e_4f8c4d91",
         "filename": "board/pbody/board.c",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2016-10-14T05:29:19Z",
       "side": 1,
       "message": "I think it\u0027s not done more than once.It should be polling to detect,if the three buttons are pressed at the same time,then it will enter the recovery mode. Is it right? And what about removing the keyboard task,I will do in another CL.",
+      "parentUuid": "3c0a1e5e_4f8c4d91",
+      "range": {
+        "startLine": 501,
+        "startChar": 0,
+        "endLine": 501,
+        "endChar": 65
+      },
+      "revId": "7491c21d22092faf6e07c721b3fcbb2c68628fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9caf8af5_f265a813",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1167184
+      },
+      "writtenOn": "2016-10-14T06:21:31Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "3c0a1e5e_4f8c4d91",
       "range": {
         "startLine": 501,
