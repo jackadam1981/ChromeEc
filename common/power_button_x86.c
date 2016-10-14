@@ -112,6 +112,8 @@ static const char * const state_names[] = {
  */
 static uint64_t tnext_state;
 
+static int press_in_off;
+
 static void set_pwrbtn_to_pch(int high)
 {
 	static uint64_t t = 0;
@@ -138,7 +140,8 @@ static void set_pwrbtn_to_pch(int high)
 	 * Force shutdown if it was held longer than 4 seconds
 	 */
 	if (high == 1) {
-		if (t_valid && ((get_time().val - t) >= (4 * SECOND))) {
+		if ((!press_in_off && t_valid) &&
+			((get_time().val - t) >= (4 * SECOND))) {
 			/*
 			 * Button is de-asserted, if held longer than 4sec,
 			 * then issue a proper shut down.
@@ -148,9 +151,11 @@ static void set_pwrbtn_to_pch(int high)
 			task_wake(TASK_ID_CHIPSET);
 #endif
 		}
+		CPRINTS("set_pwrbtn_to_pch: Reset state");
 		/* Reset state */
 		t = 0;
 		t_valid = 0;
+		press_in_off = 0;
 	} else
 		if (!t_valid) {
 			/* Button is asserted, save current time */
@@ -293,6 +298,7 @@ static void state_machine(uint64_t tnow)
 			chipset_exit_hard_off();
 			tnext_state = tnow + PWRBTN_INITIAL_US;
 			pwrbtn_state = PWRBTN_STATE_WAS_OFF;
+			press_in_off = 1;
 		} else {
 			/* Chipset is on, so send the chipset a pulse */
 			tnext_state = tnow + PWRBTN_DELAY_T0;
