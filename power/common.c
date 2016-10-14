@@ -287,12 +287,16 @@ int chipset_in_state(int state_mask)
 
 void chipset_exit_hard_off(void)
 {
+	CPRINTF("%s(): ", __func__);
+
 	/*
 	 * If not in the soft-off state, hard-off state, or headed there,
 	 * nothing to do.
 	 */
-	if (state != POWER_G3 && state != POWER_S5G3 && state != POWER_S5)
+	if (state != POWER_G3 && state != POWER_S5G3 && state != POWER_S5) {
+		CPRINTF("DO NOTHING\n");
 		return;
+	}
 
 	/*
 	 * Set a flag to leave G3, then wake the task. If the power state is
@@ -300,6 +304,7 @@ void chipset_exit_hard_off(void)
 	 * expired, set this flag can let system go to G3 and then exit G3
 	 * immediately for powering on.
 	 */
+	CPRINTF("want_g3_exit = 1\n");
 	want_g3_exit = 1;
 
 	/*

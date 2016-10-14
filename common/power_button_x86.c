@@ -89,6 +89,8 @@ enum power_button_state {
 	PWRBTN_STATE_BOOT_KB_RESET,
 	/* Power button pressed when chipset was off; stretching pulse */
 	PWRBTN_STATE_WAS_OFF,
+
+	PWRBTN_STATE_OFF_WAIT_RELEASE,
 };
 static enum power_button_state pwrbtn_state = PWRBTN_STATE_IDLE;
 
@@ -104,6 +106,7 @@ static const char * const state_names[] = {
 	"init-on",
 	"recovery",
 	"was-off",
+	"wait-release"
 };
 
 /*
@@ -290,15 +293,14 @@ static void state_machine(uint64_t tnow)
 			 * power button before the chipset finishes waking from
 			 * hard off state.
 			 */
-			chipset_exit_hard_off();
-			tnext_state = tnow + PWRBTN_INITIAL_US;
-			pwrbtn_state = PWRBTN_STATE_WAS_OFF;
+			tnext_state = tnow;
+			pwrbtn_state = PWRBTN_STATE_OFF_WAIT_RELEASE;
 		} else {
 			/* Chipset is on, so send the chipset a pulse */
 			tnext_state = tnow + PWRBTN_DELAY_T0;
 			pwrbtn_state = PWRBTN_STATE_T0;
+			set_pwrbtn_to_pch(0);
 		}
-		set_pwrbtn_to_pch(0);
 		break;
 	case PWRBTN_STATE_T0:
 		tnext_state = tnow + PWRBTN_DELAY_T1;
@@ -368,12 +370,13 @@ static void state_machine(uint64_t tnow)
 		 * true power button state to the PCH. */
 		if (power_button_is_pressed()) {
 			/* User is still holding the power button */
-			pwrbtn_state = PWRBTN_STATE_HELD;
+			pwrbtn_state = PWRBTN_STATE_OFF_WAIT_RELEASE;
 		} else {
 			/* Stop stretching the power button press */
 			power_button_released(tnow);
 		}
 		break;
+	case PWRBTN_STATE_OFF_WAIT_RELEASE:
 	case PWRBTN_STATE_IDLE:
 	case PWRBTN_STATE_HELD:
 	case PWRBTN_STATE_EAT_RELEASE:
@@ -443,6 +446,8 @@ DECLARE_HOOK(HOOK_LID_CHANGE, powerbtn_x86_lid_change, HOOK_PRIO_DEFAULT);
  */
 static void powerbtn_x86_changed(void)
 {
+	CPRINTS("%s()", __func__);
+
 	if (pwrbtn_state == PWRBTN_STATE_BOOT_KB_RESET ||
 	    pwrbtn_state == PWRBTN_STATE_INIT_ON ||
 	    pwrbtn_state == PWRBTN_STATE_LID_OPEN ||
@@ -465,9 +470,12 @@ static void powerbtn_x86_changed(void)
 			CPRINTS("PB ignoring release");
 			pwrbtn_state = PWRBTN_STATE_IDLE;
 			return;
+		} else if (pwrbtn_state == PWRBTN_STATE_OFF_WAIT_RELEASE) {
+			power_button_pch_pulse();
+			CPRINTS("PWRBTN_STATE_IDLE");
+		} else {
+			power_button_released(get_time().val);
 		}
-
-		power_button_released(get_time().val);
 	}
 
 	/* Wake the power button task */
