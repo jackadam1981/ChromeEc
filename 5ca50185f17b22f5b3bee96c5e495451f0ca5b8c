@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c993f38_fe536151",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2016-10-14T22:38:05Z",
+      "side": 1,
+      "message": "Is this really \"no wake occurs\" or \"wake occurs but powerd immediately resuspends because the lid is still closed\"? The second one is the behavior I\u0027ve seen on other Chromebooks, and I think that\u0027s the one we want (to support the lid-closed use case with external keyboard and monitor).",
+      "range": {
+        "startLine": 12,
+        "startChar": 48,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "5ca50185f17b22f5b3bee96c5e495451f0ca5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
