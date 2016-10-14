@@ -152,7 +152,7 @@ static void set_pwrbtn_to_pch(int high)
 		t = 0;
 		t_valid = 0;
 	} else
-		if (!t_valid) {
+		if (!chipset_in_state(CHIPSET_STATE_ANY_OFF) && !t_valid) {
 			/* Button is asserted, save current time */
 			t = get_time().val;
 			t_valid = 1;
