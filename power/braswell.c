@@ -19,6 +19,7 @@
 #include "timer.h"
 #include "usb_charge.h"
 #include "util.h"
+#include "watchdog.h"
 #include "wireless.h"
 #include "registers.h"
 
@@ -50,12 +51,29 @@
 /* All inputs in the right state for S0 */
 #define IN_ALL_S0 (IN_PGOOD_S0 | IN_ALL_PM_SLP_DEASSERTED)
 
+#define SHUTDOWN_DELAY (10 * SECOND)
+
 static int throttle_cpu;      /* Throttle CPU? */
 static int forcing_shutdown;  /* Forced shutdown in progress? */
 
+static timestamp_t boot_time;
+
 void chipset_force_shutdown(void)
 {
+	uint64_t time_diff;
+
 	CPRINTS("%s()", __func__);
+
+	time_diff = get_time().val - boot_time.val;
+	while (time_diff < SHUTDOWN_DELAY) {
+		/*
+		 * If forcing shutdown from a hook, we need to explicitly poke
+		 * the watchdog
+		 */
+		usleep(250 * MSEC);
+		watchdog_reload();
+		time_diff += 250 * MSEC;
+	}
 
 	/*
 	 * Force power off. This condition will reset once the state machine
@@ -239,6 +257,9 @@ enum power_state power_handle_state(enum power_state state)
 
 		/* Set SYS and CORE PWROK */
 		gpio_set_level(GPIO_PCH_SYS_PWROK, 1);
+
+		/* record the boot time and check in chipset_force_shutdown() */
+		boot_time = get_time();
 
 		return POWER_S0;
 
