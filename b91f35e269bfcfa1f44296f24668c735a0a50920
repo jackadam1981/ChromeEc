@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "dc44a23c_4c8ebf2f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-14T18:40:46Z",
+      "side": 1,
+      "message": "These need to move up to line 299, reason is described below at line 2792.",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 6
+      },
+      "revId": "b91f35e269bfcfa1f44296f24668c735a0a50920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc2ec625_e428248e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -13,6 +36,30 @@
       "writtenOn": "2016-10-14T03:40:53Z",
       "side": 1,
       "message": "Just to be clear, the intention here is to disable auto-toggle?",
+      "range": {
+        "startLine": 2738,
+        "startChar": 4,
+        "endLine": 2738,
+        "endChar": 35
+      },
+      "revId": "b91f35e269bfcfa1f44296f24668c735a0a50920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc44a23c_0c2837ef",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2738,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-14T18:40:46Z",
+      "side": 1,
+      "message": "Both Reef\u0027s TCPC stop toggling once something is plugged in and will resume toggling when it is unplugged.\n\nSince it is resuming back to PD_STATE_SNK/SRC_DISCONNECTED, calling tcpm_set_cc and other variables will make sure the state of the TCPC/TCPM is identical as if the DRP auto toggle is not used.\n\nAnother reason is mentioned in tcpci.c regarding Rp should set to lowest during DRP auto toggle and restore to the expected Rp when a SRC device is plugged in.",
+      "parentUuid": "fc2ec625_e428248e",
       "range": {
         "startLine": 2738,
         "startChar": 4,
@@ -41,6 +88,53 @@
         "startChar": 8,
         "endLine": 2792,
         "endChar": 25
+      },
+      "revId": "b91f35e269bfcfa1f44296f24668c735a0a50920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc44a23c_0c84b70f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2792,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-14T18:40:46Z",
+      "side": 1,
+      "message": "OK, I do see a bug.\n\nIf a SNK is plugged during PD_STATE_DRP_TOGGLE, power_role is PD_ROLE_SINK in line 2736, so this will not get executed because of line 2777; continue to PD_STATE_SNK_DISCONNECTED, but if a unplug happens before it gets to PD_STATE_SNK_DISCONNECTED_DEBOUNCE, then it will go back to manual DRP toggle since PD_FLAGS_TCPC_DRP_TOGGLE is not cleared.\n\nIf a SRC is plugged during PD_STATE_DRP_TOGGLE and state connected, this will be skipped also because of line 2782; but same thing that if a unplug happens before PD_STATE_SRC_DISCONNECTED_DEBOUNCE, then it will go back to manual DRP toggle also.\n\nIf a quick (msec?) unplug happened before it even get to PD_STATE_SRC_DISCONNECTED, PD_FLAGS_TCPC_DRP_TOGGLE will be set initially to indicate we just came out of toggle in line 2742, but when line 2800 is called, last state is already PD_STATE_SRC_DISCONNECTED, and next state is PD_STATE_SNK_DISCONNECTED, then PD_FLAGS_TCPC_DRP_TOGGLE will not get clear and go back to manual DRP toggle.\n\nWe have discussed about a plug/unplug automated test, will PM you for more details.",
+      "parentUuid": "fc2ec625_643df4c4",
+      "range": {
+        "startLine": 2792,
+        "startChar": 8,
+        "endLine": 2792,
+        "endChar": 25
+      },
+      "revId": "b91f35e269bfcfa1f44296f24668c735a0a50920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc44a23c_2cc9731f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-14T18:40:46Z",
+      "side": 1,
+      "message": "TCPCI spec v1.0 page 71: ROLE_CONTROL.RpValue\u003d00b (smallest Rp to save power)\n\nTODO: modify set_role_ctrl and tcpci_tcpm_select_rp_value function to handle this so that tcpci_tcpm_select_rp_value will save RP to a global variable, set_role_ctrl to take an extra parameter for RP, and tcpci_tcpm_set_cc to restore to the expected RP from the global variable.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 6
       },
       "revId": "b91f35e269bfcfa1f44296f24668c735a0a50920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
