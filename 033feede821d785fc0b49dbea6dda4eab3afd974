@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "fc2ec625_d8a631c1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-14T00:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc91ae63_4e6b937e",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 6
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcffee21_da30c49e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "OK, will test this out.",
       "parentUuid": "bcffee21_da30c49e",
+      "range": {
+        "startLine": 2695,
+        "startChar": 0,
+        "endLine": 2696,
+        "endChar": 37
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc2ec625_3e506d27",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2696,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-14T00:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcffee21_1d2866ee",
       "range": {
         "startLine": 2695,
         "startChar": 0,
@@ -291,6 +339,30 @@
     },
     {
       "key": {
+        "uuid": "fc2ec625_5e2209c3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2735,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-14T00:52:25Z",
+      "side": 1,
+      "message": "Moved this flag set to above so that it can work with removing of the while loop inside this case.",
+      "parentUuid": "bcffee21_bd2e12f8",
+      "range": {
+        "startLine": 2735,
+        "startChar": 4,
+        "endLine": 2735,
+        "endChar": 47
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc744ebe_5c705132",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -385,6 +457,30 @@
     },
     {
       "key": {
+        "uuid": "fc2ec625_1e2c91b0",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-14T00:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc91ae63_51933451",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 26
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc91ae63_ab814939",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 1
@@ -420,6 +516,30 @@
       "side": 1,
       "message": "Yes, this make sense. I will try it out.",
       "parentUuid": "bc91ae63_ab814939",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 44
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc2ec625_9e10a166",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-14T00:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc91ae63_b1a9b87c",
       "range": {
         "startLine": 519,
         "startChar": 0,
@@ -479,6 +599,30 @@
     },
     {
       "key": {
+        "uuid": "fc2ec625_be155d55",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-14T00:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f7aac68_4d9a0f1e",
+      "range": {
+        "startLine": 524,
+        "startChar": 4,
+        "endLine": 524,
+        "endChar": 30
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc91ae63_8b0d6df6",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -508,6 +652,24 @@
       "side": 1,
       "message": "Yes, make sense and I will try to see if I can find a way to combine code with set_cc.",
       "parentUuid": "bc91ae63_8b0d6df6",
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc2ec625_7e08253b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-14T00:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc91ae63_2eac879e",
       "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
