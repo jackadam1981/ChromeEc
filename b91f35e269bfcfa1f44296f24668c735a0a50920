@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c993f38_6459fea7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-15T00:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc44a23c_4c8ebf2f",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 6
+      },
+      "revId": "b91f35e269bfcfa1f44296f24668c735a0a50920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc2ec625_e428248e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "3c993f38_c4ced240",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2738,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-15T00:37:43Z",
+      "side": 1,
+      "message": "Done - tcpci.c is updated so DRP auto toggle Rp is 500mA and then tcpm_set_cc will restore to 1.5A or whatever selected.",
+      "parentUuid": "dc44a23c_0c2837ef",
+      "range": {
+        "startLine": 2738,
+        "startChar": 4,
+        "endLine": 2738,
+        "endChar": 35
+      },
+      "revId": "b91f35e269bfcfa1f44296f24668c735a0a50920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc2ec625_643df4c4",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -107,6 +155,30 @@
       "side": 1,
       "message": "OK, I do see a bug.\n\nIf a SNK is plugged during PD_STATE_DRP_TOGGLE, power_role is PD_ROLE_SINK in line 2736, so this will not get executed because of line 2777; continue to PD_STATE_SNK_DISCONNECTED, but if a unplug happens before it gets to PD_STATE_SNK_DISCONNECTED_DEBOUNCE, then it will go back to manual DRP toggle since PD_FLAGS_TCPC_DRP_TOGGLE is not cleared.\n\nIf a SRC is plugged during PD_STATE_DRP_TOGGLE and state connected, this will be skipped also because of line 2782; but same thing that if a unplug happens before PD_STATE_SRC_DISCONNECTED_DEBOUNCE, then it will go back to manual DRP toggle also.\n\nIf a quick (msec?) unplug happened before it even get to PD_STATE_SRC_DISCONNECTED, PD_FLAGS_TCPC_DRP_TOGGLE will be set initially to indicate we just came out of toggle in line 2742, but when line 2800 is called, last state is already PD_STATE_SRC_DISCONNECTED, and next state is PD_STATE_SNK_DISCONNECTED, then PD_FLAGS_TCPC_DRP_TOGGLE will not get clear and go back to manual DRP toggle.\n\nWe have discussed about a plug/unplug automated test, will PM you for more details.",
       "parentUuid": "fc2ec625_643df4c4",
+      "range": {
+        "startLine": 2792,
+        "startChar": 8,
+        "endLine": 2792,
+        "endChar": 25
+      },
+      "revId": "b91f35e269bfcfa1f44296f24668c735a0a50920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c993f38_44f16277",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2792,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-15T00:37:43Z",
+      "side": 1,
+      "message": "Done - code is update to address the problem I described, please let me know if there is other concern.",
+      "parentUuid": "dc44a23c_0c84b70f",
       "range": {
         "startLine": 2792,
         "startChar": 8,
