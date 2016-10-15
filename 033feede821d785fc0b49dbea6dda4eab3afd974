@@ -245,6 +245,24 @@
     },
     {
       "key": {
+        "uuid": "3c993f38_a195b827",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2699,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-15T00:37:43Z",
+      "side": 1,
+      "message": "Done - This is further commented on newer patch.",
+      "parentUuid": "bc91ae63_aea9577c",
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc91ae63_4b754588",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -280,6 +298,30 @@
       "side": 1,
       "message": "I think it will took the path in line 2765 to continue the while loop. Let me check to confirm.",
       "parentUuid": "bc91ae63_4b754588",
+      "range": {
+        "startLine": 2711,
+        "startChar": 0,
+        "endLine": 2731,
+        "endChar": 5
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c993f38_2479b63a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2731,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-15T00:37:43Z",
+      "side": 1,
+      "message": "Done - This is updated in latest patch.",
+      "parentUuid": "bc91ae63_ce0943d7",
       "range": {
         "startLine": 2711,
         "startChar": 0,
@@ -363,6 +405,30 @@
     },
     {
       "key": {
+        "uuid": "3c993f38_e482eee5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2735,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-15T00:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc2ec625_5e2209c3",
+      "range": {
+        "startLine": 2735,
+        "startChar": 4,
+        "endLine": 2735,
+        "endChar": 47
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc744ebe_5c705132",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -398,6 +464,30 @@
       "side": 1,
       "message": "I don\u0027t think toggle will happen in power role swap. Let me check to confirm.",
       "parentUuid": "bc744ebe_5c705132",
+      "range": {
+        "startLine": 2767,
+        "startChar": 6,
+        "endLine": 2767,
+        "endChar": 32
+      },
+      "revId": "033feede821d785fc0b49dbea6dda4eab3afd974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c993f38_6496de2a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2767,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-15T00:37:43Z",
+      "side": 1,
+      "message": "Done - power role swap will go through a different patch which won\u0027t involve the DRP auto toggling.",
+      "parentUuid": "bc91ae63_8eff3b8e",
       "range": {
         "startLine": 2767,
         "startChar": 6,
