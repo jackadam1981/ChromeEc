@@ -16,6 +16,24 @@
       "revId": "7063e1c3220d668e4510984478ac40eeb8189d86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c993f38_e191806c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-10-15T00:10:37Z",
+      "side": 1,
+      "message": "That was not supposed to be there. Let me remove that code.",
+      "parentUuid": "3c993f38_dee1c586",
+      "revId": "7063e1c3220d668e4510984478ac40eeb8189d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
