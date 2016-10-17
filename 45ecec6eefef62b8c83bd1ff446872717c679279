@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c993f38_05e4b124",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-17T19:41:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c993f38_53cda616",
+      "range": {
+        "startLine": 44,
+        "startChar": 21,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "45ecec6eefef62b8c83bd1ff446872717c679279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c993f38_b3dbcad2",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-10-17T17:55:14Z",
       "side": 1,
       "message": "Maybe add another CONFIG (undef for lucid) like \"CONFIG_USB_PD_PRINT_STATE_NAMES\". Actually maybe it should be undef\u0027d by default.",
+      "range": {
+        "startLine": 354,
+        "startChar": 6,
+        "endLine": 354,
+        "endChar": 20
+      },
+      "revId": "45ecec6eefef62b8c83bd1ff446872717c679279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c993f38_e571858d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-17T19:41:48Z",
+      "side": 1,
+      "message": "Do you still prefer to have this or is it ok to have lucid to have a fixed debug_level \u003d 0?",
+      "parentUuid": "3c993f38_b3dbcad2",
       "range": {
         "startLine": 354,
         "startChar": 6,
