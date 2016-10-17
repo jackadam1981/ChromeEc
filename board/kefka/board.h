@@ -74,13 +74,13 @@
 #define CONFIG_LID_ANGLE_SENSOR_BASE	0
 #define CONFIG_LID_ANGLE_SENSOR_LID	1
 #define CONFIG_LID_ANGLE_UPDATE
-
+#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 /* Wireless signals */
 #define WIRELESS_GPIO_WLAN	GPIO_WLAN_OFF_L
 
 /* Number of buttons */
 #define CONFIG_BUTTON_COUNT		2
-
+#define MOTION_SENSOR_MAX       2
 /* Modules we want to exclude */
 #undef CONFIG_EEPROM
 #undef CONFIG_EOPTION

@@ -133,8 +133,17 @@ const matrix_3x3_t lid_standard_ref = {
 	{ 0, FLOAT_TO_FP(1),  0},
 	{ 0,  0, FLOAT_TO_FP(-1)}
 };
-
-struct motion_sensor_t motion_sensors[] = {
+/*
+ *  Empty table for Kefka SKU as default.
+ *
+ */
+struct motion_sensor_t motion_sensors[MOTION_SENSOR_MAX] = { };
+unsigned int motion_sensor_count;
+/*
+ *  For Sabin SKU.
+ *
+ */
+struct motion_sensor_t motion_sensors_sabin[] = {
 	{.name = "Base Accel",
 	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_KXCJ9,
@@ -186,7 +195,6 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 #endif
 };
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 /* Define the accelerometer orientation matrices. */
 const struct accel_orientation acc_orient = {
@@ -266,3 +274,25 @@ static void touch_screen_control(void)
 DECLARE_HOOK(HOOK_INIT, touch_screen_control, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, touch_screen_control, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, touch_screen_control, HOOK_PRIO_DEFAULT);
+
+static void get_motion_sensors(void)
+{
+	int i;
+    /*
+     * Initialize the motion sensor table for Sabin SKU
+     *
+     * GPIO_BOARD_VERSION1
+     * Sabin : 1
+     * Kefka : 0
+     *
+     */
+	if (gpio_get_level(GPIO_BOARD_VERSION1) == 1) {
+		for (i = 0; i <= ARRAY_SIZE(motion_sensors_sabin); i++)
+			memcpy(&motion_sensors[i], &motion_sensors_sabin[i],
+			sizeof(*motion_sensors));
+		motion_sensor_count = ARRAY_SIZE(motion_sensors_sabin);
+	} else {
+		motion_sensor_count = 0;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, get_motion_sensors, HOOK_PRIO_FIRST);
