@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9caf8af5_b2eb20d8",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2016-10-17T06:20:02Z",
+      "side": 1,
+      "message": "Are you referring to S0ix-\u003eS5 Scenario without asserting LPC_RST?",
+      "parentUuid": "c2791940_0be53df4",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 72
+      },
+      "revId": "0067f85bdc432a986a21c39e9042d48ca474bb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2791940_2be279ed",
         "filename": "power/skylake.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-10-04T18:21:36Z",
       "side": 1,
       "message": "We can remove this TODO now.",
+      "range": {
+        "startLine": 277,
+        "startChar": 4,
+        "endLine": 277,
+        "endChar": 45
+      },
+      "revId": "0067f85bdc432a986a21c39e9042d48ca474bb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9caf8af5_92f09cc3",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2016-10-17T06:20:02Z",
+      "side": 1,
+      "message": "Will address this",
+      "parentUuid": "c2791940_2be279ed",
       "range": {
         "startLine": 277,
         "startChar": 4,
