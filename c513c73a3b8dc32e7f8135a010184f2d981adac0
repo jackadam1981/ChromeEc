@@ -22,6 +22,30 @@
       "revId": "c513c73a3b8dc32e7f8135a010184f2d981adac0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_d786149f",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-17T22:24:40Z",
+      "side": 1,
+      "message": "Yes, I think it\u0027s better to use the actual gas gauge-requested voltage (if the gas gauge is requesting a valid voltage) rather than our pre-defined maximum.",
+      "parentUuid": "9c04eb4e_94b12ae9",
+      "range": {
+        "startLine": 871,
+        "startChar": 0,
+        "endLine": 871,
+        "endChar": 36
+      },
+      "revId": "c513c73a3b8dc32e7f8135a010184f2d981adac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
