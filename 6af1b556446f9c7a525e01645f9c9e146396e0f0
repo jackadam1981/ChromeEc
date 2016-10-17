@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c04eb4e_54cd0217",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-17T21:25:38Z",
+      "side": 1,
+      "message": "I\u0027m slightly worried that input current limit is set asynchronously (from HOOKS task, charge_manager_refresh()), so we have no guarantee that the new current limit has taken effect at the time we call send_request().",
+      "range": {
+        "startLine": 645,
+        "startChar": 3,
+        "endLine": 645,
+        "endChar": 26
+      },
+      "revId": "6af1b556446f9c7a525e01645f9c9e146396e0f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
