@@ -805,7 +805,15 @@ DECLARE_DEFERRED(lpc_chipset_reset);
 int lpc_get_pltrst_asserted(void)
 {
 	/* Read current PLTRST status */
-	return (NPCX_MSWCTL1 & 0x04) ? 1 : 0;
+	return IS_BIT_SET(NPCX_MSWCTL1, NPCX_MSWCTL1_PLTRST_ACT);
+}
+
+void lpc_host_reset(void)
+{
+	/* Host Reset Control will assert KBRST# (LPC) or RCIN# VW (eSPI) */
+	SET_BIT(NPCX_MSWCTL1, NPCX_MSWCTL1_HRSTOB);
+	udelay(10);
+	CLEAR_BIT(NPCX_MSWCTL1, NPCX_MSWCTL1_HRSTOB);
 }
 
 #ifndef CONFIG_ESPI
@@ -861,7 +869,7 @@ static void lpc_init(void)
 	NPCX_DEVCNT |= 0x04;
 #endif
 	/* Enable 4E/4F */
-	if (!IS_BIT_SET(NPCX_MSWCTL1, 3)) {
+	if (!IS_BIT_SET(NPCX_MSWCTL1, NPCX_MSWCTL1_VHCFGA)) {
 		NPCX_HCBAL = 0x4E;
 		NPCX_HCBAH = 0x0;
 	}
