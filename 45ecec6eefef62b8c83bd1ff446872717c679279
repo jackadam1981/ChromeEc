@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c993f38_53cda616",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-17T17:55:14Z",
+      "side": 1,
+      "message": "This is confusing because we have two ways to set the debug level now. How about this instead?\n\n- If CONFIG_USB_PD_DEBUG_LEVEL is set, declare debug_level as \u0027static const int debug_level \u003d CONFIG_USB_PD_DEBUG_LEVEL\u0027.\n\n- If not set, fall back to existing runtime-configurable debug level.",
+      "range": {
+        "startLine": 44,
+        "startChar": 21,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "45ecec6eefef62b8c83bd1ff446872717c679279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c993f38_b3dbcad2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-17T17:55:14Z",
+      "side": 1,
+      "message": "Maybe add another CONFIG (undef for lucid) like \"CONFIG_USB_PD_PRINT_STATE_NAMES\". Actually maybe it should be undef\u0027d by default.",
+      "range": {
+        "startLine": 354,
+        "startChar": 6,
+        "endLine": 354,
+        "endChar": 20
+      },
+      "revId": "45ecec6eefef62b8c83bd1ff446872717c679279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
