@@ -648,6 +648,24 @@ void charge_manager_set_ceil(int port, int ceil)
 	}
 }
 
+void charge_manager_force_ceil(int port, int ceil)
+{
+	ASSERT(port >= 0 && port < PD_PORT_COUNT);
+
+	/*
+	 * Force our input current to ceil if we're exceeding it, without
+	 * waiting for our deferred task to run.
+	 */
+	if (port == charge_port && ceil < charge_current)
+		board_set_charge_limit(ceil);
+
+	/*
+	 * Now inform charge_manager so it stays in sync with the state of
+	 * the world.
+	 */
+	charge_manager_set_ceil(port, ceil);
+}
+
 /**
  * Select an 'override port', a port which is always the preferred charge port.
  * Returns EC_SUCCESS on success, ec_error_list status on failure.
