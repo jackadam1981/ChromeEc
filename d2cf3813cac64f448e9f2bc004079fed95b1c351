@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c993f38_b81089fe",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-17T17:33:31Z",
+      "side": 1,
+      "message": "These params are size (bytes), and should probably be 0x20000, 0x40000, etc.",
+      "range": {
+        "startLine": 58,
+        "startChar": 28,
+        "endLine": 58,
+        "endChar": 35
+      },
+      "revId": "d2cf3813cac64f448e9f2bc004079fed95b1c351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
