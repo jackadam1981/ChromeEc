@@ -636,9 +636,16 @@ static int pd_send_request_msg(int port, int always_send_request)
 		 */
 		return -1;
 
-	/* Don't re-request the same voltage */
-	if (!always_send_request && pd[port].prev_request_mv == supply_voltage)
-		return EC_SUCCESS;
+	if (!always_send_request) {
+		/* Don't re-request the same voltage */
+		if (pd[port].prev_request_mv == supply_voltage)
+			return EC_SUCCESS;
+		/* Limit current to PD_MIN_MA during transition */
+		else
+			charge_manager_set_ceil(port,
+						CEIL_REQUESTOR_PD,
+						PD_MIN_MA);
+	}
 
 	CPRINTF("Req C%d [%d] %dmV %dmA", port, RDO_POS(rdo),
 		supply_voltage, curr_limit);
