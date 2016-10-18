@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dce3c3ee_7b347fa9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-10-18T17:06:25Z",
+      "side": 1,
+      "message": "I don\u0027t know why the power button behavior is different with braswell and skylake platform... But we need to delay the boot sequence after release the power button.",
+      "parentUuid": "3c993f38_8dfd4d02",
+      "revId": "2453b71506279bba0725b25cc1e9e0e722968632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c993f38_6d46c170",
         "filename": "common/power_button_x86.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2016-10-17T15:50:00Z",
       "side": 1,
       "message": "Why are we adding a delay here for the next power button state?",
+      "revId": "2453b71506279bba0725b25cc1e9e0e722968632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dce3c3ee_5b2fc355",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-10-18T17:06:25Z",
+      "side": 1,
+      "message": "This delay is unnecessary, I had removed it",
+      "parentUuid": "3c993f38_6d46c170",
       "revId": "2453b71506279bba0725b25cc1e9e0e722968632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
