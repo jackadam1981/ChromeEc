@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c04eb4e_a49cefa7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-18T19:58:41Z",
+      "side": 1,
+      "message": "Why not return MIN3(PD_MAX_CURRENT_MA, info-\u003einput_current_max, (PD_MAX_POWER_MW * 100) / supply voltage)?",
+      "range": {
+        "startLine": 590,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 15
+      },
+      "revId": "047220db4b54abbfd99e8368c718e6755f39e322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
