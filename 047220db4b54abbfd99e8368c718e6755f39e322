@@ -94,6 +94,30 @@
       "revId": "047220db4b54abbfd99e8368c718e6755f39e322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_5ff86e10",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-18T21:00:51Z",
+      "side": 1,
+      "message": "sometimes Zinger negotiates to 3A \u0026 5V before negotiating 20V \u0026 2.25A. Hence both the approaches will fail. Need to decide Ilim depending on the type of the charger (as in 1st patch)",
+      "parentUuid": "9c04eb4e_5f6fce6f",
+      "range": {
+        "startLine": 590,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 15
+      },
+      "revId": "047220db4b54abbfd99e8368c718e6755f39e322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
