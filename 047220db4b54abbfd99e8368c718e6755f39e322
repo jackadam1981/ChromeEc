@@ -70,6 +70,30 @@
       "revId": "047220db4b54abbfd99e8368c718e6755f39e322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_5f6fce6f",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-18T20:24:30Z",
+      "side": 1,
+      "message": "okay thank you, this sounds great. I will add charge_manager_get_charger_voltage() and make\nMIN(PD_MAX_CURRENT_MA, (PD_MAX_POWER_MW * 1000) / charge_manager_get_charger_voltage())",
+      "parentUuid": "9c04eb4e_84d9eb3f",
+      "range": {
+        "startLine": 590,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 15
+      },
+      "revId": "047220db4b54abbfd99e8368c718e6755f39e322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
