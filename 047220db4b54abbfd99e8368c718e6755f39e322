@@ -46,6 +46,30 @@
       "revId": "047220db4b54abbfd99e8368c718e6755f39e322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_84d9eb3f",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-18T20:15:20Z",
+      "side": 1,
+      "message": "By \"supply voltage\" I mean the voltage our active power supply is outputting right now. 45W / 5V \u003d 9000 mA \u003e PD_MAX_CURRENT_MA, so only PD_MAX_CURRENT_MA will be relevant for the min() calculation.",
+      "parentUuid": "9c04eb4e_04721b91",
+      "range": {
+        "startLine": 590,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 15
+      },
+      "revId": "047220db4b54abbfd99e8368c718e6755f39e322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
