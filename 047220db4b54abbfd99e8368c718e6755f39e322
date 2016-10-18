@@ -166,6 +166,30 @@
       "revId": "047220db4b54abbfd99e8368c718e6755f39e322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_7f93b2a5",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-18T21:13:35Z",
+      "side": 1,
+      "message": "Ok, let\u0027s just use (PD_MAX_POWER_MW / PD_MAX_VOLTAGE_MV) as the limit. It may not always be optimal, but it should be close.",
+      "parentUuid": "9c04eb4e_3f4bea77",
+      "range": {
+        "startLine": 590,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 15
+      },
+      "revId": "047220db4b54abbfd99e8368c718e6755f39e322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
