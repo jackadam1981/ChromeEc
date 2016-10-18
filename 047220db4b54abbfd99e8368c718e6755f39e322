@@ -22,6 +22,30 @@
       "revId": "047220db4b54abbfd99e8368c718e6755f39e322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_04721b91",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-18T20:07:04Z",
+      "side": 1,
+      "message": "1. (PD_MAX_POWER_MW * 1000) / supply voltage)\nif we use Type-C charger (5V, 3A) we will limit the current to 2.25A.\n2. info-\u003einput_current_max\nThis is not needed as info-\u003einput_current_max can not be less than PD_MAX_POWER_MW for any board.",
+      "parentUuid": "9c04eb4e_a49cefa7",
+      "range": {
+        "startLine": 590,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 15
+      },
+      "revId": "047220db4b54abbfd99e8368c718e6755f39e322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
