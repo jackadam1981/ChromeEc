@@ -13,6 +13,9 @@ CTS_TEST(test_task_wait_event)
 /* Test task_disable_irq */
 CTS_TEST(test_task_disable_irq)
 
+/* Test nested interrupt */
+CTS_TEST(test_nested_interrupt)
+
 /*
  * Other ideas
  *
