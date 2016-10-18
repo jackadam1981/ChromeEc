@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c04eb4e_a4786f6f",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-18T20:07:50Z",
+      "side": 1,
+      "message": "Why are you adding this? Should this be a min() operation instead?",
+      "range": {
+        "startLine": 638,
+        "startChar": 10,
+        "endLine": 638,
+        "endChar": 41
+      },
+      "revId": "e01196cc0ff30e147e6835c07446fc9ceaf4f85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
