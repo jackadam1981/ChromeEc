@@ -129,7 +129,10 @@ static void lpc_task_disable_irq(void)
  */
 static void lpc_generate_smi(void)
 {
-#ifdef CONFIG_SCI_GPIO
+#if defined(CONFIG_ESPI)
+	/* Set signal low to send VW message */
+	SET_BIT(NPCX_HIPMIC(PMC_ACPI), NPCX_HIPMIC_SMIB);
+#elif defined(CONFIG_SCI_GPIO)
 	/* Enforce signal-high for long enough to debounce high */
 	gpio_set_level(GPIO_PCH_SMI_L, 1);
 	udelay(65);
@@ -158,7 +161,10 @@ static void lpc_generate_smi(void)
  */
 static void lpc_generate_sci(void)
 {
-#ifdef CONFIG_SCI_GPIO
+#if defined(CONFIG_ESPI)
+	/* Set signal low to send VW message */
+	SET_BIT(NPCX_HIPMIC(PMC_ACPI), NPCX_HIPMIC_SCIB);
+#elif defined(CONFIG_SCI_GPIO)
 	/* Enforce signal-high for long enough to debounce high */
 	gpio_set_level(CONFIG_SCI_GPIO, 1);
 	udelay(65);
@@ -958,9 +964,11 @@ static void lpc_init(void)
 #endif
 
 #ifndef CONFIG_SCI_GPIO
+#ifndef CONFIG_ESPI
 	/* Disable SMI/SCI Negative Polarity */
 	CLEAR_BIT(NPCX_HIPMCTL(PMC_ACPI), NPCX_HIPMCTL_SCIPOL);
 	CLEAR_BIT(NPCX_HIPMIC(PMC_ACPI), NPCX_HIPMIC_SMIPOL);
+#endif
 	/*
 	 * Allow SMI/SCI generated from PM module.
 	 * Either hardware autimatically generates,
