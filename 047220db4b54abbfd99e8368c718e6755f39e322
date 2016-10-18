@@ -142,6 +142,30 @@
       "revId": "047220db4b54abbfd99e8368c718e6755f39e322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_3f4bea77",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-18T21:08:08Z",
+      "side": 1,
+      "message": "this function is not called again if ilim is valid hence we end up having 3A \u0026 20V instead of 2.25A \u0026 20V.\n\n\u003e charger\n  Name:   bd99956\n  Option: 11000110111101101000 (0xc6f68)\n  Man id: (unsupported)\n  Dev id: 0x0331\n  V_batt:  8688 (3072 - 19200,  16)\n  I_batt:   512 ( 128 - 16320,  64)\n  I_in:    2976 ( 512 - 16352,  32)\n\u003echgsup\nport\u003d1, type\u003d0, cur\u003d2250mA, vtg\u003d20000mV",
+      "parentUuid": "9c04eb4e_bfe87a3a",
+      "range": {
+        "startLine": 590,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 15
+      },
+      "revId": "047220db4b54abbfd99e8368c718e6755f39e322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
