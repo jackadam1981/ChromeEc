@@ -190,6 +190,30 @@
       "revId": "047220db4b54abbfd99e8368c718e6755f39e322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_ff0322e5",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-18T21:26:38Z",
+      "side": 1,
+      "message": "with this approach we cant boot to OS with PD chargers (system will go to G3 due to low power 5V, 2.25A).",
+      "parentUuid": "9c04eb4e_7f93b2a5",
+      "range": {
+        "startLine": 590,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 15
+      },
+      "revId": "047220db4b54abbfd99e8368c718e6755f39e322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
