@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c04eb4e_1f7f0584",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-18T22:25:08Z",
+      "side": 1,
+      "message": "Shawn/David: can you please give feedback for this patch?\none advantage of this patch is we can remove this function if we exceed memory.",
+      "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
