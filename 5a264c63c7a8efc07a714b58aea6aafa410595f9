@@ -22,6 +22,30 @@
       "revId": "5a264c63c7a8efc07a714b58aea6aafa410595f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dce3c3ee_bba60794",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1167184
+      },
+      "writtenOn": "2016-10-18T01:12:24Z",
+      "side": 1,
+      "message": "when volume up and power button are pressed at the same time,the flag RESET_FLAG_RESET_PIN will be set to reset ec. Then it only needs to check volume down.",
+      "parentUuid": "3c993f38_653fb51f",
+      "range": {
+        "startLine": 490,
+        "startChar": 3,
+        "endLine": 490,
+        "endChar": 49
+      },
+      "revId": "5a264c63c7a8efc07a714b58aea6aafa410595f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
