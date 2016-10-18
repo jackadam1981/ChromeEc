@@ -205,6 +205,7 @@ static const struct option long_opts[] = {
 	{"help",     0,   NULL, 'h'},
 	{"spi",      0,   NULL, 's'},
 	{"upstart",  0,   NULL, 'u'},
+	{"fwver",    0,   NULL, 'f'},
 	{NULL,       0,   NULL,  0},
 };
 
@@ -303,6 +304,7 @@ static void usage(int errs)
 	       "  -b,--binvers             Report versions of image's "
 				"RW and RO headers, do not update\n"
 	       "  -d,--device  VID:PID     USB device (default %04x:%04x)\n"
+	       "  -f,--fwver               Report running firmware.\n"
 	       "  -h,--help                Show this message\n"
 	       "  -s,--spi                 Use /dev/tmp0 (-d is ignored)\n"
 	       "  -u,--upstart             "
@@ -1040,6 +1042,7 @@ int main(int argc, char *argv[])
 	size_t j;
 	int transferred_sections;
 	int binary_vers = 0;
+	int show_fw_ver = 0;
 
 	progname = strrchr(argv[0], '/');
 	if (progname)
@@ -1063,6 +1066,9 @@ int main(int argc, char *argv[])
 				printf("Invalid argument: \"%s\"\n", optarg);
 				errorcnt++;
 			}
+			break;
+		case 'f':
+			show_fw_ver = 1;
 			break;
 		case 'h':
 			usage(errorcnt);
@@ -1095,6 +1101,33 @@ int main(int argc, char *argv[])
 
 	if (errorcnt)
 		usage(errorcnt);
+
+	if (show_fw_ver) {
+		if (td.ep_type == usb_xfer) {
+			usb_findit(vid, pid, &td.uep);
+		} else {
+			td.tpm_fd = open("/dev/tpm0", O_RDWR);
+			if (td.tpm_fd < 0) {
+				perror("Could not open TPM");
+				exit(update_error);
+			}
+		}
+
+		setup_connection(&td);
+
+		printf("Current versions:\n");
+		printf("RO %d.%d.%d\n", targ.shv[0].epoch, targ.shv[0].major,
+			targ.shv[0].minor);
+		printf("RW %d.%d.%d\n", targ.shv[1].epoch, targ.shv[1].major,
+			targ.shv[1].minor);
+
+		if (td.ep_type == usb_xfer) {
+			libusb_close(td.uep.devh);
+			libusb_exit(NULL);
+		}
+
+		return 0;
+	}
 
 	if (optind >= argc) {
 		fprintf(stderr,
