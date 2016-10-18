@@ -46,6 +46,30 @@
       "revId": "e01196cc0ff30e147e6835c07446fc9ceaf4f85a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_df057e77",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-18T20:33:21Z",
+      "side": 1,
+      "message": "We should charge at whatever current the gas gauge asks for. If we can disable precharge / trickle charge mode it will be better (always fall into \u0027fast charge\u0027 mode, where charge current is set by charger_set_current()).\n\nWhat you have here is not good because we\u0027ll always charge at a current greater than desired in precharge.",
+      "parentUuid": "9c04eb4e_9fc77630",
+      "range": {
+        "startLine": 638,
+        "startChar": 10,
+        "endLine": 638,
+        "endChar": 41
+      },
+      "revId": "e01196cc0ff30e147e6835c07446fc9ceaf4f85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
