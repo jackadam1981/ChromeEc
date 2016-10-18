@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c04eb4e_2e6bbece",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2016-10-18T18:36:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cb0fabd_26d4760f",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "0a6de594a7291c8aae20bddfe4729b223f5841d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cb0fabd_06cffa7f",
         "filename": "board/reef/usb_pd_policy.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-10-13T09:14:14Z",
       "side": 1,
       "message": "if the dev_id is unknown, we still send the UPDATE event, is this useful ?",
+      "range": {
+        "startLine": 212,
+        "startChar": 3,
+        "endLine": 216,
+        "endChar": 28
+      },
+      "revId": "0a6de594a7291c8aae20bddfe4729b223f5841d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_ae77aeb5",
+        "filename": "board/reef/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2016-10-18T18:36:53Z",
+      "side": 1,
+      "message": "Not useful but should be harmless.  I\u0027m thinking I\u0027ll leave for now and remove when refactor happens.",
+      "parentUuid": "1cb0fabd_06cffa7f",
       "range": {
         "startLine": 212,
         "startChar": 3,
