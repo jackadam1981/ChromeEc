@@ -372,14 +372,6 @@ static void usb_charger_process(enum bd9995x_charge_port port)
 }
 #endif /* HAS_TASK_USB_CHG */
 
-static int bd9995x_set_vsysreg(int voltage)
-{
-	/* VSYS Regulation voltage is in 64mV steps. */
-	voltage &= ~0x3F;
-
-	return ch_raw_write16(BD9995X_CMD_VSYSREG_SET, voltage,
-			      BD9995X_EXTENDED_COMMAND);
-}
 
 /* chip specific interfaces */
 
@@ -535,15 +527,7 @@ int charger_set_mode(int mode)
 {
 	int rv;
 
-	if (mode & CHARGE_FLAG_INHIBIT_CHARGE) {
-		rv = bd9995x_set_vsysreg(BD9995X_DISCHARGE_VSYSREG);
-		msleep(50);
-		rv |= bd9995x_charger_enable(0);
-	} else {
-		rv = bd9995x_charger_enable(1);
-		msleep(1);
-		rv |= bd9995x_set_vsysreg(BD9995X_CHARGE_VSYSREG);
-	}
+	rv = bd9995x_charger_enable(mode & CHARGE_FLAG_INHIBIT_CHARGE ? 0 : 1);
 	if (rv)
 		return rv;
 
@@ -570,8 +554,6 @@ int charger_get_current(int *current)
 
 int charger_set_current(int current)
 {
-	int rv;
-
 	/* Charge current step 64 mA */
 	current &= ~0x3F;
 
@@ -581,14 +563,8 @@ int charger_set_current(int current)
 	else if (current < bd9995x_charger_info.current_min)
 		current = bd9995x_charger_info.current_min;
 
-	rv = ch_raw_write16(BD9995X_CMD_CHG_CURRENT, current,
-			    BD9995X_BAT_CHG_COMMAND);
-	if (rv)
-		return rv;
-
-	return ch_raw_write16(BD9995X_CMD_IPRECH_SET,
-			      MIN(current, BD9995X_IPRECH_MAX),
-			      BD9995X_EXTENDED_COMMAND);
+	return ch_raw_write16(BD9995X_CMD_CHG_CURRENT, current,
+			      BD9995X_BAT_CHG_COMMAND);
 }
 
 int charger_get_voltage(int *voltage)
@@ -627,7 +603,69 @@ int charger_set_voltage(int voltage)
 				BD9995X_BAT_CHG_COMMAND);
 }
 
-static void bd99995_init(void)
+static void bd9995x_battery_charging_profile_settings(
+				const struct battery_info *bi)
+{
+	/* Fast Charge Voltage Regulation Settings for fast charging. */
+	ch_raw_write16(BD9995X_CMD_VFASTCHG_REG_SET1,
+		       bi->voltage_max & 0x7FF0,
+		       BD9995X_EXTENDED_COMMAND);
+
+	ch_raw_write16(BD9995X_CMD_VFASTCHG_REG_SET2,
+		       bi->voltage_max & 0x7FF0,
+		       BD9995X_EXTENDED_COMMAND);
+
+	ch_raw_write16(BD9995X_CMD_VFASTCHG_REG_SET3,
+		       bi->voltage_max & 0x7FF0,
+		       BD9995X_EXTENDED_COMMAND);
+
+	/* VSYS Regulation Setting pre charging. */
+	ch_raw_write16(BD9995X_CMD_VSYSREG_SET,
+		       bi->voltage_min & 0x7FC0,
+		       BD9995X_EXTENDED_COMMAND);
+
+	/* Set Pre-charge Voltage Threshold for trickle charging. */
+	ch_raw_write16(BD9995X_CMD_VPRECHG_TH_SET, 0,
+		       BD9995X_EXTENDED_COMMAND);
+
+	/* Re-charge Battery Voltage Setting */
+	ch_raw_write16(BD9995X_CMD_VRECHG_SET,
+		       bi->voltage_max & 0x7FC0,
+		       BD9995X_EXTENDED_COMMAND);
+
+	/* Pre-charge Current Setting */
+	ch_raw_write16(BD9995X_CMD_IPRECH_SET,
+		       (BD9995X_NO_BATTERY_CHARGE_I_MIN +
+		       bi->precharge_current) & 0x07C0,
+		       BD9995X_EXTENDED_COMMAND);
+
+	/* Charge Termination Current Setting */
+	ch_raw_write16(BD9995X_CMD_ITERM_SET,
+		       bd9995x_charger_info.current_min & 0x07C0,
+		       BD9995X_EXTENDED_COMMAND);
+
+	/* Trickle-charge Current Setting */
+	ch_raw_write16(BD9995X_CMD_ITRICH_SET,
+		       bi->precharge_current & 0x07C0,
+		       BD9995X_EXTENDED_COMMAND);
+
+	/* Set battery OVP to 500 + maximum battery voltage */
+	ch_raw_write16(BD9995X_CMD_VBATOVP_SET,
+		       (bi->voltage_max + 500) & 0x7ff0,
+		       BD9995X_EXTENDED_COMMAND);
+
+	/* Reverse buck boost voltage Setting */
+	ch_raw_write16(BD9995X_CMD_VRBOOST_SET, 0,
+		       BD9995X_EXTENDED_COMMAND);
+
+	/* Disable fast/pre-charging watchdog */
+	ch_raw_write16(BD9995X_CMD_CHGWDT_SET, 0,
+		       BD9995X_EXTENDED_COMMAND);
+
+	/* TODO(crosbug.com/p/55626): Set  VSYSVAL_THH/THL appropriately */
+}
+
+static void bd9995x_init(void)
 {
 	int reg;
 	int power_save_mode = BD9995X_PWR_SAVE_OFF;
@@ -673,13 +711,6 @@ static void bd99995_init(void)
 	ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
 		       BD9995X_EXTENDED_COMMAND);
 
-	/* TODO(crosbug.com/p/55626): Set  VSYSVAL_THH/THL appropriately */
-
-	/* Set battery OVP to 500 + maximum battery voltage */
-	ch_raw_write16(BD9995X_CMD_VBATOVP_SET,
-		       (bi->voltage_max + 500) & 0x7ff0,
-		       BD9995X_EXTENDED_COMMAND);
-
 	/* Disable IADP pin current limit */
 	if (ch_raw_read16(BD9995X_CMD_VM_CTRL_SET, &reg,
 			  BD9995X_EXTENDED_COMMAND))
@@ -688,23 +719,8 @@ static void bd99995_init(void)
 	ch_raw_write16(BD9995X_CMD_VM_CTRL_SET, reg,
 		       BD9995X_EXTENDED_COMMAND);
 
-	/* Disable fast/pre-charging watchdog */
-	ch_raw_write16(BD9995X_CMD_CHGWDT_SET, 0,
-		       BD9995X_EXTENDED_COMMAND);
-
-	/* Set charge termination current to 0 mA. */
-	ch_raw_write16(BD9995X_CMD_ITERM_SET, 0,
-		       BD9995X_EXTENDED_COMMAND);
-
-	/* Set Pre-charge Voltage Threshold for trickle charging. */
-	ch_raw_write16(BD9995X_CMD_VPRECHG_TH_SET,
-		       bi->voltage_min & 0x7FC0,
-		       BD9995X_EXTENDED_COMMAND);
-
-	/* Trickle-charge Current Setting */
-	ch_raw_write16(BD9995X_CMD_ITRICH_SET,
-		       bi->precharge_current & 0x07C0,
-		       BD9995X_EXTENDED_COMMAND);
+	/* Define battery charging profile */
+	bd9995x_battery_charging_profile_settings(bi);
 
 	/* Power save mode when VBUS/VCC is removed. */
 #ifdef CONFIG_BD9995X_POWER_SAVE_MODE
@@ -732,7 +748,7 @@ static void bd99995_init(void)
 	/* Re-lock debug regs */
 	ch_raw_write16(BD9995X_CMD_PROTECT_SET, 0x0, BD9995X_EXTENDED_COMMAND);
 }
-DECLARE_HOOK(HOOK_INIT, bd99995_init, HOOK_PRIO_INIT_EXTPOWER);
+DECLARE_HOOK(HOOK_INIT, bd9995x_init, HOOK_PRIO_INIT_EXTPOWER);
 
 int charger_post_init(void)
 {
