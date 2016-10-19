@@ -22,6 +22,30 @@
       "revId": "87083d7f1862284ed4ce9d188f8e2c44392218a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_0805092e",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-19T00:38:55Z",
+      "side": 1,
+      "message": "Yikes... yes, they should be. Funnily enough, both W25Q40 and GD25LQ40 patches say \"needs testing\" in the TEST\u003d field. Maybe we never actually used these chips until now.",
+      "parentUuid": "9c04eb4e_53bb4f1d",
+      "range": {
+        "startLine": 53,
+        "startChar": 28,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "87083d7f1862284ed4ce9d188f8e2c44392218a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
