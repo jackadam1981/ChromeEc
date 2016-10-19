@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c04eb4e_61294bfc",
+        "filename": "chip/stm32/usart-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-10-19T19:59:40Z",
+      "side": 1,
+      "message": "Is it better to fork this file or add a pile of ifdefs into usart-stm32f.c?",
+      "revId": "f0990db6e8e7919f9411caaa86d0b3c78b316b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_a1f2137e",
+        "filename": "chip/stm32/usart-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-10-19T19:59:40Z",
+      "side": 1,
+      "message": "Is it better to fork this file or add a bunch of ifdefs into usart-stm32f.c?",
+      "revId": "f0990db6e8e7919f9411caaa86d0b3c78b316b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_01031f72",
+        "filename": "chip/stm32/usart_rx_interrupt-stm32f4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-10-19T19:59:40Z",
+      "side": 1,
+      "message": "Same, ifdefs or fork?",
+      "revId": "f0990db6e8e7919f9411caaa86d0b3c78b316b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
