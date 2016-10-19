@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c04eb4e_f4e3401c",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-19T17:18:39Z",
+      "side": 1,
+      "message": "we can remove both CONFIG_CHARGER_NARROW_VDC \u0026 CONFIG_CHARGER_MAINTAIN_VBAT for BD9995X users and make\n\ncharger_set_voltage()\n        if (!voltage ||\n                reg \u0026 BD9995X_CMD_CHGOP_SET2_BATT_LEARN ||\n                battery_is_present() !\u003d BP_YES ||\n                battery_is_cut_off())\n                voltage \u003d bi-\u003evoltage_max;",
+      "revId": "219d0d58344bdcbee9079862aa3f129928fa90fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
