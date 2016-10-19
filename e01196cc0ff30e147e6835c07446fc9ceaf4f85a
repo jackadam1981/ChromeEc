@@ -70,6 +70,30 @@
       "revId": "e01196cc0ff30e147e6835c07446fc9ceaf4f85a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_39a4a18b",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-19T15:03:36Z",
+      "side": 1,
+      "message": "okay I will change it to bi-\u003eprecharge_current.\n\nVPRECHG_TH_SET is set to 0\nVSYSREG_SET is set to bat_min\nso gas gauge is expected to charge at precharge current in both trickle charge \u0026 pre-charge state.",
+      "parentUuid": "9c04eb4e_df057e77",
+      "range": {
+        "startLine": 638,
+        "startChar": 10,
+        "endLine": 638,
+        "endChar": 41
+      },
+      "revId": "e01196cc0ff30e147e6835c07446fc9ceaf4f85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
