@@ -235,6 +235,30 @@
       "revId": "b91f35e269bfcfa1f44296f24668c735a0a50920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_9cc13640",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-19T21:31:36Z",
+      "side": 1,
+      "message": "Since this is part of the DRP auto toggle, I go ahead and make this Rp change in this CL: tcpci_tcpc_drp_toggle() will set Rp to 500mA and tcpci_tcpc_set_cc() set it to the Rp based on what tcpci_tcpm_select_rp_value() is set to.",
+      "parentUuid": "9c04eb4e_7ce9f2a0",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 6
+      },
+      "revId": "b91f35e269bfcfa1f44296f24668c735a0a50920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
