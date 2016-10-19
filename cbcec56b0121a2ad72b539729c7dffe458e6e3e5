@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc6ae32c_d228fafa",
+        "filename": "board/eve/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-19T22:50:46Z",
+      "side": 1,
+      "message": "Do you just want to do this once? If so, HOOK_INIT w/ (HOOK_PRIO_INIT_CHIPSET - 1) may be more appropriate.",
+      "range": {
+        "startLine": 321,
+        "startChar": 1,
+        "endLine": 321,
+        "endChar": 71
+      },
+      "revId": "cbcec56b0121a2ad72b539729c7dffe458e6e3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
