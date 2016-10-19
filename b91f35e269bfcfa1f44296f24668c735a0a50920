@@ -211,6 +211,30 @@
       "revId": "b91f35e269bfcfa1f44296f24668c735a0a50920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_7ce9f2a0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-10-19T20:53:53Z",
+      "side": 1,
+      "message": "Seems like a good plan. Maybe this should be added as a TODO comment in the code? You can also file a bug on the chromium.org tracker with more details and reference it in the code, for example:\n/* TODO: Use smallest Rp to save power, see chromium:123456 */",
+      "parentUuid": "dc44a23c_2cc9731f",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 6
+      },
+      "revId": "b91f35e269bfcfa1f44296f24668c735a0a50920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
