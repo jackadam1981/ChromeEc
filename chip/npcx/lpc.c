@@ -139,6 +139,22 @@ static void lpc_generate_smi(void)
 	/* Set signal high, now that we've generated the edge */
 	gpio_set_level(GPIO_PCH_SMI_L, 1);
 #else
+#if defined(CONFIG_ESPI)
+	/*
+	 * Don't use SET_BIT/CLEAR_BIT macro to toggle SMIB/SCIB to generate
+	 * virtual wire. Use NPCX_VW_SMI/NPCX_VW_SCI macro instead.
+	 * The reason is - if GPIOC6/CPIO76 are not selected as SMI/SCI, reading
+	 * from SMIB/SCIB doesn't really reflect the SMI/SCI status. SMI/SCI
+	 * status should be read from bit 1/0 in eSPI VMEVSM(2) register.
+	 */
+	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SMI(1);
+	udelay(65);
+	/* Generate a falling edge */
+	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SMI(0);
+	udelay(65);
+	/* Set signal high */
+	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SMI(1);
+#else
 	/* SET SMIB bit to pull SMI_L to high.*/
 	SET_BIT(NPCX_HIPMIC(PMC_ACPI), NPCX_HIPMIC_SMIB);
 	udelay(65);
@@ -147,6 +163,7 @@ static void lpc_generate_smi(void)
 	udelay(65);
 	/* Set signal high */
 	SET_BIT(NPCX_HIPMIC(PMC_ACPI), NPCX_HIPMIC_SMIB);
+#endif
 #endif
 	if (host_events & event_mask[LPC_HOST_EVENT_SMI])
 		CPRINTS("smi 0x%08x",
@@ -168,6 +185,22 @@ static void lpc_generate_sci(void)
 	/* Set signal high, now that we've generated the edge */
 	gpio_set_level(CONFIG_SCI_GPIO, 1);
 #else
+#if defined(CONFIG_ESPI)
+	/*
+	 * Don't use SET_BIT/CLEAR_BIT macro to toggle SMIB/SCIB to generate
+	 * virtual wire. Use NPCX_VW_SMI/NPCX_VW_SCI macro instead.
+	 * The reason is - if GPIOC6/CPIO76 are not selected as SMI/SCI, reading
+	 * from SMIB/SCIB doesn't really reflect the SMI/SCI status. SMI/SCI
+	 * status should be read from bit 1/0 in eSPI VMEVSM(2) register.
+	 */
+	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SCI(1);
+	udelay(65);
+	/* Generate a falling edge */
+	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SCI(0);
+	udelay(65);
+	/* Set signal high */
+	NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SCI(1);
+#else
 	/* Set SCIB bit to pull SCI_L to high.*/
 	SET_BIT(NPCX_HIPMIC(PMC_ACPI), NPCX_HIPMIC_SCIB);
 	udelay(65);
@@ -176,6 +209,7 @@ static void lpc_generate_sci(void)
 	udelay(65);
 	/* Set signal high */
 	SET_BIT(NPCX_HIPMIC(PMC_ACPI), NPCX_HIPMIC_SCIB);
+#endif
 #endif
 
 	if (host_events & event_mask[LPC_HOST_EVENT_SCI])
@@ -953,10 +987,16 @@ static void lpc_init(void)
 	SET_BIT(NPCX_GLUE_SDP_CTS, 0);
 #endif
 
-#ifndef CONFIG_SCI_GPIO
-	/* Disable SMI/SCI Negative Polarity */
+	/* 
+	 * Use SMI/SCI postive polarity as default. 
+	 * Negative polarity must be enabled in the case that SMI/SCI is
+	 * generated automatically by hardware. In current design,
+	 * SMI/SCI is conntrolled by FW. Use postive polarity is more
+	 * intuitive.
+	 */
 	CLEAR_BIT(NPCX_HIPMCTL(PMC_ACPI), NPCX_HIPMCTL_SCIPOL);
 	CLEAR_BIT(NPCX_HIPMIC(PMC_ACPI), NPCX_HIPMIC_SMIPOL);
+#ifndef CONFIG_SCI_GPIO
 	/*
 	 * Allow SMI/SCI generated from PM module.
 	 * Either hardware autimatically generates,
