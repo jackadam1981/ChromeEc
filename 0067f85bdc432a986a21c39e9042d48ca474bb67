@@ -141,6 +141,30 @@
       "revId": "0067f85bdc432a986a21c39e9042d48ca474bb67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c04eb4e_2e961533",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-19T14:54:43Z",
+      "side": 1,
+      "message": "Based on your comment above, you can remove this entirely. You are handling unexpected power down from S0 with handle_chipset_reset().",
+      "parentUuid": "9caf8af5_92f09cc3",
+      "range": {
+        "startLine": 277,
+        "startChar": 4,
+        "endLine": 277,
+        "endChar": 45
+      },
+      "revId": "0067f85bdc432a986a21c39e9042d48ca474bb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
