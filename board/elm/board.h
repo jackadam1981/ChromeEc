@@ -71,7 +71,7 @@
 #define CONFIG_SPI_MASTER
 #define CONFIG_STM_HWTIMER32
 #define CONFIG_VBOOT_HASH
-#undef  CONFIG_WATCHDOG_HELP
+#define CONFIG_WATCHDOG_HELP
 #define CONFIG_SWITCH
 #define CONFIG_BOARD_VERSION
 #undef  CONFIG_UART_CONSOLE
@@ -143,7 +143,7 @@
 
 /* Timer selection */
 #define TIM_CLOCK32 2
-#define TIM_WATCHDOG 4
+#define TIM_WATCHDOG 17
 
 /* Define the MKBP events which are allowed to wakeup AP in S3. */
 #define CONFIG_MKBP_WAKEUP_MASK \

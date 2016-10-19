@@ -165,11 +165,15 @@ static void pd_exchange_status(uint32_t ec_state)
 	pd_exchange_update_ec_status(&ec_status, ec_state);
 #endif
 
+//	ccputs("e1");
+
 #ifdef USB_TCPM_WITH_OFF_CHIP_TCPC
 	/* Loop until the alert gpio is not active */
 	do {
 		int first_exchange = 1;
 #endif
+
+//		ccputs("e2");
 
 #ifdef CONFIG_HOSTCMD_PD
 		rv = pd_send_host_command(&ec_status, &pd_status);
@@ -178,14 +182,20 @@ static void pd_exchange_status(uint32_t ec_state)
 			return;
 		}
 
+		ccputs("e3");
+
 #ifdef CONFIG_HOSTCMD_PD_PANIC
 		pd_check_panic(&pd_status);
 #endif
+
+		ccputs("e4");
 
 #ifdef CONFIG_HOSTCMD_PD_CHG_CTRL
 		pd_check_chg_status(&pd_status);
 #endif
 #endif /* CONFIG_HOSTCMD_PD */
+
+//		ccputs("e5");
 
 #ifdef USB_TCPM_WITH_OFF_CHIP_TCPC
 #ifdef CONFIG_HOSTCMD_PD
@@ -193,6 +203,8 @@ static void pd_exchange_status(uint32_t ec_state)
 #else
 		pd_service_tcpc_ports(tcpc_get_alert_status());
 #endif
+
+//		ccputs("e6");
 
 		if (!first_exchange)
 			usleep(50*MSEC);
@@ -203,6 +215,8 @@ static void pd_exchange_status(uint32_t ec_state)
 
 void pd_command_task(void)
 {
+	ccputs("pdt\n");
+
 	/* On startup exchange status with the PD */
 	pd_exchange_status(0);
 

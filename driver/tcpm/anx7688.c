@@ -4,6 +4,7 @@
  */
 
 /* ANX7688 port manager */
+#include "console.h"
 
 #include "hooks.h"
 #include "tcpci.h"
@@ -39,6 +40,7 @@ static int anx7688_init(int port)
 	 * 100ms to follow cts.
 	 */
 	while (1) {
+		ccprintf("%s loop\n", __func__);
 		rv = i2c_read8(I2C_PORT_TCPC, ANX7688_USBC_ADDR,
 			       ANX7688_REG_RAMCTRL, &mask);
 
@@ -46,6 +48,8 @@ static int anx7688_init(int port)
 			break;
 		msleep(10);
 	}
+
+	ccprintf("%s loop done\n", __func__);
 
 	rv = tcpci_tcpm_drv.init(port);
 	if (rv)

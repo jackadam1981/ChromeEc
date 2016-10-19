@@ -106,6 +106,8 @@ static void vboot_hash_next_chunk(void)
 {
 	int size;
 
+//	CPRINTS("hash next");
+
 	/* Handle abort */
 	if (want_abort) {
 		in_progress = 0;
@@ -115,6 +117,9 @@ static void vboot_hash_next_chunk(void)
 
 	/* Compute the next chunk of hash */
 	size = MIN(CHUNK_SIZE, data_size - curr_pos);
+
+	CPRINTS("hash chunk 0x%08x",
+		CONFIG_MAPPED_STORAGE_BASE + data_offset + curr_pos);
 
 #ifdef CONFIG_MAPPED_STORAGE
 	SHA256_update(&ctx, (const uint8_t *)(CONFIG_MAPPED_STORAGE_BASE +
@@ -138,6 +143,8 @@ static void vboot_hash_next_chunk(void)
 
 		return;
 	}
+
+	CPRINTS("hash chunk done");
 
 	/* If we're still here, more work to do; come back later */
 	hook_call_deferred(&vboot_hash_next_chunk_data, WORK_INTERVAL_US);

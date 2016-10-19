@@ -178,6 +178,8 @@ void hook_task(void)
 		int next = 0;
 		int i;
 
+//		ccprintf("%s\n", __func__);
+
 		/* Handle deferred routines */
 		for (i = 0; i < DEFERRED_FUNCS_COUNT; i++) {
 			if (__deferred_until[i] && __deferred_until[i] < t) {

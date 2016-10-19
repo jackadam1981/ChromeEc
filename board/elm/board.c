@@ -55,8 +55,11 @@
 /* Dispaly port hardware can connect to port 0, 1 or neither. */
 #define PD_PORT_NONE -1
 
+int pd_mcu_interrupt_cnt = 0;
+
 void pd_mcu_interrupt(enum gpio_signal signal)
 {
+	pd_mcu_interrupt_cnt++;
 #ifdef HAS_TASK_PDCMD
 	/* Exchange status with PD MCU to determine interrupt cause */
 	host_command_pd_send_status(0);

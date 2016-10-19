@@ -29,6 +29,8 @@
 #include "version.h"
 #include "watchdog.h"
 
+int command_task_info(int argc, char **argv);
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
@@ -589,6 +591,8 @@ int system_run_image_copy(enum system_image_copy_t copy)
 		return EC_ERROR_UNKNOWN;
 #endif
 #endif
+
+	command_task_info(0, NULL);
 
 	CPRINTS("Jumping to image %s", system_image_copy_t_to_string(copy));
 

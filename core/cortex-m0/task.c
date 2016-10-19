@@ -564,6 +564,8 @@ void task_print_list(void)
 	}
 }
 
+extern int pd_mcu_interrupt_cnt;
+
 int command_task_info(int argc, char **argv)
 {
 #ifdef CONFIG_TASK_PROFILING
@@ -582,6 +584,9 @@ int command_task_info(int argc, char **argv)
 			total += irq_dist[i];
 		}
 	}
+
+	ccprintf("pd_mcu_interrupt count: %11d\n", pd_mcu_interrupt_cnt);
+	
 	ccprintf("Service calls:          %11d\n", svc_calls);
 	ccprintf("Total exceptions:       %11d\n", total + svc_calls);
 	ccprintf("Task switches:          %11d\n", task_switches);

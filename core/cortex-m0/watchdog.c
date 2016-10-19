@@ -11,6 +11,8 @@
 #include "timer.h"
 #include "watchdog.h"
 
+extern int pd_mcu_interrupt_cnt;
+
 void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 {
 	uint32_t psp;
@@ -31,6 +33,8 @@ void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 		panic_puts("(exc) ###\n");
 	else
 		panic_printf("(task %d) ###\n", task_get_current());
+
+	panic_printf("pd_mcu_interrupt_cnt=%d\n", pd_mcu_interrupt_cnt);
 
 	/* If we are blocked in a high priority IT handler, the following debug
 	 * messages might not appear but they are useless in that situation. */

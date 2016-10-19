@@ -37,6 +37,7 @@
 
 #include "sha256.h"
 #include "util.h"
+#include "console.h"
 
 #define SHFR(x, n)    (x >> n)
 #define ROTR(x, n)   ((x >> n) | (x << ((sizeof(x) << 3) - n)))
@@ -165,10 +166,12 @@ void SHA256_update(struct sha256_ctx *ctx, const uint8_t *data, uint32_t len)
 	tmp_len = SHA256_BLOCK_SIZE - ctx->len;
 	rem_len = len < tmp_len ? len : tmp_len;
 
+	ccputs("u1");
 	memcpy(&ctx->block[ctx->len], data, rem_len);
 
 	if (ctx->len + len < SHA256_BLOCK_SIZE) {
 		ctx->len += len;
+		ccputs("done!");
 		return;
 	}
 
@@ -177,11 +180,14 @@ void SHA256_update(struct sha256_ctx *ctx, const uint8_t *data, uint32_t len)
 
 	shifted_data = data + rem_len;
 
+	ccputs("u2");
 	SHA256_transform(ctx, ctx->block, 1);
+	ccputs("u3");
 	SHA256_transform(ctx, shifted_data, block_nb);
 
 	rem_len = new_len % SHA256_BLOCK_SIZE;
 
+	ccputs("u4");
 	memcpy(ctx->block, &shifted_data[block_nb << 6], rem_len);
 
 	ctx->len = rem_len;
