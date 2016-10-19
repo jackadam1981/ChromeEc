@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "dce3c3ee_7e29cdb6",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2016-10-19T11:08:27Z",
+      "side": 1,
+      "message": "This case is not possible. PLT_RST from PCH (linked to LPC_RST) would be asserted if S0ix-\u003eS5 happens",
+      "parentUuid": "3c993f38_93f7ae6f",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 72
+      },
+      "revId": "0067f85bdc432a986a21c39e9042d48ca474bb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2791940_2be279ed",
         "filename": "power/skylake.c",
         "patchSetId": 3
