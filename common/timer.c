@@ -136,10 +136,6 @@ void timer_cancel(task_id_t tskid)
 	ASSERT(tskid < TASK_ID_COUNT);
 
 	atomic_clear(&timer_running, 1 << tskid);
-	/*
-	 * Don't need to cancel the interrupt: it would be slow, just do it on
-	 * the next IT
-	 */
 }
 
 /*
