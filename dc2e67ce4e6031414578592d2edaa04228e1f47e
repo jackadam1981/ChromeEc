@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc24a349_13380c02",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-10-20T05:22:07Z",
+      "side": 1,
+      "message": "Regarding DP80CTL[1]\u003d1, it\u0027s good for eSPI bus efficiency. In LPC mode, port80 won\u0027t response IO-Write command since ec just wants to monitor port80 messages on the bus. But in eSPI mode, ec should response IO-Write command or host will get defer and timeout. Although ec still can get port80 messages, it’s better to set this bit to 1.",
+      "revId": "dc2e67ce4e6031414578592d2edaa04228e1f47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
