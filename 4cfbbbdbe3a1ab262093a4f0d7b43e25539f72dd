@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc790340_e5a1fae2",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-20T18:19:22Z",
+      "side": 1,
+      "message": "Can you just check for CHIPSET_STATE_ANY_OFF right here, and if so, right after asserting the GPIO, set t_valid \u003d 0 and return?",
+      "revId": "4cfbbbdbe3a1ab262093a4f0d7b43e25539f72dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
