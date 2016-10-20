@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc790340_c044ec64",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-20T19:23:05Z",
+      "side": 1,
+      "message": "Maybe name this CONFIG_ESPI_VW_SIGNALS, since it\u0027s a sub-config of eSPI, and most people don\u0027t know what VW means?\n\nAlso we should save the CONFIG_VW_* namespace for ChromeCar.",
+      "range": {
+        "startLine": 845,
+        "startChar": 7,
+        "endLine": 845,
+        "endChar": 24
+      },
+      "revId": "9f320a8cd5a729f42fbb622e7fc959fe721629ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
