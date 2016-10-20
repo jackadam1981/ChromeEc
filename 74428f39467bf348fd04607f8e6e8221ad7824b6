@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "dc24a349_d3ba9419",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-10-20T17:58:07Z",
+      "side": 1,
+      "message": "They are in fact used in include/panic.h and common/system.c.",
+      "parentUuid": "dccbc292_7a14914e",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91e76d24_af42ceed",
         "filename": "chip/ish/config_chip.h",
         "patchSetId": 13
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "I think you meant exclusive... but I see what you did.",
       "parentUuid": "ebf9963d_fd538730",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc24a349_f3bf9006",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-10-20T17:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dccbc292_1a1b5d7d",
       "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -611,6 +647,24 @@
       "side": 1,
       "message": "still i?",
       "parentUuid": "91e76d24_af2bee3f",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc24a349_3372e892",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-10-20T17:58:07Z",
+      "side": 1,
+      "message": "Sorry I missed. fixed now.",
+      "parentUuid": "dccbc292_9d97673c",
       "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
