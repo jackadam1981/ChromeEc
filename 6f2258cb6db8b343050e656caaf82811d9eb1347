@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c822b81_e13f86cd",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-20T23:11:29Z",
+      "side": 1,
+      "message": "I think we can have this config only here so that we go to manual mode only on AC \u0026 #862 config also can be removed.\n} else {\n#ifndef CONFIG_CHARGER_MAINTAIN_VBAT\ncharge_request(charger_closest_voltage(curr.batt.voltage + info-\u003evoltage_step), -1);\n#else\n#charge_request(curr.requested_voltage, curr.requested_current);\nendif\n}",
+      "revId": "6f2258cb6db8b343050e656caaf82811d9eb1347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
