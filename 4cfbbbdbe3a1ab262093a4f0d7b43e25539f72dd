@@ -16,6 +16,24 @@
       "revId": "4cfbbbdbe3a1ab262093a4f0d7b43e25539f72dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc790340_aa1ada91",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-20T22:31:46Z",
+      "side": 1,
+      "message": "I think it\u0027s potentially trickier than that.\n\nIt sounds like what we need to do is avoid forcing *any* kind of shutdown in the first ~second of AP boot.\n\nMaybe we\u0027d be better off looking at chipset uptime in chipset_force_shutdown(), and if it\u0027s less than ~1 second, delay the shutdown for that long?",
+      "parentUuid": "dc790340_e5a1fae2",
+      "revId": "4cfbbbdbe3a1ab262093a4f0d7b43e25539f72dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
