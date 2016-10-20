@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc790340_d4c0323c",
+        "filename": "board/kefka/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2016-10-20T15:12:54Z",
+      "side": 1,
+      "message": "Just wondering why not use a pointer points to montion_sensors_sabin?",
+      "range": {
+        "startLine": 290,
+        "startChar": 2,
+        "endLine": 292,
+        "endChar": 28
+      },
+      "revId": "c57e9fe44a3b9af4418c0b74f8624f8e75228338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
