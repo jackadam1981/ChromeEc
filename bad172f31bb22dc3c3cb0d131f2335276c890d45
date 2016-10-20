@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "dc24a349_738f0047",
+        "filename": "chip/ish/config_flash_layout.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-10-20T17:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dccbc292_9a3c0de4",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebf9963d_bd4dff90",
         "filename": "chip/ish/config_flash_layout.h",
         "patchSetId": 14
@@ -124,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "dc24a349_f3823021",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-10-20T17:58:07Z",
+      "side": 1,
+      "message": "No, we are reading. Changed the flag to \u0027is_read\u0027",
+      "parentUuid": "dccbc292_7a6ff1b8",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dccbc292_ba74698d",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 14
@@ -135,6 +171,24 @@
       "writtenOn": "2016-10-13T21:16:52Z",
       "side": 1,
       "message": "fwiw, there\u0027s no need for the parens here.",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc24a349_93773c7e",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-10-20T17:58:07Z",
+      "side": 1,
+      "message": "Removed it.",
+      "parentUuid": "dccbc292_ba74698d",
       "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -158,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "dc24a349_b37cb862",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-10-20T17:58:07Z",
+      "side": 1,
+      "message": "Fixed it. Thanks",
+      "parentUuid": "dccbc292_1a66bde2",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dccbc292_baad89f3",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 14
@@ -169,6 +241,24 @@
       "writtenOn": "2016-10-13T21:16:52Z",
       "side": 1,
       "message": "is_write but we\u0027re reading???",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc24a349_53920472",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-10-20T17:58:07Z",
+      "side": 1,
+      "message": "Yes its reading, changed flag to \u0027is_read\u0027",
+      "parentUuid": "dccbc292_baad89f3",
       "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -192,6 +282,24 @@
     },
     {
       "key": {
+        "uuid": "dc24a349_d37db461",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-10-20T17:58:07Z",
+      "side": 1,
+      "message": "Since CONFIG_I2C_MULTI_PORT_CONTROLLER is not defined for ISH, this function was unused, hence I removed it.",
+      "parentUuid": "dccbc292_7ae931d3",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dccbc292_3a95f940",
         "filename": "chip/ish/ipc.c",
         "patchSetId": 14
@@ -203,6 +311,24 @@
       "writtenOn": "2016-10-13T21:16:52Z",
       "side": 1,
       "message": "move back to where it was before. Actually, the original indention was fine. Why did thsi get moved around?",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc24a349_b36598cc",
+        "filename": "chip/ish/ipc.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-10-20T17:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dccbc292_3a95f940",
       "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -232,6 +358,30 @@
     },
     {
       "key": {
+        "uuid": "dc24a349_536be49f",
+        "filename": "chip/ish/ipc.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-10-20T17:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dccbc292_dd74bf27",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dccbc292_9afacd9e",
         "filename": "chip/ish/registers.h",
         "patchSetId": 14
@@ -249,6 +399,24 @@
     },
     {
       "key": {
+        "uuid": "dc24a349_138c8c4f",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-10-20T17:58:07Z",
+      "side": 1,
+      "message": "A similar style is being followed for mec1322/registers.h, including other entities like dma. Yes it looks a little weird.",
+      "parentUuid": "dccbc292_9afacd9e",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dccbc292_fd989b6f",
         "filename": "chip/ish/uart.c",
         "patchSetId": 14
@@ -260,6 +428,24 @@
       "writtenOn": "2016-10-13T21:16:52Z",
       "side": 1,
       "message": "More indention for these fields -- one more than the curlies.",
+      "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc24a349_13756c79",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1149889
+      },
+      "writtenOn": "2016-10-20T17:58:07Z",
+      "side": 1,
+      "message": "I generally use \u0027indent -linux\u0027 for formatting. And these not caught by checkpatch also.\nIdented correctly.",
+      "parentUuid": "dccbc292_fd989b6f",
       "revId": "bad172f31bb22dc3c3cb0d131f2335276c890d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
