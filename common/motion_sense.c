@@ -509,10 +509,32 @@ static void motion_sense_suspend(void)
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, motion_sense_suspend,
 	     MOTION_SENSE_HOOK_PRIO);
 
+static void motion_sense_resume_deferred(void)
+{
+	motion_sense_switch_sensor_rate();
+}
+DECLARE_DEFERRED(motion_sense_resume_deferred);
+
 static void motion_sense_resume(void)
 {
 	sensor_active = SENSOR_ACTIVE_S0;
+#ifndef CONFIG_GESTURE_SW_DETECTION
+	/*
+	 * On resume, the init routines of motion sensors are called.
+	 * Some of these initiliazations have long sleeps in them and
+	 * on reef this keeps the chipset task busy for around 220 ms.
+	 * This contributes directly to system resume time and can be
+	 * eliminated by deferring the initiliazation.
+	 */
+	hook_call_deferred(&motion_sense_resume_deferred_data, 0);
+#else
+	/*
+	 * On resume, Gesture Tap Detection is turned off only after
+	 * motion sensor initiliazation is complete so we need to
+	 * preserve the serialization and not defer initliazation.
+	 */
 	motion_sense_switch_sensor_rate();
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, motion_sense_resume,
 	     MOTION_SENSE_HOOK_PRIO);
