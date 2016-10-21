@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcf74308_b04afe70",
+        "filename": "chip/g/usb_hw.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2016-10-21T23:20:36Z",
+      "side": 1,
+      "message": "clang was able to forgive these. Probably because it didn\u0027t assume it needs to determine the size of the array, and just treated it as a pointer instead.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "6dae3bc1e02bee891a7fd56e634e6b9a28830109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcf74308_30e9ce3e",
+        "filename": "chip/g/usb_hw.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2016-10-21T23:20:36Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure this should be extern anyway.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 6
+      },
+      "revId": "6dae3bc1e02bee891a7fd56e634e6b9a28830109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
