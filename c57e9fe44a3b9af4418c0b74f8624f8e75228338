@@ -46,6 +46,54 @@
       "revId": "c57e9fe44a3b9af4418c0b74f8624f8e75228338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc24a349_564d12dd",
+        "filename": "board/kefka/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1135534
+      },
+      "writtenOn": "2016-10-21T08:38:43Z",
+      "side": 1,
+      "message": "No,it isn\u0027t,since Kefka SKU doesn\u0027t have the motion sensor.\nI change the CL to only to change the motion sensor count by GPIO.",
+      "parentUuid": "dc790340_5a40e9fd",
+      "range": {
+        "startLine": 290,
+        "startChar": 2,
+        "endLine": 292,
+        "endChar": 28
+      },
+      "revId": "c57e9fe44a3b9af4418c0b74f8624f8e75228338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc24a349_76036e72",
+        "filename": "board/kefka/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1135534
+      },
+      "writtenOn": "2016-10-21T08:38:43Z",
+      "side": 1,
+      "message": "Yes,I think using the pointer should be better.\nBut I change the CL to only change the motion sensor count.",
+      "parentUuid": "dc790340_d4c0323c",
+      "range": {
+        "startLine": 290,
+        "startChar": 2,
+        "endLine": 292,
+        "endChar": 28
+      },
+      "revId": "c57e9fe44a3b9af4418c0b74f8624f8e75228338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
