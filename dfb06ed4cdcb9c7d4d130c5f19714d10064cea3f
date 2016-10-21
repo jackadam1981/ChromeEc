@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c822b81_a4cd8c1c",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-21T00:06:52Z",
+      "side": 1,
+      "message": "This bit is likely not set, so I can save a few instructions by first checking if it\u0027s set with a non-atomic read. Worthwhile or no?",
+      "range": {
+        "startLine": 380,
+        "startChar": 29,
+        "endLine": 380,
+        "endChar": 45
+      },
+      "revId": "dfb06ed4cdcb9c7d4d130c5f19714d10064cea3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
