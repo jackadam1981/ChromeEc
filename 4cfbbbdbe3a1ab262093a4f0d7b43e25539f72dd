@@ -70,6 +70,24 @@
       "revId": "4cfbbbdbe3a1ab262093a4f0d7b43e25539f72dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c822b81_7b8a3fa7",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-21T17:24:17Z",
+      "side": 1,
+      "message": "There are other code paths which can potentially get us into this state which don\u0027t set press_in_off and could thus result in a very short power-on time.\n\nAlso, are we sure that every code path which sets press_in_off\u003d1 actually goes through here with high\u003d\u003d1 so resets press_in_off\u003d0?  Otherwise, we may be blocking valid forced shutdowns.",
+      "parentUuid": "dc24a349_b6cca61c",
+      "revId": "4cfbbbdbe3a1ab262093a4f0d7b43e25539f72dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
