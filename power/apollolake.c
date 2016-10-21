@@ -17,6 +17,7 @@
 #include "task.h"
 #include "util.h"
 #include "wireless.h"
+#include "lpc.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
