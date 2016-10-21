@@ -16,6 +16,24 @@
       "revId": "2ca2c47dc40deda695f52b3069876fbe326db743",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c56f3ee_8fbc15a6",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-21T20:19:33Z",
+      "side": 1,
+      "message": "I\u0027m not sure what \"the interrupt\" refers to here, but I\u0027m not sure clearing the timer event will always be the correct behavior, eg. in the case timer_cancel() is called with the task-id of the non-active task. I admit that we don\u0027t have such use in our codebase (all uses are from task.c and from old chipset power drivers). What do you think?",
+      "parentUuid": "9c822b81_4a88426f",
+      "revId": "2ca2c47dc40deda695f52b3069876fbe326db743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
