@@ -184,6 +184,12 @@ static enum power_state power_wait_s5_rtc_reset(void)
 }
 #endif
 
+static void apl_chipset_resume_deferred(void)
+{
+	hook_notify(HOOK_CHIPSET_RESUME);
+}
+DECLARE_DEFERRED(apl_chipset_resume_deferred);
+
 static enum power_state _power_handle_state(enum power_state state)
 {
 	int tries = 0;
@@ -309,7 +315,7 @@ static enum power_state _power_handle_state(enum power_state state)
 		wireless_set_state(WIRELESS_ON);
 
 		/* Call hooks now that rails are up */
-		hook_notify(HOOK_CHIPSET_RESUME);
+		hook_call_deferred(&apl_chipset_resume_deferred_data, 0);
 
 		/*
 		 * Disable idle task deep sleep. This means that the low
