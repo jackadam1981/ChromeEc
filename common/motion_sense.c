@@ -423,21 +423,14 @@ static inline int motion_sense_init(struct motion_sensor_t *sensor)
  */
 static void motion_sense_switch_sensor_rate(void)
 {
-	int i, ret;
+	int i;
 	struct motion_sensor_t *sensor;
 	for (i = 0; i < motion_sensor_count; ++i) {
 		sensor = &motion_sensors[i];
 		if (SENSOR_ACTIVE(sensor)) {
 			/* Initialize or just back the odr previously set. */
-			if (sensor->state == SENSOR_INITIALIZED) {
+			if (sensor->state == SENSOR_INITIALIZED)
 				motion_sense_set_data_rate(sensor);
-			} else {
-				ret = motion_sense_init(sensor);
-				if (ret != EC_SUCCESS) {
-					CPRINTS("%s: %d: init failed: %d",
-						sensor->name, i, ret);
-				}
-			}
 		} else {
 			/* The sensors are being powered off */
 			if (sensor->state == SENSOR_INITIALIZED)
@@ -507,7 +500,8 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, motion_sense_suspend,
 static void motion_sense_resume(void)
 {
 	sensor_active = SENSOR_ACTIVE_S0;
-	motion_sense_switch_sensor_rate();
+	/*motion_sense_switch_sensor_rate();*/
+	task_wake(TASK_ID_MOTIONSENSE);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, motion_sense_resume,
 	     MOTION_SENSE_HOOK_PRIO);
@@ -697,7 +691,11 @@ void motion_sense_task(void)
 			/* if the sensor is active in the current power state */
 			if (SENSOR_ACTIVE(sensor)) {
 				if (sensor->state != SENSOR_INITIALIZED) {
-					continue;
+					motion_sense_init(sensor);
+					if (ret != EC_SUCCESS)
+						CPRINTS("%s: %d:init failed:%d",
+							sensor->name, i, ret);
+					motion_sense_set_motion_intervals();
 				}
 
 				ret = motion_sense_process(sensor, &event,
