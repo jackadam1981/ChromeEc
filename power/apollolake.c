@@ -11,6 +11,7 @@
 #include "console.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "lpc.h"
 #include "power.h"
 #include "power_button.h"
 #include "system.h"
