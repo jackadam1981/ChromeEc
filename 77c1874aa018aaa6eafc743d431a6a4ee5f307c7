@@ -22,6 +22,30 @@
       "revId": "77c1874aa018aaa6eafc743d431a6a4ee5f307c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c822b81_d6bfa206",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-10-21T18:38:16Z",
+      "side": 1,
+      "message": "We will never set the EC at less than 10Hz because the EC polls every 100ms for lid angle.\nIf we ask for 10Hz, the accel frequency will be 12.5Hz.",
+      "parentUuid": "3c993f38_3e18e958",
+      "range": {
+        "startLine": 214,
+        "startChar": 42,
+        "endLine": 215,
+        "endChar": 13
+      },
+      "revId": "77c1874aa018aaa6eafc743d431a6a4ee5f307c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
