@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c822b81_0a3f1f1f",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-21T02:32:04Z",
+      "side": 1,
+      "message": "Instead of deferred function, how about adding hook_notify(HOOK_CHIPSET_RESUME) here?",
+      "revId": "e272568ff1fcdaf0a1dcf9c7471f3da444bdf5bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
