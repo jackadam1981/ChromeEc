@@ -22,6 +22,30 @@
       "revId": "dfb06ed4cdcb9c7d4d130c5f19714d10064cea3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c822b81_476842a2",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-21T01:26:09Z",
+      "side": 1,
+      "message": "if(tsk-\u003eevents \u0026 TSK_EVENT_TIMER) adds almost as many opcodes as it saves.  I\u0027d say not worthwhile.",
+      "parentUuid": "9c822b81_a4cd8c1c",
+      "range": {
+        "startLine": 380,
+        "startChar": 29,
+        "endLine": 380,
+        "endChar": 45
+      },
+      "revId": "dfb06ed4cdcb9c7d4d130c5f19714d10064cea3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
