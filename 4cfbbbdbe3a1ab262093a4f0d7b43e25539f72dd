@@ -34,6 +34,42 @@
       "revId": "4cfbbbdbe3a1ab262093a4f0d7b43e25539f72dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc24a349_b6cca61c",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-10-21T11:40:19Z",
+      "side": 1,
+      "message": "For now, we just want to avoid the EC force shutdown. But I\u0027m not sure should we avoid the chipset itself shutdown after long press the power button...",
+      "parentUuid": "dc790340_aa1ada91",
+      "revId": "4cfbbbdbe3a1ab262093a4f0d7b43e25539f72dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc24a349_f6d21ebb",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-10-21T11:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc790340_e5a1fae2",
+      "revId": "4cfbbbdbe3a1ab262093a4f0d7b43e25539f72dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
