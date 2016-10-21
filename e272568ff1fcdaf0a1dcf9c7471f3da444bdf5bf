@@ -16,6 +16,24 @@
       "revId": "e272568ff1fcdaf0a1dcf9c7471f3da444bdf5bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c822b81_d54a3c72",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2016-10-21T15:24:25Z",
+      "side": 1,
+      "message": "If we move the hook_notify here, we will still have the delay. What we need to do is handle ALL_SYS_PGOOD interrupt and run handle_all_sys_pgood() in apollolake.c:418. That will only happen in next iteration of chipset task loop when it calls power_handle_state().",
+      "parentUuid": "9c822b81_0a3f1f1f",
+      "revId": "e272568ff1fcdaf0a1dcf9c7471f3da444bdf5bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
