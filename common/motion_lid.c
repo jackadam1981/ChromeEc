@@ -18,6 +18,7 @@
 #include "motion_lid.h"
 #include "motion_sense.h"
 #include "power.h"
+#include "tablet_mode.h"
 #include "timer.h"
 #include "task.h"
 #include "util.h"
@@ -57,8 +58,6 @@
  */
 #define TABLET_ZONE_LID_ANGLE FLOAT_TO_FP(300)
 #define LAPTOP_ZONE_LID_ANGLE FLOAT_TO_FP(240)
-
-static int tablet_mode = 1;
 
 /*
  * We will change our tablet mode status when we are "convinced" that it has
@@ -178,7 +177,7 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 	fp_t denominator;
 	int reliable = 1;
 #ifdef CONFIG_LID_ANGLE_TABLET_MODE
-	int new_tablet_mode = tablet_mode;
+	int new_tablet_mode = tablet_get_mode();
 #endif
 	int base_magnitude2, lid_magnitude2;
 	int base_range, lid_range, i;
@@ -347,13 +346,13 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 			new_tablet_mode = 0;
 
 		/* Only change tablet mode if we're sure. */
-		if (tablet_mode != new_tablet_mode) {
+		if (tablet_get_mode() != new_tablet_mode) {
 			if (tablet_mode_debounce_cnt == 0) {
 				/* Alright, we're convinced. */
 				tablet_mode_debounce_cnt =
 					TABLET_MODE_DEBOUNCE_COUNT;
-				tablet_mode = new_tablet_mode;
-				CPRINTS("TM %d %d deg", tablet_mode,
+				tablet_set_mode(new_tablet_mode);
+				CPRINTS("TM %d %d deg", tablet_get_mode(),
 					*lid_angle);
 				hook_notify(HOOK_TABLET_MODE_CHANGE);
 				return reliable;
@@ -369,8 +368,8 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 	 * tablet mode by resetting the debounce count when we encounter an
 	 * unreliable angle when we're already in tablet mode.
 	 */
-	if (((reliable == 0) && tablet_mode == 1) ||
-	    ((reliable == 1) && (tablet_mode == new_tablet_mode)))
+	if (((reliable == 0) && tablet_get_mode() == 1) ||
+	    ((reliable == 1) && (tablet_get_mode() == new_tablet_mode)))
 		tablet_mode_debounce_cnt = TABLET_MODE_DEBOUNCE_COUNT;
 #endif   /* CONFIG_LID_ANGLE_TABLET_MODE */
 #else    /* CONFIG_LID_ANGLE_INVALID_CHECK */
@@ -416,13 +415,6 @@ void motion_lid_calc(void)
 	lid_angle_update(motion_lid_get_angle());
 #endif
 }
-
-#ifdef CONFIG_LID_ANGLE_TABLET_MODE
-int motion_lid_in_tablet_mode(void)
-{
-	return tablet_mode;
-}
-#endif
 
 /*****************************************************************************/
 /* Host commands */
