@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcf74308_baf65871",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2783,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-22T06:59:59Z",
+      "side": 1,
+      "message": "Add CC check for non-SRC to cover the situation where SNK is connected when DRP is force source.",
+      "range": {
+        "startLine": 2778,
+        "startChar": 0,
+        "endLine": 2783,
+        "endChar": 38
+      },
+      "revId": "a40645e979873a5c93b233d40c5064b22791340a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcf74308_1aecac9f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-22T06:59:59Z",
+      "side": 1,
+      "message": "Error check was not used on most of the call to get_cc, so previous cc value was used and cause pd_task to go to an invalid state.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "revId": "a40645e979873a5c93b233d40c5064b22791340a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
