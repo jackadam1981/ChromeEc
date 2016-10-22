@@ -22,6 +22,30 @@
       "revId": "5ab2ffdbe915223effa81ce8112e8636cf8c6084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcf74308_dd6ebe72",
+        "filename": "common/timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-22T17:49:07Z",
+      "side": 0,
+      "message": "Maybe the comment is badly worded,\nbut it is still true, nothing has changed with this CL.\nThe important part is that we might still have an event IRQ enabled in the hardware timer which will fire later on.\nWe don\u0027t know whether the next timer deadline for which we set a hardware timer is the one corresponding to this timer,\nrather than painfully going through the list of timer, re-computing the next deadline and possibly going in atomic context to set a new timer, we lazily wait for the timer to fire and do the housekeeping at that point.",
+      "parentUuid": "dcf74308_3aeb68c8",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 4
+      },
+      "revId": "5ab2ffdbe915223effa81ce8112e8636cf8c6084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
