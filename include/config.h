@@ -2479,6 +2479,11 @@
 #endif
 
 /*****************************************************************************/
+/* Features of eSPI */
+#undef CONFIG_ESPI       /* Use eSPI protocol for host interface of x86 CPU */
+#undef CONFIG_VW_SIGNALS /* Use VW signals instead of GPIOs */
+
+/*****************************************************************************/
 /*
  * Apply test config overrides last, since tests need to override some of the
  * config flags in non-standard ways to mock only parts of the system.

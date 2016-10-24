@@ -20,7 +20,6 @@ GPIO_INT(WP_L,               PIN(7,  1), GPIO_INT_BOTH,                   switch
 
 GPIO_INT(PCH_SLP_S4_L,       PIN(5,  0), GPIO_INT_BOTH,                   power_signal_interrupt)  /* A25 - GPIO50 for PMU_SLP_S4_N */
 GPIO_INT(PCH_SLP_S3_L,       PIN(4,  0), GPIO_INT_BOTH,                   power_signal_interrupt)  /* B21 - TA1 for PMU_SLP_S3_N */
-GPIO_INT(PCH_SLP_S0_L,       PIN(3,  4), GPIO_INT_BOTH,                   power_signal_interrupt)  /* B18 - GPIO34 for PMU_SLP_S0_N */
 GPIO_INT(PCH_SUS_STAT_L,     PIN(C,  5), GPIO_INT_BOTH,                   power_signal_interrupt)  /* A61 - KBRST# for PMU_SUS_STAT_N */
 GPIO_INT(PCH_SUSPWRDNACK,    PIN(B,  1), GPIO_INT_BOTH,                   power_signal_interrupt)  /* A54 - KSO17 for SOC_SUSPWRDNACK_R */
 GPIO_INT(ALL_SYS_PGOOD,      PIN(6,  2), GPIO_INT_BOTH,                   power_signal_interrupt)  /* A31 - PS2_CLK1 for ALL_SYS_PWRGD */
@@ -73,6 +72,7 @@ GPIO(BASE_ACCEL_INT,         PIN(A,  3), GPIO_INPUT)                      /* A50
 GPIO(GYRO_INT,               PIN(8,  6), GPIO_INPUT | GPIO_PULL_UP)       /* B46 - TXD/F_CS1# for GYRO_INT_N */
 
 /* SOC */
+GPIO(PCH_SLP_S0_L,           PIN(3,  4), GPIO_INPUT)                      /* B18 - GPIO34 for PMU_SLP_S0_N */
 GPIO(PCH_SCI_L,              PIN(7,  6), GPIO_ODR_HIGH)                   /* A38 - SCI# for EC_SCI_3P3_N */
 GPIO(PCH_SMI_L,              PIN(C,  6), GPIO_ODR_HIGH)                   /* B65 - SMI# for EC_SMI_3P3_N */
 GPIO(PCH_PWRBTN_L,           PIN(A,  5), GPIO_ODR_HIGH)                   /* A51 - A20M for EC_SOC_PWRBTN_N */
