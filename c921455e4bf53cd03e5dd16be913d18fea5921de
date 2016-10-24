@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "41828cce_f9eb73c3",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1416,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2016-10-24T22:15:54Z",
+      "side": 1,
+      "message": "Should this be 0xFB?",
+      "range": {
+        "startLine": 1416,
+        "startChar": 55,
+        "endLine": 1416,
+        "endChar": 59
+      },
+      "revId": "c921455e4bf53cd03e5dd16be913d18fea5921de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41828cce_39832b9e",
         "filename": "chip/npcx/registers.h",
         "patchSetId": 2
@@ -18,6 +41,29 @@
         "startChar": 4,
         "endLine": 1417,
         "endChar": 7
+      },
+      "revId": "c921455e4bf53cd03e5dd16be913d18fea5921de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41828cce_b9e5fbf1",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1418,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2016-10-24T22:15:54Z",
+      "side": 1,
+      "message": "Should this be 0xFD?",
+      "range": {
+        "startLine": 1418,
+        "startChar": 55,
+        "endLine": 1418,
+        "endChar": 59
       },
       "revId": "c921455e4bf53cd03e5dd16be913d18fea5921de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
