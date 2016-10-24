@@ -386,6 +386,22 @@ clean:
 clobber:
 	-rm -rf build TAGS cscope.files cscope.out
 
+.PHONY: help
+help:
+	@echo "Google Chrome EC build"
+	@echo "Common Targets:"
+	@echo "  all   [BOARD=]     - Build a single board (Default target)"
+	@echo "  clean [BOARD=]     - Clean a single board"
+	@echo "  buildall           - Build and test all boards"
+	@echo "  clobber            - Clean all boards"
+	@echo "  proj-<boardname>   - Build a single board (similar to 'all BOARD=boardname')"
+	@echo "Common Variables:"
+	@echo "  BOARD=             - Set the board name to build Default=$(BOARD)"
+	@echo "  CROSS_COMPILE=     - Set the compiler for the board"
+	@echo "  V=1                - Show make output"
+	@echo "Example:"
+	@echo "  make BOARD=reef CROSS_COMPILE='arm-eabi-'"
+
 .SECONDARY:
 
 -include $(deps)
