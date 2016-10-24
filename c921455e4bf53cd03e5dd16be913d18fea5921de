@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "41828cce_b9badbbf",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2016-10-24T22:22:43Z",
+      "side": 1,
+      "message": "You could make this #elif and remove the extra #endif below.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 3
+      },
+      "revId": "c921455e4bf53cd03e5dd16be913d18fea5921de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41828cce_79ae8383",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2016-10-24T22:22:43Z",
+      "side": 1,
+      "message": "trailing space",
+      "range": {
+        "startLine": 990,
+        "startChar": 3,
+        "endLine": 990,
+        "endChar": 4
+      },
+      "revId": "c921455e4bf53cd03e5dd16be913d18fea5921de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41828cce_19a3cf9a",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1000100
+      },
+      "writtenOn": "2016-10-24T22:22:43Z",
+      "side": 1,
+      "message": "trailing space",
+      "range": {
+        "startLine": 991,
+        "startChar": 44,
+        "endLine": 991,
+        "endChar": 45
+      },
+      "revId": "c921455e4bf53cd03e5dd16be913d18fea5921de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41828cce_f9eb73c3",
         "filename": "chip/npcx/registers.h",
         "patchSetId": 2
