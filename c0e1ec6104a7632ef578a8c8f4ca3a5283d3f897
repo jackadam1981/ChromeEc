@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dc24a349_962e4a58",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1123350
+      },
+      "writtenOn": "2016-10-24T10:45:59Z",
+      "side": 1,
+      "message": "This is straight cherrypick from skylake. we would like to keep the code same as merged skylake patches unless there is a strong reason for change.",
+      "parentUuid": "9c822b81_3557e841",
+      "revId": "c0e1ec6104a7632ef578a8c8f4ca3a5283d3f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c822b81_955ef458",
         "filename": "power/apollolake.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "dc24a349_b63346c1",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1123350
+      },
+      "writtenOn": "2016-10-24T10:45:59Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "9c822b81_955ef458",
+      "revId": "c0e1ec6104a7632ef578a8c8f4ca3a5283d3f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c822b81_b52938bd",
         "filename": "power/apollolake.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2016-10-21T14:47:57Z",
       "side": 1,
       "message": "slp_s0_track \u003d val;",
+      "revId": "c0e1ec6104a7632ef578a8c8f4ca3a5283d3f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc24a349_f650ded4",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1123350
+      },
+      "writtenOn": "2016-10-24T10:45:59Z",
+      "side": 1,
+      "message": "retaining existing code from skylake.",
+      "parentUuid": "9c822b81_b52938bd",
       "revId": "c0e1ec6104a7632ef578a8c8f4ca3a5283d3f897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
