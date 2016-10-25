@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "81b804f7_fef2d980",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2016-10-25T22:01:44Z",
+      "side": 1,
+      "message": "It\u0027s not end user\u0027s behavior. but for tcpc_init() function, its purpose is to reset/clean up to make it ready for next step. Also as developer, we may run into this scenario and it will be very confusing if negotiation is OK but DP not working.",
+      "parentUuid": "fc2ec625_298ef52e",
+      "revId": "84f848050fb24297c1ba0f19cc0111ef587bcc0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc2ec625_5e9be976",
         "filename": "board/reef/board.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-10-14T01:45:42Z",
       "side": 1,
       "message": "A comment indicating why his is required would be extremely helpful.",
+      "revId": "84f848050fb24297c1ba0f19cc0111ef587bcc0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc9662c8_9f445776",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2016-10-25T22:01:44Z",
+      "side": 1,
+      "message": "will put comment.",
+      "parentUuid": "fc2ec625_5e9be976",
       "revId": "84f848050fb24297c1ba0f19cc0111ef587bcc0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
