@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "817ac4f4_2873ab5d",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-25T07:45:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "216bd800_9b4853ce",
+      "revId": "20f6b1d3e92d4e9fdd6de1037a495e750221aecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "216bd800_5b67db64",
         "filename": "board/caroline/board.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "817ac4f4_4878df35",
+        "filename": "board/caroline/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-25T07:45:35Z",
+      "side": 1,
+      "message": "512 doesn\u0027t fit (missing 1960 bytes of IRAM)\n256 seems ok, I will re-test with it.",
+      "parentUuid": "216bd800_5b67db64",
+      "revId": "20f6b1d3e92d4e9fdd6de1037a495e750221aecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "216bd800_bb4b8fc9",
         "filename": "board/caroline/board.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2016-10-25T07:26:26Z",
       "side": 1,
       "message": "Remove them only if you need space.",
+      "revId": "20f6b1d3e92d4e9fdd6de1037a495e750221aecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "817ac4f4_8881f7e4",
+        "filename": "board/caroline/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-25T07:45:35Z",
+      "side": 1,
+      "message": "I definitely need to save a bit more space for this CL,\nI was still testing what exactly can fit though.\nBy the way, the \u0027memory\u0027 commands below are higher on my own priority list than flashinfo.",
+      "parentUuid": "216bd800_bb4b8fc9",
       "revId": "20f6b1d3e92d4e9fdd6de1037a495e750221aecf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
