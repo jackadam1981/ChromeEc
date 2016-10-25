@@ -5,6 +5,7 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "als.h"
 #include "backlight.h"
 #include "button.h"
 #include "charge_manager.h"
@@ -18,6 +19,7 @@
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/als_opt3001.h"
 #include "driver/charger/bd9995x.h"
 #include "driver/tcpm/fusb302.h"
 #include "extpower.h"
@@ -497,6 +499,13 @@ const matrix_3x3_t lid_standard_ref = {
 
 /* KX022 private data */
 struct kionix_accel_data g_kx022_data;
+
+/* ALS instances. Must be in same order as enum als_id. */
+struct als_t als[] = {
+	/* FIXME(dhendrix): verify attenuation_factor */
+	{"TI", opt3001_init, opt3001_read_lux, 5},
+};
+BUILD_ASSERT(ARRAY_SIZE(als) == ALS_COUNT);
 #endif /* BOARD_KEVIN */
 
 struct motion_sensor_t motion_sensors[] = {
