@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "81b804f7_b8fb59a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-25T19:42:48Z",
+      "side": 1,
+      "message": "typo: \u0027barometer\u0027",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "d9bcf3f49f2218730f7c89172f2e660bfc47d633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81b804f7_98d9b53f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-25T19:42:48Z",
+      "side": 1,
+      "message": "The barometer doesn\u0027t require a task of its own, does it? It\u0027s not in your changes, so you may want to reword this.",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "d9bcf3f49f2218730f7c89172f2e660bfc47d633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "216bd800_be341d42",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
