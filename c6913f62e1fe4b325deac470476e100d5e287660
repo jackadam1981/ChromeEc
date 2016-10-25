@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcf74308_3340b34f",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-25T17:55:59Z",
+      "side": 1,
+      "message": "s/firmware/firmware version/",
+      "revId": "c6913f62e1fe4b325deac470476e100d5e287660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81b804f7_f8967128",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-25T17:55:59Z",
+      "side": 1,
+      "message": "this copy/paste is not necessary. \n\njust take setup_connection() out of transfer_and_reboot(), call it in line 1161 below instead, and make invoking code in lines 1132..1152 conditional on !show_fw_vers",
+      "range": {
+        "startLine": 1106,
+        "startChar": 0,
+        "endLine": 1115,
+        "endChar": 0
+      },
+      "revId": "c6913f62e1fe4b325deac470476e100d5e287660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
