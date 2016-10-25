@@ -962,6 +962,7 @@ int board_get_version(void)
 		}
 	}
 
+	/* add comments for test */
 	CPRINTS("Board version: %d\n", version);
 	return version;
 }
