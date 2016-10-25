@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "216bd800_5b019bb2",
+        "filename": "power/braswell.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-25T16:24:21Z",
+      "side": 1,
+      "message": "Can you added a msleep or defer function for the remaining 10 second so the force shutdown is still honored?",
+      "revId": "84bd8da5c72c576d24b6406ead7020e5c37b609c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
