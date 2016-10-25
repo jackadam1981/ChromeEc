@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "817ac4f4_682da3aa",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-25T14:23:58Z",
+      "side": 1,
+      "message": "the #ifdef condition is wrong ...",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 36
+      },
+      "revId": "f6fa13b7dd7da6a6bb9488817791bae82aec56fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
