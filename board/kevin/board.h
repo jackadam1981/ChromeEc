@@ -11,8 +11,15 @@
 /* Optional modules */
 #define CONFIG_ADC
 #define CONFIG_CHIPSET_RK3399
+
+#ifdef BOARD_KEVIN
 #define CONFIG_CMD_RTC
 #define CONFIG_HOSTCMD_RTC
+#else
+#define CONFIG_COMMON_GPIO_SHORTNAMES
+#define GPIO_NAME_BY_PIN(port, index) #port#index
+#endif
+
 #define CONFIG_HOSTCMD_SPS
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
@@ -73,7 +80,7 @@
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
-/* Motion Sensors */
+/* Sensors */
 #define CONFIG_ACCEL_BMA255
 #define CONFIG_ACCEL_KX022
 #define CONFIG_ACCELGYRO_BMI160
@@ -84,14 +91,22 @@
 #define CONFIG_LID_ANGLE_TABLET_MODE
 #define CONFIG_LID_ANGLE_SENSOR_BASE    BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID     LID_ACCEL
+
+#ifdef BOARD_GRU
+#define CONFIG_BARO_BMP280
+#endif
 /* FIFO size is in power of 2. */
 #define CONFIG_ACCEL_FIFO 256
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
 
-/*
- * Sensor internal FIFO is enabled for BMI160, but not for BMA255.
- */
+/* Sensors without hardware FIFO are in forced mode */
+#ifdef BOARD_KEVIN
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
+#else
+#define CONFIG_ACCEL_FORCE_MODE_MASK \
+	((1 << LID_ACCEL) | (1 << BASE_BARO))
+#endif
+
 #define CONFIG_TABLET_MODE_SWITCH
 
 /* USB PD config */
@@ -140,7 +155,9 @@
 
 /* Optional features for test commands */
 #define CONFIG_CMD_ACCELS
+#ifdef BOARD_KEVIN
 #define CONFIG_CMD_CHARGER_PSYS
+#endif
 
 /* Set PSYS gain for 50W max measurement */
 #define BD9995X_PSYS_GAIN_SELECT \
@@ -180,6 +197,7 @@
 #define I2C_PORT_TCPC0    NPCX_I2C_PORT0_0
 #define I2C_PORT_TCPC1    NPCX_I2C_PORT0_1
 #define I2C_PORT_ACCEL    NPCX_I2C_PORT1
+#define I2C_PORT_BARO     NPCX_I2C_PORT1
 #define I2C_PORT_CHARGER  NPCX_I2C_PORT2
 #define I2C_PORT_BATTERY  NPCX_I2C_PORT3
 #define I2C_PORT_VIRTUAL_BATTERY I2C_PORT_BATTERY
@@ -237,6 +255,9 @@ enum sensor_id {
 	BASE_ACCEL = 0,
 	BASE_GYRO,
 	LID_ACCEL,
+#ifdef BOARD_GRU
+	BASE_BARO,
+#endif
 };
 
 #include "gpio_signal.h"
