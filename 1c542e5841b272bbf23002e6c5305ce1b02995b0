@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "216bd800_1871e9c3",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-25T04:48:15Z",
+      "side": 1,
+      "message": "it makes more sense to keep default 0 and set it 1 when event occurs.",
+      "revId": "1c542e5841b272bbf23002e6c5305ce1b02995b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
