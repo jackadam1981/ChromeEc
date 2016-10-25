@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "41452c83_5e51954c",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1416,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-10-25T05:45:49Z",
+      "side": 1,
+      "message": "0xF9 is the mask of bit 1 and 2 (SCIB/SMIB) of HIPMnIC. We only need to  modify these two bits.",
+      "parentUuid": "41828cce_f9eb73c3",
+      "range": {
+        "startLine": 1416,
+        "startChar": 55,
+        "endLine": 1416,
+        "endChar": 59
+      },
+      "revId": "c921455e4bf53cd03e5dd16be913d18fea5921de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41828cce_39832b9e",
         "filename": "chip/npcx/registers.h",
         "patchSetId": 2
@@ -105,6 +129,30 @@
       "writtenOn": "2016-10-24T22:15:01Z",
       "side": 1,
       "message": "SCI",
+      "range": {
+        "startLine": 1417,
+        "startChar": 4,
+        "endLine": 1417,
+        "endChar": 7
+      },
+      "revId": "c921455e4bf53cd03e5dd16be913d18fea5921de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41452c83_3e2be9b3",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-10-25T05:45:49Z",
+      "side": 1,
+      "message": "Since the driver needs to change SCIB and SMIB simultaneously, the marco reads current SMI level from VWEVSM(2), or the level we hope SCI be and writes it back to HIPMnIC.",
+      "parentUuid": "41828cce_39832b9e",
       "range": {
         "startLine": 1417,
         "startChar": 4,
@@ -140,6 +188,30 @@
     },
     {
       "key": {
+        "uuid": "41452c83_be55393b",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1418,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-10-25T05:45:49Z",
+      "side": 1,
+      "message": "Please see the comment above.",
+      "parentUuid": "41828cce_b9e5fbf1",
+      "range": {
+        "startLine": 1418,
+        "startChar": 55,
+        "endLine": 1418,
+        "endChar": 59
+      },
+      "revId": "c921455e4bf53cd03e5dd16be913d18fea5921de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41828cce_197e6fd3",
         "filename": "chip/npcx/registers.h",
         "patchSetId": 2
@@ -151,6 +223,30 @@
       "writtenOn": "2016-10-24T22:15:01Z",
       "side": 1,
       "message": "SMI",
+      "range": {
+        "startLine": 1419,
+        "startChar": 4,
+        "endLine": 1419,
+        "endChar": 7
+      },
+      "revId": "c921455e4bf53cd03e5dd16be913d18fea5921de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41452c83_1e30ad1e",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-10-25T05:45:49Z",
+      "side": 1,
+      "message": "Please see the comment above.",
+      "parentUuid": "41828cce_197e6fd3",
       "range": {
         "startLine": 1419,
         "startChar": 4,
