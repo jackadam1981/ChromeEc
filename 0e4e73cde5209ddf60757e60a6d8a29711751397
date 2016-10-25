@@ -45,6 +45,30 @@
       "revId": "0e4e73cde5209ddf60757e60a6d8a29711751397",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41452c83_7e9731d4",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2189,
+      "author": {
+        "id": 1167184
+      },
+      "writtenOn": "2016-10-25T03:15:06Z",
+      "side": 1,
+      "message": "I thinck the KEYPROTO task should have CONFIG_KEYBOARD_PROTOCOL_8042 ,which defined in line 2178. If this CONFIG stay undef\u0027d, compile will be failed.",
+      "parentUuid": "dcf74308_69aa4c5d",
+      "range": {
+        "startLine": 2189,
+        "startChar": 7,
+        "endLine": 2189,
+        "endChar": 36
+      },
+      "revId": "0e4e73cde5209ddf60757e60a6d8a29711751397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
