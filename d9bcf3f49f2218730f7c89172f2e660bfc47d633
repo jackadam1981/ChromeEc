@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "216bd800_be341d42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-25T17:16:23Z",
+      "side": 1,
+      "message": "Let\u0027s try enabling CONFIG_HOSTCMD_ALIGNED instead.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "d9bcf3f49f2218730f7c89172f2e660bfc47d633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "216bd800_fe2e95eb",
+        "filename": "board/kevin/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-25T17:16:23Z",
+      "side": 1,
+      "message": "Double check that this is actually defined here for kevin, not sure about the chain of includes.",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "d9bcf3f49f2218730f7c89172f2e660bfc47d633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
