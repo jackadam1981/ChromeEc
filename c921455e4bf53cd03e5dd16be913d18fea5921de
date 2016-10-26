@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "616150bb_57baaca3",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-10-26T01:39:02Z",
+      "side": 1,
+      "message": "Both SCIB and SMIB are located in the same register, HIPMIC. Writing HIPMIC means you\u0027ll write SCIB and SMIB bits at the same time. Reading the current status of them first and toggle the bit you want is a good way to solve this limitation.",
+      "parentUuid": "216bd800_5b335bc2",
+      "range": {
+        "startLine": 1417,
+        "startChar": 4,
+        "endLine": 1417,
+        "endChar": 7
+      },
+      "revId": "c921455e4bf53cd03e5dd16be913d18fea5921de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41828cce_b9e5fbf1",
         "filename": "chip/npcx/registers.h",
         "patchSetId": 2
