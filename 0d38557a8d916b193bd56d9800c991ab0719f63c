@@ -22,6 +22,30 @@
       "revId": "0d38557a8d916b193bd56d9800c991ab0719f63c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41a36c15_7d1063ff",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-10-26T22:59:17Z",
+      "side": 1,
+      "message": "mm...unless there are other ways to squeeze space for gru\u0027s driver code. Or we can keep this flag off for kevin for now.",
+      "parentUuid": "41a36c15_5d380791",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 49
+      },
+      "revId": "0d38557a8d916b193bd56d9800c991ab0719f63c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
