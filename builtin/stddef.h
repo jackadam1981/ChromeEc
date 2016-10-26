@@ -27,4 +27,8 @@ typedef __SIZE_TYPE__ ssize_t;
 #endif
 typedef __WCHAR_TYPE__ wchar_t;
 
+#ifndef offsetof
+#define offsetof(TYPE, MEMBER) __builtin_offsetof (TYPE, MEMBER)
+#endif
+
 #endif /* __CROS_EC_STDDEF_H__ */
