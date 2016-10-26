@@ -18,6 +18,7 @@
 #include "util.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_tcpm.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -114,6 +115,22 @@ void typec_set_input_current_limit(int port, uint32_t max_ma,
 	charge.voltage = supply_voltage;
 	charge_manager_update_charge(CHARGE_SUPPLIER_TYPEC, port, &charge);
 #endif
+}
+
+void typec_set_source_current_limit(int port, int rp)
+{
+	enum gpio_signal gpio = port ? GPIO_USB_C1_5V_EN : GPIO_USB_C0_5V_EN;
+	int flags = (rp == TYPEC_RP_3A0) ? GPIO_OUTPUT :
+			(GPIO_OUTPUT | GPIO_PULL_UP | GPIO_OPEN_DRAIN);
+
+	/*
+	 * Driving USB_Cx_5V_EN high, actually put a 16.5k resistance
+	 * (2x 33k in parallel) on the NX5P3290 load switch ILIM pin,
+	 * setting a minimum OCP current of 3186 mA.
+	 * Putting an internal pull-up on USB_Cx_5V_EN, effectively put a 33k
+	 * resistor on ILIM, setting a minimum OCP current of 1505 mA.
+	 */
+	gpio_set_flags(gpio, flags);
 }
 
 int pd_board_checks(void)
