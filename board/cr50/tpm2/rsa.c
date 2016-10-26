@@ -81,7 +81,7 @@ CRYPT_RESULT _cpri__EncryptRSA(uint32_t *out_len, uint8_t *out,
 {
 	struct RSA rsa;
 	enum padding_mode padding;
-	enum hashing_mode hashing;
+	enum hashing_mode hashing = HASH_SHA1;
 	int result;
 
 	if (!check_key(key))
@@ -114,7 +114,7 @@ CRYPT_RESULT _cpri__DecryptRSA(uint32_t *out_len, uint8_t *out,
 {
 	struct RSA rsa;
 	enum padding_mode padding;
-	enum hashing_mode hashing;
+	enum hashing_mode hashing = HASH_SHA1;
 	int result;
 
 	if (!check_key(key))
@@ -843,7 +843,7 @@ static void rsa_command_handler(void *cmd_body,
 	uint16_t key_len;
 	uint16_t in_len;
 	uint8_t in[MAX_MSG_BYTES];
-	uint16_t digest_len;
+	uint16_t digest_len = 0;
 	uint8_t digest[SHA_DIGEST_MAX_BYTES];
 	uint8_t *out = (uint8_t *) cmd_body;
 	TPM2B_PUBLIC_KEY_RSA N;
