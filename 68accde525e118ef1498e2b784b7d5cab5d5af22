@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "41a36c15_bd4c8b3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2016-10-26T22:51:38Z",
+      "side": 1,
+      "message": "On Samus, this behavior showed up to the user as just being \"fully charged\", independent of what phase of cycling we are in at \u003e95% (or whatever).",
+      "parentUuid": "41a36c15_7d398305",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "68accde525e118ef1498e2b784b7d5cab5d5af22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41a36c15_fd19f39e",
         "filename": "board/kevin/battery.c",
         "patchSetId": 1
