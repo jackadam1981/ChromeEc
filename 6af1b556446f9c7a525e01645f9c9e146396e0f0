@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c134bcc0_4a8cd317",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-26T06:09:01Z",
+      "side": 1,
+      "message": "isn\u0027t the following corner case going to brown-out the board ?\n\nIf the battery is drained, but we still decide to start \nas the charger is providing more than 15W as per charge_prevent_power_on() code, we might die during this transition.",
+      "range": {
+        "startLine": 643,
+        "startChar": 5,
+        "endLine": 643,
+        "endChar": 49
+      },
+      "revId": "6af1b556446f9c7a525e01645f9c9e146396e0f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c04eb4e_54cd0217",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
