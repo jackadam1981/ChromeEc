@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41a36c15_5d380791",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-26T22:54:34Z",
+      "side": 1,
+      "message": "GPIO names are super useful for debug, any way we can leave them?",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 49
+      },
+      "revId": "0d38557a8d916b193bd56d9800c991ab0719f63c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
