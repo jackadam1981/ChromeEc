@@ -22,6 +22,30 @@
       "revId": "885123a89d8176b57653104dc8580353d9a887c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41a36c15_b4578874",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-26T17:38:10Z",
+      "side": 1,
+      "message": "yes, https://chromium-review.googlesource.com/#/c/403213/ (on which you are also a reviewer ;)",
+      "parentUuid": "41a36c15_940ecca3",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "885123a89d8176b57653104dc8580353d9a887c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
