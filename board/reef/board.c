@@ -59,6 +59,7 @@
 #define IN_ALL_SYS_PG	POWER_SIGNAL_MASK(X86_ALL_SYS_PG)
 #define IN_PGOOD_PP3300	POWER_SIGNAL_MASK(X86_PGOOD_PP3300)
 #define IN_PGOOD_PP5000	POWER_SIGNAL_MASK(X86_PGOOD_PP5000)
+#define TEST_DRAFT
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
