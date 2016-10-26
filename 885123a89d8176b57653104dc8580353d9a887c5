@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41a36c15_940ecca3",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-10-26T17:34:03Z",
+      "side": 1,
+      "message": "I didn\u0027t find where this function is called from. How does it all work? Or do I miss some other CL?",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "885123a89d8176b57653104dc8580353d9a887c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
