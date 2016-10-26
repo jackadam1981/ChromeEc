@@ -157,7 +157,7 @@ void fw_upgrade_command_handler(void *body,
 	uint8_t *error_code = body;  /* Cache the address for code clarity. */
 	uint8_t sha1_digest[SHA_DIGEST_SIZE];
 	size_t body_size;
-	uint32_t block_offset;
+	uint32_t block_offset = 0;
 
 	*response_size = 1; /* One byte response unless this is a start PDU. */
 
