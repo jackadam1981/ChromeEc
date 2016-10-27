@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86565a13_285f8bfb",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-27T21:09:58Z",
+      "side": 1,
+      "message": "wrong interrupt now?",
+      "revId": "964de8260846327294009fe7c1605c6778582150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86565a13_0864c7cf",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-27T21:09:58Z",
+      "side": 1,
+      "message": "fwiw, parens not necessary",
+      "range": {
+        "startLine": 302,
+        "startChar": 45,
+        "endLine": 302,
+        "endChar": 54
+      },
+      "revId": "964de8260846327294009fe7c1605c6778582150",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
