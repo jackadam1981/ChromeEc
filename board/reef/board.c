@@ -490,18 +490,6 @@ int board_set_active_charge_port(int charge_port)
 	enum bd9995x_charge_port bd9995x_port;
 	static int initialized;
 
-	/* charge port is a physical port */
-	int is_real_port = (charge_port >= 0 &&
-			    charge_port < CONFIG_USB_PD_PORT_COUNT);
-	/* check if we are source VBUS on the port */
-	int source = gpio_get_level(charge_port == 0 ? GPIO_USB_C0_5V_EN :
-						       GPIO_USB_C1_5V_EN);
-
-	if (is_real_port && source) {
-		CPRINTF("Skip enable p%d", charge_port);
-		return EC_ERROR_INVAL;
-	}
-
 	/*
 	 * Reject charge port disable if our battery is critical and we
 	 * have yet to initialize a charge port - continue to charge using
@@ -512,11 +500,14 @@ int board_set_active_charge_port(int charge_port)
 	    charge_get_percent() < 2)
 		return -1;
 
-	CPRINTS("New chg p%d", charge_port);
-
 	switch (charge_port) {
 	case 0:
 	case 1:
+		/* Don't charge from a source port */
+		if (gpio_get_level(charge_port == 0 ?
+				   GPIO_USB_C0_5V_EN : GPIO_USB_C1_5V_EN))
+			return -1;
+
 		bd9995x_port = bd9995x_pd_port_to_chg_port(charge_port);
 		break;
 	case CHARGE_PORT_NONE:
@@ -527,9 +518,10 @@ int board_set_active_charge_port(int charge_port)
 		break;
 	}
 
+	CPRINTS("New chg p%d", charge_port);
 	initialized = 1;
 
-	return bd9995x_select_input_port(bd9995x_port);
+	return bd9995x_select_input_port(bd9995x_port, 1);
 }
 
 /**
@@ -911,7 +903,7 @@ void board_hibernate(void)
 	msleep(100);
 
 	/* Enable both the VBUS & VCC ports before entering PG3 */
-	bd9995x_select_input_port(BD9995X_CHARGE_PORT_BOTH);
+	bd9995x_select_input_port(BD9995X_CHARGE_PORT_BOTH, 1);
 }
 
 struct {
