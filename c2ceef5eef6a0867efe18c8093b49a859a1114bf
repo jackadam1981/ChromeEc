@@ -22,6 +22,30 @@
       "revId": "c2ceef5eef6a0867efe18c8093b49a859a1114bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46fd4226_7e965198",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-10-27T22:05:45Z",
+      "side": 1,
+      "message": "OK, I call the chipset_exit_hard_off() here",
+      "parentUuid": "41a36c15_5591fbdb",
+      "range": {
+        "startLine": 472,
+        "startChar": 3,
+        "endLine": 472,
+        "endChar": 25
+      },
+      "revId": "c2ceef5eef6a0867efe18c8093b49a859a1114bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
