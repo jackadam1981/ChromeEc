@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "86565a13_a8adbbd4",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-27T21:10:27Z",
+      "side": 1,
+      "message": "handle_passthru_event()?",
+      "revId": "691f9f00d4f1555ace18adeb3bca207ee9eaf39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86565a13_48107f30",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-27T21:10:27Z",
+      "side": 1,
+      "message": "this can be put in the chipset power_handle_state()",
+      "revId": "691f9f00d4f1555ace18adeb3bca207ee9eaf39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86565a13_088607ae",
         "filename": "power/intel_x86.c",
         "patchSetId": 7
@@ -19,6 +53,75 @@
     },
     {
       "key": {
+        "uuid": "86565a13_c8fb4fcd",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-27T21:10:27Z",
+      "side": 1,
+      "message": "okay, this can be put in the chipset power_handle_state()",
+      "parentUuid": "86565a13_088607ae",
+      "revId": "691f9f00d4f1555ace18adeb3bca207ee9eaf39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86565a13_880557ef",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-27T21:10:27Z",
+      "side": 1,
+      "message": "this can be put in the chipset power_handle_state()",
+      "revId": "691f9f00d4f1555ace18adeb3bca207ee9eaf39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86565a13_c8e22f1b",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-27T21:10:27Z",
+      "side": 1,
+      "message": "I will add a CONFIG_POWER_WAIT_SIGNAL and assign it in respective chipset header.",
+      "revId": "691f9f00d4f1555ace18adeb3bca207ee9eaf39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86565a13_485abf0b",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-27T21:10:27Z",
+      "side": 1,
+      "message": "This can be moved in chipset_force_g3().",
+      "revId": "691f9f00d4f1555ace18adeb3bca207ee9eaf39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86565a13_a8d93bda",
         "filename": "power/intel_x86.h",
         "patchSetId": 7
@@ -30,6 +133,24 @@
       "writtenOn": "2016-10-27T20:22:53Z",
       "side": 1,
       "message": "Ugh. This is pretty ugly. Why do we have to put these in here?",
+      "revId": "691f9f00d4f1555ace18adeb3bca207ee9eaf39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86565a13_c8658fcc",
+        "filename": "power/intel_x86.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-27T21:10:27Z",
+      "side": 1,
+      "message": "okay I will add respective chipset.h",
+      "parentUuid": "86565a13_a8d93bda",
       "revId": "691f9f00d4f1555ace18adeb3bca207ee9eaf39b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
