@@ -380,6 +380,9 @@ void board_hibernate(void)
 			CPRINTS("Error setting TCPC %d", i);
 	}
 
+	/* Turn BGATE OFF for saving the power */
+	bd9995x_set_power_save_mode(BD9995X_PWR_SAVE_MAX);
+
 	cflush();
 }
 
