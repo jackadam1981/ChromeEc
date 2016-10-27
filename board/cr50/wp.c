@@ -70,6 +70,8 @@ int console_is_restricted(void)
 
 /* Max time that can elapse between power button pokes */
 static int unlock_beat;
+/* Time still to go in the current beat. */
+static int beat_us_to_go;
 
 /* When will we have poked the power button for long enough? */
 static timestamp_t unlock_deadline;
@@ -77,14 +79,27 @@ static timestamp_t unlock_deadline;
 /* Are we expecting power button pokes? */
 static int unlock_in_progress;
 
-/* This is invoked only when the unlock sequence has ended */
-static void unlock_sequence_is_over(void)
-{
-	/* Disable the power button interrupt so we aren't bothered */
-	GWRITE_FIELD(RBOX, INT_ENABLE, INTR_PWRB_IN_FED, 0);
-	task_disable_irq(GC_IRQNUM_RBOX0_INTR_PWRB_IN_FED_INT);
+static void unlock_sequence_beat(void);
+DECLARE_DEFERRED(unlock_sequence_beat);
 
+/* This is invoked periodically until the unlock sequence has ended. */
+static void unlock_sequence_beat(void)
+{
+	CPRINTF("\r");
 	if (unlock_in_progress) {
+		beat_us_to_go -= SECOND;
+
+		if (beat_us_to_go > 0) {
+			/*
+			 * Let the user know how soon they must press the
+			 * power button to keep the unlock sequence going.
+			 */
+			CPRINTF("press sooner than in %02d seconds",
+				beat_us_to_go/SECOND);
+			hook_call_deferred(&unlock_sequence_beat_data,
+					   SECOND);
+			return;
+		}
 		/* We didn't poke the button fast enough */
 		CPRINTS("Unlock process failed");
 	} else {
@@ -97,21 +112,26 @@ static void unlock_sequence_is_over(void)
 
 	unlock_in_progress = 0;
 
+	/* Disable the power button interrupt so we aren't bothered */
+	GWRITE_FIELD(RBOX, INT_ENABLE, INTR_PWRB_IN_FED, 0);
+	task_disable_irq(GC_IRQNUM_RBOX0_INTR_PWRB_IN_FED_INT);
+
 	/* Allow sleeping again */
 	enable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
 }
-DECLARE_DEFERRED(unlock_sequence_is_over);
 
 static void power_button_poked(void)
 {
+	CPRINTF("\r");
 	if (timestamp_expired(unlock_deadline, NULL)) {
 		/* We've been poking for long enough */
 		unlock_in_progress = 0;
-		hook_call_deferred(&unlock_sequence_is_over_data, 0);
+		hook_call_deferred(&unlock_sequence_beat_data, 0);
 		CPRINTS("poke: enough already", __func__);
 	} else {
 		/* Wait for the next poke */
-		hook_call_deferred(&unlock_sequence_is_over_data, unlock_beat);
+		beat_us_to_go = unlock_beat;
+		hook_call_deferred(&unlock_sequence_beat_data, 1);
 		CPRINTS("poke: not yet %.6ld", unlock_deadline);
 	}
 
@@ -133,6 +153,7 @@ static void start_unlock_process(int total_poking_time, int max_poke_interval)
 
 	/* Must poke at least this often */
 	unlock_beat = max_poke_interval;
+	beat_us_to_go = unlock_beat;
 
 	/* Keep poking until it's been long enough */
 	unlock_deadline = get_time();
@@ -142,7 +163,7 @@ static void start_unlock_process(int total_poking_time, int max_poke_interval)
 	disable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
 
 	/* Check progress after waiting long enough for one button press */
-	hook_call_deferred(&unlock_sequence_is_over_data, unlock_beat);
+	hook_call_deferred(&unlock_sequence_beat_data, SECOND);
 }
 
 /****************************************************************************/
@@ -224,7 +245,7 @@ static int command_lock(int argc, char **argv)
 			 * the user has given up.
 			 */
 			start_unlock_process(UNLOCK_SEQUENCE_DURATION,
-					     2 * SECOND);
+					     30 * SECOND);
 
 			ccprintf("Unlock sequence starting."
 				 " Continue until %.6ld\n", unlock_deadline);
