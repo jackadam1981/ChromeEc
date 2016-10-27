@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "061c2a60_d4865c63",
+        "filename": "board/eve/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-27T18:48:18Z",
+      "side": 1,
+      "message": "it is already called in shutdown so we are good",
+      "parentUuid": "061c2a60_b46c00e8",
+      "range": {
+        "startLine": 564,
+        "startChar": 5,
+        "endLine": 564,
+        "endChar": 20
+      },
+      "revId": "95f593d4e3928342e4074756b0e7408ae37bebd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "061c2a60_b4d9a0da",
         "filename": "driver/charger/bd9995x.h",
         "patchSetId": 4
