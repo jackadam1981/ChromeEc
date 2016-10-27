@@ -602,6 +602,7 @@ void lid_angle_peripheral_enable(int enable)
 
 	if (enable) {
 		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
+		gpio_set_level(GPIO_TRACKPAD_INT_DISABLE, 0);
 	} else {
 		/*
 		 * Ensure chipset is off before disabling keyboard. When chipset
@@ -613,8 +614,10 @@ void lid_angle_peripheral_enable(int enable)
 		 * exiting tablet mode in S0. Also, add this check back to the
 		 * function lid_angle_update in lid_angle.c
 		 */
-		if (!chipset_in_s0)
+		if (!chipset_in_s0) {
 			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
+			gpio_set_level(GPIO_TRACKPAD_INT_DISABLE, 1);
+		}
 	}
 }
 #endif
