@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41a36c15_23ea3832",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-10-27T04:58:23Z",
+      "side": 1,
+      "message": "Would it be useful if we print this unconditionally? It might help us while debugging as well.",
+      "range": {
+        "startLine": 1137,
+        "startChar": 1,
+        "endLine": 1143,
+        "endChar": 2
+      },
+      "revId": "185d54ea621a1c5ddaf64e96c729b2f8cdd9c820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
