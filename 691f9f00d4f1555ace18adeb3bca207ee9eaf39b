@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "86565a13_88867730",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-27T21:15:36Z",
+      "side": 1,
+      "message": "Sure, but maybe name it something more explicit to provide context on when such a thing would be called.\n\nIf you want to provide specific callbacks at key points that may not be implemented by one of the chipsets I\u0027m ok with that. The omission on some of these places on skylake where apollolake used them is pure happenstance. So providing generic callbacks at key points is helpful.",
+      "parentUuid": "86565a13_a8adbbd4",
+      "revId": "691f9f00d4f1555ace18adeb3bca207ee9eaf39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86565a13_48107f30",
         "filename": "power/intel_x86.c",
         "patchSetId": 7
@@ -116,6 +134,24 @@
       "writtenOn": "2016-10-27T21:10:27Z",
       "side": 1,
       "message": "This can be moved in chipset_force_g3().",
+      "revId": "691f9f00d4f1555ace18adeb3bca207ee9eaf39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86565a13_e8417304",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-27T21:15:36Z",
+      "side": 1,
+      "message": "You going to return the new state from chipset_force_g3()? If so, then yes that\u0027s easy.",
+      "parentUuid": "86565a13_485abf0b",
       "revId": "691f9f00d4f1555ace18adeb3bca207ee9eaf39b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
