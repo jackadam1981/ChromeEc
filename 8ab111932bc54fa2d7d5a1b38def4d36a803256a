@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c134bcc0_8a4c0b3f",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-27T08:25:46Z",
+      "side": 1,
+      "message": "I would rather fix the printf at line 234 rather than needlessly increase the code size by doing one more initialization.",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 27
+      },
+      "revId": "8ab111932bc54fa2d7d5a1b38def4d36a803256a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
