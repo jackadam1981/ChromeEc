@@ -22,6 +22,23 @@
       "revId": "f0b2e9e7fb916cd299d4c033f8ac6bce58f984b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "061c2a60_d4dc1ccc",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-27T18:18:29Z",
+      "side": 1,
+      "message": "You should add MEM or MEMORY to this so it\u0027s clear.",
+      "revId": "f0b2e9e7fb916cd299d4c033f8ac6bce58f984b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
