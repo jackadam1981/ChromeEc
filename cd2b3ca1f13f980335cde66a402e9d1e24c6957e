@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41a36c15_632c40f3",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-27T03:10:49Z",
+      "side": 1,
+      "message": "Don\u0027t you want 10 second? Since t is when PCH_PWRBTN_L is asserted, then assume power button is released after 5 second, this code will get executed, wait until t+SHUTDOWN_DELAY second, then force shutdown happen.",
+      "range": {
+        "startLine": 67,
+        "startChar": 24,
+        "endLine": 67,
+        "endChar": 25
+      },
+      "revId": "cd2b3ca1f13f980335cde66a402e9d1e24c6957e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
