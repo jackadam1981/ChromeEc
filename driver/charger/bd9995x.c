@@ -630,7 +630,6 @@ int charger_set_voltage(int voltage)
 static void bd99995_init(void)
 {
 	int reg;
-	int power_save_mode = BD9995X_PWR_SAVE_OFF;
 	const struct battery_info *bi = battery_get_info();
 
 	/* Enable BC1.2 detection on VCC */
@@ -708,10 +707,8 @@ static void bd99995_init(void)
 
 	/* Power save mode when VBUS/VCC is removed. */
 #ifdef CONFIG_BD9995X_POWER_SAVE_MODE
-	power_save_mode = CONFIG_BD9995X_POWER_SAVE_MODE;
+	bd9995x_set_power_save_mode(CONFIG_BD9995X_POWER_SAVE_MODE);
 #endif
-	ch_raw_write16(BD9995X_CMD_SMBREG, power_save_mode,
-		       BD9995X_EXTENDED_COMMAND);
 
 #ifdef CONFIG_USB_PD_DISCHARGE
 	/* Set VBUS / VCC detection threshold for discharge enable */
@@ -843,6 +840,14 @@ int bd9995x_get_battery_temp(int *temp_ptr)
 	/* Degrees C = 200 - THERM_VAL, range is -55C-200C, 1C steps */
 	*temp_ptr = 200 - *temp_ptr;
 	return EC_SUCCESS;
+}
+#endif
+
+#ifdef CONFIG_BD9995X_POWER_SAVE_MODE
+void bd9995x_set_power_save_mode(int mode)
+{
+	ch_raw_write16(BD9995X_CMD_SMBREG, mode,
+		       BD9995X_EXTENDED_COMMAND);
 }
 #endif
 
