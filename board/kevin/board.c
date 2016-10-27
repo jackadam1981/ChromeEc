@@ -213,8 +213,6 @@ int board_set_active_charge_port(int charge_port)
 		return -1;
 	}
 
-	CPRINTS("New chg p%d", charge_port);
-
 	switch (charge_port) {
 	case 0: case 1:
 		/* Don't charge from a source port */
@@ -232,8 +230,10 @@ int board_set_active_charge_port(int charge_port)
 		break;
 	}
 
+	CPRINTS("New chg p%d", charge_port);
 	initialized = 1;
-	return bd9995x_select_input_port(bd9995x_port);
+
+	return bd9995x_select_input_port(bd9995x_port, 1);
 }
 
 void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma)
