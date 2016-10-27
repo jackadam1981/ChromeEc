@@ -74,6 +74,7 @@ static const struct boot_key_entry boot_key_list[] = {
 	{0, 0x00},  /* (none) */
 	{KEYBOARD_COL_ESC, KEYBOARD_MASK_ESC},   /* Esc */
 	{KEYBOARD_COL_DOWN, KEYBOARD_MASK_DOWN}, /* Down-arrow */
+	{KEYBOARD_COL_LEFT_ALT, KEYBOARD_MASK_LEFT_ALT}, /* Up-arrow */
 };
 static enum boot_key boot_key_value = BOOT_KEY_OTHER;
 
@@ -633,7 +634,8 @@ void keyboard_scan_init(void)
 	boot_key_value = check_boot_key(debounced_state);
 
 	/* Trigger event if recovery key was pressed */
-	if (boot_key_value == BOOT_KEY_ESC)
+	if (boot_key_value == BOOT_KEY_ESC ||
+	    boot_key_value == BOOT_KEY_RETRAIN)
 		host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
 }
 

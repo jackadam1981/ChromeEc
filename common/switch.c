@@ -11,6 +11,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power_button.h"
 #include "switch.h"
@@ -38,8 +39,12 @@ static void switch_update(void)
 
 	prev = *memmap_switches;
 
-	if (power_button_is_pressed())
+	if (power_button_is_pressed()) {
 		*memmap_switches |= EC_SWITCH_POWER_BUTTON_PRESSED;
+		if (keyboard_scan_get_boot_key() == BOOT_KEY_RETRAIN) {
+			*memmap_switches |= EC_SWITCH_RECOVERY_MEM_RETRAIN;
+		}
+	}
 	else
 		*memmap_switches &= ~EC_SWITCH_POWER_BUTTON_PRESSED;
 

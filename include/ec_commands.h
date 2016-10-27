@@ -171,6 +171,8 @@
 #define EC_SWITCH_DEDICATED_RECOVERY     0x10
 /* Was fake developer mode switch; now unused.  Remove in next refactor. */
 #define EC_SWITCH_IGNORE0                0x20
+/* Recovery requested with full memory retrain */
+#define EC_SWITCH_RECOVERY_MEM_RETRAIN   0x40
 
 /* Host command interface flags */
 /* Host command interface supports LPC args (LPC interface only) */
