@@ -22,6 +22,30 @@
       "revId": "2407b90f534387fc7083982f082de5a4c4dfec1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "061c2a60_34f47017",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-27T18:36:36Z",
+      "side": 1,
+      "message": "you mean one change should a one-liner changing the beat timeout from 2 to 30 seconds?",
+      "parentUuid": "061c2a60_d403fc29",
+      "range": {
+        "startLine": 14,
+        "startChar": 32,
+        "endLine": 15,
+        "endChar": 38
+      },
+      "revId": "2407b90f534387fc7083982f082de5a4c4dfec1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
