@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "061c2a60_148614ae",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-27T18:20:32Z",
+      "side": 1,
+      "message": "I\u0027m not sure we want this either-OR -- but an addition. Need to see what the teams internally think.",
+      "revId": "f0b2e9e7fb916cd299d4c033f8ac6bce58f984b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "061c2a60_34811096",
+        "filename": "common/switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-27T18:20:32Z",
+      "side": 1,
+      "message": "I think we need to guard this with a Config option.",
+      "revId": "f0b2e9e7fb916cd299d4c033f8ac6bce58f984b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "061c2a60_94d6a4a6",
         "filename": "common/switch.c",
         "patchSetId": 1
