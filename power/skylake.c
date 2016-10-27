@@ -217,7 +217,9 @@ static enum power_state _power_handle_state(enum power_state state)
 	case POWER_S5:
 		if (forcing_shutdown) {
 			power_button_pch_release();
+			gpio_set_level(GPIO_PCH_RSMRST_L, 0);
 			forcing_shutdown = 0;
+			return POWER_S5G3;
 		}
 
 #ifdef CONFIG_BOARD_HAS_RTC_RESET
@@ -273,6 +275,11 @@ static enum power_state _power_handle_state(enum power_state state)
 #endif
 
 	case POWER_G3S5:
+
+		if (forcing_shutdown) {
+			power_button_pch_release();
+			forcing_shutdown = 0;
+		}
 		/* Call hooks to initialize PMIC */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
 
@@ -404,6 +411,9 @@ static enum power_state _power_handle_state(enum power_state state)
 
 		/* Disable wireless */
 		wireless_set_state(WIRELESS_OFF);
+
+		if (forcing_shutdown)
+			power_button_pch_release();
 
 		/* Always enter into S5 state. The S5 state is required to
 		 * correctly handle global resets which have a bit of delay
