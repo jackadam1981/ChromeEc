@@ -166,7 +166,7 @@
 #undef  CONFIG_PSTORE
 
 /* Modules we want to exclude */
-#undef CONFIG_CMD_ACCEL_INFO
+#undef CONFIG_CMD_ACCELS
 #undef CONFIG_CMD_BATTFAKE
 #undef CONFIG_CMD_CHARGER_PSYS
 #undef CONFIG_CMD_FLASH
