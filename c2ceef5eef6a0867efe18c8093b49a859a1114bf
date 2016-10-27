@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41a36c15_5591fbdb",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-27T17:04:25Z",
+      "side": 1,
+      "message": "This will change your PB state to PWRBTN_STATE_LID_OPEN, which probably isn\u0027t what you want.",
+      "range": {
+        "startLine": 472,
+        "startChar": 3,
+        "endLine": 472,
+        "endChar": 25
+      },
+      "revId": "c2ceef5eef6a0867efe18c8093b49a859a1114bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
