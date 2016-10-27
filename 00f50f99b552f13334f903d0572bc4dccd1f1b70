@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01a974f7_33860763",
+        "filename": "power/apollolake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-27T23:30:57Z",
+      "side": 1,
+      "message": "renamed handle_rsmrst_l_pgood() to handle_rsmrst()",
+      "revId": "00f50f99b552f13334f903d0572bc4dccd1f1b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81b56446_9a39ca08",
+        "filename": "power/apollolake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-27T23:30:57Z",
+      "side": 1,
+      "message": "moved chipset specific code here",
+      "revId": "00f50f99b552f13334f903d0572bc4dccd1f1b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6eefe70_ca9eb238",
+        "filename": "power/skylake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-27T23:30:57Z",
+      "side": 1,
+      "message": "moved chipset specific code here",
+      "revId": "00f50f99b552f13334f903d0572bc4dccd1f1b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
