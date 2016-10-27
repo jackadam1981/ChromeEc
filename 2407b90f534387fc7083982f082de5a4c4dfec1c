@@ -46,6 +46,30 @@
       "revId": "2407b90f534387fc7083982f082de5a4c4dfec1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "061c2a60_74d8a83a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-10-27T19:10:48Z",
+      "side": 1,
+      "message": "That was my thought. Because that\u0027s what the commit message says: \"once in 30 seconds should be enough\". Then I looked at the CL, and was all \"What is all this stuff?\" It would be more readable if git log showed this:\n\nCr50: Poke once every 30 seconds to unlock\nCr50: Show countdown of unlock time remaining\n\nBut also, I think that 30 seconds is way too slow. The goal is to make it OBVIOUS to passers-by that something weird is going on. If you\u0027re in Fry\u0027s, installing a rootkit into a Chromebook, casually touching the power button once every 30 seconds is much less noticeable than you sitting there madly stabbing the button over and over.",
+      "parentUuid": "061c2a60_34f47017",
+      "range": {
+        "startLine": 14,
+        "startChar": 32,
+        "endLine": 15,
+        "endChar": 38
+      },
+      "revId": "2407b90f534387fc7083982f082de5a4c4dfec1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
