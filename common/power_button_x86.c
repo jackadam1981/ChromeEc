@@ -20,6 +20,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "watchdog.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SWITCH, outstr)
@@ -62,6 +63,8 @@
  * pulse length for simulated power button presses when the system is off.
  */
 #define PWRBTN_INITIAL_US  (200 * MSEC)
+
+#define SHUTDOWN_DELAY (6 * SECOND)
 
 enum power_button_state {
 	/* Button up; state machine idle */
@@ -139,6 +142,12 @@ static void set_pwrbtn_to_pch(int high)
 	 */
 	if (high == 1) {
 		if (t_valid && ((get_time().val - t) >= (4 * SECOND))) {
+			/* Delay shutdown until SHUTDOWN_DELAY. */
+			while (((get_time().val - t) < (SHUTDOWN_DELAY))) {
+				usleep(250 * MSEC);
+				watchdog_reload();
+			}
+
 			/*
 			 * Button is de-asserted, if held longer than 4sec,
 			 * then issue a proper shut down.
