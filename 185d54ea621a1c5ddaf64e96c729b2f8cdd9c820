@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "41a36c15_a35108da",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-10-27T14:02:13Z",
+      "side": 1,
+      "message": "we still need a flag to indicate that we want to see the version (as opposed to actually updating, in which case file name is required).\n\nAlso, we require a flag to display the binary blob versions, it is better to stay consistent.",
+      "parentUuid": "41a36c15_23ea3832",
+      "range": {
+        "startLine": 1137,
+        "startChar": 1,
+        "endLine": 1143,
+        "endChar": 2
+      },
+      "revId": "185d54ea621a1c5ddaf64e96c729b2f8cdd9c820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41a36c15_e32cb0b0",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 2
