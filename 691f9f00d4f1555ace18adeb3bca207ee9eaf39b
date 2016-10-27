@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86565a13_088607ae",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-27T20:22:53Z",
+      "side": 1,
+      "message": "And per-chipset ifdef\u0027s in here? Can we find common ground and support both in some manner instead of of #ifdef here? More chipsets will come, and this file will become littered with more.\n\nI completely understand the desire to make a lot of this code common. Can you devise a better way perhaps?",
+      "revId": "691f9f00d4f1555ace18adeb3bca207ee9eaf39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86565a13_a8d93bda",
+        "filename": "power/intel_x86.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-27T20:22:53Z",
+      "side": 1,
+      "message": "Ugh. This is pretty ugly. Why do we have to put these in here?",
+      "revId": "691f9f00d4f1555ace18adeb3bca207ee9eaf39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
