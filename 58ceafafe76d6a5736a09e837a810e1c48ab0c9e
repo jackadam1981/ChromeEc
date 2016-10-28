@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e647168e_013cce83",
+        "filename": "board/kevin/ec.tasklist",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-28T22:37:29Z",
+      "side": 1,
+      "message": "These are ordered by reverse-priority, so this makes als_task your highest-priority task, which you probably don\u0027t want. Probably it should be the second-lowest priority task, after HOOKS.",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 56
+      },
+      "revId": "58ceafafe76d6a5736a09e837a810e1c48ab0c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
