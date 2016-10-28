@@ -78,22 +78,25 @@ L_upper_result:
 	mov	r3, r1
 	mov	r2, r0
 	movs	r1, #0		@ upper result = 0
+	movs	r6, #0
 
 L_sub_loop1:
-	cmp	r3, r7
+	mov	r4, r3
+	cmp	r2, r6
+	sbcs	r4, r7
 	bcc	L_dont_sub1	@ if (num>denom)
 
-	subs	r3, r7		@ num -= denom
+	subs	r2, r6
+	sbcs	r3, r7		@ num -= denom
 	orrs	r1, r5		@ result(r7:r6) |= bitmask(r5)
 L_dont_sub1:
 
 	lsrs	r7, #1		@ denom(r7:r6) >>= 1
+	rrx	r6, r6
 	lsrs	r5, #1		@ bitmask(r5) >>= 1
 	bne	L_sub_loop1
 
-	movs	r5, #1
-	lsls	r5, #31
-	movs	r6, #0
+	rrx	r5, r5
 	b	L_lower_result
 
 
@@ -113,7 +116,7 @@ L_fallback_32bits:
 	mov	r1, r0
 	udiv	r0, r2		@ r0 = quotient
 	mul	r3, r0, r2	@ r3 = quotient * divisor
-	subs	r2, r3, r2	@ r2 = remainder
+	subs	r2, r1, r3	@ r2 = remainder
 	movs	r1, #0
 	movs	r3, #0
 	bx	lr
@@ -142,9 +145,8 @@ L_large_denom:
 
 L_denom_shift_loop4:
 	lsls	r5, #1
-	lsls	r7, #1
 	lsls	r6, #1
-	adcs	r7, r1		@ r1=0
+	adcs	r7, r7
 	bmi	L_lower_result	@ dont shift if overflow
 	cmp	r3, r7
 	bhs	L_denom_shift_loop4
@@ -165,10 +167,8 @@ L_sub_loop4:
 	orrs	r0, r5		@ result(r1:r0) |= bitmask(r5)
 L_dont_sub4:
 
-	lsls	r4, r7, #31	@ denom(r7:r6) >>= 1
-	lsrs	r6, #1
-	lsrs	r7, #1
-	orrs	r6, r4
+	lsrs	r7, #1		@ denom(r7:r6) >>= 1
+	rrx	r6, r6
 	lsrs	r5, #1		@ bitmask(r5) >>= 1
 	bne	L_sub_loop4
 
