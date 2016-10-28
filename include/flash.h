@@ -15,15 +15,15 @@
 #define PHYSICAL_BANKS (CONFIG_FLASH_SIZE / CONFIG_FLASH_BANK_SIZE)
 
 /*WP region offset and size in units of flash banks */
-#define WP_BANK_OFFSET	(CONFIG_WP_STORAGE_OFF / CONFIG_FLASH_BANK_SIZE)
-#define WP_BANK_COUNT	(CONFIG_WP_STORAGE_SIZE / CONFIG_FLASH_BANK_SIZE)
+#define WP_BANK_OFFSET  (CONFIG_WP_STORAGE_OFF / CONFIG_FLASH_BANK_SIZE)
+#define WP_BANK_COUNT   (CONFIG_WP_STORAGE_SIZE / CONFIG_FLASH_BANK_SIZE)
 
 /* Persistent protection state flash offset / size / bank */
 #if defined(CONFIG_FLASH_PSTATE) && defined(CONFIG_FLASH_PSTATE_BANK)
-#define PSTATE_BANK	    (CONFIG_FW_PSTATE_OFF / CONFIG_FLASH_BANK_SIZE)
+#define PSTATE_BANK     (CONFIG_FW_PSTATE_OFF / CONFIG_FLASH_BANK_SIZE)
 #define PSTATE_BANK_COUNT   (CONFIG_FW_PSTATE_SIZE / CONFIG_FLASH_BANK_SIZE)
 #else
-#define PSTATE_BANK_COUNT	0
+#define PSTATE_BANK_COUNT        0
 #endif
 
 /* Range of write protection */
@@ -39,8 +39,8 @@ enum flash_wp_range {
 /**
  * Read from physical flash.
  *
- * @param offset	Flash offset to write.
- * @param size	        Number of bytes to write.
+ * @param offset        Flash offset to write.
+ * @param size          Number of bytes to write.
  * @param data          Destination buffer for data.  Must be 32-bit aligned.
  */
 int flash_physical_read(int offset, int size, char *data);
@@ -50,8 +50,8 @@ int flash_physical_read(int offset, int size, char *data);
  *
  * Offset and size must be a multiple of CONFIG_FLASH_WRITE_SIZE.
  *
- * @param offset	Flash offset to write.
- * @param size	        Number of bytes to write.
+ * @param offset        Flash offset to write.
+ * @param size          Number of bytes to write.
  * @param data          Data to write to flash.  Must be 32-bit aligned.
  */
 int flash_physical_write(int offset, int size, const char *data);
@@ -61,15 +61,15 @@ int flash_physical_write(int offset, int size, const char *data);
  *
  * Offset and size must be a multiple of CONFIG_FLASH_ERASE_SIZE.
  *
- * @param offset	Flash offset to erase.
- * @param size	        Number of bytes to erase.
+ * @param offset        Flash offset to erase.
+ * @param size          Number of bytes to erase.
  */
 int flash_physical_erase(int offset, int size);
 
 /**
  * Read physical write protect setting for a flash bank.
  *
- * @param bank	        Bank index to check.
+ * @param bank          Bank index to check.
  * @return non-zero if bank is protected until reboot.
  */
 int flash_physical_get_protect(int bank);
@@ -86,7 +86,7 @@ uint32_t flash_physical_get_protect_flags(void);
 /**
  * Enable/disable protecting firmware/pstate at boot.
  *
- * @param range		The range to protect
+ * @param range         The range to protect
  * @return non-zero if error.
  */
 int flash_physical_protect_at_boot(enum flash_wp_range range);
@@ -94,7 +94,7 @@ int flash_physical_protect_at_boot(enum flash_wp_range range);
 /**
  * Protect flash now.
  *
- * @param all		Protect all (=1) or just read-only and pstate (=0).
+ * @param all           Protect all (=1) or just read-only and pstate (=0).
  * @return non-zero if error.
  */
 int flash_physical_protect_now(int all);
@@ -140,8 +140,8 @@ uint32_t flash_physical_get_writable_flags(uint32_t cur_flags);
  *
  * It is assumed that an erased region has all bits set to 1.
  *
- * @param offset	Flash offset to check
- * @param size		Number of bytes to check (word-aligned)
+ * @param offset        Flash offset to check
+ * @param size          Number of bytes to check (word-aligned)
  * @return 1 if erased, 0 if not erased
  */
 int flash_is_erased(uint32_t offset, int size);
@@ -154,7 +154,7 @@ int flash_is_erased(uint32_t offset, int size);
  * protect pin is deasserted, the protect setting is ignored, and the entire
  * flash will be writable.
  *
- * @param range		The range to protect.
+ * @param range         The range to protect.
  * @return EC_SUCCESS, or nonzero if error.
  */
 int flash_protect_at_boot(enum flash_wp_range range);
@@ -186,12 +186,12 @@ int flash_get_size(void);
  * of flash, the offset is out of range, or if either size_req or offset
  * are not aligned to 'align'.
  *
- * @param offset	Flash offset to get address of
- * @param size_req	Number of bytes requested
- * @param align		Ensure offset and size_req are aligned to given
- *			power of two.
- * @param ptrp		If not NULL, returns a pointer to this flash offset
- *			in memory, unless function fails, iwc it is unset.
+ * @param offset        Flash offset to get address of
+ * @param size_req      Number of bytes requested
+ * @param align         Ensure offset and size_req are aligned to given
+ *                      power of two.
+ * @param ptrp          If not NULL, returns a pointer to this flash offset
+ *                      in memory, unless function fails, iwc it is unset.
  * @return size of flash region available at *ptrp, or -1 on error
  */
 int flash_dataptr(int offset, int size_req, int align, const char **ptrp);
@@ -203,8 +203,8 @@ int flash_dataptr(int offset, int size_req, int align, const char **ptrp);
  * use flash_dataptr() to get a pointer directly to the flash memory rather
  * than use flash_read(), since the former saves a memcpy() operation.
  *
- * @param offset	Flash offset to write.
- * @param size	        Number of bytes to write.
+ * @param offset        Flash offset to write.
+ * @param size          Number of bytes to read.
  * @param data          Destination buffer for data.  Must be 32-bit aligned.
  */
 int flash_read(int offset, int size, char *data);
@@ -214,8 +214,8 @@ int flash_read(int offset, int size, char *data);
  *
  * Offset and size must be a multiple of CONFIG_FLASH_WRITE_SIZE.
  *
- * @param offset	Flash offset to write.
- * @param size	        Number of bytes to write.
+ * @param offseti       Flash offset to write.
+ * @param size          Number of bytes to write.
  * @param data          Data to write to flash.  Must be 32-bit aligned.
  */
 int flash_write(int offset, int size, const char *data);
@@ -225,8 +225,8 @@ int flash_write(int offset, int size, const char *data);
  *
  * Offset and size must be a multiple of CONFIG_FLASH_ERASE_SIZE.
  *
- * @param offset	Flash offset to erase.
- * @param size	        Number of bytes to erase.
+ * @param offset        Flash offset to erase.
+ * @param size          Number of bytes to erase.
  */
 int flash_erase(int offset, int size);
 
@@ -240,8 +240,8 @@ uint32_t flash_get_protect(void);
 /**
  * Set the flash protect state.
  *
- * @param mask		Bits in flags to apply.
- * @param flags		New values for flags.
+ * @param mask          Bits in flags to apply.
+ * @param flags         New values for flags.
  */
 int flash_set_protect(uint32_t mask, uint32_t flags);
 
