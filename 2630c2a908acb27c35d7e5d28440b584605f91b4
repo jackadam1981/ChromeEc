@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "01a974f7_ac9bb84e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-10-28T03:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41a36c15_9d142f69",
+      "revId": "2630c2a908acb27c35d7e5d28440b584605f91b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41a36c15_dd1eb784",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "01a974f7_0c912c2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-10-28T03:58:29Z",
+      "side": 1,
+      "message": "403485",
+      "parentUuid": "41a36c15_dd1eb784",
+      "revId": "2630c2a908acb27c35d7e5d28440b584605f91b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41a36c15_fdf2932e",
         "filename": "board/kevin/board.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2016-10-26T22:25:13Z",
       "side": 1,
       "message": "Remove this #ifdef : both Gru and Kevin has it.\nBeside, TASK_MOTIONSENSE is defined in the same directory in ec.tasklist, so we know if it is defined or the code should be removed.",
+      "revId": "2630c2a908acb27c35d7e5d28440b584605f91b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61ba3039_cc727e58",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-10-28T03:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41a36c15_fdf2932e",
       "revId": "2630c2a908acb27c35d7e5d28440b584605f91b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -98,6 +152,24 @@
       "writtenOn": "2016-10-26T22:25:13Z",
       "side": 1,
       "message": "To avoid the code duplication:\n\n#define BASE_TASK_LIST\n\tTASK_ALWAYS(HOOKS, hook_task, NULL, LARGER_TASK_STACK_SIZE) \\\n\tTASK_ALWAYS(USB_CHG, usb_charger_task, NULL, TASK_STACK_SIZE) \\\n\tTASK_ALWAYS(CHARGER, charger_task, NULL, LARGER_TASK_STACK_SIZE) \\\n\tTASK_NOTEST(CHIPSET, chipset_task, NULL, LARGER_TASK_STACK_SIZE) \\\n\tTASK_ALWAYS(MOTIONSENSE, motion_sense_task, NULL, VENTI_TASK_STACK_SIZE) \\\n\tTASK_NOTEST(PDCMD, pd_command_task, NULL, TASK_STACK_SIZE) \\\n\tTASK_ALWAYS(HOSTCMD, host_command_task, NULL, TASK_STACK_SIZE) \\\n\tTASK_ALWAYS(CONSOLE, console_task, NULL, LARGER_TASK_STACK_SIZE) \\\n\tTASK_NOTEST(KEYSCAN, keyboard_scan_task, NULL, TASK_STACK_SIZE) \\\n\tTASK_ALWAYS(PD_C0, pd_task, NULL, LARGER_TASK_STACK_SIZE) \\\n\tTASK_ALWAYS(PD_C1, pd_task, NULL, LARGER_TASK_STACK_SIZE)\n\n\n#ifdef BOARD_KEVIN\n#define CONFIG_TASK_LIST \\\n       BASE_TASK_LIST\n#else\n#define CONFIG_TASK_LIST \\\n       BASE_TASK_LIST \\\n       TASK_ALWAYS(ALS, als_task, NULL, TASK_STACK_SIZE)\n#endif",
+      "revId": "2630c2a908acb27c35d7e5d28440b584605f91b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61ba3039_2c786a35",
+        "filename": "board/kevin/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-10-28T03:58:29Z",
+      "side": 1,
+      "message": "Great advise! Done.",
+      "parentUuid": "41a36c15_bd464b6d",
       "revId": "2630c2a908acb27c35d7e5d28440b584605f91b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
