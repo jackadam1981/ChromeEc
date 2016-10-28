@@ -54,7 +54,7 @@ SECTIONS
     } > FLASH
     . = ALIGN(4);
     .rodata : {
-	/* Symbols defined here are declared in link_defs.h */
+        /* Symbols defined here are declared in link_defs.h */
         __irqprio = .;
         KEEP(*(.rodata.irqprio))
         __irqprio_end = .;
@@ -67,17 +67,17 @@ SECTIONS
         . = ALIGN(4);
         __extension_cmds = .;
         KEEP(*(.rodata.extensioncmds))
-	__extension_cmds_end = .;
+        __extension_cmds_end = .;
 
         . = ALIGN(4);
         __hcmds = .;
         KEEP(*(.rodata.hcmds))
         __hcmds_end = .;
 
-	. = ALIGN(4);
-	__mkbp_evt_srcs = .;
-	KEEP(*(.rodata.evtsrcs))
-	__mkbp_evt_srcs_end = .;
+        . = ALIGN(4);
+        __mkbp_evt_srcs = .;
+        KEEP(*(.rodata.evtsrcs))
+        __mkbp_evt_srcs_end = .;
 
         . = ALIGN(4);
         __hooks_init = .;
@@ -176,23 +176,23 @@ SECTIONS
     __ro_end = . ;
 
     __deferred_funcs_count =
-		(__deferred_funcs_end - __deferred_funcs) / 4;
+                (__deferred_funcs_end - __deferred_funcs) / 4;
     ASSERT(__deferred_funcs_count <= DEFERRABLE_MAX_COUNT,
            "Increase DEFERRABLE_MAX_COUNT")
 
     .bss : {
-	/*
-	 * Vector table must be at the beginning of bss section. The vector
-	 * table section contains a RAM copy of the vector table used on
-	 * STM chips for relocating the vector table.
-	 */
-	. = ALIGN(8);
-	__bss_start = .;
-	*(.bss.vector_table)
-	/* Stacks must be 64-bit aligned */
+        /*
+         * Vector table must be at the beginning of bss section. The vector
+         * table section contains a RAM copy of the vector table used on
+         * STM chips for relocating the vector table.
+         */
+        . = ALIGN(8);
+        __bss_start = .;
+        *(.bss.vector_table)
+        /* Stacks must be 64-bit aligned */
         . = ALIGN(8);
         *(.bss.system_stack)
-	/* Rest of .bss takes care of its own alignment */
+        /* Rest of .bss takes care of its own alignment */
         *(.bss)
         *(.bss.slow)
         . = ALIGN(4);
@@ -208,19 +208,19 @@ SECTIONS
         . = ALIGN(4);
         __data_end = .;
 
-	/* Shared memory buffer must be at the end of preallocated RAM, so it
-	 * can expand to use all the remaining RAM. */
-	__shared_mem_buf = .;
+        /* Shared memory buffer must be at the end of preallocated RAM, so it
+         * can expand to use all the remaining RAM. */
+        __shared_mem_buf = .;
 
-	/* Tag at end of firmware image so that we can find the image size.
-	 * This may be overwritten by the shared memory buffer; that's ok
-	 * because we only use it to find the image size in flash. */
+        /* Tag at end of firmware image so that we can find the image size.
+         * This may be overwritten by the shared memory buffer; that's ok
+         * because we only use it to find the image size in flash. */
         . = ALIGN(4);
         BYTE(0x45);
         BYTE(0x4e);
         BYTE(0x44);
         BYTE(0xea);
-	/* NOTHING MAY GO AFTER THIS! */
+        /* NOTHING MAY GO AFTER THIS! */
     } > IRAM
 
     /* The linker won't notice if the .data section is too big to fit,

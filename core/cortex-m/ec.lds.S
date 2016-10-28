@@ -69,10 +69,10 @@ SECTIONS
 #endif
     .text : {
 #if defined(SECTION_IS_RO) && defined(CONFIG_RO_HEAD_ROOM)
-	. = . +  CONFIG_RO_HEAD_ROOM;
+        . = . +  CONFIG_RO_HEAD_ROOM;
 #endif
 #if defined(SECTION_IS_RW) && defined(CONFIG_RW_HEAD_ROOM)
-	. = . +  CONFIG_RW_HEAD_ROOM;
+        . = . +  CONFIG_RW_HEAD_ROOM;
 #endif
         OUTDIR/core/CORE/init.o (.text.vecttable)
         . = ALIGN(4);
@@ -100,7 +100,7 @@ SECTIONS
 #endif
     . = ALIGN(4);
     .rodata : {
-	/* Symbols defined here are declared in link_defs.h */
+        /* Symbols defined here are declared in link_defs.h */
         __irqprio = .;
         KEEP(*(.rodata.irqprio))
         __irqprio_end = .;
@@ -113,17 +113,17 @@ SECTIONS
         . = ALIGN(4);
         __extension_cmds = .;
         KEEP(*(.rodata.extensioncmds))
-	__extension_cmds_end = .;
+        __extension_cmds_end = .;
 
         . = ALIGN(4);
         __hcmds = .;
         KEEP(*(.rodata.hcmds))
         __hcmds_end = .;
 
-	. = ALIGN(4);
-	__mkbp_evt_srcs = .;
-	KEEP(*(.rodata.evtsrcs))
-	__mkbp_evt_srcs_end = .;
+        . = ALIGN(4);
+        __mkbp_evt_srcs = .;
+        KEEP(*(.rodata.evtsrcs))
+        __mkbp_evt_srcs_end = .;
 
         . = ALIGN(4);
         __hooks_init = .;
@@ -225,23 +225,23 @@ SECTIONS
     __ro_end = . ;
 
     __deferred_funcs_count =
-		(__deferred_funcs_end - __deferred_funcs) / 4;
+                (__deferred_funcs_end - __deferred_funcs) / 4;
     ASSERT(__deferred_funcs_count <= DEFERRABLE_MAX_COUNT,
            "Increase DEFERRABLE_MAX_COUNT")
 
     .bss : {
-	/*
-	 * Align to 512 bytes. This is convenient when some memory block
-	 * needs big alignment. This is the beginning of the RAM, so there
-	 * is usually no penalty on aligning this.
-	 */
+        /*
+         * Align to 512 bytes. This is convenient when some memory block
+         * needs big alignment. This is the beginning of the RAM, so there
+         * is usually no penalty on aligning this.
+         */
         . = ALIGN(512);
         __bss_start = .;
-	*(.bss.big_align)
-	/* Stacks must be 64-bit aligned */
+        *(.bss.big_align)
+        /* Stacks must be 64-bit aligned */
         . = ALIGN(8);
         *(.bss.system_stack)
-	/* Rest of .bss takes care of its own alignment */
+        /* Rest of .bss takes care of its own alignment */
         *(.bss)
 #ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
         . = ALIGN(4);
@@ -250,15 +250,15 @@ SECTIONS
     } > IRAM
 
     .bss.slow : {
-	/* Region of RAM reclaimed from the little firmware(LFW). */
-	*(.bss.slow)
+        /* Region of RAM reclaimed from the little firmware(LFW). */
+        *(.bss.slow)
 #ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
     } > LDR_REGION
 #else
-	/*
-	 * Not replacing the loader, so .bss.slow is part of .bss.  It needs to
-	 * be followed by __bss_end so that .bss.slow will be zeroed by init.
-	 */
+        /*
+         * Not replacing the loader, so .bss.slow is part of .bss.  It needs to
+         * be followed by __bss_end so that .bss.slow will be zeroed by init.
+         */
         . = ALIGN(4);
         __bss_end = .;
     } > IRAM
@@ -289,19 +289,19 @@ SECTIONS
 #endif
         __data_end = .;
 
-	/* Shared memory buffer must be at the end of preallocated RAM, so it
-	 * can expand to use all the remaining RAM. */
-	__shared_mem_buf = .;
+        /* Shared memory buffer must be at the end of preallocated RAM, so it
+         * can expand to use all the remaining RAM. */
+        __shared_mem_buf = .;
 
-	/* Tag at end of firmware image so that we can find the image size.
-	 * This may be overwritten by the shared memory buffer; that's ok
-	 * because we only use it to find the image size in flash. */
+        /* Tag at end of firmware image so that we can find the image size.
+         * This may be overwritten by the shared memory buffer; that's ok
+         * because we only use it to find the image size in flash. */
         . = ALIGN(4);
         BYTE(0x45);
         BYTE(0x4e);
         BYTE(0x44);
         BYTE(0xea);
-	/* NOTHING MAY GO AFTER THIS! */
+        /* NOTHING MAY GO AFTER THIS! */
     } > IRAM
 
     /* The linker won't notice if the .data section is too big to fit,
