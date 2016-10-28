@@ -22,6 +22,30 @@
       "revId": "8ab111932bc54fa2d7d5a1b38def4d36a803256a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e647168e_a154fa11",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2016-10-28T22:08:27Z",
+      "side": 1,
+      "message": "What is your suggested fix for the printf?  Are you suggesting that we remove the printf of the block offset completely?",
+      "parentUuid": "c134bcc0_8a4c0b3f",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 27
+      },
+      "revId": "8ab111932bc54fa2d7d5a1b38def4d36a803256a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
