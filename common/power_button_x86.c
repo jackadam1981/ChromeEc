@@ -364,11 +364,15 @@ static void state_machine(uint64_t tnow)
 			pwrbtn_state = PWRBTN_STATE_IDLE;
 		break;
 	case PWRBTN_STATE_WAS_OFF:
-		/* Done stretching initial power button signal, so show the
-		 * true power button state to the PCH. */
+		/*
+		 * Done stretching initial power button signal, so stop
+		 * asserting PCH_BWRBTN_L to avoid chipset shut down itself
+		 * if the physcial power button is continued to hold down.
+		 */
 		if (power_button_is_pressed()) {
-			/* User is still holding the power button */
-			pwrbtn_state = PWRBTN_STATE_HELD;
+			/* Ignore the power button hold until release */
+			set_pwrbtn_to_pch(1);
+			pwrbtn_state = PWRBTN_STATE_EAT_RELEASE;
 		} else {
 			/* Stop stretching the power button press */
 			power_button_released(tnow);
