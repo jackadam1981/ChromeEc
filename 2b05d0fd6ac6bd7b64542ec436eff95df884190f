@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e19380d8_1814d4b5",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-28T15:49:39Z",
+      "side": 1,
+      "message": "You should note in this comment it\u0027s for braswell only. If this change is going to be moved to other branches it will help. Also, what Shawn said about a CONFIG option.",
+      "revId": "2b05d0fd6ac6bd7b64542ec436eff95df884190f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
