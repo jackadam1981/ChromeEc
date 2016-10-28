@@ -22,6 +22,30 @@
       "revId": "58ceafafe76d6a5736a09e837a810e1c48ab0c9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e647168e_240e38a9",
+        "filename": "board/kevin/ec.tasklist",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-10-28T22:55:46Z",
+      "side": 1,
+      "message": "Fixed. Please check the new patch.\nIf you think it\u0027s confusing, I\u0027ll go back to define the whole testlists for gru and kevin respectively.",
+      "parentUuid": "e647168e_013cce83",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 56
+      },
+      "revId": "58ceafafe76d6a5736a09e837a810e1c48ab0c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
