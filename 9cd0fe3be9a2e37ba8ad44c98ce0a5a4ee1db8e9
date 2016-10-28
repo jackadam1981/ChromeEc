@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e647168e_fe269d2d",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-28T19:46:16Z",
+      "side": 1,
+      "message": "okay, I will remove it",
+      "parentUuid": "e647168e_ded001dd",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 385,
+        "endChar": 1
+      },
+      "revId": "9cd0fe3be9a2e37ba8ad44c98ce0a5a4ee1db8e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e647168e_fed33de6",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2016-10-28T19:33:41Z",
       "side": 1,
       "message": "fit on same line?",
+      "revId": "9cd0fe3be9a2e37ba8ad44c98ce0a5a4ee1db8e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e647168e_3e5be5a0",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-28T19:46:16Z",
+      "side": 1,
+      "message": "okay I will change it",
+      "parentUuid": "e647168e_fed33de6",
       "revId": "9cd0fe3be9a2e37ba8ad44c98ce0a5a4ee1db8e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

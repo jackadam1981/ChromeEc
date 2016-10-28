@@ -22,6 +22,30 @@
       "revId": "ea1a8699e96425806abdd532d04da254ae093f6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e647168e_defac14f",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-28T19:46:16Z",
+      "side": 0,
+      "message": "okay, I will change it to\n#ifdef CONFIG_BD9995X_POWER_SAVE_MODE\nbd9995x_set_power_save_mode(CONFIG_BD9995X_POWER_SAVE_MODE);\n#else\nbd9995x_set_power_save_mode(BD9995X_PWR_SAVE_OFF);\n#endif",
+      "parentUuid": "e647168e_5ee511c4",
+      "range": {
+        "startLine": 709,
+        "startChar": 0,
+        "endLine": 714,
+        "endChar": 35
+      },
+      "revId": "ea1a8699e96425806abdd532d04da254ae093f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
