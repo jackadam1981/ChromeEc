@@ -93,10 +93,4 @@ void dcrypto_imem_load(size_t offset, const uint32_t *opcodes,
 		       size_t n_opcodes);
 void dcrypto_dmem_load(size_t offset, const void *words, size_t n_words);
 
-/*
- * Utility functions.
- */
-/* TODO(ngm): memset that doesn't get optimized out. */
-#define dcrypto_memset(p, b, len)  memset((p), (b), (len))
-
 #endif  /* ! __EC_CHIP_G_DCRYPTO_INTERNAL_H */

@@ -6,6 +6,7 @@
 #include "dcrypto.h"
 
 #include "cryptoc/p256.h"
+#include "cryptoc/util.h"
 
 static const p256_int p256_one = P256_ONE;
 
@@ -23,6 +24,6 @@ int DCRYPTO_p256_key_from_bytes(p256_int *x, p256_int *y, p256_int *d,
 		return 0;
 	p256_add(&key, &p256_one, d);
 	p256_base_point_mul(d, x, y);
-	dcrypto_memset(&key, 0, sizeof(key));
+	always_memset(&key, 0, sizeof(key));
 	return 1;
 }
