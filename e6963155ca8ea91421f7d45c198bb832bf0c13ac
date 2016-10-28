@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c134bcc0_d04b149b",
+        "filename": "board/kevin/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-28T15:00:16Z",
+      "side": 1,
+      "message": "that\u0027s wrong :(\nshould be board_vbus_update_source_current(port);",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 32
+      },
+      "revId": "e6963155ca8ea91421f7d45c198bb832bf0c13ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
