@@ -129,7 +129,7 @@ class Supdate(object):
     return True
 
 
-  def wr_command(self, write_list, read_count=1, wtimeout=100, rtimeout=1000):
+  def wr_command(self, write_list, read_count=1, wtimeout=100, rtimeout=2000):
     """Write command to logger logic..
 
     This function writes byte command values list to stm, then reads
@@ -402,6 +402,7 @@ def main():
   if (args.list):
     return
 
+  time.sleep(1)
   # Start transfer and erase.
   p.start()
   # Upload the bin file
