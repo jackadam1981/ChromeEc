@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "console.h"
 #include "dcrypto.h"
 #include "internal.h"
 
@@ -13,6 +14,8 @@
 
 #include "cryptoc/sha.h"
 #include "cryptoc/sha256.h"
+
+#define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ## args)
 
 static void MGF1_xor(uint8_t *dst, uint32_t dst_len,
 		const uint8_t *seed, uint32_t seed_len,
@@ -635,7 +638,7 @@ int DCRYPTO_rsa_key_compute(struct LITE_BIGNUM *N, struct LITE_BIGNUM *d,
 {
 	uint32_t ONE_buf = 1;
 	uint32_t phi_buf[RSA_MAX_WORDS];
-	uint32_t q_buf[RSA_MAX_WORDS / 2];
+	uint32_t q_buf[RSA_MAX_WORDS / 2 + 1];
 
 	struct LITE_BIGNUM ONE;
 	struct LITE_BIGNUM e;
@@ -648,17 +651,20 @@ int DCRYPTO_rsa_key_compute(struct LITE_BIGNUM *N, struct LITE_BIGNUM *d,
 		/* q not provided, calculate it. */
 		memcpy(phi_buf, N->d, bn_size(N));
 		bn_init(&q_local, q_buf, bn_size(p));
-		bn_sub(&phi, &ONE);
-		if (!bn_modinv_vartime(&q_local, p, &phi))
-			return 0;
-		/* Check that p * q == N */
-		DCRYPTO_bn_mul(&phi, p, &q_local);
-		if (!bn_eq(N, &phi))
-			return 0;
 		q = &q_local;
+
+		if (!DCRYPTO_bn_div(q, NULL, &phi, p)) {
+			return 0;
+		}
+
+		/* Check that p * q == N */
+		DCRYPTO_bn_mul(&phi, p, q);
+		if (!bn_eq(N, &phi)) {
+			return 0;
+		}
 	} else {
-		DCRYPTO_bn_mul(N, p, q);
-		memcpy(phi_buf, N->d, bn_size(N));
+               DCRYPTO_bn_mul(N, p, q);
+               memcpy(phi_buf, N->d, bn_size(N));
 	}
 
 	bn_sub(&phi, p);
