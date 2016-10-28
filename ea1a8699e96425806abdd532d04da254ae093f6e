@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e647168e_5ee511c4",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-10-28T19:36:24Z",
+      "side": 0,
+      "message": "This was intentionally done as we want to make sure that the power save mode register is reset if the board decides not to define that config option.",
+      "range": {
+        "startLine": 709,
+        "startChar": 0,
+        "endLine": 714,
+        "endChar": 35
+      },
+      "revId": "ea1a8699e96425806abdd532d04da254ae093f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
