@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e647168e_3e42c5ac",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-28T19:54:29Z",
+      "side": 1,
+      "message": "When ANX3429 is out of reset, it is in normal mode, so any activity on CABLE DET can be ignored because 1) if there is PD message, it will be notify via its INT# pin 2) CABLE DET signal follows activity on CC line, so all the toggle during normal mode are false. 3) SRC/SNK_DISCONNECTED are detect/handled by PD_TASK itself; CABLE DET is only useful when it is in low power mode.",
+      "parentUuid": "e647168e_fb97cf2a",
+      "revId": "8d1ec04147b9f61bb873f35fe292ca7ae3f7d60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e647168e_3e6da579",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2016-10-28T19:12:04Z",
       "side": 1,
       "message": "fit on same line?",
+      "revId": "8d1ec04147b9f61bb873f35fe292ca7ae3f7d60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e647168e_5ecb5106",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-28T19:54:29Z",
+      "side": 1,
+      "message": "Yes it should fit.",
+      "parentUuid": "e647168e_3e6da579",
       "revId": "8d1ec04147b9f61bb873f35fe292ca7ae3f7d60c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
