@@ -16,6 +16,24 @@
       "revId": "2b05d0fd6ac6bd7b64542ec436eff95df884190f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e647168e_6427a0e6",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-28T23:31:57Z",
+      "side": 1,
+      "message": "From our discussion, this is applicable to all x86 chipset. I have updated the commit message and also indicated that all power on path from off state are now having the same behavior in terms of the the power button signal sequence/timing.",
+      "parentUuid": "e19380d8_1814d4b5",
+      "revId": "2b05d0fd6ac6bd7b64542ec436eff95df884190f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
