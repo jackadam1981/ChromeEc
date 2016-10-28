@@ -70,6 +70,30 @@
       "revId": "fa5afa458859f542c13840fd04d01696f4fa0231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81ce44ee_12cae958",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-28T00:34:46Z",
+      "side": 0,
+      "message": "The original purpose was to ensure a minimum pulse width (see https://chromium-review.googlesource.com/#/c/22307/). See the comments around \u0027PWRBTN_INITIAL_US\u0027 and \u0027case PWRBTN_STATE_START:\u0027.",
+      "parentUuid": "061c2a60_74966898",
+      "range": {
+        "startLine": 295,
+        "startChar": 18,
+        "endLine": 295,
+        "endChar": 38
+      },
+      "revId": "fa5afa458859f542c13840fd04d01696f4fa0231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
