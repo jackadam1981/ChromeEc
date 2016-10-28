@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e647168e_4141b67e",
+        "filename": "board/pyro/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-28T21:51:36Z",
+      "side": 1,
+      "message": "Please check the return status of these calls, we don\u0027t want to write uninitialized data to these regs.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 8
+      },
+      "revId": "812b1d295eb7bef09fd9bc4af53401ae367ed567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
