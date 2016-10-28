@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e647168e_fb97cf2a",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-28T19:12:04Z",
+      "side": 1,
+      "message": "Why do we check for the PD being out of reset and returning? If it\u0027s out of reset there\u0027s nothing to do?",
+      "revId": "8d1ec04147b9f61bb873f35fe292ca7ae3f7d60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e647168e_3e6da579",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-10-28T19:12:04Z",
+      "side": 1,
+      "message": "fit on same line?",
+      "revId": "8d1ec04147b9f61bb873f35fe292ca7ae3f7d60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
