@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e647168e_9bd68bd8",
+        "filename": "board/snappy/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-28T18:32:27Z",
+      "side": 0,
+      "message": "We can remove CONFIG_PWM and delete these PWM-related enums / structs.",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 16
+      },
+      "revId": "a5393caeb591dce6ad14fe3580ce182f644a51eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
