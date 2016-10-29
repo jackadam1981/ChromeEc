@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e647168e_efd3895d",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-29T18:44:49Z",
+      "side": 1,
+      "message": "Can these two states just be combined now?  It seems like they do the same thing.  This should be done before implementing this in ToT.",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 27
+      },
+      "revId": "a1a5b8147a677b0eea9f3a6224a37606fd9da70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e647168e_2fbe110b",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-29T18:44:49Z",
+      "side": 1,
+      "message": "PCH_PWRBTN_L?",
+      "range": {
+        "startLine": 369,
+        "startChar": 15,
+        "endLine": 369,
+        "endChar": 27
+      },
+      "revId": "a1a5b8147a677b0eea9f3a6224a37606fd9da70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e647168e_6fc819b2",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-29T18:44:49Z",
+      "side": 1,
+      "message": "if the physical power button continues to be held down for an extended period?",
+      "range": {
+        "startLine": 369,
+        "startChar": 55,
+        "endLine": 370,
+        "endChar": 59
+      },
+      "revId": "a1a5b8147a677b0eea9f3a6224a37606fd9da70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
