@@ -11,26 +11,34 @@
 #ifdef CONFIG_FPU
 static inline float sqrtf(float v)
 {
+#if 1
 	float root;
 
 	asm volatile(
-		"fsqrt %0, %1"
-		: "=w" (root)
-		: "w" (v)
+		"fsqrt"
+		: "=t" (root)
+		: "0" (v)
 	);
 	return root;
+#else
+	return 1;
+#endif
 }
 
 static inline float fabsf(float v)
 {
+#if 1
 	float root;
 
 	asm volatile(
-		"fabs %0, %1"
-		: "=w" (root)
-		: "w" (v)
+		"fabs"
+		: "=t" (root)
+		: "0" (v)
 	);
 	return root;
+#else
+	return 1;
+#endif
 }
 #endif  /* CONFIG_FPU */
 
