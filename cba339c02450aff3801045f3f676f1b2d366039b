@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e647168e_cfcccdc7",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2193,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-29T18:36:41Z",
+      "side": 1,
+      "message": "Just delete these lines. As you can see, it is possible to use MKBP / 8042 without a keyscan task.",
+      "range": {
+        "startLine": 2186,
+        "startChar": 0,
+        "endLine": 2193,
+        "endChar": 6
+      },
+      "revId": "cba339c02450aff3801045f3f676f1b2d366039b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
