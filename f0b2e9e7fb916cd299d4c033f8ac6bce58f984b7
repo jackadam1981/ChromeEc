@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e647168e_2f2291bf",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-29T17:32:53Z",
+      "side": 1,
+      "message": "Comment and constants disagree.",
+      "range": {
+        "startLine": 77,
+        "startChar": 50,
+        "endLine": 77,
+        "endChar": 64
+      },
+      "revId": "f0b2e9e7fb916cd299d4c033f8ac6bce58f984b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "061c2a60_148614ae",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 1
@@ -13,6 +36,47 @@
       "writtenOn": "2016-10-27T18:20:32Z",
       "side": 1,
       "message": "I\u0027m not sure we want this either-OR -- but an addition. Need to see what the teams internally think.",
+      "revId": "f0b2e9e7fb916cd299d4c033f8ac6bce58f984b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e647168e_ef3709f6",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-29T17:32:53Z",
+      "side": 1,
+      "message": "The boot key handling only currently supports a single key being held down.  So it\u0027d be either-OR.",
+      "parentUuid": "061c2a60_148614ae",
+      "revId": "f0b2e9e7fb916cd299d4c033f8ac6bce58f984b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e647168e_0f3b55e6",
+        "filename": "common/switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-29T17:32:53Z",
+      "side": 1,
+      "message": "What if the user holds Refresh+Alt and taps the power button?  This code will never be executed.",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 33
+      },
       "revId": "f0b2e9e7fb916cd299d4c033f8ac6bce58f984b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -59,6 +123,30 @@
     },
     {
       "key": {
+        "uuid": "e647168e_4f443d68",
+        "filename": "common/switch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-29T17:32:53Z",
+      "side": 1,
+      "message": "It\u0027s not.  It\u0027ll persist until the EC is rebooted again.",
+      "parentUuid": "061c2a60_94d6a4a6",
+      "range": {
+        "startLine": 45,
+        "startChar": 23,
+        "endLine": 45,
+        "endChar": 53
+      },
+      "revId": "f0b2e9e7fb916cd299d4c033f8ac6bce58f984b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "061c2a60_d4dc1ccc",
         "filename": "include/keyboard_scan.h",
         "patchSetId": 1
@@ -70,6 +158,24 @@
       "writtenOn": "2016-10-27T18:18:29Z",
       "side": 1,
       "message": "You should add MEM or MEMORY to this so it\u0027s clear.",
+      "revId": "f0b2e9e7fb916cd299d4c033f8ac6bce58f984b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e647168e_8f2765ce",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-10-29T17:32:53Z",
+      "side": 1,
+      "message": "Actually, this should be BOOT_KEY_LEFT_ALT.  This enum describes the physical key held down, not the function that key provides.  So it\u0027s BOOT_KEY_ESC, not BOOT_KEY_RECOVERY, and BOOT_KEY_DOWN_ARROW, not BOOT_KEY_AP_OFF.",
+      "parentUuid": "061c2a60_d4dc1ccc",
       "revId": "f0b2e9e7fb916cd299d4c033f8ac6bce58f984b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
