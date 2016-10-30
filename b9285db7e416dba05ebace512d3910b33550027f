@@ -22,6 +22,30 @@
       "revId": "b9285db7e416dba05ebace512d3910b33550027f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c69bf27a_f2550864",
+        "filename": "board/pyro/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1103689
+      },
+      "writtenOn": "2016-10-30T22:52:46Z",
+      "side": 1,
+      "message": "thanks, fixed it.",
+      "parentUuid": "e647168e_8fd2c516",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 12
+      },
+      "revId": "b9285db7e416dba05ebace512d3910b33550027f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
