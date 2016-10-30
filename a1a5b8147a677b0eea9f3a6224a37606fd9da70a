@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e647168e_ef21c965",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-30T07:06:23Z",
+      "side": 1,
+      "message": "Agree, I will do some clean up when port to TOT.",
+      "parentUuid": "e647168e_efd3895d",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 27
+      },
+      "revId": "a1a5b8147a677b0eea9f3a6224a37606fd9da70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e647168e_2fbe110b",
         "filename": "common/power_button_x86.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e647168e_cf1a0d2f",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-30T07:06:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e647168e_2fbe110b",
+      "range": {
+        "startLine": 369,
+        "startChar": 15,
+        "endLine": 369,
+        "endChar": 27
+      },
+      "revId": "a1a5b8147a677b0eea9f3a6224a37606fd9da70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e647168e_6fc819b2",
         "filename": "common/power_button_x86.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2016-10-29T18:44:49Z",
       "side": 1,
       "message": "if the physical power button continues to be held down for an extended period?",
+      "range": {
+        "startLine": 369,
+        "startChar": 55,
+        "endLine": 370,
+        "endChar": 59
+      },
+      "revId": "a1a5b8147a677b0eea9f3a6224a37606fd9da70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e647168e_0f251572",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-10-30T07:06:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e647168e_6fc819b2",
       "range": {
         "startLine": 369,
         "startChar": 55,
