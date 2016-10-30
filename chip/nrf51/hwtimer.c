@@ -96,6 +96,11 @@ uint32_t __hw_clock_source_read(void)
 	return NRF51_TIMER_CC(HWTIMER, CC_CURRENT) + shift;
 }
 
+uint32_t __hw_clock_source_ticks_read(void)
+{
+	return __hw_clock_source_read();
+}
+
 void __hw_clock_source_set(uint32_t ts)
 {
 	shift = ts;

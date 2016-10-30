@@ -222,6 +222,11 @@ uint32_t __hw_clock_source_read(void)
 	return TICK_ITIM32_MAX_CNT - cnt;
 }
 
+uint32_t __hw_clock_source_ticks_read(void)
+{
+	return __hw_clock_source_read();
+}
+
 /* Override the current value of the hardware counter */
 void __hw_clock_source_set(uint32_t ts)
 {

@@ -61,6 +61,9 @@
 
 #define PCLK_FREQ  (24 * 1000 * 1000)
 
+/* The clock frequency for the free-running timer */
+#define TIMER_CLOCK_FREQ 256000
+
 /* Number of IRQ vectors on the NVIC */
 #define CONFIG_IRQ_COUNT (GC_INTERRUPTS_COUNT - 15)
 

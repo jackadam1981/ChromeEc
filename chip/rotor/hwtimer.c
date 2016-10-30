@@ -89,6 +89,11 @@ uint32_t __hw_clock_source_read(void)
 #endif /* defined(BOARD_REI) */
 }
 
+uint32_t __hw_clock_source_ticks_read(void)
+{
+	return 0xFFFFFFFF - ROTOR_MCU_TMR_TNCV(0);
+}
+
 void __hw_clock_source_set(uint32_t ts)
 {
 	/* Convert microseconds to ticks. */

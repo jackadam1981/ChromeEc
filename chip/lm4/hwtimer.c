@@ -37,6 +37,11 @@ uint32_t __hw_clock_source_read(void)
 	return 0xffffffff - LM4_TIMER_TAV(6);
 }
 
+uint32_t __hw_clock_source_ticks_read(void)
+{
+	return __hw_clock_source_read();
+}
+
 void __hw_clock_source_set(uint32_t ts)
 {
 	LM4_TIMER_TAV(6) = 0xffffffff - ts;

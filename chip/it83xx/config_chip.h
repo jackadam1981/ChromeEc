@@ -19,6 +19,9 @@
 /* Default PLL frequency. */
 #define PLL_CLOCK 48000000
 
+/* The clock frequency for the free-running timer */
+#define TIMER_CLOCK_FREQ 1000000
+
 /* Number of I2C ports */
 #define I2C_PORT_COUNT 6
 

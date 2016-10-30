@@ -92,6 +92,9 @@
 #define HOOK_TICK_INTERVAL_MS 500
 #define HOOK_TICK_INTERVAL    (HOOK_TICK_INTERVAL_MS * MSEC)
 
+/* The clock frequency for the free-running timer */
+#define TIMER_CLOCK_FREQ 1000000
+
 /*
  * Use a timer to print a watchdog warning event before the actual watchdog
  * timer fires.  This is needed on STM32, where the independent watchdog has no

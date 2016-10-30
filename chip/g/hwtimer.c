@@ -90,6 +90,11 @@ uint32_t __hw_clock_source_read(void)
 	return ticks_to_usecs(TIMELS_MAX - GREG32(TIMELS, SOURCE(VALUE)));
 }
 
+uint32_t __hw_clock_source_ticks_read(void)
+{
+	return TIMELS_MAX - GREG32(TIMELS, SOURCE(VALUE));
+}
+
 void __hw_clock_source_set(uint32_t ts)
 {
 	GREG32(TIMELS, SOURCE(LOAD)) = (0xffffffff - ts) / USEC_PER_TICK;

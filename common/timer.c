@@ -93,10 +93,22 @@ void process_timers(int overflow)
 	} while (next.val <= get_time().val);
 }
 
+uint32_t usec_to_tick(uint32_t us)
+{
+#if TIMER_CLOCK_FREQ == 24000000
+return us * 24;
+#elif TIMER_CLOCK_FREQ == 256000
+return us >> 2;
+#else
+return us;
+#endif
+}
+
 #ifndef CONFIG_HW_SPECIFIC_UDELAY
 void udelay(unsigned us)
 {
-	unsigned t0 = __hw_clock_source_read();
+	unsigned ticks = usec_to_tick(us);
+	unsigned t0 = __hw_clock_source_ticks_read();
 
 	/*
 	 * udelay() may be called with interrupts disabled, so we can't rely on
@@ -108,7 +120,7 @@ void udelay(unsigned us)
 	 * subtraction below can overflow.  That's acceptable, because the
 	 * watchdog timer would have tripped long before that anyway.
 	 */
-	while (__hw_clock_source_read() - t0 <= us)
+	while (__hw_clock_source_ticks_read() - t0 <= ticks)
 		;
 }
 #endif

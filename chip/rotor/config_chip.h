@@ -13,6 +13,9 @@
 #define HOOK_TICK_INTERVAL_MS	250
 #define HOOK_TICK_INTERVAL	(HOOK_TICK_INTERVAL_MS * MSEC)
 
+/* The clock frequency for the free-running timer */
+#define TIMER_CLOCK_FREQ 24000000
+
 /****************************************************************************/
 /* Memory mapping */
 

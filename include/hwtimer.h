@@ -20,8 +20,11 @@ uint32_t __hw_clock_event_get(void);
 /* Cancel the next event programed by __hw_clock_event_set */
 void __hw_clock_event_clear(void);
 
-/* Returns the value of the free-running counter used as clock. */
+/* Returns the value of the free-running counter in micro-second. */
 uint32_t __hw_clock_source_read(void);
+
+/* Returns the value of the free-running counter used as clock. */
+uint32_t __hw_clock_source_ticks_read(void);
 
 /* Override the current value of the hardware counter */
 void __hw_clock_source_set(uint32_t ts);
