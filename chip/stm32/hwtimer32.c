@@ -43,6 +43,11 @@ uint32_t __hw_clock_source_read(void)
 	return STM32_TIM32_CNT(TIM_CLOCK32);
 }
 
+uint32_t __hw_clock_source_ticks_read(void)
+{
+	return __hw_clock_source_read();
+}
+
 void __hw_clock_source_set(uint32_t ts)
 {
 	STM32_TIM32_CNT(TIM_CLOCK32) = ts;

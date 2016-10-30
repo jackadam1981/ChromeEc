@@ -206,6 +206,11 @@ uint32_t __hw_clock_source_read(void)
 	return (hi << 16) | lo;
 }
 
+uint32_t __hw_clock_source_ticks_read(void)
+{
+	return __hw_clock_source_read();
+}
+
 void __hw_clock_source_set(uint32_t ts)
 {
 	STM32_TIM_CNT(TIM_CLOCK_MSB) = ts >> 16;

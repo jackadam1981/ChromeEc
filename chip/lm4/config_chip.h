@@ -12,6 +12,9 @@
 /* 16.000 Mhz internal oscillator frequency (PIOSC) */
 #define INTERNAL_CLOCK 16000000
 
+/* The clock frequency for the free-running timer */
+#define TIMER_CLOCK_FREQ 1000000
+
 /* Number of IRQ vectors on the NVIC */
 #define CONFIG_IRQ_COUNT 132
 

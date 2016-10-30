@@ -12,6 +12,9 @@
 /* 32k hz internal oscillator frequency (FRCLK) */
 #define INT_32K_CLOCK 32768
 
+/* The clock frequency for the free-running timer */
+#define TIMER_CLOCK_FREQ 1000000
+
 /* Number of IRQ vectors on the NVIC */
 #define CONFIG_IRQ_COUNT 64
 

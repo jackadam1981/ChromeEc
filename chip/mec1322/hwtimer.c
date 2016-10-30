@@ -35,6 +35,11 @@ uint32_t __hw_clock_source_read(void)
 	return 0xffffffff - MEC1322_TMR32_CNT(0);
 }
 
+uint32_t __hw_clock_source_ticks_read(void)
+{
+	return __hw_clock_source_read();
+}
+
 void __hw_clock_source_set(uint32_t ts)
 {
 	MEC1322_TMR32_CTL(0) &= ~(1 << 5);

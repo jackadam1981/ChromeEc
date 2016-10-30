@@ -110,6 +110,11 @@ uint32_t __ram_code __hw_clock_source_read(void)
 #endif
 }
 
+uint32_t __hw_clock_source_ticks_read(void)
+{
+	return __hw_clock_source_read();
+}
+
 void __hw_clock_source_set(uint32_t ts)
 {
 	/* counting down timer, microseconds to timer counter register */

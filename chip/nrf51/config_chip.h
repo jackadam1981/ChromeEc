@@ -24,6 +24,9 @@
 #define HOOK_TICK_INTERVAL_MS 500
 #define HOOK_TICK_INTERVAL    (HOOK_TICK_INTERVAL_MS * MSEC)
 
+/* The clock frequency for the free-running timer */
+#define TIMER_CLOCK_FREQ 1000000
+
 /* Number of I2C ports */
 #define I2C_PORT_COUNT 2
 

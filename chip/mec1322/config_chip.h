@@ -20,6 +20,9 @@
 #define HOOK_TICK_INTERVAL_MS	250
 #define HOOK_TICK_INTERVAL	(HOOK_TICK_INTERVAL_MS * MSEC)
 
+/* The clock frequency for the free-running timer */
+#define TIMER_CLOCK_FREQ 1000000
+
 /*
  * Number of I2C controllers. Controller 0 has 2 ports, so the chip has one
  * additional port.
