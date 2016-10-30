@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e647168e_8fd2c516",
+        "filename": "board/pyro/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-10-30T16:53:35Z",
+      "side": 1,
+      "message": "This is backward. sb_read will return EC_RES_SUCCESS (zero) on success.",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 12
+      },
+      "revId": "b9285db7e416dba05ebace512d3910b33550027f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
