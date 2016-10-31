@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e647168e_44f53f64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-31T20:33:47Z",
+      "side": 1,
+      "message": "okay I will update the commit message to at 20V.",
+      "parentUuid": "86ac9a9c_382da9c8",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 56
+      },
+      "revId": "a28b378f082b110ceed4b16048f9c81cadcb0074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86ac9a9c_58225dd7",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e647168e_30494e80",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-31T20:33:47Z",
+      "side": 1,
+      "message": "yes, we negotiate voltage before setting current so will plan to change to readjust the ILIM from pd_send_request_msg().",
+      "parentUuid": "86ac9a9c_58225dd7",
+      "range": {
+        "startLine": 598,
+        "startChar": 0,
+        "endLine": 599,
+        "endChar": 55
+      },
+      "revId": "a28b378f082b110ceed4b16048f9c81cadcb0074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e647168e_0f6d15e3",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2016-10-29T18:16:54Z",
       "side": 1,
       "message": "We should keep logic about charge suppliers out of this file. Let\u0027s take as step back:\n\n- Charge manager takes inputs and selects port / voltage / current params, then calls board_set_charge_limit() when a meaningful change happens.\n- It turns out that battery suddenly appearing or disappearing is a meaningful change.\n- We should have one function (probably at board level) that takes port / voltage / current / battery presence as params and then outputs what our actual input current should be.\n- We can call into this function from both board_set_charge_limit() and get_desired_input_current().",
+      "range": {
+        "startLine": 595,
+        "startChar": 54,
+        "endLine": 602,
+        "endChar": 3
+      },
+      "revId": "a28b378f082b110ceed4b16048f9c81cadcb0074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e647168e_b0c9deb5",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-10-31T20:33:47Z",
+      "side": 1,
+      "message": "this sounds good. To make it generic I will plan to change the ILIM from pd_send_request_msg() if exceed max power.",
+      "parentUuid": "e647168e_0f6d15e3",
       "range": {
         "startLine": 595,
         "startChar": 54,
