@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e647168e_e4d9eb0b",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-10-31T20:27:55Z",
+      "side": 1,
+      "message": "This breaks the usb_i2c driver on cr50",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 55
+      },
+      "revId": "79f08ecab720bda941d07f86e8fcc913805d2970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
