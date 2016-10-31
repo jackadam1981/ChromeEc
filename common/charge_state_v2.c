@@ -571,11 +571,34 @@ void charger_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, charger_init, HOOK_PRIO_DEFAULT);
 
-static int get_desired_input_current(enum battery_present batt_present,
-				     const struct charger_info * const info)
+#ifdef CONFIG_USB_POWER_DELIVERY
+#if ((PD_MAX_POWER_MW * 1000) / PD_MAX_VOLTAGE_MV != PD_MAX_CURRENT_MA)
+void charger_state_limit_input_max_power(int supply_voltage)
+{
+	int rv;
+
+	/*
+	 * If the system input power is greater than the
+	 * maximum allowed power, adjust the input current.
+	 */
+	if (curr.desired_input_current != PD_MAX_CURRENT_MA ||
+	    supply_voltage * PD_MAX_CURRENT_MA <= PD_MAX_POWER_MW * 1000)
+		return;
+
+	curr.desired_input_current =
+		(PD_MAX_POWER_MW * 1000) / supply_voltage;
+
+	rv = charger_set_input_current(curr.desired_input_current);
+	if (rv != EC_SUCCESS)
+		problem(PR_SET_INPUT_CURR, rv);
+}
+#endif
+#endif /* CONFIG_USB_POWER_DELIVERY */
+
+static int get_desired_input_current(enum battery_present batt_present)
 {
 	if (batt_present == BP_YES || system_is_locked()) {
-#ifdef CONFIG_CHARGE_MANAGER
+#ifdef CONFIG_USB_POWER_DELIVERY
 		int ilim = charge_manager_get_charger_current();
 		return ilim == CHARGE_CURRENT_UNINITIALIZED ?
 			CHARGE_CURRENT_UNINITIALIZED :
@@ -585,9 +608,9 @@ static int get_desired_input_current(enum battery_present batt_present,
 #endif
 	} else {
 #ifdef CONFIG_USB_POWER_DELIVERY
-		return MIN(PD_MAX_CURRENT_MA, info->input_current_max);
+		return PD_MAX_CURRENT_MA;
 #else
-		return info->input_current_max;
+		return charger_get_info()->input_current_max;
 #endif
 	}
 }
@@ -614,7 +637,7 @@ void charger_task(void)
 	 */
 	battery_get_params(&curr.batt);
 	prev_bp = curr.batt.is_present;
-	curr.desired_input_current = get_desired_input_current(prev_bp, info);
+	curr.desired_input_current = get_desired_input_current(prev_bp);
 
 	while (1) {
 
@@ -669,7 +692,7 @@ void charger_task(void)
 			need_static = 1;
 
 			curr.desired_input_current =
-				get_desired_input_current(prev_bp, info);
+				get_desired_input_current(prev_bp);
 			if (curr.desired_input_current !=
 			    CHARGE_CURRENT_UNINITIALIZED)
 				charger_set_input_current(
