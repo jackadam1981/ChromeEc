@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "86ac9a9c_382da9c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-31T08:28:51Z",
+      "side": 1,
+      "message": "you mean with Zinger *at 20V* else this is really wrong\n(you wont get the 15W initially at 5V)",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 56
+      },
+      "revId": "a28b378f082b110ceed4b16048f9c81cadcb0074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86ac9a9c_58225dd7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-10-31T08:28:51Z",
+      "side": 1,
+      "message": "then you limit the current from Zinger at 2.25A when you are at 5V ?\nNack",
+      "range": {
+        "startLine": 598,
+        "startChar": 0,
+        "endLine": 599,
+        "endChar": 55
+      },
+      "revId": "a28b378f082b110ceed4b16048f9c81cadcb0074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e647168e_0f6d15e3",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 4
