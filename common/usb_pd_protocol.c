@@ -646,6 +646,12 @@ static int pd_send_request_msg(int port, int always_send_request)
 		 */
 		return -1;
 
+#if ((PD_MAX_POWER_MW * 1000) / PD_MAX_VOLTAGE_MV != PD_MAX_CURRENT_MA)
+	res = charger_state_limit_input_max_power(supply_voltage, curr_limit);
+	if (res != EC_SUCCESS)
+		return -1;
+#endif
+
 	/* Don't re-request the same voltage */
 	if (!always_send_request && pd[port].prev_request_mv == supply_voltage)
 		return EC_SUCCESS;

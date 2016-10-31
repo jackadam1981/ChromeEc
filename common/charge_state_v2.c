@@ -571,11 +571,37 @@ void charger_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, charger_init, HOOK_PRIO_DEFAULT);
 
-static int get_desired_input_current(enum battery_present batt_present,
-				     const struct charger_info * const info)
+#ifdef CONFIG_USB_POWER_DELIVERY
+#if ((PD_MAX_POWER_MW * 1000) / PD_MAX_VOLTAGE_MV != PD_MAX_CURRENT_MA)
+int charger_state_limit_input_max_power(int supply_voltage, int curr_limit)
+{
+	int rv;
+
+	/*
+	 * If the system input power is greater than the
+	 * maximum allowed power, adjust the input current.
+	 */
+	if (curr.desired_input_current != PD_MAX_CURRENT_MA ||
+	    supply_voltage != PD_MAX_VOLTAGE_MV ||
+	    curr_limit != (PD_MAX_POWER_MW * 1000) / PD_MAX_VOLTAGE_MV)
+		return EC_SUCCESS;
+
+	curr.desired_input_current =
+		(PD_MAX_POWER_MW * 1000) / PD_MAX_VOLTAGE_MV;
+
+	rv = charger_set_input_current(curr.desired_input_current);
+	if (rv != EC_SUCCESS)
+		problem(PR_SET_INPUT_CURR, rv);
+
+	return rv;
+}
+#endif
+#endif
+
+static int get_desired_input_current(enum battery_present batt_present)
 {
 	if (batt_present == BP_YES || system_is_locked()) {
-#ifdef CONFIG_CHARGE_MANAGER
+#ifdef CONFIG_USB_POWER_DELIVERY
 		int ilim = charge_manager_get_charger_current();
 		return ilim == CHARGE_CURRENT_UNINITIALIZED ?
 			CHARGE_CURRENT_UNINITIALIZED :
@@ -585,9 +611,9 @@ static int get_desired_input_current(enum battery_present batt_present,
 #endif
 	} else {
 #ifdef CONFIG_USB_POWER_DELIVERY
-		return MIN(PD_MAX_CURRENT_MA, info->input_current_max);
+		return PD_MAX_CURRENT_MA;
 #else
-		return info->input_current_max;
+		return charger_get_info()->input_current_max;
 #endif
 	}
 }
@@ -597,7 +623,6 @@ void charger_task(void)
 {
 	int sleep_usec;
 	int need_static = 1;
-	const struct charger_info * const info = charger_get_info();
 
 	/* Get the battery-specific values */
 	batt_info = battery_get_info();
@@ -614,7 +639,7 @@ void charger_task(void)
 	 */
 	battery_get_params(&curr.batt);
 	prev_bp = curr.batt.is_present;
-	curr.desired_input_current = get_desired_input_current(prev_bp, info);
+	curr.desired_input_current = get_desired_input_current(prev_bp);
 
 	while (1) {
 
@@ -669,7 +694,7 @@ void charger_task(void)
 			need_static = 1;
 
 			curr.desired_input_current =
-				get_desired_input_current(prev_bp, info);
+				get_desired_input_current(prev_bp);
 			if (curr.desired_input_current !=
 			    CHARGE_CURRENT_UNINITIALIZED)
 				charger_set_input_current(
@@ -900,7 +925,8 @@ wait_for_it:
 		} else {
 			charge_request(
 				charger_closest_voltage(
-				  curr.batt.voltage + info->voltage_step), -1);
+				  curr.batt.voltage +
+				  charger_get_info()->voltage_step), -1);
 		}
 
 		/* How long to sleep? */

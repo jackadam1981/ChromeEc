@@ -83,5 +83,15 @@ int charge_set_input_current_limit(int ma);
  *
  */
 int virtual_battery_read(uint8_t batt_param, uint8_t *dest, int read_len);
+
+/**
+ * Limit the system input power to maximum allowed power.
+ *
+ * @param supply_voltage Supply voltage.
+ * @param curr_limit	 Current limit.
+ *
+ * @return EC_SUCCESS if successful, non-zero if error.
+ */
+int charger_state_limit_input_max_power(int supply_voltage, int curr_limit);
 #endif /* __CROS_EC_CHARGE_STATE_V2_H */
 

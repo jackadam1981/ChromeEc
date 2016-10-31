@@ -884,6 +884,7 @@ int charge_manager_get_active_charge_port(void)
 	return charge_port;
 }
 
+#ifdef CONFIG_USB_POWER_DELIVERY
 /**
  * Return the charger current (mA) value.
  */
@@ -891,7 +892,9 @@ int charge_manager_get_charger_current(void)
 {
 	return charge_current;
 }
+#endif /* CONFIG_USB_POWER_DELIVERY */
 
+#ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT
 /**
  * Return the power limit (uW) set by charge manager.
  */
@@ -906,6 +909,7 @@ int charge_manager_get_power_limit_uw(void)
 	else
 		return current_ma * voltage_mv;
 }
+#endif /* CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT */
 
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
 void charge_manager_source_port(int port, int enable)
