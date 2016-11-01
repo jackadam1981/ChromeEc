@@ -1018,18 +1018,11 @@ int virtual_battery_read(uint8_t batt_param, uint8_t *dest, int read_len)
 	case SB_CURRENT:
 		memcpy(dest, &curr.batt.current, read_len);
 		break;
-	case SB_FULL_CHARGE_CAPACITY:
-		memcpy(dest, &curr.batt.full_capacity, read_len);
-		break;
 	case SB_BATTERY_STATUS:
 		memcpy(dest, &curr.batt.status, read_len);
 		break;
 	case SB_CYCLE_COUNT:
 		memcpy(dest, (int *)host_get_memmap(EC_MEMMAP_BATT_CCNT),
-		       read_len);
-		break;
-	case SB_DESIGN_CAPACITY:
-		memcpy(dest, (int *)host_get_memmap(EC_MEMMAP_BATT_DCAP),
 		       read_len);
 		break;
 	case SB_DESIGN_VOLTAGE:
