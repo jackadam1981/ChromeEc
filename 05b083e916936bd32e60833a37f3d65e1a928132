@@ -22,6 +22,30 @@
       "revId": "05b083e916936bd32e60833a37f3d65e1a928132",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6e77223_61188036",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-01T20:06:37Z",
+      "side": 1,
+      "message": "does gru use i2c?",
+      "parentUuid": "c6e77223_01277481",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "05b083e916936bd32e60833a37f3d65e1a928132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
