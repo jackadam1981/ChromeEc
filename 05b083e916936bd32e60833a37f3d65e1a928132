@@ -46,6 +46,30 @@
       "revId": "05b083e916936bd32e60833a37f3d65e1a928132",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6e77223_8cda7bfe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-11-01T20:39:37Z",
+      "side": 1,
+      "message": "Cr50 doesn\u0027t initialize i2cs on gru so it should never call i2cs_set_pinmux, but I verified it still boots fine.",
+      "parentUuid": "c6e77223_61188036",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "05b083e916936bd32e60833a37f3d65e1a928132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
