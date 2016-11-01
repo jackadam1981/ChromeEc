@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "4632a288_363898e7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-01T14:57:08Z",
+      "side": 1,
+      "message": "Not sure I understand\n\"we don\u0027t re-negotiate\" as we never switch to high-voltage ? then there is no issue to fix ?",
+      "parentUuid": "c6e77223_db171f68",
+      "range": {
+        "startLine": 614,
+        "startChar": 2,
+        "endLine": 614,
+        "endChar": 27
+      },
+      "revId": "efcc3faf925e4ee098c03903084c011443af6c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4632a288_f698e053",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "okay, can you please suggest the right place?",
       "parentUuid": "4632a288_f698e053",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 6
+      },
+      "revId": "efcc3faf925e4ee098c03903084c011443af6c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4632a288_f648e07d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-01T14:57:08Z",
+      "side": 1,
+      "message": "we can do it only when we have received the PS_RDY (ie the power negotiated is available)",
+      "parentUuid": "c6e77223_7b071339",
       "range": {
         "startLine": 649,
         "startChar": 0,
