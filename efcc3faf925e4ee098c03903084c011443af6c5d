@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c6e77223_3b362b15",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-01T14:52:09Z",
+      "side": 1,
+      "message": "okay I will plan to change it as:\nif (supply_voltage * curr_limit \u003c\u003d PD_MAX_POWER_MW * 1000)\n  return EC_SUCCESS;\n\ncurr.desired_input_current \u003d\n\t\t(PD_MAX_POWER_MW * 1000) / supply_voltage;",
+      "parentUuid": "4632a288_36889805",
+      "range": {
+        "startLine": 584,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 64
+      },
+      "revId": "efcc3faf925e4ee098c03903084c011443af6c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4632a288_76a5b089",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c6e77223_db171f68",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-01T14:52:09Z",
+      "side": 1,
+      "message": "when there is no battery we don\u0027t re-negotiate and this function is not called again if valid ILIM is returned.",
+      "parentUuid": "4632a288_76a5b089",
+      "range": {
+        "startLine": 614,
+        "startChar": 2,
+        "endLine": 614,
+        "endChar": 27
+      },
+      "revId": "efcc3faf925e4ee098c03903084c011443af6c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4632a288_f698e053",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2016-11-01T08:59:30Z",
       "side": 1,
       "message": "that\u0027s likely not the right place to set such a limitation.",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 6
+      },
+      "revId": "efcc3faf925e4ee098c03903084c011443af6c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6e77223_7b071339",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-01T14:52:09Z",
+      "side": 1,
+      "message": "okay, can you please suggest the right place?",
+      "parentUuid": "4632a288_f698e053",
       "range": {
         "startLine": 649,
         "startChar": 0,
