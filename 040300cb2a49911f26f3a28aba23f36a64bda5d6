@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6e77223_bb8fbb7a",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-01T16:07:30Z",
+      "side": 1,
+      "message": "What\u0027s the adjust parameter? Do you just mean if the fifo isn\u0027t drained reset it to match the hardware side?",
+      "revId": "040300cb2a49911f26f3a28aba23f36a64bda5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6e77223_5b60cfea",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-01T16:07:30Z",
+      "side": 1,
+      "message": "Please add a comment here as to why you are doing this here -- similar to the reasoning in the commit description. That way when people come across this they\u0027ll understand the reasoning.",
+      "revId": "040300cb2a49911f26f3a28aba23f36a64bda5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6e77223_3b6d0be3",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-01T16:07:30Z",
+      "side": 1,
+      "message": "Please add a comment here detailing why you are doing this here akin to the commit description. That way people will understand the reasoning.",
+      "revId": "040300cb2a49911f26f3a28aba23f36a64bda5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
