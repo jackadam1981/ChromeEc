@@ -19,6 +19,13 @@
 void mkbp_send_event(uint8_t event_type);
 
 /*
+ * Check if the host is sleeping, awaiting a wakeup event.
+ *
+ * @return  True if host is asleep.
+ */
+int mkbp_host_is_sleeping(void);
+
+/*
  * The struct to store the event source definition.  The get_data routine is
  * responsible for returning the event data when queried by the AP.  The
  * parameter 'data' points to where the event data needs to be stored, and

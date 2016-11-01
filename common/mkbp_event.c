@@ -49,7 +49,7 @@ static void set_host_interrupt(int active)
  * Check if the host is sleeping. Check our power state in addition to the
  * self-reported sleep state of host (CONFIG_POWER_TRACK_HOST_SLEEP_STATE).
  */
-static inline int host_is_sleeping(void)
+int mkbp_host_is_sleeping(void)
 {
 	int is_sleeping = !chipset_in_state(CHIPSET_STATE_ON);
 
@@ -66,7 +66,7 @@ void mkbp_send_event(uint8_t event_type)
 
 #ifdef CONFIG_MKBP_WAKEUP_MASK
 	/* Only assert interrupt for wake events if host is sleeping */
-	if (host_is_sleeping()) {
+	if (mkbp_host_is_sleeping()) {
 		uint32_t events;
 		events = *(uint32_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS);
 		/*

@@ -175,6 +175,16 @@ test_mockable int mkbp_fifo_add(uint8_t event_type, const uint8_t *buffp)
 	if (fifo_entries >= config.fifo_max_depth) {
 		CPRINTS("MKBP common FIFO depth %d reached",
 			config.fifo_max_depth);
+
+#ifdef CONFIG_MKBP_WAKEUP_MASK
+		/*
+		 * Set host event, despite lack of room in the FIFO, since
+		 * we may need to trigger a wake.
+		 */
+		if (mkbp_host_is_sleeping())
+			mkbp_send_event(event_type);
+#endif
+
 		ret = EC_ERROR_OVERFLOW;
 		goto fifo_push_done;
 	}
