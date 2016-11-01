@@ -46,6 +46,30 @@
       "revId": "79f08ecab720bda941d07f86e8fcc913805d2970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6e77223_f8be699a",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-11-01T03:46:27Z",
+      "side": 1,
+      "message": "I looked at another implementation and I do see where the slave_addr is being right shifted by 1 in the chip specific i2c_xfer funciton. I will change the chip_i2c_xfer function in chip/g/i2cm.c so that it treats the slave_addr as an 8 bit value.",
+      "parentUuid": "c6e77223_b530eab4",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 55
+      },
+      "revId": "79f08ecab720bda941d07f86e8fcc913805d2970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
