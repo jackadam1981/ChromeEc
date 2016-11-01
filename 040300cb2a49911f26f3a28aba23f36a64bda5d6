@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c6e77223_46da32cf",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-11-01T17:06:22Z",
+      "side": 1,
+      "message": "This comment was slightly out of date. In the previous version of this change there was a parameter passed in that signaled whether the fifo should be adjusted. I have updated the comment to make it reflect the current implementation.",
+      "parentUuid": "c6e77223_bb8fbb7a",
+      "revId": "040300cb2a49911f26f3a28aba23f36a64bda5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6e77223_5b60cfea",
         "filename": "common/i2cs_tpm.c",
         "patchSetId": 8
@@ -47,6 +65,24 @@
       "writtenOn": "2016-11-01T16:07:30Z",
       "side": 1,
       "message": "Please add a comment here detailing why you are doing this here akin to the commit description. That way people will understand the reasoning.",
+      "revId": "040300cb2a49911f26f3a28aba23f36a64bda5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6e77223_26d72ea5",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-11-01T17:06:22Z",
+      "side": 1,
+      "message": "I added a comment here to explain why this functions is being called.",
+      "parentUuid": "c6e77223_5b60cfea",
       "revId": "040300cb2a49911f26f3a28aba23f36a64bda5d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
