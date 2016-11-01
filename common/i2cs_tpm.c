@@ -79,14 +79,61 @@ static const struct i2c_tpm_reg_map i2c_to_tpm[] = {
 	{0xf, 0, 0xf90}, /* TPM_FW_VER */
 };
 
+#define I2C_ADJUST_SIZE 32
+struct i2c_error_entry {
+	uint16_t id;
+	uint8_t adjust;
+	uint32_t time_delta;
+};
+static struct i2c_error_entry adjust_log[I2C_ADJUST_SIZE];
+
+
 /* Used to track number of times i2cs hw read fifo was adjusted */
 static uint32_t i2cs_fifo_adjust_count;
+static uint32_t i2cs_read_count;
+static timestamp_t i2cs_log_time;
+
+static void i2cs_log_print(void)
+{
+	int i;
+	int log_depth;
+
+	ccprintf("reg reads = %d, Adjust instances = %d\n",
+		 i2cs_read_count, i2cs_fifo_adjust_count);
+	log_depth = MIN(i2cs_fifo_adjust_count, I2C_ADJUST_SIZE);
+	for (i = 0; i < log_depth; i++) {
+		ccprintf("[%03d]: id %03d adj = %02d: "
+			 "delta %02d.%02d ms\n",
+			 i, adjust_log[i].id,
+			 adjust_log[i].adjust,
+			 adjust_log[i].time_delta / 1000,
+			 ((adjust_log[i].time_delta % 1000) + 5) / 10);
+	}
+}
+
+static void i2cs_log_add(uint16_t reg, uint32_t addr, uint32_t size)
+{
+	timestamp_t time;
+	uint32_t delta;
+
+	time = get_time();
+	delta = time.le.lo - i2cs_log_time.le.lo;
+	if (i2cs_fifo_adjust_count == 0)
+		delta = 0;
+	i2cs_log_time = time;
+	if (i2cs_fifo_adjust_count < I2C_ADJUST_SIZE) {
+		adjust_log[i2cs_fifo_adjust_count].id = i2cs_read_count;
+		adjust_log[i2cs_fifo_adjust_count].adjust = size;
+		adjust_log[i2cs_fifo_adjust_count].time_delta = delta;
+	}
+}
 
 static void process_read_access(uint16_t reg_size,
 				uint16_t tpm_reg, uint8_t *data)
 {
 	int i;
 	uint8_t reg_value[4];
+	size_t adjust;
 
 	/*
 	 * The master wants to read the register, read the value and pass it
@@ -101,11 +148,21 @@ static void process_read_access(uint16_t reg_size,
 		 * the current fifo queue depth and if non-zero, will adjust the
 		 * fw pointer to force it to 0.
 		 */
-		if (i2cs_zero_read_fifo_buffer_depth())
+
+		adjust = i2cs_zero_read_fifo_buffer_depth();
+		if (adjust) {
+			gpio_set_level(GPIO_EN_PP3300_INA_L, 0);
+			i2cs_log_add(tpm_reg, reg_size, adjust);
 			/* Count each instance that fifo was adjusted */
 			i2cs_fifo_adjust_count++;
+		}
+
 		for (i = 0; i < reg_size; i++)
 			i2cs_post_read_data(reg_value[i]);
+
+		if (adjust)
+			gpio_set_level(GPIO_EN_PP3300_INA_L, 1);
+		i2cs_read_count++;
 		return;
 	}
 
@@ -201,7 +258,6 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 	else
 		process_write_access(reg_size, tpm_reg,
 				     data, i2cs_data_size);
-
 	/*
 	 * Since cr50 does not provide i2c clock stretching, we need some
 	 * onther means of flow controlling the host. Let's generate a pulse
@@ -222,7 +278,10 @@ static void i2cs_if_register(void)
 		return;
 
 	tpm_register_interface(i2cs_tpm_enable);
+
+	/* Initialize counter variables */
 	i2cs_fifo_adjust_count = 0;
+	i2cs_read_count = 0;
 }
 DECLARE_HOOK(HOOK_INIT, i2cs_if_register, HOOK_PRIO_LAST);
 
@@ -235,12 +294,16 @@ static int command_i2cs(int argc, char **argv)
 		ccprintf("fifo adjust count = %d\n", i2cs_fifo_adjust_count);
 	} else if (!strcasecmp(argv[1], "rst")) {
 		i2cs_fifo_adjust_count = 0;
+		i2cs_read_count = 0;
 		ccprintf("fifo adjust count = %d\n", i2cs_fifo_adjust_count);
+	} else if (!strcasecmp(argv[1], "log")) {
+		i2cs_log_print();
 	} else
 		return EC_ERROR_PARAM1;
 
 	return EC_SUCCESS;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(i2cs, command_i2cs,
-			     "disp|rst",
+			     "disp|rst|log",
 			     "Display fifo adjust count");
+
