@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4632a288_36889805",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-01T08:59:30Z",
+      "side": 1,
+      "message": "probably works on most systems, but this seems still wrong\ne.g. \nif you have a system with PD_MAX_CURRENT_MA \u003d 3000, PD_MAX_VOLTAGE_MV \u003d 20000 and PD_MAX_POWER_MW \u003d 27000.\nWith a standard 45W PD power adapter (ie with a 20V/2.25A profile and a 15V/3A profile, you can still select use the 3A@15V which is above your max allowed power ?",
+      "range": {
+        "startLine": 584,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 64
+      },
+      "revId": "efcc3faf925e4ee098c03903084c011443af6c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4632a288_76a5b089",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-01T08:59:30Z",
+      "side": 1,
+      "message": "why we cannot re-use here the value computed by charge_manager ?\nie charge_manager_get_charger_current()",
+      "range": {
+        "startLine": 614,
+        "startChar": 2,
+        "endLine": 614,
+        "endChar": 27
+      },
+      "revId": "efcc3faf925e4ee098c03903084c011443af6c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4632a288_f698e053",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-01T08:59:30Z",
+      "side": 1,
+      "message": "that\u0027s likely not the right place to set such a limitation.",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 6
+      },
+      "revId": "efcc3faf925e4ee098c03903084c011443af6c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
