@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26a04e09_902b7a4c",
+        "filename": "power/apollolake.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-02T04:11:58Z",
+      "side": 1,
+      "message": "I added this to recognize CONFIG_CHIPSET_APOLLOLAKE. Are there any other means which can include or detect configs in config.h?",
+      "parentUuid": "c6e77223_6c8d174f",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6e77223_67b090c1",
         "filename": "power/intel_x86.c",
         "patchSetId": 9
@@ -36,6 +60,24 @@
       "writtenOn": "2016-11-02T02:03:41Z",
       "side": 1,
       "message": "Do you plan to extend this to include other supported x86 systems such as braswell, baytrail, and haswell? Perhaps intel_imvp8.c would be a more accurate name for this file?",
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26a04e09_90525ad8",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-02T04:11:58Z",
+      "side": 1,
+      "message": "Current plan is not to add older platforms. I am okay with intel_imvp8.c too.\nKevin any comments form you?",
+      "parentUuid": "c6e77223_67b090c1",
       "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "26a04e09_f0475e18",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-02T04:11:58Z",
+      "side": 1,
+      "message": "nice catch, I will change it.",
+      "parentUuid": "c6e77223_a742f857",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26a04e09_ad261d82",
         "filename": "power/intel_x86.c",
         "patchSetId": 9
@@ -76,6 +142,30 @@
       "writtenOn": "2016-11-02T02:03:41Z",
       "side": 1,
       "message": "This seems like a very significant change - The old skylake and apollolake code sample PCH_SLP_S0_L, this requires a host event. I\u0027m not an expert on S0IX so I\u0027ll defer to Aaron or someone to help figure out if this is the right thing to do.",
+      "range": {
+        "startLine": 162,
+        "startChar": 13,
+        "endLine": 162,
+        "endChar": 30
+      },
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26a04e09_103f8a7b",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-02T04:11:58Z",
+      "side": 1,
+      "message": "I picked the code from Glados branch\nhttps://chromium-review.googlesource.com/#/c/331358/\n\nNext version of x86 (APL/KBL) also have the same approach.",
+      "parentUuid": "26a04e09_ad261d82",
       "range": {
         "startLine": 162,
         "startChar": 13,
@@ -128,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "26a04e09_50391293",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-02T04:11:58Z",
+      "side": 1,
+      "message": "I think this is a valid change as we plan to allow charger to initialize \u0026 negotiate to 15W (in no/low batt condition) before we enable PMIC.\nSkylake.c handles PCH_SLP_SUS after POWER_G3S5 is processed.",
+      "parentUuid": "26a04e09_6de6f5ff",
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6e77223_2c870f2f",
         "filename": "power/skylake.h",
         "patchSetId": 9
@@ -151,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "26a04e09_d03502a4",
+        "filename": "power/skylake.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-02T04:11:58Z",
+      "side": 1,
+      "message": "I added this to recognize CONFIG_CHIPSET_SKYLAKE. Are there any other means which can include or detect configs in config.h?",
+      "parentUuid": "c6e77223_2c870f2f",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6e77223_ccfac39d",
         "filename": "power/skylake.h",
         "patchSetId": 9
@@ -162,6 +294,30 @@
       "writtenOn": "2016-11-02T02:03:41Z",
       "side": 1,
       "message": "Hmm, I wonder if it would be more straight-forward to move these into intel_x86.c and have something like:\n\n/* Chipset/SoC-specific signal information */\n#ifdef CONFIG_CHIPSET_APOLLOLAKE\n#include \"apollolake.h\"\n#elif CONFIG_CHIPSET_SKYLAKE\n#include \"skylake.h\"\n#endif\n\nJust a suggestion - I have no strong opinion either way.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 29
+      },
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26a04e09_10182a35",
+        "filename": "power/skylake.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-02T04:11:58Z",
+      "side": 1,
+      "message": "As Aaron suggested, with this config we can completely keep the intel_x86.c independent of rest of the chipsets.",
+      "parentUuid": "c6e77223_ccfac39d",
       "range": {
         "startLine": 13,
         "startChar": 0,
