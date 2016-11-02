@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "dc24a349_13824c4d",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-11-02T17:01:26Z",
+      "side": 1,
+      "message": "They are in fact referenced in common/system.c and include/panic.h",
+      "parentUuid": "dccbc292_7a14914e",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91e76d24_af42ceed",
         "filename": "chip/ish/config_chip.h",
         "patchSetId": 13
@@ -135,6 +153,24 @@
         "id": 1149889
       },
       "writtenOn": "2016-10-20T17:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dccbc292_1a1b5d7d",
+      "revId": "74428f39467bf348fd04607f8e6e8221ad7824b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc24a349_337f4884",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1149884
+      },
+      "writtenOn": "2016-11-02T17:01:26Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "dccbc292_1a1b5d7d",
