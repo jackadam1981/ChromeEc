@@ -37,6 +37,10 @@ enum sys_sleep_state {
 
 int power_s5_up;       /* Chipset is sequencing up or down */
 
+#ifdef CONFIG_POWER_S0IX
+static int slp_s0ix_host_evt;
+#endif
+
 /* Get system sleep state through GPIOs or VWs */
 static int chipset_get_sleep_signal(enum sys_sleep_state state)
 {
@@ -154,7 +158,7 @@ enum power_state _power_handle_state(enum power_state state)
 			chipset_force_shutdown();
 			return POWER_S0S3;
 #ifdef CONFIG_POWER_S0IX
-		} else if ((gpio_get_level(GPIO_PCH_SLP_S0_L) == 0) &&
+		} else if (slp_s0ix_host_evt &&
 			   (chipset_get_sleep_signal(SYS_SLEEP_S3) == 1)) {
 			return POWER_S0S0ix;
 #endif
@@ -170,7 +174,7 @@ enum power_state _power_handle_state(enum power_state state)
 		/*
 		 * TODO: add code for unexpected power loss
 		 */
-		if ((gpio_get_level(GPIO_PCH_SLP_S0_L) == 1) &&
+		if (!slp_s0ix_host_evt &&
 		   (chipset_get_sleep_signal(SYS_SLEEP_S3) == 1)) {
 			return POWER_S0ixS0;
 		}
@@ -216,6 +220,12 @@ enum power_state _power_handle_state(enum power_state state)
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
+
+#ifdef CONFIG_POWER_S0IX
+		/* re-init S0ix flag */
+		slp_s0ix_host_evt = 0;
+#endif
+
 		return POWER_S3;
 
 	case POWER_S3S0:
@@ -261,6 +271,11 @@ enum power_state _power_handle_state(enum power_state state)
 		 * to go into deep sleep in S3 or lower.
 		 */
 		enable_sleep(SLEEP_MASK_AP_RUN);
+
+#ifdef CONFIG_POWER_S0IX
+		/* re-init S0ix flag */
+		slp_s0ix_host_evt = 0;
+#endif
 
 		return POWER_S3;
 
@@ -320,53 +335,6 @@ enum power_state _power_handle_state(enum power_state state)
 }
 
 #ifdef CONFIG_POWER_S0IX
-static struct {
-	int required; /* indicates de-bounce required. */
-	int done;     /* debounced */
-} slp_s0_debounce = {
-	.required = 0,
-	.done = 1,
-};
-
-int chipset_get_ps_debounced_level(enum gpio_signal signal)
-{
-	/*
-	 * If power state is updated in power_update_signal() by any interrupts
-	 * other than SLP_S0 during the 1 msec pulse(invalid SLP_S0 signal),
-	 * reading SLP_S0 should be corrected with slp_s0_debounce.done flag.
-	 */
-	int level = gpio_get_level(signal);
-
-	return (signal == GPIO_PCH_SLP_S0_L) ?
-			(level & slp_s0_debounce.done) : level;
-}
-
-static void slp_s0_assertion_deferred(void)
-{
-	int s0_level = gpio_get_level(GPIO_PCH_SLP_S0_L);
-
-	if (s0_level == slp_s0_debounce.required) {
-		if (s0_level)
-			slp_s0_debounce.done = 1; /* debounced! */
-
-		power_signal_interrupt(GPIO_PCH_SLP_S0_L);
-	}
-
-	slp_s0_debounce.required = 0;
-}
-DECLARE_DEFERRED(slp_s0_assertion_deferred);
-
-void power_signal_interrupt_S0(enum gpio_signal signal)
-{
-	if (gpio_get_level(GPIO_PCH_SLP_S0_L)) {
-		slp_s0_debounce.required = 1;
-		hook_call_deferred(&slp_s0_assertion_deferred_data, 3 * MSEC);
-	} else if (slp_s0_debounce.required == 0) {
-		slp_s0_debounce.done = 0;
-		slp_s0_assertion_deferred();
-	}
-}
-
 /*
  * In AP S0 -> S3 & S0ix transitions,
  * the chipset_suspend is called.
@@ -406,4 +374,36 @@ void lpc_disable_wake_mask_for_lid_open(void)
 			;
 	}
 }
+
+/*
+ * EC enters S0ix via a host command and exits S0ix via the above
+ * lid open hook. The host event for exit is received but is a no-op for now.
+ *
+ * EC will not react directly to SLP_S0 signal interrupts anymore.
+ */
+static int host_event_sleep_event(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_host_sleep_event *p = args->params;
+
+	if (p->sleep_event == HOST_SLEEP_EVENT_S0IX_SUSPEND) {
+		CPRINTS("S0ix sus evt");
+		slp_s0ix_host_evt = 1;
+		task_wake(TASK_ID_CHIPSET);
+	} else if (p->sleep_event == HOST_SLEEP_EVENT_S0IX_RESUME) {
+		CPRINTS("S0ix res evt");
+		slp_s0ix_host_evt = 0;
+
+		/*
+		 * For all scenarios where lid is not open
+		 * this will be trigerred when other wake
+		 * sources like keyboard, trackpad are used.
+		 */
+		if (!chipset_in_state(CHIPSET_STATE_ON))
+			task_wake(TASK_ID_CHIPSET);
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_HOST_SLEEP_EVENT, host_event_sleep_event,
+			EC_VER_MASK(0));
 #endif
