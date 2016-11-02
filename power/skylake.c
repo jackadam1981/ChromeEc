@@ -8,12 +8,11 @@
 #include "board_config.h"
 #include "charge_state.h"
 #include "chipset.h"
-#include "common.h"
 #include "console.h"
 #include "hooks.h"
-#include "host_command.h"
-#include "power.h"
+#include "intel_x86.h"
 #include "power_button.h"
+#include "skylake.h"
 #include "system.h"
 #include "task.h"
 #include "util.h"
@@ -25,35 +24,9 @@
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
-/* Input state flags */
-#define IN_PCH_SLP_S0_DEASSERTED  POWER_SIGNAL_MASK(X86_SLP_S0_DEASSERTED)
-#define IN_PCH_SLP_S3_DEASSERTED  POWER_SIGNAL_MASK(X86_SLP_S3_DEASSERTED)
-#define IN_PCH_SLP_S4_DEASSERTED  POWER_SIGNAL_MASK(X86_SLP_S4_DEASSERTED)
-#define IN_PCH_SLP_SUS_DEASSERTED POWER_SIGNAL_MASK(X86_SLP_SUS_DEASSERTED)
-
-#ifdef CONFIG_POWER_S0IX
-#define IN_ALL_PM_SLP_DEASSERTED (IN_PCH_SLP_S0_DEASSERTED | \
-				  IN_PCH_SLP_S3_DEASSERTED | \
-				  IN_PCH_SLP_S4_DEASSERTED | \
-				  IN_PCH_SLP_SUS_DEASSERTED)
-#else
-#define IN_ALL_PM_SLP_DEASSERTED (IN_PCH_SLP_S3_DEASSERTED | \
-				  IN_PCH_SLP_S4_DEASSERTED | \
-				  IN_PCH_SLP_SUS_DEASSERTED)
-#endif
-
-/*
- * DPWROK is NC / stuffing option on initial boards.
- * TODO(shawnn): Figure out proper control signals.
- */
-#define IN_PGOOD_ALL_CORE 0
-
-#define IN_ALL_S0 (IN_PGOOD_ALL_CORE | IN_ALL_PM_SLP_DEASSERTED)
-
 #define CHARGER_INITIALIZED_DELAY_MS 100
 #define CHARGER_INITIALIZED_TRIES 40
 
-static int throttle_cpu;      /* Throttle CPU? */
 static int forcing_shutdown;  /* Forced shutdown in progress? */
 static int power_s5_up;       /* Chipset is sequencing up or down */
 
@@ -105,7 +78,7 @@ __attribute__((weak)) void chipset_set_pmic_slp_sus_l(int level)
 	gpio_set_level(GPIO_PMIC_SLP_SUS_L, level);
 }
 
-static void chipset_force_g3(void)
+void chipset_force_g3(void)
 {
 	CPRINTS("Forcing fake G3.");
 
@@ -141,35 +114,7 @@ void chipset_reset(int cold_reset)
 	}
 }
 
-void chipset_throttle_cpu(int throttle)
-{
-	if (chipset_in_state(CHIPSET_STATE_ON))
-		gpio_set_level(GPIO_CPU_PROCHOT, throttle);
-}
-
-enum power_state power_chipset_init(void)
-{
-	/*
-	 * If we're switching between images without rebooting, see if the x86
-	 * is already powered on; if so, leave it there instead of cycling
-	 * through G3.
-	 */
-	if (system_jumped_to_this_image()) {
-		if ((power_get_signals() & IN_ALL_S0) == IN_ALL_S0) {
-			/* Disable idle task deep sleep when in S0. */
-			disable_sleep(SLEEP_MASK_AP_RUN);
-			CPRINTS("already in S0");
-			return POWER_S0;
-		} else {
-			/* Force all signals to their G3 states */
-			chipset_force_g3();
-		}
-	}
-
-	return POWER_G3;
-}
-
-static void handle_rsmrst(enum power_state state)
+void handle_rsmrst(enum power_state state)
 {
 	/*
 	 * Pass through RSMRST asynchronously, as PCH may not react
@@ -205,37 +150,6 @@ static void handle_slp_sus(enum power_state state)
 	/* Always mimic PCH SLP_SUS request for all other states. */
 	chipset_set_pmic_slp_sus_l(gpio_get_level(GPIO_PCH_SLP_SUS_L));
 }
-
-#ifdef CONFIG_BOARD_HAS_RTC_RESET
-static enum power_state power_wait_s5_rtc_reset(void)
-{
-	static int s5_exit_tries;
-
-	/* Wait for S5 exit and then attempt RTC reset */
-	while ((power_get_signals() & IN_PCH_SLP_S4_DEASSERTED) == 0) {
-		/* Handle RSMRST passthru event while waiting */
-		handle_rsmrst(POWER_S5);
-		if (task_wait_event(SECOND*4) == TASK_EVENT_TIMER) {
-			CPRINTS("timeout waiting for S5 exit");
-			chipset_force_g3();
-
-			/* Assert RTCRST# and retry 5 times */
-			board_rtc_reset();
-
-			if (++s5_exit_tries > 4) {
-				s5_exit_tries = 0;
-				return POWER_G3; /* Stay off */
-			}
-
-			udelay(10 * MSEC);
-			return POWER_G3S5; /* Power up again */
-		}
-	}
-
-	s5_exit_tries = 0;
-	return POWER_S5S3; /* Power up to next state */
-}
-#endif
 
 static enum power_state _power_handle_state(enum power_state state)
 {
@@ -368,7 +282,7 @@ static enum power_state _power_handle_state(enum power_state state)
 		 * Throttle CPU if necessary.  This should only be asserted
 		 * when +VCCP is powered (it is by now).
 		 */
-		gpio_set_level(GPIO_CPU_PROCHOT, throttle_cpu);
+		gpio_set_level(GPIO_CPU_PROCHOT, 0);
 
 		return POWER_S0;
 
@@ -458,55 +372,3 @@ enum power_state power_handle_state(enum power_state state)
 
 	return new_state;
 }
-
-#ifdef CONFIG_POWER_S0IX
-static struct {
-	int required; /* indicates de-bounce required. */
-	int done;     /* debounced */
-} slp_s0_debounce = {
-	.required = 0,
-	.done = 1,
-};
-
-int chipset_get_ps_debounced_level(enum gpio_signal signal)
-{
-	/*
-	 * If power state is updated in power_update_signal() by any interrupts
-	 * other than SLP_S0 during the 1 msec pulse(invalid SLP_S0 signal),
-	 * reading SLP_S0 should be corrected with slp_s0_debounce.done flag.
-	 */
-	int level = gpio_get_level(signal);
-	return (signal == GPIO_PCH_SLP_S0_L) ?
-			(level & slp_s0_debounce.done) : level;
-}
-
-static void slp_s0_assertion_deferred(void)
-{
-	int s0_level = gpio_get_level(GPIO_PCH_SLP_S0_L);
-	/*
-	     (s0_level != 0) ||
-	     ((s0_level == 0) && (slp_s0_debounce.required == 0))
-	*/
-	if (s0_level == slp_s0_debounce.required) {
-		if (s0_level)
-			slp_s0_debounce.done = 1; /* debounced! */
-
-		power_signal_interrupt(GPIO_PCH_SLP_S0_L);
-	}
-
-	slp_s0_debounce.required = 0;
-}
-DECLARE_DEFERRED(slp_s0_assertion_deferred);
-
-void power_signal_interrupt_S0(enum gpio_signal signal)
-{
-	if (gpio_get_level(GPIO_PCH_SLP_S0_L)) {
-		slp_s0_debounce.required = 1;
-		hook_call_deferred(&slp_s0_assertion_deferred_data, 3 * MSEC);
-	}
-	else if (slp_s0_debounce.required == 0) {
-		slp_s0_debounce.done = 0;
-		slp_s0_assertion_deferred();
-	}
-}
-#endif
