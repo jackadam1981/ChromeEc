@@ -551,6 +551,9 @@
 #define CONFIG_CHIPSET_HAS_PP1350
 #define CONFIG_CHIPSET_HAS_PP5000
 
+/* Define chipset power input wait signals */
+#undef CONFIG_CHIPSET_POWER_WAIT_SIGNALS
+
 /*****************************************************************************/
 /*
  * Chip config for clock circuitry

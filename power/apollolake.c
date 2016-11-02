@@ -6,25 +6,15 @@
 /* Apollolake chipset power control module for Chrome EC */
 
 #include "apollolake.h"
-#include "charge_state.h"
-#include "chipset.h"
 #include "console.h"
-#include "hooks.h"
+#include "gpio.h"
 #include "intel_x86.h"
-#include "power_button.h"
-#include "system.h"
-#include "task.h"
-#include "wireless.h"
+#include "timer.h"
 
 /* Console output macros */
-#define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
-#define CHARGER_INITIALIZED_DELAY_MS 100
-#define CHARGER_INITIALIZED_TRIES 40
-
 static int forcing_coldreset; /* Forced coldreset in progress? */
-static int power_s5_up;       /* Chipset is sequencing up or down */
 
 __attribute__((weak)) void chipset_do_shutdown(void)
 {
@@ -39,9 +29,17 @@ void chipset_force_shutdown(void)
 	chipset_do_shutdown();
 }
 
-void chipset_force_g3(void)
+enum power_state chipset_force_g3(void)
 {
 	chipset_force_shutdown();
+
+	/* Power up the platform again for forced cold reset */
+	if (forcing_coldreset) {
+		forcing_coldreset = 0;
+		return POWER_G3S5;
+	}
+
+	return POWER_G3;
 }
 
 void chipset_reset(int cold_reset)
@@ -105,232 +103,24 @@ static void handle_all_sys_pgood(enum power_state state)
 	CPRINTS("Pass through GPIO_ALL_SYS_PGOOD: %d", in_level);
 }
 
-static enum power_state _power_handle_state(enum power_state state)
-{
-	int tries = 0;
-
-	switch (state) {
-	case POWER_G3:
-		break;
-
-	case POWER_S5:
-#ifdef CONFIG_BOARD_HAS_RTC_RESET
-		/* Wait for S5 exit and attempt RTC reset it supported */
-		if (power_s5_up)
-			return power_wait_s5_rtc_reset();
-#endif
-
-		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
-			/* Required rail went away */
-			chipset_force_shutdown();
-			return POWER_S5G3;
-		} else if (gpio_get_level(GPIO_PCH_SLP_S4_L) == 1) {
-			/* Power up to next state */
-			return POWER_S5S3;
-		}
-		break;
-
-	case POWER_S3:
-		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
-			/* Required rail went away */
-			chipset_force_shutdown();
-			return POWER_S3S5;
-		} else if (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1) {
-			/* Power up to next state */
-			return POWER_S3S0;
-		} else if (gpio_get_level(GPIO_PCH_SLP_S4_L) == 0) {
-			/* Power down to next state */
-			return POWER_S3S5;
-		}
-		break;
-
-	case POWER_S0:
-		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
-			chipset_force_shutdown();
-			return POWER_S0S3;
-#ifdef CONFIG_POWER_S0IX
-		} else if ((gpio_get_level(GPIO_PCH_SLP_S0_L) == 0) &&
-			   (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1)) {
-			return POWER_S0S0ix;
-#endif
-		} else if (gpio_get_level(GPIO_PCH_SLP_S3_L) == 0) {
-			/* Power down to next state */
-			return POWER_S0S3;
-		}
-
-		break;
-
-#ifdef CONFIG_POWER_S0IX
-	case POWER_S0ix:
-		/*
-		 * TODO: add code for unexpected power loss
-		 */
-		if ((gpio_get_level(GPIO_PCH_SLP_S0_L) == 1) &&
-		   (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1)) {
-			return POWER_S0ixS0;
-		}
-
-		break;
-#endif
-
-	case POWER_G3S5:
-		/* Platform is powering up, clear forcing_coldreset */
-		forcing_coldreset = 0;
-
-		/*
-		 * Allow up to 1s for charger to be initialized, in case
-		 * we're trying to boot the AP with no battery.
-		 */
-		while (charge_prevent_power_on(0) &&
-		       tries++ < CHARGER_INITIALIZED_TRIES) {
-			msleep(CHARGER_INITIALIZED_DELAY_MS);
-		}
-
-		/* Return to G3 if battery level is too low */
-		if (charge_want_shutdown() ||
-		    tries > CHARGER_INITIALIZED_TRIES) {
-			CPRINTS("power-up inhibited");
-			chipset_force_shutdown();
-			return POWER_G3;
-		}
-
-		/* Call hooks to initialize PMIC */
-		hook_notify(HOOK_CHIPSET_PRE_INIT);
-
-		/* Wait for RSMRST_L de-assert */
-		if (power_wait_signals(IN_PGOOD_ALL_CORE)) {
-			chipset_force_shutdown();
-			return POWER_G3;
-		}
-
-		power_s5_up = 1;
-		return POWER_S5;
-
-	case POWER_S5S3:
-		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
-			/* Required rail went away */
-			chipset_force_shutdown();
-			return POWER_S5G3;
-		}
-
-		/* Call hooks now that rails are up */
-		hook_notify(HOOK_CHIPSET_STARTUP);
-		return POWER_S3;
-
-	case POWER_S3S0:
-		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
-			/* Required rail went away */
-			chipset_force_shutdown();
-			return POWER_S3S5;
-		}
-
-		gpio_set_level(GPIO_ENABLE_BACKLIGHT, 1);
-
-		/* Enable wireless */
-		wireless_set_state(WIRELESS_ON);
-
-		/* Call hooks now that rails are up */
-		hook_notify(HOOK_CHIPSET_RESUME);
-
-		/*
-		 * Disable idle task deep sleep. This means that the low
-		 * power idle task will not go into deep sleep while in S0.
-		 */
-		disable_sleep(SLEEP_MASK_AP_RUN);
-
-		/*
-		 * Throttle CPU if necessary.  This should only be asserted
-		 * when +VCCP is powered (it is by now).
-		 */
-		gpio_set_level(GPIO_CPU_PROCHOT, 0);
-
-		return POWER_S0;
-
-	case POWER_S0S3:
-		/* Call hooks before we remove power rails */
-		hook_notify(HOOK_CHIPSET_SUSPEND);
-
-		gpio_set_level(GPIO_ENABLE_BACKLIGHT, 0);
-
-		/* Suspend wireless */
-		wireless_set_state(WIRELESS_SUSPEND);
-
-		/*
-		 * Enable idle task deep sleep. Allow the low power idle task
-		 * to go into deep sleep in S3 or lower.
-		 */
-		enable_sleep(SLEEP_MASK_AP_RUN);
-
-		return POWER_S3;
-
-#ifdef CONFIG_POWER_S0IX
-	case POWER_S0S0ix:
-		/* call hooks before standby */
-		hook_notify(HOOK_CHIPSET_SUSPEND);
-
-		lpc_enable_wake_mask_for_lid_open();
-
-		/*
-		 * Enable idle task deep sleep. Allow the low power idle task
-		 * to go into deep sleep in S0ix.
-		 */
-		enable_sleep(SLEEP_MASK_AP_RUN);
-
-		return POWER_S0ix;
-
-
-	case POWER_S0ixS0:
-		lpc_disable_wake_mask_for_lid_open();
-
-		/* Call hooks now that rails are up */
-		hook_notify(HOOK_CHIPSET_RESUME);
-
-		/*
-		 * Disable idle task deep sleep. This means that the low
-		 * power idle task will not go into deep sleep while in S0.
-		 */
-		disable_sleep(SLEEP_MASK_AP_RUN);
-
-		return POWER_S0;
-#endif
-
-	case POWER_S3S5:
-		/* Call hooks before we remove power rails */
-		hook_notify(HOOK_CHIPSET_SHUTDOWN);
-
-		/* Disable wireless */
-		wireless_set_state(WIRELESS_OFF);
-
-		/* Always enter into S5 state. The S5 state is required to
-		 * correctly handle global resets which have a bit of delay
-		 * while the SLP_Sx_L signals are asserted then deasserted. */
-		power_s5_up = 0;
-		return POWER_S5;
-
-	case POWER_S5G3:
-		chipset_force_shutdown();
-
-		/* Power up the platform again for forced cold reset */
-		if (forcing_coldreset) {
-			forcing_coldreset = 0;
-			return POWER_G3S5;
-		}
-
-		return POWER_G3;
-
-	default:
-		break;
-	}
-
-	return state;
-}
-
 enum power_state power_handle_state(enum power_state state)
 {
 	enum power_state new_state;
 
 	/* Process ALL_SYS_PGOOD state changes. */
 	handle_all_sys_pgood(state);
+
+	if (state == POWER_S5 && !power_has_signals(IN_PGOOD_ALL_CORE)) {
+		/* Required rail went away */
+		chipset_force_shutdown();
+
+		handle_rsmrst(POWER_S5G3);
+
+		return POWER_S5G3;
+	} else if (state == POWER_G3S5) {
+		/* Platform is powering up, clear forcing_coldreset */
+		forcing_coldreset = 0;
+	}
 
 	new_state = _power_handle_state(state);
 

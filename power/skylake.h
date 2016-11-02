@@ -35,8 +35,8 @@
  * TODO(shawnn): Figure out proper control signals.
  */
 #define IN_PGOOD_ALL_CORE 0
-
 #define IN_ALL_S0 (IN_PGOOD_ALL_CORE | IN_ALL_PM_SLP_DEASSERTED)
+#define CONFIG_CHIPSET_POWER_WAIT_SIGNALS IN_PCH_SLP_SUS_DEASSERTED
 
 #endif /* CONFIG_CHIPSET_SKYLAKE */
 
