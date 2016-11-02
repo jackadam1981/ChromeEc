@@ -298,7 +298,7 @@ static void board_spi_enable(void)
 {
 	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
 }
-DECLARE_HOOK(HOOK_CHIPSET_RESUME,
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP,
 	     board_spi_enable,
 	     MOTION_SENSE_HOOK_PRIO - 1);
 
@@ -321,7 +321,7 @@ static void board_spi_disable(void)
 
 	spi_enable(CONFIG_SPI_ACCEL_PORT, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND,
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
 	     board_spi_disable,
 	     MOTION_SENSE_HOOK_PRIO + 1);
 
@@ -517,7 +517,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 */
 	[BASE_ACCEL] = {
 	 .name = "Base Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_BASE,
@@ -553,7 +553,7 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 	[BASE_GYRO] = {
 	 .name = "Base Gyro",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_GYRO,
 	 .location = MOTIONSENSE_LOC_BASE,
@@ -594,7 +594,7 @@ struct motion_sensor_t motion_sensors[] = {
 #ifdef BOARD_KEVIN
 	[LID_ACCEL] = {
 	 .name = "Lid Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_BMA255,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_LID,
@@ -630,7 +630,7 @@ struct motion_sensor_t motion_sensors[] = {
 #else
 	[LID_ACCEL] = {
 	 .name = "Lid Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_KX022,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_LID,
@@ -665,7 +665,7 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 	[BASE_BARO] = {
 	 .name = "Base Baro",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_BMP280,
 	 .type = MOTIONSENSE_TYPE_BARO,
 	 .location = MOTIONSENSE_LOC_BASE,
