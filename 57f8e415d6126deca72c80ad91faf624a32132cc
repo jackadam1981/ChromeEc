@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26a04e09_a17bc6e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2016-11-02T17:56:37Z",
+      "side": 1,
+      "message": "Why do we even want to add non-wake events to the FIFO?  I don\u0027t think the AP will care about them when it wakes up.  In fact, I\u0027m pretty sure they just get flushed.  See cros_ec_keyb_work().\n\nIt seems more important to make sure that the event that actually woke up the system gets reported.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "57f8e415d6126deca72c80ad91faf624a32132cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
