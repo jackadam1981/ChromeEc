@@ -735,6 +735,15 @@ static int host_command_host_sleep_event(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_sleep_event *p = args->params;
 
+#ifdef CONFIG_MKBP_WAKEUP_MASK
+	/*
+	 * Clear our wake events if we're headed to suspend so we don't
+	 * trigger a spurious wake.
+	 */
+	if (p->sleep_event == HOST_SLEEP_EVENT_S3_SUSPEND)
+		host_clear_events(CONFIG_MKBP_WAKEUP_MASK);
+#endif
+
 	host_sleep_state = p->sleep_event;
 	return EC_RES_SUCCESS;
 }
