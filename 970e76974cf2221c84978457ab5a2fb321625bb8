@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abeec770_4177327e",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2016-11-02T20:35:16Z",
+      "side": 1,
+      "message": ". Default is ? (otherwise this could be interpreted as a variable name)",
+      "range": {
+        "startLine": 399,
+        "startChar": 58,
+        "endLine": 399,
+        "endChar": 67
+      },
+      "revId": "970e76974cf2221c84978457ab5a2fb321625bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
