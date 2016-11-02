@@ -25,6 +25,54 @@
     },
     {
       "key": {
+        "uuid": "26a04e09_10e94ad0",
+        "filename": "extra/usb_serial/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-02T04:26:18Z",
+      "side": 1,
+      "message": "removed unused ones",
+      "parentUuid": "c6e77223_c64aa29b",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "112dfb3155ea174f66b3bd450fa3c62bdebbaa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26a04e09_90dc1a2f",
+        "filename": "extra/usb_serial/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-02T04:26:18Z",
+      "side": 1,
+      "message": "removed pty, the others are all used.",
+      "parentUuid": "c6e77223_c64aa29b",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "112dfb3155ea174f66b3bd450fa3c62bdebbaa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e647168e_90af8237",
         "filename": "extra/usb_serial/console.py",
         "patchSetId": 1
@@ -36,6 +84,30 @@
       "writtenOn": "2016-11-01T17:20:47Z",
       "side": 1,
       "message": "Not exist",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "112dfb3155ea174f66b3bd450fa3c62bdebbaa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26a04e09_70e6ceff",
+        "filename": "extra/usb_serial/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-02T04:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e647168e_90af8237",
       "range": {
         "startLine": 55,
         "startChar": 2,
@@ -71,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "26a04e09_50e3d2ed",
+        "filename": "extra/usb_serial/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-02T04:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6e77223_5839f504",
+      "range": {
+        "startLine": 87,
+        "startChar": 28,
+        "endLine": 87,
+        "endChar": 36
+      },
+      "revId": "112dfb3155ea174f66b3bd450fa3c62bdebbaa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e647168e_505b3a9f",
         "filename": "extra/usb_serial/console.py",
         "patchSetId": 1
@@ -82,6 +178,30 @@
       "writtenOn": "2016-11-01T17:20:47Z",
       "side": 1,
       "message": "Typo: Detach",
+      "range": {
+        "startLine": 120,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 13
+      },
+      "revId": "112dfb3155ea174f66b3bd450fa3c62bdebbaa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26a04e09_b0c2f642",
+        "filename": "extra/usb_serial/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-02T04:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e647168e_505b3a9f",
       "range": {
         "startLine": 120,
         "startChar": 6,
@@ -117,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "26a04e09_50be32b5",
+        "filename": "extra/usb_serial/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-02T04:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e647168e_30478ebd",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 27
+      },
+      "revId": "112dfb3155ea174f66b3bd450fa3c62bdebbaa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e647168e_b0b55e83",
         "filename": "extra/usb_serial/console.py",
         "patchSetId": 1
@@ -128,6 +272,30 @@
       "writtenOn": "2016-11-01T17:20:47Z",
       "side": 1,
       "message": "Double newlines.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 0
+      },
+      "revId": "112dfb3155ea174f66b3bd450fa3c62bdebbaa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26a04e09_309e064c",
+        "filename": "extra/usb_serial/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-02T04:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e647168e_b0b55e83",
       "range": {
         "startLine": 154,
         "startChar": 0,
