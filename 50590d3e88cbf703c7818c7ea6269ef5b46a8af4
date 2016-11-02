@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6e77223_6c8d174f",
+        "filename": "power/apollolake.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-02T02:03:41Z",
+      "side": 1,
+      "message": "This no longer appears to be needed.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6e77223_67b090c1",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-02T02:03:41Z",
+      "side": 1,
+      "message": "Do you plan to extend this to include other supported x86 systems such as braswell, baytrail, and haswell? Perhaps intel_imvp8.c would be a more accurate name for this file?",
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6e77223_a742f857",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-02T02:03:41Z",
+      "side": 1,
+      "message": "s0ix?",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 19
+      },
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26a04e09_ad261d82",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-02T02:03:41Z",
+      "side": 1,
+      "message": "This seems like a very significant change - The old skylake and apollolake code sample PCH_SLP_S0_L, this requires a host event. I\u0027m not an expert on S0IX so I\u0027ll defer to Aaron or someone to help figure out if this is the right thing to do.",
+      "range": {
+        "startLine": 162,
+        "startChar": 13,
+        "endLine": 162,
+        "endChar": 30
+      },
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26a04e09_edd14515",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-02T02:03:41Z",
+      "side": 1,
+      "message": "Same as above.",
+      "range": {
+        "startLine": 178,
+        "startChar": 6,
+        "endLine": 178,
+        "endChar": 24
+      },
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26a04e09_6de6f5ff",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-02T02:03:41Z",
+      "side": 1,
+      "message": "skylake called hook_notify(HOOK_CHIPSET_PRE_INIT) here.\n\nI\u0027m guessing this change is safe, I\u0027m just noting the different behavior in case someone else thinks of something that might be affected.",
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6e77223_2c870f2f",
+        "filename": "power/skylake.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-02T02:03:41Z",
+      "side": 1,
+      "message": "No longer needed?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6e77223_ccfac39d",
+        "filename": "power/skylake.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-02T02:03:41Z",
+      "side": 1,
+      "message": "Hmm, I wonder if it would be more straight-forward to move these into intel_x86.c and have something like:\n\n/* Chipset/SoC-specific signal information */\n#ifdef CONFIG_CHIPSET_APOLLOLAKE\n#include \"apollolake.h\"\n#elif CONFIG_CHIPSET_SKYLAKE\n#include \"skylake.h\"\n#endif\n\nJust a suggestion - I have no strong opinion either way.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 29
+      },
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
