@@ -96,9 +96,9 @@ static usb_uint ep0_buf_rx[USB_MAX_PACKET_SIZE / 2] __usb_ram;
 
 static int set_addr;
 /* remaining size of descriptor data to transfer */
-static int desc_left;
+int desc_left;
 /* pointer to descriptor data if any */
-static const uint8_t *desc_ptr;
+const uint8_t *desc_ptr;
 
 
 

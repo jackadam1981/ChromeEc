@@ -10,6 +10,7 @@
 #include "i2c.h"
 #include "task.h"
 #include "timer.h"
+#include "usb_hid.h"
 #include "util.h"
 
 /* FIXME */
@@ -86,6 +87,7 @@ static int elan_tp_write_cmd(uint16_t reg, uint16_t val)
 
 /* FIXME */
 uint8_t tp_buf[256];
+uint8_t hid_buf[10];
 
 static int elan_tp_read_report(void)
 {
@@ -123,7 +125,40 @@ static int elan_tp_read_report(void)
 				if (1)
 					CPRINTF("i=%d %d/%d %d/%d %d|", i, x, y,
 						width, height, pressure);
+
+				if (i == 0) {
+					//x = x/2;
+					//y = y/2;
+					hid_buf[0] = 0x01;
+					hid_buf[1] = 0x07;
+					hid_buf[2] = width << 4; //width << 4;
+					hid_buf[3] = height << 4; //height << 4;
+/*
+					hid_buf[4] = x >> 4;
+					hid_buf[5] = (x & 0x0f) << 4 | (y >> 8);
+					hid_buf[6] = y & 0xff;
+*/
+					hid_buf[4] = x & 0xff;
+					hid_buf[5] = (x & 0xf00) >> 8 | (y & 0x0f) << 4;
+					hid_buf[6] = (y & 0xff0) >> 4;
+					hid_buf[7] = pressure;
+					hid_buf[8] = 1;
+					hid_buf[9] = 0;
+					set_hid_report(hid_buf, 10);
+				}
 				finger += ETP_FINGER_DATA_LEN;
+			} else if (i == 0) {
+				hid_buf[0] = 0x01;
+				hid_buf[1] = 0x04;
+				hid_buf[2] = 0;
+				hid_buf[3] = 0;
+				hid_buf[4] = 0;
+				hid_buf[5] = 0;
+				hid_buf[6] = 0;
+				hid_buf[7] = 0;
+				hid_buf[8] = 0;
+				hid_buf[9] = 0;
+				set_hid_report(hid_buf, 10);
 			}
 		}
 		CPRINTF("]\n");
