@@ -539,10 +539,10 @@ struct motion_sensor_t motion_sensors[] = {
 			 .odr = 10000 | ROUND_UP_FLAG,
 			 .ec_rate = 100 * MSEC,
 		 },
-		 /* Sensor off in S3/S5 */
+		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S3] = {
-			 .odr = 0,
-			 .ec_rate = 0
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 0,
 		 },
 		 /* Sensor off in S3/S5 */
 		 [SENSOR_CONFIG_EC_S5] = {
@@ -616,9 +616,9 @@ struct motion_sensor_t motion_sensors[] = {
 			.odr = 10000 | ROUND_UP_FLAG,
 			.ec_rate = 0,
 		},
-		/* unused */
+		 /* EC use accel for angle detection */
 		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
+			.odr = 10000 | ROUND_UP_FLAG,
 			.ec_rate = 0,
 		},
 		[SENSOR_CONFIG_EC_S5] = {
@@ -652,9 +652,9 @@ struct motion_sensor_t motion_sensors[] = {
 			.odr = 10000 | ROUND_UP_FLAG,
 			.ec_rate = 0,
 		},
-		/* unused */
+		 /* EC use accel for angle detection */
 		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
+			.odr = 10000 | ROUND_UP_FLAG,
 			.ec_rate = 0,
 		},
 		[SENSOR_CONFIG_EC_S5] = {
@@ -700,6 +700,16 @@ struct motion_sensor_t motion_sensors[] = {
 #endif /* BOARD_KEVIN */
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+#ifndef TEST_BUILD
+void lid_angle_peripheral_enable(int enable)
+{
+	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+
+	/* enable/disable touchpad */
+	gpio_set_level(GPIO_PP3300_TRACKPAD_EN_L, !enable);
+}
+#endif
 
 #ifdef BOARD_GRU
 static void usb_charge_resume(void)
