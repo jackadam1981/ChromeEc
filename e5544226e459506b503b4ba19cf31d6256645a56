@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bfd4b26_85c30128",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-03T22:07:44Z",
+      "side": 1,
+      "message": "This code is not exact: we should check that the event_type is EC_MKBP_EVENT_HOST_EVENT before testing events.",
+      "revId": "e5544226e459506b503b4ba19cf31d6256645a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
