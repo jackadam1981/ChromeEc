@@ -128,6 +128,11 @@ int rwsig_check_signature(void)
 			rw_rollback_version, min_rollback_version);
 		goto out;
 	}
+
+#endif
+
+#if (3 * RSANUMBYTES > CONFIG_SHARED_MEM_MIN_SIZE)
+# error "Risk of never be able to calculate signature"
 #endif
 
 	/* Large buffer for RSA computation : could be re-use afterwards... */

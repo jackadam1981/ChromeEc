@@ -66,6 +66,10 @@
 /* RO verifies the RW partition signature */
 #define CONFIG_RSA
 #define CONFIG_RSA_KEY_SIZE 3072
+
+/* increase the shared memory size for the bigger key. */
+#define CONFIG_SHARED_MEM_MIN_SIZE 2048
+
 #define CONFIG_RSA_EXPONENT_3
 #define CONFIG_RWSIG
 #endif

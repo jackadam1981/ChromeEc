@@ -2338,6 +2338,7 @@
 /* Storage  offset of sharedobjects library. */
 #undef CONFIG_SHAREDLIB_STORAGE_OFF
 
+
 /*
  * If defined, the hash module will save its last computed hash when jumping
  * between EC images.
@@ -3504,4 +3505,14 @@
 #define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ \
 	CONFIG_EC_MAX_SENSOR_FREQ_DEFAULT_MILLIHZ
 #endif
+
+/*
+ * Minimal amount set aside for "shared" memory.
+ * This is a buffer that can be used for calculating hash, storing log...
+ * It can be larger, but compilation will fail if shorter.
+ */
+#ifndef CONFIG_SHARED_MEM_MIN_SIZE
+#define CONFIG_SHARED_MEM_MIN_SIZE 1024
+#endif
+
 #endif  /* __CROS_EC_CONFIG_H */
