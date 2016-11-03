@@ -171,15 +171,14 @@ test_mockable int mkbp_fifo_add(uint8_t event_type, const uint8_t *buffp)
 	    (event_type == EC_MKBP_EVENT_KEY_MATRIX))
 		return EC_SUCCESS;
 
+	size = get_data_size(event_type);
+	mutex_lock(&fifo_mutex);
 	if (fifo_entries >= config.fifo_max_depth) {
 		CPRINTS("MKBP common FIFO depth %d reached",
 			config.fifo_max_depth);
-
+		mutex_unlock(&fifo_mutex);
 		return EC_ERROR_OVERFLOW;
 	}
-
-	size = get_data_size(event_type);
-	mutex_lock(&fifo_mutex);
 	fifo[fifo_end].event_type = event_type;
 	memcpy(&fifo[fifo_end].data, buffp, size);
 	fifo_end = (fifo_end + 1) % FIFO_DEPTH;
