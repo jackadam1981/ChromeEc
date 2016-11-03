@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bfd4b26_05ded1c1",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-03T22:35:47Z",
+      "side": 1,
+      "message": "I commented the original CL:\nWe should say:\nif ((event_type \u003d\u003d EC_MKBP_EVENT_HOST \u0026\u0026 \n     host_get_events() \u0026 CONFIG_MKBP_WAKEUP_MASK) ||\n\nThis way, if [host] events are waiting, but we are adding other events, we would not wake up the AP.",
+      "revId": "48dbce8d05ecb4186bb6ffd2bb5c295a92757fdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
