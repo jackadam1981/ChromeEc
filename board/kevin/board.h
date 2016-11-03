@@ -179,7 +179,6 @@
  * TODO(crosbug.com/p/55710): Re-define once interrupt latency is within
  * tolerance.
  */
-#undef CONFIG_TASK_PROFILING
 
 #define I2C_PORT_TCPC0    NPCX_I2C_PORT0_0
 #define I2C_PORT_TCPC1    NPCX_I2C_PORT0_1
@@ -194,8 +193,7 @@
 #define CONFIG_MKBP_EVENT
 /* Define the MKBP events which are allowed to wakeup AP in S3. */
 #define CONFIG_MKBP_WAKEUP_MASK \
-		(EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_CLOSED) |\
-		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN) |\
+		(EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN) |\
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON) |\
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEY_PRESSED) |\
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_RTC))
