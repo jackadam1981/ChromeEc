@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bfd4b26_67a48044",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-03T03:32:34Z",
+      "side": 1,
+      "message": "Do you know how this works for \"docked mode\"? A convertible in tablet mode with external display hooked up? Do we just invalidate the lid_angle threshold or set it to 0?\n\n(I still need to look this up)",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 43
+      },
+      "revId": "bbb1b4c5436cacf2a891c582e2970565ca658c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfd4b26_24967695",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-03T03:32:34Z",
+      "side": 1,
+      "message": "Do these need to be initialized, or will the AP do it since it\u0027s in forced mode?",
+      "range": {
+        "startLine": 542,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 16
+      },
+      "revId": "bbb1b4c5436cacf2a891c582e2970565ca658c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfd4b26_a46846d1",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-03T03:32:34Z",
+      "side": 1,
+      "message": "The barometer needs to be active in S3 too?",
+      "revId": "bbb1b4c5436cacf2a891c582e2970565ca658c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfd4b26_c484725d",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-03T03:32:34Z",
+      "side": 1,
+      "message": "Same question here. I don\u0027t think it\u0027s a forced mode sensor, so do we need to change the config?",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 16
+      },
+      "revId": "bbb1b4c5436cacf2a891c582e2970565ca658c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
