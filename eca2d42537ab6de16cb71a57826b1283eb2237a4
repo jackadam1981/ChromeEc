@@ -69,6 +69,30 @@
       "revId": "eca2d42537ab6de16cb71a57826b1283eb2237a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfd4b26_d2bf94af",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2016-11-03T17:24:48Z",
+      "side": 1,
+      "message": "Wow.  Dumb of me.  I looked at the mutex for the above stuff and somehow assumed it was getting unlocked in the block above.  :-/\n\nYes, this makes a lot of sense then.  If there\u0027s already an event in the FIFO then it must be a wake event and we must be in the process of waking up so keeping the rest of the keys makes lots of sense.  :)",
+      "parentUuid": "4bfd4b26_32d1180c",
+      "range": {
+        "startLine": 193,
+        "startChar": 37,
+        "endLine": 194,
+        "endChar": 20
+      },
+      "revId": "eca2d42537ab6de16cb71a57826b1283eb2237a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
