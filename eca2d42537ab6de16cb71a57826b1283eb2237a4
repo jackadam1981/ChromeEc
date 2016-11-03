@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bfd4b26_523024b4",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2016-11-03T17:12:10Z",
+      "side": 1,
+      "message": "Not related to your patch, but it sure seems like this belongs in the mutex_lock(), especially if there are multiple callers that could be adding to the FIFO at the same time.",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "eca2d42537ab6de16cb71a57826b1283eb2237a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfd4b26_32ffd88d",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2016-11-03T17:12:10Z",
+      "side": 1,
+      "message": "This is racy.  If another event happens to be queued at the same time then you\u0027ll stop trying to clear the FIFO.",
+      "range": {
+        "startLine": 193,
+        "startChar": 37,
+        "endLine": 194,
+        "endChar": 20
+      },
+      "revId": "eca2d42537ab6de16cb71a57826b1283eb2237a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
