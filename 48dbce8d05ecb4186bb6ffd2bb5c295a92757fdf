@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4bfd4b26_c55a2963",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-03T22:48:53Z",
+      "side": 1,
+      "message": "If a host event that can wake up the AP is waiting, we should be waking up. If \"non-wakeable\" host events are waiting, only the keyboard would wake up the AP if scanning was enabled. As written, I don\u0027t think other events would wake it up.",
+      "parentUuid": "4bfd4b26_05ded1c1",
+      "revId": "48dbce8d05ecb4186bb6ffd2bb5c295a92757fdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bfd4b26_25542d3a",
         "filename": "common/mkbp_event.c",
         "patchSetId": 2
