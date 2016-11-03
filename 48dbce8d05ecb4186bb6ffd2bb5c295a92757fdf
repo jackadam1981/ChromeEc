@@ -16,6 +16,23 @@
       "revId": "48dbce8d05ecb4186bb6ffd2bb5c295a92757fdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfd4b26_25542d3a",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-03T22:47:50Z",
+      "side": 1,
+      "message": "Note to self: \n+ Looking at the original CL, that could will break motion task when if significant motion sensor is enabled and WAKEUP_MASK enforced.\n+ I have a special ABI call for detecting when the host is sleeping/about to sleep (FIFO_INT_ENABLE), I should replace it with a host_is_sleeping equivalent.",
+      "revId": "48dbce8d05ecb4186bb6ffd2bb5c295a92757fdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
