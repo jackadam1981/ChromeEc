@@ -16,6 +16,24 @@
       "revId": "c577dc35bfd78f60af7c1d7cf81da49a381f92cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfd4b26_28a9a467",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-03T23:59:49Z",
+      "side": 1,
+      "message": "OK. I suppose we can re-visit this in the future if we can not re-use this for whatever comes next.",
+      "parentUuid": "4bfd4b26_12373c45",
+      "revId": "c577dc35bfd78f60af7c1d7cf81da49a381f92cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
