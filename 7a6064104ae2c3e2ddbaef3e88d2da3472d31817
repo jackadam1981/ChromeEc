@@ -16,6 +16,24 @@
       "revId": "7a6064104ae2c3e2ddbaef3e88d2da3472d31817",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfd4b26_08a6e898",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-11-03T23:59:51Z",
+      "side": 1,
+      "message": "Modified so default behavior is to display and if \u0027rst\u0027 is appended then it will reset the count and display a message indicating that the count was reset.",
+      "parentUuid": "4bfd4b26_e523e56d",
+      "revId": "7a6064104ae2c3e2ddbaef3e88d2da3472d31817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
