@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e641d62c_eec75f9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-03T14:17:54Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "27d14998832b6c8fcd5abfb60ee6f97bec67a5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e61ab656_46fe9446",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-03T14:17:54Z",
+      "side": 1,
+      "message": "ditto about whitespaces",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 9
+      },
+      "revId": "27d14998832b6c8fcd5abfb60ee6f97bec67a5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "862ada5e_88f097bf",
+        "filename": "include/flash.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-03T14:17:54Z",
+      "side": 1,
+      "message": "so many whitespace changes, I cannot even find the real changes, and they might be unrelated ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "27d14998832b6c8fcd5abfb60ee6f97bec67a5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2625ae91_85f162ec",
+        "filename": "include/flash.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-03T14:17:54Z",
+      "side": 1,
+      "message": "sure that was wrong, but this is mostly unrelated to this CL",
+      "range": {
+        "startLine": 207,
+        "startChar": 43,
+        "endLine": 207,
+        "endChar": 48
+      },
+      "revId": "27d14998832b6c8fcd5abfb60ee6f97bec67a5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2625ae91_650626fb",
+        "filename": "include/flash.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-03T14:17:54Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 217,
+        "startChar": 16,
+        "endLine": 217,
+        "endChar": 17
+      },
+      "revId": "27d14998832b6c8fcd5abfb60ee6f97bec67a5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
