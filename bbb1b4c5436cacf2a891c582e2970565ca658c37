@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4bfd4b26_ed507147",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-03T18:07:08Z",
+      "side": 1,
+      "message": "Yes, Julius already worked on that. This is taken care off by change the threshold angle: see https://chromium-review.googlesource.com/332783",
+      "parentUuid": "4bfd4b26_67a48044",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 43
+      },
+      "revId": "bbb1b4c5436cacf2a891c582e2970565ca658c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bfd4b26_24967695",
         "filename": "board/kevin/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-03T03:32:34Z",
       "side": 1,
       "message": "Do these need to be initialized, or will the AP do it since it\u0027s in forced mode?",
+      "range": {
+        "startLine": 542,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 16
+      },
+      "revId": "bbb1b4c5436cacf2a891c582e2970565ca658c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfd4b26_cd5db55d",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-03T18:07:08Z",
+      "side": 1,
+      "message": "See next CL: for now, just enable the sensors.",
+      "parentUuid": "4bfd4b26_24967695",
       "range": {
         "startLine": 542,
         "startChar": 0,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "4bfd4b26_ad5a6961",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-03T18:07:08Z",
+      "side": 1,
+      "message": "Yes, because it is on the same power line.\nNote that because the odr is 0, it is in suspend mode.",
+      "parentUuid": "4bfd4b26_a46846d1",
+      "revId": "bbb1b4c5436cacf2a891c582e2970565ca658c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bfd4b26_c484725d",
         "filename": "board/kevin/board.c",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2016-11-03T03:32:34Z",
       "side": 1,
       "message": "Same question here. I don\u0027t think it\u0027s a forced mode sensor, so do we need to change the config?",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 16
+      },
+      "revId": "bbb1b4c5436cacf2a891c582e2970565ca658c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfd4b26_2d2899b3",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-03T18:07:08Z",
+      "side": 1,
+      "message": "When we enable LID_CHANGE.",
+      "parentUuid": "4bfd4b26_c484725d",
       "range": {
         "startLine": 689,
         "startChar": 0,
