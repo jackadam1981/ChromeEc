@@ -22,6 +22,30 @@
       "revId": "2923e620797b39ed93e1017676d3b9e710378288",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfd4b26_cd36d515",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-03T18:08:01Z",
+      "side": 1,
+      "message": "It is only needed with LID_ANGLE_UPDATE. You want me to merge these 2 CLs?",
+      "parentUuid": "4bfd4b26_07937ce4",
+      "range": {
+        "startLine": 542,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 16
+      },
+      "revId": "2923e620797b39ed93e1017676d3b9e710378288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
