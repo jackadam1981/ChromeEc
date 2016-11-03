@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "e61ab656_c680c494",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-03T15:51:54Z",
+      "side": 1,
+      "message": "given that\u0027s what we do for the last chunk,\nyes this might be ok, but we should avoid it.\nAnd I have just tested it\u0027s slower for sure",
+      "parentUuid": "4bfd4b26_72d200bc",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 45
+      },
+      "revId": "27d14998832b6c8fcd5abfb60ee6f97bec67a5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e61ab656_46fe9446",
         "filename": "core/cortex-m0/ec.lds.S",
         "patchSetId": 1
@@ -64,6 +88,29 @@
         "startChar": 0,
         "endLine": 57,
         "endChar": 9
+      },
+      "revId": "27d14998832b6c8fcd5abfb60ee6f97bec67a5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e61ab656_06365c46",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1602,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-03T15:51:54Z",
+      "side": 1,
+      "message": "typo: will",
+      "range": {
+        "startLine": 1602,
+        "startChar": 37,
+        "endLine": 1602,
+        "endChar": 41
       },
       "revId": "27d14998832b6c8fcd5abfb60ee6f97bec67a5d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
