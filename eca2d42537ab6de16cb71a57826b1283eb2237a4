@@ -45,6 +45,30 @@
       "revId": "eca2d42537ab6de16cb71a57826b1283eb2237a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfd4b26_32d1180c",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-03T17:20:42Z",
+      "side": 1,
+      "message": "We hold the mutex here, so another event can\u0027t get queued until we\u0027re finished.",
+      "parentUuid": "4bfd4b26_32ffd88d",
+      "range": {
+        "startLine": 193,
+        "startChar": 37,
+        "endLine": 194,
+        "endChar": 20
+      },
+      "revId": "eca2d42537ab6de16cb71a57826b1283eb2237a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
