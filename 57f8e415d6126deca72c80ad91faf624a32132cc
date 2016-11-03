@@ -22,6 +22,24 @@
       "revId": "57f8e415d6126deca72c80ad91faf624a32132cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfd4b26_471ce48b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-03T04:37:12Z",
+      "side": 1,
+      "message": "Hmm, that\u0027s a good point. I can\u0027t think of a reason right now why we would. Maybe we should just ignore the non-wake events.",
+      "parentUuid": "26a04e09_a17bc6e1",
+      "revId": "57f8e415d6126deca72c80ad91faf624a32132cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
