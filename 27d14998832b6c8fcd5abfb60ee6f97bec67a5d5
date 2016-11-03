@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4bfd4b26_f216100a",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-03T17:12:21Z",
+      "side": 1,
+      "message": "We can add a #error to enforce that. being a multiple of 64 is not a problem.",
+      "parentUuid": "4bfd4b26_72d200bc",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 45
+      },
+      "revId": "27d14998832b6c8fcd5abfb60ee6f97bec67a5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e61ab656_46fe9446",
         "filename": "core/cortex-m0/ec.lds.S",
         "patchSetId": 1
@@ -152,6 +176,30 @@
       "writtenOn": "2016-11-03T14:17:54Z",
       "side": 1,
       "message": "sure that was wrong, but this is mostly unrelated to this CL",
+      "range": {
+        "startLine": 207,
+        "startChar": 43,
+        "endLine": 207,
+        "endChar": 48
+      },
+      "revId": "27d14998832b6c8fcd5abfb60ee6f97bec67a5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfd4b26_1243bc0e",
+        "filename": "include/flash.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-03T17:12:21Z",
+      "side": 1,
+      "message": "Send a seprate CL. Found it while reviewing hash calculation path.",
+      "parentUuid": "2625ae91_85f162ec",
       "range": {
         "startLine": 207,
         "startChar": 43,
