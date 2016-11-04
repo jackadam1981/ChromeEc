@@ -49,19 +49,24 @@ extern struct keyboard_scan_config keyscan_config;
 
 /* Key held down at keyboard-controlled reset boot time. */
 enum boot_key {
-	BOOT_KEY_NONE,  /* No keys other than keyboard-controlled reset keys */
-	BOOT_KEY_ESC,
-	BOOT_KEY_DOWN_ARROW,
-	BOOT_KEY_OTHER = -1,  /* None of the above */
+	/* No keys other than keyboard-controlled reset keys */
+	BOOT_KEY_NONE = 0,
+	BOOT_KEY_ESC = (1 << 0),
+	BOOT_KEY_DOWN_ARROW = (1 << 1),
+	BOOT_KEY_LEFT_SHIFT = (1 << 2),
 };
 
 #ifdef HAS_TASK_KEYSCAN
 /**
- * Return the key held down at boot time in addition to the keyboard-controlled
- * reset keys.  Returns BOOT_KEY_OTHER if none of the keys specifically checked
- * was pressed, or reset was not caused by a keyboard-controlled reset.
+ * Returns mask of all the keys held down at boot time in addition to the
+ * keyboard-controlled reset keys. If more than one boot key is held, mask bits
+ * will be set for each of those keys.
+ *
+ * Returns BOOT_NONE if no additional key is held or if none of the keys
+ * specificially checked was pressed, or reset was not caused by a
+ * keyboard-controlled reset.
  */
-enum boot_key keyboard_scan_get_boot_key(void);
+uint32_t keyboard_scan_get_boot_key(void);
 #else
 static inline enum boot_key keyboard_scan_get_boot_key(void)
 {
