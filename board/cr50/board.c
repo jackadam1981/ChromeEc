@@ -10,6 +10,7 @@
 #include "device_state.h"
 #include "ec_version.h"
 #include "flash_config.h"
+#include "fuses.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -57,6 +58,8 @@
 #define NVMEM_CR50_SIZE 300
 #define NVMEM_TPM_SIZE ((sizeof((struct nvmem_partition *)0)->buffer) \
 			- NVMEM_CR50_SIZE)
+
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
 /*
  * Make sure NV memory size definition in Implementation.h matches reality. It
@@ -251,9 +254,50 @@ static void configure_board_specific_gpios(void)
 	}
 }
 
+#define BUS_OBFS_EN (1 << 3)
+
+static int bus_obfuscation_disabled(void)
+{
+	return !((GR_FUSE(OBFUSCATION_EN) == FUSE_ENABLED) ||
+		(GR_FUSE(FW_DEFINED_BROM_APPLYSEC) & BUS_OBFS_EN) ||
+		GREAD(GLOBALSEC, OBFS_SW_EN));
+}
+
+/* Override fuses to disable bus obfuscation */
+static void disable_bus_obfuscation(void)
+{
+	/*
+	 * If the permission level is not high enough to override all fuses
+	 * don't try to override any.
+	 */
+	if (!runlevel_is_high())
+		return;
+	/*
+	 * If the fuses are locked or bus obfuscation is already disabled we
+	 * should not continue.
+	 */
+	if (fuses_are_locked() || bus_obfuscation_disabled())
+		return;
+
+	/* Initialize all fuse prog registers to the correct value */
+	init_fuses();
+
+	/* Disable bus obfuscation */
+	GWRITE(FUSE, PROG_FW_DEFINED_BROM_APPLYSEC,
+		GR_FUSE(FW_DEFINED_BROM_APPLYSEC) & ~(BUS_OBFS_EN));
+	GWRITE(FUSE, PROG_OBFUSCATION_EN, 0);
+	GWRITE(GLOBALSEC, OBFS_SW_EN, 0);
+
+	override_fuses();
+
+	if (bus_obfuscation_disabled())
+		CPRINTS("Bus obfuscation disabled");
+}
+
 /* Initialize board. */
 static void board_init(void)
 {
+	disable_bus_obfuscation();
 	configure_board_specific_gpios();
 	init_pmu();
 	init_interrupts();
@@ -338,8 +382,6 @@ int flash_regions_to_enable(struct g_flash_region *regions,
 
 	return 3;
 }
-
-#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
 /* This is the interrupt handler to react to SYS_RST_L_IN */
 void sys_rst_asserted(enum gpio_signal signal)
