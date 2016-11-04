@@ -979,6 +979,9 @@
 /* Enable support for floating point unit */
 #undef CONFIG_FPU
 
+/* Add support for overriding fuses */
+#undef CONFIG_FUSE_OVERRIDE
+
 /*****************************************************************************/
 /* Firmware region configuration */
 
