@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4bfd4b26_bed5f946",
+        "filename": "power/apollolake.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-04T00:00:49Z",
+      "side": 1,
+      "message": "Oops, my mistake. You\u0027re correct that this is needed for CONFIG_CHIPSET_APOLLOLAKE.",
+      "parentUuid": "26a04e09_902b7a4c",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "50590d3e88cbf703c7818c7ea6269ef5b46a8af4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6e77223_67b090c1",
         "filename": "power/intel_x86.c",
         "patchSetId": 9
