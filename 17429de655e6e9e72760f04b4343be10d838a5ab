@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8b05834c_44f0aebe",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-11-04T23:41:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b05834c_8499f605",
+      "revId": "17429de655e6e9e72760f04b4343be10d838a5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b05834c_8480d693",
         "filename": "chip/g/fuses.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "8b05834c_1fc38f29",
+        "filename": "chip/g/fuses.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-11-04T23:41:59Z",
+      "side": 1,
+      "message": "I added a description to the commit message.",
+      "parentUuid": "8b05834c_8480d693",
+      "revId": "17429de655e6e9e72760f04b4343be10d838a5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b05834c_04db46d1",
         "filename": "chip/g/fuses.c",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2016-11-04T22:47:41Z",
       "side": 1,
       "message": "doesn\u0027t this function wait til override finished? The name is misleading in that case.",
+      "range": {
+        "startLine": 237,
+        "startChar": 5,
+        "endLine": 237,
+        "endChar": 23
+      },
+      "revId": "17429de655e6e9e72760f04b4343be10d838a5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_7fc8db41",
+        "filename": "chip/g/fuses.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-11-04T23:41:59Z",
+      "side": 1,
+      "message": "I renamed it.",
+      "parentUuid": "8b05834c_04db46d1",
       "range": {
         "startLine": 237,
         "startChar": 5,
