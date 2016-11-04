@@ -44,6 +44,7 @@ chip-$(CONFIG_DCRYPTO)+= dcrypto/x509.o
 
 chip-$(CONFIG_SPI_MASTER)+=spi_master.o
 
+chip-y+= fuses.o
 chip-y+= jitter.o
 chip-y+= pmu.o
 chip-y+= trng.o
