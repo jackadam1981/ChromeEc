@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b05834c_a4b23ae8",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-04T23:36:51Z",
+      "side": 1,
+      "message": "Obsolete comment - We\u0027re not adding any margin for hysteresis anymore. (I\u0027m not sure if that was ever useful for this)",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 174,
+        "endChar": 34
+      },
+      "revId": "3ce65d179f902e74c54001aeccbad5dd16dd487c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_24b00add",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-04T23:36:51Z",
+      "side": 1,
+      "message": "FWIW, the lower bounds in these else-if clauses can be removed so you only check the upper bounds (in increasing order).\n\nThat might reduce code size a tiny bit, but might also be less readable. Either way is fine w/ me.",
+      "revId": "3ce65d179f902e74c54001aeccbad5dd16dd487c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_a49b5a58",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-04T23:36:51Z",
+      "side": 1,
+      "message": "Obsolete comment?",
+      "range": {
+        "startLine": 191,
+        "startChar": 60,
+        "endLine": 192,
+        "endChar": 44
+      },
+      "revId": "3ce65d179f902e74c54001aeccbad5dd16dd487c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
