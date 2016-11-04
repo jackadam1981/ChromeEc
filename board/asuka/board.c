@@ -332,9 +332,10 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
  */
 struct ec_thermal_config thermal_params[] = {
 	/* {Twarn, Thigh, Thalt}, fan_off, fan_max */
-	{{0, 0, 0}, 0, 0},	/* TMP432_Memory */
-	{{0, 0, 0}, 0, 0},	/* TMP432_PCH */
-	{{0, 0, 0}, 0, 0},	/* TMP432_Battery */
+	{{C_TO_K(76), C_TO_K(78), C_TO_K(80)}, 0,
+					C_TO_K(68)}, /* TMP432_Memory */
+	{{C_TO_K(74), C_TO_K(76), C_TO_K(78)}, 0, 0},	/* TMP432_PCH */
+	{{C_TO_K(69), C_TO_K(71), C_TO_K(73)}, 0, 0},	/* TMP432_Battery */
 	{{0, 0, 0}, 0, 0},	/* Battery */
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
