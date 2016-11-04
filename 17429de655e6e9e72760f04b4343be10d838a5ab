@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b05834c_8499f605",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-04T22:47:41Z",
+      "side": 1,
+      "message": "don\u0027t all g chips have fuses - why not include this unconditionally?\n\nIf functions are not used the linker will not link them in. \n\nUnconditional inclusion makes maintenance easier.",
+      "revId": "17429de655e6e9e72760f04b4343be10d838a5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_8480d693",
+        "filename": "chip/g/fuses.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-04T22:47:41Z",
+      "side": 1,
+      "message": "where does this file come from - did you write it from scratch?",
+      "revId": "17429de655e6e9e72760f04b4343be10d838a5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_04db46d1",
+        "filename": "chip/g/fuses.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-04T22:47:41Z",
+      "side": 1,
+      "message": "doesn\u0027t this function wait til override finished? The name is misleading in that case.",
+      "range": {
+        "startLine": 237,
+        "startChar": 5,
+        "endLine": 237,
+        "endChar": 23
+      },
+      "revId": "17429de655e6e9e72760f04b4343be10d838a5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
