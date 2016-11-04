@@ -65,17 +65,41 @@ struct keyboard_scan_config keyscan_config = {
 };
 #endif
 
+struct boot_key_addon {
+	enum boot_key key;
+	uint8_t index;
+	uint8_t value;
+};
+
 /* Boot key list.  Must be in same order as enum boot_key. */
 struct boot_key_entry {
 	uint8_t mask_index;
 	uint8_t mask_value;
+	struct boot_key_addon addon;
 };
+
+#define BOOT_KEY_ENTRY(i, v, addon_key, addon_index, addon_value)	\
+	{								\
+		.mask_index = i,					\
+		.mask_value = v,					\
+		.addon = {						\
+			.key = addon_key,				\
+			.index = addon_index,				\
+			.value = addon_value,				\
+		},							\
+	}
+
+#define SINGLE_BOOT_KEY(i, v)	BOOT_KEY_ENTRY(i, v, 0, 0, 0)
+
 static const struct boot_key_entry boot_key_list[] = {
-	{0, 0x00},  /* (none) */
-	{KEYBOARD_COL_ESC, KEYBOARD_MASK_ESC},   /* Esc */
-	{KEYBOARD_COL_DOWN, KEYBOARD_MASK_DOWN}, /* Down-arrow */
+	SINGLE_BOOT_KEY(0, 0),                                  /* none */
+	BOOT_KEY_ENTRY(KEYBOARD_COL_ESC, KEYBOARD_MASK_ESC,     /* Esc */
+		       BOOT_KEY_LEFT_ALT, KEYBOARD_COL_LEFT_ALT,
+		       KEYBOARD_MASK_LEFT_ALT),                 /* Left-Alt */
+	SINGLE_BOOT_KEY(KEYBOARD_COL_DOWN, KEYBOARD_MASK_DOWN), /* Down-arrow */
 };
 static enum boot_key boot_key_value = BOOT_KEY_OTHER;
+static enum boot_key boot_key_addon_value = BOOT_KEY_NONE;
 
 /* Debounced key matrix */
 static uint8_t __bss_slow debounced_state[KEYBOARD_COLS];
@@ -519,17 +543,18 @@ static int check_keys_changed(uint8_t *state)
  * Return non-zero if the specified key is pressed, with at most the keys used
  * for keyboard-controlled reset also pressed.
  */
-static int check_key(const uint8_t *state, int index, int mask)
+static int check_key(const uint8_t *state, const struct boot_key_entry *k)
 {
 	uint8_t allowed_mask[KEYBOARD_COLS] = {0};
 	int c;
 
 	/* Check for the key */
-	if (mask && !(state[index] & mask))
+	if (k->mask_value && !(state[k->mask_index] & k->mask_value))
 		return 0;
 
 	/* Check for other allowed keys */
-	allowed_mask[index] |= mask;
+	allowed_mask[k->mask_index] |= k->mask_value;
+	allowed_mask[k->addon.index] |= k->addon.value;
 	allowed_mask[KEYBOARD_COL_REFRESH] |= KEYBOARD_MASK_REFRESH;
 
 #ifdef CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI2
@@ -563,10 +588,13 @@ static int check_key(const uint8_t *state, int index, int mask)
  * key combination is down or this isn't the right type of boot to look at
  * boot keys.
  */
-static enum boot_key check_boot_key(const uint8_t *state)
+static void check_boot_key(const uint8_t *state, enum boot_key *boot_key,
+			   enum boot_key *boot_key_addon)
 {
 	const struct boot_key_entry *k = boot_key_list;
 	int i;
+	*boot_key = BOOT_KEY_OTHER;
+	*boot_key_addon = BOOT_KEY_NONE;
 
 	/*
 	 * If we jumped to this image, ignore boot keys.  This prevents
@@ -574,22 +602,32 @@ static enum boot_key check_boot_key(const uint8_t *state)
 	 * RO firmware.
 	 */
 	if (system_jumped_to_this_image())
-		return BOOT_KEY_OTHER;
+		return;
 
 	/* If reset was not caused by reset pin, refresh must be held down */
 	if (!(system_get_reset_flags() & RESET_FLAG_RESET_PIN) &&
 	    !(state[KEYBOARD_COL_REFRESH] & KEYBOARD_MASK_REFRESH))
-		return BOOT_KEY_OTHER;
+		return;
 
 	/* Check what single key is down */
 	for (i = 0; i < ARRAY_SIZE(boot_key_list); i++, k++) {
-		if (check_key(state, k->mask_index, k->mask_value)) {
-			CPRINTS("KB boot key %d", i);
-			return i;
+		if (check_key(state, k)) {
+			*boot_key = i;
+			break;
 		}
 	}
 
-	return BOOT_KEY_OTHER;
+	if (*boot_key == BOOT_KEY_OTHER)
+		return;
+
+	CPRINTS("KB boot key %d", *boot_key);
+
+	/* Check if addon key is down as well */
+	if (k->addon.value && (state[k->addon.index] & k->addon.value))
+		*boot_key_addon = k->addon.key;
+
+	if (*boot_key_addon != BOOT_KEY_NONE)
+		CPRINTS("KB boot key addon %d", *boot_key_addon);
 }
 
 static void keyboard_freq_change(void)
@@ -630,10 +668,17 @@ void keyboard_scan_init(void)
 	memcpy(prev_state, debounced_state, sizeof(prev_state));
 
 	/* Check for keys held down at boot */
-	boot_key_value = check_boot_key(debounced_state);
+	check_boot_key(debounced_state, &boot_key_value,
+		       &boot_key_addon_value);
 
 	/* Trigger event if recovery key was pressed */
-	if (boot_key_value == BOOT_KEY_ESC)
+	if (boot_key_value != BOOT_KEY_ESC)
+		return;
+
+	if (boot_key_addon_value == BOOT_KEY_LEFT_ALT)
+		host_set_single_event(
+				EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT);
+	else
 		host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
 }
 
