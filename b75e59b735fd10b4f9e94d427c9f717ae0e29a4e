@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b05834c_19172f6c",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-04T21:48:07Z",
+      "side": 1,
+      "message": "We should improve this, there\u0027s no reason to use floats here. We can use uint32 without loss of precision. Anyway, it\u0027s for another CL.",
+      "range": {
+        "startLine": 95,
+        "startChar": 11,
+        "endLine": 95,
+        "endChar": 20
+      },
+      "revId": "b75e59b735fd10b4f9e94d427c9f717ae0e29a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
