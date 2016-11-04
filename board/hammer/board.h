@@ -73,6 +73,9 @@
 #define CONFIG_SHA256
 #define CONFIG_RSA_KEY_SIZE 2048
 
+/* Enable control of I2C over USB */
+#define CONFIG_ELAN_TP
+
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
  * switch.

@@ -114,8 +114,8 @@ static int elan_tp_read_report(void)
 			int valid = touch_info & (1 << (3+i));
 
 			if (valid) {
-				int x = ((finger[0] & 0xf0) >> 4) | finger[1];
-				int y = (finger[0] & 0x0f) | finger[2];
+				int x = ((finger[0] & 0xf0) << 4) | finger[1];
+				int y = ((finger[0] & 0x0f) << 8) | finger[2];
 				int width = (finger[3] & 0xf0) >> 4;
 				int height = finger[3] & 0x0f;
 				int pressure = finger[4];
