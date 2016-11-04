@@ -68,6 +68,8 @@
 #define CPRINTS(format, args...) cprints(CC_TPM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_TPM, format, ## args)
 
+#define SYSPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+
 /* Register addresses for FIFO mode. */
 #define TPM_ACCESS	    (0)
 #define TPM_INTF_CAPABILITY (0x14)
@@ -993,8 +995,8 @@ void tpm_task(void)
 		}
 
 		command_code = be32toh(tpmh->command_code);
-		CPRINTF("%s: received fifo command 0x%04x\n",
-			__func__, command_code);
+		SYSPRINTF("%T %s: received fifo command 0x%04x ",
+			  __func__, command_code);
 
 		watchdog_reload();
 
@@ -1026,7 +1028,16 @@ void tpm_task(void)
 					       &response);
 			}
 		}
-		CPRINTF("got %d bytes in response\n", response_size);
+		SYSPRINTF("%T got %d bytes in response", response_size);
+		if (response_size >= 10) {
+			uint32_t tpm_code;
+
+			memcpy(&tpm_code, response + 6, sizeof(tpm_code));
+			SYSPRINTF(" code 0x%x\n", be32toh(tpm_code));
+		} else {
+			SYSPRINTF("\n");
+		}
+
 		if (response_size &&
 		    (response_size <= buffer_size)) {
 			uint32_t tpm_sts;
