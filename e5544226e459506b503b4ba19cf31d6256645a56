@@ -16,6 +16,24 @@
       "revId": "e5544226e459506b503b4ba19cf31d6256645a56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_d77f5c19",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1128036
+      },
+      "writtenOn": "2016-11-04T02:12:51Z",
+      "side": 1,
+      "message": "Fix code like this?\nif ((event_type \u003d\u003d EC_MKBP_EVENT_HOST_EVENT \u0026\u0026\n     (events \u0026 CONFIG_MKBP_WAKEUP_MASK)) ||\n    (event_type \u003d\u003d EC_MKBP_EVENT_KEY_MATRIX))",
+      "parentUuid": "4bfd4b26_85c30128",
+      "revId": "e5544226e459506b503b4ba19cf31d6256645a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
