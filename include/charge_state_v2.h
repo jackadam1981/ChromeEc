@@ -40,6 +40,22 @@ struct charge_state_data {
 	int desired_input_current;
 };
 
+#define TEMPC_FLOAT_TO_INT(c) ((c) * 10)
+
+struct fast_charge_profile {
+	int temp_c;
+	int current_high;
+	int current_low;
+	int voltage;
+};
+
+enum fast_chg_voltage_ranges {
+	VOLTAGE_RANGE_LOW,
+	VOLTAGE_RANGE_HIGH,
+};
+
+extern const struct fast_charge_profile fast_charge_info[];
+#if 0
 /*
  * Optional customization.
  *
@@ -62,7 +78,7 @@ enum ec_status charger_profile_override_get_param(uint32_t param,
 						  uint32_t *value);
 enum ec_status charger_profile_override_set_param(uint32_t param,
 						  uint32_t value);
-
+#endif
 /**
  * Set the charge input current limit. This value is stored and sent every
  * time AC is applied.

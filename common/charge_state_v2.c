@@ -563,6 +563,87 @@ const struct batt_params *charger_current_battery_params(void)
 	return &curr.batt;
 }
 
+#ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
+static int fast_charging_allowed = 1;
+
+static int charger_profile_override(void)
+{
+	int i;
+	/* temp in 0.1 deg C */
+	int temp_c = curr.batt.temperature - 2731;
+	/* keep track of last temperature range */
+	static int temp_range = CONFIG_FAST_CHARGE_TEMP_RANGE_DEFAULT;
+	/* keep track of last voltage range */
+	static enum fast_chg_voltage_ranges voltage_range = VOLTAGE_RANGE_LOW;
+	/* Current and previous battery voltage */
+	int batt_voltage;
+	static int prev_batt_voltage;
+
+	/*
+	 * Determine temperature range.
+	 * If temp reading was bad, use last range.
+	 */
+	if (!(curr.batt.flags & BATT_FLAG_BAD_TEMPERATURE)) {
+		for (i = 0; i < CONFIG_FAST_CHARGE_TEMP_RANGES; i++) {
+			if (temp_c < fast_charge_info[i].temp_c) {
+				temp_range = i;
+				break;
+			}
+		}
+	}
+
+	/* If battery voltage reading is bad, use the last reading. */
+	if (curr.batt.flags & BATT_FLAG_BAD_VOLTAGE) {
+		batt_voltage = prev_batt_voltage;
+	} else {
+		batt_voltage = prev_batt_voltage = curr.batt.voltage;
+		if (batt_voltage <= CONFIG_FAST_CHARGE_VOLTAGE_LOW)
+			voltage_range = VOLTAGE_RANGE_LOW;
+		else if (batt_voltage > CONFIG_FAST_CHARGE_VOLTAGE_LOW)
+			voltage_range = VOLTAGE_RANGE_HIGH;
+	}
+
+	/*
+	 * If we are not charging or we aren't using fast charging profiles,
+	 * then do not override desired current and voltage.
+	 */
+	if (curr.state != ST_CHARGE || !fast_charging_allowed)
+		return 0;
+	/*
+	 * Okay, impose our custom will:
+	 */
+	curr.requested_current = (voltage_range == VOLTAGE_RANGE_HIGH) ?
+					fast_charge_info[temp_range].current_high :
+					fast_charge_info[temp_range].current_low;
+	curr.requested_voltage = fast_charge_info[temp_range].voltage;
+
+	return 0;
+}
+
+/* Customs options controllable by host command. */
+#define PARAM_FASTCHARGE (CS_PARAM_CUSTOM_PROFILE_MIN + 0)
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	if (param == PARAM_FASTCHARGE) {
+		*value = fast_charging_allowed;
+		return EC_RES_SUCCESS;
+	}
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	if (param == PARAM_FASTCHARGE) {
+		fast_charging_allowed = value;
+		return EC_RES_SUCCESS;
+	}
+	return EC_RES_INVALID_PARAM;
+}
+#endif /* CONFIG_CHARGER_PROFILE_OVERRIDE */
+
 void charger_init(void)
 {
 	/* Initialize current state */
@@ -835,7 +916,7 @@ void charger_task(void)
 
 wait_for_it:
 #ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
-		sleep_usec = charger_profile_override(&curr);
+		sleep_usec = charger_profile_override();
 		if (sleep_usec < 0)
 			problem(PR_CUSTOM, sleep_usec);
 #endif
@@ -1354,3 +1435,19 @@ static int command_chgstate(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(chgstate, command_chgstate,
 			"[idle|discharge|debug on|off]",
 			"Get/set charge state machine status");
+
+#ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
+static int command_fastcharge(int argc, char **argv)
+{
+	if (argc > 1 && !parse_bool(argv[1], &fast_charging_allowed))
+		return EC_ERROR_PARAM1;
+
+	ccprintf("fastcharge %s\n", fast_charging_allowed ? "on" : "off");
+
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(fastcharge, command_fastcharge,
+			"[on|off]",
+			"Get or set fast charging profile");
+#endif
