@@ -8,6 +8,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "charge_state.h"
+#include "charger_profile.h"
 #include "console.h"
 #include "ec_commands.h"
 #include "util.h"

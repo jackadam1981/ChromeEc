@@ -8,6 +8,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "charge_manager.h"
+#include "charger_profile.h"
 #include "charge_state.h"
 #include "charger.h"
 #include "chipset.h"
@@ -834,7 +835,8 @@ void charger_task(void)
 		 */
 
 wait_for_it:
-#ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
+#if defined(CONFIG_CHARGER_PROFILE_OVERRIDE) || \
+	defined(CONFIG_CHARGER_PROFILE_OVERRIDE_CUSTOM)
 		sleep_usec = charger_profile_override(&curr);
 		if (sleep_usec < 0)
 			problem(PR_CUSTOM, sleep_usec);
@@ -1198,7 +1200,8 @@ static int charge_command_charge_state(struct host_cmd_handler_args *args)
 
 	case CHARGE_STATE_CMD_GET_PARAM:
 		val = 0;
-#ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
+#if defined(CONFIG_CHARGER_PROFILE_OVERRIDE) || \
+	defined(CONFIG_CHARGER_PROFILE_OVERRIDE_CUSTOM)
 		/* custom profile params */
 		if (in->get_param.param >= CS_PARAM_CUSTOM_PROFILE_MIN &&
 		    in->get_param.param <= CS_PARAM_CUSTOM_PROFILE_MAX) {
@@ -1251,7 +1254,8 @@ static int charge_command_charge_state(struct host_cmd_handler_args *args)
 
 	case CHARGE_STATE_CMD_SET_PARAM:
 		val = in->set_param.value;
-#ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
+#if defined(CONFIG_CHARGER_PROFILE_OVERRIDE) || \
+	defined(CONFIG_CHARGER_PROFILE_OVERRIDE_CUSTOM)
 		/* custom profile params */
 		if (in->set_param.param >= CS_PARAM_CUSTOM_PROFILE_MIN &&
 		    in->set_param.param <= CS_PARAM_CUSTOM_PROFILE_MAX) {
