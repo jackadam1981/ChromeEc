@@ -1,0 +1,293 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b05834c_24de4a26",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "sometimes you use 2, sometimes LSM6DSM_FS_LIST_NUM...",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_043d0680",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "you don\u0027t need a table:\nif Fmhz \u003d\u003d 0\n  value \u003d 0\nelse\n  value \u003d 31 - __builtin_clz(Fmh / 13000)\n  \nthe other way:\nFmhz \u003d 13000 \u003c\u003c value\n\n(see https://chromium-review.googlesource.com/393983)",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_ffbb2ba2",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "this one is weird, \nWe are not going to use 16G so, the formula is:\nG \u003d 2 + 2 * (value \u003e\u003e 1) + 4 * (value \u0026 0x1)",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_bf1b63e1",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "use a formula as well.",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_ffc16beb",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "could be a macro:\nLSM6DSM_ACCEL_OUT_X_L_ADDR + (LSM6DSM_GYRO_OUT_X_L_ADDR - LSM6DSM_ACCEL_OUT_X_L_ADDR) * type",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_84ed7610",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "Use __builtin_ctz() instead.",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_e40442f4",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "can mask be 0? If so, we would return 8, which is unexected?",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_7f129bca",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "rnd not used?",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_dfbe2763",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_dffbc751",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "As you pointed out, this is not very efficient to collect the data in read: better have an interrupt and collect the FIFO, even if it has one item: we don\u0027t have to check if the sensor is ready. Add a TODO()",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_3f5ad39a",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "This code is so similar to lsmds0, wonder if we can share it.",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_1f00af1a",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "if not tested, don\u0027t include it.",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_df0c675b",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "indentation?",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_5ff07773",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "extra space",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_9f013f6e",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "remove this test and line 461-464",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_04e7c6fc",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "no need to define this: use MOTIONSENSE_TYPE_ACCEL/GYRO directly.",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b05834c_04c06635",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-05T00:42:54Z",
+      "side": 1,
+      "message": "Is it needed? You should only use these strucutre in board.h.",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
