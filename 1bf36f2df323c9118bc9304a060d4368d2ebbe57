@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb0eff7b_e3e8b23b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-05T06:10:39Z",
+      "side": 1,
+      "message": "/* Reserve this last bit to indicate that at least one bit in a secondary\n * host event word is set.  See crbug.com/633646. */",
+      "range": {
+        "startLine": 554,
+        "startChar": 1,
+        "endLine": 554,
+        "endChar": 44
+      },
+      "revId": "1bf36f2df323c9118bc9304a060d4368d2ebbe57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
