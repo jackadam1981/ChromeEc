@@ -541,6 +541,7 @@ static void tpm_init(void)
 	 *
 	 * No harm in calling it twice in that case.
 	 */
+	watchdog_reload();
 	_TPM_Init();
 
 	if (!tpm_manufactured()) {
@@ -548,9 +549,12 @@ static void tpm_init(void)
 		 * If tpm has not been manufactured yet - this needs to run on
 		 * every startup. It will wipe out NV RAM, among other things.
 		 */
+		watchdog_reload();
 		TPM_Manufacture(1);
+		watchdog_reload();
 		_TPM_Init();
 		_plat__SetNvAvail();
+		watchdog_reload();
 		tpm_endorse();
 	} else {
 		_plat__SetNvAvail();
