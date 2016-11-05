@@ -7,6 +7,7 @@
 
 #include "battery_smart.h"
 #include "charge_state.h"
+#include "charger_profile.h"
 #include "console.h"
 #include "ec_commands.h"
 #include "extpower.h"
@@ -45,7 +46,7 @@ const struct battery_info *battery_get_info(void)
 	return &info;
 }
 
-#ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
+#ifdef CONFIG_CHARGER_PROFILE_OVERRIDE_CUSTOM
 
 static int fast_charging_allowed = 1;
 
@@ -223,7 +224,7 @@ DECLARE_CONSOLE_COMMAND(fastcharge, command_fastcharge,
 			"Get or set fast charging profile");
 #endif  /* CONFIG_CMD_FASTCHARGE */
 
-#endif	/* CONFIG_CHARGER_PROFILE_OVERRIDE */
+#endif	/* CONFIG_CHARGER_PROFILE_OVERRIDE_CUSTOM */
 
 #ifdef CONFIG_BATTERY_REVIVE_DISCONNECT
 /*
