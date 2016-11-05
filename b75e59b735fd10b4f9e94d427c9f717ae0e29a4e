@@ -22,6 +22,74 @@
       "revId": "b75e59b735fd10b4f9e94d427c9f717ae0e29a4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_571cac7d",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-11-05T00:36:30Z",
+      "side": 1,
+      "message": "Indeed, It has a chance we set ITCNT16 before ITEN bit is set since the clocks are asynchronous.",
+      "revId": "b75e59b735fd10b4f9e94d427c9f717ae0e29a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_f7eb8035",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-11-05T00:36:30Z",
+      "side": 1,
+      "message": "ITIM32\u0027s source clock is apb2. It\u0027s synchronous with CPU\u0027s clock. I think the driver needn\u0027t wait this bit to take effect. But it does no harm.",
+      "revId": "b75e59b735fd10b4f9e94d427c9f717ae0e29a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_97e8043b",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-11-05T00:36:30Z",
+      "side": 1,
+      "message": "The same as above.",
+      "revId": "b75e59b735fd10b4f9e94d427c9f717ae0e29a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_b7e50864",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-11-05T00:36:30Z",
+      "side": 1,
+      "message": "The same as above. We needn\u0027t two consecutive reading since their clocks are synchronous.",
+      "revId": "b75e59b735fd10b4f9e94d427c9f717ae0e29a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
