@@ -611,14 +611,26 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 				break;
 			}
 #endif /* defined(CONFIG_BATTERY_PRESENT_{GPIO/CUSTOM}) */
-			/* get batt param from write msg */
-			if (*out)
-				batt_param = *out;
-			rv = virtual_battery_read(batt_param,
-						  &resp->data[in_len],
-						  read_len);
+			if (write_len > 0) {
+				if (resp->num_msgs == 0) {
+					/*
+					 * Get batt param from the first
+					 * write msg.
+					 */
+					batt_param = *out;
+					rv = virtual_battery_read(
+					     batt_param,
+					     &resp->data[in_len],
+					     read_len);
+				}
+			} else {
+				rv = virtual_battery_read(batt_param,
+							  &resp->data[in_len],
+							  read_len);
+			}
+
 		}
-#endif
+#endif /* defined(VIRTUAL_BATTERY_ADDR) && defined(I2C_PORT_VIRTUAL_BATTERY) */
 		/* Transfer next message */
 		PTHRUPRINTF("i2c passthru xfer port=%x, addr=%x, out=%p, "
 			    "write_len=%x, data=%p, read_len=%x, flags=%x",
