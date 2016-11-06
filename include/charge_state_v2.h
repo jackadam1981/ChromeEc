@@ -74,14 +74,18 @@ int charge_set_input_current_limit(int ma);
 
 
 /**
- * Get value of battery parameter from charge state.
+ * Read/write value of battery parameter from charge state.
  *
- * @param batt_param	battery parameter
+ * @param batt_cmd_head	The beginning of the smart battery command
  * @param dest		Destination buffer for data
- * @param read_len	Number of bytes to write to buffer
+ * @param read_len	Number of bytes to read to the buffer
+ * @param write_len	Number of bytes to write
  * @return EC_SUCCESS if successful, non-zero if error.
  *
  */
-int virtual_battery_read(uint8_t batt_param, uint8_t *dest, int read_len);
+int virtual_battery_operation(const uint8_t *batt_cmd_head,
+			      uint8_t *dest,
+			      int read_len,
+			      int write_len);
 #endif /* __CROS_EC_CHARGE_STATE_V2_H */
 

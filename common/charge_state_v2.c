@@ -17,6 +17,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "i2c.h"
 #include "math_util.h"
 #include "printf.h"
 #include "sb_fw_update.h"
@@ -997,11 +998,32 @@ int charge_prevent_power_on(int power_button_pressed)
 }
 
 #ifdef VIRTUAL_BATTERY_ADDR
-int virtual_battery_read(uint8_t batt_param, uint8_t *dest, int read_len)
+int virtual_battery_operation(const uint8_t *batt_cmd_head,
+			      uint8_t *dest,
+			      int read_len,
+			      int write_len)
 {
 	int val;
+	static int batt_mode_cache;
 
-	switch (batt_param) {
+	switch (*batt_cmd_head) {
+	case SB_BATTERY_MODE:
+		if (write_len == 3) {
+			batt_mode_cache = batt_cmd_head[1] |
+					  (batt_cmd_head[2] << 8);
+		} else if (read_len > 0) {
+			if (batt_mode_cache == 0) {
+				i2c_xfer(I2C_PORT_VIRTUAL_BATTERY,
+					VIRTUAL_BATTERY_ADDR,
+					batt_cmd_head,
+					1,
+					(uint8_t *)&batt_mode_cache,
+					read_len,
+					I2C_XFER_SINGLE);
+			}
+			memcpy(dest, &batt_mode_cache, read_len);
+		}
+		break;
 	case SB_SERIAL_NUMBER:
 		val = strtoi(host_get_memmap(EC_MEMMAP_BATT_SERIAL), NULL, 16);
 		memcpy(dest, &val, read_len);
@@ -1019,7 +1041,10 @@ int virtual_battery_read(uint8_t batt_param, uint8_t *dest, int read_len)
 		memcpy(dest, &curr.batt.current, read_len);
 		break;
 	case SB_FULL_CHARGE_CAPACITY:
-		memcpy(dest, &curr.batt.full_capacity, read_len);
+		val = curr.batt.full_capacity;
+		if (batt_mode_cache & MODE_CAPACITY)
+			val /= 10;
+		memcpy(dest, &val, read_len);
 		break;
 	case SB_BATTERY_STATUS:
 		memcpy(dest, &curr.batt.status, read_len);
@@ -1029,12 +1054,20 @@ int virtual_battery_read(uint8_t batt_param, uint8_t *dest, int read_len)
 		       read_len);
 		break;
 	case SB_DESIGN_CAPACITY:
-		memcpy(dest, (int *)host_get_memmap(EC_MEMMAP_BATT_DCAP),
-		       read_len);
+		val = *(int *)host_get_memmap(EC_MEMMAP_BATT_DCAP);
+		if (batt_mode_cache & MODE_CAPACITY)
+			val /= 10;
+		memcpy(dest, &val, read_len);
 		break;
 	case SB_DESIGN_VOLTAGE:
 		memcpy(dest, (int *)host_get_memmap(EC_MEMMAP_BATT_DVLT),
 		       read_len);
+		break;
+	case SB_REMAINING_CAPACITY:
+		val = curr.batt.remaining_capacity;
+		if (batt_mode_cache & MODE_CAPACITY)
+			val /= 10;
+		memcpy(dest, &val, read_len);
 		break;
 	default:
 		return EC_ERROR_INVAL;

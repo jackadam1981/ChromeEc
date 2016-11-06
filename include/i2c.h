@@ -31,6 +31,19 @@ enum i2c_freq {
 	I2C_FREQ_COUNT,
 };
 
+#if defined(VIRTUAL_BATTERY_ADDR) && defined(I2C_PORT_VIRTUAL_BATTERY)
+/*
+ * The state machine used to parse smart battery command
+ * to support virtual battery
+ */
+enum batt_cmd_parse {
+	IDLE = 0,
+	START = 1,
+	WRITE_VB,
+	READ_VB,
+};
+#endif
+
 /* Data structure to define I2C port configuration. */
 struct i2c_port_t {
 	const char *name;     /* Port name */

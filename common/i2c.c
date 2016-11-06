@@ -539,7 +539,10 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 	int in_len;
 	int ret, i;
 #if defined(VIRTUAL_BATTERY_ADDR) && defined(I2C_PORT_VIRTUAL_BATTERY)
-	uint8_t batt_param = 0;
+	const uint8_t *batt_cmd_head;
+	uint8_t cache_hit = 0;
+	int acc_write_len = 0;
+	enum batt_cmd_parse sb_cmd_state = IDLE;
 #endif
 
 #ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
@@ -611,14 +614,102 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 				break;
 			}
 #endif /* defined(CONFIG_BATTERY_PRESENT_{GPIO/CUSTOM}) */
-			/* get batt param from write msg */
-			if (*out)
-				batt_param = *out;
-			rv = virtual_battery_read(batt_param,
-						  &resp->data[in_len],
-						  read_len);
+			if (sb_cmd_state == IDLE) {
+				/*
+				 * A legal battery command must start
+				 * with a i2c write for reg index.
+				 */
+				if (write_len == 0) {
+					resp->i2c_status = EC_I2C_STATUS_NAK;
+					break;
+				}
+				/* Record the head of battery command. */
+				batt_cmd_head = out;
+				sb_cmd_state = START;
+				rv = 0;
+			} else if (sb_cmd_state == START) {
+				if (write_len > 0) {
+					sb_cmd_state = WRITE_VB;
+					rv = 0;
+				} else {
+					sb_cmd_state = READ_VB;
+					/* Test if the reg is cached. */
+					rv = virtual_battery_operation(
+					     batt_cmd_head,
+					     &resp->data[in_len],
+					     0,
+					     0);
+					/*
+					 * If the reg is not cached in
+					 * the virtual memory, we need to
+					 * physically write the reg index to
+					 * the battry.
+					 */
+					if (rv) {
+						rv = i2c_xfer(
+							params->port,
+							addr,
+							batt_cmd_head,
+							1,
+							&resp->data[in_len],
+							0,
+							I2C_XFER_START);
+						/* sent a stop bit here */
+						if (rv == EC_ERROR_TIMEOUT) {
+							resp->i2c_status =
+							EC_I2C_STATUS_TIMEOUT;
+							break;
+						}
+						if (rv) {
+							resp->i2c_status =
+							EC_I2C_STATUS_NAK;
+							break;
+						}
+						rv = 1;
+					} else
+						cache_hit = 1;
+				}
+			} else if (sb_cmd_state == WRITE_VB) {
+				if (write_len == 0) {
+					resp->i2c_status = EC_I2C_STATUS_NAK;
+					break;
+				}
+			} else {
+				if (read_len == 0) {
+					resp->i2c_status = EC_I2C_STATUS_NAK;
+					break;
+				}
+				/*
+				 * Do not send the command to battery
+				 * if the reg is cached.
+				 */
+				if (cache_hit)
+					rv = 0;
+			}
+			acc_write_len += write_len;
+			/* the last message */
+			if (xferflags & I2C_XFER_STOP) {
+				/* check if the reg index is cached */
+				if (sb_cmd_state == WRITE_VB ||
+				    sb_cmd_state == START) {
+					virtual_battery_operation(
+					batt_cmd_head,
+					&resp->data[in_len],
+					0,
+					acc_write_len);
+				} else {
+					if (cache_hit) {
+						virtual_battery_operation(
+						batt_cmd_head,
+						&resp->data[0],
+						in_len + read_len,
+						0);
+					}
+				}
+			}
+
 		}
-#endif
+#endif /* defined(VIRTUAL_BATTERY_ADDR) && defined(I2C_PORT_VIRTUAL_BATTERY) */
 		/* Transfer next message */
 		PTHRUPRINTF("i2c passthru xfer port=%x, addr=%x, out=%p, "
 			    "write_len=%x, data=%p, read_len=%x, flags=%x",
