@@ -540,6 +540,8 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 	int ret, i;
 #if defined(VIRTUAL_BATTERY_ADDR) && defined(I2C_PORT_VIRTUAL_BATTERY)
 	uint8_t batt_param = 0;
+	/* The accumulated length of a battery write message */
+	int acc_sb_write_len = 0;
 #endif
 
 #ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
@@ -611,14 +613,30 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 				break;
 			}
 #endif /* defined(CONFIG_BATTERY_PRESENT_{GPIO/CUSTOM}) */
-			/* get batt param from write msg */
-			if (*out)
-				batt_param = *out;
-			rv = virtual_battery_read(batt_param,
-						  &resp->data[in_len],
-						  read_len);
+			if (write_len > 0) {
+				acc_sb_write_len += write_len;
+				if (write_len == 1) {
+					/* get batt param from write msg */
+					batt_param = *out;
+					rv = virtual_battery_read(
+					     batt_param,
+					     &resp->data[in_len],
+					     read_len);
+				}
+				/*
+				 * Reset acc_write_len when a legitimate
+				 * sb write operation is done.
+				 */
+				if (acc_sb_write_len == 3)
+					acc_sb_write_len = 0;
+			} else {
+				rv = virtual_battery_read(batt_param,
+							  &resp->data[in_len],
+							  read_len);
+				acc_sb_write_len = 0;
+			}
 		}
-#endif
+#endif /* defined(VIRTUAL_BATTERY_ADDR) && defined(I2C_PORT_VIRTUAL_BATTERY) */
 		/* Transfer next message */
 		PTHRUPRINTF("i2c passthru xfer port=%x, addr=%x, out=%p, "
 			    "write_len=%x, data=%p, read_len=%x, flags=%x",
