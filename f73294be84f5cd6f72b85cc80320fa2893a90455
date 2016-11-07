@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b78b3b0_7b4f5035",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2016-11-07T17:50:54Z",
+      "side": 1,
+      "message": "This approach improves boot time for all boards that do not use CONFIG_SW_DETECTION. Another approach is to introduce a config setting called for e.g: CONFIG_UNSERIALIZE_MOTIONSENSOR_RESUME and enable it for Reef. That way existing boards remain unaffected.",
+      "revId": "f73294be84f5cd6f72b85cc80320fa2893a90455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
