@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6bd84f3b_22b8101d",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-07T19:37:06Z",
+      "side": 1,
+      "message": "I think we need to force a timer interrupt in the \u0027else\u0027 case. If our delay should have caused ITIM32 to overflow, and we make no adjustment, we may after a short while go into deep sleep again, delay for a duration which should cause ITIM32 to overflow, repeat... so we can end up with ITIM32 ticking very \u0027slow\u0027 as we approach overflow point.",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 19
+      },
+      "revId": "435761ac21eb1ca8353d45a1298b222df2215f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b78b3b0_ae6b6bcd",
         "filename": "chip/npcx/hwtimer.c",
         "patchSetId": 5
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "Considering the situation you mentioned: If deadline is cross overflow value (0xFFFFFFFF), the evt_expired_us will be zero.\n\nPlease see the line 73 in timer.c (https://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/timer.c#73). If deadline\u0027s high 32 bits are not equal to now\u0027s high 32 bits, it will call __hw_clock_event_clear() and that\u0027s why I put this line here. Rearrange events after ITIM32 overflow interrupt is issued.",
       "parentUuid": "0b78b3b0_ae6b6bcd",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 9
+      },
+      "revId": "435761ac21eb1ca8353d45a1298b222df2215f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_824f1ca9",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-07T19:37:06Z",
+      "side": 1,
+      "message": "Thanks, you\u0027re right. I think I see the problem. See my comment on clock.c.",
+      "parentUuid": "6b692fe4_37a018dd",
       "range": {
         "startLine": 74,
         "startChar": 0,
