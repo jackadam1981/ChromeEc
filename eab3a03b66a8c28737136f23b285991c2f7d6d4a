@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0b78b3b0_db22241a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T16:48:41Z",
+      "side": 1,
+      "message": "Actually, this was intentional so that in the future if we have any other initialization that needs to be performed specifically on user request, we can reuse the same recovery mode host event, instead of adding one for every type of re-initialization.",
+      "parentUuid": "0b78b3b0_098e194c",
+      "range": {
+        "startLine": 551,
+        "startChar": 33,
+        "endLine": 551,
+        "endChar": 58
+      },
+      "revId": "eab3a03b66a8c28737136f23b285991c2f7d6d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b78b3b0_69f0edbe",
         "filename": "include/keyboard_scan.h",
         "patchSetId": 2
