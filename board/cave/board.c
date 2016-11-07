@@ -239,8 +239,6 @@ const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
 
 static void board_pmic_init(void)
 {
-	int pmic_reg31;
-
 	/* DISCHGCNT3 - enable 100 ohm discharge on V1.00A */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3e, 0x04);
 
@@ -268,14 +266,11 @@ static void board_pmic_init(void)
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x38, 0x7a);
 
 	/* V5ADS3CNT
-	 * [5:4] Bit 0:1 Set V5ADS3VSEL = Vnom+2%
+	 * [5:4] BIT 0:1 Set V5ADS3VSEL = Vnom+2%
+	 * [3:2] BIT 0:0 Set AOACCNTV5ADS3 = fast-charge mode disable
 	 * [1:0] BIT 1:0 Set CTLV5ADS3 = Force PWM
 	 */
-	if (!i2c_read8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x31, &pmic_reg31)) {
-		pmic_reg31 &= 0xCF;
-		pmic_reg31 |= 0x13;
-		i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x31, pmic_reg31);
-	}
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x31, 0x13);
 }
 DECLARE_HOOK(HOOK_INIT, board_pmic_init, HOOK_PRIO_DEFAULT);
 
@@ -420,6 +415,7 @@ static void board_chipset_resume(void)
 {
 	gpio_set_level(GPIO_PP3300_DX_CAM_EN, 1);
 	gpio_set_level(GPIO_KBBL_EN, 1);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x31, 0x13);
 
 	/*
 	 * Now that we have enabled the rail to the sensors, let's give enough
@@ -441,6 +437,7 @@ static void board_chipset_suspend(void)
 {
 	gpio_set_level(GPIO_KBBL_EN, 0);
 	gpio_set_level(GPIO_PP3300_DX_CAM_EN, 0);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x31, 0x12);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
