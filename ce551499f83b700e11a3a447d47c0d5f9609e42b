@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b12739d_a74d24e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-07T12:30:58Z",
+      "side": 1,
+      "message": "it\u0027s kind of a slippery slope...\nthe Smart Battery spec mostly says that these transactions should be a SMBus Read Word / Write Word / Read Block / Write Block.\nEven deciding if you can implement SMBus with a bare I2C controller is kind of an open question ...",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "ce551499f83b700e11a3a447d47c0d5f9609e42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b12739d_c754a06a",
+        "filename": "common/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-07T12:30:58Z",
+      "side": 1,
+      "message": "that\u0027s about as bad as the previous version, just for different constants.\nIMO, what is really defined is that you have the following structure:\nEither\nSTART I2C_Addr Reg_index Data_Wr1 Data_wr2 STOP\nor \nSTART I2C_Addr Reg_index START/REP_START Data_Rd1 Data_RD2 STOP\n\nSo, you should reset the index after a STOP,\nand set it on the first data (after START and addr).\nActually a lot of gas gauge have auto-increment, so on STOP you might just increment the index.",
+      "range": {
+        "startLine": 627,
+        "startChar": 0,
+        "endLine": 631,
+        "endChar": 26
+      },
+      "revId": "ce551499f83b700e11a3a447d47c0d5f9609e42b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
