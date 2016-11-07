@@ -19,6 +19,40 @@
     },
     {
       "key": {
+        "uuid": "dcf74308_5db58ed2",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-07T15:16:10Z",
+      "side": 1,
+      "message": "arrange alphabetically?",
+      "revId": "c0e1ec6104a7632ef578a8c8f4ca3a5283d3f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcf74308_1dd4a604",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-07T15:16:10Z",
+      "side": 1,
+      "message": "how about naming it as: slp_s0ix_host_evt?",
+      "revId": "c0e1ec6104a7632ef578a8c8f4ca3a5283d3f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c822b81_3557e841",
         "filename": "power/apollolake.c",
         "patchSetId": 1
@@ -48,6 +82,24 @@
       "side": 1,
       "message": "This is straight cherrypick from skylake. we would like to keep the code same as merged skylake patches unless there is a strong reason for change.",
       "parentUuid": "9c822b81_3557e841",
+      "revId": "c0e1ec6104a7632ef578a8c8f4ca3a5283d3f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcf74308_494af0c7",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-07T15:16:10Z",
+      "side": 1,
+      "message": "I think given opportunity we should improve the existing code. I will let experts comment on this.",
+      "parentUuid": "dc24a349_962e4a58",
       "revId": "c0e1ec6104a7632ef578a8c8f4ca3a5283d3f897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
