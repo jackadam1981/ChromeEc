@@ -189,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "0b64332d_340af004",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1173564
+      },
+      "writtenOn": "2016-11-07T20:30:19Z",
+      "side": 1,
+      "message": "Yes it\u0027s very similar also because device has the same features and behavior. In case of data not ready (maybe low odr than polling rate) we return old data",
+      "parentUuid": "8b05834c_3f5ad39a",
+      "revId": "5fe872e53a68ea828edee0aa50a060abfa3d01df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b05834c_1f00af1a",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 3
