@@ -141,8 +141,7 @@
 int sb_read(int cmd, int *param);
 
 /* Read sequence from battery */
-int sb_read_string(int port, int slave_addr, int offset, uint8_t *data,
-		   int len);
+int sb_read_string(int offset, uint8_t *data, int len);
 
 /* Write to battery */
 int sb_write(int cmd, int param);
