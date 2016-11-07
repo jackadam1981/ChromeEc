@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b78b3b0_899a2948",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T06:34:48Z",
+      "side": 1,
+      "message": "Shouldn\u0027t just check for CHIPSET_STATE_STANDBY | CHIPSET_STATE_ON work?\n\ni.e. if (chipset_in_state(CHIPSET_STATE_STANDBY | CHIPSET_STATE_ON)) {\n\n...\n}",
+      "range": {
+        "startLine": 1057,
+        "startChar": 4,
+        "endLine": 1058,
+        "endChar": 44
+      },
+      "revId": "4919005d36bc0d958107a8417b86837723cc2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b78b3b0_4994111c",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T06:34:48Z",
+      "side": 1,
+      "message": "no use initializing it. you are assigning value right in the next statement.",
+      "range": {
+        "startLine": 1059,
+        "startChar": 16,
+        "endLine": 1059,
+        "endChar": 19
+      },
+      "revId": "4919005d36bc0d958107a8417b86837723cc2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b78b3b0_298f550c",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1061,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T06:34:48Z",
+      "side": 1,
+      "message": "don\u0027t need extra braces.",
+      "range": {
+        "startLine": 1061,
+        "startChar": 9,
+        "endLine": 1061,
+        "endChar": 10
+      },
+      "revId": "4919005d36bc0d958107a8417b86837723cc2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b78b3b0_69954d1a",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T06:34:48Z",
+      "side": 1,
+      "message": "put this on a new line.",
+      "range": {
+        "startLine": 1065,
+        "startChar": 2,
+        "endLine": 1065,
+        "endChar": 3
+      },
+      "revId": "4919005d36bc0d958107a8417b86837723cc2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b78b3b0_e9a87d65",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T06:34:48Z",
+      "side": 1,
+      "message": "same as above.",
+      "range": {
+        "startLine": 1077,
+        "startChar": 1,
+        "endLine": 1078,
+        "endChar": 39
+      },
+      "revId": "4919005d36bc0d958107a8417b86837723cc2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b78b3b0_09a61999",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T06:34:48Z",
+      "side": 1,
+      "message": "Do you want to disable only lid_open event or all wake events?",
+      "range": {
+        "startLine": 1079,
+        "startChar": 47,
+        "endLine": 1079,
+        "endChar": 48
+      },
+      "revId": "4919005d36bc0d958107a8417b86837723cc2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b78b3b0_29e195ba",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T06:34:48Z",
+      "side": 1,
+      "message": "why is this required?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "4919005d36bc0d958107a8417b86837723cc2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
