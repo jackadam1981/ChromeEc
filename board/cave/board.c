@@ -238,6 +238,8 @@ static void board_pmic_init(void)
 {
 	int pmic_reg31;
 
+	CPRINTS("board_pmic_init()");
+
 	/* DISCHGCNT3 - enable 100 ohm discharge on V1.00A */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3e, 0x04);
 
@@ -245,8 +247,12 @@ static void board_pmic_init(void)
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3b, 0x1f);
 
 	/* No need to re-init PMIC since settings are sticky across sysjump */
-	if (system_jumped_to_this_image())
+	if (system_jumped_to_this_image()) {
+		CPRINTS("system_jumped_to_this_image");
 		return;
+	} else {
+		CPRINTS("NOT system_jumped_to_this_image");
+	}
 
 	/* Set CSDECAYEN / VCCIO decays to 0V at assertion of SLP_S0# */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x30, 0x4a);
@@ -272,9 +278,25 @@ static void board_pmic_init(void)
 		pmic_reg31 &= 0xCF;
 		pmic_reg31 |= 0x13;
 		i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x31, pmic_reg31);
+
+		CPRINTS("write %02X to pmic 0x31", pmic_reg31);
+	} else {
+		CPRINTS("board_pmic_init: read 0x31 failed");
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_pmic_init, HOOK_PRIO_DEFAULT);
+
+static int read_pmic31(int argc, char *argv[])
+{
+	int pmic_reg31;
+	if (!i2c_read8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x31, &pmic_reg31)) {
+		CPRINTS("read from pmic 0x31: %02x", pmic_reg31);
+	} else {
+		CPRINTS("board_pmic_init: read 0x31 failed");
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(rdpmic, read_pmic31, NULL, NULL, NULL);
 
 /* Initialize board. */
 static void board_init(void)
@@ -410,9 +432,16 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
+	int pmic_reg31;
+
 	gpio_set_level(GPIO_PP3300_DX_CAM_EN, 1);
 	gpio_set_level(GPIO_KBBL_EN, 1);
 
+	if (!i2c_read8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x31, &pmic_reg31)) {
+		CPRINTS("resume: read PMIC 0x31 %02X", pmic_reg31);
+	} else {
+		CPRINTS("resume: read PMIC 0x31 failed");
+	}
 	/*
 	 * Now that we have enabled the rail to the sensors, let's give enough
 	 * time for the sensors to boot up.  Without this delay, the very first
@@ -431,8 +460,16 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume,
 /* Called on AP S0 -> S3 transition */
 static void board_chipset_suspend(void)
 {
+	int pmic_reg31;
+
 	gpio_set_level(GPIO_KBBL_EN, 0);
 	gpio_set_level(GPIO_PP3300_DX_CAM_EN, 0);
+
+	if (!i2c_read8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x31, &pmic_reg31)) {
+		CPRINTS("suspend: read PMIC 0x31 %02X", pmic_reg31);
+	} else {
+		CPRINTS("suspend: read PMIC 0x31 failed");
+	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
