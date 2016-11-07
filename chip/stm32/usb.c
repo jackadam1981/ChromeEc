@@ -19,6 +19,7 @@
 
 /* Console output macro */
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
 #ifdef CONFIG_USB_BOS
 /* v2.01 (vs 2.00) BOS Descriptor provided */
@@ -227,7 +228,7 @@ static void ep0_tx(void)
 	if (set_addr) {
 		STM32_USB_DADDR = set_addr | 0x80;
 		set_addr = 0;
-		CPRINTF("SETAD %02x\n", STM32_USB_DADDR);
+		CPRINTS("SETAD %02x", STM32_USB_DADDR);
 	}
 	if (desc_ptr) {
 		/* we have an on-going descriptor transfer */
@@ -269,7 +270,7 @@ static void usb_reset(void)
 	 * as we are not configured yet
 	 */
 	STM32_USB_DADDR = 0 | 0x80;
-	CPRINTF("RST EP0 %04x\n", STM32_USB_EP(0));
+	CPRINTS("RST EP0 %04x", STM32_USB_EP(0));
 }
 
 void usb_interrupt(void)
@@ -336,7 +337,7 @@ void usb_init(void)
 	usb_connect();
 #endif
 
-	CPRINTF("USB init done\n");
+	CPRINTS("USB init done");
 }
 
 #ifndef CONFIG_USB_INHIBIT_INIT

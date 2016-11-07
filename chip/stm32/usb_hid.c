@@ -19,6 +19,7 @@
 
 /* Console output macro */
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
 #define HID_REPORT_SIZE  8
 
@@ -131,7 +132,7 @@ static int hid_iface_request(usb_uint *ep0_buf_rx, usb_uint *ep0_buf_tx)
 				   sizeof(report_desc));
 		STM32_TOGGLE_EP(0, EP_TX_RX_MASK, EP_TX_RX_VALID,
 			  EP_STATUS_OUT);
-		CPRINTF("RPT %04x[l %04x]\n", STM32_USB_EP(0),
+		CPRINTS("RPT %04x[l %04x]", STM32_USB_EP(0),
 			ep0_buf_rx[3]);
 		return 0;
 	}
