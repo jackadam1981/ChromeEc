@@ -52,6 +52,24 @@
       "revId": "08ac552d6883a882a56c74683c94352979af1aa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_6ec75ffc",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-07T23:02:58Z",
+      "side": 1,
+      "message": "I see. More keys should not be pressed. Now that we are dealing with masks it might be helpful to indicate that\u0027s the intention. i.e. perfect key matches.",
+      "parentUuid": "6bd84f3b_ae36c745",
+      "revId": "08ac552d6883a882a56c74683c94352979af1aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
