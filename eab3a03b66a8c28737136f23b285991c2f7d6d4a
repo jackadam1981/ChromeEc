@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b78b3b0_098e194c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-07T15:45:48Z",
+      "side": 1,
+      "message": "Memory retraining?\n\n(Hardware is always reinitialized on a recovery reboot.)",
+      "range": {
+        "startLine": 551,
+        "startChar": 33,
+        "endLine": 551,
+        "endChar": 58
+      },
+      "revId": "eab3a03b66a8c28737136f23b285991c2f7d6d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b78b3b0_69f0edbe",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-07T15:45:48Z",
+      "side": 1,
+      "message": "Should return uint32_t now that it\u0027s a mask.\n\nPlease update comment to indicate more than one bit can be returned.\n\nBOOT_KEY_NONE could also indicate that a key which is not one of those mentioned in enum boot_key is pressed.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "eab3a03b66a8c28737136f23b285991c2f7d6d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
