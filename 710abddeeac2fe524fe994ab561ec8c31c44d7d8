@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bd84f3b_c5168e0a",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-07T20:38:13Z",
+      "side": 1,
+      "message": "I\u0027m wondering why we wouldn\u0027t see both bits set in this case. i.e. HW_REINIT is subordinate to KEYBOARD_RECOVERY.",
+      "revId": "710abddeeac2fe524fe994ab561ec8c31c44d7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_a5426a07",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-07T20:38:13Z",
+      "side": 1,
+      "message": "Why wouldn\u0027t we have both bits set in the case of his key combination? i.e. HW_REINIT would be subordinate to KEYBOARD_RECOVERY. KEYBOARD_RECOVERY would always be set when recovery is invoked. Not a mutually exclusive event.",
+      "revId": "710abddeeac2fe524fe994ab561ec8c31c44d7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
