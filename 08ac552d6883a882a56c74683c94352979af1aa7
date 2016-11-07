@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bd84f3b_13ac3cd4",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-07T22:23:33Z",
+      "side": 1,
+      "message": "Why not?\n\nif (boot_key_value \u0026 BOOT_KEY_SEC) {\n   host_set_single_event(HOST_EVENT_KB_RECOVERY)\n   if (boot_key_value \u0026 KEY_LEFT_SHIFT)\n     host_set_single_event(HOST_EVENT_KB_RECOVERY_HW_REINIT)\n}",
+      "revId": "08ac552d6883a882a56c74683c94352979af1aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
