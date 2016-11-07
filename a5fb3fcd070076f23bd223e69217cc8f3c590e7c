@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bd84f3b_48a9b331",
+        "filename": "board/cave/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-07T20:59:10Z",
+      "side": 1,
+      "message": "Why not put this in a function to be called by both places instead of duplicating hard coded number w/o the associated comments?",
+      "revId": "a5fb3fcd070076f23bd223e69217cc8f3c590e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
