@@ -33,6 +33,24 @@
       "revId": "710abddeeac2fe524fe994ab561ec8c31c44d7d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bc73767_de57396c",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T21:50:21Z",
+      "side": 1,
+      "message": "Oh. Interesting. So, you mean the behavior should be something like:\nOld key combo: Set EC_HOST_EVENT_KEYBOARD_RECOVERY\n\nNew key combo: Set EC_HOST_EVENT_KEYBOARD_RECOVERY and EC_HOST_EVENT_KEYBOARD_RECOVERY\n\nThen, rest of the firmware would still use KEYBOARD_RECOVERY as it does right now and only those parts which care about the re-initialization can look-up the new host event.\n\nI think that makes sense.",
+      "parentUuid": "6bd84f3b_c5168e0a",
+      "revId": "710abddeeac2fe524fe994ab561ec8c31c44d7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
