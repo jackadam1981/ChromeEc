@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b12739d_24f012be",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-07T08:37:58Z",
+      "side": 1,
+      "message": "IMO that\u0027s a convoluted API for reading a U16",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 87,
+        "endChar": 55
+      },
+      "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b12739d_843f4679",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-07T08:37:58Z",
+      "side": 1,
+      "message": "2 lines of (uninformative) trace for every failed read,\nyou might regret it soon, but that\u0027s your call.",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b12739d_04f516ae",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-07T08:37:58Z",
+      "side": 1,
+      "message": "personally, I\u0027m fine using \"union\" for this kind of assignments.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 19
+      },
+      "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b12739d_64fa0a9e",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-07T08:37:58Z",
+      "side": 1,
+      "message": "When using directly i2c_xfer(), you are in-charge of doing the i2c_lock().\nMight be fine for now, but might explode later, I would still do it.\n\nBy the way, you are re-implementing i2c_write16,\nyou can just use it.",
+      "range": {
+        "startLine": 103,
+        "startChar": 6,
+        "endLine": 103,
+        "endChar": 14
+      },
+      "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b12739d_c4393e94",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-07T08:37:58Z",
+      "side": 1,
+      "message": "that\u0027s a custom CPRINTS ?",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 9
+      },
+      "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b12739d_44ff0e8c",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-07T08:37:58Z",
+      "side": 1,
+      "message": "I would do it the other way round, wait for the event then read the report",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 22
+      },
+      "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
