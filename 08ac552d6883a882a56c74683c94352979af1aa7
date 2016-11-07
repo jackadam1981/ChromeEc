@@ -34,6 +34,24 @@
       "revId": "08ac552d6883a882a56c74683c94352979af1aa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_ae36c745",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T22:57:03Z",
+      "side": 1,
+      "message": "Oops.. it would be:\nif (boot_key_value \u0026 ~(BOOT_KEY_ESC | BOOT_KEY_LEFT_SHIFT))\n    return;\nif (boot_key_value \u0026 BOOT_KEY_SEC) {\n   host_set_single_event(HOST_EVENT_KB_RECOVERY)\n   if (boot_key_value \u0026 KEY_LEFT_SHIFT)\n     host_set_single_event(HOST_EVENT_KB_RECOVERY_HW_REINIT)\n}",
+      "parentUuid": "6bd84f3b_8ef02375",
+      "revId": "08ac552d6883a882a56c74683c94352979af1aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
