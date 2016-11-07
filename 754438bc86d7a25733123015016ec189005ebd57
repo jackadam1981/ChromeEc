@@ -25,6 +25,76 @@
     },
     {
       "key": {
+        "uuid": "6bd84f3b_6514e225",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T20:28:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd84f3b_6564e263",
+      "range": {
+        "startLine": 84,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 20
+      },
+      "revId": "754438bc86d7a25733123015016ec189005ebd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_85a006df",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T20:28:11Z",
+      "side": 1,
+      "message": "changed this to uint32_t as well.",
+      "range": {
+        "startLine": 528,
+        "startChar": 7,
+        "endLine": 528,
+        "endChar": 10
+      },
+      "revId": "754438bc86d7a25733123015016ec189005ebd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_a5b42a20",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T20:28:11Z",
+      "side": 1,
+      "message": "uint32_t as well.",
+      "range": {
+        "startLine": 532,
+        "startChar": 1,
+        "endLine": 532,
+        "endChar": 4
+      },
+      "revId": "754438bc86d7a25733123015016ec189005ebd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bd84f3b_e5dab2cb",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 3
@@ -36,6 +106,30 @@
       "writtenOn": "2016-11-07T20:04:09Z",
       "side": 1,
       "message": "This is returning the mask of keys pressed, right? The should be uint32_t like exposed global function.",
+      "range": {
+        "startLine": 581,
+        "startChar": 7,
+        "endLine": 581,
+        "endChar": 11
+      },
+      "revId": "754438bc86d7a25733123015016ec189005ebd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_659b02ad",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T20:28:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd84f3b_e5dab2cb",
       "range": {
         "startLine": 581,
         "startChar": 7,
@@ -71,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "6bd84f3b_85c726a2",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T20:28:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd84f3b_e5255224",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 12
+      },
+      "revId": "754438bc86d7a25733123015016ec189005ebd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bd84f3b_c54a0ec7",
         "filename": "include/keyboard_scan.h",
         "patchSetId": 3
@@ -82,6 +200,30 @@
       "writtenOn": "2016-11-07T20:04:09Z",
       "side": 1,
       "message": "this has to be changed too.",
+      "range": {
+        "startLine": 71,
+        "startChar": 13,
+        "endLine": 71,
+        "endChar": 26
+      },
+      "revId": "754438bc86d7a25733123015016ec189005ebd57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_a5cb4aab",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-07T20:28:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd84f3b_c54a0ec7",
       "range": {
         "startLine": 71,
         "startChar": 13,
