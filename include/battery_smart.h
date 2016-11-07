@@ -132,17 +132,14 @@
 /* Manufacturer Access parameters */
 #define PARAM_SAFETY_STATUS             0x51
 #define PARAM_OPERATION_STATUS          0x54
-/* Operation status masks -- 6 byte reply */
-/* reply[3] */
-#define BATTERY_DISCHARGING_DISABLED    0x20
-#define BATTERY_CHARGING_DISABLED       0x40
+#define BATTERY_DISCHARGING_DISABLED    (1 << 13)
+#define BATTERY_CHARGING_DISABLED       (1 << 14)
 
 /* Read from battery */
 int sb_read(int cmd, int *param);
 
 /* Read sequence from battery */
-int sb_read_string(int port, int slave_addr, int offset, uint8_t *data,
-		   int len);
+int sb_read_string(int offset, uint8_t *data, int len);
 
 /* Write to battery */
 int sb_write(int cmd, int param);

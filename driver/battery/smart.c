@@ -8,6 +8,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "console.h"
+#include "extpower.h"
 #include "host_command.h"
 #include "i2c.h"
 #include "smbus.h"
@@ -60,8 +61,7 @@ test_mockable int sb_write(int cmd, int param)
 #endif
 }
 
-int sb_read_string(int port, int slave_addr, int offset, uint8_t *data,
-	int len)
+int sb_read_string(int offset, uint8_t *data, int len)
 {
 #ifdef CONFIG_BATTERY_CUT_OFF
 	/*
@@ -71,11 +71,34 @@ int sb_read_string(int port, int slave_addr, int offset, uint8_t *data,
 		return EC_RES_ACCESS_DENIED;
 #endif
 #ifdef CONFIG_SMBUS
-	return smbus_read_string(port, slave_addr, offset, data, len);
+	return smbus_read_string(I2C_PORT_BATTERY, BATTERY_ADDR, offset,
+				 data, len);
 #else
-	return i2c_read_string(port, slave_addr, offset, data, len);
+	return i2c_read_string(I2C_PORT_BATTERY, BATTERY_ADDR, offset,
+			       data, len);
 #endif
 }
+
+#if defined(CONFIG_BATTERY_REVIVE_DISCONNECT) || defined(CONFIG_CMD_BATT_MAC_ACCESS)
+/* Read Battery ManufacturerAccess() and ManufacturerBlockAccess() */
+static int battery_mac_read(int cmd, int read_on, uint32_t *value)
+{
+	uint8_t data[6];
+	int rv;
+
+	rv = sb_write(SB_MANUFACTURER_ACCESS, cmd);
+	if (rv)
+		return rv;
+
+	rv = sb_read_string(read_on, data, 6);
+	if (rv)
+		return rv;
+
+	*value = data[2] | data[3] >> 8 | data[4] >> 16 | data[5] >> 24;
+
+	return EC_SUCCESS;
+}
+#endif
 
 int battery_get_mode(int *mode)
 {
@@ -237,22 +260,19 @@ test_mockable int battery_manufacture_date(int *year, int *month, int *day)
 /* Read manufacturer name */
 test_mockable int battery_manufacturer_name(char *dest, int size)
 {
-	return sb_read_string(I2C_PORT_BATTERY, BATTERY_ADDR,
-			       SB_MANUFACTURER_NAME, dest, size);
+	return sb_read_string(SB_MANUFACTURER_NAME, dest, size);
 }
 
 /* Read device name */
 test_mockable int battery_device_name(char *dest, int size)
 {
-	return sb_read_string(I2C_PORT_BATTERY, BATTERY_ADDR,
-			       SB_DEVICE_NAME, dest, size);
+	return sb_read_string(SB_DEVICE_NAME, dest, size);
 }
 
 /* Read battery type/chemistry */
 test_mockable int battery_device_chemistry(char *dest, int size)
 {
-	return sb_read_string(I2C_PORT_BATTERY, BATTERY_ADDR,
-			       SB_DEVICE_CHEMISTRY, dest, size);
+	return sb_read_string(SB_DEVICE_CHEMISTRY, dest, size);
 }
 
 void battery_get_params(struct batt_params *batt)
@@ -364,6 +384,66 @@ int battery_wait_for_stable(void)
 	return EC_ERROR_NOT_POWERED;
 }
 
+#ifdef CONFIG_BATTERY_REVIVE_DISCONNECT
+/*
+ * Check if battery is in disconnect state, a state entered by pulling
+ * BATT_DISCONN_N low, and clear that state if we have external power plugged
+ * and no battery faults are detected. Disconnect state resembles battery
+ * shutdown mode, but extra steps must be taken to get the battery out of this
+ * mode.
+ */
+enum battery_disconnect_state battery_get_disconnect_state(void)
+{
+	uint32_t value;
+	int rv;
+
+	/*
+	 * Take note if we find that the battery isn't in disconnect state,
+	 * and always return NOT_DISCONNECTED without probing the battery.
+	 * This assumes the battery will not go to disconnect state during
+	 * runtime.
+	 */
+	static int not_disconnected;
+
+	if (not_disconnected)
+		return BATTERY_NOT_DISCONNECTED;
+
+	if (extpower_is_present()) {
+		/* Check if battery charging + discharging is disabled. */
+		rv = battery_mac_read(PARAM_OPERATION_STATUS,
+					SB_ALT_MANUFACTURER_ACCESS, &value);
+		if (rv)
+			return BATTERY_DISCONNECT_ERROR;
+
+		if (~value & (BATTERY_DISCHARGING_DISABLED |
+				       BATTERY_CHARGING_DISABLED)) {
+			not_disconnected = 1;
+			return BATTERY_NOT_DISCONNECTED;
+		}
+
+		/*
+		 * Battery is neither charging nor discharging. Verify that
+		 * we didn't enter this state due to a safety fault.
+		 */
+		rv = battery_mac_read(PARAM_SAFETY_STATUS,
+					SB_ALT_MANUFACTURER_ACCESS, &value);
+		if (rv || value)
+			return BATTERY_DISCONNECT_ERROR;
+
+#ifdef CONFIG_BATTERY_PRESENT_CUSTOM
+		/*
+		 * Battery is present and also the status is initialized and
+		 * no safety fault, battery is disconnected.
+		 */
+		if (battery_is_present() == BP_YES)
+			return BATTERY_DISCONNECTED;
+#endif /* CONFIG_BATTERY_PRESENT_CUSTOM */
+	}
+	not_disconnected = 1;
+	return BATTERY_NOT_DISCONNECTED;
+}
+#endif /* CONFIG_BATTERY_REVIVE_DISCONNECT */
+
 #if !defined(CONFIG_CHARGER_V1) && defined(CONFIG_CMD_BATTFAKE)
 static int command_battfake(int argc, char **argv)
 {
@@ -388,6 +468,35 @@ DECLARE_CONSOLE_COMMAND(battfake, command_battfake,
 			"percent (-1 = use real level)",
 			"Set fake battery level");
 #endif
+
+#ifdef CONFIG_CMD_BATT_MAC_ACCESS
+static int command_batt_mac_access(int argc, char **argv)
+{
+	char *e;
+	int cmd, read_on, rv;
+	uint32_t value;
+
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	cmd = strtoi(argv[1], &e, 16);
+	if (*e || cmd < 0)
+		return EC_ERROR_PARAM2;
+
+	read_on = strtoi(argv[2], &e, 16);
+	if (*e || read_on < 0)
+		return EC_ERROR_PARAM3;
+
+	rv = battery_mac_read(cmd, read_on, &value);
+	if (!rv)
+		ccprintf("cmd=0x%x, read_on=0x%x, value=0x%x\n",
+				cmd, read_on, value);
+	return rv;
+}
+DECLARE_CONSOLE_COMMAND(battmac, command_batt_mac_access,
+			"battman <cmd_hex> <read_on_hex>",
+			"Read battery manufacturer acces command");
+#endif /* CONFIG_CMD_BATT_MAC_ACCESS */
 
 /*****************************************************************************/
 /* Smart battery pass-through
@@ -443,8 +552,7 @@ static int host_command_sb_read_block(struct host_cmd_handler_args *args)
 	    (p->reg != SB_DEVICE_CHEMISTRY) &&
 	    (p->reg != SB_MANUFACTURER_DATA))
 		return EC_RES_INVALID_PARAM;
-	rv = sb_read_string(I2C_PORT_BATTERY, BATTERY_ADDR, p->reg,
-			     r->data, 32);
+	rv = sb_read_string(p->reg, r->data, 32);
 	if (rv)
 		return EC_RES_ERROR;
 
