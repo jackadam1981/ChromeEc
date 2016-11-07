@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b12739d_24265286",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-07T08:05:02Z",
+      "side": 1,
+      "message": "but doing the 64-bit division for the time trace is also pretty slow on Cortex-M0, that\u0027s why I had avoided it in first place. It was modifying the timings significantly (not necessarily breaking things, but you will get different USB traces / transactions with and without it, so it was adding burden rather than helping debugging).",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "12ae2edecefa680977635aba09442c98ed7230ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
