@@ -134,7 +134,10 @@ int charger_profile_override(struct charge_state_data *curr)
 			curr->requested_current = curr->requested_voltage = 0;
 			curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
 			curr->state = ST_IDLE;
-		}
+			if (curr->batt.state_of_charge > 95)
+				charger_discharge_on_ac(1);
+		} else
+			charger_discharge_on_ac(0);
 	}
 
 	prev_state = curr->state;
