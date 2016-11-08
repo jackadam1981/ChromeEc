@@ -13,6 +13,8 @@
 #include "extpower.h"
 #include "util.h"
 
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
+
 /* Shutdown mode parameter to write to manufacturer access register */
 #define SB_SHUTDOWN_DATA	0x0010
 
@@ -116,7 +118,7 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 
 int charger_profile_override(struct charge_state_data *curr)
 {
-	static int prev_state = ST_IDLE;
+	static int now_discharging;
 	const struct battery_info *batt_info = battery_get_info();
 
 	/* battery temp in 0.1 deg C */
@@ -125,19 +127,26 @@ int charger_profile_override(struct charge_state_data *curr)
 	if (curr->state == ST_CHARGE) {
 		/* Don't charge if outside of allowable temperature range */
 		if (bat_temp_c >= batt_info->charging_max_c * 10 ||
-		    bat_temp_c < batt_info->charging_min_c * 10 ||
-		    /* Don't start charging if battery is nearly full */
-		    (prev_state != ST_CHARGE &&
-		     curr->batt.state_of_charge > 95) ||
-		    /* Don't charge if battery voltage is approaching max */
-		    curr->batt.voltage > batt_info->voltage_max - 10) {
+		    bat_temp_c < batt_info->charging_min_c * 10) {
 			curr->requested_current = curr->requested_voltage = 0;
 			curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
 			curr->state = ST_IDLE;
-		}
+			now_discharging = 0;
+		} else if ((curr->batt.status & STATUS_FULLY_CHARGED) ||
+		    /* Don't start charging if battery is nearly full */
+		    (now_discharging &&
+		    curr->batt.state_of_charge >= BATTERY_LEVEL_NEAR_FULL) ||
+		    /* Don't charge if battery voltage is approaching max */
+		    curr->batt.voltage >= batt_info->voltage_max) {
+			curr->requested_current = curr->requested_voltage = 0;
+			curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
+			curr->state = ST_DISCHARGE;
+			now_discharging = 1;
+		} else
+			now_discharging = 0;
+		charger_discharge_on_ac(now_discharging);
 	}
 
-	prev_state = curr->state;
 	return 0;
 }
 
