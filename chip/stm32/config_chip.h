@@ -9,6 +9,16 @@
 #ifdef CHIP_FAMILY_STM32F0
 /* CPU core BFD configuration */
 #include "core/cortex-m0/config_core.h"
+/* IRQ priorities */
+#ifndef STM32_IRQ_EXT0_1_PRIORITY
+#define STM32_IRQ_EXT0_1_PRIORITY	1
+#endif
+#ifndef STM32_IRQ_EXT2_3_PRIORITY
+#define STM32_IRQ_EXT2_3_PRIORITY	1
+#endif
+#ifndef STM32_IRQ_EXTI4_15_PRIORITY
+#define STM32_IRQ_EXTI4_15_PRIORITY	1
+#endif
 #else
 /* CPU core BFD configuration */
 #include "core/cortex-m/config_core.h"
