@@ -16,6 +16,52 @@
       "revId": "f73294be84f5cd6f72b85cc80320fa2893a90455",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_1434183d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-08T22:13:34Z",
+      "side": 1,
+      "message": "Can\u0027t this resume be done in the motion sense task itself?\n\nLong sleeps in the hook task is not a good thing, because it delays *all* deferred functions and hooks (which share the same task).",
+      "range": {
+        "startLine": 524,
+        "startChar": 39,
+        "endLine": 524,
+        "endChar": 50
+      },
+      "revId": "f73294be84f5cd6f72b85cc80320fa2893a90455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_b4644c64",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-08T22:13:34Z",
+      "side": 1,
+      "message": "typo: initializations",
+      "range": {
+        "startLine": 524,
+        "startChar": 18,
+        "endLine": 524,
+        "endChar": 33
+      },
+      "revId": "f73294be84f5cd6f72b85cc80320fa2893a90455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
