@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b692fe4_7da98f31",
+        "filename": "board/cave/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-11-08T15:51:38Z",
+      "side": 1,
+      "message": "Yes. If dut use old RO, the ec write 0x1b to pmic register 0x31, that is not we want. So I want re-write the reg 0x31 by 0x13(s0) or 0x12(not s0)",
+      "parentUuid": "6bd84f3b_5e2b244b",
+      "range": {
+        "startLine": 261,
+        "startChar": 43,
+        "endLine": 261,
+        "endChar": 53
+      },
+      "revId": "0027ae2fc886a34fb5c79c85228aa16b0b8dd006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bd84f3b_9e35aca6",
         "filename": "board/cave/board.c",
         "patchSetId": 4
@@ -77,6 +101,30 @@
       "side": 1,
       "message": "chipset_in_state() takes CHIPSET_STATE_* enums. You\u0027d want:\n\nchipset_in_state(CHIPSET_STATE_ON)",
       "parentUuid": "6b692fe4_fd4a7fc6",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 2
+      },
+      "revId": "0027ae2fc886a34fb5c79c85228aa16b0b8dd006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_5da4cb5c",
+        "filename": "board/cave/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-11-08T15:51:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd84f3b_de16540a",
       "range": {
         "startLine": 261,
         "startChar": 0,
