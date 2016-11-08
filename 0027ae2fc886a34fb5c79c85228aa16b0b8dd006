@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b692fe4_fd4a7fc6",
+        "filename": "board/cave/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2016-11-08T11:41:42Z",
+      "side": 1,
+      "message": "I hope when EC execute here, if system is running in S0 already, set set_pmic_v5a_ds3_ctrl(1); else set_pmic_v5a_ds3_ctrl(0);\nBut if I write\n\nif (chipset_in_state(POWER_S0))\n    set_pmic_v5a_ds3_ctrl(1);\nelse\n    set_pmic_v5a_ds3_ctrl(0);\n\nThe EC always execute set_pmic_v5a_ds3_ctrl(0);\nSo I use the system_jumped_to_this_image() to check\nBut I\u0027m not sure is there a better way?",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 2
+      },
+      "revId": "0027ae2fc886a34fb5c79c85228aa16b0b8dd006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
