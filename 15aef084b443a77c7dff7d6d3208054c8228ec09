@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "0b12739d_67fa0c9e",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-08T08:12:20Z",
+      "side": 1,
+      "message": "You mean doing a host command support over USB ?\nelse the EC console over USB is CONFIG_USB_CONSOLE.\nSTREAM_USART is used to forward a physical serial port to a USB endpoint ?",
+      "parentUuid": "6b692fe4_3a7b1d31",
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b12739d_64496a2d",
         "filename": "board/hammer/board.h",
         "patchSetId": 2
@@ -382,6 +400,24 @@
       "side": 1,
       "message": "Looks ok, AFAICT.\n\nI\u0027ll update those as needed.",
       "parentUuid": "0b12739d_244f7236",
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b12739d_47ff108c",
+        "filename": "board/hammer/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-08T08:12:20Z",
+      "side": 1,
+      "message": "even the debug i2c commands are working ?",
+      "parentUuid": "6b692fe4_daa8e165",
       "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
