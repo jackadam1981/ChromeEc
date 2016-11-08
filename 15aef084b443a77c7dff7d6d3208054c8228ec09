@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "6b692fe4_9a8ca9c3",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:04:09Z",
+      "side": 1,
+      "message": "Removed for now.",
+      "parentUuid": "0bf9938d_8c02c726",
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b12739d_e4239a6d",
         "filename": "board/hammer/board.c",
         "patchSetId": 2
@@ -42,6 +60,24 @@
         "endLine": 39,
         "endChar": 52
       },
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_ba896db2",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:04:09Z",
+      "side": 1,
+      "message": "Well, this is a weird EC ,-) Removed anyway.",
+      "parentUuid": "0b12739d_e4239a6d",
       "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "6b692fe4_3a7b1d31",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:04:09Z",
+      "side": 1,
+      "message": "Maybe not... Could be better to be able to send EC commands over USB, so that we can fetch EC logs, panic info, etc...",
+      "parentUuid": "0b12739d_0454f6c4",
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b12739d_64496a2d",
         "filename": "board/hammer/board.h",
         "patchSetId": 2
@@ -88,6 +142,24 @@
         "endLine": 26,
         "endChar": 25
       },
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_5a95b119",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:04:09Z",
+      "side": 1,
+      "message": "Done (please double-check I understood correctly ,-))",
+      "parentUuid": "0b12739d_64496a2d",
       "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -117,6 +189,41 @@
     },
     {
       "key": {
+        "uuid": "6b692fe4_9a89090c",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b12739d_64304ab5",
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_173074b3",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:04:09Z",
+      "side": 1,
+      "message": "0x5022",
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b1c6baf_6614ce25",
         "filename": "board/hammer/board.h",
         "patchSetId": 2
@@ -134,6 +241,24 @@
         "endLine": 45,
         "endChar": 40
       },
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_da7f8119",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:04:09Z",
+      "side": 1,
+      "message": "Not sure if we want to expose some unique number of not. I\u0027ll leave it as-is for now, with a TODO.",
+      "parentUuid": "4b1c6baf_6614ce25",
       "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -163,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "6b692fe4_fa7cc526",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b12739d_84162609",
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b12739d_c4201e64",
         "filename": "board/hammer/ec.tasklist",
         "patchSetId": 2
@@ -186,6 +329,24 @@
     },
     {
       "key": {
+        "uuid": "6b692fe4_3a947d1b",
+        "filename": "board/hammer/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:04:09Z",
+      "side": 1,
+      "message": "Yeah, even TASK_STACK_SIZE seems enough for now.",
+      "parentUuid": "0b12739d_c4201e64",
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b12739d_244f7236",
         "filename": "board/hammer/ec.tasklist",
         "patchSetId": 2
@@ -203,6 +364,24 @@
         "endLine": 21,
         "endChar": 57
       },
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_daa8e165",
+        "filename": "board/hammer/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:04:09Z",
+      "side": 1,
+      "message": "Looks ok, AFAICT.\n\nI\u0027ll update those as needed.",
+      "parentUuid": "0b12739d_244f7236",
       "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
