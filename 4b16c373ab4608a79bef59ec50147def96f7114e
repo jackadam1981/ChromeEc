@@ -143,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "6b692fe4_fdd7dfd4",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T08:55:12Z",
+      "side": 1,
+      "message": "Okay. But they you might as well use a struct directly, right?",
+      "parentUuid": "0b12739d_e70d5ce7",
+      "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b12739d_64fa0a9e",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 2
