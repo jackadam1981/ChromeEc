@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "6b692fe4_7d718f50",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1123350
+      },
+      "writtenOn": "2016-11-08T07:43:29Z",
+      "side": 1,
+      "message": "In an earlier approach, this was added to handle a potential race. In the new model, this condition should not be needed. I tested by taking it out and everything looks ok.",
+      "parentUuid": "0b78b3b0_899a2948",
+      "range": {
+        "startLine": 1057,
+        "startChar": 4,
+        "endLine": 1058,
+        "endChar": 44
+      },
+      "revId": "4919005d36bc0d958107a8417b86837723cc2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b78b3b0_4994111c",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 1
@@ -319,6 +343,30 @@
     },
     {
       "key": {
+        "uuid": "6b692fe4_1d76534a",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1123350
+      },
+      "writtenOn": "2016-11-08T07:43:29Z",
+      "side": 1,
+      "message": "System policies define wake events. Since we enabled lid open wake before entering S0ix, we only disable it while coming out (leaving other bits in the wake mask as is).",
+      "parentUuid": "0b78b3b0_09a61999",
+      "range": {
+        "startLine": 1079,
+        "startChar": 47,
+        "endLine": 1079,
+        "endChar": 48
+      },
+      "revId": "4919005d36bc0d958107a8417b86837723cc2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b78b3b0_29e195ba",
         "filename": "power/apollolake.c",
         "patchSetId": 1
@@ -330,6 +378,30 @@
       "writtenOn": "2016-11-07T06:34:48Z",
       "side": 1,
       "message": "why is this required?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "4919005d36bc0d958107a8417b86837723cc2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_bd8647f9",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1123350
+      },
+      "writtenOn": "2016-11-08T07:43:29Z",
+      "side": 1,
+      "message": "this is needed to call lpc functions while entering and exiting from S0ix. \nlpc_enable_wake_mask_for_lid_open and lpc_disable_wake_mask_for_lid_open",
+      "parentUuid": "0b78b3b0_29e195ba",
       "range": {
         "startLine": 20,
         "startChar": 0,
