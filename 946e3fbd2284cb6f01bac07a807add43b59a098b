@@ -22,6 +22,24 @@
       "revId": "946e3fbd2284cb6f01bac07a807add43b59a098b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_7dec2fb3",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T08:55:12Z",
+      "side": 1,
+      "message": "This only happens during init (so, once), and, AFAICT, we\u0027re going to use a dedicated bus for the trackpad.\n\nNot 100% sure what happens if there are other transactions on the bus during msleep(100), which is the main reason why I decided to lock everything. (does the kernel probe multiple I2C devices on the same bus at the same time?)",
+      "parentUuid": "0b12739d_c70ae0cc",
+      "revId": "946e3fbd2284cb6f01bac07a807add43b59a098b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
