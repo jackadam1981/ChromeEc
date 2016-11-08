@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bd84f3b_88ed7610",
+        "filename": "board/reef/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-08T03:12:24Z",
+      "side": 1,
+      "message": "The \"is\" seems awkward IMO, I suggest \"board_charger_lost_power\"",
+      "range": {
+        "startLine": 598,
+        "startChar": 4,
+        "endLine": 598,
+        "endChar": 31
+      },
+      "revId": "647fb70914aa5937ed8077fe7797dc66bd07d9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
