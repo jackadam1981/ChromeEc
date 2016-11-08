@@ -143,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "6b692fe4_3dcd5751",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T09:02:44Z",
+      "side": 1,
+      "message": "Huh. I\u0027m confused now. I definitely do not want to forward a physical serial port, but having the EC console might be useful. So I guess I should add the console endpoint back?",
+      "parentUuid": "0b12739d_67fa0c9e",
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b12739d_64496a2d",
         "filename": "board/hammer/board.h",
         "patchSetId": 2
@@ -418,6 +436,24 @@
       "side": 1,
       "message": "even the debug i2c commands are working ?",
       "parentUuid": "6b692fe4_daa8e165",
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_5de7ebd1",
+        "filename": "board/hammer/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T09:02:44Z",
+      "side": 1,
+      "message": "Yes, but we get close to problems, indeed. Will increase to LARGER.\n\n\u003e i2cxfer r16 0 0x2a 0\n...\n\u003e tasks\n...\n   3 R CONSOLE          00000000    0.021873  464/488",
+      "parentUuid": "0b12739d_47ff108c",
       "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
