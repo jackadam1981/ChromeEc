@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b12739d_c70ae0cc",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-08T08:24:07Z",
+      "side": 1,
+      "message": "it\u0027s not really good to keep the lock for all this time (particularly with the msleep(100) in between) unless you have a strong reason (eg the I2C device is buggy and need some kind of atomic sequence).\nI would move the i2c_lock() calls to elan_tp_read_cmd() / elan_tp_write_cmd().",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 39
+      },
+      "revId": "946e3fbd2284cb6f01bac07a807add43b59a098b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
