@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6bd84f3b_3474bcec",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-08T22:22:14Z",
+      "side": 1,
+      "message": "It just removes the restriction that the boot_key_list needs to be in the same order as the bit definitions. But I see there is already a comment on top of this structure. I will go back to what it was earlier.",
+      "parentUuid": "6bd84f3b_d4cd5052",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 19
+      },
+      "revId": "8d8f407e3c5e1a972c98ceb7d0f586b074a6adcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bd84f3b_14afb864",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-08T22:04:41Z",
       "side": 1,
       "message": "(1\u003c\u003cc)",
+      "range": {
+        "startLine": 557,
+        "startChar": 20,
+        "endLine": 557,
+        "endChar": 26
+      },
+      "revId": "8d8f407e3c5e1a972c98ceb7d0f586b074a6adcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_14517849",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-08T22:22:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd84f3b_14afb864",
       "range": {
         "startLine": 557,
         "startChar": 20,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6bd84f3b_545b0067",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-08T22:22:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd84f3b_74e724d2",
+      "range": {
+        "startLine": 562,
+        "startChar": 41,
+        "endLine": 562,
+        "endChar": 46
+      },
+      "revId": "8d8f407e3c5e1a972c98ceb7d0f586b074a6adcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bd84f3b_f47fb418",
         "filename": "include/keyboard_scan.h",
         "patchSetId": 6
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "6bd84f3b_b4f52c17",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-08T22:22:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd84f3b_f47fb418",
+      "range": {
+        "startLine": 68,
+        "startChar": 28,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "8d8f407e3c5e1a972c98ceb7d0f586b074a6adcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bd84f3b_d494701e",
         "filename": "include/keyboard_scan.h",
         "patchSetId": 6
@@ -105,6 +201,30 @@
       "writtenOn": "2016-11-08T22:04:41Z",
       "side": 1,
       "message": "keys?",
+      "range": {
+        "startLine": 70,
+        "startChar": 32,
+        "endLine": 70,
+        "endChar": 35
+      },
+      "revId": "8d8f407e3c5e1a972c98ceb7d0f586b074a6adcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_9400281d",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-08T22:22:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd84f3b_d494701e",
       "range": {
         "startLine": 70,
         "startChar": 32,
