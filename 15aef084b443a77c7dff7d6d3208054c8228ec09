@@ -161,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "2bf0179f_d068e2d2",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-08T09:24:33Z",
+      "side": 1,
+      "message": "Yes USB_CONSOLE is likely useful and STREAM_USART is not",
+      "parentUuid": "6b692fe4_3dcd5751",
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b12739d_64496a2d",
         "filename": "board/hammer/board.h",
         "patchSetId": 2
@@ -454,6 +472,24 @@
       "side": 1,
       "message": "Yes, but we get close to problems, indeed. Will increase to LARGER.\n\n\u003e i2cxfer r16 0 0x2a 0\n...\n\u003e tasks\n...\n   3 R CONSOLE          00000000    0.021873  464/488",
       "parentUuid": "0b12739d_47ff108c",
+      "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b12739d_8aa58f8e",
+        "filename": "board/hammer/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-08T09:24:33Z",
+      "side": 1,
+      "message": "once you add the size of the interrupt context if you are unlucky and get the IRQ right in the leaf function, you are already over the edge.",
+      "parentUuid": "6b692fe4_5de7ebd1",
       "revId": "15aef084b443a77c7dff7d6d3208054c8228ec09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
