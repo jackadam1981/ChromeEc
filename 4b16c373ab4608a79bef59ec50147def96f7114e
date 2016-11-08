@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "6b692fe4_fa392505",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:06:38Z",
+      "side": 1,
+      "message": "Dropped the read_block function, changed the parameter to uint16_t *.",
+      "parentUuid": "0b12739d_24f012be",
+      "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b12739d_843f4679",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 2
@@ -42,6 +60,24 @@
         "endLine": 89,
         "endChar": 28
       },
+      "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_ba33ad23",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:06:38Z",
+      "side": 1,
+      "message": "Dropped it.",
+      "parentUuid": "0b12739d_843f4679",
       "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "6b692fe4_ba5acd61",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:06:38Z",
+      "side": 1,
+      "message": "Not sure to understand what you mean.",
+      "parentUuid": "0b12739d_04f516ae",
+      "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b12739d_64fa0a9e",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 2
@@ -88,6 +142,24 @@
         "endLine": 103,
         "endChar": 14
       },
+      "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_9a5d895e",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:06:38Z",
+      "side": 1,
+      "message": "Added locks.\n\ndidn\u0027t spot i2c_write16, but that writes only a 8-bit register/offset value (I need 16-bit here).",
+      "parentUuid": "0b12739d_64fa0a9e",
       "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -117,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "6b692fe4_5a2931ba",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:06:38Z",
+      "side": 1,
+      "message": "Yeah... Dropped it.",
+      "parentUuid": "0b12739d_c4393e94",
+      "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b12739d_44ff0e8c",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 2
@@ -134,6 +224,24 @@
         "endLine": 265,
         "endChar": 22
       },
+      "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_3a28fdb3",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T05:06:38Z",
+      "side": 1,
+      "message": "Yes. I was actually testing the code (to see if incorrect events are being filtered), and forgot to swap it back.",
+      "parentUuid": "0b12739d_44ff0e8c",
       "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
