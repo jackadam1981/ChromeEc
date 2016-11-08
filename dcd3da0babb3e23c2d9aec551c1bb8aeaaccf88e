@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bd84f3b_318bee3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-08T21:48:12Z",
+      "side": 1,
+      "message": "Please test this code with an exponent 3 key and signature.  Preferably, by adding a unit test.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 21
+      },
+      "revId": "dcd3da0babb3e23c2d9aec551c1bb8aeaaccf88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_31720e92",
+        "filename": "common/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-08T21:48:12Z",
+      "side": 1,
+      "message": "/* Exponent 65537 */",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 5
+      },
+      "revId": "dcd3da0babb3e23c2d9aec551c1bb8aeaaccf88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
