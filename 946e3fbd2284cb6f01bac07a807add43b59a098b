@@ -40,6 +40,24 @@
       "revId": "946e3fbd2284cb6f01bac07a807add43b59a098b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_5d084b9b",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-08T09:04:45Z",
+      "side": 1,
+      "message": "Moved the locks to the read/write_cmd functions anyway. Shouldn\u0027t make much of a difference anyway.",
+      "parentUuid": "6b692fe4_7dec2fb3",
+      "revId": "946e3fbd2284cb6f01bac07a807add43b59a098b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
