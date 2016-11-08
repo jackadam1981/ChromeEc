@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "0b12739d_e70d5ce7",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-08T08:24:07Z",
+      "side": 1,
+      "message": "union {\n  struct {\n     uint16_t reg;\n     uint16_t val;\n  } xfer;\n  uint8_t buf[4];\n} u \u003d {.reg \u003d reg, .val \u003d val};",
+      "parentUuid": "6b692fe4_ba5acd61",
+      "revId": "4b16c373ab4608a79bef59ec50147def96f7114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b12739d_64fa0a9e",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 2
