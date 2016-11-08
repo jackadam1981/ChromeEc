@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bd84f3b_81c711fb",
+        "filename": "board/cave/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-08T15:58:07Z",
+      "side": 1,
+      "message": "Please add a comment here indicating why you have 2 separate settings depending on CHIPSET_STATE_ON.\n\nFWIW, you can also just do:\n\nset_pmic_v5a_ds3_ctrl(!!chipset_in_state(CHIPSET_STATE_ON));",
+      "revId": "077ed4d20c9bb991e7cad3974e6c66d584ad768d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
