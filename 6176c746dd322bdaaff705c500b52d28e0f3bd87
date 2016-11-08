@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bde5729_cef06176",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-08T23:37:24Z",
+      "side": 1,
+      "message": "This should only kick in on \u0027dead battery\u0027, right? Were you ever actually tripping this threshold?",
+      "range": {
+        "startLine": 755,
+        "startChar": 4,
+        "endLine": 755,
+        "endChar": 63
+      },
+      "revId": "6176c746dd322bdaaff705c500b52d28e0f3bd87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
