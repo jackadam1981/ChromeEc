@@ -1067,7 +1067,12 @@ enum charge_state charge_get_state(void)
 			return PWR_STATE_ERROR;
 		return PWR_STATE_IDLE;
 	case ST_DISCHARGE:
-		return PWR_STATE_DISCHARGE;
+		/* Some device will discharge on ac when full charged */
+		if (curr.ac &&
+		    curr.batt.state_of_charge >= BATTERY_LEVEL_NEAR_FULL)
+			return PWR_STATE_CHARGE_NEAR_FULL;
+		else
+			return PWR_STATE_DISCHARGE;
 	case ST_CHARGE:
 		/* The only difference here is what the LEDs display. */
 		if (curr.batt.state_of_charge >= BATTERY_LEVEL_NEAR_FULL)
