@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bd84f3b_414349b1",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-08T15:48:02Z",
+      "side": 1,
+      "message": "you can add a new file common/lpc.c or move the code to power/common.c \u0026 change the function names appropriately",
+      "revId": "0e6149b3340f2c18aa6844345b3c8fa0504b5a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_61484dcb",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1110,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-08T15:48:02Z",
+      "side": 1,
+      "message": "why a separate function?",
+      "revId": "0e6149b3340f2c18aa6844345b3c8fa0504b5a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_813d5126",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-08T15:48:02Z",
+      "side": 1,
+      "message": "while (lpc_query_host_event_state() !\u003d 0)\n       ;",
+      "revId": "0e6149b3340f2c18aa6844345b3c8fa0504b5a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
