@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bd84f3b_41a4295d",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-08T15:54:35Z",
+      "side": 1,
+      "message": "change PCH_SLP_S0_L as GPIO_INPUT in gpio.inc",
+      "revId": "1a348ac66a7f246b01c2486754d6981024ab11c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_a1b3359f",
+        "filename": "power/apollolake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-08T15:54:35Z",
+      "side": 1,
+      "message": "do we need function?",
+      "revId": "1a348ac66a7f246b01c2486754d6981024ab11c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bd84f3b_01c221ef",
+        "filename": "power/apollolake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-08T15:54:35Z",
+      "side": 1,
+      "message": "how about adding comment why to re-init?",
+      "revId": "1a348ac66a7f246b01c2486754d6981024ab11c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
