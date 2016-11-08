@@ -34,6 +34,10 @@ GPIO_INT(TABLET_MODE,		PIN(3, 6), GPIO_INT_BOTH, tablet_mode_interrupt)
 
 GPIO_INT(WP_L,			PIN(4, 0), GPIO_INT_BOTH | GPIO_SEL_1P8V, switch_interrupt)	/* EC_WP_ODL */
 
+#ifdef CONFIG_POWER_S0IX
+GPIO(PCH_SLP_S0_L,              PIN(7, 5), GPIO_INPUT)                                          /* SLP_S0_L */
+#endif
+
 /* FIXME(dhendrix): Implement interrupt handlers for lid, tablet mode, etc. */
 //GPIO_INT(BASE_SIXAXIS_INT_L,	PIN(9, 3), GPIO_INT_LOW | GPIO_SEL_1P8V, gyro_interrupt)
 GPIO(BASE_SIXAXIS_INT_L,	PIN(9, 3), GPIO_INPUT | GPIO_SEL_1P8V)
