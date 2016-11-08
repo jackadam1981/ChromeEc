@@ -45,6 +45,16 @@
 #define STM32_IRQ_USART3_4        29
 #define STM32_IRQ_CEC_CAN         30
 #define STM32_IRQ_USB             31
+/* IRQ priorities */
+#ifndef STM32_IRQ_EXT0_1_PRIORITY
+#define STM32_IRQ_EXT0_1_PRIORITY	1
+#endif
+#ifndef STM32_IRQ_EXT2_3_PRIORITY
+#define STM32_IRQ_EXT2_3_PRIORITY	1
+#endif
+#ifndef STM32_IRQ_EXTI4_15_PRIORITY
+#define STM32_IRQ_EXTI4_15_PRIORITY	1
+#endif
 /* aliases for easier code sharing */
 #define STM32_IRQ_COMP STM32_IRQ_ADC_COMP
 #define STM32_IRQ_USB_LP STM32_IRQ_USB
