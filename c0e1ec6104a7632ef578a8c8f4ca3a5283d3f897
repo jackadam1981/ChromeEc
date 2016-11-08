@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6b692fe4_bae3aded",
+        "filename": "board/reef/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1123350
+      },
+      "writtenOn": "2016-11-08T06:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b78b3b0_6908ed9b",
+      "revId": "c0e1ec6104a7632ef578a8c8f4ca3a5283d3f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcf74308_5db58ed2",
         "filename": "power/apollolake.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "6b692fe4_7ac75555",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1123350
+      },
+      "writtenOn": "2016-11-08T06:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcf74308_5db58ed2",
+      "revId": "c0e1ec6104a7632ef578a8c8f4ca3a5283d3f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcf74308_1dd4a604",
         "filename": "power/apollolake.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2016-11-07T15:16:10Z",
       "side": 1,
       "message": "how about naming it as: slp_s0ix_host_evt?",
+      "revId": "c0e1ec6104a7632ef578a8c8f4ca3a5283d3f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_1acc1975",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1123350
+      },
+      "writtenOn": "2016-11-08T06:52:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcf74308_1dd4a604",
       "revId": "c0e1ec6104a7632ef578a8c8f4ca3a5283d3f897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -204,6 +258,24 @@
       "writtenOn": "2016-11-07T06:38:21Z",
       "side": 1,
       "message": "Why is this code changed? This is needed for eSPI virtual wire signals.",
+      "revId": "c0e1ec6104a7632ef578a8c8f4ca3a5283d3f897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b692fe4_5ac29146",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1123350
+      },
+      "writtenOn": "2016-11-08T06:52:18Z",
+      "side": 1,
+      "message": "added back.",
+      "parentUuid": "0b78b3b0_49e651d4",
       "revId": "c0e1ec6104a7632ef578a8c8f4ca3a5283d3f897",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
