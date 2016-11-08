@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebe35fee_73de5b27",
+        "filename": "chip/g/fuses.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-08T23:34:29Z",
+      "side": 1,
+      "message": "If these all have the same order and stride, you could just use a loop. That would use a lot less space.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 58
+      },
+      "revId": "71203ea26ae1313fce7e19b8f60faab73e3b740d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
