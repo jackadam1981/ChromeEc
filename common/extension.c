@@ -34,3 +34,29 @@ void extension_route_command(uint16_t command_code,
 	/* This covers the case of the handler not found. */
 	*out_size = 0;
 }
+
+void call_extension_command(void *buffer, size_t *total_size)
+{
+	struct tpm_cmd_header *tpmh = buffer;
+	size_t command_size = be32toh(tpmh->size);
+
+	/* Verify there is room for at least the extension command header. */
+	if (command_size >= sizeof(struct tpm_cmd_header)) {
+		uint16_t subcommand_code;
+
+		/* The header takes room in the buffer. */
+		*total_size -= sizeof(struct tpm_cmd_header);
+
+		subcommand_code = be16toh(tpmh->subcommand_code);
+		extension_route_command(subcommand_code,
+				       tpmh + 1,
+				       command_size -
+				       sizeof(struct tpm_cmd_header),
+				       total_size);
+		/* Add the header size back. */
+		*total_size += sizeof(struct tpm_cmd_header);
+		tpmh->size = htobe32(*total_size);
+	} else {
+		*total_size = command_size;
+	}
+}

@@ -13,6 +13,7 @@
 #define __CROS_EC_TPM_REGISTERS_H
 
 #include <stdint.h>
+#include <stddef.h>
 
 #include "common.h"
 
@@ -49,17 +50,14 @@ int tpm_reset(void);
 int tpm_is_resetting(void);
 
 /*
- * This structure describes the header of all commands and responses sent and
- * received over TPM FIFO.
- *
- * Note that all fields are stored in the network (big endian) byte order.
+ * All TPM commands use this struct for input and output. Any other data
+ * follows immediately after. All values are sent using network (big endian)
+ * byte order.
  */
-
-struct tpm_cmd_header {
+struct tpm_common_header {
 	uint16_t tag;
 	uint32_t size;
-	uint32_t command_code;
-	uint16_t subcommand_code;  /* Not a standard field. */
+	uint32_t code;		     /* Command (in) or Response (out) */
 } __packed;
 
 /*

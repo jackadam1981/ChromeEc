@@ -317,11 +317,29 @@ static void sts_reg_write(const uint8_t *data, uint32_t data_size)
 	}
 }
 
+/* After loading the FIFO buffer with data, call this to let it to go out */
+static void fifo_send_reply(unsigned bytes)
+{
+	uint32_t tpm_sts;
+
+	if (!bytes || (bytes > sizeof(tpm_.regs.data_fifo)))
+		return;
+
+	tpm_.fifo_read_index = 0;
+	tpm_.fifo_write_index = bytes;
+	set_tpm_state(tpm_state_completing_cmd);
+	tpm_sts = tpm_.regs.sts;
+	tpm_sts &= ~(burst_count_mask << burst_count_shift);
+	tpm_sts |= (MIN(bytes, 63) << burst_count_shift)
+		| data_avail;
+	tpm_.regs.sts = tpm_sts;
+}
+
 /* Collect received data in the local buffer and change state accordingly. */
 static void fifo_reg_write(const uint8_t *data, uint32_t data_size)
 {
 	uint32_t packet_size;
-	struct tpm_cmd_header *tpmh;
+	struct tpm_common_header *tpmh;
 
 	/*
 	 * Make sure we are in the approriate sate, otherwise ignore this
@@ -356,7 +374,7 @@ static void fifo_reg_write(const uint8_t *data, uint32_t data_size)
 		return;
 	}
 
-	tpmh = (struct tpm_cmd_header *)tpm_.regs.data_fifo;
+	tpmh = (struct tpm_common_header *)tpm_.regs.data_fifo;
 	packet_size = be32toh(tpmh->size);
 	if (tpm_.fifo_write_index < packet_size) {
 		tpm_.regs.sts |= expect; /* More data is needed. */
@@ -409,7 +427,7 @@ void tpm_register_put(uint32_t regaddr, const uint8_t *data, uint32_t data_size)
 
 }
 
-void fifo_reg_read(uint8_t *dest, uint32_t data_size)
+static void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 {
 	uint32_t still_in_fifo = tpm_.fifo_write_index -
 		tpm_.fifo_read_index;
@@ -567,35 +585,6 @@ size_t tpm_get_burst_size(void)
 	return (tpm_.regs.sts >> burst_count_shift) & burst_count_mask;
 }
 
-#ifdef CONFIG_EXTENSION_COMMAND
-
-static void call_extension_command(struct tpm_cmd_header *tpmh,
-				  size_t *total_size)
-{
-	size_t command_size = be32toh(tpmh->size);
-
-	/* Verify there is room for at least the extension command header. */
-	if (command_size >= sizeof(struct tpm_cmd_header)) {
-		uint16_t subcommand_code;
-
-		/* The header takes room in the buffer. */
-		*total_size -= sizeof(struct tpm_cmd_header);
-
-		subcommand_code = be16toh(tpmh->subcommand_code);
-		extension_route_command(subcommand_code,
-				       tpmh + 1,
-				       command_size -
-				       sizeof(struct tpm_cmd_header),
-				       total_size);
-		/* Add the header size back. */
-		*total_size += sizeof(struct tpm_cmd_header);
-		tpmh->size = htobe32(*total_size);
-	} else {
-		*total_size = command_size;
-	}
-}
-#endif
-
 /* Event (to TPM task) to request reset, or (from TPM task) on completion. */
 #define TPM_EVENT_RESET (TASK_EVENT_CUSTOM(1))
 
@@ -672,7 +661,7 @@ void tpm_task(void)
 		uint8_t *response;
 		unsigned response_size;
 		uint32_t command_code;
-		struct tpm_cmd_header *tpmh;
+		struct tpm_common_header *tpmh;
 		uint32_t evt;
 
 		/* Wait for the next command event */
@@ -681,8 +670,8 @@ void tpm_task(void)
 			tpm_reset_now();
 			continue;
 		}
-		tpmh = (struct tpm_cmd_header *)tpm_.regs.data_fifo;
-		command_code = be32toh(tpmh->command_code);
+		tpmh = (struct tpm_common_header *)tpm_.regs.data_fifo;
+		command_code = be32toh(tpmh->code);
 		CPRINTF("%s: received fifo command 0x%04x\n",
 			__func__, command_code);
 
@@ -692,43 +681,28 @@ void tpm_task(void)
 		if (command_code == CONFIG_EXTENSION_COMMAND) {
 			response_size = sizeof(tpm_.regs.data_fifo);
 			call_extension_command(tpmh, &response_size);
-		} else
-#endif
-		{
-			ExecuteCommand(tpm_.fifo_write_index,
-				       tpm_.regs.data_fifo,
-				       &response_size,
-				       &response);
+			fifo_send_reply(response_size);
+			continue;
 		}
+#endif
+
+		ExecuteCommand(tpm_.fifo_write_index,
+			       tpm_.regs.data_fifo,
+			       &response_size,
+			       &response);
 		CPRINTF("got %d bytes in response\n", response_size);
+		/*
+		 * TODO(vbendeb): revisit this when
+		 * crosbug.com/p/55667 has been addressed.
+		 */
+		if (command_code == TPM2_PCR_Read)
+			system_process_retry_counter();
+
 		if (response_size &&
 		    (response_size <= sizeof(tpm_.regs.data_fifo))) {
-			uint32_t tpm_sts;
-			/*
-			 * TODO(vbendeb): revisit this when
-			 * crosbug.com/p/55667 has been addressed.
-			 */
-			if (command_code == TPM2_PCR_Read)
-				system_process_retry_counter();
-#ifdef CONFIG_EXTENSION_COMMAND
-			if (command_code != CONFIG_EXTENSION_COMMAND)
-#endif
-			{
-				/*
-				 * Extension commands reuse FIFO buffer, the
-				 * rest need to copy.
-				 */
-				memcpy(tpm_.regs.data_fifo,
-				       response, response_size);
-			}
-			tpm_.fifo_read_index = 0;
-			tpm_.fifo_write_index = response_size;
-			set_tpm_state(tpm_state_completing_cmd);
-			tpm_sts = tpm_.regs.sts;
-			tpm_sts &= ~(burst_count_mask << burst_count_shift);
-			tpm_sts |= (MIN(response_size, 63) << burst_count_shift)
-				| data_avail;
-			tpm_.regs.sts = tpm_sts;
+			memcpy(tpm_.regs.data_fifo,
+			       response, response_size);
+			fifo_send_reply(response_size);
 		}
 	}
 }

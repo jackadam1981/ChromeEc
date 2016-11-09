@@ -39,6 +39,24 @@ void extension_route_command(uint16_t command_code,
 			    size_t command_size,
 			    size_t *size);
 
+
+/*
+ * This structure describes the header of all commands and responses sent and
+ * received over TPM FIFO.
+ *
+ * Note that all fields are stored in the network (big endian) byte order.
+ */
+struct tpm_cmd_header {
+	uint16_t tag;
+	uint32_t size;
+	uint32_t command_code;
+	uint16_t subcommand_code;  /* Not a standard field. */
+} __packed;
+
+
+/* Route extension command from a buffer starting with tpm_cmd_header */
+void call_extension_command(void *buffer, size_t *total_size);
+
 struct extension_command {
 	uint16_t command_code;
 	extension_handler handler;
