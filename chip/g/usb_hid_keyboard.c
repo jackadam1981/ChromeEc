@@ -23,29 +23,26 @@
 #define HID_REPORT_SIZE  8
 
 /* HID descriptors */
-const struct usb_interface_descriptor USB_IFACE_DESC(USB_IFACE_HID) =
-{
+const struct usb_interface_descriptor USB_IFACE_DESC(USB_IFACE_HID) = {
 	.bLength = USB_DT_INTERFACE_SIZE,
 	.bDescriptorType = USB_DT_INTERFACE,
-	.bInterfaceNumber = USB_IFACE_HID,
+	.bInterfaceNumber = USB_IFACE_HID_KEYBOARD,
 	.bAlternateSetting = 0,
 	.bNumEndpoints = 1,
 	.bInterfaceClass = USB_CLASS_HID,
 	.bInterfaceSubClass = USB_HID_SUBCLASS_BOOT,
 	.bInterfaceProtocol = USB_HID_PROTOCOL_KEYBOARD,
-	.iInterface = USB_STR_HID_NAME,
+	.iInterface = USB_STR_HID_KEYBOARD_NAME,
 };
-const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_HID, 81) =
-{
+const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_HID, 81) = {
 	.bLength = USB_DT_ENDPOINT_SIZE,
 	.bDescriptorType = USB_DT_ENDPOINT,
-	.bEndpointAddress = 0x80 | USB_EP_HID,
+	.bEndpointAddress = 0x80 | USB_EP_HID_KEYBOARD,
 	.bmAttributes = 0x03 /* Interrupt endpoint */,
 	.wMaxPacketSize = HID_REPORT_SIZE,
 	.bInterval = 32 /* ms polling interval */
 };
-const struct usb_hid_descriptor USB_CUSTOM_DESC(USB_IFACE_HID, hid) =
-{
+const struct usb_hid_descriptor USB_CUSTOM_DESC(USB_IFACE_HID, hid) = {
 	.bLength = 9,
 	.bDescriptorType = USB_HID_DT_HID,
 	.bcdHID = 0x0100,
@@ -96,13 +93,13 @@ void set_keyboard_report(uint64_t rpt)
 	hid_ep_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_RDY | DIEPDMA_IOC |
 			    DIEPDMA_TXBYTES(HID_REPORT_SIZE);
 	/* enable TX */
-	GR_USB_DIEPCTL(USB_EP_HID) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
+	GR_USB_DIEPCTL(USB_EP_HID_KEYBOARD) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
 }
 
 static void hid_tx(void)
 {
 	/* clear IT */
-	GR_USB_DIEPINT(USB_EP_HID) = 0xffffffff;
+	GR_USB_DIEPINT(USB_EP_HID_KEYBOARD) = 0xffffffff;
 	return;
 }
 
@@ -110,14 +107,14 @@ static void hid_reset(void)
 {
 	hid_ep_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_BSY | DIEPDMA_IOC;
 	hid_ep_desc.addr = hid_ep_buf;
-	GR_USB_DIEPDMA(USB_EP_HID) = (uint32_t)&hid_ep_desc;
-	GR_USB_DIEPCTL(USB_EP_HID) = DXEPCTL_MPS(HID_REPORT_SIZE) |
+	GR_USB_DIEPDMA(USB_EP_HID_KEYBOARD) = (uint32_t)&hid_ep_desc;
+	GR_USB_DIEPCTL(USB_EP_HID_KEYBOARD) = DXEPCTL_MPS(HID_REPORT_SIZE) |
 				     DXEPCTL_USBACTEP | DXEPCTL_EPTYPE_INT |
-				     DXEPCTL_TXFNUM(USB_EP_HID);
-	GR_USB_DAINTMSK |= DAINT_INEP(USB_EP_HID);
+				     DXEPCTL_TXFNUM(USB_EP_HID_KEYBOARD);
+	GR_USB_DAINTMSK |= DAINT_INEP(USB_EP_HID_KEYBOARD);
 }
 
-USB_DECLARE_EP(USB_EP_HID, hid_tx, hid_tx, hid_reset);
+USB_DECLARE_EP(USB_EP_HID_KEYBOARD, hid_tx, hid_tx, hid_reset);
 
 static int hid_iface_request(struct usb_setup_packet *req)
 {
@@ -133,7 +130,7 @@ static int hid_iface_request(struct usb_setup_packet *req)
 	/* Anything else we'll stall */
 	return -1;
 }
-USB_DECLARE_IFACE(USB_IFACE_HID, hid_iface_request);
+USB_DECLARE_IFACE(USB_IFACE_HID_KEYBOARD, hid_iface_request);
 
 #ifdef CR50_DEV
 /* Just for debugging */
@@ -143,6 +140,7 @@ static int command_hid(int argc, char **argv)
 
 	if (argc >= 2) {
 		char *e;
+
 		keycode = strtoi(argv[1], &e, 16);
 		if (*e)
 			return EC_ERROR_PARAM1;
