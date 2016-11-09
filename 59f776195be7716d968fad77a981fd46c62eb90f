@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b89037a_6aef1b45",
+        "filename": "board/bob/led_bob.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-09T23:40:10Z",
+      "side": 1,
+      "message": "Still some uses of \u0027gru\u0027 in this file.\n\nNevermind, I see you addressed these in your follow-up CL.",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 6
+      },
+      "revId": "59f776195be7716d968fad77a981fd46c62eb90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
