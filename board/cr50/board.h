@@ -62,6 +62,7 @@
 #define CONFIG_USB
 #define CONFIG_USB_CONSOLE
 #define CONFIG_USB_HID
+#define CONFIG_USB_HID_KEYBOARD
 #define CONFIG_USB_I2C
 #define CONFIG_USB_INHIBIT_INIT
 #define CONFIG_USB_SELECT_PHY
@@ -113,7 +114,7 @@ enum usb_strings {
 	USB_STR_VERSION,
 	USB_STR_CONSOLE_NAME,
 	USB_STR_BLOB_NAME,
-	USB_STR_HID_NAME,
+	USB_STR_HID_KEYBOARD_NAME,
 	USB_STR_AP_NAME,
 	USB_STR_EC_NAME,
 	USB_STR_UPGRADE_NAME,
@@ -158,7 +159,7 @@ int is_ec_rst_asserted(void);
 
 /* USB interface indexes (use define rather than enum to expand them) */
 #define USB_IFACE_CONSOLE 0
-#define USB_IFACE_HID     1
+#define USB_IFACE_HID_KEYBOARD     1
 #define USB_IFACE_AP      2
 #define USB_IFACE_EC      3
 #define USB_IFACE_UPGRADE 4
@@ -169,7 +170,7 @@ int is_ec_rst_asserted(void);
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL   0
 #define USB_EP_CONSOLE   1
-#define USB_EP_HID       2
+#define USB_EP_HID_KEYBOARD       2
 #define USB_EP_AP        3
 #define USB_EP_EC        4
 #define USB_EP_UPGRADE   5
