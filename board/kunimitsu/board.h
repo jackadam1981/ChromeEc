@@ -90,8 +90,6 @@
 /* Accelerometer */
 #define CONFIG_ACCEL_KXCJ9
 #define CONFIG_LID_ANGLE
-#define CONFIG_LID_ANGLE_SENSOR_BASE 0
-#define CONFIG_LID_ANGLE_SENSOR_LID 1
 
 /* Modules we want to exclude */
 #undef CONFIG_CMD_ACCEL_INFO
@@ -119,6 +117,22 @@ enum adc_channel {
 	/* Number of ADC channels */
 	ADC_CH_COUNT
 };
+
+/* Sensor index definition */
+enum sensor_id {
+	BASE_ACCEL = 0,
+	LID_ACCEL = 1,
+};
+
+/*
+ * We have not enabled the sensor FIFO on the accels, so we force the EC
+ * to collect at every sample.
+ */
+#define CONFIG_ACCEL_FORCE_MODE_MASK \
+	((1 << BASE_ACCEL) | (1 << LID_ACCEL))
+
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
 
 /* power signal definitions */
 enum power_signal {
