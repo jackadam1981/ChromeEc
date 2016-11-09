@@ -9,6 +9,7 @@
 #define __CROS_EC_LINK_DEFS_H
 
 #include "console.h"
+#include "extension.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "mkbp_event.h"
@@ -20,8 +21,8 @@ extern const struct console_command __cmds[];
 extern const struct console_command __cmds_end[];
 
 /* Extension commands. */
-extern const void *__extension_cmds;
-extern const void *__extension_cmds_end;
+extern const struct extension_command __extension_cmds[];
+extern const struct extension_command __extension_cmds_end[];
 
 /* Hooks */
 extern const struct hook_data __hooks_init[];
