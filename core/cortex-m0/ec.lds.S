@@ -69,6 +69,11 @@ SECTIONS
 	__extension_cmds_end = .;
 
         . = ALIGN(4);
+        __vendor_cmds = .;
+        KEEP(*(.rodata.vendorcmds))
+	__vendor_cmds_end = .;
+
+        . = ALIGN(4);
         __hcmds = .;
         KEEP(*(.rodata.hcmds))
         __hcmds_end = .;

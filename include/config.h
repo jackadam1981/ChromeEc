@@ -1920,6 +1920,8 @@
 #undef CONFIG_TPM_SPS
 /* Speak to the TPM 2.0 hardware protocol on the I2C slave interface */
 #undef CONFIG_TPM_I2CS
+/* Allow custom TPM commands */
+#undef CONFIG_TPM_VENDOR_COMMANDS
 
 /*****************************************************************************/
 /* USART stream config */

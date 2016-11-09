@@ -14,6 +14,7 @@
 #include "mkbp_event.h"
 #include "task.h"
 #include "test_util.h"
+#include "tpm_vendor.h"
 
 /* Console commands */
 extern const struct console_command __cmds[];
@@ -22,6 +23,10 @@ extern const struct console_command __cmds_end[];
 /* Extension commands. */
 extern const void *__extension_cmds;
 extern const void *__extension_cmds_end;
+
+/* Vendor commands. */
+extern const struct vendor_cmd_s __vendor_cmds[];
+extern const struct vendor_cmd_s __vendor_cmds_end[];
 
 /* Hooks */
 extern const struct hook_data __hooks_init[];

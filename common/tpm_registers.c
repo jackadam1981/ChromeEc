@@ -20,6 +20,7 @@
 #include "task.h"
 #include "tpm_manufacture.h"
 #include "tpm_registers.h"
+#include "tpm_vendor.h"
 #include "util.h"
 #include "watchdog.h"
 
@@ -686,6 +687,14 @@ void tpm_task(void)
 		}
 #endif
 
+#ifdef CONFIG_TPM_VENDOR_COMMANDS
+		if (command_code & TPM_CC_VENDOR_BIT_MASK) {
+			response_size = sizeof(tpm_.regs.data_fifo);
+			call_vendor_cmd(tpm_.regs.data_fifo, &response_size);
+			fifo_send_reply(response_size);
+			continue;
+		}
+#endif
 		ExecuteCommand(tpm_.fifo_write_index,
 			       tpm_.regs.data_fifo,
 			       &response_size,
