@@ -337,12 +337,20 @@ class Cts(object):
     pretty_results = self.prettify_results()
     html_results = self.results_as_html()
 
+    # Write results in html
     dest = os.path.join(self.results_dir, self.dut.board, self.module + '.html')
     if not os.path.exists(os.path.dirname(dest)):
       os.makedirs(os.path.dirname(dest))
-
     with open(dest, 'w') as fl:
       fl.write(html_results)
+
+    # Write UART outputs
+    dest = os.path.join(self.results_dir, self.th.board, 'uart.log')
+    with open(dest, 'w') as fl:
+      fl.write(th_results)
+    dest = os.path.join(self.results_dir, self.dut.board, 'uart.log')
+    with open(dest, 'w') as fl:
+      fl.write(dut_results)
 
     print pretty_results
 
