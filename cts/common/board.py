@@ -88,7 +88,8 @@ class Board(object):
       commands: A list of commands to send
     """
     args = ['openocd', '-s', OCD_SCRIPT_DIR,
-            '-f', self.openocd_config, '-c', 'hla_serial ' + self.hla_serial]
+            '-f', self.openocd_config, '-c', 'hla_serial ' + self.hla_serial,
+            '-l', '/tmp/openocd.log']
 
     for cmd in commands:
       args += ['-c', cmd]
