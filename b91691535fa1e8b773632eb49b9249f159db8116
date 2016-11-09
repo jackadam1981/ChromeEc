@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b89037a_5630c402",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-11-09T20:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b89037a_b3182258",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "b91691535fa1e8b773632eb49b9249f159db8116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b89037a_939abea7",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-09T19:31:00Z",
       "side": 1,
       "message": "All commands must be #defined to be 4-digit hex values (e.g., 0x00ab, not 0xab) for CONFIG_HOSTCMD_SECTION_SORTED to work.",
+      "range": {
+        "startLine": 786,
+        "startChar": 0,
+        "endLine": 786,
+        "endChar": 3
+      },
+      "revId": "b91691535fa1e8b773632eb49b9249f159db8116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89037a_b6cb3005",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-11-09T20:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b89037a_939abea7",
       "range": {
         "startLine": 786,
         "startChar": 0,
