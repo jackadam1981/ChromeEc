@@ -62,6 +62,30 @@
       "revId": "f73294be84f5cd6f72b85cc80320fa2893a90455",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89037a_bf3463a8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2016-11-09T23:03:33Z",
+      "side": 1,
+      "message": "I think that it makes sense for motionsense task to do the initialization rather than chipset task or hook task. I am looking into it. It looks like this is how it used be done before this CL:https://chromium-review.googlesource.com/#/c/288201/. I couldn\u0027t figure what was the motivation to move it outside motionsense task.",
+      "parentUuid": "6bd84f3b_1434183d",
+      "range": {
+        "startLine": 524,
+        "startChar": 39,
+        "endLine": 524,
+        "endChar": 50
+      },
+      "revId": "f73294be84f5cd6f72b85cc80320fa2893a90455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
