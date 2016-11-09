@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b89037a_0a9a0f4a",
+        "filename": "test/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-09T23:18:54Z",
+      "side": 1,
+      "message": "That works (since different tests are built in different folders). I can\u0027t (easily) remove rsa3.tasklist symlink, though.",
+      "parentUuid": "8b14a3d5_d8f06d79",
+      "range": {
+        "startLine": 76,
+        "startChar": 7,
+        "endLine": 76,
+        "endChar": 13
+      },
+      "revId": "2c6f25c26796b2236fe4e7f1323bdc04244f1019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b32ab88_d65924a7",
         "filename": "test/rsa.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8b89037a_8aa6ff96",
+        "filename": "test/rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-09T23:18:54Z",
+      "side": 1,
+      "message": "I think that\u0027d create more risk that the test is actually using the wrong exponent (mistake in config file, etc.)",
+      "parentUuid": "4b32ab88_d65924a7",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "2c6f25c26796b2236fe4e7f1323bdc04244f1019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b14a3d5_f8f53166",
         "filename": "test/rsa2048-3.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2016-11-09T15:26:09Z",
       "side": 1,
       "message": "given hashes are common, maybe we want a single header with #ifdef CONFIG_RSA_EXPONENT_3 inside ?\nor maybe not",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "2c6f25c26796b2236fe4e7f1323bdc04244f1019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89037a_aac74332",
+        "filename": "test/rsa2048-3.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-09T23:18:54Z",
+      "side": 1,
+      "message": "I\u0027d rather keep them separated. The header file would become huge if we added a third test...",
+      "parentUuid": "8b14a3d5_f8f53166",
       "range": {
         "startLine": 73,
         "startChar": 0,
