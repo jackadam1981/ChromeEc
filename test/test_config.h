@@ -50,6 +50,11 @@
 #define CONFIG_LID_ANGLE_SENSOR_LID 1
 #endif
 
+#ifdef TEST_RSA
+#define CONFIG_RSA
+#define CONFIG_RSA_KEY_SIZE 2048
+#endif
+
 #ifdef TEST_SBS_CHARGING
 #define CONFIG_BATTERY_MOCK
 #define CONFIG_BATTERY_SMART
