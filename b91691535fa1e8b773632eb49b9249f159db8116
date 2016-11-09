@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b89037a_b3182258",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-09T19:31:00Z",
+      "side": 1,
+      "message": "Describe tests.  For example:\n  - Boot Kevin\n  - ectool hello\n  - ectool flashinfo\netc.",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "b91691535fa1e8b773632eb49b9249f159db8116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89037a_939abea7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-09T19:31:00Z",
+      "side": 1,
+      "message": "All commands must be #defined to be 4-digit hex values (e.g., 0x00ab, not 0xab) for CONFIG_HOSTCMD_SECTION_SORTED to work.",
+      "range": {
+        "startLine": 786,
+        "startChar": 0,
+        "endLine": 786,
+        "endChar": 3
+      },
+      "revId": "b91691535fa1e8b773632eb49b9249f159db8116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
