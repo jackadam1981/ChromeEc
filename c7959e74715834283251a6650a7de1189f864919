@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b0befa9_078796f7",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-09T09:55:28Z",
+      "side": 1,
+      "message": "Some parts of these structures are quite generic, I wonder if we could generate them using a macro.",
+      "revId": "c7959e74715834283251a6650a7de1189f864919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b0befa9_c7997e56",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-09T09:55:28Z",
+      "side": 1,
+      "message": "I replaced the former \"0x00\" by a push command, which is essentially a no-op. 0x00 throws a kernel warning if we just use sizeof(report_desc) in the structure below.",
+      "revId": "c7959e74715834283251a6650a7de1189f864919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b0befa9_e7948220",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-09T09:55:28Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "c7959e74715834283251a6650a7de1189f864919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b0befa9_a78e8a0c",
+        "filename": "include/usb_hid.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-09T09:55:28Z",
+      "side": 1,
+      "message": "Should these be in a separate header file?",
+      "revId": "c7959e74715834283251a6650a7de1189f864919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
