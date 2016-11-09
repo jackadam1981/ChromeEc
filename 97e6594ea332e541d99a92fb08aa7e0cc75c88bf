@@ -22,6 +22,30 @@
       "revId": "97e6594ea332e541d99a92fb08aa7e0cc75c88bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89037a_2ad593cc",
+        "filename": "board/kevin/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-09T23:19:56Z",
+      "side": 0,
+      "message": "We need to make absolutely certain that our battery voltage doesn\u0027t get to voltage_max, otherwise we\u0027ll run into back boosting.",
+      "parentUuid": "8bb823f7_fea099e2",
+      "range": {
+        "startLine": 133,
+        "startChar": 7,
+        "endLine": 133,
+        "endChar": 54
+      },
+      "revId": "97e6594ea332e541d99a92fb08aa7e0cc75c88bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
