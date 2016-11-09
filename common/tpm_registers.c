@@ -573,6 +573,7 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 				  size_t *total_size)
 {
 	size_t command_size = be32toh(tpmh->size);
+	uint32_t rc;
 
 	/* Verify there is room for at least the extension command header. */
 	if (command_size >= sizeof(struct tpm_cmd_header)) {
@@ -582,14 +583,15 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 		*total_size -= sizeof(struct tpm_cmd_header);
 
 		subcommand_code = be16toh(tpmh->subcommand_code);
-		extension_route_command(subcommand_code,
-				       tpmh + 1,
-				       command_size -
-				       sizeof(struct tpm_cmd_header),
-				       total_size);
+		rc = extension_route_command(subcommand_code,
+					     tpmh + 1,
+					     command_size -
+					     sizeof(struct tpm_cmd_header),
+					     total_size);
 		/* Add the header size back. */
 		*total_size += sizeof(struct tpm_cmd_header);
 		tpmh->size = htobe32(*total_size);
+		tpmh->command_code = htobe32(rc);
 	} else {
 		*total_size = command_size;
 	}
@@ -689,7 +691,8 @@ void tpm_task(void)
 		watchdog_reload();
 
 #ifdef CONFIG_EXTENSION_COMMAND
-		if (command_code == CONFIG_EXTENSION_COMMAND) {
+		if ((command_code == CONFIG_EXTENSION_COMMAND) ||
+		    (command_code & TPM_CC_VENDOR_BIT_MASK)) {
 			response_size = sizeof(tpm_.regs.data_fifo);
 			call_extension_command(tpmh, &response_size);
 		} else
@@ -711,7 +714,8 @@ void tpm_task(void)
 			if (command_code == TPM2_PCR_Read)
 				system_process_retry_counter();
 #ifdef CONFIG_EXTENSION_COMMAND
-			if (command_code != CONFIG_EXTENSION_COMMAND)
+			if ((command_code == CONFIG_EXTENSION_COMMAND) ||
+			    (command_code & TPM_CC_VENDOR_BIT_MASK))
 #endif
 			{
 				/*
