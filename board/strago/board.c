@@ -124,13 +124,6 @@ BUILD_ASSERT(ARRAY_SIZE(buttons) == CONFIG_BUTTON_COUNT);
 static struct mutex g_kxcj9_mutex[2];
 struct kionix_accel_data g_kxcj9_data[2];
 
-#ifdef CONFIG_GYRO_L3GD20H
-/* Gyro sensor */
-/* l3gd20h mutex and local/private data*/
-static struct mutex g_l3gd20h_mutex;
-struct l3gd20_data g_l3gd20h_data;
-#endif
-
 /* Matrix to rotate accelrator into standard reference frame */
 const matrix_3x3_t base_standard_ref = {
 	{ 0,  FLOAT_TO_FP(1),  0},
@@ -217,43 +210,6 @@ struct motion_sensor_t motion_sensors[] = {
 		 },
 	 },
 	},
-#ifdef CONFIG_GYRO_L3GD20H
-	[LID_ACCEL] = {
-	 .name = "Lid Gyro",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_L3GD20H,
-	 .type = MOTIONSENSE_TYPE_GYRO,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &l3gd20h_drv,
-	 .mutex = &g_l3gd20h_mutex,
-	 .drv_data = &g_l3gd20h_data,
-	 .i2c_addr = L3GD20_ADDR1,
-	 .rot_standard_ref = NULL,
-	 .default_range = 2000,
-	 .config = {
-		 /* AP: by default shutdown all sensors */
-		 [SENSOR_CONFIG_AP] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-		 /* EC not using Gyro */
-		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S3] = {
-			 .odr = 0,
-			 .ec_rate = 0
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S5] = {
-			 .odr = 0,
-			 .ec_rate = 0
-		 },
-	 },
-	},
-#endif
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 

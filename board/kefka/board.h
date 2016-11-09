@@ -126,22 +126,14 @@ enum adc_channel {
 enum sensor_id {
 	BASE_ACCEL = 0,
 	LID_ACCEL = 1,
-#ifdef CONFIG_GYRO_L3GD20H
-	LID_GYRO  = 2,
-#endif
 };
 
 /*
  * We have not enabled the sensor FIFO on the accels, so we force the EC
  * to collect at every sample.
  */
-#ifdef CONFIG_GYRO_L3GD20H
-#define CONFIG_ACCEL_FORCE_MODE_MASK \
-	((1 << BASE_ACCEL) | (1 << LID_ACCEL) | (1 << LID_GYRO))
-#else
 #define CONFIG_ACCEL_FORCE_MODE_MASK \
 	((1 << BASE_ACCEL) | (1 << LID_ACCEL))
-#endif
 
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
