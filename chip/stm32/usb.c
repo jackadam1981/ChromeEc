@@ -99,7 +99,8 @@ static int set_addr;
 static int desc_left;
 /* pointer to descriptor data if any */
 static const uint8_t *desc_ptr;
-
+/* interface that should handle the next tx transaction */
+static uint8_t iface_next = USB_IFACE_COUNT;
 
 
 void usb_read_setup_packet(usb_uint *buffer, struct usb_setup_packet *packet)
@@ -118,13 +119,17 @@ static void ep0_rx(void)
 
 	/* reset any incomplete descriptor transfer */
 	desc_ptr = NULL;
+	iface_next = USB_IFACE_COUNT;
 
 	/* interface specific requests */
 	if ((req & USB_RECIP_MASK) == USB_RECIP_INTERFACE) {
 		uint8_t iface = ep0_buf_rx[2] & 0xff;
+		int cont = 0;
 		if (iface < USB_IFACE_COUNT &&
-		    usb_iface_request[iface](ep0_buf_rx, ep0_buf_tx))
+		    usb_iface_request[iface](ep0_buf_rx, ep0_buf_tx, &cont))
 			goto unknown_req;
+		if (cont)
+			iface_next = iface;
 		return;
 	}
 
@@ -241,6 +246,11 @@ static void ep0_tx(void)
 		/* send the null OUT transaction if the transfer is complete */
 		return;
 	}
+	if (iface_next < USB_IFACE_COUNT) {
+		if (!usb_iface_request[iface_next](NULL, ep0_buf_tx, NULL))
+			return;
+	}
+
 	STM32_TOGGLE_EP(0, EP_TX_MASK, EP_TX_VALID, 0);
 }
 
