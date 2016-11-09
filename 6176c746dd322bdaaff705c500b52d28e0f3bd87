@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "8b9f4379_a618d257",
+        "filename": "board/kevin/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-09T05:24:59Z",
+      "side": 1,
+      "message": "how about just\n|| !(curr-\u003ebatt.flags \u0026 BATT_FLAG_WANT_CHARGE)) {\n     curr-\u003ebatt.flags \u0026\u003d ~BATT_FLAG_WANT_CHARGE;\n     curr-\u003estate \u003d ST_DISCHARGE;\n     charger_discharge_on_ac(1);\n} else",
+      "revId": "6176c746dd322bdaaff705c500b52d28e0f3bd87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bde5729_cef06176",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 2
@@ -19,6 +36,23 @@
         "endLine": 755,
         "endChar": 63
       },
+      "revId": "6176c746dd322bdaaff705c500b52d28e0f3bd87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bbdafe5_fa09c510",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-09T05:24:59Z",
+      "side": 1,
+      "message": "may be we can set VSYSVAL_THL_SET to (batt_min - some delta) in HOOK_INIT",
       "revId": "6176c746dd322bdaaff705c500b52d28e0f3bd87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
