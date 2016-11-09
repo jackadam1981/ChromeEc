@@ -22,6 +22,30 @@
       "revId": "8f9bfbf62f45cdee64957e7d4b956f33aea64b88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bd62b38_ffcc1321",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1667,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-09T16:26:39Z",
+      "side": 1,
+      "message": "/* Use RSA exponent 3 instead of F4 (65537) */",
+      "parentUuid": "eb4b5ffb_fbf52f66",
+      "range": {
+        "startLine": 1667,
+        "startChar": 0,
+        "endLine": 1667,
+        "endChar": 56
+      },
+      "revId": "8f9bfbf62f45cdee64957e7d4b956f33aea64b88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
