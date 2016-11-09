@@ -13,7 +13,11 @@
 #include "timer.h"
 #include "util.h"
 
+#ifdef TEST_RSA3
+#include "rsa2048-3.h"
+#else
 #include "rsa2048-F4.h"
+#endif
 
 void run_test(void)
 {
