@@ -22,6 +22,30 @@
       "revId": "f798087245c2079817dbe1fec4ffaa03b53d8f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bad4bb0_2705d8ed",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-09T16:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd84f3b_f10346bb",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "f798087245c2079817dbe1fec4ffaa03b53d8f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
