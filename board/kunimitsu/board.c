@@ -11,7 +11,7 @@
 #include "charge_state.h"
 #include "charger.h"
 #include "console.h"
-#include "driver/accel_kxcj9.h"
+#include "driver/accel_kionix.h"
 #include "driver/als_opt3001.h"
 #include "driver/temp_sensor/tmp432.h"
 #include "extpower.h"
@@ -170,7 +170,7 @@ void board_reset_pd_mcu(void)
 /* Four Motion sensors */
 /* kxcj9 mutex and local/private data*/
 static struct mutex g_kxcj9_mutex[2];
-struct kxcj9_data g_kxcj9_data[2];
+struct kionix_accel_data g_kxcj9_data[2];
 
 /* Matrix to rotate accelrator into standard reference frame */
 const matrix_3x3_t base_standard_ref = {
@@ -186,78 +186,80 @@ const matrix_3x3_t lid_standard_ref = {
 };
 
 struct motion_sensor_t motion_sensors[] = {
-	{.name = "Base Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	[BASE_ACCEL] = {
+	 .name = "Base",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_KXCJ9,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &kxcj9_drv,
+	 .drv = &kionix_accel_drv,
 	 .mutex = &g_kxcj9_mutex[0],
 	 .drv_data = &g_kxcj9_data[0],
-	 .i2c_addr = KXCJ9_ADDR1,
+	 .port = I2C_PORT_ACCEL,
+	 .addr = KXCJ9_ADDR1,
 	 .rot_standard_ref = &base_standard_ref,
-	 .default_config = {
-		 .odr = 100000,
-		 .range = 2,
-		 .ec_rate = SUSPEND_SAMPLING_INTERVAL,
+	 .default_range = 2,  /* g, enough for laptop. */
+	 .config = {
+		 /* AP: by default shutdown all sensors */
+		 [SENSOR_CONFIG_AP] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
+		 /* EC use accel for angle detection */
+		 [SENSOR_CONFIG_EC_S0] = {
+			 .odr = 10000 | ROUND_UP_FLAG,
+			 .ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S3] = {
+			 .odr = 0,
+			 .ec_rate = 0
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S5] = {
+			 .odr = 0,
+			 .ec_rate = 0
+		 },
 	 }
 	},
-	{.name = "Lid Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	[LID_ACCEL] = {
+	 .name = "Lid",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_KXCJ9,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &kxcj9_drv,
+	 .drv = &kionix_accel_drv,
 	 .mutex = &g_kxcj9_mutex[1],
 	 .drv_data = &g_kxcj9_data[1],
-	 .i2c_addr = KXCJ9_ADDR0,
+	 .port = I2C_PORT_ACCEL,
+	 .addr = KXCJ9_ADDR0,
 	 .rot_standard_ref = &lid_standard_ref,
-	 .default_config = {
-		 .odr = 100000,
-		 .range = 2,
-		 .ec_rate = SUSPEND_SAMPLING_INTERVAL,
-	 }
+	 .default_range = 2,  /* g, enough for laptop. */
+	 .config = {
+		 /* AP: by default shutdown all sensors */
+		 [SENSOR_CONFIG_AP] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
+		 /* EC use accel for angle detection */
+		 [SENSOR_CONFIG_EC_S0] = {
+			 .odr = 10000 | ROUND_UP_FLAG,
+			 .ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S3] = {
+			 .odr = 0,
+			 .ec_rate = 0
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S5] = {
+			 .odr = 0,
+			 .ec_rate = 0
+		 },
+	 },
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
-
-/* Define the accelerometer orientation matrices. */
-const struct accel_orientation acc_orient = {
-	/* Hinge aligns with x axis. */
-	.rot_hinge_90 = {
-		{ FLOAT_TO_FP(1),  0,  0},
-		{ 0,  0,  FLOAT_TO_FP(1)},
-		{ 0, FLOAT_TO_FP(-1),  0}
-	},
-	.rot_hinge_180 = {
-		{ FLOAT_TO_FP(1),  0,  0},
-		{ 0, FLOAT_TO_FP(-1),  0},
-		{ 0,  0, FLOAT_TO_FP(-1)}
-	},
-	.hinge_axis = {1, 0, 0},
-};
-
-/*
- * In S3, power rail for sensors (+V3p3S) goes down asynchronous to EC. We need
- * to execute this routine first and set the sensor state to "Not Initialized".
- * This prevents the motion_sense_suspend hook routine from communicating with
- * the sensor.
- */
-static void motion_sensors_pre_init(void)
-{
-	struct motion_sensor_t *sensor;
-	int i;
-
-	for (i = 0; i < motion_sensor_count; ++i) {
-		sensor = &motion_sensors[i];
-		sensor->state = SENSOR_NOT_INITIALIZED;
-
-		sensor->runtime_config.odr = sensor->default_config.odr;
-		sensor->runtime_config.range = sensor->default_config.range;
-	}
-}
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, motion_sensors_pre_init,
-	MOTION_SENSE_HOOK_PRIO - 1);
 
 /*
  * Temperature sensors data; must be in same order as enum temp_sensor_id.
