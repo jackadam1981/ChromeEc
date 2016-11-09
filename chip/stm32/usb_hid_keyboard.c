@@ -107,9 +107,10 @@ static void hid_keyboard_reset(void)
 USB_DECLARE_EP(USB_EP_HID_KEYBOARD, hid_keyboard_tx, hid_keyboard_tx,
 	       hid_keyboard_reset);
 
-static int hid_keyboard_iface_request(usb_uint *ep0_buf_rx, usb_uint *ep0_buf_tx)
+static int hid_keyboard_iface_request(usb_uint *ep0_buf_rx,
+				      usb_uint *ep0_buf_tx, int *cont)
 {
-	return hid_iface_request(ep0_buf_rx, ep0_buf_tx,
+	return hid_iface_request(ep0_buf_rx, ep0_buf_tx, cont,
 				 report_desc, sizeof(report_desc));
 }
 USB_DECLARE_IFACE(USB_IFACE_HID_KEYBOARD, hid_keyboard_iface_request)

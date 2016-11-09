@@ -42,7 +42,7 @@ struct usb_hid_descriptor {
 /* internal callback for HID drivers */
 void hid_tx(int ep);
 void hid_reset(int ep, usb_uint* hid_ep_buf, int len);
-int hid_iface_request(usb_uint *ep0_buf_rx, usb_uint *ep0_buf_tx,
+int hid_iface_request(usb_uint *ep0_buf_rx, usb_uint *ep0_buf_tx, int *cont,
 		      const uint8_t *report_desc, int report_size);
 
 /* class implementation interfaces */
