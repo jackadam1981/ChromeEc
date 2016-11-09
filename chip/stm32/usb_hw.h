@@ -79,12 +79,13 @@ extern void (*usb_ep_tx[]) (void);
 extern void (*usb_ep_rx[]) (void);
 extern void (*usb_ep_reset[]) (void);
 /* array with interface-specific control request callbacks */
-extern int (*usb_iface_request[]) (usb_uint *ep0_buf_rx, usb_uint *ep0_buf_tx);
+extern int (*usb_iface_request[]) (usb_uint *ep0_buf_rx, usb_uint *ep0_buf_tx,
+				   int *cont);
 
 #define _IFACE_HANDLER(num) CONCAT3(iface_, num, _request)
 #define USB_DECLARE_IFACE(num, handler)					\
 	int _IFACE_HANDLER(num)(usb_uint *ep0_buf_rx,			\
-			       usb_uint *epo_buf_tx)			\
+				usb_uint *epo_buf_tx, int *cont)	\
 	__attribute__ ((alias(STRINGIFY(handler))));
 
 #endif
