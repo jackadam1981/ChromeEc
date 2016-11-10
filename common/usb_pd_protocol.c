@@ -340,7 +340,7 @@ static inline void set_state(int port, enum pd_states next_state)
 		disable_sleep(SLEEP_MASK_USB_PD);
 #endif
 
-	CPRINTF("C%d st%d\n", port, next_state);
+	ccprintf("C%d st%d(%s)\n", port, next_state, pd_state_names[next_state]);
 }
 
 /* increment message ID counter */
@@ -580,13 +580,23 @@ void pd_soft_reset(void)
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
+void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv);
+
 static void pd_store_src_cap(int port, int cnt, uint32_t *src_caps)
 {
 	int i;
+	uint32_t ma, mv;
 
 	pd_src_cap_cnt[port] = cnt;
 	for (i = 0; i < cnt; i++)
 		pd_src_caps[port][i] = *src_caps++;
+
+	ccprintf("p%d ", port);
+	for (i = 0; i < cnt; i++) {
+		pd_extract_pdo_power(pd_src_caps[port][i] , &ma, &mv);
+		ccprintf("[%d]%dmv/%dma ", i+1, mv, ma);
+	}
+	ccprintf("\n");
 }
 
 /*

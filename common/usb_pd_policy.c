@@ -135,7 +135,7 @@ static int pd_find_pdo_index(int cnt, uint32_t *src_caps, int max_mv)
  * @ma Current we can request from that PDO
  * @mv Voltage of the PDO
  */
-static void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv)
+void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv)
 {
 	int max_ma, uw;
 	*mv = ((pdo >> 10) & 0x3FF) * 50;
