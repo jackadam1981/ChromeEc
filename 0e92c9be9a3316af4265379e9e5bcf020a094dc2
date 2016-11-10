@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b89037a_852d90ac",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2016-11-10T00:24:13Z",
+      "side": 1,
+      "message": "it does not make much sense to me to make this function public - breaks the TPM registers API.",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 25
+      },
+      "revId": "0e92c9be9a3316af4265379e9e5bcf020a094dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
