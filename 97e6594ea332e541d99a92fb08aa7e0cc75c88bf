@@ -46,6 +46,30 @@
       "revId": "97e6594ea332e541d99a92fb08aa7e0cc75c88bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89037a_6bd39a61",
+        "filename": "board/kevin/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-11-10T11:20:27Z",
+      "side": 0,
+      "message": "On my test, it was fine to charge until 8690. the tolerence of 0.5%,so ideally we can be 8713 max. for example, at charging state, It could be 8688 but is we remove adapter it should be 85XX, the real reference in charger ic seems to be different. I asked rohm to figure out what voltage from battery indicates is  really dangerous. meanwhile let\u0027s remove it and let\u0027s see the situdation is fine.",
+      "parentUuid": "8b89037a_2ad593cc",
+      "range": {
+        "startLine": 133,
+        "startChar": 7,
+        "endLine": 133,
+        "endChar": 54
+      },
+      "revId": "97e6594ea332e541d99a92fb08aa7e0cc75c88bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
