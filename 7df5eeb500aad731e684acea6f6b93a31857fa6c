@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b89037a_77685fa4",
+        "filename": "chip/g/fuses.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-11-10T01:17:39Z",
+      "side": 1,
+      "message": "hm, this will change the device\u0027s keyladder.\nThus it won\u0027t match its endorsement anymore.\nHave you noticed this \"feature\"?",
+      "revId": "7df5eeb500aad731e684acea6f6b93a31857fa6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
