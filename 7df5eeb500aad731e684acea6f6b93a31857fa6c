@@ -52,6 +52,24 @@
       "revId": "7df5eeb500aad731e684acea6f6b93a31857fa6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89037a_5ad8e2d2",
+        "filename": "chip/g/fuses.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-11-10T01:35:53Z",
+      "side": 1,
+      "message": "So we can\u0027t override the fuses?",
+      "parentUuid": "8b89037a_1af6da72",
+      "revId": "7df5eeb500aad731e684acea6f6b93a31857fa6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
