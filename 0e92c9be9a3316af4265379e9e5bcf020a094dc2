@@ -46,6 +46,30 @@
       "revId": "0e92c9be9a3316af4265379e9e5bcf020a094dc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89037a_1700f31a",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2016-11-10T01:05:04Z",
+      "side": 1,
+      "message": "oh, of course - this is other way around :P\n\nI looked at the diffs in a wrong way.",
+      "parentUuid": "8b89037a_77b29fcd",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 25
+      },
+      "revId": "0e92c9be9a3316af4265379e9e5bcf020a094dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
