@@ -635,12 +635,22 @@ static int fusb302_tcpm_set_rx_enable(int port, int enable)
 		}
 		tcpc_write(port, TCPC_REG_SWITCHES0, reg);
 
+		/* Disable BC_LVL interrupt when enabling PD comm */
+		if (!tcpc_read(port, TCPC_REG_MASK, &reg))
+			tcpc_write(port, TCPC_REG_MASK,
+				   reg | TCPC_REG_MASK_BC_LVL);
+
 		/* flush rx fifo in case messages have been coming our way */
 		fusb302_flush_rx_fifo(port);
 
 
 	} else {
 		tcpc_write(port, TCPC_REG_SWITCHES0, reg);
+
+		/* Enable BC_LVL interrupt when disabling PD comm */
+		if (!tcpc_read(port, TCPC_REG_MASK, &reg))
+			tcpc_write(port, TCPC_REG_MASK,
+				   reg & ~TCPC_REG_MASK_BC_LVL);
 	}
 
 	fusb302_auto_goodcrc_enable(port, enable);
@@ -799,7 +809,8 @@ void fusb302_tcpc_alert(int port)
 	tcpc_read(port, TCPC_REG_INTERRUPTA, &interrupta);
 	tcpc_read(port, TCPC_REG_INTERRUPTB, &interruptb);
 
-	if (interrupt & TCPC_REG_INTERRUPT_BC_LVL) {
+	if (!state[port].rx_enable &&
+	    (interrupt & TCPC_REG_INTERRUPT_BC_LVL)) {
 		/* CC Status change */
 		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
 	}
