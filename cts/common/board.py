@@ -36,25 +36,35 @@ class Board(object):
   """
 
   __metaclass__ = ABCMeta  # This is an Abstract Base Class (ABC)
-  def __init__(self, board, hla_serial=None):
+  def __init__(self, board, module, hla_serial=None):
     """Initializes a board object with given attributes
 
     Args:
       board: String containing board name
+      module: String of the test module you are building,
+        i.e. gpio, timer, etc.
       hla_serial: Serial number if board's adaptor is an HLA
     """
     if not board in OPENOCD_CONFIGS:
       msg = 'OpenOcd configuration not found for ' + board
       raise RuntimeError(msg)
-    self.openocd_config = OPENOCD_CONFIGS[board]
     if not board in FLASH_OFFSETS:
       msg = 'Flash offset not found for ' + board
       raise RuntimeError(msg)
-    self.flash_offset = FLASH_OFFSETS[board]
     self.board = board
+    self.flash_offset = FLASH_OFFSETS[self.board]
+    self.openocd_config = OPENOCD_CONFIGS[self.board]
+    self.module = module
     self.hla_serial = hla_serial
     self.tty_port = None
     self.tty = None
+
+  @staticmethod
+  def reset_log(dir, filename):
+    if not os.path.isdir(dir):
+      os.makedirs(dir)
+    elif os.path.isfile(filename):
+      os.remove(filename)
 
   @staticmethod
   def get_stlink_serials():
@@ -93,14 +103,24 @@ class Board(object):
     for cmd in commands:
       args += ['-c', cmd]
     args += ['-c', 'shutdown']
-    return sp.call(args)
+
+    rv = 1
+    with open(self.openocd_log, 'a') as output:
+      rv = sp.call(args, stdout=output, stderr=sp.STDOUT)
+
+    if rv != 0:
+      self.dump_openocd_log()
+
+    return rv == 0
+
+  def dump_openocd_log(self):
+    with open(self.openocd_log) as log:
+      print log.read()
 
   def build(self, module, ec_dir, debug=False):
     """Builds test suite module for board
 
     Args:
-      module: String of the test module you are building,
-        i.e. gpio, timer, etc.
       ec_dir: String of the ec directory path
       debug: True means compile in debug messages when building (may
         affect test results)
@@ -108,14 +128,24 @@ class Board(object):
     cmds = ['make',
             '--directory=' + ec_dir,
             'BOARD=' + self.board,
-            'CTS_MODULE=' + module,
+            'CTS_MODULE=' + self.module,
             '-j']
 
     if debug:
       cmds.append('CTS_DEBUG=TRUE')
 
-    print ' '.join(cmds)
-    return sp.call(cmds)
+    rv = 1
+    with open(self.build_log, 'a') as output:
+      rv = sp.call(cmds, stdout=output, stderr=sp.STDOUT)
+
+    if rv != 0:
+      self.dump_build_log()
+
+    return rv == 0
+
+  def dump_build_log(self):
+    with open(self.build_log) as log:
+      print log.read()
 
   def flash(self, image_path):
     """Flashes board with most recent build ec.bin"""
@@ -136,7 +166,7 @@ class Board(object):
 
   def reset(self):
     """Reset board (used when can't connect to TTY)"""
-    self.send_open_ocd_commands(['init', 'reset init', 'resume'])
+    return self.send_open_ocd_commands(['init', 'reset init', 'resume'])
 
   def setup_tty(self):
     """Call this before trying to call readOutput for the first time.
@@ -228,13 +258,19 @@ class TestHarness(Board):
     serial_path: Path to file containing serial number
   """
 
-  def __init__(self, board, serial_path):
+  def __init__(self, board, module, log_dir, serial_path):
     """Initializes a board object with given attributes
 
     Args:
+      board: board name
+      module: module name
       serial_path: Path to file containing serial number
     """
-    Board.__init__(self, board=board)
+    Board.__init__(self, board, module)
+    self.openocd_log = os.path.join(log_dir, 'openocd_th.log')
+    Board.reset_log(log_dir, self.openocd_log)
+    self.build_log = os.path.join(log_dir, 'build_th.log')
+    Board.reset_log(log_dir, self.build_log)
     self.serial_path = serial_path
 
   def get_serial(self):
@@ -281,16 +317,21 @@ class DeviceUnderTest(Board):
     th: Reference to test harness board to which this DUT is attached
   """
 
-  def __init__(self, board, th, hla_ser=None):
+  def __init__(self, board, th, module, log_dir, hla_ser=None):
     """Initializes a Device Under Test object with given attributes
 
     Args:
       board: String containing board name
       th: Reference to test harness board to which this DUT is attached
+      module: module name
       hla_serial: Serial number if board uses an HLA adaptor
     """
-    Board.__init__(self, board, hla_serial=hla_ser)
+    Board.__init__(self, board, module, hla_serial=hla_ser)
     self.th = th
+    self.openocd_log = os.path.join(log_dir, 'openocd_dut.log')
+    Board.reset_log(log_dir, self.openocd_log)
+    self.build_log = os.path.join(log_dir, 'build_dut.log')
+    Board.reset_log(log_dir, self.build_log)
 
   def get_serial(self):
     """Get serial number.
