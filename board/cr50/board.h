@@ -87,6 +87,8 @@
 /* Enable SPI Slave (SPS) module */
 #define CONFIG_SPS
 #define CONFIG_TPM_SPS
+/* Allow vendor-specific TPM commands */
+#define CONFIG_TPM_VENDOR_COMMANDS
 
 #define CONFIG_RBOX
 

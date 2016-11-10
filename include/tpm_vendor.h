@@ -33,8 +33,8 @@
 
 /* Our vendor-specific command codes. 16 bits available. */
 enum vendor_cmd_cc {
-	VENDOR_CC_HEY = 0,
-	VENDOR_CC_WHAT = 1,
+	VENDOR_CC_GET_LOCK = 0,
+	VENDOR_CC_SET_LOCK = 1,
 };
 
 /* Our vendor-specific response codes. 7 bits available. */
