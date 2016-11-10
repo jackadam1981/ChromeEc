@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b8e57b3_ac964b95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-10T23:03:01Z",
+      "side": 1,
+      "message": "You need to add an config variable in include/config.h and an entery in drivers/build.mk",
+      "revId": "601a28afb8282b9cbdaeb2920c739b84168c0483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_4cfb07ce",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-10T23:03:01Z",
+      "side": 1,
+      "message": "If we ditch 16G, that should easier, shouldn\u0027t it?",
+      "revId": "601a28afb8282b9cbdaeb2920c739b84168c0483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_4cc947b2",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-10T23:03:01Z",
+      "side": 1,
+      "message": "Store the range as gain, this code is on the data path.\nIn get_range, use a formula, it is ok if it is slow.",
+      "revId": "601a28afb8282b9cbdaeb2920c739b84168c0483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
