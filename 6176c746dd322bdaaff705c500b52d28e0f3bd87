@@ -89,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "8b89037a_30997d60",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-11-10T06:23:32Z",
+      "side": 1,
+      "message": "Rohm said it was typo of VSYSREG_SET, so our discharging vsysreg should 8960. so learn mode never work.",
+      "parentUuid": "ebafdfaa_4153362a",
+      "range": {
+        "startLine": 755,
+        "startChar": 4,
+        "endLine": 755,
+        "endChar": 63
+      },
+      "revId": "6176c746dd322bdaaff705c500b52d28e0f3bd87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bbdafe5_fa09c510",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 2
