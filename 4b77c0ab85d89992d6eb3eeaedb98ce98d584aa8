@@ -22,6 +22,30 @@
       "revId": "4b77c0ab85d89992d6eb3eeaedb98ce98d584aa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_77d6d052",
+        "filename": "cts/common/board.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-10T23:38:58Z",
+      "side": 1,
+      "message": "This is not really necessary as long as this file is used by cts.py because the whole output directory (/tmp/ects/board/module) is recreated by cts.py. I added this function to make this file work as an independent module. I guess I can just remove it.",
+      "parentUuid": "8b89037a_1c00121b",
+      "range": {
+        "startLine": 63,
+        "startChar": 30,
+        "endLine": 63,
+        "endChar": 31
+      },
+      "revId": "4b77c0ab85d89992d6eb3eeaedb98ce98d584aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
