@@ -34,6 +34,24 @@
       "revId": "7df5eeb500aad731e684acea6f6b93a31857fa6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89037a_1af6da72",
+        "filename": "chip/g/fuses.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-11-10T01:30:53Z",
+      "side": 1,
+      "message": "yeah that\u0027s the thing.\n\nThose are device unique secrets, locked away at arm\u0027s length.\nAnd the endorsements are registered against the real secrets.",
+      "parentUuid": "8b89037a_d7a90b7a",
+      "revId": "7df5eeb500aad731e684acea6f6b93a31857fa6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
