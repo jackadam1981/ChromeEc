@@ -22,6 +22,30 @@
       "revId": "0e92c9be9a3316af4265379e9e5bcf020a094dc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89037a_77b29fcd",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-10T00:46:03Z",
+      "side": 1,
+      "message": "This function isn\u0027t called or used anywhere else in the code base and doesn\u0027t appear in any header. Why do you consider it part of an API?",
+      "parentUuid": "8b89037a_852d90ac",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 25
+      },
+      "revId": "0e92c9be9a3316af4265379e9e5bcf020a094dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
