@@ -389,6 +389,61 @@ DECLARE_CONSOLE_COMMAND(battfake, command_battfake,
 			"Set fake battery level");
 #endif
 
+#ifdef CONFIG_CMD_BATTMAC
+static int command_battmac_read(int argc, char **argv)
+{
+	char *e;
+	uint8_t data[32];
+	int cmd, block, len = 6;
+	int rv;
+
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	cmd = strtoi(argv[1], &e, 16);
+	if (*e || cmd < 0)
+		return EC_ERROR_PARAM1;
+
+	block = strtoi(argv[2], &e, 16);
+	if (*e || block < 0)
+		return EC_ERROR_PARAM2;
+
+	if (argc > 3) {
+		len = strtoi(argv[3], &e, 10);
+		if (*e || len < 1 || len > 30)
+			return EC_ERROR_PARAM3;
+		len += 2;
+	}
+
+	/* Send manufacturer access command */
+	rv = sb_write(SB_MANUFACTURER_ACCESS, cmd);
+	if (rv)
+		return rv;
+
+	/*
+	 * Read data on the register block.
+	 * First two bytes returned are command sent,
+	 * rest are actual data LSB to MSB.
+	 */
+	rv = sb_read_string(I2C_PORT_BATTERY, BATTERY_ADDR,
+			    block, data, len);
+	if (rv)
+		return rv;
+
+	ccprintf("data[MSB->LSB]=0x");
+	do {
+		len--;
+		ccprintf("%02x ", data[len]);
+	} while (len > 2);
+	ccprintf("\n");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(battmac, command_battmac_read,
+			"battmac cmd_hex block_hex | len_dec",
+			"Read battery manufacture access data");
+#endif /* CONFIG_CMD_BATTMAC */
+
 /*****************************************************************************/
 /* Smart battery pass-through
  */
