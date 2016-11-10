@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b89037a_5a0b02d2",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-10T02:11:03Z",
+      "side": 1,
+      "message": "Can you remove these tabs as well?",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 0
+      },
+      "revId": "c3a382c50d48faa554914de1791afcfdf16b270e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89037a_9aeacac2",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-10T02:11:03Z",
+      "side": 1,
+      "message": "There are some tabs here.",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 4
+      },
+      "revId": "c3a382c50d48faa554914de1791afcfdf16b270e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89037a_bacb0e5e",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-10T02:11:03Z",
+      "side": 1,
+      "message": "There\u0027s a tab here.",
+      "revId": "c3a382c50d48faa554914de1791afcfdf16b270e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89037a_dad0520a",
+        "filename": "include/flash.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-10T02:11:03Z",
+      "side": 1,
+      "message": "These aren\u0027t aligned.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 76
+      },
+      "revId": "c3a382c50d48faa554914de1791afcfdf16b270e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89037a_faaaf66f",
+        "filename": "include/flash.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-10T02:11:03Z",
+      "side": 1,
+      "message": "\"to read from\"?",
+      "range": {
+        "startLine": 206,
+        "startChar": 37,
+        "endLine": 206,
+        "endChar": 45
+      },
+      "revId": "c3a382c50d48faa554914de1791afcfdf16b270e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
