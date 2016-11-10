@@ -396,8 +396,10 @@ static int point_equals(const TPMS_ECC_POINT *a, const TPMS_ECC_POINT *b)
 {
 	return a->x.b.size == b->x.b.size &&
 		a->y.b.size == b->y.b.size &&
-		memcmp(a->x.b.buffer, b->x.b.buffer, a->x.b.size) == 0 &&
-		memcmp(a->y.b.buffer, b->y.b.buffer, a->y.b.size) == 0;
+		DCRYPTO_memcmp(
+			a->x.b.buffer, b->x.b.buffer, a->x.b.size) == 0 &&
+		DCRYPTO_memcmp(
+			a->y.b.buffer, b->y.b.buffer, a->y.b.size) == 0;
 
 }
 
