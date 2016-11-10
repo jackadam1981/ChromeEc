@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "2b8e57b3_806958d7",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-10T20:09:54Z",
+      "side": 1,
+      "message": "as we inhibit charge, state will reset to 0. Changing this doesn\u0027t have any effect, hence I will keep this original code.",
+      "revId": "307a89b65ff1ad051703f63b37c10e1ec9515133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bd84f3b_a8b31a9f",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 8
