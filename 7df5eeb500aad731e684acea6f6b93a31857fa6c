@@ -70,6 +70,24 @@
       "revId": "7df5eeb500aad731e684acea6f6b93a31857fa6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89037a_5a0d4253",
+        "filename": "chip/g/fuses.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2016-11-10T01:48:11Z",
+      "side": 1,
+      "message": "It appears to be a hw override all or none type of thing, so no, we cannot both override some of the fuses and retain the OBS values.\n\nWe might have an (ugly) escape: if we crank keyladder cert #4 before this overriding, it\u0027ll cache the obs/fbs mix in intermediate register isr1. Afaict, at the moment the other keyladder flows we peruse do not touch isr1.",
+      "parentUuid": "8b89037a_5ad8e2d2",
+      "revId": "7df5eeb500aad731e684acea6f6b93a31857fa6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
