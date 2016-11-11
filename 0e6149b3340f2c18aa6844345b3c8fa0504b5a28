@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "cb34dbc0_0a62dbf5",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1110,
+      "author": {
+        "id": 1123350
+      },
+      "writtenOn": "2016-11-11T11:10:20Z",
+      "side": 1,
+      "message": "Clearing host events might have a use case elsewhere. So extruding into a seperate function for future re-use.",
+      "parentUuid": "6bd84f3b_61484dcb",
+      "revId": "0e6149b3340f2c18aa6844345b3c8fa0504b5a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bd84f3b_813d5126",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 2
@@ -65,6 +83,24 @@
       "writtenOn": "2016-11-08T15:48:02Z",
       "side": 1,
       "message": "while (lpc_query_host_event_state() !\u003d 0)\n       ;",
+      "revId": "0e6149b3340f2c18aa6844345b3c8fa0504b5a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb34dbc0_ea7ca798",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1123350
+      },
+      "writtenOn": "2016-11-11T11:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd84f3b_813d5126",
       "revId": "0e6149b3340f2c18aa6844345b3c8fa0504b5a28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
