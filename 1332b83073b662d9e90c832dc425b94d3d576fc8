@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b8e57b3_7ae4f027",
+        "filename": "common/als.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-11T19:06:32Z",
+      "side": 1,
+      "message": "motion sense expect only one motion_sensor_t array.",
+      "revId": "1332b83073b662d9e90c832dc425b94d3d576fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_5afe54bf",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-11T19:06:32Z",
+      "side": 1,
+      "message": "needed? we add a \\n at the end of the line in 786",
+      "revId": "1332b83073b662d9e90c832dc425b94d3d576fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
