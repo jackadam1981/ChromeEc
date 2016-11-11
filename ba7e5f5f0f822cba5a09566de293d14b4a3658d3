@@ -58,6 +58,24 @@
       "revId": "ba7e5f5f0f822cba5a09566de293d14b4a3658d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb34dbc0_2aecff4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-11T08:27:17Z",
+      "side": 1,
+      "message": "util/flash_ec works fine, provided you first disconnect the USB (which is a bit messy as you\u0027d then need to power the board from another source). I\u0027m not sure yet how the flow will look like when we have a proper proto board. Or maybe we\u0027ll just update via USB (and only rarely update the RO).",
+      "parentUuid": "abe6c757_613a7689",
+      "revId": "ba7e5f5f0f822cba5a09566de293d14b4a3658d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
