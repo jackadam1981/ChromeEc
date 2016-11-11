@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2b8e57b3_a6d827d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2016-11-11T03:21:55Z",
+      "side": 1,
+      "message": "Either for or foreach works, but I\u0027ve updated it.",
+      "parentUuid": "abeec770_e16406d2",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "bb0b45d7313e7fb3c2a5ff7d427175b5aca87a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abeec770_01680aa2",
         "filename": "Makefile.rules",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-02T20:24:00Z",
       "side": 1,
       "message": "do you need the newlines? otherwise why not @echo $(sort $(boards))?",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 49
+      },
+      "revId": "bb0b45d7313e7fb3c2a5ff7d427175b5aca87a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_46e12388",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2016-11-11T03:21:55Z",
+      "side": 1,
+      "message": "Good point.  I just copied the line above and didn\u0027t think about updating it.",
+      "parentUuid": "abeec770_01680aa2",
       "range": {
         "startLine": 105,
         "startChar": 2,
