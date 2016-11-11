@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b8e57b3_7f8b023b",
+        "filename": "core/minute-ia/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-11T17:48:41Z",
+      "side": 1,
+      "message": "What was it previously set to? And what happens once this is changed? Does another board end up failing because i686-pc-linux-gnu- is  not the correct compiler for that board?",
+      "revId": "8b8091d9ac3750386aa647704c6fe4edacfc6863",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
