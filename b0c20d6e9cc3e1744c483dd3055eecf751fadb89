@@ -46,6 +46,30 @@
       "revId": "b0c20d6e9cc3e1744c483dd3055eecf751fadb89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_0b739bcb",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-11T22:44:00Z",
+      "side": 1,
+      "message": "ah, good point. Let me try this on a prod device.",
+      "parentUuid": "2b8e57b3_4b85a3a0",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 12
+      },
+      "revId": "b0c20d6e9cc3e1744c483dd3055eecf751fadb89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
