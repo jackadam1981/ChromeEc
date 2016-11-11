@@ -40,6 +40,24 @@
       "revId": "ba7e5f5f0f822cba5a09566de293d14b4a3658d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abe6c757_613a7689",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-11T08:19:27Z",
+      "side": 1,
+      "message": "if that\u0027s necessary to flash this platform, you should add this logic in util/flash_ec. That\u0027s exactly the goal of the flash_ec script: enabling the developers to flash every platform without having to know/find all the platform-specific details.",
+      "parentUuid": "cb34dbc0_4a377311",
+      "revId": "ba7e5f5f0f822cba5a09566de293d14b4a3658d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
