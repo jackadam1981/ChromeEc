@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b8e57b3_2bae973a",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-11T22:32:09Z",
+      "side": 1,
+      "message": "I can\u0027t match this address with any of the addresses found in the schematics or the PS8751 TRM. Why do we not have it in board/reef/board.h in the first place?",
+      "range": {
+        "startLine": 319,
+        "startChar": 29,
+        "endLine": 319,
+        "endChar": 33
+      },
+      "revId": "67450271d4652984c21caf331722e561f22a90ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
