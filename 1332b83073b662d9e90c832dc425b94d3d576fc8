@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2b8e57b3_55b627e0",
+        "filename": "common/als.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-11T20:03:07Z",
+      "side": 1,
+      "message": "okay I will keep one motion sense and remove ALS_COUNT.",
+      "parentUuid": "2b8e57b3_7ae4f027",
+      "revId": "1332b83073b662d9e90c832dc425b94d3d576fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b8e57b3_5afe54bf",
         "filename": "common/motion_sense.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2016-11-11T19:06:32Z",
       "side": 1,
       "message": "needed? we add a \\n at the end of the line in 786",
+      "revId": "1332b83073b662d9e90c832dc425b94d3d576fc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_f5dd7329",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-11T20:03:07Z",
+      "side": 1,
+      "message": "This patch doesn\u0027t need it.\nSome boards have 5 sensors. So print message becomes \u003e 80 chars. Are we okay to keep it?",
+      "parentUuid": "2b8e57b3_5afe54bf",
       "revId": "1332b83073b662d9e90c832dc425b94d3d576fc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
