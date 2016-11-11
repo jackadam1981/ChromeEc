@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2b8e57b3_7131804c",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-11T01:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b89037a_4a71f7fa",
+      "range": {
+        "startLine": 482,
+        "startChar": 2,
+        "endLine": 484,
+        "endChar": 58
+      },
+      "revId": "ec436b51653fc164f591d399ab78cb0e4425dfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b89037a_ea9eabed",
         "filename": "chip/stm32/usb_power.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-09T23:39:53Z",
       "side": 1,
       "message": "should I retry this or if not at least return non-zero exit status (USB_POWER_I2C)",
+      "range": {
+        "startLine": 499,
+        "startChar": 2,
+        "endLine": 502,
+        "endChar": 59
+      },
+      "revId": "ec436b51653fc164f591d399ab78cb0e4425dfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_912e0cec",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-11T01:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b89037a_ea9eabed",
       "range": {
         "startLine": 499,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2b8e57b3_d1a89431",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-11T01:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b89037a_dfa047e3",
+      "range": {
+        "startLine": 618,
+        "startChar": 46,
+        "endLine": 618,
+        "endChar": 49
+      },
+      "revId": "ec436b51653fc164f591d399ab78cb0e4425dfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b89037a_3fde3350",
         "filename": "chip/stm32/usb_power.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2016-11-09T23:39:53Z",
       "side": 1,
       "message": "nit, think you mean we \u0027are still\u0027 capturing",
+      "range": {
+        "startLine": 647,
+        "startChar": 22,
+        "endLine": 647,
+        "endChar": 36
+      },
+      "revId": "ec436b51653fc164f591d399ab78cb0e4425dfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_71c260f1",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-11T01:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b89037a_3fde3350",
       "range": {
         "startLine": 647,
         "startChar": 22,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "2b8e57b3_11211cca",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-11T01:00:30Z",
+      "side": 1,
+      "message": "hook_call_deferred takes a struct rather than a function name. config is initialized in the macro in the header file, including this struct, with the config argument hardcoded.\n\nstatic void CONCAT2(NAME, _deferred_cap_)(void)\n        { usb_power_deferred_cap(\u0026NAME); }",
+      "parentUuid": "8b89037a_df7cc763",
+      "range": {
+        "startLine": 649,
+        "startChar": 21,
+        "endLine": 649,
+        "endChar": 41
+      },
+      "revId": "ec436b51653fc164f591d399ab78cb0e4425dfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b89037a_8ad83f06",
         "filename": "chip/stm32/usb_power.h",
         "patchSetId": 3
@@ -134,6 +254,24 @@
     },
     {
       "key": {
+        "uuid": "8b5ca306_fefe398e",
+        "filename": "chip/stm32/usb_power.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-11T01:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b89037a_8ad83f06",
+      "revId": "ec436b51653fc164f591d399ab78cb0e4425dfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b89037a_2aa35389",
         "filename": "chip/stm32/usb_power.h",
         "patchSetId": 3
@@ -145,6 +283,30 @@
       "writtenOn": "2016-11-09T23:39:53Z",
       "side": 1,
       "message": "nit, remove _ERROR or perhaps better prefix all w/ USB_POWER_ERR",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "ec436b51653fc164f591d399ab78cb0e4425dfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_6c37e311",
+        "filename": "chip/stm32/usb_power.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-11T01:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b89037a_2aa35389",
       "range": {
         "startLine": 86,
         "startChar": 14,
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "2b8e57b3_8c342f0d",
+        "filename": "chip/stm32/usb_power.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-11T01:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b89037a_4aa0177a",
+      "range": {
+        "startLine": 94,
+        "startChar": 18,
+        "endLine": 94,
+        "endChar": 24
+      },
+      "revId": "ec436b51653fc164f591d399ab78cb0e4425dfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b89037a_6a063b3f",
         "filename": "chip/stm32/usb_power.h",
         "patchSetId": 3
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "cb7dbb54_02ff0a8c",
+        "filename": "chip/stm32/usb_power.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-11T01:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b89037a_6a063b3f",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "ec436b51653fc164f591d399ab78cb0e4425dfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b89037a_0a00cf1a",
         "filename": "chip/stm32/usb_power.h",
         "patchSetId": 3
@@ -214,6 +424,30 @@
       "writtenOn": "2016-11-09T23:39:53Z",
       "side": 1,
       "message": "nit, no docstring",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 34
+      },
+      "revId": "ec436b51653fc164f591d399ab78cb0e4425dfa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb7dbb54_820b1ad1",
+        "filename": "chip/stm32/usb_power.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-11-11T01:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b89037a_0a00cf1a",
       "range": {
         "startLine": 172,
         "startChar": 1,
