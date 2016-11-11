@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b8e57b3_5f9006d6",
+        "filename": "common/lpc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-11T17:10:03Z",
+      "side": 1,
+      "message": "as there are other LPC common code, will push it back to respective chip code. We can merge this common code as part of x86 common code implementation .",
+      "revId": "31e3b04f867651bd8c9b1a6b3346561317be1826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
