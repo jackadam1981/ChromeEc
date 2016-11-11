@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2b8e57b3_695fd025",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-11-11T07:50:23Z",
+      "side": 1,
+      "message": "Code clean up can be done on a separate patch as there are more existing/non-S0ix related code that are common.",
+      "parentUuid": "6bd84f3b_414349b1",
+      "revId": "0e6149b3340f2c18aa6844345b3c8fa0504b5a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bd84f3b_61484dcb",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 2
