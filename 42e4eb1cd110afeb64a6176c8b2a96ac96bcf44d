@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b8e57b3_5a6ad40d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-11T18:25:25Z",
+      "side": 1,
+      "message": "If a sensor is broken, we will call init at every wake of the thread.",
+      "revId": "42e4eb1cd110afeb64a6176c8b2a96ac96bcf44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_1a804c92",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-11T18:25:25Z",
+      "side": 1,
+      "message": "not need to call n times.",
+      "revId": "42e4eb1cd110afeb64a6176c8b2a96ac96bcf44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
