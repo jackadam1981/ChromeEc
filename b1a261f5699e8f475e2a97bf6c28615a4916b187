@@ -22,6 +22,30 @@
       "revId": "b1a261f5699e8f475e2a97bf6c28615a4916b187",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_f2258ec7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-11-11T02:26:43Z",
+      "side": 1,
+      "message": "nop, this is for preventing confusing state, also led green(full charged) working during ac+discharging",
+      "parentUuid": "8b89037a_c6a4fba4",
+      "range": {
+        "startLine": 1070,
+        "startChar": 1,
+        "endLine": 1075,
+        "endChar": 30
+      },
+      "revId": "b1a261f5699e8f475e2a97bf6c28615a4916b187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
