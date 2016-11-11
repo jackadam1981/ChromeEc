@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "2b8e57b3_ff8e320d",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-11-11T16:51:05Z",
+      "side": 1,
+      "message": "This #ifdef is not needed, just keep it as INPUT always and remove line 22, otherwise build will fail.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 24
+      },
+      "revId": "b795ce03610686a685662e92ec6245f62290ee28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b8e57b3_fc3e40cf",
         "filename": "power/apollolake.c",
         "patchSetId": 3
@@ -30,6 +53,29 @@
       "writtenOn": "2016-11-11T16:21:03Z",
       "side": 1,
       "message": "make static function",
+      "revId": "b795ce03610686a685662e92ec6245f62290ee28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_1f691e39",
+        "filename": "power/apollolake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-11-11T16:51:05Z",
+      "side": 1,
+      "message": "remove space.",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 1
+      },
       "revId": "b795ce03610686a685662e92ec6245f62290ee28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
