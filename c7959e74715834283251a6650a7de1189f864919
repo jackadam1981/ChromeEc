@@ -106,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "cb34dbc0_aa7aafdb",
+        "filename": "include/usb_hid.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-11T05:32:02Z",
+      "side": 1,
+      "message": "Actually, moved to a board-specific include file.",
+      "parentUuid": "cb34dbc0_2a195fe9",
+      "revId": "c7959e74715834283251a6650a7de1189f864919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b0befa9_67a9b267",
         "filename": "include/usb_hid.h",
         "patchSetId": 2
