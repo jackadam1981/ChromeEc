@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b8e57b3_498054e1",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-11T05:36:18Z",
+      "side": 1,
+      "message": "I thought Patrick meant the literal words \"Default is\" since otherwise it seems that \"Default\" is a variable.\n\nEither way is fine in my opinion.",
+      "range": {
+        "startLine": 399,
+        "startChar": 60,
+        "endLine": 399,
+        "endChar": 76
+      },
+      "revId": "075495c3ed4d63f579eb3648e895439d6a85c6c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
