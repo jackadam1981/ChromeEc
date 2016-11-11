@@ -22,6 +22,30 @@
       "revId": "b0c20d6e9cc3e1744c483dd3055eecf751fadb89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_4b85a3a0",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-11-11T22:33:36Z",
+      "side": 1,
+      "message": "I wanted to make sure it happens before board_init because that is where the permission level is lowered.",
+      "parentUuid": "2b8e57b3_2be137bb",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 12
+      },
+      "revId": "b0c20d6e9cc3e1744c483dd3055eecf751fadb89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
