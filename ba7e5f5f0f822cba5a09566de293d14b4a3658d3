@@ -22,6 +22,24 @@
       "revId": "ba7e5f5f0f822cba5a09566de293d14b4a3658d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb34dbc0_4a377311",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-11T07:37:26Z",
+      "side": 1,
+      "message": "Yeah, just some helper script to disconnect the USB so that UART programming works... go/hammercare .",
+      "parentUuid": "abe6c757_4143f20d",
+      "revId": "ba7e5f5f0f822cba5a09566de293d14b4a3658d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
