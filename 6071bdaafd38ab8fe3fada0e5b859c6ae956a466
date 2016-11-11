@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b8e57b3_7ac950b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-11T18:44:25Z",
+      "side": 1,
+      "message": "Add chrome-os-partner:59480",
+      "revId": "6071bdaafd38ab8fe3fada0e5b859c6ae956a466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_ba0d9856",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-11T18:44:25Z",
+      "side": 1,
+      "message": "isn\u0027t static frown upon? Use a global.",
+      "revId": "6071bdaafd38ab8fe3fada0e5b859c6ae956a466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
