@@ -219,7 +219,8 @@ const char *system_get_version(enum system_image_copy_t copy)
 			break;
 		h = (const struct SignedHeader *)vaddr;
 		/* Use some fields from the header for the version string */
-		snprintf(vers_str, MAX_RO_VER_LEN, "%d.%d.%d/%08x",
+		snprintf(vers_str, MAX_RO_VER_LEN, "%s%d.%d.%d/%08x",
+			 (h->magic == 0xffffffff ? "" : "XX"),
 			 h->epoch_, h->major_, h->minor_, h->img_chk_);
 		return vers_str;
 
@@ -261,7 +262,8 @@ const char *system_get_version(enum system_image_copy_t copy)
 		 */
 		if (v->cookie1 == version_data.cookie1 &&
 		    v->cookie2 == version_data.cookie2) {
-			snprintf(vers_str, sizeof(vers_str), "%d.%d.%d/%s",
+			snprintf(vers_str, sizeof(vers_str), "%s%d.%d.%d/%s",
+				 (h->magic == 0xffffffff ? "" : "XX"),
 				 h->epoch_, h->major_, h->minor_, v->version);
 			return vers_str;
 		}
