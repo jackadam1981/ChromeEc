@@ -16,6 +16,24 @@
       "revId": "cfa782f86dda34b58fbbff3f8c23dadeb185c072",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_9f99a562",
+        "filename": "board/kunimitsu/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-12T18:52:19Z",
+      "side": 1,
+      "message": "Done. Remove the board in the first CL of the train.\n\u003cchange id If0a107694533d42e9f1e574d23fe182fff67a610\u003e",
+      "parentUuid": "ab6b279a_7688896f",
+      "revId": "cfa782f86dda34b58fbbff3f8c23dadeb185c072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
