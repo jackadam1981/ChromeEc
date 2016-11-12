@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50425c4d_ef7e211d",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-12T01:28:08Z",
+      "side": 1,
+      "message": "This test is reversed. Took me forever to notice.",
+      "range": {
+        "startLine": 717,
+        "startChar": 3,
+        "endLine": 718,
+        "endChar": 47
+      },
+      "revId": "174f6ee9a44bee4b96246d0eb0ff3dd2cb4a8f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
