@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b8e57b3_9aa37387",
+        "filename": "power/apollolake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-12T19:08:26Z",
+      "side": 1,
+      "message": "Can we build on the common handler in common.c instead? We can leave most of the code in this function here and call the function from the common handler.",
+      "range": {
+        "startLine": 476,
+        "startChar": 21,
+        "endLine": 476,
+        "endChar": 44
+      },
+      "revId": "f8922053dc8933e10672c5e1fdfbed496f9d5355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
