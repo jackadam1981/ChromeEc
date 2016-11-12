@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b8e57b3_fa4717ba",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-12T20:02:18Z",
+      "side": 1,
+      "message": "This might handle out failure case, but I don\u0027t think it\u0027s correct. We should parse the input to verify it matches one of the two cases vincent mentioned. In the case of read, we can check if it\u0027s a cached value, and return it, otherwise pass the read through to the battery, and return what was read over i2c.\n\nOn a write structure, we don\u0027t want to pass the write through to the battery, except for a few limited commands as we discussed before.",
+      "range": {
+        "startLine": 614,
+        "startChar": 7,
+        "endLine": 614,
+        "endChar": 16
+      },
+      "revId": "c7d612f623fb56c0cb528ba8e5e047560d4dddc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
