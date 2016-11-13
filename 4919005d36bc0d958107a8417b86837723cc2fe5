@@ -367,6 +367,30 @@
     },
     {
       "key": {
+        "uuid": "2b8e57b3_3a197f5b",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2016-11-13T05:10:16Z",
+      "side": 1,
+      "message": "But that is not the case. You are setting the wake mask to 0.\n\nvoid lpc_set_host_event_mask(enum lpc_host_event_type type, uint32_t mask)                                                                                                                                        \n{                                                                                                                                                                                                                 \n»       event_mask[type] \u003d mask;                                                                                                                                                                                  \n»       update_host_event_status();                                                                                                                                                                               \n}\n\nSo, lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0); would basically set, \nevent_mask[LPC_HOST_EVENT_WAKE] \u003d 0;\n\nShouldn\u0027t it clear _only_ the bit corresponding to LID_OPEN?\n\ni.e. something like:\n\nmask \u003d lpc_get_host_event_mask(LPC_HOST_EVENT_WAKE) \u0026 ~EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN);\nlpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, mask);",
+      "parentUuid": "6b692fe4_1d76534a",
+      "range": {
+        "startLine": 1079,
+        "startChar": 47,
+        "endLine": 1079,
+        "endChar": 48
+      },
+      "revId": "4919005d36bc0d958107a8417b86837723cc2fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b78b3b0_29e195ba",
         "filename": "power/apollolake.c",
         "patchSetId": 1
