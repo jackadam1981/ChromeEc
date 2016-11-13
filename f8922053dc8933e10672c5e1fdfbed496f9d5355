@@ -22,6 +22,30 @@
       "revId": "f8922053dc8933e10672c5e1fdfbed496f9d5355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_daf25bef",
+        "filename": "power/apollolake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-13T06:05:00Z",
+      "side": 1,
+      "message": "Is there a plan for non Intel platforms to use this event? We are planning make common code for x86 (chrome-os-partner:59141) and planning to put it in intel_x86.c.",
+      "parentUuid": "2b8e57b3_9aa37387",
+      "range": {
+        "startLine": 476,
+        "startChar": 21,
+        "endLine": 476,
+        "endChar": 44
+      },
+      "revId": "f8922053dc8933e10672c5e1fdfbed496f9d5355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
