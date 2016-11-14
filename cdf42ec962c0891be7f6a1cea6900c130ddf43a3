@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb34dbc0_8a4ecb36",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-14T00:49:50Z",
+      "side": 1,
+      "message": "ditto, this should take in the struct",
+      "revId": "cdf42ec962c0891be7f6a1cea6900c130ddf43a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb34dbc0_0a1adb2e",
+        "filename": "include/usb_hid_touchpad.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-14T00:49:50Z",
+      "side": 1,
+      "message": "Parameter should be usb_hid_touchpad_packet *packet .",
+      "revId": "cdf42ec962c0891be7f6a1cea6900c130ddf43a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
