@@ -70,6 +70,30 @@
       "revId": "f8922053dc8933e10672c5e1fdfbed496f9d5355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_e91f11d3",
+        "filename": "power/apollolake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-14T21:16:23Z",
+      "side": 1,
+      "message": "okay thank you, we will reuse the function with additional calls under #ifdef CONFIG_POWER_S0IX.",
+      "parentUuid": "30b088be_e6617e29",
+      "range": {
+        "startLine": 476,
+        "startChar": 21,
+        "endLine": 476,
+        "endChar": 44
+      },
+      "revId": "f8922053dc8933e10672c5e1fdfbed496f9d5355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
