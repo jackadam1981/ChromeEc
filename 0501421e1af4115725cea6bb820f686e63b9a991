@@ -22,6 +22,24 @@
       "revId": "0501421e1af4115725cea6bb820f686e63b9a991",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb34dbc0_0d4e75dc",
+        "filename": "include/host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-14T09:11:08Z",
+      "side": 1,
+      "message": "hum... So, there are 2 options:\n 1. No ifdef here, and we\u0027ll get a link-time failure\n 2. Add a ifdef as I just did, to get a compile-time failure\n\nI\u0027m not sure what you mean by useless, but I find compile time failures easier to parse than link-time ones?",
+      "parentUuid": "1023849f_7598a808",
+      "revId": "0501421e1af4115725cea6bb820f686e63b9a991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
