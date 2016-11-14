@@ -22,6 +22,24 @@
       "revId": "7368057b7d76fa6cc6f2d84aff0fb1626d9c46cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb34dbc0_cd3c5d2a",
+        "filename": "include/usb_hid_keyboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-14T09:19:59Z",
+      "side": 1,
+      "message": "Thanks. I noticed a similar issue with the trackpad, actually. I could workaround that by lowering the interrupt interval to match what the trackpad does.\n\nBut, yes, we need to figure out a way to synchronize or queue the events.",
+      "parentUuid": "1023849f_559dacf6",
+      "revId": "7368057b7d76fa6cc6f2d84aff0fb1626d9c46cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
