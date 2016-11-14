@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1023849f_7598a808",
+        "filename": "include/host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-14T09:04:32Z",
+      "side": 1,
+      "message": "IMO #ifdef in headers are useless and we should just avoid them.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 28
+      },
+      "revId": "0501421e1af4115725cea6bb820f686e63b9a991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
