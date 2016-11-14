@@ -1155,7 +1155,7 @@ int cmd_flash_pd(int argc, char *argv[])
 	int rv, fsize, step = 96;
 	char *e;
 	char *buf;
-	uint32_t *data = &(p->size) + 1;
+	uint32_t *data = (uint32_t *) ((char *)&(p->size)) + 1;
 
 	if (argc < 4) {
 		fprintf(stderr, "Usage: %s <dev_id> <port> <filename>\n",
