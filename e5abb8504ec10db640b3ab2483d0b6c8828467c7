@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1023849f_b56e4018",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-14T09:00:55Z",
+      "side": 1,
+      "message": "might worth a comment here saying that\u0027s useful/used only for protocols which need the full matrix.\nJust to avoid losing the next guy trying to understand this code.",
+      "range": {
+        "startLine": 509,
+        "startChar": 0,
+        "endLine": 509,
+        "endChar": 27
+      },
+      "revId": "e5abb8504ec10db640b3ab2483d0b6c8828467c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
