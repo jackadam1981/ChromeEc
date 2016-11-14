@@ -491,6 +491,12 @@
  */
 #undef CONFIG_CHARGER_PROFILE_OVERRIDE
 
+/*
+ * Report full_cap rather than remain_cap. this will help some system not to
+ * indicate charging when battery reaches 'near full'
+ */
+#undef CONFIG_CHARGER_REPORT_FULLCAP_NEAR_FULL
+
 /* Value of the charge sense resistor, in mOhms */
 #undef CONFIG_CHARGER_SENSE_RESISTOR
 

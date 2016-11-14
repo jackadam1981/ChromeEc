@@ -1036,6 +1036,20 @@ int virtual_battery_read(uint8_t batt_param, uint8_t *dest, int read_len)
 	case SB_FULL_CHARGE_CAPACITY:
 		memcpy(dest, &curr.batt.full_capacity, read_len);
 		break;
+#ifdef CONFIG_CHARGER_REPORT_FULLCAP_NEAR_FULL
+	case SB_REMAINING_CAPACITY:
+		/*
+		 * Our powerd calculates its full charge UI using full_cap and
+		 * remain_cap. Some system want to represent 100% even though
+		 * it reaches 97% which UI want to indicate not 'battery full'.
+		 * At this case, EC will report full_cap rather than remain_cap
+		 */
+		if (curr.ac &&
+		     curr.batt.state_of_charge >= BATTERY_LEVEL_NEAR_FULL) {
+			memcpy(dest, &curr.batt.full_capacity, read_len);
+			break;
+		}
+#endif
 	case SB_BATTERY_STATUS:
 		memcpy(dest, &curr.batt.status, read_len);
 		break;
