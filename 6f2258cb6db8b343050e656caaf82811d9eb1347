@@ -16,6 +16,24 @@
       "revId": "6f2258cb6db8b343050e656caaf82811d9eb1347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_a9bfd9ad",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-14T22:03:23Z",
+      "side": 1,
+      "message": "I don\u0027t think we can remove the \u0027ifndef\u0027 on line 862 because we don\u0027t want to trash our requested_voltage / requested_current. I\u0027ll make the other change you suggested.",
+      "parentUuid": "9c822b81_e13f86cd",
+      "revId": "6f2258cb6db8b343050e656caaf82811d9eb1347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
