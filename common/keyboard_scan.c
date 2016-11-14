@@ -506,9 +506,7 @@ static int check_keys_changed(uint8_t *state)
 		if (check_runtime_keys(state))
 			return 0;
 
-#ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
 		keyboard_fifo_add(state);
-#endif
 	}
 
 	kbd_polls++;

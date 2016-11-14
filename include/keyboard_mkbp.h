@@ -12,13 +12,6 @@
 #include "keyboard_config.h"
 
 /**
- * Add keyboard state into FIFO
- *
- * @return EC_SUCCESS if entry added, EC_ERROR_OVERFLOW if FIFO is full
- */
-int keyboard_fifo_add(const uint8_t *buffp);
-
-/**
  * Add an element to the common MKBP FIFO.
  *
  * @param event_type	The MKBP event type.

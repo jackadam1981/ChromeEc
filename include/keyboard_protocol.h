@@ -31,6 +31,15 @@ void keyboard_update_button(enum keyboard_button_type button, int is_pressed);
 
 #ifdef CONFIG_KEYBOARD_PROTOCOL_8042
 #include "keyboard_8042.h"
+
+static inline int keyboard_fifo_add(const uint8_t *buffp) { return 0; }
+#else
+/**
+ * Add keyboard state into FIFO
+ *
+ * @return EC_SUCCESS if entry added, EC_ERROR_OVERFLOW if FIFO is full
+ */
+int keyboard_fifo_add(const uint8_t *buffp);
 #endif
 
 #ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
