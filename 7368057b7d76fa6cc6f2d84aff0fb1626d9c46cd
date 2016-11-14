@@ -40,6 +40,24 @@
       "revId": "7368057b7d76fa6cc6f2d84aff0fb1626d9c46cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1023849f_554c8cb9",
+        "filename": "include/usb_hid_keyboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-14T09:49:10Z",
+      "side": 1,
+      "message": "For STM32, their double-buffered endpoint might work fine to solve this.\nActually the hardware for this is a bit tricky to use, for Twinkie I ended up allocating twice the USB RAM for the double buffering but doing the buffer switch in software in the interrupt handler.",
+      "parentUuid": "cb34dbc0_cd3c5d2a",
+      "revId": "7368057b7d76fa6cc6f2d84aff0fb1626d9c46cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
