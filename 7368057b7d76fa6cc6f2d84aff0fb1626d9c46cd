@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1023849f_559dacf6",
+        "filename": "include/usb_hid_keyboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-14T09:13:13Z",
+      "side": 1,
+      "message": "not directly related to this CL, but\nplease note this interface was just a quick test and cannot really work properly as it has race conditions, e.g.:\n- user first key\n- we set report in the USB RAM and enable TX\n- before the host actually read the packet, user presses a second key.\n- we update the USB RAM while TX is enabled\n  ---\u003e we have no idea, what the host has received on its first packet read (first matrix, second matrix, a mix ?)",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "7368057b7d76fa6cc6f2d84aff0fb1626d9c46cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
