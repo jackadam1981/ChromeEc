@@ -726,7 +726,8 @@ static void bd9995x_init(void)
 		return;
 	reg &= ~(BD9995X_CMD_CHGOP_SET2_USB_SUS |
 		 BD9995X_CMD_CHGOP_SET2_DCDC_CLK_SEL);
-	reg |= BD9995X_CMD_CHGOP_SET2_DCDC_CLK_SEL_1200;
+	reg |= BD9995X_CMD_CHGOP_SET2_DCDC_CLK_SEL_1200 |
+		BD9995X_CMD_CHGOP_SET2_CHG_EN;
 	ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
 		       BD9995X_EXTENDED_COMMAND);
 
@@ -893,6 +894,16 @@ int bd9995x_get_battery_temp(int *temp_ptr)
 void bd9995x_set_power_save_mode(int mode)
 {
 	ch_raw_write16(BD9995X_CMD_SMBREG, mode, BD9995X_EXTENDED_COMMAND);
+}
+
+int bd9995x_get_battery_voltage(void)
+{
+	int vbat_val, rv;
+
+	rv = ch_raw_read16(BD9995X_CMD_VBAT_VAL, &vbat_val,
+			BD9995X_EXTENDED_COMMAND);
+
+	return rv ? 0 : vbat_val;
 }
 
 #ifdef HAS_TASK_USB_CHG

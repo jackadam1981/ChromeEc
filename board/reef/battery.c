@@ -7,6 +7,7 @@
 
 #include "battery.h"
 #include "battery_smart.h"
+#include "bd9995x.h"
 #include "charge_state.h"
 #include "console.h"
 #include "ec_commands.h"
@@ -304,6 +305,7 @@ enum battery_present battery_is_present(void)
 {
 	enum battery_present batt_pres;
 	int batt_status;
+	int rv;
 
 	/* Get the physical hardware status */
 	batt_pres = battery_hw_present();
@@ -313,13 +315,19 @@ enum battery_present battery_is_present(void)
 	 * success & the battery status is Initialized to find out if it
 	 * is a working battery and it is not in the cut-off mode.
 	 *
+	 * Battery I2C fails but VBATT is high, battery is booting from
+	 * cut-off mode.
+	 *
 	 * FETs are turned off after Power Shutdown time.
 	 * The device will wake up when a voltage is applied to PACK.
 	 * Battery status will be inactive until it is initialized.
 	 */
-	if (batt_pres == BP_YES && !battery_status(&batt_status))
-		if (!(batt_status & STATUS_INITIALIZED))
+	if (batt_pres == BP_YES && !battery_is_cut_off()) {
+		rv = battery_status(&batt_status);
+		if ((rv && bd9995x_get_battery_voltage() >= info.voltage_min) ||
+			!(batt_status & STATUS_INITIALIZED))
 			batt_pres = BP_NO;
+	}
 
 	return batt_pres;
 }
