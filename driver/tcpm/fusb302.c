@@ -23,6 +23,7 @@ static struct fusb302_chip_state {
 	/* 1 = pulling up (DFP) 0 = pulling down (UFP) */
 	int pulling_up;
 	int rx_enable;
+	int retry_enable;
 	uint8_t mdac_vnc;
 	uint8_t mdac_rd;
 } state[CONFIG_USB_PD_PORT_COUNT];
@@ -375,6 +376,7 @@ static int fusb302_tcpm_init(int port)
 	reg |= (PD_RETRY_COUNT & 0x3) <<
 		TCPC_REG_CONTROL3_N_RETRIES_POS;
 	tcpc_write(port, TCPC_REG_CONTROL3, reg);
+	state[port].retry_enable = 1;
 
 	/* Create interrupt masks */
 	reg = 0xFF;
@@ -733,12 +735,31 @@ static int fusb302_tcpm_transmit(int port, enum tcpm_transmit_type type,
 	int buf_pos = 0;
 
 	int reg;
+	int retry_enable;
 
 	/* Flush the TXFIFO */
 	fusb302_flush_tx_fifo(port);
 
 	switch (type) {
 	case TCPC_TX_SOP:
+		/*
+		 * Attempt tx retry except when sending source caps, since
+		 * TCPM will retry source caps on its own.
+		 */
+		retry_enable = !(PD_HEADER_TYPE(header) == PD_DATA_SOURCE_CAP);
+		if (state[port].retry_enable != retry_enable) {
+			tcpc_read(port, TCPC_REG_CONTROL3, &reg);
+			if (retry_enable)
+				reg |= (PD_RETRY_COUNT & 0x3) <<
+					TCPC_REG_CONTROL3_N_RETRIES_POS;
+
+			else
+				reg &= ~(0x3 <<
+					 TCPC_REG_CONTROL3_N_RETRIES_POS);
+
+			tcpc_write(port, TCPC_REG_CONTROL3, reg);
+			state[port].retry_enable = retry_enable;
+		}
 
 		/* put register address first for of burst tcpc write */
 		buf[buf_pos++] = TCPC_REG_FIFOS;
