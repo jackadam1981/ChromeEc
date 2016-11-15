@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b088be_bc3b8efa",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-15T19:18:02Z",
+      "side": 1,
+      "message": "these things are different so are we planning to skip reef battery tests?",
+      "revId": "13155a111aac87b83639bed0b74ec84e0c23a907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_7cfc3601",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-15T19:18:02Z",
+      "side": 1,
+      "message": "Electro has 3s battery and these params are different",
+      "revId": "13155a111aac87b83639bed0b74ec84e0c23a907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
