@@ -32,7 +32,7 @@ GPIO_INT(POWER_BUTTON_L,	PIN(0, 4), GPIO_INT_BOTH, power_button_interrupt)		/* M
 GPIO_INT(LID_OPEN,		PIN(6, 7), GPIO_INT_BOTH, lid_interrupt)
 GPIO_INT(EC_VOLDN_BTN_ODL,	PIN(8, 3), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
 GPIO_INT(EC_VOLUP_BTN_ODL,	PIN(8, 2), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
-GPIO_INT(TABLET_MODE,		PIN(3, 6), GPIO_INT_BOTH, tablet_mode_interrupt)
+GPIO_INT(TABLET_MODE_L,		PIN(3, 6), GPIO_INT_BOTH, tablet_mode_interrupt)
 
 GPIO_INT(WP_L,			PIN(4, 0), GPIO_INT_BOTH | GPIO_SEL_1P8V, switch_interrupt)	/* EC_WP_ODL */
 
