@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "atomic.h"
 #include "clock.h"
 #include "common.h"
 #include "config.h"
@@ -24,6 +25,8 @@
 
 #define HID_KEYBOARD_REPORT_SIZE  8
 
+#define HID_KEYBOARD_EP_INTERVAL_MS  40 /* ms */
+
 /* HID descriptors */
 const struct usb_interface_descriptor USB_IFACE_DESC(USB_IFACE_HID_KEYBOARD) = {
 	.bLength = USB_DT_INTERFACE_SIZE,
@@ -42,7 +45,7 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_HID_KEYBOARD, 81) = {
 	.bEndpointAddress = 0x80 | USB_EP_HID_KEYBOARD,
 	.bmAttributes = 0x03 /* Interrupt endpoint */,
 	.wMaxPacketSize = HID_KEYBOARD_REPORT_SIZE,
-	.bInterval = 40 /* ms polling interval */
+	.bInterval = HID_KEYBOARD_EP_INTERVAL_MS /* ms polling interval */
 };
 
 /* HID : Report Descriptor */
@@ -89,8 +92,13 @@ const struct usb_hid_descriptor USB_CUSTOM_DESC(USB_IFACE_HID_KEYBOARD, hid) = {
 
 static usb_uint hid_ep_buf[HID_KEYBOARD_REPORT_SIZE / 2] __usb_ram;
 
+static int hid_ep_available = 1;
+
 void set_keyboard_report(uint64_t rpt)
 {
+	while (!atomic_read_clear(&hid_ep_available))
+		usleep(HID_KEYBOARD_EP_INTERVAL_MS * 1000 / 4);
+
 	memcpy_to_usbram((void *) usb_sram_addr(hid_ep_buf), &rpt, sizeof(rpt));
 	/* enable TX */
 	STM32_TOGGLE_EP(USB_EP_HID_KEYBOARD, EP_TX_MASK, EP_TX_VALID, 0);
@@ -99,6 +107,8 @@ void set_keyboard_report(uint64_t rpt)
 static void hid_keyboard_tx(void)
 {
 	hid_tx(USB_EP_HID_KEYBOARD);
+	/* We are already in interrupt context, so we can't use atomic_add. */
+	hid_ep_available = 1;
 }
 
 static void hid_keyboard_reset(void)
@@ -131,7 +141,6 @@ static int command_hid_kb(int argc, char **argv)
 
 	/* press then release the key */
 	set_keyboard_report((uint32_t)keycode << 16);
-	udelay(50000);
 	set_keyboard_report(0x000000);
 
 	return EC_SUCCESS;
