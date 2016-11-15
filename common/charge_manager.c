@@ -560,7 +560,8 @@ static void charge_manager_refresh(void)
 #ifdef HAS_TASK_CHG_RAMP
 		chg_ramp_charge_supplier_change(
 				new_port, new_supplier, new_charge_current,
-				registration_time[new_port]);
+				registration_time[new_port],
+				new_charge_voltage);
 #else
 #ifdef CONFIG_CHARGE_RAMP_HW
 		/* Enable or disable charge ramp */
@@ -568,7 +569,8 @@ static void charge_manager_refresh(void)
 #endif
 		board_set_charge_limit(new_port, new_supplier,
 					new_charge_current,
-					new_charge_current_uncapped);
+					new_charge_current_uncapped,
+					new_charge_voltage);
 #endif /* HAS_TASK_CHG_RAMP */
 
 		power_changed = 1;
