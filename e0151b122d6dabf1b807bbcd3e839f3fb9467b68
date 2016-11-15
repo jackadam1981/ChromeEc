@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b088be_17207b0b",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2016-11-15T19:52:05Z",
+      "side": 1,
+      "message": "the style is still incorrect.  if you look at the other files, they do:\n\n /*\n  * Some long\n  * multiline comment.\n  */",
+      "revId": "e0151b122d6dabf1b807bbcd3e839f3fb9467b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
