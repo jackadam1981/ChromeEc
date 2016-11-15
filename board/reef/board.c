@@ -96,19 +96,6 @@ void anx74xx_cable_det_interrupt(enum gpio_signal signal)
 }
 #endif
 
-/*
- * enable_input_devices() is called by the tablet_mode ISR, but changes the
- * state of GPIOs, so its definition must reside after including gpio_list.
- * Use DECLARE_DEFERRED to generate enable_input_devices_data.
- */
-static void enable_input_devices(void);
-DECLARE_DEFERRED(enable_input_devices);
-
-void tablet_mode_interrupt(enum gpio_signal signal)
-{
-	hook_call_deferred(&enable_input_devices_data, 0);
-}
-
 #include "gpio_list.h"
 
 /* power signal list.  Must match order of enum power_signal. */
@@ -493,9 +480,6 @@ DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
 /* Initialize board. */
 static void board_init(void)
 {
-	/* FIXME: Handle tablet mode */
-	/* gpio_enable_interrupt(GPIO_TABLET_MODE_L); */
-
 	/* Enable charger interrupts */
 	gpio_enable_interrupt(GPIO_CHARGER_INT_L);
 }
@@ -632,21 +616,26 @@ int board_is_vbus_too_low(enum chg_ramp_vbus_state ramp_state)
 	return charger_get_vbus_level() < BD9995X_BC12_MIN_VOLTAGE;
 }
 
-/* Enable or disable input devices, based upon chipset state and tablet mode */
+/* Enable or disable input devices, based upon chipset state */
 static void enable_input_devices(void)
 {
-	int kb_enable = 1;
-	int tp_enable = 1;
+	int enable = 1;
 
-	/* Disable KB & TP if chipset is off */
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
-		kb_enable = 0;
-		tp_enable = 0;
-	}
+	/* Disable both TP and KB when chipset is off */
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		enable = 0;
 
-	keyboard_scan_enable(kb_enable, KB_SCAN_DISABLE_LID_ANGLE);
+	/* Enable/disable keyboard and touchpad */
+	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+	gpio_set_level(GPIO_EN_P3300_TRACKPAD_ODL, !enable);
+}
+DECLARE_DEFERRED(enable_input_devices);
 
-	gpio_set_level(GPIO_EN_P3300_TRACKPAD_ODL, !tp_enable);
+void lid_angle_peripheral_enable(int enable)
+{
+	/* Enable/disable keyboard and touchpad */
+	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+	gpio_set_level(GPIO_EN_P3300_TRACKPAD_ODL, !enable);
 }
 
 /* Called on AP S5 -> S3 transition */
