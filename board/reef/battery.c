@@ -15,8 +15,14 @@
 #include "i2c.h"
 #include "util.h"
 
-#define ELECTRO_SHIP_MODE_REG 0x3a
-#define ELECTRO_SHIP_MODE_DAT 0xC574
+/* Shutdown mode parameter to write to manufacturer access register */
+#ifdef BOARD_ELECTRO
+#define BATTERY_SHIP_MODE_REG	0x003A
+#define BATTERY_SHIP_MODE_DATA	0xC574
+#else
+#define BATTERY_SHIP_MODE_REG	0x0000
+#define BATTERY_SHIP_MODE_DATA	0x0010
+#endif /* BOARD_ELECTRO */
 
 /* Battery info for BQ40Z55 */
 static const struct battery_info info = {
@@ -55,11 +61,11 @@ int board_cut_off_battery(void)
 	int rv;
 
 	/* Ship mode command must be sent twice to take effect */
-	rv = sb_write(ELECTRO_SHIP_MODE_REG, ELECTRO_SHIP_MODE_DAT);
+	rv = sb_write(BATTERY_SHIP_MODE_REG, BATTERY_SHIP_MODE_DATA);
 	if (rv != EC_SUCCESS)
 		return rv;
 
-	return sb_write(ELECTRO_SHIP_MODE_REG, ELECTRO_SHIP_MODE_DAT);
+	return sb_write(BATTERY_SHIP_MODE_REG, BATTERY_SHIP_MODE_DATA);
 }
 
 enum battery_disconnect_state battery_get_disconnect_state(void)

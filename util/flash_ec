@@ -103,6 +103,7 @@ BOARDS_NPCX_5M6G_JTAG=(
 )
 
 BOARDS_NPCX_SPI=(
+	electro
 	eve
 	gru
 	kevin
@@ -123,6 +124,7 @@ BOARDS_MEC1322=(
 )
 
 BOARDS_SPI_1800MV=(
+	electro
 	gru
 	kevin
 	pyro
@@ -131,6 +133,7 @@ BOARDS_SPI_1800MV=(
 )
 
 BOARDS_RAIDEN=(
+	electro
 	eve
 	gru
 	kevin
