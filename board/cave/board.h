@@ -242,8 +242,8 @@ enum als_id {
  * For BMI160, accel and gyro sensors must be next to each other.
  */
 enum sensor_id {
-	LID_ACCEL = 0,
-	BASE_ACCEL,
+	BASE_ACCEL = 0,
+	LID_ACCEL,
 	BASE_GYRO,
 };
 
