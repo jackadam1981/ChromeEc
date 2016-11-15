@@ -33,6 +33,24 @@
       "revId": "13155a111aac87b83639bed0b74ec84e0c23a907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_3751f751",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-15T20:11:02Z",
+      "side": 1,
+      "message": "electro has a 2s battery. Not a 3s. It\u0027s using a different battery than reef, but reef isn\u0027t a product.",
+      "parentUuid": "30b088be_7cfc3601",
+      "revId": "13155a111aac87b83639bed0b74ec84e0c23a907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
