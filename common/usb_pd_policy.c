@@ -97,7 +97,7 @@ static int pd_find_pdo_index(int cnt, uint32_t *src_caps, int max_mv)
 {
 	int i, uw, max_uw = 0, mv, ma;
 	int ret = -1;
-#ifdef PD_PREFER_LOW_VOLTAGE
+#if defined(PD_PREFER_LOW_VOLTAGE) || defined(PD_PREFER_HIGH_VOLTAGE)
 	int cur_mv = 0;
 #endif
 
@@ -123,6 +123,13 @@ static int pd_find_pdo_index(int cnt, uint32_t *src_caps, int max_mv)
 			continue;
 		uw = MIN(uw, PD_MAX_POWER_MW * 1000);
 		if ((uw > max_uw) || ((uw == max_uw) && mv < cur_mv)) {
+			ret = i;
+			max_uw = uw;
+			cur_mv = mv;
+		}
+#elif defined(PD_PREFER_HIGH_VOLTAGE)
+		if (((uw > max_uw) && (mv <= max_mv)) ||
+			((mv > cur_mv) && (uw == max_uw))) {
 			ret = i;
 			max_uw = uw;
 			cur_mv = mv;
