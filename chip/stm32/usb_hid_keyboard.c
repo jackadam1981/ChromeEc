@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "atomic.h"
 #include "clock.h"
 #include "common.h"
 #include "config.h"
@@ -86,23 +87,41 @@ const struct usb_hid_descriptor USB_CUSTOM_DESC(USB_IFACE_HID_KEYBOARD, hid) = {
 	}}
 };
 
-static usb_uint hid_ep_buf[HID_KEYBOARD_REPORT_SIZE / 2] __usb_ram;
+static usb_uint hid_ep_buf[2][HID_KEYBOARD_REPORT_SIZE / 2] __usb_ram;
+static int hid_current_buf;
+
+static int hid_ep_data_ready;
 
 void set_keyboard_report(uint64_t rpt)
 {
-	memcpy_to_usbram((void *) usb_sram_addr(hid_ep_buf), &rpt, sizeof(rpt));
-	/* enable TX */
+	hid_current_buf = hid_current_buf ? 0 : 1;
+	memcpy_to_usbram((void *) usb_sram_addr(hid_ep_buf[hid_current_buf]),
+			 &rpt, sizeof(rpt));
+
+	/* If an interrupt happens from now on, we can't really be sure which
+	 * buffer was transmitted, so we need to toggle the endpoint again.
+	 */
+	atomic_add(&hid_ep_data_ready, 1);
+	/* swap buffer, enable TX */
+	btable_ep[USB_EP_HID_KEYBOARD].tx_addr =
+		usb_sram_addr(hid_ep_buf[hid_current_buf]);
 	STM32_TOGGLE_EP(USB_EP_HID_KEYBOARD, EP_TX_MASK, EP_TX_VALID, 0);
 }
 
 static void hid_keyboard_tx(void)
 {
 	hid_tx(USB_EP_HID_KEYBOARD);
+	/* We are in interrupt context, so we can't use atomic functions. */
+	if (hid_ep_data_ready)
+		STM32_TOGGLE_EP(USB_EP_HID_KEYBOARD,
+				EP_TX_MASK, EP_TX_VALID, 0);
+	hid_ep_data_ready = 0;
 }
 
 static void hid_keyboard_reset(void)
 {
-	hid_reset(USB_EP_HID_KEYBOARD, hid_ep_buf, HID_KEYBOARD_REPORT_SIZE);
+	hid_reset(USB_EP_HID_KEYBOARD, hid_ep_buf[hid_current_buf],
+		  HID_KEYBOARD_REPORT_SIZE);
 }
 
 USB_DECLARE_EP(USB_EP_HID_KEYBOARD, hid_keyboard_tx, hid_keyboard_tx,
