@@ -13,30 +13,98 @@
 #include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "i2c.h"
 #include "util.h"
 
-#define ELECTRO_SHIP_MODE_REG 0x3a
-#define ELECTRO_SHIP_MODE_DAT 0xC574
-
-/* Battery info for BQ40Z55 */
-static const struct battery_info info = {
-	.voltage_max = 8700,	/* mV */
-	.voltage_normal = 7600,
-
-	/*
-	 * Actual value 6000mV, added 100mV for charger accuracy so
-	 * that unwanted low VSYS_Prochot# assertion can be avoided.
-	 */
-	.voltage_min = 6100,
-	.precharge_current = 256,	/* mA */
-	.start_charging_min_c = 0,
-	.start_charging_max_c = 46,
-	.charging_min_c = 0,
-	.charging_max_c = 45,
-	.discharging_min_c = 0,
-	.discharging_max_c = 60,
+enum battery_type {
+	BATTERY_SMP_COS4870,
+	BATTERY_SONY_CORP,
+	BATTERY_TYPE_COUNT,
 };
+
+struct board_batt_params {
+	char *manuf_name;
+	int ship_mode_reg;
+	int ship_mode_data;
+	struct battery_info batt_info;
+	int (*batt_init)(void);
+};
+
+enum battery_type board_battery_type = BATTERY_TYPE_COUNT;
+
+static int batt_smp_cos4870_init(void)
+{
+	int batt_status;
+
+	return battery_status(&batt_status) ? 0 :
+		batt_status & STATUS_INITIALIZED;
+}
+
+static int batt_sony_corp_init(void)
+{
+	/* TODO: crosbug.com/p/59904 */
+	return 1;
+}
+
+static const struct board_batt_params info[] = {
+	/* SMP COS4870 BATTERY battery specific configurations */
+	[BATTERY_SMP_COS4870] = {
+		.manuf_name = "SMP-COS4870",
+		.ship_mode_reg = 0x00,
+		.ship_mode_data = 0x0010,
+		.batt_init = batt_smp_cos4870_init,
+
+		/* Battery info for BQ40Z55 */
+		.batt_info = {
+			.voltage_max = 8700,	/* mV */
+			.voltage_normal = 7600,
+
+			/*
+			 * Actual value 6000mV, added 100mV for charger accuracy
+			 * so that unwanted low VSYS_Prochot# assertion can be
+			 * avoided.
+			 */
+			.voltage_min = 6100,
+			.precharge_current = 256,	/* mA */
+			.start_charging_min_c = 0,
+			.start_charging_max_c = 46,
+			.charging_min_c = 0,
+			.charging_max_c = 45,
+			.discharging_min_c = 0,
+			.discharging_max_c = 60,
+		},
+	},
+
+	/* SONY CORP BATTERY battery specific configurations */
+	[BATTERY_SONY_CORP] = {
+		.manuf_name = "SONYCorp",
+		.ship_mode_reg = 0x3A,
+		.ship_mode_data = 0xC574,
+		.batt_init = batt_sony_corp_init,
+
+		/* Battery info for BQ40z555 (TODO: crosbug.com/p/59904) */
+		.batt_info = {
+			.voltage_max = 8700,	/* mV */
+			.voltage_normal = 7600,
+
+			/*
+			 * Actual value 6000mV, added 100mV for charger accuracy
+			 * so that unwanted low VSYS_Prochot# assertion can be
+			 * avoided.
+			 */
+			.voltage_min = 6100,
+			.precharge_current = 256,	/* mA */
+			.start_charging_min_c = 0,
+			.start_charging_max_c = 46,
+			.charging_min_c = 0,
+			.charging_max_c = 45,
+			.discharging_min_c = 0,
+			.discharging_max_c = 60,
+		},
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(info) == BATTERY_TYPE_COUNT);
 
 #ifdef CONFIG_BATTERY_PRESENT_CUSTOM
 static inline enum battery_present battery_hw_present(void)
@@ -46,9 +114,35 @@ static inline enum battery_present battery_hw_present(void)
 }
 #endif
 
+/* Get type of the battery connected on the board */
+static int board_get_battery_type(void)
+{
+	char name[32] = {0};
+	int i;
+
+	if (!battery_manufacturer_name(name, sizeof(name))) {
+		for (i = 0; i < BATTERY_TYPE_COUNT; i++) {
+			if (!strcasecmp(name, info[i].manuf_name)) {
+				board_battery_type = i;
+				break;
+			}
+		}
+	}
+
+	return board_battery_type;
+}
+
+/* Initialize the battery type for the board */
+static void board_init_battery_type(void)
+{
+	board_get_battery_type();
+}
+DECLARE_HOOK(HOOK_INIT, board_init_battery_type, HOOK_PRIO_INIT_I2C + 1);
+
 const struct battery_info *battery_get_info(void)
 {
-	return &info;
+	return &info[board_battery_type == BATTERY_TYPE_COUNT ?
+		BATTERY_SONY_CORP : board_battery_type].batt_info;
 }
 
 int board_cut_off_battery(void)
@@ -56,11 +150,13 @@ int board_cut_off_battery(void)
 	int rv;
 
 	/* Ship mode command must be sent twice to take effect */
-	rv = sb_write(ELECTRO_SHIP_MODE_REG, ELECTRO_SHIP_MODE_DAT);
+	rv = sb_write(info[board_battery_type].ship_mode_reg,
+			info[board_battery_type].ship_mode_data);
 	if (rv != EC_SUCCESS)
 		return rv;
 
-	return sb_write(ELECTRO_SHIP_MODE_REG, ELECTRO_SHIP_MODE_DAT);
+	return sb_write(info[board_battery_type].ship_mode_reg,
+			info[board_battery_type].ship_mode_data);
 }
 
 enum battery_disconnect_state battery_get_disconnect_state(void)
@@ -133,6 +229,7 @@ static int fast_charging_allowed = 1;
  * state dependent).
  */
 
+/* TODO: crosbug.com/p/59904 */
 int charger_profile_override(struct charge_state_data *curr)
 {
 	/* temp in 0.1 deg C */
@@ -294,9 +391,8 @@ DECLARE_CONSOLE_COMMAND(fastcharge, command_fastcharge,
  */
 enum battery_present battery_is_present(void)
 {
+	static enum battery_present prev_batt_pres = BP_NOT_SURE;
 	enum battery_present batt_pres;
-	int batt_status;
-	int rv;
 
 	/* Get the physical hardware status */
 	batt_pres = battery_hw_present();
@@ -313,12 +409,17 @@ enum battery_present battery_is_present(void)
 	 * The device will wake up when a voltage is applied to PACK.
 	 * Battery status will be inactive until it is initialized.
 	 */
-	if (batt_pres == BP_YES && !battery_is_cut_off()) {
-		rv = battery_status(&batt_status);
-		if ((rv && bd9995x_get_battery_voltage() >= info.voltage_min) ||
-			(!rv && !(batt_status & STATUS_INITIALIZED)))
+	if (prev_batt_pres != batt_pres && batt_pres == BP_YES &&
+		!battery_is_cut_off()) {
+		if (board_get_battery_type() == BATTERY_TYPE_COUNT) {
+			if (bd9995x_get_battery_voltage() >=
+				BD9995X_VBUS_DISCHARGE_TH)
+				batt_pres = BP_NO;
+		} else if (!info[board_battery_type].batt_init())
 			batt_pres = BP_NO;
 	}
+
+	prev_batt_pres = batt_pres;
 
 	return batt_pres;
 }
