@@ -46,6 +46,30 @@
       "revId": "b48210d264b5b7d22d0b468b02340788c0839e86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_433ceed6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-16T03:11:45Z",
+      "side": 1,
+      "message": "if CHG_EN is set, VBATT drops even with this patch\nhttps://chromium-review.googlesource.com/#/c/400087/\n\nwithout CHG_EN VBATT does come up high soon so we will not have a option to figure out if battery is there or not.",
+      "parentUuid": "30b088be_c36e9e19",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "b48210d264b5b7d22d0b468b02340788c0839e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
