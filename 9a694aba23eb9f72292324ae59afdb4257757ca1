@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b088be_a962634f",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-16T05:45:52Z",
+      "side": 1,
+      "message": "need to decide which battery information has to be sent when there is no battery or battery is still not initialized.",
+      "range": {
+        "startLine": 135,
+        "startChar": 14,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "9a694aba23eb9f72292324ae59afdb4257757ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
