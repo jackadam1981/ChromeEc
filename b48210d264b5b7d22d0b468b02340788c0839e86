@@ -22,6 +22,30 @@
       "revId": "b48210d264b5b7d22d0b468b02340788c0839e86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_c36e9e19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-16T02:52:24Z",
+      "side": 1,
+      "message": "If we dont set CHG_EN. BGATE is off hence we dont provide voltage to the PACK.\n- BAT_PRESENT asserted\n- battery respond to i2c initially because VBATT starts dropping due to back-boosting. I will use your patch https://chromium-review.googlesource.com/#/c/400087/ and see if VBATT remains high.\n- Battery does not provide voltage yet as INIT bit is not set",
+      "parentUuid": "30b088be_e83299ac",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "b48210d264b5b7d22d0b468b02340788c0839e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
