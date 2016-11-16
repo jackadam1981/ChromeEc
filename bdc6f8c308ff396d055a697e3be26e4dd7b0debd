@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "30b088be_3e5b0873",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-16T23:36:25Z",
+      "side": 1,
+      "message": "Yeah, this is the polarity I\u0027m seeing. Also, the spec of HGDEDM013A show both OUT1 and OUT2 go low when magnetic fields are detected. I don\u0027t see any pullups between HGDEDM013A and the EC, so, I assumed it was named incorrectly. I\u0027ll double check with hardware folks.",
+      "parentUuid": "30b088be_e36b9a06",
+      "revId": "bdc6f8c308ff396d055a697e3be26e4dd7b0debd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b088be_631ecadc",
         "filename": "board/reef/gpio.inc",
         "patchSetId": 1
