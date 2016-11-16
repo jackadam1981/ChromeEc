@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b088be_4f35ec35",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-16T19:13:45Z",
+      "side": 1,
+      "message": "I think we should be faking the status register to indicate full (set FULLY_CHARGED status bit) instead. And, we probably shouldn\u0027t fake it based upon BATTERY_LEVEL_NEAR_FULL -- instead, call back to a board-level function that returns status.\n\nAlso it may be better to put this fake logic outside virtual battery (eg. in smart.c, battery_status()).",
+      "range": {
+        "startLine": 1054,
+        "startChar": 0,
+        "endLine": 1056,
+        "endChar": 8
+      },
+      "revId": "437419017e5b42e1b04b61b3ac1b7dab0909129c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
