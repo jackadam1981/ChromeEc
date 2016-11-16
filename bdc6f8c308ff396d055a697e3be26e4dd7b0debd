@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b088be_631ecadc",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-16T02:37:04Z",
+      "side": 1,
+      "message": "Hmm, the schematic calls is TABLET_MODE. Where did you see this change?\n\n(I assume you\u0027re correct since you tested the device)",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "bdc6f8c308ff396d055a697e3be26e4dd7b0debd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
