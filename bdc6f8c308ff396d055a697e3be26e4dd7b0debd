@@ -63,6 +63,30 @@
       "revId": "bdc6f8c308ff396d055a697e3be26e4dd7b0debd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_decaf45d",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2016-11-16T17:21:04Z",
+      "side": 1,
+      "message": "This is called out wrong in the schematic - I think it should be _L now that we\u0027ve tested it.",
+      "parentUuid": "30b088be_03659635",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "bdc6f8c308ff396d055a697e3be26e4dd7b0debd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
