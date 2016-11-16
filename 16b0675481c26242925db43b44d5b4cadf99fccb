@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b088be_c888fd0a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-16T01:27:56Z",
+      "side": 1,
+      "message": "I don\u0027t quite understand this change:\n\n- I think TPM  *should* reset if sys_rst or ec_rst is asserted.\n\n- how could h1 be possibly rebooting here: reboot_request_posted is never set, is it?",
+      "revId": "16b0675481c26242925db43b44d5b4cadf99fccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_08a61593",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-16T01:27:56Z",
+      "side": 1,
+      "message": "what is the max watchdog kicking interval? There is a kick in line 536 above",
+      "revId": "16b0675481c26242925db43b44d5b4cadf99fccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_a8e581c2",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-16T01:27:56Z",
+      "side": 1,
+      "message": "this seems way too long - where are we spending time? Is the rest of the platform ready to wait for the tpm to be resetting for 5 seconds?",
+      "range": {
+        "startLine": 638,
+        "startChar": 45,
+        "endLine": 638,
+        "endChar": 55
+      },
+      "revId": "16b0675481c26242925db43b44d5b4cadf99fccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
