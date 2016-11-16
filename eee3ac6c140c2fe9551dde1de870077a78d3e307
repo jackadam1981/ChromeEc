@@ -70,6 +70,30 @@
       "revId": "eee3ac6c140c2fe9551dde1de870077a78d3e307",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_3e0b08d9",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-16T17:15:53Z",
+      "side": 1,
+      "message": "yes, I agree: the test needs to be fixed, sorry we left it out during review.",
+      "parentUuid": "30b088be_fe357096",
+      "range": {
+        "startLine": 605,
+        "startChar": 6,
+        "endLine": 605,
+        "endChar": 8
+      },
+      "revId": "eee3ac6c140c2fe9551dde1de870077a78d3e307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
