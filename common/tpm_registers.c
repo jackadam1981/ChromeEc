@@ -651,22 +651,23 @@ int tpm_reset(void)
 
 	cprints(CC_TASK, "%s", __func__);
 
+	/* Request the TPM task to reset itself */
 	task_set_event(TASK_ID_TPM, TPM_EVENT_RESET, 0);
 
 	if (in_interrupt_context() ||
 	    task_get_current() == TASK_ID_TPM)
 		return 0;		    /* Can't sleep. Clown'll eat me. */
 
-	/* Try to wait until the TPM is reset, but timeout eventually */
+	/* Completion could take a while, if other things have priority */
 	waiting_for_reset = task_get_current();
-	evt = task_wait_event_mask(TPM_EVENT_RESET, SECOND);
+	evt = task_wait_event_mask(TPM_EVENT_RESET, 5 * SECOND);
 
-	/* Timeout is bad */
-	if (evt & TASK_EVENT_TIMER)
-		return -1;
+	/* We were notified of completion */
+	if (evt & TPM_EVENT_RESET)
+		return 1;
 
-	/* Otherwise, good */
-	return 1;
+	/* Timeout or anything else is probably bad */
+	return -1;
 }
 
 int tpm_is_resetting(void)
