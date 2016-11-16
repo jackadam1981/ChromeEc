@@ -16,6 +16,23 @@
       "revId": "82cd93398928832bd6822e05c495a99e0b163b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70504049_7842a10d",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-16T07:41:25Z",
+      "side": 1,
+      "message": "Actually, I should just be able to read STAT_TX from the EP register. If it\u0027s 11 (VALID), we know the previous transfer has not completed.",
+      "revId": "82cd93398928832bd6822e05c495a99e0b163b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
