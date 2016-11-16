@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b088be_e83299ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-16T02:17:45Z",
+      "side": 1,
+      "message": "What happens if we don\u0027t initialize CHG_EN to enable? What is the state of the battery?\n\n- Is BAT_PRESENT asserted?\n- Does the battery respond to i2c?\n- Does the battery provide a voltage?\n\nI\u0027m wondering if our existing cut-off recovery code can take care of this.",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "b48210d264b5b7d22d0b468b02340788c0839e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
