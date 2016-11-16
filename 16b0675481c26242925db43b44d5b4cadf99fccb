@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "30b088be_a81a6196",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-16T02:00:02Z",
+      "side": 1,
+      "message": "I understand that these functions show when we assert those signals. My point is that TPM should/must be reset when these signals are asserted by h1.\n\nThis patch states that it prevents h1 reboots when write protection is enabled. I just fail to understand how this particular change is related: h1 was not rebooting before this change.",
+      "parentUuid": "30b088be_684309b0",
+      "revId": "16b0675481c26242925db43b44d5b4cadf99fccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b088be_08a61593",
         "filename": "common/tpm_registers.c",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Right now it\u0027s only 1.6 seconds. Recreating the endorsements takes almost that long. I was seeing the watchdog fire pretty reliably without this line.",
       "parentUuid": "30b088be_08a61593",
+      "revId": "16b0675481c26242925db43b44d5b4cadf99fccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_c866bd00",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-16T02:00:02Z",
+      "side": 1,
+      "message": "should we drop the reload above then?\n\nI have been running this code and doing re-manufacturing very often, I have not seen any watchdog resets.\n\nMaybe we should discuss this offline - what exactly is causing reboots when WP is enabled without this change?",
+      "parentUuid": "30b088be_c8d79da9",
       "revId": "16b0675481c26242925db43b44d5b4cadf99fccb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -107,6 +143,30 @@
       "side": 1,
       "message": "The whole erase-nvmem \u0026 recreate certs process takes about 1.5 seconds. It turns out that we don\u0027t actually get an early return as long as everything is still working because the task priorities are high enough that this task (HOOKS) doesn\u0027t get a chance to run until the TPM task is done, so the evt value is 0x80000001 (timeout AND custom event) if it\u0027s only a second.\n\nI don\u0027t expect it to take this long, but I want something bad to happen if it doesn\u0027t complete (or start, for some reason). Otherwise, we\u0027re just assuming it will always work, no matter what.",
       "parentUuid": "30b088be_a8e581c2",
+      "range": {
+        "startLine": 638,
+        "startChar": 45,
+        "endLine": 638,
+        "endChar": 55
+      },
+      "revId": "16b0675481c26242925db43b44d5b4cadf99fccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_48f64d20",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-16T02:00:02Z",
+      "side": 1,
+      "message": "ok, seems fine to me.",
+      "parentUuid": "30b088be_689789d6",
       "range": {
         "startLine": 638,
         "startChar": 45,
