@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "30b088be_59cb7334",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-16T23:55:29Z",
+      "side": 1,
+      "message": "The watchdog timeout is too short. The early invocation of tpm_reset() due to the GPIO interrupt reloads the watchdog while nvmem is being cleared. When I prevented that from happening, the watchdog would fire because recreating the endorsement certs took too long. It\u0027s no longer an issue in changeset #3 because we\u0027ve extended the watchdog timeout to account for that.",
+      "parentUuid": "30b088be_286431c8",
+      "revId": "16b0675481c26242925db43b44d5b4cadf99fccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b088be_a8e581c2",
         "filename": "common/tpm_registers.c",
         "patchSetId": 1
