@@ -115,7 +115,7 @@ class TPM(object):
                                            response[:header_size])
     if tag != 0x8001:
       raise subcmd.TpmTestError('Wrong response tag: %4.4x' % tag)
-    if cmd != EXT_CMD:
+    if cmd != 0:
       raise subcmd.TpmTestError('Unexpected response command field: %8.8x' %
                                 cmd)
     if subcmd != expected_subcmd:
