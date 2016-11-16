@@ -22,6 +22,30 @@
       "revId": "eee3ac6c140c2fe9551dde1de870077a78d3e307",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_89fc4702",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-11-16T06:15:07Z",
+      "side": 1,
+      "message": "tpmtest.py checks the command_code field.  So either this change here, or a change to tpmtest.py to check for command_code 0 will restore the test to a passing state (minus upgrade test, which fails for a different reason).",
+      "parentUuid": "30b088be_892e87be",
+      "range": {
+        "startLine": 605,
+        "startChar": 6,
+        "endLine": 605,
+        "endChar": 8
+      },
+      "revId": "eee3ac6c140c2fe9551dde1de870077a78d3e307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
