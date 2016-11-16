@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70504049_5b7a372b",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-16T11:36:28Z",
+      "side": 1,
+      "message": "hid_ep_data_ready \u003d 1; would be good enough, no need for atomics, and it needs to be moved just after the address change below.\n\nAlso, we can be a little smarter about this and only set the variable if the EP is already busy (which is the only case where we might have a race between address change and transmission).",
+      "revId": "3fe4baca7c3f3c3f42a8f7b8c0ba83b6f789996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
