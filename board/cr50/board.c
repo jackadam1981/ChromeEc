@@ -341,17 +341,26 @@ int flash_regions_to_enable(struct g_flash_region *regions,
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
+/*
+ * If we are in the process of wiping TPM memory, we should ignore any
+ * SYS_RST_L interrupts, because 1) we're almost certainly seeing them because
+ * we've just put the system in reset ourselves, and 2) we're already going to
+ * reset the TPM anyway before we release it again.
+ */
+static int nvmem_wipe_in_progress;
+
 /* This is the interrupt handler to react to SYS_RST_L_IN */
 void sys_rst_asserted(enum gpio_signal signal)
 {
 	/*
-	 * Cr50 drives SYS_RST_L in certain scenarios, in those cases
+	 * Cr50 drives SYS_RST_L in certain scenarios. In those cases
 	 * this signal's assertion should be ignored here.
 	 */
-	CPRINTS("%s from %d", __func__, signal);
+	CPRINTS("%s from signal %d", __func__, signal);
 	if (usb_spi_update_in_progress() ||
-	    tpm_is_resetting()) {
-		CPRINTS("%s ignored", __func__);
+	    tpm_is_resetting() ||
+	    nvmem_wipe_in_progress) {
+		CPRINTS("%s: signal %d ignored", __func__, signal);
 		return;
 	}
 
@@ -416,10 +425,18 @@ int is_ec_rst_asserted(void)
 
 void nvmem_wipe_or_reboot(void)
 {
+	int r1 = 42, r2 = 42;
+
+	/* Ignore GPIOs calling for tpm_reset since we'll do it anyway. */
+	nvmem_wipe_in_progress = 1;
+
 	/*
 	 * Blindly zapping the TPM space while the AP is awake and poking at it
 	 * will bork the TPM task and the AP itself, so force the whole system
-	 * off by holding the EC in reset.
+	 * off by holding the EC in reset. Note: It's not necessary to wait for
+	 * the TPM task to be idle, because this function runs in the HOOK
+	 * task, which is the lowest priority. If we're here, the TPM task IS
+	 * idle.
 	 */
 	assert_ec_rst();
 
@@ -428,10 +445,14 @@ void nvmem_wipe_or_reboot(void)
 	 * is unexpectedly wrong. To be safe, let's reboot the Cr50 (which also
 	 * reboots the EC and AP).
 	 */
-	if (nvmem_setup(0) != EC_SUCCESS || tpm_reset() != 1)
+	if ((r1 = nvmem_setup(0)) != EC_SUCCESS || (r2 = tpm_reset()) != 1) {
+		CPRINTS("Fatal problem in %s: r1 %d/%d r2 %d/%d",
+			__func__, r1, EC_SUCCESS, r2, 1);
 		system_reset(SYSTEM_RESET_HARD);
+	}
 
 	/* Wipe & reset is complete. Allow the EC and AP to reboot */
+	nvmem_wipe_in_progress = 0;
 	deassert_ec_rst();
 }
 
