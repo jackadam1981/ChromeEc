@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "30b088be_684309b0",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-16T01:46:32Z",
+      "side": 1,
+      "message": "The is_{sys,ec}_rst_asserted() functions mean \"We\u0027re driving these signals to an asserted state ourselves\", not \"The GPIOs are asserted externally\". If we\u0027re driving them on purpose, we don\u0027t want the interrupt handlers to take any action.\n\nIt\u0027s not rebooting here, but it is requesting tpm_reset() before we\u0027re ready for it. If it doesn\u0027t do anything right away, it\u0027s only because the task priorities happen to prevent it. I want to ensure that it doesn\u0027t fire early even if someone rearranges the lines in ec.tasklist",
+      "parentUuid": "30b088be_c888fd0a",
+      "revId": "16b0675481c26242925db43b44d5b4cadf99fccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b088be_08a61593",
         "filename": "common/tpm_registers.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "30b088be_c8d79da9",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-16T01:46:32Z",
+      "side": 1,
+      "message": "Right now it\u0027s only 1.6 seconds. Recreating the endorsements takes almost that long. I was seeing the watchdog fire pretty reliably without this line.",
+      "parentUuid": "30b088be_08a61593",
+      "revId": "16b0675481c26242925db43b44d5b4cadf99fccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b088be_a8e581c2",
         "filename": "common/tpm_registers.c",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2016-11-16T01:27:56Z",
       "side": 1,
       "message": "this seems way too long - where are we spending time? Is the rest of the platform ready to wait for the tpm to be resetting for 5 seconds?",
+      "range": {
+        "startLine": 638,
+        "startChar": 45,
+        "endLine": 638,
+        "endChar": 55
+      },
+      "revId": "16b0675481c26242925db43b44d5b4cadf99fccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_689789d6",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-16T01:46:32Z",
+      "side": 1,
+      "message": "The whole erase-nvmem \u0026 recreate certs process takes about 1.5 seconds. It turns out that we don\u0027t actually get an early return as long as everything is still working because the task priorities are high enough that this task (HOOKS) doesn\u0027t get a chance to run until the TPM task is done, so the evt value is 0x80000001 (timeout AND custom event) if it\u0027s only a second.\n\nI don\u0027t expect it to take this long, but I want something bad to happen if it doesn\u0027t complete (or start, for some reason). Otherwise, we\u0027re just assuming it will always work, no matter what.",
+      "parentUuid": "30b088be_a8e581c2",
       "range": {
         "startLine": 638,
         "startChar": 45,
