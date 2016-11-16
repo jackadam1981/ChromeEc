@@ -602,9 +602,10 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 		*total_size += sizeof(struct tpm_cmd_header);
 		tpmh->size = htobe32(*total_size);
 		/* Flag errors from commands as vendor-specific */
-		if (rc)
+		if (rc) {
 			rc |= VENDOR_RC_ERR;
-		tpmh->command_code = htobe32(rc);
+			tpmh->command_code = htobe32(rc);
+		}
 	} else {
 		*total_size = command_size;
 	}
