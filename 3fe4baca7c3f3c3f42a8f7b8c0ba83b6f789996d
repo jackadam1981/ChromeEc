@@ -16,6 +16,29 @@
       "revId": "3fe4baca7c3f3c3f42a8f7b8c0ba83b6f789996d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0e6f0fd_bfec334b",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-16T21:30:46Z",
+      "side": 1,
+      "message": "doing the toggle here while another one might be happening in the interrupt is the recipe for (seldom occuring) disaster according to my previous experiences.\n\nat least, you might want to do:\nif ((STM32_USB_EP(USB_EP_HID_KEYBOARD) \u0026 EP_TX_MASK) !\u003d EP_TX_VALID)\n   STM32_TOGGLE_EP(...)\nbut that\u0027s defeating your toggling logic commented above ?",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 65
+      },
+      "revId": "3fe4baca7c3f3c3f42a8f7b8c0ba83b6f789996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
