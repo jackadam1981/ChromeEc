@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "30b088be_e8de1956",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-16T02:16:29Z",
+      "side": 1,
+      "message": "No, H1 was rebooting when this happened:\n\n       assert_ec_rst();\n       if (nvmem_setup(0) !\u003d EC_SUCCESS || tpm_reset() !\u003d 1)\n                system_reset(SYSTEM_RESET_HARD);\n\nBecause:\n\n1. assert_ec_rst() invoked tpm_reset() before nvmem_setup(0) completed.\n2. tpm_reset() returned -1 on occasion due to timeout\n3. This wasn\u0027t enough to prevent the watchdog from firing:\n\n\twatchdog_reload();\n\t_TPM_Init();\n\tif (!tpm_manufactured()) {\n\t\tTPM_Manufacture(1);\n\t\t_TPM_Init();\n\t\t_plat__SetNvAvail();\n\t\ttpm_endorse();",
+      "parentUuid": "30b088be_a81a6196",
+      "revId": "16b0675481c26242925db43b44d5b4cadf99fccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b088be_08a61593",
         "filename": "common/tpm_registers.c",
         "patchSetId": 1
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "should we drop the reload above then?\n\nI have been running this code and doing re-manufacturing very often, I have not seen any watchdog resets.\n\nMaybe we should discuss this offline - what exactly is causing reboots when WP is enabled without this change?",
       "parentUuid": "30b088be_c8d79da9",
+      "revId": "16b0675481c26242925db43b44d5b4cadf99fccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_286431c8",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-16T02:16:29Z",
+      "side": 1,
+      "message": "I\u0027ll investigate.",
+      "parentUuid": "30b088be_c866bd00",
       "revId": "16b0675481c26242925db43b44d5b4cadf99fccb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
