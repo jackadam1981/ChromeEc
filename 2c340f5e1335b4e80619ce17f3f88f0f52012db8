@@ -22,6 +22,30 @@
       "revId": "2c340f5e1335b4e80619ce17f3f88f0f52012db8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0e6f0fd_dc1e6d27",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-16T07:40:01Z",
+      "side": 1,
+      "message": "I had noticed this.\nOr should we just always apply the mask ourselves on our \u0027interrupt\u0027 reading ?",
+      "parentUuid": "30b088be_14de36ca",
+      "range": {
+        "startLine": 813,
+        "startChar": 18,
+        "endLine": 813,
+        "endChar": 43
+      },
+      "revId": "2c340f5e1335b4e80619ce17f3f88f0f52012db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
