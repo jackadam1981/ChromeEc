@@ -46,6 +46,30 @@
       "revId": "eee3ac6c140c2fe9551dde1de870077a78d3e307",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_fe357096",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-16T17:13:50Z",
+      "side": 1,
+      "message": "We need to change tpmtest.py, then. This is what the TPM spec says we must do, and functions that use the new spec-compliant DECLARE_VENDOR_COMMAND() macro expect and require it. The original extension command protocol, which doesn\u0027t follow the TPM standards, will be eventually phased out in favor of the vendor-specific protocol which does.",
+      "parentUuid": "30b088be_89fc4702",
+      "range": {
+        "startLine": 605,
+        "startChar": 6,
+        "endLine": 605,
+        "endChar": 8
+      },
+      "revId": "eee3ac6c140c2fe9551dde1de870077a78d3e307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
