@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b088be_43daae08",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-16T02:33:15Z",
+      "side": 1,
+      "message": "I think we still want to enforce max_mv.\n\nI think the proper condition is \u0027if (uw \u003e\u003d max_uw \u0026\u0026 mv \u003e cur_mv \u0026\u0026 mv \u003c\u003d max_mv)\u0027.\n\nAnd, I think we should rename \u0027max_uw\u0027 to \u0027cur_uw\u0027 throughout this function, but it\u0027s not related to your change.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 39
+      },
+      "revId": "40faaa26c45946873336ef69ebb4b73d70849f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
