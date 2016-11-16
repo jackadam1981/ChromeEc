@@ -348,10 +348,10 @@ void sys_rst_asserted(enum gpio_signal signal)
 	 * Cr50 drives SYS_RST_L in certain scenarios, in those cases
 	 * this signal's assertion should be ignored here.
 	 */
-	CPRINTS("%s from %d", __func__, signal);
-	if (usb_spi_update_in_progress() ||
-	    tpm_is_resetting()) {
-		CPRINTS("%s ignored", __func__);
+	CPRINTS("%s from signal %d", __func__, signal);
+	if (usb_spi_update_in_progress() || tpm_is_resetting() ||
+	    is_sys_rst_asserted() || is_ec_rst_asserted()) {
+		CPRINTS("signal %s ignored", __func__);
 		return;
 	}
 
@@ -416,6 +416,8 @@ int is_ec_rst_asserted(void)
 
 void nvmem_wipe_or_reboot(void)
 {
+	int r1 = 42, r2 = 42;
+
 	/*
 	 * Blindly zapping the TPM space while the AP is awake and poking at it
 	 * will bork the TPM task and the AP itself, so force the whole system
@@ -428,8 +430,11 @@ void nvmem_wipe_or_reboot(void)
 	 * is unexpectedly wrong. To be safe, let's reboot the Cr50 (which also
 	 * reboots the EC and AP).
 	 */
-	if (nvmem_setup(0) != EC_SUCCESS || tpm_reset() != 1)
+	if ((r1 = nvmem_setup(0)) != EC_SUCCESS || (r2 = tpm_reset()) != 1) {
+		CPRINTS("Fatal problem in %s: r1 %d/%d r2 %d/%d",
+			__func__, r1, EC_SUCCESS, r2, 1);
 		system_reset(SYSTEM_RESET_HARD);
+	}
 
 	/* Wipe & reset is complete. Allow the EC and AP to reboot */
 	deassert_ec_rst();

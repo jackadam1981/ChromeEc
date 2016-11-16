@@ -553,6 +553,8 @@ static void tpm_init(void)
 		TPM_Manufacture(1);
 		_TPM_Init();
 		_plat__SetNvAvail();
+		/* Regenerating the endorsement can take a while */
+		watchdog_reload();
 		tpm_endorse();
 	} else {
 		_plat__SetNvAvail();
@@ -633,14 +635,14 @@ int tpm_reset(void)
 
 	/* Try to wait until the TPM is reset, but timeout eventually */
 	waiting_for_reset = task_get_current();
-	evt = task_wait_event_mask(TPM_EVENT_RESET, SECOND);
+	evt = task_wait_event_mask(TPM_EVENT_RESET, 5 * SECOND);
 
-	/* Timeout is bad */
-	if (evt & TASK_EVENT_TIMER)
-		return -1;
+	/* We were notified of completion */
+	if (evt & TPM_EVENT_RESET)
+		return 1;
 
-	/* Otherwise, good */
-	return 1;
+	/* Timeout or anything else is probably bad */
+	return -1;
 }
 
 int tpm_is_resetting(void)
