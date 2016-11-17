@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70504049_bb839355",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-17T05:52:53Z",
+      "side": 1,
+      "message": "Compiler reorders these 2 lines. I guess I need to define the 2 variables as volatile.",
+      "revId": "767c89e82da099361b69e1d0678fcfc0c069c1fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70504049_9b596f4a",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-17T05:52:53Z",
+      "side": 1,
+      "message": "If we\u0027re ok with a slight delay/stale report, we can drop this chunk.",
+      "revId": "767c89e82da099361b69e1d0678fcfc0c069c1fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
