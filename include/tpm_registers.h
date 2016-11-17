@@ -31,15 +31,22 @@ typedef void (*interface_restart_func)(void);
 void tpm_register_interface(interface_restart_func interface_restart);
 
 /*
- * Reset the TPM. This sends a request to the TPM task, so that the reset can
- * happen when the TPM task finishes whatever it's doing at the moment.
- *
- * Returns 0 if the request was made, but we can't wait for it to complete
- * because we're in interrupt context or something similar. Otherwise, it
- * blocks and returns 1 after the TPM has been cleared, or returns -1 if the
- * request timed out.
+ * This requests the TPM task to reset itself. If wait_until_done is false, it
+ * returns EC_SUCCESS immediately. Otherwise it returns EC_SUCCESS after the
+ * reset has completed, or an error code on failure.
  */
-int tpm_reset(void);
+int tpm_reset(int wait_until_done);
+
+/*
+ * This requests the TPM task to erase the TPM memory, then reset itself. If
+ * wait_until_done is false, it returns EC_SUCCESS immediately. Otherwise it
+ * returns EC_SUCCESS after the reset has completed, or an error code on
+ * failure.
+ *
+ * NOTE: This should ONLY be called when the AP is off (or at least expecting
+ * it), since *all* TPM state is lost.
+ */
+int tpm_wipe_and_reset(int wait_until_done);
 
 /*
  * Return true if tpm is being reset. Usually this helps to avoid unnecessary
