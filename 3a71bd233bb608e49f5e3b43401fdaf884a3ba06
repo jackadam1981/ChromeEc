@@ -58,6 +58,52 @@
       "revId": "3a71bd233bb608e49f5e3b43401fdaf884a3ba06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e168e5_44a8c229",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-17T10:17:36Z",
+      "side": 1,
+      "message": "The spec reads:\"\"\"\nThe value returned by an Array item is an index so it is recommended that:\n1) An Array field returns a 0 value when no controls in the array are asserted.\n2) The Logical Minimum equals 1. \"\"\"\n\nMaybe this means we should put 1 here ?",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 38
+      },
+      "revId": "3a71bd233bb608e49f5e3b43401fdaf884a3ba06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0e6f0fd_1f7a8765",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-17T10:17:36Z",
+      "side": 1,
+      "message": "you are going to have 0 in between pressed keys in your report ?\nI have never seen such a report on a real HID device as far as I remember but I haven\u0027t found so far wording in the spec saying you cannot.",
+      "range": {
+        "startLine": 244,
+        "startChar": 4,
+        "endLine": 244,
+        "endChar": 23
+      },
+      "revId": "3a71bd233bb608e49f5e3b43401fdaf884a3ba06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
