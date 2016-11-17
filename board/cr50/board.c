@@ -368,7 +368,7 @@ void sys_rst_asserted(enum gpio_signal signal)
 		system_reset(SYSTEM_RESET_HARD);  /* This will never return. */
 
 	/* Re-initialize the TPM software state */
-	tpm_reset();
+	tpm_reset(0);
 }
 
 void assert_sys_rst(void)
@@ -425,7 +425,7 @@ int is_ec_rst_asserted(void)
 
 void nvmem_wipe_or_reboot(void)
 {
-	int r1 = 42, r2 = 42;
+	int rc;
 
 	/* Ignore GPIOs calling for tpm_reset since we'll do it anyway. */
 	nvmem_wipe_in_progress = 1;
@@ -433,21 +433,14 @@ void nvmem_wipe_or_reboot(void)
 	/*
 	 * Blindly zapping the TPM space while the AP is awake and poking at it
 	 * will bork the TPM task and the AP itself, so force the whole system
-	 * off by holding the EC in reset. Note: It's not necessary to wait for
-	 * the TPM task to be idle, because this function runs in the HOOK
-	 * task, which is the lowest priority. If we're here, the TPM task IS
-	 * idle.
+	 * off by holding the EC in reset.
 	 */
 	assert_ec_rst();
 
-	/*
-	 * If we can't clear the NVMEM or can't reset the TPM task, something
-	 * is unexpectedly wrong. To be safe, let's reboot the Cr50 (which also
-	 * reboots the EC and AP).
-	 */
-	if ((r1 = nvmem_setup(0)) != EC_SUCCESS || (r2 = tpm_reset()) != 1) {
-		CPRINTS("Fatal problem in %s: r1 %d/%d r2 %d/%d",
-			__func__, r1, EC_SUCCESS, r2, 1);
+	/* Wipe the TPM's memory and reset the TPM task. */
+	rc = tpm_wipe_and_reset(1);
+	if (rc != EC_SUCCESS) {
+		CPRINTS("%s: Couldn't wipe nvmem! (rc %d)", __func__, rc);
 		system_reset(SYSTEM_RESET_HARD);
 	}
 
