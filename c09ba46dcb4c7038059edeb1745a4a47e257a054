@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "70504049_bbd27362",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-11-17T06:13:24Z",
+      "side": 1,
+      "message": "You\u0027re right.",
+      "parentUuid": "30b088be_510107e4",
+      "range": {
+        "startLine": 320,
+        "startChar": 15,
+        "endLine": 320,
+        "endChar": 20
+      },
+      "revId": "c09ba46dcb4c7038059edeb1745a4a47e257a054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b088be_71e5231c",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 4
