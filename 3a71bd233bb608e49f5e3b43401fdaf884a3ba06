@@ -61,6 +61,24 @@
     },
     {
       "key": {
+        "uuid": "70504049_1b4d5f3e",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-17T11:20:14Z",
+      "side": 1,
+      "message": "Hung-Te: Any idea if mapping from keyboard matrix row/column to keycode is different on other layouts (say, a Japanese keyboard layout with more keys?). It\u0027s very clear that keycode to actual key depends on the layout (that\u0027s done in software), but I\u0027m wondering about matrix to keycode conversion.",
+      "parentUuid": "70504049_1b26ff7d",
+      "revId": "3a71bd233bb608e49f5e3b43401fdaf884a3ba06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30e168e5_44a8c229",
         "filename": "chip/stm32/usb_hid_keyboard.c",
         "patchSetId": 1
@@ -84,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "70504049_9b116f19",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-17T11:20:14Z",
+      "side": 1,
+      "message": "The keyboard I had on my desk says:\n            Item(Global): Report Count, data\u003d [ 0x06 ] 6\n            Item(Global): Report Size, data\u003d [ 0x08 ] 8\n            Item(Global): Logical Minimum, data\u003d [ 0x00 ] 0\n            Item(Global): Logical Maximum, data\u003d [ 0xff 0x00 ] 255\n            Item(Global): Usage Page, data\u003d [ 0x07 ] 7\n                            Keyboard\n            Item(Local ): Usage Minimum, data\u003d [ 0x00 ] 0\n                            No Event\n            Item(Local ): Usage Maximum, data\u003d [ 0xff 0x00 ] 255\n                            (null)\n            Item(Main  ): Input, data\u003d [ 0x00 ] 0\n                            Data Array Absolute No_Wrap Linear\n                            Preferred_State No_Null_Position Non_Volatile Bitfield\n            Item(Main  ): End Collection, data\u003dnone\n\nSetting logical/usage minimum to 1 also works fine, and indeed, seems to match the spec.",
+      "parentUuid": "30e168e5_44a8c229",
+      "revId": "3a71bd233bb608e49f5e3b43401fdaf884a3ba06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0e6f0fd_1f7a8765",
         "filename": "chip/stm32/usb_hid_keyboard.c",
         "patchSetId": 1
@@ -95,6 +131,30 @@
       "writtenOn": "2016-11-17T10:17:36Z",
       "side": 1,
       "message": "you are going to have 0 in between pressed keys in your report ?\nI have never seen such a report on a real HID device as far as I remember but I haven\u0027t found so far wording in the spec saying you cannot.",
+      "range": {
+        "startLine": 244,
+        "startChar": 4,
+        "endLine": 244,
+        "endChar": 23
+      },
+      "revId": "3a71bd233bb608e49f5e3b43401fdaf884a3ba06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70504049_bb143309",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-17T11:20:14Z",
+      "side": 1,
+      "message": "Yes, there\u0027ll be gaps. I was wondering about that too, but, at least the Linux driver seems happy with that, so I didn\u0027t bother repacking...",
+      "parentUuid": "f0e6f0fd_1f7a8765",
       "range": {
         "startLine": 244,
         "startChar": 4,
