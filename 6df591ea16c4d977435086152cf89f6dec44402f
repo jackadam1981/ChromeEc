@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "30ca486f_50e314ed",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-17T22:35:05Z",
+      "side": 1,
+      "message": "okay, I will add config as CONFIG_CHARGER_BD9995X_CHGEN and add comments why we need it.",
+      "parentUuid": "30ca486f_f070a087",
+      "range": {
+        "startLine": 739,
+        "startChar": 8,
+        "endLine": 739,
+        "endChar": 37
+      },
+      "revId": "6df591ea16c4d977435086152cf89f6dec44402f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ca486f_50beb499",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 5
