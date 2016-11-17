@@ -22,6 +22,30 @@
       "revId": "437419017e5b42e1b04b61b3ac1b7dab0909129c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_a7c91911",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-11-17T11:55:39Z",
+      "side": 1,
+      "message": "Battery status bit does not affect full charge UI. in power_manager/powerd/system/power_supply.cc, it just handled by capacity percentage.",
+      "parentUuid": "30b088be_4f35ec35",
+      "range": {
+        "startLine": 1054,
+        "startChar": 0,
+        "endLine": 1056,
+        "endChar": 8
+      },
+      "revId": "437419017e5b42e1b04b61b3ac1b7dab0909129c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
