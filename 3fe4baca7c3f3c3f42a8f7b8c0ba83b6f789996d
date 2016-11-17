@@ -39,6 +39,24 @@
       "revId": "3fe4baca7c3f3c3f42a8f7b8c0ba83b6f789996d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70504049_3b44a3b9",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-17T05:52:53Z",
+      "side": 1,
+      "message": "Right, I didn\u0027t spot the issue with STM32_TOGGLE_EP...",
+      "parentUuid": "f0e6f0fd_bfec334b",
+      "revId": "3fe4baca7c3f3c3f42a8f7b8c0ba83b6f789996d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
