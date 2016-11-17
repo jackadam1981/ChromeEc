@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "30ca486f_f070a087",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-17T22:29:39Z",
+      "side": 1,
+      "message": "Ok, but try to find a more generic / descriptive name than CONFIG_CHGEN_FOR_UNINIT_BATT, so that someone who doesn\u0027t know the details of this part can understand what it is doing, at some basic level anyway.\n\nAnd if the CONFIG is contained to bd9995X + board code, it should probably be prefixed with CONFIG_CHARGER_BD9995X_.",
+      "parentUuid": "30ca486f_90412c59",
+      "range": {
+        "startLine": 739,
+        "startChar": 8,
+        "endLine": 739,
+        "endChar": 37
+      },
+      "revId": "6df591ea16c4d977435086152cf89f6dec44402f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ca486f_50beb499",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 5
