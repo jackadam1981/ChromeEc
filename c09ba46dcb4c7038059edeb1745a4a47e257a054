@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70504049_db380700",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-11-17T03:17:35Z",
+      "side": 1,
+      "message": "This bit is not referable for new Sony Battery.\nplease add me into issue#59308, I\u0027ll post the datasheet.",
+      "range": {
+        "startLine": 319,
+        "startChar": 27,
+        "endLine": 319,
+        "endChar": 45
+      },
+      "revId": "c09ba46dcb4c7038059edeb1745a4a47e257a054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70504049_bb41d377",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-11-17T03:17:35Z",
+      "side": 1,
+      "message": "There is one case: when battery is over discharged. It will result in I2C fail.\nBut set BP_NO will skip wake up code in charge_manager_v2\nI think it would be better if we use BP_NOT_SURE, we can still have charge_prevent_power_on \u003d\u003d true with BP_NOT_SURE",
+      "range": {
+        "startLine": 320,
+        "startChar": 15,
+        "endLine": 320,
+        "endChar": 20
+      },
+      "revId": "c09ba46dcb4c7038059edeb1745a4a47e257a054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
