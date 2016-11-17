@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0cd587b_e51e3027",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-17T09:48:57Z",
+      "side": 1,
+      "message": "that\u0027s only for US keyboards ?\nall other country variants are TBD ?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 56
+      },
+      "revId": "3a71bd233bb608e49f5e3b43401fdaf884a3ba06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
