@@ -79,6 +79,24 @@
     },
     {
       "key": {
+        "uuid": "70504049_5bdd172d",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2016-11-17T13:56:34Z",
+      "side": 1,
+      "message": "Keyboard is a very complicated thing. Scan codes, as derived from matrix of col/row, should be different per \"mechanical layout\" (not virtual / software handled \"keyboard layout\" like the one selected on CrOS login).\n\nHowever, unlike traditional keyboards, USB HID has its own definition of scan code that USB keyboard should send same scan code, no matter where the physical location of that key is.\n\nSo... the answer is I don\u0027t have a direct answer for you. That really depends on which role you\u0027re playing, and how your physical layout would be (and how/when you\u0027d like to convert it).",
+      "parentUuid": "70504049_1b4d5f3e",
+      "revId": "3a71bd233bb608e49f5e3b43401fdaf884a3ba06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30e168e5_44a8c229",
         "filename": "chip/stm32/usb_hid_keyboard.c",
         "patchSetId": 1
