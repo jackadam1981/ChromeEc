@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b088be_b162bbbd",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-17T03:39:01Z",
+      "side": 1,
+      "message": "should be \"%s: signal %d ignored\", __func__, signal)",
+      "range": {
+        "startLine": 363,
+        "startChar": 11,
+        "endLine": 363,
+        "endChar": 28
+      },
+      "revId": "ad20fd708c4dc46a1c9cce0ebeb3f5a2ea2bdae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
