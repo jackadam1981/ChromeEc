@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30ca486f_65a690a6",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-17T22:04:25Z",
+      "side": 1,
+      "message": "CONFIG_BATTERY_CUT_OFF is related to adding cut-off support triggered by host / console command. It\u0027s unrelated to booting from a shipmode battery.",
+      "range": {
+        "startLine": 119,
+        "startChar": 54,
+        "endLine": 119,
+        "endChar": 76
+      },
+      "revId": "6df591ea16c4d977435086152cf89f6dec44402f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ca486f_b0ac686c",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-17T22:04:25Z",
+      "side": 1,
+      "message": "What if we add a new CONFIG option to leave CHG_EN enabled at init? Can we take care of the bd9995x_charger_enable(0) call in some other way?",
+      "range": {
+        "startLine": 739,
+        "startChar": 8,
+        "endLine": 739,
+        "endChar": 37
+      },
+      "revId": "6df591ea16c4d977435086152cf89f6dec44402f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ca486f_50beb499",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-17T22:04:25Z",
+      "side": 1,
+      "message": "No need to put this function behind these CONFIGs, it\u0027s only related to them by accident. It will be optimized away if never called.",
+      "range": {
+        "startLine": 909,
+        "startChar": 0,
+        "endLine": 909,
+        "endChar": 77
+      },
+      "revId": "6df591ea16c4d977435086152cf89f6dec44402f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
