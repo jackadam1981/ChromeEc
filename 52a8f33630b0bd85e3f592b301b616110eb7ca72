@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "30ca486f_7941e355",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-17T20:06:24Z",
+      "side": 1,
+      "message": "make #define BOARD_BATTERY_DEFAULT",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 19
+      },
+      "revId": "52a8f33630b0bd85e3f592b301b616110eb7ca72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b088be_31dfab54",
         "filename": "board/reef/battery.c",
         "patchSetId": 3
