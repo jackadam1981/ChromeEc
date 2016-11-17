@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30b088be_f112733e",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-17T03:32:14Z",
+      "side": 1,
+      "message": "This patch takes care of it.\nhttps://chromium-review.googlesource.com/#/c/411353/\n\nThis one is assigned to you t make changes for sony battery.\nhttps://code.google.com/p/chrome-os-partner/issues/detail?id\u003d59904",
+      "parentUuid": "70504049_db380700",
+      "range": {
+        "startLine": 319,
+        "startChar": 27,
+        "endLine": 319,
+        "endChar": 45
+      },
+      "revId": "c09ba46dcb4c7038059edeb1745a4a47e257a054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70504049_bb41d377",
         "filename": "board/reef/battery.c",
         "patchSetId": 4
@@ -41,6 +65,53 @@
         "startChar": 15,
         "endLine": 320,
         "endChar": 20
+      },
+      "revId": "c09ba46dcb4c7038059edeb1745a4a47e257a054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_510107e4",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-17T03:32:14Z",
+      "side": 1,
+      "message": "this will fail if battery is low and we dont set as BP_NO\nbd9995x_get_battery_voltage() \u003e\u003d info.voltage_min",
+      "parentUuid": "70504049_bb41d377",
+      "range": {
+        "startLine": 320,
+        "startChar": 15,
+        "endLine": 320,
+        "endChar": 20
+      },
+      "revId": "c09ba46dcb4c7038059edeb1745a4a47e257a054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30b088be_71e5231c",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-17T03:32:14Z",
+      "side": 1,
+      "message": "I am planning not to clear CHG_EN if battery is in cut-off mode. Will add a board level function to get battery status (cut-off or no).\nAny comments?",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 39
       },
       "revId": "c09ba46dcb4c7038059edeb1745a4a47e257a054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
