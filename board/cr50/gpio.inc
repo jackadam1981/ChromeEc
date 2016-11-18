@@ -4,6 +4,46 @@
  * found in the LICENSE file.
  */
 
+/*
+ * This file describes GPIO mapping for the cr50 code running on the H1 chip.
+ *
+ * H1 core has 32 internal GPIOs, which are split into two ports of 16 bits
+ * each. Ports' architecture and programmig is described in "ARM Cortex-M
+ * System Design Kit TRM" DDIO47B.
+ *
+ * These internal GPIOs are not connected directly to the chip pins, the
+ * assignment of the GPIOs is controlled by the pin multiplexor unit (PINMUX).
+ *
+ * The chip also has external pins wich are named DIOA0..14, DIOB0..7 and
+ * DIOM0..4.
+ *
+ * PINMUX allows to connect those pins to various GPIOs and peripherals of the
+ * chip.
+ *
+ * The below macros are misleading (apparently for historical purposes), as
+ * PIN(p, b) component in fact refers not to the external pin, but to a GPIO
+ * (bit b on port p), where bit is in 0..15 range, and port is in 0..1 range.
+ *
+ * To describe routing of an external signal two macro instantiations are
+ * required:
+ *
+ * The GPIO_INT() or GPIO() macro assings the signal a name and assigns it to
+ * the internal GPIO port, (again, defining the por using the PIN(port, bit)
+ * component of the macro invocation). GPIO_INT defintions assing their
+ * respective signals to interrups and ISRs.
+ *
+ * The PINMUX macro assigns the previously defined GPIO to the external pin.
+ *
+ * It is still not enterly clear, how the peripherals (i2cs, sps, etc) get
+ * assigned to internal pins: for instance, the
+ *
+ * GPIO(SPI_MOSI,        PIN(0, 7), GPIO_INPUT)
+ *
+ * macro invocation below obviously assigns the SPI MOSI signal to port 0 bit
+ * 7. Is this an arbitrary assignment or is this association predefined in the
+ * chip hardware?
+ */
+
 /* Declare symbolic names for all the GPIOs that we care about.
  * Note: Those with interrupt handlers must be declared first. */
 
