@@ -52,6 +52,24 @@
       "revId": "449423bbd7fa8e9363ffc8e8a1b79ae0b8626e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_fedf69f7",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-18T22:14:01Z",
+      "side": 1,
+      "message": "Spoke w/ Rachel. We\u0027re not changing schematics. We\u0027ll keep the swap in the EC code. Please update the CL to have more information in some form that is meaningful. I don\u0027t want other followers to swap their pins because of our layout issue. Reef is supposed to be a reference, but just because our reference has layout issue doesn\u0027t mean the other pending boards do.",
+      "parentUuid": "b010f8cf_73f292ba",
+      "revId": "449423bbd7fa8e9363ffc8e8a1b79ae0b8626e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
