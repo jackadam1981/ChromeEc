@@ -39,6 +39,30 @@
       "revId": "4a384573b7027d5c7f70f4198f2a8d524b8adb20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ca486f_969761d5",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-18T02:12:26Z",
+      "side": 1,
+      "message": "I suspect it\u0027s for the fully detached case when we don\u0027t have a base to compare angle against.",
+      "parentUuid": "30ca486f_13e9a3c7",
+      "range": {
+        "startLine": 35,
+        "startChar": 51,
+        "endLine": 35,
+        "endChar": 72
+      },
+      "revId": "4a384573b7027d5c7f70f4198f2a8d524b8adb20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
