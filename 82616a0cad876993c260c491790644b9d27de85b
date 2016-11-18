@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30ca486f_a2c97311",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2016-11-18T17:15:32Z",
+      "side": 1,
+      "message": "i think this is an arbitrary assignment.  This assignment I think is actually a work-around for a different issue.  H1\u0027s SPI master resets into active drive, but this conflicts with other masters that need to drive SPI (EC/AP). So I think the intent here is to assign the SPI functions to some random GPIO to get it off the pins.  Mary is that right? I vaguely recall something like this.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "82616a0cad876993c260c491790644b9d27de85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
