@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "30ca486f_93c85345",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-18T01:23:43Z",
+      "side": 1,
+      "message": "OK, but this commit message still needs to be updated to not read \"x ms\".",
+      "parentUuid": "30b088be_f098340a",
+      "range": {
+        "startLine": 13,
+        "startChar": 38,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "d5238a43c84b7ee55fe1588a8a50fc3239f7f743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b088be_c33bfef9",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 1
@@ -160,6 +184,53 @@
         "startChar": 2,
         "endLine": 1112,
         "endChar": 12
+      },
+      "revId": "d5238a43c84b7ee55fe1588a8a50fc3239f7f743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ca486f_e0b60b23",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-18T01:23:43Z",
+      "side": 1,
+      "message": "Got it, that makes sense.",
+      "parentUuid": "30b088be_9089c0b7",
+      "range": {
+        "startLine": 1112,
+        "startChar": 2,
+        "endLine": 1112,
+        "endChar": 12
+      },
+      "revId": "d5238a43c84b7ee55fe1588a8a50fc3239f7f743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ca486f_20e9e3c7",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-18T01:23:43Z",
+      "side": 1,
+      "message": "Isn\u0027t this done in set_data_rate?\n\nAlso, according to 4.2.4 in the BMM150 datasheet we still have full access to device registers in suspend mode. So should we offload all normal/suspend mode switching to set_data_rate()?",
+      "range": {
+        "startLine": 1136,
+        "startChar": 0,
+        "endLine": 1138,
+        "endChar": 31
       },
       "revId": "d5238a43c84b7ee55fe1588a8a50fc3239f7f743",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
