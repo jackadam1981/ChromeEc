@@ -39,6 +39,24 @@
       "revId": "cfabca60861042313e1a0ca2e35e90e512e8fcfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_b9d7cb0d",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-18T23:39:02Z",
+      "side": 1,
+      "message": "It\u0027s not necessary. It\u0027s only returned if tpm_reset() gets a TPM_EVENT_RESET event from tpm_reset_now(), and that can only happen after it\u0027s set to the correct value.\n\nPlus, EC_SUCCESS is zero. gcc used to complain about initializing globals to zero. Clang doesn\u0027t seem to.",
+      "parentUuid": "b010f8cf_b916ab30",
+      "revId": "cfabca60861042313e1a0ca2e35e90e512e8fcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
