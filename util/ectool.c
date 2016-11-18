@@ -462,7 +462,12 @@ int cmd_s5(int argc, char *argv[])
 
 	if (argc > 1) {
 		p.flags |= EC_GSV_SET;
-		if (!parse_bool(argv[1], &p.value)) {
+		/* Double casting is a workaround to silent clang error.
+		 * The pointer is always aligned but clang complains.
+		 * https://crbug.com/665240
+		 * https://llvm.org/bugs/show_bug.cgi?id=31050
+		 */
+		if (!parse_bool(argv[1], (uint32_t*)((char *)&p.value))) {
 			fprintf(stderr, "invalid arg \"%s\"\n", argv[1]);
 			return -1;
 		}
