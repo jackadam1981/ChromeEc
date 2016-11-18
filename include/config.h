@@ -57,9 +57,13 @@
 #undef CONFIG_ACCELGYRO_LSM6DS0
 #undef CONFIG_ACCELGYRO_BMI160
 #undef CONFIG_ACCELGYRO_LSM6DSM
+#undef CONFIG_ACCEL_LIS2DH
 
 /* Specify barometer attached */
 #undef CONFIG_BARO_BMP280
+
+/* Configure two instance of LIS2DH: one for LID and the other for BASE */
+#undef CONFIG_ACCEL_LIS2DH_MULTI
 
 /*
  * Use the old standard reference frame for accelerometers. The old
