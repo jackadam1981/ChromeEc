@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b010f8cf_300bf007",
+        "filename": "board/reef/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-18T20:56:57Z",
+      "side": 1,
+      "message": "set tablet_set_mode()",
+      "revId": "ba0543126fcd989fb803353da976fec1e118c161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_d06db4e2",
+        "filename": "board/reef/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-18T20:56:57Z",
+      "side": 1,
+      "message": "call lid_angle_peripheral_enable(1)",
+      "revId": "ba0543126fcd989fb803353da976fec1e118c161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_b0eda00a",
+        "filename": "board/reef/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-18T20:56:57Z",
+      "side": 1,
+      "message": "use tablet_get_mode",
+      "revId": "ba0543126fcd989fb803353da976fec1e118c161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_90297c9e",
+        "filename": "board/reef/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-18T20:56:57Z",
+      "side": 1,
+      "message": "nit, weird indentation, || at tend of line.",
+      "revId": "ba0543126fcd989fb803353da976fec1e118c161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_b09fe09e",
+        "filename": "board/reef/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-18T20:56:57Z",
+      "side": 1,
+      "message": "not needed",
+      "revId": "ba0543126fcd989fb803353da976fec1e118c161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_30b41019",
+        "filename": "board/reef/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-18T20:56:57Z",
+      "side": 1,
+      "message": "not needed",
+      "revId": "ba0543126fcd989fb803353da976fec1e118c161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
