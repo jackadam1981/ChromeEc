@@ -63,6 +63,30 @@
       "revId": "4a384573b7027d5c7f70f4198f2a8d524b8adb20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ca486f_7617252f",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-18T02:40:09Z",
+      "side": 1,
+      "message": "Aseda pointed out that when the device is upright position (standing on the side), there is no gravity changes for the accelerometers as the lid swings. So, the lid angle cannot be determined.\n\nWith the tablet_mode_interrupt, we can at least detect a complete flip (360 degree) and trigger a tablet mode.\n\nGwendal mentioned that it requires this change: https://chromium-review.googlesource.com/#/c/377062/ for the EC to notify the OS of the tablet mode but it was rejected.\n\nI\u0027ll study Caroline and Cave to see how they handle tablet mode switch.",
+      "parentUuid": "30ca486f_969761d5",
+      "range": {
+        "startLine": 35,
+        "startChar": 51,
+        "endLine": 35,
+        "endChar": 72
+      },
+      "revId": "4a384573b7027d5c7f70f4198f2a8d524b8adb20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
