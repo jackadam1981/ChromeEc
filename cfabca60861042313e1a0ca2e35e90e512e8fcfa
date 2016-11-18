@@ -57,6 +57,24 @@
       "revId": "cfabca60861042313e1a0ca2e35e90e512e8fcfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_04a30a50",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-18T23:55:59Z",
+      "side": 1,
+      "message": "assigning value to a global inside a function should never be a problem for any compiler.\n\nI am not sure what happens if wipe_result was set to non-zero last time around and we come here again?\n\nSetting it in the beginning of the function explicitly is more robust.",
+      "parentUuid": "b010f8cf_b9d7cb0d",
+      "revId": "cfabca60861042313e1a0ca2e35e90e512e8fcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
