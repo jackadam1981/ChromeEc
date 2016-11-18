@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b010f8cf_90f29ce8",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-18T20:56:55Z",
+      "side": 1,
+      "message": "Can you please just add _SWAPPED to the GPIO name?\n\nThen below do:\n\n/* board routed backwards, etc */\n#define GPIO_EC_VOLDN_BTN_ODL GPIO_EC_VOLDN_BTN_ODL_SWAPPED\n#define GPIO EC_VOLUP_BTN_ODL GPIO_EC_VOLUP_BTN_ODL_SWAPPED\n\nWe can minimize the differences when people are doing a cursory glance/comparison through the gpio.inc.",
+      "revId": "449423bbd7fa8e9363ffc8e8a1b79ae0b8626e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
