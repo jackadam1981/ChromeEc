@@ -453,6 +453,10 @@ struct als_t als[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(als) == ALS_COUNT);
 
+/* cros.bug/p/60057 */
+#define GPIO_EC_VOLDN_BTN_ODL GPIO_EC_VOLUP_BTN_ODL_SWAPPED
+#define GPIO_EC_VOLUP_BTN_ODL GPIO_EC_VOLDN_BTN_ODL_SWAPPED
+
 const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
 	{"Volume Down", KEYBOARD_BUTTON_VOLUME_DOWN, GPIO_EC_VOLDN_BTN_ODL,
 	 30 * MSEC, 0},
