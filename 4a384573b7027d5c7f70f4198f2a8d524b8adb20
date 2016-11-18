@@ -16,6 +16,29 @@
       "revId": "4a384573b7027d5c7f70f4198f2a8d524b8adb20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ca486f_13e9a3c7",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-18T01:58:44Z",
+      "side": 1,
+      "message": "Does anybody know why we need this interrupt at all? I think tablet mode operation is completely handled by the lid angle. When the lid goes to 360, the keyboard is already disabled. I don\u0027t see anything specific to be done by the EC at 360 position.",
+      "range": {
+        "startLine": 35,
+        "startChar": 51,
+        "endLine": 35,
+        "endChar": 72
+      },
+      "revId": "4a384573b7027d5c7f70f4198f2a8d524b8adb20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
