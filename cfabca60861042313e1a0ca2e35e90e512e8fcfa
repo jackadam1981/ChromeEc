@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b010f8cf_5e06753e",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-18T22:33:14Z",
+      "side": 1,
+      "message": "Just to make it clear that task events are bitmasks, not integers.",
+      "range": {
+        "startLine": 643,
+        "startChar": 42,
+        "endLine": 643,
+        "endChar": 48
+      },
+      "revId": "cfabca60861042313e1a0ca2e35e90e512e8fcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
