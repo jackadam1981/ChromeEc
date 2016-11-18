@@ -16,6 +16,24 @@
       "revId": "449423bbd7fa8e9363ffc8e8a1b79ae0b8626e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_7365f234",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-18T21:34:18Z",
+      "side": 1,
+      "message": "Why don\u0027t we fix the schematics instead of adding extra complexity? If I find GPIO_EC_VOLDN_BTN_ODL_SWAPPED in the code, I would search for EC_VOLDN_BTN_ODL_SWAPPED in gpio.inc. If not updating the schematics, I can add \u0027THESE ARE SWAPPED\u0027 to the comment.",
+      "parentUuid": "b010f8cf_90f29ce8",
+      "revId": "449423bbd7fa8e9363ffc8e8a1b79ae0b8626e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
