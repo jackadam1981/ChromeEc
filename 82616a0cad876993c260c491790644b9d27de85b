@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "30ca486f_42217f64",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-11-18T18:01:45Z",
+      "side": 1,
+      "message": "whats this?",
+      "range": {
+        "startLine": 31,
+        "startChar": 48,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "82616a0cad876993c260c491790644b9d27de85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ca486f_a2c97311",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 1
@@ -13,6 +36,30 @@
       "writtenOn": "2016-11-18T17:15:32Z",
       "side": 1,
       "message": "i think this is an arbitrary assignment.  This assignment I think is actually a work-around for a different issue.  H1\u0027s SPI master resets into active drive, but this conflicts with other masters that need to drive SPI (EC/AP). So I think the intent here is to assign the SPI functions to some random GPIO to get it off the pins.  Mary is that right? I vaguely recall something like this.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "82616a0cad876993c260c491790644b9d27de85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ca486f_a26253bd",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-11-18T18:01:45Z",
+      "side": 1,
+      "message": "Yeah that is a workaround. \n\nNormally to connect a peripheral you need to define them like the UART is defined. It is like the second half of defining a gpio but peripherals use the FUNC macro instead of GPIO.\n\nPINMUX(FUNC(peripheral_name), pin, dio_flags)\n\nMost peripherals aren\u0027t directly connected to external pads, but some are like spi0 and sps0. That means those pads are being driven by default. The documentation has a document describing all peripherals that are directly connected and what pads they are connected to.\n\nThe SPI gpio declaration is a special case where we needed to override the default output behavior so that the pads would be tri-stated instead of driven by the peripheral. The only way to do that was to explicitly connect them to a gpio.",
+      "parentUuid": "30ca486f_a2c97311",
       "range": {
         "startLine": 43,
         "startChar": 0,
