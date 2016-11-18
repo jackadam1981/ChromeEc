@@ -97,6 +97,24 @@
     },
     {
       "key": {
+        "uuid": "30ca486f_e007ebc7",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-18T00:52:59Z",
+      "side": 1,
+      "message": "Actually, no, USB HID Usage table specs says:\n\"A general note on Usages and languages: Due to the variation of keyboards from language\nto language, it is not feasible to specify exact key mappings for every language. Where this list is not\nspecific for a key function in a language, the closest equivalent key position should be used, so that a\nkeyboard may be modified for a different language by simply printing different keycaps. One example\nis the Y key on a North American keyboard. In Germany this is typically Z. Rather than changing the\nkeyboard firmware to put the Z Usage into that place in the descriptor list, the vendor should use the Y\nUsage on both the North American and German keyboards. This continues to be the existing practice in\nthe industry, in order to minimize the number of changes to the electronics to accommodate other\nlanguages.\"\n\nSo basically the code being sent corresponds to the US key that would be at that location.\n\nAnd indeed, the kernel converts the HID codes back to some Linux codes: http://lxr.free-electrons.com/source/drivers/hid/hid-input.c?v\u003d3.18#L39, and then the keymap is applied, so I can switch my keyboard from US to CH to FR (in Chrome OS UI), and I get correct keys for their expected locations (that\u0027s row 4 columns 1 to 9):\nUS: adfskj;l\nCH: adfskjél\nFR: qdfskjml\n\nI\u0027m more concerned about extra keys, say, on a Japanese keyboard.",
+      "parentUuid": "70504049_5bdd172d",
+      "revId": "3a71bd233bb608e49f5e3b43401fdaf884a3ba06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30e168e5_44a8c229",
         "filename": "chip/stm32/usb_hid_keyboard.c",
         "patchSetId": 1
@@ -132,6 +150,24 @@
       "side": 1,
       "message": "The keyboard I had on my desk says:\n            Item(Global): Report Count, data\u003d [ 0x06 ] 6\n            Item(Global): Report Size, data\u003d [ 0x08 ] 8\n            Item(Global): Logical Minimum, data\u003d [ 0x00 ] 0\n            Item(Global): Logical Maximum, data\u003d [ 0xff 0x00 ] 255\n            Item(Global): Usage Page, data\u003d [ 0x07 ] 7\n                            Keyboard\n            Item(Local ): Usage Minimum, data\u003d [ 0x00 ] 0\n                            No Event\n            Item(Local ): Usage Maximum, data\u003d [ 0xff 0x00 ] 255\n                            (null)\n            Item(Main  ): Input, data\u003d [ 0x00 ] 0\n                            Data Array Absolute No_Wrap Linear\n                            Preferred_State No_Null_Position Non_Volatile Bitfield\n            Item(Main  ): End Collection, data\u003dnone\n\nSetting logical/usage minimum to 1 also works fine, and indeed, seems to match the spec.",
       "parentUuid": "30e168e5_44a8c229",
+      "revId": "3a71bd233bb608e49f5e3b43401fdaf884a3ba06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ca486f_4015ff66",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-18T00:52:59Z",
+      "side": 1,
+      "message": "Oh, I see, keyboard table in HID spec says \"00 Reserved (no event indicated)\", so I guess setting 0 is fine too.",
+      "parentUuid": "70504049_9b116f19",
       "revId": "3a71bd233bb608e49f5e3b43401fdaf884a3ba06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
