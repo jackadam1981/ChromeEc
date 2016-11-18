@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b010f8cf_3904fb7a",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-18T23:01:49Z",
+      "side": 1,
+      "message": "These can\u0027t go in gpio.inc? If not, then just change the names like you did originally. I was thinking you could just add the #defines in gpio.inc.\n\nAlso, you can\u0027t just mention cros.bug/p/whatever. Not every oem/odm can see our bugs. Therefore, it\u0027s imperative that you provide a good comment explaining the situation.",
+      "revId": "a5750d779c2990aab21f2411f741eb76e05699a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
