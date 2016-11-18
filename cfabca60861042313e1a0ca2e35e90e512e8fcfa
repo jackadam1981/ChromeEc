@@ -22,6 +22,23 @@
       "revId": "cfabca60861042313e1a0ca2e35e90e512e8fcfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_b916ab30",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-18T23:27:38Z",
+      "side": 1,
+      "message": "should wipe_result be explicitly initialized to EC_SUCCESS here?",
+      "revId": "cfabca60861042313e1a0ca2e35e90e512e8fcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
