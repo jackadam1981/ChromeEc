@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "30ca486f_c4c91c11",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-18T18:20:33Z",
+      "side": 1,
+      "message": "should be \"port\"",
+      "parentUuid": "30ca486f_42217f64",
+      "range": {
+        "startLine": 31,
+        "startChar": 48,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "82616a0cad876993c260c491790644b9d27de85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ca486f_44834c93",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-18T18:20:33Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be \"half-assing\"?  ;-)",
+      "range": {
+        "startLine": 32,
+        "startChar": 59,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "82616a0cad876993c260c491790644b9d27de85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ca486f_a2c97311",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 1
