@@ -220,7 +220,16 @@ void hw_clock_source_set_preload(uint32_t ts, uint8_t clear)
 /* Returns the value of the free-running counter used as clock. */
 uint32_t __hw_clock_source_read(void)
 {
-	uint32_t cnt = NPCX_ITCNT32;
+	uint32_t cnt;
+
+	/*
+	 * Wait for two consecutive equal values are read no matter
+	 * ITIM's source clock is APB2 or 32K since mux's delay.
+	 */
+	do {
+		cnt = NPCX_ITCNT32;
+	} while (cnt != NPCX_ITCNT32);
+
 #if DEBUG_TMR
 	cur_cnt_us_dbg = TICK_ITIM32_MAX_CNT - cnt;
 #endif
