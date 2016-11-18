@@ -34,6 +34,24 @@
       "revId": "449423bbd7fa8e9363ffc8e8a1b79ae0b8626e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_73f292ba",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-18T22:06:22Z",
+      "side": 1,
+      "message": "I was going for consistency w/ followers. reef is not my only concern. But sure, we can change the schematics as well. \n\nYou wouldn\u0027t find _SWAPPED in the code but in a define.\n\n#define GPIO_EC_VOLUP_BTN_ODL GPIO_EC_VOLDN_BTN_ODL_SWAPPED\n\nLeaving a bug number for partners who can\u0027t access the bug is not really sufficient to document the issue. I was trying to reduce the complexity for the vast swath of others using our reference schematics and potentially code. If they route correctly they don\u0027t need the swap.",
+      "parentUuid": "b010f8cf_7365f234",
+      "revId": "449423bbd7fa8e9363ffc8e8a1b79ae0b8626e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
