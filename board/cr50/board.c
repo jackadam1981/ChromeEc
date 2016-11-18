@@ -175,6 +175,7 @@ void board_configure_deep_sleep_wakepins(void)
 	GWRITE_FIELD(PINMUX, EXITEN0, DIOA12, 0); /* SPS_CS_L */
 	/* TODO remove i2cs wake event */
 
+	GWRITE_FIELD(PINMUX, DIOB5_CTL, PD, 0);
 	/*
 	 * DIOA3 is GPIO_DETECT_AP which is used to detect if the AP is in S0.
 	 * If the AP is in s0, cr50 should not be in deep sleep so wake up.

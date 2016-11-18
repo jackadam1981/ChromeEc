@@ -55,10 +55,14 @@ int uartn_enabled(int uart)
 /* Connect the UART pin to the given signal */
 static void uart_select_tx(int uart, int signal)
 {
-	if (uart == UART_AP)
+	if (uart == UART_AP) {
 		GWRITE(PINMUX, DIOA7_SEL, signal);
-	else
+	} else {
 		GWRITE(PINMUX, DIOB5_SEL, signal);
+
+		/* Remove the pulldown when we are driving the signal */
+		GWRITE_FIELD(PINMUX, DIOB5_CTL, PD, signal ? 0 : 1);
+	}
 }
 
 static int servo_is_connected(void)
