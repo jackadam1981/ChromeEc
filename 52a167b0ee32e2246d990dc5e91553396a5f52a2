@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b010f8cf_dfbdbf9c",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-19T00:51:00Z",
+      "side": 1,
+      "message": "who and when enables this back?",
+      "range": {
+        "startLine": 180,
+        "startChar": 21,
+        "endLine": 180,
+        "endChar": 39
+      },
+      "revId": "52a167b0ee32e2246d990dc5e91553396a5f52a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_bfd9eb14",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-19T00:51:00Z",
+      "side": 1,
+      "message": "what is the meaning of the variable \u0027signal\u0027 here can you add a comment for the function prototype please.",
+      "range": {
+        "startLine": 64,
+        "startChar": 38,
+        "endLine": 64,
+        "endChar": 43
+      },
+      "revId": "52a167b0ee32e2246d990dc5e91553396a5f52a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
