@@ -75,6 +75,24 @@
       "revId": "cfabca60861042313e1a0ca2e35e90e512e8fcfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_ff43e3b0",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-19T01:00:56Z",
+      "side": 1,
+      "message": "Oh, duh. I thought you were talking about where it was defined. Yeah, sure, I can set it inside here. It still won\u0027t matter, but it won\u0027t hurt either.",
+      "parentUuid": "b010f8cf_04a30a50",
+      "revId": "cfabca60861042313e1a0ca2e35e90e512e8fcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
