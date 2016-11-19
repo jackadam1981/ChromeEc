@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b010f8cf_31b40fb0",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-19T02:41:41Z",
+      "side": 1,
+      "message": "just a nit: this is a file scope variable now, so does not really need to be communicated.",
+      "range": {
+        "startLine": 766,
+        "startChar": 17,
+        "endLine": 766,
+        "endChar": 31
+      },
+      "revId": "d8e73148392307043774c66927823c3fc564712b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
