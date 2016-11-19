@@ -93,6 +93,24 @@
       "revId": "cfabca60861042313e1a0ca2e35e90e512e8fcfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_ff6883d4",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-11-19T01:24:48Z",
+      "side": 1,
+      "message": "Well, actually there\u0027s a race condition:\n\nTASK_HOOK calls tpm_reset(1, 1), clears wipe_result, waits.\n\nTASK_TPM can\u0027t clear nvmem, sets wipe_result to some error value, signals TASK_LOW, waits for its next event.\n\nInterrupt fires before TASK_HOOK, tpm_is_resetting() is false, calls tpm_reset(0, 0), clears wipe_result.\n\nTASK_TPM runs, tpm_reset() works, wipe_result \u003d EC_SUCCESS.\n(but even if TASK_TPM didn\u0027t run, it\u0027s still too late).\n\nTASK_HOOK finally runs, original failure from clearing nvmem is lost.\n\nTASK_TPM needs to return success or failure in the event returned by task_wait_event_mask().",
+      "parentUuid": "b010f8cf_ff43e3b0",
+      "revId": "cfabca60861042313e1a0ca2e35e90e512e8fcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
