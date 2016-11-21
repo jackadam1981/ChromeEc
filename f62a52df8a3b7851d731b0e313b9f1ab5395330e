@@ -22,6 +22,30 @@
       "revId": "f62a52df8a3b7851d731b0e313b9f1ab5395330e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_4010c770",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-21T09:40:24Z",
+      "side": 1,
+      "message": "No, we\u0027re not.\n\nI should probably add a timeout, until we figure out how to handle USB suspend properly.",
+      "parentUuid": "d0dd6c5f_8e795b38",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 55
+      },
+      "revId": "f62a52df8a3b7851d731b0e313b9f1ab5395330e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
