@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0dd6c5f_8e795b38",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-21T08:34:06Z",
+      "side": 1,
+      "message": "Are we fine blocking the trackpad task for extended period of time (e.g. when the AP went down) ?",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 55
+      },
+      "revId": "f62a52df8a3b7851d731b0e313b9f1ab5395330e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
