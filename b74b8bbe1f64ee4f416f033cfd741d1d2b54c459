@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b010f8cf_3842ab5f",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-21T19:19:19Z",
+      "side": 1,
+      "message": "Can you epxlain why we have to do this here and not just rely on results from battery_get_info()? Can\u0027t you apply the same logic to both?",
+      "revId": "b74b8bbe1f64ee4f416f033cfd741d1d2b54c459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
