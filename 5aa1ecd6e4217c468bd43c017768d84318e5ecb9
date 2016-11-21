@@ -308,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "b010f8cf_00a88f28",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2016-11-21T06:16:25Z",
+      "side": 1,
+      "message": "We came up with values based on a bunch of measurements on USB power bricks when we worked on this for the Pixel. For DCP we wanted to cover the many newer adapters that can do 2A. But we found enough lower current adapters with poor overcurrent detection (and thus late voltage droop) that having this higher than 2A was risky (several that were rated for 1.5A wouldn\u0027t droop until close to 2.5A and were clearly too hot). Most true \u003e2A adapters show the Apple 2.4A code rather than BC1.2 so get detected that way.\n\nOTOH I think other systems have SDP at 1A because there a so many laptops that support that to allow hard drives to work and those with lower limits tend to droop reasonably.",
+      "parentUuid": "507fbce6_0742565e",
+      "range": {
+        "startLine": 514,
+        "startChar": 9,
+        "endLine": 514,
+        "endChar": 13
+      },
+      "revId": "5aa1ecd6e4217c468bd43c017768d84318e5ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8fc21c7_8edb9cfd",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 3
