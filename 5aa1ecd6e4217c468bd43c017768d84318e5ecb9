@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "507fbce6_0742565e",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-11-21T05:41:16Z",
+      "side": 1,
+      "message": "Hi, Shawn, why do we use 2000mA for DCP and 900mA for SDP ?\nBC1.2 says 1500mA max for DCP and 500mA for SDP, doesn\u0027t it ?\nI can\u0027t find any discuss besides https://chromium-review.googlesource.com/#/c/330184/, it was already 2000mA for DCP..",
+      "parentUuid": "e8fc21c7_aed538ca",
+      "range": {
+        "startLine": 514,
+        "startChar": 9,
+        "endLine": 514,
+        "endChar": 13
+      },
+      "revId": "5aa1ecd6e4217c468bd43c017768d84318e5ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8fc21c7_8edb9cfd",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 3
