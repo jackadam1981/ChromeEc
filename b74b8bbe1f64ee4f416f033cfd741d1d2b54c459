@@ -123,6 +123,30 @@
       "revId": "b74b8bbe1f64ee4f416f033cfd741d1d2b54c459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_c1d39667",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-21T22:42:29Z",
+      "side": 1,
+      "message": "Before we were checking voltage_min() as well but that logic got dropped unless the type !\u003d BATTERY_TYPE_COUNT. Why is the min voltage check not required any more? But now that I look at it why is battery voltage which is over the *min* bad? We expect the voltage to be \u003c voltage_min? Seems odd. I would have expected consistent logic but we\u0027re not maintaining that consistency.",
+      "parentUuid": "b010f8cf_0119aef2",
+      "range": {
+        "startLine": 430,
+        "startChar": 7,
+        "endLine": 430,
+        "endChar": 55
+      },
+      "revId": "b74b8bbe1f64ee4f416f033cfd741d1d2b54c459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
