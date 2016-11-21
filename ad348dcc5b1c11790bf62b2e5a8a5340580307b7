@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "b010f8cf_9656091f",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-21T17:59:35Z",
+      "side": 1,
+      "message": "Oh. I was thinking they were one in the same. Just add the equivalent of:\n\nstatic const struct board_batt_params *get_board_batt_params()\n\nThen battery_get_info(void) would be:\n\nconst struct board_batt_params *p \u003d get_board_batt_params();\nreturn \u0026p-\u003ebatt_info;\n\nThe choosing logic is sitting in one place: get_board_batt_params().\n\nFeel free to rename anything I recommended.",
+      "parentUuid": "b010f8cf_5b50bc21",
+      "revId": "ad348dcc5b1c11790bf62b2e5a8a5340580307b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b010f8cf_5ba0bc73",
         "filename": "board/reef/battery.c",
         "patchSetId": 5
