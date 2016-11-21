@@ -75,6 +75,30 @@
       "revId": "b74b8bbe1f64ee4f416f033cfd741d1d2b54c459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_9e397f96",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-21T21:55:51Z",
+      "side": 1,
+      "message": "I meant this one, but also why the \u0027board_get_battery_type() \u003d\u003d BATTERY_TYPE_COUNT\u0027 is needed at all. Why not just always do the voltage check uncondtionally like the original code?",
+      "parentUuid": "b010f8cf_be8c43c7",
+      "range": {
+        "startLine": 430,
+        "startChar": 7,
+        "endLine": 430,
+        "endChar": 55
+      },
+      "revId": "b74b8bbe1f64ee4f416f033cfd741d1d2b54c459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
