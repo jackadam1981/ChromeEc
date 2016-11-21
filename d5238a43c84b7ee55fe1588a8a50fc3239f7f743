@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "b010f8cf_4058c7a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-21T06:02:56Z",
+      "side": 1,
+      "message": "x depends on the sensor: 4 for accel, 80 for gyro.",
+      "parentUuid": "30ca486f_93c85345",
+      "range": {
+        "startLine": 13,
+        "startChar": 38,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "d5238a43c84b7ee55fe1588a8a50fc3239f7f743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b088be_c33bfef9",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 1
@@ -226,6 +250,30 @@
       "writtenOn": "2016-11-18T01:23:43Z",
       "side": 1,
       "message": "Isn\u0027t this done in set_data_rate?\n\nAlso, according to 4.2.4 in the BMM150 datasheet we still have full access to device registers in suspend mode. So should we offload all normal/suspend mode switching to set_data_rate()?",
+      "range": {
+        "startLine": 1136,
+        "startChar": 0,
+        "endLine": 1138,
+        "endChar": 31
+      },
+      "revId": "d5238a43c84b7ee55fe1588a8a50fc3239f7f743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_605bcba0",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-21T06:02:56Z",
+      "side": 1,
+      "message": "To be able to configure the magnetometer, we must set the BMI160 magnetometer part (a pass through) in normal mode.\nNote that the BMM150 is used in forced mode, waiting in low power state until we need to measure.",
+      "parentUuid": "30ca486f_20e9e3c7",
       "range": {
         "startLine": 1136,
         "startChar": 0,
