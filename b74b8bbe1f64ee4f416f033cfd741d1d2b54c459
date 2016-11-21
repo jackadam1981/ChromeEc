@@ -99,6 +99,30 @@
       "revId": "b74b8bbe1f64ee4f416f033cfd741d1d2b54c459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_0119aef2",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-21T22:12:53Z",
+      "side": 1,
+      "message": "original code is for only one battery. With the two separate batteries we will end up in choosing the default battery in case of hot-plugged battery. I am re-initializing the battery type to ensure we chose the correct cut-off registers for the hot-plugged battery.",
+      "parentUuid": "b010f8cf_9e397f96",
+      "range": {
+        "startLine": 430,
+        "startChar": 7,
+        "endLine": 430,
+        "endChar": 55
+      },
+      "revId": "b74b8bbe1f64ee4f416f033cfd741d1d2b54c459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
