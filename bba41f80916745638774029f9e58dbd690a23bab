@@ -45,6 +45,30 @@
       "revId": "bba41f80916745638774029f9e58dbd690a23bab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_00208faf",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-21T10:07:03Z",
+      "side": 1,
+      "message": "Yeah, there is something wrong here... I should cap the value at 4095, not 255 (I think I had width/height taking only 8-bits before...).\n\nThe magic comes from the way elan trackpad driver computes these values in Linux driver (HID multitouch only does much simpler processing).",
+      "parentUuid": "d0dd6c5f_0e868bfb",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 54
+      },
+      "revId": "bba41f80916745638774029f9e58dbd690a23bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
