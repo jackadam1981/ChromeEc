@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "b010f8cf_5b50bc21",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-21T16:48:05Z",
+      "side": 1,
+      "message": "we cannot add board_battery_type() as ship_mode_reg and ship_mode_data are not part of batt_info. I will add extra check for battery type indexing",
+      "parentUuid": "b010f8cf_5b6f9c15",
+      "revId": "ad348dcc5b1c11790bf62b2e5a8a5340580307b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b010f8cf_5ba0bc73",
         "filename": "board/reef/battery.c",
         "patchSetId": 5
