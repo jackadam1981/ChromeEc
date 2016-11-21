@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b010f8cf_bb90d82d",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-21T15:31:39Z",
+      "side": 1,
+      "message": "Can you speak to the order of operations on when the battery code will query for batter info vs when this hook is run?",
+      "revId": "ad348dcc5b1c11790bf62b2e5a8a5340580307b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_db8b8c00",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-21T15:31:39Z",
+      "side": 1,
+      "message": "I don\u0027t think you should be using board_battery_type here at all. Why not use battery_get_info()? That way you are ensuring you aren\u0027t ever indexing an array out of bounds.",
+      "revId": "ad348dcc5b1c11790bf62b2e5a8a5340580307b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_5ba0bc73",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-21T15:31:39Z",
+      "side": 1,
+      "message": "Why not just use battery_get_info() here as well?",
+      "revId": "ad348dcc5b1c11790bf62b2e5a8a5340580307b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
