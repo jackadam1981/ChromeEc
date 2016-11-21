@@ -16,6 +16,24 @@
       "revId": "b74b8bbe1f64ee4f416f033cfd741d1d2b54c459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_9bd0715c",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-21T20:27:01Z",
+      "side": 1,
+      "message": "when the battery become alive (initialized) or hot-plug we need to get the actual battery information hence its a special case. We can do same in board_get_batt_params() but it is called often  by other functions leading into additional I2C calls.\nIn case of hot-unplug we dont come tho this condition as we have the battery type at init and continue to use the same.",
+      "parentUuid": "b010f8cf_3842ab5f",
+      "revId": "b74b8bbe1f64ee4f416f033cfd741d1d2b54c459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
