@@ -52,6 +52,29 @@
       "revId": "b74b8bbe1f64ee4f416f033cfd741d1d2b54c459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_be8c43c7",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-21T21:06:45Z",
+      "side": 1,
+      "message": "oh you meant this one, okay I can change it and I will add comments for board_get_battery_type()",
+      "range": {
+        "startLine": 430,
+        "startChar": 7,
+        "endLine": 430,
+        "endChar": 55
+      },
+      "revId": "b74b8bbe1f64ee4f416f033cfd741d1d2b54c459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
