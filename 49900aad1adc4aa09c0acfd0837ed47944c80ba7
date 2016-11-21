@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0dd6c5f_ce6f6369",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-21T08:31:37Z",
+      "side": 1,
+      "message": "it seems we could return the \u0027continuation\u0027 as part of the function return value rather than updating the prototype in the API ?",
+      "range": {
+        "startLine": 129,
+        "startChar": 6,
+        "endLine": 129,
+        "endChar": 62
+      },
+      "revId": "49900aad1adc4aa09c0acfd0837ed47944c80ba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
