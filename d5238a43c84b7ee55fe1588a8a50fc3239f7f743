@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "b010f8cf_7b15bdf0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-21T21:14:41Z",
+      "side": 1,
+      "message": "OK, then how about removing \"x ms\" all together so that this part of the sentence reads \"we will wait only when we change the rate and enable the sensor.\"",
+      "parentUuid": "b010f8cf_4058c7a1",
+      "range": {
+        "startLine": 13,
+        "startChar": 38,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "d5238a43c84b7ee55fe1588a8a50fc3239f7f743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b088be_c33bfef9",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 1
@@ -274,6 +298,30 @@
       "side": 1,
       "message": "To be able to configure the magnetometer, we must set the BMI160 magnetometer part (a pass through) in normal mode.\nNote that the BMM150 is used in forced mode, waiting in low power state until we need to measure.",
       "parentUuid": "30ca486f_20e9e3c7",
+      "range": {
+        "startLine": 1136,
+        "startChar": 0,
+        "endLine": 1138,
+        "endChar": 31
+      },
+      "revId": "d5238a43c84b7ee55fe1588a8a50fc3239f7f743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_9e3f3fe8",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-21T21:14:41Z",
+      "side": 1,
+      "message": "Got it. Might be useful to add a comment to that effect.",
+      "parentUuid": "b010f8cf_605bcba0",
       "range": {
         "startLine": 1136,
         "startChar": 0,
