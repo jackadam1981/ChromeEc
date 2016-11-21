@@ -34,6 +34,24 @@
       "revId": "b74b8bbe1f64ee4f416f033cfd741d1d2b54c459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_1bfc8196",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-21T20:41:35Z",
+      "side": 1,
+      "message": "I guess I\u0027m confused still why we can\u0027t keep the same logic as originally there. Just change info.voltage_min to battery_get_info()-\u003evoltage_min. Or are you afraid the status register is different?",
+      "parentUuid": "b010f8cf_9bd0715c",
+      "revId": "b74b8bbe1f64ee4f416f033cfd741d1d2b54c459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
