@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b010f8cf_3b850827",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-21T17:12:04Z",
+      "side": 1,
+      "message": "To get the links to work right, I think this needs to be chrome-os-partner:59240\n\n(that is, each bug number must have the prefix)",
+      "range": {
+        "startLine": 18,
+        "startChar": 28,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "fee15ae97c391083ac9e59efb88de4cea7167edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_9b8e344e",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-21T17:12:04Z",
+      "side": 1,
+      "message": "That does more reads than necessary.  How about:\n\ncnt \u003d NPCX_ITCNT32;\nwhile ((cnt2 \u003d NPCX_ITCNT32) !\u003d cnt)\n   cnt \u003d cnt2;",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 31
+      },
+      "revId": "fee15ae97c391083ac9e59efb88de4cea7167edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
