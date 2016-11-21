@@ -195,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "b010f8cf_4097a731",
+        "filename": "board/reef/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-21T15:11:07Z",
+      "side": 1,
+      "message": "flip flopping: not formally needed give you check tablet_set_mode() in callback, but this code would avoid unnecessary calls.",
+      "parentUuid": "b010f8cf_e03d7b23",
+      "revId": "ba0543126fcd989fb803353da976fec1e118c161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b010f8cf_30b41019",
         "filename": "board/reef/board.h",
         "patchSetId": 8
