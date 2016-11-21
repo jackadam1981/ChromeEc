@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b010f8cf_6032ab50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-21T06:10:30Z",
+      "side": 1,
+      "message": "There is a dependency on enabling sensors in S3: right now, the lid angle is stuck at the last value before suspend.\n\nWe may want to split this CL to disable keyboard in table mode first and finish the work once the sensors work in S3.",
+      "revId": "09d7deb8ad0e9315c3dae1f52e8bd0f51711a453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_80359f38",
+        "filename": "board/reef/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-21T06:10:30Z",
+      "side": 1,
+      "message": "s/motion_sense_task/motion_lid code/",
+      "revId": "09d7deb8ad0e9315c3dae1f52e8bd0f51711a453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
