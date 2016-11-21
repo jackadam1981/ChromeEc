@@ -4,6 +4,7 @@
  */
 
 #include "atomic.h"
+#include "battery.h"
 #include "charge_manager.h"
 #include "common.h"
 #include "console.h"
@@ -40,6 +41,11 @@ const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 int pd_is_valid_input_voltage(int mv)
 {
 	return 1;
+}
+
+int pd_is_max_request_allowed(void)
+{
+	return battery_is_present() == BP_YES;
 }
 
 void pd_transition_voltage(int idx)
