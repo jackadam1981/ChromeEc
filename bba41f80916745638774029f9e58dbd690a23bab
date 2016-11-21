@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0dd6c5f_2e89470d",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-21T08:41:15Z",
+      "side": 1,
+      "message": "I think in the EC codebase, the official format is:\nTODO(crosbug.com/p/XXXXX): ...",
+      "range": {
+        "startLine": 140,
+        "startChar": 5,
+        "endLine": 140,
+        "endChar": 21
+      },
+      "revId": "bba41f80916745638774029f9e58dbd690a23bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0dd6c5f_0e868bfb",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-21T08:41:15Z",
+      "side": 1,
+      "message": "I\u0027m not sure I\u0027m getting all the magic about how you are computing this.\nSo in the report, width/height are 12-bit values from 255 to 4095 generated from the 4-bit measurement with a constant multiplier ?\nFine ...",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 54
+      },
+      "revId": "bba41f80916745638774029f9e58dbd690a23bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
