@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b010f8cf_41ac4686",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-21T22:58:33Z",
+      "side": 1,
+      "message": "Talking with Daisuke over lunch: there are no dependency if we accept that we may not be able to wake up machine with a keyboard press until the sensors are powered in S3.\nThese cases are somewhat on the fringe: suspend in tablet mode, rotate the lid to make a clamshell: no resume from keyboard (power button works).",
+      "parentUuid": "b010f8cf_6032ab50",
+      "revId": "09d7deb8ad0e9315c3dae1f52e8bd0f51711a453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b010f8cf_80359f38",
         "filename": "board/reef/board.c",
         "patchSetId": 9
