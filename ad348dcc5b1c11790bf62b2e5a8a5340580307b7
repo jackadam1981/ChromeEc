@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b010f8cf_fb7530eb",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-21T16:22:52Z",
+      "side": 1,
+      "message": "okay, I will add the comments",
+      "parentUuid": "b010f8cf_bb90d82d",
+      "revId": "ad348dcc5b1c11790bf62b2e5a8a5340580307b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b010f8cf_db8b8c00",
         "filename": "board/reef/battery.c",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b010f8cf_5b6f9c15",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-21T16:22:52Z",
+      "side": 1,
+      "message": "okay, I will change it.",
+      "parentUuid": "b010f8cf_db8b8c00",
+      "revId": "ad348dcc5b1c11790bf62b2e5a8a5340580307b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b010f8cf_5ba0bc73",
         "filename": "board/reef/battery.c",
         "patchSetId": 5
@@ -47,6 +83,24 @@
       "writtenOn": "2016-11-21T15:31:39Z",
       "side": 1,
       "message": "Why not just use battery_get_info() here as well?",
+      "revId": "ad348dcc5b1c11790bf62b2e5a8a5340580307b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_5b867ca5",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-21T16:22:52Z",
+      "side": 1,
+      "message": "at line 416 we have checked for index, calling *_info() makes more common. I will change it",
+      "parentUuid": "b010f8cf_5ba0bc73",
       "revId": "ad348dcc5b1c11790bf62b2e5a8a5340580307b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
