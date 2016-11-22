@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b010f8cf_f28b0a00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-22T00:24:13Z",
+      "side": 1,
+      "message": "Commit subject/body incorrect. The interrupt does not enable the gyro, it just allows BMI160 to ping the EC when its fifo is full.\nUse similar content as cl/382677",
+      "revId": "71b0d1b903a785700bd4900224799280dc78cb89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_92d16ee9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-11-22T00:24:13Z",
+      "side": 1,
+      "message": "not related. BUG\u003dnone",
+      "revId": "71b0d1b903a785700bd4900224799280dc78cb89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
