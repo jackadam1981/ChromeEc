@@ -185,9 +185,7 @@
 #define BMM150_I2C_ADDRESS BMM150_ADDR0	/* 8-bit address */
 #define CONFIG_MAG_CALIBRATE
 #define CONFIG_ACCEL_KX022
-#define CONFIG_ALS
 #define CONFIG_ALS_OPT3001
-#define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
 #define CONFIG_BARO_BMP280
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
@@ -253,6 +251,7 @@ enum sensor_id {
 	BASE_GYRO,
 	BASE_MAG,
 	BASE_BARO,
+	LID_ALS,
 };
 
 enum reef_board_version {
