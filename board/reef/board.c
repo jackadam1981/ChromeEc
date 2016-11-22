@@ -7,7 +7,6 @@
 
 #include "adc.h"
 #include "adc_chip.h"
-#include "als.h"
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_ramp.h"
@@ -208,7 +207,7 @@ struct i2c_stress_test i2c_stress_tests[] = {
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_ALS
 	{
 		.port = I2C_PORT_ALS,
-		.addr = OPT3001_I2C_ADDR,
+		.addr = OPT3001_I2C_ADDR1,
 		.i2c_test = &opt3001_i2c_stress_test_dev,
 	},
 #endif
@@ -449,12 +448,6 @@ const struct temp_sensor_t temp_sensors[] = {
 	{"Charger", TEMP_SENSOR_TYPE_BOARD, board_get_charger_temp, 1, 1},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
-
-const struct als_t als = {
-	/* FIXME(dhendrix): verify attenuation_factor */
-	.attenuation_factor = 5,
-	.drv = &opt3001_drv,
-};
 
 const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
 	{"Volume Down", KEYBOARD_BUTTON_VOLUME_DOWN, GPIO_EC_VOLDN_BTN_ODL,
@@ -966,6 +959,43 @@ struct motion_sensor_t motion_sensors[] = {
 			.odr = 0,
 			.ec_rate = 0,
 		 },
+	 },
+	},
+
+	[LID_ALS] = {
+	 .name = "Lid ALS",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_OPT3001,
+	 .type = MOTIONSENSE_TYPE_LIGHT,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &opt3001_drv,
+	 .drv_data = &g_opt3001_data,
+	 .port = I2C_PORT_ALS,
+	 .addr = OPT3001_I2C_ADDR1,
+	 .rot_standard_ref = NULL,
+	 /* Automatic full scale range */
+	 .default_range = OPT3001_RANGE_AUTOMATIC_FULL_SCALE,
+	 .config = {
+		/* AP: by default shutdown all sensors */
+		[SENSOR_CONFIG_AP] = {
+			.odr = 0,
+			.ec_rate = 0,
+		},
+		/* EC does not need ALS in S0 */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 0,
+			.ec_rate = 0,
+		},
+		/* Sensor off in S3/S5 */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 0,
+			.ec_rate = 0,
+		},
+		/* Sensor off in S3/S5 */
+		[SENSOR_CONFIG_EC_S5] = {
+			.odr = 0,
+			.ec_rate = 0,
+		},
 	 },
 	},
 };
