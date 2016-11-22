@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0dd6c5f_911bbc5a",
+        "filename": "chip/stm32/usb_hw.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-22T09:13:34Z",
+      "side": 1,
+      "message": "nit: I think the comment style is:\n/*\n * blabla1\n * blabla2\n */\nrather than\n/* blabla1\n * blabla2\n */",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "0feaed77eb1bddac35a09d623d5780defdcc3896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
