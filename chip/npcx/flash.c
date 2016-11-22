@@ -21,6 +21,9 @@ int addr_prot_start;
 int addr_prot_length;
 uint8_t flag_prot_inconsistent;
 
+uint8_t saved_sr1;
+uint8_t saved_sr2;
+
 #define FLASH_ABORT_TIMEOUT     10000
 
 #ifdef CONFIG_EXTERNAL_STORAGE
@@ -353,8 +356,13 @@ static int flash_check_prot_reg(unsigned int offset, unsigned int bytes)
 	uint8_t sr1 = 0, sr2 = 0;
 	int rv = EC_SUCCESS;
 
-	sr1 = flash_get_status1();
-	sr2 = flash_get_status2();
+	if (all_protected) {
+		sr1 = saved_sr1;
+		sr2 = saved_sr2;
+	} else {
+		sr1 = flash_get_status1();
+		sr2 = flash_get_status2();
+	}
 
 	/* Invalid value */
 	if (offset + bytes > CONFIG_FLASH_SIZE)
@@ -373,11 +381,25 @@ static int flash_check_prot_reg(unsigned int offset, unsigned int bytes)
 
 }
 
+static int flash_uma_lock(int enable)
+{
+	UPDATE_BIT(NPCX_UMA_ECTS, NPCX_UMA_ECTS_UMA_LOCK, enable);
+	return EC_SUCCESS;
+}
+
 static int flash_write_prot_reg(unsigned int offset, unsigned int bytes)
 {
 	int rv;
-	uint8_t sr1 = flash_get_status1();
-	uint8_t sr2 = flash_get_status2();
+	uint8_t sr1;
+	uint8_t sr2;
+
+	if (all_protected) {
+		sr1 = saved_sr1;
+		sr2 = saved_sr2;
+	} else {
+		sr1 = flash_get_status1();
+		sr2 = flash_get_status2();
+	}
 
 	/* Invalid values */
 	if (offset + bytes > CONFIG_FLASH_SIZE)
@@ -388,7 +410,17 @@ static int flash_write_prot_reg(unsigned int offset, unsigned int bytes)
 	if (rv)
 		return rv;
 
-	return flash_set_status_for_prot(sr1, sr2);
+	if (all_protected)
+		flash_uma_lock(0);
+
+	rv = flash_set_status_for_prot(sr1, sr2);
+
+	if (all_protected) {
+		saved_sr1 = flash_get_status1();
+		saved_sr2 = flash_get_status2();
+		flash_uma_lock(1);
+	}
+	return rv;
 }
 
 static void flash_burst_write(unsigned int dest_addr, unsigned int bytes,
@@ -439,12 +471,6 @@ static int flash_program_bytes(uint32_t offset, uint32_t bytes,
 	}
 
 	return rv;
-}
-
-static int flash_uma_lock(int enable)
-{
-	UPDATE_BIT(NPCX_UMA_ECTS, NPCX_UMA_ECTS_UMA_LOCK, enable);
-	return EC_SUCCESS;
 }
 
 /*****************************************************************************/
@@ -628,19 +654,24 @@ uint32_t flash_physical_get_protect_flags(void)
 
 int flash_physical_protect_now(int all)
 {
-	if (all) {
+	if (all && !all_protected) {
 		all_protected = 1;
+
+		/*
+		 * Store SR1 / SR2 for later use since we're about to lock
+		 * out all access (including read access) to these regs.
+		 */
+		saved_sr1 = flash_get_status1();
+		saved_sr2 = flash_get_status2();
+
 		/*
 		 * Set UMA_LOCK bit for locking all UMA transaction.
 		 * But we still can read directly from flash mapping address
 		 */
 		flash_uma_lock(1);
 	} else {
-		all_protected = 0;
-		/* Unlocking all UMA transaction */
-		flash_uma_lock(0);
+		/* TODO: Implement RO "now" protection */
 	}
-	/* TODO: if all, disable SPI interface */
 
 	return EC_SUCCESS;
 }
@@ -650,21 +681,25 @@ int flash_physical_protect_at_boot(enum flash_wp_range range)
 {
 	switch (range) {
 	case FLASH_WP_NONE:
-		/* Unlock UMA transactions */
-		if (IS_BIT_SET(NPCX_UMA_ECTS, NPCX_UMA_ECTS_UMA_LOCK))
-			CLEAR_BIT(NPCX_UMA_ECTS, NPCX_UMA_ECTS_UMA_LOCK);
 		/* Clear protection bits in status register */
 		return flash_set_status_for_prot(0, 0);
 	case FLASH_WP_RO:
-		/* Unlock UMA transactions */
-		if (IS_BIT_SET(NPCX_UMA_ECTS, NPCX_UMA_ECTS_UMA_LOCK))
-			CLEAR_BIT(NPCX_UMA_ECTS, NPCX_UMA_ECTS_UMA_LOCK);
 		/* Protect read-only */
 		return flash_write_prot_reg(
 			    WP_BANK_OFFSET*CONFIG_FLASH_BANK_SIZE,
 			    WP_BANK_COUNT*CONFIG_FLASH_BANK_SIZE);
 	case FLASH_WP_ALL:
-		/* Protect all */
+		if (all_protected)
+			return EC_SUCCESS;
+
+		all_protected = 1;
+		/*
+		 * Store SR1 / SR2 for later use since we're about to lock
+		 * out all access (including read access) to these regs.
+		 */
+		saved_sr1 = flash_get_status1();
+		saved_sr2 = flash_get_status2();
+
 		/*
 		 * Set UMA_LOCK bit for locking all UMA transaction.
 		 * But we still can read directly from flash mapping address
