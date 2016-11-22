@@ -115,6 +115,24 @@
     },
     {
       "key": {
+        "uuid": "507fbce6_aada2fd2",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-22T08:15:10Z",
+      "side": 1,
+      "message": "Added extra keys for Japanese/Korean keyboards, now that Agnes pointed me to the relevant Chrome OS spec. So I think we should be good. Of course, we\u0027ll need to test that properly once we have real keyboards.",
+      "parentUuid": "30ca486f_e007ebc7",
+      "revId": "3a71bd233bb608e49f5e3b43401fdaf884a3ba06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30e168e5_44a8c229",
         "filename": "chip/stm32/usb_hid_keyboard.c",
         "patchSetId": 1
@@ -168,6 +186,24 @@
       "side": 1,
       "message": "Oh, I see, keyboard table in HID spec says \"00 Reserved (no event indicated)\", so I guess setting 0 is fine too.",
       "parentUuid": "70504049_9b116f19",
+      "revId": "3a71bd233bb608e49f5e3b43401fdaf884a3ba06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507fbce6_8add6bcf",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-22T08:15:10Z",
+      "side": 1,
+      "message": "Huh, no, setting minimum to \"1\" does not work. (I only changed the comment in my previous change...)",
+      "parentUuid": "30ca486f_4015ff66",
       "revId": "3a71bd233bb608e49f5e3b43401fdaf884a3ba06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
