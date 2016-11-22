@@ -33,6 +33,24 @@
       "revId": "e9e284670b3a1dab6935db435fe9f273e28af1a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f07c302f_4f659134",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-22T18:28:12Z",
+      "side": 1,
+      "message": "Not exactly, what we want to do here is lock out write access to RO for the current boot session only. In practice I don\u0027t think we ever use this, we either lock out all write access for the current boot sesson (all \u003d 1 here) or lock out write access to RO at boot.",
+      "parentUuid": "b010f8cf_bfd0ba5b",
+      "revId": "e9e284670b3a1dab6935db435fe9f273e28af1a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
