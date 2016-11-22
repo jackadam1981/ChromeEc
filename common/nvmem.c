@@ -19,6 +19,9 @@
 #define NVMEM_ACQUIRE_CACHE_MAX_ATTEMPTS (250 / NVMEM_ACQUIRE_CACHE_SLEEP_MS)
 #define NVMEM_NOT_INITIALIZED (-1)
 
+/* Number of NvMem blocks in a partition */
+#define NVMEM_NUM_BLOCKS (NVMEM_PARTITION_SIZE / NVMEM_BLOCK_SIZE)
+
 /* Table of start addresses for each partition */
 static const uintptr_t nvmem_base_addr[NVMEM_NUM_PARTITIONS] = {
 		CONFIG_FLASH_NVMEM_BASE_A,
@@ -510,12 +513,59 @@ int nvmem_move(uint32_t src_offset, uint32_t dest_offset, uint32_t size,
 	return EC_SUCCESS;
 }
 
+static int nvmem_update(int block_number, int part_select)
+{
+	uintptr_t flash_addr;
+	uintptr_t cache_addr;
+	int change;
+	int partition_offset;
+
+	/* Compute offset within partiion for this block */
+	partition_offset = block_number * NVMEM_BLOCK_SIZE;
+	flash_addr =  nvmem_base_addr[part_select] + partition_offset;
+	cache_addr = (uintptr_t)cache.base_ptr + partition_offset;
+
+	/*
+	 * Compare contents in flash where this block will be written with what
+	 * currently exists.
+	 */
+	change = memcmp((void *)flash_addr, (void *)cache_addr,
+			CONFIG_FLASH_BANK_SIZE);
+
+	/* If the block needs to be changed, then erase & write block */
+	if (change) {
+		int flash_offset;
+
+		flash_offset = nvmem_flash_offset[part_select] +
+			partition_offset;
+		/* Erase block */
+		if (flash_physical_erase(flash_offset,
+				 NVMEM_BLOCK_SIZE)) {
+			CPRINTF("%s:%d\n", __func__, __LINE__);
+			/* Free up scratch buffers */
+			nvmem_release_cache();
+			return EC_ERROR_UNKNOWN;
+		}
+		/* Write block */
+		if (flash_physical_write(flash_offset,
+					 NVMEM_BLOCK_SIZE,
+					 (uint8_t *)cache_addr)) {
+			CPRINTF("%s:%d\n", __func__, __LINE__);
+			/* Free up scratch buffers */
+			nvmem_release_cache();
+			return EC_ERROR_UNKNOWN;
+		}
+	}
+
+	return EC_SUCCESS;
+}
+
 int nvmem_commit(void)
 {
-	int nvmem_offset;
 	int new_active_partition;
 	uint16_t version;
 	struct nvmem_partition *p_part;
+	int i;
 
 	/* Ensure that all writes/moves prior to commit call succeeded */
 	if (nvmem_write_error) {
@@ -525,11 +575,6 @@ int nvmem_commit(void)
 		nvmem_release_cache();
 		return EC_ERROR_UNKNOWN;
 	}
-	/*
-	 * All scratch buffer blocks must be written to physical flash
-	 * memory. In addition, the scratch block buffer index table
-	 * entries must be reset along with the index itself.
-	 */
 
 	/* Update version number */
 	if (cache.base_ptr == NULL) {
@@ -548,28 +593,19 @@ int nvmem_commit(void)
 			  p_part->tag.sha,
 			  NVMEM_SHA_SIZE);
 
-	/* Toggle parition being used (always write to current spare) */
+	/* Tenatively toggle partition number */
 	new_active_partition = nvmem_act_partition ^ 1;
-	/* Point to first block within active partition */
-	nvmem_offset = nvmem_flash_offset[new_active_partition];
-	/* Write partition to NvMem */
+	/*
+	 * For each NvMem block, check if the value to be written is different
+	 * than what currently exists and update if necessary.
+	 */
+	for (i = 0; i < NVMEM_NUM_BLOCKS; i++) {
+		int ret;
 
-	/* Erase partition */
-	if (flash_physical_erase(nvmem_offset,
-				 NVMEM_PARTITION_SIZE)) {
-		CPRINTF("%s:%d\n", __func__, __LINE__);
-		/* Free up scratch buffers */
-		nvmem_release_cache();
-		return EC_ERROR_UNKNOWN;
-	}
-	/* Write partition */
-	if (flash_physical_write(nvmem_offset,
-				 NVMEM_PARTITION_SIZE,
-				 cache.base_ptr)) {
-		CPRINTF("%s:%d\n", __func__, __LINE__);
-		/* Free up scratch buffers */
-		nvmem_release_cache();
-		return EC_ERROR_UNKNOWN;
+		ret = nvmem_update(i, new_active_partition);
+		/* If erase/write failed, then exit with error code */
+		if (ret)
+			return ret;
 	}
 
 	/* Free up scratch buffers */

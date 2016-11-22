@@ -54,6 +54,8 @@
 				 CONFIG_FLASH_NVMEM_OFFSET_B)
 /* Size partition in NvMem */
 #define NVMEM_PARTITION_SIZE CFG_TOP_SIZE
+/* Size of one flash block */
+#define NVMEM_BLOCK_SIZE CONFIG_FLASH_BANK_SIZE
 /* Size in bytes of NvMem area */
 #define CONFIG_FLASH_NVMEM_SIZE (CFG_TOP_SIZE * NVMEM_NUM_PARTITIONS)
 
