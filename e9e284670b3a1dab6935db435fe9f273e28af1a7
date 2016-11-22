@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "507fbce6_c7991e68",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-11-22T02:42:49Z",
+      "side": 1,
+      "message": "How about putting flash_uma_lock operations behind the flash_lock_mapped_storage() in flash_set_status_for_prot()?\n\nIt can prevent flash write operations occur by the other tasks.",
+      "revId": "e9e284670b3a1dab6935db435fe9f273e28af1a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b010f8cf_bfd0ba5b",
         "filename": "chip/npcx/flash.c",
         "patchSetId": 1
