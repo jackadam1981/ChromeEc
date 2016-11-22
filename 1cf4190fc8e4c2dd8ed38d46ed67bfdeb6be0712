@@ -22,6 +22,30 @@
       "revId": "1cf4190fc8e4c2dd8ed38d46ed67bfdeb6be0712",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507fbce6_6a2af791",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-22T10:07:54Z",
+      "side": 1,
+      "message": "Dropped.",
+      "parentUuid": "d0dd6c5f_1108ec06",
+      "range": {
+        "startLine": 320,
+        "startChar": 3,
+        "endLine": 320,
+        "endChar": 52
+      },
+      "revId": "1cf4190fc8e4c2dd8ed38d46ed67bfdeb6be0712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
