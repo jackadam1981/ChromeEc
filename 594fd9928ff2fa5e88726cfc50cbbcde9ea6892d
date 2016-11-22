@@ -22,6 +22,30 @@
       "revId": "594fd9928ff2fa5e88726cfc50cbbcde9ea6892d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507fbce6_cae9233a",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-22T10:08:20Z",
+      "side": 1,
+      "message": "Say, if value is 128: min(4095, 128) \u003d 128.\nIf value is 5000 (too high), MIN(4095, 5000) \u003d 4095.\n\nI think it\u0027s correct?",
+      "parentUuid": "d0dd6c5f_d1f824ce",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 55
+      },
+      "revId": "594fd9928ff2fa5e88726cfc50cbbcde9ea6892d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
