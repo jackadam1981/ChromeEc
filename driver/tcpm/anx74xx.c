@@ -593,6 +593,28 @@ int anx74xx_tcpc_get_fw_version(int port, int *version)
 }
 #endif
 
+static void anx74xx_standby_mode_cc_debounce(int port)
+{
+	int timeout = 0;
+	int cc1 = TYPEC_CC_VOLT_OPEN, cc2 = TYPEC_CC_VOLT_OPEN;
+
+	while (timeout < PD_T_CC_DEBOUNCE) {
+		/*
+		 * When exit standby mode, debouce CC for 100ms or
+		 * until valid CC is detect, whichever comes first.
+		 */
+		anx74xx_tcpm_get_cc(port, &cc1, &cc2);
+		if ((cc1 == TYPEC_CC_VOLT_RA && cc2 == TYPEC_CC_VOLT_OPEN) ||
+		    (cc1 == TYPEC_CC_VOLT_OPEN && cc2 == TYPEC_CC_VOLT_RA)) {
+			/* invalid CC - continue to debounce */
+			timeout = timeout + 10;
+			msleep(10);
+		} else
+			/* valid cc - debounce completed */
+			return;
+	}
+}
+
 static int anx74xx_tcpm_set_vconn(int port, int enable)
 {
 	int reg, rv = EC_SUCCESS;
@@ -905,6 +927,9 @@ int anx74xx_tcpm_init(int port)
 #ifdef CONFIG_USB_PD_TCPC_FW_VERSION
 	board_print_tcpc_fw_version(port);
 #endif
+
+	/* Debounce CC for 100ms or until valid CC is detected */
+	anx74xx_standby_mode_cc_debounce(port);
 
 	return EC_SUCCESS;
 }
