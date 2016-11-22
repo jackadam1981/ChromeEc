@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0dd6c5f_1108ec06",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-22T09:18:33Z",
+      "side": 1,
+      "message": "it\u0027s going to spam your console every 40ms once the host controller is off/suspended ?",
+      "range": {
+        "startLine": 320,
+        "startChar": 3,
+        "endLine": 320,
+        "endChar": 52
+      },
+      "revId": "1cf4190fc8e4c2dd8ed38d46ed67bfdeb6be0712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
