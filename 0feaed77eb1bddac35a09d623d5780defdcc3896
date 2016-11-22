@@ -22,6 +22,30 @@
       "revId": "0feaed77eb1bddac35a09d623d5780defdcc3896",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507fbce6_ea0fc74e",
+        "filename": "chip/stm32/usb_hw.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-11-22T10:07:03Z",
+      "side": 1,
+      "message": "You\u0027re right (but, TBH, there is a mix...). Just a pity that the presubmit hook did not complain. (it does when I do this:\n\n/* blabla1\n * blabla2 */\n\n)\n\nI\u0027ll fix the CLs in this series... at least...",
+      "parentUuid": "d0dd6c5f_911bbc5a",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "0feaed77eb1bddac35a09d623d5780defdcc3896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
