@@ -332,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "507fbce6_e711c205",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-11-22T01:48:49Z",
+      "side": 1,
+      "message": "I got it. Thank you, Mark.",
+      "parentUuid": "b010f8cf_00a88f28",
+      "range": {
+        "startLine": 514,
+        "startChar": 9,
+        "endLine": 514,
+        "endChar": 13
+      },
+      "revId": "5aa1ecd6e4217c468bd43c017768d84318e5ecb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8fc21c7_8edb9cfd",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 3
