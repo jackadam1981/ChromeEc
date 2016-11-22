@@ -147,6 +147,30 @@
       "revId": "b74b8bbe1f64ee4f416f033cfd741d1d2b54c459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b010f8cf_1f17c62f",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-22T02:43:59Z",
+      "side": 1,
+      "message": "As we are supporting different batteries we had to deviate from the original code.\n1. board_get_battery_type() \u003d\u003d BATTERY_TYPE_COUNT\nis equivalent of rv.\n2. bd9995x_get_battery_voltage() \u003e\u003d board_get_batt_params()-\u003ebatt_info.voltage_min\nWe want to differentiate the shipmode battery and deeply discharged battery\n3. board_get_batt_params()-\u003ebatt_init() is equivalent of batt_status \u0026 STATUS_INITIALIZED",
+      "parentUuid": "b010f8cf_c1d39667",
+      "range": {
+        "startLine": 430,
+        "startChar": 7,
+        "endLine": 430,
+        "endChar": 55
+      },
+      "revId": "b74b8bbe1f64ee4f416f033cfd741d1d2b54c459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
