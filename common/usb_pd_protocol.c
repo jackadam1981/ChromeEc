@@ -2783,9 +2783,17 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 				  drp_state != PD_DRP_FORCE_SINK))
 				/* SRC allowed unless ForceSNK or Toggle Off */
 				next_state = PD_STATE_SRC_DISCONNECTED;
-			else
-				/* Anything else, keep toggling */
-				next_state = PD_STATE_DRP_AUTO_TOGGLE;
+			else {
+				/*
+				 * The CC values are invalid, give enough time
+				 * to do CC debounce
+				 */
+				set_state_timeout(port,
+						  get_time().val +
+						  PD_T_CC_DEBOUNCE,
+						  PD_STATE_DRP_AUTO_TOGGLE);
+				break;
+			}
 
 			if (next_state == PD_STATE_SNK_DISCONNECTED) {
 				tcpm_set_cc(port, TYPEC_CC_RD);
