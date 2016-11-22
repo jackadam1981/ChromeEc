@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50197c0d_fa13e5d1",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-11-22T19:28:50Z",
+      "side": 1,
+      "message": "This code is common with flash_physical_protect_now().  Suggest moving it to a static protect_all_now() function.",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 702,
+        "endChar": 27
+      },
+      "revId": "2ca575fe468e83e9bf41d0f210a9203fcfaace24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
