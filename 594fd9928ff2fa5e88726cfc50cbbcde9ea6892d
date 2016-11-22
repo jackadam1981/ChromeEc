@@ -46,6 +46,30 @@
       "revId": "594fd9928ff2fa5e88726cfc50cbbcde9ea6892d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0dd6c5f_91617cbd",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-22T10:14:05Z",
+      "side": 1,
+      "message": "Yes, my brain derailed...",
+      "parentUuid": "507fbce6_cae9233a",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 55
+      },
+      "revId": "594fd9928ff2fa5e88726cfc50cbbcde9ea6892d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
