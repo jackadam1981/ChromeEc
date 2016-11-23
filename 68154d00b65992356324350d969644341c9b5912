@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad125f45_a333a8b1",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-23T23:17:21Z",
+      "side": 1,
+      "message": "Does skipping these cause any battery drainage?",
+      "range": {
+        "startLine": 865,
+        "startChar": 3,
+        "endLine": 866,
+        "endChar": 30
+      },
+      "revId": "68154d00b65992356324350d969644341c9b5912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad125f45_030a54d2",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-11-23T23:17:21Z",
+      "side": 1,
+      "message": "Could you mention bd9995x here as an example?",
+      "revId": "68154d00b65992356324350d969644341c9b5912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
