@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad125f45_60bd869a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2794,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-23T20:52:29Z",
+      "side": 1,
+      "message": "I think you may need to use set_state_timeout() to do this on a per-port basis. So for example:\nset_state_timeout(port, PD_T_CC_DEBOUNCE, PD_STATE_DRP_AUTO_TOGGLE);\n\nThe timeout is processed below the case statement and will effectively do the same thing as what you have here.",
+      "range": {
+        "startLine": 2793,
+        "startChar": 0,
+        "endLine": 2794,
+        "endChar": 32
+      },
+      "revId": "e73015dd334f45835e1756c80928e61bc0ccd23d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
