@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "702a0062_ae7e4356",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-11-24T04:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50197c0d_116ebcde",
+      "range": {
+        "startLine": 1001,
+        "startChar": 4,
+        "endLine": 1001,
+        "endChar": 29
+      },
+      "revId": "1d661124c6aa6d8f21ad41611f9c45a4e0b63188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50197c0d_31e2e015",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-22T23:07:55Z",
       "side": 1,
       "message": "The units are different here, not just the scaling factor, eg:\n\n\"expressed in either capacity (mAh) or power (10mWh) depending on the setting of the\nBatteryMode()\u0027s CAPACITY_MODE bit (see BatteryMode())\"\n\nSo, we need to divide out the voltage as well.",
+      "range": {
+        "startLine": 1046,
+        "startChar": 3,
+        "endLine": 1046,
+        "endChar": 13
+      },
+      "revId": "1d661124c6aa6d8f21ad41611f9c45a4e0b63188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_ce73778d",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-11-24T04:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50197c0d_31e2e015",
       "range": {
         "startLine": 1046,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "702a0062_ee783b6c",
+        "filename": "common/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-11-24T04:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50197c0d_91d08c5c",
+      "range": {
+        "startLine": 617,
+        "startChar": 3,
+        "endLine": 617,
+        "endChar": 27
+      },
+      "revId": "1d661124c6aa6d8f21ad41611f9c45a4e0b63188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50197c0d_1158fc16",
         "filename": "include/i2c.h",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2016-11-22T23:07:55Z",
       "side": 1,
       "message": "This can go in the .c file (hopefully new virtual_battery.c). And, we should name it something_state, eg. batt_cmd_parse_state.",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 19
+      },
+      "revId": "1d661124c6aa6d8f21ad41611f9c45a4e0b63188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_0e8e6f4f",
+        "filename": "include/i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-11-24T04:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50197c0d_1158fc16",
       "range": {
         "startLine": 39,
         "startChar": 5,
