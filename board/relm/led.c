@@ -11,6 +11,7 @@
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "led_common.h"
 #include "pwm.h"
 #include "registers.h"
@@ -21,6 +22,8 @@
 
 #define BAT_LED_ON 0
 #define BAT_LED_OFF 1
+
+#define FULL_BATTERY_PERMILLAGE 937
 
 static int led_debug;
 
@@ -88,8 +91,16 @@ static void led_tick(void)
 {
 	static unsigned ticks;
 	int chstate = charge_get_state();
+	int remaining_capacity;
+	int full_charge_capacity;
+	int permillage;
 
 	ticks++;
+
+	remaining_capacity = *(int *)host_get_memmap(EC_MEMMAP_BATT_CAP);
+	full_charge_capacity = *(int *)host_get_memmap(EC_MEMMAP_BATT_LFCC);
+	permillage = !full_charge_capacity ? 0 :
+		(1000 * remaining_capacity) / full_charge_capacity;
 
 	if (led_debug)
 		return;
@@ -113,7 +124,8 @@ static void led_tick(void)
 
 	/* If the system is charging, solid orange */
 	if (chstate == PWR_STATE_CHARGE) {
-		bat_led_set_color(LED_AMBER);
+		bat_led_set_color(permillage <
+			FULL_BATTERY_PERMILLAGE ? LED_AMBER : LED_GREEN);
 		return;
 	}
 
