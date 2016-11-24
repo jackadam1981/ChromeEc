@@ -65,6 +65,8 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
+#define CONFIG_COMMON_RUNTIME
+
 #ifndef __ASSEMBLER__
 
 void sniffer_init(void);
