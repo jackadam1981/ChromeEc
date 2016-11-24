@@ -113,7 +113,7 @@ static void led_tick(void)
 
 	/* If the system is charging, solid orange */
 	if (chstate == PWR_STATE_CHARGE) {
-		bat_led_set_color(LED_AMBER);
+		bat_led_set_color(charge_get_percent() < 97 ? LED_AMBER : LED_GREEN);
 		return;
 	}
 
