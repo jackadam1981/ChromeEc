@@ -69,6 +69,24 @@
       "revId": "33be5de96002cd15f76685497f68c90d574c7c11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad125f45_c9e23d15",
+        "filename": "board/pyro/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-24T00:36:41Z",
+      "side": 1,
+      "message": "Shouldn\u0027t your input be on [0, brightness_range[LED]]? So, the param should be \"..., brightness_range[EC_LED_COLOR_RED] - brightness[EC_LED_COLOR_RED]); ?",
+      "parentUuid": "10f2a418_5db47bb0",
+      "revId": "33be5de96002cd15f76685497f68c90d574c7c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
