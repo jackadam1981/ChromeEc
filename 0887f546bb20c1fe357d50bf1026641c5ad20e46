@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d5ba33f_67f5b2d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2016-11-25T01:24:17Z",
+      "side": 1,
+      "message": "Tifa is using Relm board.",
+      "parentUuid": "d041ec2c_ce746340",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "0887f546bb20c1fe357d50bf1026641c5ad20e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d041ec2c_ee791f37",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -105,6 +129,30 @@
       "writtenOn": "2016-11-24T14:39:36Z",
       "side": 1,
       "message": "you can probably use charge_get_percent() rather than this mess.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 53
+      },
+      "revId": "0887f546bb20c1fe357d50bf1026641c5ad20e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d5ba33f_870666fb",
+        "filename": "board/relm/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2016-11-25T01:24:17Z",
+      "side": 1,
+      "message": "For led behavior same as UI display percentage.\nWe use this calculation as this CL https://chromium-review.googlesource.com/#/c/227416/.\nThe percentage of charge_get_percent() might not close enough to US display percentage.",
+      "parentUuid": "d041ec2c_ce8b8300",
       "range": {
         "startLine": 100,
         "startChar": 0,
