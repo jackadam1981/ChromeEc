@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad125f45_28a40989",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-28T23:28:10Z",
+      "side": 1,
+      "message": "this is so easy to get out of sync for many reasons.\n\nHow about board file exports a pointer to this number, or a an API to query the size and read/write the appropriate nvram space.\n\nAt least please open a bug to track this.",
+      "range": {
+        "startLine": 17,
+        "startChar": 31,
+        "endLine": 17,
+        "endChar": 59
+      },
+      "revId": "32ab069686daf6c4df8b599c66c8bbd8073fa8b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad125f45_08cf0542",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-28T23:28:10Z",
+      "side": 1,
+      "message": "could there be at least a mechanism to avoid invoking this concurrently?",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 54
+      },
+      "revId": "32ab069686daf6c4df8b599c66c8bbd8073fa8b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad125f45_a8a7f959",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-28T23:28:10Z",
+      "side": 1,
+      "message": "why would this be done in case match was not found? and if this is not necessary - why just not return 0 in lines 68 and 72?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 15
+      },
+      "revId": "32ab069686daf6c4df8b599c66c8bbd8073fa8b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad125f45_0814a5f5",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-11-28T23:28:10Z",
+      "side": 1,
+      "message": "this should be defined static. Or if it is necessary to make it visible later - add a prototype in a .h file and move the description there.\n\noverloading vidx to be both pointer to the found value and to the end of storage in case nothing is found is hard to follow, especially when it is passed back and forth over layers of code.\n\nWhy not to have a static variable pointing to the end of the buffer?",
+      "revId": "32ab069686daf6c4df8b599c66c8bbd8073fa8b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
