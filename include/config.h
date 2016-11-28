@@ -976,6 +976,11 @@
 /* Size in bytes of NvMem area */
 #undef CONFIG_FLASH_NVMEM_SIZE
 
+/* ASCII key=val variable support. */
+#undef CONFIG_FLASH_NVMEM_VARS
+/* Which enum nvmem_user buffer to use for persistent variable storage */
+#undef CONFIG_FLASH_NVMEM_VARS_USER
+
 /*****************************************************************************/
 
 /* Include a flashmap in the compiled firmware image */
