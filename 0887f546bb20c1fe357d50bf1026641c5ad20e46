@@ -162,6 +162,30 @@
       "revId": "0887f546bb20c1fe357d50bf1026641c5ad20e46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d041ec2c_74089e08",
+        "filename": "board/relm/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-28T16:00:38Z",
+      "side": 1,
+      "message": "I know that this questionable chunk of code has already been copied a dozen of times.\n\nGiven the LED has only 2 states, the \"not close enough\" is kind of a dubious argument.\nIf your concern is deciding whether to display full or not, charge_get_percent() actually checks whether the battery has reached the full state (and force to 100% in this case). In which particular are you seeing diverging values ?",
+      "parentUuid": "4d5ba33f_870666fb",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 53
+      },
+      "revId": "0887f546bb20c1fe357d50bf1026641c5ad20e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
