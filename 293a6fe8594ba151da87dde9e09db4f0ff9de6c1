@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad125f45_5ad94a40",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-28T18:54:35Z",
+      "side": 1,
+      "message": "The datasheet has a different recommendation here: ... during heavy loading condition or when there is expected transient... the EC shall set ... (forced PWM mode). During light-load cnodition, the EC shall set ... (PFM).",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 57
+      },
+      "revId": "293a6fe8594ba151da87dde9e09db4f0ff9de6c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
