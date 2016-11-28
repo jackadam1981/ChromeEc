@@ -17,6 +17,10 @@
 #include "usb_pd_tcpc.h"
 #include "util.h"
 
+#define PACKET_IS_GOOD_CRC(head) (PD_HEADER_TYPE(head) == PD_CTRL_GOOD_CRC && \
+				 PD_HEADER_CNT(head) == 0)
+#define HEADER_INVALID 0
+
 static struct fusb302_chip_state {
 	int cc_polarity;
 	int vconn_enabled;
@@ -25,16 +29,21 @@ static struct fusb302_chip_state {
 	int rx_enable;
 	uint8_t mdac_vnc;
 	uint8_t mdac_rd;
+	/* Buffer one PD header + packet per port */
+	uint16_t saved_header;
+	uint8_t saved_packet[32];
 } state[CONFIG_USB_PD_PORT_COUNT];
 
 /* bring the FUSB302 out of reset after Hard Reset signaling */
 static void fusb302_pd_reset(int port)
 {
+	state[port].saved_header = HEADER_INVALID;
 	tcpc_write(port, TCPC_REG_RESET, TCPC_REG_RESET_PD_RESET);
 }
 
 static void fusb302_flush_rx_fifo(int port)
 {
+	state[port].saved_header = HEADER_INVALID;
 	/*
 	 * other bits in the register _should_ be 0
 	 * until the day we support other SOP* types...
@@ -658,27 +667,16 @@ static int fusb302_tcpm_set_rx_enable(int port, int enable)
 	return 0;
 }
 
-static int fusb302_tcpm_get_message(int port, uint32_t *payload, int *head)
+/* Read a packet from the HW FIFO. Port must be locked by caller. */
+static int fusb302_get_packet(int port, uint16_t *head, uint8_t *buf)
 {
-	/*
-	 * this is the buffer that will get the burst-read data
-	 * from the fusb302.
-	 *
-	 * it's re-used in a couple different spots, the worst of which
-	 * is the PD packet (not header) and CRC.
-	 * maximum size necessary = 28 + 4 = 32
-	 */
-	uint8_t buf[32];
 	int rv = 0;
 	int len;
-
-	/* NOTE: Assuming enough memory has been allocated for payload. */
 
 	/*
 	 * PART 1 OF BURST READ: Write in register address.
 	 * Issue a START, no STOP.
 	 */
-	tcpc_lock(port, 1);
 	buf[0] = TCPC_REG_FIFOS;
 	rv |= tcpc_xfer(port, buf, 1, 0, 0, I2C_XFER_START);
 
@@ -704,10 +702,57 @@ static int fusb302_tcpm_get_message(int port, uint32_t *payload, int *head)
 	 */
 	rv |= tcpc_xfer(port, 0, 0, buf, len+4, I2C_XFER_STOP);
 
-	tcpc_lock(port, 0);
+	return rv;
+}
+
+/* Copy the first non-GOOD_CRC packet received */
+static int fusb302_tcpm_get_message(int port, uint32_t *payload, int *head)
+{
+	uint16_t *saved_header = &state[port].saved_header;
+	uint8_t *saved_packet = state[port].saved_packet;
+	int rv = 0;
+
+	tcpc_lock(port, 1);
+
+	/* Read a non-GOOD_CRC packet from the HW FIFO */
+	while (rv == EC_SUCCESS &&
+	       (*saved_header == HEADER_INVALID ||
+		PACKET_IS_GOOD_CRC(*saved_header)))
+		rv = fusb302_get_packet(port, saved_header, saved_packet);
 
 	/* return the data */
-	memcpy(payload, buf, len);
+	if (rv)
+		*head = 0;
+	else {
+		*head = *saved_header;
+		memcpy(payload, saved_packet, get_num_bytes(*head) - 2);
+	}
+	*saved_header = HEADER_INVALID;
+
+	tcpc_lock(port, 0);
+	return rv;
+}
+
+/* Check if a GOOD_CRC packet is at the top of our FIFO and remove it */
+static int fusb302_pop_goodcrc(int port)
+{
+	uint16_t *saved_header = &state[port].saved_header;
+	uint8_t *saved_packet = state[port].saved_packet;
+	int rv = 0;
+
+	tcpc_lock(port, 1);
+
+	/* If we haven't buffered a packet, read one from HW FIFO */
+	if (*saved_header == HEADER_INVALID)
+		rv = fusb302_get_packet(port, saved_header, saved_packet);
+
+	/* Drop the packet if it's GOOD_CRC, otherwise hold onto it for later */
+	if (rv || PACKET_IS_GOOD_CRC(*saved_header))
+		*saved_header = HEADER_INVALID;
+	else if (!rv)
+		/* Tell TCPM there is a meaningful packet pending */
+		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_RX, 0);
+	tcpc_lock(port, 0);
 
 	return rv;
 }
@@ -800,8 +845,6 @@ void fusb302_tcpc_alert(int port)
 	int interrupt;
 	int interrupta;
 	int interruptb;
-	int head;
-	uint32_t payload[7];
 
 	/* reading interrupt registers clears them */
 
@@ -831,7 +874,7 @@ void fusb302_tcpc_alert(int port)
 		 * Sent packet was acknowledged with a GoodCRC,
 		 * so remove GoodCRC message from FIFO.
 		 */
-		tcpm_get_message(port, payload, &head);
+		fusb302_pop_goodcrc(port);
 
 		pd_transmit_complete(port, TCPC_TX_COMPLETE_SUCCESS);
 	}
