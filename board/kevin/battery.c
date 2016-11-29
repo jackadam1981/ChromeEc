@@ -62,6 +62,8 @@ int board_cut_off_battery(void)
 	return rv ? EC_RES_ERROR : EC_RES_SUCCESS;
 }
 
+static int not_disconnected;
+
 enum battery_disconnect_state battery_get_disconnect_state(void)
 {
 	uint8_t data[6];
@@ -73,7 +75,6 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 	 * This assumes the battery will not go to disconnect state during
 	 * runtime.
 	 */
-	static int not_disconnected;
 
 	if (not_disconnected)
 		return BATTERY_NOT_DISCONNECTED;
@@ -131,7 +132,8 @@ int charger_profile_override(struct charge_state_data *curr)
 			curr->state = ST_IDLE;
 			now_discharging = 0;
 		    /* Don't start charging if battery is nearly full */
-		} else if (curr->batt.status & STATUS_FULLY_CHARGED) {
+		} else if ((curr->batt.status & STATUS_FULLY_CHARGED) &&
+			    not_disconnected) {
 			curr->requested_current = curr->requested_voltage = 0;
 			curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
 			curr->state = ST_DISCHARGE;
