@@ -123,6 +123,24 @@
       "revId": "33be5de96002cd15f76685497f68c90d574c7c11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d5ba33f_4a4ab3c6",
+        "filename": "board/pyro/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1117540
+      },
+      "writtenOn": "2016-11-29T00:59:32Z",
+      "side": 1,
+      "message": "Sorry, I provide wrong the info. The correct as blow:\nUse command \"ectool led power red\": the value of brightness[EC_LED_COLOR_RED] is 0\nUse command \"ectool led power off\": the value of brightness[EC_LED_COLOR_RED] is ff\n\nThe LED light behavior is opposite to brightness because the Hardware circuit, so we set high the led will turn off, and er set low the led will turn on.",
+      "parentUuid": "ad125f45_81c3f999",
+      "revId": "33be5de96002cd15f76685497f68c90d574c7c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
