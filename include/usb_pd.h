@@ -160,6 +160,7 @@ enum pd_rx_errors {
 #define PD_T_VCONN_SOURCE_ON  (100*MSEC) /* 100ms */
 #define PD_T_TRY_SRC          (125*MSEC) /* Max time for Try.SRC state */
 #define PD_T_TRY_WAIT         (600*MSEC) /* Max time for TryWait.SNK state */
+#define PD_T_SINK_REQUEST	(100*MSEC) /* Wait 100ms before next request */
 
 /* number of edges and time window to detect CC line is not idle */
 #define PD_RX_TRANSITION_COUNT  3
@@ -707,6 +708,7 @@ enum pd_states {
 #define PD_FLAGS_TRY_SRC           (1 << 13)/* Try.SRC states are active */
 #define PD_FLAGS_PARTNER_USB_COMM  (1 << 14)/* port partner is USB comms */
 #define PD_FLAGS_UPDATE_SRC_CAPS   (1 << 15)/* send new source capabilities */
+#define PD_FLAGS_SNK_REQUEST_TIMEOUT (1 << 16)/* sink must resend request */
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
 					   PD_FLAGS_PARTNER_DR_DATA | \
@@ -721,7 +723,8 @@ enum pd_states {
 					   PD_FLAGS_VCONN_ON | \
 					   PD_FLAGS_TRY_SRC | \
 					   PD_FLAGS_PARTNER_USB_COMM | \
-					   PD_FLAGS_UPDATE_SRC_CAPS)
+					   PD_FLAGS_UPDATE_SRC_CAPS | \
+					   PD_FLAGS_SNK_REQUEST_TIMEOUT)
 
 
 enum pd_cc_states {

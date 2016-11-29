@@ -114,7 +114,7 @@ static struct pd_protocol {
 	/* current port data role (DFP or UFP) */
 	uint8_t data_role;
 	/* port flags, see PD_FLAGS_* */
-	uint16_t flags;
+	uint32_t flags;
 	/* 3-bit rolling message ID counter */
 	uint8_t msg_id;
 	/* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
@@ -958,9 +958,28 @@ static void handle_ctrl_request(int port, uint16_t head,
 			set_state(port, PD_STATE_SRC_READY);
 		else if (pd[port].task_state == PD_STATE_SNK_SWAP_INIT)
 			set_state(port, PD_STATE_SNK_READY);
-		else if (pd[port].task_state == PD_STATE_SNK_REQUESTED)
-			/* no explicit contract */
-			set_state(port, PD_STATE_SNK_READY);
+		else if (pd[port].task_state == PD_STATE_SNK_REQUESTED) {
+			if (pd[port].flags & PD_FLAGS_EXPLICIT_CONTRACT) {
+				/* We have an explicit contract */
+				if (type == PD_CTRL_WAIT) {
+					/*
+					 * Send request again after
+					 * PD_T_SINK_REQUEST ms.
+					 */
+					pd[port].flags |=
+						PD_FLAGS_SNK_REQUEST_TIMEOUT;
+					set_state_timeout(port, get_time().val +
+							PD_T_SINK_REQUEST,
+							PD_STATE_SNK_READY);
+				} else {
+					/* The request was rejected */
+					set_state(port, PD_STATE_SNK_READY);
+				}
+			} else {
+				/* No explicit contract */
+				set_state(port, PD_STATE_SNK_DISCOVERY);
+			}
+		}
 #endif
 		break;
 	case PD_CTRL_ACCEPT:
@@ -2470,8 +2489,16 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 				break;
 
 			/* Check for new power to request */
-			if (pd[port].new_power_request) {
-				if (pd_send_request_msg(port, 0) != EC_SUCCESS)
+			 if (pd[port].new_power_request ||
+					(pd[port].flags &
+						PD_FLAGS_SNK_REQUEST_TIMEOUT)) {
+				int asr = !!(pd[port].flags &
+						PD_FLAGS_SNK_REQUEST_TIMEOUT);
+				/* Clear snk request timeout bit, if set */
+				pd[port].flags &= ~PD_FLAGS_SNK_REQUEST_TIMEOUT;
+
+				if (pd_send_request_msg(port, asr) !=
+								EC_SUCCESS)
 					set_state(port, PD_STATE_SOFT_RESET);
 				break;
 			}
