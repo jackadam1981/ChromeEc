@@ -267,6 +267,8 @@ int charger_profile_override(struct charge_state_data *curr)
 	static int prev_batt_voltage;
 	int disch_on_ac;
 
+	if (board_battery_type != BATTERY_SMP_COS4870)
+		return 0;
 	/*
 	 * In light load (<450mA being withdrawn from VSYS) the DCDC of the
 	 * charger operates intermittently i.e. DCDC switches continuously
