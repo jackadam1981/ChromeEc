@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "702a0062_a06f2014",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2016-11-29T21:09:31Z",
+      "side": 1,
+      "message": "There\u0027s still a risk that there\u0027s a timeout: if you get a long running interrupt just before this if condition.\n\nMoving it just before the busy loop covers a lot more but not all the cases.\n\nWhen you determine you\u0027re timed out(inside this if), you should probably do one more iteration through the loop(so... check for errors, check for desired mask, delta\u003d, ...)",
+      "revId": "7898731a091d1782d44e5e6ea28084c6b50b8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
