@@ -47,13 +47,15 @@ void DCRYPTO_HMAC_SHA256_init(LITE_HMAC_CTX *ctx, const void *key,
 const uint8_t *DCRYPTO_HMAC_final(LITE_HMAC_CTX *ctx)
 {
 	uint8_t digest[SHA_DIGEST_MAX_BYTES];  /* upto SHA2 */
+	size_t digest_size = HASH_size(&ctx->hash);
 
-	memcpy(digest, HASH_final(&ctx->hash),
-		(HASH_size(&ctx->hash) <= sizeof(digest) ?
-			HASH_size(&ctx->hash) : sizeof(digest)));
+	if (digest_size > sizeof(digest))
+		digest_size = sizeof(digest);
+
+	memcpy(digest, HASH_final(&ctx->hash), digest_size);
 	DCRYPTO_SHA256_init(&ctx->hash, 0);
 	HASH_update(&ctx->hash, ctx->opad, sizeof(ctx->opad));
-	HASH_update(&ctx->hash, digest, HASH_size(&ctx->hash));
+	HASH_update(&ctx->hash, digest, digest_size);
 	memset(&ctx->opad[0], 0, sizeof(ctx->opad));  /* wipe key */
 	return HASH_final(&ctx->hash);
 }
