@@ -22,6 +22,30 @@
       "revId": "293a6fe8594ba151da87dde9e09db4f0ff9de6c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d5ba33f_2d74393e",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1167184
+      },
+      "writtenOn": "2016-11-29T01:50:56Z",
+      "side": 1,
+      "message": "we need always keep force PWM to avoid abnormal power state cause by V1.8A signal. That is after run \"apshutdown\", will power up automatically. Relevant analyses is referred to in issue 59048.",
+      "parentUuid": "ad125f45_5ad94a40",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 57
+      },
+      "revId": "293a6fe8594ba151da87dde9e09db4f0ff9de6c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
