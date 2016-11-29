@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "702a0062_60f288ba",
+        "filename": "board/elm/led_hana.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-11-29T21:53:53Z",
+      "side": 1,
+      "message": "Rename it as hana_led_set_power()",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 35
+      },
+      "revId": "2b286671faf8beed4830d29163b9c006cfc63136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_80ef7ccd",
+        "filename": "board/elm/led_hana.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-11-29T21:53:53Z",
+      "side": 1,
+      "message": "Similar to L98",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 37
+      },
+      "revId": "2b286671faf8beed4830d29163b9c006cfc63136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_20cfb06e",
+        "filename": "board/elm/led_hana.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-11-29T21:53:53Z",
+      "side": 1,
+      "message": "hana_led_set_power()",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 22
+      },
+      "revId": "2b286671faf8beed4830d29163b9c006cfc63136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_40d4a400",
+        "filename": "board/elm/led_hana.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-11-29T21:53:53Z",
+      "side": 1,
+      "message": "Similar to L195",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 24
+      },
+      "revId": "2b286671faf8beed4830d29163b9c006cfc63136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
