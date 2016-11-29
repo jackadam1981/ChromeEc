@@ -22,6 +22,30 @@
       "revId": "2ec2d66d09c86cacf2c87add481a64916a6b0c03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_ee13c9d1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2795,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-29T23:05:40Z",
+      "side": 1,
+      "message": "Do you mean that the change from patch set 1 -\u003e 2 causes port 0 to not go into low power mode? Or that adding this delay in general causes that issue?\n\nI think that might be dealing with two separate issues.  For this patch we just want to debounce CC and re-enter this state, right? Then one of the above cases will be true and next_state will become PD_STATE_SNK_DISCONNECTED or PD_STATE_SRC_DISCONNECTED.\n\nTo address the issue you mention, perhaps we need to check if drp_state is PD_DRP_TOGGLE_OFF or PD_DRP_FORCE_SINK in both  PD_STATE_SNK_DISCONNECTED and PD_STATE_SRC_DISCONNECTED.\n\nLMK if that makes sense or if I am misunderstanding.",
+      "parentUuid": "702a0062_00c46c9f",
+      "range": {
+        "startLine": 2787,
+        "startChar": 0,
+        "endLine": 2795,
+        "endChar": 10
+      },
+      "revId": "2ec2d66d09c86cacf2c87add481a64916a6b0c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
