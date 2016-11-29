@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d041ec2c_1f385330",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-29T09:40:38Z",
+      "side": 1,
+      "message": "what if we simplify this a bit and put here just:\ntask_set_event(,PD_EVENT_RX, 0);\n\nwe can get rid of the pop_goodcrc() function and the whole caching of a possible non-GOODCRC packet ?\nbut still get the same behavior if get_message discards the GOODCRC packets ?",
+      "range": {
+        "startLine": 877,
+        "startChar": 2,
+        "endLine": 877,
+        "endChar": 28
+      },
+      "revId": "3d83fbbc1eed5570c97a03d513cd293c9f991fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
