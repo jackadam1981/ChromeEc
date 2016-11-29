@@ -16,6 +16,24 @@
       "revId": "9e2b78c8a5cc14c7092e369d44af43d114ec73fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_03255dbf",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-29T14:57:55Z",
+      "side": 1,
+      "message": "Yes, please add a comment indicating why this bail out is added.",
+      "parentUuid": "702a0062_83d86ddc",
+      "revId": "9e2b78c8a5cc14c7092e369d44af43d114ec73fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
