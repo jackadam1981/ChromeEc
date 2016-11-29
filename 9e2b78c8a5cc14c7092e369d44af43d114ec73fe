@@ -34,6 +34,23 @@
       "revId": "9e2b78c8a5cc14c7092e369d44af43d114ec73fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_5e072a81",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-29T17:00:02Z",
+      "side": 1,
+      "message": "Below change seems to be a common fix for all profile override users.\n\ndiff --git a/common/charge_state_v2.c b/common/charge_state_v2.c\nindex dceec8d..7b9737e 100644\n--- a/common/charge_state_v2.c\n+++ b/common/charge_state_v2.c\n@@ -835,9 +835,11 @@ void charger_task(void)\n \n wait_for_it:\n #ifdef CONFIG_CHARGER_PROFILE_OVERRIDE\n-               sleep_usec \u003d charger_profile_override(\u0026curr);\n-               if (sleep_usec \u003c 0)\n-                       problem(PR_CUSTOM, sleep_usec);\n+               if (chg_ctl_mode \u003d\u003d CHARGE_CONTROL_NORMAL) {\n+                       sleep_usec \u003d charger_profile_override(\u0026curr);\n+                       if (sleep_usec \u003c 0)\n+                               problem(PR_CUSTOM, sleep_usec);\n+               }\n #endif\n \n                /* Keep the AP informed */",
+      "revId": "9e2b78c8a5cc14c7092e369d44af43d114ec73fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
