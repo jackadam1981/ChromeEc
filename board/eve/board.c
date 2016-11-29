@@ -71,6 +71,27 @@ static void tcpc_alert_event(enum gpio_signal signal)
 #endif
 }
 
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+static void cable_detect_handler(void)
+{
+	/* Reset the correct TCPC port if cable detect is asserted */
+	if (gpio_get_level(GPIO_USB_C0_CABLE_DET) &&
+	    !gpio_get_level(GPIO_USB_C0_PD_RST_L))
+		task_set_event(TASK_ID_PD_C0, PD_EVENT_TCPC_RESET, 0);
+	else if (gpio_get_level(GPIO_USB_C1_CABLE_DET) &&
+		 !gpio_get_level(GPIO_USB_C1_PD_RST_L))
+		task_set_event(TASK_ID_PD_C1, PD_EVENT_TCPC_RESET, 0);
+}
+DECLARE_DEFERRED(cable_detect_handler);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, cable_detect_handler, HOOK_PRIO_LAST);
+
+void cable_detect_interrupt(enum gpio_signal signal)
+{
+	/* 2ms debounce on cable detection */
+	hook_call_deferred(&cable_detect_handler_data, (2 * MSEC));
+}
+#endif
+
 /*
  * enable_input_devices() is called by the tablet_mode ISR, but changes the
  * state of GPIOs, so its definition must reside after including gpio_list.
@@ -208,6 +229,11 @@ void board_tcpc_init(void)
 	/* Enable TCPC interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
+
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	gpio_enable_interrupt(GPIO_USB_C0_CABLE_DET);
+	gpio_enable_interrupt(GPIO_USB_C1_CABLE_DET);
+#endif
 
 	/*
 	 * Initialize HPD to low; after sysjump SOC needs to see
