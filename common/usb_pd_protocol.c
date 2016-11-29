@@ -114,7 +114,7 @@ static struct pd_protocol {
 	/* current port data role (DFP or UFP) */
 	uint8_t data_role;
 	/* port flags, see PD_FLAGS_* */
-	uint16_t flags;
+	uint32_t flags;
 	/* 3-bit rolling message ID counter */
 	uint8_t msg_id;
 	/* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
@@ -958,9 +958,53 @@ static void handle_ctrl_request(int port, uint16_t head,
 			set_state(port, PD_STATE_SRC_READY);
 		else if (pd[port].task_state == PD_STATE_SNK_SWAP_INIT)
 			set_state(port, PD_STATE_SNK_READY);
-		else if (pd[port].task_state == PD_STATE_SNK_REQUESTED)
-			/* no explicit contract */
-			set_state(port, PD_STATE_SNK_READY);
+		else if (pd[port].task_state == PD_STATE_SNK_REQUESTED) {
+			/*
+			 * Explicit Contract in place
+			 *
+			 *  On reception of a WAIT message, transition to
+			 *  PD_STATE_SNK_READY after PD_T_SINK_REQUEST ms to
+			 *  send another reqest.
+			 *
+			 *  On reception of a REJECT messag, transition to
+			 *  PD_STATE_SNK_READY but don't resend the request.
+			 *
+			 * NO Explicit Contract in place
+			 *
+			 *  On reception of a WAIT or REJECT message,
+			 *  transition to PD_STATE_SNK_DISCOVERY
+			 */
+			if (pd[port].flags & PD_FLAGS_EXPLICIT_CONTRACT) {
+				/* We have an explicit contract */
+				if (type == PD_CTRL_WAIT) {
+					/*
+					 * Trigger a new power request when
+					 * we enter PD_STATE_SNK_READY
+					 */
+					pd[port].new_power_request = 1;
+
+					/*
+					 * After the request is triggered,
+					 * make sure the request is sent.
+					 */
+					pd[port].prev_request_mv = 0;
+
+					/*
+					 * Transition to PD_STATE_SNK_READY
+					 * after PD_T_SINK_REQUEST ms.
+					 */
+					set_state_timeout(port, get_time().val +
+							PD_T_SINK_REQUEST,
+							PD_STATE_SNK_READY);
+				} else {
+					/* The request was rejected */
+					set_state(port, PD_STATE_SNK_READY);
+				}
+			} else {
+				/* No explicit contract */
+				set_state(port, PD_STATE_SNK_DISCOVERY);
+			}
+		}
 #endif
 		break;
 	case PD_CTRL_ACCEPT:
@@ -2470,7 +2514,7 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 				break;
 
 			/* Check for new power to request */
-			if (pd[port].new_power_request) {
+			 if (pd[port].new_power_request) {
 				if (pd_send_request_msg(port, 0) != EC_SUCCESS)
 					set_state(port, PD_STATE_SOFT_RESET);
 				break;
