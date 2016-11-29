@@ -46,6 +46,30 @@
       "revId": "2ec2d66d09c86cacf2c87add481a64916a6b0c03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_6edb59d9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2795,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-11-29T23:19:34Z",
+      "side": 1,
+      "message": "This patch (either 1 or 2) in general will block the low power mode entry.\n\nAssuming you are in S3 or S5, nothing is connected initially, Port 0 will be in low power mode already. Connect HoHo, CC1\u003dRD/CC2\u003dRA (or CC1\u003dRD/CC2\u003dOpen for the debounce case), Port 0 will wake up but line 2782/2783 will be false, so it will continue to execute this new debounce timeout and not enter low power mode.\n\nI was thinking to remove the low power mode entry from tcpm_set_drp_toggle() and make a new function for low power mode only.",
+      "parentUuid": "702a0062_ee13c9d1",
+      "range": {
+        "startLine": 2787,
+        "startChar": 0,
+        "endLine": 2795,
+        "endChar": 10
+      },
+      "revId": "2ec2d66d09c86cacf2c87add481a64916a6b0c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
