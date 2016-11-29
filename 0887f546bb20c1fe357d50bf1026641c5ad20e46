@@ -186,6 +186,30 @@
       "revId": "0887f546bb20c1fe357d50bf1026641c5ad20e46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d5ba33f_6d6a315c",
+        "filename": "board/relm/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2016-11-29T01:49:12Z",
+      "side": 1,
+      "message": "Already made a test EC by using charge_get_percent().\nBased on test result, it should be work.\nI will update again by using charge_get_percent().\nBut still need to confirm this change can be implemented in Relm.",
+      "parentUuid": "d041ec2c_74089e08",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 53
+      },
+      "revId": "0887f546bb20c1fe357d50bf1026641c5ad20e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
