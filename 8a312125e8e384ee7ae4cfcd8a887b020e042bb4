@@ -1,0 +1,319 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "702a0062_523f21e8",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-29T18:30:35Z",
+      "side": 1,
+      "message": "Maybe turn this into an argument.",
+      "revId": "8a312125e8e384ee7ae4cfcd8a887b020e042bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_f22735de",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-29T18:30:35Z",
+      "side": 1,
+      "message": "no need for this docstring since you already have one @ line 6.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "8a312125e8e384ee7ae4cfcd8a887b020e042bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_5953c42f",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-29T18:30:35Z",
+      "side": 1,
+      "message": "extra newline",
+      "revId": "8a312125e8e384ee7ae4cfcd8a887b020e042bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_723c25f3",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-29T18:30:35Z",
+      "side": 1,
+      "message": "swap these two lines",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 29
+      },
+      "revId": "8a312125e8e384ee7ae4cfcd8a887b020e042bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_f9163831",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-29T18:30:35Z",
+      "side": 1,
+      "message": "what are these values?",
+      "range": {
+        "startLine": 190,
+        "startChar": 21,
+        "endLine": 190,
+        "endChar": 47
+      },
+      "revId": "8a312125e8e384ee7ae4cfcd8a887b020e042bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_595ae43d",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-29T18:30:35Z",
+      "side": 1,
+      "message": "extra period.",
+      "range": {
+        "startLine": 196,
+        "startChar": 37,
+        "endLine": 196,
+        "endChar": 38
+      },
+      "revId": "8a312125e8e384ee7ae4cfcd8a887b020e042bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_59fe64bd",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-29T18:30:35Z",
+      "side": 1,
+      "message": "extra newline",
+      "revId": "8a312125e8e384ee7ae4cfcd8a887b020e042bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_790b2806",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-29T18:30:35Z",
+      "side": 1,
+      "message": "extra newline",
+      "revId": "8a312125e8e384ee7ae4cfcd8a887b020e042bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_b2a21d49",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-29T18:30:35Z",
+      "side": 1,
+      "message": "Place this in main?",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 483,
+        "endChar": 53
+      },
+      "revId": "8a312125e8e384ee7ae4cfcd8a887b020e042bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_d2ceb119",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-29T18:30:35Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 489,
+        "startChar": 38,
+        "endLine": 489,
+        "endChar": 39
+      },
+      "revId": "8a312125e8e384ee7ae4cfcd8a887b020e042bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_f21e558a",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-29T18:30:35Z",
+      "side": 1,
+      "message": "Does it make sense to do some checking here for required arguments? Or better yet, making some arguments explicitly required?",
+      "revId": "8a312125e8e384ee7ae4cfcd8a887b020e042bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_b2c93d15",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-29T18:30:35Z",
+      "side": 1,
+      "message": "been writing too much C, eh? :)",
+      "range": {
+        "startLine": 501,
+        "startChar": 16,
+        "endLine": 501,
+        "endChar": 17
+      },
+      "revId": "8a312125e8e384ee7ae4cfcd8a887b020e042bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_12c92910",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-29T18:30:35Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 503,
+        "startChar": 19,
+        "endLine": 503,
+        "endChar": 20
+      },
+      "revId": "8a312125e8e384ee7ae4cfcd8a887b020e042bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_b2705dfd",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-29T18:30:35Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 531,
+        "startChar": 60,
+        "endLine": 531,
+        "endChar": 61
+      },
+      "revId": "8a312125e8e384ee7ae4cfcd8a887b020e042bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_d275d1eb",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-11-29T18:30:35Z",
+      "side": 1,
+      "message": "do you still need \u0027failcount\u0027?",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 536,
+        "endChar": 14
+      },
+      "revId": "8a312125e8e384ee7ae4cfcd8a887b020e042bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
