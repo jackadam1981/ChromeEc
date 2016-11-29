@@ -266,6 +266,9 @@ int charger_profile_override(struct charge_state_data *curr)
 	int batt_voltage;
 	static int prev_batt_voltage;
 
+	if (board_battery_type != BATTERY_SMP_COS4870)
+		return 0;
+
 	charger_discharge_on_ac(!(curr->batt.flags & BATT_FLAG_WANT_CHARGE));
 
 	/*
