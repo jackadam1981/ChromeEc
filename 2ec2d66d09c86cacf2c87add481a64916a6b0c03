@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "702a0062_00c46c9f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2795,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-11-29T21:22:25Z",
+      "side": 1,
+      "message": "This will block Port 0 from entering low power mode if the Type-C source is connected during S3 (PD_DRP_TOGGLE_OFF) and S5 (PD_DRP_FORCE_SINK), which lead to the same issue 59841 as Port 1.",
+      "range": {
+        "startLine": 2787,
+        "startChar": 0,
+        "endLine": 2795,
+        "endChar": 10
+      },
+      "revId": "2ec2d66d09c86cacf2c87add481a64916a6b0c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
