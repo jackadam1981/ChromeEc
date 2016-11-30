@@ -22,6 +22,30 @@
       "revId": "5222d0e32a8eba69d5fc52266eb8e76d5c9163fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_eba2d049",
+        "filename": "board/reef/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-30T18:37:48Z",
+      "side": 1,
+      "message": "External charger will comes back alive quickly after overcurrent protection \u0026 we will have some voltage detected on VACP. If the external charger is completely unplugged/ no poower we dont see VACP. From this we can decide external charger is still attached but lost power due to OCP.",
+      "parentUuid": "d041ec2c_6571ca89",
+      "range": {
+        "startLine": 634,
+        "startChar": 0,
+        "endLine": 639,
+        "endChar": 1
+      },
+      "revId": "5222d0e32a8eba69d5fc52266eb8e76d5c9163fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
