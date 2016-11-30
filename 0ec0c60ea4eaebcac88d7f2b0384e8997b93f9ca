@@ -45,6 +45,54 @@
       "revId": "0ec0c60ea4eaebcac88d7f2b0384e8997b93f9ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5f5b58_592ec3bc",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-11-30T22:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d5f5b58_f96d171d",
+      "range": {
+        "startLine": 246,
+        "startChar": 60,
+        "endLine": 246,
+        "endChar": 67
+      },
+      "revId": "0ec0c60ea4eaebcac88d7f2b0384e8997b93f9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5f5b58_792907b3",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-11-30T22:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d5f5b58_39994f0c",
+      "range": {
+        "startLine": 246,
+        "startChar": 19,
+        "endLine": 246,
+        "endChar": 31
+      },
+      "revId": "0ec0c60ea4eaebcac88d7f2b0384e8997b93f9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
