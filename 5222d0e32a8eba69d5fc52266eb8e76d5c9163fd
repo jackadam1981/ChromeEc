@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d041ec2c_6571ca89",
+        "filename": "board/reef/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-30T12:48:27Z",
+      "side": 1,
+      "message": "I don\u0027t understand the magic here.\nAll VACP ADC is telling me is whether we have currently have voltage.\nCompared to the function description, I don\u0027t get why:\n- we are able to check whether it \"lost power\": if the charger don\u0027t have a large recovery time, by the time we execute the charge_manager code, vbus might be back and we are not recording the power loss anyhow ?\n- how it checks \u0027if charger is still attached\u0027",
+      "range": {
+        "startLine": 634,
+        "startChar": 0,
+        "endLine": 639,
+        "endChar": 1
+      },
+      "revId": "5222d0e32a8eba69d5fc52266eb8e76d5c9163fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
