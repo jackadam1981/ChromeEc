@@ -601,6 +601,7 @@
 #undef CONFIG_CHIPSET_BRASWELL  /* Intel Braswell (x86) */
 #undef CONFIG_CHIPSET_CANNONLAKE /* Intel Cannonlake (x86) */
 #undef CONFIG_CHIPSET_ECDRIVEN  /* Dummy power module */
+#undef CONFIG_CHIPSET_GLK       /* Intel GLK (x86) */
 #undef CONFIG_CHIPSET_MEDIATEK  /* MediaTek MT81xx */
 #undef CONFIG_CHIPSET_RK3399    /* Rockchip rk3399 */
 /* TODO: Rename below config to CONFIG_CHIPSET_RK32XX */
