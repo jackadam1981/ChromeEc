@@ -70,6 +70,30 @@
       "revId": "2ec2d66d09c86cacf2c87add481a64916a6b0c03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_6fed1345",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2795,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-11-30T04:03:09Z",
+      "side": 1,
+      "message": "That example makes sense.\n\nHmm, I am wondering if we\u0027re adding too much complexity to the state machine. Is the necessity for this debounce particular to auto toggling only? It seems like we should debounce after exiting low power mode before any state has a chance to call tcpm_get_cc().\n\nMaybe the easiest/cleanest way is to just put the delay in the TCPC driver whenever we exit low power mode. (I suspect this is part of the reason you are decoupling low power mode from tcpm_set_drp_toggle())",
+      "parentUuid": "702a0062_6edb59d9",
+      "range": {
+        "startLine": 2787,
+        "startChar": 0,
+        "endLine": 2795,
+        "endChar": 10
+      },
+      "revId": "2ec2d66d09c86cacf2c87add481a64916a6b0c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
