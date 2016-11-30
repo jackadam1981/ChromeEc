@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d041ec2c_a552d2f6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-30T12:20:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure why we would like to differentiate those 2 cases, could you add a comment to clarify this ?\n\nfor example, if we are getting a \u0027WAIT\u0027 on our initial request (e.g multiple port power source not having the power provisioned), we likely want to retry after PD_T_SINK_REQUEST even though we don\u0027t have a contract yet.",
+      "range": {
+        "startLine": 962,
+        "startChar": 3,
+        "endLine": 962,
+        "endChar": 53
+      },
+      "revId": "6c15c19ffbf2957fb0f88ca38e2ffa2f71f57dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d041ec2c_65e2aa16",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-30T12:20:37Z",
+      "side": 1,
+      "message": "maybe we should just use \u0027pd[port].new_port_request\u0027 rather than creating a new flag which is mostly equivalent.\n\nthe only difference between the 2 flags seems to be setting always_send_request, but I feel for this purpose, we could just invalidate pd[port].prev_request_mv when we are receiving the WAIT here.",
+      "range": {
+        "startLine": 969,
+        "startChar": 0,
+        "endLine": 970,
+        "endChar": 35
+      },
+      "revId": "6c15c19ffbf2957fb0f88ca38e2ffa2f71f57dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d041ec2c_85df9651",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-11-30T12:20:37Z",
+      "side": 1,
+      "message": "by doing this, we will end up sending a HARD RESET and doing the whole process again.\nIf we got a REJECT, we might just loop forever, it\u0027s not really better than staying at SNK_READY without contract.",
+      "range": {
+        "startLine": 979,
+        "startChar": 0,
+        "endLine": 980,
+        "endChar": 44
+      },
+      "revId": "6c15c19ffbf2957fb0f88ca38e2ffa2f71f57dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
