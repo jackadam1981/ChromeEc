@@ -105,6 +105,24 @@
       "revId": "9e2b78c8a5cc14c7092e369d44af43d114ec73fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_04cab907",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-30T04:19:58Z",
+      "side": 1,
+      "message": "Fast charging is not following Gauge\u0027s request.\n-This is assigned to you crosbug.com/p/59904\nDo you have any idea how to test that?\n-Manually change the temp, cur, vtg and see if the intended fast charging values are selected.",
+      "parentUuid": "4d5ba33f_ad502923",
+      "revId": "9e2b78c8a5cc14c7092e369d44af43d114ec73fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
