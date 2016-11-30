@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "702a0062_7a678cce",
+        "filename": "board/pyro/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-11-30T14:26:59Z",
+      "side": 1,
+      "message": "I still don\u0027t understand this RED led behavior. This if/else is essentially on/off now. But I also don\u0027t understand why passing 0 would turn on an LED. Could you please explain why it\u0027s necessary to pass 0 for on?",
+      "revId": "0dfd7489e2370962d48bbbc06dbf1cfb6a2f5b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
