@@ -16,6 +16,29 @@
       "revId": "673783cc35378a5e2dce4a791d81558fe3fe8009",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_0471d9ff",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-11-30T04:22:33Z",
+      "side": 1,
+      "message": "as you have made changes in other file this is not needed if we have final revision of battery spec",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 11
+      },
+      "revId": "673783cc35378a5e2dce4a791d81558fe3fe8009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
