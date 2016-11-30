@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "702a0062_f0c9db13",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-30T17:45:51Z",
+      "side": 1,
+      "message": "Thanks for testing it.",
+      "parentUuid": "ad125f45_a333a8b1",
+      "range": {
+        "startLine": 865,
+        "startChar": 3,
+        "endLine": 866,
+        "endChar": 30
+      },
+      "revId": "68154d00b65992356324350d969644341c9b5912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad125f45_030a54d2",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2016-11-23T23:17:21Z",
       "side": 1,
       "message": "Could you mention bd9995x here as an example?",
+      "revId": "68154d00b65992356324350d969644341c9b5912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_d0be9761",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-11-30T17:45:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad125f45_030a54d2",
       "revId": "68154d00b65992356324350d969644341c9b5912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
