@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "702a0062_da97982f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-11-30T16:37:37Z",
+      "side": 1,
+      "message": "From USB_PD_R2_0 V1.2 section 8.3.3.3.5\n\nIf there is no Explicit Contract and a Reject or Wait message is received, transition to PE_SNK_Wait_for_Capabilities.\n\nIf an Explicit Contract is in place and a Reject or Wait message is received, transition to PE_SNK_Ready.\n\nI\u0027ll add comments to make this clearer.",
+      "parentUuid": "d041ec2c_a552d2f6",
+      "range": {
+        "startLine": 962,
+        "startChar": 3,
+        "endLine": 962,
+        "endChar": 53
+      },
+      "revId": "6c15c19ffbf2957fb0f88ca38e2ffa2f71f57dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d041ec2c_65e2aa16",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "702a0062_3567e561",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-11-30T16:37:37Z",
+      "side": 1,
+      "message": "The pd spec. uses an additional flag for SinkRequestTimer timeout but I agree that the same functionality can be achieved with your suggestions.",
+      "parentUuid": "d041ec2c_65e2aa16",
+      "range": {
+        "startLine": 969,
+        "startChar": 0,
+        "endLine": 970,
+        "endChar": 35
+      },
+      "revId": "6c15c19ffbf2957fb0f88ca38e2ffa2f71f57dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d041ec2c_85df9651",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-11-30T12:20:37Z",
       "side": 1,
       "message": "by doing this, we will end up sending a HARD RESET and doing the whole process again.\nIf we got a REJECT, we might just loop forever, it\u0027s not really better than staying at SNK_READY without contract.",
+      "range": {
+        "startLine": 979,
+        "startChar": 0,
+        "endLine": 980,
+        "endChar": 44
+      },
+      "revId": "6c15c19ffbf2957fb0f88ca38e2ffa2f71f57dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_f5a2ad49",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-11-30T16:37:37Z",
+      "side": 1,
+      "message": "Looking at the pd spec. this seems to be the intended behavior. But since we\u0027re not adhering closely to the spec, would you rather we enter SNK_READY instead?",
+      "parentUuid": "d041ec2c_85df9651",
       "range": {
         "startLine": 979,
         "startChar": 0,
