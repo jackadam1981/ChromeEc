@@ -105,6 +105,7 @@ BOARDS_NPCX_5M6G_JTAG=(
 BOARDS_NPCX_SPI=(
 	eve
 	gru
+	intelrvp
 	kevin
 	pyro
 	reef
@@ -371,8 +372,13 @@ case "${BOARD}" in
 	*) MCU="ec" ;;
 esac
 
-servo_VARS="${MCU}_uart_en ${MCU}_uart_parity \
-${MCU}_uart_baudrate jtag_buf_on_flex_en jtag_buf_en dev_mode"
+if [ ${BOARD} == "intelrvp" ]; then
+	servo_VARS="${MCU}_uart_en ${MCU}_uart_parity \
+	${MCU}_uart_baudrate jtag_buf_en dev_mode"
+else
+	servo_VARS="${MCU}_uart_en ${MCU}_uart_parity \
+	${MCU}_uart_baudrate jtag_buf_on_flex_en jtag_buf_en dev_mode"
+fi
 if [ "${CHIP}" = "stm32" ] ; then
 	servo_VARS+=" ${MCU}_boot_mode"
 fi
@@ -483,8 +489,12 @@ function flash_flashrom() {
 		dut_control cold_reset:on
 
 		# Turn on SPI1 interface on servo for SPI Flash Chip
-		dut_control spi1_vref:${SPI_VOLTAGE} spi1_buf_en:on \
-			spi1_buf_on_flex_en:on
+		if [ ${BOARD} == "intelrvp" ]; then
+			dut_control spi1_vref:${SPI_VOLTAGE} spi1_buf_en:on
+		else
+			dut_control spi1_vref:${SPI_VOLTAGE} spi1_buf_en:on \
+				spi1_buf_on_flex_en:on
+		fi
 	else
 		# Temp layout
 		L=/tmp/flash_spi_layout_$$
@@ -527,8 +537,12 @@ fi
 
 	if ! on_raiden; then
 		# Turn off SPI1 interface on servo
-		dut_control spi1_vref:off spi1_buf_en:off \
-			spi1_buf_on_flex_en:off
+		if [ ${BOARD} == "intelrvp" ]; then
+			dut_control spi1_vref:off spi1_buf_en:off
+		else
+			dut_control spi1_vref:off spi1_buf_en:off \
+				spi1_buf_on_flex_en:off
+		fi
 	else
 		rm $L
 	fi
