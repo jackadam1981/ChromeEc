@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d5f5b58_39994f0c",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-30T22:56:12Z",
+      "side": 1,
+      "message": "these #defines",
+      "range": {
+        "startLine": 246,
+        "startChar": 19,
+        "endLine": 246,
+        "endChar": 31
+      },
+      "revId": "0ec0c60ea4eaebcac88d7f2b0384e8997b93f9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5f5b58_f96d171d",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-30T22:56:12Z",
+      "side": 1,
+      "message": "and/or -384 as we are talking about two #defines here",
+      "range": {
+        "startLine": 246,
+        "startChar": 60,
+        "endLine": 246,
+        "endChar": 67
+      },
+      "revId": "0ec0c60ea4eaebcac88d7f2b0384e8997b93f9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
