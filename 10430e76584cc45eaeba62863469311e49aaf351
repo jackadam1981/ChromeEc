@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d5f5b58_19bd6b9b",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-30T22:37:53Z",
+      "side": 1,
+      "message": "We can re-use the DER encoding strings from Implementation.h to avoid duplication.",
+      "range": {
+        "startLine": 226,
+        "startChar": 21,
+        "endLine": 226,
+        "endChar": 29
+      },
+      "revId": "10430e76584cc45eaeba62863469311e49aaf351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5f5b58_f9ceb743",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-30T22:37:53Z",
+      "side": 1,
+      "message": "Can you support SHA-384 while you are on it?\nOptional, just feel that we never get to it until somebody hits an actual issue with -384 if it\u0027s not done now.",
+      "range": {
+        "startLine": 235,
+        "startChar": 21,
+        "endLine": 235,
+        "endChar": 31
+      },
+      "revId": "10430e76584cc45eaeba62863469311e49aaf351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5f5b58_99a85b56",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-11-30T22:37:53Z",
+      "side": 1,
+      "message": "Can be taken from Implementation.h - I believe it is defined there unconditionally.",
+      "range": {
+        "startLine": 244,
+        "startChar": 8,
+        "endLine": 244,
+        "endChar": 26
+      },
+      "revId": "10430e76584cc45eaeba62863469311e49aaf351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
