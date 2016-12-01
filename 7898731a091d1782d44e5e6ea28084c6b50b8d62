@@ -34,6 +34,24 @@
       "revId": "7898731a091d1782d44e5e6ea28084c6b50b8d62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdc95346_cb849561",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-01T08:33:52Z",
+      "side": 1,
+      "message": "I\u0027m thick but I don\u0027t understand the issue here ...\nNo matter how long you are de-scheduled before this if(), delta won\u0027t change since it is computed in the line below,\nso the outcome of deciding if we have a timeout won\u0027t change either.",
+      "parentUuid": "8d367b0e_61e036b0",
+      "revId": "7898731a091d1782d44e5e6ea28084c6b50b8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
