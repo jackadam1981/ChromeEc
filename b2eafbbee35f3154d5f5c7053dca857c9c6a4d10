@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d5f5b58_76490931",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-01T23:24:54Z",
+      "side": 1,
+      "message": "Ugh, this is really bad. This can cause spurious wakes because we can think we\u0027re in tablet mode during s3 and that will force the lid open, causing a wake. Let me add a check for the current power state.",
+      "revId": "b2eafbbee35f3154d5f5c7053dca857c9c6a4d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
