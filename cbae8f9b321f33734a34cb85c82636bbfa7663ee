@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d5f5b58_2ec9fb68",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1113814
+      },
+      "writtenOn": "2016-12-01T18:14:18Z",
+      "side": 1,
+      "message": "Gwendal, if I am reading this right, we absolutely can not do that. If you cut power to the device without the kernel knowing it would have no idea that the device needs to be re-initialized later. Unlike the keyboard, EC does not control the touchpad or touchscreen.",
+      "revId": "cbae8f9b321f33734a34cb85c82636bbfa7663ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
