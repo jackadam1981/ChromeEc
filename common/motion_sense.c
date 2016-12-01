@@ -1229,224 +1229,224 @@ DECLARE_HOST_COMMAND(EC_CMD_MOTION_SENSE_CMD,
 /*****************************************************************************/
 /* Console commands */
 #ifdef CONFIG_CMD_ACCELS
-static int command_accelrange(int argc, char **argv)
-{
-	char *e;
-	int id, data, round = 1;
-	struct motion_sensor_t *sensor;
+/* static int command_accelrange(int argc, char **argv) */
+/* { */
+/* 	char *e; */
+/* 	int id, data, round = 1; */
+/* 	struct motion_sensor_t *sensor; */
 
-	if (argc < 2 || argc > 4)
-		return EC_ERROR_PARAM_COUNT;
+/* 	if (argc < 2 || argc > 4) */
+/* 		return EC_ERROR_PARAM_COUNT; */
 
-	/* First argument is sensor id. */
-	id = strtoi(argv[1], &e, 0);
-	if (*e || id < 0 || id >= motion_sensor_count)
-		return EC_ERROR_PARAM1;
+/* 	/\* First argument is sensor id. *\/ */
+/* 	id = strtoi(argv[1], &e, 0); */
+/* 	if (*e || id < 0 || id >= motion_sensor_count) */
+/* 		return EC_ERROR_PARAM1; */
 
-	sensor = &motion_sensors[id];
+/* 	sensor = &motion_sensors[id]; */
 
-	if (argc >= 3) {
-		/* Second argument is data to write. */
-		data = strtoi(argv[2], &e, 0);
-		if (*e)
-			return EC_ERROR_PARAM2;
+/* 	if (argc >= 3) { */
+/* 		/\* Second argument is data to write. *\/ */
+/* 		data = strtoi(argv[2], &e, 0); */
+/* 		if (*e) */
+/* 			return EC_ERROR_PARAM2; */
 
-		if (argc == 4) {
-			/* Third argument is rounding flag. */
-			round = strtoi(argv[3], &e, 0);
-			if (*e)
-				return EC_ERROR_PARAM3;
-		}
+/* 		if (argc == 4) { */
+/* 			/\* Third argument is rounding flag. *\/ */
+/* 			round = strtoi(argv[3], &e, 0); */
+/* 			if (*e) */
+/* 				return EC_ERROR_PARAM3; */
+/* 		} */
 
-		/*
-		 * Write new range, if it returns invalid arg, then return
-		 * a parameter error.
-		 */
-		if (sensor->drv->set_range(sensor,
-					   data,
-					   round) == EC_ERROR_INVAL)
-			return EC_ERROR_PARAM2;
-	} else {
-		ccprintf("Range for sensor %d: %d\n", id,
-			 sensor->drv->get_range(sensor));
-	}
+/* 		/\* */
+/* 		 * Write new range, if it returns invalid arg, then return */
+/* 		 * a parameter error. */
+/* 		 *\/ */
+/* 		if (sensor->drv->set_range(sensor, */
+/* 					   data, */
+/* 					   round) == EC_ERROR_INVAL) */
+/* 			return EC_ERROR_PARAM2; */
+/* 	} else { */
+/* 		ccprintf("Range for sensor %d: %d\n", id, */
+/* 			 sensor->drv->get_range(sensor)); */
+/* 	} */
 
-	return EC_SUCCESS;
-}
-DECLARE_CONSOLE_COMMAND(accelrange, command_accelrange,
-	"id [data [roundup]]",
-	"Read or write accelerometer range");
+/* 	return EC_SUCCESS; */
+/* } */
+/* DECLARE_CONSOLE_COMMAND(accelrange, command_accelrange, */
+/* 	"id [data [roundup]]", */
+/* 	"Read or write accelerometer range"); */
 
-static int command_accelresolution(int argc, char **argv)
-{
-	char *e;
-	int id, data, round = 1;
-	struct motion_sensor_t *sensor;
+/* static int command_accelresolution(int argc, char **argv) */
+/* { */
+/* 	char *e; */
+/* 	int id, data, round = 1; */
+/* 	struct motion_sensor_t *sensor; */
 
-	if (argc < 2 || argc > 4)
-		return EC_ERROR_PARAM_COUNT;
+/* 	if (argc < 2 || argc > 4) */
+/* 		return EC_ERROR_PARAM_COUNT; */
 
-	/* First argument is sensor id. */
-	id = strtoi(argv[1], &e, 0);
-	if (*e || id < 0 || id >= motion_sensor_count)
-		return EC_ERROR_PARAM1;
+/* 	/\* First argument is sensor id. *\/ */
+/* 	id = strtoi(argv[1], &e, 0); */
+/* 	if (*e || id < 0 || id >= motion_sensor_count) */
+/* 		return EC_ERROR_PARAM1; */
 
-	sensor = &motion_sensors[id];
+/* 	sensor = &motion_sensors[id]; */
 
-	if (argc >= 3) {
-		/* Second argument is data to write. */
-		data = strtoi(argv[2], &e, 0);
-		if (*e)
-			return EC_ERROR_PARAM2;
+/* 	if (argc >= 3) { */
+/* 		/\* Second argument is data to write. *\/ */
+/* 		data = strtoi(argv[2], &e, 0); */
+/* 		if (*e) */
+/* 			return EC_ERROR_PARAM2; */
 
-		if (argc == 4) {
-			/* Third argument is rounding flag. */
-			round = strtoi(argv[3], &e, 0);
-			if (*e)
-				return EC_ERROR_PARAM3;
-		}
+/* 		if (argc == 4) { */
+/* 			/\* Third argument is rounding flag. *\/ */
+/* 			round = strtoi(argv[3], &e, 0); */
+/* 			if (*e) */
+/* 				return EC_ERROR_PARAM3; */
+/* 		} */
 
-		/*
-		 * Write new resolution, if it returns invalid arg, then
-		 * return a parameter error.
-		 */
-		if (sensor->drv->set_resolution(sensor, data, round)
-			== EC_ERROR_INVAL)
-			return EC_ERROR_PARAM2;
-	} else {
-		ccprintf("Resolution for sensor %d: %d\n", id,
-			 sensor->drv->get_resolution(sensor));
-	}
+/* 		/\* */
+/* 		 * Write new resolution, if it returns invalid arg, then */
+/* 		 * return a parameter error. */
+/* 		 *\/ */
+/* 		if (sensor->drv->set_resolution(sensor, data, round) */
+/* 			== EC_ERROR_INVAL) */
+/* 			return EC_ERROR_PARAM2; */
+/* 	} else { */
+/* 		ccprintf("Resolution for sensor %d: %d\n", id, */
+/* 			 sensor->drv->get_resolution(sensor)); */
+/* 	} */
 
-	return EC_SUCCESS;
-}
-DECLARE_CONSOLE_COMMAND(accelres, command_accelresolution,
-	"id [data [roundup]]",
-	"Read or write accelerometer resolution");
+/* 	return EC_SUCCESS; */
+/* } */
+/* DECLARE_CONSOLE_COMMAND(accelres, command_accelresolution, */
+/* 	"id [data [roundup]]", */
+/* 	"Read or write accelerometer resolution"); */
 
-static int command_accel_data_rate(int argc, char **argv)
-{
-	char *e;
-	int id, data, round = 1, ret;
-	struct motion_sensor_t *sensor;
-	enum sensor_config config_id;
+/* static int command_accel_data_rate(int argc, char **argv) */
+/* { */
+/* 	char *e; */
+/* 	int id, data, round = 1, ret; */
+/* 	struct motion_sensor_t *sensor; */
+/* 	enum sensor_config config_id; */
 
-	if (argc < 2 || argc > 4)
-		return EC_ERROR_PARAM_COUNT;
+/* 	if (argc < 2 || argc > 4) */
+/* 		return EC_ERROR_PARAM_COUNT; */
 
-	/* First argument is sensor id. */
-	id = strtoi(argv[1], &e, 0);
-	if (*e || id < 0 || id >= motion_sensor_count)
-		return EC_ERROR_PARAM1;
+/* 	/\* First argument is sensor id. *\/ */
+/* 	id = strtoi(argv[1], &e, 0); */
+/* 	if (*e || id < 0 || id >= motion_sensor_count) */
+/* 		return EC_ERROR_PARAM1; */
 
-	sensor = &motion_sensors[id];
+/* 	sensor = &motion_sensors[id]; */
 
-	if (argc >= 3) {
-		/* Second argument is data to write. */
-		data = strtoi(argv[2], &e, 0);
-		if (*e)
-			return EC_ERROR_PARAM2;
+/* 	if (argc >= 3) { */
+/* 		/\* Second argument is data to write. *\/ */
+/* 		data = strtoi(argv[2], &e, 0); */
+/* 		if (*e) */
+/* 			return EC_ERROR_PARAM2; */
 
-		if (argc == 4) {
-			/* Third argument is rounding flag. */
-			round = strtoi(argv[3], &e, 0);
-			if (*e)
-				return EC_ERROR_PARAM3;
-		}
+/* 		if (argc == 4) { */
+/* 			/\* Third argument is rounding flag. *\/ */
+/* 			round = strtoi(argv[3], &e, 0); */
+/* 			if (*e) */
+/* 				return EC_ERROR_PARAM3; */
+/* 		} */
 
-		/*
-		 * Take ownership of the sensor and
-		 * Write new data rate, if it returns invalid arg, then
-		 * return a parameter error.
-		 */
-		config_id = motion_sense_get_ec_config();
-		sensor->config[SENSOR_CONFIG_AP].odr = 0;
-		sensor->config[config_id].odr =
-			data | (round ? ROUND_UP_FLAG : 0);
-		ret = motion_sense_set_data_rate(sensor);
-		if (ret)
-			return EC_ERROR_PARAM2;
-		/* Sensor might be out of suspend, check the ec_rate */
-		motion_sense_set_motion_intervals();
-	} else {
-		ccprintf("Data rate for sensor %d: %d\n", id,
-			 sensor->drv->get_data_rate(sensor));
-		ccprintf("EC rate for sensor %d: %d\n", id,
-			 motion_sense_ec_rate(sensor));
-		ccprintf("Current EC rate: %d\n", motion_interval);
-		ccprintf("Current Interrupt rate: %d\n", motion_int_interval);
-	}
+/* 		/\* */
+/* 		 * Take ownership of the sensor and */
+/* 		 * Write new data rate, if it returns invalid arg, then */
+/* 		 * return a parameter error. */
+/* 		 *\/ */
+/* 		config_id = motion_sense_get_ec_config(); */
+/* 		sensor->config[SENSOR_CONFIG_AP].odr = 0; */
+/* 		sensor->config[config_id].odr = */
+/* 			data | (round ? ROUND_UP_FLAG : 0); */
+/* 		ret = motion_sense_set_data_rate(sensor); */
+/* 		if (ret) */
+/* 			return EC_ERROR_PARAM2; */
+/* 		/\* Sensor might be out of suspend, check the ec_rate *\/ */
+/* 		motion_sense_set_motion_intervals(); */
+/* 	} else { */
+/* 		ccprintf("Data rate for sensor %d: %d\n", id, */
+/* 			 sensor->drv->get_data_rate(sensor)); */
+/* 		ccprintf("EC rate for sensor %d: %d\n", id, */
+/* 			 motion_sense_ec_rate(sensor)); */
+/* 		ccprintf("Current EC rate: %d\n", motion_interval); */
+/* 		ccprintf("Current Interrupt rate: %d\n", motion_int_interval); */
+/* 	} */
 
-	return EC_SUCCESS;
-}
-DECLARE_CONSOLE_COMMAND(accelrate, command_accel_data_rate,
-	"id [data [roundup]]",
-	"Read or write accelerometer ODR");
+/* 	return EC_SUCCESS; */
+/* } */
+/* DECLARE_CONSOLE_COMMAND(accelrate, command_accel_data_rate, */
+/* 	"id [data [roundup]]", */
+/* 	"Read or write accelerometer ODR"); */
 
-static int command_accel_read_xyz(int argc, char **argv)
-{
-	char *e;
-	int id, n = 1, ret;
-	struct motion_sensor_t *sensor;
-	vector_3_t v;
+/* static int command_accel_read_xyz(int argc, char **argv) */
+/* { */
+/* 	char *e; */
+/* 	int id, n = 1, ret; */
+/* 	struct motion_sensor_t *sensor; */
+/* 	vector_3_t v; */
 
-	if (argc < 2)
-		return EC_ERROR_PARAM_COUNT;
+/* 	if (argc < 2) */
+/* 		return EC_ERROR_PARAM_COUNT; */
 
-	/* First argument is sensor id. */
-	id = strtoi(argv[1], &e, 0);
+/* 	/\* First argument is sensor id. *\/ */
+/* 	id = strtoi(argv[1], &e, 0); */
 
-	if (*e || id < 0 || id >= motion_sensor_count)
-		return EC_ERROR_PARAM1;
+/* 	if (*e || id < 0 || id >= motion_sensor_count) */
+/* 		return EC_ERROR_PARAM1; */
 
-	if (argc >= 3)
-		n = strtoi(argv[2], &e, 0);
+/* 	if (argc >= 3) */
+/* 		n = strtoi(argv[2], &e, 0); */
 
-	sensor = &motion_sensors[id];
+/* 	sensor = &motion_sensors[id]; */
 
-	while ((n == -1) || (n-- > 0)) {
-		ret = sensor->drv->read(sensor, v);
-		if (ret == 0)
-			ccprintf("Current data %d: %-5d %-5d %-5d\n",
-				 id, v[X], v[Y], v[Z]);
-		else
-			ccprintf("vector not ready\n");
-		ccprintf("Last calib. data %d: %-5d %-5d %-5d\n",
-			 id, sensor->xyz[X], sensor->xyz[Y], sensor->xyz[Z]);
-		task_wait_event(motion_min_interval);
-	}
-	return EC_SUCCESS;
-}
+/* 	while ((n == -1) || (n-- > 0)) { */
+/* 		ret = sensor->drv->read(sensor, v); */
+/* 		if (ret == 0) */
+/* 			ccprintf("Current data %d: %-5d %-5d %-5d\n", */
+/* 				 id, v[X], v[Y], v[Z]); */
+/* 		else */
+/* 			ccprintf("vector not ready\n"); */
+/* 		ccprintf("Last calib. data %d: %-5d %-5d %-5d\n", */
+/* 			 id, sensor->xyz[X], sensor->xyz[Y], sensor->xyz[Z]); */
+/* 		task_wait_event(motion_min_interval); */
+/* 	} */
+/* 	return EC_SUCCESS; */
+/* } */
 
-DECLARE_CONSOLE_COMMAND(accelread, command_accel_read_xyz,
-	"id [n]",
-	"Read sensor x/y/z");
+/* DECLARE_CONSOLE_COMMAND(accelread, command_accel_read_xyz, */
+/* 	"id [n]", */
+/* 	"Read sensor x/y/z"); */
 
-static int command_accel_init(int argc, char **argv)
-{
-	char *e;
-	int id, ret;
-	struct motion_sensor_t *sensor;
+/* static int command_accel_init(int argc, char **argv) */
+/* { */
+/* 	char *e; */
+/* 	int id, ret; */
+/* 	struct motion_sensor_t *sensor; */
 
-	if (argc < 2)
-		return EC_ERROR_PARAM_COUNT;
+/* 	if (argc < 2) */
+/* 		return EC_ERROR_PARAM_COUNT; */
 
-	/* First argument is sensor id. */
-	id = strtoi(argv[1], &e, 0);
+/* 	/\* First argument is sensor id. *\/ */
+/* 	id = strtoi(argv[1], &e, 0); */
 
-	if (*e || id < 0 || id >= motion_sensor_count)
-		return EC_ERROR_PARAM1;
+/* 	if (*e || id < 0 || id >= motion_sensor_count) */
+/* 		return EC_ERROR_PARAM1; */
 
-	sensor = &motion_sensors[id];
-	ret = motion_sense_init(sensor);
+/* 	sensor = &motion_sensors[id]; */
+/* 	ret = motion_sense_init(sensor); */
 
-	ccprintf("%s: state %d - %d\n", sensor->name, sensor->state, ret);
-	return EC_SUCCESS;
-}
-DECLARE_CONSOLE_COMMAND(accelinit, command_accel_init,
-	"id",
-	"Init sensor");
-
+/* 	ccprintf("%s: state %d - %d\n", sensor->name, sensor->state, ret); */
+/* 	return EC_SUCCESS; */
+/* } */
+/* DECLARE_CONSOLE_COMMAND(accelinit, command_accel_init, */
+/* 	"id", */
+/* 	"Init sensor"); */
+/*  */
 #ifdef CONFIG_CMD_ACCEL_INFO
 static int command_display_accel_info(int argc, char **argv)
 {
