@@ -71,6 +71,7 @@ static int wait_isr(int port, int mask)
 {
 	uint32_t start = __hw_clock_source_read();
 	uint32_t delta = 0;
+	int timeout = 0;
 
 	while (1) {
 		int isr = STM32_I2C_ISR(port);
@@ -84,7 +85,7 @@ static int wait_isr(int port, int mask)
 		if ((isr & mask) == mask)
 			return EC_SUCCESS;
 
-		if (delta >= pdata[port].timeout_us)
+		if (timeout)
 			return EC_ERROR_TIMEOUT;
 
 		delta = __hw_clock_source_read() - start;
@@ -95,6 +96,10 @@ static int wait_isr(int port, int mask)
 		 */
 		if (delta >= busyloop_us[pdata[port].freq])
 			usleep(100);
+
+		/* Upon timeout, read the status one last time. */
+		if (delta >= pdata[port].timeout_us)
+			timeout = 1;
 	}
 }
 
