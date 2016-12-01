@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_angle.h"
+#include "lid_switch.h"
 #include "math_util.h"
 #include "motion_lid.h"
 #include "motion_sense.h"
@@ -69,11 +70,19 @@ static int tablet_mode = 1;
  */
 #define TABLET_MODE_DEBOUNCE_COUNT 3
 static int tablet_mode_debounce_cnt = TABLET_MODE_DEBOUNCE_COUNT;
+
+/*
+ *
+ */
+#define TABLET_MODE_CORRECTION_RANGE 15
 #endif
 
 #ifdef CONFIG_LID_ANGLE_INVALID_CHECK
 /* Previous lid_angle. */
 static fp_t last_lid_angle_fp = FLOAT_TO_FP(-1);
+
+#define LARGE_LID_ANGLE_DELTA 160
+#define SMALL_LID_ANGLE_RANGE 15
 #endif
 
 /* Current acceleration vectors and current lid angle. */
@@ -87,13 +96,22 @@ static int lid_angle_is_reliable;
  * efficiency, value is given unit-less, so if you want the threshold to be
  * at 15 degrees, the value would be cos(15 deg) = 0.96593.
  */
-#define HINGE_ALIGNED_WITH_GRAVITY_THRESHOLD FLOAT_TO_FP(0.96593)
+#define HINGE_ALIGNED_WITH_GRAVITY_THRESHOLD FLOAT_TO_FP(0.88701)
 
 /*
  * Constant to debounce lid angle changes around 360 - 0:
  * If we have a rotation  through the angle 0, ignore.
  */
-#define DEBOUNCE_ANGLE_DELTA FLOAT_TO_FP(20)
+#define DEBOUNCE_ANGLE_DELTA FLOAT_TO_FP(45)
+
+/*
+ * Since the accelerometers are on the same physical device, they should be
+ * under the same acceleration.  This constant, which mirrors
+ * kNoisyMagnitudeDeviation used in Chromium, is an integer which defines the
+ * maximum deviation in magnitude between the base and lid vectors.  The units
+ * are in m/s^2.
+ */
+#define NOISY_MAGNITUDE_DEVIATION 1
 
 /*
  * Define the accelerometer orientation matrices based on the standard
@@ -140,6 +158,8 @@ const struct motion_sensor_t * const accel_base =
 const struct motion_sensor_t * const accel_lid =
 	&motion_sensors[CONFIG_LID_ANGLE_SENSOR_LID];
 
+extern int int_sqrtf(fp_inter_t a);
+
 /**
  * Calculate the lid angle using two acceleration vectors, one recorded in
  * the base and one in the lid.
@@ -161,6 +181,8 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 #ifdef CONFIG_LID_ANGLE_TABLET_MODE
 	int new_tablet_mode = tablet_mode;
 #endif
+	fp_inter_t base_dot_product, lid_dot_product;
+	int base_magnitude, lid_magnitude, range;
 
 	/*
 	 * The angle between lid and base is:
@@ -221,18 +243,69 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 	if (lid_to_base_fp < 0)
 		lid_to_base_fp += FLOAT_TO_FP(360);
 
+	/*
+	 * If the magnitude of the two vectors differ too greatly, then the
+	 * readings are unreliable and we can't use them to calculate the lid
+	 * angle.
+	 */
+	base_dot_product = (fp_inter_t)base[X] * base[X] +
+		(fp_inter_t)base[Y] * base[Y] +
+		(fp_inter_t)base[Z] * base[Z];
+	lid_dot_product = (fp_inter_t)lid[X] * lid[X] +
+		(fp_inter_t)lid[Y] * lid[Y] +
+		(fp_inter_t)lid[Z] * lid[Z];
+	base_magnitude = int_sqrtf(base_dot_product);
+	lid_magnitude = int_sqrtf(lid_dot_product);
+
+	/*
+	 * Check to see if they differ than more than NOISY_MAGNITUDE_DEVIATION.
+	 * Assuming that the lid & base have the same range.
+	 */
+	range = accel_base->drv->get_range(accel_base);
+	if (ABS(base_magnitude - lid_magnitude) >
+	    ((1 << (15 - (range / 2))) * NOISY_MAGNITUDE_DEVIATION / 10))
+		reliable = 0;
+
+	/* Ignore large angles when the lid is closed. */
+	if (!lid_is_open() &&
+	    (lid_to_base_fp > FLOAT_TO_FP(SMALL_LID_ANGLE_RANGE)))
+		reliable = 0;
+
 #ifdef CONFIG_LID_ANGLE_INVALID_CHECK
-	/* Check if we have a sudden rotation from 360 <-> 0 */
-	if (last_lid_angle_fp >= 0 &&
-	    ((FLOAT_TO_FP(360) - last_lid_angle_fp < DEBOUNCE_ANGLE_DELTA &&
-	      lid_to_base_fp < DEBOUNCE_ANGLE_DELTA) ||
-	     (FLOAT_TO_FP(360) - lid_to_base_fp < DEBOUNCE_ANGLE_DELTA &&
-	      last_lid_angle_fp < DEBOUNCE_ANGLE_DELTA)))
-		CPRINTS("ignore transition: %d to %d",
-			FP_TO_INT(last_lid_angle_fp),
-			FP_TO_INT(lid_to_base_fp));
-	else
-		last_lid_angle_fp = lid_to_base_fp;
+	if (reliable) {
+		/*
+		 * Seed the lid angle now that we have a reliable
+		 * measurement.
+		 */
+		if (last_lid_angle_fp == FLOAT_TO_FP(-1)) {
+			last_lid_angle_fp = lid_to_base_fp;
+
+		/* If the lid is closed, the angle must be small. */
+		} else if (!lid_is_open() &&
+			   (lid_to_base_fp <=
+			    FLOAT_TO_FP(SMALL_LID_ANGLE_RANGE))) {
+			last_lid_angle_fp = lid_to_base_fp;
+
+		/* If the angle was last seen as really large and now it's quite
+		 * small, we may be rotating around from 360->0 so correct it to
+		 * be large. */
+		} else if ((last_lid_angle_fp >=
+			    FLOAT_TO_FP(360) - DEBOUNCE_ANGLE_DELTA) &&
+			   (lid_to_base_fp <= DEBOUNCE_ANGLE_DELTA)) {
+			last_lid_angle_fp = FLOAT_TO_FP(360) - lid_to_base_fp;
+
+		} else {
+			last_lid_angle_fp = lid_to_base_fp;
+		}
+		/*
+		 * Accept only somewhat small changes in lid angle.
+		 */
+		/* if (last_lid_angle_fp >= 0 && */
+		/*     ABS(last_lid_angle_fp - lid_to_base_fp) <= */
+		/*     FLOAT_TO_FP(LARGE_LID_ANGLE_DELTA)) { */
+		/* 	last_lid_angle_fp = lid_to_base_fp; */
+		/* } */
+	}
 
 	/*
 	 * Round to nearest int by adding 0.5. Note, only works because lid
@@ -254,19 +327,22 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 				tablet_mode_debounce_cnt =
 					TABLET_MODE_DEBOUNCE_COUNT;
 				tablet_mode = new_tablet_mode;
+				CPRINTS("TM %d %d deg", tablet_mode,
+					*lid_angle);
 				hook_notify(HOOK_TABLET_MODE_CHANGE);
 				return reliable;
 			}
 			tablet_mode_debounce_cnt--;
 			return reliable;
 		}
-
-		/*
-		 * Since it hasn't changed, clear any pending tablet mode
-		 * change.
-		 */
-		tablet_mode_debounce_cnt = TABLET_MODE_DEBOUNCE_COUNT;
 	}
+	/*
+	 * If we got here, it means that either we encountered an unreliable
+	 * measurement, or a reliable measurement but didn't agree with the
+	 * direction we were going.  Therefore, clear any pending tablet mode
+	 * change.
+	 */
+	tablet_mode_debounce_cnt = TABLET_MODE_DEBOUNCE_COUNT;
 #endif   /* CONFIG_LID_ANGLE_TABLET_MODE */
 #else    /* CONFIG_LID_ANGLE_INVALID_CHECK */
 	*lid_angle = FP_TO_INT(lid_to_base_fp + FLOAT_TO_FP(0.5));

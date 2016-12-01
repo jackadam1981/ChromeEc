@@ -27,6 +27,7 @@
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -507,8 +508,8 @@ struct motion_sensor_t motion_sensors[] = {
 		 },
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 10000 | ROUND_UP_FLAG,
-			 .ec_rate = 100 * MSEC,
+			 .odr = 100000 | ROUND_UP_FLAG,
+			 .ec_rate = 10 * MSEC,
 		 },
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S3] = {
@@ -620,8 +621,8 @@ struct motion_sensor_t motion_sensors[] = {
 		},
 		/* EC use accel for angle detection */
 		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 0,
+			.odr = 100000 | ROUND_UP_FLAG,
+			.ec_rate = 10 * MSEC,
 		},
 		 /* EC use accel for angle detection */
 		[SENSOR_CONFIG_EC_S3] = {
