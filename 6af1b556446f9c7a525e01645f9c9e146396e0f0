@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8d5f5b58_8542a55a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-01T19:54:33Z",
+      "side": 1,
+      "message": "Let\u0027s apply this for locked systems only, which generally need to have a battery w/ sufficient power to boot.",
+      "parentUuid": "c134bcc0_4a8cd317",
+      "range": {
+        "startLine": 643,
+        "startChar": 5,
+        "endLine": 643,
+        "endChar": 49
+      },
+      "revId": "6af1b556446f9c7a525e01645f9c9e146396e0f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c04eb4e_54cd0217",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Just thinking out loud ... Is there a way to notify the hook to run or should we just be calling pd_set_input_current_limit here instead or perhaps in addition to guarantee current change.",
       "parentUuid": "9c04eb4e_54cd0217",
+      "range": {
+        "startLine": 645,
+        "startChar": 3,
+        "endLine": 645,
+        "endChar": 26
+      },
+      "revId": "6af1b556446f9c7a525e01645f9c9e146396e0f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5f5b58_65431164",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-01T19:54:33Z",
+      "side": 1,
+      "message": "We really need to go through charge_manager and not call pd_set_input_current_limit() directly. The port we\u0027re renegotiating here may not even be the active charge port. I\u0027ll try adding a feature on charge_manager to determine whether a given input change was processed yet. I\u0027m concerned that it might cause is to violate some PD protocol timing though.",
+      "parentUuid": "41a36c15_ee2dbf5c",
       "range": {
         "startLine": 645,
         "startChar": 3,
