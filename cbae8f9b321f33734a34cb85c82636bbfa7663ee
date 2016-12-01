@@ -16,6 +16,24 @@
       "revId": "cbae8f9b321f33734a34cb85c82636bbfa7663ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5f5b58_22c0efe7",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-01T18:42:00Z",
+      "side": 1,
+      "message": "Is it possible for the kernel to re-probe for devices based on the tablet mode switch transitioning to 0?",
+      "parentUuid": "8d5f5b58_2ec9fb68",
+      "revId": "cbae8f9b321f33734a34cb85c82636bbfa7663ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
