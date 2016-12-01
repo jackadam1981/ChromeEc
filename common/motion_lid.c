@@ -87,13 +87,14 @@ static int lid_angle_is_reliable;
  * efficiency, value is given unit-less, so if you want the threshold to be
  * at 15 degrees, the value would be cos(15 deg) = 0.96593.
  */
-#define HINGE_ALIGNED_WITH_GRAVITY_THRESHOLD FLOAT_TO_FP(0.96593)
+/* #define HINGE_ALIGNED_WITH_GRAVITY_THRESHOLD FLOAT_TO_FP(0.96593) */
+#define HINGE_ALIGNED_WITH_GRAVITY_THRESHOLD FLOAT_TO_FP(0.88701)
 
 /*
  * Constant to debounce lid angle changes around 360 - 0:
  * If we have a rotation  through the angle 0, ignore.
  */
-#define DEBOUNCE_ANGLE_DELTA FLOAT_TO_FP(20)
+#define DEBOUNCE_ANGLE_DELTA FLOAT_TO_FP(45)
 
 /*
  * Define the accelerometer orientation matrices based on the standard
@@ -161,6 +162,9 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 #ifdef CONFIG_LID_ANGLE_TABLET_MODE
 	int new_tablet_mode = tablet_mode;
 #endif
+	struct motion_sensor_t *gyro = &motion_sensors[BASE_GYRO];
+	/* vector_3_t *gyro_v; */
+	int x, y;
 
 	/*
 	 * The angle between lid and base is:
@@ -221,18 +225,26 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 	if (lid_to_base_fp < 0)
 		lid_to_base_fp += FLOAT_TO_FP(360);
 
+
+	/* Use gyro for reliability. */
+	x = gyro->xyz[X];
+	y = gyro->xyz[Y];
+	if (((ABS(INT_TO_FP(x)) > FLOAT_TO_FP(4915))) ||
+	    ((ABS(INT_TO_FP(y)) > FLOAT_TO_FP(3277)))) {
+		reliable = 0;
+	}
+
 #ifdef CONFIG_LID_ANGLE_INVALID_CHECK
-	/* Check if we have a sudden rotation from 360 <-> 0 */
-	if (last_lid_angle_fp >= 0 &&
-	    ((FLOAT_TO_FP(360) - last_lid_angle_fp < DEBOUNCE_ANGLE_DELTA &&
-	      lid_to_base_fp < DEBOUNCE_ANGLE_DELTA) ||
-	     (FLOAT_TO_FP(360) - lid_to_base_fp < DEBOUNCE_ANGLE_DELTA &&
-	      last_lid_angle_fp < DEBOUNCE_ANGLE_DELTA)))
-		CPRINTS("ignore transition: %d to %d",
-			FP_TO_INT(last_lid_angle_fp),
-			FP_TO_INT(lid_to_base_fp));
-	else
-		last_lid_angle_fp = lid_to_base_fp;
+	if (reliable) {
+		/* Check if we have a sudden rotation from 360 <-> 0 */
+		if (last_lid_angle_fp >= 0 && ABS(last_lid_angle_fp -lid_to_base_fp) > FLOAT_TO_FP(150))
+
+			CPRINTS("ignore transition: %d to %d",
+				FP_TO_INT(last_lid_angle_fp),
+				FP_TO_INT(lid_to_base_fp));
+		else
+			last_lid_angle_fp = lid_to_base_fp;
+	}
 
 	/*
 	 * Round to nearest int by adding 0.5. Note, only works because lid
@@ -240,6 +252,7 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 	 */
 	*lid_angle = FP_TO_INT(last_lid_angle_fp + FLOAT_TO_FP(0.5));
 
+	CPRINTS("angle: %d deg x,y %d,%d (reliable: %d)", *lid_angle, x, y, reliable);
 #ifdef CONFIG_LID_ANGLE_TABLET_MODE
 	if (reliable) {
 		if (last_lid_angle_fp > TABLET_ZONE_LID_ANGLE)
@@ -254,6 +267,7 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 				tablet_mode_debounce_cnt =
 					TABLET_MODE_DEBOUNCE_COUNT;
 				tablet_mode = new_tablet_mode;
+				CPRINTS("TM %d", tablet_mode);
 				hook_notify(HOOK_TABLET_MODE_CHANGE);
 				return reliable;
 			}

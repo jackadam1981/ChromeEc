@@ -27,6 +27,7 @@
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -507,8 +508,8 @@ struct motion_sensor_t motion_sensors[] = {
 		 },
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 10000 | ROUND_UP_FLAG,
-			 .ec_rate = 100 * MSEC,
+			 .odr = 100000 | ROUND_UP_FLAG,
+			 .ec_rate = 10 * MSEC,
 		 },
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S3] = {
@@ -547,13 +548,13 @@ struct motion_sensor_t motion_sensors[] = {
 		 },
 		 /* EC does not need in S0 */
 		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 0,
-			 .ec_rate = 0,
+			 .odr = 10000 | ROUND_UP_FLAG,
+			 .ec_rate = 10 * MSEC,
 		 },
 		 /* Sensor off in S3/S5 */
 		 [SENSOR_CONFIG_EC_S3] = {
-			 .odr = 0,
-			 .ec_rate = 0,
+			 .odr = 10000 | ROUND_UP_FLAG,
+			 .ec_rate = 10 * MSEC,
 		 },
 		 /* Sensor off in S3/S5 */
 		 [SENSOR_CONFIG_EC_S5] = {
@@ -584,7 +585,7 @@ struct motion_sensor_t motion_sensors[] = {
 		},
 		/* EC use accel for angle detection */
 		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 10000 | ROUND_UP_FLAG,
+			.odr = 100000 | ROUND_UP_FLAG,
 			.ec_rate = 0,
 		},
 		 /* EC use accel for angle detection */
@@ -690,6 +691,71 @@ static void pwm_displight_preserve_state(void)
 			    sizeof(pwm_displight_duty), &pwm_displight_duty);
 }
 DECLARE_HOOK(HOOK_SYSJUMP, pwm_displight_preserve_state, HOOK_PRIO_DEFAULT);
+
+/*
+ * Sometimes when the device is fully open (360 deg), the lid switch may trigger
+ * thinking that the lid is closed.  The lid close event will cause the device
+ * to suspend.  As a workaround, we can drive the lid switch open when we
+ * determine that we are in tablet mode and then stop driving it when we are in
+ * clamshell mode.
+ */
+static void force_lid_open_in_tablet_mode(void)
+{
+	int lid_angle = motion_lid_get_angle();
+	int in_tablet_mode = motion_lid_in_tablet_mode();
+
+	CPRINTS("%d deg", lid_angle);
+
+	if (in_tablet_mode && chipset_in_state(CHIPSET_STATE_ON)) {
+		/* Change the GPIO to an output and force it high. */
+		gpio_set_flags(GPIO_LID_OPEN, GPIO_OUT_HIGH);
+	} else {
+		/*
+		 * Apply another hysteresis.  Only stop driving the GPIO once
+		 * we're within a safe region.  If we were to stop driving it as
+		 * soon as we stopped being in tablet mode, it could be a false
+		 * positive (jumping to 20 degrees or so even though the lid is
+		 * fully open).
+		 */
+		if ((lid_angle != LID_ANGLE_UNRELIABLE) &&
+		    (lid_angle <= 300) && (lid_angle >= 30)) {
+			/*
+			 * Reset the GPIO to its default setting as an input.
+			 */
+			gpio_reset(GPIO_LID_OPEN);
+			CPRINTS("GPIO reset to default.");
+		}
+	}
+}
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, force_lid_open_in_tablet_mode,
+	     HOOK_PRIO_DEFAULT);
+
+static void lcqd(void)
+{
+	int a, t, s;
+
+	a = motion_lid_get_angle();
+	t = motion_lid_in_tablet_mode();
+	s = gpio_get_level(GPIO_LID_OPEN);
+
+	if ((a <= 30) && (t == 0) && (s == 1)) {
+		CPRINTS("shhh go to bed");
+		gpio_reset(GPIO_LID_OPEN);
+		return;
+	}
+	CPRINTS("Nope. %d deg TM: %d LID_OPEN: %d", a, t, s);
+}
+DECLARE_DEFERRED(lcqd);
+
+static void lid_close_quirk(void)
+{
+	if (!motion_lid_in_tablet_mode() && (motion_lid_get_angle() <= 30) &&
+	    (gpio_get_level(GPIO_LID_OPEN))) {
+		CPRINTS("you see, the lid is closed, but you didn't reset the GPIO.");
+		hook_call_deferred(&lcqd_data, 500 * MSEC);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, lid_close_quirk, HOOK_PRIO_DEFAULT);
 
 int board_allow_i2c_passthru(int port)
 {

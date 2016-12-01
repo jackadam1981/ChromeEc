@@ -11,7 +11,11 @@
 /* Optional modules */
 #define CONFIG_ADC
 #define CONFIG_CHIPSET_RK3399
-#define CONFIG_CMD_RTC
+/* #define CONFIG_CMD_RTC */
+#undef CONFIG_CMD_BATTERY
+#undef CONFIG_CMD_CHARGER
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_HOSTCMD_RTC
 #define CONFIG_HOSTCMD_SPS
 #define CONFIG_I2C
@@ -148,7 +152,7 @@
 #define PD_DEFAULT_STATE PD_STATE_SNK_DISCONNECTED
 
 /* Optional features for test commands */
-#define CONFIG_CMD_CHARGER_PSYS
+/* #define CONFIG_CMD_CHARGER_PSYS */
 
 /* Set PSYS gain for 50W max measurement */
 #define BD99955_PSYS_GAIN_SELECT \
