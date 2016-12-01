@@ -27,6 +27,7 @@
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -690,6 +691,41 @@ static void pwm_displight_preserve_state(void)
 			    sizeof(pwm_displight_duty), &pwm_displight_duty);
 }
 DECLARE_HOOK(HOOK_SYSJUMP, pwm_displight_preserve_state, HOOK_PRIO_DEFAULT);
+
+/*
+ * Sometimes when the device is fully open (360 deg), the lid switch may trigger
+ * thinking that the lid is closed.  The lid close event will cause the device
+ * to suspend.  As a workaround, we can drive the lid switch open when we
+ * determine that we are in tablet mode and then stop driving it when we are in
+ * clamshell mode.
+ */
+static void force_lid_open_in_tablet_mode(void)
+{
+	int lid_angle = motion_lid_get_angle();
+	int in_tablet_mode = motion_lid_in_tablet_mode();
+
+	CPRINTS("%d deg", lid_angle);
+
+	if (in_tablet_mode) {
+		/* Change the GPIO to an output and force it high. */
+		gpio_set_flags(GPIO_LID_OPEN, GPIO_OUT_HIGH);
+	} else {
+		/*
+		 * Apply another hysteresis.  Only stop driving the GPIO once
+		 * we're within a safe region.  If we were to stop driving it as
+		 * soon as we stopped being in tablet mode, it could be a false
+		 * positive (jumping to 20 degrees or so even though the lid is
+		 * fully open).
+		 */
+		if ((lid_angle != LID_ANGLE_UNRELIABLE) && (lid_angle >= 21))
+			/*
+			 * Reset the GPIO to its default setting as an input.
+			 */
+			gpio_reset(GPIO_LID_OPEN);
+	}
+}
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, force_lid_open_in_tablet_mode,
+	     HOOK_PRIO_DEFAULT);
 
 int board_allow_i2c_passthru(int port)
 {
