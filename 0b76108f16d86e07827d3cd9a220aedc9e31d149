@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdc95346_711310d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-02T15:24:22Z",
+      "side": 1,
+      "message": "also gru ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "0b76108f16d86e07827d3cd9a220aedc9e31d149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdc95346_311d88dd",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-02T15:24:22Z",
+      "side": 1,
+      "message": "I personally hate this (but I do agree its uniform with the rest of the code):\nusually in this EC code base, we are not doing defensive programming against programmer\u0027s stupidity (because it\u0027s too expensive in terms of flash space)",
+      "range": {
+        "startLine": 822,
+        "startChar": 0,
+        "endLine": 822,
+        "endChar": 54
+      },
+      "revId": "0b76108f16d86e07827d3cd9a220aedc9e31d149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdc95346_11188cec",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-02T15:24:22Z",
+      "side": 1,
+      "message": "normally you should have:\n@param port ...\n@param ceil ...\neven though this seems to be wishful thinking in this file.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 3
+      },
+      "revId": "0b76108f16d86e07827d3cd9a220aedc9e31d149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
