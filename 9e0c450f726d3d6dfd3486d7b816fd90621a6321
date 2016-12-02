@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d367b0e_c15b023f",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-02T05:47:01Z",
+      "side": 1,
+      "message": "I know this boat has long sailed, just trying to understand how this works.\n\nDoes DEEP_SLEEP_ALLOWED ever become zero? I mean when is it not OK to sleep?",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 31
+      },
+      "revId": "9e0c450f726d3d6dfd3486d7b816fd90621a6321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
