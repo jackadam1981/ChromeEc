@@ -56,6 +56,8 @@
 #undef CONFIG_ACCEL_KX022
 #undef CONFIG_ACCELGYRO_LSM6DS0
 #undef CONFIG_ACCELGYRO_BMI160
+/* Enable BM160 as a temperature sensor */
+#undef CONFIG_ACCELGYRO_BMI160_TEMP
 #undef CONFIG_ACCELGYRO_LSM6DSM
 
 /* Specify barometer attached */
