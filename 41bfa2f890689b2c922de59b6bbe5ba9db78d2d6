@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ddbcf69_1411fc05",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-02T21:25:01Z",
+      "side": 1,
+      "message": "Let\u0027s just remove this assert, PWM_CONFIG_DSLEEP won\u0027t always be enabled for PWMs which we don\u0027t modify resolution. Alternatively could add a new CONFIG flag like PWM_CONFIG_DYNAMIC_RES, then not call pwm_set_freq() at pwm_init(), and enforce this for !PWM_CONFIG_DYNAMIC_RES.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 29
+      },
+      "revId": "41bfa2f890689b2c922de59b6bbe5ba9db78d2d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ddbcf69_94472c1c",
+        "filename": "chip/npcx/pwm_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-02T21:25:01Z",
+      "side": 1,
+      "message": "Maybe we should add it to include/pwm.h instead, we may want to implement it for other chips.",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "41bfa2f890689b2c922de59b6bbe5ba9db78d2d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
