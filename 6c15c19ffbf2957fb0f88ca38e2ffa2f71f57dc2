@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "cdc95346_316b482d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-02T15:43:44Z",
+      "side": 1,
+      "message": "Very good point, I should have read the spec again ...",
+      "parentUuid": "702a0062_da97982f",
+      "range": {
+        "startLine": 962,
+        "startChar": 3,
+        "endLine": 962,
+        "endChar": 53
+      },
+      "revId": "6c15c19ffbf2957fb0f88ca38e2ffa2f71f57dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d041ec2c_65e2aa16",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "cdc95346_91047c7e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-02T15:43:44Z",
+      "side": 1,
+      "message": "Thanks for updating it, looks nicer ;-)",
+      "parentUuid": "702a0062_3567e561",
+      "range": {
+        "startLine": 969,
+        "startChar": 0,
+        "endLine": 970,
+        "endChar": 35
+      },
+      "revId": "6c15c19ffbf2957fb0f88ca38e2ffa2f71f57dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d041ec2c_85df9651",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "Looking at the pd spec. this seems to be the intended behavior. But since we\u0027re not adhering closely to the spec, would you rather we enter SNK_READY instead?",
       "parentUuid": "d041ec2c_85df9651",
+      "range": {
+        "startLine": 979,
+        "startChar": 0,
+        "endLine": 980,
+        "endChar": 44
+      },
+      "revId": "6c15c19ffbf2957fb0f88ca38e2ffa2f71f57dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdc95346_11664c66",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-02T15:43:44Z",
+      "side": 1,
+      "message": "no it\u0027s probably better this way and we need to react to CC pull-up changes so SNK_DISCOVERY is good.",
+      "parentUuid": "702a0062_f5a2ad49",
       "range": {
         "startLine": 979,
         "startChar": 0,
