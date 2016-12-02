@@ -34,6 +34,24 @@
       "revId": "cbae8f9b321f33734a34cb85c82636bbfa7663ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5f5b58_87558540",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1113814
+      },
+      "writtenOn": "2016-12-02T01:38:58Z",
+      "side": 1,
+      "message": "Everything is possible, but why do we want to do that instead of teaching infrastructure to enable/disable them as needed? Dan is working on making powerd aware of tablet mode and that is the right solution.",
+      "parentUuid": "8d5f5b58_22c0efe7",
+      "revId": "cbae8f9b321f33734a34cb85c82636bbfa7663ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
