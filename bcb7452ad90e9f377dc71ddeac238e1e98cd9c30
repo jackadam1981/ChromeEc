@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8d5f5b58_eab7e51e",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-12-02T05:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d5f5b58_6ca2d64c",
+      "revId": "bcb7452ad90e9f377dc71ddeac238e1e98cd9c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d5f5b58_31515b27",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2016-12-02T01:00:34Z",
       "side": 1,
       "message": "exiting",
+      "range": {
+        "startLine": 603,
+        "startChar": 10,
+        "endLine": 603,
+        "endChar": 14
+      },
+      "revId": "bcb7452ad90e9f377dc71ddeac238e1e98cd9c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5f5b58_4ab53116",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-12-02T05:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d5f5b58_31515b27",
       "range": {
         "startLine": 603,
         "startChar": 10,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "8d5f5b58_2ab27d2e",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-12-02T05:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d5f5b58_114ed783",
+      "range": {
+        "startLine": 604,
+        "startChar": 23,
+        "endLine": 604,
+        "endChar": 29
+      },
+      "revId": "bcb7452ad90e9f377dc71ddeac238e1e98cd9c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d5f5b58_2c88de06",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 3
@@ -76,6 +142,24 @@
       "writtenOn": "2016-12-02T01:00:34Z",
       "side": 1,
       "message": "Do you also need to check if cc1 and cc2 are TYPEC_CC_VOLT_OPEN?",
+      "revId": "bcb7452ad90e9f377dc71ddeac238e1e98cd9c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5f5b58_0ae979f9",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-12-02T05:54:31Z",
+      "side": 1,
+      "message": "If both CC open, it can be considered as a valid case.\n\nANX3429 uses CC pull for cable detection, so CC should never be both open. From testing, both CC were never open. \n\nThe two incorrect cases with HoHo from testing are:\n\n1) CC1\u003dRa CC2\u003dOpen\n    This is an invalid case since with CC \u003d Ra, the other CC must be Ra also for Debug device, or Rd for Source requiring VCONN. This case is covered by this patch.\n\n2) CC1\u003dRd CC2\u003dOpen\n    This is an invalid case for HoHo, although it is valid to just has Rd on one CC. This case is not covered by this patch, but PD task will still go to SRC_DISCONNECTED_DEBOUNCE eventually which Ra is then detected.",
+      "parentUuid": "8d5f5b58_2c88de06",
       "revId": "bcb7452ad90e9f377dc71ddeac238e1e98cd9c30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
