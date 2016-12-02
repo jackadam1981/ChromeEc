@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d5f5b58_8752a4f7",
+        "filename": "board/pyro/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-02T03:13:28Z",
+      "side": 1,
+      "message": "So this is still just on or off? Do we actually not want to pwm the LED? We just want on vs off?",
+      "revId": "4e72ae24072c630780cdcf497f3b5871953a36bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
