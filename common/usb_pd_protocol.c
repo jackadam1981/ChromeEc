@@ -2796,7 +2796,7 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 				pd[port].power_role = PD_ROLE_SOURCE;
 				timeout = 2*MSEC;
 			} else {
-				tcpm_set_drp_toggle(port);
+				tcpm_set_drp_toggle(port, drp_state);
 				pd[port].flags |= PD_FLAGS_TCPC_DRP_TOGGLE;
 				timeout = -1;
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER

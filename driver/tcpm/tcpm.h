@@ -137,9 +137,10 @@ static inline void tcpc_discharge_vbus(int port, int enable)
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-static inline int tcpm_set_drp_toggle(int port)
+static inline int tcpm_set_drp_toggle(int port,
+				      enum pd_dual_role_states drp_state)
 {
-	return tcpc_config[port].drv->drp_toggle(port);
+	return tcpc_config[port].drv->drp_toggle(port, drp_state);
 }
 #endif
 

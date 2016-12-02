@@ -549,12 +549,27 @@ static int anx74xx_tcpm_set_cc(int port, int pull)
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-static int anx74xx_tcpc_drp_toggle(int port)
+static int anx74xx_tcpc_drp_toggle(int port,
+				   enum pd_dual_role_states drp_state)
 {
 	int rv;
 
-	/* Disable CC software Control */
-	rv = anx74xx_cc_software_ctrl(port, 0);
+	switch (drp_state) {
+	case PD_DRP_FORCE_SOURCE:
+		/* Set Rd to act as SOURCE */
+		anx74xx_tcpm_set_cc(port, TYPEC_CC_RP);
+		break;
+	case PD_DRP_FORCE_SINK:
+	case PD_DRP_TOGGLE_OFF:
+		/* Set Rd to act as SINK */
+		anx74xx_tcpm_set_cc(port, TYPEC_CC_RD);
+		break;
+	case PD_DRP_TOGGLE_ON:
+	default:
+		/* Disable CC software Control */
+		rv = anx74xx_cc_software_ctrl(port, 0);
+		break;
+	}
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	anx74xx_set_power_mode(port, ANX74XX_STANDBY_MODE);
