@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_USB_PD_TCPM_H
 #define __CROS_EC_USB_PD_TCPM_H
 
+#include "usb_pd.h"
+
 /* Default retry count for transmitting */
 #define PD_RETRY_COUNT 3
 
@@ -193,7 +195,7 @@ struct tcpm_drv {
 	 *
 	 * @return EC_SUCCESS or error
 	 */
-	int (*drp_toggle)(int port);
+	int (*drp_toggle)(int port, enum pd_dual_role_states drp_state);
 #endif
 };
 

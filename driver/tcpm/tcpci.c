@@ -20,6 +20,10 @@ static int tcpc_vbus[CONFIG_USB_PD_PORT_COUNT];
 /* Save the selected rp value */
 static int selected_rp[CONFIG_USB_PD_PORT_COUNT];
 
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+static int low_power_mode[CONFIG_USB_PD_PORT_COUNT];
+#endif
+
 static int init_alert_mask(int port)
 {
 	uint16_t mask;
@@ -65,6 +69,28 @@ int tcpci_tcpm_get_cc(int port, int *cc1, int *cc2)
 {
 	int status;
 	int rv;
+
+int reg;
+		i2c_read8(NPCX_I2C_PORT0_1, 0x10, 0xA0, &reg);
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	if (low_power_mode[port]) {
+#ifdef CONFIG_USB_PD_TCPM_PS8751
+		int reg;
+
+		/*
+		 * TODO: Remove when Reef is updated with PS8751 A3.
+		 *
+		 * Force PS8751 A2 to wake from low power mode.
+		 *
+		 * NOTE: PS8751 A3 will wake on any I2C access.
+		 */
+		i2c_read8(NPCX_I2C_PORT0_1, 0x10, 0xA0, &reg);
+#endif
+		tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_WAKEI2C);
+
+		low_power_mode[port] = 0;
+	}
+#endif
 
 	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
 
@@ -131,19 +157,36 @@ int tcpci_tcpm_set_cc(int port, int pull)
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-static int tcpci_tcpc_drp_toggle(int port)
+static int tcpci_tcpc_drp_toggle(int port,
+				 enum pd_dual_role_states drp_state)
 {
 	int rv;
 
-	/* Set auto drp toggle */
-	rv = set_role_ctrl(port, 1, TYPEC_RP_USB, TYPEC_CC_OPEN);
+	switch (drp_state) {
+	case PD_DRP_FORCE_SOURCE:
+		/* Set Rd to act as SOURCE */
+		tcpci_tcpm_set_cc(port, TYPEC_CC_RP);
+		break;
+	case PD_DRP_FORCE_SINK:
+	case PD_DRP_TOGGLE_OFF:
+		/* Set Rd to act as SINK */
+		tcpci_tcpm_set_cc(port, TYPEC_CC_RD);
+		break;
+	case PD_DRP_TOGGLE_ON:
+	default:
+		/* Set auto DRP toggle */
+		rv = set_role_ctrl(port, 1, TYPEC_RP_USB, TYPEC_CC_OPEN);
 
-	/* Set Look4Connection command */
-	rv |= tcpc_write(port, TCPC_REG_COMMAND,
-			 TCPC_REG_COMMAND_LOOK4CONNECTION);
+		/* Set Look4Connection command */
+		rv |= tcpc_write(port, TCPC_REG_COMMAND,
+				 TCPC_REG_COMMAND_LOOK4CONNECTION);
+		break;
+	}
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	rv |= tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
+
+	low_power_mode[port] = 1;
 #endif
 	return rv;
 }
