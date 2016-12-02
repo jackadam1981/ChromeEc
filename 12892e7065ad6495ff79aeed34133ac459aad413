@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdc95346_31926837",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-02T14:36:27Z",
+      "side": 1,
+      "message": "nit: I don\u0027t really like the name.\nI\u0027m not sure I have a better one either,\nmaybe with \u0027try\u0027 rather than \u0027request\u0027",
+      "range": {
+        "startLine": 841,
+        "startChar": 4,
+        "endLine": 841,
+        "endChar": 25
+      },
+      "revId": "12892e7065ad6495ff79aeed34133ac459aad413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdc95346_d1a68493",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-02T14:36:27Z",
+      "side": 1,
+      "message": "\"Try to become the VCONN source\" ?",
+      "range": {
+        "startLine": 1517,
+        "startChar": 3,
+        "endLine": 1517,
+        "endChar": 44
+      },
+      "revId": "12892e7065ad6495ff79aeed34133ac459aad413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
