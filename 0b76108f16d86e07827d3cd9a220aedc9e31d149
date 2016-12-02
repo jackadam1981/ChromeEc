@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "cdc95346_51f7f46d",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-02T15:31:53Z",
+      "side": 1,
+      "message": "Well, it\u0027s not \u0027immediate\u0027 but \u0027synchronous\u0027 , so probably fills the need.",
+      "parentUuid": "cdc95346_f11e20d7",
+      "range": {
+        "startLine": 824,
+        "startChar": 0,
+        "endLine": 827,
+        "endChar": 42
+      },
+      "revId": "0b76108f16d86e07827d3cd9a220aedc9e31d149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdc95346_11188cec",
         "filename": "include/charge_manager.h",
         "patchSetId": 3
