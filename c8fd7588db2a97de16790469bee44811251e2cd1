@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "8d367b0e_41fd32fb",
+        "filename": "board/pbody/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1167184
+      },
+      "writtenOn": "2016-12-02T03:12:43Z",
+      "side": 1,
+      "message": "I remove these undefs for FAFT; besides, mofidy HC debug mode and SHARED_MEM_MIN_SIZE.Then compile can pass.",
+      "parentUuid": "8d5f5b58_2788f906",
+      "range": {
+        "startLine": 149,
+        "startChar": 7,
+        "endLine": 149,
+        "endChar": 25
+      },
+      "revId": "c8fd7588db2a97de16790469bee44811251e2cd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d5f5b58_8cac8a84",
         "filename": "board/pbody/board.h",
         "patchSetId": 1
