@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "2ddbcf69_8ef5db63",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-02T18:43:35Z",
+      "side": 1,
+      "message": "Will remove all of these in a follow-up CL.",
+      "parentUuid": "cdc95346_311d88dd",
+      "range": {
+        "startLine": 822,
+        "startChar": 0,
+        "endLine": 822,
+        "endChar": 54
+      },
+      "revId": "0b76108f16d86e07827d3cd9a220aedc9e31d149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdc95346_f11e20d7",
         "filename": "common/charge_manager.c",
         "patchSetId": 3
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "adffbf6a_e9b24b97",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-02T18:43:35Z",
+      "side": 1,
+      "message": "Yes, what I really meant was \"synchronous\", I will clarify in the comment.\n\nboard_set_charge_limit() will also be called from a deferred task, so a race is possible. But, the race should cause no harm. One of two current limits will end up being applied, until charge_manager_refresh() is called again (charge_manager_set_ceil() will trigger it) and the proper limit will be applied.\n\nSo in summary, charge_manager_force_ceil() allows us to shortcut the update, but is not 100% reliable.",
+      "parentUuid": "cdc95346_51f7f46d",
+      "range": {
+        "startLine": 824,
+        "startChar": 0,
+        "endLine": 827,
+        "endChar": 42
+      },
+      "revId": "0b76108f16d86e07827d3cd9a220aedc9e31d149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdc95346_11188cec",
         "filename": "include/charge_manager.h",
         "patchSetId": 3
@@ -106,6 +154,30 @@
       "writtenOn": "2016-12-02T15:24:22Z",
       "side": 1,
       "message": "normally you should have:\n@param port ...\n@param ceil ...\neven though this seems to be wishful thinking in this file.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 3
+      },
+      "revId": "0b76108f16d86e07827d3cd9a220aedc9e31d149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5f5b58_338dd5c2",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-02T18:43:35Z",
+      "side": 1,
+      "message": "I\u0027ll add a follow-up CL to document params / return values in the standard way throughout this file.",
+      "parentUuid": "cdc95346_11188cec",
       "range": {
         "startLine": 82,
         "startChar": 0,
