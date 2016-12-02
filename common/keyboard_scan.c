@@ -52,7 +52,7 @@
 #ifndef CONFIG_KEYBOARD_BOARD_CONFIG
 /* Use default keyboard scan config, because board didn't supply one */
 struct keyboard_scan_config keyscan_config = {
-	.output_settle_us = 50,
+	.output_settle_us = 80,
 	.debounce_down_us = 9 * MSEC,
 	.debounce_up_us = 30 * MSEC,
 	.scan_period_us = 3 * MSEC,
