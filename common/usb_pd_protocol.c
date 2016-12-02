@@ -3351,6 +3351,9 @@ static int command_pd(int argc, char **argv)
 		} else if (!strncasecmp(argv[3], "vers", 4)) {
 			pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_VERSION,
 				    NULL, 0);
+		} else if (!strncasecmp(argv[3], "ident", 4)) {
+			pd_send_vdm(port, USB_SID_PD,
+				CMD_DISCOVER_IDENT, NULL, 0);
 		} else {
 			return EC_ERROR_PARAM_COUNT;
 		}
