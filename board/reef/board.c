@@ -445,6 +445,9 @@ const struct temp_sensor_t temp_sensors[] = {
 	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp, 0, 1},
 	{"Ambient", TEMP_SENSOR_TYPE_BOARD, board_get_ambient_temp, 0, 5},
 	{"Charger", TEMP_SENSOR_TYPE_BOARD, board_get_charger_temp, 1, 1},
+#ifdef CONFIG_ACCELGYRO_BMI160_TEMP
+	{"Gyro", TEMP_SENSOR_TYPE_BOARD, bmi_get_sensor_temp, BASE_GYRO, 1}
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
