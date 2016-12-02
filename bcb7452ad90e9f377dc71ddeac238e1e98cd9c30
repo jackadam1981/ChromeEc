@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d5f5b58_6ca2d64c",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-12-02T01:00:34Z",
+      "side": 1,
+      "message": "According to chrome-os-partner:60021 comment #21, the ANX3429 needs at least 10-15 ms. Would it be wise to unconditionally delay 15ms and enter the loop with timeout\u003d15?",
+      "revId": "bcb7452ad90e9f377dc71ddeac238e1e98cd9c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5f5b58_31515b27",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-12-02T01:00:34Z",
+      "side": 1,
+      "message": "exiting",
+      "range": {
+        "startLine": 603,
+        "startChar": 10,
+        "endLine": 603,
+        "endChar": 14
+      },
+      "revId": "bcb7452ad90e9f377dc71ddeac238e1e98cd9c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5f5b58_114ed783",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-12-02T01:00:34Z",
+      "side": 1,
+      "message": "detected",
+      "range": {
+        "startLine": 604,
+        "startChar": 23,
+        "endLine": 604,
+        "endChar": 29
+      },
+      "revId": "bcb7452ad90e9f377dc71ddeac238e1e98cd9c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5f5b58_2c88de06",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-12-02T01:00:34Z",
+      "side": 1,
+      "message": "Do you also need to check if cc1 and cc2 are TYPEC_CC_VOLT_OPEN?",
+      "revId": "bcb7452ad90e9f377dc71ddeac238e1e98cd9c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
