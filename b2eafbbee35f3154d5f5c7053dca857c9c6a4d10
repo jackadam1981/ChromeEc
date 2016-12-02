@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "8decbb0b_113a2cf6",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-02T18:39:56Z",
+      "side": 1,
+      "message": "I am cherry-pickiing 9b67ffc in kevin branch, to use the proper interface.",
+      "revId": "b2eafbbee35f3154d5f5c7053dca857c9c6a4d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d5f5b58_76490931",
         "filename": "board/kevin/board.c",
         "patchSetId": 1
