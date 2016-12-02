@@ -20,5 +20,6 @@ struct pwm_t {
 
 extern const struct pwm_t pwm_channels[];
 void pwm_config(enum pwm_channel ch);
+void pwm_set_freq(enum pwm_channel ch, uint32_t freq);
 
 #endif /* __CROS_EC_PWM_CHIP_H */
