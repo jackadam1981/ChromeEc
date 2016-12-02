@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8d5f5b58_f074f340",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-12-02T16:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdc95346_31f6e86f",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 16
+      },
+      "revId": "09eed468a5e866a058586cc8b264f9feae14d470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdc95346_f1070081",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8d5f5b58_7088e307",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2517,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-12-02T16:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdc95346_f1070081",
+      "range": {
+        "startLine": 2517,
+        "startChar": 3,
+        "endLine": 2517,
+        "endChar": 4
+      },
+      "revId": "09eed468a5e866a058586cc8b264f9feae14d470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdc95346_11f16c76",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2016-12-02T15:43:44Z",
       "side": 1,
       "message": "nit: whitespace (we don\u0027t have tabs for alignment for the other ones)",
+      "range": {
+        "startLine": 163,
+        "startChar": 25,
+        "endLine": 163,
+        "endChar": 26
+      },
+      "revId": "09eed468a5e866a058586cc8b264f9feae14d470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5f5b58_70a10378",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-12-02T16:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdc95346_11f16c76",
       "range": {
         "startLine": 163,
         "startChar": 25,
