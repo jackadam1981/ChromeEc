@@ -262,8 +262,13 @@ static void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 		 */
 		if (!PD_VDO_AMA_VBUS_REQ(payload[VDO_I(AMA)]))
 			pd_power_supply_reset(port);
+
+#if defined(CONFIG_USB_PD_DUAL_ROLE) && defined(CONFIG_USBC_VCONN_SWAP)
+		/* Adapter is requesting vconn, supplying it */
+		if (PD_VDO_AMA_VCONN_REQ(payload[VDO_I(AMA)]))
+			pd_request_vconn_src(port);
+#endif
 		break;
-		/* TODO(crosbug.com/p/30645) provide vconn support here */
 	default:
 		break;
 	}
