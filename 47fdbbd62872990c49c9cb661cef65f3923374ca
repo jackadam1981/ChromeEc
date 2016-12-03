@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ddbcf69_c873d356",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-12-03T00:24:59Z",
+      "side": 1,
+      "message": "returned",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "47fdbbd62872990c49c9cb661cef65f3923374ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ddbcf69_1d98ff5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-12-03T00:24:59Z",
+      "side": 1,
+      "message": "chrome-os-partner",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "47fdbbd62872990c49c9cb661cef65f3923374ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ddbcf69_e86e8f6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-12-03T00:24:59Z",
+      "side": 1,
+      "message": "none",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "47fdbbd62872990c49c9cb661cef65f3923374ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ddbcf69_88acab6a",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1265,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-12-03T00:24:59Z",
+      "side": 1,
+      "message": "Do we need this #ifdef everywhere? I thought the linker automatically removes unreferenced symbols so all we need is line 448 in board.c in the next CL.",
+      "range": {
+        "startLine": 1265,
+        "startChar": 7,
+        "endLine": 1265,
+        "endChar": 35
+      },
+      "revId": "47fdbbd62872990c49c9cb661cef65f3923374ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ddbcf69_887eeb1a",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-12-03T00:24:59Z",
+      "side": 1,
+      "message": "nit: nice to align with the above columns",
+      "range": {
+        "startLine": 130,
+        "startChar": 27,
+        "endLine": 130,
+        "endChar": 28
+      },
+      "revId": "47fdbbd62872990c49c9cb661cef65f3923374ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
