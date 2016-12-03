@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ddbcf69_f8bc1ea0",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-03T18:48:11Z",
+      "side": 1,
+      "message": "This sentence doesn\u0027t apply for caroline.",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 221,
+        "endChar": 21
+      },
+      "revId": "ad541fe53833aeb5c5a568a5d7822820814b75f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ddbcf69_18b80aab",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-03T18:48:11Z",
+      "side": 1,
+      "message": "We can move this to the beginning of the function.",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 229,
+        "endChar": 20
+      },
+      "revId": "ad541fe53833aeb5c5a568a5d7822820814b75f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
