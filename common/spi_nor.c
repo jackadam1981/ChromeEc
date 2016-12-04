@@ -125,9 +125,10 @@ static int spi_nor_wait(const struct spi_nor_device_t *spi_nor_device)
 /**
  * Read the Manufacturer bank and ID out of the JEDEC ID.
  */
-static int spi_nor_read_jedec_id(const struct spi_nor_device_t *spi_nor_device,
-				 uint8_t *out_mfn_bank,
-				 uint8_t *out_mfn_id)
+static int spi_nor_read_jedec_mfn_id(
+		const struct spi_nor_device_t *spi_nor_device,
+		uint8_t *out_mfn_bank,
+		uint8_t *out_mfn_id)
 {
 	int rv = EC_SUCCESS;
 	uint8_t jedec_id[SPI_NOR_JEDEC_ID_BANKS];
@@ -518,6 +519,32 @@ int spi_nor_set_4b_mode(struct spi_nor_device_t *spi_nor_device,
 }
 
 /**
+ * Read JEDEC Identifier.
+ *
+ * @param spi_nor_device The Serial NOR Flash device to use.
+ * @param size Number of Bytes to read.
+ * @param data Destination buffer for data.
+ * @return ec_error_list (non-zero on error and timeout).
+ */
+int spi_nor_read_jedec_id(const struct spi_nor_device_t *spi_nor_device,
+			  size_t size, uint8_t *data) {
+	int rv;
+	uint8_t cmd = SPI_NOR_OPCODE_JEDEC_ID;
+
+	if (size > CONFIG_SPI_NOR_MAX_READ_SIZE)
+		return EC_ERROR_INVAL;
+	/* Claim the driver mutex. */
+	mutex_lock(&driver_mutex);
+	/* Read the JEDEC ID. */
+	rv = spi_transaction(&spi_devices[spi_nor_device->spi_master],
+			     &cmd, 1, data, size);
+	/* Release the driver mutex. */
+	mutex_unlock(&driver_mutex);
+
+	return rv;
+}
+
+/**
  * Read from the Serial NOR Flash device.
  *
  * @param spi_nor_device The Serial NOR Flash device to use.
@@ -765,7 +792,8 @@ static int command_spi_nor_info(int argc, char **argv)
 			 spi_nor_device->page_size);
 
 		/* Get JEDEC ID info. */
-		rv = spi_nor_read_jedec_id(spi_nor_device, &mfn_bank, &mfn_id);
+		rv = spi_nor_read_jedec_mfn_id(spi_nor_device, &mfn_bank,
+					       &mfn_id);
 		if (rv != EC_SUCCESS)
 			return rv;
 		ccprintf("\tJEDEC ID bank %d manufacturing code 0x%x\n",
