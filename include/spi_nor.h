@@ -120,6 +120,16 @@ int spi_nor_set_4b_mode(struct spi_nor_device_t *spi_nor_device,
 			int enter_4b_addressing_mode);
 
 /**
+ * Read JEDEC Identifier.
+ *
+ * @param spi_nor_device The Serial NOR Flash device to use.
+ * @param size Number of Bytes to read.
+ * @param data Destination buffer for data.
+ * @return ec_error_list (non-zero on error and timeout).
+ */
+int spi_nor_read_jedec_id(const struct spi_nor_device_t *spi_nor_device,
+			  size_t size, uint8_t *data);
+/**
  * Read from the Serial NOR Flash device.
  *
  * @param spi_nor_device The Serial NOR Flash device to use.

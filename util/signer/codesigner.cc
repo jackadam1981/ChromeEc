@@ -429,11 +429,13 @@ int main(int argc, char* argv[]) {
   if (jsonFilename.empty()) {
     // Defaults, in case no JSON
     values.insert(make_pair("keyid", key.n0inv()));
-    values.insert(make_pair("epoch", 0x1337));
+    values.insert(make_pair("epoch", 0x0));
+    values.insert(make_pair("major", 0x0));
+    values.insert(make_pair("minor", 0xf));
   }
 
   // Hardcoded expectation. Can be overwritten in JSON w/ new explicit value.
-  fuses["FW_DEFINED_DATA_EXTRA_BLK6"] = 0;
+  //fuses["FW_DEFINED_DATA_EXTRA_BLK6"] = 0;
 
   if (!jsonFilename.empty() &&
       !readJSON(jsonFilename, &tag, &values, &fuses, &infos)) {
@@ -497,7 +499,7 @@ int main(int argc, char* argv[]) {
 
   VERBOSE("found %lu fuse definitions\n", fuse_ids.size());
   assert(fuse_ids.size() < FUSE_MAX);
-
+#if 0
   if (fuse_ids.size() != 0) {
     // Make sure FW_DEFINED_DATA_EXTRA_BLK6 is still at 125, width 3.
     assert(fuse_ids["FW_DEFINED_DATA_EXTRA_BLK6"] == 125);
@@ -507,6 +509,7 @@ int main(int argc, char* argv[]) {
   // Whether we loaded xml or not, hardcode FW_DEFINED_DATA_EXTRA_BLK6
   fuse_ids["FW_DEFINED_DATA_EXTRA_BLK6"] = 125;
   fuse_bits["FW_DEFINED_DATA_EXTRA_BLK6"] = 5;
+#endif
 
   for (map<string, uint32_t>::const_iterator it = fuse_ids.begin();
        it != fuse_ids.end(); ++it) {
