@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ddbcf69_c954f243",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-05T18:22:53Z",
+      "side": 1,
+      "message": "For future reference, no need for these formal docs on static functions. It doesn\u0027t hurt though.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 42
+      },
+      "revId": "f846a43e58317f9a04649362ec9c435d9c31cb0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ddbcf69_6964de28",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-05T18:22:53Z",
+      "side": 1,
+      "message": "typo here.",
+      "range": {
+        "startLine": 712,
+        "startChar": 45,
+        "endLine": 712,
+        "endChar": 53
+      },
+      "revId": "f846a43e58317f9a04649362ec9c435d9c31cb0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
