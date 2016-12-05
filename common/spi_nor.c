@@ -614,7 +614,8 @@ int spi_nor_erase(const struct spi_nor_device_t *spi_nor_device,
 		  uint32_t offset, size_t size)
 {
 	int rv = EC_SUCCESS;
-	size_t erase_command_size;
+	size_t erase_command_size, erase_size;
+	uint8_t erase_opcode;
 
 	/* Invalid input */
 	if ((offset % 4096 != 0) || (size % 4096 != 0) || (size < 4096))
@@ -624,6 +625,8 @@ int spi_nor_erase(const struct spi_nor_device_t *spi_nor_device,
 	mutex_lock(&driver_mutex);
 
 	while (size > 0) {
+		erase_opcode = SPI_NOR_DRIVER_SPECIFIED_OPCODE_4KIB_ERASE;
+		erase_size = 4096;
 		/* Wait for the previous operation to finish. */
 		rv = spi_nor_wait(spi_nor_device);
 		if (rv)
@@ -634,8 +637,15 @@ int spi_nor_erase(const struct spi_nor_device_t *spi_nor_device,
 		if (rv)
 			goto err_free;
 
+#ifdef CONFIG_SPI_NOR_BLOCK_ERASE
+		if (!(offset % 65536) && size >= 65536) {
+			erase_opcode =
+				SPI_NOR_DRIVER_SPECIFIED_OPCODE_64KIB_ERASE;
+			erase_size = 65536;
+		}
+#endif
 		/* Set up the erase instruction. */
-		buf[0] = SPI_NOR_DRIVER_SPECIFIED_OPCODE_4KIB_ERASE;
+		buf[0] = erase_opcode;
 		if (spi_nor_device->in_4b_addressing_mode) {
 			buf[1] = (offset & 0xFF000000) >> 24;
 			buf[2] = (offset & 0xFF0000) >> 16;
@@ -655,8 +665,8 @@ int spi_nor_erase(const struct spi_nor_device_t *spi_nor_device,
 		if (rv)
 			goto err_free;
 
-		offset += 4096;
-		size -= 4096;
+		offset += erase_size;
+		size -= erase_size;
 	}
 
 	/* Wait for the previous operation to finish. */
