@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad35ff63_82635ac2",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-05T11:47:34Z",
+      "side": 1,
+      "message": "that might not be the right place to write (in_len is not fully incremented yet). as the pointer is not used, just put NULL or whatever.",
+      "range": {
+        "startLine": 76,
+        "startChar": 6,
+        "endLine": 76,
+        "endChar": 25
+      },
+      "revId": "b09b810927c7921a3d3df60ba61d49ef719d2ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad35ff63_22704e86",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-05T11:47:34Z",
+      "side": 1,
+      "message": "ditto NULL",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 24
+      },
+      "revId": "b09b810927c7921a3d3df60ba61d49ef719d2ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad35ff63_c26082ba",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-05T11:47:34Z",
+      "side": 1,
+      "message": "on any error, the state machine is not re-initialized.\nAre we able to recover from it ?",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 25
+      },
+      "revId": "b09b810927c7921a3d3df60ba61d49ef719d2ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad35ff63_e27a6664",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-05T11:47:34Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused: if we are reading a register which is *not* cached, we are neither doing the read here nor sending back an error code ?",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 9
+      },
+      "revId": "b09b810927c7921a3d3df60ba61d49ef719d2ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
