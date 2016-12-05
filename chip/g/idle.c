@@ -193,7 +193,7 @@ void __idle(void)
 		idle_action = IDLE_DEFAULT;
 
 	/* Disable sleep until 3 minutes after init */
-	delay_sleep_by(3 * MINUTE);
+	delay_sleep_by(3 * SECOND);
 
 	while (1) {
 
