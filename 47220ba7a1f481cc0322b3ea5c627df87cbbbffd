@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2ddbcf69_5f38b4e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-12-05T21:07:58Z",
+      "side": 1,
+      "message": "OK, I will check with connecting to another Reef, a Samus, and a Nexus 5x, and update the test result.",
+      "parentUuid": "ad35ff63_a528e8b0",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "47220ba7a1f481cc0322b3ea5c627df87cbbbffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d3b075b_a0745a77",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2ddbcf69_1f1a2c89",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-12-05T21:07:58Z",
+      "side": 1,
+      "message": "I do have not exact root cause on why Rd is on detected on the other CC line.\n\nFrom ANX team debug info, there were noise on CC line after exited standby mode when they were able to reproduce the issue. \nI will add ANX team to crosbug to let them further comment.",
+      "parentUuid": "6d3b075b_a0745a77",
+      "range": {
+        "startLine": 610,
+        "startChar": 7,
+        "endLine": 611,
+        "endChar": 59
+      },
+      "revId": "47220ba7a1f481cc0322b3ea5c627df87cbbbffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d01ab89_45cfcab9",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2016-12-05T20:42:43Z",
       "side": 1,
       "message": "invalid or just a dangling powered cable",
+      "range": {
+        "startLine": 612,
+        "startChar": 6,
+        "endLine": 612,
+        "endChar": 39
+      },
+      "revId": "47220ba7a1f481cc0322b3ea5c627df87cbbbffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ddbcf69_1f46ac9b",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-12-05T21:07:58Z",
+      "side": 1,
+      "message": "Yes, just a dangling powered cable, I will update the comment.",
+      "parentUuid": "0d01ab89_45cfcab9",
       "range": {
         "startLine": 612,
         "startChar": 6,
