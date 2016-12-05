@@ -22,6 +22,30 @@
       "revId": "064a8a043e575d4f736093db4e2fb18e1d217aea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8da03ba7_111a8c88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-12-05T11:37:44Z",
+      "side": 1,
+      "message": "Sounds reasonable, or maybe even a test for mv \u003e\u003d PD_MIN_VOLTAGE_MV \u003d 5000, while we are at it?\n\nSee chrome-os-partner:60575 for the \"PDO\". For whatever reason ANX7688 is feeding us a bogus packet during hard reset (that\u0027s bad, too, but, still, we shouldn\u0027t crash...)",
+      "parentUuid": "ad35ff63_22384ee5",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "064a8a043e575d4f736093db4e2fb18e1d217aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
