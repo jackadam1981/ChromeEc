@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad35ff63_a528e8b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-05T20:42:43Z",
+      "side": 1,
+      "message": "you need some testing with other dual role devices to check that you still have a reasonable probability to end up being source or sink (and try.src/try.snk are still working)",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "47220ba7a1f481cc0322b3ea5c627df87cbbbffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d3b075b_a0745a77",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-05T20:42:43Z",
+      "side": 1,
+      "message": "why would this be the only bad values observed ?",
+      "range": {
+        "startLine": 610,
+        "startChar": 7,
+        "endLine": 611,
+        "endChar": 59
+      },
+      "revId": "47220ba7a1f481cc0322b3ea5c627df87cbbbffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d01ab89_45cfcab9",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-05T20:42:43Z",
+      "side": 1,
+      "message": "invalid or just a dangling powered cable",
+      "range": {
+        "startLine": 612,
+        "startChar": 6,
+        "endLine": 612,
+        "endChar": 39
+      },
+      "revId": "47220ba7a1f481cc0322b3ea5c627df87cbbbffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
