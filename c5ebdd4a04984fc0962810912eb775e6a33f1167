@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ddbcf69_ee957490",
+        "filename": "board/pyro/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-05T16:47:48Z",
+      "side": 1,
+      "message": "please add below CL changes too. Else charge state, cutoff \u0026 boot from cutoff will not work as expected.\nhttps://chromium-review.googlesource.com/#/c/413153/4/board/reef/battery.c",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 70
+      },
+      "revId": "c5ebdd4a04984fc0962810912eb775e6a33f1167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
