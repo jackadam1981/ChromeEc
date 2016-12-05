@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad35ff63_22384ee5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-05T10:01:23Z",
+      "side": 1,
+      "message": "sure it is, but at the same time, in first place, we should not select a broken pdo in pd_find_pdo_index()\n\nI\u0027m not exactly sure what your PDOs look like,\nbut we likely want to do something like this in pd_find_pdo_index() :\n-if (!pd_is_valid_input_voltage(mv))\n+if (!mv || !pd_is_valid_input_voltage(mv))\n                        continue;",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "064a8a043e575d4f736093db4e2fb18e1d217aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
