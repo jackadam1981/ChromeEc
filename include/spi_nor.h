@@ -79,6 +79,7 @@ extern const unsigned int spi_nor_devices_used;
 /* If needed in the future this driver can be extended to discover SFDP
  * advertised erase sizes and opcodes for SFDP v1.0+. */
 #define SPI_NOR_DRIVER_SPECIFIED_OPCODE_4KIB_ERASE 0x20
+#define SPI_NOR_DRIVER_SPECIFIED_OPCODE_64KIB_ERASE 0xd8
 
 /* If needed in the future this driver can be extended to discover 4B entry and
  * exit methods for SFDP v1.5+. */
