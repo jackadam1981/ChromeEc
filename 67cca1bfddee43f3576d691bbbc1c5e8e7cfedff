@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ddbcf69_49980261",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-05T19:05:30Z",
+      "side": 1,
+      "message": "Should be \"pyro / stampy: ...\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "67cca1bfddee43f3576d691bbbc1c5e8e7cfedff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad997f95_42333254",
+        "filename": "board/snappy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-05T19:05:30Z",
+      "side": 1,
+      "message": "You might want to comment that you changed this from the default, and why.",
+      "range": {
+        "startLine": 1013,
+        "startChar": 1,
+        "endLine": 1013,
+        "endChar": 24
+      },
+      "revId": "67cca1bfddee43f3576d691bbbc1c5e8e7cfedff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
