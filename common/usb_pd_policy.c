@@ -140,6 +140,12 @@ static void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv)
 	int max_ma, uw;
 	*mv = ((pdo >> 10) & 0x3FF) * 50;
 
+	if (*mv == 0) {
+		CPRINTF("ERR:PDO mv=0\n");
+		*ma = 0;
+		return;
+	}
+
 	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
 		uw = 250000 * (pdo & 0x3FF);
 		max_ma = 1000 * MIN(1000 * uw, PD_MAX_POWER_MW) / *mv;
