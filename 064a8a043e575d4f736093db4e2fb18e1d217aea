@@ -46,6 +46,30 @@
       "revId": "064a8a043e575d4f736093db4e2fb18e1d217aea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad35ff63_4286b235",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-05T12:05:09Z",
+      "side": 1,
+      "message": "The voltages below 5V is another can of worm I think, but I wouldn\u0027t touch it for now.\nMost of our systems support down to 4.5V at least and a pass-through might want to set a descriptor slightly lower than 5V (if this is still permitted by the spec, I haven\u0027t checked the up-to-date version).",
+      "parentUuid": "8da03ba7_111a8c88",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "064a8a043e575d4f736093db4e2fb18e1d217aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
