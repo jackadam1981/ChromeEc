@@ -779,6 +779,10 @@ void host_register_init(void)
 	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x06);
 	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 
+	/* enable Mouse */
+	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x05);
+	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+
 	/* Setting PMC2 */
 	/* LDN register = 0x12(PMC2) */
 	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x12);
