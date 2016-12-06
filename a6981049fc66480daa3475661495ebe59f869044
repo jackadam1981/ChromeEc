@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6d14e7d4_fe4d193d",
+        "filename": "util/signer/bs",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-12-06T19:34:59Z",
+      "side": 1,
+      "message": "Since dev-signing node locked RW\u0027s will be the common use case, how about fool-proofing the script?  i.e. if the key-id in the json file is -1187158727 (b1-dev key), then the script should fail unless DEVIDS have been specified.\n\nAlso not sure how hard it would be to do, but if possible it would be nice to \"sniff test\" the ELFs and bail if trying to sign DEV\u003d1 built elfs with the prod RW key.  Of course codesigner can be run directly, but atleast that would require some work.",
+      "revId": "a6981049fc66480daa3475661495ebe59f869044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d14e7d4_fec2f995",
         "filename": "util/signer/bs",
         "patchSetId": 1
