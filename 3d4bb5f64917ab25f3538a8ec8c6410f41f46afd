@@ -22,6 +22,30 @@
       "revId": "3d4bb5f64917ab25f3538a8ec8c6410f41f46afd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ddbcf69_c58deec2",
+        "filename": "board/kevin/led_gru.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2016-12-06T03:48:57Z",
+      "side": 1,
+      "message": "Yes, the old silego part combined with the fixed 100Hz PWM resulted in fairly random color selection.\n\nWith 200 Hz, 70 gets you a kind of yellowish green (because amber is still being lit).  With 200 Hz *and the updated silego*, it\u0027s supergreen.",
+      "parentUuid": "2ddbcf69_a5dc22cf",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "3d4bb5f64917ab25f3538a8ec8c6410f41f46afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
