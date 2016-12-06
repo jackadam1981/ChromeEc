@@ -79,6 +79,10 @@ static void prepare_to_sleep(void)
 	/* No task switching! */
 	interrupt_disable();
 
+	GWRITE(RBOX, WAKEUP_CLEAR, 1);
+	GWRITE(RBOX, WAKEUP_CLEAR, 0);
+	GWRITE(RBOX, WAKEUP_ENABLE, 1);
+
 	/* Enable all possible internal wake sources */
 	GR_PMU_EXITPD_MASK =
 		GC_PMU_EXITPD_MASK_PIN_PD_EXIT_MASK |

@@ -4,6 +4,8 @@
  */
 
 #include "clock.h"
+#include "task.h"
+#include "console.h"
 #include "hooks.h"
 #include "registers.h"
 #include "timer.h"
@@ -49,6 +51,18 @@ static void rbox_release_ec_reset(void)
 	GREG32(PINMUX, HOLD) = 0;
 }
 DECLARE_HOOK(HOOK_INIT, rbox_release_ec_reset, HOOK_PRIO_LAST);
+
+static void ac_change(void)
+{
+	ccprintf("AC STATE CHANGE %b\n\n", GREAD(RBOX, WAKEUP_INTR));
+
+	GWRITE(RBOX, INT_STATE, GREAD(RBOX, INT_STATE));
+
+	GWRITE(RBOX, WAKEUP_CLEAR, 1);
+	GWRITE(RBOX, WAKEUP_CLEAR, 0);
+}
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_AC_PRESENT_FED_INT, ac_change, 1);
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_AC_PRESENT_RED_INT, ac_change, 1);
 
 static void rbox_init(void)
 {
@@ -107,5 +121,13 @@ static void rbox_init(void)
 	GWRITE(RBOX, FUSE_CTRL,
 	       GC_RBOX_FUSE_CTRL_OVERRIDE_FUSE_MASK |
 	       GC_RBOX_FUSE_CTRL_OVERRIDE_FUSE_READY_MASK);
+
+	GWRITE_FIELD(RBOX, INT_ENABLE, INTR_AC_PRESENT_FED, 1);
+	GWRITE_FIELD(RBOX, INT_ENABLE, INTR_AC_PRESENT_RED, 1);
+	task_enable_irq(GC_IRQNUM_RBOX0_INTR_AC_PRESENT_FED_INT);
+	task_enable_irq(GC_IRQNUM_RBOX0_INTR_AC_PRESENT_RED_INT);
+	GWRITE(RBOX, WAKEUP_CLEAR, 1);
+	GWRITE(RBOX, WAKEUP_CLEAR, 0);
+	GWRITE(RBOX, WAKEUP_ENABLE, 1);
 }
 DECLARE_HOOK(HOOK_INIT, rbox_init, HOOK_PRIO_DEFAULT - 1);
