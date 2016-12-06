@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_07c9a068",
+        "filename": "util/signer/bs",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-12-06T23:08:04Z",
+      "side": 1,
+      "message": "\u003e Also, since this script does not allow to specify the \n\u003e manifest manually, I don\u0027t see how checking the manifest \n\u003e contents would help anything.\n\nI\u0027m assuming that you\u0027ll have to add the option to specify the manifest sometime not too far in the future ;-)  In any case, $ strings build/cr50/RW/ec.RW.bin | grep DEV/cr50_ yields a simple sniff test for DEV\u003d1 images.",
+      "parentUuid": "6d14e7d4_27b5c416",
+      "revId": "a6981049fc66480daa3475661495ebe59f869044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d14e7d4_c1f398ed",
         "filename": "util/signer/bs",
         "patchSetId": 1
