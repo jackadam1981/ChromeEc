@@ -72,7 +72,9 @@
 #define CONFIG_CHARGER_DISCHARGE_ON_AC_CUSTOM
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
+#ifndef TEST_CPP
 int board_discharge_on_ac(int enabled);
+#endif
 #define I2C_PORT_MASTER 0
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
@@ -89,7 +91,9 @@ int board_discharge_on_ac(int enabled);
 #define CONFIG_CHARGER_DISCHARGE_ON_AC_CUSTOM
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
+#ifndef TEST_CPP
 int board_discharge_on_ac(int enabled);
+#endif
 #define I2C_PORT_MASTER 0
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
@@ -104,7 +108,14 @@ int board_discharge_on_ac(int enabled);
 #define CONFIG_THROTTLE_AP
 #define CONFIG_THERMISTOR_NCP15WB
 #define I2C_PORT_THERMAL 0
+#ifndef TEST_CPP
 int ncp15wb_calculate_temp(uint16_t adc);
+#endif
+#endif
+
+#ifdef TEST_HOST_COMMAND_BINARY_SEARCH
+#define CONFIG_HOSTCMD_SECTION_SORTED
+#define CONFIG_USE_TEST_HCMDS
 #endif
 
 #ifdef TEST_FAN

@@ -37,7 +37,7 @@ test-list-host=$(TEST_LIST_HOST)
 else
 test-list-host=mutex pingpong utils kb_scan kb_mkbp lid_sw power_button hooks
 test-list-host+=thermal flash queue kb_8042 extpwr_gpio console_edit system
-test-list-host+=sbs_charging host_command
+test-list-host+=sbs_charging host_command host_command_binary_search
 test-list-host+=bklight_lid bklight_passthru interrupt timer_dos button
 test-list-host+=math_util motion_lid sbs_charging_v2 battery_get_params_smart
 test-list-host+=lightbar inductive_charging usb_pd fan charge_manager
@@ -57,6 +57,7 @@ extpwr_gpio-y=extpwr_gpio.o
 flash-y=flash.o
 hooks-y=hooks.o
 host_command-y=host_command.o
+host_command_binary_search-y=host_command_binary_search.o
 inductive_charging-y=inductive_charging.o
 interrupt-y=interrupt.o
 interrupt-scale=10

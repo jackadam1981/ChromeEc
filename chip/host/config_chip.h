@@ -10,7 +10,10 @@
 
 /* Memory mapping */
 #define CONFIG_FLASH_SIZE 0x00020000
+
+#ifndef TEST_CPP
 extern char __host_flash[CONFIG_FLASH_SIZE];
+#endif
 
 #define CONFIG_PROGRAM_MEMORY_BASE     ((uintptr_t)__host_flash)
 #define CONFIG_FLASH_BANK_SIZE         0x1000
@@ -29,8 +32,10 @@ extern char __host_flash[CONFIG_FLASH_SIZE];
 /* Program is run directly from storage */
 #define CONFIG_MAPPED_STORAGE_BASE CONFIG_PROGRAM_MEMORY_BASE
 
+#ifndef TEST_CPP
 /* Compute the rest of the flash params from these */
 #include "config_std_internal_flash.h"
+#endif
 
 /* Interval between HOOK_TICK notifications */
 #define HOOK_TICK_INTERVAL_MS 250

@@ -2,6 +2,8 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+#include "config.h"
+
 SECTIONS {
   .rodata.ec_sections : {
     /* Symbols defined here are declared in link_defs.h */
@@ -14,10 +16,12 @@ SECTIONS {
     *(SORT(.rodata.cmds*))
     __cmds_end = .;
 
+#ifndef CONFIG_USE_TEST_HCMDS
     . = ALIGN(8);
     __hcmds = .;
     *(.rodata.hcmds)
     __hcmds_end = .;
+#endif
 
     . = ALIGN(4);
     __mkbp_evt_srcs = .;

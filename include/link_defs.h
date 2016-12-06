@@ -72,8 +72,13 @@ extern const struct test_i2c_xfer __test_i2c_xfer[];
 extern const struct test_i2c_xfer __test_i2c_xfer_end[];
 
 /* Host commands */
+#ifdef CONFIG_USE_TEST_HCMDS
+extern const struct host_command *__hcmds;
+extern const struct host_command *__hcmds_end;
+#else
 extern const struct host_command __hcmds[];
 extern const struct host_command __hcmds_end[];
+#endif
 
 /* MKBP events */
 extern const struct mkbp_event_source __mkbp_evt_srcs[];
