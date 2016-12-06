@@ -1,0 +1,155 @@
+#!/bin/bash
+
+#
+# Copyright 2016 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+#
+# This script is a utility which allows to create differently signed CR50
+# images from different sources.
+#
+set -e
+
+progname=$(basename $0)
+usage() {
+  local rv="${1}"
+  cat <<EOF
+
+This script allows to sign CR50 RW images. By default it uses ec.RW.elf and
+ec.RW_B.elf in build/cr50/RW as inputs and util/signer/ec_RW-manifest-dev.json
+as the manifest, and places the newly signed images into build/cr50/ec.bin.
+
+The only outside dependency of this script is the signing utility itself,
+which is expected to be available as \$HOME/bin/codesighner.
+
+The following command line options are accepted:
+
+  b1 - generate signature for the b1 version of the H1 chip
+  elves <elf1> <elf2> - sign the supplied elf files instead of the default
+        ones. Handy if the builder generated files need to be signed
+  help - print this message
+  hex - generate hex output instead of binary
+  prod - sign with prod key
+
+This script also allows to sign dev images for running on prod RO. To do that
+invoke this script as follows:
+
+  H1_DEVIDS='<dev id0> <dev id1>" ${progname} [other options, if any]
+
+where <dev id0> <dev id1> are values reported by sysinfo command in the
+DEV_ID: line when ran on the CR50 for which the image is built.
+EOF
+  exit "${rv}"
+}
+
+# This is the suggested location of the codesigner utility.
+BIN_ROOT="${HOME}/bin"
+
+if [ -z "${CROS_WORKON_SRCROOT}" ]; then
+  echo "$(basename $0): This script must run inside Chrome OS chroot" >&2
+  exit 1
+fi
+
+EC_ROOT="${CROS_WORKON_SRCROOT}/src/platform/ec"
+EC_BIN_ROOT="${EC_ROOT}/util/signer"
+
+do_hex=
+do_b1=
+do_prod=
+
+# Prepare the default manifest.
+tmpf="/tmp/bs_manifest.$$"
+cp "${EC_BIN_ROOT}/ec_RW-manifest-dev.json" "${tmpf}"
+
+elves=( build/cr50/RW/ec.RW.elf build/cr50/RW/ec.RW_B.elf )
+cd "${EC_ROOT}"
+while (( "$#" )); do
+  param="${1}"
+  case $param in
+    (hex) do_hex='true';;
+    (b1)
+      do_b1='true'
+      sed -i 's/\(.*FW_DEFINED_DATA_BLK0.*\): 2/\1: 0/' "${tmpf}"
+      ;;
+    (elves)
+      if [ -z "${2}" -o -z "${3}" ]; then
+        echo "two elf file names are required" 2>&1
+        exit 1
+      fi
+      elves=( $2 $3 )
+      shift
+      shift
+      ;;
+    (prod)
+      do_prod='true'
+      ;;
+    (help)
+      usage 0
+      ;;
+    (*)
+      usage 1
+      ;;
+  esac
+  shift
+done
+
+if [ -n "${do_prod}" -a -n "${do_b1}" ]; then
+  echo "can not build prod images for B1, soryy..."
+  exit 1
+fi
+
+signer_command_params=''
+signer_command_params=" -x ${EC_BIN_ROOT}/fuses.xml"
+if [ -z "${do_prod}" ]; then
+  signer_command_params+=" -k ${EC_BIN_ROOT}/cr50_rom0-dev-blsign.pem.pub"
+else
+  cp "${EC_BIN_ROOT}/ec_RW-manifest-prod.json" "${tmpf}"
+  signer_command_params+=" -k ${EC_BIN_ROOT}/cr50_RW-prod.pem.pub"
+fi
+signer_command_params+=" -j ${tmpf}"
+
+if [ -n "${do_hex}" ]; then
+  dst_suffix='signed.hex'
+else
+  signer_command_params+=' --format=bin'
+  dst_suffix='flat'
+fi
+
+if [ -z "${do_prod}" -a -n "${H1_DEVIDS}" ]; then
+  echo "creating a customized DEV image for DEV IDS ${H1_DEVIDS}"
+  sub=$(printf "\\\n    \"DEV_ID0\": %d,\\\n    \"DEV_ID1\": %d," ${H1_DEVIDS})
+  sed -i "s/\"fuses\": {/\"fuses\": {${sub}/" "${tmpf}"
+fi
+
+for elf in ${elves[@]}; do
+  dst_name="$(basename ${elf/\.elf//}).${dst_suffix}"
+  sudo ${BIN_ROOT}/codesigner ${signer_command_params} \
+    -i ${elf} -o "build/cr50/RW/${dst_name}"
+done
+
+rm "${tmpf}"
+
+arm-none-eabi-gcc -T build/cr50/firmware_image.lds -nostdlib \
+  -DOUTDIR=build/cr50/ -DCHIP=g -DBOARD_TASKFILE=ec.tasklist \
+  -DBOARD=cr50 -DCORE=cortex-m -DPROJECT=ec -DCHIP_VARIANT=cr50_fpga \
+  -DCHIP_FAMILY=cr50 -DBOARD_CR50 -DCHIP_G -DCORE_CORTEX_M \
+  -DCHIP_VARIANT_CR50_FPGA -DCHIP_FAMILY_CR50 -DFINAL_OUTDIR=build/cr50 \
+  -Iinclude -Icore/cortex-m/include -Icore/cortex-m -Ichip/g \
+  -Iboard/cr50 -Icommon -Ipower -Itest -Iprivate -Iprivate-cr51 -Idriver \
+  -Idriver/battery -Idriver/temp_sensor -Idriver/led -Idriver/tcpm \
+  -Idriver/charger -Ibuild/cr50 -Itest -Iprivate-cr51/include/ -I. \
+  -DTEST_ec -DTEST_EC -DSECTION_IS_ -DSECTION= -ffreestanding -fno-builtin \
+  -nostdinc -nostdlib -Ibuiltin/ -DGC_REVISION="B1 0_0" -DHAS_TASK_HOOKS \
+  -DHAS_TASK_TPM -DHAS_TASK_CONSOLE -I/mnt/host/source/src/platform/ec/builtin \
+  -I/mnt/host/source/src/platform/ec/chip/g -I/mnt/host/source/src/platform/ec \
+  -I/mnt/host/source/src/platform/ec/board/cr50 \
+  -I/mnt/host/source/src/platform/ec/test -DGC_REVISION="B1 0_0" \
+  -I/mnt/host/source/src/platform/ec \
+  -I/mnt/host/source/src/platform/ec/builtin \
+  -I/mnt/host/source/src/platform/ec/chip/g \
+  -I/mnt/host/source/src/platform/ec/include \
+  -I/mnt/host/source/src/third_party/cryptoc/include \
+  -DHAVE_PRIVATE -DHAVE_PRIVATE -Wl,--build-id=none \
+  -o build/cr50/ec.obj common/firmware_image.S
+arm-none-eabi-objcopy --gap-fill=0xff \
+  -O binary build/cr50/ec.obj build/cr50/ec.bin
