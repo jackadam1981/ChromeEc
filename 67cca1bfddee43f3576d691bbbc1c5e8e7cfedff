@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8da03ba7_940aea88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1117540
+      },
+      "writtenOn": "2016-12-06T07:00:25Z",
+      "side": 1,
+      "message": "It\u0027s done.",
+      "parentUuid": "2ddbcf69_49980261",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "67cca1bfddee43f3576d691bbbc1c5e8e7cfedff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad997f95_42333254",
         "filename": "board/snappy/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-12-05T19:05:30Z",
       "side": 1,
       "message": "You might want to comment that you changed this from the default, and why.",
+      "range": {
+        "startLine": 1013,
+        "startChar": 1,
+        "endLine": 1013,
+        "endChar": 24
+      },
+      "revId": "67cca1bfddee43f3576d691bbbc1c5e8e7cfedff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8da03ba7_b407ee81",
+        "filename": "board/snappy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1117540
+      },
+      "writtenOn": "2016-12-06T07:00:25Z",
+      "side": 1,
+      "message": "It\u0027s done.",
+      "parentUuid": "ad997f95_42333254",
       "range": {
         "startLine": 1013,
         "startChar": 1,
