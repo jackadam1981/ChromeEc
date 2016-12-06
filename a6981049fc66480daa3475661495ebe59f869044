@@ -81,6 +81,30 @@
       "revId": "a6981049fc66480daa3475661495ebe59f869044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_4c61ff16",
+        "filename": "util/signer/bs",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-06T21:42:04Z",
+      "side": 1,
+      "message": "ah, right, this is a good point, you mentioned it before, I forgot I wanted to try this.\n\nLet me try it now.",
+      "parentUuid": "6d14e7d4_2cd92bde",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 46
+      },
+      "revId": "a6981049fc66480daa3475661495ebe59f869044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
