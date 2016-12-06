@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad35ff63_08bd2b9a",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-06T15:10:50Z",
+      "side": 1,
+      "message": "that\u0027s not what PD_DRP_TOGGLE_OFF means.\nYou stay in the current state, e.g. when going to S3, if you have a peripheral attached, the port is still source.",
+      "range": {
+        "startLine": 563,
+        "startChar": 6,
+        "endLine": 563,
+        "endChar": 24
+      },
+      "revId": "8e24199f037ebac117b30748fe2f0708c202fb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdf6b3e5_263738a1",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-06T15:10:50Z",
+      "side": 1,
+      "message": "same as the other driver, this seems wrong.",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 24
+      },
+      "revId": "8e24199f037ebac117b30748fe2f0708c202fb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
