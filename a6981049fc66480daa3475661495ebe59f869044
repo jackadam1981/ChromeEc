@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_014bd0a2",
+        "filename": "util/signer/bs",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-06T20:14:02Z",
+      "side": 1,
+      "message": "we know that the key id in the json file is the b1 dev key - this is the only dev json we have.\n\nIf the built image does not run on a prod device - so be it, the user is supposed to know what he is doing. This is just an aid script for developers, right?\n\nNote that you can set H1_DEVIDS and export the variable in bash, then you don\u0027t need to specify it in every invocation.",
+      "parentUuid": "6d14e7d4_fe4d193d",
+      "revId": "a6981049fc66480daa3475661495ebe59f869044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d14e7d4_fec2f995",
         "filename": "util/signer/bs",
         "patchSetId": 1
