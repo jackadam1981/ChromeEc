@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6d14e7d4_4c981f61",
+        "filename": "util/signer/bs",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-06T22:26:05Z",
+      "side": 1,
+      "message": "I\u0027d also add \"set -u\", which ensures that you don\u0027t try to use variables that haven\u0027t been defined. Handy to avoid removing your working directory. ;-)",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 6
+      },
+      "revId": "f96f038f6ea42ad1a126b3f30d6ca47e1d1d6cac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d14e7d4_4cbfbfad",
         "filename": "util/signer/bs",
         "patchSetId": 2
