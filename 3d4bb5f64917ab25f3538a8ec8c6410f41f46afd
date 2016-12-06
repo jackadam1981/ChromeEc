@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ddbcf69_a5dc22cf",
+        "filename": "board/kevin/led_gru.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-12-06T03:44:30Z",
+      "side": 1,
+      "message": "I\u0027m sure PWM\u003d70 doesn\u0027t give us green.\nThat\u0027s why I changed it to 10 after testing.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "3d4bb5f64917ab25f3538a8ec8c6410f41f46afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
