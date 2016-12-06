@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_27b5c416",
+        "filename": "util/signer/bs",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-06T22:59:18Z",
+      "side": 1,
+      "message": "did you mean to say \u0027is *not* -1187158727 (b1-dev key)\u0027 in the original comment? Or I am lost because in the prod manifest key id is not -1.\n\nAlso, since this script does not allow to specify the manifest manually, I don\u0027t see how checking the manifest contents would help anything.\n\nThe prod manifest is not used unless prod signing is required.\n\nRefusing to prod sign images built with CR50_DEV is a good idea, but I don\u0027t know how to enforce it yet, and would rather leave this for future enhancements.\n\nThe method to avoid accidents for now is just to keep the prod fob away, which I do and everybody should be doing.",
+      "parentUuid": "6d14e7d4_c79728d5",
+      "revId": "a6981049fc66480daa3475661495ebe59f869044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d14e7d4_c1f398ed",
         "filename": "util/signer/bs",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "writtenOn": "2016-12-06T22:48:30Z",
       "side": 1,
       "message": "Did you forget to add this json file?  It\u0027s not on git.",
+      "revId": "a6981049fc66480daa3475661495ebe59f869044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_47b23830",
+        "filename": "util/signer/bs",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-06T22:59:18Z",
+      "side": 1,
+      "message": "the earlier patch has not merged yet",
+      "parentUuid": "6d14e7d4_c1f398ed",
       "revId": "a6981049fc66480daa3475661495ebe59f869044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
