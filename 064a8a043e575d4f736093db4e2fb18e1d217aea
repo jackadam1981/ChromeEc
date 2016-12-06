@@ -70,6 +70,30 @@
       "revId": "064a8a043e575d4f736093db4e2fb18e1d217aea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8da03ba7_d4ce3244",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-12-06T06:18:03Z",
+      "side": 1,
+      "message": "Noted. Added another check in pd_find_pdo_index as well.\n\npd_extract_pdo_power can also be called from pd_process_source_cap, so it\u0027s probably best to check for mv \u003d 0 in both places.",
+      "parentUuid": "ad35ff63_4286b235",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "064a8a043e575d4f736093db4e2fb18e1d217aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
