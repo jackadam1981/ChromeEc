@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_58d21d67",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-12-06T16:52:29Z",
+      "side": 1,
+      "message": "This *_tcpc_drp_toggle function is only called when PD task goes to PD_STATE_DRP_AUTO_TOGGLE.\n\nIf the peripheral is already attached while the system goes to S3, PD Task will continue to stay in PD_STATE_SRC_READY or PD_STATE_SRC_DISCOVERY.\n\nOnly if the peripheral is disconnected during S3, PD task will then transition to PD_STATE_SRC_DISCONNECTED, then to PD_STATE_DRP_AUTO_TOGGLE. And by forcing Rd to act as SINK instead of staying in the current state which was SOURCE, this allows TCPC to stay in low power mode if USB or Display is re-inserted since those will not get enumerated again during S3 once it is disconnected.",
+      "parentUuid": "ad35ff63_08bd2b9a",
+      "range": {
+        "startLine": 563,
+        "startChar": 6,
+        "endLine": 563,
+        "endChar": 24
+      },
+      "revId": "8e24199f037ebac117b30748fe2f0708c202fb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdf6b3e5_263738a1",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 2
