@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_4c6b3f08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-12-06T23:44:24Z",
+      "side": 1,
+      "message": "After looking through the GNU Linker Script manual I only found SORT_BY_ALIGNMENT and SORT_BY_NAME. I wasn\u0027t able to locate any section attributes that will sort by the first integer of a section.",
+      "parentUuid": "6d14e7d4_011f5078",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "70b75cef850e320a46b56e409aac678c094e12f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d14e7d4_61088c4a",
         "filename": "util/host_command_sort.py",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2016-12-06T20:22:16Z",
       "side": 1,
       "message": "this file needs to be modified to comply with https://www.chromium.org/chromium-os/python-style-guidelines",
+      "revId": "70b75cef850e320a46b56e409aac678c094e12f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_92fdecc0",
+        "filename": "util/host_command_sort.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-12-06T23:44:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d14e7d4_61088c4a",
       "revId": "70b75cef850e320a46b56e409aac678c094e12f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
