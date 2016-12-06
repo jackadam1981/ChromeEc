@@ -37,6 +37,41 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_c79728d5",
+        "filename": "util/signer/bs",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-12-06T22:48:30Z",
+      "side": 1,
+      "message": "\u003e this is the only dev json we have.\n\nLine 106 selects ec_RW-manifest-prod.json.\n\nI would rather that this script has some safety built in - it can be used to sign prod images.  So it\u0027s easy to $ make DEV\u003d1 ... \u0026\u0026 bs prod ..., will work fine with no warnings etc.  This important that this be hard to do.\n\nYou\u0027re right about the mix and match RO \u0026 RW, though it might be worth adding to the help text etc.  This devid constraint is not well known.",
+      "parentUuid": "6d14e7d4_014bd0a2",
+      "revId": "a6981049fc66480daa3475661495ebe59f869044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_c1f398ed",
+        "filename": "util/signer/bs",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-12-06T22:48:30Z",
+      "side": 1,
+      "message": "Did you forget to add this json file?  It\u0027s not on git.",
+      "revId": "a6981049fc66480daa3475661495ebe59f869044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d14e7d4_fec2f995",
         "filename": "util/signer/bs",
         "patchSetId": 1
