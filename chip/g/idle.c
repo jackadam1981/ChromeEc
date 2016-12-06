@@ -23,6 +23,8 @@ static enum {
 	NUM_CHOICES
 } idle_action;
 
+static int enable_usb_wakeup;
+
 /*
  * TODO(crosbug.com/p/59641): Set the default action to sleep when the new
  * boards come in.
@@ -43,20 +45,25 @@ static int command_idle(int argc, char **argv)
 	int c, i;
 
 	if (argc > 1) {
-		c = tolower(argv[1][0]);
-		for (i = 1; i < ARRAY_SIZE(idle_name); i++)
-			if (idle_name[i][0] == c) {
-				idle_action = i;
-				break;
-			}
+		if (!strcasecmp("usb", argv[1])) {
+			enable_usb_wakeup = !enable_usb_wakeup;
+		} else {
+			c = tolower(argv[1][0]);
+			for (i = 1; i < ARRAY_SIZE(idle_name); i++)
+				if (idle_name[i][0] == c) {
+					idle_action = i;
+					break;
+				}
+		}
 	}
 
+	ccprintf("usb wakeup %s\n", enable_usb_wakeup ? "enabled" : "disabled");
 	ccprintf("idle action: %s\n", idle_name[idle_action]);
 
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(idle, command_idle,
-			"[w|s|d]",
+			"[usb|w|s|d]",
 			"Set or show the idle action: wfi, sleep, deep sleep");
 
 static int utmi_wakeup_is_enabled(void)
@@ -85,7 +92,7 @@ static void prepare_to_sleep(void)
 	/* Wake on RBOX interrupts */
 	GREG32(RBOX, WAKEUP) = GC_RBOX_WAKEUP_ENABLE_MASK;
 
-	if (utmi_wakeup_is_enabled())
+	if (utmi_wakeup_is_enabled() || enable_usb_wakeup)
 		GR_PMU_EXITPD_MASK |=
 			GC_PMU_EXITPD_MASK_UTMI_SUSPEND_N_MASK;
 
