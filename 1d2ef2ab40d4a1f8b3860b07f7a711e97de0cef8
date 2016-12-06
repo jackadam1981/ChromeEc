@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d14e7d4_522994f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-06T23:19:07Z",
+      "side": 1,
+      "message": "I notice you\u0027re missing the \u0027Signed-off-by\u0027 line. Did you skip the pre-commit check?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 52
+      },
+      "revId": "1d2ef2ab40d4a1f8b3860b07f7a711e97de0cef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_d21cc4e2",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-06T23:19:07Z",
+      "side": 1,
+      "message": "Can you move this code to be immediately after the spi_nor_wait() / spi_nor_write_enable() function calls, or move the \u0027#ifdef CONFIG_SPI_NOR_BLOCK_ERASE\u0027 code block up to be right after here?",
+      "range": {
+        "startLine": 630,
+        "startChar": 2,
+        "endLine": 631,
+        "endChar": 20
+      },
+      "revId": "1d2ef2ab40d4a1f8b3860b07f7a711e97de0cef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_f269c866",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1801,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-06T23:19:07Z",
+      "side": 1,
+      "message": "I don\u0027t think this CONFIG does anything useful. If spi_nor_read_jedec_id() isn\u0027t called (and it\u0027s not called in common code) then the linker will remove it.",
+      "range": {
+        "startLine": 1801,
+        "startChar": 7,
+        "endLine": 1801,
+        "endChar": 35
+      },
+      "revId": "1d2ef2ab40d4a1f8b3860b07f7a711e97de0cef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
