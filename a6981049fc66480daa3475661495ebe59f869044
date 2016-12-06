@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_32ebc032",
+        "filename": "util/signer/bs",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-06T23:37:01Z",
+      "side": 1,
+      "message": "well, that would be a good time to make changes which that new option requires.\n\nbut checking for this string is indeed simple, not fully fool proof but good enough for this script use case, so I added it.",
+      "parentUuid": "6d14e7d4_07c9a068",
+      "revId": "a6981049fc66480daa3475661495ebe59f869044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d14e7d4_c1f398ed",
         "filename": "util/signer/bs",
         "patchSetId": 1
