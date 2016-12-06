@@ -57,6 +57,30 @@
       "revId": "a6981049fc66480daa3475661495ebe59f869044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_2cd92bde",
+        "filename": "util/signer/bs",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-06T21:30:48Z",
+      "side": 1,
+      "message": "This is non-portable and extremely easy to get wrong. All it does is:\n\nput build/cr50/RO/ec.RO.flat at 0x40000\nput build/cr50/RW/ec.RW.flat at 0x44000\nput build/cr50/RW/ec.RW_B.flat at 0x84000\n\nand emit a .obj that does that. Then the next line turns it into a binary. None of those names or numbers will ever change for Cr50, so you could just as easily use \"dd\" to accomplish the same thing with less confusion.\n\nPlus, this means that ec.bin will always contain the old bogus RO image, and never the official one from Marius.",
+      "parentUuid": "6d14e7d4_fec2f995",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 46
+      },
+      "revId": "a6981049fc66480daa3475661495ebe59f869044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
