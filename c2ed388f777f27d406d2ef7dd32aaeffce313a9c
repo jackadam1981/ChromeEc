@@ -22,6 +22,30 @@
       "revId": "c2ed388f777f27d406d2ef7dd32aaeffce313a9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_13f55bd4",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-07T16:31:04Z",
+      "side": 1,
+      "message": "Yes, but since CONFIG_SOFTWARE_PANIC is defined in config_chip, it\u0027s reasonable to expect that all npcx platforms will define it. I\u0027ll put up a cleanup CL to remove this, and the redundant CONFIG_SOFTWARE_PANIC defines in some boards.",
+      "parentUuid": "2df58ffe_9e743df1",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 21
+      },
+      "revId": "c2ed388f777f27d406d2ef7dd32aaeffce313a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
