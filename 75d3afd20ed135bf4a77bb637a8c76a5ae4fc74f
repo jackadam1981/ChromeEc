@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d14e7d4_cd05ff32",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-07T21:54:37Z",
+      "side": 1,
+      "message": "let\u0027s not do any of this in the hook, it does not belong here.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 29
+      },
+      "revId": "75d3afd20ed135bf4a77bb637a8c76a5ae4fc74f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
