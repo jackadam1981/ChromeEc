@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d14e7d4_e9431aaf",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-07T18:43:22Z",
+      "side": 1,
+      "message": "adding three minutes delay in an init hook? Does this not delay the entire startup by 3 minutes?",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "37e274f6dc33767117a3eb28b3d887ea8f22f8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_29a7d25b",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-07T18:43:22Z",
+      "side": 1,
+      "message": "I know you are not changing this in this patch, but this uncertainty is not necessary - we can change priorities of the hooks at will, right?\n\nAlso, does this have to be set in a hook in the first place? I understand the need to change the globalsec setting early, but no one acts on the \u0027idle_action\u0027 variable until the idle task starts anyways, is this not the case?",
+      "range": {
+        "startLine": 198,
+        "startChar": 4,
+        "endLine": 200,
+        "endChar": 33
+      },
+      "revId": "37e274f6dc33767117a3eb28b3d887ea8f22f8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
