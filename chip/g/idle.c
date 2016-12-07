@@ -172,7 +172,11 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, disable_deep_sleep, HOOK_PRIO_DEFAULT);
 
 void enable_deep_sleep(void)
 {
-	idle_action = IDLE_DEEP_SLEEP;
+	/*
+	 * TODO(crosbug.com/p/60555): reenable deep sleep when the deep sleep
+	 * issue is fixed.
+	 */
+	/* idle_action = IDLE_DEEP_SLEEP; */
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, enable_deep_sleep, HOOK_PRIO_DEFAULT);
 
