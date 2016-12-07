@@ -22,6 +22,30 @@
       "revId": "6fc6e83a2d565ea51ebaa27bcb94bb0feb0fc9a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_53ed13d2",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-07T16:57:35Z",
+      "side": 1,
+      "message": "Even before we set IBUS_LIM_SET \u0026 ICC_LIM_SET we see CUR_ILIM_VAL has high value so we observe anti-collapse. \nYes, I am delaying the inrush event by discharging on AC. By the time charger attached, inrush current is settled and we see intended values in CUR_ILIM_VAL.",
+      "parentUuid": "6d14e7d4_d329234d",
+      "range": {
+        "startLine": 284,
+        "startChar": 22,
+        "endLine": 284,
+        "endChar": 36
+      },
+      "revId": "6fc6e83a2d565ea51ebaa27bcb94bb0feb0fc9a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
