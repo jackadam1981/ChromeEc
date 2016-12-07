@@ -141,6 +141,30 @@
       "revId": "37e274f6dc33767117a3eb28b3d887ea8f22f8a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_a963e2c1",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-07T19:09:01Z",
+      "side": 1,
+      "message": "Oh, good. point. I\u0027d suggest that you either comment that in the DECLARE_HOOK() line or preferably create a specific HOOK_PRIO_PERM_HIGH priority in hooks.h. That could be a separate CL, of course.\n\n(and BTW, it\u0027s obvious that whoever created that enum has never programmed in BASIC. Using +10, +20, +30, etc. gives you room to make changes without massive editing.)",
+      "parentUuid": "6d14e7d4_c97176c0",
+      "range": {
+        "startLine": 198,
+        "startChar": 4,
+        "endLine": 200,
+        "endChar": 33
+      },
+      "revId": "37e274f6dc33767117a3eb28b3d887ea8f22f8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
