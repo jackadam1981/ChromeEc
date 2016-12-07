@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d14e7d4_8264bb3b",
+        "filename": "util/signer/bs",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-07T02:41:38Z",
+      "side": 1,
+      "message": "codesigner",
+      "range": {
+        "startLine": 28,
+        "startChar": 48,
+        "endLine": 28,
+        "endChar": 59
+      },
+      "revId": "d990fd7caa2463e92971980dcf71fc5c0aeadd29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_626ba708",
+        "filename": "util/signer/bs",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-07T02:41:38Z",
+      "side": 1,
+      "message": "You opened with \u0027, but closed with \"",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "d990fd7caa2463e92971980dcf71fc5c0aeadd29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_828d9bc3",
+        "filename": "util/signer/bs",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-07T02:41:38Z",
+      "side": 1,
+      "message": "run",
+      "range": {
+        "startLine": 46,
+        "startChar": 18,
+        "endLine": 46,
+        "endChar": 21
+      },
+      "revId": "d990fd7caa2463e92971980dcf71fc5c0aeadd29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_a28a1fa8",
+        "filename": "util/signer/bs",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-07T02:41:38Z",
+      "side": 1,
+      "message": "obtained",
+      "range": {
+        "startLine": 48,
+        "startChar": 23,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "d990fd7caa2463e92971980dcf71fc5c0aeadd29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_e22257c8",
+        "filename": "util/signer/bs",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-07T02:41:38Z",
+      "side": 1,
+      "message": "We don\u0027t need ec.bin if we\u0027re signing buildbot ELF files, and otherwise we\u0027ll overwrite it anyway. I\u0027d suggest just skipping this entire check, and at the bottom do something like\n\n  [ -e ${RESULT_FILE} ] || dd if\u003d/dev/zero of\u003d${RESULT_FILE} bs\u003d524288 count\u003d1",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 67
+      },
+      "revId": "d990fd7caa2463e92971980dcf71fc5c0aeadd29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
