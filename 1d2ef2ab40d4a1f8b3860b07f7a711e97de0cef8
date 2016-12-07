@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_6d9b935f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1134159
+      },
+      "writtenOn": "2016-12-07T22:26:17Z",
+      "side": 1,
+      "message": "I didn\u0027t (presubmit passed). Added.",
+      "parentUuid": "6d14e7d4_522994f5",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 52
+      },
+      "revId": "1d2ef2ab40d4a1f8b3860b07f7a711e97de0cef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d14e7d4_d21cc4e2",
         "filename": "common/spi_nor.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_edd80340",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1134159
+      },
+      "writtenOn": "2016-12-07T22:26:17Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6d14e7d4_d21cc4e2",
+      "range": {
+        "startLine": 630,
+        "startChar": 2,
+        "endLine": 631,
+        "endChar": 20
+      },
+      "revId": "1d2ef2ab40d4a1f8b3860b07f7a711e97de0cef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d14e7d4_f269c866",
         "filename": "include/config.h",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2016-12-06T23:19:07Z",
       "side": 1,
       "message": "I don\u0027t think this CONFIG does anything useful. If spi_nor_read_jedec_id() isn\u0027t called (and it\u0027s not called in common code) then the linker will remove it.",
+      "range": {
+        "startLine": 1801,
+        "startChar": 7,
+        "endLine": 1801,
+        "endChar": 35
+      },
+      "revId": "1d2ef2ab40d4a1f8b3860b07f7a711e97de0cef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_0dde9729",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1801,
+      "author": {
+        "id": 1134159
+      },
+      "writtenOn": "2016-12-07T22:26:17Z",
+      "side": 1,
+      "message": "I agree. Removed.",
+      "parentUuid": "6d14e7d4_f269c866",
       "range": {
         "startLine": 1801,
         "startChar": 7,
