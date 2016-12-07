@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_895cde38",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-07T19:02:08Z",
+      "side": 1,
+      "message": "ah, of course, and it even is commented. :P\n\nStill don\u0027t understand why this has to be invoked from the hook",
+      "parentUuid": "6d14e7d4_693aaaf7",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "37e274f6dc33767117a3eb28b3d887ea8f22f8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d14e7d4_29a7d25b",
         "filename": "chip/g/idle.c",
         "patchSetId": 3
