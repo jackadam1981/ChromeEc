@@ -271,7 +271,7 @@ static void board_init(void)
 	nvmem_init();
 
 	/* Enable write protect on production images. Disable it on dev */
-	GREG32(RBOX, EC_WP_L) = !console_is_restricted();
+	GREG32(RBOX, EC_WP_L) = 1; /* !console_is_restricted(); */
 
 	/* Indication that firmware is running, for debug purposes. */
 	GREG32(PMU, PWRDN_SCRATCH16) = 0xCAFECAFE;
