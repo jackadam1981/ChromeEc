@@ -49,6 +49,75 @@
     },
     {
       "key": {
+        "uuid": "adafbff4_529e343e",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2016-12-07T00:20:13Z",
+      "side": 1,
+      "message": "This is pointing past the array of host commands. If the command you are looking for is larger than any in the list, you will dereference \"r\" when it is not pointing at a valid host_command structure. I *think* the correct fix is to initialize \"r\" as follows:\n\nr \u003d __hcmds_end - 1;\n\nHowever, you should run unit tests to confirm.",
+      "range": {
+        "startLine": 372,
+        "startChar": 1,
+        "endLine": 372,
+        "endChar": 17
+      },
+      "revId": "70b75cef850e320a46b56e409aac678c094e12f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adafbff4_72889808",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2016-12-07T00:20:13Z",
+      "side": 1,
+      "message": "Do we not have access to bsearch() from stdlib.h?",
+      "range": {
+        "startLine": 375,
+        "startChar": 1,
+        "endLine": 375,
+        "endChar": 12
+      },
+      "revId": "70b75cef850e320a46b56e409aac678c094e12f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adafbff4_b2920038",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2016-12-07T00:20:13Z",
+      "side": 1,
+      "message": "What are you trying to calculate here? The number of host_command structures between r and l? Why not just this:\n\nnum \u003d r - l;",
+      "range": {
+        "startLine": 379,
+        "startChar": 2,
+        "endLine": 379,
+        "endChar": 46
+      },
+      "revId": "70b75cef850e320a46b56e409aac678c094e12f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d14e7d4_61088c4a",
         "filename": "util/host_command_sort.py",
         "patchSetId": 1
