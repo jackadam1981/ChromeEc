@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "trng.h"
+
 #include "init_chip.h"
 #include "registers.h"
 
