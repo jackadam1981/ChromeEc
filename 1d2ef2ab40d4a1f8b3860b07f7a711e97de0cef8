@@ -140,6 +140,30 @@
       "revId": "1d2ef2ab40d4a1f8b3860b07f7a711e97de0cef8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_30140e6c",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1801,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-07T22:48:31Z",
+      "side": 1,
+      "message": "ah, I did not realize that the ec linker was capable of this.",
+      "parentUuid": "6d14e7d4_f269c866",
+      "range": {
+        "startLine": 1801,
+        "startChar": 7,
+        "endLine": 1801,
+        "endChar": 35
+      },
+      "revId": "1d2ef2ab40d4a1f8b3860b07f7a711e97de0cef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
