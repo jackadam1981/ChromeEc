@@ -117,6 +117,30 @@
       "revId": "37e274f6dc33767117a3eb28b3d887ea8f22f8a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_c97176c0",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-12-07T19:02:30Z",
+      "side": 1,
+      "message": "We need to check if obfuscation is enabled before we drop the permission level to medium which happens in board_init.",
+      "parentUuid": "6d14e7d4_69614a17",
+      "range": {
+        "startLine": 198,
+        "startChar": 4,
+        "endLine": 200,
+        "endChar": 33
+      },
+      "revId": "37e274f6dc33767117a3eb28b3d887ea8f22f8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
