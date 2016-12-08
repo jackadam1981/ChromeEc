@@ -22,6 +22,30 @@
       "revId": "df33fab6c52c653ed5f3ef3dbfb11cfcf4664769",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adafbff4_b5194a96",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-12-08T08:53:01Z",
+      "side": 1,
+      "message": "Oh sorry I messed up my rebase. I did not intent to change that code.",
+      "parentUuid": "ade17f42_65d600b0",
+      "range": {
+        "startLine": 720,
+        "startChar": 2,
+        "endLine": 720,
+        "endChar": 50
+      },
+      "revId": "df33fab6c52c653ed5f3ef3dbfb11cfcf4664769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
