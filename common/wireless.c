@@ -159,3 +159,16 @@ DECLARE_CONSOLE_COMMAND(wireless, command_wireless,
 			"[now [suspend]]",
 			"Get/set wireless flags",
 			NULL);
+
+
+/*
+ * This function returns the platform name
+ * 
+ */
+static int command_myname(int argc, char **argv)
+{
+	ccprintf("my name is Caroline \n");
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(myname, command_myname,NULL,"Returns the Platform name",NULL);
