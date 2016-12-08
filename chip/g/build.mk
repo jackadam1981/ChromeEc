@@ -41,6 +41,8 @@ chip-$(CONFIG_DCRYPTO)+= dcrypto/p256_ecies.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/rsa.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/sha1.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/sha256.o
+chip-$(CONFIG_DCRYPTO)+= dcrypto/sha384.o
+chip-$(CONFIG_DCRYPTO)+= dcrypto/sha512.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/x509.o
 
 chip-$(CONFIG_SPI_MASTER)+=spi_master.o
