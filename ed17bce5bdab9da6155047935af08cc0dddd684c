@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_dfda7d06",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-08T06:15:26Z",
+      "side": 1,
+      "message": "we need this second rand too check if we want read/write. \nI will make it\nif (!read)\n    read \u003d get_time().val;\n\nif (read \u0026 0x1)",
+      "parentUuid": "6d14e7d4_b9cfa9b8",
+      "range": {
+        "startLine": 974,
+        "startChar": 0,
+        "endLine": 976,
+        "endChar": 18
+      },
+      "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c04eb4e_1f7f0584",
         "filename": "common/i2c.c",
         "patchSetId": 5
@@ -59,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_7f301146",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-08T06:15:26Z",
+      "side": 1,
+      "message": "With this approach we can enter the params in any order. Line 1115 has the details for it. I can add comments here too.",
+      "parentUuid": "6d14e7d4_fe8f4779",
+      "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d14e7d4_1e2f9bbb",
         "filename": "common/i2c.c",
         "patchSetId": 5
@@ -70,6 +112,30 @@
       "writtenOn": "2016-12-08T01:46:01Z",
       "side": 1,
       "message": "No need for the outer if-statement. The for-loop will terminate immediately if argc is not greater than 1.",
+      "range": {
+        "startLine": 1044,
+        "startChar": 1,
+        "endLine": 1044,
+        "endChar": 16
+      },
+      "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_9f396536",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-08T06:15:26Z",
+      "side": 1,
+      "message": "nice catch, I will remove it",
+      "parentUuid": "6d14e7d4_1e2f9bbb",
       "range": {
         "startLine": 1044,
         "startChar": 1,
@@ -105,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_ff43c1ae",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-08T06:15:26Z",
+      "side": 1,
+      "message": "okay, I will change it to start from 0",
+      "parentUuid": "6d14e7d4_be11cf19",
+      "range": {
+        "startLine": 1095,
+        "startChar": 1,
+        "endLine": 1096,
+        "endChar": 31
+      },
+      "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d14e7d4_ded84340",
         "filename": "util/ectool.c",
         "patchSetId": 5
@@ -116,6 +206,30 @@
       "writtenOn": "2016-12-08T01:46:01Z",
       "side": 1,
       "message": "These should go in a comment in cmd_i2c_test(). The help menu for ectool is long enough as it is.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 45
+      },
+      "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_dfab5d23",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-08T06:15:26Z",
+      "side": 1,
+      "message": "Okay I will move it to cmd_i2c_test()",
+      "parentUuid": "6d14e7d4_ded84340",
       "range": {
         "startLine": 141,
         "startChar": 0,
@@ -145,6 +259,24 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_ffb0a193",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 5275,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-08T06:15:26Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "6d14e7d4_b9e6c928",
+      "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d14e7d4_79e0310c",
         "filename": "util/ectool.c",
         "patchSetId": 5
@@ -156,6 +288,30 @@
       "writtenOn": "2016-12-08T01:46:01Z",
       "side": 1,
       "message": "same as in common/i2c.c",
+      "range": {
+        "startLine": 5281,
+        "startChar": 1,
+        "endLine": 5281,
+        "endChar": 16
+      },
+      "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_9fb6458c",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 5281,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-08T06:15:26Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "6d14e7d4_79e0310c",
       "range": {
         "startLine": 5281,
         "startChar": 1,
