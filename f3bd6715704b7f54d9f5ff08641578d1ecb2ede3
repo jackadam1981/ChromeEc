@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d14e7d4_0a3d12d1",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-08T20:06:37Z",
+      "side": 1,
+      "message": "I am not sure the ec compiler provides this feature, it would be good to enforce that all public functions have explicit extern declarations - then this inclusion would have been required from the very beginning.",
+      "revId": "f3bd6715704b7f54d9f5ff08641578d1ecb2ede3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
