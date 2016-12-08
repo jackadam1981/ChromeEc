@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d14e7d4_674ac7c7",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-08T18:57:07Z",
+      "side": 1,
+      "message": "If a matrix is the identiy matrix, no need to specify it.\nUse NULL in .rot_standard_ref.",
+      "revId": "b9dd89b4cad7aa3a28c1f507b25e9ed85588f06f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_e7b3379b",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-08T18:57:07Z",
+      "side": 1,
+      "message": "Does the sensors is powered in S3? If so, use S0_S3.",
+      "revId": "b9dd89b4cad7aa3a28c1f507b25e9ed85588f06f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_07ac2b3a",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-08T18:57:07Z",
+      "side": 1,
+      "message": "Need to use sensor here.",
+      "revId": "b9dd89b4cad7aa3a28c1f507b25e9ed85588f06f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_073f4b1b",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-08T18:57:07Z",
+      "side": 1,
+      "message": "NULL is fine.",
+      "revId": "b9dd89b4cad7aa3a28c1f507b25e9ed85588f06f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_47a2234d",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-08T18:57:07Z",
+      "side": 1,
+      "message": "We have to calculate lid angle in S3: once the lid angle is less than 180 degee  we must re-enable keyboard, otherwise we may not wake up the system in clamshell mode.",
+      "revId": "b9dd89b4cad7aa3a28c1f507b25e9ed85588f06f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
