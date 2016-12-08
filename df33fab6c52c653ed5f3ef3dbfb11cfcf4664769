@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ade17f42_65d600b0",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-08T08:46:05Z",
+      "side": 1,
+      "message": "when reading the comment, it\u0027s not exactly clear why you are clearing REG_IRQ_SOURCE_RECV_MSG vs the former clear_recvd_msg_int (which is setting REG_RECVD_MSG_INT)",
+      "range": {
+        "startLine": 720,
+        "startChar": 2,
+        "endLine": 720,
+        "endChar": 50
+      },
+      "revId": "df33fab6c52c653ed5f3ef3dbfb11cfcf4664769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
