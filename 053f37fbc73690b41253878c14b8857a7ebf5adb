@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d5d2bd4_c8696f67",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-08T08:39:10Z",
+      "side": 1,
+      "message": "the |\u003d trick is no longer useful here.",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 7
+      },
+      "revId": "053f37fbc73690b41253878c14b8857a7ebf5adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
