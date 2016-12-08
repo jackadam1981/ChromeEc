@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6d14e7d4_b9cfa9b8",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-12-08T01:46:01Z",
+      "side": 1,
+      "message": "This re-assigns rand in the !dev case and gives it a whole different meaning. Maybe just check \"if (read)\" in this so that we don\u0027t have confusing usage of rand.",
+      "range": {
+        "startLine": 974,
+        "startChar": 0,
+        "endLine": 976,
+        "endChar": 18
+      },
+      "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c04eb4e_1f7f0584",
         "filename": "common/i2c.c",
         "patchSetId": 5
@@ -13,6 +36,132 @@
       "writtenOn": "2016-10-18T22:25:08Z",
       "side": 1,
       "message": "Shawn/David: can you please give feedback for this patch?\none advantage of this patch is we can remove this function if we exceed memory.",
+      "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_fe8f4779",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-12-08T01:46:01Z",
+      "side": 1,
+      "message": "This along with the if-statement in L1053-1061 seems very brittle. At the very least there should be a comment explaining that the first few args have mandatory parameters and args[3] and later must not have an argument.\n\nThe approach in CL:392646 was to put these in a struct with a has_arg member so that the parsing code below could be generic for all args. Might be worth considering, but it might also be overkill.",
+      "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_1e2f9bbb",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-12-08T01:46:01Z",
+      "side": 1,
+      "message": "No need for the outer if-statement. The for-loop will terminate immediately if argc is not greater than 1.",
+      "range": {
+        "startLine": 1044,
+        "startChar": 1,
+        "endLine": 1044,
+        "endChar": 16
+      },
+      "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_be11cf19",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-12-08T01:46:01Z",
+      "side": 1,
+      "message": "This means the user needs to specify the device + 1 which is unintuitive. \n\nHow about initializing dev to a negative number. Then you can test:\nif (dev \u003c 0) {\n\tfor (i \u003d 0; i \u003c CONFIG_I2C_STRESS_TEST_DEVICE_COUNT; i++) {\n\t\ti2c_test_status(i, NULL);\n\t\tmsleep(100);\n\t}\n} else {\n\ti2c_test_status(dev, NULL);\n}\n\n(we\u0027d need to update i2c_stress_test() as well)",
+      "range": {
+        "startLine": 1095,
+        "startChar": 1,
+        "endLine": 1096,
+        "endChar": 31
+      },
+      "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_ded84340",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-12-08T01:46:01Z",
+      "side": 1,
+      "message": "These should go in a comment in cmd_i2c_test(). The help menu for ectool is long enough as it is.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 45
+      },
+      "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_b9e6c928",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 5275,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-12-08T01:46:01Z",
+      "side": 1,
+      "message": "Same comment as in common/i2c.c.",
+      "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_79e0310c",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 5281,
+      "author": {
+        "id": 1000253
+      },
+      "writtenOn": "2016-12-08T01:46:01Z",
+      "side": 1,
+      "message": "same as in common/i2c.c",
+      "range": {
+        "startLine": 5281,
+        "startChar": 1,
+        "endLine": 5281,
+        "endChar": 16
+      },
       "revId": "ed17bce5bdab9da6155047935af08cc0dddd684c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
