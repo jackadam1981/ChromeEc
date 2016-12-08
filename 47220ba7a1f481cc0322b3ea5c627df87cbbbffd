@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_3f11393c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-12-08T08:56:50Z",
+      "side": 1,
+      "message": "With Reef to Samus, 9 out of 10 times Reef is sourcing.\nWith Reef to Lars, 7 out of 10 times Reef is sourcing.\nWith Reef to Reef, 7 out of 10 times Reef is sourcing.\nWith Reef to Nexus 5X, 10 out of 10 times Reef is sourcing",
+      "parentUuid": "2ddbcf69_5f38b4e5",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "47220ba7a1f481cc0322b3ea5c627df87cbbbffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d3b075b_a0745a77",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 4
