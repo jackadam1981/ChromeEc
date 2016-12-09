@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3cf3c1_d129c49c",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-12-09T00:14:13Z",
+      "side": 1,
+      "message": "sha512",
+      "range": {
+        "startLine": 67,
+        "startChar": 40,
+        "endLine": 67,
+        "endChar": 46
+      },
+      "revId": "2b2076e5835bf92b3684e592c4aefa4fca590d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_312370c0",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-12-09T00:14:13Z",
+      "side": 1,
+      "message": "How\u0027s that calculated based on the max digest size?",
+      "range": {
+        "startLine": 69,
+        "startChar": 37,
+        "endLine": 69,
+        "endChar": 40
+      },
+      "revId": "2b2076e5835bf92b3684e592c4aefa4fca590d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_719218a8",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-12-09T00:14:13Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we always have it defined there? I posted a comment for the other CL asking where SHA512_SUPPORT is defined. I see it now. But shouldn\u0027t the HASH_CTX structure in cryptoc always accommodate for SHA512? The SHA512 functions are always defined in cryptoc, so the structure should also always support it?",
+      "range": {
+        "startLine": 73,
+        "startChar": 31,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "2b2076e5835bf92b3684e592c4aefa4fca590d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
