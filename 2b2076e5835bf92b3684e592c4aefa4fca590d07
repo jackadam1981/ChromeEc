@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a3cf3c1_60b35ce6",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-12-09T17:25:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3cf3c1_d129c49c",
+      "range": {
+        "startLine": 67,
+        "startChar": 40,
+        "endLine": 67,
+        "endChar": 46
+      },
+      "revId": "2b2076e5835bf92b3684e592c4aefa4fca590d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3cf3c1_312370c0",
         "filename": "board/cr50/build.mk",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9a3cf3c1_40d1780e",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-12-09T17:25:47Z",
+      "side": 1,
+      "message": "This is the sizeof LITE_HASH_CTX - there\u0027s a BUILD_ASSERT in tpm2/hash.h that fires if USER_MIN_HASH_STATE_SIZE !\u003d sizeof(LITE_HASH_CTX)",
+      "parentUuid": "9a3cf3c1_312370c0",
+      "range": {
+        "startLine": 69,
+        "startChar": 37,
+        "endLine": 69,
+        "endChar": 40
+      },
+      "revId": "2b2076e5835bf92b3684e592c4aefa4fca590d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3cf3c1_719218a8",
         "filename": "board/cr50/build.mk",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2016-12-09T00:14:13Z",
       "side": 1,
       "message": "Shouldn\u0027t we always have it defined there? I posted a comment for the other CL asking where SHA512_SUPPORT is defined. I see it now. But shouldn\u0027t the HASH_CTX structure in cryptoc always accommodate for SHA512? The SHA512 functions are always defined in cryptoc, so the structure should also always support it?",
+      "range": {
+        "startLine": 73,
+        "startChar": 31,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "2b2076e5835bf92b3684e592c4aefa4fca590d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_20db143a",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-12-09T17:25:47Z",
+      "side": 1,
+      "message": "cryptoc is lifted as-is from the internal version (where SHA512 is optional).  I\u0027d rather not make any changes under third_party/cryptoc as that would result in merges.",
+      "parentUuid": "9a3cf3c1_719218a8",
       "range": {
         "startLine": 73,
         "startChar": 31,
