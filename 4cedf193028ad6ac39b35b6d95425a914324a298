@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a3cf3c1_1054dd14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-12-09T22:05:56Z",
+      "side": 1,
+      "message": "Yeah I guess you\u0027re right. With this change it will only catch images that cause a rolling reboot not images that break TPM functionality.\n\nWe need a way to verify the TPM is good and shouldn\u0027t push this change.",
+      "parentUuid": "9a3cf3c1_b036310e",
+      "revId": "4cedf193028ad6ac39b35b6d95425a914324a298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3cf3c1_d062d51d",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
