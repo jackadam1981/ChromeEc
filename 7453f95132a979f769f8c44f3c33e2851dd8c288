@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a3cf3c1_0bea71f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-09T18:32:13Z",
+      "side": 1,
+      "message": "If we set the level in a subsequent function call, there is a brief period of time where the pad will be configured as outout, but the output level will reflect whatever we previously set (we won\u0027t reconfigure output level unless GPIO_HIGH / GPIO_LOW is passed to gpio_set_flags). If this is the bug we\u0027re fixing here then it makes sense to me, but I agree we should clarify this in the commit message.",
+      "parentUuid": "1afac331_3dee8f98",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "7453f95132a979f769f8c44f3c33e2851dd8c288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1afac331_9d27e325",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
