@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_734e1785",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-12-09T20:20:33Z",
+      "side": 1,
+      "message": "Good catch. I totally missed this.\n100bccdc R __host_cmd_EC_CMD_MOTION_SENSE_CMD\n100bcce8 R __evt_src_EC_MKBP_EVENT_KEY_MATRIX\n100bcce8 R __hcmds_end",
+      "parentUuid": "adafbff4_529e343e",
+      "range": {
+        "startLine": 372,
+        "startChar": 1,
+        "endLine": 372,
+        "endChar": 17
+      },
+      "revId": "70b75cef850e320a46b56e409aac678c094e12f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adafbff4_72889808",
         "filename": "common/host_command.c",
         "patchSetId": 1
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6d14e7d4_d315a327",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-12-09T20:20:33Z",
+      "side": 1,
+      "message": "Outside of testing, I couldn\u0027t find any boards using stdlib.h, so I don\u0027t think it\u0027s available.",
+      "parentUuid": "adafbff4_72889808",
+      "range": {
+        "startLine": 375,
+        "startChar": 1,
+        "endLine": 375,
+        "endChar": 12
+      },
+      "revId": "70b75cef850e320a46b56e409aac678c094e12f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adafbff4_b2920038",
         "filename": "common/host_command.c",
         "patchSetId": 1
@@ -106,6 +154,30 @@
       "writtenOn": "2016-12-07T00:20:13Z",
       "side": 1,
       "message": "What are you trying to calculate here? The number of host_command structures between r and l? Why not just this:\n\nnum \u003d r - l;",
+      "range": {
+        "startLine": 379,
+        "startChar": 2,
+        "endLine": 379,
+        "endChar": 46
+      },
+      "revId": "70b75cef850e320a46b56e409aac678c094e12f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d14e7d4_13a79bf4",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-12-09T20:20:33Z",
+      "side": 1,
+      "message": "Yes this is much simpler.",
+      "parentUuid": "adafbff4_b2920038",
       "range": {
         "startLine": 379,
         "startChar": 2,
