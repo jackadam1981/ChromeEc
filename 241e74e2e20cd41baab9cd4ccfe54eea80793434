@@ -22,6 +22,30 @@
       "revId": "241e74e2e20cd41baab9cd4ccfe54eea80793434",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_71bd780a",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-12-09T00:15:32Z",
+      "side": 1,
+      "message": "We can\u0027t it is open drain. But remember we made the requirement that all boards had to have a pullup on this pin. It is open drain, and if they dont have it there will be an uart rx interrupt storm and it might prevent cr50 from booting.",
+      "parentUuid": "9a3cf3c1_f13f28e6",
+      "range": {
+        "startLine": 81,
+        "startChar": 47,
+        "endLine": 81,
+        "endChar": 59
+      },
+      "revId": "241e74e2e20cd41baab9cd4ccfe54eea80793434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
