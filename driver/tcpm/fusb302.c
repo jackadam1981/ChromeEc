@@ -17,6 +17,9 @@
 #include "usb_pd_tcpc.h"
 #include "util.h"
 
+#define PACKET_IS_GOOD_CRC(head) (PD_HEADER_TYPE(head) == PD_CTRL_GOOD_CRC && \
+				 PD_HEADER_CNT(head) == 0)
+
 static struct fusb302_chip_state {
 	int cc_polarity;
 	int vconn_enabled;
@@ -27,12 +30,19 @@ static struct fusb302_chip_state {
 	uint8_t mdac_rd;
 } state[CONFIG_USB_PD_PORT_COUNT];
 
-/* bring the FUSB302 out of reset after Hard Reset signaling */
+/*
+ * Bring the FUSB302 out of reset after Hard Reset signaling. This will
+ * automatically flush both the Rx and Tx FIFOs.
+ */
 static void fusb302_pd_reset(int port)
 {
 	tcpc_write(port, TCPC_REG_RESET, TCPC_REG_RESET_PD_RESET);
 }
 
+/*
+ * Flush our Rx FIFO. To prevent packet framing issues, this function should
+ * only be called when Rx is disabled.
+ */
 static void fusb302_flush_rx_fifo(int port)
 {
 	/*
@@ -658,6 +668,16 @@ static int fusb302_tcpm_set_rx_enable(int port, int enable)
 	return 0;
 }
 
+static int fusb302_rx_fifo_is_empty(int port)
+{
+	int reg;
+	if (tcpc_read(port, TCPC_REG_STATUS1, &reg) ||
+	    reg & TCPC_REG_STATUS1_RX_EMPTY)
+		return 1;
+
+	return 0;
+}
+
 static int fusb302_tcpm_get_message(int port, uint32_t *payload, int *head)
 {
 	/*
@@ -671,43 +691,58 @@ static int fusb302_tcpm_get_message(int port, uint32_t *payload, int *head)
 	uint8_t buf[32];
 	int rv = 0;
 	int len;
+	int reg;
+
+	if (fusb302_rx_fifo_is_empty(port)) {
+		*head = 0;
+		return 0;
+	}
 
 	/* NOTE: Assuming enough memory has been allocated for payload. */
 
-	/*
-	 * PART 1 OF BURST READ: Write in register address.
-	 * Issue a START, no STOP.
-	 */
 	tcpc_lock(port, 1);
-	buf[0] = TCPC_REG_FIFOS;
-	rv |= tcpc_xfer(port, buf, 1, 0, 0, I2C_XFER_START);
+	do {
+		/*
+		 * PART 1 OF BURST READ: Write in register address.
+		 * Issue a START, no STOP.
+		 */
+		buf[0] = TCPC_REG_FIFOS;
+		rv |= tcpc_xfer(port, buf, 1, 0, 0, I2C_XFER_START);
 
-	/*
-	 * PART 2 OF BURST READ: Read up to the header.
-	 * Issue a repeated START, no STOP.
-	 * only grab three bytes so we can get the header
-	 * and determine how many more bytes we need to read.
-	 */
-	rv |= tcpc_xfer(port, 0, 0, buf, 3, I2C_XFER_START);
+		/*
+		 * PART 2 OF BURST READ: Read up to the header.
+		 * Issue a repeated START, no STOP.
+		 * only grab three bytes so we can get the header
+		 * and determine how many more bytes we need to read.
+		 */
+		rv |= tcpc_xfer(port, 0, 0, buf, 3, I2C_XFER_START);
 
-	/* Grab the header */
-	*head = (buf[1] & 0xFF);
-	*head |= ((buf[2] << 8) & 0xFF00);
+		/* Grab the header */
+		*head = (buf[1] & 0xFF);
+		*head |= ((buf[2] << 8) & 0xFF00);
 
-	/* figure out packet length, subtract header bytes */
-	len = get_num_bytes(*head) - 2;
+		/* figure out packet length, subtract header bytes */
+		len = get_num_bytes(*head) - 2;
 
-	/*
-	 * PART 3 OF BURST READ: Read everything else.
-	 * No START, but do issue a STOP at the end.
-	 * add 4 to len to read CRC out
-	 */
-	rv |= tcpc_xfer(port, 0, 0, buf, len+4, I2C_XFER_STOP);
+		/*
+		 * PART 3 OF BURST READ: Read everything else.
+		 * No START, but do issue a STOP at the end.
+		 * add 4 to len to read CRC out
+		 */
+		rv |= tcpc_xfer(port, 0, 0, buf, len+4, I2C_XFER_STOP);
+
+	} while (PACKET_IS_GOOD_CRC(*head) && !fusb302_rx_fifo_is_empty(port));
 
 	tcpc_lock(port, 0);
 
-	/* return the data */
-	memcpy(payload, buf, len);
+	if (PACKET_IS_GOOD_CRC(*head))
+		*head = 0;
+	else
+		/* return the data */
+		memcpy(payload, buf, len);
+
+	if (!fusb302_rx_fifo_is_empty(port))
+		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_RX, 0);
 
 	return rv;
 }
@@ -800,8 +835,6 @@ void fusb302_tcpc_alert(int port)
 	int interrupt;
 	int interrupta;
 	int interruptb;
-	int head;
-	uint32_t payload[7];
 
 	/* reading interrupt registers clears them */
 
@@ -827,11 +860,9 @@ void fusb302_tcpc_alert(int port)
 	}
 
 	if (interrupta & TCPC_REG_INTERRUPTA_TX_SUCCESS) {
-		/*
-		 * Sent packet was acknowledged with a GoodCRC,
-		 * so remove GoodCRC message from FIFO.
-		 */
-		tcpm_get_message(port, payload, &head);
+		state[port].rx_packets_queued++;
+		task_set_event(PD_PORT_TO_TASK_ID(port),
+				PD_EVENT_RX, 0);
 
 		pd_transmit_complete(port, TCPC_TX_COMPLETE_SUCCESS);
 	}
@@ -865,6 +896,7 @@ void fusb302_tcpc_alert(int port)
 		/* Packet received and GoodCRC sent */
 		/* (this interrupt fires after the GoodCRC finishes) */
 		if (state[port].rx_enable) {
+			state[port].rx_packets_queued++;
 			task_set_event(PD_PORT_TO_TASK_ID(port),
 					PD_EVENT_RX, 0);
 		} else {
