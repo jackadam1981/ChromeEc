@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3cf3c1_dde9cecb",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-09T21:06:26Z",
+      "side": 1,
+      "message": "Can you add comments explaining what these states mean?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 9
+      },
+      "revId": "4a5631a964e3e94cfac6e39ac20b16bc4b97dbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_1d0996e0",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-09T21:06:26Z",
+      "side": 1,
+      "message": "If this is a 16 bit register, we should use type uint16_t.",
+      "range": {
+        "startLine": 180,
+        "startChar": 8,
+        "endLine": 180,
+        "endChar": 28
+      },
+      "revId": "4a5631a964e3e94cfac6e39ac20b16bc4b97dbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_1d3e367c",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-09T21:06:26Z",
+      "side": 1,
+      "message": "Please add a comment here explaining what we\u0027re doing here, and how the unit conversion works.",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 28
+      },
+      "revId": "4a5631a964e3e94cfac6e39ac20b16bc4b97dbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_bd0f2ae2",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-09T21:06:26Z",
+      "side": 1,
+      "message": "We should validate read_len so we don\u0027t overflow batt_mode _cache.",
+      "range": {
+        "startLine": 196,
+        "startChar": 5,
+        "endLine": 196,
+        "endChar": 13
+      },
+      "revId": "4a5631a964e3e94cfac6e39ac20b16bc4b97dbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_9dc7c658",
+        "filename": "include/virtual_battery.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-09T21:06:26Z",
+      "side": 1,
+      "message": "Might want to name this differently, it\u0027s confusing because it\u0027s not the actual return value of the function.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "4a5631a964e3e94cfac6e39ac20b16bc4b97dbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
