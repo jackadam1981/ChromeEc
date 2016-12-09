@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3cf3c1_dde30e19",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-09T20:54:25Z",
+      "side": 1,
+      "message": "What is the code / data RAM impact of defining this? We should probably define it by default, otherwise it will probably be ignored by board creators.",
+      "range": {
+        "startLine": 1179,
+        "startChar": 7,
+        "endLine": 1179,
+        "endChar": 36
+      },
+      "revId": "f715c8d0385eb29587d53671e8de25ca7741915f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
