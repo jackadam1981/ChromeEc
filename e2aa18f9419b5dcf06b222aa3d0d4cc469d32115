@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3cf3c1_da62f41d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-09T19:14:35Z",
+      "side": 1,
+      "message": "Did you run the pre-commit check? You need to have TEST\u003d, BRANCH\u003d,BUG\u003d fields usually.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 73
+      },
+      "revId": "e2aa18f9419b5dcf06b222aa3d0d4cc469d32115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_9a458c92",
+        "filename": "common/wireless.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-09T19:14:35Z",
+      "side": 1,
+      "message": "No need for a space here.",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 3
+      },
+      "revId": "e2aa18f9419b5dcf06b222aa3d0d4cc469d32115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_3a54603e",
+        "filename": "common/wireless.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-09T19:14:35Z",
+      "side": 1,
+      "message": "Space between function args.",
+      "range": {
+        "startLine": 174,
+        "startChar": 51,
+        "endLine": 174,
+        "endChar": 53
+      },
+      "revId": "e2aa18f9419b5dcf06b222aa3d0d4cc469d32115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
