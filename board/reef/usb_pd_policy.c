@@ -67,8 +67,20 @@ int board_vbus_source_enabled(int port)
 static void board_vbus_update_source_current(int port)
 {
 	enum gpio_signal gpio = port ? GPIO_USB_C1_5V_EN : GPIO_USB_C0_5V_EN;
-	int flags = (vbus_rp[port] == TYPEC_RP_1A5 && vbus_en[port]) ?
-		(GPIO_INPUT | GPIO_PULL_UP) : (GPIO_OUTPUT | GPIO_PULL_UP);
+	int flags;
+
+	/*
+	 * Configure as input to enable @ 1.5A, output-low to turn off, or
+	 * output-high to enable @ 3A.
+	 */
+	if (vbus_en[port]) {
+		if (vbus_rp[port] == TYPEC_RP_1A5)
+			flags = GPIO_INPUT | GPIO_PULL_UP;
+		else
+			flags = GPIO_OUT_HIGH | GPIO_PULL_UP;
+	} else {
+		flags = GPIO_OUT_LOW | GPIO_PULL_UP;
+	}
 
 	/*
 	 * Driving USB_Cx_5V_EN high, actually put a 16.5k resistance
@@ -77,7 +89,6 @@ static void board_vbus_update_source_current(int port)
 	 * Putting an internal pull-up on USB_Cx_5V_EN, effectively put a 33k
 	 * resistor on ILIM, setting a minimum OCP current of 1505 mA.
 	 */
-	gpio_set_level(gpio, vbus_en[port]);
 	gpio_set_flags(gpio, flags);
 }
 
