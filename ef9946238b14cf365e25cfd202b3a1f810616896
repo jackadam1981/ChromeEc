@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3cf3c1_fae93dfd",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-09T03:02:52Z",
+      "side": 1,
+      "message": "why does this have to be in a common file.\n\nThe board specific file seems a better place - no need in conditional compilation.\n\nsystem_set_reset_flags() invocation below will allow to find out the reset reason.",
+      "revId": "ef9946238b14cf365e25cfd202b3a1f810616896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_bae3b519",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-09T03:02:52Z",
+      "side": 1,
+      "message": "it should never happen, but just in case: we should not be decreasing this below zero.",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "ef9946238b14cf365e25cfd202b3a1f810616896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
