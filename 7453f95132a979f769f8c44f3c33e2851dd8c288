@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1afac331_3dee8f98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-09T08:12:51Z",
+      "side": 1,
+      "message": "Could you clarify exactly what you have changed in the CL ?\n\nall the GPIO flags seem the same before and after the CL unless I miss a change.\nThe only change I\u0027m seeing is removing the gpio_set_level and putting the level flag in the gpio_set_flags which is just re-ordering the operations.\nOrder is important as mentioned below, but I\u0027m not sure how this would fix it unless the npc5x has yet another weird behavior in its GPIO registers.",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "7453f95132a979f769f8c44f3c33e2851dd8c288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1afac331_9d27e325",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-09T08:12:51Z",
+      "side": 1,
+      "message": "should be BRANCH\u003dreef",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "7453f95132a979f769f8c44f3c33e2851dd8c288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1afac331_7df41766",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-09T08:12:51Z",
+      "side": 1,
+      "message": "nit: whitespace",
+      "range": {
+        "startLine": 14,
+        "startChar": 51,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "7453f95132a979f769f8c44f3c33e2851dd8c288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1afac331_5df95b5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-09T08:12:51Z",
+      "side": 1,
+      "message": "You also need to verify that there is no regression regarding glitching VBUS.\nBefore the (wrong) existing version of the code, we had the following issue: when the machine has a USB device plugged on one port and you plug a device on the second port, the first port will be downgrade from 3.0A to 1.5A, we want to be sure that we are not going to glitch VBUS (and disconnect temporarily the first USB device) from transitioning the load switch from enable @ 3A to enable @ 1.5A.\nYou can verify it with just 2 USB keys:\nplug the first one, flush your kernel log, plug the second one, verify in the kernel log that the first one hasn\u0027t been re-enumerated.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "7453f95132a979f769f8c44f3c33e2851dd8c288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
