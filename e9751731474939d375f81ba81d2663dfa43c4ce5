@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3cf3c1_3d49fa31",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-09T20:58:40Z",
+      "side": 1,
+      "message": "Not needed, defined in ec.tasklist.",
+      "revId": "e9751731474939d375f81ba81d2663dfa43c4ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_dd20ae5f",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-09T20:58:40Z",
+      "side": 1,
+      "message": "leave these at 0 (S0 and S3). We are not using gyro for lid angle.",
+      "revId": "e9751731474939d375f81ba81d2663dfa43c4ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_7d4f8239",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-09T20:58:40Z",
+      "side": 1,
+      "message": "not needed defined in board.h",
+      "revId": "e9751731474939d375f81ba81d2663dfa43c4ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_dd6e6eab",
+        "filename": "board/pbody/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-09T20:58:40Z",
+      "side": 1,
+      "message": "see if there is enough space for a bigger FIFO (must be a power of 2. Start with 1024).",
+      "revId": "e9751731474939d375f81ba81d2663dfa43c4ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
