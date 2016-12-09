@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3cf3c1_b036310e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-09T21:46:06Z",
+      "side": 1,
+      "message": "I think it\u0027s important to note that this CL effectively neuters all rollback behavior.",
+      "revId": "4cedf193028ad6ac39b35b6d95425a914324a298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_d062d51d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-09T21:46:06Z",
+      "side": 1,
+      "message": "Why aren\u0027t we just making a RESET_FLAG_DEEP_SLEEP flag that reflects the GR_PMU_RSTSRC register\u0027s GC_PMU_RSTSRC_EXIT_MASK which is the indicator for deep sleep? Having to enumerate the possible wake sources as an indicator for deep sleep resumption seems brittle.",
+      "revId": "4cedf193028ad6ac39b35b6d95425a914324a298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
