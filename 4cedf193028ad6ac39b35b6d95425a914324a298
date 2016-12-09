@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9a3cf3c1_b0c1913e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-09T22:13:09Z",
+      "side": 1,
+      "message": "There are two different problems you guys are mixing up.\n\nAs of today the counter protects from a bad image (bad in a sense that it causes rolling reboots due to some exception). \nThis is what this counter was for, and it still is good for that, and it still should not be incremented when getting out of deep sleep.\n\nSo, this patch is necessary, otherwise we\u0027ll keep seeing this \"tpm fell back\u0027 reports from the field.\n\nAnother thing is that we want to increment this counter in every TPM reset which is not a deep sleep resume. This will allow to handle the \u0027bad tpm\u0027 case of a different kind - it does not cause exceptions, but the OS somehow does not like it.\n\nSo let\u0027s address the comments and push this change.",
+      "parentUuid": "9a3cf3c1_1054dd14",
+      "revId": "4cedf193028ad6ac39b35b6d95425a914324a298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3cf3c1_d062d51d",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
