@@ -15,6 +15,17 @@
 #include "task.h"
 #include "version.h"
 
+void system_decrement_retry_counter(void)
+{
+#ifdef BOARD_CR50
+	if (GREG32(PMU, LONG_LIFE_SCRATCH0)) {
+		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG0, 1);
+		GREG32(PMU, LONG_LIFE_SCRATCH0) -= 1;
+		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG0, 0);
+	}
+#endif
+}
+
 static void check_reset_cause(void)
 {
 	uint32_t g_rstsrc = GR_PMU_RSTSRC;
@@ -33,6 +44,11 @@ static void check_reset_cause(void)
 	if (g_rstsrc & GC_PMU_RSTSRC_EXIT_MASK) {
 		/* This register is cleared by reading it */
 		uint32_t g_exitpd = GR_PMU_EXITPD_SRC;
+		/*
+		 * All deep sleep resets should be considered valid and should
+		 * not impact the rolling reboot count.
+		 */
+		system_decrement_retry_counter();
 
 		if (g_exitpd & GC_PMU_EXITPD_SRC_PIN_PD_EXIT_MASK)
 			flags |= RESET_FLAG_WAKE_PIN;
