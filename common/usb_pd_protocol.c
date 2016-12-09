@@ -196,6 +196,26 @@ static const char * const pd_state_names[] = {
 BUILD_ASSERT(ARRAY_SIZE(pd_state_names) == PD_STATE_COUNT);
 #endif
 
+static const char * const pd_control_messages[] = {
+	"RESERVED0",
+	"GOOD_CRC",
+	"GOTO_MIN",
+	"ACCEPT",
+	"REJECT",
+	"PING",
+	"PS_RDY",
+	"GET_SOURCE_CAP",
+	"GET_SINK_CAP",
+	"DR_SWAP",
+	"PR_SWAP",
+	"VCONN_SWAP",
+	"WAIT",
+	"SOFT_RESET",
+	"SOFT_RESET",
+	"RESERVED14",
+	"RESERVED15",
+};
+
 /*
  * 4 entry rw_hash table of type-C devices that AP has firmware updates for.
  */
@@ -366,10 +386,9 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif
 
 	if (debug_level >= 1)
-		CPRINTF("C%d st%d %s\n", port, next_state,
-					 pd_state_names[next_state]);
+		CPRINTF("C%d st%02d %s\n", port, next_state, pd_state_names[next_state]);
 	else
-		CPRINTF("C%d st%d\n", port, next_state);
+		CPRINTF("C%d st%02d\n", port, next_state);
 }
 
 /* increment message ID counter */
@@ -422,7 +441,8 @@ static int send_control(int port, int type)
 
 	bit_len = pd_transmit(port, TCPC_TX_SOP, header, NULL);
 	if (debug_level >= 2)
-		CPRINTF("CTRL[%d]>%d\n", type, bit_len);
+		CPRINTF("C%d Send %s(%d)\n",
+			port, pd_control_messages[type], bit_len);
 
 	return bit_len;
 }
@@ -450,7 +470,7 @@ static int send_source_cap(int port)
 
 	bit_len = pd_transmit(port, TCPC_TX_SOP, header, src_pdo);
 	if (debug_level >= 2)
-		CPRINTF("srcCAP>%d\n", bit_len);
+		CPRINTF("Send srcCAP>%d\n", bit_len);
 
 	return bit_len;
 }
@@ -464,7 +484,7 @@ static void send_sink_cap(int port)
 
 	bit_len = pd_transmit(port, TCPC_TX_SOP, header, pd_snk_pdo);
 	if (debug_level >= 2)
-		CPRINTF("snkCAP>%d\n", bit_len);
+		CPRINTF("Send snkCAP>%d\n", bit_len);
 }
 
 static int send_request(int port, uint32_t rdo)
@@ -475,7 +495,7 @@ static int send_request(int port, uint32_t rdo)
 
 	bit_len = pd_transmit(port, TCPC_TX_SOP, header, &rdo);
 	if (debug_level >= 2)
-		CPRINTF("REQ%d>\n", bit_len);
+		CPRINTF("Send REQ%d>\n", bit_len);
 
 	return bit_len;
 }
@@ -1128,7 +1148,11 @@ static void handle_request(int port, uint16_t head,
 	/* dump received packet content (only dump ping at debug level 3) */
 	if ((debug_level == 2 && PD_HEADER_TYPE(head) != PD_CTRL_PING) ||
 	    debug_level >= 3) {
-		CPRINTF("RECV %04x/%d ", head, cnt);
+		int type = PD_HEADER_TYPE(head);
+		if (cnt)
+			CPRINTF("RECV (%04x/%d) ", head, cnt);
+		else
+			CPRINTF("RECV %s(%04x/%d) ", pd_control_messages[type], head, cnt);
 		for (p = 0; p < cnt; p++)
 			CPRINTF("[%d]%08x ", p, payload[p]);
 		CPRINTF("\n");
