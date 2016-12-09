@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a3cf3c1_1aa4fc8a",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-12-09T19:01:38Z",
+      "side": 1,
+      "message": "Sorry I misunderstood this. It is done now",
+      "parentUuid": "9a3cf3c1_fae93dfd",
+      "revId": "ef9946238b14cf365e25cfd202b3a1f810616896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3cf3c1_bae3b519",
         "filename": "chip/g/system.c",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2016-12-09T03:02:52Z",
       "side": 1,
       "message": "it should never happen, but just in case: we should not be decreasing this below zero.",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 38
+      },
+      "revId": "ef9946238b14cf365e25cfd202b3a1f810616896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_9abb4ca7",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-12-09T19:01:38Z",
+      "side": 1,
+      "message": "It shouldn\u0027t happen with the check that the retry counter value is not 0",
+      "parentUuid": "9a3cf3c1_bae3b519",
       "range": {
         "startLine": 23,
         "startChar": 2,
