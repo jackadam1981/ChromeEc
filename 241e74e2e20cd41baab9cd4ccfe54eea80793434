@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3cf3c1_f13f28e6",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-09T00:05:53Z",
+      "side": 1,
+      "message": "shouldn\u0027t  this pin be pulled up also, just in case? I am just worried about using a floating pin as a wake source.",
+      "range": {
+        "startLine": 81,
+        "startChar": 47,
+        "endLine": 81,
+        "endChar": 59
+      },
+      "revId": "241e74e2e20cd41baab9cd4ccfe54eea80793434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
