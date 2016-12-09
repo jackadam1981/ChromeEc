@@ -258,9 +258,28 @@ static void configure_board_specific_gpios(void)
 	}
 }
 
+void decrement_retry_counter(void)
+{
+	if (GREG32(PMU, LONG_LIFE_SCRATCH0)) {
+		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG0, 1);
+		GREG32(PMU, LONG_LIFE_SCRATCH0) -= 1;
+		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG0, 0);
+	}
+}
+
+#define DEEP_SLEEP_RESET (RESET_FLAG_WAKE_PIN | RESET_FLAG_USB_RESUME |	\
+			  RESET_FLAG_RTC_ALARM | RESET_FLAG_RDD |	\
+			  RESET_FLAG_RBOX)
+
 /* Initialize board. */
 static void board_init(void)
 {
+	/*
+	 * Deep sleep resets should be considered valid and should not impact
+	 * the rolling reboot count.
+	 */
+	if (system_get_reset_flags() & DEEP_SLEEP_RESET)
+		decrement_retry_counter();
 	configure_board_specific_gpios();
 	init_pmu();
 	init_interrupts();
