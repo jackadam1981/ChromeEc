@@ -1,4 +1,4 @@
-/* Copyright (c) 2016 The Chromium OS Authors. All rights reserved.
+/* Copyright 2016 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -266,14 +266,12 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	/* function interface specifies an 8-bit slave addr: convert it to
 	 * a 7-bit addr to meet the expectations of the driver code.
 	 */
-	slave_addr >>= 1;
-
 	ctx = &i2c_ctxs[port];
 	ctx->error_flag = 0;
 
-	total_len = 1 + (is_read ? 1 : in_size);
+	total_len = is_read ? (1 + in_size) : out_size;
 
-	i2c_init_transaction(ctx, slave_addr, flags);
+	i2c_init_transaction(ctx, (uint8_t)(slave_addr) >> 1, (uint8_t)flags);
 
 	/* Write device id */
 	i2c_write_buffer(ctx->base, 1, out, &curr_index, total_len);
@@ -327,15 +325,6 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	}
 
 	i2c_mmio_write(ctx->base, IC_ENABLE, IC_ENABLE_DISABLE);
-
-#ifdef ISH_DEBUG
-	if (req.operation == I2C_READ) {
-		CPRINTF("I2C read len: %d [", req.r_len);
-		for (i = 0; i < req.r_len; i++)
-			CPRINTF("0x%0x ", req.r_data[i]);
-		CPUTS("]\n");
-	}
-#endif
 
 	return EC_SUCCESS;
 }
