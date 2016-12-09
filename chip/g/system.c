@@ -33,6 +33,13 @@ static void check_reset_cause(void)
 	if (g_rstsrc & GC_PMU_RSTSRC_EXIT_MASK) {
 		/* This register is cleared by reading it */
 		uint32_t g_exitpd = GR_PMU_EXITPD_SRC;
+#ifdef BOARD_CR50
+		/*
+		 * All deep sleep resets should be considered valid and should
+		 * not impact the rolling reboot count.
+		 */
+		system_decrement_retry_counter();
+#endif
 
 		if (g_exitpd & GC_PMU_EXITPD_SRC_PIN_PD_EXIT_MASK)
 			flags |= RESET_FLAG_WAKE_PIN;

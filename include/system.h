@@ -510,6 +510,9 @@ void system_init_board_properties(void);
  */
 uint32_t system_board_properties_callback(void);
 
+/* Board specific function used to reduce the retry counter by 1. */
+void system_decrement_retry_counter(void)
+
 /**
  * A function provided by some platforms to hint that something is going
  * wrong.

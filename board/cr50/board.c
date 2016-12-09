@@ -690,6 +690,15 @@ uint32_t system_board_properties_callback(void)
 	return board_properties;
 }
 
+void system_decrement_retry_counter(void)
+{
+	if (GREG32(PMU, LONG_LIFE_SCRATCH0)) {
+		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG0, 1);
+		GREG32(PMU, LONG_LIFE_SCRATCH0) -= 1;
+		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG0, 0);
+	}
+}
+
 void i2cs_set_pinmux(void)
 {
 	/* Connect I2CS SDA/SCL output to A1/A9 pads */
