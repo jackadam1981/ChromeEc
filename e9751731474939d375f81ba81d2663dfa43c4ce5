@@ -67,6 +67,24 @@
       "revId": "e9751731474939d375f81ba81d2663dfa43c4ce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d5ce705_1b0bff8f",
+        "filename": "board/pbody/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1167184
+      },
+      "writtenOn": "2016-12-10T04:12:14Z",
+      "side": 1,
+      "message": "I have try to start with 1024,then 512, 256; but they all overflow. It seems to define 128 is suitable.",
+      "parentUuid": "9a3cf3c1_dd6e6eab",
+      "revId": "e9751731474939d375f81ba81d2663dfa43c4ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
