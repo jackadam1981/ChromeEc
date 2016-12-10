@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3cf3c1_e4be3761",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-10T01:12:34Z",
+      "side": 1,
+      "message": "Why is this slave_addr modificaiton here. Clearly slave_addr is 8-bit but you want 7-bit? i2c_init_transaction() would be the perfect place for making those adjustments since it\u0027d be updating the controller registers.",
+      "revId": "c4ec62abf5b7e049cfadae0b869c876830991705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
