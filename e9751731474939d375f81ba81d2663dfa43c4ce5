@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "9a3cf3c1_5f214ec4",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-10T04:28:05Z",
+      "side": 1,
+      "message": "This is expected. Until someone needs it (arc++ for instance), we leave the gyro in suspend mode.\nIf you want to use it from user space, you can use the iio sysfs interface.\nIf you want to use from EC console, do \u0027accel_rate 2 10000\u0027 and then you can see them working with ectool motionsense or \u0027accelinfo on 1000\u0027",
+      "parentUuid": "6d5ce705_1b393f34",
+      "revId": "e9751731474939d375f81ba81d2663dfa43c4ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3cf3c1_7d4f8239",
         "filename": "board/pbody/board.c",
         "patchSetId": 6
