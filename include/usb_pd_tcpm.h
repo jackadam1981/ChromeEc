@@ -14,6 +14,16 @@
 /* Time to wait for TCPC to complete transmit */
 #define PD_T_TCPC_TX_TIMEOUT  (100*MSEC)
 
+/*
+ * TODO: crosbug.com/p/60846
+ * Some PD chips like PS8751 read extra 3 bytes from TCPC_REG_RX_DATA reg which
+ * is equal to the number of bytes reported by the TCPC_REG_RX_BYTE_CNT reg.
+ * However this is the number of bytes in the RX_BUFFER_DATA_OBJECTS plus 3
+ * (for the RX_BUF_FRAME_TYPE & RX_BUF_HEADER). Add this quirk flag in the
+ * driver config till the PD firmware is fixed.
+ */
+#define PD_TCPC_QUIRK_STALE_BYTE_CNT	(1 << 0)
+
 enum tcpc_cc_voltage_status {
 	TYPEC_CC_VOLT_OPEN = 0,
 	TYPEC_CC_VOLT_RA = 1,
@@ -207,6 +217,8 @@ struct tcpc_config_t {
 	int i2c_slave_addr;
 	const struct tcpm_drv *drv;
 	enum tcpc_alert_polarity pol;
+	/* TODO: crosbug.com/p/60846 */
+	int flags;
 };
 
 /**

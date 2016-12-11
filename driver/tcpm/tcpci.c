@@ -200,14 +200,20 @@ int tcpci_tcpm_get_message(int port, uint32_t *payload, int *head)
 	rv = tcpc_read(port, TCPC_REG_RX_BYTE_CNT, &cnt);
 
 	/* RX_BYTE_CNT includes 3 bytes for frame type and header */
-	if (rv != EC_SUCCESS || cnt < 3) {
+	if (rv != EC_SUCCESS ||
+		/* TODO: crosbug.com/p/60846 */
+		(!(tcpc_get_flags(port) & PD_TCPC_QUIRK_STALE_BYTE_CNT) &&
+		cnt < 3)) {
 		rv = EC_ERROR_UNKNOWN;
 		goto clear;
 	}
 
 	rv = tcpc_read16(port, TCPC_REG_RX_HDR, (int *)head);
 
-	cnt = cnt - 3;
+	/* TODO: crosbug.com/p/60846 */
+	if (!(tcpc_get_flags(port) & PD_TCPC_QUIRK_STALE_BYTE_CNT))
+		cnt = cnt - 3;
+
 	if (rv == EC_SUCCESS && cnt > 0) {
 		tcpc_lock(port, 1);
 		rv = tcpc_xfer(port,
