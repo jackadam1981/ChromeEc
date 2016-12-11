@@ -701,6 +701,8 @@ static void tpm_reset_now(int wipe_first)
 	/* This is more related to TPM task activity than TPM transactions */
 	cprints(CC_TASK, "%s(%d)", __func__, wipe_first);
 
+	nvmem_disable_commits();
+
 	if (wipe_first) {
 		/*
 		 * Blindly zapping the TPM space while the AP is awake and
@@ -793,8 +795,10 @@ void tpm_task(void)
 			 * TODO(vbendeb): revisit this when
 			 * crosbug.com/p/55667 has been addressed.
 			 */
-			if (command_code == TPM2_PCR_Read)
+			if (command_code == TPM2_PCR_Read) {
 				system_process_retry_counter();
+				nvmem_enable_commits();
+			}
 #ifdef CONFIG_EXTENSION_COMMAND
 			if (!IS_CUSTOM_CODE(command_code))
 #endif
