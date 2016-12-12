@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a3cf3c1_bf78396b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-12T05:27:51Z",
+      "side": 1,
+      "message": "okay sounds good",
+      "parentUuid": "6d5ce705_fb7e4bcc",
+      "revId": "d127b5c5493716cb6ff12fceb6c167f62ba5d9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d5ce705_5b6e5719",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9a3cf3c1_7f72d189",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-12T05:27:51Z",
+      "side": 1,
+      "message": "okay I will add it",
+      "parentUuid": "6d5ce705_5b6e5719",
+      "revId": "d127b5c5493716cb6ff12fceb6c167f62ba5d9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d5ce705_3b61a32a",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2016-12-12T01:01:27Z",
       "side": 1,
       "message": "\"STALE\" might not be the appropriate name.\n\nMaybe BYTE_CNT_NO_HEADER?",
+      "revId": "d127b5c5493716cb6ff12fceb6c167f62ba5d9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_df6bfd98",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-12T05:27:51Z",
+      "side": 1,
+      "message": "okay I will change it",
+      "parentUuid": "6d5ce705_3b61a32a",
       "revId": "d127b5c5493716cb6ff12fceb6c167f62ba5d9c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
