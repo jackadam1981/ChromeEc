@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d5ce705_bbc21395",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-12-12T06:29:48Z",
+      "side": 1,
+      "message": "OK.",
+      "parentUuid": "9a3cf3c1_dde9cecb",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 9
+      },
+      "revId": "4a5631a964e3e94cfac6e39ac20b16bc4b97dbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3cf3c1_1d0996e0",
         "filename": "common/virtual_battery.c",
         "patchSetId": 6
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "6d5ce705_bbabf3bc",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-12-12T06:29:48Z",
+      "side": 1,
+      "message": "OK.",
+      "parentUuid": "9a3cf3c1_1d3e367c",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 28
+      },
+      "revId": "4a5631a964e3e94cfac6e39ac20b16bc4b97dbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3cf3c1_bd0f2ae2",
         "filename": "common/virtual_battery.c",
         "patchSetId": 6
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "6d5ce705_9ba62ff6",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-12-12T06:29:48Z",
+      "side": 1,
+      "message": "This i2c transaction only runs once to initialize batt_mode_cache.\nSo we can just replace read_len with 2 here.",
+      "parentUuid": "9a3cf3c1_bd0f2ae2",
+      "range": {
+        "startLine": 196,
+        "startChar": 5,
+        "endLine": 196,
+        "endChar": 13
+      },
+      "revId": "4a5631a964e3e94cfac6e39ac20b16bc4b97dbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a3cf3c1_9dc7c658",
         "filename": "include/virtual_battery.h",
         "patchSetId": 6
@@ -105,6 +177,30 @@
       "writtenOn": "2016-12-09T21:06:26Z",
       "side": 1,
       "message": "Might want to name this differently, it\u0027s confusing because it\u0027s not the actual return value of the function.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 32
+      },
+      "revId": "4a5631a964e3e94cfac6e39ac20b16bc4b97dbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d5ce705_fb8f2b79",
+        "filename": "include/virtual_battery.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2016-12-12T06:29:48Z",
+      "side": 1,
+      "message": "I\u0027ll replace \u0027rv\u0027 with \u0027err_code\u0027.",
+      "parentUuid": "9a3cf3c1_9dc7c658",
       "range": {
         "startLine": 33,
         "startChar": 1,
