@@ -69,6 +69,24 @@
       "revId": "cf8014e7c1ca21d72c92c7686bd6023e7df1972d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d5ce705_7be07b0c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-12-12T07:28:06Z",
+      "side": 1,
+      "message": "I see that head_cnt*4+2 \u003d\u003d cnt.\n\nPD_HEADER_CNT is the number of 32-bit Data Objects (see PD spec 6.2.1.2 Number of Data Objects), so multiplying by 4 is expected (I did not look into the details when I suggested this check).\n\nHowever, it seems like your TCPC adds only 2 bytes to RECEIVE_BYTE_COUNT, instead of 3 as expected by the spec? I\u0027m actually not sure what these numbers mean, was the dump above obtained with or without the quirk applied? (e.g. is cnt the raw value obtained from the TCPC?)",
+      "parentUuid": "9a3cf3c1_df0f7de1",
+      "revId": "cf8014e7c1ca21d72c92c7686bd6023e7df1972d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
