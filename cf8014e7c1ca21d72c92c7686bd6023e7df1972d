@@ -87,6 +87,24 @@
       "revId": "cf8014e7c1ca21d72c92c7686bd6023e7df1972d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_02ec8a49",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-12T16:14:44Z",
+      "side": 1,
+      "message": "okay, this print is taken at line 215, So quirk applied initially and then readjusted back.",
+      "parentUuid": "6d5ce705_7be07b0c",
+      "revId": "cf8014e7c1ca21d72c92c7686bd6023e7df1972d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
