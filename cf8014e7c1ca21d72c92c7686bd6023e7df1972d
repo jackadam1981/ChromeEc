@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a3cf3c1_ff124107",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-12T06:42:08Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "6d5ce705_3b2b6393",
+      "revId": "cf8014e7c1ca21d72c92c7686bd6023e7df1972d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d5ce705_5b3817e6",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2016-12-12T05:33:33Z",
       "side": 1,
       "message": "I think you mean !\u003d",
+      "revId": "cf8014e7c1ca21d72c92c7686bd6023e7df1972d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_df0f7de1",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-12T06:42:08Z",
+      "side": 1,
+      "message": "I always see PD_HEADER_CNT(*head) !\u003d cnt when Zinger is inserted.\n\n \n\u003e C1 st2\nC1 st3\n[22.498649 TCPC p1 reset!]\n[22.501582 TCPC p1 FW VER: 0x33]\nC1 st2\nC1 st3\nC1 st15\nC1 st3\nC1 st6\nhead_cnt\u003d3, cnt\u003d14\nReq C1 [1] 5000mV 3000mA\n[22.882791 New chg p1]\nC1 st7\nhead_cnt\u003d0, cnt\u003d2\nC1 st8\n[22.906339 Ramp reset: st1]\n[22.907108 CL: p1 s0 i500 v20000]\nhead_cnt\u003d0, cnt\u003d2\nC1 st9\n[22.997485 Ramp reset: st1]\n[22.998032 CL: p1 s0 i3000 v5000]\nReq C1 [3] 20000mV 2250mA\n[23.008817 Ramp reset: st1]\n[23.009337 CL: p1 s0 i500 v5000]\nC1 st7\nhead_cnt\u003d0, cnt\u003d2\nhead_cnt\u003d0, cnt\u003d2\nC1 st8\nhead_cnt\u003d0, cnt\u003d2\nC1 st9\n[23.123109 Ramp reset: st1]\n[23.123656 CL: p1 s0 i2250 v20000]\nC1 st27\nhead_cnt\u003d0, cnt\u003d2\nC1 st9\nhead_cnt\u003d4, cnt\u003d18\nhead_cnt\u003d2, cnt\u003d10\nhead_cnt\u003d2, cnt\u003d10\nhead_cnt\u003d1, cnt\u003d6\nhead_cnt\u003d7, cnt\u003d30",
+      "parentUuid": "6d5ce705_5b3817e6",
       "revId": "cf8014e7c1ca21d72c92c7686bd6023e7df1972d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
