@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3cf3c1_93f9ee5f",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-12T20:09:57Z",
+      "side": 1,
+      "message": "both casts here do not need to be done. In other words, no modifications needed on this line.",
+      "range": {
+        "startLine": 274,
+        "startChar": 27,
+        "endLine": 274,
+        "endChar": 36
+      },
+      "revId": "e2d9a42f2df937bbee4198914fd74e2a6bb1d54b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
