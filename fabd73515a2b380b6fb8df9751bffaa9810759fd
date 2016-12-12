@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1afac331_a0d7144f",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-12T14:34:51Z",
+      "side": 1,
+      "message": "drinkcat just changed this calling convention ?\nin https://chromium-review.googlesource.com/#/c/417443/",
+      "range": {
+        "startLine": 700,
+        "startChar": 0,
+        "endLine": 701,
+        "endChar": 11
+      },
+      "revId": "fabd73515a2b380b6fb8df9751bffaa9810759fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1afac331_60a90cc7",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-12T14:34:51Z",
+      "side": 1,
+      "message": "maybe fully ignoring the rv value here is not so great.\nbuf[1] / buf[2] might be uninitialized in this case.\n\nmaybe we can replace PACKET_IS_GOOD_CRC(*head) by\n\u0027!rv \u0026\u0026 PACKET_IS_GOOD_CRC(*head)\u0027\n(and use \u0027rv \u003d tcpc_xfer(...\u0027 on line 713)",
+      "range": {
+        "startLine": 736,
+        "startChar": 0,
+        "endLine": 739,
+        "endChar": 72
+      },
+      "revId": "fabd73515a2b380b6fb8df9751bffaa9810759fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
