@@ -28,6 +28,7 @@
 #include "pi3usb9281.h"
 #include "power.h"
 #include "power_button.h"
+#include "ps8740.h"
 #include "spi.h"
 #include "switch.h"
 #include "system.h"
@@ -147,6 +148,18 @@ struct pi3usb9281_config pi3usb9281_chips[] = {
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
 	     CONFIG_USB_SWITCH_PI3USB9281_CHIP_COUNT);
 
+static int ps8740_tune_mux(const struct usb_mux *mux)
+{
+	/* Apply same USB EQ settings to both Type-C mux */
+	ps8740_tune_usb_eq(mux->port_addr,
+			   PS8740_USB_EQ_TX_10_1_DB,
+			   PS8740_USB_EQ_RX_15_5_DB);
+	/* High Speed Signal Detector threshold adjustment */
+	i2c_write8(I2C_PORT_USB_MUX, mux->port_addr, 0x3C, 0x80);
+
+	return EC_SUCCESS;
+}
+
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.port_addr = 0xa8,
@@ -155,6 +168,7 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.port_addr = 0x20,
 		.driver = &ps8740_usb_mux_driver,
+		.board_init = &ps8740_tune_mux,
 	}
 };
 
