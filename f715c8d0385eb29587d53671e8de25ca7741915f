@@ -22,6 +22,30 @@
       "revId": "f715c8d0385eb29587d53671e8de25ca7741915f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_62f596ce",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2016-12-12T16:56:56Z",
+      "side": 1,
+      "message": "code increases by 48 bytes and stack usage by 12 bytes.\n\nLooking at the number of host commands used by each board, 21 of them use 0 host commands and 27 use an average of 54 host commands.\n\nI could go either way on this.",
+      "parentUuid": "9a3cf3c1_dde30e19",
+      "range": {
+        "startLine": 1179,
+        "startChar": 7,
+        "endLine": 1179,
+        "endChar": 36
+      },
+      "revId": "f715c8d0385eb29587d53671e8de25ca7741915f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
