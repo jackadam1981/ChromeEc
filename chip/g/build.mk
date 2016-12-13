@@ -17,6 +17,9 @@ CPPFLAGS += -I$(abspath ./builtin)
 CPPFLAGS += -I$(abspath ./chip/$(CHIP))
 CPPFLAGS += -I$(INCLUDE_ROOT)
 CPPFLAGS += -I$(CRYPTOCLIB)/include
+ifeq ($(CONFIG_SHA512),y)
+CPPFLAGS += -DSHA512_SUPPORT
+endif
 endif
 
 # Required chip modules
@@ -41,8 +44,10 @@ chip-$(CONFIG_DCRYPTO)+= dcrypto/p256_ecies.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/rsa.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/sha1.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/sha256.o
+ifeq ($(CONFIG_SHA512),y)
 chip-$(CONFIG_DCRYPTO)+= dcrypto/sha384.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/sha512.o
+endif
 chip-$(CONFIG_DCRYPTO)+= dcrypto/x509.o
 
 chip-$(CONFIG_SPI_MASTER)+=spi_master.o
@@ -139,7 +144,7 @@ $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/cryptoc/libcryptoc.a
 .PHONY: $(out)/cryptoc/libcryptoc.a
 $(out)/cryptoc/libcryptoc.a:
 	$(MAKE) obj=$(realpath $(out))/cryptoc SUPPORT_UNALIGNED=1 \
-		SHA512_SUPPORT=1 -C $(CRYPTOCLIB)
+		SHA512_SUPPORT=$(CONFIG_SHA512) -C $(CRYPTOCLIB)
 endif   # end CONFIG_DCRYPTO
 
 endif   # CHIP_MK_INCLUDED_ONCE is nonempty
