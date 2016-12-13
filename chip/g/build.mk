@@ -17,6 +17,7 @@ CPPFLAGS += -I$(abspath ./builtin)
 CPPFLAGS += -I$(abspath ./chip/$(CHIP))
 CPPFLAGS += -I$(INCLUDE_ROOT)
 CPPFLAGS += -I$(CRYPTOCLIB)/include
+CPPFLAGS += -DSHA512_SUPPORT=1
 endif
 
 # Required chip modules
