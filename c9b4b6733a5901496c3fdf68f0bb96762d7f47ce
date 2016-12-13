@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3cf3c1_9219df62",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-13T18:35:14Z",
+      "side": 1,
+      "message": "adding this just to CPPFLAGS should suffice",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 28
+      },
+      "revId": "c9b4b6733a5901496c3fdf68f0bb96762d7f47ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
