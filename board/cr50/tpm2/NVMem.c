@@ -12,10 +12,12 @@
 
 #include <string.h>
 
+#include "Global.h"
 #include "PlatformData.h"
 #include "TpmError.h"
 #include "assert.h"
 #include "nvmem.h"
+#include "util.h"
 
 /* Local state */
 #ifndef CONFIG_FLASH_NVMEM
@@ -24,6 +26,13 @@ static unsigned char s_NV[NV_MEMORY_SIZE];
 static BOOL s_NvIsAvailable;
 static BOOL s_NV_unrecoverable;
 static BOOL s_NV_recoverable;
+
+/* This assert serves as a rudimentary check for changes
+ * to the OBJECT structure (which is serialized to NVmem).
+ * Whenever the OBJECT struct changes, NV_FORMAT_VERSION
+ * in tpm2/Implementation.h ought to be bumped.
+ */
+BUILD_ASSERT(sizeof(OBJECT) == 1536);
 
 /*
  * This function is used by the simulator to set the error flags in the NV
