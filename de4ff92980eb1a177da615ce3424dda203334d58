@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3cf3c1_8d19be62",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-13T19:32:11Z",
+      "side": 1,
+      "message": "this portion is definitely helpful.",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 4
+      },
+      "revId": "de4ff92980eb1a177da615ce3424dda203334d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_4d03d6f0",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-13T19:32:11Z",
+      "side": 1,
+      "message": "this helps keep angles small while lid is closed, also good.",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 15
+      },
+      "revId": "de4ff92980eb1a177da615ce3424dda203334d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_2d0092e1",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-13T19:32:11Z",
+      "side": 1,
+      "message": "I just realized this part is kinda bad. needs some more thought. Maybe instead of just any sudden transition,  just the ones around 360 deg. The problem now is that if you transition out of tablet mode during a unreliable transition session, you\u0027ll never correct to proper laptop mode.",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 5
+      },
+      "revId": "de4ff92980eb1a177da615ce3424dda203334d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
