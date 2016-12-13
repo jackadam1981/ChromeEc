@@ -22,6 +22,29 @@
       "revId": "0bb18fbaac32344a424d09642bd5dd3089a0292e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1afac331_2399ce07",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-13T12:59:24Z",
+      "side": 1,
+      "message": "Coverity complains that \u0027result\u0027 is unitialized here too...",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 8
+      },
+      "revId": "0bb18fbaac32344a424d09642bd5dd3089a0292e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
