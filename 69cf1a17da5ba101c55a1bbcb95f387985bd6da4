@@ -94,6 +94,30 @@
       "revId": "69cf1a17da5ba101c55a1bbcb95f387985bd6da4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_6dc771fe",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-12-13T23:48:58Z",
+      "side": 1,
+      "message": "In the case of CR50, sha512 is used directly by c files under board/cr50.\n\nThis may not be the case with other boards.  Such boards will have to make changes to their build.mk along with enabling CONFIG_UPTO_SHA512 in board.h.  This is why I added the define here as well.",
+      "parentUuid": "5a7fdbe6_677a329a",
+      "range": {
+        "startLine": 67,
+        "startChar": 13,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "69cf1a17da5ba101c55a1bbcb95f387985bd6da4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
