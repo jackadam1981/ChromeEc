@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1afac331_639fd6ef",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-13T12:57:58Z",
+      "side": 1,
+      "message": "Coverity complains that the \u0027digest\u0027 array is too short.\n\nas we still have:\nchip/g/dcrypto/internal.h:#define SHA_DIGEST_MAX_BYTES SHA256_DIGEST_SIZE\nit is, isn\u0027t it ?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 42
+      },
+      "revId": "0bb18fbaac32344a424d09642bd5dd3089a0292e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
