@@ -46,6 +46,29 @@
       "revId": "c9b4b6733a5901496c3fdf68f0bb96762d7f47ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a3cf3c1_323b538c",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-13T18:40:24Z",
+      "side": 1,
+      "message": "same here - please mention that this adds both 384 and 512 and reflect this in the name.",
+      "range": {
+        "startLine": 766,
+        "startChar": 3,
+        "endLine": 766,
+        "endChar": 65
+      },
+      "revId": "c9b4b6733a5901496c3fdf68f0bb96762d7f47ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
