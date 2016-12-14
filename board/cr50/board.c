@@ -87,6 +87,81 @@ const struct i2c_port_t i2c_ports[]  = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+/* Strapping pin info structure */
+#define STRAP_PIN_DELAY_SHORT 12   /* 12 * 4 = 48 uS */
+#define STRAP_PIN_DELAY_LONG  62   /* 62 * 4 = 248 uS */
+enum strap_list {
+	a0,
+	a1,
+	b0,
+	b1,
+	NUM_STRAP_PINS
+};
+
+struct strap_desc {
+	uint8_t gpio_signal;
+	uint8_t sel_offset;
+	uint8_t pad_select;
+};
+
+struct board_cfg {
+	uint16_t strap_cfg;
+	uint32_t board_properties;
+};
+
+const struct strap_desc strap_regs[NUM_STRAP_PINS] = {
+	/* Strap A0 -> DIOA1 */
+	{
+		.gpio_signal = GPIO_STRAP_A0,
+		.sel_offset = GOFFSET(PINMUX, DIOA1_SEL),
+		.pad_select = GC_PINMUX_DIOA1_SEL,
+	},
+	/* Strap A1 -> DIOA9 */
+	{
+		.gpio_signal = GPIO_STRAP_A1,
+		.sel_offset = GOFFSET(PINMUX, DIOA9_SEL),
+		.pad_select = GC_PINMUX_DIOA9_SEL,
+	},
+	/* Strap B0 -> DIOA6 */
+	{
+		.gpio_signal = GPIO_STRAP_B0,
+		.sel_offset = GOFFSET(PINMUX, DIOA6_SEL),
+		.pad_select = GC_PINMUX_DIOA6_SEL,
+	},
+	/* Strap B1 -> DIOA12 */
+	{
+		.gpio_signal = GPIO_STRAP_B1,
+		.sel_offset = GOFFSET(PINMUX, DIOA12_SEL),
+		.pad_select = GC_PINMUX_DIOA12_SEL,
+	},
+};
+
+#define BOARD_CFG_ENTRIES 3
+static struct board_cfg board_cfg_table[BOARD_CFG_ENTRIES] = {
+	/* Kevin/Gru */
+	{
+		.strap_cfg = 0x2,
+		.board_properties = BOARD_SLAVE_CONFIG_SPI |
+			BOARD_NEEDS_SYS_RST_PULL_UP,
+	},
+	/* Reef/Eve */
+	{
+		.strap_cfg = 0x12,
+		.board_properties = BOARD_SLAVE_CONFIG_I2C | BOARD_USB_AP |
+			BOARD_USE_PLT_RESET,
+	},
+	/*
+	 * Note: Keep this entry at the bottom of the table!
+	 * Default (no matching config found), so assign a configuration so that
+	 * system will boot. Using Reef as the default config.
+	 */
+	{
+		.strap_cfg = 0,
+		.board_properties = BOARD_SLAVE_CONFIG_I2C | BOARD_USB_AP |
+			BOARD_USE_PLT_RESET,
+	},
+};
+
 void post_reboot_request(void)
 {
 	/* Reboot the device next time TPM reset is requested. */
@@ -648,6 +723,148 @@ void enable_int_ap_l(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, enable_int_ap_l, HOOK_PRIO_DEFAULT);
 
+static void strap_config_pin(enum strap_list strap, int flags)
+{
+	const struct gpio_info *g = gpio_list + strap_regs[strap].gpio_signal;
+	int bitnum  = GPIO_MASK_TO_NUM(g->mask);
+	int mask = DIO_CTL_IE_MASK | DIO_CTL_PD_MASK | DIO_CTL_PU_MASK;
+	int val;
+
+	if (flags == GPIO_OUT_LOW) {
+		/* Config gpio to output and drive low */
+		gpio_set_flags(strap_regs[strap].gpio_signal, GPIO_OUT_LOW);
+		/* connect pin mux to gpio */
+		DIO_SEL_REG(strap_regs[strap].sel_offset) =
+			GET_GPIO_FUNC(g->port, bitnum);
+	} else if (flags & GPIO_INPUT) {
+		/* Configure gpio pin to be an input */
+		gpio_set_flags(strap_regs[strap].gpio_signal, GPIO_INPUT);
+		/* Connect pad to gpio */
+		GET_GPIO_SEL_REG(g->port, bitnum) =
+			strap_regs[strap].pad_select;
+
+		/*
+		 * Input enable is bit 2 of the CTL register. Pulldown enable is
+		 * bit 3, and pullup enable is bit 4. Always set input enable
+		 * and clear the pullup/pulldown bits unless the flags variable
+		 * specifies that pulldown or pullup should be enabled.
+		 */
+		val = 1;
+		if (flags & GPIO_PULL_DOWN)
+			val |= 1 << 1;
+		if (flags & GPIO_PULL_UP)
+			val |= 1 << 2;
+		/* Set input enable and pulldown/pullup in pinmux */
+		REG_WRITE_MLV(DIO_CTL_REG(strap_regs[strap].sel_offset),
+			      mask,
+			      DIO_CTL_IE_LSB, val);
+	} else if (flags == 0) {
+		/* Reset strap pins, disconnect output and clear pull up/dn */
+		/* Disconnect gpio from pin mux */
+		DIO_SEL_REG(strap_regs[strap].sel_offset) = 0;
+		/* Clear input enable and pulldown/pullup in pinmux */
+		REG_WRITE_MLV(DIO_CTL_REG(strap_regs[strap].sel_offset),
+			      mask,
+			      DIO_CTL_IE_LSB, 0);
+	}
+}
+
+int get_strap_config(uint16_t *config)
+{
+	enum strap_list s0;
+	int lvl;
+	int i;
+	int flags;
+
+	/*
+	 * There are 4 pins that are used to determine Cr50 board strapping
+	 * options. These pins are:
+	 *   1. DIOA1  -> I2CS_SDA
+	 *   2. DI0A9  -> I2CS_SCL
+	 *   3. DIOA6  -> SPS_CLK
+	 *   4. DIOA12 -> SPS_CS_L
+	 * There are two main configuration options based on whether I2CS or SPS
+	 * is used for TPM2 communication to/from the host AP. If SPS is the
+	 * TPM2 bus, then the pair of pins DIOA9|DIOA1 are used to designate
+	 * strapping options. If TPM uses I2C, then DIOA12|DIOA6 are the
+	 * strapping pins.
+	 *
+	 * Each strapping pin will have either an external pullup or pulldown
+	 * resistor. The external pull resistors have two levels, 5k for strong
+	 * and 1M for weak. Cr50 has internal pullup/pulldown 50k resistors that
+	 * can be configured via pinmux register settings. This combination of
+	 * external and internal pullup/pulldown resistors allows for 4 possible
+	 * states per strapping pin.
+	 *   external    internal   logical   bits
+	 *   --------    --------   -------   ----
+	 *    5K PD       n/a        LOW       00
+	 *    1M PD       50k PU     low       01
+	 *    1M PU       50k PD     high      10
+	 *    5K PU       n/a        HIGH      11
+	 *
+	 * To determine the bits associated with each strapping pin, the
+	 * following method is used.
+	 *   1. Set all 4 pins as as inputs with internal pulls disabled.
+	 *   2. Check for high level on DI0A9 or DI0A1. If high then s1 = DIOA12
+	 *      and s0 = DI0A6. Else check for high on DIOA9|DIOA1. If true,
+	 *      then s1 = DIOA9, s0 = DIOA1.
+	 *   3. For s1 and s0 do the following:
+	 *      a. b1 = gpio_get_level(pin)
+	 *      b. If b1 == 1, then enable internal pulldown, else enable
+	 *         internal pullup.
+	 *      c. b0 = gpio_get_level(pin)
+	 */
+
+	/* Step 1: Drive all 4 strap pins low to discharge caps */
+	for (s0 = a0; s0 < NUM_STRAP_PINS; s0++)
+		strap_config_pin(s0, GPIO_OUT_LOW);
+	/* Delay for ~75 usec */
+	udelay(STRAP_PIN_DELAY_SHORT);
+
+	/* Step 2: Check for A or B pair being used */
+	for (s0 = a0; s0 < NUM_STRAP_PINS; s0++)
+		strap_config_pin(s0, GPIO_INPUT);
+	udelay(STRAP_PIN_DELAY_LONG);
+
+	*config = 0;
+	if (gpio_get_level(strap_regs[a0].gpio_signal) ||
+	    gpio_get_level(strap_regs[a1].gpio_signal))
+		s0 = a0;
+	else if (gpio_get_level(strap_regs[b0].gpio_signal) ||
+		   gpio_get_level(strap_regs[b1].gpio_signal)) {
+		s0 = b0;
+		*config = 0x10;
+	} else
+		return EC_ERROR_UNKNOWN;
+
+	/* Step 3: Find s1|s0 state based on pull up/dn and strength */
+	for (i = 0; i < 2; i++) {
+		lvl = gpio_get_level(strap_regs[s0 + i].gpio_signal);
+		flags = GPIO_INPUT;
+		if (lvl)
+			flags |= GPIO_PULL_DOWN;
+		else
+			flags |= GPIO_PULL_UP;
+		/* Enable internal pull down/up resistor */
+		strap_config_pin(s0 + i, flags);
+		udelay(STRAP_PIN_DELAY_SHORT);
+		lvl = (lvl << 1) |
+			gpio_get_level(strap_regs[s0 + i].gpio_signal);
+		*config |= lvl << i * 2;
+	}
+
+	/*
+	 * Step 4: Disable internal pull up/dn resistors. The 4 pins used for
+	 * strapping options are also used for either SPI slave or I2CS and will
+	 * be configured correctly for those purposes when those modules are
+	 * initialized.
+	 */
+	for (s0 = a0; s0 < NUM_STRAP_PINS; s0++)
+		strap_config_pin(s0, 0);
+
+	return EC_SUCCESS;
+}
+
 void system_init_board_properties(void)
 {
 	uint32_t properties;
@@ -659,34 +876,34 @@ void system_init_board_properties(void)
 	 * update from a version not setting the register.
 	 */
 	if (!properties || system_get_reset_flags() & RESET_FLAG_HARD) {
+		int i;
+		uint16_t config;
+
 		/*
 		 * Reset the properties, because after a hard reset the register
 		 * won't be cleared.
 		 */
 		properties = 0;
 
-		/* Read DIOA1 strap pin */
-		if (gpio_get_level(GPIO_STRAP0)) {
-			/* Strap is pulled high -> Kevin SPI TPM option */
-			properties |= BOARD_SLAVE_CONFIG_SPI;
-			/* Add an internal pull up on sys_rst_l */
-			/*
-			 * TODO(crosbug.com/p/56945): Remove once SYS_RST_L can
-			 * be pulled up externally.
-			 */
-			properties |= BOARD_NEEDS_SYS_RST_PULL_UP;
-		} else {
-			/* Strap is low -> Reef I2C TPM option */
-			properties |= BOARD_SLAVE_CONFIG_I2C;
-			/* One PHY is connected to the AP */
-			properties |= BOARD_USB_AP;
-			/*
-			 * Platform reset is present and will need to be
-			 * configured as a an falling edge interrupt.
-			 */
-			properties |= BOARD_USE_PLT_RESET;
-		}
+		if (get_strap_config(&config) != EC_SUCCESS)
+			CPRINTS("No pullup on strap pins detected!");
 
+		/*
+		 * Search board config table to find a matching entry. Note if a
+		 * matching entry is not found, the value of i will index to the
+		 * last entry in the table for which config = 0. This entry
+		 * defines default properties so that boot process will
+		 * continue.
+		 */
+		i = 0;
+		while (board_cfg_table[i].strap_cfg != config &&
+		       i < BOARD_CFG_ENTRIES - 1)
+			i++;
+
+		/* Read board properties for this configuraiton */
+		properties = board_cfg_table[i].board_properties;
+		CPRINTS("Strap valid = %d, strap_cfg = 0x%x, properties = 0x%x",
+			i != BOARD_CFG_ENTRIES - 1, config, properties);
 		/*
 		 * Now save the properties value for future use.
 		 *
@@ -701,7 +918,10 @@ void system_init_board_properties(void)
 
 	/* Save this configuration setting */
 	board_properties = properties;
+
 }
+/* Need this hook to run before the default hook level */
+DECLARE_HOOK(HOOK_INIT, system_init_board_properties, HOOK_PRIO_FIRST);
 
 uint32_t system_board_properties_callback(void)
 {
@@ -871,3 +1091,12 @@ static enum vendor_cmd_rc vc_invalidate_inactive_rw(enum vendor_cmd_cc code,
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_INVALIDATE_INACTIVE_RW,
 	vc_invalidate_inactive_rw);
+
+static int command_board_properties(int argc, char **argv)
+{
+	ccprintf("properties = 0x%x\n", board_properties);
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(brdprop, command_board_properties,
+			     NULL, "Display board properties");
