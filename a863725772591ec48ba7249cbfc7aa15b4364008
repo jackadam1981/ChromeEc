@@ -16,6 +16,24 @@
       "revId": "a863725772591ec48ba7249cbfc7aa15b4364008",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d252b91_08d2e765",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2016-12-14T01:16:31Z",
+      "side": 1,
+      "message": "These two batteries configurations are different with BATTERY_SMP_COS4870.\nVoltage_max and Voltage_normal plus 0.1V.\nStart_charging_max_c change to 45 and charging _max_c change to 60.",
+      "parentUuid": "9a3cf3c1_d7bbd9a5",
+      "revId": "a863725772591ec48ba7249cbfc7aa15b4364008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
