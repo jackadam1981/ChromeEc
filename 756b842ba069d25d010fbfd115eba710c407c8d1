@@ -16,6 +16,52 @@
       "revId": "756b842ba069d25d010fbfd115eba710c407c8d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_bc6195bc",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-14T16:12:54Z",
+      "side": 1,
+      "message": "Nice catch. How about?\ndisch_on_ac \u003d curr-\u003ebatt.is_present \u003d\u003d BP_YES \u0026\u0026\n\t\t\t((!battery_is_cut_off() \u0026\u0026\n\t\t\t!(curr-\u003ebatt.flags \u0026 BATT_FLAG_WANT_CHARGE) \u0026\u0026\n\t\t\tcurr-\u003ebatt.status \u0026 STATUS_FULLY_CHARGED) ||\n\t\t\t(!chg_ramp_is_detected() \u0026\u0026\n\t\t\tcurr-\u003ebatt.state_of_charge \u003e 2));",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 35
+      },
+      "revId": "756b842ba069d25d010fbfd115eba710c407c8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_1c78e169",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-14T16:12:54Z",
+      "side": 1,
+      "message": "charger can trickle charge. Are you observing some error?",
+      "range": {
+        "startLine": 524,
+        "startChar": 0,
+        "endLine": 525,
+        "endChar": 28
+      },
+      "revId": "756b842ba069d25d010fbfd115eba710c407c8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
