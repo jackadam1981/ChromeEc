@@ -142,6 +142,30 @@
       "revId": "69cf1a17da5ba101c55a1bbcb95f387985bd6da4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_2db3b9e6",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-12-14T00:10:56Z",
+      "side": 1,
+      "message": "\u003e Why including this in board\u0027s build.mk in not enough?\n\nYes, this is the change I hoping that cr51 etc. will not have to make.  They just add CONFIG_UPTO_SHA512 to board.h and dcrypto works.",
+      "parentUuid": "5a7fdbe6_2d7819e1",
+      "range": {
+        "startLine": 67,
+        "startChar": 13,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "69cf1a17da5ba101c55a1bbcb95f387985bd6da4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
