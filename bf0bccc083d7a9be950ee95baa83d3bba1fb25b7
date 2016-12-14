@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7fdbe6_30bb09a9",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-14T17:22:11Z",
+      "side": 1,
+      "message": "let\u0027s remove this.",
+      "revId": "bf0bccc083d7a9be950ee95baa83d3bba1fb25b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_109b654d",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-14T17:22:11Z",
+      "side": 1,
+      "message": "no valuable changes",
+      "revId": "bf0bccc083d7a9be950ee95baa83d3bba1fb25b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_50c07d1e",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-14T17:22:11Z",
+      "side": 1,
+      "message": "update comment, angle is now 27.5 degree",
+      "revId": "bf0bccc083d7a9be950ee95baa83d3bba1fb25b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_50123dce",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-14T17:22:11Z",
+      "side": 1,
+      "message": "in math_util.h? Let\u0027s check we need to calculate sqrt at all.\ncan we use base_dot_product?\n\nif A and B are the magnitude, and x the difference.\n\nA - B \u003c x is equivalent to\nA^2 - B^2 \u003c x * (A + B)\nA^2 - B^2 \u003c 2x * avg(A, B)\n\nIf we assume the average should be around 1g,\nwe can check for A^2 - B^2 \u003c 2gx",
+      "revId": "bf0bccc083d7a9be950ee95baa83d3bba1fb25b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_f02a51ee",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-14T17:22:11Z",
+      "side": 1,
+      "message": "might not be the case.\nget_range is cheap, we can add it to lenght calculation: \n\nlid_dot_product /\u003d sqr(get_range())",
+      "revId": "bf0bccc083d7a9be950ee95baa83d3bba1fb25b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_906e753d",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-14T17:22:11Z",
+      "side": 1,
+      "message": "Similarely, Can we ignore small angle when lid is open?\nThe problem is lid_is_open has a wait period, so we may ignore angle update until lid settles.\nHowever, LID_DEBOUNCE is 30ms, so if we have a sampling at 100ms, lid will be stable within one period.",
+      "revId": "bf0bccc083d7a9be950ee95baa83d3bba1fb25b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_b0a37983",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-14T17:22:11Z",
+      "side": 1,
+      "message": "I assume there is no valuable changes here.\nNext time, use #if 0",
+      "revId": "bf0bccc083d7a9be950ee95baa83d3bba1fb25b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
