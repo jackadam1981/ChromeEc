@@ -505,6 +505,7 @@
  * CONFIG_CHARGER_V2
  */
 #undef CONFIG_CHARGER_PROFILE_OVERRIDE
+#undef CONFIG_CHARGER_PROFILE_OVERRIDE_COMMON
 
 /* Value of the charge sense resistor, in mOhms */
 #undef CONFIG_CHARGER_SENSE_RESISTOR

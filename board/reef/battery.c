@@ -10,6 +10,7 @@
 #include "bd9995x.h"
 #include "charge_ramp.h"
 #include "charge_state.h"
+#include "charger_profile.h"
 #include "console.h"
 #include "ec_commands.h"
 #include "extpower.h"
@@ -288,8 +289,54 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 }
 
 #ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
+const struct fast_charge_profile fast_charge_info[] = {
+	/* < 0C */
+	{
+		.temp_c = TEMPC_FLOAT_TO_INT(-1),
+		.curr_high_vtg = 0,
+		.curr_low_vtg = 0,
+		.voltage = 0,
+	},
 
-static int fast_charging_allowed = 1;
+	/* 0C >= && <=15C */
+	{
+		.temp_c = TEMPC_FLOAT_TO_INT(15),
+		.curr_high_vtg = 472,
+		.curr_low_vtg = 944,
+		.voltage = 8700,
+	},
+
+	/* 15C > && <=20C */
+	{
+		.temp_c = TEMPC_FLOAT_TO_INT(20),
+		.curr_high_vtg = 1416,
+		.curr_low_vtg = 1416,
+		.voltage = 8700,
+	},
+
+	/* 20C > && <=45C */
+	{
+		.temp_c = TEMPC_FLOAT_TO_INT(45),
+		.curr_high_vtg = 3300,
+		.curr_low_vtg = 3300,
+		.voltage = 8700,
+	},
+
+	/* > 45C */
+	{
+		.temp_c = TEMPC_FLOAT_TO_INT(0xFFFF),
+		.curr_high_vtg = 0,
+		.curr_low_vtg = 0,
+		.voltage = 0,
+	},
+};
+
+struct fast_charge_config fast_charge_config_info = {
+	.temp_ranges = ARRAY_SIZE(fast_charge_info),
+	.temp_last_range = 2,
+	.vtg_low_limit = 8000,
+	.vtg_high_limit = 8000,
+};
 
 static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 {
@@ -343,25 +390,6 @@ static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 /* TODO: crosbug.com/p/59904 */
 int charger_profile_override(struct charge_state_data *curr)
 {
-	/* temp in 0.1 deg C */
-	int temp_c = curr->batt.temperature - 2731;
-	/* keep track of last temperature range for hysteresis */
-	static enum {
-		TEMP_RANGE_1,
-		TEMP_RANGE_2,
-		TEMP_RANGE_3,
-		TEMP_RANGE_4,
-		TEMP_RANGE_5,
-	} temp_range = TEMP_RANGE_3;
-	/* keep track of last voltage range for hysteresis */
-	static enum {
-		VOLTAGE_RANGE_LOW,
-		VOLTAGE_RANGE_HIGH,
-	} voltage_range = VOLTAGE_RANGE_LOW;
-
-	/* Current and previous battery voltage */
-	int batt_voltage;
-	static int prev_batt_voltage;
 	int disch_on_ac = charger_should_discharge_on_ac(curr);
 
 	charger_discharge_on_ac(disch_on_ac);
@@ -371,138 +399,11 @@ int charger_profile_override(struct charge_state_data *curr)
 		return 0;
 	}
 
-	/*
-	 * Determine temperature range. The five ranges are:
-	 *   < 0C
-	 *    0C>= <=15C
-	 *   15C>  <=20C
-	 *   20C>  <=45C
-	 *   > 45C
-	 *
-	 * If temp reading was bad, use last range.
-	 */
-	if (!(curr->batt.flags & BATT_FLAG_BAD_TEMPERATURE)) {
-		if (temp_c < 0)
-			temp_range = TEMP_RANGE_1;
-		else if (temp_c <= 150)
-			temp_range = TEMP_RANGE_2;
-		else if (temp_c <= 200)
-			temp_range = TEMP_RANGE_3;
-		else if (temp_c <= 450)
-			temp_range = TEMP_RANGE_4;
-		else
-			temp_range = TEMP_RANGE_5;
-	}
-
-	/*
-	 * If battery voltage reading is bad, use the last reading.
-	 */
-	if (curr->batt.flags & BATT_FLAG_BAD_VOLTAGE) {
-		batt_voltage = prev_batt_voltage;
-	} else {
-		batt_voltage = prev_batt_voltage = curr->batt.voltage;
-		if (batt_voltage <= 8000)
-			voltage_range = VOLTAGE_RANGE_LOW;
-		else if (batt_voltage > 8000)
-			voltage_range = VOLTAGE_RANGE_HIGH;
-	}
-
-	/*
-	 * If we are not charging or we aren't using fast charging profiles,
-	 * then do not override desired current and voltage.
-	 */
-	if (curr->state != ST_CHARGE || !fast_charging_allowed)
-		return 0;
-
-	/*
-	 * Okay, impose our custom will:
-	 *
-	 * When battery is < 0C:
-	 * CC at 0mA @ 0V
-	 * CV at 0V
-	 *
-	 * When battery is 0-15C:
-	 * CC at 944mA until 8.0V @ 8.7V
-	 * CC at 472mA @ 8.7V
-	 * CV at 8.7V
-	 *
-	 * When battery is 15-20C:
-	 * CC at 1416mA @ 8.7V
-	 * CV at 8.7V
-	 *
-	 * When battery is 20-45C:
-	 * CC at 3300mA @ 8.7V
-	 * CV at 8.7V
-	 *
-	 * When battery is > 45C:
-	 * CC at 0mA @ 0V
-	 * CV at 0V
-	 */
-	switch (temp_range) {
-	case TEMP_RANGE_2:
-		if (voltage_range == VOLTAGE_RANGE_HIGH)
-			curr->requested_current = 472;
-		else
-			curr->requested_current = 944;
-		curr->requested_voltage = 8700;
-		break;
-	case TEMP_RANGE_3:
-		curr->requested_current = 1416;
-		curr->requested_voltage = 8700;
-		break;
-	case TEMP_RANGE_4:
-		curr->requested_current = 3300;
-		curr->requested_voltage = 8700;
-		break;
-	case TEMP_RANGE_1:
-	case TEMP_RANGE_5:
-	default:
-		curr->requested_current = 0;
-		curr->requested_voltage = 0;
-		break;
-	}
-
-	return 0;
+	return charger_profile_override_common(curr,
+						NULL,//fast_charge_info,
+						&fast_charge_config_info);
 }
-
-/* Customs options controllable by host command. */
-#define PARAM_FASTCHARGE (CS_PARAM_CUSTOM_PROFILE_MIN + 0)
-
-enum ec_status charger_profile_override_get_param(uint32_t param,
-						  uint32_t *value)
-{
-	if (param == PARAM_FASTCHARGE) {
-		*value = fast_charging_allowed;
-		return EC_RES_SUCCESS;
-	}
-	return EC_RES_INVALID_PARAM;
-}
-
-enum ec_status charger_profile_override_set_param(uint32_t param,
-						  uint32_t value)
-{
-	if (param == PARAM_FASTCHARGE) {
-		fast_charging_allowed = value;
-		return EC_RES_SUCCESS;
-	}
-	return EC_RES_INVALID_PARAM;
-}
-
-static int command_fastcharge(int argc, char **argv)
-{
-	if (argc > 1 && !parse_bool(argv[1], &fast_charging_allowed))
-		return EC_ERROR_PARAM1;
-
-	ccprintf("fastcharge %s\n", fast_charging_allowed ? "on" : "off");
-
-	return EC_SUCCESS;
-}
-
-DECLARE_CONSOLE_COMMAND(fastcharge, command_fastcharge,
-			"[on|off]",
-			"Get or set fast charging profile");
-
-#endif				/* CONFIG_CHARGER_PROFILE_OVERRIDE */
+#endif /* CONFIG_CHARGER_PROFILE_OVERRIDE */
 
 /*
  * Physical detection of battery.
