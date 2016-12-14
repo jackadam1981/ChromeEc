@@ -35,6 +35,7 @@ struct board_batt_params {
 };
 
 #define DEFAULT_BATTERY_TYPE BATTERY_SONY_CORP
+#define SONY_DISCHARGE_FET_BIT (0x01 << 13)
 
 static enum battery_present batt_pres_prev = BP_NOT_SURE;
 
@@ -50,8 +51,10 @@ static int batt_smp_cos4870_init(void)
 
 static int batt_sony_corp_init(void)
 {
-	/* TODO: crosbug.com/p/59904 */
-	return 1;
+	int batt_status;
+
+	return sb_read(SB_MANUFACTURER_ACCESS, &batt_status) ? 0 :
+		!(batt_status & SONY_DISCHARGE_FET_BIT);
 }
 
 static const struct board_batt_params info[] = {
@@ -345,7 +348,8 @@ int charger_profile_override(struct charge_state_data *curr)
 			!battery_is_cut_off() &&
 			!(curr->batt.flags & BATT_FLAG_WANT_CHARGE) &&
 			curr->batt.status & STATUS_FULLY_CHARGED) ||
-			(!chg_ramp_is_detected() &&
+			(curr->batt.is_present == BP_YES &&
+			!chg_ramp_is_detected() &&
 			curr->batt.state_of_charge > 2);
 
 	charger_discharge_on_ac(disch_on_ac);
@@ -517,6 +521,8 @@ enum battery_present battery_is_present(void)
 			if (bd9995x_get_battery_voltage() >=
 			    board_get_batt_params()->batt_info.voltage_min)
 				batt_pres = BP_NO;
+			else
+				batt_pres = BP_NOT_SURE;
 		} else if (!board_get_batt_params()->batt_init())
 			batt_pres = BP_NO;
 	}
