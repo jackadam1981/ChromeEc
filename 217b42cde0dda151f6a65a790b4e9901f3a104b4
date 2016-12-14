@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7fdbe6_10852599",
+        "filename": "board/umaro/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-14T17:45:25Z",
+      "side": 1,
+      "message": "when matrix is identity, remove it and set .rot_standard_ref to NULL.",
+      "revId": "217b42cde0dda151f6a65a790b4e9901f3a104b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
