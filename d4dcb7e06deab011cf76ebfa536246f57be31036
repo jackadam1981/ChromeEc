@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7fdbe6_fb394033",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-12-15T21:11:22Z",
+      "side": 1,
+      "message": "What about even lower priority context? Is it good enough to test it at hostcmd\u0027s priority?",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "d4dcb7e06deab011cf76ebfa536246f57be31036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_5b85ec97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-12-15T21:11:22Z",
+      "side": 1,
+      "message": "Why don\u0027t we exclude i2ctest command from the default build and include it only when we need to run the stress test? That\u0027s the way many other infrequently used console commands are included and excluded.",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 30
+      },
+      "revId": "d4dcb7e06deab011cf76ebfa536246f57be31036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
