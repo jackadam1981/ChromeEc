@@ -489,6 +489,8 @@ void system_clear_retry_counter(void);
 /* TODO(crosbug.com/p/56945): Remove when sys_rst_l has an external pullup */
 #define BOARD_NEEDS_SYS_RST_PULL_UP  (1 << 5)   /* Add a pullup to sys_rst_l */
 #define BOARD_USE_PLT_RESET          (1 << 6)   /* Platform reset exists */
+#define BOARD_CONSOLE_UNLOCKED       (1 << 7)   /* Used to preserve unlocked */
+						/* console through deep sleep */
 
 /**
  * Get board properites
@@ -518,4 +520,10 @@ uint32_t system_board_properties_callback(void);
  */
 int system_rolling_reboot_suspected(void);
 
+/**
+ * Compare the rw headers to check if there was a rollback.
+ *
+ * @return a boolean, set to True if a rollback is detected.
+ */
+int system_rollback_detected(void);
 #endif  /* __CROS_EC_SYSTEM_H */

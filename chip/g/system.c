@@ -348,6 +348,34 @@ static int corrupt_other_header(volatile struct SignedHeader *header)
  */
 #define RW_BOOT_MAX_RETRY_COUNT 5
 
+static int current_image_is_newer(struct SignedHeader *me,
+				  struct SignedHeader *other)
+{
+	if (system_get_image_copy() == SYSTEM_IMAGE_RW) {
+		me = (struct SignedHeader *)
+			get_program_memory_addr(SYSTEM_IMAGE_RW);
+		other = (struct SignedHeader *)
+			get_program_memory_addr(SYSTEM_IMAGE_RW_B);
+	} else {
+		me = (struct SignedHeader *)
+			get_program_memory_addr(SYSTEM_IMAGE_RW_B);
+		other = (struct SignedHeader *)
+			get_program_memory_addr(SYSTEM_IMAGE_RW);
+	}
+
+	if (a_is_newer_than_b(me, other))
+		return 1;
+
+	return 0;
+}
+
+int system_rollback_detected(void)
+{
+	struct SignedHeader *me, *other;
+
+	return !current_image_is_newer(me, other);
+}
+
 int system_process_retry_counter(void)
 {
 	unsigned retry_counter;
@@ -361,19 +389,7 @@ int system_process_retry_counter(void)
 	if (retry_counter <= RW_BOOT_MAX_RETRY_COUNT)
 		return EC_SUCCESS;
 
-	if (system_get_image_copy() == SYSTEM_IMAGE_RW) {
-		me = (struct SignedHeader *)
-			get_program_memory_addr(SYSTEM_IMAGE_RW);
-		other = (struct SignedHeader *)
-			get_program_memory_addr(SYSTEM_IMAGE_RW_B);
-	} else {
-		me = (struct SignedHeader *)
-			get_program_memory_addr(SYSTEM_IMAGE_RW_B);
-		other = (struct SignedHeader *)
-			get_program_memory_addr(SYSTEM_IMAGE_RW);
-	}
-
-	if (a_is_newer_than_b(me, other)) {
+	if (current_image_is_newer(me, other)) {
 		ccprintf("%s: "
 			 "this is odd, I am newer, but retry counter was %d\n",
 			 __func__, retry_counter);
