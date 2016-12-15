@@ -16,6 +16,24 @@
       "revId": "d8e670ca3faf534218a783b7d8b4ca78e01de7e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_b3cc56cb",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-15T16:18:22Z",
+      "side": 1,
+      "message": "this state is not maintained across a deep sleep.\n\nI am a bit fuzzy on this: does the AP firmware initialize the TPM differently on the resume path? What happens in that case?",
+      "parentUuid": "5a7fdbe6_1371a2f7",
+      "revId": "d8e670ca3faf534218a783b7d8b4ca78e01de7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
