@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7fdbe6_d3662a44",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-15T15:15:24Z",
+      "side": 1,
+      "message": "nuke this tab while you are here.",
+      "range": {
+        "startLine": 309,
+        "startChar": 24,
+        "endLine": 309,
+        "endChar": 25
+      },
+      "revId": "bc1d97e52951f1e4359c09a56110cd6608c3e873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_73781ee2",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-15T15:15:24Z",
+      "side": 1,
+      "message": "Why an open paren here?",
+      "range": {
+        "startLine": 318,
+        "startChar": 5,
+        "endLine": 318,
+        "endChar": 6
+      },
+      "revId": "bc1d97e52951f1e4359c09a56110cd6608c3e873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_b382969b",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-15T15:15:24Z",
+      "side": 1,
+      "message": "just add an open paren here around the logical end for explicitness.",
+      "revId": "bc1d97e52951f1e4359c09a56110cd6608c3e873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
