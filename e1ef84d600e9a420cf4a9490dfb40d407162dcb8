@@ -22,6 +22,30 @@
       "revId": "e1ef84d600e9a420cf4a9490dfb40d407162dcb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_2de9e739",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5303,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-15T03:52:49Z",
+      "side": 1,
+      "message": "Sounds good.\nMy intention of adding this to ectool is, if we run out of memory we can remove below EC console test and just keep this. That way we don\u0027t add more code to EC binary.\nstatic int command_i2ctest(int argc, char **argv)\nI will add a separate CL to select individual/both ectool \u0026 EC stress test for I2C.",
+      "parentUuid": "5a7fdbe6_021eb2d6",
+      "range": {
+        "startLine": 5303,
+        "startChar": 7,
+        "endLine": 5303,
+        "endChar": 49
+      },
+      "revId": "e1ef84d600e9a420cf4a9490dfb40d407162dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
