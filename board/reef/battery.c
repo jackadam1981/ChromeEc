@@ -341,12 +341,17 @@ int charger_profile_override(struct charge_state_data *curr)
 	 * discharge on AC till the new charger is detected and charge detect
 	 * delay has passed.
 	 */
-	disch_on_ac = (curr->batt.is_present == BP_YES &&
-			!battery_is_cut_off() &&
+	disch_on_ac = curr->batt.is_present == BP_YES &&
+			/* Battery is not charging */
+			((!battery_is_cut_off() &&
 			!(curr->batt.flags & BATT_FLAG_WANT_CHARGE) &&
 			curr->batt.status & STATUS_FULLY_CHARGED) ||
+			/* Charger is not yet settled */
 			(!chg_ramp_is_detected() &&
-			curr->batt.state_of_charge > 2);
+			curr->batt.state_of_charge > 2 &&
+			/* Battery is still waking up */
+			!(!(curr->batt.flags & BATT_FLAG_WANT_CHARGE) &&
+			!(curr->batt.status & STATUS_FULLY_CHARGED))));
 
 	charger_discharge_on_ac(disch_on_ac);
 
