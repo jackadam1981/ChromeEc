@@ -117,6 +117,30 @@
       "revId": "1e3066ed8d93ebc45e50a71dc07d67af42d37b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_f3b16e91",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-15T14:55:20Z",
+      "side": 1,
+      "message": "ah, this is a good point. I did not think about it this way.",
+      "parentUuid": "fa27af48_7408484c",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 63
+      },
+      "revId": "1e3066ed8d93ebc45e50a71dc07d67af42d37b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
