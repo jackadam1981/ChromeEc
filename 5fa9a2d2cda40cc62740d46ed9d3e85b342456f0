@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7fdbe6_0d13430d",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-15T05:45:58Z",
+      "side": 1,
+      "message": "Can we break this up into a function. This condition has gotten out of hand.\n\ndisch_on_ach \u003d should_discharge_on_ac();\n\nint should_discharge_on_ac(struct charge_state_data *curr)\n{\n if (curr-\u003ebatt.is_present !\u003d BP_YES)\n   return 0;\n/* fill in each crazy combination with some good detail. */\n\n\n}",
+      "revId": "5fa9a2d2cda40cc62740d46ed9d3e85b342456f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
