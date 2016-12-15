@@ -7,6 +7,7 @@
 #include "console.h"
 #include "cpu.h"
 #include "cpu.h"
+#include "extension.h"
 #include "flash.h"
 #include "printf.h"
 #include "registers.h"
@@ -348,18 +349,9 @@ static int corrupt_other_header(volatile struct SignedHeader *header)
  */
 #define RW_BOOT_MAX_RETRY_COUNT 5
 
-int system_process_retry_counter(void)
+static int invalidate_inactive_rw(int validated_by_host, int retry_counter)
 {
-	unsigned retry_counter;
 	struct SignedHeader *me, *other;
-
-	retry_counter = GREG32(PMU, LONG_LIFE_SCRATCH0);
-	system_clear_retry_counter();
-
-	ccprintf("%s:retry counter %d\n", __func__, retry_counter);
-
-	if (retry_counter <= RW_BOOT_MAX_RETRY_COUNT)
-		return EC_SUCCESS;
 
 	if (system_get_image_copy() == SYSTEM_IMAGE_RW) {
 		me = (struct SignedHeader *)
@@ -373,7 +365,7 @@ int system_process_retry_counter(void)
 			get_program_memory_addr(SYSTEM_IMAGE_RW);
 	}
 
-	if (a_is_newer_than_b(me, other)) {
+	if (!validated_by_host && a_is_newer_than_b(me, other)) {
 		ccprintf("%s: "
 			 "this is odd, I am newer, but retry counter was %d\n",
 			 __func__, retry_counter);
@@ -384,6 +376,32 @@ int system_process_retry_counter(void)
 	 * straight into this version.
 	 */
 	return corrupt_other_header(other);
+}
+
+static enum vendor_cmd_rc vc_invalidate_inactive_rw(
+	enum vendor_cmd_cc code, void *buf, size_t input_size,
+	size_t *response_size)
+{
+	invalidate_inactive_rw(1, GREG32(PMU, LONG_LIFE_SCRATCH0));
+
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_INVALIDATE_INACTIVE_RW,
+	vc_invalidate_inactive_rw);
+
+int system_process_retry_counter(void)
+{
+	unsigned retry_counter;
+
+	retry_counter = GREG32(PMU, LONG_LIFE_SCRATCH0);
+	system_clear_retry_counter();
+
+	ccprintf("%s:retry counter %d\n", __func__, retry_counter);
+
+	if (retry_counter <= RW_BOOT_MAX_RETRY_COUNT)
+		return EC_SUCCESS;
+
+	return invalidate_inactive_rw(0, retry_counter);
 }
 
 int system_rolling_reboot_suspected(void)
