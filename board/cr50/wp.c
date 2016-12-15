@@ -44,17 +44,40 @@ DECLARE_CONSOLE_COMMAND(wp, command_wp,
 /* When the system is locked down, provide a means to unlock it */
 #ifdef CONFIG_RESTRICTED_CONSOLE_COMMANDS
 
+#define LOCK_ENABLED 1
+
 /* Hand-built images may be initially unlocked; Buildbot images are not. */
 #ifdef CR50_DEV
-static int console_restricted_state;
+static int console_restricted_state = !LOCK_ENABLED;
 #else
-static int console_restricted_state = 1;
+static int console_restricted_state = LOCK_ENABLED;
 #endif
+
+
+static void set_console_lock_state(int lock_state)
+{
+	console_restricted_state = lock_state;
+
+	/* Enable writing to the long life register */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
+
+	/* Save the lock state in long life scratch */
+	GREG32(PMU, LONG_LIFE_SCRATCH1) |= BOARD_CONSOLE_STATE_SAVED;
+	if (lock_state == LOCK_ENABLED)
+		GREG32(PMU, LONG_LIFE_SCRATCH1) &= ~BOARD_CONSOLE_UNLOCKED;
+	else
+		GREG32(PMU, LONG_LIFE_SCRATCH1) |= BOARD_CONSOLE_UNLOCKED;
+
+	/* Disable writing to the long life register */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
+
+	CPRINTS("The console is %s",
+		lock_state == LOCK_ENABLED ? "locked" : "unlocked");
+}
 
 static void lock_the_console(void)
 {
-	CPRINTS("The console is locked");
-	console_restricted_state = 1;
+	set_console_lock_state(LOCK_ENABLED);
 }
 
 static void unlock_the_console(void)
@@ -74,9 +97,35 @@ static void unlock_the_console(void)
 		system_reset(SYSTEM_RESET_HARD);
 	}
 
-	CPRINTS("TPM is erased, console is unlocked");
-	console_restricted_state = 0;
+	CPRINTS("TPM is erased");
+	set_console_lock_state(!LOCK_ENABLED);
 }
+
+static void console_lock_init(void)
+{
+	uint32_t previous_state = GREG32(PMU, LONG_LIFE_SCRATCH1);
+
+	/*
+	 * On an unexpected reboot or a system rollback reset the console and
+	 * write protect states.
+	 */
+	if (system_rollback_detected() ||
+	    !(system_get_reset_flags() & RESET_FLAG_HIBERNATE)) {
+		/* Clear the saved console state */
+		GREG32(PMU, LONG_LIFE_SCRATCH1) &= ~(BOARD_CONSOLE_STATE_SAVED |
+						     BOARD_CONSOLE_UNLOCKED);
+
+		/* Reset write protect */
+		GREG32(RBOX, EC_WP_L) = !console_is_restricted();
+	} else if (previous_state & BOARD_CONSOLE_STATE_SAVED) {
+		/* Restore any saved console state from the previous boot */
+		if (previous_state & BOARD_CONSOLE_UNLOCKED)
+			set_console_lock_state(!LOCK_ENABLED);
+		else
+			set_console_lock_state(LOCK_ENABLED);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, console_lock_init, HOOK_PRIO_DEFAULT);
 
 int console_is_restricted(void)
 {
