@@ -19,6 +19,8 @@
 #define CONFIG_POWER_COMMON
 #define CONFIG_EXTPOWER_GPIO
 #define CONFIG_HOST_COMMAND_STATUS
+/* Mark host command structs as aligned */
+#define CONFIG_HOSTCMD_ALIGNED
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
