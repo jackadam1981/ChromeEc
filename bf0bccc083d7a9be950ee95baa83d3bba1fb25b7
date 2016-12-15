@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "5a7fdbe6_264af329",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-15T02:29:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7fdbe6_50c07d1e",
+      "revId": "bf0bccc083d7a9be950ee95baa83d3bba1fb25b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7fdbe6_50123dce",
         "filename": "common/motion_lid.c",
         "patchSetId": 4
@@ -98,6 +116,24 @@
       "writtenOn": "2016-12-14T17:22:11Z",
       "side": 1,
       "message": "Similarely, Can we ignore small angle when lid is open?\nThe problem is lid_is_open has a wait period, so we may ignore angle update until lid settles.\nHowever, LID_DEBOUNCE is 30ms, so if we have a sampling at 100ms, lid will be stable within one period.",
+      "revId": "bf0bccc083d7a9be950ee95baa83d3bba1fb25b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_4664475f",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-15T02:29:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7fdbe6_906e753d",
       "revId": "bf0bccc083d7a9be950ee95baa83d3bba1fb25b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
