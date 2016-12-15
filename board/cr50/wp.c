@@ -44,17 +44,40 @@ DECLARE_CONSOLE_COMMAND(wp, command_wp,
 /* When the system is locked down, provide a means to unlock it */
 #ifdef CONFIG_RESTRICTED_CONSOLE_COMMANDS
 
+#define LOCK_ENABLED 1
+
 /* Hand-built images may be initially unlocked; Buildbot images are not. */
 #ifdef CR50_DEV
-static int console_restricted_state;
+#define DEFAULT_LOCK_STATE !LOCK_ENABLED
 #else
-static int console_restricted_state = 1;
+#define DEFAULT_LOCK_STATE LOCK_ENABLED
 #endif
+
+static int console_restricted_state = DEFAULT_LOCK_STATE;
+
+static void set_console_lock_state(int lock_state)
+{
+	console_restricted_state = lock_state;
+
+	/* Enable writing to the long life register */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
+
+	/* Save the lock state in long life scratch */
+	if (lock_state != DEFAULT_LOCK_STATE)
+		GREG32(PMU, LONG_LIFE_SCRATCH1) |= BOARD_LOCK_IS_CHANGED;
+	else
+		GREG32(PMU, LONG_LIFE_SCRATCH1) &= ~BOARD_LOCK_IS_CHANGED;
+
+	/* Disable writing to the long life register */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
+
+	CPRINTS("The console is %s",
+		lock_state == LOCK_ENABLED ? "locked" : "unlocked");
+}
 
 static void lock_the_console(void)
 {
-	CPRINTS("The console is locked");
-	console_restricted_state = 1;
+	set_console_lock_state(LOCK_ENABLED);
 }
 
 static void unlock_the_console(void)
@@ -74,9 +97,29 @@ static void unlock_the_console(void)
 		system_reset(SYSTEM_RESET_HARD);
 	}
 
-	CPRINTS("TPM is erased, console is unlocked");
-	console_restricted_state = 0;
+	CPRINTS("TPM is erased");
+	set_console_lock_state(!LOCK_ENABLED);
 }
+
+static void console_lock_init(void)
+{
+	/*
+	 * Maintain the lock value through deep sleep.
+	 *
+	 * If the console lock was changed from default before entering deep
+	 * sleep restore the lock value.
+	 */
+	if (system_get_reset_flags() & RESET_FLAG_HIBERNATE &&
+	    (GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_LOCK_IS_CHANGED))
+		set_console_lock_state(!DEFAULT_LOCK_STATE);
+	else
+		set_console_lock_state(DEFAULT_LOCK_STATE);
+}
+/*
+ * The saved console state needs to be loaded before we set write protect in
+ * board.c
+ */
+DECLARE_HOOK(HOOK_INIT, console_lock_init, HOOK_PRIO_DEFAULT - 1);
 
 int console_is_restricted(void)
 {

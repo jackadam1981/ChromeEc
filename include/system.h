@@ -489,6 +489,9 @@ void system_clear_retry_counter(void);
 /* TODO(crosbug.com/p/56945): Remove when sys_rst_l has an external pullup */
 #define BOARD_NEEDS_SYS_RST_PULL_UP  (1 << 5)   /* Add a pullup to sys_rst_l */
 #define BOARD_USE_PLT_RESET          (1 << 6)   /* Platform reset exists */
+#define BOARD_LOCK_IS_CHANGED        (1 << 7)   /* The console lock state is */
+						/* different than the system */
+						/* default */
 
 /**
  * Get board properites
