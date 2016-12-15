@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7fdbe6_5f0de1af",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-12-15T00:18:37Z",
+      "side": 1,
+      "message": "We need the counter-part of this for !CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE, which returns 0, right?",
+      "range": {
+        "startLine": 140,
+        "startChar": 18,
+        "endLine": 140,
+        "endChar": 44
+      },
+      "revId": "db94d86c153f1137de0fc08a7aaa90eaa1d98b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
