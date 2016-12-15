@@ -18,11 +18,7 @@
 #define __CROS_EC_SHARED_MEM_H
 
 #include "common.h"
-
-/**
- * Initializes the module.
- */
-int shared_mem_init(void);
+#include <stddef.h>
 
 /**
  * Returns the maximum amount of shared memory which can be acquired, in
@@ -46,5 +42,24 @@ int shared_mem_acquire(int size, char **dest_ptr);
  * Releases a shared memory area previously allocated via shared_mem_acquire().
  */
 void shared_mem_release(void *ptr);
+
+
+/*
+ * This structure is allocated at the base of the free memory chunk and every
+ * allocated buffer.
+ */
+struct shm_buffer {
+	struct shm_buffer *next_buffer;
+	struct shm_buffer *prev_buffer;
+	size_t buffer_size;
+};
+
+#ifdef TEST_BUILD
+#define MAX_MASK_BIT 23
+#define ALL_PATHS_MASK ((1 << (MAX_MASK_BIT + 1)) - 1)
+void set_map_bit(uint32_t mask);
+extern struct shm_buffer *free_buf_chain;
+extern struct shm_buffer *allocced_buf_chain;
+#endif
 
 #endif  /* __CROS_EC_SHARED_MEM_H */

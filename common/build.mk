@@ -39,7 +39,7 @@ common-$(CONFIG_CHARGER_V2)+=charge_state_v2.o
 common-$(CONFIG_CMD_I2CWEDGE)+=i2c_wedge.o
 common-$(CONFIG_COMMON_GPIO)+=gpio.o gpio_commands.o
 common-$(CONFIG_COMMON_PANIC_OUTPUT)+=panic_output.o
-common-$(CONFIG_COMMON_RUNTIME)+=hooks.o main.o system.o shared_mem.o
+common-$(CONFIG_COMMON_RUNTIME)+=hooks.o main.o system.o
 common-$(CONFIG_COMMON_TIMER)+=timer.o
 common-$(CONFIG_CRC8)+= crc8.o
 common-$(CONFIG_DEVICE_STATE)+=device_state.o
@@ -112,6 +112,12 @@ common-$(HAS_TASK_KEYSCAN)+=keyboard_scan.o
 common-$(HAS_TASK_LIGHTBAR)+=lb_common.o lightbar.o
 common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o
 common-$(HAS_TASK_TPM)+=tpm_registers.o
+
+ifeq ($(CONFIG_MALLOC),)
+common-$(CONFIG_COMMON_RUNTIME)+=shared_mem.o
+else
+common-$(CONFIG_COMMON_RUNTIME)+=shmalloc.o
+endif
 
 ifeq ($(CTS_MODULE),)
 common-$(TEST_BUILD)+=test_util.o
