@@ -272,12 +272,20 @@ void decrement_retry_counter(void)
 /* Initialize board. */
 static void board_init(void)
 {
-	/*
-	 * Deep sleep resets should be considered valid and should not impact
-	 * the rolling reboot count.
-	 */
+
 	if (system_get_reset_flags() & RESET_FLAG_HIBERNATE)
+		/*
+		 * Deep sleep resets should be considered valid and should not
+		 * impact the rolling reboot count.
+		 */
 		decrement_retry_counter();
+	else
+		/*
+		 * If the system resumed for a reason other than deep sleep set
+		 * write protect to the default value
+		 */
+		GREG32(RBOX, EC_WP_L) = !console_is_restricted();
+
 	configure_board_specific_gpios();
 	init_pmu();
 	init_interrupts();
@@ -286,9 +294,6 @@ static void board_init(void)
 	init_runlevel(PERMISSION_MEDIUM);
 	/* Initialize NvMem partitions */
 	nvmem_init();
-
-	/* Enable write protect on production images. Disable it on dev */
-	GREG32(RBOX, EC_WP_L) = !console_is_restricted();
 
 	/* Indication that firmware is running, for debug purposes. */
 	GREG32(PMU, PWRDN_SCRATCH16) = 0xCAFECAFE;
