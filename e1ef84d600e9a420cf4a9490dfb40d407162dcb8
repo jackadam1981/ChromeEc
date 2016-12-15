@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a7fdbe6_ce076183",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-12-15T17:24:01Z",
+      "side": 1,
+      "message": "Reading through crosbug.com/p/57961, it\u0027s still not clear why we need to duplicate i2c stress test in ectool. The test results differ because of the priority difference between hostcmd task and console task, which can be compensated by i2c_set_timeout.",
+      "revId": "e1ef84d600e9a420cf4a9490dfb40d407162dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7fdbe6_021eb2d6",
         "filename": "util/ectool.c",
         "patchSetId": 6
