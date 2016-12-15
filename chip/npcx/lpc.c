@@ -316,14 +316,63 @@ void lpc_keyboard_put_char(uint8_t chr, int send_irq)
 	}
 }
 
+/* Emulate host to read Keyboard I/O */
+uint8_t lpc_sib_read_kbc_reg(uint8_t io_offset)
+{
+	uint8_t data_value;
+
+	/* Disable interrupts */
+	interrupt_disable();
+
+	/* Lock host keyboard module */
+	SET_BIT(NPCX_LKSIOHA, NPCX_LKSIOHA_LKHIKBD);
+	/* Enable Core-to-Host Modules Access */
+	SET_BIT(NPCX_SIBCTRL, NPCX_SIBCTRL_CSAE);
+	/* Verify Core read/write to host modules is not in progress */
+	while (IS_BIT_SET(NPCX_SIBCTRL, NPCX_SIBCTRL_CSRD))
+		;
+	while (IS_BIT_SET(NPCX_SIBCTRL, NPCX_SIBCTRL_CSWR))
+		;
+	/* Enable Core access to keyboard module */
+	SET_BIT(NPCX_CRSMAE, NPCX_CRSMAE_HIKBDAE);
+
+
+	/* Specify the io_offset A0 = 0. the index register is accessed */
+	NPCX_IHIOA = io_offset;
+
+	/* Start a Core read from host module */
+	SET_BIT(NPCX_SIBCTRL, NPCX_SIBCTRL_CSRD);
+	/* Wait while Core read operation is in progress */
+	while (IS_BIT_SET(NPCX_SIBCTRL, NPCX_SIBCTRL_CSRD))
+		;
+	/* Read the data */
+	data_value = NPCX_IHD;
+
+	/* Disable Core access to keyboard module */
+	CLEAR_BIT(NPCX_CRSMAE, NPCX_CRSMAE_HIKBDAE);
+	/* Disable Core-to-Host Modules Access */
+	CLEAR_BIT(NPCX_SIBCTRL, NPCX_SIBCTRL_CSAE);
+	/* unlock host keyboard module */
+	CLEAR_BIT(NPCX_LKSIOHA, NPCX_LKSIOHA_LKHIKBD);
+
+	/* Enable interrupts */
+	interrupt_enable();
+
+	return data_value;
+}
+
 void lpc_keyboard_clear_buffer(void)
 {
-	/* Make sure the previous TOH and IRQ has been sent out. */
-	udelay(4);
-	/* Clear OBE flag in host STATUS  and HIKMST regs*/
-	SET_BIT(NPCX_HICTRL, NPCX_HICTRL_FW_OBF);
-	/* Ensure there is no TOH set in this period. */
-	udelay(4);
+	/* Clear OBF flag in host STATUS and HIKMST regs */
+	if (IS_BIT_SET(NPCX_HIKMST, NPCX_HIKMST_OBF)) {
+		/*
+		 * Setting HICTRL.FW_OBF clears the HIKMST.OBF and STATUS.OBF
+		 * but it does not deassert IRQ1 when it was already asserted.
+		 * Emulate a host read to clear these two flags and also
+		 * deassert IRQ1
+		 */
+		lpc_sib_read_kbc_reg(0x0);
+	}
 }
 
 void lpc_keyboard_resume_irq(void)
@@ -988,7 +1037,9 @@ static void lpc_init(void)
 	 * IBF(K&M) INT enable, OBE(K&M) empty INT enable ,
 	 * OBF Mouse Full INT enable and OBF KB Full INT enable
 	 */
-	NPCX_HICTRL = 0x8F;
+	lpc_keyboard_clear_buffer();
+	NPCX_HICTRL = 0x0F;
+
 	/*
 	 * Turn on enhance mode on PM channel-1,
 	 * enable OBE/IBF core interrupt
