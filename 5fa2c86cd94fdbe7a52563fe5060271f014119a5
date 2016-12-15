@@ -16,6 +16,24 @@
       "revId": "5fa2c86cd94fdbe7a52563fe5060271f014119a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa00309_6d027574",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1165254
+      },
+      "writtenOn": "2016-12-15T19:35:02Z",
+      "side": 1,
+      "message": "Actually, in both of these while loops, the CSRD and CSWR are expected to immediately return 0 because anywhere that the firmware initiates a core access to the host modules the interrupts are disabled first and they are re-enabled only after CSRD/CSWR is 0.\n\nHowever, the while loop in line 346 could take some time if a host access to the host modules didn\u0027t complete before the core access to the host module was initiated.\n\nThe time is different for LPC and eSPI because eSPI allows longer transactions (I do not know if the firmware currently supports those or not - these are the eSPI Peripheral Memory Read/Write 32 that can support 64 byte transactions). We need to review the exact times these can take.\n\nIt is probably a good idea to put timeout on the while loops but what should be done when that happens?",
+      "parentUuid": "5a7fdbe6_b3b0d68f",
+      "revId": "5fa2c86cd94fdbe7a52563fe5060271f014119a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
