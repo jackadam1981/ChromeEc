@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3ad6a737_f991d3a2",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-12-15T05:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7fdbe6_7c91dd9d",
+      "revId": "756b842ba069d25d010fbfd115eba710c407c8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7fdbe6_bc6195bc",
         "filename": "board/reef/battery.c",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "3ad6a737_d9961799",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-12-15T05:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7fdbe6_bc6195bc",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 35
+      },
+      "revId": "756b842ba069d25d010fbfd115eba710c407c8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7fdbe6_1c78e169",
         "filename": "board/reef/battery.c",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2016-12-14T16:12:54Z",
       "side": 1,
       "message": "charger can trickle charge. Are you observing some error?",
+      "range": {
+        "startLine": 524,
+        "startChar": 0,
+        "endLine": 525,
+        "endChar": 28
+      },
+      "revId": "756b842ba069d25d010fbfd115eba710c407c8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ad6a737_99909f9c",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-12-15T05:40:09Z",
+      "side": 1,
+      "message": "Let\u0027s discuss about this in another patch.",
+      "parentUuid": "5a7fdbe6_1c78e169",
       "range": {
         "startLine": 524,
         "startChar": 0,
