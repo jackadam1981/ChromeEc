@@ -93,6 +93,30 @@
       "revId": "1e3066ed8d93ebc45e50a71dc07d67af42d37b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa27af48_7408484c",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2016-12-15T14:50:11Z",
+      "side": 1,
+      "message": "it seems that the current solution is always wasting more memory (ie MAX_ALLOCATIONS x sizeof(struct allocated_buf)) rather than real_number_of_allocations x sizeof(struct allocated_buf.",
+      "parentUuid": "5a7fdbe6_d352aa81",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 63
+      },
+      "revId": "1e3066ed8d93ebc45e50a71dc07d67af42d37b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
