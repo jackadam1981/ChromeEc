@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a7fdbe6_7b239070",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-15T21:27:29Z",
+      "side": 1,
+      "message": "Among user interaction tasks host_command_task is lower than console_task. If we plan to test explicitly at lowest priority we can manually modify these priorities and test in engineering images.",
+      "parentUuid": "5a7fdbe6_fb394033",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "d4dcb7e06deab011cf76ebfa536246f57be31036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a7fdbe6_5b85ec97",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2016-12-15T21:11:22Z",
       "side": 1,
       "message": "Why don\u0027t we exclude i2ctest command from the default build and include it only when we need to run the stress test? That\u0027s the way many other infrequently used console commands are included and excluded.",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 30
+      },
+      "revId": "d4dcb7e06deab011cf76ebfa536246f57be31036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7fdbe6_9b28444d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-15T21:27:29Z",
+      "side": 1,
+      "message": "from original discussion\n[Shawn]: No need to remove it I think, but it is a very low-hanging fruit for RAM savings, if we are constrained.\n[Vijay]: okay I will keep it and we can remove once we are out of memory.\nhttps://chromium-review.googlesource.com/#/c/290427/8/board/reef/board.h",
+      "parentUuid": "5a7fdbe6_5b85ec97",
       "range": {
         "startLine": 12,
         "startChar": 3,
