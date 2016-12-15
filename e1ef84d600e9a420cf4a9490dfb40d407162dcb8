@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7fdbe6_021eb2d6",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5303,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-12-15T01:13:36Z",
+      "side": 1,
+      "message": "Why don\u0027t we just let ectool send it to the ec and let the ec return an error if it exceeds the count? That way, when the ec is updated (fewer or more count), ectool doesn\u0027t have to be updated.",
+      "range": {
+        "startLine": 5303,
+        "startChar": 7,
+        "endLine": 5303,
+        "endChar": 49
+      },
+      "revId": "e1ef84d600e9a420cf4a9490dfb40d407162dcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
