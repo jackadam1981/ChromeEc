@@ -51,10 +51,23 @@ static int console_restricted_state;
 static int console_restricted_state = 1;
 #endif
 
+enum console_lock_state {
+	NOT_SAVED,
+	CONSOLE_LOCK_ENABLED,
+	CONSOLE_LOCK_DISABLED,
+};
+
+static void save_console_lock_state(void)
+{
+	GREG32(PMU, PWRDN_SCRATCH17) = console_restricted_state ?
+		CONSOLE_LOCK_ENABLED : CONSOLE_LOCK_DISABLED;
+}
+
 static void lock_the_console(void)
 {
 	CPRINTS("The console is locked");
 	console_restricted_state = 1;
+	save_console_lock_state();
 }
 
 static void unlock_the_console(void)
@@ -76,7 +89,24 @@ static void unlock_the_console(void)
 
 	CPRINTS("TPM is erased, console is unlocked");
 	console_restricted_state = 0;
+	save_console_lock_state();
 }
+
+static void console_lock_init(void)
+{
+	/* If we just resumed from deep sleep restore the old wp state */
+	if (system_get_reset_flags() & RESET_FLAG_HIBERNATE) {
+		switch (GREG32(PMU, PWRDN_SCRATCH17)) {
+		case CONSOLE_LOCK_ENABLED:
+			lock_the_console();
+			break;
+		case CONSOLE_LOCK_DISABLED:
+			unlock_the_console();
+			break;
+		}
+	}
+}
+DECLARE_HOOK(HOOK_INIT, console_lock_init, HOOK_PRIO_DEFAULT - 1);
 
 int console_is_restricted(void)
 {
