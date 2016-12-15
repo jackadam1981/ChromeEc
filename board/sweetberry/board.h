@@ -71,6 +71,9 @@
 /* Optional features */
 #define CONFIG_STM_HWTIMER32
 
+/* Remove task profiling to speed up task switching. */
+#undef CONFIG_TASK_PROFILING
+
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
  * switch.

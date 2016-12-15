@@ -24,6 +24,9 @@
 /* Transmit timeout in microseconds */
 #define I2C_TX_TIMEOUT_MASTER   (10 * MSEC)
 
+/* Register poll frequency in uS. */
+#define I2C_POLL_US		100
+
 /* Define I2C blocks available in stm32f4:
  * We have standard ST I2C blocks and a "fast mode plus" I2C block,
  * which do not share the same registers or functionality. So we'll need
@@ -149,7 +152,7 @@ static int wait_sr1_poll(int port, int mask, int val, int poll)
 /* Wait for SR1 register to contain the specified mask of ones */
 static int wait_sr1(int port, int mask)
 {
-	return wait_sr1_poll(port, mask, SET, 100);
+	return wait_sr1_poll(port, mask, SET, I2C_POLL_US);
 }
 
 
@@ -240,7 +243,7 @@ static int wait_fmpi2c_isr_poll(int port, int mask, int val, int poll)
 /* Wait for ISR register to contain the specified mask of ones */
 static int wait_fmpi2c_isr(int port, int mask)
 {
-	return wait_fmpi2c_isr_poll(port, mask, SET, 100);
+	return wait_fmpi2c_isr_poll(port, mask, SET, I2C_POLL_US);
 }
 
 /**

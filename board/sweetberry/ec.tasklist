@@ -17,5 +17,10 @@
  * 's' is the stack size in bytes; must be a multiple of 8
  */
 #define CONFIG_TASK_LIST \
+	TASK_ALWAYS(I2C1, usb_power_thread_task, 0, TASK_STACK_SIZE) \
+	TASK_ALWAYS(I2C2, usb_power_thread_task, 1, TASK_STACK_SIZE) \
+	TASK_ALWAYS(I2C3, usb_power_thread_task, 2, TASK_STACK_SIZE) \
+	TASK_ALWAYS(I2C4, usb_power_thread_task, 3, TASK_STACK_SIZE) \
 	TASK_ALWAYS(HOOKS,   hook_task,    NULL, VENTI_TASK_STACK_SIZE) \
-	TASK_ALWAYS(CONSOLE, console_task, NULL, VENTI_TASK_STACK_SIZE)
+	TASK_ALWAYS(CONSOLE, console_task, NULL, VENTI_TASK_STACK_SIZE) \
+

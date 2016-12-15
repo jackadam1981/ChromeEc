@@ -15,6 +15,7 @@
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
 
 
 
@@ -109,9 +110,6 @@ static int usb_power_write_line(struct usb_power_config const *config)
 		return bytes;
 	}
 
-	CPRINTS("usb_power_write_line: no data rs: %d, rc: %d",
-		USB_POWER_RECORD_SIZE(state->ina_count),
-		USB_POWER_MAX_CACHED(state->ina_count));
 	return 0;
 }
 
@@ -534,18 +532,17 @@ static int usb_power_init_inas(struct usb_power_config const *config)
 }
 
 
+
 /*
- * Read each INA's power integration measurement.
+ * Read each INA's measurement over i2c, on the specified channels.
  *
- * INAs recall the most recent address, so no register access write is
- * necessary, simply read 16 bits from each INA and fill the result into
- * the power record.
- *
- * If the power record ringbuffer is full, fail with USB_POWER_ERROR_OVERFLOW.
+ * We'll read and fill the data on all INAs on ports overed by mask.
+ * Active ports are specified as 1 << port in mask. We can read them all
+ * from this function or we can read each port in parallel by running this
+ * function one one task per port and masking appropriately.
  */
-static int usb_power_get_samples(struct usb_power_config const *config)
+int usb_power_read_inas(struct usb_power_config const *config, int mask)
 {
-	uint64_t time = get_time().val;
 	struct usb_power_state *state = config->state;
 	struct usb_power_report *r = (struct usb_power_report *)(
 		state->reports_data_area +
@@ -554,27 +551,13 @@ static int usb_power_get_samples(struct usb_power_config const *config)
 	struct usb_power_ina_cfg *inas = state->ina_cfg;
 	int i;
 
-	/* TODO(nsanders): Would we prefer to evict oldest? */
-	if (((state->reports_head + 1) % USB_POWER_MAX_CACHED(state->ina_count))
-	    == state->reports_xmit_active) {
-		CPRINTS("Overflow! h:%d a:%d t:%d (%d)",
-			state->reports_head, state->reports_xmit_active,
-			state->reports_tail,
-			USB_POWER_MAX_CACHED(state->ina_count));
-		return USB_POWER_ERROR_OVERFLOW;
-	}
-
-	r->status = USB_POWER_SUCCESS;
-	r->size = state->ina_count;
-	if (config->state->wall_offset)
-		time = time + config->state->wall_offset;
-	else
-		time -= config->state->base_time;
-	r->timestamp = time;
-
 	for (i = 0; i < state->ina_count; i++) {
 		int power;
 		struct usb_power_ina_cfg *ina = inas + i;
+
+		/* Skip INAs not covered by our specified channels */
+		if (!(mask & (1 << ina->port)))
+			continue;
 
 		/* Read INA231.
 		 * ina2xx_read(ina->port, ina->addr, INA231_REG_PWR);
@@ -610,6 +593,102 @@ static int usb_power_get_samples(struct usb_power_config const *config)
 #endif
 	}
 
+	return EC_SUCCESS;
+}
+
+#define I2C_COMPLETION(port)    TASK_EVENT_CUSTOM(1 << port)
+struct usb_power_config const *cheater_global_config;
+
+void usb_power_thread_task(int port)
+{
+	struct usb_power_config const *config;
+	int rv;
+	int mask = 1 << port;
+
+	while (1) {
+		rv = task_wait_event(-1);
+		config = cheater_global_config;
+
+		rv = usb_power_read_inas(config, mask);
+		if (rv)
+			CPRINTS("FAIL READ mask:%x", mask);
+
+		task_set_event(TASK_ID_HOOKS, I2C_COMPLETION(port), 0);
+	}
+}
+
+void usb_power_call_tasks(struct usb_power_config const *config)
+{
+	cheater_global_config = config;
+	task_wake(TASK_ID_I2C1);
+	task_wake(TASK_ID_I2C2);
+	task_wake(TASK_ID_I2C3);
+	task_wake(TASK_ID_I2C4);
+}
+
+int usb_power_join_tasks(void)
+{
+	int rv = EC_SUCCESS;
+	int mask = I2C_COMPLETION(0) | I2C_COMPLETION(1) |
+		I2C_COMPLETION(2) | I2C_COMPLETION(3);
+	int done = 0;
+
+	while (done != mask) {
+		rv = task_wait_event_mask(mask, 100000);
+		if (rv == TASK_EVENT_TIMER)
+			return EC_ERROR_TIMEOUT;
+		done |= rv & mask;
+	}
+
+	return EC_SUCCESS;
+}
+
+/*
+ * Read each INA's power integration measurement.
+ *
+ * INAs recall the most recent address, so no register access write is
+ * necessary, simply read 16 bits from each INA and fill the result into
+ * the power record.
+ *
+ * If the power record ringbuffer is full, fail with USB_POWER_ERROR_OVERFLOW.
+ */
+static int usb_power_get_samples(struct usb_power_config const *config)
+{
+	uint64_t time = get_time().val;
+	struct usb_power_state *state = config->state;
+	struct usb_power_report *r = (struct usb_power_report *)(
+		state->reports_data_area +
+		(USB_POWER_RECORD_SIZE(state->ina_count)
+		* state->reports_head));
+	int rv;
+
+	/* TODO(nsanders): Would we prefer to evict oldest? */
+	if (((state->reports_head + 1) % USB_POWER_MAX_CACHED(state->ina_count))
+	    == state->reports_xmit_active) {
+		CPRINTS("Overflow! h:%d a:%d t:%d (%d)",
+			state->reports_head, state->reports_xmit_active,
+			state->reports_tail,
+			USB_POWER_MAX_CACHED(state->ina_count));
+		return USB_POWER_ERROR_OVERFLOW;
+	}
+
+	r->status = USB_POWER_SUCCESS;
+	r->size = state->ina_count;
+	if (config->state->wall_offset)
+		time = time + config->state->wall_offset;
+	else
+		time -= config->state->base_time;
+	r->timestamp = time;
+
+#if 0
+	rv = usb_power_read_inas(config, 0xf);
+#else
+	usb_power_call_tasks(config);
+	rv = usb_power_join_tasks();
+#endif
+	if (rv)
+		CPRINTS("FAIL");
+
 	/* Mark this slot as used. */
 	state->reports_head = (state->reports_head + 1) %
 		USB_POWER_MAX_CACHED(state->ina_count);
@@ -627,7 +706,8 @@ static int usb_power_get_samples(struct usb_power_config const *config)
 void usb_power_deferred_cap(struct usb_power_config const *config)
 {
 	int ret;
-	uint64_t timeout = get_time().val + config->state->integration_us;
+	uint64_t timestart = get_time().val;
+	uint64_t timeout = timestart + config->state->integration_us;
 	uint64_t timein;
 
 	/* Exit if we have stopped capturing in the meantime. */
@@ -643,6 +723,8 @@ void usb_power_deferred_cap(struct usb_power_config const *config)
 
 	/* Calculate time remaining until next slice. */
 	timein = get_time().val;
+	CPRINTS("Timer: %d.%06d", (int)((timein - timestart)/1000000),
+		(int)((timein - timestart)%1000000));
 	if (timeout > timein)
 		timeout = timeout - timein;
 	else
