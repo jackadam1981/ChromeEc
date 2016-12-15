@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a7fdbe6_0d38a38b",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-15T05:38:05Z",
+      "side": 1,
+      "message": "this will have to change for embedded mode.",
+      "range": {
+        "startLine": 545,
+        "startChar": 33,
+        "endLine": 545,
+        "endChar": 56
+      },
+      "revId": "777de55fe90b6655b93098d24f86d8ef05bb42a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
