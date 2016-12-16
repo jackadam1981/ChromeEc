@@ -22,6 +22,30 @@
       "revId": "0119264b06820a969252341ee0b9c33136187151",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_1c7a1499",
+        "filename": "test/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-16T20:11:23Z",
+      "side": 1,
+      "message": "The others aren\u0027t. Should I sort these lines too?",
+      "parentUuid": "da6cabba_1c285499",
+      "range": {
+        "startLine": 45,
+        "startChar": 24,
+        "endLine": 45,
+        "endChar": 30
+      },
+      "revId": "0119264b06820a969252341ee0b9c33136187151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
