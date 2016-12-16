@@ -27,6 +27,7 @@
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -654,6 +655,14 @@ void lid_angle_peripheral_enable(int enable)
 	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif
+
+static void tablet_mode_peripheral_disable(void)
+{
+	if (motion_lid_in_tablet_mode())
+		lid_angle_peripheral_enable(0);
+}
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, tablet_mode_peripheral_disable,
+	     HOOK_PRIO_DEFAULT);
 
 #ifdef BOARD_GRU
 static void usb_charge_resume(void)
