@@ -128,6 +128,24 @@
       "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_ff8b8a71",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-16T21:43:55Z",
+      "side": 1,
+      "message": "yes, this is a good concern. How about we add locking the console unconditionally if a fallback situation is detected?\n\nThis way we still keep just one bit and act on it  and don\u0027 rewrite it all the time.",
+      "parentUuid": "da6cabba_bf3f52ca",
+      "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
