@@ -786,7 +786,7 @@ struct kionix_accel_data g_kx022_data;
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
 	 .name = "Lid Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_KX022,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_LID,
@@ -810,8 +810,8 @@ struct motion_sensor_t motion_sensors[] = {
 		},
 		/* unused */
 		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
-			.ec_rate = 0,
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
 		},
 		[SENSOR_CONFIG_EC_S5] = {
 			.odr = 0,
@@ -822,7 +822,7 @@ struct motion_sensor_t motion_sensors[] = {
 
 	[BASE_ACCEL] = {
 	 .name = "Base Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_BASE,
@@ -846,8 +846,8 @@ struct motion_sensor_t motion_sensors[] = {
 		 },
 		 /* Sensor off in S3/S5 */
 		 [SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
-			.ec_rate = 0
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
 		 },
 		 /* Sensor off in S3/S5 */
 		 [SENSOR_CONFIG_EC_S5] = {
