@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "da6cabba_3c08b094",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-12-16T19:44:45Z",
+      "side": 1,
+      "message": "If we resume for a reason other than deep sleep the lock will be reset to the default state.",
+      "parentUuid": "da6cabba_79bcff67",
+      "revId": "3c1d1ef2c52eee32ea4ddb767578427eae380dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6cabba_16eafaf1",
         "filename": "board/cr50/wp.c",
         "patchSetId": 2
@@ -155,6 +173,24 @@
       "writtenOn": "2016-12-16T03:27:15Z",
       "side": 1,
       "message": "Please add a comment here about the priority needing to be higher than the board one so that the console state can be honored.",
+      "revId": "3c1d1ef2c52eee32ea4ddb767578427eae380dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_5c056c79",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-12-16T19:44:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da6cabba_16eafaf1",
       "revId": "3c1d1ef2c52eee32ea4ddb767578427eae380dd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
