@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "da6cabba_79bcff67",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-16T04:06:56Z",
+      "side": 1,
+      "message": "Setting the register in an else clause here to locked would be helpful. That ore making it NOT_SAVED as long as console_restricted_state stays at 1 default for non-dev builds.",
+      "parentUuid": "da6cabba_799b1f4d",
+      "revId": "3c1d1ef2c52eee32ea4ddb767578427eae380dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6cabba_16eafaf1",
         "filename": "board/cr50/wp.c",
         "patchSetId": 2
