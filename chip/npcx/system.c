@@ -169,7 +169,7 @@ void system_check_reset_cause(void)
 
 	/* Use scratch bit to check power on reset or VCC1_RST reset */
 	if (!IS_BIT_SET(NPCX_RSTCTL, NPCX_RSTCTL_VCC1_RST_SCRATCH)) {
-#ifdef BOARD_WHEATLEY
+#if defined(BOARD_WHEATLEY) || defined(BOARD_EVE)
 		flags |= RESET_FLAG_RESET_PIN;
 #else
 		/* Check for VCC1 reset */
