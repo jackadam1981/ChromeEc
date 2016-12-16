@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_670d3a1a",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-16T14:56:47Z",
+      "side": 1,
+      "message": "Can you rename this #define to have DISABLE in it? I thin it\u0027d make the logic clearer. We want to make sure discharge is on so...\n \n !(batt_staus \u0026 SONY_DISCHARGE_DISABLE_FET_BIT) -\u003e enable. I know it matches the current code and comments, but it reads a lot clearer if DISCHARGE is in the name whe reading the code.",
+      "revId": "7a2f7f559e00415a94d1c33dcfa4b5a2b8fb31dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
