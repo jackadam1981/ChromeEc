@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_568712fa",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-16T02:54:32Z",
+      "side": 1,
+      "message": "We should only be doing this when we\u0027re going down for deep sleep. If there\u0027s a reset we need to ensure the lock state is the default value of being locked.",
+      "revId": "3c1d1ef2c52eee32ea4ddb767578427eae380dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_d6724250",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-16T02:54:32Z",
+      "side": 1,
+      "message": "We should be clearing the state from the register in this path. It should come up, set the value then clear it from the register.",
+      "revId": "3c1d1ef2c52eee32ea4ddb767578427eae380dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
