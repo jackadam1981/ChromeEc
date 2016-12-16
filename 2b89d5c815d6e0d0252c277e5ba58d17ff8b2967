@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_b927777a",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-16T05:01:50Z",
+      "side": 1,
+      "message": "Will this be changed for future board spins? Should we add a TODO to remove it?",
+      "range": {
+        "startLine": 172,
+        "startChar": 39,
+        "endLine": 172,
+        "endChar": 48
+      },
+      "revId": "2b89d5c815d6e0d0252c277e5ba58d17ff8b2967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
