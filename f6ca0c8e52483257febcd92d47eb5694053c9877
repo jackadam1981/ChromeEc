@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_2786e268",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-12-16T14:08:36Z",
+      "side": 1,
+      "message": "!\u003d BATTERY_NOT_DISCONNECTED seems more reliable",
+      "range": {
+        "startLine": 217,
+        "startChar": 36,
+        "endLine": 217,
+        "endChar": 59
+      },
+      "revId": "f6ca0c8e52483257febcd92d47eb5694053c9877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
