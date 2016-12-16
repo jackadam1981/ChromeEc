@@ -146,6 +146,24 @@
       "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_5fb8fec5",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-12-16T21:59:40Z",
+      "side": 1,
+      "message": "We could check that the retry counter is the same as when we stored the lock state.",
+      "parentUuid": "da6cabba_ff8b8a71",
+      "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
