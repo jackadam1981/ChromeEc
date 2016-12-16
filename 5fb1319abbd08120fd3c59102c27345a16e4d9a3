@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_e89d97a5",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-16T19:16:52Z",
+      "side": 1,
+      "message": "This is the issue here. It\u0027s possible in 360 degrees, we calculate to the \"other\" solution of the really low angle. I didn\u0027t want to \"correct\" the angle by forcing it to the high angle, because that causes bad angles when closing the lid, so I had decided to mark it as unreliable.\n\nHowever, when disabling key scanning, if any of the last 4 readings are unreliable, we don\u0027t go forward with disabling key scanning.",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 15
+      },
+      "revId": "5fb1319abbd08120fd3c59102c27345a16e4d9a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
