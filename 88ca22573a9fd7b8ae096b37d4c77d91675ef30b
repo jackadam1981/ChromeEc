@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_df4a4ec8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-16T21:17:38Z",
+      "side": 1,
+      "message": "please put them one per line",
+      "range": {
+        "startLine": 824,
+        "startChar": 1,
+        "endLine": 824,
+        "endChar": 55
+      },
+      "revId": "88ca22573a9fd7b8ae096b37d4c77d91675ef30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_5fb2be96",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-16T21:17:38Z",
+      "side": 1,
+      "message": "you should restore the entire register to the state it was in before line 838. It should be saved there and restored here.",
+      "range": {
+        "startLine": 853,
+        "startChar": 1,
+        "endLine": 853,
+        "endChar": 55
+      },
+      "revId": "88ca22573a9fd7b8ae096b37d4c77d91675ef30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
