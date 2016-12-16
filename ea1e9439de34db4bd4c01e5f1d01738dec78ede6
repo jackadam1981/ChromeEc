@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_c87c5b60",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-16T19:21:00Z",
+      "side": 1,
+      "message": "David Huang: As the charge profile is written for SMP-COS4870. Can you please check if the correct voltage_max is selected for AS1FNZD3KD \u0026 AS1FOAD3KD?",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 32
+      },
+      "revId": "ea1e9439de34db4bd4c01e5f1d01738dec78ede6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
