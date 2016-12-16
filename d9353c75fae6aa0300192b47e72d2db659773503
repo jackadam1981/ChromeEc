@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_bc720001",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-16T19:55:58Z",
+      "side": 1,
+      "message": "Changed from what? The default at compilation time? What about rollbacks of fw where things are different?",
+      "range": {
+        "startLine": 113,
+        "startChar": 40,
+        "endLine": 113,
+        "endChar": 61
+      },
+      "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_9cd384bb",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-16T19:55:58Z",
+      "side": 1,
+      "message": "All of this logic is now reliant on what DEFAULT_LOCK_STATE is when the image is compiled. I\u0027m not sure I think that\u0027s a good idea. We should be very explicit the settings we\u0027re assigning.",
+      "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_dc9edcf1",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-16T19:55:58Z",
+      "side": 1,
+      "message": "I like where you had 3 states before. We should probably use 2 bits. One for \"use next bit\u0027s value\" if 1, and use default compilation value if 0.\n\n#define BOARD_CONSOLE_LOCK_MODIFIED (1 \u003c\u003c 7)\n#define BOARD_CONSOLE_LOCK_UNLOCKED (0 \u003c\u003c 8)\n#define BOARD_CONSOLE_LOCK_LOCKED   (1 \u003c\u003c 8)\n\nLet\u0027s see what Vadim thinks.",
+      "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
