@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "da6cabba_b55e9391",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-16T23:05:44Z",
+      "side": 1,
+      "message": "1 \u003c\u003c 14?\n\nb15,b14 (read only bits): FET Status\n00: Charge FET \u003d on, Discharge FET \u003d on\n01: Charge FET \u003d off, Discharge FET \u003d on\n10: Charge FET \u003d off, Discharge FET \u003d off\n11: Charge FET \u003d on, Discharge FET \u003d off",
+      "range": {
+        "startLine": 38,
+        "startChar": 31,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "7a2f7f559e00415a94d1c33dcfa4b5a2b8fb31dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6cabba_670d3a1a",
         "filename": "board/reef/battery.c",
         "patchSetId": 6
