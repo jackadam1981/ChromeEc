@@ -46,6 +46,30 @@
       "revId": "f6ca0c8e52483257febcd92d47eb5694053c9877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_1cf5b4ce",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-16T20:30:20Z",
+      "side": 1,
+      "message": "I\u0027d like to leave it as-is. BATTERY_DISCONNECT_ERROR generally indicates a comm error, and the vast majority of times this code is run, the battery will not be disconnected.",
+      "parentUuid": "da6cabba_67861a38",
+      "range": {
+        "startLine": 217,
+        "startChar": 36,
+        "endLine": 217,
+        "endChar": 59
+      },
+      "revId": "f6ca0c8e52483257febcd92d47eb5694053c9877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
