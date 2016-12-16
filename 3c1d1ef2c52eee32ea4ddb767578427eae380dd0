@@ -162,6 +162,24 @@
     },
     {
       "key": {
+        "uuid": "da6cabba_9c31c449",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-16T19:47:48Z",
+      "side": 1,
+      "message": "when does this happen?\n\nIf there is an exception and H1 reboots, long life registers don\u0027t get cleared.",
+      "parentUuid": "da6cabba_3c08b094",
+      "revId": "3c1d1ef2c52eee32ea4ddb767578427eae380dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6cabba_16eafaf1",
         "filename": "board/cr50/wp.c",
         "patchSetId": 2
