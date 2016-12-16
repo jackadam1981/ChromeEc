@@ -74,6 +74,24 @@
       "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_3f8ee2c1",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-16T21:25:29Z",
+      "side": 1,
+      "message": "It says to use the value in bit 8 for console lock. On reset (non suspend wake) we\u0027d clear both bits, 7 and 8. You could use one bit, but I liked your original code where there was a notion of \"use this value\". You could get away with 1 bit if you make it such that it\u0027s the unlock bit. And we clear it at the right place. \n\nMy concern still is handling resume where we fallback. That fallback mechanism makes me uneasy about it picking up state saved by a previous image. I feel like we should have a version number stashed away in one of these fields where we invalidate then re-setup all these bits when the version number is different.",
+      "parentUuid": "da6cabba_bc9120a4",
+      "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
