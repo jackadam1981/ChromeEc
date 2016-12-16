@@ -180,6 +180,24 @@
     },
     {
       "key": {
+        "uuid": "da6cabba_5c8bacb0",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-16T19:57:08Z",
+      "side": 1,
+      "message": "We hit this path on reset (both regular and power on) and on resume from deep sleep. In all other paths we should lock the console.",
+      "parentUuid": "da6cabba_9c31c449",
+      "revId": "3c1d1ef2c52eee32ea4ddb767578427eae380dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6cabba_16eafaf1",
         "filename": "board/cr50/wp.c",
         "patchSetId": 2
