@@ -110,6 +110,24 @@
       "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_bf3f52ca",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-16T21:39:07Z",
+      "side": 1,
+      "message": "Separate from this particular CL I\u0027m still concerned about deep sleep wake into a rolled back image. I\u0027d feel a lot more comfortable if we handled that situation explicitly by resetting bits like this unlock bit so that defaults are restored.",
+      "parentUuid": "da6cabba_bc0e801b",
+      "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
