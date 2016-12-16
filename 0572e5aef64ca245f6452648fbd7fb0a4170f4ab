@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_cd6d4d75",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-16T17:13:09Z",
+      "side": 1,
+      "message": "this param can be removed and set to battery vtg max",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "0572e5aef64ca245f6452648fbd7fb0a4170f4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
