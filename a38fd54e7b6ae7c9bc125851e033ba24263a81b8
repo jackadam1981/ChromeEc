@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_52e71527",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-16T22:41:38Z",
+      "side": 1,
+      "message": "you don\u0027t need to change this value, as it is a true indication of the fact that we sent an image to the target; also it is not modified until line 1319 below anyways.",
+      "range": {
+        "startLine": 1315,
+        "startChar": 2,
+        "endLine": 1315,
+        "endChar": 22
+      },
+      "revId": "a38fd54e7b6ae7c9bc125851e033ba24263a81b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_b2f5c9d3",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1324,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-16T22:41:38Z",
+      "side": 1,
+      "message": "I think this is what causes you usb failures - the \u0027send_done() below is necessary to close the usb session, otherwise cr50 and host get out of sync.",
+      "revId": "a38fd54e7b6ae7c9bc125851e033ba24263a81b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
