@@ -182,6 +182,24 @@
       "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_15990708",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-16T23:14:26Z",
+      "side": 1,
+      "message": "\u003e yes, this is a good concern. How about we add locking the console\n \u003e unconditionally if a fallback situation is detected?\n \u003e \n \u003e This way we still keep just one bit and act on it  and don\u0027 rewrite\n \u003e it all the time.\n\nThat\u0027s what I described regarding keeping version number. I\u0027m not sure how fallback detection would be implemented. Sounds like an RO change? If so, I understand. Regardless, on that condition ensuring console is locked on that condition is what we need.",
+      "parentUuid": "da6cabba_ff8b8a71",
+      "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
