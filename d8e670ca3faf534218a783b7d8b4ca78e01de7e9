@@ -34,6 +34,24 @@
       "revId": "d8e670ca3faf534218a783b7d8b4ca78e01de7e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_42ce6cc1",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-16T16:59:48Z",
+      "side": 1,
+      "message": "For S3 we still lock the nv spaces from what I can see, but they don\u0027t seem to be taking as much time in the resume path. I suspect the shutdown command makes the nvram not dirty on resume, but I\u0027m not sure why nvram is dirty on normal bootup though to cause it take so much time. My concern is that we may not perform the command on resume to re-enable commits after a deep sleep resulting in commits never landing. \n\nAs noted previously we need a way to ensure commits land in the recovery path. A vendor command to do that in recovery would be helpful since we can ensure the commits stick.\n\nIt might be a good compromise to delay commits to a certain time from power tpm init() until we get a vendor command that says commit now (which essentially says expire and commit). Still need to think about this more and dig into things further.",
+      "parentUuid": "5a7fdbe6_b3cc56cb",
+      "revId": "d8e670ca3faf534218a783b7d8b4ca78e01de7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
