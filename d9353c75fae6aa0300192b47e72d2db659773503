@@ -200,6 +200,24 @@
       "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_552a9f91",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-16T23:29:52Z",
+      "side": 1,
+      "message": "The fallback condition is detected by the RW, when it determines at run time that it is older than the other option present in the flash, in chip/g/system.c:system_process_retry_counter().\n\nRight now this invoked only when the AP sends the ReadPCR command, which might not happen right away.\n\nSo, I suggest to add the check (without looking at the counter) early in board_init and if fallback is detected - make sure the bit is cleared and console is locked before console is actually active.",
+      "parentUuid": "da6cabba_15990708",
+      "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
