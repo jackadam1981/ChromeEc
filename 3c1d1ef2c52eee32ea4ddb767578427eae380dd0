@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "da6cabba_f6481e30",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-16T03:35:22Z",
+      "side": 1,
+      "message": "if there is unexpected H1 reset, the check in line 98 would fail, so the console state should be set to locked  in an else case here (this is still is missing from this function).\n\nThat is, if there is an unexpected reset, the state would be cleared here - will this work?",
+      "parentUuid": "da6cabba_d69de2a5",
+      "revId": "3c1d1ef2c52eee32ea4ddb767578427eae380dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6cabba_16eafaf1",
         "filename": "board/cr50/wp.c",
         "patchSetId": 2
