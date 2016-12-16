@@ -263,14 +263,6 @@ void battery_get_params(struct batt_params *batt)
 	if (sb_read(SB_TEMPERATURE, &batt_new.temperature))
 		batt_new.flags |= BATT_FLAG_BAD_TEMPERATURE;
 
-	if (sb_read(SB_RELATIVE_STATE_OF_CHARGE, &batt_new.state_of_charge)
-	    && fake_state_of_charge < 0)
-		batt_new.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
-
-	/* If soc is faked, override with faked data */
-	if (fake_state_of_charge >= 0)
-		batt_new.state_of_charge = fake_state_of_charge;
-
 	if (sb_read(SB_VOLTAGE, &batt_new.voltage))
 		batt_new.flags |= BATT_FLAG_BAD_VOLTAGE;
 
@@ -310,6 +302,21 @@ void battery_get_params(struct batt_params *batt)
 	else
 		batt_new.is_present = BP_NOT_SURE;
 #endif
+
+	if (sb_read(SB_RELATIVE_STATE_OF_CHARGE, &batt_new.state_of_charge)
+	    && fake_state_of_charge < 0)
+		batt_new.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
+	/*
+	 * Report 0% if battery is unable to provide power
+	 * since this will affect TypeC output & OS info.
+	 * Except RSOC is faked.
+	 */
+	if (batt_new.is_present != BP_YES)
+		batt_new.state_of_charge = 0;
+
+	/* If soc is faked, override with faked data */
+	if (fake_state_of_charge >= 0)
+		batt_new.state_of_charge = fake_state_of_charge;
 
 	/*
 	 * Charging allowed if both desired voltage and current are nonzero
