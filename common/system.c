@@ -92,7 +92,7 @@ static const char * const reset_flag_descs[] = {
 static uint32_t reset_flags;
 static int jumped_to_image;
 static int disable_jump;  /* Disable ALL jumps if system is locked */
-static int force_locked;  /* Force system locked even if WP isn't enabled */
+static int force_locked = 1;  /* Force system locked even if WP isn't enabled */
 static enum ec_reboot_cmd reboot_at_shutdown;
 
 /* On-going actions preventing going into deep-sleep mode */
