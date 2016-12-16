@@ -33,6 +33,24 @@
       "revId": "3c1d1ef2c52eee32ea4ddb767578427eae380dd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_d6f7a216",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-16T03:20:07Z",
+      "side": 1,
+      "message": "in the suggested implementation there is no need to keep doing anything extra on each time going to sleep, the state is saved the register once.\n\non the way up the value is used only if waking from deep sleep, otherwise it is ignored.\n\nthe console should be locked if this is not a reset after hibernate though - this is what\u0027s missing here.\n\nkeeping the state in the register only while sleeping and then removing it from there and then saving it again if going to deep sleep - what\u0027s the advantage of this churn?",
+      "parentUuid": "da6cabba_d6724250",
+      "revId": "3c1d1ef2c52eee32ea4ddb767578427eae380dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
