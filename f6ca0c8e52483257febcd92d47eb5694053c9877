@@ -22,6 +22,30 @@
       "revId": "f6ca0c8e52483257febcd92d47eb5694053c9877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_67861a38",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-16T15:21:41Z",
+      "side": 1,
+      "message": "In fact, our battery_get_disconnected_state() routine is not reentrant due to the manuf. access read / write sequence. I considered adding a mutex in that function, but decided against it at the time. Did you run into failure due to an error return value?",
+      "parentUuid": "da6cabba_2786e268",
+      "range": {
+        "startLine": 217,
+        "startChar": 36,
+        "endLine": 217,
+        "endChar": 59
+      },
+      "revId": "f6ca0c8e52483257febcd92d47eb5694053c9877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
