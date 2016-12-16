@@ -92,6 +92,24 @@
       "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_bc0e801b",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-16T21:30:35Z",
+      "side": 1,
+      "message": "I think one bit should be enough to indicate that console is unlocked.\n\nset when console is unlocked, cleared when the console is locked or if it is a restart for any other reason than resume from slleep.",
+      "parentUuid": "da6cabba_dc9edcf1",
+      "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
