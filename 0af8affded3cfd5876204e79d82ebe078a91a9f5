@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "da6cabba_306e113f",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-17T00:18:57Z",
+      "side": 1,
+      "message": "Lemme push a secondary CL so you can see how it works....",
+      "parentUuid": "da6cabba_35a28391",
+      "revId": "0af8affded3cfd5876204e79d82ebe078a91a9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6cabba_95c27740",
         "filename": "common/nvmem_vars.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2016-12-17T00:06:50Z",
       "side": 1,
       "message": "I really would prefer to avoid having to allocate this buffer. There is a patch in the works which brings in a rudimentary malloc/free functionality\n\nhttps://chromium-review.googlesource.com/c/420466/\n\nlet me get it through review/merge and then I can pick up this patch an make it work - will this work?",
+      "revId": "0af8affded3cfd5876204e79d82ebe078a91a9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_f0f8195c",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-17T00:18:57Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s fine. I would have put a comment here, but there\u0027s no bug for it that I can find.",
+      "parentUuid": "da6cabba_95c27740",
       "revId": "0af8affded3cfd5876204e79d82ebe078a91a9f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
