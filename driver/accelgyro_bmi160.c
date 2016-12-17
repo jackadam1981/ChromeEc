@@ -927,9 +927,19 @@ static int bmi160_decode_header(struct motion_sensor_t *s,
 				int *v = (s + i)->raw_xyz;
 				vector.flags = 0;
 				normalize(s + i, v, *bp);
-				vector.data[X] = v[X];
-				vector.data[Y] = v[Y];
-				vector.data[Z] = v[Z];
+#ifdef CONFIG_ACCEL_SPOOF_MODE
+				if (s->in_spoof_mode) {
+					vector.data[X] = s->spoof_xyz[X];
+					vector.data[Y] = s->spoof_xyz[Y];
+					vector.data[Z] = s->spoof_xyz[Z];
+				} else {
+#endif /* defined(CONFIG_ACCEL_SPOOF_MODE) */
+					vector.data[X] = v[X];
+					vector.data[Y] = v[Y];
+					vector.data[Z] = v[Z];
+#ifdef CONFIG_ACCEL_SPOOF_MODE
+				}
+#endif /* defined(CONFIG_ACCEL_SPOOF_MODE) */
 				vector.sensor_num = i + (s - motion_sensors);
 				motion_sense_fifo_add_unit(&vector, s + i, 3);
 				*bp += (i == MOTIONSENSE_TYPE_MAG ? 8 : 6);

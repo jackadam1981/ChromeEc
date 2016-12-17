@@ -1906,6 +1906,12 @@ enum motionsense_command {
 	 */
 	MOTIONSENSE_CMD_FIFO_INT_ENABLE = 15,
 
+	/*
+	 * Spoof the readings of the sensors.  The spoofed readings can be set
+	 * to arbitrary values, or will lock to the last read actual values.
+	 */
+	MOTIONSENSE_CMD_SPOOF = 16,
+
 	/* Number of motionsense sub-commands. */
 	MOTIONSENSE_NUM_CMDS
 };
@@ -2027,6 +2033,20 @@ struct __ec_todo_unpacked ec_motion_sense_activity {
 
 #define LID_ANGLE_UNRELIABLE 500
 
+enum motionsense_spoof_mode {
+	/* Disable spoof mode. */
+	MOTIONSENSE_SPOOF_MODE_DISABLE = 0,
+
+	/* Enable spoof mode, but use provided component values. */
+	MOTIONSENSE_SPOOF_MODE_CUSTOM,
+
+	/* Enable spoof mode, but use the current sensor values. */
+	MOTIONSENSE_SPOOF_MODE_LOCK_CURRENT,
+
+	/* Query the current spoof mode status for the sensor. */
+	MOTIONSENSE_SPOOF_MODE_QUERY,
+};
+
 struct __ec_todo_packed ec_params_motion_sense {
 	uint8_t cmd;
 	union {
@@ -2128,6 +2148,19 @@ struct __ec_todo_packed ec_params_motion_sense {
 			 */
 			int8_t enable;
 		} fifo_int_enable;
+
+		/* Used for MOTIONSENSE_CMD_SPOOF */
+		struct __ec_todo_unpacked {
+			uint8_t sensor_id;
+
+			/* See enum motionsense_spoof_mode. */
+			uint8_t spoof_enable;
+
+			/* Individual component values to spoof. */
+			int16_t x;
+			int16_t y;
+			int16_t z;
+		} spoof;
 	};
 };
 
@@ -2202,6 +2235,15 @@ struct __ec_todo_packed ec_response_motion_sense {
 			 */
 			uint16_t value;
 		} lid_angle;
+
+		/* Used for MOTIONSENSE_CMD_SPOOF */
+		struct __ec_todo_unpacked {
+			/*
+			 * Whether spoofing is currently enabled for the
+			 * queried sensor.
+			 */
+			uint8_t status;
+		} spoof;
 	};
 };
 
