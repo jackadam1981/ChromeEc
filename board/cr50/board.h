@@ -208,6 +208,10 @@ enum nvmem_users {
 };
 #endif
 
+#define CONFIG_FLASH_NVMEM_VARS
+#define CONFIG_FLASH_NVMEM_VARS_USER_NUM NVMEM_CR50
+#define CONFIG_FLASH_NVMEM_VARS_USER_SIZE 300
+
 /*
  * Let's be on the lookout for stack overflow, while debugging.
  *

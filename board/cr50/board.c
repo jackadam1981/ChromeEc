@@ -19,6 +19,7 @@
 #include "i2cs.h"
 #include "init_chip.h"
 #include "nvmem.h"
+#include "nvmem_vars.h"
 #include "rdd.h"
 #include "registers.h"
 #include "signed_header.h"
@@ -57,7 +58,7 @@
 #undef SHA_DIGEST_SIZE
 #include "Implementation.h"
 
-#define NVMEM_CR50_SIZE 300
+#define NVMEM_CR50_SIZE CONFIG_FLASH_NVMEM_VARS_USER_SIZE
 #define NVMEM_TPM_SIZE ((sizeof((struct nvmem_partition *)0)->buffer) \
 			- NVMEM_CR50_SIZE)
 
@@ -286,6 +287,7 @@ static void board_init(void)
 	init_runlevel(PERMISSION_MEDIUM);
 	/* Initialize NvMem partitions */
 	nvmem_init();
+	initvars();
 
 	/* Enable write protect on production images. Disable it on dev */
 	GREG32(RBOX, EC_WP_L) = !console_is_restricted();
