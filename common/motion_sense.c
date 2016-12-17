@@ -400,6 +400,9 @@ static inline int motion_sense_init(struct motion_sensor_t *sensor)
 {
 	int ret, cnt = 3;
 
+	/* By default, report the actual sensor values. */
+	sensor->in_spoof_mode = 0;
+
 	/* Initialize accelerometers. */
 	do {
 		ret = sensor->drv->init(sensor);
@@ -590,7 +593,11 @@ static int motion_sense_read(struct motion_sensor_t *sensor)
 	if (sensor->drv->get_data_rate(sensor) == 0)
 		return EC_ERROR_NOT_POWERED;
 
-	/* Read all raw X,Y,Z accelerations. */
+	/* If the sensor is in spoof mode, the readings are already there. */
+	if (sensor->in_spoof_mode)
+		return EC_SUCCESS;
+
+	/* Otherwise, read all raw X,Y,Z accelerations. */
 	return sensor->drv->read(sensor, sensor->raw_xyz);
 }
 
@@ -1513,6 +1520,64 @@ static int motion_sense_read_fifo(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(fiforead, motion_sense_read_fifo,
 	"id",
 	"Read Fifo sensor");
-#endif
+#endif /* defined(CONFIG_CMD_ACCEL_FIFO) */
+
 
 #endif /* CONFIG_CMD_ACCELS */
+static void print_spoof_mode_status(int id)
+{
+	CPRINTS("Sensor %d spoof mode is %s.", id,
+		motion_sensors[id].in_spoof_mode ? "enabled" : "disabled");
+}
+
+static int command_accelspoof_xyz(int argc, char **argv)
+{
+	char *e;
+	int id, enable, i;
+	struct motion_sensor_t *s;
+
+	/* There must be at least 1 parameter, the sensor id. */
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	/* First argument is sensor id. */
+	id = strtoi(argv[1], &e, 0);
+	if (id >= motion_sensor_count || id < 0)
+		return EC_ERROR_PARAM1;
+
+	s = &motion_sensors[id];
+
+	/* Print the sensor's current spoof status. */
+	if (argc == 2)
+		print_spoof_mode_status(id);
+
+	/* Enable/Disable spoof mode. */
+	if (argc >= 3) {
+		if (!parse_bool(argv[2], &enable))
+			return EC_ERROR_PARAM2;
+
+		if (enable) {
+			/*
+			 * If no components are provided, we'll just use the
+			 * current values as the spoofed values.  But if the
+			 * components are provided, use the provided ones as the
+			 * spoofed ones.
+			 */
+			if (argc == 6) {
+				for (i = 0; i < 3; i++)
+					s->raw_xyz[i] = strtoi(argv[3 + i],
+								 &e, 0);
+			} else if (argc != 3) {
+				/* It's either all or nothing. */
+				return EC_ERROR_PARAM_COUNT;
+			}
+		}
+		s->in_spoof_mode = enable;
+		print_spoof_mode_status(id);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(accelspoof, command_accelspoof_xyz,
+			"id [on/off] [X] [Y] [Z]",
+			"Enable/Disable spoofing of sensor readings.");

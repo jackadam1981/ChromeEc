@@ -109,6 +109,12 @@ struct motion_sensor_t {
 	vector_3_t raw_xyz;
 	vector_3_t xyz;
 
+	/*
+	 * Spoof mode will allow the EC to report arbitrary values for any of
+	 * the components.
+	 */
+	int in_spoof_mode;
+
 	/* How many flush events are pending */
 	uint32_t flush_pending;
 
