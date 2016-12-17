@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da6cabba_d00ebd1c",
+        "filename": "chip/it83xx/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-17T00:50:46Z",
+      "side": 1,
+      "message": "It looks from the mutex in adc_read_channel() like only one channel can be active at a time.",
+      "parentUuid": "1aa00309_edfe658c",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 34
+      },
+      "revId": "8bc6f542842fe88fabdd4a84a416333c8797bb4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aa00309_2d098de1",
         "filename": "chip/it83xx/adc.c",
         "patchSetId": 1
