@@ -236,6 +236,24 @@
       "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_d5b22fe1",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-12-17T00:08:40Z",
+      "side": 1,
+      "message": "I am using 2 bits because it makes it easier to handle the different default lock states for prod and dev.\n\nI verified that the lock and write protect states can\u0027t be saved once we detect a fallback.",
+      "parentUuid": "da6cabba_f543ab10",
+      "revId": "d9353c75fae6aa0300192b47e72d2db659773503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
