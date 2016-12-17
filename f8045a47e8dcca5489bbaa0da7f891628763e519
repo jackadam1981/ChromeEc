@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_5009cddf",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2016-12-17T01:04:06Z",
+      "side": 1,
+      "message": "This fixed the timeout issue",
+      "range": {
+        "startLine": 1068,
+        "startChar": 6,
+        "endLine": 1068,
+        "endChar": 13
+      },
+      "revId": "f8045a47e8dcca5489bbaa0da7f891628763e519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
