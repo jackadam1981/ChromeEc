@@ -43,6 +43,11 @@
 #undef CONFIG_ACCEL_FIFO
 /* The amount of free entries that trigger an interrupt to the AP. */
 #undef CONFIG_ACCEL_FIFO_THRES
+/*
+ * Support "spoof" mode for sensors.  This allows sensors to have their values
+ * spoofed to any arbitrary value.  This is useful for testing.
+ */
+#define CONFIG_ACCEL_SPOOF_MODE
 
 /*
  * Sensors in this mask are in forced mode: they needed to be polled
