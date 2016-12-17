@@ -69,6 +69,29 @@
       "revId": "0af8affded3cfd5876204e79d82ebe078a91a9f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_f0a57953",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-17T00:24:27Z",
+      "side": 1,
+      "message": "Stupid: How\u0027s snprintf() going to know to keep printing after seeing this \u0027\\0\u0027? A: It won\u0027t.",
+      "range": {
+        "startLine": 269,
+        "startChar": 3,
+        "endLine": 269,
+        "endChar": 11
+      },
+      "revId": "0af8affded3cfd5876204e79d82ebe078a91a9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
