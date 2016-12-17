@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_35a28391",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-17T00:06:50Z",
+      "side": 1,
+      "message": "as a generic consideration: this approach makes assumption that the only thing stored in the user nvram section is are these name/value tuples.\n\nThis might be fine, but this is not enforced anywhere, and is easy to be overlooked. Not sure what to do about this.\n\nAnother comment is that this scheme allows to store strings only, both for keys and for values. This is quite limiting, I remember having to extend VPD storage to allow to keep binaries there, it would be good to be able to do it here from the very beginning.",
+      "revId": "0af8affded3cfd5876204e79d82ebe078a91a9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_95c27740",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-17T00:06:50Z",
+      "side": 1,
+      "message": "I really would prefer to avoid having to allocate this buffer. There is a patch in the works which brings in a rudimentary malloc/free functionality\n\nhttps://chromium-review.googlesource.com/c/420466/\n\nlet me get it through review/merge and then I can pick up this patch an make it work - will this work?",
+      "revId": "0af8affded3cfd5876204e79d82ebe078a91a9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
