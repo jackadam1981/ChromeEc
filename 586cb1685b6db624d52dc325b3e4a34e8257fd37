@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_6b8b3cb1",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-17T01:37:11Z",
+      "side": 0,
+      "message": "we can actually leave ec_rate to 0 (fix line 809 instead).\nThe lid accel has no fifo, so it is in forced mode and the ec rate needed is calculated from the odr frequency.",
+      "revId": "586cb1685b6db624d52dc325b3e4a34e8257fd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
