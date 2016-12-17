@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_701ec9d7",
+        "filename": "chip/g/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-17T00:19:35Z",
+      "side": 1,
+      "message": "changes made to these variables by current_image_is_newer() are lost, aren\u0027t they.",
+      "revId": "2d609dcfe2c558eaa6f41760bfb09c92f2e7b955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_b05a2197",
+        "filename": "chip/g/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-17T00:19:35Z",
+      "side": 1,
+      "message": "I guess other happens to be there on the stack from the previous invocation?!",
+      "range": {
+        "startLine": 402,
+        "startChar": 8,
+        "endLine": 402,
+        "endChar": 35
+      },
+      "revId": "2d609dcfe2c558eaa6f41760bfb09c92f2e7b955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
