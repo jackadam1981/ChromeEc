@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_069e3fa1",
+        "filename": "common/host_command.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-17T19:23:42Z",
+      "side": 1,
+      "message": "After your private changes land (we can CQ-DEPEND the CLs) can we make this the one and only supported configuration (eg. delete the CONFIG, remove the #else block below).",
+      "range": {
+        "startLine": 366,
+        "startChar": 7,
+        "endLine": 366,
+        "endChar": 36
+      },
+      "revId": "e9074c2c26752f7807e8d2d42eef428a1e47f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_26a33be7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-17T19:23:42Z",
+      "side": 1,
+      "message": "Is there any way around changing these #defines? Maybe with a change to the DECLARE_HOST_COMMAND macro?",
+      "range": {
+        "startLine": 807,
+        "startChar": 29,
+        "endLine": 807,
+        "endChar": 35
+      },
+      "revId": "e9074c2c26752f7807e8d2d42eef428a1e47f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_e6a863c6",
+        "filename": "include/host_command.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-17T19:23:42Z",
+      "side": 1,
+      "message": "Can we use EC_CMD_BOARD_SPECIFIC_BASE here?",
+      "range": {
+        "startLine": 217,
+        "startChar": 41,
+        "endLine": 217,
+        "endChar": 47
+      },
+      "revId": "e9074c2c26752f7807e8d2d42eef428a1e47f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
