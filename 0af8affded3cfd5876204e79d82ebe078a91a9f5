@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "da6cabba_cbc28b41",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-19T19:15:53Z",
+      "side": 1,
+      "message": "Yeah, binary blobs would be handy. Okay.",
+      "parentUuid": "da6cabba_306e113f",
+      "revId": "0af8affded3cfd5876204e79d82ebe078a91a9f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6cabba_95c27740",
         "filename": "common/nvmem_vars.c",
         "patchSetId": 3
