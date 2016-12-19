@@ -22,6 +22,24 @@
       "revId": "5fb1319abbd08120fd3c59102c27345a16e4d9a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_4df50d62",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-19T23:44:27Z",
+      "side": 1,
+      "message": "The fix I had for this is in the follow up CL -  (CL:421491).",
+      "parentUuid": "da6cabba_e89d97a5",
+      "revId": "5fb1319abbd08120fd3c59102c27345a16e4d9a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
