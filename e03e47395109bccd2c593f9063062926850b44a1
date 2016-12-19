@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7180671_f315f003",
+        "filename": "board/poppy/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-12-19T17:43:22Z",
+      "side": 1,
+      "message": "Probably wrong, not sure what battery we\u0027ll use.",
+      "revId": "e03e47395109bccd2c593f9063062926850b44a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f71b4a68_142cd4c3",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-12-19T17:43:22Z",
+      "side": 1,
+      "message": "Should add a TODO here.",
+      "revId": "e03e47395109bccd2c593f9063062926850b44a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f71b4a68_54324c23",
+        "filename": "board/poppy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-12-19T17:43:22Z",
+      "side": 1,
+      "message": "This is my main concern. I\u0027m not sure how to read the VBUS voltage on Poppy. ISL charger does not implement the required function (at least its current driver does not), and I don\u0027t think we have a pin to the EC that can do that.",
+      "revId": "e03e47395109bccd2c593f9063062926850b44a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1728de81_0dfe11f4",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-12-19T17:43:22Z",
+      "side": 1,
+      "message": "Drop this and the other ones that are commented out.",
+      "revId": "e03e47395109bccd2c593f9063062926850b44a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7180671_b31f7820",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2016-12-19T17:43:22Z",
+      "side": 1,
+      "message": "Is this correct? There is no \"PGOOD\" in the schematics.",
+      "revId": "e03e47395109bccd2c593f9063062926850b44a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
