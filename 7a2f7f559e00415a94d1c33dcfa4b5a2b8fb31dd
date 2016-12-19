@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7a83bf87_a39104a4",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-12-19T12:42:00Z",
+      "side": 1,
+      "message": "That was another Sony Battery\u0027s, (Lars)\nsee Issue.comment#13 for Electro\u0027s Sony battery config",
+      "parentUuid": "da6cabba_b55e9391",
+      "range": {
+        "startLine": 38,
+        "startChar": 31,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "7a2f7f559e00415a94d1c33dcfa4b5a2b8fb31dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6cabba_670d3a1a",
         "filename": "board/reef/battery.c",
         "patchSetId": 6
@@ -53,6 +77,48 @@
       "writtenOn": "2016-12-16T21:00:12Z",
       "side": 1,
       "message": "You\u0027re kicking the battery out of CONFIG_BATTERY_REVIVE_DISCONNECT state (battery still talks over i2c, but doesn\u0027t provide VBAT), right? Our typical way of getting the battery out of this state is to apply a precharge current (see common code in charge_state_v2).\n\nCan this register only be cleared with an i2c write on the Sony battery? If we had a similar universal method of kicking the battery out of disconnect, it would be much preferred to what we implement now in common code.\n\nAlso, I think you should check for safety fault before clearing this, as we do in battery_get_disconnect_state().",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 42
+      },
+      "revId": "7a2f7f559e00415a94d1c33dcfa4b5a2b8fb31dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a83bf87_8366c0ff",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-12-19T12:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da6cabba_670d3a1a",
+      "revId": "7a2f7f559e00415a94d1c33dcfa4b5a2b8fb31dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a83bf87_c3960899",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2016-12-19T12:42:00Z",
+      "side": 1,
+      "message": "This bit is supposed to be read only. I am not trying to clear it via I2C. Sony battery is not providing power because of B/I pin. It need some time to active battery \u0026 allow battery to provide power (Issue.comment#11).\n\nAlso, battery is not allowed to be precharge at that time (log attached at comment#12).\n\nThere might be some problem in battery_get_disconnect_state() since the function is writing some reserved bit (0x54 or 0x51) at Reg0x00. (comment#14)",
+      "parentUuid": "da6cabba_9c99c466",
       "range": {
         "startLine": 62,
         "startChar": 0,
