@@ -97,6 +97,29 @@ static const struct fast_charge_config fast_charge_config_cos4870_info = {
 	.vtg_high_limit_mV = 8000,
 };
 
+static const struct fast_charge_profile fast_charge_sonycorp_info[] = {
+	/* < 10C */
+	[TEMP_RANGE_0] = {
+		.temp_c = TEMPC_TENTHS_OF_DEG(9),
+		.curr_vtg_low_limit_mA = 1200,
+		.curr_vtg_high_limit_mA = 1200,
+	},
+
+	/* >= 10C */
+	[TEMP_RANGE_1] = {
+		.temp_c = TEMPC_TENTHS_OF_DEG(CHARGER_PROF_TEMP_C_LAST_RANGE),
+		.curr_vtg_low_limit_mA = 3300,
+		.curr_vtg_high_limit_mA = 3300,
+	},
+};
+
+static const struct fast_charge_config fast_charge_config_sonycorp_info = {
+	.total_temp_ranges = ARRAY_SIZE(fast_charge_sonycorp_info),
+	.default_temp_range_profile = TEMP_RANGE_1,
+	.vtg_low_limit_mV = 8000,
+	.vtg_high_limit_mV = 8000,
+};
+
 static int batt_smp_cos4870_init(void)
 {
 	int batt_status;
@@ -119,16 +142,12 @@ static const struct board_batt_params info[] = {
 		.ship_mode_data = 0xC574,
 		.batt_init = batt_sony_corp_init,
 
-		/*
-		 * Add fast charging params info for BQ40z555
-		 * (TODO: crosbug.com/p/59904)
-		 */
+		/* Fast charging params info for BQ40Z555 */
 		.fast_chg_params = {
-			.chg_profile_info = fast_charge_cos4870_info,
-			.chg_config_info = &fast_charge_config_cos4870_info,
+			.chg_profile_info = &fast_charge_sonycorp_info[0],
+			.chg_config_info = &fast_charge_config_sonycorp_info,
 		},
 
-		/* Battery info for BQ40z555 (TODO: crosbug.com/p/59904) */
 		.batt_info = {
 			.voltage_max = 8700,	/* mV */
 			.voltage_normal = 7600,
@@ -141,11 +160,11 @@ static const struct board_batt_params info[] = {
 			.voltage_min = 6100,
 			.precharge_current = 256,	/* mA */
 			.start_charging_min_c = 0,
-			.start_charging_max_c = 46,
+			.start_charging_max_c = 50,
 			.charging_min_c = 0,
-			.charging_max_c = 45,
-			.discharging_min_c = 0,
-			.discharging_max_c = 60,
+			.charging_max_c = 60,
+			.discharging_min_c = -20,
+			.discharging_max_c = 75,
 		},
 	},
 
