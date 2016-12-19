@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_ced8d982",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-19T19:52:51Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we always be ensuring we\u0027re setting this value? It seems now this is the only place we\u0027re doing that aside from GPIO initialization?",
+      "revId": "fc692662c94de414b2d4b5632f4672c1848d11a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_2e8ced89",
+        "filename": "chip/g/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-19T19:52:51Z",
+      "side": 1,
+      "message": "There\u0027s no point in passing these uninitialized variables to curre_timage_is_new function. Unless of course you wanted them filled in. In that case you need \n\ncurrent_image_is_newer(struct SignedHeader **me, struct SignedHeader **other)",
+      "revId": "fc692662c94de414b2d4b5632f4672c1848d11a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6cabba_4e91299e",
+        "filename": "chip/g/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-19T19:52:51Z",
+      "side": 1,
+      "message": "These variables are not initialized.",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 33
+      },
+      "revId": "fc692662c94de414b2d4b5632f4672c1848d11a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
