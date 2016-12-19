@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cabba_b9cda54b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-12-19T20:21:09Z",
+      "side": 1,
+      "message": "This function name is already being changed in https://chromium-review.googlesource.com/#/c/422081/, so I didn\u0027t bother changing it here. I moved the call from system_pre_init() because I needed the HW timers to be working for the udelay() calls.",
+      "range": {
+        "startLine": 868,
+        "startChar": 5,
+        "endLine": 868,
+        "endChar": 33
+      },
+      "revId": "bbe135619bbd756dce582679d687eee976bb1b52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
