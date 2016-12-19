@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "da6cabba_f41ba498",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-19T21:51:19Z",
+      "side": 1,
+      "message": "I\u0027d move this down with CONFIG_HOST_COMMAND_STATUS in optional features",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "e9074c2c26752f7807e8d2d42eef428a1e47f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6cabba_069e3fa1",
         "filename": "common/host_command.c",
         "patchSetId": 2
