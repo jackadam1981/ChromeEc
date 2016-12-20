@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_c9c0083c",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T21:42:14Z",
+      "side": 1,
+      "message": "okay thank you for the correction. I will remove the pointer and make  it a variable.",
+      "parentUuid": "57b7b6b5_4692c7a5",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_bc107570",
         "filename": "board/reef/battery.c",
         "patchSetId": 8
@@ -603,6 +621,24 @@
       "side": 1,
       "message": "If size was included in fast_charge_params then you could use a for loop.\n\nfor (i \u003d 0; i \u003c array_size \u0026\u0026 entry !\u003d NULL; i++)\n   do work here.",
       "parentUuid": "57b7b6b5_c6323704",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_49ae587f",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T21:42:14Z",
+      "side": 1,
+      "message": "okay, I will pass the size in function parameters",
+      "parentUuid": "57b7b6b5_66a58bec",
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
