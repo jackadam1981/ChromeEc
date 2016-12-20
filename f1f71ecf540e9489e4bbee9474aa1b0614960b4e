@@ -330,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_24e8ebf5",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-20T22:29:46Z",
+      "side": 1,
+      "message": "I don\u0027t care if they are macros or functions and how they are called, but macro names should be capitalized and function names should not be capitalized.",
+      "parentUuid": "57b7b6b5_a4fcdbbd",
+      "range": {
+        "startLine": 229,
+        "startChar": 15,
+        "endLine": 229,
+        "endChar": 18
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_040a8744",
         "filename": "common/nvmem_vars.c",
         "patchSetId": 6
