@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_7a72f804",
+        "filename": "board/servo_v4/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-12-20T23:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57b7b6b5_3f41d2aa",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 3
+      },
+      "revId": "7941ff8f03ba8d250669669dc2413505973be249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_9ffa3e50",
         "filename": "board/servo_v4/ec.tasklist",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-12-20T22:51:42Z",
       "side": 1,
       "message": "Suggest to invert this order, to follow our other boards.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 72
+      },
+      "revId": "7941ff8f03ba8d250669669dc2413505973be249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_5a813498",
+        "filename": "board/servo_v4/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-12-20T23:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57b7b6b5_9ffa3e50",
       "range": {
         "startLine": 21,
         "startChar": 0,
