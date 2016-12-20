@@ -16,6 +16,52 @@
       "revId": "0262b87c84050cba627c0823546e2e5d27e9faa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_f6b60eda",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-12-20T07:22:43Z",
+      "side": 1,
+      "message": "I believe this flag stands for v2 support, although the coreboot function is named google_chromeec_command_v1().",
+      "range": {
+        "startLine": 925,
+        "startChar": 3,
+        "endLine": 925,
+        "endChar": 40
+      },
+      "revId": "0262b87c84050cba627c0823546e2e5d27e9faa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_9611d206",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2016-12-20T07:22:43Z",
+      "side": 1,
+      "message": "I believe this bit mask stands for v2 support also.",
+      "range": {
+        "startLine": 1057,
+        "startChar": 24,
+        "endLine": 1057,
+        "endChar": 35
+      },
+      "revId": "0262b87c84050cba627c0823546e2e5d27e9faa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
