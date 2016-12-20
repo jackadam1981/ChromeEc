@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "778bdae0_a01ffa1f",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-12-20T07:43:05Z",
+      "side": 1,
+      "message": "I checked the lpc driver in mec1322. It only supports v3 but still has this flag. Do I miss something?",
+      "parentUuid": "778bdae0_6022526f",
+      "range": {
+        "startLine": 925,
+        "startChar": 3,
+        "endLine": 925,
+        "endChar": 40
+      },
+      "revId": "0262b87c84050cba627c0823546e2e5d27e9faa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_9611d206",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 1
