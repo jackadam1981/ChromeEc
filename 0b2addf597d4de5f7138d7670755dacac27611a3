@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_262793e5",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T20:09:32Z",
+      "side": 1,
+      "message": "we set prev_chg_profile_info in charger_profile_override.c @52 to current value. if we have bad reading from the battery we take these previous profile info",
+      "parentUuid": "57b7b6b5_30458917",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_bc107570",
         "filename": "board/reef/battery.c",
         "patchSetId": 8
@@ -213,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_86a0bf2c",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T20:09:32Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "57b7b6b5_b038998c",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_fc510d26",
         "filename": "board/reef/battery.c",
         "patchSetId": 8
@@ -260,6 +296,24 @@
       "side": 1,
       "message": "Something to think about. I think it could be helpful.",
       "parentUuid": "57b7b6b5_9c11f106",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_e68e5bc0",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T20:09:32Z",
+      "side": 1,
+      "message": "Okay added crosbug.com/p/61173",
+      "parentUuid": "57b7b6b5_70f461af",
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -354,6 +408,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_068ccfc5",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T20:09:32Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "57b7b6b5_10ee45d4",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_9c80114c",
         "filename": "common/charger_profile_override.c",
         "patchSetId": 8
@@ -383,6 +455,47 @@
       "side": 1,
       "message": "Yes. I will put it in the structure so that it is more generic.",
       "parentUuid": "57b7b6b5_9c80114c",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_4625e7d0",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T20:09:32Z",
+      "side": 1,
+      "message": "As we made changes @61 we can make this local variable.",
+      "parentUuid": "57b7b6b5_7cb43dce",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_66ffcbf3",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T20:09:32Z",
+      "side": 1,
+      "message": "I will plan to keep it local to avoid making the charge profile non cosnt. If we plan to support multiple batteries we can pass batt index and make this an array.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 30
+      },
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -442,6 +555,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_c6323704",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T20:09:32Z",
+      "side": 1,
+      "message": "okay, I will add a variable to see if we entered if condition, depending on that I will return error.",
+      "parentUuid": "57b7b6b5_30a90976",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_bc64f5fa",
         "filename": "common/charger_profile_override.c",
         "patchSetId": 8
@@ -489,6 +620,24 @@
       "side": 1,
       "message": "Yes, and if it\u0027s type is correct then there is no cast needed.",
       "parentUuid": "57b7b6b5_d05e6d5b",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_a6ece34a",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T20:09:32Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "57b7b6b5_b09c1955",
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
