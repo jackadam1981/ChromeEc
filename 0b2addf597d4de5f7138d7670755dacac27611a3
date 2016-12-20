@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_30458917",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T19:05:24Z",
+      "side": 1,
+      "message": "But prev_chg_profile_info is only set in board_get_battery_type() which is the default value based on battery type. It\u0027s not \u0027previous\u0027. If you want it to be the prev you have to know what the previous selection was in charger_profile_override.c. That information is not provided out of the charger_profile_override_common() function.",
+      "parentUuid": "57b7b6b5_1c73c18e",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_bc107570",
         "filename": "board/reef/battery.c",
         "patchSetId": 8
@@ -177,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_b038998c",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T19:05:24Z",
+      "side": 1,
+      "message": "ok. \u0026array[0]. But that\u0027s my personal preference.",
+      "parentUuid": "57b7b6b5_fc3b4d87",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_fc510d26",
         "filename": "board/reef/battery.c",
         "patchSetId": 8
@@ -206,6 +242,24 @@
       "side": 1,
       "message": "okay I will club them in a separate CL",
       "parentUuid": "57b7b6b5_fc510d26",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_70f461af",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T19:05:24Z",
+      "side": 1,
+      "message": "Something to think about. I think it could be helpful.",
+      "parentUuid": "57b7b6b5_9c11f106",
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -282,6 +336,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_10ee45d4",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T19:05:24Z",
+      "side": 1,
+      "message": "You can reassign a const type * pointer.",
+      "parentUuid": "57b7b6b5_9cc33147",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_9c80114c",
         "filename": "common/charger_profile_override.c",
         "patchSetId": 8
@@ -352,6 +424,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_30a90976",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T19:05:24Z",
+      "side": 1,
+      "message": "So you do allow it being NULL. However, I\u0027m still concerned about relying on temp_c bounding the entries. I think a size of the array is important.",
+      "parentUuid": "57b7b6b5_1055e539",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_bc64f5fa",
         "filename": "common/charger_profile_override.c",
         "patchSetId": 8
@@ -381,6 +471,24 @@
       "side": 1,
       "message": "we are pointing a const",
       "parentUuid": "57b7b6b5_bc64f5fa",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_b09c1955",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T19:05:24Z",
+      "side": 1,
+      "message": "Yes, and if it\u0027s type is correct then there is no cast needed.",
+      "parentUuid": "57b7b6b5_d05e6d5b",
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
