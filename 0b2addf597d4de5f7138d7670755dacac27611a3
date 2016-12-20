@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_1c73c18e",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "if curr-\u003ebatt.flags \u0026 BATT_FLAG_BAD_VOLTAGE, @61 charger_profile_override.c we select the previous profile",
+      "parentUuid": "57b7b6b5_9c13317d",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_bc107570",
         "filename": "board/reef/battery.c",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2016-12-20T17:24:24Z",
       "side": 1,
       "message": "These aren\u0027t even floats. Sounds like temp_c is in 10ths of degrees?",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_3c780566",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "okay I will make it TEMPC_TENTHS_OF_DEG",
+      "parentUuid": "57b7b6b5_bc107570",
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_dc152904",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "Okay I will add\n#define CHARGER_PROFILE_TEMP_C_LAST_RANGE 0xFFFF",
+      "parentUuid": "57b7b6b5_bce9553a",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_9cd9f185",
         "filename": "board/reef/battery.c",
         "patchSetId": 8
@@ -64,6 +118,24 @@
       "writtenOn": "2016-12-20T17:24:24Z",
       "side": 1,
       "message": "This 2 is an index into fast_charge_cos4870_info it seems. You should add [0] \u003d { } initializers in the above. And/Or just change this type to be a const struct fast_charge_profile *. You can point directly to the default. A bare 2 doesn\u0027t help in understanding what this means. The field could also be named a little better. default_temp_range_profile or something like that.",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_7c50bdd5",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "okay I will change it",
+      "parentUuid": "57b7b6b5_9cd9f185",
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_fc3b4d87",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "this is array",
+      "parentUuid": "57b7b6b5_7c467d76",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_fc510d26",
         "filename": "board/reef/battery.c",
         "patchSetId": 8
@@ -98,6 +188,24 @@
       "writtenOn": "2016-12-20T17:24:24Z",
       "side": 1,
       "message": "Duplicating batt_info is taking up space as well. This batt_info is the same as the sony one above. Separate CL, but we\u0027re duplicating all kinds of things.",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_9c11f106",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "okay I will club them in a separate CL",
+      "parentUuid": "57b7b6b5_fc510d26",
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_7ce2fded",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "okay I will club them in a separate CL",
+      "parentUuid": "57b7b6b5_5c6a99cd",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_1c7421ac",
         "filename": "board/reef/battery.c",
         "patchSetId": 8
@@ -132,6 +258,24 @@
       "writtenOn": "2016-12-20T17:24:24Z",
       "side": 1,
       "message": "Why is this being casted? So you can reference it with a non-const type? If we were XIP we wouldn\u0027t be able to modify these const structures. They\u0027d live in flash.",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_9cc33147",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "this is a pointer to const which keeps changing. We don\u0027t modify the const value",
+      "parentUuid": "57b7b6b5_1c7421ac",
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_7cb43dce",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "Yes. I will put it in the structure so that it is more generic.",
+      "parentUuid": "57b7b6b5_9c80114c",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_3c9245a5",
         "filename": "common/charger_profile_override.c",
         "patchSetId": 8
@@ -166,6 +328,24 @@
       "writtenOn": "2016-12-20T17:24:24Z",
       "side": 1,
       "message": "Do you handle fast_chg_params-\u003echg_profile_info being NULL? You are assuming you can iterate through an array that always is bounded by the temp_c field. I don\u0027t think it\u0027s a very safe assumption.",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_1055e539",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "fast_chg_params-\u003echg_profile_info, This is not an array hence unless we assign NULL in the info[] we don\u0027t get exceed array.",
+      "parentUuid": "57b7b6b5_3c9245a5",
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_d05e6d5b",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "we are pointing a const",
+      "parentUuid": "57b7b6b5_bc64f5fa",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_dccf69bb",
         "filename": "common/charger_profile_override.c",
         "patchSetId": 8
@@ -200,6 +398,24 @@
       "writtenOn": "2016-12-20T17:24:24Z",
       "side": 1,
       "message": "And honor the voltage range as well.\n\nIs there any reason not to just do thsi?\n\nbatt_voltage \u003d FLAG_BAD_VOLTAGE ? prev_batt_voltage : curr-\u003ebatt.voltage;\n\nThen unconditionally set voltage_range like in the else block below.\n\nThen set:\n\nprev_batt_voltage \u003d batt_voltage;",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_f0f29126",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "sounds good, nice catch I will change it.",
+      "parentUuid": "57b7b6b5_dccf69bb",
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -223,6 +439,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_9046b573",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "okay I will make it TEMPC_TENTHS_OF_DEG",
+      "parentUuid": "57b7b6b5_bc37150c",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_9cec914b",
         "filename": "include/charger_profile_override.h",
         "patchSetId": 8
@@ -234,6 +468,24 @@
       "writtenOn": "2016-12-20T17:24:24Z",
       "side": 1,
       "message": "But not really. Actually in 10ths of a degree C?",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_f054d118",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "okay I will add proper comment",
+      "parentUuid": "57b7b6b5_9cec914b",
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -257,6 +509,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_3074a9ac",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "This is inclusive. This is current at higher battery voltage, I will make the variable as\ncurr_vtg_low_limit_mA;\ncurr_vtg_high_limit_mA;",
+      "parentUuid": "57b7b6b5_1cf9810b",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_dcf20927",
         "filename": "include/charger_profile_override.h",
         "patchSetId": 8
@@ -268,6 +538,24 @@
       "writtenOn": "2016-12-20T17:24:24Z",
       "side": 1,
       "message": "What is \u0027high\u0027 vs \u0027low\u0027 voltage? Does that correspond with vtg_low_limit and vtg_high_limit? Also, why is current high prior to current low in this strut, but voltage low comes before voltage high in the following struct.",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_1084055f",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "This is current at higher battery voltage \u0026 lower battery voltage limit. I will correct the order.",
+      "parentUuid": "57b7b6b5_dcf20927",
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -291,6 +579,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_f0b8510f",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "yes, I will change to mA \u0026 mV for respective variables",
+      "parentUuid": "57b7b6b5_1c9f419e",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_5c18598d",
         "filename": "include/charger_profile_override.h",
         "patchSetId": 8
@@ -302,6 +608,24 @@
       "writtenOn": "2016-12-20T17:24:24Z",
       "side": 1,
       "message": "Where\u0027s this named enum being used?",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_90c1d595",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "used in charger_profile_override.c",
+      "parentUuid": "57b7b6b5_5c18598d",
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -325,6 +649,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_30c6e9ac",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "57b7b6b5_dc2be992",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_dc5d2933",
         "filename": "include/charger_profile_override.h",
         "patchSetId": 8
@@ -336,6 +678,24 @@
       "writtenOn": "2016-12-20T17:24:24Z",
       "side": 1,
       "message": "Why is this prev not marked const?",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_70a541ec",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:49:46Z",
+      "side": 1,
+      "message": "we are pointing to the previous profile which varies",
+      "parentUuid": "57b7b6b5_dc5d2933",
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
