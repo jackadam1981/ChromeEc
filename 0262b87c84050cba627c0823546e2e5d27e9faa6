@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "778bdae0_00ffc6b6",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-12-20T06:13:06Z",
+      "side": 1,
+      "message": "In case host read wrong response package, we should clear processing bit after the package is ready.",
+      "revId": "0262b87c84050cba627c0823546e2e5d27e9faa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
