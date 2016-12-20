@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57b7b6b5_c49c6f56",
+        "filename": "board/servo_v4/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-20T22:44:34Z",
+      "side": 1,
+      "message": "This is fine if you\u0027re not protecting RO, but why do you need both an RO and an RW? You can use a single image only and double your flash space.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "78b1d4c3c2f49a153851475325da501de5ae2262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_7fbaeaa3",
+        "filename": "extra/usb_updater/servo_v4.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-20T22:44:34Z",
+      "side": 1,
+      "message": "Why is this needed? The PSTATE region doesn\u0027t exist anymore.",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "78b1d4c3c2f49a153851475325da501de5ae2262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
