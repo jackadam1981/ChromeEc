@@ -162,6 +162,30 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_30682931",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-20T18:16:37Z",
+      "side": 1,
+      "message": "All AP drivers check the EC_HOST_CMD_FLAG_VERSION_3 bit first, so the EC_HOST_CMD_FLAG_LPC_ARGS_SUPPORTED flag is only used as a fallback to indicate version 2 support.\n\nI don\u0027t remember what the original intent was, but it doesn\u0027t seem to matter now for EC which support version 3.",
+      "parentUuid": "778bdae0_03ab5054",
+      "range": {
+        "startLine": 925,
+        "startChar": 3,
+        "endLine": 925,
+        "endChar": 40
+      },
+      "revId": "0262b87c84050cba627c0823546e2e5d27e9faa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_9611d206",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 1
