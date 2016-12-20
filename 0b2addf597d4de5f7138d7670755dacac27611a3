@@ -699,6 +699,24 @@
       "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_50783d66",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-20T18:53:18Z",
+      "side": 1,
+      "message": "correction: I will make it as cosnt so that we can point to const also",
+      "parentUuid": "57b7b6b5_70a541ec",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
