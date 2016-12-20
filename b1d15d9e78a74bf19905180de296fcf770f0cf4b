@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_047cc720",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T21:52:46Z",
+      "side": 1,
+      "message": "Please be more explicit in the commit description about this being related to the host\u0027s and EC\u0027s firmware WP signal.",
+      "parentUuid": "57b7b6b5_c6e797f5",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 36
+      },
+      "revId": "b1d15d9e78a74bf19905180de296fcf770f0cf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_7350ebee",
         "filename": "board/cr50/scratch_reg1.h",
         "patchSetId": 7
@@ -113,6 +137,24 @@
       "side": 1,
       "message": "the idea is that the \"wp asserted\" state has higher priority, so in case something happens between lines 28 and 29, the next boot will make sure that the system comes up with WP asserted.\n\nOn the deassertion path I think it is better to first set the RBOX state and then the bit in the bitmask, so that if something happens betweek lines 31 and 32, the device comes back with writes disabled.\n\nThis all is fairely moot, because on resets/panics we don\u0027t care of these, but just in case.\n\nDoes this make sense, do you think a comment is needed?",
       "parentUuid": "57b7b6b5_c6ba376b",
+      "revId": "b1d15d9e78a74bf19905180de296fcf770f0cf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_24a22b81",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T21:52:46Z",
+      "side": 1,
+      "message": "It makes sense, but as you mentioned about handling the reset case I\u0027m not sure the asymmetry is worth it. Setting the flag for assertion first makes sense, but I don\u0027t think it matters what order deassertion takes place. To that end I\u0027d set scratch register first like the assertion path.",
+      "parentUuid": "57b7b6b5_69ba3ca4",
       "revId": "b1d15d9e78a74bf19905180de296fcf770f0cf4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -189,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_a4bffb90",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T21:52:46Z",
+      "side": 1,
+      "message": "I was just meaning we\u0027re enabling and disabling writes to the long life scratch register a whole bunch of times. It\u0027s not a big deal.",
+      "parentUuid": "57b7b6b5_29dd24fc",
+      "revId": "b1d15d9e78a74bf19905180de296fcf770f0cf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_e665fb39",
         "filename": "chip/g/system.c",
         "patchSetId": 7
@@ -253,6 +313,24 @@
       "side": 1,
       "message": "current_image_is_newer() is called on the init hook context, and system_process_retry_counter is called on the task context after the AP boots the kernel.\n\nDo you think a comment somewhere is needed?",
       "parentUuid": "57b7b6b5_a68863b2",
+      "revId": "b1d15d9e78a74bf19905180de296fcf770f0cf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_646d8340",
+        "filename": "chip/g/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T21:52:46Z",
+      "side": 1,
+      "message": "That\u0027s a pretty big implicit assumption of ordering. It\u0027d be better if there was no assumption and you ensured other_image made sense -- or get rid of it entirely and just pass a pointer into curreng_image_is_newer() to get the other image. You could just call it here again. It shouldn\u0027t be an issue, and there\u0027s no longer any assumptions that can be broken with ordering if something changes in the future.\n\n\nint current_image_is_newer(struct SignedHeader **other_image)\n{\n   ...\n\n   if (other_image !\u003d NULL)\n    *other_image \u003d other;\n   return 0;\n}\n\nint system_rollback_detected(void)\n{\n  return !!current_image_is_newer(NULL);\n}\n\nint system process_retry_counter(void)\n{\n  struct SignedHeader *other_image;\n  \n  ...\n \n  if (current_image_is_newer(\u0026other_image)) {\n     ...\n  }\n  corrupt_header(other_image);\n}",
+      "parentUuid": "57b7b6b5_091dc0d8",
       "revId": "b1d15d9e78a74bf19905180de296fcf770f0cf4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
