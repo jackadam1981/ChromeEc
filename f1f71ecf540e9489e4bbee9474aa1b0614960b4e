@@ -235,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_e47df383",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-20T22:25:49Z",
+      "side": 1,
+      "message": "No, because initvars() ensures that all the existing tuples are valid and that there\u0027s a terminating 0 at the end.",
+      "parentUuid": "57b7b6b5_a4a5bb55",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 64
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_243eabea",
         "filename": "common/nvmem_vars.c",
         "patchSetId": 6
@@ -258,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_24b6ab23",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-20T22:25:49Z",
+      "side": 1,
+      "message": "I considered making them macros. Happy to change the names, though. I suppose I could also make the struct tuple into an opaque handle and add additional functions for key_len and val_len, but that seemed a bit of overkill. \n\nSuggestions?",
+      "parentUuid": "57b7b6b5_243eabea",
+      "range": {
+        "startLine": 229,
+        "startChar": 15,
+        "endLine": 229,
+        "endChar": 18
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_040a8744",
         "filename": "common/nvmem_vars.c",
         "patchSetId": 6
@@ -269,6 +317,30 @@
       "writtenOn": "2016-12-20T22:16:24Z",
       "side": 1,
       "message": "that is passing an empty value means \u0027delete\u0027?",
+      "range": {
+        "startLine": 289,
+        "startChar": 4,
+        "endLine": 289,
+        "endChar": 43
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_840e771b",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-20T22:25:49Z",
+      "side": 1,
+      "message": "Yes, as described in nvmem_vars.h",
+      "parentUuid": "57b7b6b5_040a8744",
       "range": {
         "startLine": 289,
         "startChar": 4,
