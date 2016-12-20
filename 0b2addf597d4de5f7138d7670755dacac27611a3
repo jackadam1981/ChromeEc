@@ -1,0 +1,344 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57b7b6b5_9c13317d",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "For what purpose? Also, it doesn\u0027t really seem like it\u0027s \u0027previous\u0027 anything. It seems like it\u0027s always the default fast_charge_profile temp range for a given battery.",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_bc107570",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "These aren\u0027t even floats. Sounds like temp_c is in 10ths of degrees?",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_bce9553a",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "Why not provide a common name that is the entirety of the upper end instead of encoding it yourself?",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_9cd9f185",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "This 2 is an index into fast_charge_cos4870_info it seems. You should add [0] \u003d { } initializers in the above. And/Or just change this type to be a const struct fast_charge_profile *. You can point directly to the default. A bare 2 doesn\u0027t help in understanding what this means. The field could also be named a little better. default_temp_range_profile or something like that.",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_7c467d76",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "Why is this not \u0026fast_charge_cos4870_info?",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_fc510d26",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "Duplicating batt_info is taking up space as well. This batt_info is the same as the sony one above. Separate CL, but we\u0027re duplicating all kinds of things.",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_5c6a99cd",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "And this battery and one previous have the same batt_info. In fact the *only* thing different in these 2 entries is the manuf_name.",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_1c7421ac",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "Why is this being casted? So you can reference it with a non-const type? If we were XIP we wouldn\u0027t be able to modify these const structures. They\u0027d live in flash.",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_9c80114c",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "This only allows the function to operate on one battery. Is there a reason not have a struct keeping track of prev_batt_voltage and voltage_range?",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_3c9245a5",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "Do you handle fast_chg_params-\u003echg_profile_info being NULL? You are assuming you can iterate through an array that always is bounded by the temp_c field. I don\u0027t think it\u0027s a very safe assumption.",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_bc64f5fa",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "Again, there\u0027s no need to cast if you are using the right type.",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_dccf69bb",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "And honor the voltage range as well.\n\nIs there any reason not to just do thsi?\n\nbatt_voltage \u003d FLAG_BAD_VOLTAGE ? prev_batt_voltage : curr-\u003ebatt.voltage;\n\nThen unconditionally set voltage_range like in the else block below.\n\nThen set:\n\nprev_batt_voltage \u003d batt_voltage;",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_bc37150c",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "What makes this an int? If you wanted to ensure it\u0027s an int you should return an int. Why not just make this an inline function with the proper types?",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_9cec914b",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "But not really. Actually in 10ths of a degree C?",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_1cf9810b",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "Is this exclusive or inclusive? Code looks to be inclusive. And it\u0027s the upper end of the threshold range.",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_dcf20927",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "What is \u0027high\u0027 vs \u0027low\u0027 voltage? Does that correspond with vtg_low_limit and vtg_high_limit? Also, why is current high prior to current low in this strut, but voltage low comes before voltage high in the following struct.",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_1c9f419e",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "These are in mA ?",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_5c18598d",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "Where\u0027s this named enum being used?",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_dc2be992",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "The code seems to assume the last entry is all encompassing of every temperature. Is that how you ensure you don\u0027t access entries out of bounds?",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_dc5d2933",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T17:24:24Z",
+      "side": 1,
+      "message": "Why is this prev not marked const?",
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
