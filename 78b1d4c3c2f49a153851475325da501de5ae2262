@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_9a4c8ce4",
+        "filename": "board/servo_v4/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-12-20T23:15:36Z",
+      "side": 1,
+      "message": "Currently, I\u0027m trying to preserve the functionality of the update method \u0027/extra/usb_updater/fw_update.py -b servo_v4.json \u0027 This script overwrites either the RO or RW part of the flash. I created the issue 61170 to track this problem as more complete solution will be needed.",
+      "parentUuid": "57b7b6b5_c49c6f56",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "78b1d4c3c2f49a153851475325da501de5ae2262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_7fbaeaa3",
         "filename": "extra/usb_updater/servo_v4.json",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-12-20T22:44:34Z",
       "side": 1,
       "message": "Why is this needed? The PSTATE region doesn\u0027t exist anymore.",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "78b1d4c3c2f49a153851475325da501de5ae2262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_3aaa4023",
+        "filename": "extra/usb_updater/servo_v4.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2016-12-20T23:15:36Z",
+      "side": 1,
+      "message": "I was assuming the update script still needed a PSTATE entry, but that assumption was incorrect. I have verified that removing this entry doesn\u0027t affect the update script.",
+      "parentUuid": "57b7b6b5_7fbaeaa3",
       "range": {
         "startLine": 11,
         "startChar": 4,
