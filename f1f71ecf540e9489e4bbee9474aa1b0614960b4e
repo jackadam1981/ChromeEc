@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57b7b6b5_a99ef43a",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-20T21:21:17Z",
+      "side": 1,
+      "message": "Update?",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 34
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_c99b284a",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-20T21:21:17Z",
+      "side": 1,
+      "message": "Alphabetize?",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_69479cc2",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-20T21:21:17Z",
+      "side": 1,
+      "message": "!diffs?",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_e9570c42",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-20T21:21:17Z",
+      "side": 1,
+      "message": "If there isn\u0027t a local copy already, then there\u0027s nothing to write.  Could we leave early in that case?",
+      "range": {
+        "startLine": 326,
+        "startChar": 1,
+        "endLine": 326,
+        "endChar": 27
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_294e84b3",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-20T21:21:17Z",
+      "side": 1,
+      "message": "Seems like we could keep the local copy around as a cache, so we don\u0027t waste time re-reading it on the next load.",
+      "range": {
+        "startLine": 340,
+        "startChar": 1,
+        "endLine": 340,
+        "endChar": 22
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_492c18c5",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-20T21:21:17Z",
+      "side": 1,
+      "message": "This should work: ccprintf(\"%*s\", blob_len, blob);\n\nBut maybe it\u0027s better to check if isprint(blob[i])) and ccprintf(\"\\\\x%02x\", blob[i]) if not, in which case you do need to print a char at a time.",
+      "range": {
+        "startLine": 353,
+        "startChar": 1,
+        "endLine": 354,
+        "endChar": 26
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_c937a80b",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-20T21:21:17Z",
+      "side": 1,
+      "message": "VAL(tuple)?",
+      "range": {
+        "startLine": 368,
+        "startChar": 12,
+        "endLine": 368,
+        "endChar": 41
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_2920c4c1",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-20T21:21:17Z",
+      "side": 1,
+      "message": "KEY(tuple)",
+      "range": {
+        "startLine": 412,
+        "startChar": 13,
+        "endLine": 412,
+        "endChar": 25
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_c9100872",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-20T21:21:17Z",
+      "side": 1,
+      "message": "VAL(tuple)",
+      "range": {
+        "startLine": 414,
+        "startChar": 13,
+        "endLine": 414,
+        "endChar": 42
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_c6355795",
+        "filename": "include/nvmem_vars.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-20T21:21:17Z",
+      "side": 1,
+      "message": "Do we have any guidance for what keys we\u0027d expect callers to use?  32-bit constants?  ASCIIZ strings?\n\nArbitrary binary blobs are wonderfully generic, but this seems like it\u0027ll lead to a lot of duplicated code where the callers do\n\n#define FOOKEY \"foo\"\nconst char key[] \u003d FOOKEY;\nt \u003d getvar(key, sizeof(key));\n\nwhere if we had a helper function the caller could just do:\n\nt \u003d getvar_s(FOOKEY);\n\nDo we want to maintain a list somewhere of keys in use, to avoid accidental collisions?",
+      "range": {
+        "startLine": 28,
+        "startChar": 22,
+        "endLine": 28,
+        "endChar": 68
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_2673138f",
+        "filename": "include/nvmem_vars.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-20T21:21:17Z",
+      "side": 1,
+      "message": "regions?",
+      "range": {
+        "startLine": 40,
+        "startChar": 18,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_86275f7c",
+        "filename": "include/nvmem_vars.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-20T21:21:17Z",
+      "side": 1,
+      "message": "tuple_key(), tuple_val()?\n\nIs it expected the caller will directly access key_len and val_len?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 41
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
