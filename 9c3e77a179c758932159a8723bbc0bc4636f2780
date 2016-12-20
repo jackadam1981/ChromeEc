@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "778bdae0_807756f2",
+        "filename": "board/elm/led_hana.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2016-12-20T02:36:14Z",
+      "side": 1,
+      "message": "/* Power Led Control\n * S0: White led always on\n * S5: White led always off\n * S3: off for AC out, 500ms off/3s on for AC in\n */",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 69
+      },
+      "revId": "9c3e77a179c758932159a8723bbc0bc4636f2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "778bdae0_207c4ad3",
+        "filename": "board/elm/led_hana.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2016-12-20T02:36:14Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 69
+      },
+      "revId": "9c3e77a179c758932159a8723bbc0bc4636f2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "778bdae0_60c9f212",
         "filename": "board/elm/led_hana.c",
         "patchSetId": 1
