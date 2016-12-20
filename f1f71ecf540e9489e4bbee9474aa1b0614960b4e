@@ -375,6 +375,30 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_e4d65354",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2016-12-20T22:25:33Z",
+      "side": 1,
+      "message": "Well, until we implement per-variable per-boot locking.  Then we\u0027ll need to keep the variables around, so that we know whether they\u0027ve been locked this boot or not.",
+      "parentUuid": "57b7b6b5_64810399",
+      "range": {
+        "startLine": 340,
+        "startChar": 1,
+        "endLine": 340,
+        "endChar": 22
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_492c18c5",
         "filename": "common/nvmem_vars.c",
         "patchSetId": 6
