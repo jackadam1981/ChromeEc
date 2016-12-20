@@ -147,23 +147,64 @@ const char *system_get_chip_name(void)
 	return "cr50";
 }
 
+/*
+ * There are three versions of B2 H1s outhere in the wild so far: chromebook,
+ * poppy and detouchable. The following registers are different in those
+ * three versions in the following way:
+ *
+ *   register                chromebook          poppy    detouchable
+ *--------------------------------------------------------------------
+ * RBOX_KEY_COMBO0_VAL          0xc0             0x80        0xc0
+ * RBOX_POL_KEY1_IN             0x01             0x00        0x00
+ * RBOX_KEY_COMBO0_HOLD         0x00             0x00        0x59
+ */
+
+const struct {
+	uint32_t  register_values;
+	const char *chip_revision;
+} rev_map[] = {
+	{0xc00100, "B2-C"},	/* Chromebook. */
+	{0x800000, "B2-P"},	/* Poppy (a one off actually). */
+	{0xc00059, "B2-D"},	/* Detouchable. */
+};
+static const char *revision_str;
+
 const char *system_get_chip_revision(void)
 {
 	int build_date = GR_SWDP_BUILD_DATE;
 	int build_time = GR_SWDP_BUILD_TIME;
+	uint32_t register_vals;
+	int i;
+
+	if (revision_str)
+		return revision_str;
 
 	if ((build_date != GC_SWDP_BUILD_DATE_DEFAULT) ||
-	    (build_time != GC_SWDP_BUILD_TIME_DEFAULT))
-		return " BUILD MISMATCH!";
+	    (build_time != GC_SWDP_BUILD_TIME_DEFAULT)) {
+		revision_str = " BUILD MISMATCH!";
+		return revision_str;
+	}
 
 	switch (GREAD_FIELD(PMU, CHIP_ID, REVISION)) {
 	case 3:
-		return "B1";
+		revision_str = "B1";
+		return revision_str;
 	case 4:
-		return "B2";
-	}
+		register_vals =
+			(GREAD_FIELD(FUSE, RBOX_KEY_COMBO0_VAL, VAL) << 16) |
+			(GREAD_FIELD(FUSE, RBOX_POL_KEY1_IN, VAL) << 8) |
+			GREAD_FIELD(FUSE, RBOX_KEY_COMBO0_HOLD, VAL);
 
-	return "B?";
+		for (i = 0; i < ARRAY_SIZE(rev_map); i++)
+			if (rev_map[i].register_values == register_vals) {
+				revision_str = rev_map[i].chip_revision;
+				return revision_str;
+			}
+		revision_str = "B2-?";
+		return revision_str;
+	}
+	revision_str = "B?";
+	return revision_str;
 }
 
 /* TODO(crosbug.com/p/33822): Where can we store stuff persistently? */
