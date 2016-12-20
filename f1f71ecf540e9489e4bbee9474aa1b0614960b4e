@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_24b1cb91",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-20T22:00:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57b7b6b5_a99ef43a",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 34
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_c99b284a",
         "filename": "common/nvmem_vars.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2016-12-20T21:21:17Z",
       "side": 1,
       "message": "Alphabetize?",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_e4bad36a",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-20T22:00:44Z",
+      "side": 1,
+      "message": "Done. Don\u0027t even need this except for TEST_BUILD, below.",
+      "parentUuid": "57b7b6b5_c99b284a",
       "range": {
         "startLine": 15,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_84c99715",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-20T22:00:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57b7b6b5_69479cc2",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_e9570c42",
         "filename": "common/nvmem_vars.c",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2016-12-20T21:21:17Z",
       "side": 1,
       "message": "If there isn\u0027t a local copy already, then there\u0027s nothing to write.  Could we leave early in that case?",
+      "range": {
+        "startLine": 326,
+        "startChar": 1,
+        "endLine": 326,
+        "endChar": 27
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_a4ce1b1a",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-20T22:00:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57b7b6b5_e9570c42",
       "range": {
         "startLine": 326,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_64810399",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-20T22:00:44Z",
+      "side": 1,
+      "message": "No..., the idea is that you do all your getvar()/setvar() first, then finally call writevars() when you\u0027re done. We\u0027d like to allocate the RAM only when needed and return it afterwards. We\u0027d only need to allocate it for setenv(), except for those systems that don\u0027t have memory-mapped flash.",
+      "parentUuid": "57b7b6b5_294e84b3",
+      "range": {
+        "startLine": 340,
+        "startChar": 1,
+        "endLine": 340,
+        "endChar": 22
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_492c18c5",
         "filename": "common/nvmem_vars.c",
         "patchSetId": 6
@@ -128,6 +248,30 @@
       "writtenOn": "2016-12-20T21:21:17Z",
       "side": 1,
       "message": "This should work: ccprintf(\"%*s\", blob_len, blob);\n\nBut maybe it\u0027s better to check if isprint(blob[i])) and ccprintf(\"\\\\x%02x\", blob[i]) if not, in which case you do need to print a char at a time.",
+      "range": {
+        "startLine": 353,
+        "startChar": 1,
+        "endLine": 354,
+        "endChar": 26
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_24630b36",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-20T22:00:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57b7b6b5_492c18c5",
       "range": {
         "startLine": 353,
         "startChar": 1,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_e46c1323",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-20T22:00:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57b7b6b5_c937a80b",
+      "range": {
+        "startLine": 368,
+        "startChar": 12,
+        "endLine": 368,
+        "endChar": 41
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_2920c4c1",
         "filename": "common/nvmem_vars.c",
         "patchSetId": 6
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_849bd701",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-20T22:00:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57b7b6b5_2920c4c1",
+      "range": {
+        "startLine": 412,
+        "startChar": 13,
+        "endLine": 412,
+        "endChar": 25
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_c9100872",
         "filename": "common/nvmem_vars.c",
         "patchSetId": 6
@@ -197,6 +389,30 @@
       "writtenOn": "2016-12-20T21:21:17Z",
       "side": 1,
       "message": "VAL(tuple)",
+      "range": {
+        "startLine": 414,
+        "startChar": 13,
+        "endLine": 414,
+        "endChar": 42
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_4495dfcb",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-20T22:00:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57b7b6b5_c9100872",
       "range": {
         "startLine": 414,
         "startChar": 13,
