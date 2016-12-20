@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57b7b6b5_73f78bdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T19:58:48Z",
+      "side": 1,
+      "message": "What\u0027s the origin of this? Is this referring to the conosle commands writing flash?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 36
+      },
+      "revId": "b1d15d9e78a74bf19905180de296fcf770f0cf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_7350ebee",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T19:58:48Z",
+      "side": 1,
+      "message": "Are 3 and 4 free? If so, it\u0027d be helpful to note that here.",
+      "revId": "b1d15d9e78a74bf19905180de296fcf770f0cf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_c6ba376b",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T19:58:48Z",
+      "side": 1,
+      "message": "Is there are a reason you are performing these register updates in an order that is different than the \u0027if (asserted)\u0027 case?",
+      "revId": "b1d15d9e78a74bf19905180de296fcf770f0cf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_06060f89",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T19:58:48Z",
+      "side": 1,
+      "message": "into? in?",
+      "revId": "b1d15d9e78a74bf19905180de296fcf770f0cf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_267c73d3",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T19:58:48Z",
+      "side": 1,
+      "message": "I assume you are ok with how we are always enabling and disabling the write enable through all these paths?",
+      "revId": "b1d15d9e78a74bf19905180de296fcf770f0cf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_e665fb39",
+        "filename": "chip/g/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T19:58:48Z",
+      "side": 1,
+      "message": "Why is this object exposed to other compilation units?",
+      "revId": "b1d15d9e78a74bf19905180de296fcf770f0cf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_a68863b2",
+        "filename": "chip/g/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-20T19:58:48Z",
+      "side": 1,
+      "message": "How are you ensuring the order of these functions is preserved such that !other_image actually has meaning (i.e. current_image_is_newer() was called before this function)?",
+      "revId": "b1d15d9e78a74bf19905180de296fcf770f0cf4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
