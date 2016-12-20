@@ -96,6 +96,75 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_448b9f02",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-20T22:16:24Z",
+      "side": 1,
+      "message": "which means any value in that byte will look valid. Instead of relying on zero in the end of the entries, I wonder if this is going to be more robust to include some simple checksum in every tuple and then not worry about the terminating zero, just stop reading once checksum does not match.",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 63
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_e45893a0",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-20T22:16:24Z",
+      "side": 1,
+      "message": "it is not clear without looking at the code what this means:\n\ndo you compare two keys (then the comment should be \u0027if key of the tuple at idx matches the passed in key)",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 55
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_44ef1f93",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-20T22:16:24Z",
+      "side": 1,
+      "message": "should there be a check that idx is inside the range?",
+      "range": {
+        "startLine": 99,
+        "startChar": 40,
+        "endLine": 99,
+        "endChar": 50
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_69479cc2",
         "filename": "common/nvmem_vars.c",
         "patchSetId": 6
@@ -136,6 +205,75 @@
         "startChar": 8,
         "endLine": 113,
         "endChar": 21
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_a4a5bb55",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-20T22:16:24Z",
+      "side": 1,
+      "message": "should this verify that there is no overflow for whatever reason?",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 64
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_243eabea",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-20T22:16:24Z",
+      "side": 1,
+      "message": "why would function names to be capitalized? makes them look like macros.",
+      "range": {
+        "startLine": 229,
+        "startChar": 15,
+        "endLine": 229,
+        "endChar": 18
+      },
+      "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_040a8744",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-20T22:16:24Z",
+      "side": 1,
+      "message": "that is passing an empty value means \u0027delete\u0027?",
+      "range": {
+        "startLine": 289,
+        "startChar": 4,
+        "endLine": 289,
+        "endChar": 43
       },
       "revId": "f1f71ecf540e9489e4bbee9474aa1b0614960b4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
