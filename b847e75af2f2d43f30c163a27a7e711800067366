@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57b7b6b5_ad635757",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-12-21T07:26:07Z",
+      "side": 1,
+      "message": "Note that GPIO_DONGLE_DET indicates that a type-a cable is plugged. In later hardware revisions there is hardware protection, but in earlier ones it\u0027s critical that servo never asserts VBUS back into a type-a port. Especially 20V VBUS.",
+      "revId": "b847e75af2f2d43f30c163a27a7e711800067366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_cd5b2b9b",
+        "filename": "board/servo_v4/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-12-21T07:26:07Z",
+      "side": 1,
+      "message": "Note that servo doesn\u0027t support host commands. Removing this logic could save some space.",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 20
+      },
+      "revId": "b847e75af2f2d43f30c163a27a7e711800067366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
