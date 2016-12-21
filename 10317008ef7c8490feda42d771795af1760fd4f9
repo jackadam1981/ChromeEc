@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_5d922fa5",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-21T21:30:22Z",
+      "side": 1,
+      "message": "If we have BATT_FLAG_BAD_TEMPERATURE. To be safe, we can consider battery has the higher voltage and charge at lower current (curr_vtg_high_limit_mA) and set this variable as non static.\nenum fast_chg_voltage_ranges voltage_range \u003d VOLTAGE_RANGE_HIGH;\n\nAaron/Shawn: Any comments?",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 71
+      },
+      "revId": "10317008ef7c8490feda42d771795af1760fd4f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
