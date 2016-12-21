@@ -22,6 +22,70 @@
       "revId": "10317008ef7c8490feda42d771795af1760fd4f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_bd8c2b59",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-21T22:13:28Z",
+      "side": 1,
+      "message": "I\u0027ll have to defer to Shawn, but on the surface it seems reasonable.",
+      "parentUuid": "b75ab266_5d922fa5",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 71
+      },
+      "revId": "10317008ef7c8490feda42d771795af1760fd4f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_6090262c",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-21T22:13:28Z",
+      "side": 1,
+      "message": "if vtg_high_limit_mV \u003d\u003d vtg_low_limit_mV what should voltage range be? Similar question of if batt.voltage \u003e vtg_low_limit_mv and bat.voltage \u003c vtg_high_limit_mv?",
+      "revId": "10317008ef7c8490feda42d771795af1760fd4f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_60c94648",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-21T22:13:28Z",
+      "side": 1,
+      "message": "Can\u0027t we just make this an array and index into it? We have the enums of VOLTAGE_RANGE_X.",
+      "range": {
+        "startLine": 86,
+        "startChar": 27,
+        "endLine": 86,
+        "endChar": 48
+      },
+      "revId": "10317008ef7c8490feda42d771795af1760fd4f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
