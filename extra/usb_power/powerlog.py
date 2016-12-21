@@ -95,8 +95,10 @@ class Spower(object):
 	47: (0, 0x4b),
   }
 
-  def __init__(self, vendor=0x18d1,
+  def __init__(self, board, vendor=0x18d1,
                product=0x5020, interface=1, serialname=None):
+    self._board = board
+
     # Find the stm32.
     dev_list = usb.core.find(idVendor=vendor, idProduct=product, find_all=True)
     if dev_list is None:
@@ -309,7 +311,7 @@ class Spower(object):
     for i in range(0, len(self._inas)):
       name = self._inas[i]['name']
       title += ", %s uW" % name
-    logoutput(title)
+    #logoutput(title)
 
     return actual_us
 
@@ -326,10 +328,14 @@ class Spower(object):
       if datum["name"] == name:
         channel = int(datum["channel"])
         rs = int(float(datum["rs"]) * 1000.)
+        board = datum["sweetberry"]
 
-        port, addr = self.CHMAP[channel]
-        self.add_ina(port, self.INA231, addr, 0, rs, data=datum)
-        return
+        if board == self._board:
+          port, addr = self.CHMAP[channel]
+          self.add_ina(port, self.INA231, addr, 0, rs, data=datum)
+          return True
+        else:
+          return False
     raise Exception("Power", "Failed to find INA %s" % name)
 
   def set_time(self, timestamp_us):
@@ -386,6 +392,8 @@ class Spower(object):
 
     Output:
       stdout of the record retrieved in csv format.
+      list of dicts of the values read, otherwise None.
+      [{ts:100, vbat:450}, {ts:200, vbat:440}]
     """
     try:
       expected_bytes = self.report_size(len(self._inas))
@@ -393,13 +401,13 @@ class Spower(object):
       bytesread = self.wr_command(cmd, read_count=expected_bytes)
     except usb.core.USBError as e:
       print "READ LINE FAILED %s" % e
-      return
+      return None
 
     if len(bytesread) == 1:
       if bytesread[0] != 0x6:
         debuglog("READ LINE FAILED bytes: %d ret: %02x" % (
             len(bytesread), bytesread[0]))
-      return
+      return None
 
     if len(bytesread) % expected_bytes != 0:
       debuglog("READ LINE WARNING: expected %d, got %d" % (
@@ -407,10 +415,14 @@ class Spower(object):
 
     packet_count = len(bytesread) / expected_bytes
 
+    values = []
     for i in range(0, packet_count):
       start = i * expected_bytes
       end = (i + 1) * expected_bytes
-      self.interpret_line(bytesread[start:end])
+      record = self.interpret_line(bytesread[start:end])
+      values.append(record)
+
+    return values
 
   def interpret_line(self, data):
     """Interpret a power record from INAs
@@ -433,6 +445,7 @@ class Spower(object):
     ftimestamp = float(timestamp) / 1000000.
 
     output = "%f" % ftimestamp
+    record = {"ts": ftimestamp, "status": status}
 
     for i in range(0, size):
       idx = self.report_header_size() + 2*i
@@ -441,9 +454,10 @@ class Spower(object):
       name = self._inas[i]['name']
       debuglog("READ %d %s: %fs: %fmW" % (i, name, ftimestamp, uw))
       output += ", %.02f" % uw
+      record[self._inas[i]['name']] = uw
 
-    logoutput(output)
-    return status
+    #logoutput(output)
+    return record
 
   def load_board(self, brdfile):
     """Load a board config.
@@ -492,7 +506,7 @@ def main():
   if args.verbose:
     debug = True
 
-  integration_us = args.integration_us
+  integration_us_request = args.integration_us
   if not args.board:
     raise Exception("Power", "No board file selected, see board.README")
   if not args.config:
@@ -503,7 +517,10 @@ def main():
   samples = args.samples
   seconds = args.seconds
   serial_a = args.serial
+  serial_b = args.serial_b
   sync_date = args.date
+
+  boards = []
 
   sync_speed = .8
   if args.slow:
@@ -516,21 +533,55 @@ def main():
   with open(cfgfile) as data_file:
     names = json.load(data_file)
 
-  p = Spower(serialname=serial_a)
-  p.load_board(brdfile)
-  p.reset()
+  if serial_a or not serial_b:
+    a = Spower("A", serialname=serial_a)
+    boards.append(a)
+  if serial_b:
+    b = Spower("B", serialname=serial_b)
+    boards.append(b)
+  for board in boards:
+    board.load_board(brdfile)
+    board.reset()
 
+  # Allocate the rails to the appropriate boards.
+  used_boards = []
   for name in names:
-    p.add_ina_name(name)
+    success = False
+    for board in boards:
+      if board.add_ina_name(name):
+        success = True
+        if board not in used_boards:
+          used_boards.append(board)
+    if not success:
+      raise Exception("Failed to add %s" % name)
 
-  if sync_date:
-    p.set_time(time.time() * 1000000)
-  else:
-    p.set_time(0)
+  # Evict unused boards.
+  boards = used_boards
+  for board in boards:
+    if sync_date:
+      board.set_time(time.time() * 1000000)
+    else:
+      board.set_time(0)
 
 
   # We will get back the actual integration us.
-  integration_us = p.start(integration_us)
+  # It should be the same for all devices.
+  integration_us = None
+  for board in boards:
+    integration_us_new = board.start(integration_us_request)
+    if integration_us:
+      if integration_us != integration_us_new:
+        raise Exception("FAIL",
+            "Integration on A: %dus != integration on B %dus" % (
+            integration_us, integration_us_new))
+    integration_us = integration_us_new
+
+  # CSV header
+  title = "ts:%dus" % integration_us
+  for name in names:
+    title += ", %s uW" % name
+  title += ", status"
+  logoutput(title)
 
   if not seconds > 0.:
     seconds = samples * integration_us / 1000000.;
@@ -539,9 +590,23 @@ def main():
     while forever or end_time > time.time():
       if (integration_us > 5000):
         time.sleep((integration_us / 1000000.) * sync_speed)
-      ret = p.read_line()
+      for board in boards:
+        records = board.read_line()
+        if not records:
+          continue
+
+        for record in records:
+          csv = "%f" % record["ts"]
+          for name in names:
+            if name in record:
+              csv += ", %.2f" % record[name]
+            else:
+              csv += ", "
+          csv += ", %d" % record["status"]
+          logoutput(csv)
   finally:
-    p.stop()
+    for board in boards:
+      board.stop()
 
 if __name__ == "__main__":
   main()
