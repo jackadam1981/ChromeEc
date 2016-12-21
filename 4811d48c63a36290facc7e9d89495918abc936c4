@@ -22,6 +22,30 @@
       "revId": "4811d48c63a36290facc7e9d89495918abc936c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_d380aa4c",
+        "filename": "include/nvmem_vars.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2016-12-21T17:54:04Z",
+      "side": 1,
+      "message": "D\u0027oh! I\u0027ll push a followup patch rather than reset the CQ.",
+      "parentUuid": "57b7b6b5_132c02ab",
+      "range": {
+        "startLine": 40,
+        "startChar": 18,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "4811d48c63a36290facc7e9d89495918abc936c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
