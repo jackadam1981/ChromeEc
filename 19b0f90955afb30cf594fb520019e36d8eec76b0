@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57b7b6b5_1cb97711",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-21T01:59:58Z",
+      "side": 1,
+      "message": "How about adding an enum for these mode types?",
+      "range": {
+        "startLine": 1241,
+        "startChar": 7,
+        "endLine": 1241,
+        "endChar": 8
+      },
+      "revId": "19b0f90955afb30cf594fb520019e36d8eec76b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_7cf673de",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-21T01:59:58Z",
+      "side": 1,
+      "message": "Let\u0027s put this behind an ifdef?",
+      "range": {
+        "startLine": 1590,
+        "startChar": 0,
+        "endLine": 1652,
+        "endChar": 50
+      },
+      "revId": "19b0f90955afb30cf594fb520019e36d8eec76b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_9c79e76f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2236,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-21T01:59:58Z",
+      "side": 1,
+      "message": "I think we want to use fixed bit length types here, due to target arch differences.",
+      "range": {
+        "startLine": 2236,
+        "startChar": 3,
+        "endLine": 2236,
+        "endChar": 14
+      },
+      "revId": "19b0f90955afb30cf594fb520019e36d8eec76b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
