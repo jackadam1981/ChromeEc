@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_ff357594",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-21T05:44:46Z",
+      "side": 1,
+      "message": "Good idea, done.",
+      "parentUuid": "57b7b6b5_1cb97711",
+      "revId": "19b0f90955afb30cf594fb520019e36d8eec76b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_7cf673de",
         "filename": "common/motion_sense.c",
         "patchSetId": 3
@@ -48,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_bfe29dea",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-21T05:44:46Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "57b7b6b5_7cf673de",
+      "revId": "19b0f90955afb30cf594fb520019e36d8eec76b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_9c79e76f",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -65,6 +101,24 @@
         "endLine": 2236,
         "endChar": 14
       },
+      "revId": "19b0f90955afb30cf594fb520019e36d8eec76b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_9fc6b95c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2236,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-21T05:44:46Z",
+      "side": 1,
+      "message": "Whoops, good call. Done.",
+      "parentUuid": "57b7b6b5_9c79e76f",
       "revId": "19b0f90955afb30cf594fb520019e36d8eec76b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
