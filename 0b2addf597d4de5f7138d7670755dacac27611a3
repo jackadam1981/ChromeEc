@@ -562,6 +562,30 @@
     },
     {
       "key": {
+        "uuid": "573c16f2_7c2d70c3",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-21T19:17:19Z",
+      "side": 1,
+      "message": "okay thank you, we can get rid of both batt_voltage \u0026 prev_batt_voltage as we know the previous profile",
+      "parentUuid": "57b7b6b5_485ac90d",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_3c9245a5",
         "filename": "common/charger_profile_override.c",
         "patchSetId": 8
