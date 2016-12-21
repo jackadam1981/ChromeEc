@@ -22,6 +22,30 @@
       "revId": "efc5e54ecab07726072fc9f50c8cad676ca58530",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_39d48dd5",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-21T01:10:33Z",
+      "side": 1,
+      "message": "I know what you are saying, but personally I always try to avoid static variables inside functions; I think it is better readable when they are outside, not as easy to mix them up with automatic variables. \n\nprev_activity_timestamp above is the same, I would rather keep this consistent...",
+      "parentUuid": "57b7b6b5_d98531f4",
+      "range": {
+        "startLine": 178,
+        "startChar": 16,
+        "endLine": 178,
+        "endChar": 36
+      },
+      "revId": "efc5e54ecab07726072fc9f50c8cad676ca58530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
