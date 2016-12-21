@@ -34,6 +34,24 @@
       "revId": "aa4a85a6ee17bc06859d8016788b099ad557376b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_4ef9710a",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-12-21T18:57:50Z",
+      "side": 1,
+      "message": "in case of in_len \u003d\u003d 0, pkcs1_type1_pad will still work fine.\n1) in_len \u003d\u003d 0 is allowed only for hash_size \u003d\u003d 0, i.e. for the \"padding-only\" case when we sign anything that fits into padded_len, not just buffers of size equal to the hashing algorithm digest size.\n2) and for padding-only case, if in_len \u003d\u003d 0, the entire buffer is just padding, so it\u0027s ok.\n\nAs for in_len \u003e SHA_MAX_DIGEST_BYTES, again, we care only that the data-to-sign fits in the buffer. And this is checked in the next statement after this if():\nif (in_len \u003e padded_len - RSA_PKCS1_PADDING_SIZE - der_size)\n\treturn 0;",
+      "parentUuid": "5a7fdbe6_4c129478",
+      "revId": "aa4a85a6ee17bc06859d8016788b099ad557376b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
