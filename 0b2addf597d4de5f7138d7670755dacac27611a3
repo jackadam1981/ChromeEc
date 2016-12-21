@@ -538,6 +538,30 @@
     },
     {
       "key": {
+        "uuid": "57b7b6b5_485ac90d",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-21T15:28:33Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean by this comment, but prev_batt_voltage being static means this doesn\u0027t work for multiple batteries. If you had a charger_profile_state struct which had the prev fields as well as the previous fast_charge_profile pointer then you could update all that state through that struct.",
+      "parentUuid": "57b7b6b5_66ffcbf3",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "0b2addf597d4de5f7138d7670755dacac27611a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b7b6b5_3c9245a5",
         "filename": "common/charger_profile_override.c",
         "patchSetId": 8
