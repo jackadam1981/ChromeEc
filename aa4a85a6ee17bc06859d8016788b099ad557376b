@@ -88,6 +88,24 @@
       "revId": "aa4a85a6ee17bc06859d8016788b099ad557376b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_3d72db03",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-12-21T21:09:32Z",
+      "side": 1,
+      "message": "I understand. I just don\u0027t want to unnecessarily cut use cases, which don\u0027t violate anything. I don\u0027t know if len 0 is ever used. But the data passed for signing is not necessarily just a digest, or tied to a digest size, so I don\u0027t want to compare its size to any digests.\n\nFor example, as we know, it can be 36 bytes long (16 MD5 + 20 SHA-1) for TLS 1.1 signatures. So, even if the largest SHA we supported was SHA-1, limiting it to 20 bytes wouldn\u0027t make sense. Who knows what other hybrid data structures like that we need (or will need) to support. That\u0027s exactly what \"padding-only\" scheme is supposed to support - arbitrary data, where we don\u0027t know/care how it was constructed.\n\nI don\u0027t want to spend time painfully debugging such cases and changing cr50 code (and going through field cr50 upgrades) if they appear in the future. If it doesn\u0027t break things and doesn\u0027t lead to security flaws, why lose flexibility and prohibit it?",
+      "parentUuid": "b75ab266_fa9ce955",
+      "revId": "aa4a85a6ee17bc06859d8016788b099ad557376b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
