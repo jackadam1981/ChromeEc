@@ -139,6 +139,24 @@
       "revId": "28b7805b201a43a01a0ee8ad4abb7727b8ed5bb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_3ac94114",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-21T19:41:09Z",
+      "side": 1,
+      "message": "You need the *contents* of both structures. But not necessarily two structures.\n\nIf you have the following I don\u0027t see anything in your patch that would mitigate this:\n\n\nstruct fast_charge_params {\n  const struct fast_charge_profile *default_charge_profile;\n  const struct fast_charge_profile *charge_profiles;\n  size_t num_temp_ranges;\n  int vtg_low_limit_mV;\n  int vtg_high_lmit_mV;\n};\n\nIn your battery struct, you can keep a struct fast_charge_params * to point to the relevant data.",
+      "parentUuid": "57b7b6b5_6e40f555",
+      "revId": "28b7805b201a43a01a0ee8ad4abb7727b8ed5bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
