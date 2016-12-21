@@ -70,6 +70,24 @@
       "revId": "aa4a85a6ee17bc06859d8016788b099ad557376b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_fa9ce955",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2016-12-21T20:26:37Z",
+      "side": 1,
+      "message": "The intention behind my comment was not about buffer over-flows, but rather that the implementation \"enforces\" use-cases.  Or said another way, in which scenario is in_len \u003d\u003d 0 a legitimate use case?  If it so happens that we need to support that, then we can add it then.  Same goes for in_len \u003e SHA_MAX_DIGEST_BYTES.\n\nIdeally we\u0027d make sure that the input size is one of the recognized digest sizes.",
+      "parentUuid": "57b7b6b5_4ef9710a",
+      "revId": "aa4a85a6ee17bc06859d8016788b099ad557376b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
