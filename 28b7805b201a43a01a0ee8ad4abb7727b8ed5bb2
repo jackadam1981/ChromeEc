@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57b7b6b5_c8e47925",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-21T15:28:33Z",
+      "side": 1,
+      "message": "If you make this a pointer you can get rid of extra struct fast_charge_config and compose a single fast_charge_params struct that the individual batteries can reference.",
+      "revId": "28b7805b201a43a01a0ee8ad4abb7727b8ed5bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_48f169e3",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-21T15:28:33Z",
+      "side": 1,
+      "message": "You should be consistent with the initializers. On line 161 you are using \u0026array[0].",
+      "revId": "28b7805b201a43a01a0ee8ad4abb7727b8ed5bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_c80b1905",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-21T15:28:33Z",
+      "side": 1,
+      "message": "Why not just make this const struct fast_charge_profile?",
+      "revId": "28b7805b201a43a01a0ee8ad4abb7727b8ed5bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b7b6b5_080291ed",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-21T15:28:33Z",
+      "side": 1,
+      "message": "Is having a fast_charge_config struct needed? It seems like those fields would just sit in this struct. The default index and total number fields aply to chg_profile_info. The rest are the voltage fields. It\u0027s actually more complicated to have another struct.",
+      "revId": "28b7805b201a43a01a0ee8ad4abb7727b8ed5bb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
