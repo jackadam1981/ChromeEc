@@ -128,6 +128,30 @@
       "revId": "10317008ef7c8490feda42d771795af1760fd4f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_c0865269",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-21T22:44:24Z",
+      "side": 1,
+      "message": "we are taking \"const struct fast_charge_profile **prev_chg_prof_info\" to keep track of prev_chg_info pointer. \nThis is just a replacement for prev_chg_prof_info[0]-\u003ecurr_vtg_low_limit_mA.",
+      "parentUuid": "b75ab266_60c94648",
+      "range": {
+        "startLine": 86,
+        "startChar": 27,
+        "endLine": 86,
+        "endChar": 48
+      },
+      "revId": "10317008ef7c8490feda42d771795af1760fd4f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
