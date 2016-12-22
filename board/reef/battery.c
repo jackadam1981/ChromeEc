@@ -39,7 +39,7 @@ struct board_batt_params {
 	char *manuf_name;
 	int ship_mode_reg;
 	int ship_mode_data;
-	struct battery_info batt_info;
+	const struct battery_info *batt_info;
 	const struct fast_charge_params *fast_chg_params;
 	int (*batt_init)(void);
 };
@@ -108,6 +108,23 @@ static const struct fast_charge_params fast_chg_params_smp_cos4870 = {
 	.chg_profile_info = &fast_charge_smp_cos4870_info[0],
 };
 
+const struct battery_info batt_info_smp_cos4870 = {
+	.voltage_max = 8700,	/* mV */
+	.voltage_normal = 7600,
+	/*
+	 * Actual value 6000mV, added 100mV for charger accuracy so that
+	 * unwanted low VSYS_Prochot# assertion can be avoided.
+	 */
+	.voltage_min = 6100,
+	.precharge_current = 256,	/* mA */
+	.start_charging_min_c = 0,
+	.start_charging_max_c = 46,
+	.charging_min_c = 0,
+	.charging_max_c = 45,
+	.discharging_min_c = 0,
+	.discharging_max_c = 60,
+};
+
 static const struct fast_charge_profile fast_charge_sonycorp_info[] = {
 	/* < 10C */
 	[TEMP_RANGE_0] = {
@@ -133,6 +150,42 @@ static const struct fast_charge_params fast_chg_params_sonycorp = {
 	.default_temp_range_profile = TEMP_RANGE_1,
 	.vtg_low_limit_mV = 8000,
 	.chg_profile_info = &fast_charge_sonycorp_info[0],
+};
+
+const struct battery_info batt_info_sonycorp = {
+	.voltage_max = 8700,	/* mV */
+	.voltage_normal = 7600,
+
+	/*
+	 * Actual value 6000mV, added 100mV for charger accuracy so that
+	 * unwanted low VSYS_Prochot# assertion can be avoided.
+	 */
+	.voltage_min = 6100,
+	.precharge_current = 256,	/* mA */
+	.start_charging_min_c = 0,
+	.start_charging_max_c = 50,
+	.charging_min_c = 0,
+	.charging_max_c = 60,
+	.discharging_min_c = -20,
+	.discharging_max_c = 75,
+};
+
+const struct battery_info batt_info_smp_c22n1626 = {
+	.voltage_max = 8800,	/* mV */
+	.voltage_normal = 7700,
+
+	/*
+	 * Actual value 6000mV, added 100mV for charger accuracy so that
+	 * unwanted low VSYS_Prochot# assertion can be avoided.
+	 */
+	.voltage_min = 6100,
+	.precharge_current = 256,	/* mA */
+	.start_charging_min_c = 0,
+	.start_charging_max_c = 45,
+	.charging_min_c = 0,
+	.charging_max_c = 60,
+	.discharging_min_c = 0,
+	.discharging_max_c = 60,
 };
 
 static int batt_smp_cos4870_init(void)
@@ -168,25 +221,8 @@ static const struct board_batt_params info[] = {
 		/* Fast charging params info for BQ40Z555 */
 		.fast_chg_params = &fast_chg_params_sonycorp,
 
-		/* Battery info for BQ40Z555 */
-		.batt_info = {
-			.voltage_max = 8700,	/* mV */
-			.voltage_normal = 7600,
-
-			/*
-			 * Actual value 6000mV, added 100mV for charger accuracy
-			 * so that unwanted low VSYS_Prochot# assertion can be
-			 * avoided.
-			 */
-			.voltage_min = 6100,
-			.precharge_current = 256,	/* mA */
-			.start_charging_min_c = 0,
-			.start_charging_max_c = 50,
-			.charging_min_c = 0,
-			.charging_max_c = 60,
-			.discharging_min_c = -20,
-			.discharging_max_c = 75,
-		},
+		/* Battery info for SONYCorp BQ40Z555 */
+		.batt_info = &batt_info_sonycorp,
 	},
 
 	/* SMP COS4870 BATTERY battery specific configurations */
@@ -199,25 +235,8 @@ static const struct board_batt_params info[] = {
 		/* Fast charging params info for BQ40Z55 */
 		.fast_chg_params = &fast_chg_params_smp_cos4870,
 
-		/* Battery info for BQ40Z55 */
-		.batt_info = {
-			.voltage_max = 8700,	/* mV */
-			.voltage_normal = 7600,
-
-			/*
-			 * Actual value 6000mV, added 100mV for charger accuracy
-			 * so that unwanted low VSYS_Prochot# assertion can be
-			 * avoided.
-			 */
-			.voltage_min = 6100,
-			.precharge_current = 256,	/* mA */
-			.start_charging_min_c = 0,
-			.start_charging_max_c = 46,
-			.charging_min_c = 0,
-			.charging_max_c = 45,
-			.discharging_min_c = 0,
-			.discharging_max_c = 60,
-		},
+		/* Battery info for SMP-COS4870 BQ40Z55 */
+		.batt_info = &batt_info_smp_cos4870,
 	},
 
 	/* SMP C22N1626 BATTERY battery specific configurations */
@@ -230,25 +249,8 @@ static const struct board_batt_params info[] = {
 		/* Fast charging params info for BQ40Z55 */
 		.fast_chg_params = &fast_chg_params_smp_cos4870,
 
-		/* Battery info for BQ40Z55 */
-		.batt_info = {
-			.voltage_max = 8800,	/* mV */
-			.voltage_normal = 7700,
-
-			/*
-			 * Actual value 6000mV, added 100mV for charger accuracy
-			 * so that unwanted low VSYS_Prochot# assertion can be
-			 * avoided.
-			 */
-			.voltage_min = 6100,
-			.precharge_current = 256,	/* mA */
-			.start_charging_min_c = 0,
-			.start_charging_max_c = 45,
-			.charging_min_c = 0,
-			.charging_max_c = 60,
-			.discharging_min_c = 0,
-			.discharging_max_c = 60,
-		},
+		/* Battery info for SMP-C22N1626 BQ40Z55 */
+		.batt_info = &batt_info_smp_c22n1626,
 	},
 
 	/* CPT C22N1626 BATTERY battery specific configurations */
@@ -261,25 +263,8 @@ static const struct board_batt_params info[] = {
 		/* Fast charging params info for BQ40Z55 */
 		.fast_chg_params = &fast_chg_params_smp_cos4870,
 
-		/* Battery info for BQ40Z55 */
-		.batt_info = {
-			.voltage_max = 8800,	/* mV */
-			.voltage_normal = 7700,
-
-			/*
-			 * Actual value 6000mV, added 100mV for charger accuracy
-			 * so that unwanted low VSYS_Prochot# assertion can be
-			 * avoided.
-			 */
-			.voltage_min = 6100,
-			.precharge_current = 256,	/* mA */
-			.start_charging_min_c = 0,
-			.start_charging_max_c = 45,
-			.charging_min_c = 0,
-			.charging_max_c = 60,
-			.discharging_min_c = 0,
-			.discharging_max_c = 60,
-		},
+		/* Battery info for CPT-C22N1626 BQ40Z55 */
+		.batt_info = &batt_info_smp_c22n1626,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(info) == BATTERY_TYPE_COUNT);
@@ -335,7 +320,7 @@ DECLARE_HOOK(HOOK_INIT, board_init_battery_type, HOOK_PRIO_INIT_I2C + 1);
 
 const struct battery_info *battery_get_info(void)
 {
-	return &board_get_batt_params()->batt_info;
+	return board_get_batt_params()->batt_info;
 }
 
 int board_cut_off_battery(void)
@@ -371,16 +356,12 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 
 	if (extpower_is_present()) {
 		/* Check if battery charging + discharging is disabled. */
-		rv = sb_write(SB_MANUFACTURER_ACCESS,
-			      PARAM_OPERATION_STATUS);
+		rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
+				SB_ALT_MANUFACTURER_ACCESS, data, 6);
 		if (rv)
 			return BATTERY_DISCONNECT_ERROR;
-
-		rv = sb_read_string(I2C_PORT_BATTERY, BATTERY_ADDR,
-				    SB_ALT_MANUFACTURER_ACCESS, data, 6);
-
-		if (rv || (~data[3] & (BATTERY_DISCHARGING_DISABLED |
-				       BATTERY_CHARGING_DISABLED))) {
+		if (~data[3] & (BATTERY_DISCHARGING_DISABLED |
+				       BATTERY_CHARGING_DISABLED)) {
 			not_disconnected = 1;
 			return BATTERY_NOT_DISCONNECTED;
 		}
@@ -389,13 +370,8 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 		 * Battery is neither charging nor discharging. Verify that
 		 * we didn't enter this state due to a safety fault.
 		 */
-		rv = sb_write(SB_MANUFACTURER_ACCESS, PARAM_SAFETY_STATUS);
-		if (rv)
-			return BATTERY_DISCONNECT_ERROR;
-
-		rv = sb_read_string(I2C_PORT_BATTERY, BATTERY_ADDR,
-				    SB_ALT_MANUFACTURER_ACCESS, data, 6);
-
+		rv = sb_read_mfgacc(PARAM_SAFETY_STATUS,
+				SB_ALT_MANUFACTURER_ACCESS, data, 6);
 		if (rv || data[2] || data[3] || data[4] || data[5])
 			return BATTERY_DISCONNECT_ERROR;
 
@@ -470,9 +446,9 @@ int charger_profile_override(struct charge_state_data *curr)
 	}
 
 	return charger_profile_override_common(curr,
-				board_get_batt_params()->fast_chg_params,
-				&prev_chg_profile_info,
-				board_get_batt_params()->batt_info.voltage_max);
+			board_get_batt_params()->fast_chg_params,
+			&prev_chg_profile_info,
+			board_get_batt_params()->batt_info->voltage_max);
 }
 
 /*
@@ -502,7 +478,7 @@ enum battery_present battery_is_present(void)
 		/* Re-init board battery if battery presence status changes */
 		if (board_get_battery_type() == BATTERY_TYPE_COUNT) {
 			if (bd9995x_get_battery_voltage() >=
-			    board_get_batt_params()->batt_info.voltage_min)
+			    board_get_batt_params()->batt_info->voltage_min)
 				batt_pres = BP_NO;
 		} else if (!board_get_batt_params()->batt_init())
 			batt_pres = BP_NO;
