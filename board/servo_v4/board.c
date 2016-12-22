@@ -75,6 +75,10 @@ GPIO_USB_DUT_CC2_RP1A5,
 
 };
 
+
+#ifdef SECTION_IS_RW
+
+
 /*
  * This instantiates struct usb_gpio_config const usb_gpio, plus several other
  * variables, all named something beginning with usb_gpio_
@@ -169,6 +173,7 @@ USB_STREAM_CONFIG(usart4_usb,
 	usb_to_usart4,
 	usart4_to_usb)
 
+#endif /* SECTION_IS_RW */
 
 /******************************************************************************
  * Define the strings used in our USB descriptors.
@@ -188,6 +193,8 @@ const void *const usb_strings[] = {
 };
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
+
+
 
 
 
@@ -269,6 +276,8 @@ static void init_ioexpander(void)
 	i2c_write8(1, 0x40, 0x6, 0x0);
 	i2c_write8(1, 0x40, 0x7, 0x0);
 }
+
+#ifdef SECTION_IS_RW
 
 /* State of CC lines presented to DUT */
 /* Dual Rd pulldown, classic debug device. */
@@ -450,9 +459,11 @@ static void usb_sbu_tick(void)
 }
 DECLARE_HOOK(HOOK_TICK, usb_sbu_tick, HOOK_PRIO_DEFAULT);
 
+#endif /* SECTION_IS_RW */
 
 static void board_init(void)
 {
+#ifdef SECTION_IS_RW
 	/* USB to serial queues */
 	queue_init(&usart3_to_usb);
 	queue_init(&usb_to_usart3);
@@ -462,7 +473,7 @@ static void board_init(void)
 	/* UART init */
 	usart_init(&usart3);
 	usart_init(&usart4);
-
+#endif
 	/* Delay DUT hub to avoid brownout. */
 	usleep(1000);
 	gpio_set_flags(GPIO_DUT_HUB_USB_RESET_L, GPIO_OUT_HIGH);
@@ -474,12 +485,16 @@ static void board_init(void)
 	init_ioexpander();
 	init_uservo_port();
 
+#ifdef SECTION_IS_RW
 	/* Enable CCD if type-c */
 	if (gpio_get_level(GPIO_DONGLE_DET))
 		init_ccd(CCD_ID_RPUSB);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+
+#ifdef SECTION_IS_RW
 static int command_ccd(int argc, char **argv)
 {
 	int mode = CCD_ID_NONE;
@@ -503,3 +518,4 @@ static int command_ccd(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(ccd, command_ccd,
 	"[rdrd|rpusb|off]", "Set pullups or pulldowns to indicate CCD");
+#endif
