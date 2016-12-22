@@ -40,6 +40,24 @@
       "revId": "5fb1319abbd08120fd3c59102c27345a16e4d9a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_b568b732",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-22T18:24:24Z",
+      "side": 1,
+      "message": "I think it\u0027s an edge case, so I abandoned the CL. My reason was \"One would have to suspend in laptop mode and then physically enter tablet mode, but keep the angle unreliable until you wake up via keypress.\"",
+      "parentUuid": "57b7b6b5_4df50d62",
+      "revId": "5fb1319abbd08120fd3c59102c27345a16e4d9a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
