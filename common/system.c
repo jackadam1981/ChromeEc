@@ -84,7 +84,7 @@ static struct jump_data *jdata;
 static const char * const reset_flag_descs[] = {
 	"other", "reset-pin", "brownout", "power-on", "watchdog", "soft",
 	"hibernate", "rtc-alarm", "wake-pin", "low-battery", "sysjump",
-	"hard", "ap-off", "preserved"};
+	"hard", "ap-off", "preserved", "panic"};
 
 static uint32_t reset_flags;
 static int jumped_to_image;
@@ -471,6 +471,8 @@ static void jump_to_image(uintptr_t init_addr)
 	jdata->reset_flags = reset_flags;
 	jdata->jump_tag_total = 0;  /* Reset tags */
 	jdata->struct_size = sizeof(struct jump_data);
+
+	system_clear_reset_flags(RESET_FLAG_PANIC);
 
 	/* Call other hooks; these may add tags */
 	hook_notify(HOOK_SYSJUMP);

@@ -28,6 +28,7 @@
 #define RESET_FLAG_AP_OFF      (1 << 12)  /* Do not power on AP */
 #define RESET_FLAG_PRESERVED   (1 << 13)  /* Some reset flags preserved from
 					   * previous boot */
+#define RESET_FLAG_PANIC       (1 << 14)  /* Panic reset from software */
 
 /* Per chip implementation to save raw RESET_FLAG_ flags. */
 void chip_save_reset_flags(int flags);
@@ -209,6 +210,11 @@ const char *system_get_build_info(void);
  * sync.
  */
 #define SYSTEM_RESET_LEAVE_AP_OFF   (1 << 2)
+/*
+ * Panic. Used when system panic.
+ */
+#define SYSTEM_RESET_PANIC   (1 << 3)
+
 
 /**
  * Reset the system.

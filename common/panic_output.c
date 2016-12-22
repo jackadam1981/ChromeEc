@@ -77,7 +77,7 @@ void panic_printf(const char *format, ...)
 void panic_reboot(void)
 {
 	panic_puts("\n\nRebooting...\n");
-	system_reset(0);
+	system_reset(SYSTEM_RESET_PANIC);
 }
 
 #ifdef CONFIG_DEBUG_ASSERT_REBOOTS
@@ -123,7 +123,8 @@ static void panic_init(void)
 	struct panic_data *addr = panic_get_data();
 
 	/* Notify host of new panic event */
-	if (addr && !(addr->flags & PANIC_DATA_FLAG_OLD_HOSTEVENT)) {
+	if ((addr && !(addr->flags & PANIC_DATA_FLAG_OLD_HOSTEVENT)) ||
+		(system_get_reset_flags() & RESET_FLAG_PANIC)) {
 		host_set_single_event(EC_HOST_EVENT_PANIC);
 		addr->flags |= PANIC_DATA_FLAG_OLD_HOSTEVENT;
 	}

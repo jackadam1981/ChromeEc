@@ -109,6 +109,9 @@ void _system_reset(int flags, int wake_from_hibernate)
 	if (flags & SYSTEM_RESET_LEAVE_AP_OFF)
 		save_flags |= RESET_FLAG_AP_OFF;
 
+	if (flags & SYSTEM_RESET_PANIC)
+		save_flags |= RESET_FLAG_PANIC;
+
 	if (wake_from_hibernate)
 		save_flags |= RESET_FLAG_HIBERNATE;
 	else if (flags & SYSTEM_RESET_HARD)

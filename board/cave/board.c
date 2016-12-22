@@ -498,6 +498,10 @@ static void board_handle_reboot(void)
 	if (flags & RESET_FLAG_AP_OFF)
 		chip_save_reset_flags(RESET_FLAG_AP_OFF);
 
+	/* Preserve Panic request. */
+	if (flags & RESET_FLAG_PANIC)
+		chip_save_reset_flags(RESET_FLAG_PANIC);
+
 	ccprintf("Restarting system with PMIC.\n");
 	/* Flush console */
 	cflush();
