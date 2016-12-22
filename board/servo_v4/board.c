@@ -29,6 +29,7 @@
 
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+static void write_ioexpander(int bank, int gpio, int val);
 
 
 /******************************************************************************
@@ -74,6 +75,14 @@ GPIO_USB_DUT_CC2_RP3A0,
 GPIO_USB_DUT_CC2_RP1A5,
 
 };
+
+
+/*****************************************************************************
+ *****************************************************************************
+ * This section has RW-only features. These are excluded from RO to decrease
+ * binary size.
+ */
+#ifdef SECTION_IS_RW
 
 /*
  * This instantiates struct usb_gpio_config const usb_gpio, plus several other
@@ -170,105 +179,9 @@ USB_STREAM_CONFIG(usart4_usb,
 	usart4_to_usb)
 
 
-/******************************************************************************
- * Define the strings used in our USB descriptors.
+/*****************************************************************************
+ * Precanned Type-c configurations for Debug, device, host.
  */
-
-const void *const usb_strings[] = {
-	[USB_STR_DESC]         = usb_string_desc,
-	[USB_STR_VENDOR]       = USB_STRING_DESC("Google Inc."),
-	[USB_STR_PRODUCT]      = USB_STRING_DESC("Servo V4"),
-	[USB_STR_SERIALNO]     = USB_STRING_DESC("1234-a"),
-	[USB_STR_VERSION]      = USB_STRING_DESC(CROS_EC_VERSION32),
-	[USB_STR_I2C_NAME]     = USB_STRING_DESC("I2C"),
-	[USB_STR_CONSOLE_NAME] = USB_STRING_DESC("Servo EC Shell"),
-	[USB_STR_USART3_STREAM_NAME]  = USB_STRING_DESC("DUT UART"),
-	[USB_STR_USART4_STREAM_NAME]  = USB_STRING_DESC("Atmega UART"),
-	[USB_STR_UPDATE_NAME]  = USB_STRING_DESC("Firmware update"),
-};
-
-BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
-
-
-
-/******************************************************************************
- * Support I2C bridging over USB, this requires usb_i2c_board_enable and
- * usb_i2c_board_disable to be defined to enable and disable the SPI bridge.
- */
-
-/* I2C ports */
-const struct i2c_port_t i2c_ports[] = {
-	{"master", I2C_PORT_MASTER, 100,
-		GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
-};
-const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
-
-int usb_i2c_board_enable(void) {return EC_SUCCESS; }
-void usb_i2c_board_disable(int debounce) {}
-
-
-/******************************************************************************
- * Support firmware upgrade over USB. We can update whichever section is not
- * the current section.
- */
-
-/*
- * This array defines possible sections available for the firmware update.
- * The section which does not map the current executing code is picked as the
- * valid update area. The values are offsets into the flash space.
- */
-const struct section_descriptor board_rw_sections[] = {
-	{CONFIG_RO_MEM_OFF,
-	 CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE},
-	{CONFIG_RW_MEM_OFF,
-	 CONFIG_RW_MEM_OFF + CONFIG_RW_SIZE},
-};
-const struct section_descriptor * const rw_sections = board_rw_sections;
-const int num_rw_sections = ARRAY_SIZE(board_rw_sections);
-
-
-/******************************************************************************
- * Initialize board.
- */
-
-/* Write a GPIO output on the tca6416 I2C ioexpander. */
-static void write_ioexpander(int bank, int gpio, int val)
-{
-	int tmp;
-
-	/* Read output port register */
-	i2c_read8(1, 0x40, 0x2 + bank, &tmp);
-	if (val)
-		tmp |= (1 << gpio);
-	else
-		tmp &= ~(1 << gpio);
-	/* Write back modified output port register */
-	i2c_write8(1, 0x40, 0x2 + bank, tmp);
-
-	/* Set Configuration port to output/0 */
-	i2c_read8(1, 0x40, 0x6 + bank, &tmp);
-	i2c_write8(1, 0x40, 0x6 + bank, tmp & ~(1 << gpio));
-}
-
-/* Enable uservo USB. */
-static void init_uservo_port(void)
-{
-	/* Write USERVO_POWER_EN */
-	write_ioexpander(0, 7, 1);
-	/* Write USERVO_FASTBOOT_MUX_SEL */
-	write_ioexpander(1, 0, 0);
-}
-
-/* Enable all ioexpander outputs. */
-static void init_ioexpander(void)
-{
-	/* Write all GPIO to output 0 */
-	i2c_write8(1, 0x40, 0x2, 0x0);
-	i2c_write8(1, 0x40, 0x3, 0x0);
-	/* Write all GPIO to output direction */
-	i2c_write8(1, 0x40, 0x6, 0x0);
-	i2c_write8(1, 0x40, 0x7, 0x0);
-}
 
 /* State of CC lines presented to DUT */
 /* Dual Rd pulldown, classic debug device. */
@@ -450,36 +363,10 @@ static void usb_sbu_tick(void)
 }
 DECLARE_HOOK(HOOK_TICK, usb_sbu_tick, HOOK_PRIO_DEFAULT);
 
-
-static void board_init(void)
-{
-	/* USB to serial queues */
-	queue_init(&usart3_to_usb);
-	queue_init(&usb_to_usart3);
-	queue_init(&usart4_to_usb);
-	queue_init(&usb_to_usart4);
-
-	/* UART init */
-	usart_init(&usart3);
-	usart_init(&usart4);
-
-	/* Delay DUT hub to avoid brownout. */
-	usleep(1000);
-	gpio_set_flags(GPIO_DUT_HUB_USB_RESET_L, GPIO_OUT_HIGH);
-
-	/* Write USB3 Mode Enable to PS8742 USB/DP Mux. */
-	i2c_write8(1, 0x20, 0x0, 0x20);
-
-	/* Enable uservo USB by default. */
-	init_ioexpander();
-	init_uservo_port();
-
-	/* Enable CCD if type-c */
-	if (gpio_get_level(GPIO_DONGLE_DET))
-		init_ccd(CCD_ID_RPUSB);
-}
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-
+/*
+ * Set CCD / type-c mode. Supported are RdRd debug device,
+ * RpUSB/Rp1A5 debug charger, and none.
+ */
 static int command_ccd(int argc, char **argv)
 {
 	int mode = CCD_ID_NONE;
@@ -503,3 +390,148 @@ static int command_ccd(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(ccd, command_ccd,
 	"[rdrd|rpusb|off]", "Set pullups or pulldowns to indicate CCD");
+
+/* Init the RW only features */
+static void rw_board_init(void)
+{
+	/* USB to serial queues */
+	queue_init(&usart3_to_usb);
+	queue_init(&usb_to_usart3);
+	queue_init(&usart4_to_usb);
+	queue_init(&usb_to_usart4);
+
+	/* UART init */
+	usart_init(&usart3);
+	usart_init(&usart4);
+
+	/* Enable CCD if type-c */
+	if (gpio_get_level(GPIO_DONGLE_DET))
+		init_ccd(CCD_ID_RPUSB);
+}
+
+/*****************************************************************************
+ *****************************************************************************
+ * End of RW only secition.
+ */
+#endif /* SECTION_IS_RW */
+
+
+/******************************************************************************
+ * Define the strings used in our USB descriptors.
+ */
+
+const void *const usb_strings[] = {
+	[USB_STR_DESC]         = usb_string_desc,
+	[USB_STR_VENDOR]       = USB_STRING_DESC("Google Inc."),
+	[USB_STR_PRODUCT]      = USB_STRING_DESC("Servo V4"),
+	[USB_STR_SERIALNO]     = USB_STRING_DESC("1234-a"),
+	[USB_STR_VERSION]      = USB_STRING_DESC(CROS_EC_VERSION32),
+	[USB_STR_I2C_NAME]     = USB_STRING_DESC("I2C"),
+	[USB_STR_CONSOLE_NAME] = USB_STRING_DESC("Servo EC Shell"),
+	[USB_STR_USART3_STREAM_NAME]  = USB_STRING_DESC("DUT UART"),
+	[USB_STR_USART4_STREAM_NAME]  = USB_STRING_DESC("Atmega UART"),
+	[USB_STR_UPDATE_NAME]  = USB_STRING_DESC("Firmware update"),
+};
+
+BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
+
+
+/******************************************************************************
+ * Support I2C bridging over USB, this requires usb_i2c_board_enable and
+ * usb_i2c_board_disable to be defined to enable and disable the SPI bridge.
+ */
+
+/* I2C ports */
+const struct i2c_port_t i2c_ports[] = {
+	{"master", I2C_PORT_MASTER, 100,
+		GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+int usb_i2c_board_enable(void) {return EC_SUCCESS; }
+void usb_i2c_board_disable(int debounce) {}
+
+
+/******************************************************************************
+ * Support firmware upgrade over USB. We can update whichever section is not
+ * the current section.
+ */
+
+/*
+ * This array defines possible sections available for the firmware update.
+ * The section which does not map the current executing code is picked as the
+ * valid update area. The values are offsets into the flash space.
+ */
+const struct section_descriptor board_rw_sections[] = {
+	{CONFIG_RO_MEM_OFF,
+	 CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE},
+	{CONFIG_RW_MEM_OFF,
+	 CONFIG_RW_MEM_OFF + CONFIG_RW_SIZE},
+};
+const struct section_descriptor * const rw_sections = board_rw_sections;
+const int num_rw_sections = ARRAY_SIZE(board_rw_sections);
+
+
+/******************************************************************************
+ * Initialize board.
+ */
+
+/* Write a GPIO output on the tca6416 I2C ioexpander. */
+static void write_ioexpander(int bank, int gpio, int val)
+{
+	int tmp;
+
+	/* Read output port register */
+	i2c_read8(1, 0x40, 0x2 + bank, &tmp);
+	if (val)
+		tmp |= (1 << gpio);
+	else
+		tmp &= ~(1 << gpio);
+	/* Write back modified output port register */
+	i2c_write8(1, 0x40, 0x2 + bank, tmp);
+
+	/* Set Configuration port to output/0 */
+	i2c_read8(1, 0x40, 0x6 + bank, &tmp);
+	i2c_write8(1, 0x40, 0x6 + bank, tmp & ~(1 << gpio));
+}
+
+/* Enable uservo USB. */
+static void init_uservo_port(void)
+{
+	/* Write USERVO_POWER_EN */
+	write_ioexpander(0, 7, 1);
+	/* Write USERVO_FASTBOOT_MUX_SEL */
+	write_ioexpander(1, 0, 0);
+}
+
+/* Enable all ioexpander outputs. */
+static void init_ioexpander(void)
+{
+	/* Write all GPIO to output 0 */
+	i2c_write8(1, 0x40, 0x2, 0x0);
+	i2c_write8(1, 0x40, 0x3, 0x0);
+	/* Write all GPIO to output direction */
+	i2c_write8(1, 0x40, 0x6, 0x0);
+	i2c_write8(1, 0x40, 0x7, 0x0);
+}
+
+
+static void board_init(void)
+{
+	/* Delay DUT hub to avoid brownout. */
+	usleep(1000);
+	gpio_set_flags(GPIO_DUT_HUB_USB_RESET_L, GPIO_OUT_HIGH);
+
+	/* Write USB3 Mode Enable to PS8742 USB/DP Mux. */
+	i2c_write8(1, 0x20, 0x0, 0x20);
+
+	/* Enable uservo USB by default. */
+	init_ioexpander();
+	init_uservo_port();
+
+#ifdef SECTION_IS_RW
+	rw_board_init();
+#endif
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
