@@ -95,7 +95,11 @@ CPPFLAGS+=$(foreach t,$(_tsk_cfg),-D$(t))
 _flag_cfg:=$(shell $(CPP) $(CPPFLAGS) -P -dM -Ichip/$(CHIP) -I$(BDIR) \
 	include/config.h | grep -o "\#define CONFIG_[A-Z0-9_]*" | \
 	cut -c9- | sort)
+_flag_cfg_rw:=$(shell $(CPP) $(CPPFLAGS) -P -dM -Ichip/$(CHIP) -I$(BDIR) \
+	-DSECTION_IS_RW include/config.h | grep -o "\#define CONFIG_[A-Z0-9_]*" | \
+	cut -c9- | sort)
 
+$(foreach c,$(_flag_cfg_rw),$(eval $(c)=rw))
 $(foreach c,$(_tsk_cfg) $(_flag_cfg),$(eval $(c)=y))
 
 ifneq "$(CONFIG_COMMON_RUNTIME)" "y"
@@ -125,8 +129,8 @@ $(eval CHIP_FAMILY_$(UC_CHIP_FAMILY)=y)
 
 # Private subdirectories may call this from their build.mk
 # First arg is the path to be prepended to configured *.o files.
-# Second arg is the config variable (ie, "FOO" to select with $(FOO-y)).
-objs_from_dir=$(foreach obj, $($(2)-y), $(1)/$(obj))
+# Second arg is the config variable (ie, "FOO" to select with $(FOO-$3)).
+objs_from_dir=$(foreach obj, $($(2)-$(3)), $(1)/$(obj))
 
 # Get build configuration from sub-directories
 # Note that this re-includes the board and chip makefiles
@@ -152,20 +156,20 @@ include util/signer/build.mk
 includes+=$(includes-y)
 
 # Get all sources to build
-all-obj-y+=$(call objs_from_dir,core/$(CORE),core)
-all-obj-y+=$(call objs_from_dir,chip/$(CHIP),chip)
-all-obj-y+=$(call objs_from_dir,$(BDIR),board)
-all-obj-y+=$(call objs_from_dir,private,private)
+all-obj-y+=$(call objs_from_dir,core/$(CORE),core,y)
+all-obj-y+=$(call objs_from_dir,chip/$(CHIP),chip,y)
+all-obj-y+=$(call objs_from_dir,$(BDIR),board,y)
+all-obj-y+=$(call objs_from_dir,private,private,y)
 ifneq ($(PDIR),)
-all-obj-y+=$(call objs_from_dir,$(PDIR),$(PDIR))
+all-obj-y+=$(call objs_from_dir,$(PDIR),$(PDIR),y)
 endif
-all-obj-y+=$(call objs_from_dir,common,common)
-all-obj-y+=$(call objs_from_dir,driver,driver)
-all-obj-y+=$(call objs_from_dir,power,power)
+all-obj-y+=$(call objs_from_dir,common,common,y)
+all-obj-y+=$(call objs_from_dir,driver,driver,y)
+all-obj-y+=$(call objs_from_dir,power,power,y)
 ifdef CTS_MODULE
-all-obj-y+=$(call objs_from_dir,cts,cts)
+all-obj-y+=$(call objs_from_dir,cts,cts,y)
 endif
-all-obj-y+=$(call objs_from_dir,test,$(PROJECT))
+all-obj-y+=$(call objs_from_dir,test,$(PROJECT),y)
 dirs=core/$(CORE) chip/$(CHIP) $(BDIR) common power test cts/common cts/$(CTS_MODULE)
 dirs+= private $(PDIR)
 dirs+=$(shell find driver -type d)
@@ -176,6 +180,22 @@ ro-objs := $(sort $(foreach obj, $(all-obj-y), $(out)/RO/$(obj)))
 else
 ro-objs := $(sort $(foreach obj, $(custom-ro_objs-y), $(out)/RO/$(obj)))
 endif
+
+# Get all sources to build
+all-obj-y+=$(call objs_from_dir,core/$(CORE),core,rw)
+all-obj-y+=$(call objs_from_dir,chip/$(CHIP),chip,rw)
+all-obj-y+=$(call objs_from_dir,$(BDIR),board,rw)
+all-obj-y+=$(call objs_from_dir,private,private,rw)
+ifneq ($(PDIR),)
+all-obj-y+=$(call objs_from_dir,$(PDIR),$(PDIR),rw)
+endif
+all-obj-y+=$(call objs_from_dir,common,common,rw)
+all-obj-y+=$(call objs_from_dir,driver,driver,rw)
+all-obj-y+=$(call objs_from_dir,power,power,rw)
+ifdef CTS_MODULE
+all-obj-y+=$(call objs_from_dir,cts,cts,rw)
+endif
+all-obj-y+=$(call objs_from_dir,test,$(PROJECT),rw)
 
 rw-objs := $(sort $(foreach obj, $(all-obj-y), $(out)/RW/$(obj)))
 
