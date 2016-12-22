@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_89dda5fe",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-22T00:57:49Z",
+      "side": 1,
+      "message": "okay, I will add else part and add comments here and also in header.",
+      "parentUuid": "b75ab266_4ebc330e",
+      "revId": "10317008ef7c8490feda42d771795af1760fd4f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_60c94648",
         "filename": "common/charger_profile_override.c",
         "patchSetId": 11
@@ -185,6 +203,30 @@
       "side": 1,
       "message": "I understand that. I\u0027m talking about this:\n\nenum fast_chg_voltage_ranges {\n\tVOLTAGE_RANGE_LOW,\n\tVOLTAGE_RANGE_HIGH,\n\tVOLTAGE_RANGE_NUM,\n};\n\n/* Charge profile override info */\nstruct fast_charge_profile {\n\t/* temperature in 10ths of a degree C */\n\tint temp_c;\n\tint current_mA[VOLTAGE_RANGE_NUM];\n};\n\nThen we just index into (*prev_chg_prof_info)-\u003ecurrent_mA[voltage_range] to get the requested current.",
       "parentUuid": "b75ab266_c0865269",
+      "range": {
+        "startLine": 86,
+        "startChar": 27,
+        "endLine": 86,
+        "endChar": 48
+      },
+      "revId": "10317008ef7c8490feda42d771795af1760fd4f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_09b875a2",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-22T00:57:49Z",
+      "side": 1,
+      "message": "okay sounds good",
+      "parentUuid": "b75ab266_0e819b4e",
       "range": {
         "startLine": 86,
         "startChar": 27,
