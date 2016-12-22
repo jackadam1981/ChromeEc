@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_30edd546",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-12-22T19:28:10Z",
+      "side": 1,
+      "message": "No reason. I\u0027m going to consolidate these into common and rw sections to simplify before checking in.",
+      "parentUuid": "b75ab266_f057dd41",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 0
+      },
+      "revId": "45e0399dd30dedfe70ec426a8a3047a2af532271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_702d8dc3",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_f02b5d92",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-12-22T19:28:10Z",
+      "side": 1,
+      "message": "Yes, all this will get refactored together.",
+      "parentUuid": "b75ab266_702d8dc3",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 475,
+        "endChar": 21
+      },
+      "revId": "45e0399dd30dedfe70ec426a8a3047a2af532271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_70446d95",
         "filename": "board/servo_v4/board.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-12-22T19:23:41Z",
       "side": 1,
       "message": "where is the actual #if/#else ...?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "45e0399dd30dedfe70ec426a8a3047a2af532271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_d0061940",
+        "filename": "board/servo_v4/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2016-12-22T19:28:10Z",
+      "side": 1,
+      "message": "As hopefully explained in the comment, the config preprocessing is only done once and shared over all sections. #ifdefs can\u0027t distinguish between configs in board.h",
+      "parentUuid": "b75ab266_70446d95",
       "range": {
         "startLine": 64,
         "startChar": 3,
