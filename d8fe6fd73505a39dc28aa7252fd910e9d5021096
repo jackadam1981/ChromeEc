@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_6903f1c2",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-22T02:29:32Z",
+      "side": 0,
+      "message": "Was it supposed to be if (!rv \u0026\u0026 (..)) ?",
+      "range": {
+        "startLine": 382,
+        "startChar": 6,
+        "endLine": 382,
+        "endChar": 11
+      },
+      "revId": "d8fe6fd73505a39dc28aa7252fd910e9d5021096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
