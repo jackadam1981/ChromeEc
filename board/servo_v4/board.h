@@ -11,21 +11,11 @@
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
 
-/* Enable USART1,3,4 and USB streams */
-#define CONFIG_STREAM_USART
-
-#define CONFIG_STREAM_USART3
-#define CONFIG_STREAM_USART4
-#define CONFIG_STREAM_USB
-#define CONFIG_CMD_USART_INFO
-
-/* Optional features */
-#define CONFIG_STM_HWTIMER32
-#define CONFIG_HW_CRC
 
 /* USB Configuration */
 #define CONFIG_USB
 #define CONFIG_USB_PID 0x501b
+#define CONFIG_STREAM_USB
 #define CONFIG_USB_CONSOLE
 #define CONFIG_USB_UPDATE
 
@@ -53,23 +43,51 @@
 #define USB_EP_UPDATE		6
 #define USB_EP_COUNT		7
 
-/* Enable control of GPIOs over USB */
-#define CONFIG_USB_GPIO
 /* Enable console recasting of GPIO type. */
 #define CONFIG_CMD_GPIO_EXTENDED
 
-/* This is not actually an EC so disable some features. */
-#undef CONFIG_WATCHDOG_HELP
-#undef CONFIG_LID_SWITCH
-
-/* Enable control of I2C over USB */
-#define CONFIG_USB_I2C
+/* I2C config. */
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #define I2C_PORT_MASTER 1
 
+#define CONFIG_STM_HWTIMER32
+
+
+/*
+ * Use extra features only in RW, so RO can be small.
+ * We can't use programmiatic RO/RW differentiation, so
+ * these configs are removed in custom-ro_objs-y in
+ * board/build.mk
+ */
+
+#ifdef SECTION_IS_RW
+
+/* Enable USART1,3,4 and USB streams */
+#define CONFIG_STREAM_USART
+#define CONFIG_STREAM_USART3
+#define CONFIG_STREAM_USART4
+#define CONFIG_CMD_USART_INFO
+
+/* Optional features */
+#define CONFIG_HW_CRC
+/* Enable control of GPIOs over USB */
+#define CONFIG_USB_GPIO
+
+/* Enable control of I2C over USB */
+#define CONFIG_USB_I2C
+
 /* PD features */
 #define CONFIG_ADC
+
+#else
+#define CONFIG_I2C_SLAVE
+#endif /*SECTION_IS_RW*/
+
+
+/* This is not actually an EC so disable some features. */
+#undef CONFIG_WATCHDOG_HELP
+#undef CONFIG_LID_SWITCH
 
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
