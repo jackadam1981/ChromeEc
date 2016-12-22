@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_2b38c3f9",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-12-22T23:54:00Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you meant by \u0027run off to\u0027 or \u0027bad proxy\u0027. There are only two zones: 13 \u003c angle \u003c 180 and 180 \u003c angle \u003c 373. For EC to recognize a valid mode, the lid angle has to stay in either of the zones consistently.\n\nPreviously, there are two functions. They\u0027re mutually exclusive. When one returns false, the other returns true and vice versa. It means we just need to call one of the functions. If the results are mixed (front and back), lid_angle_update is no-op.",
+      "parentUuid": "b75ab266_8baf5231",
+      "revId": "63423efe34cfca2d143ca1e1d253454bd403dbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_ab685632",
         "filename": "common/lid_angle.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_6b1bdb99",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-12-22T23:54:00Z",
+      "side": 1,
+      "message": "The code covers both front to back and back to front.",
+      "parentUuid": "b75ab266_ab685632",
+      "revId": "63423efe34cfca2d143ca1e1d253454bd403dbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_4b4c1ae3",
         "filename": "common/lid_angle.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2016-12-22T20:04:30Z",
       "side": 1,
       "message": "I don\u0027t think we should use the power button. I think we should be setting a reason and using the EC wake so that we can query for more data.",
+      "revId": "63423efe34cfca2d143ca1e1d253454bd403dbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_cbc667ab",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2016-12-22T23:54:00Z",
+      "side": 1,
+      "message": "Are you suggesting we do something similar to lpc_disable_wake_mask_for_lid_open?",
+      "parentUuid": "b75ab266_4b4c1ae3",
       "revId": "63423efe34cfca2d143ca1e1d253454bd403dbe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
