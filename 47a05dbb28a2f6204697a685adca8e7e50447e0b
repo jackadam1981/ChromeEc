@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_75f45faf",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-12-22T18:54:57Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "b75ab266_353667fa",
+      "range": {
+        "startLine": 39,
+        "startChar": 14,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "47a05dbb28a2f6204697a685adca8e7e50447e0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_7593bfab",
         "filename": "chip/g/dcrypto/rsa.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-12-22T18:47:48Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 279,
+        "startChar": 17,
+        "endLine": 279,
+        "endChar": 18
+      },
+      "revId": "47a05dbb28a2f6204697a685adca8e7e50447e0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_55f95ba3",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-12-22T18:54:57Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "b75ab266_7593bfab",
       "range": {
         "startLine": 279,
         "startChar": 17,
