@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_a91ce9dd",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-22T01:03:33Z",
+      "side": 1,
+      "message": "as we are planning to take VOLTAGE_RANGE_HIGH for everything else. We can remove vtg_high_limit_mV variable and keep only  vtg_low_limit_mV.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 38
+      },
+      "revId": "e860c128bb0c66995d487f5fa683d63c1fdc3ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
