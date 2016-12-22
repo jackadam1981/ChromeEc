@@ -22,6 +22,30 @@
       "revId": "bd060481d429026be62589226aab394affecb39b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_c9015dea",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2016-12-22T01:55:40Z",
+      "side": 1,
+      "message": "okay, I will change it",
+      "parentUuid": "b75ab266_e96421fc",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 32
+      },
+      "revId": "bd060481d429026be62589226aab394affecb39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
