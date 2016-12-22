@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_e96421fc",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-22T01:45:05Z",
+      "side": 1,
+      "message": "Or equal to. Please be explicit about the exclusivness of this field.",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 32
+      },
+      "revId": "bd060481d429026be62589226aab394affecb39b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
