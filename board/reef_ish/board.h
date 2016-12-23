@@ -29,8 +29,6 @@
 #undef  CONFIG_DEBUG_ASSERT
 #define CONFIG_CLOCK_CRYSTAL
 
-#define CONFIG_POLLING_UART
-
 /* EC */
 #define CONFIG_FPU
 #define CONFIG_I2C
