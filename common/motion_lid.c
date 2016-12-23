@@ -57,7 +57,10 @@
 #define TABLET_ZONE_LID_ANGLE FLOAT_TO_FP(300)
 #define LAPTOP_ZONE_LID_ANGLE FLOAT_TO_FP(240)
 
-static int tablet_mode = 1;
+#ifndef CONFIG_TABLET_MODE_DEFAULT_STATE
+#define CONFIG_TABLET_MODE_DEFAULT_STATE 1
+#endif
+static int tablet_mode = CONFIG_TABLET_MODE_DEFAULT_STATE;
 
 /*
  * We will change our tablet mode status when we are "convinced" that it has
