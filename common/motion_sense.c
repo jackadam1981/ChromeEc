@@ -436,6 +436,7 @@ static void motion_sense_switch_sensor_rate(void)
 				if (ret != EC_SUCCESS) {
 					CPRINTS("%s: %d: init failed: %d",
 						sensor->name, i, ret);
+					sensor->state = SENSOR_INIT_ERROR;
 				}
 			}
 		} else {
@@ -665,6 +666,7 @@ void motion_sense_task(void)
 	int i, ret, wait_us;
 	timestamp_t ts_begin_task, ts_end_task;
 	uint32_t event = 0;
+	uint16_t error_status;
 	uint16_t ready_status;
 	struct motion_sensor_t *sensor;
 #ifdef CONFIG_LID_ANGLE
@@ -689,6 +691,7 @@ void motion_sense_task(void)
 #endif
 	while (1) {
 		ts_begin_task = get_time();
+		error_status = 0;
 		ready_status = 0;
 		for (i = 0; i < motion_sensor_count; ++i) {
 
@@ -696,6 +699,10 @@ void motion_sense_task(void)
 
 			/* if the sensor is active in the current power state */
 			if (SENSOR_ACTIVE(sensor)) {
+				if (sensor->state == SENSOR_INIT_ERROR) {
+					error_status |= (1 << i);
+				}
+
 				if (sensor->state != SENSOR_INITIALIZED) {
 					continue;
 				}
@@ -757,6 +764,15 @@ void motion_sense_task(void)
 #endif
 #endif
 #ifdef CONFIG_LID_ANGLE
+		/*
+		 * If we failed to init the sensors required for lid angle,
+		 * fallback to laptop mode.
+		 */
+		if (error_status & lid_angle_sensors) {
+			tablet_set_mode(0);
+			hook_notify(HOOK_TABLET_MODE_CHANGE);
+		}
+
 		/*
 		 * Check to see that the sensors required for lid angle
 		 * calculation are ready.
