@@ -244,3 +244,20 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+static int command_rxtest(int argc, char **argv)
+{
+	int val = 0;
+
+	if (argc > 1 && !parse_bool(argv[1], &val))
+		return EC_ERROR_PARAM1;
+
+	ccprintf("rxtest %s\n", val ? "on" : "off");
+
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(rxtest, command_rxtest,
+			"[on|off]",
+			"ish rx uart test. type 'on' or 'off'");
+
