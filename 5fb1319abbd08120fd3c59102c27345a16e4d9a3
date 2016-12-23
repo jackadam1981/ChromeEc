@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_cb45c718",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-23T00:29:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75ab266_ab405356",
+      "revId": "5fb1319abbd08120fd3c59102c27345a16e4d9a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_8b6aafca",
         "filename": "common/motion_lid.c",
         "patchSetId": 7
@@ -36,6 +54,24 @@
       "writtenOn": "2016-12-22T23:41:52Z",
       "side": 1,
       "message": "Perhaps add Gwendal\u0027s derivation of this equation here (including the assumption of Average(A,B)~\u003d1g).",
+      "revId": "5fb1319abbd08120fd3c59102c27345a16e4d9a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_ab4a1323",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-23T00:29:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75ab266_8b6aafca",
       "revId": "5fb1319abbd08120fd3c59102c27345a16e4d9a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -113,6 +149,24 @@
       "side": 1,
       "message": "It might be nice to move those notes to a comment in the code instead of in the CL.",
       "parentUuid": "b75ab266_b568b732",
+      "revId": "5fb1319abbd08120fd3c59102c27345a16e4d9a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_0bf17fb2",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-23T00:29:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75ab266_b0aa8520",
       "revId": "5fb1319abbd08120fd3c59102c27345a16e4d9a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
