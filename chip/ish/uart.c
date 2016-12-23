@@ -57,17 +57,33 @@ int uart_init_done(void)
 
 void uart_tx_start(void)
 {
-	/* TBD for RX and interrupt enabled TX */
+	int id = 1; /* UART1 for ISH */
+
+	if ( REG8(IER(id) & IER_TDRQ) )
+		return;
+
+	/* TODO: disable low power mode while transmit */
+
+	REG8(IER(id)) |= IER_TDRQ;
+
+	task_trigger_irq(ISH_UART1_IRQ);
 }
 
 void uart_tx_stop(void)
 {
-	/* TBD for RX and interrupt enabled TX */
+	int id = 1; /* UART1 for ISH */
+
+	REG8(IER(id)) &= ~IER_TDRQ;
+
+	/* TODO: re-enable low power mode */
 }
 
 void uart_tx_flush(void)
 {
-	/* TBD for RX and interrupt enabled TX */
+	int id = 1; /* UART1 for ISH */
+
+	while (!(REG8(LSR(id)) & LSR_TEMT) )
+		;
 }
 
 int uart_tx_ready(void)
@@ -77,13 +93,14 @@ int uart_tx_ready(void)
 
 int uart_rx_available(void)
 {
-	/* No RX FIFO */
-	return 0;
+	int id = 1; /* UART1 for ISH */
+
+	return REG8(LSR(id)) & LSR_DR;
 }
 
 void uart_write_char(char c)
 {
-	int id = 1; /* In ISH, UART1 is assigned for console outpu */
+	int id = 1; /* In ISH, UART1 is assigned for console output */
 
 	/* Wait till reciever is ready */
 	while ((REG8(LSR(id)) & LSR_TEMT) == 0)
@@ -91,6 +108,31 @@ void uart_write_char(char c)
 
 	REG8(THR(id)) = c;
 }
+
+#if !defined(CONFIG_POLLING_UART)
+int uart_read_char(void)
+{
+	int id = 1; /* In ISH, UART1 is assigned for console output */
+
+	return REG8(RBR(id));
+}
+
+#if 0
+static void uart_clear_rx_fifo(int id)
+{
+	/* RX FIFO clear + FIFI Enable */
+	REG8(FCR(id)) |=  FCR_FIFO_ENABLE | FCR_RESET_RX;
+}
+#endif
+
+void uart_ec_interrupt(void)
+{
+	/* Read input FIFO until empty, then fill output FIFO */
+	uart_process_input();
+	uart_process_output();
+}
+DECLARE_IRQ(ISH_UART1_IRQ, uart_ec_interrupt); /* TODO: 'priority' */
+#endif /* !defined(CONFIG_POLLING_UART) */
 
 static int uart_return_baud_rate_by_id(int baud_rate_id)
 {
@@ -147,8 +189,11 @@ static void uart_hw_init(enum UART_PORT id)
 
 	/* clear the port */
 	REG8(RBR(ctx->id));
+#ifdef CONFIG_POLLING_UART
 	REG8(IER(ctx->id)) = 0x00;
-
+#else
+	REG8(IER(ctx->id)) = 0x01;
+#endif
 	interrupt_enable();
 }
 
