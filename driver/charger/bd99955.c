@@ -535,15 +535,24 @@ int charger_get_status(int *status)
 int charger_set_mode(int mode)
 {
 	int rv;
+	static int charge_en_prev = -1;
 
-	if (mode & CHARGE_FLAG_INHIBIT_CHARGE) {
+	if (charge_en_prev && (mode & CHARGE_FLAG_INHIBIT_CHARGE)) {
 		rv = bd99955_set_vsysreg(BD99955_DISCHARGE_VSYSREG);
 		msleep(50);
 		rv |= bd99955_charger_enable(0);
-	} else {
+		charge_en_prev = 0;
+	} else if (charge_en_prev == -1 || !charge_en_prev) {
 		rv = bd99955_charger_enable(1);
-		msleep(1);
+		/*
+		 * BGATE capacitor max : 0.1uF + 20%
+		 * Charge MOSFET threshold max : 2.8V
+		 * BGATE charge pump current min : 3uA
+		 * T = C * V / I so, Tmax = 112ms
+		 */
+		msleep(115);
 		rv |= bd99955_set_vsysreg(BD99955_CHARGE_VSYSREG);
+		charge_en_prev = 1;
 	}
 	if (rv)
 		return rv;
