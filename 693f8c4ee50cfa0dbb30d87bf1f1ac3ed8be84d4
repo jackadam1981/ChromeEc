@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_72be2762",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-26T16:07:25Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to apply the extra delay based on VBAT_VAL voltage instead?",
+      "range": {
+        "startLine": 545,
+        "startChar": 2,
+        "endLine": 545,
+        "endChar": 61
+      },
+      "revId": "693f8c4ee50cfa0dbb30d87bf1f1ac3ed8be84d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
