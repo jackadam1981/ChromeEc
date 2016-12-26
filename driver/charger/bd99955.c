@@ -542,7 +542,10 @@ int charger_set_mode(int mode)
 		rv |= bd99955_charger_enable(0);
 	} else {
 		rv = bd99955_charger_enable(1);
-		msleep(1);
+		if (battery_get_disconnect_state() == BATTERY_DISCONNECTED)
+			msleep(50);
+		else
+			msleep(1);
 		rv |= bd99955_set_vsysreg(BD99955_CHARGE_VSYSREG);
 	}
 	if (rv)
