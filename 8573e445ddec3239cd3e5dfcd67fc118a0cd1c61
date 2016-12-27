@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_28d71edd",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T18:44:09Z",
+      "side": 1,
+      "message": "false if boolean.",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_48ced246",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T18:44:09Z",
+      "side": 1,
+      "message": "set a vector (like in bmi160.c)",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_a80cceb4",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T18:44:09Z",
+      "side": 1,
+      "message": "put this console command within #ifdef if we need space but still want some sensor autotest to work.",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_e8dd26fd",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T18:44:09Z",
+      "side": 1,
+      "message": "another way is to set v to s-\u003espoof_xyz",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_48b532ab",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T18:44:09Z",
+      "side": 1,
+      "message": "order alphabetically.",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_c8c9424a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T18:44:09Z",
+      "side": 1,
+      "message": "Looking at MOTIONSENSE_CMD_SENSOR_OFFSET, you should use packed, and add a rsvd filed after spoof_enable.",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_28aefe64",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2160,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T18:44:09Z",
+      "side": 1,
+      "message": "use an array.",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_68b8f6a3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2246,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T18:44:09Z",
+      "side": 1,
+      "message": "add spoof to line 2208",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_e5d70f0c",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T18:44:09Z",
+      "side": 1,
+      "message": "bool\nDoes it make sense to put it near other bool/int8 to see if we can save space by compaction?",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_0505e3c3",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3983,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T18:44:09Z",
+      "side": 1,
+      "message": "\u0027else\u0027 on the same line as \u0027}\u0027",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_a5dd1730",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3990,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T18:44:09Z",
+      "side": 1,
+      "message": "use a loop",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
