@@ -46,6 +46,30 @@
       "revId": "b18b969e3c627f8e47637a68d047cf345607775e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_e32c2760",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-12-27T22:59:41Z",
+      "side": 1,
+      "message": "\u003e well, we don\u0027t want to delay booting the kernel, this is why we are doing all this delayed commit in the first place.\n\nRight. I just thought the idea was to delay committing until the very last moment, so that there\u0027s only one commit per boot, instead of multiple - one for each command that updates nvram. That still speeds up booting the kernel.\n\n\u003e Note that as far as TPM is concerned even with delayed commits the NVRAM is fully functional unless there are crash or powercycle. \n\nCorrect. But if we reboot w/o sending a single PCR_Read, all nvram changes are lost. As I understand, even if we do it in a orderly manner and send Shutdown (which is supposed to save nvram) - is that correct? \n\n\u003e If someone comes up with a dev image which does not read PCRs - the worst thing which happens is that their nvram changes would be lost on TPM crashes/H1 power cycles. \n\nAs I understand, that also means losing any updates to DA counter. And an unorderly shutdown probably won\u0027t be detected either, since we just go back to the same nvram contents that were there when we booted. That gives unlimited attempts at brute-forcing the security. As of now, it\u0027s still limited by the fact that (a) you need a custom dev image for that, so can brute-force only dev mode systems, (b) without PCR_Read our \"bad firmware update\" protection will kick in.\n\nStill, if PCR_Read is not sent, that means all persistent changes are lost on TPM reset. We can probably live with that patch for now, but I\u0027d prefer something else as a longer term solution.\n\n\u003e We might want to fine tune all this, but adding this command in depthcharge on recovery path seems necessary in all cases.\n\nMay be I\u0027m wrong, but my suggestion is to always turn on commits in depthcharge before (1) passing control to kernel - recovery mode or not, (2) resetting without booting any kernel at all - still, all changes made by firmware in tpm nvram must be preserved during an orderly reboot.",
+      "parentUuid": "b75ab266_0384bb5e",
+      "range": {
+        "startLine": 800,
+        "startChar": 4,
+        "endLine": 800,
+        "endChar": 24
+      },
+      "revId": "b18b969e3c627f8e47637a68d047cf345607775e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
