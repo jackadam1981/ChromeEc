@@ -22,6 +22,30 @@
       "revId": "b18b969e3c627f8e47637a68d047cf345607775e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_0384bb5e",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-27T22:40:33Z",
+      "side": 1,
+      "message": "well, we don\u0027t want to delay booting the kernel, this is why we are doing all this delayed commit in the first place.\n\nFor the purposes of Chrome OS reading PCR is going to happen on startup.\n\nIf someone comes up with a dev image which does not read PCRs - the worst thing which happens is that their nvram changes would be lost on TPM crashes/H1 power cycles. \n\nNote that as far as TPM is concerned even with delayed commits the NVRAM is fully functional unless there are crash or powercycle. \n\nOtherwise what happens is that the NVRAM cache in SRAM stays on and is used all along.\n\nWe might want to fine tune all this, but adding this command in depthcharge on recovery path seems necessary in all cases.",
+      "parentUuid": "b75ab266_a36a2fca",
+      "range": {
+        "startLine": 800,
+        "startChar": 4,
+        "endLine": 800,
+        "endChar": 24
+      },
+      "revId": "b18b969e3c627f8e47637a68d047cf345607775e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
