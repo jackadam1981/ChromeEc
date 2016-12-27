@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_6868f6cd",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-27T21:01:08Z",
+      "side": 1,
+      "message": "As far as I\u0027m aware, we don\u0027t use bool in the EC code base.",
+      "parentUuid": "b75ab266_28d71edd",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_48ced246",
         "filename": "common/motion_sense.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2016-12-27T18:44:09Z",
       "side": 1,
       "message": "set a vector (like in bmi160.c)",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_48ea522e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-27T21:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75ab266_48ced246",
       "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_e818865d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-27T21:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75ab266_a80cceb4",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_e8dd26fd",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2016-12-27T18:44:09Z",
       "side": 1,
       "message": "another way is to set v to s-\u003espoof_xyz",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_c8af8230",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-27T21:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75ab266_e8dd26fd",
       "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_a8720e01",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-27T21:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75ab266_48b532ab",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_c8c9424a",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
@@ -98,6 +188,24 @@
       "writtenOn": "2016-12-27T18:44:09Z",
       "side": 1,
       "message": "Looking at MOTIONSENSE_CMD_SENSOR_OFFSET, you should use packed, and add a rsvd filed after spoof_enable.",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_e827e6e1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-27T21:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75ab266_c8c9424a",
       "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_c82ca2c7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2160,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-27T21:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75ab266_28aefe64",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_68b8f6a3",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
@@ -132,6 +258,24 @@
       "writtenOn": "2016-12-27T18:44:09Z",
       "side": 1,
       "message": "add spoof to line 2208",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_881bca98",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2246,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-27T21:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75ab266_68b8f6a3",
       "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "d72d6695_2d78a465",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-27T21:01:08Z",
+      "side": 1,
+      "message": "Yes, I suppose that makes sense to place it near the other 8-bit members.",
+      "parentUuid": "b75ab266_e5d70f0c",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_0505e3c3",
         "filename": "util/ectool.c",
         "patchSetId": 6
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_484c128d",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3983,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-27T21:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75ab266_0505e3c3",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_a5dd1730",
         "filename": "util/ectool.c",
         "patchSetId": 6
@@ -183,6 +363,24 @@
       "writtenOn": "2016-12-27T18:44:09Z",
       "side": 1,
       "message": "use a loop",
+      "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_a86a0eca",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3990,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2016-12-27T21:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75ab266_a5dd1730",
       "revId": "8573e445ddec3239cd3e5dfcd67fc118a0cd1c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
