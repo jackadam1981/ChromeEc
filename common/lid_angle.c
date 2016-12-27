@@ -15,6 +15,7 @@
 #include "math_util.h"
 #include "motion_lid.h"
 #include "motion_sense.h"
+#include "power_button.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_LIDANGLE, outstr)
@@ -77,29 +78,6 @@ static int lid_in_range_to_enable_peripherals(int ang)
 		(ang <= (wake_large_angle - LID_ANGLE_HYSTERESIS_DEG));
 }
 
-/**
- * Determine if given angle is in region to ignore peripherals.
- *
- * @param ang Some lid angle in degrees [0, 360]
- *
- * @return true/false
- */
-static int lid_in_range_to_ignore_peripherals(int ang)
-{
-	/*
-	 * If the wake large angle is min or max, then this function should
-	 * return true or false respectively, independent of input angle.
-	 */
-	if (wake_large_angle == LID_ANGLE_MIN_LARGE_ANGLE)
-		return 1;
-	else if (wake_large_angle == LID_ANGLE_MAX_LARGE_ANGLE)
-		return 0;
-
-	return  (ang <= (wake_small_angle - LID_ANGLE_HYSTERESIS_DEG)) ||
-		(ang >= (wake_large_angle + LID_ANGLE_HYSTERESIS_DEG));
-}
-
-
 int lid_angle_get_wake_angle(void)
 {
 	return wake_large_angle;
@@ -115,15 +93,22 @@ void lid_angle_set_wake_angle(int ang)
 	wake_large_angle = ang;
 }
 
-void lid_angle_update(int lid_ang)
+enum lid_angle_state {
+	LID_ANGLE_UNKNOWN,
+	LID_ANGLE_FRONT,
+	LID_ANGLE_BACK, /* Including small zone (0 ~ wake_small_angle) */
+};
+
+void lid_angle_update(int angle)
 {
 	static int lidangle_buffer[LID_ANGLE_BUFFER_SIZE];
 	static int index;
+	static enum lid_angle_state last_state = LID_ANGLE_UNKNOWN;
+	enum lid_angle_state this_state = LID_ANGLE_UNKNOWN;
 	int i;
-	int accept = 1, ignore = 1;
 
 	/* Record most recent lid angle in circular buffer. */
-	lidangle_buffer[index] = lid_ang;
+	lidangle_buffer[index] = angle;
 	index = (index == LID_ANGLE_BUFFER_SIZE-1) ? 0 : index+1;
 
 	/*
@@ -139,20 +124,33 @@ void lid_angle_update(int lid_ang)
 			return;
 
 		/*
-		 * Force all elements of the lid angle buffer to be
-		 * in range of one of the conditions in order to change
-		 * to the corresponding peripheral state.
+		 * Force all lid angles to be the same. If one entry says
+		 * BACk and another says FRONT (or vice versa), we return.
 		 */
-		if (!lid_in_range_to_enable_peripherals(lidangle_buffer[i]))
-			accept = 0;
-		if (!lid_in_range_to_ignore_peripherals(lidangle_buffer[i]))
-			ignore = 0;
+		if (lid_in_range_to_enable_peripherals(lidangle_buffer[i])) {
+			if (this_state == LID_ANGLE_BACK)
+				return;
+			this_state = LID_ANGLE_FRONT;
+		} else {
+			if (this_state == LID_ANGLE_FRONT)
+				return;
+			this_state = LID_ANGLE_BACK;
+		}
 	}
 
-	/* Enable or disable peripherals as necessary. */
-	if (accept)
+	/* We reach here only if we're confident in the lid position (front or
+	 * back). */
+
+	/* If there is no mode transition, do nothing */
+	if (this_state == last_state)
+		return;
+
+	last_state = this_state;
+
+	/* Enable or disable peripherals. */
+	if (this_state == LID_ANGLE_FRONT)
 		lid_angle_peripheral_enable(1);
-	else if (ignore && !accept)
+	else /* this_state == LID_ANGLE_BACK */
 		lid_angle_peripheral_enable(0);
 }
 
