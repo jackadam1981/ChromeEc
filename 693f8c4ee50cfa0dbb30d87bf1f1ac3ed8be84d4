@@ -22,6 +22,30 @@
       "revId": "693f8c4ee50cfa0dbb30d87bf1f1ac3ed8be84d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_45335b08",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1001272
+      },
+      "writtenOn": "2016-12-27T13:43:29Z",
+      "side": 1,
+      "message": "Rohm introduce its ideal delay time should be 112ms which is huge huge time. I\u0027m still scared because charge_request will become like stack. I tested this delay, but for now there is no side effect. But I asked to use VBAT value(but how threshold is it? could be reliable?) because we had been no problem at normal starting of charging(but rohm still has concern).\nAnyway for now, this is code which rohm want.",
+      "parentUuid": "b75ab266_72be2762",
+      "range": {
+        "startLine": 545,
+        "startChar": 2,
+        "endLine": 545,
+        "endChar": 61
+      },
+      "revId": "693f8c4ee50cfa0dbb30d87bf1f1ac3ed8be84d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
