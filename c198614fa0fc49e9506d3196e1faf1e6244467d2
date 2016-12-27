@@ -1,0 +1,259 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_03383b2b",
+        "filename": "driver/accel_lis2dh.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:26:40Z",
+      "side": 1,
+      "message": "you could have the fifo array on the stack.",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_c32c83c7",
+        "filename": "driver/accel_lis2dh.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:26:40Z",
+      "side": 1,
+      "message": "fifo can be load_fifo_stack.",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_e32707e2",
+        "filename": "driver/accel_lis2dh.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:26:40Z",
+      "side": 1,
+      "message": "you may want to add a CPRINTF here to indicate why you failed. (which write failed for instance).",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_43335308",
+        "filename": "driver/build.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:26:40Z",
+      "side": 1,
+      "message": "use a single line.",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_232c5fab",
+        "filename": "driver/st_commons.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:26:40Z",
+      "side": 1,
+      "message": "always true (AUTO_INC always specified and n \u003e 1, we are reading at least one sample (6 bytes).",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_633657fb",
+        "filename": "driver/st_commons.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:26:40Z",
+      "side": 1,
+      "message": "rename axis as v, to be consistent with other drivers.",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_03b15b91",
+        "filename": "driver/st_commons.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:26:40Z",
+      "side": 1,
+      "message": "Add prefix to avoid name collision.",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_c325a3d3",
+        "filename": "driver/st_commons.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:26:40Z",
+      "side": 1,
+      "message": "Do not compile out CPRINTF, it will make debug of problem in the wide more difficult.",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_03079b3d",
+        "filename": "driver/st_commons.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:26:40Z",
+      "side": 1,
+      "message": "no need, let\u0027s keep meaningful debug information in.",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_43119372",
+        "filename": "driver/st_commons.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:26:40Z",
+      "side": 1,
+      "message": "unused",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_c3af6330",
+        "filename": "driver/st_commons.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:26:40Z",
+      "side": 1,
+      "message": "remove, use OUT_XYZ_SIZE directly.",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_23f3bf2c",
+        "filename": "driver/st_commons.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:26:40Z",
+      "side": 1,
+      "message": "in stack",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_83044b35",
+        "filename": "driver/st_commons.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:26:40Z",
+      "side": 1,
+      "message": "unused.",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_03f03b1c",
+        "filename": "driver/st_commons.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:26:40Z",
+      "side": 1,
+      "message": "unused",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_c34643c2",
+        "filename": "include/config.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:26:40Z",
+      "side": 1,
+      "message": "Why do you need 2 buffer? the motion sensor task will call load_fifo for one sensor after the next, so the buffer can be reused.",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
