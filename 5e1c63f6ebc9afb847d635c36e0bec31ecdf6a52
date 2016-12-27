@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_e39f079b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2731,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-27T22:42:02Z",
+      "side": 1,
+      "message": "I understand we can remove this todo here, given rsvd below will align [fifo_]info to the next 4 bytes boundary.\nIs it better to remove rsvd and add \nstruct __ec_align_offset4 ec_response_motion_sense_fifo_info info; ?",
+      "revId": "5e1c63f6ebc9afb847d635c36e0bec31ecdf6a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
