@@ -70,6 +70,30 @@
       "revId": "b18b969e3c627f8e47637a68d047cf345607775e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_2308dfda",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-27T23:14:06Z",
+      "side": 1,
+      "message": "\u003e But if we reboot w/o sending a single PCR_Read, all nvram changes are lost.\n\nnot really - the changes stay in SRAM cache. The only case where we lose them is if H1 crashes or powercycles.\n\nWe can add saving nvram to processing of the tpm shutdown command, just in case.\n\nWe are wiping out the TPM when transitioning from normal to dev image, at least this is the plan. So, if someone comes up with a dev image to avoid nvram savings, they will start with an empty nvram.\n\nI really do not want to spend any extra time before starting the kernel, this is the whole point of this exercise.\n\nadding nvram commit in case we are resetting AND there are uncommitted changes - this is a good idea and it will not cause performance hit on a normal boot. Will this make this patch more accepptable?",
+      "parentUuid": "b75ab266_e32c2760",
+      "range": {
+        "startLine": 800,
+        "startChar": 4,
+        "endLine": 800,
+        "endChar": 24
+      },
+      "revId": "b18b969e3c627f8e47637a68d047cf345607775e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
