@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_a36a2fca",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2016-12-27T22:30:01Z",
+      "side": 1,
+      "message": "Shall we just do it before passing control to the kernel instead of waiting for a PCR_Read from it?\nIf the kernel never calls PCR_Read, will the NVRAM be committed during Shutdown, for example? If not, then an attacker can load its own kernel, try picking up the password, and reboot if unsuccessful, w/o sending PCR_Read, and not cause the DA counter to increment. Or, there could be other cases when an important NVRAM commit is lost.",
+      "range": {
+        "startLine": 800,
+        "startChar": 4,
+        "endLine": 800,
+        "endChar": 24
+      },
+      "revId": "b18b969e3c627f8e47637a68d047cf345607775e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
