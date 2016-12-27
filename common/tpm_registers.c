@@ -730,6 +730,8 @@ static void tpm_reset_now(int wipe_first)
 	 * reset, this is the place to do it.
 	 */
 
+	/* Prevent NVRAM commits until further notice. */
+	nvmem_disable_commits();
 
 	/* Re-initialize our registers */
 	tpm_init();
@@ -793,8 +795,10 @@ void tpm_task(void)
 			 * TODO(vbendeb): revisit this when
 			 * crosbug.com/p/55667 has been addressed.
 			 */
-			if (command_code == TPM2_PCR_Read)
+			if (command_code == TPM2_PCR_Read) {
 				system_process_retry_counter();
+				nvmem_enable_commits();
+			}
 #ifdef CONFIG_EXTENSION_COMMAND
 			if (!IS_CUSTOM_CODE(command_code))
 #endif
