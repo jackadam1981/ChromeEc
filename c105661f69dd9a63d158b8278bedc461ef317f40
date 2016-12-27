@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_055b233e",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2016-12-27T15:09:49Z",
+      "side": 1,
+      "message": "This is fine, but please add a check for the current enable state, so that we don\u0027t needlessly delay when charger_set_mode(1) is called consecutively (and the same goes for msleep(50) case above).",
+      "range": {
+        "startLine": 545,
+        "startChar": 1,
+        "endLine": 551,
+        "endChar": 14
+      },
+      "revId": "c105661f69dd9a63d158b8278bedc461ef317f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
