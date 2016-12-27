@@ -49,6 +49,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_8511f3cb",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-27T06:15:34Z",
+      "side": 1,
+      "message": "moved host stuff into a separate file in test/",
+      "parentUuid": "5a7fdbe6_b36e163d",
+      "revId": "1e3066ed8d93ebc45e50a71dc07d67af42d37b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a322788_36ff383e",
         "filename": "common/shmalloc.c",
         "patchSetId": 2
@@ -138,6 +156,24 @@
         "endLine": 80,
         "endChar": 63
       },
+      "revId": "1e3066ed8d93ebc45e50a71dc07d67af42d37b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_e516efc0",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-27T06:15:34Z",
+      "side": 1,
+      "message": "made use of  headers in the allocated buffers.",
+      "parentUuid": "5a7fdbe6_f3b16e91",
       "revId": "1e3066ed8d93ebc45e50a71dc07d67af42d37b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
