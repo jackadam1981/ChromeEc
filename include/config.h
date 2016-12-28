@@ -114,7 +114,6 @@
  * Some ALS modules may be connected to the EC. We need the command, and
  * specific drivers for each module.
  */
-#undef CONFIG_ALS
 #undef CONFIG_ALS_AL3010
 #undef CONFIG_ALS_ISL29035
 #undef CONFIG_ALS_OPT3001
