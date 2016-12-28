@@ -354,7 +354,6 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 				tablet_set_mode(new_tablet_mode);
 				CPRINTS("TM %d %d deg", tablet_get_mode(),
 					*lid_angle);
-				hook_notify(HOOK_TABLET_MODE_CHANGE);
 				return reliable;
 			}
 			tablet_mode_debounce_cnt--;
