@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "778bdae0_8949c1ac",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-12-28T01:37:13Z",
+      "side": 1,
+      "message": "I think declaring both GPIOs and VW signals is better. Please refer https://chromium.googlesource.com/chromiumos/platform/ec/+/master/board/wheatley/board.c#105. If you wnat to save GPIOs for the other purposes, just add the definition \"CONFIG_ESPI_VE_SIGNAL\" back.",
+      "revId": "ecce87892c9de3be8a95ac816f0a07cfa3cf11c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "778bdae0_69447d95",
+        "filename": "board/poppy/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2016-12-28T01:37:13Z",
+      "side": 1,
+      "message": "CONFIG_ESPI_VW_SIGNALS means ec wants to replace GPIOs with VW signals. Since you use GPIO pins directly for SLP_S3 and SLP_S4 in power_signal_list[], we should change this line to \"#undef CONFIG_ESPI_VW_SIGNALS\".",
+      "revId": "ecce87892c9de3be8a95ac816f0a07cfa3cf11c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
