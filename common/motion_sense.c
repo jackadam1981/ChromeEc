@@ -436,6 +436,17 @@ static void motion_sense_switch_sensor_rate(void)
 				if (ret != EC_SUCCESS) {
 					CPRINTS("%s: %d: init failed: %d",
 						sensor->name, i, ret);
+#ifdef CONFIG_TABLET_MODE
+					/*
+					 * No tablet mode allowed if an accel
+					 * is not working.
+					 */
+					if (i == CONFIG_LID_ANGLE_SENSOR_BASE ||
+					    i == CONFIG_LID_ANGLE_SENSOR_LID) {
+						tablet_set_mode(0);
+						hook_notify(HOOK_TABLET_MODE_CHANGE);
+					}
+#endif
 				}
 			}
 		} else {
