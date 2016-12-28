@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "hooks.h"
+
 /* Return 1 if in tablet mode, 0 otherwise */
 static int tablet_mode = 1;
 
@@ -14,5 +16,6 @@ int tablet_get_mode(void)
 void tablet_set_mode(int mode)
 {
 	tablet_mode = mode;
+	hook_notify(HOOK_TABLET_MODE_CHANGE);
 }
 
