@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_f4fe9fb8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-28T19:16:47Z",
+      "side": 1,
+      "message": "state already set in motion_sense_init.",
+      "revId": "2a4d313b8f949bb655662738c36d0f4223252a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_d4f1dbe5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2016-12-28T19:16:47Z",
+      "side": 1,
+      "message": "We would enter this only once, I prefer to do that check in the init routine.",
+      "revId": "2a4d313b8f949bb655662738c36d0f4223252a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
