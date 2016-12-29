@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_10e358bf",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-29T22:02:34Z",
+      "side": 1,
+      "message": "My point is that this is global. If nvmem is global as well, then the tpm task is just asserting control for all users. I\u0027m not sure if that\u0027s expected, but I could imagine people being confused by some other task not allowing their commits to go through.",
+      "parentUuid": "b75ab266_b086ecfd",
+      "revId": "c0a80397f55222e25c4ec5d8d7e97f9c6788a5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_e5f424b1",
         "filename": "common/nvmem.c",
         "patchSetId": 3
