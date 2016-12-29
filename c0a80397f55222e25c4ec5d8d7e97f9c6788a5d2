@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_504f90db",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-29T22:17:59Z",
+      "side": 1,
+      "message": "re calling this during firmware update: good point, usb_updater will have to be enhances to send the venfor command to commit NVMEM.",
+      "parentUuid": "b75ab266_b02a6cec",
+      "revId": "c0a80397f55222e25c4ec5d8d7e97f9c6788a5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_e5f424b1",
         "filename": "common/nvmem.c",
         "patchSetId": 3
@@ -178,6 +196,24 @@
       "writtenOn": "2016-12-29T22:09:50Z",
       "side": 1,
       "message": "It looks like these functions need to only be called by the same task or from a place when everything is quiesced.",
+      "revId": "c0a80397f55222e25c4ec5d8d7e97f9c6788a5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_b05c2c95",
+        "filename": "include/nvmem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-29T22:17:59Z",
+      "side": 1,
+      "message": "I\u0027ll add a comment.",
+      "parentUuid": "b75ab266_30177cbf",
       "revId": "c0a80397f55222e25c4ec5d8d7e97f9c6788a5d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
