@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_b086ecfd",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-29T21:57:53Z",
+      "side": 1,
+      "message": "the nvmem library works as promised unless nvmem_disable_commits() is invoked. And it is invoked by the TPM task, which is fully aware of the implications.\n\nI don\u0027t see availability of this capability as a problem.\n\nI don\u0027t believe there is anything during startup which would cause problems if it were not committed before a reset. \n\nMoreover, If there is no H1 reboot - the cache will be committed on TPM reset, so there is no difference whatsoever.\n\nIf there is an H1 reboot - the TPM would start from the NVRAM contents during the earlier start, worse comes to worst rollback counters might have to be incremented again.\n\nIn any case I suggest we discuss the concerns on the bug.",
+      "parentUuid": "b75ab266_05ddd82a",
+      "revId": "c0a80397f55222e25c4ec5d8d7e97f9c6788a5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_e5f424b1",
         "filename": "common/nvmem.c",
         "patchSetId": 3
@@ -42,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_f0686465",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-29T21:57:53Z",
+      "side": 1,
+      "message": "ah, skept is not a word, will change.",
+      "parentUuid": "b75ab266_e5f424b1",
+      "revId": "c0a80397f55222e25c4ec5d8d7e97f9c6788a5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_a5398c91",
         "filename": "common/tpm_registers.c",
         "patchSetId": 3
@@ -53,6 +89,24 @@
       "writtenOn": "2016-12-29T21:46:23Z",
       "side": 1,
       "message": "This deserves a comment about why this is being done here.",
+      "revId": "c0a80397f55222e25c4ec5d8d7e97f9c6788a5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_9083e8ed",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-29T21:57:53Z",
+      "side": 1,
+      "message": "will add.",
+      "parentUuid": "b75ab266_a5398c91",
       "revId": "c0a80397f55222e25c4ec5d8d7e97f9c6788a5d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
