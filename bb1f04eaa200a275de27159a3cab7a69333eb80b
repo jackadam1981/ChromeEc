@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_4a619fba",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-29T18:12:48Z",
+      "side": 1,
+      "message": "what was the point of changing the parameter name to angle from lid_ang?",
+      "revId": "bb1f04eaa200a275de27159a3cab7a69333eb80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_0af7a7d9",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-29T18:12:48Z",
+      "side": 1,
+      "message": "K",
+      "range": {
+        "startLine": 128,
+        "startChar": 8,
+        "endLine": 128,
+        "endChar": 9
+      },
+      "revId": "bb1f04eaa200a275de27159a3cab7a69333eb80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_6a6463cd",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-29T18:12:48Z",
+      "side": 1,
+      "message": "Why not just have this function return the LID_ANGLE_* enum value? There\u0027s only this caller so just have it return the correct FRONT/BACK.",
+      "revId": "bb1f04eaa200a275de27159a3cab7a69333eb80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
