@@ -34,6 +34,24 @@
       "revId": "60359463ef32dff50bc91392646170c68cf46fe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_30f01c70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-29T22:11:26Z",
+      "side": 1,
+      "message": "Why not just do a time based commit? Still have this vendor command but also have a timeout that automatically commits nvmem after a certain amount of time.",
+      "parentUuid": "b75ab266_b0d1cce6",
+      "revId": "60359463ef32dff50bc91392646170c68cf46fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
