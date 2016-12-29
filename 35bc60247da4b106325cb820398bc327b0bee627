@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_8abbb76e",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-29T15:49:00Z",
+      "side": 1,
+      "message": "Should we unconditionally call this or do it when mode !\u003d table_mode?",
+      "revId": "35bc60247da4b106325cb820398bc327b0bee627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
