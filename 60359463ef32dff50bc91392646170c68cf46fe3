@@ -70,6 +70,24 @@
       "revId": "60359463ef32dff50bc91392646170c68cf46fe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_30fadc00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-29T23:10:07Z",
+      "side": 1,
+      "message": "You may not have to pass a message. Just setting an event on the task could be picked up. Just a thought such that things aren\u0027t arbitrary w.r.t. what command is sent (PCR read). On reset we have the commits and whenever a timer expires from tpm reset we have commits. Something to think about.",
+      "parentUuid": "b75ab266_9032c84a",
+      "revId": "60359463ef32dff50bc91392646170c68cf46fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
