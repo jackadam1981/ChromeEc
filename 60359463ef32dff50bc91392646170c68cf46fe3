@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_50ab1053",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-29T21:59:41Z",
+      "side": 1,
+      "message": "In the other change you are writing nv commits in the tpm init path. Why wouldn\u0027t we be hitting that path where we need this explicit command? Battery cutoff winning the race with a reset?",
+      "revId": "60359463ef32dff50bc91392646170c68cf46fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
