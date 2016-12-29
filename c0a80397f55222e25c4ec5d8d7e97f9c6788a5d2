@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_7009f496",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-29T22:11:42Z",
+      "side": 1,
+      "message": "ah, I see what you mean.  I don\u0027t think this is a problem, as the presence of the TPM task makes the code the TPM application, which we fully control and in which we are not doing anything with nvram system boot up.\n\nthis is the price I am willing to pay to speed things up. Do you think something else needs to be done here?",
+      "parentUuid": "b75ab266_10e358bf",
+      "revId": "c0a80397f55222e25c4ec5d8d7e97f9c6788a5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_e5f424b1",
         "filename": "common/nvmem.c",
         "patchSetId": 3
