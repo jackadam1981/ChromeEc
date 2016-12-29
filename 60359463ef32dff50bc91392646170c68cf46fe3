@@ -52,6 +52,24 @@
       "revId": "60359463ef32dff50bc91392646170c68cf46fe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_9032c84a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-29T22:21:07Z",
+      "side": 1,
+      "message": "I don\u0027t think this would be a justifiable complication.  \n\nAdding a timer, adding message passing to the tpm task  (as commit will have to happen on is context) all for very little gain.",
+      "parentUuid": "b75ab266_30f01c70",
+      "revId": "60359463ef32dff50bc91392646170c68cf46fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
