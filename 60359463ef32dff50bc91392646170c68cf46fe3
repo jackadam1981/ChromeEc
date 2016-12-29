@@ -16,6 +16,24 @@
       "revId": "60359463ef32dff50bc91392646170c68cf46fe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_b0d1cce6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2016-12-29T22:03:17Z",
+      "side": 1,
+      "message": "one case is where the device sits in revcovery mode.\n\nThere also is a sentiment (which I agree with) making this a side effect of PCR read is not as robust as having this enabled on purpose.\n\nAlso, fine tuning the moment when this command is issued could allow to shorten boot time a bit more (this remains debatable).",
+      "parentUuid": "b75ab266_50ab1053",
+      "revId": "60359463ef32dff50bc91392646170c68cf46fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
