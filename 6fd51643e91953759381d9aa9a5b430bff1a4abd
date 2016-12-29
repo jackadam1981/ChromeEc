@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_3073fc56",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-29T21:56:23Z",
+      "side": 1,
+      "message": "sizeof(data)",
+      "range": {
+        "startLine": 70,
+        "startChar": 38,
+        "endLine": 70,
+        "endChar": 39
+      },
+      "revId": "6fd51643e91953759381d9aa9a5b430bff1a4abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_1078782d",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-29T21:56:23Z",
+      "side": 1,
+      "message": "sizeof(data)\n\nand same for the other boards",
+      "range": {
+        "startLine": 85,
+        "startChar": 38,
+        "endLine": 85,
+        "endChar": 39
+      },
+      "revId": "6fd51643e91953759381d9aa9a5b430bff1a4abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_308c9c19",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-29T21:56:23Z",
+      "side": 1,
+      "message": "These changes are orthogonal to the generic API change.",
+      "revId": "6fd51643e91953759381d9aa9a5b430bff1a4abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
