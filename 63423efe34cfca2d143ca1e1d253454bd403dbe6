@@ -104,6 +104,24 @@
       "revId": "63423efe34cfca2d143ca1e1d253454bd403dbe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_ca276f7b",
+        "filename": "common/lid_angle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-29T18:12:48Z",
+      "side": 1,
+      "message": "We have an EC wake pin that can be used if wanting to perform the wake.",
+      "parentUuid": "b75ab266_cbc667ab",
+      "revId": "63423efe34cfca2d143ca1e1d253454bd403dbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
