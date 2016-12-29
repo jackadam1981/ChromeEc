@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_05ddd82a",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-29T21:46:23Z",
+      "side": 1,
+      "message": "The nvmem library seems like it\u0027s generic and wants to ensure nvmem_commit() pushes the update. Now that we\u0027re deferring this aren\u0027t we breaking the semantics for the nvmem expectations? Also, it\u0027s not clear to me if we should be delaying *all* nvmem commits. Is there functionality where we don\u0027t want that delay?",
+      "revId": "c0a80397f55222e25c4ec5d8d7e97f9c6788a5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_e5f424b1",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-29T21:46:23Z",
+      "side": 1,
+      "message": "I\u0027m curious. Is this supposed to be skipped?",
+      "range": {
+        "startLine": 536,
+        "startChar": 9,
+        "endLine": 536,
+        "endChar": 14
+      },
+      "revId": "c0a80397f55222e25c4ec5d8d7e97f9c6788a5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_a5398c91",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2016-12-29T21:46:23Z",
+      "side": 1,
+      "message": "This deserves a comment about why this is being done here.",
+      "revId": "c0a80397f55222e25c4ec5d8d7e97f9c6788a5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
