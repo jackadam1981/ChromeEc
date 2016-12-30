@@ -9,6 +9,7 @@
 #define __CROS_EC_TMP432_H
 
 #define TMP432_I2C_ADDR		0x98 /* 7-bit address is 0x4C */
+#define TMP431_I2C_ADDR		0x98 /* 7-bit address is 0x4D */
 
 #define TMP432_IDX_LOCAL	0
 #define TMP432_IDX_REMOTE1	1

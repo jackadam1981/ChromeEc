@@ -15,7 +15,9 @@
 
 static int temp_val_local;
 static int temp_val_remote1;
+#ifdef CONFIG_TEMP_SENSOR_TMP432
 static int temp_val_remote2;
+#endif
 static uint8_t is_sensor_shutdown;
 
 /**
@@ -34,12 +36,20 @@ static int has_power(void)
 
 static int raw_read8(const int offset, int *data_ptr)
 {
+#ifdef CONFIG_TEMP_SENSOR_TMP432
 	return i2c_read8(I2C_PORT_THERMAL, TMP432_I2C_ADDR, offset, data_ptr);
+#else
+	return i2c_read8(I2C_PORT_THERMAL, TMP431_I2C_ADDR, offset, data_ptr);
+#endif
 }
 
 static int raw_write8(const int offset, int data)
 {
+#ifdef CONFIG_TEMP_SENSOR_TMP432
 	return i2c_write8(I2C_PORT_THERMAL, TMP432_I2C_ADDR, offset, data);
+#else
+	return i2c_write8(I2C_PORT_THERMAL, TMP431_I2C_ADDR, offset, data);
+#endif
 }
 
 static int get_temp(const int offset, int *temp_ptr)
@@ -51,7 +61,7 @@ static int get_temp(const int offset, int *temp_ptr)
 	if (rv < 0)
 		return rv;
 
-	*temp_ptr = (int)(int8_t)temp_raw;
+	*temp_ptr = (int)(int8_t)(temp_raw & 0xff);
 	return EC_SUCCESS;
 }
 
@@ -77,9 +87,11 @@ int tmp432_get_val(int idx, int *temp_ptr)
 	case TMP432_IDX_REMOTE1:
 		*temp_ptr = temp_val_remote1;
 		break;
+#ifdef CONFIG_TEMP_SENSOR_TMP432
 	case TMP432_IDX_REMOTE2:
 		*temp_ptr = temp_val_remote2;
 		break;
+#endif
 	default:
 		return EC_ERROR_UNKNOWN;
 	}
@@ -160,9 +172,13 @@ int tmp432_set_therm_limit(int channel, int limit_c, int hysteresis)
 	case TMP432_CHANNEL_REMOTE1:
 		reg = TMP432_REMOTE1_HIGH_LIMIT_W;
 		break;
+#ifdef CONFIG_TEMP_SENSOR_TMP432
 	case TMP432_CHANNEL_REMOTE2:
 		reg = TMP432_REMOTE2_HIGH_LIMIT_W;
 		break;
+#endif
+	default:
+		return EC_ERROR_INVAL;
 	}
 
 	ret = raw_write8(reg, limit_c);
@@ -189,8 +205,10 @@ static void temp_sensor_poll(void)
 	if (get_temp(TMP432_REMOTE1, &temp_c) == EC_SUCCESS)
 		temp_val_remote1 = C_TO_K(temp_c);
 
+#ifdef CONFIG_TEMP_SENSOR_TMP432
 	if (get_temp(TMP432_REMOTE2, &temp_c) == EC_SUCCESS)
 		temp_val_remote2 = C_TO_K(temp_c);
+#endif
 }
 DECLARE_HOOK(HOOK_SECOND, temp_sensor_poll, HOOK_PRIO_TEMP_SENSOR);
 
@@ -238,10 +256,12 @@ static int print_status(void)
 		    TMP432_REMOTE1_HIGH_LIMIT_R,
 		    TMP432_REMOTE1_LOW_LIMIT_R);
 
+#ifdef CONFIG_TEMP_SENSOR_TMP432
 	print_temps("Remote2", TMP432_REMOTE2,
 		    TMP432_REMOTE2_THERM_LIMIT,
 		    TMP432_REMOTE2_HIGH_LIMIT_R,
 		    TMP432_REMOTE2_LOW_LIMIT_R);
+#endif
 
 	ccprintf("\n");
 
@@ -251,8 +271,10 @@ static int print_status(void)
 	if (raw_read8(TMP432_CONFIGURATION1_R, &value) == EC_SUCCESS)
 		ccprintf("CONFIG1: %08b\n", value);
 
+#ifdef CONFIG_TEMP_SENSOR_TMP432
 	if (raw_read8(TMP432_CONFIGURATION2_R, &value) == EC_SUCCESS)
 		ccprintf("CONFIG2: %08b\n", value);
+#endif
 
 	return EC_SUCCESS;
 }
