@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_f1fea3f2",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-01-03T19:06:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da6cabba_f41ba498",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "e9074c2c26752f7807e8d2d42eef428a1e47f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6cabba_069e3fa1",
         "filename": "common/host_command.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-12-17T19:23:42Z",
       "side": 1,
       "message": "After your private changes land (we can CQ-DEPEND the CLs) can we make this the one and only supported configuration (eg. delete the CONFIG, remove the #else block below).",
+      "range": {
+        "startLine": 366,
+        "startChar": 7,
+        "endLine": 366,
+        "endChar": 36
+      },
+      "revId": "e9074c2c26752f7807e8d2d42eef428a1e47f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_512cafab",
+        "filename": "common/host_command.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-01-03T19:06:37Z",
+      "side": 1,
+      "message": "Maybe we should keep this. If a host command isn\u0027t formatted properly, the build will succeed but the system won\u0027t work. Disabling this flag could be a quick way to debug this.",
+      "parentUuid": "da6cabba_069e3fa1",
       "range": {
         "startLine": 366,
         "startChar": 7,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_b16f0bdb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-01-03T19:06:37Z",
+      "side": 1,
+      "message": "There isn\u0027t a way to do this with cpp. Using m4, I was able to accomplish this. But a few boards didn\u0027t build and during my debugging, I was changing the build system to much, so I abandoned using m4. \n\nThere are indeed flaws with this approach. Mainly if the 4-digit UPPER CASE requirement isn\u0027t followed and the sorting flag is enabled, everything will build but the system will fail.",
+      "parentUuid": "da6cabba_26a33be7",
+      "range": {
+        "startLine": 807,
+        "startChar": 29,
+        "endLine": 807,
+        "endChar": 35
+      },
+      "revId": "e9074c2c26752f7807e8d2d42eef428a1e47f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6cabba_e6a863c6",
         "filename": "include/host_command.h",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2016-12-17T19:23:42Z",
       "side": 1,
       "message": "Can we use EC_CMD_BOARD_SPECIFIC_BASE here?",
+      "range": {
+        "startLine": 217,
+        "startChar": 41,
+        "endLine": 217,
+        "endChar": 47
+      },
+      "revId": "e9074c2c26752f7807e8d2d42eef428a1e47f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_d179df6e",
+        "filename": "include/host_command.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-01-03T19:06:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da6cabba_e6a863c6",
       "range": {
         "startLine": 217,
         "startChar": 41,
