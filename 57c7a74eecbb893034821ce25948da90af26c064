@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77d3da1d_40bfce91",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-03T22:24:35Z",
+      "side": 1,
+      "message": "I don\u0027t think this condition is correct. What if charge_en_prev \u003d\u003d\u003d 0 and CHARGE_FLAG_INHIBIT_CHARGE is set?\n\nThere are three cases here that we care about:\n\n1) charge_en_prev is uninitialized - so initialize it based on CHARGE_FLAG_INHIBIT_CHARGE.\n2) charge_en_prv is 1, but we need to disable charging.\n3) charge_en_prv is 0, but we need to enable charging.",
+      "range": {
+        "startLine": 545,
+        "startChar": 4,
+        "endLine": 545,
+        "endChar": 53
+      },
+      "revId": "57c7a74eecbb893034821ce25948da90af26c064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
