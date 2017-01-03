@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b75ab266_a2e217ea",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-03T21:11:52Z",
+      "side": 1,
+      "message": "there *is* a vendor command to confirm TPM version and erase the old RW. What\u0027s missing is a decision when to send that vendor command: crosbug.com/p/55667 (it would be great if you could comment on that too, Darren).\n \nOnce that is settled, this code path will be removed, it is not a subject of this patch.\n\nWe could send the vendor command to re-enable commits at the same time.\n\nI would rather avoid sending a \"stop commits\" vendor command to on every single TPM reset: it is a waste of time for this particular application.\n\nWe control both sides, we might as well benefit from it and have this system-dependent default behavior.",
+      "parentUuid": "b75ab266_02a023d9",
+      "revId": "fab6bc0f5011040911acf8544bda46a66b1d10fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_8268b3ce",
         "filename": "common/tpm_registers.c",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2017-01-03T20:59:34Z",
       "side": 1,
       "message": "typo: considered",
+      "range": {
+        "startLine": 808,
+        "startChar": 7,
+        "endLine": 808,
+        "endChar": 18
+      },
+      "revId": "fab6bc0f5011040911acf8544bda46a66b1d10fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_02d8233a",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-03T21:11:52Z",
+      "side": 1,
+      "message": "will fix.",
+      "parentUuid": "b75ab266_8268b3ce",
       "range": {
         "startLine": 808,
         "startChar": 7,
