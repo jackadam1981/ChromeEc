@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_b1770bf2",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-03T15:14:35Z",
+      "side": 1,
+      "message": "Please add a comment about disabling interrupts to keep the unlock and snapshotting of waiters atomic.\n\nOne could argue that if we switch the ordering of the ldr and str instructions we\u0027d be safe, but I think it\u0027s more straight forward to indicate a critical section. Also, you could do this entirely in C using interrupt_disable/_enable() and reading the watiers as well as unlocking the lock.",
+      "revId": "ffb7736b20a1606c946a317a10f9db9591a0a137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
