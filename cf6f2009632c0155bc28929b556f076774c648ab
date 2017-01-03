@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_a7f989a6",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-03T19:41:32Z",
+      "side": 1,
+      "message": "Can you store previous inhibited state rather than all mode bits? eg. static int charge_inhibited \u003d (mode \u0026 CHARGE_FLAG_INHIBIT_CHARGE);",
+      "range": {
+        "startLine": 540,
+        "startChar": 5,
+        "endLine": 540,
+        "endChar": 22
+      },
+      "revId": "cf6f2009632c0155bc28929b556f076774c648ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_273c5980",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-03T19:41:32Z",
+      "side": 1,
+      "message": "This will be undefined.",
+      "range": {
+        "startLine": 541,
+        "startChar": 9,
+        "endLine": 541,
+        "endChar": 11
+      },
+      "revId": "cf6f2009632c0155bc28929b556f076774c648ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
