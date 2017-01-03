@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_22ee07d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1129624
+      },
+      "writtenOn": "2017-01-03T21:13:42Z",
+      "side": 1,
+      "message": "May be this should be moved to \"TEST\u003d\" section below.",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "a304d10408b2749d807a430706137a5110f0d51c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_0275c3a8",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1129624
+      },
+      "writtenOn": "2017-01-03T21:13:42Z",
+      "side": 1,
+      "message": "May want to consider using a macro for this UART1 definition.",
+      "range": {
+        "startLine": 60,
+        "startChar": 30,
+        "endLine": 60,
+        "endChar": 32
+      },
+      "revId": "a304d10408b2749d807a430706137a5110f0d51c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_8281d350",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1129624
+      },
+      "writtenOn": "2017-01-03T21:13:42Z",
+      "side": 1,
+      "message": "Consider making this an inline function to improve performance since this will be invoked for each character on the device.",
+      "range": {
+        "startLine": 113,
+        "startChar": 23,
+        "endLine": 113,
+        "endChar": 24
+      },
+      "revId": "a304d10408b2749d807a430706137a5110f0d51c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_62659ff5",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1129624
+      },
+      "writtenOn": "2017-01-03T21:13:42Z",
+      "side": 1,
+      "message": "Recommend to remove the code rather than putting them in #if 0",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 5
+      },
+      "revId": "a304d10408b2749d807a430706137a5110f0d51c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
