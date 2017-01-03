@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_626d9f1c",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-01-03T20:30:40Z",
+      "side": 1,
+      "message": "nit: 2017",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "146f91ce4e4a2bd6b583431f80b8c8e5cf844ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_8270b3f5",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-01-03T20:30:40Z",
+      "side": 1,
+      "message": "Would removing inline and adding to usb_pd_policy.c make this smaller?",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "146f91ce4e4a2bd6b583431f80b8c8e5cf844ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_a2a0572c",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-01-03T20:30:40Z",
+      "side": 1,
+      "message": "also 2017",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "146f91ce4e4a2bd6b583431f80b8c8e5cf844ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
