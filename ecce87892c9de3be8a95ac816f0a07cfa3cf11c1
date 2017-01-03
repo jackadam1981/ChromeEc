@@ -68,6 +68,24 @@
       "revId": "ecce87892c9de3be8a95ac816f0a07cfa3cf11c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1719bec0_05f992a4",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-01-03T09:00:22Z",
+      "side": 1,
+      "message": "Add one thing. It should be functional not safer. Setting it as OD also needs external pull-high resistance.",
+      "parentUuid": "1719bec0_c535ba95",
+      "revId": "ecce87892c9de3be8a95ac816f0a07cfa3cf11c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
