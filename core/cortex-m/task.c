@@ -539,8 +539,10 @@ void mutex_unlock(struct mutex *mtx)
 	uint32_t waiters;
 	task_ *tsk = current_task;
 
-	__asm__ __volatile__("   ldr     %0, [%2]\n"
+	__asm__ __volatile__("   cpsid i\n"
+			     "   ldr     %0, [%2]\n"
 			     "   str     %3, [%1]\n"
+			     "   cpsie i\n"
 			     : "=&r" (waiters)
 			     : "r" (&mtx->lock), "r" (&mtx->waiters), "r" (0)
 			     : "cc");
