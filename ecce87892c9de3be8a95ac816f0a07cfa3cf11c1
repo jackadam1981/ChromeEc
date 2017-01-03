@@ -51,6 +51,23 @@
       "revId": "ecce87892c9de3be8a95ac816f0a07cfa3cf11c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1719bec0_c535ba95",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-01-03T08:52:03Z",
+      "side": 1,
+      "message": "It\u0027s better to change the io type of GPIO50 to GPIO_ODR_LOW since the power rail of it belongs to VHIF. VHIF is 1.8V when host interface is eSPI but PCH_ACOK is 3.3V power rail. Setting it as open-drain is safer.",
+      "revId": "ecce87892c9de3be8a95ac816f0a07cfa3cf11c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
