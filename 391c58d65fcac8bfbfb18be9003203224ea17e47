@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1719bec0_05135243",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-03T06:10:08Z",
+      "side": 1,
+      "message": "Turns out nothing needs to be done here, default value is 4.096 V and step size is 341 mV so there is no setting closer to 4.2 V that we can choose.",
+      "revId": "391c58d65fcac8bfbfb18be9003203224ea17e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
