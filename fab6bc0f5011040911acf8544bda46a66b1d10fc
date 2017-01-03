@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75ab266_02a023d9",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2017-01-03T20:59:34Z",
+      "side": 1,
+      "message": "This seems like a hack to me and super system-dependent. Why not create a vendor command to disable and enable? Then bios and tpm_managerd can call them at the right time and no guessing.",
+      "revId": "fab6bc0f5011040911acf8544bda46a66b1d10fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_8268b3ce",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1000758
+      },
+      "writtenOn": "2017-01-03T20:59:34Z",
+      "side": 1,
+      "message": "typo: considered",
+      "range": {
+        "startLine": 808,
+        "startChar": 7,
+        "endLine": 808,
+        "endChar": 18
+      },
+      "revId": "fab6bc0f5011040911acf8544bda46a66b1d10fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
