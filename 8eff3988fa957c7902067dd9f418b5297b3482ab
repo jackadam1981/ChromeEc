@@ -45,6 +45,52 @@
       "revId": "8eff3988fa957c7902067dd9f418b5297b3482ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_4ceb74f4",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-03T18:55:09Z",
+      "side": 1,
+      "message": "It\u0027d be nice to define an error for this case.  EC_ERROR_UNCHANGED or something like that?",
+      "range": {
+        "startLine": 167,
+        "startChar": 9,
+        "endLine": 167,
+        "endChar": 25
+      },
+      "revId": "8eff3988fa957c7902067dd9f418b5297b3482ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75ab266_ac55f0df",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-03T18:55:09Z",
+      "side": 1,
+      "message": "Same here.  EC_ERROR_WRONG_HARDWARE?",
+      "range": {
+        "startLine": 273,
+        "startChar": 9,
+        "endLine": 273,
+        "endChar": 25
+      },
+      "revId": "8eff3988fa957c7902067dd9f418b5297b3482ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
