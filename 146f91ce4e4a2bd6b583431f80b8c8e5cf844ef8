@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "77d3da1d_40042e34",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-03T22:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75ab266_626d9f1c",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "146f91ce4e4a2bd6b583431f80b8c8e5cf844ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_8270b3f5",
         "filename": "board/servo_v4/usb_pd_config.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "77d3da1d_c0ef5e3e",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-03T22:52:40Z",
+      "side": 1,
+      "message": "It wouldn\u0027t make a difference in terms of code size as it\u0027s only being called in location and then servo_v4 would be different than other pd boards that support the phy layer.",
+      "parentUuid": "b75ab266_8270b3f5",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "146f91ce4e4a2bd6b583431f80b8c8e5cf844ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_a2a0572c",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-01-03T20:30:40Z",
       "side": 1,
       "message": "also 2017",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "146f91ce4e4a2bd6b583431f80b8c8e5cf844ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77d3da1d_e0ec624c",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-03T22:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75ab266_a2a0572c",
       "range": {
         "startLine": 1,
         "startChar": 17,
