@@ -61,7 +61,7 @@
  * board/build.mk
  */
 
-/* ifdef SECTION_IS_RW */
+#ifdef SECTION_IS_RW
 
 /* Enable USART1,3,4 and USB streams */
 #define CONFIG_STREAM_USART
@@ -80,7 +80,7 @@
 /* PD features */
 #define CONFIG_ADC
 
-/* endif SECTION_IS_RW */
+#endif /*SECTION_IS_RW*/
 
 
 /* This is not actually an EC so disable some features. */
