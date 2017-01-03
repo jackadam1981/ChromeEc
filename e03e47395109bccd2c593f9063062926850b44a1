@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1719bec0_45feeaf4",
+        "filename": "board/poppy/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-03T05:43:54Z",
+      "side": 1,
+      "message": "Done. Same battery as elm, and added a comment about battery_get_disconnect_state which we did not define on elm.",
+      "parentUuid": "d7180671_f315f003",
+      "revId": "e03e47395109bccd2c593f9063062926850b44a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f71b4a68_142cd4c3",
         "filename": "board/poppy/board.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-12-19T17:43:22Z",
       "side": 1,
       "message": "Should add a TODO here.",
+      "revId": "e03e47395109bccd2c593f9063062926850b44a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1719bec0_25ff6ef4",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-03T05:43:54Z",
+      "side": 1,
+      "message": "Done. Dropped the function for now.",
+      "parentUuid": "f71b4a68_142cd4c3",
       "revId": "e03e47395109bccd2c593f9063062926850b44a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1719bec0_a5f23e25",
+        "filename": "board/poppy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-03T05:43:54Z",
+      "side": 1,
+      "message": "Done: Added pins to schematics.",
+      "parentUuid": "f71b4a68_54324c23",
+      "revId": "e03e47395109bccd2c593f9063062926850b44a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1728de81_0dfe11f4",
         "filename": "board/poppy/gpio.inc",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "1719bec0_85ef423f",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-03T05:43:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1728de81_0dfe11f4",
+      "revId": "e03e47395109bccd2c593f9063062926850b44a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7180671_b31f7820",
         "filename": "board/poppy/gpio.inc",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2016-12-19T17:43:22Z",
       "side": 1,
       "message": "Is this correct? There is no \"PGOOD\" in the schematics.",
+      "revId": "e03e47395109bccd2c593f9063062926850b44a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7180671_b602c671",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-03T05:43:54Z",
+      "side": 1,
+      "message": "Should be good.",
+      "parentUuid": "d7180671_b31f7820",
       "revId": "e03e47395109bccd2c593f9063062926850b44a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
