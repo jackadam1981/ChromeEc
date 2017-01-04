@@ -23,6 +23,49 @@
 #include "timer.h"
 #include "util.h"
 
+#define TICK_ITIM32_MAX_CNT  0xFFFFFFFF
+
+enum timing_mark_event {
+	CS_ASSERTED,
+	CS_DEASSERTED,
+	INT_HALF_FULL,
+	INT_FULL,
+};
+
+struct timing_mark {
+	uint32_t time;
+	enum timing_mark_event event;
+	uint8_t data;
+};
+
+#define MAX_TIMING_MARKS 100
+static struct timing_mark timing_marks[MAX_TIMING_MARKS];
+static int timing_mark_idx;
+
+static inline void timing_mark_write(enum timing_mark_event evt, uint8_t data)
+{
+	struct timing_mark *mark = &timing_marks[timing_mark_idx++];
+	mark->time = NPCX_ITCNT32;
+	mark->event = evt;
+	mark->data = data;
+	if (timing_mark_idx == MAX_TIMING_MARKS)
+		timing_mark_idx = 0;
+}
+
+static inline void timing_mark_dump(void)
+{
+	int i;
+
+	for (i = 0; i < MAX_TIMING_MARKS; ++i) {
+		if (timing_mark_idx == i)
+			ccprintf("*********\n");
+		ccprintf("%d\t%u\t%d\n",
+			timing_marks[i].event,
+			TICK_ITIM32_MAX_CNT - timing_marks[i].time,
+			timing_marks[i].data);
+	}
+}
+
 #define CPUTS(outstr) cputs(CC_SPI, outstr)
 #define CPRINTS(format, args...) cprints(CC_SPI, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SPI, format, ## args)
@@ -305,6 +348,7 @@ static void shi_parse_header(void)
 	if (!shi_read_inbuf_wait(3))
 		return shi_bad_received_data();
 
+
 	if (in_msg[0] == EC_HOST_REQUEST_VERSION) {
 		/* Protocol version 3 */
 		struct ec_host_request *r = (struct ec_host_request *) in_msg;
@@ -328,6 +372,8 @@ static void shi_parse_header(void)
 		shi_params.sz_request = pkt_size;
 
 		shi_handle_host_package();
+
+		timing_mark_write(CS_ASSERTED, in_msg[2]);
 	} else {
 		/* Invalid version number */
 		return shi_bad_received_data();
@@ -530,6 +576,7 @@ void shi_int_handler(void)
 	 * Host completed or aborted transaction
 	 */
 	if (IS_BIT_SET(stat_reg, NPCX_EVSTAT_EOR)) {
+		timing_mark_write(CS_DEASSERTED, state);
 		/*
 		 * We're not in proper state.
 		 * Mark not ready to abort next transaction
@@ -576,6 +623,7 @@ void shi_int_handler(void)
 	 * Transaction is processing.
 	 */
 	if (IS_BIT_SET(stat_reg, NPCX_EVSTAT_IBHF)) {
+		timing_mark_write(INT_HALF_FULL, state);
 		if (state == SHI_STATE_RECEIVING) {
 			/* Read data from input to msg buffer */
 			shi_read_half_inbuf();
@@ -616,6 +664,7 @@ void shi_int_handler(void)
 	 * Transaction is processing.
 	 */
 	if (IS_BIT_SET(stat_reg, NPCX_EVSTAT_IBF)) {
+		timing_mark_write(INT_FULL, state);
 #ifdef NPCX_SHI_BYPASS_OVER_256B
 		/* Record the sent bytes within 256B boundary */
 		shi_params.bytes_in_256b = (shi_params.bytes_in_256b +
@@ -885,3 +934,10 @@ static int shi_get_protocol_info(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, shi_get_protocol_info,
 EC_VER_MASK(0));
+
+static int command_timing_mark_dump(int argc, char **argv)
+{
+	timing_mark_dump();
+	return 0; 
+}
+DECLARE_CONSOLE_COMMAND(tim, command_timing_mark_dump, "", "");
