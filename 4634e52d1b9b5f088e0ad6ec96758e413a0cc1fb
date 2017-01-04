@@ -140,6 +140,30 @@
       "revId": "4634e52d1b9b5f088e0ad6ec96758e413a0cc1fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1719bec0_4881df98",
+        "filename": "board/poppy/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2017-01-04T08:46:02Z",
+      "side": 1,
+      "message": "Yeah, same problem here, will investigate and modify resistors values, thanks.",
+      "parentUuid": "1719bec0_a8b3339a",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 4
+      },
+      "revId": "4634e52d1b9b5f088e0ad6ec96758e413a0cc1fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
