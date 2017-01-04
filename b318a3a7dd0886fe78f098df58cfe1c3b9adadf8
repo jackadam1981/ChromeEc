@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a04ea7_85f47265",
+        "filename": "chip/it83xx/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-04T18:11:49Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be used.  And it\u0027s the same as LARGER_TASK_STACK_SIZE.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 39
+      },
+      "revId": "b318a3a7dd0886fe78f098df58cfe1c3b9adadf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
