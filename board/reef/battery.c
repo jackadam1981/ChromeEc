@@ -19,6 +19,8 @@
 #include "i2c.h"
 #include "util.h"
 
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+
 enum battery_type {
 	BATTERY_SONY_CORP,
 	BATTERY_SMP_COS4870,
@@ -306,7 +308,12 @@ static int board_get_battery_type(void)
  */
 static void board_init_battery_type(void)
 {
-	board_get_battery_type();
+	enum battery_type type = board_get_battery_type();
+
+	if (type != BATTERY_TYPE_COUNT)
+		CPRINTS("found battery:%s", info[type].manuf_name);
+	else
+		CPRINTS("battery not found");
 }
 DECLARE_HOOK(HOOK_INIT, board_init_battery_type, HOOK_PRIO_INIT_I2C + 1);
 
