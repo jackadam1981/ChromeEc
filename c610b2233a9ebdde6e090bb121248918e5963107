@@ -22,6 +22,30 @@
       "revId": "c610b2233a9ebdde6e090bb121248918e5963107",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_86c9d84a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2017-01-04T21:07:39Z",
+      "side": 1,
+      "message": "Good idea. Done.\n\nBTW, testing \"BOARDS\u003d\" was a good suggestion, as it resulted in the target doing nothing useful. To prevent people from accidentally performing no testing, an empty BOARDS value is an error.",
+      "parentUuid": "97a04ea7_c5511a27",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "c610b2233a9ebdde6e090bb121248918e5963107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
