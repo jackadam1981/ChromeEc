@@ -19,6 +19,8 @@
 #include "i2c.h"
 #include "util.h"
 
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+
 enum battery_type {
 	BATTERY_SONY_CORP,
 	BATTERY_SMP_COS4870,
@@ -279,6 +281,7 @@ static int board_get_battery_type(void)
 	const struct fast_charge_params *chg_params;
 	char name[32];
 	int i;
+	static int print = 1;
 
 	if (!battery_manufacturer_name(name, sizeof(name))) {
 		for (i = 0; i < BATTERY_TYPE_COUNT; i++) {
@@ -287,6 +290,15 @@ static int board_get_battery_type(void)
 				break;
 			}
 		}
+	}
+
+	if (print == 1) {
+		if (board_battery_type != BATTERY_TYPE_COUNT)
+			CPRINTS("found battery:%s", name);
+		else
+			CPRINTS("battery not found");
+
+		print = 0;
 	}
 
 	/* Initialize fast charging parameters */
