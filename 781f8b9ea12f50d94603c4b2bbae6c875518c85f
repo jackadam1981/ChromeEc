@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a04ea7_eb86ed36",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-04T20:56:40Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_4b27f97c",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-04T20:56:40Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 34,
+        "startChar": 10,
+        "endLine": 34,
+        "endChar": 19
+      },
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_8b03a1c1",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-04T20:56:40Z",
+      "side": 1,
+      "message": "Note that system_add_jump_tag() may be called by modules during a sysjump, and expects that it can consume memory.\n\nUsers of shared memory must not access it after the start of a sysjump, since it may be overwritten by jump tags.",
+      "range": {
+        "startLine": 44,
+        "startChar": 38,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_2bdd552e",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-04T20:56:40Z",
+      "side": 1,
+      "message": "this sentence no verb",
+      "range": {
+        "startLine": 100,
+        "startChar": 37,
+        "endLine": 101,
+        "endChar": 19
+      },
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_2baf157e",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-04T20:56:40Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 389,
+        "startChar": 28,
+        "endLine": 389,
+        "endChar": 38
+      },
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
