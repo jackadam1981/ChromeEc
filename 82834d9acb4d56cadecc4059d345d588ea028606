@@ -22,6 +22,24 @@
       "revId": "82834d9acb4d56cadecc4059d345d588ea028606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_196e1dab",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-05T20:02:53Z",
+      "side": 1,
+      "message": "I think this would be excessive: we are going to introduce a vendor command eventually.\n\nIn general, I can\u0027t help it but feel  that me and you guys are looking at this differently.\n\nI am optimizing the chrome os use case for the purposes of being ready to ship (and frankly, am not even sure that adding this in the reboot path is not necessary in this case).\n\nYou seem to try to have all bases covered for a generic tpm use,  dev users messing with the system, etc. I say accounting for all this in this situation is counterproductive.",
+      "parentUuid": "97a04ea7_f9feb9b8",
+      "revId": "82834d9acb4d56cadecc4059d345d588ea028606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
