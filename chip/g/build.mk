@@ -33,6 +33,7 @@ chip-$(CONFIG_DCRYPTO)+= dcrypto/bn.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/bn_hw.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/compare.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/dcrypto_runtime.o
+chip-$(CONFIG_DCRYPTO)+= dcrypto/gcm.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/hkdf.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/hmac.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/p256.o
@@ -117,7 +118,7 @@ SIGNER_EXTRAS =
 else
 CPPFLAGS += -DCR50_DEV=1
 SIGNER = $(HOME)/bin/codesigner
-CR50_RW_KEY = cr50_rom0-dev-blsign.pem.pub
+CR50_RW_KEY = loader-testkey-A.pem
 RW_SIGNER_EXTRAS = -x util/signer/fuses.xml
 RW_SIGNER_EXTRAS += -j util/signer/ec_RW-manifest-dev.json
 $(out)/RW/ec.RW_B.flat: $(out)/RW/ec.RW.flat

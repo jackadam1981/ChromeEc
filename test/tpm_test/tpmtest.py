@@ -111,16 +111,16 @@ class TPM(object):
         error message describes the problem.
     """
     header_size = struct.calcsize(self.HEADER_FMT)
-    tag, size, cmd, subcmd = struct.unpack(self.HEADER_FMT,
+    tag, size, cmd, sub = struct.unpack(self.HEADER_FMT,
                                            response[:header_size])
     if tag != 0x8001:
       raise subcmd.TpmTestError('Wrong response tag: %4.4x' % tag)
-    if cmd != EXT_CMD:
+    if cmd != 0:
       raise subcmd.TpmTestError('Unexpected response command field: %8.8x' %
                                 cmd)
-    if subcmd != expected_subcmd:
+    if sub != expected_subcmd:
       raise subcmd.TpmTestError('Unexpected response subcommand field: %2.2x' %
-                     subcmd)
+                     sub)
     if size != len(response):
       raise subcmd.TpmTestError('Size mismatch: header %d, actual %d' % (
           size, len(response)))
