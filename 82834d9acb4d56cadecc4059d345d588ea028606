@@ -40,6 +40,24 @@
       "revId": "82834d9acb4d56cadecc4059d345d588ea028606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_19c45d4e",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-01-05T20:16:40Z",
+      "side": 1,
+      "message": "Yes, I guess you\u0027re right. It still feels brittle to me, so I\u0027m trying to add extra cushions. I guess, committing in the reboot path already covers such cases as when the system was reboot while still in OOBE (so, no PCR_Read? I may be wrong here, but that\u0027s part of why it feels brittle), but components like mount-encrypted already saved their stuff in tpm nvram.",
+      "parentUuid": "97a04ea7_196e1dab",
+      "revId": "82834d9acb4d56cadecc4059d345d588ea028606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
