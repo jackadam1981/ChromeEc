@@ -197,6 +197,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_283e28ea",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-05T22:23:53Z",
+      "side": 1,
+      "message": "Sysjump jumps to the reset vector of the new image.  That reinitializes .bss and .data, and calls all modules\u0027 init hooks.\n\nModules which need to persist state across the sysjump store in it jump tags at the end of RAM during the SYSJUMP hook, and restore that state in their init routines.  \n\nThat way, we don\u0027t need to make assumptions that other variables in .data or .bss are in the same place between images.\n\nPreviously, shared memory was only used in a few cases, such as calculating the RW hash (which would normally complete before a sysjump to RW) or some flash host/console commands (which wouldn\u0027t be running during a sysjump to RW).  So it hasn\u0027t been an issue.\n\nBut if we start using shared memory for more, and more persistent, things, then there\u0027s the possibility that we introduce a race condition where one module needs to pull something out of that shared memory into a jump tag so it can persist across the sysjump, but another module saving data into a jump tag could overwrite that shared memory.\n\nAs long as we document that\u0027s the case, we should be fine.  I\u0027ll add suggested text in another comment.\n\nThe other way we could handle this is to specify a MAX_TOTAL_JUMPTAG_SIZE, and have system_usable_ram_end() always leave that as padding at the end, and have system_add_jump_tag() fail if there isn\u0027t space.  That would also guarantee that jump tags and the heap wouldn\u0027t collide.  That might be cleaner, now that we\u0027re going to use shared memory more persistently.",
+      "parentUuid": "97a04ea7_b4dc3830",
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_2bdd552e",
         "filename": "common/shmalloc.c",
         "patchSetId": 4
@@ -273,6 +291,29 @@
       "side": 1,
       "message": "I used this to show that CONFIG_CMD_SHMEM is defined above.  Edited for clarity, can remove or modify if you have other suggestions.",
       "parentUuid": "97a04ea7_2baf157e",
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_e827c0c8",
+        "filename": "include/shared_mem.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-05T22:23:53Z",
+      "side": 1,
+      "message": "Suggested text: \n\nDoing a sysjump between images will corrupt and/or erase shared memory as jump tags are added and .bss is reinitialized.  Due to the way jump tags are added to the end of RAM, shared memory must not be allocated, accessed, or freed after the start of a sysjump (for example, in HOOK_SYSJUMP).",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 2
+      },
       "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
