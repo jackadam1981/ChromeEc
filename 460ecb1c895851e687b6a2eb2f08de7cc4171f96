@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a04ea7_65ddc02d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-05T14:33:49Z",
+      "side": 1,
+      "message": "Add Panasonic battery config",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "460ecb1c895851e687b6a2eb2f08de7cc4171f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_450fdce1",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-05T14:33:49Z",
+      "side": 1,
+      "message": "Please add fuel gauge name here",
+      "range": {
+        "startLine": 315,
+        "startChar": 2,
+        "endLine": 315,
+        "endChar": 4
+      },
+      "revId": "460ecb1c895851e687b6a2eb2f08de7cc4171f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
