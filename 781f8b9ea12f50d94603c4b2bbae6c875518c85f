@@ -179,6 +179,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_b4dc3830",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-05T21:47:15Z",
+      "side": 1,
+      "message": "\"If you allocate all memory before the sysjump, and keep it across the sysjump, then you\u0027d better leave padding at the end for jump tags to be added during the sysjump.  As written, the newly added tags will trash the end of your heap.\"\n\nCome to think of it, I am not changing anything in this area - the same would happen without my change  if a module would grab shared memory before sysjump, right?\n\nI don\u0027t fully understand how sysjump works - is it that the code jumps to the same offset in RW from where it is in RO? what happens with all other nonlocal variables which might have been used before the jump - are they presumed to be at the same address in SRAM?",
+      "parentUuid": "97a04ea7_f46080b9",
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_2bdd552e",
         "filename": "common/shmalloc.c",
         "patchSetId": 4
