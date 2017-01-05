@@ -22,6 +22,30 @@
       "revId": "18bb7c7971f4cb7c8d705f34ecd2797ce4e51023",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_a990682c",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-05T02:03:32Z",
+      "side": 1,
+      "message": "this is taken from the Reef battery.\nIs the Sony battery design is finalized? Can we get the \"Rated performance\" values?",
+      "parentUuid": "1719bec0_48fefff4",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "18bb7c7971f4cb7c8d705f34ecd2797ce4e51023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
