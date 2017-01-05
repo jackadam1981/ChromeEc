@@ -161,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_f46080b9",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-05T21:38:31Z",
+      "side": 1,
+      "message": "If you allocate all memory before the sysjump, and keep it across the sysjump, then you\u0027d better leave padding at the end for jump tags to be added during the sysjump.  As written, the newly added tags will trash the end of your heap.\n\nAlso, how do the modules track their heap allocations across the sysjump?  What if a module has a temporary allocation that they won\u0027t need after the sysjump (because it doesn\u0027t keep that state across the sysjump)?  Is it now required to hook the SYSJUMP hook and free its allocation prior to the jump?\n\nI understand this works in the cr50 case because there is no sysjump, but in the more general case for ECs, this will break.",
+      "parentUuid": "97a04ea7_8ed7210d",
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_2bdd552e",
         "filename": "common/shmalloc.c",
         "patchSetId": 4
