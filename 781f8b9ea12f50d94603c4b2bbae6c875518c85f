@@ -143,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_8ed7210d",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-05T19:02:42Z",
+      "side": 1,
+      "message": "I thing this is a fairly far fetched scenario: all memory is allocated and kept allocated across the sysjmp. So, adding a comment to this respect here would be enough to move this patch or something else is needed?",
+      "parentUuid": "97a04ea7_2e1d5527",
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_2bdd552e",
         "filename": "common/shmalloc.c",
         "patchSetId": 4
