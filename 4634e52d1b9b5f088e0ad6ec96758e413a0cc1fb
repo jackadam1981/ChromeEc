@@ -188,6 +188,30 @@
       "revId": "4634e52d1b9b5f088e0ad6ec96758e413a0cc1fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "779f5a7a_40d1eee3",
+        "filename": "board/poppy/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2017-01-05T02:12:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "779f5a7a_80d7f6da",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 4
+      },
+      "revId": "4634e52d1b9b5f088e0ad6ec96758e413a0cc1fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
