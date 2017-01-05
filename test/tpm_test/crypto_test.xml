@@ -560,4 +560,58 @@ Many of the crypto_test elements were borrowed from NIST test vectors.
     </iv>
   </crypto_test>
 
+    <crypto_test name="AES:GCM128 1">
+    <key>
+      53c372160082fa7a468a6b4c26d0f0f6
+    </key>
+    <iv>
+      05
+    </iv>
+    <tag>
+      21d72a8e745f45f9313db5d88e7ef241
+    </tag>
+  </crypto_test>
+
+  <crypto_test name="AES:GCM128 2">
+    <key>
+      74b5dd7fd041c2533aedfb3e1c374ec4
+    </key>
+    <iv>
+      3f3a28eee37555c78748fd3e
+    </iv>
+    <tag>
+      f91d6db396e5d5b97f8b3ef8b31c9752
+    </tag>
+    <tag_len>
+      16
+    </tag_len>
+    <clear_text format="hex">
+      b442ded5256c646129bd875ca2b9d362
+    </clear_text>
+    <cipher_text>
+      a5a4cd2c1eb95c410f2a5c13fdb2c978
+    </cipher_text>
+  </crypto_test>
+
+  <crypto_test name="AES:GCM128 3">
+    <key>
+      5571dcfeb2002d197598dd3cbaebb90d
+    </key>
+    <iv>
+      f5746ba756171a5cb13883a0
+    </iv>
+    <tag>
+      55c43dd28798d4ceeae817c78429ecbe
+    </tag>
+    <aad>
+      c406d22a557e6e173688a02afa16688859e777fa
+    </aad>
+    <clear_text format="hex">
+      5b433168f1da578848b113c5b5130d8290c42ca7989aa7bdd820f5a6d1393c76
+    </clear_text>
+    <cipher_text>
+      0538821592a189da6f1dfc3b564d78878b12d1badedbff4da52fbbef685ec362
+    </cipher_text>
+  </crypto_test>
+
 </crypto_tests>
