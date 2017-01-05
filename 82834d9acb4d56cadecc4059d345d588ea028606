@@ -58,6 +58,24 @@
       "revId": "82834d9acb4d56cadecc4059d345d588ea028606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_34276828",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-05T20:37:04Z",
+      "side": 1,
+      "message": "Reboot path is necessary if there are outstanding nvcommits and the cr50 is updated. We lose those commits. I\u0027m not sure I agree w/ \"chrome os use case\" because there is no one use case. We have a lot of environments that need to work including recovery, factory, etc. We need to ensure we cover all those bases.",
+      "parentUuid": "97a04ea7_196e1dab",
+      "revId": "82834d9acb4d56cadecc4059d345d588ea028606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
