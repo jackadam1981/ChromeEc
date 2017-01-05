@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_ce512980",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-05T18:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a04ea7_eb86ed36",
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_4b27f97c",
         "filename": "common/shmalloc.c",
         "patchSetId": 4
@@ -42,6 +60,24 @@
         "endLine": 34,
         "endChar": 19
       },
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_0e5c1193",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-05T18:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a04ea7_4b27f97c",
       "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_6e111dc9",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-05T18:11:18Z",
+      "side": 1,
+      "message": "We sure want to be able to use shared memory after jump. Not sure how to address this.\n\nIs adding a comment here and opening a bug to fix this later acceptable? The first candidate for using this, cr50, does not do sysjumps",
+      "parentUuid": "97a04ea7_8b03a1c1",
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_2bdd552e",
         "filename": "common/shmalloc.c",
         "patchSetId": 4
@@ -94,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_8e41e1ac",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-05T18:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a04ea7_2bdd552e",
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_2baf157e",
         "filename": "common/shmalloc.c",
         "patchSetId": 4
@@ -111,6 +183,24 @@
         "endLine": 389,
         "endChar": 38
       },
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_0e2a51ee",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-05T18:11:18Z",
+      "side": 1,
+      "message": "I used this to show that CONFIG_CMD_SHMEM is defined above.  Edited for clarity, can remove or modify if you have other suggestions.",
+      "parentUuid": "97a04ea7_2baf157e",
       "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
