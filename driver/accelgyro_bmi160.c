@@ -1110,6 +1110,15 @@ static int init(const struct motion_sensor_t *s)
 		raw_write8(s->port, s->addr, BMI160_CMD_REG,
 				BMI160_CMD_SOFT_RESET);
 		msleep(1);
+
+		/*
+		 * Set Accel_Mode to Normal, wait max execution time
+		 * based on page 82 of BST-BMI160-DS000-07.
+		 */
+		raw_write8(s->port, s->addr, BMI160_CMD_REG,
+				BMI160_CMD_ACC_MODE_NORMAL);
+		msleep(4);
+
 		data->flags &= ~(BMI160_FLAG_SEC_I2C_ENABLED |
 				(BMI160_FIFO_ALL_MASK <<
 				 BMI160_FIFO_FLAG_OFFSET));
