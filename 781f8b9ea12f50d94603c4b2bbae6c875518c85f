@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_2e1d5527",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-05T18:59:25Z",
+      "side": 1,
+      "message": "It\u0027s fine to use the memory after the jump.  system_usable_ram_end() called from RW will return a size which preserves the jump tags.\n\nWhat I mean is that it\u0027s problematic to do the following:\n\n1) Boot in RO.  Immediately call system_usable_ram_end() to calculate the size of shared memory.\n\n2) Use all of that shared memory for something, such that the last few bytes persistently contain something you care about.\n\n3) Start a sysjump to RW.\n\n4) During that sysjump, jump tags are added, which overwrites the last few bytes from (2).  If you access those bytes at that time (after the start of sysjump, before it actually jumps to RW), you\u0027ll get corrupt data\n\nAfter the sysjump completes and you\u0027re running from RW, everything is fine again.  It\u0027s just that narrow time window in (4) where it might be a problem.",
+      "parentUuid": "97a04ea7_6e111dc9",
+      "revId": "781f8b9ea12f50d94603c4b2bbae6c875518c85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_2bdd552e",
         "filename": "common/shmalloc.c",
         "patchSetId": 4
