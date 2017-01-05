@@ -105,12 +105,7 @@
 #define CONFIG_MAG_CALIBRATE
 
 /* FIFO size is in power of 2. */
-/*
- * TODO (crosbug.com/p/59144): Uncomment this when AP is reading sensor
- * data. For now, it's commented so that the data can be read from the EC
- * console.
- */
-/*#define CONFIG_ACCEL_FIFO 1024*/
+#define CONFIG_ACCEL_FIFO 1024
 
 /* Depends on how fast the AP boots and typical ODRs */
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
