@@ -1209,6 +1209,10 @@ struct __ec_align4 ec_params_flash_erase {
 #define EC_FLASH_PROTECT_ERROR_INCONSISTENT (1 << 5)
 /* Entire flash code protected when the EC boots */
 #define EC_FLASH_PROTECT_ALL_AT_BOOT        (1 << 6)
+/* Rollback information flash region protected now */
+#define EC_FLASH_PROTECT_ROLLBACK_NOW       (1 << 7)
+/* Rollback information flash region protected when the EC boots */
+#define EC_FLASH_PROTECT_ROLLBACK_AT_BOOT   (1 << 8)
 
 struct __ec_align4 ec_params_flash_protect {
 	uint32_t mask;   /* Bits in flags to apply */

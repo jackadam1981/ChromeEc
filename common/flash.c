@@ -524,7 +524,8 @@ int flash_protect_at_boot(uint32_t new_flags)
 uint32_t flash_get_protect(void)
 {
 	uint32_t flags = 0;
-	int not_protected[2] = {0};
+	/* Region protection status: 0: RW, 1: RO, 2: ROLLBACK. */
+	int not_protected[3] = {0};
 	int i;
 
 	/* Read write protect GPIO */
@@ -545,35 +546,47 @@ uint32_t flash_get_protect(void)
 
 	/* Scan flash protection */
 	for (i = 0; i < PHYSICAL_BANKS; i++) {
-		/* Is this bank part of RO */
-		int is_ro = (i >= WP_BANK_OFFSET &&
-			     i < WP_BANK_OFFSET + WP_BANK_COUNT) ? 1 : 0;
+		/* Default: RW. */
+		int region = 0;
+		int bank_flag = EC_FLASH_PROTECT_ALL_NOW;
 
-		int bank_flag = (is_ro ? EC_FLASH_PROTECT_RO_NOW :
-				EC_FLASH_PROTECT_ALL_NOW);
+		if (i >= WP_BANK_OFFSET &&
+		    i < WP_BANK_OFFSET + WP_BANK_COUNT) {
+			region = 1;
+			bank_flag = EC_FLASH_PROTECT_RO_NOW;
+		}
+
+#ifdef CONFIG_ROLLBACK
+		if (i >= ROLLBACK_BANK_OFFSET &&
+		    i < ROLLBACK_BANK_OFFSET + ROLLBACK_BANK_COUNT) {
+			region = 2;
+			bank_flag = EC_FLASH_PROTECT_ROLLBACK_NOW;
+		}
+#endif
 
 		if (flash_physical_get_protect(i)) {
 			/* At least one bank in the region is protected */
 			flags |= bank_flag;
-			if (not_protected[is_ro])
+			if (not_protected[region])
 				flags |= EC_FLASH_PROTECT_ERROR_INCONSISTENT;
 		} else {
 			/* At least one bank in the region is NOT protected */
-			not_protected[is_ro] = 1;
+			not_protected[region] = 1;
 			if (flags & bank_flag)
 				flags |= EC_FLASH_PROTECT_ERROR_INCONSISTENT;
 		}
 	}
 
 	/*
-	 * If the RW banks are protected but the RO banks aren't, that's
-	 * inconsistent.
+	 * If the RW or ROLLBACK banks are protected but the RO banks aren't,
+	 * that's inconsistent.
 	 *
 	 * Note that we check this before adding in the physical flags below,
 	 * since some chips can also protect ALL_NOW for the current boot by
 	 * locking up the flash program-erase registers.
 	 */
-	if ((flags & EC_FLASH_PROTECT_ALL_NOW) &&
+	if (((flags & EC_FLASH_PROTECT_ALL_NOW) ||
+	     (flags & EC_FLASH_PROTECT_ROLLBACK_NOW)) &&
 	    !(flags & EC_FLASH_PROTECT_RO_NOW))
 		flags |= EC_FLASH_PROTECT_ERROR_INCONSISTENT;
 
@@ -588,7 +601,9 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
 {
 	int retval = EC_SUCCESS;
 	int rv;
-	int new_flags = 0;
+	int new_flags = flash_get_protect() &
+		(EC_FLASH_PROTECT_RO_AT_BOOT | EC_FLASH_PROTECT_ALL_AT_BOOT |
+			EC_FLASH_PROTECT_ROLLBACK_AT_BOOT);
 	int need_set_protect = 0;
 
 	/*
@@ -615,15 +630,24 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
 	 *      the caller of flash_set_protect().
 	 */
 	if (mask & EC_FLASH_PROTECT_RO_AT_BOOT) {
-		new_flags = flags & EC_FLASH_PROTECT_RO_AT_BOOT;
+		new_flags |= flags & EC_FLASH_PROTECT_RO_AT_BOOT;
 		need_set_protect = 1;
 	}
+
+#ifdef CONFIG_ROLLBACK
+	if ((mask & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT) &&
+	    !(flags & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT)) {
+		new_flags &= ~EC_FLASH_PROTECT_ROLLBACK_AT_BOOT;
+		need_set_protect = 1;
+	}
+#endif
+
 	if ((mask & EC_FLASH_PROTECT_ALL_AT_BOOT) &&
 	    !(flags & EC_FLASH_PROTECT_ALL_AT_BOOT)) {
-		if (flash_get_protect() & EC_FLASH_PROTECT_RO_AT_BOOT)
-			new_flags = EC_FLASH_PROTECT_RO_AT_BOOT;
+		new_flags &= ~EC_FLASH_PROTECT_ALL_AT_BOOT;
 		need_set_protect = 1;
 	}
+
 	if (need_set_protect) {
 		rv = flash_protect_at_boot(new_flags);
 		if (rv)
@@ -640,7 +664,18 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
 
 	if ((mask & EC_FLASH_PROTECT_ALL_AT_BOOT) &&
 	    (flags & EC_FLASH_PROTECT_ALL_AT_BOOT)) {
-		rv = flash_protect_at_boot(EC_FLASH_PROTECT_RO_AT_BOOT | EC_FLASH_PROTECT_ALL_AT_BOOT);
+		new_flags |= EC_FLASH_PROTECT_RO_AT_BOOT | EC_FLASH_PROTECT_ALL_AT_BOOT;
+	}
+
+#ifdef CONFIG_ROLLBACK
+	if ((mask & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT) &&
+	   (flags & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT)) {
+		new_flags |= EC_FLASH_PROTECT_RO_AT_BOOT | EC_FLASH_PROTECT_ROLLBACK_AT_BOOT;
+	}
+#endif
+
+	if (new_flags) {
+		rv = flash_protect_at_boot(new_flags);
 		if (rv)
 			retval = rv;
 	}
@@ -692,6 +727,12 @@ static int command_flash_info(int argc, char **argv)
 		ccputs(" STUCK");
 	if (i & EC_FLASH_PROTECT_ERROR_INCONSISTENT)
 		ccputs(" INCONSISTENT");
+#ifdef CONFIG_ROLLBACK
+	if (i & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT)
+		ccputs(" rollback_at_boot");
+	if (i & EC_FLASH_PROTECT_ROLLBACK_NOW)
+		ccputs(" rollback_now");
+#endif
 	ccputs("\n");
 
 	ccputs("Protected now:");
@@ -838,6 +879,14 @@ static int command_flash_wp(int argc, char **argv)
 	if (!strcasecmp(argv[1], "norw"))
 		return flash_set_protect(EC_FLASH_PROTECT_ALL_AT_BOOT, 0);
 
+#ifdef CONFIG_ROLLBACK
+	if (!strcasecmp(argv[1], "rb"))
+		return flash_set_protect(EC_FLASH_PROTECT_ROLLBACK_AT_BOOT, -1);
+
+	if (!strcasecmp(argv[1], "norb"))
+		return flash_set_protect(EC_FLASH_PROTECT_ROLLBACK_AT_BOOT, 0);
+#endif
+
 	/* Do this last, since anything starting with 'n' means "no" */
 	if (parse_bool(argv[1], &val))
 		return flash_set_protect(EC_FLASH_PROTECT_RO_AT_BOOT,
@@ -846,8 +895,11 @@ static int command_flash_wp(int argc, char **argv)
 	return EC_ERROR_PARAM1;
 }
 DECLARE_CONSOLE_COMMAND(flashwp, command_flash_wp,
-			"<BOOLEAN> | now | rw | norw",
-			"Modify flash write protect");
+			"<BOOLEAN> | now | rw | norw"
+#ifdef CONFIG_ROLLBACK
+			" | rb | norb"
+#endif
+			, "Modify flash write protect");
 
 /*****************************************************************************/
 /* Host commands */
