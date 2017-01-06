@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_b75a750a",
+        "filename": "board/chell/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-06T15:45:28Z",
+      "side": 1,
+      "message": "Are there any other boards in ToT using power/skylake.c that need a similar change?",
+      "parentUuid": "97a04ea7_57e22917",
+      "revId": "0b170a3474c93e3631c3a561ba1bffac372728c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_1784215f",
         "filename": "power/apollolake.h",
         "patchSetId": 2
