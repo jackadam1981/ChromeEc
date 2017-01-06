@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a04ea7_f7cf9dba",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-06T15:48:47Z",
+      "side": 1,
+      "message": "We lost the IN_PGOOD_ALL_CORE check here for apollolake. What are your thoughts for dropping it?",
+      "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_97aad1b9",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-06T15:48:47Z",
+      "side": 1,
+      "message": "This is a big TODO that should be fixed. We need something to get out of this state. I know these already exist. We should probably file a bug to fix this otherwise it will lurk. What\u0027s worse is that we might have already been hitting this condition on skl platforms where we\u0027re not detecting a failure.",
+      "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_370cc51d",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-06T15:48:47Z",
+      "side": 1,
+      "message": "skylake had hook_notify(HOOK_CHIPSET_PRE_INIT) here. As opposed to the in the middle. Have you audited the users to see if there\u0027s an impact? i.e. does one of the callbacks make charge_prevent_power_on(0) to return 0 where it previously would return 1? without the hook? Likewise for charge_want_shutdown().",
+      "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_d7a459f0",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-06T15:48:47Z",
+      "side": 1,
+      "message": "This is wrong. It\u0027s dependent on TRIES and DELAY_MS.",
+      "range": {
+        "startLine": 182,
+        "startChar": 17,
+        "endLine": 182,
+        "endChar": 19
+      },
+      "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_97fc91be",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-06T15:48:47Z",
+      "side": 1,
+      "message": "This should be named better. As we\u0027re only dealing with it in the G3S5 case. It\u0027s overly broad.",
+      "range": {
+        "startLine": 201,
+        "startChar": 26,
+        "endLine": 201,
+        "endChar": 58
+      },
+      "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_770e4d1e",
+        "filename": "power/intel_x86.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-06T15:48:47Z",
+      "side": 1,
+      "message": "This should be named differently.",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
