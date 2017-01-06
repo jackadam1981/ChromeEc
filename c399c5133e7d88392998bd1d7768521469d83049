@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_6dc91a13",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-06T18:12:17Z",
+      "side": 1,
+      "message": "the same strapping will apply to multiple boards. maybe spelling out properties is a good idea though.",
+      "parentUuid": "97a04ea7_12050fc4",
+      "range": {
+        "startLine": 1130,
+        "startChar": 1,
+        "endLine": 1130,
+        "endChar": 51
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_2d863200",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 2
