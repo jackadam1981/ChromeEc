@@ -59,6 +59,8 @@
 #undef SHA_DIGEST_SIZE
 #include "Implementation.h"
 
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+
 #define NVMEM_CR50_SIZE 300
 #define NVMEM_TPM_SIZE ((sizeof((struct nvmem_partition *)0)->buffer) \
 			- NVMEM_CR50_SIZE)
@@ -118,6 +120,108 @@ void post_reboot_request(void)
 	/* Reboot the device next time TPM reset is requested. */
 	reboot_request_posted = 1;
 }
+
+/*****************************************************************************/
+/*                                                                           */
+
+/*
+ * Battery cutoff monior is needed on the devices where hardware alone does
+ * not provide proper battery cutoff functionality.
+ *
+ * The sequence is as follows: set up an interrupt to react to the charger
+ * disconnect. Observe status of two other inputs at that moment: PWRB_IN and
+ * KEY0_IN. If they both are pressed, start the 5 second timeout, while
+ * keeping monitoring the charger connection state. If it remains disconnected
+ * for the entire duration - generate 5 second pulses on EC_RST_L and BAT_EN
+ * outputs.
+ */
+
+/* Time to wait before initiating battery cutoff procedure. */
+#define CUTOFF_TIMEOUT_US 5000000
+
+static void ac_stayed_disconnected(void)
+{
+	uint32_t i;
+
+	CPRINTS("%s", __func__);
+
+	/* assert EC_RST_L and deassert BAT_EN */
+	GREG32(RBOX, ASSERT_EC_RST) = 1;
+
+	/*
+	 * BAT_EN needs to use the RBOX override ability, bit 1 is battery
+	 * disable bit.
+	 */
+	GWRITE_FIELD(RBOX, OVERRIDE_OUTPUT, EN, 1);
+	GWRITE_FIELD(RBOX, OVERRIDE_OUTPUT, VAL, 0); /* Setting it to zero. */
+	GWRITE_FIELD(RBOX, OVERRIDE_OUTPUT, OEN, 1);
+
+
+	for (i = 0; i < (5000 / 10); i++)
+		msleep(10);
+
+	GREG32(RBOX, ASSERT_EC_RST) = 0;
+	GWRITE_FIELD(RBOX, OVERRIDE_OUTPUT, VAL, 1); /* Setting it to one. */
+}
+DECLARE_DEFERRED(ac_stayed_disconnected);
+
+/*
+ * Just a shortcut to make use of these AC power interrupt states better
+ * readable. RED means rising edge and FED means falling edge.
+ */
+enum {
+	ac_pres_red = GC_RBOX_INT_STATE_INTR_AC_PRESENT_RED_MASK,
+	ac_pres_fed = GC_RBOX_INT_STATE_INTR_AC_PRESENT_FED_MASK,
+	buttons_not_pressed = GC_RBOX_CHECK_INPUT_KEY0_IN_MASK |
+		GC_RBOX_CHECK_INPUT_PWRB_IN_MASK
+};
+
+static void ac_power_state_changed(void)
+{
+	uint32_t req;
+
+	/* Get current status and clear it. */
+	req = GREG32(RBOX, INT_STATE) & (ac_pres_red | ac_pres_fed);
+	GREG32(RBOX, INT_STATE) = req;
+
+	CPRINTS("%s: status 0x%x", __func__, req);
+
+	/* Raising edge gets priority, do nothing here. */
+	if (req & ac_pres_red) {
+		hook_call_deferred(&ac_stayed_disconnected_data, -1);
+		return;
+	}
+
+	/*
+	 * If this is not a falling edge, or either of the buttons is not
+	 * pressed - bail out.
+	 */
+	if (!(req & ac_pres_fed) ||
+	    (GREG32(RBOX, CHECK_INPUT) & buttons_not_pressed))
+		return;
+
+	/*
+	 * Charger cable was yanked while the power and key0 buttons were kept
+	 * pressed - user wants a battery cut off.
+	 */
+	hook_call_deferred(&ac_stayed_disconnected_data, CUTOFF_TIMEOUT_US);
+}
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_AC_PRESENT_RED_INT, ac_power_state_changed, 1);
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_AC_PRESENT_FED_INT, ac_power_state_changed, 1);
+
+static void set_up_battery_cutoff_monitor(void)
+{
+	/* It is set in idle.c also. */
+	GWRITE_FIELD(RBOX, WAKEUP, ENABLE, 1);
+
+	GWRITE_FIELD(RBOX, INT_ENABLE, INTR_AC_PRESENT_RED, 1);
+	GWRITE_FIELD(RBOX, INT_ENABLE, INTR_AC_PRESENT_FED, 1);
+
+	task_enable_irq(GC_IRQNUM_RBOX0_INTR_AC_PRESENT_RED_INT);
+	task_enable_irq(GC_IRQNUM_RBOX0_INTR_AC_PRESENT_FED_INT);
+}
+/*                                                                           */
+/*****************************************************************************/
 
 /*
  * There's no way to trigger on both rising and falling edges, so force a
@@ -316,6 +420,8 @@ static void board_init(void)
 
 	/* Indication that firmware is running, for debug purposes. */
 	GREG32(PMU, PWRDN_SCRATCH16) = 0xCAFECAFE;
+
+	set_up_battery_cutoff_monitor();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -386,8 +492,6 @@ int flash_regions_to_enable(struct g_flash_region *regions,
 
 	return 3;
 }
-
-#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
 /* This is the interrupt handler to react to SYS_RST_L_IN */
 void sys_rst_asserted(enum gpio_signal signal)
