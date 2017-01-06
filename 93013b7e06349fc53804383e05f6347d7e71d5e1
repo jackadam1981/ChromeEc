@@ -104,6 +104,24 @@
       "revId": "93013b7e06349fc53804383e05f6347d7e71d5e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_613cc281",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-01-06T23:24:20Z",
+      "side": 1,
+      "message": "I\u0027ve functionified this section and just called it twice.",
+      "parentUuid": "97a04ea7_b00efa1a",
+      "revId": "93013b7e06349fc53804383e05f6347d7e71d5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
