@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b710f2cf_4a52332c",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-06T03:22:48Z",
+      "side": 1,
+      "message": "Missing description of third arg:\n\n# Third arg is the config variable value (\"y\" for configuration options that are set for both RO and RW, \"rw\" for RW-only configuration options)",
+      "revId": "93013b7e06349fc53804383e05f6347d7e71d5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b710f2cf_6a55f711",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-06T03:22:48Z",
+      "side": 1,
+      "message": "Add RW-only sources to build",
+      "revId": "93013b7e06349fc53804383e05f6347d7e71d5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b710f2cf_8a3f0bc7",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-06T03:22:48Z",
+      "side": 1,
+      "message": "(I know this is my code, but...)\n\nIs there a way to avoid repeating these? Maybe with some foreach statement?",
+      "revId": "93013b7e06349fc53804383e05f6347d7e71d5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
