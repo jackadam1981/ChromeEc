@@ -395,6 +395,27 @@ static inline void disable_sleep(uint32_t mask)
 }
 
 /**
+ * On platforms where supported enable deep sleep. This is a sleep mode where
+ * resume happens through the reset vector, and most of the chip state might
+ * be lost.
+ */
+void enable_deep_sleep(void);
+
+/**
+ * On platforms where supported disable deep sleep. The sleep mode would be
+ * the default, as configured by some other means.
+ */
+void disable_deep_sleep(void);
+
+/**
+ * Disable low power sleep mask. For low power sleep to take affect, all masks
+ * in the sleep mask enum above must be enabled.
+ *
+ * @param Sleep mask to enable.
+ */
+void enaable_deep_sleep(void);
+
+/**
  * Postpone sleeping for at least this long, regardless of sleep_mask.
  *
  * @param Amount of time to postpone sleeping
