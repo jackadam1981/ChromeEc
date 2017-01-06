@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a04ea7_32877335",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-06T18:08:31Z",
+      "side": 1,
+      "message": "What is the time 4 for?",
+      "range": {
+        "startLine": 118,
+        "startChar": 41,
+        "endLine": 118,
+        "endChar": 44
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_12050fc4",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-06T18:08:31Z",
+      "side": 1,
+      "message": "Could we also print the name of the board we think it is?",
+      "range": {
+        "startLine": 1130,
+        "startChar": 1,
+        "endLine": 1130,
+        "endChar": 51
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_2d863200",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-06T18:08:31Z",
+      "side": 1,
+      "message": "We also have a note here about which pins are supposed to be connected to these gpios and where they are initialized.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 45
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
