@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_cd4686c2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-06T18:15:03Z",
+      "side": 1,
+      "message": "The 4 is the 4 uSec per tick. I guess I can add uS after the 4 to be more explicit",
+      "parentUuid": "97a04ea7_32877335",
+      "range": {
+        "startLine": 118,
+        "startChar": 41,
+        "endLine": 118,
+        "endChar": 44
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_12050fc4",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2017-01-06T18:12:17Z",
       "side": 1,
       "message": "the same strapping will apply to multiple boards. maybe spelling out properties is a good idea though.",
+      "parentUuid": "97a04ea7_12050fc4",
+      "range": {
+        "startLine": 1130,
+        "startChar": 1,
+        "endLine": 1130,
+        "endChar": 51
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_6d72fa04",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-06T18:15:03Z",
+      "side": 1,
+      "message": "The board name is only known when either loss of battery or hard reset requires the strapping pins to be read. Initially I wanted to save the \u0027strap_config\u0027 value so it could be retrieved later, but realized that it would also need to be stored in a long life register, or change the board properties to say 16 bits and use the upper 16 bits as the config that was read.",
       "parentUuid": "97a04ea7_12050fc4",
       "range": {
         "startLine": 1130,
