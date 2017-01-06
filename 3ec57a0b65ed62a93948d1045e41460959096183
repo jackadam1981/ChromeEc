@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_b72c355f",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-06T16:32:53Z",
+      "side": 1,
+      "message": "we are handling it in apollolake.c",
+      "parentUuid": "97a04ea7_f7cf9dba",
+      "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_97aad1b9",
         "filename": "power/intel_x86.c",
         "patchSetId": 11
@@ -30,6 +48,24 @@
       "writtenOn": "2017-01-06T15:48:47Z",
       "side": 1,
       "message": "This is a big TODO that should be fixed. We need something to get out of this state. I know these already exist. We should probably file a bug to fix this otherwise it will lurk. What\u0027s worse is that we might have already been hitting this condition on skl platforms where we\u0027re not detecting a failure.",
+      "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_d731b9b4",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-06T16:32:53Z",
+      "side": 1,
+      "message": "okay I will file a bug",
+      "parentUuid": "97a04ea7_97aad1b9",
       "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_b7d0b50d",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-06T16:32:53Z",
+      "side": 1,
+      "message": "We allow charger to initialize \u0026 negotiate to 15W (in no/low batt condition) before we enable PMIC. Skylake.c handles PCH_SLP_SUS after POWER_G3S5 is processed so moving the hook below seems valid change.",
+      "parentUuid": "97a04ea7_370cc51d",
+      "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_d7a459f0",
         "filename": "power/intel_x86.c",
         "patchSetId": 11
@@ -64,6 +118,30 @@
       "writtenOn": "2017-01-06T15:48:47Z",
       "side": 1,
       "message": "This is wrong. It\u0027s dependent on TRIES and DELAY_MS.",
+      "range": {
+        "startLine": 182,
+        "startChar": 17,
+        "endLine": 182,
+        "endChar": 19
+      },
+      "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_1713411f",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-06T16:32:53Z",
+      "side": 1,
+      "message": "okay, I will change it",
+      "parentUuid": "97a04ea7_d7a459f0",
       "range": {
         "startLine": 182,
         "startChar": 17,
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_f27b2b28",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-06T16:32:53Z",
+      "side": 1,
+      "message": "okay, how about CONFIG_CHIPSET_POWERUP_SIGNAL?",
+      "parentUuid": "97a04ea7_97fc91be",
+      "range": {
+        "startLine": 201,
+        "startChar": 26,
+        "endLine": 201,
+        "endChar": 58
+      },
+      "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_770e4d1e",
         "filename": "power/intel_x86.h",
         "patchSetId": 11
@@ -110,6 +212,30 @@
       "writtenOn": "2017-01-06T15:48:47Z",
       "side": 1,
       "message": "This should be named differently.",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_b272834f",
+        "filename": "power/intel_x86.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-06T16:32:53Z",
+      "side": 1,
+      "message": "okay I will change it to common_intel_x86_power_handle_state",
+      "parentUuid": "97a04ea7_770e4d1e",
       "range": {
         "startLine": 36,
         "startChar": 17,
