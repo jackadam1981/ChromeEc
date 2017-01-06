@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a04ea7_edb8aa0f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-06T18:38:52Z",
+      "side": 1,
+      "message": "This is disabling all sleeps from what I can gather. \n\nidle_action controls the sleep type for cr50. I think the DEEP_SLEEP_ALLOWED concept in include/system.h is not the same as cr50. Once we set this bit DEEP_SLEEP_ALLOWED results in a 0 value. sleep_ok \u003d DEEP_SLEEP_ALLOWED means we can\u0027t sleep at all.",
+      "revId": "b8bc3c2016b05f334da02f77bcc92c5f74513de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
