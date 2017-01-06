@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_8d32be20",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-06T18:24:11Z",
+      "side": 1,
+      "message": "The 4usec per tick is calculated in udelay. udelay does round up to the nearest multiple of four. So right now the short delay is 12us and the long is 64us.",
+      "parentUuid": "97a04ea7_cd4686c2",
+      "range": {
+        "startLine": 118,
+        "startChar": 41,
+        "endLine": 118,
+        "endChar": 44
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_12050fc4",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
