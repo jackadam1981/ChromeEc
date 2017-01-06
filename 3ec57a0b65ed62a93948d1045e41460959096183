@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_f3aa4c21",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-06T21:05:45Z",
+      "side": 1,
+      "message": "OK. I wanted to make sure you\u0027ve thought through these discrepancies. But I think it\u0027s important you ask someone to test on the existing platforms like eve and poppy.",
+      "parentUuid": "97a04ea7_b7d0b50d",
+      "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_d7a459f0",
         "filename": "power/intel_x86.c",
         "patchSetId": 11
@@ -189,6 +207,30 @@
       "side": 1,
       "message": "okay, how about CONFIG_CHIPSET_POWERUP_SIGNAL?",
       "parentUuid": "97a04ea7_97fc91be",
+      "range": {
+        "startLine": 201,
+        "startChar": 26,
+        "endLine": 201,
+        "endChar": 58
+      },
+      "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_b3a0c445",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-06T21:05:45Z",
+      "side": 1,
+      "message": "Sure. Or actually put G3S5 in the name.",
+      "parentUuid": "97a04ea7_f27b2b28",
       "range": {
         "startLine": 201,
         "startChar": 26,
