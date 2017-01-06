@@ -191,6 +191,7 @@ void host_packet_respond(struct host_cmd_handler_args *args)
 	uint8_t *out = (uint8_t *)pkt0->response;
 	int csum = 0;
 	int i;
+	static int error_counter = 0;
 
 	/* Clip result size to what we can accept */
 	if (args->result) {
@@ -216,6 +217,15 @@ void host_packet_respond(struct host_cmd_handler_args *args)
 	/* Checksum response data, if any */
 	for (i = args->response_size; i > 0; i--)
 		csum += *out++;
+
+	error_counter++;
+// 	if (error_counter == 7) csum++;
+	if (error_counter == 8) csum++;
+	if (error_counter == 9) csum++;
+	if (error_counter == 10) {
+		csum++;
+		error_counter = 0;
+	}
 
 	/* Write checksum field so the entire packet sums to 0 */
 	r->checksum = (uint8_t)(-csum);
