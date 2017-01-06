@@ -243,6 +243,30 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_b3bc440f",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-06T21:31:12Z",
+      "side": 1,
+      "message": "okay, I will put CHIPSET_G3S5_POWERUP_SIGNAL",
+      "parentUuid": "97a04ea7_b3a0c445",
+      "range": {
+        "startLine": 201,
+        "startChar": 26,
+        "endLine": 201,
+        "endChar": 58
+      },
+      "revId": "3ec57a0b65ed62a93948d1045e41460959096183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_770e4d1e",
         "filename": "power/intel_x86.h",
         "patchSetId": 11
