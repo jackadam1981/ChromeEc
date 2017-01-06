@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_17b6e122",
+        "filename": "board/chell/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-06T15:42:14Z",
+      "side": 1,
+      "message": "we are using the sleep event code from power/common.c and removed the redundant code in skylake.c",
+      "parentUuid": "97a04ea7_979811c6",
+      "revId": "0b170a3474c93e3631c3a561ba1bffac372728c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_1784215f",
         "filename": "power/apollolake.h",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2017-01-06T15:14:36Z",
       "side": 1,
       "message": "These are coming from the board definitions it seems. Can you add a TODO to normalize these into their respective SoC headers?\n\nAdditionally, nothing really makes this work aside from board.h is included at some point to make these macros evaluate to something.",
+      "range": {
+        "startLine": 17,
+        "startChar": 38,
+        "endLine": 17,
+        "endChar": 50
+      },
+      "revId": "0b170a3474c93e3631c3a561ba1bffac372728c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_37b3e532",
+        "filename": "power/apollolake.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-06T15:42:14Z",
+      "side": 1,
+      "message": "okay, I will add a TODO",
+      "parentUuid": "97a04ea7_1784215f",
       "range": {
         "startLine": 17,
         "startChar": 38,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_d71d394c",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-06T15:42:14Z",
+      "side": 1,
+      "message": "we can add below configs.\n#ifdef CONFIG_CHIPSET_APOLLOLAKE\n#elif ---",
+      "parentUuid": "97a04ea7_577ea980",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "0b170a3474c93e3631c3a561ba1bffac372728c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_b78d1588",
         "filename": "power/skylake.h",
         "patchSetId": 2
@@ -76,6 +142,24 @@
       "writtenOn": "2017-01-06T15:14:36Z",
       "side": 1,
       "message": "Who\u0027s including these headers?",
+      "revId": "0b170a3474c93e3631c3a561ba1bffac372728c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_17ffc1b6",
+        "filename": "power/skylake.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-06T15:42:14Z",
+      "side": 1,
+      "message": "intel_x86.c is including it. These macros are there in apollolake.h hence added a guard. If we add this guard in intel_x86.c, we can remove from here",
+      "parentUuid": "97a04ea7_b78d1588",
       "revId": "0b170a3474c93e3631c3a561ba1bffac372728c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
