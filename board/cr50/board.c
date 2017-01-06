@@ -890,3 +890,39 @@ static enum vendor_cmd_rc vc_invalidate_inactive_rw(enum vendor_cmd_cc code,
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_INVALIDATE_INACTIVE_RW,
 	vc_invalidate_inactive_rw);
+
+static enum vendor_cmd_rc control_deep_sleep(enum vendor_cmd_cc code,
+					     void *buf,
+					     size_t input_size,
+					     size_t *response_size)
+{
+	uint8_t value;
+
+	/* No response provided. */
+	*response_size = 0;
+
+	if (input_size != 1) {
+		CPRINTS("%s: unexpected input size %d", __func__, input_size);
+		return VENDOR_RC_BOGUS_ARGS;
+	}
+
+	value = *((uint8_t *)buf);
+
+	switch (value) {
+	case 0:
+		disable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
+		break;
+
+	case 1:
+		enable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
+		break;
+
+	default:
+		CPRINTS("%s: unexpected command %d", __func__, value);
+		return VENDOR_RC_BOGUS_ARGS;
+	}
+
+	CPRINTS("%s: deep sleep %sabled", __func__, value ? "en" : "dis");
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_CONTROL_DEEP_SLEEP, control_deep_sleep);
