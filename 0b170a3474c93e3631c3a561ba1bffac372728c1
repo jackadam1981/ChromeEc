@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_17e8a1f5",
+        "filename": "board/chell/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-06T15:43:44Z",
+      "side": 1,
+      "message": "power_reset_host_sleep_state() Is this the right patch to enable that, though? seems like the follow on one is more appropriate because everything gets gutted there.",
+      "parentUuid": "97a04ea7_17b6e122",
+      "revId": "0b170a3474c93e3631c3a561ba1bffac372728c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_1784215f",
         "filename": "power/apollolake.h",
         "patchSetId": 2
