@@ -16,6 +16,24 @@
       "revId": "b8bc3c2016b05f334da02f77bcc92c5f74513de1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_413fbe76",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-06T23:24:17Z",
+      "side": 1,
+      "message": "yes, you are right, I was going to confirm this but it slipped through the cracks, will modify.\n\nThis patch is a good representation of what the AP side should be sending.",
+      "parentUuid": "97a04ea7_edb8aa0f",
+      "revId": "b8bc3c2016b05f334da02f77bcc92c5f74513de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
