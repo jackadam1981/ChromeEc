@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a04ea7_d69ff19a",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-01-07T07:29:33Z",
+      "side": 1,
+      "message": "typo: \u0027endif\u0027",
+      "revId": "0204d170a2a9e3e134b7c62098378c79993e40dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_16b97911",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-01-07T07:29:33Z",
+      "side": 1,
+      "message": "This works because you\u0027ve already handled the ro objs ... but it seems a bit weird to me since it\u0027s adding it to the \"all-obj-y\" variable.\n\nThis is a question for others as well, do you think it makes sense to have a ro-obj-y and rw-obj-y?\n\nI don\u0027t care _too_ strongly, just that I always find groking makefiles cumbersome and wondering if this is the cleanest/most understandable way.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 30
+      },
+      "revId": "0204d170a2a9e3e134b7c62098378c79993e40dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
