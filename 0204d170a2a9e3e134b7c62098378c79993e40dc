@@ -81,6 +81,30 @@
       "revId": "0204d170a2a9e3e134b7c62098378c79993e40dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_769ac558",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000497
+      },
+      "writtenOn": "2017-01-07T16:16:57Z",
+      "side": 1,
+      "message": "yes, I also had this concern. cr50 is an example of the target where ro is not at all a subset of rw.",
+      "parentUuid": "97a04ea7_16b97911",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 30
+      },
+      "revId": "0204d170a2a9e3e134b7c62098378c79993e40dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
