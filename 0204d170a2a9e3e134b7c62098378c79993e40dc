@@ -57,6 +57,30 @@
       "revId": "0204d170a2a9e3e134b7c62098378c79993e40dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b710f2cf_6ddd11c9",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-07T08:49:12Z",
+      "side": 1,
+      "message": "So far the use case we had in mind was smaller RO with bigger RW. But there are definitely cases where you might not want to enable a config option in RO (say, not include CONFIG_RWSIG for example).\n\nOne of my worries was the CONFIG_*\u003dy tests in this file that we\u0027d need to handle separately.",
+      "parentUuid": "97a04ea7_16b97911",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 30
+      },
+      "revId": "0204d170a2a9e3e134b7c62098378c79993e40dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
