@@ -486,3 +486,21 @@ int board_battery_initialized(void)
 {
 	return battery_hw_present() == batt_pres_prev;
 }
+
+/*
+ * TODO: Remove this workaround once we switch to Electro.
+ * LID_ACCEL & BASE_ACCEL are on S rail on Reef and are on U rail on Electro
+ * hence for Reef keep sensor active only in S0.
+ * BATTERY_SMP_COS4870 is used on Reef and is known to the system once the
+ * I2C is initialized.
+ */
+#include "motion_sense.h"
+
+static void board_workaround_for_sensors(void)
+{
+	if (board_battery_type == BATTERY_SMP_COS4870) {
+		motion_sensors[LID_ACCEL].active_mask = SENSOR_ACTIVE_S0;
+		motion_sensors[BASE_ACCEL].active_mask = SENSOR_ACTIVE_S0;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_workaround_for_sensors, HOOK_PRIO_INIT_I2C + 2);
