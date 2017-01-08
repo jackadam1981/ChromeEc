@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a04ea7_19ba8abe",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-08T02:34:34Z",
+      "side": 1,
+      "message": "if we are okay with this approach, I will file a new crosbug to\nremove all reef related code (SMP-Cos4870 battery \u0026 below sensor code, ...).",
+      "range": {
+        "startLine": 491,
+        "startChar": 8,
+        "endLine": 491,
+        "endChar": 9
+      },
+      "revId": "ad7721e41f98cc6daa84bc07b3d87d8659b96552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
