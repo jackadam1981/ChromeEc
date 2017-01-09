@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a04ea7_6a6e52ac",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-09T15:11:39Z",
+      "side": 1,
+      "message": "board_battery_type \nreuse the global variable.",
+      "range": {
+        "startLine": 311,
+        "startChar": 1,
+        "endLine": 311,
+        "endChar": 23
+      },
+      "revId": "b0710f8a5c51448e8f02997328f54f3441fcc79b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
