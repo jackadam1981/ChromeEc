@@ -46,6 +46,30 @@
       "revId": "649e1c39954eaf28dfaeb3d95d95bfe7e46c7dcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17f29e18_a003d42b",
+        "filename": "chip/it83xx/adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-09T10:21:30Z",
+      "side": 1,
+      "message": "Then, is the task_clear_pending_irq() above actually doing something ?\n\nYou can probably keep it as is but please comment here why you need to disable IR, that\u0027s actually interesting to know when the IRQ condition is reset.",
+      "parentUuid": "b710f2cf_cda99dc8",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 34
+      },
+      "revId": "649e1c39954eaf28dfaeb3d95d95bfe7e46c7dcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
