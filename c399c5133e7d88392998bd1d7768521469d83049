@@ -73,6 +73,351 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_62abe053",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "frankly, there is no point in having two differnt timeout values. Just use one timeout of 250 us in all cases (let it round up to whatever timer clock period is).\n\nThis code runs only at power on, spending a couple of extra milliseconds here is not going to make any difference.",
+      "parentUuid": "97a04ea7_8d32be20",
+      "range": {
+        "startLine": 118,
+        "startChar": 41,
+        "endLine": 118,
+        "endChar": 44
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_e21190ca",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "please comment what fields of this structure and the next one\u0027s are for.",
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_224718c0",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "can these fields be smaller?",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 27
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_021774be",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "please add a comment describing what this array is for.\n\nno need to specify the size if you define all elements explicitly.",
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_accbfa61",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "no need to specify field names, as you define all fields for every array entry.",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 15
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_e2fa7050",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "no need to specify the size, you\u0027d need to modify it each time an entry is added.\n\nUse ARRAY_SIZE() where you need to know how big the array is.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 27
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_e2635056",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "where do these numbers (0x2, 0x12) come from?",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_0223f4bf",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "do you really need a fallback entry - is it just to be able to use the config value when straps are not detected?",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 2
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_42ddfcc8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "please add a comment explaining what this function does and  the meaning of its arguments",
+      "range": {
+        "startLine": 755,
+        "startChar": 0,
+        "endLine": 755,
+        "endChar": 62
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_a286a8a4",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "this seems odd that here and in line 790 there is an exact value comparison, but in line 768 just one bit is checked, please make it consistent.",
+      "range": {
+        "startLine": 762,
+        "startChar": 5,
+        "endLine": 762,
+        "endChar": 27
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_ecaee27c",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "if you add \u0027return\u0027 in the end of each \u0027if\u0027 clause there is no need in \u0027else\u0027 in this line and in \u0027else if\u0027 in line 790",
+      "range": {
+        "startLine": 768,
+        "startChar": 3,
+        "endLine": 768,
+        "endChar": 10
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_2f79bc30",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "this function should be static",
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_acb4dace",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "I know this comes straigh from the tracker, but I find it confusing.\n\nYou spent more time looking into this, please confirm that I understand this right and edit the comment if so:\n\n- n/a means \u0027internal pull disabled\u0027\n- this table would be clearer if it had another column for the value actually read from the gpio\n- the \u0027logical\u0027 column does not add much value to clarifying this, but this is up to you.",
+      "range": {
+        "startLine": 827,
+        "startChar": 0,
+        "endLine": 829,
+        "endChar": 42
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_4f70c0f4",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "a more thorough check would be vefifying that one pair is both weakly pulled down, and the other one has at least one pullup, maybe read the four bits states into a bitmask and vefify that.",
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_0f66b845",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "a more thorough check would be vefifying that one pair is both weakly pulled down, and the other one has at least one pullup.",
+      "range": {
+        "startLine": 859,
+        "startChar": 0,
+        "endLine": 860,
+        "endChar": 48
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_4f860001",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-09T01:15:09Z",
+      "side": 1,
+      "message": "there is no point in scanning the board_cfg_table in the case when this error happens.",
+      "range": {
+        "startLine": 918,
+        "startChar": 3,
+        "endLine": 918,
+        "endChar": 48
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_12050fc4",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
