@@ -106,7 +106,13 @@ ifneq "$(CONFIG_COMMON_RUNTIME)" "y"
 		    -D"irq_$(irq)_handler_optional=irq_$(irq)_handler")
 endif
 
-# Compute RW firmware size and offset
+# Compute RO/RW firmware size and offset
+_ro_off_str:=$(shell echo "CONFIG_RO_MEM_OFF" | $(CPP) $(CPPFLAGS) -P \
+		-Ichip/$(CHIP) -I$(BDIR) -imacros include/config.h)
+_ro_off:=$(shell echo "$$(($(_ro_off_str)))")
+_ro_size_str:=$(shell echo "CONFIG_RO_SIZE" | $(CPP) $(CPPFLAGS) -P \
+		-Ichip/$(CHIP) -I$(BDIR) -imacros include/config.h)
+_ro_size:=$(shell echo "$$(($(_ro_size_str)))")
 _rw_off_str:=$(shell echo "CONFIG_RW_MEM_OFF" | $(CPP) $(CPPFLAGS) -P \
 		-Ichip/$(CHIP) -I$(BDIR) -imacros include/config.h)
 _rw_off:=$(shell echo "$$(($(_rw_off_str)))")

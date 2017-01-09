@@ -61,23 +61,25 @@ void check_rw_signature(void);
  * These can be overridden in board.h files if desired.
  */
 
-/* The pubkey goes at the end of the first half of flash */
+/* The pubkey goes at the end of the RO region */
 #ifndef CONFIG_RO_PUBKEY_SIZE
 #define CONFIG_RO_PUBKEY_SIZE RSA_PUBLIC_KEY_SIZE
 #endif
 #ifndef CONFIG_RO_PUBKEY_ADDR
 #define CONFIG_RO_PUBKEY_ADDR (CONFIG_PROGRAM_MEMORY_BASE	\
-			       + (CONFIG_FLASH_SIZE / 2)	\
+			       + CONFIG_RO_MEM_OFF		\
+			       + CONFIG_RO_SIZE			\
 			       - CONFIG_RO_PUBKEY_SIZE)
 #endif
 
-/* The signature goes at the end of the second half of flash */
+/* The signature goes at the end of the RW region */
 #ifndef CONFIG_RW_SIG_SIZE
 #define CONFIG_RW_SIG_SIZE RSANUMBYTES
 #endif
 #ifndef CONFIG_RW_SIG_ADDR
 #define CONFIG_RW_SIG_ADDR (CONFIG_PROGRAM_MEMORY_BASE	\
-			    + CONFIG_FLASH_SIZE		\
+			    + CONFIG_RW_MEM_OFF		\
+			    + CONFIG_RW_SIZE		\
 			    - CONFIG_RW_SIG_SIZE)
 #endif
 
