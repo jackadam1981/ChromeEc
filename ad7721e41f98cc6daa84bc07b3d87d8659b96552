@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_0a79466a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-09T15:15:52Z",
+      "side": 1,
+      "message": "okay, it fixes only on Reef. Is electro board reworked for sensor lines?",
+      "parentUuid": "97a04ea7_0c2c06ab",
+      "revId": "ad7721e41f98cc6daa84bc07b3d87d8659b96552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_19ba8abe",
         "filename": "board/reef/battery.c",
         "patchSetId": 1
@@ -53,6 +71,24 @@
       "writtenOn": "2017-01-08T16:06:17Z",
       "side": 1,
       "message": "This is really a property of the board rev.",
+      "revId": "ad7721e41f98cc6daa84bc07b3d87d8659b96552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_2a8d2a54",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-09T15:15:52Z",
+      "side": 1,
+      "message": "I will make it, board_reef_workaround_for_sensors",
+      "parentUuid": "97a04ea7_2c29ca9a",
       "revId": "ad7721e41f98cc6daa84bc07b3d87d8659b96552",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
