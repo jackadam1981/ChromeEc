@@ -91,8 +91,12 @@ cmd_sharedlib_elf = $(CC) $(libsharedobjs_deps) \
 	-o $(out)/$(SHOBJLIB)/$(SHOBJLIB).elf \
 	-Wl,-Map,$(out)/$(SHOBJLIB)/$(SHOBJLIB).map
 
+futility_flags=--ro_offset $(_ro_off) --ro_size $(_ro_size)
+futility_flags+=--rw_offset $(_rw_off) --rw_size $(_rw_size)
+
 # commands for RSA signature
-cmd_rsasign = futility sign --type usbpd1 --pem $(PEM) $(out)/$*.bin.tmp
+cmd_rsasign = futility sign --type usbpd1 --pem $(PEM) \
+                 $(futility_flags) $(out)/$*.bin.tmp
 
 # commands to build optional xref files
 cmd_deps_to_list = cat $(deps) | tr -d ':\\' | tr ' ' '\012' \
