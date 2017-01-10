@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_FLASH_H
 #define __CROS_EC_FLASH_H
 
+#include "stddef.h"
+
 #include "common.h"
 #include "ec_commands.h"  /* For EC_FLASH_PROTECT_* flags */
 
@@ -131,6 +133,25 @@ uint32_t flash_physical_get_valid_flags(void);
  * @return a combination of EC_FLASH_PROTECT_* flags from ec_commands.h
  */
 uint32_t flash_physical_get_writable_flags(uint32_t cur_flags);
+
+/**
+ * Encrypt / decrypt flash contents.
+ *
+ * Encrypt or decrypt the input buffer, and write the correspondingly
+ * ciphered output to out.  The number of bytes produced is equal to
+ * the number of input bytes.
+ *
+ * WARNING: this API is expected to be applied to one single
+ * contiguous flash region.  It is incorrect to to call this function
+ * more than once with "in" pointing to logically different buffers.
+ *
+ * @param out Destination pointer where to write plaintext / ciphertext.
+ * @param in  Source pointer where to read ciphertext / plaintext.
+ * @param len Number of bytes to read from in / write to out.
+ *
+ * @return non-zero on success, and zero otherwise.
+ */
+int flash_cipher(uint8_t *out, const uint8_t *in, size_t len);
 
 /*****************************************************************************/
 /* Low-level common code for use by flash modules. */
