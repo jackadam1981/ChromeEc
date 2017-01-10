@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_6929ee99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2017-01-10T22:00:51Z",
+      "side": 1,
+      "message": "Actually, for npcx, since CONFIG_MAPPED_STORAGE is defined, flash_read() does a memcpy instead of flash_physical_read . So we do not benefit from a sector-level operation.",
+      "parentUuid": "97a04ea7_e9bf9e8f",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 70
+      },
+      "revId": "c0850549976f5af8af93d5983275356aae4f64f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_f5221e6c",
         "filename": "common/system.c",
         "patchSetId": 1
