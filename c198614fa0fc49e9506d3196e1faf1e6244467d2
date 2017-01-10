@@ -87,6 +87,24 @@
     },
     {
       "key": {
+        "uuid": "37f5e2fe_be43f98c",
+        "filename": "driver/st_commons.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1173564
+      },
+      "writtenOn": "2017-01-10T08:40:28Z",
+      "side": 1,
+      "message": "Auto inc is 1 for lis2dh12 and lis2dh but I think this function  must be generic. For examples lsm6dsm has not auto inc\nI\u0027m porting lsm6dsm/lsm6dsl driver to share st_commons function so this control must be checked",
+      "parentUuid": "b75ab266_232c5fab",
+      "revId": "c198614fa0fc49e9506d3196e1faf1e6244467d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75ab266_633657fb",
         "filename": "driver/st_commons.c",
         "patchSetId": 11
