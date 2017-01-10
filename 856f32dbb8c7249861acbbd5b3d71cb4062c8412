@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a04ea7_0a1cdd8f",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-10T01:08:42Z",
+      "side": 1,
+      "message": "I know it was there before, do you knos why is this cflush() needed? \n\nInvoking it on interrupt context (before this change) seems a bit strange to start with, and it is not clear to me it is necessary here either.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "856f32dbb8c7249861acbbd5b3d71cb4062c8412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_aaed9147",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-10T01:08:42Z",
+      "side": 1,
+      "message": "this seems a bit arbitrary, Daisuke, do you know how long it takes for the EC to renegotiate, is 2 s long enough a timeout?",
+      "range": {
+        "startLine": 67,
+        "startChar": 45,
+        "endLine": 67,
+        "endChar": 55
+      },
+      "revId": "856f32dbb8c7249861acbbd5b3d71cb4062c8412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
