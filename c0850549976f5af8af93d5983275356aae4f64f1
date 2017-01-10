@@ -94,6 +94,30 @@
       "revId": "c0850549976f5af8af93d5983275356aae4f64f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_ee1b2497",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2017-01-10T21:26:17Z",
+      "side": 1,
+      "message": "Here is the comparison when done here and not separately console command:\n4 byte access + compare to determine size: 224 ms \n1 byte access + compare to determine size: 353 ms\n\nThe 4 byte access code snippet is:\n\n/* Additional Declarations*/\n\nuint32_t buf;\nconst uint8_t *pbuf;\n\nimage \u003d (const uint8_t *)(image_offset+ CONFIG_MAPPED_STORAGE_BASE+size);\npbuf \u003d (const uint8_t *)(\u0026buf);\n\t\nflash_lock_mapped_storage(1);\ndo {\n\tif (pbuf \u003d\u003d (const uint8_t *)\u0026buf) {\n\t\tbuf \u003d *((const uint32_t *)(image - 4 ));\n\t\tpbuf+\u003d4;\n\t}\n\n\timage--, size--, pbuf--;\n\n} while (*pbuf !\u003d 0xea);\nflash_lock_mapped_storage(0);",
+      "parentUuid": "97a04ea7_5a587271",
+      "range": {
+        "startLine": 411,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 30
+      },
+      "revId": "c0850549976f5af8af93d5983275356aae4f64f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
