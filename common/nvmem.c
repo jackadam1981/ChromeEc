@@ -11,6 +11,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "dcrypto.h"
 
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
@@ -532,7 +533,7 @@ void nvmem_enable_commits(void)
 
 void nvmem_disable_commits(void)
 {
-	commits_enabled = 0;
+	commits_enabled = 1;
 	commits_skipped = 0;
 }
 
@@ -610,3 +611,24 @@ int nvmem_commit(void)
 	nvmem_act_partition = new_active_partition;
 	return EC_SUCCESS;
 }
+
+static int command_nvm(int argc, char **argv)
+{
+       int ret;
+       void *p;
+
+       ret = shared_mem_acquire(NVMEM_PARTITION_SIZE, (char **)&p);
+
+       if (ret != EC_SUCCESS)
+               return ret;
+
+CPRINTF(__func__);
+CPRINTF("\n>%.16h\n", p);
+       ret = app_cipher(0, p, p, NVMEM_PARTITION_SIZE);
+CPRINTF("<%.16h\n", p);
+
+       shared_mem_release(p);
+
+        return ret;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(nvm, command_nvm, NULL, NULL);
