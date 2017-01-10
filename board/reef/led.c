@@ -94,12 +94,9 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 static void led_set_battery(void)
 {
 	static int battery_ticks;
-	static int suspend_ticks;
-	static int previous_state_suspend;
 	uint32_t chflags = charge_get_flags();
 
 	battery_ticks++;
-	suspend_ticks++;
 	switch (charge_get_state()) {
 	case PWR_STATE_CHARGE:
 		led_set_color_battery(LED_AMBER);
@@ -117,25 +114,8 @@ static void led_set_battery(void)
 			led_set_color_battery(
 				(battery_ticks % LED_TOTAL_4SECS_TICKS <
 				 LED_ON_1SEC_TICKS) ? LED_AMBER : LED_OFF);
-		else {
-			if (chipset_in_state(CHIPSET_STATE_SUSPEND
-				| CHIPSET_STATE_STANDBY)) {
-				if (!previous_state_suspend)
-					suspend_ticks = 0;
-				/* Blink once every four seconds. */
-				led_set_color_battery(
-					(suspend_ticks % LED_TOTAL_4SECS_TICKS)
-					< LED_ON_1SEC_TICKS ?
-					LED_AMBER : LED_OFF);
-				previous_state_suspend = 1;
-				return;
-			}
-
-			if (chipset_in_state(CHIPSET_STATE_ON))
-				led_set_color_battery(LED_BLUE);
-			else
-				led_set_color_battery(LED_OFF);
-		}
+		else
+			led_set_color_battery(LED_OFF);
 		break;
 	case PWR_STATE_ERROR:
 		led_set_color_battery(
@@ -157,7 +137,6 @@ static void led_set_battery(void)
 		/* Other states don't alter LED behavior */
 		break;
 	}
-	previous_state_suspend = 0;
 }
 
 /* Called by hook task every 1 sec */
