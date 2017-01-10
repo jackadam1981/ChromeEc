@@ -2274,6 +2274,9 @@
 /* USB Device version of product */
 #undef CONFIG_USB_BCD_DEV
 
+/* Define if this board, operating as a sink, can give power back to a source */
+#undef CONFIG_GIVE_BACK
+
 /*****************************************************************************/
 
 /* Compile chip support for the USB device controller */
