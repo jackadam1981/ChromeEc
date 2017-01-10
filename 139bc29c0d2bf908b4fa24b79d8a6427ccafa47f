@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_2ce9b338",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-01-10T22:53:26Z",
+      "side": 1,
+      "message": "I did clean build and tested. \nBut I didn\u0027t check compiled code to check if the code is really inserted instead of calling. I just believe gcc compiler does as it is asked to. \nThe only concern is that uart.h where this function\u0027s prototype is declared is common code and does not have \u0027inline\u0027 keyword and I don\u0027t see any complain during building.",
+      "parentUuid": "97a04ea7_a952f551",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 6
+      },
+      "revId": "139bc29c0d2bf908b4fa24b79d8a6427ccafa47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_ba86bea4",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 7
