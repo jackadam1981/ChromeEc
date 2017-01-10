@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a04ea7_18aa726a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4029,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-10T19:26:25Z",
+      "side": 1,
+      "message": "Can we name this macro EC_PRIVATE_HOST_COMMAND_VALUE instead? This header is dupe\u0027d in several other projects and it\u0027s probably best to stick with the EC_* namespace if we can.",
+      "range": {
+        "startLine": 4029,
+        "startChar": 8,
+        "endLine": 4029,
+        "endChar": 34
+      },
+      "revId": "4055b32c02f11c2913686e8274af283558061e4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
