@@ -42,6 +42,8 @@ enum hashing_mode {
 /*
  * AES implementation, based on a hardware AES block.
  */
+#define AES256_BLOCK_CIPHER_KEY_SIZE       32
+
 int DCRYPTO_aes_init(const uint8_t *key, uint32_t key_len, const uint8_t *iv,
 		enum cipher_mode c_mode, enum encrypt_mode e_mode);
 int DCRYPTO_aes_block(const uint8_t *in, uint8_t *out);
@@ -198,5 +200,51 @@ int DCRYPTO_x509_verify(const uint8_t *cert, size_t len,
  * Memory related functions.
  */
 int DCRYPTO_equals(const void *a, const void *b, size_t len);
+
+/*
+ * Key ladder related functions.
+ */
+void DCRYPTO_ladder_init(void);
+int DCRYPTO_ladder_step(uint32_t cert);
+int DCRYPTO_ladder_compute_frk2(size_t major_fw_version, uint8_t *frk2);
+
+/*
+ * Application key related functions.
+ */
+
+struct APPKEY_CTX {
+	uint8_t key[SHA256_DIGEST_SIZE];
+	int fingerprint;
+};
+
+int DCRYPTO_appkey_init(uint32_t iv_seed, struct APPKEY_CTX *ctx);
+int DCRYPTO_appkey_fingerprint(struct APPKEY_CTX *ctx);
+/* Encrypt / decrypt a 16-byte block. */
+int DCRYPTO_appkey_cipher_block(struct APPKEY_CTX *ctx, uint8_t *out,
+				const uint8_t *in, size_t block_index);
+void DCRYPTO_appkey_finish(struct APPKEY_CTX *ctx);
+
+
+/**
+ * Encrypt/decrypt a flat blob.
+ *
+ * Encrypt or decrypt the input buffer, and write the correspondingly
+ * ciphered output to out.  The number of bytes produced is equal to
+ * the number of input bytes.
+ *
+ * This API is expected to be applied to a single contiguous region. WARNING:
+ * Presently calling this function more than once with "in" pointing to
+ * logically different buffers will result in using the same IV value
+ * internally and as such reduce encryption efficiency. Upcoming changes are
+ * expected to make proper use of blob_iv.
+ *
+ * @param out Destination pointer where to write plaintext / ciphertext.
+ * @param in  Source pointer where to read ciphertext / plaintext.
+ * @param len Number of bytes to read from in / write to out.
+ * @param iv_seed a unique value to be associated with this blob, used for
+ *        derivation of the proper IV.
+ * @return non-zero on success, and zero otherwise.
+ */
+int block_cipher(uint8_t *out, const uint8_t *in, size_t len, uint32_t iv_seed);
 
 #endif  /* ! __EC_CHIP_G_DCRYPTO_DCRYPTO_H */
