@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_efa07d79",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-10T23:12:58Z",
+      "side": 1,
+      "message": "I\u0027m sure it links no problem. But it\u0027s up to how you link and compile for an inline function in one compilation unit to be inlined in another compilation unit. Not a single other uart_read_char() is marked inline. I think you should measure things before trying to optimize something.",
+      "parentUuid": "97a04ea7_2ce9b338",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 6
+      },
+      "revId": "139bc29c0d2bf908b4fa24b79d8a6427ccafa47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_ba86bea4",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 7
