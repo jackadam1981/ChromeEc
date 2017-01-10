@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "97a04ea7_7a637634",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-10T15:59:59Z",
+      "side": 1,
+      "message": "You didn\u0027t need to change this. It was already returning a 0 or a 1 by way of !(condition).",
+      "revId": "cc87747836f86d25300124b7651bbc31ccbc05ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b710f2cf_4de80df7",
         "filename": "board/reef/battery.c",
         "patchSetId": 2
@@ -13,6 +30,30 @@
       "writtenOn": "2017-01-09T09:06:44Z",
       "side": 1,
       "message": "@Aaron, do you mean like this ?\nShould I modify batt_smp_cos4870_init() too ?",
+      "range": {
+        "startLine": 284,
+        "startChar": 57,
+        "endLine": 284,
+        "endChar": 62
+      },
+      "revId": "cc87747836f86d25300124b7651bbc31ccbc05ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_9a701af6",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-10T15:59:59Z",
+      "side": 1,
+      "message": "All you needed was this:\n\n!(batt_status \u0026 PANASONIC_DISCHARGE_DISABLE_FET_BIT)\n\nFrom the name of the #define it should be the same logic as the Sony one above, but your comments suggest the opposite of the sony case above. It\u0027s not a DISCHARGE_DISABLE but a DISCHARGE_ENABLE bit according to your comments on lines 280-281. In that case:\n\n!!(batt_status \u0026 PANASONIC_DISCHARGE_ENABLE_FET_BIT)",
+      "parentUuid": "b710f2cf_4de80df7",
       "range": {
         "startLine": 284,
         "startChar": 57,
