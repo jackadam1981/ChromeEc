@@ -40,6 +40,29 @@
       "revId": "29974cb0997ed349965e5f3f55f05cf1ff78a23c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_95b63221",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-10T02:13:09Z",
+      "side": 1,
+      "message": "Also replace all of the instances in this file",
+      "range": {
+        "startLine": 155,
+        "startChar": 58,
+        "endLine": 155,
+        "endChar": 69
+      },
+      "revId": "29974cb0997ed349965e5f3f55f05cf1ff78a23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
