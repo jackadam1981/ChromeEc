@@ -42,6 +42,7 @@ board-y += tpm2/hash.o
 board-y += tpm2/hash_data.o
 board-y += tpm2/hkdf.o
 board-y += tpm2/manufacture.o
+board-y += tpm2/nv_cipher.o
 board-y += tpm2/platform.o
 board-y += tpm2/post_reset.o
 board-y += tpm2/rsa.o
