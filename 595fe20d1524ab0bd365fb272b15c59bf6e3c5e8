@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a04ea7_e9987ec6",
+        "filename": "power/skylake.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-10T22:23:57Z",
+      "side": 0,
+      "message": "Can we move this to the common .c file? The only meaningful difference is the \" /* Only passthrough RSMRST_L de-assertion on power up *\" code, which can be put behind an ifdef. \n\nAfter this change, we can make \"int power_s5_up\" static, also.",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 18
+      },
+      "revId": "595fe20d1524ab0bd365fb272b15c59bf6e3c5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
