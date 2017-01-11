@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b7d8f2b0_ade2a9bb",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2017-01-11T07:24:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a04ea7_7a637634",
+      "revId": "cc87747836f86d25300124b7651bbc31ccbc05ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b710f2cf_4de80df7",
         "filename": "board/reef/battery.c",
         "patchSetId": 2
@@ -54,6 +72,30 @@
       "side": 1,
       "message": "All you needed was this:\n\n!(batt_status \u0026 PANASONIC_DISCHARGE_DISABLE_FET_BIT)\n\nFrom the name of the #define it should be the same logic as the Sony one above, but your comments suggest the opposite of the sony case above. It\u0027s not a DISCHARGE_DISABLE but a DISCHARGE_ENABLE bit according to your comments on lines 280-281. In that case:\n\n!!(batt_status \u0026 PANASONIC_DISCHARGE_ENABLE_FET_BIT)",
       "parentUuid": "b710f2cf_4de80df7",
+      "range": {
+        "startLine": 284,
+        "startChar": 57,
+        "endLine": 284,
+        "endChar": 62
+      },
+      "revId": "cc87747836f86d25300124b7651bbc31ccbc05ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7d8f2b0_8de7e5cb",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2017-01-11T07:24:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a04ea7_9a701af6",
       "range": {
         "startLine": 284,
         "startChar": 57,
