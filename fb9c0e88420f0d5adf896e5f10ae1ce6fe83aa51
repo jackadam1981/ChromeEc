@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "437ff998_581941a7",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-11T02:57:51Z",
+      "side": 1,
+      "message": "Is this still the case? I\u0027m not seeing this for cr52 anymore, fwiw.",
+      "range": {
+        "startLine": 12,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 55
+      },
+      "revId": "fb9c0e88420f0d5adf896e5f10ae1ce6fe83aa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_f827edcf",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-11T02:57:51Z",
+      "side": 1,
+      "message": "Have you considered using AES_USE_HIDDEN_KEY and have the key flow over a direct bus from kl to aes engine, vs. current bouncing around via ARM space.\n\nCert 35 takes salt and kl state to produce such a hidden key.",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 7
+      },
+      "revId": "fb9c0e88420f0d5adf896e5f10ae1ce6fe83aa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "437ff998_15d634d7",
         "filename": "include/flash.h",
         "patchSetId": 6
