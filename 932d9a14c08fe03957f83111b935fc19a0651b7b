@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b7d8f2b0_caad4382",
+        "filename": "common/charger_bq24707a.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-01-11T06:26:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a04ea7_1ecfc718",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 18
+      },
+      "revId": "932d9a14c08fe03957f83111b935fc19a0651b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_debb7f6d",
         "filename": "common/charger_bq24707a.c",
         "patchSetId": 1
