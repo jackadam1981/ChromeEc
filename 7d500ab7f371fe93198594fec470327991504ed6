@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "437ff998_4fe97186",
+        "filename": "chip/g/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-11T20:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d8f2b0_0df0151d",
+      "revId": "7d500ab7f371fe93198594fec470327991504ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7d8f2b0_6ded5145",
         "filename": "chip/g/system.c",
         "patchSetId": 2
@@ -42,6 +60,24 @@
         "endLine": 185,
         "endChar": 22
       },
+      "revId": "7d500ab7f371fe93198594fec470327991504ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_8f56a96e",
+        "filename": "chip/g/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-11T20:56:44Z",
+      "side": 1,
+      "message": "yes, I this is cleaner",
+      "parentUuid": "b7d8f2b0_6ded5145",
       "revId": "7d500ab7f371fe93198594fec470327991504ed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
