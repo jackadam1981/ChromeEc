@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "437ff998_8fb8e928",
+        "filename": "board/cr50/tpm2/nv_cipher.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-11T19:29:30Z",
+      "side": 1,
+      "message": "I thought about it some more.  I would rather rethink the entire API when switching how the encryption works, rather than have an ignored parameter along with a warning note etc.",
+      "parentUuid": "437ff998_d5fd1c46",
+      "range": {
+        "startLine": 8,
+        "startChar": 4,
+        "endLine": 8,
+        "endChar": 10
+      },
+      "revId": "fb9c0e88420f0d5adf896e5f10ae1ce6fe83aa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "437ff998_581941a7",
         "filename": "chip/g/dcrypto/key_ladder.c",
         "patchSetId": 6
@@ -82,6 +106,30 @@
       "writtenOn": "2017-01-11T01:11:11Z",
       "side": 1,
       "message": "this should not have \u0027flash_\u0027 in the title - this should be universally usable and declared in dcrypto.h",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 62
+      },
+      "revId": "fb9c0e88420f0d5adf896e5f10ae1ce6fe83aa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_ef72bd8b",
+        "filename": "include/flash.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-11T19:29:30Z",
+      "side": 1,
+      "message": "This call has one usage pattern.  The appkey interface is available for anyone wanting to construct something similar.\n\nWe can refactor across the boards once we have a considered model on how to read / write flash as a byte array / object store.\n\nI can create a new header if you prefer, but I don\u0027t think dcrypto.h is the right place.",
+      "parentUuid": "437ff998_15d634d7",
       "range": {
         "startLine": 154,
         "startChar": 0,
