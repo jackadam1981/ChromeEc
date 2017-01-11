@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "97a04ea7_f2cb06ad",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-11T00:38:16Z",
+      "side": 1,
+      "message": "these things I am planning to optimize by passing signals in array",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 1
+      },
+      "revId": "2e07addb366668639c57c0edc5fac28670de407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_293286b8",
         "filename": "power/intel_x86.c",
         "patchSetId": 12
@@ -13,6 +36,30 @@
       "writtenOn": "2017-01-10T22:23:57Z",
       "side": 1,
       "message": "We can move this up before the \u0027#ifdef CONFIG_POWER_S0IX\u0027 and then eliminate the \u0027chipset_get_sleep_signal(SYS_SLEEP_S3) \u003d\u003d 1\u0027 check.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 3
+      },
+      "revId": "2e07addb366668639c57c0edc5fac28670de407c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_32082e08",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-11T00:38:16Z",
+      "side": 1,
+      "message": "okay, I will change it",
+      "parentUuid": "97a04ea7_293286b8",
       "range": {
         "startLine": 164,
         "startChar": 0,
