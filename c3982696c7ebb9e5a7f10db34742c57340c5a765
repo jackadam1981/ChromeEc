@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4328d982_6d1915a8",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-11T11:59:12Z",
+      "side": 1,
+      "message": "why 7500 mW ?\nif we can operate on a 500mA, we are able to continue with 500mA x 5V \u003d 2500 mW ?",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 34
+      },
+      "revId": "c3982696c7ebb9e5a7f10db34742c57340c5a765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4328d982_8d3c41ff",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-11T11:59:12Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 208,
+        "startChar": 56,
+        "endLine": 208,
+        "endChar": 62
+      },
+      "revId": "c3982696c7ebb9e5a7f10db34742c57340c5a765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
