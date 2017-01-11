@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437ff998_21cd293e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-01-11T21:43:56Z",
+      "side": 1,
+      "message": "I don\u0027t think the referenced bug is within this range. Are you trying to fix the bug 61767 or it\u0027s just a related change? I\u0027m guessing the root cause is a regression by 424519? Have you looked into it?",
+      "range": {
+        "startLine": 10,
+        "startChar": 52,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "700aea4eee62d9f314f38753ef7c1f81624b5d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
