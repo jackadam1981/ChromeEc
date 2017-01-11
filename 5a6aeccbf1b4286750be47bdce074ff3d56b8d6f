@@ -22,6 +22,24 @@
       "revId": "5a6aeccbf1b4286750be47bdce074ff3d56b8d6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_5e2604d9",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-11T21:21:13Z",
+      "side": 1,
+      "message": "ah, yes, this is a leftover from a code variant when it was setting the variable, I changed the code, but did not change the name.\n\nI\u0027ll wait for other comments and hardware availability to re-test before uploading an update.",
+      "parentUuid": "b7d8f2b0_ed2141b8",
+      "revId": "5a6aeccbf1b4286750be47bdce074ff3d56b8d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
