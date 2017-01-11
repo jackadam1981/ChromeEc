@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437ff998_d5fd1c46",
+        "filename": "board/cr50/tpm2/nv_cipher.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-11T01:11:11Z",
+      "side": 1,
+      "message": "should not be linked to flash. \n\nIIRC we agreed during the meeting that the API will include the IV.\n\n\nThis interface should be universal, the IV originally could be ignored if you would like, but is should be in the function footprint.",
+      "range": {
+        "startLine": 8,
+        "startChar": 4,
+        "endLine": 8,
+        "endChar": 10
+      },
+      "revId": "fb9c0e88420f0d5adf896e5f10ae1ce6fe83aa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_15d634d7",
+        "filename": "include/flash.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-11T01:11:11Z",
+      "side": 1,
+      "message": "this should not have \u0027flash_\u0027 in the title - this should be universally usable and declared in dcrypto.h",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 62
+      },
+      "revId": "fb9c0e88420f0d5adf896e5f10ae1ce6fe83aa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
