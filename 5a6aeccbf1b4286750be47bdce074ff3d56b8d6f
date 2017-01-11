@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7d8f2b0_ed2141b8",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2017-01-11T21:18:12Z",
+      "side": 1,
+      "message": "I don\u0027t think this is doing the right thing. You\u0027ve named the function \"set_revision_str\", but it doesn\u0027t set anything, it simply returns the string.\n\nI think returning the string is the right thing to do, so consider renaming to something with the term \"get\" or \"calc\" and then assign the returned value to the revision_str at the call site.",
+      "range": {
+        "startLine": 180,
+        "startChar": 7,
+        "endLine": 180,
+        "endChar": 35
+      },
+      "revId": "5a6aeccbf1b4286750be47bdce074ff3d56b8d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
