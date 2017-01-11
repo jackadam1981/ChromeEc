@@ -49,6 +49,24 @@
     },
     {
       "key": {
+        "uuid": "437ff998_fe2b50e5",
+        "filename": "board/cr50/tpm2/nv_cipher.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-11T21:04:45Z",
+      "side": 1,
+      "message": "I think it is perfectly fine to have the parameter in place even if unused. This would allow to change the implementation without touching the existing users of this function.",
+      "parentUuid": "437ff998_8fb8e928",
+      "revId": "fb9c0e88420f0d5adf896e5f10ae1ce6fe83aa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "437ff998_581941a7",
         "filename": "chip/g/dcrypto/key_ladder.c",
         "patchSetId": 6
@@ -136,6 +154,24 @@
         "endLine": 154,
         "endChar": 62
       },
+      "revId": "fb9c0e88420f0d5adf896e5f10ae1ce6fe83aa51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_be4e38d0",
+        "filename": "include/flash.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-11T21:04:45Z",
+      "side": 1,
+      "message": "this can be called from anywhere, it should be in the crypto .h file, and should not have flash_ in the function name.\n\nFeel free to add comment to highlight the limited use.",
+      "parentUuid": "437ff998_ef72bd8b",
       "revId": "fb9c0e88420f0d5adf896e5f10ae1ce6fe83aa51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
