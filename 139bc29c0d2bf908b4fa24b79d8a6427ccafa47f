@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_d2660245",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-01-11T00:17:50Z",
+      "side": 1,
+      "message": "this inline is only for unit with minute-ia core and verified UART Rx is working properly.\nI don\u0027t have data in numbers how much inline improves the performance but it will be better with inline while overall system improvement might be minor since Rx is only for console input for debugging.\nDo you need measurement data of improvement or want to drop inline and defer it as future TODO item ?",
+      "parentUuid": "97a04ea7_efa07d79",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 6
+      },
+      "revId": "139bc29c0d2bf908b4fa24b79d8a6427ccafa47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_ba86bea4",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 7
