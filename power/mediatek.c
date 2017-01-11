@@ -368,6 +368,7 @@ static int check_for_power_off_event(void)
 	return POWER_OFF_CANCEL;
 }
 
+#ifndef BOARD_ROWAN
 /**
  * Set the LCD backlight enable pin and override the signal from SoC.
  *
@@ -379,9 +380,11 @@ static void mtk_backlight_override(enum blacklight_override_t asserted)
 	/* Signal is active-low */
 	gpio_set_level(GPIO_EC_BL_OVERRIDE, !asserted);
 }
+#endif
 
 static void mtk_lid_event(void)
 {
+#ifndef BOARD_ROWAN
 	enum blacklight_override_t bl_override;
 
 	/* Override the panel backlight enable signal from SoC,
@@ -391,6 +394,7 @@ static void mtk_lid_event(void)
 		MTK_BACKLIGHT_CONTROL_BY_SOC :
 		MTK_BACKLIGHT_FORCE_OFF;
 	mtk_backlight_override(bl_override);
+#endif
 
 	/* Power task only cares about lid-open events */
 	if (!lid_is_open())
