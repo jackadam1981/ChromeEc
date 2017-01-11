@@ -22,6 +22,30 @@
       "revId": "f4a23ad35038c547d1bffed4974e5ace92815ede",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7d8f2b0_4dce8d46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2017-01-11T07:39:48Z",
+      "side": 1,
+      "message": "Yes, but not for these cases, it\u0027s for recognizing battery.\n\nsome logic use charge_get_percent(), some logic use battery_is_present(). They are different purpose, however, battery sometimes can not provide power while I2C still return n(0~100)%.\n\nIn that case, charge_get_percent() will be unreliable.\nOverride percentage to 0% would be much closer to battery\u0027s real state.",
+      "parentUuid": "97a04ea7_75f1ceb1",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "f4a23ad35038c547d1bffed4974e5ace92815ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
