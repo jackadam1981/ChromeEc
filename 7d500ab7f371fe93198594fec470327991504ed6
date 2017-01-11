@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7d8f2b0_0df0151d",
+        "filename": "chip/g/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2017-01-11T15:47:08Z",
+      "side": 1,
+      "message": "If you were to rename this to revision_str, it would be more obvious that it\u0027s value will wind up in the revision_str global variable.",
+      "range": {
+        "startLine": 164,
+        "startChar": 13,
+        "endLine": 164,
+        "endChar": 26
+      },
+      "revId": "7d500ab7f371fe93198594fec470327991504ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7d8f2b0_6ded5145",
+        "filename": "chip/g/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2017-01-11T15:47:08Z",
+      "side": 1,
+      "message": "Consider separating the calculation and caching of this value into two functions:\n\nstatic const char *calculate_chip_revision(void)\n{\n  switch (GREAD_FIELD(PMU, CHIP_ID, REVISION)) {\n  case 3:\n    return \"B1\";\n  case 4:\n    // Do other stuff.\n  }\n  return \"B?\";\n}\n\nconst char *system_get_chip_revision(void)\n{\n  static const char *revision_str;\n\n  if (!revision_str) {\n    revision_str \u003d calculate_chip_revision();\n  }\n  return revision_str;\n}",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 185,
+        "endChar": 22
+      },
+      "revId": "7d500ab7f371fe93198594fec470327991504ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
