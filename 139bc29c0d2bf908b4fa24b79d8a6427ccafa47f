@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_b2309eb0",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-11T00:43:04Z",
+      "side": 1,
+      "message": "Yes, I know it\u0027s only marked inline for minute-ia. My point is that it doesn\u0027t need to be. You don\u0027t even know if it helps so what is the point? Don\u0027t do something unless you know it helps a real problem.",
+      "parentUuid": "97a04ea7_d2660245",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 6
+      },
+      "revId": "139bc29c0d2bf908b4fa24b79d8a6427ccafa47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_ba86bea4",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 7
