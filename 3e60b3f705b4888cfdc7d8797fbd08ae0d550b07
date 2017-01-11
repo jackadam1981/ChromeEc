@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437ff998_d847910d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-11T03:45:57Z",
+      "side": 1,
+      "message": "is this output deliberate or remnant of debug / development?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 7
+      },
+      "revId": "3e60b3f705b4888cfdc7d8797fbd08ae0d550b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_7800bdb8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-11T03:45:57Z",
+      "side": 1,
+      "message": "why not msleep(5000)?\nis there some magic difference?",
+      "revId": "3e60b3f705b4888cfdc7d8797fbd08ae0d550b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_b815f5f6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-11T03:45:57Z",
+      "side": 1,
+      "message": "this suggests the board type sniffing should return enum and a 2nd routine to turn enum into string for those callers that prefer strings.",
+      "revId": "3e60b3f705b4888cfdc7d8797fbd08ae0d550b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
