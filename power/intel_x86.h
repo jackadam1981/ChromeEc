@@ -11,14 +11,19 @@
 
 #include "power.h"
 
-extern int power_s5_up;       /* Chipset is sequencing up or down */
+enum intel_x86_chips {
+	INTEL_X86_CHIP_APOLLOLAKE,
+	INTEL_X86_CHIP_SKYLAKE,
+};
 
 /**
  * Handle RSMRST signal.
  *
- * @param state Current chipset state.
+ * @param state    Current chipset state.
+ * @param soc_chip Intel X86 SoC chip.
  */
-void handle_rsmrst(enum power_state state);
+void common_intel_x86_handle_rsmrst(enum power_state state,
+				    enum intel_x86_chips soc_chip);
 
 /**
  * Force chipset to G3 state.
@@ -31,8 +36,10 @@ enum power_state chipset_force_g3(void);
  * Handle power states.
  *
  * @param state        Current chipset state.
+ * @param soc_chip     Intel X86 SoC chip.
  * @return power_state New chipset state.
  */
-enum power_state common_intel_x86_power_handle_state(enum power_state state);
+enum power_state common_intel_x86_power_handle_state(enum power_state state,
+						enum intel_x86_chips soc_chip);
 
 #endif /* __CROS_EC_INTEL_X86_H */
