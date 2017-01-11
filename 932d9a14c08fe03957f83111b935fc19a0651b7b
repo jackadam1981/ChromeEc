@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b7d8f2b0_4ac1533d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-01-11T06:25:38Z",
+      "side": 1,
+      "message": "It\u0027s still can charge to full charge.\nBattery full charge state will change if cell voltage and tape current reach full charge state.\nplease refer to issue #16",
+      "parentUuid": "97a04ea7_3e964bda",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 59
+      },
+      "revId": "932d9a14c08fe03957f83111b935fc19a0651b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_1ecfc718",
         "filename": "common/charger_bq24707a.c",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2017-01-09T21:08:41Z",
       "side": 1,
       "message": "Do you want to limit voltage to 12832mV instead? What if requested voltage is lower (eg. during pre-charge / trickle-charge)?",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 18
+      },
+      "revId": "932d9a14c08fe03957f83111b935fc19a0651b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7d8f2b0_aaae0f7e",
+        "filename": "common/charger_bq24707a.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-01-11T06:25:38Z",
+      "side": 1,
+      "message": "In my understand, 12832mV is lower than battery request charge voltage(even in pre-charge).",
+      "parentUuid": "97a04ea7_debb7f6d",
       "range": {
         "startLine": 172,
         "startChar": 0,
