@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "437ff998_326ed917",
+        "filename": "chip/g/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-11T23:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d8f2b0_ed3ae1d7",
+      "revId": "0704f02e5b783f2d8813f8a09a4ef0c342c8b367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7d8f2b0_8d45256a",
         "filename": "chip/g/system.c",
         "patchSetId": 4
@@ -42,6 +60,24 @@
         "endLine": 170,
         "endChar": 32
       },
+      "revId": "0704f02e5b783f2d8813f8a09a4ef0c342c8b367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_b2ef498e",
+        "filename": "chip/g/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-11T23:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d8f2b0_8d45256a",
       "revId": "0704f02e5b783f2d8813f8a09a4ef0c342c8b367",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
