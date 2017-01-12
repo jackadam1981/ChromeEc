@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "437ff998_4259353b",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-12T23:52:42Z",
+      "side": 1,
+      "message": "a. I will make it \"detected\" - sorry missed it\nb. yes available_charge[] keeps track of all supplier types reported for a given port\nc. depending on the supplier priority and power it can supply we decide which supplier to consider\ncharge_manager_get_best_charge_port()",
+      "range": {
+        "startLine": 915,
+        "startChar": 25,
+        "endLine": 915,
+        "endChar": 32
+      },
+      "revId": "6c53445858255d88a14c16a959cf8ad43d6607d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "437ff998_8f4e962c",
         "filename": "common/charge_manager.c",
         "patchSetId": 1
@@ -30,6 +53,24 @@
       "writtenOn": "2017-01-12T23:32:56Z",
       "side": 1,
       "message": "How many suppliers could have a valid current on a given port? i.e. what\u0027s the max? Is this just finding the \"other\" one. If not, why is it first found !\u003d supplier?",
+      "revId": "6c53445858255d88a14c16a959cf8ad43d6607d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_625c715c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-12T23:52:42Z",
+      "side": 1,
+      "message": "a. always we will have CHARGE_SUPPLIER_VBUS supplier type for valid port + detected supplier from \u0027USB charger\u0027 + detected supplier type from \u0027TCPC\u0027.\nb. supplier type count \u003d 8, max supplier types on same valid port \u003d 3\nc. available_charge[i][port].current \u003e USB_CHARGER_MIN_CURR_MA:\nIf any charger has USB_CHARGER_MIN_CURR_MA we can skip it, like SDP (USB2.0), CHARGE_SUPPLIER_VBUS or any proprietary with 500mA.\nd. i !\u003d supplier: Yes it is just finding the other, \u0027arg2 supplier\u0027 is already selected supplier so we have to skip it",
+      "parentUuid": "437ff998_8f4e962c",
       "revId": "6c53445858255d88a14c16a959cf8ad43d6607d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
