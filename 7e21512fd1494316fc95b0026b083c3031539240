@@ -16,6 +16,24 @@
       "revId": "7e21512fd1494316fc95b0026b083c3031539240",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_728d2817",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-12T18:51:16Z",
+      "side": 1,
+      "message": "okay I will add config_skylake **",
+      "parentUuid": "437ff998_17c70698",
+      "revId": "7e21512fd1494316fc95b0026b083c3031539240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
