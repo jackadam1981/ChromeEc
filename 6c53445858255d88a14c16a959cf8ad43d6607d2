@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437ff998_ef594af8",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-12T23:32:56Z",
+      "side": 1,
+      "message": "Can this be reworded? Maybe it\u0027s just my unfamiliarity with the code, but available_charge keeps track of different detections per port? So if a different detection was observed we compare it against MIN_CURR_MA?",
+      "revId": "6c53445858255d88a14c16a959cf8ad43d6607d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_8f4e962c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-12T23:32:56Z",
+      "side": 1,
+      "message": "How many suppliers could have a valid current on a given port? i.e. what\u0027s the max? Is this just finding the \"other\" one. If not, why is it first found !\u003d supplier?",
+      "revId": "6c53445858255d88a14c16a959cf8ad43d6607d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
