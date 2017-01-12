@@ -16,6 +16,7 @@
 #include "system.h"
 #include "tcpm.h"
 #include "timer.h"
+#include "usb_charge.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
@@ -905,6 +906,31 @@ int charge_manager_get_power_limit_uw(void)
 	else
 		return current_ma * voltage_mv;
 }
+
+#ifdef HAS_TASK_CHG_RAMP
+int charge_manager_get_ramp_start_current(int port, int supplier)
+{
+	int i;
+
+	/* Check if USB charger detected different supplier type than TCPC. */
+	for (i = 0; i < CHARGE_SUPPLIER_COUNT; i++)
+		if (i != supplier &&
+			available_charge[i][port].current >
+				USB_CHARGER_MIN_CURR_MA)
+			break;
+
+	/*
+	 * If the USB charger detected supplier is different than the TCPC
+	 * detected supplier and the RAMP is not allowed for that different
+	 * advertised supplier, start ramping from the different advertised
+	 * supplier's current.
+	 */
+	if (i != CHARGE_SUPPLIER_COUNT && !board_is_ramp_allowed(i))
+		return available_charge[i][port].current;
+
+	return USB_CHARGER_MIN_CURR_MA;
+}
+#endif
 
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
 void charge_manager_source_port(int port, int enable)
