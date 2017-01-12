@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_ee6de473",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "I changed this to just one delay and set that value to 100 uSec which is more conservative that what I had for the long delay.",
+      "parentUuid": "97a04ea7_62abe053",
+      "range": {
+        "startLine": 118,
+        "startChar": 41,
+        "endLine": 118,
+        "endChar": 44
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_e21190ca",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -108,6 +132,24 @@
       "writtenOn": "2017-01-09T01:15:09Z",
       "side": 1,
       "message": "please comment what fields of this structure and the next one\u0027s are for.",
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_246f7cd7",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a04ea7_e21190ca",
       "revId": "c399c5133e7d88392998bd1d7768521469d83049",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -137,6 +179,30 @@
     },
     {
       "key": {
+        "uuid": "437ff998_846a10c5",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "strap_cfg only needs to be 8 bits and I have made that change. board_properties up until now has been defined as 32 bits. I would guess that 16 bits probably is more than sufficient for whatever we need. Should we change this to 16 bits?",
+      "parentUuid": "97a04ea7_224718c0",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 27
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_021774be",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -154,6 +220,24 @@
     },
     {
       "key": {
+        "uuid": "437ff998_a44b8c68",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a04ea7_021774be",
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_accbfa61",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -165,6 +249,30 @@
       "writtenOn": "2017-01-09T01:15:09Z",
       "side": 1,
       "message": "no need to specify field names, as you define all fields for every array entry.",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 15
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_6ccadb60",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a04ea7_accbfa61",
       "range": {
         "startLine": 141,
         "startChar": 2,
@@ -200,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "437ff998_044fe077",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a04ea7_e2fa7050",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 27
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_e2635056",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -211,6 +343,30 @@
       "writtenOn": "2017-01-09T01:15:09Z",
       "side": 1,
       "message": "where do these numbers (0x2, 0x12) come from?",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_244e9c2e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "These come from the 2 bit per strap pin expected value based on the H1 pinout table. Strong pullup encodes to 11, weak pullup encodes to 10, weak pulldown encodes to 01, and strong pulldown encodes to 00. 4 pins give an 8 bit strap_config result.\n\nSPI variants use the lower 4 bits to describe a particular configuration, while I2C variants use the upper 4 bits. Previously I was thinking of SPI as having 0-15 and I2C as having 16-31 results (where each group has 4 can\u0027t use configurations), but I have changed this now so that either upper 4 bits or lower 4 bits describe the variant. \n\nFor SPI variants the config value must be 0x0X and for I2C variants it must be 0xX0 where X will some 4 bit value other than 0, 1, 4, 5 which are not allowed because there would be no pullups. Based on the H1 pinout table, it really should be 0x5X and 0xX5, but I am not requiring the weak pulldowns to read correctly in case they are being held down by the AP.",
+      "parentUuid": "97a04ea7_e2635056",
       "range": {
         "startLine": 169,
         "startChar": 2,
@@ -246,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "437ff998_b793b23e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "I removed this entry and am just assigning default properties in the function when either an invalid config is detected.",
+      "parentUuid": "97a04ea7_0223f4bf",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 2
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_42ddfcc8",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -257,6 +437,30 @@
       "writtenOn": "2017-01-09T01:15:09Z",
       "side": 1,
       "message": "please add a comment explaining what this function does and  the meaning of its arguments",
+      "range": {
+        "startLine": 755,
+        "startChar": 0,
+        "endLine": 755,
+        "endChar": 62
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_498fcabc",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a04ea7_42ddfcc8",
       "range": {
         "startLine": 755,
         "startChar": 0,
@@ -292,6 +496,30 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_493b4a2a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "I changed it to check for a bit for the first two cases. For the case where no flags are set, it\u0027s still checking for !flags.",
+      "parentUuid": "97a04ea7_a286a8a4",
+      "range": {
+        "startLine": 762,
+        "startChar": 5,
+        "endLine": 762,
+        "endChar": 27
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_ecaee27c",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -303,6 +531,30 @@
       "writtenOn": "2017-01-09T01:15:09Z",
       "side": 1,
       "message": "if you add \u0027return\u0027 in the end of each \u0027if\u0027 clause there is no need in \u0027else\u0027 in this line and in \u0027else if\u0027 in line 790",
+      "range": {
+        "startLine": 768,
+        "startChar": 3,
+        "endLine": 768,
+        "endChar": 10
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_c9c9fa14",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "I added a return to the 1st two if clauses as suggested. In addition I rearranged the order of checks to check for flags \u003d\u003d 0 at the top.",
+      "parentUuid": "97a04ea7_ecaee27c",
       "range": {
         "startLine": 768,
         "startChar": 3,
@@ -332,6 +584,24 @@
     },
     {
       "key": {
+        "uuid": "97a04ea7_6e1d74d8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a04ea7_2f79bc30",
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_acb4dace",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -343,6 +613,30 @@
       "writtenOn": "2017-01-09T01:15:09Z",
       "side": 1,
       "message": "I know this comes straigh from the tracker, but I find it confusing.\n\nYou spent more time looking into this, please confirm that I understand this right and edit the comment if so:\n\n- n/a means \u0027internal pull disabled\u0027\n- this table would be clearer if it had another column for the value actually read from the gpio\n- the \u0027logical\u0027 column does not add much value to clarifying this, but this is up to you.",
+      "range": {
+        "startLine": 827,
+        "startChar": 0,
+        "endLine": 829,
+        "endChar": 42
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97a04ea7_2e2d2cc1",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "n/a here means that the value of the internal pull resistor is a don\u0027t care because the strong external pull up/pull down resistor means that the gpio level will always read the same regardless of if the internal pull up/down resistor is enabled.\n\nThe last column \u0027bits\u0027 shows what the gpio reads, but I can make that more clear. Bit 1 is what is read when the internal pull resistor is disabled, and bit 0 is what it reads when the internal pull resistor is enabled as shown in the \u0027internal\u0027 column.\n\nI added some additional comments to clarify both points.\n\nI removed the logical column given that it might be confusing and isn\u0027t really referenced in the code below.",
+      "parentUuid": "97a04ea7_acb4dace",
       "range": {
         "startLine": 827,
         "startChar": 0,
@@ -372,6 +666,24 @@
     },
     {
       "key": {
+        "uuid": "437ff998_44d87829",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "I changed this section slightly to read all 4 pins and convert that to an 8 bit strap_config value. Either the upper 4 or lower 4 bits will contain the variant and choice of upper or lower can be used to determine if it is the SPI or I2C group. \n\nIdeally the SPI vs I2C selection bits would read 0x5 with 2 weak pulldowns. However, on both Reef and Gru these bits are reading as strong pulldowns, so the code just confirms that no pullups are detected for these 2 pins and that at least one pullup is detected on the other 2 pins.",
+      "parentUuid": "97a04ea7_4f70c0f4",
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_0f66b845",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -383,6 +695,30 @@
       "writtenOn": "2017-01-09T01:15:09Z",
       "side": 1,
       "message": "a more thorough check would be vefifying that one pair is both weakly pulled down, and the other one has at least one pullup.",
+      "range": {
+        "startLine": 859,
+        "startChar": 0,
+        "endLine": 860,
+        "endChar": 48
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_e4bc24cb",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "Please see my reply above.",
+      "parentUuid": "97a04ea7_0f66b845",
       "range": {
         "startLine": 859,
         "startChar": 0,
@@ -477,6 +813,30 @@
       "side": 1,
       "message": "The board name is only known when either loss of battery or hard reset requires the strapping pins to be read. Initially I wanted to save the \u0027strap_config\u0027 value so it could be retrieved later, but realized that it would also need to be stored in a long life register, or change the board properties to say 16 bits and use the upper 16 bits as the config that was read.",
       "parentUuid": "97a04ea7_12050fc4",
+      "range": {
+        "startLine": 1130,
+        "startChar": 1,
+        "endLine": 1130,
+        "endChar": 51
+      },
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_44af1885",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-12T18:19:06Z",
+      "side": 1,
+      "message": "Discussed this more with Vadim and given that multiple boards can have the same strapping pin configuration, then there isn\u0027t any value in saving the strap pin configuration that was read.",
+      "parentUuid": "97a04ea7_6d72fa04",
       "range": {
         "startLine": 1130,
         "startChar": 1,
