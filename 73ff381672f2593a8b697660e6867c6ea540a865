@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "437ff998_cf000e24",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-12T23:15:50Z",
+      "side": 1,
+      "message": "Or alternately, call it smi_disabled, and set it to !p-\u003eenabled.",
+      "parentUuid": "437ff998_2c3f5084",
+      "revId": "73ff381672f2593a8b697660e6867c6ea540a865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_ef1cea89",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-12T23:15:50Z",
+      "side": 1,
+      "message": "Move comment inside if (smi_enabled) and add a comment in the else case, to explain why we don\u0027t send a pulse?",
+      "range": {
+        "startLine": 275,
+        "startChar": 21,
+        "endLine": 275,
+        "endChar": 48
+      },
+      "revId": "73ff381672f2593a8b697660e6867c6ea540a865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "437ff998_2c28b04e",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -30,6 +71,30 @@
       "writtenOn": "2017-01-12T22:58:29Z",
       "side": 1,
       "message": "nit: let\u0027s add the leading zeros and use capital letters to be consistent",
+      "range": {
+        "startLine": 2260,
+        "startChar": 26,
+        "endLine": 2260,
+        "endChar": 30
+      },
+      "revId": "73ff381672f2593a8b697660e6867c6ea540a865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_4f987e08",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2260,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-12T23:15:50Z",
+      "side": 1,
+      "message": "That\u0027s actually required for Sam\u0027s change which sorts the host command handler structs.",
+      "parentUuid": "437ff998_2c28b04e",
       "range": {
         "startLine": 2260,
         "startChar": 26,
