@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437ff998_2c3f5084",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-01-12T22:58:29Z",
+      "side": 1,
+      "message": "Should this be initialized to enabled?",
+      "revId": "73ff381672f2593a8b697660e6867c6ea540a865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_2c28b04e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2260,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-01-12T22:58:29Z",
+      "side": 1,
+      "message": "nit: let\u0027s add the leading zeros and use capital letters to be consistent",
+      "range": {
+        "startLine": 2260,
+        "startChar": 26,
+        "endLine": 2260,
+        "endChar": 30
+      },
+      "revId": "73ff381672f2593a8b697660e6867c6ea540a865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_6cf308b8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2267,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-01-12T22:58:29Z",
+      "side": 1,
+      "message": "super trivial nit: just \u0027enable\u0027. \u0027enabled\u0027 to me seems like a field in a response (as if you were querying status)",
+      "range": {
+        "startLine": 2267,
+        "startChar": 9,
+        "endLine": 2267,
+        "endChar": 16
+      },
+      "revId": "73ff381672f2593a8b697660e6867c6ea540a865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
