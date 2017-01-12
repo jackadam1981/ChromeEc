@@ -45,6 +45,23 @@
       "revId": "55013556d8b3a3721942d15cb965a03b427f637a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_182c13fe",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-12T21:26:38Z",
+      "side": 1,
+      "message": "1. can we add it in common code where board_set_charge_limit() is called with #CONFIG_** and define it in board.h?\n2. does this apply to low power chargers too?",
+      "revId": "55013556d8b3a3721942d15cb965a03b427f637a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
