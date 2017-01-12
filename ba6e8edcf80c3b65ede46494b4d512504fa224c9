@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437ff998_ace92089",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-12T22:00:31Z",
+      "side": 1,
+      "message": "you are not guaranteed at this point that there is another command line argument.\n\nAlso, there is no point in saying \u0027ccd force disable\u0027 so maybe one argument is enough in this case.",
+      "range": {
+        "startLine": 222,
+        "startChar": 3,
+        "endLine": 222,
+        "endChar": 21
+      },
+      "revId": "ba6e8edcf80c3b65ede46494b4d512504fa224c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_cc51fc78",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-12T22:00:31Z",
+      "side": 1,
+      "message": "will this string fit in one line if you put it all in line 237?",
+      "range": {
+        "startLine": 236,
+        "startChar": 14,
+        "endLine": 237,
+        "endChar": 11
+      },
+      "revId": "ba6e8edcf80c3b65ede46494b4d512504fa224c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_6cfb0851",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-12T22:00:31Z",
+      "side": 1,
+      "message": "should this be \u0027forced enabled\u0027 or some such?",
+      "range": {
+        "startLine": 247,
+        "startChar": 22,
+        "endLine": 247,
+        "endChar": 34
+      },
+      "revId": "ba6e8edcf80c3b65ede46494b4d512504fa224c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
