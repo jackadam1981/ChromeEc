@@ -417,7 +417,7 @@ int board_get_ramp_current_limit(int supplier, int sup_curr)
 {
 	switch (supplier) {
 	case CHARGE_SUPPLIER_BC12_DCP:
-		return 2000;
+		return 1500;
 	case CHARGE_SUPPLIER_BC12_SDP:
 		return 1000;
 	case CHARGE_SUPPLIER_BC12_CDP:
