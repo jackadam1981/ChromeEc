@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437ff998_12dcfd53",
+        "filename": "board/reef/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-01-12T00:27:53Z",
+      "side": 1,
+      "message": "This seems a bit wasteful. Can we just store the attenuation factor within the private driver data structure?",
+      "range": {
+        "startLine": 780,
+        "startChar": 0,
+        "endLine": 784,
+        "endChar": 2
+      },
+      "revId": "e92852907c62624b18e9f004719df18b4934cceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_5269159f",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-01-12T00:27:53Z",
+      "side": 1,
+      "message": "Then here, we can just use the field in the driver data structure.",
+      "revId": "e92852907c62624b18e9f004719df18b4934cceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_6ddb10ff",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-01-12T00:27:53Z",
+      "side": 1,
+      "message": "EC_RES_* are used for host command response codes, but I guess since these error codes are ultimately returned to the host command stack, it\u0027s okay?",
+      "revId": "e92852907c62624b18e9f004719df18b4934cceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_f27621a5",
+        "filename": "driver/als_opt3001.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-01-12T00:27:53Z",
+      "side": 1,
+      "message": "Are these aligned properly? I can never tell with what the editor says...",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 34
+      },
+      "revId": "e92852907c62624b18e9f004719df18b4934cceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
