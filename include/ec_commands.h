@@ -2254,6 +2254,20 @@ struct __ec_align1 ec_params_force_lid_open {
 };
 
 /*****************************************************************************/
+/* Enable/Disable SMI pulses for x86 devices */
+
+/* Default SMI pulses enabled */
+#define EC_CMD_ENABLE_SMI 0x2d
+
+struct __ec_align1 ec_params_enable_smi {
+	/*
+	 * enabled == 1, SMI pulse on
+	 * enabled == 0, SMI pulse disabled
+	 */
+	uint8_t enabled;
+};
+
+/*****************************************************************************/
 /* USB charging control commands */
 
 /* Set USB port charging mode */

@@ -112,6 +112,11 @@ static const char * const state_names[] = {
  */
 static uint64_t tnext_state;
 
+/*
+ * Determines whether to execute initial SMI pulse (t0 stage)
+ */
+static int smi_enabled;
+
 static void set_pwrbtn_to_pch(int high, int init)
 {
 	/*
@@ -265,12 +270,19 @@ static void state_machine(uint64_t tnow)
 			chipset_exit_hard_off();
 			tnext_state = tnow + PWRBTN_INITIAL_US;
 			pwrbtn_state = PWRBTN_STATE_WAS_OFF;
+			set_pwrbtn_to_pch(0, 0);
 		} else {
 			/* Chipset is on, so send the chipset a pulse */
-			tnext_state = tnow + PWRBTN_DELAY_T0;
-			pwrbtn_state = PWRBTN_STATE_T0;
+			if (smi_enabled) {
+				tnext_state = tnow + PWRBTN_DELAY_T0;
+				pwrbtn_state = PWRBTN_STATE_T0;
+				set_pwrbtn_to_pch(0, 0);
+			} else {
+				tnext_state = tnow + PWRBTN_DELAY_T1;
+				pwrbtn_state = PWRBTN_STATE_T1;
+				set_pwrbtn_to_pch(1, 0);
+			}
 		}
-		set_pwrbtn_to_pch(0, 0);
 		break;
 	case PWRBTN_STATE_T0:
 		tnext_state = tnow + PWRBTN_DELAY_T1;
@@ -460,3 +472,17 @@ static void powerbtn_x86_charge(void)
 		task_wake(TASK_ID_POWERBTN);
 }
 DECLARE_HOOK(HOOK_CHARGE_STATE_CHANGE, powerbtn_x86_charge, HOOK_PRIO_DEFAULT);
+
+/**
+ * Handle Enabling/Disabling SMI through a host command
+ */
+static int powerbtn_x86_hc_enable_smi(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_enable_smi *p = args->params;
+
+	smi_enabled = p->enabled;
+
+	return EC_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_ENABLE_SMI, powerbtn_x86_hc_enable_smi,
+		     EC_VER_MASK(0));
