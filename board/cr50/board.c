@@ -172,15 +172,28 @@ const struct strap_desc strap_regs[NUM_STRAP_PINS] = {
 
 #define BOARD_PORPERTIES_DEFAULT (BOARD_SLAVE_CONFIG_I2C | BOARD_USE_PLT_RESET)
 static struct board_cfg board_cfg_table[] = {
+	/* SPI Variants */
 	/* Kevin/Gru */
 	{
 		0x02,
 		BOARD_SLAVE_CONFIG_SPI | BOARD_NEEDS_SYS_RST_PULL_UP,
 	},
+	/* Poppy */
+	{
+		0x0A,
+		BOARD_SLAVE_CONFIG_SPI | BOARD_USB_AP | BOARD_USE_PLT_RESET,
+	},
+
+	/* I2C Variants */
 	/* Reef/Eve */
 	{
 		0x20,
 		BOARD_SLAVE_CONFIG_I2C | BOARD_USB_AP | BOARD_USE_PLT_RESET,
+	},
+	/* Rowan */
+	{
+		0x30,
+		BOARD_SLAVE_CONFIG_I2C,
 	},
 };
 
