@@ -101,6 +101,12 @@ static void usb_charger_init(void)
 					     i,
 					     &charge_none);
 
+		/* HACK: initialize VBUS, needed as anx74xx does not call
+		 * usb_charger_vbus_change in TCPC alert. */
+		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS,
+					     i,
+					     &charge_none);
+
 #ifndef CONFIG_USB_PD_VBUS_DETECT_TCPC
 		/*
 		 * Initialize VBUS supplier based on whether VBUS is present.
