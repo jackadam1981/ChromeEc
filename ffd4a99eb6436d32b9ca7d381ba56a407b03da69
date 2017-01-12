@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b7d8f2b0_104f8cdc",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2017-01-12T09:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "437ff998_092859a0",
+      "range": {
+        "startLine": 284,
+        "startChar": 2,
+        "endLine": 284,
+        "endChar": 52
+      },
+      "revId": "ffd4a99eb6436d32b9ca7d381ba56a407b03da69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "437ff998_e92abd9a",
         "filename": "board/reef/battery.c",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2017-01-11T16:22:22Z",
       "side": 1,
       "message": "How is it that we have the same ship mode bu the manufacturer access register is different?",
+      "revId": "ffd4a99eb6436d32b9ca7d381ba56a407b03da69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7d8f2b0_d0ae9434",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1137259
+      },
+      "writtenOn": "2017-01-12T09:43:15Z",
+      "side": 1,
+      "message": "ManufactureAccess register is manufacturer specific. Also, SmartBatteryData spec. doesn\u0027t define ship mode.",
+      "parentUuid": "437ff998_e92abd9a",
       "revId": "ffd4a99eb6436d32b9ca7d381ba56a407b03da69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
