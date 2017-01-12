@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "437ff998_a3b5b8c1",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-12T02:47:36Z",
+      "side": 1,
+      "message": "it is tickled by the idle task which is supposed to get to run  periodically at all times.",
+      "parentUuid": "437ff998_c3c6b548",
+      "revId": "3e60b3f705b4888cfdc7d8797fbd08ae0d550b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "437ff998_b815f5f6",
         "filename": "board/cr50/board.c",
         "patchSetId": 4
