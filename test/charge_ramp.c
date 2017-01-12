@@ -36,6 +36,11 @@ static int charge_limit_ma;
 
 /* Mock functions */
 
+int charge_manager_get_ramp_start_current(int port, int supplier)
+{
+	return RAMP_CURR_START_MA;
+}
+
 int board_is_ramp_allowed(int supplier)
 {
 	/* Ramp for TEST4-TEST8 */

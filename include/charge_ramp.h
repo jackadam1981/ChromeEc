@@ -10,6 +10,8 @@
 
 #include "timer.h"
 
+#define RAMP_CURR_START_MA  500
+
 /* Charge ramp state used for checking VBUS */
 enum chg_ramp_vbus_state {
 	CHG_RAMP_VBUS_RAMPING,
