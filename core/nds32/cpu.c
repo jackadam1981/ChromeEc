@@ -10,6 +10,9 @@
 
 void cpu_init(void)
 {
+#ifdef CONFIG_FPU
+#error "Please use CONFIG_FPU_IT83XX instead of CONFIG_FPU"
+#endif
 	/* DLM initialization is done in init.S */
 	/* Global interrupt enable */
 	asm volatile ("setgie.e");

@@ -1032,6 +1032,9 @@
 /* Enable support for floating point unit */
 #undef CONFIG_FPU
 
+/* Enable support for floating point unit of it83xx */
+#undef CONFIG_FPU_IT83XX
+
 /*****************************************************************************/
 /* Firmware region configuration */
 
