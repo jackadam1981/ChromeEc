@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437ff998_17c70698",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-12T18:17:45Z",
+      "side": 1,
+      "message": "It seems kinda weird to pass in the enum for chipset. Could we just use existing CONFIG_ variables for this? Or introduce some? I don\u0027t see the point of having to compile in code that will never actually be called.\n\nOr add a chipset function that can be called here with rsmsrt_in and the notion of powering up from s5. Return values can indicate what to do.",
+      "revId": "7e21512fd1494316fc95b0026b083c3031539240",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
