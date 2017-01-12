@@ -74,6 +74,29 @@
       "revId": "6c53445858255d88a14c16a959cf8ad43d6607d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_02a81dc7",
+        "filename": "include/charge_ramp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-12T23:57:31Z",
+      "side": 1,
+      "message": "should we remove this and use USB_CHARGER_MIN_CURR_MA instead?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "6c53445858255d88a14c16a959cf8ad43d6607d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
