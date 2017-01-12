@@ -19,6 +19,7 @@
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
+static int keep_ccd_enabled;
 static int ec_uart_enabled, enable_usb_wakeup;
 static int usb_is_initialized;
 
@@ -121,6 +122,9 @@ void rdd_attached(void)
 
 void rdd_detached(void)
 {
+	if (keep_ccd_enabled)
+		return;
+
 	/* Disconnect from AP and EC UART TX peripheral from gpios */
 	uartn_tx_disconnect(UART_EC);
 	uartn_tx_disconnect(UART_AP);
@@ -214,26 +218,38 @@ static int command_ccd(int argc, char **argv)
 				usb_i2c_board_disable(0);
 				ccprintf("CCD: i2c disabled\n");
 			}
+		} else if (!strcasecmp("keepalive", argv[1])) {
+			ccprintf("Warning CCD will remain enabled until it is "
+				"explicitly disabled.\n");
+			keep_ccd_enabled = 1;
+			rdd_attached();
 		} else if (argc == 2) {
 			if (!parse_bool(argv[1], &val))
 				return EC_ERROR_PARAM1;
 
 			if (val)
 				rdd_attached();
-			else
+			else {
+				if (keep_ccd_enabled) {
+					keep_ccd_enabled = 0;
+					ccprintf("Clearing CCD keepalive\n");
+				}
+
 				rdd_detached();
+			}
 		} else
 			return EC_ERROR_PARAM1;
 	}
 
-	ccprintf("CCD:     %s\nAP UART: %s\nEC UART: %s\n",
+	ccprintf("CCD:%14s\nAP UART:  %s\nEC UART:  %s\n",
+		keep_ccd_enabled ? "forced enable" :
 		ccd_is_enabled() ? " enabled" : "disabled",
 		uartn_enabled(UART_AP) ? " enabled" : "disabled",
 		uartn_enabled(UART_EC) ? " enabled" : "disabled");
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(ccd, command_ccd,
-			"[uart|i2c] [<BOOLEAN>]",
+			"[uart|i2c|keepalive] [<BOOLEAN>]",
 			"Get/set the case closed debug state");
 
 static int command_sys_rst(int argc, char **argv)
