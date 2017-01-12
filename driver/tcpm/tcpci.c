@@ -8,6 +8,7 @@
 #include "anx74xx.h"
 #include "ec_commands.h"
 #include "ps8751.h"
+#include "console.h"
 #include "task.h"
 #include "tcpci.h"
 #include "tcpm.h"
@@ -17,6 +18,8 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpc.h"
 #include "util.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 static int tcpc_vbus[CONFIG_USB_PD_PORT_COUNT];
 
@@ -194,6 +197,10 @@ int tcpci_tcpm_get_message(int port, uint32_t *payload, int *head)
 	int rv, cnt, reg = TCPC_REG_RX_DATA;
 
 	rv = tcpc_read(port, TCPC_REG_RX_BYTE_CNT, &cnt);
+
+	CPRINTS("get message cnt=%d", cnt);
+	/* HACK: parade fixup */
+	cnt++;
 
 	/* RX_BYTE_CNT includes 3 bytes for frame type and header */
 	if (rv != EC_SUCCESS || cnt < 3) {
