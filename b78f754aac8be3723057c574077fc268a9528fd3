@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83b1f1f3_cbaa15c2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-13T20:40:52Z",
+      "side": 1,
+      "message": "Please comment on what these numbers mean in terms of pull ups/downs on which gpios.",
+      "range": {
+        "startLine": 177,
+        "startChar": 2,
+        "endLine": 177,
+        "endChar": 7
+      },
+      "revId": "b78f754aac8be3723057c574077fc268a9528fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
