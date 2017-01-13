@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_b1cf1037",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-13T21:45:03Z",
+      "side": 1,
+      "message": "Actually re initializing usb or spi might mess things up, so I will fix this.",
+      "parentUuid": "83b1f1f3_4b1c4588",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 27
+      },
+      "revId": "2e8f47a2f0e271cc92849f0b2a7f37d8fc4f72ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_5d4ecb2e",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 2
