@@ -36,6 +36,29 @@
     },
     {
       "key": {
+        "uuid": "437ff998_fb410cf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-01-13T03:07:10Z",
+      "side": 1,
+      "message": "btw, it\u0027s 0x16, not 0x15. Here and below in TESTs.",
+      "range": {
+        "startLine": 31,
+        "startChar": 45,
+        "endLine": 31,
+        "endChar": 47
+      },
+      "revId": "9197c2a54fc1aadb7d9a6b2641ef5f38338d09b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "437ff998_3b5f8453",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
