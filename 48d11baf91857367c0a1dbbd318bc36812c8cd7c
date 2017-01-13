@@ -33,6 +33,24 @@
       "revId": "48d11baf91857367c0a1dbbd318bc36812c8cd7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7d8f2b0_b078406b",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-13T03:38:43Z",
+      "side": 1,
+      "message": "Talked a bit more with Mulin. On glados (same charger) they have GPIO USB_C0_VBUS_WAKE_L to detect vbus change, and then vbus0_evt calls usb_charger_vbus_change.\n\nSo, we need to:\n - Either get an alert from ANX74XX\n - Add that gpio for port 0 (for port 1, we can still rely on parade TCPC alert).",
+      "parentUuid": "b7d8f2b0_10e82cf6",
+      "revId": "48d11baf91857367c0a1dbbd318bc36812c8cd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
