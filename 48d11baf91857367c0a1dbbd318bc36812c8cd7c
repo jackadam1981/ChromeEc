@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7d8f2b0_d0f5f4d0",
+        "filename": "board/poppy/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-13T03:28:02Z",
+      "side": 1,
+      "message": "This feel a little strange, as pd_snk_is_vbus_provided is only called from pd_is_vbus_present (usb_pd_protocol.c):\n\n#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC\n\treturn tcpm_get_vbus_level(port);\n#else\n\treturn pd_snk_is_vbus_provided(port);\n#endif\n\nSo if CONFIG_USB_PD_VBUS_DETECT_TCPC was set, then we would already call the right function (tcpm_get_vbus_level calls *_tcpm_get_vbus_level).",
+      "revId": "48d11baf91857367c0a1dbbd318bc36812c8cd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7d8f2b0_10e82cf6",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-13T03:28:02Z",
+      "side": 1,
+      "message": "Maybe we need to change this code to call\nupdate_vbus_supplier(i, tcpm_get_vbus_level(i));\ninstead, when CONFIG_USB_PD_VBUS_DETECT_TCPC is set?\n\nI\u0027m actually not clear at all why we need to call usb_charger_vbus_change in TCPC alert.",
+      "revId": "48d11baf91857367c0a1dbbd318bc36812c8cd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
