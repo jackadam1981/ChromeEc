@@ -16,6 +16,7 @@
 #include "registers.h"
 #include "system.h"
 #include "task.h"
+#include "tcpci.h"
 #include "timer.h"
 #include "util.h"
 #include "usb_mux.h"
@@ -117,11 +118,24 @@ void pd_power_supply_reset(int port)
  * TODO(crosbug.com/p/61098): Can we implement this, and change the vbus
  * detection method.
  */
-#if 0
 int pd_snk_is_vbus_provided(int port)
 {
+	int reg = 0;
+
+	/*
+	 * Read VBus status directly if port controller (ANX74XX) doesn't
+	 * follow TCPC fully.
+	 */
+	if (port == 0) {
+		tcpc_read(port, ANX74XX_REG_ANALOG_STATUS, &reg);
+		return ((reg & ANX74XX_REG_VBUS_STATUS) ? 1 : 0);
+	} else if (port == 1) {
+		tcpc_read(port, TCPC_REG_POWER_STATUS, &reg);
+		return reg & TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
+	}
+
+	return 0;
 }
-#endif
 
 void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage)
