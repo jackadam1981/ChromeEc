@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_718738b1",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-13T21:57:07Z",
+      "side": 1,
+      "message": "of course, I did not reupload this after fixing this, will do now.",
+      "parentUuid": "83b1f1f3_a647d80d",
+      "revId": "d56810b9889dfb9341fe9bf5a21a1044ce9e5ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_51ef948e",
         "filename": "common/tpm_registers.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-01-13T21:48:00Z",
       "side": 1,
       "message": "I don\u0027t think we should be continuing here. task_wait_event() returns the event mask after it was cleared. We need to process all events. It might be clearer to hoist the event processing into its own function. But at the very least we should handle all the events that are set so we don\u0027t drop them.",
+      "revId": "d56810b9889dfb9341fe9bf5a21a1044ce9e5ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_d16d641b",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-13T21:57:07Z",
+      "side": 1,
+      "message": "I don\u0027t think we should bather with any other events if we are resetting the tpm here.\n\nThe two other options are commiting nvmem and executing a tpm command.\n\nThe reset will commit nvmem, and will prevent the tpm command from proper execution, there is no point in continuing if this is a reset request.",
+      "parentUuid": "83b1f1f3_51ef948e",
       "revId": "d56810b9889dfb9341fe9bf5a21a1044ce9e5ee3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
