@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_40389f40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-13T23:44:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83b1f1f3_c0a10f87",
+      "range": {
+        "startLine": 7,
+        "startChar": 36,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "3e608846a692e7f7607a72f0bfbd40382119c207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_e0a5338a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_603da32f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-13T23:44:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83b1f1f3_e0a5338a",
+      "range": {
+        "startLine": 11,
+        "startChar": 17,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "3e608846a692e7f7607a72f0bfbd40382119c207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_2ce807f6",
         "filename": "board/snappy/board.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-01-13T23:05:51Z",
       "side": 1,
       "message": "Not all the sensors are off in S3, right? I don\u0027t know how much it matters but for example the lid accel is powered in s3 even on the older boards. Any comments?",
+      "range": {
+        "startLine": 502,
+        "startChar": 3,
+        "endLine": 502,
+        "endChar": 52
+      },
+      "revId": "3e608846a692e7f7607a72f0bfbd40382119c207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_609123a6",
+        "filename": "board/snappy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-13T23:44:31Z",
+      "side": 1,
+      "message": "You\u0027re right, PP1800_SENSOR_S is for BMI160 and pen,\nPP1800_SENSOR_U for lid accel.",
+      "parentUuid": "83b1f1f3_2ce807f6",
       "range": {
         "startLine": 502,
         "startChar": 3,
