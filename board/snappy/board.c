@@ -493,6 +493,14 @@ static void board_init(void)
 
 	/* Enable Gyro interrupts */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
+
+	/* Set the sensors in the right powermode */
+	if (system_get_board_version() <= BOARD_VERSION_3) {
+		int i;
+
+		for (i = 0; i < motion_sensor_count; ++i)
+			motion_sensors[i].active_mask = SENSOR_ACTIVE_S0;
+	}
 }
 /* PP3300 needs to be enabled before TCPC init hooks */
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_FIRST);
@@ -863,7 +871,7 @@ struct motion_sensor_t motion_sensors[] = {
 
 	[BASE_GYRO] = {
 	 .name = "Base Gyro",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_GYRO,
 	 .location = MOTIONSENSE_LOC_BASE,
@@ -900,7 +908,7 @@ struct motion_sensor_t motion_sensors[] = {
 
 	[BASE_MAG] = {
 	 .name = "Base Mag",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_MAG,
 	 .location = MOTIONSENSE_LOC_BASE,
