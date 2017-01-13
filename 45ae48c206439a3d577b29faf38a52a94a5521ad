@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83b1f1f3_7d28efb3",
+        "filename": "driver/temp_sensor/nct7717.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-13T18:49:43Z",
+      "side": 1,
+      "message": "I would define the function with __attribute__((unused)) to eliminate the compiler warning when CONFIG_CMD_TEMP_SENSOR is not defined, rather than adding another ifdef block. Another alternative is to just move the function down before print_status.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "45ae48c206439a3d577b29faf38a52a94a5521ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_dd4bbb67",
+        "filename": "driver/temp_sensor/nct7717.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-13T18:49:43Z",
+      "side": 1,
+      "message": "@param temp_ptr\tDestination for temperature in K\n\nI don\u0027t think 8 bits is enough. Are you missing some conversion?",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "45ae48c206439a3d577b29faf38a52a94a5521ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_7d8b8f74",
+        "filename": "driver/temp_sensor/nct7717.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-13T18:49:43Z",
+      "side": 1,
+      "message": "If you move \"Hz\" to your printf you\u0027ll probably save some RAM.",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "45ae48c206439a3d577b29faf38a52a94a5521ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
