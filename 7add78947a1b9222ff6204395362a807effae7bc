@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83b1f1f3_da790198",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-13T17:48:14Z",
+      "side": 1,
+      "message": "Just name this PANIC_INFO_BACKUP_OFFSET or similar, the CONFIG_ namespace is usually reserved for project-wide configurations, and must be documented/def\u0027d in config.h.",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 39
+      },
+      "revId": "7add78947a1b9222ff6204395362a807effae7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_3a6afdc6",
+        "filename": "include/panic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-13T17:48:14Z",
+      "side": 1,
+      "message": "Let\u0027s move this code to mec1322 chip folder, maybe chip/mec1322/system.c?",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 1
+      },
+      "revId": "7add78947a1b9222ff6204395362a807effae7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
