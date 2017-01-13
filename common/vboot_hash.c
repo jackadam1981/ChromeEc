@@ -32,7 +32,7 @@ struct vboot_hash_tag {
 #define VBOOT_HASH_SYSJUMP_VERSION 1
 
 /* Bytes to hash per deferred call */
-#define CHUNK_SIZE (CONFIG_SHARED_MEM_MIN_SIZE / SHA256_BLOCK_SIZE \
+#define CHUNK_SIZE (shared_mem_size() / SHA256_BLOCK_SIZE \
 					       * SHA256_BLOCK_SIZE)
 
 #define WORK_INTERVAL_US 100  /* Delay between deferred calls */
@@ -114,6 +114,7 @@ static void vboot_hash_next_chunk(void)
 		return;
 	}
 
+	ASSERT(CHUNK_SIZE > 0);
 	/* Compute the next chunk of hash */
 	size = MIN(CHUNK_SIZE, data_size - curr_pos);
 
