@@ -270,6 +270,11 @@ void lfw_main()
 		uart_puts("lfw-RO load\n");
 		spi_image_load(CONFIG_EC_PROTECTED_STORAGE_OFF +
 			       CONFIG_RO_STORAGE_OFF);
+		/*
+		* Top 8KB of Data RAM will be used by ROM during system reboot.
+		* Restore the panic data from the predefined backup offset.
+		*/
+		panic_data_restore(CONFIG_PANIC_INFO_BACKUP_OFFSET);
 		/* fall through */
 	default:
 		MEC1322_VBAT_RAM(MEC1322_IMAGETYPE_IDX) =

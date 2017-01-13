@@ -118,6 +118,14 @@ void _system_reset(int flags, int wake_from_hibernate)
 
 	chip_save_reset_flags(save_flags);
 
+	/*
+	* Top 8KB of Data RAM will be used by ROM during system reboot.
+	* So, copy the panic data to the predefined backup offset.
+	* Put this inline function just right before the WDT reset
+	* to avoid memory corruption to global variable or stack.
+	*/
+	panic_data_backup(CONFIG_PANIC_INFO_BACKUP_OFFSET);
+
 	/* Trigger watchdog in 1ms */
 	MEC1322_WDG_LOAD = 1;
 	MEC1322_WDG_CTL |= 1;

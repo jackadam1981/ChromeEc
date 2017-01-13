@@ -61,6 +61,12 @@
 /* System stack size */
 #define CONFIG_STACK_SIZE		1024
 
+/*
+* The offset of the PANIC_DATA_PTR to the backup address.
+* Set it to 8K because the top 8K will be used by ROM.
+*/
+#define CONFIG_PANIC_INFO_BACKUP_OFFSET 0x2000
+
 /* non-standard task stack sizes */
 #define IDLE_TASK_STACK_SIZE		512
 #define LARGER_TASK_STACK_SIZE		640
