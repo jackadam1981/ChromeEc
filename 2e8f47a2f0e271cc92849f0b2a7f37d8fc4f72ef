@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_b10c7064",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-13T22:07:10Z",
+      "side": 1,
+      "message": "yes, bss is zeroed during startup.",
+      "parentUuid": "83b1f1f3_d19484d5",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "2e8f47a2f0e271cc92849f0b2a7f37d8fc4f72ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_9d0ea3ea",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 2
