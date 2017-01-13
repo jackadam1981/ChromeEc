@@ -21,6 +21,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+#include "tcpci.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -117,11 +118,13 @@ void pd_power_supply_reset(int port)
  * TODO(crosbug.com/p/61098): Can we implement this, and change the vbus
  * detection method.
  */
-#if 0
 int pd_snk_is_vbus_provided(int port)
 {
+	if (port == 0)
+		return anx74xx_tcpm_get_vbus_level(port);
+	else
+		return tcpci_tcpm_get_vbus_level(port);
 }
-#endif
 
 void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage)
