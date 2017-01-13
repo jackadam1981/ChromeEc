@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4328d982_017b7a2a",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-13T12:23:56Z",
+      "side": 1,
+      "message": "at the end of the day, an hostile RW can select the (possibly small) portion at the start of its image which will be used by the \u0027vboot\u0027 code to compute its SHA256 hash.\nIsn\u0027t this helping the attacker to craft a fake given hash ?",
+      "range": {
+        "startLine": 620,
+        "startChar": 4,
+        "endLine": 624,
+        "endChar": 35
+      },
+      "revId": "be82b1d71efa326b28320580a32fe972a6c46297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
