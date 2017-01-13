@@ -66,6 +66,53 @@
     },
     {
       "key": {
+        "uuid": "437ff998_20a511ef",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-13T01:23:21Z",
+      "side": 1,
+      "message": "okay, I will add more details.\nyes it is order in highest priority first but few share the same priority (int supplier_priority[]) but supported power are different.",
+      "parentUuid": "437ff998_c5b30f4b",
+      "range": {
+        "startLine": 915,
+        "startChar": 25,
+        "endLine": 915,
+        "endChar": 32
+      },
+      "revId": "6c53445858255d88a14c16a959cf8ad43d6607d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_60c46991",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-13T01:23:21Z",
+      "side": 1,
+      "message": "I will make:\nfor (i \u003d CHARGE_SUPPLIER_TYPEC; i \u003c CHARGE_SUPPLIER_VBUS; i++)",
+      "range": {
+        "startLine": 916,
+        "startChar": 1,
+        "endLine": 916,
+        "endChar": 44
+      },
+      "revId": "6c53445858255d88a14c16a959cf8ad43d6607d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "437ff998_8f4e962c",
         "filename": "common/charge_manager.c",
         "patchSetId": 1
@@ -113,6 +160,24 @@
       "side": 1,
       "message": "So if there are 3 max suppliers, can both (2) the other suppliers have a current \u003e MIN_CURR_MA? I\u0027m wondering why it\u0027s the *first* one. Are the suppliers in a priority order?",
       "parentUuid": "437ff998_625c715c",
+      "revId": "6c53445858255d88a14c16a959cf8ad43d6607d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_00a815c7",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-13T01:23:21Z",
+      "side": 1,
+      "message": "Yes only in case of 3 supplier, 2 can have current \u003e MIN_CURR_MA. With the above change in for loop we can remove this current \u003e .. condition.",
+      "parentUuid": "437ff998_45593f3b",
       "revId": "6c53445858255d88a14c16a959cf8ad43d6607d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
