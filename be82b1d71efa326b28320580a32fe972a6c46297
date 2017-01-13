@@ -22,6 +22,30 @@
       "revId": "be82b1d71efa326b28320580a32fe972a6c46297",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_9799249f",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-13T16:39:30Z",
+      "side": 1,
+      "message": "It should be fine.  SHA256 is collision resistant regardless of message size.  Assuming that fails, A hash digest mixes in the size of the hashed data (in SHA256_final()), so the attacker would need to find a collision which took that into consideration.\n\nIf we get worried about that, the ec_response_vboot_hash struct already contains the hashed offset/size, so AP-RW could verify that the correct portion of the image was hashed.  But I suspect if SHA256 collisiion attacks become practical we\u0027ve got much bigger problems.",
+      "parentUuid": "4328d982_017b7a2a",
+      "range": {
+        "startLine": 620,
+        "startChar": 4,
+        "endLine": 624,
+        "endChar": 35
+      },
+      "revId": "be82b1d71efa326b28320580a32fe972a6c46297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
