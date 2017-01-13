@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b7d8f2b0_53274e26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1119450
+      },
+      "writtenOn": "2017-01-13T10:19:24Z",
+      "side": 1,
+      "message": "Yes, please help to check CL: 427601, 427602, 427603, 427604",
+      "parentUuid": "97a04ea7_a1b13c93",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "b5e4f541eab516bb185abb0ecb272571ccc1d770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_61b03490",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-09T22:10:15Z",
       "side": 1,
       "message": "Is this a problem only for watchdog reboot, or for all software panics?",
+      "range": {
+        "startLine": 9,
+        "startChar": 68,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "b5e4f541eab516bb185abb0ecb272571ccc1d770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7d8f2b0_ed678161",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1119450
+      },
+      "writtenOn": "2017-01-13T10:19:24Z",
+      "side": 1,
+      "message": "The problem is happened on panic_reboot() on mec1322.",
+      "parentUuid": "97a04ea7_61b03490",
       "range": {
         "startLine": 9,
         "startChar": 68,
