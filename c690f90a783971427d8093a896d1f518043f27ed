@@ -16,6 +16,24 @@
       "revId": "c690f90a783971427d8093a896d1f518043f27ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_4c645bc9",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-13T23:05:13Z",
+      "side": 1,
+      "message": "don\u0027t upload a new patch on this change-id, it will be overwritten.\n\nI\u0027ll add this comment myself.",
+      "parentUuid": "83b1f1f3_8c767340",
+      "revId": "c690f90a783971427d8093a896d1f518043f27ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
