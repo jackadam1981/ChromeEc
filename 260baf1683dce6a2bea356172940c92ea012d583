@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437ff998_c0a45d4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-13T01:03:57Z",
+      "side": 1,
+      "message": "only \u0027apreset warm\u0027 works.\n\u0027apreset cold\u0027 \u0026 \u0027apshutdown\u0027 are not working in S0iX.\n@Ravi: Do you know if it is related to chrome-os-partner:57313",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "260baf1683dce6a2bea356172940c92ea012d583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
