@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_31178066",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2263,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-13T22:09:50Z",
+      "side": 1,
+      "message": "Should in general match the command name.  So, ec_config_power_button_flags.\n\nAlso, this should be the flag value itself.  That is,\n\nEC_POWER_BUTTON_ENABLE_SMI_PULSE \u003d (1 \u003c\u003c 0)",
+      "parentUuid": "83b1f1f3_9d99439f",
+      "range": {
+        "startLine": 2260,
+        "startChar": 0,
+        "endLine": 2263,
+        "endChar": 2
+      },
+      "revId": "94ec1e1dc5c0b382ef14a335874bf0f3ecb9b5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_7d538fd5",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -111,6 +135,53 @@
         "startChar": 36,
         "endLine": 2265,
         "endChar": 44
+      },
+      "revId": "94ec1e1dc5c0b382ef14a335874bf0f3ecb9b5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_b12ab099",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2265,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-13T22:09:50Z",
+      "side": 1,
+      "message": "ec_commands.h currently uses POWER_BUTTON elsewhere; does not use pwrbtn or powerbtn.",
+      "parentUuid": "83b1f1f3_7d538fd5",
+      "range": {
+        "startLine": 2265,
+        "startChar": 36,
+        "endLine": 2265,
+        "endChar": 44
+      },
+      "revId": "94ec1e1dc5c0b382ef14a335874bf0f3ecb9b5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_f14b4867",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2271,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-13T22:09:50Z",
+      "side": 1,
+      "message": "See enum ec_config_power_button_flags.",
+      "range": {
+        "startLine": 2266,
+        "startChar": 1,
+        "endLine": 2271,
+        "endChar": 4
       },
       "revId": "94ec1e1dc5c0b382ef14a335874bf0f3ecb9b5fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
