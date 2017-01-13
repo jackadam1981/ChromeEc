@@ -148,6 +148,10 @@ static struct pd_protocol {
 	int prev_request_mv;
 	/* Time for Try.SRC states */
 	uint64_t try_src_marker;
+#ifdef CONFIG_USB_PD_DTS
+	/* Per port default power role */
+	uint8_t default_power_role;
+#endif
 #endif
 
 	/* PD state for Vendor Defined Messages */
@@ -1619,13 +1623,27 @@ void pd_task(void)
 #endif
 
 	/* Initialize PD protocol state variables for each port. */
+#ifdef CONFIG_USB_PD_DTS
+	/* DTS can have different default roles for each port. */
+	pd[port].power_role = pd_get_dts_default_role(port);
+	/* Select Rp/Rd based on default power role for each port */
+	tcpm_set_cc(port, pd[port].power_role == PD_ROLE_SOURCE ? TYPEC_CC_RP :
+		    TYPEC_CC_RD);
+	/*
+	 * If not in suspend state, then set default state based on default
+	 * power role.
+	 */
+	if (this_state != PD_STATE_SUSPENDED)
+		this_state = pd[port].power_role == PD_ROLE_SOURCE ?
+			PD_STATE_SRC_DISCONNECTED : PD_STATE_SNK_DISCONNECTED;
+#else
 	pd[port].power_role = PD_ROLE_DEFAULT;
+	tcpm_set_cc(port, PD_ROLE_DEFAULT == PD_ROLE_SOURCE ? TYPEC_CC_RP :
+		    TYPEC_CC_RD);
+#endif
 	pd[port].vdm_state = VDM_STATE_DONE;
 	set_state(port, this_state);
 	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
-	tcpm_set_cc(port, PD_ROLE_DEFAULT == PD_ROLE_SOURCE ? TYPEC_CC_RP :
-							      TYPEC_CC_RD);
-
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 	/* Initialize PD Policy engine */
@@ -1758,6 +1776,7 @@ void pd_task(void)
 					PD_STATE_SRC_DISCONNECTED_DEBOUNCE);
 			}
 #ifdef CONFIG_USB_PD_DUAL_ROLE
+#ifndef CONFIG_USB_PD_DTS
 			/*
 			 * Try.SRC state is embedded here. Wait for SNK
 			 * detect, or if timer expires, transition to
@@ -1781,6 +1800,7 @@ void pd_task(void)
 				/* Swap states quickly */
 				timeout = 2*MSEC;
 			}
+#endif
 #endif
 			break;
 		case PD_STATE_SRC_DISCONNECTED_DEBOUNCE:
@@ -1861,11 +1881,15 @@ void pd_task(void)
 				/* Remove VBUS */
 				pd_power_supply_reset(port);
 #endif
-
+#ifdef CONFIG_USB_PD_DTS
+				if (new_cc_state == PD_CC_DEBUG_ACC)
+					if (pd_set_power_supply_ready(port))
+						break;
+#endif
 				/* Set the USB muxes and the default USB role */
 				pd_set_data_role(port, CONFIG_USB_PD_DEBUG_DR);
 
-#ifdef CONFIG_CASE_CLOSED_DEBUG
+#if defined(CONFIG_CASE_CLOSED_DEBUG) || defined(CONFIG_USB_PD_DTS)
 				if (new_cc_state == PD_CC_DEBUG_ACC) {
 					ccd_set_mode(system_is_locked() ?
 						     CCD_MODE_PARTIAL :
@@ -1889,8 +1913,12 @@ void pd_task(void)
 			     (cc1 != TYPEC_CC_VOLT_RD ||
 			      cc2 != TYPEC_CC_VOLT_RD))) {
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
-#ifdef CONFIG_CASE_CLOSED_DEBUG
+#if defined(CONFIG_CASE_CLOSED_DEBUG) || defined(CONFIG_USB_PD_DTS)
 				ccd_set_mode(CCD_MODE_DISABLED);
+#endif
+#ifdef CONFIG_USB_PD_DTS
+				/* Remove VBUS */
+				pd_power_supply_reset(port);
 #endif
 				timeout = 10*MSEC;
 			}
