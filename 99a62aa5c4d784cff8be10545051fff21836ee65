@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83b1f1f3_4086df3f",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-13T23:53:36Z",
+      "side": 1,
+      "message": "Could please add a brief comment here describing why we\u0027re shoveling an event through the tpm task? A reminder about who should be calling nvcommit enable, etc is helpful.",
+      "revId": "99a62aa5c4d784cff8be10545051fff21836ee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
