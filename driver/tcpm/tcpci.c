@@ -189,10 +189,18 @@ int tcpci_tcpm_set_rx_enable(int port, int enable)
 			  enable ? TCPC_REG_RX_DETECT_SOP_HRST_MASK : 0);
 }
 
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
+#if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) || defined(BOARD_POPPY)
 int tcpci_tcpm_get_vbus_level(int port)
 {
+#if defined(BOARD_POPPY)
+	int power_status;
+
+	/* Read VBus directly since we don't have alert event anymore. */
+	tcpc_read(port, TCPC_REG_POWER_STATUS, &power_status);
+	return power_status & TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
+#else
 	return tcpc_vbus[port];
+#endif
 }
 #endif
 
@@ -202,7 +210,6 @@ int tcpci_tcpm_get_message(int port, uint32_t *payload, int *head)
 
 	rv = tcpc_read(port, TCPC_REG_RX_BYTE_CNT, &cnt);
 
-	CPRINTS("get message cnt=%d", cnt);
 	/* HACK: parade fixup */
 	cnt++;
 
