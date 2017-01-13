@@ -473,6 +473,14 @@ static void board_handle_reboot(void)
 	/* Flush console */
 	cflush();
 
+	/*
+	* Top 8KB of Data RAM will be used by ROM during system reboot.
+	* So, copy the panic data to the predefined backup offset.
+	* Put this inline function just right before the PMIC reset
+	* to avoid memory corruption to global variable or stack.
+	*/
+	panic_data_backup(CONFIG_PANIC_INFO_BACKUP_OFFSET);
+
 	/* Bring down all rails but RTC rail (including EC power). */
 	gpio_set_flags(GPIO_BATLOW_L_PMIC_LDO_EN, GPIO_OUT_HIGH);
 	while (1)
