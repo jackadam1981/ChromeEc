@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_b1c2b0e4",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-01-13T21:55:31Z",
+      "side": 1,
+      "message": "This variable is referenced before it is set. Not sure what the state of uninitialized memory on cr50, I guess it is always zero? Will sysjump clear it? Does cr50 have sysjump?\n\nMaybe it would be clearer to:\nstatic int keep_ccd_enabled \u003d 0;",
+      "parentUuid": "83b1f1f3_c6968c6b",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "2e8f47a2f0e271cc92849f0b2a7f37d8fc4f72ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_9d0ea3ea",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 2
