@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83b1f1f3_8c767340",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-13T22:31:42Z",
+      "side": 1,
+      "message": "Thought about this some more.  The salt needs to be unique on each invocation - the reason is that the initial plaintext is known (i.e. mostly 0xFFFF, etc.).  Hence extracting most of the cipherstream is trivial.  If the cipherstream is fixed for the life of the chip, then any encrypted data can be trivially recovered.\n\nIt should be ok for the salt to be truncated SHA checksum over the plaintext - so if the plaintext changes, then the cipherstream changes.  But a given salt value should never be reused.\n\nI\u0027ll update the comments accordingly.",
+      "revId": "c690f90a783971427d8093a896d1f518043f27ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
