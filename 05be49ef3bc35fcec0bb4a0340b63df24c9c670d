@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437ff998_f6a7e3f6",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-13T05:30:27Z",
+      "side": 1,
+      "message": "I think it\u0027s best to simplify this - if we\u0027re a DCP charger (supplier \u003d\u003d DCP) then just check TYPEC for our charge floor (I don\u0027t think we can ID a charger as both DCP and proprietary, so we don\u0027t need to worry about that case -- same with SDP / OTHER).\n\nIt is dependent on our supplier_priority[] table, but we can comment so, and that table rarely changes.",
+      "range": {
+        "startLine": 930,
+        "startChar": 0,
+        "endLine": 936,
+        "endChar": 32
+      },
+      "revId": "05be49ef3bc35fcec0bb4a0340b63df24c9c670d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
