@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_d19484d5",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-13T22:01:23Z",
+      "side": 1,
+      "message": "It initializes to 0. There is no sysjump.\n\nWe dont explicitly initialize any variables in the cr50 code to 0 so it wouldn\u0027t be in line with the style.",
+      "parentUuid": "83b1f1f3_b1c2b0e4",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "2e8f47a2f0e271cc92849f0b2a7f37d8fc4f72ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_9d0ea3ea",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 2
