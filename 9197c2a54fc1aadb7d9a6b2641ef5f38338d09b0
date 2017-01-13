@@ -33,6 +33,29 @@
       "revId": "9197c2a54fc1aadb7d9a6b2641ef5f38338d09b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_3b5f8453",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-01-13T02:10:44Z",
+      "side": 1,
+      "message": "With this change my system doesn\u0027t see TPM after startup. \nWhen I reverted this change, started working ok.\n\nWhy did we need to stop calling HOOK_CHIPSET_RESUME?",
+      "range": {
+        "startLine": 613,
+        "startChar": 0,
+        "endLine": 613,
+        "endChar": 40
+      },
+      "revId": "9197c2a54fc1aadb7d9a6b2641ef5f38338d09b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
