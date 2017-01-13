@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_c6968c6b",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-13T21:29:10Z",
+      "side": 1,
+      "message": "What do you mean?",
+      "parentUuid": "83b1f1f3_5ddc0b27",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "2e8f47a2f0e271cc92849f0b2a7f37d8fc4f72ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_9d0ea3ea",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_4b1c4588",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-13T21:29:10Z",
+      "side": 1,
+      "message": "It shouldn\u0027t",
+      "parentUuid": "83b1f1f3_9d0ea3ea",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 27
+      },
+      "revId": "2e8f47a2f0e271cc92849f0b2a7f37d8fc4f72ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_5d4ecb2e",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-01-13T19:06:59Z",
       "side": 1,
       "message": "Should there be some way to clear keepalive, like \"ccd keepalive off\"",
+      "range": {
+        "startLine": 221,
+        "startChar": 26,
+        "endLine": 221,
+        "endChar": 35
+      },
+      "revId": "2e8f47a2f0e271cc92849f0b2a7f37d8fc4f72ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_468b5c46",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-13T21:29:10Z",
+      "side": 1,
+      "message": "Yes. Done",
+      "parentUuid": "83b1f1f3_5d4ecb2e",
       "range": {
         "startLine": 221,
         "startChar": 26,
