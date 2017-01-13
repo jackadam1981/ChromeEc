@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "437ff998_76d673d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-13T03:43:37Z",
+      "side": 1,
+      "message": "yes, it was 0x15 before a rebase",
+      "parentUuid": "437ff998_fb410cf8",
+      "range": {
+        "startLine": 31,
+        "startChar": 45,
+        "endLine": 31,
+        "endChar": 47
+      },
+      "revId": "9197c2a54fc1aadb7d9a6b2641ef5f38338d09b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "437ff998_3b5f8453",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
