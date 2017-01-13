@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83b1f1f3_20673090",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-13T19:09:51Z",
+      "side": 1,
+      "message": "So, the intended behavior is to ignore short presses, but still power-down on long presses?",
+      "range": {
+        "startLine": 282,
+        "startChar": 19,
+        "endLine": 282,
+        "endChar": 34
+      },
+      "revId": "94ec1e1dc5c0b382ef14a335874bf0f3ecb9b5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_a07a6023",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-13T19:09:51Z",
+      "side": 1,
+      "message": "Probably no need for this, we never asserted the signal.",
+      "range": {
+        "startLine": 283,
+        "startChar": 4,
+        "endLine": 283,
+        "endChar": 28
+      },
+      "revId": "94ec1e1dc5c0b382ef14a335874bf0f3ecb9b5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_9d99439f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2263,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-13T19:09:51Z",
+      "side": 1,
+      "message": "Suggest to be more verbose with this enum / defs, since this header is copied to a bunch of projects. Eg. \"enum ec_power_button_config\" / EC_POWER_BUTTON_ENABLE_SMI_PULSE.",
+      "range": {
+        "startLine": 2260,
+        "startChar": 0,
+        "endLine": 2263,
+        "endChar": 2
+      },
+      "revId": "94ec1e1dc5c0b382ef14a335874bf0f3ecb9b5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_7d538fd5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2265,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-13T19:09:51Z",
+      "side": 1,
+      "message": "It\u0027s probably better to be consistent with powerbtn vs POWER_BUTTON usage in this struct + host command def + enum def.",
+      "range": {
+        "startLine": 2265,
+        "startChar": 36,
+        "endLine": 2265,
+        "endChar": 44
+      },
+      "revId": "94ec1e1dc5c0b382ef14a335874bf0f3ecb9b5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
