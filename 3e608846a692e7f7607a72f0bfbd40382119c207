@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "83b1f1f3_c0a10f87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-01-13T23:31:59Z",
+      "side": 1,
+      "message": "I don\u0027t think you\u0027re supposed to mention which stage of protos a project is at.",
+      "range": {
+        "startLine": 7,
+        "startChar": 36,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "3e608846a692e7f7607a72f0bfbd40382119c207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_e0a5338a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-01-13T23:31:59Z",
+      "side": 1,
+      "message": "just use the board versions",
+      "range": {
+        "startLine": 11,
+        "startChar": 17,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "3e608846a692e7f7607a72f0bfbd40382119c207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_2ce807f6",
         "filename": "board/snappy/board.c",
         "patchSetId": 1
