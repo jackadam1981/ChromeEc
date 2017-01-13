@@ -765,6 +765,13 @@ void pd_set_dual_role(enum pd_dual_role_states state);
  * @param port Port number from which to get role
  */
 int pd_get_role(int port);
+
+/**
+ * Get default power role for DTS port
+ *
+ * @param port Port number from which to get role
+ */
+uint8_t pd_get_dts_default_role(int port);
 #endif
 
 /* Control Message type */
