@@ -46,6 +46,30 @@
       "revId": "be82b1d71efa326b28320580a32fe972a6c46297",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4328d982_8119aaaa",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-13T17:19:45Z",
+      "side": 1,
+      "message": "Chosen-prefix collision attack will likely become practical before the other collision attacks, but fine.",
+      "parentUuid": "83b1f1f3_9799249f",
+      "range": {
+        "startLine": 620,
+        "startChar": 4,
+        "endLine": 624,
+        "endChar": 35
+      },
+      "revId": "be82b1d71efa326b28320580a32fe972a6c46297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
