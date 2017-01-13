@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83b1f1f3_5a9ed1f8",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-13T17:35:46Z",
+      "side": 1,
+      "message": "I don\u0027t think this applies for the appended sig. Anyway it shouldn\u0027t be relevant for this branch.",
+      "range": {
+        "startLine": 307,
+        "startChar": 5,
+        "endLine": 307,
+        "endChar": 26
+      },
+      "revId": "d35992fba783d87fc0757bfd7f3839b96093601f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
