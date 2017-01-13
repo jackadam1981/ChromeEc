@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_00ceacb0",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-13T19:27:19Z",
+      "side": 1,
+      "message": "let\u0027s drop it then?",
+      "parentUuid": "830ad15b_726936a0",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "856f32dbb8c7249861acbbd5b3d71cb4062c8412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_aaed9147",
         "filename": "chip/g/rdd.c",
         "patchSetId": 1
