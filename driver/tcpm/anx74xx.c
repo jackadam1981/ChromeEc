@@ -684,8 +684,13 @@ static int anx74xx_tcpm_set_rx_enable(int port, int enable)
 	return tcpc_write(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG_MASK, reg);
 }
 
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
-static int anx74xx_tcpm_get_vbus_level(int port)
+/*
+ * TODO: We don't have a alert event to indicate power status through TCPC on
+ * poppy since anx74xx doesn't support it. Export this function for detecting
+ * VBus without TCPC.
+ */
+#if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) || defined(BOARD_POPPY)
+int anx74xx_tcpm_get_vbus_level(int port)
 {
 	int reg = 0;
 
