@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_773c909a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-13T16:40:51Z",
+      "side": 1,
+      "message": "Shawn was just meaning BRANCH\u003dreef would be the correct line. It means this patch is intended to target the reef branch.",
+      "parentUuid": "b7d8f2b0_509aa458",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "55013556d8b3a3721942d15cb965a03b427f637a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "437ff998_6c9eadf9",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
