@@ -111,16 +111,16 @@ class TPM(object):
         error message describes the problem.
     """
     header_size = struct.calcsize(self.HEADER_FMT)
-    tag, size, cmd, subcmd = struct.unpack(self.HEADER_FMT,
-                                           response[:header_size])
+    tag, size, cmd, sub = struct.unpack(self.HEADER_FMT,
+                                        response[:header_size])
     if tag != 0x8001:
       raise subcmd.TpmTestError('Wrong response tag: %4.4x' % tag)
-    if cmd != EXT_CMD:
+    if cmd != 0:
       raise subcmd.TpmTestError('Unexpected response command field: %8.8x' %
                                 cmd)
-    if subcmd != expected_subcmd:
+    if sub != expected_subcmd:
       raise subcmd.TpmTestError('Unexpected response subcommand field: %2.2x' %
-                     subcmd)
+                     sub)
     if size != len(response):
       raise subcmd.TpmTestError('Size mismatch: header %d, actual %d' % (
           size, len(response)))
@@ -135,13 +135,13 @@ if __name__ == '__main__':
     debug_needed = len(sys.argv) == 2 and sys.argv[1] == '-d'
     t = TPM(debug_mode=debug_needed)
 
-    crypto_test.crypto_tests(t, os.path.join(root_dir, 'crypto_test.xml'))
-    ecc_test.ecc_test(t)
-    ecies_test.ecies_test(t)
-    hash_test.hash_test(t)
-    hkdf_test.hkdf_test(t)
-    rsa_test.rsa_test(t)
-    upgrade_test.upgrade(t)
+   crypto_test.crypto_tests(t, os.path.join(root_dir, 'crypto_test.xml'))
+   ecc_test.ecc_test(t)
+   ecies_test.ecies_test(t)
+   hash_test.hash_test(t)
+   hkdf_test.hkdf_test(t)
+   rsa_test.rsa_test(t)
+   upgrade_test.upgrade(t)
   except subcmd.TpmTestError as e:
     exc_file, exc_line = traceback.extract_tb(sys.exc_traceback)[-1][:2]
     print('\nError in %s:%s: ' % (os.path.basename(exc_file), exc_line), e)

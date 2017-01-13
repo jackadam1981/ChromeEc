@@ -1017,12 +1017,12 @@ struct DMEM_montmul {
 	struct DMEM_montmul_ptrs sqr_ptrs;
 	struct DMEM_montmul_ptrs mul_ptrs;
 	struct DMEM_montmul_ptrs out_ptrs;
-	uint32_t mod[64];
+	uint32_t mod[128];
 	uint32_t dInv[8];
-	uint32_t RR[64];
-	uint32_t in[64];
-	uint32_t exp[64];
-	uint32_t out[64];
+	uint32_t RR[128];
+	uint32_t in[128];
+	uint32_t exp[128];
+	uint32_t out[128];
 };
 
 #define DMEM_CELL_SIZE 32
