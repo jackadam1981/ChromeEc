@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_fda4fff4",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-13T18:55:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "437ff998_ace92089",
+      "range": {
+        "startLine": 222,
+        "startChar": 3,
+        "endLine": 222,
+        "endChar": 21
+      },
+      "revId": "ba6e8edcf80c3b65ede46494b4d512504fa224c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "437ff998_cc51fc78",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_5d0b2b0d",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-13T18:55:32Z",
+      "side": 1,
+      "message": "No. But I changed the print statement to give better clues to what exactly it was undoing. That all fits on one line",
+      "parentUuid": "437ff998_cc51fc78",
+      "range": {
+        "startLine": 236,
+        "startChar": 14,
+        "endLine": 237,
+        "endChar": 11
+      },
+      "revId": "ba6e8edcf80c3b65ede46494b4d512504fa224c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "437ff998_6cfb0851",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-01-12T22:00:31Z",
       "side": 1,
       "message": "should this be \u0027forced enabled\u0027 or some such?",
+      "range": {
+        "startLine": 247,
+        "startChar": 22,
+        "endLine": 247,
+        "endChar": 34
+      },
+      "revId": "ba6e8edcf80c3b65ede46494b4d512504fa224c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_3d9f57a6",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-13T18:55:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "437ff998_6cfb0851",
       "range": {
         "startLine": 247,
         "startChar": 22,
