@@ -19,6 +19,7 @@
 #include "timer.h"
 #include "util.h"
 #include "spi.h"
+#include "panic_extra.h"
 
 /* Indices for hibernate data registers (RAM backed by VBAT) */
 enum hibdata_index {
@@ -117,6 +118,14 @@ void _system_reset(int flags, int wake_from_hibernate)
 		save_flags |= RESET_FLAG_SOFT;
 
 	chip_save_reset_flags(save_flags);
+
+	/*
+	* Top 8KB of Data RAM will be used by ROM during system reboot.
+	* So, copy the panic data to the predefined backup offset.
+	* Put this inline function just right before the WDT reset
+	* to avoid memory corruption to global variable or stack.
+	*/
+	panic_data_backup(PANIC_INFO_BACKUP_OFFSET);
 
 	/* Trigger watchdog in 1ms */
 	MEC1322_WDG_LOAD = 1;
