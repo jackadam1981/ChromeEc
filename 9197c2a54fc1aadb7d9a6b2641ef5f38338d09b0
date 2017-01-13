@@ -56,6 +56,24 @@
       "revId": "9197c2a54fc1aadb7d9a6b2641ef5f38338d09b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437ff998_db1c508a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-13T02:16:17Z",
+      "side": 1,
+      "message": "yeah, this patch was not tested and was put out as a request for comments.\n\nBear with me while I address the comments and fix it up.",
+      "parentUuid": "437ff998_3b5f8453",
+      "revId": "9197c2a54fc1aadb7d9a6b2641ef5f38338d09b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
