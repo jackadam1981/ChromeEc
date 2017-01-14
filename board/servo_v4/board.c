@@ -6,6 +6,7 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "case_closed_debug.h"
 #include "common.h"
 #include "console.h"
 #include "ec_version.h"
@@ -303,6 +304,87 @@ static void init_ioexpander(void)
 	i2c_write8(1, 0x40, 0x7, 0x0);
 }
 
+/* Define voltage thresholds for SBU USB detection */
+#define GND_MAX_MV	350
+#define USB_HIGH_MV	1500
+/* Tracks current state of ccd */
+static int ccd_mode;
+
+void ccd_set_mode(enum ccd_mode new_mode)
+{
+	ccprintf("ccd_set_mode: mode = %d\n", new_mode);
+	if (new_mode == CCD_MODE_ENABLED) {
+		int sbu1;
+		int sbu2;
+
+		sbu1 = adc_read_channel(ADC_SBU1_DET);
+		sbu2 = adc_read_channel(ADC_SBU2_DET);
+
+		CPRINTS("CCD: Plug detect sbu1:%d, sbu2:%d",
+			sbu1, sbu2);
+
+		/* USB FS pulls one line high for connect request */
+		if ((sbu1 > USB_HIGH_MV) && (sbu2 < GND_MAX_MV)) {
+			/* SBU flip = 1 */
+			write_ioexpander(0, 2, 1);
+			usleep(10000);
+			gpio_set_level(GPIO_SBU_MUX_EN, 1);
+			ccd_mode = CCD_MODE_ENABLED;
+			CPRINTS("CCD: connected flip");
+		} else if ((sbu2 > USB_HIGH_MV) &&
+			   (sbu1 < GND_MAX_MV)) {
+			/* SBU flip = 0 */
+			write_ioexpander(0, 2, 0);
+			usleep(10000);
+			gpio_set_level(GPIO_SBU_MUX_EN, 1);
+			ccd_mode = CCD_MODE_ENABLED;
+			CPRINTS("CCD: connected noflip");
+		} else
+			CPRINTS("CCD: connected none, sbu votage det failed");
+	} else if (new_mode == CCD_MODE_DISABLED) {
+		/* We are not connected to anything */
+
+		/* Turn off CCD */
+		gpio_set_level(GPIO_SBU_MUX_EN, 0);
+		CPRINTS("CCD: disconnect");
+		ccd_mode = CCD_MODE_DISABLED;
+	}
+}
+
+static void board_init(void)
+{
+	/* USB to serial queues */
+	queue_init(&usart3_to_usb);
+	queue_init(&usb_to_usart3);
+	queue_init(&usart4_to_usb);
+	queue_init(&usb_to_usart4);
+
+	/* UART init */
+	usart_init(&usart3);
+	usart_init(&usart4);
+
+	/* Delay DUT hub to avoid brownout. */
+	usleep(1000);
+	gpio_set_flags(GPIO_DUT_HUB_USB_RESET_L, GPIO_OUT_HIGH);
+
+	/* Write USB3 Mode Enable to PS8742 USB/DP Mux. */
+	i2c_write8(1, 0x20, 0x0, 0x20);
+
+	/* Enable uservo USB by default. */
+	init_ioexpander();
+	init_uservo_port();
+
+	/* Inialize CCD mode and disable sbu mux. */
+	ccd_set_mode(CCD_MODE_DISABLED);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+/*
+ * TODO(crosbug.com/p/60829): These defines and the function init_ccd() are
+ * being kept until the console command 'ccd' is redone. Don't want to keep the
+ * idea of CC state in board.c separate from that of what exists in the USB PD
+ * protocol state machine.
+ */
 /* State of CC lines presented to DUT */
 /* Dual Rd pulldown, classic debug device. */
 #define CCD_ID_RDRD	0
@@ -358,167 +440,12 @@ static void init_ccd(int mode)
 	ccd_id = mode;
 }
 
-
-/* Define voltage thresholds for CCD and SBU USB detection */
-#define GND_MAX_MV	350
-#define PULL_0V35_MV	350
-#define PULL_0V55_MV	550
-#define PULL_0V9_MV	900
-#define PULL_1V1_MV	1100
-#define PULL_2V0_MV	2000
-#define POWER_MIN_MV	3000
-#define USB_HIGH_MV	1500
-
-/* Check if presented CCD was accepted by the device */
-static int check_ccd_request(int cc1, int cc2)
-{
-	if ((ccd_id == CCD_ID_RDRD) &&
-	    (cc1 > PULL_0V35_MV) && (cc1 < PULL_0V55_MV) &&
-	    (cc2 > PULL_0V35_MV) && (cc2 < PULL_0V55_MV))
-		return 1;
-
-	if ((ccd_id == CCD_ID_RPUSB) &&
-	    (cc1 > PULL_0V35_MV) && (cc1 < PULL_0V55_MV) &&
-	    (cc2 > PULL_0V9_MV) && (cc2 < PULL_1V1_MV))
-		return 1;
-
-	return 0;
-}
-
-/* Check if CC lines indicate an unplug event */
-static int check_usb_disconnect(int cc1, int cc2)
-{
-	if ((cc1 < GND_MAX_MV) && (cc2 < GND_MAX_MV))
-		return 1;
-
-	if ((cc1 > POWER_MIN_MV) && (cc2 > POWER_MIN_MV))
-		return 1;
-
-	return 0;
-}
-
-
-/* Current mode for CCD USB line connection */
-/* Cable not plugged in */
-#define CCD_MODE_DISCONNECTED	0
-/* Cable plugged in, CCD detected in default orientation */
-#define CCD_MODE_CONNECTED	1
-/* Cable plugged in, CCD detected in flip orientation */
-#define CCD_MODE_CONNECTED_FLIP	2
-/* Cable plugged in, nothing detected on SBU lines */
-#define CCD_MODE_CONNECTED_NONE	3
-/* No type-c cable in servo. */
-#define CCD_MODE_USBA		4
-
-static int mode = CCD_MODE_DISCONNECTED;
-
 /*
- * We don't have an available interrupt, so we'll just check this
- * every second. Update state every tick if necessary.
+ * TODO(crosbug.com/p/60829): This console command needs to be redone as part of
+ * the 60829. The current default role of the DUT port is a SRC so that it can
+ * act as a DTS port and provide equivalent functionality as suzyq (triggering
+ * CCD mode in the DUT).
  */
-static void usb_sbu_tick(void)
-{
-	int cc1, cc2;
-
-	/* Check if we have a CCD cable */
-	if ((mode == CCD_MODE_USBA) || !gpio_get_level(GPIO_DONGLE_DET)) {
-		mode = CCD_MODE_USBA;
-		return;
-	}
-
-	/* Check CC lines via ADC */
-	cc1 = adc_read_channel(ADC_DUT_CC1_PD);
-	cc2 = adc_read_channel(ADC_DUT_CC2_PD);
-
-	if (mode == CCD_MODE_DISCONNECTED) {
-		/* Check if both CC lines are pulled, and we are connected */
-		if (check_ccd_request(cc1, cc2)) {
-			int sbu1;
-			int sbu2;
-
-			/*
-			 * Give the onboard CCD micro 100ms
-			 * to notice and enable USB, then check adc levels.
-			 */
-			usleep(100000);
-			sbu1 = adc_read_channel(ADC_SBU1_DET);
-			sbu2 = adc_read_channel(ADC_SBU2_DET);
-
-			CPRINTS("CCD: Plug detect cc1:%d cc2:%d "
-				"sbu1:%d, sbu2:%d",
-				cc1, cc2, sbu1, sbu2);
-
-			/* USB FS pulls one line high for connect request */
-			if ((sbu1 > USB_HIGH_MV) && (sbu2 < GND_MAX_MV)) {
-				/* SBU flip = 1 */
-				write_ioexpander(0, 2, 1);
-				usleep(10000);
-				gpio_set_level(GPIO_SBU_MUX_EN, 1);
-				mode = CCD_MODE_CONNECTED;
-				CPRINTS("CCD: connected flip");
-			} else if ((sbu2 > USB_HIGH_MV) &&
-				   (sbu1 < GND_MAX_MV)) {
-				/* SBU flip = 0 */
-				write_ioexpander(0, 2, 0);
-				usleep(10000);
-				gpio_set_level(GPIO_SBU_MUX_EN, 1);
-				mode = CCD_MODE_CONNECTED_FLIP;
-				CPRINTS("CCD: connected noflip");
-			} else {
-				mode = CCD_MODE_CONNECTED_NONE;
-				CPRINTS("CCD: connected none");
-			}
-		}
-	} else {
-		/* mode == CCD_MODE_CONNECTED[_FLIP] */
-		if (check_usb_disconnect(cc1, cc2)) {
-			/* We are not connected to anything */
-
-			/* Turn off CCD */
-			gpio_set_level(GPIO_SBU_MUX_EN, 0);
-			CPRINTS("CCD: disconnect");
-			mode = CCD_MODE_DISCONNECTED;
-		}
-	}
-}
-DECLARE_HOOK(HOOK_TICK, usb_sbu_tick, HOOK_PRIO_DEFAULT);
-
-
-static void board_init(void)
-{
-	/* USB to serial queues */
-	queue_init(&usart3_to_usb);
-	queue_init(&usb_to_usart3);
-	queue_init(&usart4_to_usb);
-	queue_init(&usb_to_usart4);
-
-	/* UART init */
-	usart_init(&usart3);
-	usart_init(&usart4);
-
-	/* Delay DUT hub to avoid brownout. */
-	usleep(1000);
-	gpio_set_flags(GPIO_DUT_HUB_USB_RESET_L, GPIO_OUT_HIGH);
-
-	/* Write USB3 Mode Enable to PS8742 USB/DP Mux. */
-	i2c_write8(1, 0x20, 0x0, 0x20);
-
-	/* Enable uservo USB by default. */
-	init_ioexpander();
-	init_uservo_port();
-
-	/*
-	 * TODO(crosbug.com/p/60828): The result of init_ccd() will be
-	 * overwritten when the usb pd protocol state machine attempts to attach
-	 * as SNK or SRC since it will modify the pullup/pulldown resistor on
-	 * the chosen polarity CC line.
-	 */
-	/* Enable CCD if type-c */
-	if (gpio_get_level(GPIO_DONGLE_DET))
-		init_ccd(CCD_ID_RPUSB);
-}
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-
 static int command_ccd(int argc, char **argv)
 {
 	int mode = CCD_ID_NONE;
