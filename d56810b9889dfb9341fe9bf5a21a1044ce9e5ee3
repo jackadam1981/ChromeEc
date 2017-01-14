@@ -87,6 +87,24 @@
       "revId": "d56810b9889dfb9341fe9bf5a21a1044ce9e5ee3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_36b3f14d",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-14T01:13:33Z",
+      "side": 1,
+      "message": "Comment added.  It still does not seem to me worthy of putting in a separate function and then return a value from that function to decide if we need to continue processing the tpm command or not.\n\nI can do it if you have a strong preference.",
+      "parentUuid": "83b1f1f3_00d6a732",
+      "revId": "d56810b9889dfb9341fe9bf5a21a1044ce9e5ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
