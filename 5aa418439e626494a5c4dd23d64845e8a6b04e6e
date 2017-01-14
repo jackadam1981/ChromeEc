@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "83b1f1f3_54a4dd49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-14T06:49:49Z",
+      "side": 1,
+      "message": "Maybe I\u0027m being too literal, but I think this summary is not correct. This patch is about honoring the correct (and true) reset signal under the proper conditions. Your summary below is on point, but the subject could use some help. Sorry for being a pedant.",
+      "revId": "5aa418439e626494a5c4dd23d64845e8a6b04e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_949e75f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-14T06:49:49Z",
+      "side": 1,
+      "message": "plt_rst_l,",
+      "range": {
+        "startLine": 13,
+        "startChar": 30,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "5aa418439e626494a5c4dd23d64845e8a6b04e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_99c22e86",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -42,6 +82,23 @@
         "endLine": 182,
         "endChar": 40
       },
+      "revId": "5aa418439e626494a5c4dd23d64845e8a6b04e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_b4a3793e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-14T06:49:49Z",
+      "side": 1,
+      "message": "Where do we disable the normal interrupt for sys_rst_l when board_us_plt_rst() is true?",
       "revId": "5aa418439e626494a5c4dd23d64845e8a6b04e6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
