@@ -35,7 +35,13 @@ TEST_GLOBAL struct shm_buffer *free_buf_chain;
 TEST_GLOBAL struct shm_buffer *allocced_buf_chain;
 
 /* The size of the biggest ever allocated buffer. */
-static int max_allocated_size;
+static size_t max_allocated_size;
+
+/* How much room total is still available (not necessarily contiguous). */
+static size_t remaining_room;
+
+/* The lowest watermark of available space. */
+static size_t min_remaining_room;
 
 static void shared_mem_init(void)
 {
@@ -49,6 +55,8 @@ static void shared_mem_init(void)
 	free_buf_chain->prev_buffer = NULL;
 	free_buf_chain->buffer_size = system_usable_ram_end() -
 		(uintptr_t)__shared_mem_buf;
+
+	min_remaining_room = remaining_room = free_buf_chain->buffer_size;
 }
 DECLARE_HOOK(HOOK_INIT, shared_mem_init, HOOK_PRIO_FIRST);
 
@@ -95,6 +103,7 @@ static void do_release(struct shm_buffer *ptr)
 	 * for quick reference.
 	 */
 	released_size = ptr->buffer_size;
+	remaining_room += released_size;
 	if (!free_buf_chain) {
 		/*
 		 * All memory had been allocated - this buffer is going to be
@@ -258,10 +267,17 @@ static int do_acquire(int size, struct shm_buffer **dest_ptr)
 				set_map_bit(1 << 15);
 			}
 		}
+		remaining_room -= candidate->buffer_size;
+		if (remaining_room < min_remaining_room)
+			min_remaining_room = remaining_room;
+
 		return EC_SUCCESS;
 	}
 
 	candidate->buffer_size = size;
+	remaining_room -= size;
+	if (remaining_room < min_remaining_room)
+		min_remaining_room = remaining_room;
 
 	/* Candidate's tail becomes a new free buffer. */
 	pfb = (struct shm_buffer *)((uintptr_t)candidate + size);
@@ -380,6 +396,10 @@ static int command_shmem(int argc, char **argv)
 	ccprintf("Free:          %6d\n", free_size);
 	ccprintf("Max free buf:  %6d\n", max_free);
 	ccprintf("Max allocated: %6d\n", max_allocated_size);
+	ccprintf("Lowest level:  %6d\n", min_remaining_room);
+	if (remaining_room != free_size)
+		ccprintf("Remaining room:%6d (mismatch!)\n", remaining_room);
+
 	return EC_SUCCESS;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(shmem, command_shmem,
