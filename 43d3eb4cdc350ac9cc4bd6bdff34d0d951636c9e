@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83b1f1f3_23165502",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3113,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-14T00:46:48Z",
+      "side": 1,
+      "message": "Typical time to receive a reply from zinger / hoho is \u003c 5ms. I chose 75ms to leave us \u003c 200ms, with margin, in the case where two Google VID devices timeout.",
+      "range": {
+        "startLine": 3113,
+        "startChar": 1,
+        "endLine": 3113,
+        "endChar": 40
+      },
+      "revId": "43d3eb4cdc350ac9cc4bd6bdff34d0d951636c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
