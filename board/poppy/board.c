@@ -608,3 +608,37 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+static int command_test1(int argc, char **argv)
+{
+	gpio_set_flags_by_mask(0x4, 0x04, GPIO_INPUT | GPIO_PULL_UP);
+	gpio_set_flags_by_mask(0xb, 0x02, GPIO_INPUT | GPIO_PULL_UP);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(test1, command_test1,
+			"",
+			"Test hibernate on the port ");
+
+static int command_test2(int argc, char **argv)
+{
+	gpio_set_flags_by_mask(0x4, 0x04, GPIO_OUT_HIGH);
+	gpio_set_flags_by_mask(0xb, 0x02, GPIO_OUT_HIGH);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(test2, command_test2,
+			"",
+			"Test source VBUS on the port ");
+
+
+static int command_test3(int argc, char **argv)
+{
+	gpio_set_flags_by_mask(0x4, 0x04, GPIO_OUT_LOW);
+	gpio_set_flags_by_mask(0xb, 0x02, GPIO_OUT_LOW);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(test3, command_test3,
+			"",
+			"Test No source VBUS on the port ");
