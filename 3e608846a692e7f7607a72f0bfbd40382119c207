@@ -49,6 +49,24 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_037b11d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-01-14T00:31:31Z",
+      "side": 1,
+      "message": "The mapping between board version and stage names is not obvious. So, it\u0027s useful to keep proto names in the commit message (as found in many other commit messages).",
+      "parentUuid": "83b1f1f3_c0a10f87",
+      "revId": "3e608846a692e7f7607a72f0bfbd40382119c207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_e0a5338a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
