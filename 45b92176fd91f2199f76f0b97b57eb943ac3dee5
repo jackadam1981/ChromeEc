@@ -22,6 +22,29 @@
       "revId": "45b92176fd91f2199f76f0b97b57eb943ac3dee5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_142b454e",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-14T16:56:15Z",
+      "side": 1,
+      "message": "HOOK_INIT time is relatively late, I think there\u0027s even some chance that a platform can boot + sample the host event mask before we set it here. It might be better to just check the raw GPIO state + set the host event ASAP, maybe in board_config_post_gpio_init().",
+      "range": {
+        "startLine": 82,
+        "startChar": 13,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "45b92176fd91f2199f76f0b97b57eb943ac3dee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
