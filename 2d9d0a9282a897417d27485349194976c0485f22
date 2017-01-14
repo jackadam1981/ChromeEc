@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83b1f1f3_36a4d149",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-01-14T01:01:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the right name and you want something like \"power_button_pulse_enabled\".  SMI events are definitely not disabled by this, they can still be used for host commands which is a separate infrastructure in the EC.",
+      "range": {
+        "startLine": 118,
+        "startChar": 11,
+        "endLine": 118,
+        "endChar": 22
+      },
+      "revId": "2d9d0a9282a897417d27485349194976c0485f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
