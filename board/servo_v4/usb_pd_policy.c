@@ -42,6 +42,21 @@ const uint32_t pd_snk_pdo[] = {
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
+#ifdef CONFIG_USB_PD_DTS
+const uint8_t pd_dts_default_power_role[CONFIG_USB_PD_PORT_COUNT] = {
+	PD_ROLE_SINK,
+	PD_ROLE_SOURCE,
+};
+#endif
+
+uint8_t pd_get_dts_default_role(int port)
+{
+	if (port >= CONFIG_USB_PD_PORT_COUNT)
+		return PD_ROLE_SINK;
+	else
+		return pd_dts_default_power_role[port];
+}
+
 int pd_is_valid_input_voltage(int mv)
 {
 	/* Any voltage less than the max is allowed */
@@ -60,20 +75,27 @@ void pd_transition_voltage(int idx)
 int pd_set_power_supply_ready(int port)
 {
 	/*
-	 * TODO(crosbug.com/p/60794): Will likely need to set the GPIOs
-	 * DUT_CHG_EN and HOST_OR_CHG_CTL which control whether DUT port
-	 * provides VBUS from Host or CHG port.
+	 * TODO(crosbug.com/p/60794): For now always assume VBUS is supplied by
+	 * host. No support yet for using CHG VBUS passthru mode.
 	 */
+
+	/*
+	 * Select Host as source for VBUS.
+	 * To select host, set GPIO_HOST_OR_CHG_CTL low. To select CHG as VBUS
+	 * source, then set GPIO_HOST_OR_CHG_CTL high.
+	 */
+	gpio_set_level(GPIO_HOST_OR_CHG_CTL, 0);
+
+	/* Enable VBUS from the source selected above. */
+	gpio_set_level(GPIO_DUT_CHG_EN, 1);
+
 	return EC_SUCCESS; /* we are ready */
 }
 
 void pd_power_supply_reset(int port)
 {
-	/*
-	 * TODO(crosbug.com/p/60794): Will need to set the GPIOs
-	 * DUT_CHG_EN and HOST_OR_CHG_CTL which control whether DUT port
-	 * provides VBUS from Host or CHG port.
-	 */
+	/* Disable VBUS */
+	gpio_set_level(GPIO_DUT_CHG_EN, 0);
 }
 
 void pd_set_input_current_limit(int port, uint32_t max_ma,
