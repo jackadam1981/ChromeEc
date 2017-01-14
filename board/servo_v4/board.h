@@ -78,6 +78,7 @@
 #undef CONFIG_TASK_PROFILING
 
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_DTS
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_INTERNAL_COMP
 #define CONFIG_USB_PD_PORT_COUNT 2
@@ -90,7 +91,8 @@
 
 /* Start as a sink for both CHG/DUT ports */
 #define PD_DEFAULT_STATE PD_STATE_SNK_DISCONNECTED
-
+/* Override PD_DEFAULT_ROLE so each port can have different default */
+#define PD_ROLE_DEFAULT(port) ((port) ? PD_ROLE_SOURCE : PD_ROLE_SINK)
 /*
  * TODO(crosbug.com/p/60792): The delay values are currently just place holders
  * and the delay will need to be relative to the circuitry that allows VBUS to
