@@ -81,6 +81,7 @@
 #define CONFIG_POWER_BUTTON_X86
 #define CONFIG_POWER_COMMON
 #define CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD 30
+#define CONFIG_VOLUME_BUTTON_RECOVERY
 
 /* Sensor */
 #define CONFIG_ALS
@@ -214,6 +215,13 @@ enum adc_channel {
 	ADC_AMON_BMON,
 	ADC_CH_COUNT
 };
+
+enum button_port {
+	BUTTON_VOLUME_DOWN = 0,
+	BUTTON_VOLUME_UP = 1,
+	BUTTON_PORT_COUNT
+};
+
 
 /* start as a sink in case we have no other power supply/battery */
 #define PD_DEFAULT_STATE PD_STATE_SNK_DISCONNECTED
