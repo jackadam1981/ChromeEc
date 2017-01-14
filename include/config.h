@@ -2421,6 +2421,9 @@
 /* Number of supported slots for secure temporary storage */
 #undef CONFIG_VSTORE_SLOT_COUNT
 
+/* Support for entering recovery mode using volume buttons. */
+#undef CONFIG_VOLUME_BUTTON_RECOVERY
+
 /*****************************************************************************/
 /* Watchdog config */
 
