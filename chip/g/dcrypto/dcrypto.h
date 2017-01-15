@@ -222,4 +222,26 @@ int DCRYPTO_appkey_init(enum dcrypto_appid id, struct APPKEY_CTX *ctx);
 int DCRYPTO_appkey_fingerprint(struct APPKEY_CTX *ctx);
 void DCRYPTO_appkey_finish(struct APPKEY_CTX *ctx);
 
+/**
+ * Encrypt/decrypt a flat blob.
+ *
+ * Encrypt or decrypt the input buffer, and write the correspondingly
+ * ciphered output to out.  The number of bytes produced is equal to
+ * the number of input bytes.
+ *
+ * This API is expected to be applied to a single contiguous region. WARNING:
+ * Presently calling this function more than once with "in" pointing to
+ * logically different buffers will result in using the same IV value
+ * internally and as such reduce encryption efficiency. Upcoming changes are
+ * expected to make proper use of blob_iv.
+ *
+ * @param salt pointer to a unique 4 byte value to be associated with this
+ *        blob, used for derivation of the proper IV.
+ * @param out Destination pointer where to write plaintext / ciphertext.
+ * @param in  Source pointer where to read ciphertext / plaintext.
+ * @param len Number of bytes to read from in / write to out.
+ * @return non-zero on success, and zero otherwise.
+ */
+int DCRYPTO_app_cipher(const void *salt, void *out, const void *in, size_t len);
+
 #endif  /* ! __EC_CHIP_G_DCRYPTO_DCRYPTO_H */
