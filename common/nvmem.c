@@ -5,6 +5,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "dcrypto.h"
 #include "flash.h"
 #include "hooks.h"
 #include "nvmem.h"
@@ -66,6 +67,7 @@ static int nvmem_save(uint8_t tag_version, size_t partition)
 
 	tag = (struct nvmem_tag *)cache.base_ptr;
 	tag->version = tag_version;
+	tag->properties &= ~0x1;	/* 0b0 means encrypted. */
 
 	/* Calculate sha of the whole thing. */
 	nvmem_compute_sha(&tag->version,
@@ -73,6 +75,14 @@ static int nvmem_save(uint8_t tag_version, size_t partition)
 			  offsetof(struct nvmem_tag, version),
 			  tag->sha,
 			  sizeof(tag->sha));
+
+	/* Encrypt actual payload. */
+	if (!DCRYPTO_app_cipher(tag->sha, tag + 1, tag + 1,
+				NVMEM_PARTITION_SIZE -
+					sizeof(struct nvmem_tag))) {
+		CPRINTF("%s:%d\n", __func__, __LINE__);
+		return EC_ERROR_UNKNOWN;
+	}
 
 	/* Write partition */
 	if (flash_physical_write(nvmem_offset,
@@ -91,10 +101,39 @@ static int nvmem_partition_sha_match(int index)
 	struct nvmem_partition *p_part;
 
 	p_part = (struct nvmem_partition *)nvmem_base_addr[index];
-	nvmem_compute_sha(&p_part->tag.version,
-			  (NVMEM_PARTITION_SIZE - NVMEM_SHA_SIZE),
-			  sha_comp, sizeof(sha_comp));
+	if (!(p_part->tag.properties & 1)) {
+		int ret;
+		struct nvmem_partition *p_copy;
 
+		CPRINTF("%s: partition %d is encrypted!\n",
+			__func__, index);
+
+		/* It is encrypted, decrypt it first. */
+		ret = shared_mem_acquire(NVMEM_PARTITION_SIZE,
+					 (char **)&p_copy);
+		if (ret != EC_SUCCESS) {
+			CPRINTF("%s failed to malloc!\n", __func__);
+			return ret;
+		}
+
+		memcpy(p_copy, p_part, NVMEM_PARTITION_SIZE);
+		if (!DCRYPTO_app_cipher(p_copy->tag.sha,
+					p_copy->buffer,
+					p_copy->buffer,
+					NVMEM_PARTITION_SIZE -
+					sizeof(struct nvmem_tag))) {
+			CPRINTF("%s: decryption failure\n", __func__);
+			return EC_ERROR_UNKNOWN;
+		}
+		nvmem_compute_sha(&p_copy->tag.version,
+				  (NVMEM_PARTITION_SIZE - NVMEM_SHA_SIZE),
+				  sha_comp, sizeof(sha_comp));
+		shared_mem_release(p_copy);
+	} else {
+		nvmem_compute_sha(&p_part->tag.version,
+				  (NVMEM_PARTITION_SIZE - NVMEM_SHA_SIZE),
+				  sha_comp, sizeof(sha_comp));
+	}
 		/* Check if computed value matches stored value. */
 	return !memcmp(p_part->tag.sha, sha_comp, NVMEM_SHA_SIZE);
 }
@@ -115,11 +154,41 @@ static int nvmem_acquire_cache(void)
 		ret = shared_mem_acquire(NVMEM_PARTITION_SIZE,
 					 (char **)&cache.base_ptr);
 		if (ret == EC_SUCCESS) {
+			struct nvmem_tag *tag;
+
 			/* Copy partiion contents from flash into cache */
 			memcpy(cache.base_ptr,
 			       (void *)nvmem_base_addr[nvmem_act_partition],
 			       NVMEM_PARTITION_SIZE);
 
+			tag = (struct nvmem_tag *)cache.base_ptr;
+			if (!(tag->properties & 1)) {
+				uint8_t sha_comp[NVMEM_SHA_SIZE];
+
+				if (!DCRYPTO_app_cipher(
+					tag->sha,
+					tag + 1, tag + 1,
+					NVMEM_PARTITION_SIZE -
+						sizeof(struct nvmem_tag))) {
+					CPRINTF("%s: decryption failure\n",
+						__func__);
+					shared_mem_release(cache.base_ptr);
+					return EC_ERROR_UNKNOWN;
+				}
+
+				nvmem_compute_sha((void *)(&tag->version),
+						  (NVMEM_PARTITION_SIZE -
+						   NVMEM_SHA_SIZE),
+						  sha_comp, sizeof(sha_comp));
+
+				if (memcmp(tag->sha, sha_comp,
+					   sizeof(tag->sha))) {
+					CPRINTF("%s: decrypted sha mismatch!\n",
+						__func__);
+					shared_mem_release(cache.base_ptr);
+					return EC_ERROR_UNKNOWN;
+				}
+			}
 			return EC_SUCCESS;
 		} else if (ret == EC_ERROR_BUSY) {
 			CPRINTF("Shared Mem not avail! Attempt %d\n", attempts);
@@ -432,28 +501,29 @@ int nvmem_read(uint32_t offset, uint32_t size,
 		    void *data, enum nvmem_users user)
 {
 	int ret;
-	uint8_t *p_src;
-	uintptr_t src_addr;
 	uint32_t src_offset;
+	int need_to_release;
 
-	/* Point to either NvMem flash or ram if that's active */
-	if (cache.base_ptr == NULL)
-		src_addr = nvmem_base_addr[nvmem_act_partition];
+	if (!cache.base_ptr) {
+		ret = nvmem_lock_cache();
+		if (ret != EC_SUCCESS)
+			return ret;
+		need_to_release = 1;
+	} else {
+		need_to_release = 0;
+	}
 
-	else
-		src_addr = (uintptr_t)cache.base_ptr;
 	/* Get partition offset for this read operation */
 	ret = nvmem_get_partition_off(user, offset, size, &src_offset);
-	if (ret != EC_SUCCESS)
-		return ret;
-	/* Advance to the correct byte within the data buffer */
-	src_addr += src_offset;
-	p_src = (uint8_t *)src_addr;
 
-	/* Copy from src into the caller's destination buffer */
-	memcpy(data, p_src, size);
+	if (ret == EC_SUCCESS)
+		/* Copy from src into the caller's destination buffer */
+		memcpy(data, cache.base_ptr + src_offset, size);
 
-	return EC_SUCCESS;
+	if (commits_enabled && need_to_release)
+		nvmem_release_cache();
+
+	return ret;
 }
 
 int nvmem_write(uint32_t offset, uint32_t size,
