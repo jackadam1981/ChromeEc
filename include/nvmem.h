@@ -64,7 +64,7 @@
 extern uint32_t nvmem_user_sizes[NVMEM_NUM_USERS];
 
 #define NVMEM_NUM_PARTITIONS 2
-#define NVMEM_SHA_SIZE 4
+#define NVMEM_SHA_SIZE 16
 #define NVMEM_VERSION_BITS 8
 #define NVMEM_VERSION_MASK ((1 << NVMEM_VERSION_BITS) - 1)
 

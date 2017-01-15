@@ -244,4 +244,7 @@ void DCRYPTO_appkey_finish(struct APPKEY_CTX *ctx);
  */
 int DCRYPTO_app_cipher(const void *salt, void *out, const void *in, size_t len);
 
+/* Number of bytes in the salt object. */
+#define DCRYPTO_CIPHER_SALT_SIZE 16
+
 #endif  /* ! __EC_CHIP_G_DCRYPTO_DCRYPTO_H */

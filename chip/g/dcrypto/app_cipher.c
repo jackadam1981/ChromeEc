@@ -19,7 +19,7 @@ int DCRYPTO_app_cipher(const void *salt, void *out, const void *in, size_t len)
 	struct APPKEY_CTX ctx;
 	uint32_t iv[4] = {};
 
-	memcpy(iv + 2, salt, sizeof(*iv));
+	memcpy(iv, salt, sizeof(iv));
 	if (!DCRYPTO_appkey_init(NVMEM, &ctx))
 		return 0;
 
