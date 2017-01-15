@@ -204,6 +204,24 @@ int DCRYPTO_equals(const void *a, const void *b, size_t len);
 /*
  * Key ladder related functions.
  */
+void DCRYPTO_ladder_init(void);
+int DCRYPTO_ladder_step(uint32_t cert);
 int DCRYPTO_ladder_compute_frk2(size_t major_fw_version, uint8_t *frk2);
+
+/*
+ * Application key related functions.
+ */
+enum dcrypto_appid {
+	NVMEM = 0
+};
+
+struct APPKEY_CTX {
+	uint8_t key[SHA256_DIGEST_SIZE];
+	int fingerprint;
+};
+
+int DCRYPTO_appkey_init(enum dcrypto_appid id, struct APPKEY_CTX *ctx);
+int DCRYPTO_appkey_fingerprint(struct APPKEY_CTX *ctx);
+void DCRYPTO_appkey_finish(struct APPKEY_CTX *ctx);
 
 #endif  /* ! __EC_CHIP_G_DCRYPTO_DCRYPTO_H */
