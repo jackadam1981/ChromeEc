@@ -72,7 +72,8 @@ extern uint32_t nvmem_user_sizes[NVMEM_NUM_USERS];
 struct nvmem_tag {
 	uint8_t sha[NVMEM_SHA_SIZE];
 	uint8_t version;
-	uint8_t reserved[3];
+	uint8_t properties;
+	uint8_t reserved[2];
 };
 
 /* Structure MvMem Partition */
