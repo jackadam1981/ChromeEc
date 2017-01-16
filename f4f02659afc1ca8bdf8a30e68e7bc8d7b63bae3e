@@ -22,6 +22,30 @@
       "revId": "f4f02659afc1ca8bdf8a30e68e7bc8d7b63bae3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83a651c2_2f9f29a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-16T14:21:20Z",
+      "side": 1,
+      "message": "This doesn\u0027t work even without this patch:\n\n# futility show --type usbpd1 build/hammer/ec.bin\nThis doesn\u0027t appear to be a complete usbpd1 image\n\nAm I missing something?",
+      "parentUuid": "437ff998_a9fe05b6",
+      "range": {
+        "startLine": 20,
+        "startChar": 26,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "f4f02659afc1ca8bdf8a30e68e7bc8d7b63bae3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
