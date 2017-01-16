@@ -69,6 +69,20 @@ static void tcpc_alert_event(enum gpio_signal signal)
 #endif
 }
 
+void vbus0_evt(enum gpio_signal signal)
+{
+	/* VBUS present GPIO is inverted */
+	usb_charger_vbus_change(0, !gpio_get_level(signal));
+	task_wake(TASK_ID_PD_C0);
+}
+
+void vbus1_evt(enum gpio_signal signal)
+{
+	/* VBUS present GPIO is inverted */
+	usb_charger_vbus_change(1, !gpio_get_level(signal));
+	task_wake(TASK_ID_PD_C1);
+}
+
 void usb0_evt(enum gpio_signal signal)
 {
 	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
@@ -401,6 +415,14 @@ static void board_init(void)
 	base_detect_debounce_time = get_time().val;
 	hook_call_deferred(&base_detect_deferred_data, 0);
 	gpio_enable_interrupt(GPIO_BASE_DET_A);
+
+	/* Enable VBUS interrupt */
+	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
+	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE_L);
+
+	/* Enable pericom BC1.2 interrupts */
+	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
+	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 

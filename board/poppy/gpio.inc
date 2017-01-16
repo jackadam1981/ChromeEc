@@ -25,6 +25,8 @@ GPIO_INT(VOLUME_DOWN_L,		PIN(8, 3), GPIO_INT_BOTH | GPIO_PULL_UP,	button_interru
 GPIO_INT(VOLUME_UP_L,		PIN(8, 2), GPIO_INT_BOTH | GPIO_PULL_UP,	button_interrupt)
 GPIO_INT(WP_L,			PIN(4, 0), GPIO_INT_BOTH,			switch_interrupt)
 GPIO_INT(AC_PRESENT,		PIN(C, 1), GPIO_INT_BOTH,			extpower_interrupt)
+GPIO_INT(USB_C0_VBUS_WAKE_L,	PIN(C, 2), GPIO_INT_BOTH | GPIO_PULL_UP,	vbus0_evt)
+GPIO_INT(USB_C1_VBUS_WAKE_L,	PIN(1, 3), GPIO_INT_BOTH | GPIO_PULL_UP,	vbus1_evt)
 GPIO_INT(USB_C0_BC12_INT_L,	PIN(D, 3), GPIO_INT_FALLING,			usb0_evt)
 GPIO_INT(USB_C1_BC12_INT_L,	PIN(3, 3), GPIO_INT_FALLING,			usb1_evt)
 GPIO_INT(ACCELGYRO3_INT_L,	PIN(3, 0), GPIO_INT_FALLING,			bmi160_interrupt)
@@ -93,14 +95,14 @@ GPIO(USB_C1_PD_RST_L,		PIN(7, 4), GPIO_OUT_LOW)			/* C1 PD Reset */
 GPIO(USB_C0_DP_HPD,		PIN(9, 4), GPIO_INPUT)				/* C0 DP Hotplug Detect */
 GPIO(USB_C1_DP_HPD,		PIN(A, 5), GPIO_INPUT)				/* C1 DP Hotplug Detect */
 GPIO(USB_C0_TCPC_PWR,		PIN(8, 4), GPIO_OUT_LOW)			/* Enable C0 TCPC Power */
-GPIO(USB_C1_TCPC_PWR_NC,	PIN(3, 2), GPIO_OUT_LOW)			/* Enable C1 TCPC Power: NC */
 GPIO(USB2_OTG_ID,		PIN(A, 1), GPIO_ODR_LOW)			/* OTG ID */
 GPIO(USB2_OTG_VBUSSENSE,	PIN(9, 5), GPIO_OUT_LOW)			/* OTG VBUS Sense */
 
 /* Board ID */
 GPIO(BOARD_VERSION1,		PIN(C, 4), GPIO_INPUT)				/* Board ID bit0 */
-GPIO(BOARD_VERSION2,		PIN(C, 2), GPIO_INPUT)				/* Board ID bit1 */
-GPIO(BOARD_VERSION3,		PIN(1, 3), GPIO_INPUT)				/* Board ID bit2 */
+/* TODO(crosbug.com/p/61999): Remove these pull downs when board ID >= 2 */
+GPIO(BOARD_VERSION2,		PIN(2, 3), GPIO_INPUT | GPIO_PULL_DOWN)		/* Board ID bit1 */
+GPIO(BOARD_VERSION3,		PIN(2, 2), GPIO_INPUT | GPIO_PULL_DOWN)		/* Board ID bit2 */
 
 /* Test points */
 GPIO(TP248,			PIN(5, 7), GPIO_INPUT | GPIO_PULL_UP)		/* EC_GPIO57 */
