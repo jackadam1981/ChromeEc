@@ -184,6 +184,19 @@ unhandled_irq:
 
 .global excep_handler
 excep_handler:
+#ifdef CONFIG_FPU_IT83XX
+	/*
+	 * We have to restore ALU so that we can continue the next
+	 * sequence if arithmetic instructions are used.
+	 * (Apply to floating point division by zero)
+	 */
+	smw.adm $r4, [$sp], $r4, 0
+	sethi   $r4, 0x80
+	ori     $r4, $r4,0x9
+	mtsr    $r4, $dlmb
+	dsb
+	lmw.bim $r4, [$sp], $r4, 0
+#endif
 	/* safety: reload GP even though it should be already set */
 	la $gp, _SDA_BASE_
 	/* save r0 to free one register */
