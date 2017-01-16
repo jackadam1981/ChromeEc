@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83a651c2_afa5d98a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1119450
+      },
+      "writtenOn": "2017-01-16T01:03:50Z",
+      "side": 1,
+      "message": "The compile-time checking is true for RO. However, for the RW, the jdata-\u003ejump_tag_total is not equal to zero because RO will add some results to jdata. Thus, except we add runtime checking (maybe ASSERT), otherwise, I think it is dangerous.",
+      "parentUuid": "83b1f1f3_3a43dd56",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 65
+      },
+      "revId": "834159d68c3c842c935aec941ee68b08a835a3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_7a3d55dd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-13T17:44:17Z",
       "side": 1,
       "message": "We might consider reducing CONFIG_SHARED_MEM_MIN_SIZE to 64 bytes, but we should check hashing performance.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "834159d68c3c842c935aec941ee68b08a835a3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83a651c2_cfb21dd2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1119450
+      },
+      "writtenOn": "2017-01-16T01:03:50Z",
+      "side": 1,
+      "message": "May i know how to check the hashing performance? Is the CONFIG_SHARED_MEM_MIN_SIZE\u003d512 is the baseline to pass the hash performance test? On Cave, I use the latest EC image with CL:422590, the share mem is about 2K. With this patch, hash can use more than 512 bytes buffer to calculate the hash value.",
+      "parentUuid": "83b1f1f3_7a3d55dd",
       "range": {
         "startLine": 12,
         "startChar": 0,
