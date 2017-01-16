@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83a651c2_cfd05d50",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-16T14:11:24Z",
+      "side": 1,
+      "message": "This if is missing a !system_jumped_to_this_image() test. See CL:428530.",
+      "revId": "42a8e22f197b4e1fa95940ff9db6f0e1d22ea0b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
