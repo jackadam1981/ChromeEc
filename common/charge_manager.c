@@ -1106,3 +1106,26 @@ static int charge_supplier_info(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(chgsup, charge_supplier_info,
 			NULL, "print chg supplier info");
 #endif
+
+#ifdef CONFIG_CMD_CHARGE_SUPPLIER_DUMP_INFO
+const char *charge_supplier_names[CHARGE_SUPPLIER_COUNT] = {
+	"PD", "TYPEC", "BC12_DCP", "BC12_CDP", "BC12_SDP", "PROPRIETARY",
+	"OTHER", "VBUS"
+};
+
+static int charge_supplier_dump_info(int argc, char **argv)
+{
+	int i, j;
+
+	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
+		for (j = 0; j < CONFIG_USB_PD_PORT_COUNT; ++j)
+			ccprintf("port=%d, %s, cur=%dmA, vtg=%dmV\n",
+				j, charge_supplier_names[i],
+				available_charge[i][j].current,
+				available_charge[i][j].voltage);
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(chgdump, charge_supplier_dump_info,
+			NULL, "dump port/chg suppliers info");
+#endif
