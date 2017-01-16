@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83a651c2_efc6011f",
+        "filename": "chip/mec1322/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1119450
+      },
+      "writtenOn": "2017-01-16T02:06:37Z",
+      "side": 1,
+      "message": "ok. My original thought is putting this code as a common for the other chip. However, i checked the other chip, seems no requirement for this setting. So, agree you suggestion :)",
+      "parentUuid": "83b1f1f3_da790198",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 39
+      },
+      "revId": "7add78947a1b9222ff6204395362a807effae7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_3a6afdc6",
         "filename": "include/panic.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-13T17:48:14Z",
       "side": 1,
       "message": "Let\u0027s move this code to mec1322 chip folder, maybe chip/mec1322/system.c?",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 1
+      },
+      "revId": "7add78947a1b9222ff6204395362a807effae7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83a651c2_6fe93187",
+        "filename": "include/panic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1119450
+      },
+      "writtenOn": "2017-01-16T02:06:37Z",
+      "side": 1,
+      "message": "I think the function should be inline function. May i create a header file under chip/mec1322/? Maybe can call it panic_extra.h? Do you have any suggestion?",
+      "parentUuid": "83b1f1f3_3a6afdc6",
       "range": {
         "startLine": 174,
         "startChar": 4,
