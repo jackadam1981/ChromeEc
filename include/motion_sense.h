@@ -138,7 +138,11 @@ struct motion_sensor_t {
 
 /* Defined at board level. */
 extern struct motion_sensor_t motion_sensors[];
+#ifdef BOARD_HANA
+extern unsigned int motion_sensor_count;
+#else
 extern const unsigned motion_sensor_count;
+#endif
 
 /* optionally defined at board level */
 extern unsigned int motion_min_interval;

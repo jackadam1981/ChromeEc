@@ -264,31 +264,6 @@ static void board_extpower_buffer_to_soc(void)
 		       chipset_in_state(CHIPSET_STATE_HARD_OFF) ? 1 : 0);
 }
 
-/* Initialize board. */
-static void board_init(void)
-{
-	/* Enable Level shift of AC_OK & LID_OPEN signals */
-	board_extpower_buffer_to_soc();
-	/* Enable rev1 testing GPIOs */
-	gpio_set_level(GPIO_SYSTEM_POWER_H, 1);
-	/* Enable PD MCU interrupt */
-	gpio_enable_interrupt(GPIO_PD_MCU_INT);
-
-	/* Enable BC 1.2 */
-	gpio_enable_interrupt(GPIO_BC12_CABLE_INT);
-
-	/* Check if typeC is already connected, and do 7688 power on flow */
-	board_power_on_pd_mcu();
-
-	/* Update VBUS supplier */
-	usb_charger_vbus_change(0, !gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L));
-
-	/* Remap SPI2 to DMA channels 6 and 7 */
-	REG32(STM32_DMA1_BASE + 0xa8) |= (1 << 20) | (1 << 21) |
-					 (1 << 24) | (1 << 25);
-}
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-
 /**
  * Set active charge port -- only one port can active at a time.
  *
@@ -633,7 +608,12 @@ struct motion_sensor_t motion_sensors[] = {
 	 },
 	},
 };
+
+#ifdef BOARD_HANA
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+#else
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+#endif
 
 void lid_angle_peripheral_enable(int enable)
 {
@@ -649,3 +629,33 @@ uint16_t tcpc_get_alert_status(void)
 	return gpio_get_level(GPIO_PD_MCU_INT) ? PD_STATUS_TCPC_ALERT_0 : 0;
 }
 
+/* Initialize board. */
+static void board_init(void)
+{
+	/* Enable Level shift of AC_OK & LID_OPEN signals */
+	board_extpower_buffer_to_soc();
+	/* Enable rev1 testing GPIOs */
+	gpio_set_level(GPIO_SYSTEM_POWER_H, 1);
+	/* Enable PD MCU interrupt */
+	gpio_enable_interrupt(GPIO_PD_MCU_INT);
+
+	/* Enable BC 1.2 */
+	gpio_enable_interrupt(GPIO_BC12_CABLE_INT);
+
+	/* Check if typeC is already connected, and do 7688 power on flow */
+	board_power_on_pd_mcu();
+
+	/* Update VBUS supplier */
+	usb_charger_vbus_change(0, !gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L));
+
+	/* Remap SPI2 to DMA channels 6 and 7 */
+	REG32(STM32_DMA1_BASE + 0xa8) |= (1 << 20) | (1 << 21) |
+					 (1 << 24) | (1 << 25);
+#ifdef HAS_TASK_MOTIONSENSE
+#ifdef BOARD_HANA
+	if (system_get_board_version() >= 7)
+		motion_sensor_count = 1;
+#endif
+#endif
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
