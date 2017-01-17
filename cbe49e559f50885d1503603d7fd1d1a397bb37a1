@@ -16,6 +16,24 @@
       "revId": "cbe49e559f50885d1503603d7fd1d1a397bb37a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_6ca4b54a",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-17T03:24:48Z",
+      "side": 1,
+      "message": "I  am not even sure there is a timed out wait (probably there is?) but then setting up event passing mechanism to this common console task which could be doing other things in other places - seems not worthy of the effort to me. (not that I thought of it :)",
+      "parentUuid": "83b1f1f3_6c7d95d0",
+      "revId": "cbe49e559f50885d1503603d7fd1d1a397bb37a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
