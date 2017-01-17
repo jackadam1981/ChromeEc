@@ -16,6 +16,24 @@
       "revId": "e6defae3694745204e3f21f01c8d49fb81b2fbec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83a651c2_b241bea2",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-17T12:37:03Z",
+      "side": 1,
+      "message": "Yes, thanks. I think the parameters in adc_channels below are correct, so that the value we get back from adc_read_channel is in mV. But, yes, I did notice the readout value saturates at 2816 mV.",
+      "parentUuid": "83a651c2_52e412b0",
+      "revId": "e6defae3694745204e3f21f01c8d49fb81b2fbec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
