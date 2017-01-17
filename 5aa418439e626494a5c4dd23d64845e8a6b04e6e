@@ -253,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "a39fd578_cfbc091d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-17T23:57:46Z",
+      "side": 1,
+      "message": "yes, I think so - otherwise it is very confusing.\n\nHistorically sys_rst_l was our input for this, but now it can come form different pads. maybe just tpm_reset_l or reset_l or whatever you feel like, but it should not be associated with sys_rst_l or plt_rst_l",
+      "parentUuid": "83b1f1f3_c3282cb6",
+      "revId": "5aa418439e626494a5c4dd23d64845e8a6b04e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_39b3e24d",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 2
