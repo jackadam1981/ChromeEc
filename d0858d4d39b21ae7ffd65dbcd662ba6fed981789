@@ -58,6 +58,24 @@
       "revId": "d0858d4d39b21ae7ffd65dbcd662ba6fed981789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_120a7046",
+        "filename": "chip/g/dcrypto/appkey.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-17T14:42:02Z",
+      "side": 1,
+      "message": "I think even 176 bytes on the stack is too much in this platform. How about I change the code to use a union and allocate less.",
+      "parentUuid": "4328d982_67500e43",
+      "revId": "d0858d4d39b21ae7ffd65dbcd662ba6fed981789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
