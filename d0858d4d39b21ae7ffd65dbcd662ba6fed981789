@@ -40,6 +40,24 @@
       "revId": "d0858d4d39b21ae7ffd65dbcd662ba6fed981789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4328d982_67500e43",
+        "filename": "chip/g/dcrypto/appkey.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-17T10:37:46Z",
+      "side": 1,
+      "message": "You don\u0027t seem to use both at the same time either,\nso using a union of the 2 would reduce the RAM usage from 112+176 to 176 bytes.\n(actually LITE_HMAC-\u003ehash is a HASH_CTX which is the same as LITE_SHA256_CTX ?)",
+      "parentUuid": "83b1f1f3_2ce47d8b",
+      "revId": "d0858d4d39b21ae7ffd65dbcd662ba6fed981789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
