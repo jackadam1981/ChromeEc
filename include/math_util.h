@@ -8,7 +8,7 @@
 #ifndef __CROS_EC_MATH_UTIL_H
 #define __CROS_EC_MATH_UTIL_H
 
-#ifdef CONFIG_FPU
+#if defined(CONFIG_FPU) || defined(CONFIG_FPU_IT83XX)
 typedef float fp_t;
 typedef float fp_inter_t;
 
@@ -44,7 +44,7 @@ typedef int64_t fp_inter_t;
  * work identically.
  */
 
-#ifdef CONFIG_FPU
+#if defined(CONFIG_FPU) || defined(CONFIG_FPU_IT83XX)
 static inline fp_t fp_mul(fp_t a, fp_t b)
 {
 	return a * b;
