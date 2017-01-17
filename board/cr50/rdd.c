@@ -239,12 +239,19 @@ DECLARE_CONSOLE_COMMAND(ccd, command_ccd,
 static int command_sys_rst(int argc, char **argv)
 {
 	int val;
+	char *e;
+	int ms = 20;
 
 	if (argc > 1) {
 		if (!strcasecmp("pulse", argv[1])) {
-			ccprintf("Pulsing AP reset\n");
+			if (argc == 3) {
+				ms = strtoi(argv[2], &e, 0);
+				if (*e)
+					return EC_ERROR_PARAM2;
+			}
+			ccprintf("Pulsing AP reset for %dms\n", ms);
 			assert_sys_rst();
-			usleep(200);
+			msleep(ms);
 			deassert_sys_rst();
 		} else if (parse_bool(argv[1], &val)) {
 			if (val)
