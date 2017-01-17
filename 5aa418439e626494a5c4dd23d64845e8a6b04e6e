@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_a371784b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-17T19:22:15Z",
+      "side": 1,
+      "message": "board_configure_deep_sleep_wakepins reconfigures them to wake on rising edge. So this checks that they are configured correctly to be wake on falling edge.\n\nI guess on resume from deep sleep this interrupt isn\u0027t triggered, so the wake on low check is unnecessary.",
+      "parentUuid": "83b1f1f3_399a02b6",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 182,
+        "endChar": 40
+      },
+      "revId": "5aa418439e626494a5c4dd23d64845e8a6b04e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_b4a3793e",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -105,6 +129,42 @@
     },
     {
       "key": {
+        "uuid": "83b1f1f3_2369e8fc",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-17T19:22:15Z",
+      "side": 1,
+      "message": "I stopped enabling the wake pin in gpio.inc, so we don\u0027t need to disable it anywhere.\n\nThe interrupt on GPIO_SYS_RST_L_IN is always enabled. We just use the plt_rst_l signal for GPIO_SYS_RST_L_IN on reef boards and sys_rst as the signal on gru boards.",
+      "parentUuid": "83b1f1f3_b4a3793e",
+      "revId": "5aa418439e626494a5c4dd23d64845e8a6b04e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_c3282cb6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-17T19:22:15Z",
+      "side": 1,
+      "message": "We don\u0027t need to disable the GPIO_SYS_RST_L_IN interrupt because we just switch the pad that that gpio is connected to based on the board. Gru will use the sys_rst_l signal and Reef uses the plt_rst_l signal.\n\nShould that gpio be renamed?",
+      "parentUuid": "83b1f1f3_b4a3793e",
+      "revId": "5aa418439e626494a5c4dd23d64845e8a6b04e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_39b3e24d",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 2
@@ -116,6 +176,30 @@
       "writtenOn": "2017-01-14T03:57:01Z",
       "side": 1,
       "message": "why do you keep this initialization here? Platforms where plt_rst_l is present should not react to this, right?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 72
+      },
+      "revId": "5aa418439e626494a5c4dd23d64845e8a6b04e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_58b3274c",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-17T19:22:15Z",
+      "side": 1,
+      "message": "We still need to have a gpio connected to the sys_rst_asserted interrupt. We just change which pad is connected to that gpio based on the board type. So boards using plt_rst_l signal will connect that signal to GPIO_SYS_RST_L_IN. \n\nShould I rename the signal to something else?",
+      "parentUuid": "83b1f1f3_39b3e24d",
       "range": {
         "startLine": 21,
         "startChar": 0,
