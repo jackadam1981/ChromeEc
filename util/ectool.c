@@ -3446,7 +3446,7 @@ static int ms_help(const char *cmd)
 	printf("  %s                            - dump all motion data\n", cmd);
 	printf("  %s active                     - print active flag\n", cmd);
 	printf("  %s info NUM                   - print sensor info\n", cmd);
-	printf("  %s ec_rate [RATE_MS]          - set/get sample rate\n", cmd);
+	printf("  %s ec_rate NUM [RATE_MS]      - set/get sample rate\n", cmd);
 	printf("  %s odr NUM [ODR [ROUNDUP]]    - set/get sensor ODR\n", cmd);
 	printf("  %s range NUM [RANGE [ROUNDUP]]- set/get sensor range\n", cmd);
 	printf("  %s offset NUM                 - get sensor offset\n", cmd);
@@ -3635,12 +3635,18 @@ static int cmd_motionsense(int argc, char **argv)
 		return 0;
 	}
 
-	if (argc < 4 && !strcasecmp(argv[1], "ec_rate")) {
+	if (argc > 2 && !strcasecmp(argv[1], "ec_rate")) {
 		param.cmd = MOTIONSENSE_CMD_EC_RATE;
 		param.ec_rate.data = EC_MOTION_SENSE_NO_VALUE;
 
-		if (argc == 3) {
-			param.ec_rate.data = strtol(argv[2], &e, 0);
+		param.sensor_odr.sensor_num = strtol(argv[2], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad %s arg.\n", argv[2]);
+			return -1;
+		}
+
+		if (argc >= 4) {
+			param.ec_rate.data = strtol(argv[3], &e, 0);
 			if (e && *e) {
 				fprintf(stderr, "Bad %s arg.\n", argv[2]);
 				return -1;
