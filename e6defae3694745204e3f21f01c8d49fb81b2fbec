@@ -34,6 +34,75 @@
       "revId": "e6defae3694745204e3f21f01c8d49fb81b2fbec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_982cdfd2",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-17T18:45:59Z",
+      "side": 1,
+      "message": "Should be static.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 34
+      },
+      "revId": "e6defae3694745204e3f21f01c8d49fb81b2fbec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_b831a32a",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-17T18:45:59Z",
+      "side": 1,
+      "message": "This seems unused?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 35
+      },
+      "revId": "e6defae3694745204e3f21f01c8d49fb81b2fbec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_9823ffd7",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-17T18:45:59Z",
+      "side": 1,
+      "message": "Do you need to trigger detection on EC power-on? Eg. if the base is attached at boot?",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 32
+      },
+      "revId": "e6defae3694745204e3f21f01c8d49fb81b2fbec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
