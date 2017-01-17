@@ -129,6 +129,30 @@
     },
     {
       "key": {
+        "uuid": "43753906_743c969a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-17T23:44:00Z",
+      "side": 1,
+      "message": "Tom and I verified that encrypted stateful survives \u0027dut-control warm_reset:on sleep:0.5000 warm_reset:off\u0027",
+      "parentUuid": "a39fd578_469226e8",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 11
+      },
+      "revId": "5aa418439e626494a5c4dd23d64845e8a6b04e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_399a02b6",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
