@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83b1f1f3_43825cec",
+        "filename": "board/elm/battery_hana.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1126279
+      },
+      "writtenOn": "2017-01-17T19:03:40Z",
+      "side": 1,
+      "message": "Why don\u0027t you use battery information here instead of board id ? Just as in the example I shared.",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 36
+      },
+      "revId": "255a5bab03fa96141ad42810df582238187d8940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_e37a9024",
+        "filename": "board/elm/battery_hana.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1126279
+      },
+      "writtenOn": "2017-01-17T19:03:40Z",
+      "side": 1,
+      "message": "Why don\u0027t you use battery information here instead of board id ? Just as in the example I shared.",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 29
+      },
+      "revId": "255a5bab03fa96141ad42810df582238187d8940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
