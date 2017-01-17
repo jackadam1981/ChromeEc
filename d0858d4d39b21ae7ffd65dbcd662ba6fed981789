@@ -94,6 +94,24 @@
       "revId": "d0858d4d39b21ae7ffd65dbcd662ba6fed981789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_3d4ca5d7",
+        "filename": "chip/g/dcrypto/appkey.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-17T17:01:39Z",
+      "side": 1,
+      "message": "In this case can I please get a +1 or +2 on this, and leave this as a future enhancement.\n\nI would much rather first make work what we have and then improve on it, having a baseline to compare.",
+      "parentUuid": "83b1f1f3_9de4d1b1",
+      "revId": "d0858d4d39b21ae7ffd65dbcd662ba6fed981789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
