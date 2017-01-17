@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83b1f1f3_7d8b7d46",
+        "filename": "common/nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-17T18:25:56Z",
+      "side": 1,
+      "message": "nit: extra tab here",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 10
+      },
+      "revId": "9784aaaf0efd7fbcad37d2236919f55a44c3aa12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_5dfb199d",
+        "filename": "common/nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-17T18:25:56Z",
+      "side": 1,
+      "message": "I don\u0027t this this portion of the comment makes sense given the check for all 0xffs is no longer done.",
+      "range": {
+        "startLine": 188,
+        "startChar": 4,
+        "endLine": 188,
+        "endChar": 30
+      },
+      "revId": "9784aaaf0efd7fbcad37d2236919f55a44c3aa12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_7de7fdf5",
+        "filename": "common/nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-17T18:25:56Z",
+      "side": 1,
+      "message": "Add comment noting what the (0, 0) mean here. Maybe the 2nd 0 could be replaced by \u0027nvmem_act_partition\u0027 so that it\u0027s explicit.",
+      "range": {
+        "startLine": 198,
+        "startChar": 7,
+        "endLine": 198,
+        "endChar": 24
+      },
+      "revId": "9784aaaf0efd7fbcad37d2236919f55a44c3aa12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_f8a5db89",
+        "filename": "common/nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-17T18:25:56Z",
+      "side": 1,
+      "message": "This portion of the comment is no longer applicable. Regardless of fully erased or corrupted, if a valid partition is not found, then attempting to configure partition 0.",
+      "range": {
+        "startLine": 252,
+        "startChar": 11,
+        "endLine": 254,
+        "endChar": 62
+      },
+      "revId": "9784aaaf0efd7fbcad37d2236919f55a44c3aa12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
