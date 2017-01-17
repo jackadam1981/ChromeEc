@@ -76,6 +76,24 @@
       "revId": "d0858d4d39b21ae7ffd65dbcd662ba6fed981789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83b1f1f3_9de4d1b1",
+        "filename": "chip/g/dcrypto/appkey.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-17T16:48:37Z",
+      "side": 1,
+      "message": "you aren\u0027t using the fingerprint at the application level, so it\u0027s computation can be removed.\n\ni\u0027ll switch the hmac usage to use the hidden key ladder, so the HMAC_CTX will go away as well.",
+      "parentUuid": "83b1f1f3_120a7046",
+      "revId": "d0858d4d39b21ae7ffd65dbcd662ba6fed981789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
