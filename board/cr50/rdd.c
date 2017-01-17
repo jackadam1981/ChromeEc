@@ -244,7 +244,7 @@ static int command_sys_rst(int argc, char **argv)
 		if (!strcasecmp("pulse", argv[1])) {
 			ccprintf("Pulsing AP reset\n");
 			assert_sys_rst();
-			usleep(200);
+			msleep(500);
 			deassert_sys_rst();
 		} else if (parse_bool(argv[1], &val)) {
 			if (val)
