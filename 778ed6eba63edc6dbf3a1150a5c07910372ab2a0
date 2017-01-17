@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4328d982_07c38aeb",
+        "filename": "chip/it83xx/it83xx_fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-17T10:00:31Z",
+      "side": 1,
+      "message": "you are executing 9 instructions including 2 barriers to do this single-precision addition.\nWill this implementation be really interesting performance-wise ?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "778ed6eba63edc6dbf3a1150a5c07910372ab2a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4328d982_67b48e93",
+        "filename": "core/nds32/cpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-17T10:00:31Z",
+      "side": 1,
+      "message": "why are you using a different CONFIG_ variable than other platform ?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 59
+      },
+      "revId": "778ed6eba63edc6dbf3a1150a5c07910372ab2a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4328d982_27be8673",
+        "filename": "core/nds32/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-17T10:00:31Z",
+      "side": 1,
+      "message": "at this point, $sp can be invalid, can\u0027t it ?",
+      "range": {
+        "startLine": 193,
+        "startChar": 15,
+        "endLine": 193,
+        "endChar": 18
+      },
+      "revId": "778ed6eba63edc6dbf3a1150a5c07910372ab2a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
