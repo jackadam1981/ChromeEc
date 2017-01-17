@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83b1f1f3_2c7b9dd8",
+        "filename": "include/nvmem.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-17T03:22:38Z",
+      "side": 1,
+      "message": "32 bits is a bit low for encryption iv..\n\ni figure making nvmem_tag bigger is a nogo at this point?\nCan we pull the other two reserved into this and get 6 bytes then?",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "22b8bb76f54bcacb81e99991f8a106bcb5f4be16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
