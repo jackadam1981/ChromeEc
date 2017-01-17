@@ -22,6 +22,30 @@
       "revId": "260baf1683dce6a2bea356172940c92ea012d583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43753906_f4c6c61e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-17T23:23:12Z",
+      "side": 1,
+      "message": "It might be expected. What signals are yanked for \u0027apreset cold\u0027 vs \u0027apshutdown\u0027 ? We should see the power good signals drop.",
+      "parentUuid": "437ff998_c0a45d4c",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "260baf1683dce6a2bea356172940c92ea012d583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
