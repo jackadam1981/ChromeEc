@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "834011d5_9f541337",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-17T21:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "5aa418439e626494a5c4dd23d64845e8a6b04e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_949e75f6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -42,6 +59,29 @@
     },
     {
       "key": {
+        "uuid": "834011d5_ff4f5fa0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-17T21:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 13,
+        "startChar": 30,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "5aa418439e626494a5c4dd23d64845e8a6b04e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_99c22e86",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -53,6 +93,30 @@
       "writtenOn": "2017-01-14T03:57:01Z",
       "side": 1,
       "message": "does this patch solve the problem described in 61789 ?\n\nis there still reset after a usb_update -u runs? (you\u0027d need a newer image to test that) - it seems to me that this could be affected.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 11
+      },
+      "revId": "5aa418439e626494a5c4dd23d64845e8a6b04e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a39fd578_469226e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-17T21:27:20Z",
+      "side": 1,
+      "message": "The original bug is about reef resetting 4 times, because the cr50-update script can\u0027t run usb_updater when suzyq is connected. It doesn\u0027t fix that. It does remove the extra tpm resets.You don\u0027t see the sys_rst_asserted interrupts from multiple sources back to back.\n\ncr50 still reboots when the AP reboots after usb_update -u.",
+      "parentUuid": "83b1f1f3_99c22e86",
       "range": {
         "startLine": 22,
         "startChar": 0,
