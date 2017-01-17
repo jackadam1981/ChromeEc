@@ -310,6 +310,10 @@ void board_set_tcpc_power_mode(int port, int mode)
 	default:
 		break;
 	}
+	if (port == 1) {
+		gpio_set_level(GPIO_USB_C1_PD_RST_ODL, mode);
+		msleep(5);
+	}
 }
 
 /**

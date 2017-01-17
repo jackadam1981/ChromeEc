@@ -4032,6 +4032,31 @@ struct __ec_align2 ec_response_pd_chip_info {
 	};
 };
 
+#define EC_CMD_TCPC_FW_UPDATE 0x0120
+
+enum ec_tcpc_fw_update_cmd {
+	TCPC_FWU_IDENTIFY = 0,
+	TCPC_FWU_DUMP,
+	TCPC_FWU_PREPARE,
+	TCPC_FWU_ERASE,
+	TCPC_FWU_PROGRAM,
+	TCPC_FWU_FINALIZE
+};
+
+struct __ec_align1 ec_params_usb_tcpc_fw_update {
+	uint8_t port; /* USB-C port number */
+	uint8_t cmd;
+	int address;
+	uint8_t size;
+	uint8_t data[8];
+} __packed;
+
+struct ec_response_usb_tcpc_fw_update {
+	uint8_t rom_id[2];
+	uint8_t buffer[8];
+	int version;
+};
+
 #endif  /* !__ACPI__ */
 
 /*****************************************************************************/
