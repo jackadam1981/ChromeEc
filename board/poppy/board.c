@@ -71,6 +71,7 @@ static void tcpc_alert_event(enum gpio_signal signal)
 
 void vbus0_evt(enum gpio_signal signal)
 {
+	ccprintf("%s %d\n", __func__, !gpio_get_level(signal));
 	/* VBUS present GPIO is inverted */
 	usb_charger_vbus_change(0, !gpio_get_level(signal));
 	task_wake(TASK_ID_PD_C0);
@@ -78,6 +79,7 @@ void vbus0_evt(enum gpio_signal signal)
 
 void vbus1_evt(enum gpio_signal signal)
 {
+	ccprintf("%s %d\n", __func__, !gpio_get_level(signal));
 	/* VBUS present GPIO is inverted */
 	usb_charger_vbus_change(1, !gpio_get_level(signal));
 	task_wake(TASK_ID_PD_C1);
@@ -85,11 +87,13 @@ void vbus1_evt(enum gpio_signal signal)
 
 void usb0_evt(enum gpio_signal signal)
 {
+	ccprintf("%s %d\n", __func__, !gpio_get_level(signal));
 	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
 }
 
 void usb1_evt(enum gpio_signal signal)
 {
+	ccprintf("%s %d\n", __func__, !gpio_get_level(signal));
 	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);
 }
 
