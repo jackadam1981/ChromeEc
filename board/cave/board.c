@@ -623,8 +623,8 @@ struct motion_sensor_t motion_sensors[] = {
 		 },
 		 /* EC does not need in S0 */
 		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 0,
-			 .ec_rate = 0,
+			 .odr = 1600000 | ROUND_UP_FLAG,
+			 .ec_rate = 100 * MSEC,
 		 },
 		 /* Sensor off in S3/S5 */
 		 [SENSOR_CONFIG_EC_S3] = {
