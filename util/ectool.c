@@ -222,6 +222,8 @@ const char help_str[] =
 	"      Get raw TMP006 data\n"
 	"  usbchargemode <port> <mode>\n"
 	"      Set USB charging mode\n"
+	"  usbtcpcfwu port filename\n"
+	"      Update firmware on tcpc device\n"
 	"  usbmux <mux>\n"
 	"      Set USB mux switch state\n"
 	"  usbpd <port> <auto | "
@@ -6891,6 +6893,163 @@ int cmd_pd_write_log(int argc, char *argv[])
 	return ec_command(EC_CMD_PD_WRITE_LOG_ENTRY, 0, &p, sizeof(p), NULL, 0);
 }
 
+static void print_buffer(uint8_t *buffer, int size)
+{
+	int i;
+
+	for (i = 0; i < size; i++)
+		printf("%2.2x ", buffer[i]);
+
+	printf("\n");
+}
+
+int cmd_usb_tcpc_fw_update(int argc, char *argv[])
+{
+	int rc = EC_SUCCESS;
+	struct ec_params_usb_tcpc_fw_update p;
+	struct ec_response_usb_tcpc_fw_update r;
+	char *e;
+	char *buf;
+	int fsize;
+	int offset;
+
+	if (argc < 3) {
+		fprintf(stderr, "Usage: %s <port> "
+			"[id|dump addr|fw <filename>]\n",
+			argv[0]);
+		return -1;
+	}
+
+	p.port = strtol(argv[1], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad port parameter.\n");
+		return -1;
+	}
+
+	if (!strcasecmp(argv[2], "id")) {
+		p.cmd = TCPC_FWU_IDENTIFY;
+		r.ROM_ID[0] = 0;
+		r.ROM_ID[0] = 1;
+		rc = ec_command(EC_CMD_TCPC_FW_UPDATE, 0, &p, sizeof(p),
+			&r, sizeof(r));
+
+		printf("ROM id: %x %x, Version %x (%d)\n",
+			r.ROM_ID[0], r.ROM_ID[1], r.version, rc);
+		if (rc < 0)
+			return -1;
+		return EC_SUCCESS;
+	}
+
+	if (!strcasecmp(argv[2], "dump")) {
+		if (argc != 4) {
+			fprintf(stderr, "Usage: %s <port> "
+				"[id|dump addr|fw <filename>]\n",
+				argv[0]);
+			return -1;
+		}
+		p.address = strtol(argv[3], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad address parameter\n");
+			return -1;
+		}
+		p.cmd = TCPC_FWU_DUMP;
+		rc = ec_command(EC_CMD_TCPC_FW_UPDATE, 0, &p, sizeof(p),
+			&r, sizeof(r));
+		printf("%x: ", p.address);
+		print_buffer(r.buffer, sizeof(r.buffer));
+		if (rc < 0)
+			return rc;
+		return EC_SUCCESS;
+	}
+
+	if (!strcasecmp(argv[2], "fw")) {
+		if (argc != 4) {
+			fprintf(stderr, "Usage: %s <port> "
+				"[id|dump addr|fw <filename>]\n",
+				argv[0]);
+			return -1;
+		}
+
+		buf = read_file(argv[3], &fsize);
+		if (!buf)
+			return -1;
+
+		p.cmd = TCPC_FWU_PREPARE;
+		rc = ec_command(EC_CMD_TCPC_FW_UPDATE, 0, &p, sizeof(p),
+			NULL, 0);
+		fprintf(stderr, "prepare: %d\n", rc);
+		if (rc < 0)
+			return rc;
+
+		p.cmd = TCPC_FWU_ERASE;
+		rc = ec_command(EC_CMD_TCPC_FW_UPDATE, 0, &p, sizeof(p),
+			NULL, 0);
+		fprintf(stderr, "erase: %d\n", rc);
+		if (rc < 0)
+			return rc;
+
+		p.cmd = TCPC_FWU_PROGRAM;
+		for (offset = 0; offset < fsize; offset += sizeof(p.data)) {
+			p.size = MIN(sizeof(p.data), fsize - offset);
+			memcpy(p.data, buf + offset, p.size);
+			p.address = offset;
+			rc = ec_command(EC_CMD_TCPC_FW_UPDATE, 0, &p, sizeof(p),
+				NULL, 0);
+			if (rc < 0)
+				break;
+		}
+
+		free(buf);
+
+		p.cmd = TCPC_FWU_FINALIZE;
+		ec_command(EC_CMD_TCPC_FW_UPDATE, 0, &p, sizeof(p), NULL, 0);
+
+		return rc;
+	}
+
+	if (!strcasecmp(argv[2], "program")) {
+		buf = read_file(argv[3], &fsize);
+		if (!buf)
+			return -1;
+
+		p.cmd = TCPC_FWU_PROGRAM;
+		for (offset = 0; offset < fsize; offset += sizeof(p.data)) {
+			p.size = MIN(sizeof(p.data), fsize - offset);
+			memcpy(p.data, buf + offset, p.size);
+			p.address = offset;
+			rc = ec_command(EC_CMD_TCPC_FW_UPDATE, 0, &p,
+				sizeof(p), NULL, 0);
+			if (rc < 0)
+				break;
+		}
+
+		free(buf);
+
+		p.cmd = TCPC_FWU_FINALIZE;
+		ec_command(EC_CMD_TCPC_FW_UPDATE, 0, &p, sizeof(p), NULL, 0);
+
+		return rc;
+	}
+
+	if (!strcasecmp(argv[2], "erase")) {
+		p.cmd = TCPC_FWU_PREPARE;
+		rc = ec_command(EC_CMD_TCPC_FW_UPDATE, 0, &p, sizeof(p),
+			NULL, 0);
+		fprintf(stderr, "prepare: %d\n", rc);
+		if (rc < 0)
+			return rc;
+
+		p.cmd = TCPC_FWU_ERASE;
+		rc = ec_command(EC_CMD_TCPC_FW_UPDATE, 0, &p, sizeof(p),
+			NULL, 0);
+		fprintf(stderr, "erase: %d\n", rc);
+		if (rc < 0)
+			return rc;
+	}
+
+	return rc;
+}
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
 	{"autofanctrl", cmd_thermal_auto_fan_ctrl},
@@ -6985,6 +7144,7 @@ const struct command commands[] = {
 	{"tmp006cal", cmd_tmp006cal},
 	{"tmp006raw", cmd_tmp006raw},
 	{"usbchargemode", cmd_usb_charge_set_mode},
+	{"usbtcpcfwu", cmd_usb_tcpc_fw_update},
 	{"usbmux", cmd_usb_mux},
 	{"usbpd", cmd_usb_pd},
 	{"usbpdmuxinfo", cmd_usb_pd_mux_info},
