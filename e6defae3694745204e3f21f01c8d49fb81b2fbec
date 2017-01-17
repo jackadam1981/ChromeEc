@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83a651c2_52e412b0",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-01-17T10:49:31Z",
+      "side": 1,
+      "message": "Please notice ADC_MAX_VOLT is 2816 not 3300.(Vref is 2.816V) You can get more information in datasheet section 4.16.1.",
+      "revId": "e6defae3694745204e3f21f01c8d49fb81b2fbec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
