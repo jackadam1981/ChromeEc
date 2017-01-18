@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_cc6ebfa5",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-01-18T22:25:52Z",
+      "side": 1,
+      "message": "Will this work anymore? It seems like setting CC lines will conflict with PD code. Maybe just delete the command?",
+      "range": {
+        "startLine": 449,
+        "startChar": 11,
+        "endLine": 449,
+        "endChar": 22
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
