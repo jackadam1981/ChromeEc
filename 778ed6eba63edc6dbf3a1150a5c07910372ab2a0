@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a3b51546_10cdc43d",
+        "filename": "chip/it83xx/it83xx_fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-01-18T03:41:04Z",
+      "side": 1,
+      "message": "It will takes more instructions (\u003e90)\nif we use soft float library routine to do this.\nAnd we check the operation time between\nour variant FPU and soft routine, the time is reduced.",
+      "parentUuid": "4328d982_07c38aeb",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "778ed6eba63edc6dbf3a1150a5c07910372ab2a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4328d982_67b48e93",
         "filename": "core/nds32/cpu.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a3b51546_30d0c8d7",
+        "filename": "core/nds32/cpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-01-18T03:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4328d982_67b48e93",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 59
+      },
+      "revId": "778ed6eba63edc6dbf3a1150a5c07910372ab2a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4328d982_27be8673",
         "filename": "core/nds32/init.S",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2017-01-17T10:00:31Z",
       "side": 1,
       "message": "at this point, $sp can be invalid, can\u0027t it ?",
+      "range": {
+        "startLine": 193,
+        "startChar": 15,
+        "endLine": 193,
+        "endChar": 18
+      },
+      "revId": "778ed6eba63edc6dbf3a1150a5c07910372ab2a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3b51546_d0da1cfa",
+        "filename": "core/nds32/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-01-18T03:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4328d982_27be8673",
       "range": {
         "startLine": 193,
         "startChar": 15,
