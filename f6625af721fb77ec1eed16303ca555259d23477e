@@ -70,6 +70,24 @@
       "revId": "f6625af721fb77ec1eed16303ca555259d23477e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "036b4132_e2160372",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-18T01:21:52Z",
+      "side": 1,
+      "message": "yes, we don\u0027t want the ME to mess with the spi flash while we are reprogramming it.",
+      "parentUuid": "a39fd578_95a28e89",
+      "revId": "f6625af721fb77ec1eed16303ca555259d23477e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
