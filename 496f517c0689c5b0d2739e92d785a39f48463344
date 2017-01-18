@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "23fbe5f7_7f7b2bd8",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2017-01-18T04:05:03Z",
+      "side": 1,
+      "message": "peripherals",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "496f517c0689c5b0d2739e92d785a39f48463344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23fbe5f7_7fe4cb8b",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 2
@@ -71,6 +94,30 @@
       "writtenOn": "2017-01-18T04:03:48Z",
       "side": 1,
       "message": "gpios, peripherals and pins? I\u0027ll try to clarify this.",
+      "parentUuid": "23fbe5f7_3f71a3f8",
+      "range": {
+        "startLine": 22,
+        "startChar": 67,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "496f517c0689c5b0d2739e92d785a39f48463344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23fbe5f7_1f95c7ce",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2017-01-18T04:05:03Z",
+      "side": 1,
+      "message": "Should just be \"from those three groups\" (they are: internal peripherals, internal GPIOs, external pads).",
       "parentUuid": "23fbe5f7_3f71a3f8",
       "range": {
         "startLine": 22,
