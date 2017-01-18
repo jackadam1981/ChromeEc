@@ -46,6 +46,30 @@
       "revId": "260baf1683dce6a2bea356172940c92ea012d583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_4c4f6fa2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-18T22:10:26Z",
+      "side": 1,
+      "message": "Thank you Aaron.\nLooked at the sequencing. On Skylake we do reset the SOC for apreset cold hence it boots back.\nFor apollolake we need to check IN_PGOOD_ALL_CORE in POWER_S0ix state and return state (POWER_S0 ?).",
+      "parentUuid": "43753906_f4c6c61e",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "260baf1683dce6a2bea356172940c92ea012d583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
