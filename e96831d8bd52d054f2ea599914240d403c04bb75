@@ -64,6 +64,24 @@
       "revId": "e96831d8bd52d054f2ea599914240d403c04bb75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_f246fe82",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-18T23:26:41Z",
+      "side": 1,
+      "message": "\u003e so how does sw interleaving work - is t is based on context?\n\nEvery CTX object is self-contained, and there\u0027s no global / shared state.\n\n\u003e What is the significance of the \u0027sequence\u0027 command line \n\u003e argument?\n\nIt\u0027s part of the TPM API, and indicates that hash-internal state MUST be serialized into CPRI_HASH_STATE.  In this change, I am forcing this behavior (and thus use of the s/w implementation).",
+      "parentUuid": "c865c6f6_4fe881c4",
+      "revId": "e96831d8bd52d054f2ea599914240d403c04bb75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
