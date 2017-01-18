@@ -48,6 +48,24 @@
     },
     {
       "key": {
+        "uuid": "236e8540_7e85512e",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-18T00:22:01Z",
+      "side": 1,
+      "message": "pad  here is an external pin actually (Mary, please correct me if I am wrong)\n\n I am not sure why do we need to use to GPIOs for this. Or is it  because you want to avoid noise when turning an input into output and back?",
+      "parentUuid": "43aa999c_f76b2059",
+      "revId": "9bb36e29176fd5de08ba0a2b7e454bb6c8bcfd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "036b4132_6f883c09",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 4
@@ -59,6 +77,24 @@
       "writtenOn": "2017-01-18T00:14:38Z",
       "side": 1,
       "message": "Doesn\u0027t this line still configure the pin? Did I miss where we explicitly turn off this interrupt mechanism for this pin?",
+      "revId": "9bb36e29176fd5de08ba0a2b7e454bb6c8bcfd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23b3e516_3628684f",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-18T00:22:01Z",
+      "side": 1,
+      "message": "as I tried to explain in that gpio description path which never got merged - this is a very unfortunate and confusing misnomer  PIN(a, b) in this expression in fact describes the internal GPIO bit on port 1, bit number b.",
+      "parentUuid": "036b4132_6f883c09",
       "revId": "9bb36e29176fd5de08ba0a2b7e454bb6c8bcfd94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
