@@ -88,6 +88,24 @@
       "revId": "f6625af721fb77ec1eed16303ca555259d23477e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23fbe5f7_7c94d961",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-18T02:40:51Z",
+      "side": 1,
+      "message": "Holding sys_rst_l low doesn\u0027t actually have any impact on the AP state. It just prevents other things from asserting that signal.\n\nI need to talk to faft people before I can change the API",
+      "parentUuid": "036b4132_e2160372",
+      "revId": "f6625af721fb77ec1eed16303ca555259d23477e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
