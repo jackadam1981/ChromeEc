@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "838811a6_854c06d9",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-18T17:08:24Z",
+      "side": 1,
+      "message": "I agree.",
+      "parentUuid": "23fbe5f7_3fc363ec",
+      "range": {
+        "startLine": 399,
+        "startChar": 17,
+        "endLine": 399,
+        "endChar": 32
+      },
+      "revId": "894adeb53ca6b4582056a9bf07a7b826abf4e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23fbe5f7_9fda77cb",
         "filename": "board/cr50/board.c",
         "patchSetId": 5
@@ -36,6 +60,24 @@
       "writtenOn": "2017-01-18T03:57:06Z",
       "side": 1,
       "message": "What is the point of setting these EXITxx settings here when we set them differently in board_configure_deep_sleep_wakepins()? Are these for any wake (which handles regular wake from sleep)?",
+      "revId": "894adeb53ca6b4582056a9bf07a7b826abf4e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "838811a6_654f02ce",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-18T17:08:24Z",
+      "side": 1,
+      "message": "Right. It is for wake from regular sleep.",
+      "parentUuid": "23fbe5f7_9fda77cb",
       "revId": "894adeb53ca6b4582056a9bf07a7b826abf4e7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
