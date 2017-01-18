@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "23fbe5f7_3fc363ec",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-18T03:57:06Z",
+      "side": 1,
+      "message": "It would be really slick if we could tie the GPIO_TPM_RST_L name to this thing automatically since we\u0027re open coding the mappings in different parts of the code. That\u0027d be nice as a follow up change.",
+      "range": {
+        "startLine": 399,
+        "startChar": 17,
+        "endLine": 399,
+        "endChar": 32
+      },
+      "revId": "894adeb53ca6b4582056a9bf07a7b826abf4e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23fbe5f7_9fda77cb",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-18T03:57:06Z",
+      "side": 1,
+      "message": "What is the point of setting these EXITxx settings here when we set them differently in board_configure_deep_sleep_wakepins()? Are these for any wake (which handles regular wake from sleep)?",
+      "revId": "894adeb53ca6b4582056a9bf07a7b826abf4e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23fbe5f7_bc3dc1e2",
         "filename": "board/cr50/board.c",
         "patchSetId": 5
