@@ -16,6 +16,24 @@
       "revId": "894adeb53ca6b4582056a9bf07a7b826abf4e7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23fbe5f7_dc09ade5",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-18T02:42:01Z",
+      "side": 1,
+      "message": "I think we should do it in a separate change",
+      "parentUuid": "23fbe5f7_bc3dc1e2",
+      "revId": "894adeb53ca6b4582056a9bf07a7b826abf4e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
