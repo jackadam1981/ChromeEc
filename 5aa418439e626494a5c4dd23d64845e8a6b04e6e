@@ -200,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "c39e897c_9bfe4340",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-18T00:06:21Z",
+      "side": 1,
+      "message": "Why is this checking for wake on falling edge?\n\nBut why are we checking the SYS_RST_L_IN level? We should be checking the pin associated with the reset signal.\n\ni.e. board_use_plt_rst() then the gpio checked and passed into sys_rst_asserted should be the right gpio.",
+      "parentUuid": "83b1f1f3_a371784b",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 182,
+        "endChar": 40
+      },
+      "revId": "5aa418439e626494a5c4dd23d64845e8a6b04e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_b4a3793e",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
