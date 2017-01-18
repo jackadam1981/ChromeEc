@@ -451,7 +451,7 @@ static int set_data_rate(const struct motion_sensor_t *s,
 #ifdef CONFIG_MAG_BMI160_BMM150
 	if (s->type == MOTIONSENSE_TYPE_MAG) {
 		/* Reset the calibration */
-		init_mag_cal(moc);
+// 		init_mag_cal(moc);
 		/*
 		 * We need at least MIN_BATCH_SIZE amd we must have collected
 		 * for at least MIN_BATCH_WINDOW_US.
