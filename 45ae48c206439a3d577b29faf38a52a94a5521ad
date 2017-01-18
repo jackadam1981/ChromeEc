@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83a651c2_6f1211d3",
+        "filename": "driver/temp_sensor/nct7717.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2017-01-18T17:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83b1f1f3_7d28efb3",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "45ae48c206439a3d577b29faf38a52a94a5521ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_dd4bbb67",
         "filename": "driver/temp_sensor/nct7717.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "83a651c2_af1319d2",
+        "filename": "driver/temp_sensor/nct7717.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2017-01-18T17:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83b1f1f3_dd4bbb67",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "45ae48c206439a3d577b29faf38a52a94a5521ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_7d8b8f74",
         "filename": "driver/temp_sensor/nct7717.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-01-13T18:49:43Z",
       "side": 1,
       "message": "If you move \"Hz\" to your printf you\u0027ll probably save some RAM.",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "45ae48c206439a3d577b29faf38a52a94a5521ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83a651c2_cf205d1a",
+        "filename": "driver/temp_sensor/nct7717.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2017-01-18T17:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83b1f1f3_7d8b8f74",
       "range": {
         "startLine": 36,
         "startChar": 8,
