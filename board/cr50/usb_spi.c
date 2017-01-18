@@ -33,8 +33,19 @@ static void enable_ec_spi(void)
 	gpio_set_level(GPIO_AP_FLASH_SELECT, 0);
 	gpio_set_level(GPIO_EC_FLASH_SELECT, 1);
 
+	/* TODO(scollyer): comment this out to work around HW issue
+	 * in eve that causes the power rail to the spi flash to drop when in
+	 * reset.
+	 */
 	/* Hold EC in reset. This will also hold the AP in reset. */
-	assert_ec_rst();
+	
+	/*
+	 * TODO(scollyer): Eve workaround for P1 only. Don't put EC in reset
+	 * because the SPI flash won't remain powered and the write operation
+	 * will always fail.
+	 *
+	 * assert_ec_rst();
+	 */
 }
 
 static void enable_ap_spi(void)
