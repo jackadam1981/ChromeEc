@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "637a3d6a_9650cc75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2017-01-18T09:29:30Z",
+      "side": 1,
+      "message": "File a bug \"Add hana variant birch\" and add the bug number here.",
+      "revId": "c65709d05f3e726f72704fe98684e4f8ea856b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "637a3d6a_56f8f452",
+        "filename": "board/elm/led_hana.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2017-01-18T09:29:30Z",
+      "side": 1,
+      "message": "Make it more readable, or add comment that hana use LED0 and birch use LED1.",
+      "range": {
+        "startLine": 46,
+        "startChar": 18,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "c65709d05f3e726f72704fe98684e4f8ea856b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
