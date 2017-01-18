@@ -381,3 +381,36 @@ static void board_init(void)
 	ccd_set_mode(CCD_MODE_DISABLED);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static void config_dut_mode(int mode)
+{
+	if (mode == 0) {
+		/* Connect d+/d- from host to dut port */
+		/* Set fastboot vs DutHub mux to fastboot */
+		gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_SEL, 0);
+		/* Set fastboot vs servo mux to fastboot */
+		write_ioexpander(1, 0, 1);
+	}
+}
+
+static int command_dut(int argc, char **argv)
+{
+	int mode = 0;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	/* Handle requested mode */
+	if (!strcasecmp(argv[1], "dev"))
+		mode = 0;
+	else if (!strcasecmp(argv[1], "host"))
+		mode = 1;
+	else
+		return EC_ERROR_PARAM1;
+
+	config_dut_mode(mode);
+	ccprintf("DUT mode set to %s\n", argv[1]);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(dut, command_dut,
+	"[dev|host|off]", "Set pullups or pulldowns to indicate CCD");
