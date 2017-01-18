@@ -70,6 +70,47 @@
       "revId": "260baf1683dce6a2bea356172940c92ea012d583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_6ce913f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-18T22:25:02Z",
+      "side": 1,
+      "message": "Ya. As long as we see an event we can just return S0. And let any rails dropping be handled in S0 as well. We just need to ensure we see the event while in s0ix so that we break out.",
+      "parentUuid": "c865c6f6_4c4f6fa2",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "260baf1683dce6a2bea356172940c92ea012d583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_6c2c736a",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-18T22:25:02Z",
+      "side": 1,
+      "message": "We should bail out rail loss too. Right now we\u0027re relying on the CHIPSET_RESET hook, but is that enough in practice?",
+      "revId": "260baf1683dce6a2bea356172940c92ea012d583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
