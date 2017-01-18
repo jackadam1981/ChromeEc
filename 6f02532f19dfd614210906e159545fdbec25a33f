@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "e3e70d23_61708083",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-18T00:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "236e8540_bee6e993",
+      "revId": "6f02532f19dfd614210906e159545fdbec25a33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c39e897c_50c77a44",
         "filename": "chip/g/dcrypto/app_cipher.c",
         "patchSetId": 3
@@ -42,6 +60,24 @@
         "endLine": 99,
         "endChar": 2
       },
+      "revId": "6f02532f19dfd614210906e159545fdbec25a33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e399cd94_d70a5e09",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-18T00:47:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c39e897c_50c77a44",
       "revId": "6f02532f19dfd614210906e159545fdbec25a33f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
