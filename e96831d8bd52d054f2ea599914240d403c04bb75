@@ -22,6 +22,30 @@
       "revId": "e96831d8bd52d054f2ea599914240d403c04bb75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_cf1c7135",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-18T23:05:17Z",
+      "side": 1,
+      "message": "s/w interleaving is fully supported (the hash state is in RAM).",
+      "parentUuid": "c865c6f6_2f81cd24",
+      "range": {
+        "startLine": 92,
+        "startChar": 42,
+        "endLine": 92,
+        "endChar": 55
+      },
+      "revId": "e96831d8bd52d054f2ea599914240d403c04bb75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
