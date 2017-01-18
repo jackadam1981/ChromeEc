@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23fbe5f7_7fe4cb8b",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-18T04:01:27Z",
+      "side": 1,
+      "message": "Alignment off?",
+      "revId": "496f517c0689c5b0d2739e92d785a39f48463344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23fbe5f7_3f71a3f8",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-18T04:01:27Z",
+      "side": 1,
+      "message": "What are the 3 other groups? GPIO, peripherals, and what else?",
+      "range": {
+        "startLine": 22,
+        "startChar": 67,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "496f517c0689c5b0d2739e92d785a39f48463344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23fbe5f7_5fe10f7a",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-18T04:01:27Z",
+      "side": 1,
+      "message": "gn",
+      "range": {
+        "startLine": 33,
+        "startChar": 38,
+        "endLine": 33,
+        "endChar": 40
+      },
+      "revId": "496f517c0689c5b0d2739e92d785a39f48463344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
