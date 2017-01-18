@@ -16,6 +16,24 @@
       "revId": "f6625af721fb77ec1eed16303ca555259d23477e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3e70d23_016534f5",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-18T00:26:26Z",
+      "side": 1,
+      "message": "can we open a bug for this to keep track of it under a different issue and discuss it there.\n\nPersonally I don\u0027t think this is a big deal, and sometimes we do want to keep the system in reset - wasn;t it required for AP/EC flash reprogramming?",
+      "parentUuid": "e3e70d23_61f1a01e",
+      "revId": "f6625af721fb77ec1eed16303ca555259d23477e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
