@@ -52,6 +52,24 @@
       "revId": "f6625af721fb77ec1eed16303ca555259d23477e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a39fd578_95a28e89",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-18T01:12:02Z",
+      "side": 1,
+      "message": "We hold the EC in reset whenever we update the AP.",
+      "parentUuid": "e399cd94_d7681e9f",
+      "revId": "f6625af721fb77ec1eed16303ca555259d23477e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
