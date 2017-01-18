@@ -175,6 +175,29 @@
       "revId": "496f517c0689c5b0d2739e92d785a39f48463344",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "838811a6_53e72491",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-18T18:56:45Z",
+      "side": 1,
+      "message": "Should we also mention some external signals are connected to peripherals by default?",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 77
+      },
+      "revId": "496f517c0689c5b0d2739e92d785a39f48463344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
