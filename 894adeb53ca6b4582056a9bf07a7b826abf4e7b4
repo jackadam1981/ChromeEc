@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23fbe5f7_bc3dc1e2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-18T02:21:47Z",
+      "side": 1,
+      "message": "Are we just going to make this change knowing that the edges don\u0027t align with the requirements? Or should we put that new logic in this change? Going forward, we won\u0027t wake from deep sleep on falling edge -- we should be waking on rising edge.",
+      "revId": "894adeb53ca6b4582056a9bf07a7b826abf4e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
