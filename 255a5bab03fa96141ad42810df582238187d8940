@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "637a3d6a_167bdc2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2017-01-18T07:09:06Z",
+      "side": 1,
+      "message": "birch bringup work should be being tracked by a BUG.\n\nSaraubh, can you help update these three patches with the correct BUG #s?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "255a5bab03fa96141ad42810df582238187d8940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_43825cec",
         "filename": "board/elm/battery_hana.c",
         "patchSetId": 2
