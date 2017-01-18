@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_2f81cd24",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-18T23:03:48Z",
+      "side": 1,
+      "message": "what if tpm library tries to calculate two hashes interleaved for any reason?",
+      "range": {
+        "startLine": 92,
+        "startChar": 42,
+        "endLine": 92,
+        "endChar": 55
+      },
+      "revId": "e96831d8bd52d054f2ea599914240d403c04bb75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
