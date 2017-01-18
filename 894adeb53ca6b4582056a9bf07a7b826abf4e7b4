@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "838811a6_6592a2e8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-18T17:17:44Z",
+      "side": 1,
+      "message": "In the future we will just configure the pin in one place. It will be wake on rising in deep and normal sleep right?",
+      "parentUuid": "838811a6_456e7e17",
+      "revId": "894adeb53ca6b4582056a9bf07a7b826abf4e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23fbe5f7_bc3dc1e2",
         "filename": "board/cr50/board.c",
         "patchSetId": 5
