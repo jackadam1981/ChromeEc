@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43aa999c_4cc7e744",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-18T00:14:38Z",
+      "side": 1,
+      "message": "It shouldn\u0027t be. It should only do that on tpm reset signal assertion. That\u0027s another bug we need to fix.",
+      "range": {
+        "startLine": 222,
+        "startChar": 28,
+        "endLine": 222,
+        "endChar": 60
+      },
+      "revId": "9bb36e29176fd5de08ba0a2b7e454bb6c8bcfd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43aa999c_f76b2059",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-18T00:14:38Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment. Is \u0027pad\u0027 an internal concept of cr50? I always thought a pad was a physical thing on the package -- pin or ball.",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 37
+      },
+      "revId": "9bb36e29176fd5de08ba0a2b7e454bb6c8bcfd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "036b4132_6f883c09",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-18T00:14:38Z",
+      "side": 1,
+      "message": "Doesn\u0027t this line still configure the pin? Did I miss where we explicitly turn off this interrupt mechanism for this pin?",
+      "revId": "9bb36e29176fd5de08ba0a2b7e454bb6c8bcfd94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
