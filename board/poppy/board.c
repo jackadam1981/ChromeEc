@@ -411,7 +411,7 @@ static void board_init(void)
 	gpio_set_level(GPIO_PP3300_DX_SENSOR, 1);
 
 	/* Enable VBUS interrupt */
-	if (system_get_board_version() == 0) {
+	if (system_get_board_version() == 0 && 0) {
 		/*
 		 * crosbug.com/p/61929: rev0 does not have VBUS detection,
 		 * force detection on both ports.
