@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a864120b_18542536",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:47:45Z",
+      "side": 1,
+      "message": "as far as I understand, servo v4 firmwares are released from firmware-servo-9040.B\nso this should probably be \nBRANCH\u003dservo\n(ditto for your other CLs)",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 11
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a864120b_b8e1797d",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 2
@@ -156,6 +179,29 @@
         "startChar": 0,
         "endLine": 227,
         "endChar": 12
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_784f61a2",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:47:45Z",
+      "side": 1,
+      "message": "Rp1A5/RpUSB combination means you can provide 1.5A, doesn\u0027t it ?\nOn servo v4, is it always true ?\n(ie you have always at least 1.5A available and you never have 3A available)",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 45
       },
       "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
