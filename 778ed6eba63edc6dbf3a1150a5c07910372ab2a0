@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a864120b_38c1e983",
+        "filename": "chip/it83xx/it83xx_fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T11:48:18Z",
+      "side": 1,
+      "message": "I meant when doing several floating point computations in a row it will be inefficient because you will have such a sequence :\nENABLE_IT83XX_FPU();\nadd45/sub45/mul33/divsr\nDISABLE_IT83XX_FPU();\nENABLE_IT83XX_FPU();\nadd45/sub45/mul33/divsr\nDISABLE_IT83XX_FPU();\nENABLE_IT83XX_FPU();\nadd45/sub45/mul33/divsr\nDISABLE_IT83XX_FPU();\n\nUsually the floating point hardware has some option to do a lazy restoration of the context (when you finally really need it)",
+      "parentUuid": "a3b51546_10cdc43d",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "778ed6eba63edc6dbf3a1150a5c07910372ab2a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4328d982_67b48e93",
         "filename": "core/nds32/cpu.c",
         "patchSetId": 4
