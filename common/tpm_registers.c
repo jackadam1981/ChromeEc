@@ -782,7 +782,8 @@ static void tpm_reset_now(int wipe_first)
 
 void tpm_task(void)
 {
-	tpm_reset_now(0);
+	if (tpm_reset_on_init())
+		tpm_reset_now(0);
 	while (1) {
 		uint8_t *response;
 		unsigned response_size;
