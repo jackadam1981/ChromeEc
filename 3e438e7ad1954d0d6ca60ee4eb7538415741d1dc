@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_68b696e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-19T16:09:49Z",
+      "side": 1,
+      "message": "Wording:\nWizpig sensor stack has been removed by \nhttps://chromium-review.googlesource.com/409508\nBut is actually needed.\nRe-add sensor stack, add ARC++ support.",
+      "revId": "3e438e7ad1954d0d6ca60ee4eb7538415741d1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_48abd278",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-19T16:09:49Z",
+      "side": 1,
+      "message": "At least b:27849483, add a wizpig specific one.",
+      "revId": "3e438e7ad1954d0d6ca60ee4eb7538415741d1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_08a5daa2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-19T16:09:49Z",
+      "side": 1,
+      "message": "Need tests: See other comments.",
+      "revId": "3e438e7ad1954d0d6ca60ee4eb7538415741d1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_88e30aeb",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-19T16:09:49Z",
+      "side": 1,
+      "message": "s/Four/Two",
+      "revId": "3e438e7ad1954d0d6ca60ee4eb7538415741d1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_08f71aa7",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-19T16:09:49Z",
+      "side": 1,
+      "message": "Check the matrices are correct by opening the device at 90 and collect the sensors output with \u0027ectool motionsense\u0027 when the base:\n- lays flat (both Z axis values are large)\n- on its left side (both X axis values are large)\n- standing up (both Y axis values are large).\nRepeat with the lid in the same positions.",
+      "revId": "3e438e7ad1954d0d6ca60ee4eb7538415741d1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_c8c5823e",
+        "filename": "board/wizpig/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-19T16:09:49Z",
+      "side": 1,
+      "message": "For ARC++ support, need to add MKBP support and sensor FIFO.\n\nCheck ARC++ is working by installing AIDA64 on the device and check its sensors page report sensor information.\n\n+/* Depends on how fast the AP boots and typical ODRs */\n+#define CONFIG_ACCEL_FIFO 512\n+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)\n\n+#define CONFIG_MKBP_EVENT\n+#define CONFIG_MKBP_USE_HOST_EVENT",
+      "revId": "3e438e7ad1954d0d6ca60ee4eb7538415741d1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
