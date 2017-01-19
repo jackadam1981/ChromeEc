@@ -782,6 +782,15 @@ static void tpm_reset_now(int wipe_first)
 
 void tpm_task(void)
 {
+	if (!tpm_reset_on_init()) {
+		/*
+		 * If the TPM is not supposed to be reset during init, wait
+		 * until the first reset request is posted before continuing to
+		 * the task or processing any other tpm related events.
+		 */
+		task_wait_event_mask(TPM_EVENT_RESET, -1);
+	}
+
 	tpm_reset_now(0);
 	while (1) {
 		uint8_t *response;
