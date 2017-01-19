@@ -111,6 +111,24 @@
       "revId": "260baf1683dce6a2bea356172940c92ea012d583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_1dc1a383",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-19T00:35:28Z",
+      "side": 1,
+      "message": "I think moving to S0 should be okay as we do force shutdown again in S0 if IN_PGOOD_ALL_CORE lost\nelse if (!power_has_signals(IN_PGOOD_ALL_CORE)) {\n     return POWER_S0;\n}",
+      "parentUuid": "c865c6f6_6c2c736a",
+      "revId": "260baf1683dce6a2bea356172940c92ea012d583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
