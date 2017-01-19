@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c865c6f6_e16181e5",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-19T19:43:05Z",
+      "side": 1,
+      "message": "We have \"Over current for charge protection Icp（ Charge overcurrent detection） 4.72A\".\nwe need to change it to 2.36A\nI misinterpreted the datasheet \"5 Charge Current(Continued) 2.36A Max 3.3A\"",
+      "range": {
+        "startLine": 152,
+        "startChar": 26,
+        "endLine": 152,
+        "endChar": 30
+      },
+      "revId": "1423979a19694cc8ad8027ac5792304aaf73bbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_c67693ee",
         "filename": "board/reef/battery.c",
         "patchSetId": 1
@@ -31,6 +54,29 @@
       "side": 1,
       "message": "I re-read the commit description. This is about protecting battery.\n\nI think we just need\n\nPROTECTION_MARGIN 10\nMAX_CURRENT_WITH_PROTECTION(x)\n  ((x) * (100 - PROTECTION_MARGIN) / 100)\n\nThen we can still put the numbers from the datasheet but get our protection. Otherwise there will be implicit recalculations that people won\u0027t understand. Please put the helper macros in one place so that other boards can take advantage of things too.",
       "parentUuid": "c865c6f6_c67693ee",
+      "revId": "1423979a19694cc8ad8027ac5792304aaf73bbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_8192c5aa",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-19T19:43:05Z",
+      "side": 1,
+      "message": "is the FAFT failure happening on Reef and panasonic battery also?",
+      "range": {
+        "startLine": 197,
+        "startChar": 26,
+        "endLine": 197,
+        "endChar": 30
+      },
       "revId": "1423979a19694cc8ad8027ac5792304aaf73bbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
