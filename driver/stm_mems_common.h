@@ -14,9 +14,6 @@
 #include "console.h"
 #include "i2c.h"
 
-/* Common debug funcions */
-#define CPRINTF(format, args...) cprintf(CC_ACCEL, format "\n", ## args)
-
 /* X, Y, Z axis data len */
 #define OUT_XYZ_SIZE			6
 
