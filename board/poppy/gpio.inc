@@ -26,8 +26,8 @@ GPIO_INT(VOLUME_DOWN_L,		PIN(8, 3), GPIO_INT_BOTH | GPIO_PULL_UP,	button_interru
 GPIO_INT(VOLUME_UP_L,		PIN(8, 2), GPIO_INT_BOTH | GPIO_PULL_UP,	button_interrupt)
 GPIO_INT(WP_L,			PIN(4, 0), GPIO_INT_BOTH,			switch_interrupt)
 GPIO_INT(AC_PRESENT,		PIN(C, 1), GPIO_INT_BOTH,			extpower_interrupt)
-GPIO_INT(USB_C0_VBUS_WAKE_L,	PIN(9, 3), GPIO_INT_BOTH | GPIO_PULL_UP,	vbus0_evt)
-GPIO_INT(USB_C1_VBUS_WAKE_L,	PIN(9, 7), GPIO_INT_BOTH | GPIO_PULL_UP,	vbus1_evt)
+GPIO_INT(USB_C0_VBUS_WAKE_L,	PIN(C, 2), GPIO_INT_BOTH | GPIO_PULL_UP,	vbus0_evt)
+GPIO_INT(USB_C1_VBUS_WAKE_L,	PIN(C, 4), GPIO_INT_BOTH | GPIO_PULL_UP,	vbus1_evt)
 GPIO_INT(USB_C0_BC12_INT_L,	PIN(D, 3), GPIO_INT_FALLING,			usb0_evt)
 GPIO_INT(USB_C1_BC12_INT_L,	PIN(3, 3), GPIO_INT_FALLING,			usb1_evt)
 /* TODO(b/35585396): Invert logic after rev1, then deprecate rev0 and remove. */
@@ -120,8 +120,8 @@ GPIO(LED_WHITE_C1,		PIN(3, 0), GPIO_OUT_LOW)
 #endif
 
 /* Board ID */
-GPIO(BOARD_VERSION1,		PIN(C, 4), GPIO_INPUT)				/* Board ID bit0 */
-GPIO(BOARD_VERSION2,		PIN(C, 2), GPIO_INPUT)				/* Board ID bit1 */
+GPIO(BOARD_VERSION1,		PIN(2, 2), GPIO_INPUT | GPIO_PULL_DOWN)		/* Board ID bit0 */
+GPIO(BOARD_VERSION2,		PIN(2, 3), GPIO_INPUT | GPIO_PULL_DOWN)		/* Board ID bit1 */
 GPIO(BOARD_VERSION3,		PIN(1, 3), GPIO_INPUT)				/* Board ID bit2 */
 
 /* Alternate functions GPIO definitions */
