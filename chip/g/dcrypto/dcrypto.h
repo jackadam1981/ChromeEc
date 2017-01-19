@@ -275,6 +275,11 @@ struct APPKEY_CTX {
 };
 
 int DCRYPTO_ladder_compute_frk2(size_t major_fw_version, uint8_t *frk2);
+/* TBD: FIXME FIXME FIXME proper key-ladder implementation */
+int DCRYPTO_ladder_random(void *output);
+int kl_derive_wrap(const uint32_t input[8], uint32_t output[8]);
+int kl_derive_origin(const uint32_t input[8], uint32_t output[8]);
+int kl_derive_attest(const uint32_t input[8], uint32_t output[8]);
 
 int DCRYPTO_appkey_init(enum dcrypto_appid id, struct APPKEY_CTX *ctx);
 void DCRYPTO_appkey_finish(struct APPKEY_CTX *ctx);
