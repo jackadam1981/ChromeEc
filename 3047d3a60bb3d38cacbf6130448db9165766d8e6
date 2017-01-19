@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "a864120b_b8e1797d",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:43:06Z",
+      "side": 1,
+      "message": "no ccprintf in non-interactive function.\nshould probably be CPRINTS.",
+      "range": {
+        "startLine": 315,
+        "startChar": 1,
+        "endLine": 315,
+        "endChar": 9
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_d86f8d11",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:43:06Z",
+      "side": 1,
+      "message": "that\u0027s msleep(10) ;-)",
+      "range": {
+        "startLine": 338,
+        "startChar": 3,
+        "endLine": 338,
+        "endChar": 17
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_b87659ed",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:43:06Z",
+      "side": 1,
+      "message": "if the DUT debug USB device is not ready for whatever reason at this point (eg it\u0027s resetting, so not having it\u0027s pull-up on DP), we are not enabling CCD, might be annoying to debug early state.\nOn top of that,in the previous CL, you turn on VBUS just a few us? before doing this call, so if either the DP pull-up is powered by VBUS or the full DUT, it\u0027s unlikely to be ready at this point.\n\n\nAlso I think our coding convention says you should put {} here.",
+      "range": {
+        "startLine": 342,
+        "startChar": 2,
+        "endLine": 342,
+        "endChar": 8
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_7881a19c",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:43:06Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 343,
+        "startChar": 37,
+        "endLine": 343,
+        "endChar": 43
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_587cddd3",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:43:06Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 377,
+        "startChar": 4,
+        "endLine": 377,
+        "endChar": 12
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_cc6ebfa5",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 2
@@ -18,6 +133,98 @@
         "startChar": 11,
         "endLine": 449,
         "endChar": 22
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_78aa0117",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:43:06Z",
+      "side": 1,
+      "message": "for the sake of having more readable indentation,\nputting:\nif (!port)\n  return;\nmight be nicer",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 12
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_d898ed09",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:43:06Z",
+      "side": 1,
+      "message": "maybe you still want to Hi-Z the other 2 GPIOS (CC1_RPUSB, CC2_RP1A5) to ensure you go back to the proper requested state whatever you did before.",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 54
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_98e4b58e",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:43:06Z",
+      "side": 1,
+      "message": "you set it here and never reset it anywhere.\nThat\u0027s a bit strange.\nWhat is the other case used for ?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 41
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_d8ea2d5a",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:43:06Z",
+      "side": 1,
+      "message": "that\u0027s only for port \u003d\u003d 1, for port \u003d\u003d 0, we should bail out early (even though it\u0027s unlikely to call it for port 0)",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 36
       },
       "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
