@@ -16,6 +16,24 @@
       "revId": "1423979a19694cc8ad8027ac5792304aaf73bbed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_e6407766",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-19T18:50:14Z",
+      "side": 1,
+      "message": "I re-read the commit description. This is about protecting battery.\n\nI think we just need\n\nPROTECTION_MARGIN 10\nMAX_CURRENT_WITH_PROTECTION(x)\n  ((x) * (100 - PROTECTION_MARGIN) / 100)\n\nThen we can still put the numbers from the datasheet but get our protection. Otherwise there will be implicit recalculations that people won\u0027t understand. Please put the helper macros in one place so that other boards can take advantage of things too.",
+      "parentUuid": "c865c6f6_c67693ee",
+      "revId": "1423979a19694cc8ad8027ac5792304aaf73bbed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
