@@ -265,7 +265,6 @@ static void init_pmu(void)
 void pmu_wakeup_interrupt(void)
 {
 	int exiten, wakeup_src;
-	int wake_on_low;
 
 	delay_sleep_by(1 * MSEC);
 
@@ -293,15 +292,13 @@ void pmu_wakeup_interrupt(void)
 		delay_sleep_by(20 * SECOND);
 
 		/*
-		 * If sys_rst_l or plt_rst_l (if signal is present) is
-		 * configured to wake on low and the signal is low, then call
-		 * tpm_rst_asserted
+		 * Call the correct tpm reset handler based on whether the
+		 * system uses plt_rst_l or sys_rst_l.
 		 */
-		wake_on_low = board_use_plt_rst() ?
-			GREAD_FIELD(PINMUX, EXITINV0, DIOM3) :
-			GREAD_FIELD(PINMUX, EXITINV0, DIOM0);
-		if (!gpio_get_level(GPIO_TPM_RST_L) && wake_on_low)
-			tpm_rst_asserted(GPIO_TPM_RST_L);
+		if (board_use_plt_rst())
+			plt_rst_changed(GPIO_PLT_RST_L_FED);
+		else if (!gpio_get_level(GPIO_SYS_RST_L))
+			sys_rst_asserted(GPIO_SYS_RST_L);
 	}
 
 	/* Trigger timer0 interrupt */
@@ -337,24 +334,12 @@ void board_configure_deep_sleep_wakepins(void)
 	GWRITE_FIELD(PINMUX, EXITEN0, DIOA3, 1);   /* GPIO_DETECT_AP */
 
 	/*
-	 * Whether it is a short pulse or long one waking on the rising edge is
-	 * fine because the goal of the system reset signal is to reset the TPM
+	 * On boards that use SYS_RST_L reconfigure the pin to wake on the
+	 * rising edge. The goal of the system reset signal is to reset the TPM
 	 * and after resuming from deep sleep the TPM will be reset. Cr50
 	 * doesn't need to read the low value and then reset.
 	 */
-	if (board_use_plt_rst()) {
-		/*
-		 * If the board includes plt_rst_l, configure Cr50 to resume on
-		 * the rising edge of this signal.
-		 */
-		/* Disable plt_rst_l as a wake pin */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOM3, 0);
-		/* Reconfigure and reenable it. */
-		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM3, 1); /* edge sensitive */
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOM3, 0);  /* wake on high */
-		/* enable powerdown exit */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOM3, 1);
-	} else {
+	if (!board_use_plt_rst()) {
 		 /* Configure cr50 to resume on the rising edge of sys_rst_l */
 		/* Disable sys_rst_l as a wake pin */
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 0);
@@ -388,39 +373,15 @@ static void configure_board_specific_gpios(void)
 		GWRITE_FIELD(PINMUX, DIOM0_CTL, PU, 1);
 
 	/*
-	 * Connect either plt_rst_l or sys_rst_l to GPIO_TPM_RST_L based on the
-	 * board type. This signal is used to monitor AP resets and reset the
-	 * TPM.
-	 *
-	 * plt_rst_l is on diom3, and sys_rst_l is on diom0.
+	 * The board uses either plt_rst_l or sys_rst_l to detect AP resets.
+	 * Disable the wake pin we are not using.
 	 */
-	if (board_use_plt_rst()) {
-		/* Use plt_rst_l as the tpm reset signal. */
-		GWRITE(PINMUX, GPIO1_GPIO0_SEL, GC_PINMUX_DIOM3_SEL);
-		/* Enbale the input */
-		GWRITE_FIELD(PINMUX, DIOM3_CTL, IE, 1);
-
-		/* Set power down for the equivalent of DIO_WAKE_FALLING */
-		/* Set to be edge sensitive */
-		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM3, 1);
-		/* Select failling edge polarity */
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOM3, 1);
-		/* Enable powerdown exit on DIOM3 */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOM3, 1);
-	} else {
-		/* Use sys_rst_l as the tpm reset signal. */
-		GWRITE(PINMUX, GPIO1_GPIO0_SEL, GC_PINMUX_DIOM0_SEL);
-		/* Enbale the input */
-		GWRITE_FIELD(PINMUX, DIOM0_CTL, IE, 1);
-
-		/* Set power down for the equivalent of DIO_WAKE_FALLING */
-		/* Set to be edge sensitive */
-		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM0, 1);
-		/* Select failling edge polarity */
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOM0, 1);
-		/* Enable powerdown exit on DIOM0 */
+	if (board_use_plt_rst())
+		/* Disable the sys_rst_l wake pin */
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
-	}
+	else
+		/* Disable the plt_rst_l wake pin */
+		GWRITE_FIELD(PINMUX, EXITEN0, DIOM3, 1);
 }
 
 void decrement_retry_counter(void)
@@ -529,16 +490,9 @@ int flash_regions_to_enable(struct g_flash_region *regions,
 	return 3;
 }
 
-/* This is the interrupt handler to react to TPM_RST_L */
-void tpm_rst_asserted(enum gpio_signal signal)
+static void reset_tpm(void)
 {
-	/*
-	 * Cr50 drives SYS_RST_L in certain scenarios, in those cases
-	 * this signal's assertion should be ignored here.
-	 */
-	CPRINTS("%s from %d", __func__, signal);
-	if (usb_spi_update_in_progress() ||
-	    tpm_is_resetting()) {
+	if (tpm_is_resetting()) {
 		CPRINTS("%s ignored", __func__);
 		return;
 	}
@@ -554,6 +508,95 @@ void tpm_rst_asserted(enum gpio_signal signal)
 		/* Reset TPM, no need to wait for completion. */
 		tpm_reset(0, 0);
 	}
+}
+
+/* This is the interrupt handler to react to SYS_RST_L */
+void sys_rst_asserted(enum gpio_signal signal)
+{
+	if (board_use_plt_rst()) {
+		gpio_disable_interrupt(signal);
+		return;
+	}
+
+	/*
+	 * Cr50 drives SYS_RST_L in certain scenarios, in those cases
+	 * this signal's assertion should be ignored here.
+	 */
+	CPRINTS("%s from %d", __func__, signal);
+	if (usb_spi_update_in_progress()) {
+		CPRINTS("%s ignored", __func__);
+		return;
+	}
+
+	reset_tpm();
+}
+
+static void reset_tpm_on_resume(void)
+{
+	/*
+	 * Boards without PLT_RST_L still only reset the TPM when SYS_RST_L is
+	 * asserted. Don't reset on HOOK_CHIPSET_RESUME.
+	 */
+	if (board_use_plt_rst())
+		reset_tpm();
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, reset_tpm_on_resume, HOOK_PRIO_FIRST);
+
+static void configure_plt_rst_wake(int wake_on_falling_edge)
+{
+	/* Disable plt_rst_l as a wake pin */
+	GWRITE_FIELD(PINMUX, EXITEN0, DIOM3, 0);
+	/* Reconfigure and reenable it. */
+	GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM3, 1); /* edge sensitive */
+	GWRITE_FIELD(PINMUX, EXITINV0, DIOM3, wake_on_falling_edge);
+	/* enable powerdown exit */
+	GWRITE_FIELD(PINMUX, EXITEN0, DIOM3, 1);
+}
+
+/* This is the interrupt handler to react to PLT_RST_L */
+void plt_rst_changed(enum gpio_signal signal)
+{
+	int rst_asserted = !gpio_get_level(signal);
+
+	if (!board_use_plt_rst()) {
+		gpio_disable_interrupt(signal);
+		return;
+	}
+
+	CPRINTS("plt_rst is %s", rst_asserted ? "asserted" : "deasserted");
+
+	if (rst_asserted) {
+		if (device_set_state(DEVICE_AP, DEVICE_STATE_OFF)) {
+			hook_notify(HOOK_CHIPSET_SHUTDOWN);
+			/*
+			 * plt_rst_l changed to low. Configure pin to wake on
+			 * high.
+			 */
+			configure_plt_rst_wake(0);
+		}
+	} else {
+		if (device_set_state(DEVICE_AP, DEVICE_STATE_ON)) {
+			hook_notify(HOOK_CHIPSET_RESUME);
+			/*
+			 * plt_rst_l changed to high. Configure pin to wake on
+			 * low.
+			 */
+			configure_plt_rst_wake(1);
+		}
+	}
+}
+
+int tpm_reset_on_init(void)
+{
+	/*
+	 * If the board uses plt_rst_l, then don't automatically reset the TPM
+	 * on init. Reset it only when the AP resumes.
+	 */
+	if (board_use_plt_rst()) {
+		plt_rst_changed(GPIO_PLT_RST_L_FED);
+		return 0;
+	}
+	return 1;
 }
 
 void assert_sys_rst(void)
@@ -756,6 +799,9 @@ void device_state_on(enum gpio_signal signal)
 
 	switch (signal) {
 	case GPIO_DETECT_AP:
+		if (board_use_plt_rst())
+			return;
+
 		if (device_state_changed(DEVICE_AP, DEVICE_STATE_ON))
 			hook_notify(HOOK_CHIPSET_RESUME);
 		break;
@@ -774,6 +820,14 @@ void device_state_on(enum gpio_signal signal)
 
 void board_update_device_state(enum device_type device)
 {
+	/*
+	 * Boards with plt_rst_l can use it to directly detect the AP state. It
+	 * is asserted in s3, s5, and g3. There is no other data sent on that
+	 * signal so we don't need any logic to debounce the signal.
+	 */
+	if (device == DEVICE_AP && board_use_plt_rst())
+		return;
+
 	if (device == DEVICE_SERVO && servo_state_unknown())
 		return;
 

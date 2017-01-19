@@ -42,6 +42,9 @@ void tpm_register_interface(interface_restart_func interface_restart);
  */
 int tpm_reset(int wait_until_done, int wipe_nvmem_first);
 
+/* Returns true if the TPM should reset automatically during init. */
+int tpm_reset_on_init(void);
+
 /*
  * Return true if the TPM is being reset. Usually this helps to avoid
  * unnecessary extra reset early at startup time, when TPM could be busy
