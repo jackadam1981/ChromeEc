@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a864120b_984cb581",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T11:44:16Z",
+      "side": 1,
+      "message": "given the vw_channel_list array is more or less indexed using the signal number (minus GPIO_COUNT), this seems very inefficient.\n\nYou should probably remove the \u0027name\u0027 field and define the array like this:\n#define VW_CHAN(name,XxX) [(name-GPIO_COUNT)]\u003d{XxX}\nstatic const struct vw_channel_t vw_channel_list[] \u003d {\n    VW_CHAN(VW_SLP_S3_L, 0x02, (1 \u003c\u003c 0), (1 \u003c\u003c 4), 0, 0),\n(while you are at it, also rmoeve valid_mask field which is mostly redundant with \u0027level_mask\u0027 and each entry will nicely fit in 32-bit)",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 12
+      },
+      "revId": "dd6656f4e81c2a8c8b071e625e98ca87e310d2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_588dbd88",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T11:44:16Z",
+      "side": 1,
+      "message": "there is a race condition here if the interrupt mask changed in-between.\nNot sure how you are supposed to do this cleanly on this CPU core, but this is not fully correct.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 21
+      },
+      "revId": "dd6656f4e81c2a8c8b071e625e98ca87e310d2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_1887456b",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T11:44:16Z",
+      "side": 1,
+      "message": "what is this useful for ?",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 1
+      },
+      "revId": "dd6656f4e81c2a8c8b071e625e98ca87e310d2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_987a7589",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T11:44:16Z",
+      "side": 1,
+      "message": "you can do both operation on VWIDX at the same time",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 36
+      },
+      "revId": "dd6656f4e81c2a8c8b071e625e98ca87e310d2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
