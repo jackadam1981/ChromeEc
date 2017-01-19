@@ -32,11 +32,12 @@
 #undef CONFIG_CMD_RW
 #undef CONFIG_CMD_SLEEPMASK
 #undef CONFIG_CMD_WAITMS
-#undef CONFIG_FLASH
 #endif
 
 /* Flash configuration */
 #undef CONFIG_FLASH_PSTATE
+#define CONFIG_FLASH_CTR
+#define CONFIG_GEN_ATTK
 /* TODO(crosbug.com/p/44745): Bringup only! Do the right thing for real! */
 #define CONFIG_WP_ALWAYS
 /* TODO(crosbug.com/p/44745): For debugging only */
@@ -118,6 +119,7 @@
 
 #ifndef __ASSEMBLER__
 
+#include <stdint.h>
 #include "gpio_signal.h"
 
 /* USB string indexes */
@@ -174,6 +176,11 @@ int board_use_plt_rst(void);
 int board_rst_pullup_needed(void);
 int board_tpm_uses_i2c(void);
 int board_tpm_uses_spi(void);
+
+void power_button_record(void);
+uint32_t chip_DEV_ID0(void);
+uint32_t chip_DEV_ID1(void);
+uint16_t chip_category(void);
 
 #endif /* !__ASSEMBLER__ */
 

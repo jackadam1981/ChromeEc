@@ -95,6 +95,9 @@ GPIO(I2C_SDA_INA,     PIN(0, 13), GPIO_INPUT)
 /* Unimplemented signals which we need to emulate for now */
 /* TODO(wfrichar): Half the boards don't use this signal. Take it out. */
 UNIMPLEMENTED(ENTERING_RW)
+/* physical U2F dongle emulation  */
+UNIMPLEMENTED(LED1)
+UNIMPLEMENTED(REGISTRATION)
 
 /*
  * If we are included by generic GPIO code that doesn't know about the PINMUX

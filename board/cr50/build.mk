@@ -50,6 +50,10 @@ board-y += tpm2/trng.o
 board-y += tpm2/upgrade.o
 board-y += wp.o
 
+# Include U2F code if available
+PDIR=private-cr52
+board-y += u2f.o
+
 # Build and link with an external library
 EXTLIB := $(realpath ../../third_party/tpm2)
 CFLAGS += -I$(EXTLIB)
