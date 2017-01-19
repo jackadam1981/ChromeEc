@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a864120b_38bd6975",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:23:30Z",
+      "side": 1,
+      "message": "this seems to be a static value, we don\u0027t have strong reason to store it here.\n\nActually you are not using it in this CL ?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 28
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_98cb5500",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1638,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:23:30Z",
+      "side": 1,
+      "message": "what is this special case used for ?",
+      "range": {
+        "startLine": 1633,
+        "startChar": 0,
+        "endLine": 1638,
+        "endChar": 57
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_f8be116f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:23:30Z",
+      "side": 1,
+      "message": "Actually the default power role is something known at compile time.\nRather than adding more function calls and special cases,\nI would just transform the PD_ROLE_DEFAULT macro/define into a PD_ROLE_DEFAULT(port) macro.\nusb_pd.h can be updated to define by default a macro swallowing the \u0027port\u0027 parameter:\n#ifdef CONFIG_USB_PD_DUAL_ROLE\n#define PD_ROLE_DEFAULT(port) PD_ROLE_SINK\n#else\n#define PD_ROLE_DEFAULT(port) PD_ROLE_SOURCE\n#endif\n\nAnd override it with your special logic for servo_v4\n#define PD_ROLE_DEFAULT(port) ((port) ? PD_ROLE_SOURCE :\tPD_ROLE_SINK)",
+      "range": {
+        "startLine": 1627,
+        "startChar": 0,
+        "endLine": 1642,
+        "endChar": 19
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_58ae1d44",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1779,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:23:30Z",
+      "side": 1,
+      "message": "#if defined(CONFIG_USB_PD_DUAL_ROLE) \u0026\u0026 !defined(CONFIG_USB_PD_DTS)",
+      "range": {
+        "startLine": 1778,
+        "startChar": 0,
+        "endLine": 1779,
+        "endChar": 25
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_78dc41c7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1886,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:23:30Z",
+      "side": 1,
+      "message": "I don\u0027t understand the if() statement here.\neven if the call fails (it won\u0027t actually since the boards unconditionally returns SUCCESS), we don\u0027t really want to skip the next steps.",
+      "range": {
+        "startLine": 1886,
+        "startChar": 5,
+        "endLine": 1886,
+        "endChar": 41
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_58d7fda5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1922,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:23:30Z",
+      "side": 1,
+      "message": "should be already done by the call to set_state(port, PD_STATE_SRC_DISCONNECTED);\nyou might be able to remove this",
+      "range": {
+        "startLine": 1919,
+        "startChar": 0,
+        "endLine": 1922,
+        "endChar": 6
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_18b8a584",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:23:30Z",
+      "side": 1,
+      "message": "you are supposed to document the return value with @return",
+      "range": {
+        "startLine": 772,
+        "startChar": 0,
+        "endLine": 773,
+        "endChar": 3
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_78b3e1ac",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-19T10:23:30Z",
+      "side": 1,
+      "message": "\u0027int\u0027 would be fine here as everywhere else.",
+      "range": {
+        "startLine": 774,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 7
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
