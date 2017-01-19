@@ -95,8 +95,8 @@ static const struct fast_charge_profile fast_charge_smp_cos4870_info[] = {
 	[TEMP_RANGE_3] = {
 		.temp_c = TEMPC_TENTHS_OF_DEG(45),
 		.current_mA = {
-			[VOLTAGE_RANGE_LOW] = 3300,
-			[VOLTAGE_RANGE_HIGH] = 3300,
+			[VOLTAGE_RANGE_LOW] = 3000,
+			[VOLTAGE_RANGE_HIGH] = 3000,
 		},
 	},
 
@@ -148,8 +148,8 @@ static const struct fast_charge_profile fast_charge_sonycorp_info[] = {
 	[TEMP_RANGE_1] = {
 		.temp_c = TEMPC_TENTHS_OF_DEG(CHARGER_PROF_TEMP_C_LAST_RANGE),
 		.current_mA = {
-			[VOLTAGE_RANGE_LOW] = 3300,
-			[VOLTAGE_RANGE_HIGH] = 3300,
+			[VOLTAGE_RANGE_LOW] = 3000,
+			[VOLTAGE_RANGE_HIGH] = 3000,
 		},
 	},
 };
@@ -193,8 +193,8 @@ static const struct fast_charge_profile fast_charge_panasonic_info[] = {
 	[TEMP_RANGE_1] = {
 		.temp_c = TEMPC_TENTHS_OF_DEG(60),
 		.current_mA = {
-			[VOLTAGE_RANGE_LOW] = 3072,
-			[VOLTAGE_RANGE_HIGH] = 3072,
+			[VOLTAGE_RANGE_LOW] = 2792,
+			[VOLTAGE_RANGE_HIGH] = 2792,
 		},
 	},
 
@@ -256,8 +256,8 @@ static const struct fast_charge_profile fast_charge_smp_c22n1626_info[] = {
 	[TEMP_RANGE_2] = {
 		.temp_c = TEMPC_TENTHS_OF_DEG(45),
 		.current_mA = {
-			[VOLTAGE_RANGE_LOW] = 5200,
-			[VOLTAGE_RANGE_HIGH] = 5200,
+			[VOLTAGE_RANGE_LOW] = 4727,
+			[VOLTAGE_RANGE_HIGH] = 4727,
 		},
 	},
 
@@ -301,8 +301,8 @@ static const struct fast_charge_profile fast_charge_cpt_c22n1626_info[] = {
 	[TEMP_RANGE_1] = {
 		.temp_c = TEMPC_TENTHS_OF_DEG(60),
 		.current_mA = {
-			[VOLTAGE_RANGE_LOW] = 5200,
-			[VOLTAGE_RANGE_HIGH] = 5200,
+			[VOLTAGE_RANGE_LOW] = 4727,
+			[VOLTAGE_RANGE_HIGH] = 4727,
 		},
 	},
 
