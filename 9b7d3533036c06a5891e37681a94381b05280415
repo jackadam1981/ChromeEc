@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_2e276f82",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-20T22:29:27Z",
+      "side": 1,
+      "message": "This is just the regular sleep handler, right?",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_19675791",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-20T22:29:27Z",
+      "side": 1,
+      "message": "Why would this in the handlers and not just do a one-time config during board init?",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_2eee4fcc",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-20T22:29:27Z",
+      "side": 1,
+      "message": "Why would we ever call this function under this condition?",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_4ef183ad",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-20T22:29:27Z",
+      "side": 1,
+      "message": "Why is this call necessary here? A comment would be helpful.",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_ae0fdf16",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-20T22:29:27Z",
+      "side": 1,
+      "message": "Similar reasoning as the comment you added below?",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_2ed40f29",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-20T22:29:27Z",
+      "side": 1,
+      "message": "I think a general comment  here related to the fact we\u0027re using UART pins normally which means they need to be debounced. But what I\u0027m more curious about is why can\u0027t we remove all these paths for that \"device\" ?",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_cebc531c",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-20T22:29:27Z",
+      "side": 1,
+      "message": "RED and FED stand for rising and falling what? rised and falled?\n\nThese new entries could use a big comment explaining what you\u0027re trying to do.",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_eea037e7",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-20T22:29:27Z",
+      "side": 1,
+      "message": "Why is this falling out of the gate? It\u0027s really odd we\u0027d have attributes here that opposite. RED above is rising, but you are using falling here.",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_ee3157c4",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-20T22:29:27Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be cleaner to mux the plt_rst_signal onto this gpio at runtime? The same code could exist as-is?",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
