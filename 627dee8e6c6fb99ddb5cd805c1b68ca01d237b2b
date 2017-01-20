@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_4b3bc3a1",
+        "filename": "board/glados/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-20T01:14:53Z",
+      "side": 1,
+      "message": "This seems dangerous (unlike your use in mec1322 panic code) -- interrupts are enabled, you\u0027re corrupting some address in data RAM, and you don\u0027t know what\u0027s really there. Maybe we should reserve space for the backup data instead.",
+      "range": {
+        "startLine": 482,
+        "startChar": 1,
+        "endLine": 482,
+        "endChar": 52
+      },
+      "revId": "627dee8e6c6fb99ddb5cd805c1b68ca01d237b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
