@@ -49,10 +49,6 @@ enum bd9995x_charge_port {
 /* Min. charge current w/ no battery to prevent collapse */
 #define BD9995X_NO_BATTERY_CHARGE_I_MIN	512
 
-/* VSYSREG settings */
-#define BD9995X_DISCHARGE_VSYSREG	8960
-#define BD9995X_CHARGE_VSYSREG		6144
-
 /*
  * BC1.2 minimum voltage threshold.
  * BC1.2 charging port output voltage range is 4.75V to 5.25V,
@@ -241,6 +237,7 @@ enum bd9995x_charge_port {
 #define BD9995X_CMD_EXT_MAP_SET		0x3F
 #define BD9995X_CMD_VM_CTRL_SET		0x40
 #define BD9995X_CMD_VM_CTRL_SET_EXTIADPEN	(1 << 9)
+#define BD9995X_CMD_VM_CTRL_SET_THERMENB	(1 << 3)
 #define BD9995X_CMD_THERM_WINDOW_SET1	0x41
 #define BD9995X_CMD_THERM_WINDOW_SET2	0x42
 #define BD9995X_CMD_THERM_WINDOW_SET3	0x43
