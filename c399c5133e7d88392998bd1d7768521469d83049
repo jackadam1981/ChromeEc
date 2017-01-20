@@ -203,6 +203,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_0567ee90",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-20T20:11:05Z",
+      "side": 1,
+      "message": "changing just the first field does not reduce memory consumption of this structure. but it is in ROM, not a big deal after all.",
+      "parentUuid": "437ff998_846a10c5",
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_021774be",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
