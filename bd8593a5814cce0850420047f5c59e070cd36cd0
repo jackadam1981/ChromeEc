@@ -116,6 +116,30 @@
       "revId": "bd8593a5814cce0850420047f5c59e070cd36cd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_65bd8b74",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-20T19:28:45Z",
+      "side": 1,
+      "message": "This will wait to continue to the task until the first TPM_EVENT_RESET request is posted.\nDone.",
+      "parentUuid": "c865c6f6_ec33ad15",
+      "range": {
+        "startLine": 785,
+        "startChar": 0,
+        "endLine": 787,
+        "endChar": 0
+      },
+      "revId": "bd8593a5814cce0850420047f5c59e070cd36cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
