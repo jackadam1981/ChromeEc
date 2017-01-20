@@ -5,6 +5,7 @@
 
 /* Lid switch module for Chrome EC */
 
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
@@ -95,9 +96,26 @@ DECLARE_HOOK(HOOK_INIT, lid_init, HOOK_PRIO_INIT_LID);
 /**
  * Handle debounced lid switch changing state.
  */
+int lid_angle_is_lid_open(void);
+int is_lid_angle_sensors_ready(void);
+
 static void lid_change_deferred(void)
 {
-	const int new_open = raw_lid_open();
+	int new_open = raw_lid_open();
+
+#ifdef CONFIG_LID_ANGLE
+	/* If we can calculate lid angles, we check if this is a real
+	 * open event or illusion created by a nearby magnet. */
+	if (new_open) {
+		CPRINTS("raw lid open");
+		if (is_lid_angle_sensors_ready())
+			/* Accels are on. We double check by lid angle */
+			new_open = lid_angle_is_lid_open();
+		else
+			new_open = 1;
+		CPRINTS("lid angle%s open", new_open ? "" : " not");
+	}
+#endif
 
 	/* If lid hasn't changed state, nothing to do */
 	if (new_open == debounced_lid_open)
