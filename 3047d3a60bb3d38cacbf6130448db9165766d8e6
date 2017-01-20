@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_f9800ce5",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:17:37Z",
+      "side": 1,
+      "message": "Removed. It was a debug line that I forgot to get rid of.",
+      "parentUuid": "a864120b_b8e1797d",
+      "range": {
+        "startLine": 315,
+        "startChar": 1,
+        "endLine": 315,
+        "endChar": 9
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a864120b_d86f8d11",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2017-01-19T10:43:06Z",
       "side": 1,
       "message": "that\u0027s msleep(10) ;-)",
+      "range": {
+        "startLine": 338,
+        "startChar": 3,
+        "endLine": 338,
+        "endChar": 17
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_d98f8811",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a864120b_d86f8d11",
       "range": {
         "startLine": 338,
         "startChar": 3,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_798e5c15",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:17:37Z",
+      "side": 1,
+      "message": "I added a 10 msec delay at the top of the function so there will be some settling time between enabling VBUS and measuring SBU voltages.",
+      "parentUuid": "a864120b_b87659ed",
+      "range": {
+        "startLine": 342,
+        "startChar": 2,
+        "endLine": 342,
+        "endChar": 8
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a864120b_7881a19c",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 2
@@ -105,6 +177,30 @@
       "writtenOn": "2017-01-19T10:43:06Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 343,
+        "startChar": 37,
+        "endLine": 343,
+        "endChar": 43
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_b994d428",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a864120b_7881a19c",
       "range": {
         "startLine": 343,
         "startChar": 37,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_39a0e480",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a864120b_587cddd3",
+      "range": {
+        "startLine": 377,
+        "startChar": 4,
+        "endLine": 377,
+        "endChar": 12
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_cc6ebfa5",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 2
@@ -151,6 +271,30 @@
       "writtenOn": "2017-01-18T22:25:52Z",
       "side": 1,
       "message": "Will this work anymore? It seems like setting CC lines will conflict with PD code. Maybe just delete the command?",
+      "range": {
+        "startLine": 449,
+        "startChar": 11,
+        "endLine": 449,
+        "endChar": 22
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_aae230b4",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:17:37Z",
+      "side": 1,
+      "message": "I went ahead and removed this command as it wasn\u0027t going to work as advertised. As we discussed, I will add a command that provides support for the phone to phone test config and is integrated with servo_v4 running USB PD.",
+      "parentUuid": "c865c6f6_cc6ebfa5",
       "range": {
         "startLine": 449,
         "startChar": 11,
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_99547038",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a864120b_78aa0117",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 12
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a864120b_784f61a2",
         "filename": "board/servo_v4/usb_pd_config.h",
         "patchSetId": 2
@@ -197,6 +365,30 @@
       "writtenOn": "2017-01-19T10:47:45Z",
       "side": 1,
       "message": "Rp1A5/RpUSB combination means you can provide 1.5A, doesn\u0027t it ?\nOn servo v4, is it always true ?\n(ie you have always at least 1.5A available and you never have 3A available)",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 45
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_992d90ce",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:17:37Z",
+      "side": 1,
+      "message": "I added a TODO here because the amount available depends on whether VBUS is being passed from the CHG port. I haven\u0027t added that functionality yet, but when I do, will need to adjust what\u0027s advertised via Rp.",
+      "parentUuid": "a864120b_784f61a2",
       "range": {
         "startLine": 240,
         "startChar": 0,
@@ -232,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_59471880",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:17:37Z",
+      "side": 1,
+      "message": "Added lines to put all of the Rp states in high Z state.",
+      "parentUuid": "a864120b_d898ed09",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 54
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a864120b_98e4b58e",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 2
@@ -255,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_149de745",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:17:37Z",
+      "side": 1,
+      "message": "The other case would be for when VBUS is being passed through from the CHG port. This feature has not yet been implemented. The TODO above crosbug.com/p/60794 is there to track this.",
+      "parentUuid": "a864120b_98e4b58e",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 41
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a864120b_d8ea2d5a",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 2
@@ -266,6 +506,30 @@
       "writtenOn": "2017-01-19T10:43:06Z",
       "side": 1,
       "message": "that\u0027s only for port \u003d\u003d 1, for port \u003d\u003d 0, we should bail out early (even though it\u0027s unlikely to call it for port 0)",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 36
+      },
+      "revId": "3047d3a60bb3d38cacbf6130448db9165766d8e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_59f718a6",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a864120b_d8ea2d5a",
       "range": {
         "startLine": 81,
         "startChar": 0,
