@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "289f421f_7fee6b03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-20T11:32:37Z",
+      "side": 1,
+      "message": "Is there some automated way to test this and make sure I didn\u0027t accidentally broke security?",
+      "revId": "deb6c252f8ea0af0f658301a3b3911bc57785003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289f421f_fff03be5",
+        "filename": "chip/stm32/flash-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-20T11:32:37Z",
+      "side": 1,
+      "message": "Also, original code hard coded assumptions about equal RO/RW regions.",
+      "revId": "deb6c252f8ea0af0f658301a3b3911bc57785003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289f421f_9ffd77bc",
+        "filename": "chip/stm32/flash-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-20T11:32:37Z",
+      "side": 1,
+      "message": "Drop this blank line.",
+      "revId": "deb6c252f8ea0af0f658301a3b3911bc57785003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289f421f_bffab3bf",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-20T11:32:37Z",
+      "side": 1,
+      "message": "This whole function _really_ needs to be refactored...",
+      "revId": "deb6c252f8ea0af0f658301a3b3911bc57785003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289f421f_5fe92ff8",
+        "filename": "include/flash.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-20T11:32:37Z",
+      "side": 1,
+      "message": "Actually, this is wrong, should not be included in RW region.",
+      "revId": "deb6c252f8ea0af0f658301a3b3911bc57785003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
