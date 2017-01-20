@@ -47,6 +47,7 @@
  */
 static int wake_large_angle = 180;
 static const int wake_small_angle = 13;
+static const int lid_open_angle = 5;
 
 /* Define hysteresis value to add stability to the flags. */
 #define LID_ANGLE_HYSTERESIS_DEG  2
@@ -115,10 +116,18 @@ void lid_angle_set_wake_angle(int ang)
 	wake_large_angle = ang;
 }
 
+static int lidangle_buffer[LID_ANGLE_BUFFER_SIZE];
+static int index;
+
+int lid_angle_is_lid_open(void)
+{
+	/* TODO: Handle concurrent access */
+	int i = (index == 0) ? LID_ANGLE_BUFFER_SIZE - 1 : index - 1;
+	return lidangle_buffer[i] > lid_open_angle;
+}
+
 void lid_angle_update(int lid_ang)
 {
-	static int lidangle_buffer[LID_ANGLE_BUFFER_SIZE];
-	static int index;
 	int i;
 	int accept = 1, ignore = 1;
 
