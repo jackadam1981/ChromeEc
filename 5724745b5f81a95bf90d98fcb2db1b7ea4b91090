@@ -68,6 +68,30 @@
       "revId": "5724745b5f81a95bf90d98fcb2db1b7ea4b91090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_062a62e1",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-20T01:37:59Z",
+      "side": 1,
+      "message": "\"Closer\" to voltage_max I should say (eg. bi-\u003evoltage_max + 200mA).",
+      "parentUuid": "c865c6f6_a6503675",
+      "range": {
+        "startLine": 182,
+        "startChar": 27,
+        "endLine": 182,
+        "endChar": 48
+      },
+      "revId": "5724745b5f81a95bf90d98fcb2db1b7ea4b91090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
