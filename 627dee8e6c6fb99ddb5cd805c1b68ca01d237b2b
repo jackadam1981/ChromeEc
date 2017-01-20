@@ -46,6 +46,30 @@
       "revId": "627dee8e6c6fb99ddb5cd805c1b68ca01d237b2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_b1dd12f6",
+        "filename": "board/glados/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-20T02:25:38Z",
+      "side": 1,
+      "message": "It\u0027s still risky because gpio_set_flags() is a rabbit hole. Let\u0027s look closer to see if there is some buffer / area that we can guarantee is unused. Do I understand the requirements correctly?\n\n- RAM address must be fixed (eg. can\u0027t use some buffer that we declare, that may be different offset in RO / RW).\n- We can\u0027t use the first 8K.",
+      "parentUuid": "289f421f_9fcb3700",
+      "range": {
+        "startLine": 482,
+        "startChar": 1,
+        "endLine": 482,
+        "endChar": 52
+      },
+      "revId": "627dee8e6c6fb99ddb5cd805c1b68ca01d237b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
