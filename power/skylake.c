@@ -383,3 +383,38 @@ enum power_state power_handle_state(enum power_state state)
 
 	return new_state;
 }
+
+#ifdef CONFIG_CHIPSET_HAS_PMIC_LDO_EN
+
+/* Make the pmic re-sequence the power rails under these conditions. */
+#define PMIC_RESET_FLAGS \
+	(RESET_FLAG_WATCHDOG | RESET_FLAG_SOFT | RESET_FLAG_HARD)
+static void chipset_handle_reboot(void)
+{
+	int flags;
+
+	if (system_jumped_to_this_image())
+		return;
+
+	/* Interrogate current reset flags from previous reboot. */
+	flags = system_get_reset_flags();
+
+	if (!(flags & PMIC_RESET_FLAGS))
+		return;
+
+	/* Preserve AP off request. */
+	if (flags & RESET_FLAG_AP_OFF)
+		chip_save_reset_flags(RESET_FLAG_AP_OFF);
+
+	ccprintf("Restarting system with PMIC.\n");
+	/* Flush console */
+	cflush();
+
+	/* Bring down all rails but RTC rail (including EC power). */
+	gpio_set_level(GPIO_EC_PLATFORM_RST, 1);
+	while (1)
+		; /* wait here */
+}
+DECLARE_HOOK(HOOK_INIT, chipset_handle_reboot, HOOK_PRIO_FIRST);
+
+#endif

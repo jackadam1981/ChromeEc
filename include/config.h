@@ -589,6 +589,9 @@
 #define CONFIG_CHIPSET_HAS_PP1350
 #define CONFIG_CHIPSET_HAS_PP5000
 
+/* Support PMIC LDO_EN toggling in chipset */
+#undef CONFIG_CHIPSET_HAS_PMIC_LDO_EN
+
 /*****************************************************************************/
 /*
  * Chip config for clock circuitry
