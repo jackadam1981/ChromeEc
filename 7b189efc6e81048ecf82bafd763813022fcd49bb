@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "289f421f_9f26d71c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1119450
+      },
+      "writtenOn": "2017-01-20T01:35:24Z",
+      "side": 1,
+      "message": "Yes, hash can have more buffer.",
+      "parentUuid": "c865c6f6_267a0625",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "7b189efc6e81048ecf82bafd763813022fcd49bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_0bc38b8b",
         "filename": "common/vboot_hash.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-20T01:08:15Z",
       "side": 1,
       "message": "Can you double check that this works for CHUNK_SIZE % SHA256_BLOCK_SIZE !\u003d 0? Eg. verify you get the same hash for CHUNK_SIZE \u003d 512, 513, 514...",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "7b189efc6e81048ecf82bafd763813022fcd49bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289f421f_ff291bed",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1119450
+      },
+      "writtenOn": "2017-01-20T01:35:24Z",
+      "side": 1,
+      "message": "Done: print out the shared_mem_size() and CHUNK_SIZE. The value is expected",
+      "parentUuid": "c865c6f6_0bc38b8b",
       "range": {
         "startLine": 35,
         "startChar": 0,
