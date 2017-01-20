@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_25d43229",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T21:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_a51142cf",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 3
+      },
+      "revId": "b78f754aac8be3723057c574077fc268a9528fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83b1f1f3_cbaa15c2",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_859bde93",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T21:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_05ec8e98",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 178,
+        "endChar": 54
+      },
+      "revId": "b78f754aac8be3723057c574077fc268a9528fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_e5f05a71",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
@@ -82,6 +130,30 @@
       "writtenOn": "2017-01-20T20:11:05Z",
       "side": 1,
       "message": "the comment should be before the function, right above it.",
+      "range": {
+        "startLine": 753,
+        "startChar": 0,
+        "endLine": 763,
+        "endChar": 0
+      },
+      "revId": "b78f754aac8be3723057c574077fc268a9528fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_887ad322",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T21:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_e5f05a71",
       "range": {
         "startLine": 753,
         "startChar": 0,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_48b29bd4",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T21:17:42Z",
+      "side": 1,
+      "message": "I had put just as you suggest, but I thought saving board_properities in multiple places might be bad. I will change it back.",
+      "parentUuid": "c865c6f6_45e5e687",
+      "range": {
+        "startLine": 960,
+        "startChar": 3,
+        "endLine": 961,
+        "endChar": 24
+      },
+      "revId": "b78f754aac8be3723057c574077fc268a9528fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_a58b82ba",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
@@ -128,6 +224,30 @@
       "writtenOn": "2017-01-20T20:11:05Z",
       "side": 1,
       "message": "same here as in line 961 above.\n\nAdding a goto just to avoid one liner and show that processing is over makes it harder to  read.",
+      "range": {
+        "startLine": 985,
+        "startChar": 4,
+        "endLine": 985,
+        "endChar": 24
+      },
+      "revId": "b78f754aac8be3723057c574077fc268a9528fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_a8bd9776",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T21:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_a58b82ba",
       "range": {
         "startLine": 985,
         "startChar": 4,
