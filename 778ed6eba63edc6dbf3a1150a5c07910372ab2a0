@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "289f421f_1ffba703",
+        "filename": "chip/it83xx/it83xx_fpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-01-20T07:09:26Z",
+      "side": 1,
+      "message": "We don\u0027t know the next arithmetic operation is  a floating point or original operation.\nWhen performing a floating point operation, we need to use register \u0027dlmb (macro ENABLE_IT83XX_FPU)\u0027 to switch CPU\u0027s arithmetic logic unit to FPU mode. All interrupts will be disabled automatically at the this time. This mechanism is meant to prevent unexpected results of the arithmetic instructions if an interrupt is triggered. This is why we need to restore interrupts and ALU (DISABLE_IT83XX_FPU) after each floating point operations.",
+      "parentUuid": "a864120b_38c1e983",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "778ed6eba63edc6dbf3a1150a5c07910372ab2a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4328d982_67b48e93",
         "filename": "core/nds32/cpu.c",
         "patchSetId": 4
