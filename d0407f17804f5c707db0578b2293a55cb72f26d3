@@ -16,6 +16,24 @@
       "revId": "d0407f17804f5c707db0578b2293a55cb72f26d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_ee6397c0",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-20T22:11:07Z",
+      "side": 1,
+      "message": "We can\u0027t keep the high-\u003elow or low-\u003ehigh interrupts enabled all the time because there are just so many transitions on the UART signals.\n\nWe are mostly just polling. The device_state_on interrupt is used to get granularity. It is disabled whenever we think that the device is on and is pulling the signal up. When the device is off, we leave the low-\u003ehigh interrupt enabled so we can detect immediately if the device turns on.",
+      "parentUuid": "c865c6f6_0e170b67",
+      "revId": "d0407f17804f5c707db0578b2293a55cb72f26d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
