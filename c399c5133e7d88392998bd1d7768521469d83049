@@ -221,6 +221,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_85dd1e52",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T21:17:42Z",
+      "side": 1,
+      "message": "I assume it\u0027s ok to just leave this as uint8_t",
+      "parentUuid": "c865c6f6_0567ee90",
+      "revId": "c399c5133e7d88392998bd1d7768521469d83049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97a04ea7_021774be",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
