@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "289f421f_ff6cbb1e",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-01-20T02:23:11Z",
+      "side": 1,
+      "message": "It\u0027s irrelevant to this CL. During code review, I saw the CL 430530 already removed GPIO_PULL_UP flag for USB_CX_5V_EN as they\u0027re output. Actually, it\u0027s correct. In datasheet section 4.5.2, it mentioned \"When the GPIO pin is configured as an output port, the internal pull-up or pull-down is disabled.\". \n\nI also saw gru and reef enable GPIO_PULL_UP as USB_CX_5V_EN are output. It\u0027s no harm if we only want to keep voltage. (They\u0027re push-pull and needn\u0027t pull-down/up resistance.) But if there\u0027s an application uses pin\u0027s internal weak resistance, it should be careful when pin is configured as output.",
+      "revId": "143420731c36024cd66031a101af79fcfc540d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
