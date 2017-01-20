@@ -380,7 +380,12 @@ static int charge_request(int voltage, int current)
 		voltage = charger_closest_voltage(
 			curr.batt.voltage + charger_get_info()->voltage_step);
 		/* And handle dead battery case */
+#ifdef CONFIG_CHARGER_MAINTAIN_VBAT
+		voltage = MAX(voltage, CONFIG_CHARGER_MAINTAIN_VBAT);
+#else
 		voltage = MAX(voltage, battery_get_info()->voltage_min);
+#endif
+
 #else
 		voltage = current = 0;
 #endif

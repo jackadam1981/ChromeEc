@@ -428,6 +428,12 @@
 #undef CONFIG_CHARGER_INPUT_CURRENT
 
 /*
+ * Leave charger VBAT configured to battery-requested voltage under all
+ * conditions, even when AC is not present.
+ */
+#undef CONFIG_CHARGER_MAINTAIN_VBAT
+
+/*
  * Board specific maximum input current limit, in mA.
  */
 #undef CONFIG_CHARGER_MAX_INPUT_CURRENT
