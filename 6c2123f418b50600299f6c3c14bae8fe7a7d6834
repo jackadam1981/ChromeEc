@@ -22,6 +22,30 @@
       "revId": "6c2123f418b50600299f6c3c14bae8fe7a7d6834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_cc5ea921",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-20T03:49:48Z",
+      "side": 0,
+      "message": "I kept this in sys_rst_asserted.\n\nFor the plt rst interrupt, we do the tpm reset on the plt_rst deassertion. During the spi update we hold the EC in reset so plt_rst_l shouldn\u0027t be deasserted while the EC is in reset.",
+      "parentUuid": "c865c6f6_0cf28124",
+      "range": {
+        "startLine": 540,
+        "startChar": 4,
+        "endLine": 540,
+        "endChar": 31
+      },
+      "revId": "6c2123f418b50600299f6c3c14bae8fe7a7d6834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

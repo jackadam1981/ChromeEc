@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_4c8cf98a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-20T03:49:48Z",
+      "side": 1,
+      "message": "It is enabled in gpio.inc, so it will occur the first time SYS_RST_L is asserted. I want to make sure we don\u0027t do anything and disable the interrupt.",
+      "parentUuid": "c865c6f6_ac16d567",
+      "range": {
+        "startLine": 516,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 0
+      },
+      "revId": "bd8593a5814cce0850420047f5c59e070cd36cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_ec33ad15",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2017-01-20T03:36:22Z",
       "side": 1,
       "message": "you can not continue here without resetting the tpm. I mean you can, but tpm behaviour would be completely broken.",
+      "range": {
+        "startLine": 785,
+        "startChar": 0,
+        "endLine": 787,
+        "endChar": 0
+      },
+      "revId": "bd8593a5814cce0850420047f5c59e070cd36cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_4cc19982",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-20T03:49:48Z",
+      "side": 1,
+      "message": "I don\u0027t think I entirely understand this, so we should this in person tomorrow.",
+      "parentUuid": "c865c6f6_ec33ad15",
       "range": {
         "startLine": 785,
         "startChar": 0,
