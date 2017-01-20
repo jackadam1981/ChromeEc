@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_2c0c2561",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-20T03:36:22Z",
+      "side": 1,
+      "message": "this is not just reef vs gru, the difference is the availability of the plt_rst_l signal, so you can say this is x86 vs ARM",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "bd8593a5814cce0850420047f5c59e070cd36cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_ac16d567",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-20T03:36:22Z",
+      "side": 1,
+      "message": "why would this interrupt ever happen on a board with plt_rst_l in place?",
+      "range": {
+        "startLine": 516,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 0
+      },
+      "revId": "bd8593a5814cce0850420047f5c59e070cd36cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_ec33ad15",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-20T03:36:22Z",
+      "side": 1,
+      "message": "you can not continue here without resetting the tpm. I mean you can, but tpm behaviour would be completely broken.",
+      "range": {
+        "startLine": 785,
+        "startChar": 0,
+        "endLine": 787,
+        "endChar": 0
+      },
+      "revId": "bd8593a5814cce0850420047f5c59e070cd36cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
