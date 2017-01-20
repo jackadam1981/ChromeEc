@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_b7306b0a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:19:05Z",
+      "side": 1,
+      "message": "This currently is not changing. I had thought that the default power role might change via console command in order to support different testing modes. However, at the moment the default role is indeed static. I will remove this variable here and use the macro based solution as you suggested.",
+      "parentUuid": "a864120b_38bd6975",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 28
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a864120b_98cb5500",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-19T10:23:30Z",
       "side": 1,
       "message": "what is this special case used for ?",
+      "range": {
+        "startLine": 1633,
+        "startChar": 0,
+        "endLine": 1638,
+        "endChar": 57
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_979b27b8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1638,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:19:05Z",
+      "side": 1,
+      "message": "This state was to account for the check above that sets the state to SUSPENDED if tcpm_init() fails. However, with the macro override solution you suggest for the default role you suggest, this set of changes won\u0027t be needed.",
+      "parentUuid": "a864120b_98cb5500",
       "range": {
         "startLine": 1633,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_f7ab83c3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:19:05Z",
+      "side": 1,
+      "message": "I have removed this section of changes and instead use the macro solution.",
+      "parentUuid": "a864120b_f8be116f",
+      "range": {
+        "startLine": 1627,
+        "startChar": 0,
+        "endLine": 1642,
+        "endChar": 19
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a864120b_58ae1d44",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-01-19T10:23:30Z",
       "side": 1,
       "message": "#if defined(CONFIG_USB_PD_DUAL_ROLE) \u0026\u0026 !defined(CONFIG_USB_PD_DTS)",
+      "range": {
+        "startLine": 1778,
+        "startChar": 0,
+        "endLine": 1779,
+        "endChar": 25
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_9700c7eb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1779,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:19:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a864120b_58ae1d44",
       "range": {
         "startLine": 1778,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_776313c3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1886,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:19:05Z",
+      "side": 1,
+      "message": "I was modeling after how VBUS is enabled for UFP attach just above and it would return back to this point until it was successful. Removed the \u0027if\u0027 portion since we always return EC_SUCCESS.",
+      "parentUuid": "a864120b_78dc41c7",
+      "range": {
+        "startLine": 1886,
+        "startChar": 5,
+        "endLine": 1886,
+        "endChar": 41
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a864120b_58d7fda5",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2017-01-19T10:23:30Z",
       "side": 1,
       "message": "should be already done by the call to set_state(port, PD_STATE_SRC_DISCONNECTED);\nyou might be able to remove this",
+      "range": {
+        "startLine": 1919,
+        "startChar": 0,
+        "endLine": 1922,
+        "endChar": 6
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_3786bb3d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1922,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:19:05Z",
+      "side": 1,
+      "message": "Removed as the set_state call takes care of it.",
+      "parentUuid": "a864120b_58d7fda5",
       "range": {
         "startLine": 1919,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_d794ff64",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:19:05Z",
+      "side": 1,
+      "message": "This prototype has been removed due to the default power role being done via a macro",
+      "parentUuid": "a864120b_18b8a584",
+      "range": {
+        "startLine": 772,
+        "startChar": 0,
+        "endLine": 773,
+        "endChar": 3
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a864120b_78b3e1ac",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
@@ -174,6 +342,30 @@
       "writtenOn": "2017-01-19T10:23:30Z",
       "side": 1,
       "message": "\u0027int\u0027 would be fine here as everywhere else.",
+      "range": {
+        "startLine": 774,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 7
+      },
+      "revId": "ac07f3482a5f69072520bb5bf0b9aea0b5603b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_972c476b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-20T19:19:05Z",
+      "side": 1,
+      "message": "Removed the prototype",
+      "parentUuid": "a864120b_78b3e1ac",
       "range": {
         "startLine": 774,
         "startChar": 0,
