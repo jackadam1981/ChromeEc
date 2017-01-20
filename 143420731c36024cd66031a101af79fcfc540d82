@@ -16,6 +16,24 @@
       "revId": "143420731c36024cd66031a101af79fcfc540d82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289f421f_bf7633ed",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-20T02:27:40Z",
+      "side": 1,
+      "message": "(this CL does not change these lines, you see it because I rebased and it shows as difference between patch sets 3 and 5)\n\nThanks for the clarification though.",
+      "parentUuid": "289f421f_ff6cbb1e",
+      "revId": "143420731c36024cd66031a101af79fcfc540d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
