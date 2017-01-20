@@ -93,6 +93,30 @@
       "revId": "7b189efc6e81048ecf82bafd763813022fcd49bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_a6a5d648",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-20T01:45:55Z",
+      "side": 1,
+      "message": "Oh oops, we\u0027re dropping the extra bits with the divide / multiply. Sorry for missing that.",
+      "parentUuid": "289f421f_ff291bed",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "7b189efc6e81048ecf82bafd763813022fcd49bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
