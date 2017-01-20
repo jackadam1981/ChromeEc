@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_d9041fcf",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-20T23:14:23Z",
+      "side": 1,
+      "message": "so, there have been a few back and forths about putting something in this function. No need after all?",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 4
+      },
+      "revId": "be8ace197756db686b422b02fbc3545542404ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
