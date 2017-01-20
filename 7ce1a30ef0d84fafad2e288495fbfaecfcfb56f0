@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_00936aec",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-01-20T00:04:42Z",
+      "side": 1,
+      "message": "Instead of calling tablet_get_mode() a bunch, how about creating a new variable called \"current_tablet_mode\"?\n\nSee https://chromium-review.googlesource.com/c/429876/5/common/motion_lid.c#343 for my take at the merge conflict.",
+      "revId": "7ce1a30ef0d84fafad2e288495fbfaecfcfb56f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
