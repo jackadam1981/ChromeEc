@@ -111,10 +111,47 @@ bd9995x_write_cleanup:
 
 /* BD9995X local interfaces */
 
+static int bd9995x_fast_charge_settings(int voltage)
+{
+
+	/* Fast Charge Voltage Regulation Settings for fast charging. */
+#ifdef CONFIG_CHARGER_BATTERY_TSENSE
+	return ch_raw_write16(BD9995X_CMD_CHG_VOLTAGE, voltage,
+			BD9995X_EXTENDED_COMMAND);
+#else
+	int rv;
+
+	/*
+	 * If TSENSE is not connected set all the VFASTCHG_REG_SETx
+	 * to same value.
+	 */
+	rv = ch_raw_write16(BD9995X_CMD_VFASTCHG_REG_SET1,
+			voltage & 0x7FF0, BD9995X_EXTENDED_COMMAND);
+
+	rv += ch_raw_write16(BD9995X_CMD_VFASTCHG_REG_SET2,
+			voltage & 0x7FF0, BD9995X_EXTENDED_COMMAND);
+
+	rv += ch_raw_write16(BD9995X_CMD_VFASTCHG_REG_SET3,
+			voltage & 0x7FF0, BD9995X_EXTENDED_COMMAND);
+
+	return rv;
+#endif
+}
+
+static int bd9995x_set_vsysreg(int voltage)
+{
+	/* VSYS Regulation voltage is in 64mV steps. */
+	voltage &= ~0x3F;
+
+	return ch_raw_write16(BD9995X_CMD_VSYSREG_SET, voltage,
+			      BD9995X_EXTENDED_COMMAND);
+}
+
 static int bd9995x_charger_enable(int enable)
 {
 	int rv;
 	int reg;
+	const struct battery_info *bi = battery_get_info();
 
 #ifdef CONFIG_CHARGER_BD9995X_CHGEN
 	/*
@@ -124,6 +161,36 @@ static int bd9995x_charger_enable(int enable)
 	if (!enable && !board_battery_initialized())
 		return EC_SUCCESS;
 #endif
+
+	if (enable) {
+		/*
+		 * Added delay to move from Pre-Charge state to
+		 * Fast-Charge state.
+		 */
+		msleep(1);
+
+		/*
+		 * Set VSYSREG_SET <= VBAT so that the charger is in Fast-Charge
+		 * state when charging.
+		 */
+		rv = bd9995x_set_vsysreg(bi->voltage_min);
+	} else {
+		/*
+		 * Set VSYSREG_SET > VBAT so that the charger is in Pre-Charge
+		 * state when not charging or discharging.
+		 */
+		rv = bd9995x_set_vsysreg(bi->voltage_max + 500);
+
+		/*
+		 * Allow charger in pre-charge state for 50ms before disabling
+		 * the charger which prevents inrush current while moving from
+		 * fast-charge state to pre-charge state.
+		 */
+		msleep(50);
+	}
+	if (rv)
+		return rv;
+
 	rv = ch_raw_read16(BD9995X_CMD_CHGOP_SET2, &reg,
 				BD9995X_EXTENDED_COMMAND);
 	if (rv)
@@ -380,15 +447,6 @@ static void usb_charger_process(enum bd9995x_charge_port port)
 }
 #endif /* HAS_TASK_USB_CHG */
 
-static int bd9995x_set_vsysreg(int voltage)
-{
-	/* VSYS Regulation voltage is in 64mV steps. */
-	voltage &= ~0x3F;
-
-	return ch_raw_write16(BD9995X_CMD_VSYSREG_SET, voltage,
-			      BD9995X_EXTENDED_COMMAND);
-}
-
 /* chip specific interfaces */
 
 int charger_set_input_current(int input_current)
@@ -543,15 +601,7 @@ int charger_set_mode(int mode)
 {
 	int rv;
 
-	if (mode & CHARGE_FLAG_INHIBIT_CHARGE) {
-		rv = bd9995x_set_vsysreg(BD9995X_DISCHARGE_VSYSREG);
-		msleep(50);
-		rv |= bd9995x_charger_enable(0);
-	} else {
-		rv = bd9995x_charger_enable(1);
-		msleep(1);
-		rv |= bd9995x_set_vsysreg(BD9995X_CHARGE_VSYSREG);
-	}
+	rv = bd9995x_charger_enable(mode & CHARGE_FLAG_INHIBIT_CHARGE ? 0 : 1);
 	if (rv)
 		return rv;
 
@@ -631,8 +681,7 @@ int charger_set_voltage(int voltage)
 	if (voltage < bd9995x_charger_info.voltage_min)
 		voltage = bd9995x_charger_info.voltage_min;
 
-	return ch_raw_write16(BD9995X_CMD_CHG_VOLTAGE, voltage,
-				BD9995X_BAT_CHG_COMMAND);
+	return bd9995x_fast_charge_settings(voltage);
 }
 
 static void bd9995x_battery_charging_profile_settings(void)
@@ -655,18 +704,7 @@ static void bd9995x_battery_charging_profile_settings(void)
 		       bi->precharge_current & 0x07C0,
 		       BD9995X_EXTENDED_COMMAND);
 
-	/* Fast Charge Voltage Regulation Settings for fast charging. */
-	ch_raw_write16(BD9995X_CMD_VFASTCHG_REG_SET1,
-		       bi->voltage_max & 0x7FF0,
-		       BD9995X_EXTENDED_COMMAND);
-
-	ch_raw_write16(BD9995X_CMD_VFASTCHG_REG_SET2,
-		       bi->voltage_max & 0x7FF0,
-		       BD9995X_EXTENDED_COMMAND);
-
-	ch_raw_write16(BD9995X_CMD_VFASTCHG_REG_SET3,
-		       bi->voltage_max & 0x7FF0,
-		       BD9995X_EXTENDED_COMMAND);
+	bd9995x_fast_charge_settings(bi->voltage_max);
 
 	/* Set Pre-charge Voltage Threshold for trickle charging. */
 	ch_raw_write16(BD9995X_CMD_VPRECHG_TH_SET,
