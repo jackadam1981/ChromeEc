@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_0e170b67",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-20T21:59:02Z",
+      "side": 1,
+      "message": "Why do we poll device state every second, but also interrupt  and call this function? Is that just to get better granularity of events? It seems to me like we should be interrupting on low-\u003ehigh and high-\u003elow transitions. I\u0027ll look through the rest of the stack, but our approach seems odd to me.\n\nAlso, I understand what you are doing here in this patch is orthogonal to almost everything I said.",
+      "revId": "d0407f17804f5c707db0578b2293a55cb72f26d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
