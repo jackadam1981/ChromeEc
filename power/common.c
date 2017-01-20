@@ -339,6 +339,11 @@ void chipset_task(void)
 {
 	enum power_state new_state;
 
+#ifdef CONFIG_CHIPSET_WAIT_FOR_STABLE_INPUT_CURRENT
+	/* wait for stable input current */
+	msleep(CONFIG_CHIPSET_WAIT_FOR_STABLE_INPUT_CURRENT);
+#endif
+
 	while (1) {
 		CPRINTS("power state %d = %s, in 0x%04x",
 			state, state_names[state], in_signals);

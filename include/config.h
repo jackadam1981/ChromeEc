@@ -507,6 +507,9 @@
 /* Enable chipset reset hook, requires a deferrable function */
 #undef CONFIG_CHIPSET_RESET_HOOK
 
+/* Prevent NVDC drop when system exits from shipmode */
+#undef CONFIG_CHIPSET_WAIT_FOR_STABLE_INPUT_CURRENT
+
 /* Support power rail control */
 #define CONFIG_CHIPSET_HAS_PP1350
 #define CONFIG_CHIPSET_HAS_PP5000
