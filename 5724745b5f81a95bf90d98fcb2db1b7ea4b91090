@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_669fdef3",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-20T01:47:05Z",
+      "side": 1,
+      "message": "okay, I will bring\nifdef below",
+      "parentUuid": "c865c6f6_660c7eb4",
+      "range": {
+        "startLine": 119,
+        "startChar": 23,
+        "endLine": 119,
+        "endChar": 46
+      },
+      "revId": "5724745b5f81a95bf90d98fcb2db1b7ea4b91090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_66e59eac",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-20T01:36:42Z",
       "side": 1,
       "message": "Rather than writing three regs to the same voltage, doesn\u0027t it make sense to rip out the temperature control completely, so we always stay in BD9995X_CMD_VFASTCHG_REG_SET1 range?",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 47
+      },
+      "revId": "5724745b5f81a95bf90d98fcb2db1b7ea4b91090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_e6798ede",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-20T01:47:05Z",
+      "side": 1,
+      "message": "okay, I will disable VM_CTRL_SET.THERMENB",
+      "parentUuid": "c865c6f6_66e59eac",
       "range": {
         "startLine": 128,
         "startChar": 1,
@@ -83,6 +131,30 @@
       "side": 1,
       "message": "\"Closer\" to voltage_max I should say (eg. bi-\u003evoltage_max + 200mA).",
       "parentUuid": "c865c6f6_a6503675",
+      "range": {
+        "startLine": 182,
+        "startChar": 27,
+        "endLine": 182,
+        "endChar": 48
+      },
+      "revId": "5724745b5f81a95bf90d98fcb2db1b7ea4b91090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_a64a7690",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-20T01:47:05Z",
+      "side": 1,
+      "message": "okay, i will change it to +200",
+      "parentUuid": "c865c6f6_062a62e1",
       "range": {
         "startLine": 182,
         "startChar": 27,
