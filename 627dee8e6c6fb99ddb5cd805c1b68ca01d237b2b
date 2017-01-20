@@ -22,6 +22,30 @@
       "revId": "627dee8e6c6fb99ddb5cd805c1b68ca01d237b2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289f421f_9fcb3700",
+        "filename": "board/glados/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1119450
+      },
+      "writtenOn": "2017-01-20T01:59:40Z",
+      "side": 1,
+      "message": "Yes, you are right. Maybe can add interrupt_disable() just right before panic_data_backup? Any concern for adding this?",
+      "parentUuid": "c865c6f6_4b3bc3a1",
+      "range": {
+        "startLine": 482,
+        "startChar": 1,
+        "endLine": 482,
+        "endChar": 52
+      },
+      "revId": "627dee8e6c6fb99ddb5cd805c1b68ca01d237b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
