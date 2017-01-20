@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_066f02a3",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-20T02:12:14Z",
+      "side": 1,
+      "message": "we cannot disable this, CHGSTM_STATUS reports temperature error",
+      "revId": "1c8c0e283c8342b969c7f8efdc1773541ffb0578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
