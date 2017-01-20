@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "289f421f_1f0ac708",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-20T11:24:19Z",
+      "side": 1,
+      "message": "This has this weird semantics of ALL meaning RW-only (setting all won\u0027t protect RO). But that\u0027s fine as the caller will never set ALL without RO...",
+      "revId": "71941cd1e185e9ee352b37035e54f68159109296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289f421f_3f0f8319",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-20T11:24:19Z",
+      "side": 1,
+      "message": "This might need to be updated as well, to take it flags parameters.",
+      "revId": "71941cd1e185e9ee352b37035e54f68159109296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
