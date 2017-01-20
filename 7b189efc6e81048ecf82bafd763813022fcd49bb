@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_0bc38b8b",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-20T01:08:15Z",
+      "side": 1,
+      "message": "Can you double check that this works for CHUNK_SIZE % SHA256_BLOCK_SIZE !\u003d 0? Eg. verify you get the same hash for CHUNK_SIZE \u003d 512, 513, 514...",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "7b189efc6e81048ecf82bafd763813022fcd49bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
