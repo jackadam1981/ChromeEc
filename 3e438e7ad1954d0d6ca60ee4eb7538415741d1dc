@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "289f421f_bfccf3b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1128259
+      },
+      "writtenOn": "2017-01-20T10:28:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_68b696e6",
+      "revId": "3e438e7ad1954d0d6ca60ee4eb7538415741d1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_48abd278",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-01-19T16:09:49Z",
       "side": 1,
       "message": "At least b:27849483, add a wizpig specific one.",
+      "revId": "3e438e7ad1954d0d6ca60ee4eb7538415741d1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289f421f_5f9b6fb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1128259
+      },
+      "writtenOn": "2017-01-20T10:28:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_48abd278",
       "revId": "3e438e7ad1954d0d6ca60ee4eb7538415741d1dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "289f421f_7fa0abe5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1128259
+      },
+      "writtenOn": "2017-01-20T10:28:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_08a5daa2",
+      "revId": "3e438e7ad1954d0d6ca60ee4eb7538415741d1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_88e30aeb",
         "filename": "board/wizpig/board.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2017-01-19T16:09:49Z",
       "side": 1,
       "message": "s/Four/Two",
+      "revId": "3e438e7ad1954d0d6ca60ee4eb7538415741d1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289f421f_1f95e782",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1128259
+      },
+      "writtenOn": "2017-01-20T10:28:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_88e30aeb",
       "revId": "3e438e7ad1954d0d6ca60ee4eb7538415741d1dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "289f421f_9fa817c9",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1128259
+      },
+      "writtenOn": "2017-01-20T10:28:40Z",
+      "side": 1,
+      "message": "I refer to code on strago to make some changed, and also done some basic testing.",
+      "parentUuid": "c865c6f6_08f71aa7",
+      "revId": "3e438e7ad1954d0d6ca60ee4eb7538415741d1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_c8c5823e",
         "filename": "board/wizpig/board.h",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2017-01-19T16:09:49Z",
       "side": 1,
       "message": "For ARC++ support, need to add MKBP support and sensor FIFO.\n\nCheck ARC++ is working by installing AIDA64 on the device and check its sensors page report sensor information.\n\n+/* Depends on how fast the AP boots and typical ODRs */\n+#define CONFIG_ACCEL_FIFO 512\n+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)\n\n+#define CONFIG_MKBP_EVENT\n+#define CONFIG_MKBP_USE_HOST_EVENT",
+      "revId": "3e438e7ad1954d0d6ca60ee4eb7538415741d1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289f421f_3f9a23b2",
+        "filename": "board/wizpig/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1128259
+      },
+      "writtenOn": "2017-01-20T10:28:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_c8c5823e",
       "revId": "3e438e7ad1954d0d6ca60ee4eb7538415741d1dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
