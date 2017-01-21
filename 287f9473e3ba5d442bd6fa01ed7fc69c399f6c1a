@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_47e84160",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-21T19:51:46Z",
+      "side": 1,
+      "message": "this size  should be defined once and used everywhere.",
+      "range": {
+        "startLine": 1020,
+        "startChar": 14,
+        "endLine": 1020,
+        "endChar": 17
+      },
+      "revId": "287f9473e3ba5d442bd6fa01ed7fc69c399f6c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_67eb455f",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-21T19:51:46Z",
+      "side": 1,
+      "message": "replace with \u0027if cmd:\"\u0027\n\nalso, please explain in the patch description why is this needed to change",
+      "range": {
+        "startLine": 118,
+        "startChar": 7,
+        "endLine": 118,
+        "endChar": 15
+      },
+      "revId": "287f9473e3ba5d442bd6fa01ed7fc69c399f6c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
