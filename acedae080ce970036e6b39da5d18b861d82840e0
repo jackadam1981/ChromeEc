@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_84b077e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-21T15:53:21Z",
+      "side": 1,
+      "message": "sure, please do.",
+      "parentUuid": "c865c6f6_7f4193a0",
+      "revId": "acedae080ce970036e6b39da5d18b861d82840e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_ff07c390",
         "filename": "chip/g/dcrypto/app_cipher.c",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2017-01-21T00:11:57Z",
       "side": 1,
       "message": "FYI. Counter wrap around is untested - that either needs to be tested or copy 12-bytes of salt, and set the MSW (big endian).",
+      "revId": "acedae080ce970036e6b39da5d18b861d82840e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_c4b66fe4",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-21T15:53:21Z",
+      "side": 1,
+      "message": "how can it be tested?",
+      "parentUuid": "c865c6f6_ff07c390",
       "revId": "acedae080ce970036e6b39da5d18b861d82840e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
