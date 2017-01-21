@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_e7661593",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-01-21T16:19:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_44095f4f",
+      "revId": "48c1032fa03527536729be2dde81661fa07f10dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "289f421f_1f0407cc",
         "filename": "power/skylake.c",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2017-01-21T03:00:16Z",
       "side": 1,
       "message": "Used only once, maybe it\u0027s better to move those in the if block?",
+      "revId": "48c1032fa03527536729be2dde81661fa07f10dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_c76b1158",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-01-21T16:19:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "289f421f_1f0407cc",
       "revId": "48c1032fa03527536729be2dde81661fa07f10dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
