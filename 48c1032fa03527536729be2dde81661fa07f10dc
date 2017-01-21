@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_44095f4f",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-01-21T07:49:31Z",
+      "side": 1,
+      "message": "Reason I kept it as LDO_EN is because it could be used as the control signal to enable/disable/reset PMIC not just on this platform but others as well. For this chipset, we are using the EC_PLATFORM_RST that toggles LDO_EN ultimately, but others it could be different.\n\nI can change it to CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET if that sounds easier to explain the intent.",
+      "parentUuid": "289f421f_7fff4b88",
+      "revId": "48c1032fa03527536729be2dde81661fa07f10dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "289f421f_1f0407cc",
         "filename": "power/skylake.c",
         "patchSetId": 1
