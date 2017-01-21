@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_bab039e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-21T01:10:54Z",
+      "side": 1,
+      "message": "remove line 9-10.",
+      "revId": "5fae0cc206162ca3f4bf6b47fe26e056fa4ccf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_7aa2c19b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-21T01:10:54Z",
+      "side": 1,
+      "message": "Re-add sensor stack - was removed by cl:... - and add ARC++ support.",
+      "revId": "5fae0cc206162ca3f4bf6b47fe26e056fa4ccf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_0e8146e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-21T01:10:54Z",
+      "side": 1,
+      "message": "normally.\n\nCheck angle is correct at different value with:\nectool motionsense lid_angle\n\n\nCheck that ARC++ is working: install AIDA64, check sensors are presented.",
+      "revId": "5fae0cc206162ca3f4bf6b47fe26e056fa4ccf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
