@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_ce8c4e5f",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-21T01:44:37Z",
+      "side": 1,
+      "message": "This looks like a bad merge.  This declaration should not be here.  I renamed it to:\n\n static void ladder_init(void) in key_ladder.c",
+      "revId": "5088ebf5c1a450de7ab83ce6b7dc5061d0e0f29c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_ae811a26",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-21T01:44:37Z",
+      "side": 1,
+      "message": "The corresponding implementation for DCRYPTO_appkey_fingerprint() no longer exists.",
+      "revId": "5088ebf5c1a450de7ab83ce6b7dc5061d0e0f29c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
