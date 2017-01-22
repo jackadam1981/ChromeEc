@@ -99,7 +99,6 @@ BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	{"tcpc0",   NPCX_I2C_PORT0_0, 1000, GPIO_I2C0_SCL0, GPIO_I2C0_SDA0},
-	{"tcpc1",   NPCX_I2C_PORT0_1, 1000, GPIO_I2C0_SCL1, GPIO_I2C0_SDA1},
 	{"sensors", NPCX_I2C_PORT1,    400, GPIO_I2C1_SCL,  GPIO_I2C1_SDA},
 	{"charger", NPCX_I2C_PORT2,    400, GPIO_I2C2_SCL,  GPIO_I2C2_SDA},
 	{"battery", NPCX_I2C_PORT3,    100, GPIO_I2C3_SCL,  GPIO_I2C3_SDA},
@@ -153,17 +152,11 @@ const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{I2C_PORT_TCPC0, FUSB302_I2C_SLAVE_ADDR, &fusb302_tcpm_drv},
-	{I2C_PORT_TCPC1, FUSB302_I2C_SLAVE_ADDR, &fusb302_tcpm_drv},
 };
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.port_addr = 0,
-		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
-	},
-	{
-		.port_addr = 1,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	},
@@ -179,8 +172,6 @@ uint16_t tcpc_get_alert_status(void)
 
 	if (!gpio_get_level(GPIO_USB_C0_PD_INT_L))
 		status |= PD_STATUS_TCPC_ALERT_0;
-	if (!gpio_get_level(GPIO_USB_C1_PD_INT_L))
-		status |= PD_STATUS_TCPC_ALERT_1;
 
 	return status;
 }
@@ -315,7 +306,6 @@ static void board_init(void)
 {
 	/* Enable TCPC alert interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_L);
-	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_L);
 
 	/* Enable charger interrupt for BC1.2 detection on attach / detach */
 	gpio_enable_interrupt(GPIO_CHARGER_INT_L);

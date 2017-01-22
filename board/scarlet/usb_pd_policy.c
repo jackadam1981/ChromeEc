@@ -53,7 +53,7 @@ void pd_transition_voltage(int idx)
 }
 
 static uint8_t vbus_en[CONFIG_USB_PD_PORT_COUNT];
-static uint8_t vbus_rp[CONFIG_USB_PD_PORT_COUNT] = {TYPEC_RP_1A5, TYPEC_RP_1A5};
+static uint8_t vbus_rp[CONFIG_USB_PD_PORT_COUNT] = {TYPEC_RP_1A5};
 
 int board_vbus_source_enabled(int port)
 {
@@ -62,7 +62,8 @@ int board_vbus_source_enabled(int port)
 
 static void board_vbus_update_source_current(int port)
 {
-	enum gpio_signal gpio = port ? GPIO_USB_C1_5V_EN : GPIO_USB_C0_5V_EN;
+	/* There is only one usb type-c port on Scarlet. */
+	enum gpio_signal gpio = GPIO_USB_C0_5V_EN;
 	int flags = (vbus_rp[port] == TYPEC_RP_1A5 && vbus_en[port]) ?
 		(GPIO_INPUT | GPIO_PULL_UP) : (GPIO_OUTPUT | GPIO_PULL_UP);
 
