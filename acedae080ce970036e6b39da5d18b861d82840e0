@@ -105,6 +105,24 @@
       "revId": "acedae080ce970036e6b39da5d18b861d82840e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_02afd73f",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-22T18:19:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c865c6f6_a2380b3d",
+      "revId": "acedae080ce970036e6b39da5d18b861d82840e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
