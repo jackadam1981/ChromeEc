@@ -22,6 +22,47 @@
       "revId": "9e2462b0343d529de37c79e772ce7eea355e1725",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_42ccaf17",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-22T18:31:44Z",
+      "side": 1,
+      "message": "please mention this in the patch description",
+      "parentUuid": "c865c6f6_82c2a7e5",
+      "revId": "9e2462b0343d529de37c79e772ce7eea355e1725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_02d8f7d1",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-22T18:31:44Z",
+      "side": 1,
+      "message": "why is this change necessary -  EXT_CMD wrapping is still used for test (line 94) - is this value not present in the response any more?\n\nIn any case if you are checking against zero, it should be\n\nif cmd:",
+      "range": {
+        "startLine": 118,
+        "startChar": 7,
+        "endLine": 118,
+        "endChar": 15
+      },
+      "revId": "9e2462b0343d529de37c79e772ce7eea355e1725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
