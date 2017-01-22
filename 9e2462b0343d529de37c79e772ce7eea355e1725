@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_82c2a7e5",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-22T18:22:12Z",
+      "side": 1,
+      "message": "I renamed this variable as subcmd is also the name of an imported module.",
+      "range": {
+        "startLine": 114,
+        "startChar": 20,
+        "endLine": 114,
+        "endChar": 23
+      },
+      "revId": "9e2462b0343d529de37c79e772ce7eea355e1725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
