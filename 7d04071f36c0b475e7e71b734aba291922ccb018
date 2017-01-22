@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_224bfbc0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-22T18:05:53Z",
+      "side": 1,
+      "message": "g: add a convenience wrapper for application data ciphering",
+      "revId": "7d04071f36c0b475e7e71b734aba291922ccb018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_c233ff61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-22T18:05:53Z",
+      "side": 1,
+      "message": "Something like this...\n\nThis change introduces DCRYPTO_app_cipher(), an encrypt/decrypt function that accepts an IV and corresponding data.  Typical restrictions on IV reuse apply.  The key is derived..",
+      "revId": "7d04071f36c0b475e7e71b734aba291922ccb018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_424eefd1",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-22T18:05:53Z",
+      "side": 1,
+      "message": "16 byte",
+      "revId": "7d04071f36c0b475e7e71b734aba291922ccb018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
