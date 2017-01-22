@@ -105,6 +105,24 @@
       "revId": "9e2462b0343d529de37c79e772ce7eea355e1725",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_02a6b753",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-22T19:45:58Z",
+      "side": 1,
+      "message": "right, I should have read it :)\n\nstill seems odd to me that it changes here but does not have to change in lines 94 and 79, let me look into this a bit more",
+      "parentUuid": "c865c6f6_22e2db80",
+      "revId": "9e2462b0343d529de37c79e772ce7eea355e1725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
