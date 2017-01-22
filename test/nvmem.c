@@ -154,7 +154,7 @@ static int test_configured_nvmem(void)
 	 * partitions are configured and valid.
 	 */
 
-	/* Configure all NvMem partitions with starting version number 0 */
+	/* Configure all NvMem partitions with starting generation number 0 */
 	nvmem_setup(0);
 	/* Call NvMem initialization */
 	return nvmem_init();
@@ -192,23 +192,23 @@ static int test_corrupt_nvmem(void)
 	/* Fill buffer with 0xffs */
 	memset(write_buffer, 0xff, NVMEM_PARTITION_SIZE);
 	/*
-	 * nvmem_setup() will write put version 1 into partition 1 since the
+	 * nvmem_setup() will write put generation 1 into partition 1 since the
 	 * commit() function toggles the active partition. Check here that
-	 * partition 0 has a version number of 1 and that all of the user buffer
-	 * data has been erased.
+	 * partition 0 has a generation number of 1 and that all of the user
+	 * buffer data has been erased.
 	 */
 	p_part = (struct nvmem_tag *)CONFIG_FLASH_NVMEM_BASE_A;
-	TEST_ASSERT(p_part->version == 1);
+	TEST_ASSERT(p_part->generation == 1);
 	p_data = (uint8_t *)p_part + sizeof(struct nvmem_tag);
 	/* Verify that partition 0 is fully erased */
 	TEST_ASSERT_ARRAY_EQ(write_buffer, p_data, NVMEM_PARTITION_SIZE -
 			     sizeof(struct nvmem_tag));
 
-	/* Run the same test for partition 1 which should have version 0 */
+	/* Run the same test for partition 1 which should have generation 0 */
 	p_part = (struct nvmem_tag *)CONFIG_FLASH_NVMEM_BASE_B;
-	TEST_ASSERT(p_part->version == 0);
+	TEST_ASSERT(p_part->generation == 0);
 	p_data = (uint8_t *)p_part + sizeof(struct nvmem_tag);
-	ccprintf("Partition Version = %d\n", p_part->version);
+	ccprintf("Partition Generation = %d\n", p_part->generation);
 	/* Verify that partition 1 is fully erased */
 	TEST_ASSERT_ARRAY_EQ(write_buffer, p_data, NVMEM_PARTITION_SIZE -
 			     sizeof(struct nvmem_tag));
