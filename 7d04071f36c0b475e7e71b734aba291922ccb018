@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_42270f1a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-22T18:19:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_224bfbc0",
+      "revId": "7d04071f36c0b475e7e71b734aba291922ccb018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_c233ff61",
         "filename": "/COMMIT_MSG",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_22241b13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-22T18:19:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_c233ff61",
+      "revId": "7d04071f36c0b475e7e71b734aba291922ccb018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_424eefd1",
         "filename": "chip/g/dcrypto/dcrypto.h",
         "patchSetId": 9
@@ -47,6 +83,24 @@
       "writtenOn": "2017-01-22T18:05:53Z",
       "side": 1,
       "message": "16 byte",
+      "revId": "7d04071f36c0b475e7e71b734aba291922ccb018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_e2b3a3aa",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-22T18:19:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_424eefd1",
       "revId": "7d04071f36c0b475e7e71b734aba291922ccb018",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
