@@ -43,6 +43,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_42e5cf87",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-22T19:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_42ccaf17",
+      "revId": "9e2462b0343d529de37c79e772ce7eea355e1725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_02d8f7d1",
         "filename": "test/tpm_test/tpmtest.py",
         "patchSetId": 4
@@ -54,6 +72,30 @@
       "writtenOn": "2017-01-22T18:31:44Z",
       "side": 1,
       "message": "why is this change necessary -  EXT_CMD wrapping is still used for test (line 94) - is this value not present in the response any more?\n\nIn any case if you are checking against zero, it should be\n\nif cmd:",
+      "range": {
+        "startLine": 118,
+        "startChar": 7,
+        "endLine": 118,
+        "endChar": 15
+      },
+      "revId": "9e2462b0343d529de37c79e772ce7eea355e1725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_22e2db80",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-22T19:15:15Z",
+      "side": 1,
+      "message": "As mentioned in the commit description, the referenced commit changed the response codes to match the TCG spec.  Line 94 tests the request side (I\u0027m not sure whether extension request codes are up to spec on the request side, but EXT_CMD what\u0027s in use there).",
+      "parentUuid": "c865c6f6_02d8f7d1",
       "range": {
         "startLine": 118,
         "startChar": 7,
