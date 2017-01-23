@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_72209718",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-23T23:36:38Z",
+      "side": 1,
+      "message": "But what about the EC case? We had the same logic for both EC and AP uart where it would disconnect/connect things in the off/on case .... now it doesn\u0027t. I\u0027m wondering about parity with previous behavior. You mention AP in the commit description but you\u0027re also affecting EC as well.",
+      "parentUuid": "c865c6f6_c872f58c",
+      "revId": "d0407f17804f5c707db0578b2293a55cb72f26d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_0e170b67",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
