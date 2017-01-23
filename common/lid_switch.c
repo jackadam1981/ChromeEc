@@ -5,12 +5,14 @@
 
 /* Lid switch module for Chrome EC */
 
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "timer.h"
 #include "util.h"
 
@@ -43,11 +45,49 @@ static int raw_lid_open(void)
 /**
  * Handle lid open.
  */
+int is_lid_angle_sensors_ready(void);
+
 static void lid_switch_open(void)
 {
+	const int lid_angle_calculation_delay_msec = 10;
+	const int lid_angle_closed_low = 5;
+	const int lid_angle_closed_high = 355;
+	int lid_angle;
+
 	if (debounced_lid_open) {
 		CPRINTS("lid already open");
 		return;
+	}
+
+	/*
+	 * When a device is stacked on top of another, the bottom lid magnet
+	 * may create magnetic field strong enough to cancel the top lid
+	 * magnetic field, which is sustaining lid close state. This is
+	 * indistinguishable from a real lid open event (unless the bottom
+	 * lid magnet is so strong that it also triggers TABLET_MODE_L).
+	 *
+	 * When this happens, the system wakes up from S3 or S5 even with
+	 * the lid closed. To avoid it, we here read a lid angle and make
+	 * sure the lid is really open.
+	 *
+	 * lid_angle_calculation_delay_msec is necessary to avoid slowly opened
+	 * lid returns a small angle (thus we mistakenly judges it as a false
+	 * lid open). The longer the dealy is the more reliably we can judge
+	 * the lid open but of course a longer delay causes a slower wake-up.
+	 */
+	if (is_lid_angle_sensors_ready()) {
+		/* Insert delay here not too long or too short... */
+		msleep(lid_angle_calculation_delay_msec);
+		motion_lid_calc();
+		lid_angle = motion_lid_get_angle();
+		CPRINTS("lid_angle=%d", lid_angle);
+		/* Some units show large angle (e.g. 358) when lid is closed */
+		if (lid_angle < lid_angle_closed_low ||
+				lid_angle_closed_high < lid_angle) {
+			/* Angles are too small. Lid doesn't look opened. */
+			CPRINTS("false lid open");
+			return;
+		}
 	}
 
 	CPRINTS("lid open");
