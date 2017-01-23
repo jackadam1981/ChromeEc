@@ -34,6 +34,24 @@
       "revId": "d0407f17804f5c707db0578b2293a55cb72f26d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_621d6adc",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-23T21:59:07Z",
+      "side": 1,
+      "message": "As you noted that\u0027s for the UART case. But on x86 we shouldn\u0027t see high frequency interrupts on a signal that is generally stable. I feel like we should remove GPIO_DETECT_AP from this device_state thing entirely. Something for a different CL, but we seem to be wedging things into previous assumptions that are no longer true.",
+      "parentUuid": "c865c6f6_ee6397c0",
+      "revId": "d0407f17804f5c707db0578b2293a55cb72f26d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
