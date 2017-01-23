@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_16def81e",
+        "filename": "chip/g/crypto_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-23T20:06:40Z",
+      "side": 1,
+      "message": "guys, I am not introducing the new use of sha1, it am moving a function which has been using it from one file to another. \n\nIf we want to eliminate all sha1 uses in the codebase - it should be a different bug, and should be addressed there.  Will this work?",
+      "parentUuid": "c865c6f6_96166872",
+      "revId": "66396ab6e20d0ef2778cdc9b99e9a736f9b21873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_33e34ebc",
         "filename": "chip/g/crypto_api.c",
         "patchSetId": 1
