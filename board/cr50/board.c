@@ -329,12 +329,12 @@ void board_configure_deep_sleep_wakepins(void)
 	GWRITE_FIELD(PINMUX, DIOB5_CTL, IE, 0);
 
 	/*
-	 * DIOA3 is GPIO_DETECT_AP which is used to detect if the AP is in S0.
-	 * If the AP is in s0, cr50 should not be in deep sleep so wake up.
+	 * DIOA3 is GPIO_UART_DETECT_AP which is used to detect if the AP is in
+	 * S0. If the AP is in s0, cr50 should not be in deep sleep so wake up.
 	 */
 	GWRITE_FIELD(PINMUX, EXITEDGE0, DIOA3, 1); /* edge sensitive */
 	GWRITE_FIELD(PINMUX, EXITINV0, DIOA3, 0);  /* wake on high */
-	GWRITE_FIELD(PINMUX, EXITEN0, DIOA3, 1);   /* GPIO_DETECT_AP */
+	GWRITE_FIELD(PINMUX, EXITEN0, DIOA3, 1);   /* GPIO_UART_DETECT_AP */
 
 	/*
 	 * Whether it is a short pulse or long one waking on the rising edge is
@@ -690,17 +690,17 @@ DECLARE_DEFERRED(ec_deferred);
 struct device_config device_states[] = {
 	[DEVICE_SERVO] = {
 		.deferred = &servo_deferred_data,
-		.detect = GPIO_DETECT_SERVO,
+		.detect = GPIO_UART_DETECT_SERVO,
 		.name = "Servo"
 	},
 	[DEVICE_AP] = {
 		.deferred = &ap_deferred_data,
-		.detect = GPIO_DETECT_AP,
+		.detect = GPIO_UART_DETECT_AP,
 		.name = "AP"
 	},
 	[DEVICE_EC] = {
 		.deferred = &ec_deferred_data,
-		.detect = GPIO_DETECT_EC,
+		.detect = GPIO_UART_DETECT_EC,
 		.name = "EC"
 	},
 };
@@ -745,14 +745,14 @@ void device_state_on(enum gpio_signal signal)
 	gpio_disable_interrupt(signal);
 
 	switch (signal) {
-	case GPIO_DETECT_AP:
+	case GPIO_UART_DETECT_AP:
 		if (device_powered_on(DEVICE_AP, UART_AP) == EC_SUCCESS)
 			hook_notify(HOOK_CHIPSET_RESUME);
 		break;
-	case GPIO_DETECT_EC:
+	case GPIO_UART_DETECT_EC:
 		device_powered_on(DEVICE_EC, UART_EC);
 		break;
-	case GPIO_DETECT_SERVO:
+	case GPIO_UART_DETECT_SERVO:
 		servo_attached();
 		break;
 	default:
