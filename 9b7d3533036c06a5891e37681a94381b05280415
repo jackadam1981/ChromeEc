@@ -212,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_5227d380",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-23T23:51:14Z",
+      "side": 1,
+      "message": "Code paths for DEVICE_AP under the various conditions that really don\u0027t apply anymore. We\u0027re sprinkling in guards to handle situations that shouldn\u0027t happen. It\u0027s making the code convoluted and a little inconsistent.\n\nIf we have to guard some of these things, then I think you should use more than board_use_plt_rst() in this file. You can use an inline function or something so at least you can group the comment in one place. Then you know all the callers are doing something for the same reason.",
+      "parentUuid": "c865c6f6_fcd7c3f8",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_adda3355",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 6
