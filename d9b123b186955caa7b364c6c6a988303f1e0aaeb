@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_c7ff883b",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-23T21:27:53Z",
+      "side": 1,
+      "message": "This function can be greatly simplified, we only have one port.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 48
+      },
+      "revId": "d9b123b186955caa7b364c6c6a988303f1e0aaeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_47af183f",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-23T21:27:53Z",
+      "side": 1,
+      "message": "Only one port.",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 39
+      },
+      "revId": "d9b123b186955caa7b364c6c6a988303f1e0aaeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_e7bdec75",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-23T21:27:53Z",
+      "side": 1,
+      "message": "This function too.",
+      "range": {
+        "startLine": 257,
+        "startChar": 4,
+        "endLine": 257,
+        "endChar": 27
+      },
+      "revId": "d9b123b186955caa7b364c6c6a988303f1e0aaeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_07d240b3",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-23T21:27:53Z",
+      "side": 1,
+      "message": "Only one port.",
+      "range": {
+        "startLine": 337,
+        "startChar": 17,
+        "endLine": 337,
+        "endChar": 41
+      },
+      "revId": "d9b123b186955caa7b364c6c6a988303f1e0aaeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_e7a4cc49",
+        "filename": "board/scarlet/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-23T21:27:53Z",
+      "side": 1,
+      "message": "No need to use arrays here.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 66
+      },
+      "revId": "d9b123b186955caa7b364c6c6a988303f1e0aaeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
