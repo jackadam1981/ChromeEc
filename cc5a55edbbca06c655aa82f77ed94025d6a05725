@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_5da01281",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-01-23T04:44:02Z",
+      "side": 1,
+      "message": "Done. I am surprised how this even compiled for me. In fact, even \"make buildall -j\" worked fine.",
+      "parentUuid": "c865c6f6_a2d6cba4",
+      "range": {
+        "startLine": 392,
+        "startChar": 5,
+        "endLine": 392,
+        "endChar": 32
+      },
+      "revId": "cc5a55edbbca06c655aa82f77ed94025d6a05725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_82ebc75d",
         "filename": "power/skylake.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-22T19:08:22Z",
       "side": 1,
       "message": "This needs to include hooks.h",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 12
+      },
+      "revId": "cc5a55edbbca06c655aa82f77ed94025d6a05725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_3d9d5e46",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-01-23T04:44:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_82ebc75d",
       "range": {
         "startLine": 419,
         "startChar": 0,
