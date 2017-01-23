@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_338d8e59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-23T19:29:19Z",
+      "side": 1,
+      "message": "Should be \"charging, and discharging\"?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "f1c8039980b8737875809637216ab562fcc724e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_1671584a",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-23T19:29:19Z",
+      "side": 1,
+      "message": "Can we clean up this function a bit? We can probably do the steps below just once, after decoding args:\n\n1) Set direction.\n2) Switch to AMON / BMON.\n3) Read ADC / print.",
+      "range": {
+        "startLine": 435,
+        "startChar": 11,
+        "endLine": 435,
+        "endChar": 36
+      },
+      "revId": "f1c8039980b8737875809637216ab562fcc724e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
