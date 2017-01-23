@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_22dd32c3",
+        "filename": "common/nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-23T22:13:41Z",
+      "side": 1,
+      "message": "A couple of nits.\nThis comment could use updating (also, the function name is a bit confusing - maybe nvmem_compute_sha() or something?)",
+      "revId": "a1aaa7e7cac170de12a7824f8b434ab6812f5443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
