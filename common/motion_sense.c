@@ -628,7 +628,7 @@ static inline void update_sense_data(uint8_t *lpc_status, int *psample_id)
 }
 #endif
 
-static int motion_sense_read(struct motion_sensor_t *sensor)
+int motion_sense_read(struct motion_sensor_t *sensor)
 {
 	if (sensor->state != SENSOR_INITIALIZED)
 		return EC_ERROR_UNKNOWN;

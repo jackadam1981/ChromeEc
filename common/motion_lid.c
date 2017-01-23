@@ -153,9 +153,9 @@ const struct accel_orientation acc_orient = {
 /* Pointer to constant acceleration orientation data. */
 const struct accel_orientation * const p_acc_orient = &acc_orient;
 
-const struct motion_sensor_t * const accel_base =
+struct motion_sensor_t * const accel_base =
 	&motion_sensors[CONFIG_LID_ANGLE_SENSOR_BASE];
-const struct motion_sensor_t * const accel_lid =
+struct motion_sensor_t * const accel_lid =
 	&motion_sensors[CONFIG_LID_ANGLE_SENSOR_LID];
 
 /**
@@ -383,6 +383,47 @@ int motion_lid_get_angle(void)
 		return lid_angle_deg;
 	else
 		return LID_ANGLE_UNRELIABLE;
+}
+
+/*
+ * This function assumes motion sense task wasn't interrupted in the middle
+ * of processing accels. If this is called while motion sense task is running,
+ * it will cause inconsistent values. For example, accel_base->xyz can be
+ * from motion sense task and accel_lid->xyz can be from motion_lid_calc_now.
+ * However, this is probably a minor irritation because when motion sense task
+ * resumes, most likely previous readings are too old anyway.
+ */
+int motion_lid_calc_now(void)
+{
+	vector_3_t lid;
+	int lid_angle;
+	int i;
+
+	/* Try three times because lid calculations are quite conservative. */
+	for (i = 0; i < 3; i++) {
+		if (motion_sense_read(accel_base) ||
+				motion_sense_read(accel_lid))
+			continue;
+
+		memcpy(accel_base->xyz, accel_base->raw_xyz,
+		       sizeof(accel_base->xyz));
+		memcpy(accel_lid->xyz, accel_lid->raw_xyz,
+		       sizeof(accel_lid->xyz));
+
+		lid[0] = accel_lid->xyz[X];
+		lid[1] = accel_lid->xyz[Y] * -1;
+		lid[2] = accel_lid->xyz[Z] * -1;
+
+		if (calculate_lid_angle(accel_base->xyz, lid, &lid_angle))
+			break;
+	}
+
+	if (i == 3)
+		/* Sensors are not ready or powered. We have no time
+		 * to get them ready. */
+		return LID_ANGLE_UNRELIABLE;
+
+	return lid_angle;
 }
 
 /*

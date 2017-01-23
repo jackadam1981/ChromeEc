@@ -46,6 +46,14 @@ int host_cmd_motion_lid(struct host_cmd_handler_args *args);
 
 void motion_lid_calc(void);
 
+/**
+ * Calculate and update lid angle immediately
+ *
+ * @return lid angle in degrees in range [0, 360], or LID_ANGLE_UNRELIABLE
+ * if the lid angle can't be determined.
+ */
+int motion_lid_calc_now(void);
+
 #endif  /* __CROS_EC_MOTION_LID_H */
 
 

@@ -8,6 +8,11 @@
 #ifndef __CROS_EC_LID_SWITCH_H
 #define __CROS_EC_LID_SWITCH_H
 
+/* Between these angles, we consider the lid is open. We define
+ * them before common.h to allow board.h to overwride them. */
+#define LID_ANGLE_CLOSED_LOW	4
+#define LID_ANGLE_CLOSED_HIGH	356
+
 #include "common.h"
 
 /**

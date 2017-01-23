@@ -1220,6 +1220,21 @@
 #undef CONFIG_LID_ANGLE_UPDATE
 
 /*
+ * When a device with the lid closed is stacked on top of another,
+ * the bottom lid magnet may create magnetic field strong enough to
+ * cancel the top lid magnetic field, thus the device wakes up
+ * unintentionally by a (false) lid open event. This is
+ * indistinguishable from a real lid open event (unless the bottom
+ * lid magnet is so strong that it also triggers TABLET_MODE_L).
+ *
+ * To avoid this, we read a lid angle to check the lid is really open.
+ *
+ * LID_ANGLE_CLOSED_LOW has to be smaller than the angle at which
+ * LID_OPEN triggers and larger than the angle of the closed lid.
+ */
+#undef CONFIG_DETECT_FALSE_LID_OPEN
+
+/*
  * During shutdown sequence sensor rails can be powered down asynchronously
  * to the EC hence EC cannot interlock the sensor states with the power down
  * states. To avoid this issue, defer switching the sensors rate with a

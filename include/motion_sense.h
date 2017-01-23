@@ -201,4 +201,7 @@ void sensor_init_done(const struct motion_sensor_t *sensor, int range);
 #endif
 #endif
 
+/* Read data from a motion sensor */
+int motion_sense_read(struct motion_sensor_t *sensor);
+
 #endif /* __CROS_EC_MOTION_SENSE_H */
