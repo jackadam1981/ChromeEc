@@ -70,6 +70,30 @@
       "revId": "f4f02659afc1ca8bdf8a30e68e7bc8d7b63bae3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_b3e85e61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-23T19:01:59Z",
+      "side": 1,
+      "message": "It works with zinger and dingdong:\n\n$ futility show build/zinger/ec.bin\nUSB-PD v1 image:       build/zinger/ec.bin\n  Algorithm:           RSA2048 SHA256\n  Key sha1sum:         c4c019622226016ec82686d0124209d743b1442f\n\n$ futility show build/dingdong/ec.bin\nUSB-PD v1 image:       build/dingdong/ec.bin\n  Algorithm:           RSA2048 SHA256\n  Key sha1sum:         1173d727fa0d6ca60c4c9e65ebd6d5be299da5be\n\nI\u0027m not sure what hammer is doing differently.  Need to dig a bit.",
+      "parentUuid": "289f421f_ffd91b63",
+      "range": {
+        "startLine": 20,
+        "startChar": 26,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "f4f02659afc1ca8bdf8a30e68e7bc8d7b63bae3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
