@@ -70,6 +70,24 @@
       "revId": "d0407f17804f5c707db0578b2293a55cb72f26d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_42b266f2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-23T22:14:10Z",
+      "side": 1,
+      "message": "I dont know about renaming the gpio detect_ap_uart, because then we\u0027d also need to rename the servo detection gpio detect_servo_uart. That is confusing because there isn\u0027t really a servo uart. It is just servo\u0027s effects on the EC uart.\n\nI think that we do need to remove AP detection from this detect state thing, but we can\u0027t until we figure out the right signal on ARM.",
+      "parentUuid": "c865c6f6_82273e19",
+      "revId": "d0407f17804f5c707db0578b2293a55cb72f26d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
