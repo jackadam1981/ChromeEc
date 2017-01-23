@@ -45,6 +45,30 @@
       "revId": "f1c8039980b8737875809637216ab562fcc724e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289f421f_c278066b",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-23T22:53:29Z",
+      "side": 1,
+      "message": "Well, \"amon\" prints all the values if you don\u0027t pass any parameter (so we can\u0027t just parse the parameters once).\n\nBut, yes, we should be able to move a lot of a code to a separate function, and call it 3 times, I\u0027ll have a look.",
+      "parentUuid": "c865c6f6_1671584a",
+      "range": {
+        "startLine": 435,
+        "startChar": 11,
+        "endLine": 435,
+        "endChar": 36
+      },
+      "revId": "f1c8039980b8737875809637216ab562fcc724e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
