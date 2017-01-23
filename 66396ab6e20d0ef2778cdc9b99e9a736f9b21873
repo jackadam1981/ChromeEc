@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c865c6f6_b3505e18",
+        "filename": "chip/g/crypto_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-23T19:13:31Z",
+      "side": 1,
+      "message": "While we\u0027re at it, makes sense to use DCRYPTO_SHA256_hash() here, so the code gets closer to being free of SHA1.  It\u0027s fine to use the truncated hash output.",
+      "revId": "66396ab6e20d0ef2778cdc9b99e9a736f9b21873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_33e34ebc",
         "filename": "chip/g/crypto_api.c",
         "patchSetId": 1
