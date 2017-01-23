@@ -11,6 +11,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_switch.h"
+#include "motion_lid.h"
 #include "timer.h"
 #include "util.h"
 
@@ -49,6 +50,23 @@ static void lid_switch_open(void)
 		CPRINTS("lid already open");
 		return;
 	}
+
+#ifdef CONFIG_DETECT_FALSE_LID_OPEN
+	{
+		int lid_angle;
+		CPRINTS("lid_angle");
+		lid_angle = motion_lid_calc_now();
+		CPRINTS(" %d", lid_angle);
+		if (lid_angle != LID_ANGLE_UNRELIABLE) {
+			if (lid_angle < LID_ANGLE_CLOSED_LOW ||
+					LID_ANGLE_CLOSED_HIGH < lid_angle) {
+				/* Angles are too small */
+				CPRINTS("false lid open");
+				return;
+			}
+		}
+	}
+#endif
 
 	CPRINTS("lid open");
 	debounced_lid_open = 1;
