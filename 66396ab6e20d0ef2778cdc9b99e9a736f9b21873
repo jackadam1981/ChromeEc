@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_937afad0",
+        "filename": "chip/g/crypto_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-23T19:05:26Z",
+      "side": 1,
+      "message": "good point, let me correct this. This is not supposed to happen, but if someone ever calls this with hash_len exceeding sha_digest_size I\u0027ll just fill  up the rest with zeros.",
+      "parentUuid": "c865c6f6_33e34ebc",
+      "revId": "66396ab6e20d0ef2778cdc9b99e9a736f9b21873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_53b5a2bf",
         "filename": "include/crypto_api.h",
         "patchSetId": 1
@@ -42,6 +60,24 @@
         "endLine": 20,
         "endChar": 37
       },
+      "revId": "66396ab6e20d0ef2778cdc9b99e9a736f9b21873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_d35e3254",
+        "filename": "include/crypto_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-23T19:05:26Z",
+      "side": 1,
+      "message": "yes, I just copied earlier prototype, this is a good time to fix this.",
+      "parentUuid": "c865c6f6_53b5a2bf",
       "revId": "66396ab6e20d0ef2778cdc9b99e9a736f9b21873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_b35bbe62",
+        "filename": "include/crypto_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-23T19:05:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c865c6f6_53900234",
+      "revId": "66396ab6e20d0ef2778cdc9b99e9a736f9b21873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_b3a05e82",
         "filename": "include/crypto_api.h",
         "patchSetId": 1
@@ -94,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_7365461f",
+        "filename": "include/crypto_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-23T19:05:26Z",
+      "side": 1,
+      "message": "yes, I\u0027ll add this.",
+      "parentUuid": "c865c6f6_b3a05e82",
+      "revId": "66396ab6e20d0ef2778cdc9b99e9a736f9b21873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_73c8a62a",
         "filename": "test/nvmem.c",
         "patchSetId": 1
@@ -111,6 +183,24 @@
         "endLine": 43,
         "endChar": 4
       },
+      "revId": "66396ab6e20d0ef2778cdc9b99e9a736f9b21873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_9341da6a",
+        "filename": "test/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-23T19:05:26Z",
+      "side": 1,
+      "message": "no, this is not a requirement, this is just this test implementation, I think it is OK if the test hash calculation does not cover the odd tail.",
+      "parentUuid": "c865c6f6_73c8a62a",
       "revId": "66396ab6e20d0ef2778cdc9b99e9a736f9b21873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
