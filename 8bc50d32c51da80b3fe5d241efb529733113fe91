@@ -22,6 +22,30 @@
       "revId": "8bc50d32c51da80b3fe5d241efb529733113fe91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_59d821d3",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-23T20:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_b3d17fb0",
+      "range": {
+        "startLine": 247,
+        "startChar": 9,
+        "endLine": 247,
+        "endChar": 12
+      },
+      "revId": "8bc50d32c51da80b3fe5d241efb529733113fe91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
