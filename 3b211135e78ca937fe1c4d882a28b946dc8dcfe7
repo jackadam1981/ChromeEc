@@ -33,6 +33,24 @@
       "revId": "3b211135e78ca937fe1c4d882a28b946dc8dcfe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289f421f_626492fb",
+        "filename": "power/mediatek.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-01-23T09:15:53Z",
+      "side": 1,
+      "message": "sfaik, there is no GPIO_EC_BL_OVERRIDE on rowan.\nDexter, can you help to confirm this?",
+      "parentUuid": "289f421f_a2405a65",
+      "revId": "3b211135e78ca937fe1c4d882a28b946dc8dcfe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
