@@ -30,6 +30,20 @@ static uint8_t read_buffer[NVMEM_PARTITION_SIZE];
 static int flash_write_fail;
 static int lock_test_started;
 
+int app_cipher(const void *salt_p, void *out_p, const void *in_p, size_t size)
+{
+
+	const uint8_t *in = in_p;
+	uint8_t *out = out_p;
+	const uint8_t *salt = salt_p;
+	size_t i;
+
+	for (i = 0; i < size; i++)
+		out[i] = in[i] ^ salt[i % CIPHER_SALT_SIZE];
+
+	return 1;
+}
+
 void compute_hash(uint8_t *p_buf, int num_bytes,
 		  uint8_t *p_hash, int hash_bytes)
 {
@@ -192,29 +206,38 @@ static int test_corrupt_nvmem(void)
 	ret = nvmem_init();
 	if (ret)
 		return ret;
-	/* Fill buffer with 0xffs */
+
 	memset(write_buffer, 0xff, NVMEM_PARTITION_SIZE);
 	/*
-	 * nvmem_setup() will write put generation 1 into partition 1 since the
-	 * commit() function toggles the active partition. Check here that
-	 * partition 0 has a generation number of 1 and that all of the user
-	 * buffer data has been erased.
+	 * nvmem_setup() will create the first valid partition with generation
+	 * set to 0. Check here that partition 0 has a generation number of 0
+	 * and that all of the user buffer data has been erased.
 	 */
 	p_part = (struct nvmem_tag *)CONFIG_FLASH_NVMEM_BASE_A;
-	TEST_ASSERT(p_part->generation == 1);
-	p_data = (uint8_t *)p_part + sizeof(struct nvmem_tag);
-	/* Verify that partition 0 is fully erased */
-	TEST_ASSERT_ARRAY_EQ(write_buffer, p_data, NVMEM_PARTITION_SIZE -
-			     sizeof(struct nvmem_tag));
-
-	/* Run the same test for partition 1 which should have generation 0 */
-	p_part = (struct nvmem_tag *)CONFIG_FLASH_NVMEM_BASE_B;
 	TEST_ASSERT(p_part->generation == 0);
 	p_data = (uint8_t *)p_part + sizeof(struct nvmem_tag);
-	ccprintf("Partition Generation = %d\n", p_part->generation);
-	/* Verify that partition 1 is fully erased */
-	TEST_ASSERT_ARRAY_EQ(write_buffer, p_data, NVMEM_PARTITION_SIZE -
-			     sizeof(struct nvmem_tag));
+
+	/* Verify that partition 1 is still empty. */
+	memset(write_buffer, 0, NVMEM_PARTITION_SIZE);
+	p_data = (void *)CONFIG_FLASH_NVMEM_BASE_B;
+	TEST_ASSERT_ARRAY_EQ(write_buffer, p_data, NVMEM_PARTITION_SIZE);
+	memset(write_buffer, 0xff, NVMEM_PARTITION_SIZE);
+
+	/* Now let's write one byte of 0xff into user NVMEM_CR50 */
+	TEST_ASSERT(nvmem_write(0, 1, write_buffer, NVMEM_USER_0) ==
+		    EC_SUCCESS);
+	TEST_ASSERT(nvmem_commit() == EC_SUCCESS);
+
+	/* Verify that partition 0 genreation did not change. */
+	TEST_ASSERT(p_part->generation == 0);
+
+	/*
+	 * Now verify that partition 1 generation is set to 1
+	 * and it is written with the expected values.
+	 */
+	p_part = (struct nvmem_tag *)CONFIG_FLASH_NVMEM_BASE_B;
+	TEST_ASSERT(p_part->generation == 1);
+	p_data = (uint8_t *)p_part + sizeof(struct nvmem_tag);
 	return ret;
 }
 

@@ -54,7 +54,7 @@ static int nvmem_write_error;
  */
 static void nvmem_set_sha(struct nvmem_tag *tag, void *sha_buf)
 {
-	compute_hash(&tag->generation, NVMEM_PARTITION_SIZE - NVMEM_SHA_SIZE,
+	compute_hash(tag->padding, NVMEM_PARTITION_SIZE - NVMEM_SHA_SIZE,
 		     sha_buf, sizeof(tag->sha));
 }
 
@@ -75,9 +75,17 @@ static int nvmem_save(uint8_t tag_generation, size_t partition)
 
 	tag = (struct nvmem_tag *)cache.base_ptr;
 	tag->generation = tag_generation;
+	tag->layout_version = NVMEM_LAYOUT_VERSION;
 
 	/* Calculate sha of the whole thing. */
 	nvmem_set_sha(tag, tag->sha);
+
+	/* Encrypt actual payload. */
+	if (!app_cipher(tag->sha, tag + 1, tag + 1,
+			NVMEM_PARTITION_SIZE - sizeof(struct nvmem_tag))) {
+		CPRINTF("%s:%d\n", __func__, __LINE__);
+		return EC_ERROR_UNKNOWN;
+	}
 
 	/* Write partition */
 	if (flash_physical_write(nvmem_offset,
@@ -94,11 +102,31 @@ static int nvmem_partition_sha_match(int index)
 {
 	uint8_t sha_comp[NVMEM_SHA_SIZE];
 	struct nvmem_partition *p_part;
+	struct nvmem_partition *p_copy;
+	int ret;
 
 	p_part = (struct nvmem_partition *)nvmem_base_addr[index];
-	nvmem_set_sha(&p_part->tag, sha_comp);
 
-	/* Check if computed value matches stored value. */
+	/* First copy it into ram. */
+	ret = shared_mem_acquire(NVMEM_PARTITION_SIZE, (char **)&p_copy);
+	if (ret != EC_SUCCESS) {
+		CPRINTF("%s failed to malloc!\n", __func__);
+		return ret;
+	}
+	memcpy(p_copy, p_part, NVMEM_PARTITION_SIZE);
+
+	/* Then decrypt it. */
+	if (!app_cipher(p_copy->tag.sha, &p_copy->tag + 1,
+			&p_copy->tag + 1,
+			NVMEM_PARTITION_SIZE - sizeof(struct nvmem_tag))) {
+		CPRINTF("%s: decryption failure\n", __func__);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	nvmem_set_sha(&p_copy->tag, sha_comp);
+	shared_mem_release(p_copy);
+
+		/* Check if computed value matches stored value. */
 	return !memcmp(p_part->tag.sha, sha_comp, NVMEM_SHA_SIZE);
 }
 
@@ -118,18 +146,38 @@ static int nvmem_acquire_cache(void)
 		ret = shared_mem_acquire(NVMEM_PARTITION_SIZE,
 					 (char **)&cache.base_ptr);
 		if (ret == EC_SUCCESS) {
+			struct nvmem_tag *tag;
+			uint8_t sha_comp[NVMEM_SHA_SIZE];
+
 			/* Copy partiion contents from flash into cache */
 			memcpy(cache.base_ptr,
 			       (void *)nvmem_base_addr[nvmem_act_partition],
 			       NVMEM_PARTITION_SIZE);
 
+			tag = (struct nvmem_tag *)cache.base_ptr;
+
+			if (!app_cipher(tag->sha, tag + 1, tag + 1,
+					NVMEM_PARTITION_SIZE -
+					sizeof(struct nvmem_tag))) {
+				CPRINTF("%s: decryption failure\n", __func__);
+				shared_mem_release(cache.base_ptr);
+				return EC_ERROR_UNKNOWN;
+			}
+
+			nvmem_set_sha(tag, sha_comp);
+
+			if (memcmp(tag->sha, sha_comp, sizeof(tag->sha))) {
+				CPRINTF("%s: decrypted sha mismatch!\n",
+					__func__);
+				shared_mem_release(cache.base_ptr);
+				return EC_ERROR_UNKNOWN;
+			}
 			return EC_SUCCESS;
-		} else if (ret == EC_ERROR_BUSY) {
-			CPRINTF("Shared Mem not avail! Attempt %d\n", attempts);
-			/* wait NVMEM_ACQUIRE_CACHE_SLEEP_MS  msec */
-			/* TODO: what time really makes sense? */
-			msleep(NVMEM_ACQUIRE_CACHE_SLEEP_MS);
 		}
+
+		CPRINTF("Shared Mem not available on attempt %d!\n", attempts);
+		/* TODO: what time really makes sense? */
+		msleep(NVMEM_ACQUIRE_CACHE_SLEEP_MS);
 		attempts++;
 	}
 	/* Timeout Error condition */
@@ -189,13 +237,15 @@ static int nvmem_reinitialize(void)
 	int ret;
 
 	/*
-	 * NvMem is not properly itialized. Let's just erase everything and
+	 * NvMem is not properly initialized. Let's just erase everything and
 	 * start over, so that at least 1 partition is ready to be used.
 	 */
 	nvmem_act_partition = 0;
 
 	/* Need to acquire the shared memory buffer */
-	ret = nvmem_lock_cache();
+	ret = shared_mem_acquire(NVMEM_PARTITION_SIZE,
+				 (char **)&cache.base_ptr);
+
 	if (ret != EC_SUCCESS)
 		return ret;
 
@@ -203,12 +253,11 @@ static int nvmem_reinitialize(void)
 
 	/* Start with generation zero in the current active partition. */
 	ret = nvmem_save(0, nvmem_act_partition);
-	nvmem_release_cache();
-	if (ret) {
+	shared_mem_release(cache.base_ptr);
+	cache.base_ptr = 0;
+	if (ret != EC_SUCCESS)
 		CPRINTF("%s:%d\n", __func__, __LINE__);
-		return ret;
-	}
-	return EC_SUCCESS;
+	return ret;
 }
 
 static int nvmem_compare_generation(void)
@@ -264,7 +313,7 @@ static int nvmem_find_partition(void)
 	 * is valid. Let's reinitialize the NVMEM - there is nothing else we
 	 * can do.
 	 */
-	CPRINTS("%s: No Valid Parition found, have to reinitialize!");
+	CPRINTS("%s: No Valid Parition found, have to reinitialize!", __func__);
 
 	if (nvmem_reinitialize() != EC_SUCCESS) {
 		CPRINTS("%s: Reinitialization failed!!");
@@ -347,7 +396,6 @@ int nvmem_setup(uint8_t starting_generation)
 		p_part->tag.generation = starting_generation + part - 1;
 		/* Compute sha for the partition */
 		nvmem_set_sha(&p_part->tag, p_part->tag.sha);
-
 		/* Partition is now ready, write it to flash. */
 		ret = nvmem_commit();
 		if (ret != EC_SUCCESS)
@@ -376,16 +424,10 @@ int nvmem_init(void)
 
 	ret = nvmem_find_partition();
 	if (ret != EC_SUCCESS) {
-		/* Write NvMem partitions to 0xff and setup new tags */
-		nvmem_setup(0);
-		/* Should find valid partiion now */
-		ret = nvmem_find_partition();
-		if (ret) {
-			/* Change error state to non-zero */
-			nvmem_error_state = EC_ERROR_UNKNOWN;
-			CPRINTF("%s:%d\n", __func__, __LINE__);
-			return ret;
-		}
+		/* Change error state to non-zero */
+		nvmem_error_state = ret;
+		CPRINTF("%s:%d\n", __func__, __LINE__);
+		return ret;
 	}
 
 	CPRINTS("Active NVram partition set to %d", nvmem_act_partition);
@@ -404,16 +446,18 @@ int nvmem_is_different(uint32_t offset, uint32_t size, void *data,
 		       enum nvmem_users user)
 {
 	int ret;
-	uint8_t *p_src;
-	uintptr_t src_addr;
 	uint32_t src_offset;
+	int need_to_release;
 
 	/* Point to either NvMem flash or ram if that's active */
-	if (cache.base_ptr == NULL)
-		src_addr = nvmem_base_addr[nvmem_act_partition];
-
-	else
-		src_addr = (uintptr_t)cache.base_ptr;
+	if (!cache.base_ptr) {
+		ret = nvmem_lock_cache();
+		if (ret != EC_SUCCESS)
+			return ret;
+		need_to_release = 1;
+	} else {
+		need_to_release = 0;
+	}
 
 	/* Get partition offset for this read operation */
 	ret = nvmem_get_partition_off(user, offset, size, &src_offset);
@@ -421,38 +465,42 @@ int nvmem_is_different(uint32_t offset, uint32_t size, void *data,
 		return ret;
 
 	/* Advance to the correct byte within the data buffer */
-	src_addr += src_offset;
-	p_src = (uint8_t *)src_addr;
+
 	/* Compare NvMem with data */
-	return memcmp(p_src, data, size);
+	ret = memcmp(cache.base_ptr + src_offset, data, size);
+	if (need_to_release)
+		nvmem_release_cache();
+
+	return ret;
 }
 
 int nvmem_read(uint32_t offset, uint32_t size,
 		    void *data, enum nvmem_users user)
 {
 	int ret;
-	uint8_t *p_src;
-	uintptr_t src_addr;
 	uint32_t src_offset;
+	int need_to_release;
 
-	/* Point to either NvMem flash or ram if that's active */
-	if (cache.base_ptr == NULL)
-		src_addr = nvmem_base_addr[nvmem_act_partition];
+	if (!cache.base_ptr) {
+		ret = nvmem_lock_cache();
+		if (ret != EC_SUCCESS)
+			return ret;
+		need_to_release = 1;
+	} else {
+		need_to_release = 0;
+	}
 
-	else
-		src_addr = (uintptr_t)cache.base_ptr;
 	/* Get partition offset for this read operation */
 	ret = nvmem_get_partition_off(user, offset, size, &src_offset);
-	if (ret != EC_SUCCESS)
-		return ret;
-	/* Advance to the correct byte within the data buffer */
-	src_addr += src_offset;
-	p_src = (uint8_t *)src_addr;
 
-	/* Copy from src into the caller's destination buffer */
-	memcpy(data, p_src, size);
+	if (ret == EC_SUCCESS)
+		/* Copy from src into the caller's destination buffer */
+		memcpy(data, cache.base_ptr + src_offset, size);
 
-	return EC_SUCCESS;
+	if (commits_enabled && need_to_release)
+		nvmem_release_cache();
+
+	return ret;
 }
 
 int nvmem_write(uint32_t offset, uint32_t size,
