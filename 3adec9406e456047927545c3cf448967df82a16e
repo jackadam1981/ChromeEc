@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_7243f701",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-23T23:51:56Z",
+      "side": 1,
+      "message": "Do you want to consider combining these two console commands? Just print an \"*\" designating the active port / supplier, maybe.",
+      "range": {
+        "startLine": 1095,
+        "startChar": 0,
+        "endLine": 1131,
+        "endChar": 6
+      },
+      "revId": "3adec9406e456047927545c3cf448967df82a16e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
