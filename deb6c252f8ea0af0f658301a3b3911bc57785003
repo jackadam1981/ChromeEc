@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_b3461e11",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-23T19:24:28Z",
+      "side": 1,
+      "message": "Should we do that before adding more complexity for the rollback region?",
+      "parentUuid": "289f421f_bffab3bf",
+      "revId": "deb6c252f8ea0af0f658301a3b3911bc57785003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "289f421f_5fe92ff8",
         "filename": "include/flash.h",
         "patchSetId": 1
