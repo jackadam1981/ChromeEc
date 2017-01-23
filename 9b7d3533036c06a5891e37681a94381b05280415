@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_1c3737b9",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-23T21:29:04Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "c865c6f6_2e276f82",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_19675791",
         "filename": "board/cr50/board.c",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_dc0e3fea",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-23T21:29:04Z",
+      "side": 1,
+      "message": "I want to make sure if we do enable the gpio interrupt somehow we don\u0027t do anything.\n\nThis should just get called once.",
+      "parentUuid": "c865c6f6_19675791",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_2eee4fcc",
         "filename": "board/cr50/board.c",
         "patchSetId": 6
@@ -47,6 +83,24 @@
       "writtenOn": "2017-01-20T22:29:27Z",
       "side": 1,
       "message": "Why would we ever call this function under this condition?",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_9cc68748",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-23T21:29:04Z",
+      "side": 1,
+      "message": "I am not sure what diom3 is on gru, but the interrupt is enabled so it could be triggered if diom3 changes from high to low or low to high.",
+      "parentUuid": "c865c6f6_2eee4fcc",
       "revId": "9b7d3533036c06a5891e37681a94381b05280415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_9c18c72e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-23T21:29:04Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "c865c6f6_ae0fdf16",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_2ed40f29",
         "filename": "board/cr50/board.c",
         "patchSetId": 6
@@ -98,6 +170,24 @@
       "writtenOn": "2017-01-20T22:29:27Z",
       "side": 1,
       "message": "I think a general comment  here related to the fact we\u0027re using UART pins normally which means they need to be debounced. But what I\u0027m more curious about is why can\u0027t we remove all these paths for that \"device\" ?",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_fcd7c3f8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-23T21:29:04Z",
+      "side": 1,
+      "message": "what do you mean \"remove all these paths\"?",
+      "parentUuid": "c865c6f6_2ed40f29",
       "revId": "9b7d3533036c06a5891e37681a94381b05280415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -138,6 +228,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_c77ae823",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-23T21:29:04Z",
+      "side": 1,
+      "message": "I just picked a direction, but we configure them during init, so I can remove this.",
+      "parentUuid": "c865c6f6_eea037e7",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_ee3157c4",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 6
@@ -149,6 +257,24 @@
       "writtenOn": "2017-01-20T22:29:27Z",
       "side": 1,
       "message": "Wouldn\u0027t it be cleaner to mux the plt_rst_signal onto this gpio at runtime? The same code could exist as-is?",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_072ec0c8",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-23T21:29:04Z",
+      "side": 1,
+      "message": "We can\u0027t really use the detection code as is because the interrupts are disabled for so much of the time, so we wouldn\u0027t be able to detect short assertions of plt_rst_l. We would have to conditionally disable/reenable interrupts based on the device and whether we are using plt_rst_l.",
+      "parentUuid": "c865c6f6_ee3157c4",
       "revId": "9b7d3533036c06a5891e37681a94381b05280415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
