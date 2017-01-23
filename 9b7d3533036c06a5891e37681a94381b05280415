@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_0d3a5fe6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-23T22:56:29Z",
+      "side": 1,
+      "message": "Why would it ever be enabled somehow? And if it\u0027s unexpected there should be log indicating that it was a very bad and unexpected thing.\n\nI would hope we wouldn\u0027t enable any interrupts until we knew what configuration we were working with.",
+      "parentUuid": "c865c6f6_dc0e3fea",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_2eee4fcc",
         "filename": "board/cr50/board.c",
         "patchSetId": 6
@@ -194,6 +212,23 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_adda3355",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-23T22:56:29Z",
+      "side": 1,
+      "message": "One thing I might be confused about. On cr50 do these gpios actually have an interrupt enabled on gpio_init() is done? Or are these entries not really doing anything?",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_cebc531c",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 6
@@ -205,6 +240,47 @@
       "writtenOn": "2017-01-20T22:29:27Z",
       "side": 1,
       "message": "RED and FED stand for rising and falling what? rised and falled?\n\nThese new entries could use a big comment explaining what you\u0027re trying to do.",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_9c2a02e0",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-23T22:56:29Z",
+      "side": 1,
+      "message": "Similar comments to the PINMUX ones below. Can we just make these GPIO() entries for the purpose of having a GPIO name in the code, but wire up the interrupt handler ourselves?",
+      "parentUuid": "c865c6f6_cebc531c",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_6d92fb77",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-23T22:56:29Z",
+      "side": 1,
+      "message": "I want to confirm: DIO_WAKE_FALLING is completely separate from GPIO_INT_FALLING on line 58 above?",
+      "range": {
+        "startLine": 116,
+        "startChar": 46,
+        "endLine": 116,
+        "endChar": 62
+      },
       "revId": "9b7d3533036c06a5891e37681a94381b05280415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -246,6 +322,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_6d779beb",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-23T22:56:29Z",
+      "side": 1,
+      "message": "If they have no meaning why put anything there? Also, please add comments explaining what\u0027s going on. I\u0027d rather we configure all the pinmux\u0027ing at runtime instead of bothering with these entries. If we can\u0027t count on the attributes, what purpose do they serve?",
+      "parentUuid": "c865c6f6_c77ae823",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_ee3157c4",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 6
@@ -275,6 +369,24 @@
       "side": 1,
       "message": "We can\u0027t really use the detection code as is because the interrupts are disabled for so much of the time, so we wouldn\u0027t be able to detect short assertions of plt_rst_l. We would have to conditionally disable/reenable interrupts based on the device and whether we are using plt_rst_l.",
       "parentUuid": "c865c6f6_ee3157c4",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_4d34d71c",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-23T22:56:29Z",
+      "side": 1,
+      "message": "What do interrupts have to do with muxing the right input at runtime onto DETECT_AP?",
+      "parentUuid": "c865c6f6_072ec0c8",
       "revId": "9b7d3533036c06a5891e37681a94381b05280415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
