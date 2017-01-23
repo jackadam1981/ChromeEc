@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a864120b_4c389f3c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1610,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-23T17:00:23Z",
+      "side": 1,
+      "message": "it seems that we want to simplify PD_DEFAULT_STATE too.\n\nProbably, by doing another CL before this, replacing all the board PD_DEFAULT_STATE defines by a singe definition in usb_pd.h\n#define PD_DEFAULT_STATE(port) ((PD_ROLE_DEFAULT \u003d\u003d PD_ROLE_SOURCE) ? PD_STATE_SRC_DISCONNECTED : PD_STATE_SNK_DISCONNECTED)\n\nthen replacing all this by:\nthis_state \u003d res ? PD_STATE_SUSPENDED : PD_DEFAULT_STATE(port);",
+      "range": {
+        "startLine": 1602,
+        "startChar": 0,
+        "endLine": 1610,
+        "endChar": 6
+      },
+      "revId": "da5d38e73c4a356de51c2a8789a2a17d68799f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_ec2c1300",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1632,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-23T17:00:23Z",
+      "side": 1,
+      "message": "what\u0027s the rationale for moving tcpm_set_cc ?",
+      "range": {
+        "startLine": 1631,
+        "startChar": 0,
+        "endLine": 1632,
+        "endChar": 32
+      },
+      "revId": "da5d38e73c4a356de51c2a8789a2a17d68799f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
