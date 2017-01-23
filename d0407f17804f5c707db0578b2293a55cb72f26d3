@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_7218972d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-23T23:56:58Z",
+      "side": 1,
+      "message": "It didn\u0027t have parity with the previous behavior. This fixes an issue where if you have suzyq attached the ap uart is enabled. If you then attach servo it will disable the ap uart. When you detach servo, there is no possible way to reenable the ap uart without detaching and reattaching suzyq or rebooting cr50.\n\nI will move this to a different cl.",
+      "parentUuid": "c865c6f6_72209718",
+      "revId": "d0407f17804f5c707db0578b2293a55cb72f26d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_0e170b67",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
