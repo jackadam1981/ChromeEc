@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c865c6f6_42882649",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-23T22:14:54Z",
+      "side": 1,
+      "message": "I don\u0027t understand why we do this on servo disconnect? And why the EC isn\u0027t taken care of too since it was using this same logic in device_powered_on().",
+      "revId": "d0407f17804f5c707db0578b2293a55cb72f26d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_0e170b67",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
