@@ -52,6 +52,24 @@
       "revId": "d0407f17804f5c707db0578b2293a55cb72f26d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_82273e19",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-23T22:00:43Z",
+      "side": 1,
+      "message": "I guess I\u0027d rather see a DETECT_AP configured at runtime during board_init() one time. And also name it DETECT_AP_UART since this code is built around that assumption.",
+      "parentUuid": "c865c6f6_621d6adc",
+      "revId": "d0407f17804f5c707db0578b2293a55cb72f26d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
