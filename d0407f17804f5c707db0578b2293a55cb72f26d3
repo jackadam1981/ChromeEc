@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_c872f58c",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-23T23:24:58Z",
+      "side": 1,
+      "message": "We disable the uart tx to avoid contention with servo. We want to make sure the tx is re-enabled if we disconnected it because servo was attached.",
+      "parentUuid": "c865c6f6_42882649",
+      "revId": "d0407f17804f5c707db0578b2293a55cb72f26d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_0e170b67",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
