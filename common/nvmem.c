@@ -48,6 +48,16 @@ static int nvmem_error_state;
 /* Flag to track if an Nv write/move is not completed */
 static int nvmem_write_error;
 
+/*
+ * Given the nvmem tag address return the base address
+ * of the header SHA calculation.
+ */
+static void nvmem_set_sha(struct nvmem_tag *tag, void *sha_buf)
+{
+	compute_hash(&tag->generation, NVMEM_PARTITION_SIZE - NVMEM_SHA_SIZE,
+		     sha_buf, sizeof(tag->sha));
+}
+
 static int nvmem_save(uint8_t tag_generation, size_t partition)
 {
 	struct nvmem_tag *tag;
@@ -67,11 +77,7 @@ static int nvmem_save(uint8_t tag_generation, size_t partition)
 	tag->generation = tag_generation;
 
 	/* Calculate sha of the whole thing. */
-	nvmem_compute_sha(&tag->generation,
-			  NVMEM_PARTITION_SIZE -
-			  offsetof(struct nvmem_tag, generation),
-			  tag->sha,
-			  sizeof(tag->sha));
+	nvmem_set_sha(tag, tag->sha);
 
 	/* Write partition */
 	if (flash_physical_write(nvmem_offset,
@@ -90,9 +96,7 @@ static int nvmem_partition_sha_match(int index)
 	struct nvmem_partition *p_part;
 
 	p_part = (struct nvmem_partition *)nvmem_base_addr[index];
-	nvmem_compute_sha(&p_part->tag.generation,
-			  (NVMEM_PARTITION_SIZE - NVMEM_SHA_SIZE),
-			  sha_comp, sizeof(sha_comp));
+	nvmem_set_sha(&p_part->tag, sha_comp);
 
 	/* Check if computed value matches stored value. */
 	return !memcmp(p_part->tag.sha, sha_comp, NVMEM_SHA_SIZE);
@@ -342,11 +346,8 @@ int nvmem_setup(uint8_t starting_generation)
 		/* Commit function will increment generation number */
 		p_part->tag.generation = starting_generation + part - 1;
 		/* Compute sha for the partition */
-		nvmem_compute_sha(&cache.base_ptr[NVMEM_SHA_SIZE],
-				  NVMEM_PARTITION_SIZE -
-				  NVMEM_SHA_SIZE,
-				  p_part->tag.sha,
-				  NVMEM_SHA_SIZE);
+		nvmem_set_sha(&p_part->tag, p_part->tag.sha);
+
 		/* Partition is now ready, write it to flash. */
 		ret = nvmem_commit();
 		if (ret != EC_SUCCESS)
