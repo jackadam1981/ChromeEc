@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c865c6f6_7293f7eb",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-23T23:43:11Z",
+      "side": 1,
+      "message": "500mA is the lowest current limit we can regulate on the bd9995*, so this seems reasonable.",
+      "range": {
+        "startLine": 152,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 25
+      },
+      "revId": "3f5fb5a3276cb1c3398ee2c2a9d8f9990a73b808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_92bf8b6b",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2278,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-23T23:43:11Z",
+      "side": 1,
+      "message": "We should name this CONFIG_USB_PD_GIVE_BACK or similar, just so it\u0027s clear what module this applies to.",
+      "range": {
+        "startLine": 2278,
+        "startChar": 7,
+        "endLine": 2278,
+        "endChar": 23
+      },
+      "revId": "3f5fb5a3276cb1c3398ee2c2a9d8f9990a73b808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
