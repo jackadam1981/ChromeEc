@@ -39,6 +39,23 @@
       "revId": "af01f577d5418ab463e844c8faba43cd70f1d336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc129d5c_b47d097e",
+        "filename": "include/crypto_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-24T19:18:55Z",
+      "side": 1,
+      "message": "I think this is fine - I don\u0027t think this text implies that the function will detect it.",
+      "revId": "af01f577d5418ab463e844c8faba43cd70f1d336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
