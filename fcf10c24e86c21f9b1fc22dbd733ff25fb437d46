@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "d41a6a31_0842d5e7",
+        "filename": "common/nvmem.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-24T19:34:08Z",
+      "side": 1,
+      "message": "this is a good point and I am considering dedicating fixed SRAM area to NVMEM. We can make it smaller now too, with eviction objects serialization in place, and can have a separate task to be saving changes in flash, which would make processing faster.\n\nBut this would be a different issue, as of now there is no change - memory is allocated and freed as before.",
+      "revId": "fcf10c24e86c21f9b1fc22dbd733ff25fb437d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "650be166_52becdf8",
         "filename": "common/nvmem.c",
         "patchSetId": 14
