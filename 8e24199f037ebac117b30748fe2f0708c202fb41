@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c24b3a4f_6194d6d7",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-01-24T19:36:54Z",
+      "side": 1,
+      "message": "This whole function has been deleted by https://chromium-review.googlesource.com/#/c/420866 and we lost standby mode. We basically traded low power consumption (crosbug.com/p/61640) with port stability (crosbug.com/p/60890).\n\nWe need to figure out how to put standby mode back for anx74xx. For example, we can develop a solution on something like this: https://chromium-review.googlesource.com/#/c/431597/.",
+      "range": {
+        "startLine": 552,
+        "startChar": 11,
+        "endLine": 552,
+        "endChar": 34
+      },
+      "revId": "8e24199f037ebac117b30748fe2f0708c202fb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad35ff63_08bd2b9a",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2
