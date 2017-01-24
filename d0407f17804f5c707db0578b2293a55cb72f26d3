@@ -73,6 +73,23 @@
     },
     {
       "key": {
+        "uuid": "eb3d7129_fa4805a4",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-24T15:51:29Z",
+      "side": 1,
+      "message": "The EC uart doesn\u0027t matter for re-enabling?",
+      "revId": "d0407f17804f5c707db0578b2293a55cb72f26d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_0e170b67",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
