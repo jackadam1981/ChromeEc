@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "289f421f_4575e034",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-24T09:16:21Z",
+      "side": 1,
+      "message": "Are we ok with leaving *_now flags alone for now? Changing those didn\u0027t seem to make much sense (little gains, AFAICT).",
+      "revId": "3ba7053be919e297ab00e4ab2a855cc090cdc22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
