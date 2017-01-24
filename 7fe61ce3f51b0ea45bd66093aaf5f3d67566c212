@@ -22,6 +22,29 @@
       "revId": "7fe61ce3f51b0ea45bd66093aaf5f3d67566c212",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f29d9c0_7609dba9",
+        "filename": "test/usb_pd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-01-24T17:17:11Z",
+      "side": 1,
+      "message": "Yes",
+      "range": {
+        "startLine": 634,
+        "startChar": 7,
+        "endLine": 634,
+        "endChar": 30
+      },
+      "revId": "7fe61ce3f51b0ea45bd66093aaf5f3d67566c212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
