@@ -14,10 +14,8 @@
 #include "common.h"
 #include "console.h"
 #include "ec_commands.h"
-#include "driver/accel_bma2x2.h"
-#include "driver/accel_kionix.h"
-#include "driver/accel_kx022.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/baro_bmp280.h"
 #include "driver/charger/bd99955.h"
 #include "driver/tcpm/fusb302.h"
 #include "extpower.h"
@@ -410,12 +408,6 @@ const matrix_3x3_t base_standard_ref = {
 	{ 0,  0, FLOAT_TO_FP(-1)}
 };
 
-const matrix_3x3_t lid_standard_ref = {
-	{ 0, FLOAT_TO_FP(1),  0},
-	{ FLOAT_TO_FP(-1), 0, 0},
-	{ 0,  0, FLOAT_TO_FP(1)}
-};
-
 struct motion_sensor_t motion_sensors[] = {
 	/*
 	 * Note: bmi160: supports accelerometer and gyro sensor
@@ -491,6 +483,40 @@ struct motion_sensor_t motion_sensors[] = {
 		 [SENSOR_CONFIG_EC_S5] = {
 			 .odr = 0,
 			 .ec_rate = 0,
+		 },
+	 },
+	},
+	[BASE_BARO] = {
+	 .name = "Base Baro",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_BMP280,
+	 .type = MOTIONSENSE_TYPE_BARO,
+	 .location = MOTIONSENSE_LOC_BASE,
+	 .drv = &bmp280_drv,
+	 .drv_data = &bmp280_drv_data,
+	 .port = I2C_PORT_BARO,
+	 .addr = BMP280_I2C_ADDRESS1,
+	 .default_range = 1 << 18, /*  1bit = 4 Pa, 16bit ~= 2600 hPa */
+	 .config = {
+		 /* AP: by default shutdown all sensors */
+		 [SENSOR_CONFIG_AP] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+		 /* EC does not need in S0 */
+		 [SENSOR_CONFIG_EC_S0] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S3] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S5] = {
+			.odr = 0,
+			.ec_rate = 0,
 		 },
 	 },
 	},
