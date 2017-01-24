@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "289f421f_c599f059",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-24T10:37:56Z",
+      "side": 1,
+      "message": "This should be mask \u0026 flags \u0026 EC_FLASH_PROTECT_RO_AT_BOOT\n\n(same issue below).",
+      "revId": "3ba7053be919e297ab00e4ab2a855cc090cdc22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "289f421f_4575e034",
         "filename": "common/flash.c",
         "patchSetId": 2
