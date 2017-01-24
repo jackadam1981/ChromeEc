@@ -37,6 +37,41 @@
     },
     {
       "key": {
+        "uuid": "289f421f_42d716fb",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-24T07:46:45Z",
+      "side": 1,
+      "message": "Oh, right, I think I got this wrong, and current code includes both RO+RW in ALL (while mine only includes RW). I need to fix that.",
+      "parentUuid": "c865c6f6_33934eb2",
+      "revId": "71941cd1e185e9ee352b37035e54f68159109296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "289f421f_e2bbc2ce",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-24T07:46:45Z",
+      "side": 1,
+      "message": "I\u0027ll also take your suggestion and try to improve this before moving forward.",
+      "revId": "71941cd1e185e9ee352b37035e54f68159109296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "289f421f_3f0f8319",
         "filename": "common/flash.c",
         "patchSetId": 1
