@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "724cf6ea_40a1708d",
+        "filename": "common/nvmem.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-24T19:30:02Z",
+      "side": 1,
+      "message": "And now what do we do?\n\nIntroducing a heap in this embedded environment makes it very difficult to guarantee its behavior; it introduces state we can do without.",
+      "revId": "fcf10c24e86c21f9b1fc22dbd733ff25fb437d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b17aab40_6cef7653",
+        "filename": "common/nvmem.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-24T19:30:02Z",
+      "side": 1,
+      "message": "This is exactly one of the type of terrible things that sneak in due to introducing a heap. Why make the system even more organic than it already is?",
+      "revId": "fcf10c24e86c21f9b1fc22dbd733ff25fb437d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
