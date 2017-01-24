@@ -88,8 +88,8 @@
 #define PD_SRC_VNC           PD_SRC_DEF_VNC_MV
 #define PD_SRC_RD_THRESHOLD  PD_SRC_DEF_RD_THRESH_MV
 
-/* Start as a sink for both CHG/DUT ports */
-#define PD_DEFAULT_STATE PD_STATE_SNK_DISCONNECTED
+/* Override PD_DEFAULT_ROLE so each port can have different default */
+#define PD_ROLE_DEFAULT(port) ((port) ? PD_ROLE_SOURCE : PD_ROLE_SINK)
 
 /*
  * TODO(crosbug.com/p/60792): The delay values are currently just place holders
