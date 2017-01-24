@@ -41,6 +41,12 @@
 				  CONFIG_SHAREDLIB_SIZE) / 2)
 
 /*
+ * EC rollback protection block
+ */
+#define CONFIG_ROLLBACK_OFF 0
+#define CONFIG_ROLLBACK_SIZE 0
+
+/*
  * The EC uses the one bank of flash to emulate a SPI-like write protect
  * register with persistent state.
  */
