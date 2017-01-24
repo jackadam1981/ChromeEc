@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a864120b_4c541fbe",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-24T10:24:17Z",
+      "side": 1,
+      "message": "in theory, this is the delay defined by PD_POWER_SUPPLY_TURN_ON_DELAY",
+      "range": {
+        "startLine": 319,
+        "startChar": 2,
+        "endLine": 320,
+        "endChar": 13
+      },
+      "revId": "486f24493637561dcadc0f6c06d9fe8a69d07450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_0c462713",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-24T10:24:17Z",
+      "side": 1,
+      "message": "this is no longer used ?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "486f24493637561dcadc0f6c06d9fe8a69d07450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a864120b_ac429bfb",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-24T10:24:17Z",
+      "side": 1,
+      "message": "nit: EC_ERROR_INVAL",
+      "range": {
+        "startLine": 79,
+        "startChar": 9,
+        "endLine": 79,
+        "endChar": 25
+      },
+      "revId": "486f24493637561dcadc0f6c06d9fe8a69d07450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
