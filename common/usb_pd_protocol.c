@@ -2990,9 +2990,20 @@ static void dual_role_on(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, dual_role_on, HOOK_PRIO_DEFAULT);
 
+static void pd_set_power_mode(enum pd_power_mode mode)
+{
+	int i;
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+		if (tcpc_config[i].drv->set_power_mode)
+			tcpc_config[i].drv->set_power_mode(i, mode);
+	}
+	return;
+}
+
 static void dual_role_off(void)
 {
 	pd_set_dual_role(PD_DRP_TOGGLE_OFF);
+	pd_set_power_mode(PD_POWER_MODE_STANDBY);
 	CPRINTS("chipset -> S3");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, dual_role_off, HOOK_PRIO_DEFAULT);
@@ -3001,6 +3012,7 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, dual_role_off, HOOK_PRIO_DEFAULT);
 static void dual_role_force_sink(void)
 {
 	pd_set_dual_role(PD_DRP_FORCE_SINK);
+	pd_set_power_mode(PD_POWER_MODE_STANDBY);
 	CPRINTS("chipset -> S5");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, dual_role_force_sink, HOOK_PRIO_DEFAULT);

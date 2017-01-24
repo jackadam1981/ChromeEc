@@ -62,14 +62,14 @@ static void anx74xx_tcpm_set_auto_good_crc(int port, int enable)
 	tcpc_write(port, ANX74XX_REG_TX_AUTO_GOODCRC_1, reg);
 }
 
-static void anx74xx_set_power_mode(int port, int mode)
+static int anx74xx_set_power_mode(int port, enum pd_power_mode mode)
 {
 	switch (mode) {
-	case ANX74XX_NORMAL_MODE:
+	case PD_POWER_MODE_NORMAL:
 	/* Set PWR_EN and RST_N GPIO pins high */
 		board_set_tcpc_power_mode(port, 1);
 		break;
-	case ANX74XX_STANDBY_MODE:
+	case PD_POWER_MODE_STANDBY:
 	/* Disable PWR_EN, keep Digital and analog block
 	 *  ON for cable detection
 	 */
@@ -78,6 +78,7 @@ static void anx74xx_set_power_mode(int port, int mode)
 	default:
 		break;
 	}
+	return 0;
 }
 
 void anx74xx_tcpc_set_vbus(int port, int enable)
@@ -831,7 +832,7 @@ int anx74xx_tcpm_init(int port)
 
 	memset(anx, 0, CONFIG_USB_PD_PORT_COUNT*sizeof(struct anx_state));
 	/* Bring chip in normal mode to work */
-	anx74xx_set_power_mode(port, ANX74XX_NORMAL_MODE);
+	anx74xx_set_power_mode(port, PD_POWER_MODE_NORMAL);
 
 	/* Initialize analog section of ANX */
 	rv |= anx74xx_init_analog(port);
@@ -909,6 +910,7 @@ const struct tcpm_drv anx74xx_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &anx74xx_tcpc_discharge_vbus,
 #endif
+	.set_power_mode		= &anx74xx_set_power_mode,
 };
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
