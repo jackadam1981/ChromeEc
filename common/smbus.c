@@ -145,8 +145,14 @@ int smbus_read_block(uint8_t i2c_port, uint8_t slave_addr,
 		goto smbus_read_block_done;
 
 	/* Read CRC + verify */
+#if defined(CHIP_NPCX)
+	/* Read at least two bytes to let ec has chance to generate NACK */
+	rv = i2c_xfer(i2c_port, slave_addr,
+		      NULL, 0, buf, 2, I2C_XFER_STOP);
+#else
 	rv = i2c_xfer(i2c_port, slave_addr,
 		      NULL, 0, buf, 1, I2C_XFER_STOP);
+#endif
 	if (do_crc && crc8_arg(data, read_len, crc) != buf[0])
 		rv = EC_ERROR_CRC;
 
