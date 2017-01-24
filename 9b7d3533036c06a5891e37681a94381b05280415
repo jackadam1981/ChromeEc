@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_dfb06ce7",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-24T00:05:31Z",
+      "side": 1,
+      "message": "Initially I moved the disable interrupt to init_interrupts, but then I moved them back, because the interrupts are enabled in gpio_pre_init, and we don\u0027t know the board configuration at that point.\n\nthe init_interrupts function is redundant.",
+      "parentUuid": "c865c6f6_0d3a5fe6",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_2eee4fcc",
         "filename": "board/cr50/board.c",
         "patchSetId": 6
@@ -136,6 +154,24 @@
       "writtenOn": "2017-01-20T22:29:27Z",
       "side": 1,
       "message": "Why is this call necessary here? A comment would be helpful.",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_d2750337",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-24T00:05:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c865c6f6_4ef183ad",
       "revId": "9b7d3533036c06a5891e37681a94381b05280415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -230,6 +266,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_f55a3191",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-24T00:05:31Z",
+      "side": 1,
+      "message": "Ok I added use_uart_to_detect_ap",
+      "parentUuid": "c865c6f6_5227d380",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_adda3355",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 6
@@ -241,6 +295,24 @@
       "writtenOn": "2017-01-23T22:56:29Z",
       "side": 1,
       "message": "One thing I might be confused about. On cr50 do these gpios actually have an interrupt enabled on gpio_init() is done? Or are these entries not really doing anything?",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_5c136a82",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-24T00:05:31Z",
+      "side": 1,
+      "message": "They initialize the settings and enable the interrupt in chip/g/gpio.c",
+      "parentUuid": "c865c6f6_adda3355",
       "revId": "9b7d3533036c06a5891e37681a94381b05280415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -358,6 +430,24 @@
     },
     {
       "key": {
+        "uuid": "c865c6f6_b599590d",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-24T00:05:31Z",
+      "side": 1,
+      "message": "DIO_WAKE_FALLING configures the pad.\n\nGPIO_INT_FALLING configures the gpio.",
+      "parentUuid": "c865c6f6_6d779beb",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_ee3157c4",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 6
@@ -405,6 +495,24 @@
       "side": 1,
       "message": "What do interrupts have to do with muxing the right input at runtime onto DETECT_AP?",
       "parentUuid": "c865c6f6_072ec0c8",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c865c6f6_756881f7",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-24T00:05:31Z",
+      "side": 1,
+      "message": "I don\u0027t understand the point of muxing the DETECT_AP input if we never use its value on reef.",
+      "parentUuid": "c865c6f6_4d34d71c",
       "revId": "9b7d3533036c06a5891e37681a94381b05280415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
