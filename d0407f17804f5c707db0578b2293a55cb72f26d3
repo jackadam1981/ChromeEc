@@ -107,6 +107,23 @@
     },
     {
       "key": {
+        "uuid": "efe572a8_7ac18469",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-24T16:36:05Z",
+      "side": 1,
+      "message": "Why wouldn\u0027t it matter? It\u0027s being disconnected on servo attach. Did I miss where it\u0027s getting reattached?",
+      "revId": "d0407f17804f5c707db0578b2293a55cb72f26d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_0e170b67",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
