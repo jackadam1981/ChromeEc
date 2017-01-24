@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "880aee5b_8339eef3",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-24T03:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "880aee5b_63dccaf5",
+      "range": {
+        "startLine": 887,
+        "startChar": 9,
+        "endLine": 887,
+        "endChar": 24
+      },
+      "revId": "38fbe5ab4a0ed1178257d4638f4d26f79db391bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "880aee5b_23f0026f",
         "filename": "board/cr50/board.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-24T02:57:09Z",
       "side": 1,
       "message": "instead of using obscure bit shifts it is cleaner to use masks used in line 877, then there is no need in specifying the shift in line 921",
+      "range": {
+        "startLine": 913,
+        "startChar": 0,
+        "endLine": 918,
+        "endChar": 0
+      },
+      "revId": "38fbe5ab4a0ed1178257d4638f4d26f79db391bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "880aee5b_2344825d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-24T03:57:48Z",
+      "side": 1,
+      "message": "Modified to use the mask bits which are already defined and changed the shift value to 0",
+      "parentUuid": "880aee5b_23f0026f",
       "range": {
         "startLine": 913,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "880aee5b_e330ba0b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-24T03:57:48Z",
+      "side": 1,
+      "message": "Yes, it can be done there so there is no need to replicate the for loop. I have made that change.",
+      "parentUuid": "880aee5b_a3cd123f",
+      "range": {
+        "startLine": 1020,
+        "startChar": 2,
+        "endLine": 1020,
+        "endChar": 26
+      },
+      "revId": "38fbe5ab4a0ed1178257d4638f4d26f79db391bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "880aee5b_23e2c2b6",
         "filename": "board/cr50/board.c",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2017-01-24T02:57:09Z",
       "side": 1,
       "message": "there are other bits used in this register, you should not be scratching them, only the properties related bits should be modified.",
+      "range": {
+        "startLine": 1094,
+        "startChar": 4,
+        "endLine": 1094,
+        "endChar": 49
+      },
+      "revId": "38fbe5ab4a0ed1178257d4638f4d26f79db391bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "880aee5b_034dfe7b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-24T03:57:48Z",
+      "side": 1,
+      "message": "Created a macro in scratch_reg1.h that combines the strapping related bits and use that now to check for the all bits are clear and to mask those bits when the properties are ORed in from the table.",
+      "parentUuid": "880aee5b_23e2c2b6",
       "range": {
         "startLine": 1094,
         "startChar": 4,
