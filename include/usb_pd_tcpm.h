@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_USB_PD_TCPM_H
 #define __CROS_EC_USB_PD_TCPM_H
 
+#include "usb_pd.h"
+
 /* Default retry count for transmitting */
 #define PD_RETRY_COUNT 3
 
@@ -195,6 +197,13 @@ struct tcpm_drv {
 	 */
 	int (*drp_toggle)(int port);
 #endif
+	/**
+	 * Set power mode
+	 *
+	 * @param port
+	 * @return EC_SUCCESS or error
+	 */
+	int (*set_power_mode)(int port, enum pd_power_mode mode);
 };
 
 enum tcpc_alert_polarity {

@@ -692,6 +692,14 @@ enum pd_states {
 	PD_STATE_COUNT,
 };
 
+enum pd_power_mode {
+	PD_POWER_MODE_NORMAL,
+	PD_POWER_MODE_STANDBY,
+
+	/* Number of modes. Not an actual mode. */
+	PD_POWER_MODE_COUNT,
+};
+
 #define PD_FLAGS_PING_ENABLED      (1 << 0) /* SRC_READY pings enabled */
 #define PD_FLAGS_PARTNER_DR_POWER  (1 << 1) /* port partner is dualrole power */
 #define PD_FLAGS_PARTNER_DR_DATA   (1 << 2) /* port partner is dualrole data */
