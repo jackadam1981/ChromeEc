@@ -16,6 +16,29 @@
       "revId": "af01f577d5418ab463e844c8faba43cd70f1d336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61a70b4c_5fa8f55e",
+        "filename": "include/crypto_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-24T19:12:00Z",
+      "side": 1,
+      "message": "...Though not one which will be detected by this function.  So more of a REALLY BAD IDEA or TRAGIC MISTAKE than an ERROR.",
+      "range": {
+        "startLine": 45,
+        "startChar": 67,
+        "endLine": 45,
+        "endChar": 72
+      },
+      "revId": "af01f577d5418ab463e844c8faba43cd70f1d336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
