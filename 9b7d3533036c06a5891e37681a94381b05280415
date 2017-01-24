@@ -108,6 +108,23 @@
     },
     {
       "key": {
+        "uuid": "6972c5a3_0c06b091",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-24T21:06:22Z",
+      "side": 1,
+      "message": "That is partially my point in the gpio.inc comments. We should just configure the gpios which interrupt when know for sure what they should do. We shouldn\u0027t be taking action on anything until we\u0027ve configured the part according to how it should be.",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c865c6f6_2eee4fcc",
         "filename": "board/cr50/board.c",
         "patchSetId": 6
@@ -137,6 +154,23 @@
       "side": 1,
       "message": "I am not sure what diom3 is on gru, but the interrupt is enabled so it could be triggered if diom3 changes from high to low or low to high.",
       "parentUuid": "c865c6f6_2eee4fcc",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "818dce56_af0d9911",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-24T21:06:22Z",
+      "side": 1,
+      "message": "But it shouldn\u0027t be enabled until we configure the part.",
       "revId": "9b7d3533036c06a5891e37681a94381b05280415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -513,6 +547,23 @@
       "side": 1,
       "message": "I don\u0027t understand the point of muxing the DETECT_AP input if we never use its value on reef.",
       "parentUuid": "c865c6f6_4d34d71c",
+      "revId": "9b7d3533036c06a5891e37681a94381b05280415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c5441c4_6200873f",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-24T21:06:22Z",
+      "side": 1,
+      "message": "My comment was in reference to if we would still use DETECT_AP naming to detect if the AP is up. But if we\u0027re completely abandoning that on x86 platforms then it doesn\u0027t matter.",
       "revId": "9b7d3533036c06a5891e37681a94381b05280415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
