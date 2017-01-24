@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb0a5275_b8f54dfc",
+        "filename": "chip/g/dcrypto/gcm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1126059
+      },
+      "writtenOn": "2017-01-24T18:55:10Z",
+      "side": 1,
+      "message": "Same as below: you probably want some parens here since ? operator happens after +.",
+      "range": {
+        "startLine": 164,
+        "startChar": 15,
+        "endLine": 164,
+        "endChar": 58
+      },
+      "revId": "ea0db9e6e990de260d49a412c96bc396bc5277f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97279bdc_93163494",
+        "filename": "chip/g/dcrypto/gcm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1126059
+      },
+      "writtenOn": "2017-01-24T18:55:10Z",
+      "side": 1,
+      "message": "I suspect you want to add parens around (in_len \u0026 0x0F) ? 16 : 0.  C operator precedence for ?: is lower than binary +.",
+      "range": {
+        "startLine": 231,
+        "startChar": 15,
+        "endLine": 231,
+        "endChar": 58
+      },
+      "revId": "ea0db9e6e990de260d49a412c96bc396bc5277f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
