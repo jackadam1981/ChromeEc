@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96ad1f8f_afbff5b8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-24T22:08:55Z",
+      "side": 1,
+      "message": "We\u0027re getting called here, but aren\u0027t we also going to generate an interrupt from gpio as well once woken up?",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e5ea5c2_fac40d07",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-24T22:08:55Z",
+      "side": 1,
+      "message": "Can we call this from interrupt context? What makes this same from an interrupt handler?",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4170746_3b53827b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-24T22:08:55Z",
+      "side": 1,
+      "message": "Not related, but what happens at this point? Shouldn\u0027t we set the RESET event on the tpm task?",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a75dca76_e1fa18ad",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-24T22:08:55Z",
+      "side": 1,
+      "message": "Can we catch every edge? Have you determined how quickly we can react?",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "551cf5dc_a3b1359f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-24T22:08:55Z",
+      "side": 1,
+      "message": "This seems super ugly -- just to deal with us setting up interrupts from gpio.inc. I feel like we should be configuring everything once we know what mode we\u0027re in.",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6394d8aa_d3e14487",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-24T22:08:55Z",
+      "side": 1,
+      "message": "But we aren\u0027t using uart_to_detect_ap() when board_us_plt_rst() returns 1.",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c8b88b4_ffd51a4a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-24T22:08:55Z",
+      "side": 1,
+      "message": "So we take one interrupt and disable it to never be re-enabled again since we\u0027re never taking action in board_update_device_state() ?",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c7806c9_8d37d93a",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-24T22:08:55Z",
+      "side": 1,
+      "message": "Why are we waking on this signal falling? Especially if it\u0027s not even monitored for certain platforms.",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
