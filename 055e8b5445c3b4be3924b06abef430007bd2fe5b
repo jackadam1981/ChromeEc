@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65e6b501_363ec231",
+        "filename": "chip/mec1322/panic_extra.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-24T17:54:19Z",
+      "side": 1,
+      "message": "Let\u0027s add guards to this header, if we keep it.",
+      "revId": "055e8b5445c3b4be3924b06abef430007bd2fe5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11cbc4fa_4906149d",
+        "filename": "chip/mec1322/panic_extra.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-24T17:54:19Z",
+      "side": 1,
+      "message": "For functions more than a few instructions, we usually omit \u0027inline\u0027 and let the compiler optimize, unless performance is critical.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "055e8b5445c3b4be3924b06abef430007bd2fe5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
