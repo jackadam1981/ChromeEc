@@ -16,6 +16,24 @@
       "revId": "a1aaa7e7cac170de12a7824f8b434ab6812f5443",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "880aee5b_6fbcb11a",
+        "filename": "common/nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-24T00:31:34Z",
+      "side": 1,
+      "message": "missed this, let me address it",
+      "parentUuid": "c865c6f6_22dd32c3",
+      "revId": "a1aaa7e7cac170de12a7824f8b434ab6812f5443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
