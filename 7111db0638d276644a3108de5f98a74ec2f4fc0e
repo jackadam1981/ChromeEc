@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0848be9f_10e53289",
+        "filename": "common/nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-24T06:00:11Z",
+      "side": 1,
+      "message": "Are you undoing the rename of nvmem_compute_sha()?",
+      "revId": "7111db0638d276644a3108de5f98a74ec2f4fc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0848be9f_30814e9e",
+        "filename": "include/crypto_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-24T06:00:11Z",
+      "side": 1,
+      "message": "4 bytes?",
+      "revId": "7111db0638d276644a3108de5f98a74ec2f4fc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88558e3b_31b960bb",
+        "filename": "include/crypto_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-24T06:00:11Z",
+      "side": 1,
+      "message": "p_sha, sha_len",
+      "revId": "7111db0638d276644a3108de5f98a74ec2f4fc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "284bc29d_7ce28ee5",
+        "filename": "include/crypto_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-24T06:00:11Z",
+      "side": 1,
+      "message": "This comment is an alternate fact.\n\nWARNING: a given salt / \"in\" pair must be unique (it is an error to use a given salt with more than one unique buffer).  For an example, a good salt would be a digest of the plaintext input.",
+      "revId": "7111db0638d276644a3108de5f98a74ec2f4fc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c85f8657_88811f27",
+        "filename": "include/crypto_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-24T06:00:11Z",
+      "side": 1,
+      "message": "blob_iv?",
+      "revId": "7111db0638d276644a3108de5f98a74ec2f4fc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
