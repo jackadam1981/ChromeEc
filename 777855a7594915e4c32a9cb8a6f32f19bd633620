@@ -16,6 +16,23 @@
       "revId": "777855a7594915e4c32a9cb8a6f32f19bd633620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f73463d_941a676a",
+        "filename": "chip/g/crypto_api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-25T20:26:32Z",
+      "side": 1,
+      "message": "it is not board specific - it is chip specific, using DCRYPTO_.",
+      "revId": "777855a7594915e4c32a9cb8a6f32f19bd633620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
