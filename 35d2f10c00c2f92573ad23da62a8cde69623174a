@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "24a55e0a_e163f6f8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-25T19:12:44Z",
+      "side": 1,
+      "message": "No. We don\u0027t generate the interrupt from the gpio.",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e5ea5c2_fac40d07",
         "filename": "board/cr50/board.c",
         "patchSetId": 8
@@ -53,6 +70,23 @@
     },
     {
       "key": {
+        "uuid": "e452037f_4cd0b9b6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-25T19:12:44Z",
+      "side": 1,
+      "message": "Initially every time we reset the tpm we would reboot cr50. We didn\u0027t want to do this during a usb spi update, because it would kill the update. After the update, we reset the EC and AP, so the tpm would get reset then. \n\nNow we don\u0027t do the cr50 reboot during the tpm reset, and I feel like the tpm_is_resetting check in reset_tpm is enough to handle any weird side effects of us pulsing sys_rst_l. I don\u0027t think there is a good reason for this check any more.",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a75dca76_e1fa18ad",
         "filename": "board/cr50/board.c",
         "patchSetId": 8
@@ -64,6 +98,23 @@
       "writtenOn": "2017-01-24T22:08:55Z",
       "side": 1,
       "message": "Can we catch every edge? Have you determined how quickly we can react?",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe081964_00e29e90",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-25T19:12:44Z",
+      "side": 1,
+      "message": "I tried running \u0027apreset\u0027 while cr50 is in deep sleep and regular sleep. It looks like we can see both edges. I think we increased the apreset pulse duration on Reef and Gru to make sure it was long enough for us to resume and see both edges.",
       "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +138,23 @@
     },
     {
       "key": {
+        "uuid": "048fc719_9562d711",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-25T19:12:44Z",
+      "side": 1,
+      "message": "I agree. I opened a bug to fix the interrupt enable. crosbug.com/p/62380",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6394d8aa_d3e14487",
         "filename": "board/cr50/board.c",
         "patchSetId": 8
@@ -98,6 +166,23 @@
       "writtenOn": "2017-01-24T22:08:55Z",
       "side": 1,
       "message": "But we aren\u0027t using uart_to_detect_ap() when board_us_plt_rst() returns 1.",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9786e6a4_ecffd1e9",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-25T19:12:44Z",
+      "side": 1,
+      "message": "Done",
       "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +206,23 @@
     },
     {
       "key": {
+        "uuid": "d218333d_c52939ec",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-25T19:12:44Z",
+      "side": 1,
+      "message": "Yes.",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c7806c9_8d37d93a",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 8
@@ -132,6 +234,23 @@
       "writtenOn": "2017-01-24T22:08:55Z",
       "side": 1,
       "message": "Why are we waking on this signal falling? Especially if it\u0027s not even monitored for certain platforms.",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f0235b9_b684e08a",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-25T19:12:44Z",
+      "side": 1,
+      "message": "In board.c we disable the wake-pin for x86 platforms. On arm we still want to reset the tpm every time sys_rst_l is asserted so we want to wake up on the falling edge.\n\nWe could enable the wake pin only on ARM platforms in board.c but I would really like it to be easy to tell what is a wake pin from gpio.inc",
       "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
