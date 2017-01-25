@@ -39,6 +39,29 @@
       "revId": "25f04f9aad667fd4fbdfd2089e4a876eb2e0481d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2cf6871f_3827021c",
+        "filename": "include/common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-25T21:04:47Z",
+      "side": 1,
+      "message": "I might move this to your board-level .c file. Unlike the other macros here, it isn\u0027t obvious what the params are, and there are overflow + precision decisions that are best made on a case-by-case basis.",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 90,
+        "endChar": 26
+      },
+      "revId": "25f04f9aad667fd4fbdfd2089e4a876eb2e0481d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
