@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "67fcdf24_999c45e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-25T21:43:59Z",
+      "side": 1,
+      "message": "That\u0027s another bug unreleated to electro. Perhaps that was a mistake?",
+      "revId": "25f04f9aad667fd4fbdfd2089e4a876eb2e0481d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9754c28_f52fc610",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 4
