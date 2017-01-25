@@ -10,6 +10,8 @@
 
 /* TODO: Remove CONFIG_SYSTEM_UNLOCKED prior to building MP FW. */
 #define CONFIG_SYSTEM_UNLOCKED
+/* TODO: Remove this option, useful for debugging only */
+#define CONFIG_CMD_FLASH
 
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
