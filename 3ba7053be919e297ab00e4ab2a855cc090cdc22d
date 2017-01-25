@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2bf887e6_ee31c3a0",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-25T00:01:12Z",
+      "side": 1,
+      "message": "NPCX does not support ALL_AT_BOOT.  See flash_physical_get_valid_flags() below.\n\nThe UMA lock is ALL_NOW.",
+      "range": {
+        "startLine": 592,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 20
+      },
+      "revId": "3ba7053be919e297ab00e4ab2a855cc090cdc22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "289f421f_c599f059",
         "filename": "common/flash.c",
         "patchSetId": 2
@@ -30,6 +53,23 @@
       "writtenOn": "2017-01-24T09:16:21Z",
       "side": 1,
       "message": "Are we ok with leaving *_now flags alone for now? Changing those didn\u0027t seem to make much sense (little gains, AFAICT).",
+      "revId": "3ba7053be919e297ab00e4ab2a855cc090cdc22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9e5ea53_13302892",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-25T00:01:12Z",
+      "side": 1,
+      "message": "Do you mean not implementing PROTECT_RB_NOW?  Or...",
       "revId": "3ba7053be919e297ab00e4ab2a855cc090cdc22d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
