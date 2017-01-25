@@ -172,6 +172,23 @@
     },
     {
       "key": {
+        "uuid": "5e64f42c_23fcdf22",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-25T23:09:17Z",
+      "side": 1,
+      "message": "Not really. They could be really small, but I think the bigger concern is that an interrupt handler is delaying this handler (which has 2 sources).\n\nWe are sampling the pin here, but I think we should attempt to take into account signal since we know if it\u0027s the falling/rising edge to handle the case where things go bad.  Basically be defensive.\n\n\nif signal is falling edge but we sample it unasserted then that should mean we missed at least one thing. So we should probably handle that case in some manner.",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "551cf5dc_a3b1359f",
         "filename": "board/cr50/board.c",
         "patchSetId": 8
