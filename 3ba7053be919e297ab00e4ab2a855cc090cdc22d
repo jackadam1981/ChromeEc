@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "14826a24_2d15fdb9",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-25T00:46:33Z",
+      "side": 1,
+      "message": "Well, maybe, but then common/flash.c:flash_set_protect does call flash_physical_protect_at_boot.\n\nThe only thing I do here is translate:\n\n  range \u003d FLASH_WP_NONE \u003d\u003e new_flags \u003d 0\n  range \u003d FLASH_WP_ALL \u003d\u003e new_flags \u003d EC_FLASH_PROTECT_ALL_AT_BOOT\n  range \u003d FLASH_WP_RO \u003d\u003e new_flags \u003d EC_FLASH_PROTECT_RO_AT_BOOT",
+      "range": {
+        "startLine": 592,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 20
+      },
+      "revId": "3ba7053be919e297ab00e4ab2a855cc090cdc22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "289f421f_c599f059",
         "filename": "common/flash.c",
         "patchSetId": 2
@@ -70,6 +93,23 @@
       "writtenOn": "2017-01-25T00:01:12Z",
       "side": 1,
       "message": "Do you mean not implementing PROTECT_RB_NOW?  Or...",
+      "revId": "3ba7053be919e297ab00e4ab2a855cc090cdc22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "879d44ef_631147d7",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-01-25T00:46:33Z",
+      "side": 1,
+      "message": "I meant changing the parameter to take in flags instead of a boolean (just like I changed flash_protect_at_boot to take in flags).",
       "revId": "3ba7053be919e297ab00e4ab2a855cc090cdc22d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
