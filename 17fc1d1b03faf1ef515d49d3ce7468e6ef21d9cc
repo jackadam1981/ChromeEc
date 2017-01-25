@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c056720e_47e0963d",
+        "filename": "include/common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-25T20:41:28Z",
+      "side": 1,
+      "message": "returns a value, X ,where 100.5%*X does not exceed target.",
+      "revId": "17fc1d1b03faf1ef515d49d3ce7468e6ef21d9cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39db643c_2f07f5b3",
         "filename": "include/common.h",
         "patchSetId": 2
@@ -36,6 +53,29 @@
       "writtenOn": "2017-01-25T20:31:53Z",
       "side": 1,
       "message": "I think this macro should return x\u0027 where x\u0027 * 1.005 \u003d\u003d x. (1.005 is expressed as 1005/1000).",
+      "range": {
+        "startLine": 89,
+        "startChar": 46,
+        "endLine": 89,
+        "endChar": 77
+      },
+      "revId": "17fc1d1b03faf1ef515d49d3ce7468e6ef21d9cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cce9e224_aca0ada1",
+        "filename": "include/common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-25T20:41:28Z",
+      "side": 1,
+      "message": "OK. then change \u0027val\u0027 to \u0027target\u0027 to make that clearer.\n\nShould we make the \u0027MARGIN\u0027 name better too? TARGET_WITH_MARGIN or something like that?",
       "range": {
         "startLine": 89,
         "startChar": 46,
