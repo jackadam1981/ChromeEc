@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9112b0e7_8fa66371",
+        "filename": "include/flash.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-25T12:16:06Z",
+      "side": 1,
+      "message": "I\u0027m afraid those values were already wrong for STM32F091VC used in oak derivatives.\nie STM32F091VC has 256kB flash with 32 protection regions (31 x 4kB + 1 x 132kB)\nright now it declares:\nCONFIG_FLASH_SIZE 0x00040000    /* \u003d 256kB */\nCONFIG_FLASH_BANK_SIZE  0x2000  /* \u003d 8kB !!! */\nso that\u0027s PHYSICAL_BANKS \u003d 32 (which is right)\nbut we have 31 4kB banks and 1 132kB bank (rather than 32x 8kB banks)\n\nso IMO all the computations above are questionably correct for that particular case \nand you are adding one more wrong one ;-)\n\nFor your work, that\u0027s probably not a terribly interesting corner case but probably you should at least add a bug number here to try avoid people to fall later into this trap too badly.\nI have opened crosbug.com/p/62372 with some details",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "2147862cf557a7c1918d7428d39f217efc7047ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
