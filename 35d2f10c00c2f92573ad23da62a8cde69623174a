@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "c0d936dc_d8358763",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-25T22:56:39Z",
+      "side": 1,
+      "message": "Why is that? We have the interrupt enabled. How is the interrupt mask cleared once we wake from sleep? I would assume we\u0027d see both. If the interrupt is already enabled prior to going to sleep why wouldn\u0027t see the interrupt once we wake up?",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e5ea5c2_fac40d07",
         "filename": "board/cr50/board.c",
         "patchSetId": 8
@@ -115,6 +132,23 @@
       "writtenOn": "2017-01-25T19:12:44Z",
       "side": 1,
       "message": "I tried running \u0027apreset\u0027 while cr50 is in deep sleep and regular sleep. It looks like we can see both edges. I think we increased the apreset pulse duration on Reef and Gru to make sure it was long enough for us to resume and see both edges.",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e617bbd_2ce1a14b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-25T22:56:39Z",
+      "side": 1,
+      "message": "Well my concern was that we can cause resets from the AP proper -- h1 has no control over that. And ensuring we see the edges is important w/o dropping them.",
       "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -251,6 +285,23 @@
       "writtenOn": "2017-01-25T19:12:44Z",
       "side": 1,
       "message": "In board.c we disable the wake-pin for x86 platforms. On arm we still want to reset the tpm every time sys_rst_l is asserted so we want to wake up on the falling edge.\n\nWe could enable the wake pin only on ARM platforms in board.c but I would really like it to be easy to tell what is a wake pin from gpio.inc",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b00cf5c_dd8ea132",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-25T22:56:39Z",
+      "side": 1,
+      "message": "But the opposite is true: It\u0027s not really a wake pin for those types of systems. Now it\u0027s just a head scratcher as to what is going on. We should be consistent on where wakes/interrupts are being enabled. And since that is runtime dependent we should move it to the code where it\u0027s handled in runtime.",
       "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
