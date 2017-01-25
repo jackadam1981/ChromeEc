@@ -79,6 +79,29 @@
       "revId": "25f04f9aad667fd4fbdfd2089e4a876eb2e0481d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf2a1943_a29846a3",
+        "filename": "include/common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-01-25T21:59:03Z",
+      "side": 1,
+      "message": "This has to be somewhere common so that other boards which need same adjustment can use it. Kevin (https://chromium-review.googlesource.com/#/c/431233/), Caroline (https://chromium-review.googlesource.com/#/c/432418/) and other Reefs.\n\nOverflow is unlikely because this is computed by preprocessor.  Precision can be evaluated before using the macro. If it\u0027s not enough, a developer simply chooses not to use it. The macro produces the same intended value for all the CLs listed above.",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 90,
+        "endChar": 26
+      },
+      "revId": "25f04f9aad667fd4fbdfd2089e4a876eb2e0481d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
