@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "313b2a30_8ca8bbf9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-25T19:32:35Z",
+      "side": 1,
+      "message": "Why would it do that?",
+      "range": {
+        "startLine": 12,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 55
+      },
+      "revId": "f01c326db3e05506947e8cbb7b4e0193913b32d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe1420fd_156f4db2",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-25T19:32:35Z",
+      "side": 1,
+      "message": "I think I made a similar comment. If 8700mV is listed in the datasheet, please just use a macro which provides margin so that when people are comparing numbers it\u0027s easy to see when going down a spreadsheet. Also, there\u0027s no need to calculate the answer when someone is filling in the table. Let the machine do it for us.\n\nMARGIN(val, tenths_percent)\n ((val) * (1000 - (tenths_percent)) / 1000)",
+      "revId": "f01c326db3e05506947e8cbb7b4e0193913b32d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
