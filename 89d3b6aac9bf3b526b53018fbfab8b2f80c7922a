@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d0524f2_9e2eb0c9",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-25T23:43:35Z",
+      "side": 1,
+      "message": "Technically it is the lid.",
+      "revId": "89d3b6aac9bf3b526b53018fbfab8b2f80c7922a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0926bc6f_6ad2beb1",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-25T23:43:35Z",
+      "side": 1,
+      "message": "On ryu, the accelerometer behind the screen was just called \"Accel\".",
+      "revId": "89d3b6aac9bf3b526b53018fbfab8b2f80c7922a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76338fec_904858eb",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-25T23:43:35Z",
+      "side": 1,
+      "message": "If there is no lid angle calculation, EC does not need the sensor in S3, we could set odr to 0.",
+      "revId": "89d3b6aac9bf3b526b53018fbfab8b2f80c7922a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1cff8aa_142140a3",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-25T23:43:35Z",
+      "side": 1,
+      "message": "LID_BARO",
+      "revId": "89d3b6aac9bf3b526b53018fbfab8b2f80c7922a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2da4cad8_fd59d856",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-25T23:43:35Z",
+      "side": 1,
+      "message": "Just \"Baro\"",
+      "revId": "89d3b6aac9bf3b526b53018fbfab8b2f80c7922a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22afc13e_62c815ad",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-25T23:43:35Z",
+      "side": 1,
+      "message": "LOC_LID",
+      "revId": "89d3b6aac9bf3b526b53018fbfab8b2f80c7922a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95c5569b_0a15e628",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-25T23:43:35Z",
+      "side": 1,
+      "message": "EC does not need it. Leave odr to 0 until someone (ARC++ in the AP) asks for it.",
+      "revId": "89d3b6aac9bf3b526b53018fbfab8b2f80c7922a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
