@@ -258,14 +258,14 @@ static int test_corrupt_nvmem(void)
 	memset(write_buffer, invalid_value, NVMEM_PARTITION_SIZE);
 	p_data = (void *)CONFIG_FLASH_NVMEM_BASE_A;
 	TEST_ASSERT_ARRAY_EQ(write_buffer, p_data, NVMEM_PARTITION_SIZE);
-	memset(write_buffer, 0xff, NVMEM_PARTITION_SIZE);
 
-	/* Now let's write one byte of 'invalid_value' into user NVMEM_CR50 */
-	TEST_ASSERT(nvmem_write(0, 1, write_buffer, NVMEM_USER_0) ==
-		    EC_SUCCESS);
+	/* Now let's write a different value  into user NVMEM_CR50 */
+	invalid_value ^= ~0;
+	TEST_ASSERT(nvmem_write(0, sizeof(invalid_value),
+				&invalid_value, NVMEM_USER_0) == EC_SUCCESS);
 	TEST_ASSERT(nvmem_commit() == EC_SUCCESS);
 
-	/* Verify that partition 0 genration did not change. */
+	/* Verify that partition 1 generation did not change. */
 	TEST_ASSERT(p_part->generation == 0);
 
 	/*
@@ -344,38 +344,6 @@ static int test_write_fail(void)
 
 	/* This test is successful if write attempt failed */
 	return !ret;
-}
-
-static int test_cache_not_available(void)
-{
-	char **p_shared;
-	int ret;
-	uint32_t offset = 0;
-	uint32_t num_bytes = 0x200;
-
-	/*
-	 * The purpose of this test is to validate that NvMem writes behave as
-	 * expected when the shared memory buffer (used for cache ram) is and
-	 * isn't available.
-	 */
-
-	/* Do write/read sequence that's expected to be successful */
-	if (test_write_read(offset, num_bytes, NVMEM_USER_1))
-		return EC_ERROR_UNKNOWN;
-
-	/* Acquire shared memory */
-	if (shared_mem_acquire(num_bytes, p_shared))
-		return EC_ERROR_UNKNOWN;
-
-	/* Attempt write/read sequence that should fail */
-	ret = test_write_read(offset, num_bytes, NVMEM_USER_1);
-	/* Release shared memory */
-	shared_mem_release(*p_shared);
-	if (!ret)
-		return EC_ERROR_UNKNOWN;
-
-	/* Write/read sequence should work now */
-	return test_write_read(offset, num_bytes, NVMEM_USER_1);
 }
 
 static int test_buffer_overflow(void)
@@ -644,8 +612,6 @@ void run_test(void)
 	RUN_TEST(test_write_full_multi);
 	/* Test flash erase/write fail case */
 	RUN_TEST(test_write_fail);
-	/* Test shared_mem not available case */
-	RUN_TEST(test_cache_not_available);
 	/* Test buffer overflow logic */
 	RUN_TEST(test_buffer_overflow);
 	/* Test NvMem Move function */
