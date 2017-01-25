@@ -206,6 +206,23 @@
     },
     {
       "key": {
+        "uuid": "75faf7b9_f8877de6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-25T23:12:54Z",
+      "side": 1,
+      "message": "We can\u0027t tell which is the wake pin. So we can\u0027t tell the difference between missing a transition on plt_rst_l and some other pin waking us up.",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "551cf5dc_a3b1359f",
         "filename": "board/cr50/board.c",
         "patchSetId": 8
