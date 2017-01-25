@@ -240,6 +240,23 @@
     },
     {
       "key": {
+        "uuid": "2eeb6061_0405015e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-25T23:36:41Z",
+      "side": 1,
+      "message": "You\u0027re right. We do see the gpio interrupt mask set and they are called without us having to call them from the pmu wakeup interrupt\n\nI will add in the check to make sure that it is asserted for the FED gpio and deasserted for the RED gpio.",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "551cf5dc_a3b1359f",
         "filename": "board/cr50/board.c",
         "patchSetId": 8
