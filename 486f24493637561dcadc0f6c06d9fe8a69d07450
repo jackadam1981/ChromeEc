@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "3e57a593_a92e6418",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-25T00:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 319,
+        "startChar": 2,
+        "endLine": 320,
+        "endChar": 13
+      },
+      "revId": "486f24493637561dcadc0f6c06d9fe8a69d07450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a864120b_0c462713",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 3
@@ -48,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "4872804d_5b04935b",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-25T00:47:27Z",
+      "side": 1,
+      "message": "Yes, it\u0027s removed now.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "486f24493637561dcadc0f6c06d9fe8a69d07450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a864120b_ac429bfb",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 3
@@ -59,6 +105,29 @@
       "writtenOn": "2017-01-24T10:24:17Z",
       "side": 1,
       "message": "nit: EC_ERROR_INVAL",
+      "range": {
+        "startLine": 79,
+        "startChar": 9,
+        "endLine": 79,
+        "endChar": 25
+      },
+      "revId": "486f24493637561dcadc0f6c06d9fe8a69d07450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ce00a57_b184bf8e",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-25T00:47:27Z",
+      "side": 1,
+      "message": "Done",
       "range": {
         "startLine": 79,
         "startChar": 9,
