@@ -223,6 +223,23 @@
     },
     {
       "key": {
+        "uuid": "aac232cc_9e4d2681",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-25T23:14:44Z",
+      "side": 1,
+      "message": "How can you not? You have 2 GPIOs in gpio.inc with the handler set? PLT_RST_L_RED and PLT_RST_L_FED those are distinct GPIOs which call the same handler when their mask is set.",
+      "revId": "35d2f10c00c2f92573ad23da62a8cde69623174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "551cf5dc_a3b1359f",
         "filename": "board/cr50/board.c",
         "patchSetId": 8
