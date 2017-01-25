@@ -118,7 +118,7 @@ static const struct fast_charge_params fast_chg_params_smp_cos4870 = {
 };
 
 const struct battery_info batt_info_smp_cos4870 = {
-	.voltage_max = 8700,	/* mV */
+	.voltage_max = 8656,	/* 8700mV. Reduced for 0.5% margin. */
 	.voltage_normal = 7600,
 	/*
 	 * Actual value 6000mV, added 100mV for charger accuracy so that
@@ -162,7 +162,7 @@ static const struct fast_charge_params fast_chg_params_sonycorp = {
 };
 
 const struct battery_info batt_info_sonycorp = {
-	.voltage_max = 8700,	/* mV */
+	.voltage_max = 8656,	/* 8700mV. Reduced for 0.5% margin. */
 	.voltage_normal = 7600,
 
 	/*
@@ -216,7 +216,7 @@ static const struct fast_charge_params fast_chg_params_panasonic = {
 };
 
 const struct battery_info batt_info_panasoic = {
-	.voltage_max = 8800,	/* mV */
+	.voltage_max = 8756,	/* 8800mV. Reduced for 0.5% margin. */
 	.voltage_normal = 7700,
 
 	/*
@@ -324,7 +324,7 @@ static const struct fast_charge_params fast_chg_params_cpt_c22n1626 = {
 };
 
 const struct battery_info batt_info_c22n1626 = {
-	.voltage_max = 8800,	/* mV */
+	.voltage_max = 8756,	/* 8800mV. Reduced for 0.5% margin. */
 	.voltage_normal = 7700,
 
 	/*
