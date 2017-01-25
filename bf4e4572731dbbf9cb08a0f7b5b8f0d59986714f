@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f9a3da3_77435da0",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-25T09:17:43Z",
+      "side": 1,
+      "message": "sleeping here for 50ms when called from the PD state machine is not really great as it is always supposed to react faster than this (but for this case, probably mostly harmless given where it is called)\nAs we still have the open issue of a DUT taking some time to boot to test mode (and thus missing this detection)\nMaybe it would be better to move this code in a deferred function. Call it the first after PD_POWER_SUPPLY_TURN_ON_DELAY and if we reach the last else clause, continue calling it every 100ms or so until we detect something or get the disable.",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 3
+      },
+      "revId": "bf4e4572731dbbf9cb08a0f7b5b8f0d59986714f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
