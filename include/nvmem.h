@@ -35,7 +35,7 @@
  *
  * Note that the NvMem partitions can be placed anywhere in flash space, but
  * must be equal in total size. A table is used by the NvMem module to get the
- * correct base address and offset for each partition.
+ * correct base address for each partition.
  *
  * A generation number is used to distinguish between two valid partitions with
  * the newsest generation number (in a circular sense) marking the correct
@@ -54,8 +54,8 @@
  * The board.h file must define a macro or enum named NVMEM_NUM_USERS.
  * The board.c file must implement:
  *    nvmem_user_sizes[] -> array of user buffer lengths
- *    nvmem_compute_sha() -> function used to compute 4 byte sha (or equivalent)
- *    nvmem_wipe() -> function to erase and reformat the users' storage
+ * The chip must provide
+ *    app_compute_hash() -> function used to compute 16 byte sha (or equivalent)
  *
  * Note that total length of user buffers must satisfy the following:
  *   sum(user sizes) <= (NVMEM_PARTITION_SIZE) - sizeof(struct nvmem_tag)
@@ -167,12 +167,10 @@ int nvmem_commit(void);
  *
  * This function should be called when NvMem needs to be wiped out.
  *
- * @param generation: Starting generation number of partition 0
- *
  * @return EC_SUCCESS if flash operations are successful.
  *         EC_ERROR_UNKNOWN otherwise.
  */
-int nvmem_setup(uint8_t generation);
+int nvmem_setup(void);
 
 /*
  * Temporarily stopping NVMEM commits could be beneficial. One use case is
