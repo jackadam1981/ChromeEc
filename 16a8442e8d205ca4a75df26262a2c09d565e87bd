@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "8f5f8aae_abb9837c",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-26T21:51:44Z",
+      "side": 1,
+      "message": "It was random, replaced.",
+      "revId": "16a8442e8d205ca4a75df26262a2c09d565e87bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51ecd5f2_369ba735",
         "filename": "chip/g/dcrypto/key_ladder.c",
         "patchSetId": 3
@@ -30,6 +47,29 @@
       "writtenOn": "2017-01-26T18:10:47Z",
       "side": 1,
       "message": "dcrypto_release is missing",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 9
+      },
+      "revId": "16a8442e8d205ca4a75df26262a2c09d565e87bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7207b8ec_0112be64",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-26T21:51:44Z",
+      "side": 1,
+      "message": "Glad to see code is actually reviewed ;-)  Done.",
       "range": {
         "startLine": 187,
         "startChar": 3,
