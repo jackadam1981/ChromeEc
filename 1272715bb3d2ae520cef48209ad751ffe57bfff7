@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20c01b3b_d0f0eb0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T20:44:03Z",
+      "side": 1,
+      "message": "asynchronously to the EC.",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "1272715bb3d2ae520cef48209ad751ffe57bfff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08233f7e_5fdd09ab",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T20:44:03Z",
+      "side": 1,
+      "message": "same comment as commit message",
+      "revId": "1272715bb3d2ae520cef48209ad751ffe57bfff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
