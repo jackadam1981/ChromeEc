@@ -125,6 +125,29 @@
       "revId": "1272715bb3d2ae520cef48209ad751ffe57bfff7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b365a3a0_6276cf75",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-26T21:13:44Z",
+      "side": 1,
+      "message": "Instead of using motion_sense_should_switch_sensor_rate() I will call this here\nhook_call_deferred(\u0026motion_sense_switch_sensor_rate_data, CONFIG_MOTION_SENSE_SUSPEND_DELAY);\ndefault\n#define CONFIG_MOTION_SENSE_SUSPEND_DELAY 0\nreef: #define CONFIG_MOTION_SENSE_SUSPEND_DELAY 50",
+      "range": {
+        "startLine": 544,
+        "startChar": 1,
+        "endLine": 544,
+        "endChar": 35
+      },
+      "revId": "1272715bb3d2ae520cef48209ad751ffe57bfff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
