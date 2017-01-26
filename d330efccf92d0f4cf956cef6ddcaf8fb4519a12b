@@ -39,6 +39,23 @@
       "revId": "d330efccf92d0f4cf956cef6ddcaf8fb4519a12b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e2e3789_d1d431e8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2017-01-26T18:24:20Z",
+      "side": 1,
+      "message": "Agree with Aaron above.\n\nAlso, this doesn\u0027t cover the case where the values are different for S0 and S3. \n\nIf we were to do something, a better option may be to use a deferred function to switch rate. By the time the deferred function gets called which shouldn\u0027t be much time at all (I see it takes 3 ms to go from S3 to S5 in EC Logs), we would already be in S5 and sensor_active would be SENSOR_ACTIVE_S5 for which we don\u0027t set rates in reef.",
+      "revId": "d330efccf92d0f4cf956cef6ddcaf8fb4519a12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
