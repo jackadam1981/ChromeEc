@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_USB_PD_TCPM_H
 #define __CROS_EC_USB_PD_TCPM_H
 
+#include "ec_commands.h"
+
 /* Default retry count for transmitting */
 #define PD_RETRY_COUNT 3
 
@@ -194,6 +196,18 @@ struct tcpm_drv {
 	 * @return EC_SUCCESS or error
 	 */
 	int (*drp_toggle)(int port);
+#endif
+
+#ifdef CONFIG_USB_PD_TCPC_FW_VERSION
+	/**
+	 * Get firmware version.
+	 *
+	 * @param port Type-C port number
+	 * @param info Pointer to pointer to PD chip info
+	 *
+	 * @return EC_SUCCESS or error
+	 */
+	int (*get_chip_info)(int port, struct ec_response_pd_chip_info **info);
 #endif
 };
 
