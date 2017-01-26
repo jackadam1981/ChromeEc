@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "290bc666_54b264e3",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T21:04:33Z",
+      "side": 1,
+      "message": "yes, I should have been more accurate with terminology, a mutex is used.\n\nDoes the comment make more sense in that case? I will edit.",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9a8c48d_bb17b0e2",
         "filename": "common/nvmem.c",
         "patchSetId": 2
@@ -30,6 +47,23 @@
       "writtenOn": "2017-01-26T20:41:28Z",
       "side": 1,
       "message": "How many tasks are reading vs writing?",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60c96c4e_1bf935cb",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T21:04:33Z",
+      "side": 1,
+      "message": "It is not limited. If there is no write in progress - any number of tasks can read, each read enveloped in grabbing/releasing the mutex.\n\nIf a task writes something - only it can read or write until commit happens, all other taks\u0027 attempts to read or write will be stalled by the mutex.",
       "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -70,6 +104,23 @@
     },
     {
       "key": {
+        "uuid": "cad7715f_f2792e0d",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T21:04:33Z",
+      "side": 1,
+      "message": "when nvmem_setup is run on both partitions, they are initialized to the same empty state, so the generation value is the same on both partitions after that.\n\nregarding layout_version - good catch, I dropped it when cleaning up the patch, will re-add",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc6465f6_bb60f2e4",
         "filename": "common/nvmem.c",
         "patchSetId": 2
@@ -81,6 +132,29 @@
       "writtenOn": "2017-01-26T20:41:28Z",
       "side": 1,
       "message": "This should be taking a nvmem_partition. That function is assuming sizes of memory being passed in.",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 19
+      },
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7743edf0_d3002226",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T21:04:33Z",
+      "side": 1,
+      "message": "the thing is that the result is not always placed in the same location.\n\nThe fact that this is a static function in this file is the guarantee that it is using the correct size.",
       "range": {
         "startLine": 136,
         "startChar": 1,
@@ -116,6 +190,29 @@
     },
     {
       "key": {
+        "uuid": "dbd6c565_5db8eeab",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T21:04:33Z",
+      "side": 1,
+      "message": "good catch, let me drop this.",
+      "range": {
+        "startLine": 360,
+        "startChar": 24,
+        "endLine": 360,
+        "endChar": 42
+      },
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3583b043_c1a95994",
         "filename": "common/nvmem.c",
         "patchSetId": 2
@@ -133,6 +230,23 @@
     },
     {
       "key": {
+        "uuid": "75310c34_b0fc55cf",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T21:04:33Z",
+      "side": 1,
+      "message": "I don\u0027t see this as odd, this is the main idea of how this works. There are two partitions in flash so that there is a valid partition at all times. If there are two - the younger one is used.\n\nMutating here is necessary to make sure that nvmem_save() writes both partitions to flash. If it were called with the same contents of the cache, it would not write the second instance.",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e26e439_0fb21708",
         "filename": "common/nvmem.c",
         "patchSetId": 2
@@ -144,6 +258,23 @@
       "writtenOn": "2017-01-26T20:41:28Z",
       "side": 1,
       "message": "to make all this symmetrical I\u0027d expect nvmem_release_cache() on these mutating operations. You put the guard in place to ensure write_in_progress is cleared before dropping the lock.",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ef72e86_c70874d1",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T21:04:33Z",
+      "side": 1,
+      "message": "I am not sure I understand this comment\n\ncache can\u0027t be released until the contents are written into the flash, the lock is what keeps the cache protected, so it is not dropped here (if dropping the lock means unlocking).",
       "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
