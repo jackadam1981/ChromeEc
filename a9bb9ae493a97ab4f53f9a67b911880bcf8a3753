@@ -48,6 +48,52 @@
     },
     {
       "key": {
+        "uuid": "e70243c6_e0e6b99d",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-26T17:31:03Z",
+      "side": 1,
+      "message": "nit: should this be \u0027in\u0027?",
+      "range": {
+        "startLine": 21,
+        "startChar": 43,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66a1e421_09568802",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-26T17:31:03Z",
+      "side": 1,
+      "message": "typo semaphore",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 11
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d701af7_76405e9a",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -91,6 +137,29 @@
       "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "842a2e2a_60f82c10",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-26T17:31:03Z",
+      "side": 1,
+      "message": "Maybe a comment here indicating that 0xff is being avoided as a generation number given that its the value of erased flash.",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 46
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
