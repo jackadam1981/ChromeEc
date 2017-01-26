@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4b506bd3_282778cc",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-26T17:11:07Z",
+      "side": 1,
+      "message": "Where is this used?",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63af5c1b_57c74d00",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -22,6 +45,75 @@
       "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d701af7_76405e9a",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-26T17:11:07Z",
+      "side": 1,
+      "message": "p",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 12
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9dd73c0_f5cb256f",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-26T17:11:07Z",
+      "side": 1,
+      "message": "++ ?",
+      "range": {
+        "startLine": 133,
+        "startChar": 16,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9c17c4e_524ff9d5",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-26T17:11:07Z",
+      "side": 1,
+      "message": "++?",
+      "range": {
+        "startLine": 135,
+        "startChar": 17,
+        "endLine": 135,
+        "endChar": 22
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
