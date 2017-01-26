@@ -116,6 +116,23 @@
     },
     {
       "key": {
+        "uuid": "57c0994a_c7a65fa6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-26T23:54:09Z",
+      "side": 1,
+      "message": "To avoid any i2c errors when we entering S5, we should have set the sensor state to SENSOR_NOT_INITIALIZED while still in S0, otherwise motion_sense task would trigger some while reading the sensors just before HOOK_CHIPSET_SHUTDOWN hook is executed.\n\nShould have something like EC_CMD_HOST_SLEEP_EVENT when going to S5 where we can tell the EC ahead of time the power is going out? We could trigger HOOK_CHIPSET_SHUTDOWN on it.",
+      "revId": "1272715bb3d2ae520cef48209ad751ffe57bfff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c9f8cb8_f1eebe2f",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
@@ -144,6 +161,23 @@
       "writtenOn": "2017-01-26T21:43:32Z",
       "side": 1,
       "message": "That\u0027s not true, sadly. The comment is wrong and is largely dependent on the platform design. For x86 systems where we don\u0027t proxy S3_L or S5_L to the power control these states happen asynchronously. I actually don\u0027t know any system I\u0027ve worked on where the EC had control over those to make that comment valid.",
+      "revId": "1272715bb3d2ae520cef48209ad751ffe57bfff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d22d909a_d4e286db",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-26T23:54:09Z",
+      "side": 1,
+      "message": "rockship, braswell, haswell,  have it easy :-):\n\n...\n  case POWER_S3S5:\n    /* Call hooks before we remove power rails */\n    hook_notify(HOOK_CHIPSET_SHUTDOWN);\n...",
       "revId": "1272715bb3d2ae520cef48209ad751ffe57bfff7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
