@@ -140,6 +140,29 @@
     },
     {
       "key": {
+        "uuid": "5b87eae2_b4e6c2e7",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-26T16:28:54Z",
+      "side": 1,
+      "message": "this still the case (see STM32_CRS_CR...)",
+      "range": {
+        "startLine": 858,
+        "startChar": 0,
+        "endLine": 867,
+        "endChar": 41
+      },
+      "revId": "614e2a452a03c64b65920d9a0522f52d03199e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "234b04d3_1ae6295a",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 1
