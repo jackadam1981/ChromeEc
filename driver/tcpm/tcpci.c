@@ -5,6 +5,8 @@
 
 /* Type-C port manager */
 
+#include "anx74xx.h"
+#include "ps8751.h"
 #include "task.h"
 #include "tcpci.h"
 #include "tcpm.h"
@@ -351,6 +353,49 @@ int tcpci_tcpm_init(int port)
 	}
 }
 
+int tcpci_get_chip_info(int port, struct pd_chip_info *info)
+{
+	int error;
+	int val;
+
+	memset(info, 0xff, sizeof(*info));
+
+	error = tcpc_read16(port, TCPC_REG_VENDOR_ID, &val);
+	if (error)
+		return error;
+	info->vendor_id = val;
+
+	error = tcpc_read16(port, TCPC_REG_PRODUCT_ID, &val);
+	if (error)
+		return error;
+	info->product_id = val;
+
+	error = tcpc_read16(port, TCPC_REG_BCD_DEV, &val);
+	if (error)
+		return error;
+	info->device_id = val;
+
+	switch(info->vendor_id) {
+#ifdef CONFIG_USB_PD_TCPM_ANX74XX
+	case ANX74XX_VENDOR_ID:
+		error = anx74xx_tcpc_get_fw_version(port, &val);
+		break;
+#endif
+#ifdef CONFIG_USB_PD_TCPM_PS8751
+	case PS8751_VENDOR_ID:
+		error = ps8751_tcpc_get_fw_version(port, &val);
+		break;
+#endif
+	default:
+		error = EC_ERROR_UNIMPLEMENTED;
+	}
+	if (error)
+		return error;
+	info->fw_version = val;
+
+	return EC_SUCCESS;
+}
+
 #ifdef CONFIG_USB_PD_TCPM_MUX
 
 int tcpci_tcpm_mux_init(int i2c_addr)
@@ -432,4 +477,5 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	.drp_toggle	= &tcpci_tcpc_drp_toggle,
 #endif
+	.get_chip_info		= &tcpci_get_chip_info,
 };
