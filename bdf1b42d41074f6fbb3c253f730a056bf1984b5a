@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54e28edd_ae5634a8",
+        "filename": "board/reef/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T23:48:14Z",
+      "side": 1,
+      "message": "This is the place put that bigger comment about the specifics of the platform.",
+      "revId": "bdf1b42d41074f6fbb3c253f730a056bf1984b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8ba8ac5_ed12d080",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T23:48:14Z",
+      "side": 1,
+      "message": "I think you should note about being able to delay the call through a configuration option such that it handles the sensors dropping out asynchronously.",
+      "revId": "bdf1b42d41074f6fbb3c253f730a056bf1984b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb3ecd00_4495b667",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T23:48:14Z",
+      "side": 1,
+      "message": "Since this is already called from a hook callback we just queue this up and get to eventually, right?",
+      "revId": "bdf1b42d41074f6fbb3c253f730a056bf1984b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dda93f47_52728cde",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T23:48:14Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to duplicate this comment. Just explain what it\u0027s used for.",
+      "revId": "bdf1b42d41074f6fbb3c253f730a056bf1984b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
