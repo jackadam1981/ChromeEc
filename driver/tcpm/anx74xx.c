@@ -9,6 +9,7 @@
 
 #include "anx74xx.h"
 #include "task.h"
+#include "tcpci.h"
 #include "tcpm.h"
 #include "timer.h"
 #include "usb_charge.h"
@@ -16,6 +17,11 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpc.h"
 #include "util.h"
+
+#if !defined(CONFIG_USB_PD_TCPM_TCPCI)
+#error "ANX74xx is using part of standard TCPCI control"
+#error "Please upgrade your board configuration"
+#endif
 
 struct anx_state {
 	int	polarity;
@@ -909,6 +915,7 @@ const struct tcpm_drv anx74xx_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &anx74xx_tcpc_discharge_vbus,
 #endif
+	.get_chip_info		= &tcpci_get_chip_info,
 };
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
