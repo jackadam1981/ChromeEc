@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a4bffec_bac26db9",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T23:12:31Z",
+      "side": 1,
+      "message": "this comment makes me worry: how much slower does this function become if the check is in place? It is ok to lose a few percents of speed here but be certain that there has been no delays in the hardware for whatever reason.",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ace498f_87ab9dab",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T23:12:31Z",
+      "side": 1,
+      "message": "wouldn\u0027t \nwhile (GREG32(KEYMGR, AES_KEY_START))\n   ;\n\naccomplish the same with less code?",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 10
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85eca050_8a4ded7e",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T23:12:31Z",
+      "side": 1,
+      "message": "why does this have to be in a block? Note that the compiler inlines static functions anyways, so this block just as well could be in its own function.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f138629d_b3ff4d37",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T23:12:31Z",
+      "side": 1,
+      "message": "look like this could be an if() as inner_loop guarantees that it is less than 16 in the end. And would save you one comparison.",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 19
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c600b2c_c74531ac",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T23:12:31Z",
+      "side": 1,
+      "message": "how does this work - looks like inner_loop can shove data into registers and read back values without any sync, but on the last access it becomes important to sync up with the hardware?\n\nA comment would be helpful here.",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 37
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "219dde33_c8110a15",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T23:12:31Z",
+      "side": 1,
+      "message": "simple while(); would do",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 43
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21d33107_0e8a6692",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T23:12:31Z",
+      "side": 1,
+      "message": "how does this work - is DCRYPTO_aes_block the same as code in lines 109..125?",
+      "range": {
+        "startLine": 134,
+        "startChar": 7,
+        "endLine": 134,
+        "endChar": 25
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51715891_dfc81395",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T23:12:31Z",
+      "side": 1,
+      "message": "do is not needed.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 37
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
