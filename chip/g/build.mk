@@ -28,8 +28,6 @@ chip-y += uart.o
 chip-y += uartn.o
 endif
 
-chip-$(CONFIG_DCRYPTO)+= crypto_api.o
-
 chip-$(CONFIG_DCRYPTO)+= dcrypto/aes.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/app_cipher.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/app_key.o
