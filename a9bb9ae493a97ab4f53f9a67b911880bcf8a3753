@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "d6b2bd93_7fa26da1",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T19:32:20Z",
+      "side": 1,
+      "message": "it is used as an invalid value for partition number setting when there is no valid partitions in flash.",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63af5c1b_57c74d00",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -36,6 +59,29 @@
       "writtenOn": "2017-01-26T15:23:37Z",
       "side": 1,
       "message": "NVMEM contents that is",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bca69564_7c0f8fd6",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T19:32:20Z",
+      "side": 1,
+      "message": "Done",
       "range": {
         "startLine": 20,
         "startChar": 7,
@@ -71,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "b18ec043_a5a7792c",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T19:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 21,
+        "startChar": 43,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66a1e421_09568802",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -82,6 +151,29 @@
       "writtenOn": "2017-01-26T17:31:03Z",
       "side": 1,
       "message": "typo semaphore",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 11
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a70d62ae_b548b217",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T19:32:20Z",
+      "side": 1,
+      "message": "Done",
       "range": {
         "startLine": 37,
         "startChar": 3,
@@ -117,6 +209,29 @@
     },
     {
       "key": {
+        "uuid": "f663fff4_d8007ffa",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T19:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 12
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39303c52_7fc7911e",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -140,6 +255,29 @@
     },
     {
       "key": {
+        "uuid": "bed37c9f_9c8d764d",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T19:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 26
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9dd73c0_f5cb256f",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -151,6 +289,29 @@
       "writtenOn": "2017-01-26T17:11:07Z",
       "side": 1,
       "message": "++ ?",
+      "range": {
+        "startLine": 133,
+        "startChar": 16,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "843f2638_631012ff",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T19:32:20Z",
+      "side": 1,
+      "message": "Done",
       "range": {
         "startLine": 133,
         "startChar": 16,
@@ -226,6 +387,23 @@
     },
     {
       "key": {
+        "uuid": "2d813583_b344d508",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T19:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9c17c4e_524ff9d5",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -249,6 +427,29 @@
     },
     {
       "key": {
+        "uuid": "df2e18fd_b8ac4677",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T19:32:20Z",
+      "side": 1,
+      "message": "dropped",
+      "range": {
+        "startLine": 135,
+        "startChar": 17,
+        "endLine": 135,
+        "endChar": 22
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f96ac5d6_8c8c058f",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -260,6 +461,29 @@
       "writtenOn": "2017-01-26T17:38:51Z",
       "side": 1,
       "message": "use \u0026 -\u003ebuffer instead",
+      "range": {
+        "startLine": 141,
+        "startChar": 27,
+        "endLine": 141,
+        "endChar": 34
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bcb00b8_cd508c8b",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T19:32:20Z",
+      "side": 1,
+      "message": "changed to pacify coverity",
       "range": {
         "startLine": 141,
         "startChar": 27,
