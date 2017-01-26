@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d70db815_7a85f406",
+        "filename": "board/eve/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-26T20:12:41Z",
+      "side": 0,
+      "message": "To make this work we need add below function (from Reef) in board/eve/battery.c\nstatic int charger_should_discharge_on_ac(struct charge_state_data *curr)",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 468,
+        "endChar": 30
+      },
+      "revId": "7a4eac1bed523e0f37597efcf1b887d996a037f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
