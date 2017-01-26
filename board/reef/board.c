@@ -25,6 +25,7 @@
 #include "driver/tcpm/ps8751.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
+#include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -230,6 +231,8 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
 	{NPCX_I2C_PORT0_1, 0x16, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
 };
+
+struct ec_response_pd_chip_info tcpc_info[CONFIG_USB_PD_PORT_COUNT];
 
 uint16_t tcpc_get_alert_status(void)
 {
