@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d994b58a_9cc79388",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T20:41:28Z",
+      "side": 1,
+      "message": "I don\u0027t see where these semaphore semantics are provided in this patch. I see a mutex. This usage of the term semaphore suggests multiple readers when in fact there\u0027s only single users.",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9a8c48d_bb17b0e2",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T20:41:28Z",
+      "side": 1,
+      "message": "How many tasks are reading vs writing?",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f6cab25_254c4f5c",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T20:41:28Z",
+      "side": 1,
+      "message": "Why didn\u0027t you just make this struct nvmem_partition? Oh. We\u0027re doing raw byte offset comparisons in the code below.",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1c30209_bc711362",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T20:41:28Z",
+      "side": 1,
+      "message": "where does part get correctly set up when this function is called from nvmem_setup()? Or layout_version for that matter.",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc6465f6_bb60f2e4",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T20:41:28Z",
+      "side": 1,
+      "message": "This should be taking a nvmem_partition. That function is assuming sizes of memory being passed in.",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 19
+      },
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "518c2cef_0cae716f",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T20:41:28Z",
+      "side": 1,
+      "message": "this doesn\u0027t appear to be used any longer.",
+      "range": {
+        "startLine": 360,
+        "startChar": 24,
+        "endLine": 360,
+        "endChar": 42
+      },
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3583b043_c1a95994",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T20:41:28Z",
+      "side": 1,
+      "message": "We have a single cache, but potentially multiple partitions? That seems super odd. We\u0027re mutating the nvmem_cache for NVMEM_NUM_PARTITONS?",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e26e439_0fb21708",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T20:41:28Z",
+      "side": 1,
+      "message": "to make all this symmetrical I\u0027d expect nvmem_release_cache() on these mutating operations. You put the guard in place to ensure write_in_progress is cleared before dropping the lock.",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
