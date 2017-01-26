@@ -22,6 +22,97 @@
       "revId": "8c9ba3b855aed1da9b87faf93cf1ef52ae84634c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b35f9c6_a5bef7a9",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T23:35:51Z",
+      "side": 1,
+      "message": "This function looks like it can be called from any context. My concern is that we lock things  accordingly. We\u0027re clobbering lots of globals from any number contexts that could be pre-empted.",
+      "range": {
+        "startLine": 657,
+        "startChar": 14,
+        "endLine": 657,
+        "endChar": 59
+      },
+      "revId": "8c9ba3b855aed1da9b87faf93cf1ef52ae84634c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572fc2d8_b0cb745e",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T23:35:51Z",
+      "side": 1,
+      "message": "So we can\u0027t accumulate wipes or reboots if a reset is already pending. That breaks the semantics of a lot of the callers. This function is about requesting action. I think we should honor the requests as best we can. Or at least document how we can drop requests on the floor (which I think is a bad idea).",
+      "revId": "8c9ba3b855aed1da9b87faf93cf1ef52ae84634c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92299e35_f24615fa",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T23:35:51Z",
+      "side": 1,
+      "message": "tpm_reset_now() shouldn\u0027t take any parameters. The function can pull the requests from the state it\u0027s keeping. I suggest we put the information into a struct such that it\u0027s easy to reason about the globals that would be set during a reboot request.\n\nThis call here can be replaced with this:\n\ntpm_request_reset().",
+      "revId": "8c9ba3b855aed1da9b87faf93cf1ef52ae84634c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d268a38_6de9f505",
+        "filename": "include/tpm_registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T23:35:51Z",
+      "side": 1,
+      "message": "We\u0027re making requests. Let\u0027s put that formally into the name so it reads better at the call sites.",
+      "revId": "8c9ba3b855aed1da9b87faf93cf1ef52ae84634c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3accd3b_04e0f078",
+        "filename": "include/tpm_registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T23:35:51Z",
+      "side": 1,
+      "message": "This function can be dropped. No one is using it any more.",
+      "revId": "8c9ba3b855aed1da9b87faf93cf1ef52ae84634c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
