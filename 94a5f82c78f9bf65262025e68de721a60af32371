@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fb688fc_4434c313",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T23:07:53Z",
+      "side": 1,
+      "message": "I think we should assert/ensure mutex.task \u003d\u003d task_get_current().",
+      "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5880d0e9_1e5411bd",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T23:07:53Z",
+      "side": 1,
+      "message": "From the nvmem_setup() path we\u0027d have the same generation number. That\u0027s OK on initial setup?",
+      "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ef2fde5_55018896",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T23:07:53Z",
+      "side": 1,
+      "message": "This is sort of subtle as you are making the sha be {0x0, 0xff, ... , 0xff }.  And computing the sha of the { 0xff..0xff } buffer (including layout_version, padding, reserved, etc). If you just cycle through a few generation numbers you\u0027d get the same thing -- but more explicitly after setting the metadata inline with expectations. Something to think about. right now everything is 0xff\u0027s except sha, generation, and layout_version.\n\nOn that note, you end up with both slots occupied with the same generation number once you are done w/ this loop.",
+      "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "006d1ba4_dc75a140",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T23:07:53Z",
+      "side": 1,
+      "message": "Isn\u0027t it more appropriate here to call nvmem_lock_cache()? The task which did the write() should be the one to commit, no? Additionally, nvmem_save() would know if something hasn\u0027t changed. That way, we\u0027re not assuming implementation details of the nvmem_mutex() outside of the lock and unlock functions (ignoring us setting write_in_progress);",
+      "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
