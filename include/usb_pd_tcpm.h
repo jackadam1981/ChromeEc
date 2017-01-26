@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_USB_PD_TCPM_H
 #define __CROS_EC_USB_PD_TCPM_H
 
+#include "ec_commands.h"
+
 /* Default retry count for transmitting */
 #define PD_RETRY_COUNT 3
 
@@ -207,6 +209,7 @@ struct tcpc_config_t {
 	int i2c_slave_addr;
 	const struct tcpm_drv *drv;
 	enum tcpc_alert_polarity pol;
+	struct ec_response_pd_chip_info chip_info;
 };
 
 /**
