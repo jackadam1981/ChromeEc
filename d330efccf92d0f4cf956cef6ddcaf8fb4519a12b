@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "b242a9ec_7cea9424",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-26T19:42:42Z",
+      "side": 1,
+      "message": "yes, SWA1 rail goes off even before we set PMIC_EN\u003d0 in EC. That means EC doesnt have control over the sensor rails.",
+      "range": {
+        "startLine": 430,
+        "startChar": 15,
+        "endLine": 430,
+        "endChar": 31
+      },
+      "revId": "d330efccf92d0f4cf956cef6ddcaf8fb4519a12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd4b4117_77ebd81e",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -36,6 +59,23 @@
       "writtenOn": "2017-01-26T18:08:46Z",
       "side": 1,
       "message": "But doing this doesn\u0027t completely mitigate the problem, right? We could be needing to access the chip at the wrong time when it\u0027s being powered down, and we\u0027d hit the same issue, right?",
+      "revId": "d330efccf92d0f4cf956cef6ddcaf8fb4519a12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95ce7fe1_13ce8f36",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-26T19:42:42Z",
+      "side": 1,
+      "message": "motion_sense_suspend() at HOOK_CHIPSET_SUSPEND function calls this function. In S3 case this works just fine.\nIn S5 case PMIC already shutdown sensor rails even before we start servicing this function.",
       "revId": "d330efccf92d0f4cf956cef6ddcaf8fb4519a12b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -70,6 +110,23 @@
       "writtenOn": "2017-01-26T18:27:49Z",
       "side": 1,
       "message": "I think we may just need to live with the current behavior. The load switch is disabled asynchronously so there\u0027s not a lot we can do. This will just suppress the messages for some of the cases.",
+      "revId": "d330efccf92d0f4cf956cef6ddcaf8fb4519a12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db5fad2f_8504be23",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-26T19:42:42Z",
+      "side": 1,
+      "message": "We need to change the rate when in actual S3 case.",
       "revId": "d330efccf92d0f4cf956cef6ddcaf8fb4519a12b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
