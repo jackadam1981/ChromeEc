@@ -64,6 +64,12 @@ void ps8751_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
 #ifdef CONFIG_USB_PD_TCPC_FW_VERSION
 int ps8751_tcpc_get_fw_version(int port, int *version)
 {
+	int dummy;
+
+	/* Wake up the chip */
+	tcpc_read(PS8751_SLAVE0, PS8751_REG_WAKE, &dummy);
+	msleep(10);
+
 	return tcpc_read(port, PS8751_REG_VERSION, version);
 }
 #endif
