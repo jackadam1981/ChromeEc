@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32833d9d_072b05c4",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-26T18:10:47Z",
+      "side": 1,
+      "message": "what the magic number? sha256(\"ISR_SALT\") or real magic?",
+      "revId": "16a8442e8d205ca4a75df26262a2c09d565e87bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51ecd5f2_369ba735",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-26T18:10:47Z",
+      "side": 1,
+      "message": "dcrypto_release is missing",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 9
+      },
+      "revId": "16a8442e8d205ca4a75df26262a2c09d565e87bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
