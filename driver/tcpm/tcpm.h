@@ -9,6 +9,7 @@
 #define __CROS_EC_USB_PD_TCPM_TCPM_H
 
 #include "common.h"
+#include "ec_commands.h"
 #include "gpio.h"
 #include "i2c.h"
 #include "usb_pd_tcpm.h"
@@ -20,7 +21,7 @@
 #endif
 
 #ifndef CONFIG_USB_PD_TCPC
-extern const struct tcpc_config_t tcpc_config[];
+extern struct tcpc_config_t tcpc_config[];
 
 /* I2C wrapper functions - get I2C port / slave addr from config struct. */
 static inline int tcpc_write(int port, int reg, int val)
@@ -161,6 +162,11 @@ static inline int tcpc_i2c_write(const int port, const int addr,
 	return tcpc_write(port, reg, data);
 }
 #endif
+
+static inline struct ec_response_pd_chip_info *tcpc_get_chip_info(int port)
+{
+	return &tcpc_config[port].chip_info;
+}
 
 #else
 
