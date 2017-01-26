@@ -102,6 +102,80 @@
       "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bfc123_aeb927e6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T18:26:35Z",
+      "side": 1,
+      "message": "I\u0027ve had some time to think through this more. I\u0027m ok with this approach. Thanks for being patient.",
+      "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8754d65_c19cd48a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T18:26:35Z",
+      "side": 1,
+      "message": "Or are racing with the changing signal.",
+      "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45f46d4c_6c14c385",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T18:26:35Z",
+      "side": 1,
+      "message": "I think it\u0027d be good to note in a comment that we\u0027re using the current gpio level as authoritative for the current device state.",
+      "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05f47f1c_9b48029f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T18:26:35Z",
+      "side": 1,
+      "message": "Did you pick FED because it\u0027s our most likely original state? If so, can you please comment on that assumption.",
+      "range": {
+        "startLine": 660,
+        "startChar": 18,
+        "endLine": 660,
+        "endChar": 35
+      },
+      "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
