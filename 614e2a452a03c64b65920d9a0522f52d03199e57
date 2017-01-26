@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "812fdcbf_7f5159e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-26T10:48:22Z",
+      "side": 1,
+      "message": "if some EE are available, maybe interesting to do a USB2.0 eye-diagram before and after to check whether the improvement is visible on our TX.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "614e2a452a03c64b65920d9a0522f52d03199e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c641f5f_c34811c1",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-26T10:48:22Z",
+      "side": 1,
+      "message": "usually we don\u0027t re-do the reset since it\u0027s already reset at PoR.",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 42
+      },
+      "revId": "614e2a452a03c64b65920d9a0522f52d03199e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61432637_1c1e3236",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-26T10:48:22Z",
+      "side": 1,
+      "message": "if there is no alternative address for F3, rather than adding one level of #ifdef nesting, please just comment /* STM32F0x2 next to it */",
+      "range": {
+        "startLine": 849,
+        "startChar": 0,
+        "endLine": 849,
+        "endChar": 32
+      },
+      "revId": "614e2a452a03c64b65920d9a0522f52d03199e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85b8c67f_79024a60",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-26T10:48:22Z",
+      "side": 1,
+      "message": "(n)",
+      "range": {
+        "startLine": 860,
+        "startChar": 0,
+        "endLine": 860,
+        "endChar": 47
+      },
+      "revId": "614e2a452a03c64b65920d9a0522f52d03199e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca6343d9_4470652e",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-26T10:48:22Z",
+      "side": 1,
+      "message": "(n)",
+      "range": {
+        "startLine": 863,
+        "startChar": 0,
+        "endLine": 866,
+        "endChar": 49
+      },
+      "revId": "614e2a452a03c64b65920d9a0522f52d03199e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43fb5c2c_0188fddc",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-26T10:48:22Z",
+      "side": 1,
+      "message": "nit: indentation is mixing spaces and tabs",
+      "range": {
+        "startLine": 858,
+        "startChar": 0,
+        "endLine": 867,
+        "endChar": 41
+      },
+      "revId": "614e2a452a03c64b65920d9a0522f52d03199e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "234b04d3_1ae6295a",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-26T10:48:22Z",
+      "side": 1,
+      "message": "not that we care about but actually STM32_CRS_ISR_SYNCWARNF",
+      "range": {
+        "startLine": 871,
+        "startChar": 8,
+        "endLine": 871,
+        "endChar": 32
+      },
+      "revId": "614e2a452a03c64b65920d9a0522f52d03199e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "890dd420_b4bfed43",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-26T10:48:22Z",
+      "side": 1,
+      "message": "(n)\n\nbut ... for a read-only register, this accessor is likely useless.\nyou might want :\nSTM32_CRS_ISR_FECAP_MASK  (0xffff \u003c\u003c 16)\nor maybe nothing",
+      "range": {
+        "startLine": 878,
+        "startChar": 0,
+        "endLine": 878,
+        "endChar": 52
+      },
+      "revId": "614e2a452a03c64b65920d9a0522f52d03199e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
