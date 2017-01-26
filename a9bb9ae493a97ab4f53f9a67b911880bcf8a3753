@@ -117,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "39303c52_7fc7911e",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T17:38:51Z",
+      "side": 1,
+      "message": "this must be enforced for 4 byte alignment",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 26
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9dd73c0_f5cb256f",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -163,6 +186,29 @@
     },
     {
       "key": {
+        "uuid": "a732b99f_192c87a1",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T17:38:51Z",
+      "side": 1,
+      "message": "actually, on the second thought: should we even care here about skipping the 0xff value?\n\nFirst, we now store encrypted contents in the flash, so this could be anything.\n\nSecond, we do hash verification, so there is no chance 0xff would be accepted as generation value if the hash does not match.\n\nI think we should do away with this check, would you agree?",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 46
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9c17c4e_524ff9d5",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -179,6 +225,29 @@
         "startChar": 17,
         "endLine": 135,
         "endChar": 22
+      },
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f96ac5d6_8c8c058f",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T17:38:51Z",
+      "side": 1,
+      "message": "use \u0026 -\u003ebuffer instead",
+      "range": {
+        "startLine": 141,
+        "startChar": 27,
+        "endLine": 141,
+        "endChar": 34
       },
       "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
