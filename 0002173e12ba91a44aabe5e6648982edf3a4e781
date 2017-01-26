@@ -105,6 +105,23 @@
     },
     {
       "key": {
+        "uuid": "ca0d7c7b_b133e4ce",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T18:51:46Z",
+      "side": 1,
+      "message": "If it\u0027s a hook we need to understand task priority w.r.t. tpm task. But I think it\u0027d be better to do this through a hook since we\u0027d be in a task context. However, I\u0027d still be concerned with multiple tasks going through tpm_reset() and accessing tpm_is_resetting().",
+      "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efae764b_0433bc65",
         "filename": "board/cr50/board.c",
         "patchSetId": 10
