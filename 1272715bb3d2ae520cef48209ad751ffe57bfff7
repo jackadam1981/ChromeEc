@@ -82,6 +82,40 @@
     },
     {
       "key": {
+        "uuid": "c6a8cef6_ad7e5951",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-26T21:35:59Z",
+      "side": 1,
+      "message": "But if we are using the sensor in S0 and S3 (accelerometer for lid angle for instance), we will still see the error.",
+      "revId": "1272715bb3d2ae520cef48209ad751ffe57bfff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c9f8cb8_f1eebe2f",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-26T21:35:59Z",
+      "side": 1,
+      "message": "the assumption is the sensor are still powered when we are executing HOOK_CHIPSET_SHUTDOWN hook.\nFrom include/hooks.h, the doc says:\n\nSystem is shutting down.  All suspend rails are still on.",
+      "revId": "1272715bb3d2ae520cef48209ad751ffe57bfff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9eac17f8_99409ca9",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
