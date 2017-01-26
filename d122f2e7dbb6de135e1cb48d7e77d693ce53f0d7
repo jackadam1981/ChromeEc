@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ea4bcba7_ad197338",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T23:15:02Z",
+      "side": 1,
+      "message": "in the code comments you are saying that -O is faster.\n\nHow much gain does it bring, will this advantage turn into disadvantage when compiler changes?",
+      "range": {
+        "startLine": 21,
+        "startChar": 14,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a4bffec_bac26db9",
         "filename": "chip/g/dcrypto/app_cipher.c",
         "patchSetId": 4
