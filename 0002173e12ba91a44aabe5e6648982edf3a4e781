@@ -122,6 +122,23 @@
     },
     {
       "key": {
+        "uuid": "ffba0375_8c26e83f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T18:53:02Z",
+      "side": 1,
+      "message": "how about interrupt sending an reset request event notification to the tpm task.\n\nNeed to take care about reboot request posted there though.",
+      "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efae764b_0433bc65",
         "filename": "board/cr50/board.c",
         "patchSetId": 10
