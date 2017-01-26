@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9ea8111_e8ef5738",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-26T17:15:24Z",
+      "side": 1,
+      "message": "Maybe not for this CL, but we can remove EC_HOST_EVENT_LID_OPEN. And, EC_HOST_EVENT_KEY_PRESSED seems only to be set from 8042, so we can remove it here and for all keyboard_mkbp boards -- maybe in another CL.",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 51
+      },
+      "revId": "96f0c371c6defc3759794bcf775375c112dad2fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
