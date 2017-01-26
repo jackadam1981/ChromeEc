@@ -352,6 +352,10 @@ void board_tcpc_init(void)
 
 		mux->hpd_update(port, 0, 0);
 	}
+
+	/* Modify Parade MUX USB setting */
+	tcpc_write(1, 0xE7, 0x50);
+	tcpc_write(1, 0xE8, 0x80);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
