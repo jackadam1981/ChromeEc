@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "754c6b89_744dc11a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-01-26T16:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 931,
+        "startChar": 0,
+        "endLine": 942,
+        "endChar": 2
+      },
+      "revId": "abec09371e16551f2d84a2ba3411cd8317a2011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c0a5037_3a569b50",
         "filename": "include/config.h",
         "patchSetId": 6
@@ -36,6 +59,29 @@
       "writtenOn": "2017-01-26T16:19:24Z",
       "side": 1,
       "message": "nit: should probably be now with the other CONFIG_USB_PD_ option around line 2137",
+      "range": {
+        "startLine": 2277,
+        "startChar": 0,
+        "endLine": 2278,
+        "endChar": 30
+      },
+      "revId": "abec09371e16551f2d84a2ba3411cd8317a2011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c2fb37_751cf0f0",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2278,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-01-26T16:41:04Z",
+      "side": 1,
+      "message": "Done",
       "range": {
         "startLine": 2277,
         "startChar": 0,
@@ -71,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "42f28744_220d7312",
+        "filename": "test/test_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-01-26T16:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 6
+      },
+      "revId": "abec09371e16551f2d84a2ba3411cd8317a2011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0c625c4_008e4477",
         "filename": "test/usb_pd.c",
         "patchSetId": 6
@@ -82,6 +151,29 @@
       "writtenOn": "2017-01-26T16:19:24Z",
       "side": 1,
       "message": "wouldn\u0027t be even better if we unconditionally define and execute this and just expect a different result at the final TEST_ASSERT ?",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 31
+      },
+      "revId": "abec09371e16551f2d84a2ba3411cd8317a2011f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52fadd0d_6e788211",
+        "filename": "test/usb_pd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-01-26T16:41:04Z",
+      "side": 1,
+      "message": "Done",
       "range": {
         "startLine": 348,
         "startChar": 0,
