@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "d1f8dc62_cf6eb40e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-01-26T23:58:56Z",
+      "side": 1,
+      "message": "I think the assumption is when the deferred call is processed, motion_sense_switch_sensor_rate() is called after the hook HOOK_CHIPSET_SHUTDOWN has been processed. At that time,given the sensor is in state un-initialized the frequency change becomes a noop.\nHowever, that does not address the case where the motion sense task is reading the sensors.",
+      "revId": "bdf1b42d41074f6fbb3c253f730a056bf1984b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dda93f47_52728cde",
         "filename": "include/config.h",
         "patchSetId": 3
