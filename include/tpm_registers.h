@@ -33,14 +33,13 @@ void tpm_register_interface(interface_restart_func interface_restart);
 /*
  * This requests the TPM task to reset itself.
  *
- * If wait_until_done is false, it returns EC_SUCCESS immediately. Otherwise it
- * returns EC_SUCCESS after the reset has completed, or an error code on
- * failure.
+ * If post_reboot_request is false, it returns EC_SUCCESS immediately. Otherwise
+ * it will wait until the system is reset.
  *
  * If wipe_nvmem_first is true, the EC and AP will be forced off and TPM memory
  * will be erased before the TPM task is reset.
  */
-int tpm_reset(int wait_until_done, int wipe_nvmem_first);
+int tpm_reset(int post_reboot_request, int wipe_nvmem_first);
 
 /*
  * Return true if the TPM is being reset. Usually this helps to avoid

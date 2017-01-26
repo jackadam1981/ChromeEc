@@ -581,23 +581,16 @@ void tpm_rst_asserted(enum gpio_signal signal)
 	 * this signal's assertion should be ignored here.
 	 */
 	CPRINTS("%s from %d", __func__, signal);
-	if (usb_spi_update_in_progress() ||
-	    tpm_is_resetting()) {
+	if (usb_spi_update_in_progress()) {
 		CPRINTS("%s ignored", __func__);
 		return;
 	}
 
-	if (reboot_request_posted) {
-		/*
-		 * Reset TPM and wait to completion to make sure nvmem is
-		 * committed before reboot.
-		 */
-		tpm_reset(1, 0);
-		system_reset(SYSTEM_RESET_HARD);  /* This will never return. */
-	} else {
-		/* Reset TPM, no need to wait for completion. */
-		tpm_reset(0, 0);
-	}
+	/*
+	 * Reset TPM. If a reboot request is posted then tell the TPM task to
+	 * reboot the system after the reset.
+	 */
+	tpm_reset(reboot_request_posted, 0);
 }
 
 void assert_sys_rst(void)
