@@ -346,6 +346,23 @@
       "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4989d508_df7d80a2",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T21:47:55Z",
+      "side": 1,
+      "message": "If the commit is optionally called that\u0027s certainly not good because we\u0027ll have blocked all other users until the tpm task does a commit.\n\nfwiw, nvmem_release_cache() doesn\u0027t have anything to do with committing or saving though. It\u0027s just managing the lock state.",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
