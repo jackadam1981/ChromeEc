@@ -162,6 +162,11 @@ static inline int tcpc_i2c_write(const int port, const int addr,
 }
 #endif
 
+static inline int tcpc_get_fw_version(int port, int *version)
+{
+	return tcpc_read(port, tcpc_config[port].reg_version, version);
+}
+
 #else
 
 /**

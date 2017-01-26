@@ -207,6 +207,7 @@ struct tcpc_config_t {
 	int i2c_slave_addr;
 	const struct tcpm_drv *drv;
 	enum tcpc_alert_polarity pol;
+	int reg_version;
 };
 
 /**

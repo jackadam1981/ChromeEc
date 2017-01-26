@@ -3649,6 +3649,30 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DEV_INFO,
 		     hc_remote_pd_dev_info,
 		     EC_VER_MASK(0));
 
+static int hc_remote_pd_chip_info(struct host_cmd_handler_args *args)
+{
+	const uint8_t *port = args->params;
+	struct ec_response_pd_chip_info *r = args->response;
+	int version;
+	int rv;
+
+	if (*port >= CONFIG_USB_PD_PORT_COUNT)
+		return EC_RES_INVALID_PARAM;
+
+	rv = tcpc_get_fw_version(*port, &version);
+	if (rv)
+		r->fw_version = -1;
+	else
+		r->fw_version = version;
+
+	args->response_size = sizeof(*r);
+	return EC_RES_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_PD_CHIP_INFO,
+		     hc_remote_pd_chip_info,
+		     EC_VER_MASK(0));
+
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 static int hc_remote_pd_set_amode(struct host_cmd_handler_args *args)
 {
