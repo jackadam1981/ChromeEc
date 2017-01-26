@@ -1183,6 +1183,17 @@
  */
 #undef CONFIG_LID_ANGLE_UPDATE
 
+/*
+ * During shutdown sequence some PMICs (Ex:TPS65094x) turn off the sensor
+ * rails asynchronously to the EC. If we access the sensors when the sensor
+ * power rails are off we get I2C errors. To avoid this issue, defer switching
+ * the sensors rate if in S3.
+ *
+ * TODO: This does not fix the issue completely. It is mitigating some of
+ * the accesses when we're going from S0->S5 with a very brief stop in S3.
+ */
+#define CONFIG_MOTION_SENSE_SUSPEND_DELAY_US 0
+
 /******************************************************************************/
 /* Host to RAM (H2RAM) Memory Mapping */
 
