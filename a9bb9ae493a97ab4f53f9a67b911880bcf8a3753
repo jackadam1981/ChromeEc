@@ -209,6 +209,23 @@
     },
     {
       "key": {
+        "uuid": "f779c65d_bf83e4d6",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-26T17:42:11Z",
+      "side": 1,
+      "message": "Yeah, I agree this check isn\u0027t required now.",
+      "revId": "a9bb9ae493a97ab4f53f9a67b911880bcf8a3753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9c17c4e_524ff9d5",
         "filename": "common/nvmem.c",
         "patchSetId": 1
