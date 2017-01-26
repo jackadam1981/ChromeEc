@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "1cea84e5_0cafd0bb",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T21:36:41Z",
+      "side": 1,
+      "message": "Ack",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9a8c48d_bb17b0e2",
         "filename": "common/nvmem.c",
         "patchSetId": 2
@@ -312,6 +329,23 @@
       "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22cd76aa_6515ec49",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-26T21:36:41Z",
+      "side": 1,
+      "message": "Wow, I just thought of something based on your comment:\n\njust to clarify, the tpm use model is such that it can call \u0027nvmem_write\u0027 multiple times during command execution, and if everything goes fine it calls \u0027commit\u0027 in the end.\n\nSo we can\u0027t release the semaphore here, however much we like symmetry (I like it too!:)\n\nbut here is another problem: what happens if the tpm decides not to commit for whatever reason. Do we need to unroll all pending changes? Luckily we could, as we have the original in the flash, but this is not being done. This is not this patch\u0027s problem either, this is something to fix separately.",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
