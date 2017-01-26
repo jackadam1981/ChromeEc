@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "81b3e986_a6fdb24c",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T21:28:27Z",
+      "side": 1,
+      "message": "Ya. It threw me off at first because I was looking for support of multiple readers. Please fix the terminology to avoid confusion.",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9a8c48d_bb17b0e2",
         "filename": "common/nvmem.c",
         "patchSetId": 2
@@ -275,6 +292,23 @@
       "writtenOn": "2017-01-26T21:04:33Z",
       "side": 1,
       "message": "I am not sure I understand this comment\n\ncache can\u0027t be released until the contents are written into the flash, the lock is what keeps the cache protected, so it is not dropped here (if dropping the lock means unlocking).",
+      "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c344c40a_4765527f",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T21:28:27Z",
+      "side": 1,
+      "message": "I just meant that the other functions call release_cache when they are done. This one could too just like the read ones for consistency. You already have the check for write_in_progress to handle the read after write from the same task. Anyway, it\u0027s not the end of the world. It\u0027s probably just my penchant for wanting things to be balanced.",
       "revId": "e6be934ab9c87c999b11bb1e875d762c173cca43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
