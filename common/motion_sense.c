@@ -422,6 +422,27 @@ static inline int motion_sense_init(struct motion_sensor_t *sensor)
 }
 
 /*
+ * motion_sense_should_switch_sensor_rate
+ *
+ * Check if motion sense should switch sensor rate.
+ *
+ * During shutdown sequence some PMICs (Ex:TPS65094x) turn off the U-rail
+ * even before PMIC is disabled. If we try to access the sensor which is
+ * defined active in S3 but it is powered-off we get I2C errors. To avoid
+ * this issue, do not switch the sensor rate if in S3 & S3 configs are
+ * same as in S0.
+ */
+static int motion_sense_should_switch_sensor_rate(
+			struct motion_sensor_t *sensor)
+{
+	return !(sensor_active == CHIPSET_STATE_SUSPEND &&
+		sensor->config[SENSOR_CONFIG_EC_S3].odr ==
+		sensor->config[SENSOR_CONFIG_EC_S0].odr &&
+		sensor->config[SENSOR_CONFIG_EC_S3].ec_rate ==
+		sensor->config[SENSOR_CONFIG_EC_S0].ec_rate);
+}
+
+/*
  * motion_sense_switch_sensor_rate
  *
  * Suspend all sensors that are not needed.
@@ -437,7 +458,9 @@ static void motion_sense_switch_sensor_rate(void)
 		if (SENSOR_ACTIVE(sensor)) {
 			/* Initialize or just back the odr previously set. */
 			if (sensor->state == SENSOR_INITIALIZED) {
-				motion_sense_set_data_rate(sensor);
+				if (motion_sense_should_switch_sensor_rate(
+								sensor))
+					motion_sense_set_data_rate(sensor);
 			} else {
 				ret = motion_sense_init(sensor);
 				if (ret != EC_SUCCESS) {
