@@ -22,6 +22,23 @@
       "revId": "9460304b5e596f9d8fefe8696519b9fbc4bf656f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8609b311_b5901b26",
+        "filename": "board/servo_v4/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-26T03:07:21Z",
+      "side": 1,
+      "message": "Yes, good catch. I didn\u0027t realize that servo_v4 wasn\u0027t covered in the \u0027buildall\u0027 option. I removed this #define as it\u0027s introduced in the subsequent CL that adds per port default role macro",
+      "revId": "9460304b5e596f9d8fefe8696519b9fbc4bf656f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
