@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f3aee05_fedfaa01",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T18:08:46Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand this bit. We aren\u0027t disabling the PMIC. We\u0027re just bringing down the rails in a normal manner, right?",
+      "range": {
+        "startLine": 430,
+        "startChar": 15,
+        "endLine": 430,
+        "endChar": 31
+      },
+      "revId": "d330efccf92d0f4cf956cef6ddcaf8fb4519a12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd4b4117_77ebd81e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T18:08:46Z",
+      "side": 1,
+      "message": "But doing this doesn\u0027t completely mitigate the problem, right? We could be needing to access the chip at the wrong time when it\u0027s being powered down, and we\u0027d hit the same issue, right?",
+      "revId": "d330efccf92d0f4cf956cef6ddcaf8fb4519a12b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
