@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98723b42_09fa5ca8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T17:00:24Z",
+      "side": 1,
+      "message": "Something to look into: i\u0027m worried about our sleep path and races with wake. More specifically, I\u0027m worried about deep sleep. We should think about all the various scenarios.",
+      "range": {
+        "startLine": 349,
+        "startChar": 5,
+        "endLine": 349,
+        "endChar": 40
+      },
+      "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f98d5bc9_a8e53195",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T17:00:24Z",
+      "side": 1,
+      "message": "As a follow up patch, this is the same sequence as board_configure_deep_sleep_wake_pins() for sys_rst_l. The polarity on wake is the only difference. Cleaning up this into a common routine would be helpful.",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 42
+      },
+      "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34b592bc_7e333d8c",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T17:00:24Z",
+      "side": 1,
+      "message": "You never answered my question why this function is appropriate to be called from interrupt context.",
+      "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efae764b_0433bc65",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T17:00:24Z",
+      "side": 1,
+      "message": "See my comment above about sys_rst_l consistency. A function similar to this is just what is needed.",
+      "range": {
+        "startLine": 586,
+        "startChar": 12,
+        "endLine": 586,
+        "endChar": 34
+      },
+      "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8380509a_230a0574",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-26T17:00:24Z",
+      "side": 1,
+      "message": "I think we need to take into account the current device state such that we can detect absorption of multiple FED/RED events into one. I think knowing the start state before we allow interrupts is key. And I\u0027d like that to be snapshotted with interrupts disabled (before these interrupts fire which bug 62380 would fix) early in the init sequence.\n\nLet me think about this more. It may be intractable once we lose information on the events. I have a meeting to get to, but I wanted to provide my initial feedback. Please stir on my concern and let me know if you come up with something. I\u0027ll come back to it myself once I have some more free time today.",
+      "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
