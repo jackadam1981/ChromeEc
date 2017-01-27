@@ -72,6 +72,29 @@
     },
     {
       "key": {
+        "uuid": "ff0736b1_85493cfb",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-01-27T18:39:14Z",
+      "side": 1,
+      "message": "It\u0027s currently called only from PD_STATE_DRP_AUTO_TOGGLE but this function is expected to do what PD_DRP_TOGGLE_OFF means. I think the pd task should call this with PD_DRP_FORCE_SINK if SINK needs to be forced.",
+      "range": {
+        "startLine": 563,
+        "startChar": 6,
+        "endLine": 563,
+        "endChar": 24
+      },
+      "revId": "8e24199f037ebac117b30748fe2f0708c202fb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdf6b3e5_263738a1",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 2
