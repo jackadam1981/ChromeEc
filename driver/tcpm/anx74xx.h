@@ -71,6 +71,7 @@
 #define ANX74XX_REG_ANALOG_CTRL_1		0x42
 #define ANX74XX_REG_ANALOG_CTRL_5		0x46
 #define ANX74XX_REG_ANALOG_CTRL_6		0x47
+#define ANX74XX_REG_DRP_EN		(1 << 2)
 #define ANX74XX_REG_CC_PULL_RP_36K	0x00
 #define ANX74XX_REG_CC_PULL_RP_12K	0x01
 #define ANX74XX_REG_CC_PULL_RP_4K	0x02
@@ -178,6 +179,7 @@ void anx74xx_tcpc_set_vbus(int port, int enable);
 void anx74xx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq);
 void anx74xx_tcpc_clear_hpd_status(int port);
 int anx74xx_tcpc_get_fw_version(int port, int *version);
+void anx74xx_handle_power_mode(int port, int mode);
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
 extern struct i2c_stress_test_dev anx74xx_i2c_stress_test_dev;
