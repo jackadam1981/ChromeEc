@@ -33,6 +33,23 @@
       "revId": "e7944fe309d6b06f8d9986e4de7f6bf6cd6a9f8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a039e8d6_2464ce96",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-01-27T17:31:06Z",
+      "side": 1,
+      "message": "With your patchset applied and CONFIG_TABLET_MODE removed, I don\u0027t see that failure. You may need to rebase your change.\n\nThe resolved merge looks like the following:\n\n/*·FIFO·size·is·in·power·of·2.·*/                                                                                                                                \n#define·CONFIG_ACCEL_FIFO·256                                                                                                                                    \n#define·CONFIG_ACCEL_FIFO_THRES·(CONFIG_ACCEL_FIFO·/·3)                                                                                                          \n                                                         \n/*·Sensors·without·hardware·FIFO·are·in·forced·mode.·*/                                                                                                          \n#define·CONFIG_ACCEL_FORCE_MODE_MASK·(1·\u003c\u003c·BASE_BARO)                                                                                                            \n                                                                                                                                                                 \n/*·USB·PD·config·*/                                                                                                                                              \n#define·CONFIG_CASE_CLOSED_DEBUG_EXTERNAL",
+      "revId": "e7944fe309d6b06f8d9986e4de7f6bf6cd6a9f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
