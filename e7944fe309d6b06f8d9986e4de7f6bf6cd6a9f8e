@@ -16,6 +16,23 @@
       "revId": "e7944fe309d6b06f8d9986e4de7f6bf6cd6a9f8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5282fd58_8bd982a1",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2017-01-27T14:21:55Z",
+      "side": 1,
+      "message": "But without this define, when I execute the \u0027make buildall\u0027, the linker error:\n/tmp/ccnTrfTY.ltrans17.ltrans.o: In function `mkbp_tablet_mode_change\u0027:\nccnTrfTY.ltrans17.o:(.text+0x3aa): undefined reference to `tablet_get_mode\u0027\n/tmp/ccnTrfTY.ltrans22.ltrans.o: In function `motion_sense_switch_sensor_rate\u0027:\nccnTrfTY.ltrans22.o:(.text+0x3fc): undefined reference to `tablet_set_mode\u0027\ncollect2: error: ld returned 1 exit status\nmake: *** [Makefile.rules:296: build/scarlet/RO/ec.RO.elf] Error 1",
+      "revId": "e7944fe309d6b06f8d9986e4de7f6bf6cd6a9f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
