@@ -16,6 +16,23 @@
       "revId": "3d88271115b45eaa19d66970690827646f4ce3fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c4ff87a_363d5acb",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-27T04:38:39Z",
+      "side": 1,
+      "message": "Nice, didn\u0027t know gerrit could do column #s.  Fixed.\n\nI added this check to be more strict as this is what this function does.  Functionality is unchanged.",
+      "revId": "3d88271115b45eaa19d66970690827646f4ce3fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
