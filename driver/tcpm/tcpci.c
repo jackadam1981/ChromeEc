@@ -131,7 +131,7 @@ int tcpci_tcpm_set_cc(int port, int pull)
 }
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-static int tcpci_tcpc_drp_toggle(int port)
+static int tcpci_tcpc_drp_toggle(int port, enum pd_dual_role_states drp_state)
 {
 	int rv;
 
