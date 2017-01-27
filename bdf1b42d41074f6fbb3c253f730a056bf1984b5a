@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "e5ce689f_366a2b4a",
+        "filename": "board/reef/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-27T16:26:03Z",
+      "side": 1,
+      "message": "okay",
+      "revId": "bdf1b42d41074f6fbb3c253f730a056bf1984b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8ba8ac5_ed12d080",
         "filename": "common/motion_sense.c",
         "patchSetId": 3
@@ -30,6 +47,23 @@
       "writtenOn": "2017-01-26T23:48:14Z",
       "side": 1,
       "message": "I think you should note about being able to delay the call through a configuration option such that it handles the sensors dropping out asynchronously.",
+      "revId": "bdf1b42d41074f6fbb3c253f730a056bf1984b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd2215e1_11b8664f",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-27T16:26:03Z",
+      "side": 1,
+      "message": "okay",
       "revId": "bdf1b42d41074f6fbb3c253f730a056bf1984b5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -70,6 +104,40 @@
     },
     {
       "key": {
+        "uuid": "7c9b5384_9c0c35c7",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-27T16:26:03Z",
+      "side": 1,
+      "message": "yes",
+      "revId": "bdf1b42d41074f6fbb3c253f730a056bf1984b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9843830_41a189a3",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-27T16:26:03Z",
+      "side": 1,
+      "message": "Yes, but this case arises only when we have unexpected power loss",
+      "revId": "bdf1b42d41074f6fbb3c253f730a056bf1984b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dda93f47_52728cde",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -81,6 +149,23 @@
       "writtenOn": "2017-01-26T23:48:14Z",
       "side": 1,
       "message": "I don\u0027t think you need to duplicate this comment. Just explain what it\u0027s used for.",
+      "revId": "bdf1b42d41074f6fbb3c253f730a056bf1984b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cf0f028_a26a8676",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-27T16:26:03Z",
+      "side": 1,
+      "message": "okay",
       "revId": "bdf1b42d41074f6fbb3c253f730a056bf1984b5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
