@@ -30,11 +30,7 @@ int DCRYPTO_app_cipher(const void *salt, void *out, const void *in, size_t len)
 	return 1;
 }
 
-/*
- * Let's use some odd size to make sure unaligned buffers are handled
- * properly.
- */
-#define TEST_BLOB_SIZE 16387
+#define HEAP_HEAD_ROOM 0x400
 
 static uint8_t result;
 static void run_cipher_cmd(void)
@@ -45,34 +41,65 @@ static void run_cipher_cmd(void)
 	uint8_t sha_after[SHA_DIGEST_SIZE];
 	int match;
 	uint32_t tstamp;
+	size_t test_blob_size;
 
-	rv = shared_mem_acquire(TEST_BLOB_SIZE, (char **)&p);
-
-	if (rv != EC_SUCCESS) {
-		result = rv;
+	test_blob_size = shared_mem_size();
+	/*
+	 * Leave some room to crypto functions, just in case.
+	 */
+	if (test_blob_size < HEAP_HEAD_ROOM) {
+		ccprintf("Not enough memory to run the test\n");
+		result = EC_ERROR_OVERFLOW;
+		task_set_event(TASK_ID_CONSOLE, TASK_EVENT_CUSTOM(1), 0);
 		return;
 	}
 
-	ccprintf("original data           %.16h\n", p);
+	/*
+	 * Let's use some odd size to make sure unaligned buffers are
+	 * handled properly.
+	 */
+	test_blob_size = (test_blob_size - HEAP_HEAD_ROOM) & ~0xf;
+	test_blob_size |= 7;
 
-	DCRYPTO_SHA1_hash((uint8_t *)p, TEST_BLOB_SIZE, sha);
-
-	tstamp = get_time().val;
-	rv = DCRYPTO_app_cipher(&sha, p, p, TEST_BLOB_SIZE);
-	tstamp = get_time().val - tstamp;
-	ccprintf("rv 0x%02x, out data       %.16h, time %d us\n",
-		 rv, p, tstamp);
-
-	if (rv == 1) {
-		tstamp = get_time().val;
-		rv = DCRYPTO_app_cipher(&sha, p, p, TEST_BLOB_SIZE);
-		tstamp = get_time().val - tstamp;
-		ccprintf("rv 0x%02x, orig. data     %.16h, time %d us\n",
-			 rv, p, tstamp);
+	rv = shared_mem_acquire(test_blob_size, (char **)&p);
+	if (rv != EC_SUCCESS) {
+		ccprintf("Failed to allocate %d bytes\n", test_blob_size);
+		result = EC_ERROR_OVERFLOW;
+		task_set_event(TASK_ID_CONSOLE, TASK_EVENT_CUSTOM(1), 0);
+		return;
 	}
 
-	DCRYPTO_SHA1_hash((uint8_t *)p, TEST_BLOB_SIZE, sha_after);
+	ccprintf("blob size %d at %p\n", test_blob_size, p);
+	ccprintf("original data           %.16h\n", p);
 
+	DCRYPTO_SHA1_hash((uint8_t *)p, test_blob_size, sha);
+
+	tstamp = get_time().val;
+	rv = DCRYPTO_app_cipher(&sha, p, p, test_blob_size);
+	tstamp = get_time().val - tstamp;
+	ccprintf("out data                %.16h, time %d us\n", p, tstamp);
+	if (!rv) {
+		ccprintf("encryption failed\n");
+		result = EC_ERROR_UNKNOWN;
+		shared_mem_release(p);
+		task_set_event(TASK_ID_CONSOLE, TASK_EVENT_CUSTOM(1), 0);
+		return;
+	}
+
+
+	tstamp = get_time().val;
+	rv = DCRYPTO_app_cipher(&sha, p, p, test_blob_size);
+	tstamp = get_time().val - tstamp;
+	ccprintf("decrypted data          %.16h, time %d us\n", p, tstamp);
+	if (!rv) {
+		ccprintf("decryption failed\n");
+		result = EC_ERROR_UNKNOWN;
+		shared_mem_release(p);
+		task_set_event(TASK_ID_CONSOLE, TASK_EVENT_CUSTOM(1), 0);
+		return;
+	}
+
+	DCRYPTO_SHA1_hash((uint8_t *)p, test_blob_size, sha_after);
 	match = !memcmp(sha, sha_after, sizeof(sha));
 	ccprintf("sha1 before and after %smatch!\n",
 		 match ? "" : "MIS");
