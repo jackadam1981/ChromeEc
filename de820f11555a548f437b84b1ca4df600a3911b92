@@ -104,6 +104,23 @@
     },
     {
       "key": {
+        "uuid": "3e86d1f7_9d81b57f",
+        "filename": "common/nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T06:21:32Z",
+      "side": 1,
+      "message": "\u003e \"If there are multiple writers it\u0027s possible that the tpm task can\n \u003e hit this path from its tpm_reset_now()\"\n \u003e \n \u003e no, other writers will not be able to write, they will have to wait\n \u003e on the mutex in nvmem_write(). Or the tpm task will have to wait on\n \u003e the mutex when it invokes \"nvmem_write\", but it will not come here\n \u003e without acquiring the lock first.\n\nThat\u0027s not true for the nvmem_enable_commits() from tpm_reset(). That\u0027s less of a concern than my previous comment. It\u0027s just that we\u0027d hit these errors knowingly because of the current construction.",
+      "revId": "de820f11555a548f437b84b1ca4df600a3911b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "525e620b_89c9cc94",
         "filename": "common/nvmem.c",
         "patchSetId": 4
