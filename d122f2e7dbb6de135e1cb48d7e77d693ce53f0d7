@@ -117,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "d470c96d_cf465840",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-27T05:30:58Z",
+      "side": 1,
+      "message": "It\u0027s a matter of style I guess.  Kernel style guide is not explicit on this case (also doesn\u0027t bother the cros linter).  Can we keep this?",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 10
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85eca050_8a4ded7e",
         "filename": "chip/g/dcrypto/app_cipher.c",
         "patchSetId": 4
@@ -151,6 +174,29 @@
       "writtenOn": "2017-01-27T00:56:43Z",
       "side": 1,
       "message": "it scopes the lifetime of the iv[]? Probably helps the compiler generates less shitty code.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "535932d3_1a01424b",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-27T05:30:58Z",
+      "side": 1,
+      "message": "Doing so reduces register pressure and produces faster code.  I think it might not matter at -O or -O2, but does at the moment.",
       "range": {
         "startLine": 68,
         "startChar": 0,
@@ -209,6 +255,29 @@
     },
     {
       "key": {
+        "uuid": "7ead7379_8be32c9e",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-27T05:30:58Z",
+      "side": 1,
+      "message": "This while is not an accident... yes, the loop only runs once.  Here\u0027s a little puzzler for you guys (I know the answer)... if you remove the __attribute__(optimize) on inner_loop above, a \u0027while\u0027 here produces faster code than an \u0027if\u0027 does.  Why so?",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 19
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c600b2c_c74531ac",
         "filename": "chip/g/dcrypto/app_cipher.c",
         "patchSetId": 4
@@ -243,6 +312,29 @@
       "writtenOn": "2017-01-27T00:56:43Z",
       "side": 1,
       "message": "it is a simple pipeline; these next reads happen with less interval than the ones in inner_loop().\n\nHence a wait is likely required here.\n\nBut yes, a comment that states how many cycles it takes for output to be ready past last input write would likely clarify inner_loop() better and explain the need for the wait here..",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 37
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce41a716_a3e75cf8",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-27T05:30:58Z",
+      "side": 1,
+      "message": "The last one is necessary in the event that the input length is 16 \u003c\u003d len \u003c 32.  inner_loop(), which gets inlined, never runs.  I didn\u0027t bother to do the math on the exact number of instructions in between the write and the read, but it looked close, and blah it\u0027s a couple of cycles.",
       "range": {
         "startLine": 116,
         "startChar": 2,
@@ -335,6 +427,29 @@
       "writtenOn": "2017-01-27T00:56:43Z",
       "side": 1,
       "message": "yes, but single block (no inner_loop) and more alignment friendly (not that that matters here).",
+      "range": {
+        "startLine": 134,
+        "startChar": 7,
+        "endLine": 134,
+        "endChar": 25
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "422764e2_f1cb5f8c",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-27T05:30:58Z",
+      "side": 1,
+      "message": "Refactored a bit.",
       "range": {
         "startLine": 134,
         "startChar": 7,
