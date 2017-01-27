@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "0cada4b3_4bb5349e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-27T15:05:35Z",
+      "side": 1,
+      "message": "probably only on reef",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "e0f1b037ea83da47eda2786992f50e5fc7bcd9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab106889_65451b1c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3654,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-27T15:05:35Z",
+      "side": 1,
+      "message": "Why you don\u0027t use\nconst struct ec_params_pd_chip_info *p \u003d args-\u003eparams ?",
+      "range": {
+        "startLine": 3654,
+        "startChar": 1,
+        "endLine": 3654,
+        "endChar": 36
+      },
+      "revId": "e0f1b037ea83da47eda2786992f50e5fc7bcd9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89c5f905_904c6ab9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3662,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-27T15:05:35Z",
+      "side": 1,
+      "message": "how this even builds on platform with CONFIG_USB_PD_TCPC ?",
+      "range": {
+        "startLine": 3662,
+        "startChar": 6,
+        "endLine": 3662,
+        "endChar": 25
+      },
+      "revId": "e0f1b037ea83da47eda2786992f50e5fc7bcd9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a24bdf9_867693ca",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3668,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-27T15:05:35Z",
+      "side": 1,
+      "message": "so vendor/product/device_id are random values ?",
+      "range": {
+        "startLine": 3666,
+        "startChar": 0,
+        "endLine": 3668,
+        "endChar": 34
+      },
+      "revId": "e0f1b037ea83da47eda2786992f50e5fc7bcd9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adf78912_a6dc3b1e",
         "filename": "driver/tcpm/tcpm.h",
         "patchSetId": 1
@@ -16,6 +108,29 @@
       "range": {
         "startLine": 167,
         "startChar": 42,
+        "endLine": 167,
+        "endChar": 53
+      },
+      "revId": "e0f1b037ea83da47eda2786992f50e5fc7bcd9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f210f5a_fac23b5e",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-27T15:05:35Z",
+      "side": 1,
+      "message": "so on all platforms where reg_version is not defined, it worth 0.\nSo this returns (at best or crash) the content of register 0\ndoesn\u0027t seem right",
+      "range": {
+        "startLine": 167,
+        "startChar": 25,
         "endLine": 167,
         "endChar": 53
       },
