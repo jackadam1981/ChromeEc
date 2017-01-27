@@ -21,8 +21,6 @@
 #define LED_TOTAL_TICKS 16
 #define LED_ON_TICKS 8
 
-static int led_debug;
-
 const enum ec_led_id supported_led_ids[] = {
 	EC_LED_ID_POWER_LED, EC_LED_ID_BATTERY_LED};
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
@@ -68,6 +66,7 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 static void caroline_led_set_power_battery(void)
 {
 	static int power_ticks;
+	enum charge_state chg_state = charge_get_state();
 
 	if (chipset_in_state(CHIPSET_STATE_ON)) {
 		set_color(LED_BLUE);
@@ -75,12 +74,20 @@ static void caroline_led_set_power_battery(void)
 	}
 
 	/* CHIPSET_STATE_OFF */
-	switch (charge_get_state()) {
+	switch (chg_state) {
 	case PWR_STATE_DISCHARGE:
 		set_color(LED_OFF);
 		break;
 	case PWR_STATE_CHARGE:
-		set_color(LED_RED);
+		if (battery_is_present() != BP_YES ||
+		    charge_get_percent() <
+		    CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON) {
+			set_color(((power_ticks++ % LED_TOTAL_TICKS)
+				  < LED_ON_TICKS) ? LED_RED : LED_OFF);
+		} else {
+			power_ticks = 0;
+			set_color(LED_RED);
+		}
 		break;
 	case PWR_STATE_ERROR:
 		power_ticks++;
@@ -95,7 +102,8 @@ static void caroline_led_set_power_battery(void)
 		set_color(LED_RED);
 		break;
 	}
-	if ((charge_get_state()) != PWR_STATE_ERROR)
+
+	if (chg_state != PWR_STATE_ERROR && chg_state != PWR_STATE_CHARGE)
 		power_ticks = 0;
 }
 
@@ -104,9 +112,6 @@ static void caroline_led_set_power_battery(void)
  */
 static void led_tick(void)
 {
-	if (led_debug)
-		return;
-
 	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED) &&
 	    led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED)) {
 		caroline_led_set_power_battery();
