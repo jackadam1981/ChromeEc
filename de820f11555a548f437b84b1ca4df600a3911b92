@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "89e6e38a_3d2f29ef",
+        "filename": "common/nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-27T06:13:55Z",
+      "side": 1,
+      "message": "yes, this could happen, but will not.\n\nthe only other task which would be writing nvmem would be the console task if we ever create a console command to write an nvmem variable.\n\nThe rest of nvmem variable writes would be happening on the tpm task context on vendor commands.\n\nbut in general, I don\u0027t understand what you are suggesting. Should we get rid of the locks completley and only allow one task to use nvmem?\n\nshould we try to create caches per task, or maybe allow different areas in nvmem to different tasks?",
+      "revId": "de820f11555a548f437b84b1ca4df600a3911b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "525e620b_89c9cc94",
         "filename": "common/nvmem.c",
         "patchSetId": 4
@@ -101,6 +118,23 @@
       "revId": "de820f11555a548f437b84b1ca4df600a3911b92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01d834ed_5a014cf5",
+        "filename": "common/nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-27T06:13:55Z",
+      "side": 1,
+      "message": "The objective of this patch is not to fix locking scheme, which it improves, it is to speed up nvmem operation.Can we discuss locking separately?",
+      "revId": "de820f11555a548f437b84b1ca4df600a3911b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
