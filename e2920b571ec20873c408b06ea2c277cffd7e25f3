@@ -22,6 +22,23 @@
       "revId": "e2920b571ec20873c408b06ea2c277cffd7e25f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3396ab8_46100c1a",
+        "filename": "common/nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-27T19:43:30Z",
+      "side": 1,
+      "message": "good point, we are going by unchanged hash now.",
+      "revId": "e2920b571ec20873c408b06ea2c277cffd7e25f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
