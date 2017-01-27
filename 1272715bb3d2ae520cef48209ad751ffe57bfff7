@@ -133,6 +133,23 @@
     },
     {
       "key": {
+        "uuid": "cb6b75ce_1dc27d8c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T05:05:42Z",
+      "side": 1,
+      "message": "But we don\u0027t know were going to enter S5 until SLP_S5_L is asserted. I don\u0027t think we have HOST_EVENT_SLEEP sent on all platforms?",
+      "revId": "1272715bb3d2ae520cef48209ad751ffe57bfff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c9f8cb8_f1eebe2f",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
@@ -178,6 +195,23 @@
       "writtenOn": "2017-01-26T23:54:09Z",
       "side": 1,
       "message": "rockship, braswell, haswell,  have it easy :-):\n\n...\n  case POWER_S3S5:\n    /* Call hooks before we remove power rails */\n    hook_notify(HOOK_CHIPSET_SHUTDOWN);\n...",
+      "revId": "1272715bb3d2ae520cef48209ad751ffe57bfff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa91a6c6_4f38d202",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T05:05:42Z",
+      "side": 1,
+      "message": "Well, some. Not all. If you look closely braswell doesn\u0027t know when we\u0027re going to S5 from S3 until its too late. Like I said, it depends on the design for how much control the EC has on sequencing. Using pmics w/o proxying the signals through the EC will lead to these sorts of situations.",
       "revId": "1272715bb3d2ae520cef48209ad751ffe57bfff7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
