@@ -87,6 +87,23 @@
     },
     {
       "key": {
+        "uuid": "2a1275fb_796c4316",
+        "filename": "common/nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T06:19:22Z",
+      "side": 1,
+      "message": "Somehow we need to assert our assumptions w.r.t. single writer and user.\n\nThe reason is this:\ntask A writes and commits(), but !commits_enabled.\ntask B tries to write but can\u0027t because the commit never went through nvmem_save() which releases the lock.\n\nif task B is the TPM task (currently only one that can enable them) then we are dead locked because the TPM task is waiting on the mutex that is unreleased by A.",
+      "revId": "de820f11555a548f437b84b1ca4df600a3911b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "525e620b_89c9cc94",
         "filename": "common/nvmem.c",
         "patchSetId": 4
