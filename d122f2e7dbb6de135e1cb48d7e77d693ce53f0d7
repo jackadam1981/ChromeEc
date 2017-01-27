@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "22e39461_42041d96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-27T00:56:43Z",
+      "side": 1,
+      "message": "I doubt any legit compiler change will make Os code faster than O. At best it\u0027s the same code.",
+      "range": {
+        "startLine": 21,
+        "startChar": 14,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a4bffec_bac26db9",
         "filename": "chip/g/dcrypto/app_cipher.c",
         "patchSetId": 4
@@ -36,6 +59,29 @@
       "writtenOn": "2017-01-26T23:12:31Z",
       "side": 1,
       "message": "this comment makes me worry: how much slower does this function become if the check is in place? It is ok to lose a few percents of speed here but be certain that there has been no delays in the hardware for whatever reason.",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf8e8098_51d5d46b",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-27T00:56:43Z",
+      "side": 1,
+      "message": "So we\u0027re talking 4x4 words that need to be moved to/fro the engine/memory. That will be slower than the engine takes to do its thing. And then add some cycles for the loop construct, so we\u0027re safe here.\n\nThe comment serves to point out this was thought about.\n\nAnd this loop is the bottle neck for the speed, so adding the redundant check will only make it slower and not more correct. Hence it is not there.",
       "range": {
         "startLine": 31,
         "startChar": 5,
@@ -94,6 +140,29 @@
     },
     {
       "key": {
+        "uuid": "7cec4199_3f537eb3",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-27T00:56:43Z",
+      "side": 1,
+      "message": "it scopes the lifetime of the iv[]? Probably helps the compiler generates less shitty code.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f138629d_b3ff4d37",
         "filename": "chip/g/dcrypto/app_cipher.c",
         "patchSetId": 4
@@ -105,6 +174,29 @@
       "writtenOn": "2017-01-26T23:12:31Z",
       "side": 1,
       "message": "look like this could be an if() as inner_loop guarantees that it is less than 16 in the end. And would save you one comparison.",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 19
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac970c59_4a76ff00",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-27T00:56:43Z",
+      "side": 1,
+      "message": "It hints to the compiler to generate less shitty code, which somehow appears necessary. Perhaps we should upgrade the compiler.",
       "range": {
         "startLine": 108,
         "startChar": 1,
@@ -140,6 +232,29 @@
     },
     {
       "key": {
+        "uuid": "7cf1f861_b2a755a0",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-27T00:56:43Z",
+      "side": 1,
+      "message": "it is a simple pipeline; these next reads happen with less interval than the ones in inner_loop().\n\nHence a wait is likely required here.\n\nBut yes, a comment that states how many cycles it takes for output to be ready past last input write would likely clarify inner_loop() better and explain the need for the wait here..",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 37
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "219dde33_c8110a15",
         "filename": "chip/g/dcrypto/app_cipher.c",
         "patchSetId": 4
@@ -163,6 +278,29 @@
     },
     {
       "key": {
+        "uuid": "231d7164_d33a2d0f",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-27T00:56:43Z",
+      "side": 1,
+      "message": "but the style guide (?) suggests that would be\nwhile (bla)\n  ;\n\nwhich is pretty objectionable, with that semi on otherwise empty line. But yes, resulting code is exactly the same.",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 43
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21d33107_0e8a6692",
         "filename": "chip/g/dcrypto/app_cipher.c",
         "patchSetId": 4
@@ -174,6 +312,29 @@
       "writtenOn": "2017-01-26T23:12:31Z",
       "side": 1,
       "message": "how does this work - is DCRYPTO_aes_block the same as code in lines 109..125?",
+      "range": {
+        "startLine": 134,
+        "startChar": 7,
+        "endLine": 134,
+        "endChar": 25
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b9844dd_8957f818",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-01-27T00:56:43Z",
+      "side": 1,
+      "message": "yes, but single block (no inner_loop) and more alignment friendly (not that that matters here).",
       "range": {
         "startLine": 134,
         "startChar": 7,
