@@ -278,6 +278,23 @@
     },
     {
       "key": {
+        "uuid": "4e997f1a_7ec9c298",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-27T23:11:06Z",
+      "side": 1,
+      "message": "this is very interesting, but why do we care what happens if you remove the attribute, the attribute is there, shouldn\u0027t you be optimizing for this case? Or is this while (){} block faster with and without optimization?",
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c600b2c_c74531ac",
         "filename": "chip/g/dcrypto/app_cipher.c",
         "patchSetId": 4
