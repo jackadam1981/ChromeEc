@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "d91778c5_ba18aeff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-27T04:39:05Z",
+      "side": 1,
+      "message": "I plan to CP this patch to Reef branch.",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "5f816858c19b2877c41308669aa85dcee6e40af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "054a36f8_08af480b",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -36,6 +59,29 @@
       "writtenOn": "2017-01-27T02:01:24Z",
       "side": 1,
       "message": "The if-clause looks good but is this comment accurate? It\u0027s true for Kevin but Reef seems to set pd_comm_enabled \u003d 1 for RO/RW.",
+      "range": {
+        "startLine": 1417,
+        "startChar": 4,
+        "endLine": 1417,
+        "endChar": 55
+      },
+      "revId": "5f816858c19b2877c41308669aa85dcee6e40af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b49942e1_10eca526",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-27T04:39:05Z",
+      "side": 1,
+      "message": "We will enable CONFIG_USB_PD_COMM_LOCKED before MP. Now seems like a good time to enable it.",
       "range": {
         "startLine": 1417,
         "startChar": 4,
