@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "d712bac4_373d7302",
+        "filename": "common/nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-27T16:59:43Z",
+      "side": 1,
+      "message": "so, this is not a problem?",
+      "revId": "2b50dbb19231ac74502c795d97c68d95612be329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e514225_4e439787",
         "filename": "common/nvmem.c",
         "patchSetId": 5
@@ -30,6 +47,23 @@
       "writtenOn": "2017-01-27T16:54:22Z",
       "side": 1,
       "message": "This prevents any writer aside from the caller of this function to use nvmem. Which currently this is the tpm task and that\u0027s only enabled again when the current 3s expires.\n\nAdditionally, if another writer is doing something when a tpm reset happens we\u0027d delay the tpm task from responding to tpm commands.",
+      "revId": "2b50dbb19231ac74502c795d97c68d95612be329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eea5f9c2_05935f88",
+        "filename": "common/nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-27T16:59:43Z",
+      "side": 1,
+      "message": "yes, these are valid concerns.\n\nBut we don\u0027t foresee any nvmem writers around tpm resetting.\n\ndo you have objections to submitting this? Wnat do you think needs to be done if so?",
       "revId": "2b50dbb19231ac74502c795d97c68d95612be329",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
