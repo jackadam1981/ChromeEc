@@ -172,6 +172,23 @@
     },
     {
       "key": {
+        "uuid": "3094b8ba_f3bed73d",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T04:43:09Z",
+      "side": 1,
+      "message": "OK. That answers my question about needing certain things explicitly 0xff. I just wanted to make sure we\u0027re ok since once they are set they don\u0027t change since we\u0027re not changing their values any more. If layout_version is bumped we\u0027d be ok. Thanks for the info.",
+      "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "006d1ba4_dc75a140",
         "filename": "common/nvmem.c",
         "patchSetId": 3
