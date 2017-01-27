@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11d04660_9d18c6ad",
+        "filename": "common/nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T16:54:22Z",
+      "side": 1,
+      "message": "This print would fire on the first tpm reset, right? Oh. you\u0027re relying on nvmem_init() having enabled the commits.",
+      "revId": "2b50dbb19231ac74502c795d97c68d95612be329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e514225_4e439787",
+        "filename": "common/nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T16:54:22Z",
+      "side": 1,
+      "message": "This prevents any writer aside from the caller of this function to use nvmem. Which currently this is the tpm task and that\u0027s only enabled again when the current 3s expires.\n\nAdditionally, if another writer is doing something when a tpm reset happens we\u0027d delay the tpm task from responding to tpm commands.",
+      "revId": "2b50dbb19231ac74502c795d97c68d95612be329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
