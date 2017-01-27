@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "830e6197_1c433bca",
+        "filename": "common/nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T05:57:13Z",
+      "side": 1,
+      "message": "If there are multiple writers it\u0027s possible that the tpm task can hit this path from its tpm_reset_now()",
+      "revId": "de820f11555a548f437b84b1ca4df600a3911b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "525e620b_89c9cc94",
         "filename": "common/nvmem.c",
         "patchSetId": 4
@@ -64,6 +81,23 @@
       "writtenOn": "2017-01-27T05:43:02Z",
       "side": 1,
       "message": "well, I am not introducing the locking scheme in this patch, I am actually improving it. Before this only one task could both read and write until the commit happens.\n\nThere are global variables in this module, but they are touched only when the task is trying to write, and this can happen only after lock is obtained.\n\nYes, if two or more tasks want to write concurrently, it could be an issue, i.e. the tasks other than the first one will have to wait.  I don\u0027t know a way around it, do you have a suggestion?",
+      "revId": "de820f11555a548f437b84b1ca4df600a3911b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aeed92c5_6a5d114d",
+        "filename": "common/nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T05:57:13Z",
+      "side": 1,
+      "message": "Global variables being set without any protection where any task can be pre-empted is prone to hitting bugs. As I noted before nvmem_commit() can be called from the tpm task by way of nvmem_enable_commits(). Previously you said reads and writes were from a single task. If that\u0027s not the case this code needs to be fixed.",
       "revId": "de820f11555a548f437b84b1ca4df600a3911b92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
