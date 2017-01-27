@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "7c58af61_6cf6cb9f",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-27T03:11:54Z",
+      "side": 1,
+      "message": "not here probably, in nvmem_commit, right?",
+      "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5880d0e9_1e5411bd",
         "filename": "common/nvmem.c",
         "patchSetId": 3
@@ -30,6 +47,23 @@
       "writtenOn": "2017-01-26T23:07:53Z",
       "side": 1,
       "message": "From the nvmem_setup() path we\u0027d have the same generation number. That\u0027s OK on initial setup?",
+      "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17850a76_51817850",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-27T03:11:54Z",
+      "side": 1,
+      "message": "I think it is perfectly fine, but I will follow your suggestion to use the generation field to make the partitions different.",
       "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +87,23 @@
     },
     {
       "key": {
+        "uuid": "a5cf5aae_ba80ac55",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-27T03:11:54Z",
+      "side": 1,
+      "message": "I think it is perfectly fine to have two slots with the same generation number as long as they are the same. but I can set different generation numbers.",
+      "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "006d1ba4_dc75a140",
         "filename": "common/nvmem.c",
         "patchSetId": 3
@@ -64,6 +115,23 @@
       "writtenOn": "2017-01-26T23:07:53Z",
       "side": 1,
       "message": "Isn\u0027t it more appropriate here to call nvmem_lock_cache()? The task which did the write() should be the one to commit, no? Additionally, nvmem_save() would know if something hasn\u0027t changed. That way, we\u0027re not assuming implementation details of the nvmem_mutex() outside of the lock and unlock functions (ignoring us setting write_in_progress);",
+      "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa59a84b_3a2270e7",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-27T03:11:54Z",
+      "side": 1,
+      "message": "there could be no writes without locking the mutex, if someone calls commit in this case there definitely nothing to write.\n\nBut come to think of it, the check should be different: if there is no lock (task id \u003d\u003d TASK_ID_COUNT) - nothing to do.\n\nIf the current task matches - proceed to commit.\n\nIf a different task calls this - return an error.",
       "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
