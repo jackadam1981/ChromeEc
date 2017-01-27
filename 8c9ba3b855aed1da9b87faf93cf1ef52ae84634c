@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "d04852db_5ab47208",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T04:38:42Z",
+      "side": 1,
+      "message": "See my comment below about how we\u0027re basically blocking all requests at that point. Additionally, we\u0027re just making the request -- not actually resetting. By returning EC_ERROR_BUSY we are dropping important requests on the floor.",
+      "range": {
+        "startLine": 657,
+        "startChar": 14,
+        "endLine": 657,
+        "endChar": 59
+      },
+      "revId": "8c9ba3b855aed1da9b87faf93cf1ef52ae84634c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "572fc2d8_b0cb745e",
         "filename": "common/tpm_registers.c",
         "patchSetId": 1
