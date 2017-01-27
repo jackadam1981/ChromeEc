@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "738b220e_09a04104",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T04:27:57Z",
+      "side": 1,
+      "message": "Sure. In some place we need to do that.",
+      "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5880d0e9_1e5411bd",
         "filename": "common/nvmem.c",
         "patchSetId": 3
@@ -104,6 +121,23 @@
     },
     {
       "key": {
+        "uuid": "e0d24955_188c3315",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T04:27:57Z",
+      "side": 1,
+      "message": "The other thing I wanted to bring up is what the other fields would be set to. 0xff\u0027s waht you want for those fields?",
+      "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "006d1ba4_dc75a140",
         "filename": "common/nvmem.c",
         "patchSetId": 3
@@ -132,6 +166,23 @@
       "writtenOn": "2017-01-27T03:11:54Z",
       "side": 1,
       "message": "there could be no writes without locking the mutex, if someone calls commit in this case there definitely nothing to write.\n\nBut come to think of it, the check should be different: if there is no lock (task id \u003d\u003d TASK_ID_COUNT) - nothing to do.\n\nIf the current task matches - proceed to commit.\n\nIf a different task calls this - return an error.",
+      "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f34ae316_2c2411d1",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T04:27:57Z",
+      "side": 1,
+      "message": "I think TASK_ID_COUNT case is an error too in that we\u0027re getting unexpected callers or call sequences.",
       "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
