@@ -94,6 +94,23 @@
     },
     {
       "key": {
+        "uuid": "d8fe71a2_dd802632",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-27T17:51:22Z",
+      "side": 1,
+      "message": "\"This function looks like it can be called from any context. \"\n\nThis is a good point. How about we introduce another function, just to send an event to the tpm task, and then have the tpm task call this function which can do everything what\u0027s required.\n\nSo, there would be two reset options:\n- reboot\n- wipe nvmem\n\nthey could be communicated though different event types sent  to the tpm task to avoid the need for global variables.  A mechanism is still needed to provide both asyn and sync implementations.",
+      "revId": "8c9ba3b855aed1da9b87faf93cf1ef52ae84634c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "572fc2d8_b0cb745e",
         "filename": "common/tpm_registers.c",
         "patchSetId": 1
@@ -125,6 +142,23 @@
       "revId": "8c9ba3b855aed1da9b87faf93cf1ef52ae84634c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68f13157_89c4d4c1",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-27T17:51:22Z",
+      "side": 1,
+      "message": "this function would be combined with tpm_reset() above if the suggestion to do everything on the tpm task context triggered by an event  is accepted.",
+      "revId": "8c9ba3b855aed1da9b87faf93cf1ef52ae84634c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
