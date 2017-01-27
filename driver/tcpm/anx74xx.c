@@ -548,6 +548,37 @@ static int anx74xx_tcpm_set_cc(int port, int pull)
 	return rv;
 }
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+static int anx74xx_tcpc_drp_toggle(int port, enum pd_dual_role_states drp_state)
+{
+	int rv;
+
+	switch (drp_state) {
+	case PD_DRP_FORCE_SOURCE:
+		/* Set Rp to act as SOURCE */
+		rv = anx74xx_tcpm_set_cc(port, TYPEC_CC_RP);
+		break;
+	case PD_DRP_FORCE_SINK:
+	/* FIXME: it should be PD_DRP_TOGGLE_ON */
+	case PD_DRP_TOGGLE_ON:
+		/* Set Rd to act as SINK */
+		rv = anx74xx_tcpm_set_cc(port, TYPEC_CC_RD);
+		break;
+	/* FIXME: it should be PD_DRP_TOGGLE_OFF */
+	case PD_DRP_TOGGLE_OFF:
+	default:
+		/* Disable CC software Control */
+		rv = anx74xx_cc_software_ctrl(port, 0);
+		break;
+	}
+
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	rv |= anx74xx_handle_power_mode(port, ANX74XX_STANDBY_MODE);
+#endif
+	return rv;
+}
+#endif
+
 static int anx74xx_tcpm_set_polarity(int port, int polarity)
 {
 	int reg, mux_state, rv = EC_SUCCESS;
@@ -909,6 +940,9 @@ const struct tcpm_drv anx74xx_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &anx74xx_tcpc_discharge_vbus,
 #endif
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	.drp_toggle		= &anx74xx_tcpc_drp_toggle,
+#endif
 };
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
@@ -922,3 +956,24 @@ struct i2c_stress_test_dev anx74xx_i2c_stress_test_dev = {
 	.i2c_write = &tcpc_i2c_write,
 };
 #endif /* CONFIG_CMD_I2C_STRESS_TEST_TCPC */
+
+int anx74xx_handle_power_mode(int port, int mode)
+{
+	static int prev_mode = -1;
+	int level = gpio_get_level(GPIO_USB_C0_CABLE_DET);
+	int rv = 1;
+
+	if (mode && !prev_mode && level) {
+		prev_mode = mode;
+		anx74xx_tcpm_init(port);
+		rv = 0;
+	}
+
+	if (!mode && prev_mode && !level) {
+		prev_mode = mode;
+		anx74xx_set_power_mode(port, mode);
+		rv = 0;
+	}
+
+	return rv;
+}
