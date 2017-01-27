@@ -8,6 +8,7 @@
 /* Type-C port manager for Analogix's anx74xx chips */
 
 #include "anx74xx.h"
+#include "chipset.h"
 #include "task.h"
 #include "tcpm.h"
 #include "timer.h"
@@ -548,6 +549,38 @@ static int anx74xx_tcpm_set_cc(int port, int pull)
 	return rv;
 }
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+static int anx74xx_tcpc_drp_toggle(int port, enum pd_dual_role_states drp_state)
+{
+	int rv;
+
+	if (chipset_in_state(CHIPSET_STATE_ON))
+		return 1;
+
+	switch (drp_state) {
+	case PD_DRP_FORCE_SOURCE:
+		/* Set Rd to act as SOURCE */
+		rv = anx74xx_tcpm_set_cc(port, TYPEC_CC_RP);
+		break;
+	case PD_DRP_FORCE_SINK:
+	case PD_DRP_TOGGLE_OFF:
+		/* Set Rd to act as SINK */
+		rv = anx74xx_tcpm_set_cc(port, TYPEC_CC_RD);
+		break;
+	case PD_DRP_TOGGLE_ON:
+	default:
+		/* Disable CC software Control */
+		rv = anx74xx_cc_software_ctrl(port, 0);
+		break;
+	}
+
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	anx74xx_set_power_mode(port, ANX74XX_STANDBY_MODE);
+#endif
+	return rv;
+}
+#endif
+
 static int anx74xx_tcpm_set_polarity(int port, int polarity)
 {
 	int reg, mux_state, rv = EC_SUCCESS;
@@ -908,6 +941,9 @@ const struct tcpm_drv anx74xx_tcpm_drv = {
 	.tcpc_alert		= &anx74xx_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &anx74xx_tcpc_discharge_vbus,
+#endif
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	.drp_toggle		= &anx74xx_tcpc_drp_toggle,
 #endif
 };
 
