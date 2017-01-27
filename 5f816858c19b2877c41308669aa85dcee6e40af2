@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9808eed_ece7a5b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-01-27T02:01:24Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "5f816858c19b2877c41308669aa85dcee6e40af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "054a36f8_08af480b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-01-27T02:01:24Z",
+      "side": 1,
+      "message": "The if-clause looks good but is this comment accurate? It\u0027s true for Kevin but Reef seems to set pd_comm_enabled \u003d 1 for RO/RW.",
+      "range": {
+        "startLine": 1417,
+        "startChar": 4,
+        "endLine": 1417,
+        "endChar": 55
+      },
+      "revId": "5f816858c19b2877c41308669aa85dcee6e40af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
