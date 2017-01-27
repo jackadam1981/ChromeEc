@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "a0c1cdd5_2c0d5ad1",
+        "filename": "common/nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T17:04:11Z",
+      "side": 1,
+      "message": "Just thinking out loud and trying to understand the assumptions.",
+      "revId": "2b50dbb19231ac74502c795d97c68d95612be329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e514225_4e439787",
         "filename": "common/nvmem.c",
         "patchSetId": 5
@@ -64,6 +81,23 @@
       "writtenOn": "2017-01-27T16:59:43Z",
       "side": 1,
       "message": "yes, these are valid concerns.\n\nBut we don\u0027t foresee any nvmem writers around tpm resetting.\n\ndo you have objections to submitting this? Wnat do you think needs to be done if so?",
+      "revId": "2b50dbb19231ac74502c795d97c68d95612be329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb943aae_b2633929",
+        "filename": "common/nvmem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T17:04:11Z",
+      "side": 1,
+      "message": "I wrote some comments on patchset 6 that also included a request to file a bug and investigate the assertions we\u0027re making in this library. While there is only one user now, the common code is presenting itself as multiple task friendly. We should re-visit that and think about the semantics we\u0027re providing.",
       "revId": "2b50dbb19231ac74502c795d97c68d95612be329",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
