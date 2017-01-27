@@ -204,8 +204,10 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_PP900_AP_EN, 1);
 		gpio_set_level(GPIO_PP900_PCIE_EN, 1);
 		msleep(2);
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 0
 		gpio_set_level(GPIO_PP900_PMU_EN, 1);
 		gpio_set_level(GPIO_PP900_PLL_EN, 1);
+#endif
 		gpio_set_level(GPIO_PP900_USB_EN, 1);
 		msleep(2);
 
@@ -342,8 +344,10 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_PP1800_PMU_EN_L, 1);
 		msleep(2);
 		gpio_set_level(GPIO_PP900_USB_EN, 0);
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 0
 		gpio_set_level(GPIO_PP900_PLL_EN, 0);
 		gpio_set_level(GPIO_PP900_PMU_EN, 0);
+#endif
 		msleep(6);
 		gpio_set_level(GPIO_PP900_PCIE_EN, 0);
 		gpio_set_level(GPIO_PP900_AP_EN, 0);
