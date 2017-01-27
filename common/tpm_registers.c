@@ -645,6 +645,7 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 /* Event (to TPM task) to request reset, or (from TPM task) on completion. */
 #define TPM_EVENT_RESET TASK_EVENT_CUSTOM(1 << 0)
 #define TPM_EVENT_COMMIT TASK_EVENT_CUSTOM(1 << 1)
+#define TPM_EVENT_WIPE_NVMEM TASK_EVENT_CUSTOM(1 << 2)
 
 /* Calling task (singular) to notify when the TPM reset has completed */
 static __initialized task_id_t waiting_for_reset = TASK_ID_INVALID;
@@ -652,31 +653,36 @@ static __initialized task_id_t waiting_for_reset = TASK_ID_INVALID;
 /* Return value from blocking tpm_reset_request() call */
 static __preserved int wipe_result;
 
-/*
- * Did tpm_reset_request() request nvmem wipe? (intentionally cleared on reset)
- */
-static int wipe_requested;
-
 int tpm_reset_request(int wait_until_done, int wipe_nvmem_first)
 {
-	uint32_t evt;
+	uint32_t evt = TPM_EVENT_RESET;
 
 	cprints(CC_TASK, "%s(%d, %d)", __func__,
 		wait_until_done, wipe_nvmem_first);
 
-	if (reset_in_progress) {
-		cprints(CC_TASK, "%s: already scheduled", __func__);
+	/*
+	 * Drop the incoming request if there is already a task waiting on a tpm
+	 * reset. We can't handle two.
+	 */
+	if (wait_until_done && waiting_for_reset != TASK_ID_INVALID) {
+		cprints(CC_TASK,
+			"%s: request dropped a task is already waiting",
+			__func__);
 		return EC_ERROR_BUSY;
 	}
 
-	reset_in_progress = 1;
-	wipe_result = EC_SUCCESS;
-
 	/* We can't change our minds about wiping. */
-	wipe_requested |= wipe_nvmem_first;
+	if (wipe_nvmem_first)
+		evt |= TPM_EVENT_WIPE_NVMEM;
 
-	/* Ask the TPM task to reset itself */
-	task_set_event(TASK_ID_TPM, TPM_EVENT_RESET, 0);
+	/*
+	 * If the right type of reset is not currently running, request a new
+	 * TPM reset.
+	 */
+	if (evt & ~reset_in_progress)
+		task_set_event(TASK_ID_TPM, evt, 0);
+	else
+		cprints(CC_TASK, "%s: reset in progress", __func__);
 
 	if (!wait_until_done)
 		return EC_SUCCESS;
@@ -716,10 +722,13 @@ static void reinstate_nvmem_commits(void)
 }
 DECLARE_DEFERRED(reinstate_nvmem_commits);
 
-static void tpm_reset_now(int wipe_first)
+static void tpm_reset_now(int waiting_task, int wipe_first)
 {
+	/* Keep track of the type of TPM reset running. */
+	reset_in_progress = (TPM_EVENT_RESET | wipe_first);
+
 	/* This is more related to TPM task activity than TPM transactions */
-	cprints(CC_TASK, "%s(%d)", __func__, wipe_first);
+	cprints(CC_TASK, "%s(%d, %d)", __func__, waiting_task, wipe_first);
 
 	if (wipe_first) {
 		/*
@@ -762,10 +771,16 @@ static void tpm_reset_now(int wipe_first)
 	/* Re-initialize our registers */
 	tpm_init();
 
-	if (waiting_for_reset != TASK_ID_INVALID) {
+	if (waiting_task != TASK_ID_INVALID) {
 		/* Wake the waiting task, if any */
-		task_set_event(waiting_for_reset, TPM_EVENT_RESET, 0);
-		waiting_for_reset = TASK_ID_INVALID;
+		task_set_event(waiting_task, TPM_EVENT_RESET, 0);
+
+		if (waiting_task != waiting_for_reset)
+			cprints(CC_TASK,
+				"%s: the waiting task changed from  %d to %d",
+				__func__, waiting_task, waiting_for_reset);
+		else
+			waiting_for_reset = TASK_ID_INVALID;
 	}
 
 	if (wipe_first) {
@@ -787,7 +802,7 @@ static void tpm_reset_now(int wipe_first)
 
 void tpm_task(void)
 {
-	tpm_reset_now(0);
+	tpm_reset_now(waiting_for_reset, 0);
 	while (1) {
 		uint8_t *response;
 		unsigned response_size;
@@ -797,8 +812,9 @@ void tpm_task(void)
 
 		/* Wait for the next command event */
 		evt = task_wait_event(-1);
-		if (evt & TPM_EVENT_RESET) {
-			tpm_reset_now(wipe_requested);
+		if (evt & (TPM_EVENT_RESET | TPM_EVENT_WIPE_NVMEM)) {
+			tpm_reset_now(waiting_for_reset,
+				      evt & TPM_EVENT_WIPE_NVMEM);
 			/*
 			 * There is no point in looking at other events in
 			 * this situation: the nvram will be committed by TPM
