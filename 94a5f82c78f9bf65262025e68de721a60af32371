@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "f4e35c0b_75c14c51",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-27T04:33:41Z",
+      "side": 1,
+      "message": "Ack",
+      "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5880d0e9_1e5411bd",
         "filename": "common/nvmem.c",
         "patchSetId": 3
@@ -138,6 +155,23 @@
     },
     {
       "key": {
+        "uuid": "b49f46b3_130edf3d",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-27T04:33:41Z",
+      "side": 1,
+      "message": "the payload gets encrypted, its contents don\u0027t matter any more as far as saving flash, but tpm and tests expect 0xff in the uninitialized nvmem\n\nthe  header fields which are not set are not used now.\n\nI am not sure why you worry about this - do you want me to change something here?",
+      "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "006d1ba4_dc75a140",
         "filename": "common/nvmem.c",
         "patchSetId": 3
@@ -183,6 +217,23 @@
       "writtenOn": "2017-01-27T04:27:57Z",
       "side": 1,
       "message": "I think TASK_ID_COUNT case is an error too in that we\u0027re getting unexpected callers or call sequences.",
+      "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "901e50cc_3cae14a1",
+        "filename": "common/nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-27T04:33:41Z",
+      "side": 1,
+      "message": "this is actually my thinking ahead to allow commits \u0027just in case\u0027 if the task has more than one path or something. But maybe I can use a different error value here.",
       "revId": "94a5f82c78f9bf65262025e68de721a60af32371",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
