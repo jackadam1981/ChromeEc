@@ -37,6 +37,8 @@ static int anx74xx_set_mux(int port, int polarity);
 /* Save the selected rp value */
 static int selected_rp[CONFIG_USB_PD_PORT_COUNT];
 
+static int anx74xx_tcpm_init(int port);
+
 static void anx74xx_tcpm_set_auto_good_crc(int port, int enable)
 {
 	int reg;
@@ -548,6 +550,82 @@ static int anx74xx_tcpm_set_cc(int port, int pull)
 	return rv;
 }
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+void anx74xx_handle_power_mode(int port, int mode)
+{
+	static int prev_mode[CONFIG_USB_PD_PORT_COUNT] = {-1, -1};
+
+	if (port >= CONFIG_USB_PD_PORT_COUNT || port < 0)
+		return;
+
+	if (mode == ANX74XX_STANDBY_MODE) {
+		prev_mode[port] = mode;
+		anx74xx_set_power_mode(port, mode);
+	} else if (prev_mode[port] != ANX74XX_NORMAL_MODE) {
+		/*
+		 * TODO: Interrupt high follows CC line hence ignore multiple
+		 * interrupts.
+		 */
+		prev_mode[port] = mode;
+		anx74xx_tcpm_init(port);
+	}
+}
+
+static int anx74xx_drp_control(int port, int enable, enum tcpc_cc_pull pull)
+{
+	int reg;
+	int rv;
+
+	rv = tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_6, &reg);
+	if (rv)
+		return rv;
+
+	if (enable)
+		reg |= ANX74XX_REG_DRP_EN;
+	else
+		reg &= ~ANX74XX_REG_DRP_EN;
+
+	rv = tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_6, reg);
+	if (rv)
+		return rv;
+
+	if (pull == TYPEC_CC_OPEN)
+		return anx74xx_cc_software_ctrl(port, 0);
+	else
+		return anx74xx_tcpm_set_cc(port, pull);
+}
+
+static int anx74xx_tcpc_drp_toggle(int port, enum pd_dual_role_states drp_state)
+{
+	int rv;
+
+	switch (drp_state) {
+	case PD_DRP_FORCE_SOURCE:
+		/* Enable DRP control and Set Rp to act as SOURCE */
+		rv = anx74xx_drp_control(port, 0, TYPEC_CC_RP);
+		break;
+	case PD_DRP_TOGGLE_ON:
+		/* Enable DRP control and Set Rd to act as SINK */
+		rv = anx74xx_drp_control(port, 1, TYPEC_CC_RD);
+		break;
+	case PD_DRP_FORCE_SINK:
+	case PD_DRP_TOGGLE_OFF:
+		/* Disable DRP control and Set Rd to start as SINK */
+		rv = anx74xx_drp_control(port, 0, TYPEC_CC_RD);
+		break;
+	default:
+		/* Disable DRP control and Disable CC software Control */
+		rv = anx74xx_drp_control(port, 0, TYPEC_CC_OPEN);
+		break;
+	}
+
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	anx74xx_handle_power_mode(port, ANX74XX_STANDBY_MODE);
+#endif
+	return rv;
+}
+#endif
+
 static int anx74xx_tcpm_set_polarity(int port, int polarity)
 {
 	int reg, mux_state, rv = EC_SUCCESS;
@@ -825,7 +903,7 @@ void anx74xx_tcpc_alert(int port)
 	}
 }
 
-int anx74xx_tcpm_init(int port)
+static int anx74xx_tcpm_init(int port)
 {
 	int rv = 0, reg;
 
@@ -908,6 +986,9 @@ const struct tcpm_drv anx74xx_tcpm_drv = {
 	.tcpc_alert		= &anx74xx_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &anx74xx_tcpc_discharge_vbus,
+#endif
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	.drp_toggle		= &anx74xx_tcpc_drp_toggle,
 #endif
 };
 
