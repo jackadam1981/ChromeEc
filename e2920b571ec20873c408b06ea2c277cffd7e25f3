@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db68a5f4_279ee1cc",
+        "filename": "common/nvmem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T16:57:42Z",
+      "side": 1,
+      "message": "This variable looks to be unneeded now that nothing is conditionalized on it.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "e2920b571ec20873c408b06ea2c277cffd7e25f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
