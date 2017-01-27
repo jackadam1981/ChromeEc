@@ -16,6 +16,23 @@
       "revId": "de820f11555a548f437b84b1ca4df600a3911b92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "525e620b_89c9cc94",
+        "filename": "common/nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T05:27:49Z",
+      "side": 1,
+      "message": "So this becomes quite the problem when commits are not enabled. We\u0027ve backed up all readers. I\u0027m not sure if if we are doing nvmem reads from other tasks than the TPM, but once a write is done and we\u0027ve disable commits temporarily those other tasks are blocked.\n\nIn a previous comment you said:\n\"It is not limited. If there is no write in progress - any number of tasks can read, each read enveloped in grabbing/releasing the mutex.\nIf a task writes something - only it can read or write until commit happens, all other taks\u0027 attempts to read or write will be stalled by the mutex.\"\n\nIf there are multiple writers, we have code paths where this function is called from the TPM task. We could fail the !\u003d task_get_current() check. What\u0027s worse is that there are a lot of global variables in this module with no protection. So are there multiple writers? If so, then there\u0027s a lot things that can break down.",
+      "revId": "de820f11555a548f437b84b1ca4df600a3911b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
