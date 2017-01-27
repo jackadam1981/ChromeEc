@@ -247,6 +247,23 @@
     },
     {
       "key": {
+        "uuid": "c56ce850_3d90ae57",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-27T04:47:50Z",
+      "side": 1,
+      "message": "No. We lose information since those interrupts are just queued in a single bit. And the signal could be transitioning before we sampled. I made that comment in order to add to the one you wrote so that it\u0027s written down that we acknowledge that possibility.",
+      "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45f46d4c_6c14c385",
         "filename": "board/cr50/board.c",
         "patchSetId": 10
