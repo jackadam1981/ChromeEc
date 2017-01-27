@@ -137,6 +137,29 @@
       "revId": "e0f1b037ea83da47eda2786992f50e5fc7bcd9c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50fb1590_9f65d433",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4004,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-01-27T15:35:56Z",
+      "side": 1,
+      "message": "ec_align_4, since it\u0027s a multiple of 32 bits; this will generate more efficient code.",
+      "range": {
+        "startLine": 4004,
+        "startChar": 7,
+        "endLine": 4004,
+        "endChar": 18
+      },
+      "revId": "e0f1b037ea83da47eda2786992f50e5fc7bcd9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
