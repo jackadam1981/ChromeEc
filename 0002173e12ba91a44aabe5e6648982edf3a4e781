@@ -230,6 +230,23 @@
     },
     {
       "key": {
+        "uuid": "8ffbcd44_1097a0ee",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-27T02:02:24Z",
+      "side": 1,
+      "message": "Is there something that can be done to fix this?",
+      "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45f46d4c_6c14c385",
         "filename": "board/cr50/board.c",
         "patchSetId": 10
@@ -247,6 +264,23 @@
     },
     {
       "key": {
+        "uuid": "63df96a7_c5f903fc",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-27T02:02:24Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05f47f1c_9b48029f",
         "filename": "board/cr50/board.c",
         "patchSetId": 10
@@ -258,6 +292,29 @@
       "writtenOn": "2017-01-26T18:26:35Z",
       "side": 1,
       "message": "Did you pick FED because it\u0027s our most likely original state? If so, can you please comment on that assumption.",
+      "range": {
+        "startLine": 660,
+        "startChar": 18,
+        "endLine": 660,
+        "endChar": 35
+      },
+      "revId": "0002173e12ba91a44aabe5e6648982edf3a4e781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a5b31e8_fb0dfddf",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-27T02:02:24Z",
+      "side": 1,
+      "message": "No. I just picked one randomly. If it is the wrong one then it will just think it missed a transition.\n\nmissed_transition will force a notification to the chipset hook. It shouldn\u0027t matter, because this should be the first update to the device state and would have notified the hook anyways. If we already triggered an interrupt and set the device state, it doesn\u0027t really matter if we notify the hook again. Anything that is sensitive to being re-initialized has a check to make sure it is not done again.",
       "range": {
         "startLine": 660,
         "startChar": 18,
