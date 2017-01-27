@@ -548,6 +548,59 @@ static int anx74xx_tcpm_set_cc(int port, int pull)
 	return rv;
 }
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+static int anx74xx_drp_control(int port, int enable, enum tcpc_cc_pull pull)
+{
+	int reg;
+	int rv;
+
+	rv = tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_6, &reg);
+	if (rv)
+		return rv;
+
+	if (enable)
+		reg |= ANX74XX_REG_DRP_EN;
+	else
+		reg &= ~ANX74XX_REG_DRP_EN;
+
+	rv = tcpc_write(port, ANX74XX_REG_ANALOG_STATUS, reg);
+	if (rv)
+		return rv;
+
+	if (pull == TYPEC_CC_OPEN)
+		return anx74xx_cc_software_ctrl(port, 0);
+	else
+		return anx74xx_tcpm_set_cc(port, pull);
+}
+
+static int anx74xx_tcpc_drp_toggle(int port, enum pd_dual_role_states drp_state)
+{
+	int rv;
+
+	switch (drp_state) {
+	case PD_DRP_FORCE_SOURCE:
+		/* Enable DRP control and Set Rp to act as SOURCE */
+		rv = anx74xx_drp_control(port, 1, TYPEC_CC_RP);
+		break;
+	case PD_DRP_TOGGLE_ON:
+		/* Enable DRP control and Set Rd to act as SINK */
+		rv = anx74xx_drp_control(port, 1, TYPEC_CC_RD);
+		break;
+	case PD_DRP_TOGGLE_OFF:
+	case PD_DRP_FORCE_SINK:
+	default:
+		/* Enable DRP control and Disable CC software Control */
+		rv = anx74xx_drp_control(port, 0, TYPEC_CC_OPEN);
+		break;
+	}
+
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	anx74xx_handle_power_mode(port, ANX74XX_STANDBY_MODE);
+#endif
+	return rv;
+}
+#endif
+
 static int anx74xx_tcpm_set_polarity(int port, int polarity)
 {
 	int reg, mux_state, rv = EC_SUCCESS;
@@ -909,6 +962,9 @@ const struct tcpm_drv anx74xx_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &anx74xx_tcpc_discharge_vbus,
 #endif
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	.drp_toggle		= &anx74xx_tcpc_drp_toggle,
+#endif
 };
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
@@ -922,3 +978,20 @@ struct i2c_stress_test_dev anx74xx_i2c_stress_test_dev = {
 	.i2c_write = &tcpc_i2c_write,
 };
 #endif /* CONFIG_CMD_I2C_STRESS_TEST_TCPC */
+
+void anx74xx_handle_power_mode(int port, int mode)
+{
+	static int prev_mode = -1;
+
+	if (!mode) {
+		prev_mode = mode;
+		anx74xx_set_power_mode(port, mode);
+	} else if (!prev_mode) {
+		/*
+		 * TODO: Interrupt high follows CC line hence ignore multiple
+		 * interrupts.
+		 */
+		prev_mode = mode;
+		anx74xx_tcpm_init(port);
+	}
+}
