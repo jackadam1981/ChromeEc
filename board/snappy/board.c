@@ -225,8 +225,10 @@ const int i2c_test_dev_used = ARRAY_SIZE(i2c_stress_tests);
 #endif /* CONFIG_CMD_I2C_STRESS_TEST */
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
-	{NPCX_I2C_PORT0_1, 0x16, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{NPCX_I2C_PORT0_0, TCPC_PORT0_I2C_ADDR, &anx74xx_tcpm_drv,
+			TCPC_ALERT_ACTIVE_LOW},
+	{NPCX_I2C_PORT0_1, TCPC_PORT1_I2C_ADDR, &tcpci_tcpm_drv,
+			TCPC_ALERT_ACTIVE_LOW},
 };
 
 uint16_t tcpc_get_alert_status(void)
@@ -352,6 +354,12 @@ void board_tcpc_init(void)
 
 		mux->hpd_update(port, 0, 0);
 	}
+
+	/* Snappy specific signal reconditioning */
+	i2c_write8(NPCX_I2C_PORT0_1, TCPC_PORT1_I2C_ADDR,
+		   PS8751_REG_MUX_USB_C2SS_EQ, 0x50);
+	i2c_write8(NPCX_I2C_PORT0_1, TCPC_PORT1_I2C_ADDR,
+		   PS8751_REG_MUX_USB_C2SS_HS_THRESHOLD, 0x80);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
