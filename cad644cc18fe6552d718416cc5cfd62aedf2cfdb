@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "76526d91_757c551e",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-28T05:39:51Z",
+      "side": 1,
+      "message": "This variable is not protected from preemption and multiple tasks as it is -- let lone interrupts.",
+      "range": {
+        "startLine": 667,
+        "startChar": 24,
+        "endLine": 667,
+        "endChar": 41
+      },
+      "revId": "cad644cc18fe6552d718416cc5cfd62aedf2cfdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91273712_c87ae002",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-28T05:39:51Z",
+      "side": 1,
+      "message": "I don\u0027t see the point of even trying to protect this. It\u0027s racy as it is. reset_in_progress is just a random global variable that could be stale when the condition is actually checked.",
+      "revId": "cad644cc18fe6552d718416cc5cfd62aedf2cfdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60771152_a371f7a3",
         "filename": "common/tpm_registers.c",
         "patchSetId": 1
@@ -13,6 +53,29 @@
       "writtenOn": "2017-01-28T00:44:37Z",
       "side": 1,
       "message": "I don\u0027t think you should ever wait in interrupt context, it should be an error to call this function in blocking more from  ISR",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 692,
+        "endChar": 28
+      },
+      "revId": "cad644cc18fe6552d718416cc5cfd62aedf2cfdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5aff36a_9a73759c",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-28T05:39:51Z",
+      "side": 1,
+      "message": "Isn\u0027t that what EC_ERROR_BUSY is? Or were you wanting to just say return an error prior to requesting the actual reset?",
       "range": {
         "startLine": 690,
         "startChar": 0,
@@ -68,6 +131,69 @@
       "revId": "cad644cc18fe6552d718416cc5cfd62aedf2cfdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "471e3b25_32a8991e",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-28T05:39:51Z",
+      "side": 1,
+      "message": "I don\u0027t see the point of reset_in_progress. It\u0027s not protected correctly and it offers no additional information. If someone wants to request a reset the request is coalesced with other requests or it\u0027s not by the time the tpm task sees the event.",
+      "range": {
+        "startLine": 728,
+        "startChar": 22,
+        "endLine": 728,
+        "endChar": 50
+      },
+      "revId": "cad644cc18fe6552d718416cc5cfd62aedf2cfdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "836819c2_4691e9d0",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-28T05:39:51Z",
+      "side": 1,
+      "message": "I don\u0027t understand the point of passing in variables to this function aside from the event mask. Just let the function figure out the actions.",
+      "revId": "cad644cc18fe6552d718416cc5cfd62aedf2cfdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62057f3e_3be17a57",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-28T05:39:51Z",
+      "side": 1,
+      "message": "This event is always set for any type of reset request. Why check all the possibilities in this if block?",
+      "range": {
+        "startLine": 815,
+        "startChar": 13,
+        "endLine": 815,
+        "endChar": 28
+      },
+      "revId": "cad644cc18fe6552d718416cc5cfd62aedf2cfdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
