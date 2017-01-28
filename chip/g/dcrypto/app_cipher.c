@@ -3,8 +3,14 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+#include "console.h"
 #include "dcrypto.h"
+#include "hooks.h"
 #include "registers.h"
+#include "shared_mem.h"
+#include "task.h"
+#include "timer.h"
+#include "util.h"
 
 /* The default build options compile for size (-Os); instruct the
  * compiler to optimize for speed here.  Incidentally -O produces
@@ -27,6 +33,9 @@ inner_loop(uint32_t **out, const uint32_t **in, size_t len)
 		GREG32(KEYMGR, AES_WFIFO_DATA) = w1;
 		GREG32(KEYMGR, AES_WFIFO_DATA) = w2;
 		GREG32(KEYMGR, AES_WFIFO_DATA) = w3;
+
+		while (GREG32(KEYMGR, AES_RFIFO_EMPTY))
+			;
 
 		/* NOTE that the output from the AES engine is
 		 * read below without checking the status of
@@ -167,3 +176,116 @@ int DCRYPTO_app_cipher(enum dcrypto_appid appid, const void *salt,
 	DCRYPTO_appkey_finish(&ctx);
 	return 1;
 }
+
+#define HEAP_HEAD_ROOM 0x400
+
+static uint32_t number_of_iterations;
+static uint8_t result;
+static void run_cipher_cmd(void)
+{
+	int rv;
+	char *p;
+	uint8_t sha[SHA_DIGEST_SIZE];
+	uint8_t sha_after[SHA_DIGEST_SIZE];
+	uint32_t tstamp;
+	size_t test_blob_size;
+
+	result = EC_SUCCESS;
+	test_blob_size = shared_mem_size();
+	/*
+	 * Leave some room to crypto functions, just in case.
+	 */
+	if (test_blob_size < HEAP_HEAD_ROOM) {
+		ccprintf("Not enough memory to run the test\n");
+		result = EC_ERROR_OVERFLOW;
+		task_set_event(TASK_ID_CONSOLE, TASK_EVENT_CUSTOM(1), 0);
+		return;
+	}
+
+	/*
+	 * Let's use some odd size to make sure unaligned buffers are
+	 * handled properly.
+	 */
+	test_blob_size = (test_blob_size - HEAP_HEAD_ROOM) & ~0xf;
+	test_blob_size |= 7;
+
+	rv = shared_mem_acquire(test_blob_size, (char **)&p);
+	if (rv != EC_SUCCESS) {
+		ccprintf("Failed to allocate %d bytes\n", test_blob_size);
+		result = EC_ERROR_OVERFLOW;
+		task_set_event(TASK_ID_CONSOLE, TASK_EVENT_CUSTOM(1), 0);
+		return;
+	}
+
+	ccprintf("running %d iterations\n", number_of_iterations);
+	ccprintf("blob size %d at %p\n", test_blob_size, p);
+	ccprintf("original data     %.16h\n", p);
+
+	DCRYPTO_SHA1_hash((uint8_t *)p, test_blob_size, sha);
+	memcpy(sha_after, sha, sizeof(sha_after));
+
+	while (number_of_iterations--) {
+
+		tstamp = get_time().val;
+		rv = DCRYPTO_app_cipher(NVMEM, &sha_after, p, p, test_blob_size);
+		tstamp = get_time().val - tstamp;
+
+		ccprintf("\nout data          %.16h, time %d us\n", p, tstamp);
+		if (!rv) {
+			ccprintf("encryption failed\n");
+			result = EC_ERROR_UNKNOWN;
+			shared_mem_release(p);
+			task_set_event(TASK_ID_CONSOLE, TASK_EVENT_CUSTOM(1), 0);
+			return;
+		}
+
+		tstamp = get_time().val;
+		rv = DCRYPTO_app_cipher(NVMEM, &sha, p, p, test_blob_size);
+		tstamp = get_time().val - tstamp;
+
+		ccprintf("decrypted data    %.16h, time %d us\n", p, tstamp);
+		if (!rv) {
+			ccprintf("decryption failed\n");
+			result = EC_ERROR_UNKNOWN;
+			shared_mem_release(p);
+			task_set_event(TASK_ID_CONSOLE, TASK_EVENT_CUSTOM(1), 0);
+			return;
+		}
+
+		DCRYPTO_SHA1_hash((uint8_t *)p, test_blob_size, sha_after);
+		if (memcmp(sha, sha_after, sizeof(sha))) {
+			ccprintf("\nsha1 before and after mismatch, %d to go!\n",
+				 number_of_iterations);
+			result = EC_ERROR_UNKNOWN;
+			break;
+		}
+		/* get a new IV */
+		DCRYPTO_SHA1_hash(sha_after, sizeof(sha), sha_after);
+	}
+
+	shared_mem_release(p);
+	task_set_event(TASK_ID_CONSOLE, TASK_EVENT_CUSTOM(1), 0);
+}
+DECLARE_DEFERRED(run_cipher_cmd);
+
+static int cmd_cipher(int argc, char **argv)
+{
+	uint32_t events;
+
+	if (argc > 1)
+		number_of_iterations = strtoi(argv[1], NULL, 0);
+	else
+		number_of_iterations = 10;
+
+	hook_call_deferred(&run_cipher_cmd_data, 0);
+
+	/* Should be done much sooner than in 1 second. */
+	events = task_wait_event_mask(TASK_EVENT_CUSTOM(1), 1 * SECOND);
+	if (!(events & TASK_EVENT_CUSTOM(1))) {
+		ccprintf("Timed out, you might want to reboot...\n");
+		return EC_ERROR_TIMEOUT;
+	}
+
+	return result;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(cipher, cmd_cipher, NULL, NULL);
