@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84783f4b_804e0f53",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-28T05:02:20Z",
+      "side": 1,
+      "message": "This isn\u0027t true. It\u0027s the tpm_reset_now() function which does that.",
+      "range": {
+        "startLine": 41,
+        "startChar": 16,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "e3cdff1ae3177a921ce7832e8a618c0c86d884ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
