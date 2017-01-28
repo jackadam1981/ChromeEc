@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60771152_a371f7a3",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-28T00:44:37Z",
+      "side": 1,
+      "message": "I don\u0027t think you should ever wait in interrupt context, it should be an error to call this function in blocking more from  ISR",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 692,
+        "endChar": 28
+      },
+      "revId": "cad644cc18fe6552d718416cc5cfd62aedf2cfdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1818571_20ca213a",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-28T00:44:37Z",
+      "side": 1,
+      "message": "what is \u0027waiting_task\u0027 in this case? comments describing the parameters of static functions in non-trivial cases are very useful.\n\nis the meaning \u0027the task requesting reset ?",
+      "range": {
+        "startLine": 725,
+        "startChar": 26,
+        "endLine": 725,
+        "endChar": 42
+      },
+      "revId": "cad644cc18fe6552d718416cc5cfd62aedf2cfdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e13b3dab_94a60e59",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-28T00:44:37Z",
+      "side": 1,
+      "message": "TPM_EVENT_RESET is a defined big, and \u0027wipe_first\u0027 is just a Boolean in this case?\n\nORing with TPM_EVENT_WIPE_NVMEM would be much cleaner.",
+      "range": {
+        "startLine": 728,
+        "startChar": 22,
+        "endLine": 728,
+        "endChar": 50
+      },
+      "revId": "cad644cc18fe6552d718416cc5cfd62aedf2cfdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
