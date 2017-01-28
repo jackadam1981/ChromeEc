@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd7f7498_4e14141b",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-01-28T02:08:37Z",
+      "side": 1,
+      "message": "You might want to comment at the top of this file the meaning of each CONFIG_CHIPSET_POWER_SEQ_VERSION. Eg.\n\nVersion 0: Initial revision\nVersion 1: GPIO..... merged with GPIO.....",
+      "range": {
+        "startLine": 207,
+        "startChar": 4,
+        "endLine": 207,
+        "endChar": 41
+      },
+      "revId": "91cf71e63be7c06b85d484106a34426f8c12f677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
