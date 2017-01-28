@@ -94,6 +94,29 @@
     },
     {
       "key": {
+        "uuid": "35c248f5_5fde1414",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-28T18:42:09Z",
+      "side": 1,
+      "message": "Added a poll here as discussed.",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ace498f_87ab9dab",
         "filename": "chip/g/dcrypto/app_cipher.c",
         "patchSetId": 4
@@ -151,6 +174,23 @@
       "writtenOn": "2017-01-27T23:23:32Z",
       "side": 1,
       "message": "there is no one instance of this style n the ec codebase,\n\n$ git grep -A 1 \u0027do {$\u0027 | grep \u0027}\u0027 | wc -l\n0\n\n and hundreds of the other kind\n\n $ git grep -A 1 while | grep -v \u0027{\u0027 | egrep \u0027\\s+;\u0027 | wc -l\n173\n\nthis is the style for this project, please change it.",
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00fbbcd5_d42f0daf",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-28T18:42:09Z",
+      "side": 1,
+      "message": "Done",
       "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -312,6 +352,23 @@
     },
     {
       "key": {
+        "uuid": "fe06804b_7fd1555f",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-28T18:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c600b2c_c74531ac",
         "filename": "chip/g/dcrypto/app_cipher.c",
         "patchSetId": 4
@@ -427,6 +484,29 @@
     },
     {
       "key": {
+        "uuid": "69a4a3c6_3beffda2",
+        "filename": "chip/g/dcrypto/app_cipher.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-28T18:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 43
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21d33107_0e8a6692",
         "filename": "chip/g/dcrypto/app_cipher.c",
         "patchSetId": 4
@@ -507,6 +587,29 @@
       "writtenOn": "2017-01-26T23:12:31Z",
       "side": 1,
       "message": "do is not needed.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 37
+      },
+      "revId": "d122f2e7dbb6de135e1cb48d7e77d693ce53f0d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d10c57f_e14f108a",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-01-28T18:42:09Z",
+      "side": 1,
+      "message": "Done",
       "range": {
         "startLine": 48,
         "startChar": 1,
