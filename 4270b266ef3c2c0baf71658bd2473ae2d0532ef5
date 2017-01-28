@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f2cd843_f7525891",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-28T05:51:57Z",
+      "side": 1,
+      "message": "I suggest you just do a tpm_reset_request() like the one above. Otherwise, we might get into a situation where we don\u0027t commit nvmem prior to this system reset.\n\nBut I see you are also dealing with reboot_request_posted in the reset_tpm_on_resume(). We\u0027d never get to that logic when reboot_request_posted\u003d1 since we\u0027d system_reset(). That seems wrong.",
+      "revId": "4270b266ef3c2c0baf71658bd2473ae2d0532ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
