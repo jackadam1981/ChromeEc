@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be26476f_34f63cc2",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-28T05:45:31Z",
+      "side": 1,
+      "message": "This should have been introduced in the patch before.",
+      "range": {
+        "startLine": 651,
+        "startChar": 8,
+        "endLine": 651,
+        "endChar": 23
+      },
+      "revId": "a0f572997f7cd7a274b9ba08b1c793ca365ccf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "921d743e_b5a5b75e",
+        "filename": "include/tpm_registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-28T05:45:31Z",
+      "side": 1,
+      "message": "I dont\u0027 see any waiting for that to happen.",
+      "range": {
+        "startLine": 44,
+        "startChar": 6,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "a0f572997f7cd7a274b9ba08b1c793ca365ccf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
