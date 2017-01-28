@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5598fdbb_eefdfd86",
+        "filename": "chip/g/crypto_api.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-28T19:37:48Z",
+      "side": 1,
+      "message": "I think this should come from the caller of api_cipher() as discussed, but we can talk about it later.",
+      "range": {
+        "startLine": 30,
+        "startChar": 27,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "e8b7bdff8120fe0e82ec8e664459abca51afe74a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
