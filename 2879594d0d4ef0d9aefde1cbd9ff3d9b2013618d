@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cc02d1f_de4e6d6a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-01-30T23:42:36Z",
+      "side": 1,
+      "message": "Should this also include BOARD_USB_AP?",
+      "range": {
+        "startLine": 154,
+        "startChar": 34,
+        "endLine": 154,
+        "endChar": 56
+      },
+      "revId": "2879594d0d4ef0d9aefde1cbd9ff3d9b2013618d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62c3c6ac_7dfabb76",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-01-30T23:42:36Z",
+      "side": 1,
+      "message": "s/OR/RO/",
+      "range": {
+        "startLine": 154,
+        "startChar": 15,
+        "endLine": 154,
+        "endChar": 17
+      },
+      "revId": "2879594d0d4ef0d9aefde1cbd9ff3d9b2013618d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f035a56_54456310",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-01-30T23:42:36Z",
+      "side": 1,
+      "message": "If we don\u0027t add USB_AP above, should we just add a second entry for Eve in the table for current build, with a TODO to remove it in the future?",
+      "range": {
+        "startLine": 158,
+        "startChar": 9,
+        "endLine": 158,
+        "endChar": 12
+      },
+      "revId": "2879594d0d4ef0d9aefde1cbd9ff3d9b2013618d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
