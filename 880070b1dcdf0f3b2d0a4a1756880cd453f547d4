@@ -22,6 +22,23 @@
       "revId": "880070b1dcdf0f3b2d0a4a1756880cd453f547d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b839b565_85dd010d",
+        "filename": "board/eve/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-30T22:08:54Z",
+      "side": 1,
+      "message": "Yes, I have removed it and the corresponding calls to these GPIOs in board.c where they were being set when entering hibernate mode.",
+      "revId": "880070b1dcdf0f3b2d0a4a1756880cd453f547d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
