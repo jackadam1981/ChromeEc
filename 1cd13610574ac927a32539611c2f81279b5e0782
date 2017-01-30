@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6f62156_02d605a0",
+        "filename": "board/eve/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-01-30T22:50:28Z",
+      "side": 1,
+      "message": "I loaded this change up to try it, and I think we may want to do something to indicate charging in S0, especially once we can do it per-port.  kevin/caroline are not good LED role models..",
+      "range": {
+        "startLine": 94,
+        "startChar": 22,
+        "endLine": 94,
+        "endChar": 38
+      },
+      "revId": "1cd13610574ac927a32539611c2f81279b5e0782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a03d2fe5_155cf046",
+        "filename": "board/eve/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-01-30T22:50:28Z",
+      "side": 1,
+      "message": "I think we should have a CHIPSET_STATE_SUSPEND|CHIPSET_STATE_STANDBY that makes the LEDs white (when not charging) in order to differentiate from off.  (something similar to reef/led.c?)",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 21
+      },
+      "revId": "1cd13610574ac927a32539611c2f81279b5e0782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
