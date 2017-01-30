@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9d848e4_1b47b701",
+        "filename": "board/eve/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-01-30T17:03:53Z",
+      "side": 1,
+      "message": "Should this be removed since these pins are set to alternate mode below?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "880070b1dcdf0f3b2d0a4a1756880cd453f547d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
