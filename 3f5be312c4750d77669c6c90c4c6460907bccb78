@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c755b132_25a7fa75",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-30T22:54:19Z",
+      "side": 1,
+      "message": "CABLE_DET interrupt is getting fire multiple of times for both attach/detach event and eventually settles down.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 6
+      },
+      "revId": "3f5be312c4750d77669c6c90c4c6460907bccb78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c98013ff_88f165cb",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-30T22:54:19Z",
+      "side": 1,
+      "message": "this case is not right but low power mode works with this settings.",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 24
+      },
+      "revId": "3f5be312c4750d77669c6c90c4c6460907bccb78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
