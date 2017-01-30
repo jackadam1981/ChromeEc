@@ -142,6 +142,23 @@
     },
     {
       "key": {
+        "uuid": "6d405f06_7397183d",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-01-30T23:33:37Z",
+      "side": 1,
+      "message": "Perhaps if the timer is set to wrap before the full range of 2^32. Suppose a timer wrapped at 0xFFFF0000 and ticks was 500. Then suppose t0 is 0xFFFEFFFA, then when you read the counter again at L123, it reads 0x00000001. You\u0027ll return even though 500 ticks have not passed (only 7 have).",
+      "revId": "61256ad925d058a2470fe761844d55f483f5b8c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b89037a_b92a4394",
         "filename": "include/hwtimer.h",
         "patchSetId": 1
