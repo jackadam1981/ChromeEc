@@ -116,10 +116,11 @@ $(out)/RW/ec.RW_B.flat: $(out)/util/signer
 endif
 
 CR50_RO_KEY ?= rom-testkey-A.pem
-ifeq ($(CR50_DEV),)
+ifeq ($(H1_DEVIDS),)
 CR50_RW_KEY = loader-testkey-A.pem
 SIGNER = $(out)/util/signer
 SIGNER_EXTRAS =
+SIGNER_MANIFEST := util/signer/ec_RW-manifest-dev.json
 else
 CPPFLAGS += -DCR50_DEV=1
 SIGNER = $(HOME)/bin/codesigner
@@ -127,7 +128,6 @@ CR50_RW_KEY = cr50_rom0-dev-blsign.pem.pub
 RW_SIGNER_EXTRAS = -x util/signer/fuses.xml
 
 ifneq ($(CHIP_MK_INCLUDED_ONCE),)
-ifneq ($(H1_DEVIDS),)
 #
 # When building a node locked cr50 image for an H1 device with prod RO, the
 # manifest needs to be modifed to include the device ID of the chip the image
@@ -149,15 +149,9 @@ REPLACEMENT := $(shell printf \
 NODE_JSON :=  $(shell sed -i \
 	"s/\"fuses\": {/\"fuses\": {$(REPLACEMENT)/" $(SIGNER_MANIFEST))
 
-else  # H1_DEVIDS  ^^^^^ nonempty    vvvvvv empty
-
-SIGNER_MANIFEST := util/signer/ec_RW-manifest-dev.json
-
-endif  # H1_DEVIDS  ^^^^^ empty
-
 RW_SIGNER_EXTRAS += -j $(SIGNER_MANIFEST)
 endif  # CHIP_MK_INCLUDED_ONCE defined
-endif  # CR50_DEV defined
+endif  # H1_DEVIDS defined
 
 
 # This file is included twice by the Makefile, once to determine the CHIP info
