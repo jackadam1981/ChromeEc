@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "453ed96e_bfb5a534",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-01-31T16:59:43Z",
+      "side": 1,
+      "message": "This means if batter is charged 1%, we won\u0027t enforce any thresholds tweaked in this CL. Is 1% enough to complete the recovery process?",
+      "range": {
+        "startLine": 972,
+        "startChar": 1,
+        "endLine": 975,
+        "endChar": 23
+      },
+      "revId": "19fee64128330e8d9c10e4bd0152f152a80ffc85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
