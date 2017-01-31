@@ -852,7 +852,7 @@ int charger_get_vbus_level(void)
 
 int bd9995x_is_vbus_provided(int port)
 {
-	int reg;
+	int reg, reg_vbus;
 
 	if (ch_raw_read16(BD9995X_CMD_VBUS_VCC_STATUS, &reg,
 			  BD9995X_EXTENDED_COMMAND))
@@ -868,6 +868,19 @@ int bd9995x_is_vbus_provided(int port)
 			BD9995X_CMD_VBUS_VCC_STATUS_VBUS_DETECT);
 	} else
 		reg = 0;
+
+
+	if (!reg) {
+		if (port == BD9995X_CHARGE_PORT_BOTH)
+			reg_vbus = charger_get_vbus_level();
+		else if (ch_raw_read16(port == BD9995X_CHARGE_PORT_VBUS ?
+				BD9995X_CMD_VBUS_VAL : BD9995X_CMD_VCC_VAL,
+				&reg_vbus, BD9995X_EXTENDED_COMMAND))
+			return 0;
+
+		if (reg_vbus > BD9995X_VBUS_DET_TH)
+			return 1;
+	}
 
 	return !!reg;
 }
