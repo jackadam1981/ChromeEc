@@ -45,6 +45,29 @@
       "revId": "b84026e8330ef9f0d4ffbe72b32511868b3f777b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "084a36de_abb46460",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-31T02:27:11Z",
+      "side": 1,
+      "message": "It\u0027s the same logic it should result in the same actions.",
+      "range": {
+        "startLine": 660,
+        "startChar": 0,
+        "endLine": 660,
+        "endChar": 38
+      },
+      "revId": "b84026e8330ef9f0d4ffbe72b32511868b3f777b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
