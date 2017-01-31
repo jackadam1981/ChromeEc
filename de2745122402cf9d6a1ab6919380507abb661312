@@ -22,6 +22,23 @@
       "revId": "de2745122402cf9d6a1ab6919380507abb661312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76c82b47_52231265",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-31T00:09:11Z",
+      "side": 1,
+      "message": "I could add it, but did not feel it is necessary, the mapping is very simple:\n\n00 - strong pull down\n01 - weak pull down\n10 - weak pull up\n11 - strong pull up",
+      "revId": "de2745122402cf9d6a1ab6919380507abb661312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
