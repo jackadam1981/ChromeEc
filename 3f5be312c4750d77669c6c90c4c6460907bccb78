@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ebcffb45_db16419d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T10:14:20Z",
+      "side": 1,
+      "message": "I cannot parse what you mean here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 67
+      },
+      "revId": "3f5be312c4750d77669c6c90c4c6460907bccb78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c755b132_25a7fa75",
         "filename": "board/reef/board.c",
         "patchSetId": 4
@@ -17,6 +40,29 @@
         "startLine": 97,
         "startChar": 0,
         "endLine": 102,
+        "endChar": 6
+      },
+      "revId": "3f5be312c4750d77669c6c90c4c6460907bccb78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ede49698_15b53279",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2891,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T10:14:20Z",
+      "side": 1,
+      "message": "as already commented by Daisuke, this construct is a terrible bug waiting to happen.",
+      "range": {
+        "startLine": 2887,
+        "startChar": 0,
+        "endLine": 2891,
         "endChar": 6
       },
       "revId": "3f5be312c4750d77669c6c90c4c6460907bccb78",
