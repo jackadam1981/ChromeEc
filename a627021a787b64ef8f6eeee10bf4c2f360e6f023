@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78fdf840_b2be47f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-31T02:17:53Z",
+      "side": 1,
+      "message": "Does this mean we run recovery with 5V 3A as well? Does that work?",
+      "revId": "a627021a787b64ef8f6eeee10bf4c2f360e6f023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50c73162_73f0d9a0",
+        "filename": "board/reef/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-01-31T02:17:53Z",
+      "side": 1,
+      "message": "When does this need to be flipped?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 30
+      },
+      "revId": "a627021a787b64ef8f6eeee10bf4c2f360e6f023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
