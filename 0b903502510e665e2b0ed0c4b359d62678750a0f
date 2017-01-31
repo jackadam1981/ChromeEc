@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "03f04146_c0c59016",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-01-31T17:46:43Z",
+      "side": 1,
+      "message": "The dilemma comes from tcpci_tcpm_drv. tcpci_tcpm_drv has to have a chip-specific version of get_fw_version, which varies board to bard.\n\nWe can remove \u0027const\u0027 from tcpm_drv and install a chip specific get_fw_version to a tcpm_drv on board init or something. What exactly are you suggesting?",
+      "range": {
+        "startLine": 231,
+        "startChar": 3,
+        "endLine": 231,
+        "endChar": 30
+      },
+      "revId": "0b903502510e665e2b0ed0c4b359d62678750a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d63d6f1_5297fcb3",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
