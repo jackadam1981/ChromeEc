@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee44bf96_eb1adae5",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-01-31T01:22:15Z",
+      "side": 1,
+      "message": "I am not sure if this has been discussed:\n\nWhy not just check here if plt_rst_l is not asserted, and reset the TPM in that case?\n\nSeems cleaner than invoking the interrupt handle from the task context with a fake event.",
+      "range": {
+        "startLine": 660,
+        "startChar": 0,
+        "endLine": 660,
+        "endChar": 38
+      },
+      "revId": "b84026e8330ef9f0d4ffbe72b32511868b3f777b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
