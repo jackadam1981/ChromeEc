@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "ab92a0d5_c628799d",
+        "filename": "board/eve/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-31T20:56:31Z",
+      "side": 1,
+      "message": "I think that is a good idea. I am starting to look at how to get port indications and plan to add this additional behavior after that.",
+      "revId": "1cd13610574ac927a32539611c2f81279b5e0782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a03d2fe5_155cf046",
         "filename": "board/eve/led.c",
         "patchSetId": 2
@@ -42,6 +59,23 @@
         "endLine": 107,
         "endChar": 21
       },
+      "revId": "1cd13610574ac927a32539611c2f81279b5e0782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0abc296d_98601279",
+        "filename": "board/eve/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-31T20:56:31Z",
+      "side": 1,
+      "message": "I know it\u0027s not a spec yet, but the Eve LED proposal doc that we have appears to have rules based on \"charger plugged/not plugged\" and battery state. I would imagine that this proposal would be far less useful for debug.",
       "revId": "1cd13610574ac927a32539611c2f81279b5e0782",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
