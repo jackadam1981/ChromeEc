@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d395f5bb_4b5aad65",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T10:22:43Z",
+      "side": 1,
+      "message": "as commented in the header, this has not much to do in the configuration, should probably be with the other tcpc driver callbacks (and thus not defined in the board file)",
+      "range": {
+        "startLine": 231,
+        "startChar": 3,
+        "endLine": 231,
+        "endChar": 30
+      },
+      "revId": "0b903502510e665e2b0ed0c4b359d62678750a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d63d6f1_5297fcb3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3662,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T10:22:43Z",
+      "side": 1,
+      "message": "so what is the longer term for vendor/product/device_id ?",
+      "range": {
+        "startLine": 3662,
+        "startChar": 1,
+        "endLine": 3662,
+        "endChar": 29
+      },
+      "revId": "0b903502510e665e2b0ed0c4b359d62678750a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eaa4ea2b_29c75b10",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3667,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T10:22:43Z",
+      "side": 1,
+      "message": "EC_RES_UNAVAILABLE seems slightly better.",
+      "range": {
+        "startLine": 3667,
+        "startChar": 9,
+        "endLine": 3667,
+        "endChar": 21
+      },
+      "revId": "0b903502510e665e2b0ed0c4b359d62678750a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bfdbbde_139891d1",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T10:22:43Z",
+      "side": 1,
+      "message": "why this is not in \u0027struct tcpm_drv\u0027 as all other callbacks ?",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 47
+      },
+      "revId": "0b903502510e665e2b0ed0c4b359d62678750a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af27c1b0_c8f3e5a3",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6888,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T10:22:43Z",
+      "side": 1,
+      "message": "it should print all the fields and put the field names.",
+      "range": {
+        "startLine": 6888,
+        "startChar": 0,
+        "endLine": 6888,
+        "endChar": 32
+      },
+      "revId": "0b903502510e665e2b0ed0c4b359d62678750a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
