@@ -22,6 +22,29 @@
       "revId": "19c792466b2c196dea234e3896215964043ca7ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68dde8f4_8edffc14",
+        "filename": "driver/tcpm/ps8751_fw_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1152072
+      },
+      "writtenOn": "2017-01-31T00:52:38Z",
+      "side": 1,
+      "message": "This is a misnomer. The name (_wake) comes from the reference code; in the ps8751 documentation names it EnableI2cAccess. I will rename it.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 1
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
