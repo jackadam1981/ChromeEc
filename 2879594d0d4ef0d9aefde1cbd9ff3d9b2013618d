@@ -48,6 +48,40 @@
     },
     {
       "key": {
+        "uuid": "7aafcbfe_e49d1170",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-31T00:09:00Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "2879594d0d4ef0d9aefde1cbd9ff3d9b2013618d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "362135ae_596d8608",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-31T00:09:00Z",
+      "side": 1,
+      "message": "Yes, it should include that. I had intended the default to be what we currently do for Reef",
+      "revId": "2879594d0d4ef0d9aefde1cbd9ff3d9b2013618d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f035a56_54456310",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -99,6 +133,23 @@
       "writtenOn": "2017-01-30T23:59:07Z",
       "side": 1,
       "message": "That\u0027s the idea, but at the moment there are issues (62291) in some cases with the strap reading.",
+      "revId": "2879594d0d4ef0d9aefde1cbd9ff3d9b2013618d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5dc7f02_542cf8a8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-01-31T00:09:00Z",
+      "side": 1,
+      "message": "Unless the logic is changed, on Eve it will return an EC_ERROR_INVAL from the \u0027get_strap_config\u0027 option and won\u0027t scan the table for a matching entry.",
       "revId": "2879594d0d4ef0d9aefde1cbd9ff3d9b2013618d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
