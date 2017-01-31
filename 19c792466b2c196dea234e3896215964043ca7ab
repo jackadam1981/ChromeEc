@@ -2,6 +2,190 @@
   "comments": [
     {
       "key": {
+        "uuid": "7030d383_506c037d",
+        "filename": "driver/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T11:37:56Z",
+      "side": 1,
+      "message": "please put the 2 objects on the same line",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 51
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9134b644_39081fd7",
+        "filename": "driver/tcpm/anx74xx_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T11:37:56Z",
+      "side": 1,
+      "message": "you don\u0027t need this initialization",
+      "range": {
+        "startLine": 64,
+        "startChar": 9,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d5bd72_c0e1ea21",
+        "filename": "driver/tcpm/anx74xx_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T11:37:56Z",
+      "side": 1,
+      "message": "if we reload the watchdog, then the watchdog is useless",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 19
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81683fa5_ebf0fc5e",
+        "filename": "driver/tcpm/anx74xx_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T11:37:56Z",
+      "side": 1,
+      "message": "given how similar it is with the OTP_Read above (3 constants are different , that\u0027s it ?), we should probably do a single function for both and save some space",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 1
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "935b95f7_4cff8d40",
+        "filename": "driver/tcpm/anx74xx_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T11:37:56Z",
+      "side": 1,
+      "message": "the rdbuf size is 8 bytes.",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 27
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "138b39de_c10681c5",
+        "filename": "driver/tcpm/anx74xx_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T11:37:56Z",
+      "side": 1,
+      "message": "this function seems to expect a 9-byte buffer.",
+      "range": {
+        "startLine": 178,
+        "startChar": 19,
+        "endLine": 178,
+        "endChar": 24
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c40dc006_879a3684",
+        "filename": "driver/tcpm/anx74xx_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T11:37:56Z",
+      "side": 1,
+      "message": "no ccprintf in non-interactive functions",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 222,
+        "endChar": 10
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69326d57_d20f18e0",
+        "filename": "driver/tcpm/anx74xx_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T11:37:56Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 44
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caca9671_24d079c2",
         "filename": "driver/tcpm/ps8751_fw_update.c",
         "patchSetId": 1
@@ -133,6 +317,167 @@
         "startChar": 0,
         "endLine": 11,
         "endChar": 2
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7b31de2_33edbeb2",
+        "filename": "driver/tcpm/tcpm_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T11:37:56Z",
+      "side": 1,
+      "message": "maybe CONFIG_USB_PD_PORT_COUNT",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f9b0656_e43720c3",
+        "filename": "driver/tcpm/tcpm_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T11:37:56Z",
+      "side": 1,
+      "message": "wrong year\nand no \u0027(c)\u0027",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4609713f_c32a3d6c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4012,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T11:37:56Z",
+      "side": 1,
+      "message": "no \u0027int\u0027, please put the explicit size.\nand when looking at the code, 32-bit is likely not the size we want.",
+      "range": {
+        "startLine": 4012,
+        "startChar": 0,
+        "endLine": 4012,
+        "endChar": 13
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "103308da_7ff4d751",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4014,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T11:37:56Z",
+      "side": 1,
+      "message": "we can transfer larger sizes.\nfor efficiency reason, we probably want to do it.",
+      "range": {
+        "startLine": 4014,
+        "startChar": 0,
+        "endLine": 4014,
+        "endChar": 17
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b16f723_30e85ddd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4018,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T11:37:56Z",
+      "side": 1,
+      "message": "no \u0027int\u0027 and lower case field name",
+      "range": {
+        "startLine": 4018,
+        "startChar": 0,
+        "endLine": 4018,
+        "endChar": 14
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fa0ab41_1ce2ab2c",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6932,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T11:37:56Z",
+      "side": 1,
+      "message": "what is this magic for ?",
+      "range": {
+        "startLine": 6931,
+        "startChar": 0,
+        "endLine": 6932,
+        "endChar": 18
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcbb9c04_ed1a6da4",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6946,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-01-31T11:37:56Z",
+      "side": 1,
+      "message": "should not repeat this string 5 times",
+      "range": {
+        "startLine": 6945,
+        "startChar": 0,
+        "endLine": 6946,
+        "endChar": 37
       },
       "revId": "19c792466b2c196dea234e3896215964043ca7ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
