@@ -57,6 +57,12 @@ enum bd9995x_charge_port {
  */
 #define BD9995X_BC12_MIN_VOLTAGE	4600
 
+/*
+ * BD9995X Recommended operating condition is 3.8V.
+ * BD9995X Anti-Collapse Threshold Voltage Accuracy is -100mV to +100mV,
+ */
+#define BD9995X_VBUS_DET_TH		3900
+
 /* Battery Charger Commands */
 #define BD9995X_CMD_CHG_CURRENT		0x14
 #define BD9995X_CMD_CHG_VOLTAGE		0x15
