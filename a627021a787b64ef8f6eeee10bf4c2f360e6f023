@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "f58d1c04_21264ecf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-01-31T20:05:15Z",
+      "side": 1,
+      "message": "I posted comment to issue 61801: I ran recovery with drained (~2%) battery on Electro. It seems 15w power supply is more than enough to complete recovery process because while the recovery was taking place the battery was actually being charged.",
+      "revId": "a627021a787b64ef8f6eeee10bf4c2f360e6f023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50c73162_73f0d9a0",
         "filename": "board/reef/board.h",
         "patchSetId": 1
