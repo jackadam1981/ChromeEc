@@ -22,6 +22,29 @@
       "revId": "b84026e8330ef9f0d4ffbe72b32511868b3f777b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ae38c89_2766694b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-01-31T01:30:31Z",
+      "side": 1,
+      "message": "It needs to do some other things too like update the wake pin setting and set the AP state, so I thought it would be better not to have to duplicate whats in the handler.",
+      "range": {
+        "startLine": 660,
+        "startChar": 0,
+        "endLine": 660,
+        "endChar": 38
+      },
+      "revId": "b84026e8330ef9f0d4ffbe72b32511868b3f777b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
