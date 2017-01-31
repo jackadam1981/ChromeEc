@@ -153,6 +153,23 @@
       "revId": "2879594d0d4ef0d9aefde1cbd9ff3d9b2013618d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "627fb991_90ce7a6e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-01-31T00:11:28Z",
+      "side": 1,
+      "message": "Yep, I just wasn\u0027t sure if the lack of AP USB was intended as a default or not, this seems good now.",
+      "revId": "2879594d0d4ef0d9aefde1cbd9ff3d9b2013618d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
