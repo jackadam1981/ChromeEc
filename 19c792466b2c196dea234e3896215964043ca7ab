@@ -278,6 +278,29 @@
     },
     {
       "key": {
+        "uuid": "9b3d8b36_168a0b26",
+        "filename": "driver/tcpm/ps8751_fw_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-01-31T17:49:34Z",
+      "side": 1,
+      "message": "Then, what\u0027s the procedure to wake up the chip?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 1
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09edd22d_fdf63307",
         "filename": "driver/tcpm/tcpm_fw.c",
         "patchSetId": 1
