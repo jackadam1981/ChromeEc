@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f27fa32_477eeca6",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-01-31T22:51:42Z",
+      "side": 1,
+      "message": "we can avoid read_reg;\nbd9995x_pd_port_to_chg_port(port) \u003d\u003d BD9995X_CHARGE_PORT_VBUS ? BD9995X_CMD_VBUS_VAL : BD9995X_CMD_VCC_VAL?",
+      "range": {
+        "startLine": 845,
+        "startChar": 22,
+        "endLine": 845,
+        "endChar": 30
+      },
+      "revId": "3e46a306247bfc55e1e13b9d31894bfcf7803b52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
