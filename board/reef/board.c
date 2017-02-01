@@ -25,7 +25,6 @@
 #include "driver/tcpm/ps8751.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
-#include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -232,8 +231,6 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{NPCX_I2C_PORT0_1, 0x16, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
 };
 
-struct ec_response_pd_chip_info tcpc_info[CONFIG_USB_PD_PORT_COUNT];
-
 uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
@@ -305,21 +302,16 @@ void board_reset_pd_mcu(void)
 	board_set_tcpc_power_mode(0, 1);
 }
 
-#ifdef CONFIG_USB_PD_TCPC_FW_VERSION
 void board_print_tcpc_fw_version(int port)
 {
-	int rv;
-	int version;
+	struct ec_response_pd_chip_info *info;
+	int err;
 
-	if (port)
-		rv = ps8751_tcpc_get_fw_version(port, &version);
-	else
-		rv = anx74xx_tcpc_get_fw_version(port, &version);
-
-	if (!rv)
-		CPRINTS("TCPC p%d FW VER: 0x%x", port, version);
+	err = tcpc_get_chip_info(port, &info);
+	CPRINTS("TCPC p%d VID:0x%x PID:0x%x DID:0x%x FWV:0x%x (err=%d)",
+		port, info->vendor_id, info->product_id, info->device_id,
+		info->fw_version, err);
 }
-#endif
 
 void board_tcpc_init(void)
 {
