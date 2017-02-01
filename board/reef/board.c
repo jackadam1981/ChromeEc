@@ -226,7 +226,7 @@ struct i2c_stress_test i2c_stress_tests[] = {
 const int i2c_test_dev_used = ARRAY_SIZE(i2c_stress_tests);
 #endif /* CONFIG_CMD_I2C_STRESS_TEST */
 
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
+struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
 	{NPCX_I2C_PORT0_1, 0x16, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
 };
@@ -305,16 +305,11 @@ void board_reset_pd_mcu(void)
 #ifdef CONFIG_USB_PD_TCPC_FW_VERSION
 void board_print_tcpc_fw_version(int port)
 {
-	int rv;
-	int version;
+	struct ec_response_pd_chip_info *info = tcpc_get_chip_info(port);
 
-	if (port)
-		rv = ps8751_tcpc_get_fw_version(port, &version);
-	else
-		rv = anx74xx_tcpc_get_fw_version(port, &version);
-
-	if (!rv)
-		CPRINTS("TCPC p%d FW VER: 0x%x", port, version);
+	CPRINTS("TCPC p%d VID:0x%x PID:0x%x DID:0x%x FWV:0x%x",
+		port, info->vendor_id, info->product_id, info->device_id,
+		info->fw_version);
 }
 #endif
 
