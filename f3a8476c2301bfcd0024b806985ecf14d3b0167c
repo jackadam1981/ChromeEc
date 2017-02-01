@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "995c76e2_f994fd9c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-01T18:50:06Z",
+      "side": 1,
+      "message": "okay",
+      "revId": "f3a8476c2301bfcd0024b806985ecf14d3b0167c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89e1c9ff_65235867",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -30,6 +47,23 @@
       "writtenOn": "2017-02-01T16:34:31Z",
       "side": 1,
       "message": "Same comment applies as in motion_sense.c.",
+      "revId": "f3a8476c2301bfcd0024b806985ecf14d3b0167c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7745978_4eff1af4",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1191,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-01T18:50:06Z",
+      "side": 1,
+      "message": "okay",
       "revId": "f3a8476c2301bfcd0024b806985ecf14d3b0167c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
