@@ -22,6 +22,29 @@
       "revId": "3e46a306247bfc55e1e13b9d31894bfcf7803b52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b8dfef0_333e90ec",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-01T17:40:37Z",
+      "side": 1,
+      "message": "I changed it slightly, PTAL. This seems easier to read than your proposal.",
+      "range": {
+        "startLine": 845,
+        "startChar": 22,
+        "endLine": 845,
+        "endChar": 30
+      },
+      "revId": "3e46a306247bfc55e1e13b9d31894bfcf7803b52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
