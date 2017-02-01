@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af017119_d7dcd1d4",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-01T03:20:46Z",
+      "side": 1,
+      "message": "We come here when entering s3 and s5 with the port open, right? Where is the trick that makes the port sink only?",
+      "range": {
+        "startLine": 589,
+        "startChar": 0,
+        "endLine": 594,
+        "endChar": 8
+      },
+      "revId": "953700bf486ba14ac9920eba0f090f3672641f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
