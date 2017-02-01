@@ -22,6 +22,23 @@
       "revId": "b8e827ced72327743cd56e2f90453dd2e8bad03c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97fbe966_ef3570a7",
+        "filename": "board/servo_v4/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-01T02:50:50Z",
+      "side": 1,
+      "message": "Yes, this got removed due to how I merged the change to PD_STATE_DEFAULT. I have restored it and verified that the CHG and DUT ports end up in desired default power role/states",
+      "revId": "b8e827ced72327743cd56e2f90453dd2e8bad03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
