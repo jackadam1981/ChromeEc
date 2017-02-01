@@ -94,6 +94,29 @@
     },
     {
       "key": {
+        "uuid": "9d88fa81_0897aab5",
+        "filename": "driver/tcpm/anx74xx_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1152072
+      },
+      "writtenOn": "2017-02-01T20:17:16Z",
+      "side": 1,
+      "message": "I don\u0027t know the semantics of these constants, so I don\u0027t know how to call the parameters of the unified function.\n\nThis code will not be in EC, so the space saving is not that important.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 1
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "935b95f7_4cff8d40",
         "filename": "driver/tcpm/anx74xx_fw.c",
         "patchSetId": 1
@@ -117,6 +140,29 @@
     },
     {
       "key": {
+        "uuid": "225d830e_db79862d",
+        "filename": "driver/tcpm/anx74xx_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1152072
+      },
+      "writtenOn": "2017-02-01T20:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 27
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "138b39de_c10681c5",
         "filename": "driver/tcpm/anx74xx_fw.c",
         "patchSetId": 1
@@ -128,6 +174,29 @@
       "writtenOn": "2017-01-31T11:37:56Z",
       "side": 1,
       "message": "this function seems to expect a 9-byte buffer.",
+      "range": {
+        "startLine": 178,
+        "startChar": 19,
+        "endLine": 178,
+        "endChar": 24
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d43dcfb7_b8893fe4",
+        "filename": "driver/tcpm/anx74xx_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1152072
+      },
+      "writtenOn": "2017-02-01T20:17:16Z",
+      "side": 1,
+      "message": "Done",
       "range": {
         "startLine": 178,
         "startChar": 19,
@@ -370,6 +439,29 @@
     },
     {
       "key": {
+        "uuid": "dd37b593_564c0673",
+        "filename": "driver/tcpm/tcpm_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1152072
+      },
+      "writtenOn": "2017-02-01T20:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f9b0656_e43720c3",
         "filename": "driver/tcpm/tcpm_fw.h",
         "patchSetId": 1
@@ -381,6 +473,29 @@
       "writtenOn": "2017-01-31T11:37:56Z",
       "side": 1,
       "message": "wrong year\nand no \u0027(c)\u0027",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ee27ec3_7775a623",
+        "filename": "driver/tcpm/tcpm_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1152072
+      },
+      "writtenOn": "2017-02-01T20:17:16Z",
+      "side": 1,
+      "message": "Done",
       "range": {
         "startLine": 1,
         "startChar": 3,
@@ -473,6 +588,29 @@
       "writtenOn": "2017-01-31T11:37:56Z",
       "side": 1,
       "message": "what is this magic for ?",
+      "range": {
+        "startLine": 6931,
+        "startChar": 0,
+        "endLine": 6932,
+        "endChar": 18
+      },
+      "revId": "19c792466b2c196dea234e3896215964043ca7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "399da2e6_c2cf4a28",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6932,
+      "author": {
+        "id": 1152072
+      },
+      "writtenOn": "2017-02-01T20:17:16Z",
+      "side": 1,
+      "message": "Done",
       "range": {
         "startLine": 6931,
         "startChar": 0,
