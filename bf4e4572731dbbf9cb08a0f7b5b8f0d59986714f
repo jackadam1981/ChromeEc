@@ -22,6 +22,23 @@
       "revId": "bf4e4572731dbbf9cb08a0f7b5b8f0d59986714f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcda0921_91b6120c",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-01T02:50:50Z",
+      "side": 1,
+      "message": "Modified this to use a deferred call. So the initial delay is built into the deferred call and if sbu polarity can\u0027t be determined will call every 100 msec until ccd_disable state.",
+      "revId": "bf4e4572731dbbf9cb08a0f7b5b8f0d59986714f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
