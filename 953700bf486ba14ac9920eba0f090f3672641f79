@@ -22,6 +22,29 @@
       "revId": "953700bf486ba14ac9920eba0f090f3672641f79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "821c0e30_b4ac40b5",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-01T05:16:34Z",
+      "side": 1,
+      "message": "Analogix team: Can you comment if the details in the datasheet as correct?\nBecause if I select TYPEC_CC_RD for PD_DRP_FORCE_SINK in S3 we put ANX in sleep mode and charger stops charging",
+      "range": {
+        "startLine": 589,
+        "startChar": 0,
+        "endLine": 594,
+        "endChar": 8
+      },
+      "revId": "953700bf486ba14ac9920eba0f090f3672641f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
