@@ -598,6 +598,19 @@ static int anx74xx_drp_control(int port, int enable, enum tcpc_cc_pull pull)
 static int anx74xx_tcpc_drp_toggle(int port, enum pd_dual_role_states drp_state)
 {
 	int rv;
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	/*
+	 * TODO (crosbug.com/p/62550): eMark cable is not detected in low power
+	 * mode if not powered initially hence we don't get the cable detect
+	 * interrupt when the cable is powered. To avoid this issue, before
+	 * entering low power mode get the VBUS status from the charger and
+	 * override the low power mode to normal mode to mimic the cable detect
+	 * interrupt.
+	 */
+	int mode = pd_snk_is_vbus_provided(port) &&
+			!usb_charger_port_is_sourcing_vbus(port) ?
+				ANX74XX_NORMAL_MODE : ANX74XX_STANDBY_MODE;
+#endif
 
 	switch (drp_state) {
 	case PD_DRP_FORCE_SOURCE:
@@ -620,7 +633,7 @@ static int anx74xx_tcpc_drp_toggle(int port, enum pd_dual_role_states drp_state)
 	}
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	anx74xx_handle_power_mode(port, ANX74XX_STANDBY_MODE);
+	anx74xx_handle_power_mode(port, mode);
 #endif
 	return rv;
 }
