@@ -66,6 +66,23 @@
     },
     {
       "key": {
+        "uuid": "9eef3db3_727189d8",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-02T22:51:18Z",
+      "side": 1,
+      "message": "nit: I would return here if reg \u003d\u003d 1. That\u0027ll make the code slightly tidier:\n\nif (reg)\n        return !!reg;",
+      "revId": "36f5672d7d7c7b3e611cf6c1d7db6c846765acac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6a09beb_529b3f0d",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 1
