@@ -45,6 +45,24 @@
       "revId": "36f5672d7d7c7b3e611cf6c1d7db6c846765acac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c88ea38_fede8bda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2017-02-02T21:16:54Z",
+      "side": 1,
+      "message": "Note: From Rohm:\n•\tYou should use VBUS/VCC_STATUS to determine if you are seeing an input voltage",
+      "parentUuid": "443ace38_c99124cd",
+      "revId": "36f5672d7d7c7b3e611cf6c1d7db6c846765acac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
