@@ -86,6 +86,24 @@
       "revId": "36f5672d7d7c7b3e611cf6c1d7db6c846765acac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a90da99_e294fdcd",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-02T22:39:44Z",
+      "side": 1,
+      "message": "ROHM considers the voltage ripples ( \u003c UVLO 3.7V) as voltage down. Readings from Analog registers also might give value less than 3.9V depending on when we read. Hence, I think using two tire check is okay only when STATUS reg is zero.\nAny suggestions Shawn?",
+      "parentUuid": "b6a09beb_529b3f0d",
+      "revId": "36f5672d7d7c7b3e611cf6c1d7db6c846765acac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
