@@ -16,6 +16,23 @@
       "revId": "3566e62fc8a2de82ccc8b2d09618b138d3713292",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7ad82d7_0589f4d1",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-02T04:12:58Z",
+      "side": 1,
+      "message": "That\u0027s true. I\u0027ll change it. I was also thinking that there might be a possibility that a disable could fail. Maybe not for this board, but another.",
+      "revId": "3566e62fc8a2de82ccc8b2d09618b138d3713292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
