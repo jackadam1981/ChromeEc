@@ -111,6 +111,23 @@
     },
     {
       "key": {
+        "uuid": "9e67faec_4cb7b764",
+        "filename": "driver/tcpm/ps8751_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2017-02-02T20:04:10Z",
+      "side": 1,
+      "message": "Make this 50 ms.",
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83ceef38_080239ab",
         "filename": "driver/tcpm/ps8751_fw_update.c",
         "patchSetId": 2
@@ -128,6 +145,24 @@
         "endLine": 60,
         "endChar": 22
       },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b22b4f7f_deb029ed",
+        "filename": "driver/tcpm/ps8751_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2017-02-02T20:04:10Z",
+      "side": 1,
+      "message": "This was the requirement for programming A2 chip. Two I2C access should wake it up. But we will need  TCPM to do drp_toggle_off  to turn off low power mode.",
+      "parentUuid": "83ceef38_080239ab",
       "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
