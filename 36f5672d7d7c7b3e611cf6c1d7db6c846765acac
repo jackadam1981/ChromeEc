@@ -63,6 +63,29 @@
       "revId": "36f5672d7d7c7b3e611cf6c1d7db6c846765acac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6a09beb_529b3f0d",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-02T21:21:24Z",
+      "side": 1,
+      "message": "We don\u0027t need a 2-tier check, just check the analog voltage and compare against whatever value you want. BTW charger_get_vbus_level() is about to change, I have a pending CL.",
+      "range": {
+        "startLine": 855,
+        "startChar": 0,
+        "endLine": 885,
+        "endChar": 14
+      },
+      "revId": "36f5672d7d7c7b3e611cf6c1d7db6c846765acac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
