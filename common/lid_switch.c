@@ -134,6 +134,26 @@ DECLARE_CONSOLE_COMMAND(lidclose, command_lidclose,
 			NULL,
 			"Simulate lid close");
 
+
+static int command_lid(int argc, char **argv)
+{
+	int ms = 100;
+
+	if (argc == 2)
+		ms = strtoi(argv[1], NULL, 0);
+
+	ccprintf("lid for %d ms\n", ms);
+
+	lid_switch_close();
+	msleep(ms);
+	lid_switch_open();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(lid, command_lid,
+			NULL,
+			"Open/close");
+
+
 static int command_lidstate(int argc, char **argv)
 {
 	ccprintf("lid state: %s\n", debounced_lid_open ? "open" : "closed");
