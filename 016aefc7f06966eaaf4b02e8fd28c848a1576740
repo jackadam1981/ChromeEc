@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79691bd5_34ee25e0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-02T02:42:24Z",
+      "side": 1,
+      "message": "I probably need to rethink about tcpci_get_chip_info. tcpc_read16 can fail if chip is asleep. Since how to wake up the chip varies chip to chip, I need to call chip specific function before accessing any of these registers.",
+      "range": {
+        "startLine": 363,
+        "startChar": 9,
+        "endLine": 363,
+        "endChar": 20
+      },
+      "revId": "016aefc7f06966eaaf4b02e8fd28c848a1576740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
