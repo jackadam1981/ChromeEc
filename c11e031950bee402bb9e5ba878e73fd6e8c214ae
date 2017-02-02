@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccf28301_0ca15c19",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-02T05:03:01Z",
+      "side": 1,
+      "message": "presubmit probably complaints about splitting strings  if you don\u0027t put  this in one line, but this is silly on their part.\n\nTo get around this, why not to have two ccprintf statements, one per output line.",
+      "range": {
+        "startLine": 232,
+        "startChar": 11,
+        "endLine": 232,
+        "endChar": 58
+      },
+      "revId": "c11e031950bee402bb9e5ba878e73fd6e8c214ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
