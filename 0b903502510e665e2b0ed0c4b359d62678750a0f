@@ -134,6 +134,23 @@
     },
     {
       "key": {
+        "uuid": "24c3927c_db22159b",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-02T17:24:33Z",
+      "side": 1,
+      "message": "Resolved by reading the VID register twice. First for waking up the chip, 2nd for reading the value. This works only for PS8751, though.",
+      "revId": "0b903502510e665e2b0ed0c4b359d62678750a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d63d6f1_5297fcb3",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
