@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "229da323_0bc7fc62",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-02T02:56:21Z",
+      "side": 1,
+      "message": "I understand you are shooting for symmetry, but I don\u0027t think it makes sense to add return value which never changes, it misleads the reader when looking at this function\u0027s call site.",
+      "revId": "3566e62fc8a2de82ccc8b2d09618b138d3713292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
