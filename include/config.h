@@ -1844,6 +1844,13 @@
 /* If defined will enable block (64KiB) erase operations. */
 #undef CONFIG_SPI_NOR_BLOCK_ERASE
 
+/* If defined will read the sector/block to be erased first and only initiate
+ * the erase operation if not already in an erased state. The read operation
+ * (performed in CONFIG_SPI_NOR_MAX_READ_SIZE chunks) is aborted early if a
+ * non "0xff" byte is encountered.
+ */
+#undef CONFIG_SPI_NOR_SMART_ERASE
+
 /* SPI master feature */
 #undef CONFIG_SPI_MASTER
 
