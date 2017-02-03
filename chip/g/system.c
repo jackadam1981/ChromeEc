@@ -94,7 +94,7 @@ void system_reset(int flags)
 	/* Disable interrupts to avoid task swaps during reboot */
 	interrupt_disable();
 
-#ifdef BOARD_CR50
+#if defined(BOARD_CR50) || defined(BOARD_MN50)
 	/*
 	 * Decrement the retry counter on manually triggered reboots.  We were
 	 * able to process the console command, therefore we're probably okay.
@@ -335,7 +335,7 @@ const char *system_get_version(enum system_image_copy_t copy)
 	return "Error";
 }
 
-#ifdef BOARD_CR50
+#if defined(BOARD_CR50) || defined(BOARD_MN50)
 
 void system_clear_retry_counter(void)
 {

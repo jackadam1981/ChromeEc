@@ -115,45 +115,66 @@ $(out)/$(PROJECT).obj: $(out)/RW/ec.RW_B.flat
 $(out)/RW/ec.RW_B.flat: $(out)/util/signer
 endif
 
+CR50_RO_KEY ?= rom-testkey-A.pem
+
 ifneq ($(CR50_DEV),)
+sign_fob=1
 CPPFLAGS += -DCR50_DEV=1
 endif
 
-CR50_RO_KEY ?= rom-testkey-A.pem
-ifeq ($(H1_DEVIDS),)
-CR50_RW_KEY = loader-testkey-A.pem
-SIGNER = $(out)/util/signer
-SIGNER_EXTRAS =
-SIGNER_MANIFEST := util/signer/ec_RW-manifest-dev.json
-else
-SIGNER = $(HOME)/bin/codesigner
-CR50_RW_KEY = cr50_rom0-dev-blsign.pem.pub
-RW_SIGNER_EXTRAS = -x util/signer/fuses.xml
+ifneq ($(FOB),)
 
-ifneq ($(CHIP_MK_INCLUDED_ONCE),)
-#
-# When building a node locked cr50 image for an H1 device with prod RO, the
-# manifest needs to be modifed to include the device ID of the chip the image
-# is built for.
-#
-# The device ID consists of two 32 bit numbers which can be retrieved by
-# running the 'sysinfo' command on the cr50 console. These two numbers
-# need to be spliced into the signer manifest after the '"fuses": {' line
-# for the signer to pick them up. Pass the numbers on the make command line
-# like this:
-#
-# H1_DEVIDS='<num 1> <num 2>' make ...
-#
-SIGNER_MANIFEST := $(shell mktemp /tmp/h1.signer.XXXXXX)
-DUMMY := $(shell /bin/cp util/signer/ec_RW-manifest-dev.json $(SIGNER_MANIFEST))
-REPLACEMENT := $(shell printf \
-	'\\n    \\"DEV_ID0\\": %d,\\n    \\"DEV_ID1\\": %d,' $(H1_DEVIDS))
-NODE_JSON :=  $(shell sed -i \
+  SIGNER = $(HOME)/bin/codesigner
+  CR50_RW_KEY = cr50_rom0-dev-blsign.pem.pub
+  RW_SIGNER_EXTRAS = -x util/signer/fuses.xml
+
+  ifneq ($(CHIP_MK_INCLUDED_ONCE),)
+  ifneq ($(H1_DEVIDS),)
+  #
+  # When building a node locked cr50 image for an H1 device with prod RO, the
+  # manifest needs to be modifed to include the device ID of the chip the image
+  # is built for.
+  #
+  # The device ID consists of two 32 bit numbers which can be retrieved by
+  # running the 'sysinfo' command on the cr50 console. These two numbers
+  # need to be spliced into the signer manifest after the '"fuses": {' line
+  # for the signer to pick them up. Pass the numbers on the make command line
+  # like this:
+  #
+  # H1_DEVIDS='<num 1> <num 2>' make ...
+  #
+
+  SIGNER_MANIFEST := $(shell mktemp /tmp/h1.signer.XXXXXX)
+  DUMMY := $(shell /bin/cp util/signer/ec_RW-manifest-dev.json $(SIGNER_MANIFEST))
+  REPLACEMENT := $(shell printf \
+	'\\n    \\"DEV_ID0\\": %d,\\n    \\"DEV_ID1\\": %d,' $${H1_DEVIDS})
+  NODE_JSON :=  $(shell sed -i \
 	"s/\"fuses\": {/\"fuses\": {$(REPLACEMENT)/" $(SIGNER_MANIFEST))
 
-RW_SIGNER_EXTRAS += -j $(SIGNER_MANIFEST)
-endif  # CHIP_MK_INCLUDED_ONCE defined
-endif  # H1_DEVIDS defined
+  else  # H1_DEVIDS  ^^^^^ nonempty    vvvvvv empty
+
+  SIGNER_MANIFEST := util/signer/ec_RW-manifest-dev.json
+
+  endif  # H1_DEVIDS  ^^^^^ empty
+
+  RW_SIGNER_EXTRAS += -j $(SIGNER_MANIFEST)
+  endif  # CHIP_MK_INCLUDED_ONCE defined
+else
+ifneq ($(NODE_LOCK_RO),)
+  SIGNER = $(HOME)/bin/codesigner
+  CR50_RW_KEY = loader-testkey-A.pem
+
+  #SIGNER_MANIFEST := util/signer/ec_RW-manifest-dev.json
+  #RW_SIGNER_EXTRAS += -j $(SIGNER_MANIFEST)
+
+ else
+
+  CR50_RW_KEY = loader-testkey-A.pem
+  SIGNER = $(out)/util/signer
+  SIGNER_EXTRAS =
+
+endif  # NODE_LOCK_RO defined
+endif  # FOB defined
 
 
 # This file is included twice by the Makefile, once to determine the CHIP info
