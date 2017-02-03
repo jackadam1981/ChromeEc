@@ -16,6 +16,24 @@
       "revId": "adf67c922f126e66446323802aef0fd8d29c1e35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f2e15f0_4dc71bac",
+        "filename": "builtin/string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1134159
+      },
+      "writtenOn": "2017-02-03T03:54:19Z",
+      "side": 1,
+      "message": "These are all gcc builtin functions except for memchr() which will throw a linker error if I don\u0027t define.",
+      "parentUuid": "8283d639_43d09329",
+      "revId": "adf67c922f126e66446323802aef0fd8d29c1e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
