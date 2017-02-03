@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2017 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -94,7 +94,7 @@ void system_reset(int flags)
 	/* Disable interrupts to avoid task swaps during reboot */
 	interrupt_disable();
 
-#ifdef BOARD_CR50
+#if defined(CHIP_FAMILY_CR50)
 	/*
 	 * Decrement the retry counter on manually triggered reboots.  We were
 	 * able to process the console command, therefore we're probably okay.
@@ -139,7 +139,7 @@ void system_reset(int flags)
 			GC_PMU_LOW_POWER_DIS_START_LSB,
 			1);
 	}
-#endif  /* ^^^^^^^ BOARD_CR50 Not defined */
+#endif  /* ^^^^^^^ CHIP_FAMILY_CR50 Not defined */
 
 	/* Wait for reboot; should never return  */
 	asm("wfi");
@@ -366,8 +366,7 @@ const char *system_get_version(enum system_image_copy_t copy)
 	return "Error";
 }
 
-#ifdef BOARD_CR50
-
+#if defined(CHIP_FAMILY_CR50)
 void system_clear_retry_counter(void)
 {
 	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG0, 1);

@@ -26,7 +26,7 @@ class SSpiBus(object):
     _write_ep: pyUSB write endpoint for this interface
   """
   def __init__(self, vendor=0x18d1,
-               product=0x501a, interface=2, serialname=None):
+               product=0x5014, interface=4, serialname=None):
     # Find the stm32.
     dev = usb.core.find(idVendor=vendor, idProduct=product)
     if dev is None:

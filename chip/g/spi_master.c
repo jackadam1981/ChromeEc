@@ -46,8 +46,14 @@ int spi_transaction(const struct spi_device_t *spi_device,
 	/* Ensure it'll fit inside of the RX and TX buffers. Note that although
 	 * the buffers are separate, the total transmission size must fit in
 	 * the rx buffer. */
+#if 0
 	if (txlen + rxlen > SPI_BUF_SIZE)
 		return EC_ERROR_INVAL;
+#else
+	if ((txlen != rxlen) || (txlen > SPI_BUF_SIZE))
+		return EC_ERROR_INVAL;
+
+#endif
 
 	/* Grab the port's mutex. */
 	mutex_lock(&spi_mutex[port]);
@@ -62,7 +68,11 @@ int spi_transaction(const struct spi_device_t *spi_device,
 #endif  /* CONFIG_SPI_MASTER_NO_CS_GPIOS */
 
 	/* Initiate the transaction. */
+#if 0
 	GWRITE_FIELD_I(SPI, port, XACT, SIZE, rxlen + txlen - 1);
+#else
+	GWRITE_FIELD_I(SPI, port, XACT, SIZE, rxlen - 1);
+#endif
 	GWRITE_FIELD_I(SPI, port, XACT, START, 1);
 
 	/* Wait for the SPI master to finish the transaction. */
@@ -76,9 +86,15 @@ int spi_transaction(const struct spi_device_t *spi_device,
 	}
 	GWRITE_FIELD_I(SPI, port, ISTATE_CLR, TXDONE, 1);
 
+#if 0
 	/* Copy the result. */
 	memmove(rxdata, &((uint8_t *)GREG32_ADDR_I(SPI, port, RX_DATA))[txlen],
 		rxlen);
+#else
+	/* Copy the result. */
+	memmove(rxdata, &((uint8_t *)GREG32_ADDR_I(SPI, port, RX_DATA))[0],
+		txlen);
+#endif
 
 err_cs_high:
 #ifndef CONFIG_SPI_MASTER_NO_CS_GPIOS
