@@ -170,6 +170,24 @@
     },
     {
       "key": {
+        "uuid": "26f9563f_09a6dcdc",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-02-03T21:04:38Z",
+      "side": 1,
+      "message": "It is rewired in 434",
+      "parentUuid": "cb3c38e5_33443eff",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7cf08fd_ba463dbd",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
