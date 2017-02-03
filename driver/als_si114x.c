@@ -23,6 +23,14 @@
 
 static int init(const struct motion_sensor_t *s);
 
+#ifndef CONFIG_ALS_SI114X_INT_EVENT
+/* MEAS_RATE frequencies in milli Hz that result in losless compression */
+int si114x_meas_rate_mHz[] = {
+	1250, 2500, 5000, 10000, 12500, 20000, 25000, 50000,
+};
+#endif
+
+static int debug;
 /**
  * Read 8bit register from device.
  */
@@ -98,6 +106,9 @@ static int si114x_read_results(struct motion_sensor_t *s, int nb)
 		ret = raw_read16(s->port, s->addr,
 				 type_data->base_data_reg + i * 2,
 				 &val);
+		if (debug)
+			ccprintf("si114x: Rd ALS[%x] = 0x%x\n",
+				 type_data->base_data_reg + i * 2, val);
 		if (ret)
 			break;
 		if (val == SI114X_OVERFLOW) {
@@ -157,6 +168,7 @@ static int si114x_read_results(struct motion_sensor_t *s, int nb)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_ALS_SI114X_INT_EVENT
 void si114x_interrupt(enum gpio_signal signal)
 {
 	task_set_event(TASK_ID_MOTIONSENSE,
@@ -226,10 +238,11 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 }
 
 /* Just trigger a measurement */
-static int read(const struct motion_sensor_t *s, vector_3_t v)
+static int read_force(const struct motion_sensor_t *s, vector_3_t v)
 {
 	int ret = 0;
 	uint8_t cmd;
+
 	struct si114x_drv_data_t *data = SI114X_GET_DATA(s);
 
 	switch (data->state) {
@@ -298,6 +311,39 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	return ret;
 }
 
+#else /* CONFIG_ALS_SI114X_INT_EVENT */
+
+static int read_auto(const struct motion_sensor_t *s, vector_3_t v)
+{
+	int ret = 0;
+	int val;
+	int irq = 0;
+
+	/* Read IRQ register to check if new measurement is ready */
+	ret = raw_read8(s->port, s->addr, SI114X_REG_IRQ_STATUS, &val);
+	if (debug)
+		ccprintf("Si Auto READ: IRQ = 0x%x\n", val);
+
+	/* Read ALS measuremnet if new value is ready */
+	if (val & SI114X_ALS_INT_FLAG && s->type == MOTIONSENSE_TYPE_LIGHT) {
+		ret = si114x_read_results((struct motion_sensor_t *)s, 1);
+		irq |= SI114X_ALS_INT_FLAG;
+	}
+
+	/* Read PS measurement if new values are ready */
+	if (val & SI114X_PS_INT_FLAG && s->type == MOTIONSENSE_TYPE_PROX) {
+		ret = si114x_read_results((struct motion_sensor_t *)s,
+					  SI114X_NUM_LEDS);
+		irq |= SI114X_PS_INT_FLAG;
+	}
+
+	/* Clear IRQ status register */
+	ret = raw_write8(s->port, s->addr, SI114X_REG_IRQ_STATUS, irq);
+
+	return ret;
+}
+#endif
+
 static int si114x_set_chlist(const struct motion_sensor_t *s)
 {
 	int reg = 0;
@@ -359,12 +405,6 @@ static int si114x_initialize(const struct motion_sensor_t *s)
 		return ret;
 	msleep(20);
 
-	/* interrupt configuration, interrupt output enable */
-	ret = raw_write8(s->port, s->addr, SI114X_REG_INT_CFG,
-			 SI114X_INT_CFG_OE);
-	if (ret != EC_SUCCESS)
-		return ret;
-
 	/* enable interrupt for certain activities */
 	ret = raw_write8(s->port, s->addr, SI114X_REG_IRQ_ENABLE,
 		SI114X_PS3_IE | SI114X_PS2_IE | SI114X_PS1_IE |
@@ -372,7 +412,14 @@ static int si114x_initialize(const struct motion_sensor_t *s)
 	if (ret != EC_SUCCESS)
 		return ret;
 
-	/* Only forced mode */
+	/* interrupt configuration, interrupt output enable */
+	ret = raw_write8(s->port, s->addr, SI114X_REG_INT_CFG,
+			 SI114X_INT_CFG_OE);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+#ifdef CONFIG_ALS_SI114X_INT_EVENT
+	/* Only forced mode when interrupts are enabled */
 	ret = raw_write8(s->port, s->addr, SI114X_REG_MEAS_RATE, 0);
 	if (ret != EC_SUCCESS)
 		return ret;
@@ -386,6 +433,7 @@ static int si114x_initialize(const struct motion_sensor_t *s)
 	ret = raw_write8(s->port, s->addr, SI114X_REG_PS_RATE, 0);
 	if (ret != EC_SUCCESS)
 		return ret;
+#endif
 
 	/* set LED currents to maximum */
 	switch (SI114X_NUM_LEDS) {
@@ -489,12 +537,189 @@ static int get_data_rate(const struct motion_sensor_t *s)
 	return data->rate;
 }
 
+#ifndef CONFIG_ALS_SI114X_INT_EVENT
+static int si114x_uncompress(int *raw, int compress)
+{
+	int frac;
+	int exp;
+
+	/* Exponent is the upper nibble */
+	exp = compress >> 4;
+	/* 4 fractional bits */
+	frac = compress & 0xf;
+	/* If exp > 0, then frac is 1.frac */
+	if (exp)
+		frac |= 0x10;
+	/* uncompressed = round(exp * frac) >> 8 */
+	*raw = ((1 << (exp + 4)) * frac + 0x80) >> 8;
+
+	return EC_SUCCESS;
+}
+
+static int si114x_compress(int raw, int *compress)
+{
+	int exp;
+	int frac;
+	int left;
+
+	/* Ensure that raw number is in range (0 - 0xffff) */
+	if (raw & 0xffff0000)
+		return EC_ERROR_INVAL;
+
+	/* Check if input is 0 */
+	if (!(raw & 0xffff)) {
+		*compress = 0;
+		return EC_SUCCESS;
+	}
+
+	/* Determine exponent by finding MSB */
+	left = 0;
+	while (!(raw & 0x8000)) {
+		raw <<= 1;
+		left++;
+	}
+	exp = 15 - left;
+
+	/* If exp != 0, then it's 1.frac */
+	if (exp)
+		raw <<= 1;
+	/* Keep 4 fractional bits */
+	frac = (raw & 0xf000) >> 12;
+	/* Compressed value uppper nibble = exp, lower nibble = frac */
+	*compress = exp << 4 | frac;
+
+	return EC_SUCCESS;
+}
+
+static int compute_meas_rate(int odr_mHz, int *meas, int *als)
+{
+	int si_clocks;
+	int meas_rate;
+	int als_rate;
+	int mod, div;
+	int ret;
+	int rate_index;
+	int raw_meas;
+	int raw_als;
+	int meas_freq_mHz;
+
+	/* Find the slowest MEAS_RATE that is an integer sub-multiple of the
+	 * desired sensor rate and still result in a lossless 16->8 bit
+	 * compression value.
+	 */
+	for (rate_index = 0; rate_index < ARRAY_SIZE(si114x_meas_rate_mHz);
+	     rate_index++) {
+		div = si114x_meas_rate_mHz[rate_index] / odr_mHz;
+		mod = si114x_meas_rate_mHz[rate_index] % odr_mHz;
+		if (div && !mod) {
+			meas_freq_mHz = si114x_meas_rate_mHz[rate_index];
+			break;
+		}
+	}
+
+	/*
+	 * If reached end of the table, then couldn't find a MEAS_RATE value
+	 * that will result in lossless compression.
+	 */
+	if (rate_index == ARRAY_SIZE(si114x_meas_rate_mHz)) {
+		ccprintf("Si114x: odr %d can't set exact\n", odr_mHz);
+		/* assume MEAS_RATE is desired rate / 8 */
+		div = 8;
+		meas_freq_mHz = odr_mHz * div;
+	}
+
+	/* Compute number of 32 kHz clock cycles between measurements */
+	si_clocks = SI114x_CLOCK_HZ * 1000 / meas_freq_mHz;
+	/* Get compressed vesrion of this number */
+	ret = si114x_compress(si_clocks, &meas_rate);
+	if (ret)
+		return EC_ERROR_INVAL;
+	/* Number of MEAS_RATE per sensor measurement */
+	ret = si114x_compress(div, &als_rate);
+	if (ret)
+		return EC_ERROR_INVAL;
+	/* Sanity check */
+	ccprintf("odr = %d, meas_rate = %d, als_rate = %d\n", odr_mHz,
+		 meas_freq_mHz, div);
+	ccprintf("meas_rate = 0x%x, als_rate = 0x%x\n", meas_rate, als_rate);
+	si114x_uncompress(&raw_meas, meas_rate);
+	si114x_uncompress(&raw_als, als_rate);
+	ccprintf("meas_rate = %d, als_rate = %d\n", raw_meas, raw_als);
+	ccprintf("actual rate = %d mHz\n", (SI114x_CLOCK_HZ * 1000) /
+		 (raw_meas * div));
+
+	*meas = meas_rate;
+	*als = als_rate;
+
+	return EC_SUCCESS;
+}
+
+#endif
+
 static int set_data_rate(const struct motion_sensor_t *s,
 				int rate,
 				int rnd)
 {
 	struct si114x_typed_data_t *data = SI114X_GET_TYPED_DATA(s);
+#ifndef CONFIG_ALS_SI114X_INT_EVENT
+	int meas;
+	int val;
+	int ret;
+	int cmd;
+#endif
 	data->rate = rate;
+
+#ifndef CONFIG_ALS_SI114X_INT_EVENT
+	/*
+	 * If in polling mode, then check rate to see if sensor measurements
+	 * need to be enabled. If so, then set measure rate and either ALS or
+	 * PROX rate to match the odr rate. MEAS_RATE is the number of 32 kHz
+	 * cycles to wake up the sensor. ALS_RATE and PROX_RATE control the
+	 * number of times the sensor wakes up before making a particular
+	 * measurement. Because MEAS_RATE is a compressed value of the desired
+	 * 16 bit value, can't represent every desired value.
+	 */
+	if (data->rate) {
+		ret = compute_meas_rate(data->rate * 2, &meas, &val);
+		if (ret)
+			return ret;
+		/* Write measure rate register */
+		ret = raw_write8(s->port, s->addr, SI114X_REG_MEAS_RATE, meas);
+		if (ret)
+			return ret;
+
+		if (s->type == MOTIONSENSE_TYPE_LIGHT) {
+			cmd = SI114X_CMD_ALS_AUTO;
+			ret = raw_write8(s->port, s->addr, SI114X_REG_ALS_RATE,
+					 val);
+			if (ret)
+				return ret;
+		} else if (s->type == MOTIONSENSE_TYPE_PROX) {
+			cmd = SI114X_CMD_PS_AUTO;
+			ret = raw_write8(s->port, s->addr, SI114X_REG_PS_RATE,
+					 val);
+			if (ret)
+				return ret;
+		} else {
+			return EC_ERROR_INVAL;
+		}
+
+		ccprintf("Si114x: Enabling ALS auto mode\n");
+		/* Enable auto measurements at the rate specified above */
+		ret = raw_write8(s->port, s->addr, SI114X_REG_COMMAND, cmd);
+		if (ret)
+			return ret;
+	} else if (s->type == MOTIONSENSE_TYPE_LIGHT) {
+		ccprintf("Si114x: Disabling ALS auto mode\n");
+		/* Disable auto ALS measurements */
+		ret = raw_write8(s->port, s->addr, SI114X_REG_COMMAND,
+				 SI114X_CMD_ALS_PAUSE);
+	} else if (s->type == MOTIONSENSE_TYPE_PROX) {
+		/* Disable auto Proximity measurements */
+		ret = raw_write8(s->port, s->addr, SI114X_REG_COMMAND,
+				 SI114X_CMD_PS_PAUSE);
+	}
+#endif
 	return EC_SUCCESS;
 }
 
@@ -551,13 +776,19 @@ static int init(const struct motion_sensor_t *s)
 	set_resolution(s, resol, 0);
 
 	CPRINTF("[%T %s: MS Done Init type:0x%X range:%d]\n",
-			s->name, s->type, get_range(s));
+		s->name, s->type, get_range(s));
+
+	debug = 0;
 	return EC_SUCCESS;
 }
 
 const struct accelgyro_drv si114x_drv = {
 	.init = init,
-	.read = read,
+#ifdef CONFIG_ALS_SI114X_INT_EVENT
+	.read = read_force,
+#else
+	.read = read_auto,
+#endif
 	.set_range = set_range,
 	.get_range = get_range,
 	.set_resolution = set_resolution,
@@ -567,7 +798,7 @@ const struct accelgyro_drv si114x_drv = {
 	.set_offset = set_offset,
 	.get_offset = get_offset,
 	.perform_calib = NULL,
-#ifdef CONFIG_ACCEL_INTERRUPTS
+#ifdef CONFIG_ALS_SI114X_INT_EVENT
 	.irq_handler = irq_handler,
 #endif
 #ifdef CONFIG_ACCEL_FIFO
@@ -595,3 +826,75 @@ struct si114x_drv_data_t g_si114x_data = {
 		}
 	}
 };
+
+#ifndef CONFIG_ALS_SI114X_INT_EVENT
+/* SC DEBUG only */
+static void compute_table(void)
+{
+	int odr;
+	int meas_comp;
+	int meas_raw;
+	int si_clocks;
+	int si_mod;
+	int i;
+
+	for (i = 0, odr = 50000; odr > 100; odr -= 10, i++) {
+		si_clocks = SI114x_CLOCK_HZ * 1000 / odr;
+		si_mod = (SI114x_CLOCK_HZ * 1000) % odr;
+		if (si_clocks < 0xffff && !si_mod) {
+			si114x_compress(si_clocks, &meas_comp);
+			si114x_uncompress(&meas_raw, meas_comp);
+			if (si_clocks == meas_raw) {
+			ccprintf("[%d]: odr = %d, clk1 = %d, clk2 = %d: %d\n",
+				 i, odr, si_clocks, meas_raw,
+				 si_clocks == meas_raw);
+			msleep(50);
+			}
+		}
+	}
+}
+
+/* SC DEBUG only */
+static int command_si(int argc, char **argv)
+{
+	int raw;
+	int meas, als;
+	char *e;
+
+	if (argc < 1)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (!strcasecmp(argv[1], "odr")) {
+		compute_table();
+		return EC_SUCCESS;
+	} else if (!strcasecmp(argv[1], "debug")) {
+		debug ^= 1;
+		return EC_SUCCESS;
+	} else if (!strcasecmp(argv[1], "irq")) {
+		raw = strtoi(argv[2], &e, 10);
+		if (*e)
+			return EC_ERROR_PARAM2;
+		if (raw)
+			/* interrupt configuration, interrupt output enable */
+			raw_write8(I2C_PORT_ALS, SI114X_ADDR,
+				   SI114X_REG_INT_CFG, SI114X_INT_CFG_OE);
+		else
+			raw_write8(I2C_PORT_ALS, SI114X_ADDR,
+				   SI114X_REG_INT_CFG, 0);
+		return EC_SUCCESS;
+	}
+
+	raw = strtoi(argv[1], &e, 10);
+	if (*e)
+		return EC_ERROR_PARAM2;
+
+	ccprintf("odr = %d mHz\n", raw);
+	compute_meas_rate(raw, &meas, &als);
+	ccprintf("MEAS_RATE = 0x%x, ALS_RATE = 0x%x\n", meas, als);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(si, command_si,
+			"<0 - 65535>",
+			"Test si compression");
+#endif

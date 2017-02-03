@@ -211,6 +211,9 @@
 /* Time to wait before re-initializing the device if access is denied */
 #define SI114X_DENIED_THRESHOLD		(10 * SECOND)
 
+/* Internal clock rate of Si114x for measurements */
+#define SI114x_CLOCK_HZ		32000
+
 extern const struct accelgyro_drv si114x_drv;
 
 enum si114x_state {
