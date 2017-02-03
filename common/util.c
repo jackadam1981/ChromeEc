@@ -310,6 +310,20 @@ void *memmove(void *dest, const void *src, size_t len)
 }
 
 
+void *memchr(const void *buffer, int c, size_t n)
+{
+	char *current = (char *)buffer;
+	char *end = current + n;
+
+	while (current != end) {
+		if (*current == c)
+			return current;
+		current++;
+	}
+	return NULL;
+}
+
+
 void reverse(void *dest, size_t len)
 {
 	int i;
