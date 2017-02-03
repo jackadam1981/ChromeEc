@@ -16,6 +16,24 @@
       "revId": "fe4478a77057455d496269e923d3766bb454f794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd9ba8a0_bcaba324",
+        "filename": "board/snappy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-03T02:01:41Z",
+      "side": 1,
+      "message": "i dont have a device to test. \nGenerally Quanta team pushes separate patch for these boards.",
+      "parentUuid": "f71a2d61_47d12c62",
+      "revId": "fe4478a77057455d496269e923d3766bb454f794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
