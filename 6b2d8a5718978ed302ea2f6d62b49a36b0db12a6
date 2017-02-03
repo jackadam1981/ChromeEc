@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "c86df601_c47f1d76",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-03T18:53:11Z",
+      "side": 1,
+      "message": "why can\u0027t we control that? Is moving this above line 483 not going to make sure this runs before interrupts are enabled?",
+      "parentUuid": "506c1754_dc7b5434",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3696442b_e5ba1001",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -48,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "3a5110d7_43e94c67",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-03T18:53:11Z",
+      "side": 1,
+      "message": "why? We don\u0027t want to ever disable plt_rst_l interrupt, do we?",
+      "parentUuid": "3696442b_e5ba1001",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d95ea279_1f6a6791",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 1
@@ -65,6 +101,24 @@
         "endLine": 148,
         "endChar": 44
       },
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6919ca64_00d4aa8c",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-03T18:53:11Z",
+      "side": 1,
+      "message": "good point, will do.",
+      "parentUuid": "d95ea279_1f6a6791",
       "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
