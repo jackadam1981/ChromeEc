@@ -43,6 +43,24 @@
     },
     {
       "key": {
+        "uuid": "39ffa1f7_b9c2baf9",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-02-03T18:57:17Z",
+      "side": 1,
+      "message": "The init_interrupts call doesn\u0027t do anything really. The interrupts are already enabled in chip/g/gpio.c when the interrupts are setup",
+      "parentUuid": "c86df601_c47f1d76",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3696442b_e5ba1001",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -78,6 +96,24 @@
       "side": 1,
       "message": "why? We don\u0027t want to ever disable plt_rst_l interrupt, do we?",
       "parentUuid": "3696442b_e5ba1001",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c4367e_b1d0298c",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-02-03T18:57:17Z",
+      "side": 1,
+      "message": "Oh yeah we dont.",
+      "parentUuid": "3a5110d7_43e94c67",
       "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
