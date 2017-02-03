@@ -93,6 +93,24 @@
       "revId": "fe4478a77057455d496269e923d3766bb454f794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3bd076e_2f22e159",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-03T22:03:47Z",
+      "side": 1,
+      "message": "but its MIN of either of the configs.\nif any board can support other than default, board.h can override it. \nI think we can have only one config.",
+      "parentUuid": "704a098e_83755b65",
+      "revId": "fe4478a77057455d496269e923d3766bb454f794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
