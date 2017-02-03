@@ -15,4 +15,21 @@ void *memcpy(void *dest, const void *src, size_t len);
 void *memmove(void *dest, const void *src, size_t n);
 void *memset(void *dest, int c, size_t len);
 
+size_t strnlen(const char *s, size_t maxlen);
+char *strncpy(char *dest, const char *src, size_t n);
+int strncmp(const char *s1, const char *s2, size_t n);
+
+static inline void *memchr(void *buffer, int c, size_t n)
+{
+	char *current = (char *)buffer;
+	char *end = current + n;
+
+	while (current != end) {
+		if (*current == c)
+			return current;
+		current++;
+	}
+	return NULL;
+}
+
 #endif /* __CROS_EC_STRINGS_H__ */
