@@ -12,6 +12,7 @@
 #include "byteorder.h"
 #include "console.h"
 #include "extension.h"
+#include "gpio.h"
 #include "link_defs.h"
 #include "nvmem.h"
 #include "printf.h"
@@ -697,11 +698,6 @@ int tpm_reset_request(int wait_until_done, int wipe_nvmem_first)
 	return EC_ERROR_TIMEOUT;
 }
 
-int tpm_is_resetting(void)
-{
-	return reset_in_progress;
-}
-
 /*
  * A timeout hook to reinstate NVMEM commits soon after reset.
  *
@@ -787,13 +783,26 @@ static void tpm_reset_now(int wipe_first)
 
 void tpm_task(void)
 {
+	uint32_t evt;
+
+	/*
+	 * In some cases the H1 wakes up from deep sleep while the AP is still
+	 * in a sleep mode. We don't want to continue here, and are likely to
+	 * fall back into deep sleep after a short timeout.
+	 *
+	 * Let's make sure we do not proceed until reset signal is asserted.
+	 */
+	if (system_get_reset_flags() & RESET_FLAG_HIBERNATE)
+		while (!gpio_get_level(GPIO_TPM_RST_L))
+			usleep(1 * MSEC);
+
 	tpm_reset_now(0);
+
 	while (1) {
 		uint8_t *response;
 		unsigned response_size;
 		uint32_t command_code;
 		struct tpm_cmd_header *tpmh;
-		uint32_t evt;
 
 		/* Wait for the next command event */
 		evt = task_wait_event(-1);

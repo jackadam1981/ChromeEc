@@ -79,6 +79,8 @@ uint32_t nvmem_user_sizes[NVMEM_NUM_USERS] = {
 	NVMEM_CR50_SIZE
 };
 
+static void init_ap_state_detector(void);
+
 /*  Board specific configuration settings */
 static uint32_t board_properties;
 static uint8_t reboot_request_posted;
@@ -310,7 +312,6 @@ static void init_pmu(void)
 void pmu_wakeup_interrupt(void)
 {
 	int exiten, wakeup_src;
-	int wake_on_low;
 
 	delay_sleep_by(1 * MSEC);
 
@@ -336,17 +337,6 @@ void pmu_wakeup_interrupt(void)
 		 * or for the system to be reset.
 		 */
 		delay_sleep_by(20 * SECOND);
-
-		/*
-		 * If sys_rst_l or plt_rst_l (if signal is present) is
-		 * configured to wake on low and the signal is low, then call
-		 * tpm_rst_asserted
-		 */
-		wake_on_low = board_use_plt_rst() ?
-			GREAD_FIELD(PINMUX, EXITINV0, DIOM3) :
-			GREAD_FIELD(PINMUX, EXITINV0, DIOM0);
-		if (!gpio_get_level(GPIO_TPM_RST_L) && wake_on_low)
-			tpm_rst_asserted(GPIO_TPM_RST_L);
 	}
 
 	/* Trigger timer0 interrupt */
@@ -448,8 +438,8 @@ static void configure_board_specific_gpios(void)
 		/* Set power down for the equivalent of DIO_WAKE_FALLING */
 		/* Set to be edge sensitive */
 		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM3, 1);
-		/* Select failling edge polarity */
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOM3, 1);
+		/* Select rising edge polarity */
+		GWRITE_FIELD(PINMUX, EXITINV0, DIOM3, 0);
 		/* Enable powerdown exit on DIOM3 */
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM3, 1);
 	} else {
@@ -461,8 +451,8 @@ static void configure_board_specific_gpios(void)
 		/* Set power down for the equivalent of DIO_WAKE_FALLING */
 		/* Set to be edge sensitive */
 		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM0, 1);
-		/* Select failling edge polarity */
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOM0, 1);
+		/* Select rising edge polarity */
+		GWRITE_FIELD(PINMUX, EXITINV0, DIOM0, 0);
 		/* Enable powerdown exit on DIOM0 */
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
 	}
@@ -499,6 +489,8 @@ static void board_init(void)
 
 	/* Indication that firmware is running, for debug purposes. */
 	GREG32(PMU, PWRDN_SCRATCH16) = 0xCAFECAFE;
+
+	init_ap_state_detector();
 
 	/* Enable battery cutoff software support on detachable devices. */
 	if (system_battery_cutoff_support_required())
@@ -574,31 +566,28 @@ int flash_regions_to_enable(struct g_flash_region *regions,
 	return 3;
 }
 
-/* This is the interrupt handler to react to TPM_RST_L */
-void tpm_rst_asserted(enum gpio_signal signal)
+static void deferred_tpm_rst_isr(void)
 {
-	/*
-	 * Cr50 drives SYS_RST_L in certain scenarios, in those cases
-	 * this signal's assertion should be ignored here.
-	 */
-	CPRINTS("%s from %d", __func__, signal);
-	if (usb_spi_update_in_progress() ||
-	    tpm_is_resetting()) {
-		CPRINTS("%s ignored", __func__);
+	ccprintf("%s\n");
+	if (!reboot_request_posted) {
+		/* Reset TPM, no need to wait for completion. */
+		tpm_reset_request(0, 0);
 		return;
 	}
 
-	if (reboot_request_posted) {
-		/*
-		 * Reset TPM and wait to completion to make sure nvmem is
-		 * committed before reboot.
-		 */
-		tpm_reset_request(1, 0);
-		system_reset(SYSTEM_RESET_HARD);  /* This will never return. */
-	} else {
-		/* Reset TPM, no need to wait for completion. */
-		tpm_reset_request(0, 0);
-	}
+	/*
+	 * Reset TPM and wait to completion to make sure nvmem is
+	 * committed before reboot.
+	 */
+	tpm_reset_request(1, 0);
+	system_reset(SYSTEM_RESET_HARD);  /* This will never return. */
+}
+DECLARE_DEFERRED(deferred_tpm_rst_isr);
+
+/* This is the interrupt handler to react to TPM_RST_L */
+void tpm_rst_deasserted(enum gpio_signal signal)
+{
+	hook_call_deferred(&deferred_tpm_rst_isr_data, 0);
 }
 
 void assert_sys_rst(void)
@@ -750,7 +739,6 @@ struct device_config device_states[] = {
 	},
 	[DEVICE_AP] = {
 		.deferred = &ap_deferred_data,
-		.detect = GPIO_DETECT_AP,
 		.name = "AP"
 	},
 	[DEVICE_EC] = {
@@ -760,6 +748,16 @@ struct device_config device_states[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(device_states) == DEVICE_COUNT);
+
+static void init_ap_state_detector(void)
+{
+	if (board_use_plt_rst()) {
+		device_states[DEVICE_AP].detect = GPIO_TPM_RST_L;
+		gpio_disable_interrupt(GPIO_DETECT_AP);
+	} else {
+		device_states[DEVICE_AP].detect = GPIO_DETECT_AP;
+	}
+}
 
 static void servo_attached(void)
 {
@@ -779,13 +777,16 @@ static void servo_attached(void)
 
 void device_state_on(enum gpio_signal signal)
 {
-	gpio_disable_interrupt(signal);
-
-	switch (signal) {
-	case GPIO_DETECT_AP:
+	if (signal == device_states[DEVICE_AP].detect) {
+		if (!board_use_plt_rst())
+			gpio_disable_interrupt(signal);
 		if (device_state_changed(DEVICE_AP, DEVICE_STATE_ON))
 			hook_notify(HOOK_CHIPSET_RESUME);
-		break;
+		return;
+	}
+
+	gpio_disable_interrupt(signal);
+	switch (signal) {
 	case GPIO_DETECT_EC:
 		if (device_state_changed(DEVICE_EC, DEVICE_STATE_ON))
 			enable_uart(UART_EC);
