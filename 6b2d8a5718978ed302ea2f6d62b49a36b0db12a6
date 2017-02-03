@@ -264,6 +264,23 @@
     },
     {
       "key": {
+        "uuid": "2da68d6d_49bba7c0",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T23:58:17Z",
+      "side": 1,
+      "message": "Here\u0027s where I was talking about things being racy. However, I think with the current construct all device state changing is happening within the hook task context. It seems you are relying on that assumption. If so, we need to comment very heavily that any device state manipulation is being done from the hook task. That subtlety was lost on me, and I doubt it\u0027s apparent to others looking at this code.\n\nGiven that all device_state manipulations are done within the hook task that means and we\u0027re assuming all hook callbacks are not preemptible. So either we complete this function or we fail the check above because pltrst_l deassertion hook was called before this hook. So that\u0027s good provided those assumptions hold. These assumptions really need to be written down as a comment so that it\u0027s clear to all readers.\n\nThere\u0027s another issue at play, though. device_powered_on() is called from interrupt handler and a polling function from a hook callback. There\u0027s nothing protecting the device state globals from multiple writers and readers. Updating the state variable itself could be overridden. You need to proxy all of those updates through a hook call as well in order to meet your current assumptions.",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7cf08fd_ba463dbd",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
