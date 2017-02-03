@@ -258,6 +258,75 @@
       "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbba998e_1a44ff84",
+        "filename": "driver/tcpm/ps8751_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2017-02-03T19:30:49Z",
+      "side": 1,
+      "message": "should be same coding style as the rest of the file",
+      "range": {
+        "startLine": 136,
+        "startChar": 11,
+        "endLine": 136,
+        "endChar": 26
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db977af2_143662ad",
+        "filename": "driver/tcpm/ps8751_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2017-02-03T19:30:49Z",
+      "side": 1,
+      "message": "No CamelCase",
+      "range": {
+        "startLine": 261,
+        "startChar": 11,
+        "endLine": 261,
+        "endChar": 25
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "306abe29_6726b529",
+        "filename": "driver/tcpm/ps8751_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2017-02-03T19:30:49Z",
+      "side": 1,
+      "message": "some functions are named ps8751_*, others have no prefix.",
+      "range": {
+        "startLine": 307,
+        "startChar": 11,
+        "endLine": 307,
+        "endChar": 21
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
