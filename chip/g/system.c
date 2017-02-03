@@ -93,7 +93,7 @@ void system_reset(int flags)
 	/* Disable interrupts to avoid task swaps during reboot */
 	interrupt_disable();
 
-#ifdef BOARD_CR50
+#if defined(BOARD_CR50) || defined(BOARD_MN50)
 	/*
 	 * On CR50 we want every reset be hard reset, causing the entire
 	 * chromebook to reboot: we don't want the TPM reset while the AP
@@ -327,7 +327,7 @@ const char *system_get_version(enum system_image_copy_t copy)
 	return "Error";
 }
 
-#ifdef BOARD_CR50
+#if defined(BOARD_CR50) || defined(BOARD_MN50)
 
 void system_clear_retry_counter(void)
 {
