@@ -516,7 +516,13 @@
  * through the LIMIT_POWER host event.
  */
 #undef CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT
-#undef CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW
+
+/*
+ * Minimum power needed by the external charger to boot the system to OS when
+ * the battery is dead or not present. Override it in board.h if the value is
+ * board specific.
+ */
+#define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 15000
 
 /*
  * Equivalent of CONFIG_BATTERY_OVERRIDE_PARAMS for use with

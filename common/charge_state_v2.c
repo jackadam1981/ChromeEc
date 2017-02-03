@@ -36,9 +36,6 @@
 #define PRECHARGE_TIMEOUT_US (PRECHARGE_TIMEOUT * SECOND)
 #define LFCC_EVENT_THRESH 5 /* Full-capacity change reqd for host event */
 
-/* Prior to negotiating PD, most PD chargers advertise 15W */
-#define LIKELY_PD_USBC_POWER_MW 15000
-
 /*
  * State for charger_task(). Here so we can reset it on a HOOK_INIT, and
  * because stack space is more limited than .bss
@@ -1008,13 +1005,12 @@ int charge_prevent_power_on(int power_button_pressed)
 #ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT
 	/*
 	 * Allow power-on if our charger advertises more than
-	 * LIKELY_PD_USBC_POWER_MW since it may speak PD and provide
-	 * sufficient power once we enable PD communication.
+	 * CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW since it may speak PD
+	 * and provide sufficient power once we enable PD communication.
 	 */
 	if (prevent_power_on)
 		if (charge_manager_get_power_limit_uw() >=
-		    MIN(LIKELY_PD_USBC_POWER_MW * 1000,
-			CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW * 1000))
+			CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW * 1000)
 			prevent_power_on = 0;
 #endif
 
