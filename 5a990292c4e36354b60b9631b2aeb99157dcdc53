@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "519d6d48_4d1b852d",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-03T17:50:19Z",
+      "side": 1,
+      "message": "we set the mode always. I will bring the below line out of if cases.\nprev_mode[port] \u003d mode;",
+      "parentUuid": "411f8b31_7fa670c7",
+      "revId": "5a990292c4e36354b60b9631b2aeb99157dcdc53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47ab1101_52225afa",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 13
@@ -48,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "6248a652_e36bf734",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-03T17:50:19Z",
+      "side": 1,
+      "message": "okay, I will remove it",
+      "parentUuid": "47ab1101_52225afa",
+      "revId": "5a990292c4e36354b60b9631b2aeb99157dcdc53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5d93c08_37797563",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 13
@@ -65,6 +101,24 @@
         "endLine": 595,
         "endChar": 41
       },
+      "revId": "5a990292c4e36354b60b9631b2aeb99157dcdc53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d867fd24_951fa58d",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-03T17:50:19Z",
+      "side": 1,
+      "message": "If we dont set pull value explicitly, charger doesnt get detected. I figured these by trial \u0026 error method.\nAnalogix team can you explain why we need this?",
+      "parentUuid": "c5d93c08_37797563",
       "revId": "5a990292c4e36354b60b9631b2aeb99157dcdc53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
