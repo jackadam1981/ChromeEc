@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "411f8b31_7fa670c7",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-03T17:06:38Z",
+      "side": 1,
+      "message": "why is this not stored in the anx_state struct ?\nseems like a bug waiting to happen (missing a state reset or whatever)",
+      "range": {
+        "startLine": 556,
+        "startChar": 1,
+        "endLine": 556,
+        "endChar": 59
+      },
+      "revId": "5a990292c4e36354b60b9631b2aeb99157dcdc53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47ab1101_52225afa",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-03T17:06:38Z",
+      "side": 1,
+      "message": "we normally don\u0027t do this kind of defensive programming (to save space) when there is no external input to be validated",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 9
+      },
+      "revId": "5a990292c4e36354b60b9631b2aeb99157dcdc53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5d93c08_37797563",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-03T17:06:38Z",
+      "side": 1,
+      "message": "I don\u0027t understand why we do a set_cc here \n(and all the code below to find the \u0027pull\u0027 value)\n\nThe PD stack should already have called the .set_cc function\neg for FORCE_SOURCE/FORCE_SINK   pd_dual_role_update_config() will do it",
+      "range": {
+        "startLine": 595,
+        "startChar": 1,
+        "endLine": 595,
+        "endChar": 41
+      },
+      "revId": "5a990292c4e36354b60b9631b2aeb99157dcdc53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
