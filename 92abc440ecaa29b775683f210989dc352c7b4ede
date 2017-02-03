@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "703d3635_8dd31521",
+        "filename": "common/timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-03T17:00:35Z",
+      "side": 1,
+      "message": "Just use \n\nccprintf(\"%11.6ld\", t)\n\n as we do for the deadline.  That\u0027ll print the decimal place the way you want.  (No, it\u0027s not standard printf() formatting.)",
+      "range": {
+        "startLine": 208,
+        "startChar": 34,
+        "endLine": 208,
+        "endChar": 41
+      },
+      "revId": "92abc440ecaa29b775683f210989dc352c7b4ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
