@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "385f3725_117f9dc3",
+        "filename": "driver/tcpm/anx74xx_fw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2017-02-03T08:47:13Z",
+      "side": 1,
+      "message": "you can change 16 to 64 ~ 100(about),  according to the formula：  OTP_UPDATE_MAX  \u003d  OTP space size / ANX3429 FW size.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3086696_1a473cce",
         "filename": "driver/tcpm/anx74xx_fw.c",
         "patchSetId": 2
