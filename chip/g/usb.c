@@ -1226,9 +1226,6 @@ void usb_init(void)
 {
 	int i, resume;
 
-	/* USB is in use */
-	disable_sleep(SLEEP_MASK_USB_DEVICE);
-
 	/*
 	 * Resuming from a deep sleep is a lot like a cold boot, but there are
 	 * few things that we need to do slightly differently. However, we ONLY
@@ -1361,6 +1358,8 @@ void usb_init(void)
 	if (!resume)
 		usb_connect();
 #endif
+	/* If a there is usb activity, ISR wil disable sleep very soon. */
+	enable_sleep(SLEEP_MASK_USB_DEVICE);
 }
 #ifndef CONFIG_USB_INHIBIT_INIT
 DECLARE_HOOK(HOOK_INIT, usb_init, HOOK_PRIO_DEFAULT);
