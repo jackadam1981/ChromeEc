@@ -11,6 +11,7 @@
 
 #include "byteorder.h"
 #include "console.h"
+#include "device_state.h"
 #include "extension.h"
 #include "link_defs.h"
 #include "nvmem.h"
@@ -697,11 +698,6 @@ int tpm_reset_request(int wait_until_done, int wipe_nvmem_first)
 	return EC_ERROR_TIMEOUT;
 }
 
-int tpm_is_resetting(void)
-{
-	return reset_in_progress;
-}
-
 /*
  * A timeout hook to reinstate NVMEM commits soon after reset.
  *
@@ -787,6 +783,19 @@ static void tpm_reset_now(int wipe_first)
 
 void tpm_task(void)
 {
+	/*
+	 * Just in case there is a resume from deep sleep where AP is not out
+	 * of reset, let's not proceed until AP is actually up.
+	 */
+	while (device_get_state(DEVICE_AP) != DEVICE_STATE_ON)
+		usleep(50);
+
+	/*
+	 * There could also be a pending reset event depending if this is a
+	 * power on reset or deep sleep resume. The tpm needs to be reset in
+	 * either case, let's just flush the event queue and reset.
+	 */
+	task_wait_event(0);
 	tpm_reset_now(0);
 	while (1) {
 		uint8_t *response;
