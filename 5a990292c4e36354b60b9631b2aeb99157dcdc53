@@ -61,6 +61,24 @@
     },
     {
       "key": {
+        "uuid": "dcbf2707_4b7d2501",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-03T23:01:49Z",
+      "side": 1,
+      "message": "okay thank you. I will make it global and set it in anx74xx_set_power_mode()",
+      "parentUuid": "95d69d4a_10a24302",
+      "revId": "5a990292c4e36354b60b9631b2aeb99157dcdc53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47ab1101_52225afa",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 13
