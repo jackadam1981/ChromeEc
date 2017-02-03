@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "console.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
@@ -34,6 +35,8 @@ int spi_transaction(const struct spi_device_t *spi_device,
 	int port = spi_device->port;
 	int rv = EC_SUCCESS;
 	timestamp_t timeout;
+	int transaction_size = 0;
+	int rxoffset = 0;
 
 	/* If SPI0's passthrough is enabled, SPI0 is not available unless the
 	 * SPS's BUSY bit is set. */
@@ -46,8 +49,19 @@ int spi_transaction(const struct spi_device_t *spi_device,
 	/* Ensure it'll fit inside of the RX and TX buffers. Note that although
 	 * the buffers are separate, the total transmission size must fit in
 	 * the rx buffer. */
-	if (txlen + rxlen > SPI_BUF_SIZE)
-		return EC_ERROR_INVAL;
+
+	if (rxlen == SPI_READBACK_ALL) {
+		if (txlen > SPI_BUF_SIZE)
+			return EC_ERROR_INVAL;
+		rxlen = txlen;
+		transaction_size = txlen;
+		rxoffset = 0;
+	} else {
+		if (txlen + rxlen > SPI_BUF_SIZE)
+			return EC_ERROR_INVAL;
+		transaction_size = rxlen + txlen;
+		rxoffset = txlen;
+	}
 
 	/* Grab the port's mutex. */
 	mutex_lock(&spi_mutex[port]);
@@ -62,7 +76,7 @@ int spi_transaction(const struct spi_device_t *spi_device,
 #endif  /* CONFIG_SPI_MASTER_NO_CS_GPIOS */
 
 	/* Initiate the transaction. */
-	GWRITE_FIELD_I(SPI, port, XACT, SIZE, rxlen + txlen - 1);
+	GWRITE_FIELD_I(SPI, port, XACT, SIZE, transaction_size - 1);
 	GWRITE_FIELD_I(SPI, port, XACT, START, 1);
 
 	/* Wait for the SPI master to finish the transaction. */
@@ -77,7 +91,8 @@ int spi_transaction(const struct spi_device_t *spi_device,
 	GWRITE_FIELD_I(SPI, port, ISTATE_CLR, TXDONE, 1);
 
 	/* Copy the result. */
-	memmove(rxdata, &((uint8_t *)GREG32_ADDR_I(SPI, port, RX_DATA))[txlen],
+	memmove(rxdata,
+		&((uint8_t *)GREG32_ADDR_I(SPI, port, RX_DATA))[rxoffset],
 		rxlen);
 
 err_cs_high:

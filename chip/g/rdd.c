@@ -1,4 +1,4 @@
-/* Copyright 2016 The Chromium OS Authors. All rights reserved.
+/* Copyright 2017 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -41,7 +41,9 @@ DECLARE_DEFERRED(rdd_disconnected);
 
 void rdd_interrupt(void)
 {
+#ifdef CONFIG_LOW_POWER_IDLE
 	delay_sleep_by(1 * SECOND);
+#endif
 
 	if (debug_cable_is_attached()) {
 		/* cancel pending rdd disconnect */

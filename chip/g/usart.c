@@ -13,6 +13,11 @@
 defined(SECTION_IS_RO)))
 #define QUEUE_SIZE 64
 
+#include "console.h"
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+
+
+
 struct usb_stream_config const ap_usb;
 struct usart_config const ap_uart;
 

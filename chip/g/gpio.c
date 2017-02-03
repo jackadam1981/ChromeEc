@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2017 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -39,6 +39,34 @@ void gpio_set_level(enum gpio_signal signal, int value)
 {
 	const struct gpio_info *g = gpio_list + signal;
 	set_one_gpio_bit(g->port, g->mask, value);
+}
+
+int gpio_get_flags_by_mask(uint32_t port, uint32_t mask)
+{
+	uint32_t flags = 0;
+	uint32_t val = 0;
+
+	/* Only one bit must be set. */
+	if ((mask != (mask & -mask)) || (mask == 0))
+		return 0;
+
+	/* Check mode. */
+	/* ARM DDI 0479B: 3.5.2 */
+	val = GR_GPIO_SETDOUTEN(port) & mask;
+	if (val)
+		flags |= GPIO_OUTPUT;
+	else
+		flags |= GPIO_INPUT;
+
+	if (flags & GPIO_OUTPUT) {
+		val = GR_GPIO_DOUT(port) & mask;
+		if (val)
+			flags |= GPIO_HIGH;
+		else
+			flags |= GPIO_LOW;
+	}
+
+	return flags;
 }
 
 void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
