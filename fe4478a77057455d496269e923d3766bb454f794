@@ -52,6 +52,24 @@
       "revId": "fe4478a77057455d496269e923d3766bb454f794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "369612ef_84b49b63",
+        "filename": "board/snappy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-03T02:13:50Z",
+      "side": 1,
+      "message": "Grun \u0026 Kevin have 15W defined and default value is 15W in config.h",
+      "parentUuid": "270d9767_b20bca9f",
+      "revId": "fe4478a77057455d496269e923d3766bb454f794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
