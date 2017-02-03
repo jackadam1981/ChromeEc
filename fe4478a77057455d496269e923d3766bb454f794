@@ -129,6 +129,24 @@
       "revId": "fe4478a77057455d496269e923d3766bb454f794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae404b88_523ada33",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-03T22:35:39Z",
+      "side": 1,
+      "message": "For the host command also: even if we keep both configs, system will shutdown once reach UI. And the limit is applicable only when battery cannot provide power. \nLIKELY_PD_USBC_POWER_MW\u003d15000\nCONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW \u003d 18000",
+      "parentUuid": "7296f221_96e40f44",
+      "revId": "fe4478a77057455d496269e923d3766bb454f794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
