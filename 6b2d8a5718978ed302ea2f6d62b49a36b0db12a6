@@ -2,6 +2,80 @@
   "comments": [
     {
       "key": {
+        "uuid": "27e8a751_0e352394",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T20:50:56Z",
+      "side": 1,
+      "message": "It\u0027s also asserted on warm resets. And I don\u0027t see anywhere in this CL where you wire PLT_RST_L anywhere.",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4aadc41_161359b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T20:50:56Z",
+      "side": 1,
+      "message": "missed a letter?",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9dd6329_c1399b17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T20:50:56Z",
+      "side": 1,
+      "message": "That and you\u0027d be double interrupting in the wake from normal sleep case since you\u0027d see both events.",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a525ab0_7d1779ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T20:50:56Z",
+      "side": 1,
+      "message": "You can change that by removing this file and restarting the system:\n/usr/share/power_manager/board_specific/suspend_to_idle",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "506c1754_dc7b5434",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -55,6 +129,75 @@
       "side": 1,
       "message": "The init_interrupts call doesn\u0027t do anything really. The interrupts are already enabled in chip/g/gpio.c when the interrupts are setup",
       "parentUuid": "c86df601_c47f1d76",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d539badb_bf67a462",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T20:50:56Z",
+      "side": 1,
+      "message": "That\u0027s what this bug is about: https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d62380",
+      "parentUuid": "39ffa1f7_b9c2baf9",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb3c38e5_33443eff",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T20:50:56Z",
+      "side": 1,
+      "message": "I don\u0027t see how any of this can work. You didn\u0027t rewire pltrst_l to TPM_RST_L. TPM_RST_L is attached to sys_rst_l. This CL is broken for warm resets.",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7cf08fd_ba463dbd",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T20:50:56Z",
+      "side": 1,
+      "message": "Comments please.",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c90e8a22_7dc21cce",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T20:50:56Z",
+      "side": 1,
+      "message": "Please comment as to *why* we\u0027re doing this, but not in the other case.",
       "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -155,6 +298,69 @@
       "side": 1,
       "message": "good point, will do.",
       "parentUuid": "d95ea279_1f6a6791",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79265a8d_c6dd1b5b",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T20:50:56Z",
+      "side": 1,
+      "message": "When are you going to fix the race conditions in this function?",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca52956_34736bec",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T20:50:56Z",
+      "side": 1,
+      "message": "This should just go away completely.",
+      "range": {
+        "startLine": 668,
+        "startChar": 5,
+        "endLine": 668,
+        "endChar": 22
+      },
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "636c2740_94f2c169",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T20:50:56Z",
+      "side": 1,
+      "message": "If you just fall into the while loop the reset event will be what wakes us up. To me, this is super hacky. Why wouldn\u0027t we just initialize the device_state in board_init() which would trigger the reset event to this task? That way, we\u0027re not putting very board specific things in common/tpm_register.c.",
+      "range": {
+        "startLine": 788,
+        "startChar": 0,
+        "endLine": 800,
+        "endChar": 0
+      },
       "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
