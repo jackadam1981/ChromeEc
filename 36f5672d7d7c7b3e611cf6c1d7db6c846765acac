@@ -121,6 +121,24 @@
       "revId": "36f5672d7d7c7b3e611cf6c1d7db6c846765acac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1555e6b8_e3575b53",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-03T01:07:41Z",
+      "side": 1,
+      "message": "Reply from ROHM: How many samples are considered \u0026 what is the sampling period before these registers are updated VCC_AVE_VAL (5Fh) / VBUS_AVE_VAL (5Dh)?\n- Two sample moving average value is updated with 20us conversion period and 400us conversion interval.\n\nIs 400us okay? If we are taking the values from BD9995X_CMD_VCC_/VBUS_VAL these are not updated for next 200us.",
+      "parentUuid": "6a90da99_e294fdcd",
+      "revId": "36f5672d7d7c7b3e611cf6c1d7db6c846765acac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
