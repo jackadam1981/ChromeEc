@@ -76,6 +76,23 @@
     },
     {
       "key": {
+        "uuid": "fa6b42cc_c0f80b73",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T21:28:47Z",
+      "side": 1,
+      "message": "So the gpio interrupt is already configured. But then we\u0027re switching the gpio\u0027s pad out from under it while all those settings are alive. That seems like a bad idea in practice. Something to think about cuz it may have issues.",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "506c1754_dc7b5434",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -147,6 +164,29 @@
       "side": 1,
       "message": "That\u0027s what this bug is about: https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d62380",
       "parentUuid": "39ffa1f7_b9c2baf9",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c3b3575_2af74e61",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T21:28:47Z",
+      "side": 1,
+      "message": "I\u0027m curious. Why name this isr when it\u0027s not an interrupt?",
+      "range": {
+        "startLine": 569,
+        "startChar": 29,
+        "endLine": 569,
+        "endChar": 32
+      },
       "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -311,6 +351,40 @@
       "side": 1,
       "message": "Oh yeah we dont.",
       "parentUuid": "3a5110d7_43e94c67",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80030fe2_1a1f4a2d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T21:28:47Z",
+      "side": 1,
+      "message": "So we\u0027re still doing the 1 second polling? That\u0027s the granularity we currently have with the polling of this signal. Then we have a debounce below. There\u0027s nothing stopping uss losing the race in device_powered_off(). In the hook we could get past the check of it not being DEVICE_STATE_ON. Then the ISR comes for TPM_RST_L deassertion. We turn device on. hook continues rurnning where it left off and turns off the device. Then we sleep into a deep sleep when we should have been on.",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45731749_9245f77e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-03T21:28:47Z",
+      "side": 1,
+      "message": "It\u0027s not just UART_RX.",
       "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
