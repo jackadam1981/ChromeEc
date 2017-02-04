@@ -79,6 +79,24 @@
     },
     {
       "key": {
+        "uuid": "df18e789_6a4000c1",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-04T14:23:46Z",
+      "side": 1,
+      "message": "\u003e we set the mode always. I will bring the below line out of if cases.\n\u003e prev_mode[port] \u003d mode;\n\nActually, that\u0027s not true right now..",
+      "parentUuid": "519d6d48_4d1b852d",
+      "revId": "5a990292c4e36354b60b9631b2aeb99157dcdc53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47ab1101_52225afa",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 13
