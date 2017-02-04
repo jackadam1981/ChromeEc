@@ -146,6 +146,7 @@ static uint32_t get_size(enum system_image_copy_t copy)
 
 int system_is_locked(void)
 {
+	return 1;
 	if (force_locked)
 		return 1;
 
