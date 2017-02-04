@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a50a42f7_baaf56dd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 3657,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-04T14:17:49Z",
+      "side": 1,
+      "message": "what is the point of having another struct (and copying it below at lines 3667-3670, rather than passing it direction to get_chip_info ?",
+      "range": {
+        "startLine": 3657,
+        "startChar": 1,
+        "endLine": 3657,
+        "endChar": 26
+      },
+      "revId": "ed55d6c9248eba1ded3c3c2de021d6852d6122ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76e137eb_c65ed033",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-04T14:17:49Z",
+      "side": 1,
+      "message": "this assumes we are building the TCPCI code when building the ANX74xx code\nthis was not the case before",
+      "range": {
+        "startLine": 913,
+        "startChar": 0,
+        "endLine": 913,
+        "endChar": 40
+      },
+      "revId": "ed55d6c9248eba1ded3c3c2de021d6852d6122ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "408cf860_2b5ef87e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-04T14:17:49Z",
+      "side": 1,
+      "message": "why not doing the tcpc_read16 directly in info-\u003evendor_id ?",
+      "range": {
+        "startLine": 373,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 23
+      },
+      "revId": "ed55d6c9248eba1ded3c3c2de021d6852d6122ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf467ff2_16cd0453",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-04T14:17:49Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 378,
+        "startChar": 1,
+        "endLine": 378,
+        "endChar": 23
+      },
+      "revId": "ed55d6c9248eba1ded3c3c2de021d6852d6122ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dd04f16_ed34b33e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4004,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-04T14:17:49Z",
+      "side": 1,
+      "message": "__ec_align2  ?",
+      "range": {
+        "startLine": 4004,
+        "startChar": 7,
+        "endLine": 4004,
+        "endChar": 18
+      },
+      "revId": "ed55d6c9248eba1ded3c3c2de021d6852d6122ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
