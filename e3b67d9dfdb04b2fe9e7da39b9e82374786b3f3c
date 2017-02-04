@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b903e2c_ac5c3833",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-04T17:58:54Z",
+      "side": 1,
+      "message": "I think a better summary is \"cleanup: Remove charge_state_v2\", because we aren\u0027t actually transitioning any boards (there just happen to be no more).",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "e3b67d9dfdb04b2fe9e7da39b9e82374786b3f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
