@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff72d416_5db5dc14",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-04T14:23:46Z",
+      "side": 1,
+      "message": "please put it in anx_state",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "4c662d4645f7e904ee21d6d8319684c1f1432a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba7f70df_1f857498",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-04T14:23:46Z",
+      "side": 1,
+      "message": "I still disagree with this.\n\nthe set_cc is supposed to be done by the common PD stack code.\nWe cannot afford the space to duplicate this in every tcpc driver.\n\nI understand your use case is not working without it.\nThen debug it, something was likely missing in CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE patch, time to fix it.",
+      "range": {
+        "startLine": 598,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 51
+      },
+      "revId": "4c662d4645f7e904ee21d6d8319684c1f1432a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
