@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fe063b8_cd548b64",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-04T18:47:15Z",
+      "side": 1,
+      "message": "I\u0027m guessing the intent here was really to clear R_MODE_TRANSITION / R_LATCH_REG (not clear all other bits), but maybe I\u0027m wrong. Please double check it.",
+      "range": {
+        "startLine": 173,
+        "startChar": 51,
+        "endLine": 173,
+        "endChar": 69
+      },
+      "revId": "d53afab9122d6a1d2698f04da5df9ceb281397ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
