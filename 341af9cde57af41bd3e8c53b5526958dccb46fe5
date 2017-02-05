@@ -307,6 +307,23 @@
     },
     {
       "key": {
+        "uuid": "28edde07_6b1ed775",
+        "filename": "driver/tcpm/ps8751_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2017-02-05T23:08:28Z",
+      "side": 1,
+      "message": "For Parade, chip version supported by the binary is embedded in the firmware binary at offset 0x503A. Since according to Parade A2 firmware version is not compatible with A3 and can cause damage, this mechanism can be used to prevent this mismatched flashing.",
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "306abe29_6726b529",
         "filename": "driver/tcpm/ps8751_fw_update.c",
         "patchSetId": 2
@@ -327,6 +344,23 @@
       "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32709ff1_c284ca84",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6938,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2017-02-05T23:08:28Z",
+      "side": 1,
+      "message": "Could you add the check for not upgrading the firmware if already up-to-date? \nFor Parade firmware version is stored at 0x501C.\nFor Analogix it is stored in 0x49B.",
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
