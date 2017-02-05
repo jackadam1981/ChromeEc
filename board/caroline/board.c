@@ -223,19 +223,19 @@ const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
 
 static void board_pmic_init(void)
 {
+	/*
+	 * [5:4] 1:0 Set V5ADS3VSEL = Vnom+0% (chrome-os-partner:62569)
+	 * [3:2] 0:0 Set AOACCNTV5ADS3 = fast-charge mode disable
+	 * [1:0] 1:0 Set CTLV5ADS3 = Auto (chrome-os-partner:60383)
+	 */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x31, 0x22);
+
 	/* No need to re-init PMIC since settings are sticky across sysjump */
 	if (system_jumped_to_this_image())
 		return;
 
 	/* DISCHGCNT3 - enable 100 ohm discharge on V1.00A */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3e, 0x04);
-
-	/*
-	 * [5:4] 0:1 Set V5ADS3VSEL = Vnom+2% (chrome-os-partner:56642)
-	 * [3:2] 0:0 Set AOACCNTV5ADS3 = fast-charge mode disable
-	 * [1:0] 1:0 Set CTLV5ADS3 = Auto (chrome-os-partner:60383)
-	 */
-	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x31, 0x12);
 
 	/* Set CSDECAYEN / VCCIO decays to 0V at assertion of SLP_S0# */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x30, 0x4a);
